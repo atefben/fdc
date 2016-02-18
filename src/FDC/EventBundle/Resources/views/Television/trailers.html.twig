@@ -6,9 +6,9 @@
     <div class="bandeau">
         {% if page.image %}
             {% if page.image|trans_fallback('file') %}
-                <div id="live" style="background-image:url('{% path page.image|trans_fallback('file'), '1461x923' %}')">
+                <div id="live" style="background-image:url('{% path page.image|trans_fallback('file'), '1920x450' %}')">
             {% else %}
-                <div id="live" style="background-image:url('{% path page.image|trans_fallback('file', 'fr'), '1461x923' %}')">
+                <div id="live" style="background-image:url('{% path page.image|trans_fallback('file', 'fr'), '1920x450' %}')">
             {% endif %}
         {% else %}
             <div id="live" style="background-image:url(http://dummyimage.com/1920x450/cfcfcf/fff&text=+)">
@@ -54,8 +54,8 @@
                 {% for film in films %}
                     {% set video = film.associatedMediaVideos|last.mediaVideo %}
                     <div class="item {{ video.createdAt|date('d-m-Y') }} {{ video.theme }} shadow-bottom video">
-                        <img src="{% path video.image|trans_fallback('file'), '1280x808' %}"
-                             srcset="{% path video.image|trans_fallback('file'), '573x362' %} 1x, {% path video.image|trans_fallback('file'), '1280x808' %} 2x"
+                        <img src="{% path video.image|trans_fallback('file'), '640x404' %}"
+                             srcset="{% path video.image|trans_fallback('file'), '640x404' %} 1x, {% path video.image|trans_fallback('file'), '1280x808' %} 2x"
                              alt="">
                         <div class="info">
                             <div class="picto"><i class="icon icon_playlist"></i></div>

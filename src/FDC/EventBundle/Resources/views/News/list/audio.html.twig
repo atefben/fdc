@@ -20,7 +20,7 @@
                 {% if transImage is null %}
                     {% set transImage = audio.image.findTranslationByLocale('fr') %}
                 {% endif %}
-                <img src="{% path transImage.file , '573x362' %}" srcset="{% path transImage.file , '573x362' %} 1x, {% path transImage.file , '1461x923' %} 2x" alt="">
+                <img src="{% path transImage.file , '640x404' %}" srcset="{% path transImage.file , '640x404' %} 1x, {% path transImage.file , '2560x1620' %} 2x" alt="">
                 <div class="picto">
                     <i class="icon icon_audio"></i>
                 </div>

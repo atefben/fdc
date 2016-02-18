@@ -34,7 +34,7 @@
                             {% endif %}
                             <div>
                                 <div class="img-container">
-                                    <div class="img" style="background-image:url({% path trans.file , '1461x923' %})"></div>
+                                    <div class="img" style="background-image:url({% if trans is defined %}{% path trans.file , '2560x1620' %}{% endif %})"></div>
                                 </div>
                                 <div class="info">
                                     <span class="category">{{ slide.theme|trans_fallback('name') }}</span>

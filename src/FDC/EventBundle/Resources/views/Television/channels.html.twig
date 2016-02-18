@@ -12,10 +12,10 @@
             {% if FDCPageWebTvChannels.image %}
                 {% if FDCPageWebTvChannels.image|trans_fallback('status') == 5 %}
                     <div class="img"
-                         style="background-image:url('{% path FDCPageWebTvChannels.image|trans_fallback('file'), '1280x808' %}')"></div>
+                         style="background-image:url('{% path FDCPageWebTvChannels.image|trans_fallback('file'), '1920x450' %}')"></div>
                 {% else %}
                     <div class="img"
-                         style="background-image:url('{% path FDCPageWebTvChannels.image|trans_fallback('file', 'fr'), '1280x808' %}')"></div>
+                         style="background-image:url('{% path FDCPageWebTvChannels.image|trans_fallback('file', 'fr'), '1920x450' %}')"></div>
                 {% endif %}
             {% else %}
                 <div class="img" style="background-image:url({{ asset('bundles/fdcevent/img/webtv/002.jpg') }})"></div>
@@ -28,22 +28,22 @@
                 <div class="item {{ channel.createdAt|date('d-m-Y') }} {{ channel.theme }} shadow-bottom playlist">
                     {% if channel.image %}
                         {% if channel.image|trans_fallback('file') %}
-                            <img src="{% path channel.image|trans_fallback('file'), '1280x808' %}"
-                                 srcset="{% path channel.image|trans_fallback('file'), '573x362' %} 1x, {% path channel.image|trans_fallback('file'), '1280x808' %} 2x"
+                            <img src="{% path channel.image|trans_fallback('file'), '640x404' %}"
+                                 srcset="{% path channel.image|trans_fallback('file'), '640x404' %} 1x, {% path channel.image|trans_fallback('file'), '1280x808' %} 2x"
                                  alt="">
                         {% else %}
-                            <img src="{% path channel.image|trans_fallback('file', 'fr'), '1280x808' %}"
-                                 srcset="{% path channel.image|trans_fallback('file', 'fr'), '573x362' %} 1x, {% path channel.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
+                            <img src="{% path channel.image|trans_fallback('file', 'fr'), '640x404' %}"
+                                 srcset="{% path channel.image|trans_fallback('file', 'fr'), '640x404' %} 1x, {% path channel.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
                                  alt="">
                         {% endif %}
                     {% elseif channel.mediaVideos|length and channel.mediaVideos|last.image %}{# If channel image does not exist #}
                         {% if channel.mediaVideos|last.image|trans_fallback('file') %}
-                            <img src="{% path channel.mediaVideos|last.image|trans_fallback('file'), '1280x808' %}"
-                                 srcset="{% path channel.mediaVideos|last.image|trans_fallback('file'), '573x362' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file'), '1280x808' %} 2x"
+                            <img src="{% path channel.mediaVideos|last.image|trans_fallback('file'), '640x404' %}"
+                                 srcset="{% path channel.mediaVideos|last.image|trans_fallback('file'), '640x404' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file'), '1280x808' %} 2x"
                                  alt="">
                         {% else %}
-                            <img src="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '1280x808' %}"
-                                 srcset="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '573x362' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
+                            <img src="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '640x404' %}"
+                                 srcset="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '640x404' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
                                  alt="">
                         {% endif %}
                     {% endif %}

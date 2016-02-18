@@ -44,21 +44,47 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
-                97x64: { width: 97 , height: 64 , quality: 100 }
-                880x554: { width: 880 , height: 554 , quality: 100 }
-                212x134: { width: 212 , height: 134 , quality: 100 }
-                197x142: { width: 197 , height: 142 , quality: 100 }
-                224x142: { width: 224 , height: 142 , quality: 100 }
-                265x167: { width: 265 , height: 167 , quality: 100 }
-                293x185: { width: 293 , height: 185 , quality: 100 }
-                363x229: { width: 363 , height: 229 , quality: 100 }
-                462x292: { width: 462 , height: 292 , quality: 100 }
-                573x362: { width: 573 , height: 362 , quality: 100 }
-                646x567: { width: 646 , height: 567 , quality: 100 }
-                975x616: { width: 975 , height: 616 , quality: 100 }
-                1218x769: { width: 1218 , height: 769 , quality: 100 }
-                1461x923: { width: 1461 , height: 923 , quality: 100 }
+
+                # Slider Home(TEMPORAIRE CAR NON DEFINI), audio fullscreen (TEMPORAIRE CAR NON DEFINI)
+                2560x1620: { width: 2560 , height: 1620 , quality: 100 }
+                # Diaporama photo
+                1760x1108: { width: 1760 , height: 1108 , quality: 100 }
+                # Miniatures diaporama photo
+                194x128: { width: 194 , height: 128 , quality: 100 }
+                # Les chaînes, autre chaînes (webtv)
+                586x370: { width: 586 , height: 370 , quality: 100 }
+                # Actualités à la une, Tous les articles
+                1144x724: { width: 1144 , height: 724 , quality: 100 }
+                # pre-footer homepage
+                1954x1200: { width: 1954 , height: 1200 , quality: 100 }
+                # Vidéo à la une, Toutes les photos, Toutes les vidéos, Chaînes festival
+                640x404: { width: 640 , height: 404 , quality: 100 }
+                # Pushs
+                650x410: { width: 650 , height: 410 , quality: 100 }
+                # Ma Selection
+                424x266: { width: 424 , height: 266 , quality: 100 }
+                # Image principale Actu
+                1950x1232: { width: 1950 , height: 1232 , quality: 100 }
+                # Diaporama photo
+                1266x798: { width: 1266 , height: 798 , quality: 100 }
+                # WebTv Tetiere, Channels Tetiere
+                1920x450: { width: 1920 , height: 450 , quality: 100 }
+                # Dernières vidéos (webtv)
+                463x292: { width: 463 , height: 292 , quality: 100 }
+                # srcset
                 1280x808: { width: 1280 , height: 808 , quality: 100 }
+                # Last videos channels
+                926x584: { width: 926 , height: 584 , quality: 100 }
+                # Articles focus
+                918x580: { width: 918 , height: 580 , quality: 100 }
+                # Articles le même jour
+                590x370: { width: 590 , height: 370 , quality: 100 }
+
+
+                ##### OLDS #####
+                197x142: { width: 197 , height: 142 , quality: 100 }
+                363x229: { width: 363 , height: 229 , quality: 100 }
+                646x567: { width: 646 , height: 567 , quality: 100 }
                 1980x300: { width: 1980 , height: 300 , quality: 100 }
 
         media_image_simple:
@@ -66,7 +92,7 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
-                212x134: { width: 293 , height: 185 , quality: 100 }
+                212x134: { width: 212 , height: 134 , quality: 100 }
 
         media_audio:
             providers:

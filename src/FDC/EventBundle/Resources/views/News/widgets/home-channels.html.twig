@@ -7,7 +7,7 @@
     {% if transImage is null or transImage.file is null %}
         {% set transImage = channel.image.findTranslationByLocale('fr') %}
     {% endif %}
-    <img src="{% path transImage.file, '212x134'%}" alt="" />
+    {% thumbnail transImage.file, '586x370' %}
 {% endif %}
 </div>
 <a class="linkVid" href="{{ path('fdc_event_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}"></a>

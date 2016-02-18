@@ -22,7 +22,7 @@
             <div class="main-image">
                 {% if page.image and page.image|trans_fallback('file') %}
                     <div class="img"
-                         style="background-image:url('{% path page.image|trans_fallback('file'), '1280x808' %}')"></div>
+                         style="background-image:url('{% path page.image|trans_fallback('file'), '1920x450' %}')"></div>
                 {% endif %}
                 <div class="trailer">
                     {% if videoUrl %}
@@ -61,22 +61,22 @@
                         <div class="image-wrapper">
                             {% if channel.image %}
                                 {% if channel.image|trans_fallback('file') %}
-                                    <img src="{% path channel.image|trans_fallback('file'), '975x616' %}"
-                                         srcset="{% path channel.image|trans_fallback('file'), '573x362' %} 1x, {% path channel.image|trans_fallback('file'), '1280x808' %} 2x"
+                                    <img src="{% path channel.image|trans_fallback('file'), '640x404' %}"
+                                         srcset="{% path channel.image|trans_fallback('file'), '640x404' %} 1x, {% path channel.image|trans_fallback('file'), '1280x808' %} 2x"
                                          alt="">
                                 {% else %}
-                                    <img src="{% path channel.image|trans_fallback('file', 'fr'), '975x616' %}"
-                                         srcset="{% path channel.image|trans_fallback('file', 'fr'), '573x362' %} 1x, {% path channel.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
+                                    <img src="{% path channel.image|trans_fallback('file', 'fr'), '640x404' %}"
+                                         srcset="{% path channel.image|trans_fallback('file', 'fr'), '640x404' %} 1x, {% path channel.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
                                          alt="">
                                 {% endif %}
                             {% elseif channel.mediaVideos|length and channel.mediaVideos|last.image %}{# If channel image does not exist #}
                                 {% if channel.mediaVideos|last.image|trans_fallback('file') %}
-                                    <img src="{% path channel.mediaVideos|last.image|trans_fallback('file'), '975x616' %}"
-                                         srcset="{% path channel.mediaVideos|last.image|trans_fallback('file'), '573x362' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file'), '1280x808' %} 2x"
+                                    <img src="{% path channel.mediaVideos|last.image|trans_fallback('file'), '640x404' %}"
+                                         srcset="{% path channel.mediaVideos|last.image|trans_fallback('file'), '640x404' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file'), '1280x808' %} 2x"
                                          alt="">
                                 {% else %}
-                                    <img src="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '975x616' %}"
-                                         srcset="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '573x362' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
+                                    <img src="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '640x404' %}"
+                                         srcset="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '640x404' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
                                          alt="">
                                 {% endif %}
                             {% endif %}
@@ -102,22 +102,22 @@
                         <div class="image-wrapper">
                             {% if channel.image %}
                                 {% if channel.image|trans_fallback('file') %}
-                                    <img src="{% path channel.image|trans_fallback('file'), '293x185' %}"
-                                         srcset="{% path channel.image|trans_fallback('file'), '293x185' %} 1x, {% path channel.image|trans_fallback('file'), '1280x808' %} 2x"
+                                    <img src="{% path channel.image|trans_fallback('file'), '586x370' %}"
+                                         srcset="{% path channel.image|trans_fallback('file'), '586x370' %} 1x, {% path channel.image|trans_fallback('file'), '1280x808' %} 2x"
                                          alt="">
                                 {% else %}
-                                    <img src="{% path channel.image|trans_fallback('file', 'fr'), '293x185' %}"
-                                         srcset="{% path channel.image|trans_fallback('file', 'fr'), '293x185' %} 1x, {% path channel.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
+                                    <img src="{% path channel.image|trans_fallback('file', 'fr'), '586x370' %}"
+                                         srcset="{% path channel.image|trans_fallback('file', 'fr'), '586x370' %} 1x, {% path channel.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
                                          alt="">
                                 {% endif %}
                             {% elseif channel.mediaVideos|length and channel.mediaVideos|last.image %}{# If channel image does not exist #}
                                 {% if channel.mediaVideos|last.image|trans_fallback('file') %}
-                                    <img src="{% path channel.mediaVideos|last.image|trans_fallback('file'), '293x185' %}"
-                                         srcset="{% path channel.mediaVideos|last.image|trans_fallback('file'), '293x185' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file'), '1280x808' %} 2x"
+                                    <img src="{% path channel.mediaVideos|last.image|trans_fallback('file'), '586x370' %}"
+                                         srcset="{% path channel.mediaVideos|last.image|trans_fallback('file'), '586x370' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file'), '1280x808' %} 2x"
                                          alt="">
                                 {% else %}
-                                    <img src="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '293x185' %}"
-                                         srcset="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '293x185' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
+                                    <img src="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '586x370' %}"
+                                         srcset="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '586x370' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
                                          alt="">
                                 {% endif %}
                             {% endif %}
@@ -164,9 +164,9 @@
                         data-file='[{"file":"./files/mov_bbb.webm"},{"file":"./files/mov_bbb.mp4"}]'
                         data-img="//dummyimage.com/960x540/000/c8a461.png">
                         {% if video.image|trans_fallback('file') %}
-                            <img src="{% path video.image|trans_fallback('file'), '462x292' %}" alt="">
+                            <img src="{% path video.image|trans_fallback('file'), '463x292' %}" alt="">
                         {% else %}
-                            <img src="{% path video.image|trans_fallback('file', 'fr'), '462x292' %}" alt="">
+                            <img src="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}" alt="">
                         {% endif %}
                     </div>
                 {% endfor %}
