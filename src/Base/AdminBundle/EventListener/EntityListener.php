@@ -2,6 +2,8 @@
 
 namespace Base\AdminBundle\EventListener;
 
+use Application\Sonata\MediaBundle\Entity\Media;
+use Application\Sonata\MediaBundle\Model\MediaInterface;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
@@ -136,6 +138,15 @@ class EntityListener
             $this->toTranslate = array();
             if ($mustPersist) {
                 $eventArgs->getEntityManager()->flush();
+            }
+        }
+    }
+
+    public function postUpdate(LifecycleEventArgs $eventArgs) {
+        $object =  $eventArgs->getObject();
+        if ($object instanceof Media) {
+            if ($object->getParentAudioTranslation() || $object->getParentVideoTranslation()) {
+                $this->flush = true;
             }
         }
     }
