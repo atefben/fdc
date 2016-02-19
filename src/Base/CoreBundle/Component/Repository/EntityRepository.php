@@ -60,15 +60,18 @@ class EntityRepository extends BaseRepository
      * @param $festival
      * @return QueryBuilder
      */
-    public function addMasterQueries($qb, $alias, $festival)
+    public function addMasterQueries($qb, $alias, $festival, $published = true)
     {
         $qb = $qb
             ->andWhere("{$alias}.festival = :festival")
-            ->andWhere("({$alias}.publishedAt IS NULL OR {$alias}.publishedAt <= :datetime)")
-            ->andWhere("({$alias}.publishEndedAt IS NULL OR {$alias}.publishEndedAt >= :datetime)")
+            ->setParameter('festival', $festival);
 
-            ->setParameter('festival', $festival)
-            ->setParameter('datetime', new DateTime());
+        if ($published) {
+            $qb = $qb
+                ->andWhere("({$alias}.publishedAt IS NULL OR {$alias}.publishedAt <= :datetime)")
+                ->andWhere("({$alias}.publishEndedAt IS NULL OR {$alias}.publishEndedAt >= :datetime)")
+                ->setParameter('datetime', new DateTime());
+        }
 
         return $qb;
     }
