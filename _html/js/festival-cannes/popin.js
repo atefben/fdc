@@ -121,8 +121,14 @@ $(document).ready(function() {
 
 });
 
+  function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+  }
+
   if(getCookie('comply_cookie') == 'comply_yes'){
-	  $("#cookies-banner")..hide();
+	  $("#cookies-banner").hide();
   }
   
   // cookie banner
@@ -134,12 +140,7 @@ $(document).ready(function() {
     $("#cookies-banner").slideUp("slow"); //jquery to slide it up
   });
 
-  function getCookie(name) {
-    var value = "; " + document.cookie;
-    var parts = value.split("; " + name + "=");
-    if (parts.length == 2) return parts.pop().split(";").shift();
-  }
-
+  
   //LINK POPIN//
   function linkPopinInit(){
     if($('.share').length || $('.square').length ){
