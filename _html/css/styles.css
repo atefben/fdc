@@ -8826,7 +8826,12 @@ header #searchContainer {
     margin-top: 14px;
     margin-left: 14px;
 }
-
+.article .picto .icon.icon_video {
+    font-size: 0.8rem;
+    margin-top: 16px;
+    margin-left: 16px;
+}
+	
 .video .picto {
   color: #c8a461;
 }
