@@ -13,12 +13,12 @@
         {{ widget|trans_fallback('label') }}
     </span>
     <div class="buttons">
-        <a href="#" class="mov extention button">
+        <a href="{% path widget.file, 'reference' %}" target="_blank" class="mov extention button">
             <i class="icon icon_telecharger"></i>
             {{ widget|trans_fallback('btnLabel') }}
         </a>
         {% if widget.secondFile is not null %}
-            <a href="#" class="gif extention button">
+            <a href="{% path widget.secondFile, 'reference' %}" target="_blank" class="gif extention button">
                 <i class="icon icon_telecharger"></i>
                 {{ widget|trans_fallback('secondBtnLabel') }}
             </a>
