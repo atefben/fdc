@@ -149,7 +149,7 @@ class NewsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
 
-        $isAdmin = false;
+        $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
         $dateTime = new DateTime();
 
         // GET FDC SETTINGS
