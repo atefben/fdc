@@ -10,19 +10,28 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class FilmProjectionAdmin extends Admin
 {
+
+    public function getBatchActions()
+    {
+        $actions = parent::getBatchActions();
+        unset($actions['show']);
+        unset($actions['edit']);
+        unset($actions['delete']);
+
+        return $actions;
+    }
     /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('startsAt')
-            ->add('endsAt')
+            ->add('id', null, array('label' => 'filter.common.label_id'))
             ->add('type')
             ->add('programmationSection')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('programmationFilms')
+            ->add('startsAt')
+            ->add('endsAt')
             ->add('soifUpdatedAt')
         ;
     }
@@ -33,15 +42,18 @@ class FilmProjectionAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('startsAt')
-            ->add('endsAt')
+            ->add('id', null, array('label' => 'list.common.label_id'))
             ->add('type')
             ->add('programmationSection')
             ->add('programmationFilms')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('soifUpdatedAt')
+            ->add('startsAt', null, array(
+                'template' => 'BaseAdminBundle:FilmProjection:list_start_at.html.twig',
+                'sortable' => 'startsAt',
+            ))
+            ->add('endsAt', null, array(
+                'template' => 'BaseAdminBundle:FilmProjection:list_ends_at.html.twig',
+                'sortable' => 'endsAt',
+            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),

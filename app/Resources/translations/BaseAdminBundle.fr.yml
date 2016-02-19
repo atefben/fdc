@@ -302,6 +302,7 @@ filter:
     label_created_before: Créé avant le
     label_created_after: Créé après le
     label_web_tv_name: Nom de la chaîne
+    label_programmation_films: Film
     media_image:
         label_created_before: Publié avant le
         label_created_after: Publié après le
