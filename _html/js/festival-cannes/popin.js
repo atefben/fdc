@@ -126,7 +126,7 @@ $(document).ready(function() {
     var parts = value.split("; " + name + "=");
     if (parts.length == 2) return parts.pop().split(";").shift();
   }
-
+ 
   if(getCookie('comply_cookie') == 'comply_yes'){
 	  $("#cookies-banner").hide();
   }
