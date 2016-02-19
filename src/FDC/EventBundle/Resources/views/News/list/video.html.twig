@@ -15,10 +15,10 @@
             {% if trans is null or trans.file is null %}
                 {% set trans = video.findTranslationByLocale('fr') %}
             {% endif %}
-            <div class="item {{ video.theme|trans_fallback('slug') }} {{ video|trans_fallback('createdAt')|date('d-m-y') }} shadow-bottom video">
-                <a id="video1" class="ajax chocolat-image" href="{% path trans.file , 'reference' %}"
-                   title='<span class="category">{{ video.theme|trans_fallback('slug') }}</span><span class="date">{{ video|trans_fallback('createdAt')|date('d.m.y') }}</span><h2>{{ video|trans_fallback('title') }}</h2>'
-                   data-credit=""></a>
+            <div class="item {{ video.theme|trans_fallback('slug') }} {{ video|trans_fallback('createdAt')|date('d-m-y') }} date theme shadow-bottom video"
+                data-vid="1"
+                data-file='[{"file":"./files/mov_bbb.webm"},{"file":"./files/mov_bbb.mp4"}]'
+                data-img="//dummyimage.com/960x540/000/c8a461.png">
                 {% if video.header is not null %}
                     {% set transImage = video.header.findTranslationByLocale(app.request.locale) %}
                     {% if transImage is null %}
@@ -32,9 +32,7 @@
                 {% endif %}
 
                 {% thumbnail transImage.file , '1144x724' with {'alt': video.image|trans_fallback('alt') } %}
-                <div class="picto">
-                    <i class="icon icon_video"></i>
-                </div>
+                <div class="picto"><i class="icon icon_video"></i></div>
                 <div class="info">
                     <div class="vCenter">
                         <div class="vCenterKid">
