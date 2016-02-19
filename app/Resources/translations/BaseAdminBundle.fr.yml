@@ -295,6 +295,7 @@ filter:
     label_updated_at: Mis à jour le
     label_name: Nom
     label_alt: Alt de l'image
+    label_format: Formats
     label_created_before: Créé avant le
     label_created_after: Créé après le
     label_web_tv_name: Nom de la chaîne
