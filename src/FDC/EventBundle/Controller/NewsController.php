@@ -175,7 +175,7 @@ class NewsController extends Controller {
 
         // TODO: clean this
 
-        $wallPosts              = array(
+        $wallPosts = array(
             array(
                 'big' => true
             ),
@@ -262,10 +262,9 @@ class NewsController extends Controller {
         $count = 6;
 
         $endOfArticles = false;
-
         $homeArticles = $em->getRepository('BaseCoreBundle:News')->getOlderNewsButSameDay($locale, $this->getFestival()->getId(), $dateTime , $count);
 
-        if(sizeof($homeArticles) < $count || $homeArticles == null){
+        if (sizeof($homeArticles) < $count || $homeArticles == null){
             $endOfArticles = true;
         }
 

@@ -229,10 +229,10 @@ class InfoRepository extends EntityRepo
                 ->leftjoin('nv.translations', 'na7t')
                 ->leftjoin('ni.translations', 'na8t')
                 ->andWhere(
-                    '(na5t.locale = :locale AND na1t.status = :status_translated) OR
-                    (na6t.locale = :locale AND na2t.status = :status_translated) OR
-                    (na7t.locale = :locale AND na3t.status = :status_translated) OR
-                    (na8t.locale = :locale AND na4t.status = :status_translated)'
+                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', InfoArticleTranslation::STATUS_TRANSLATED)
                 ->setParameter('locale', $locale);
