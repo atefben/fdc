@@ -167,6 +167,7 @@ class NewsRepository extends EntityRepository
     public function getOlderNewsButSameDay($locale,$festival,$dateTime,$count) {
 
         $dateTimeMax = $dateTime->format('Y-m-d') . ' 00:00:00';
+        $dateTime = $dateTime->format('Y-m-d') . ' 23:59:59';
 
         $qb = $this
             ->createQueryBuilder('n')
