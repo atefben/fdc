@@ -28,12 +28,12 @@ class MediaVideoTranslation implements TranslateChildInterface
     use Translation;
     use TranslateChild;
 
-    const ENCODING_STATE_PENDING = 0;
     const ENCODING_STATE_IN_PROGRESS = 1;
-    const ENCODING_STATE_READY = 2;
+    const ENCODING_STATE_ERROR = 2;
+    const ENCODING_STATE_READY = 3;
 
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
+     * @var \Application\Sonata\MediaBundle\Entity\Media
      *
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
@@ -110,8 +110,8 @@ class MediaVideoTranslation implements TranslateChildInterface
     public static function getEncodingStates()
     {
         return array(
-            self::ENCODING_STATE_PENDING => 'form.encoding_state.pending',
             self::ENCODING_STATE_IN_PROGRESS => 'form.encoding_state.in_progress',
+            self::ENCODING_STATE_ERROR => 'form.encoding_state.error',
             self::ENCODING_STATE_READY => 'form.encoding_state.ready',
         );
     }
