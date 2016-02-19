@@ -279,7 +279,7 @@ class NewsController extends Controller {
 
         return array(
             'endOfArticles' => $endOfArticles,
-            'homeArticles' => $homeArticles;
+            'homeArticles' => $homeArticles,
             'homeArticlesNext' => $homeArticlesNext
         );
     }
