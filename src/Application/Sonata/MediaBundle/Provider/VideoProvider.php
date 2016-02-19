@@ -19,15 +19,19 @@ class VideoProvider extends FileProvider
 
     public function generateThumbnails(MediaInterface $media)
     {
+		// problem mime-type MOV
+		//error_log(print_r($media->getBinaryContent(),true));
+		error_log(print_r($media->getClientOriginalName(),true));
+		
+		error_log(print_r(substr($media->getClientOriginalName(), -3),true));
+		
 		$path = $this->generatePublicUrl($media, $media->getProviderReference());
 		$file_path = explode('/', $path);
 		$path_video_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 		$path_video_output = 'media_video_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 		
 		
-		// problem mime-type MOV
-		error_log(print_r($media->getBinaryContent(),true));
-		error_log(print_r($media->getBinaryContent()->getMimeType(),true));
+
 		//mime_content_type('php.gif');
 		
 		$elasticTranscoder = ElasticTranscoderClient::factory(array(
