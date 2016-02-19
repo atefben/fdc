@@ -214,7 +214,6 @@ class NewsRepository extends EntityRepository
             ->orderBy('n.publishedAt', 'DESC')
             ->setMaxResults($count)
             ->setParameter('festival', $festival)
-            ->setParameter('locale', $locale)
             ->setParameter('datetime', $dateTime)
             ->setParameter('datetime_max', $dateTimeMax)
             ->setParameter('site_slug', 'site-evenementiel');

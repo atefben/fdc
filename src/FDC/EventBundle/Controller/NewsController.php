@@ -160,8 +160,6 @@ class NewsController extends Controller {
         $dateArticleSlide = new DateTime();
         $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $dateArticleSlide);
 
-        var_dump(count($homeArticlesSlider));
-
           ////////////////////////////////////////////////////////////////////////////////////
          /////////////////////////       WEBTV        ///////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////
