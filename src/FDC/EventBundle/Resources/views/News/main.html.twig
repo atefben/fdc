@@ -117,8 +117,11 @@
 										<p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
 									{% else %}
 											<p class="director">
-											{% for director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-											<a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>,
+											{% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+												{%if index < 4 %}
+												<a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>,
+												{% endif %}
+												{%if index == 4 %}...{% endif; %}
 											{% endfor %}
 											</p>
 									{% endif %}
