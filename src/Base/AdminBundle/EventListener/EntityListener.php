@@ -150,4 +150,14 @@ class EntityListener
             }
         }
     }
+
+    public function postPersist(LifecycleEventArgs $eventArgs)
+    {
+        $object =  $eventArgs->getObject();
+        if ($object instanceof Media) {
+            if ($object->getParentAudioTranslation() || $object->getParentVideoTranslation()) {
+                $this->flush = true;
+            }
+        }
+    }
 }

@@ -99,7 +99,7 @@ class VideoProvider extends FileProvider
             $parentVideo->setJobWebmState(1);
 			
         } elseif (isset($parentAudio)) {
-			
+			error_log(print_r($media->getProviderReference(), true));
             $file_name = $media->getProviderReference();
 	        $path = $this->generatePublicUrl($media, $media->getProviderReference());
 			error_log($file_name);
@@ -122,8 +122,8 @@ class VideoProvider extends FileProvider
 	                ),
 	            ),
 	        ));
-            $parentVideo->setJobMp3Id($job->get('Job')['Id']);
-           	$parentVideo->setJobMp3State(1);
+            $parentAudio->setJobMp3Id($job->get('Job')['Id']);
+           	$parentAudio->setJobMp3State(1);
         }
 
     }
