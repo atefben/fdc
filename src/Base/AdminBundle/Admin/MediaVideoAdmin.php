@@ -52,7 +52,6 @@ class MediaVideoAdmin extends Admin
             ->add('webTv', null, array(
                 'label' => 'filter.media_video.label_web_tv',
             ))
-
         ;
 
         $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
