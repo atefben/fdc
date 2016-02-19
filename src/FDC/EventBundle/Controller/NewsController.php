@@ -398,7 +398,7 @@ class NewsController extends Controller {
         $dateTime = new DateTime();
 
         $em     = $this->getDoctrine()->getManager();
-        $locale = $this->getRequest()->getLocale();
+        $locale = $request->getLocale();
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -432,9 +432,8 @@ class NewsController extends Controller {
 
                 //check if filters don't already exist
                 $date = $newsArticle->getPublishedAt();
-                if (!in_array($date->format('d-m-Y'), $filters['dateFormated'])) {
-                    $filters['dates'][] = ($date != null) ? $date : null;
-                    $filters['dateFormated'][] = $date->format('d-m-Y');
+                if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
+                    $filters['dates'][$date->format('y-m-d')] = $date;
                 }
 
                 if (!in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
@@ -453,6 +452,9 @@ class NewsController extends Controller {
     }
 
     /**
+     * @param Request $request
+     * @return array
+     *
      * @Route("/photos")
      * @Template("FDCEventBundle:News/list:photo.html.twig")
      */
@@ -462,7 +464,7 @@ class NewsController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
         $dateTime = new DateTime();
-        $locale = $this->getRequest()->getLocale();
+        $locale = $request->getLocale();
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -471,7 +473,9 @@ class NewsController extends Controller {
         }
 
         //GET ALL MEDIA PHOTOS
-        $photos = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $settings->getFestival()->getId(), $dateTime);
+        $photos = $em
+            ->getRepository('BaseCoreBundle:Media')
+            ->getImageMedia($locale, $settings->getFestival()->getId(), $dateTime);
 
         //set default filters
         $filters                         = array();
@@ -489,9 +493,8 @@ class NewsController extends Controller {
 
             //check if filters don't already exist
             $date = $photo->getPublishedAt();
-            if (!in_array($date->format('d-m-Y'), $filters['dateFormated'])) {
-                $filters['dates'][] = ($date != null) ? $date : null;
-                $filters['dateFormated'][] = $date->format('d-m-Y');
+            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
+                $filters['dates'][$date->format('y-m-d')] = $date;
             }
 
             if (!in_array($photo->getTheme()->getId(), $filters['themes']['id'])) {
@@ -541,9 +544,9 @@ class NewsController extends Controller {
             }
 
             //check if filters don't already exist
-            if (!in_array($video->getPublishedAt(), $filters['dates'])) {
-                $date               = $video->getPublishedAt();
-                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+            $date = $video->getPublishedAt();
+            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
+                $filters['dates'][$date->format('y-m-d')] = $date;
             }
 
             if (!in_array($video->getTheme()->getName(), $filters['themes']['content'])) {
@@ -594,9 +597,9 @@ class NewsController extends Controller {
             }
 
             //check if filters don't already exist
-            if (!in_array($audio->getPublishedAt(), $filters['dates'])) {
-                $date = $audio->getPublishedAt();
-                $filters['dates'][] = ($date != null) ? $date->format('Y-m-d H:i:s') : null;
+            $date = $audio->getPublishedAt();
+            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
+                $filters['dates'][$date->format('y-m-d')] = $date;
             }
 
             if (!in_array($audio->getTheme()->getName(), $filters['themes']['content'])) {
@@ -608,7 +611,7 @@ class NewsController extends Controller {
 
         return array(
             'audios' => $audios,
-            'filters' => $filters
+            'filters' => $filters,
         );
     }
 

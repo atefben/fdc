@@ -1151,6 +1151,12 @@ $(document).ready(function() {
         });
       }, 2000);
     });
+	
+	//thomon 30/11/2015 - add popin on mail button
+	$('.button.email').on('click', function(e) {
+	  
+	}
+	
   }
 
   // 16. Selection

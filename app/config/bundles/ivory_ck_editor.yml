@@ -36,6 +36,9 @@ ivory_ck_editor:
                 - ['Styles']
                 - ['Image']
                 - ['Maximize', 'ShowBlocks']
+            contentsCss: /bundles/baseadmin/css/ckeditor.css	
+            stylesSet: 
+                -    { name: 'Bordure dorée', element: 'div', attributes: { 'class': 'big-quote' } }
             filebrowserBrowseRoute: admin_sonata_media_media_browser
             filebrowserImageBrowseRoute: admin_sonata_media_media_browser
             # Display images by default when clicking the image dialog browse button

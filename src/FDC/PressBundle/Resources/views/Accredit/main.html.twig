@@ -3,8 +3,12 @@
 
 {% block body %}
     <div id="main" class="press loading accreditation {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
-    {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
-    <div id="accreditation">
+
+        {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
+
+        {{ render(controller('FDCPressBundle:Security:login')) }}
+
+        <div id="accreditation">
         <div class="wrapper">
             <div class="container-small">
                 <h3>{{ accredit|trans_fallback('commonTitle') }}</h3>

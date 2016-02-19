@@ -15,8 +15,7 @@
                 </div>
             </div>
 
-            <form action="{{ path("fdc_press_security_check") }}" method="post" id="lockedForm">
-
+            <form action="{{ path("fdc_press_security_check") }}" method="post" id="lockedForm" {% if error %}class="error"{% endif %}>
                 <input type="hidden" id="username" name="_username" value="press" required="required" />
 
                 <input type="password" id="password" name="_password" required="required" placeholder="{{ 'press.header.placeholder.motdepasse'|trans }}"/>

@@ -2,37 +2,49 @@
 
 <div id="popin-download-press" class='popin'>
     <div class="container-popin">
+        <div class="contain-info-item">
+            {% thumbnail film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first, 'tiny' %}
+            <div class="contain-text vCenter">
+                <div class="vCenterKid">
+                    <h3> {{ film|trans_fallback('title') }} </h3>
+                    {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                        <span class="name">{{ director.fullName }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% set countVideo = 0 %}
 
-        {#<div class="contain-info-item">#}
-            {#<img src="{{ pressMovieDownloads.movie.image.path }}" alt="image">#}
-            {#<div class="contain-text vCenter">#}
-                {#<div class="vCenterKid">#}
-                    {#<h3>{{ pressMovieDownloads.movie.title }}</h3>#}
-                    {#<span class="name">{{ pressMovieDownloads.movie.author.fullName }}</span>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-        {#<h4>{{ 'press.popin.title.bandeannonces'|trans }}({{ pressMovieDownloads.movie.trailers|length }})</h4>#}
-        {#<p>#}
-        {#{{ pressMovieDownloads.description }}#}
-        {#</p>#}
-        {#<table>#}
-            {#<tbody>#}
-            {#{% for trailer in pressMovieDownloads.movie.trailers %}#}
-                {#<tr>#}
-                    {#<td>{{ trailer.title }}</td>#}
-                    {#<td>{{ trailer.description }}</td>#}
-                    {#<td>#}
-                        {#<a href="{{ trailer.path }}" class="button">#}
-                            {#{% image '@FDCEventBundle/Resources/public/img/press/svg/telecharger.svg' %}#}
-                            {#<img src="{{ asset_url }}" class='svg' alt="{{ 'press.popin.btn.telecharger'|trans }}" />#}
-                            {#{% endimage %}#}
-                            {#{{ 'press.popin.btn.telecharger'|trans }}#}
-                        {#</a>#}
-                    {#</td>#}
-                {#</tr>#}
-            {#{% endfor %}#}
-            {#</tbody>#}
-        {#</table>#}
+        {% for video in film.associatedMediaVideos %}
+            {% if video.mediaVideo.displayedTrailer == 1 %}
+                {% set countVideo = countVideo + 1 %}
+            {% endif %}
+        {% endfor %}
+        <h4>{{ 'press.popin.title.bandeannonces'|trans }}({{ countVideo }})</h4>
+        <p>
+            {{ 'press.popin.description.lefestivaldecannesmetadisposition'|trans|raw }}
+        </p>
+        <strong>
+            {{ 'press.popin.description.chaquefoisquepossiblelesfichiers'|trans|raw }}
+        </strong>
+        <table>
+            <tbody>
+            {% for m in film.associatedMediaVideos %}
+                {% if m.mediaVideo.displayedTrailer == 1 %}
+                    {% set trans = m.mediaVideo.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = m.mediaVideo.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <tr>
+                        <td>{{ trans.title }}</td>
+                        <td>{{ trans.file.description }}</td>
+                        <td>
+                            <a href="{% path trans.file, 'reference'%}" class="button" target="_blank" download><i class="icon icon_telecharger"></i>{{ 'press.popin.btn.telecharger'|trans }}</a>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>

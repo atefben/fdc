@@ -41,6 +41,10 @@ class Media extends SonataBaseMedia
 
     protected $pressGuideWidgetAudios;
 
+    protected $parentVideoTranslation;
+
+    protected $parentAudioTranslation;
+
     public function __construct()
     {
         $this->enabled = true;
@@ -64,5 +68,130 @@ class Media extends SonataBaseMedia
     public function getSoifId()
     {
         return $this->soifId;
+    }
+
+    /**
+     * Set parentVideoTranslation
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideoTranslation $parentVideoTranslation
+     * @return Media
+     */
+    public function setParentVideoTranslation(\Base\CoreBundle\Entity\MediaVideoTranslation $parentVideoTranslation = null)
+    {
+        $this->parentVideoTranslation = $parentVideoTranslation;
+
+        return $this;
+    }
+
+    /**
+     * Get parentVideoTranslation
+     *
+     * @return \Base\CoreBundle\Entity\MediaVideoTranslation 
+     */
+    public function getParentVideoTranslation()
+    {
+        return $this->parentVideoTranslation;
+    }
+
+    /**
+     * Set parentAudioTranslation
+     *
+     * @param \Base\CoreBundle\Entity\MediaAudioTranslation $parentAudioTranslation
+     * @return Media
+     */
+    public function setParentAudioTranslation(\Base\CoreBundle\Entity\MediaAudioTranslation $parentAudioTranslation = null)
+    {
+        $this->parentAudioTranslation = $parentAudioTranslation;
+
+        return $this;
+    }
+
+    /**
+     * Get parentAudioTranslation
+     *
+     * @return \Base\CoreBundle\Entity\MediaAudioTranslation 
+     */
+    public function getParentAudioTranslation()
+    {
+        return $this->parentAudioTranslation;
+    }
+
+    /**
+     * Set projectionMedias
+     *
+     * @param \Base\CoreBundle\Entity\FilmProjectionMedia $projectionMedias
+     * @return Media
+     */
+    public function setProjectionMedias(\Base\CoreBundle\Entity\FilmProjectionMedia $projectionMedias = null)
+    {
+        $this->projectionMedias = $projectionMedias;
+
+        return $this;
+    }
+
+    /**
+     * Get projectionMedias
+     *
+     * @return \Base\CoreBundle\Entity\FilmProjectionMedia 
+     */
+    public function getProjectionMedias()
+    {
+        return $this->projectionMedias;
+    }
+
+    /**
+     * Add filmMedias
+     *
+     * @param \Base\CoreBundle\Entity\FilmMedia $filmMedias
+     * @return Media
+     */
+    public function addFilmMedia(\Base\CoreBundle\Entity\FilmMedia $filmMedias)
+    {
+        $this->filmMedias[] = $filmMedias;
+
+        return $this;
+    }
+
+    /**
+     * Remove filmMedias
+     *
+     * @param \Base\CoreBundle\Entity\FilmMedia $filmMedias
+     */
+    public function removeFilmMedia(\Base\CoreBundle\Entity\FilmMedia $filmMedias)
+    {
+        $this->filmMedias->removeElement($filmMedias);
+    }
+
+    /**
+     * Get filmMedias
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFilmMedias()
+    {
+        return $this->filmMedias;
+    }
+
+    /**
+     * Add galleryHasMedias
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\GalleryHasMedia $galleryHasMedias
+     * @return Media
+     */
+    public function addGalleryHasMedia(\Application\Sonata\MediaBundle\Entity\GalleryHasMedia $galleryHasMedias)
+    {
+        $this->galleryHasMedias[] = $galleryHasMedias;
+
+        return $this;
+    }
+
+    /**
+     * Remove galleryHasMedias
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\GalleryHasMedia $galleryHasMedias
+     */
+    public function removeGalleryHasMedia(\Application\Sonata\MediaBundle\Entity\GalleryHasMedia $galleryHasMedias)
+    {
+        $this->galleryHasMedias->removeElement($galleryHasMedias);
     }
 }

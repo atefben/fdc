@@ -26,6 +26,10 @@ class MediaAudioTranslation implements TranslateChildInterface
     use Translation;
     use TranslateChild;
 
+    const ENCODING_STATE_IN_PROGRESS = 1;
+    const ENCODING_STATE_ERROR = 2;
+    const ENCODING_STATE_READY = 3;
+
     /**
      * @var string
      *
@@ -35,9 +39,25 @@ class MediaAudioTranslation implements TranslateChildInterface
     private $title;
 
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
+     * @var integer
      *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     * @ORM\Column(type="integer", nullable=true, options={"default":0})
+     */
+    private $jobMp3State;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $jobMp3Id;
+
+
+    /**
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     *
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="parentAudioTranslation", cascade={"persist"})
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      * @Assert\Valid()
      */
@@ -74,6 +94,7 @@ class MediaAudioTranslation implements TranslateChildInterface
      */
     public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
     {
+        $file->setParentAudioTranslation($this);
         $this->file = $file;
 
         return $this;
@@ -87,5 +108,51 @@ class MediaAudioTranslation implements TranslateChildInterface
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Set jobMp3State
+     *
+     * @param integer $jobMp3State
+     * @return MediaAudioTranslation
+     */
+    public function setJobMp3State($jobMp3State)
+    {
+        $this->jobMp3State = $jobMp3State;
+
+        return $this;
+    }
+
+    /**
+     * Get jobMp3State
+     *
+     * @return integer 
+     */
+    public function getJobMp3State()
+    {
+        return $this->jobMp3State;
+    }
+
+    /**
+     * Set jobMp3Id
+     *
+     * @param string $jobMp3Id
+     * @return MediaAudioTranslation
+     */
+    public function setJobMp3Id($jobMp3Id)
+    {
+        $this->jobMp3Id = $jobMp3Id;
+
+        return $this;
+    }
+
+    /**
+     * Get jobMp3Id
+     *
+     * @return string 
+     */
+    public function getJobMp3Id()
+    {
+        return $this->jobMp3Id;
     }
 }

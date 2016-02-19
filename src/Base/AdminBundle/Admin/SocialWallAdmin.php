@@ -46,7 +46,10 @@ class SocialWallAdmin extends Admin
             ->add('message')
             ->add('enabledMobile', null, array('editable' => true))
             ->add('enabledDesktop', null, array('editable' => true))
-            ->add('createdAt')
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
         ;
     }
 

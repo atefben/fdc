@@ -231,7 +231,7 @@ list:
         label_id: Id
         label_title_video: Titre de la vidéo
         label_web_tv: Chaîne
-        label_encoding_state: Encodage (en attente, en cours, prêt)
+        label_encoding_state: Encodage
     media_audio:
         label_published_at: Publié le
     media_image_simple:
@@ -295,6 +295,7 @@ filter:
     label_updated_at: Mis à jour le
     label_name: Nom
     label_alt: Alt de l'image
+    label_format: Formats
     label_created_before: Créé avant le
     label_created_after: Créé après le
     label_web_tv_name: Nom de la chaîne
@@ -520,8 +521,8 @@ form:
     gallery:
         medias: Médias
     encoding_state:
-        pending: En attente
         in_progress: En cours
+        error: Erreur
         ready: Prêt
 
     web_tv:

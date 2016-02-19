@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-02-16T11:28:47Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-02-19T17:12:57Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -121,17 +121,6 @@
         <source>article.text.redigepar</source>
         <target>Rédigé par</target>
         <jms:reference-file line="98">views/News/main.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="af63d468a5dcb56eb0cf9079f9fb0bc93c4721fa" resname="download.btn.touttelecharger">
-        <source>download.btn.touttelecharger</source>
-        <target>Tout télécharger</target>
-        <jms:reference-file line="66">views/Media/download.html.twig</jms:reference-file>
-        <jms:reference-file line="102">views/Media/download.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="5010298559d8f4fb79a02c661cce4864e212227f" resname="download.label.misajour">
-        <source>download.label.misajour</source>
-        <target>Mis à jour</target>
-        <jms:reference-file line="144">views/Media/download.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="8cafb740b250f3f28bdfd4e95d40f9fbb49d204c" resname="footer.nav.boutique">
         <source>footer.nav.boutique</source>
@@ -330,7 +319,7 @@
       <trans-unit id="bccc76a262881732f90f9ad48758f21f0707e408" resname="mediatheque.btn.touttelecharger">
         <source>mediatheque.btn.touttelecharger</source>
         <target>Tout télécharger</target>
-        <jms:reference-file line="105">Media/components/content.html.twig</jms:reference-file>
+        <jms:reference-file line="106">Media/components/content.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="38f8b9752c2b9268fc75934aff5eb497946f3119" resname="mediatheque.label.bandesannonces">
         <source>mediatheque.label.bandesannonces</source>
@@ -466,12 +455,12 @@
       <trans-unit id="f76f7698722ac9871589957bbfbcdfd019738732" resname="press.agenda.title.communiqueetinfos">
         <source>press.agenda.title.communiqueetinfos</source>
         <target>Communiqués et infos</target>
-        <jms:reference-file line="25">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="21">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="0a4b951f16b43de276a696a9f288e5d1d23dfa68" resname="press.header.btn.valider">
         <source>press.header.btn.valider</source>
         <target>Valider</target>
-        <jms:reference-file line="25">views/Security/login.html.twig</jms:reference-file>
+        <jms:reference-file line="23">views/Security/login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ab53172e7b907fc337196faf1e7323c39541ceb5" resname="press.header.label.espacepresse">
         <source>press.header.label.espacepresse</source>
@@ -484,28 +473,28 @@
       <trans-unit id="1c634e14b934e8ae584d93217e15998f3c89be32" resname="press.header.placeholder.motdepasse">
         <source>press.header.placeholder.motdepasse</source>
         <target>Mot de passe</target>
-        <jms:reference-file line="23">views/Security/login.html.twig</jms:reference-file>
+        <jms:reference-file line="21">views/Security/login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d908a7b300b9113e98e70b2a1bcbdb965852c336" resname="press.header.text.journalistesveuillezsaisirvotremotdepasse">
         <source>press.header.text.journalistesveuillezsaisirvotremotdepasse</source>
         <target>Journalistes, veuillez saisir votre mot de passe pour déverrouiller les contenus qui vous sont réservés.</target>
-        <jms:reference-file line="12">views/Security/login.html.twig</jms:reference-file>
+        <jms:reference-file line="11">views/Security/login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4c5b52781adcb1e05cc680995c582525c335ada1" resname="press.header.title.contenusverouilles">
         <source>press.header.title.contenusverouilles</source>
         <target>Contenus verouillés</target>
-        <jms:reference-file line="10">views/Security/login.html.twig</jms:reference-file>
+        <jms:reference-file line="9">views/Security/login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a5be64ac59f0b7a885b59f53ed9c2c70fb031869" resname="press.home.btn.acceder">
         <source>press.home.btn.acceder</source>
         <target>Accéder</target>
-        <jms:reference-file line="198">views/News/home.html.twig</jms:reference-file>
-        <jms:reference-file line="219">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="194">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="215">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3287b10e9a23196cfe8b8a4f64da16465bc20097" resname="press.home.btn.decouvrir">
         <source>press.home.btn.decouvrir</source>
         <target>Découvrir</target>
-        <jms:reference-file line="143">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="139">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="56da8d501887829455928e0e3c8142d41cefb101" resname="press.home.btn.ok">
         <source>press.home.btn.ok</source>
@@ -515,22 +504,22 @@
       <trans-unit id="14542da64830194a68691561aa1018e1bd4e165d" resname="press.home.btn.touslescommuniquesetinfos">
         <source>press.home.btn.touslescommuniquesetinfos</source>
         <target>Tous les communiqués et infos</target>
-        <jms:reference-file line="29">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="25">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="de5f6b32fb4e405152c07e4cc8098385e8f65a1f" resname="press.home.btn.touslestelechargements">
         <source>press.home.btn.touslestelechargements</source>
         <target>Tous les téléchargements</target>
-        <jms:reference-file line="159">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="155">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="dcb195ac2e94063296107723ba1b31a8a348f508" resname="press.home.btn.toutelamediatheque">
         <source>press.home.btn.toutelamediatheque</source>
         <target>Toute la médiathèque</target>
-        <jms:reference-file line="98">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="94">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="cb3c4f5316a265164480aca887339d158a7fa960" resname="press.home.btn.toutelaprogrammation">
         <source>press.home.btn.toutelaprogrammation</source>
         <target>Toute la programmation</target>
-        <jms:reference-file line="53">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="49">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1682154734b90073f470776e201ff7d35f2707b7" resname="press.home.btn.toutmonagenda">
         <source>press.home.btn.toutmonagenda</source>
@@ -541,12 +530,12 @@
       <trans-unit id="e812ead6530e820a105e17fb329560fcb4042e08" resname="press.home.btn.touttelecharger">
         <source>press.home.btn.touttelecharger</source>
         <target>Tout télécharger</target>
-        <jms:reference-file line="5">Media/widgets/photo.html.twig</jms:reference-file>
+        <jms:reference-file line="8">Media/widgets/photo.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f81e7f8e04f96a9eeb6eadaa5118988f07e2779c" resname="press.home.label.bandeannonces">
         <source>press.home.label.bandeannonces</source>
         <target>Bandes annonces</target>
-        <jms:reference-file line="137">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="133">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="40644e5c8b261ccfd438d5e32af45bbd2d84f6aa" resname="press.home.label.cliquezdeposez">
         <source>press.home.label.cliquezdeposez</source>
@@ -556,17 +545,17 @@
       <trans-unit id="b20f8b3212e01a52122eb036a48fc66aad9df86a" resname="press.home.label.dossiersdepresse">
         <source>press.home.label.dossiersdepresse</source>
         <target>Dossiers de presse</target>
-        <jms:reference-file line="134">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="130">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="2396d1b0cc9a996e77873548364ee33654530e3e" resname="press.home.label.miseajourle">
         <source>press.home.label.miseajourle</source>
         <target>Mis à jour le</target>
-        <jms:reference-file line="10">Media/widgets/file.html.twig</jms:reference-file>
+        <jms:reference-file line="21">Media/widgets/file.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9bd0feda78d9291033240566b1003cb8e797c5ec" resname="press.home.label.photos">
         <source>press.home.label.photos</source>
         <target>Photos</target>
-        <jms:reference-file line="140">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="136">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6554e8cdf93a16f853e4911710468b4c525c2b1c" resname="press.home.salle.grandtheatrelumière">
         <source>press.home.salle.grandtheatrelumière</source>
@@ -607,12 +596,12 @@
       <trans-unit id="c86fd3a4351ed338322b92a28fc665a5dad45437" resname="press.home.title.atelecharger">
         <source>press.home.title.atelecharger</source>
         <target>à télécharger</target>
-        <jms:reference-file line="155">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="151">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6209cfe00977c6790aea1183b70407f99983f3ca" resname="press.home.title.mediatheque">
         <source>press.home.title.mediatheque</source>
         <target>Médiathèque</target>
-        <jms:reference-file line="94">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="90">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3e2be2a73f132716df63a9b124f423c8bd341453" resname="press.home.title.monagenda">
         <source>press.home.title.monagenda</source>
@@ -627,12 +616,32 @@
       <trans-unit id="c5e52f80cf169e815a044ac01969ac4ed882c78b" resname="press.home.title.programmedu">
         <source>press.home.title.programmedu</source>
         <target>Programme du</target>
-        <jms:reference-file line="47">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="43">views/News/home.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6051a9ca23f45057ebf9154bb189e2bdc6377ebd" resname="press.popin.btn.telecharger">
+        <source>press.popin.btn.telecharger</source>
+        <target>Télécharger</target>
+        <jms:reference-file line="42">Global/components/popinDownload.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="99bf23e18e72d5d194cbea350fc019853d9b6131" resname="press.popin.description.chaquefoisquepossiblelesfichiers">
+        <source>press.popin.description.chaquefoisquepossiblelesfichiers</source>
+        <target>Chaque fois que possible, les fichiers mis à disposition seront en HD 1080p. Le Festival reste tributaire de la qualité du matériel qui lui est adressé. 1 à 3 fichiers sont mis à disposition en fonction du fichier source reçu :</target>
+        <jms:reference-file line="28">Global/components/popinDownload.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="00349e4e63fe65bdbeddf1435cb791a497b7f571" resname="press.popin.description.lefestivaldecannesmetadisposition">
+        <source>press.popin.description.lefestivaldecannesmetadisposition</source>
+        <target>Le Festival de Cannes met à disposition de la presse accréditée les bandes-annonces et extraits de films fournis par les productions. Ces contenus sont mis à jour tout au long du Festival. Ce service est fourni pour faciliter le traitement des films sur vos propres médias. Nous vous prions instamment de ne pas les publier sur les réseaux sociaux ou les portails de partage de type Youtube ou Dailymotion sans l’accord des ayants-droits du film.</target>
+        <jms:reference-file line="25">Global/components/popinDownload.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4da284e5cc19116e4ceda67923ea9cfed2f7a492" resname="press.popin.text.cecontenuestexclusivementreservealapresse">
         <source>press.popin.text.cecontenuestexclusivementreservealapresse</source>
-        <target>Ce contenu est réservé exclusivement à la presse</target>
+        <target>Ce contenu est exclusivement réservé à la presse, veuillez renseigner votre mot de passe.</target>
         <jms:reference-file line="6">Global/components/popinPress.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="939882e45933da6499eac7f915b6029cb7a921b1" resname="press.popin.title.bandeannonces">
+        <source>press.popin.title.bandeannonces</source>
+        <target>Bandes annonces</target>
+        <jms:reference-file line="23">Global/components/popinDownload.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="21162cc41c525cbc6d333c5c6f1e69fa30499613" resname="press.popin.title.contenuverouille">
         <source>press.popin.title.contenuverouille</source>

@@ -2,90 +2,101 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-<div id="main" class="all-photos grid loading">
-    <h2 class="title">{{ 'article.photos.title.touslesaudios'|trans }}</h2>
+    <div id="main" class="all-photos grid loading">
+        <h2 class="title">{{ 'article.photos.title.touslesaudios'|trans }}</h2>
 
-    {% include 'FDCEventBundle:News:components/filters.html.twig' %}
+        {% include 'FDCEventBundle:News:components/filters.html.twig' %}
 
-    <div id="gridAudios" class="grid-wrapper" data-type="audios">
-        <div class="grid-sizer"></div>
-        {% for audio in audios %}
-            {% set trans = audio.findTranslationByLocale(app.request.locale) %}
-            {% if trans is null %}
-                {% set trans = audio.findTranslationByLocale('fr') %}
-            {% endif %}
-            <div class="item {{ audio.theme|trans_fallback('slug') }} {{ audio|trans_fallback('createdAt')|date('d-m-y') }} shadow-bottom audio" data-sound="{% path trans.file , 'reference'%}">
+        <div id="gridAudios" class="grid-wrapper" data-type="audios">
+            <div class="grid-sizer"></div>
+            {% for audio in audios %}
+                {% set trans = audio.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null %}
+                    {% set trans = audio.findTranslationByLocale('fr') %}
+                {% endif %}
                 {% if audio.header is not null %}
                     {% set transImage = audio.header.findTranslationByLocale(app.request.locale) %}
                     {% if transImage is null %}
                         {% set transImage = audio.header.findTranslationByLocale('fr') %}
                     {% endif %}
-                {% else %}
+                {% elseif audio.image %}
                     {% set transImage = audio.image.findTranslationByLocale(app.request.locale) %}
                     {% if transImage is null %}
                         {% set transImage = audio.image.findTranslationByLocale('fr') %}
                     {% endif %}
                 {% endif %}
-                <img src="{% path transImage.file , '1144x724' %}" srcset="{% path transImage.file , '640x404' %} 1x, {% path transImage.file , '2560x1620' %} 2x" alt="">
-                <div class="picto">
-                    <i class="icon icon_audio"></i>
-                </div>
-                <div class="info">
-                    <div class="vCenter">
-                        <div class="vCenterKid">
-                            <a href="#" class="category">{{ audio.theme|trans_fallback('name') }}</a><span class="date">{{ audio|trans_fallback('createdAt')|date('d.m.y') }}</span>
-                            <p>{{ audio|trans_fallback('title') }}</p>
+                {% if transImage is defined %}
+                    <div class="item {{ audio.theme|trans_fallback('slug') }} {{ audio.publishedAt|date('d-m-y') }} shadow-bottom audio"
+                         data-sound="{% path trans.file , 'reference' %}">
+                        <img src="{% path transImage.file , '1144x724' %}"
+                             srcset="{% path transImage.file , '640x404' %} 1x, {% path transImage.file , '2560x1620' %} 2x"
+                             alt="">
+
+                        <div class="picto">
+                            <i class="icon icon_audio"></i>
+                        </div>
+                        <div class="info">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <a href="#" class="category">{{ audio.theme|trans_fallback('name') }}</a><span
+                                            class="date">{{ audio.publishedAt|date('d.m.y') }}</span>
+                                    <p>{{ audio|trans_fallback('title') }}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="popin-audio audio loading" data-sound="">
+            <div class="image-container">
+                <div class="image"></div>
+            </div>
+            <a href="#" class="playpause"></a>
+            <div class="on">
+                <div class="vCenter">
+                    <div class="vCenterKid">
+                        <div class="duration">
+                            <span class="curr">0:00</span>/<span class="total">0:00</span>
+                        </div>
+                        <div class="wave-container"></div>
+                        <div class="volume">
+                            <span></span>
+                        </div>
+                        <a href="#" class="fullscreen"></a>
+                    </div>
                 </div>
             </div>
-        {% endfor %}
-        </div>
-    <div class="popin-audio audio loading" data-sound="">
-        <div class="image-container"><div class="image"></div></div>
-        <a href="#" class="playpause"></a>
-        <div class="on">
-            <div class="vCenter">
-                <div class="vCenterKid">
-                    <div class="duration">
-                        <span class="curr">0:00</span>/<span class="total">0:00</span>
-                    </div>
-                    <div class="wave-container"></div>
-                    <div class="volume">
-                        <span></span>
-                    </div>
-                    <a href="#" class="fullscreen"></a>
-                </div>
+            <div class="info">
+                <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+                <p></p>
             </div>
-        </div>
-        <div class="info">
-            <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
-            <p></p>
-        </div>
-        <div class="buttons square">
-            <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-            <a  href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a>
-            <a href="#" class="button link"><i class="icon icon_link"></i></a>
-            <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
-        </div>
+            <div class="buttons square">
+                <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+                   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+                <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i
+                            class="icon icon_twitter"></i></a>
+                <a href="#" class="button link"><i class="icon icon_link"></i></a>
+                <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+            </div>
 
 
+        </div>
     </div>
-</div>
 
-<!-- BREADCRUMB -->
-{% include "FDCEventBundle:Global:breadcrumb.html.twig" with
-{"breadcrumb":
-[
+    <!-- BREADCRUMB -->
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
     {
-        "name" : 'header.mainnav.nav.jourapresjour'|trans ,
-        "url"  : path('fdc_event_news_index')
+    "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+    "url"  : path('fdc_event_news_index')
     },
     {
-        "name" : 'header.mainnav.nav.audios'|trans ,
-        "url"  : path('fdc_event_news_getaudios')
+    "name" : 'header.mainnav.nav.audios'|trans ,
+    "url"  : path('fdc_event_news_getaudios')
     },
-]
-} %}
+    ]
+    } %}
 {% endblock %}
 

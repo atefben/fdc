@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-02-09T09:34:54Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-02-19T16:09:48Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-      <trans-unit id="b86d744d13ed71f256ea14a9ae234e5977e3a740" resname="home.article.btn.ajouteramaselection">
-        <source>home.article.btn.ajouteramaselection</source>
-        <target state="new">home.article.btn.ajouteramaselection</target>
-        <jms:reference-file line="16">News/widgets/article.html.twig</jms:reference-file>
+      <trans-unit id="60317af821f4b3dfa37eb8a1c325db959bb39e22" resname="press.archive.error.veuillezreessayerplustard">
+        <source>press.archive.error.veuillezreessayerplustard</source>
+        <target>Archive indisponible, veuillez réessayer plus tard</target>
+        <jms:reference-file line="125">PressBundle/Controller/MediaController.php</jms:reference-file>
+        <jms:reference-file line="196">PressBundle/Controller/MediaController.php</jms:reference-file>
       </trans-unit>
     </body>
   </file>
