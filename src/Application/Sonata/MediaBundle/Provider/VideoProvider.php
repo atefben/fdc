@@ -20,31 +20,26 @@ class VideoProvider extends FileProvider
 
     public function generateThumbnails(MediaInterface $media)
     {
-		// problem mime-type MOV
-		//error_log(print_r($media->getBinaryContent(),true));
-		//error_log(print_r($media->getClientOriginalName(),true));
-		
-		//error_log(print_r(substr($media->getClientOriginalName(), -3),true));
-
-
 		if ($media->getParentVideoTranslation()) {
 			$parent = $media->getParentVideoTranslation();
-		}
-		elseif ($media->getParentAudioTranslation()) {
+		} elseif ($media->getParentAudioTranslation()) {
 			$parent = $media->getParentAudioTranslation();
-		}
-		else {
+		} else {
 			throw new NotFoundHttpException('Media parent not found.');
 		}
-		error_log(print_r($media->getProviderReference(),true)	);
+		
+		if(substr($media->getProviderReference(), -4) == '.bin') {
+			$file_name = substr($media->getProviderReference(), -4) . '.mov';
+			$media->setProviderReference($file_name);
+		} else {
+			$file_name = $media->getProviderReference();
+		}
 		$path = $this->generatePublicUrl($media, $media->getProviderReference());
 
 		$file_path = explode('/', $path);
 		$path_video_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 		$path_video_output = 'media_video_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 
-		//mime_content_type('php.gif');
-		
 		$elasticTranscoder = ElasticTranscoderClient::factory(array(
 		    'credentials' => array(
 		        'key' => 'AKIAJHXD67GEPPA2F4TQ',
@@ -58,7 +53,7 @@ class VideoProvider extends FileProvider
 		    'PipelineId' => '1454076999739-uy533t',
 		    'OutputKeyPrefix' => $path_video_output,
 		    'Input' => array(
-		        'Key' => $path_video_input . $media->getProviderReference(),
+		        'Key' => $path_video_input . $file_name,
 		        'FrameRate' => 'auto',
 		        'Resolution' => 'auto',
 		        'AspectRatio' => 'auto',
@@ -67,16 +62,13 @@ class VideoProvider extends FileProvider
 		    ),
 		    'Outputs' => array(
 		        array(
-		            'Key' =>  $media->getProviderReference(),
+		            'Key' =>  $file_name,
 		            'Rotate' => 'auto',
 		            'PresetId' => '1351620000001-000001',
 		        ),
 		    ),
 		));
-
-		
-		$jobData = $job->get('Job');
-		$parent->setJobMp4Id($jobData['Id']);
+		$parent->setJobMp4Id($job->get('Job'));
 		$parent->setJobMp4State(1);
 
 		//System preset: Webm 720p ID : 1351620000001-100240
@@ -84,7 +76,7 @@ class VideoProvider extends FileProvider
 		    'PipelineId' => '1454076999739-uy533t',
 		    'OutputKeyPrefix' => $path_video_output,
 		    'Input' => array(
-		        'Key' => $path_video_input . $media->getProviderReference(),
+		        'Key' => $path_video_input . $file_name,
 		        'FrameRate' => 'auto',
 		        'Resolution' => 'auto',
 		        'AspectRatio' => 'auto',
@@ -93,15 +85,13 @@ class VideoProvider extends FileProvider
 		    ),
 		    'Outputs' => array(
 		        array(
-		            'Key' =>  str_replace('.mp4', '.webm', $media->getProviderReference()),
+		            'Key' =>  str_replace(array('.mp4', '.mov'), '.webm', $file_name),
 		            'Rotate' => 'auto',
 		            'PresetId' => '1351620000001-100240',
 		        ),
 		    ),
 		));
-		
-		$jobData = $job->get('Job');
-		$parent->setJobWebmId($jobData['Id']);
+		$parent->setJobWebmId($job->get('Job'));
 		$parent->setJobWebmState(1);
     }
 
