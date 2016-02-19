@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
+use Base\CoreBundle\Entity\FilmFilm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -236,24 +237,30 @@ class MediaController extends Controller
     }
 
     /**
-     * @Route("/trailer-download/{id}", options={"expose"=true})
-     * @Template("FDCPressBundle:Global:popinDownload.html.twig")
+     * @Route("/trailer-download", options={"expose"=true})
+     * @Template("FDCPressBundle:Global:components/popinDownload.html.twig")
      * @param Request $request
-     * @param $id
+     * @return array
      */
-    public function trailerDownloadAction(Request $request, $id)
+    public function trailerDownloadAction(Request $request)
     {
+
         // GET FDC SETTINGS
         $em = $this->getDoctrine()->getManager();
         $translator = $this->get('translator');
+        $film = new FilmFilm();
 
         if ($request->isXmlHttpRequest()){
 
+            $id = $request->get('id');
             $film = $em->getRepository('BaseCoreBundle:FilmFilm')
                 ->findOneById($id);
-            dump($film);exit;
 
         }
+
+        return array(
+            'film' => $film
+        );
     }
 
 }

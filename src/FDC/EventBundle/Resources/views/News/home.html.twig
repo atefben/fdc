@@ -111,7 +111,8 @@
 
                     <div id="timeline">
                         {% for key,date in festivalInterval %}
-                            <a href="#" data-date="{{ date|date('d') }}" class="{% if date == "now"|date('Y-m-d') %}active{% elseif date > "now"|date('Y-m-d') %}disabled{% endif %}">
+                            {%  set timestamp = date ~ ' 23:59:59' %}
+                            <a href="#" data-timestamp="{{ timestamp|date('U') }}" data-date="{{ date|date('d') }}" class="{% if homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') == date|date('Y-m-d') %}active{% elseif homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') < date|date('Y-m-d') %}disabled{% endif %}">
                                 {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                                 <span class="day">{{ date|date('d') }}</span>
                             </a>
@@ -195,11 +196,13 @@
 
         {% if homepage.displayedFilms == false %}
             <div id="featured-movies">
+                <div id="slider-movies" class="owl-carousel">
                 {% for film in films %}
                     {% if film is defined and film != null %}
                         {% include 'FDCEventBundle:News:widgets/videos.html.twig' %}
                     {% endif %}
                 {% endfor %}
+                </div>
             </div>
         {% endif %}
 

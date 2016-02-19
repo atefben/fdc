@@ -87,7 +87,10 @@ class MediaImageAdmin extends Admin
                 'template' => 'BaseAdminBundle:MediaImage:list_legend.html.twig',
             ))
             ->add('theme', null, array())
-            ->add('createdAt')
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
             ->add('publishedInterval', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',

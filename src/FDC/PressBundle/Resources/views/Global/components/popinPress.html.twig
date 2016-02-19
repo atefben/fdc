@@ -2,12 +2,14 @@
 
 <div id="popin-press" class='popin'>
     <div class="container-popin">
-        <strong>{{ 'press.popin.title.contenuverouille'|trans }}</strong>
+        <strong><i class="icon icon_cadenas"></i>{{ 'press.popin.title.contenuverouille'|trans }}</strong>
         <p>{{ 'press.popin.text.cecontenuestexclusivementreservealapresse'|trans }}</p>
-        {#<form action="{{ path('fdc_press_news_home') }}" method="post" {{ form_enctype(lockedForm) }}>#}
-            {#{{ form_widget(lockedForm.password) }}#}
-            {#<input type="submit" value="{{ 'press.header.btn.valider'|trans }}" />#}
-            {#{{ form_rest(lockedForm) }}#}
-        {#</form>#}
+        <form action="{{ path("fdc_press_security_check") }}" method="post" id="lockedForm">
+            <input type="hidden" id="username" name="_username" value="press" required="required" />
+
+            <input type="password" id="password" name="_password" required="required" placeholder="{{ 'press.header.placeholder.motdepasse'|trans }}"/>
+
+            <input type="submit" id="_submit" name="_submit" value="{{ 'press.header.btn.valider'|trans }}" />
+        </form>
     </div>
 </div>

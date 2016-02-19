@@ -90,15 +90,31 @@
             }
         });
 
-    </script>
-
-    <script type="text/javascript">
         $('#_submit').on('click', function(e){
             e.preventDefault();
             e.stopPropagation();
 
             $('form#lockedForm').submit();
         });
+
+        $(document).on('click','.trailer-btn', function(event){
+            event.preventDefault();
+            event.stopPropagation();
+
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: GLOBALS.urls.pressDownloadTrailer,
+                data: {'id': $('.trailer-btn').attr('data-film')},
+                success: function(data) {
+                    $('#main').append(data).addClass('overlay-popin');
+                    $('#popin-download-press').addClass('visible-popin');
+                }
+            });
+
+        })
+
+
     </script>
 
 {% endblock %}
