@@ -36,7 +36,7 @@ class MediaVideoAdmin extends Admin
             ->add('id', null, array('label' => 'id'))
             ->add('title', 'doctrine_orm_callback', array(
                 'callback'   => function ($queryBuilder, $alias, $field, $value) {
-                    if ($value['value'] !== null) {
+                    if ($value['value'] === null) {
                         return;
                     }
                     $queryBuilder = $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
@@ -56,6 +56,7 @@ class MediaVideoAdmin extends Admin
         ;
 
         $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addPublishedBetweenFilters($datagridMapper);
         $datagridMapper = $this->addStatusFilter($datagridMapper);
         $datagridMapper = $this->addPriorityFilter($datagridMapper);
 
