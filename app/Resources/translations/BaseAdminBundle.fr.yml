@@ -518,6 +518,10 @@ form:
     label_arrive_icon: Pictogramme du titre
     label_trans_name: Slug pour traduction
     label_locked_content: Locked content
+    label_column:
+        first: Première colonne
+        second: Deuxième colonne
+        third: Troisième colonne
     gallery:
         medias: Médias
     encoding_state:

@@ -64,22 +64,17 @@ class ContactPageAdmin extends Admin
                     ),
                     'firstColumn' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
+                        'label' => 'form.label_column.first',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'secondColumn' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
+                        'label' => 'form.label_column.second',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'thirdColumn' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
-                        'translation_domain' => 'BaseAdminBundle'
-                    ),
-                    'fourthColumn' => array(
-                        'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
+                        'label' => 'form.label_column.third',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
                     'createdAt' => array(
