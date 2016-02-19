@@ -268,7 +268,7 @@ class NewsController extends Controller {
             $endOfArticles = true;
         }
 
-        if($nextDay == true && $homeArticles == null) {
+        if ($nextDay == true && $homeArticles == null) {
             $dateTime = $dateTime->modify('-1 day');
             $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime , $count);
         }
