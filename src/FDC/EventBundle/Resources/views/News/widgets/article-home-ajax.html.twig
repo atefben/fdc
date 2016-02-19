@@ -14,5 +14,9 @@
     {% endif %}
 {% endfor %}
 {% if homeArticlesNext is defined %}
-    <div class="articles right nextDay"></div>
+    <div class="articles right nextDay">
+        {% for article in homeArticlesNext %}
+            {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
+        {% endfor %}
+    </div>
 {% endif %}

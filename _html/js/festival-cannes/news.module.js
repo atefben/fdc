@@ -135,7 +135,7 @@ $(document).ready(function() {
 
       $('#shdMore').removeClass('show');
       $.ajax({
-        url: GLOBALS.urls.newsUrlNext,
+        url: GLOBALS.urls.newsUrl,
         type: "GET",
         // dataType: "html",
         // cache: false,
@@ -148,6 +148,7 @@ $(document).ready(function() {
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).append(data);
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').prop('scrollHeight'));
           filter();
+          console.log(data);
           $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
 
           $('html, body').animate({

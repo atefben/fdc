@@ -167,7 +167,7 @@ class NewsRepository extends EntityRepository
     public function getOlderNewsButSameDay($locale,$festival,$dateTime,$count) {
 
         $dateTimeMax = $dateTime->format('Y-m-d') . ' 00:00:00';
-        $dateTime = $dateTime->format('Y-m-d') . ' 23:59:59';
+        $dateTime = $dateTime->format('Y-m-d H:i:s');
 
         $qb = $this
             ->createQueryBuilder('n')
@@ -183,7 +183,7 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt >= :datetime_max) AND (n.publishedAt <= :datetime)');
+            ->andWhere('(n.publishedAt >= :datetime_max) AND (n.publishedAt < :datetime)');
 
         $qb = $qb
             ->andWhere(
