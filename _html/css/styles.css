@@ -10525,7 +10525,7 @@ article .read-later.rAlign span:after {
   width: 630px;
 }
 .single-article .video-container {
-  margin: 0 auto 70px;
+  margin: 65px auto 70px;
   width: 630px;
 }
 .single-article .share {
@@ -10577,7 +10577,7 @@ article .read-later.rAlign span:after {
   float: right;
   height: 100%;
   margin-right: 85px;
-  max-width: 470px;
+  max-width: 398px;
 }
 .single-article .film .info-film .wrapper .category {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;

@@ -38,17 +38,18 @@ class FilmFilmAdmin extends SoifAdmin
     {
         $listMapper
             ->add('id')
-            ->add('directorFirst')
-            ->add('restored')
-            ->add('titleVO')
-            ->add('titleVOAlphabet')
-            ->add('productionYear')
-            ->add('duration')
-            ->add('castingCommentary')
-            ->add('website')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('soifUpdatedAt')
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:FilmFilm:title.html.twig'
+            ))
+            ->add('realisator', null, array(
+                'template' => 'BaseAdminBundle:FilmFilm:realisator.html.twig'
+            ))
+            ->add('selection', null, array(
+                'template' => 'BaseAdminBundle:FilmFilm:selection.html.twig'
+            ))
+            ->add('festival-year', null, array(
+                'template' => 'BaseAdminBundle:FilmFilm:festival-year.html.twig'
+            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
