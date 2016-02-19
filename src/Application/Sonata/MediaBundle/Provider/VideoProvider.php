@@ -122,8 +122,8 @@ class VideoProvider extends FileProvider
 	                ),
 	            ),
 	        ));
-            $parentVideo->setJobMp3Id($job->get('Job')['Id']);
-           	$parentVideo->setJobMp3State(1);
+            $parentAudio->setJobMp3Id($job->get('Job')['Id']);
+           	$parentAudio->setJobMp3State(1);
         }
 
     }
