@@ -20,15 +20,14 @@ class MediaController extends Controller
      */
     public function mainAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
         $headerInfo = array(
             'title' => 'Médiathèque films',
             'description' => 'Vous trouverez ci-dessous les dossiers de presse, photos, et bandes annonces pour
                               faciliter le traitement des films sur vos propres médias.'
         );
-
-
-        $em = $this->getDoctrine()->getManager();
-        $locale = $this->getRequest()->getLocale();
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -65,13 +64,15 @@ class MediaController extends Controller
 
     /**
      * @Route("/media/film/{id}/archive")
+     * @param Request $request
      * @param $id
-     * @return Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function filmArchiveAction($id)
+    public function filmArchiveAction(Request $request, $id)
     {
         // GET FDC SETTINGS
         $em = $this->getDoctrine()->getManager();
+        $translator = $this->get('translator');
 
         $film = $em->getRepository('BaseCoreBundle:FilmFilm')
             ->findOneById($id);
@@ -80,52 +81,67 @@ class MediaController extends Controller
 
         $zipName = $film->getId().'-'.$film->getUpdatedAt()->format('YmdHis').".zip";
         $zipPath = $this->get('kernel')->getRootDir()."/../web/uploads/archive/film/".$zipName;
+        $zip = new \ZipArchive();
 
         if (!file_exists($zipPath)) {
-            $zip = new \ZipArchive();
             $zip->open($zipPath, \ZipArchive::CREATE);
 
             foreach ($film->getMedias() as $media ) {
                 if ($media->getType() == 14) {
                     array_push($filmPhotos,$media->getMedia()->getFile());
                     $provider = $this->container->get($media->getMedia()->getFile()->getProviderName());
-                    $fUrl = $provider->generatePublicUrl($media->getMedia()->getFile(), $media->getMedia()->getFile()->getContext().'_big');
-                    $zip->addFromString(basename($media->getMedia()->getFile()), file_get_contents($fUrl));
+                    $fUrl = $provider->generatePublicUrl($media->getMedia()->getFile(), $media->getMedia()->getFile()->getContext().'_reference');
+                    if (@file_get_contents($fUrl) !== false) {
+                        $zip->addFromString(basename($media->getMedia()->getFile()), file_get_contents($fUrl));
+                    }
                 }
             }
             $zip->close();
 
         }
 
+        if ($zip->numFiles !== 0) {
+            // Generate response
+            $response = new Response();
 
-        // Generate response
-        $response = new Response();
+            // Set headers
+            $response->headers->set('Cache-Control', 'private');
+            $response->headers->set('Content-type', mime_content_type($zipPath));
+            $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($zipPath) . '";');
+            $response->headers->set('Content-length', filesize($zipPath));
 
-        // Set headers
-        $response->headers->set('Cache-Control', 'private');
-        $response->headers->set('Content-type', mime_content_type($zipPath));
-        $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($zipPath) . '";');
-        $response->headers->set('Content-length', filesize($zipPath));
+            // Send headers before outputting anything
+            $response->sendHeaders();
 
-        // Send headers before outputting anything
-        $response->sendHeaders();
+            $response->setContent(file_get_contents($zipPath));
 
-        $response->setContent(file_get_contents($zipPath));
+            return $response;
+        }
+        else {
 
-        return $response;
+            $request->getSession()
+                ->getFlashBag()
+                ->add('error', $translator->trans('press.archive.error.veuillezreessayerplustard'))
+            ;
+
+            return $this->redirectToRoute('fdc_press_media_main');
+        }
 
     }
 
     /**
      * @Route("/media/gallery/{id}/archive")
+     * @param Request $request
      * @param $id
-     * @return Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function galleryArchiveAction($id)
+    public function galleryArchiveAction(Request $request, $id)
     {
         // GET FDC SETTINGS
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
+
+        $translator = $this->get('translator');
 
 
         $gallery = $em->getRepository('BaseCoreBundle:Gallery')
@@ -138,36 +154,50 @@ class MediaController extends Controller
 
         $zipName = $gallery->getId().'-'.$gallery->getUpdatedAt()->format('YmdHis').".zip";
         $zipPath = $this->get('kernel')->getRootDir()."/../web/uploads/archive/gallery/".$zipName;
+        $zip = new \ZipArchive();
 
         if (!file_exists($zipPath)) {
-            $zip = new \ZipArchive();
             $zip->open($zipPath, \ZipArchive::CREATE);
 
             foreach ($galleryImage as $media ) {
                 array_push($galleryPhotos,$media->getFile());
                 $provider = $this->container->get($media->getFile()->getProviderName());
-                $fUrl = $provider->generatePublicUrl($media->getFile(), $media->getFile()->getProviderReference());
-                $zip->addFromString(basename($media->getFile()->getId()), file_get_contents($fUrl));
+                $fUrl = $provider->generatePublicUrl($media->getFile(), $media->getFile()->getContext().'_reference');
+                if (@file_get_contents($fUrl) !== false) {
+                    $zip->addFromString(basename($media->getFile()), file_get_contents($fUrl));
+                }
             }
             $zip->close();
 
         }
 
-        // Generate response
-        $response = new Response();
 
-        // Set headers
-        $response->headers->set('Cache-Control', 'private');
-        $response->headers->set('Content-type', mime_content_type($zipPath));
-        $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($zipPath) . '";');
-        $response->headers->set('Content-length', filesize($zipPath));
 
-        // Send headers before outputting anything
-        $response->sendHeaders();
+        if ($zip->numFiles !== 0) {
+            $response = new Response();
 
-        $response->setContent(file_get_contents($zipPath));
+            // Set headers
+            $response->headers->set('Cache-Control', 'private');
+            $response->headers->set('Content-type', mime_content_type($zipPath));
+            $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($zipPath) . '";');
+            $response->headers->set('Content-length', filesize($zipPath));
 
-        return $response;
+            // Send headers before outputting anything
+            $response->sendHeaders();
+            $response->setContent(file_get_contents($zipPath));
+            return $response;
+
+        }
+        else {
+
+            $request->getSession()
+                ->getFlashBag()
+                ->add('error', $translator->trans('press.archive.error.veuillezreessayerplustard'))
+            ;
+
+            return $this->redirectToRoute('fdc_press_media_download');
+        }
+
 
     }
 
@@ -205,5 +235,25 @@ class MediaController extends Controller
         );
     }
 
+    /**
+     * @Route("/trailer-download/{id}", options={"expose"=true})
+     * @Template("FDCPressBundle:Global:popinDownload.html.twig")
+     * @param Request $request
+     * @param $id
+     */
+    public function trailerDownloadAction(Request $request, $id)
+    {
+        // GET FDC SETTINGS
+        $em = $this->getDoctrine()->getManager();
+        $translator = $this->get('translator');
+
+        if ($request->isXmlHttpRequest()){
+
+            $film = $em->getRepository('BaseCoreBundle:FilmFilm')
+                ->findOneById($id);
+            dump($film);exit;
+
+        }
+    }
 
 }
