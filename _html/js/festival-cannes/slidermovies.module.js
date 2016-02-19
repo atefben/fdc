@@ -49,10 +49,12 @@ $(document).ready(function() {
 
     function progressBarMovies(){
       // build progress bar elements
-      buildProgressBarMovies();
-        
-      // start counting
-      startMovies();
+      if ($('#slider-movies').length) {
+        buildProgressBarMovies();
+
+        // start counting
+        startMovies();
+      }
     }
 
     function buildProgressBarMovies(){
@@ -72,7 +74,7 @@ $(document).ready(function() {
       percent = 0;
       isPause = false;
       time = $('#slider-movies .owl-item.active video')[0].duration;
-      
+
       // run interval every 0.01 second
       clock = setInterval(intervalMovies, 10);
     };
@@ -152,20 +154,22 @@ $(document).ready(function() {
       startMovies();
     }
 
-    $("#slider-movies").owlCarousel({
-      items: 1,
-      loop: true,
-      nav: false,
-      dots: true,
-      smartSpeed: 500,
-      onTranslate: clearClock,
-      onTranslated: playNewVideo,
-      onDrag: pauseVideo,
-      onInitialized: progressBarMovies,
-      animateOut: 'slideOutUp',
-      animateIn: 'slideInUp',
-      mouseDrag: false
-    });
+    if ($("#slider-movies video").length >= 2) {
+      $("#slider-movies").owlCarousel({
+        items: 1,
+        loop: true,
+        nav: false,
+        dots: true,
+        smartSpeed: 500,
+        onTranslate: clearClock,
+        onTranslated: playNewVideo,
+        onDrag: pauseVideo,
+        onInitialized: progressBarMovies,
+        animateOut: 'slideOutUp',
+        animateIn: 'slideInUp',
+        mouseDrag: false
+      });
+    }
 
     setTimeout(function() {
       setHeightSlider();

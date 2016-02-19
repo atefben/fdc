@@ -75,7 +75,7 @@ class StatementRepository extends EntityRepository
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
             ->andWhere('n.id != :id')
-            ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt < :datetime2)');
+            ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt <= :datetime2)');
 
 
         $qb = $qb

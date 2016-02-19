@@ -17,6 +17,7 @@ $(document).ready(function() {
 
   $('#timeline a').on('click', function(e) {
     e.preventDefault();
+    var timestamp = $(this).attr('data-timestamp');
 
     if($(this).hasClass('active') || $(this).hasClass('disabled')) {
       return false;
@@ -45,7 +46,8 @@ $(document).ready(function() {
         type: "GET",
         dataType: "html",
         cache: false,
-        url: GLOBALS.urls.newsUrl ,
+        data: { 'timestamp': timestamp },
+        url: GLOBALS.urls.newsUrl,
         success: function(data) {
           $('#canvasloader').removeClass('show');
           $('#articles-wrapper').html(data);
@@ -102,6 +104,7 @@ $(document).ready(function() {
           type: "GET",
           dataType: "html",
           cache: false,
+          data: {'timestamp': $('#news article.article:last').attr('data-timestamp')},
           url: GLOBALS.urls.newsUrl ,
           success: function(data) {
             $('#canvasloader').removeClass('show');
@@ -127,6 +130,7 @@ $(document).ready(function() {
         dataType: "html",
         cache: false,
         url: GLOBALS.urls.newsUrlNext , // TODO a revoir //
+        data: {'timestamp': $('#news article.article:last').attr('data-timestamp')},
         success: function(data) {
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).append(data);
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').prop('scrollHeight'));

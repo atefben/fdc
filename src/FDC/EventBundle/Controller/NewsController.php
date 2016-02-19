@@ -104,11 +104,11 @@ class NewsController extends Controller {
          /////////////////////////       ARTICLE HOME         ///////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////
 
-        //get articles of the day, if no article today : get article from the day before
         $count = 6;
+        $countArticles = 0;
         $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime , $count);
 
-        if($homeArticles == null) {
+        while (count($homeArticles) === 0 && $dateTime > $festivalStart) {
             $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime->modify('-1 day'), $count);
         }
 

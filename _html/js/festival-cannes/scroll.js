@@ -22,12 +22,14 @@ function initParallaxElements() {
     });
 
     // slider movies home
-    parallaxElements.push({
-      'el1': '#slider-movies .owl-item.active .video',
-      'positionTop': $('#slider-movies').offset().top,
-      'division': 8,
-      'mov': 4
-    });
+    if ($('#slider-movies .owl-item.active .video').length) {
+      parallaxElements.push({
+        'el1': '#slider-movies .owl-item.active .video',
+        'positionTop': $('#slider-movies').offset().top,
+        'division': 8,
+        'mov': 4
+      });
+    }
 
   }
 
@@ -154,10 +156,14 @@ $(document).ready(function() {
     // SLIDER MOVIES : play or pause video on scroll
     if($('#featured-movies').length) {
       if(s > $('#featured-movies').offset().top - $('#featured-movies').height() && s < $('#featured-movies').offset().top + $('#featured-movies').height()) {
-        $('#featured-movies .active').find('video')[0].play();
+        if ($('#featured-movies .active').length) {
+          $('#featured-movies .active').find('video')[0].play();
+        }
         handleEndVideo();
       } else {
-        $('#featured-movies .active').find('video')[0].pause();
+        if ($('#featured-movies .active').length) {
+          $('#featured-movies .active').find('video')[0].pause();
+        }
       }
     }
 
