@@ -20,8 +20,10 @@ class VideoProvider extends FileProvider
     public function generateThumbnails(MediaInterface $media)
     {
 		// problem mime-type MOV
-		error_log(print_r($media->getBinaryContent(),true));
-		error_log(print_r($media->getExtension(),true));
+		//error_log(print_r($media->getBinaryContent(),true));
+		error_log(print_r($media->getOriginalName(),true));
+		
+		error_log(print_r(substr($media->getOriginalName(), -3),true));
 		
 		$path = $this->generatePublicUrl($media, $media->getProviderReference());
 		$file_path = explode('/', $path);
