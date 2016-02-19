@@ -23,8 +23,7 @@ class AWSController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $logger = $this->get('logger');
-
-        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('jobMp4State' => 1));
+        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('jobMp4State' => '1'));
 		foreach($medias as $media) {
 			error_log(print_r($media, true));
 			$this->updateAmazonStatus($media, 'mp4');
