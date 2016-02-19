@@ -11,6 +11,20 @@ use Sonata\AdminBundle\Tests\DependencyInjection\News;
 
 class NewsCommonAdmin extends BaseAdmin
 {
+
+    public function filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value)
+    {
+        static $joined = false;
+        if (!$joined) {
+            $queryBuilder
+                ->join("{$alias}.translations", 't2')
+            ;
+            $joined = true;
+        }
+
+        return $queryBuilder;
+    }
+
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
@@ -26,7 +40,7 @@ class NewsCommonAdmin extends BaseAdmin
                     return true;
                 },
                 'field_type' => 'text',
-                'label' => 'list.news_common.label_title',
+                'label'      => 'list.news_common.label_title',
             ))
             ->add('theme')
         ;
@@ -34,9 +48,58 @@ class NewsCommonAdmin extends BaseAdmin
         $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
         $datagridMapper = $this->addPublishedBetweenFilters($datagridMapper);
         $datagridMapper = $this->addStatusFilter($datagridMapper);
+
+        $datagridMapper
+            ->add('status_translation_pending', 'doctrine_orm_callback', array(
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    if ($value['value']) {
+                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value);
+                        $queryBuilder->andWhere('t2.status = :translation_pending');
+                        $queryBuilder->setParameter('translation_pending', NewsArticleTranslation::STATUS_TRANSLATION_PENDING);
+                    }
+                    return true;
+                },
+                'field_type' => 'checkbox',
+                'label'      => 'list.news_common.translation_pending',
+            ))
+            ->add('status_translation_validating', 'doctrine_orm_callback', array(
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+
+                    if ($value['value']) {
+                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value);
+                        $queryBuilder->andWhere('t2.status = :translation_validating');
+                        $queryBuilder->setParameter('translation_validating', NewsArticleTranslation::STATUS_TRANSLATION_VALIDATING);
+                    }
+                    return true;
+                },
+                'field_type' => 'checkbox',
+                'label'      => 'list.news_common.translation_validating',
+            ))
+            ->add('status_translated', 'doctrine_orm_callback', array(
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+
+                    if ($value['value']) {
+                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value);
+                        $queryBuilder->andWhere('t2.status = :translated');
+                        $queryBuilder->setParameter('translated', NewsArticleTranslation::STATUS_TRANSLATED);
+                    }
+                    return true;
+                },
+                'field_type' => 'checkbox',
+                'label'      => 'list.news_common.translated',
+            ))
+        ;
         $datagridMapper = $this->addPriorityFilter($datagridMapper);
     }
-
 
 
     /**
@@ -48,7 +111,7 @@ class NewsCommonAdmin extends BaseAdmin
             ->add('id', null, array('label' => 'list.common.label_id'))
             ->add('title', null, array(
                 'template' => 'BaseAdminBundle:News:list_title.html.twig',
-                'label' => 'list.news_common.label_title',
+                'label'    => 'list.news_common.label_title',
             ))
             ->add('theme', null, array())
             ->add('createdAt')
@@ -61,7 +124,7 @@ class NewsCommonAdmin extends BaseAdmin
                 'catalogue' => 'BaseAdminBundle'
             ))
             ->add('statusMain', 'choice', array(
-                'choices' => NewsArticleTranslation::getMainStatuses(),
+                'choices'   => NewsArticleTranslation::getMainStatuses(),
                 'catalogue' => 'BaseAdminBundle'
             ))
             ->add('_edit_translations', null, array(

@@ -240,6 +240,9 @@ list:
         label_id: Id
     news_common:
         label_title: Titre de l'actualité
+        translation_pending: En attente de traduction
+        translation_validating: Traduction à valider
+        translated: Traduit
 
 filter:
     label_position: Position
