@@ -40,8 +40,6 @@ $(document).ready(function() {
       $('#canvasloader').addClass('show');
     }, 800);
 
-    alert(timestamp);
-
     // todo: remove timeout
     setTimeout(function() {
       $.ajax({
@@ -143,7 +141,7 @@ $(document).ready(function() {
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).append(data);
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').prop('scrollHeight'));
           filter();
-          console.log(data);
+
           if('#articles-wrapper .nextDay') {
             $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
             
