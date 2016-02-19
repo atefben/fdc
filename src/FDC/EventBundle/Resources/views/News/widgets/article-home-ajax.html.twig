@@ -3,10 +3,7 @@
     {% if loop.first %}
     <div class="articles right pad">
     {% include 'FDCEventBundle:News:widgets/article-home.html.twig' with vars %}
-    {% else %}
-    {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
-    {% endif %}
-    {% if loop.index == 4 %}
+    {% elseif loop.index == 4 %}
     <div class="articles left">
     {% include 'FDCEventBundle:News:widgets/article-home.html.twig' with vars %}
     {% else %}
