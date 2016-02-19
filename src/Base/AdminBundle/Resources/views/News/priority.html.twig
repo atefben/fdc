@@ -1,0 +1,16 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+{% trans_default_domain 'BaseAdminBundle' %}
+
+{% block field %}
+    <div>
+        {% if object.priorityStatus == 0 %}
+            {{ 'form.priority_status.low'|trans }}
+        {% elseif object.priorityStatus == 1 %}
+            {{ 'form.priority_status.average'|trans }}
+        {% elseif object.priorityStatus == 2 %}
+            {{ 'form.priority_status.urgent'|trans }}
+        {% elseif object.priorityStatus == 3 %}
+            {{ 'form.priority_status.now'|trans }}
+        {% endif %}
+    </div>
+{% endblock %}
