@@ -74,13 +74,14 @@ class NewsWidgetVideoYoutubeType extends NewsWidgetType
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array(),
+                'required_locales' => array('fr'),
                 'fields' => array(
                     'url' => array(
                         'constraints' => array(
                             new NotBlank(),
                             new Url()
                         ),
+                        'required' => true,
                         'label' => 'form.label_news_widget_video_youtube_url',
                         'sonata_help' => 'form.news_widget_video_youtube.helper_url',
                         'translation_domain' => 'BaseAdminBundle',
@@ -89,6 +90,7 @@ class NewsWidgetVideoYoutubeType extends NewsWidgetType
                         'constraints' => array(
                             new NotBlank()
                         ),
+                        'required' => true,
                         'label' => 'form.label_news_widget_video_youtube_title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
@@ -101,6 +103,8 @@ class NewsWidgetVideoYoutubeType extends NewsWidgetType
                 )
             ))
             ->add('image', 'sonata_type_model_list', array(
+                'required' => false,
+                'label' => 'Image cover',
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->mediaImageSimpleAdmin->getModelManager(),
                 'class' => $this->mediaImageSimpleAdmin->getClass()

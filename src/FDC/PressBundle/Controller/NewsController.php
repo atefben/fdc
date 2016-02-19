@@ -149,7 +149,7 @@ class NewsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
 
-        $isAdmin = true;
+        $isAdmin = false;
         $dateTime = new DateTime();
 
         // GET FDC SETTINGS

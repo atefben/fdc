@@ -40,7 +40,7 @@ class NewsWidgetQuoteType extends NewsWidgetType
         $builder->add('translations', 'a2lix_translations', array(
             'label' => false,
             'translation_domain' => 'BaseAdminBundle',
-            'required_locales' => array(),
+            'required_locales' => array('fr'),
             'fields' => array(
                 'content' => array(
                     'label' => false,
