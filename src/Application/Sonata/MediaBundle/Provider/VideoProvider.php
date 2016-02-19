@@ -28,6 +28,14 @@ class VideoProvider extends FileProvider
             throw new NotFoundHttpException('Media parent not found.');
         }
 
+        $elasticTranscoder = ElasticTranscoderClient::factory(array(
+            'credentials' => array(
+                'key'    => 'AKIAJHXD67GEPPA2F4TQ',
+                'secret' => '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',
+            ),
+            'region'      => 'eu-west-1',
+        ));
+
         if (isset($parentVideo)) {
 
             if (substr($media->getProviderReference(), -4) == '.bin') {
@@ -41,14 +49,6 @@ class VideoProvider extends FileProvider
             $file_path = explode('/', $path);
             $path_video_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
             $path_video_output = 'media_video_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
-
-            $elasticTranscoder = ElasticTranscoderClient::factory(array(
-                'credentials' => array(
-                    'key'    => 'AKIAJHXD67GEPPA2F4TQ',
-                    'secret' => '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',
-                ),
-                'region'      => 'eu-west-1',
-            ));
 
             //System preset generic 1080p MP4 ID : 1351620000001-000001
             $job = $elasticTranscoder->createJob(array(
@@ -97,11 +97,33 @@ class VideoProvider extends FileProvider
             ));
             $parentVideo->setJobWebmId($job->get('Job')['Id']);
             $parentVideo->setJobWebmState(1);
-        }
+			
+        } elseif (isset($parentAudio)) {
+			
+            $file_name = $media->getProviderReference();
+	        $path = $this->generatePublicUrl($media, $media->getProviderReference());
+			error_log($file_name);
+			error_log($path);
+	        $file_path = explode('/', $path);
+	        $path_audio_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
+	        $path_audio_output = 'media_video_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 
-        elseif (isset($parentAudio)) {
-            //$parentVideo->setJobMp3Id($job->get('Job')['Id']);
-            //$parentVideo->setJobMp3State(1);
+	        //System preset: Audio MP3 - 128k : 1351620000001-300040
+	        $job = $elasticTranscoder->createJob(array(
+	            'PipelineId'      => '1454076999739-uy533t',
+	            'OutputKeyPrefix' => $path_audio_output,
+	            'Input'           => array(
+	                'Key'         => $path_audio_input . $file_name,
+	            ),
+	            'Outputs'         => array(
+	                array(
+	                    'Key'      => $file_name,
+	                    'PresetId' => '1351620000001-300040',
+	                ),
+	            ),
+	        ));
+            $parentVideo->setJobMp3Id($job->get('Job')['Id']);
+           	$parentVideo->setJobMp3State(1);
         }
 
     }
