@@ -2,7 +2,7 @@
 {% extends 'FDCPressBundle::layout.html.twig' %}
 
 {% block body %}
-<div id="main" class="press loading seatingchart lock">
+<div id="main" class="press loading seatingchart {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
     <div class="header-press">
         <div class="head">
             <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>

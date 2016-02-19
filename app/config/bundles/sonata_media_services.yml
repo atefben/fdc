@@ -28,7 +28,7 @@ services:
             - @sonata.media.generator.default
             - @sonata.media.thumbnail.format
             - ['mp4', 'mov']
-            - ['video/mp4', 'video/quicktime']
+            - ['video/mp4', 'video/quicktime', 'application/octet-stream']
 
     # custom sonata service to handle upload for audio elements
     sonata.media.filesystem.s3_audio:

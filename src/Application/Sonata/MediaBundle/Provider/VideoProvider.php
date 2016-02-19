@@ -24,6 +24,11 @@ class VideoProvider extends FileProvider
 		$path_video_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 		$path_video_output = 'media_video_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 		
+		
+		// problem mime-type MOV
+		error_log(print_r($media,true));
+		//mime_content_type('php.gif');
+		
 		$elasticTranscoder = ElasticTranscoderClient::factory(array(
 		    'credentials' => array(
 		        'key' => 'AKIAJHXD67GEPPA2F4TQ',
@@ -54,9 +59,8 @@ class VideoProvider extends FileProvider
 		));
 		
 		$jobData = $job->get('Job');
-		$jobId = $jobData['Id'];
-		//TODO MATDAC
-		
+		$media->setJobMp4Id($jobData['Id']);
+		$media->setJobMp4State(1);
 		
 		//System preset: Webm 720p ID : 1351620000001-100240
 		$job = $elasticTranscoder->createJob(array(
@@ -80,8 +84,8 @@ class VideoProvider extends FileProvider
 		));
 		
 		$jobData = $job->get('Job');
-		$jobId = $jobData['Id'];
-  	  	//TODO MATDAC
+		$media->setJobWebmId($jobData['Id']);
+		$media->setJobWebmSstate(1);
     }
 
     /**

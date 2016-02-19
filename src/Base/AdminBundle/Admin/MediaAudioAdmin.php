@@ -44,7 +44,7 @@ class MediaAudioAdmin extends Admin
             ->add('id', null, array('label' => 'filter.common.label_id'))
             ->add('title', 'doctrine_orm_callback', array(
                 'callback'   => function ($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
+                    if ($value['value'] === null) {
                         return;
                     }
                     $queryBuilder = $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
@@ -60,41 +60,10 @@ class MediaAudioAdmin extends Admin
         ;
 
         $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
-
+        $datagridMapper = $this->addPublishedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addStatusFilter($datagridMapper);
+        $datagridMapper = $this->addPriorityFilter($datagridMapper);
         $datagridMapper
-            ->add('status', 'doctrine_orm_callback', array(
-                'callback'      => function ($queryBuilder, $alias, $field, $value) {
-                    if ($value['value'] === null) {
-                        return;
-                    }
-                    $queryBuilder = $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
-                    $queryBuilder->andWhere('t.status = :status');
-                    $queryBuilder->setParameter('status', $value['value']);
-
-                    return true;
-                },
-                'field_type'    => 'choice',
-                'field_options' => array(
-                    'choices'                   => MediaAudioTranslation::getMainStatuses(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
-            ))
-            ->add('priorityStatus', 'doctrine_orm_callback', array(
-                'callback'      => function ($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->andWhere("{$alias}.priorityStatus = :priorityStatus");
-                    $queryBuilder->setParameter('priorityStatus', $value['value']);
-
-                    return true;
-                },
-                'field_type'    => 'choice',
-                'field_options' => array(
-                    'choices'                   => MediaAudio::getPriorityStatusesList(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
-            ))
             ->add('displayedAll', null, array(
                 'field_type' => 'checkbox',
                 'label'      => 'filter.media_audio.displayed_all',

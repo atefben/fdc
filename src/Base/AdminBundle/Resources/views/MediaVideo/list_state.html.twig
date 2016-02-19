@@ -4,7 +4,8 @@
     <div>
         {% set translationLocale = object.findTranslationByLocale('fr') %}
         {% if translationLocale is not null %}
-            {% if translationLocale.state != null %}
+            {% if translationLocale.state is defined and translationLocale.state != null %}
+
                 {{ attribute(translationLocale.getEncodingStates(), translationLocale.state) }}
             {% endif %}
         {% endif %}

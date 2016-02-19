@@ -7,6 +7,7 @@ lang:
 settings:
     fdc: Paramètres du Festival de Cannes
     fdc_api: Paramètres de l'API Festival de Cannes
+    fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
     link_film_person_list: Liste des personnes
@@ -229,7 +230,7 @@ list:
         label_id: Id
         label_title_video: Titre de la vidéo
         label_web_tv: Chaîne
-        label_encoding_state: Encodage (en attent, en cours, prêt)
+        label_encoding_state: Encodage (en attente, en cours, prêt)
     media_audio:
         label_published_at: Publié le
     media_image_simple:
@@ -239,6 +240,9 @@ list:
         label_id: Id
     news_common:
         label_title: Titre de l'actualité
+        translation_pending: En attente de traduction
+        translation_validating: Traduction à valider
+        translated: Traduit
 
 filter:
     label_position: Position

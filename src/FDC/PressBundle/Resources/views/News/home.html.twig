@@ -2,11 +2,7 @@
 {% extends 'FDCPressBundle::layout.html.twig' %}
 
 {% block body %}
-{% if is_granted("ROLE_FDC_PRESS_REPORTER") %}
-<div id="main" class="press press-home calendar-open conected">
-{% else %}
-<div id="main" class="press press-home calendar-open lock">
-{% endif %}
+<div id="main" class="press press-home calendar-open {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
 
     {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 

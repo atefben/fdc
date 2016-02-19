@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCPressBundle' %}
 {% extends 'FDCPressBundle::layout.html.twig' %}
 {% block body %}
-<div id="main" class="press loading press-actu lock all-articles grid">
+<div id="main" class="press loading press-actu {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }} all-articles grid">
 
     {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 
