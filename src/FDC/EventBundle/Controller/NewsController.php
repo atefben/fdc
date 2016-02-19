@@ -264,12 +264,12 @@ class NewsController extends Controller {
 
         $endOfArticles = false;
         $homeArticles = $em->getRepository('BaseCoreBundle:News')->getOlderNewsButSameDay($locale, $this->getFestival()->getId(), $dateTime , $count);
+        $homeArticlesNext = false;
 
         if (sizeof($homeArticles) < $count || $homeArticles == null){
             $endOfArticles = true;
             $dateTimeNext = $dateTime->modify('-1 day');
             $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext , $countNext);
-
         }
 
         if ($nextDay == true && $homeArticles == null) {
@@ -279,7 +279,8 @@ class NewsController extends Controller {
 
         return array(
             'endOfArticles' => $endOfArticles,
-            'homeArticles' => $homeArticles
+            'homeArticles' => $homeArticles;
+            'homeArticlesNext' => $homeArticlesNext
         );
     }
 

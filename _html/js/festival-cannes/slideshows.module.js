@@ -52,7 +52,7 @@ function initSlideshows() {
 
   if($('.all-photos').length) {
     var slideshow = $('#gridPhotos').Chocolat({
-      imageSize: 'contain',
+      imageSize: 'cover',
       fullScreen: false,
       imageSelector: '.item:not(.isotope-hidden) .chocolat-image'
     }).data('chocolat');
