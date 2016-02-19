@@ -99,7 +99,6 @@ class VideoProvider extends FileProvider
             $parentVideo->setJobWebmState(1);
 			
         } elseif (isset($parentAudio)) {
-			error_log(print_r($media, true));
             $file_name = $media->getProviderReference();
 	        $path = $this->generatePublicUrl($media, $media->getProviderReference());
 			error_log($file_name);
