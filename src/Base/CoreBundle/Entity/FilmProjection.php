@@ -165,7 +165,8 @@ class FilmProjection
 
     public function __toString()
     {
-        if ($this->getId()) {
+        if ($this->getId() && $this->getProgrammationFilms()->count() > 0 &&
+            $this->getProgrammationFilms()->get(0)->getFilm() !== null) {
             return $this->getProgrammationFilms()->get(0)->getFilm()->getTitleVo();
         }
 
