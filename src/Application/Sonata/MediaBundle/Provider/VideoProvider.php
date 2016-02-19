@@ -36,7 +36,7 @@ class VideoProvider extends FileProvider
 		else {
 			throw new NotFoundHttpException('Media parent not found.');
 		}
-		error_log(print_r($parent,true));
+		error_log(print_r($media->getProviderReference(),true)	);
 		$path = $this->generatePublicUrl($media, $media->getProviderReference());
 
 		$file_path = explode('/', $path);
