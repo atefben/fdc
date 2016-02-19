@@ -26,7 +26,8 @@ class VideoProvider extends FileProvider
 		
 		
 		// problem mime-type MOV
-		error_log(print_r($media->getbinaryContent,true));
+		error_log(print_r($media->getBinaryContent(),true));
+		error_log(print_r($media->getBinaryContent()->getMimeType(),true));
 		//mime_content_type('php.gif');
 		
 		$elasticTranscoder = ElasticTranscoderClient::factory(array(
