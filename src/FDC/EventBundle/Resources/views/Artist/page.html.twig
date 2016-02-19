@@ -135,10 +135,10 @@
         <div class="share">
             <p>{{ 'juries.artiste.title.share'|trans }}</p>
             <div class="buttons square">
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" class="button facebook">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_event_news_index') }}/{{app.request.uri}}" class="button facebook">
 
                 </a>
-                <a href="https://twitter.com/intent/tweet?url={{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" class="button twitter">
+                <a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_news_index') }}/{{app.request.uri}}" class="button twitter">
 
                 </a>
                 <a href="#" class="button link"></a>
