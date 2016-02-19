@@ -263,8 +263,14 @@ class NewsController extends Controller {
         $countNext = 2;
 
         $endOfArticles = false;
-        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getOlderNewsButSameDay($locale, $this->getFestival()->getId(), $dateTime , $count);
         $homeArticlesNext = false;
+
+        if ($nextDay == 1) {
+            $dateTime = $dateTime->modify('-1 day');
+            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime , $count);
+        } else {
+            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getOlderNewsButSameDay($locale, $this->getFestival()->getId(), $dateTime , $count);
+        }
 
         if (sizeof($homeArticles) < $count || $homeArticles == null){
             $endOfArticles = true;
@@ -272,10 +278,6 @@ class NewsController extends Controller {
             $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext , $countNext);
         }
 
-        if ($nextDay == 1 && $homeArticles == null) {
-            $dateTime = $dateTime->modify('-1 day');
-            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime , $count);
-        }
 
         return array(
             'endOfArticles' => $endOfArticles,
