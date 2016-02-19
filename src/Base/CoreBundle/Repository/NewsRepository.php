@@ -140,10 +140,10 @@ class NewsRepository extends EntityRepository
                 ->leftjoin('na3.translations', 'na7t')
                 ->leftjoin('na4.translations', 'na8t')
                 ->andWhere(
-                    '(na5t.locale = :locale AND na1t.status = :status_translated) OR
-                    (na6t.locale = :locale AND na2t.status = :status_translated) OR
-                    (na7t.locale = :locale AND na3t.status = :status_translated) OR
-                    (na8t.locale = :locale AND na4t.status = :status_translated)'
+                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
                 ->setParameter('locale', $locale);
@@ -167,6 +167,7 @@ class NewsRepository extends EntityRepository
     public function getOlderNewsButSameDay($locale,$festival,$dateTime,$count) {
 
         $dateTimeMax = $dateTime->format('Y-m-d') . ' 00:00:00';
+        $dateTime = $dateTime->format('Y-m-d') . ' 23:59:59';
 
         $qb = $this
             ->createQueryBuilder('n')
@@ -201,10 +202,10 @@ class NewsRepository extends EntityRepository
                 ->leftjoin('na3.translations', 'na7t')
                 ->leftjoin('na4.translations', 'na8t')
                 ->andWhere(
-                    '(na5t.locale = :locale AND na1t.status = :status_translated) OR
-                    (na6t.locale = :locale AND na2t.status = :status_translated) OR
-                    (na7t.locale = :locale AND na3t.status = :status_translated) OR
-                    (na8t.locale = :locale AND na4t.status = :status_translated)'
+                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
                 ->setParameter('locale', $locale);
@@ -214,7 +215,6 @@ class NewsRepository extends EntityRepository
             ->orderBy('n.publishedAt', 'DESC')
             ->setMaxResults($count)
             ->setParameter('festival', $festival)
-            ->setParameter('locale', $locale)
             ->setParameter('datetime', $dateTime)
             ->setParameter('datetime_max', $dateTimeMax)
             ->setParameter('site_slug', 'site-evenementiel');
@@ -260,10 +260,10 @@ class NewsRepository extends EntityRepository
                 ->leftjoin('na3.translations', 'na7t')
                 ->leftjoin('na4.translations', 'na8t')
                 ->andWhere(
-                    '(na5t.locale = :locale AND na1t.status = :status_translated) OR
-                    (na6t.locale = :locale AND na2t.status = :status_translated) OR
-                    (na7t.locale = :locale AND na3t.status = :status_translated) OR
-                    (na8t.locale = :locale AND na4t.status = :status_translated)'
+                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
                 ->setParameter('locale', $locale);
@@ -273,7 +273,6 @@ class NewsRepository extends EntityRepository
             ->orderBy('n.publishedAt', 'DESC')
             ->setMaxResults($count)
             ->setParameter('festival', $festival)
-            ->setParameter('locale', $locale)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site_slug', 'site-evenementiel');
 
@@ -293,7 +292,7 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na1.translations', 'na1t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
 
         $qb = $qb
             ->andWhere(
@@ -332,7 +331,7 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na1.translations', 'na1t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
 
         $qb = $qb
             ->andWhere(
@@ -370,7 +369,7 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na1.translations', 'na1t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
 
         $qb = $qb
             ->andWhere(
@@ -408,7 +407,7 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na1.translations', 'na1t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
 
         $qb = $qb
             ->andWhere(
@@ -477,10 +476,10 @@ class NewsRepository extends EntityRepository
                 ->leftjoin('nai.translations', 'na7t')
                 ->leftjoin('nav.translations', 'na8t')
                 ->andWhere(
-                    '(na5t.locale = :locale AND na1t.status = :status_translated) OR
-                    (na6t.locale = :locale AND na2t.status = :status_translated) OR
-                    (na7t.locale = :locale AND na3t.status = :status_translated) OR
-                    (na8t.locale = :locale AND na4t.status = :status_translated)'
+                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('locale', $locale)
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED);
@@ -537,10 +536,10 @@ class NewsRepository extends EntityRepository
                 ->leftjoin('nai.translations', 'na7t')
                 ->leftjoin('nav.translations', 'na8t')
                 ->andWhere(
-                    '(na5t.locale = :locale AND na1t.status = :status_translated) OR
-                    (na6t.locale = :locale AND na2t.status = :status_translated) OR
-                    (na7t.locale = :locale AND na3t.status = :status_translated) OR
-                    (na8t.locale = :locale AND na4t.status = :status_translated)'
+                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
                 ->setParameter('locale', $locale);

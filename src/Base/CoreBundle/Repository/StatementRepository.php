@@ -29,7 +29,9 @@ class StatementRepository extends EntityRepository
             ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
 
         if ($isAdmin === true) {
-            $qb = $qb->andWhere('(na1t.locale = :locale AND na1t.slug = :statement_slug)');
+            $qb = $qb->andWhere('(na1t.locale = :locale AND na1t.slug = :statement_slug)')
+                ->setParameter('locale', $locale);
+
         } else {
             $qb = $qb
                 ->andWhere("(na1t.locale = 'fr' AND na1t.status = :status AND na1t.slug = :statement_slug)")
@@ -45,7 +47,6 @@ class StatementRepository extends EntityRepository
         $qb = $qb
             ->setParameter('statement_slug', $slug)
             ->setParameter('festival', $festival)
-            ->setParameter('locale', $locale)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site_slug', 'site-press')
             ->getQuery()
@@ -227,9 +228,8 @@ class StatementRepository extends EntityRepository
             ->where('mv.festival = :festival')
             ->andWhere('s.slug = :site')
             ->andWhere('mv.inWebTv = :inWebTv')
-            ->andWhere('mvt.locale = :locale')
-            ->andWhere('mvt.status = :status')
-            ->andWhere("wtt.locale = 'fr' AND wtt.status = :status");
+            ->andWhere('(mvt.locale = :locale AND mvt.status = :status)')
+            ->andWhere("(wtt.locale = 'fr' AND wtt.status = :status)");
 
         if ($locale != 'fr') {
             $qb = $qb

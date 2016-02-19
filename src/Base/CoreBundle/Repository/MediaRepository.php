@@ -36,6 +36,7 @@ class MediaRepository extends EntityRepository
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb
+            ->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
 
@@ -60,7 +61,7 @@ class MediaRepository extends EntityRepository
             ->leftjoin('mi.translations', 'mit')
             ->where('(m.publishedAt >= :datetime) AND (m.publishedAt < :datetime2)');
 
-        $qb = $this->addMasterQueries($qb, 'mi', $festival);
+        $qb = $this->addMasterQueries($qb, 'mi', $festival, false);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb
@@ -68,6 +69,7 @@ class MediaRepository extends EntityRepository
             ->setParameter('datetime2', $dateTime2);
 
         $qb = $qb
+            ->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
 
@@ -92,6 +94,7 @@ class MediaRepository extends EntityRepository
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb
+            ->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
 
@@ -116,6 +119,7 @@ class MediaRepository extends EntityRepository
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
         $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb
+            ->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
 

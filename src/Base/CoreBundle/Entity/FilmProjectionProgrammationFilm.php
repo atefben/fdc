@@ -57,6 +57,16 @@ class FilmProjectionProgrammationFilm
      */
     private $projection;
 
+    public function __toString()
+    {
+        if ($this->getId() && $this->getFilm() !== null) {
+            return $this->getFilm()->getTitleVO();
+        }
+
+        return '';
+    }
+
+
     /**
      * Set type
      *
