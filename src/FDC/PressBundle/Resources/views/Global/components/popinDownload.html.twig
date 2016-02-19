@@ -39,7 +39,7 @@
                         <td>{{ trans.title }}</td>
                         <td>{{ trans.file.description }}</td>
                         <td>
-                            <a href="{% path trans.file, 'reference'%}" class="button"><i class="icon icon_telecharger"></i>{{ 'press.popin.btn.telecharger'|trans }}</a>
+                            <a href="{% path trans.file, 'reference'%}" class="button" target="_blank" download><i class="icon icon_telecharger"></i>{{ 'press.popin.btn.telecharger'|trans }}</a>
                         </td>
                     </tr>
                 {% endif %}

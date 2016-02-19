@@ -12,7 +12,6 @@
 
         {% include 'FDCPressBundle:Agenda:components/calendar.html.twig' %}
 
-
         {% for section in pressHome.section %}
             {% if section.class == "communique" %}
                 {% if pressHome.sectionStatementInfoDisplay == false %}
@@ -20,7 +19,7 @@
                         <div class="chap">
                             <h3 class="title-press">{{ 'press.agenda.title.communiqueetinfos'|trans }}</h3>
                             <p class="link">
-                                <a href="press-actu.php">
+                                <a href="{{ path('fdc_press_news_list') }}">
                                     <i class="icon icon_fleche-right"></i>
                                     {{ 'press.home.btn.touslescommuniquesetinfos'|trans }}
                                 </a>
@@ -44,7 +43,7 @@
                                 <span id="dateProgram">{{ schedulingDays[0]|localizeddate('long', 'none', app.request.locale)  }}</span>
                             </h3>
                             <p class="link">
-                                <a href="programmation.php">
+                                <a href="{{ path('fdc_press_agenda_scheduling') }}">
                                     <i class="icon icon_fleche-right"></i>
                                     {{ 'press.home.btn.toutelaprogrammation'|trans }}
                                 </a>
@@ -89,7 +88,7 @@
                         <div class="chap">
                             <h3 class="title-press">{{ 'press.home.title.mediatheque'|trans }}</h3>
                             <p class="link">
-                                <a href="press-media.php">
+                                <a href="{{ path('fdc_press_media_main') }}">
                                     <i class="icon icon_fleche-right"></i>
                                     {{ 'press.home.btn.toutelamediatheque'|trans }}
                                 </a>
