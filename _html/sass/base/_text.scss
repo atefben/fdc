@@ -55,6 +55,15 @@ a {
   }
 }
 
+.single-button{
+  border-right: 1px solid $gold !important;
+  border-color: $gold;
+}
+
+.quote.italic{
+  font-family: $CamphorItalic;
+}
+
 .title {
   font-family: $Playfair;
   font-weight: 700;

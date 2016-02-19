@@ -10,7 +10,15 @@
   line-height: 40px;
   height: auto;
 }
-
+.banner-img .icon-mobile-chaines{
+  font-size: 80px;
+  text-align: center;
+  position: relative;
+  display: block;
+  color: #fff;
+  z-index: 2;
+  margin:auto;
+}
 .webtv #banner-top .banner-img, .webtv #banner-top .banner-video {
   display: none;
 }
@@ -49,6 +57,10 @@
   font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
+  display:none;
+}
+.webtv #banner-top .banner-img .banner-img-text p.show{
+  display: block;
 }
 .webtv #banner-top .banner-img p.before span{
   color: #c8a461;
@@ -169,7 +181,7 @@
   display: none;
 }
  .informations-video .program-film .contain-info {
-  
+  height: 455px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -230,14 +242,36 @@
   margin-top: 14px;
   height: auto;
 }
+.ba .slideshow .container{
+   border-bottom: 1px solid #2c2c2c;
+
+  padding:30px 40px;
+}
 .ba .slideshow .container, .channel .slideshow .container{
 
-  border-bottom: 1px solid #2c2c2c;
+ 
   width: 100%;
-  padding:30px 40px;
+  padding:30px 40px 20px;
   box-sizing:border-box;
 }
 .channel .featured-videos {
     padding-bottom: 60px;
 
+}
+.slideshow .info .category{
+  display: block;
+  width: 200px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.program-film ::-webkit-scrollbar {
+  width: 10px;
+}
+.program-film ::-webkit-scrollbar-track {
+  background-color: rgba(102, 102, 102, 0.44);
+}
+.program-film ::-webkit-scrollbar-thumb {
+  height: 10px;
+  background-color: #c8a461;
 }

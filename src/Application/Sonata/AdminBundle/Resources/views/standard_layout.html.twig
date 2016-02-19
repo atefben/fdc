@@ -31,10 +31,10 @@ file that was distributed with this source code.
             {% stylesheets
                 '@BaseAdminBundle/Resources/public/css/*.css'
             %}
-        
+
             <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
-            
+
             {% for stylesheet in admin_pool.getOption('stylesheets', []) %}
                 <link rel="stylesheet" href="{{ asset(stylesheet) }}">
             {% endfor %}
@@ -77,7 +77,7 @@ file that was distributed with this source code.
             <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
         {% endblock %}
-        
+
         {% set userSite = app.session.get('base_site') %}
         {% if userSite is not null %}
             <script type="text/javascript">
@@ -267,12 +267,74 @@ file that was distributed with this source code.
                                                                         {{ 'dashboard.link.homepage'|trans({}, 'BaseAdminBundle') }}
                                                                     </a>
                                                                 </li>
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_fdcpagewebtvlive_edit', {id: admin_fdc_page_web_tv_live_id}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.fdc_page_web_tv_live'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
                                                             {%  endif %}
-                                                            {% for admin in group.items %}
-                                                                {% if admin.hasroute('list') and admin.isGranted('LIST') %}
-                                                                    <li{% if app.request.get('_sonata_admin') == admin.code %} class="active"{% endif %}><a href="{{ admin.generateUrl('list')}}"><i class="fa fa-angle-double-right"></i> {{ admin.label|trans({}, admin.translationdomain) }}</a></li>
-                                                                {% endif %}
-                                                            {% endfor %}
+                                                            {%  if group.label != 'dashboard.group.seo' %}
+                                                                {% for admin in group.items %}
+                                                                    {% if admin.hasroute('list') and admin.isGranted('LIST') %}
+                                                                        <li{% if app.request.get('_sonata_admin') == admin.code %} class="active"{% endif %}>
+                                                                            <a href="{{ admin.generateUrl('list') }}">
+                                                                                <i class="fa fa-angle-double-right"></i> {{ admin.label|trans({}, admin.translationdomain) }}
+                                                                            </a>
+                                                                        </li>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                            {%  if group.label == 'dashboard.group.press' %}
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_presshomepage_edit', {id: admin_press_homepage_id}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.press_homepage'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_pressguide_edit', {id: admin_press_guide_id}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.press_guide'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_contactpage_edit', {id: admin_press_contact_id}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.press_contact'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_pressdownload_edit', {id: admin_press_download_id}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.press_download'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_pressmedialibrary_edit', {id: admin_press_medialibrary_id}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.press_medialibrary'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_pressaccredit_edit', {id: admin_press_accredit_id}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.press_accredit'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_presscinemamap_edit', {id: admin_press_cinemamap_id}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.press_cinemamap'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="{{ path('admin_base_core_pressprojection_edit', {id: admin_press_projection_id}) }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.press_projection'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
+                                                            {%  endif %}
                                                         </ul>
                                                     </li>
                                                 {% endif %}
@@ -293,6 +355,7 @@ file that was distributed with this source code.
                                                 </li>
                                                 {% endif %}
                                             {% endblock side_bar_li %}
+                                            {% include 'ApplicationSonataAdminBundle::group_seo.html.twig' %}
                                         </ul>
                                     {% endif %}
                                 {% endblock side_bar_nav %}
@@ -319,10 +382,8 @@ file that was distributed with this source code.
                                                 {% endif %}
                                             {% endblock %}
                                             <div class="container-fluid">
-                                                <div class="navbar-left"  {% if app.request.get('_route') in admin_routes_translation_legend %}id="fdc-list-translation-container"{% endif %}>
-                                                    {% if app.request.get('_route') in admin_routes_translation_legend %}
-                                                        {% include 'BaseAdminBundle:CRUD:list_translation_legend.html.twig' %}
-                                                    {% elseif _tab_menu is not empty %}
+                                                <div class="navbar-left">
+                                                    {% if _tab_menu is not empty %}
                                                         {{ _tab_menu|raw }}
                                                     {% endif %}
                                                 </div>

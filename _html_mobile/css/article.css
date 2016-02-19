@@ -11,10 +11,16 @@ a{
 	padding-top: 50px;
 	font-size: 0;
 }
+#player{
+    margin-bottom: 40px;
+}
 .article-title{
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
   max-height: 200px;
+  margin-bottom: 40px;
+  font-size: 20px;
+  color: #666;
 }
 .article-title .category {
   color: #c8a461;
@@ -24,6 +30,10 @@ a{
   letter-spacing: 0.1em;
   margin-right: 12px;
   text-transform: uppercase;
+  line-height: 30px;
+}
+.detail-event .article-title .category{
+    margin-right: 0;
 }
 .article-title span {
   color: #666;
@@ -41,7 +51,27 @@ a{
   margin: 15px auto 0 auto;
   text-align: center;
 }
+.text-content{
+    font-size: 24px;
+    color:#666666;
+    max-height: 1000px;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    line-height: 30px;
+    margin-bottom: 40px;
+}
+.text-content .chapeau{
 
+    font-weight: 700;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: #333;
+}
+.text-content strong{
+
+    font-weight: 700;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif; 
+    color:#333;
+}
 /*PICTOS NAV*/
 
 /*.pictos-nav{
@@ -71,6 +101,16 @@ a{
 }*/
 
 /*SECTION*/
+
+.author {
+    border-top: 1px solid #e5e5e5;
+    color: #333;
+    font-size: 0.750rem;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    margin-top: 40px;
+    padding-top: 10px;
+
+}
 
 .section{
 
@@ -165,6 +205,7 @@ a{
     font-size: 25px;
     line-height: 35px;
     padding: 40px 15px;
+    margin-bottom: 40px;
     text-align: center;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
@@ -174,6 +215,7 @@ a{
     height: 730px;
     overflow: hidden;
     background-color: #2e2e2e;
+    margin-top: 40px;
 }
 .info-film {
     background-color: #2e2e2e;
@@ -183,7 +225,7 @@ a{
 }
 .film .info-film .wrapper{
 	height: 100%;
-	margin-left: 85px;
+	margin-left: 70px;
 }
 .film .info-film .wrapper .poster {
     display: inline-block;
@@ -241,12 +283,12 @@ a{
 .film .programmation-film .wrapper {
     color: #fff;
     height: 100%;
-    margin-left: 85px;
+    margin-left: 70px;
 }
 .film .programmation-film .wrapper .category {
     color: #c8a461;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-size:15px;
+    font-size:20px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 700;
@@ -256,8 +298,8 @@ a{
 }
 .film .programmation-film .wrapper ul li {
     display: inline-block;
-    font-size: 12px;
-    width: 211px;
+    font-size: 15px;
+    width: 280px;
 }
 .film .programmation-film .wrapper ul li span {
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -272,7 +314,7 @@ a{
     color: #fff;
     display: block;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    font-size: 17px;
+    font-size: 20px;
     margin: 18px 0 40px 0;
     position: relative;
 }
@@ -291,6 +333,10 @@ a{
 }
 .film .programmation-film .wrapper .button {
     border-color: #c8a461;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: 700;
 }
 /*CREDITS AND CASTING*/
 
@@ -327,10 +373,14 @@ a{
 }
 .articles .img-container{
 
-	position: relative;
+    position: relative;
+    width: 515px;
+    height: 325px;
 }
 .articles .thumb img{
-	width: 515px;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
 }
 .articles .thumb .picto{
 	position: absolute;
@@ -377,13 +427,22 @@ a{
 	margin: 0 auto;
 	display: table;
 }
+.articles .owl-item a{
 
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+}
 
 
 
 
 /*SECTION COMPETITION*/
-/*.competition{
+.competition{
 	padding: 0;
 }
 .competition h3{
@@ -407,26 +466,33 @@ a{
   	background-size: cover;
 }
 .competition .info{
-	margin-top: 35px;
+	margin-top: 25px;
 	text-align: center;
 }
 .competition .info p{
 	text-transform: uppercase;
-	color: #000;
+	color: #c8a461;
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 	font-weight: 700;
-	font-size: 25px;
+	font-size: 23px;
 	margin-bottom: 5px;
 }
-.competition .info a{
-
-	font-size: 22px;
-	font-style: italic;
-	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+.competition .info p.subtitle{
+    font-style: normal;
+    font-size: 18px;
+}
+.competition .info span.date{
+    font-size: 20px;
+    color: #999;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    text-align: center;
+    display: block;
+    line-height: 18px;
+    margin-top: 4px;
 }
 .competition .owl-stage-outer{
 	margin-left: 0;
-}*/
+}
 
 
 

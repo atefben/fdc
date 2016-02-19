@@ -1,14 +1,50 @@
-<div class="video-player video actu_article_video">
+{% trans_default_domain 'FDCEventBundle' %}
 
-    {% set trans = news.video.findTranslationByLocale(app.request.locale) %}
+{% set file = news.video %}
+{% set trans = file.findTranslationByLocale(app.request.locale) %}
+{% if trans is null or trans.file is null %}
+    {% set trans = file.findTranslationByLocale('fr') %}
+{% endif %}
 
+{% set header = news.header %}
+{% if header is not null and header.file is not null %}
+    {% set imageTrans = news.header.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+        {% set imageTrans = news.header.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+{% if imageTrans is defined %}
+    {% set image = imageTrans.file %}
+{% else %}
+    {% set image = file.image.file %}
+{% endif %}
 
+<div class="video-container state-init video"
+     data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+     data-twitter="//www.twitter.com"
+     data-link="//www.example.com"
+     data-email="//www.gmail.com"
+    {% if playlist is defined %}
+     data-playlist='{{ playlist }}'
+    {% else %}
+     data-file='[{"file":"{% path trans.file, 'reference' %}"}]'
+    {% endif %}"
+    data-img="{% if image is defined and image is not null %}{% path image, 'reference' %}{% endif %}"
+>
 
-    <div class="image" style="background-image: url({% path trans.image, 'big' %});"></div>
-    <div class="picto"></div>
-    <div class="info">
-        <a href="{% path trans.file, 'reference' %}" class="category">{{ news.video.theme|trans_fallback('name') }}</a>
-        <span class="date">{{ news.video.theme|trans_fallback('createdAt')|date('d.m.Y') }}</span> . <span class="hour">{{ news.video.theme|trans_fallback('createdAt')|date('H:i') }}</span>
-        <p>{{ trans.title }}</p>
+    <div id="video-player-{{ trans.id }}" class="video-player">
+    </div>
+    <div class="video-overlay"></div>
+    <div class="infos-bar">
+        <div class="picto"><i class="icon icon_video"></i></div>
+        <div class="info">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <a href="{% path trans.file, 'reference' %}" class="category">{{ news.video.theme|trans_fallback('name') }}</a>
+                    <span class="date">{{ news.video.theme|trans_fallback('createdAt')|date('d.m.Y') }}</span> . <span class="hour">{{ news.video.theme|trans_fallback('createdAt')|date('H:i') }}</span>
+                    <p>{{ trans.title }}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

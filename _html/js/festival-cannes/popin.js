@@ -136,7 +136,6 @@ $(document).ready(function() {
   function linkPopinInit(){
     if($('.share').length || $('.square').length ){
 
-      console.log("11111");
       new Clipboard('.link');
       var link = document.location.href;
 
@@ -144,8 +143,6 @@ $(document).ready(function() {
 
       $('.link').on('click touchstart',function(e){
         e.preventDefault();
-
-        console.log("222222");
 
         if($('.single-channel').length){
           $('.button.email').css('border-right','1px solid #2C2C2C');

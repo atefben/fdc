@@ -75,25 +75,48 @@ $(document).ready(function() {
 
 	    sliderArticles.owlCarousel();
 
-	// var sliderCompetition = $(".competition .competition-carousel").owlCarousel({ 
-	//       nav: false,
-	//       dots: false,
-	//       smartSpeed: 500,
-	//       fluidSpeed: 500,
-	//       loop: false,
-	//       margin: 55,
-	//       autoWidth: true,
-	//       dragEndSpeed: 600,
-	//       items:1,
-	//       center:true
-	//     });
+	if($('.competition-carousel').length > 0){
 
-	//     sliderCompetition.owlCarousel();
+		var sliderCompetition = $(".competition .competition-carousel").owlCarousel({ 
+	      nav: false,
+	      dots: false,
+	      smartSpeed: 500,
+	      fluidSpeed: 500,
+	      loop: false,
+	      margin: 55,
+	      autoWidth: true,
+	      dragEndSpeed: 600,
+	      items:1,
+	      center:true
+	    });
+
+	    sliderCompetition.owlCarousel();
+	}
+
+
+
+	// INIT VIDEO PLAYER
+
+	if($("#player").length !== 0){
+		
+		var playerInstance = jwplayer("player");
+	    playerInstance.setup({
+		    file: $("#player").data('video'),
+		    image: $("#player").data('poster'),
+		    width: "100%",
+		    aspectratio: "16:9",
+		    displaytitle: false,
+		    skin: {
+			  name: "five"
+			}
+	    });
+	}
+
 
 
 	// PLAYERS AUDIO
 
-	initAudioPlayers()
+	$.initAudioPlayers(false)
 
 
 

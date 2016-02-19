@@ -37,7 +37,7 @@ class InfoInfoAssociated
     /**
      * @var Info
      *
-     * @ORM\ManyToOne(targetEntity="Info", inversedBy="associations")
+     * @ORM\ManyToOne(targetEntity="Info", inversedBy="associatedInfo")
      */
     protected $info;
 
@@ -65,6 +65,7 @@ class InfoInfoAssociated
     {
     }
 
+
     /**
      * Get id
      *
@@ -91,7 +92,7 @@ class InfoInfoAssociated
     /**
      * Get info
      *
-     * @return \Base\CoreBundle\Entity\Info 
+     * @return \Base\CoreBundle\Entity\Info
      */
     public function getInfo()
     {
@@ -114,7 +115,7 @@ class InfoInfoAssociated
     /**
      * Get association
      *
-     * @return \Base\CoreBundle\Entity\Info 
+     * @return \Base\CoreBundle\Entity\Info
      */
     public function getAssociation()
     {

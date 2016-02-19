@@ -181,14 +181,17 @@
    }
    .contain-article-invit {
      color: #ffffff;
+
      .title-list-cat {
        margin-bottom: 60px;
      }
+
      .contain-img-honneur {
        position: relative;
        width: 975px;
        margin: 0 auto;
        margin-bottom: 50px;
+
        .copy {
          position: absolute;
          bottom: 18px;
@@ -196,7 +199,62 @@
          color: #DEDEDE;
          font-size: 0.63rem;
        }
+
+       .caption{
+         font-size: .75rem;
+         font-family: $CamphorRegular;
+       }
      }
+
+      .big-txt p{
+        color: #999999;
+      }
+
+      .txt-grey-bkg-container{
+        background-color: #202020;
+
+        strong {
+            color: #fff;
+        }
+
+        p {
+            color: #999999;
+        }
+      }
+
+      .caption-article {
+        color: #999999;
+        font-size: 0.750rem;
+        margin: 10px 0 0;
+        text-align: left;
+        display: block;
+        margin: 0 auto;
+        width: 644px;
+        padding-top: 10px;
+        border-top: 1px solid #2c2c2c;
+
+        .name{
+          color:#fefefe;
+        }
+      }
+
+      .table-article {
+        th {
+             text-transform: uppercase;
+             color: #fff !important;
+         }
+         th,td{
+            border: 1px solid #2c2c2c;
+            color: #999999;
+         }
+      }
+
+      .sub-title, .sub-title2, h3.sub-title{
+        color:#fff;
+      }
+
+
+
      .pres-honneur {
        width: 975px;
        margin: 0 auto;
@@ -216,7 +274,7 @@
        font-size: 1rem;
        line-height: 26px;
        p {
-         padding: 32px 0px;
+         padding: 16px 0px;
          strong {
            color: #c8a461;
          }
@@ -232,8 +290,8 @@
        }
        .video {
          line-height: 18px;
-         padding-top: 30px;
          position: relative;
+         margin-top: 30px;
          margin-bottom: 80px;
          p {
            padding: 0px;
@@ -376,7 +434,7 @@
        }
      }
      .nav-movie.sticky{
-       z-index: 5;
+       z-index: 10;
        width: 100%;
        background-color: #1b1b1b;
      }

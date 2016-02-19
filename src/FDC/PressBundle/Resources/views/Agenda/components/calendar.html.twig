@@ -1,0 +1,24 @@
+{% trans_default_domain 'FDCPressBundle' %}
+<div id="calendar">
+    <div id="calendar-wrapper">
+        <h2 class="title-calendar">{{ 'press.home.title.monagenda'|trans }}</h2>
+        <div id="mycalendar" class="side"></div>
+        <p class="link">
+            <a href="calendar.php">
+                <i class="icon icon_fleche-right"></i>
+                {{ 'press.home.btn.toutmonagenda'|trans }}
+            </a>
+        </p>
+        <div class="drag">
+            <h2>{{ 'press.home.title.preparezvotresejour'|trans }}</h2>
+            {% image '@FDCEventBundle/Resources/public/img/svg/main-drag.svg' %}
+            <img width="43" src="{{ asset_url }}" alt="{{ 'press.home.btn.toutmonagenda'|trans }}" />
+            {% endimage %}
+            <p>
+                <strong>{{ 'press.home.label.cliquezdeposez'|trans }}</strong>
+                {{ 'press.home.text.lesevenementsdansvotreagenda'|trans }}
+            </p>
+            <a href="#" id="okDrag">{{ 'press.home.btn.ok'|trans }}</a>
+        </div>
+    </div>
+</div>

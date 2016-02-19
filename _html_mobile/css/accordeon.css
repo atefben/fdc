@@ -1,51 +1,64 @@
 .title-participate{
-	font: 1.3rem "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    color: #c1c1c1;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    color: #999999;
+    font-size: 24px;
     text-transform: uppercase;
     letter-spacing: 3px;
     width: 365px;
     display: inline-block;
     line-height: 35px;
     vertical-align: middle;
-    padding: 60px 40px 60px 40px;
+    padding: 60px 30px 60px 40px;
     font-weight: 600;
+    -moz-transition: all 0.6s ;
+    -o-transition: all 0.6s ;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s ;
 }
 .open .title-participate{
 	color:#c29f5f;
 }
 .faq-container .title-participate{
     padding: 30px 20px 30px 0;
-    width: 485px;
-    font-size: 0.9rem;
+    width: 470px;
+    font-size: 20px;
     letter-spacing: 0.02rem;
-    line-height: 20px;
+    line-height: 30px;
 }
 .faq-container .section-title{
-    border-top: 1px solid #c1c1c1;
+    max-height: 200px;
+    max-height: 500px;
+}
+
+.banner-img .title .icon_palme{
+    font-size: 80px;
+    padding-bottom: 5px;
 }
 section{
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0 40px;
+    max-height: 5000px;
 }
 .section-contain{
 	overflow: hidden;	
-	height: 0;
-/*	max-height: 0;
+    max-height: 0;
 	-moz-transition: all 0.6s ;
     -o-transition: all 0.6s ;
     -webkit-transition: all 0.6s;
-    transition: all 0.6s ;*/
+    transition: all 0.6s ;
 	/*display: none;*/
 }
 .open .section-contain{
-    /*max-height: 1000px;*/
+    max-height: 6000px;
     height: auto;
 
 }
-.section-title .icon{
+.section-title .icon, .section-title .icon-mobile-participer{
     font-size: 3rem;
-    color: #c1c1c1;
+    color: #999999;
 }
-.open .section-title .icon{
+.open .section-title .icon, .open .section-title .icon-mobile-participer{
     color:#c29f5f
 }
 .section-title .icon_case-plus{
@@ -58,7 +71,22 @@ section{
 }
 .description{
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    line-height: 25px;
     margin-bottom: 50px;
+    font-size: 24px;
+    line-height: 36px; 
 
+}
+#main{
+    background-color: #fff;
+}
+.faq-section-container{
+    display: none;
+
+}
+.faq-section-container.active{
+    display: block;
+
+}
+.faq .title{
+    font-size: 28px;
 }

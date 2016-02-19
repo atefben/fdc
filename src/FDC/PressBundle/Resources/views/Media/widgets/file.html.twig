@@ -1,0 +1,24 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
+<div class="contain-dp">
+    <div class="buttons">
+        {% if widget.secondFile is not null %}
+        <a href="{% path widget.file, 'reference' %}" class="button large">
+            <i class="icon icon_telecharger"></i>
+            {{ widget|trans_fallback('btnLabel') }}
+        </a>
+        <a href="{% path widget.secondFile, 'reference' %}" class="button large">
+            <i class="icon icon_telecharger"></i>{{ widget|trans_fallback('secondBtnLabel') }}
+        </a>
+        {% else %}
+        <a href="{% path widget.file, 'reference' %}" class="button">
+            <i class="icon icon_telecharger"></i>
+            {{ widget|trans_fallback('btnLabel') }}
+        </a>
+        {% endif %}
+    </div>
+    <p class="infos">
+        <strong>{{ 'press.home.label.miseajourle'|trans }} : </strong>
+        {{ widget.updateddAt|date('d.m.y') }} . {{ widget.updateddAt|date('H:i') }}
+    </p>
+</div>

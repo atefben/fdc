@@ -1,0 +1,38 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+<div class="slideshow">
+    {% set file = "" %}
+    <div class="slideshow-img">
+        <div class="images">
+            {% for key, photo in homeArticlesSlider %}
+                {% set trans = photo.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = gallery.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% set file = trans.file %}
+                <div class="img {% if key == 0 %}active{% endif %}">
+                    <a id="photo{{ key+1 }}" class="chocolat-image ajax" href="{% path file, '1280x808' %}" title="<span class='category'>{{ photo.theme|trans_fallback('name') }}</span><h2>{{ photo|trans_fallback('legend')  }}</h2>" data-credit="{{ photo.copyright }}">
+                        {% thumbnail file, '1760x1108' with {'alt': trans.alt} %}
+                    </a>
+                </div>
+            {% endfor %}
+
+        </div>
+        <div class="owl-carousel thumbnails">
+            {% for key, photo in homeArticlesSlider %}
+                {% set trans = photo.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = gallery.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% set file = trans.file %}
+                <div data-id="photo{{ key+1 }}" class="thumb {% if key == 0 %}active{% endif %}">
+                    {% thumbnail file, '194x128' %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <h3>Portfolio du jour</h3>
+    <p class="caption">A dynamiser</p>
+
+</div>
+

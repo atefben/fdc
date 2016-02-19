@@ -1,4 +1,7 @@
-.press{
+section{
+	clear: both;
+}
+.press, .programmation-press, .calendar-press{
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 h3{
@@ -40,9 +43,16 @@ p{
 	font-size: 20px;
 	margin:-5px 10px 0 0;
 }
+
+.header-press{
+	clear: both;
+}
 .header-press .container{
 
 	padding: 60px 0 90px 0;
+}
+.programmation-press .header-press .container{
+	padding: 60px 0 30px 0;
 }
 .header-press h2{
 
@@ -53,6 +63,23 @@ p{
     letter-spacing: -1px;
     text-transform: uppercase;
     margin-bottom: 40px;
+}
+.header-press .container .button{
+
+    display: block;
+    width: 390px;
+    height: 60px;
+    margin-bottom: 30px;
+    font-size: 17px;
+    line-height: 60px;
+    border-color: #c8a461;
+    font-weight: 700;
+    border-right: 1px solid #c8a461;
+    letter-spacing: 0;
+    font-family: "Camphor W01 Bold Bold", Arial, Helvetica, sans-serif;
+} 
+.header-press .container .button .icon{
+	margin-right: 10px;
 }
 .title-section{
 	box-sizing: border-box;
@@ -123,7 +150,16 @@ p{
     font-weight: 700;
     margin-left: 20px;
 }
+.locked form.error input[type="password"] {
 
+	border: 2px solid #e93939;
+}
+
+/*CALENDAR*/
+.press .contain-section .calendar .timeCol, .press .contain-section .calendar .venues{
+	height: 1150px;
+    overflow-y: hidden;
+}
 /*COMM & INFOS*/
 .communiques-carousel{
 	margin:40px 0;
@@ -147,10 +183,21 @@ p{
 .communiques-carousel .img-container{
 
 	position: relative;
-}
-.communiques-carousel .thumb img{
 	width: 455px;
+	height: 270px;
+
 }
+.communiques-carousel .img-container img{
+	
+	width: 100%;
+	height: 100%;
+	object-fit:cover;
+
+}
+
+/*.communiques-carousel .thumb img{
+	width: 100%;
+}*/
 .communiques-carousel .thumb .picto{
 	position: absolute;
 	width: 70px;
@@ -163,10 +210,10 @@ p{
 	color:#c8a461;
 	font-size: 30px;
 }
-.communiques-carousel .thumb.communique .picto{
+.communiques-carousel .thumb.communique .picto, .communique .picto{
 	background-color: #c8a461;
 }
-.communiques-carousel .thumb.communique .picto .icon{
+.communiques-carousel .thumb.communique .picto .icon, .communique .picto .icon{
 	color:#000;
 }
 .communiques-carousel  .info{
@@ -290,7 +337,7 @@ p{
 	margin:60px 0;
 }
 .downloads .portrait{
-	width: 470px;
+	width: 480px;
 	margin: 0 auto;
 }
 .downloads img{
@@ -310,6 +357,7 @@ p{
 	width: 305px;
 	margin: 0 auto;
 	line-height: 18px;
+	max-height: 100px;
 }
 .downloads .landscape .caption{
 	width: 540px;
@@ -317,25 +365,41 @@ p{
 .downloads .type-format{
 
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 20px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 700;
     margin:40px 0 30px 0;
+    max-height: 80px;
 }
 .downloads .button-locked{
 	color:#b0b0b0;
 }
-.downloads .buttons-unlocked .button{
+.downloads .buttons-unlocked .button, .downloads .button-already-unlocked{
 	border: 1px solid #c8a461;
 	border-right:none;
 }
-.downloads .buttons-unlocked .button:last-child{
+.downloads .buttons-unlocked .button:last-child, .downloads .button-already-unlocked:last-child{
 	border-right: 1px solid #c8a461;
+}
+.press-locked .buttons-unlocked, .press_medias.press-locked .buttons-unlocked{
+
+
+	display: none;
+}
+.press-unlocked .buttons-locked, .press_medias.press-unlocked .buttons-locked{
+	display: none;
+}
+
+.button-locked:hover{
+	background-color: #fff;
+    border-color: #000;
+    border-right: 1px solid #000;
+    color: #000;
 }
 .downloads .buttons{
 	text-align: left;
- 	width: 470px;
+ 	width: 480px;
  	margin: 0 auto 60px auto;
 }
 .downloads .button{
@@ -354,13 +418,9 @@ p{
 	margin-right: 20px;
 }
 
-.press-locked .buttons-unlocked{
+/*FILTERS*/
 
-	display: none;
-}
-.press-unlocked .buttons-locked{
-	display: none;
-}
+
 /*BANNER IMG*/
 .banner-img:before
 {
@@ -381,10 +441,12 @@ p{
 .statistics .contain-section p{
 	font-size: 19.5px;
 	line-height: 30px;
+	max-height: 1000px;
 
 }
 
 /*CONTACT*/
+
 .contact .title-section h3{
 
 	text-align: center;
@@ -401,6 +463,7 @@ p{
 	padding: 0 40px;
 	border-bottom: 1px solid #d6d6d6;
 	overflow: hidden;
+	max-height: 1000px;
 }
 .sub-section .title-section{
 	text-transform: inherit;
@@ -434,7 +497,8 @@ p{
 }
 .contact-content strong{
 	font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
-	font-size: 15px;
+	font-size: 22px;
+	font-weight: 600;
 }
 .contact-content p{
 	margin-bottom: 30px;
@@ -444,21 +508,22 @@ p{
 	color:#c8a461;
 	font-family: "Camphor W01 Bold Bold", Arial, Helvetica, sans-serif;
 	font-weight: 700;
+	letter-spacing: 0.5px;
 }
 .contact{
 	text-align: center;
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .contact .button{
 
 	margin:60px auto;
-	font-size: 25px;
 	font-weight: 700;
     border: 1px solid #c8a461;
     height: 75px;
     line-height: 75px;
     box-sizing: border-box;
     padding: 0 30px;
-    font-size: 22px;
+    font-size: 20px;
 
 
 }
@@ -475,7 +540,7 @@ p{
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: 20;
+    z-index: 51;
 }
 
 #popin-press {
@@ -535,6 +600,10 @@ p{
     font-weight: 700;
     margin-left: -1px;
 }
+#popin-press form.error input[type="password"] {
+
+	border: 2px solid #e93939;
+}
 #popin-press h3{
 	font-size: 20px;
 }
@@ -542,4 +611,23 @@ p{
     top: 90px;
     right: 40px;
 
+}
+.read-more{
+	margin-bottom: 40px;
+	box-sizing: border-box;
+}
+.locked.valid{
+	height: auto;
+}
+.locked .press_confirmation{
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	    color: #c8a461;
+    font-size: 25px;
+    font-weight: 700;    
+    line-height: 35px;
+    box-sizing: border-box;
+    padding: 0 30px;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
 }

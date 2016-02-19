@@ -1,11 +1,6 @@
-// Todo generate structure à la volée
-// playlist à la volée
-
-var play1, play2, play3;
-
-var d  = document,
-    w  = window,
-    k  = k || new Konsole('fdc.2016', true),
+var d = document,
+    w = window,
+    k = k || new Konsole('fdc.2016', true),
     timeout = 1000,
     thread,
     controlBar =
@@ -39,37 +34,63 @@ var d  = document,
             <a href="#" class="channels"><i class="icon icon_playlist"></i></a>\
             <div class="info"></div>\
             <div class="buttons square">\
-            <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700\');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>\
-                <a href="#" onclick="window.open(\'https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride\',\'\',\'width=600,height=400\')" class="button twitter"><i class="icon icon_twitter"></i></a>\
+            <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>\
+                <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a>\
                 <a href="#" class="button link"><i class="icon icon_link"></i></a>\
                 <a href="#" class="button email"><i class="icon icon_lettre"></i></a>\
+            </div>\
+        </div>',
+    slider =
+        '<div class="channels-video">\
+            <div class="slider-channels-video owl-carousel sliderDrag">\
+            </div>\
+        </div>',
+    slide =
+        '<div class="channel video shadow-bottom">\
+            <div class="image-wrapper">\
+                <img src="" alt="" width="293" height="185">\
+            </div>\
+            <a class="linkVid" href="#"></a>\
+            <div class="info">\
+                <div class="picto"><i class="icon icon_playlist"></i></div>\
+                    <div class="info-container">\
+                        <div class="vCenter">\
+                            <div class="vCenterKid">\
+                            <a href="#" class="category"></a>\
+                            <span></span>\
+                            <p>Sils Maria</p>\
+                        </div>\
+                    </div>\
+                </div>\
             </div>\
         </div>';
 
 function playerInit(id, cls, havePlaylist, live) {
-    cls = cls || '.video-player';
+    cls          = cls || 'video-player';
     havePlaylist = havePlaylist || false;
-    live = live || false;
+    live         = live || false;
     var tmp;
 
     if (id) {
         var videoPlayer = jwplayer(id);
         if(!$(videoPlayer).data('loaded')) {
-            player($("#"+id)[0], videoPlayer, cls, havePlaylist, live, function(vid){
+            playerLoad($("#"+id)[0], videoPlayer, havePlaylist, live, function(vid) {
                 $(vid).data('loaded', true);
                 tmp = vid;
             });
+        } else {
+            tmp = videoPlayer
         }
         return tmp;
     } else {
         tmp = [];
-        $(cls).each(function(i,v) {
+        $("."+cls).each(function(i,v) {
             // k.log("",this);
             // k.log("",this.className);
             // k.log("",this.id);
             var videoPlayer  = jwplayer(this.id);
             if(!$(videoPlayer).data('loaded')) {
-                player(this, videoPlayer, cls, havePlaylist, live, function(vid){
+                playerLoad(this, videoPlayer, havePlaylist, live, function(vid) {
                     $(vid).data('loaded', true);
                     tmp[i] = vid;
                 });
@@ -81,7 +102,7 @@ function playerInit(id, cls, havePlaylist, live) {
     }
 };
 
-function player(vid, playerInstance, cls, havePlaylist, live, callback) {
+function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     var $container    = $("#"+vid.id).closest('.video-container');
     $container.append(controlBar);
     $(topBar).insertAfter($container.find('#'+vid.id));
@@ -100,15 +121,6 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
     $topBar.find('.buttons .twitter').attr('href', $container.data('twitter'));
     $topBar.find('.buttons .link').attr('href', $container.data('link'));
     $topBar.find('.buttons .email').attr('href', $container.data('email'));
-
-    if (!havePlaylist) {
-        $topBar.find('.channels').remove();
-    }
-
-    if (live) {
-        $container.find('.time').addClass('hide');
-        $container.find('.progress').addClass('hide');
-    }
 
     function updateVolume(x, vol) {
         var volume = $sound.find('.sound-bar'),
@@ -150,11 +162,11 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
     function mouseMoving(listen) {
         if(listen) {
             $container.on('mousemove', function(event) {
-                k.log('mousemove');
+                // k.log('mousemove');
                 $container.removeClass('control-hide');
                 clearTimeout(thread);
                 thread = setTimeout(function() {
-                    k.log('mouse stopped');
+                    // k.log('mouse stopped');
                     $container.addClass('control-hide');
                 }, timeout);
             });
@@ -174,75 +186,122 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
           loop: false,
           margin: 80,
           autoWidth: true,
-          // onInitialized: function() {
-          //   $('.slider-channels-video .owl-stage').css({ 'margin-left': "-343px" });
-          //   k.log('TEEEEEEEST');
-          // }
         });
 
         sliderChannelsVideo.owlCarousel();
         sliderChannelsVideo.on('click', '.linkVid', function() {
-            k.log('', $(this).closest('.owl-item').index());
-
             playerInstance.playlistItem($(this).closest('.owl-item').index());
+
+            var infos = $.parseJSON($(this).closest('.channel.video').data('json'));
+            $topBar.find('.info .category').text(infos.category);
+            $topBar.find('.info p').text(infos.name);
+
             $container.find('.channels-video').removeClass('active');
             $container.find('.jwplayer').removeClass('overlay-channels');
+
+            sliderChannelsVideo.trigger('to.owl.carousel',[$(this).closest('.owl-item').index(),1,true]);
+            if($('#slider-trailer').length > 0) {
+                sliderTrailerVideo = $('#slider-trailer').owlCarousel();
+                sliderTrailerVideo.trigger('to.owl.carousel',[$(this).closest('.owl-item').index(),1000,true]);
+            }
+            if($('#slider-movie-videos').length > 0) {
+                sliderMovieVideo = $('#slider-movie-videos').owlCarousel();
+                sliderMovieVideo.trigger('to.owl.carousel',[$(this).closest('.owl-item').index(),1000,true]);
+            }
+
+            if($('#gridVideos')) {
+                var item = $('#gridVideos .item')[$(this).closest('.owl-item').index()];
+                var vid  = $(item).data('vid');
+
+                var newURL = window.location.href.split('#')[0] + '#vid=' + vid;
+                history.replaceState('', document.title, newURL);
+            }
         });
+
+        if($('#slider-trailer').length > 0) {
+            $('body').on('click', '#slider-trailer .owl-item', function(e) {
+                playerInstance.playlistItem($(this).index());
+
+                var infos = $.parseJSON($(sliderChannelsVideo.find('.channel.video')[$(this).closest('.owl-item').index()]).data('json'));
+                $topBar.find('.info .category').text(infos.category);
+                $topBar.find('.info p').text(infos.name);
+
+                $container.find('.channels-video').removeClass('active');
+                $container.find('.jwplayer').removeClass('overlay-channels');
+
+                sliderChannelsVideo.trigger('to.owl.carousel',[$(this).index(),1000,true]);
+            });
+        }
+
+        if($('#slider-movie-videos').length > 0) {
+            $('body').on('click', '#slider-movie-videos .owl-item', function(e) {
+                playerInstance.playlistItem($(this).index());
+
+                var infos = $.parseJSON($(sliderChannelsVideo.find('.channel.video')[$(this).closest('.owl-item').index()]).data('json'));
+                $topBar.find('.info .category').text(infos.category);
+                $topBar.find('.info p').text(infos.name);
+
+                $container.find('.channels-video').removeClass('active');
+                $container.find('.jwplayer').removeClass('overlay-channels');
+
+                sliderChannelsVideo.trigger('to.owl.carousel',[$(this).index(),1000,true]);
+            });
+        }
     }
 
     playerInstance.setup({
+        // file: $container.data('file'),
+        sources: $container.data('file'),
+        image: $container.data('img'),
         primary: 'html5',
         aspectratio: '16:9',
         width: $(vid).parent('div').width(),
         height: $(vid).parent('div').height(),
-        controls: false,
-        playlist: [ //TODO change all link//
-            {
-                // file: 'https://www.youtube.com/watch?v=p7t_GWXmgFk',
-                file: './files/mov_bbb.mp4',
-                image: '//dummyimage.com/960x540/000/c8a461.png'
-            }, {
-                file: 'https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s',
-            }, {
-                file: 'https://www.youtube.com/watch?v=NtDG-Cnj-pw',
-                title: 'Video 1'
-            }, {
-                file:'https://www.youtube.com/watch?v=4QmpYuVEwIU',
-                title:'Video 2'
-            }, {
-                file:'https://www.youtube.com/watch?v=YvjBXpmwhmk',
-                title:'Video 3'
-            }
-        ]
+        controls: false
     });
 
-    if (live) {
-        // playerInstance.load([{file:$container.data('video')}]);
-        // playerInstance.load({
-        //     playlist: [ //TODO change all link//
-        //         {
-        //             // file: 'https://www.youtube.com/watch?v=p7t_GWXmgFk',
-        //             file: './files/mov_bbb.mp4',
-        //             image: '//dummyimage.com/960x540/000/c8a461.png'
-        //         }, {
-        //             file: 'https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s',
-        //         }, {
-        //             file: 'https://www.youtube.com/watch?v=NtDG-Cnj-pw',
-        //             title: 'Video 1'
-        //         }, {
-        //             file:'https://www.youtube.com/watch?v=4QmpYuVEwIU',
-        //             title:'Video 2'
-        //         }, {
-        //             file:'https://www.youtube.com/watch?v=YvjBXpmwhmk',
-        //             title:'Video 3'
-        //         }
-        //     ]
-        // });
+    if (havePlaylist) {
+        var tempSlider = $(slider),
+            playlist   = [];
+
+        if (havePlaylist === "grid") {
+            $.each($('#gridVideos .item'), function(i,p) {
+                var tempList = {
+                    "sources"  : $(p).data('file'),
+                    "image"    : $(p).data('img'),
+                    "name"     : $(p).find('.info .category').text(),
+                    "category" : $(p).find('.info p').text()
+                }
+                playlist.push(tempList);
+            });
+        } else if (typeof $container.data('playlist') != "undefined") {
+            playlist = $container.data('playlist');
+        }
+
+        $.each(playlist, function(i,p) {
+            var tempSlide = $(slide);
+            tempSlide.find('.image-wrapper img').attr('src',p.image);
+            tempSlide.find('.info-container .category').text(p.category);
+            tempSlide.find('.info-container p').text(p.name)
+            tempSlide.data('json', JSON.stringify(p));
+            tempSlider.find('.slider-channels-video').append(tempSlide);
+        });
+        tempSlider.insertAfter($topBar);
+        initChannel();
+        playerInstance.load(playlist);
+    } else {
+        $topBar.find('.channels').remove();
     }
 
+    if (live) {
+        $container.find('.time').addClass('hide');
+        $container.find('.progress').addClass('hide');
+        $topBar.find('.channels').remove();
+    }
+
+
     playerInstance.on('ready', function() {
-        this.setVolume(100)
-        initChannel();
+        this.setVolume(100);
         externeControl();
     }).on('play', function() {
         $container.removeClass('state-init').removeClass('state-complete');
@@ -265,11 +324,9 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
         duration_secs = Math.floor(_duration - duration_mins * 60);
         $durationTime.html(duration_mins + ":" + duration_secs);
     }).on('bufferChange', function(e) {
-        // k.log("buffer", e);
         var currentBuffer = e.bufferPercent;
         $progressBar.find('.buffer-bar').css('width', currentBuffer+'%');
     }).on('time', function(e) {
-        // k.log("time progress", e);
         if (_duration == 0) {
             duration_mins = Math.floor(e.duration / 60);
             duration_secs = Math.floor(e.duration - duration_mins * 60);
@@ -310,7 +367,7 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
         // $(this).off('click');
     });
 
-    $sound.on('click', '.sound-btn', function() {
+    $sound.on('click', '.icon_son', function() {
         updateMute();
     });
 
@@ -348,12 +405,23 @@ function player(vid, playerInstance, cls, havePlaylist, live, callback) {
         }, true);
     }
 
-    // return playerInstance;
     callback(playerInstance);
 };
 
 $(d).ready(function() {
-    // play1 = playerInit('video-player', false, $('#video-player').data('playlist'), false);
-    // play2 = playerInit(false, '.video-player', true, false);
-    // play3 = playerInit(false, 'video-live', false, true);
+    // if($('#video-player-pl').length > 0) {
+    //     videoPlayer = playerInit('video-player-pl', false, true);
+    // }
+
+    if($('#video-player-ba').length > 0) {
+        videoMovieBa = playerInit('video-player-ba', false, true)
+    }
+
+    if($('.video-player').length > 0) {
+        videoPlayer = playerInit(false, 'video-player', false);
+    }
+
+    if($('.video-player-pl').length > 0) {
+        videoPlayer = playerInit(false, 'video-player-pl', true);
+    }
 });

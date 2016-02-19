@@ -3,152 +3,50 @@
 
 {% block body %}
 
-    <div id="main" class="press loading downloading-press lock ">
+    <div id="main" class="press loading downloading-press {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }} ">
 
         {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 
         <div class="downloading-nav">
             <ul>
-                {% for key,section in pressDownloads.section %}
+                {% for key,s in pressDownloads %}
                     <!-- Don't change ID value -->
-                    <li><a href="#{{ section.slug }}" class="ajax {% if key == 0 %}active{% endif %}">{{ section.title }}</a></li>
+                    <li><a href="#{{ s.section|trans_fallback('slug') }}" class="ajax {% if key == 0 %}active{% endif %}">{{ s.section|trans_fallback('title') }}</a></li>
                 {% endfor %}
-
             </ul>
         </div>
 
         <div class="wrapper">
-            {% for section in pressDownloads.section %}
+            {% for k,s in pressDownloads %}
+                {% set slugSplit = s.section|trans_fallback('slug')|split('-', 2) %}
+                <div class="{{ attribute(slugSplit, 0) }} {% if k == 0 %} {% elseif k == 3 %} block slideshow {% else %} block {% endif %}" id="{{ s.section|trans_fallback('slug') }}">
+                    <div class="container">
+                        {% if attribute(slugSplit, 0) != "photos" %}
+                            <h3 class="title-press">{{ s.section|trans_fallback('title') }}</h3>
+                        {% endif %}
 
-                <!-- AFFICHE OFFICIELLE -->
-                {% if section.slug == "affiche-officielle" %}
-                    <div class="affiche" id="{{ section.slug }}">
-                        <div class="container">
-                            <h3 class="title-press">{{ section.title }}</h3>
+                        {% for key,widget in s.section.widgets %}
+                            {% if class(widget) == "PressDownloadSectionWidgetDocument" %}
+                                {% if widget.file.contentType == "application/zip" or
+                                widget.secondFile.contentType == "application/zip"
+                                %}
+                                    {% include 'FDCPressBundle:Media:widgets/archive.html.twig' %}
+                                {% else %}
+                                    {% include 'FDCPressBundle:Media:widgets/document.html.twig' %}
+                                {% endif %}
+                            {% elseif class(widget) == "PressDownloadSectionWidgetFile" %}
+                                {% include 'FDCPressBundle:Media:widgets/file.html.twig' %}
+                            {% elseif class(widget) == "PressDownloadSectionWidgetPhoto" %}
+                                {% include 'FDCPressBundle:Media:widgets/photo.html.twig' %}
+                            {% elseif class(widget) == "PressDownloadSectionWidgetVideo" %}
+                                {% include 'FDCPressBundle:Media:widgets/video.html.twig' %}
+                            {% endif %}
+                        {% endfor %}
 
-                            {% for poster in section.poster %}
-                                <div class="{{ poster.format.slug }}">
-                                    <img src="{{ poster.image.path }}" alt="" />
-                                    <span class="caption">{{ poster.image.caption }}</span>
-                                    <p>Format portrait</p>
-                                    <div class="buttons active-btn"> <!-- TODO enlever le active-btn, juste test -->
-                                        {% for info in poster.format.info %}
-                                            <a href="{{ info.link }}" class="button">{{ info.title }}</a>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            {% endfor %}
 
-                        </div>
                     </div>
+                </div>
 
-                <!-- SIGNATURES -->
-                {% elseif section.slug == "signature" %}
-                    <div class="signature block" id="{{ section.slug }}">
-                        <div class="container">
-                            <h3 class="title-press">{{ section.title }}</h3>
-
-                            {% for signature in section.signature %}
-                                <div class="imgs-container first">
-                                    <div class="container-img">
-                                        <img src="{{ signature.image.path }}" alt="">
-                                    </div>
-                                    <span class="caption">{{ signature.image.caption }}</span>
-                                    <div class="infos">
-                                        <h4>{{ signature.title }}</h4>
-                                        <ul>
-                                            {% for info in signature.info %}
-                                                <li>{{ info.content }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                    <div class="buttons">
-                                        <a href="{{ signature.link }}" class=" button">{{ 'download.btn.touttelecharger'|trans }}</a>
-                                    </div>
-                                </div>
-                            {% endfor %}
-
-                        </div>
-                    </div>
-
-                <!-- ANIMATIONS -->
-                {% elseif section.slug == "animation" %}
-                    <div class="animation block" id='{{ section.slug }}'>
-                        <div class="container">
-                            <h3 class="title-press">{{ section.title }}</h3>
-                            <div class="contain-player">
-                                <div class="player">
-                                    <img src="{{ section.video.path }}" alt="{{ section.title }}">
-                                </div>
-                                <span class="caption">
-                                    {{ section.video.caption }}
-                                </span>
-                                <div class="buttons">
-                                    {% for format in section.video.format %}
-                                        <a href="{{ format.link }}" class="{{ format.slug }} extention button">{{ format.name }}</a>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                <!-- PHOTOS INSTITUTIONNELLES -->
-                {% elseif section.slug == "photos-institutionnelles" %}
-                    <div class="photos block slideshow"  id='{{ section.slug }}'>
-                        <div class="container">
-                            <div class="container-title">
-                                <h3 class="title-press">{{ section.title }} <span class="number">({{ section.photo|length }})</span></h3>
-                                <div class="right-btn buttons">
-                                    <a href="{{ section.link }}" class="alldl button">{{ 'download.btn.touttelecharger'|trans }}</a>
-                                </div>
-                            </div>
-                            <div class="gridPressDownload grid-wrapper images">
-                                <div class="grid-sizer"></div>
-
-                                {% for photo in section.photo %}
-                                    <div class="item">
-                                        <a href="{{ photo.large }}" class="chocolat-image ajax" title='<h2>{{ photo.title }}</h2>' data-credit="{{ photo.credit }}">
-                                            <img src="{{ photo.path }}"  title='<h2>{{ photo.title }}</h2>' data-credit="{{ photo.credit }}" alt="" class="chocolat-image ajax">
-                                        </a>
-                                    </div>
-                                {% endfor %}
-
-                                <div class="owl-carousel thumbnails">
-                                    {% for key,photo in section.photo %}
-                                        <div data-id="photo1" class="thumb {% if key == 0 %}active{% endif %}" data-caption="<strong>{{ photo.title }}</strong>">
-                                            <img src="{{ photo.thumb }}" />
-                                        </div>
-                                    {% endfor %}
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                <!-- DOSSIER DE PRESSE -->
-                {% elseif section.slug == "dossier-presse" %}
-                    <div class="dossier block" id='{{ section.slug }}'>
-                        <div class="container">
-                            <h3 class="title-press">{{ section.title }}</h3>
-                            {% for category in section.category %}
-                                <div class="contain-dp">
-
-                                    <div class="buttons">
-                                        {% for file in category.file %}
-                                            <div class="button {% if category.file|length > 1 %}large{% endif %}">
-                                                <a href="{{ file.link }}" class="download ">{{ file.title }}</a>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-
-                                    <p class="infos"><strong>{{ 'download.label.misajour'|trans }} :</strong>
-                                        {{ category.updatedAt|date('d.m.y') }} . {{ category.updatedAt|date('H:i') }}
-                                    </p>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endif %}
             {% endfor %}
 
            {{ render(controller('FDCPressBundle:Global:contact')) }}

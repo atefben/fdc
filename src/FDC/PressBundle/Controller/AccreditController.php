@@ -5,6 +5,7 @@ namespace FDC\PressBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 /**
@@ -20,6 +21,24 @@ class AccreditController extends Controller
      */
     public function mainAction()
     {
+
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
+
+        // GET ACCREDIT PAGE
+        $accredit = $em->getRepository('BaseCoreBundle:PressAccredit')->findOneBy(array(
+            'festival' => $settings->getFestival()->getId()
+        ));
+
+        if ($accredit === null) {
+            throw new NotFoundHttpException();
+        }
 
         $headerInfo = array(
             'title' => 'S\'accréditer',
@@ -212,7 +231,7 @@ class AccreditController extends Controller
 
         return array(
             'headerInfo' => $headerInfo,
-            'commonContent' => $commonContent,
+            'accredit' => $accredit,
             'sectionContent' => $sectionContent
         );
 

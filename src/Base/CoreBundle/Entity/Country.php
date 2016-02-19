@@ -41,7 +41,7 @@ class Country implements TranslateMainInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=3)
+     * @ORM\Column(type="string", length=3, nullable=true)
      *
      * @Groups({
      *  "film_list", "film_show",
@@ -104,7 +104,13 @@ class Country implements TranslateMainInterface
     
     public function __toString()
     {
-        return $this->getIso();
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string = (string)$this->getISO();
+        }
+
+        return $string;
     }
 
     /**

@@ -4,9 +4,16 @@
     <div>
         {% set trans = object.findTranslationByLocale('fr') %}
         {% if trans and trans.slug %}
-            <a target="_blank" href="{{  url('fdc_event_news_get', { slug: trans.slug }) }}"
+            {% if class(object) == "StatementArticle" %}
+            <a target="_blank" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">
                 <i class="fa fa-search"></i>
             </a>
+            {% else %}
+            <a target="_blank" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                <i class="fa fa-search"></i>
+            </a>
+            {% endif %}
+
         {% endif %}
     </div>
 {% endblock %}

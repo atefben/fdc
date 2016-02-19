@@ -89,10 +89,27 @@
 .grid-item .infos p{
 	line-height: 1.5rem;
 	color:#fff;
-	font-size: 1.5rem;
-	font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
-
+	font-size: 20px;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: 700;
   max-width: 185px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+.grid-item .infos p.movie-title{
+  margin-top: 8px;
+  font-size: 24px;
+}
+.grid-item .infos span{
+    color: #c8a461 ;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    display: inline-block;
+    margin-top: 5px;
+    font-style: italic;
+    font-size: 20px;
+      max-width: 185px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -105,6 +122,7 @@
 
 .grid-item .right{
 	float: left;
+  max-height: 70px;
 }
 
 .grid-item:before {
@@ -120,5 +138,14 @@
   left:0;
   z-index: 1;
 }
+.grid-item a{
 
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+}
 /* ************** */

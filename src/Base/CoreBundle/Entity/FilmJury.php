@@ -335,4 +335,37 @@ class FilmJury implements TranslateMainInterface
     {
         return $this->position;
     }
+
+    /**
+     * Add medias
+     *
+     * @param \Base\CoreBundle\Entity\FilmMedia $medias
+     * @return FilmJury
+     */
+    public function addMedia(\Base\CoreBundle\Entity\FilmMedia $medias)
+    {
+        $this->medias[] = $medias;
+
+        return $this;
+    }
+
+    /**
+     * Remove medias
+     *
+     * @param \Base\CoreBundle\Entity\FilmMedia $medias
+     */
+    public function removeMedia(\Base\CoreBundle\Entity\FilmMedia $medias)
+    {
+        $this->medias->removeElement($medias);
+    }
+
+    /**
+     * Get medias
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMedias()
+    {
+        return $this->medias;
+    }
 }

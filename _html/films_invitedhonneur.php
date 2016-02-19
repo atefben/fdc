@@ -61,8 +61,7 @@
             <h2 class="title-big">Lumière sur deux réalisateurs</h2>
             <div class="buttons">
               <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>
-              <a href="#" class="button print"><i class="icon icon_print"></i>
-    Imprimer</a>
+              <a href="#" class="button print"><i class="icon icon_print"></i>Imprimer</a>
             </div>
           </div>
           <div class="contain-article-invit">
@@ -71,25 +70,40 @@
             </div>
             <div class=" contain-img-honneur">
               <img src="img/films/image-invitespecial.jpg" alt="invite d honneur" class="photo-realisateur">
-              <span class="copy"> © Lorem ipsum.</span>
+              <span class="copy">Lorem ipsum.</span>
             </div>
             <p class="pres-honneur">Cannes Classics 2015 est placé sous l'égide de Costa-Gavras qui en sera l'invité d'honneur. Palme d’or avec <a href="#">Missing</a> en 1982, membre du Jury en 1976 (il récompensa <a href="#">Taxi Driver</a>), Prix de la mise en scène avec <a href="#">Section spéciale</a> en 1975, c’est en sa présence que sera projeté Z, Prix du Jury en 1969.</p>
             <div class="small-pres">
               <h3><strong>Z</strong> (19968, 2h07)</h3>
               <p>Présenté par KG Productions avec le soutien du CNC. Négatif original numérisé en 4K et restauré image par image en 2K par Eclair Group et par LE Diapason pour le son. Restauration et étalonnage supervisés par Costa-Gavras.</p>
               <h4>Redécouvrez la bande-annonce du film lors de sa sortie en salles:</h4>
-              <div class="shadow-bottom video w2 video-player">
-                <img src="img/films/cover-invitespecial.jpg" alt="">
-                <div class="picto"><i class="icon icon_video"></i></div>
-                <div class="info">
-                  <div class="vCenter">
-                    <div class="vCenterKid">
-                      <a href="#" class="category">Cannes Classic</a><span class="date">18.05.15 . 09:00</span>
-                      <p>La Bande Annonce de Z</p>
+              <div class="video-container state-init video shadow-bottom"
+                data-facebook="//www.facebook.com"
+                data-twitter="//www.twitter.com"
+                data-link="//www.example.com"
+                data-email="//www.gmail.com"
+                data-file='[{"file":"./files/mov_bbb.mp4"}]'
+                data-img="img/films/cover-invitespecial.jpg">
+                <div id="video-player-123" class="video-player">
+                </div>
+                <div class="video-overlay"></div>
+                <div class="infos-bar">
+                  <div class="picto"><i class="icon icon_video"></i></div>
+                  <div class="info">
+                    <div class="vCenter">
+                      <div class="vCenterKid">
+                        <a href="#" class="category">Cannes Classic</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                        <p>La Bande Annonce de Z</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function() {
+                  player = playerInit(false, 'video-player');
+                });
+              </script>
             </div>
             <div class="title-list-cat">
               <h2 class="title">Woody Allen</h2>
@@ -105,18 +119,33 @@
               <h3><strong>Minuits à Paris</strong> (2011, 1h45)</h3>
               <p>Un jeune couple d’américains dont le mariage est prévu à l’automne se rend pour quelques jours à Paris. La magie de la capitale ne tarde pas à opérer, tout particulièrement sur le jeune homme amoureux de la Ville-lumière et qui aspire à une autre vie que la sienne.</p>
               <h4>Redécouvrez la bande-annonce du film lors de sa sortie en salles:</h4>
-              <div class="shadow-bottom video w2 video-player">
-                <img src="img/films/cover-invitespecial2.jpg" alt="">
-                <div class="picto"><i class="icon icon_video"></i></div>
-                <div class="info">
-                  <div class="vCenter">
-                    <div class="vCenterKid">
-                      <a href="#" class="category">Cannes Classic</a><span class="date">18.05.15 . 09:00</span>
-                      <p>La Bande Annonce de Minuit à Paris</p>
+              <div class="video-container state-init video shadow-bottom"
+                data-facebook="//www.facebook.com"
+                data-twitter="//www.twitter.com"
+                data-link="//www.example.com"
+                data-email="//www.gmail.com"
+                data-file='[{"file":"./files/mov_bbb.mp4"}]'
+                data-img="img/films/cover-invitespecial2.jpg">
+                <div id="video-player-456" class="video-player">
+                </div>
+                <div class="video-overlay"></div>
+                <div class="infos-bar">
+                  <div class="picto"><i class="icon icon_video"></i></div>
+                  <div class="info">
+                    <div class="vCenter">
+                      <div class="vCenterKid">
+                        <a href="#" class="category">Cannes Classic</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                        <p>La Bande Annonce de Minuit à Paris</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function() {
+                  player = playerInit(false, 'video-player');
+                });
+              </script>
             </div>
             <div class="audio-player audio" data-sound="img/article/sound.mp3">
               <div class="image" style="background-image: url(img/slide001.jpg);"></div>
@@ -295,8 +324,8 @@
             <div class="share">
               <p>Partagez l'article</p>
               <div class="buttons square">
-                <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-                <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i>
+                <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+                <a  href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i>
       </a>
                 <a href="#" class="button link"><i class="icon icon_link"></i></a>
                 <a href="#" class="button email"><i class="icon icon_lettre"></i></a>

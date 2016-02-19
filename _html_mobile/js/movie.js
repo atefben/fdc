@@ -39,6 +39,27 @@ $(document).ready(function() {
 	    }
 	 });
 
+	// ADD BACK ACTION
+	$('.back').on('click', function(){
+		window.history.back();
+
+	});
+
+	// INIT VIDEO PLAYER
+
+	var playerInstance = jwplayer("player");
+	
+    playerInstance.setup({
+	    file: $("#player").data('video'),
+	    image: $("#player").data('poster'),
+	    width: "100%",
+	    aspectratio: "16:9",
+	    displaytitle: false,
+	    skin: {
+		  name: "five"
+		}
+    });
+
 
 	// INIT SLIDERS
 	function setActiveThumbnail() {
@@ -138,7 +159,7 @@ $(document).ready(function() {
 
 	// PLAYERS AUDIO
 
-	initAudioPlayers()
+	$.initAudioPlayers(false)
 
 
 

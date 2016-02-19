@@ -44,9 +44,6 @@ class StatementWidgetQuoteType extends StatementWidgetType
             'fields' => array(
                 'content' => array(
                     'label' => false,
-                    'constraints' => array(
-                        new NotBlank()
-                    ),
                 ),
                 'createdAt' => array(
                     'display' => false

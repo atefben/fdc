@@ -66,6 +66,13 @@ fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
     options: { i18n: false }
 
+#coresphere_console
+coresphere_console:
+    resource: .
+    prefix: /admin/tools
+    options: { i18n: false }
+    type: extra
+
 #base
 base_admin:
     resource: "@BaseAdminBundle/Controller/"

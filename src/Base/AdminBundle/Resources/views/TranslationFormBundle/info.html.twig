@@ -1,24 +1,13 @@
 {% trans_default_domain 'BaseAdminBundle' %}
 {{ form_errors(form) }}
 <div class="a2lix_translations tabbable">
-    <ul class="a2lix_translationsLocales nav nav-tabs">
-        {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
-        {% for translationsFields in form %}
-            {% set locale = translationsFields.vars.name %}
-            <li {% if currentLocale == locale %}class="active"{% endif %}>
-                <a href="#" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
-                    {{ ('lang.' ~ locale)|trans() }}
-                    {% if form.vars.default_locale == locale %}[MASTER]{% endif %}
-                    {% if translationsFields.vars.required %}*{% endif %}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+    {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
+    {% include 'BaseAdminBundle:Block:languages.tabs.html.twig' %}
 
     <div class="a2lix_translationsFields tab-content">
-        {% set themeTranslations = (form.parent.children.theme.vars.data is not null) ? form.parent.children.theme.vars.data.translations.unwrap() : null %}
-        {% set headerTranslations = (form.parent.children.header.vars.data is not null) ? form.parent.children.header.vars.data.translations.unwrap() : null %}
-        {% set newsNewsTag = (form.parent.children.tags.vars.data|length > 0) ? form.parent.children.tags.vars.data.unwrap() : null %}
+        {% set themeTranslations = (form.parent.children.theme.vars.data is not null) ? form.parent.children.theme.vars.data.translations : null %}
+        {% set headerTranslations = (form.parent.children.header.vars.data is not null) ? form.parent.children.header.vars.data.translations : null %}
+        {% set infoInfoTag = (form.parent.children.tags.vars.data|length > 0) ? form.parent.children.tags.vars.data : null %}
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
 
@@ -66,13 +55,13 @@
                                                 Tags de recherche
                                             </label>
                                             <div>
-                                                {% if newsNewsTag is not null %}
-                                                    {% for tmp in newsNewsTag %}
-                                                        {% set tagTranslation = tmp.tag.translations.unwrap() %}
+                                                {% if infoInfoTag is not null %}
+                                                    {% for tmp in infoInfoTag %}
+                                                        {% set tagTranslation = tmp.tag.translations %}
                                                         {% if tagTranslation.get(locale) is not null %}
                                                             <div>
                                                                 {{ tagTranslation.get(locale).name }}
-                                                                <a target="_blank" href="{{ path('admin_base_core_newstag_edit', {'id': tmp.tag.id}) }}">modifier la traduction</a>
+                                                                <a target="_blank" href="{{ path('admin_base_core_infotag_edit', {'id': tmp.tag.id}) }}">modifier la traduction</a>
                                                             </div>
                                                         {% endif %}
                                                     {% endfor %}
@@ -171,12 +160,9 @@
                                         <div class="form-group fdc-input-border">
                                             {{ form_widget(form.parent.children.translate) }}
                                             {{ form_label(form.parent.children.translate) }}
+                                            {{ form_widget(form.parent.children.translateOptions) }}
+                                            {{ form_row(form.parent.children.priorityStatus) }}
                                         </div>
-                                        {{ form_row(form.parent.children.priorityStatus) }}
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-success" type="submit" name="btn_create_and_edit"><i class="fa fa-save"></i> Créer</button>
-                                        <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> <i class="fa fa-list"></i> Créer et retourner à la liste</button>
                                     </div>
                                 </div>
                             </div>
@@ -215,8 +201,8 @@
                                                 Tags de recherche
                                             </label>
                                             <div>
-                                                {% for tmp in newsNewsTag %}
-                                                    {% set tagTranslation = tmp.tag.translations.unwrap() %}
+                                                {% for tmp in infoInfoTag %}
+                                                    {% set tagTranslation = tmp.tag.translations %}
                                                     {% if tagTranslation.get('fr') is not null %}
                                                         <div>
                                                             {{ tagTranslation.get('fr').name }}
@@ -293,21 +279,24 @@
                                     <div id="fdc-widgets" data-form-widget="collection">
                                         {% for widget in form.parent.children.widgets.children %}
                                             <div class="item base-widget">
-                                                {% if widget.children._type.vars.value == 'news_widget_text_type' %}
-                                                    <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
-                                                {% elseif widget.children._type.vars.value == 'news_widget_video_youtube_type' %}
+                                                {% if widget.children._type.vars.value == 'info_widget_text_type' %}
+                                                    <h4><strong>Module texte</strong></h4>
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                {% elseif widget.children._type.vars.value == 'info_widget_video_youtube_type' %}
                                                     <h4><strong>{{ 'form.widget.video_youtube'|trans }}</strong></h4>
-                                                {% elseif widget.children._type.vars.value == 'news_widget_quote_type' %}
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                {% elseif widget.children._type.vars.value == 'info_widget_quote_type' %}
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                {% elseif widget.children._type.vars.value == 'info_widget_audio_type' %}
+                                                    <h4><strong>{{ 'news.widget.audio'|trans }}</strong></h4>
+                                                    {{ form_widget(widget.file) }}
+                                                {% elseif widget.children._type.vars.value == 'info_widget_image_type' %}
+                                                    <h4><strong>Module gallery</strong></h4>
+                                                    {{ form_widget(widget.gallery) }}
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
-                                                {% if widget.children._type.vars.value == 'news_widget_text_type' or
-                                                widget.children._type.vars.value == 'news_widget_video_youtube_type' or
-                                                widget.children._type.vars.value == 'news_widget_quote_type'
-                                                %}
-                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                {% endif %}
                                                 <a class="btn btn-danger btn-sm btn-outline remove_item">
                                                     <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
                                                 </a>
@@ -315,28 +304,29 @@
                                         {% endfor %}
                                     </div>
                                     {{ 'form.news.helper_widgets'|trans }}<br/>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_text_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.text'|trans }}</a>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_video_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video'|trans }}</a>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_video_youtube_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video_youtube'|trans }}</a>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.audio'|trans }}</a>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image'|trans }}</a>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_image_dual_align_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image_dual_align'|trans }}</a>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_quote_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.quote'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.info_widget_text_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.text'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.info_widget_video_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.info_widget_video_youtube_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video_youtube'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.info_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.audio'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.info_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.info_widget_quote_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.quote'|trans }}</a>
                                 {% else %}
                                     {% for widget in form.parent.children.widgets.children %}
                                         <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'news_widget_text_type' %}
+                                            {% if widget.children._type.vars.value == 'info_widget_text_type' %}
                                                 <h4><strong>{{ 'news.widget.text'|trans }}</strong></h4>
-                                            {% elseif widget.children._type.vars.value == 'news_widget_video_youtube_type' %}
+                                            {% elseif widget.children._type.vars.value == 'info_widget_video_youtube_type' %}
                                                 <h4><strong>{{ 'news.widget.video_youtube'|trans }}</strong></h4>
-                                            {% elseif widget.children._type.vars.value == 'news_widget_quote_type' %}
+                                            {% elseif widget.children._type.vars.value == 'info_widget_audio_type' %}
+                                                <h4><strong>{{ 'news.widget.audio'|trans }}</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'info_widget_quote_type' %}
                                                 <h4><strong>{{ 'news.widget.quote'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
-                                            {% if widget.children._type.vars.value == 'news_widget_text_type' or
-                                            widget.children._type.vars.value == 'news_widget_video_youtube_type' or
-                                            widget.children._type.vars.value == 'news_widget_quote_type'
+                                            {% if widget.children._type.vars.value == 'info_widget_text_type' or
+                                            widget.children._type.vars.value == 'info_widget_video_youtube_type' or
+                                            widget.children._type.vars.value == 'info_widget_quote_type'
                                             %}
                                                 {{ form_widget(attribute(widget.children.translations, locale)) }}
                                             {% endif %}
@@ -361,7 +351,7 @@
                                     {{ form_row(form.parent.children.associatedEvent) }}
                                     {{ form_row(form.parent.children.associatedProjections) }}
                                     {{ form_row(form.parent.children.associatedFilms) }}
-                                    {{ form_row(form.parent.children.associatedNews) }}
+                                    {{ form_row(form.parent.children.associatedInfo) }}
                                     {{ form_row(form.parent.children.tags) }}
                                 </div>
                             </div>

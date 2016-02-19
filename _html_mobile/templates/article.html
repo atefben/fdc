@@ -14,9 +14,13 @@
 
 </head>
 <body>
+
 <div id="main" data-menu="selection">
 <!-- build:include ../include/menu.html -->
-  <!-- /build -->
+	<!-- /build -->
+	
+	<!-- build:include ../include/my_selection.html -->
+	<!-- /build -->
   <!-- build:include ../include/header.html -->
   <!-- /build -->
 
@@ -30,9 +34,29 @@
   <div class="container">
 
     <div class="article-title">
-      <a href="#" class="category">Conférence de presse</a><span class="date">17.05.15</span> . <span class="hour">09:00</span>
+      <div><span class="category">Conférence de presse</span><span class="date">17.05.15</span> . <span class="hour">09:00</span></div>
+      <div><span class="category">Mise à jour</span><span class="date">17.05.15</span> . <span class="hour">10:00</span></div>
       <h2>Benjamin Millepieds aux côtés de son épouse Natalie Portman</h2>
     </div>
+    
+    <div class="photo-container">
+      <img src="./img/movie/002.jpg" alt="">
+      <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
+    </div>
+
+
+    <div class="text-content">
+        <p class="chapeau">Ancien journaliste devenu producteur et cinéaste, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve <br><a href="artist.html">Lambert Wilson</a> et Franck Gastambide.</p>
+    </div>
+    
+    <div class="text-content">
+        <p>A dix-huit ans, Maria Enders a connu le succès au théâtre en incarnant Sigrid, jeune fille ambitieuse
+        et au charme trouble qui conduit au suicide une femme plus mûre, Helena. <br>
+        Vingt ans plus tard on lui propose de reprendre cette pièce, mais cette fois de l'autre côté du miroir, dans le rôle d'Helena…</p>
+    </div>
+
+
+
 
     <div class="section photos">
       <div class="slideshow">
@@ -103,6 +127,10 @@
           </div>
     </div>
 
+  
+    <div class="text-content">
+        <p><strong>Il y a différents statuts d’acteurs : Lambert Wilson, Virginie Ledoyen d’un côté et ensuite tu as Guillaume Gouix, jeune acteur, Franck Gastambile et le québécois François Arnaud … Vous êtes satisfait du rendu ?</strong><br> Symboliquement, j’avais une famille : Lambert qui joue le père, Virginie la mère, Guillaume l’ainé, Franck le jeune un peu perdu et François le sale gosse. Et oui, j’en suis super content parce que je voulais une lecture nouvelle sur le film de genre .</p>
+    </div>
 
     <div class="section audio">
       <div class="audio-player" data-sound="./sounds/sound.mp3" style="background-image:url(img/movie/audio.jpg)">
@@ -110,7 +138,7 @@
           <i class="icon icon_audio"></i>
         </div>
         <div class="player-off">
-          <a href="#" class="category">conférence de presse</a>
+          <span class="category">Conférence de presse</span>
           <span class="date">18.05.15</span>
            . 
           <span class="hour">09:00</span>
@@ -148,6 +176,12 @@
 
     </div>
 
+    <div class="quote">
+      <blockquote>
+        “J’ai découvert que Lambert avait une passion pour le film de genre”
+      </blockquote>
+    </div>
+
     <div class="photo-container">
       <img src="./img/movie/002.jpg" alt="">
       <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
@@ -161,12 +195,12 @@
       <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
     </div>
 
-    <div class="quote">
-      <blockquote>
-        “J’ai découvert que Lambert avait une passion pour le film de genre”
-      </blockquote>
-    </div>
+    <div class="author">Rédigé par Morgane Urbain</div>
   </div>
+
+
+
+  
 
     <div class="film">
       <div class="info-film">
@@ -217,38 +251,49 @@
       </div>
     </div>
 
+
+
   <div class="container">
+    
+
 
     <div class="section articles">
       <h2 class="title">focus</h2>
       <div class="owl-carousel articles-carousel">
-        <div data-id="article1" class="thumb active">
+        <div data-id="article1" class="thumb active item">
+          <a href="article-photos.html"></a>
           <div class="img-container">
             <img src="img/movie/article.jpg" />
+            <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>            
             <div class="picto"><i class="icon icon_article"></i></div>
           </div>
           <div class="info">
-            <div class="top-info"><a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span></div>
+            <div class="top-info"><span class="category">Conférence de presse</span><span class="date">18.05.15</span> . <span class="hour">09:00</span></div>
             <h2>Olivier Assayas: "Avec les comédiens, si la confiance est totale, on va jusqu'au bout "</h2>
           </div>
         </div>
-        <div data-id="article2" class="thumb">
+        <div data-id="article2" class="thumb item">
+          <a href="article-photos.html"></a>
           <div class="img-container">
             <img src="img/movie/article.jpg" />
+            <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
             <div class="picto"><i class="icon icon_article"></i></div>
+
           </div>
           <div class="info">
-            <div class="top-info"><a href="#" class="category">Compétition</a><span class="date">22.05.15</span> . <span class="hour">12:00</span></div>
+            <div class="top-info"><span class="category">Conférence de presse</span><span class="date">22.05.15</span> . <span class="hour">12:00</span></div>
             <h2>Stéphane Brizé interroge la loi du marché</h2>
           </div>
         </div>
-        <div data-id="article3" class="thumb">
+        <div data-id="article3" class="thumb item">
+          <a href="article-photos.html"></a>
           <div class="img-container">
             <img src="img/movie/article.jpg" />
+            <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
             <div class="picto"><i class="icon icon_article"></i></div>
           </div>
           <div class="info">
-            <div class="top-info"><a href="#" class="category">Conférence de presse</a><span class="date">19.05.15</span> . <span class="hour">08:00</span></div>
+            <div class="top-info"><span class="category">Conférence de presse</span><span class="date">19.05.15</span> . <span class="hour">08:00</span></div>
             <h2>Olivier Assayas: "Avec les comédiens, si la confiance est totale, on va jusqu'au bout "</h2>
           </div>
         </div>
@@ -259,33 +304,41 @@
     <div class="section articles">
       <h2 class="title">le même jour</h2>
       <div class="owl-carousel articles-carousel">
-        <div data-id="article1" class="thumb active">
+        <div data-id="article1" class="thumb active item">
+          <a href="article-video.html"></a>
           <div class="img-container">
             <img src="img/movie/article.jpg" />
+            <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>        
             <div class="picto"><i class="icon icon_article"></i></div>
           </div>
           <div class="info">
-            <div class="top-info"><a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span></div>
+            <div class="top-info"><span class="category">Conférence de presse</span><span class="date">18.05.15</span> . <span class="hour">09:00</span></div>
             <h2>Olivier Assayas: "Avec les comédiens, si la confiance est totale, on va jusqu'au bout "</h2>
           </div>
         </div>
-        <div data-id="article2" class="thumb">
+        <div data-id="article2" class="thumb item">
+          <a href="article-video.html"></a>
           <div class="img-container">
             <img src="img/movie/article.jpg" />
+            <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
+            
             <div class="picto"><i class="icon icon_article"></i></div>
           </div>
           <div class="info">
-            <div class="top-info"><a href="#" class="category">Compétition</a><span class="date">22.05.15</span> . <span class="hour">12:00</span></div>
+            <div class="top-info"><span class="category">Conférence de presse</span><span class="date">22.05.15</span> . <span class="hour">12:00</span></div>
             <h2>Stéphane Brizé interroge la loi du marché</h2>
           </div>
         </div>
-        <div data-id="article3" class="thumb">
+        <div data-id="article3" class="thumb item">
+          <a href="article-video.html"></a>
           <div class="img-container">
             <img src="img/movie/article.jpg" />
+            <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
+            
             <div class="picto"><i class="icon icon_article"></i></div>
           </div>
           <div class="info">
-            <div class="top-info"><a href="#" class="category">Conférence de presse</a><span class="date">19.05.15</span> . <span class="hour">08:00</span></div>
+            <div class="top-info"><span class="category">Conférence de presse</span><span class="date">19.05.15</span> . <span class="hour">08:00</span></div>
             <h2>Olivier Assayas: "Avec les comédiens, si la confiance est totale, on va jusqu'au bout "</h2>
           </div>
         </div>

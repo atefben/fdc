@@ -24,6 +24,39 @@ class NewsWidgetVideoType extends NewsWidgetType
     protected $dataClass = 'Base\\CoreBundle\\Entity\\NewsWidgetVideo';
 
     /**
+     * admin
+     *
+     * @var mixed
+     * @access private
+     */
+    private $admin;
+
+    /**
+     * mediaVideoAdmin
+     *
+     * @var mixed
+     * @access private
+     */
+    private $mediaVideoAdmin;
+
+    /**
+     * setSonataAdmin function.
+     *
+     * @access public
+     * @param mixed $admin
+     * @return void
+     */
+    public function setSonataAdmin($admin)
+    {
+        $this->admin = $admin;
+    }
+
+    public function setMediaVideoAdmin($mediaVideoAdmin)
+    {
+        $this->mediaVideoAdmin = $mediaVideoAdmin;
+    }
+
+    /**
      * buildForm function.
      * 
      * @access public
@@ -34,7 +67,13 @@ class NewsWidgetVideoType extends NewsWidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('file');
+        $builder->add('file', 'sonata_type_model_list', array(
+            'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['file'],
+            'model_manager' => $this->mediaVideoAdmin->getModelManager(),
+            'class' => $this->mediaVideoAdmin->getClass(),
+            'btn_delete' => false,
+            'label' => false
+        ));
     }
 
     /**

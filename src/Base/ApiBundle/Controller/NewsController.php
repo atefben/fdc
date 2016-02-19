@@ -4,7 +4,6 @@ namespace Base\ApiBundle\Controller;
 
 use \DateTime;
 
-use Base\ApiBundle\Exclusion\StatusExclusionStrategy;
 use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -43,6 +42,7 @@ class NewsController extends FOSRestController
      * )
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      *
@@ -56,10 +56,11 @@ class NewsController extends FOSRestController
         // get festival year / version
         $festival = $coreManager->getApiFestivalYear();
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+        $lang = $paramFetcher->get('lang');
 
         //create query
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository('BaseCoreBundle:News')->getNews($festival, new DateTime(), $coreManager->getLocale());
+        $query = $em->getRepository('BaseCoreBundle:News')->getApiNews($festival, new DateTime(), $lang);
 
         // get items, passing options to fix Cannot count query which selects two FROM components, cannot make distinction
         //
@@ -68,8 +69,7 @@ class NewsController extends FOSRestController
         // set context view
         $groups = array('news_list', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new StatusExclusionStrategy());
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($coreManager->getLocale()));
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
         // create view
@@ -107,22 +107,31 @@ class NewsController extends FOSRestController
      * )
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
      *
      * @return View
      */
     public function getNewAction(Paramfetcher $paramFetcher, $id)
     {
+        // coremanager shortcut
+        $coreManager = $this->get('base.api.core_manager');
+
+        // get festival year / version
+        $festival = $coreManager->getApiFestivalYear();
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+        $lang = $paramFetcher->get('lang');
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $projection = $em->getRepository($this->repository)->findOneById($id);
+        $entity = $em->getRepository($this->repository)->getApiNewsById($id, $festival, new DateTime(), $lang);
 
         // set context view
-        $context = SerializationContext::create();
-        $context->setGroups(array('news_show', 'time'));
+        $groups = array('news_show', 'time');
+        $context = $coreManager->setContext($groups, $paramFetcher);
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
-        $view = $this->view($projection, 200);
+
+        $view = $this->view($entity, 200);
         $view->setSerializationContext($context);
 
         return $view;

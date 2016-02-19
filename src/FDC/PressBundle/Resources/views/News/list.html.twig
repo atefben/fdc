@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCPressBundle' %}
 {% extends 'FDCPressBundle::layout.html.twig' %}
 {% block body %}
-<div id="main" class="press loading press-actu lock all-articles grid">
+<div id="main" class="press loading press-actu {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }} all-articles grid">
 
     {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 
@@ -12,7 +12,7 @@
         <div id="gridAudios" class="grid-wrapper" data-type="articles">
             <div class="grid-sizer"></div>
 
-            {% for article in statementArticles %}
+            {% for article in pressNews %}
                 {% include 'FDCPressBundle:News:widgets/list.article.html.twig' %}
             {% endfor %}
 
@@ -29,9 +29,7 @@
                     <h2 class="title">{{ 'press.actu.title.lactualitealaune'|trans }}</h2>
                     <p class="link">
                         <a href="#">
-                            {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                            <img src="{{ asset_url }}" alt="{{ 'press.actu.btn.suivezlamanifestation'|trans }}" />
-                            {% endimage %}
+                            <i class="icon icon_fleche-right"></i>
                             {{ 'press.actu.btn.suivezlamanifestation'|trans }}
                         </a>
                     </p>

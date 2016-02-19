@@ -21,7 +21,6 @@ use Base\CoreBundle\Util\Time;
  *  "quote" = "StatementWidgetQuote",
  *  "audio" = "StatementWidgetAudio",
  *  "image" = "StatementWidgetImage",
- *  "image_dual_align" = "StatementWidgetImageDualAlign",
  *  "video" = "StatementWidgetVideo",
  *  "video_youtube" = "StatementWidgetVideoYoutube",
  * })
@@ -42,7 +41,7 @@ abstract class StatementWidget
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $position;
 

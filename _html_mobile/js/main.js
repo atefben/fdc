@@ -1,6 +1,7 @@
 $(document).ready(function() {
   
 
+
   var time = 7; // time in seconds
  
   var $progressBar,
@@ -42,10 +43,10 @@ $(document).ready(function() {
         });
 
         setTimeout(function() {
-           $bar.css({
-         	   float: 'right',
-             width: 0
-           });
+            $bar.css({
+         	      float: 'right',
+                width: 0
+            });
         }, 200);
       });
     }
@@ -101,7 +102,10 @@ $(document).ready(function() {
     function pauseOnDragging(){
       isPause = true;
     }
- 
+  //play while dragging 
+    function playAfterDragging(){
+      isPause = false;
+    }
     // moved callback
     function moved(){
       // clear interval
@@ -130,6 +134,7 @@ $(document).ready(function() {
       onTranslated: moved,
       mouseDrag: true,
       onDrag: pauseOnDragging,
+      onDragged: playAfterDragging,
       navSpeed: 800,
       dotsSpeed: 800,
       smartSpeed: 800,

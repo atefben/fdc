@@ -28,7 +28,7 @@ class StatementVideo extends Statement
      *
      * @ORM\ManyToOne(targetEntity="MediaVideo")
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $video;
 
@@ -37,7 +37,7 @@ class StatementVideo extends Statement
      *
      * @ORM\ManyToOne(targetEntity="MediaImage")
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $image;
 
@@ -50,6 +50,12 @@ class StatementVideo extends Statement
 
         return $string;
     }
+
+    public function getNewsFormat()
+    {
+        return 'videos';
+    }
+
     /**
      * Set video
      *

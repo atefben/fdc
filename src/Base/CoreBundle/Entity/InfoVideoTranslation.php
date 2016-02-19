@@ -34,15 +34,19 @@ class InfoVideoTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
      */
-    protected $title;
+    private $title;
 
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
      */
-    protected $introduction;
+    private $introduction;
 
     /**
      * @var string
@@ -64,7 +68,7 @@ class InfoVideoTranslation implements TranslateChildInterface
      * Set title
      *
      * @param string $title
-     * @return InfoVideoTranslation
+     * @return NewsArticleTranslation
      */
     public function setTitle($title)
     {
@@ -76,7 +80,7 @@ class InfoVideoTranslation implements TranslateChildInterface
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -87,7 +91,7 @@ class InfoVideoTranslation implements TranslateChildInterface
      * Set introduction
      *
      * @param string $introduction
-     * @return InfoVideoTranslation
+     * @return NewsArticleTranslation
      */
     public function setIntroduction($introduction)
     {
@@ -99,7 +103,7 @@ class InfoVideoTranslation implements TranslateChildInterface
     /**
      * Get introduction
      *
-     * @return string 
+     * @return string
      */
     public function getIntroduction()
     {
@@ -122,7 +126,7 @@ class InfoVideoTranslation implements TranslateChildInterface
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {

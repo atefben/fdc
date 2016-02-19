@@ -1,3 +1,5 @@
+var videoMovie;
+
 // Single Movie
 // =========================
 $(document).ready(function() {
@@ -80,7 +82,7 @@ $(document).ready(function() {
 
       sliderCompetition.owlCarousel();
     }
-    
+
     initSliders();
 
     // go to item
@@ -112,7 +114,7 @@ $(document).ready(function() {
 
       var $el = $(this)
         , id = $el.attr('href').substr(1);
-     
+
       var posT = $('*[data-section="' + id + '"]').offset().top - $('#nav-movie').height() - $('header').height();
 
       if(!$('#nav-movie').hasClass('sticky')) {
@@ -128,6 +130,8 @@ $(document).ready(function() {
       sliderCompetition.trigger('to.owl.carousel', [$(this).index(), 400, true]);
     });
 
+    videoMovie = playerInit('video-movie-trailer');
+    videoMovie.resize('100%','100%');
     // show and play trailer
     $('body').on('click', '.poster .picto', function(e) {
       e.preventDefault();
@@ -135,14 +139,21 @@ $(document).ready(function() {
       $('html, body').animate({
         scrollTop: 0
       }, 300, function() {
-        $('.main-image, .poster, .info-film, .nav').addClass('trailer');
+        $('.main-image, .poster, .info-film, .palmares, .nav').addClass('trailer');
         $('.main-image').data('height', $('.main-image').height()).height($(window).height() - 91).css('padding-top', '91px');
+        $('#video-movie-trailer').closest('.video-container').css({
+          'margin-top': '91px',
+          'height' : 'calc(100% - 91px)'
+        });
         setTimeout(function() {
           $('header').addClass('sticky');
           $('body').css('padding-top', 0);
         }, 800);
-        
       });
+
+      setTimeout(function() {
+        videoMovie.play();
+      }, 500);
     });
 
     // previous and next over

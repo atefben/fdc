@@ -1,0 +1,27 @@
+{% trans_default_domain 'FDCPressBundle' %}
+{% set trans = widget.image.findTranslationByLocale(app.request.locale) %}
+{% if trans is null or trans.file is null %}
+    {% set trans = image.media.findTranslationByLocale('fr') %}
+{% endif %}
+{% set file = trans.file %}
+<div class="contain-player">
+    <div class="player">
+        {% thumbnail file, 'reference' with {'alt': widget.image|trans_fallback('alt') }%}
+    </div>
+    <span class="caption">
+        {{ widget|trans_fallback('copyright') }} <br>
+        {{ widget|trans_fallback('label') }}
+    </span>
+    <div class="buttons">
+        <a href="#" class="mov extention button">
+            <i class="icon icon_telecharger"></i>
+            {{ widget|trans_fallback('btnLabel') }}
+        </a>
+        {% if widget.secondFile is not null %}
+            <a href="#" class="gif extention button">
+                <i class="icon icon_telecharger"></i>
+                {{ widget|trans_fallback('secondBtnLabel') }}
+            </a>
+        {% endif %}
+    </div>
+</div>

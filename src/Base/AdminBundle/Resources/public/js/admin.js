@@ -82,7 +82,7 @@ function lockEvents()
     });
 
     // verify locks on submit
-    $('.fdc-lock .btn-success').click(function(e) {
+    $('.fdc-lock button[type="submit"].btn-success').click(function(e) {
         e.preventDefault();
         // set vars
         var url = window.location.href.split('/');
@@ -91,15 +91,14 @@ function lockEvents()
         var locale = $('.a2lix_translationsLocales').find('li.active').attr('data-locale');
         var redirect = $(this).attr('href');
 
-        hasLockEntity(entity, id, locale, redirect);
+        hasLockEntity(entity, id, locale, $(this));
     });
-
 
     // check if our page has the mandatory class
     if ($('body').hasClass('fdc-lock')) {
         var url = window.location.href.split('/');
         // check if we are in the edition of an article
-        if (url.length == 9 && url[url.length - 1].indexOf('edit') > -1) {
+        if (url[url.length - 1].indexOf('edit') > -1) {
             // set vars
             var id = url[url.length - 2];
             var entity = url[url.length - 3];
@@ -108,12 +107,18 @@ function lockEvents()
              // create lock on open
             createLock(entity, id, locale);
 
+            // delete lock on click on list
+            $('a[href$="/list"]').click(function() {
+                deleteLock(entity, id, locale);
+            });
+
             // delete lock on close
             $(window).unload(function () {
                 deleteLock(entity, id, locale);
             });
         }
     }
+
 }
 
 function getQueryParams(url, param) {
@@ -128,7 +133,7 @@ function getQueryParams(url, param) {
     return found;
 };
 
-function hasLockEntity(entity, id, locale, redirect)
+function hasLockEntity(entity, id, locale, button)
 {
     var request = $.ajax({
         url: Routing.generate('base_admin_lock_checkentity', { id: id }),
@@ -178,7 +183,9 @@ function hasLockEntity(entity, id, locale, redirect)
                 }
             });
         } else if (xhr.success == true) {
-            $('form').submit();
+            deleteLock(entity, id, locale);
+            button.unbind('click');
+            button.click();
         }
     });
 
@@ -263,6 +270,7 @@ function createLock(entity, id, locale)
 function deleteLock(entity, id, locale, success)
 {
     success = (typeof success === 'undefined') ? false : success;
+
     var request = $.ajax({
         url: Routing.generate('base_admin_lock_delete', { id: id }),
         dataType: 'json',

@@ -31,7 +31,7 @@ class StatementWidgetVideoYoutubeTranslation
      *
      * @ORM\Column(type="text", nullable=false)
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $youtubeId;
 
@@ -40,7 +40,7 @@ class StatementWidgetVideoYoutubeTranslation
      *
      * @ORM\Column(type="text", nullable=false)
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $title;
 

@@ -13,12 +13,25 @@
     <!-- /build -->
 </head>
 <body>
+
 <div id="main" class="webtv" data-menu="webtv">
 	<!-- build:include ../include/menu.html -->
 	<!-- /build -->
+	<!-- build:include ../include/my_selection.html -->
+	<!-- /build -->
 	<!-- build:include ../include/header.html -->
 	<!-- /build -->
-
+	<div class="fullscreenplayer">
+		<div class="close-button"><i class="icon icon_close"></i></div>
+		<div class="vCenter">
+			<div class="vCenterKid">
+				<div id="player1"></div>
+				<p class="category">Conférence de presse</p>
+		        <p class="title-video">Rencontre avec l'équipe de Carol</p>
+			</div>
+		</div>
+	</div>
+	
 	<div id="banner-top">
 		<div class="banner-video  ">
 			<div class="video-container " style="background-image:url(./img/webtv/001.jpg);">
@@ -27,9 +40,9 @@
 			<p class="title-video">TV Festival de Cannes</p>
 		</div>
 	    <div class="banner-img vCenter active" style="background-image:url(./img/webtv/001.jpg);">
-	      <div class="vCenterKid">
+	      <div class="vCenterKid banner-img-text">
 	        <h2 class="title tall">Suivez<br>TV festival de cannes</h2>
-	        <p class="off"><i class="icon-mobile-web-tv-play"></i></p>
+	        <p class="off show"><i class="icon-mobile-web-tv-play"></i></p>
 
 	        <p class="before">rendez-vous le <span>20 mai 2016 à 14h</span></p>
 	      </div>
@@ -39,7 +52,7 @@
 	<div class="dark-container featured-videos" id="">
 		<h2 class="title">Les chaines<br>du festival</h2>
 		<p class="link">
-			<a href="webtv.php">
+			<a href="channels.html">
 				<i class="icon icon_fleche-right"></i>Toutes les chaines
 			</a>
 		</p>
@@ -48,7 +61,7 @@
 	            <div class="image-wrapper">
 	            	<div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
 	            </div>
-	            <a class="linkVid" href="#"></a>
+	            <a class="linkVid" href="channel.html"></a>
 	            <div class="info">
 	              <div class="picto vCenter">
 	                  <div class="vCenterKid"><i class="icon icon_playlist"></i></div>
@@ -67,7 +80,7 @@
 	            <div class="image-wrapper">
 	              <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
 	            </div>
-	            <a class="linkVid" href="#"></a>
+	            <a class="linkVid" href="channel.html"></a>
 	            <div class="info">
 	              <div class="picto vCenter">
 	                  <div class="vCenterKid"><i class="icon icon_playlist"></i></div>
@@ -86,7 +99,7 @@
 	            <div class="image-wrapper">
 	              <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
 	            </div>
-	            <a class="linkVid" href="#"></a>
+	            <a class="linkVid" href="channel.html"></a>
 	            <div class="info">
 	              <div class="picto vCenter">
 	                  <div class="vCenterKid"><i class="icon icon_playlist"></i></div>
@@ -105,7 +118,7 @@
 	            <div class="image-wrapper">
 	              <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
 	            </div>
-	            <a class="linkVid" href="#"></a>
+	            <a class="linkVid" href="channel.html"></a>
 	            <div class="info">
 	              <div class="picto vCenter">
 	                  <div class="vCenterKid"><i class="icon icon_playlist"></i></div>
@@ -128,7 +141,7 @@
 			<h2 class="title tall">Les bandes annonces et extraits</h2>
 		</div>
 		<p class="link">
-			<a href="webtv.php">
+			<a href="webtv_trailer_competition.html">
 				<i class="icon icon_fleche-right"></i>Toutes les bandes annonces
 			</a>
 		</p>
@@ -137,7 +150,7 @@
 	            <div class="image-wrapper">
 	            	<div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
 	            </div>
-	            <a class="linkVid" href="#"></a>
+	            <a class="linkVid" href="ba.html"></a>
 	            <div class="info">
 	              <div class="picto vCenter">
 	                  <div class="vCenterKid"><i class="icon icon_playlist"></i></div>
@@ -156,7 +169,7 @@
 	            <div class="image-wrapper">
 	              <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
 	            </div>
-	            <a class="linkVid" href="#"></a>
+	            <a class="linkVid" href="ba.html"></a>
 	            <div class="info">
 	              <div class="picto vCenter">
 	                  <div class="vCenterKid"><i class="icon icon_playlist"></i></div>
@@ -175,7 +188,7 @@
 	            <div class="image-wrapper">
 	              <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
 	            </div>
-	            <a class="linkVid" href="#"></a>
+	            <a class="linkVid" href="ba.html"></a>
 	            <div class="info">
 	              <div class="picto vCenter">
 	                  <div class="vCenterKid"><i class="icon icon_playlist"></i></div>
@@ -194,7 +207,7 @@
 	            <div class="image-wrapper">
 	              <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
 	            </div>
-	            <a class="linkVid" href="#"></a>
+	            <a class="linkVid" href="ba.html"></a>
 	            <div class="info">
 	              <div class="picto vCenter">
 	                  <div class="vCenterKid"><i class="icon icon_playlist"></i></div>
@@ -219,9 +232,9 @@
 		</div>
 		
 		<div id="slider-last-videos" class="owl-carousel sliderDrag videosSlider">
-	          <div class="vid">
+	          <div class="vid item-video" data-video="/videos/sample.mp4" data-poster='./img/playervideo3.jpg'>
 	            <div class="image-wrapper">
-	            	<div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
+	            	<div class="img" style="background-image:url(img/playervideo3.jpg)"></div>
 	            </div>
 	            <a class="linkVid" href="#"></a>
 	            <div class="info">
@@ -238,9 +251,9 @@
 	              </div>
 	            </div>
 	          </div>
-	          <div class="vid">
+	          <div class="vid item-video" data-video="/videos/sample.mp4" data-poster='./img/playervideo2.jpg'>
 	            <div class="image-wrapper">
-	              <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
+	              <div class="img" style="background-image:url(img/playervideo2.jpg)"></div>
 	            </div>
 	            <a class="linkVid" href="#"></a>
 	            <div class="info">
@@ -257,9 +270,9 @@
 	              </div>
 	            </div>
 	          </div>
-	          <div class="vid">
+	          <div class="vid item-video" data-video="/videos/sample.mp4" data-poster='./img/playervideo.jpg'>
 	            <div class="image-wrapper">
-	              <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
+	              <div class="img" style="background-image:url(img/playervideo.jpg)"></div>
 	            </div>
 	            <a class="linkVid" href="#"></a>
 	            <div class="info">
@@ -276,9 +289,9 @@
 	              </div>
 	            </div>
 	          </div>
-	          <div class="vid">
+	          <div class="vid item-video" data-video="/videos/sample.mp4" data-poster='./img/playervideo3.jpg'>
 	            <div class="image-wrapper">
-	              <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
+	              <div class="img" style="background-image:url(img/playervideo3.jpg)"></div>
 	            </div>
 	            <a class="linkVid" href="#"></a>
 	            <div class="info">

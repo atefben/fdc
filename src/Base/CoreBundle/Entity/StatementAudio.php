@@ -28,7 +28,7 @@ class StatementAudio extends Statement
      *
      * @ORM\ManyToOne(targetEntity="MediaAudio")
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $audio;
 
@@ -41,6 +41,11 @@ class StatementAudio extends Statement
         }
 
         return $string;
+    }
+
+    public function getNewsFormat()
+    {
+        return 'audios';
     }
 
     /**
@@ -59,7 +64,7 @@ class StatementAudio extends Statement
     /**
      * Get audio
      *
-     * @return \Base\CoreBundle\Entity\MediaAudio 
+     * @return \Base\CoreBundle\Entity\MediaAudio
      */
     public function getAudio()
     {

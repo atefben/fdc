@@ -25,9 +25,11 @@ Télécharger au format .ics</a>
           </div>
         </div>
       </div>
+      <div class="popin"></div>
       <div id='calendar' class="fullwidth">
         <div id="mycalendar"></div>
       </div>
+
       <div class="contact-press">
         <h2 class="title">Contactez-nous</h2>
         <div class="container">
@@ -57,21 +59,21 @@ Télécharger au format .ics</a>
       <div class="container">
         <h3>Créer un évènement</h3>
         <p>Complétez votre agenda interactif en ajoutant un évènement personnalisé.</p>
-        <form action="#">
+        <form action="#" id="form_data">
           <label for="title">Titre</label>
-          <input type="text">
+          <input type="text" name="title">
           <div class="time first">
             <label for="begin">Début</label>
-            <input type="text" value="07/11/2015" id="datepickerBegin"><span class="pictodate"><i class="icon icon_programmation"></i></span><input type="text" class="hours" value="15h30">
+            <input type="text" value="07/11/2015" id="datepickerBegin" name="datebegin"><span class="pictodate"><i class="icon icon_programmation"></i></span><input type="text" class="hours" value="15h30" name="hoursbegin">
           </div>
            <div class="time">
             <label for="end">Fin</label>
-            <input type="text"  value="14/11/2015" id="datepickerEnd"><span class="pictodate"><i class="icon icon_programmation"></i></span><input type="text" value="15h30" class="hours">
+            <input type="text"  value="14/11/2015" id="datepickerEnd"name="dateend"><span class="pictodate"><i class="icon icon_programmation"></i></span><input type="text" value="15h30" class="hours" name="hoursend">
            </div>
           <label for="place">Lieu</label>
-          <input type="text">
+          <input type="text" name="place">
           <label for="description" class='description'>Description</label>
-          <input type="text">
+          <input type="text" name="description">
           <input type="submit" value="créer un évènement" class="button">
         </form>
       </div>

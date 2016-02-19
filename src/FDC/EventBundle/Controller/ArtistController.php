@@ -44,6 +44,8 @@ class ArtistController extends Controller
         $locale = $this->getRequest()->getLocale();
         $count = 8;
 
+
+
         // find the artist info with the current locale
         $artist = $em->getRepository('BaseCoreBundle:FilmPerson')->getArtist($locale, $slug);
         if ($artist === null) {

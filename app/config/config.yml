@@ -20,6 +20,7 @@ imports:
     - { resource: bundles/sonata_doctrine_orm_admin.yml }
     - { resource: bundles/sonata_intl.yml }
     - { resource: bundles/sonata_media.yml }
+    - { resource: bundles/sonata_media_services.yml }
     - { resource: bundles/sonata_seo.yml }
     - { resource: bundles/stof_doctrine_extensions.yml }
 
@@ -87,9 +88,28 @@ twig:
         social_dailymotion: "%social_dailymotion%"
         social_podcast: "%social_podcast%"
         jwplayer_key: "%jwplayer_key%"
+        admin_routes_translation_legend_without_master: %admin_routes_translation_legend_without_master%
         admin_routes_translation_legend: %admin_routes_translation_legend%
         admin_routes_translation_lock: %admin_routes_translation_lock%
         admin_homepage_id: %admin_homepage_id%
+        admin_fdc_page_web_tv_live_id: %admin_fdc_page_web_tv_live_id%
+        admin_fdc_page_web_tv_channels_id: %admin_fdc_page_web_tv_channels_id%
+        admin_press_homepage_id: %admin_press_homepage_id%
+        admin_press_guide_id: %admin_press_guide_id%
+        admin_press_contact_id: %admin_press_contact_id%
+        admin_press_download_id: %admin_press_download_id%
+        admin_press_medialibrary_id: %admin_press_medialibrary_id%
+        admin_press_accredit_id: %admin_press_accredit_id%
+        admin_press_cinemamap_id: %admin_press_cinemamap_id%
+        admin_press_projection_id: %admin_press_projection_id%
+        admin_fdc_page_web_tv_trailers_competition_id: %admin_fdc_page_web_tv_trailers_competition_id%
+        admin_fdc_page_web_tv_trailers_certain_regard_id: %admin_fdc_page_web_tv_trailers_certain_regard_id%
+        admin_fdc_page_web_tv_trailers_hors_competition_id: %admin_fdc_page_web_tv_trailers_hors_competition_id%
+        admin_fdc_page_web_tv_trailers_seances_speciales_id: %admin_fdc_page_web_tv_trailers_seances_speciales_id%
+        admin_fdc_page_web_tv_trailers_cinefondation_id: %admin_fdc_page_web_tv_trailers_cinefondation_id%
+        admin_fdc_page_web_tv_trailers_courts_metrages_id: %admin_fdc_page_web_tv_trailers_courts_metrages_id%
+        admin_fdc_page_web_tv_trailers_cannes_classics_id: %admin_fdc_page_web_tv_trailers_cannes_classics_id%
+        admin_fdc_page_web_tv_trailers_cinema_plage_id: %admin_fdc_page_web_tv_trailers_cinema_plage_id%
 
 # Assetic Configuration
 assetic:
@@ -128,6 +148,8 @@ doctrine:
                 dql:
                     numeric_functions:
                         Rand: Base\CoreBundle\Doctrine\Rand
+                    datetime_functions:
+                        Date_Format: Base\CoreBundle\Doctrine\DateFormat
 
 
 # Swiftmailer Configuration

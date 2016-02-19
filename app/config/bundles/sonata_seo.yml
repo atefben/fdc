@@ -1,6 +1,7 @@
 sonata_seo:
     encoding:         UTF-8
     page:
+        title: Festival de Cannes %fdc_year%
         metas:
             name:
                 description: ''

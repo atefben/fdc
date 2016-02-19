@@ -14,12 +14,37 @@
           <div class="vCenterKid">
             <div class="textLive">
               <h2>Suivez<br />TV Festival de Cannes</h2>
-              <a href="#" class="play"><i class="icon icon_video"></i>
-</a>
+              <a href="#" class="play-live"><i class="icon icon_video"></i></a>
             </div>
           </div>
         </div>
-        <div class="img" style="background-image:url('../img/webtv/001.jpg')"></div>
+        <div class="main-image">
+          <div class="img" style="background-image:url('img/webtv/001.jpg')"></div>
+          <div class="trailer">
+            <div class="video-container state-init video"
+              data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+              data-twitter="//www.twitter.com"
+              data-link="//www.example.com"
+              data-email="//www.gmail.com"
+              data-file='[{"file":"./files/mov_bbb.mp4"}]'
+              data-img="//dummyimage.com/960x540/c8a461/000.png">
+              <div id="video-webtv-live">
+              </div>
+              <div class="video-overlay"></div>
+              <div class="infos-bar">
+                <div class="picto"><i class="icon icon_video"></i></div>
+                <div class="info">
+                  <div class="vCenter">
+                    <div class="vCenterKid">
+                      <a href="#" class="category">Live</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <p>Montée des marches</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div id="content-channels">
         <h2 class="title">Les chaines du festival</h2>
@@ -280,14 +305,16 @@
       <div id="content-latest">
         <h2 class="title">Les dernieres videos</h2>
         <div class="container sliderDrag">
-          <div class="video shadow-bottom">
+          <div class="video shadow-bottom"
+            data-vid="1"
+            data-file='[{"file":"./files/mov_bbb.mp4"}]'
+            data-img="//dummyimage.com/960x540/000/c8a461.png">
             <div class="image-wrapper">
               <img src="http://dummyimage.com/463x291/000/fff" alt="" />
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"><i class="icon icon_video"></i>
-</div>
+              <div class="picto"><i class="icon icon_video"></i> </div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -298,14 +325,16 @@
               </div>
             </div>
           </div>
-          <div class="video shadow-bottom">
+          <div class="video shadow-bottom"
+            data-vid="1"
+            data-file='[{"file":"./files/mov_bbb.webm"},{"file":"./files/mov_bbb.mp4"}]'
+            data-img="//dummyimage.com/960x540/000/c8a461.png">
             <div class="image-wrapper">
               <img src="http://dummyimage.com/463x291/000/fff" alt="" />
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"><i class="icon icon_video"></i>
-</div>
+              <div class="picto"><i class="icon icon_video"></i> </div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -318,6 +347,39 @@
           </div>
         </div>
       </div>
+      <div class="popin-video video loading">
+        <div class="video-container state-init video"
+          data-facebook="//www.facebook.com"
+          data-twitter="//www.twitter.com"
+          data-link="//www.example.com"
+          data-email="//www.gmail.com">
+          <div id="video-player-popin" class="">
+          </div>
+          <div class="video-overlay"></div>
+          <div class="infos-bar">
+            <div class="picto"><i class="icon icon_video"></i></div>
+            <div class="info">
+              <div class="vCenter">
+                <div class="vCenterKid">
+                  <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+                  <p></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="popin-info info">
+          <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+          <p></p>
+        </div>
+        <div class="popin-buttons buttons square">
+          <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+          <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a>
+          <a href="#" class="button link"><i class="icon icon_link"></i></a>
+          <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+        </div>
+      </div>
+      <div class="ov"></div>
     </div>
 
     <?php include('footer.html'); ?>

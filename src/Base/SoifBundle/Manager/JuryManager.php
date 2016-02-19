@@ -163,11 +163,9 @@ class JuryManager extends CoreManager
         
         // set entities
         foreach ($resultObjects as $resultObject) {
-            $entities[] = $this->set($resultObject, $result);
+            $entity = $this->set($resultObject, $result);
+            $this->update($entity);
         }
-        
-        // save entities
-        $this->updateMultiple($entities);
         
         // end timer
         $this->end(__METHOD__);

@@ -2,68 +2,111 @@ sonata_media:
     # if you don't use default namespace configuration
     class:
         media: Application\Sonata\MediaBundle\Entity\Media
-    default_context: news_header_image
+    default_context: media_image
     db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
     contexts:
         # SOIF
+        film_director:
+            providers:
+               - sonata.media.provider.image
+            formats:
+
         film_poster:
             providers:
                 - sonata.media.provider.image
-
             formats:
+                tiny:  { width: 46 , height: 64 , quality: 100 }
                 small: { width: 187 , height: 255 , quality: 100 }
                 big:   { width: 1000 , quality: 100 }
 
-        film_image:
+        film_main:
+            providers:
+                - sonata.media.provider.image
+            formats:
+
+        film_film:
             providers:
                 - sonata.media.provider.image
 
             formats:
+                tiny:  { width: 146 , quality: 100 }
                 small: { width: 500 , quality: 100 }
                 big:   { width: 1000 , quality: 100 }
-                
+
         pdf:
             providers:
                 - sonata.media.provider.file
             formats:
+
         #CMS
-        news_header_image:  # the default context is mandatory
+        media_image:  # the default context is mandatory
             providers:
                 - sonata.media.provider.image
-           #     - sonata.media.provider.video
 
             formats:
-                small: { width: 100 , quality: 100 }
-                big:   { width: 500 , quality: 100 }
 
-        news_audio:
+                # Slider Home(TEMPORAIRE CAR NON DEFINI), audio fullscreen (TEMPORAIRE CAR NON DEFINI)
+                2560x1620: { width: 2560 , height: 1620 , quality: 100 }
+                # Diaporama photo
+                1760x1108: { width: 1760 , height: 1108 , quality: 100 }
+                # Miniatures diaporama photo
+                194x128: { width: 194 , height: 128 , quality: 100 }
+                # Les chaînes, autre chaînes (webtv)
+                586x370: { width: 586 , height: 370 , quality: 100 }
+                # Actualités à la une, Tous les articles
+                1144x724: { width: 1144 , height: 724 , quality: 100 }
+                # pre-footer homepage
+                1954x1200: { width: 1954 , height: 1200 , quality: 100 }
+                # Vidéo à la une, Toutes les photos, Toutes les vidéos, Chaînes festival
+                640x404: { width: 640 , height: 404 , quality: 100 }
+                # Pushs
+                650x410: { width: 650 , height: 410 , quality: 100 }
+                # Ma Selection
+                424x266: { width: 424 , height: 266 , quality: 100 }
+                # Image principale Actu
+                1950x1232: { width: 1950 , height: 1232 , quality: 100 }
+                # Diaporama photo
+                1266x798: { width: 1266 , height: 798 , quality: 100 }
+                # WebTv Tetiere, Channels Tetiere
+                1920x450: { width: 1920 , height: 450 , quality: 100 }
+                # Dernières vidéos (webtv)
+                463x292: { width: 463 , height: 292 , quality: 100 }
+                # srcset
+                1280x808: { width: 1280 , height: 808 , quality: 100 }
+                # Last videos channels
+                926x584: { width: 926 , height: 584 , quality: 100 }
+                # Articles focus
+                918x580: { width: 918 , height: 580 , quality: 100 }
+                # Articles le même jour
+                590x370: { width: 590 , height: 370 , quality: 100 }
+
+                ##### OLDS #####
+                197x142: { width: 197 , height: 142 , quality: 100 }
+                363x229: { width: 363 , height: 229 , quality: 100 }
+                646x567: { width: 646 , height: 567 , quality: 100 }
+                1980x300: { width: 1980 , height: 300 , quality: 100 }
+
+        media_image_simple:
             providers:
-               - sonata.media.provider.file
+                - sonata.media.provider.image
+
+            formats:
+                212x134: { width: 212 , height: 134 , quality: 100 }
+                976x535: { width: 976 , height: 535 , quality: 100 }
+                586x370: { width: 586 , height: 370 , quality: 100 }
+
+        media_audio:
+            providers:
+               - sonata.media.provider.audio
 
             formats:
                 mp3: { quality: 100 }
 
-        news_video:
+        media_video:
             providers:
-                - sonata.media.provider.file
-           #     - sonata.media.provider.video
+                - sonata.media.provider.video
 
             formats:
-
-        statement_video:
-            providers:
-                - sonata.media.provider.file
-           #     - sonata.media.provider.video
-
-            formats:
-
-        media_video_image:
-            providers:
-                - sonata.media.provider.image
-
-            formats:
-                mobile:  { width: 300, quality: 100 }
-                desktop: { width: 500, quality: 100 }
 
         seo_file:
             providers:
@@ -71,26 +114,32 @@ sonata_media:
             formats:
                 small: { width: 400 , quality: 100 }
 
+        media_archive:
+            providers:
+                - sonata.media.provider.archive
+            formats:
+
+
     cdn:
         server:
-            path:  http://%s3_bucket_name%.s3-website-%s3_region%.amazonaws.com
+            path:  http://%s3_global_bucket_name%.s3-website-%s3_global_region%.amazonaws.com
 
     providers:
         image:
             filesystem: sonata.media.filesystem.s3
-    #    video:
-    #        allowed_extensions: ['mp4', 'flv']
-    #        allowed_mime_types: ['video/mp4', 'video/x-flv']
+            allowed_extensions: ['jpg', 'png', 'jpeg']
+            allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png']
 
     filesystem:
         s3:
-            bucket: %s3_bucket_name%
+            bucket: %s3_global_bucket_name%
             accessKey: %s3_access_key%
             secretKey: %s3_secret_key%
-            region: %s3_region%
+            region: %s3_global_region%
             storage: standard
             acl: owner_full_control
             create: false
+
     #providers:
     #   path: /uploads/media
     #

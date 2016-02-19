@@ -65,7 +65,7 @@ abstract class News implements TranslateMainInterface
     /**
      * @var Homepage
      *
-     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="sliderNews")
+     * @ORM\ManyToOne(targetEntity="Homepage")
      */
     private $homepage;
 
@@ -104,7 +104,7 @@ abstract class News implements TranslateMainInterface
     private $tags;
 
     /**
-     * @ORM\OneToMany(targetEntity="NewsNewsAssociated", mappedBy="news", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="NewsNewsAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"news_list", "news_show"})
      */
@@ -153,7 +153,6 @@ abstract class News implements TranslateMainInterface
      *
      * @ORM\ManyToMany(targetEntity="Site")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $sites;
 
@@ -203,6 +202,9 @@ abstract class News implements TranslateMainInterface
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->widgets = new ArrayCollection();
+        $this->associatedNews = new ArrayCollection();
+        $this->associatedProjections = new ArrayCollection();
+        $this->associatedFilms = new ArrayCollection();
     }
     
     public function __toString() {
@@ -220,7 +222,7 @@ abstract class News implements TranslateMainInterface
         return array(
             'Base\CoreBundle\Entity\NewsArticle' => 'article',
             'Base\CoreBundle\Entity\NewsAudio' => 'audio',
-            'Base\CoreBundle\Entity\NewsImage' => 'image',
+            'Base\CoreBundle\Entity\NewsImage' => 'photo',
             'Base\CoreBundle\Entity\NewsVideo' => 'video'
         );
     }
@@ -586,6 +588,7 @@ abstract class News implements TranslateMainInterface
      */
     public function addAssociatedNews(\Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews)
     {
+        $associatedNews->setNews($this);
         $this->associatedNews[] = $associatedNews;
 
         return $this;
@@ -608,6 +611,14 @@ abstract class News implements TranslateMainInterface
      */
     public function getAssociatedNews()
     {
+        if ($this->associatedNews->count() < 2) {
+            while ($this->associatedNews->count() != 2) {
+                $entity = new NewsNewsAssociated();
+                $entity->setNews($this);
+                $this->associatedNews->add($entity);
+            }
+        }
+
         return $this->associatedNews;
     }
 

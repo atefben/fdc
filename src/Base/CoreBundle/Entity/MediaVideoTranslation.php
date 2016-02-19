@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;
 
@@ -17,30 +18,28 @@ use JMS\Serializer\Annotation\Since;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\MediaVideoTranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class MediaVideoTranslation implements TranslateChildInterface
 {
+    use Seo;
     use Time;
     use Translation;
     use TranslateChild;
+
+    const ENCODING_STATE_PENDING = 0;
+    const ENCODING_STATE_IN_PROGRESS = 1;
+    const ENCODING_STATE_READY = 2;
 
     /**
      * @var Application\Sonata\MediaBundle\Entity\Media
      *
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
+     * @Assert\Valid()
      */
     private $file;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
-     */
-    private $akamaiId;
 
     /**
      * @var string
@@ -53,18 +52,37 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $alt;
+    private $imageAmazonUrl;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true, options={"default":0})
+     */
+    private $jobWebmState;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true, options={"default":0})
+     */
+    private $jobMp4State;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $copyright;
+    private $jobMp4Id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $jobWebmId;
 
     /**
      * @var Theme
@@ -74,20 +92,28 @@ class MediaVideoTranslation implements TranslateChildInterface
     private $theme;
 
     /**
-     * @var Media
-     *
-     * @ORM\ManyToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
-     *
-     * @Groups({"trailer_list", "trailer_show", "web_tv_list", "web_tv_show"})
-     */
-    private $image;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->sites = new ArrayCollection();
+        $this->state = 0;
+    }
+
+
+    /**
+     * getStatuses function.
+     *
+     * @access public
+     * @static
+     * @return void
+     */
+    public static function getEncodingStates()
+    {
+        return array(
+            self::ENCODING_STATE_PENDING => 'form.encoding_state.pending',
+            self::ENCODING_STATE_IN_PROGRESS => 'form.encoding_state.in_progress',
+            self::ENCODING_STATE_READY => 'form.encoding_state.ready',
+        );
     }
 
 
@@ -230,25 +256,117 @@ class MediaVideoTranslation implements TranslateChildInterface
     }
 
     /**
-     * Set image
+     * Set imageAmazonUrl
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $image
-     * @return MediaVideoTranslation
+     * @param string $imageAmazonUrl
+     * @return MediaVideo
      */
-    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
+    public function setImageAmazonUrl($imageAmazonUrl)
     {
-        $this->image = $image;
+        $this->imageAmazonUrl = $imageAmazonUrl;
 
         return $this;
     }
 
     /**
-     * Get image
+     * Get imageAmazonUrl
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     * @return string
      */
-    public function getImage()
+    public function getImageAmazonUrl()
     {
-        return $this->image;
+        return $this->imageAmazonUrl;
+    }
+
+    /**
+     * Set jobWebmState
+     *
+     * @param integer $jobWebmState
+     * @return MediaVideoTranslation
+     */
+    public function setJobWebmState($jobWebmState)
+    {
+        $this->jobWebmState = $jobWebmState;
+
+        return $this;
+    }
+
+    /**
+     * Get jobWebmState
+     *
+     * @return integer 
+     */
+    public function getJobWebmState()
+    {
+        return $this->jobWebmState;
+    }
+
+    /**
+     * Set jobMp4State
+     *
+     * @param integer $jobMp4State
+     * @return MediaVideoTranslation
+     */
+    public function setJobMp4State($jobMp4State)
+    {
+        $this->jobMp4State = $jobMp4State;
+
+        return $this;
+    }
+
+    /**
+     * Get jobMp4State
+     *
+     * @return integer 
+     */
+    public function getJobMp4State()
+    {
+        return $this->jobMp4State;
+    }
+
+    /**
+     * Set jobMp4Id
+     *
+     * @param string $jobMp4Id
+     * @return MediaVideoTranslation
+     */
+    public function setJobMp4Id($jobMp4Id)
+    {
+        $this->jobMp4Id = $jobMp4Id;
+
+        return $this;
+    }
+
+    /**
+     * Get jobMp4Id
+     *
+     * @return string 
+     */
+    public function getJobMp4Id()
+    {
+        return $this->jobMp4Id;
+    }
+
+    /**
+     * Set jobWebmId
+     *
+     * @param string $jobWebmId
+     * @return MediaVideoTranslation
+     */
+    public function setJobWebmId($jobWebmId)
+    {
+        $this->jobWebmId = $jobWebmId;
+
+        return $this;
+    }
+
+    /**
+     * Get jobWebmId
+     *
+     * @return string 
+     */
+    public function getJobWebmId()
+    {
+        return $this->jobWebmId;
     }
 }

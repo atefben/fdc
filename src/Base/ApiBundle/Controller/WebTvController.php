@@ -5,8 +5,6 @@ namespace Base\ApiBundle\Controller;
 use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
 use \DateTime;
 
-use Base\ApiBundle\Exclusion\StatusExclusionStrategy;
-
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -42,6 +40,7 @@ class WebTvController extends FOSRestController
      * )
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      *
@@ -55,10 +54,11 @@ class WebTvController extends FOSRestController
         // get festival year / version
         $festival = $coreManager->getApiFestivalYear();
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+        $lang = $paramFetcher->get('lang');
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository($this->repository)->getApiWebTvs($festival, new DateTime(), $coreManager->getLocale());
+        $query = $em->getRepository($this->repository)->getApiWebTvs($festival, new DateTime(), $lang);
 
         // get items
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
@@ -66,8 +66,7 @@ class WebTvController extends FOSRestController
         // set context view
         $groups = array('web_tv_list', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new StatusExclusionStrategy());
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($coreManager->getLocale()));
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
         // create view
@@ -105,6 +104,7 @@ class WebTvController extends FOSRestController
      * )
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
      *
      * @return View
      */
@@ -116,16 +116,16 @@ class WebTvController extends FOSRestController
         // get festival year / version
         $festival = $coreManager->getApiFestivalYear();
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+        $lang = $paramFetcher->get('lang');
 
         // create query
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository($this->repository)->getApiWebTv($id, $festival, new DateTime(), $coreManager->getLocale());
+        $entity = $em->getRepository($this->repository)->getApiWebTv($id, $festival, new DateTime(), $lang);
 
         // set context view
         $groups = array('web_tv_list', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new StatusExclusionStrategy());
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($coreManager->getLocale()));
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
         // create view

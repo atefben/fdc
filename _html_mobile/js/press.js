@@ -83,6 +83,7 @@ $(document).ready(function() {
 		    // todo on server : security check password.
 
 		    if(v == "test") {
+		      localStorage.setItem('press-pwd', v);
 		      // $.cookie('press', '1', { expires: 365 });
 		      $('.press').removeClass('press-locked');
 		      $('.press').addClass('press-unlocked');
@@ -92,7 +93,9 @@ $(document).ready(function() {
 			  $("#popin-press").removeClass('visible');
 		    } else {
 		      $(this).addClass('error');
+		      
 		    }
+		    
 
 		});
 
@@ -100,8 +103,8 @@ $(document).ready(function() {
 
 
 
-	// if cookie press
-	if($.cookie('press')) {
+	// if password is in localstorage
+	if(localStorage.getItem('press-pwd')) {
 	    $('.press').removeClass('press-locked');
 	    $('.press').addClass('press-unlocked');
 	    $('.locked').remove();
@@ -116,10 +119,11 @@ $(document).ready(function() {
 	    // todo on server : security check password.
 
 	    if(v == "test") {
-	      // $.cookie('press', '1', { expires: 365 });
+	      localStorage.setItem('press-pwd', v);
 	      $('.press').removeClass('press-locked');
 	      $('.press').addClass('press-unlocked');
-	      $('.locked').remove();
+	      $('.locked').addClass('valid');
+	      $('.locked').html('<p class="press_confirmation">les contenus qui vous sont réservés sont à présents accessibles.</p>');
 	    } else {
 	      $(this).addClass('error');
 	    }
@@ -127,160 +131,5 @@ $(document).ready(function() {
 	});
 
 
-		
-		$('#mycalendar').fullCalendar({
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
-			defaultDate: '2016-01-12',
-			editable: true,
-			eventLimit: true, // allow "more" link when too many events
-			events: [
-				{
-					title: 'All Day Event',
-					start: '2016-01-01'
-				},
-				{
-					title: 'Long Event',
-					start: '2016-01-07',
-					end: '2016-01-10'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2016-01-09T16:00:00'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2016-01-16T16:00:00'
-				},
-				{
-					title: 'Conference',
-					start: '2016-01-11',
-					end: '2016-01-13'
-				},
-				{
-					title: 'Meeting',
-					start: '2016-01-12T10:30:00',
-					end: '2016-01-12T12:30:00'
-				},
-				{
-					title: 'Lunch',
-					start: '2016-01-12T12:00:00'
-				},
-				{
-					title: 'Meeting',
-					start: '2016-01-12T14:30:00'
-				},
-				{
-					title: 'Happy Hour',
-					start: '2016-01-12T17:30:00'
-				},
-				{
-					title: 'Dinner',
-					start: '2016-01-12T20:00:00'
-				},
-				{
-					title: 'Birthday Party',
-					start: '2016-01-13T07:00:00'
-				},
-				{
-					title: 'Click for Google',
-					url: 'http://google.com/',
-					start: '2016-01-28'
-				}
-			]
-		});
-		
-
-
-
-
-
-
-	// // CALENDAR
-
-	// var agenda = localStorage.getItem('agenda_press');
- //    var events = JSON.parse(agenda);
-
-
-	// // create the 'my calendar' module
- //      $('#mycalendar').fullCalendar({
- //        lang: GLOBALS.locale, // TODO a verifier
- //        defaultDate: GLOBALS.defaultDate, // TODO a supprimer
- //        header: {
- //          left: 'prev',
- //          center: 'title',
- //          right: 'next'
- //        },
- //        titleFormat: 'dddd DD MMMM',
- //        defaultView: 'agendaDay',
- //        minTime: "08:00:00",
- //        maxTime: "28:00:00",
- //        allDaySlot: false,
- //        droppable: true,
- //        selectOverlap: false,
- //        events: events,
- //        eventOverlap: false,
- //        slotEventOverlap: false,
- //        eventAfterRender: function (event, element, view) {
- //          // atfer render of each event : change html with all the info
- //          if (event.duration / 60 < 2) {
- //            $(element).addClass('one-hour');
- //          }
- //          var dur = event.duration / 60 + 'H';
- //          var c = event.eventColor;
- //          $(element).empty();
- //          $(element).addClass(event.eventPictogram).addClass('ajax');
- //          $(element).attr('data-id', event.id);
-
- //          if (c == '#000') {
- //            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance-presse"></i>' + event.type + '<a href="#" class="del"></a></span>');
- //          } else if (c == "#9b9b9b") {
- //            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-seance"></i>' + event.type + '<a href="#" class="del"></a></span>');
- //          } else if (c == "#a68851") {
- //            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-conference"></i>' + event.type + '<a href="#" class="del"></a></span>');
- //          } else if (c == "#fff") {
- //            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_evt-personnel"></i>' + event.type + '<a href="#" class="del"></a></span>');
- //          } else {
- //            $(element).append('<span class="category" style="background-color:' + c + '"><i class="icon icon_espace-presse"></i>' + event.type + '<a href="#" class="del"></a></span>');
- //          }
-
- //          $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
- //          $(element).append('<div class="bottom"><span class="duration">' + dur + '</span> - <span class="ven">' + event.room.toUpperCase() + '</span><span class="competition">' + event.selection + '</span></div>');
- //        },
- //        viewRender: function (view) {
- //          // limit the min date and max date of the calendar, and change the programmation calendar date
- //          var moment = $('#mycalendar').fullCalendar('getDate');
-
- //          $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
-
- //          if (moment.format('DD') > maxDate) {
- //            $('#mycalendar').fullCalendar('gotoDate', '2016-05-22');
- //          }
- //          if (moment.format('DD') < minDate) {
- //            $('#mycalendar').fullCalendar('gotoDate', '2016-05-11');
- //          }
-
- //          if (moment.format('DD') == maxDate) {
- //            $('#mycalendar .fc-right').addClass('hide');
- //          }
- //          if (moment.format('DD') == minDate) {
- //            $('#mycalendar .fc-left').addClass('hide');
- //          }
-
- //          var m = $('#mycalendar').fullCalendar('getDate');
- //          $('#dateProgram').text(m.format('DD MMMM YYYY'));
- //          $('#timeline a').each(function () {
- //            var d = $(this).data('date');
- //            if (d == m.format()) {
- //              $(this).trigger('click');
- //            }
- //          });
- //        }
- //      });
 
 });

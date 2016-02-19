@@ -1,0 +1,91 @@
+.calendar-press #timeline a{
+	color: #fff;
+}
+.calendar-press .section-calendar{
+	height: 3531px;
+    background-color: #3a3a3a;
+}
+.calendar-press .header-press .container {
+    padding: 60px 0 30px 0;
+}
+.calendar-press #timeline-calendar{
+	border-bottom: 2px solid #3a3a3a;
+	border-top: none;
+	background-color: rgb(42,42,42);
+}
+.calendar-press .calendar .timeCol{
+	border:none;
+	background-color: rgb(42,42,42);
+}
+.calendar-press .calendar .time{
+	background-color: rgb(42,42,42);
+	color:#fff;
+	border-color: #3a3a3a;
+}
+#timeline-calendar .next, #timeline-calendar .prev, #timeline-calendar .next, #timeline-calendar .next{
+	background-color: rgb(42,42,42);
+	border-color: #3a3a3a;
+}
+.calendar .venues .venue{
+	background-color: rgb(27,27,27);
+	width: 100%;
+	border-top: 1px solid #3a3a3a;
+}
+.calendar .venues .venue .v-container{
+	background: url("../img/press/bg3.png") repeat;
+	border: none;
+}
+.calendar .venues .venue .v-container .fc-event{
+	background-color: rgb(42,42,42);
+	border: none;
+	width: 490px;
+	display: none;
+}
+.calendar .venues .venue .v-container .fc-event.half{
+	width: 235px;
+}
+.calendar .venues .venue .v-container .fc-event.half:nth-child(odd){
+	left: 255px;
+}
+.calendar .venues .venue .v-container .fc-event .txt span, .calendar .venues .venue .v-container .fc-event .bottom{
+	color: #fff;
+}
+.calendar .venues .venue .v-container .fc-event .txt span{
+	font-size: 26px;
+	line-height: 33px;
+	max-width: 290px;
+	height: auto;
+}
+.calendar .venues .venue .v-container .fc-event.one-hour .txt span{
+	max-width: 100%;
+	font-size: 20px;
+	height: 30px;
+	-webkit-line-clamp:1;
+}
+.calendar .venues .venue .v-container .fc-event .txt strong, .calendar .venues .venue .v-container .fc-event .bottom, .calendar .venues .venue .v-container .fc-event .bottom .competition{
+	font-size: 23px;
+}
+.calendar .venues .venue .v-container .fc-event.one-hour.half .txt span{
+	font-size: 17px;
+	line-height: 25px;
+}
+.calendar .venues .venue .v-container .fc-event.one-hour.half .txt strong{
+	font-size: 20px;
+
+}
+.calendar .venues .venue .v-container .category{
+	position: relative;
+}
+.calendar .venues .venue .v-container .fc-event .remove-evt{
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    margin: 0;
+    z-index: 2;
+    color: #fff;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+}
+}

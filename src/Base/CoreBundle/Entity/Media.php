@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Entity;
 
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
 
@@ -17,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Media
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\MediaRepository")
  * @ORM\HasLifecycleCallbacks()
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
@@ -26,6 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 abstract class Media implements TranslateMainInterface
 {
     use Time;
+    use SeoMain;
     use TranslateMain;
 
     /**
@@ -42,6 +44,7 @@ abstract class Media implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Theme")
      *
+     * @Groups({"news_list", "news_show"})
      * @Assert\NotNull()
      */
     private $theme;
@@ -77,6 +80,13 @@ abstract class Media implements TranslateMainInterface
     private $sites;
 
     /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     */
+    private $festival;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
@@ -99,9 +109,25 @@ abstract class Media implements TranslateMainInterface
 
     /**
      * @var ArrayCollection
-     * @Groups({"trailer_show", "web_tv_list", "web_tv_show"})
+     * @Groups({"news_show", "news_list", "trailer_show", "web_tv_list", "web_tv_show"})
+     *
+     * @Assert\Valid()
      */
     protected $translations;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     */
+    private $createdBy;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     */
+    private $updatedBy;
 
     public function __construct()
     {
@@ -342,5 +368,74 @@ abstract class Media implements TranslateMainInterface
     public function getDisplayedMobile()
     {
         return $this->displayedMobile;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $createdBy
+     * @return Media
+     */
+    public function setCreatedBy(\Application\Sonata\UserBundle\Entity\User $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set updatedBy
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $updatedBy
+     * @return Media
+     */
+    public function setUpdatedBy(\Application\Sonata\UserBundle\Entity\User $updatedBy = null)
+    {
+        $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedBy
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getUpdatedBy()
+    {
+        return $this->updatedBy;
+    }
+
+    /**
+     * Set festival
+     *
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @return Media
+     */
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \Base\CoreBundle\Entity\FilmFestival 
+     */
+    public function getFestival()
+    {
+        return $this->festival;
     }
 }

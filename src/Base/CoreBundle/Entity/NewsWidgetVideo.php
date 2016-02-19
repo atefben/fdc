@@ -11,6 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+
 /**
  * NewsWidgetVideo
  *
@@ -21,20 +24,20 @@ use Base\CoreBundle\Util\Time;
 class NewsWidgetVideo extends NewsWidget
 {
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
+     * @var MediaVideo
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaVideo")
+     * @Groups({"news_list", "news_show"})
      */
     private $file;
 
     /**
      * Set file
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $file
+     * @param \Base\CoreBundle\Entity\MediaVideo $file
      * @return NewsWidgetVideo
      */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    public function setFile(\Base\CoreBundle\Entity\MediaVideo $file = null)
     {
         $this->file = $file;
 
@@ -44,7 +47,7 @@ class NewsWidgetVideo extends NewsWidget
     /**
      * Get file
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     * @return \Base\CoreBundle\Entity\MediaVideo 
      */
     public function getFile()
     {

@@ -72,7 +72,8 @@ form[name="base_adminbundle_settings"] {
     padding-left: 10px;
 }
 
-.form-group[id$="priorityStatus"] {
+.form-group[id$="priorityStatus"],
+ul[id$="translateOptions"] {
     display: none;
 }
 
@@ -81,20 +82,21 @@ form[name="base_adminbundle_settings"] {
     float: right;
 }
 
+.nav-tabs>li>a {
+    min-height: 62px;
+}
+
+.nav-tab-active {
+    border-top: 3px solid #00a65a;
+    border-radius: 5px;
+}
+
 #fdc-list-translation-container {
-    /* Firefox */
-    width: -moz-calc(100% - 135px);
-    /* WebKit */
-    width: -webkit-calc(100% - 135px);
-    /* Opera */
-    width: -o-calc(100% - 135px);
-    /* Standard */
-    width: calc(100% - 135px);
+    width: 100%;
 }
 
 .fdc-list-translation-legend-info {
     padding: 10px 20px;
-    height: 80px;
     line-height: 60px;
 }
 
@@ -228,4 +230,8 @@ form[name="base_adminbundle_settings"] {
     margin-right: 2px;
     line-height: 1.42857143;
     border-radius: 4px 4px 0 0;
+}
+
+.status-hidden {
+    display: none;
 }

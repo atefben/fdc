@@ -5,19 +5,20 @@
 
 }
 #header{
-    z-index: 15;
+    z-index: 51;
     display:table;
     height: 180px;
     position: relative;
-
+    -webkit-transform: translate3D(0,0,0);
+    transform: translate3D(0,0,0);
 }
 .sticky #header  {
     position: fixed;
-    top: 0;
+    top: 0px;
     padding: 0;
     height: 90px;
 }
-.sticky #header.fixfixed,#header.fixfixed{
+.sticky #header.fixfixed{
     position: absolute;
 }
 #header .header-container{
@@ -67,11 +68,11 @@
     color: #c8a461;
     text-transform: uppercase;
 }
-#header #search, #menu-btn {
+#menu-btn, #selection-btn {
     display: inline-block;
-    height: 63px;
+    height: 80px;
     position: absolute;
-    width: 63px;
+    width: 80px;
     cursor: pointer;
     -moz-transition: width 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     -o-transition: width 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -79,25 +80,25 @@
     transition: width 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     color: #fff;
     display: block;
-    line-height:63px;
+    line-height:80px;
     text-align: center;
     top: 50%;
-    margin-top: -31px;
+    margin-top: -40px;
 }
-#header #search{
+#selection-btn {
     right: 40px;
 }
 #header #menu-btn{
     left:40px;
 }
-#header #search  .icon, #menu-btn .icon-mobile-burger{
+#selection-btn  .icon, #menu-btn .icon-mobile-burger{
     font-size: 2.8em;
     -moz-transition: font-size 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     -o-transition: font-size 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     -webkit-transition: font-size 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     transition: font-size 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-.sticky #header #search  .icon, .sticky #header #menu-btn  .icon-mobile-burger{
+.sticky #header #selection-btn   .icon, .sticky #header #menu-btn  .icon-mobile-burger{
     font-size: 2.225em;
 }
 

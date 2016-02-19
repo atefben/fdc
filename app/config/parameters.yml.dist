@@ -23,15 +23,57 @@ parameters:
     locales: [fr, en, es, zh]
     locales_admin: [fr]
     locale_default_translation: fr
-    locale_fallback: en
+    locale_fallback: fr
 
     # admin
     admin_homepage_id: ~
+    admin_press_homepage_id: ~
+    admin_press_guide_id: ~
+    admin_press_contact_id: ~
+    admin_press_download_id: ~
+    admin_press_medialibrary_id: ~
+    admin_press_accredit_id: ~
+    admin_press_cinemamap_id: ~
+    admin_press_projection_id: ~
+    admin_fdc_page_web_tv_channels_id: ~
+    admin_fdc_page_web_tv_live_id: ~
+    admin_fdc_page_web_tv_trailers_competition_id: ~
+    admin_fdc_page_web_tv_trailers_certain_regard_id: ~
+    admin_fdc_page_web_tv_trailers_hors_competition_id: ~
+    admin_fdc_page_web_tv_trailers_seances_speciales_id: ~
+    admin_fdc_page_web_tv_trailers_cinefondation_id: ~
+    admin_fdc_page_web_tv_trailers_courts_metrages_id: ~
+    admin_fdc_page_web_tv_trailers_cannes_classics_id: ~
+    admin_fdc_page_web_tv_trailers_cinema_plage_id: ~
     # routes where are displayed the translation legend
+    admin_routes_translation_legend_without_master:
+        - admin_base_core_theme_list
+        - admin_base_core_contacttheme_list
+        - admin_base_core_tag_list
+        - admin_base_core_webtv_list
+        - admin_base_core_mediaimagesimple_list
     admin_routes_translation_legend:
         - admin_base_core_newsarticle_list
+        - admin_base_core_event_list
+        - admin_base_core_mediaimage_list
+        - admin_base_core_mediaaudio_list
+        - admin_base_core_mediavideo_list
+        - admin_base_core_newsimage_list
+        - admin_base_core_newsaudio_list
+        - admin_base_core_newsvideo_list
     admin_routes_translation_lock:
         - admin_base_core_newsarticle_edit
+        - admin_base_core_webtv_edit
+        - admin_base_core_tag_edit
+        - admin_base_core_theme_edit
+        - admin_base_core_contacttheme_edit
+        - admin_base_core_event_edit
+        - admin_base_core_mediaimage_edit
+        - admin_base_core_mediaaudio_edit
+        - admin_base_core_mediavideo_edit
+        - admin_base_core_newsimage_edit
+        - admin_base_core_newsaudio_edit
+        - admin_base_core_newsvideo_edit
     # soif
     soif_preprod_url: ~
     soif_prod_url: ~
@@ -46,16 +88,26 @@ parameters:
     #api
     api_version: '1.0'
     api_page_offset: 10
-    api_translation_locale: 'en'
     # amazon s3
-    s3_bucket_name: ~
-    s3_region: ~
     s3_access_key: ~
     s3_secret_key: ~
+    # amazon s3 global
+    s3_global_bucket_name: ~
+    s3_global_region: ~
+    # amazon s3 video
+    s3_video_bucket_name: ~
+    s3_video_region: ~
+    # amazon s3 audio
+    s3_audio_bucket_name: ~
+    s3_audio_region: ~
+    # amazon s3 archive
+    s3_archive_bucket_name: ~
+    s3_archive_region: ~
     # fdc
     fdc_event_domain: ~
     fdc_event_scheme: ~
     fdc_press_domain: ~
+    fdc_press_scheme: ~
     fdc_corporate_domain: ~
     fdc_press_domain_regexp: ~
     fdc_app_android_download_url: '#'
@@ -84,11 +136,11 @@ parameters:
     jwplayer_key: ~
     fdc_event_slug: ~
     fdc_year: ~
-    twitter_consumer_key: 'AuXw71nzlXihJxX7L6z1oALZZ'
-    twitter_consumer_secret: 'k3iqAnPmv9bvFit1upeiJGRmUPSKBcT5sSkp4JvYyXcHkj4N6m'
-    twitter_token: '393992891-OqG2GKPBPRDZaMBrm9OyZ60rwBVewHIqmNLWdoZD'
-    twitter_token_secret: 'CMvPEICEojMOjPm6zAIhYzLxSSVXcornsENJd9TLDxxG4'
-    instagram_consumer_key: 'a5a34caba4dd41619ca4d4cde7899374'
-    instagram_consumer_secret: 'c278268c28c043fabc51ea5d5805869c'
-    instagram_token: '2480568612.1677ed0.e6bd83eae8a74220ad07059c7b3ab5bc'
-    tumblr_consumer_key: 'i1jImF1HwZQq8heF0hCQ0VD481ANJcZz51ZniNXCPIiKHw5bFb'
+    twitter_consumer_key: ~
+    twitter_consumer_secret: ~
+    twitter_token: ~
+    twitter_token_secret: ~
+    instagram_consumer_key: ~
+    instagram_consumer_secret: ~
+    instagram_token: ~
+    tumblr_consumer_key: ~

@@ -125,7 +125,7 @@
 
             setTimeout(function() {
               $('.chocolat-content, .chocolat-description, .credit').removeClass('hide');
-            }, 1200);
+            }, 500);
 
             return deferred;
 
@@ -142,7 +142,7 @@
 
             this.storeImgSize(imgLoader, i);
             fitting = this.fit(i, that.settings.container);
-
+            console.log("place",this.settings.imageSize);
             return this.center(
                 fitting.width,
                 fitting.height,
@@ -252,7 +252,7 @@
                 else {
                     return that.load(requestedImage);
                 }
-            }, 900);
+            }, 800);
 
         },
 
@@ -606,7 +606,14 @@
                 });
             });
         },
+        refresh : function(that){
 
+            that.debounce(50, function() {
+                fitting = that.fit(that.settings.currentImage, that.settings.container);
+                that.center(fitting.width, fitting.height, fitting.left, fitting.top, 0);
+                that.zoomable();
+            });
+        },
         zoomable : function () {
             var currentImage = this.settings.images[this.settings.currentImage];
             var wrapperWidth = this.elems.wrapper.width();

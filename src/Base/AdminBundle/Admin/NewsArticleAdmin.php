@@ -7,11 +7,12 @@ use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsNewsAssociated;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * NewsArticleAdmin class.
@@ -28,17 +29,6 @@ class NewsArticleAdmin extends Admin
 
     protected $translationDomain = 'BaseAdminBundle';
 
-    
-    public function getNewInstance()
-    {
-       $instance = parent::getNewInstance();
-       
-       $instance->addAssociatedNews(new NewsNewsAssociated());
-       $instance->addAssociatedNews(new NewsNewsAssociated());
-
-       return $instance;
-    }
-
 
     public function configure()
     {
@@ -54,79 +44,6 @@ class NewsArticleAdmin extends Admin
     }
 
     /**
-     * @param DatagridMapper $datagridMapper
-     */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('id')
-            ->add('title', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.title LIKE :title');
-                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
-
-                    return true;
-                },
-                'field_type' => 'text'
-            ))
-            ->add('theme')
-            ->add('status', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.status = :status');
-                    $queryBuilder->setParameter('status', $value['value']);
-
-                    return true;
-                },
-                'field_type' => 'choice',
-                'field_options' => array(
-                    'choices' => NewsArticleTranslation::getStatuses(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
-            ))
-        ;
-    }
-
-    /**
-     * @param ListMapper $listMapper
-     */
-    protected function configureListFields(ListMapper $listMapper)
-    {
-        $listMapper
-            ->add('id')
-            ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
-            ->add('theme')
-            ->add('createdAt')
-            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig'))
-            ->add('priorityStatus', 'choice', array(
-                'choices' => NewsArticle::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('statusMain', 'choice', array(
-                'choices' => NewsArticleTranslation::getStatuses(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
-            ))
-            ->add('_preview', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_preview.html.twig'
-            ))
-        ;
-    }
-
-    /**
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
@@ -139,7 +56,10 @@ class NewsArticleAdmin extends Admin
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.news.helper_title'
+                        'sonata_help' => 'form.news.helper_title',
+                        'constraints' => array(
+                            new NotBlank()
+                        )
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor',
@@ -176,7 +96,6 @@ class NewsArticleAdmin extends Admin
                         'sonata_help' => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
-
                     )
                 )
             ))
@@ -269,7 +188,7 @@ class NewsArticleAdmin extends Admin
                 'label' => 'form.label_news_news_associated',
                 'help' => 'form.news.helper_news_news_associated',
                 'by_reference' => false,
-                'btn_add' => true,
+                'btn_add' => false,
                 'required' => false,
                 ), array(
                     'edit' => 'inline',
@@ -279,6 +198,12 @@ class NewsArticleAdmin extends Admin
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => News::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => News::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
@@ -286,8 +211,8 @@ class NewsArticleAdmin extends Admin
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
-                'help' => 'form.news.helper_file',
-                'required' => false
+                'help' => 'form.seo.helper_file',
+                'required' => false,
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)
             ->add('createdAt', null, array(

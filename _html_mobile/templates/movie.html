@@ -14,17 +14,16 @@
 
 </head>
 <body>
-<div id="main" data-menu="selection">
+
+<div id="main" data-menu="selection" class="movie-page">
 <!-- build:include ../include/menu.html -->
-  <!-- /build -->
+	<!-- /build -->
+	<!-- build:include ../include/my_selection.html -->
+	<!-- /build -->
   <!-- build:include ../include/header.html -->
   <!-- /build -->
 
-  <div class="banner-img vCenter" style="background-image:url(./img/movie/001.jpg)">
-    <div class="vCenterKid">
-    <h2 class="title"><i class="icon icon_player"></i></h2>
-    </div>
-  </div>
+  <div id="player" data-video="./videos/sample.mp4" data-poster="./img/movie/001.jpg"></div>
 
 
   <div class="pictos-nav">
@@ -76,7 +75,7 @@
                   <div class="info-container">
                     <div class="vCenter">
                       <div class="vCenterKid">
-                        <a href="#" class="category">extrait</a>
+                        <span class="category">extrait</span>
                         <span class="date">18.05.15</span>
                          . 
                         <span class="hour">09:00</span>
@@ -95,7 +94,7 @@
                   <div class="info-container">
                     <div class="vCenter">
                       <div class="vCenterKid">
-                        <a href="#" class="category">extrait</a>
+                        <span class="category">extrait</span>
                         <a href="#" class="titleLink">Sils Maria de Olivier ASSAYAS</a>
                       </div>
                     </div>
@@ -109,7 +108,7 @@
                   <div class="info-container">
                     <div class="vCenter">
                       <div class="vCenterKid">
-                        <a href="#" class="category">conférence de press</a>
+                        <span class="category">conférence de press</span>
                         <a href="#" class="titleLink">Rencontre avec Kristen Stewart</a>
                       </div>
                     </div>
@@ -123,7 +122,7 @@
                   <div class="info-container">
                     <div class="vCenter">
                       <div class="vCenterKid">
-                        <a href="#" class="category">Bande annonce</a>
+                        <span class="category">Bande annonce</span>
                         <a href="#" class="titleLink">Bande annonce 01</a>
                       </div>
                     </div>
@@ -239,33 +238,39 @@
       <h3 class="title-section">articles</h3>
 
       <div class="owl-carousel articles-carousel">
-        <div data-id="article1" class="thumb active">
+        <div data-id="article1" class="thumb active item">
+          <a href="article-photos.html"></a>
           <div class="img-container">
             <img src="img/movie/article.jpg" />
             <div class="picto"><i class="icon icon_article"></i></div>
+            <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
           </div>
           <div class="info">
-            <div class="top-info"><a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span></div>
+            <div class="top-info"><span class="category">Conférence de presse</span><span class="date">18.05.15</span> . <span class="hour">09:00</span></div>
             <h2>Olivier Assayas: "Avec les comédiens, si la confiance est totale, on va jusqu'au bout "</h2>
           </div>
         </div>
-        <div data-id="article2" class="thumb">
+        <div data-id="article2" class="thumb item">
+          <a href="article.html"></a>
           <div class="img-container">
             <img src="img/movie/article.jpg" />
             <div class="picto"><i class="icon icon_article"></i></div>
+            <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
           </div>
           <div class="info">
-            <div class="top-info"><a href="#" class="category">Compétition</a><span class="date">22.05.15</span> . <span class="hour">12:00</span></div>
+            <div class="top-info"><span class="category">Compétition</span><span class="date">22.05.15</span> . <span class="hour">12:00</span></div>
             <h2>Stéphane Brizé interroge la loi du marché</h2>
           </div>
         </div>
-        <div data-id="article3" class="thumb">
+        <div data-id="article3" class="thumb item">
+          <a href="article-audio.html"></a>
           <div class="img-container">
             <img src="img/movie/article.jpg" />
             <div class="picto"><i class="icon icon_article"></i></div>
+            <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
           </div>
           <div class="info">
-            <div class="top-info"><a href="#" class="category">Conférence de presse</a><span class="date">19.05.15</span> . <span class="hour">08:00</span></div>
+            <div class="top-info"><span class="category">Conférence de presse</span><span class="date">19.05.15</span> . <span class="hour">08:00</span></div>
             <h2>Olivier Assayas: "Avec les comédiens, si la confiance est totale, on va jusqu'au bout "</h2>
           </div>
         </div>
@@ -280,7 +285,7 @@
           <i class="icon icon_audio"></i>
         </div>
         <div class="player-off">
-          <a href="#" class="category">conférence de presse</a>
+          <span class="category">conférence de presse</a></span>
           <span class="date">18.05.15</span>
            . 
           <span class="hour">09:00</span>
@@ -300,7 +305,7 @@
           <i class="icon icon_audio"></i>
         </div>
         <div class="player-off">
-          <a href="#" class="category">interview</a>
+          <span class="category">interview</a></span>
           <span class="date">18.05.15</span>
            . 
           <span class="hour">09:00</span>
@@ -380,7 +385,9 @@
       <h3 class="title-section">en compétition</h3>
 
       <div class="owl-carousel competition-carousel">
+
         <div data-id="film1" class="thumb active">
+          <a href="movie.html"></a>
           <div class="img-container" style="background-image:url(./img/movie/001.jpg)"></div>
           <div class="info">
             <p>Carol</p>
@@ -388,6 +395,7 @@
           </div>
         </div>
         <div data-id="film2" class="thumb">
+          <a href="movie.html"></a>
           <div class="img-container" style="background-image:url(./img/movie/003.jpg)"></div>
           <div class="info">
             <p>Carol</p>
@@ -395,6 +403,7 @@
           </div>
         </div>
         <div data-id="film3" class="thumb">
+          <a href="movie.html"></a>
           <div class="img-container" style="background-image:url(./img/movie/movie.jpg)"></div>
           <div class="info">
             <p>Carol</p>
@@ -402,6 +411,7 @@
           </div>
         </div>
         <div data-id="film4" class="thumb">
+          <a href="movie.html"></a>
           <div class="img-container" style="background-image:url(./img/movie/movie1.jpg)"></div>
           <div class="info">
             <p>Carol</p>
@@ -409,6 +419,7 @@
           </div>
         </div>
         <div data-id="film5" class="thumb">
+          <a href="movie.html"></a>
           <div class="img-container" style="background-image:url(./img/movie/001.jpg)"></div>
           <div class="info">
             <p>Carol</p>

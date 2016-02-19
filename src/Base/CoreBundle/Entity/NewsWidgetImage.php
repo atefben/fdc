@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
 
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 /**
  * NewsWidgetImage
  *
@@ -18,6 +20,7 @@ class NewsWidgetImage extends NewsWidget
 {
     /**
      * @ORM\ManyToOne(targetEntity="Gallery")
+     * @Groups({"news_list", "news_show"})
      */
     private $gallery;
 

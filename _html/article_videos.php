@@ -23,12 +23,26 @@
 Imprimer</a>
         </div>
 
-        <div class="video-player video actu_article_video">
-          <div class="image" style="background-image: url(img/article/004.jpg);"></div>
-          <div class="picto"></div>
-          <div class="info">
-            <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            <p>The Lobster</p>
+        <div class="video-container state-init video"
+          data-facebook="//www.facebook.com"
+          data-twitter="//www.twitter.com"
+          data-link="//www.example.com"
+          data-email="//www.gmail.com"
+          data-file='[{"file":"./files/mov_bbb.webm"}]'
+          data-img="//dummyimage.com/960x540/000/c8a461.png">
+          <div id="v_<?php echo 1+time();?>" class="video-player">
+          </div>
+          <div class="video-overlay"></div>
+          <div class="infos-bar">
+            <div class="picto"><i class="icon icon_video"></i></div>
+            <div class="info">
+              <div class="vCenter">
+                <div class="vCenterKid">
+                  <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <p>The Lobster</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -36,8 +50,8 @@ Imprimer</a>
       <div class="share">
         <p>Partagez l'article</p>
         <div class="buttons square">
-          <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-          <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i>
+          <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+          <a  href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i>
 </a>
           <a href="#" class="button link"><i class="icon icon_link"></i></a>
           <a href="#" class="button email"><i class="icon icon_lettre"></i></a>

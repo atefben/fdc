@@ -3,6 +3,7 @@
     <!-- //// JS_HEAD \\\\ -->
     <script>
         var GLOBALS = {
+            "env" : "{{ app.environment }}",
             "locale" : "{{ app.request.locale }}",
             "defaultDate" : "2016-05-12",
             "api" : {
@@ -21,13 +22,14 @@
             },
             "baseUrl" : "{{ url('fdc_event_news_index') }}",
             "urls" : {
-                "calendarProgrammationUrl" : "calendarprogrammation.html",
+                "calendarProgrammationUrl" : "{{ url('fdc_event_global_getdayprojections') }}",
                 "eventUrl" : "load-evenements.php",
-                "newsUrl" : "news.html",
-                "newsUrlNext" : "news_page2.html",
+                "newsUrl" : "{{ url('fdc_event_news_getarticlesfrom') }}",
+                "newsUrlNext" : "{{ url('fdc_event_news_getarticlesfrom') }}",
                 "loadPressRelease" : "load-communique.php",
                 "selectionUrl" : "{{ url('fdc_event_global_suggestion') }}",
-                "newsletterUrl": "{{ url('fdc_event_global_newsletter') }}"
+                "newsletterUrl": "{{ url('fdc_event_global_newsletter') }}",
+                "shareEmailUrl": "{{ url('fdc_event_global_shareemail') }}"
             },
             "texts" : {
                 "url" : {
@@ -61,11 +63,22 @@
                 "labelFormat": {
                     "fr" : "H [H]",
                     "default" : "h A"
+                },
+                "i18n": {
+                    "months": ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
+                    "weekdays" : ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+                    "weekdaysShort" : ["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"],
+                    "labelFormat": {
+                        "fr" : "H\\hi",
+                        "default" : "g:ia"
+                    }
                 }
             },
             "socialWall": {
                 {% if socialGraph is defined %}
                 "points": {{ socialGraph.timelineCount }},
+                {% else %}
+                "points": [],
                 {% endif %}
                 "heightGraph" : 200
             }

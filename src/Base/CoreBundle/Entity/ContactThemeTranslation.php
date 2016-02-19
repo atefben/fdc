@@ -33,6 +33,12 @@ class ContactThemeTranslation implements TranslateChildInterface
      */
     private $theme;
 
+    public function __construct()
+    {
+        $this->status = self::STATUS_PUBLISHED;
+    }
+
+
     /**
      * Set theme
      *

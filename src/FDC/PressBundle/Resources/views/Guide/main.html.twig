@@ -3,28 +3,110 @@
 
 {% block body %}
 
-<div id="main" class="press loading practicalguide lock">
+<div id="main" class="press loading practicalguide {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
 
     {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 
     <div id='praticalguide'>
-        {% for key, section in guideContent.section %}
 
-            <section class="container-pguide {% if key == 'arrive' %}active{% endif %}">
-                <div class="wrapper">
-                    {% if key == 'arrive' %}
-                        {% include 'FDCPressBundle:Guide:components/arrive.html.twig' %}
-                    {% elseif key == 'infos' %}
-                        {% include 'FDCPressBundle:Guide:components/infos.html.twig' %}
-                    {% elseif key == 'appointment' %}
-                        {% include 'FDCPressBundle:Guide:components/appointment.html.twig' %}
-                    {% elseif key == 'service' %}
-                        {% include 'FDCPressBundle:Guide:components/service.html.twig' %}
-                    {% endif %}
+        {# SECTION - A VOTRE ARRIVEE #}
+        <section class="container-pguide active">
+            <div class="wrapper">
+                <div class="contain-title-pg">
+                    <h3 class="title-pguide ">
+                        <span class="logo">
+                            <i class="icon {{ guideContent.arriveIcon }}"></i>
+                        </span>
+                        {{ guideContent|trans_fallback('arriveTitle')}}
+                    </h3>
+                    <i class="icon accordion icon_moins"></i>
                 </div>
-            </section>
+                {% for widget in guideContent.arriveWidgets %}
+                    {% if class(widget) == "PressGuideWidgetImage" %}
+                        {% include 'FDCPressBundle:Guide:widgets/image.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetPicto" %}
+                        {% include 'FDCPressBundle:Guide:widgets/picto.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetColumn" %}
+                        {% include 'FDCPressBundle:Guide:widgets/column.html.twig' %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
 
-        {% endfor %}
+        {# SECTION - INFORMATION #}
+        <section class="container-pguide">
+            <div class="wrapper">
+                <div class="contain-title-pg">
+                    <h3 class="title-pguide ">
+                        <span class="logo">
+                            <i class="icon {{ guideContent.informationIcon }}"></i>
+                        </span>
+                        {{ guideContent|trans_fallback('informationTitle')}}
+                    </h3>
+                    <i class="icon accordion icon_moins"></i>
+                </div>
+                {% for widget in guideContent.informationWidgets %}
+                    {% if class(widget) == "PressGuideWidgetImage" %}
+                        {% include 'FDCPressBundle:Guide:widgets/image.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetPicto" %}
+                        {% include 'FDCPressBundle:Guide:widgets/picto.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetColumn" %}
+                        {% include 'FDCPressBundle:Guide:widgets/column.html.twig' %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+
+        {# SECTION - RENDEZ VOUS DES MEDIAS #}
+        <section class="container-pguide">
+            <div class="wrapper">
+                <div class="contain-title-pg">
+                    <h3 class="title-pguide ">
+                        <span class="logo">
+                            <i class="icon {{ guideContent.meetingIcon }}"></i>
+                        </span>
+                        {{ guideContent|trans_fallback('meetingTitle')}}
+                    </h3>
+                    <i class="icon accordion icon_moins"></i>
+                </div>
+                {% for widget in guideContent.meetingWidgets %}
+                    {% if class(widget) == "PressGuideWidgetImage" %}
+                        {% include 'FDCPressBundle:Guide:widgets/image.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetPicto" %}
+                        {% include 'FDCPressBundle:Guide:widgets/picto.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetColumn" %}
+                        {% include 'FDCPressBundle:Guide:widgets/column.html.twig' %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+
+        {# SECTION - SERVICES #}
+        <section class="container-pguide">
+            <div class="wrapper">
+                <div class="contain-title-pg">
+                    <h3 class="title-pguide ">
+                        <span class="logo">
+                            <i class="icon {{ guideContent.serviceIcon }}"></i>
+                        </span>
+                        {{ guideContent|trans_fallback('serviceTitle')}}
+                    </h3>
+                    <i class="icon accordion icon_moins"></i>
+                </div>
+                <div class="contain-article pictos-service">
+                    {% for widget in guideContent.serviceWidgets %}
+                        {% if class(widget) == "PressGuideWidgetImage" %}
+                            {% include 'FDCPressBundle:Guide:widgets/image.html.twig' %}
+                        {% elseif class(widget) == "PressGuideWidgetPicto" %}
+                            {% include 'FDCPressBundle:Guide:widgets/picto.html.twig' %}
+                        {% elseif class(widget) == "PressGuideWidgetColumn" %}
+                            {% include 'FDCPressBundle:Guide:widgets/column.html.twig' %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
     </div>
 
     {{ render(controller('FDCPressBundle:Global:contact')) }}

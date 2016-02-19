@@ -4,57 +4,105 @@
     <div class="wrapper">
         <div class="container-small">
             <div class="table">
-                {% for film in section.film %}
+                {% for film in films %}
+                    {% if film.selectionSection|trans_fallback('slug') == section.slug %}
                     <div class="line">
                         <div class="container">
                             <div class="info">
-                                <img src="{{ film.image.path }}" alt="" />
+                                {% media film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'film_poster_tiny' %}
                                 <div class="txt">
                                     <div class="vCenter">
                                         <div class="vCenterKid">
-                                            <p>{{ film.title }}
-                                                <a href="#" class="director">{{ film.author.fullName }}</a>
+                                            <p>
+                                                {{ film|trans_fallback('title') }}
+                                                {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                    <a class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
+                                                {% endfor %}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="media folder">{{ 'mediatheque.label.dossiersdepresse'|trans }} ({{ film.medias.press|length }})</div>
-                            <div class="media trailer">{{ 'mediatheque.label.bandesannonces'|trans }} ({{ film.medias.trailer|length }})</div>
-                            <div class="media photo">{{ 'mediatheque.label.photos'|trans }} ({{ film.medias.photo|length }})</div>
-                            <span class="plus"></span>
+                            {% set countVideo = 0 %}
+                            {% set countFolder = 0 %}
+                            {% set countImage = 0 %}
+                            {% for video in film.associatedMediaVideos %}
+                                {% if video.mediaVideo.displayedTrailer == 1 %}
+                                {% set countVideo = countVideo + 1 %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for media in film.medias %}
+                                {% if media.type == 18 %}
+                                    {% set countFolder = countFolder + 1 %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for media in film.medias %}
+                                {% if media.type == 14 %}
+                                    {% set countImage = countImage + 1 %}
+                                {% endif %}
+                            {% endfor %}
+                            <div class="media folder">
+                                <i class="icon icon_dossier"></i>{{ 'mediatheque.label.dossiersdepresse'|trans }} ({{ countFolder }})
+                            </div>
+                            <div class="media trailer">
+                                <i class="icon icon_bande-annonce"></i>{{ 'mediatheque.label.bandesannonces'|trans }} ({{ countVideo }})
+                            </div>
+                            <div class="media photo">
+                                <i class="icon icon_photo"></i>{{ 'mediatheque.label.photos'|trans }} ({{ countImage }})
+                            </div>
+                            <span class="plus"><i class="icon icon_case-plus"></i></span>
                             <div class="contain">
+                                {% if countFolder > 0 %}
                                 <div class="contain-buttons">
-                                    <strong>{{ 'mediatheque.label.dossiersdepresse'|trans }}<span>({{ film.medias.press|length }})</span></strong>
+                                    <strong>{{ 'mediatheque.label.dossiersdepresse'|trans }}<span>({{ countFolder }})</span></strong>
 
-                                    {% for press in film.medias.press %}
-                                        <div class="buttons active-btn">
-                                            <a href="{{ press.link }}" class="button"> {{ press.title }}</a>
-                                            <a href="{{ press.linkEN }}" class="button"> {{ press.titleEN }}</a>
-                                        </div>
-                                    {% endfor %}
+                                    <div class="buttons active-btn">
+                                        {% for m in film.medias %}
+                                        {% if m.type == 18 %}
+                                            {% if 'French' in m.media.titleVa %}
+                                                <a href="{% path m.media.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.enfrancais'|trans }}</a>
+                                            {% elseif 'English' in m.media.titleVa %}
+                                                <a href="{% path m.media.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.enanglais'|trans }}</a>
+                                            {% elseif 'Bilingual' in m.media.titleVa %}
+                                                <a href="{% path m.media.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.bilingue'|trans }}</a>
+                                            {% else %}
+                                                <a href="{% path m.media.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.telecharger'|trans }}</a>
+                                            {% endif %}
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
 
                                 </div>
+                                {% endif %}
+                                {% if countVideo %}
                                 <div class="contain-buttons">
-                                    <strong>{{ 'mediatheque.label.bandesannoncesetextraits'|trans }}<span>({{ film.medias.trailer|length }})</span></strong>
+                                    <strong>{{ 'mediatheque.label.bandesannoncesetextraits'|trans }}<span>({{ countVideo }})</span></strong>
 
-                                    {% for trailer in film.medias.trailer %}
-                                        <div class="buttons">
-                                            <a href="{{ trailer.link }}" class="button"> {{ trailer.title }}</a>
-                                            <a href="{{ trailer.link }}" class="button"> {{ trailer.title }}</a>
-                                        </div>
-                                    {% endfor %}
+                                    <div class="buttons">
+                                        {% for m in film.associatedMediaVideos %}
+                                        {% if m.mediaVideo.displayedTrailer == 1 %}
+                                            {% set trans = m.mediaVideo.findTranslationByLocale(app.request.locale) %}
+                                            {% if trans is null or trans.file is null %}
+                                                {% set trans = m.mediaVideo.findTranslationByLocale('fr') %}
+                                            {% endif %}
+                                                <a href="{% path trans.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i> {{ trans.title }}</a>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
 
                                 </div>
+                                {% endif %}
+                                {% if countImage %}
                                 <div class="photos block slideshow">
                                     <div class="container">
                                         <div class="container-title">
                                             <h3 class="title-press">
                                                 {{ 'mediatheque.title.photoshd'|trans }}
-                                                <span class="number">({{ film.medias.photo|length }})</span>
+                                                <span class="number">({{ countImage }})</span>
                                             </h3>
                                             <div class="download-btns right-btn buttons ">
-                                                <a href="{{ film.medias.photo.globalLink }}" class="alldl button">
+                                                <a href="{{ path('fdc_press_media_filmarchive', {'id': film.id }) }}" class="alldl button">
+                                                    <i class="icon icon_telecharger"></i>
                                                     {{ 'mediatheque.btn.touttelecharger'|trans }}
                                                 </a>
                                             </div>
@@ -62,30 +110,48 @@
                                         <div class="grid-wrapper images">
                                             <div class="grid-sizer"></div>
 
-                                            {% for image in film.medias.photo.image %}
-                                                <div class="item">
-                                                    <a id='photo1' href="{{ image.large }}" class="chocolat-image ajax" title='<h2>{{ image.title }}</h2>' data-credit="{{ image.credit }}">
-                                                        <img src="{{ image.path }}" alt="{{ image.credit }}">
-                                                    </a>
-                                                </div>
+                                            {% for key,m in film.medias %}
+                                                {% if m.type == 14 %}
+                                                    {% set imageTitle = '' %}
+                                                    {% if app.request.locale == 'fr' %}
+                                                        {% set imageTitle = m.media.titleVf %}
+                                                    {% else %}
+                                                        {% set imageTitle = m.media.titleVa %}
+                                                    {% endif %}
+                                                    <div class="item">
+                                                        <a id='photo{{ key }}' href="{% path m.media.file, 'big' %}" class="chocolat-image ajax"
+                                                           title='<h2>{{ imageTitle }}</h2>' data-credit="{{ m.media.credits }}">
+                                                            {% media m.media.file, 'tiny' %}
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
                                             {% endfor %}
 
                                             <div class="owl-carousel thumbnails">
 
-                                                {% for key, image in film.medias.photo.image %}
-                                                    <div data-id="photo1" class="thumb active" data-caption="{{ image.caption }}">
-                                                        <img src="{{ image.path }}" />
-                                                    </div>
+                                                {% for key,m in film.medias %}
+                                                    {% if m.type == 14 %}
+                                                        {% set imageTitle = '' %}
+                                                        {% if app.request.locale == 'fr' %}
+                                                            {% set imageTitle = m.media.titleVf %}
+                                                        {% else %}
+                                                            {% set imageTitle = m.media.titleVa %}
+                                                        {% endif %}
+                                                        <div data-id="photo{{ key }}" class="thumb {% if key == 0 %}active{% endif %}" data-caption="{{ imageTitle }}">
+                                                            {% media m.media.file, 'tiny' %}
+                                                        </div>
+                                                    {% endif %}
                                                 {% endfor %}
 
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>

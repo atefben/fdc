@@ -1,0 +1,28 @@
+{% set trans = widget.findTranslationByLocale(app.request.locale) %}
+{% if trans is null %}
+    {% set trans = widget.findTranslationByLocale('fr') %}
+{% endif %}
+<div class="video-container state-init video"
+     data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+     data-twitter="//www.twitter.com"
+     data-link="//www.example.com"
+     data-email="//www.gmail.com"
+     data-file='[{"file":"{{ trans.url }}"}]'
+     data-img="{% if widget.image is not null %}{% path widget.image, 'reference' %}{% else %}image youtube{% endif %}"
+>
+
+    <div id="video-player-0{{ widget.id }}" class="video-player">
+    </div>
+    <div class="video-overlay"></div>
+    <div class="infos-bar">
+        <div class="picto"><i class="icon icon_video"></i></div>
+        <div class="info">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <a href="{{ trans.url }}" class="category"></a>
+                    <p>{{ trans.title }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

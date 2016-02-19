@@ -19,13 +19,12 @@ use JMS\Serializer\Annotation\Since;
  * FilmProjection
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmProjectionRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class FilmProjection implements TranslateMainInterface
+class FilmProjection
 {
     use Translatable;
-    use TranslateMain;
     use Time;
     use Soif;
     
@@ -95,7 +94,7 @@ class FilmProjection implements TranslateMainInterface
     private $festival;
 
     /**
-     * @var FilmRoom
+     * @var FilmProjectionRoom
      *
      * @ORM\ManyToOne(targetEntity="FilmProjectionRoom", inversedBy="projections", cascade={"persist"})
      *

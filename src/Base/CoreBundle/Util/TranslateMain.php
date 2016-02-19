@@ -32,6 +32,19 @@ trait TranslateMain
      */
     private $priorityStatus = self::PRIORITY_STATUS_LOW;
 
+
+    public function getLocaleSlugs()
+    {
+        $translations = $this->getTranslations();
+        $slugs = array();
+
+        foreach ($translations as $trans) {
+            $slugs[$trans->getLocale()] = ($trans->getTitle() != null) ? $trans->getSlug() : '404';
+        }
+
+        return $slugs;
+    }
+
     /**
      * getAvailableTranslateOptions function.
      *
@@ -92,7 +105,7 @@ trait TranslateMain
      */
     public function findTranslationByLocale($locale)
     {
-        foreach ($this->translations as $translation) {
+        foreach ($this->getTranslations() as $translation) {
             if ($translation->getLocale() == $locale) {
                 return $translation;
             }

@@ -601,7 +601,6 @@ class FooterController extends Controller
                 break;
         }
 
-
         return $this->render(
             "FDCEventBundle:Footer:$page.html.twig",
             array('content' => $pageContent)

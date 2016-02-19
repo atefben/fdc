@@ -26,7 +26,7 @@ class StatementImage extends Statement
     /**
      * @ORM\ManyToOne(targetEntity="Gallery")
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $gallery;
 
@@ -38,6 +38,11 @@ class StatementImage extends Statement
         }
 
         return $string;
+    }
+
+    public function getNewsFormat()
+    {
+        return 'images';
     }
 
     /**

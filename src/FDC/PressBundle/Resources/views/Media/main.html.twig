@@ -3,7 +3,7 @@
 
 {% block body %}
 
-<div id="main" class="press loading press-media lock">
+<div id="main" class="press loading press-media {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
 
     {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 
@@ -15,8 +15,8 @@
 
                 <table>
                     <tr>
-                        {% for key,mediaFilter in mediaSection.section %}
-                        <td data-cat="{{ mediaFilter.slug }}" class="{% if key == 0 %}active{% endif %}">{{ mediaFilter.title }}</td>
+                        {% for key,filter in filmSection %}
+                        <td data-cat="{{ filter.slug }}" class="{% if key == 0 %}active{% endif %}">{{ filter.name }}</td>
                         {% if  loop.index % 3 == 0 %}
                     </tr>
                     <tr>
@@ -28,10 +28,9 @@
             </div>
         </div>
 
-        {% for section in mediaSection.section %}
-            {% if section.slug == "long-metrage" %}
-                {% include 'FDCPressBundle:Media:components/content.html.twig' %}
-            {% endif %}
+
+        {% for section in filmSection %}
+            {% include 'FDCPressBundle:Media:components/content.html.twig' %}
         {% endfor %}
 
         {{ render(controller('FDCPressBundle:Global:contact')) }}

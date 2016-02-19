@@ -35,7 +35,7 @@ class StatementAudioTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $title;
 
@@ -44,7 +44,7 @@ class StatementAudioTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $introduction;
 

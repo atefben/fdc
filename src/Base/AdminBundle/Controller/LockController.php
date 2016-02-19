@@ -25,7 +25,27 @@ class LockController extends Controller
 {
 
     private static $entityMapper = array(
-        'newsarticle' => 'NewsArticle'
+        'webtv'            => 'WebTv',
+        'tag'              => 'Tag',
+        'theme'            => 'Theme',
+        'contacttheme'     => 'ContactTheme',
+        'event'            => 'Event',
+        'mediaimage'       => 'MediaImage',
+        'mediaimagesimple' => 'MediaImageSimple',
+        'mediaaudio'       => 'MediaAudio',
+        'mediavideo'       => 'MediaVideo',
+        'newsimage'        => 'NewsImage',
+        'newsaudio'        => 'NewsAudio',
+        'newsvideo'        => 'NewsVideo',
+        'newsarticle'      => 'NewsArticle',
+        'statementimage'   => 'StatementImage',
+        'statementaudio'   => 'StatementAudio',
+        'statementarticle' => 'StatementArticle',
+        'statementvideo'   => 'StatementVideo',
+        'infoimage'        => 'InfoImage',
+        'infoaudio'        => 'InfoAudio',
+        'infoarticle'      => 'InfoArticle',
+        'infovideo'        => 'InfoVideo',
     );
 
     /**
@@ -50,24 +70,24 @@ class LockController extends Controller
         $response = new JsonResponse();
 
         if ($entity == null || $id == null || $locale == null) {
-            $logger->error(__CLASS__. " - Couldnt create the lock for entity '{$entity}' id '{$id}' locale '{$locale}', parameter id / entity / locale missing");
+            $logger->error(__CLASS__ . " - Couldnt create the lock for entity '{$entity}' id '{$id}' locale '{$locale}', parameter id / entity / locale missing");
             $response->setStatusCode(400);
             return $response->setData(array(
-                'message' => 'Impossible de créer le verrou.'
+                'message' => 'Impossible de créer le verrou.',
             ));
         }
 
         if (!isset(self::$entityMapper[$entity])) {
-            $logger->error(__CLASS__. " - Couldnt create the lock for the entity '{$entity}', entity not found in the entityMapper");
+            $logger->error(__CLASS__ . " - Couldnt create the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de créer le verrou.'
             ));
         }
 
-        $entity = $em->getRepository('BaseCoreBundle:'. self::$entityMapper[$entity])->findOneById($id);
+        $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
         if ($entity === null) {
-            $logger->error(__CLASS__. " - Couldnt create the lock for entity ". self::$entityMapper[$entity]. " id '{$id}' locale '{$locale}', id not found");
+            $logger->error(__CLASS__ . " - Couldnt create the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', id not found");
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de créer le verrou.'
@@ -104,6 +124,7 @@ class LockController extends Controller
         return $response;
     }
 
+
     /**
      * checkAction function.
      *
@@ -124,33 +145,33 @@ class LockController extends Controller
         $response = new JsonResponse();
 
         if ($entity == null || $id == null || $locale == null) {
-            $logger->error(__CLASS__. " - Couldnt verify the lock for entity '{$entity}' id '{$id}' locale '{$locale}', parameter id / entity / locale missing");
+            $logger->error(__CLASS__ . " - Couldnt verify the lock for entity '{$entity}' id '{$id}' locale '{$locale}', parameter id / entity / locale missing");
             $response->setStatusCode(400);
             return $response->setData(array(
-                'message' => 'Impossible de vérifier l\'existence du verrou.'
+                'message' => 'Impossible de vérifier l\'existence du verrou.',
             ));
         }
 
         if (!isset(self::$entityMapper[$entity])) {
-            $logger->error(__CLASS__. " - Couldnt verify the lock for the entity '{$entity}', entity not found in the entityMapper");
+            $logger->error(__CLASS__ . " - Couldnt verify the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
-                'message' => 'Impossible de vérifier l\'existence du verrou.'
+                'message' => 'Impossible de vérifier l\'existence du verrou.',
             ));
         }
 
-        $entity = $em->getRepository('BaseCoreBundle:'. self::$entityMapper[$entity])->findOneById($id);
+        $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
         if ($entity === null) {
-            $logger->error(__CLASS__. " - Couldnt verify the lock for entity ". self::$entityMapper[$entity]. " id '{$id}' locale '{$locale}', id not found");
+            $logger->error(__CLASS__ . " - Couldnt verify the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', id not found");
             $response->setStatusCode(400);
             return $response->setData(array(
-                'message' => 'Impossible de vérifier l\'existence du verrou.'
+                'message' => 'Impossible de vérifier l\'existence du verrou.',
             ));
         }
 
         $trans = $entity->findTranslationByLocale($locale);
         if ($trans === null) {
-            $logger->error(__CLASS__. " - Couldnt verify the lock for entity ". self::$entityMapper[$entity]. " id '{$id}' locale '{$locale}', translation not found");
+            $logger->error(__CLASS__ . " - Couldnt verify the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', translation not found");
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de vérifier l\'existence du verrou.'
@@ -186,7 +207,7 @@ class LockController extends Controller
         $response = new JsonResponse();
 
         if ($entity == null || $id == null || $locale == null) {
-            $logger->error(__CLASS__. " - Couldnt verify the lock for entity '{$entity}' id '{$id}' locale {$locale}, parameter id / entity / locale missing");
+            $logger->error(__CLASS__ . " - Couldnt verify the lock for entity '{$entity}' id '{$id}' locale {$locale}, parameter id / entity / locale missing");
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de vérifier l\'existence du verrou.'
@@ -194,16 +215,16 @@ class LockController extends Controller
         }
 
         if (!isset(self::$entityMapper[$entity])) {
-            $logger->error(__CLASS__. " - Couldnt verify the lock for the entity '{$entity}', entity not found in the entityMapper");
+            $logger->error(__CLASS__ . " - Couldnt verify the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de vérifier l\'existence du verrou.'
             ));
         }
 
-        $entity = $em->getRepository('BaseCoreBundle:'. self::$entityMapper[$entity])->findOneById($id);
+        $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
         if ($entity === null) {
-            $logger->error(__CLASS__. " - Couldnt verify the lock for entity ". self::$entityMapper[$entity]. " id '{$id}', id not found");
+            $logger->error(__CLASS__ . " - Couldnt verify the lock for entity " . self::$entityMapper[$entity] . " id '{$id}', id not found");
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de vérifier l\'existence du verrou.'
@@ -219,10 +240,10 @@ class LockController extends Controller
 
         foreach ($translations as $trans) {
             if ($trans === null) {
-                $logger->error(__CLASS__. " - Couldnt verify the lock for entity ". self::$entityMapper[$entity]. " id '{$id}' locale '{$locale}', translation not found");
+                $logger->error(__CLASS__ . " - Couldnt verify the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', translation not found");
                 $response->setStatusCode(400);
                 return $response->setData(array(
-                    'message' => 'Impossible de vérifier l\'existence du verrou.'
+                    'message' => 'Impossible de vérifier l\'existence du verrou.',
                 ));
             }
         }
@@ -236,7 +257,7 @@ class LockController extends Controller
                 $response->setData(array(
                     'error' => 0
                 ));
-            } else if ($trans->getLockedBy() !== $user) {
+            } else if ($trans->getLockedBy() !== null && $trans->getLockedBy()->getId() !== $user->getId()) {
                 $response->setData(array(
                     'error' => 1
                 ));
@@ -267,7 +288,7 @@ class LockController extends Controller
         $response = new JsonResponse();
 
         if ($entity == null || $id == null || $locale == null) {
-            $logger->error(__CLASS__. " - Couldnt create the lock for entity '{$entity}' id '{$id}' locale '{$locale}', parameter id or entity missing");
+            $logger->error(__CLASS__ . " - Couldnt find the lock for entity '{$entity}' id '{$id}' locale '{$locale}', parameter id or entity missing");
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de supprimer le verrou.'
@@ -275,16 +296,16 @@ class LockController extends Controller
         }
 
         if (!isset(self::$entityMapper[$entity])) {
-            $logger->error(__CLASS__. " - Couldnt create the lock for the entity '{$entity}', entity not found in the entityMapper");
+            $logger->error(__CLASS__ . " - Couldnt find the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de supprimer le verrou.'
             ));
         }
 
-        $entity = $em->getRepository('BaseCoreBundle:'. self::$entityMapper[$entity])->findOneById($id);
+        $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
         if ($entity === null) {
-            $logger->error(__CLASS__. " - Couldnt create the lock for entity ". self::$entityMapper[$entity]. " id '{$id}' locale '{$locale}', id not found");
+            $logger->error(__CLASS__ . " - Couldnt find the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', id not found");
             $response->setStatusCode(400);
             return $response->setData(array(
                 'message' => 'Impossible de supprimer le verrou.'

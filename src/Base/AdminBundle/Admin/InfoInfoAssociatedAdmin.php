@@ -9,13 +9,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * NewsNewsAssociatedAdmin class.
- * 
+ * InfoInfoAssociatedAdmin class.
+ *
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class NewsNewsAssociatedAdmin extends Admin
+class InfoInfoAssociatedAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -54,7 +54,7 @@ class NewsNewsAssociatedAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('association', 'sonata_type_model_list', array('btn_delete' => false))
+            ->add('association', 'sonata_type_model_list', array('btn_delete' => true))
         ;
     }
 
@@ -68,5 +68,12 @@ class NewsNewsAssociatedAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
         ;
+    }
+
+    public function preUpdate($object)
+    {
+        foreach ($object->getInfo() as $info) {
+            $info->setInfo($object);
+        }
     }
 }

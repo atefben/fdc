@@ -51,12 +51,34 @@
               <a class="programmation" href="#"><i class="icon icon_programmation"></i>Voir la programmation</a>
             </div>
           </div>
-          <div class="trailer"></div>
+          <div class="trailer">
+            <div class="video-container state-init video"
+              data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+              data-twitter="//www.twitter.com"
+              data-link="//www.example.com"
+              data-email="//www.gmail.com"
+              data-file='[{"file":"./files/mov_bbb.mp4"}]'
+              data-img="//dummyimage.com/960x540/c8a461/000.png">
+              <div id="video-movie-trailer" class="video-player">
+              </div>
+              <div class="video-overlay"></div>
+              <div class="infos-bar">
+                <div class="picto"><i class="icon icon_video"></i></div>
+                <div class="info">
+                  <div class="vCenter">
+                    <div class="vCenterKid">
+                      <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <p>The Lobster</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="container container-top">
           <div class="poster video">
-            <a href="#" class="picto"><i class="icon icon_video"></i>
-</a>
+            <a href="#" class="picto"><i class="icon icon_video"></i></a>
             <img src="img/movie/002.jpg" alt="" />
           </div>
           <div class="info-film">
@@ -66,11 +88,11 @@
             <p>Réalisé par : <a href="#">Jean-Luc GODARD</a></p>
             <p>Année de production : <span>2014</span> Pays : <span>FRANCE</span> Durée : <span>70 minutes</span> Date de sortie : <span>21 Mai 2014</span></p>
           </div>
-            <!-- <div class="palmares">
-              <i class="icon icon_palme"></i>
-              <p>Prix Un Certain Regard - Fondation Groupama Gan pour le Cinéma , 2010</p>
-            </div> -->
-            <div class="info-film">
+          <div class="palmares">
+            <i class="icon icon_palme"></i>
+            <p>Prix Un Certain Regard - Fondation Groupama Gan pour le Cinéma , 2010</p>
+          </div>
+          <div class="info-film">
             <div  class="synopsis">
               <h3 class="title-section">Synopsis</h3>
               <p>Le propos est simple<br />
@@ -104,9 +126,8 @@
               <li><a href="#press">infos presse</a></li>
             </ul>
             <div class="buttons square">
-              <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-              <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i>
-    </a>
+              <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+              <a  href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a>
               <a href="#" class="button link"><i class="icon icon_link"></i></a>
               <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
               <a href="#" class="button print"><i class="icon icon_print"></i></a>
@@ -115,14 +136,53 @@
         </div>
         <div class="videos" data-section="videos">
           <div class="container">
-            <div class="video-player video">
-              <div class="image" style="background-image: url(img/movie/003.jpg);"></div>
-              <div class="picto"><i class="icon icon_video"></i></div>
-              <div class="info">
-                <div class="vCenter">
-                  <div class="vCenterKid">
-                    <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <p>The Lobster</p>
+            <div class="video-container state-init video"
+              data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+              data-twitter="//www.twitter.com"
+              data-link="//www.example.com"
+              data-email="//www.gmail.com"
+              data-playlist='[
+                {
+                  "sources":[{"file":"./files/mov_bbb.mp4"}],
+                  "image":"//dummyimage.com/960x540/000/c8a461.png",
+                  "name":"Sils Maria",
+                  "category":"Photocall"
+                },
+                {
+                  "sources":[{"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"}],
+                  "image":"//img.youtube.com/vi/_eaIurlPB7w/maxresdefault.jpg",
+                  "name":"Interviews des réalisateurs",
+                  "category":"Montée des marches"
+                },
+                {
+                  "sources":[{"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"}],
+                  "image":"img/slider-channels/03.jpg",
+                  "name":"Sils Maria",
+                  "category":"Conférence de presse"
+                },
+                {
+                  "sources":[{"file":"https://www.youtube.com/watch?v=4QmpYuVEwIU"}],
+                  "image":"img/slider-channels/01.jpg",
+                  "name":"Sils Maria",
+                  "category":"Photocall"
+                },
+                {
+                  "sources":[{"file":"https://www.youtube.com/watch?v=YvjBXpmwhmk"}],
+                  "image":"img/slider-channels/02.jpg",
+                  "name":"Sils Maria",
+                  "category":"Montée des marches"
+                }
+              ]'>
+              <div id="video-player-ba"></div>
+              <div class="video-overlay"></div>
+              <div class="infos-bar">
+                <div class="picto"><i class="icon icon_video"></i></div>
+                <div class="info">
+                  <div class="vCenter">
+                    <div class="vCenterKid">
+                      <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                      <p>The Lobster</p>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -3,21 +3,23 @@ input[type=email],
 input[type=tel],
 input[type=url],
 input[type=search],
-input[type=submit] {
+input[type=submit], textarea {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
   border-radius: 0;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 
 .contact h2.title {
   color: #333;
   font-family: "Playfair Display", Times New Roman, Times, serif;
-  font-size: 1.625rem;
+
   font-weight: 700;
   margin-bottom: 60px;
+  height: 24px;
 }
 .contact .coords, .contact .success {
   background-color: #f4f4f4;
@@ -26,25 +28,35 @@ input[type=submit] {
   text-align: center;
   padding: 35px 0;
 }
+.contact .coords a{
+  color: #c8a461;
+  font-weight: 700;
+}
 .contact .coords h3, .contact .success h3 {
   color: #c8a461;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-size: 1em;
+  font-size: 20px;
+  font-weight: 700;
   letter-spacing: 0.3em;
   margin-bottom: 10px;
   text-transform: uppercase;
+  max-height: 200px;
 }
 .contact .coords p, .contact .success p {
-  color: #666;
-  line-height: 1.4em;
+    color: #666;
+    line-height: 30px;
+    max-height: 500px;
+    font-size: 20px;
 }
 .contact .success {
   display: none;
 }
 .contact .container p {
   color: #666;
-  line-height: 1.6em;
-  margin: 50px 0 25px 0;
+  font-size: 20px;
+  line-height: 30px;
+  max-height: 600px;
+  margin: 50px 0px 50px;
   padding: 0 25px;
   text-align: center;
 }
@@ -56,13 +68,14 @@ input[type=submit] {
 }
 .contact #form ::-webkit-input-placeholder {
   color: #999;
-  font-size: 1rem;
+  font-size: 20px;
 }
 
 .contact #form .required {
   color: #999;
   float: right;
-  font-size: 1rem;
+  font-size: 20px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .contact #form input, .contact #form textarea {
   background: #fff;
@@ -70,13 +83,14 @@ input[type=submit] {
   box-sizing: border-box;
   color: #999;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+  font-size: 20px;
+  line-height: 30px;
   display: block;
   margin-bottom: 15px;
   outline: none;
   padding: 0 25px;
   width: 100%;
-  -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -94,8 +108,7 @@ input[type=submit] {
   color: #e93939;
 }
 .contact #form input {
-  height: 50px;
-  line-height: 50px;
+  height: 70px;
 }
 .contact #form input.invalid {
   border-color: #e93939;
@@ -111,8 +124,8 @@ input[type=submit] {
   float: left;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 1rem;
-  height: 40px;
-  line-height: 40px;
+  height: 70px;
+  line-height: 70px;
   text-transform: uppercase;
   width: 180px;
   -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -125,10 +138,10 @@ input[type=submit] {
   border: 1px solid #c1c1c1;
   box-sizing: border-box;
   color: #999;
-  line-height: 50px;
+  line-height: 70px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   display: block;
-  height: 50px;
+  height: 70px;
   margin-bottom: 15px;
   outline: none;
   padding: 0 0px;
@@ -146,7 +159,7 @@ input[type=submit] {
 .contact #form .select #triggerSelect {
   position: absolute;
   display: block;
-  height: 50px;
+  height: 70px;
   top: 0;
   right: 0;
   width: 100%;
@@ -161,8 +174,8 @@ input[type=submit] {
 }
 .contact #form .select select {
   background: none;
-  height: 50px;
-  line-height: 50px;
+  height: 70px;
+  line-height: 70px;
   margin-top: 0px;
   border: none;
   color: #c8a461;
@@ -201,6 +214,10 @@ input[type=submit] {
 }
 .contact #form .errors ul li {
   margin-bottom: 5px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  max-height: 30px;
+  display: block;
 }
 
 .container-list {

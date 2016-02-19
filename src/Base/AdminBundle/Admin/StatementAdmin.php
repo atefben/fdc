@@ -91,12 +91,12 @@ class StatementAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('title', null, array('template' => 'BaseAdminBundle:Statement:list_title.html.twig'))
+            ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
             ->add('theme')
             ->add('updatedAt')
-            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:Statement:list_published_interval.html.twig'))
-            ->add('status', null, array('template' => 'BaseAdminBundle:Statement:list_status.html.twig'))
-            ->add('type', null, array('template' => 'BaseAdminBundle:Statement:list_type.html.twig'))
+            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:News:list_published_interval.html.twig'))
+            ->add('status', null, array('template' => 'BaseAdminBundle:News:list_status.html.twig'))
+            ->add('type', null, array('template' => 'BaseAdminBundle:News:list_type.html.twig'))
         ;
     }
 

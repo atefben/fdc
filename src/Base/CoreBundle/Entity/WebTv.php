@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
@@ -28,6 +29,7 @@ class WebTv implements TranslateMainInterface
     use Time;
     use TranslateMain;
     use Translatable;
+    use SeoMain;
 
     /**
      * @var string
@@ -39,6 +41,13 @@ class WebTv implements TranslateMainInterface
      * @Groups({"web_tv_list", "web_tv_show"})
      */
     private $id;
+
+    /**
+     * @var FilmFestival
+     *
+     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     */
+    private $festival;
 
     /**
      * @ORM\OneToMany(targetEntity="MediaVideo", mappedBy="webTv")
@@ -53,6 +62,13 @@ class WebTv implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="topWebTvs")
      */
     private $homepage;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     *
+     * @Groups({"web_tv_list", "web_tv_show"})
+     */
+    private $image;
 
     /**
      * @var ArrayCollection
@@ -152,5 +168,53 @@ class WebTv implements TranslateMainInterface
     public function getHomepage()
     {
         return $this->homepage;
+    }
+
+
+
+    /**
+     * Set festival
+     *
+     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @return WebTv
+     */
+    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    {
+        $this->festival = $festival;
+
+        return $this;
+    }
+
+    /**
+     * Get festival
+     *
+     * @return \Base\CoreBundle\Entity\FilmFestival 
+     */
+    public function getFestival()
+    {
+        return $this->festival;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $image
+     * @return WebTv
+     */
+    public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

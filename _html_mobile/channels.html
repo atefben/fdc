@@ -13,6 +13,7 @@
     <!-- /build -->
 </head>
 <body>
+
 <div id="main" class="articles" data-menu="webtv">
 	<!-- menu -->
 	<nav class="st-menu st-effect" id="menu">
@@ -38,7 +39,7 @@
 		<div id="logo">
 		        <a href="/"><img src="img/palme.svg" alt="Festival de Cannes" class="palm"></a>
 		        <h1><a href="/"><img width="225" src="img/logo.svg" alt="Festival de Cannes"></a></h1>
-		        <h2><a href="/">du 13 au 24 Mai 2016</a></h2>
+		        <h2><a href="/">du 11 au 22 Mai 2016</a></h2>
 		</div>
 		<div id="main-nav" class="menu-section">
 		    <ul id="main-nav-list" class="">
@@ -64,7 +65,7 @@
 					</div>
 					<div class="section-contain subsection-2">
 						<ul class="section-menu">
-							<li><a href="webtv.html">direct</a></li>
+							<li><a href="webTV.html">direct</a></li>
 							<li><a href="channels.html">chaines</a></li>
 							<li><a href="webtv_trailer_competition.html">bandes annonces</a></li>
 						</ul>
@@ -85,7 +86,7 @@
 					</a>
 				</li>
 				<li class="palmares">
-					<a href="palmares_camerador.html">
+					<a href="palmares_competition.html">
 						<div class="section-title">
 							<h3 class="title-menu">le palmarès</h3>
 						</div>
@@ -102,26 +103,49 @@
 			<div class="small-separator"></div>
 			<ul class="second-nav">
 				<li class="prog">
-					<a href="">
-						<i class="icon icon_programmation"></i>Programmation
-					</a>
+					
+					<div class="section-title has-subsection">
+						<h3 class="title-menu"><i class="icon icon_programmation"></i>programmation<span class="more-minus">+</span></h3>
+					
+					</div>
+					<div class="section-contain subsection-4">
+						<ul class="section-menu">
+							<li><a href="programmation.html">programmation</a></li>
+							<li><a href="agenda.html">agenda</a></li>
+							<li><a href="maps.html">plan des salles</a></li>
+						</ul>
+					</div>
+					
 				</li>
 				<li class="participate">
-					<a href="participate_access.html">
-						<i class="icon icon_participer"></i>Participer
-					</a>
+					<div class="section-title has-subsection">
+						<h3 class="title-menu"><i class="icon-mobile-participer"></i>participer <span class="more-minus">+</span></h3>
+						
+					</div>
+					<div class="section-contain subsection-3">
+						<ul class="section-menu">
+							<li><a href="participate_sejour.html">préparer son séjour</a></li>
+							<li><a href="participate_instructions.html">festival mode d'emploi</a></li>
+							<li><a href="participate_access.html">accès aux projections</a></li>
+							<li><a href="participate_partners.html">partenaires</a></li>
+							<li><a href="participate_provider.html">fournisseurs</a></li>
+						</ul>
+					</div>
 				</li>
 				<li class="press">
-					<a href="press.html">
-						<i class="icon icon_espace-presse"></i>Espace presse
+					<a href="press.html" target="_blank">
+						<div class="section-title">
+							<h3 class="title-menu"><i class="icon icon_espace-presse"></i>espace presse</h3>
+						
+						</div>
 					</a>
 				</li>
 			</ul>
 			<div class="small-separator"></div>
 			<ul class="third-nav">
-				<li class="my-selection">
-					<a href="">
-						<i class="icon icon_ma-selection"></i>Ma sélection
+				<li class="search-nav">
+					<a href="search.html">
+						<i class="icon icon_recherche"></i>Rechercher
 					</a>
 				</li>
 				<li class="">
@@ -129,10 +153,14 @@
 						<i class="icon icon_mon-compte"></i>mon Compte
 					</a>
 				</li>
-				<li class="">
-					<a href="">
-						<i class="icon icon_langue"></i>FR
-					</a>
+				<li class="language">
+						<i class="icon icon_langue"></i>
+						<ul class='hide'>
+							<li class="active-language">FR</li>
+							<li>EN</li>
+							<li>ES</li>
+							<li>ZH</li>
+						</ul>
 				</li>
 			</ul>		
 		</div>
@@ -146,7 +174,7 @@
 		        <li><a class="tumblr" href="//festivaldecannesofficiel.tumblr.com/" target="_blank"><i class="icon icon_tumblr"></i></a></li>
 		        <li><a class="rss" href="//feeds2.feedburner.com/festival-cannes/rss_fr" target="_blank"><i class="icon icon_rss"></i></a></li>
 		        <li><a class="youtube" href="//www.youtube.com/user/TVFestivaldeCannes" target="_blank"><i class="icon icon_youtube"></i></a></li>
-		        <li><a class="dailymotion" href="//www.dailymotion.com/CannesFestTV" target="_blank"><i class="icon icon_dailymotion"></i>
+		        <li><a class="dailymotion" href="//www.dailymotion.com/CannesFestTV" target="_blank"><i class="icon-mobile-dailymotion"></i>
 		</a></li>
 		        <li><a class="podcast" href="//feeds2.feedburner.com/festivalcannes/podcast_fr" target="_blank"><i class="icon icon_podcast"></i></a></li>
 		    </ul>
@@ -165,12 +193,12 @@
 		      <ul>
 		        <li class="contact"><a href="contact.html">Contact</a></li>
 		        <li class="faq"><a href="faq.html">FAQ</a></li>
-		        <li class="credits"><a href="#">Crédits</a></li>
+		        <li class="credits"><a href="credits.html">Crédits</a></li>
 		        <li class="legals"><a href="legals.html">Mentions Légales</a></li>
 		        <li class=""><a href="#">Nous rejoindre</a></li>
 		        <li class=""><a href="#">Boutique</a></li>
 		        <li class="sitemap"><a href="sitemap.html">Plan du Site</a></li>
-		        <li class="policy"><a href="#">Politique de Confidentialité</a></li>
+		        <li class="privacy_policy"><a href="privacy_policy.html">Politique de Confidentialité</a></li>
 		      </ul>
 		      <div class="clear"></div>
 		    </div>
@@ -178,6 +206,42 @@
 		
 	</nav>	
 	<!-- end menu -->
+
+  	<div class="my-selection st-effect">
+	 
+
+  
+  <h2 class="title one-line">ma sélection <span class="count">(<span></span>)</span></h2>
+
+  <div class="selection-main-container">
+    <div id="myselection-filters" class="owl-carousel sliderDrag ">
+      <div class="vid">
+        <p><a class="active" href="#" data-filter="all">tous</a></p>
+      </div>
+      <div class="vid">
+        <p><a href="#" data-filter="article">articles</a></p>
+      </div>
+      <div class="vid">
+        <p><a  href="#" data-filter="video">vidéos</a></p>
+      </div>
+      <div class="vid">
+        <p><a href="#" data-filter="audio">audios</a></p>
+      </div>
+      <div class="vid">
+        <p><a href="#" data-filter="suggestion">suggestions</a></p>
+      </div>
+
+
+    </div>
+
+    <div class="content-container">
+  	
+  		<div class="my-selection-container"></div>
+  		<div class="suggestion"></div>
+  	
+    </div>
+  </div>
+</div>
   <!-- header -->
 	<div class="dark-container" id="header">
 		<div class="header-container">
@@ -187,10 +251,10 @@
 			<div id="logo">
 		        <a href="/"><img src="img/palme.svg" alt="Festival de Cannes" class="palm"></a>
 		        <h1><a href="/"><img width="225" src="img/logo.svg" alt="Festival de Cannes"></a></h1>
-		        <h2><a href="/">du 13 au 24 Mai 2016</a></h2>
+		        <h2><a href="/">du 11 au 22 Mai 2016</a></h2>
 		    </div>
-		    <div id="search">
-		        <i class="icon icon_recherche"></i>
+		    <div id="selection-btn">
+		        <i class="icon icon_lire-plus-tard"></i>
 		    </div>
 		</div>
 	</div>
@@ -200,18 +264,20 @@
 
   	<div class="banner-img vCenter" style="background-image:url(./img/webtv/002.jpg)">
   	<div class="vCenterKid">
-  		<h2 class="title"><i class="icon icon_camera"></i><br> les chaînes</h2>
+  		<i class="icon-mobile-chaines"></i>
+  		<h2 class="title one-line">les chaînes</h2>
   	</div>
   		
   	</div>
 
 	<div class="grid list">
 		<div class="grid-item grid-item--small">
+			<a href="channel.html"></a>
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_playlist"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">les plus vues</a></p>
+		              	<p class="category">les plus vues</p>
 		              	<p>18 vidéos</p>
 	              	</div>
             	</div>
@@ -221,11 +287,12 @@
 		</div>
 		
 		<div class="grid-item grid-item--small">
+			<a href="channel.html"></a>
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_playlist"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">les plus vues</a></p>
+		              	<p class="category">les plus vues</p>
 		              	<p>18 vidéos</p>
 	              	</div>
             	</div>
@@ -234,11 +301,12 @@
             </div>
 		</div>
 		<div class="grid-item grid-item--large">
+			<a href="channel.html"></a>
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_playlist"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">les plus vues</a></p>
+		              	<p class="category">les plus vues</p>
 		              	<p>18 vidéos</p>
 	              	</div>
             	</div>
@@ -247,11 +315,12 @@
             </div>
 		</div>
 		<div class="grid-item grid-item--small">
+			<a href="channel.html"></a>
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_playlist"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">les plus vues</a></p>
+		              	<p class="category">les plus vues</p>
 		              	<p>18 vidéos</p>
 	              	</div>
             	</div>
@@ -260,11 +329,12 @@
             </div>
 		</div>
 		<div class="grid-item grid-item--small">
+			<a href="channel.html"></a>
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_playlist"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">les plus vues</a></p>
+		              	<p class="category">les plus vues</p>
 		              	<p>18 vidéos</p>
 	              	</div>
             	</div>
@@ -273,11 +343,12 @@
             </div>
 		</div>
 		<div class="grid-item grid-item--small">
+			<a href="channel.html"></a>
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_playlist"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">les plus vues</a></p>
+		              	<p class="category">les plus vues</p>
 		              	<p>18 vidéos</p>
 	              	</div>
             	</div>
@@ -286,11 +357,12 @@
             </div>
 		</div>
 		<div class="grid-item grid-item--small">
+			<a href="channel.html"></a>
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_playlist"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">les plus vues</a></p>
+		              	<p class="category">les plus vues</p>
 		              	<p>18 vidéos</p>
 	              	</div>
             	</div>
@@ -299,11 +371,12 @@
             </div>
 		</div>
 		<div class="grid-item grid-item--large">
+			<a href="channel.html"></a>
 			<div class="img-container">
 				<div class="infos">
 					<div class="picto"><i class="icon icon_playlist"></i></div>
 					<div class="right">
-		              	<p><a href="#" class="category">les plus vues</a></p>
+		              	<p class="category">les plus vues</p>
 		              	<p>18 vidéos</p>
 	              	</div>
             	</div>
@@ -333,7 +406,7 @@
     <div id="landscape">
       <div class="content vCenter">
         <div class="vCenterKid">
-          <img src="img/rotate-mobile.png" alt="">
+          <img src="img/MobileTurn.svg" alt="">
           <p>Tournez votre smartphone pour accéder au site</p>
         </div>
       	

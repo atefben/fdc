@@ -49,11 +49,6 @@ class CoreManager
     private $knpPaginator;
 
     /**
-     * @var
-     */
-    private $locale;
-
-    /**
      * setEntityManager function.
      * 
      * @access public
@@ -99,22 +94,6 @@ class CoreManager
     public function setApiVersion($apiVersion)
     {
         $this->apiVersion = $apiVersion;
-    }
-
-    /**
-     * @param $locale
-     */
-    public function setLocale($locale)
-    {
-        $this->locale = $locale;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLocale()
-    {
-        return $this->locale;
     }
 
     /**

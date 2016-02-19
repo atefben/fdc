@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Controller;
 
+use Base\AdminBundle\Form\Type\PressPasswordType;
 use Base\AdminBundle\Form\Type\SettingsFDCApiYearType;
 use Base\AdminBundle\Form\Type\SettingsFDCYearType;
 use Base\CoreBundle\Entity\Settings;
@@ -11,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Settings controller.
@@ -67,11 +69,33 @@ class SettingsController extends Controller
             ));
         }
 
+        // Get Press user
+        $userManager = $this->container->get('fos_user.user_manager');
+        $user = $userManager->findUserByUsername('press');
+        if ($user === null) {
+            throw new NotFoundHttpException();
+        }
+        //Password form
+        $formPressPassword = $this->get('form.factory')->create(new PressPasswordType(), $user);
+        $formPressPassword->handleRequest($request);
+
+        if ($formPressPassword->isValid()) {
+            $em->persist($user);
+            $this->get('fos_user.user_manager')->updateUser($user, false);
+
+            $this->getDoctrine()->getManager()->flush();
+            $request->getSession()->getFlashBag()->add('success', $msgModified);
+            return $this->redirectToRoute('base_admin_settings_index', array(
+                'admin_pool' => $admin_pool
+            ));
+
+        }
 
         return array(
             'admin_pool' => $admin_pool,
             'formFDCYear' => $formFDCYear->createView(),
-            'formFDCApiYear' => $formFDCApiYear->createView()
+            'formFDCApiYear' => $formFDCApiYear->createView(),
+            'formPressPassword' => $formPressPassword->createView(),
         );
     }
 }

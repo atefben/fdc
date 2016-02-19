@@ -39,7 +39,7 @@ class NewsTypeExtension extends Twig_Extension
                 $type = 'audio';
                 break;
             case "NewsImage":
-                $type = 'image';
+                $type = 'photo';
                 break;
             case "NewsVideo":
                 $type = 'video';

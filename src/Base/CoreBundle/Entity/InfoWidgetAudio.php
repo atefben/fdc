@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Time;
 
 /**
- * StatementWidgetAudio
+ * InfoWidgetAudio
  *
  * @ORM\Table()
  * @ORM\Entity
@@ -16,9 +16,8 @@ use Base\CoreBundle\Util\Time;
 class InfoWidgetAudio extends InfoWidget
 {
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="newsWidgetAudios")
+     * @ORM\ManyToOne(targetEntity="MediaAudio")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
      */
     private $file;
@@ -26,10 +25,10 @@ class InfoWidgetAudio extends InfoWidget
     /**
      * Set file
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return NewsWidgetAudio
+     * @param \Base\CoreBundle\Entity\Media $file
+     * @return InfoWidgetAudio
      */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    public function setFile(\Base\CoreBundle\Entity\Media $file = null)
     {
         $this->file = $file;
 
@@ -39,7 +38,7 @@ class InfoWidgetAudio extends InfoWidget
     /**
      * Get file
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media
+     * @return \Base\CoreBundle\Entity\Media
      */
     public function getFile()
     {

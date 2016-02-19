@@ -6,41 +6,65 @@
             <h2>{{ 'home.prefooter.title.vivezlefestivaldecannes'|trans }}</h2>
             <h3 class="subtitle">{{ 'home.prefooter.subtitle.suivezlefestival'|trans }}</h3>
             <ul>
-                <li><a href="{{ social_youtube }}" class="active" target="_blank">TV Festival de Cannes</a></li>
-                <li><a href="#">Applications Mobiles</a></li>
-                <li><a href="{{ footer_boutique }}" target="_blank">Boutique officielle</a></li>
-                <li><a href="#">Publications</a></li>
+                <li><a href="{{ homepage|trans_fallback('prefooterUrl1') }}" class="active" target="_blank">{{ homepage|trans_fallback('prefooterTitle1') }}</a></li>
+                <li><a href="{{ homepage|trans_fallback('prefooterUrl2') }}">{{ homepage|trans_fallback('prefooterTitle2') }}</a></li>
+                <li><a href="{{ homepage|trans_fallback('prefooterUrl3') }}" target="_blank">{{ homepage|trans_fallback('prefooterTitle3') }}</a></li>
+                <li><a href="{{ homepage|trans_fallback('prefooterUrl4') }}">{{ homepage|trans_fallback('prefooterTitle4') }}</a></li>
             </ul>
         </div>
         <div id="slider-prefooter" class="owl-carousel">
+            {% if homepage.prefooterImage1 is not null %}
+                {% set trans = homepage.prefooterImage1.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is not null %}
+                    {% set trans = homepage.prefooterImage1 .findTranslationByLocale('fr') %}
+                {% endif %}
             <div class="imgSlide active bottom">
                 <div class="vCenter">
                     <div class="vCenterKidBottom">
-                        <a href='{{ social_youtube }}' target="_blank"><img src="http://html.festival-cannes-2016.com.ohwee.fr/img/prefooter/001.png" alt="" /></a>
+                        <a href='{{ homepage|trans_fallback('prefooterUrl1') }}' target="_blank"><img src="{% path trans.file, '1954x1200' %}" alt="{{ trans.alt }}" /></a>
                     </div>
                 </div>
             </div>
+            {% endif %}
+            {% if homepage.prefooterImage2 is not null %}
+                {% set trans = homepage.prefooterImage1.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is not null %}
+                    {% set trans = homepage.prefooterImage1 .findTranslationByLocale('fr') %}
+                {% endif %}
             <div class="imgSlide bottom">
                 <div class="vCenter">
                     <div class="vCenterKidBottom">
-                        <a href='#'><img src="http://html.festival-cannes-2016.com.ohwee.fr/img/prefooter/002.png" alt="" /></a>
+                        <a href='{{ homepage|trans_fallback('prefooterUrl2') }}'><img src="{% path trans.file, '1954x1200' %}" alt="{{ trans.alt }}" /></a>
                     </div>
                 </div>
             </div>
+            {% endif %}
+            {% if homepage.prefooterImage3 is not null %}
+                {% set trans = homepage.prefooterImage1.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is not null %}
+                    {% set trans = homepage.prefooterImage1 .findTranslationByLocale('fr') %}
+                {% endif %}
             <div class="imgSlide">
                 <div class="vCenter">
                     <div class="vCenterKidBottom">
-                        <a href='{{ footer_boutique }}' target="_blank"><img src="http://html.festival-cannes-2016.com.ohwee.fr/img/prefooter/003.png" alt="" /></a>
+                        <a href='{{ homepage|trans_fallback('prefooterUrl3') }}' target="_blank"><img src="{% path trans.file, '1954x1200' %}" alt="{{ trans.alt }}" /></a>
                     </div>
                 </div>
             </div>
+            {% endif %}
+            {% if homepage.prefooterImage4 is not null %}
+                {% set trans = homepage.prefooterImage1.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is not null %}
+                    {% set trans = homepage.prefooterImage1 .findTranslationByLocale('fr') %}
+                {% endif %}
             <div class="imgSlide top">
                 <div class="vCenter">
                     <div class="vCenterKidBottom">
-                        <a href='#'><img src="http://html.festival-cannes-2016.com.ohwee.fr/img/prefooter/004.png" alt="" /></a>
+                        <a href='{{ homepage|trans_fallback('prefooterUrl4') }}'><img src="{% path trans.file, '1954x1200' %}" alt="{{ trans.alt }}" /></a>
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

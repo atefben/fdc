@@ -2,6 +2,8 @@
 
 namespace FDC\PressBundle\Controller;
 
+use Base\CoreBundle\Entity\PressProjection;
+use Base\CoreBundle\Entity\PressProjectionScheduling;
 use Guzzle\Http\Message\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -23,123 +25,77 @@ class AgendaController extends Controller
      */
     public function schedulingAction()
     {
-        $schedulingDays = array(
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            )
-        );
 
-        $selectionFilters = array(
-            array(
-                'name' => 'Toutes',
-                'slug' => 'all'
-            ),
-            array(
-                'name' => 'Compétitions',
-                'slug' => 'competition'
-            ),
-            array(
-                'name' => 'Hors compétitions',
-                'slug' => 'hors-competition'
-            ),
-            array(
-                'name' => 'Un certain regard',
-                'slug' => 'certain-regard'
-            )
-        );
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
 
-        $typeFilters = array(
-            array(
-                'name' => 'Tout',
-                'slug' => 'all'
-            ),
-            array(
-                'name' => 'Séances',
-                'slug' => 'seances'
-            ),
-            array(
-                'name' => 'Evenements',
-                'slug' => 'evenements'
-            ),
-        );
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
 
-        $events = array(
-            'place' => array(
-                'grandTheatre' => array(
-                    'events' => array(
-                        array(
-                            'id' => 3,
-                            'title' => 'Orson welles, autopsie d’une légende',
-                            'author' => array(
-                                'fullName' => 'Elisabet KAPNIST'
-                            ),
-                            'category' => array(
-                                'name' => 'Séance de reprise',
-                                'slug' => 'reprise'
-                            ),
-                            'startAt' => new \DateTime(),
-                            'endAt' => new \DateTime(),
-                            'duration' => 120,
-                            'image' => array(
-                                'path' => '//dummyimage.com/46x64/000/fff'
-                            ),
-                            'place' => 'Grand Théatre Lumière',
-                            'competition' => 'Hors compétition'
-                        ),
-                    )
-                ),
-                'salleBunuel' => array(
-                    'events' => array(
-                        array(
-                            'id' => 5,
-                            'title' => 'Mad max, fury road',
-                            'author' => array(
-                                'fullName' => 'Elisabet KAPNIST'
-                            ),
-                            'category' => array(
-                                'name' => 'conférence de presse',
-                                'slug' => 'press'
-                            ),
-                            'startAt' => new \DateTime(),
-                            'endAt' => new \DateTime(),
-                            'duration' => 60,
-                            'image' => array(
-                                'path' => '//dummyimage.com/46x64/000/fff'
-                            ),
-                            'place' => 'Grand Théatre Lumière',
-                            'competition' => 'Hors compétition'
-                        ),
-                    )
-                ),
-            )
-        );
+        $festivalStartsAt = $settings->getFestival()->getFestivalStartsAt();
+        $festivalEndsAt = $settings->getFestival()->getFestivalEndsAt();
+        $schedulingDays = range($festivalStartsAt->format('d'), $festivalEndsAt->format('d'));
+        $schedulingYear = $festivalStartsAt->format('Y');
+        $schedulingMonth = $festivalStartsAt->format('m');
+
+        array_walk($schedulingDays, function (&$value) use(&$schedulingYear, &$schedulingMonth) {
+            $value = $schedulingYear ."-". $schedulingMonth ."-". $value;
+        });
+
+        $date = new \DateTime;
+
+        if (in_array($date->format('Ymd'), $schedulingDays)) {
+            // GET DAY PROJECTIONS
+            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+                ->getProjectionByDate($date->format('Ymd'));
+
+            // GET DAY PROJECTIONS
+            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
+                ->getProjectionByDate($date->format('Ymd'));
+        }
+        else {
+            // GET DAY PROJECTIONS
+            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
+
+            // GET DAY PROJECTIONS
+            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
+                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
+        }
+
+        $typeFilters = array();
+        $selectionFilters = array();
+        $type = array();
+        $selection = array();
+
+        $i = 0;
+
+        foreach ($homeProjection as $projection) {
+
+            if (!in_array($projection->getProjection()->getType(), $type)) {
+                $typeFilters[$i]['name'] = $projection->getProjection()->getType();
+                $typeFilters[$i]['slug'] = mb_strtolower(preg_replace('/\s*/', '', $projection->getProjection()->getType()), mb_detect_encoding($projection->getProjection()->getType()));
+
+                $type[] = $projection->getProjection()->getType();
+            }
+            if (!in_array($projection->getProjection()->getProgrammationSection(), $selection)) {
+                $selectionFilters[$i]['name'] = $projection->getProjection()->getProgrammationSection();
+                $selectionFilters[$i]['slug'] = mb_strtolower(preg_replace('/\s*/', '', $projection->getProjection()->getProgrammationSection()), mb_detect_encoding($projection->getProjection()->getProgrammationSection()));
+
+                $selection[] = $projection->getProjection()->getProgrammationSection();
+            }
+            $i++;
+        }
 
         return array(
             'schedulingDays' => $schedulingDays,
-            'schedulingEvents' => $events,
             'typeFilters' => $typeFilters,
             'selectionFilters' => $selectionFilters,
+            'homePressProjection' => $homePressProjection,
+            'homeProjection' => $homeProjection,
         );
 
     }
@@ -166,56 +122,23 @@ class AgendaController extends Controller
      */
     public function roomAction()
     {
-        $rooms = array(
-            array(
-                'name' => 'Grand Théatre Lumière',
-                'slug' => 'grand-theatre',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle Debussy',
-                'slug' => 'salle-debussy',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle du 60e',
-                'slug' => 'salle-60e',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle Bunuel',
-                'slug' => 'salle-bunuel',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle bazin',
-                'slug' => 'salle-bazin',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle de presse',
-                'slug' => 'salle-presse',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-        );
+
+        $translator = $this->get('translator');
+
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+        $dateTime = new DateTime();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
+
+        //GET PRESS HOMEPAGE
+        $rooms = $em->getRepository('BaseCoreBundle:PressCinemaMap')->findOneBy(array(
+            'festival' => $settings->getFestival()->getId()
+        ));
 
         return array(
             'rooms' => $rooms

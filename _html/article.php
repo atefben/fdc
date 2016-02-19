@@ -108,8 +108,8 @@
             data-twitter="//www.twitter.com"
             data-link="//www.example.com"
             data-email="//www.gmail.com"
-            data-playlist="false"
-            data-live="false"
+            data-file='[{"file":"./files/mov_bbb.webm"},
+            {"file":"./files/mov_bbb.mp4"}]'
             data-img="/img/article/004.jpg">
             <div id="video-player" class="video-player v_<?php echo time();?>">
             </div>
@@ -126,6 +126,11 @@
               </div>
             </div>
           </div>
+          <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+              playarticle = playerInit(false, 'video-player', false, false);
+            });
+          </script>
           <div class="text">
             <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
             <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>
@@ -230,8 +235,8 @@
         <div class="share">
           <p>Partagez l'article</p>
           <div class="buttons square">
-            <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-            <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i>
+            <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+            <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i>
   </a>
             <a href="#" class="button link"><i class="icon icon_link"></i></a>
             <a href="#" class="button email"><i class="icon icon_lettre"></i></a>

@@ -2,9 +2,10 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Base\CoreBundle\Entity\WebTvTranslationInterface;
+use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\WebTv;
+use Base\CoreBundle\Entity\WebTvTranslation;
 
-use Doctrine\ORM\EntityRepository;
 
 /**
  * WebTvRepository class.
@@ -26,28 +27,22 @@ class WebTvRepository extends EntityRepository
      */
     public function getApiWebTvs($festival, $dateTime, $locale)
     {
-
-        return $this->createQueryBuilder('wt')
+        $qb = $this->createQueryBuilder('wt')
             ->join('wt.mediaVideos', 'mv')
-            ->join('mv.sites', 's')
             ->join('wt.translations', 'wtt')
             ->join('mv.translations', 'mvt')
-            ->where('mv.festival = :festival')
-            ->andWhere('s.slug = :site')
-            ->andWhere('mv.inWebTv = :inWebTv')
-            ->andWhere('mvt.locale = :locale')
-            ->andWhere('mvt.status = :status')
-            ->andWhere('wtt.locale = :locale')
-            ->andWhere('wtt.status = :status')
-            ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
-            ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
-            ->setParameter('festival', $festival)
-            ->setParameter('inWebTv', true)
-            ->setParameter('locale', $locale)
-            ->setParameter('status', WebTvTranslationInterface::STATUS_PUBLISHED)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('site', 'flux-mobiles')
-            ->getQuery();
+            ->where('mv.displayedWebTv = :displayedWebTv');
+
+        $qb = $this->addMasterQueries($qb, 'mv', $festival);
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+
+        $qb = $qb->andWhere('mv.displayedMobile = :displayed_mobile')
+            ->setParameter('displayedWebTv', true)
+            ->setParameter('displayed_mobile', true)
+            ->getQuery()
+        ;
+
+        return $qb;
     }
 
     /**
@@ -61,29 +56,109 @@ class WebTvRepository extends EntityRepository
      */
     public function getApiWebTv($id, $festival, $dateTime, $locale)
     {
-        return $this->createQueryBuilder('wt')
+        $qb = $this->createQueryBuilder('wt')
             ->join('wt.mediaVideos', 'mv')
-            ->join('mv.sites', 's')
             ->join('wt.translations', 'wtt')
             ->join('mv.translations', 'mvt')
-            ->where('mv.festival = :festival')
-            ->andWhere('s.slug = :site')
-            ->andWhere('mv.inWebTv = :inWebTv')
-            ->andWhere('mvt.locale = :locale')
-            ->andWhere('mvt.status = :status')
-            ->andWhere('wtt.locale = :locale')
-            ->andWhere('wtt.status = :status')
-            ->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
-            ->andWhere('(mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :datetime)')
+            ->where('mv.displayedWebTv = :displayedWebTv');
+
+        $qb = $this->addMasterQueries($qb, 'mv', $festival);
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+
+        $qb = $qb->andWhere('mv.displayedMobile = :displayed_mobile')
             ->andWhere('mv.id = :id')
-            ->setParameter('festival', $festival)
             ->setParameter('id', $id)
-            ->setParameter('inWebTv', true)
-            ->setParameter('locale', $locale)
-            ->setParameter('status', WebTvTranslationInterface::STATUS_PUBLISHED)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('site', 'flux-mobiles')
+            ->setParameter('displayedWebTv', true)
+            ->setParameter('displayed_mobile', true)
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getOneOrNullResult()
+        ;
+
+        return $qb;
+    }
+
+    /**
+     * @param $slug
+     * @param $locale
+     * @param $festival
+     * @return WebTv
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getWebTvBySlug($slug, $locale, $festival)
+    {
+        $qb = $this->createQueryBuilder('wt');
+        $qb = $qb->join('wt.translations', 'wtt')
+            ->where('wtt.slug = :slug')
+            ->setParameter('slug', $slug);
+
+        $qb = $this->addTranslationQueries($qb, 'wtt', $locale);
+        $qb = $qb
+            ->andWhere('wt.festival = :festival')
+            ->setParameter('festival', $festival)
+        ;
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
+    /**
+     * @param $locale
+     * @param $festival
+     * @return array
+     */
+    public function getWebTvByLocale($locale, $festival)
+    {
+        $qb = $this->createQueryBuilder('wt');
+
+        $qb = $qb->join('wt.translations', 'wtt')
+            ->join('wt.mediaVideos', 'mv')
+            ->join('mv.translations', 'mvt')
+            ->where('wt.festival = :festival')
+            ->setParameter('festival', $festival);
+
+        $qb = $this->addTranslationQueries($qb, 'wtt', $locale);
+        $qb = $qb->andWhere('SIZE(wt.mediaVideos) >= 1');
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @param $locale
+     * @param $festival
+     * @param array $excludes
+     * @param int $limit
+     * @return array
+     */
+    public function getRandomWebTvs($locale, $festival, $excludes = array(), $limit = 10)
+    {
+        $qb = $this->createQueryBuilder('wt');
+
+        $qb = $qb->select('wt,
+                RAND() as HIDDEN rand')
+            ->join('wt.translations', 'wtt')
+            ->join('wt.mediaVideos', 'mv')
+            ->join('mv.translations', 'mvt')
+            ->where('wt.festival = :festival')
+            ->setParameter('festival', $festival)
+            ->andWhere('SIZE(wt.mediaVideos) >= 1')
+        ;
+
+        if ($excludes) {
+            $qb = $qb
+                ->andWhere('wt.id NOT IN (:excludes)')
+                ->setParameter(':excludes', $excludes)
+            ;
+        }
+
+        $qb = $this->addTranslationQueries($qb, 'wtt', $locale);
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+
+        $qb = $qb
+            ->orderBy('rand')
+            ->setMaxResults((int)$limit)
+        ;
+
+
+        return $qb->getQuery()->getResult();
     }
 }

@@ -1,1 +1,6 @@
 services:
+    fdc_press.form.registration:
+        class: FDC\PressBundle\Form\RegistrationType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: fdc_press_password }

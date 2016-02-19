@@ -52,9 +52,25 @@ trait TranslateChild
     }
 
     /**
-     * Set status
+     * getMainStatuses function.
      *
-     * @param integer $status
+     * @access public
+     * @static
+     * @return void
+     */
+    public static function getMainStatuses()
+    {
+        return array(
+            self::STATUS_DRAFT => 'form.status.draft',
+            self::STATUS_VALIDATING => 'form.status.validating',
+            self::STATUS_PUBLISHED => 'form.status.published',
+            self::STATUS_DEACTIVATED => 'form.status.deactivated'
+        );
+    }
+
+    /**
+     * @param $status
+     * @return $this
      */
     public function setStatus($status)
     {
@@ -75,9 +91,8 @@ trait TranslateChild
 
 
     /**
-     * Set lockedAt
-     *
-     * @param \DateTime $lockedAt
+     * @param $lockedAt
+     * @return $this
      */
     public function setLockedAt($lockedAt)
     {
@@ -97,9 +112,8 @@ trait TranslateChild
     }
 
     /**
-     * Set lockedBy
-     *
-     * @param \Application\Sonata\UserBundle\Entity\User $lockedBy
+     * @param \Application\Sonata\UserBundle\Entity\User|null $lockedBy
+     * @return $this
      */
     public function setLockedBy(\Application\Sonata\UserBundle\Entity\User $lockedBy = null)
     {

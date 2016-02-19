@@ -22,7 +22,8 @@ services:
         tags:
             - { name: form.type, alias: 'news_widget_audio_type'}
         calls:
-            - ['setSonataAdmin', ['@sonata.media.admin.gallery']]
+            - ['setSonataAdmin', ['@base.admin.news_widget_audio_dummy']]
+            - ['setMediaAudioAdmin', ['@base.admin.media_audio']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.news_widget_image_type:
@@ -32,6 +33,7 @@ services:
             - { name: form.type, alias: 'news_widget_image_type'}
         calls:
             - ['setNewsWidgetImageDummyAdmin', ['@base.admin.news_widget_image_dummy']]
+            - ['setGalleryAdmin', ['@base.admin.gallery']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.news_widget_image_dual_align_type:
@@ -40,17 +42,28 @@ services:
         tags:
             - { name: form.type, alias: 'news_widget_image_dual_align_type'}
         calls:
-            - ['setNewsWidgetImageDummyAdmin', ['@base.admin.news_widget_image_dummy']]
+            - ['setNewsWidgetImageDummyAdmin', ['@base.admin.news_widget_image_dual_align_dummy']]
+            - ['setGalleryDualAlignAdmin', ['@base.admin.gallery_dual_align']]
 
+    # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.news_widget_video_type:
-            class: Base\AdminBundle\Form\Type\NewsWidgetVideoType
-            tags:
-                - { name: form.type, alias: 'news_widget_video_type'}
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\NewsWidgetVideoType
+        tags:
+            - { name: form.type, alias: 'news_widget_video_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.news_widget_video_dummy']]
+            - ['setMediaVideoAdmin', ['@base.admin.media_video']]
 
+    # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.news_widget_video_youtube_type:
-            class: Base\AdminBundle\Form\Type\NewsWidgetVideoYoutubeType
-            tags:
-                - { name: form.type, alias: 'news_widget_video_youtube_type'}
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\NewsWidgetVideoYoutubeType
+        tags:
+            - { name: form.type, alias: 'news_widget_video_youtube_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.news_widget_video_youtube_dummy']]
+            - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
 
     #event services
     base.admin.form.event_widget_type:
@@ -106,7 +119,6 @@ services:
                 - { name: form.type, alias: 'event_widget_video_youtube_type'}
 
     #Statement services
-
     base.admin.form.statement_widget_type:
         class: Base\AdminBundle\Form\Type\StatementWidgetType
         tags:
@@ -131,21 +143,13 @@ services:
         calls:
             - ['setStatementWidgetAudioDummyAdmin', ['@base.admin.statement_widget_audio_dummy']]
 
+
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.statement_widget_image_type:
         scope: prototype
         class: Base\AdminBundle\Form\Type\StatementWidgetImageType
         tags:
             - { name: form.type, alias: 'statement_widget_image_type'}
-        calls:
-            - ['setStatementWidgetImageDummyAdmin', ['@base.admin.statement_widget_image_dummy']]
-
-    # need to add scope prototype to avoid ScopeCrossingInjectionException
-    base.admin.form.statement_widget_image_dual_align_type:
-        scope: prototype
-        class: Base\AdminBundle\Form\Type\StatementWidgetImageDualAlignType
-        tags:
-            - { name: form.type, alias: 'statement_widget_image_dual_align_type'}
         calls:
             - ['setStatementWidgetImageDummyAdmin', ['@base.admin.statement_widget_image_dummy']]
 
@@ -158,3 +162,113 @@ services:
             class: Base\AdminBundle\Form\Type\StatementWidgetVideoYoutubeType
             tags:
                 - { name: form.type, alias: 'statement_widget_video_youtube_type'}
+                
+    #Info services
+    base.admin.form.info_widget_type:
+        class: Base\AdminBundle\Form\Type\InfoWidgetType
+        tags:
+            - { name: form.type, alias: 'info_widget_type'}
+
+    base.admin.form.info_widget_text_type:
+        class: Base\AdminBundle\Form\Type\InfoWidgetTextType
+        tags:
+            - { name: form.type, alias: 'info_widget_text_type'}
+
+    base.admin.form.info_widget_quote_type:
+        class: Base\AdminBundle\Form\Type\InfoWidgetQuoteType
+        tags:
+            - { name: form.type, alias: 'info_widget_quote_type'}
+
+    # need to add scope prototype to avoid ScopeCrossingInjectionException
+    base.admin.form.info_widget_audio_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\InfoWidgetAudioType
+        tags:
+            - { name: form.type, alias: 'info_widget_audio_type'}
+        calls:
+            - ['setInfoWidgetAudioDummyAdmin', ['@base.admin.info_widget_audio_dummy']]
+
+
+    # need to add scope prototype to avoid ScopeCrossingInjectionException
+    base.admin.form.info_widget_image_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\InfoWidgetImageType
+        tags:
+            - { name: form.type, alias: 'info_widget_image_type'}
+        calls:
+            - ['setInfoWidgetImageDummyAdmin', ['@base.admin.info_widget_image_dummy']]
+
+    base.admin.form.info_widget_video_type:
+        class: Base\AdminBundle\Form\Type\InfoWidgetVideoType
+        tags:
+            - { name: form.type, alias: 'info_widget_video_type'}
+
+    base.admin.form.info_widget_video_youtube_type:
+        class: Base\AdminBundle\Form\Type\InfoWidgetVideoYoutubeType
+        tags:
+            - { name: form.type, alias: 'info_widget_video_youtube_type'}
+
+    base.admin.form.press_guide_widget_type:
+        class: Base\AdminBundle\Form\Type\PressGuideWidgetType
+        tags:
+            - { name: form.type, alias: 'press_guide_widget_type'}
+
+    base.admin.form.press_guide_widget_picto_type:
+        class: Base\AdminBundle\Form\Type\PressGuideWidgetPictoType
+        tags:
+            - { name: form.type, alias: 'press_guide_widget_picto_type'}
+
+    # need to add scope prototype to avoid ScopeCrossingInjectionException
+    base.admin.form.press_guide_widget_image_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\PressGuideWidgetImageType
+        tags:
+            - { name: form.type, alias: 'press_guide_widget_image_type'}
+        calls:
+            - ['setPressGuideWidgetImageDummyAdmin', ['@base.admin.press_guide_widget_image_dummy']]
+
+    base.admin.form.press_guide_widget_column_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\PressGuideWidgetColumnType
+        tags:
+            - { name: form.type, alias: 'press_guide_widget_column_type'}
+        calls:
+            - ['setPressGuideWidgetColumnDummyAdmin', ['@base.admin.press_guide_widget_column_dummy']]
+
+
+    base.admin.form.press_download_section_widget_type:
+        class: Base\AdminBundle\Form\Type\PressDownloadSectionWidgetType
+        tags:
+            - { name: form.type, alias: 'press_download_section_widget_type'}
+
+    base.admin.form.press_download_section_widget_photo_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\PressDownloadSectionWidgetPhotoType
+        tags:
+            - { name: form.type, alias: 'press_download_section_widget_photo_type'}
+        calls:
+            - ['setPressDownloadSectionWidgetPhotoDummyAdmin', ['@base.admin.press_download_section_widget_photo_dummy']]
+
+    base.admin.form.press_download_section_widget_file_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\PressDownloadSectionWidgetFileType
+        tags:
+            - { name: form.type, alias: 'press_download_section_widget_file_type'}
+        calls:
+            - ['setPressDownloadSectionWidgetFileDummyAdmin', ['@base.admin.press_download_section_widget_file_dummy']]
+
+    base.admin.form.press_download_section_widget_document_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\PressDownloadSectionWidgetDocumentType
+        tags:
+            - { name: form.type, alias: 'press_download_section_widget_document_type'}
+        calls:
+            - ['setPressDownloadSectionWidgetDocumentDummyAdmin', ['@base.admin.press_download_section_widget_document_dummy']]
+
+    base.admin.form.press_download_section_widget_video_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\PressDownloadSectionWidgetVideoType
+        tags:
+            - { name: form.type, alias: 'press_download_section_widget_video_type'}
+        calls:
+            - ['setPressDownloadSectionWidgetVideoDummyAdmin', ['@base.admin.press_download_section_widget_video_dummy']]

@@ -1,9 +1,22 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
+
+{% set video = video.association %}
+{% set transImage = video.image.findTranslationByLocale(app.request.locale) %}
+{% if transImage is null %}
+    {% set transImage = video.image.findTranslationByLocale('fr') %}
+{% endif %}
+
+{% set transVideo = video.findTranslationByLocale(app.request.locale) %}
+{% if transVideo is null %}
+    {% set transVideo = video.findTranslationByLocale('fr') %}
+{% endif %}
+
+
 <div class="image-wrapper">
-    <img src="{{ video.image.path }}" alt="" />
+    <img src="{% path transImage.file, '640x404' %}" alt="{{ video.image|trans_fallback('alt') }}" />
 </div>
-<a class="linkVid" href="#"></a>
+<a class="linkVid" href="{% path transVideo.file, 'reference'%}"></a>
 <div class="info">
     <div class="picto">
         <i class="icon icon_video"></i>
@@ -11,9 +24,9 @@
     <div class="info-container">
         <div class="vCenter">
             <div class="vCenterKid">
-                <a href="#" class="category">{{ video.theme }}</a>
+                <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a>
                 <span class="date">{{ video.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ video.createdAt|date('H.i') }}</span>
-                <a href="#" class="titleLink">{{ video.title }}</a>
+                <a href="#" class="titleLink">{{ video|trans_fallback('title') }}</a>
             </div>
         </div>
     </div>

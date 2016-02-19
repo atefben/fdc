@@ -1,14 +1,14 @@
 /* Menu */
 
 
-.st-menu-open .st-pusher::after {
+/*.st-menu-open .st-pusher::after {
   width: 100%;
   height: 100%;
   opacity: 1;
   -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-
+*/
 .st-menu {
   position: fixed;
   top: 0;
@@ -22,7 +22,7 @@
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
-.st-menu::after {
+/*.st-menu::after {
   position: absolute;
   top: 0;
   right: 0;
@@ -41,8 +41,15 @@
   opacity: 0;
   -webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-}
+}*/
 
+#main.st-menu-open::after {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
 /* content style */
 
 
@@ -116,14 +123,29 @@
 #menu .section-title h3{
   color: #fff;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-size: 35px;
+  font-weight: bolder;
   padding: 25px 0;
   text-transform: uppercase;
+  text-align: left;
+  margin:0;
+  letter-spacing: inherit;
 }
-#menu .section-title h3.open{
-  
+#menu .second-nav .section-title h3{
+
+    color: #9d9d9d;
+    padding: 25px 0;
+    display: block;
+    font-size: 26px;
+    font-weight: 700;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+
+#menu .second-nav .section-title{
+  padding: 0;
+}
+#menu .section-title .icon{
+  font-size: inherit;
 }
 #menu .section-title .more-minus{
   display: block;
@@ -131,28 +153,26 @@
     top: 21px;
     right: 60px;
     font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-font-weight: 700;
+font-weight: bolder;
     font-size: 2rem;
 }
 #menu .section-contain a{
   color:#fff;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: bolder;
   letter-spacing: 0.1em;
   padding: 25px 0;
   text-transform: uppercase;
   display: block;
 }
-#menu .section-open .open .section-title h3{
+#menu .section-open .open .section-title h3, #menu .section-open .open .section-title h3 i{
   color:#c8a461;
 }
-#menu .section-open .section-title h3{
+#menu .section-open .section-title h3, #menu .section-open .section-title h3 i{
   color:#434343;
 }
-#menu .section-open .open .section-title h3{
-  color:#c8a461;
-}
+
 #menu .section-contain {
   height: 0;
   -moz-transition: all 0.4s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -162,26 +182,51 @@ font-weight: 700;
   overflow: hidden;
 }
 #menu .open .section-contain.subsection-1{
-  height: 355px;
+  height: 390px;
 }
 #menu .open .section-contain.subsection-2{
-  height: 213px;
+  height: 230px;
 }
-#menu .second-nav, #menu .third-nav{
+#menu .open .section-contain.subsection-3{
+  height: 355px;
+}
+#menu .open .section-contain.subsection-4{
+  height: 235px;
+}
+#menu .section-contain.subsection-3, #menu .section-contain.subsection-4{
+  padding: 0 50px;
+}
+#menu .second-nav{
+  padding: 25px 60px 0px;
+}
+#menu .third-nav{
   padding: 25px 60px;
 }
-#menu .second-nav a, #menu .third-nav a{
+#menu .third-nav a, #menu .third-nav ul{
   color:#9d9d9d;
   padding: 25px 0;
   display: block;
-  font-size: 1.3rem;
+  font-size: 28px;
+  font-weight: 700;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
-#menu .third-nav a{
+#menu .second-nav a{
+  text-transform: uppercase;
+  font-size: 26px;
+}
+#menu .second-nav .subsection-3 a, #menu .second-nav .subsection-4 a{
+  font-size: 22px;
+
+}
+#menu .third-nav a, #menu .third-nav ul, #menu .third-nav .language .icon{
   color:white;
 }
-#menu .second-nav .icon, #menu .third-nav .icon{
-  margin-right: 25px
+#menu .second-nav .icon, #menu .third-nav .icon, #menu .third-nav .language .icon, #menu .second-nav .icon-mobile-participer{
+  margin-right: 25px;
+  font-size: inherit;
+}
+#menu .third-nav .language .icon{
+  font-size: 28px;
 }
 #menu .socials{
   padding: 25px 60px;
@@ -227,13 +272,14 @@ font-weight: 700;
 #menu .footer-menu p, #menu .footer-menu a{
   color: #878787;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+  font-size: 19px;
   padding: 16px 0;
   display: inline-block;
 }
 #menu .footer-menu li{
   float: left;
   width: 50%;
+    text-align: left;
 }
 #menu .footer-menu .clear{
   clear: both;
@@ -277,6 +323,22 @@ font-weight: 700;
   width: 100%;
   margin-left: 0;
 }
-#menu .active-page .section-title h3, #menu .second-nav .active-page a,#menu .third-nav .active-page a, #menu .footer-menu .active-page a{
+#menu .active-page .section-title h3,#menu .active-page .section-title h3 i,#menu .third-nav .active-page a, #menu .footer-menu .active-page a{
   color: #c8a461;
+}
+#menu .language ul{
+  display: inline-block;
+}
+#menu .language li{
+  display: none;
+  padding: 0 10px;
+}
+#menu .language li.active-language{
+  display: inline-block;
+}
+#menu .language .show li.active-language{
+  color: #c8a461;
+}
+#menu .language .show li{
+display: inline-block;
 }

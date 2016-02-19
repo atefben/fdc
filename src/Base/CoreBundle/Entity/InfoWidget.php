@@ -16,7 +16,14 @@ use Base\CoreBundle\Util\Time;
  * @ORM\HasLifecycleCallbacks()
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"text" = "InfoWidgetText", "audio" = "InfoWidgetAudio", "image" = "InfoWidgetImage", "video" = "InfoWidgetVideo"})
+ * @ORM\DiscriminatorMap({
+ *  "text" = "InfoWidgetText",
+ *  "quote" = "InfoWidgetQuote",
+ *  "audio" = "InfoWidgetAudio",
+ *  "image" = "InfoWidgetImage",
+ *  "video" = "InfoWidgetVideo",
+ *  "video_youtube" = "InfoWidgetVideoYoutube",
+ * })
  */
 abstract class InfoWidget
 {
@@ -34,12 +41,12 @@ abstract class InfoWidget
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $position;
 
     /**
-     * @var NewsArticle
+     * @var Info
      *
      * @ORM\ManyToOne(targetEntity="Info", inversedBy="widgets")
      */
@@ -59,7 +66,7 @@ abstract class InfoWidget
      * Set position
      *
      * @param integer $position
-     * @return NewsWidget
+     * @return InfoWidget
      */
     public function setPosition($position)
     {
@@ -76,5 +83,28 @@ abstract class InfoWidget
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * Set info
+     *
+     * @param \Base\CoreBundle\Entity\Info $info
+     * @return InfoWidget
+     */
+    public function setInfo(\Base\CoreBundle\Entity\Info $info = null)
+    {
+        $this->info = $info;
+
+        return $this;
+    }
+
+    /**
+     * Get info
+     *
+     * @return \Base\CoreBundle\Entity\Info
+     */
+    public function getInfo()
+    {
+        return $this->info;
     }
 }

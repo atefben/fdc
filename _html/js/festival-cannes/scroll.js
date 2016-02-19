@@ -128,10 +128,11 @@ $(document).ready(function() {
 
   // Events on scroll
   // =========================
-  var lastScrollTop = 0,
-      $header = $('header'),
-      $timeline = $('#timeline'),
-      $navMovie = $('#nav-movie');
+    var lastScrollTop = 0,
+        $header       = $('header'),
+        $timeline     = $('#timeline'),
+        $navMovie     = $('#nav-movie'),
+        $faqmenu      = $(".faq-menu");
 
   $(window).on('scroll', function() {
     var s = $(this).scrollTop();
@@ -168,9 +169,11 @@ $(document).ready(function() {
     }
 
     // Render the path of hashtag graph
-    if($('#graph').length) {
-      if(s > $('#graph').offset().top - ($(window).height()/2) && !graphRendered) {
-        makePath(GLOBALS.socialWall.points);
+    if (GLOBALS.socialWall.points.length > 0) {
+      if($('#graph').length) {
+        if(s > $('#graph').offset().top - ($(window).height()/2) && !graphRendered) {
+          makePath(GLOBALS.socialWall.points);
+        }
       }
     }
 
@@ -197,6 +200,19 @@ $(document).ready(function() {
           $timeline.addClass('bottom');
         } else {
           $timeline.removeClass('stick').css('left', 'auto');
+        }
+      }
+    }
+
+    // STICKY Menu on FAQ page on scroll
+    if($('.faq').length) {
+      if(s > $('.faq-container.faq-active').offset().top - 120 && s < ($('.faq-container.faq-active').height() - $('.faq-container.faq-active').offset().top - 70)) {
+        $faqmenu.removeClass('bottom').addClass('stick');
+      } else {
+        if (s >= ($('.faq-container.faq-active').height() - $('.faq-container.faq-active').offset().top - 70)) {
+          $faqmenu.addClass('bottom');
+        } else {
+          $faqmenu.removeClass('stick');
         }
       }
     }
@@ -247,6 +263,10 @@ $(document).ready(function() {
         $('#live').removeClass('on');
         $('#live').height($('#live').data('height'));
         $('#main').css('padding-top', 0);
+        if(videoWebtv.getState() === "playing") {
+          $('#live .trailer').removeClass('on');
+          videoWebtv.pause();
+        }
       }
     }
 
@@ -279,6 +299,9 @@ $(document).ready(function() {
       if(s > 100 && $('.main-image').hasClass('trailer')) {
         $('.main-image').height($('.main-image').data('height')).css('padding-top', 0);
         $('.main-image, .poster, .info-film, .nav').removeClass('trailer');
+        if(videoMovie.getState() === "playing") {
+          videoMovie.pause();
+        }
       }
 
       var sections = $('*[data-section')

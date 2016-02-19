@@ -11,9 +11,10 @@ use Base\CoreBundle\Util\Time;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
+
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * NewsImage
@@ -27,9 +28,19 @@ class NewsImage extends News
     use Translatable;
 
     /**
+     * @var MediaImage
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImage")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $header;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Gallery")
      *
      * @Groups({"news_list", "news_show"})
+     * @Assert\NotNull()
      */
     private $gallery;
 
@@ -41,6 +52,34 @@ class NewsImage extends News
         }
         
         return $string;
+    }
+
+    public function getNewsFormat()
+    {
+        return 'photos';
+    }
+
+    /**
+     * Set header
+     *
+     * @param MediaImage $header
+     * @return NewsArticle
+     */
+    public function setHeader(MediaImage $header = null)
+    {
+        $this->header = $header;
+
+        return $this;
+    }
+
+    /**
+     * Get header
+     *
+     * @return MediaImage
+     */
+    public function getHeader()
+    {
+        return $this->header;
     }
 
     /**

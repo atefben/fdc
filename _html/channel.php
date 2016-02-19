@@ -14,9 +14,59 @@
       </div>
       <h2 class="title">Conférences de presse</h2>
      <div class="small-container">
-        <div class="player">
-          <img src="img/webtv/playervideo.jpg" alt="">
+        <div class="player video-container state-init video"
+          data-facebook="//www.facebook.com"
+          data-twitter="//www.twitter.com"
+          data-link="//www.example.com"
+          data-email="//www.gmail.com"
+          data-playlist='[
+            {
+              "sources":[{"file":"./files/mov_bbb.mp4"}],
+              "image":"//dummyimage.com/960x540/000/c8a461.png",
+              "name":"Sils Maria",
+              "category":"Photocall"
+            },
+            {
+              "sources":[{"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"}],
+              "image":"//img.youtube.com/vi/_eaIurlPB7w/maxresdefault.jpg",
+              "name":"Interviews des réalisateurs",
+              "category":"Montée des marches"
+            },
+            {
+              "sources":[{"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"}],
+              "image":"img/slider-channels/03.jpg",
+              "name":"Sils Maria",
+              "category":"Conférence de presse"
+            },
+            {
+              "sources":[{"file":"https://www.youtube.com/watch?v=4QmpYuVEwIU"}],
+              "image":"img/slider-channels/01.jpg",
+              "name":"Sils Maria",
+              "category":"Photocall"
+            },
+            {
+              "sources":[{"file":"https://www.youtube.com/watch?v=YvjBXpmwhmk"}],
+              "image":"img/slider-channels/02.jpg",
+              "name":"Sils Maria",
+              "category":"Montée des marches"
+            }
+          ]'>
+          <div id="video-player" class="video-player-pl v_<?php echo time();?>">
+          </div>
+          <div class="video-overlay"></div>
+          <div class="infos-bar">
+            <div class="picto"><i class="icon icon_video"></i></div>
+            <div class="info">
+              <div class="vCenter">
+                <div class="vCenterKid">
+                  <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                  <p>The Lobster</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="infos-videos">
          <div class="infos">
             <strong>Conférence de presse</strong>
@@ -24,12 +74,10 @@
             <p>Interview des réalisateurs des Courts Métrages en Compétition</p>
          </div>
             <div class="buttons square">
-              <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-              <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride','','width=600,height=400')" class="button twitter"><i class="icon icon_twitter"></i></a>
-              <a href="#" class="button link"><i class="icon icon_link"></i>
-</a>
-              <a href="#" class="button email"><i class="icon icon_lettre"></i>
-</a>
+              <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+              <a  href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a>
+              <a href="#" class="button link"><i class="icon icon_link"></i></a>
+              <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
             </div>
        </div>
      </div>

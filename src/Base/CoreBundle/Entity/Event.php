@@ -105,9 +105,9 @@ class Event implements TranslateMainInterface
     private $tags;
 
     /**
-     * @var NewsWidget
+     * @var EventWidget
      *
-     * @ORM\OneToMany(targetEntity="EventWidget", mappedBy="news", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="EventWidget", mappedBy="events",  cascade={"persist"})
      *
      * @Groups({"event_list", "event_show"})
      */
@@ -123,7 +123,7 @@ class Event implements TranslateMainInterface
     private $sites;
 
     /**
-     * @ORM\OneToMany(targetEntity="EventFilmProjectionAssociated", mappedBy="news", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="EventFilmProjectionAssociated", mappedBy="event", cascade={"persist"})
      *
      * @Groups({"event_list", "event_show"})
      */
@@ -153,6 +153,15 @@ class Event implements TranslateMainInterface
      * @Groups({"event_list", "event_show"})
      */
     protected $translations;
+
+    public function __toString()
+    {
+        $translationFr = $this->findTranslationByLocale('fr');
+        if ($translationFr !== null) {
+            return $translationFr->getName();
+        }
+        return '';
+    }
 
 
     public function __construct()

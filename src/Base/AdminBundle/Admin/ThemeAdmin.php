@@ -28,7 +28,8 @@ class ThemeAdmin extends Admin
 
     protected $translationDomain = 'BaseAdminBundle';
 
-    public function configure() {
+    public function configure()
+    {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
     }
 
@@ -38,7 +39,10 @@ class ThemeAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title', 'doctrine_orm_callback', array(
+            ->add('id')
+            ->add('name', 'doctrine_orm_callback', array(
+                'label' => 'form.label_theme_name',
+                'translation_domain' => 'BaseAdminBundle',
                 'callback' => function($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
@@ -46,8 +50,8 @@ class ThemeAdmin extends Admin
                     $queryBuilder->join("{$alias}.translations", 't');
                     $queryBuilder->where('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.title LIKE :title');
-                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
+                    $queryBuilder->andWhere('t.name LIKE :name');
+                    $queryBuilder->setParameter('name', '%'. $value['value']. '%');
 
                     return true;
                 },
@@ -72,12 +76,8 @@ class ThemeAdmin extends Admin
                 'choices' => Theme::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
             ))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
             ))
         ;
     }
@@ -118,6 +118,12 @@ class ThemeAdmin extends Admin
                 )
             ))
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => Theme::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => Theme::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

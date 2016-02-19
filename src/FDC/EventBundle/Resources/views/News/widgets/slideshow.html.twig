@@ -1,9 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-{% if widget.title is defined %}
-    <h2 class="title">{{ widget.title }}</h2>
-{% endif %}
-<div class="slideshow">
+<div class="{% if class(widget) starts with 'StatementW' or class(widget) starts with 'InfoW' %}slideshow{% else %}slideshow article_photo{% endif %}">
     {% set file = "" %}
     <div class="slideshow-img">
         <div class="images">
@@ -15,8 +12,8 @@
             {% endif %}
             {% set file = trans.file %}
             <div class="img {% if key == 0 %}active{% endif %}">
-                <a id="photo{{ key+1 }}" class="chocolat-image ajax" href="{% path file, 'big' %}" title="<span class='category'>{{ gallery.media.theme|trans_fallback('name') }}</span><h2>{{ trans.legend }}</h2>" data-credit="{{ trans.copyright }}">
-                    {% thumbnail file, 'big' with {'alt': trans.alt} %}
+                <a id="photo{{ key+1 }}" class="chocolat-image ajax" href="{% path file, '2560x1620' %}" title="<span class='category'>{{ gallery.media.theme|trans_fallback('name') }}</span><h2>{{ trans.legend }}</h2>" data-credit="{{ trans.copyright }}">
+                    {% thumbnail file, '1266x798' with {'alt': trans.alt} %}
                 </a>
             </div>
             {% endfor %}
@@ -24,8 +21,13 @@
         </div>
         <div class="owl-carousel thumbnails">
             {% for key, gallery in widget.gallery.medias %}
+                {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = gallery.media.file.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% set file = trans.file %}
                 <div data-id="photo{{ key+1 }}" class="thumb {% if key == 0 %}active{% endif %}">
-                    {% thumbnail file, 'small' %}
+                    {% thumbnail file, '97x61' %}
                 </div>
             {% endfor %}
         </div>

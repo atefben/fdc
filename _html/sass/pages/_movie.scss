@@ -159,7 +159,7 @@
     @include transition(all 0.3s $smoothTransition);
 
     &.trailer {
-      @include transform(translateY(550px));
+      @include transform(translateY(570px));
     }
 
     @include breakpoint(1600px) {
@@ -284,6 +284,70 @@
     }
   }
 
+  .palmares{
+    float: left;
+    width: 63%;
+    padding-bottom: 5px;
+    margin-top: 48px;
+    margin-bottom: -38px;
+
+    &.trailer {
+      @include transform(translateY(570px));
+    }
+
+    i{
+      font-size: 2.75rem;
+      color: $gold;
+      display: inline-block;
+      vertical-align: middle !important;
+    }
+
+    p{
+      display: inline-block;
+      margin-left: 9px;
+      font-size: .875rem;
+      color: #6f6f6f;
+      font-family: $CamphorItalic;
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      padding-left: 332%;
+      height: 1px;
+      position: relative;
+      left: -7.3%;
+      border-bottom: 1px solid #f1f1f1;
+      padding-top: 10px;
+
+      @include breakpoint(1600px) {
+        padding-top: 11px;
+
+      }
+
+      @include breakpoint(1280px) {
+        padding-top: 11px;
+
+      }
+
+      @include breakpoint(1024px) {
+        padding-top: 11px;
+      }
+    }
+    @include breakpoint(1600px) {
+      margin-top: 34px;
+    }
+
+    @include breakpoint(1280px) {
+      margin-top: 34px;
+    }
+
+    @include breakpoint(1024px) {
+      margin-top: 34px;
+    }
+
+  }
+
   .nav {
     border: 1px solid rgba(255, 255, 255, 0.5);
     display: block;
@@ -358,7 +422,7 @@
   }
 
   .main-image {
-    background-color: $black; 
+    background-color: $black;
     height: 620px;
     left: 0;
     overflow: hidden;
@@ -402,6 +466,10 @@
     }
 
     &.trailer {
+      &:after {
+        content: none;
+      }
+      
       .trailer {
         opacity: 1;
         visibility: visible;

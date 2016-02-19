@@ -1,3 +1,6 @@
+.banner-img .title{
+	font-size: 28px;
+}
 .palmares-container{
 	
 	background-color:#141414;
@@ -6,8 +9,13 @@
 .prize-description, .contain-winner{
 
 	padding: 55px 0;
+	max-height: 1000px;
 	
-}
+} 
+.prize-description{
+	
+	border-bottom: 1px solid #2c2c2c;
+}  
 .prize-description h2{
 
 	width: 520px;
@@ -16,7 +24,7 @@
 	color:#999999;
 	font-size: 22px;
 	line-height: 36px;
-	letter-spacing: -1px;
+	letter-spacing: -0.5px;
 
 }
 .prize-description h2 strong{
@@ -35,24 +43,46 @@
 	text-align: center;
 	color:#fff;
 }
+
 .palme-dor-img{
 
 	font-size: 92px;
 	margin: 16px 0;
 }
-.title-prize, .prize-category, .movie-title{
+.title-prize, .prize-category, .movie-title, .people-name{
 	text-transform: uppercase;
-	font-family: "Camphor W01 Bold Bold", Arial, Helvetica, sans-serif;
-	font-size: 25px;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	font-size: 28px;
 	letter-spacing: 4px;
 	font-weight: 700;
+	max-width: 500px;
+	margin: 0 auto;
 
+}
+.title-prize{
+	line-height: 35px;
+}
+.contain-winner .subtitle{
+	text-transform: uppercase;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	font-style: normal;
+	margin-bottom: 5px;
+}
+img.portrait{
+	display: inline-block;
+	margin-bottom: 30px;
+	max-width: 80px;
+
+}
+.movie-title, .people-name{
+	font-size: 25px;
 }
 .prize-category{
 
 	font-size: 15px;
 	letter-spacing: 2px;
-	margin: 15px 0 25px 0;
+	margin: 15px auto 25px auto;
 
 }
 .movie-title{
@@ -67,15 +97,14 @@
     height: 20px;
     width: 2px;
     padding: 0px;
-    margin: 20px auto 15px auto;
-    margin-bottom: 5px;
+    margin: 20px auto ;
     background-color: #434343;
 }
 .movie-real{
 	color:#c8a461;
-	font-family: "Camphor W01 Italic Italic", Arial, Helvetica, sans-serif;
+	font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 	font-style: italic;
-	font-size: 16px;
+	font-size: 20px;
 }
 .title-list-cat{
 	border-bottom: 1px solid #2c2c2c;
@@ -87,7 +116,7 @@
 	margin: 60px auto;
 }
 
-section h3{
+section h3:not(.movie-title):not(.people-name){
 
 	background-color: #202020;
 	text-align: center;
@@ -96,13 +125,22 @@ section h3{
 	font-size: 20px;
 	letter-spacing: 2px;
 	padding: 40px 0;
-	font-family: "Camphor W01 Bold Bold", Arial, Helvetica, sans-serif;
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 	font-weight: 700;
 }
 
 /*SLIDERS*/
-.film-slider{
+.film-slider, .all-slider{
 	margin: 60px 0;
+}
+.all-slider .contain-winner{
+
+	width: 450px;
+	height: 780px;
+}
+.all-slider .owl-item img.portrait {
+
+    margin: 0 auto 15px;
 }
 .film-slider .owl-item{
 
@@ -127,6 +165,7 @@ section h3{
 	font-weight: 700;
 	font-size: 25px;
 	margin-bottom: 8px;
+	font-style: normal;
 }
 .film-slider .info p.subtitle{
 	font-size: 18px;
@@ -135,7 +174,7 @@ section h3{
 .film-slider .info p.duration{
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 	color:#999999;
-	font-size: 16px;
+	font-size: 18px;
 	margin-top: 8px;
 }
 .film-slider .info a{
@@ -145,7 +184,7 @@ section h3{
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 	color:#c8a461;
 }
-.film-slider .owl-stage-outer{
+.film-slider .owl-stage-outer, .all-slider .owl-stage-outer{
 	margin-left: 0;
 }
 

@@ -40,11 +40,16 @@ class InfoArticle extends Info
         return $string;
     }
 
+    public function getNewsFormat()
+    {
+        return 'articles';
+    }
+
     /**
      * Set header
      *
      * @param MediaImage $header
-     * @return NewsArticle
+     * @return InfoArticle
      */
     public function setHeader(MediaImage $header = null)
     {

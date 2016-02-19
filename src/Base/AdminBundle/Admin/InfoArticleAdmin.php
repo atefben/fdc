@@ -2,8 +2,10 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\NewsArticleTranslation;
-use Base\CoreBundle\Entity\NewsNewsAssociated;
+use Base\CoreBundle\Entity\Info;
+use Base\CoreBundle\Entity\InfoArticle;
+use Base\CoreBundle\Entity\InfoArticleTranslation;
+use Base\CoreBundle\Entity\InfoInfoAssociated;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -12,8 +14,8 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * NewsArticleAdmin class.
- * 
+ * InfoArticleAdmin class.
+ *
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
@@ -26,15 +28,15 @@ class InfoArticleAdmin extends Admin
 
     protected $translationDomain = 'BaseAdminBundle';
 
-    
+
     public function getNewInstance()
     {
-       $instance = parent::getNewInstance();
-       
-       $instance->addAssociation(new NewsNewsAssociated());
-       $instance->addAssociation(new NewsNewsAssociated());
+        $instance = parent::getNewInstance();
 
-       return $instance;
+        $instance->addAssociatedInfo(new InfoInfoAssociated());
+        $instance->addAssociatedInfo(new InfoInfoAssociated());
+
+        return $instance;
     }
 
 
@@ -74,7 +76,6 @@ class InfoArticleAdmin extends Admin
                 'field_type' => 'text'
             ))
             ->add('theme')
-            ->add('publishedAt', 'doctrine_orm_datetime', array('field_type' => 'sonata_type_datetime_picker'))
             ->add('status', 'doctrine_orm_callback', array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
@@ -90,11 +91,10 @@ class InfoArticleAdmin extends Admin
                 },
                 'field_type' => 'choice',
                 'field_options' => array(
-                    'choices' => NewsArticleTranslation::getStatuses(),
+                    'choices' => InfoArticleTranslation::getStatuses(),
                     'choice_translation_domain' => 'BaseAdminBundle'
                 ),
             ))
-            ->add('translate')
         ;
     }
 
@@ -107,14 +107,21 @@ class InfoArticleAdmin extends Admin
             ->add('id')
             ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
             ->add('theme')
-            ->add('updatedAt')
-            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:News:list_published_interval.html.twig'))
-            ->add('status', null, array('template' => 'BaseAdminBundle:News:list_status.html.twig'))
-            ->add('type', null, array('template' => 'BaseAdminBundle:News:list_type.html.twig'))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit_translations' => array('template' => 'BaseAdminBundle:CRUD:list__action_edit_translations.html.twig'),
-                )
+            ->add('createdAt')
+            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig'))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => InfoArticle::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('statusMain', 'choice', array(
+                'choices' => InfoArticleTranslation::getStatuses(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
+            ))
+            ->add('_preview', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_preview.html.twig'
             ))
         ;
     }
@@ -128,17 +135,11 @@ class InfoArticleAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array(),
                 'fields' => array(
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.helper_title',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
+                        'sonata_help' => 'form.news.helper_title'
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor',
@@ -155,12 +156,32 @@ class InfoArticleAdmin extends Admin
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
-                        'choices' => NewsArticleTranslation::getStatuses(),
+                        'choices' => InfoArticleTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
+                    'seoTitle' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_title'
+                        ),
+                        'label' => 'form.label_seo_title',
+                        'sonata_help' => 'form.news.helper_seo_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+                    'seoDescription' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_description'
+                        ),
+                        'label' => 'form.label_seo_description',
+                        'sonata_help' => 'form.news.helper_description',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+
+                    )
                 )
             ))
             ->add('sites', null, array(
+                'label' => 'form.label_publish_on',
                 'class' => 'BaseCoreBundle:Site',
                 'multiple' => true,
                 'expanded' => true
@@ -180,11 +201,14 @@ class InfoArticleAdmin extends Admin
                 )
             ))
             ->add('widgets', 'infinite_form_polycollection', array(
+                'label' => false,
                 'types' => array(
-                    'news_widget_text_type',
-                    'news_widget_audio_type',
-                    'news_widget_image_type',
-                    'news_widget_video_type',
+                    'info_widget_text_type',
+                    'info_widget_quote_type',
+                    'info_widget_audio_type',
+                    'info_widget_image_type',
+                    'info_widget_video_type',
+                    'info_widget_video_youtube_type'
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,
@@ -192,33 +216,108 @@ class InfoArticleAdmin extends Admin
                 'by_reference' => false,
             ))
             ->add('theme', 'sonata_type_model_list', array(
-                'required' => false,
                 'btn_delete' => false
             ))
             ->add('tags', 'sonata_type_collection', array(
+                'label' => 'form.label_article_tags',
+                'help' => 'form.news.helper_tags',
                 'by_reference' => false,
                 'required' => false,
-                ), array(
+            ), array(
                     'edit' => 'inline',
                     'inline' => 'table'
                 )
             )
+            ->add('signature', null, array(
+                'help' => 'form.news.helper_signature'
+            ))
             ->add('header', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_image',
-                'translation_domain' => 'BaseAdminBundle',
+                'help' => 'form.news.helper_header_image',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('associatedFilm', 'sonata_type_model_list', array(
+                'help' => 'form.news.helper_film_film_associated',
                 'required' => false
             ))
-            ->add('associations', 'sonata_type_collection', array(
+            ->add('associatedEvent', 'sonata_type_model_list', array(
+                'help' => 'form.news.helper_event_associated',
+                'required' => false
+            ))
+            ->add('associatedProjections', 'sonata_type_collection', array(
+                'label' => 'form.label_news_film_projection_associated',
+                'help' => 'form.news.helper_news_film_projection_associated',
                 'by_reference' => false,
-                'btn_add' => false,
                 'required' => false,
-                ), array(
+            ), array(
                     'edit' => 'inline',
                     'inline' => 'table'
                 )
             )
-            ->add('translate', null, array('required' => false), array(
+            ->add('associatedFilms', 'sonata_type_collection', array(
+                'label' => 'form.label_news_film_film_associated',
+                'help' => 'form.news.helper_news_film_film_associated',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('associatedInfo', 'sonata_type_collection', array(
+                'label' => 'form.label_news_news_associated',
+                'help' => 'form.news.helper_news_news_associated',
+                'by_reference' => false,
+                'btn_add' => true,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('displayedHome')
+            ->add('displayedMobile')
+            ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => Info::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => Info::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('seoFile', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'seo_file',
+                'help' => 'form.seo.helper_file',
+                'required' => false
+            ))
+            // must be added to display informations about creation user / date, update user / date (top of right sidebar)
+            ->add('createdAt', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('createdBy', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('updatedAt', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('updatedBy', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
             ))
             ->end()
         ;
@@ -233,4 +332,19 @@ class InfoArticleAdmin extends Admin
             ->add('id')
         ;
     }
+
+    public function prePersist($object)
+    {
+        foreach ($object->getAssociatedInfo() as $info) {
+            $info->setInfo($object);
+        }
+    }
+
+    public function preUpdate($object)
+    {
+        foreach ($object->getAssociatedInfo() as $info) {
+            $info->setInfo($object);
+        }
+    }
+
 }

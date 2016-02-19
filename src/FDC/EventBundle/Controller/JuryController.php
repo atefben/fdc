@@ -2,10 +2,11 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FDC\EventBundle\Component\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class JuryController extends Controller
@@ -16,8 +17,9 @@ class JuryController extends Controller
      * @param type
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getAction($type)
+    public function getAction(Request $request, $type)
     {
+        $this->isPageEnabled($request->get('_route'));
         $festivalId = 54;
 
         $em = $this->getDoctrine()->getManager();

@@ -4,21 +4,24 @@
 function filter() {
 
   // var filters = [];
+  
+    $('.filter').each(function() {
+      var $that = $(this);
+      var a = $that.find('.select span.active').data('filter');
 
-  $('.filter').each(function() {
-    var $that = $(this);
-    var a = $that.find('.select span.active').data('filter');
+      if(a !== 'all'){
+        $(".list .item:not(."+a+")").css('display','none');
+      }
+       
+    });
 
-    if(a !== 'all'){
-      $(".list .item:not(."+a+")").css('display','none');
+    if($('.grid').length !== 0){
+      $('.grid').isotope();
     }
-     
-  });
-
-  if($('.grid').length !== 0){
-    $('.grid').isotope();
-  }
-
+    
+      
+  
+  
 
 }
 
@@ -78,12 +81,6 @@ $(document).ready(function() {
 
       $('#' + id + ' .select span').removeClass('active');
       $('#' + id + ' .select span').eq(i).addClass('active');
-
-
-
-      // $(".list .item:not(."+$(this).data('filter')+")").css('display','none');
-      // $(".list .item."+$(this).data('filter')).css('display','block');
-
 
       $(".list .item").css("display","block");
       filter();

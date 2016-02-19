@@ -14,7 +14,7 @@ use JMS\Serializer\Annotation\Since;
  * MediaVideo
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\MediaVideoRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class MediaVideo extends Media
@@ -43,13 +43,6 @@ class MediaVideo extends Media
     private $homepage;
 
     /**
-     * @var FilmFilm
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="mediaVideos")
-     */
-    private $film;
-
-    /**
      * @var WebTv
      *
      * @ORM\ManyToOne(targetEntity="WebTv", inversedBy="mediaVideos")
@@ -57,16 +50,20 @@ class MediaVideo extends Media
     private $webTv;
 
     /**
-     * @var FilmFestival
+     * @var Media
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="mediaVideos")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"persist"})
+     *
+     * @Groups({"trailer_list", "trailer_show", "web_tv_list", "web_tv_show"})
+     */
+    private $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"persist"})
      *
      * @Groups({"trailer_list", "trailer_show"})
-     *
      */
-    private $festival;
-
+    private $associatedFilms;
 
     /**
      * Set displayedWebTv
@@ -138,29 +135,6 @@ class MediaVideo extends Media
     }
 
     /**
-     * Set film
-     *
-     * @param \Base\CoreBundle\Entity\FilmFilm $film
-     * @return MediaVideo
-     */
-    public function setFilm(\Base\CoreBundle\Entity\FilmFilm $film = null)
-    {
-        $this->film = $film;
-
-        return $this;
-    }
-
-    /**
-     * Get film
-     *
-     * @return \Base\CoreBundle\Entity\FilmFilm 
-     */
-    public function getFilm()
-    {
-        return $this->film;
-    }
-
-    /**
      * Set webTv
      *
      * @param \Base\CoreBundle\Entity\WebTv $webTv
@@ -176,7 +150,7 @@ class MediaVideo extends Media
     /**
      * Get webTv
      *
-     * @return \Base\CoreBundle\Entity\WebTv 
+     * @return \Base\CoreBundle\Entity\WebTv
      */
     public function getWebTv()
     {
@@ -184,25 +158,60 @@ class MediaVideo extends Media
     }
 
     /**
-     * Set festival
+     * Set image
      *
-     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @param \Base\CoreBundle\Entity\MediaImage $image
      * @return MediaVideo
      */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival)
+    public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
     {
-        $this->festival = $festival;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get festival
+     * Get image
      *
-     * @return \Base\CoreBundle\Entity\FilmFestival 
+     * @return \Base\CoreBundle\Entity\MediaImage 
      */
-    public function getFestival()
+    public function getImage()
     {
-        return $this->festival;
+        return $this->image;
+    }
+
+
+    /**
+     * Add associatedFilms
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedFilms
+     * @return MediaVideo
+     */
+    public function addAssociatedFilm(\Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedFilms)
+    {
+        $associatedFilms->setMediaVideo($this);
+        $this->associatedFilms[] = $associatedFilms;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedFilms
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedFilms
+     */
+    public function removeAssociatedFilm(\Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedFilms)
+    {
+        $this->associatedFilms->removeElement($associatedFilms);
+    }
+
+    /**
+     * Get associatedFilms
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedFilms()
+    {
+        return $this->associatedFilms;
     }
 }
