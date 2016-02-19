@@ -1,0 +1,10 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+{% trans_default_domain 'BaseAdminBundle' %}
+
+{% block field %}
+    <div>
+        {% if object.selectionSection %}
+                {{ object.selectionSection|trans_fallback('name') }}
+        {% endif %}
+    </div>
+{% endblock %}

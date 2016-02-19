@@ -23,24 +23,38 @@ class AWSController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $logger = $this->get('logger');
-        $jobId = 1;
-		
-		//setJobWebmId
-		//setJobMp4Id
-		//setJobMp4State
-		//setJobWebmSstate
 
-        $media = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneByJob($jobId);
-        if ($media === null) {
-            $logger->error('Job id #'. $jobId. ' not found');
-            throw new NotFoundHttpException();
-        }
-        $media->setImageAmazonUrl('http://');
-        $media->setState(0);
+        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobMp4State' => 1));
+		foreach($medias as $media) {
+			error_log(print_r($media, true));
+			$this->updateAmazonStatus($media, 'mp4');
+		}
+		
+        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobWebmState' => 1));
+		foreach($medias as $media) {
+			error_log(print_r($media, true));
+			$this->updateAmazonStatus($media, 'webm');
+		}
+		
+		// TODO JEAN LUC
+		/*
+        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobMp3mState' => 1));
+		foreach($medias as $media) {
+			
+			$this->updateAmazonStatus($media, 'mp3');
+		}*/
 
         $em->flush();
 
         return new JsonResponse();
 
     }
+	
+    public function updateAmazonStatus($media, $mime)
+    {
+		// TODO JEAN LUC
+        $media->setImageAmazonUrl('http://');
+        $media->setState(0);
+	}
+	
 }

@@ -55,7 +55,10 @@ class MediaImageSimpleAdmin extends Admin
                 'template' => 'BaseAdminBundle:MediaImageSimple:list_alt.html.twig',
                 'label'    => 'list.media_image_simple.label_alt',
             ))
-            ->add('createdAt')
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => MediaImageSimple::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle',

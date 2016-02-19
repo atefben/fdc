@@ -8815,11 +8815,23 @@ header #searchContainer {
   color: #c8a461;
 }
 .article .picto .icon {
+  margin-left: 17px;
+  margin-top: 17px;
+  font-size: .7rem;
+}
+
+.article .picto .icon.icon_photo,
+.article .picto .icon.icon_audio {
     font-size: 1rem;
     margin-top: 14px;
     margin-left: 14px;
 }
-
+.article .picto .icon.icon_video {
+    font-size: 0.8rem;
+    margin-top: 16px;
+    margin-left: 16px;
+}
+	
 .video .picto {
   color: #c8a461;
 }
@@ -10513,7 +10525,7 @@ article .read-later.rAlign span:after {
   width: 630px;
 }
 .single-article .video-container {
-  margin: 0 auto 70px;
+  margin: 65px auto 70px;
   width: 630px;
 }
 .single-article .share {
@@ -10565,7 +10577,7 @@ article .read-later.rAlign span:after {
   float: right;
   height: 100%;
   margin-right: 85px;
-  max-width: 470px;
+  max-width: 398px;
 }
 .single-article .film .info-film .wrapper .category {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;

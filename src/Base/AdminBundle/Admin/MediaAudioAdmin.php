@@ -89,7 +89,10 @@ class MediaAudioAdmin extends Admin
                 'template' => 'BaseAdminBundle:MediaAudio:list_title.html.twig'
             ))
             ->add('theme')
-            ->add('createdAt')
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
             ->add('publishedInterval', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',
