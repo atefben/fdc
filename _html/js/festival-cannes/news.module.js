@@ -17,7 +17,7 @@ $(document).ready(function() {
 
   $('#timeline a').on('click', function(e) {
     e.preventDefault();
-    var timestamp = $(this).data('time');
+    var timestamp = $(this).data('timestamp');
 
     if($(this).hasClass('active') || $(this).hasClass('disabled')) {
       return false;
@@ -40,13 +40,13 @@ $(document).ready(function() {
       $('#canvasloader').addClass('show');
     }, 800);
 
+    alert(timestamp);
+
     // todo: remove timeout
     setTimeout(function() {
       $.ajax({
         url: GLOBALS.urls.newsUrl,
         type: "GET",
-        // dataType: "html",
-        cache: false,
         data: { 
           'timestamp': timestamp
         },
@@ -107,7 +107,7 @@ $(document).ready(function() {
           type: "GET",
           data: {
             'timestamp': $('#news article.article:last').data('time'),
-            'end': $('#news article.article:last').data('end')
+            'end': typeof $('#news article.article:last').data('end') != 'undefined' ? $('#news article.article:last').data('end') : 'false'
           },
           success: function(data) {
             $('#canvasloader').removeClass('show');
@@ -137,8 +137,7 @@ $(document).ready(function() {
         type: "GET",
         data: {
           'timestamp': $('#news article.article:last').data('time'),
-          'end': $('#news article.article:last').data('end')
-
+          'end': typeof $('#news article.article:last').data('end') != 'undefined' ? $('#news article.article:last').data('end') : 'false'
         },
         success: function(data) {
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).append(data);
