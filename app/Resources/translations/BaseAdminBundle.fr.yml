@@ -306,6 +306,7 @@ filter:
     label_realisator: Réalisateurs
     label_selection: Sélection
     label_festival-year: Année de sélection
+    label_programmation_films: Film
     media_image:
         label_created_before: Publié avant le
         label_created_after: Publié après le

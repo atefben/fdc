@@ -135,8 +135,12 @@
         <div class="share">
             <p>{{ 'juries.artiste.title.share'|trans }}</p>
             <div class="buttons square">
-                <a href="#" class="button facebook"></a>
-                <a href="#" class="button twitter"></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_event_news_index') }}" class="button facebook">
+
+                </a>
+                <a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_news_index') }}" class="button twitter">
+
+                </a>
                 <a href="#" class="button link"></a>
                 <a href="#" class="button email"></a>
                 <a href="#" class="button print"></a>

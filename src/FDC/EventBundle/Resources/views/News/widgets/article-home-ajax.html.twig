@@ -1,3 +1,18 @@
 {% for article in homeArticles %}
+    {% if loop.first %}
+    <div class="articles right pad">
+    {% endif %}
+    {% if loop.index == 3 %}
+    </div>
+    {% endif %}
     {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
+    {% if loop.index == 4 %}
+    <div class="articles left">
+    {% endif %}
+    {% if loop.last %}
+    </div>
+    {% endif %}
 {% endfor %}
+{% if homeArticlesNext is defined %}
+    <div class="articles right nextDay"></div>
+{% endif %}

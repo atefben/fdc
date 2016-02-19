@@ -17,7 +17,7 @@ $(document).ready(function() {
 
   $('#timeline a').on('click', function(e) {
     e.preventDefault();
-    var timestamp = $(this).attr('data-timestamp');
+    var timestamp = $(this).data('time');
 
     if($(this).hasClass('active') || $(this).hasClass('disabled')) {
       return false;
@@ -43,11 +43,13 @@ $(document).ready(function() {
     // todo: remove timeout
     setTimeout(function() {
       $.ajax({
-        type: "GET",
-        dataType: "html",
-        cache: false,
-        data: { 'timestamp': timestamp },
         url: GLOBALS.urls.newsUrl,
+        type: "GET",
+        // dataType: "html",
+        cache: false,
+        data: { 
+          'timestamp': timestamp
+        },
         success: function(data) {
           $('#canvasloader').removeClass('show');
           $('#articles-wrapper').html(data);
@@ -101,11 +103,14 @@ $(document).ready(function() {
       // todo: remove timeout
       setTimeout(function() {
         $.ajax({
+          url: GLOBALS.urls.newsUrl,
           type: "GET",
-          dataType: "html",
-          cache: false,
-          data: {'timestamp': $('#news article.article:last').attr('data-timestamp')},
-          url: GLOBALS.urls.newsUrl ,
+          // dataType: "html",
+          // cache: false,
+          data: {
+            'timestamp': $('#news article.article:last').data('time'),
+            'end': $('#news article.article:last').data('end')
+          },
           success: function(data) {
             $('#canvasloader').removeClass('show');
 
@@ -124,13 +129,21 @@ $(document).ready(function() {
         });
       }, 1200);
     } else {
+      var _data = {
+        timestamp: $('#news article.article:last').data('time')
+      }
+
       $('#shdMore').removeClass('show');
       $.ajax({
+        url: GLOBALS.urls.newsUrlNext,
         type: "GET",
-        dataType: "html",
-        cache: false,
-        url: GLOBALS.urls.newsUrlNext , // TODO a revoir //
-        data: {'timestamp': $('#news article.article:last').attr('data-timestamp')},
+        // dataType: "html",
+        // cache: false,
+        data: {
+          'timestamp': $('#news article.article:last').data('time'),
+          'end': $('#news article.article:last').data('end')
+
+        },
         success: function(data) {
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).append(data);
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').prop('scrollHeight'));

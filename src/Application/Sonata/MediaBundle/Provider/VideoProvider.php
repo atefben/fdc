@@ -101,15 +101,13 @@ class VideoProvider extends FileProvider
         } elseif (isset($parentAudio)) {
             $file_name = $media->getProviderReference();
 	        $path = $this->generatePublicUrl($media, $media->getProviderReference());
-			error_log($file_name);
-			error_log($path);
 	        $file_path = explode('/', $path);
 	        $path_audio_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 	        $path_audio_output = 'media_audio_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 
 	        //System preset: Audio MP3 - 128k : 1351620000001-300040
 	        $job = $elasticTranscoder->createJob(array(
-	            'PipelineId'      => '1454076999739-uy533t',
+	            'PipelineId'      => '1455903590532-u7lwud',
 	            'OutputKeyPrefix' => $path_audio_output,
 	            'Input'           => array(
 	                'Key'         => $path_audio_input . $file_name,
