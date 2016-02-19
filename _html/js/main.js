@@ -639,15 +639,17 @@ $(document).ready(function() {
       handleEndVideo();
     }
 
-    $("#slider-movies").owlCarousel({
-      items: 1,
-      loop: true,
-      nav: false,
-      dots: false,
-      smartSpeed: 500,
-      onTranslated: playNewVideo,
-      onDrag: pauseVideo
-    });
+    if ($("#slider-movies video").length >= 2) {
+      $("#slider-movies").owlCarousel({
+        items: 1,
+        loop: true,
+        nav: false,
+        dots: false,
+        smartSpeed: 500,
+        onTranslated: playNewVideo,
+        onDrag: pauseVideo
+      });
+    }
 
     setHeightSlider();
 
@@ -873,10 +875,14 @@ $(document).ready(function() {
 
     if($('#featured-movies').length) {
       if(s > $('#featured-movies').offset().top - $('#featured-movies').height() && s < $('#featured-movies').offset().top + $('#featured-movies').height()) {
-        $('#featured-movies .active').find('video')[0].play();
+        if ($('#featured-movies .active').length) {
+          $('#featured-movies .active').find('video')[0].play();
+        }
         handleEndVideo();
       } else {
-        $('#featured-movies .active').find('video')[0].pause();
+        if ($('#featured-movies .active').length) {
+          $('#featured-movies .active').find('video')[0].pause();
+        }
       }
     }
 

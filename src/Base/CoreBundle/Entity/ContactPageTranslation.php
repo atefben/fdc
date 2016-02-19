@@ -56,15 +56,6 @@ class ContactPageTranslation implements TranslateChildInterface
     private $thirdColumn;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     *
-     */
-    private $fourthColumn;
-
-
-    /**
      * Set title
      *
      * @param string $title
@@ -156,26 +147,4 @@ class ContactPageTranslation implements TranslateChildInterface
         return $this->thirdColumn;
     }
 
-    /**
-     * Set fourthColumn
-     *
-     * @param string $fourthColumn
-     * @return ContactPageTranslation
-     */
-    public function setFourthColumn($fourthColumn)
-    {
-        $this->fourthColumn = $fourthColumn;
-
-        return $this;
-    }
-
-    /**
-     * Get fourthColumn
-     *
-     * @return string 
-     */
-    public function getFourthColumn()
-    {
-        return $this->fourthColumn;
-    }
 }

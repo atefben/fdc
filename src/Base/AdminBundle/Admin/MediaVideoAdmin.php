@@ -93,7 +93,10 @@ class MediaVideoAdmin extends Admin
                 'label'              => 'list.media_video.label_web_tv',
                 'translation_domain' => 'BaseAdminBundle',
             ))
-            ->add('createdAt')
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
             ->add('publishedInterval', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',
@@ -104,7 +107,7 @@ class MediaVideoAdmin extends Admin
             ))
             ->add('statusMain', 'choice', array(
                 'choices'   => MediaVideoTranslation::getStatuses(),
-                'catalogue' => 'BaseAdminBundle'
+                'catalogue' => 'BaseAdminBundle',
             ))
             ->add('state', null, array(
                 'label'              => 'list.media_video.label_encoding_state',
@@ -112,7 +115,7 @@ class MediaVideoAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
             ))
             ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
             ))
         ;
     }

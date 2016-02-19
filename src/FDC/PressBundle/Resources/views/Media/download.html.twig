@@ -7,6 +7,8 @@
 
         {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 
+        {{ render(controller('FDCPressBundle:Security:login')) }}
+
         <div class="downloading-nav">
             <ul>
                 {% for key,s in pressDownloads %}
@@ -53,8 +55,6 @@
     </div>
 
     {% include 'FDCPressBundle:Global:components/popinPress.html.twig' %}
-
-    {% include 'FDCPressBundle:Global:components/popinDownload.html.twig' %}
 
     </div>
 

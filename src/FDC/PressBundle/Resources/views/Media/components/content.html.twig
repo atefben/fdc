@@ -60,13 +60,13 @@
                                         {% for m in film.medias %}
                                         {% if m.type == 18 %}
                                             {% if 'French' in m.media.titleVa %}
-                                                <a href="{% path m.media.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.enfrancais'|trans }}</a>
+                                                <a href="{% path m.media.file, 'reference' %}" class="button" target="_blank" download><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.enfrancais'|trans }}</a>
                                             {% elseif 'English' in m.media.titleVa %}
-                                                <a href="{% path m.media.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.enanglais'|trans }}</a>
+                                                <a href="{% path m.media.file, 'reference' %}" class="button" target="_blank" download><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.enanglais'|trans }}</a>
                                             {% elseif 'Bilingual' in m.media.titleVa %}
-                                                <a href="{% path m.media.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.bilingue'|trans }}</a>
+                                                <a href="{% path m.media.file, 'reference' %}" class="button" target="_blank" download><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.bilingue'|trans }}</a>
                                             {% else %}
-                                                <a href="{% path m.media.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.telecharger'|trans }}</a>
+                                                <a href="{% path m.media.file, 'reference' %}" class="button" target="_blank" download><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.telecharger'|trans }}</a>
                                             {% endif %}
                                         {% endif %}
                                         {% endfor %}
@@ -85,7 +85,7 @@
                                             {% if trans is null or trans.file is null %}
                                                 {% set trans = m.mediaVideo.findTranslationByLocale('fr') %}
                                             {% endif %}
-                                                <a href="{{ path('fdc_press_media_trailerdownload', {'id': m.id}) }}" class="button"><i class="icon icon_telecharger"></i> {{ trans.title }}</a>
+                                                <a href="#" class="button trailer-btn" data-film="{{ m.association.id }}"><i class="icon icon_telecharger"></i> {{ trans.title }}</a>
                                         {% endif %}
                                         {% endfor %}
                                     </div>

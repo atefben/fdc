@@ -114,7 +114,10 @@ class NewsCommonAdmin extends BaseAdmin
                 'label'    => 'list.news_common.label_title',
             ))
             ->add('theme', null, array())
-            ->add('createdAt')
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
             ->add('publishedInterval', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',

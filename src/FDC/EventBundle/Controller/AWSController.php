@@ -5,6 +5,7 @@ namespace FDC\EventBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Aws\ElasticTranscoder\ElasticTranscoderClient;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -23,25 +24,20 @@ class AWSController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $logger = $this->get('logger');
-
-        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobMp4state' => 1));
+		
+        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('jobMp4State' => '1'));
 		foreach($medias as $media) {
-			error_log(print_r($media, true));
-			$this->updateAmazonStatus($media, 'mp4');
+			$this->updateAmazonStatus($media->getJobId(), $media->getJobMp4Id(), 'mp4');
 		}
 		
-        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobWebmState' => 1));
+        /*$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobWebmState' => '1'));
 		foreach($medias as $media) {
-			error_log(print_r($media, true));
-			$this->updateAmazonStatus($media, 'webm');
+			$this->updateAmazonStatus($media->getJobId(), $media->getJobWebmId(), 'webm');
 		}
 		
-		// TODO JEAN LUC
-		/*
-        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobMp3mState' => 1));
+		$medias = $em->getRepository('BaseCoreBundle:MediaAudioTranslation')->findBy(array('jobWebmState' => '1'));
 		foreach($medias as $media) {
-			
-			$this->updateAmazonStatus($media, 'mp3');
+			$this->updateAmazonStatus($media->getJobId(), $media->getJobMp3Id(), 'mp3');
 		}*/
 
         $em->flush();
@@ -50,11 +46,28 @@ class AWSController extends Controller
 
     }
 	
-    public function updateAmazonStatus($media, $mime)
+    public function updateAmazonStatus($media, $jobid, $mime)
     {
+        $elasticTranscoder = ElasticTranscoderClient::factory(array(
+            'credentials' => array(
+                'key'    => 'AKIAJHXD67GEPPA2F4TQ',
+                'secret' => '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',
+            ),
+            'region'      => 'eu-west-1',
+        ));
+		
+		$elasticTranscoder->readJob(array('Id' => $jobid));
+		$jobData = $resposne->get('Job');
+		print_r($jobData['Status']);
+		
+		switch($jobData['Status']){
+			case 'completed': break;
+			case 'error': break;
+		}
+
 		// TODO JEAN LUC
-        $media->setImageAmazonUrl('http://');
-        $media->setState(0);
+        // $media->setImageAmazonUrl('http://');
+        // $media->setState(0);
 	}
 	
 }

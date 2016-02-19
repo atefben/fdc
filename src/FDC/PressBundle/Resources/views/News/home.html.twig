@@ -12,7 +12,6 @@
 
         {% include 'FDCPressBundle:Agenda:components/calendar.html.twig' %}
 
-
         {% for section in pressHome.section %}
             {% if section.class == "communique" %}
                 {% if pressHome.sectionStatementInfoDisplay == false %}
@@ -20,7 +19,7 @@
                         <div class="chap">
                             <h3 class="title-press">{{ 'press.agenda.title.communiqueetinfos'|trans }}</h3>
                             <p class="link">
-                                <a href="press-actu.php">
+                                <a href="{{ path('fdc_press_news_list') }}">
                                     <i class="icon icon_fleche-right"></i>
                                     {{ 'press.home.btn.touslescommuniquesetinfos'|trans }}
                                 </a>
@@ -44,7 +43,7 @@
                                 <span id="dateProgram">{{ schedulingDays[0]|localizeddate('long', 'none', app.request.locale)  }}</span>
                             </h3>
                             <p class="link">
-                                <a href="programmation.php">
+                                <a href="{{ path('fdc_press_agenda_scheduling') }}">
                                     <i class="icon icon_fleche-right"></i>
                                     {{ 'press.home.btn.toutelaprogrammation'|trans }}
                                 </a>
@@ -89,7 +88,7 @@
                         <div class="chap">
                             <h3 class="title-press">{{ 'press.home.title.mediatheque'|trans }}</h3>
                             <p class="link">
-                                <a href="press-media.php">
+                                <a href="{{ path('fdc_press_media_main') }}">
                                     <i class="icon icon_fleche-right"></i>
                                     {{ 'press.home.btn.toutelamediatheque'|trans }}
                                 </a>
@@ -100,7 +99,7 @@
                                 <div class="line">
                                     <div class="container">
                                         <div class="info">
-                                            {% media media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'film_poster_tiny' %}
+                                            {% thumbnail media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first, 'tiny' %}
                                             <div class="txt">
                                                 <div class="vCenter">
                                                     <div class="vCenterKid">
@@ -265,7 +264,5 @@
 </div>
 
 {% include 'FDCPressBundle:Global:components/popinPress.html.twig' %}
-
-{% include 'FDCPressBundle:Global:components/popinDownload.html.twig' %}
 
 {% endblock %}

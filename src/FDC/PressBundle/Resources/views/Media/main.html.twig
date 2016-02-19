@@ -7,6 +7,8 @@
 
     {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 
+    {{ render(controller('FDCPressBundle:Security:login')) }}
+
     <div class="container-mediapress">
         <div class="nav-mediapress">
 
@@ -37,8 +39,6 @@
     </div>
 
     {% include 'FDCPressBundle:Global:components/popinPress.html.twig' %}
-
-    {% include 'FDCPressBundle:Global:components/popinDownload.html.twig' %}
 
 </div>
 

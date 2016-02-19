@@ -43,28 +43,16 @@ class MediaAudioTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="integer", nullable=true, options={"default":0})
      */
-    private $jobWebmState;
+    private $jobMp3State;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=true, options={"default":0})
-     */
-    private $jobMp4State;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    private $jobMp4Id;
+    private $jobMp3Id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $jobWebmId;
 
     /**
      * @var \Application\Sonata\MediaBundle\Entity\Media
@@ -123,94 +111,48 @@ class MediaAudioTranslation implements TranslateChildInterface
     }
 
     /**
-     * Set jobWebmState
+     * Set jobMp3State
      *
-     * @param integer $jobWebmState
+     * @param integer $jobMp3State
      * @return MediaAudioTranslation
      */
-    public function setJobWebmState($jobWebmState)
+    public function setJobMp3State($jobMp3State)
     {
-        $this->jobWebmState = $jobWebmState;
+        $this->jobMp3State = $jobMp3State;
 
         return $this;
     }
 
     /**
-     * Get jobWebmState
+     * Get jobMp3State
      *
      * @return integer 
      */
-    public function getJobWebmState()
+    public function getJobMp3State()
     {
-        return $this->jobWebmState;
+        return $this->jobMp3State;
     }
 
     /**
-     * Set jobMp4State
+     * Set jobMp3Id
      *
-     * @param integer $jobMp4State
+     * @param string $jobMp3Id
      * @return MediaAudioTranslation
      */
-    public function setJobMp4State($jobMp4State)
+    public function setJobMp3Id($jobMp3Id)
     {
-        $this->jobMp4State = $jobMp4State;
+        $this->jobMp3Id = $jobMp3Id;
 
         return $this;
     }
 
     /**
-     * Get jobMp4State
-     *
-     * @return integer 
-     */
-    public function getJobMp4State()
-    {
-        return $this->jobMp4State;
-    }
-
-    /**
-     * Set jobMp4Id
-     *
-     * @param string $jobMp4Id
-     * @return MediaAudioTranslation
-     */
-    public function setJobMp4Id($jobMp4Id)
-    {
-        $this->jobMp4Id = $jobMp4Id;
-
-        return $this;
-    }
-
-    /**
-     * Get jobMp4Id
+     * Get jobMp3Id
      *
      * @return string 
      */
-    public function getJobMp4Id()
+    public function getJobMp3Id()
     {
-        return $this->jobMp4Id;
-    }
-
-    /**
-     * Set jobWebmId
-     *
-     * @param string $jobWebmId
-     * @return MediaAudioTranslation
-     */
-    public function setJobWebmId($jobWebmId)
-    {
-        $this->jobWebmId = $jobWebmId;
-
-        return $this;
-    }
-
-    /**
-     * Get jobWebmId
-     *
-     * @return string 
-     */
-    public function getJobWebmId()
-    {
-        return $this->jobWebmId;
+        return $this->jobMp3Id;
     }
 }
