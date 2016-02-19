@@ -25,15 +25,15 @@ class AWSController extends Controller
         $logger = $this->get('logger');
         $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('jobMp4State' => '1'));
 		foreach($medias as $media) {
-			error_log(print_r($media, true));
+			print_r($media);
 			$this->updateAmazonStatus($media, 'mp4');
 		}
 		
-        /*$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobWebmState' => 1));
+        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobWebmState' => '1'));
 		foreach($medias as $media) {
-			error_log(print_r($media, true));
+			print_r($media);
 			$this->updateAmazonStatus($media, 'webm');
-		}*/
+		}
 		
 		// TODO JEAN LUC
 		/*
