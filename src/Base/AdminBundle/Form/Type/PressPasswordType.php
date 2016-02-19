@@ -10,6 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PressPasswordType extends AbstractType
 {
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options

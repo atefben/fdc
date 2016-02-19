@@ -7,6 +7,7 @@ lang:
 settings:
     fdc: Paramètres du Festival de Cannes
     fdc_api: Paramètres de l'API Festival de Cannes
+    fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
     link_film_person_list: Liste des personnes

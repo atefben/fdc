@@ -3,7 +3,7 @@
 
 {% block body %}
 
-<div id="main" class="press loading practicalguide lock">
+<div id="main" class="press loading practicalguide {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
 
     {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
 

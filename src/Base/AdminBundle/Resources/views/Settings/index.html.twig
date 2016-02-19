@@ -19,11 +19,21 @@
     {{ form_end(formFDCApiYear) }}
 
     <h3>{{ 'settings.fdc_press_password'|trans }}</h3>
-    {{ form_errors(formPressPassword) }}
 
     {{ form_start(formPressPassword) }}
-    {{ form_row(formPressPassword.plainPassword) }}
+    <div>
+        {{ form_errors(formPressPassword.plainPassword.first) }}
+        {{ form_errors(formPressPassword.plainPassword.second) }}
+    </div>
+    <div>
+        {{ form_label(formPressPassword.plainPassword.first) }}
+        {{ form_widget(formPressPassword.plainPassword.first) }}
+        {{ form_label(formPressPassword.plainPassword.second) }}
+        {{ form_widget(formPressPassword.plainPassword.second) }}
+    </div>
+
     {{ form_row(formPressPassword.save) }}
+
     {{ form_end(formPressPassword) }}
 
 

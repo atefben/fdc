@@ -1,7 +1,6 @@
 {% trans_default_domain 'FDCPressBundle' %}
 
-{% if is_granted("ROLE_FDC_PRESS_REPORTER") %}
-    {% else %}
+{% if is_granted("ROLE_FDC_PRESS_REPORTER") == false %}
         <div class="locked">
             <div class="vCenter">
                 <div class="vCenterKid">
