@@ -3,8 +3,8 @@
 
 {% block field %}
     <div>
-        {% if object.selectionSection.festival is defined %}
-            {{ object.selectionSection.festival.year }}
+        {% if object.festival is defined and object.festival is not null%}
+            {{ object.festival.year }}
         {% endif %}
     </div>
 {% endblock %}

@@ -223,6 +223,9 @@ list:
     label_alt: Alt de l'image
     label_web_tv_name: Nom de la chaîne
     label_title_audio: Titre de l'audio
+    label_realisator: Réalisateur(s)
+    label_selection: Sélection
+    label_festival-year: Année de sélection
     tooltip:
         unlock: DÉBLOQUER
         modified_by: En cours de modification par </br>
