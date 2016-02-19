@@ -128,7 +128,7 @@
                                                     <div class="item">
                                                         <a id='photo{{ key }}' href="{% path m.media.file, 'reference' %}" class="chocolat-image ajax"
                                                            title='<h2>{{ imageTitle }}</h2>' data-credit="{{ m.media.credits }}">
-                                                            {% thumbnail m.media.file, 'small' %}
+                                                            {% thumbnail m.media.file, 'tiny' %}
                                                         </a>
                                                     </div>
                                                 {% endif %}
@@ -145,7 +145,7 @@
                                                             {% set imageTitle = m.media.titleVa %}
                                                         {% endif %}
                                                         <div data-id="photo{{ key }}" class="thumb {% if key == 0 %}active{% endif %}" data-caption="{{ imageTitle }}">
-                                                            {% thumbnail m.media.file, 'small' %}
+                                                            {% thumbnail m.media.file, 'tiny' %}
                                                         </div>
                                                     {% endif %}
                                                 {% endfor %}
