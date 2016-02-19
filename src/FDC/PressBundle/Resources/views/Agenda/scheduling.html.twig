@@ -3,6 +3,7 @@
 
 {% block body %}
     <div id="main" class="press press-programmation loading calendar-open {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
+
         <div class="header-press">
             <div class="head">
                 <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>
@@ -17,17 +18,8 @@
             </div>
         </div>
 
-        <div class="locked">
-            <div class="vCenter">
-                <div class="vCenterKid">
-                    <h3 class="title-press">{{ 'programmation.title.contenusverrouilles'|trans }}</h3>
-                    <p>{{ 'programmation.text.journalisteveuillezvousrendredanslespacepresse'|trans }}</p>
-                </div>
-            </div>
-            <div class="buttons">
-                <a href="{{ path('fdc_press_news_home') }}">{{ 'programmation.btn.allerdanslespacepresse'|trans }}</a>
-            </div>
-        </div>
+        {{ render(controller('FDCPressBundle:Security:login')) }}
+
         <div class="wrapper">
             {% include 'FDCPressBundle:Agenda:components/calendar.html.twig' %}
             <div class="programmation">

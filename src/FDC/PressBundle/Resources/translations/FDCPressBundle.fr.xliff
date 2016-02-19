@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-02-19T16:10:31Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-02-19T17:12:57Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -635,7 +635,7 @@
       </trans-unit>
       <trans-unit id="4da284e5cc19116e4ceda67923ea9cfed2f7a492" resname="press.popin.text.cecontenuestexclusivementreservealapresse">
         <source>press.popin.text.cecontenuestexclusivementreservealapresse</source>
-        <target>Ce contenu est réservé exclusivement à la presse</target>
+        <target>Ce contenu est exclusivement réservé à la presse, veuillez renseigner votre mot de passe.</target>
         <jms:reference-file line="6">Global/components/popinPress.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="939882e45933da6499eac7f915b6029cb7a921b1" resname="press.popin.title.bandeannonces">
