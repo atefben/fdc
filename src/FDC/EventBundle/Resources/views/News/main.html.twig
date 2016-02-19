@@ -106,7 +106,11 @@
                                     {% endif %}
                                     <h3>
                                         <a href="#">
-                                            {{ associatedFilm|trans_fallback('title') }}
+                                            {% set title = associatedFilm|trans_fallback('title') %}
+                                            {% if title == '' %}
+                                                {% set title = associatedFilm.titleVO %}
+                                            {% endif %}
+                                            {{ title }}
                                         </a>
                                     </h3>
                                     {% for director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
