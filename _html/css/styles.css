@@ -10321,6 +10321,7 @@ article .read-later.rAlign span:after {
 }
 .single-article .single-photo .photo-container {
   display: inline-block;
+  width: 100%;
 }
 .single-article .single-photo img {
   display: block;
