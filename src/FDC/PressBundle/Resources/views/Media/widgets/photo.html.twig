@@ -8,6 +8,13 @@
             {{ 'press.home.btn.touttelecharger'|trans }}
         </a>
     </div>
+    {% if app.session.flashBag.has('error') %}
+        <div class="alert alert-error">
+            {% for msg in app.session.flashBag.get('error') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
 </div>
 
 <div class="gridPressDownload grid-wrapper images">
@@ -18,12 +25,13 @@
             {% set trans = image.media.findTranslationByLocale('fr') %}
         {% endif %}
         {% set file = trans.file %}
+
         <div class="item">
 
-            <a href="{% path file, 'reference' %}" class="chocolat-image ajax"
+            <a href="{% path file, '1760x1108' %}" class="chocolat-image ajax"
                title='<h2>{{image.media|trans_fallback('alt')}}</h2>'
                data-credit="{{ image.media|trans_fallback('copyright')}}">
-                {% thumbnail file, '150x150' with {
+                {% thumbnail file, '194x128' with {
                 'class': 'chocolat-image ajax',
                 'title': image.media|trans_fallback('alt'),
                 'data-credit': image.media|trans_fallback('copyright')
@@ -41,7 +49,7 @@
             {% set file = trans.file %}
             <div data-id="photo{{ key+1 }}" class="thumb {% if key == 0 %}active{% endif %}"
                  data-caption="<strong>{{ image.media|trans_fallback('alt')}}</strong>{{ image.media|trans_fallback('copyright')}}">
-                {% thumbnail file, '150x150' with {'alt': image.media|trans_fallback('alt')} %}
+                {% thumbnail file, '194x128' with {'alt': image.media|trans_fallback('alt')} %}
             </div>
         {% endfor %}
     </div>
