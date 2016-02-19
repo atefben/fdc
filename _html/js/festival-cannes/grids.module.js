@@ -196,7 +196,8 @@ $(document).ready(function () {
     if($('.all-photos').length) {
       var slideshow = $('#gridPhotos').Chocolat({
         imageSize: 'cover',
-        fullScreen: false
+        fullScreen: false,
+        imageSelector: '.item:not(.isotope-hidden) .chocolat-image'
       }).data('chocolat');
 
       slideshows.push(slideshow);

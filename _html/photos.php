@@ -70,7 +70,7 @@
           </div>
         </div>
         <div class="item theme2 date theme portrait shadow-bottom photo">
-          <a id="photo4" class="ajax chocolat-image" href="img/slide002.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
+          <a id="photo4" class="ajax chocolat-image" href="http://dummyimage.com/2560x3232/000/fff.png" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"></a>
           <img src="http://dummyimage.com/320x404/3498db/.png" srcset="http://dummyimage.com/320x404/3498db/.png 1x, http://dummyimage.com/640x808/000/fff.png 2x" alt="">
           <div class="picto"><i class="icon icon_photo"></i></div>
           <div class="info">
