@@ -26,6 +26,10 @@ class MediaAudioTranslation implements TranslateChildInterface
     use Translation;
     use TranslateChild;
 
+    const ENCODING_STATE_IN_PROGRESS = 1;
+    const ENCODING_STATE_ERROR = 2;
+    const ENCODING_STATE_READY = 3;
+
     /**
      * @var string
      *
@@ -35,9 +39,37 @@ class MediaAudioTranslation implements TranslateChildInterface
     private $title;
 
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
+     * @var integer
      *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     * @ORM\Column(type="integer", nullable=true, options={"default":0})
+     */
+    private $jobWebmState;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true, options={"default":0})
+     */
+    private $jobMp4State;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $jobMp4Id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $jobWebmId;
+
+    /**
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     *
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="parentAudioTranslation", cascade={"persist"})
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      * @Assert\Valid()
      */
@@ -74,6 +106,7 @@ class MediaAudioTranslation implements TranslateChildInterface
      */
     public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
     {
+        $file->setParentAudioTranslation($this);
         $this->file = $file;
 
         return $this;
@@ -87,5 +120,97 @@ class MediaAudioTranslation implements TranslateChildInterface
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Set jobWebmState
+     *
+     * @param integer $jobWebmState
+     * @return MediaAudioTranslation
+     */
+    public function setJobWebmState($jobWebmState)
+    {
+        $this->jobWebmState = $jobWebmState;
+
+        return $this;
+    }
+
+    /**
+     * Get jobWebmState
+     *
+     * @return integer 
+     */
+    public function getJobWebmState()
+    {
+        return $this->jobWebmState;
+    }
+
+    /**
+     * Set jobMp4State
+     *
+     * @param integer $jobMp4State
+     * @return MediaAudioTranslation
+     */
+    public function setJobMp4State($jobMp4State)
+    {
+        $this->jobMp4State = $jobMp4State;
+
+        return $this;
+    }
+
+    /**
+     * Get jobMp4State
+     *
+     * @return integer 
+     */
+    public function getJobMp4State()
+    {
+        return $this->jobMp4State;
+    }
+
+    /**
+     * Set jobMp4Id
+     *
+     * @param string $jobMp4Id
+     * @return MediaAudioTranslation
+     */
+    public function setJobMp4Id($jobMp4Id)
+    {
+        $this->jobMp4Id = $jobMp4Id;
+
+        return $this;
+    }
+
+    /**
+     * Get jobMp4Id
+     *
+     * @return string 
+     */
+    public function getJobMp4Id()
+    {
+        return $this->jobMp4Id;
+    }
+
+    /**
+     * Set jobWebmId
+     *
+     * @param string $jobWebmId
+     * @return MediaAudioTranslation
+     */
+    public function setJobWebmId($jobWebmId)
+    {
+        $this->jobWebmId = $jobWebmId;
+
+        return $this;
+    }
+
+    /**
+     * Get jobWebmId
+     *
+     * @return string 
+     */
+    public function getJobWebmId()
+    {
+        return $this->jobWebmId;
     }
 }

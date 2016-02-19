@@ -6,6 +6,7 @@ use Sonata\MediaBundle\Provider\FileProvider;
 use Sonata\MediaBundle\Model\MediaInterface;
 
 use Aws\ElasticTranscoder\ElasticTranscoderClient;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class VideoProvider extends FileProvider
 {
@@ -24,13 +25,22 @@ class VideoProvider extends FileProvider
 		//error_log(print_r($media->getClientOriginalName(),true));
 		
 		//error_log(print_r(substr($media->getClientOriginalName(), -3),true));
-		
+
+
+		if ($media->getParentVideoTranslation()) {
+			$parent = $media->getParentVideoTranslation();
+		}
+		elseif ($media->getParentAudioTranslation()) {
+			$parent = $media->getParentAudioTranslation();
+		}
+		else {
+			throw new NotFoundHttpException('Media parent not found.');
+		}
 		$path = $this->generatePublicUrl($media, $media->getProviderReference());
+
 		$file_path = explode('/', $path);
 		$path_video_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 		$path_video_output = 'media_video_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
-		
-		
 
 		//mime_content_type('php.gif');
 		
@@ -62,11 +72,12 @@ class VideoProvider extends FileProvider
 		        ),
 		    ),
 		));
+
 		
 		$jobData = $job->get('Job');
-		$media->setJobMp4Id($jobData['Id']);
-		$media->setJobMp4State(1);
-		
+		$parent->setJobMp4Id($jobData['Id']);
+		$parent->setJobMp4State(1);
+
 		//System preset: Webm 720p ID : 1351620000001-100240
 		$job = $elasticTranscoder->createJob(array(
 		    'PipelineId' => '1454076999739-uy533t',
@@ -89,8 +100,8 @@ class VideoProvider extends FileProvider
 		));
 		
 		$jobData = $job->get('Job');
-		$media->setJobWebmId($jobData['Id']);
-		$media->setJobWebmSstate(1);
+		$parent->setJobWebmId($jobData['Id']);
+		$parent->setJobWebmState(1);
     }
 
     /**
