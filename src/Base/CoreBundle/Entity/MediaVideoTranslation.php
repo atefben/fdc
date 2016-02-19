@@ -35,7 +35,7 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * @var \Application\Sonata\MediaBundle\Entity\Media
      *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="parentVideoTranslation", cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      * @Assert\Valid()
      */
@@ -217,6 +217,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      */
     public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
     {
+        $file->setParentVideoTranslation($this);
         $this->file = $file;
 
         return $this;
