@@ -2,64 +2,102 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-<div id="main" class="all-photos grid loading">
-    <h2 class="title">{{ 'article.photos.title.touteslesvideos'|trans }}</h2>
+    <div id="main" class="all-photos grid loading">
+        <h2 class="title">{{ 'article.photos.title.touteslesvideos'|trans }}</h2>
 
-    {% include 'FDCEventBundle:News:components/filters.html.twig' %}
+        {% include 'FDCEventBundle:News:components/filters.html.twig' %}
 
-    <div id="gridVideos" class="grid-wrapper">
-        <div class="grid-sizer"></div>
+        <div id="gridVideos" class="grid-wrapper">
+            <div class="grid-sizer"></div>
 
-        {% for video in videos %}
-            {% set trans = video.findTranslationByLocale(app.request.locale) %}
-            {% if trans is null or trans.file is null %}
-                {% set trans = video.findTranslationByLocale('fr') %}
-            {% endif %}
-            {% if video.header is not null %}
-                {% set transImage = video.header.findTranslationByLocale(app.request.locale) %}
-                {% if transImage is null %}
-                    {% set transImage = video.header.findTranslationByLocale('fr') %}
+            {% for video in videos %}
+                {% set trans = video.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = video.findTranslationByLocale('fr') %}
                 {% endif %}
-            {% else %}
-                {% set transImage = video.image.findTranslationByLocale(app.request.locale) %}
-                {% if transImage is null or transImage.file is null %}
-                    {% set transImage = video.image.findTranslationByLocale('fr') %}
+                {% if video.header is not null %}
+                    {% set transImage = video.header.findTranslationByLocale(app.request.locale) %}
+                    {% if transImage is null %}
+                        {% set transImage = video.header.findTranslationByLocale('fr') %}
+                    {% endif %}
+                {% else %}
+                    {% set transImage = video.image.findTranslationByLocale(app.request.locale) %}
+                    {% if transImage is null or transImage.file is null %}
+                        {% set transImage = video.image.findTranslationByLocale('fr') %}
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-            <div class="item {{ video.theme|trans_fallback('slug') }} {{ video|trans_fallback('createdAt')|date('d-m-y') }} date theme shadow-bottom video"
-                data-vid="{{ video.id }}"
-                data-file='[{"file":"{%- path trans.file, 'reference' -%}"}]'
-                data-img="{% path transImage.file, '1144x724' %}">
+                <div class="item {{ video.theme|trans_fallback('slug') }} {{ video.publishedAt|date('d-m-y') }} date theme shadow-bottom video"
+                     data-vid="{{ video.id }}"
+                     data-file='[{"file":"{%- path trans.file, 'reference' -%}"}]'
+                     data-img="{% path transImage.file, '1144x724' %}">
 
-
-                {% thumbnail transImage.file , '1144x724' with {'alt': video.image|trans_fallback('alt') } %}
-                <div class="picto"><i class="icon icon_video"></i></div>
-                <div class="info">
-                    <div class="vCenter">
-                        <div class="vCenterKid">
-                            <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a><span class="date">{{ video|trans_fallback('createdAt')|date('d.m.y') }}</span>
-                            <p>{{ video|trans_fallback('title') }}</p>
+                    {% thumbnail transImage.file , '1144x724' with {'alt': video.image|trans_fallback('alt') } %}
+                    <div class="picto"><i class="icon icon_video"></i></div>
+                    <div class="info">
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a><span
+                                        class="date">{{ video.publishedAt|date('d.m.y') }}</span>
+                                <p>{{ video|trans_fallback('title') }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+            {% endfor %}
+            <a id="next" href="videos2.html"></a>
+            <div class="popin-video video loading">
+                <div class="video-container state-init video"
+                     data-facebook="//www.facebook.com"
+                     data-twitter="//www.twitter.com"
+                     data-link="//www.example.com"
+                     data-email="//www.gmail.com"
+                     data-file=''
+                     data-img="">
+                    <div id="video-player-popin" class="">
+                    </div>
+                    <div class="video-overlay"></div>
+                    <div class="infos-bar">
+                        <div class="picto"><i class="icon icon_video"></i></div>
+                        <div class="info">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <a href="#" class="category"></a><span class="date"></span> . <span
+                                            class="hour"></span>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popin-info info">
+                    <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+                    <p></p>
+                </div>
+                <div class="popin-buttons buttons square">
+                    <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+                       rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+                    <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i
+                                class="icon icon_twitter"></i></a>
+                    <a href="#" class="button link"><i class="icon icon_link"></i></a>
+                    <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+                </div>
             </div>
-        {% endfor %}
-
+            <div class="ov"></div>
+        </div>
     </div>
-</div>
 
-<!-- BREADCRUMB -->
-{% include "FDCEventBundle:Global:breadcrumb.html.twig" with
-{"breadcrumb":
-[
+    <!-- BREADCRUMB -->
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
     {
-        "name" : 'header.mainnav.nav.jourapresjour'|trans ,
-        "url"  : path('fdc_event_news_index')
+    "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+    "url"  : path('fdc_event_news_index')
     },
     {
-        "name" : 'header.mainnav.nav.videos'|trans ,
-        "url"  : path('fdc_event_news_getvideos')
+    "name" : 'header.mainnav.nav.videos'|trans ,
+    "url"  : path('fdc_event_news_getvideos')
     },
-]
-} %}
+    ]
+    } %}
 {% endblock %}
