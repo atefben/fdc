@@ -125,14 +125,14 @@ abstract class News implements TranslateMainInterface
     private $associatedEvent;
 
     /**
-     * @ORM\OneToMany(targetEntity="NewsFilmProjectionAssociated", mappedBy="news", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="NewsFilmProjectionAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"news_list", "news_show"})
      */
     private $associatedProjections;
 
     /**
-     * @ORM\OneToMany(targetEntity="NewsFilmFilmAssociated", mappedBy="news", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="NewsFilmFilmAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"news_list", "news_show"})
      */
@@ -141,7 +141,7 @@ abstract class News implements TranslateMainInterface
     /**
      * @var NewsWidget
      *
-     * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="news", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
      * @Groups({"news_list", "news_show"})
@@ -564,6 +564,7 @@ abstract class News implements TranslateMainInterface
      */
     public function addAssociatedNew(\Base\CoreBundle\Entity\NewsNewsAssociated $associatedNews)
     {
+        $associatedNews->setNews($this);
         $this->associatedNews[] = $associatedNews;
 
         return $this;
@@ -676,6 +677,7 @@ abstract class News implements TranslateMainInterface
      */
     public function addAssociatedProjection(\Base\CoreBundle\Entity\NewsFilmProjectionAssociated $associatedProjections)
     {
+        $associatedProjections->setNews($this);
         $this->associatedProjections[] = $associatedProjections;
 
         return $this;
@@ -709,6 +711,7 @@ abstract class News implements TranslateMainInterface
      */
     public function addAssociatedFilm(\Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedFilms)
     {
+        $associatedFilms->setNews($this);
         $this->associatedFilms[] = $associatedFilms;
 
         return $this;

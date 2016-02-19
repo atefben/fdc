@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-02-12T14:40:53Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-02-19T11:33:33Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -277,7 +277,8 @@
       </trans-unit>
       <trans-unit id="acd031e82ae578323e983429369f378b99b309b2" resname="cookie.text.enpoursuivantvotrenaviguationsurnossites">
         <source>cookie.text.enpoursuivantvotrenaviguationsurnossites</source>
-        <target>En poursuivant votre navigation sur nos sites</target>
+        <target><![CDATA[En poursuivant votre navigation sur nos sites,<br/>vous acceptez l'installation et l'utilisation de cookies sur votre poste,
+notamment à des fins promotionnelles et/ou publicitaires, dans le respect de notre politique de protection de votre vie privée.]]></target>
         <jms:reference-file line="5">views/Global/cookies.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="8f67b08483566337a248889d9338e9d1998566be" resname="credits.title.credits">
@@ -1489,6 +1490,14 @@
         <jms:reference-file line="9">views/Movie/classics.html.twig</jms:reference-file>
         <jms:reference-file line="9">views/Movie/selection.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="60bcc98fd33f02ea907e8443574a6255b1649e89" resname="seo.trailer.description">
+        <source>seo.trailer.description</source>
+        <target>Retrouvez toutes les bandes annonces et extraits du film %film_title% présenté au Festival de Cannes 2016</target>
+      </trans-unit>
+      <trans-unit id="70660bc3cfc26ba0e238be2b01433cadafc3b05b" resname="seo.trailer.title">
+        <source>seo.trailer.title</source>
+        <target>Web TV - %film_title% - Bandes annonces et extraits - Festival de Cannes 2016</target>
+      </trans-unit>
       <trans-unit id="86b1771527d4e6a71b967002e1d098954cfb203e" resname="sharemail.btn.envoyer">
         <source>sharemail.btn.envoyer</source>
         <target>Envoyer</target>
@@ -1650,6 +1659,10 @@
         <target>Toutes les chaines</target>
         <jms:reference-file line="22">views/Television/live.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="079ad382c036210830391f21077d2c50c9ed31da" resname="webtv.direct.nb_videos">
+        <source>webtv.direct.nb_videos</source>
+        <target>%nb_videos% vidéos</target>
+      </trans-unit>
       <trans-unit id="7553490587cc50dda61a1f0bae24d3930b42b8f9" resname="webtv.direct.text.videos">
         <source>webtv.direct.text.videos</source>
         <target>Vidéos</target>
@@ -1674,18 +1687,6 @@
         <source>webtv.direct.title.suiveztvfestival</source>
         <target><![CDATA[Suivez <br> TV Festival de Cannes]]></target>
         <jms:reference-file line="10">views/Television/live.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="webtv.direct.nb_videos" resname="webtv.direct.nb_videos">
-        <source>webtv.direct.nb_videos</source>
-        <target>%nb_videos% vidéos</target>
-      </trans-unit>
-      <trans-unit id="seo.trailer.title" resname="seo.trailer.title">
-        <source>seo.trailer.title</source>
-        <target>Web TV - %film_title% - Bandes annonces et extraits - Festival de Cannes 2016</target>
-      </trans-unit>
-      <trans-unit id="seo.trailer.description" resname="seo.trailer.description">
-        <source>seo.trailer.description</source>
-        <target>Retrouvez toutes les bandes annonces et extraits du film %film_title% présenté au Festival de Cannes 2016</target>
       </trans-unit>
     </body>
   </file>
