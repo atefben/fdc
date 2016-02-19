@@ -15,8 +15,8 @@
             </div>
             <h2 class="title-article">{{ news|trans_fallback('title') }}</h2>
             <div class="buttons">
-                <a id="share-article" href="#" class="button">{{ 'article.btn.partager'|trans }}</a>
-                <a href="#" class="button print">{{ 'article.btn.imprimer'|trans }}</a>
+                <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{{ 'article.btn.partager'|trans }}</a>
+                <a href="#" class="button print"><i class="icon icon_print"></i>{{ 'article.btn.imprimer'|trans }}</a>
             </div>
 
             {% if news is news_article %}
@@ -113,9 +113,18 @@
                                             {{ title }}
                                         </a>
                                     </h3>
-                                    {% for director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                        <p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
-                                    {% endfor %}
+									{%if director|length > 1 %}
+										<p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
+									{% else %}
+											<p class="director">
+											{% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+												{%if index < 4 %}
+												<a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>,
+												{% endif %}
+												{%if index == 4 %}...{% endif; %}
+											{% endfor %}
+											</p>
+									{% endif %}
                                     <p>
                                         {% for country in associatedFilm.countries %}
                                             {{ country.country|trans_fallback('name') }}
