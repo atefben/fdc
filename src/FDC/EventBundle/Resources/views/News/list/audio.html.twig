@@ -72,10 +72,12 @@
                 <p></p>
             </div>
             <div class="buttons square">
-                <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
-                   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-                <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i
-                            class="icon icon_twitter"></i></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_event_news_index') }}/{{app.request.uri}}" class="button facebook">
+                    <i class="icon icon_facebook"></i>
+                </a>
+                <a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_news_index') }}/{{app.request.uri}}" class="button twitter">
+                    <i class="icon icon_twitter"></i>
+                </a>
                 <a href="#" class="button link"><i class="icon icon_link"></i></a>
                 <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
             </div>

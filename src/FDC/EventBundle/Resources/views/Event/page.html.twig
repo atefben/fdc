@@ -61,8 +61,12 @@
         <div class="share">
             <p>{{ 'event.text.partagerlarticle'|trans }}</p>
             <div class="buttons square">
-                <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
-                <a href="#" class="button twitter"><i class="icon icon_twitter"></i></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_event_news_index') }}/{{app.request.uri}}" class="button facebook">
+                    <i class="icon icon_facebook"></i>
+                </a>
+                <a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_news_index') }}/{{app.request.uri}}" class="button twitter">
+                    <i class="icon icon_twitter"></i>
+                </a>
                 <a href="#" class="button link"><i class="icon icon_link"></i></a>
                 <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
                 <a href="#" class="button print"><i class="icon icon_print"></i></a>
