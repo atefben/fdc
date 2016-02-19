@@ -23,16 +23,15 @@ class AWSController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $logger = $this->get('logger');
-
-        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobMp4state' => 1));
+        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('jobMp4State' => '1'));
 		foreach($medias as $media) {
-			error_log(print_r($media, true));
+			print_r($media);
 			$this->updateAmazonStatus($media, 'mp4');
 		}
 		
-        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobWebmState' => 1));
+        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobWebmState' => '1'));
 		foreach($medias as $media) {
-			error_log(print_r($media, true));
+			print_r($media);
 			$this->updateAmazonStatus($media, 'webm');
 		}
 		
@@ -53,8 +52,8 @@ class AWSController extends Controller
     public function updateAmazonStatus($media, $mime)
     {
 		// TODO JEAN LUC
-        $media->setImageAmazonUrl('http://');
-        $media->setState(0);
+        // $media->setImageAmazonUrl('http://');
+        // $media->setState(0);
 	}
 	
 }

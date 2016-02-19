@@ -85,7 +85,7 @@
                                             {% if trans is null or trans.file is null %}
                                                 {% set trans = m.mediaVideo.findTranslationByLocale('fr') %}
                                             {% endif %}
-                                                <a href="{{ path('fdc_press_media_trailerdownload', {'id': m.id}) }}" class="button"><i class="icon icon_telecharger"></i> {{ trans.title }}</a>
+                                                <a href="#" class="button trailer-btn" data-film="{{ m.association.id }}"><i class="icon icon_telecharger"></i> {{ trans.title }}</a>
                                         {% endif %}
                                         {% endfor %}
                                     </div>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-02-19T14:21:13Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-02-19T17:12:57Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -618,10 +618,30 @@
         <target>Programme du</target>
         <jms:reference-file line="43">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="6051a9ca23f45057ebf9154bb189e2bdc6377ebd" resname="press.popin.btn.telecharger">
+        <source>press.popin.btn.telecharger</source>
+        <target>Télécharger</target>
+        <jms:reference-file line="42">Global/components/popinDownload.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="99bf23e18e72d5d194cbea350fc019853d9b6131" resname="press.popin.description.chaquefoisquepossiblelesfichiers">
+        <source>press.popin.description.chaquefoisquepossiblelesfichiers</source>
+        <target>Chaque fois que possible, les fichiers mis à disposition seront en HD 1080p. Le Festival reste tributaire de la qualité du matériel qui lui est adressé. 1 à 3 fichiers sont mis à disposition en fonction du fichier source reçu :</target>
+        <jms:reference-file line="28">Global/components/popinDownload.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="00349e4e63fe65bdbeddf1435cb791a497b7f571" resname="press.popin.description.lefestivaldecannesmetadisposition">
+        <source>press.popin.description.lefestivaldecannesmetadisposition</source>
+        <target>Le Festival de Cannes met à disposition de la presse accréditée les bandes-annonces et extraits de films fournis par les productions. Ces contenus sont mis à jour tout au long du Festival. Ce service est fourni pour faciliter le traitement des films sur vos propres médias. Nous vous prions instamment de ne pas les publier sur les réseaux sociaux ou les portails de partage de type Youtube ou Dailymotion sans l’accord des ayants-droits du film.</target>
+        <jms:reference-file line="25">Global/components/popinDownload.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="4da284e5cc19116e4ceda67923ea9cfed2f7a492" resname="press.popin.text.cecontenuestexclusivementreservealapresse">
         <source>press.popin.text.cecontenuestexclusivementreservealapresse</source>
-        <target>Ce contenu est réservé exclusivement à la presse</target>
+        <target>Ce contenu est exclusivement réservé à la presse, veuillez renseigner votre mot de passe.</target>
         <jms:reference-file line="6">Global/components/popinPress.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="939882e45933da6499eac7f915b6029cb7a921b1" resname="press.popin.title.bandeannonces">
+        <source>press.popin.title.bandeannonces</source>
+        <target>Bandes annonces</target>
+        <jms:reference-file line="23">Global/components/popinDownload.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="21162cc41c525cbc6d333c5c6f1e69fa30499613" resname="press.popin.title.contenuverouille">
         <source>press.popin.title.contenuverouille</source>
