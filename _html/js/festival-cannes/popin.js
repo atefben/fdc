@@ -171,7 +171,7 @@ $(document).ready(function() {
 
              $('#share-box').addClass('show');
              setTimeout(function(){
-                   $('#share-box .bubble').html('<a href="#">'+link+'</a>');
+                   $('#share-box .bubble').html('<a href="#">'+document.location.href+'</a>');
              }, 1000);
           });
         }else if($('#share-box').hasClass('show')){
