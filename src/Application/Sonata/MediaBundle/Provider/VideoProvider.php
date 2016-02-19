@@ -105,7 +105,7 @@ class VideoProvider extends FileProvider
 			error_log($path);
 	        $file_path = explode('/', $path);
 	        $path_audio_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
-	        $path_audio_output = 'media_video_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
+	        $path_audio_output = 'media_audio_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 
 	        //System preset: Audio MP3 - 128k : 1351620000001-300040
 	        $job = $elasticTranscoder->createJob(array(
