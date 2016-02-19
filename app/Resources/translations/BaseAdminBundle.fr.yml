@@ -165,6 +165,7 @@ entity:
     gallery: Galeries photos
 
 list:
+    label_programmation_films: Film
     label_header_video: Vidéo principale
     label_title_video: Titre
     label_parent: Parent
@@ -230,7 +231,7 @@ list:
         label_id: Id
         label_title_video: Titre de la vidéo
         label_web_tv: Chaîne
-        label_encoding_state: Encodage (en attent, en cours, prêt)
+        label_encoding_state: Encodage
     media_audio:
         label_published_at: Publié le
     media_image_simple:
@@ -240,6 +241,9 @@ list:
         label_id: Id
     news_common:
         label_title: Titre de l'actualité
+        translation_pending: En attente de traduction
+        translation_validating: Traduction à valider
+        translated: Traduit
 
 filter:
     label_position: Position
@@ -291,6 +295,7 @@ filter:
     label_updated_at: Mis à jour le
     label_name: Nom
     label_alt: Alt de l'image
+    label_format: Formats
     label_created_before: Créé avant le
     label_created_after: Créé après le
     label_web_tv_name: Nom de la chaîne
@@ -516,8 +521,8 @@ form:
     gallery:
         medias: Médias
     encoding_state:
-        pending: En attente
         in_progress: En cours
+        error: Erreur
         ready: Prêt
 
     web_tv:
@@ -603,13 +608,64 @@ nav:
     site_modal: Ouvrir la sélection des sites
 
 show:
-    label_position: Position
+    label_programmation_films: Film
+    label_header_video: Vidéo principale
+    label_title_video: Titre
     label_parent: Parent
+    label_position: Position
     label_route: Route
     label_enabled: Actif
-    label_id: Id
-    label_created_at: Créé le
+    label_starts_at: Date de début
+    label_ends_at: Date de fin
+    label_type: Type
+    label_programmation_section: Section de programmation
+    label_iso: ISO
+    label_budget_estimation : Budget Estimé
+    label_filming_date: Date filmé
+    label_filming_place: Lieu du film
+    label_session_name: Nom de la session
+    label_budget_acquired: Budget acquis
+    label_cinando_url: Url Cinando
+    label_lastname: Nom
+    label_firstname: Prénom
+    label_asian_name: Nom asiatique
+    label_nationality: Nationalité
+    label_nationality2: Nationalité 2
+    label_director_first: Premier film du directeur
+    label_restored: Film restauré
+    label_title_v_o: Titre VO
+    label_title_v_o_alphabet: Titre Alphabet VO
+    label_production_year: Année de production
+    label_duration: Durée
+    label_casting_commentary: Commentaire du casting
+    label_soif_updated_at: Mise à jour SOIF le
+    label_website: Site web
+    label_id: Identifiant
+    label_title: Titre
+    label_name: Nom
+    label_theme: Thème
+    label_status: Statut
+    label_status_main: Statut
+    label_type: Type
+    label_created_at: Date de création
     label_updated_at: Mis à jour le
+    label_published_interval: Date(s) de publication
+    label__action: Actions
+    label_theme_name: Nom du thème
+    label_priority_status: Priorité
+    label__preview: Prévisualiser
+    label__edit_translations: Éditer
+    label_social_wall_content_none: Pas d'image
+    label_legend_img: Légende de l'image
+    label_url: Lien
+    label_network: Réseau Social
+    label_content: Contenu
+    label_message: Message
+    label_enabled_mobile: Visible sur mobile
+    label_enabled_desktop: Visible sur le site
+    label_alt: Alt de l'image
+    label_web_tv_name: Nom de la chaîne
+    label_title_audio: Titre de l'audio
 
 FDCPageWebTvChannels: Page WebTV - Les chaînes
 FDCPageWebTvLive: Accueil WebTV

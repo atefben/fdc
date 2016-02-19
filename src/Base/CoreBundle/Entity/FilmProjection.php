@@ -163,6 +163,17 @@ class FilmProjection
         $this->medias = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        if ($this->getId() && $this->getProgrammationFilms()->count() > 0 &&
+            $this->getProgrammationFilms()->get(0)->getFilm() !== null) {
+            return $this->getProgrammationFilms()->get(0)->getFilm()->getTitleVo();
+        }
+
+        return '';
+    }
+
+
     /**
      * Get id
      *

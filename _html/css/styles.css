@@ -5010,6 +5010,7 @@ footer .footer-menu ul li a:hover {
   left: 0;
   visibility: hidden;
   width: 100%;
+  height: 100%;
   -moz-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -5018,7 +5019,7 @@ footer .footer-menu ul li a:hover {
 .slideshow .slideshow-img .images .img img {
   display: block;
   margin: 0 auto;
-  max-width: 100%;
+  height: 100%;
   pointer-events: none;
   -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -8814,9 +8815,9 @@ header #searchContainer {
   color: #c8a461;
 }
 .article .picto .icon {
-  margin-left: 17px;
-  margin-top: 17px;
-  font-size: .7rem;
+    font-size: 1rem;
+    margin-top: 14px;
+    margin-left: 14px;
 }
 
 .video .picto {

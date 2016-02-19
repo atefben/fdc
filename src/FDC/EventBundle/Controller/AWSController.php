@@ -24,6 +24,11 @@ class AWSController extends Controller
         $em = $this->getDoctrine()->getManager();
         $logger = $this->get('logger');
         $jobId = 1;
+		
+		//setJobWebmId
+		//setJobMp4Id
+		//setJobMp4State
+		//setJobWebmSstate
 
         $media = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneByJob($jobId);
         if ($media === null) {
