@@ -54,9 +54,8 @@ class VideoProvider extends FileProvider
 		));
 		
 		$jobData = $job->get('Job');
-		$jobId = $jobData['Id'];
-		//TODO MATDAC
-		
+		$media->setJobMp4Id($jobData['Id']);
+		$media->setJobMp4State(1);
 		
 		//System preset: Webm 720p ID : 1351620000001-100240
 		$job = $elasticTranscoder->createJob(array(
@@ -80,8 +79,8 @@ class VideoProvider extends FileProvider
 		));
 		
 		$jobData = $job->get('Job');
-		$jobId = $jobData['Id'];
-  	  	//TODO MATDAC
+		$media->setJobWebmId($jobData['Id']);
+		$media->setJobWebmSstate(1);
     }
 
     /**
