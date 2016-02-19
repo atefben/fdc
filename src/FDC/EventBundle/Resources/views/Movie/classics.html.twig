@@ -123,8 +123,12 @@
                     <div class="share">
                         <p>{{ 'cannesclassics.btn.partagerlarticle'|trans }}</p>
                         <div class="buttons square">
-                            <a href="#" class="button facebook"></a>
-                            <a href="#" class="button twitter"></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" class="button facebook">
+
+							</a>
+							<a href="https://twitter.com/intent/tweet?url={{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" class="button twitter">
+
+							</a>
                             <a href="#" class="button link"></a>
                             <a href="#" class="button email"></a>
                             <a href="#" class="button print"></a>
