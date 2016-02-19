@@ -109,7 +109,7 @@ class VideoProvider extends FileProvider
 
 	        //System preset: Audio MP3 - 128k : 1351620000001-300040
 	        $job = $elasticTranscoder->createJob(array(
-	            'PipelineId'      => '1454076999739-uy533t',
+	            'PipelineId'      => '1455903590532-u7lwud',
 	            'OutputKeyPrefix' => $path_audio_output,
 	            'Input'           => array(
 	                'Key'         => $path_audio_input . $file_name,
