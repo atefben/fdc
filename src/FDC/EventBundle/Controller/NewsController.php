@@ -260,12 +260,16 @@ class NewsController extends Controller {
         $date = new DateTime();
         $dateTime = $date->setTimestamp($timestamp);
         $count = 6;
+        $countNext = 2;
 
         $endOfArticles = false;
         $homeArticles = $em->getRepository('BaseCoreBundle:News')->getOlderNewsButSameDay($locale, $this->getFestival()->getId(), $dateTime , $count);
 
         if (sizeof($homeArticles) < $count || $homeArticles == null){
             $endOfArticles = true;
+            $dateTimeNext = $dateTime->modify('-1 day');
+            $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext , $countNext);
+
         }
 
         if ($nextDay == true && $homeArticles == null) {
