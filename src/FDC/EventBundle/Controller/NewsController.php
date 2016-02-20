@@ -368,13 +368,7 @@ class NewsController extends Controller {
         $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
 
         print_r(array(
-            'localeSlugs' => $localeSlugs,
-            'focusArticles' => $focusArticles,
-            'programmations' => $programmations,
-            'associatedFilmDuration' => $associatedFilmDuration,
             'news' => $news,
-            'associatedFilm' => $associatedFilm,
-            'sameDayArticles' => $sameDayArticles
         ));
         
 
