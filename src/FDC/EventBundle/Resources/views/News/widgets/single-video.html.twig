@@ -19,7 +19,7 @@
     {% set image = file.image.file %}
 {% endif %}
 
-<div class="video-container state-init video"
+<div class="video-container video-single state-init video"
      data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
      data-twitter="//www.twitter.com"
      data-link="//www.example.com"
@@ -28,10 +28,8 @@
      data-playlist='{{ playlist }}'
     {% else %}
      data-file='[{"file":"{% path trans.file, 'reference' %}"}]'
-    {% endif %}"
-    data-img="{% if image is defined and image is not null %}{% path image, 'reference' %}{% endif %}"
->
-
+    {% endif %}
+    data-img="{% if image is defined and image is not null %}{% path image, 'reference' %}{% endif %}">
     <div id="video-player-{{ trans.id }}" class="video-player">
     </div>
     <div class="video-overlay"></div>
@@ -40,7 +38,7 @@
         <div class="info">
             <div class="vCenter">
                 <div class="vCenterKid">
-                    <a href="{% path trans.file, 'reference' %}" class="category">{{ news.video.theme|trans_fallback('name') }}</a>
+                    <a href="#" class="category">{{ news.video.theme|trans_fallback('name') }}</a>
                     <span class="date">{{ news.video.theme|trans_fallback('createdAt')|date('d.m.Y') }}</span> . <span class="hour">{{ news.video.theme|trans_fallback('createdAt')|date('H:i') }}</span>
                     <p>{{ trans.title }}</p>
                 </div>
@@ -48,3 +46,4 @@
         </div>
     </div>
 </div>
+{{ dump(trans) }}
