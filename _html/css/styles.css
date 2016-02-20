@@ -12077,10 +12077,6 @@ article .read-later.rAlign span:after {
 .all-articles .item {
   height: 305px;
 }
-.all-articles .item:hover .img .read-later {
-  opacity: 1;
-  visibility: visible;
-}
 .all-articles .item .img {
   margin: 0 auto 23px auto;
   height: auto;

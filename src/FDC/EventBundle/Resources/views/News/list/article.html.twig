@@ -13,7 +13,7 @@
 
         {% for article in articles %}
             <div class="item {{ article.theme|trans_fallback('slug') }} {{ article.publishedAt|date('d-m-y') }} article">
-                <article class="article">
+                <article class="article" data-format="article">
                     <div class="img">
                         <span class="picto">
                             <i class="icon icon_article"></i>
