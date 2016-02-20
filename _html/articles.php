@@ -16,8 +16,8 @@
           <span class="label">Dates :</span>
           <span class="select">
             <span class="active" data-filter="all">Toutes</span><i class="icon icon_fleche-down"></i>
-            <span data-filter="date">Date 1</span>
-            <span data-filter="date1">Date 2</span>
+            <span data-filter="date1">Date 1</span>
+            <span data-filter="date2">Date 2</span>
           </span>
         </div>
         <div id="format" class="filter">
@@ -49,7 +49,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date article">
+        <div class="item theme2 date1 date article">
           <article class="article">
             <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
@@ -76,7 +76,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 theme article">
+        <div class="item theme2 date1 theme article">
           <article class="article">
             <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
@@ -139,7 +139,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 theme article">
+        <div class="item theme2 date1 theme article">
           <article class="article">
             <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
             <div class="info">
@@ -148,7 +148,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 theme article">
+        <div class="item theme2 date1 theme article">
           <article class="article">
             <div class="img"><span class="picto"><i class="icon icon_article"></i></span><a href="article.php"><img src='img/articles/01.jpg' /></a><a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>Ajouter à ma sélection</span></a></div>
             <div class="info">

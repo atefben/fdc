@@ -19,7 +19,7 @@ $(document).ready(function() {
       $art.find('article').data('format', selectionCookie[i].format);
       $art.find('article').data('theme', selectionCookie[i].theme);
       $art.find('img').attr('src', selectionCookie[i].img);
-      $art.find('.linkImage').attr('href', selectionCookie[i].link);
+      $art.find('.info a:not(".category")').attr('href', selectionCookie[i].link);
       $art.find('.category').text(selectionCookie[i].category);
       $art.find('.date').text(selectionCookie[i].date);
       $art.find('.hour').text(selectionCookie[i].hour);
@@ -258,7 +258,7 @@ $(document).ready(function() {
       'format': $articleEl.data('format'),
       'theme': $articleEl.data('theme'),
       'img': $articleEl.find('img').attr('src'),
-      'link': $articleEl.find('.linkImage').attr('href'),
+      'link': $articleEl.find('.info a:not(".category")').attr('href'),
       'category': $articleEl.find('.category').text(),
       'date': $articleEl.find('.date').text(),
       'hour': $articleEl.find('.hour').text(),
