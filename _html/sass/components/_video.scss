@@ -490,17 +490,33 @@
     width: 100vw !important;
     height: 100vh !important;
     margin: 0 !important;
+
+    &.state-init {
+      .top-bar {
+        opacity: 0;
+        @include transform(translateY(-100%));
+      }
+    }
+
+    &.state-complete { //.jw-state-complete, :not(.jw-state-playing)
+      &>.top-bar {
+        opacity: 1;
+        @include transform(translateY(0%));
+      }
+    }
+
+    .jw-state-paused {
+      &+.top-bar {
+        opacity: 1;
+        @include transform(translateY(0%));
+      }
+    }
   }
   
   &.state-init {
     .control-bar {
       opacity: 0;
       @include transform(translateY(100%));
-    }
-
-    .top-bar {
-      opacity: 0;
-      @include transform(translateY(-100%));
     }
 
     &:hover {
@@ -511,11 +527,6 @@
   }
 
   &.state-complete { //.jw-state-complete, :not(.jw-state-playing)
-    &>.top-bar {
-      opacity: 1;
-      @include transform(translateY(0%));
-    }
-
     &>.control-bar {
       opacity: 1;
       @include transform(translate(0,0));
@@ -559,7 +570,7 @@
   }
 
   .jw-state-paused {
-      &:before {
+    &:before {
       content: '';
       background: #000;
       display: block;
@@ -576,12 +587,6 @@
     &.overlay-channels:before {
       opacity: 0.8;
       visibility: visible;
-    }
-
-
-    &+.top-bar {
-      opacity: 1;
-      @include transform(translateY(0%));
     }
 
     &~.control-bar {

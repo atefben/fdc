@@ -66,6 +66,11 @@ $(document).ready(function() {
   });
 
   
+  if($('#articles-wrapper .nextDay').length > 0) {
+    $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+    $('#shd').addClass('show');
+  }
+
   $('.read-more').hover(function() {
     if(!$(this).hasClass('prevDay')) {
       $('#shdMore').addClass('show');
@@ -142,7 +147,7 @@ $(document).ready(function() {
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').prop('scrollHeight'));
           filter();
 
-          if('#articles-wrapper .nextDay') {
+          if($('#articles-wrapper .nextDay').length > 0) {
             $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
             
             setTimeout(function() {
