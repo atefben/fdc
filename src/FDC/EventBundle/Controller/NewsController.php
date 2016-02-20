@@ -229,21 +229,6 @@ class NewsController extends Controller {
         );
     }
 
-    function createDateRangeArray($strDateFrom,$strDateTo)
-    {
-        $aryRange=array();
-        $iDateFrom=mktime(1,0,0,substr($strDateFrom,5,2),substr($strDateFrom,8,2),substr($strDateFrom,0,4));
-        $iDateTo=mktime(1,0,0,substr($strDateTo,5,2),substr($strDateTo,8,2),substr($strDateTo,0,4));
-        if ($iDateTo>=$iDateFrom) {
-            array_push($aryRange,date('Y-m-d',$iDateFrom));
-            while ($iDateFrom<$iDateTo) {
-                $iDateFrom+=86400;
-                array_push($aryRange,date('Y-m-d',$iDateFrom));
-            }
-        }
-        return array_reverse($aryRange);
-    }
-
     /**
      * @Route("/homepage-articles")
      * @Template("FDCEventBundle:News:widgets/article-home-ajax.html.twig")
@@ -381,6 +366,19 @@ class NewsController extends Controller {
         $count           = 3;
         $newsDate        = $news->getPublishedAt();
         $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
+
+        print_r(array(
+            'localeSlugs' => $localeSlugs,
+            'focusArticles' => $focusArticles,
+            'programmations' => $programmations,
+            'associatedFilmDuration' => $associatedFilmDuration,
+            'news' => $news,
+            'associatedFilm' => $associatedFilm,
+            'sameDayArticles' => $sameDayArticles
+        ));
+        
+
+        die();
 
         return array(
             'localeSlugs' => $localeSlugs,
@@ -644,4 +642,25 @@ class NewsController extends Controller {
         return $partition;
     }
 
+
+    /**
+     * retur an array of days
+     * 
+     * @param  date $strDateFrom
+     * @param  date $strDateTo 
+     * @return array
+     */
+    private function createDateRangeArray($strDateFrom,$strDateTo) {
+        $aryRange=array();
+        $iDateFrom=mktime(1,0,0,substr($strDateFrom,5,2),substr($strDateFrom,8,2),substr($strDateFrom,0,4));
+        $iDateTo=mktime(1,0,0,substr($strDateTo,5,2),substr($strDateTo,8,2),substr($strDateTo,0,4));
+        if ($iDateTo>=$iDateFrom) {
+            array_push($aryRange,date('Y-m-d',$iDateFrom));
+            while ($iDateFrom<$iDateTo) {
+                $iDateFrom+=86400;
+                array_push($aryRange,date('Y-m-d',$iDateFrom));
+            }
+        }
+        return array_reverse($aryRange);
+    }
 }
