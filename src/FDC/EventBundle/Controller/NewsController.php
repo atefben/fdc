@@ -367,10 +367,9 @@ class NewsController extends Controller {
         $newsDate        = $news->getPublishedAt();
         $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
 
-        print_r(array(
-            'news' => $news,
-        ));
-        
+        echo '<pre>';
+        \Doctrine\Common\Util\Debug::dump($news);
+        echo '</pre>';
 
         die();
 
