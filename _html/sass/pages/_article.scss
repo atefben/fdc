@@ -349,6 +349,7 @@ article {
     text-align: center;
     .photo-container {
       display: inline-block;
+      width: 100%;
     }
     img {
       display: block;
@@ -573,7 +574,7 @@ article {
     width: 630px;
   }
   .video-container {
-    margin: 0 auto 70px;
+    margin: 65px auto 70px;
     width: 630px;
   }
   .share {
@@ -623,7 +624,7 @@ article {
         float: right;
         height: 100%;
         margin-right: 85px;
-        max-width: 470px;
+        max-width: 398px;
         .category {
           font-family: $CamphorBold;
           font-size: 0.750rem;

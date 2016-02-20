@@ -1,5 +1,5 @@
 
-<article class="article {{isDouble}} {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-time="{{ article.publishedAt|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-end="{{ endOfArticles }}">
+<article class="{{ article.newsType|get_news_type  }} {{isDouble}} {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-time="{{ article.publishedAt|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-end="{{ endOfArticles }}">
     <div class="image">
         <div class="image-wrapper">
             {% if article is news_article %}
