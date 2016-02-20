@@ -8,6 +8,8 @@
     <div id="canvasloader" class="canvasloader"></div>
     <div class="content-article">
         <div class="container{% if news is news_article %} small-container{% elseif news is news_audio %}{% elseif news is news_video %}{% elseif news is news_image %}{% endif %}">
+            <a href="#" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
+            <a href="#" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
             <div class="info">
                 <a href="#" class="category">{{ news.theme|trans_fallback('name') }}</a>
                 <span class="date">{{ news.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ news.createdAt|date('H:i') }}</span>
