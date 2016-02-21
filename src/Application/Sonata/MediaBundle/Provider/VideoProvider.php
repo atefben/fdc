@@ -67,6 +67,7 @@ class VideoProvider extends FileProvider
             ));
 
             $parentVideo->setJobMp4Id($job->get('Job')['Id']);
+			$parentVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
             $parentVideo->setJobMp4State(1);
 
 
@@ -91,6 +92,7 @@ class VideoProvider extends FileProvider
                 ),
             ));
             $parentVideo->setJobWebmId($job->get('Job')['Id']);
+			$parentVideo->setWebmURL($path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name));
             $parentVideo->setJobWebmState(1);
 			
         } elseif (isset($parentAudio)) {

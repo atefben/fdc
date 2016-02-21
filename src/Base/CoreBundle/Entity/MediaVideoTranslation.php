@@ -303,7 +303,6 @@ class MediaVideoTranslation implements TranslateChildInterface
      */
     public function setWebmURL($webmUrl)
     {
-		error_log($webmUrl);
         $this->webmUrl = $webmUrl;
 
         return $this;
@@ -327,8 +326,6 @@ class MediaVideoTranslation implements TranslateChildInterface
      */
     public function setMp4Url($mp4Url)
     {
-		
-		error_log($mp4Url);
         $this->mp4Url = $mp4Url;
 
         return $this;
