@@ -367,12 +367,9 @@ class NewsController extends Controller {
         $newsDate        = $news->getPublishedAt();
         $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
 		
-        //get prev article TODO
-        $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
+        $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getOlderNews($locale, $this->getFestival()->getId() , $news->getId());
+        $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getNextNews($locale, $this->getFestival()->getId() , $news->getId());
 		
-        //get next article TODO
-        $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
-
         return array(
             'localeSlugs' => $localeSlugs,
             'focusArticles' => $focusArticles,
