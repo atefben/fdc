@@ -89,6 +89,7 @@ $(document).ready(function() {
       $('#shd').removeClass('show');
       $('.read-more').html( GLOBALS.texts.readMore.more ).removeClass('prevDay');
       $('#articles-wrapper').addClass('loading');
+      $('#articles-wrapper').css('max-height', 'none')
       
       $('html, body').animate({
         scrollTop: $("#news").offset().top - 50
