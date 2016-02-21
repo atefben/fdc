@@ -17,7 +17,7 @@
                     {% set trans = photo.findTranslationByLocale('fr') %}
                 {% endif %}
                 <a id="photo1" class="ajax chocolat-image" href="{% path trans.file , 'reference' %}"
-                   title='<span class="category">{{ photo.theme }}</span><span class="date">{{ photo|trans_fallback('createdAt')|date('d.m.y') }}</span><h2>{{ photo|trans_fallback('legend') }}</h2>'
+                   title='<span class="category">{{ photo.theme }}</span><span class="date">{{ photo|trans_fallback('publishAt')|date('d.m.y') }}</span><h2>{{ photo|trans_fallback('legend') }}</h2>'
                    data-credit="{{ photo.copyright }}"></a>
                 {% thumbnail trans.file , '1144x724' with {'alt': photo|trans_fallback('alt') } %}
                 <div class="picto">

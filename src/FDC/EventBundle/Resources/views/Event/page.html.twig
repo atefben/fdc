@@ -9,7 +9,7 @@
             <a href="{{ path('fdc_event_event_get', {'slug': article.next.slug}) }}" class="nav next"><i class="icon icon_fleche-right"></i></a>
             <div class="info">
                 <a href="#" class="category">{{ article.theme }}</a>
-                <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
+                <span class="date">{{ article.publishAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishAt|date('H:i') }}</span>
                 <span class="update">{{ 'event.single.label.miseajour'|trans }}</span>
                 <span class="date">{{ article.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.updatedAt|date('H:i') }}</span>
             </div>
@@ -72,7 +72,7 @@
 
     {{ render(controller('FDCEventBundle:Global:shareEmail',
     {'section': article.theme,
-        'detail': article.createdAt|date('d.m.y'),
+        'detail': article.publishAt|date('d.m.y'),
         'title': article.title,
         'description': article.introduction
     }))

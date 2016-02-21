@@ -198,7 +198,7 @@
 <!-- POPIN MAIL SHARE ---->
 {{ render(controller('FDCEventBundle:Global:shareEmail',
    {'section': news.theme|trans_fallback('name'),
-    'detail': news.createdAt|date('d.m.y'),
+    'detail': news.publishAt|date('d.m.y'),
     'title': news|trans_fallback('title'),
     'description': news|trans_fallback('introduction')|raw
    }))
