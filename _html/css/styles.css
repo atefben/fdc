@@ -10220,12 +10220,12 @@ article .read-later.rAlign span:after {
 .single-article.single-actualite .small-container {
   width: 977px;
 }
-.single-article.single-actualite .small-container div {
-  width: 730px;
+.single-article.single-actualite .small-container > div {
+  width: 630px;
   margin-left: auto;
   margin-right: auto;
 }
-.single-article.single-actualite .small-container div.single-photo, .single-article.single-actualite .small-container div.chapeau {
+.single-article.single-actualite .small-container > div.single-photo, .single-article.single-actualite .small-container > div.chapeau {
   width: 100%;
 }
 .single-article .print {

@@ -291,8 +291,8 @@ article {
     .small-container {
       width: 977px;
 
-      div {
-        width: 730px;
+      > div {
+        width: 630px;
         margin-left: auto;
         margin-right: auto;
 
