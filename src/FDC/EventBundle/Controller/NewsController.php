@@ -272,10 +272,35 @@ class NewsController extends Controller {
         }
         array_pop($homeArticles);
 
+        //set default filters
+        $filters                         = array();
+        $filters['format'][0]            = 'all';
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['id'][0]      = 'all';
+
+        foreach ($homeArticles as $key => $homeArticle) {
+            $homeArticle->theme = $homeArticle->getTheme();
+
+            if(($key % 3) == 0){
+                $homeArticle->double = true;
+            }
+
+            if (!in_array($homeArticle->getTheme()->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][]      = $homeArticle->getTheme()->getId();
+                $filters['themes']['content'][] = $homeArticle->getTheme();
+            }
+        }
+
+        if(!empty($homeArticles)) {
+            $format = $homeArticles[0]->getTypes();
+            $filters['format'] = array_merge($filters['format'], array_values($format));
+        }
+
         return array(
             'endOfArticles'    => $endOfArticles,
             'homeArticles'     => $homeArticles,
-            'homeArticlesNext' => $homeArticlesNext
+            'homeArticlesNext' => $homeArticlesNext,
+            'filters'          => $filters
         );
     }
 
