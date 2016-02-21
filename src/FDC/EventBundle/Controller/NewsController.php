@@ -104,18 +104,23 @@ class NewsController extends Controller {
          /////////////////////////       ARTICLE HOME         ///////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////
 
-        $count = 6;
-        $countArticles = 0;
+        $count = 7;
         $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime , $count);
 
         while (count($homeArticles) === 0 && $dateTime > $festivalStart) {
             $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime->modify('-1 day'), $count);
         }
 
+        $countNext = 2;
         $endOfArticles = false;
+        $homeArticlesNext = false;
+
         if(sizeof($homeArticles) < $count || $homeArticles == null){
             $endOfArticles = true;
+            $dateTimeNext = $dateTime->modify('-1 day');
+            $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext , $countNext);
         }
+        array_pop($homeArticles);
 
         //set default filters
         $filters                         = array();
@@ -209,23 +214,24 @@ class NewsController extends Controller {
         );
 
         return array(
-            'homepage' => $homepage,
-            'socialGraph' => $socialGraph,
-            'homeArticles' => $homeArticles,
+            'homepage'           => $homepage,
+            'socialGraph'        => $socialGraph,
+            'homeArticles'       => $homeArticles,
             'homeArticlesBottom' => $homeArticlesBottom,
             'homeArticlesSlider' => $homeArticlesSlider,
+            'homeArticlesNext'   => $homeArticlesNext
             'displayHomeSlider'  => $displayHomeSlider,
-            'homeSlider' => $homeSlider,
-            'festivalStart' => strtotime($festivalStart->format('Y-m-d')),
-            'festivalEnd' => strtotime($festivalEnd->format('Y-m-d')),
-            'festivalInterval' => $festivalInterval,
-            'filters' => $filters,
-            'videos' => $videos,
-            'channels' => $channels,
-            'films' => $films,
-            'endOfArticles' => $endOfArticles,
+            'homeSlider'         => $homeSlider,
+            'festivalStart'      => strtotime($festivalStart->format('Y-m-d')),
+            'festivalEnd'        => strtotime($festivalEnd->format('Y-m-d')),
+            'festivalInterval'   => $festivalInterval,
+            'filters'            => $filters,
+            'videos'             => $videos,
+            'channels'           => $channels,
+            'films'              => $films,
+            'endOfArticles'      => $endOfArticles,
             // TODO: clean this
-            'wallPosts' => $wallPosts
+            'wallPosts'          => $wallPosts
         );
     }
 
@@ -244,7 +250,7 @@ class NewsController extends Controller {
 
         $date = new DateTime();
         $dateTime = $date->setTimestamp($timestamp);
-        $count = 6;
+        $count = 7;
         $countNext = 2;
 
         $endOfArticles = false;
@@ -262,11 +268,11 @@ class NewsController extends Controller {
             $dateTimeNext = $dateTime->modify('-1 day');
             $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext , $countNext);
         }
-
+        array_pop($homeArticles);
 
         return array(
-            'endOfArticles' => $endOfArticles,
-            'homeArticles' => $homeArticles,
+            'endOfArticles'    => $endOfArticles,
+            'homeArticles'     => $homeArticles,
             'homeArticlesNext' => $homeArticlesNext
         );
     }
@@ -374,15 +380,15 @@ class NewsController extends Controller {
         $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
 
         return array(
-            'localeSlugs' => $localeSlugs,
-            'focusArticles' => $focusArticles,
-            'programmations' => $programmations,
+            'localeSlugs'            => $localeSlugs,
+            'focusArticles'          => $focusArticles,
+            'programmations'         => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,
-            'news' => $news,
-			'prev' => $prevArticlesURL,
-			'next' => $nextArticlesURL,
-            'associatedFilm' => $associatedFilm,
-            'sameDayArticles' => $sameDayArticles
+            'news'                   => $news,
+            'prev'                   => $prevArticlesURL,
+            'next'                   => $nextArticlesURL,
+            'associatedFilm'         => $associatedFilm,
+            'sameDayArticles'        => $sameDayArticles
         );
     }
 
@@ -447,7 +453,7 @@ class NewsController extends Controller {
 
         return array(
             'articles' => $newsArticles,
-            'filters' => $filters
+            'filters'  => $filters
         );
     }
 
@@ -504,7 +510,7 @@ class NewsController extends Controller {
         }
 
         return array(
-            'photos' => $photos,
+            'photos'  => $photos,
             'filters' => $filters
         );
     }
@@ -556,7 +562,7 @@ class NewsController extends Controller {
         }
 
         return array(
-            'videos' => $videos,
+            'videos'  => $videos,
             'filters' => $filters
         );
 
@@ -610,7 +616,7 @@ class NewsController extends Controller {
         }
 
         return array(
-            'audios' => $audios,
+            'audios'  => $audios,
             'filters' => $filters,
         );
     }

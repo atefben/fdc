@@ -109,18 +109,18 @@
                                             {{ title }}
                                         </a>
                                     </h3>
-									{%if director|length > 1 %}
-										<p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
-									{% else %}
-											<p class="director">
-											{% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-												{%if index < 4 %}
-												<a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>,
-												{% endif %}
-												{%if index == 4 %}...{% endif %}
-											{% endfor %}
-											</p>
-									{% endif %}
+                                    {%if director|length > 1 %}
+                                        <p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
+                                    {% else %}
+                                            <p class="director">
+                                            {% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                {%if index < 4 %}
+                                                <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>,
+                                                {% endif %}
+                                                {%if index == 4 %}...{% endif %}
+                                            {% endfor %}
+                                            </p>
+                                    {% endif %}
                                     <p>
                                         {% for country in associatedFilm.countries %}
                                             {{ country.country|trans_fallback('name') }}
