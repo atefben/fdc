@@ -10652,6 +10652,13 @@ article .read-later.rAlign span:after {
   position: absolute;
   width: 27px;
 }
+.single-article .film .info-film + .programmation-film .wrapper {
+  color: #fff;
+  height: 100%;
+  float: left;
+  margin-left: 85px;
+  max-width: 470px;
+}
 .single-article .film .programmation-film {
   background-color: #141414;
   float: left;
@@ -10662,9 +10669,9 @@ article .read-later.rAlign span:after {
 .single-article .film .programmation-film .wrapper {
   color: #fff;
   height: 100%;
-  float: left;
-  margin-left: 85px;
-  max-width: 470px;
+  float: right;
+  margin-right: 85px;
+  max-width: 398px;
 }
 .single-article .film .programmation-film .wrapper .category {
   color: #c8a461;

@@ -802,7 +802,18 @@ article {
           }
         }
       }
+
+      &+ .programmation-film {
+        .wrapper {
+          color: #fff;
+          height: 100%;
+          float: left;
+          margin-left: 85px;
+          max-width: 470px;
+        }
+      }
     }
+
 
     .programmation-film {
       background-color: #141414;
@@ -814,9 +825,9 @@ article {
       .wrapper {
         color: #fff;
         height: 100%;
-        float: left;
-        margin-left: 85px;
-        max-width: 470px;
+        float: right;
+        margin-right: 85px;
+        max-width: 398px;
 
         .category {
           color: $gold;
