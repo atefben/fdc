@@ -138,6 +138,7 @@ $(document).ready(function() {
             $(window).trigger('resize');
 
             if($('#articles-wrapper .nextDay').length > 0) {
+              alert('ok');
               $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
               
               setTimeout(function() {
