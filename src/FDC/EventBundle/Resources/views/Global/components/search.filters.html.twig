@@ -8,8 +8,8 @@
                 {{ 'search.result.filter.toutes'|trans }}
             </span>
             {% for date in searchFilters.date %}
-                <span data-filter="{{ date.publishAt|date('dmY') }}">
-                    {{ date.publishAt|localizeddate('long', 'none', app.request.locale) }}
+                <span data-filter="{{ date|trans_fallback('publishAt')|date('dmY') }}">
+                    {{ date|trans_fallback('publishAt')|localizeddate('long', 'none', app.request.locale) }}
                 </span>
             {% endfor %}
         </span>

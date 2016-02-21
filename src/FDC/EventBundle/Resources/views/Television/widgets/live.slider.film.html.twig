@@ -16,8 +16,8 @@
             <div class="vCenter">
                 <div class="vCenterKid">
                     <a href="" class="category">{{ video.theme }}</a><span
-                            class="date">{{ video.publishAt|date('d.m.Y') }}</span> . <span
-                            class="hour">{{ video.publishAt|date('d.m.Y') }}</span>
+                            class="date">{{ video|trans_fallback('publishAt')|date('d.m.Y') }}</span> . <span
+                            class="hour">{{ video|trans_fallback('publishAt')|date('H.i') }}</span>
                     <a href="#" class="titleLink">{{ video|trans_fallback('title') }}</a>
                 </div>
             </div>

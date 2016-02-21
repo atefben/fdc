@@ -9,7 +9,7 @@
                         <a id="photo-{{ photo.id }}"
                            class="chocolat-image ajax"
                            href="{{ photo.image.path }}"
-                           title='<span class="category">{{ photo.theme }}</span><span class="date">{{ photo.publishAt|date('d.m.y') }}</span><h2>{{ photo.title }}</h2>'
+                           title='<span class="category">{{ photo.theme }}</span><span class="date">{{ photo|trans_fallback('publishAt')|date('d.m.y') }}</span><h2>{{ photo.title }}</h2>'
                            data-credit="{{ photo.copyright }}">
                             <img src="{{ photo.image.path }}" alt="" />
                         </a>
