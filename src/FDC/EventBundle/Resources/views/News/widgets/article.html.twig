@@ -39,7 +39,7 @@
                     {% set img = article.video.image %}
                     {% set file = trans.file %}
                 {% endif %}
-                {% if file is defined and imageTrans.file is not null %}
+                {% if file is defined and imageTrans is defined and imageTrans.file is not null %}
                     {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
                 {% endif %}
             {% elseif article is news_audio %}

@@ -363,14 +363,36 @@ $(document).ready(function () {
 
       filterValues = "";
 
+      var getVal = '.'+$(this).data('filter');
+      console.log(getVal);
+      var numItems = $('.item'+getVal+':not(.isotope-hidden)').length;
+      console.log(numItems);
+
       $('.filter .select .active').each(function () {
         if ($(this).data('filter') != 'all') {
           filterValues += '.' + $(this).data('filter');
         }
       });
 
+      console.log(filterValues);
+
       $container.isotope({
-        filter: filterValues
+        filter: function() {
+          var obj = $(this),
+              filterArray = filterValues.split('.'),
+              f = "";
+
+          for(i=1; i<filterArray.length; i++) {
+            f += "(?=.*"+filterArray[i]+")";
+          }
+          f +=".*";
+          // console.log(f);
+
+
+
+
+          return obj.attr('class').match(new RegExp(f));
+        }
       });
 
       // if($('.all-photos').length) {
