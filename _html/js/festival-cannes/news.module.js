@@ -109,8 +109,8 @@ $(document).ready(function() {
           url: GLOBALS.urls.newsUrl,
           type: "GET",
           data: {
-            'timestamp': $('#news article.article:last').data('time'),
-            'end': typeof $('#news article.article:last').data('end') != 'undefined' ? $('#news article.article:last').data('end') : 'false'
+            'timestamp': $('#news .articles:not(.nextDay) article:last').data('time'),
+            'end': typeof $('#news .articles:not(.nextDay) article:last').data('end') != 'undefined' ? $('#news .articles:not(.nextDay) article:last').data('end') : 'false'
           },
           success: function(data) {
             $('#canvasloader').removeClass('show');
@@ -120,27 +120,32 @@ $(document).ready(function() {
               $('#articles-wrapper').removeClass('loading');
             }, 500);
 
-            $('#articles-wrapper').html(data);
+            $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).html(data);
 
             filter();
 
             initSlideshows();
             $(window).trigger('resize');
+
+            if($('#articles-wrapper .nextDay').length > 0) {
+              $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+              
+              setTimeout(function() {
+                $('#shd').addClass('show');
+                $(window).trigger('resize');
+              }, 500);
+            }
           }
         });
       }, 1200);
     } else {
-      var _data = {
-        timestamp: $('#news article.article:last').data('time')
-      }
-
       $('#shdMore').removeClass('show');
       $.ajax({
         url: GLOBALS.urls.newsUrl,
         type: "GET",
         data: {
-          'timestamp': $('#news article.article:last').data('time'),
-          'end': typeof $('#news article.article:last').data('end') != 'undefined' ? $('#news article.article:last').data('end') : 'false'
+          'timestamp': $('#news .articles:not(.nextDay) article:last').data('time'),
+          'end': typeof $('#news .articles:not(.nextDay) article:last').data('end') != 'undefined' ? $('#news .articles:not(.nextDay) article:last').data('end') : 'false'
         },
         success: function(data) {
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).append(data);
