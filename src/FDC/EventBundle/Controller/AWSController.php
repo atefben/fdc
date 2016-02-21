@@ -25,20 +25,22 @@ class AWSController extends Controller
         $em = $this->getDoctrine()->getManager();
         $logger = $this->get('logger');
 		
-        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('jobMp4State' => '1'));
+        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobMp4State' => '1'));
+		//print_r(\Doctrine\Common\Util\Debug::export($medias, 6));
+		
 		foreach($medias as $media) {
 			$this->updateAmazonStatus($media->getJobId(), $media->getJobMp4Id(), 'mp4');
 		}
 		
-        /*$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobWebmState' => '1'));
+        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobWebmState' => '1'));
 		foreach($medias as $media) {
-			$this->updateAmazonStatus($media->getJobId(), $media->getJobWebmId(), 'webm');
+			//$this->updateAmazonStatus($media->getJobId(), $media->getJobWebmId(), 'webm');
 		}
 		
 		$medias = $em->getRepository('BaseCoreBundle:MediaAudioTranslation')->findBy(array('jobWebmState' => '1'));
 		foreach($medias as $media) {
-			$this->updateAmazonStatus($media->getJobId(), $media->getJobMp3Id(), 'mp3');
-		}*/
+			//$this->updateAmazonStatus($media->getJobId(), $media->getJobMp3Id(), 'mp3');
+		}
 
         $em->flush();
 
@@ -57,7 +59,7 @@ class AWSController extends Controller
         ));
 		
 		$elasticTranscoder->readJob(array('Id' => $jobid));
-		$jobData = $resposne->get('Job');
+		$jobData = $response->get('Job');
 		print_r($jobData['Status']);
 		
 		switch($jobData['Status']){
@@ -65,9 +67,7 @@ class AWSController extends Controller
 			case 'error': break;
 		}
 
-		// TODO JEAN LUC
         // $media->setImageAmazonUrl('http://');
-        // $media->setState(0);
 	}
 	
 }
