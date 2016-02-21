@@ -16,7 +16,7 @@
                 </div>
                 <div class="info">
                     <a href="#" class="category">{{ widget.file.theme|trans_fallback('name') }}</a>
-                    <span class="date">{{ news.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.publishedAt|date('H:i') }}</span>
+                    <span class="date">{{ widget.file.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ widget.file.publishedAt|date('H:i') }}</span>
                     <p>{{ widget.file.image.copyright }}</p>
                 </div>
             </div>
