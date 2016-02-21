@@ -39,22 +39,16 @@
 
             {% for widget in news.widgets %}
                 {% if widget is news_widget_image and widget.gallery.medias|length == 1 %}
-                    <!-- SINGLE PHOTO -->
                     {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : widget.gallery.medias[0].media } %}
                 {% elseif widget is news_widget_image and widget.gallery.medias|length > 1 %}
-                    <!-- SLIDESHOW -->
                     {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
                 {% elseif widget is news_widget_text %}
-                    <!-- TEXT -->
                     {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
                 {% elseif widget is news_widget_video %}
-                    <!-- VIDEO -->
                     {% include 'FDCEventBundle:News:widgets/video.html.twig' with {'widget': widget} %}
                 {% elseif widget is news_widget_video_youtube %}
-                    <!-- VIDEO YOUTUBE -->
                     {% include 'FDCEventBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
                 {% elseif widget is news_widget_audio %}
-                    <!-- AUDIO -->
                     {% if widget.title is defined %}
                         <h2 class="title">{{ widget.title }}</h2>
                     {% endif %}

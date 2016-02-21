@@ -1,6 +1,5 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCEventBundle::layout.html.twig' %}
-
 {% block body %}
 <div id="main" class="list-article palmares-list loading ">
     <div class="bandeau-list">
@@ -12,47 +11,36 @@
         {% include 'FDCEventBundle:Palmares:components/nav.html.twig' %}
     </div>
     <div class="container container-list">
-    <!-- En compétition -->
     <section class="categorie-items">
         <div class="title-list-cat">
             <h2 class="title">{{ 'palmares.title.encompetition'|trans }}</h2>
         </div>
         <h3 class="sub-cat-title">{{ 'palmares.title.longsmetrages'|trans }}</h3>
-
         {% for movie in movies %}
             {% if movie.type == 0 %}
                 {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
             {% endif %}
         {% endfor %}
-
     </section>
     <section class="categorie-items">
         <h3 class="sub-cat-title">{{ 'palmares.title.courtsmetrages'|trans }}</h3>
-
         {% for movie in movies %}
             {% if movie.type == 1 %}
                 {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
             {% endif %}
         {% endfor %}
-
-      </section>
-      <!-- fin de en compétition -->
-      <!--- Un certain regard -->
+    </section>
     <section class="categorie-items">
         <div class="title-list-cat">
             <h2 class="title">{{ 'palmares.title.uncertainregard'|trans }}</h2>
         </div>
-
         {% for movie in movies %}
             {% if movie.type == 2 %}
                 {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
             {% endif %}
         {% endfor %}
-
     </section>
     </div>
-
     {% include 'FDCEventBundle:Palmares:components/bandeau.html.twig' %}
-
 </div>
 {% endblock body %}

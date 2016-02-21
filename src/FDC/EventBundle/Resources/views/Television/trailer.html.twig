@@ -1,8 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCEventBundle::layout.html.twig' %}
-
 {% block body %}
-
     <div id="main" class=" webtv webtv-ba-video loading">
         <div class="container-webtv-ba-video">
             <div class="title-container">
@@ -128,10 +126,7 @@
                 </div>
             </div>
         {% endif %}
-
     </div>
-
-    <!-- POPIN MAIL SHARE ---->
     {% set author = '' %}
     {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
         {{ loop.index0 ? ', ': '' }}{{ director.fullName }}
@@ -146,6 +141,4 @@
         'title': film|trans_fallback('title'),
         'description': film|trans_fallback('synopsis')
     })) }}
-    <!-- END POPIN MAIL SHARE -->
-
 {% endblock %}
