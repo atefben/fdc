@@ -19,8 +19,6 @@ function filter() {
     filters.push(obj);
   });
 
-  console.log(filters);
-
   var exp1 = '',
       exp2 = '';
 
@@ -62,10 +60,7 @@ function filter() {
         $that.find("span:not(.active):not([data-filter='all'])").each(function() {
           $this = $(this);
 
-          console.log($this);
-
           var getVal = $this.data('filter');
-          console.log($id + "  et  " + getVal);
           var numItems = $('#filteredArticles article[data-'+$id+'="'+getVal+'"]').length;
           if (numItems === 0) {
               $this.addClass('disabled');
