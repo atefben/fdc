@@ -103,6 +103,17 @@
                                     {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
                                 {% endfor %}
                             </div>
+                            {% if homeArticlesNext %}
+                                <div class="articles right nextDay">
+                                    {% for article in homeArticlesNext %}
+                                        {% if loop.first %}
+                                        {% include 'FDCEventBundle:News:widgets/article-home.html.twig' with {'isDouble': 'double'} %}
+                                        {% else %}
+                                        {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                         </div>
 
                         <a href="#" class="read-more">{{ 'home.btn.afficherplusdactualite'|trans|raw }}</a>
