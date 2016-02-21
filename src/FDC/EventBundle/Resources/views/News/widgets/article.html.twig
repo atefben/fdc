@@ -97,7 +97,7 @@
     </div>
     <div class="info">
         <a href="#" class="category">{{ article.category }}</a>
-        <span class="date">{{ article.publishAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishAt|date('H:i') }}</span>
+        <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
         <h2>
             <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">
                 {{ article|trans_fallback('title')|truncate(60) }}
