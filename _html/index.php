@@ -48,19 +48,21 @@
           <div id="theme" class="filter">
             <span class="label">Thèmes :</span>
             <span class="select">
-              <span class="active" data-filter="all">Tous </span><i class="icon icon_fleche-down"></i> <!-- todo css -->
+              <span class="active" data-filter="all">Tous </span>
               <span data-filter="press">Conférence de Presse</span>
               <span data-filter="steps">Montée des marches</span>
+              <i class="icon icon_fleche-down"></i>
             </span>
           </div>
           <div id="format" class="filter">
             <span class="label">Formats :</span>
             <span class="select">
-              <span class="active" data-filter="all">Tous </span><i class="icon icon_fleche-down"></i> <!-- todo css -->
+              <span class="active" data-filter="all">Tous </span>
               <span data-filter="photo">Photo</span>
               <span data-filter="video">Vidéo</span>
               <span data-filter="audio">Audio</span>
               <span data-filter="article">Article</span>
+              <i class="icon icon_fleche-down"></i>
             </span>
           </div>
         </div>
