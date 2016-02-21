@@ -120,7 +120,9 @@ class NewsController extends Controller {
             $dateTimeNext = $dateTime->modify('-1 day');
             $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext , $countNext);
         }
-        array_pop($homeArticles);
+        if(sizeof($homeArticles) = $count) {
+            array_pop($homeArticles);
+        }
 
         //set default filters
         $filters                         = array();
