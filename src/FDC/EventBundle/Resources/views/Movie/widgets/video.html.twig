@@ -21,7 +21,7 @@
     </div>
     <div id="slider-movie-videos" class="owl-carousel sliderDrag">
         {% for video in videos %}
-            {% if video.most_viewed == false %}
+            {% if video.most_viewed == false %} 
             <div class="slide-video shadow-bottom">
                 <img src="{{ video.image.path }}" alt="" />
                 <a class="linkVid" href="#"></a>
