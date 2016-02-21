@@ -85,6 +85,7 @@
             </div>
         </div>
 
+        {% if associatedFilm is not null or programmations is not empty  %}
         <div class="film">
             {% if associatedFilm is not null %}
             <div class="info-film">
@@ -159,6 +160,7 @@
             </div>
             {% endif %}
         </div>
+        {% endif %}
         <div class="container">
             {% if focusArticles is not empty %}
             <div class="focus">
