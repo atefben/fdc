@@ -6,7 +6,7 @@
 {% endif %}
 {% set file = trans.file %}
 <div class="audio-player audio" data-sound="{% path file, 'reference' %}">
-    <div class="image" style="background-image: url({% path widget.file.image, '1950x1232' %});"></div>
+    <div class="image" style="background-image: url({% path file.image, '1950x1232' %});"></div>
     <a href="#" class="playpause"><i class="icon icon_video"></i></a>
     <div class="off">
         <div class="vCenter">
@@ -15,9 +15,9 @@
                     <i class="icon icon_audio"></i>
                 </div>
                 <div class="info">
-                    <a href="#" class="category">{{ widget.file.theme|trans_fallback('name') }}</a>
-                    <span class="date">{{ widget.file.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ widget.file.publishedAt|date('H:i') }}</span>
-                    <p>{{ widget.file.image.copyright }}</p>
+                    <a href="#" class="category">{{ file.theme|trans_fallback('name') }}</a>
+                    <span class="date">{{ file.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ file.publishedAt|date('H:i') }}</span>
+                    <p>{{ file.image.copyright }}</p>
                 </div>
             </div>
         </div>
