@@ -73,18 +73,6 @@ trait Time
     {
         return $this->createdAt;
     }
-	
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime 
-     */
-    public function getPublishAt()
-    {
-		//TODO MATDAC
-        return new DateTime();
-    }
-	
 
     /**
      * Set updatedAt
