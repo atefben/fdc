@@ -1,5 +1,4 @@
-
-<article class="{{ article.newsType|get_news_type  }} {{isDouble}} {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-time="{{ article.publishedAt|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-end="{{ endOfArticles }}">
+<article class="{{ article.newsType|get_news_type  }} {% if isDouble is defined %} {{isDouble}} {% endif %} {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-time="{{ article.publishedAt|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-end="{{ endOfArticles }}">
     <div class="image">
         <div class="image-wrapper">
             {% if article is news_article %}
@@ -84,6 +83,6 @@
     <div class="info">
         <a href="#" class="category">{{ article.theme|trans_fallback('name') }}</a>
         <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
-        <h2><a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">{{ article|trans_fallback('title')|truncate(55) }}</a></h2>
+        <h2><a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">{{ article|trans_fallback('title')|truncate(60) }}</a></h2>
     </div>
 </article>
