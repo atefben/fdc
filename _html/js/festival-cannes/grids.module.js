@@ -386,14 +386,30 @@ $(document).ready(function () {
             f += "(?=.*"+filterArray[i]+")";
           }
           f +=".*";
-          // console.log(f);
-
-
-
 
           return obj.attr('class').match(new RegExp(f));
         }
       });
+      
+
+      if($('#gridAudios') || $('#gridVideos')) {
+        $('.filter .select').each(function() {
+          $that = $(this);
+          $that.find("span:not(.active):not([data-filter='all'])").each(function() {
+            $this = $(this);
+
+            var getVal = '.'+$this.data('filter');
+            var numItems = $('.item'+getVal+':not(.isotope-hidden)').length;
+            if (numItems === 0) {
+                $this.addClass('disabled');
+                // $this.hide();
+            } else {
+                $this.removeClass('disabled');
+                // $this.show();
+            }
+          });
+        });
+      }
 
       // if($('.all-photos').length) {
       //   setTimeout(function() {
