@@ -9989,21 +9989,20 @@ header #searchContainer {
   margin: 0 6.5%;
 }
 
-h2.sub-title {
+h2 .sub-title {
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 1.5rem;
   margin-bottom: 50px;
   text-align: center;
 }
-
-h2.sub-title2 {
+h2 .sub-title2 {
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-weight: 700;
   font-size: 1.125rem;
   margin: 25px 0px;
 }
 
-h3.sub-title {
+h3 .sub-title {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   margin: 50px 0;
@@ -10217,6 +10216,17 @@ article .read-later.rAlign span:after {
 }
 .single-article .small-container {
   width: 730px;
+}
+.single-article.single-actualite .small-container {
+  width: 977px;
+}
+.single-article.single-actualite .small-container div {
+  width: 730px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.single-article.single-actualite .small-container div.single-photo, .single-article.single-actualite .small-container div.chapeau {
+  width: 100%;
 }
 .single-article .print {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
@@ -10545,15 +10555,15 @@ article .read-later.rAlign span:after {
 .single-article .share a:hover + .button {
   border-left-color: #c8a461;
 }
+.single-article .share a:hover .icon {
+  color: #c8a461;
+  opacity: 1;
+}
 .single-article .share a .icon {
   font-size: 0.8rem;
   position: absolute;
   top: 30px;
   left: 30px;
-}
-.single-article .share a:hover .icon {
-  color: #c8a461;
-  opacity: 1;
 }
 .single-article .film {
   height: 365px;
