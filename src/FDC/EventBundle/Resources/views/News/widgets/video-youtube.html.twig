@@ -8,8 +8,7 @@
      data-link="//www.example.com"
      data-email="//www.gmail.com"
      data-file='[{"file":"{{ trans.url }}"}]'
-     data-img="{% if widget.image is not null %}{% path widget.image, 'reference' %}{% else %}image youtube{% endif %}"
->
+     data-img="{% if widget.image is not null %}{% path widget.image, 'reference' %}{% else %}image youtube{% endif %}">
 
     <div id="video-player-0{{ widget.id }}" class="video-player">
     </div>
@@ -19,9 +18,6 @@
         <div class="info">
             <div class="vCenter">
                 <div class="vCenterKid">
-                    {#<a href="{{ trans.url }}" class="category"></a>#}
-                    <a href="#" class="category">{{ news.video.theme|trans_fallback('name') }}</a>
-                    <span class="date">{{ news.video.theme.publishedAt|date('d.m.Y') }}</span> . <span class="hour">{{ news.video.theme.publishedAt|date('H:i') }}</span>
                     <p>{{ trans.title }}</p>
                 </div>
             </div>
