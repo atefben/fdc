@@ -27,8 +27,8 @@ class AWSController extends Controller
 		
         $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobMp4State' => '1'));
 		//print_r(\Doctrine\Common\Util\Debug::export($medias, 6));
+		
 		foreach($medias as $media) {
-			echo $media->getJobId();
 			$this->updateAmazonStatus($media->getJobId(), $media->getJobMp4Id(), 'mp4');
 		}
 		
@@ -67,9 +67,7 @@ class AWSController extends Controller
 			case 'error': break;
 		}
 
-		// TODO JEAN LUC
         // $media->setImageAmazonUrl('http://');
-        // $media->setState(0);
 	}
 	
 }
