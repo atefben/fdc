@@ -8,8 +8,8 @@
     <div id="canvasloader" class="canvasloader"></div>
     <div class="content-article">
         <div class="container{% if news is news_article %} small-container{% elseif news is news_audio %}{% elseif news is news_video %}{% elseif news is news_image %}{% endif %}">
-		    {% if not prev[0] is empty %}<a href="{{ path('fdc_event_news_get', {'format': prev[0].newsFormat, 'slug': prev[0]|trans_fallback('slug')}) }}" class="nav prev"><i class="icon icon_flecheGauche"></i></a>{% endif %}
-            {% if not next[0] is empty %}<a href="{{ path('fdc_event_news_get', {'format': next[0].newsFormat, 'slug': next[0]|trans_fallback('slug')}) }}" class="nav next"><i class="icon icon_fleche-right"></i></a>{% endif %}
+		    {% if prev[0] is defined and not prev[0] is empty %}<a href="{{ path('fdc_event_news_get', {'format': prev[0].newsFormat, 'slug': prev[0]|trans_fallback('slug')}) }}" class="nav prev"><i class="icon icon_flecheGauche"></i></a>{% endif %}
+            {% if next[0] is defined and not next[0] is empty %}<a href="{{ path('fdc_event_news_get', {'format': next[0].newsFormat, 'slug': next[0]|trans_fallback('slug')}) }}" class="nav next"><i class="icon icon_fleche-right"></i></a>{% endif %}
             <div class="info">
                 <a href="#" class="category">{{ news.theme|trans_fallback('name') }}</a>
                 <span class="date">{{ news.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.publishedAt|date('H:i') }}</span>
@@ -109,7 +109,7 @@
                                             {{ title }}
                                         </a>
                                     </h3>
-									{%if director|length > 1 %}
+									{%if director is defined and director|length > 1 %}
 										<p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
 									{% else %}
 											<p class="director">

@@ -226,7 +226,7 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 	
-    public function getOlderNews($locale, $festival, $id) {
+    public function getOlderNews($locale, $festival, $date) {
 
         $qb = $this
             ->createQueryBuilder('n')
@@ -241,7 +241,7 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-			->andWhere('n.id < :id')
+			->andWhere('n.publishedAt < :date')
             ->andWhere('n.festival = :festival');
 
         $qb = $qb
@@ -271,9 +271,8 @@ class NewsRepository extends EntityRepository
         }
 
         $qb = $qb
-            ->orderBy('n.publishedAt', 'DESC')
             ->setMaxResults('1')
-			->setParameter('id', $id)
+			->setParameter('date', $date)
             ->setParameter('festival', $festival)
             ->setParameter('site_slug', 'site-evenementiel');
 
@@ -284,7 +283,7 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 	
-    public function getNextNews($locale, $festival, $id) {
+    public function getNextNews($locale, $festival, $date) {
 
         $qb = $this
             ->createQueryBuilder('n')
@@ -299,7 +298,7 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-			->andWhere('n.id > :id')
+			->andWhere('n.publishedAt > :date')
             ->andWhere('n.festival = :festival');
 
         $qb = $qb
@@ -330,7 +329,7 @@ class NewsRepository extends EntityRepository
 
         $qb = $qb
             ->setMaxResults('1')
-			->setParameter('id', $id)
+			->setParameter('date', $date)
             ->setParameter('festival', $festival)
             ->setParameter('site_slug', 'site-evenementiel');
 
