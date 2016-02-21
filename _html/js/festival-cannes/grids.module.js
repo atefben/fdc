@@ -363,18 +363,11 @@ $(document).ready(function () {
 
       filterValues = "";
 
-      var getVal = '.'+$(this).data('filter');
-      console.log(getVal);
-      var numItems = $('.item'+getVal+':not(.isotope-hidden)').length;
-      console.log(numItems);
-
       $('.filter .select .active').each(function () {
         if ($(this).data('filter') != 'all') {
           filterValues += '.' + $(this).data('filter');
         }
       });
-
-      console.log(filterValues);
 
       $container.isotope({
         filter: function() {

@@ -16,6 +16,7 @@
           <span class="label">Dates :</span>
           <span class="select">
             <span class="active" data-filter="all">Toutes</span><i class="icon icon_fleche-down"></i>
+            <span data-filter="date0">Date 0</span>
             <span data-filter="date1">Date 1</span>
             <span data-filter="date2">Date 2</span>
             <span data-filter="date3">Date 3</span>
@@ -25,6 +26,7 @@
           <span class="label">Thèmes :</span>
           <span class="select">
             <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
+            <span data-filter="theme0">Thème 0</span>
             <span data-filter="theme1">Thème 1</span>
             <span data-filter="theme2">Thème 2</span>
           </span>

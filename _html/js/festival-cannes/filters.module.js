@@ -92,10 +92,10 @@ $(document).ready(function() {
   $('body').on('click', '#filters span', function() {
 
       var id = $('#filters').data('id'),
-          i = $(this).index();
+          f  = $(this).data('filter');
 
       $('#' + id + ' .select span').removeClass('active');
-      $('#' + id + ' .select span').eq(i).addClass('active');
+      $('#' + id + ' .select span[data-filter="'+f+'"]').addClass('active');
 
       filter();
   });
