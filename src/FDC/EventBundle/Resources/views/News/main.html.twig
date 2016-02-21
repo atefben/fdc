@@ -12,7 +12,7 @@
             <a href="#" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
             <div class="info">
                 <a href="#" class="category">{{ news.theme|trans_fallback('name') }}</a>
-                <span class="date">{{ news|trans_fallback('publishAt')|date('d.m.y') }}</span> . <span class="hour">{{ news|trans_fallback('publishAt')|date('H:i') }}</span>
+                <span class="date">{{ news.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.publishedAt|date('H:i') }}</span>
                 <span class="update">{{ 'article.text.miseajour'|trans }} :</span><span class="date">{{ news.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.updatedAt|date('H:i') }}</span>
             </div>
             <h2 class="title-article">{{ news|trans_fallback('title') }}</h2>
@@ -197,7 +197,7 @@
 
 {{ render(controller('FDCEventBundle:Global:shareEmail',
    {'section': news.theme|trans_fallback('name'),
-    'detail': news|trans_fallback('publishAt')|date('d.m.y'),
+    'detail': news.publishedAt|date('d.m.y'),
     'title': news|trans_fallback('title'),
     'description': news|trans_fallback('introduction')|raw
    }))

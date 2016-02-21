@@ -21,7 +21,7 @@
                 <div class="vCenterKid">
                     {#<a href="{{ trans.url }}" class="category"></a>#}
                     <a href="#" class="category">{{ news.video.theme|trans_fallback('name') }}</a>
-                    <span class="date">{{ news.video.theme|trans_fallback('publishAt')|date('d.m.Y') }}</span> . <span class="hour">{{ news.video.theme|trans_fallback('publishAt')|date('H:i') }}</span>
+                    <span class="date">{{ news.video.theme.publishedAt|date('d.m.Y') }}</span> . <span class="hour">{{ news.video.theme.publishedAt|date('H:i') }}</span>
                     <p>{{ trans.title }}</p>
                 </div>
             </div>

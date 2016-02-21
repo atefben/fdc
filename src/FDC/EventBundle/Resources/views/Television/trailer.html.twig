@@ -49,7 +49,7 @@
                             <div class="info">
                                 <div class="vCenter">
                                     <div class="vCenterKid">
-                                        <a href="#" class="category">{{ videos[0].theme|trans_fallback('name') }}</a><span class="date">{{ videos[0]|trans_fallback('publishAt')|date('d.m.y') }}</span> . <span class="hour">{{ videos[0]|trans_fallback('publishAt')|date('H:i') }}</span>
+                                        <a href="#" class="category">{{ videos[0].theme|trans_fallback('name') }}</a><span class="date">{{ videos[0].publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ videos[0].publishedAt|date('H:i') }}</span>
                                         <p>{{ videos[0]|trans_fallback('title') }}</p>
                                     </div>
                                 </div>

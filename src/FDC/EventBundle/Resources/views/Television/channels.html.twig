@@ -25,7 +25,7 @@
             <div class="grid-sizer"></div>
 
             {% for channel in channels %}
-                <div class="item {{ channel|trans_fallback('publishAt')|date('d-m-Y') }} {{ channel.theme }} shadow-bottom playlist">
+                <div class="item {{ channel.publishedAt|date('d-m-Y') }} {{ channel.theme }} shadow-bottom playlist">
                     {% if channel.image %}
                         {% if channel.image|trans_fallback('file') %}
                             <img src="{% path channel.image|trans_fallback('file'), '640x404' %}"
