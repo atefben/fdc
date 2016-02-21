@@ -15,8 +15,8 @@
                     <i class="icon icon_audio"></i>
                 </div>
                 <div class="info">
-                    <a href="#" class="category">{{ file.theme|trans_fallback('name') }}</a>
-                    <span class="date">{{ file.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ file.publishedAt|date('H:i') }}</span>
+                    <a href="#" class="category">{{ widget.file.theme|trans_fallback('name') }}</a>
+                    <span class="date">{{ widget.file.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ widget.file.publishedAt|date('H:i') }}</span>
                     <p>{{ trans.title }}</p>
                 </div>
             </div>
