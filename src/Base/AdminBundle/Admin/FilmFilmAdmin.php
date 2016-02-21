@@ -19,22 +19,6 @@ class FilmFilmAdmin extends SoifAdmin
         $years = $em->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
         $datagridMapper
-            ->add('have_trailer', 'doctrine_orm_callback', array(
-                'callback' => function ($queryBuilder, $alias, $field, $value) {
-                    if ($value['value'] === null) {
-                        return;
-                    }
-
-                    if ($value['value']) {
-                        $queryBuilder->join("{$alias}.associatedMediaVideos", 'amv');
-                        $queryBuilder->join('amv.mediaVideo', 'mv');
-                        $queryBuilder->andWhere('mv.displayedTrailer = 1');
-                    }
-                    return true;
-                },
-                'field_type' => 'checkbox',
-                'label' => 'filter.have_trailer',
-            ))
             ->add('title', 'doctrine_orm_callback', array(
                 'callback' => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
