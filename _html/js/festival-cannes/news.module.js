@@ -59,6 +59,15 @@ $(document).ready(function() {
           filter();
 
           initSlideshows();
+
+          if($('#articles-wrapper .nextDay').length > 0) {
+            $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+            
+            setTimeout(function() {
+              $('#shd').addClass('show');
+              $(window).trigger('resize');
+            }, 500);
+          }
         }
       });
     }, 2200);
