@@ -19,6 +19,8 @@ function filter() {
     filters.push(obj);
   });
 
+  console.log(filters);
+
   var exp1 = '',
       exp2 = '';
 
@@ -52,9 +54,33 @@ function filter() {
       }
 
       $('.articles.nextDay article').show();
+
+      $('.filter .select').each(function() {
+        $that = $(this);
+        $id   = $(this).closest('.filter').attr('id');
+
+        $that.find("span:not(.active):not([data-filter='all'])").each(function() {
+          $this = $(this);
+
+          console.log($this);
+
+          var getVal = $this.data('filter');
+          console.log($id + "  et  " + getVal);
+          var numItems = $('#filteredArticles article[data-'+$id+'="'+getVal+'"]').length;
+          if (numItems === 0) {
+              $this.addClass('disabled');
+          } else {
+              $this.removeClass('disabled');
+          }
+        });
+      });
     }
   } else {
     $('*[data-' + id + ']').show();
+    
+    if($('.articles').length != 0) {
+      $('.filter .select span').removeClass('disabled');
+    }
   }
 }
 
