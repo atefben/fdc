@@ -366,6 +366,12 @@ class NewsController extends Controller {
         $count           = 3;
         $newsDate        = $news->getPublishedAt();
         $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
+		
+        //get prev article TODO
+        $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
+		
+        //get next article TODO
+        $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
 
         return array(
             'localeSlugs' => $localeSlugs,
@@ -373,6 +379,8 @@ class NewsController extends Controller {
             'programmations' => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,
             'news' => $news,
+			'prev' => $prevArticlesURL,
+			'next' => $nextArticlesURL,
             'associatedFilm' => $associatedFilm,
             'sameDayArticles' => $sameDayArticles
         );
