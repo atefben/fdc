@@ -107,7 +107,7 @@
                                 <div class="articles right nextDay">
                                     {% for article in homeArticlesNext %}
                                         {% if loop.first %}
-                                        {% include 'FDCEventBundle:News:widgets/article-home.html.twig' with vars %}
+                                        {% include 'FDCEventBundle:News:widgets/article-home.html.twig' with {'isDouble': 'double'} %}
                                         {% else %}
                                         {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
                                         {% endif %}
