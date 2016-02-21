@@ -30,7 +30,7 @@
                 </div>
                 <div class="info">
                     <a href="#" class="category">{{ news.audio.theme|trans_fallback('name') }}</a>
-                    <span class="date">{{ news.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.publishedAt|date('H:i') }}</span>
+                    <span class="date">{{ news.audio.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.audio.publishedAt|date('H:i') }}</span>
                     <p>{{ news.audio.image.copyright }}</p>
                 </div>
             </div>
