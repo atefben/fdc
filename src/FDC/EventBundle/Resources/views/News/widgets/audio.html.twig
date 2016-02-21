@@ -17,7 +17,7 @@
                 <div class="info">
                     <a href="#" class="category">{{ file.theme|trans_fallback('name') }}</a>
                     <span class="date">{{ file.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ file.publishedAt|date('H:i') }}</span>
-                    <p>{{ file.image.copyright }}</p>
+                    <p>{{ trans.title }}</p>
                 </div>
             </div>
         </div>
