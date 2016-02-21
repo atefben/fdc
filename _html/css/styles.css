@@ -10671,7 +10671,7 @@ article .read-later.rAlign span:after {
   height: 100%;
   float: right;
   margin-right: 85px;
-  max-width: 398px;
+  width: 398px;
 }
 .single-article .film .programmation-film .wrapper .category {
   color: #c8a461;
