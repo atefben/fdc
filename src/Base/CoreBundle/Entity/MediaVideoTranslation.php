@@ -90,14 +90,14 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    private $Mp4URL;
+    private $mp4Url;
 	
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    private $webmURL;
+    private $webmUrl;
 
     /**
      * @var Theme
@@ -296,37 +296,37 @@ class MediaVideoTranslation implements TranslateChildInterface
 
 
     /**
-     * Set webmURL
+     * Set webmUrl
      *
-     * @param integer $jobWebmState
+     * @param integer $webmUrl
      * @return MediaVideoTranslation
      */
-    public function setWebmURL($webmURL)
+    public function setWebmURL($webmUrl)
     {
-        $this->webmURL = $webmURL;
+        $this->webmUrl = $webmUrl;
 
         return $this;
     }
 
     /**
-     * Get webmURL
+     * Get webmUrl
      *
      * @return string 
      */
-    public function getWebmURL()
+    public function getWebmUrl()
     {
-        return $this->webmURL;
+        return $this->webmUrl;
     }
 	
     /**
-     * Set mp4URL
+     * Set mp4Url
      *
-     * @param string $webmURL
+     * @param string $webmUrl
      * @return MediaVideoTranslation
      */
-    public function setMp4URL($webmURL)
+    public function setMp4Url($mp4Url)
     {
-        $this->mp4URL = $mp4URL;
+        $this->mp4Url = $mp4Url;
 
         return $this;
     }
@@ -336,9 +336,9 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @return string 
      */
-    public function getMp4URL()
+    public function getMp4Url()
     {
-        return $this->mp4URL;
+        return $this->mp4Url;
     }
 	
     /**
