@@ -219,7 +219,7 @@ class NewsController extends Controller {
             'homeArticles'       => $homeArticles,
             'homeArticlesBottom' => $homeArticlesBottom,
             'homeArticlesSlider' => $homeArticlesSlider,
-            'homeArticlesNext'   => $homeArticlesNext
+            'homeArticlesNext'   => $homeArticlesNext,
             'displayHomeSlider'  => $displayHomeSlider,
             'homeSlider'         => $homeSlider,
             'festivalStart'      => strtotime($festivalStart->format('Y-m-d')),
