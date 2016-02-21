@@ -21,22 +21,18 @@
 
             {#{% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : article.mainImg  } %}#}
 
-            <!-- QUOTE -->
             {% for widget in article.widgets %}
                 {% if widget.type == "quote" %}
                     {% include 'FDCEventBundle:News:widgets/quote.html.twig' %}
                 {% endif %}
             {% endfor %}
 
-
-            <!-- TEXT -->
             {% for widget in article.widgets %}
                 {% if widget.type == "text" %}
                     {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
                 {% endif %}
             {% endfor %}
 
-            <!-- SLIDESHOW -->
             <div class="small-container">
 
                 {% for widget in article.widgets %}
@@ -47,7 +43,6 @@
 
             </div>
 
-            <!-- AUDIO -->
             {% for widget in article.widgets %}
                 {% if widget.type == "audio" %}
                     <h2 class="title">{{ widget.title }}</h2>
@@ -75,7 +70,6 @@
     </div>
 </div>
 
-    <!-- POPIN MAIL SHARE ---->
     {{ render(controller('FDCEventBundle:Global:shareEmail',
     {'section': article.theme,
         'detail': article.createdAt|date('d.m.y'),
@@ -83,6 +77,5 @@
         'description': article.introduction
     }))
     }}
-    <!-- END POPIN MAIL SHARE -->
 
 {% endblock body %}
