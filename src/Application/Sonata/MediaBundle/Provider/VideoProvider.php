@@ -37,13 +37,8 @@ class VideoProvider extends FileProvider
         ));
 
         if (isset($parentVideo)) {
-
-            if (substr($media->getProviderReference(), -4) == '.bin') {
-                $file_name = substr($media->getProviderReference(), 0, -4) . '.mov';
-                $media->setProviderReference($file_name);
-            } else {
-                $file_name = $media->getProviderReference();
-            }
+			
+			$file_name = $media->getProviderReference();
             $path = $this->generatePublicUrl($media, $media->getProviderReference());
 
             $file_path = explode('/', $path);
@@ -64,7 +59,7 @@ class VideoProvider extends FileProvider
                 ),
                 'Outputs'         => array(
                     array(
-                        'Key'      => $file_name,
+                        'Key'      => str_replace('.mov', '.mp4', $file_name),
                         'Rotate'   => 'auto',
                         'PresetId' => '1351620000001-000001',
                     ),
