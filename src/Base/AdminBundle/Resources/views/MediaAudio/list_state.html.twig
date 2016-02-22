@@ -7,11 +7,11 @@
             <div>
                 {% if translationLocale is not null %}
                     {{ translationLocale.locale|humanize }}:
-                    {% if  translationLocale.jobMp4State == 2 or translationLocale.jobWebmState == 2 %}
+                    {% if  translationLocale.jobMp3State == 2 %}
                         {{ 'form.encoding_state.error'|trans }}
-                    {% elseif  translationLocale.jobMp4State == 1 or translationLocale.jobWebmState == 1 %}
+                    {% elseif  translationLocale.jobMp3State == 1 %}
                         {{ 'form.encoding_state.in_progress'|trans }}
-                    {% elseif  translationLocale.jobMp4State == 3 and translationLocale.jobWebmState == 3 %}
+                    {% elseif  translationLocale.jobMp3State == 3 %}
                         {{ 'form.encoding_state.ready'|trans }}
                     {% else %}
                         n/a

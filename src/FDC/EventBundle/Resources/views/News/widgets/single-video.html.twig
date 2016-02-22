@@ -2,53 +2,56 @@
 
 {% set file = news.video %}
 {% set trans = file.findTranslationByLocale(app.request.locale) %}
-{% if trans is null or trans.file is null %}
-    {% set trans = file.findTranslationByLocale('fr') %}
-{% endif %}
-
-{% set header = news.header %}
-{% if header is not null %}
-    {% set imageTrans = news.header.findTranslationByLocale(app.request.locale) %}
-    {% if imageTrans is null or imageTrans.file is null %}
-        {% set imageTrans = news.header.findTranslationByLocale('fr') %}
-    {% endif %}
-{% endif %}
-{% if imageTrans is defined %}
-    {% set image = imageTrans.file %}
-{% else %}
-    {% set header = news.video.image %}
-    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
-    {% if imageTrans is null or imageTrans.file is null %}
-        {% set imageTrans = header.findTranslationByLocale('fr') %}
+{% if trans.jobWebmState == 3 and trans.jobMp4State ==3 %}
+    {% if trans is null or trans.file is null %}
+        {% set trans = file.findTranslationByLocale('fr') %}
     {% endif %}
 
-    {% set image = imageTrans.file %}
-{% endif %}
-
-<div class="video-container video-single state-init video"
-     data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
-     data-twitter="//www.twitter.com"
-     data-link="//www.example.com"
-     data-email="//www.gmail.com"
-    {% if playlist is defined %}
-     data-playlist='{{ playlist }}'
+    {% set header = news.header %}
+    {% if header is not null %}
+        {% set imageTrans = news.header.findTranslationByLocale(app.request.locale) %}
+        {% if imageTrans is null or imageTrans.file is null %}
+            {% set imageTrans = news.header.findTranslationByLocale('fr') %}
+        {% endif %}
+    {% endif %}
+    {% if imageTrans is defined %}
+        {% set image = imageTrans.file %}
     {% else %}
-     data-file='[{"file":"{% path trans.file, 'reference' %}"}]'
+        {% set header = news.video.image %}
+        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+        {% if imageTrans is null or imageTrans.file is null %}
+            {% set imageTrans = header.findTranslationByLocale('fr') %}
+        {% endif %}
+
+        {% set image = imageTrans.file %}
     {% endif %}
-    data-img="{% if image is defined and image is not null %}{% path image, 'reference' %}{% endif %}">
-    <div id="video-player-{{ trans.id }}" class="video-player">
-    </div>
-    <div class="video-overlay"></div>
-    <div class="infos-bar">
-        <div class="picto"><i class="icon icon_video"></i></div>
-        <div class="info">
-            <div class="vCenter">
-                <div class="vCenterKid">
-                    <a href="#" class="category">{{ news.video.theme|trans_fallback('name') }}</a>
-                    <span class="date">{{ news.video.publishedAt|date('d.m.Y') }}</span> . <span class="hour">{{ news.video.publishedAt|date('H:i') }}</span>
-                    <p>{{ trans.title }}</p>
+
+    <div class="video-container video-single state-init video"
+         data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+         data-twitter="//www.twitter.com"
+         data-link="//www.example.com"
+         data-email="//www.gmail.com"
+            {% if playlist is defined %}
+                data-playlist='{{ playlist }}'
+            {% else %}
+                data-file='[{"file":"{% path trans.file, 'reference' %}"}]'
+            {% endif %}
+         data-img="{% if image is defined and image is not null %}{% path image, 'reference' %}{% endif %}">
+        <div id="video-player-{{ trans.id }}" class="video-player">
+        </div>
+        <div class="video-overlay"></div>
+        <div class="infos-bar">
+            <div class="picto"><i class="icon icon_video"></i></div>
+            <div class="info">
+                <div class="vCenter">
+                    <div class="vCenterKid">
+                        <a href="#" class="category">{{ news.video.theme|trans_fallback('name') }}</a>
+                        <span class="date">{{ news.video.publishedAt|date('d.m.Y') }}</span> . <span
+                                class="hour">{{ news.video.publishedAt|date('H:i') }}</span>
+                        <p>{{ trans.title }}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+{% endif %}
