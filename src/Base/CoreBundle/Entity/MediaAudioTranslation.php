@@ -45,7 +45,6 @@ class MediaAudioTranslation implements TranslateChildInterface
      */
     private $jobMp3State;
 
-
     /**
      * @var string
      *
@@ -59,7 +58,6 @@ class MediaAudioTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", nullable=true)
      */
     private $mp3Url;
-
 
     /**
      * @var \Application\Sonata\MediaBundle\Entity\Media
