@@ -180,6 +180,10 @@ $(document).ready(function() {
             }
           });
 
+          $('.filter .select').each(function() {
+            $(this).append($(this).find('i'))
+          });
+
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).append(div.find('.articles'));
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').prop('scrollHeight'));
 
