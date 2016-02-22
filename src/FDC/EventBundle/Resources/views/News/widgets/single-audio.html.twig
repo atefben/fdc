@@ -7,10 +7,10 @@
 {% endif %}
 
 {% set header = news.header %}
-{% if header is not null and header.file is not null %}
-    {% set imageTrans = news.header.findTranslationByLocale(app.request.locale) %}
+{% if header is not null %}
+    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
     {% if imageTrans is null or imageTrans.file is null %}
-        {% set imageTrans = news.header.findTranslationByLocale('fr') %}
+        {% set imageTrans = header.findTranslationByLocale('fr') %}
     {% endif %}
 {% endif %}
 {% if imageTrans is defined %}

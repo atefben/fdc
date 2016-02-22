@@ -5,8 +5,20 @@
     {% set trans = file.findTranslationByLocale('fr') %}
 {% endif %}
 {% set file = trans.file %}
+
+{% set header = widget.file.image %}
+{% if header is not null %}
+    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+        {% set imageTrans = header.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+{% if imageTrans is defined %}
+    {% set image = imageTrans.file %}
+{% endif %}
+
 <div class="audio-player audio" data-sound="{% path file, 'reference' %}">
-    <div class="image" {% if file.image is defined %}style="background-image: url({% path file.image, '1950x1232' %});"{% endif %}></div>
+    <div class="image" {% if image is defined %}style="background-image: url({% path image, '1950x1232' %});"{% endif %}></div>
     <a href="#" class="playpause"><i class="icon icon_video"></i></a>
     <div class="off">
         <div class="vCenter">
