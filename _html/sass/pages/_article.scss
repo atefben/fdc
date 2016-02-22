@@ -297,6 +297,8 @@ article {
         margin-right: auto;
 
         &.single-photo,
+        &.single-video,
+        &.single-gallery,
         &.chapeau {
           width: 100%;
         }
