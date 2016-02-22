@@ -2,13 +2,25 @@
 {% if trans is null %}
     {% set trans = widget.findTranslationByLocale('fr') %}
 {% endif %}
+
+{% set header = widget.image %}
+{% if header is not null %}
+    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+        {% set imageTrans = header.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+{% if imageTrans is defined %}
+    {% set image = imageTrans.file %}
+{% endif %}
+
 <div class="video-container state-init video"
      data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
      data-twitter="//www.twitter.com"
      data-link="//www.example.com"
      data-email="//www.gmail.com"
      data-file='[{"file":"{{ trans.url }}"}]'
-     data-img="{% if widget.image is not null %}{% path widget.image, 'reference' %}{% else %}image youtube{% endif %}">
+     data-img="{% if image is defined %}{% path image, 'reference' %}{% endif %}">
 
     <div id="video-player-0{{ widget.id }}" class="video-player">
     </div>

@@ -440,7 +440,7 @@
                                                             <div class="form-group">
                                                                 <div>
                                                                     <b>{{ 'form.label_alt_img'|trans }}:</b>
-                                                                    {% if imageTranslations.get(locale) is not null %}
+                                                                    {% if imageTranslations and imageTranslations.get(locale) is not null %}
                                                                         {{ imageTranslations.get(locale).alt }}
                                                                     {% endif %}
                                                                 </div>
@@ -598,7 +598,7 @@
                                                         </label>
                                                         <div>
                                                             <b>{{ 'form.label_alt_img'|trans }}:</b>
-                                                            {% if imageTranslations.get('fr') is not null %}
+                                                            {% if imageTranslations and imageTranslations.get('fr') is not null %}
                                                                 {{ imageTranslations.get('fr').alt }}
                                                             {% endif %}
                                                         </div>

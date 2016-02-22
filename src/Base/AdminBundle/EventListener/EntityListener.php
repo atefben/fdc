@@ -6,6 +6,7 @@ use Application\Sonata\MediaBundle\Entity\Media;
 use Application\Sonata\MediaBundle\Model\MediaInterface;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
+use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use \DateTime;
 
@@ -146,7 +147,7 @@ class EntityListener
         $object =  $eventArgs->getObject();
         if ($object instanceof Media) {
             if ($object->getParentAudioTranslation() || $object->getParentVideoTranslation()) {
-                $this->flush = true;
+                //$this->flush = true;
             }
         }
     }
@@ -156,7 +157,7 @@ class EntityListener
         $object =  $eventArgs->getObject();
         if ($object instanceof Media) {
             if ($object->getParentAudioTranslation() || $object->getParentVideoTranslation()) {
-                $this->flush = true;
+                //$this->flush = true;
             }
         }
     }

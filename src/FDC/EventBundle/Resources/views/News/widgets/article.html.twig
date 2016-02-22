@@ -32,12 +32,14 @@
                     {% set img = article.header %}
                 {% else %}
                     {% set tmp = article.video %}
-                    {% set trans = tmp.findTranslationByLocale(app.request.locale) %}
-                    {% if trans is null or trans.file is null %}
-                        {% set trans = tmp.findTranslationByLocale('fr') %}
+                    {% if tmp is not null %}
+                        {% set trans = tmp.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = tmp.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% set img = article.video.image %}
+                        {% set file = trans.file %}
                     {% endif %}
-                    {% set img = article.video.image %}
-                    {% set file = trans.file %}
                 {% endif %}
                 {% if file is defined and imageTrans is defined and imageTrans.file is not null %}
                     {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
@@ -55,12 +57,14 @@
                     {% set img = imageTrans %}
                 {% else %}
                     {% set tmp = article.audio %}
-                    {% set trans = tmp.image.findTranslationByLocale(app.request.locale) %}
-                    {% if trans is null or trans.file is null %}
-                        {% set trans = tmp.image.findTranslationByLocale('fr') %}
+                    {% if tmp %}
+                        {% set trans = tmp.image.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = tmp.image.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% set img = trans %}
+                        {% set file = trans.file %}
                     {% endif %}
-                    {% set img = trans %}
-                    {% set file = trans.file %}
                 {% endif %}
                 {% if file is defined %}
                     {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
@@ -77,12 +81,14 @@
                     {% set img = article.header %}
                     {% set file = imageTrans.file %}
                 {% else %}
-                    {% set img = article.gallery.medias[0].media %}
-                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                    {% if trans is null or trans.file is null %}
-                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% if article.gallery and article.gallery.medias|length > 0 %}
+                        {% set img = article.gallery.medias[0].media %}
+                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = img.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% set file = trans.file %}
                     {% endif %}
-                    {% set file = trans.file %}
                 {% endif %}
                 {% if file is defined %}
                     {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
@@ -96,7 +102,7 @@
         <span class="picto"><i class="icon icon_{{ article.newsType|get_news_type }}"></i></span>
     </div>
     <div class="info">
-        <a href="#" class="category">{{ article.category }}</a>
+        <a href="#" class="category">{{ article.theme|trans_fallback('name') }}</a>
         <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
         <h2>
             <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">

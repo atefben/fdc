@@ -2,53 +2,63 @@
 
 {% set file = news.audio %}
 {% set trans = file.findTranslationByLocale(app.request.locale) %}
-{% if trans is null or trans.file is null %}
-    {% set trans = file.findTranslationByLocale('fr') %}
-{% endif %}
-
-{% set header = news.header %}
-{% if header is not null and header.file is not null %}
-    {% set imageTrans = news.header.findTranslationByLocale(app.request.locale) %}
-    {% if imageTrans is null or imageTrans.file is null %}
-        {% set imageTrans = news.header.findTranslationByLocale('fr') %}
+{% if trans.jobMp3State == 3 %}
+    {% if trans is null or trans.file is null %}
+        {% set trans = file.findTranslationByLocale('fr') %}
     {% endif %}
-{% endif %}
-{% if imageTrans is defined %}
-    {% set image = imageTrans.file %}
-{% else %}
-    {% set image = file.image.file %}
-{% endif %}
 
-<div class="audio-player audio actu-article-audio" data-sound="{% path trans.file, 'reference' %}">
-    <div class="image" style="background-image: url({% if image is defined and image is not null %}{% path image, '1950x1232' %}{% endif %});"></div>
-    <a href="#" class="playpause"><i class="icon icon_video"></i></a>
-    <div class="off">
-        <div class="vCenter">
-            <div class="vCenterKid">
-                <div class="picto">
-                    <i class="icon icon_audio"></i>
+    {% set header = news.header %}
+    {% if header is not null %}
+        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+        {% if imageTrans is null or imageTrans.file is null %}
+            {% set imageTrans = header.findTranslationByLocale('fr') %}
+        {% endif %}
+    {% endif %}
+    {% if imageTrans is defined %}
+        {% set image = imageTrans.file %}
+    {% else %}
+        {% set header = news.audio.image %}
+        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+        {% if imageTrans is null or imageTrans.file is null %}
+            {% set imageTrans = header.findTranslationByLocale('fr') %}
+        {% endif %}
+
+        {% set image = imageTrans.file %}
+    {% endif %}
+
+    <div class="audio-player audio actu-article-audio" data-sound="{{ s3_server_audio ~ trans.mp3Url }}">
+        <div class="image"
+             style="background-image: url({% if image is defined and image is not null %}{% path image, '1950x1232' %}{% endif %});"></div>
+        <a href="#" class="playpause"><i class="icon icon_video"></i></a>
+        <div class="off">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <div class="picto">
+                        <i class="icon icon_audio"></i>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">{{ news.audio.theme|trans_fallback('name') }}</a>
+                        <span class="date">{{ news.audio.publishedAt|date('d.m.y') }}</span> . <span
+                                class="hour">{{ news.audio.publishedAt|date('H:i') }}</span>
+                        <p>{{ trans.title }}</p>
+                    </div>
                 </div>
-                <div class="info">
-                    <a href="#" class="category">{{ news.audio.theme|trans_fallback('name') }}</a>
-                    <span class="date">{{ news.audio.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.audio.publishedAt|date('H:i') }}</span>
-                    <p>{{ news.audio.image.copyright }}</p>
+            </div>
+        </div>
+        <div class="on">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <div class="duration">
+                        <span class="curr">0:00</span>/<span class="total">0:00</span>
+                    </div>
+                    <div class="wave-container"></div>
+                    <div class="volume">
+                        <span></span>
+                        <i class="icon icon_son"></i>
+                    </div>
+                    <a href="#" class="fullscreen"><i class="icon icon_fullscreen"></i></a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="on">
-        <div class="vCenter">
-            <div class="vCenterKid">
-                <div class="duration">
-                    <span class="curr">0:00</span>/<span class="total">0:00</span>
-                </div>
-                <div class="wave-container"></div>
-                <div class="volume">
-                    <span></span>
-                    <i class="icon icon_son"></i>
-                </div>
-                <a href="#" class="fullscreen"><i class="icon icon_fullscreen"></i></a>
-            </div>
-        </div>
-    </div>
-</div>
+{% endif %}

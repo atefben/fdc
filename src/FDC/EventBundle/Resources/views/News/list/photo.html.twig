@@ -24,7 +24,7 @@
                         <div class="vCenterKid">
                             <a href="#" class="category">{{ photo.theme|trans_fallback('name') }}</a>
                             <span class="date">{{ photo.publishedAt|date('d.m.y')}}</span> . <span class="hour">{{ photo.publishedAt|date('H:i') }}</span>
-                            <p>{{ photo|trans_fallback('legend') }}</p>
+                            <p>{{  photo|trans_fallback('legend')|length > 40 ?  photo|trans_fallback('legend')|slice(0, 40) ~ '...' :  photo|trans_fallback('legend')  }}</p>
                         </div>
                     </div>
                 </div>

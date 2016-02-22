@@ -117,12 +117,15 @@ class NewsController extends Controller {
 
         if(sizeof($homeArticles) < $count || $homeArticles == null){
             $endOfArticles = true;
-            $dateTimeNext = $dateTime->modify('-1 day');
+            $tmp = clone $dateTime;
+            $dateTimeNext = $tmp->modify('-1 day');
             $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext , $countNext);
         }
+
         if(sizeof($homeArticles) == $count) {
             array_pop($homeArticles);
         }
+
 
         //set default filters
         $filters                         = array();
@@ -164,8 +167,7 @@ class NewsController extends Controller {
         }
 
         //get images for slider articles
-        $dateArticleSlide = new DateTime();
-        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $dateArticleSlide);
+        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $dateTime);
 
           ////////////////////////////////////////////////////////////////////////////////////
          /////////////////////////       WEBTV        ///////////////////////////////////////

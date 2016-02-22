@@ -45,7 +45,7 @@ class VideoProvider extends FileProvider
             $path_video_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
             $path_video_output = 'media_video_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 
-            //System preset generic 1080p MP4 ID : 1351620000001-000001
+            //System preset generic 1080p MP4 ID : 1456133456345-3dts1g
             $job = $elasticTranscoder->createJob(array(
                 'PipelineId'      => '1454076999739-uy533t',
                 'OutputKeyPrefix' => $path_video_output,
@@ -61,17 +61,21 @@ class VideoProvider extends FileProvider
                     array(
                         'Key'      => str_replace('.mov', '.mp4', $file_name),
                         'Rotate'   => 'auto',
-                        'PresetId' => '1351620000001-000001',
+                        'PresetId' => '1456133456345-3dts1g',
                     ),
                 ),
             ));
+			
+			/* @TODO
+			récupérer l'URL du fichier généré par amazon
+			*/
 
             $parentVideo->setJobMp4Id($job->get('Job')['Id']);
 			$parentVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
             $parentVideo->setJobMp4State(1);
 
 
-            //System preset: Webm 720p ID : 1351620000001-100240
+            //System preset: Webm 720p ID : 1456133404879-sv127j
             $job = $elasticTranscoder->createJob(array(
                 'PipelineId'      => '1454076999739-uy533t',
                 'OutputKeyPrefix' => $path_video_output,
@@ -87,10 +91,16 @@ class VideoProvider extends FileProvider
                     array(
                         'Key'      => str_replace(array('.mp4', '.mov'), '.webm', $file_name),
                         'Rotate'   => 'auto',
-                        'PresetId' => '1351620000001-100240',
+                        'PresetId' => '1456133404879-sv127j',
                     ),
                 ),
             ));
+			
+			/* @TODO
+			 récupérer l'URL du fichier généré par amazon
+			*/
+			//$parentVideo->setImageAmazonUrl($job->get('Job')['img_url']);
+
             $parentVideo->setJobWebmId($job->get('Job')['Id']);
 			$parentVideo->setWebmURL($path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name));
             $parentVideo->setJobWebmState(1);
@@ -117,6 +127,7 @@ class VideoProvider extends FileProvider
 	            ),
 	        ));
             $parentAudio->setJobMp3Id($job->get('Job')['Id']);
+            $parentAudio->setMp3Url($path_audio_output . $file_name);
            	$parentAudio->setJobMp3State(1);
         }
 

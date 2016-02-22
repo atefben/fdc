@@ -24,8 +24,8 @@ SET time_zone = "+00:00";
 -- Contenu de la table `fdcpage_web_tv_live`
 --
 
-INSERT INTO `fdcpage_web_tv_live` (`id`, `image_id`, `seo_file_id`, `live`, `displayWebTvArea`, `displayTrailerArea`, `displayLastVideosArea`, `created_at`, `updated_at`, `translate`, `translate_options`, `priority_status`) VALUES
-(1, NULL, NULL, 0, 0, 0, 0, '2016-02-08 18:50:40', '2016-02-08 19:53:37', 0, 'N;', 1);
+INSERT INTO `fdcpage_web_tv_live` (`id`, `image_id`, `seo_file_id`, `live`, `created_at`, `updated_at`, `translate`, `translate_options`, `priority_status`, `do_not_display_web_tv_area`, `do_not_display_trailer_area`, `do_not_display_last_videos_area`) VALUES
+(1, NULL, NULL, 0, '2016-02-08 18:50:40', '2016-02-22 10:30:56', 0, 'a:0:{}', 1, 0, 0, 0);
 
 --
 -- Contenu de la table `fdcpage_web_tv_live_translation`

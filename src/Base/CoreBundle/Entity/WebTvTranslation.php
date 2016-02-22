@@ -18,11 +18,12 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use Base\CoreBundle\Validator\Constraints as FdcAssert;
 
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
- * @UniqueEntity("name")
+ * @FdcAssert\UniqueMasterTranslation
  */
 class WebTvTranslation implements TranslateChildInterface
 {
@@ -34,8 +35,7 @@ class WebTvTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, nullable=true, unique=true)
-     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      * @Groups({"web_tv_list", "web_tv_show"})
      */
     protected $name;

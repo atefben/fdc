@@ -139,6 +139,27 @@ class MediaVideoAdmin extends Admin
                     'updatedAt'      => array(
                         'display' => false
                     ),
+                    'imageAmazonUrl' => array(
+                        'display' => false
+                    ),
+                    'jobWebmState' => array(
+                        'display' => false
+                    ),
+                    'jobMp4State' => array(
+                        'display' => false
+                    ),
+                    'jobMp4Id' => array(
+                        'display' => false
+                    ),
+                    'jobWebmId' => array(
+                        'display' => false
+                    ),
+                    'mp4Url' => array(
+                        'display' => false
+                    ),
+                    'webmUrl' => array(
+                        'display' => false
+                    ),
                     'file'           => array(
                         'required'           => $requiredFile,
                         'field_type'         => 'sonata_media_type',

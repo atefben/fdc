@@ -5,3 +5,12 @@ services:
             - { name: validator.constraint_validator, alias: base_validator_locale }
         calls:
             - ['setLocales', ['%locales%']]
+
+    unique_master_translation_validator:
+        class: Base\CoreBundle\Validator\Constraints\UniqueMasterTranslationValidator
+        arguments:
+            - "@doctrine.orm.entity_manager"
+        tags:
+            -   { name: validator.constraint_validator, alias: unique_master_translation }
+
+

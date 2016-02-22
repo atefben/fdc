@@ -23,32 +23,29 @@ class AWSController extends Controller
     public function callbackAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $logger = $this->get('logger');
-		
-        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobMp4State' => '1'));
-		//print_r(\Doctrine\Common\Util\Debug::export($medias, 6));
-		
-		foreach($medias as $media) {
-			$this->updateAmazonStatus($media->getJobId(), $media->getJobMp4Id(), 'mp4');
-		}
-		
+
+        $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobMp4State' => '3'));
+
+        foreach ($medias as $media) {
+            $this->updateAmazonStatus($media, $media->getJobMp4Id(), 'setJobMp4');
+        }
+
         $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobWebmState' => '1'));
-		foreach($medias as $media) {
-			//$this->updateAmazonStatus($media->getJobId(), $media->getJobWebmId(), 'webm');
-		}
-		
-		$medias = $em->getRepository('BaseCoreBundle:MediaAudioTranslation')->findBy(array('jobWebmState' => '1'));
-		foreach($medias as $media) {
-			//$this->updateAmazonStatus($media->getJobId(), $media->getJobMp3Id(), 'mp3');
-		}
+        foreach ($medias as $media) {
+            $this->updateAmazonStatus($media, $media->getJobWebmId(), 'setJobWebm');
+        }
+
+        $medias = $em->getRepository('BaseCoreBundle:MediaAudioTranslation')->findBy(array('jobMp3State' => '1'));
+        foreach ($medias as $media) {
+            $this->updateAmazonStatus($media, $media->getJobMp3Id(), 'setJobMp3');
+        }
 
         $em->flush();
-
         return new JsonResponse();
 
     }
-	
-    public function updateAmazonStatus($media, $jobid, $mime)
+
+    public function updateAmazonStatus(&$media, $jobid, $method)
     {
         $elasticTranscoder = ElasticTranscoderClient::factory(array(
             'credentials' => array(
@@ -57,17 +54,23 @@ class AWSController extends Controller
             ),
             'region'      => 'eu-west-1',
         ));
-		
-		$elasticTranscoder->readJob(array('Id' => $jobid));
-		$jobData = $response->get('Job');
-		print_r($jobData['Status']);
-		
-		switch($jobData['Status']){
-			case 'completed': break;
-			case 'error': break;
-		}
+        $response = $elasticTranscoder->readJob(array('Id' => $jobid));
+        $jobData = $response->get('Job');
 
-        // $media->setImageAmazonUrl('http://');
-	}
-	
+        $statuses = array(
+            'Complete'    => 3,
+            'Error'       => 2,
+            'Progressing' => 1,
+        );
+
+        $media->{$method . 'State'}($statuses[$jobData['Status']]);
+
+        $this
+            ->getDoctrine()
+            ->getManager()
+            ->persist($media)
+        ;
+    }
+
+
 }

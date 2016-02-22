@@ -242,6 +242,14 @@ list:
         label_alt: Alt de l'image
     common:
         label_id: Id
+        label_title: Titre
+        label_type: Titre
+        label_theme: Thème
+        label_created_at: Crée le
+        label_published_interval: Date(s) de publication
+        label_priority_status: Priorité
+        label_status: Statut
+        label_main_status: Statut
     news_common:
         label_title: Titre de l'actualité
         translation_pending: En attente de traduction
