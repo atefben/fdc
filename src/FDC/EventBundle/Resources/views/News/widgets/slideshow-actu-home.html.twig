@@ -10,8 +10,9 @@
                     {% set trans = photo.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
+                {% set copyright = photo|trans_fallback('copyright') %}
                 <div class="img {% if key == 0 %}active{% endif %}">
-                    <a id="photo{{ key+1 }}" class="chocolat-image ajax" href="{% path file, '1280x808' %}" title="<span class='category'>{{ photo.theme|trans_fallback('name') }}</span><h2>{{ photo|trans_fallback('legend')  }}</h2>" data-credit="{{ photo.copyright }}">
+                    <a id="photo{{ key+1 }}" class="chocolat-image ajax" href="{% path file, '1280x808' %}" title="<span class='category'>{{ photo.theme|trans_fallback('name') }}</span><h2>{{ photo|trans_fallback('legend')  }}</h2>" data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}">
                         <img src="{% path file, '1760x1108' %}" alt="{{ trans.alt }}">
                     </a>
                 </div>
