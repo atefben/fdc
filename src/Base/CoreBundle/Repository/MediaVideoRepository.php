@@ -47,7 +47,7 @@ class MediaVideoRepository extends EntityRepository
             ->andWhere('mv.webTv = :webTv')
             ->setParameter('webTv', $webTv);
 
-        $qb = $qb->addTranslationQueries($qb, 'mvt', $locale);
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
         $qb = $qb
             ->orderBy('mvt.title', 'asc')
         ;

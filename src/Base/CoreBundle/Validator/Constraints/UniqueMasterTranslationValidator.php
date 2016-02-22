@@ -22,17 +22,19 @@ class UniqueMasterTranslationValidator extends ConstraintValidator
         $this->em = $em;
     }
 
-    public function validate($name, Constraint $constraint)
+    public function validate($object, Constraint $constraint)
     {
-        $conflicts = $this->em
-            ->getRepository('BaseCoreBundle:WebTvTranslation')
-            ->findBy(array(
-                'name' => $name,
-                'locale' => 'fr'
-            ));
+        if ($object->getId() == null) {
+            $conflicts = $this->em
+                ->getRepository('BaseCoreBundle:WebTvTranslation')
+                ->findOneBy(array(
+                    'name' => $object->getName(),
+                    'locale' => 'fr'
+                ));
 
-        if(count($conflicts) > 0) {
-            $this->context->addViolationAt('name', 'Une chaîne du même nom existe déjà');
+            if (count($conflicts) > 0) {
+                $this->context->addViolationAt('name', 'Une chaîne du même nom existe déjà');
+            }
         }
     }
 }

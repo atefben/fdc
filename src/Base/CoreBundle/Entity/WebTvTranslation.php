@@ -23,6 +23,7 @@ use Base\CoreBundle\Validator\Constraints as FdcAssert;
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
+ * @FdcAssert\UniqueMasterTranslation
  */
 class WebTvTranslation implements TranslateChildInterface
 {
@@ -35,7 +36,6 @@ class WebTvTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
-     * @FdcAssert\UniqueMasterTranslation
      * @Groups({"web_tv_list", "web_tv_show"})
      */
     protected $name;
