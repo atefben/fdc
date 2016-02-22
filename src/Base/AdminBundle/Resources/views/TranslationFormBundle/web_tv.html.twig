@@ -1,4 +1,6 @@
 {% trans_default_domain 'BaseAdminBundle' %}
+
+
 {{ form_errors(form) }}
 <div class="a2lix_translations tabbable">
     {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
@@ -21,6 +23,12 @@
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(translationsFields.name) }}
                                     {% if form.vars.default_locale == locale %}
+                                        <div class="Base-sonata-media-ajax-display">
+                                            {% if form.children.fr.vars.value.translatable.image is defined and
+                                            form.children.fr.vars.value.translatable.image is not null %}
+                                                {% media form.children.fr.vars.value.translatable.image.file, '586x370' %}
+                                            {% endif %}
+                                        </div>
                                         {{ form_row(form.parent.children.image) }}
                                     {% endif %}
                                     {% if form.vars.default_locale != locale %}
