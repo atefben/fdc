@@ -101,6 +101,11 @@ class MediaAudioAdmin extends Admin
                 'choices'   => MediaAudio::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
             ))
+            ->add('state', null, array(
+                'label'              => 'list.media_video.label_encoding_state',
+                'template'           => 'BaseAdminBundle:MediaAudio:list_state.html.twig',
+                'translation_domain' => 'BaseAdminBundle',
+            ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
             ))
