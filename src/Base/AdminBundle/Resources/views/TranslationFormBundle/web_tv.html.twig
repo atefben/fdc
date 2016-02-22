@@ -25,8 +25,10 @@
                                     {% if form.vars.default_locale == locale %}
                                         <div class="Base-sonata-media-ajax-display">
                                             {% if form.parent.vars.data.image is defined and
-                                            form.parent.vars.data.image is not null %}
-                                                {% media form.parent.vars.data.image.file, '586x370' %}
+                                                form.parent.vars.data.image is not null and
+                                                form.parent.vars.data.image.findTranslationByLocale('fr') is not null
+                                            %}
+                                                {% media form.parent.vars.data.image.findTranslationByLocale('fr').file, '586x370' %}
                                             {% endif %}
                                         </div>
                                         {{ form_row(form.parent.children.image) }}
