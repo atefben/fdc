@@ -23,14 +23,14 @@
 
             {% if news is news_article %}
                 {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : news.header } %}
-             {% elseif news is news_audio %}
-                 {% include 'FDCEventBundle:News:widgets/single-audio.html.twig'%}
+            {% elseif news is news_audio %}
+                {% include 'FDCEventBundle:News:widgets/single-audio.html.twig'%}
             {% elseif news is news_video %}
                 <div class="single-video">
                     {% include 'FDCEventBundle:News:widgets/single-video.html.twig' %}
                 </div>
             {% elseif news is news_image %}
-                <div class="single-video">
+                <div class="single-gallery">
                     {% include 'FDCEventBundle:News:widgets/single-gallery.html.twig' %}
                 </div>
             {% endif %}
