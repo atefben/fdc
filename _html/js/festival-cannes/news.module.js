@@ -27,7 +27,6 @@ $(document).ready(function() {
     $(this).addClass('active');
 
     $('#articles-wrapper').addClass('loading');
-    $('#articles-wrapper').css('max-height', 'none')
 
     $('#shd').removeClass('show');
     $('.read-more').html(GLOBALS.texts.readMore.more).removeClass('prevDay');
@@ -39,6 +38,7 @@ $(document).ready(function() {
     setTimeout(function() {
       cl.show();
       $('#canvasloader').addClass('show');
+      $('#articles-wrapper').css('max-height', 'none')
     }, 800);
 
     // todo: remove timeout
@@ -105,7 +105,6 @@ $(document).ready(function() {
       $('#shd').removeClass('show');
       $('.read-more').html( GLOBALS.texts.readMore.more ).removeClass('prevDay');
       $('#articles-wrapper').addClass('loading');
-      $('#articles-wrapper').css('max-height', 'none')
       
       $('html, body').animate({
         scrollTop: $("#news").offset().top - 50
@@ -118,6 +117,7 @@ $(document).ready(function() {
       setTimeout(function() {
         cl.show();
         $('#canvasloader').addClass('show');
+        $('#articles-wrapper').css('max-height', 'none')
       }, 800);
 
       // todo: remove timeout
@@ -170,7 +170,8 @@ $(document).ready(function() {
 
           div.find('.filter .select span:not[data-filter="all"]').each(function(i,v) {
             console.log($(v).data('filter'));
-            console.log($('.filter .select span[data-filter="'+$(v).data('filter')+'"]').length);
+            var f = $(v).data('filter');
+            console.log($('.filter .select span[data-filter="'+f+'"]').length);
           });
 
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).append(div.find('.articles'));
