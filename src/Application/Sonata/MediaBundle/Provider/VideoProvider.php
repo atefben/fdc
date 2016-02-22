@@ -100,7 +100,7 @@ class VideoProvider extends FileProvider
 			 récupérer l'URL du fichier généré par amazon
 			*/
 			//$parentVideo->setImageAmazonUrl($job->get('Job')['img_url']);
-			
+
             $parentVideo->setJobWebmId($job->get('Job')['Id']);
 			$parentVideo->setWebmURL($path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name));
             $parentVideo->setJobWebmState(1);
@@ -127,6 +127,7 @@ class VideoProvider extends FileProvider
 	            ),
 	        ));
             $parentAudio->setJobMp3Id($job->get('Job')['Id']);
+            $parentAudio->setMp3Url($path_audio_output . $file_name);
            	$parentAudio->setJobMp3State(1);
         }
 
