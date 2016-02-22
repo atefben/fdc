@@ -69,7 +69,6 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @ORM\Column(type="integer", nullable=true, options={"default":0})
      */
     private $jobMp4State;
-	
 
     /**
      * @var string

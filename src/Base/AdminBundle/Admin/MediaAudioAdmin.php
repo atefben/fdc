@@ -120,11 +120,20 @@ class MediaAudioAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales'   => array('fr'),
                 'fields'             => array(
-                    // remove fields not set by user
+                    // add fields not set by user
                     'createdAt'      => array(
                         'display' => false
                     ),
                     'updatedAt'      => array(
+                        'display' => false
+                    ),
+                    'jobMp3State' => array(
+                        'display' => false
+                    ),
+                    'jobMp3Id' => array(
+                        'display' => false
+                    ),
+                    'mp3Url' => array(
                         'display' => false
                     ),
                     'file'           => array(
