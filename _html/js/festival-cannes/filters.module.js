@@ -82,7 +82,7 @@ function filter() {
 $(document).ready(function() {
 
   // on click on a filter
-  $(body).on('click', '.filters .select span', function() {
+  $('body').on('click', '.filters .select span', function() {
     var h = $(this).parent().html();
 
     $('#filters').remove();
