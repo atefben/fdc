@@ -87,6 +87,14 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $user->setEnabled(true);
         $user->addGroup($this->getReference('group-all-translator'));
         $userManager->updateUser($user);
+
+        $user = $userManager->createUser();
+        $user->setUsername('press');
+        $user->setEmail('press@yopmail.fr');
+        $user->setPlainPassword('press2016');
+        $user->setEnabled(true);
+        $user->setROLES(array('ROLE_FDC_PRESS_REPORTER'));
+        $userManager->updateUser($user);
     }
 
     public function getOrder()
