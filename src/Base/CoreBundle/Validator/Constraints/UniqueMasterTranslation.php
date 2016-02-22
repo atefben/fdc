@@ -12,6 +12,6 @@ class UniqueMasterTranslation extends Constraint
     }
     public function getTargets()
     {
-        return self::PROPERTY_CONSTRAINT;
+        return self::CLASS_CONSTRAINT;
     }
 }
