@@ -4,6 +4,18 @@
 {% if trans is null or trans.file is null %}
     {% set trans = file.findTranslationByLocale('fr') %}
 {% endif %}
+
+{% set header = file.image %}
+{% if header is not null %}
+    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+        {% set imageTrans = header.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+{% if imageTrans is defined %}
+    {% set image = imageTrans.file %}
+{% endif %}
+
 <div class="video-container state-init video"
      data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
      data-twitter="//www.twitter.com"
@@ -14,7 +26,7 @@
      {% else %}
      data-file='[{"file":"{% path trans.file, 'reference' %}"}]'
      {% endif %}
-     data-img="{% path file.image, 'reference' %}">
+     data-img="{% if image is defined %}{% path image, 'reference' %}{% endif %}">
 
     <div id="video-player-{{ trans.id }}" class="video-player">
     </div>

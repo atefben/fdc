@@ -7,7 +7,7 @@
 
                 {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is null %}
-                    {% set trans = gallery.media.file.findTranslationByLocale('fr') %}
+                    {% set trans = gallery.media.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
                 <div class="img {% if key == 0 %}active{% endif %}">
@@ -22,7 +22,7 @@
             {% for key, gallery in news.gallery.medias %}
                 {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is null %}
-                    {% set trans = gallery.media.file.findTranslationByLocale('fr') %}
+                    {% set trans = gallery.media.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
                 <div data-id="photo{{ key+1 }}" class="thumb {% if key == 0 %}active{% endif %}">
