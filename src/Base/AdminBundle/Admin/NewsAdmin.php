@@ -72,7 +72,7 @@ class NewsAdmin extends Admin
                         return;
                     }
 
-                    $queryBuilder->where("{$alias} INSTANCE OF {$value['value']}");
+                     $queryBuilder->andWhere("{$alias} INSTANCE OF {$value['value']}");
 
                     return true;
                 },
