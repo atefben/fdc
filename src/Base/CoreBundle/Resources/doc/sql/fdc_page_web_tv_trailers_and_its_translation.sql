@@ -24,15 +24,15 @@ SET time_zone = "+00:00";
 -- Contenu de la table `fdcpage_web_tv_trailers`
 --
 
-INSERT INTO `fdcpage_web_tv_trailers` (`id`, `image_id`, `seo_file_id`, `created_at`, `updated_at`, `translate`, `translate_options`, `priority_status`, `slug`) VALUES
-(1, NULL, NULL, '2016-02-09 00:20:46', '2016-02-09 00:20:46', 0, 'N;', 1, 'competition'),
-(2, NULL, NULL, '2016-02-09 00:20:46', '2016-02-09 00:20:46', 0, 'N;', 1, 'certain-regard'),
-(3, NULL, NULL, '2016-02-09 00:20:46', '2016-02-09 00:20:46', 0, 'N;', 1, 'hors-competition'),
-(4, NULL, NULL, '2016-02-09 00:20:46', '2016-02-09 00:20:46', 0, 'N;', 1, 'seances-speciales'),
-(5, NULL, NULL, '2016-02-09 00:20:46', '2016-02-09 00:20:46', 0, 'N;', 1, 'cinefondation'),
-(6, NULL, NULL, '2016-02-09 00:20:46', '2016-02-09 00:20:46', 0, 'N;', 1, 'courts-metrages'),
-(7, NULL, NULL, '2016-02-09 00:20:46', '2016-02-09 00:20:46', 0, 'N;', 1, 'cannes-classics'),
-(8, NULL, NULL, '2016-02-09 00:20:46', '2016-02-09 00:20:46', 0, 'N;', 1, 'cinema-de-la-plage');
+INSERT INTO `fdcpage_web_tv_trailers` (`id`, `image_id`, `seo_file_id`, `created_at`, `updated_at`, `translate`, `translate_options`, `priority_status`, `selection_section_id`) VALUES
+(1, NULL, NULL, '2016-02-09 00:20:46', '2016-02-17 17:15:26', 0, 'a:0:{}', 1, '3'),
+(2, NULL, NULL, '2016-02-09 00:20:46', '2016-02-17 17:16:26', 0, 'a:0:{}', 1, '6'),
+(3, NULL, NULL, '2016-02-09 00:20:46', '2016-02-17 17:17:25', 0, 'a:0:{}', 1, '7'),
+(4, NULL, NULL, '2016-02-09 00:20:46', '2016-02-17 17:17:42', 0, 'a:0:{}', 1, '24'),
+(5, NULL, NULL, '2016-02-09 00:20:46', '2016-02-17 17:18:10', 0, 'a:0:{}', 1, '2'),
+(6, NULL, NULL, '2016-02-09 00:20:46', '2016-02-17 17:18:33', 0, 'a:0:{}', 1, '4'),
+(7, NULL, NULL, '2016-02-09 00:20:46', '2016-02-17 17:18:57', 0, 'a:0:{}', 1, '1'),
+(8, NULL, NULL, '2016-02-09 00:20:46', '2016-02-17 17:19:16', 0, 'a:0:{}', 1, '10');
 
 --
 -- Contenu de la table `fdcpage_web_tv_trailers_translation`
