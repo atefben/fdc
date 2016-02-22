@@ -7,7 +7,7 @@
             {% for key, photo in homeArticlesSlider %}
                 {% set trans = photo.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is null %}
-                    {% set trans = gallery.findTranslationByLocale('fr') %}
+                    {% set trans = photo.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
                 <div class="img {% if key == 0 %}active{% endif %}">
@@ -18,21 +18,31 @@
             {% endfor %}
 
         </div>
+        {% set firstLegend = '' %}
+        {% set firstCopyright = '' %}
         <div class="owl-carousel thumbnails">
             {% for key, photo in homeArticlesSlider %}
                 {% set trans = photo.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is null %}
-                    {% set trans = gallery.findTranslationByLocale('fr') %}
+                    {% set trans = photo.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% if loop.index == 1 %}
+                    {% set firstLegend = photo|trans_fallback('legend') %}
+                    {% set firstCopyright = photo|trans_fallback('copyright') %}
                 {% endif %}
                 {% set file = trans.file %}
-                <div data-id="photo{{ key+1 }}" class="thumb {% if key == 0 %}active{% endif %}">
+                {% set copyright = photo|trans_fallback('copyright') %}
+                <div data-id="photo{{ key+1 }}" data-caption="<strong>{{ photo|trans_fallback('legend') }}</strong>{% if copyright is not empty %} © {% endif %}{{ copyright }}" class="thumb {% if key == 0 %}active{% endif %}">
                     <img src="{% path file, '194x128' %}" alt="{{ trans.alt }}">
                 </div>
             {% endfor %}
         </div>
     </div>
     <h3>Portfolio du jour</h3>
-    <p class="caption"></p>
+    <p class="caption">
+        <strong>{{ firstLegend }}</strong>
+        {% if firstCopyright is not empty %} © {{ firstCopyright }}{% endif %}
+    </p>
 
 </div>
 
