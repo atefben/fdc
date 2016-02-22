@@ -52,7 +52,8 @@ $(document).ready(function() {
         success: function(data) {
           $('#canvasloader').removeClass('show');
 
-          var div = $("<div/>"); div.html(data);
+          var div = $("<div/>");
+          div.html(data);
           $('.filters').html(div.find('.filter'));
           $('#articles-wrapper').html(div.find('.articles'));
 
@@ -137,7 +138,8 @@ $(document).ready(function() {
               $('#articles-wrapper').removeClass('loading');
             }, 500);
 
-            var div = $("<div/>"); div.html(data);
+            var div = $("<div/>");
+            div.html(data);
             $('.filters').html(div.find('.filter'));
             $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).html(div.find('.articles'));
 
@@ -166,12 +168,16 @@ $(document).ready(function() {
           'end': typeof $('#news .articles:not(.nextDay) article:last').data('end') != 'undefined' ? $('#news .articles:not(.nextDay) article:last').data('end') : 'false'
         },
         success: function(data) {
-          var div = $("<div/>"); div.html(data);
+          var div = $("<div/>");
+          div.html(data);
 
-          div.find('.filter .select span:not[data-filter="all"]').each(function(i,v) {
-            console.log($(v).data('filter'));
-            var f = $(v).data('filter');
-            console.log($('.filter .select span[data-filter="'+f+'"]').length);
+          div.find('.filter .select span:not([data-filter="all"])').each(function(i,v) {
+            var f = $(this).data('filter');
+            
+            if ($('.filter .select span[data-filter="'+f+'"]').length == 0) {
+              var fid = $(this).closest('.filter').attr('id');
+              $('.filters #'+fid+' .select').append($(this));
+            }
           });
 
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).append(div.find('.articles'));
