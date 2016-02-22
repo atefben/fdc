@@ -6,7 +6,7 @@
         {% for translationLocale in object.translations %}
             <div>
                 {% if translationLocale is not null %}
-                    {{ translationLocale.locale|humanize }}:
+                    {{ translationLocale.locale|upper }} :
                     {% if  translationLocale.jobMp3State == 2 %}
                         {{ 'form.encoding_state.error'|trans }}
                     {% elseif  translationLocale.jobMp3State == 1 %}
