@@ -143,6 +143,13 @@
           margin-bottom: 15px;
           position: relative;
 
+          img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            height: 100%;
+          }
+
           .picto {
             z-index: 1;
           }

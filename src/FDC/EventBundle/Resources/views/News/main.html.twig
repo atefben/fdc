@@ -3,14 +3,16 @@
 
 {% block body %}
     {% include 'FDCEventBundle:News:widgets/social-share.html.twig' %}
-<div id="main" class="single-article loading">
+<div id="main" class="single-article single-actualite loading">
     <span id="addtext">{{ 'article.text.ajouteramaselection'|trans }}</span>
     <div id="canvasloader" class="canvasloader"></div>
     <div class="content-article">
         <div class="container{% if news is news_article %} small-container{% elseif news is news_audio %}{% elseif news is news_video %}{% elseif news is news_image %}{% endif %}">
+            {% if prev[0] is defined and not prev[0] is empty %}<a href="{{ path('fdc_event_news_get', {'format': prev[0].newsFormat, 'slug': prev[0]|trans_fallback('slug')}) }}" class="nav prev"><i class="icon icon_flecheGauche"></i></a>{% endif %}
+            {% if next[0] is defined and not next[0] is empty %}<a href="{{ path('fdc_event_news_get', {'format': next[0].newsFormat, 'slug': next[0]|trans_fallback('slug')}) }}" class="nav next"><i class="icon icon_fleche-right"></i></a>{% endif %}
             <div class="info">
                 <a href="#" class="category">{{ news.theme|trans_fallback('name') }}</a>
-                <span class="date">{{ news.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ news.createdAt|date('H:i') }}</span>
+                <span class="date">{{ news.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.publishedAt|date('H:i') }}</span>
                 <span class="update">{{ 'article.text.miseajour'|trans }} :</span><span class="date">{{ news.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.updatedAt|date('H:i') }}</span>
             </div>
             <h2 class="title-article">{{ news|trans_fallback('title') }}</h2>
@@ -26,33 +28,27 @@
             {% elseif news is news_video %}
                 <div class="single-video">
                     {% include 'FDCEventBundle:News:widgets/single-video.html.twig' %}
-                <div>
+                </div>
             {% elseif news is news_image %}
                 <div class="single-video">
                     {% include 'FDCEventBundle:News:widgets/single-gallery.html.twig' %}
-                <div>
+                </div>
             {% endif %}
 
             <div class="chapeau">{{ news|trans_fallback('introduction')|raw }}</div>
 
             {% for widget in news.widgets %}
-                {% if widget is news_widget_image and widget.gallery.medias|length == 1 %}
-                    <!-- SINGLE PHOTO -->
+                {% if widget is news_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
                     {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : widget.gallery.medias[0].media } %}
-                {% elseif widget is news_widget_image and widget.gallery.medias|length > 1 %}
-                    <!-- SLIDESHOW -->
+                {% elseif widget is news_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
                     {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
                 {% elseif widget is news_widget_text %}
-                    <!-- TEXT -->
                     {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
                 {% elseif widget is news_widget_video %}
-                    <!-- VIDEO -->
                     {% include 'FDCEventBundle:News:widgets/video.html.twig' with {'widget': widget} %}
                 {% elseif widget is news_widget_video_youtube %}
-                    <!-- VIDEO YOUTUBE -->
                     {% include 'FDCEventBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
                 {% elseif widget is news_widget_audio %}
-                    <!-- AUDIO -->
                     {% if widget.title is defined %}
                         <h2 class="title">{{ widget.title }}</h2>
                     {% endif %}
@@ -89,6 +85,7 @@
             </div>
         </div>
 
+        {% if associatedFilm is not null or programmations is not empty  %}
         <div class="film">
             {% if associatedFilm is not null %}
             <div class="info-film">
@@ -113,18 +110,18 @@
                                             {{ title }}
                                         </a>
                                     </h3>
-									{%if director|length > 1 %}
-										<p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
-									{% else %}
-											<p class="director">
-											{% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-												{%if index < 4 %}
-												<a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>,
-												{% endif %}
-												{%if index == 4 %}...{% endif %}
-											{% endfor %}
-											</p>
-									{% endif %}
+                                    {%if director is defined and director|length > 1 %}
+                                        <p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
+                                    {% else %}
+                                            <p class="director">
+                                            {% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                {%if index < 4 %}
+                                                <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>,
+                                                {% endif %}
+                                                {%if index == 4 %}...{% endif %}
+                                            {% endfor %}
+                                            </p>
+                                    {% endif %}
                                     <p>
                                         {% for country in associatedFilm.countries %}
                                             {{ country.country|trans_fallback('name') }}
@@ -163,6 +160,7 @@
             </div>
             {% endif %}
         </div>
+        {% endif %}
         <div class="container">
             {% if focusArticles is not empty %}
             <div class="focus">
@@ -193,17 +191,14 @@
     <span class="anim"></span>
 </div>
 
-<!-- POPIN MAIL SHARE ---->
 {{ render(controller('FDCEventBundle:Global:shareEmail',
    {'section': news.theme|trans_fallback('name'),
-    'detail': news.createdAt|date('d.m.y'),
+    'detail': news.publishedAt|date('d.m.y'),
     'title': news|trans_fallback('title'),
     'description': news|trans_fallback('introduction')|raw
    }))
 }}
-<!-- END POPIN MAIL SHARE -->
 
-<!-- BREADCRUMB -->
 {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
 {"breadcrumb":
 [
@@ -221,5 +216,4 @@
     }
 ]
 } %}
-
 {% endblock %}

@@ -342,7 +342,9 @@ $(document).ready(function() {
       // home prefooter
       parallaxElements[0].positionTop = $('#slider-prefooter').offset().top;
       parallaxElements[1].positionTop = $('#slider').offset().top - $header.height();
-      parallaxElements[2].positionTop = $('#slider-movies').offset().top;
+      if ($('#slider-movies').length > 0) {
+        parallaxElements[2].positionTop = $('#slider-movies').offset().top;
+      }
     }
 
     if($('.webtv-live').length) {

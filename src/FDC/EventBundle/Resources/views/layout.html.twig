@@ -2,36 +2,22 @@
 <!DOCTYPE html>
 <html {{ sonata_seo_html_attributes() }}>
     <head {{ sonata_seo_head_attributes() }}>
-
-        <!-- //// META \\\\ -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
         {{ sonata_seo_title() }}
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         {{ sonata_seo_metadatas() }}
         {{ sonata_seo_link_canonical() }}
         {{ sonata_seo_lang_alternates() }}
-
         {% include 'FDCEventBundle:Base:stylesheet.html.twig' %}
-
         {% include 'FDCEventBundle:Base:javascript_head.html.twig' %}
-
     </head>
     <body>
-
         {% block pre_home %}
         {% endblock %}
-
         {% include 'FDCEventBundle::header.html.twig' %}
         {% block body %}
         {% endblock %}
-
         {% include 'FDCEventBundle:Global:cookies.html.twig' %}
-
         {% include 'FDCEventBundle::footer.html.twig' %}
     </body>
-
     {% include 'FDCEventBundle:Base:javascript.html.twig' %}
-
 </html>

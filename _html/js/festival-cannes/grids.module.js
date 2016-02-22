@@ -196,7 +196,8 @@ $(document).ready(function () {
     if($('.all-photos').length) {
       var slideshow = $('#gridPhotos').Chocolat({
         imageSize: 'cover',
-        fullScreen: false
+        fullScreen: false,
+        imageSelector: '.item:not(.isotope-hidden) .chocolat-image'
       }).data('chocolat');
 
       slideshows.push(slideshow);
@@ -369,8 +370,39 @@ $(document).ready(function () {
       });
 
       $container.isotope({
-        filter: filterValues
+        filter: function() {
+          var obj = $(this),
+              filterArray = filterValues.split('.'),
+              f = "";
+
+          for(i=1; i<filterArray.length; i++) {
+            f += "(?=.*"+filterArray[i]+")";
+          }
+          f +=".*";
+
+          return obj.attr('class').match(new RegExp(f));
+        }
       });
+      
+
+      if($('#gridAudios') || $('#gridVideos')) {
+        $('.filter .select').each(function() {
+          $that = $(this);
+          $that.find("span:not(.active):not([data-filter='all'])").each(function() {
+            $this = $(this);
+
+            var getVal = '.'+$this.data('filter');
+            var numItems = $('.item'+getVal+':not(.isotope-hidden)').length;
+            if (numItems === 0) {
+                $this.addClass('disabled');
+                // $this.hide();
+            } else {
+                $this.removeClass('disabled');
+                // $this.show();
+            }
+          });
+        });
+      }
 
       // if($('.all-photos').length) {
       //   setTimeout(function() {

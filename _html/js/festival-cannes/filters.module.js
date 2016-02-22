@@ -52,22 +52,44 @@ function filter() {
       }
 
       $('.articles.nextDay article').show();
+
+      $('.filter .select').each(function() {
+        $that = $(this);
+        $id   = $(this).closest('.filter').attr('id');
+
+        $that.find("span:not(.active):not([data-filter='all'])").each(function() {
+          $this = $(this);
+
+          var getVal = $this.data('filter');
+          var numItems = $('#filteredArticles article[data-'+$id+'="'+getVal+'"]').length;
+          if (numItems === 0) {
+              $this.addClass('disabled');
+          } else {
+              $this.removeClass('disabled');
+          }
+        });
+      });
     }
   } else {
     $('*[data-' + id + ']').show();
+    
+    if($('.articles').length != 0) {
+      $('.filter .select span').removeClass('disabled');
+    }
   }
 }
 
 $(document).ready(function() {
 
   // on click on a filter
-  $('.filters .select span').on('click', function() {
+  $('body').on('click', '.filters .select span', function() {
     var h = $(this).parent().html();
 
     $('#filters').remove();
     $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon_close"></i></div></div>');
     $('#filters .vCenterKid').html(h);
     $('#filters .vCenterKid').find(':not(span)').remove();
+    $('#filters .vCenterKid').find('span.disabled').remove();
     $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
 
     setTimeout(function() {
@@ -91,10 +113,10 @@ $(document).ready(function() {
   $('body').on('click', '#filters span', function() {
 
       var id = $('#filters').data('id'),
-          i = $(this).index();
+          f  = $(this).data('filter');
 
       $('#' + id + ' .select span').removeClass('active');
-      $('#' + id + ' .select span').eq(i).addClass('active');
+      $('#' + id + ' .select span[data-filter="'+f+'"]').addClass('active');
 
       filter();
   });

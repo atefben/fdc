@@ -166,14 +166,12 @@
     <span class="anim"></span>
 </div>
 
-<!-- POPIN MAIL SHARE ---->
-    {{ render(controller('FDCEventBundle:Global:shareEmail',
-       {'section': artist.functions,
-        'detail': artist.from,
-        'title':artist.name,
-        'description': artist.bio
-       }))
-    }}
-<!-- END POPIN MAIL SHARE -->
+{{ render(controller('FDCEventBundle:Global:shareEmail',
+   {'section': artist.functions,
+    'detail': artist.from,
+    'title':artist.name,
+    'description': artist.bio
+   }))
+}}
 
 {% endblock body %}

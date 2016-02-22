@@ -279,9 +279,9 @@
     height: 305px;
 
     &:hover .img .read-later {
-      opacity: 1;
-      visibility: visible;
-    }
+       opacity: 1;
+       visibility: visible;
+     }
 
     .img {
       margin: 0 auto 23px auto;
@@ -427,14 +427,6 @@
         border-top-color: $black;
         top: 100%;
         left: 92px;
-      }
-    }
-
-    &:hover {
-      span {
-        opacity: 1;
-        visibility: visible;
-        @include transform(translateY(0));
       }
     }
   }

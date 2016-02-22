@@ -86,7 +86,7 @@
             <p><strong>Il y a différents statuts d’acteurs : Lambert Wilson, Virginie Ledoyen d’un côté et ensuite tu as Guillaume Gouix, jeune acteur, Franck Gastambile et le québécois François Arnaud … Vous êtes satisfait du rendu ?</strong></p>
             <p>Symboliquement, j’avais une famille : Lambert qui joue le père, Virginie la mère, Guillaume l’ainé, Franck le jeune un peu perdu et François le sale gosse. Et oui, j’en suis super content parce que je voulais une lecture nouvelle sur le film de genre .</p>
           </div>
-          <div class="video-player video">
+          <!-- <div class="video-player video">
             <div class="image" style="background-image: url(img/article/004.jpg);"></div>
             <div class="picto"><i class="icon icon_video"></i></div>
             <div class="info">
@@ -97,7 +97,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="text">
             <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
             <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>

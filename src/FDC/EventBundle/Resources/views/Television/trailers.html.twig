@@ -53,7 +53,7 @@
 
                 {% for film in films %}
                     {% set video = film.associatedMediaVideos|last.mediaVideo %}
-                    <div class="item {{ video.createdAt|date('d-m-Y') }} {{ video.theme }} shadow-bottom video">
+                    <div class="item {{ video.publishedAt|date('d-m-Y') }} {{ video.theme }} shadow-bottom video">
                         <img src="{% path video.image|trans_fallback('file'), '640x404' %}"
                              srcset="{% path video.image|trans_fallback('file'), '640x404' %} 1x, {% path video.image|trans_fallback('file'), '1280x808' %} 2x"
                              alt="">

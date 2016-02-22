@@ -69,6 +69,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @ORM\Column(type="integer", nullable=true, options={"default":0})
      */
     private $jobMp4State;
+	
 
     /**
      * @var string
@@ -83,6 +84,20 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", nullable=true)
      */
     private $jobWebmId;
+	
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $mp4Url;
+	
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $webmUrl;
 
     /**
      * @var Theme
@@ -96,7 +111,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      */
     public function __construct()
     {
-        $this->state = 0;
+        $this->state = 1;
     }
 
 
@@ -279,10 +294,57 @@ class MediaVideoTranslation implements TranslateChildInterface
         return $this->imageAmazonUrl;
     }
 
+
+    /**
+     * Set webmUrl
+     *
+     * @param integer $webmUrl
+     * @return MediaVideoTranslation
+     */
+    public function setWebmURL($webmUrl)
+    {
+        $this->webmUrl = $webmUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get webmUrl
+     *
+     * @return string 
+     */
+    public function getWebmUrl()
+    {
+        return $this->webmUrl;
+    }
+	
+    /**
+     * Set mp4Url
+     *
+     * @param string $webmUrl
+     * @return MediaVideoTranslation
+     */
+    public function setMp4Url($mp4Url)
+    {
+        $this->mp4Url = $mp4Url;
+
+        return $this;
+    }
+
+    /**
+     * Get mp4URL
+     *
+     * @return string 
+     */
+    public function getMp4Url()
+    {
+        return $this->mp4Url;
+    }
+	
     /**
      * Set jobWebmState
      *
-     * @param integer $jobWebmState
+     * @param string $jobWebmState
      * @return MediaVideoTranslation
      */
     public function setJobWebmState($jobWebmState)

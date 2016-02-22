@@ -35,7 +35,6 @@
                         </div>
                     </div>
                     {% endif %}
-                    <!-- GUESTS -->
                     {% if content.guest is defined %}
                         <div class="contain-article-invit">
 
@@ -85,8 +84,6 @@
                             {% endfor %}
                         {% endfor %}
                     {% endif %}
-                    <!-- GUESTS -->
-                    <!-- SECTIONS -->
                     {% for section in content.sections %}
                     <section class="categorie-items">
                         {% if section.title is defined  %}
@@ -124,11 +121,9 @@
                         <p>{{ 'cannesclassics.btn.partagerlarticle'|trans }}</p>
                         <div class="buttons square">
                             <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_event_news_index') }}" class="button facebook">
-
-							</a>
-							<a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_news_index') }}" class="button twitter">
-
-							</a>
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_news_index') }}" class="button twitter">
+                            </a>
                             <a href="#" class="button link"></a>
                             <a href="#" class="button email"></a>
                             <a href="#" class="button print"></a>

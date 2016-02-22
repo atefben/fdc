@@ -18,10 +18,9 @@ class FilmFilmAdmin extends SoifAdmin
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
         $years = $em->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
-
         $datagridMapper
             ->add('title', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback' => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -29,22 +28,29 @@ class FilmFilmAdmin extends SoifAdmin
                     $queryBuilder->where('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.title LIKE :title');
-                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
+                    $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
 
                     return true;
                 },
                 'field_type' => 'text'
             ))
             ->add('realisator', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback' => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
+                    $queryBuilder->join("{$alias}.persons", 'fp');
+                    $queryBuilder->join("fp.functions", 'ff');
+                    $queryBuilder->join("ff.function", 'fff');
+                    $queryBuilder->where("fff.id", '3');
+                    $queryBuilder->andWhere('fff.name LIKE :name');
+                    $queryBuilder->setParameter('name', '%' . $value['value'] . '%');
+
                 },
                 'field_type' => 'text'
             ))
             ->add('selection', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback' => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -52,14 +58,14 @@ class FilmFilmAdmin extends SoifAdmin
                     $queryBuilder->join("ts.translations", 'tst');
                     $queryBuilder->where('tst.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('tst.name LIKE :name');
-                    $queryBuilder->setParameter('name', '%'. $value['value']. '%');
+                    $queryBuilder->andWhere('ts.fullName LIKE :name');
+                    $queryBuilder->setParameter('name', '%' . $value['value'] . '%');
                     return true;
                 },
                 'field_type' => 'text'
             ))
             ->add('festival-year', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback' => function ($queryBuilder, $alias, $field, $value) {
                     $em = $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
                     $years = $em->getRepository('BaseCoreBundle:FilmFestival')->findAll();
                     if (!$value['value']) {
@@ -67,7 +73,7 @@ class FilmFilmAdmin extends SoifAdmin
                     }
                     $queryBuilder->join("{$alias}.festival", 'fs');
                     $queryBuilder->where('fs.year LIKE :year');
-                    $queryBuilder->setParameter('year', '%'. $years[$value['value']]. '%');
+                    $queryBuilder->setParameter('year', '%' . $years[$value['value']] . '%');
                     return true;
                 },
                 'field_type' => 'choice',
@@ -75,7 +81,22 @@ class FilmFilmAdmin extends SoifAdmin
                     'choices' => $years
                 )
             ))
-        ;
+            ->add('have_trailer', 'doctrine_orm_callback', array(
+                'callback' => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+
+                    if ($value['value']) {
+                        $queryBuilder->join("{$alias}.associatedMediaVideos", 'amv');
+                        $queryBuilder->join('amv.mediaVideo', 'mv');
+                        $queryBuilder->andWhere('mv.displayedTrailer = 1');
+                    }
+                    return true;
+                },
+                'field_type' => 'checkbox',
+                'label' => 'filter.label_have_trailer',
+            ));
     }
 
     /**
@@ -104,8 +125,7 @@ class FilmFilmAdmin extends SoifAdmin
                     'delete' => array(),
                     'soif_refresh' => array('template' => 'BaseAdminBundle:CRUD:list__action_soif_refresh.html.twig'),
                 )
-            ))
-        ;
+            ));
     }
 
     /**
@@ -125,8 +145,7 @@ class FilmFilmAdmin extends SoifAdmin
             ->add('website')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('soifUpdatedAt')
-        ;
+            ->add('soifUpdatedAt');
     }
 
     /**
@@ -150,7 +169,6 @@ class FilmFilmAdmin extends SoifAdmin
             ->add('persons')
             ->add('medias', null, array(
                 'template' => 'BaseAdminBundle:FilmFilm:medias.html.twig'
-            ))
-        ;
+            ));
     }
 }

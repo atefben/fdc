@@ -37,13 +37,8 @@ class VideoProvider extends FileProvider
         ));
 
         if (isset($parentVideo)) {
-
-            if (substr($media->getProviderReference(), -4) == '.bin') {
-                $file_name = substr($media->getProviderReference(), 0, -4) . '.mov';
-                $media->setProviderReference($file_name);
-            } else {
-                $file_name = $media->getProviderReference();
-            }
+			
+			$file_name = $media->getProviderReference();
             $path = $this->generatePublicUrl($media, $media->getProviderReference());
 
             $file_path = explode('/', $path);
@@ -64,7 +59,7 @@ class VideoProvider extends FileProvider
                 ),
                 'Outputs'         => array(
                     array(
-                        'Key'      => $file_name,
+                        'Key'      => str_replace('.mov', '.mp4', $file_name),
                         'Rotate'   => 'auto',
                         'PresetId' => '1351620000001-000001',
                     ),
@@ -72,6 +67,7 @@ class VideoProvider extends FileProvider
             ));
 
             $parentVideo->setJobMp4Id($job->get('Job')['Id']);
+			$parentVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
             $parentVideo->setJobMp4State(1);
 
 
@@ -96,6 +92,7 @@ class VideoProvider extends FileProvider
                 ),
             ));
             $parentVideo->setJobWebmId($job->get('Job')['Id']);
+			$parentVideo->setWebmURL($path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name));
             $parentVideo->setJobWebmState(1);
 			
         } elseif (isset($parentAudio)) {

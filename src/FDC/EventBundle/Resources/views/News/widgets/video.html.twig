@@ -4,7 +4,6 @@
 {% if trans is null or trans.file is null %}
     {% set trans = file.findTranslationByLocale('fr') %}
 {% endif %}
-
 <div class="video-container state-init video"
      data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
      data-twitter="//www.twitter.com"
@@ -15,8 +14,7 @@
      {% else %}
      data-file='[{"file":"{% path trans.file, 'reference' %}"}]'
      {% endif %}
-     data-img="{% path file.image, 'reference' %}"
->
+     data-img="{% path file.image, 'reference' %}">
 
     <div id="video-player-{{ trans.id }}" class="video-player">
     </div>
@@ -26,8 +24,8 @@
         <div class="info">
             <div class="vCenter">
                 <div class="vCenterKid">
-                    <a href="{% path trans.file, 'reference' %}" class="category">{{ file.theme|trans_fallback('name') }}</a>
-                    <span class="date">{{ news|trans_fallback('createdAt')|date('d.m.Y') }}</span> . <span class="hour">{{ news|trans_fallback('createdAt')|date('H:i') }}</span>
+                    <a href="#" class="category">{{ file.theme|trans_fallback('name') }}</a>
+                    <span class="date">{{ file.publishedAt|date('d.m.Y') }}</span> . <span class="hour">{{ file.publishedAt|date('H:i') }}</span>
                     <p>{{ trans.title }}</p>
                 </div>
             </div>

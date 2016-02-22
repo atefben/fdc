@@ -48,19 +48,21 @@
           <div id="theme" class="filter">
             <span class="label">Thèmes :</span>
             <span class="select">
-              <span class="active" data-filter="all">Tous </span><i class="icon icon_fleche-down"></i> <!-- todo css -->
+              <span data-filter="all" class="active">Tous </span>
               <span data-filter="press">Conférence de Presse</span>
               <span data-filter="steps">Montée des marches</span>
+              <i class="icon icon_fleche-down"></i>
             </span>
           </div>
           <div id="format" class="filter">
             <span class="label">Formats :</span>
             <span class="select">
-              <span class="active" data-filter="all">Tous </span><i class="icon icon_fleche-down"></i> <!-- todo css -->
+              <span data-filter="all" class="active">Tous </span>
               <span data-filter="photo">Photo</span>
               <span data-filter="video">Vidéo</span>
               <span data-filter="audio">Audio</span>
               <span data-filter="article">Article</span>
+              <i class="icon icon_fleche-down"></i>
             </span>
           </div>
         </div>
@@ -68,7 +70,7 @@
           <div class="content-news">
             <div id="articles-wrapper">
               <div class="articles left">
-                <article class="article double" data-format="article" data-theme="cinema">
+                <article class="article double" data-format="article" data-theme="cinema" data-time="1455909420" data-end="false">
                   <div class="image">
                     <div class="image-wrapper">
                       <img src="img/articles/01.jpg" alt="" />
@@ -82,7 +84,7 @@
                     <h2><a href="article.php">Enragés, polar hybride d'Eric Hannezo</a></h2>
                   </div>
                 </article>
-                <article class="audio" data-format="audio" data-theme="press">
+                <article class="audio" data-format="audio" data-theme="press" data-time="1455909420" data-end="false">
                   <div class="image">
                     <div class="image-wrapper">
                       <img src="img/articles/02.jpg" alt="" />
@@ -96,7 +98,7 @@
                     <h2><a href="article.php">La Loi du Marché par Stéphane Brizé</a></h2>
                   </div>
                 </article>
-                <article class="video" data-format="video" data-theme="steps">
+                <article class="video" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
                   <div class="image">
                     <div class="image-wrapper">
                       <img src="img/articles/03.jpg" alt="" />
@@ -182,7 +184,7 @@
               </div>
 
               <div class="articles center">
-                <article class="article" data-format="article" data-theme="competition">
+                <article class="article" data-format="article" data-theme="competition" data-time="1455909420" data-end="false">
                   <div class="image">
                     <div class="image-wrapper">
                       <img src="img/articles/03.jpg" alt="" />
@@ -196,7 +198,7 @@
                     <h2><a href="article.php">Stéphane Brizé interroge la loi du marché</a></h2>
                   </div>
                 </article>
-                <article class="video" data-format="video" data-theme="photocall">
+                <article class="video" data-format="video" data-theme="photocall" data-time="1455909420" data-end="false">
                   <div class="image">
                     <div class="image-wrapper">
                       <img src="img/articles/03.jpg" alt="" />
@@ -210,7 +212,7 @@
                     <h2><a href="article.php">Z de Costa-Gravas</a></h2>
                   </div>
                 </article>
-                <article class="photo" data-format="photo" data-theme="photograph">
+                <article class="photo" data-format="photo" data-theme="photograph" data-time="1455909420" data-end="false">
                   <div class="image">
                     <div class="image-wrapper">
                       <img src="img/articles/03.jpg" alt="" />
@@ -232,7 +234,7 @@
           </div>
 
           <div id="timeline">
-            <a href="#" data-date="22" class="disabled">dim<span class="day">22</span></a>
+            <!-- <a href="#" data-date="22" class="disabled">dim<span class="day">22</span></a>
             <a href="#" data-date="21" class="disabled">sam<span class="day">21</span></a>
             <a href="#" data-date="20" class="disabled">ven<span class="day">20</span></a>
             <a href="#" data-date="19" class="active">jeu<span class="day">19</span></a>
@@ -243,7 +245,20 @@
             <a href="#" data-date="14" class="">sam<span class="day">14</span></a>
             <a href="#" data-date="13" class="">ven<span class="day">13</span></a>
             <a href="#" data-date="12" class="">jeu<span class="day">12</span></a>
-            <a href="#" data-date="11" class="">mer<span class="day">11</span></a>
+            <a href="#" data-date="11" class="">mer<span class="day">11</span></a> -->
+
+            <a href="#" data-timestamp="1456441199" data-date="25" class="disabled">jeu<span class="day">25</span></a>
+            <a href="#" data-timestamp="1456354799" data-date="24" class="disabled">mer<span class="day">24</span></a>
+            <a href="#" data-timestamp="1456268399" data-date="23" class="disabled">mar<span class="day">23</span></a>
+            <a href="#" data-timestamp="1456181999" data-date="22" class="disabled">lun<span class="day">22</span></a>
+            <a href="#" data-timestamp="1456095599" data-date="21" class="disabled">dim<span class="day">21</span></a>
+            <a href="#" data-timestamp="1456009199" data-date="20" class="disabled">sam<span class="day">20</span></a>
+            <a href="#" data-timestamp="1455922799" data-date="19" class="active">ven<span class="day">19</span></a>
+            <a href="#" data-timestamp="1455836399" data-date="18" class="">jeu<span class="day">18</span></a>
+            <a href="#" data-timestamp="1455749999" data-date="17" class="">mer<span class="day">17</span></a>
+            <a href="#" data-timestamp="1455663599" data-date="16" class="">mar<span class="day">16</span></a>
+            <a href="#" data-timestamp="1455577199" data-date="15" class="">lun<span class="day">15</span></a>
+            <a href="#" data-timestamp="1455490799" data-date="14" class="">dim<span class="day">14</span></a>
           </div>
           <div id="shdMore" class="shadow-bottom"></div>
           <div id="shd" class="shadow-bottom"></div>

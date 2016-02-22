@@ -10,7 +10,7 @@
                         <div class="vCenter">
                             <div class="vCenterKid">
                                 <a href="#" class="category">{{ video.theme }}</a>
-                                <span class="date">{{ video.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ video.createdAt|date('H:i') }}</span>
+                                <span class="date">{{ video.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ video.publishedAt|date('H:i') }}</span>
                                 <p>{{ video.title }}</p>
                             </div>
                         </div>
@@ -21,7 +21,7 @@
     </div>
     <div id="slider-movie-videos" class="owl-carousel sliderDrag">
         {% for video in videos %}
-            {% if video.most_viewed == false %}
+            {% if video.most_viewed == false %} 
             <div class="slide-video shadow-bottom">
                 <img src="{{ video.image.path }}" alt="" />
                 <a class="linkVid" href="#"></a>

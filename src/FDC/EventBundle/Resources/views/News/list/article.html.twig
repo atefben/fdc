@@ -13,7 +13,7 @@
 
         {% for article in articles %}
             <div class="item {{ article.theme|trans_fallback('slug') }} {{ article.publishedAt|date('d-m-y') }} article">
-                <article class="article">
+                <article class="article" data-format="article">
                     <div class="img">
                         <span class="picto">
                             <i class="icon icon_article"></i>
@@ -34,8 +34,8 @@
                     </div>
                     <div class="info">
                         <a href="#" class="category">{{ article.theme|trans_fallback('name') }}</a>
-                        <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article|trans_fallback('createdAt')|date('H:i') }}</span>
-                        <h3><a href="{{ path('fdc_event_news_get', {'format': article.translatable.newsFormat, 'slug': article|trans_fallback('slug') }) }}">{{ article|trans_fallback('title') }}</a></h3>
+                        <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
+                        <h3><a href="{{ path('fdc_event_news_get', {'format': article.translatable.newsFormat, 'slug': article|trans_fallback('slug') }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a></h3>
                     </div>
                 </article>
             </div>
@@ -45,7 +45,6 @@
     <a id="next" href="articles2.html"></a>
 </div>
 
-<!-- BREADCRUMB -->
 {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
 {"breadcrumb":
 [
@@ -61,6 +60,3 @@
 } %}
 
 {% endblock %}
-
-
-

@@ -39,7 +39,7 @@
                     {% set img = article.video.image %}
                     {% set file = trans.file %}
                 {% endif %}
-                {% if file is defined and imageTrans.file is not null %}
+                {% if file is defined and imageTrans is defined and imageTrans.file is not null %}
                     {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
                 {% endif %}
             {% elseif article is news_audio %}
@@ -97,10 +97,10 @@
     </div>
     <div class="info">
         <a href="#" class="category">{{ article.category }}</a>
-        <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
+        <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
         <h2>
             <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">
-                {{ article|trans_fallback('title') }}
+                {{ article|trans_fallback('title')|truncate(40) }}
             </a>
         </h2>
     </div>

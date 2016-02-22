@@ -44,7 +44,7 @@
                     <div class="info">
                         <div class="vCenter">
                             <div class="vCenterKid">
-                                <a href="#" class="category">{{ webTvVideos[0].theme|trans_fallback('name') }}</a><span class="date">{{ webTvVideos[0].createdAt|date('d.m.y') }}</span> . <span class="hour">{{ webTvVideos[0].createdAt|date('H:i') }}</span>
+                                <a href="#" class="category">{{ webTvVideos[0].theme|trans_fallback('name') }}</a><span class="date">{{ webTvVideos[0].publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ webTvVideos[0].publishedAt|date('H:i') }}</span>
                                 <p>{{ webTvVideos[0]|trans_fallback('title') }}</p>
                             </div>
                         </div>
@@ -54,8 +54,8 @@
             <div class="infos-videos">
                 <div class="infos">
                     <strong>{{ webTvVideos[0].theme|trans_fallback('name') }}</strong>
-                    <span class="time">{{ webTvVideos[0].createdAt|date('d.m.y') }}
-                        . {{ webTvVideos[0].createdAt|date('H:i') }}</span>
+                    <span class="time">{{ webTvVideos[0].publishedAt|date('d.m.y') }}
+                        . {{ webTvVideos[0].publishedAt|date('H:i') }}</span>
                     <p>{{ webTvVideos[0]|trans_fallback('title') }}</p>
                 </div>
                 <div class="buttons square">
@@ -85,7 +85,7 @@
                                 <div class="vCenter">
                                     <div class="vCenterKid">
                                         <a href="#" class="category">{{ video.theme }}</a>
-                                        <span class="date">{{ video.createdAt|date('d') }}</span>
+                                        <span class="date">{{ video.publishedAt|date('d') }}</span>
                                         <span>{{ video|trans_fallback('title') }}</span>
                                     </div>
                                 </div>
