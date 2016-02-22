@@ -168,7 +168,7 @@ $(document).ready(function() {
         success: function(data) {
           var div = $("<div/>"); div.html(data);
 
-          div.find('.filter .select span:not(data-filter="all")').each(function(i,v) {
+          div.find('.filter .select span:not[data-filter="all"]').each(function(i,v) {
             console.log($(v).data('filter'));
             console.log($('.filter .select span[data-filter="'+$(v).data('filter')+'"]').length);
           });
