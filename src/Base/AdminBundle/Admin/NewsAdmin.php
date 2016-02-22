@@ -34,7 +34,7 @@ class NewsAdmin extends Admin
                         return;
                     }
                     $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
+                    $queryBuilder->andWhere('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.title LIKE :title');
                     $queryBuilder->setParameter('title', '%'. $value['value']. '%');
@@ -52,7 +52,7 @@ class NewsAdmin extends Admin
                         return;
                     }
                     $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
+                    $queryBuilder->andWhere('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.status = :status');
                     $queryBuilder->setParameter('status', $value['value']);

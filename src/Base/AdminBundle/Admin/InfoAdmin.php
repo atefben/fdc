@@ -34,7 +34,7 @@ class InfoAdmin extends Admin
                         return;
                     }
                     $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
+                    $queryBuilder->andWhere('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.title LIKE :title');
                     $queryBuilder->setParameter('title', '%'. $value['value']. '%');
@@ -52,7 +52,7 @@ class InfoAdmin extends Admin
                         return;
                     }
                     $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
+                    $queryBuilder->andWhere('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.status = :status');
                     $queryBuilder->setParameter('status', $value['value']);
@@ -72,7 +72,7 @@ class InfoAdmin extends Admin
                         return;
                     }
 
-                    $queryBuilder->where("{$alias} INSTANCE OF {$value['value']}");
+                    $queryBuilder->andWhere("{$alias} INSTANCE OF {$value['value']}");
 
                     return true;
                 },

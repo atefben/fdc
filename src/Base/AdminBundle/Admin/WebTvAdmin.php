@@ -38,7 +38,7 @@ class WebTvAdmin extends Admin
                         return;
                     }
                     $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
+                    $queryBuilder->andWhere('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.name LIKE :name');
                     $queryBuilder->setParameter('name', '%'. $value['value']. '%');
