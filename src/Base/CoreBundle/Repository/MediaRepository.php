@@ -30,7 +30,8 @@ class MediaRepository extends EntityRepository
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
-            ->where('m.festival = :festival');
+            ->where('m.festival = :festival')
+            ->andWhere('m.displayedAll = 1');
 
         $qb = $this->addMasterQueries($qb, 'mi', $festival);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
@@ -59,7 +60,8 @@ class MediaRepository extends EntityRepository
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
-            ->where('(m.publishedAt >= :datetime) AND (m.publishedAt < :datetime2)');
+            ->where('(m.publishedAt >= :datetime) AND (m.publishedAt < :datetime2)')
+            ->andWhere('m.displayedHome = 1');
 
         $qb = $this->addMasterQueries($qb, 'mi', $festival, false);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
@@ -88,7 +90,8 @@ class MediaRepository extends EntityRepository
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaVideo', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
-            ->where('m.festival = :festival');
+            ->where('m.festival = :festival')
+            ->andWhere('m.displayedAll = 1');
 
         $qb = $this->addMasterQueries($qb, 'mi', $festival);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
@@ -113,7 +116,8 @@ class MediaRepository extends EntityRepository
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaAudio', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
-            ->where('m.festival = :festival');
+            ->where('m.festival = :festival')
+            ->andWhere('m.displayedAll = 1');
 
         $qb = $this->addMasterQueries($qb, 'mi', $festival);
         $qb = $this->addTranslationQueries($qb, 'mit', $locale);
