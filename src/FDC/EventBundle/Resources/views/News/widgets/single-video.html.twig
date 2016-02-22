@@ -16,7 +16,13 @@
 {% if imageTrans is defined %}
     {% set image = imageTrans.file %}
 {% else %}
-    {% set image = file.image.file %}
+    {% set header = news.video.image %}
+    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+        {% set imageTrans = header.findTranslationByLocale('fr') %}
+    {% endif %}
+
+    {% set image = imageTrans.file %}
 {% endif %}
 
 <div class="video-container video-single state-init video"
