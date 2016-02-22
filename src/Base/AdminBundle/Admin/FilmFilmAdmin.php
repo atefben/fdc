@@ -25,7 +25,7 @@ class FilmFilmAdmin extends SoifAdmin
                         return;
                     }
                     $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->where('t.locale = :locale');
+                    $queryBuilder->andWhere('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.title LIKE :title');
                     $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
@@ -42,7 +42,7 @@ class FilmFilmAdmin extends SoifAdmin
                     $queryBuilder->join("{$alias}.persons", 'fp');
                     $queryBuilder->join("fp.functions", 'ff');
                     $queryBuilder->join("ff.function", 'fff');
-                    $queryBuilder->where("fff.id", '3');
+                    $queryBuilder->andWhere("fff.id", '3');
                     $queryBuilder->andWhere('fff.name LIKE :name');
                     $queryBuilder->setParameter('name', '%' . $value['value'] . '%');
 
@@ -56,7 +56,7 @@ class FilmFilmAdmin extends SoifAdmin
                     }
                     $queryBuilder->join("{$alias}.selectionSection", 'ts');
                     $queryBuilder->join("ts.translations", 'tst');
-                    $queryBuilder->where('tst.locale = :locale');
+                    $queryBuilder->andWhere('tst.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('ts.fullName LIKE :name');
                     $queryBuilder->setParameter('name', '%' . $value['value'] . '%');
@@ -72,7 +72,7 @@ class FilmFilmAdmin extends SoifAdmin
                         return;
                     }
                     $queryBuilder->join("{$alias}.festival", 'fs');
-                    $queryBuilder->where('fs.year LIKE :year');
+                    $queryBuilder->andWhere('fs.year LIKE :year');
                     $queryBuilder->setParameter('year', '%' . $years[$value['value']] . '%');
                     return true;
                 },

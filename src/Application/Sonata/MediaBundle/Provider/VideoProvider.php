@@ -69,8 +69,7 @@ class VideoProvider extends FileProvider
 			/* @TODO
 			récupérer l'URL du fichier généré par amazon
 			*/
-			//$parentVideo->setImageAmazonUrl($job->get('Job')['img_url']);
-			
+
             $parentVideo->setJobMp4Id($job->get('Job')['Id']);
 			$parentVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
             $parentVideo->setJobMp4State(1);
