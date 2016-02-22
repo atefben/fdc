@@ -24,9 +24,9 @@
                                     {{ form_row(translationsFields.name) }}
                                     {% if form.vars.default_locale == locale %}
                                         <div class="Base-sonata-media-ajax-display">
-                                            {% if form.children.fr.vars.value.translatable.image is defined and
-                                            form.children.fr.vars.value.translatable.image is not null %}
-                                                {% media form.children.fr.vars.value.translatable.image.file, '586x370' %}
+                                            {% if form.parent.vars.data.image is defined and
+                                            form.parent.vars.data.image is not null %}
+                                                {% media form.parent.vars.data.image.file, '586x370' %}
                                             {% endif %}
                                         </div>
                                         {{ form_row(form.parent.children.image) }}
