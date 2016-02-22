@@ -102,7 +102,7 @@
         <span class="picto"><i class="icon icon_{{ article.newsType|get_news_type }}"></i></span>
     </div>
     <div class="info">
-        <a href="#" class="category">{{ article.category }}</a>
+        <a href="#" class="category">{{ article.theme|trans_fallback('name') }}</a>
         <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
         <h2>
             <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">

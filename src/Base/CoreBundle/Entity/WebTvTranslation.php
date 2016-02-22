@@ -22,7 +22,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
- * @UniqueEntity("name")
  */
 class WebTvTranslation implements TranslateChildInterface
 {
@@ -34,7 +33,7 @@ class WebTvTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, nullable=true, unique=true)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      *
      * @Groups({"web_tv_list", "web_tv_show"})
      */
@@ -44,7 +43,7 @@ class WebTvTranslation implements TranslateChildInterface
      * @var string
      *
      * @Gedmo\Slug(fields={"name"})
-     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     * @ORM\Column(name="slug", type="string", length=255, unique=false)
      */
     private $slug;
 
