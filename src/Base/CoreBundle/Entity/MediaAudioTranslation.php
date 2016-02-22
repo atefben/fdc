@@ -53,6 +53,13 @@ class MediaAudioTranslation implements TranslateChildInterface
      */
     private $jobMp3Id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $mp3Url;
+
 
     /**
      * @var \Application\Sonata\MediaBundle\Entity\Media
@@ -154,5 +161,28 @@ class MediaAudioTranslation implements TranslateChildInterface
     public function getJobMp3Id()
     {
         return $this->jobMp3Id;
+    }
+
+    /**
+     * Set mp3Url
+     *
+     * @param string $mp3Url
+     * @return MediaAudioTranslation
+     */
+    public function setMp3Url($mp3Url)
+    {
+        $this->mp3Url = $mp3Url;
+
+        return $this;
+    }
+
+    /**
+     * Get mp3Url
+     *
+     * @return string 
+     */
+    public function getMp3Url()
+    {
+        return $this->mp3Url;
     }
 }
