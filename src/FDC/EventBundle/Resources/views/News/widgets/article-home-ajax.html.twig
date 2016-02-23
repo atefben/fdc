@@ -3,7 +3,7 @@
 </div>
 
 {% set vars = {'isDouble': 'double'} %}
-{% for article in homeArticles %}{{ dump(article) }}
+{% for article in homeArticles %}
     {% if loop.first %}
     <div class="articles right pad">
     {% include 'FDCEventBundle:News:widgets/article-home.html.twig' with vars %}
