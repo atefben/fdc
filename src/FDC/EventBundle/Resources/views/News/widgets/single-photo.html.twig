@@ -7,7 +7,7 @@
             {% set trans = photo.findTranslationByLocale('fr') %}
         {% endif %}
         {% set file = trans.file %}
-        {% thumbnail file, '1950x1232' with {'alt': photo|trans_fallback('alt') } %}
+        {% thumbnail file, '1950x1232' with {'alt': photo|trans_fallback('alt'), 'title': photo|trans_fallback('legend') } %}
         <p class="caption">{{ photo|trans_fallback('legend') }} © {{ photo|trans_fallback('copyright') }}</p>
     </div>
 </div>
