@@ -5,3 +5,62 @@
 .single-article .single-photo img {
     height: 100%;
 }
+
+.single-article .big-quote span.big-quote-paragraph {
+    color: #b1b1b1;
+    text-align: center;
+    font-size: .875rem;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+.single-article .big-quote strong {
+    color: #c8a461 !important;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
+}
+
+.single-article .table-article tr:first-child td {
+    text-transform: uppercase;
+    color: #000;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    vertical-align: middle;
+    border: 1px solid #dfdfdf;
+    padding: 15px 0px;
+    width: 320px;
+    font-size: .74rem;
+    text-align: center;
+}
+
+.single-article .txt-grey-bkg-container .content span {
+    font-size: 1rem;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    color: #666666;
+    line-height: 26px;
+}
+
+.single-article .blockquote {
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    color: #666;
+    font-size: 1.688rem;
+    line-height: 1.4em;
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.single-article .big-txt {
+    color: #333333;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    line-height: 40px;
+    text-align: center;
+}
+
+.single-article .little-txt {
+    color: #969696;
+    font-size: 0.750rem;
+    margin: 10px 0 0;
+    text-align: left;
+}

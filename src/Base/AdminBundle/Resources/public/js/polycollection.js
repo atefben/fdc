@@ -4,8 +4,8 @@ jQuery(document).ready(function($) {
         new window.infinite.Collection(this, $(this).siblings('[data-prototype]'));
     });
 
-    // infinite collection sortable
-    $('div[id$="fdc-widgets"][data-form-widget="collection"]').sortable({
+   // infinite collection sortable
+   $('div[id$="fdc-widgets"][data-form-widget="collection"]').sortable({
         axis: 'y',
         items: '> .base-widget',
         start: function(event, ui) {
