@@ -1,13 +1,12 @@
-.big-quote {
-    width: 697px;
-    margin: 0 auto;
+/* Golden border */
+.cke_editable .big-quote {
     padding: 70px 70px;
     box-sizing: border-box;
     border: 1px solid #c8a461;
     margin-bottom: 70px;
 }
 
-.big-quote strong{
+.cke_editable .big-quote strong {
     color: #c8a461;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     text-transform: uppercase;
@@ -17,3 +16,150 @@
     display: block;
     margin-bottom: 25px;
 }
+
+.cke_editable .big-quote span.big-quote-paragraph {
+    color: #b1b1b1;
+    text-align: center;
+    font-size: .875rem;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+/* Grey text */
+.cke_editable .txt-grey-bkg-container {
+    background-color: #f4f4f4;
+    padding: 88px 0px;
+    margin-bottom: 70px;
+}
+
+.cke_editable .txt-grey-bkg-container strong {
+    font-size: 1rem;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    color: #333333;
+    margin-bottom: 20px;
+    display: block;
+    display: block;
+}
+
+.cke_editable .txt-grey-bkg-container span.txt-grey-bkg-container-paragraph {
+    font-size: 1rem;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    color: #666666;
+    line-height: 26px;
+    display: block;
+}
+
+/* Table */
+.cke_editable table {
+}
+
+.cke_editable .table-article tr:first-child td {
+    text-transform: uppercase;
+    color: #000;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    vertical-align: middle;
+    border: 1px solid #dfdfdf;
+    padding: 15px 0px;
+    width: 50%;
+    font-size: .74rem;
+    text-align: center;
+}
+
+.cke_editable .table-article td {
+    font-weight: normal;
+    vertical-align: middle;
+    border: 1px solid #dfdfdf;
+    padding: 15px 0px;
+    width: 50%;
+    text-align: center;
+    color: #666666;
+    font-size: .74rem;
+    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+/* Button link */
+.cke_editable single-button {
+    border-right: 1px solid #c8a461 !important;
+    border-color: #c8a461;
+}
+
+.cke_editable .button {
+    border: 1px solid #dfdfdf;
+    border-right: none;
+    color: #c8a461;
+    display: inline-block;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 0.688rem;
+    height: 38px;
+    line-height: 38px;
+    margin: 0 0 0 0;
+    padding: 0 19px 0 19px;
+    text-transform: uppercase;
+    -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+/* Quote */
+.cke_editable blockquote {
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    color: #666;
+    font-size: 1.688rem;
+    line-height: 1.4em;
+    padding: 40px 15px;
+    text-align: center;
+}
+/* Titles */
+.cke_editable .title-article {
+    color: #333;
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.3em;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Text size */
+.cke_editable .little-txt {
+    color: #969696;
+    font-size: 0.750rem;
+    margin: 10px 0 0;
+    text-align: left;
+}
+
+.cke_editable .big-txt {
+    color: #333333;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    line-height: 40px;
+    text-align: center;
+}
+
+
+/* Header text */
+.cked_editable .chapeau {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    color: #333;
+    font-size: 1.125rem;
+    line-height: 2em;
+    margin-bottom: 70px;
+    text-align: center;
+}
+
+/* Notes */
+.cke_editable .caption-article {
+    color: #333333;
+    font-size: 0.750rem;
+    margin: 10px 0 0;
+    text-align: left;
+    display: block;
+    padding-top: 10px;
+    border-top: 1px solid #dfdfdf;
+}
+

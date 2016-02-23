@@ -196,12 +196,12 @@ class MediaAudioAdmin extends Admin
                 ),
             ))
             ->add('tags', 'sonata_type_collection', array(
-                'label'        => 'form.label_tags',
-                'help'         => 'form.media.helper_tags',
+                'label' => 'form.label_article_tags',
+                'help' => 'form.news.helper_tags',
                 'by_reference' => false,
-                'required'     => false,
+                'required' => false,
             ), array(
-                    'edit'   => 'inline',
+                    'edit' => 'inline',
                     'inline' => 'table'
                 )
             )
