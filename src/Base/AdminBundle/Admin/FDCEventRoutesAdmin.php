@@ -5,7 +5,7 @@ namespace Base\AdminBundle\Admin;
 use Knp\Menu\ItemInterface;
 use Sonata\AdminBundle\Admin\AdminInterface;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;

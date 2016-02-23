@@ -132,13 +132,13 @@ class MediaAudioAdmin extends Admin
                     'updatedAt'      => array(
                         'display' => false
                     ),
-                    'jobMp3State' => array(
+                    'jobMp3State'    => array(
                         'display' => false
                     ),
-                    'jobMp3Id' => array(
+                    'jobMp3Id'       => array(
                         'display' => false
                     ),
-                    'mp3Url' => array(
+                    'mp3Url'         => array(
                         'display' => false
                     ),
                     'file'           => array(
@@ -190,7 +190,7 @@ class MediaAudioAdmin extends Admin
             ))
             ->add('image', 'sonata_type_model_list', array(
                 'label'       => 'form.label_media_video_image',
-                'help' => 'form.media_image.helper_file',
+                'help'        => 'form.media_image.helper_file',
                 'constraints' => array(
                     new NotNull(),
                 ),
@@ -276,5 +276,25 @@ class MediaAudioAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
         ;
+    }
+
+    public function getExportFields()
+    {
+        return array(
+            'Id'                                            => 'id',
+            'Titre de l\'audio'                             => 'exportTitle',
+            'Thème'                                         => 'exportTheme',
+            'Id créateur'                                   => 'exportAuthor',
+            'Date de création'                              => 'exportCreatedAt',
+            'Dates de publication'                          => 'exportPublishDates',
+            'Date de modification'                          => 'exportUpdatedAt',
+            'Statut master'                                 => 'exportStatusMaster',
+            'Statut traduction es'                          => 'exportStatusEn',
+            'Statut traduction en'                          => 'exportStatusEs',
+            'Statut traduction zh'                          => 'exportStatusZh',
+            'Publié sur'                                    => 'exportSites',
+            'Remonté dans tous les audios'                  => 'exportDisplayedAll',
+            'Remonté en tant qu\'actualité sur la homepage' => 'exportDisplayedHome',
+        );
     }
 }

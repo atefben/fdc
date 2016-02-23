@@ -29,7 +29,7 @@ class MediaImageTranslation implements TranslateChildInterface
     use TranslateChild;
 
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
+     * @var \Application\Sonata\MediaBundle\Entity\Media
      *
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")

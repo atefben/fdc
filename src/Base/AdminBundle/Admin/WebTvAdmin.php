@@ -5,7 +5,7 @@ namespace Base\AdminBundle\Admin;
 use Base\CoreBundle\Entity\WebTv;
 use Base\CoreBundle\Entity\WebTvTranslation;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -33,7 +33,7 @@ class WebTvAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('name', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback'           => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -41,27 +41,27 @@ class WebTvAdmin extends Admin
                     $queryBuilder->andWhere('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.name LIKE :name');
-                    $queryBuilder->setParameter('name', '%'. $value['value']. '%');
+                    $queryBuilder->setParameter('name', '%' . $value['value'] . '%');
 
                     return true;
                 },
-                'field_type' => 'text',
-                'label' => 'filter.label_web_tv_name',
+                'field_type'         => 'text',
+                'label'              => 'filter.label_web_tv_name',
                 'translation_domain' => 'BaseAdminBundle',
             ))
             ->add('priorityStatus', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
                     $queryBuilder->andWhere('o.priorityStatus LIKE :priorityStatus');
-                    $queryBuilder->setParameter('priorityStatus', '%'. $value['value']. '%');
+                    $queryBuilder->setParameter('priorityStatus', '%' . $value['value'] . '%');
 
                     return true;
                 },
-                'field_type' => 'choice',
+                'field_type'    => 'choice',
                 'field_options' => array(
-                    'choices' => WebTv::getPriorityStatusesList(),
+                    'choices'                   => WebTv::getPriorityStatusesList(),
                     'choice_translation_domain' => 'BaseAdminBundle'
                 ),
             ))
@@ -76,12 +76,12 @@ class WebTvAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('name', null, array(
-                'template' => 'BaseAdminBundle:WebTv:list_name.html.twig',
-                'label' => 'list.label_web_tv_name',
+                'template'           => 'BaseAdminBundle:WebTv:list_name.html.twig',
+                'label'              => 'list.label_web_tv_name',
                 'translation_domain' => 'BaseAdminBundle',
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => WebTv::getPriorityStatusesList(),
+                'choices'   => WebTv::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle',
             ))
             ->add('_edit_translations', null, array(
@@ -97,47 +97,47 @@ class WebTvAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
-                'label' => false,
+                'label'              => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales' => array('fr'),
-                'fields' => array(
-                    'name' => array(
-                        'label' => 'form.label_web_tv_name',
-                        'sonata_help' => 'form.web_tv.helper_name',
+                'required_locales'   => array('fr'),
+                'fields'             => array(
+                    'name'           => array(
+                        'label'              => 'form.label_web_tv_name',
+                        'sonata_help'        => 'form.web_tv.helper_name',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints' => array(
+                        'constraints'        => array(
                             new NotBlank(),
                         ),
                     ),
-                    'status' => array(
-                        'label' => 'form.label_status',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'choice',
-                        'choices' => WebTvTranslation::getStatuses(),
+                    'status'         => array(
+                        'label'                     => 'form.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => WebTvTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
-                    'seoTitle' => array(
-                        'attr' => array(
+                    'seoTitle'       => array(
+                        'attr'               => array(
                             'placeholder' => 'form.placeholder_seo_title'
                         ),
-                        'label' => 'form.label_seo_title',
-                        'sonata_help' => 'form.new.helper_seo_title',
+                        'label'              => 'form.label_seo_title',
+                        'sonata_help'        => 'form.new.helper_seo_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required' => false,
+                        'required'           => false,
                     ),
                     'seoDescription' => array(
-                        'attr' => array(
+                        'attr'               => array(
                             'placeholder' => 'form.placeholder_seo_description'
                         ),
-                        'label' => 'form.label_seo_description',
-                        'sonata_help' => 'form.news.helper_description',
+                        'label'              => 'form.label_seo_description',
+                        'sonata_help'        => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required' => false,
+                        'required'           => false,
                     ),
-                    'createdAt' => array(
+                    'createdAt'      => array(
                         'display' => false
                     ),
-                    'updatedAt' => array(
+                    'updatedAt'      => array(
                         'display' => false
                     )
                 )
@@ -145,22 +145,22 @@ class WebTvAdmin extends Admin
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
-                'help' => 'form.seo.helper_file',
+                'help'     => 'form.seo.helper_file',
                 'required' => false
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'help' => 'form.web_tv.helper_image',
+                'help'     => 'form.web_tv.helper_image',
                 'required' => false,
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => WebTv::getAvailableTranslateOptions(),
+                'choices'            => WebTv::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
-                'multiple' => true,
-                'expanded' => true
+                'multiple'           => true,
+                'expanded'           => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => WebTv::getPriorityStatuses(),
+                'choices'                   => WebTv::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
         ;
@@ -176,5 +176,22 @@ class WebTvAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
         ;
+    }
+
+    public function getExportFields()
+    {
+        return array(
+            'Id'                      => 'id',
+            'Nom de la chaîne master' => 'exportName',
+            'Date de création'        => 'exportCreatedAt',
+            'Date de modification'    => 'exportUpdatedAt',
+            'Statut master'           => 'exportStatusMaster',
+            'Traduction en'           => 'exportTranslationEn',
+            'Statut en'               => 'exportStatusEn',
+            'Traduction es'           => 'exportTranslationEs',
+            'Statut es'               => 'exportStatusEs',
+            'Traduction zh'           => 'exportTranslationZh',
+            'Statut zh'               => 'exportStatusZh',
+        );
     }
 }

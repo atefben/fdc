@@ -7,7 +7,7 @@ use Base\CoreBundle\Entity\InfoVideo;
 use Base\CoreBundle\Entity\InfoVideoTranslation;
 use Base\CoreBundle\Entity\InfoInfoAssociated;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;

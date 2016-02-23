@@ -6,7 +6,7 @@ use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;

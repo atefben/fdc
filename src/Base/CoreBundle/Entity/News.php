@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\AdminBundle\Component\Admin\Export;
 use \DateTime;
 
 use Base\CoreBundle\Util\SeoMain;
@@ -781,5 +782,64 @@ abstract class News implements TranslateMainInterface
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    public function getExportTitle()
+    {
+        return Export::translationField($this, 'title', 'fr');
+    }
+
+    public function getExportTheme()
+    {
+        return Export::translationField($this->getTheme(), 'name', 'fr');
+    }
+
+    public function getExportAuthor()
+    {
+        return $this->getCreatedBy()->getId();
+    }
+
+    public function getExportCreatedAt()
+    {
+        return Export::formatDate($this->getCreatedAt());
+    }
+
+    public function getExportPublishDates()
+    {
+        return Export::publishsDates($this->getPublishedAt(), $this->getPublishEndedAt());
+    }
+
+    public function getExportUpdatedAt()
+    {
+        return Export::formatDate($this->getUpdatedAt());
+    }
+
+    public function getExportStatusMaster()
+    {
+        $status = $this->findTranslationByLocale('fr')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusEn()
+    {
+        $status = $this->findTranslationByLocale('en')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusEs()
+    {
+        $status = $this->findTranslationByLocale('es')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusZh()
+    {
+        $status = $this->findTranslationByLocale('zh')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportSites()
+    {
+        return Export::sites($this->getSites());
     }
 }

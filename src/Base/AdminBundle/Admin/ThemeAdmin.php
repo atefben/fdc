@@ -5,7 +5,7 @@ namespace Base\AdminBundle\Admin;
 use Base\CoreBundle\Entity\Theme;
 use Base\CoreBundle\Entity\ThemeTranslation;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * ThemeAdmin class.
- * 
+ *
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
@@ -41,9 +41,9 @@ class ThemeAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('name', 'doctrine_orm_callback', array(
-                'label' => 'form.label_theme_name',
+                'label'              => 'form.label_theme_name',
                 'translation_domain' => 'BaseAdminBundle',
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback'           => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -51,15 +51,15 @@ class ThemeAdmin extends Admin
                     $queryBuilder->andWhere('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.name LIKE :name');
-                    $queryBuilder->setParameter('name', '%'. $value['value']. '%');
+                    $queryBuilder->setParameter('name', '%' . $value['value'] . '%');
 
                     return true;
                 },
-                'field_type' => 'text'
+                'field_type'         => 'text'
             ))
             ->add('priorityStatus', 'doctrine_orm_choice', array(), 'choice', array(
-              'choices' => Theme::getPriorityStatuses(),
-              'choice_translation_domain' => 'BaseAdminBundle'
+                'choices'                   => Theme::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
             ))
         ;
     }
@@ -73,7 +73,7 @@ class ThemeAdmin extends Admin
             ->add('id')
             ->add('name', null, array('label' => 'list.label_theme_name'))
             ->add('priorityStatus', 'choice', array(
-                'choices' => Theme::getPriorityStatusesList(),
+                'choices'   => Theme::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
             ))
             ->add('_edit_translations', null, array(
@@ -89,23 +89,23 @@ class ThemeAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
-                'label' => false,
+                'label'  => false,
                 'fields' => array(
-                    'name' => array(
-                        'label' => 'form.label_theme_name',
+                    'name'      => array(
+                        'label'              => 'form.label_theme_name',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.theme.helper_name',
-                        'constraints' => array(
+                        'sonata_help'        => 'form.theme.helper_name',
+                        'constraints'        => array(
                             new NotBlank()
                         )
                     ),
-                    'status' => array(
-                        'label' => 'form.label_status',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'choice',
-                        'choices' => ThemeTranslation::getStatuses(),
+                    'status'    => array(
+                        'label'                     => 'form.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => ThemeTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
-                        'constraints' => array(
+                        'constraints'               => array(
                             new NotBlank()
                         )
                     ),
@@ -119,13 +119,13 @@ class ThemeAdmin extends Admin
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => Theme::getAvailableTranslateOptions(),
+                'choices'            => Theme::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
-                'multiple' => true,
-                'expanded' => true
+                'multiple'           => true,
+                'expanded'           => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => Theme::getPriorityStatuses(),
+                'choices'                   => Theme::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
         ;
@@ -141,5 +141,23 @@ class ThemeAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
         ;
+    }
+
+
+    public function getExportFields()
+    {
+        return array(
+            'Id'                   => 'id',
+            'Nom du thème master'  => 'exportName',
+            'Date de création'     => 'exportCreatedAt',
+            'Date de modification' => 'exportUpdatedAt',
+            'Statut master'        => 'exportStatusMaster',
+            'Traduction en'        => 'exportTranslationEn',
+            'Statut en'            => 'exportStatusEn',
+            'Traduction es'        => 'exportTranslationEs',
+            'Statut es'            => 'exportStatusEs',
+            'Traduction zh'        => 'exportTranslationZh',
+            'Statut zh'            => 'exportStatusZh',
+        );
     }
 }
