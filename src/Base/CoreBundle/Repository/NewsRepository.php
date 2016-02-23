@@ -271,6 +271,7 @@ class NewsRepository extends EntityRepository
         }
 
         $qb = $qb
+            ->orderBy('n.publishedAt', 'ASC')
             ->setMaxResults('1')
 			->setParameter('date', $date)
             ->setParameter('festival', $festival)
@@ -328,6 +329,7 @@ class NewsRepository extends EntityRepository
         }
 
         $qb = $qb
+            ->orderBy('n.publishedAt', 'ASC')
             ->setMaxResults('1')
 			->setParameter('date', $date)
             ->setParameter('festival', $festival)
