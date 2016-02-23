@@ -7,7 +7,8 @@
             {% set trans = photo.findTranslationByLocale('fr') %}
         {% endif %}
         {% set file = trans.file %}
+        {% set copyright = photo|trans_fallback('copyright') %}
         {% thumbnail file, '1950x1232' with {'alt': photo|trans_fallback('alt'), 'title': photo|trans_fallback('legend') } %}
-        <p class="caption">{{ photo|trans_fallback('legend') }} © {{ photo|trans_fallback('copyright') }}</p>
+        <p class="caption">{{ photo|trans_fallback('legend') }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
     </div>
 </div>
