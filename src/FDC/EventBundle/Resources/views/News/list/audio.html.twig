@@ -34,7 +34,7 @@
                         <div class="info">
                             <div class="vCenter">
                                 <div class="vCenterKid">
-                                    <a href="#" class="category">{{ audio.theme|trans_fallback('name') }}</a>
+                                    <span class="category">{{ audio.theme|trans_fallback('name') }}</span>
                                     <span class="date">{{ audio.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ audio.publishedAt|date('H:i') }}</span>
                                     <p>{{  audio|trans_fallback('title')|truncate(40) }}</p>
                                 </div>
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="info">
-                <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+                <span class="category"></span><span class="date"></span> . <span class="hour"></span>
                 <p></p>
             </div>
             <div class="buttons square">
