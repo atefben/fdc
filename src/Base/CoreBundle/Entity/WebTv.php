@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\AdminBundle\Component\Admin\Export;
 use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
@@ -91,6 +92,7 @@ class WebTv implements TranslateMainInterface
         }
         return '';
     }
+
     /**
      * Set id
      *
@@ -107,7 +109,7 @@ class WebTv implements TranslateMainInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -140,7 +142,7 @@ class WebTv implements TranslateMainInterface
     /**
      * Get mediaVideos
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMediaVideos()
     {
@@ -163,13 +165,12 @@ class WebTv implements TranslateMainInterface
     /**
      * Get homepage
      *
-     * @return \Base\CoreBundle\Entity\Homepage 
+     * @return \Base\CoreBundle\Entity\Homepage
      */
     public function getHomepage()
     {
         return $this->homepage;
     }
-
 
 
     /**
@@ -188,7 +189,7 @@ class WebTv implements TranslateMainInterface
     /**
      * Get festival
      *
-     * @return \Base\CoreBundle\Entity\FilmFestival 
+     * @return \Base\CoreBundle\Entity\FilmFestival
      */
     public function getFestival()
     {
@@ -211,10 +212,64 @@ class WebTv implements TranslateMainInterface
     /**
      * Get image
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getImage()
     {
         return $this->image;
+    }
+
+    public function getExportCreatedAt()
+    {
+        return Export::formatDate($this->getCreatedAt());
+    }
+
+    public function getExportUpdatedAt()
+    {
+        return Export::formatDate($this->getUpdatedAt());
+    }
+
+    public function getExportName()
+    {
+        return Export::translationField($this, 'name', 'fr');
+    }
+
+    public function getExportStatusMaster()
+    {
+        $status = $this->findTranslationByLocale('fr')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportTranslationEn()
+    {
+        return Export::translationField($this, 'name', 'en');
+    }
+
+    public function getExportStatusEn()
+    {
+        $status = $this->findTranslationByLocale('en')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusEs()
+    {
+        $status = $this->findTranslationByLocale('es')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportTranslationEs()
+    {
+        return Export::translationField($this, 'name', 'es');
+    }
+
+    public function getExportStatusZh()
+    {
+        $status = $this->findTranslationByLocale('zh')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportTranslationZh()
+    {
+        return Export::translationField($this, 'name', 'zh');
     }
 }

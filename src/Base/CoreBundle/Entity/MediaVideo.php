@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\AdminBundle\Component\Admin\Export;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -81,7 +82,7 @@ class MediaVideo extends Media
     /**
      * Get displayedWebTv
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedWebTv()
     {
@@ -104,7 +105,7 @@ class MediaVideo extends Media
     /**
      * Get displayedTrailer
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedTrailer()
     {
@@ -127,7 +128,7 @@ class MediaVideo extends Media
     /**
      * Get homepage
      *
-     * @return \Base\CoreBundle\Entity\Homepage 
+     * @return \Base\CoreBundle\Entity\Homepage
      */
     public function getHomepage()
     {
@@ -173,7 +174,7 @@ class MediaVideo extends Media
     /**
      * Get image
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return \Base\CoreBundle\Entity\MediaImage
      */
     public function getImage()
     {
@@ -208,10 +209,85 @@ class MediaVideo extends Media
     /**
      * Get associatedFilms
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAssociatedFilms()
     {
         return $this->associatedFilms;
+    }
+
+    public function getExportTitle()
+    {
+        return Export::translationField($this, 'title', 'fr');
+    }
+
+    public function getExportTheme()
+    {
+        return Export::translationField($this->getTheme(), 'name', 'fr');
+    }
+
+    public function getExportWebTv()
+    {
+        return Export::translationField($this->getWebTv(), 'name', 'fr');
+    }
+
+
+    public function getExportAuthor()
+    {
+        return $this->getCreatedBy()->getId();
+    }
+
+    public function getExportCreatedAt()
+    {
+        return Export::formatDate($this->getCreatedAt());
+    }
+
+    public function getExportPublishDates()
+    {
+        return Export::publishsDates($this->getPublishedAt(), $this->getPublishEndedAt());
+    }
+
+    public function getExportUpdatedAt()
+    {
+        return Export::formatDate($this->getUpdatedAt());
+    }
+
+    public function getExportStatusMaster()
+    {
+        $status = $this->findTranslationByLocale('fr')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusEn()
+    {
+        $status = $this->findTranslationByLocale('en')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusEs()
+    {
+        $status = $this->findTranslationByLocale('es')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusZh()
+    {
+        $status = $this->findTranslationByLocale('zh')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportDisplayedHome()
+    {
+        return Export::yesOrNo($this->getDisplayedHome());
+    }
+
+    public function getExportSites()
+    {
+        return Export::sites($this->getSites());
+    }
+
+    public function getExportDisplayedTrailer()
+    {
+        return Export::yesOrNo($this->getDisplayedTrailer());
     }
 }

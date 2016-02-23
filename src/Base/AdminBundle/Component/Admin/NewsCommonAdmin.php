@@ -17,8 +17,7 @@ class NewsCommonAdmin extends BaseAdmin
         static $joined = false;
         if (!$joined) {
             $queryBuilder
-                ->join("{$alias}.translations", 't2')
-            ;
+                ->join("{$alias}.translations", 't2');
             $joined = true;
         }
 
@@ -137,6 +136,25 @@ class NewsCommonAdmin extends BaseAdmin
                 'template' => 'BaseAdminBundle:TranslateMain:list_preview.html.twig'
             ))
         ;
+    }
+
+
+    public function getExportFields()
+    {
+        return array(
+            'Id'                                        => 'id',
+            'Titre de l\'actualité'                    => 'exportTitle',
+            'Thème'                                     => 'exportTheme',
+            'Identifiant créateur'                      => 'exportAuthor',
+            'Date de création'                          => 'exportCreatedAt',
+            'Dates de publication'                      => 'exportPublishDates',
+            'Date de modification'                      => 'exportUpdatedAt',
+            'Statut master'                             => 'exportStatusMaster',
+            'Statut traduction es'                      => 'exportStatusEn',
+            'Statut traduction en'                      => 'exportStatusEs',
+            'Statut traduction zh'                      => 'exportStatusZh',
+            'Publié sur'                                => 'exportSites',
+        );
     }
 
 }

@@ -11,6 +11,7 @@
 
 namespace Application\Sonata\UserBundle\Entity;
 
+use Base\AdminBundle\Component\Admin\Export;
 use Sonata\UserBundle\Entity\BaseUser as BaseUser;
 
 /**
@@ -71,5 +72,32 @@ class User extends BaseUser
     public function getSites()
     {
         return $this->sites;
+    }
+
+
+
+    public function getExportCreatedAt()
+    {
+        return Export::formatDate($this->getCreatedAt());
+    }
+
+    public function getExportGroup()
+    {
+        return implode(', ', $this->getGroupNames());
+    }
+
+    public function getExportUpdatedAt()
+    {
+        return Export::formatDate($this->getUpdatedAt());
+    }
+
+    public function getExportLastLogin()
+    {
+        return Export::formatDate($this->getLastLogin());
+    }
+
+    public function getExportEnabled()
+    {
+        return Export::yesOrNo($this->isEnabled());
     }
 }

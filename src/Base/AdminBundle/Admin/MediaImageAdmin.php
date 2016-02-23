@@ -255,4 +255,24 @@ class MediaImageAdmin extends Admin
             ->add('updatedAt')
         ;
     }
+
+    public function getExportFields()
+    {
+        return array(
+            'Id'                                                  => 'id',
+            'Légende de l\'image'                                 => 'exportLegend',
+            'Thème'                                               => 'exportTheme',
+            'Id créateur'                                         => 'exportAuthor',
+            'Date de création'                                    => 'exportCreatedAt',
+            'Dates de publication'                                => 'exportPublishDates',
+            'Date de modification'                                => 'exportUpdatedAt',
+            'Statut master'                                       => 'exportStatusMaster',
+            'Statut traduction es'                                => 'exportStatusEn',
+            'Statut traduction en'                                => 'exportStatusEs',
+            'Statut traduction zh'                                => 'exportStatusZh',
+            'Publié sur'                                          => 'exportSites',
+            'Remontée dans toutes les photos'                     => 'exportDisplayedAll',
+            'Remontée dans le diaporama du quotidien en homepage' => 'exportDisplayedHome',
+        );
+    }
 }

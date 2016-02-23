@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\AdminBundle\Component\Admin\Export;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
@@ -77,5 +78,59 @@ class Tag implements TranslateMainInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getExportCreatedAt()
+    {
+        return Export::formatDate($this->getCreatedAt());
+    }
+
+    public function getExportUpdatedAt()
+    {
+        return Export::formatDate($this->getUpdatedAt());
+    }
+
+    public function getExportName()
+    {
+        return Export::translationField($this, 'name', 'fr');
+    }
+
+    public function getExportStatusMaster()
+    {
+        $status = $this->findTranslationByLocale('fr')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportTranslationEn()
+    {
+        return Export::translationField($this, 'name', 'en');
+    }
+
+    public function getExportStatusEn()
+    {
+        $status = $this->findTranslationByLocale('en')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusEs()
+    {
+        $status = $this->findTranslationByLocale('es')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportTranslationEs()
+    {
+        return Export::translationField($this, 'name', 'es');
+    }
+
+    public function getExportStatusZh()
+    {
+        $status = $this->findTranslationByLocale('zh')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportTranslationZh()
+    {
+        return Export::translationField($this, 'name', 'zh');
     }
 }

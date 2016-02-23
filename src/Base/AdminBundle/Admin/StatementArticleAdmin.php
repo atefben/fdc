@@ -7,7 +7,7 @@ use Base\CoreBundle\Entity\StatementArticle;
 use Base\CoreBundle\Entity\StatementArticleTranslation;
 use Base\CoreBundle\Entity\StatementStatementAssociated;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;

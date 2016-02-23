@@ -404,7 +404,7 @@ class NewsController extends Controller {
 		
         $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getOlderNews($locale, $this->getFestival()->getId() , $news->getPublishedAt());
         $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getNextNews($locale, $this->getFestival()->getId() , $news->getPublishedAt());
-
+		
         return array(
             'localeSlugs'            => $localeSlugs,
             'focusArticles'          => $focusArticles,

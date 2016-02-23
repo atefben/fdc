@@ -4,7 +4,7 @@ namespace Base\AdminBundle\Admin;
 
 use Base\CoreBundle\Entity\Tag;
 use Base\CoreBundle\Entity\TagTranslation;
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * TagAdmin class.
- * 
+ *
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
@@ -39,9 +39,9 @@ class TagAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('name', 'doctrine_orm_callback', array(
-                'label' => 'form.label_tag_name',
+                'label'              => 'form.label_tag_name',
                 'translation_domain' => 'BaseAdminBundle',
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback'           => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -49,14 +49,14 @@ class TagAdmin extends Admin
                     $queryBuilder->andWhere('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.name LIKE :name');
-                    $queryBuilder->setParameter('name', '%'. $value['value']. '%');
+                    $queryBuilder->setParameter('name', '%' . $value['value'] . '%');
 
                     return true;
                 },
-                'field_type' => 'text'
+                'field_type'         => 'text'
             ))
             ->add('priorityStatus', 'doctrine_orm_choice', array(), 'choice', array(
-                'choices' => Tag::getPriorityStatuses(),
+                'choices'                   => Tag::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
         ;
@@ -71,7 +71,7 @@ class TagAdmin extends Admin
             ->add('id')
             ->add('name', null, array('label' => 'form.label_tag_name'))
             ->add('priorityStatus', 'choice', array(
-                'choices' => Tag::getPriorityStatusesList(),
+                'choices'   => Tag::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
             ))
             ->add('_edit_translations', null, array(
@@ -87,7 +87,7 @@ class TagAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
-                'label' => false,
+                'label'  => false,
                 'fields' => array(
                     'createdAt' => array(
                         'display' => false
@@ -95,21 +95,21 @@ class TagAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'status' => array(
-                        'label' => 'form.label_status',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'choice',
-                        'choices' => TagTranslation::getStatuses(),
+                    'status'    => array(
+                        'label'                     => 'form.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => TagTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
-                        'constraints' => array(
+                        'constraints'               => array(
                             new NotBlank()
                         )
                     ),
-                    'name' => array(
-                        'label' => 'form.label_tag_name',
+                    'name'      => array(
+                        'label'              => 'form.label_tag_name',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.tag.helper_name',
-                        'constraints' => array(
+                        'sonata_help'        => 'form.tag.helper_name',
+                        'constraints'        => array(
                             new NotBlank()
                         )
                     ),
@@ -117,13 +117,13 @@ class TagAdmin extends Admin
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => Tag::getAvailableTranslateOptions(),
+                'choices'            => Tag::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
-                'multiple' => true,
-                'expanded' => true
+                'multiple'           => true,
+                'expanded'           => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => Tag::getPriorityStatuses(),
+                'choices'                   => Tag::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
         ;
@@ -139,5 +139,22 @@ class TagAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
         ;
+    }
+
+    public function getExportFields()
+    {
+        return array(
+            'Id'                   => 'id',
+            'Nom du tag master'    => 'exportName',
+            'Date de création'     => 'exportCreatedAt',
+            'Date de modification' => 'exportUpdatedAt',
+            'Statut master'        => 'exportStatusMaster',
+            'Traduction en'        => 'exportTranslationEn',
+            'Statut en'            => 'exportStatusEn',
+            'Traduction es'        => 'exportTranslationEs',
+            'Statut es'            => 'exportStatusEs',
+            'Traduction zh'        => 'exportTranslationZh',
+            'Statut zh'            => 'exportStatusZh',
+        );
     }
 }

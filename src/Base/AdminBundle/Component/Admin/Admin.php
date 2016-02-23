@@ -4,7 +4,6 @@ namespace Base\AdminBundle\Component\Admin;
 
 use Base\CoreBundle\Entity\InfoAudioTranslation;
 use Base\CoreBundle\Entity\MediaImageSimple;
-use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Sonata\AdminBundle\Admin\Admin as BaseAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
@@ -147,6 +146,14 @@ class Admin extends BaseAdmin
                 'choice_translation_domain' => 'BaseAdminBundle'
             ),
         ));
+    }
+
+
+    public function getExportFormats()
+    {
+        return array(
+            'xls'
+        );
     }
 
 }
