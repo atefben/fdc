@@ -14,7 +14,7 @@
                         {{ date|localizeddate('none', 'none', 'zh', null, 'MM月dd日, eee') }}
                     {% endif %}
                 {% else  %}
-                    {{ 'article.filter.select.date.all'|trans }}
+                    [ {{ 'search.result.filter.tous'|trans }} ]
                 {% endif %}
             </span>
             {% endfor %}
@@ -30,7 +30,7 @@
                 {% if key != 0 %}
                     {{ theme|trans_fallback('name') }}
                 {% else  %}
-                    {{ 'article.filter.select.date.all'|trans }}
+                    [ {{ 'search.result.filter.tous'|trans }} ]
                 {% endif %}
             </span>
             {% endfor %}
@@ -46,7 +46,7 @@
                 {% if key != 0 %}
                     {{ format }}
                 {% else  %}
-                    {{ 'article.filter.select.date.all'|trans }}
+                    [ {{ 'article.filter.select.date.all'|trans }} ]
                 {% endif %}
             </span>
             {% endfor %}

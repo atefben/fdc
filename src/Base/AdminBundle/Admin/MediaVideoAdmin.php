@@ -46,7 +46,7 @@ class MediaVideoAdmin extends Admin
                     return true;
                 },
                 'field_type' => 'text',
-                'label' => 'filter.media_video.label_title_video',
+                'label'      => 'filter.media_video.label_title_video',
             ))
             ->add('theme')
             ->add('webTv', null, array(
@@ -142,22 +142,22 @@ class MediaVideoAdmin extends Admin
                     'imageAmazonUrl' => array(
                         'display' => false
                     ),
-                    'jobWebmState' => array(
+                    'jobWebmState'   => array(
                         'display' => false
                     ),
-                    'jobMp4State' => array(
+                    'jobMp4State'    => array(
                         'display' => false
                     ),
-                    'jobMp4Id' => array(
+                    'jobMp4Id'       => array(
                         'display' => false
                     ),
-                    'jobWebmId' => array(
+                    'jobWebmId'      => array(
                         'display' => false
                     ),
-                    'mp4Url' => array(
+                    'mp4Url'         => array(
                         'display' => false
                     ),
-                    'webmUrl' => array(
+                    'webmUrl'        => array(
                         'display' => false
                     ),
                     'file'           => array(
@@ -235,7 +235,7 @@ class MediaVideoAdmin extends Admin
             ))
             ->add('image', 'sonata_type_model_list', array(
                 'label' => 'form.label_media_video_image',
-                'help' => 'form.media_image.helper_file'
+                'help'  => 'form.media_image.helper_file'
             ))
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
@@ -335,7 +335,6 @@ class MediaVideoAdmin extends Admin
         ;
     }
 
-
     /**
      * @param string $context
      * @return \Sonata\AdminBundle\Datagrid\ProxyQueryInterface
@@ -350,6 +349,27 @@ class MediaVideoAdmin extends Admin
 
         return $query;
 
+    }
+
+    public function getExportFields()
+    {
+        return array(
+            'Id'                                        => 'id',
+            'Titre de la vidéo'                         => 'exportTitle',
+            'Thème'                                     => 'exportTheme',
+            'Chaîne'                                    => 'exportWebTv',
+            'Id créateur'                               => 'exportAuthor',
+            'Date de création'                          => 'exportCreatedAt',
+            'Dates de publication'                      => 'exportPublishDates',
+            'Date de modification'                      => 'exportUpdatedAt',
+            'Statut master'                             => 'exportStatusMaster',
+            'Statut traduction es'                      => 'exportStatusEn',
+            'Statut traduction en'                      => 'exportStatusEs',
+            'Statut traduction zh'                      => 'exportStatusZh',
+            'Publié sur'                                => 'exportSites',
+            'Affiché en tant qu\'actualité sur la home' => 'exportDisplayedHome',
+            'Bande annonce'                             => 'exportDisplayedTrailer',
+        );
     }
 
 }

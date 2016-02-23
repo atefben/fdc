@@ -50,7 +50,7 @@ class GalleryAdmin extends Admin
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'edit'   => array(),
+                    'edit' => array(),
                 )
             ))
         ;
@@ -85,4 +85,16 @@ class GalleryAdmin extends Admin
         $showMapper
             ->add('id');
     }
+
+
+    public function getExportFields()
+    {
+        return array(
+            'Id'                   => 'id',
+            'Nom'                  => 'name',
+            'Date de création'     => 'exportCreatedAt',
+            'Date de modification' => 'exportUpdatedAt',
+        );
+    }
+
 }

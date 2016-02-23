@@ -1,6 +1,7 @@
 <div id="filter-update">
 {% include 'FDCEventBundle:News:components/filters.html.twig' %}
 </div>
+
 {% set vars = {'isDouble': 'double'} %}
 {% for article in homeArticles %}
     {% if loop.first %}
@@ -14,6 +15,9 @@
     {% endif %}
     {% if loop.index == 3 %}
     </div>
+    {% if homeArticlesSlider is not empty %}
+        {% include 'FDCEventBundle:News:widgets/slideshow-actu-home.html.twig' %}
+    {% endif %}
     {% endif %}
     {% if loop.last %}
     </div>

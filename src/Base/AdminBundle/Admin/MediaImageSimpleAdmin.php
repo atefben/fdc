@@ -48,7 +48,7 @@ class MediaImageSimpleAdmin extends Admin
         $listMapper
             ->add('id', null, array('label' => 'list.common.label_id'))
             ->add('name', null, array(
-                'label' => 'list.media_image_simple.label_name',
+                'label'    => 'list.media_image_simple.label_name',
                 'sortable' => false,
             ))
             ->add('alt', null, array(
@@ -155,5 +155,21 @@ class MediaImageSimpleAdmin extends Admin
     public function configure()
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
+    }
+
+
+    public function getExportFields()
+    {
+        return array(
+            'Id'                   => 'id',
+            'Nom de l\'image'      => 'name',
+            'Alt de l\'image'      => 'exportAlt',
+            'Date de création'     => 'exportCreatedAt',
+            'Date de modification' => 'exportUpdatedAt',
+            'Statut master'        => 'exportStatusMaster',
+            'Statut traduction es' => 'exportStatusEn',
+            'Statut traduction en' => 'exportStatusEs',
+            'Statut traduction zh' => 'exportStatusZh',
+        );
     }
 }

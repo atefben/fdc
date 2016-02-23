@@ -272,7 +272,9 @@ class NewsController extends Controller {
             $dateTimeNext = $dateTime->modify('-1 day');
             $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext , $countNext);
         }
-        array_pop($homeArticles);
+
+        //get images for slider articles
+        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $dateTime);
 
         //set default filters
         $filters                         = array();
@@ -299,6 +301,7 @@ class NewsController extends Controller {
         }
 
         return array(
+            'homeArticlesSlider' => $homeArticlesSlider,
             'endOfArticles'    => $endOfArticles,
             'homeArticles'     => $homeArticles,
             'homeArticlesNext' => $homeArticlesNext,
@@ -404,7 +407,7 @@ class NewsController extends Controller {
 		
         $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getOlderNews($locale, $this->getFestival()->getId() , $news->getPublishedAt());
         $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getNextNews($locale, $this->getFestival()->getId() , $news->getPublishedAt());
-
+		
         return array(
             'localeSlugs'            => $localeSlugs,
             'focusArticles'          => $focusArticles,
