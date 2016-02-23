@@ -64,7 +64,8 @@ class NewsArticleAdmin extends Admin
                     'introduction' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_introduction',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'createdAt' => array(
                         'display' => false
