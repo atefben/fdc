@@ -5,7 +5,7 @@
         <span class="label">{{ 'search.result.label.date'|trans }} :</span>
         <span class="select">
             <span class="active" data-filter="all">
-                {{ 'search.result.filter.toutes'|trans }}
+                [ {{ 'search.result.filter.toutes'|trans }} ]
             </span>
             {% for date in searchFilters.date %}
                 <span data-filter="{{ date.publishedAt|date('dmY') }}">
@@ -18,7 +18,7 @@
     <span class="label">{{ 'search.result.label.format'|trans }} :</span>
         <span class="select">
             <span class="active" data-filter="all">
-                  {{ 'search.result.filter.tous'|trans }}
+                  [ {{ 'search.result.filter.tous'|trans }} ]
             </span>
             {% for format in searchFilters.format %}
                 <span data-filter="{{ format.slug }}">
@@ -31,7 +31,7 @@
     <span class="label">{{ 'search.result.label.theme'|trans }} :</span>
         <span class="select">
             <span class="active" data-filter="all">
-              {{ 'search.result.filter.tous'|trans }}
+                [ {{ 'search.result.filter.tous'|trans }} ]
             </span>
                 {% for theme in searchFilters.theme %}
                     <span data-filter="{{ theme.slug }}">
