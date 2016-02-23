@@ -37,9 +37,10 @@ class Admin extends BaseAdmin
 
                     return true;
                 },
-                'field_type'    => 'date',
-                'field_options' => array(
-                    'widget' => 'single_text',
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
                 ),
                 'label'         => 'filter.common.label_created_before',
             ))
@@ -53,9 +54,10 @@ class Admin extends BaseAdmin
 
                     return true;
                 },
-                'field_type'    => 'date',
-                'field_options' => array(
-                    'widget' => 'single_text',
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
                 ),
                 'label'         => 'filter.common.label_created_after',
             ))
@@ -78,9 +80,10 @@ class Admin extends BaseAdmin
 
                     return true;
                 },
-                'field_type'    => 'date',
-                'field_options' => array(
-                    'widget' => 'single_text',
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
                 ),
                 'label'         => 'filter.media_audio.label_published_before',
             ))
@@ -94,9 +97,10 @@ class Admin extends BaseAdmin
 
                     return true;
                 },
-                'field_type'    => 'date',
-                'field_options' => array(
-                    'widget' => 'single_text',
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
                 ),
                 'label'         => 'filter.media_audio.label_published_after',
             ))
