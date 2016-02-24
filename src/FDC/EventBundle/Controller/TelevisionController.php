@@ -114,10 +114,12 @@ class TelevisionController extends Controller
             ;
 
             foreach ($filmVideosGroup as $group) {
-                $filmVideos[] = array(
-                    'video' => $group['lastVideo'],
-                    'film'  => $filmsIds[$group['film_id']],
-                );
+                if (!empty($filmsIds[$group['film_id']])) {
+                    $filmVideos[] = array(
+                        'video' => $group['lastVideo'],
+                        'film'  => $filmsIds[$group['film_id']],
+                    );
+                }
             }
         }
 
