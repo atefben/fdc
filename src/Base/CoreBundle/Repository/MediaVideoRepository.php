@@ -79,7 +79,7 @@ class MediaVideoRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function getLastMediaVideoTrailerOfEachFilmFilm($festival, $locale, $in)
+    public function getLastMediaVideoTrailerOfEachFilmFilm($festival, $locale, $in = null, $selectionSection = null)
     {
         $qb = $this->createQueryBuilder('mv');
 
@@ -88,23 +88,33 @@ class MediaVideoRepository extends EntityRepository
             ->join('mv.associatedFilms', 'mvaf')
             ->join('mv.translations', 'mvt')
             ->join('mvaf.association', 'f')
-            ->where('f.id in (:film)')
-            ->setParameter('film', $in)
+            ->where('mv.displayedTrailer = :displayedTrailer')
+            ->setParameter('displayedTrailer', true)
         ;
+        if ($in) {
+            $qb
+                ->andWhere('f.id in (:film)')
+                ->setParameter('film', $in)
+            ;
+        }
 
-        $qb = $this->addMasterQueries($qb, 'mv', $festival, true);
-        $qb = $this->addMasterQueries($qb, 'f', $festival, false);
-        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
-        $qb = $this->addAWSEncodersQueries($qb, 'mvt');
+        $this->addMasterQueries($qb, 'mv', $festival, true);
+        $this->addMasterQueries($qb, 'f', $festival, false);
+        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addAWSEncodersQueries($qb, 'mvt');
 
         $qb
-            ->andWhere('mv.displayedTrailer = :displayedTrailer')
-            ->setParameter('displayedTrailer', true)
             ->orderBy('f.titleVO', 'desc')
             ->orderBy('mv.publishedAt', 'desc')
-
             ->groupBy('film_id')
         ;
+
+        if ($selectionSection) {
+            $qb
+                ->andWhere('f.selectionSection = :selectionSection')
+                ->setParameter('selectionSection', $selectionSection)
+            ;
+        }
 
         return $qb->getQuery()->getResult();
     }
@@ -129,17 +139,36 @@ class MediaVideoRepository extends EntityRepository
     }
 
     /**
-     * @param string $locale
-     * @param integer $film
+     * @param $festival
+     * @param $locale
+     * @param $film
+     * @return array
      */
-    public function getVideosByFilm($locale, $film)
+    public function getAvailableTrailersByFilm($festival, $locale, $film)
     {
         $qb = $this->createQueryBuilder('mv');
-        $qb = $qb
+
+        $qb
+            ->join('mv.associatedFilms', 'mvaf')
             ->join('mv.translations', 'mvt')
-            ->where('mv.locale = :locale')
-            ->setParameter('locale', $locale)
+            ->join('mvaf.association', 'f')
+            ->where('mv.displayedTrailer = :displayedTrailer')
+            ->setParameter('displayedTrailer', true)
+            ->andWhere('f.id = :film_id')
+            ->setParameter('film_id', $film)
         ;
+
+        $this->addMasterQueries($qb, 'mv', $festival, true);
+        $this->addMasterQueries($qb, 'f', $festival, false);
+        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addAWSEncodersQueries($qb, 'mvt');
+
+        $qb
+            ->orderBy('f.titleVO', 'desc')
+            ->orderBy('mv.publishedAt', 'desc')
+        ;
+
+        return $qb->getQuery()->getResult();
     }
 
 }
