@@ -40,7 +40,7 @@
                 {% endif %}
                 {% if imageTrans is defined and imageTrans is not null %}
                     {% set file = imageTrans.file %}
-                    {% set img = imageTrans %}
+                    {% set img = article.header %}
                 {% else %}
                     {% set img = article.audio.image %}
                     {% set trans = img.findTranslationByLocale(app.request.locale) %}
