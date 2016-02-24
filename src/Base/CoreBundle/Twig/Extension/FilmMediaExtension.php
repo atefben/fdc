@@ -32,7 +32,7 @@ class FilmMediaExtension extends Twig_Extension
     {
         $medias = array();
         foreach($film->getMedias() as $media) {
-            if($media->getType() == $type) {
+            if ($media->getMedia() !== null && $media->getType() == $type) {
                 $medias[] = $media->getMedia()->getFile();
             }
         }

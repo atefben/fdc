@@ -79,7 +79,7 @@
       </trans-unit>
       <trans-unit id="ed9f52b8a08ba392e3303b55e0d2f9832307ace7" resname="article.film.btn.toutelaprojection">
         <source>article.film.btn.toutelaprojection</source>
-        <target>Toute la projection</target>
+        <target>Toute la programmation</target>
         <jms:reference-file line="156">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6014a8cb787871930841a14509449ffea83e2cd2" resname="article.film.label.programmation">

@@ -28,7 +28,8 @@
 
 
 // HELPERS ================ //
-
+;;;;;;
+deiofieropei
 // parse URL in string
 String.prototype.parseURL = function() {
   return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g, function(url) {
@@ -916,7 +917,7 @@ $(document).ready(function() {
       $('.main-image').height($('.main-image').data('height'));
       $('.main-image, .poster, .info-film, .nav').removeClass('trailer');
 
-      var sections = $('*[data-section')
+      var sections = $('*[data-section]')
         , nav = $('#nav-movie')
         , nav_height = nav.outerHeight() + $('header').height();
 
@@ -1155,7 +1156,7 @@ $(document).ready(function() {
 	//thomon 30/11/2015 - add popin on mail button
 	$('.button.email').on('click', function(e) {
 	  
-	}
+	});
 	
   }
 
@@ -1544,14 +1545,14 @@ $(document).ready(function() {
       slideshows.push(slideshow);
     }
 
-		 if($('#gridWebtv').length){
-			 	$grid = $('#gridWebtv').imagesLoaded(function() {
+    if($('#gridWebtv').length){
+          $grid = $('#gridWebtv').imagesLoaded(function() {
 
-					$grid.isotope({
-						layoutMode: 'packery',
-						itemSelector: '.item'
-					});
-				});
+              $grid.isotope({
+                  layoutMode: 'packery',
+                  itemSelector: '.item'
+              });
+          });
     }
 
     if($('#gridAudios').length) {
@@ -1585,8 +1586,10 @@ $(document).ready(function() {
                 img = $(e.target).find('img').attr('src'),
                 category = $(e.target).find('.category').text(),
                 date = $(e.target).find('.date').text(),
-                text = $(e.target).find('p').text(),
+                text = $(e.target).find('p').data('title'),
                 $popinAudio = $('.popin-audio');
+
+            console.log(text);
 
             $popinAudio.attr('data-sound', s);
             $popinAudio.find('.image').css('background-image', 'url(' + img + ')');

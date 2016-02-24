@@ -338,7 +338,7 @@ $(document).ready(function () {
               category    = $(e.target).find('.category').text(),
               date        = $(e.target).find('.date').text(),
               hour        = $(e.target).find('.hour').text(),
-              text        = $(e.target).find('p').text();
+              text        = $(e.target).find('p').data('title');
 
           videoPopin.playlistItem($(this).index()-1);
           sliderChannelsVideo.trigger('to.owl.carousel',[$(this).index()-1,1,true]);
