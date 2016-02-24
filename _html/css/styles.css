@@ -10031,20 +10031,20 @@ header #searchContainer {
   margin: 0 6.5%;
 }
 
-h2 .sub-title {
+h2.sub-title {
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 1.5rem;
   margin-bottom: 50px;
   text-align: center;
 }
-h2 .sub-title2 {
+h2.sub-title2 {
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-weight: 700;
   font-size: 1.125rem;
   margin: 25px 0px;
 }
 
-h3 .sub-title {
+h3.sub-title {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   margin: 50px 0;
