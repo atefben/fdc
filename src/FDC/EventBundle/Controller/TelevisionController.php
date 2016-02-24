@@ -2,6 +2,7 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Base\CoreBundle\Entity\FDCPageWebTvLive;
 use Base\CoreBundle\Entity\FDCPageWebTvLiveMediaVideoAssociated;
 use Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated;
 use Base\CoreBundle\Entity\FilmFilm;
@@ -9,6 +10,7 @@ use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 use Base\CoreBundle\Entity\FilmFilmTranslation;
 use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\NewsArticle;
+use Base\CoreBundle\Entity\WebTv;
 use FDC\EventBundle\Component\Controller\Controller;
 use Gedmo\Sluggable\SluggableListener;
 use Gedmo\Sluggable\Util\Urlizer;
@@ -42,48 +44,104 @@ class TelevisionController extends Controller
             ->find($id)
         ;
 
-        if (!$page) {
+        if ($page instanceof FDCPageWebTvLive) {
             $this->createNotFoundException('Page Live not found');
         }
 
         $this->get('base.manager.seo')->setFDCEventPageFDCPageWebTvLiveSeo($page, $locale);
 
         $sliderChosenChannels = array();
-        foreach ($page->getAssociatedWebTvs() as $associatedWebTv) {
-            if ($associatedWebTv->getAssociation()) {
-                $sliderChosenChannels[$associatedWebTv->getAssociation()->getId()] = $associatedWebTv->getAssociation();
+        $sliderOtherChannels = array();
+        if (!$page->getDoNotDisplayTrailerArea()) {
+            $in = array();
+            foreach ($page->getAssociatedWebTvs() as $associatedWebTv) {
+                if ($associatedWebTv->getAssociation()) {
+                    $in[] = $associatedWebTv->getAssociation()->getId();
+                }
+            }
+
+            $chosenChannels = $this
+                ->getBaseCoreWebTvRepository()
+                ->getLiveWebTvs($locale, $festival->getId(), array(), $in)
+            ;
+
+            foreach ($chosenChannels as $chosenChannel) {
+                $channelVideos = $this
+                    ->getBaseCoreMediaVideoRepository()
+                    ->getAvailableVideosByWebTv($festival, $locale, $chosenChannel->getId())
+                ;
+                if ($channelVideos) {
+                    $sliderChosenChannels[] = array(
+                        'channel'       => $chosenChannel,
+                        'channelVideos' => $channelVideos,
+                    );
+                }
+            }
+
+            $otherChannels = $this
+                ->getBaseCoreWebTvRepository()
+                ->getLiveWebTvs($locale, $festival->getId(), $in)
+            ;
+
+            foreach ($otherChannels as $otherChannel) {
+                $channelVideos = $this
+                    ->getBaseCoreMediaVideoRepository()
+                    ->getAvailableVideosByWebTv($festival, $locale, $otherChannel->getId())
+                ;
+                if ($channelVideos) {
+                    $sliderOtherChannels[] = array(
+                        'channel'       => $otherChannel,
+                        'channelVideos' => $channelVideos,
+                    );
+                }
             }
         }
 
-        $sliderOtherChannels = $this
-            ->getBaseCoreWebTvRepository()
-            ->getRandomWebTvs($locale, $festival->getId(), array_keys($sliderChosenChannels))
-        ;
 
-        $films = array();
-        foreach ($page->getAssociatedFilmFilms() as $associatedFilmFilm) {
-            if ($associatedFilmFilm->getAssociation()) {
-                $films[$associatedFilmFilm->getAssociation()->getId()] = $associatedFilmFilm->getAssociation();
+        $filmVideos = array();
+        if (!$page->getDoNotDisplayTrailerArea()) {
+            $filmsIds = array();
+            foreach ($page->getAssociatedFilmFilms() as $associatedFilmFilm) {
+                if ($associatedFilmFilm->getAssociation()) {
+                    $filmsIds[$associatedFilmFilm->getAssociation()->getId()] = $associatedFilmFilm->getAssociation();
+                }
+            }
+
+            $filmVideosGroup = $this
+                ->getBaseCoreMediaVideoRepository()
+                ->getLastMediaVideoOfEachFilmFilm($festival, $locale, array_keys($filmsIds))
+            ;
+
+            foreach ($filmVideosGroup as $group) {
+                $filmVideos[] = array(
+                    'video' => $group['lastVideo'],
+                    'film'  => $filmsIds[$group['film_id']],
+                );
             }
         }
 
-        $lastVideos = $this
-            ->getBaseCoreMediaVideoRepository()
-            ->get2VideosFromTheLast10($locale, $festival->getId())
-        ;
+        if ($page->getDoNotDisplayLastVideosArea()) {
+            $lastVideos = array();
+        } else {
+            $lastVideos = $this
+                ->getBaseCoreMediaVideoRepository()
+                ->get2VideosFromTheLast10($festival->getId(), $locale)
+            ;
+        }
 
         $videoUrl = null;
-        if ($page->getLive() && $page->getDirectUrl()) {
-            $videoUrl = $page->getDirectUrl();
-        } elseif (!$page->getLive() && $page->getTeaserUrl()) {
-            $videoUrl = $page->getTeaserUrl();
+        if ($page->getLive() && $page->findTranslationByLocale($locale)->getDirectUrl()) {
+            $videoUrl = $page->findTranslationByLocale($locale)->getDirectUrl();
+
+        } elseif (!$page->getLive() && $page->findTranslationByLocale($locale)->getTeaserUrl()) {
+            $videoUrl = $page->findTranslationByLocale($locale)->getTeaserUrl();
         }
 
         return array(
             'page'                 => $page,
             'sliderChosenChannels' => $sliderChosenChannels,
             'sliderOtherChannels'  => $sliderOtherChannels,
-            'films'                => $films,
+            'filmVideos'           => $filmVideos,
             'videoUrl'             => $videoUrl,
             'lastVideos'           => $lastVideos,
         );
@@ -229,23 +287,23 @@ class TelevisionController extends Controller
      * @param Request $request
      * @param $slug
      * @return array
-     * @Route("/trailer/{slug}")
+     * @Route("/trailer/{slug}/{video}")
      * @Template("FDCEventBundle:Television:trailer.html.twig")
      */
-    public function getTrailerAction(Request $request, $slug)
+    public function getTrailerAction(Request $request, $slug, $video = null)
     {
         $locale = $request->getLocale();
 
-        $filmTranslation = $this
-            ->getBaseCoreFilmFilmTranslationRepository()
+        $film = $this
+            ->getBaseCoreFilmFilmRepository()
             ->findOneBySlug($slug)
         ;
 
-        if (!($filmTranslation instanceof FilmFilmTranslation)) {
+        if (!($film instanceof FilmFilm)) {
             throw $this->createNotFoundException('FilmFilmTranslation not found.');
         }
 
-        $film = $filmTranslation->getTranslatable();
+        $filmTranslation = $film->findTranslationByLocale($locale);
 
 
         $festivalId = $this->getFestival()->getId();
@@ -261,7 +319,7 @@ class TelevisionController extends Controller
             }
         }
 
-        $videos = $this->getBaseCoreMediaVideoRepository()->getFilmTrailersMediaVideos($locale, $film->getId());
+        $videos = $this->getBaseCoreMediaVideoRepository()->getFilmTrailersMediaVideos($festivalId, $locale, $film->getId());
 
         $route = $this->generateUrl($request->get('_route'), $request->get('_route_params'), UrlGeneratorInterface::ABSOLUTE_URL);
         $title = $this
@@ -306,11 +364,12 @@ class TelevisionController extends Controller
         $filmShowings = array();
         foreach ($projections as $projection) {
             $filmShowings[] = array(
-                'type' => $projection->getType(),
+                'type'  => $projection->getType(),
                 'date'  => $projection->getStartAt(),
                 'place' => $projection->getRoom()->getName(),
             );
         }
+
 
         return array(
             'film'         => $film,

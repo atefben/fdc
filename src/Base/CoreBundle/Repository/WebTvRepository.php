@@ -31,7 +31,8 @@ class WebTvRepository extends EntityRepository
             ->join('wt.mediaVideos', 'mv')
             ->join('wt.translations', 'wtt')
             ->join('mv.translations', 'mvt')
-            ->where('mv.displayedWebTv = :displayedWebTv');
+            ->where('mv.displayedWebTv = :displayedWebTv')
+        ;
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival);
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
@@ -60,7 +61,8 @@ class WebTvRepository extends EntityRepository
             ->join('wt.mediaVideos', 'mv')
             ->join('wt.translations', 'wtt')
             ->join('mv.translations', 'mvt')
-            ->where('mv.displayedWebTv = :displayedWebTv');
+            ->where('mv.displayedWebTv = :displayedWebTv')
+        ;
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival);
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
@@ -90,7 +92,8 @@ class WebTvRepository extends EntityRepository
         $qb = $this->createQueryBuilder('wt');
         $qb = $qb->join('wt.translations', 'wtt')
             ->where('wtt.slug = :slug')
-            ->setParameter('slug', $slug);
+            ->setParameter('slug', $slug)
+        ;
 
         $qb = $this->addTranslationQueries($qb, 'wtt', $locale);
         $qb = $qb
@@ -126,10 +129,11 @@ class WebTvRepository extends EntityRepository
      * @param $locale
      * @param $festival
      * @param array $excludes
+     * @param array $in
      * @param int $limit
      * @return array
      */
-    public function getRandomWebTvs($locale, $festival, $excludes = array(), $limit = 10)
+    public function getLiveWebTvs($locale, $festival, $excludes = array(), $in = array(), $limit = 10)
     {
         $qb = $this->createQueryBuilder('wt');
 
@@ -147,6 +151,13 @@ class WebTvRepository extends EntityRepository
             $qb = $qb
                 ->andWhere('wt.id NOT IN (:excludes)')
                 ->setParameter(':excludes', $excludes)
+            ;
+        }
+
+        if ($in) {
+            $qb = $qb
+                ->andWhere('wt.id IN (:in)')
+                ->setParameter(':in', $in)
             ;
         }
 
