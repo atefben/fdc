@@ -426,11 +426,11 @@ form:
         image_dual_align: Module 2 photos / ligne
         quote: Module citation
     media_audio:
-        helper_title: 255 caractères max.
+        helper_title: 200 caractères max.
         displayed_home: Remonter en tant qu'actualité sur la homepage
         displayed_all: Remonter dans "Toutes les audios"
     media_video:
-        helper_title: 255 caractères max.
+        helper_title: 200 caractères max.
         displayed_all: Remonter dans "Toutes les vidéos"
         displayed_home: Remonter en tant qu'actualité sur la homepage
         displayed_webTv: Afficher dans une chaîne de la webTV

@@ -81,3 +81,8 @@
 .single-article .slideshow.article_photo .slideshow-img .thumbnails .thumb img {
     height: auto;
 }
+
+.popin-video .info p,
+.popin-audio .info p {
+    max-width: 410px;
+}
