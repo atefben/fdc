@@ -1,6 +1,29 @@
 jQuery(document).ready(function($) {
     editEvents();
+    var url = window.location.href;
+    var newsUrl = url.split("/");
 
+    if(newsUrl[6]== 'newsarticle' || newsUrl[6]== 'newsvideo' || newsUrl[6]== 'newsimage' || newsUrl[6]== 'newsaudio'  ){
+        var slug = $('.a2lix_translationsFields-fr #btn-preview').data('preview')
+
+        switch(newsUrl[6]) {
+            case 'newsarticle':
+                var format = 'articles';
+                break;
+            case 'newsvideo':
+                var format = 'videos';
+                break;
+            case 'newsimage':
+                var format = 'images';
+                break;
+            case 'newsaudio':
+                var format = 'audios';
+                break;
+        }
+
+        var route = Routing.generate('fdc_event_news_get', { _locale: 'fr', format: format, slug: slug });
+        $('.well.well-small.form-actions').append('<a target="_blank" href="'+route+'" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
+    }
     // on modal add, reload function
     $(window).on('shown.bs.modal', function() {
         if ($('.modal[aria-hidden="false"]').find('form[action*="create"]').length) {

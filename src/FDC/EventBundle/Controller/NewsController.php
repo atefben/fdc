@@ -310,7 +310,7 @@ class NewsController extends Controller {
     }
 
     /**
-     * @Route("/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"})
+     * @Route("/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"}, options={"expose"=true})
      * @Template("FDCEventBundle:News:main.html.twig")
      * @param $slug
      * @return array
