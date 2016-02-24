@@ -100,7 +100,6 @@ class FDCPageWebTvChannelsAdmin extends Admin
             ->add('image', 'sonata_type_model_list', array(
                 'label' => 'form.fdc_page_web_tv_channels.image',
                 'help' => 'form.fdc_page_web_tv_channels.helper_image',
-                'context' => 'media_image_simple',
                 'required' => false,
             ))
             ->add('sticky', 'sonata_type_model_list', array(
