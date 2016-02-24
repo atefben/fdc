@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCEventBundle' %}
 <article class="article {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-theme="{{ article.theme|trans_fallback('slug') }}">
-    <div class="image">
-        <div class="image-wrapper" {% if type is defined and type == 'same-day' %}id="sameday"{% endif %}>
+    <div class="image{% if type is defined and type == 'same-day' %} image-sameday-wrapper{% endif %}">
+        <div class="image-wrapper">
             {% if type is defined %}
                 {% if type == 'focus' %}
                     {% set gabarit = '918x580' %}

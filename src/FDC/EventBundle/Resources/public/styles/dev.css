@@ -73,7 +73,7 @@
     display: block;
 }
 
-#sameday {
+.same-day .image.image-sameday-wrapper {
     width:293px;
     height:185px;
 }
