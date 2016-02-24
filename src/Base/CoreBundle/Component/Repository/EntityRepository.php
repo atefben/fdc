@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Component\Repository;
 
+use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use \DateTime;
@@ -19,8 +20,7 @@ class EntityRepository extends BaseRepository
     public function addFDCEventQueries($qb, $alias)
     {
         $qb = $qb
-            ->andWhere("{$alias}.slug = 'site-evenementiel'")
-        ;
+            ->andWhere("{$alias}.slug = 'site-evenementiel'");
 
         return $qb;
     }
@@ -33,8 +33,7 @@ class EntityRepository extends BaseRepository
     public function addFDCPressQueries($qb, $alias)
     {
         $qb = $qb
-            ->andWhere("{$alias}.slug = 'site-press'")
-        ;
+            ->andWhere("{$alias}.slug = 'site-press'");
 
         return $qb;
     }
@@ -64,13 +63,15 @@ class EntityRepository extends BaseRepository
     {
         $qb = $qb
             ->andWhere("{$alias}.festival = :festival")
-            ->setParameter('festival', $festival);
+            ->setParameter('festival', $festival)
+        ;
 
         if ($published) {
             $qb = $qb
                 ->andWhere("({$alias}.publishedAt IS NULL OR {$alias}.publishedAt <= :datetime)")
                 ->andWhere("({$alias}.publishEndedAt IS NULL OR {$alias}.publishEndedAt >= :datetime)")
-                ->setParameter('datetime', new DateTime());
+                ->setParameter('datetime', new DateTime())
+            ;
         }
 
         return $qb;
@@ -104,7 +105,8 @@ class EntityRepository extends BaseRepository
         } else {
             $qb = $qb
                 ->andWhere("({$alias}.locale = 'fr' AND {$alias}.status = :status_published)")
-                ->setParameter('status_published', NewsArticleTranslation::STATUS_PUBLISHED);
+                ->setParameter('status_published', NewsArticleTranslation::STATUS_PUBLISHED)
+            ;
 
             if ($locale != 'fr') {
                 $aliasTrans = substr($alias, 0, -1);
@@ -120,4 +122,22 @@ class EntityRepository extends BaseRepository
 
         return $qb;
     }
+
+    /**
+     * @param QueryBuilder $qb
+     * @param string $alias
+     * @return QueryBuilder
+     */
+    public function addAWSEncodersQueries(QueryBuilder $qb, $alias)
+    {
+        $qb->andWhere("$alias.jobWebmState = :job_state")
+            ->andWhere("$alias.jobMp4State = :job_state")
+            ->setParameter('job_state', MediaVideoTranslation::ENCODING_STATE_READY)
+            ->andWhere("$alias.webmUrl IS NOT NULL")
+            ->andWhere("$alias.mp4Url IS NOT NULL")
+        ;
+        return $qb;
+    }
+
+
 }

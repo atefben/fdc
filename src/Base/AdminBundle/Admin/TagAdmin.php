@@ -157,4 +157,5 @@ class TagAdmin extends Admin
             'Statut zh'            => 'exportStatusZh',
         );
     }
+
 }
