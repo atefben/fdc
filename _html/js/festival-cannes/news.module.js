@@ -29,7 +29,7 @@ $(document).ready(function() {
     $('#articles-wrapper').addClass('loading');
 
     $('#shd').removeClass('show');
-    $('.read-more').html(GLOBALS.texts.readMore.more).removeClass('prevDay');
+    $('.read-more').html(GLOBALS.texts.readMore.more).removeClass('prevDay').show();
 
     $('html, body').animate({
       scrollTop: $("#news").offset().top - 50
@@ -67,7 +67,7 @@ $(document).ready(function() {
           initSlideshows();
 
           if($('#articles-wrapper .nextDay').length > 0) {
-            $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+            $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay').show();
             
             setTimeout(function() {
               $('#shd').addClass('show');
@@ -84,7 +84,7 @@ $(document).ready(function() {
 
   
   if($('#articles-wrapper .nextDay').length > 0) {
-    $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+    $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay').show();
     $('#shd').addClass('show');
   }
 
@@ -104,7 +104,7 @@ $(document).ready(function() {
     // load previous day
     if($(this).hasClass('prevDay')) {
       $('#shd').removeClass('show');
-      $('.read-more').html( GLOBALS.texts.readMore.more ).removeClass('prevDay');
+      $('.read-more').html( GLOBALS.texts.readMore.more ).removeClass('prevDay').show();
       $('#articles-wrapper').addClass('loading');
       
       $('html, body').animate({
@@ -146,7 +146,7 @@ $(document).ready(function() {
             filter();
 
             if($('#articles-wrapper .nextDay').length > 0) {
-              $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+              $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay').show();
               $('#shd').addClass('show');
             } else if ($('#news .articles').length == 0 || $('#news .articles:not(.nextDay) article:last').data('end')) {
               $('.read-more').hide();
@@ -190,7 +190,7 @@ $(document).ready(function() {
           filter();
 
           if($('#articles-wrapper .nextDay').length > 0) {
-            $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+            $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay').show();
             
             setTimeout(function() {
               $('#shd').addClass('show');
