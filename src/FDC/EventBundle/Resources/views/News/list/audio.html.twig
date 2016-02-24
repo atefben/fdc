@@ -36,7 +36,7 @@
                                 <div class="vCenterKid">
                                     <span class="category">{{ audio.theme|trans_fallback('name') }}</span>
                                     <span class="date">{{ audio.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ audio.publishedAt|date('H:i') }}</span>
-                                    <p>{{  audio|trans_fallback('title')|truncate(40) }}</p>
+                                    <p data-title="{{ audio|trans_fallback('title') }}">{{ audio|trans_fallback('title')|truncate(40) }}</p>
                                 </div>
                             </div>
                         </div>

@@ -97,6 +97,9 @@ class ThemeAdmin extends Admin
                         'sonata_help'        => 'form.theme.helper_name',
                         'constraints'        => array(
                             new NotBlank()
+                        ),
+                        'attr' => array(
+                            'maxlength' => 30
                         )
                     ),
                     'status'    => array(

@@ -61,7 +61,8 @@ class NewsVideoAdmin extends Admin
                     'introduction' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_introduction',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'createdAt' => array(
                         'display' => false
@@ -199,6 +200,7 @@ class NewsVideoAdmin extends Admin
                     'inline' => 'table'
                 )
             )
+            ->add('hideFocus')
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')

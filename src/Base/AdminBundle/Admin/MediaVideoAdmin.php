@@ -176,8 +176,11 @@ class MediaVideoAdmin extends Admin
                         'sonata_help'        => 'form.media_video.helper_title',
                         'locale_options'     => array(
                             'fr' => array(
-                                'required' => true
+                                'required' => true,
                             )
+                        ),
+                        'attr' => array(
+                            'maxlength' => 200
                         )
                     ),
                     'status'         => array(

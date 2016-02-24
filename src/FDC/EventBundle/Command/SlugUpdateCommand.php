@@ -32,7 +32,8 @@ class SlugUpdateCommand extends ContainerAwareCommand
             ->setName('fdc:slug:update')
             ->setDescription('Start or stop the fdc event')
             ->addArgument('entity', InputArgument::REQUIRED, 'The entity shortName to update')
-            ->addOption('field', null, InputOption::VALUE_REQUIRED|InputOption::VALUE_IS_ARRAY, 'The fields used to build the slug')
+            ->addOption('field', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'The fields used to build the slug')
+            ->addOption('id', null, InputOption::VALUE_OPTIONAL, 'The fields used to build the slug')
         ;
     }
 
@@ -54,7 +55,12 @@ class SlugUpdateCommand extends ContainerAwareCommand
             }
         }
 
-        $objects = $this->getManager()->getRepository($input->getArgument('entity'))->findAll();
+        if ($input->getOption('id')) {
+            $objects = $this->getManager()->getRepository($input->getArgument('entity'))->find($input->getOption('id'));
+        } else {
+            $objects = $this->getManager()->getRepository($input->getArgument('entity'))->findAll();
+        }
+
 
         $progress = new ProgressBar($output, count($objects));
         $progress->start();
@@ -62,8 +68,8 @@ class SlugUpdateCommand extends ContainerAwareCommand
         foreach ($objects as $object) {
             $slug = '';
             foreach ($fields as $field) {
-                $slug .= $slug ? '-': '';
-                $slug .= Urlizer::urlize($object->{'get'.ucfirst($field)}());
+                $slug .= $slug ? '-' : '';
+                $slug .= Urlizer::urlize($object->{'get' . ucfirst($field)}());
             }
             $object->setSlug($slug);
             $this->getManager()->persist($object);

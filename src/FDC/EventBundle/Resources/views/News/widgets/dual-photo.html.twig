@@ -8,7 +8,7 @@
     {% set file = trans.file %}
     <div class="half-photo">
         <div class="photo-container">
-            {% thumbnail file, '330*380' with {'alt': trans.alt} %}
+            {% thumbnail file, '330*380' with {'alt': trans.alt, 'title': trans.legend} %}
             <p class="caption">{{ trans.copyright }}</p>
         </div>
     </div>

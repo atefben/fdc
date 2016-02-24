@@ -3,7 +3,7 @@
 }
 
 .single-article .single-photo img {
-    height: 100%;
+    height: auto;
 }
 
 .single-article .big-quote span.big-quote-paragraph {
@@ -73,7 +73,16 @@
     display: block;
 }
 
-#sameday {
+.same-day .image.image-sameday-wrapper {
     width:293px;
     height:185px;
+}
+
+.single-article .slideshow.article_photo .slideshow-img .thumbnails .thumb img {
+    height: auto;
+}
+
+.popin-video .info p,
+.popin-audio .info p {
+    max-width: 410px;
 }

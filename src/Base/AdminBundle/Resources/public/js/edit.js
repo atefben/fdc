@@ -49,7 +49,7 @@ function editEvents() {
 
     // add border on changing lang
     $('body').on('click', '.a2lix_translationsLocales li', function() {
-        $('.a2lix_translationsLocales li').removeClass('nav-tab-active');
+        $(this).closest('.a2lix_translationsLocales').find('li').removeClass('nav-tab-active');
         $(this).addClass('nav-tab-active');
     });
 

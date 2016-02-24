@@ -74,6 +74,13 @@ abstract class News implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $hideFocus;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
      *
      * @Groups({"news_list", "news_show"})
      */
@@ -841,5 +848,28 @@ abstract class News implements TranslateMainInterface
     public function getExportSites()
     {
         return Export::sites($this->getSites());
+    }
+
+    /**
+     * Set hideFocus
+     *
+     * @param boolean $hideFocus
+     * @return News
+     */
+    public function setHideFocus($hideFocus)
+    {
+        $this->hideFocus = $hideFocus;
+
+        return $this;
+    }
+
+    /**
+     * Get hideFocus
+     *
+     * @return boolean 
+     */
+    public function getHideFocus()
+    {
+        return $this->hideFocus;
     }
 }
