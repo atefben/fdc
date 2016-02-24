@@ -151,6 +151,18 @@ class SeoManager
 
 
             // overload default value by the one set on the article
+            // PICTURE
+            $header = $news->getSeoFile();
+            if ($header) {
+                // OG PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+
+                // TWITTER PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            }
+
             if ($trans->getSeoTitle() !== null) {
                 $this->sonataSeoPage->setTitle("{$trans->getSeoTitle()}  - Festival de Cannes {$this->fdcYear}");
                 $this->sonataSeoPage->addMeta('property', 'og:title', $trans->getSeoTitle());
