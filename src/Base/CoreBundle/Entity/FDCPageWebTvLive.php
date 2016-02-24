@@ -269,7 +269,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
     {
         if ($this->associatedWebTvs->count() < 3) {
             while ($this->associatedWebTvs->count() != 3) {
-                $entity = new FDCPageWebTvLiveFilmFilmAssociated();
+                $entity = new FDCPageWebTvLiveWebTvAssociated();
                 $entity->setFDCPageWebTvLive($this);
                 $this->associatedWebTvs->add($entity);
             }
