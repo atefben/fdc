@@ -2,82 +2,76 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-<div id="main" class="webtv webtv-ba loading">
-    <div class="bandeau">
-        {% if page.image %}
-            {% if page.image|trans_fallback('file') %}
-                <div id="live" style="background-image:url('{% path page.image|trans_fallback('file'), '1920x450' %}')">
-            {% else %}
-                <div id="live" style="background-image:url('{% path page.image|trans_fallback('file', 'fr'), '1920x450' %}')">
-            {% endif %}
-        {% else %}
-            <div id="live" style="background-image:url(http://dummyimage.com/1920x450/cfcfcf/fff&text=+)">
-        {% endif %}
+    <div id="main" class="webtv webtv-ba loading">
+        <div class="bandeau">
 
-            <div class="vCenter">
-                <div class="vCenterKid">
-                    <a href="#" class="play-live"><i class="icon icon_bandes-annonces-extraits"></i></a>
-                    <h2>{{ 'bandeannonce.title.lesbandesannoncesetextraits'|trans|raw }}</h2>
+            <div id="live"{% if page.image and page.image|trans_fallback('file') %} style="background-image:url('{% path page.image|trans_fallback('file'), '976x535' %}')"{% endif %}>
+                <div class="vCenter">
+                    <div class="vCenterKid">
+                        <a href="#" class="play-live"><i class="icon icon_bandes-annonces-extraits"></i></a>
+                        <h2>{{ 'bandeannonce.title.lesbandesannoncesetextraits'|trans|raw }}</h2>
+                    </div>
                 </div>
             </div>
+
+            <ul class="sub-nav-list">
+                {% for item in pages if item.selectionSection %}
+                    {% if item|trans_fallback('slug') %}
+                        {% set slug = item|trans_fallback('slug') %}
+                    {% elseif item.selectionSection|trans_fallback('slug') %}
+                        {% set slug = item.selectionSection|trans_fallback('slug') %}
+                    {% endif %}
+                    {% if slug is defined %}
+                        <li>
+                            <a href="{{ path('fdc_event_television_trailers', {'slug': slug}) }}"
+                               data-url="{{ path('fdc_event_television_trailers', {'slug': slug}) }}"
+                               class="{% if app.request.attributes.get('slug') == slug %}active{% endif %} ajax">
+                                {% if item|trans_fallback('overrideName') %}
+                                    {{ item|trans_fallback('overrideName') }}
+                                {% else %}
+                                    {{ item.selectionSection|trans_fallback('name') }}
+                                {% endif %}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         </div>
 
-        <ul class="sub-nav-list">
-        {% for item in pages if item.selectionSection %}
-            {% if item|trans_fallback('slug') %}
-                {% set slug = item|trans_fallback('slug') %}
-            {% elseif item.selectionSection|trans_fallback('slug') %}
-                {% set slug = item.selectionSection|trans_fallback('slug') %}
-            {% endif %}
-            {% if slug is defined %}
-                <li>
-                    <a href="{{ path('fdc_event_television_trailers', {'slug': slug}) }}"
-                       data-url="{{ path('fdc_event_television_trailers', {'slug': slug}) }}"
-                       class="{% if app.request.attributes.get('slug') == slug %}active{% endif %} ajax">
-                        {% if item|trans_fallback('overrideName') %}
-                            {{ item|trans_fallback('overrideName') }}
-                        {% else %}
-                            {{ item.selectionSection|trans_fallback('name') }}
-                        {% endif %}
-                    </a>
-                </li>
-            {% endif %}
-        {% endfor %}
-        </ul>
-
-    </div>
-    <div class="content-webtv">
-        <div class="listtrailer grid all-videos">
-            <div id="gridWebtv" class="grid-wrapper">
-                <div class="grid-sizer"></div>
-
-                {% for film in films %}
-                    {% set video = film.associatedMediaVideos|last.mediaVideo %}
-                    <div class="item {{ video.publishedAt|date('d-m-Y') }} {{ video.theme }} shadow-bottom video">
-                        <img src="{% path video.image|trans_fallback('file'), '640x404' %}"
-                             srcset="{% path video.image|trans_fallback('file'), '640x404' %} 1x, {% path video.image|trans_fallback('file'), '1280x808' %} 2x"
-                             alt="">
-                        <div class="info">
-                            <div class="picto"><i class="icon icon_playlist"></i></div>
-                            <div class="info-container">
-                                <div class="vCenter">
-                                    <div class="vCenterKid">
-                                        <a href="{{ path('fdc_event_television_gettrailer', {'slug': film|trans_fallback('slug')}) }}" class="category">{{ film|trans_fallback('title') }}</a>
-                                        {% spaceless %}
-                                            <span>
-                                        {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                            {{ loop.index0 ? ', ': '' }}{{ director.fullName }}
-                                        {% endfor %}
-                                        </span>
-                                        {% endspaceless %}
+        <div class="content-webtv">
+            <div class="listtrailer grid all-videos">
+                <div id="gridWebtv" class="grid-wrapper">
+                    <div class="grid-sizer"></div>
+                    {% for filmVideo in filmsVideos %}
+                        {% set video = filmVideo.trailers|first %}
+                        <div class="item {{ video.publishedAt|date('d-m-Y') }} {{ video.theme }} shadow-bottom video">
+                            <img src="{% path video.image|trans_fallback('file'), '640x404' %}"
+                                 srcset="{% path video.image|trans_fallback('file'), '640x404' %} 1x, {% path video.image|trans_fallback('file'), '1280x808' %} 2x"
+                                 alt="{{ video.image|trans_fallback('alt') }}">
+                            <div class="info">
+                                <div class="picto">
+                                    <i class="icon icon_playlist"></i>
+                                </div>
+                                <div class="info-container">
+                                    <div class="vCenter">
+                                        <div class="vCenterKid">
+                                            <a href="{{ path('fdc_event_television_gettrailer', {'slug': filmVideo.film.slug}) }}"
+                                               class="category">{{ filmVideo.film|trans_fallback('title') }}</a>
+                                            {% spaceless %}
+                                                <span>
+                                                    {% for director in filmVideo.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                        {{ loop.first == false ? ', ': '' }}{{ director.fullName }}
+                                                    {% endfor %}
+                                                </span>
+                                            {% endspaceless %}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock body %}
