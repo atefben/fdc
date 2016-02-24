@@ -28,8 +28,6 @@
 
 
 // HELPERS ================ //
-;;;;;;
-deiofieropei
 // parse URL in string
 String.prototype.parseURL = function() {
   return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g, function(url) {

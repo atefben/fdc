@@ -265,7 +265,7 @@ $(document).ready(function () {
               category = $(e.target).find('.category').text(),
               date = $(e.target).find('.date').text(),
               hour = $(e.target).find('.hour').text(),
-              text = $(e.target).find('p').text(),
+              text = $(e.target).find('p').data('title'),
               $popinAudio = $('.popin-audio');
 
             $popinAudio.attr('data-sound', s);
