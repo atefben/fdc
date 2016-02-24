@@ -93,9 +93,18 @@
                         <div class="vCenter">
                             <div class="vCenterKid">
                                 <div class="poster">
-                                    {% media associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'film_poster_small' %}
+                                    {% set img = {
+                                    'poster': associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first ,
+                                    'main': associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first }
+                                    %}
+
+                                    {% if img['poster'] is defined and img['poster'] is not null and img['poster'] %}
+                                        {% media associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first, 'film_poster_small' %}
+                                    {% elseif img['main'] is defined and img['main'] is not null %}
+                                        {% media associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'film_main_small' %}
+                                    {% endif %}
                                 </div>
-                                <div class="text-container">
+                                <div class="text-container" id="filmPoster">
                                     {% if associatedFilm.selectionSection is not null %}
                                         <span class="category">
                                             {{ associatedFilm.selectionSection|trans_fallback('name') }}
