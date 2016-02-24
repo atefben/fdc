@@ -144,9 +144,6 @@ class ProjectionManager extends CoreManager
             $entity = $this->set($resultObject, $result);
             $this->update($entity);
         }
-
-        // save entities
-        $this->updateMultiple($entities);
         
         // end timer
         $this->end(__METHOD__);
