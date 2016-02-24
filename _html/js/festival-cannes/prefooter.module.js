@@ -16,19 +16,21 @@ $(document).ready(function() {
       sliderPrefooter.trigger('to.owl.carousel', [i, 900, true]);
     });
 
-    var sliderPrefooter = $("#slider-prefooter").owlCarousel({
-      nav: false,
-      dots: false,
-      smartSpeed: 500,
-      center: true,
-      loop: false,
-      margin: 0,
-      items: 1,
-      touchDrag: false,
-      mouseDrag: false
-    });
+    if ($("#slider-prefooter").length > 0) {
+      var sliderPrefooter = $("#slider-prefooter").owlCarousel({
+        nav: false,
+        dots: false,
+        smartSpeed: 500,
+        center: true,
+        loop: false,
+        margin: 0,
+        items: 1,
+        touchDrag: false,
+        mouseDrag: false
+      });
 
-    sliderPrefooter.owlCarousel();
+      sliderPrefooter.owlCarousel();
+    }
   }
 
 });

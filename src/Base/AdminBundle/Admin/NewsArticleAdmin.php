@@ -64,7 +64,8 @@ class NewsArticleAdmin extends Admin
                     'introduction' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_introduction',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'createdAt' => array(
                         'display' => false
@@ -158,11 +159,13 @@ class NewsArticleAdmin extends Admin
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',
-                'required' => false
+                'required' => false,
+                'btn_add' => false
             ))
             ->add('associatedEvent', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_event_associated',
-                'required' => false
+                'required' => false,
+                'btn_add' => false
             ))
             ->add('associatedProjections', 'sonata_type_collection', array(
                 'label' => 'form.label_news_film_projection_associated',
@@ -195,6 +198,7 @@ class NewsArticleAdmin extends Admin
                     'inline' => 'table'
                 )
             )
+            ->add('hideFocus')
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')

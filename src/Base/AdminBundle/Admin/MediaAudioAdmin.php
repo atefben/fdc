@@ -156,6 +156,9 @@ class MediaAudioAdmin extends Admin
                             'fr' => array(
                                 'required' => true
                             )
+                        ),
+                        'attr' => array(
+                            'maxlength' => 200
                         )
                     ),
                     'status'         => array(

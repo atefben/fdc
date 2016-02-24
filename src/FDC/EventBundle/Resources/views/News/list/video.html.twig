@@ -34,7 +34,7 @@
                             <div class="vCenterKid">
                                 <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a>
                                 <span class="date">{{ video.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ video.publishedAt|date('H:i') }}</span>
-                                <p>{{  video|trans_fallback('title')|truncate(40)  }}</p>
+                                <p data-title="{{ video|trans_fallback('title') }}">{{  video|trans_fallback('title')|truncate(40) }}</p>
                             </div>
                         </div>
                     </div>
