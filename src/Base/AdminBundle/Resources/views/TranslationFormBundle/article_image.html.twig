@@ -21,6 +21,7 @@
                                 </h4>
                             </div>
                             {% if form.vars.default_locale == locale %}
+                                <div id="btn-preview" data-preview="{{ translationsFields.vars.value.slug }}"></div>
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
                                         {{ form_row(translationsFields.title) }}

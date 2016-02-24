@@ -42,12 +42,11 @@
             <div class="listtrailer grid all-videos">
                 <div id="gridWebtv" class="grid-wrapper">
                     <div class="grid-sizer"></div>
-                    {% for filmVideo in filmsVideos %}
-                        {% set video = filmVideo.trailers|first %}
-                        <div class="item {{ video.publishedAt|date('d-m-Y') }} {{ video.theme }} shadow-bottom video">
-                            <img src="{% path video.image|trans_fallback('file'), '640x404' %}"
-                                 srcset="{% path video.image|trans_fallback('file'), '640x404' %} 1x, {% path video.image|trans_fallback('file'), '1280x808' %} 2x"
-                                 alt="{{ video.image|trans_fallback('alt') }}">
+                    {% for group in groups %}
+                        <div class="item {{ group.video.publishedAt|date('d-m-Y') }} {{ group.video.theme }} shadow-bottom video">
+                            <img src="{% path group.video.image|trans_fallback('file'), '640x404' %}"
+                                 srcset="{% path group.video.image|trans_fallback('file'), '640x404' %} 1x, {% path group.video.image|trans_fallback('file'), '1760x1108' %} 2x"
+                                 alt="{{ group.video.image|trans_fallback('alt') }}">
                             <div class="info">
                                 <div class="picto">
                                     <i class="icon icon_playlist"></i>
@@ -55,11 +54,11 @@
                                 <div class="info-container">
                                     <div class="vCenter">
                                         <div class="vCenterKid">
-                                            <a href="{{ path('fdc_event_television_gettrailer', {'slug': filmVideo.film.slug}) }}"
-                                               class="category">{{ filmVideo.film|trans_fallback('title') }}</a>
+                                            <a href="{{ path('fdc_event_television_gettrailer', {'slug': group.film.slug}) }}"
+                                               class="category">{{ group.film.findTranslationByLocale(app.request.locale).title ?: group.film.titleVO }}</a>
                                             {% spaceless %}
                                                 <span>
-                                                    {% for director in filmVideo.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                    {% for director in group.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                                                         {{ loop.first == false ? ', ': '' }}{{ director.fullName }}
                                                     {% endfor %}
                                                 </span>
