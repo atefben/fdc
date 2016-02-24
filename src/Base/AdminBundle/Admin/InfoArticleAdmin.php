@@ -145,6 +145,7 @@ class InfoArticleAdmin extends Admin
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_introduction',
                         'translation_domain' => 'BaseAdminBundle'
+                        'required' => false
                     ),
                     'createdAt' => array(
                         'display' => false
