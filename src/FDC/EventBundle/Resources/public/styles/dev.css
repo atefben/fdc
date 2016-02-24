@@ -86,3 +86,7 @@
 .popin-audio .info p {
     max-width: 410px;
 }
+
+#filmPoster {
+    max-width: 140px;
+}
