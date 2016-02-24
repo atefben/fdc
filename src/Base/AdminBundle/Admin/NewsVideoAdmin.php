@@ -200,7 +200,7 @@ class NewsVideoAdmin extends Admin
                     'inline' => 'table'
                 )
             )
-            ->add('hideFocus')
+            ->add('hideSameDay')
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')

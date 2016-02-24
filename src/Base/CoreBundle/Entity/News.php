@@ -75,7 +75,7 @@ abstract class News implements TranslateMainInterface
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
-    private $hideFocus;
+    private $hideSameDay;
 
     /**
      * @var boolean
@@ -851,25 +851,25 @@ abstract class News implements TranslateMainInterface
     }
 
     /**
-     * Set hideFocus
+     * Set hideSameDay
      *
-     * @param boolean $hideFocus
+     * @param boolean $hideSameDay
      * @return News
      */
-    public function setHideFocus($hideFocus)
+    public function setHideSameDay($hideSameDay)
     {
-        $this->hideFocus = $hideFocus;
+        $this->hideSameDay = $hideSameDay;
 
         return $this;
     }
 
     /**
-     * Get hideFocus
+     * Get hideSameDay
      *
      * @return boolean 
      */
-    public function getHideFocus()
+    public function getHideSameDay()
     {
-        return $this->hideFocus;
+        return $this->hideSameDay;
     }
 }

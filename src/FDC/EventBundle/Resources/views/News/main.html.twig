@@ -174,7 +174,7 @@
         </div>
         {% endif %}
         <div class="container">
-            {% if focusArticles is not empty and news.hideFocus == false %}
+            {% if focusArticles is not empty %}
             <div class="focus">
                 <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
                 <div class="articles">
@@ -186,7 +186,7 @@
                 </div>
             </div>
             {% endif %}
-            {% if sameDayArticles is not empty %}
+            {% if sameDayArticles is not empty and news.hideSameDay == false %}
             <div class="same-day">
                 <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
                 <div class="articles center">
