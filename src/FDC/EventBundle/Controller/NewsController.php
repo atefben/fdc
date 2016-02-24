@@ -274,7 +274,7 @@ class NewsController extends Controller {
         }
 
         //get images for slider articles
-        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $dateTime);
+        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $date->setTimestamp($timestamp));
 
         //set default filters
         $filters                         = array();
