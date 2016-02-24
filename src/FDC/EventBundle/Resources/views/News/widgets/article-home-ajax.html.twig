@@ -15,14 +15,14 @@
     {% endif %}
     {% if loop.index == 3 %}
     </div>
-    {% if homeArticlesSlider is not empty %}
-        {% include 'FDCEventBundle:News:widgets/slideshow-actu-home.html.twig' %}
-    {% endif %}
     {% endif %}
     {% if loop.last %}
     </div>
     {% endif %}
 {% endfor %}
+    {% if homeArticlesSlider is not empty %}
+        {% include 'FDCEventBundle:News:widgets/slideshow-actu-home.html.twig' %}
+    {% endif %}
 {% if homeArticlesNext %}
     <div class="articles right nextDay">
         {% for article in homeArticlesNext %}
