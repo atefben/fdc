@@ -67,10 +67,12 @@
         <div class="share">
             <p>{{ 'article.text.partagerarticle'|trans }}</p>
             <div class="buttons square">
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_event_news_index') }}" class="button facebook">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url(app.request.attributes.get('_route'),
+                app.request.attributes.get('_route_params')) }}" class="button facebook">
                     <i class="icon icon_facebook"></i>
                 </a>
-                <a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_news_index') }}" class="button twitter">
+                <a href="https://twitter.com/intent/tweet?url={{ url(app.request.attributes.get('_route'),
+                app.request.attributes.get('_route_params')) }}" class="button twitter">
                     <i class="icon icon_twitter"></i>
                 </a>
                 <a href="#" class="button link">
@@ -93,15 +95,13 @@
                         <div class="vCenter">
                             <div class="vCenterKid">
                                 <div class="poster">
-                                    {% set img = {
-                                    'poster': associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first ,
-                                    'main': associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first }
-                                    %}
+                                    {% set posterImg = associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+                                    {% set mainImg = associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
 
-                                    {% if img['poster'] is defined and img['poster'] is not null and img['poster'] %}
-                                        {% media associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first, 'film_poster_small' %}
-                                    {% elseif img['main'] is defined and img['main'] is not null %}
-                                        {% media associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'film_main_small' %}
+                                    {% if posterImg %}
+                                        {% media posterImg, 'film_poster_small' %}
+                                    {% elseif mainImg %}
+                                        {% media mainImg, 'film_main_small' %}
                                     {% endif %}
                                 </div>
                                 <div class="text-container" id="filmPoster">
@@ -156,7 +156,7 @@
                         <div class="vCenterKid">
                             <span class="category">{{ 'article.film.label.programmation'|trans }}</span>
                             <ul>
-                                {% for programmation in programmations %}
+                                {% for programmation in programmations|slice(-4) %}
                                     <li>
                                         <span class="type">{{ 'article.film.text.projection'|trans }}</span>
                                         <span>{{ programmation.startsAt|date('d-m-Y') }}</span>

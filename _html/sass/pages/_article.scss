@@ -49,14 +49,14 @@
 }
 
 h2 {
-  .sub-title{
+  &.sub-title{
     font-family: $Playfair;
     font-size: 1.5rem;
     margin-bottom: 50px;
     text-align: center;
   }
 
-  .sub-title2{
+  &.sub-title2{
     font-family: $Playfair;
     font-weight: 700;
     font-size: 1.125rem;
@@ -65,7 +65,7 @@ h2 {
 }
 
 h3 {
-  .sub-title{
+  &.sub-title{
     font-family: $CamphorBold;
     font-size: 0.875rem;
     margin: 50px 0;
@@ -829,7 +829,7 @@ article {
         height: 100%;
         float: right;
         margin-right: 85px;
-        width: 398px;
+        max-width: 470px;
 
         .category {
           color: $gold;
