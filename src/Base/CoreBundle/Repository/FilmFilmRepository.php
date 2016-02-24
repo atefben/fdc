@@ -111,4 +111,16 @@ class FilmFilmRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function getFilmsByIds($ids) {
+        $qb = $this->createQueryBuilder('f');
+
+        $qb
+            ->where('f.id  IN (:ids)')
+            ->setParameter(':ids', $ids)
+        ;
+
+        return $qb->getQuery()->getResult();
+
+    }
 }

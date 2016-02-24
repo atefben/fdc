@@ -1,5 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCEventBundle::layout.html.twig' %}
+
 {% block body %}
     <div id="main" class=" webtv webtv-ba-video loading">
         <div class="container-webtv-ba-video">
@@ -50,7 +51,7 @@
                                            class="category">{{ videos[0].theme|trans_fallback('name') }}</a><span
                                                 class="date">{{ videos[0].publishedAt|date('d.m.y') }}</span> . <span
                                                 class="hour">{{ videos[0].publishedAt|date('H:i') }}</span>
-                                        <p>{{ videos[0]|trans_fallback('title') }}</p>
+                                        <p>{{ videos[0].findTranslationByLocal(app.request.locale)?:videos[0].titleVO }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -111,16 +112,49 @@
             <div id="slider-trailer" class="owl-carousel sliderDrag">
                 {% for video in videos %}
                     <div class="channel">
-                        {% include 'FDCEventBundle:Television:widgets/video.for.slider.of.page.trailer.html.twig' %}
+
+
+                        <div class="channel">
+                            <div class="image-wrapper">
+                                {% if video.image and video.image|trans_fallback('file') %}
+                                    {% set videoImage = (video.image|trans_fallback('file'))|media_public_url('975x616') %}
+                                    {% set alt = video.image|trans_fallback('alt') %}
+                                {% elseif video|trans_fallback('imageAmazonUrl') %}
+                                    {% set videoImage = s3_server_global ~ video|trans_fallback('imageAmazonUrl') %}
+                                    {% if video.image %}
+                                        {% set alt = video.image|trans_fallback('alt') %}
+                                    {% else %}
+                                        {% set alt = '' %}
+                                    {% endif %}
+                                {% endif %}
+
+                                <img src="{%  path video.image|trans_fallback('file'), '975x616' %}" alt="{{ alt }}"/>
+                            </div>
+                            <a class="linkVid" href="#"></a>
+                            <div class="info">
+                                <div class="picto"><i class="icon icon_video"></i></div>
+                                <div class="info-container">
+                                    <div class="vCenter">
+                                        <div class="vCenterKid">
+                                            <a href="#" class="category">{{ video.theme }}</a>
+                                            <span>{{ video|trans_fallback('title') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 {% endfor %}
             </div>
         </div>
+
         {% if next %}
             <div class="bandeau-list vCenter push-footer bandeau-list-footer">
-                <div class="bandeau-list-img vCenterKid"{% if posterNext %} style="background-image:url('{%- path posterNext|trans_fallback('file', 'fr'), '1920x300' -%}');"{% endif %}>
-                    <h2 class="title title-list-header">{{ next|trans_fallback('title') }}</h2>
-                    <a href="{{ path('fdc_event_television_gettrailer', {'slug': next|trans_fallback('slug')} ) }}"
+                <div class="bandeau-list-img vCenterKid"{% if posterNext %} style="background-image:url('{%- path posterNext|trans_fallback('file', 'fr'), '640x404' -%}');"{% endif %}>
+                    <h2 class="title title-list-header">{{ next.findTranslationByLocal(app.request.locale)?:next.titleVO }}</h2>
+                    <a href="{{ path('fdc_event_television_gettrailer', {'slug': next.slug} ) }}"
                        class="bandeau-lien">
                         <i class="icon icon_fleche-right"></i>
                         {{ 'trailer.btn.voirlabandeannonce'|trans }}
@@ -146,27 +180,4 @@
 {% endblock %}
 
 {% block bandeauVideo %}
-
-    <div class="channel">
-        <div class="image-wrapper">
-            {% if video.image and video.image|trans_fallback('file') %}
-                <img src="{% path transImage, '586x370' %}" alt="{{ video.image|trans_fallback('alt') }}"/>
-            {% else if video|trans_fallback('') %}
-                <img src="{% path transImage, '586x370' %}" alt="{{ video.image|trans_fallback('alt') }}"/>
-            {% endif %}
-
-        </div>
-        <a class="linkVid" href="#"></a>
-        <div class="info">
-            <div class="picto"><i class="icon icon_video"></i></div>
-            <div class="info-container">
-                <div class="vCenter">
-                    <div class="vCenterKid">
-                        <a href="#" class="category">{{ video.theme }}</a>
-                        <span>{{ video|trans_fallback('title') }}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 {% endblock bandeauVideo %}
