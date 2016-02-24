@@ -199,6 +199,7 @@ class NewsImageAdmin extends Admin
                     'inline' => 'table'
                 )
             )
+            ->add('hideFocus')
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')

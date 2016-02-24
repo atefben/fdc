@@ -709,6 +709,10 @@
                                     {{ form_row(form.parent.children.associatedProjections) }}
                                     {{ form_row(form.parent.children.associatedFilms) }}
                                     {{ form_row(form.parent.children.associatedNews) }}
+                                    <div class="form-group">
+                                        {{ form_widget(form.parent.children.hideFocus) }}
+                                        {{ form_label(form.parent.children.hideFocus) }}
+                                    </div>
                                     {{ form_row(form.parent.children.tags) }}
                                 </div>
                             </div>

@@ -512,6 +512,7 @@ form:
     label_label: Légende
     label_web_tv_name: Nom de la chaîne
     label_web_tv: Chaîne
+    label_hide_focus: Ne pas afficher la strate "Focus"
     label_primary_push_title: Titre du push principal
     label_primary_push_url: URL du push principal
     label_secondary_push_title: Titre du push secondaire

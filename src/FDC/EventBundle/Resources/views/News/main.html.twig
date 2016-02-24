@@ -162,7 +162,7 @@
         </div>
         {% endif %}
         <div class="container">
-            {% if focusArticles is not empty %}
+            {% if focusArticles is not empty and news.hideFocus == false %}
             <div class="focus">
                 <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
                 <div class="articles">

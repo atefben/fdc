@@ -54,7 +54,7 @@ class MediaAudioFilmFilmAssociatedAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('association', 'sonata_type_model_list', array('btn_delete' => false))
+            ->add('association', 'sonata_type_model_list', array('btn_add' => false, 'btn_delete' => false))
         ;
     }
 
