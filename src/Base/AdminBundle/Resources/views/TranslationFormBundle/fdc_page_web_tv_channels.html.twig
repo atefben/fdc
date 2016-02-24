@@ -8,7 +8,7 @@
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
 
-            <div class="a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
+            <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 <div class="row">
                     {% if form.vars.default_locale == locale %}
                         <div class="col-md-12">
