@@ -22,6 +22,8 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 class NewsAudioAdmin extends Admin
 {
+
+
     protected $formOptions = array(
         'cascade_validation' => true
     );

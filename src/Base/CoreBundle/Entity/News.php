@@ -66,7 +66,7 @@ abstract class News implements TranslateMainInterface
     /**
      * @var Homepage
      *
-     * @ORM\ManyToOne(targetEntity="Homepage")
+     * @ORM\ManyToOne(targetEntity="Homepage", cascade={"all"})
      */
     private $homepage;
 
@@ -103,9 +103,16 @@ abstract class News implements TranslateMainInterface
     private $signature;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $hidden;
+
+    /**
      * @var NewsTag
      *
-     * @ORM\OneToMany(targetEntity="NewsTag", mappedBy="news", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="NewsTag", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"news_list", "news_show"})
      */
@@ -205,8 +212,25 @@ abstract class News implements TranslateMainInterface
      */
     private $updatedBy;
 
+    /**
+     * @var MediaVideo
+     *
+     * @ORM\OneToOne(targetEntity="MediaAudio", cascade={"all"}, inversedBy="homepageNews", orphanRemoval=true)
+     * @ORM\JoinColumn(onDelete="SET NULL")
+     */
+    private $homepageMediaAudio;
+
+    /**
+     * @var MediaVideo
+     *
+     * @ORM\OneToOne(targetEntity="MediaVideo", cascade={"all"}, inversedBy="homepageNews", orphanRemoval=true)
+     * @ORM\JoinColumn(onDelete="SET NULL")
+     */
+    private $homepageMediaVideo;
+
     public function __construct()
     {
+        $this->hideSameDay = false;
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->widgets = new ArrayCollection();
@@ -859,6 +883,63 @@ abstract class News implements TranslateMainInterface
     public function setHideSameDay($hideSameDay)
     {
         $this->hideSameDay = $hideSameDay;
+    }
+
+    /**
+     * Set hidden
+     *
+     * @param boolean $hidden
+     * @return News
+     */
+    public function setHidden($hidden)
+    {
+        $this->hidden = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Get hidden
+     *
+     * @return boolean 
+     */
+    public function getHidden()
+    {
+        return $this->hidden;
+    }
+
+    /**
+     * Set homepageMediaAudio
+     *
+     * @param \Base\CoreBundle\Entity\MediaAudio $homepageMediaAudio
+     * @return News
+     */
+    public function setHomepageMediaAudio(\Base\CoreBundle\Entity\MediaAudio $homepageMediaAudio = null)
+    {
+        $this->homepageMediaAudio = $homepageMediaAudio;
+
+        return $this;
+    }
+
+    /**
+     * Get homepageMediaAudio
+     *
+     * @return \Base\CoreBundle\Entity\MediaAudio 
+     */
+    public function getHomepageMediaAudio()
+    {
+        return $this->homepageMediaAudio;
+    }
+
+    /**
+     * Set homepageMediaVideo
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideo $homepageMediaVideo
+     * @return News
+     */
+    public function setHomepageMediaVideo(\Base\CoreBundle\Entity\MediaVideo $homepageMediaVideo = null)
+    {
+        $this->homepageMediaVideo = $homepageMediaVideo;
 
         return $this;
     }
@@ -871,5 +952,15 @@ abstract class News implements TranslateMainInterface
     public function getHideSameDay()
     {
         return $this->hideSameDay;
+    }
+
+    /**
+     * Get homepageMediaVideo
+     *
+     * @return \Base\CoreBundle\Entity\MediaVideo 
+     */
+    public function getHomepageMediaVideo()
+    {
+        return $this->homepageMediaVideo;
     }
 }

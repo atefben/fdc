@@ -25,18 +25,26 @@ class MediaAudio extends Media
     /**
      * @var Media
      *
-     * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"all"})
      *
      * @Groups({"news_show", "news_list", "trailer_list", "trailer_show", "web_tv_list", "web_tv_show"})
      */
     private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="mediaAudio", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="mediaAudio", cascade={"all"})
      *
      * @Groups({"trailer_list", "trailer_show"})
      */
     private $associatedFilms;
+
+    /**
+     * @var NewsAudio
+     *
+     * @ORM\OneToOne(targetEntity="NewsAudio", cascade={"all"}, inversedBy="homepageMediaAudio", orphanRemoval=true)
+     * @ORM\JoinColumn(onDelete="SET NULL")
+     */
+    private $homepageNews;
 
 
     /**
@@ -71,6 +79,7 @@ class MediaAudio extends Media
      */
     public function addAssociatedFilm(\Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated $associatedFilms)
     {
+        $associatedFilms->setMediaAudio($this);
         $this->associatedFilms[] = $associatedFilms;
 
         return $this;
@@ -96,6 +105,28 @@ class MediaAudio extends Media
         return $this->associatedFilms;
     }
 
+    /**
+     * Set homepageNews
+     *
+     * @param \Base\CoreBundle\Entity\NewsAudio $homepageNews
+     * @return MediaAudio
+     */
+    public function setHomepageNews(\Base\CoreBundle\Entity\NewsAudio $homepageNews = null)
+    {
+        $this->homepageNews = $homepageNews;
+
+        return $this;
+    }
+
+    /**
+     * Get homepageNews
+     *
+     * @return \Base\CoreBundle\Entity\NewsAudio
+     */
+    public function getHomepageNews()
+    {
+        return $this->homepageNews;
+    }
 
     public function getExportTitle()
     {
@@ -164,5 +195,6 @@ class MediaAudio extends Media
     public function getExportDisplayedAll()
     {
         return Export::yesOrNo($this->getDisplayedAll());
+
     }
 }

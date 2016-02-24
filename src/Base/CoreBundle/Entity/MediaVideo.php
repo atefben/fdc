@@ -60,6 +60,13 @@ class MediaVideo extends Media
     private $image;
 
     /**
+     * @var NewsVideo
+     *
+     * @ORM\ManyToOne(targetEntity="NewsVideo", cascade={"all"})
+     */
+    private $homepageNews;
+
+    /**
      * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"persist"})
      *
      * @Groups({"trailer_list", "trailer_show"})
@@ -214,6 +221,30 @@ class MediaVideo extends Media
     public function getAssociatedFilms()
     {
         return $this->associatedFilms;
+    }
+
+
+    /**
+     * Set homepageNews
+     *
+     * @param \Base\CoreBundle\Entity\NewsVideo $homepageNews
+     * @return MediaVideo
+     */
+    public function setHomepageNews(\Base\CoreBundle\Entity\NewsVideo $homepageNews = null)
+    {
+        $this->homepageNews = $homepageNews;
+
+        return $this;
+    }
+
+    /**
+     * Get homepageNews
+     *
+     * @return \Base\CoreBundle\Entity\NewsVideo
+     */
+    public function getHomepageNews()
+    {
+        return $this->homepageNews;
     }
 
     public function getExportTitle()

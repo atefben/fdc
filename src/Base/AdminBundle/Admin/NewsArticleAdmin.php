@@ -23,6 +23,16 @@ use Symfony\Component\Validator\Constraints\NotBlank;
  */
 class NewsArticleAdmin extends Admin
 {
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $query->andWhere(
+            $query->expr()->eq($query->getRootAliases()[0] . '.hidden', ':hidden')
+        );
+        $query->setParameter('hidden', false);
+        return $query;
+    }
+
     protected $formOptions = array(
         'cascade_validation' => true
     );

@@ -38,6 +38,7 @@ class NewsNewsAssociated
      * @var News
      *
      * @ORM\ManyToOne(targetEntity="News", inversedBy="associatedNews")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     protected $news;
     
@@ -45,6 +46,7 @@ class NewsNewsAssociated
      * @var NewsArticle
      *
      * @ORM\ManyToOne(targetEntity="News")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     protected $association;
     

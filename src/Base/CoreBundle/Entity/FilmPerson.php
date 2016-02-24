@@ -51,7 +51,7 @@ class FilmPerson implements TranslateMainInterface
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"firstname", "lastname"})
+     * @Gedmo\Slug(fields={"firstname", "lastname"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
     private $slug;

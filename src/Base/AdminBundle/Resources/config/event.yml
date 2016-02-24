@@ -28,3 +28,10 @@ services:
             - { name: doctrine.event_listener, event: postFlush }
             - { name: doctrine.event_listener, event: postUpdate }
             - { name: doctrine.event_listener, event: postPersist }
+
+    base.admin.event.media_listener:
+        class: Base\AdminBundle\EventListener\MediaListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: postFlush }

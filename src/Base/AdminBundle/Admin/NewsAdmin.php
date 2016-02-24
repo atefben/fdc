@@ -21,6 +21,16 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 class NewsAdmin extends Admin
 {
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $query->andWhere(
+            $query->expr()->eq($query->getRootAliases()[0] . '.hidden', ':hidden')
+        );
+        $query->setParameter('hidden', false);
+        return $query;
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */

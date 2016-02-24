@@ -61,8 +61,8 @@ class NewsListener
         if (method_exists($entity, 'getTranslatable') && method_exists($entity->getTranslatable(), 'setUpdatedBy') &&
             $this->tokenStorage->getToken()) {
             if (is_object($this->tokenStorage->getToken()->getUser())) {
-            $entity->getTranslatable()->setUpdatedBy($this->tokenStorage->getToken()->getUser());
-            $this->flush = true;
+                $entity->getTranslatable()->setUpdatedBy($this->tokenStorage->getToken()->getUser());
+                $this->flush = true;
             }
         }
     }

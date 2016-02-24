@@ -44,7 +44,7 @@ class FilmAtelier implements TranslateMainInterface
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"titleVO"})
+     * @Gedmo\Slug(fields={"titleVO"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
     private $slug;
