@@ -73,13 +73,13 @@ class MediaVideoRepository extends EntityRepository
 
         $qb
             ->andWhere('mv.displayedTrailer = 1')
-            ->orderBy('mvt.title', 'asc')
+            ->orderBy('mv.publishedAt', 'desc')
         ;
 
         return $qb->getQuery()->getResult();
     }
 
-    public function getLastMediaVideoOfEachFilmFilm($festival, $locale, $in)
+    public function getLastMediaVideoTrailerOfEachFilmFilm($festival, $locale, $in)
     {
         $qb = $this->createQueryBuilder('mv');
 
@@ -93,14 +93,16 @@ class MediaVideoRepository extends EntityRepository
         ;
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival, true);
+        $qb = $this->addMasterQueries($qb, 'f', $festival, false);
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
         $qb = $this->addAWSEncodersQueries($qb, 'mvt');
 
         $qb
-            ->andWhere('mv.festival = :festival')
-            ->setParameter('festival', $festival)
+            ->andWhere('mv.displayedTrailer = :displayedTrailer')
+            ->setParameter('displayedTrailer', true)
             ->orderBy('f.titleVO', 'desc')
             ->orderBy('mv.publishedAt', 'desc')
+
             ->groupBy('film_id')
         ;
 

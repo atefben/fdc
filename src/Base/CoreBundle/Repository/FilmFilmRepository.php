@@ -96,14 +96,14 @@ class FilmFilmRepository extends EntityRepository
             ->setParameter('displayed_trailer', true)
         ;
 
-        $qb = $this->addMasterQueries($qb, 'mv', $festival);
-        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
-        $qb = $this->addFDCEventQueries($qb, 's');
-        $qb = $qb->orderBy('t.title', 'asc');
+        $this->addMasterQueries($qb, 'mv', $festival);
+        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addFDCEventQueries($qb, 's');
+        $qb->orderBy('t.title', 'asc');
 
 
         if ($selectionSection) {
-            $qb = $qb
+            $qb
                 ->andWhere('f.selectionSection = :selectionSection')
                 ->setParameter('selectionSection', $selectionSection)
             ;

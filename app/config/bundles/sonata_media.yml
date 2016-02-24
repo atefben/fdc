@@ -23,11 +23,13 @@ sonata_media:
             providers:
                 - sonata.media.provider.image
             formats:
+                  tiny:  { width: 46 , height: 64 , quality: 100 }
+                  small: { width: 187 , height: 255 , quality: 100 }
+                  big:   { width: 1000 , quality: 100 }
 
         film_film:
             providers:
                 - sonata.media.provider.image
-
             formats:
                 tiny:  { width: 146 , quality: 100 }
                 small: { width: 500 , quality: 100 }

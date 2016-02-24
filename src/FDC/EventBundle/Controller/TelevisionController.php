@@ -109,7 +109,7 @@ class TelevisionController extends Controller
 
             $filmVideosGroup = $this
                 ->getBaseCoreMediaVideoRepository()
-                ->getLastMediaVideoOfEachFilmFilm($festival, $locale, array_keys($filmsIds))
+                    ->getLastMediaVideoTrailerOfEachFilmFilm($festival, $locale, array_keys($filmsIds))
             ;
 
             foreach ($filmVideosGroup as $group) {
@@ -243,6 +243,7 @@ class TelevisionController extends Controller
     {
         $this->isPageEnabled($request->get('_route'));
         $locale = $request->getLocale();
+        $festival = $this->getFestival()->getId();
 
         if ($slug === null) {
             $page = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findBy(array(), null, 1);
@@ -271,15 +272,29 @@ class TelevisionController extends Controller
 
         $pages = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findAll();
 
-        $festivalId = $this->getFestival()->getId();
-
         $sectionId = $page->getSelectionSection()->getId();
 
-        $films = $this->getBaseCoreFilmFilmRepository()->getFilmsThatHaveTrailers($festivalId, $locale, $sectionId);
+        $films = $this->getBaseCoreFilmFilmRepository()->getFilmsThatHaveTrailers($festival, $locale, $sectionId);
+
+        $filmsVideos = array();
+        foreach ($films as $film) {
+            if ($film instanceof FilmFilm) {
+                $trailers = $this
+                    ->getBaseCoreMediaVideoRepository()
+                    ->getFilmTrailersMediaVideos($festival, $locale, $film->getId())
+                ;
+                $filmsVideos[] = array(
+                    'trailers' => $trailers,
+                    'film'  => $film,
+                );
+            }
+        }
+
         return array(
-            'page'  => $page,
-            'pages' => $pages,
-            'films' => $films,
+            'page'        => $page,
+            'pages'       => $pages,
+            'films'       => $films,
+            'filmsVideos' => $filmsVideos,
         );
     }
 
@@ -310,7 +325,6 @@ class TelevisionController extends Controller
         $sectionId = $film->getSelectionSection()->getId();
 
         $films = $this->getBaseCoreFilmFilmRepository()->getFilmsThatHaveTrailers($festivalId, $locale, $sectionId);
-
 
         $poster = null;
         foreach ($film->getMedias() as $media) {
@@ -349,12 +363,15 @@ class TelevisionController extends Controller
                 $next = true;
             }
         }
+        if (!($next instanceof FilmFilm) && $films) {
+            $next = reset($films);
+        }
 
         $posterNext = null;
         if ($next instanceof FilmFilm) {
             foreach ($next->getMedias() as $media) {
                 if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER) {
-                    $poster = $media->getFilmMedia();
+                    $posterNext = $media->getFilmMedia();
                 }
             }
         }
