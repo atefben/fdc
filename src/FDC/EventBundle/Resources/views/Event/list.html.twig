@@ -39,7 +39,7 @@
                             </a>
                         </div>
                         <div class="info">
-                            <a href="#" class="category">{{ event.theme }}</a>
+                            <span class="category">{{ event.theme }}</span>
                             <span class="date">{{ event.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ event.publishedAt|date('H:i') }}</span>
                             <h3>
                                 <a href="{{ path('fdc_event_event_get', {'slug': event.slug }) }}">

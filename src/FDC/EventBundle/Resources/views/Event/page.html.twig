@@ -8,7 +8,7 @@
             <a href="{{ path('fdc_event_event_get', {'slug': article.prev.slug}) }}" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
             <a href="{{ path('fdc_event_event_get', {'slug': article.next.slug}) }}" class="nav next"><i class="icon icon_fleche-right"></i></a>
             <div class="info">
-                <a href="#" class="category">{{ article.theme }}</a>
+                <span class="category">{{ article.theme }}</span>
                 <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
                 <span class="update">{{ 'event.single.label.miseajour'|trans }}</span>
                 <span class="date">{{ article.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.updatedAt|date('H:i') }}</span>

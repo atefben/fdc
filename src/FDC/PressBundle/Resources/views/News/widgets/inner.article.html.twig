@@ -47,7 +47,7 @@
         <span class="picto"><i class="icon icon_{{ articleType }}"></i></span>
     </div>
     <div class="info">
-        <a href="#" class="category">{{ article.category }}</a>
+        <span class="category">{{ article.category }}</span>
         <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
         <h2>
             <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">

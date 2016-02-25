@@ -32,7 +32,7 @@
                             <i class="icon icon_audio"></i>
                         </div>
                         <div class="info">
-                            <a href="#" class="category">{{ widget.file.theme|trans_fallback('name') }}</a>
+                            <span class="category">{{ widget.file.theme|trans_fallback('name') }}</span>
                             <span class="date">{{ widget.file.publishedAt|date('d.m.y') }}</span> . <span
                                     class="hour">{{ widget.file.publishedAt|date('H:i') }}</span>
                             <p>{{ trans.title }}</p>

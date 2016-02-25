@@ -44,7 +44,7 @@
                     <div class="info">
                         <div class="vCenter">
                             <div class="vCenterKid">
-                                <a href="#" class="category">{{ webTvVideos[0].theme|trans_fallback('name') }}</a><span class="date">{{ webTvVideos[0].publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ webTvVideos[0].publishedAt|date('H:i') }}</span>
+                                <span class="category">{{ webTvVideos[0].theme|trans_fallback('name') }}</span><span class="date">{{ webTvVideos[0].publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ webTvVideos[0].publishedAt|date('H:i') }}</span>
                                 <p>{{ webTvVideos[0]|trans_fallback('title') }}</p>
                             </div>
                         </div>
@@ -84,7 +84,7 @@
                             <div class="info-container">
                                 <div class="vCenter">
                                     <div class="vCenterKid">
-                                        <a href="#" class="category">{{ video.theme }}</a>
+                                        <span class="category">{{ video.theme }}</span>
                                         <span class="date">{{ video.publishedAt|date('d') }}</span>
                                         <span>{{ video|trans_fallback('title') }}</span>
                                     </div>
@@ -120,7 +120,7 @@
                                 <div class="info-container">
                                     <div class="vCenter">
                                         <div class="vCenterKid">
-                                            <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a>
+                                            <span class="category">{{ video.theme|trans_fallback('name') }}</span>
                                             <span class="date">{{ video.publishedAt|date('d.m.Y') }}</span> .
                                             <span class="hour">{{ video.publishedAt|date('H:i') }}</span>
                                             <a href="#" class="titleLink">{{ video|trans_fallback('title') }}</a>
