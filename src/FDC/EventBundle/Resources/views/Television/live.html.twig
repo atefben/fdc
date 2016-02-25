@@ -9,8 +9,8 @@
                 <div class="textLive">
                     <h2>{{ page|trans_fallback('title') }}</h2>
                     {% if videoUrl %}
-                        <a href="#" class="play-live"><i class="icon icon_video"></i></a>
-                    {% else %}
+                        <a href="#" class="play-live"><i class="icon icon_play"></i></a>
+                    {% elseif page.live == false %}
                         <p>
                             {{ page.firstSubHead }}
                             <span>{{ page.secondSubHead }}</span>

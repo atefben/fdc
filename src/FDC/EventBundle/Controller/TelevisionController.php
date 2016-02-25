@@ -42,7 +42,8 @@ class TelevisionController extends Controller
 
         $id = $this->get('twig')->getGlobals()['admin_fdc_page_web_tv_live_id'];
         $page = $this
-            ->getBaseCoreFDCPageWebTvLiveRepository()
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageWebTvLive')
             ->find($id)
         ;
 
