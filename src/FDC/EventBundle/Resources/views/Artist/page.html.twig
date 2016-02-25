@@ -21,7 +21,8 @@
                 <h2 class="title-article">{{ artist.fullName }}</h2>
                 <div class="buttons">
                     <a id="share-article" href="#" class="button">{{ 'juries.artist.btn.partager'|trans }}</a>
-                    <a href="#" class="button print">{{ 'juries.artiste.btn.imprimer'|trans }}</a>
+                    <a href="#" onclick="javascript:window.print()" class="button print">
+                        {{ 'juries.artiste.btn.imprimer'|trans }}</a>
                 </div>
                 <div class="single-photo">
                     <div class="photo-container">
@@ -143,7 +144,7 @@
                 </a>
                 <a href="#" class="button link"></a>
                 <a href="#" class="button email"></a>
-                <a href="#" class="button print"></a>
+                                <a href="#" onclick="javascript:window.print()" class="button print"> </a>
             </div>
         </div>
         <div class="realisateurs">

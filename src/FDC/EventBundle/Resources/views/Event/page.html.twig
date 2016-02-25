@@ -16,7 +16,7 @@
             <h2 class="title-article">{{ article.title }}</h2>
             <div class="buttons">
                 <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{{ 'event.btn.partager'|trans }}</a>
-                <a href="#" class="button print"><i class="icon icon_print"></i>{{ 'event.btn.imprimer'|trans }}</a>
+                                <a href="#" onclick="javascript:window.print()" class="button print"> <i class="icon icon_print"></i>{{ 'event.btn.imprimer'|trans }}</a>
             </div>
 
             {#{% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : article.mainImg  } %}#}
@@ -64,7 +64,7 @@
                 </a>
                 <a href="#" class="button link"><i class="icon icon_link"></i></a>
                 <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
-                <a href="#" class="button print"><i class="icon icon_print"></i></a>
+                                <a href="#" onclick="javascript:window.print()" class="button print"> <i class="icon icon_print"></i></a>
             </div>
         </div>
     </div>

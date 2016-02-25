@@ -31,7 +31,7 @@
                         <h2 class="title-big">{{ content.title }}</h2>
                         <div class="buttons">
                             <a id="share-article" href="#" class="button">{{ 'cannesclassics.btn.partager'|trans }}</a>
-                            <a href="#" class="button print">{{ 'cannesclassics.btn.imprimer'|trans }}</a>
+                                            <a href="#" onclick="javascript:window.print()" class="button print"> {{ 'cannesclassics.btn.imprimer'|trans }}</a>
                         </div>
                     </div>
                     {% endif %}
@@ -126,7 +126,7 @@
                             </a>
                             <a href="#" class="button link"></a>
                             <a href="#" class="button email"></a>
-                            <a href="#" class="button print"></a>
+                                            <a href="#" onclick="javascript:window.print()" class="button print"> </a>
                         </div>
                     </div>
                     {% endif %}

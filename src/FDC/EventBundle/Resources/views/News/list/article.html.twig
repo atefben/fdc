@@ -24,7 +24,7 @@
                             {% if trans is null or trans.file is null %}
                                 {% set trans = article.image.findTranslationByLocale('fr') %}
                             {% endif %}
-                            {% thumbnail trans.file , '1144x724' with {'alt': article.image|trans_fallback('alt') } %}
+                             <img src="{% path trans.file , '1144x724' %}" alt="{{ article|trans_fallback('alt') }}">
                          {% endif %}
                         </a>
                         <a href="#" class="read-later">
