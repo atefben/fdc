@@ -23,8 +23,10 @@
                         </div>
                         {% if form.vars.default_locale == locale %}
 
-                        <div id="btn-preview" data-preview="{{ translationsFields.vars.value.slug }}"></div>
-                        <div class="box-body">
+                            {% if translationsFields.vars.value.slug is defined %}
+                                <div id="btn-preview" data-preview="{{ translationsFields.vars.value.slug }}"></div>
+                            {% endif %}
+                            <div class="box-body">
                             <div class="sonata-ba-collapsed-fields">
                                 {{ form_row(translationsFields.title) }}
                                 {{ form_row(form.parent.children.theme) }}
