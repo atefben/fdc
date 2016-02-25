@@ -5,9 +5,12 @@
     <div>
         {% if object|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
             {% set directors = object|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-            {% for key,director in directors %}
-                    {{ director.fullName }},
-            {% endfor %}
+            {%- for key,director in directors -%}
+                {%- if director -%}
+                    {{ loop.first == true ? '' : ',' }}
+                    {{ director.fullName }}
+                {%- endif -%}
+            {%- endfor -%}
         {% endif %}
     </div>
 {% endblock %}

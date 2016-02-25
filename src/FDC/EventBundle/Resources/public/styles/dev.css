@@ -90,3 +90,14 @@
 #filmPoster {
     max-width: 140px;
 }
+
+.textLive p {
+    text-transform: uppercase;
+    color: #fff;
+    font-family:"Camphor W01 Regular",Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight:bold;
+}
+.textLive p span {
+    color: #c8a461;
+}
