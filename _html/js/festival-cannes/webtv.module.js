@@ -112,7 +112,7 @@ $(document).ready(function() {
               category    = $(e.target).closest('.video').find('.category').text(),
               date        = $(e.target).closest('.video').find('.date').text(),
               hour        = $(e.target).closest('.video').find('.hour').text(),
-              text        = $(e.target).closest('.video').find('p').text();
+              text        = $(e.target).closest('.video').find('p').data('title');
 
           if (typeof videoPopin.getConfig().file === "undefined" || videoPopin.getConfig().file === "") {
             videoPopin.remove();
@@ -276,7 +276,7 @@ $(document).ready(function() {
               category    = $(e.target).closest('.video').find('.category').text(),
               date        = $(e.target).closest('.video').find('.date').text(),
               hour        = $(e.target).closest('.video').find('.hour').text(),
-              text        = $(e.target).closest('.video').find('p').text();
+              text        = $(e.target).closest('.video').find('p').data('title');
 
           if (typeof videoPopin.getConfig().file === "undefined" || videoPopin.getConfig().file === "") {
             videoPopin.remove();

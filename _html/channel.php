@@ -196,7 +196,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
+                    <p class="titleLink" data-title="Rencontre avec l'équipe de Carol">Rencontre avec l'équipe de Carol</p>
                   </div>
                 </div>
               </div>
@@ -214,7 +214,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
+                    <p class="titleLink" data-title="Rencontre avec l'équipe de Carol">Rencontre avec l'équipe de Carol</p>
                   </div>
                 </div>
               </div>
