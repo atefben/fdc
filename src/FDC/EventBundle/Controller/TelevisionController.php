@@ -69,8 +69,9 @@ class TelevisionController extends Controller
 
             foreach ($chosenChannels as $chosenChannel) {
                 $channelVideos = $this
-                    ->getBaseCoreMediaVideoRepository()
-                    ->getAvailableVideosByWebTv($festival, $locale, $chosenChannel->getId())
+                    ->getDoctrineManager()
+                    ->getRepository('BaseCoreBundle:MediaVideo')
+                    ->getAvailableMediaVideosByWebTv($festival, $locale, $chosenChannel->getId())
                 ;
                 if ($channelVideos) {
                     $sliderChosenChannels[] = array(
@@ -87,8 +88,9 @@ class TelevisionController extends Controller
 
             foreach ($otherChannels as $otherChannel) {
                 $channelVideos = $this
-                    ->getBaseCoreMediaVideoRepository()
-                    ->getAvailableVideosByWebTv($festival, $locale, $otherChannel->getId())
+                    ->getDoctrineManager()
+                    ->getRepository('BaseCoreBundle:MediaVideo')
+                    ->getAvailableMediaVideosByWebTv($festival, $locale, $otherChannel->getId())
                 ;
                 if ($channelVideos) {
                     $sliderOtherChannels[] = array(
