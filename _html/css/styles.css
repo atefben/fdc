@@ -13619,6 +13619,18 @@ input[type=submit] {
   left: 0;
   right: 0;
   margin: 0 auto;
+  width: 977px;
+}
+.webtv #live .textLive p {
+  color: #fff;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.750rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 40px;
+}
+.webtv #live .textLive p span {
+  color: #c8a461;
 }
 .webtv #live h2 {
   color: #fff;
