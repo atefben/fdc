@@ -19,7 +19,7 @@
             <h2 class="title-article">{{ news|trans_fallback('title') }}</h2>
             <div class="buttons">
                 <a id="share-article" href="#" class="button">{{ 'article.btn.partager'|trans }}</a>
-                <a href="#" class="button print">{{ 'article.btn.imprimer'|trans }}</a>
+                                <a href="#" onclick="javascript:window.print()" class="button print"> {{ 'article.btn.imprimer'|trans }}</a>
             </div>
 
             {% if class(news) == "StatementArticle" or class(news) == "InfoArticle" %}
@@ -107,7 +107,7 @@
                 <a href="#" class="button twitter"><i class="icon icon_twitter"></i></a>
                 <a href="#" class="button link"><i class="icon icon_link"></i></a>
                 <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
-                <a href="#" class="button print"><i class="icon icon_print"></i></a>
+                                <a href="#" onclick="javascript:window.print()" class="button print"> <i class="icon icon_print"></i></a>
             </div>
         </div>
 

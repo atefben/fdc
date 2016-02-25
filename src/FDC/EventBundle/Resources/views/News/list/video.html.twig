@@ -28,7 +28,7 @@
                          data-file='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
                          data-img="{% path transImage.file, '1144x724' %}">
 
-                        {% thumbnail transImage.file , '1144x724' with {'alt': video.image|trans_fallback('alt') } %}
+                        <img src="{% path trans.file , '1144x724' %}" alt="{{ video|trans_fallback('alt') }}">
                         <div class="picto"><i class="icon icon_video"></i></div>
                         <div class="info">
                             <div class="vCenter">
