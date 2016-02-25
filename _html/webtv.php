@@ -270,8 +270,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"><i class="icon icon_video"></i>
-</div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
@@ -288,8 +287,7 @@
             </div>
             <a class="linkVid" href="#"></a>
             <div class="info">
-              <div class="picto"><i class="icon icon_video"></i>
-</div>
+              <div class="picto"><i class="icon icon_video"></i></div>
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
