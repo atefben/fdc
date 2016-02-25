@@ -44,7 +44,7 @@ class FilmFilmAdmin extends SoifAdmin
                     $queryBuilder->join("fp.functions", 'ff');
                     $queryBuilder->join("ff.function", 'fff');
                     $queryBuilder->andWhere("fff.id = 3");
-                    $queryBuilder->andWhere('UPPER(CONCAT(fpp.firstname , fpp.lastname)) LIKE UPPER(:name)');
+                    $queryBuilder->andWhere('(UPPER(fpp.firstname) LIKE UPPER(:name) OR UPPER(fpp.lastname) LIKE UPPER(:name))');
                     $queryBuilder->setParameter('name', '%' . $value['value'] . '%');
 
 
@@ -60,8 +60,8 @@ class FilmFilmAdmin extends SoifAdmin
                     $queryBuilder->join("ts.translations", 'tst');
                     $queryBuilder->andWhere('tst.locale = :sectionLocale');
                     $queryBuilder->setParameter('sectionLocale', 'fr');
-                    $queryBuilder->andWhere('UPPER(tst.name) LIKE UPPER(:name)');
-                    $queryBuilder->setParameter('name', '%' . $value['value'] . '%');
+                    $queryBuilder->andWhere('UPPER(tst.name) LIKE UPPER(:selectionname)');
+                    $queryBuilder->setParameter('selectionname', '%' . $value['value'] . '%');
                     return true;
                 },
                 'field_type' => 'text'
