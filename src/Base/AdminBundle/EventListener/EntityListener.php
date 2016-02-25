@@ -147,7 +147,7 @@ class EntityListener
         $object =  $eventArgs->getObject();
         if ($object instanceof Media) {
             if ($object->getParentAudioTranslation() || $object->getParentVideoTranslation()) {
-                //$this->flush = true;
+                $this->flush = true;
             }
         }
     }
@@ -157,7 +157,7 @@ class EntityListener
         $object =  $eventArgs->getObject();
         if ($object instanceof Media) {
             if ($object->getParentAudioTranslation() || $object->getParentVideoTranslation()) {
-                //$this->flush = true;
+                $this->flush = true;
             }
         }
     }
