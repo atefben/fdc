@@ -141,7 +141,7 @@
                                         <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a>
                                         <span class="date">{{ video.publishedAt|date('d.m.Y') }}</span> .
                                         <span class="hour">{{ video.publishedAt|date('H:i') }}</span>
-                                        <a href="#" class="titleLink">{{ video|trans_fallback('title') }}</a>
+                                        <a href="#" class="titleLink">{{ video|trans_fallback('title')|truncate(50) }}</a>
                                     </div>
                                 </div>
                             </div>
