@@ -24,7 +24,7 @@
                 {% endif %}
                 <div class="item {{ video.theme|trans_fallback('slug') }} {{ video.publishedAt|date('d-m-y') }} date theme shadow-bottom video"
                      data-vid="{{ video.id }}"
-                     data-file='[{"file":"{%- path trans.file, 'reference' -%}"}]'
+                     data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
                      data-img="{% path transImage.file, '1144x724' %}">
 
                     {% thumbnail transImage.file , '1144x724' with {'alt': video.image|trans_fallback('alt') } %}
