@@ -40,7 +40,7 @@
             <div class="info">
                 <div class="vCenter">
                     <div class="vCenterKid">
-                        <a href="#" class="category">{{ file.theme|trans_fallback('name') }}</a>
+                        <span class="category">{{ file.theme|trans_fallback('name') }}</span>
                         <span class="date">{{ file.publishedAt|date('d.m.Y') }}</span> . <span
                                 class="hour">{{ file.publishedAt|date('H:i') }}</span>
                         <p>{{ trans.title }}</p>

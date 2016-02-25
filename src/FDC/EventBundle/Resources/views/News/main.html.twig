@@ -11,7 +11,7 @@
             {% if prev[0] is defined and not prev[0] is empty %}<a href="{{ path('fdc_event_news_get', {'format': prev[0].newsFormat, 'slug': prev[0]|trans_fallback('slug')}) }}" class="nav prev"><i class="icon icon_flecheGauche"></i></a>{% endif %}
             {% if next[0] is defined and not next[0] is empty %}<a href="{{ path('fdc_event_news_get', {'format': next[0].newsFormat, 'slug': next[0]|trans_fallback('slug')}) }}" class="nav next"><i class="icon icon_fleche-right"></i></a>{% endif %}
             <div class="info">
-                <a href="#" class="category">{{ news.theme|trans_fallback('name') }}</a>
+                <span class="category">{{ news.theme|trans_fallback('name') }}</span>
                 <span class="date">{{ news.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.publishedAt|date('H:i') }}</span>
                 <span class="update">{{ 'article.text.miseajour'|trans }} :</span><span class="date">{{ news.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.updatedAt|date('H:i') }}</span>
             </div>
