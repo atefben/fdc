@@ -413,6 +413,10 @@ form:
         helper_news_news_associated: Sélectionnez 2 actualités au maximum. Ils apparaitront en front-office en bas de l'article.
         helper_media_audio: Ajouter un fichier au format mp3
         helper_video_file: Ajouter un fichier au format mp4/mpeg
+    info:
+        helper_info_associated: Sélectionnez 2 infos au maximum. Ils apparaitront en front-office en bas de l'article.
+    statement:
+        helper_statement_associated: Sélectionnez 2 communiqués au maximum. Ils apparaitront en front-office en bas de l'article.
     social_wall:
         twitter: Twitter
         instagram: Instagram
@@ -535,6 +539,8 @@ form:
     label_arrive_icon: Pictogramme du titre
     label_trans_name: Slug pour traduction
     label_locked_content: Locked content
+    label_statement_associated : Communiqués associés
+    label_info_associated : Infos associés
     label_column:
         first: Première colonne
         second: Deuxième colonne

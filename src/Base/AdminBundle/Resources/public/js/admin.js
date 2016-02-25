@@ -4,8 +4,49 @@ var Admin = Admin || {};
 Admin.add_pretty_errors = function(){};
 
 $(document).ready(function() {
+    //change link to original edit for home
+    if( $('#homepageSlide').length > 0) {
+        $('#homepageSlide table').on('change', function() {
+            var timesRun = 0;
+            var interval = window.setInterval(function(){
+                $('#homepageSlide div .field-short-description span a').each(function(index){
+                    var old = $( this ).attr('href');
+                    old = old.split('/');
+
+                    var text = $( this ).text();
+                    text = text.split(' ')[0].toLowerCase();
+
+                    old[4] = text;
+
+                    $( this ).attr('href', old.join('/'));
+                });
+                timesRun += 1;
+                console.log(timesRun);
+                if(timesRun == 10){
+                    clearInterval(interval);
+                }
+            },500);
+        });
+        $('#homepageSlide div .field-short-description span a').each(function(index){
+            var old = $( this ).attr('href');
+            old = old.split('/');
+
+            var text = $( this ).text();
+            text = text.split(' ')[0].toLowerCase();
+
+            old[4] = text;
+
+            $( this ).attr('href', old.join('/'));
+
+        });
+    }
+
     lockEvents();
 });
+
+
+
+
 
 // call the ajax method to handle lock
 function lockEvents()

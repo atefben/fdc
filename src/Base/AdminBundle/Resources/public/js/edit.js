@@ -1,5 +1,44 @@
 jQuery(document).ready(function($) {
     editEvents();
+
+    //change link to original edit
+    if( $('#associatedNews').length > 0) {
+        $('#associatedNews table').on('change', function() {
+            var timesRun = 0;
+            var interval = window.setInterval(function(){
+                $('#associatedNews div .field-short-description span a').each(function(index){
+                    var old = $( this ).attr('href');
+                    old = old.split('/');
+
+                    var text = $( this ).text();
+                    text = text.split(' ')[0].toLowerCase();
+
+                    old[4] = text;
+
+                    $( this ).attr('href', old.join('/'));
+                });
+                timesRun += 1;
+                console.log(timesRun);
+                if(timesRun == 10){
+                    clearInterval(interval);
+                }
+            },500);
+        });
+        $('#associatedNews div .field-short-description span a').each(function(index){
+            var old = $( this ).attr('href');
+            old = old.split('/');
+
+            var text = $( this ).text();
+            text = text.split(' ')[0].toLowerCase();
+
+            old[4] = text;
+
+            $( this ).attr('href', old.join('/'));
+
+        });
+    }
+
+    // previsualisation
     var url = window.location.href;
     var newsUrl = url.split("/");
 
@@ -30,6 +69,7 @@ jQuery(document).ready(function($) {
             editEvents();
         }
     });
+
 });
 
 function editEvents() {
