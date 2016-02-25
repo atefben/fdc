@@ -107,7 +107,7 @@ abstract class News implements TranslateMainInterface
      *
      * @ORM\Column(type="boolean", options={"default":0})
      */
-    private $hidden;
+    private $hidden = 0;
 
     /**
      * @var NewsTag
