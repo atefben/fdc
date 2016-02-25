@@ -98,7 +98,6 @@ class TelevisionController extends Controller
             }
         }
 
-
         $filmVideos = array();
         if (!$page->getDoNotDisplayTrailerArea()) {
             $filmsIds = array();

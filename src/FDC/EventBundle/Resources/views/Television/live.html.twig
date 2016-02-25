@@ -67,6 +67,7 @@
             <div id="slider-channels" class="owl-carousel sliderDrag">
                 {% for group in sliderOtherChannels %}
                     {% if group.channel.image or (group.channelVideos|length and group.channelVideos|first.image) %}
+                        {% set cropTitle = true %}
                         <div class="channel shadow-bottom">
                             {{ block('WebTvLiveChannel') }}
                         </div>
@@ -212,7 +213,13 @@
             <div class="vCenter">
                 <div class="vCenterKid">
                     <a href="{{ path('fdc_event_television_getchannel', {'slug': channel|trans_fallback('slug')}) }}"
-                       class="category">{{ channel|trans_fallback('name') }}</a>
+                       class="category">
+                        {% if cropTitle is defined and cropTitle %}
+                            {{ (channel|trans_fallback('name'))|truncate(25) }}
+                        {% else %}
+                            {{ channel|trans_fallback('name') }}
+                        {% endif %}
+                    </a>
                     <span>{{ 'webtv.direct.nb_videos'|trans({'%nb_videos%': count}) }}</span>
                 </div>
             </div>
