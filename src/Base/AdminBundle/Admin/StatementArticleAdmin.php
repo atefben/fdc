@@ -266,8 +266,8 @@ class StatementArticleAdmin extends Admin
                 )
             )
             ->add('associatedStatement', 'sonata_type_collection', array(
-                'label' => 'form.label_news_news_associated',
-                'help' => 'form.news.helper_news_news_associated',
+                'label' => 'form.label_statement_associated',
+                'help' => 'form.statement.helper_statement_associated',
                 'by_reference' => false,
                 'btn_add' => true,
                 'required' => false,
