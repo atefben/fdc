@@ -104,8 +104,12 @@ function playerInit(id, cls, havePlaylist, live) {
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     var $container    = $("#"+vid.id).closest('.video-container');
-    $container.append(controlBar);
-    $(topBar).insertAfter($container.find('#'+vid.id));
+    if($container.find('.control-bar').length <= 0) {
+        $container.append(controlBar);
+    }
+    if($container.find('.top-bar').length <= 0) {
+        $(topBar).insertAfter($container.find('#'+vid.id));
+    }
 
     var $infoBar      = $container.find('.infos-bar'),
         $stateBtn     = $container.find('.play-btn'),
@@ -390,6 +394,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     });
 
     if (fullScreenApi.supportsFullScreen) {
+        console.log('yeah');
         $fullscreen[0].addEventListener('click', function() {
             if(!fullScreenApi.isFullScreen()) {
                 fullScreenApi.requestFullScreen($container[0]);

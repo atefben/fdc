@@ -34,7 +34,7 @@
             {% if playlist is defined %}
                 data-playlist='{{ playlist }}'
             {% else %}
-                data-file='[{"file":"{% path trans.file, 'reference' %}"}]'
+                data-file='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
             {% endif %}
          data-img="{% if image is defined and image is not null %}{% path image, 'reference' %}{% endif %}">
         <div id="video-player-{{ trans.id }}" class="video-player">

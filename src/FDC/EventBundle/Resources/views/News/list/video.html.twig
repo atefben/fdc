@@ -16,29 +16,31 @@
                     {% if transImage is null %}
                         {% set transImage = video.header.findTranslationByLocale('fr') %}
                     {% endif %}
-                {% else %}
+                {% elseif video.image %}
                     {% set transImage = video.image.findTranslationByLocale(app.request.locale) %}
                     {% if transImage is null or transImage.file is null %}
                         {% set transImage = video.image.findTranslationByLocale('fr') %}
                     {% endif %}
                 {% endif %}
-                <div class="item {{ video.theme|trans_fallback('slug') }} {{ video.publishedAt|date('d-m-y') }} date theme shadow-bottom video"
-                     data-vid="{{ video.id }}"
-                     data-file='[{"file":"{%- path trans.file, 'reference' -%}"}]'
-                     data-img="{% path transImage.file, '1144x724' %}">
+                {% if transImage is defined %}
+                    <div class="item {{ video.theme|trans_fallback('slug') }} {{ video.publishedAt|date('d-m-y') }} date theme shadow-bottom video"
+                         data-vid="{{ video.id }}"
+                         data-file='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
+                         data-img="{% path transImage.file, '1144x724' %}">
 
-                    {% thumbnail transImage.file , '1144x724' with {'alt': video.image|trans_fallback('alt') } %}
-                    <div class="picto"><i class="icon icon_video"></i></div>
-                    <div class="info">
-                        <div class="vCenter">
-                            <div class="vCenterKid">
-                                <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a>
-                                <span class="date">{{ video.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ video.publishedAt|date('H:i') }}</span>
-                                <p data-title="{{ video|trans_fallback('title') }}">{{  video|trans_fallback('title')|truncate(40) }}</p>
+                        {% thumbnail transImage.file , '1144x724' with {'alt': video.image|trans_fallback('alt') } %}
+                        <div class="picto"><i class="icon icon_video"></i></div>
+                        <div class="info">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a>
+                                    <span class="date">{{ video.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ video.publishedAt|date('H:i') }}</span>
+                                    <p data-title="{{ video|trans_fallback('title') }}">{{  video|trans_fallback('title')|truncate(40) }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
             <a id="next" href="videos2.html"></a>
             <div class="popin-video video loading">

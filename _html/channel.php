@@ -184,7 +184,10 @@
       <div id="content-latest">
         <h2 class="title">Les dernieres videos</h2>
         <div class="container sliderDrag">
-          <div class="video shadow-bottom">
+          <div class="video shadow-bottom"
+            data-vid="1"
+            data-file='[{"file":"./files/mov_bbb.mp4"}]'
+            data-img="//dummyimage.com/960x540/000/c8a461.png">
             <img src="http://dummyimage.com/463x291/000/fff" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
@@ -193,13 +196,16 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
+                    <p class="titleLink" data-title="Rencontre avec l'équipe de Carol">Rencontre avec l'équipe de Carol</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="video shadow-bottom">
+          <div class="video shadow-bottom"
+            data-vid="1"
+            data-file='[{"file":"./files/mov_bbb.mp4"}]'
+            data-img="//dummyimage.com/960x540/000/c8a461.png">
             <img src="http://dummyimage.com/463x291/000/fff" alt="" />
             <a class="linkVid" href="#"></a>
             <div class="info">
@@ -208,7 +214,7 @@
                 <div class="vCenter">
                   <div class="vCenterKid">
                     <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
+                    <p class="titleLink" data-title="Rencontre avec l'équipe de Carol">Rencontre avec l'équipe de Carol</p>
                   </div>
                 </div>
               </div>
@@ -216,6 +222,39 @@
           </div>
         </div>
       </div>
+      <div class="popin-video video loading">
+        <div class="video-container state-init video"
+          data-facebook="//www.facebook.com"
+          data-twitter="//www.twitter.com"
+          data-link="//www.example.com"
+          data-email="//www.gmail.com">
+          <div id="video-player-popin" class="">
+          </div>
+          <div class="video-overlay"></div>
+          <div class="infos-bar">
+            <div class="picto"><i class="icon icon_video"></i></div>
+            <div class="info">
+              <div class="vCenter">
+                <div class="vCenterKid">
+                  <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+                  <p></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="popin-info info">
+          <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+          <p></p>
+        </div>
+        <div class="popin-buttons buttons square">
+          <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+          <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a>
+          <a href="#" class="button link"><i class="icon icon_link"></i></a>
+          <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+        </div>
+      </div>
+      <div class="ov"></div>
     </div>
 
     <?php include('footer.html'); ?>
