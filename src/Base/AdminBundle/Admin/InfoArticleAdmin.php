@@ -266,8 +266,8 @@ class InfoArticleAdmin extends Admin
                 )
             )
             ->add('associatedInfo', 'sonata_type_collection', array(
-                'label' => 'form.label_news_news_associated',
-                'help' => 'form.news.helper_news_news_associated',
+                'label' => 'form.label_info_associated',
+                'help' => 'form.info.helper_info_associated',
                 'by_reference' => false,
                 'btn_add' => true,
                 'required' => false,
