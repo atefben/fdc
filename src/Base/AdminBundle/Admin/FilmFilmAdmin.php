@@ -36,29 +36,31 @@ class FilmFilmAdmin extends SoifAdmin
             ))
             ->add('realisator', 'doctrine_orm_callback', array(
                 'callback' => function ($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
+                    if ($value['value'] === null) {
                         return;
                     }
                     $queryBuilder->join("{$alias}.persons", 'fp');
+                    $queryBuilder->join("fp.person", 'fpp');
                     $queryBuilder->join("fp.functions", 'ff');
                     $queryBuilder->join("ff.function", 'fff');
-                    $queryBuilder->andWhere("fff.id", '3');
-                    $queryBuilder->andWhere('fff.name LIKE :name');
+                    $queryBuilder->andWhere("fff.id = 3");
+                    $queryBuilder->andWhere('UPPER(CONCAT(fpp.firstname , fpp.lastname)) LIKE UPPER(:name)');
                     $queryBuilder->setParameter('name', '%' . $value['value'] . '%');
+
 
                 },
                 'field_type' => 'text'
             ))
             ->add('selection', 'doctrine_orm_callback', array(
                 'callback' => function ($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
+                    if ($value['value'] === null) {
                         return;
                     }
                     $queryBuilder->join("{$alias}.selectionSection", 'ts');
                     $queryBuilder->join("ts.translations", 'tst');
-                    $queryBuilder->andWhere('tst.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('ts.fullName LIKE :name');
+                    $queryBuilder->andWhere('tst.locale = :sectionLocale');
+                    $queryBuilder->setParameter('sectionLocale', 'fr');
+                    $queryBuilder->andWhere('UPPER(tst.name) LIKE UPPER(:name)');
                     $queryBuilder->setParameter('name', '%' . $value['value'] . '%');
                     return true;
                 },
@@ -68,7 +70,7 @@ class FilmFilmAdmin extends SoifAdmin
                 'callback' => function ($queryBuilder, $alias, $field, $value) {
                     $em = $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
                     $years = $em->getRepository('BaseCoreBundle:FilmFestival')->findAll();
-                    if (!$value['value']) {
+                    if ($value['value'] === null) {
                         return;
                     }
                     $queryBuilder->join("{$alias}.festival", 'fs');
