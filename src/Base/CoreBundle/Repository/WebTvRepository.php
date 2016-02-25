@@ -107,20 +107,33 @@ class WebTvRepository extends EntityRepository
     /**
      * @param $locale
      * @param $festival
+     * @param bool $notIn
      * @return array
      */
-    public function getWebTvByLocale($locale, $festival)
+    public function getWebTvByLocale($locale, $festival, $notIn = false)
     {
         $qb = $this->createQueryBuilder('wt');
 
-        $qb = $qb->join('wt.translations', 'wtt')
+        $qb
+            ->join('wt.translations', 'wtt')
             ->join('wt.mediaVideos', 'mv')
             ->join('mv.translations', 'mvt')
-            ->where('wt.festival = :festival')
-            ->setParameter('festival', $festival);
+            ->where('SIZE(wt.mediaVideos) >= 1')
+        ;
 
-        $qb = $this->addTranslationQueries($qb, 'wtt', $locale);
-        $qb = $qb->andWhere('SIZE(wt.mediaVideos) >= 1');
+        $this->addMasterQueries($qb, 'wt', $festival, false);
+        $this->addMasterQueries($qb, 'mv', $festival, true);
+        $this->addTranslationQueries($qb, 'wtt', $locale);
+        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addAWSEncodersQueries($qb, 'mvt');
+
+        if ($notIn) {
+            $notIn = is_array($notIn) ? $notIn : array($notIn);
+            $qb
+                ->andWhere('wt.id NOT IN (:notIn)')
+                ->set('notIn', $notIn)
+            ;
+        }
 
         return $qb->getQuery()->getResult();
     }

@@ -98,18 +98,76 @@
 
         {% if otherVideos|length %}
             <div id="content-latest">
-                <h2 class="title">{{ 'webtv.channel.title.lesdernieresvideos'|trans }}</h2>
+                <h2 class="title">{{ 'webtv.direct.title.lesdernieresvideos'|trans }}</h2>
                 <div class="container sliderDrag">
                     {% for video in otherVideos %}
-                        <div class="video shadow-bottom">
-                            {% if video.image|trans_fallback('file') %}
-                                <img src="{% path video.image|trans_fallback('file'), '926x584' %}" alt="">
-                            {% else %}
-                                <img src="{% path video.image|trans_fallback('file', 'fr'), '926x584' %}" alt="">
-                            {% endif %}
+                        <div class="video shadow-bottom"
+                             data-vid="{{ video.id }}"
+                             data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
+                                {% if video.image|trans_fallback('file') %}
+                            data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
+                        {% else %}
+                            data-img="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
+                                {% endif %}>
+                            <div class="image-wrapper">
+                                {% if video.image|trans_fallback('file') %}
+                                    <img src="{% path video.image|trans_fallback('file'), '463x292' %}" alt="">
+                                {% endif %}
+                            </div>
+                            <a class="linkVid" href="#"></a>
+                            <div class="info">
+                                <div class="picto"><i class="icon icon_video"></i></div>
+                                <div class="info-container">
+                                    <div class="vCenter">
+                                        <div class="vCenterKid">
+                                            <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a>
+                                            <span class="date">{{ video.publishedAt|date('d.m.Y') }}</span> .
+                                            <span class="hour">{{ video.publishedAt|date('H:i') }}</span>
+                                            <a href="#" class="titleLink">{{ video|trans_fallback('title') }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     {% endfor %}
                 </div>
+            </div>
+
+            <div class="popin-video video loading">
+                <div class="video-container state-init video"
+                     data-facebook="//www.facebook.com"
+                     data-twitter="//www.twitter.com"
+                     data-link="//www.example.com"
+                     data-email="//www.gmail.com">
+                    <div id="video-player-popin" class="">
+                    </div>
+                    <div class="video-overlay"></div>
+                    <div class="infos-bar">
+                        <div class="picto"><i class="icon icon_video"></i></div>
+                        <div class="info">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popin-info info">
+                    <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+                    <p></p>
+                </div>
+                <div class="popin-buttons buttons square">
+                    <a href="//www.facebook.com/sharer.php?u={{ url(app.request.get('_route'), app.request.get('_route_params'))|url_encode }}"
+                       rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+                    <a href="//twitter.com/intent/tweet?text=" class="button twitter"><i
+                                class="icon icon_twitter"></i></a>
+                    <a href="#" class="button link"><i class="icon icon_link"></i></a>
+                    <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+                </div>
+            </div>
+            <div class="ov"></div>
             </div>
         {% endif %}
 

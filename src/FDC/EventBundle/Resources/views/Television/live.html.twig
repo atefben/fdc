@@ -177,9 +177,9 @@
                 <p></p>
             </div>
             <div class="popin-buttons buttons square">
-                <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+                <a href="//www.facebook.com/sharer.php?u={{ url(app.request.get('_route'), app.request.get('_route_params'))|url_encode }}"
                    rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-                <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i
+                <a href="//twitter.com/intent/tweet?text=" class="button twitter"><i
                             class="icon icon_twitter"></i></a>
                 <a href="#" class="button link"><i class="icon icon_link"></i></a>
                 <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
@@ -200,7 +200,7 @@
                  srcset="{% path channel.image|trans_fallback('file'), '586x370' %} 1x, {% path channel.image|trans_fallback('file'), '976x535' %} 2x"
                  alt="{{ channel.image|trans_fallback('alt') }}">
         {% elseif channelVideos|length and channelVideos|first.image and channelVideos|first.image|trans_fallback('file') %}{# If channel image does not exist #}
-            <img src="{% path channelVideos|first.image|trans_fallback('file'), '586x370' %}"
+            <img src="{% path channelVideos|first.image|trans_fallback('file'), '976x535' %}"
                  srcset="{% path channelVideos|first.image|trans_fallback('file'), '586x370' %} 1x, {% path channelVideos|first.image|trans_fallback('file'), '976x535' %} 2x"
                  alt="{{ channelVideos|first.image|trans_fallback('alt') }}">
         {% endif %}

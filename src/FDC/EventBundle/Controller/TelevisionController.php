@@ -2,6 +2,7 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Base\CoreBundle\Entity\FDCPageWebTvChannels;
 use Base\CoreBundle\Entity\FDCPageWebTvLive;
 use Base\CoreBundle\Entity\FDCPageWebTvLiveMediaVideoAssociated;
 use Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated;
@@ -173,8 +174,9 @@ class TelevisionController extends Controller
         }
 
         $webTvVideos = $this
-            ->getBaseCoreMediaVideoRepository()
-            ->getWebTvPublishedVideos($locale, $festival->getId(), $webTv->getId())
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
+            ->getAvailableMediaVideosByWebTv($festival, $locale, $webTv->getId())
         ;
 
         if (!$webTvVideos) {
@@ -182,8 +184,9 @@ class TelevisionController extends Controller
         }
 
         $otherVideos = $this
-            ->getBaseCoreMediaVideoRepository()
-            ->get2VideosFromTheLast10($locale, $festival->getId(), $webTv->getId())
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
+            ->get2VideosFromTheLast10($festival, $locale, $webTv->getId())
         ;
 
         $this->get('base.manager.seo')->setFDCEventPageWebTvSeo($webTv, $locale);
@@ -204,33 +207,84 @@ class TelevisionController extends Controller
     public function channelsAction(Request $request)
     {
         $this->isPageEnabled($request->get('_route'));
-        $festival = $this->getSettings()->getFestival();
+
+        $festival = $this->getSettings()->getFestival()->getId();
+        $locale = $request->getLocale();
+
         $id = $this->get('twig')->getGlobals()['admin_fdc_page_web_tv_channels_id'];
-        $FDCPageWebTvChannels = $this
-            ->getBaseCoreFDCPageWebTvChannelsRepository()
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageWebTvChannels')
             ->find($id)
         ;
 
-        if (!$FDCPageWebTvChannels) {
-            throw $this->createNotFoundException();
+        if (!($page instanceof FDCPageWebTvChannels)) {
+            throw $this->createNotFoundException('Page channeles not found');
         }
 
         $locale = $request->getLocale();
 
-        $channels = $this->getBaseCoreWebTvRepository()->getWebTvByLocale($locale, $festival);
-
-        $hasSticky = (bool)$FDCPageWebTvChannels->getSticky();
-        $stickyIsValid = $hasSticky && $FDCPageWebTvChannels->getSticky()->findTranslationByLocale($locale);
-        $stickyHasVideos = $stickyIsValid && $FDCPageWebTvChannels->getSticky()->getVideos();
-        if ($stickyHasVideos) {
-            array_unshift($channels, $FDCPageWebTvChannels->getSticky());
+        $stickyId = false;
+        if ($page->getSticky()) {
+            $stickyId = $page->getSticky()->getId();
         }
 
-        $this->get('base.manager.seo')->setFDCEventPageFDCPageWebTvChannelsSeo($FDCPageWebTvChannels, $locale);
+        $channels = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:WebTv')
+            ->getWebTvByLocale($locale, $festival)
+        ;
+
+        $channelsIds = array();
+        foreach ($channels as $channel) {
+            $channelsIds[$channel->getId()] = $channel;
+        }
+
+        $groups = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
+            ->getLastMediaVideoOfEachWebTv($festival, $locale, array_keys($channelsIds))
+        ;
+
+
+        $channelsVideos = array();
+        foreach ($groups as $key => $group) {
+            if ($stickyId == $group['channel']) {
+                $nbVideos = $this
+                    ->getDoctrineManager()
+                    ->getRepository('BaseCoreBundle:MediaVideo')
+                    ->getAvailableMediaVideosByWebTv($festival, $locale, $group['channel'])
+                ;
+                $stickyChannelVideo = array(
+                    'channel'  => $channelsIds[$group['channel']],
+                    'video'    => $group['lastVideo'],
+                    'nbVideos' => count($nbVideos),
+
+                );
+            } else if (array_key_exists($group['channel'], $channelsIds)) {
+                $nbVideos = $this
+                    ->getDoctrineManager()
+                    ->getRepository('BaseCoreBundle:MediaVideo')
+                    ->getAvailableMediaVideosByWebTv($festival, $locale, $group['channel'])
+                ;
+                $channelsVideos[] = array(
+                    'channel'  => $channelsIds[$group['channel']],
+                    'video'    => $group['lastVideo'],
+                    'nbVideos' => count($nbVideos),
+                );
+            }
+        }
+
+        if (isset($stickyChannelVideo)) {
+            array_unshift($channelsVideos, $stickyChannelVideo);
+        }
+
+        $this->get('base.manager.seo')->setFDCEventPageFDCPageWebTvChannelsSeo($page, $locale);
 
         return array(
-            'channels'             => $channels,
-            'FDCPageWebTvChannels' => $FDCPageWebTvChannels,
+            'channelsVideos' => $channelsVideos,
+            'channels'       => $channels,
+            'page'           => $page,
         );
     }
 

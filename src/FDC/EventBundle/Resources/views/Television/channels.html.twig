@@ -9,13 +9,13 @@
                     <h2>{{ 'webtv.channel.title.leschaines'|trans }}</h2>
                 </div>
             </div>
-            {% if FDCPageWebTvChannels.image %}
-                {% if FDCPageWebTvChannels.image|trans_fallback('status') == 5 %}
+            {% if page.image %}
+                {% if page.image|trans_fallback('status') == 5 %}
                     <div class="img"
-                         style="background-image:url('{% path FDCPageWebTvChannels.image|trans_fallback('file'), '1920x450' %}')"></div>
+                         style="background-image:url('{% path page.image|trans_fallback('file'), '1920x450' %}')"></div>
                 {% else %}
                     <div class="img"
-                         style="background-image:url('{% path FDCPageWebTvChannels.image|trans_fallback('file', 'fr'), '1920x450' %}')"></div>
+                         style="background-image:url('{% path page.image|trans_fallback('file', 'fr'), '1920x450' %}')"></div>
                 {% endif %}
             {% else %}
                 <div class="img" style="background-image:url({{ asset('bundles/fdcevent/img/webtv/002.jpg') }})"></div>
@@ -24,36 +24,28 @@
         <div id="gridAudios" class="grid grid-wrapper">
             <div class="grid-sizer"></div>
 
-            {% for channel in channels %}
-                <div class="item {{ channel.publishedAt|date('d-m-Y') }} {{ channel.theme }} shadow-bottom playlist">
-                    {% if channel.image %}
-                        {% if channel.image|trans_fallback('file') %}
-                            <img src="{% path channel.image|trans_fallback('file'), '640x404' %}"
-                                 srcset="{% path channel.image|trans_fallback('file'), '640x404' %} 1x, {% path channel.image|trans_fallback('file'), '1280x808' %} 2x"
+            {% for group in channelsVideos %}
+                <div class="item {{ group.channel.publishedAt|date('d-m-Y') }} {{ group.channel.theme }} shadow-bottom playlist">
+                    {% if group.channel.image and group.channel.image|trans_fallback('file')%}
+                            <img src="{% path group.channel.image|trans_fallback('file'), '1280x808' %}"
+                                 srcset="{% path group.channel.image|trans_fallback('file'), '1280x808' %} 1x, {% path group.channel.image|trans_fallback('file'), '1280x808' %} 2x"
                                  alt="">
-                        {% else %}
-                            <img src="{% path channel.image|trans_fallback('file', 'fr'), '640x404' %}"
-                                 srcset="{% path channel.image|trans_fallback('file', 'fr'), '640x404' %} 1x, {% path channel.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
+                    {% elseif group.video.image  and group.video.image|trans_fallback('file') %}
+                            <img src="{% path group.video.image|trans_fallback('file'), '1280x808' %}"
+                                 srcset="{% path cgroup.video.image|trans_fallback('file'), '1280x808' %} 1x, {% path cgroup.video.image|trans_fallback('file'), '1280x808' %} 2x"
                                  alt="">
-                        {% endif %}
-                    {% elseif channel.mediaVideos|length and channel.mediaVideos|last.image %}{# If channel image does not exist #}
-                        {% if channel.mediaVideos|last.image|trans_fallback('file') %}
-                            <img src="{% path channel.mediaVideos|last.image|trans_fallback('file'), '640x404' %}"
-                                 srcset="{% path channel.mediaVideos|last.image|trans_fallback('file'), '640x404' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file'), '1280x808' %} 2x"
+                    {% elseif group.video|trans_fallback('imageAmazonUrl') %}
+                            <img src="{{ s3_server_global ~ group.video|trans_fallback('imageAmazonUrl') }}"
+                                 srcset="{{ s3_server_global ~ group.video|trans_fallback('imageAmazonUrl') }} 1x, {{ s3_server_global ~ group.video|trans_fallback('imageAmazonUrl') }} 2x"
                                  alt="">
-                        {% else %}
-                            <img src="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '640x404' %}"
-                                 srcset="{% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '640x404' %} 1x, {% path channel.mediaVideos|last.image|trans_fallback('file', 'fr'), '1280x808' %} 2x"
-                                 alt="">
-                        {% endif %}
                     {% endif %}
                     <div class="picto"><i class="icon icon_playlist"></i></div>
                     <div class="info">
                         <div class="vCenter">
                             <div class="vCenterKid">
-                                <a href="{{ path('fdc_event_television_getchannel', {'slug': channel|trans_fallback('slug') }) }}"
-                                   class="category">{% if loop.first %}{{ 'webtv.channel.most_viewed'|trans }}{% else %}{{ channel|trans_fallback('name') }}{% endif %}</a>
-                                <p>{{ channel.mediaVideos|length }} {{ 'webtv.channel.text.videos'|trans }}</p>
+                                <a href="{{ path('fdc_event_television_getchannel', {'slug': group.channel|trans_fallback('slug') }) }}"
+                                   class="category">{{ group.channel|trans_fallback('name') }}</a>
+                                <p>{{ group.nbVideos }} {{ 'webtv.channel.text.videos'|trans }}</p>
                             </div>
                         </div>
                     </div>

@@ -16,10 +16,9 @@ class MediaVideoRepository extends EntityRepository
             ->select('mv,
             RAND() as hidden rand')
             ->join('mv.translations', 'mvt')
-            ->where('mv.festival = :festival')
-            ->setParameter('festival', $festival)
         ;
 
+        $qb = $this->addMasterQueries($qb, 'mv', $festival);
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
         $qb = $this->addAWSEncodersQueries($qb, 'mvt');
 
@@ -35,23 +34,6 @@ class MediaVideoRepository extends EntityRepository
             ->setMaxResults(2)
         ;
 
-        return $qb->getQuery()->getResult();
-    }
-
-    public function getWebTvPublishedVideos($locale, $festival, $webTv)
-    {
-        $qb = $this->createQueryBuilder('mv');
-        $qb = $qb
-            ->join('mv.translations', 'mvt')
-            ->where('mv.festival = :festival')
-            ->setParameter('festival', $festival)
-            ->andWhere('mv.webTv = :webTv')
-            ->setParameter('webTv', $webTv)
-        ;
-
-        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
-        $qb = $qb
-            ->orderBy('mvt.title', 'asc');
         return $qb->getQuery()->getResult();
     }
 
@@ -119,21 +101,56 @@ class MediaVideoRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function getAvailableVideosByWebTv($festival, $locale, $webtv)
+    public function getLastMediaVideoOfEachWebTv($festival, $locale, $in)
     {
 
         $qb = $this->createQueryBuilder('mv');
+
         $qb
+            ->select('mv lastVideo, wtv.id channel')
             ->join('mv.translations', 'mvt')
             ->join('mv.webTv', 'wtv')
-            ->where('mv.webTv = :webTv')
-            ->setParameter('webTv', $webtv)
+            ->join('wtv.translations', 'wtvt')
+            ->where('wtv.id IN (:in)')
+            ->setParameter('in', $in)
         ;
 
-        $qb = $this->addMasterQueries($qb, 'mv', $festival, true);
-        $qb = $this->addMasterQueries($qb, 'wtv', $festival, false);
-        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
-        $qb = $this->addAWSEncodersQueries($qb, 'mvt');
+        $this->addMasterQueries($qb, 'mv', $festival, false);
+        $this->addMasterQueries($qb, 'wtv', $festival, false);
+        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addTranslationQueries($qb, 'wtvt', $locale);
+        $this->addAWSEncodersQueries($qb, 'mvt');
+
+        $qb
+            ->orderBy('mv.publishedAt', 'desc')
+            ->groupBy('channel')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getAvailableMediaVideosByWebTv($festival, $locale, $in)
+    {
+        $qb = $this->createQueryBuilder('mv');
+
+        $qb
+            ->select('mv')
+            ->join('mv.translations', 'mvt')
+            ->join('mv.webTv', 'wtv')
+            ->join('wtv.translations', 'wtvt')
+            ->where('wtv.id IN (:in)')
+            ->setParameter('in', $in)
+        ;
+
+        $this->addMasterQueries($qb, 'mv', $festival, false);
+        $this->addMasterQueries($qb, 'wtv', $festival, false);
+        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addTranslationQueries($qb, 'wtvt', $locale);
+        $this->addAWSEncodersQueries($qb, 'mvt');
+
+        $qb
+            ->orderBy('mv.publishedAt', 'desc')
+        ;
 
         return $qb->getQuery()->getResult();
     }
