@@ -108,6 +108,9 @@ class WebTvAdmin extends Admin
                         'constraints'        => array(
                             new NotBlank(),
                         ),
+                        'attr' => array(
+                            'maxlength' => 30
+                        )
                     ),
                     'status'         => array(
                         'label'                     => 'form.label_status',
