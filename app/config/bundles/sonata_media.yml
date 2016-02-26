@@ -85,6 +85,8 @@ sonata_media:
                 97x61: { width: 97 , height: 61 , quality: 100 }
                 # WebTv trailer navigation
                 293x185: { width: 293 , height: 185 , quality: 100 }
+                # WebTv trailer film poster
+                135x185: { width: 135 , height: 185 , quality: 100 }
 
                 ##### OLDS #####
                 197x142: { width: 197 , height: 142 , quality: 100 }

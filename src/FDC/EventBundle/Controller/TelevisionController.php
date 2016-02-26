@@ -389,8 +389,8 @@ class TelevisionController extends Controller
 
         $poster = null;
         foreach ($film->getMedias() as $media) {
-            if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER) {
-                $poster = $media->getMedia();
+            if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER && $media->getMedia()->getFile()) {
+                $poster = $media->getMedia()->getFile();
             }
         }
 
