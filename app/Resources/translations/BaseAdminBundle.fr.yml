@@ -624,7 +624,7 @@ form:
         content_page: Contenu de la page
         image: Image cover
         label_image: Image cover
-        helper_image: Dimensions attendues : YxZpx. Format attendu.
+        helper_image: Dimensions attendues : 2560×600. Format attendu.
         placeholder_seo_title: À saisir manuellement
         placeholder_seo_description: À saisir manuellement
         label_festival_section: Sélection
