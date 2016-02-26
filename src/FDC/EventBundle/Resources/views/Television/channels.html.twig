@@ -38,7 +38,7 @@
                             <div class="vCenterKid">
                                 <a href="{{ path('fdc_event_television_getchannel', {'slug': group.channel|trans_fallback('slug') }) }}"
                                    class="category">{{ group.channel|trans_fallback('name')|truncate(22) }}</a>
-                                <p>{{ group.nbVideos }} {{ 'webtv.channel.text.videos'|trans }}</p>
+                                <p>{{ 'webtv.direct.nb_videos'|transchoice(group.nbVideos) }}</p>
                             </div>
                         </div>
                     </div>
