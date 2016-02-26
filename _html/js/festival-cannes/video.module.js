@@ -404,6 +404,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             } else {
                 fullScreenApi.cancelFullScreen();
                 $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
+                $container.find('.channels-video').removeClass('active');
+                $container.find('.jwplayer').removeClass('overlay-channels');
                 playerInstance.resize('100%','100%');
                 mouseMoving(false);
             }
