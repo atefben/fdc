@@ -488,7 +488,9 @@
 
   &:fullscreen,
   &:-moz-fullscreen,
+  &:-moz-full-screen,
   &:-ms-fullscreen,
+  &:-ms-full-screen,
   &:-wekbit-fullscreen,
   &:-webkit-full-screen {
     width: 100vw !important;
