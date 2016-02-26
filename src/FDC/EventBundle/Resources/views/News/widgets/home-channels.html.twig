@@ -19,7 +19,7 @@
         <div class="vCenter">
             <div class="vCenterKid">
                 <a href="{{ path('fdc_event_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}" class="category">{{ channel|trans_fallback('name') }}</a>
-                <span>{{ channel.mediaVideos|length }} {{ 'webtv.direct.text.videos'|trans }}</span>
+                <span>{{ 'webtv.direct.nb_videos'|transchoice(channel.mediaVideos|length) }}</span>
             </div>
         </div>
     </div>

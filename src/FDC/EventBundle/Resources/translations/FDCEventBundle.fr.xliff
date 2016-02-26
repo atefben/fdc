@@ -1659,7 +1659,7 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
       </trans-unit>
       <trans-unit id="079ad382c036210830391f21077d2c50c9ed31da" resname="webtv.direct.nb_videos">
         <source>webtv.direct.nb_videos</source>
-        <target>%nb_videos% vidéos</target>
+        <target>{1} %count% vidéo|]1,Inf[ %count% vidéos</target>
         <jms:reference-file line="91">views/Television/live.html.twig</jms:reference-file>
         <jms:reference-file line="132">views/Television/live.html.twig</jms:reference-file>
       </trans-unit>

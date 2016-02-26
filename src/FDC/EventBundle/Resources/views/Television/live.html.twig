@@ -220,7 +220,7 @@
                             {{ channel|trans_fallback('name') }}
                         {% endif %}
                     </a>
-                    <span>{{ 'webtv.direct.nb_videos'|trans({'%nb_videos%': count}) }}</span>
+                    <span>{{ 'webtv.direct.nb_videos'|transchoice(count) }}</span>
                 </div>
             </div>
         </div>
