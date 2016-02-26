@@ -129,8 +129,9 @@
                                 <div class="info-container">
                                     <div class="vCenter">
                                         <div class="vCenterKid">
-                                            <a href="#" class="category">{{ video.theme }}</a>
-                                            <span>{{ video|trans_fallback('title') }}</span>
+                                            <a class="category">{{ video.theme|truncate(12) }}</a>
+                                            <span class="date">{{ video.publishedAt|date('d.m.y H:i') }}</span>
+                                            <span>{{ video|trans_fallback('title')|truncate(25) }}</span>
                                         </div>
                                     </div>
                                 </div>

@@ -106,3 +106,12 @@
 .webtv #content-channels .info span.category {
     color: #c8a461;
 }
+
+.webtv-ba-video #content-trailers #slider-trailer .info a.category {
+    display: inline-block;
+}
+.webtv-ba-video #content-trailers #slider-trailer .info span.date {
+    color: #666;
+    display: inline-block;
+    font-size: 0.625rem;
+}
