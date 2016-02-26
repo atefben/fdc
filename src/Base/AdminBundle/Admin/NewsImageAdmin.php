@@ -162,7 +162,8 @@ class NewsImageAdmin extends Admin
             ->add('gallery', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_gallery',
                 'help' => 'form.news.helper_header_gallery',
-                'translation_domain' => 'BaseAdminBundle'
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false
             ))
             ->add('header', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_image',

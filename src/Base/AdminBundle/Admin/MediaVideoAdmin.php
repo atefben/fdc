@@ -50,7 +50,7 @@ class MediaVideoAdmin extends Admin
             ))
             ->add('theme')
             ->add('webTv', null, array(
-                'label' => 'filter.media_video.label_web_tv',
+                'label' => 'filter.media_video.label_web_tv'
             ))
         ;
 
@@ -214,7 +214,8 @@ class MediaVideoAdmin extends Admin
                 )
             ))
             ->add('webTv', 'sonata_type_model_list', array(
-                'btn_delete' => false
+                'btn_delete' => false,
+                'required' => false
             ))
             ->add('sites', null, array(
                 'label'    => 'form.label_publish_on',

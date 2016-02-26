@@ -221,6 +221,7 @@ class HomepageAdmin extends Admin
                 'help' => 'form.homepage.helper_top_web_tvs_associated',
                 'by_reference' => false,
                 'required' => false,
+
             ), array(
                     'edit' => 'inline',
                     'inline' => 'table'

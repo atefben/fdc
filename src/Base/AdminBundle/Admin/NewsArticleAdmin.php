@@ -165,7 +165,8 @@ class NewsArticleAdmin extends Admin
             ->add('header', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_image',
                 'help' => 'form.news.helper_header_image',
-                'translation_domain' => 'BaseAdminBundle'
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',

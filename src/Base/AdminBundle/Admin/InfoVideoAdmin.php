@@ -227,7 +227,8 @@ class InfoVideoAdmin extends Admin
                 'label' => 'form.label_video_file',
                 'help' => 'form.news.helper_video_file',
                 'translation_domain' => 'BaseAdminBundle',
-                'required' => false
+                'required' => false,
+                'btn_delete' => false,
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',
@@ -263,6 +264,7 @@ class InfoVideoAdmin extends Admin
                 'by_reference' => false,
                 'btn_add' => true,
                 'required' => false,
+                'btn_delete' => false,
             ), array(
                     'edit' => 'inline',
                     'inline' => 'table'
