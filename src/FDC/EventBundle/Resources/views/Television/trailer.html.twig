@@ -28,7 +28,7 @@
                                 {%- set trans = video.file.findTranslationByLocale('fr') -%}
                             {%- endif -%}
                             {%- if videoImage is defined -%}
-                                {%- if first == false -%},{%- endif -%}{"sources":[{"file":"{%- path trans.file, 'reference' -%}"}],"name":"{{ video|trans_fallback('title') }}","image":"{{ videoImage }}","category":"{{ video.theme }}","date":"{{ video.publishedAt|date('d.m.Y') }}","hour":"{{ video.publishedAt|date('H:i') }}"}{% set first = false %}{%- endif -%}
+                                {%- if first == false -%},{%- endif -%}{"sources":[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}],"vid":"{{ video.vid }}","name":"{{ video|trans_fallback('title') }}","image":"{{ videoImage }}","category":"{{ video.theme }}","date":"{{ video.publishedAt|date('d.m.Y') }}","hour":"{{ video.publishedAt|date('H:i') }}"}{% set first = false %}{%- endif -%}
                             {%- endfor -%}]'
                          data-file=""
                             {%- if videos[0].image -%}
@@ -95,8 +95,8 @@
                     </div>
                     <div class="share">
                         <div class="buttons square">
-                            <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
-                            <a href="#" class="button twitter"><i class="icon icon_twitter"></i></a>
+                            <a href="//www.facebook.com/sharer.php?u={{ url(app.request.get('_route'), app.request.get('_route_params')) }}&t={{ film|trans_fallback('title')|url_encode }}"   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+                            <a  href="//twitter.com/intent/tweet?url={{ url(app.request.get('_route'), app.request.get('_route_params')) }}&text={{ film|trans_fallback('title')|url_encode }}" class="button twitter"><i class="icon icon_twitter"></i></a>
                             <a href="#" class="button link"><i class="icon icon_link"></i></a>
                             <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
                         </div>
