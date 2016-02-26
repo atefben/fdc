@@ -142,7 +142,7 @@ class MediaVideoRepository extends EntityRepository
             ->setParameter('in', $in)
         ;
 
-        $this->addMasterQueries($qb, 'mv', $festival, false);
+        $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addMasterQueries($qb, 'wtv', $festival, false);
         $this->addTranslationQueries($qb, 'mvt', $locale);
         $this->addTranslationQueries($qb, 'wtvt', $locale);
