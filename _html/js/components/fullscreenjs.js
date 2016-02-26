@@ -1,3 +1,11 @@
+/* 
+Native FullScreen JavaScript API
+https://gist.github.com/rzg/2947434
+CopyRight: Johndyer, http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugin/
+-------------
+Assumes Mozilla naming conventions instead of W3C for now
+*/
+
 (function() {
     var
         fullScreenApi = {
