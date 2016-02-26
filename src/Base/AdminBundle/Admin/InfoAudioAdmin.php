@@ -236,7 +236,8 @@ class InfoAudioAdmin extends Admin
                 'label' => 'form.label_media_audio',
                 'help' => 'form.news.helper_media_audio',
                 'translation_domain' => 'BaseAdminBundle',
-                'required' => true
+                'required' => true,
+                'btn_delete' => false,
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',

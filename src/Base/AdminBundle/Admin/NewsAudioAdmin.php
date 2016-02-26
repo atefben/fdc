@@ -149,7 +149,7 @@ class NewsAudioAdmin extends Admin
                 'label' => 'form.label_article_tags',
                 'help' => 'form.news.helper_tags',
                 'by_reference' => false,
-                'required' => false,
+                'required' => false
             ), array(
                     'edit' => 'inline',
                     'inline' => 'table'
@@ -167,7 +167,8 @@ class NewsAudioAdmin extends Admin
             ->add('audio', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_audio',
                 'help' => 'form.news.helper_header_audio',
-                'translation_domain' => 'BaseAdminBundle'
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',

@@ -70,7 +70,7 @@
         <div class="infos-videos">
          <div class="infos">
             <strong>Conférence de presse</strong>
-            <span class="time">18.05.2015  . 19h00</span>
+            <span class="time">18.05.2015 . 19h00</span>
             <p>Interview des réalisateurs des Courts Métrages en Compétition</p>
          </div>
             <div class="buttons square">

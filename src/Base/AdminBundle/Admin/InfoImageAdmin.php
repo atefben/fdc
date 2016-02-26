@@ -231,7 +231,8 @@ class InfoImageAdmin extends Admin
             ->add('gallery', 'sonata_type_model_list', array(
                 'label' => 'form.label_gallery_image',
                 'help' => 'form.news.helper_gallery_image',
-                'translation_domain' => 'BaseAdminBundle'
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false,
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',

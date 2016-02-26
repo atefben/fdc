@@ -169,7 +169,8 @@ class NewsVideoAdmin extends Admin
             ->add('video', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_video',
                 'help' => 'form.news.helper_header_video',
-                'translation_domain' => 'BaseAdminBundle'
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',

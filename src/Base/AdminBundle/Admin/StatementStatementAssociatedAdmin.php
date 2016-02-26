@@ -54,7 +54,10 @@ class StatementStatementAssociatedAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('association', 'sonata_type_model_list', array('btn_delete' => true))
+            ->add('association', 'sonata_type_model_list', array(
+                'btn_delete' => true,
+                'btn_delete' => false,
+            ))
         ;
     }
 
