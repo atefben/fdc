@@ -239,7 +239,8 @@ class MediaVideoAdmin extends Admin
             ))
             ->add('image', 'sonata_type_model_list', array(
                 'label' => 'form.label_media_video_image',
-                'help'  => 'form.media_image.helper_file'
+                'help'  => 'form.media_image.helper_file',
+                'required' => false
             ))
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
