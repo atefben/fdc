@@ -486,12 +486,87 @@
     }
   }
 
-  &:fullscreen,
-  &:-moz-fullscreen,
-  &:-moz-full-screen,
-  &:-ms-fullscreen,
-  &:-ms-full-screen,
-  &:-wekbit-fullscreen,
+  &:fullscreen {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+
+    &.state-init {
+      .top-bar {
+        opacity: 0;
+        @include transform(translateY(-100%));
+      }
+    }
+
+    &.state-complete { //.jw-state-complete, :not(.jw-state-playing)
+      &>.top-bar {
+        opacity: 1;
+        @include transform(translateY(0%));
+      }
+    }
+
+    .jw-state-paused {
+      &+.top-bar {
+        opacity: 1;
+        @include transform(translateY(0%));
+      }
+    }
+  }
+
+  &:-moz-full-screen {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+
+    &.state-init {
+      .top-bar {
+        opacity: 0;
+        @include transform(translateY(-100%));
+      }
+    }
+
+    &.state-complete { //.jw-state-complete, :not(.jw-state-playing)
+      &>.top-bar {
+        opacity: 1;
+        @include transform(translateY(0%));
+      }
+    }
+
+    .jw-state-paused {
+      &+.top-bar {
+        opacity: 1;
+        @include transform(translateY(0%));
+      }
+    }
+  }
+
+  &:-ms-fullscreen {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+
+    &.state-init {
+      .top-bar {
+        opacity: 0;
+        @include transform(translateY(-100%));
+      }
+    }
+
+    &.state-complete { //.jw-state-complete, :not(.jw-state-playing)
+      &>.top-bar {
+        opacity: 1;
+        @include transform(translateY(0%));
+      }
+    }
+
+    .jw-state-paused {
+      &+.top-bar {
+        opacity: 1;
+        @include transform(translateY(0%));
+      }
+    }
+  }
+
   &:-webkit-full-screen {
     width: 100vw !important;
     height: 100vh !important;
