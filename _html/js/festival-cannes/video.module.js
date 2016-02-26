@@ -228,7 +228,15 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
                 var infos = $.parseJSON($(sliderChannelsVideo.find('.channel.video')[$(this).closest('.owl-item').index()]).data('json'));
                 $topBar.find('.info .category').text(infos.category);
+                $topBar.find('.info .date').text(infos.date);
+                $topBar.find('.info .hour').text(infos.hour);
                 $topBar.find('.info p').text(infos.name);
+
+                if($('.infos-videos').length > 0) {
+                    $('.infos-videos strong').text(infos.category);
+                    $('.infos-videos .time').text(infos.date+" . "+infos.hour);
+                    $('.infos-videos p').text(infos.name);
+                }
 
                 $container.find('.channels-video').removeClass('active');
                 $container.find('.jwplayer').removeClass('overlay-channels');
@@ -243,6 +251,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
                 var infos = $.parseJSON($(sliderChannelsVideo.find('.channel.video')[$(this).closest('.owl-item').index()]).data('json'));
                 $topBar.find('.info .category').text(infos.category);
+                $topBar.find('.info .date').text(infos.date);
+                $topBar.find('.info .hour').text(infos.hour);
                 $topBar.find('.info p').text(infos.name);
 
                 $container.find('.channels-video').removeClass('active');
@@ -402,10 +412,11 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 playerInstance.resize('100%','100%');
                 mouseMoving(true);
             } else {
-                fullScreenApi.cancelFullScreen();
-                $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
                 $container.find('.channels-video').removeClass('active');
                 $container.find('.jwplayer').removeClass('overlay-channels');
+                
+                fullScreenApi.cancelFullScreen();
+                $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
                 playerInstance.resize('100%','100%');
                 mouseMoving(false);
             }
