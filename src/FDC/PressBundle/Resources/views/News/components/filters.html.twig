@@ -7,7 +7,7 @@
         <span class="select">
             {% for key, date in filters.dates %}
             {% if key == 0 %}
-                <span class="active" data-filter="all">{{ 'press.actu.filter.dates.toutes'|trans }}</span>
+                <span class="active" data-filter="all">{{ 'search.result.filter.toutes'|trans }}</span>
             {% else %}
                 <span data-filter="{{ date.slug }}">
                 {{ date.content }}
