@@ -584,7 +584,7 @@ form:
         label_section: Blocs
     fdc_page_web_tv_channels:
         image: Image cover
-        helper_image: Dimensions attendues : YxZpx. Format attendu.
+        helper_image: Dimensions attendues : 2560×600. Format attendu.
         sticky: Chaîne à la une
 
         helper_sticky: Sélectionnez la première chaîne que vous souhaitez voir apparaître en haut à gauche de la page.
