@@ -8025,7 +8025,7 @@ header #searchContainer {
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after,
 .popin-mail form [type="checkbox"]:checked + label:after {
-  content: 'Ô£ö';
+  content: '✓';
   position: absolute;
   top: 3px;
   left: 2px;

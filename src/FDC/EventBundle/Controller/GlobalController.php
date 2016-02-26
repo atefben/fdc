@@ -6,6 +6,7 @@ use Base\CoreBundle\Entity\Newsletter;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use \DateTime;
@@ -110,12 +111,13 @@ class GlobalController extends Controller {
      * @param $description
      * @return array
      */
-    public function shareEmailAction(Request $request, $section = null, $detail = null, $title = null, $description = null) {
+    public function shareEmailAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null) {
         $email = array(
             'section' => $section,
             'detail' => $detail,
             'title' => $title,
-            'description' => $description
+            'description' => $description,
+            'url' => $url
         );
 
         $translator = $this->get('translator');
@@ -125,71 +127,83 @@ class GlobalController extends Controller {
 
         if ($request->isMethod('POST')) {
             $form->submit($request);
-
+            if ($form['email']->isValid()) {
+                $emails = explode(',', $form['email']->getData());
+                foreach ($emails as $email) {
+                    if (!filter_var(trim($email), FILTER_VALIDATE_EMAIL)) {
+                        $error = new FormError('email.invalid');
+                        $form['email']->addError($error);
+                        break;
+                    }
+                }
+            }
             if ($form->isValid()) {
 
-                $data    = $form->getData();
-                $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($data['email'])->setBody($this->renderView('FDCEventBundle:Emails:share.html.twig', array(
-                    'message' => $data['message'],
-                    'section' => $data['section'],
-                    'title' => $data['title'],
-                    'description' => $data['description'],
-                    'detail' => $data['detail']
-                )), 'text/html');
-                $mailer  = $this->get('mailer');
-                $mailer->send($message);
-
-                $response['success'] = true;
-
-                //send mail copy
-                if ($data['copy']) {
-                    $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($data['user'])->setBody($this->renderView('FDCEventBundle:Emails:share.html.twig', array(
+                foreach ($emails as $email){
+                    $data    = $form->getData();
+                    $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($email)->setBody($this->renderView('FDCEventBundle:Emails:share.html.twig', array(
                         'message' => $data['message'],
                         'section' => $data['section'],
                         'title' => $data['title'],
                         'description' => $data['description'],
-                        'detail' => $data['detail']
+                        'detail' => $data['detail'],
+                        'url' => $data['url']
                     )), 'text/html');
                     $mailer  = $this->get('mailer');
                     $mailer->send($message);
-                }
 
-                // subscribe to newsletter
-                if ($data['newsletter']) {
-                    $registration = new Newsletter();
+                    $response['success'] = true;
 
-                    //Find site by slug
-                    $siteSlug = $this->container->getParameter('fdc_event_slug');
-                    $site     = $this->getDoctrine()->getRepository('BaseCoreBundle:Site')->findOneBy(array(
-                        'slug' => $siteSlug
-                    ));
-
-                    // check if not already in DB and if not, save data
-                    $exist = $this->getDoctrine()->getRepository('BaseCoreBundle:Newsletter')->findOneBy(array(
-                        'email' => $data['user']
-                    ));
-
-                    if ($exist == null) {
-                        //Save Email & Enable
-                        $registration->setEmail($data['user']);
-                        $registration->setEnabled(true);
-                        $registration->setSite($site);
-
-                        //Check errors
-                        $validator = $this->get('validator');
-                        $errors    = $validator->validate($registration);
-
-                        if (count($errors) > 0) {
-                            $response['success'] = false;
-                            $response['object']  = $translator->trans('newsletter.form.error.ladresseemailnestpasvalide');
-                        } else {
-                            // Form is valid
-                            $em = $this->getDoctrine()->getManager();
-                            $em->persist($registration);
-                            $em->flush();
-                        }
+                    //send mail copy
+                    if ($data['copy']) {
+                        $message = \Swift_Message::newInstance()->setSubject($data['title'])->setFrom($data['user'])->setTo($data['user'])->setBody($this->renderView('FDCEventBundle:Emails:share.html.twig', array(
+                            'message' => $data['message'],
+                            'section' => $data['section'],
+                            'title' => $data['title'],
+                            'description' => $data['description'],
+                            'detail' => $data['detail'],
+                            'url' => $data['url']
+                        )), 'text/html');
+                        $mailer  = $this->get('mailer');
+                        $mailer->send($message);
                     }
 
+                    // subscribe to newsletter
+                    if ($data['newsletter']) {
+                        $registration = new Newsletter();
+
+                        //Find site by slug
+                        $siteSlug = $this->container->getParameter('fdc_event_slug');
+                        $site     = $this->getDoctrine()->getRepository('BaseCoreBundle:Site')->findOneBy(array(
+                            'slug' => $siteSlug
+                        ));
+
+                        // check if not already in DB and if not, save data
+                        $exist = $this->getDoctrine()->getRepository('BaseCoreBundle:Newsletter')->findOneBy(array(
+                            'email' => $data['user']
+                        ));
+
+                        if ($exist == null) {
+                            //Save Email & Enable
+                            $registration->setEmail($data['user']);
+                            $registration->setEnabled(true);
+                            $registration->setSite($site);
+
+                            //Check errors
+                            $validator = $this->get('validator');
+                            $errors    = $validator->validate($registration);
+
+                            if (count($errors) > 0) {
+                                $response['success'] = false;
+                                $response['object']  = $translator->trans('newsletter.form.error.ladresseemailnestpasvalide');
+                            } else {
+                                // Form is valid
+                                $em = $this->getDoctrine()->getManager();
+                                $em->persist($registration);
+                                $em->flush();
+                            }
+                        }
+                    }
                 }
 
             } else {
@@ -205,7 +219,6 @@ class GlobalController extends Controller {
             'hasErrors' => $hasErrors
         );
     }
-
 
     /**
      * @Route( "/register/newsletter", options={"expose"=true})

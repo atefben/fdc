@@ -4,6 +4,7 @@ namespace FDC\EventBundle\Form\Type;
 
 use Base\CoreBundle\Validator\Constraints\NewsletterEmail;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -39,7 +40,7 @@ class ShareEmailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', 'email', array(
+            ->add('email', 'text', array(
                 'attr' => array(
                     'placeholder' => 'sharemail.form.placeholder.email'
                 ),
@@ -65,7 +66,8 @@ class ShareEmailType extends AbstractType
                     'placeholder' => 'sharemail.form.placeholder.message',
                     'class'       => 'popin'
                 ),
-                'label' => false
+                'label' => false,
+                'required' => false
             ))
             ->add('newsletter', new CheckboxType() , array(
                 'attr' => array(
@@ -75,6 +77,7 @@ class ShareEmailType extends AbstractType
                 'required' => false
             ))
             ->add('section', 'hidden', array('label' => false))
+            ->add('url', 'hidden', array('label' => false))
             ->add('detail', 'hidden', array('label' => false))
             ->add('title', 'hidden', array('label' => false))
             ->add('description', 'hidden', array('label' => false));
@@ -102,7 +105,8 @@ class ShareEmailType extends AbstractType
             'section' => array(),
             'detail' => array(),
             'title' => array(),
-            'description' => array()
+            'description' => array(),
+            'url' => array()
         ));
 
         $resolver->setDefaults(array(
