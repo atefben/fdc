@@ -289,7 +289,7 @@ class SeoManager
 
             // overload default value by the one set on the article
             if ($trans->getSeoTitle() !== null) {
-                $this->sonataSeoPage->setTitle("{$trans->getSeoTitle()}  - Festival de Cannes {$this->fdcYear}");
+                $this->sonataSeoPage->setTitle($trans->getSeoTitle());
                 $this->sonataSeoPage->addMeta('property', 'og:title', $trans->getSeoTitle());
                 $this->sonataSeoPage->addMeta('property', 'twitter:title', $trans->getSeoTitle());
             }

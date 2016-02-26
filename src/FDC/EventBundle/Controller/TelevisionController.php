@@ -225,8 +225,6 @@ class TelevisionController extends Controller
             throw $this->createNotFoundException('Page channeles not found');
         }
 
-        $locale = $request->getLocale();
-
         $stickyId = false;
         if ($page->getSticky()) {
             $stickyId = $page->getSticky()->getId();
