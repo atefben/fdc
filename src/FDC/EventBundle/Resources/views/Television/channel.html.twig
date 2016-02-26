@@ -36,7 +36,7 @@
                       "image":"{{ videoImage }}",
                       "category":"{{ video.theme }}",
                       "date":"{{ video.publishedAt()|date('d/m/Y') }}",
-                      "hour":"{{ video.publishedAt()|date('H\h:i') }}"
+                      "hour":"{{ video.publishedAt()|date('H:i') }}"
                     }
                     {% set first = false %}
                 {%- endif -%}
