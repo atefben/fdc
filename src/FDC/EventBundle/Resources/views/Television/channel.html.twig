@@ -31,10 +31,12 @@
                 {% if videoImage is defined %}
                     {%- if first == false -%},{%- endif -%}
                     {
-                      "sources":[{"file":"{%- path trans.file, 'reference' -%}"}],
-                      "data-vid":"{{ video.id }}",
+                      "sources":[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}],
+                      "name":"{{ video|trans_fallback('title') }}",
                       "image":"{{ videoImage }}",
-                      "category":"{{ video.theme }}"
+                      "category":"{{ video.theme }}",
+                      "date":"{{ video.publishedAt()|date('d/m/Y') }}",
+                      "hour":"{{ video.publishedAt()|date('H\h:i') }}"
                     }
                     {% set first = false %}
                 {%- endif -%}

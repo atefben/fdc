@@ -146,7 +146,7 @@ class WebTvRepository extends EntityRepository
      * @param int $limit
      * @return array
      */
-    public function getLiveWebTvs($locale, $festival, $excludes = array(), $in = array(), $limit = 10)
+    public function getLiveWebTvs($locale, $festival, $excludes = null, $in = null, $limit = 10)
     {
         $qb = $this->createQueryBuilder('wt');
 
@@ -160,14 +160,14 @@ class WebTvRepository extends EntityRepository
             ->andWhere('SIZE(wt.mediaVideos) >= 1')
         ;
 
-        if ($excludes) {
+        if ($excludes !== null && count($excludes)) {
             $qb = $qb
                 ->andWhere('wt.id NOT IN (:excludes)')
                 ->setParameter(':excludes', $excludes)
             ;
         }
 
-        if ($in) {
+        if ($in !== null) {
             $qb = $qb
                 ->andWhere('wt.id IN (:in)')
                 ->setParameter(':in', $in)
