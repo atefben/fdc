@@ -67,7 +67,7 @@
                             {% if poster %}
                                 <img src="{% path poster, 'small' %}" alt="affiche film" width="135">
                             {% endif %}
-                            <h4 class="rubric-film">{{ film.theme }}</h4>
+                            <h4 class="rubric-film">{{ film.selectionSection|trans_fallback('name') }}</h4>
                             <strong class="name-video">{{ film|trans_fallback('title') }}</strong>
                             <span class="name-person">
                                 {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
