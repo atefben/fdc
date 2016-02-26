@@ -138,7 +138,7 @@
                             <div class="info-container">
                                 <div class="vCenter">
                                     <div class="vCenterKid">
-                                        <span class="category">{{ video.theme|trans_fallback('name') }}</span>
+                                        <a class="category">{{ video.theme|trans_fallback('name') }}</a>
                                         <span class="date">{{ video.publishedAt|date('d.m.Y') }}</span> .
                                         <span class="hour">{{ video.publishedAt|date('H:i') }}</span>
                                         <a href="#" class="titleLink">{{ video|trans_fallback('title')|truncate(50) }}</a>
@@ -220,7 +220,7 @@
                             {{ channel|trans_fallback('name') }}
                         {% endif %}
                     </a>
-                    <span>{{ 'webtv.direct.nb_videos'|trans({'%nb_videos%': count}) }}</span>
+                    <span>{{ 'webtv.direct.nb_videos'|transchoice(count) }}</span>
                 </div>
             </div>
         </div>
