@@ -404,7 +404,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     });
 
     if (fullScreenApi.supportsFullScreen) {
-        console.log('yeah');
         $fullscreen[0].addEventListener('click', function() {
             if(!fullScreenApi.isFullScreen()) {
                 fullScreenApi.requestFullScreen($container[0]);
@@ -414,11 +413,18 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             } else {
                 $container.find('.channels-video').removeClass('active');
                 $container.find('.jwplayer').removeClass('overlay-channels');
-                
+
                 fullScreenApi.cancelFullScreen();
                 $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
                 playerInstance.resize('100%','100%');
                 mouseMoving(false);
+            }
+        }, true);
+
+        document.addEventListener(fullScreenApi.fullScreenEventName, function(e) {
+            if (!fullScreenApi.isFullScreen()) {
+                $container.find('.channels-video').removeClass('active');
+                $container.find('.jwplayer').removeClass('overlay-channels');
             }
         }, true);
     }

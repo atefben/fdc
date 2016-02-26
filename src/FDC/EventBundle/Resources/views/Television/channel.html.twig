@@ -32,11 +32,12 @@
                     {%- if first == false -%},{%- endif -%}
                     {
                       "sources":[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}],
+                      "vid":"{{ video.vid }}",
                       "name":"{{ video|trans_fallback('title') }}",
                       "image":"{{ videoImage }}",
                       "category":"{{ video.theme }}",
                       "date":"{{ video.publishedAt()|date('d/m/Y') }}",
-                      "hour":"{{ video.publishedAt()|date('H\h:i') }}"
+                      "hour":"{{ video.publishedAt()|date('H:i') }}"
                     }
                     {% set first = false %}
                 {%- endif -%}
@@ -93,9 +94,9 @@
                             <div class="info-container">
                                 <div class="vCenter">
                                     <div class="vCenterKid">
-                                        <span class="category">{{ video.theme|truncate(25) }}</span>
-                                        <span class="date">{{ video.publishedAt|date('d.m.y') }}</span>
-                                        <span>{{ video|trans_fallback('title') }}</span>
+                                        <a class="category">{{ video.theme|truncate(12) }}</a>
+                                        <span class="date">{{ video.publishedAt|date('d.m.y H:i') }}</span>
+                                        <span>{{ video|trans_fallback('title')|truncate(25) }}</span>
                                     </div>
                                 </div>
                             </div>
