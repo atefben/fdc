@@ -75,7 +75,7 @@
                     <div class="container-video">
                         <div class="infos-film block">
                             {% if poster %}
-                                <img src="{% path poster, '135x185' %}" alt="affiche film">
+                                <img src="{% path poster, 'small' %}" alt="affiche film" width="135">
                             {% endif %}
                             <h4 class="rubric-film">{{ film.theme }}</h4>
                             <strong class="name-video">{{ film|trans_fallback('title') }}</strong>

@@ -394,6 +394,7 @@ class TelevisionController extends Controller
             }
         }
 
+
         $videos = $this->getBaseCoreMediaVideoRepository()->getFilmTrailersMediaVideos($festivalId, $locale, $film->getId());
 
 
