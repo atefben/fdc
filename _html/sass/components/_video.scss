@@ -486,6 +486,10 @@
     }
   }
 
+  &:fullscreen,
+  &:-moz-fullscreen,
+  &:-ms-fullscreen,
+  &:-wekbit-fullscreen,
   &:-webkit-full-screen {
     width: 100vw !important;
     height: 100vh !important;
