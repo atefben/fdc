@@ -78,7 +78,7 @@
         <div id="slider-trailer" class="owl-carousel sliderDrag">
             {% for video in webTvVideos %}
                 {% if video.image %}
-                    {% set videoImage = media_public_url(video.image|trans_fallback('file'), '975x616') %}
+                    {% set videoImage = media_public_url(video.image|trans_fallback('file'), '293x185') %}
                 {% elseif video.image|trans_fallback('imageAmazonUrl') %}
                     {% set videoImage = s3_server_global ~ video.image|trans_fallback('imageAmazonUrl') %}
                 {% endif %}
