@@ -30,6 +30,13 @@ class MediaPublicUrlExtension extends Twig_Extension
         );
     }
 
+    public function getFunctions()
+    {
+        return array(
+            new \Twig_SimpleFunction('media_public_url', array($this, 'getMediaPublicUrl')),
+        );
+    }
+
     /**
      * @param $media
      * @param $format

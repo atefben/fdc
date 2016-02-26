@@ -17,27 +17,34 @@
                          data-link="//www.example.com"
                          data-email="//www.gmail.com"
                          data-playlist='[
-                            {%- for video in videos -%}
-                                {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
-                                {%- if trans is null or trans.file is null -%}
-                                    {%- set trans = video.file.findTranslationByLocale('fr') -%}
-                                {%- endif -%}
-                            {
-                                "sources":[{"file":"{%- path trans.file, 'reference' -%}"}],
-                                {%- if video.image -%}
-                                "image":"{%- path video.image|trans_fallback('file', 'fr'), '975x616' -%}",
-                                {%- else -%}
-                                "image":"{%- path video.image|trans_fallback('imageAmazonUrl', 'fr'), '975x616' -%}",
-                                {%- endif -%}
-                                "name":"{{ video|trans_fallback('title') }}",
-                                "category":"{{ video.theme }}"
-                            }{%- if loop.last == false -%},{%- endif -%}
-                            {%- endfor -%}]'
+                            {% set first = true %}
+                            {%- for video in videos %}
+                            {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
+                            {% if video.image %}
+                                {% set videoImage = media_public_url(video.image|trans_fallback('file'), '1950x1232') %}
+                            {% elseif video.image|trans_fallback('imageAmazonUrl') %}
+                                {% set videoImage = s3_server_global ~ video.image|trans_fallback('imageAmazonUrl') %}
+                            {% endif %}
+                            {%- if trans is null or trans.file is null -%}
+                                {%- set trans = video.file.findTranslationByLocale('fr') -%}
+                            {%- endif -%}
+                            {% if videoImage is defined %}
+                                {%- if first == false -%},{%- endif -%}
+                                {
+                                  "sources":[{"file":"{%- path trans.file, 'reference' -%}"}],
+                                  "data-vid":"{{ video.id }}",
+                                  "image":"{{ videoImage }}",
+                                  "category":"{{ video.theme }}"
+                                }
+                                {% set first = false %}
+                            {%- endif -%}
+                            {%- endfor -%}
+                            ]'
                          data-file=""
                             {%- if videos[0].image -%}
-                        data-img="{%- path videos[0].image|trans_fallback('file', 'fr'), '975x616' -%}"
-                    {%- else -%}
-                        data-img="{%- path videos[0].image|trans_fallback('imageAmazonUrl', 'fr'), '975x616' -%}"
+                        data-img="{%- path videos[0].image|trans_fallback('file'), '1950x1232' -%}"
+                    {%- elseif videos[0].image|trans_fallback('imageAmazonUrl')-%}
+                        data-img="{{ s3_server_global ~ videos[0].image|trans_fallback('imageAmazonUrl') }}"
                             {%- endif -%}>
                         <div id="video-player" class="video-player-pl">
                         </div>
@@ -112,12 +119,10 @@
             <div id="slider-trailer" class="owl-carousel sliderDrag">
                 {% for video in videos %}
                     <div class="channel">
-
-
                         <div class="channel">
                             <div class="image-wrapper">
                                 {% if video.image and video.image|trans_fallback('file') %}
-                                    {% set videoImage = (video.image|trans_fallback('file'))|media_public_url('975x616') %}
+                                    {% set videoImage = media_public_url(video.image|trans_fallback('file'), '293x185') %}
                                     {% set alt = video.image|trans_fallback('alt') %}
                                 {% elseif video|trans_fallback('imageAmazonUrl') %}
                                     {% set videoImage = s3_server_global ~ video|trans_fallback('imageAmazonUrl') %}
@@ -127,8 +132,7 @@
                                         {% set alt = '' %}
                                     {% endif %}
                                 {% endif %}
-
-                                <img src="{%  path video.image|trans_fallback('file'), '975x616' %}" alt="{{ alt }}"/>
+                                <img src="{{ videoImage }}" alt="{{ alt }}"/>
                             </div>
                             <a class="linkVid" href="#"></a>
                             <div class="info">
