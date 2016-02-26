@@ -68,6 +68,7 @@ class TelevisionController extends Controller
                 ->getLiveWebTvs($locale, $festival->getId(), array(), $in)
             ;
 
+
             foreach ($chosenChannels as $chosenChannel) {
                 $channelVideos = $this
                     ->getDoctrineManager()
@@ -83,7 +84,8 @@ class TelevisionController extends Controller
             }
 
             $otherChannels = $this
-                ->getBaseCoreWebTvRepository()
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:WebTv')
                 ->getLiveWebTvs($locale, $festival->getId(), $in)
             ;
 
