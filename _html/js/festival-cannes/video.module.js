@@ -427,6 +427,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 $container.find('.jwplayer').removeClass('overlay-channels');
             }
         }, true);
+    } else {
+        alert('wrong');
     }
 
     callback(playerInstance);

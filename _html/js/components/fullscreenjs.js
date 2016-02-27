@@ -6,6 +6,8 @@ CopyRight: Johndyer, http://johndyer.name/native-fullscreen-javascript-api-plus-
 Assumes Mozilla naming conventions instead of W3C for now
 */
 
+// msExitFullscreen
+
 (function() {
     var
         fullScreenApi = {
@@ -26,7 +28,9 @@ Assumes Mozilla naming conventions instead of W3C for now
         for (var i = 0, il = browserPrefixes.length; i < il; i++ ) {
             fullScreenApi.prefix = browserPrefixes[i];
 
-            if (typeof document[fullScreenApi.prefix + 'CancelFullScreen' ] != 'undefined' ) {
+            if (typeof document[fullScreenApi.prefix + 'CancelFullScreen' ] != 'undefined' ||
+                typeof document[fullScreenApi.prefix + 'ExitFullscreen' ] != 'undefined' 
+                ) {
                 fullScreenApi.supportsFullScreen = true;
 
                 break;
@@ -36,12 +40,20 @@ Assumes Mozilla naming conventions instead of W3C for now
 
     // update methods to do something useful
     if (fullScreenApi.supportsFullScreen) {
-        fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+        if(navigator.userAgent.indexOf("Edge") > -1) {
+            fullScreenApi.fullScreenEventName = 'fullscreenchange';
+        } else if (fullScreenApi.prefix == 'ms') {
+            fullScreenApi.fullScreenEventName = 'MSFullscreenChange';
+        } else {
+            fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+        }
 
         fullScreenApi.isFullScreen = function() {
             switch (this.prefix) {
                 case '':
                     return document.fullScreen;
+                case 'ms':
+                    return document.msFullscreenElement;
                 case 'webkit':
                     return document.webkitIsFullScreen;
                 default:
@@ -49,10 +61,24 @@ Assumes Mozilla naming conventions instead of W3C for now
             }
         }
         fullScreenApi.requestFullScreen = function(el) {
-            return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+            switch (this.prefix) {
+                case '':
+                    return el.requestFullScreen();
+                case 'ms':
+                    return el[this.prefix + 'RequestFullscreen']();
+                default:
+                    return el[this.prefix + 'RequestFullScreen']();
+            }
         }
         fullScreenApi.cancelFullScreen = function(el) {
-            return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+            switch (this.prefix) {
+                case '':
+                    return document.cancelFullScreen();
+                case 'ms':
+                    return document[this.prefix + 'ExitFullscreen']();
+                default:
+                    return document[this.prefix + 'CancelFullScreen']();
+            }
         }
     }
 
