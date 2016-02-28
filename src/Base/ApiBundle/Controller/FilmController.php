@@ -68,7 +68,23 @@ class FilmController extends FOSRestController
 
         // get items
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
-
+		
+		$i = 0;
+		foreach($items as $item) {
+			$final[$i]['id'] = $item->getId();
+			$final[$i]['titleVO'] = $item->getTitleVO();
+			$final[$i]['person'] = $item->getPerson();
+			$final[$i]['countries'] = $item->getCountries();
+			$final[$i]['duration'] = $item->getDuration();
+			$final[$i]['productionYear'] = $item->getProductionYear();
+			$final[$i]['translations'] = $item->getTranslations();
+			$final[$i]['selection'] = $item->getSelection();
+			$final[$i]['awards'] = $item->getAwards();
+			$final[$i]['medias'] = $item->getMedias();
+			$final[$i]['projection_programmation_films'] = $item->getProjection_programmation_films();
+			$i++;
+		}
+		
         // set context view
         $groups = array('film_list', 'time');
         $context = $coreManager->setContext($groups, $paramFetcher);
@@ -76,7 +92,7 @@ class FilmController extends FOSRestController
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
 
         // create view
-        $view = $this->view($items, 200);
+        $view = $this->view($final, 200);
         $view->setSerializationContext($context);
 
         return $view;
