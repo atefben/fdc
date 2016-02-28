@@ -141,9 +141,13 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         twHref = twHref.replace('CUSTOM_TEXT', encodeURI($topBar.find('.info p').text()+" "+GLOBALS.urls.videosUrl+"#"+$container.data('vid')));
     }
     $topBar.find('.buttons .twitter').attr('href', twHref);
-    // CUSTOM LINK COPY & MAIL
+    // CUSTOM LINK COPY
     $topBar.find('.buttons .link').attr('href', $container.data('link'));
+    $topBar.find('.buttons .link').attr('data-clipboard-text', encodeURI(GLOBALS.urls.videosUrl+'#'+$container.data('vid')));
+    // CUSTOM LINK MAIL
     $topBar.find('.buttons .email').attr('href', $container.data('email'));
+
+    linkPopinInit();
 
     $topBar.find('.buttons .twitter').on('click', function(){
         window.open(this.href,'','width=700,height=500');
@@ -221,6 +225,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         var twHref = twitterLink;
         twHref = twHref.replace('CUSTOM_TEXT', encodeURI($playlist[index].name+" "+GLOBALS.urls.videosUrl+"#"+$playlist[index].vid));
         $topBar.find('.buttons .twitter').attr('href', twHref);
+        // CUSTOM LINK COPY
+        $topBar.find('.buttons .link').attr('data-clipboard-text', encodeURI(GLOBALS.urls.videosUrl+'#'+$playlist[index].vid));
     }
 
     function initChannel() {
