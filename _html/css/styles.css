@@ -13898,6 +13898,9 @@ input[type=submit] {
   font-size: 0.875rem;
   margin-top: 3px;
 }
+.webtv #content-latest .video .info .category {
+  color: #c8a461;
+}
 .webtv #content-latest .video .info span {
   color: #666;
   display: inline-block;

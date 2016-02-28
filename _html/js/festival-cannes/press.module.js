@@ -948,7 +948,7 @@ $(document).ready(function () {
         type: "GET",
         dataType: "html",
         cache: false,
-        url: GLOBALS.urls.loadPressRelease,
+        url: GLOBALS.urls.loadPressReleaseUrl,
         success: function (data) {
           var $data = $(data).find('.gridelement');
           var $container = $('#gridAudios'),

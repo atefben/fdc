@@ -12,8 +12,6 @@
 
     <div class="small-container">
         <div class="player video-container state-init video"
-             data-facebook="//www.facebook.com"
-             data-twitter="//www.twitter.com"
              data-link="//www.example.com"
              data-email="//www.gmail.com"
              data-playlist='[
@@ -134,7 +132,7 @@
                                         <span class="category">{{ video.theme|trans_fallback('name') }}</span>
                                         <span class="date">{{ video.publishedAt|date('d.m.Y') }}</span> .
                                         <span class="hour">{{ video.publishedAt|date('H:i') }}</span>
-                                        <a href="#" class="titleLink">{{ video|trans_fallback('title') }}</a>
+                                        <p href="#" class="titleLink">{{ video|trans_fallback('title') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -146,8 +144,6 @@
 
         <div class="popin-video video loading">
             <div class="video-container state-init video"
-                 data-facebook="//www.facebook.com"
-                 data-twitter="//www.twitter.com"
                  data-link="//www.example.com"
                  data-email="//www.gmail.com">
                 <div id="video-player-popin" class="">

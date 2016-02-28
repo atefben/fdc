@@ -12,8 +12,6 @@
             <section>
                 <article class="video">
                     <div class="video-container state-init video"
-                         data-facebook="//www.facebook.com"
-                         data-twitter="//www.twitter.com"
                          data-link="//www.example.com"
                          data-email="//www.gmail.com"
                          data-playlist='[{%- set first = true -%}
@@ -30,12 +28,12 @@
                             {%- if videoImage is defined -%}
                                 {%- if first == false -%},{%- endif -%}{"sources":[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}],"vid":"{{ video.vid }}","name":"{{ video|trans_fallback('title') }}","image":"{{ videoImage }}","category":"{{ video.theme }}","date":"{{ video.publishedAt|date('d.m.Y') }}","hour":"{{ video.publishedAt|date('H:i') }}"}{% set first = false %}{%- endif -%}
                             {%- endfor -%}]'
-                         data-file=""
-                            {%- if videos[0].image -%}
+                        data-file=""
+                        {%- if videos[0].image -%}
                         data-img="{%- path videos[0].image|trans_fallback('file'), '1950x1232' -%}"
-                    {%- elseif videos[0].image|trans_fallback('imageAmazonUrl')-%}
+                        {%- elseif videos[0].image|trans_fallback('imageAmazonUrl')-%}
                         data-img="{{ s3_server_global ~ videos[0].image|trans_fallback('imageAmazonUrl') }}"
-                            {%- endif -%}>
+                        {%- endif -%}>
                         <div id="video-player" class="video-player-pl">
                         </div>
                         <div class="video-overlay"></div>

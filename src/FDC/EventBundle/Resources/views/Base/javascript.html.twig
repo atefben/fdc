@@ -95,7 +95,7 @@
             $.ajax({
                 type: "POST",
                 cache: false,
-                url: GLOBALS.urls.pressDownloadTrailer,
+                url: GLOBALS.urls.pressDownloadTrailerUrl,
                 data: {'id': $('.trailer-btn').attr('data-film')},
                 success: function(data) {
                     $('#main').append(data).addClass('overlay-popin');

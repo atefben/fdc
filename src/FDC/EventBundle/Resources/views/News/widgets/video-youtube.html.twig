@@ -15,13 +15,11 @@
 {% endif %}
 
 <div class="video-container state-init video"
-     data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
-     data-twitter="//www.twitter.com"
-     data-link="//www.example.com"
-     data-email="//www.gmail.com"
-     data-file='[{"file":"{{ trans.url }}"}]'
-     data-img="{% if image is defined %}{% path image, 'reference' %}{% endif %}">
-
+    data-link="//www.example.com"
+    data-email="//www.gmail.com"
+    data-file='[{"file":"{{ trans.url }}"}]'
+    data-img="{% if image is defined %}{% path image, 'reference' %}{% endif %}"
+    data-name="{{ trans.title }}">
     <div id="video-player-0{{ widget.id }}" class="video-player">
     </div>
     <div class="video-overlay"></div>

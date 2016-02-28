@@ -13,8 +13,9 @@ var GLOBALS = {
     "eventUrl" : "load-evenements.php",
     "newsUrl" : "news.html",
     "newsUrlNext" : "news_page2.html",
-    "loadPressRelease" : "load-communique.php",
-    "selectionUrl" : "selection.html"
+    "loadPressReleaseUrl" : "load-communique.php",
+    "selectionUrl" : "selection.html",
+    "videosUrl": "videos.php"
   },
   "texts" : {
     "url" : {

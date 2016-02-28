@@ -27,17 +27,17 @@
             <div class="trailer">
                 {% if videoUrl %}
                     <div class="video-container state-init video"
-                         data-facebook="//www.facebook.com/sharer.php?u={{ url('fdc_event_news_getvideos') }}t=le%20titre"
-                         data-twitter="//www.twitter.com"
-                         data-link="//www.example.com"
-                         data-email="//www.gmail.com"
-                         data-file='[{"file":"{{ videoUrl }}"}]'
+                        data-facebook="//www.facebook.com/sharer.php?u={{ url('fdc_event_news_getvideos') }}t=le%20titre"
+                        data-twitter="//www.twitter.com"
+                        data-link="//www.example.com"
+                        data-email="//www.gmail.com"
+                        data-file='[{"file":"{{ videoUrl }}"}]'
                             {% if page.image and page.image|trans_fallback('file') %}
                         data-vid="web-tv-live"
                         data-img="{% path page.image|trans_fallback('file'), '1280x808' %}"
-                    {% else %}
+                        {% else %}
                         data-img=""
-                            {% endif %}>
+                        {% endif %}>
                         <div id="video-webtv-live" class="video-player">
                         </div>
                         <div class="video-overlay"></div>
@@ -153,10 +153,8 @@
 
         <div class="popin-video video loading">
             <div class="video-container state-init video"
-                 data-facebook="//www.facebook.com"
-                 data-twitter="//www.twitter.com"
-                 data-link="//www.example.com"
-                 data-email="//www.gmail.com">
+                data-link="//www.example.com"
+                data-email="//www.gmail.com">
                 <div id="video-player-popin" class="">
                 </div>
                 <div class="video-overlay"></div>

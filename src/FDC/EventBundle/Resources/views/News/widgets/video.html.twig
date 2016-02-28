@@ -21,17 +21,15 @@
     {% endif %}
 
     <div class="video-container state-init video"
-         data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
-         data-twitter="//www.twitter.com"
-         data-link="//www.example.com"
-         data-email="//www.gmail.com"
-            {% if playlist is defined %}
-                data-playlist='{{ playlist }}'
-            {% else %}
-                data-file='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
-            {% endif %}
-         data-img="{% if image is defined %}{% path image, 'reference' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}">
-
+        data-link="//www.example.com"
+        data-email="//www.gmail.com"
+        {% if playlist is defined %}
+        data-playlist='{{ playlist }}'
+        {% else %}
+        data-file='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
+        {% endif %}
+        data-img="{% if image is defined %}{% path image, 'reference' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
+        data-name="{{ trans.title }}">
         <div id="video-player-{{ trans.id }}" class="video-player">
         </div>
         <div class="video-overlay"></div>
