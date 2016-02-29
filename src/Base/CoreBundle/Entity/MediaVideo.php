@@ -98,7 +98,7 @@ class MediaVideo extends Media
 
 
     /**
-     * @Assert\isFalse(message = "Vous ne pouvez avoir coché 'Afficher dans une chaîne de la webTV' et laisser le champ 'Chaîne' vide")
+     * @Assert\IsFalse(message = "Vous ne pouvez avoir coché 'Afficher dans une chaîne de la webTV' et laisser le champ 'Chaîne' vide")
      */
     public function isDisplayedWebTvChecked()
     {
