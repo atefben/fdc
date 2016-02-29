@@ -61,14 +61,12 @@ class MediaListener
 
         if ($entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation) {
             $entity = $entity->getTranslatable();
-
         }
 
         if ($entity instanceof MediaVideo || $entity instanceof MediaAudio) {
             $array = $uow->getEntityChangeSet($entity);
 
-            if ($entity instanceof MediaVideo && $entity->getDisplayedHome() == true &&
-                ($update == false || ($update == true && isset($array['displayedHome']) && $array['displayedHome'][0] == false && $array['displayedHome'][1] == true))) {
+            if ($entity instanceof MediaVideo && $entity->getDisplayedHome() == true) {
                 if ($entity->getHomepageNews() == null) {
                     $createNews = new NewsVideo();
                 } else {
