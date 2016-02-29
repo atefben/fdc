@@ -156,7 +156,7 @@ class Admin extends BaseAdmin
     public function getExportFormats()
     {
         return array(
-            'xls'
+            'xls', 'xml'
         );
     }
 
