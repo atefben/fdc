@@ -55,7 +55,7 @@ class StatementStatementAssociatedAdmin extends Admin
     {
         $formMapper
             ->add('association', 'sonata_type_model_list', array(
-                'btn_delete' => true,
+                'btn_add' => false,
                 'btn_delete' => false,
             ))
         ;

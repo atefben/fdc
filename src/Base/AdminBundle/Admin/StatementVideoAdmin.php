@@ -231,11 +231,13 @@ class StatementVideoAdmin extends Admin
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',
-                'required' => false
+                'required' => false,
+                'btn_add' => false,
             ))
             ->add('associatedEvent', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_event_associated',
-                'required' => false
+                'required' => false,
+                'btn_add' => false,
             ))
             ->add('associatedProjections', 'sonata_type_collection', array(
                 'label' => 'form.label_news_film_projection_associated',
