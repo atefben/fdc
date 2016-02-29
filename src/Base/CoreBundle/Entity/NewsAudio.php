@@ -35,7 +35,7 @@ class NewsAudio extends News
     private $header;
 
     /**
-     * @var MediaImage
+     * @var MediaAudio
      *
      * @ORM\ManyToOne(targetEntity="MediaAudio")
      *
