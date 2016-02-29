@@ -73,6 +73,7 @@ jQuery(document).ready(function($) {
 });
 
 function editEvents() {
+
     // translate event on load
     if ($('input[name$="[translate]"]').is(':checked')) {
         $('.form-group[id$="priorityStatus"]').show();

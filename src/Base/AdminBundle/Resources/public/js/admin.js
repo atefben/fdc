@@ -4,6 +4,21 @@ var Admin = Admin || {};
 Admin.add_pretty_errors = function(){};
 
 $(document).ready(function() {
+
+    if ($('input[name$="[displayedWebTv]"]').is(':checked')) {
+        $('.form-group[id$="webTv"]').show();
+    } else {
+        $('.form-group[id$="webTv"]').hide();
+    }
+
+    $('input[name$="[displayedWebTv]"]').on('ifChanged', function() {
+        if (!$(this).is(':checked')) {
+            $('.form-group[id$="webTv"]').hide();
+        } else {
+            $('.form-group[id$="webTv"]').show();
+        }
+    });
+
     //change link to original edit for home
     if( $('#homepageSlide').length > 0) {
         $('#homepageSlide table').on('change', function() {
