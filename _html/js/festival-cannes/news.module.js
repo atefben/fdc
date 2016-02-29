@@ -29,7 +29,7 @@ $(document).ready(function() {
     $('#articles-wrapper').addClass('loading');
 
     $('#shd').removeClass('show');
-    $('.read-more').html(GLOBALS.texts.readMore.more).removeClass('prevDay').show();
+    $('.read-more').html(GLOBALS.texts.readMore.more).removeClass('prevDay');
 
     $('html, body').animate({
       scrollTop: $("#news").offset().top - 50
@@ -104,7 +104,7 @@ $(document).ready(function() {
     // load previous day
     if($(this).hasClass('prevDay')) {
       $('#shd').removeClass('show');
-      $('.read-more').html( GLOBALS.texts.readMore.more ).removeClass('prevDay').show();
+      $('.read-more').html( GLOBALS.texts.readMore.more ).removeClass('prevDay');
       $('#articles-wrapper').addClass('loading');
       
       $('html, body').animate({

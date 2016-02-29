@@ -178,17 +178,6 @@ $(document).ready(function () {
           setTimeout(function() {
             $grid.isotope({ sortBy : 'original-order' });
           }, 500);
-
-          $grid.infinitescroll({
-            navSelector: "#next:last",
-            nextSelector: "#next:last",
-            itemSelector: "#gridPhotos",
-            debug: false,
-            dataType: 'html'
-          }, function (newElements, data, url) {
-            setGrid($grid, newElements, false);
-          });
-
         }
       });
     }
@@ -282,16 +271,6 @@ $(document).ready(function () {
           });
         }
       });
-
-      // $('#gridAudios').infinitescroll({
-      //   navSelector: "#next:last",
-      //   nextSelector: "#next:last",
-      //   itemSelector: "#gridAudios",
-      //   debug: true,
-      //   dataType: 'html'
-      // }, function (newElements, data, url) {
-      //   setGrid($grid, newElements, false);
-      // });
     }
 
     if($('#gridVideos').length) {

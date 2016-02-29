@@ -27,17 +27,17 @@
             <div class="trailer">
                 {% if videoUrl %}
                     <div class="video-container state-init video"
-                         data-facebook="//www.facebook.com/sharer.php?u={{ url('fdc_event_news_getvideos') }}t=le%20titre"
-                         data-twitter="//www.twitter.com"
-                         data-link="//www.example.com"
-                         data-email="//www.gmail.com"
-                         data-file='[{"file":"{{ videoUrl }}"}]'
+                        data-facebook="//www.facebook.com/sharer.php?u={{ url('fdc_event_news_getvideos') }}t=le%20titre"
+                        data-twitter="//www.twitter.com"
+                        data-link="//www.example.com"
+                        data-email="//www.gmail.com"
+                        data-file='[{"file":"{{ videoUrl }}"}]'
                             {% if page.image and page.image|trans_fallback('file') %}
                         data-vid="web-tv-live"
                         data-img="{% path page.image|trans_fallback('file'), '1280x808' %}"
-                    {% else %}
+                        {% else %}
                         data-img=""
-                            {% endif %}>
+                        {% endif %}>
                         <div id="video-webtv-live" class="video-player">
                         </div>
                         <div class="video-overlay"></div>
@@ -104,7 +104,7 @@
                                         <a href="" class="category">{{ filmVideo.video.theme }}</a>
                                         <span class="date">{{ filmVideo.video.publishedAt|date('d.m.Y') }}</span> .
                                         <span class="hour">{{ filmVideo.video.publishedAt|date('H.i') }}</span>
-                                        <a href="#" class="titleLink">{{ filmVideo.video|trans_fallback('title') }}</a>
+                                        <a href="#" class="titleLink">{{ filmVideo.video|trans_fallback('title')|truncate(85) }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -138,7 +138,7 @@
                             <div class="info-container">
                                 <div class="vCenter">
                                     <div class="vCenterKid">
-                                        <span class="category">{{ video.theme|trans_fallback('name') }}</span>
+                                        <a class="category">{{ video.theme|trans_fallback('name') }}</a>
                                         <span class="date">{{ video.publishedAt|date('d.m.Y') }}</span> .
                                         <span class="hour">{{ video.publishedAt|date('H:i') }}</span>
                                         <a href="#" class="titleLink">{{ video|trans_fallback('title')|truncate(50) }}</a>
@@ -153,10 +153,8 @@
 
         <div class="popin-video video loading">
             <div class="video-container state-init video"
-                 data-facebook="//www.facebook.com"
-                 data-twitter="//www.twitter.com"
-                 data-link="//www.example.com"
-                 data-email="//www.gmail.com">
+                data-link="//www.example.com"
+                data-email="//www.gmail.com">
                 <div id="video-player-popin" class="">
                 </div>
                 <div class="video-overlay"></div>

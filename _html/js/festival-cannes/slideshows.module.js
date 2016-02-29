@@ -19,6 +19,18 @@ function initSlideshows() {
 
   sliderThumbs.owlCarousel();
 
+  if( navigator.userAgent.indexOf("Edge") > -1 ||
+      navigator.userAgent.indexOf("MSIE") > -1 ||
+      navigator.userAgent.indexOf("Trident") > -1 ) {
+    $('.thumbnails .thumb').each(function () {
+      var $container = $(this),
+          imgUrl = $container.find('img').prop('src');
+      if (imgUrl) {
+        $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
+      }
+   });
+  }
+
   $('body').on('click', '.slideshow .thumbnails .owl-item', function(e) {
     sliderThumbs.trigger('to.owl.carousel', [$(this).index(), 400, true]);
   });

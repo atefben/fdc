@@ -26,18 +26,14 @@ class GlobalController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         // GET FDC SETTINGS
-        $contactPage = array();
-        $contact = $em->getRepository('BaseCoreBundle:ContactPage')->findAll();
+        $contact = $em->getRepository('BaseCoreBundle:ContactPage')->findOneById($this->getParameter('admin_press_contact_id'));
 
         if ( empty($contact) ) {
             throw new NotFoundHttpException();
         }
-        else {
-            $contactPage = $contact[0];
-        }
 
         return array(
-            'pressContact' => $contactPage
+            'pressContact' => $contact
         );
 
     }

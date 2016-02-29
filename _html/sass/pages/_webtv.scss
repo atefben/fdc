@@ -299,6 +299,10 @@
           margin-top: 3px;
         }
 
+        .category {
+          color: $gold;
+        }
+
         span {
           color: #666;
           display: inline-block;
@@ -414,6 +418,8 @@
       position: relative;
       
       .infos {
+        width: calc(100% - 300px);
+
         strong {
           color:$gold;
           font-size: 0.69rem;
@@ -708,6 +714,10 @@
     color: #ffffff;
     width: auto;
     float: left;
+
+    &.video {
+      max-width: 630px;
+    }
   }
 
   .container-webtv-ba-video {

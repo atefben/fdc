@@ -55,7 +55,7 @@
                                     <div class="vCenter">
                                         <div class="vCenterKid">
                                             <a href="{{ path('fdc_event_television_gettrailer', {'slug': group.film.slug}) }}"
-                                               class="category">{{ group.film.findTranslationByLocale(app.request.locale).title ?: group.film.titleVO }}</a>
+                                               class="category">{{ (group.film.findTranslationByLocale(app.request.locale).title ?: group.film.titleVO)|truncate(16) }}</a>
                                             {% spaceless %}
                                                 <span>
                                                     {% for director in group.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}

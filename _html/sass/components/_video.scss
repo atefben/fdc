@@ -126,7 +126,8 @@
       position: relative;
       text-align: left;
       z-index: 1;
-      max-width: 195px;
+      // max-width: 195px;
+      max-width: calc(100% - 450px);
 
       .category {
         margin-left: 0;
@@ -282,6 +283,7 @@
       left: 80px;
       position: absolute;
       z-index: 2;
+      text-align: left;
 
       &.hide {
         opacity: 0;
@@ -372,7 +374,7 @@
         font-size: 14px;
         width: 85px;
         height: 16px;
-        bottom: 40px;
+        bottom: 38px;
         left: 0px;
         margin: auto;
 
@@ -385,7 +387,7 @@
     .progress {
       position: relative;
       display: inline-block;
-      width: calc(100% - 456px);
+      width: calc(100% - 458px);
       height: 100%;
 
       &.hide {
@@ -482,6 +484,87 @@
         bottom: 40px;
         right: 40px;
         margin: auto;
+      }
+    }
+  }
+
+  &:fullscreen {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+
+    &.state-init {
+      .top-bar {
+        opacity: 0;
+        @include transform(translateY(-100%));
+      }
+    }
+
+    &.state-complete { //.jw-state-complete, :not(.jw-state-playing)
+      &>.top-bar {
+        opacity: 1;
+        @include transform(translateY(0%));
+      }
+    }
+
+    .jw-state-paused {
+      &+.top-bar {
+        opacity: 1;
+        @include transform(translateY(0%));
+      }
+    }
+  }
+
+  &:-moz-full-screen {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+
+    &.state-init {
+      .top-bar {
+        opacity: 0;
+        @include transform(translateY(-100%));
+      }
+    }
+
+    &.state-complete { //.jw-state-complete, :not(.jw-state-playing)
+      &>.top-bar {
+        opacity: 1;
+        @include transform(translateY(0%));
+      }
+    }
+
+    .jw-state-paused {
+      &+.top-bar {
+        opacity: 1;
+        @include transform(translateY(0%));
+      }
+    }
+  }
+
+  &:-ms-fullscreen {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+
+    &.state-init {
+      .top-bar {
+        opacity: 0;
+        @include transform(translateY(-100%));
+      }
+    }
+
+    &.state-complete { //.jw-state-complete, :not(.jw-state-playing)
+      &>.top-bar {
+        opacity: 1;
+        @include transform(translateY(0%));
+      }
+    }
+
+    .jw-state-paused {
+      &+.top-bar {
+        opacity: 1;
+        @include transform(translateY(0%));
       }
     }
   }
@@ -610,7 +693,7 @@
   padding: 20px;
   box-sizing: border-box;
   pointer-events: none;
-  z-index: 10;
+  z-index: 100;
   @include transform(translateY(30px));
   @include transition(all 1.2s $smoothTransition);
 
