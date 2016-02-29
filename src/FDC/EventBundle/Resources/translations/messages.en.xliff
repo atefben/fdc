@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-02-22T15:16:20Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2016-02-29T14:30:31Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="0d02d9a9740bf54359e24d2b25c61c3fab85af0c" resname="MESSAGE DE L’EXPÉDITEUR">
+        <source>MESSAGE DE L’EXPÉDITEUR</source>
+        <target state="new">MESSAGE DE L’EXPÉDITEUR</target>
+        <jms:reference-file line="12">views/Emails/share.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8fe4c3415322371f49eb8d95ffb9b9c0536c397a" resname="Retrouvez cet article sur le site du Festival de Cannes">
+        <source>Retrouvez cet article sur le site du Festival de Cannes</source>
+        <target state="new">Retrouvez cet article sur le site du Festival de Cannes</target>
+        <jms:reference-file line="5">views/Emails/share.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="5faa0192d02aa45746cc1449c13e472833308364" resname="contact.form.errors.email">
         <source>contact.form.errors.email</source>
         <target>Please use a valid email address</target>
         <jms:reference-file line="116">Form/Type/ContactType.php</jms:reference-file>
         <jms:reference-file line="117">Form/Type/ContactType.php</jms:reference-file>
-        <jms:reference-file line="90">Form/Type/ShareEmailType.php</jms:reference-file>
-        <jms:reference-file line="91">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="93">Form/Type/ShareEmailType.php</jms:reference-file>
         <jms:reference-file line="94">Form/Type/ShareEmailType.php</jms:reference-file>
-        <jms:reference-file line="95">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="97">Form/Type/ShareEmailType.php</jms:reference-file>
         <jms:reference-file line="98">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="101">Form/Type/ShareEmailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="08d76bebf9dca034727ab36b9ea6595b433b8bde" resname="contact.form.errors.message">
         <source>contact.form.errors.message</source>
@@ -60,13 +70,13 @@
       <trans-unit id="3e12f213a10adb5625e4d7ab250e654bc240d3d3" resname="newsletter.form.error.emaildejaenregistre">
         <source>newsletter.form.error.emaildejaenregistre</source>
         <target>This email address is already registered</target>
-        <jms:reference-file line="267">EventBundle/Controller/GlobalController.php</jms:reference-file>
+        <jms:reference-file line="280">EventBundle/Controller/GlobalController.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="8f2153dcfb9a423088a11691433387db818adc5c" resname="newsletter.form.error.ladresseemailnestpasvalide">
         <source>newsletter.form.error.ladresseemailnestpasvalide</source>
         <target>Please use a valid email address</target>
-        <jms:reference-file line="184">EventBundle/Controller/GlobalController.php</jms:reference-file>
-        <jms:reference-file line="256">EventBundle/Controller/GlobalController.php</jms:reference-file>
+        <jms:reference-file line="198">EventBundle/Controller/GlobalController.php</jms:reference-file>
+        <jms:reference-file line="269">EventBundle/Controller/GlobalController.php</jms:reference-file>
       </trans-unit>
     </body>
   </file>
