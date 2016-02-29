@@ -249,7 +249,6 @@ class InfoImageAdmin extends Admin
                 'help' => 'form.news.helper_news_film_projection_associated',
                 'by_reference' => false,
                 'required' => false,
-                'btn_add' => false,
             ), array(
                     'edit' => 'inline',
                     'inline' => 'table'
