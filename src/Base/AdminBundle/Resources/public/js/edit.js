@@ -53,7 +53,7 @@ jQuery(document).ready(function($) {
                 var format = 'videos';
                 break;
             case 'newsimage':
-                var format = 'images';
+                var format = 'photos';
                 break;
             case 'newsaudio':
                 var format = 'audios';
