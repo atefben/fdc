@@ -23,7 +23,7 @@ class InfoWidgetAudioDummyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('file', 'sonata_type_model_list')
+            ->add('file', 'sonata_type_model_list',array('btn_add' => false))
         ;
     }
 }

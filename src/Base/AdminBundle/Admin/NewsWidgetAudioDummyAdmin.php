@@ -24,7 +24,8 @@ class NewsWidgetAudioDummyAdmin extends Admin
     {
         $formMapper
             ->add('file', 'sonata_type_model_list',array(
-                'btn_delete' => true
+                'btn_delete' => true,
+                'btn_add' => false
             ))
         ;
     }
