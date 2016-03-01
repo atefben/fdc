@@ -19,8 +19,8 @@
     margin-bottom: 5px;
 }
 
-ul,
-ol {
+.single-article ul,
+.single-article ol {
     color: #666;
     font-size: 1rem;
     line-height: 1.7em;
