@@ -546,6 +546,7 @@ form:
     label_info_associated : Infos associés
     label_link: Lien du push
     label_push_image: Image du push
+    label_webTv_required: Chaîne *
     label_column:
         first: Première colonne
         second: Deuxième colonne
