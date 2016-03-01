@@ -128,7 +128,15 @@ class PressCinemaMapAdmin extends Admin
                 'help' => 'form.seo.helper_file',
                 'required' => false,
             ))
-            ->add('translate')
+            ->add('translate', 'checkbox' , array(
+                'required' => false,
+            ))
+            ->add('translateOptions', 'choice', array(
+                'choices' => PressCinemaMap::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => PressCinemaMap::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'

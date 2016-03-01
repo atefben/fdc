@@ -749,24 +749,15 @@ class GlobalController extends Controller {
 
         $em = $this->get('doctrine')->getManager();
 
-        //Get data-date from clicked button
-        //$date = $request->get('date');
-        $date = "20160511";
+        $date = $request->get('date');
 
-        $isPressProjection = false;
         $projection = array();
 
         if ( $request->headers->get('host') == $this->getParameter('fdc_press_domain') ) {
             // GET DAY PROJECTIONS
-            $dayProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+            $projection = $em->getRepository('BaseCoreBundle:FilmProjection')
                 ->getProjectionByDate($date);
 
-            // GET DAY PRESS PROJECTIONS
-            $dayPressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
-                ->getProjectionByDate($date);
-
-            $projection = array_merge($dayProjection, $dayPressProjection);
-            $isPressProjection = true;
         }
         else {
             // Grab Event Site projections
@@ -774,7 +765,6 @@ class GlobalController extends Controller {
 
         return array(
             'dayProjection' => $projection,
-            'isPressProjection' => $isPressProjection
         );
     }
 

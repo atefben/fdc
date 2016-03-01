@@ -183,8 +183,8 @@
             var imgWidth         = this.settings.images[i].width;
             var holderHeight     = $(container).height();
             var holderWidth      = $(container).width();
-            var holderOutMarginH = this.getOutMarginH();
-            var holderOutMarginW = this.getOutMarginW();
+            var holderOutMarginH = 0;
+            var holderOutMarginW = 0;
 
             var holderGlobalWidth  = holderWidth-holderOutMarginW;
             var holderGlobalHeight = holderHeight-holderOutMarginH;
@@ -490,9 +490,11 @@
                         that.close();
                         $('body').removeClass('fixed');
 
-                        $('html, body').animate({
-                          scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
-                        }, 0);
+                        if($(window.location.hash).length > 0) {
+                            $('html, body').animate({
+                              scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
+                            }, 0);
+                        }
                     }
                 }
             });
@@ -585,7 +587,7 @@
 
                 var animation = {
                     /*'margin-left': - mvtX + 'px',*/
-                    'transform': 'translate3d(0 ,' + (-mvtY) + 'px' + ', 0)'
+                    'transform': 'translate3d(' + (-mvtX) + 'px' +',' + (-mvtY) + 'px' + ', 0)'
                 };
                 if (typeof e.duration !== 'undefined') {
                     $(that.elems.img).stop(false, true).css(animation);

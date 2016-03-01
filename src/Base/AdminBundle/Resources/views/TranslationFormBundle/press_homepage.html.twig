@@ -147,6 +147,20 @@
                                     {{ form_row(form.parent.children.seoFile) }}
                                 </div>
                             </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <div class="form-group fdc-input-border">
+                                        {{ form_widget(form.parent.children.translate) }}
+                                        {{ form_label(form.parent.children.translate) }}
+                                        {{ form_widget(form.parent.children.translateOptions) }}
+                                        {{ form_row(form.parent.children.priorityStatus) }}
+                                    </div>
+                                    {{ form_row(form.parent.children.priorityStatus) }}
+                                    <div class="status-hidden">
+                                        {{ form_row(translationsFields.status) }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <p>
@@ -332,7 +346,18 @@
                                 <div class="box-body">
                                     {{ form_row(translationsFields.seoTitle) }}
                                     {{ form_row(translationsFields.seoDescription) }}
-                                    {{ form_row(form.parent.children.seoFile) }}
+                                </div>
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.news.publish_parameters'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        <div class="form-group">
+                                            {{ form_row(translationsFields.status) }}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
