@@ -145,7 +145,6 @@ class PressHomepageAdmin extends Admin
                     ),
                     'pushMainLink' => array(
                         'label' => 'form.label_link',
-                        'sonata_help' => 'form.press_homepage.helper_link',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -165,7 +164,6 @@ class PressHomepageAdmin extends Admin
                     ),
                     'pushSecondaryLink' => array(
                         'label' => 'form.label_link',
-                        'sonata_help' => 'form.press_homepage.helper_link',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(

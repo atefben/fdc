@@ -48,7 +48,9 @@ breadcrumb:
     link_f_d_c_event_routes_list: Liste des pages
     link_gallery_list: Galeries photos
     link_press_projection_list: Programmation
-
+    link_press_download_section_list: Liste des sections à télécharger
+    label_locked_content: Contenu locké
+    
 
 link:
     action_soif_refresh: Mettre à jour
@@ -229,6 +231,7 @@ list:
     label_realisator: Réalisateur(s)
     label_selection: Sélection
     label_festival-year: Année de sélection
+    label_section_title: Nom de la section
     tooltip:
         unlock: DÉBLOQUER
         modified_by: En cours de modification par </br>
@@ -340,6 +343,8 @@ filter:
         label_id: Id
         label_created_before: Créé avant le
         label_created_after: Créé après le
+    press_download:
+        label_section : Nom de la section
 
 dashboard:
     group:
