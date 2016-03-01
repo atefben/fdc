@@ -140,6 +140,8 @@ class MediaVideoRepository extends EntityRepository
             ->join('wtv.translations', 'wtvt')
             ->where('wtv.id IN (:in)')
             ->setParameter('in', $in)
+            ->andWhere('mv.displayedWebTv = :displayedWebTv')
+            ->setParameter('displayedWebTv', true)
         ;
 
         $this->addMasterQueries($qb, 'mv', $festival, true);
