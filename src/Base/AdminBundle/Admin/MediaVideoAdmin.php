@@ -214,7 +214,6 @@ class MediaVideoAdmin extends Admin
                 )
             ))
             ->add('webTv', 'sonata_type_model_list', array(
-                'btn_delete' => false,
                 'required' => false,
                 'attr' => array(
                     'class' => 'webTvField'
