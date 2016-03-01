@@ -235,3 +235,11 @@ ul[id$="translateOptions"] {
 .status-hidden {
     display: none;
 }
+
+textarea.quote {
+    color: #666;
+    font-size: 1.688rem;
+    line-height: 1.4em;
+    padding: 40px 15px;
+    text-align: center;
+}

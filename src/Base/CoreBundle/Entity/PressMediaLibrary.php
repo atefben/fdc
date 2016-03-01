@@ -29,13 +29,6 @@ class PressMediaLibrary
     private $id;
 
     /**
-     * @var FilmFestival
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
-     */
-    private $festival;
-
-    /**
      * ArrayCollection
      */
     protected $translations;
@@ -59,27 +52,4 @@ class PressMediaLibrary
         return $this->id;
     }
 
-
-    /**
-     * Set festival
-     *
-     * @param \Base\CoreBundle\Entity\FilmFestival $festival
-     * @return PressMediaLibrary
-     */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
-    {
-        $this->festival = $festival;
-
-        return $this;
-    }
-
-    /**
-     * Get festival
-     *
-     * @return \Base\CoreBundle\Entity\FilmFestival 
-     */
-    public function getFestival()
-    {
-        return $this->festival;
-    }
 }

@@ -54,7 +54,7 @@ function initSlideshows() {
   if($('.slideshow').length) {
 
     var slideshow = $('.slideshow .images').Chocolat({
-      imageSize: 'cover',
+      imageSize: 'contain',
       fullScreen: false,
       loop: true
     }).data('chocolat');
@@ -64,7 +64,7 @@ function initSlideshows() {
 
   if($('.all-photos').length) {
     var slideshow = $('#gridPhotos').Chocolat({
-      imageSize: 'cover',
+      imageSize: 'contain',
       fullScreen: false,
       imageSelector: '.item:not(.isotope-hidden) .chocolat-image'
     }).data('chocolat');
@@ -87,9 +87,11 @@ $('body').on('click', '.chocolat-close', function(e){
     $('body').removeClass('fixed');
 
     if($('.slideshow').length) {
-      $('html, body').animate({
-        scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
-      }, 0);
+      if($(window.location.hash).length > 0) {
+        $('html, body').animate({
+          scrollTop: $(window.location.hash).parents('.slideshow').offset().top - 300
+        }, 0);
+      }
     }
 
     setTimeout(function() {

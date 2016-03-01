@@ -9,13 +9,6 @@
                 {% endif %}
             {% endfor %}
         {% endif %}
-        {% if dayPressProjection is defined %}
-            {% for p in dayPressProjection %}
-                {% if p.projection.room.name == "Grand Théatre Lumière" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
     </div>
 </div>
 <div class="venue">
@@ -25,13 +18,6 @@
             {% for p in dayProjection %}
                 {% if p.projection.room.name == "Salle Debussy" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-        {% if dayPressProjection is defined %}
-            {% for p in dayPressProjection %}
-                {% if p.projection.room.name == "Salle Debussy" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
                 {% endif %}
             {% endfor %}
         {% endif %}
@@ -47,10 +33,15 @@
                 {% endif %}
             {% endfor %}
         {% endif %}
-        {% if dayPressProjection is defined %}
-            {% for p in dayPressProjection %}
-                {% if p.projection.room.name == "Salle du Soixantième" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
+    </div>
+</div>
+<div class="venue">
+    <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
+    <div class="v-container">
+        {% if dayProjection is defined %}
+            {% for p in dayProjection %}
+                {% if p.projection.room.name == "Salle Buñuel" %}
+                    {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
                 {% endif %}
             {% endfor %}
         {% endif %}
@@ -66,13 +57,6 @@
                 {% endif %}
             {% endfor %}
         {% endif %}
-        {% if dayPressProjection is defined %}
-            {% for p in dayPressProjection %}
-                {% if p.projection.room.name == "Salle Buñuel" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
     </div>
 </div>
 <div class="venue">
@@ -85,13 +69,6 @@
                 {% endif %}
             {% endfor %}
         {% endif %}
-        {% if dayPressProjection is defined %}
-            {% for p in dayPressProjection %}
-                {% if p.projection.room.name == "Salle Buñuel" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
     </div>
 </div>
 <div class="venue">
@@ -101,32 +78,6 @@
             {% for p in dayProjection %}
                 {% if p.projection.room.name == "Salle Buñuel" %}
                     {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-        {% if dayPressProjection is defined %}
-            {% for p in dayPressProjection %}
-                {% if p.projection.room.name == "Salle Buñuel" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    </div>
-</div>
-<div class="venue">
-    <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
-    <div class="v-container">
-        {% if dayProjection is defined %}
-            {% for p in dayProjection %}
-                {% if p.projection.room.name == "Salle Buñuel" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-        {% if dayPressProjection is defined %}
-            {% for p in dayPressProjection %}
-                {% if p.projection.room.name == "Salle Buñuel" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event-press.html.twig' %}
                 {% endif %}
             {% endfor %}
         {% endif %}

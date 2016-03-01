@@ -3,7 +3,6 @@
 namespace FDC\PressBundle\Controller;
 
 use Base\CoreBundle\Entity\PressProjection;
-use Base\CoreBundle\Entity\PressProjectionScheduling;
 use Guzzle\Http\Message\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -47,24 +46,8 @@ class AgendaController extends Controller
 
         $date = new \DateTime;
 
-        if (in_array($date->format('Ymd'), $schedulingDays)) {
-            // GET DAY PROJECTIONS
-            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
-                ->getProjectionByDate($date->format('Ymd'));
-
-            // GET DAY PROJECTIONS
-            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
-                ->getProjectionByDate($date->format('Ymd'));
-        }
-        else {
-            // GET DAY PROJECTIONS
-            $homeProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
-                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
-
-            // GET DAY PROJECTIONS
-            $homePressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
-                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
-        }
+        $homeProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
+            ->findByFestival($settings->getFestival()->getId());
 
         $typeFilters = array();
         $selectionFilters = array();
@@ -75,26 +58,27 @@ class AgendaController extends Controller
 
         foreach ($homeProjection as $projection) {
 
-            if (!in_array($projection->getProjection()->getType(), $type)) {
-                $typeFilters[$i]['name'] = $projection->getProjection()->getType();
-                $typeFilters[$i]['slug'] = mb_strtolower(preg_replace('/\s*/', '', $projection->getProjection()->getType()), mb_detect_encoding($projection->getProjection()->getType()));
+            if (!in_array($projection->getType(), $type)) {
+                $typeFilters[$i]['name'] = $projection->getType();
+                $typeFilters[$i]['slug'] = mb_strtolower(preg_replace('/\s*/', '', $projection->getType()), mb_detect_encoding($projection->getType()));
 
-                $type[] = $projection->getProjection()->getType();
+                $type[] = $projection->getType();
             }
-            if (!in_array($projection->getProjection()->getProgrammationSection(), $selection)) {
-                $selectionFilters[$i]['name'] = $projection->getProjection()->getProgrammationSection();
-                $selectionFilters[$i]['slug'] = mb_strtolower(preg_replace('/\s*/', '', $projection->getProjection()->getProgrammationSection()), mb_detect_encoding($projection->getProjection()->getProgrammationSection()));
+            if (!in_array($projection->getProgrammationSection(), $selection)) {
+                $selectionFilters[$i]['name'] = $projection->getProgrammationSection();
+                $selectionFilters[$i]['slug'] = mb_strtolower(preg_replace('/\s*/', '', $projection->getProgrammationSection()), mb_detect_encoding($projection->getProgrammationSection()));
 
-                $selection[] = $projection->getProjection()->getProgrammationSection();
+                $selection[] = $projection->getProgrammationSection();
             }
             $i++;
         }
+
+        $pressProjection = $em->getRepository('BaseCoreBundle:PressProjection')->findOneById($this->getParameter('admin_press_projection_id'));
 
         return array(
             'schedulingDays' => $schedulingDays,
             'typeFilters' => $typeFilters,
             'selectionFilters' => $selectionFilters,
-            'homePressProjection' => $homePressProjection,
             'homeProjection' => $homeProjection,
         );
 

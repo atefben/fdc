@@ -47,6 +47,7 @@ breadcrumb:
     link_press_cinema_map_list: Plan des salles
     link_f_d_c_event_routes_list: Liste des pages
     link_gallery_list: Galeries photos
+    link_press_projection_list: Programmation
 
 
 link:
@@ -553,6 +554,8 @@ form:
     label_map_room: Salles
     label_section: Liste des salles
     label_map_zone: Zone du festival
+    label_scheduling: Programmation
+    label_press_scheduling: Programmation presse
     gallery:
         medias: Médias
     encoding_state:

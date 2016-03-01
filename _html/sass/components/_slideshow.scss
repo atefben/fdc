@@ -132,6 +132,8 @@
         display: block;
         margin: 0 auto;
         height: 100%;
+        width: 100%;
+        object-fit: contain;
         pointer-events: none;
         @include transition(all 8s $linear);
       }
@@ -552,8 +554,8 @@ div.chocolat-wrapper {
 
   .chocolat-content {
     height: 100%;
-    min-height: 100%;
-    min-width: 100%;
+    // min-height: 100%;
+    // min-width: 100%;
     top: 0;
     left: 0;
     width: 100%;

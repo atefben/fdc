@@ -6,7 +6,10 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\SeoMain;
 
 /**
  * PressDownload
@@ -15,10 +18,12 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressProjection
+class PressProjection implements TranslateMainInterface
 {
     use Time;
     use Translatable;
+    use TranslateMain;
+    use SeoMain;
 
     /**
      * @var integer
@@ -30,23 +35,18 @@ class PressProjection
     private $id;
 
     /**
-     * @var PressProjectionScheduling
-     * @ORM\OneToMany(targetEntity="PressProjectionScheduling", mappedBy="scheduling", cascade={"persist"}, orphanRemoval=true)
-     */
-    protected $projection;
-
-    /**
-     * @var PressProjectionPressScheduling
-     * @ORM\OneToMany(targetEntity="PressProjectionPressScheduling", mappedBy="pressScheduling", cascade={"persist"}, orphanRemoval=true)
-     */
-    protected $projectionP;
-
-    /**
-     * @var FilmFestival
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
      */
-    private $festival;
+    protected $scheduling;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     */
+    protected $pressScheduling;
 
     /**
      * ArrayCollection
@@ -59,10 +59,14 @@ class PressProjection
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-        $this->projection = new ArrayCollection();
-        $this->projectionP = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        return $string;
+    }
 
     /**
      * Get id
@@ -75,93 +79,48 @@ class PressProjection
     }
 
     /**
-     * Add projection
+     * Set scheduling
      *
-     * @param \Base\CoreBundle\Entity\PressProjectionScheduling $projection
+     * @param \Application\Sonata\MediaBundle\Entity\Media $scheduling
      * @return PressProjection
      */
-    public function addProjection(\Base\CoreBundle\Entity\PressProjectionScheduling $projection)
+    public function setScheduling(\Application\Sonata\MediaBundle\Entity\Media $scheduling = null)
     {
-
-        $projection->setScheduling($this);
-        $this->projection->add($projection);
-
-    }
-
-    /**
-     * Remove projection
-     *
-     * @param \Base\CoreBundle\Entity\PressProjectionScheduling $projection
-     */
-    public function removeProjection(\Base\CoreBundle\Entity\PressProjectionScheduling $projection)
-    {
-        $this->projection->removeElement($projection);
-    }
-
-    /**
-     * Get projection
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProjection()
-    {
-        return $this->projection;
-    }
-
-    /**
-     * Add projectionP
-     *
-     * @param \Base\CoreBundle\Entity\PressProjectionPressScheduling $projectionP
-     * @return PressProjection
-     */
-    public function addProjectionP(\Base\CoreBundle\Entity\PressProjectionPressScheduling $projectionP)
-    {
-
-        $projectionP->setPressScheduling($this);
-        $this->projectionP->add($projectionP);
-
-    }
-
-    /**
-     * Remove projectionP
-     *
-     * @param \Base\CoreBundle\Entity\PressProjectionPressScheduling $projectionP
-     */
-    public function removeProjectionP(\Base\CoreBundle\Entity\PressProjectionPressScheduling $projectionP)
-    {
-        $this->projectionP->removeElement($projectionP);
-    }
-
-    /**
-     * Get projectionP
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProjectionP()
-    {
-        return $this->projectionP;
-    }
-
-    /**
-     * Set festival
-     *
-     * @param \Base\CoreBundle\Entity\FilmFestival $festival
-     * @return PressProjection
-     */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
-    {
-        $this->festival = $festival;
+        $this->scheduling = $scheduling;
 
         return $this;
     }
 
     /**
-     * Get festival
+     * Get scheduling
      *
-     * @return \Base\CoreBundle\Entity\FilmFestival 
+     * @return \Base\CoreBundle\Entity\Media 
      */
-    public function getFestival()
+    public function getScheduling()
     {
-        return $this->festival;
+        return $this->scheduling;
+    }
+
+    /**
+     * Set pressScheduling
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $pressScheduling
+     * @return PressProjection
+     */
+    public function setPressScheduling(\Application\Sonata\MediaBundle\Entity\Media $pressScheduling = null)
+    {
+        $this->pressScheduling = $pressScheduling;
+
+        return $this;
+    }
+
+    /**
+     * Get pressScheduling
+     *
+     * @return \Base\CoreBundle\Entity\Media 
+     */
+    public function getPressScheduling()
+    {
+        return $this->pressScheduling;
     }
 }

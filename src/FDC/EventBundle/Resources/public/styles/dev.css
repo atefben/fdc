@@ -73,6 +73,11 @@
     display: block;
 }
 
+.single-article .quote blockquote {
+    margin-top: 35px;
+    margin-bottom: 40px;
+}
+
 .same-day .image.image-sameday-wrapper {
     width:293px;
     height:185px;
