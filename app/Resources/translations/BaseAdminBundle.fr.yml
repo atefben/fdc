@@ -554,6 +554,8 @@ form:
     label_map_room: Salles
     label_section: Liste des salles
     label_map_zone: Zone du festival
+    label_scheduling: Programmation
+    label_press_scheduling: Programmation presse
     gallery:
         medias: Médias
     encoding_state:

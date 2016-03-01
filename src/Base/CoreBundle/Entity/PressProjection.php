@@ -6,6 +6,8 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\SeoMain;
 
@@ -16,10 +18,11 @@ use Base\CoreBundle\Util\SeoMain;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressProjection
+class PressProjection implements TranslateMainInterface
 {
     use Time;
     use Translatable;
+    use TranslateMain;
     use SeoMain;
 
     /**
@@ -34,14 +37,14 @@ class PressProjection
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="Media", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
      */
     protected $scheduling;
 
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="Media", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
      */
     protected $pressScheduling;
 
@@ -73,5 +76,51 @@ class PressProjection
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set scheduling
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $scheduling
+     * @return PressProjection
+     */
+    public function setScheduling(\Application\Sonata\MediaBundle\Entity\Media $scheduling = null)
+    {
+        $this->scheduling = $scheduling;
+
+        return $this;
+    }
+
+    /**
+     * Get scheduling
+     *
+     * @return \Base\CoreBundle\Entity\Media 
+     */
+    public function getScheduling()
+    {
+        return $this->scheduling;
+    }
+
+    /**
+     * Set pressScheduling
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $pressScheduling
+     * @return PressProjection
+     */
+    public function setPressScheduling(\Application\Sonata\MediaBundle\Entity\Media $pressScheduling = null)
+    {
+        $this->pressScheduling = $pressScheduling;
+
+        return $this;
+    }
+
+    /**
+     * Get pressScheduling
+     *
+     * @return \Base\CoreBundle\Entity\Media 
+     */
+    public function getPressScheduling()
+    {
+        return $this->pressScheduling;
     }
 }
