@@ -6,6 +6,15 @@
     height: auto;
 }
 
+.single-article .big-quote {
+    width: 697px;
+    margin: 0 auto;
+    padding: 70px 70px;
+    box-sizing: border-box;
+    border: 1px solid #c8a461;
+    margin-bottom: 70px;
+}
+
 .single-article .big-quote span.big-quote-paragraph {
     color: #b1b1b1;
     text-align: center;

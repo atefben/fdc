@@ -37,14 +37,14 @@ class PressProjection implements TranslateMainInterface
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
     protected $scheduling;
 
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
     protected $pressScheduling;
 
@@ -94,7 +94,7 @@ class PressProjection implements TranslateMainInterface
     /**
      * Get scheduling
      *
-     * @return \Base\CoreBundle\Entity\Media 
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
      */
     public function getScheduling()
     {
@@ -117,7 +117,7 @@ class PressProjection implements TranslateMainInterface
     /**
      * Get pressScheduling
      *
-     * @return \Base\CoreBundle\Entity\Media 
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
      */
     public function getPressScheduling()
     {

@@ -77,7 +77,8 @@ class PressAccreditAdmin extends Admin
                     'commonContent' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_content',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'widget'
                     ),
                     'procedureMainTitle' => array(
                         'label' => 'Titre pour les procédures',
