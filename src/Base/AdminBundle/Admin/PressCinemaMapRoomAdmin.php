@@ -43,7 +43,7 @@ class PressCinemaMapRoomAdmin extends Admin
         $formMapper
             ->add('room', 'sonata_type_model_list', array(
                 'required' => false,
-                'btn_add' => true,
+                'btn_add' => 'Ajouter',
                 'label' => 'form.label_section'
             ))
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
