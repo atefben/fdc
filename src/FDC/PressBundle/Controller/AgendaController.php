@@ -46,8 +46,19 @@ class AgendaController extends Controller
 
         $date = new \DateTime;
 
-        $homeProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
-            ->findByFestival($settings->getFestival()->getId());
+        $date = new \DateTime;
+        if (in_array($date->format('Ymd'), $schedulingDays)) {
+
+            $dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
+                ->getProjectionByDate($date->format('Ymd'));
+
+        }
+        else {
+
+            $dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
+                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
+
+        }
 
         $typeFilters = array();
         $selectionFilters = array();
@@ -56,7 +67,7 @@ class AgendaController extends Controller
 
         $i = 0;
 
-        foreach ($homeProjection as $projection) {
+        foreach ($dayProjection as $projection) {
 
             if (!in_array($projection->getType(), $type)) {
                 $typeFilters[$i]['name'] = $projection->getType();
@@ -79,7 +90,7 @@ class AgendaController extends Controller
             'schedulingDays' => $schedulingDays,
             'typeFilters' => $typeFilters,
             'selectionFilters' => $selectionFilters,
-            'homeProjection' => $homeProjection,
+            'dayProjection' => $dayProjection,
             'pressProjection' => $pressProjection
         );
 
