@@ -6,6 +6,27 @@
     height: auto;
 }
 
+.single-article .big-quote {
+    width: 630px;
+    margin: 0 auto;
+    padding: 70px 70px;
+    box-sizing: border-box;
+    border: 1px solid #c8a461;
+    margin-bottom: 70px;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+}
+
+.single-article ul,
+.single-article ol {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+}
+
 .single-article .big-quote span.big-quote-paragraph {
     color: #b1b1b1;
     text-align: center;
@@ -130,7 +151,8 @@
     display: inline-block;
     margin: 0 0 50px;
     vertical-align: top;
-    width: 50%;
+    max-width: 48%;
+    margin: 0px 2%;
 }
 
 #half-photo + #half-photo {

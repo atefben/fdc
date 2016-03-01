@@ -11,21 +11,102 @@
     <div id="gridAudios" class="grid-wrapper" data-type="articles">
         <div class="grid-sizer"></div>
 
+
         {% for article in articles %}
             <div class="item {{ article.theme|trans_fallback('slug') }} {{ article.publishedAt|date('d-m-y') }} article">
                 <article class="article" data-format="article">
                     <div class="img">
                         <span class="picto">
-                            <i class="icon icon_article"></i>
+                            <i class="icon icon_{{ article.newsType|get_news_type  }}"></i>
                         </span>
                         <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">
-                         {% if article.image is not null %}
-                            {% set trans = article.image.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is null or trans.file is null %}
-                                {% set trans = article.image.findTranslationByLocale('fr') %}
+                            {% if article is news_article %}
+                                {% set img = article.header %}
+                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = img.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set file = trans.file %}
+                                {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
+                            {% elseif article is news_video %}
+                                {% set header = article.header %}
+                                {% if header is not null %}
+                                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is not null and trans.file is not null %}
+                                        {% set imageTrans = trans %}
+                                    {% else %}
+                                        {% set trans = article.header.findTranslationByLocale('fr') %}
+                                        {% if trans is not null and trans.file is not null %}
+                                            {% set imageTrans = trans %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                                {% if imageTrans is defined and imageTrans is not null %}
+                                    {% set file = imageTrans.file %}
+                                    {% set img = article.header %}
+                                {% else %}
+                                    {% set img = article.video.image %}
+                                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is null or trans.file is null %}
+                                        {% set trans = img.findTranslationByLocale('fr') %}
+                                    {% endif %}
+                                    {% set file = trans.file %}
+                                {% endif %}
+
+                                {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
+                            {% elseif article is news_audio %}
+                                {% set header = article.header %}
+                                {% if header is not null %}
+                                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is not null and trans.file is not null %}
+                                        {% set imageTrans = trans %}
+                                    {% else %}
+                                        {% set trans = article.header.findTranslationByLocale('fr') %}
+                                        {% if trans is not null and trans.file is not null %}
+                                            {% set imageTrans = trans %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                                {% if imageTrans is defined and imageTrans is not null %}
+                                    {% set file = imageTrans.file %}
+                                    {% set img = article.header %}
+                                {% else %}
+                                    {% set img = article.audio.image %}
+                                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is null or trans.file is null %}
+                                        {% set trans = img.findTranslationByLocale('fr') %}
+                                    {% endif %}
+                                    {% set file = trans.file %}
+                                {% endif %}
+
+                                {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
+                            {% elseif article is news_image %}
+                                {% set header = article.header %}
+                                {% if header is not null %}
+                                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is not null and trans.file is not null %}
+                                        {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
+                                    {% else %}
+                                        {% set trans = article.header.findTranslationByLocale('fr') %}
+                                        {% if trans is not null and trans.file is not null %}
+                                            {% set imageTrans = trans %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                                {% if imageTrans is defined and imageTrans is not null %}
+                                    {% set img = article.header %}
+                                    {% set file = imageTrans.file %}
+                                {% else %}
+                                    {% set img = article.gallery.medias[0].media %}
+                                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is null or trans.file is null %}
+                                        {% set trans = img.findTranslationByLocale('fr') %}
+                                    {% endif %}
+                                    {% set file = trans.file %}
+                                {% endif %}
+
+                                {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
                             {% endif %}
-                             <img src="{% path trans.file , '1144x724' %}" alt="">
-                         {% endif %}
                         </a>
                         <a href="#" class="read-later">
                             <i class="icon icon_lire-plus-tard"></i>
