@@ -182,15 +182,15 @@ $(document).ready(function () {
       });
     }
 
-    if($('.all-photos').length) {
-      var slideshow = $('#gridPhotos').Chocolat({
-        imageSize: 'cover',
-        fullScreen: false,
-        imageSelector: '.item:not(.isotope-hidden) .chocolat-image'
-      }).data('chocolat');
+    // if($('.all-photos').length) {
+    //   var slideshow = $('#gridPhotos').Chocolat({
+    //     imageSize: 'cover',
+    //     fullScreen: false,
+    //     imageSelector: '.item:not(.isotope-hidden) .chocolat-image'
+    //   }).data('chocolat');
 
-      slideshows.push(slideshow);
-    }
+    //   slideshows.push(slideshow);
+    // }
 
     if($('#gridWebtv').length) {
       $grid = $('#gridWebtv').imagesLoaded(function () {
