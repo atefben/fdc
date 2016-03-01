@@ -6703,6 +6703,7 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 .video-container .channels-video .info-container {
   text-align: left;
+  max-width: 200px;
 }
 .video-container .channels-video .owl-item {
   opacity: 1;
@@ -6720,9 +6721,6 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 .video-container .channels-video .info p {
   font-size: 0.850rem;
-}
-.video-container .channels-video .info i.icon {
-  margin-left: 0;
 }
 .video-container .channels-video.active {
   -moz-transform: translate3d(0, 0, 0);
