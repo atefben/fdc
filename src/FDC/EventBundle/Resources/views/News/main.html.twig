@@ -85,8 +85,9 @@
                 <i class="icon icon_print"></i>
                 </a>
             </div>
-        </div>share-article
+        </div>
 
+        {{ dump(associatedFilm) }}
         {% if associatedFilm is not null or programmations is not empty  %}
         <div class="film">
             {% if associatedFilm is not null %}
