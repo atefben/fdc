@@ -7,12 +7,24 @@
 }
 
 .single-article .big-quote {
-    width: 697px;
+    width: 630px;
     margin: 0 auto;
     padding: 70px 70px;
     box-sizing: border-box;
     border: 1px solid #c8a461;
     margin-bottom: 70px;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+}
+
+ul,
+ol {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
 }
 
 .single-article .big-quote span.big-quote-paragraph {
