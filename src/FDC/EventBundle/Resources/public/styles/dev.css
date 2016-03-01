@@ -130,7 +130,8 @@
     display: inline-block;
     margin: 0 0 50px;
     vertical-align: top;
-    width: 50%;
+    max-width: 48%;
+    margin: 0px 2%;
 }
 
 #half-photo + #half-photo {
