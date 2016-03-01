@@ -32,7 +32,6 @@ class ContactPage implements TranslateMainInterface
     use Time;
     use Translatable;
     use TranslateMain;
-    use SeoMain;
 
     /**
      * @var integer
@@ -51,6 +50,13 @@ class ContactPage implements TranslateMainInterface
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+    }
+
+    public function __toString() {
+
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        return $string;
     }
 
     /**

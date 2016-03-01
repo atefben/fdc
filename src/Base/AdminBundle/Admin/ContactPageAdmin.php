@@ -66,42 +66,27 @@ class ContactPageAdmin extends Admin
                     'firstColumn' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_column.first',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'widget',
+
                     ),
                     'secondColumn' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_column.second',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'widget'
                     ),
                     'thirdColumn' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_column.third',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'widget'
                     ),
                     'createdAt' => array(
                         'display' => false
                     ),
                     'updatedAt' => array(
                         'display' => false
-                    ),
-                    'seoTitle' => array(
-                        'attr' => array(
-                            'placeholder' => 'form.placeholder_seo_title'
-                        ),
-                        'label' => 'form.label_seo_title',
-                        'sonata_help' => 'form.news.helper_seo_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
-                    ),
-                    'seoDescription' => array(
-                        'attr' => array(
-                            'placeholder' => 'form.placeholder_seo_description'
-                        ),
-                        'label' => 'form.label_seo_description',
-                        'sonata_help' => 'form.news.helper_description',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
-
                     ),
                     'status'         => array(
                         'label'                     => 'form.label_status',
@@ -111,12 +96,6 @@ class ContactPageAdmin extends Admin
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                 )
-            ))
-            ->add('seoFile', 'sonata_media_type', array(
-                'provider' => 'sonata.media.provider.image',
-                'context'  => 'seo_file',
-                'help'     => 'form.seo.helper_file',
-                'required' => false
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(

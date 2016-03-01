@@ -97,25 +97,6 @@
                     </div>
                     {% endif %}
                     <div class="col-md-8">
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <div class="clearfix">
-                                    <h4 class="box-title">
-                                        {{ 'group.seo'|trans }}
-                                    </h4>
-                                </div>
-                                <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
-                                    {{ 'group.helper_seo'|trans|nl2br }}
-                                </div>
-                            </div>
-                            <div class="box-body">
-                                {{ form_row(translationsFields.seoTitle) }}
-                                {{ form_row(translationsFields.seoDescription) }}
-                                {% if form.vars.default_locale == locale %}
-                                    {{ form_row(form.parent.children.seoFile) }}
-                                {% endif %}
-                            </div>
-                        </div>
                         {% if form.vars.default_locale == locale %}
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
