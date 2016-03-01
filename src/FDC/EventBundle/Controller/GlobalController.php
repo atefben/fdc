@@ -738,35 +738,4 @@ class GlobalController extends Controller {
         );
     }
 
-
-    /**
-     * @Route("/programmation/day-projections", options={"expose"=true}))
-     * @Template("FDCEventBundle:Global:projection.html.twig")
-     * @param Request $request
-     * @return array
-     */
-    public function getDayProjectionsAction(Request $request) {
-
-        $em = $this->get('doctrine')->getManager();
-
-        $date = $request->get('date');
-
-        $projection = array();
-
-        if ( $request->headers->get('host') == $this->getParameter('fdc_press_domain') ) {
-            // GET DAY PROJECTIONS
-            $projection = $em->getRepository('BaseCoreBundle:FilmProjection')
-                ->getProjectionByDate($date);
-
-        }
-        else {
-            // Grab Event Site projections
-        }
-
-        return array(
-            'dayProjection' => $projection,
-        );
-    }
-
-
 }
