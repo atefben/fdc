@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\SeoMain;
 
 /**
  * PressDownload
@@ -19,6 +20,7 @@ class PressProjection
 {
     use Time;
     use Translatable;
+    use SeoMain;
 
     /**
      * @var integer
@@ -30,23 +32,18 @@ class PressProjection
     private $id;
 
     /**
-     * @var PressProjectionScheduling
-     * @ORM\OneToMany(targetEntity="PressProjectionScheduling", mappedBy="scheduling", cascade={"persist"}, orphanRemoval=true)
-     */
-    protected $projection;
-
-    /**
-     * @var PressProjectionPressScheduling
-     * @ORM\OneToMany(targetEntity="PressProjectionPressScheduling", mappedBy="pressScheduling", cascade={"persist"}, orphanRemoval=true)
-     */
-    protected $projectionP;
-
-    /**
-     * @var FilmFestival
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     * @ORM\OneToOne(targetEntity="Media", cascade={"persist"})
      */
-    private $festival;
+    protected $scheduling;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToOne(targetEntity="Media", cascade={"persist"})
+     */
+    protected $pressScheduling;
 
     /**
      * ArrayCollection
@@ -59,10 +56,14 @@ class PressProjection
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-        $this->projection = new ArrayCollection();
-        $this->projectionP = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        return $string;
+    }
 
     /**
      * Get id
@@ -72,96 +73,5 @@ class PressProjection
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Add projection
-     *
-     * @param \Base\CoreBundle\Entity\PressProjectionScheduling $projection
-     * @return PressProjection
-     */
-    public function addProjection(\Base\CoreBundle\Entity\PressProjectionScheduling $projection)
-    {
-
-        $projection->setScheduling($this);
-        $this->projection->add($projection);
-
-    }
-
-    /**
-     * Remove projection
-     *
-     * @param \Base\CoreBundle\Entity\PressProjectionScheduling $projection
-     */
-    public function removeProjection(\Base\CoreBundle\Entity\PressProjectionScheduling $projection)
-    {
-        $this->projection->removeElement($projection);
-    }
-
-    /**
-     * Get projection
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProjection()
-    {
-        return $this->projection;
-    }
-
-    /**
-     * Add projectionP
-     *
-     * @param \Base\CoreBundle\Entity\PressProjectionPressScheduling $projectionP
-     * @return PressProjection
-     */
-    public function addProjectionP(\Base\CoreBundle\Entity\PressProjectionPressScheduling $projectionP)
-    {
-
-        $projectionP->setPressScheduling($this);
-        $this->projectionP->add($projectionP);
-
-    }
-
-    /**
-     * Remove projectionP
-     *
-     * @param \Base\CoreBundle\Entity\PressProjectionPressScheduling $projectionP
-     */
-    public function removeProjectionP(\Base\CoreBundle\Entity\PressProjectionPressScheduling $projectionP)
-    {
-        $this->projectionP->removeElement($projectionP);
-    }
-
-    /**
-     * Get projectionP
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProjectionP()
-    {
-        return $this->projectionP;
-    }
-
-    /**
-     * Set festival
-     *
-     * @param \Base\CoreBundle\Entity\FilmFestival $festival
-     * @return PressProjection
-     */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
-    {
-        $this->festival = $festival;
-
-        return $this;
-    }
-
-    /**
-     * Get festival
-     *
-     * @return \Base\CoreBundle\Entity\FilmFestival 
-     */
-    public function getFestival()
-    {
-        return $this->festival;
     }
 }

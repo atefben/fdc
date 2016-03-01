@@ -21,4 +21,18 @@ class PressProjectionTranslation
     use Translation;
     use Seo;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $schedulingLabel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $pressSchedulingLabel;
+
 }

@@ -82,49 +82,42 @@ class PressProjectionAdmin extends Admin
                         'required' => false
 
                     ),
-                )
+                    'schedulingLabel' => array(
+                        'label' => 'form.label_title',
+                        'sonata_help' => 'form.press_homepage.helper_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'pressSchedulingLabel' => array(
+                        'label' => 'form.label_title',
+                        'sonata_help' => 'form.press_homepage.helper_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                ),
             ))
-            ->add('projection', 'sonata_type_collection',
-                array(
-                    'type_options' => array(
-                        'delete' => false,
-                        'delete_options' => array(
-                            'type'         => 'hidden',
-                            'type_options' => array(
-                                'mapped'   => false,
-                                'required' => false,
-                            )
-                        )
-                    ),
-                    'cascade_validation' => true,
-                    'by_reference' => false,
-                ),
-                array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                )
-            )
-            ->add('projectionP', 'sonata_type_collection',
-                array(
-                    'type_options' => array(
-                        'delete' => false,
-                        'delete_options' => array(
-                            'type'         => 'hidden',
-                            'type_options' => array(
-                                'mapped'   => false,
-                                'required' => false,
-                            )
-                        )
-                    ),
-                    'cascade_validation' => true,
-                    'by_reference' => false,
-                ),
-                array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                )
-            )
-            ->add('festival')
+            ->add('seoFile', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'seo_file',
+                'help' => 'form.seo.helper_file',
+                'required' => false,
+            ))
+            ->add('scheduling', 'sonata_type_model_list', array(
+                'label' => 'form.label_scheduling',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('pressScheduling', 'sonata_type_model_list', array(
+                'label' => 'form.label_press_scheduling',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
             ->end()
         ;
 
@@ -140,5 +133,10 @@ class PressProjectionAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
         ;
+    }
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
     }
 }
