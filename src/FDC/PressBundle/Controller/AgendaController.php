@@ -80,6 +80,7 @@ class AgendaController extends Controller
             'typeFilters' => $typeFilters,
             'selectionFilters' => $selectionFilters,
             'homeProjection' => $homeProjection,
+            'pressProjection' => $pressProjection
         );
 
     }

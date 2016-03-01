@@ -3,7 +3,11 @@
 
 {% block body %}
     <div id="main" class="press press-programmation loading calendar-open {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
-
+        {% if is_granted("ROLE_FDC_PRESS_REPORTER") == true %}
+            {% set file = pressProjection.pressScheduling %}
+        {% else %}
+            {% set file = pressProjection.scheduling %}
+        {% endif %}
         <div class="header-press">
             <div class="head">
                 <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>
@@ -12,8 +16,8 @@
                 <h2>{{ 'programmation.title.programmation'|trans }}</h2>
                 <div class="buttons">
                     <a href="#" class="button subnav"><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerhoraireprojectionpresse'|trans }}</a>
-                    <a href="#" class="button list" download><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatpdf'|trans }}</a>
-                    <a href="#" class="button list" download><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatics'|trans }}</a>
+                    <a href="{% path file, 'reference' %}" class="button list" download><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatpdf'|trans }}</a>
+                    {#<a href="#" class="button list" download><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatics'|trans }}</a>#}
                 </div>
             </div>
         </div>
