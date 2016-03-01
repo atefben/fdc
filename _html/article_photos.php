@@ -34,9 +34,21 @@ Imprimer</a>
               <div class="img">
                 <a class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
               </div>
-              <div class="img"><img src="http://dummyimage.com/980x500/000/fff" alt="" /></div>
-              <div class="img"><img src="http://dummyimage.com/980x500/000/fff" alt="" /></div>
-              <div class="img"><img src="http://dummyimage.com/980x500/000/fff" alt="" /></div>
+              <div class="img">
+                <a class="chocolat-image ajax" href="http://dummyimage.com/2400x1500/eee/333" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <img src="http://dummyimage.com/980x500/000/fff" alt="" />
+                </a>
+              </div>
+              <div class="img">
+                <a class="chocolat-image ajax" href="http://dummyimage.com/1000x1960/eee/333" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <img src="http://dummyimage.com/500x980/eee/333" alt="" />
+                </a>
+              </div>
+              <div class="img">
+                <a class="chocolat-image ajax" href="http://dummyimage.com/3000x1000/eee/333" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                  <img src="http://dummyimage.com/3000x1000/eee/123" alt="" />
+                </a>
+              </div>
               <div class="img"><img src="http://dummyimage.com/980x500/000/fff" alt="" /></div>
               <div class="img"><img src="http://dummyimage.com/980x500/000/fff" alt="" /></div>
               <div class="img"><img src="http://dummyimage.com/980x500/000/fff" alt="" /></div>
