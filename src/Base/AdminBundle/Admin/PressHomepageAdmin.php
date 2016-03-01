@@ -300,6 +300,12 @@ class PressHomepageAdmin extends Admin
                     'sortable'  => 'position',
                 )
             )
+            ->add('seoFile', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'seo_file',
+                'help' => 'form.seo.helper_file',
+                'required' => false,
+            ))
             ->add('statImage', 'sonata_type_model_list', array(
                 'label' => 'form.label_main_image',
                 'translation_domain' => 'BaseAdminBundle'
@@ -316,7 +322,6 @@ class PressHomepageAdmin extends Admin
                 'label' => 'form.label_push_image',
                 'translation_domain' => 'BaseAdminBundle'
             ))
-            ->add('festival')
         ;
 
     }
@@ -331,5 +336,10 @@ class PressHomepageAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
         ;
+    }
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
     }
 }

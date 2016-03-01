@@ -6,9 +6,9 @@
         {% set trans = gallery.media.findTranslationByLocale('fr') %}
     {% endif %}
     {% set file = trans.file %}
-    <div class="half-photo">
+    <div class="half-photo" id="half-photo">
         <div class="photo-container">
-            {% thumbnail file, '330*380' with {'alt': trans.alt, 'title': trans.legend} %}
+            <img src="{% path file, 'reference' %}" alt="{{ trans.alt }}" title="{{ trans.legend }}">
             <p class="caption">{{ trans.copyright }}</p>
         </div>
     </div>

@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\SeoMain;
 
 /**
  * PressCinemaMap
@@ -21,7 +22,7 @@ class PressCinemaMap implements TranslateMainInterface
     use Time;
     use Translatable;
     use TranslateMain;
-
+    use SeoMain;
     /**
      * @var integer
      *
@@ -59,6 +60,12 @@ class PressCinemaMap implements TranslateMainInterface
         $this->mapRoom = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        return $string;
+    }
 
     /**
      * Get id

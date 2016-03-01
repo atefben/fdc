@@ -11,7 +11,6 @@ jQuery(document).ready(function($) {
         start: function(event, ui) {
             // ckeditor
             var textareaId = ui.item.find('textarea.ckeditor').attr('id');
-            console.log(textareaId);
             if (typeof textareaId != 'undefined') {
                 var editorInstance = CKEDITOR.instances[textareaId];
                 editorInstance.destroy();
@@ -22,7 +21,7 @@ jQuery(document).ready(function($) {
             // ckeditor
             var textareaId = ui.item.find('textarea.ckeditor').attr('id');
             if (typeof textareaId != 'undefined') {
-                CKEDITOR.replace( textareaId );
+                CKEDITOR.replace( textareaId, { customConfig : "/bundles/baseadmin/ckeditor/config.js"});
             }
         }
     });

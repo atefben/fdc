@@ -81,11 +81,6 @@
 }
 
 /* Button link */
-.cke_editable single-button {
-    border-right: 1px solid #c8a461 !important;
-    border-color: #c8a461;
-}
-
 .cke_editable .button {
     border: 1px solid #dfdfdf;
     border-right: none;
@@ -102,6 +97,16 @@
     -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+.cke_editable .button a {
+    color: #c8a461;
+    text-decoration: none;
+}
+
+.cke_editable .single-button {
+    border-right: 1px solid #c8a461 !important;
+    border-color: #c8a461;
 }
 
 /* Quote */

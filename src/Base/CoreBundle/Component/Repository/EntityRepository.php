@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Component\Repository;
 
+use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
@@ -128,13 +129,27 @@ class EntityRepository extends BaseRepository
      * @param string $alias
      * @return QueryBuilder
      */
-    public function addAWSEncodersQueries(QueryBuilder $qb, $alias)
+    public function addAWSVideoEncodersQueries(QueryBuilder $qb, $alias)
     {
         $qb->andWhere("$alias.jobWebmState = :job_state")
             ->andWhere("$alias.jobMp4State = :job_state")
             ->setParameter('job_state', MediaVideoTranslation::ENCODING_STATE_READY)
             ->andWhere("$alias.webmUrl IS NOT NULL")
             ->andWhere("$alias.mp4Url IS NOT NULL")
+        ;
+        return $qb;
+    }
+
+    /**
+     * @param QueryBuilder $qb
+     * @param string $alias
+     * @return QueryBuilder
+     */
+    public function addAWSAudioEncodersQueries(QueryBuilder $qb, $alias)
+    {
+        $qb->andWhere("$alias.jobMp3State = :job_state")
+            ->setParameter('job_state', MediaAudioTranslation::ENCODING_STATE_READY)
+            ->andWhere("$alias.mp3Url IS NOT NULL")
         ;
         return $qb;
     }

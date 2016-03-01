@@ -73,6 +73,11 @@
     display: block;
 }
 
+.single-article .quote blockquote {
+    margin-top: 35px;
+    margin-bottom: 40px;
+}
+
 .same-day .image.image-sameday-wrapper {
     width:293px;
     height:185px;
@@ -114,4 +119,20 @@
     color: #666;
     display: inline-block;
     font-size: 0.625rem;
+}
+
+.single-article .half-photo img {
+    display: block;
+    max-width: 100%;
+}
+
+#half-photo {
+    display: inline-block;
+    margin: 0 0 50px;
+    vertical-align: top;
+    width: 50%;
+}
+
+#half-photo + #half-photo {
+    margin: 0 0 0 -8px;
 }

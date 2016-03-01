@@ -125,7 +125,7 @@ class WebTvRepository extends EntityRepository
         $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addTranslationQueries($qb, 'wtt', $locale);
         $this->addTranslationQueries($qb, 'mvt', $locale);
-        $this->addAWSEncodersQueries($qb, 'mvt');
+        $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         if ($notIn) {
             $notIn = is_array($notIn) ? $notIn : array($notIn);
