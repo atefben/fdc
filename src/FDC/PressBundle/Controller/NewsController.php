@@ -85,16 +85,15 @@ class NewsController extends Controller
         if (in_array($date->format('Ymd'), $schedulingDays)) {
 
             $dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
-                ->findByStartsAt($date->format('Ymd'));
+                ->getProjectionByDate($date->format('Ymd'));
 
         }
         else {
 
             $dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
-                ->findByStartsAt($festivalStartsAt);
+                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
 
         }
-
 
         //GET PRESS HOMEPAGE
         $homepage = $em->getRepository('BaseCoreBundle:PressHomepage')->findOneById($this->getParameter('admin_press_homepage_id'));
