@@ -63,9 +63,9 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->leftjoin('na2.audio', 'na2a')
-            ->leftjoin('na2a.translations', 'na2at')
+            /*->leftjoin('na2a.translations', 'na2at')
             ->leftjoin('na4.video', 'na4v')
-            ->leftjoin('na4v.translations', 'na4vt')
+            ->leftjoin('na4v.translations', 'na4vt')*/
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
             ->andWhere('n.id != :id')
@@ -126,10 +126,10 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na2.translations', 'na2t')
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
-            ->leftjoin('na2.audio', 'na2a')
+            /*->leftjoin('na2.audio', 'na2a')
             ->leftjoin('na2a.translations', 'na2at')
             ->leftjoin('na4.video', 'na4v')
-            ->leftjoin('na4v.translations', 'na4vt')
+            ->leftjoin('na4v.translations', 'na4vt')*/
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
             ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt <= :datetime2)');
