@@ -42,6 +42,7 @@ breadcrumb:
     link_info_image_list: Liste des infos - photos
     link_info_audio_list: Liste des infos - audios
     link_press_guide_list: Guide pratique
+    link_press_homepage_list: Home
     link_contact_page_list: Contactez-nous
     link_f_d_c_event_routes_list: Liste des pages
     link_gallery_list: Galeries photos
@@ -541,10 +542,13 @@ form:
     label_locked_content: Locked content
     label_statement_associated : Communiqués associés
     label_info_associated : Infos associés
+    label_link: Lien du push
+    label_push_image: Image du push
     label_column:
         first: Première colonne
         second: Deuxième colonne
         third: Troisième colonne
+    label_download_section: Documents
     gallery:
         medias: Médias
     encoding_state:

@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\SeoMain;
 
 /**
  * PressHomepage
@@ -22,6 +23,7 @@ class PressHomepage implements TranslateMainInterface
     use Time;
     use Translatable;
     use TranslateMain;
+    use SeoMain;
 
     /**
      * @var integer
@@ -133,6 +135,13 @@ class PressHomepage implements TranslateMainInterface
         $this->homeMedia = new ArrayCollection();
         $this->homeDownload = new ArrayCollection();
         $this->translations = new ArrayCollection();
+    }
+
+    public function __toString() {
+
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        return $string;
     }
 
     /**
