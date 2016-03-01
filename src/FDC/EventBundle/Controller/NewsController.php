@@ -442,7 +442,7 @@ class NewsController extends Controller {
         }
 
         //GET ALL NEWS ARTICLES
-        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getNewsArticles($locale, $settings->getFestival()->getId(), $dateTime);
+        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $settings->getFestival()->getId());
         if ($newsArticles === null) {
             throw new NotFoundHttpException();
         }
@@ -458,8 +458,6 @@ class NewsController extends Controller {
         foreach ($newsArticles as $key => $newsArticle) {
             $isPublished = ($newsArticles !== null) ? ($newsArticle->findTranslationByLocale('fr')->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED) : false;
             if($isPublished) {
-                $newsArticle->image = $newsArticle->getHeader();
-                $newsArticle->theme = $newsArticle->getTheme();
 
                 if(($key % 3) == 0){
                     $newsArticle->double = true;
