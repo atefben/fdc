@@ -44,9 +44,11 @@ class InfoWidgetTextType extends InfoWidgetType
                     'attr' => array(
                         'class' => 'ckeditor'
                     ),
+                    'constraints' => array(
+                        new NotBlank()
+                    ),
                     'field_type' => 'ckeditor',
-                    'config_name' => 'widget',
-                    'required' => false
+                    'config_name' => 'widget'
                 ),
                 'createdAt' => array(
                     'display' => false

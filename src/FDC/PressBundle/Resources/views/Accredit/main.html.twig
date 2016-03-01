@@ -22,7 +22,7 @@
                 <table>
                     <tr>
                     {% for key,sectionFilter in accredit.procedure %}
-                        <td data-cat="{{ sectionFilter.procedure.procedureLink }}" class="{% if key == 0 %}active{% endif %}">
+                        <td data-cat="{{ sectionFilter.procedure|trans_fallback('procedureTitle')|replace({' ':'-'})|lower }}" class="{% if key == 0 %}active{% endif %}">
                             {{ sectionFilter.procedure|trans_fallback('procedureTitle') }}
                         </td>
                         {% if  loop.index % 3 == 0 %}
@@ -35,7 +35,7 @@
             </div>
         </div>
         {% for key, section in accredit.procedure %}
-            <div class="nav-container {% if key == 0 %}active{% endif %}" data-cat="{{ section.procedure.procedureLink }}">
+            <div class="nav-container {% if key == 0 %}active{% endif %}" data-cat="{{ section.procedure|trans_fallback('procedureTitle')|replace({' ':'-'})|lower }}">
                 <div class="wrapper">
                     <div class="container-small">
                         <div class="buttons">
@@ -58,7 +58,7 @@
 
         <div class="request">
             <div class="wrapper">
-                <a href="//reg.online-festival.com/" class="button request-btn" target="_blank">
+                <a href="{{ sectionFilter.procedure.procedureLink }}" class="button request-btn" target="_blank">
                     <i class="icon icon_communique-presse"></i>
                     {{ 'press.accrediter.btn.faireunedemandedaccreditation'|trans }}
                 </a>

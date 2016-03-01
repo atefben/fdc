@@ -215,7 +215,10 @@ class MediaVideoAdmin extends Admin
             ))
             ->add('webTv', 'sonata_type_model_list', array(
                 'btn_delete' => false,
-                'required' => false
+                'required' => false,
+                'attr' => array(
+                    'class' => 'webTvField'
+                )
             ))
             ->add('sites', null, array(
                 'label'    => 'form.label_publish_on',
@@ -284,7 +287,10 @@ class MediaVideoAdmin extends Admin
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('displayedWebTv', null, array(
-                'label' => 'form.media_video.displayed_webTv'
+                'label' => 'form.media_video.displayed_webTv',
+                'attr'  => array(
+                    'class' => 'displayWebTvChannels'
+                )
             ))
             ->add('displayedTrailer', null, array(
                 'label' => 'form.media_video.displayed_trailer'

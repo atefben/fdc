@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Base\AdminBundle\Component\Admin\Export;
 use Doctrine\ORM\Mapping as ORM;
@@ -88,12 +89,20 @@ class MediaVideo extends Media
 
     /**
      * Get displayedWebTv
-     *
      * @return boolean
      */
     public function getDisplayedWebTv()
     {
         return $this->displayedWebTv;
+    }
+
+
+    /**
+     * @Assert\IsFalse(message = "Vous ne pouvez avoir coché 'Afficher dans une chaîne de la webTV' et laisser le champ 'Chaîne' vide")
+     */
+    public function isDisplayedWebTvChecked()
+    {
+        return ($this->getDisplayedWebTv() == true && $this->getWebTv() == null);
     }
 
     /**
