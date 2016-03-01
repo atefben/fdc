@@ -10,6 +10,7 @@ ivory_ck_editor:
                 - ['Link', 'Unlink']
                 - ['Maximize', 'ShowBlocks']
                 - ['Image']
+            customConfig: /bundles/baseadmin/ckeditor/config.js
             filebrowserBrowseRoute: admin_sonata_media_media_browser
             filebrowserImageBrowseRoute: admin_sonata_media_media_browser
             # Display images by default when clicking the image dialog browse button
@@ -23,47 +24,10 @@ ivory_ck_editor:
             filebrowserImageUploadRouteParameters:
                 provider: sonata.media.provider.image
         widget:
-            toolbar:
-                - ['Source']
-                - ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']
-                - ['Find', 'Replace', 'SelectAll']
-                - '/'
-                - ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript', '-', 'RemoveFormat']
-                - ['NumberedList', 'BulletedList', '-', 'Outdent','Indent', '-','JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
-                - ['Link', 'Unlink', 'Anchor']
-                - '/'
-                - ['Table', 'HorizontalRule']
-                - ['Styles']
-                - ['Image']
-                - ['Maximize', 'ShowBlocks']
-            contentsCss: /bundles/baseadmin/css/ckeditor.css
+           # extra_plugins: divarea
+            customConfig: /bundles/baseadmin/ckeditor/config.js
+            contentsCss: /bundles/baseadmin/ckeditor/widget.css
             #styles
-            stylesSet:
-                # Golden border
-                -    { name: 'Bordure dorée', element: 'div', attributes: { 'class': 'big-quote' } }
-                -    { name: 'Bordure dorée titre', element: 'strong' }
-                -    { name: 'Bordure dorée paragraphe', element: 'span', attributes: {'class': 'big-quote-paragraph' } }
-                # Grey text
-                -    { name: 'Texte sur fond gris', element: 'div', attributes: {'class': 'txt-grey-bkg-container'} }
-                -    { name: 'Texte sur fond gris titre', element: 'strong' }
-                -    { name: 'Texte sur fond gris paragraphe', element: 'span', attributes: {'class': 'txt-grey-bkg-container-paragraph' } }
-                # Button link
-                -    { name: 'Bouton lien', element: 'div', attributes: {'class': 'button single-button'} }
-                # Quote
-                -    { name: 'Citation', element: 'div', attributes: {'class': 'blockquote'} }
-                # Titles
-                -    { name: 'Titre', element: 'h2', attributes: { 'class': 'title-article' } }
-                -    { name: 'Sous-titre 1', element: 'h2', attributes: { 'class': 'sub-title' } }
-                -    { name: 'Sous-titre 2', element: 'h2', attributes: { 'class': 'sub-title2' } }
-                -    { name: 'Sous-titre 3', element: 'h3', attributes: { 'class': 'sub-title' } }
-                # Texte size
-                -    { name: 'Texte petit', element: 'div', attributes: { 'class': 'little-txt' } }
-                -    { name: 'Texte gros', element: 'div', attributes: { 'class': 'big-txt' } }
-                # Header text
-                -    { name: 'Chapo', element: 'div', attributes: { 'class': 'chapeau' } }
-                # Notes
-                -    { name: 'Note de bas de page', element: 'div', attributes: { 'class': 'caption-article' } }
-
             #browser sonata media
             filebrowserBrowseRoute: admin_sonata_media_media_browser
             filebrowserImageBrowseRoute: admin_sonata_media_media_browser

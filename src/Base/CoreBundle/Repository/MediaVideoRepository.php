@@ -20,7 +20,7 @@ class MediaVideoRepository extends EntityRepository
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival);
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
-        $qb = $this->addAWSEncodersQueries($qb, 'mvt');
+        $qb = $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         if ($excludeWebTv) {
             $qb
@@ -51,7 +51,7 @@ class MediaVideoRepository extends EntityRepository
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival, true);
         $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
-        $qb = $this->addAWSEncodersQueries($qb, 'mvt');
+        $qb = $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
             ->andWhere('mv.displayedTrailer = 1')
@@ -83,7 +83,7 @@ class MediaVideoRepository extends EntityRepository
         $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addMasterQueries($qb, 'f', $festival, false);
         $this->addTranslationQueries($qb, 'mvt', $locale);
-        $this->addAWSEncodersQueries($qb, 'mvt');
+        $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
             ->orderBy('f.titleVO', 'desc')
@@ -119,7 +119,7 @@ class MediaVideoRepository extends EntityRepository
         $this->addMasterQueries($qb, 'wtv', $festival, false);
         $this->addTranslationQueries($qb, 'mvt', $locale);
         $this->addTranslationQueries($qb, 'wtvt', $locale);
-        $this->addAWSEncodersQueries($qb, 'mvt');
+        $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
             ->orderBy('mv.publishedAt', 'desc')
@@ -146,7 +146,7 @@ class MediaVideoRepository extends EntityRepository
         $this->addMasterQueries($qb, 'wtv', $festival, false);
         $this->addTranslationQueries($qb, 'mvt', $locale);
         $this->addTranslationQueries($qb, 'wtvt', $locale);
-        $this->addAWSEncodersQueries($qb, 'mvt');
+        $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
             ->orderBy('mv.publishedAt', 'desc')
@@ -178,7 +178,7 @@ class MediaVideoRepository extends EntityRepository
         $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addMasterQueries($qb, 'f', $festival, false);
         $this->addTranslationQueries($qb, 'mvt', $locale);
-        $this->addAWSEncodersQueries($qb, 'mvt');
+        $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
             ->orderBy('f.titleVO', 'desc')
