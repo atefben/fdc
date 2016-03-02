@@ -49,8 +49,10 @@ breadcrumb:
     link_gallery_list: Galeries photos
     link_press_projection_list: Programmation
     link_press_download_section_list: Liste des sections à télécharger
-    label_locked_content: Contenu locké
-    
+    link_press_download_list: A télécharger
+    link_press_media_library_list: Médiathèque
+    link_press_accredit_procedure_list: Procédures d'accréditation
+    link_press_accredit_list: S'accréditer
 
 link:
     action_soif_refresh: Mettre à jour
@@ -343,6 +345,8 @@ filter:
         label_id: Id
         label_created_before: Créé avant le
         label_created_after: Créé après le
+        label_updated_before: Modifié avant le
+        label_updated_after: Modifié après le
     press_download:
         label_section : Nom de la section
 
@@ -514,7 +518,7 @@ form:
     label_media_video_image: Image cover
     label_display: Ne pas afficher cette strate
     label_film: Films
-    label_content: Description
+    label_content: Contenu
     label_image: Image
     label_image_link: Image et lien
     label_main_image: Première image
@@ -535,6 +539,7 @@ form:
     label_procedure: Procédures
     label_accredit_procedure: Choisissez les procédures à afficher
     label_btn_link: Lien du bouton
+    label_btn_text: Texte sous le bouton
     label_prefooter_title: Titre du Pré-footer
     label_prefooter_url: URL du Pré-footer
     label_image_push: Image du push (media image semi-riche)
@@ -546,7 +551,7 @@ form:
     label_projection_p: Projection presse
     label_arrive_icon: Pictogramme du titre
     label_trans_name: Slug pour traduction
-    label_locked_content: Locked content
+    label_locked_content: Contenu locké
     label_statement_associated : Communiqués associés
     label_info_associated : Infos associés
     label_link: Lien du push
@@ -562,6 +567,11 @@ form:
     label_map_zone: Zone du festival
     label_scheduling: Programmation
     label_press_scheduling: Programmation presse
+    label_updated_date: Date de mise à jour
+    label_service_icon: Pictogramme
+    label_information_icon: Pictogramme du titre
+    label_media_title: Nom du média
+    label_procedure: Procédure
     gallery:
         medias: Médias
     encoding_state:
@@ -624,7 +634,7 @@ form:
           URL Youtube, type : http://www.youtube.com/watch?v=urCLo4vNpzs&1
           Si non renseigné, seule l'image existera, le picto "play" n'apparaitra pas.
         image: Image cover
-        helper_image: Dimensions attendues : YxZpx. Format attendu.
+        helper_image: Dimensions attendues : 2560×600. Format attendu.
         channels: Chaînes WebTV
         label_web_tvs_associated: Chaînes à la une
         helper_web_tvs_associated: Sélectionnez de 3 à 5 vidéos de la webTV. Elles apparaitront en front-office dans l'ordre des champs.

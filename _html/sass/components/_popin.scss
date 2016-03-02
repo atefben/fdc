@@ -108,7 +108,7 @@
     /* Aspect général de la coche */
     [type="checkbox"]:not(:checked) + label:after,
     [type="checkbox"]:checked + label:after {
-      content: '✔'; //attention à ce caractère//
+      content: '\2713'; //attention à ce caractère//
       position: absolute;
       top: 3px; left: 2px;
       font-size: 9px;

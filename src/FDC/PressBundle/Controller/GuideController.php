@@ -30,10 +30,7 @@ class GuideController extends Controller
         }
 
         // GET GUIDE PAGE
-        $guide = $em->getRepository('BaseCoreBundle:PressGuide')->findOneBy(array(
-            'festival' => $settings->getFestival()->getId()
-        ));
-
+        $guide = $em->getRepository('BaseCoreBundle:PressGuide')->findOneById($this->getParameter('admin_press_guide_id'));
         if ($guide === null) {
             throw new NotFoundHttpException();
         }

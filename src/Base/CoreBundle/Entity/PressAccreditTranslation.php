@@ -28,47 +28,30 @@ class PressAccreditTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="common_title", type="string", length=255, nullable=true)
-     */
-    protected $commonTitle;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="common_content", type="text", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $commonContent;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="procedure_main_title", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $procedureMainTitle;
-
+    protected $btnLabel;
 
     /**
-     * Set commonTitle
+     * @var string
      *
-     * @param string $commonTitle
-     * @return PressAccreditTranslation
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    public function setCommonTitle($commonTitle)
-    {
-        $this->commonTitle = $commonTitle;
-
-        return $this;
-    }
+    protected $btnLink;
 
     /**
-     * Get commonTitle
+     * @var string
      *
-     * @return string 
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    public function getCommonTitle()
-    {
-        return $this->commonTitle;
-    }
+    protected $btnText;
 
     /**
      * Set commonContent
@@ -94,25 +77,71 @@ class PressAccreditTranslation implements TranslateChildInterface
     }
 
     /**
-     * Set procedureMainTitle
+     * Set btnLabel
      *
-     * @param string $procedureMainTitle
+     * @param string $btnLabel
      * @return PressAccreditTranslation
      */
-    public function setProcedureMainTitle($procedureMainTitle)
+    public function setBtnLabel($btnLabel)
     {
-        $this->procedureMainTitle = $procedureMainTitle;
+        $this->btnLabel = $btnLabel;
 
         return $this;
     }
 
     /**
-     * Get procedureMainTitle
+     * Get btnLabel
      *
      * @return string 
      */
-    public function getProcedureMainTitle()
+    public function getBtnLabel()
     {
-        return $this->procedureMainTitle;
+        return $this->btnLabel;
+    }
+
+    /**
+     * Set btnLink
+     *
+     * @param string $btnLink
+     * @return PressAccreditTranslation
+     */
+    public function setBtnLink($btnLink)
+    {
+        $this->btnLink = $btnLink;
+
+        return $this;
+    }
+
+    /**
+     * Get btnLink
+     *
+     * @return string 
+     */
+    public function getBtnLink()
+    {
+        return $this->btnLink;
+    }
+
+    /**
+     * Set btnText
+     *
+     * @param string $btnText
+     * @return PressAccreditTranslation
+     */
+    public function setBtnText($btnText)
+    {
+        $this->btnText = $btnText;
+
+        return $this;
+    }
+
+    /**
+     * Get btnText
+     *
+     * @return string 
+     */
+    public function getBtnText()
+    {
+        return $this->btnText;
     }
 }

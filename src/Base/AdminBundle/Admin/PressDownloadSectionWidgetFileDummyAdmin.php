@@ -23,8 +23,22 @@ class PressDownloadSectionWidgetFileDummyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('file', 'sonata_type_model_list')
-            ->add('secondFile', 'sonata_type_model_list')
+            ->add('file', 'sonata_type_model_list',array(),
+                array(
+                    'link_parameters' => array(
+                        'context'  => 'pdf',
+                        'filter'   => array('context' => array('value' => 'pdf')),
+                        'provider' => 'sonata.media.provider.file'
+                    )
+            ))
+            ->add('secondFile', 'sonata_type_model_list',array(),
+                array(
+                    'link_parameters' => array(
+                        'context'  => 'pdf',
+                        'filter'   => array('context' => array('value' => 'pdf')),
+                        'provider' => 'sonata.media.provider.file'
+                    )
+            ))
         ;
     }
 }

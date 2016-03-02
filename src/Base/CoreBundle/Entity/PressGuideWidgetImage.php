@@ -21,7 +21,7 @@ class PressGuideWidgetImage extends PressGuideWidget
     use Translatable;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     private $gallery;
 

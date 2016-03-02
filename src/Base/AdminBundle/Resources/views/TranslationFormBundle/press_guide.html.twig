@@ -10,403 +10,425 @@
 
             <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 <div class="row">
-                    <div class="col-md-8">
+                    {% if form.vars.default_locale == locale %}
+                    <div class="col-md-12">
                         <div class="box box-success">
-                            {% if form.vars.default_locale == locale %}
-                                <div class="box-body">
-                                    <div class="box box-success">
-                                        <div class="box-header">
-                                            <h4 class="box-title">
-                                                A votre arrivée
-                                            </h4>
-                                        </div>
-                                        <div class="sonata-ba-collapsed-fields">
-                                            {{ form_row(translationsFields.arriveTitle) }}
-                                            {{ form_row(form.parent.children.arriveIcon) }}
-                                            <div id="fdc-arrive-widget" data-form-widget="collection">
-                                                {% for widget in form.parent.children.arriveWidgets.children %}
-                                                    <div class="item base-widget">
-                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
-                                                            <h4><strong>Image widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
-                                                            <h4><strong>Colonne widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
-                                                            <h4><strong>Picto widget</strong></h4>
-                                                            {{ form_row(widget.picto) }}
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-
-                                                        {% endif %}
-                                                        {{ form_row(widget._type) }}
-
-                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                                        </a>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image / texte</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto / texte</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-body">
-                                    <div class="box box-success">
-                                        <div class="box-header">
-                                            <h4 class="box-title">
-                                                Information
-                                            </h4>
-                                        </div>
-                                        <div class="sonata-ba-collapsed-fields">
-                                            {{ form_row(translationsFields.informationTitle) }}
-                                            {{ form_row(form.parent.children.informationIcon) }}
-                                            <div id="fdc-information-widget" data-form-widget="collection">
-                                                {% for widget in form.parent.children.informationWidgets.children %}
-                                                    <div class="item base-widget">
-                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
-                                                            <h4><strong>Image widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
-                                                            <h4><strong>Colonne widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
-                                                            <h4><strong>Picto widget</strong></h4>
-                                                            {{ form_row(widget.picto) }}
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-
-                                                        {% endif %}
-                                                        {{ form_row(widget._type) }}
-
-                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                                        </a>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-body">
-                                    <div class="box box-success">
-                                        <div class="box-header">
-                                            <h4 class="box-title">
-                                                Rendez vous des médias
-                                            </h4>
-                                        </div>
-                                        <div class="sonata-ba-collapsed-fields">
-                                            {{ form_row(translationsFields.meetingTitle) }}
-                                            {{ form_row(form.parent.children.meetingIcon) }}
-                                            <div id="fdc-meeting-widget" data-form-widget="collection">
-                                                {% for widget in form.parent.children.meetingWidgets.children %}
-                                                    <div class="item base-widget">
-                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
-                                                            <h4><strong>Image widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
-                                                            <h4><strong>Colonne widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
-                                                            <h4><strong>Picto widget</strong></h4>
-                                                            {{ form_row(widget.picto) }}
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-
-                                                        {% endif %}
-                                                        {{ form_row(widget._type) }}
-
-                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                                        </a>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-body">
-                                    <div class="box box-success">
-                                        <div class="box-header">
-                                            <h4 class="box-title">
-                                                Services
-                                            </h4>
-                                        </div>
-                                        <div class="sonata-ba-collapsed-fields">
-                                            {{ form_row(translationsFields.serviceTitle) }}
-                                            {{ form_row(form.parent.children.serviceIcon) }}
-                                            <div id="fdc-service-widget" data-form-widget="collection">
-                                                {% for widget in form.parent.children.serviceWidgets.children %}
-                                                    <div class="item base-widget">
-                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
-                                                            <h4><strong>Image widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
-                                                            <h4><strong>Colonne widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
-                                                            <h4><strong>Picto widget</strong></h4>
-                                                            {{ form_row(widget.picto) }}
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-
-                                                        {% endif %}
-                                                        {{ form_row(widget._type) }}
-
-                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                                        </a>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% else %}
-                                <div class="box-body">
-                                    <div class="box box-success">
-                                        <div class="box-header">
-                                            <h4 class="box-title">
-                                                A votre arrivée
-                                            </h4>
-                                        </div>
-                                        <div class="sonata-ba-collapsed-fields">
-                                            {{ form_row(translationsFields.arriveTitle) }}
-                                            {{ form_row(form.parent.children.arriveIcon) }}
-                                            <div id="fdc-arrive-widget" data-form-widget="collection">
-                                                {% for widget in form.parent.children.arriveWidgets.children %}
-                                                    <div class="item base-widget">
-                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
-                                                            <h4><strong>Image widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
-                                                            <h4><strong>Colonne widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
-                                                            <h4><strong>Picto widget</strong></h4>
-                                                            {{ form_row(widget.picto) }}
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-
-                                                        {% endif %}
-                                                        {{ form_row(widget._type) }}
-
-                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                                        </a>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image / texte</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto / texte</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-body">
-                                    <div class="box box-success">
-                                        <div class="box-header">
-                                            <h4 class="box-title">
-                                                Information
-                                            </h4>
-                                        </div>
-                                        <div class="sonata-ba-collapsed-fields">
-                                            {{ form_row(translationsFields.informationTitle) }}
-                                            {{ form_row(form.parent.children.informationIcon) }}
-                                            <div id="fdc-information-widget" data-form-widget="collection">
-                                                {% for widget in form.parent.children.informationWidgets.children %}
-                                                    <div class="item base-widget">
-                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
-                                                            <h4><strong>Image widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
-                                                            <h4><strong>Colonne widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
-                                                            <h4><strong>Picto widget</strong></h4>
-                                                            {{ form_row(widget.picto) }}
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-
-                                                        {% endif %}
-                                                        {{ form_row(widget._type) }}
-
-                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                                        </a>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-body">
-                                    <div class="box box-success">
-                                        <div class="box-header">
-                                            <h4 class="box-title">
-                                                Rendez vous des médias
-                                            </h4>
-                                        </div>
-                                        <div class="sonata-ba-collapsed-fields">
-                                            {{ form_row(translationsFields.meetingTitle) }}
-                                            {{ form_row(form.parent.children.meetingIcon) }}
-                                            <div id="fdc-meeting-widget" data-form-widget="collection">
-                                                {% for widget in form.parent.children.meetingWidgets.children %}
-                                                    <div class="item base-widget">
-                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
-                                                            <h4><strong>Image widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
-                                                            <h4><strong>Colonne widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
-                                                            <h4><strong>Picto widget</strong></h4>
-                                                            {{ form_row(widget.picto) }}
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-
-                                                        {% endif %}
-                                                        {{ form_row(widget._type) }}
-
-                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                                        </a>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-body">
-                                    <div class="box box-success">
-                                        <div class="box-header">
-                                            <h4 class="box-title">
-                                                Services
-                                            </h4>
-                                        </div>
-                                        <div class="sonata-ba-collapsed-fields">
-                                            {{ form_row(translationsFields.serviceTitle) }}
-                                            {{ form_row(form.parent.children.serviceIcon) }}
-                                            <div id="fdc-service-widget" data-form-widget="collection">
-                                                {% for widget in form.parent.children.serviceWidgets.children %}
-                                                    <div class="item base-widget">
-                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
-                                                            <h4><strong>Image widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
-                                                            <h4><strong>Colonne widget</strong></h4>
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                            {{ form_row(widget.gallery) }}
-                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
-                                                            <h4><strong>Picto widget</strong></h4>
-                                                            {{ form_row(widget.picto) }}
-                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
-
-                                                        {% endif %}
-                                                        {{ form_row(widget._type) }}
-
-                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                                        </a>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                            <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        {% if form.vars.default_locale == locale %}
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        {{ 'group.news.publish_parameters'|trans }}
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.status) }}
-                                        <div class="form-group fdc-input-border">
-                                            {{ form_widget(form.parent.children.translate) }}
-                                            {{ form_label(form.parent.children.translate) }}
-                                            {{ form_widget(form.parent.children.translateOptions) }}
-                                            {{ form_row(form.parent.children.priorityStatus) }}
-                                        </div>
-                                    </div>
-                                    {% if app.request.get('id') is not null %}
-                                        <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save"></i> Mettre à jour</button>
-                                        <button type="submit" class="btn btn-success" name="btn_update_and_list"><i class="fa fa-save"></i> <i class="fa fa-list"></i> Mettre à jour et fermer</button>
-                                    {% else %}
-                                        <button type="submit" class="btn btn-success" name="btn_create_and_edit"><i class="fa fa-save"></i> Créer</button>
-                                        <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> <i class="fa fa-list"></i> Créer et retourner à la liste</button>
-                                    {% endif %}
-                                </div>
+                            <div class="box-body">
                                 <div class="box box-success">
                                     <div class="box-header">
                                         <h4 class="box-title">
-                                            Festival
+                                            A votre arrivée
                                         </h4>
                                     </div>
-                                    <div class="box-body">
-                                        <div class="sonata-ba-collapsed-fields">
-                                            {{ form_widget(form.parent.children.festival) }}
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.arriveTitle) }}
+                                        {{ form_row(form.parent.children.arriveIcon) }}
+                                        <div id="fdc-arrive-widget" data-form-widget="collection">
+                                            {% for widget in form.parent.children.arriveWidgets.children %}
+                                                <div class="item base-widget">
+                                                    {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                        <h4><strong>Image widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                        <h4><strong>Colonne widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                        <h4><strong>Picto widget</strong></h4>
+                                                        {{ form_row(widget.picto) }}
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                    {% endif %}
+                                                    {{ form_row(widget._type) }}
+
+                                                    <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                        <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
                                         </div>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image / texte</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto / texte</a>
+
                                     </div>
                                 </div>
                             </div>
-                        {% else %}
+                            <div class="box-body">
+                                <div class="box box-success">
+                                    <div class="box-header">
+                                        <h4 class="box-title">
+                                            Information
+                                        </h4>
+                                    </div>
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.informationTitle) }}
+                                        {{ form_row(form.parent.children.informationIcon) }}
+                                        <div id="fdc-information-widget" data-form-widget="collection">
+                                            {% for widget in form.parent.children.informationWidgets.children %}
+                                                <div class="item base-widget">
+                                                    {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                        <h4><strong>Image widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                        <h4><strong>Colonne widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                        <h4><strong>Picto widget</strong></h4>
+                                                        {{ form_row(widget.picto) }}
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                    {% endif %}
+                                                    {{ form_row(widget._type) }}
+
+                                                    <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                        <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="box box-success">
+                                    <div class="box-header">
+                                        <h4 class="box-title">
+                                            Rendez vous des médias
+                                        </h4>
+                                    </div>
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.meetingTitle) }}
+                                        {{ form_row(form.parent.children.meetingIcon) }}
+                                        <div id="fdc-meeting-widget" data-form-widget="collection">
+                                            {% for widget in form.parent.children.meetingWidgets.children %}
+                                                <div class="item base-widget">
+                                                    {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                        <h4><strong>Image widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                        <h4><strong>Colonne widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                        <h4><strong>Picto widget</strong></h4>
+                                                        {{ form_row(widget.picto) }}
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                    {% endif %}
+                                                    {{ form_row(widget._type) }}
+
+                                                    <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                        <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="box box-success">
+                                    <div class="box-header">
+                                        <h4 class="box-title">
+                                            Services
+                                        </h4>
+                                    </div>
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.serviceTitle) }}
+                                        {{ form_row(form.parent.children.serviceIcon) }}
+                                        <div id="fdc-service-widget" data-form-widget="collection">
+                                            {% for widget in form.parent.children.serviceWidgets.children %}
+                                                <div class="item base-widget">
+                                                    {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                        <h4><strong>Image widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                        <h4><strong>Colonne widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                        <h4><strong>Picto widget</strong></h4>
+                                                        {{ form_row(widget.picto) }}
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                    {% endif %}
+                                                    {{ form_row(widget._type) }}
+
+                                                    <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                        <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-body">
+                                <div class="box box-success">
+                                    <div class="box-header">
+                                        <h4 class="box-title">
+                                            A votre arrivée
+                                        </h4>
+                                    </div>
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.arriveTitle) }}
+                                        {{ form_row(form.parent.children.arriveIcon) }}
+                                        <div id="fdc-arrive-widget" data-form-widget="collection">
+                                            {% for widget in form.parent.children.arriveWidgets.children %}
+                                                <div class="item base-widget">
+                                                    {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                        <h4><strong>Image widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                        <h4><strong>Colonne widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                        <h4><strong>Picto widget</strong></h4>
+                                                        {{ form_row(widget.picto) }}
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                    {% endif %}
+                                                    {{ form_row(widget._type) }}
+
+                                                    <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                        <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image / texte</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto / texte</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="box box-success">
+                                    <div class="box-header">
+                                        <h4 class="box-title">
+                                            Information
+                                        </h4>
+                                    </div>
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.informationTitle) }}
+                                        {{ form_row(form.parent.children.informationIcon) }}
+                                        <div id="fdc-information-widget" data-form-widget="collection">
+                                            {% for widget in form.parent.children.informationWidgets.children %}
+                                                <div class="item base-widget">
+                                                    {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                        <h4><strong>Image widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                        <h4><strong>Colonne widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                        <h4><strong>Picto widget</strong></h4>
+                                                        {{ form_row(widget.picto) }}
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                    {% endif %}
+                                                    {{ form_row(widget._type) }}
+
+                                                    <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                        <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="box box-success">
+                                    <div class="box-header">
+                                        <h4 class="box-title">
+                                            Rendez vous des médias
+                                        </h4>
+                                    </div>
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.meetingTitle) }}
+                                        {{ form_row(form.parent.children.meetingIcon) }}
+                                        <div id="fdc-meeting-widget" data-form-widget="collection">
+                                            {% for widget in form.parent.children.meetingWidgets.children %}
+                                                <div class="item base-widget">
+                                                    {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                        <h4><strong>Image widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                        <h4><strong>Colonne widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                        <h4><strong>Picto widget</strong></h4>
+                                                        {{ form_row(widget.picto) }}
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                    {% endif %}
+                                                    {{ form_row(widget._type) }}
+
+                                                    <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                        <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="box box-success">
+                                    <div class="box-header">
+                                        <h4 class="box-title">
+                                            Services
+                                        </h4>
+                                    </div>
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.serviceTitle) }}
+                                        {{ form_row(form.parent.children.serviceIcon) }}
+                                        <div id="fdc-service-widget" data-form-widget="collection">
+                                            {% for widget in form.parent.children.serviceWidgets.children %}
+                                                <div class="item base-widget">
+                                                    {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                        <h4><strong>Image widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                        <h4><strong>Colonne widget</strong></h4>
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                        {{ form_row(widget.gallery) }}
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                        <h4><strong>Picto widget</strong></h4>
+                                                        {{ form_row(widget.picto) }}
+                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                    {% endif %}
+                                                    {{ form_row(widget._type) }}
+
+                                                    <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                        <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
+                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'group.french_version'|trans|nl2br }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                {% if form.parent.children.translations.children.fr.vars.value %}
+                                <div class="sonata-ba-collapsed-fields">
+                                    <div class="form-group">
+                                        <label>
+                                            A votre arrivée - Titre
+                                        </label>
+                                        <div>
+                                            {{ form.parent.children.translations.children.fr.vars.value.arriveTitle }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Information - Titre
+                                        </label>
+                                        <div>
+                                            {{ form.parent.children.translations.children.fr.vars.value.informationTitle }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Rendez vous des médias - Titre
+                                        </label>
+                                        <div>
+                                            {{ form.parent.children.translations.children.fr.vars.value.meetingTitle }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Services - Titre
+                                        </label>
+                                        <div>
+                                            {{ form.parent.children.translations.children.fr.vars.value.serviceTitle }}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    {% if form.vars.default_locale == locale %}
+                        <div class="col-md-8">
                             <div class="box box-success">
                                 <div class="box-header">
-                                    <h4 class="box-title">
-                                        {{ 'group.news.publish_parameters'|trans }}
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
-                                        <div class="form-group">
-                                            {{ form_row(translationsFields.status) }}
-                                        </div>
+                                    <div class="clearfix">
+                                        <h4 class="box-title">
+                                            {{ 'group.seo'|trans }}
+                                        </h4>
+                                    </div>
+                                    <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
+                                        {{ 'group.helper_seo'|trans|nl2br }}
                                     </div>
                                 </div>
+                                <div class="box-body">
+                                    {{ form_row(translationsFields.seoTitle) }}
+                                    {{ form_row(translationsFields.seoDescription) }}
+                                    {{ form_row(form.parent.children.seoFile) }}
+                                </div>
                             </div>
-                        {% endif %}
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
+                        </div>
+                        <div class="col-md-4">
+                            <p>
+                                {{ 'group.helper_seo_example'|trans|nl2br }}
+                            </p>
+                        </div>
+                    {% else %}
+                        <div class="col-md-8">
                             <div class="box box-success">
                                 <div class="box-header">
                                     <div class="clearfix">
@@ -424,40 +446,56 @@
                                 </div>
                             </div>
                         </div>
-                        {% if form.vars.default_locale == locale %}
-                            <div class="col-md-4">
-                                <p>
-                                    {{ 'group.helper_seo_example'|trans|nl2br }}
-                                </p>
-                            </div>
-                        {% else %}
-                            <div class="col-md-4">
-                                <div class="box box-success">
-                                    <div class="box-header">
-                                        <h4 class="box-title">
-                                            {{ 'group.french_version'|trans|nl2br }}
-                                        </h4>
-                                    </div>
-                                    <div class="box-body">
-                                        <div class="sonata-ba-collapsed-fields">
-                                            <div class="form-group">
-                                                <label>
-                                                    {{ 'form.label_seo_title'|trans }}
-                                                </label>
-                                                <div>
-                                                    {{ form.parent.children.translations.children.fr.children.seoTitle.vars.value }}
-                                                </div>
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_seo_title'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.children.seoTitle.vars.value }}
                                             </div>
-                                            <div class="form-group">
-                                                <label>
-                                                    {{ 'form.label_seo_description'|trans }}
-                                                </label>
-                                                <div>
-                                                    {{ form.parent.children.translations.children.fr.children.seoDescription.vars.value }}
-                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                {{ 'form.label_seo_description'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.translations.children.fr.children.seoDescription.vars.value }}
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="col-md-8">
+                        {% if form.vars.default_locale == locale %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <div class="form-group fdc-input-border">
+                                        {{ form_widget(form.parent.children.translate) }}
+                                        {{ form_label(form.parent.children.translate) }}
+                                        {{ form_widget(form.parent.children.translateOptions) }}
+                                        {{ form_row(form.parent.children.priorityStatus) }}
+                                    </div>
+                                    {{ form_row(form.parent.children.priorityStatus) }}
+                                    <div class="status-hidden">
+                                        {{ form_row(translationsFields.status) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.status) }}
                                 </div>
                             </div>
                         {% endif %}

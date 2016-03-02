@@ -21,11 +21,7 @@
                                 </div>
                             </div>
                             <div class="box-body">
-                                {% if form.vars.default_locale == locale %}
-                                    {{ form_row(translationsFields.title) }}
-                                {% else %}
-                                    {{ form_row(translationsFields.title) }}
-                                {% endif %}
+                                {{ form_row(translationsFields.title) }}
                             </div>
                         </div>
                         <div class="box box-success">
@@ -55,7 +51,7 @@
                                             {% if widget.children._type.vars.value == 'press_download_section_widget_file_type' %}
                                                 {{ form_row(widget.file)}}
                                                 {{ form_row(widget.secondFile)}}
-                                                {{ form_row(widget.updatedAt)}}
+                                                {{ form_row(widget.updateDate)}}
 
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% elseif widget.children._type.vars.value == 'press_download_section_widget_document_type' %}
@@ -105,7 +101,7 @@
                                             {% if widget.children._type.vars.value == 'press_download_section_widget_file_type' %}
                                                 {{ form_row(widget.file)}}
                                                 {{ form_row(widget.secondFile)}}
-                                                {{ form_row(widget.updatedAt)}}
+                                                {{ form_row(widget.updateDate)}}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% elseif widget.children._type.vars.value == 'press_download_section_widget_document_type' %}
                                                 {{ form_row(widget.image)}}
@@ -138,50 +134,40 @@
                     </div>
                     <div class="col-md-4">
                         {% if form.vars.default_locale == locale %}
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        {{ 'group.news.publish_parameters'|trans }}
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.status) }}
-                                        <div class="form-group fdc-input-border">
-                                            {{ form_widget(form.parent.children.translate) }}
-                                            {{ form_label(form.parent.children.translate) }}
-                                            {{ form_widget(form.parent.children.translateOptions) }}
-                                            {{ form_row(form.parent.children.priorityStatus) }}
-                                        </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <div class="form-group fdc-input-border">
+                                        {{ form_widget(form.parent.children.translate) }}
+                                        {{ form_label(form.parent.children.translate) }}
+                                        {{ form_widget(form.parent.children.translateOptions) }}
+                                        {{ form_row(form.parent.children.priorityStatus) }}
                                     </div>
-                                    {% if app.request.get('id') is not null %}
-                                        <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save"></i> Mettre à jour</button>
-                                        <button type="submit" class="btn btn-success" name="btn_update_and_list"><i class="fa fa-save"></i> <i class="fa fa-list"></i> Mettre à jour et fermer</button>
-                                    {% else %}
-                                        <button type="submit" class="btn btn-success" name="btn_create_and_edit"><i class="fa fa-save"></i> Créer</button>
-                                        <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> <i class="fa fa-list"></i> Créer et retourner à la liste</button>
-                                    {% endif %}
+                                    {{ form_row(form.parent.children.priorityStatus) }}
+                                    <div class="status-hidden">
+                                        {{ form_row(translationsFields.status) }}
+                                    </div>
                                 </div>
                             </div>
                         {% else %}
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        {{ 'group.french_version'|trans }}
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    {{ form_row(translationsFields.status) }}
-                                    <div class="sonata-ba-collapsed-fields">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                {{ 'form.label_theme_name'|trans }}
-                                            </label>
-                                            {% if form.children.fr.vars.value is not null %}
+                            <div class="box-body">
+                                <div class="box box-success">
+                                    <div class="box-header">
+                                        <h4 class="box-title">
+                                            {{ 'group.french_version'|trans|nl2br }}
+                                        </h4>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="sonata-ba-collapsed-fields">
+                                            <div class="form-group">
+                                                <label>
+                                                    Titre
+                                                </label>
                                                 <div>
-                                                    {{ form.children.fr.vars.value.title }}
+                                                    {% if form.parent.children.translations.children.fr.vars.value %}
+                                                    {{ form.parent.children.translations.children.fr.vars.value.title }}
+                                                    {% endif %}
                                                 </div>
-                                            {% endif %}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

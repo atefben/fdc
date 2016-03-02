@@ -58,13 +58,13 @@
 
         <div class="request">
             <div class="wrapper">
-                <a href="{{ sectionFilter.procedure.procedureLink }}" class="button request-btn" target="_blank">
+                <a href="{{ accredit|trans_fallback('btnLink') }}" class="button request-btn" target="_blank">
                     <i class="icon icon_communique-presse"></i>
-                    {{ 'press.accrediter.btn.faireunedemandedaccreditation'|trans }}
+                    {{ accredit|trans_fallback('btnLabel') }}
                 </a>
                 <span class="legend">
                     <sup>*</sup>
-                    {{ 'press.accrediter.legend.vousallezquitterlesite'|trans }}
+                    {{ accredit|trans_fallback('btnText') }}
                 </span>
             </div>
         </div>

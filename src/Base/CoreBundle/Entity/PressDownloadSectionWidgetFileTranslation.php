@@ -41,6 +41,13 @@ class PressDownloadSectionWidgetFileTranslation
      */
     protected $secondBtnLabel;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     *
+     */
+    protected $updateDate;
 
     /**
      * Set copyright
@@ -109,5 +116,28 @@ class PressDownloadSectionWidgetFileTranslation
     public function getSecondBtnLabel()
     {
         return $this->secondBtnLabel;
+    }
+
+    /**
+     * Set updateDate
+     *
+     * @param \DateTime $updateDate
+     * @return PressDownloadSectionWidgetFileTranslation
+     */
+    public function setUpdateDate($updateDate)
+    {
+        $this->updateDate = $updateDate;
+
+        return $this;
+    }
+
+    /**
+     * Get updateDate
+     *
+     * @return \DateTime 
+     */
+    public function getUpdateDate()
+    {
+        return $this->updateDate;
     }
 }
