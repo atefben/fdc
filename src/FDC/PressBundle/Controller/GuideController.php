@@ -35,10 +35,6 @@ class GuideController extends Controller
             throw new NotFoundHttpException();
         }
 
-        if ($guide === null) {
-            throw new NotFoundHttpException();
-        }
-
         $headerInfo = array(
             'title' => 'Guide pratique',
             'description' => ''

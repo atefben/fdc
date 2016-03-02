@@ -21,7 +21,6 @@
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.commonTitle) }}
                                     {{ form_row(translationsFields.commonContent) }}
                                 </div>
                             </div>
@@ -34,7 +33,6 @@
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.procedureMainTitle) }}
                                     {{ form_row(form.parent.children.procedure) }}
                                 </div>
                             </div>
@@ -64,20 +62,7 @@
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.commonTitle) }}
                                     {{ form_row(translationsFields.commonContent) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    Procédure par type de média
-                                </h4>
-                            </div>
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.procedureMainTitle) }}
                                 </div>
                             </div>
                         </div>
@@ -103,68 +88,61 @@
                                     {{ 'group.french_version'|trans|nl2br }}
                                 </h4>
                             </div>
-                            <header>
-                                Informations communes
-                            </header>
-                            <div>
-                                <label>
-                                    Titre
-                                </label>
-                                <span>
-                                {% if procedureTranslations is not null and
-                                procedureTranslations.get(locale) is not null %}
-                                    {{ procedureTranslations.get(locale).procedureTitle }}
-                                {% endif %}
-                                </span>
-                            </div>
-                            <div>
-                                <label>
-                                    Contenu
-                                </label>
-                                <span>
-                                {% if procedureTranslations is not null and
-                                procedureTranslations.get(locale) is not null %}
-                                    {{ procedureTranslations.get(locale).procedureContent }}
-                                {% endif %}
-                                </span>
+                            <div class="box-body">
+                                <h4 class="box-title">
+                                    Informations communes
+                                </h4>
+                                <div>
+                                    <label>
+                                        Contenu
+                                    </label>
+                                    <span>
+                                    {% if procedureTranslations is not null and
+                                    procedureTranslations.get(locale) is not null %}
+                                        {{ procedureTranslations.get(locale).procedureContent }}
+                                    {% endif %}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div class="box box-success">
-                            <header>
-                                Demande d’accréditation
-                            </header>
-                            <div>
-                                <label>
-                                    Libelle du bouton
-                                </label>
-                                <span>
-                                {% if procedureTranslations is not null and
-                                procedureTranslations.get(locale) is not null %}
-                                    {{ procedureTranslations.get(locale).btnLabel }}
-                                {% endif %}
-                                </span>
-                            </div>
-                            <div>
-                                <label>
-                                    Lien du bouton
-                                </label>
-                                <span>
-                                {% if procedureTranslations is not null and
-                                procedureTranslations.get(locale) is not null %}
-                                    {{ procedureTranslations.get(locale).btnLink }}
-                                {% endif %}
-                                </span>
-                            </div>
-                            <div>
-                                <label>
-                                    Texte sous le bouton
-                                </label>
-                                <span>
-                                {% if procedureTranslations is not null and
-                                procedureTranslations.get(locale) is not null %}
-                                    {{ procedureTranslations.get(locale).btnText }}
-                                {% endif %}
-                                </span>
+                            <div class="box-body">
+                                <h4 class="box-title">
+                                    Demande d’accréditation
+                                </h4>
+                                <div>
+                                    <label>
+                                        Libelle du bouton
+                                    </label>
+                                    <span>
+                                    {% if procedureTranslations is not null and
+                                    procedureTranslations.get(locale) is not null %}
+                                        {{ procedureTranslations.get(locale).btnLabel }}
+                                    {% endif %}
+                                    </span>
+                                </div>
+                                <div>
+                                    <label>
+                                        Lien du bouton
+                                    </label>
+                                    <span>
+                                    {% if procedureTranslations is not null and
+                                    procedureTranslations.get(locale) is not null %}
+                                        {{ procedureTranslations.get(locale).btnLink }}
+                                    {% endif %}
+                                    </span>
+                                </div>
+                                <div>
+                                    <label>
+                                        Texte sous le bouton
+                                    </label>
+                                    <span>
+                                    {% if procedureTranslations is not null and
+                                    procedureTranslations.get(locale) is not null %}
+                                        {{ procedureTranslations.get(locale).btnText }}
+                                    {% endif %}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -70,19 +70,11 @@ class PressAccreditAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'commonTitle' => array(
-                        'label' => 'form.label_media_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                    ),
                     'commonContent' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_procedure',
+                        'label' => 'form.label_content',
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'widget'
-                    ),
-                    'procedureMainTitle' => array(
-                        'label' => 'Titre pour les procédures',
-                        'translation_domain' => 'BaseAdminBundle',
                     ),
                     'btnLabel' => array(
                         'label' => 'form.label_btn',
@@ -181,4 +173,10 @@ class PressAccreditAdmin extends Admin
             ->add('updatedAt')
         ;
     }
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
+    }
+
 }
