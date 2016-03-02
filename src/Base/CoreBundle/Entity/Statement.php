@@ -181,6 +181,13 @@ abstract class Statement implements TranslateMainInterface
      */
     private $updatedBy;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $hideSameDay;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
@@ -760,5 +767,28 @@ abstract class Statement implements TranslateMainInterface
     public function setWidgets($widgets)
     {
         $this->widgets = $widgets;
+    }
+
+    /**
+     * Set hideSameDay
+     *
+     * @param boolean $hideSameDay
+     * @return Statement
+     */
+    public function setHideSameDay($hideSameDay)
+    {
+        $this->hideSameDay = $hideSameDay;
+
+        return $this;
+    }
+
+    /**
+     * Get hideSameDay
+     *
+     * @return boolean 
+     */
+    public function getHideSameDay()
+    {
+        return $this->hideSameDay;
     }
 }
