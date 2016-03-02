@@ -160,7 +160,6 @@ class NewsController extends Controller
                 $slug,
                 $settings->getFestival()->getId(),
                 $locale,
-                $dateTime->format('Y-m-d H:i:s'),
                 $isAdmin,
                 $mapper[$format]
             );
@@ -178,6 +177,10 @@ class NewsController extends Controller
                 $isAdmin,
                 $mapper[$format]
             );
+        }
+
+        if ($statement == null) {
+            throw  new NotFoundHttpException();
         }
 
         //get associated film to the news
