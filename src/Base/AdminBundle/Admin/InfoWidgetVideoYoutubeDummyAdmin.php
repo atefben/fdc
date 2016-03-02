@@ -9,13 +9,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * StatementWidgetVideoYoutubeDummyAdmin class.
+ * InfoWidgetVideoYoutubeDummyAdmin class.
  *
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class StatementWidgetVideoYoutubeDummyAdmin extends Admin
+class InfoWidgetVideoYoutubeDummyAdmin extends Admin
 {
     /**
      * @param FormMapper $formMapper

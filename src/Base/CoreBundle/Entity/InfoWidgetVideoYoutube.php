@@ -32,8 +32,39 @@ class InfoWidgetVideoYoutube extends InfoWidget
      */
     protected $translations;
 
+    /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
+     * @Groups({"news_list", "news_show"})
+     */
+    protected $image;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $image
+     * @return NewsWidgetVideoYoutube
+     */
+    public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }
