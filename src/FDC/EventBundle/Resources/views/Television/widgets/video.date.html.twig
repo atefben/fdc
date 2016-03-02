@@ -1,6 +1,5 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-
 {% set video = video.association %}
 {% set transImage = video.image.findTranslationByLocale(app.request.locale) %}
 {% if transImage is null %}
@@ -11,12 +10,10 @@
 {% if transVideo is null %}
     {% set transVideo = video.findTranslationByLocale('fr') %}
 {% endif %}
-
-
 <div class="image-wrapper">
     <img src="{% path transImage.file, '640x404' %}" alt="{{ video.image|trans_fallback('alt') }}" />
 </div>
-<a class="linkVid" href="{% path transVideo.file, 'reference'%}"></a>
+<a class="linkVid" href="#"></a>
 <div class="info">
     <div class="picto">
         <i class="icon icon_video"></i>
