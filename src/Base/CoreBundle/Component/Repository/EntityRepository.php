@@ -160,5 +160,19 @@ class EntityRepository extends BaseRepository
         return $qb;
     }
 
+    /**
+     * @param QueryBuilder $qb
+     * @param $aliasMain
+     * @param $aliasTranslation
+     * @return QueryBuilder
+     */
+    public function addImageQueries(QueryBuilder $qb, $aliasMain, $aliasTranslation)
+    {
+        $qb
+            ->andWhere("($aliasMain.image IS NOT NULL OR $aliasTranslation.imageAmazonUrl IS NOT NULL)")
+        ;
+        return $qb;
+    }
+
 
 }
