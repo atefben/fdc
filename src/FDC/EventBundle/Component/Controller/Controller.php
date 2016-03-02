@@ -24,14 +24,23 @@ class Controller extends BaseController
     {
         $newsTypes = array('NewsAudio', 'NewsVideo');
 
+        $mediaTypes = array(
+            'NewsAudio' => 'getAudio',
+            'NewsVideo' => 'getVideo'
+        );
+
         foreach ($newsTypes as $newsType) {
             foreach ($array as $key => $news) {
                 if (strpos(get_class($news), $newsType) !== false) {
-                    $trans = $news->getAudio()->findTranslationByLocale($locale);
-                    $transFr = $news->getAudio()->findTranslationByLocale('fr');
-                    if ($this->checkMediaAudioVideoPublished($trans, $transFr) === false) {
-                        if ($this->checkMediaAudioVideoPublished($transFr, $transFr) === false) {
-                            unset($array[$key]);
+                    if ($news->{$mediaTypes[$newsType]}() == null) {
+                        unset($array[$key]);
+                    } else {
+                        $trans = $news->{$mediaTypes[$newsType]}()->findTranslationByLocale($locale);
+                        $transFr = $news->{$mediaTypes[$newsType]}()->findTranslationByLocale('fr');
+                        if ($this->checkMediaAudioVideoPublished($trans, $transFr) === false) {
+                            if ($this->checkMediaAudioVideoPublished($transFr, $transFr) === false) {
+                                unset($array[$key]);
+                            }
                         }
                     }
                 }
