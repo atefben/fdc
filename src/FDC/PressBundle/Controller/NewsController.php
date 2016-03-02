@@ -294,7 +294,7 @@ class NewsController extends Controller
         //GET ALL STATEMENT ARTICLES
         $statements = $em->getRepository('BaseCoreBundle:Statement')->getStatements($settings->getFestival()->getId(), $dateTime, $locale);
 
-        //GET ALL STATEMENT ARTICLES
+        //GET ALL INFO ARTICLES
         $infos = $em->getRepository('BaseCoreBundle:Info')->getInfos($settings->getFestival()->getId(), $dateTime, $locale);
 
         if ($statements === null && $infos === null) {
