@@ -184,7 +184,7 @@
                         {% if video.association is defined and video.association != null %}
                             <div class="vid video"
                                 data-vid="{{ video.association.id }}"
-                                data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
+                                data-file='[{"file":"{{ s3_server_video ~ video.association|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video.association|trans_fallback('mp4Url') }}"}]'
                                 {% if video.association.image|trans_fallback('file') %}
                                 data-img="{% path video.association.image|trans_fallback('file'), '463x292' %}"
                                 {% else %}
