@@ -57,7 +57,7 @@ class PressDownloadSectionAdmin extends Admin
             ))
         ;
         $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
-        $datagridMapper = $this->addPublishedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addUpdatedBetweenFilters($datagridMapper);
 
 
     }

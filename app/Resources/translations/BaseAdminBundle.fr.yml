@@ -344,6 +344,8 @@ filter:
         label_id: Id
         label_created_before: Créé avant le
         label_created_after: Créé après le
+        label_updated_before: Modifié avant le
+        label_updated_after: Modifié après le
     press_download:
         label_section : Nom de la section
 
@@ -547,7 +549,7 @@ form:
     label_projection_p: Projection presse
     label_arrive_icon: Pictogramme du titre
     label_trans_name: Slug pour traduction
-    label_locked_content: Locked content
+    label_locked_content: Contenu locké
     label_statement_associated : Communiqués associés
     label_info_associated : Infos associés
     label_link: Lien du push
