@@ -55,7 +55,7 @@ $(document).ready(function() {
           var div = $("<div/>");
           div.html(data);
           $('.filters').html(div.find('.filter'));
-          $('#articles-wrapper').html(div.find('.articles'));
+          $('#articles-wrapper').html(div.find('.articles, .slideshow'));
 
           setTimeout(function() {
             cl.hide();
@@ -141,7 +141,7 @@ $(document).ready(function() {
             var div = $("<div/>");
             div.html(data);
             $('.filters').html(div.find('.filter'));
-            $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).html(div.find('.articles'));
+            $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).html(div.find('.articles, .slideshow'));
 
             filter();
 
@@ -184,7 +184,7 @@ $(document).ready(function() {
             $(this).append($(this).find('i'))
           });
 
-          $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).append(div.find('.articles'));
+          $('#articles-wrapper').css('max-height', $('#articles-wrapper').height()).append(div.find('.articles, .slideshow'));
           $('#articles-wrapper').css('max-height', $('#articles-wrapper').prop('scrollHeight'));
 
           filter();
