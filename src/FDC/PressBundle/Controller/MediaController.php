@@ -42,10 +42,10 @@ class MediaController extends Controller
         $i = 0;
         $filmSection = array();
         $section = array();
-        foreach ($films as $film) {
 
+        foreach ($films as $film) {
             //Construct sections
-            if (!in_array($film->getSelectionSection()->findTranslationByLocale($locale)->getSlug(), $section)) {
+            if ($film->getSelectionSection() !== null && !in_array($film->getSelectionSection()->findTranslationByLocale($locale)->getSlug(), $section)) {
                 $filmSection[$i]['slug'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
                 $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
 

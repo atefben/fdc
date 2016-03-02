@@ -115,13 +115,6 @@ class PressDownloadSectionAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.news.helper_title'
                     ),
-                    'status' => array(
-                        'label' => 'form.label_status',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'choice',
-                        'choices' => PressDownloadSectionTranslation::getStatuses(),
-                        'choice_translation_domain' => 'BaseAdminBundle'
-                    ),
                     'seoTitle' => array(
                         'attr' => array(
                             'placeholder' => 'form.placeholder_seo_title'

@@ -381,14 +381,13 @@
 {% block press_download_section_widget_file_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>Module dosier de presse</h4>
+        <h4>Module dossier de presse</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
         {{ form_row(form.children.file) }}
         {{ form_row(form.children.secondFile) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
-        {{ form_widget(form.children.updatedAt)}}
-        {{ form_widget(form.children.lockedContent) }}
+        {{ form_row(form.children.lockedContent) }}
 
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
@@ -407,7 +406,7 @@
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
         {{ form_row(form.children.gallery) }}
-        {{ form_widget(form.children.lockedContent) }}
+        {{ form_row(form.children.lockedContent) }}
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
                 <a class="btn btn-danger btn-sm btn-outline remove_item">
@@ -428,7 +427,7 @@
         {{ form_row(form.children.file) }}
         {{ form_row(form.children.secondFile) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
-        {{ form_widget(form.children.lockedContent) }}
+        {{ form_row(form.children.lockedContent) }}
 
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">

@@ -75,4 +75,10 @@ class PressMediaLibraryAdmin extends Admin
             ->add('updatedAt')
         ;
     }
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
+    }
+
 }

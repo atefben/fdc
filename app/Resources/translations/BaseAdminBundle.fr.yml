@@ -49,8 +49,9 @@ breadcrumb:
     link_gallery_list: Galeries photos
     link_press_projection_list: Programmation
     link_press_download_section_list: Liste des sections à télécharger
-    label_locked_content: Contenu locké
-    
+    link_press_download_list: A télécharger
+    link_press_media_library_list: Médiathèque
+
 
 link:
     action_soif_refresh: Mettre à jour
@@ -562,6 +563,7 @@ form:
     label_map_zone: Zone du festival
     label_scheduling: Programmation
     label_press_scheduling: Programmation presse
+    label_updated_date: Date de mise à jour
     gallery:
         medias: Médias
     encoding_state:
