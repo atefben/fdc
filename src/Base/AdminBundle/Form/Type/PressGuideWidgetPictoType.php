@@ -78,6 +78,8 @@ class PressGuideWidgetPictoType extends PressGuideWidgetType
                 'icon_transport' => 'Icone transport',
                 'icon_divers' => 'Icone divers',
             ),
+            'label' => 'form.label_service_icon',
+            'translation_domain' => 'BaseAdminBundle',
             'choice_translation_domain' => 'BaseAdminBundle'
         ))
         ;

@@ -146,7 +146,7 @@ class PressGuideAdmin extends Admin
             ))
             ->add('translate', 'checkbox' , array(
                 'required' => false,
-                ))
+            ))
             ->add('translateOptions', 'choice', array(
                 'choices' => PressGuide::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
@@ -156,6 +156,12 @@ class PressGuideAdmin extends Admin
             ->add('priorityStatus', 'choice', array(
                 'choices' => PressGuide::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
+            ))
+            ->add('seoFile', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'seo_file',
+                'help' => 'form.seo.helper_file',
+                'required' => false,
             ))
             ->add('arriveWidgets', 'infinite_form_polycollection', array(
                 'label' => false,
@@ -212,6 +218,8 @@ class PressGuideAdmin extends Admin
                     'icon_rendez-vous-des-medias' => 'Rendez-vous',
                     'icon_service' => 'Services',
                 ),
+                'label' => 'form.label_information_icon',
+                'translation_domain' => 'BaseAdminBundle',
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('serviceIcon', new ChoiceType(), array(
@@ -221,6 +229,8 @@ class PressGuideAdmin extends Admin
                     'icon_rendez-vous-des-medias' => 'Rendez-vous',
                     'icon_service' => 'Services',
                 ),
+                'label' => 'form.label_information_icon',
+                'translation_domain' => 'BaseAdminBundle',
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('meetingIcon', new ChoiceType(), array(
@@ -230,6 +240,8 @@ class PressGuideAdmin extends Admin
                     'icon_rendez-vous-des-medias' => 'Rendez-vous',
                     'icon_service' => 'Services',
                 ),
+                'label' => 'form.label_information_icon',
+                'translation_domain' => 'BaseAdminBundle',
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('informationIcon', new ChoiceType(), array(
@@ -239,9 +251,10 @@ class PressGuideAdmin extends Admin
                     'icon_rendez-vous-des-medias' => 'Rendez-vous',
                     'icon_service' => 'Services',
                 ),
+                'label' => 'form.label_information_icon',
+                'translation_domain' => 'BaseAdminBundle',
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
-            ->add('festival')
 
             ->end()
         ;

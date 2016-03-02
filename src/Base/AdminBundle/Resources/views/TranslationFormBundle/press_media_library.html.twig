@@ -84,6 +84,30 @@
                             </div>
                         </div>
                     {% endif %}
+                    <div class="col-md-8">
+                        {% if form.vars.default_locale == locale %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <div class="form-group fdc-input-border">
+                                        {{ form_widget(form.parent.children.translate) }}
+                                        {{ form_label(form.parent.children.translate) }}
+                                        {{ form_widget(form.parent.children.translateOptions) }}
+                                        {{ form_row(form.parent.children.priorityStatus) }}
+                                    </div>
+                                    {{ form_row(form.parent.children.priorityStatus) }}
+                                    <div class="status-hidden">
+                                        {{ form_row(translationsFields.status) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.status) }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         {% endfor %}

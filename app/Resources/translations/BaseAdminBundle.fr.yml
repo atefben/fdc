@@ -566,6 +566,8 @@ form:
     label_scheduling: Programmation
     label_press_scheduling: Programmation presse
     label_updated_date: Date de mise à jour
+    label_service_icon: Pictogramme
+    label_information_icon: Pictogramme du titre
     gallery:
         medias: Médias
     encoding_state:

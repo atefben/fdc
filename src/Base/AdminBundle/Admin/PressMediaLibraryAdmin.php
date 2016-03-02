@@ -8,6 +8,9 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
+use Base\CoreBundle\Entity\PressMediaLibrary;
+use Base\CoreBundle\Entity\PressMediaLibraryTranslation;
+
 class PressMediaLibraryAdmin extends Admin
 {
     protected $formOptions = array(
@@ -74,8 +77,28 @@ class PressMediaLibraryAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
 
-                    )
-                ),
+                    ),
+                    'status' => array(
+                        'label' => 'form.label_status',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'choice',
+                        'choices' => PressMediaLibraryTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle'
+                    ),
+                )
+            ))
+            ->add('translate', 'checkbox' , array(
+                'required' => false,
+            ))
+            ->add('translateOptions', 'choice', array(
+                'choices' => PressMediaLibrary::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => PressMediaLibrary::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
