@@ -53,6 +53,10 @@ $(document).ready(function() {
 
       sliderMovieVideos.owlCarousel();
 
+      $('body').on('click', '#slider-movie-videos .owl-item', function(e) {
+        sliderMovieVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
+      });
+
       // slider competitions
       var sliderCompetition = $("#slider-competition").owlCarousel({
         nav: false,
@@ -84,11 +88,6 @@ $(document).ready(function() {
     }
 
     initSliders();
-
-    // go to item
-    $('body').on('click', '#slider-movie-videos .owl-item', function(e) {
-      sliderMovieVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
-    });
 
     // gallery slideshow
     $('body').on('click', '.gallery .thumbs a', function(e) {

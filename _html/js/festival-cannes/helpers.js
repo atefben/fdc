@@ -35,3 +35,16 @@ window.requestAnimFrame = (function(){
           };
 })();
 
+// is IE Browser
+function isIE() {
+  return navigator.userAgent.indexOf("Edge") > -1 ||
+         navigator.userAgent.indexOf("MSIE") > -1 ||
+         navigator.userAgent.indexOf("Trident") > -1
+}
+
+// is iPad
+function isiPad() {
+  return navigator.userAgent.indexOf("iPad") > -1 ||
+         navigator.userAgent.indexOf("iPhone") > -1 ||
+         navigator.userAgent.indexOf("Android") > -1
+}

@@ -34,7 +34,7 @@ var d = document,
             <a href="#" class="channels"><i class="icon icon_playlist"></i></a>\
             <div class="info"></div>\
             <div class="buttons square">\
-                <a href="//www.facebook.com/sharer.php?u=CUSTOM_URL&t=CUSTOM_TITLE" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>\
+                <a href="//www.facebook.com/sharer.php?u=CUSTOM_URL" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>\
                 <a href="//twitter.com/intent/tweet?text=CUSTOM_TEXT" class="button twitter"><i class="icon icon_twitter"></i></a>\
                 <a href="#" class="button link"><i class="icon icon_link"></i></a>\
                 <a href="#" class="button email"><i class="icon icon_lettre"></i></a>\
@@ -64,7 +64,7 @@ var d = document,
                 </div>\
             </div>\
         </div>',
-    facebookLink = "//www.facebook.com/sharer.php?u=CUSTOM_URL&t=CUSTOM_TITLE",
+    facebookLink = "//www.facebook.com/sharer.php?u=CUSTOM_URL",
     twitterLink  = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
 function playerInit(id, cls, havePlaylist, live) {
@@ -127,11 +127,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     // CUSTOM LINK FACEBOOK
     var fbHref = $topBar.find('.buttons .facebook').attr('href');
     fbHref = fbHref.replace('CUSTOM_URL', encodeURI(GLOBALS.urls.videosUrl+'#'+$container.data('vid')));
-    if(typeof $container.data('name') != 'undefined' && $container.data('name').length > 0) {
-        fbHref = fbHref.replace('CUSTOM_TITLE', $container.data('name'));
-    } else {
-        fbHref = fbHref.replace('CUSTOM_TITLE', $topBar.find('.info p').text());
-    }
     $topBar.find('.buttons .facebook').attr('href', fbHref);
     // CUSTOM LINK TWITTER
     var twHref = $topBar.find('.buttons .twitter').attr('href');
@@ -219,7 +214,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         // CUSTOM LINK FACEBOOK
         var fbHref = facebookLink;
         fbHref = fbHref.replace('CUSTOM_URL', encodeURI(GLOBALS.urls.videosUrl+'#'+$playlist[index].vid));
-        fbHref = fbHref.replace('CUSTOM_TITLE', encodeURI($playlist[index].name));
         $topBar.find('.buttons .facebook').attr('href', fbHref);
         // CUSTOM LINK TWITTER
         var twHref = twitterLink;
