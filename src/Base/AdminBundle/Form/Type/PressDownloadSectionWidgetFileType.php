@@ -98,25 +98,43 @@ class PressDownloadSectionWidgetFileType extends PressDownloadSectionWidgetType
                                 'required' => false
                             )
                         )
+                    ),
+                    'updateDate' => array(
+                        'field_type' => 'sonata_type_datetime_picker',
+                        'format' => 'yyyy-MM-dd H:m',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'label' => 'form.label_updated_date',
+                        'required' => false,
                     )
 
                 )
             ))
-            ->add('updatedAt', 'sonata_type_datetime_picker',array(
-                'format' => 'yyyy-MM-dd H:m',
-            ))
-
             ->add('file', 'sonata_type_model_list', array(
                 'sonata_field_description' =>  $this->PressDownloadSectionWidgetFileDummyAdmin->getFormFieldDescriptions()['file'],
                 'model_manager' => $this->PressDownloadSectionWidgetFileDummyAdmin->getModelManager(),
                 'class' => $this->PressDownloadSectionWidgetFileDummyAdmin->getFormFieldDescriptions()['file']->getAssociationAdmin()->getClass(),
+                ),
+                array(
+                'link_parameters' => array(
+                    'context'  => 'pdf',
+                    'filter'   => array('context' => array('value' => 'pdf')),
+                    'provider' => 'sonata.media.provider.file'
+                )
             ))
             ->add('secondFile', 'sonata_type_model_list', array(
                 'sonata_field_description' =>  $this->PressDownloadSectionWidgetFileDummyAdmin->getFormFieldDescriptions()['secondFile'],
                 'model_manager' => $this->PressDownloadSectionWidgetFileDummyAdmin->getModelManager(),
                 'class' => $this->PressDownloadSectionWidgetFileDummyAdmin->getFormFieldDescriptions()['secondFile']->getAssociationAdmin()->getClass(),
                 'required' => false
+                ),
+                array(
+                'link_parameters' => array(
+                    'context'  => 'pdf',
+                    'filter'   => array('context' => array('value' => 'pdf')),
+                    'provider' => 'sonata.media.provider.file'
+                )
             ))
+
 
         ;
 

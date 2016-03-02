@@ -4,7 +4,6 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
-use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;

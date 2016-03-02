@@ -43,7 +43,8 @@ class PressDownloadSectionWidgetType extends BaseType
                 ->add('position', 'hidden')
                 ->add('lockedContent', 'checkbox', array(
                     'required' => false,
-                    'label'    => 'form.label_locked_content'
+                    'label'    => 'form.label_locked_content',
+                    'translation_domain' => 'BaseAdminBundle'
                 ))
             ;
 

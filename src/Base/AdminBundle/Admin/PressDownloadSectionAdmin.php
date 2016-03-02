@@ -40,12 +40,8 @@ class PressDownloadSectionAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('priorityStatus', 'doctrine_orm_choice', array(), 'choice', array(
-                'choices' => PressDownloadSection::getPriorityStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle'
-            ))
             ->add('title', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -53,14 +49,17 @@ class PressDownloadSectionAdmin extends Admin
                     $queryBuilder->andWhere('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
                     $queryBuilder->andWhere('t.title LIKE :title');
-                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
-
+                    $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
                     return true;
                 },
-                'field_type' => 'text'
+                'field_type' => 'text',
+                'label'      => 'filter.press_download.label_section'
             ))
-            ->add('translate')
         ;
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addUpdatedBetweenFilters($datagridMapper);
+
+
     }
 
     /**
@@ -69,8 +68,21 @@ class PressDownloadSectionAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
+            ->add('id', null, array(
+                'label' => 'list.common.label_id'
+            ))
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:News:list_title.html.twig',
+                'label'    => 'list.label_section_title',
+            ))
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
+            ->add('updatedAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_updated_at.html.twig',
+                'sortable' => 'updatedAt',
+            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -102,13 +114,6 @@ class PressDownloadSectionAdmin extends Admin
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.news.helper_title'
-                    ),
-                    'status' => array(
-                        'label' => 'form.label_status',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'choice',
-                        'choices' => PressDownloadSectionTranslation::getStatuses(),
-                        'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                     'seoTitle' => array(
                         'attr' => array(
@@ -166,7 +171,8 @@ class PressDownloadSectionAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('title')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 }

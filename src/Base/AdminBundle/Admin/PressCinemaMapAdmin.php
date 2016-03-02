@@ -110,7 +110,8 @@ class PressCinemaMapAdmin extends Admin
                                 'mapped'   => false,
                                 'required' => false,
                             )
-                        )
+                        ),
+
                     ),
                     'cascade_validation' => true,
                     'by_reference' => false,
@@ -121,12 +122,25 @@ class PressCinemaMapAdmin extends Admin
                     'sortable'  => 'position',
                 )
             )
-            ->add('translate')
+            ->add('seoFile', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'seo_file',
+                'help' => 'form.seo.helper_file',
+                'required' => false,
+            ))
+            ->add('translate', 'checkbox' , array(
+                'required' => false,
+            ))
+            ->add('translateOptions', 'choice', array(
+                'choices' => PressCinemaMap::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices' => PressCinemaMap::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
-            ->add('festival')
             ->end()
         ;
 
@@ -142,6 +156,11 @@ class PressCinemaMapAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
         ;
+    }
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
     }
 
 }

@@ -1,8 +1,3 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-
-{% if isPressProjection == true  %}
-    {% include 'FDCPressBundle:Agenda:components/grid-ajax.html.twig' %}
-{% else %}
-    {% include 'FDCEventBundle:Agenda:components/grid.html.twig' %}
-{% endif %}
+{% include 'FDCEventBundle:Agenda:components/grid.html.twig' %}

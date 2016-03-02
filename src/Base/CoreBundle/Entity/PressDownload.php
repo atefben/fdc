@@ -6,7 +6,10 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\SeoMain;
 
 /**
  * PressDownload
@@ -15,10 +18,13 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressDownload
+class PressDownload implements TranslateMainInterface
 {
-    use Translatable;
     use Time;
+    use Translatable;
+    use TranslateMain;
+    use SeoMain;
+
     /**
      * @var integer
      *
@@ -36,13 +42,6 @@ class PressDownload
     protected $downloadSection;
 
     /**
-     * @var FilmFestival
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
-     */
-    private $festival;
-
-    /**
      * ArrayCollection
      */
     protected $translations;
@@ -54,6 +53,13 @@ class PressDownload
     {
         $this->translations = new ArrayCollection();
         $this->downloadSection = new ArrayCollection();
+    }
+
+    public function __toString() {
+
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        return $string;
     }
 
     /**
@@ -112,28 +118,4 @@ class PressDownload
         $this->downloadSection = $downloadSection;
     }
 
-
-
-    /**
-     * Set festival
-     *
-     * @param \Base\CoreBundle\Entity\FilmFestival $festival
-     * @return PressDownload
-     */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
-    {
-        $this->festival = $festival;
-
-        return $this;
-    }
-
-    /**
-     * Get festival
-     *
-     * @return \Base\CoreBundle\Entity\FilmFestival 
-     */
-    public function getFestival()
-    {
-        return $this->festival;
-    }
 }

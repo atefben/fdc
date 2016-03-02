@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
 
@@ -23,6 +24,7 @@ class PressGuide implements TranslateMainInterface
     use Time;
     use Translatable;
     use TranslateMain;
+    use SeoMain;
 
     /**
      * @var integer
@@ -92,13 +94,6 @@ class PressGuide implements TranslateMainInterface
      *
      */
     private $serviceWidgets;
-
-    /**
-     * @var FilmFestival
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
-     */
-    private $festival;
 
     /**
      * ArrayCollection
@@ -357,26 +352,4 @@ class PressGuide implements TranslateMainInterface
         return $this->serviceWidgets;
     }
 
-    /**
-     * Set festival
-     *
-     * @param \Base\CoreBundle\Entity\FilmFestival $festival
-     * @return PressGuide
-     */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
-    {
-        $this->festival = $festival;
-
-        return $this;
-    }
-
-    /**
-     * Get festival
-     *
-     * @return \Base\CoreBundle\Entity\FilmFestival 
-     */
-    public function getFestival()
-    {
-        return $this->festival;
-    }
 }

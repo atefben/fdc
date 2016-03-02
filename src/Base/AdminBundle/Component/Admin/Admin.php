@@ -66,6 +66,48 @@ class Admin extends BaseAdmin
         return $mapper;
     }
 
+    public function addUpdatedBetweenFilters(DatagridMapper $mapper)
+    {
+        $mapper
+            ->add('updatedBefore', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.updatedAt < :before');
+                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'filter.common.label_updated_before',
+            ))
+            ->add('updatedAfter', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.updatedAt > :after');
+                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'filter.common.label_updated_after',
+            ))
+        ;
+
+        return $mapper;
+    }
+
     public function addPublishedBetweenFilters(DatagridMapper $mapper)
     {
 

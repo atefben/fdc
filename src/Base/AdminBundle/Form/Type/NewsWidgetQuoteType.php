@@ -44,6 +44,9 @@ class NewsWidgetQuoteType extends NewsWidgetType
             'fields' => array(
                 'content' => array(
                     'label' => false,
+                    'attr' => array(
+                        'class' => 'quote'
+                    )
                 ),
                 'createdAt' => array(
                     'display' => false

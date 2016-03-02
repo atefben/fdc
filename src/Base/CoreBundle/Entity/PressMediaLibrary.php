@@ -6,7 +6,11 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\SeoMain;
+
 
 /**
  * PressMediaLibrary
@@ -15,10 +19,13 @@ use Base\CoreBundle\Util\Time;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressMediaLibrary
+class PressMediaLibrary implements TranslateMainInterface
 {
-    use Translatable;
     use Time;
+    use Translatable;
+    use TranslateMain;
+    use SeoMain;
+
     /**
      * @var integer
      *
@@ -27,13 +34,6 @@ class PressMediaLibrary
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var FilmFestival
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
-     */
-    private $festival;
 
     /**
      * ArrayCollection
@@ -48,6 +48,12 @@ class PressMediaLibrary
         $this->translations = new ArrayCollection();
     }
 
+    public function __toString() {
+
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        return $string;
+    }
 
     /**
      * Get id
@@ -59,27 +65,4 @@ class PressMediaLibrary
         return $this->id;
     }
 
-
-    /**
-     * Set festival
-     *
-     * @param \Base\CoreBundle\Entity\FilmFestival $festival
-     * @return PressMediaLibrary
-     */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
-    {
-        $this->festival = $festival;
-
-        return $this;
-    }
-
-    /**
-     * Get festival
-     *
-     * @return \Base\CoreBundle\Entity\FilmFestival 
-     */
-    public function getFestival()
-    {
-        return $this->festival;
-    }
 }

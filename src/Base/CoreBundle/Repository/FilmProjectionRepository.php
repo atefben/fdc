@@ -31,4 +31,25 @@ class FilmProjectionRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    /**
+     * @param $date
+     * @return array|\Doctrine\ORM\QueryBuilder
+     */
+    public function getProjectionByDate($date)
+    {
+
+        $qb = $this
+            ->createQueryBuilder('p')
+            ->select('p')
+            ->where("DATE_FORMAT(p.startsAt,'%Y%m%d') = :date");
+
+
+        $qb = $qb
+            ->setParameter('date', $date)
+            ->getQuery()
+            ->getResult();
+
+        return $qb;
+    }
+
 }

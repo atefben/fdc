@@ -83,29 +83,20 @@ class NewsController extends Controller
 
         $date = new \DateTime;
         if (in_array($date->format('Ymd'), $schedulingDays)) {
-            // GET DAY PROJECTIONS
-            $dayProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+
+            $dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
                 ->getProjectionByDate($date->format('Ymd'));
 
-            // GET DAY PROJECTIONS
-            $dayPressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
-                ->getProjectionByDate($date->format('Ymd'));
         }
         else {
-            // GET DAY PROJECTIONS
-            $dayProjection = $em->getRepository('BaseCoreBundle:PressProjectionScheduling')
+
+            $dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
                 ->getProjectionByDate($festivalStartsAt->format('Ymd'));
 
-            // GET DAY PROJECTIONS
-            $dayPressProjection = $em->getRepository('BaseCoreBundle:PressProjectionPressScheduling')
-                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
         }
 
-
         //GET PRESS HOMEPAGE
-        $homepage = $em->getRepository('BaseCoreBundle:PressHomepage')->findOneBy(array(
-            'festival' => $settings->getFestival()->getId()
-        ));
+        $homepage = $em->getRepository('BaseCoreBundle:PressHomepage')->findOneById($this->getParameter('admin_press_homepage_id'));
 
         if ($homepage === null) {
             throw new NotFoundHttpException();
@@ -115,7 +106,6 @@ class NewsController extends Controller
             'headerInfo' => $headerInfo,
             'homeNews' => $homeNews,
             'schedulingDays' => $this->createDateRangeArray($festivalStartsAt->format('Y-m-d'),$festivalEndsAt->format('Y-m-d')),
-            'dayPressProjection' => $dayPressProjection,
             'dayProjection' => $dayProjection,
             'pressHome' => $homepage
         );

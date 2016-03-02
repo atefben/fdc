@@ -75,7 +75,7 @@
                                     <a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
                                     <a href="#" class="nav next"><i class="icon icon_fleche-right"></i></a>
                                     <div class="v-wrapper">
-                                        {% include 'FDCPressBundle:Agenda:components/grid.html.twig' %}
+                                        {% include 'FDCEventBundle:Agenda:components/grid.html.twig' %}
                                     </div>
                                 </div>
                             </div>
@@ -160,6 +160,7 @@
                         <div class="affiche">
                             <div class="container">
                                 <h3 class="title-press">{{ section.download|trans_fallback('title') }}</h3>
+                                {% if section.download.widgets is defined %}
                                 {% for widget in section.download.widgets %}
                                     {% if class(widget) == "PressDownloadSectionWidgetDocument" %}
                                         {% include 'FDCPressBundle:Media:widgets/document.html.twig' %}
@@ -171,7 +172,7 @@
                                         {% include 'FDCPressBundle:Media:widgets/video.html.twig' %}
                                     {% endif %}
                                 {% endfor %}
-
+                                {% endif %}
                             </div>
                         </div>
                     {% endfor %}

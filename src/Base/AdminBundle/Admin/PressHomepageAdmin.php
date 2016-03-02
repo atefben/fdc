@@ -130,7 +130,8 @@ class PressHomepageAdmin extends Admin
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_content',
                         'sonata_help' => 'form.press_homepage.helper_desc',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'widget'
                     ),
                     'pushMainTitle' => array(
                         'label' => 'form.label_title',
@@ -144,7 +145,6 @@ class PressHomepageAdmin extends Admin
                     ),
                     'pushMainLink' => array(
                         'label' => 'form.label_link',
-                        'sonata_help' => 'form.press_homepage.helper_link',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -164,7 +164,6 @@ class PressHomepageAdmin extends Admin
                     ),
                     'pushSecondaryLink' => array(
                         'label' => 'form.label_link',
-                        'sonata_help' => 'form.press_homepage.helper_link',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -200,19 +199,19 @@ class PressHomepageAdmin extends Admin
                     ),
                 )
             ))
-//            ->add('translate', 'checkbox' , array(
-//                'required' => false,
-//            ))
-//            ->add('translateOptions', 'choice', array(
-//                'choices' => PressHomepage::getAvailableTranslateOptions(),
-//                'translation_domain' => 'BaseAdminBundle',
-//                'multiple' => true,
-//                'expanded' => true
-//            ))
-//            ->add('priorityStatus', 'choice', array(
-//                'choices' => PressHomepage::getPriorityStatuses(),
-//                'choice_translation_domain' => 'BaseAdminBundle'
-//            ))
+            ->add('translate', 'checkbox' , array(
+                'required' => false,
+            ))
+            ->add('translateOptions', 'choice', array(
+                'choices' => PressHomepage::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => PressHomepage::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
+            ))
             ->add('sectionStatementInfoDisplay', 'checkbox', array(
                 'label' => 'form.label_display',
                 'required' => false,

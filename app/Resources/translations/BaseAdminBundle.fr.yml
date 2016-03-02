@@ -44,8 +44,13 @@ breadcrumb:
     link_press_guide_list: Guide pratique
     link_press_homepage_list: Home
     link_contact_page_list: Contactez-nous
+    link_press_cinema_map_list: Plan des salles
     link_f_d_c_event_routes_list: Liste des pages
     link_gallery_list: Galeries photos
+    link_press_projection_list: Programmation
+    link_press_download_section_list: Liste des sections à télécharger
+    link_press_download_list: A télécharger
+    link_press_media_library_list: Médiathèque
 
 
 link:
@@ -227,6 +232,7 @@ list:
     label_realisator: Réalisateur(s)
     label_selection: Sélection
     label_festival-year: Année de sélection
+    label_section_title: Nom de la section
     tooltip:
         unlock: DÉBLOQUER
         modified_by: En cours de modification par </br>
@@ -338,6 +344,10 @@ filter:
         label_id: Id
         label_created_before: Créé avant le
         label_created_after: Créé après le
+        label_updated_before: Modifié avant le
+        label_updated_after: Modifié après le
+    press_download:
+        label_section : Nom de la section
 
 dashboard:
     group:
@@ -539,16 +549,25 @@ form:
     label_projection_p: Projection presse
     label_arrive_icon: Pictogramme du titre
     label_trans_name: Slug pour traduction
-    label_locked_content: Locked content
+    label_locked_content: Contenu locké
     label_statement_associated : Communiqués associés
     label_info_associated : Infos associés
     label_link: Lien du push
     label_push_image: Image du push
+    label_webTv_required: Chaîne *
     label_column:
         first: Première colonne
         second: Deuxième colonne
         third: Troisième colonne
     label_download_section: Documents
+    label_map_room: Salles
+    label_section: Liste des salles
+    label_map_zone: Zone du festival
+    label_scheduling: Programmation
+    label_press_scheduling: Programmation presse
+    label_updated_date: Date de mise à jour
+    label_service_icon: Pictogramme
+    label_information_icon: Pictogramme du titre
     gallery:
         medias: Médias
     encoding_state:

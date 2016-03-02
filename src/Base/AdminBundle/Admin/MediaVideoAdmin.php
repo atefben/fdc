@@ -214,6 +214,7 @@ class MediaVideoAdmin extends Admin
                 )
             ))
             ->add('webTv', 'sonata_type_model_list', array(
+                'label'    => 'form.label_webTv_required',
                 'required' => false,
                 'attr' => array(
                     'class' => 'webTvField'
@@ -328,7 +329,6 @@ class MediaVideoAdmin extends Admin
                     'class' => 'hidden'
                 )
             ))
-            ->end()
             ->end()
         ;
     }

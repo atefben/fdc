@@ -54,6 +54,11 @@ CKEDITOR.editorConfig = function( config ) {
         var dialogName = ev.data.name;
         var dialogDefinition = ev.data.definition;
 
+        // remove upload tab in image button
+        if (dialogName == 'image') {
+            dialogDefinition.removeContents('Upload');
+        }
+
         // remove upload tab in link button
         if (dialogName == 'link') {
             dialogDefinition.removeContents('upload');
@@ -62,8 +67,8 @@ CKEDITOR.editorConfig = function( config ) {
         // Set the css class for table
         if (dialogName == 'table') {
             var advancedTab = dialogDefinition.getContents('advanced');
-
             var cssField = advancedTab.get('advCSSClasses');
+
             cssField['default'] = 'table-article';
         }
     });
