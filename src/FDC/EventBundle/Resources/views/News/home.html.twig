@@ -189,7 +189,7 @@
                                 data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
                                 {% else %}
                                 data-img="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
-                                {% endif %}>>
+                                {% endif %}>
                                 {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' %}
                             </div>
                         {% endif %}
