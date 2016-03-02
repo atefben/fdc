@@ -85,10 +85,10 @@ class EntityRepository extends BaseRepository
      * @param null $slug
      * @return QueryBuilder
      */
-    public function addTranslationQueries($qb, $alias, $locale, $slug = null)
+    public function addTranslationQueries($qb, $alias, $locale, $slug = null, $media = false)
     {
         if ($slug !== null) {
-            $qb = $qb
+            $qb
                 ->andWhere("({$alias}.locale = 'fr' AND {$alias}.status = :status_published AND {$alias}.slug = :slug)")
                 ->setParameter('status_published', NewsArticleTranslation::STATUS_PUBLISHED)
                 ->setParameter('slug', $slug)
@@ -96,24 +96,30 @@ class EntityRepository extends BaseRepository
 
             if ($locale != 'fr') {
                 $aliasTrans = substr($alias, 0, -1);
-                $qb = $qb
-                    ->leftJoin("{$aliasTrans}.translations", 'z2')
-                    ->andWhere("(z2.locale = :locale AND z2.status = :status_translated AND z2.slug = :slug)")
+                $qb
+                    ->leftJoin("{$aliasTrans}.translations", "{$aliasTrans}z1")
+                    ->andWhere("({$aliasTrans}z1.locale = :locale AND {$aliasTrans}z1.status = :status_translated AND {$aliasTrans}z1.slug = :slug)")
                     ->setParameter('locale', $locale)
                     ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
                 ;
             }
         } else {
-            $qb = $qb
+            $qb
                 ->andWhere("({$alias}.locale = 'fr' AND {$alias}.status = :status_published)")
                 ->setParameter('status_published', NewsArticleTranslation::STATUS_PUBLISHED)
             ;
 
+            if ($media == 'MediaAudio') {
+            //    $this->addAWSAudioEncodersQueries($qb, $alias);
+            } else if ($media == 'MediaVideo') {
+            //    $this->addAWSVideoEncodersQueries($qb, $alias);
+            }
+
             if ($locale != 'fr') {
                 $aliasTrans = substr($alias, 0, -1);
-                $qb = $qb
-                    ->leftJoin("{$aliasTrans}.translations", 'z2')
-                    ->andWhere("(z2.locale = :locale AND z2.status = :status_translated)")
+                $qb
+                    ->leftJoin("{$aliasTrans}.translations", "{$aliasTrans}z2")
+                    ->andWhere("({$aliasTrans}z2.locale = :locale AND {$aliasTrans}z2.status = :status_translated)")
                     ->setParameter('locale', $locale)
                     ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
                 ;
