@@ -630,7 +630,7 @@ form:
           URL Youtube, type : http://www.youtube.com/watch?v=urCLo4vNpzs&1
           Si non renseigné, seule l'image existera, le picto "play" n'apparaitra pas.
         image: Image cover
-        helper_image: Dimensions attendues : YxZpx. Format attendu.
+        helper_image: Dimensions attendues : 2560×600. Format attendu.
         channels: Chaînes WebTV
         label_web_tvs_associated: Chaînes à la une
         helper_web_tvs_associated: Sélectionnez de 3 à 5 vidéos de la webTV. Elles apparaitront en front-office dans l'ordre des champs.
