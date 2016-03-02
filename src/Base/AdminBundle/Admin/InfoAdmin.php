@@ -6,11 +6,12 @@ use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\InfoArticle;
 use Base\CoreBundle\Entity\InfoArticleTranslation;
 
-use Base\AdminBundle\Component\Admin\Admin;
+use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * InfoAdmin class.
@@ -21,6 +22,16 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 class InfoAdmin extends Admin
 {
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $query->andWhere(
+            $query->expr()->eq($query->getRootAliases()[0] . '.hidden', ':hidden')
+        );
+        $query->setParameter('hidden', false);
+        return $query;
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -92,11 +103,11 @@ class InfoAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
-            ->add('theme')
-            ->add('updatedAt')
-            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:News:list_published_interval.html.twig'))
-            ->add('status', null, array('template' => 'BaseAdminBundle:News:list_status.html.twig'))
             ->add('type', null, array('template' => 'BaseAdminBundle:News:list_type.html.twig'))
+            ->add('theme')
+            ->add('priorityStatus', null, array('template' => 'BaseAdminBundle:News:priority.html.twig'))
+            ->add('status', null, array('template' => 'BaseAdminBundle:News:list_status.html.twig'))
+
         ;
     }
 

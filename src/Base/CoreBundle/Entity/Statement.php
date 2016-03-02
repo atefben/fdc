@@ -188,6 +188,13 @@ abstract class Statement implements TranslateMainInterface
      */
     private $hideSameDay;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $hidden = 0;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
@@ -790,5 +797,28 @@ abstract class Statement implements TranslateMainInterface
     public function getHideSameDay()
     {
         return $this->hideSameDay;
+    }
+
+    /**
+     * Set hidden
+     *
+     * @param boolean $hidden
+     * @return News
+     */
+    public function setHidden($hidden)
+    {
+        $this->hidden = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Get hidden
+     *
+     * @return boolean
+     */
+    public function getHidden()
+    {
+        return $this->hidden;
     }
 }

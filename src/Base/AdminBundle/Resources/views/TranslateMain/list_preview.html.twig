@@ -4,8 +4,13 @@
     <div>
         {% set trans = object.findTranslationByLocale('fr') %}
         {% if trans and trans.slug %}
-            {% if class(object) == "StatementArticle" %}
-            <a target="_blank" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+            {% if class(object) starts with 'S' or class(object) starts with 'I'  %}
+                {% if class(object) == 'StatementArticle' or class(object) == 'InfoArticle' %}
+                {% set type = 'article' %}
+                {% else %}
+                {% set type = 'other' %}
+                {% endif %}
+            <a target="_blank" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
                 <i class="fa fa-search"></i>
             </a>
             {% else %}
