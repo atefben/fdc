@@ -57,11 +57,13 @@ CKEDITOR.editorConfig = function( config ) {
         // remove upload tab in image button
         if (dialogName == 'image') {
             dialogDefinition.removeContents('Upload');
+            dialogDefinition.removeContents('advanced');
         }
 
         // remove upload tab in link button
         if (dialogName == 'link') {
             dialogDefinition.removeContents('upload');
+            dialogDefinition.removeContents('advanced');
         }
 
         // Set the css class for table

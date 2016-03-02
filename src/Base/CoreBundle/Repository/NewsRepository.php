@@ -26,22 +26,34 @@ class NewsRepository extends EntityRepository
             ->leftjoin($repository, 'na1', 'WITH', 'na1.id = n.id')
             ->leftjoin('na1.translations', 'na1t');
 
+        // add query for audio / video encoder
+        if (strpos($repository, 'NewsAudio') !== false) {
+            $qb
+                ->leftjoin('na1.audio', 'na1a')
+                ->leftjoin('na1a.translations', 'na1at');
+            $this->addTranslationQueries($qb, 'na1at', 'fr', null, 'MediaAudio');
+        } else if (strpos($repository, 'NewsVideo') !== false) {
+            $qb
+                ->leftjoin('na1.video', 'na1v')
+                ->leftjoin('na1v.translations', 'na1vt');
+            $this->addTranslationQueries($qb, 'na1vt', 'fr', null, 'MediaVideo');
+        }
+
         if ($isAdmin === true) {
-            $qb = $qb
+            $qb
                 ->andWhere('(na1t.locale = :locale AND na1t.slug = :slug)')
                 ->setParameter('locale', $locale)
                 ->setParameter('slug', $slug);
         } else {
-            $qb = $this->addMasterQueries($qb, 'na1', $festival);
-            $qb = $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
+            $this->addMasterQueries($qb, 'na1', $festival);
+            $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
         }
 
-        $qb = $this->addFDCEventQueries($qb, 's');
-        $qb = $qb
+        $this->addFDCEventQueries($qb, 's');
+
+        return $qb
             ->getQuery()
             ->getOneOrNullResult();
-
-        return $qb;
     }
 
     public function getSameDayNews($festival, $locale, $dateTime, $count, $id)
@@ -62,16 +74,14 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na2.translations', 'na2t')
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
-            ->leftjoin('na2.audio', 'na2a')
-            /*->leftjoin('na2a.translations', 'na2at')
-            ->leftjoin('na4.video', 'na4v')
-            ->leftjoin('na4v.translations', 'na4vt')*/
+        ;
+        $qb
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
             ->andWhere('n.id != :id')
             ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt < :datetime2)');
 
-        $qb = $qb
+        $qb
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
@@ -82,7 +92,7 @@ class NewsRepository extends EntityRepository
             ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->andWhere(
                     '(na1t.locale = :locale AND na1t.status = :status_translated) OR
                     (na2t.locale = :locale AND na2t.status = :status_translated) OR
@@ -93,20 +103,17 @@ class NewsRepository extends EntityRepository
                 ->setParameter('locale', $locale);
         }
 
-        $qb = $qb
+        $qb
             ->addOrderBy('rand')
-            ->setMaxResults($count)
-           // ->setParameter('status_transcoding', MediaVideoTranslation::ENCODING_STATE_READY)
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
             ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime1)
             ->setParameter('datetime2', $dateTime2)
             ->setParameter('id', $id)
-            ->setParameter('site_slug', 'site-evenementiel')
+            ->setParameter('site_slug', 'site-evenementiel');
+
+        return $qb
             ->getQuery()
             ->getResult();
-
-        return $qb;
     }
 
     public function getNewsByDate($locale,$festival,$dateTime,$count)
@@ -126,10 +133,6 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na2.translations', 'na2t')
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
-            /*->leftjoin('na2.audio', 'na2a')
-            ->leftjoin('na2a.translations', 'na2at')
-            ->leftjoin('na4.video', 'na4v')
-            ->leftjoin('na4v.translations', 'na4vt')*/
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
             ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt <= :datetime2)');
@@ -162,7 +165,6 @@ class NewsRepository extends EntityRepository
 
         $qb = $qb
             ->orderBy('n.publishedAt', 'DESC')
-            ->setMaxResults($count)
             ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime1)
             ->setParameter('datetime2', $dateTime2)
@@ -175,7 +177,7 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 
-    public function getAllNews($locale,$festival)
+    public function getAllNews($locale, $festival)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -230,7 +232,7 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 
-    public function getOlderNewsButSameDay($locale,$festival,$dateTime,$count) {
+    public function getOlderNewsButSameDay($locale, $festival, $dateTime, $count) {
 
         $dateTimeMax = $dateTime->format('Y-m-d') . ' 00:00:00';
         $dateTime = $dateTime->format('Y-m-d H:i:s');
@@ -279,7 +281,6 @@ class NewsRepository extends EntityRepository
 
         $qb = $qb
             ->orderBy('n.publishedAt', 'DESC')
-            ->setMaxResults($count)
             ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime)
             ->setParameter('datetime_max', $dateTimeMax)
@@ -453,7 +454,6 @@ class NewsRepository extends EntityRepository
 
         $qb = $qb
             ->orderBy('n.publishedAt', 'DESC')
-            ->setMaxResults($count)
             ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site_slug', 'site-evenementiel');
@@ -570,6 +570,13 @@ class NewsRepository extends EntityRepository
                 ->setParameter('locale', $locale);
         }
 
+        // add query for video encoder
+        $qb
+            ->leftjoin('na1.video', 'na1v')
+            ->leftjoin('na1v.translations', 'na1vt');
+        $this->addTranslationQueries($qb, 'na1vt', 'fr', null, 'MediaVideo');
+
+
         $qb = $qb
             ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime)
@@ -607,6 +614,12 @@ class NewsRepository extends EntityRepository
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
                 ->setParameter('locale', $locale);
         }
+
+        // add query for audio encoder
+        $qb
+            ->leftjoin('na1.audio', 'na1a')
+            ->leftjoin('na1a.translations', 'na1at');
+        $this->addTranslationQueries($qb, 'na1at', 'fr', null, 'MediaAudio');
 
         $qb = $qb
             ->setParameter('festival', $festival)

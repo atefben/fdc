@@ -18,9 +18,10 @@ class MediaVideoRepository extends EntityRepository
             ->join('mv.translations', 'mvt')
         ;
 
-        $qb = $this->addMasterQueries($qb, 'mv', $festival);
-        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
-        $qb = $this->addAWSVideoEncodersQueries($qb, 'mvt');
+        $this->addImageQueries($qb, 'mv', 'mvt');
+        $this->addMasterQueries($qb, 'mv', $festival);
+        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         if ($excludeWebTv) {
             $qb
@@ -49,9 +50,10 @@ class MediaVideoRepository extends EntityRepository
             ->setParameter('film', $film)
         ;
 
-        $qb = $this->addMasterQueries($qb, 'mv', $festival, true);
-        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
-        $qb = $this->addAWSVideoEncodersQueries($qb, 'mvt');
+        $this->addImageQueries($qb, 'mv', 'mvt');
+        $this->addMasterQueries($qb, 'mv', $festival, true);
+        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
             ->andWhere('mv.displayedTrailer = 1')
@@ -80,6 +82,7 @@ class MediaVideoRepository extends EntityRepository
             ;
         }
 
+        $this->addImageQueries($qb, 'mv', 'mvt');
         $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addMasterQueries($qb, 'f', $festival, false);
         $this->addTranslationQueries($qb, 'mvt', $locale);
@@ -115,6 +118,7 @@ class MediaVideoRepository extends EntityRepository
             ->setParameter('in', $in)
         ;
 
+        $this->addImageQueries($qb, 'mv', 'mvt');
         $this->addMasterQueries($qb, 'mv', $festival, false);
         $this->addMasterQueries($qb, 'wtv', $festival, false);
         $this->addTranslationQueries($qb, 'mvt', $locale);
@@ -139,6 +143,7 @@ class MediaVideoRepository extends EntityRepository
             ->join('mv.webTv', 'wtv')
             ->join('wtv.translations', 'wtvt')
             ->where('wtv.id IN (:in)')
+            ->andWhere('(mv.image IS NOT NULL OR mvt.imageAmazonUrl IS NOT NULL)')
             ->setParameter('in', $in)
             ->andWhere('mv.displayedWebTv = :displayedWebTv')
             ->setParameter('displayedWebTv', true)
@@ -177,6 +182,7 @@ class MediaVideoRepository extends EntityRepository
             ->setParameter('film_id', $film)
         ;
 
+        $this->addImageQueries($qb, 'mv', 'mvt');
         $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addMasterQueries($qb, 'f', $festival, false);
         $this->addTranslationQueries($qb, 'mvt', $locale);

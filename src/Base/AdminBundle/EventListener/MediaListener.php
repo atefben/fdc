@@ -7,6 +7,7 @@ use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\NewsAudio;
+use Base\CoreBundle\Entity\NewsFilmProjectionAssociated;
 use Base\CoreBundle\Entity\NewsVideo;
 use Base\CoreBundle\Entity\NewsVideoTranslation;
 use Base\CoreBundle\Entity\NewsAudioTranslation;
@@ -113,6 +114,24 @@ class MediaListener
                 $createNews->setTheme($entity->getTheme());
                 $createNews->setHidden(true);
                 $createNews->setHeader($entity->getImage());
+                $createNews->setAssociatedEvent($entity->getAssociatedEvent());
+                $createNews->setAssociatedFilm($entity->getAssociatedFilm());
+
+                if (count($createNews->getAssociatedProjections()) > 0) {
+                    foreach ($createNews->getAssociatedProjections() as $proj) {
+                        $createNews->removeAssociatedProjection($proj);
+                    }
+                }
+
+                if (count($entity->getAssociatedProjections()) > 0) {
+                    foreach ($entity->getAssociatedProjections() as $proj) {
+                        $tmp = new NewsFilmProjectionAssociated();
+                        $tmp->setAssociation($proj->getAssociation());
+
+                        $createNews->addAssociatedProjection($tmp);
+                    }
+                }
+
                 if ($createNews instanceof NewsVideo) {
                     $createNews->setVideo($entity);
                     $createNews->setHomepageMediaVideo($entity);

@@ -22,7 +22,7 @@
         <div class="main-image">
             {% if page.image and page.image|trans_fallback('file') %}
                 <div class="img"
-                     style="background-image:url('{% path page.image|trans_fallback('file'), '976x535' %}')"></div>
+                     style="background-image:url('{% path page.image|trans_fallback('file'), '2560×600' %}'); background-size: contain;"></div>
             {% endif %}
             <div class="trailer">
                 {% if videoUrl %}

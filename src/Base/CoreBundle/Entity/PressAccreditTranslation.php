@@ -28,23 +28,9 @@ class PressAccreditTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $commonTitle;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(type="text", nullable=true)
      */
     protected $commonContent;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $procedureMainTitle;
 
     /**
      * @var string
@@ -67,30 +53,6 @@ class PressAccreditTranslation implements TranslateChildInterface
      */
     protected $btnText;
 
-
-    /**
-     * Set commonTitle
-     *
-     * @param string $commonTitle
-     * @return PressAccreditTranslation
-     */
-    public function setCommonTitle($commonTitle)
-    {
-        $this->commonTitle = $commonTitle;
-
-        return $this;
-    }
-
-    /**
-     * Get commonTitle
-     *
-     * @return string 
-     */
-    public function getCommonTitle()
-    {
-        return $this->commonTitle;
-    }
-
     /**
      * Set commonContent
      *
@@ -112,29 +74,6 @@ class PressAccreditTranslation implements TranslateChildInterface
     public function getCommonContent()
     {
         return $this->commonContent;
-    }
-
-    /**
-     * Set procedureMainTitle
-     *
-     * @param string $procedureMainTitle
-     * @return PressAccreditTranslation
-     */
-    public function setProcedureMainTitle($procedureMainTitle)
-    {
-        $this->procedureMainTitle = $procedureMainTitle;
-
-        return $this;
-    }
-
-    /**
-     * Get procedureMainTitle
-     *
-     * @return string 
-     */
-    public function getProcedureMainTitle()
-    {
-        return $this->procedureMainTitle;
     }
 
     /**

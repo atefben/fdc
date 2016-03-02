@@ -68,7 +68,7 @@ class MediaVideo extends Media
     private $homepageNews;
 
     /**
-     * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="mediaVideo", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"trailer_list", "trailer_show"})
      */

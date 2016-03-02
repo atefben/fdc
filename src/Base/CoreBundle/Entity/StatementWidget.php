@@ -21,6 +21,7 @@ use Base\CoreBundle\Util\Time;
  *  "quote" = "StatementWidgetQuote",
  *  "audio" = "StatementWidgetAudio",
  *  "image" = "StatementWidgetImage",
+ *  "image_dual_align" = "StatementWidgetImageDualAlign",
  *  "video" = "StatementWidgetVideo",
  *  "video_youtube" = "StatementWidgetVideoYoutube",
  * })

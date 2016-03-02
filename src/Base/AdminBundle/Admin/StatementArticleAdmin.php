@@ -208,13 +208,14 @@ class StatementArticleAdmin extends Admin
                     'statement_widget_quote_type',
                     'statement_widget_audio_type',
                     'statement_widget_image_type',
+                    'statement_widget_image_dual_align_type',
                     'statement_widget_video_type',
                     'statement_widget_video_youtube_type'
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,
                 'prototype' => true,
-                'by_reference' => false,
+                'by_reference' => true,
             ))
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
@@ -277,6 +278,7 @@ class StatementArticleAdmin extends Admin
                     'inline' => 'table'
                 )
             )
+            ->add('hideSameDay')
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')

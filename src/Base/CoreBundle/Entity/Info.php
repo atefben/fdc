@@ -198,6 +198,13 @@ abstract class Info implements TranslateMainInterface
      */
     private $updatedBy;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $hideSameDay;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
@@ -770,5 +777,28 @@ abstract class Info implements TranslateMainInterface
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    /**
+     * Set hideSameDay
+     *
+     * @param boolean $hideSameDay
+     * @return Info
+     */
+    public function setHideSameDay($hideSameDay)
+    {
+        $this->hideSameDay = $hideSameDay;
+
+        return $this;
+    }
+
+    /**
+     * Get hideSameDay
+     *
+     * @return boolean 
+     */
+    public function getHideSameDay()
+    {
+        return $this->hideSameDay;
     }
 }

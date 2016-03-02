@@ -5,9 +5,9 @@ namespace Base\ApiBundle\Controller;
 use \DateTime;
 
 use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
+use Base\ApiBundle\Component\FOSRestController;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
-use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 
@@ -62,8 +62,10 @@ class NewsController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $query = $em->getRepository('BaseCoreBundle:News')->getApiNews($festival, new DateTime(), $lang);
 
+        // TODO: filter MediaAudio/ MediaVIdeo with $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
+        // cant use at the moment because we use the sql query to create the pagination
+
         // get items, passing options to fix Cannot count query which selects two FROM components, cannot make distinction
-        //
         $items = $coreManager->getPaginationItems($query, $paramFetcher, array('distinct' => false));
 
         // set context view
@@ -124,6 +126,16 @@ class NewsController extends FOSRestController
         // create query
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository($this->repository)->getApiNewsById($id, $festival, new DateTime(), $lang);
+
+        if ($entity !== null) {
+            // add query for audio / video encoder
+            if (strpos(get_class($entity), 'NewsAudio') !== false) {
+                $array = $this->removeUnpublishedNewsAudioVideo(array($entity), $lang);
+            } else if (strpos(get_class($entity), 'NewsVideo') !== false) {
+                $array = $this->removeUnpublishedNewsAudioVideo(array($entity), $lang);
+            }
+            $entity = (count($array) == 0) ? null : $array[0];
+        }
 
         // set context view
         $groups = array('news_show', 'time');

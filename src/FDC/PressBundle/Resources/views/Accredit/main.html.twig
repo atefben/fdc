@@ -11,14 +11,13 @@
         <div id="accreditation">
         <div class="wrapper">
             <div class="container-small">
-                <h3>{{ accredit|trans_fallback('commonTitle') }}</h3>
                 {{ accredit|trans_fallback('commonContent')|raw }}
             </div>
         </div>
 
         <div class="nav-accre">
             <div class="wrapper">
-                <h2>{{ accredit|trans_fallback('procedureMainTitle') }}</h2>
+                <h2>{{ 'press.accrediter.title.consultezlaprocedure'|trans }}</h2>
                 <table>
                     <tr>
                     {% for key,sectionFilter in accredit.procedure %}

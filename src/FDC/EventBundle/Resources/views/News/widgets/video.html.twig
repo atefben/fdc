@@ -1,50 +1,49 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% set file = widget.file %}
 {% set trans = file.findTranslationByLocale(app.request.locale) %}
-{% if trans.jobWebmState == 3 and trans.jobMp4State ==3 %}
-    {% if trans is null or trans.file is null %}
-        {% set trans = file.findTranslationByLocale('fr') %}
-    {% endif %}
 
-    {% set header = file.image %}
-    {% if header is not null %}
-        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
-        {% if imageTrans is null or imageTrans.file is null %}
-            {% set imageTrans = header.findTranslationByLocale('fr') %}
-        {% endif %}
-    {% endif %}
-    {% if imageTrans is defined %}
-        {% set image = imageTrans.file %}
-    {% endif %}
-    {% if image is not defined and trans.imageAmazonUrl %}
-        {% set image_s3 = s3_server_global ~ trans.imageAmazonUrl %}
-    {% endif %}
+{% if trans is null or trans.file is null or trans.jobWebmState != 3 or trans.jobMp4State != 3 or trans.mp4Url is null or trans.webmUrl is null %}
+    {% set trans = file.findTranslationByLocale('fr') %}
+{% endif %}
 
-    <div class="video-container state-init video"
-        data-link="//www.example.com"
-        data-email="//www.gmail.com"
-        {% if playlist is defined %}
-        data-playlist='{{ playlist }}'
-        {% else %}
-        data-file='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
-        {% endif %}
-        data-img="{% if image is defined %}{% path image, 'reference' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
-        data-name="{{ trans.title }}">
-        <div id="video-player-{{ trans.id }}" class="video-player">
-        </div>
-        <div class="video-overlay"></div>
-        <div class="infos-bar">
-            <div class="picto"><i class="icon icon_video"></i></div>
-            <div class="info">
-                <div class="vCenter">
-                    <div class="vCenterKid">
-                        <span class="category">{{ file.theme|trans_fallback('name') }}</span>
-                        <span class="date">{{ file.publishedAt|date('d.m.Y') }}</span> . <span
-                                class="hour">{{ file.publishedAt|date('H:i') }}</span>
-                        <p>{{ trans.title }}</p>
-                    </div>
+{% set header = file.image %}
+{% if header is not null %}
+    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+        {% set imageTrans = header.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+{% if imageTrans is defined %}
+    {% set image = imageTrans.file %}
+{% endif %}
+{% if image is not defined and trans.imageAmazonUrl %}
+    {% set image_s3 = s3_server_global ~ trans.imageAmazonUrl %}
+{% endif %}
+
+<div class="video-container state-init video"
+    data-link="//www.example.com"
+    data-email="//www.gmail.com"
+    {% if playlist is defined %}
+    data-playlist='{{ playlist }}'
+    {% else %}
+    data-file='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
+    {% endif %}
+    data-img="{% if image is defined %}{% path image, 'reference' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
+    data-name="{{ trans.title }}">
+    <div id="video-player-{{ trans.id }}" class="video-player">
+    </div>
+    <div class="video-overlay"></div>
+    <div class="infos-bar">
+        <div class="picto"><i class="icon icon_video"></i></div>
+        <div class="info">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <span class="category">{{ file.theme|trans_fallback('name') }}</span>
+                    <span class="date">{{ file.publishedAt|date('d.m.Y') }}</span> . <span
+                            class="hour">{{ file.publishedAt|date('H:i') }}</span>
+                    <p>{{ trans.title }}</p>
                 </div>
             </div>
         </div>
     </div>
-{% endif %}
+</div>
