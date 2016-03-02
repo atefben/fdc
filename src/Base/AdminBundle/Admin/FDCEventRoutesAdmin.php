@@ -42,11 +42,36 @@ class FDCEventRoutesAdmin extends Admin
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
+        $routes = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->findBy(
+                array('parent' => null),
+                array('id' => 'asc')
+        );
+
+        $parents = array();
+        foreach ($routes as $key => $route) {
+            $parents[$route->getId()] = $route->getName();
+        }
+
         $datagridMapper
             ->add('name')
-            ->add('route')
             ->add('enabled')
-            ->add('parent')
+            ->add('parent', 'doctrine_orm_callback' , array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+
+                    $queryBuilder->andWhere("{$alias}.parent = :value");
+                    $queryBuilder->setParameter('value', $value['value']);
+
+                    return true;
+                },
+                'field_type' => 'choice',
+                'field_options' => array(
+                    'choices' => $parents
+                )
+            ))
         ;
     }
 
@@ -57,7 +82,6 @@ class FDCEventRoutesAdmin extends Admin
     {
         $listMapper
             ->add('name')
-            ->add('route')
             ->add('parent')
             ->add('enabled', null, array('editable' => true))
             ->add('_action', 'actions', array(
