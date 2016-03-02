@@ -160,7 +160,6 @@ class NewsController extends Controller
                 $slug,
                 $settings->getFestival()->getId(),
                 $locale,
-                $dateTime->format('Y-m-d H:i:s'),
                 $isAdmin,
                 $mapper[$format]
             );
@@ -178,6 +177,10 @@ class NewsController extends Controller
                 $isAdmin,
                 $mapper[$format]
             );
+        }
+
+        if ($statement == null) {
+            throw  new NotFoundHttpException();
         }
 
         //get associated film to the news
@@ -291,7 +294,7 @@ class NewsController extends Controller
         //GET ALL STATEMENT ARTICLES
         $statements = $em->getRepository('BaseCoreBundle:Statement')->getStatements($settings->getFestival()->getId(), $dateTime, $locale);
 
-        //GET ALL STATEMENT ARTICLES
+        //GET ALL INFO ARTICLES
         $infos = $em->getRepository('BaseCoreBundle:Info')->getInfos($settings->getFestival()->getId(), $dateTime, $locale);
 
         if ($statements === null && $infos === null) {

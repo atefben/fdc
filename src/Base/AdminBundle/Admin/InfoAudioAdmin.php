@@ -7,11 +7,12 @@ use Base\CoreBundle\Entity\InfoAudio;
 use Base\CoreBundle\Entity\InfoAudioTranslation;
 use Base\CoreBundle\Entity\InfoInfoAssociated;
 
-use Base\AdminBundle\Component\Admin\Admin;
+use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * InfoAudioAdmin class.
@@ -22,23 +23,21 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 class InfoAudioAdmin extends Admin
 {
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $query->andWhere(
+            $query->expr()->eq($query->getRootAliases()[0] . '.hidden', ':hidden')
+        );
+        $query->setParameter('hidden', false);
+        return $query;
+    }
+
     protected $formOptions = array(
         'cascade_validation' => true
     );
 
     protected $translationDomain = 'BaseAdminBundle';
-
-
-    public function getNewInstance()
-    {
-        $instance = parent::getNewInstance();
-
-        $instance->addAssociatedInfo(new InfoInfoAssociated());
-        $instance->addAssociatedInfo(new InfoInfoAssociated());
-
-        return $instance;
-    }
-
 
     public function configure()
     {
@@ -51,79 +50,6 @@ class InfoAudioAdmin extends Admin
             parent::getFormTheme(),
             array('BaseAdminBundle:Form:polycollection.html.twig')
         );
-    }
-
-    /**
-     * @param DatagridMapper $datagridMapper
-     */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('id')
-            ->add('title', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->andWhere('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.title LIKE :title');
-                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
-
-                    return true;
-                },
-                'field_type' => 'text'
-            ))
-            ->add('theme')
-            ->add('status', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->andWhere('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.status = :status');
-                    $queryBuilder->setParameter('status', $value['value']);
-
-                    return true;
-                },
-                'field_type' => 'choice',
-                'field_options' => array(
-                    'choices' => InfoAudioTranslation::getStatuses(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
-            ))
-        ;
-    }
-
-    /**
-     * @param ListMapper $listMapper
-     */
-    protected function configureListFields(ListMapper $listMapper)
-    {
-        $listMapper
-            ->add('id')
-            ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
-            ->add('theme')
-            ->add('createdAt')
-            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig'))
-            ->add('priorityStatus', 'choice', array(
-                'choices' => InfoAudio::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('statusMain', 'choice', array(
-                'choices' => InfoAudioTranslation::getStatuses(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
-            ))
-            ->add('_preview', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_preview.html.twig'
-            ))
-        ;
     }
 
     /**

@@ -81,6 +81,7 @@ class FilmManager extends CoreManager
             'setDirectorFirst' => 'EstPremierFilm',
             'setRestored' => 'EstRestaure',
             'setTitleVO' => 'TitreOriginal',
+            'setPublishedAt' => 'DateSortie',
             'setTitleVOAlphabet' => 'TitreOriginalAlphabetOriginal',
             'setProductionYear' => 'AnneeDeProduction',
             'setDuration' => 'Duree',

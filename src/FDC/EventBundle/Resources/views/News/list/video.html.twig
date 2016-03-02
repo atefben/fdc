@@ -8,6 +8,7 @@
             <div class="grid-sizer"></div>
             {% for video in videos %}
                 {% set trans = video.findTranslationByLocale(app.request.locale) %}
+                {% set transImage = null %}
                 {% if trans is null or trans.file is null %}
                     {% set trans = video.findTranslationByLocale('fr') %}
                 {% endif %}
@@ -26,9 +27,9 @@
                     <div class="item {{ video.theme|trans_fallback('slug') }} {{ video.publishedAt|date('d-m-y') }} date theme shadow-bottom video"
                          data-vid="{{ video.id }}"
                          data-file='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
-                         data-img="{% path transImage.file, '1144x724' %}">
+                         data-img="{% if transImage is not null %}{% path transImage.file, '1144x724' %}{% endif %}">
 
-                        <img src="{% path transImage.file , '1144x724' %}" alt="{{ transImage|trans_fallback('alt') }}">
+                        <img src="{% if transImage is not null %}{% path transImage.file , '1144x724' %}" alt="{{ transImage|trans_fallback('alt') }}{% endif %}">
                         <div class="picto"><i class="icon icon_video"></i></div>
                         <div class="info">
                             <div class="vCenter">
