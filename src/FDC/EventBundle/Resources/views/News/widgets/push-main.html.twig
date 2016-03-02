@@ -1,59 +1,59 @@
 <div class="push-container">
     <div class="container">
-
-        {% if homepage.pushsMainImage1 is not null %}
-            {% set trans = homepage.pushsMainImage1.findTranslationByLocale(app.request.locale) %}
-            {% if trans is null or trans.file is null %}
-                {% set trans = homepage.pushsMainImage1.findTranslationByLocale('fr') %}
-            {% endif %}
-            <div class="push">
-                <div class="image-wrapper">
-                    <img src="{% path trans.file, '650x410' %}" alt="" />
-                </div>
-                <div class="vCenter">
-                    <div class="vCenterKid">
-                        <h3>{{ homepage|trans_fallback('primaryPushTitle1') }}</h3>
-                    </div>
-                </div>
-                <a href="{{ homepage|trans_fallback('primaryPushUrl1') }}"></a>
+        
+        <div class="push">
+            <div class="image-wrapper">
+                {% if homepage.pushsMainImage1 is not null %}
+                    {% set trans = homepage.pushsMainImage1.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushsMainImage1.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <img src="{% path trans.file, '650x410' %}" alt="{{ trans.alt }}" />
+                {% endif %}
             </div>
-        {% endif %}
-
-        {% if homepage.pushsMainImage2 is not null %}
-            {% set trans = homepage.pushsMainImage2.findTranslationByLocale(app.request.locale) %}
-            {% if trans is null or trans.file is null %}
-                {% set trans = homepage.pushsMainImage2.findTranslationByLocale('fr') %}
-            {% endif %}
-            <div class="push">
-                <div class="image-wrapper">
-                    <img src="{% path trans.file, '650x410' %}" alt="" />
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <h3>{{ homepage|trans_fallback('primaryPushTitle1') }}</h3>
                 </div>
-                <div class="vCenter">
-                    <div class="vCenterKid">
-                        <h3>{{ homepage|trans_fallback('primaryPushTitle2') }}</h3>
-                    </div>
-                </div>
-                <a href="{{ homepage|trans_fallback('primaryPushUrl2') }}"></a>
             </div>
-        {% endif %}
+            <a href="{{ homepage|trans_fallback('primaryPushUrl1') }}"></a>
+        </div>
 
-        {% if homepage.pushsMainImage3 is not null %}
-            {% set trans = homepage.pushsMainImage3.findTranslationByLocale(app.request.locale) %}
-            {% if trans is null or trans.file is null %}
-                {% set trans = homepage.pushsMainImage3.findTranslationByLocale('fr') %}
-            {% endif %}
-            <div class="push">
-                <div class="image-wrapper">
-                    <img src="{% path trans.file, '650x410' %}" alt="" />
-                </div>
-                <div class="vCenter">
-                    <div class="vCenterKid">
-                        <h3>{{ homepage|trans_fallback('primaryPushTitle3') }}</h3>
-                    </div>
-                </div>
-                <a href="{{ homepage|trans_fallback('primaryPushUrl3') }}"></a>
+        <div class="push">
+            <div class="image-wrapper">
+                {% if homepage.pushsMainImage2 is not null %}
+                    {% set trans = homepage.pushsMainImage2.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushsMainImage2.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    <img src="{% path trans.file, '650x410' %}" alt="{{ trans.alt }}" />
+                {% endif %}
             </div>
-        {% endif %}
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <h3>{{ homepage|trans_fallback('primaryPushTitle2') }}</h3>
+                </div>
+            </div>
+            <a href="{{ homepage|trans_fallback('primaryPushUrl2') }}"></a>
+        </div>
+
+        <div class="push">
+            <div class="image-wrapper">
+                {% if homepage.pushsMainImage3 is not null %}
+                    {% set trans = homepage.pushsMainImage3.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = homepage.pushsMainImage3.findTranslationByLocale('fr') %}
+                    {% endif %}
+                        <img src="{% path trans.file, '650x410' %}" alt="{{ trans.alt }}" />
+                {% endif %}
+            </div>
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <h3>{{ homepage|trans_fallback('primaryPushTitle3') }}</h3>
+                </div>
+            </div>
+            <a href="{{ homepage|trans_fallback('primaryPushUrl3') }}"></a>
+        </div>
 
     </div>
 </div>

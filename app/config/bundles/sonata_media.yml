@@ -107,6 +107,8 @@ sonata_media:
                 1280x808: { width: 1280 , height: 808 , quality: 100 }
                 2560×600: { width: 2560, height: 600 , quality: 100 }
                 640x404: { width: 640 , height: 404 , quality: 100 }
+                # Pushs
+                650x410: { width: 650 , height: 410 , quality: 100 }
 
         media_audio:
             providers:
