@@ -53,7 +53,7 @@ breadcrumb:
     link_press_media_library_list: Médiathèque
     link_press_accredit_procedure_list: Procédures d'accréditation
     link_press_accredit_list: S'accréditer
-
+    link_press_accredit_procedure_list: Procédures d'accréditation
 link:
     action_soif_refresh: Mettre à jour
 

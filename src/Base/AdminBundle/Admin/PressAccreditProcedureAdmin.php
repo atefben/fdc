@@ -24,9 +24,26 @@ class PressAccreditProcedureAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('procedureTitle', 'doctrine_orm_callback', array(
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->andWhere('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.procedureTitle LIKE :procedureTitle');
+                    $queryBuilder->setParameter('procedureTitle', '%' . $value['value'] . '%');
+                    return true;
+                },
+                'field_type' => 'text',
+                'label'      => 'filter.press_download.label_section'
+            ))
         ;
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addUpdatedBetweenFilters($datagridMapper);
+
+
     }
 
     /**
@@ -35,9 +52,21 @@ class PressAccreditProcedureAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('id', null, array(
+                'label' => 'list.common.label_id'
+            ))
+            ->add('procedureTitle', null, array(
+                'template' => 'BaseAdminBundle:AccreditProcedure:list_title.html.twig',
+                'label'    => 'list.label_section_title',
+            ))
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
+            ->add('updatedAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_updated_at.html.twig',
+                'sortable' => 'updatedAt',
+            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -73,7 +102,7 @@ class PressAccreditProcedureAdmin extends Admin
                         'display' => false
                     ),
                     'procedureTitle' => array(
-                        'label' => 'form.label_title',
+                        'label' => 'form.label_media_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -83,7 +112,7 @@ class PressAccreditProcedureAdmin extends Admin
                     ),
                     'procedureContent' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
+                        'label' => 'form.label_procedure',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle'
                     ),
@@ -100,11 +129,6 @@ class PressAccreditProcedureAdmin extends Admin
                 'choices' => PressAccreditProcedure::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
-
-            ->add('procedureLink', 'text', array(
-                'label' => 'form.label_btn_link'
-            ))
-
         ;
 
     }
@@ -120,6 +144,12 @@ class PressAccreditProcedureAdmin extends Admin
             ->add('updatedAt')
         ;
     }
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
+    }
+
     public function prePersist($accredit)
     {
         $this->preUpdate($accredit);
