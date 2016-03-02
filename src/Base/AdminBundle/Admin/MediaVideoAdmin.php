@@ -276,6 +276,26 @@ class MediaVideoAdmin extends Admin
             ->add('displayedHome', null, array(
                 'label' => 'form.media_video.displayed_home'
             ))
+            ->add('associatedFilm', 'sonata_type_model_list', array(
+                'help' => 'form.news.helper_film_film_associated',
+                'required' => false,
+                'btn_add' => false
+            ))
+            ->add('associatedEvent', 'sonata_type_model_list', array(
+                'help' => 'form.news.helper_event_associated',
+                'required' => false,
+                'btn_add' => false
+            ))
+            ->add('associatedProjections', 'sonata_type_collection', array(
+                'label' => 'form.label_news_film_projection_associated',
+                'help' => 'form.news.helper_news_film_projection_associated',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
             ->add('translateOptions', 'choice', array(
                 'choices'            => MediaVideo::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',

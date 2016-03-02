@@ -129,6 +129,27 @@ abstract class Media implements TranslateMainInterface
      */
     private $updatedBy;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="FilmFilm")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $associatedFilm;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Event")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $associatedEvent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MediaFilmProjectionAssociated", mappedBy="media", cascade={"all"}, orphanRemoval=true)
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $associatedProjections;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
@@ -437,5 +458,86 @@ abstract class Media implements TranslateMainInterface
     public function getFestival()
     {
         return $this->festival;
+    }
+
+    /**
+     * Set associatedFilm
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $associatedFilm
+     * @return Media
+     */
+    public function setAssociatedFilm(\Base\CoreBundle\Entity\FilmFilm $associatedFilm = null)
+    {
+        $this->associatedFilm = $associatedFilm;
+
+        return $this;
+    }
+
+    /**
+     * Get associatedFilm
+     *
+     * @return \Base\CoreBundle\Entity\FilmFilm 
+     */
+    public function getAssociatedFilm()
+    {
+        return $this->associatedFilm;
+    }
+
+    /**
+     * Set associatedEvent
+     *
+     * @param \Base\CoreBundle\Entity\Event $associatedEvent
+     * @return Media
+     */
+    public function setAssociatedEvent(\Base\CoreBundle\Entity\Event $associatedEvent = null)
+    {
+        $this->associatedEvent = $associatedEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get associatedEvent
+     *
+     * @return \Base\CoreBundle\Entity\Event 
+     */
+    public function getAssociatedEvent()
+    {
+        return $this->associatedEvent;
+    }
+
+    /**
+     * Add associatedProjections
+     *
+     * @param \Base\CoreBundle\Entity\MediaFilmProjectionAssociated $associatedProjections
+     * @return Media
+     */
+    public function addAssociatedProjection(\Base\CoreBundle\Entity\MediaFilmProjectionAssociated $associatedProjections)
+    {
+        $associatedProjections->setMedia($this);
+        $this->associatedProjections[] = $associatedProjections;
+
+        return $this;
+    }
+
+
+    /**
+     * Remove associatedProjections
+     *
+     * @param \Base\CoreBundle\Entity\MediaFilmProjectionAssociated $associatedProjections
+     */
+    public function removeAssociatedProjection(\Base\CoreBundle\Entity\MediaFilmProjectionAssociated $associatedProjections)
+    {
+        $this->associatedProjections->removeElement($associatedProjections);
+    }
+
+    /**
+     * Get associatedProjections
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedProjections()
+    {
+        return $this->associatedProjections;
     }
 }
