@@ -241,12 +241,12 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         });
 
         sliderChannelsVideo.owlCarousel();
-        sliderChannelsVideo.on('click', '.linkVid', function() {
-            var index = $(this).closest('.owl-item').index();
+        sliderChannelsVideo.on('click', '.owl-item', function() {
+            var index = $(this).index();
             playerInstance.playlistItem(index);
             updateShareLink(index);
 
-            var infos = $.parseJSON($(this).closest('.channel.video').data('json'));
+            var infos = $.parseJSON($(this).find('.channel.video').data('json'));
             $topBar.find('.info .category').text(infos.category);
             $topBar.find('.info p').text(infos.name);
 
@@ -264,7 +264,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             }
 
             if($('#gridVideos')) {
-                var item = $('#gridVideos .item')[$(this).closest('.owl-item').index()];
+                var item = $('#gridVideos .item')[index];
                 var vid  = $(item).data('vid');
 
                 var newURL = window.location.href.split('#')[0] + '#vid=' + vid;
@@ -481,6 +481,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             if (!fullScreenApi.isFullScreen()) {
                 $container.find('.channels-video').removeClass('active');
                 $container.find('.jwplayer').removeClass('overlay-channels');
+                $fullscreen.removeClass('icon_fullscreen').addClass('icon_reverseFullScreen');
             }
         }, true);
     }
