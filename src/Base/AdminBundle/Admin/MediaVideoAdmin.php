@@ -265,7 +265,7 @@ class MediaVideoAdmin extends Admin
                 'required'     => false,
             ), array(
                     'edit'   => 'inline',
-                    'inline' => 'table'
+                    'inline' => 'table',
                 )
             )
             ->add('translate')
