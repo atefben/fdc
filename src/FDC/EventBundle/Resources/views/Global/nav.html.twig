@@ -62,7 +62,7 @@
     <ul class="user">
         {% for menu in menus %}
             {% if menu.id > 6 %}
-                {% if menu.route == 'fdc_event_agenda_scheduling' %}
+                {% if menu.route == 'fdc_event_agenda_scheduling' and menu.enabled == true %}
                     <li class="programmation-wrapper">
                         <a href="{{ path(menu.route) }}" class="programmation">
                             <i class="icon icon_programmation"></i>{{ menu.transName|trans }}
@@ -82,6 +82,7 @@
                         </ul>
                     </li>
                 {% else %}
+                    {% if menu.enabled == true %}
                     <li class="participate-wrapper">
                         <a href="{{ path(menu.route) }}" class="participate">
                             <i class="icon icon_participer"></i>{{ menu.transName|trans }}
@@ -96,6 +97,7 @@
                         {% endif %}
                         </ul>
                     </li>
+                    {% endif %}
                 {% endif %}
             {% endif %}
         {% endfor %}
