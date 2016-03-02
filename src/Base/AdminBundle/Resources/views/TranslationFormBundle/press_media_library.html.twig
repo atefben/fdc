@@ -10,32 +10,51 @@
 
             <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <div class="clearfix">
-                                    <h4 class="box-title">
-                                        {{ 'group.seo'|trans }}
-                                    </h4>
-                                </div>
-                                <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
-                                    {{ 'group.helper_seo'|trans|nl2br }}
-                                </div>
-                            </div>
-                            <div class="box-body">
-                                {{ form_row(translationsFields.seoTitle) }}
-                                {{ form_row(translationsFields.seoDescription) }}
-                            </div>
-                        </div>
-                    </div>
                     {% if form.vars.default_locale == locale %}
                         <div class="col-md-8">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <div class="clearfix">
+                                        <h4 class="box-title">
+                                            {{ 'group.seo'|trans }}
+                                        </h4>
+                                    </div>
+                                    <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
+                                        {{ 'group.helper_seo'|trans|nl2br }}
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    {{ form_row(translationsFields.seoTitle) }}
+                                    {{ form_row(translationsFields.seoDescription) }}
+                                    {{ form_row(form.parent.children.seoFile) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <p>
                                 {{ 'group.helper_seo_example'|trans|nl2br }}
                             </p>
                         </div>
                     {% else %}
                         <div class="col-md-8">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <div class="clearfix">
+                                        <h4 class="box-title">
+                                            {{ 'group.seo'|trans }}
+                                        </h4>
+                                    </div>
+                                    <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
+                                        {{ 'group.helper_seo'|trans|nl2br }}
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    {{ form_row(translationsFields.seoTitle) }}
+                                    {{ form_row(translationsFields.seoDescription) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4 class="box-title">

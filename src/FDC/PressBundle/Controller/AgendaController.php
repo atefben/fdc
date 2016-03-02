@@ -85,7 +85,9 @@ class AgendaController extends Controller
         }
 
         $pressProjection = $em->getRepository('BaseCoreBundle:PressProjection')->findOneById($this->getParameter('admin_press_projection_id'));
-
+        if ($pressProjection === null) {
+            throw new NotFoundHttpException();
+        }
         return array(
             'schedulingDays' => $schedulingDays,
             'typeFilters' => $typeFilters,
@@ -131,10 +133,11 @@ class AgendaController extends Controller
             throw new NotFoundHttpException();
         }
 
-        //GET PRESS HOMEPAGE
-        $rooms = $em->getRepository('BaseCoreBundle:PressCinemaMap')->findOneBy(array(
-            'festival' => $settings->getFestival()->getId()
-        ));
+        //GET PressCinemaMap PAGE
+        $rooms = $em->getRepository('BaseCoreBundle:PressCinemaMap')->findOneById($this->getParameter('admin_press_cinemamap_id'));
+        if ($rooms === null) {
+            throw new NotFoundHttpException();
+        }
 
         return array(
             'rooms' => $rooms

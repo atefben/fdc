@@ -225,8 +225,11 @@ class MediaController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $section = $em->getRepository('BaseCoreBundle:PressDownload')
-            ->findOneByFestival($settings->getFestival()->getId());
+        //GET PRESS HOMEPAGE
+        $section = $em->getRepository('BaseCoreBundle:PressDownload')->findOneById($this->getParameter('admin_press_download_id'));
+        if ($section === null || $section->getDownloadSection() === null) {
+            throw new NotFoundHttpException();
+        }
 
         $downloads = $section->getDownloadSection();
 
