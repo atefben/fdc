@@ -16,13 +16,15 @@ function initParallaxElements() {
     }
 
     // slider home
-    if ($('#slider .owl-item .img-container').length) {
-      parallaxElements.push({
-        'el1': '#slider .owl-item .img-container',
-        'positionTop': $('#slider').offset().top - $header.height(),
-        'division': 2,
-        'mov': 4
-      });
+    if(!isIE() && !isiPad()) {
+      if ($('#slider .owl-item .img-container').length) {
+        parallaxElements.push({
+          'el1': '#slider .owl-item .img-container',
+          'positionTop': $('#slider').offset().top - $header.height(),
+          'division': 2,
+          'mov': 4
+        });
+      }
     }
 
     // slider movies home
