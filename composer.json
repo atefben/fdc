@@ -89,6 +89,9 @@
         "patches": {
             "a2lix/translation-form-bundle": {
                 "Fix Constraints only on required locales": "src/Base/CoreBundle/Resources/patches/a2lix-constraints-only-required-locales.patch"
+            },
+            "sonata-project/admin-bundle": {
+                "Fix jQuery is not defined": "src/Base/CoreBundle/Resources/patches/sonata-project-jquery-form-js-update.patch"
             }
         }
     }
