@@ -71,17 +71,31 @@ class PressAccreditAdmin extends Admin
                         'display' => false
                     ),
                     'commonTitle' => array(
-                        'label' => 'form.label_title',
+                        'label' => 'form.label_media_title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'commonContent' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
+                        'label' => 'form.label_procedure',
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'widget'
                     ),
                     'procedureMainTitle' => array(
                         'label' => 'Titre pour les procédures',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'btnLabel' => array(
+                        'label' => 'form.label_btn',
+                        'sonata_help' => 'form.press_homepage.helper_desc',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'btnLink' => array(
+                        'label' => 'form.label_btn_link',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'btnText' => array(
+                        'label' => 'form.label_btn_text',
+                        'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'status' => array(
@@ -112,7 +126,12 @@ class PressAccreditAdmin extends Admin
                     )
                 )
             ))
-
+            ->add('seoFile', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'seo_file',
+                'help' => 'form.seo.helper_file',
+                'required' => false,
+            ))
             ->add('procedure', 'sonata_type_collection',
                 array(
                     'type_options' => array(
@@ -136,11 +155,16 @@ class PressAccreditAdmin extends Admin
                 )
             )
             ->add('translate')
-            ->add('priorityStatus', 'choice', array(
-                'choices' => PressAccredit::getPriorityStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle'
+            ->add('translateOptions', 'choice', array(
+                'choices'            => PressAccredit::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple'           => true,
+                'expanded'           => true
             ))
-            ->add('festival')
+            ->add('priorityStatus', 'choice', array(
+                'choices'                   => PressAccredit::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle',
+            ))
             ->end()
         ;
 

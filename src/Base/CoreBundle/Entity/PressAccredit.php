@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\SeoMain;
 
 /**
  * PressAccredit
@@ -21,6 +22,7 @@ class PressAccredit implements TranslateMainInterface
     use Time;
     use Translatable;
     use TranslateMain;
+    use SeoMain;
 
     /**
      * @var integer
@@ -37,13 +39,6 @@ class PressAccredit implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="PressAccreditHasProcedure", mappedBy="accredit", cascade={"persist"}, orphanRemoval=true)
      */
     protected $procedure;
-
-    /**
-     * @var FilmFestival
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
-     */
-    private $festival;
 
     /**
      * ArrayCollection
@@ -103,26 +98,4 @@ class PressAccredit implements TranslateMainInterface
         return $this->procedure;
     }
 
-    /**
-     * Set festival
-     *
-     * @param \Base\CoreBundle\Entity\FilmFestival $festival
-     * @return PressAccredit
-     */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
-    {
-        $this->festival = $festival;
-
-        return $this;
-    }
-
-    /**
-     * Get festival
-     *
-     * @return \Base\CoreBundle\Entity\FilmFestival 
-     */
-    public function getFestival()
-    {
-        return $this->festival;
-    }
 }
