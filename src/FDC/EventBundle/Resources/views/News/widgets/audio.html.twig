@@ -1,60 +1,59 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% set file = widget.file %}
 {% set trans = file.findTranslationByLocale(app.request.locale) %}
-{% if trans.jobMp3State == 3 %}
-    {% if trans is null or trans.file is null %}
-        {% set trans = file.findTranslationByLocale('fr') %}
-    {% endif %}
-    {% set file = trans.file %}
 
-    {% set header = widget.file.image %}
-    {% if header is not null %}
-        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
-        {% if imageTrans is null or imageTrans.file is null %}
-            {% set imageTrans = header.findTranslationByLocale('fr') %}
-        {% endif %}
-    {% endif %}
-    {% if imageTrans is defined %}
-        {% set image = imageTrans.file %}
-    {% endif %}
-    {% if image is not defined and trans.imageAmazonUrl %}
-        {% set image_s3 = s3_server_global ~ trans.imageAmazonUrl %}
-    {% endif %}
+{% if trans is null or trans.file is null or trans.mp3Url is null or trans.jobMp3State != 3 %}
+    {% set trans = file.findTranslationByLocale('fr') %}
+{% endif %}
+{% set file = trans.file %}
 
-    {% if  imageTrans is defined and trans.jobMp3State == 3 and trans.mp3Url %}
-        <div class="audio-player audio" data-sound="{{ s3_server_audio ~ trans.mp3Url }}">
-            <div class="image"{% if image is defined %} style="background-image: url({% path image, '1950x1232' %});"{% elseif image_s3 is defined %} style="background-image: url({{ image_s3 }});"{% endif %}></div>
-            <a href="#" class="playpause"><i class="icon icon_video"></i></a>
-            <div class="off">
-                <div class="vCenter">
-                    <div class="vCenterKid">
-                        <div class="picto">
-                            <i class="icon icon_audio"></i>
-                        </div>
-                        <div class="info">
-                            <span class="category">{{ widget.file.theme|trans_fallback('name') }}</span>
-                            <span class="date">{{ widget.file.publishedAt|date('d.m.y') }}</span> . <span
-                                    class="hour">{{ widget.file.publishedAt|date('H:i') }}</span>
-                            <p>{{ trans.title }}</p>
-                        </div>
+{% set header = widget.file.image %}
+{% if header is not null %}
+    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+        {% set imageTrans = header.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+{% if imageTrans is defined %}
+    {% set image = imageTrans.file %}
+{% endif %}
+{% if image is not defined and trans.imageAmazonUrl %}
+    {% set image_s3 = s3_server_global ~ trans.imageAmazonUrl %}
+{% endif %}
+
+{% if  imageTrans is defined and trans.jobMp3State == 3 and trans.mp3Url %}
+    <div class="audio-player audio" data-sound="{{ s3_server_audio ~ trans.mp3Url }}">
+        <div class="image"{% if image is defined %} style="background-image: url({% path image, '1950x1232' %});"{% elseif image_s3 is defined %} style="background-image: url({{ image_s3 }});"{% endif %}></div>
+        <a href="#" class="playpause"><i class="icon icon_video"></i></a>
+        <div class="off">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <div class="picto">
+                        <i class="icon icon_audio"></i>
                     </div>
-                </div>
-            </div>
-            <div class="on">
-                <div class="vCenter">
-                    <div class="vCenterKid">
-                        <div class="duration">
-                            <span class="curr">0:00</span>/<span class="total">0:00</span>
-                        </div>
-                        <div class="wave-container"></div>
-                        <div class="volume">
-                            <span></span>
-                            <i class="icon icon_son"></i>
-                        </div>
-                        <a href="#" class="fullscreen"><i class="icon icon_fullscreen"></i></a>
+                    <div class="info">
+                        <span class="category">{{ widget.file.theme|trans_fallback('name') }}</span>
+                        <span class="date">{{ widget.file.publishedAt|date('d.m.y') }}</span> . <span
+                                class="hour">{{ widget.file.publishedAt|date('H:i') }}</span>
+                        <p>{{ trans.title }}</p>
                     </div>
                 </div>
             </div>
         </div>
-    {% endif %}
+        <div class="on">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <div class="duration">
+                        <span class="curr">0:00</span>/<span class="total">0:00</span>
+                    </div>
+                    <div class="wave-container"></div>
+                    <div class="volume">
+                        <span></span>
+                        <i class="icon icon_son"></i>
+                    </div>
+                    <a href="#" class="fullscreen"><i class="icon icon_fullscreen"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endif %}

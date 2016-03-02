@@ -106,9 +106,11 @@ class NewsController extends Controller {
 
         $count = 7;
         $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime , $count);
+        $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
 
         while (count($homeArticles) === 0 && $dateTime > $festivalStart) {
             $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime->modify('-1 day'), $count);
+            $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
         }
 
         $countNext = 2;
@@ -120,6 +122,7 @@ class NewsController extends Controller {
             $tmp = clone $dateTime;
             $dateTimeNext = $tmp->modify('-1 day');
             $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext , $countNext);
+            $homeArticlesNext = $this->removeUnpublishedNewsAudioVideo($homeArticlesNext, $locale, $count);
         }
 
         if(sizeof($homeArticles) == $count) {
@@ -263,14 +266,17 @@ class NewsController extends Controller {
         if ($nextDay == 1) {
             $dateTime = $dateTime->modify('-1 day');
             $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime , $count);
+            $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
         } else {
             $homeArticles = $em->getRepository('BaseCoreBundle:News')->getOlderNewsButSameDay($locale, $this->getFestival()->getId(), $dateTime , $count);
+            $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
         }
 
         if (sizeof($homeArticles) < $count || $homeArticles == null){
             $endOfArticles = true;
             $dateTimeNext = $dateTime->modify('-1 day');
             $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext , $countNext);
+            $homeArticlesNext = $this->removeUnpublishedNewsAudioVideo($homeArticlesNext, $locale, $countNext);
         }
 
         //get images for slider articles
@@ -403,10 +409,15 @@ class NewsController extends Controller {
         //get day articles
         $count           = 3;
         $newsDate        = $news->getPublishedAt();
+
         $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
-		
+        $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
+
         $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getOlderNews($locale, $this->getFestival()->getId() , $news->getPublishedAt());
+        $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
+
         $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getNextNews($locale, $this->getFestival()->getId() , $news->getPublishedAt());
+        $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
 		
         return array(
             'localeSlugs'            => $localeSlugs,
@@ -443,7 +454,8 @@ class NewsController extends Controller {
 
         //GET ALL NEWS ARTICLES
         $newsArticles = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $settings->getFestival()->getId());
-        if ($newsArticles === null) {
+        $newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale);
+        if ($newsArticles === null || count($newsArticles) == 0) {
             throw new NotFoundHttpException();
         }
 

@@ -38,8 +38,7 @@ class GlobalController extends Controller {
         if ($request->isXmlHttpRequest()) {
 
             $queryArticle = $em->getRepository('BaseCoreBundle:News')->getLastsNews($locale, $settings->getFestival()->getId(), $dateTime , $count);
-            $articles     = array_slice($queryArticle, 0, 8);
-
+            $articles = $this->removeUnpublishedNewsAudioVideo($queryArticle, $locale, $count);
         }
 
         return array(
