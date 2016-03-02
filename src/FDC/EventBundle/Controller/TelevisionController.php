@@ -64,10 +64,12 @@ class TelevisionController extends Controller
             }
 
             $chosenChannels = $this
-                ->getBaseCoreWebTvRepository()
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:WebTv')
                 ->getLiveWebTvs($locale, $festival->getId(), array(), $in)
             ;
 
+            $inFlipped = array_flip($in);
 
             foreach ($chosenChannels as $chosenChannel) {
                 $channelVideos = $this
@@ -76,12 +78,13 @@ class TelevisionController extends Controller
                     ->getAvailableMediaVideosByWebTv($festival, $locale, $chosenChannel->getId())
                 ;
                 if ($channelVideos) {
-                    $sliderChosenChannels[] = array(
+                    $sliderChosenChannels[$inFlipped[$chosenChannel->getId()]] = array(
                         'channel'       => $chosenChannel,
                         'channelVideos' => $channelVideos,
                     );
                 }
             }
+            ksort($sliderChosenChannels);
 
             $otherChannels = $this
                 ->getDoctrineManager()
