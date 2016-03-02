@@ -208,6 +208,7 @@ class StatementVideoAdmin extends Admin
                     'statement_widget_quote_type',
                     'statement_widget_audio_type',
                     'statement_widget_image_type',
+                    'statement_widget_image_dual_align_type',
                     'statement_widget_video_type',
                     'statement_widget_video_youtube_type'
                 ),
@@ -270,6 +271,7 @@ class StatementVideoAdmin extends Admin
                     'inline' => 'table'
                 )
             )
+            ->add('hideSameDay')
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')

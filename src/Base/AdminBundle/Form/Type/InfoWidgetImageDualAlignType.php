@@ -7,45 +7,45 @@ use Sonata\AdminBundle\Form\DataTransformer\ModelToIdTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * StatementWidgetImageDualAlignType class.
+ * InfoWidgetImageDualAlignType class.
  *
- * \@extends StatementWidgetType
+ * \@extends InfoWidgetType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class StatementWidgetImageDualAlignType extends StatementWidgetType
+class InfoWidgetImageDualAlignType extends InfoWidgetType
 {
 
     /**
      * dataClass
      *
-     * (default value: 'Base\\CoreBundle\\Entity\\StatementWidgetImageDualAlign')
+     * (default value: 'Base\\CoreBundle\\Entity\\InfoWidgetImageDualAlign')
      *
      * @var string
      * @access protected
      */
-    protected $dataClass = 'Base\\CoreBundle\\Entity\\StatementWidgetImageDualAlign';
+    protected $dataClass = 'Base\\CoreBundle\\Entity\\InfoWidgetImageDualAlign';
 
     /**
-     * statementWidgetImageDummyAdmin
+     * infoWidgetImageDummyAdmin
      *
      * @var mixed
      * @access private
      */
-    private $statementWidgetImageDummyAdmin;
+    private $infoWidgetImageDummyAdmin;
 
     private $galleryDualAlignDummyAdmin;
 
     /**
-     * setStatementWidgetImageDummyAdmin function.
+     * setInfoWidgetImageDummyAdmin function.
      *
      * @access public
-     * @param mixed $statementWidgetImageDummyAdmin
+     * @param mixed $infoWidgetImageDummyAdmin
      * @return void
      */
-    public function setStatementWidgetImageDummyAdmin($statementWidgetImageDummyAdmin)
+    public function setInfoWidgetImageDummyAdmin($infoWidgetImageDummyAdmin)
     {
-        $this->statementWidgetImageDummyAdmin = $statementWidgetImageDummyAdmin;
+        $this->infoWidgetImageDummyAdmin = $infoWidgetImageDummyAdmin;
     }
 
     public function setGalleryDualAlignAdmin($galleryDualAlignDummyAdmin)
@@ -65,7 +65,7 @@ class StatementWidgetImageDualAlignType extends StatementWidgetType
     {
         parent::buildForm($builder, $options);
         $builder->add('gallery', 'sonata_type_model_list', array(
-            'sonata_field_description' =>  $this->statementWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
+            'sonata_field_description' =>  $this->infoWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
             'model_manager' => $this->galleryDualAlignAdmin->getModelManager(),
             'class' => $this->galleryDualAlignAdmin->getClass(),
             'label' => false
@@ -80,6 +80,6 @@ class StatementWidgetImageDualAlignType extends StatementWidgetType
      */
     public function getName()
     {
-        return 'statement_widget_image_dual_align_type';
+        return 'info_widget_image_dual_align_type';
     }
 }

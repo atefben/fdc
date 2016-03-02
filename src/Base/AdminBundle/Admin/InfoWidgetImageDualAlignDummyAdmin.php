@@ -9,13 +9,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * NewsWidgetImageDualAlignDummyAdmin class.
+ * InfoWidgetImageDualAlignDummyAdmin class.
  *
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class NewsWidgetImageDualAlignDummyAdmin extends Admin
+class InfoWidgetImageDualAlignDummyAdmin extends Admin
 {
     /**
      * @param FormMapper $formMapper
