@@ -360,6 +360,7 @@
                                 </h4>
                             </div>
                             <div class="box-body">
+                                {% if form.parent.children.translations.children.fr.vars.value %}
                                 <div class="sonata-ba-collapsed-fields">
                                     <div class="form-group">
                                         <label>
@@ -394,6 +395,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
