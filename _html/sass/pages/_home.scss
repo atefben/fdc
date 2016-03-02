@@ -927,6 +927,10 @@
           color: #666;
           display: inline-block;
           font-size: 0.625rem;
+
+          &.category {
+            color: $gold;
+          }
         }
       }
 

@@ -34,7 +34,7 @@
                     {%- if first == false -%},{%- endif -%}
                     {
                       "sources":[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}],
-                      "vid":"{{ video.vid }}",
+                      "vid":"{{ video.id }}",
                       "name":"{{ video|trans_fallback('title') }}",
                       "image":"{{ videoImage }}",
                       "category":"{{ video.theme }}",
