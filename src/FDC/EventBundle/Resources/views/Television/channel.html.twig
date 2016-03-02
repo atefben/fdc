@@ -15,6 +15,7 @@
              data-link="//www.example.com"
              data-email="//www.gmail.com"
              data-playlist='[
+                {% set firstVideo = false %}
                 {% set first = true %}
                 {%- for video in webTvVideos %}
                 {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
@@ -27,6 +28,9 @@
                     {%- set trans = video.file.findTranslationByLocale('fr') -%}
                 {%- endif -%}
                 {% if videoImage is defined %}
+                {% if firstVideo == false %}
+                    {% set firstVideo = video %}
+                {% endif %}
                     {%- if first == false -%},{%- endif -%}
                     {
                       "sources":[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}],
@@ -49,10 +53,10 @@
                 <div class="info">
                     <div class="vCenter">
                         <div class="vCenterKid">
-                            <span class="category">{{ webTvVideos[0].theme|trans_fallback('name') }}</span><span
-                                    class="date">{{ webTvVideos[0].publishedAt|date('d.m.y') }}</span> . <span
-                                    class="hour">{{ webTvVideos[0].publishedAt|date('H:i') }}</span>
-                            <p>{{ webTvVideos[0]|trans_fallback('title') }}</p>
+                            <span class="category">{{ firstVideo.theme|trans_fallback('name') }}</span><span
+                                    class="date">{{ firstVideo.publishedAt|date('d.m.y') }}</span> . <span
+                                    class="hour">{{ firstVideo.publishedAt|date('H:i') }}</span>
+                            <p>{{ firstVideo|trans_fallback('title') }}</p>
                         </div>
                     </div>
                 </div>
@@ -60,10 +64,10 @@
         </div>
         <div class="infos-videos">
             <div class="infos">
-                <strong>{{ webTvVideos[0].theme|trans_fallback('name') }}</strong>
-                    <span class="time">{{ webTvVideos[0].publishedAt|date('d.m.y') }}
-                        . {{ webTvVideos[0].publishedAt|date('H:i') }}</span>
-                <p>{{ webTvVideos[0]|trans_fallback('title') }}</p>
+                <strong>{{ firstVideo.theme|trans_fallback('name') }}</strong>
+                    <span class="time">{{ firstVideo.publishedAt|date('d.m.y') }}
+                        . {{ firstVideo.publishedAt|date('H:i') }}</span>
+                <p>{{ firstVideo|trans_fallback('title') }}</p>
             </div>
             <div class="buttons square">
                 <a href="#" class="button facebook"><i class="icon icon_facebook"></i></a>
