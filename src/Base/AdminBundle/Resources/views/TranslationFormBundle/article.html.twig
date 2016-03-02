@@ -391,7 +391,7 @@
                                                 <div class="form-group">
                                                     <div>
                                                         <b>{{ 'form.label_title'|trans }}:</b>
-                                                        {% if fileTranslations.get(locale) is not null %}
+                                                        {% if fileTranslations and fileTranslations.get(locale) is not null %}
                                                             {{ fileTranslations.get(locale).title }}
                                                         {% endif %}
                                                     </div>
@@ -435,7 +435,7 @@
                                                 <div class="form-group">
                                                     <div>
                                                         <b>{{ 'form.label_title'|trans }}:</b>
-                                                        {% if fileTranslations.get(locale) is not null %}
+                                                        {% if fileTranslations and fileTranslations.get(locale) is not null %}
                                                             {{ fileTranslations.get(locale).title }}
                                                         {% endif %}
                                                     </div>
@@ -535,7 +535,7 @@
                                                     <div class="form-group">
                                                         <div>
                                                             <b>{{ 'form.label_title'|trans }}:</b>
-                                                            {% if fileTranslations.get('fr') is not null %}
+                                                            {% if fileTranslations and fileTranslations.get('fr') is not null %}
                                                                 {{ fileTranslations.get('fr').title }}
                                                             {% endif %}
                                                         </div>
@@ -589,7 +589,7 @@
                                                     <div class="form-group">
                                                         <div>
                                                             <b>{{ 'form.label_title'|trans }}:</b>
-                                                            {% if fileTranslations.get('fr') is not null %}
+                                                            {% if fileTranslations and fileTranslations.get('fr') is not null %}
                                                                 {{ fileTranslations.get('fr').title }}
                                                             {% endif %}
                                                         </div>

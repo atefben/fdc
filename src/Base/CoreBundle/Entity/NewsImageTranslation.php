@@ -34,6 +34,8 @@ class NewsImageTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
      */
     protected $title;
     
@@ -41,6 +43,8 @@ class NewsImageTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"news_list", "news_show"})
      */
     protected $introduction;
 
