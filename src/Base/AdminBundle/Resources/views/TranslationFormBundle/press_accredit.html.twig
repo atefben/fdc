@@ -97,9 +97,10 @@
                                         Contenu
                                     </label>
                                     <span>
-                                    {% if procedureTranslations is not null and
-                                    procedureTranslations.get(locale) is not null %}
-                                        {{ procedureTranslations.get(locale).procedureContent }}
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.commonContent|raw }}
+                                        </div>
                                     {% endif %}
                                     </span>
                                 </div>
@@ -115,9 +116,10 @@
                                         Libelle du bouton
                                     </label>
                                     <span>
-                                    {% if procedureTranslations is not null and
-                                    procedureTranslations.get(locale) is not null %}
-                                        {{ procedureTranslations.get(locale).btnLabel }}
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.btnLabel }}
+                                        </div>
                                     {% endif %}
                                     </span>
                                 </div>
@@ -126,9 +128,10 @@
                                         Lien du bouton
                                     </label>
                                     <span>
-                                    {% if procedureTranslations is not null and
-                                    procedureTranslations.get(locale) is not null %}
-                                        {{ procedureTranslations.get(locale).btnLink }}
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.btnLink }}
+                                        </div>
                                     {% endif %}
                                     </span>
                                 </div>
@@ -137,9 +140,10 @@
                                         Texte sous le bouton
                                     </label>
                                     <span>
-                                    {% if procedureTranslations is not null and
-                                    procedureTranslations.get(locale) is not null %}
-                                        {{ procedureTranslations.get(locale).btnText }}
+                                    {% if form.children.fr.vars.value is not null %}
+                                        <div>
+                                            {{ form.children.fr.vars.value.btnText }}
+                                        </div>
                                     {% endif %}
                                     </span>
                                 </div>

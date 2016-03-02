@@ -55,7 +55,7 @@ class TelevisionController extends Controller
 
         $sliderChosenChannels = array();
         $sliderOtherChannels = array();
-        if (!$page->getDoNotDisplayTrailerArea()) {
+        if (!$page->getDoNotDisplayWebTvArea()) {
             $in = array();
             foreach ($page->getAssociatedWebTvs() as $associatedWebTv) {
                 if ($associatedWebTv->getAssociation()) {
