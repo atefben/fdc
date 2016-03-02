@@ -12,10 +12,10 @@
                 {% if trans is null or trans.file is null %}
                     {% set trans = photo.findTranslationByLocale('fr') %}
                 {% endif %}
-                <a id="photo1" class="ajax chocolat-image" href="{% path trans.file , 'reference' %}"
-                   title='<span class="category">{{ photo.theme }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }}</span><h2>{{ photo|trans_fallback('legend') }}</h2>'
+                <a id="photo1" class="ajax chocolat-image" data-pid="{{ photo.id }}" href="{% path trans.file , 'reference' %}"
+                   title='<span class="category">{{ photo.theme|trans_fallback('name') }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }}</span><h2>{{ trans.legend }}</h2>'
                    data-credit="{{ photo.copyright }}"></a>
-                <img src="{% path trans.file , '1144x724' %}" alt="{{ photo|trans_fallback('alt') }}">
+                <img src="{% path trans.file , '1144x724' %}" alt="{{ trans.alt }}" title="{{ trans.legend }}">
                 <div class="picto">
                     <i class="icon icon_photo"></i>
                 </div>

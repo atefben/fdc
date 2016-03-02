@@ -370,7 +370,10 @@
         <h2 class="title">Les vidéos à la une</h2>
         <p class="link"><a href="webtv.php"><i class="icon icon_fleche-right"></i>Accédez à la web tv</a></p>
         <div id="slider-videos" class="owl-carousel sliderDrag">
-          <div class="vid">
+          <div class="vid video"
+            data-vid="1"
+            data-file='[{"file":"./files/mov_bbb.mp4"}]'
+            data-img="//dummyimage.com/960x540/000/c8a461.png">
             <div class="image-wrapper">
               <img src="img/slider-videos/001.jpg" alt="" />
             </div>
@@ -380,14 +383,18 @@
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
+                    <span href="#" class="category">Conférence de presse</span>
+                    <span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <p href="#" class="titleLink" data-title="Rencontre avec l'équipe de Carol">Rencontre avec l'équipe de Carol</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="vid">
+          <div class="vid video"
+            data-vid="1"
+            data-file='[{"file":"./files/mov_bbb.mp4"}]'
+            data-img="//dummyimage.com/960x540/000/c8a461.png">
             <div class="image-wrapper">
               <img src="img/slider-videos/001.jpg" alt="" />
             </div>
@@ -397,8 +404,9 @@
               <div class="info-container">
                 <div class="vCenter">
                   <div class="vCenterKid">
-                    <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                    <a href="#" class="titleLink">Rencontre avec l'équipe de Carol</a>
+                    <span href="#" class="category">Montée des marches</span>
+                    <span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <p href="#" class="titleLink" data-title="Rencontre avec l'équipe de Carol">Rencontre avec l'équipe de Carol</p>
                   </div>
                 </div>
               </div>
@@ -760,6 +768,40 @@
         </div>
       </div>
     </div>
+
+    <div class="popin-video video loading">
+      <div class="video-container state-init video"
+        data-facebook="//www.facebook.com"
+        data-twitter="//www.twitter.com"
+        data-link="//www.example.com"
+        data-email="//www.gmail.com">
+        <div id="video-player-popin" class="">
+        </div>
+        <div class="video-overlay"></div>
+        <div class="infos-bar">
+          <div class="picto"><i class="icon icon_video"></i></div>
+          <div class="info">
+            <div class="vCenter">
+              <div class="vCenterKid">
+                <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popin-info info">
+        <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+        <p></p>
+      </div>
+      <div class="popin-buttons buttons square">
+        <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+        <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a>
+        <a href="#" class="button link"><i class="icon icon_link"></i></a>
+        <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+      </div>
+    </div>
+    <div class="ov"></div>
 
     <?php include('footer.html'); ?>
 

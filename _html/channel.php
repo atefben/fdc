@@ -15,37 +15,39 @@
       <h2 class="title">Conférences de presse</h2>
      <div class="small-container">
         <div class="player video-container state-init video"
-          data-facebook="//www.facebook.com"
-          data-twitter="//www.twitter.com"
-          data-link="//www.example.com"
           data-email="//www.gmail.com"
           data-playlist='[
             {
               "sources":[{"file":"./files/mov_bbb.mp4"}],
+              "vid":21,
               "image":"//dummyimage.com/960x540/000/c8a461.png",
               "name":"Sils Maria",
               "category":"Photocall"
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"}],
+              "vid":22,
               "image":"//img.youtube.com/vi/_eaIurlPB7w/maxresdefault.jpg",
               "name":"Interviews des réalisateurs",
               "category":"Montée des marches"
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"}],
+              "vid":23,
               "image":"img/slider-channels/03.jpg",
               "name":"Sils Maria",
               "category":"Conférence de presse"
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=4QmpYuVEwIU"}],
+              "vid":24,
               "image":"img/slider-channels/01.jpg",
               "name":"Sils Maria",
               "category":"Photocall"
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=YvjBXpmwhmk"}],
+              "vid":25,
               "image":"img/slider-channels/02.jpg",
               "name":"Sils Maria",
               "category":"Montée des marches"
@@ -224,9 +226,6 @@
       </div>
       <div class="popin-video video loading">
         <div class="video-container state-init video"
-          data-facebook="//www.facebook.com"
-          data-twitter="//www.twitter.com"
-          data-link="//www.example.com"
           data-email="//www.gmail.com">
           <div id="video-player-popin" class="">
           </div>
