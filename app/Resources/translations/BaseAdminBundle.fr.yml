@@ -52,6 +52,7 @@ breadcrumb:
     link_press_download_list: A télécharger
     link_press_media_library_list: Médiathèque
     link_press_accredit_procedure_list: Procédures d'accréditation
+    link_press_accredit_list: S'accréditer
 
 link:
     action_soif_refresh: Mettre à jour
@@ -517,7 +518,7 @@ form:
     label_media_video_image: Image cover
     label_display: Ne pas afficher cette strate
     label_film: Films
-    label_content: Description
+    label_content: Contenu
     label_image: Image
     label_image_link: Image et lien
     label_main_image: Première image
