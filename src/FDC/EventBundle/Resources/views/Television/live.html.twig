@@ -58,6 +58,7 @@
             <div id="slider-videos" class="owl-carousel sliderDrag">
                 {% for group in sliderChosenChannels %}
                     {% if group.channel.image or (group.channelVideos|length and group.channelVideos|first.image) %}
+                        {% set format = '640x404' %}
                         <div class="vid shadow-bottom">
                             {{ block('WebTvLiveChannel') }}
                         </div>
@@ -68,6 +69,7 @@
                 {% for group in sliderOtherChannels %}
                     {% if group.channel.image or (group.channelVideos|length and group.channelVideos|first.image) %}
                         {% set cropTitle = true %}
+                        {% set format = '293x185' %}
                         <div class="channel shadow-bottom">
                             {{ block('WebTvLiveChannel') }}
                         </div>
@@ -194,12 +196,12 @@
         {% set channelVideos = group.channelVideos %}
         {% set count = group.channelVideos|length %}
         {% if channel.image and channel.image|trans_fallback('file') %}
-            <img src="{% path channel.image|trans_fallback('file'), '640x404' %}"
-                 srcset="{% path channel.image|trans_fallback('file'), '640x404' %} 1x, {% path channel.image|trans_fallback('file'), '1280x808' %} 2x"
+            <img src="{% path channel.image|trans_fallback('file'), format %}"
+                 srcset="{% path channel.image|trans_fallback('file'), format %} 1x, {% path channel.image|trans_fallback('file'), format %} 2x"
                  alt="{{ channel.image|trans_fallback('alt') }}">
         {% elseif channelVideos|length and channelVideos|first.image and channelVideos|first.image|trans_fallback('file') %}{# If channel image does not exist #}
-            <img src="{% path channelVideos|first.image|trans_fallback('file'), '640x404' %}"
-                 srcset="{% path channelVideos|first.image|trans_fallback('file'), '640x404' %} 1x, {% path channelVideos|first.image|trans_fallback('file'), '1280x808' %} 2x"
+            <img src="{% path channelVideos|first.image|trans_fallback('file'), format %}"
+                 srcset="{% path channelVideos|first.image|trans_fallback('file'), format %} 1x, {% path channelVideos|first.image|trans_fallback('file'), format %} 2x"
                  alt="{{ channelVideos|first.image|trans_fallback('alt') }}">
         {% endif %}
     </div>
