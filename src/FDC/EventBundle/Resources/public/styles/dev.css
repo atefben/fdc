@@ -54,6 +54,13 @@
     text-align: center;
 }
 
+.single-article .txt-grey-bkg-container {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+}
+
 .single-article .txt-grey-bkg-container .content span {
     font-size: 1rem;
     font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
