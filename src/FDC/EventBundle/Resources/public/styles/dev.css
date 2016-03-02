@@ -99,6 +99,10 @@
     margin-bottom: 40px;
 }
 
+.single-article .button a {
+    color: #c8a461;
+}
+
 .same-day .image.image-sameday-wrapper {
     width:293px;
     height:185px;
