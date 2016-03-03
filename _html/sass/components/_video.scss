@@ -54,7 +54,6 @@
     height: 80px;
     left: 0;
     margin: 0;
-    overflow: hidden;
     position: absolute;
     top: 0;
     width: 100%;
@@ -212,9 +211,16 @@
       top: 50%;
       left: 0;
       margin-top: -92px;
-      z-index: 3;
+      z-index: -1;
       @include transform(translate3d(0, 30px, 0));
       @include transition(all .8s $smoothTransition);
+
+      &.active {
+        @include transform(translate3d(0, 0, 0));
+        opacity: 1;
+        visibility: visible;
+        z-index: 3;
+      }
 
       .info, .picto {
         display: block;
@@ -248,12 +254,6 @@
           font-size: 0.850rem;
 
         }
-      }
-
-      &.active {
-        @include transform(translate3d(0, 0, 0));
-        opacity: 1;
-        visibility: visible;
       }
     }
 
