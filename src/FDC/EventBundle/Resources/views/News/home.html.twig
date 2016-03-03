@@ -183,12 +183,12 @@
                     {% for video in videos %}
                         {% if video.association is defined and video.association != null %}
                             <div class="vid video"
-                                data-vid="{{ video.id }}"
-                                data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
-                                {% if video.image|trans_fallback('file') %}
-                                data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
+                                data-vid="{{ video.association.id }}"
+                                data-file='[{"file":"{{ s3_server_video ~ video.association|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video.association|trans_fallback('mp4Url') }}"}]'
+                                {% if video.association.image|trans_fallback('file') %}
+                                data-img="{% path video.association.image|trans_fallback('file'), '463x292' %}"
                                 {% else %}
-                                data-img="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
+                                data-img="{% path video.association.image|trans_fallback('file', 'fr'), '463x292' %}"
                                 {% endif %}>
                                 {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' %}
                             </div>
