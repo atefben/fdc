@@ -25,35 +25,43 @@
               "sources":[{"file":"./files/mov_bbb.mp4"}],
               "image":"//dummyimage.com/960x540/000/c8a461.png",
               "name":"Sils Maria",
-              "category":"Photocall"
+              "category":"Photocall",
+              "date":"11.03.2016",
+              "hour":"12:00"
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"}],
               "image":"//img.youtube.com/vi/_eaIurlPB7w/maxresdefault.jpg",
               "name":"Interviews des réalisateurs",
-              "category":"Montée des marches"
+              "category":"Montée des marches",
+              "date":"13.03.2016",
+              "hour":"13:00"
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"}],
               "image":"img/slider-channels/03.jpg",
               "name":"Sils Maria",
-              "category":"Conférence de presse"
+              "category":"Conférence de presse",
+              "date":"14.03.2016",
+              "hour":"15:00"
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=4QmpYuVEwIU"}],
               "image":"img/slider-channels/01.jpg",
               "name":"Sils Maria",
-              "category":"Photocall"
+              "category":"Photocall",
+              "date":"15.03.2016",
+              "hour":"12:00"
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=YvjBXpmwhmk"}],
               "image":"img/slider-channels/02.jpg",
               "name":"Sils Maria",
-              "category":"Montée des marches"
+              "category":"Montée des marches",
+              "date":"11.03.2016",
+              "hour":"12:00"
             }
           ]'
-          data-live="false"
-          data-file=""
           data-img="/img/article/004.jpg">
           <div id="video-player" class="video-player-pl v_<?php echo time();?>">
           </div>
@@ -70,8 +78,13 @@
             </div>
           </div>
         </div>
-        <span class="type-video">Bande annonce</span>
-        <span class="name-video">Valley of Love</span>
+        <div class="infos-videos">
+          <div class="infos">
+            <strong>Conférence de presse</strong>
+            <span class="time">18.05.2015 . 19h00</span>
+            <p>Interview des réalisateurs des Courts Métrages en Compétition</p>
+         </div>
+        </div>
       </article>
       <aside class="informations-video">
         <ul class="nav">

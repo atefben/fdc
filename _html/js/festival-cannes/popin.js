@@ -138,14 +138,17 @@ $('.cookie-accept').click(function () {
 });
 
 //LINK POPIN//
-function linkPopinInit(link) {
+function linkPopinInit(link, cls) {
+  var link = link || document.location.href;
+  var cls  = cls || '.link.self';
+
   if($('.share').length || $('.square').length ) {
-    new Clipboard('.link');
-    var link   = link || document.location.href;
+    new Clipboard(cls);
 
-    $('.link').attr('data-clipboard-text',link);
+    $(cls).attr('data-clipboard-text',link);
 
-    $('.link').on('click touchstart',function(e){
+    $(cls).on('click touchstart',function(e){
+      var that = $(this);
       e.preventDefault();
 
       if($('.single-channel').length) {
@@ -157,16 +160,16 @@ function linkPopinInit(link) {
       }
 
       if(!$('#share-box').length) {
-        if($(this).closest('.share').length) {
-          $(this).closest('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
+        if(that.closest('.share').length) {
+          that.closest('.share').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
         } else {
-          $(this).closest('.square').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
+          that.closest('.square').append('<div id="share-box"><div class="bubble"><a href="#">'+ GLOBALS.texts.popin.copy +'</a></div></div>');
         }
 
         $('#share-box').animate({'opacity':'1'},400,function() {
           $('#share-box').addClass('show');
           setTimeout(function() {
-            $('#share-box .bubble').html('<a href="#">'+link+'</a>');
+            $('#share-box .bubble').html('<a href="#">'+that.attr('data-clipboard-text')+'</a>');
           }, 1000);
         });
       } else if($('#share-box').hasClass('show')) {

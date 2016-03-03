@@ -6551,7 +6551,6 @@ div.chocolat-wrapper .zoomCursor .icon {
   height: 80px;
   left: 0;
   margin: 0;
-  overflow: hidden;
   position: absolute;
   top: 0;
   width: 100%;
@@ -6685,7 +6684,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   top: 50%;
   left: 0;
   margin-top: -92px;
-  z-index: 3;
+  z-index: -1;
   -moz-transform: translate3d(0, 30px, 0);
   -ms-transform: translate3d(0, 30px, 0);
   -webkit-transform: translate3d(0, 30px, 0);
@@ -6694,6 +6693,15 @@ div.chocolat-wrapper .zoomCursor .icon {
   -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.video-container .channels-video.active {
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  visibility: visible;
+  z-index: 3;
 }
 .video-container .channels-video .info, .video-container .channels-video .picto {
   display: block;
@@ -6718,14 +6726,6 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 .video-container .channels-video .info p {
   font-size: 0.850rem;
-}
-.video-container .channels-video.active {
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  opacity: 1;
-  visibility: visible;
 }
 .video-container .infos-bar {
   position: relative;
@@ -14244,16 +14244,24 @@ input[type=submit] {
   max-width: 100%;
   margin: 0 auto;
 }
-.webtv-ba-video .video .type-video {
+.webtv-ba-video .video .infos-videos .infos strong {
   color: #c8a461;
-  display: block;
+  font-size: 0.69rem;
   text-transform: uppercase;
-  padding-top: 25px;
-  font-size: 11px;
   letter-spacing: .1em;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  display: inline-block;
+  padding-top: 25px;
+  font-size: 11px;
 }
-.webtv-ba-video .video .name-video {
+.webtv-ba-video .video .infos-videos .infos .time {
+  margin-left: 9px;
+  color: #666666;
+  font-size: 0.69rem;
+  text-transform: uppercase;
+}
+.webtv-ba-video .video .infos-videos .infos p {
+  color: #fff;
   font-size: 1.125rem;
   padding-top: 10px;
   display: block;
