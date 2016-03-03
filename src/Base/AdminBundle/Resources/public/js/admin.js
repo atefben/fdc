@@ -13,7 +13,7 @@ $(document).ready(function() {
 
         $(document).on('click', '#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]', function () {
             var countTopVideos = $('#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]').closest('div').find('tbody').find('tr').size();
-            if(countTopVideos >= 4) {
+            if(countTopVideos > 4) {
                 setTimeout(function() {
                     $('#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]').hide();
                 }, 3500);
@@ -23,7 +23,7 @@ $(document).ready(function() {
 
     if( $('#topWebTvsAssociatedArea').length > 0) {
         var countTopVideos = $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').closest('div').find('tbody').find('tr').size();
-        if(countTopVideos >= 9) {
+        if(countTopVideos > 9) {
             $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').hide();
         }
 
