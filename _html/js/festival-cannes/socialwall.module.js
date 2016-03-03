@@ -177,10 +177,16 @@ $(document).ready(function() {
     // INSTAGRAM
     // load Instagram pictures and build array
     function loadInstagram(callback){
+      if (GLOBALS.env == "html") {
+        instagramDatatype = "jsonp";
+      } else {
+        instagramDatatype = "json";
+      }
+
       $.ajax({
         url: GLOBALS.api.instagramUrl,
         type: "GET",
-        dataType: "jsonp",
+        dataType: instagramDatatype,
         success: function(data) {
           console.log(data);
           if (GLOBALS.env == "html") {
