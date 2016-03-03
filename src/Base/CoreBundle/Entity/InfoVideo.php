@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * InfoVideo
  *
@@ -29,6 +31,7 @@ class InfoVideo extends Info
      * @ORM\ManyToOne(targetEntity="MediaVideo")
      *
      * @Groups({"news_list", "news_show"})
+     * @Assert\NotNull()
      */
     private $video;
 
@@ -60,7 +63,7 @@ class InfoVideo extends Info
      * Set video
      *
      * @param \Base\CoreBundle\Entity\MediaVideo $video
-     * @return InfoVideo
+     * @return NewsVideo
      */
     public function setVideo(\Base\CoreBundle\Entity\MediaVideo $video = null)
     {
@@ -83,7 +86,7 @@ class InfoVideo extends Info
      * Set image
      *
      * @param \Base\CoreBundle\Entity\MediaImage $image
-     * @return InfoVideo
+     * @return NewsVideo
      */
     public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
     {
@@ -98,6 +101,17 @@ class InfoVideo extends Info
      * @return \Base\CoreBundle\Entity\MediaImage
      */
     public function getImage()
+    {
+        return $this->image;
+    }
+
+
+    /**
+     * Get header
+     *
+     * @return MediaImage
+     */
+    public function getHeader()
     {
         return $this->image;
     }

@@ -33,7 +33,7 @@ class StatementWidgetVideoYoutubeTranslation
      *
      * @Groups({"news_list", "news_show"})
      */
-    private $youtubeId;
+    private $url;
 
     /**
      * @var string
@@ -43,29 +43,6 @@ class StatementWidgetVideoYoutubeTranslation
      * @Groups({"news_list", "news_show"})
      */
     private $title;
-
-    /**
-     * Set youtubeId
-     *
-     * @param string $youtubeId
-     * @return StatementWidgetVideoYoutubeTranslation
-     */
-    public function setYoutubeId($youtubeId)
-    {
-        $this->youtubeId = $youtubeId;
-
-        return $this;
-    }
-
-    /**
-     * Get youtubeId
-     *
-     * @return string 
-     */
-    public function getYoutubeId()
-    {
-        return $this->youtubeId;
-    }
 
     /**
      * Set title
@@ -83,10 +60,33 @@ class StatementWidgetVideoYoutubeTranslation
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return StatementWidgetVideoYoutubeTranslation
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 }

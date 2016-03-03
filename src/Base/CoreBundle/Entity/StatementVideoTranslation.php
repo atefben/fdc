@@ -35,8 +35,9 @@ class StatementVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
+     * @Groups({"news_list", "news_show"})
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -45,7 +46,8 @@ class StatementVideoTranslation implements TranslateChildInterface
      *
      * @Groups({"news_list", "news_show"})
      */
-    private $introduction;
+    protected $introduction;
+
 
     /**
      * @var string
@@ -67,7 +69,7 @@ class StatementVideoTranslation implements TranslateChildInterface
      * Set title
      *
      * @param string $title
-     * @return NewsArticleTranslation
+     * @return NewsVideoTranslation
      */
     public function setTitle($title)
     {
@@ -90,7 +92,7 @@ class StatementVideoTranslation implements TranslateChildInterface
      * Set introduction
      *
      * @param string $introduction
-     * @return NewsArticleTranslation
+     * @return NewsVideoTranslation
      */
     public function setIntroduction($introduction)
     {
@@ -113,7 +115,7 @@ class StatementVideoTranslation implements TranslateChildInterface
      * Set slug
      *
      * @param string $slug
-     * @return StatementVideoTranslation
+     * @return NewsVideoTranslation
      */
     public function setSlug($slug)
     {
@@ -125,7 +127,7 @@ class StatementVideoTranslation implements TranslateChildInterface
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {

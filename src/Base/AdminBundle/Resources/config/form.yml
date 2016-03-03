@@ -163,11 +163,6 @@ services:
             - ['setStatementWidgetImageDummyAdmin', ['@base.admin.statement_widget_image_dual_align_dummy']]
             - ['setGalleryDualAlignAdmin', ['@base.admin.gallery_dual_align']]
 
-    base.admin.form.statement_widget_video_type:
-        class: Base\AdminBundle\Form\Type\StatementWidgetVideoType
-        tags:
-            - { name: form.type, alias: 'statement_widget_video_type'}
-
     base.admin.form.statement_widget_video_youtube_type:
         scope: prototype
         class: Base\AdminBundle\Form\Type\StatementWidgetVideoYoutubeType
@@ -177,14 +172,14 @@ services:
             - ['setSonataAdmin', ['@base.admin.statement_widget_video_youtube_dummy']]
             - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
 
-    base.admin.form.news_widget_image_dual_align_type:
+    base.admin.form.statement_widget_video_type:
         scope: prototype
-        class: Base\AdminBundle\Form\Type\NewsWidgetImageDualAlignType
+        class: Base\AdminBundle\Form\Type\StatementWidgetVideoType
         tags:
-            - { name: form.type, alias: 'news_widget_image_dual_align_type'}
+            - { name: form.type, alias: 'statement_widget_video_type'}
         calls:
-            - ['setNewsWidgetImageDummyAdmin', ['@base.admin.news_widget_image_dual_align_dummy']]
-            - ['setGalleryDualAlignAdmin', ['@base.admin.gallery_dual_align']]
+            - ['setSonataAdmin', ['@base.admin.statement_widget_video_dummy']]
+            - ['setMediaVideoAdmin', ['@base.admin.media_video']]
 
     #Info services
     base.admin.form.info_widget_type:
@@ -222,9 +217,13 @@ services:
             - ['setInfoWidgetImageDummyAdmin', ['@base.admin.info_widget_image_dummy']]
 
     base.admin.form.info_widget_video_type:
+        scope: prototype
         class: Base\AdminBundle\Form\Type\InfoWidgetVideoType
         tags:
             - { name: form.type, alias: 'info_widget_video_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.info_widget_video_dummy']]
+            - ['setMediaVideoAdmin', ['@base.admin.media_video']]
 
     base.admin.form.info_widget_video_youtube_type:
         scope: prototype
@@ -241,7 +240,7 @@ services:
         tags:
             - { name: form.type, alias: 'info_widget_image_dual_align_type'}
         calls:
-            - ['setWidgetImageDummyAdmin', ['@base.admin.info_widget_image_dual_align_dummy']]
+            - ['setInfoWidgetImageDummyAdmin', ['@base.admin.info_widget_image_dual_align_dummy']]
             - ['setGalleryDualAlignAdmin', ['@base.admin.gallery_dual_align']]
 
     base.admin.form.press_guide_widget_type:

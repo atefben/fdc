@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCPressBundle' %}
-{% set articleType = "article" %}
+{% set articleType = "statement" %}
 {% if class(article) starts with "I" %}
-    {% set articleType = "communique" %}
+    {% set articleType = "info" %}
 {% endif %}
 {% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
     {% set trans = article.header.findTranslationByLocale(app.request.locale) %}
@@ -9,21 +9,21 @@
         {% set trans = article.header.findTranslationByLocale('fr') %}
     {% endif %}
     {% set file = trans.file %}
-    {% set newsFormat = "article" %}
+    {% set format = "article" %}
 {% elseif class(article) == "StatementAudio" or class(article) == "InfoAudio" %}
     {% set trans = article.audio.image.findTranslationByLocale(app.request.locale) %}
     {% if trans is null or trans.file is null %}
         {% set trans = article.audio.findTranslationByLocale('fr') %}
     {% endif %}
     {% set file = trans.file %}
-    {% set newsFormat = "audio" %}
+    {% set format = "audio" %}
 {% elseif class(article) == "StatementVideo" or class(article) == "InfoVideo" %}
     {% set trans = article.video.findTranslationByLocale(app.request.locale) %}
     {% if trans is null or trans.file is null %}
         {% set trans = article.video.findTranslationByLocale('fr') %}
     {% endif %}
     {% set file = trans.file %}
-    {% set newsFormat = "video" %}
+    {% set format = "video" %}
 {% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
     {% set file = "" %}
     {% for gallery in article.gallery.medias %}
@@ -35,19 +35,19 @@
             {% set file = trans.file %}
         {% endif %}
     {% endfor %}
-    {% set newsFormat = "image" %}
+    {% set format = "image" %}
 {% endif %}
 <div class="item all {{ articleType }} {{ article.theme.slug }}">
     <article class="article">
         <div class="img">
             <span class="picto">
-                {% if class(article) matches '{^Statement*}' %}
+                {% if format == "statement" %}
                     <i class="icon icon_communique-presse"></i>
                 {% else %}
                     <i class="icon icon_article"></i>
                 {% endif %}
             </span>
-            <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': articleType }) }}">
+            <a href="{{ path('fdc_press_news_get', {'format': format, 'slug': article|trans_fallback('slug'), 'type': articleType }) }}">
                 {% thumbnail file, 'big' with {'alt': article|trans_fallback('title') } %}
             </a>
         </div>
@@ -55,7 +55,7 @@
             <span class="category">{{ article.theme }}</span>
             <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
             <h3>
-                <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': articleType }) }}">
+                <a href="{{ path('fdc_press_news_get', {'format': format, 'slug': article|trans_fallback('slug'), 'type': articleType }) }}">
                     {{ article|trans_fallback('title')}}
                 </a>
             </h3>

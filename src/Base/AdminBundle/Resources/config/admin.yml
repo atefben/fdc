@@ -551,6 +551,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.statement_widget_video_dummy:
+        class: Base\AdminBundle\Admin\StatementWidgetVideoDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\StatementWidgetVideo, BaseAdminBundle:StatementWidgetVideoDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Statement Widget Video, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+             
     base.admin.statement_widget_video_youtube_dummy:
         class: Base\AdminBundle\Admin\StatementWidgetVideoYoutubeDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\StatementWidgetVideoYoutube, BaseAdminBundle:StatementWidgetVideoYoutubeDummyAdmin]
@@ -591,6 +599,14 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.info_widget_video_dummy:
+        class: Base\AdminBundle\Admin\InfoWidgetVideoDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\InfoWidgetVideo, BaseAdminBundle:InfoWidgetVideoDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Info Widget Video, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+             
     base.admin.info_widget_video_youtube_dummy:
         class: Base\AdminBundle\Admin\InfoWidgetVideoYoutubeDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\InfoWidgetVideoYoutube, BaseAdminBundle:InfoWidgetVideoYoutubeDummyAdmin]

@@ -127,7 +127,7 @@ class NewsController extends Controller
     }
     
     /**
-     * @Route("/press-articles/{type}/{format}/{slug}", requirements={"format": "articles|audios|videos|photos", "type": "communique|article"})
+     * @Route("/press-articles/{type}/{format}/{slug}", requirements={"format": "articles|audios|videos|photos", "type": "statement|info"})
      * @Template("FDCPressBundle:News:main.html.twig")
      * @param $slug
      * @param $format
@@ -151,7 +151,7 @@ class NewsController extends Controller
         $format = substr($format, 0, -1);
 
         // GET STATEMENT / INFO
-        if ($type == "article") {
+        if ($type == "statement") {
             $mapper = array_flip(Statement::getTypes());
             if (!isset($mapper[$format])) {
                 throw  new NotFoundHttpException();
@@ -173,7 +173,6 @@ class NewsController extends Controller
                 $slug,
                 $settings->getFestival()->getId(),
                 $locale,
-                $dateTime->format('Y-m-d H:i:s'),
                 $isAdmin,
                 $mapper[$format]
             );

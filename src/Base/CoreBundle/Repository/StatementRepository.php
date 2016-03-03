@@ -5,8 +5,8 @@ namespace Base\CoreBundle\Repository;
 use Base\CoreBundle\Component\Repository\EntityRepository;
 use JMS\DiExtraBundle\Annotation as DI;
 
-use Base\CoreBundle\Entity\StatementArticleTranslation;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Entity\StatementArticleTranslation;
 
 /**
  * StatementRepository class.
@@ -48,7 +48,7 @@ class StatementRepository extends EntityRepository
             $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
         }
 
-        $this->addFDCEventQueries($qb, 's');
+        $this->addFDCPressQueries($qb, 's');
 
         return $qb
             ->getQuery()
