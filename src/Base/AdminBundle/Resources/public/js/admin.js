@@ -23,13 +23,13 @@ $(document).ready(function() {
 
     if( $('#topWebTvsAssociatedArea').length > 0) {
         var countTopVideos = $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').closest('div').find('tbody').find('tr').size();
-        if(countTopVideos >= 10) {
+        if(countTopVideos >= 9) {
             $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').hide();
         }
 
         $(document).on('click', '#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]', function () {
             var countTopVideos = $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').closest('div').find('tbody').find('tr').size();
-            if(countTopVideos >= 10) {
+            if(countTopVideos >= 9) {
                 setTimeout(function() {
                     $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').hide();
                 }, 3500);
