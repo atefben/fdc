@@ -124,8 +124,6 @@ function editEvents() {
     }
 
     $('input[name$="[translate]"]').closest('.icheckbox_minimal').on('ifChanged', function(e) {
-        console.log($(e.target));
-        console.log($(this));
         if (!$(e.target).is(':checked')) {
             $('.form-group[id$="priorityStatus"]').hide();
             $('ul[id$="translateOptions"]').hide();
