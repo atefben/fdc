@@ -143,7 +143,7 @@ class StatementCommonAdmin extends BaseAdmin
     {
         return array(
             'Id'                                        => 'id',
-            'Titre de l\'actualité'                    => 'exportTitle',
+            'Titre du communiqué'                       => 'exportTitle',
             'Thème'                                     => 'exportTheme',
             'Identifiant créateur'                      => 'exportAuthor',
             'Date de création'                          => 'exportCreatedAt',
