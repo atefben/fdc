@@ -7,7 +7,7 @@ use Base\CoreBundle\Entity\StatementVideo;
 use Base\CoreBundle\Entity\StatementVideoTranslation;
 use Base\CoreBundle\Entity\StatementStatementAssociated;
 
-use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
+use Base\AdminBundle\Component\Admin\StatementCommonAdmin as Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;

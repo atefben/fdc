@@ -263,6 +263,12 @@ list:
         translation_pending: En attente de traduction
         translation_validating: Traduction à valider
         translated: Traduit
+    statement_common:
+        label_title: Titre du communiqué
+        label_id: Identifiant
+    info_common:
+        label_title: Titre de l'info
+        label_id: Identifiant
 
 filter:
     label_have_trailer: Afficher film avec bande annonce
