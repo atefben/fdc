@@ -6,12 +6,15 @@
 {% for article in homeArticles %}
     {% if loop.first %}
     <div class="articles right pad">
-    {% include 'FDCEventBundle:News:widgets/article-home.html.twig' with vars %}
+        {% include 'FDCEventBundle:News:widgets/article-home.html.twig' with vars %}
     {% elseif loop.index == 4 %}
+        {% if homeArticlesSlider is not empty %}
+            {% include 'FDCEventBundle:News:widgets/slideshow-actu-home.html.twig' %}
+        {% endif %}
     <div class="articles left">
-    {% include 'FDCEventBundle:News:widgets/article-home.html.twig' with vars %}
+        {% include 'FDCEventBundle:News:widgets/article-home.html.twig' with vars %}
     {% else %}
-    {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
+        {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
     {% endif %}
     {% if loop.index == 3 %}
     </div>
@@ -20,9 +23,6 @@
     </div>
     {% endif %}
 {% endfor %}
-    {% if homeArticlesSlider is not empty %}
-        {% include 'FDCEventBundle:News:widgets/slideshow-actu-home.html.twig' %}
-    {% endif %}
 {% if homeArticlesNext %}
     <div class="articles right nextDay">
         {% for article in homeArticlesNext %}
