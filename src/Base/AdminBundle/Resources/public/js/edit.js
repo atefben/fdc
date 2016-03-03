@@ -123,9 +123,8 @@ function editEvents() {
         $('ul[id$="translateOptions"]').hide();
     }
 
-    // translate event on click
-    $('a[name$="[translate]"]').on('ifChanged', function() {
-        if (!$(this).is(':checked')) {
+    $('input[name$="[translate]"]').closest('.icheckbox_minimal').on('ifChanged', function(e) {
+        if (!$(e.target).is(':checked')) {
             $('.form-group[id$="priorityStatus"]').hide();
             $('ul[id$="translateOptions"]').hide();
         } else {
