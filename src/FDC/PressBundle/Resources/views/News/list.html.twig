@@ -3,7 +3,21 @@
 {% block body %}
 <div id="main" class="press loading press-actu {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }} all-articles grid">
 
-    {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
+    <div class="header-press">
+        <div class="head">
+            <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>
+        </div>
+        <div class="container">
+            <h2>{{ 'press.header.title.communiqueetinfos'|trans }}</h2>
+            <p>
+            <span class="vCenter">
+              <span class="vCenterKid">
+                  {{ 'press.header.subtitle.communiqueactualiteretrouveztoute'|trans }}
+              </span>
+            </span>
+            </p>
+        </div>
+    </div>
 
     {{ render(controller('FDCPressBundle:Security:login')) }}
 
