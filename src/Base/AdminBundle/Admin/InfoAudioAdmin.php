@@ -7,7 +7,7 @@ use Base\CoreBundle\Entity\InfoAudio;
 use Base\CoreBundle\Entity\InfoAudioTranslation;
 use Base\CoreBundle\Entity\InfoInfoAssociated;
 
-use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
+use Base\AdminBundle\Component\Admin\InfoCommonAdmin as Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;

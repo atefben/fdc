@@ -18,12 +18,12 @@ class StatementWidgetVideoYoutubeType extends StatementWidgetType
     /**
      * dataClass
      *
-     * (default value: 'Base\\CoreBundle\\Entity\\NewsWidgetVideoYoutubeType')
+     * (default value: 'Base\\CoreBundle\\Entity\\StatementWidgetVideoYoutubeType')
      *
      * @var string
      * @access protected
      */
-    protected $dataClass = 'Base\\CoreBundle\\Entity\\NewsWidgetVideoYoutube';
+    protected $dataClass = 'Base\\CoreBundle\\Entity\\StatementWidgetVideoYoutube';
 
     /**
      * admin

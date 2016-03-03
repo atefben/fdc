@@ -9,7 +9,7 @@
         {% set trans = article.header.findTranslationByLocale('fr') %}
     {% endif %}
     {% set file = trans.file %}
-    {% set format = "article" %}
+    {% set format = "articles" %}
 {% elseif class(article) == "StatementAudio" or class(article) == "InfoAudio" %}
     {% set trans = article.audio.findTranslationByLocale(app.request.locale) %}
     {% if trans is null or trans.file is null %}

@@ -84,7 +84,7 @@ function editEvents() {
     }
 
     // translate event on click
-    $('input[name$="[translate]"]').on('ifChanged', function() {
+    $('a[name$="[translate]"]').on('ifChanged', function() {
         if (!$(this).is(':checked')) {
             $('.form-group[id$="priorityStatus"]').hide();
             $('ul[id$="translateOptions"]').hide();

@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Entity;
 
+
 use \DateTime;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
@@ -10,6 +11,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
+
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
 
 /**
  * StatementWidgetVideo
@@ -21,20 +25,20 @@ use Base\CoreBundle\Util\Time;
 class StatementWidgetVideo extends StatementWidget
 {
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
+     * @var MediaVideo
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaVideo")
+     * @Groups({"news_list", "news_show"})
      */
     private $file;
 
     /**
      * Set file
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return NewsWidgetVideo
+     * @param \Base\CoreBundle\Entity\MediaVideo $file
+     * @return StatementWidgetVideo
      */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    public function setFile(\Base\CoreBundle\Entity\MediaVideo $file = null)
     {
         $this->file = $file;
 
@@ -44,7 +48,7 @@ class StatementWidgetVideo extends StatementWidget
     /**
      * Get file
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media
+     * @return \Base\CoreBundle\Entity\MediaVideo
      */
     public function getFile()
     {

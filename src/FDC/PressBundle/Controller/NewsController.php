@@ -315,7 +315,7 @@ class NewsController extends Controller
         );
 
         $filters['themes'][0] = array(
-            'slug' => 'all',
+            'id' => 'all',
             'content' => 'Tous',
         );
 
@@ -347,7 +347,7 @@ class NewsController extends Controller
                 $years[] = $statement->getPublishedAt()->format('Y');
             }
             if (!in_array($statement->getTheme()->getSlug(), $themes)) {
-                $filters['themes'][$i]['slug'] = $statement->getTheme()->getSlug();
+                $filters['themes'][$i]['id'] = $statement->getTheme()->getId();
                 $filters['themes'][$i]['content'] = $statement->getTheme()->getName();
 
                 $themes[] = $statement->getTheme()->getSlug();
@@ -355,13 +355,7 @@ class NewsController extends Controller
             $i++;
         }
 
-        $headerInfo = array(
-            'title' => 'Communiqués et infos',
-            'description' => 'Communiqués, actualités, retrouvez toute l\'information à ne pas manquer.'
-        );
-
         return array(
-            'headerInfo' => $headerInfo,
             'filters' => $filters,
             'pressNews' => $pressNews,
         );

@@ -7,7 +7,7 @@ use Base\CoreBundle\Entity\InfoArticle;
 use Base\CoreBundle\Entity\InfoArticleTranslation;
 use Base\CoreBundle\Entity\InfoInfoAssociated;
 
-use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
+use Base\AdminBundle\Component\Admin\InfoCommonAdmin as Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -66,7 +66,10 @@ class InfoArticleAdmin extends Admin
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.news.helper_title'
+                        'sonata_help' => 'form.news.helper_title',
+                        'constraints' => array(
+                            new NotBlank()
+                        )
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor',
@@ -104,7 +107,6 @@ class InfoArticleAdmin extends Admin
                         'sonata_help' => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
-
                     )
                 )
             ))
@@ -164,17 +166,17 @@ class InfoArticleAdmin extends Admin
                 'label' => 'form.label_header_image',
                 'help' => 'form.news.helper_header_image',
                 'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
+                'btn_delete' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',
                 'required' => false,
-                'btn_add' => false,
+                'btn_add' => false
             ))
             ->add('associatedEvent', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_event_associated',
                 'required' => false,
-                'btn_add' => false,
+                'btn_add' => false
             ))
             ->add('associatedProjections', 'sonata_type_collection', array(
                 'label' => 'form.label_news_film_projection_associated',
@@ -197,9 +199,10 @@ class InfoArticleAdmin extends Admin
                 )
             )
             ->add('associatedInfo', 'sonata_type_collection', array(
-                'label' => 'form.label_info_associated',
-                'help' => 'form.info.helper_info_associated',
+                'label' => 'form.label_news_news_associated',
+                'help' => 'form.news.helper_news_news_associated',
                 'by_reference' => false,
+                'btn_add' => false,
                 'required' => false,
             ), array(
                     'edit' => 'inline',
@@ -224,7 +227,7 @@ class InfoArticleAdmin extends Admin
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
                 'help' => 'form.seo.helper_file',
-                'required' => false
+                'required' => false,
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)
             ->add('createdAt', null, array(
@@ -263,20 +266,6 @@ class InfoArticleAdmin extends Admin
         $showMapper
             ->add('id')
         ;
-    }
-
-    public function prePersist($object)
-    {
-        foreach ($object->getAssociatedInfo() as $info) {
-            $info->setInfo($object);
-        }
-    }
-
-    public function preUpdate($object)
-    {
-        foreach ($object->getAssociatedInfo() as $info) {
-            $info->setInfo($object);
-        }
     }
 
 }

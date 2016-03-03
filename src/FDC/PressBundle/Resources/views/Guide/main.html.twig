@@ -5,7 +5,14 @@
 
 <div id="main" class="press loading practicalguide {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
 
-    {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
+    <div class="header-press">
+        <div class="head">
+            <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>
+        </div>
+        <div class="container">
+            <h2>{{ 'press.header.title.guidepratique'|trans }}</h2>
+        </div>
+    </div>
 
     <div id='praticalguide'>
 
