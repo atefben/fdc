@@ -4,7 +4,21 @@
 {% block body %}
 <div id="main" class="press press-home calendar-open {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
 
-    {% include 'FDCPressBundle:Global:components/headerPress.html.twig' %}
+    <div class="header-press">
+        <div class="head">
+            <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>
+        </div>
+        <div class="container">
+            <h2>{{ 'press.header.title.accueil'|trans }}</h2>
+            <p>
+            <span class="vCenter">
+              <span class="vCenterKid">
+                  {{ 'press.header.subtitle.lespacepressemetegalementaladisposition'|trans|raw }}
+              </span>
+            </span>
+            </p>
+        </div>
+    </div>
 
     {{ render(controller('FDCPressBundle:Security:login')) }}
 

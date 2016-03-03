@@ -2,21 +2,22 @@
 
 namespace Base\CoreBundle\Entity;
 
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Base\CoreBundle\Entity\StatementWidget;
 use Base\CoreBundle\Util\Time;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 /**
- * NewsWidgetImageDualAlign
+ * StatementWidgetImageDualAlign
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class NewsWidgetImageDualAlign extends NewsWidget
+class StatementWidgetImageDualAlign extends StatementWidget
 {
     /**
      * @ORM\ManyToOne(targetEntity="GalleryDualAlign")

@@ -122,13 +122,13 @@
             <div class="container sliderDrag">
                 {% for video in lastVideos %}
                     <div class="video shadow-bottom"
-                         data-vid="{{ video.id }}"
-                         data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
-                            {% if video.image|trans_fallback('file') %}
+                        data-vid="{{ video.id }}"
+                        data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
+                        {% if video.image|trans_fallback('file') %}
                         data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
-                    {% else %}
+                        {% else %}
                         data-img="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
-                            {% endif %}>
+                        {% endif %}>
                         <div class="image-wrapper">
                             {% if video.image|trans_fallback('file') %}
                                 <img src="{% path video.image|trans_fallback('file'), '463x292' %}" alt="">
@@ -155,7 +155,6 @@
 
         <div class="popin-video video loading">
             <div class="video-container state-init video"
-                data-link="//www.example.com"
                 data-email="//www.gmail.com">
                 <div id="video-player-popin" class="">
                 </div>
@@ -177,12 +176,10 @@
                 <p></p>
             </div>
             <div class="popin-buttons buttons square">
-                <a href="//www.facebook.com/sharer.php?u={{ url(app.request.get('_route'), app.request.get('_route_params'))|url_encode }}"
-                   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-                <a href="//twitter.com/intent/tweet?text=" class="button twitter"><i
-                            class="icon icon_twitter"></i></a>
-                <a href="#" class="button link"><i class="icon icon_link"></i></a>
-                <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+                <a href="#" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+                <a href="#" rel="nofollow" class="button twitter"><i class="icon icon_twitter"></i></a>
+                <a href="#" rel="nofollow" class="button link"><i class="icon icon_link"></i></a>
+                <a href="#" rel="nofollow" class="button email"><i class="icon icon_lettre"></i></a>
             </div>
         </div>
         <div class="ov"></div>

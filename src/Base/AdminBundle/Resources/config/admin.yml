@@ -494,6 +494,14 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Image, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.statement_widget_image_dual_align_dummy:
+        class: Base\AdminBundle\Admin\StatementWidgetImageDualAlignDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\StatementWidgetImageDualAlign, BaseAdminBundle:StatementWidgetImageDualAlignDummyAdmin]
+        tags:
+         - {name: sonata.admin, manager_type: orm, group: admin, label: Statement Widget Image Dual Align, show_in_dashboard: false}
+        calls:
+         - [ setTranslationDomain, ['BaseAdminBundle']]
                  
     base.admin.statement_widget_audio_dummy:
         class: Base\AdminBundle\Admin\StatementWidgetAudioDummyAdmin
@@ -543,6 +551,22 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.statement_widget_video_dummy:
+        class: Base\AdminBundle\Admin\StatementWidgetVideoDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\StatementWidgetVideo, BaseAdminBundle:StatementWidgetVideoDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Statement Widget Video, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+             
+    base.admin.statement_widget_video_youtube_dummy:
+        class: Base\AdminBundle\Admin\StatementWidgetVideoYoutubeDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\StatementWidgetVideoYoutube, BaseAdminBundle:StatementWidgetVideoYoutubeDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Statement Widget Video Youtube, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     #EVENT
     base.admin.event_film_projection_associated:
         class: Base\AdminBundle\Admin\EventFilmProjectionAssociatedAdmin
@@ -558,7 +582,15 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Image, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
-                     
+
+    base.admin.info_widget_image_dual_align_dummy:
+        class: Base\AdminBundle\Admin\InfoWidgetImageDualAlignDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\InfoWidgetImageDualAlign, BaseAdminBundle:InfoWidgetImageDualAlignDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Info Widget Image Dual Align, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.info_widget_audio_dummy:
         class: Base\AdminBundle\Admin\InfoWidgetAudioDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\InfoWidgetAudio, BaseAdminBundle:InfoWidgetAudioDummyAdmin]
@@ -566,6 +598,22 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Audio, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.info_widget_video_dummy:
+        class: Base\AdminBundle\Admin\InfoWidgetVideoDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\InfoWidgetVideo, BaseAdminBundle:InfoWidgetVideoDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Info Widget Video, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+             
+    base.admin.info_widget_video_youtube_dummy:
+        class: Base\AdminBundle\Admin\InfoWidgetVideoYoutubeDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\InfoWidgetVideoYoutube, BaseAdminBundle:InfoWidgetVideoYoutubeDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Info Widget Video Youtube, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.info:
         class: Base\AdminBundle\Admin\InfoAdmin
@@ -791,3 +839,9 @@ services:
             - {name: sonata.admin, manager_type: orm, label: entity.press_cinemap_map_room, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base_admin.media_film_projection_associated:
+        class: Base\AdminBundle\Admin\MediaFilmProjectionAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\MediaFilmProjectionAssociated, BaseAdminBundle:MediaFilmProjectionAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: MediaFilmProjectionAssociated}

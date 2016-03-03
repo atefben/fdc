@@ -10,13 +10,13 @@ use Base\CoreBundle\Util\Time;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 /**
- * StatementWidgetImageDualAlign
+ * InfoWidgetImageDualAlign
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class StatementWidgetImageDualAlign extends NewsWidget
+class InfoWidgetImageDualAlign extends InfoWidget
 {
     /**
      * @ORM\ManyToOne(targetEntity="GalleryDualAlign")

@@ -9,13 +9,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * InfoWidgetImageDualAlignDummyAdmin class.
+ * StatementWidgetVideoDummyAdmin class.
  *
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class InfoWidgetImageDualAlignDummyAdmin extends Admin
+class StatementWidgetVideoDummyAdmin extends Admin
 {
     /**
      * @param FormMapper $formMapper
@@ -23,7 +23,7 @@ class InfoWidgetImageDualAlignDummyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('gallery', 'sonata_type_model_list',array(
+            ->add('file', 'sonata_type_model_list',array(
                 'btn_delete' => true
             ))
         ;

@@ -127,7 +127,7 @@ class NewsController extends Controller
     }
     
     /**
-     * @Route("/press-articles/{type}/{format}/{slug}", requirements={"format": "articles|audios|videos|photos", "type": "communique|article"})
+     * @Route("/press-articles/{type}/{format}/{slug}", requirements={"format": "articles|audios|videos|photos", "type": "statement|info"})
      * @Template("FDCPressBundle:News:main.html.twig")
      * @param $slug
      * @param $format
@@ -151,7 +151,7 @@ class NewsController extends Controller
         $format = substr($format, 0, -1);
 
         // GET STATEMENT / INFO
-        if ($type == "article") {
+        if ($type == "statement") {
             $mapper = array_flip(Statement::getTypes());
             if (!isset($mapper[$format])) {
                 throw  new NotFoundHttpException();
@@ -160,7 +160,6 @@ class NewsController extends Controller
                 $slug,
                 $settings->getFestival()->getId(),
                 $locale,
-                $dateTime->format('Y-m-d H:i:s'),
                 $isAdmin,
                 $mapper[$format]
             );
@@ -174,10 +173,13 @@ class NewsController extends Controller
                 $slug,
                 $settings->getFestival()->getId(),
                 $locale,
-                $dateTime->format('Y-m-d H:i:s'),
                 $isAdmin,
                 $mapper[$format]
             );
+        }
+
+        if ($statement == null) {
+            throw  new NotFoundHttpException();
         }
 
         //get associated film to the news
@@ -291,7 +293,7 @@ class NewsController extends Controller
         //GET ALL STATEMENT ARTICLES
         $statements = $em->getRepository('BaseCoreBundle:Statement')->getStatements($settings->getFestival()->getId(), $dateTime, $locale);
 
-        //GET ALL STATEMENT ARTICLES
+        //GET ALL INFO ARTICLES
         $infos = $em->getRepository('BaseCoreBundle:Info')->getInfos($settings->getFestival()->getId(), $dateTime, $locale);
 
         if ($statements === null && $infos === null) {
@@ -313,7 +315,7 @@ class NewsController extends Controller
         );
 
         $filters['themes'][0] = array(
-            'slug' => 'all',
+            'id' => 'all',
             'content' => 'Tous',
         );
 
@@ -345,7 +347,7 @@ class NewsController extends Controller
                 $years[] = $statement->getPublishedAt()->format('Y');
             }
             if (!in_array($statement->getTheme()->getSlug(), $themes)) {
-                $filters['themes'][$i]['slug'] = $statement->getTheme()->getSlug();
+                $filters['themes'][$i]['id'] = $statement->getTheme()->getId();
                 $filters['themes'][$i]['content'] = $statement->getTheme()->getName();
 
                 $themes[] = $statement->getTheme()->getSlug();
@@ -353,13 +355,7 @@ class NewsController extends Controller
             $i++;
         }
 
-        $headerInfo = array(
-            'title' => 'Communiqués et infos',
-            'description' => 'Communiqués, actualités, retrouvez toute l\'information à ne pas manquer.'
-        );
-
         return array(
-            'headerInfo' => $headerInfo,
             'filters' => $filters,
             'pressNews' => $pressNews,
         );

@@ -7,11 +7,12 @@ use Base\CoreBundle\Entity\InfoArticle;
 use Base\CoreBundle\Entity\InfoArticleTranslation;
 use Base\CoreBundle\Entity\InfoInfoAssociated;
 
-use Base\AdminBundle\Component\Admin\Admin;
+use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * InfoArticleAdmin class.
@@ -22,22 +23,21 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 class InfoArticleAdmin extends Admin
 {
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $query->andWhere(
+            $query->expr()->eq($query->getRootAliases()[0] . '.hidden', ':hidden')
+        );
+        $query->setParameter('hidden', false);
+        return $query;
+    }
+
     protected $formOptions = array(
         'cascade_validation' => true
     );
 
     protected $translationDomain = 'BaseAdminBundle';
-
-
-    public function getNewInstance()
-    {
-        $instance = parent::getNewInstance();
-
-        $instance->addAssociatedInfo(new InfoInfoAssociated());
-        $instance->addAssociatedInfo(new InfoInfoAssociated());
-
-        return $instance;
-    }
 
 
     public function configure()
@@ -54,79 +54,6 @@ class InfoArticleAdmin extends Admin
     }
 
     /**
-     * @param DatagridMapper $datagridMapper
-     */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('id')
-            ->add('title', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->andWhere('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.title LIKE :title');
-                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
-
-                    return true;
-                },
-                'field_type' => 'text'
-            ))
-            ->add('theme')
-            ->add('status', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->andWhere('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.status = :status');
-                    $queryBuilder->setParameter('status', $value['value']);
-
-                    return true;
-                },
-                'field_type' => 'choice',
-                'field_options' => array(
-                    'choices' => InfoArticleTranslation::getStatuses(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
-            ))
-        ;
-    }
-
-    /**
-     * @param ListMapper $listMapper
-     */
-    protected function configureListFields(ListMapper $listMapper)
-    {
-        $listMapper
-            ->add('id')
-            ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
-            ->add('theme')
-            ->add('createdAt')
-            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig'))
-            ->add('priorityStatus', 'choice', array(
-                'choices' => InfoArticle::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('statusMain', 'choice', array(
-                'choices' => InfoArticleTranslation::getStatuses(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
-            ))
-            ->add('_preview', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_preview.html.twig'
-            ))
-        ;
-    }
-
-    /**
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
@@ -139,7 +66,10 @@ class InfoArticleAdmin extends Admin
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.news.helper_title'
+                        'sonata_help' => 'form.news.helper_title',
+                        'constraints' => array(
+                            new NotBlank()
+                        )
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor',
@@ -177,7 +107,6 @@ class InfoArticleAdmin extends Admin
                         'sonata_help' => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
-
                     )
                 )
             ))
@@ -208,6 +137,7 @@ class InfoArticleAdmin extends Admin
                     'info_widget_quote_type',
                     'info_widget_audio_type',
                     'info_widget_image_type',
+                    'info_widget_image_dual_align_type',
                     'info_widget_video_type',
                     'info_widget_video_youtube_type'
                 ),
@@ -236,17 +166,17 @@ class InfoArticleAdmin extends Admin
                 'label' => 'form.label_header_image',
                 'help' => 'form.news.helper_header_image',
                 'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
+                'btn_delete' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',
                 'required' => false,
-                'btn_add' => false,
+                'btn_add' => false
             ))
             ->add('associatedEvent', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_event_associated',
                 'required' => false,
-                'btn_add' => false,
+                'btn_add' => false
             ))
             ->add('associatedProjections', 'sonata_type_collection', array(
                 'label' => 'form.label_news_film_projection_associated',
@@ -269,15 +199,17 @@ class InfoArticleAdmin extends Admin
                 )
             )
             ->add('associatedInfo', 'sonata_type_collection', array(
-                'label' => 'form.label_info_associated',
-                'help' => 'form.info.helper_info_associated',
+                'label' => 'form.label_news_news_associated',
+                'help' => 'form.news.helper_news_news_associated',
                 'by_reference' => false,
+                'btn_add' => false,
                 'required' => false,
             ), array(
                     'edit' => 'inline',
                     'inline' => 'table'
                 )
             )
+            ->add('hideSameDay')
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')
@@ -295,7 +227,7 @@ class InfoArticleAdmin extends Admin
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
                 'help' => 'form.seo.helper_file',
-                'required' => false
+                'required' => false,
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)
             ->add('createdAt', null, array(
@@ -334,20 +266,6 @@ class InfoArticleAdmin extends Admin
         $showMapper
             ->add('id')
         ;
-    }
-
-    public function prePersist($object)
-    {
-        foreach ($object->getAssociatedInfo() as $info) {
-            $info->setInfo($object);
-        }
-    }
-
-    public function preUpdate($object)
-    {
-        foreach ($object->getAssociatedInfo() as $info) {
-            $info->setInfo($object);
-        }
     }
 
 }

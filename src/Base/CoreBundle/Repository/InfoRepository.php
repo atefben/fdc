@@ -2,10 +2,10 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Doctrine\ORM\EntityRepository;
+use Base\CoreBundle\Component\Repository\EntityRepository;
 use JMS\DiExtraBundle\Annotation as DI;
-use Base\CoreBundle\Component\Repository\EntityRepository as EntityRepo;
 
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Entity\InfoArticleTranslation;
 
 /**
@@ -15,9 +15,9 @@ use Base\CoreBundle\Entity\InfoArticleTranslation;
  * @author   Antoine Mineau
  * \@company Ohwee
  */
-class InfoRepository extends EntityRepo
+class InfoRepository extends EntityRepository
 {
-    public function getInfoBySlug($slug, $festival, $locale, $dateTime, $isAdmin, $repository)
+    public function getInfoBySlug($slug, $festival, $locale, $isAdmin, $repository)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -25,22 +25,34 @@ class InfoRepository extends EntityRepo
             ->leftjoin($repository, 'na1', 'WITH', 'na1.id = n.id')
             ->leftjoin('na1.translations', 'na1t');
 
+        // add query for audio / video encoder
+        if (strpos($repository, 'InfoAudio') !== false) {
+            $qb
+                ->leftjoin('na1.audio', 'na1a')
+                ->leftjoin('na1a.translations', 'na1at');
+            $this->addTranslationQueries($qb, 'na1at', 'fr', null, 'MediaAudio');
+        } else if (strpos($repository, 'InfoVideo') !== false) {
+            $qb
+                ->leftjoin('na1.video', 'na1v')
+                ->leftjoin('na1v.translations', 'na1vt');
+            $this->addTranslationQueries($qb, 'na1vt', 'fr', null, 'MediaVideo');
+        }
+
         if ($isAdmin === true) {
-            $qb = $qb
+            $qb
                 ->andWhere('(na1t.locale = :locale AND na1t.slug = :slug)')
                 ->setParameter('locale', $locale)
                 ->setParameter('slug', $slug);
         } else {
-            $qb = $this->addMasterQueries($qb, 'na1', $festival);
-            $qb = $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
+            $this->addMasterQueries($qb, 'na1', $festival);
+            $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
         }
 
-        $qb = $this->addFDCEventQueries($qb, 's');
-        $qb = $qb
+        $this->addFDCPressQueries($qb, 's');
+
+        return $qb
             ->getQuery()
             ->getOneOrNullResult();
-
-        return $qb;
     }
 
     public function getSameDayInfo($festival, $locale, $dateTime, $count, $id)

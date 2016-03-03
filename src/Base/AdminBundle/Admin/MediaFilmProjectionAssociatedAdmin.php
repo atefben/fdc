@@ -2,20 +2,13 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\AdminBundle\Component\Admin\Admin;
+use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-/**
- * StatementTagAdmin class.
- * 
- * \@extends Admin
- * @author  Antoine Mineau <a.mineau@ohwee.fr>
- * \@company Ohwee
- */
-class StatementTagAdmin extends Admin
+class MediaFilmProjectionAssociatedAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -54,9 +47,7 @@ class StatementTagAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('tag', 'sonata_type_model', array(
-                'btn_add' => 'Créer'
-            ))
+            ->add('association', 'sonata_type_model_list', array('btn_add' => false, 'btn_delete' => false))
         ;
     }
 

@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCPressBundle' %}
-{% set articleType = "article" %}
+{% set articleType = "statement" %}
 {% if class(article) starts with "I" %}
-    {% set articleType = "communique" %}
+    {% set articleType = "info" %}
 {% endif %}
 <article class="{{ articleType }}" data-format="article" data-theme="{{ article.theme|trans_fallback('slug') }}">
     <div class="image">

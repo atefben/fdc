@@ -23,9 +23,7 @@ $(document).ready(function() {
         }
       }
     });
-  }
 
-   if($('.popin-mail').length) {
     // check that fields are not empty
     $('.popin-mail input[type="text"], textarea').on('input', function() {
       var input = $(this);
@@ -94,7 +92,9 @@ $(document).ready(function() {
       }
 
       $('.popin-mail input[type="text"], .popin-mail input[type="email"], .popin-mail textarea').each(function() {
-        if($(this).val() == '') empty = true;
+        if($(this).val() == '') {
+          empty = true;
+        }
       });
 
       if(empty) {
@@ -109,6 +109,7 @@ $(document).ready(function() {
         $('.info-popin').remove();
         $('.contain-popin').append('<div class="valid">'+GLOBALS.texts.popin.valid+'</div>');
         $('.popin-mail').css('height','31%');
+        
         return false;
       }
     });
@@ -140,7 +141,7 @@ $('.cookie-accept').click(function () {
 function linkPopinInit(link) {
   if($('.share').length || $('.square').length ) {
     new Clipboard('.link');
-    var link = link || document.location.href;
+    var link   = link || document.location.href;
 
     $('.link').attr('data-clipboard-text',link);
 

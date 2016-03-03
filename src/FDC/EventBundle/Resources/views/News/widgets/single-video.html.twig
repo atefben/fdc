@@ -13,16 +13,18 @@
         {% set imageTrans = news.header.findTranslationByLocale('fr') %}
     {% endif %}
 {% endif %}
-{% if imageTrans is defined %}
-    {% set image = imageTrans.file %}
-{% else %}
-    {% set header = news.video.image %}
-    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
-    {% if imageTrans is null or imageTrans.file is null %}
-        {% set imageTrans = header.findTranslationByLocale('fr') %}
-    {% endif %}
+{% if news.video.image is not null %}
+    {% if imageTrans is defined %}
+        {% set image = imageTrans.file %}
+    {% else %}
+        {% set header = news.video.image %}
+        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+        {% if imageTrans is null or imageTrans.file is null %}
+            {% set imageTrans = header.findTranslationByLocale('fr') %}
+        {% endif %}
 
-    {% set image = imageTrans.file %}
+        {% set image = imageTrans.file %}
+    {% endif %}
 {% endif %}
 
 <div class="video-container video-single state-init video"

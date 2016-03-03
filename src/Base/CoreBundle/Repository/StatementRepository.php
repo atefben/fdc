@@ -2,11 +2,11 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Doctrine\ORM\EntityRepository;
+use Base\CoreBundle\Component\Repository\EntityRepository;
 use JMS\DiExtraBundle\Annotation as DI;
 
-use Base\CoreBundle\Entity\StatementArticleTranslation;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Entity\StatementArticleTranslation;
 
 /**
  * StatementRepository class.
@@ -17,41 +17,42 @@ use Base\CoreBundle\Interfaces\TranslateChildInterface;
  */
 class StatementRepository extends EntityRepository
 {
-    public function getStatementBySlug($slug, $festival, $locale, $dateTime, $isAdmin, $repository)
+    public function getStatementBySlug($slug, $festival, $locale, $isAdmin, $repository)
     {
         $qb = $this
             ->createQueryBuilder('n')
             ->join('n.sites', 's')
             ->leftjoin($repository, 'na1', 'WITH', 'na1.id = n.id')
-            ->leftjoin('na1.translations', 'na1t')
-            ->where('s.slug = :site_slug')
-            ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+            ->leftjoin('na1.translations', 'na1t');
 
-        if ($isAdmin === true) {
-            $qb = $qb->andWhere('(na1t.locale = :locale AND na1t.slug = :statement_slug)')
-                ->setParameter('locale', $locale);
-
-        } else {
-            $qb = $qb
-                ->andWhere("(na1t.locale = 'fr' AND na1t.status = :status AND na1t.slug = :statement_slug)")
-                ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED);
-            if ($locale != 'fr') {
-                $qb = $qb
-                    ->leftJoin('na1.translations', 'na2t')
-                    ->andWhere('(na2t.locale = :locale AND na2t.status = :status AND na1t.slug = :statement_slug)')
-                    ->setParameter('status', StatementArticleTranslation::STATUS_TRANSLATED);
-            }
+        // add query for audio / video encoder
+        if (strpos($repository, 'StatementAudio') !== false) {
+            $qb
+                ->leftjoin('na1.audio', 'na1a')
+                ->leftjoin('na1a.translations', 'na1at');
+            $this->addTranslationQueries($qb, 'na1at', 'fr', null, 'MediaAudio');
+        } else if (strpos($repository, 'StatementVideo') !== false) {
+            $qb
+                ->leftjoin('na1.video', 'na1v')
+                ->leftjoin('na1v.translations', 'na1vt');
+            $this->addTranslationQueries($qb, 'na1vt', 'fr', null, 'MediaVideo');
         }
 
-        $qb = $qb
-            ->setParameter('statement_slug', $slug)
-            ->setParameter('festival', $festival)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('site_slug', 'site-press')
+        if ($isAdmin === true) {
+            $qb
+                ->andWhere('(na1t.locale = :locale AND na1t.slug = :slug)')
+                ->setParameter('locale', $locale)
+                ->setParameter('slug', $slug);
+        } else {
+            $this->addMasterQueries($qb, 'na1', $festival);
+            $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
+        }
+
+        $this->addFDCPressQueries($qb, 's');
+
+        return $qb
             ->getQuery()
             ->getOneOrNullResult();
-        return $qb;
     }
 
     public function getSameDayStatement($festival, $locale, $dateTime, $count, $id)

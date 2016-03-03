@@ -182,12 +182,18 @@
                 <div id="slider-videos" class="owl-carousel sliderDrag">
                     {% for video in videos %}
                         {% if video.association is defined and video.association != null %}
-                            <div class="vid">
+                            <div class="vid video"
+                                data-vid="{{ video.association.id }}"
+                                data-file='[{"file":"{{ s3_server_video ~ video.association|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video.association|trans_fallback('mp4Url') }}"}]'
+                                {% if video.association.image|trans_fallback('file') %}
+                                data-img="{% path video.association.image|trans_fallback('file'), '463x292' %}"
+                                {% else %}
+                                data-img="{% path video.association.image|trans_fallback('file', 'fr'), '463x292' %}"
+                                {% endif %}>
                                 {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' %}
                             </div>
                         {% endif %}
                     {% endfor %}
-
                 </div>
             </div>
             <div id="channels">
@@ -229,6 +235,37 @@
         {% endif %}
 
     </div>
+
+    <div class="popin-video video loading">
+        <div class="video-container state-init video"
+            data-email="//www.gmail.com">
+            <div id="video-player-popin" class="">
+            </div>
+            <div class="video-overlay"></div>
+            <div class="infos-bar">
+                <div class="picto"><i class="icon icon_video"></i></div>
+                <div class="info">
+                    <div class="vCenter">
+                        <div class="vCenterKid">
+                            <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="popin-info info">
+            <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+            <p></p>
+        </div>
+        <div class="popin-buttons buttons square">
+            <a href="#" rel="nofollow" class="button facebook"><i class="icon icon_facebook"></i></a>
+            <a href="#" rel="nofollow" class="button twitter"><i class="icon icon_twitter"></i></a>
+            <a href="#" rel="nofollow" class="button link"><i class="icon icon_link"></i></a>
+            <a href="#" rel="nofollow" class="button email"><i class="icon icon_lettre"></i></a>
+        </div>
+    </div>
+    <div class="ov"></div>
 
     {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":

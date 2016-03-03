@@ -15,16 +15,6 @@ function initParallaxElements() {
       });
     }
 
-    // slider home
-    if ($('#slider .owl-item .img-container').length) {
-      parallaxElements.push({
-        'el1': '#slider .owl-item .img-container',
-        'positionTop': $('#slider').offset().top - $header.height(),
-        'division': 2,
-        'mov': 4
-      });
-    }
-
     // slider movies home
     if ($('#slider-movies .owl-item.active .video').length) {
       parallaxElements.push({
@@ -35,6 +25,17 @@ function initParallaxElements() {
       });
     }
 
+    // slider home
+    if(!isIE() && !isiPad()) {
+      if ($('#slider .owl-item .img-container').length) {
+        parallaxElements.push({
+          'el1': '#slider .owl-item .img-container',
+          'positionTop': $('#slider').offset().top - $header.height(),
+          'division': 2,
+          'mov': 4
+        });
+      }
+    }
   }
 
   // header webtv
@@ -347,11 +348,11 @@ $(document).ready(function() {
       if ($("#slider-prefooter").length) {
         parallaxElements[0].positionTop = $('#slider-prefooter').offset().top;
       }
-      if ($('#slider').length) {
-        parallaxElements[1].positionTop = $('#slider').offset().top - $header.height();
-      }
       if ($('#slider-movies').length > 0) {
-        parallaxElements[2].positionTop = $('#slider-movies').offset().top;
+        parallaxElements[1].positionTop = $('#slider-movies').offset().top;
+      }
+      if ($('#slider').length) {
+        parallaxElements[2].positionTop = $('#slider').offset().top - $header.height();
       }
     }
 

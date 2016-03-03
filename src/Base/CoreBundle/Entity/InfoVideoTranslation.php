@@ -30,6 +30,7 @@ class InfoVideoTranslation implements TranslateChildInterface
     use Time;
     use Translation;
 
+
     /**
      * @var string
      *
@@ -37,7 +38,7 @@ class InfoVideoTranslation implements TranslateChildInterface
      *
      * @Groups({"news_list", "news_show"})
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -46,7 +47,8 @@ class InfoVideoTranslation implements TranslateChildInterface
      *
      * @Groups({"news_list", "news_show"})
      */
-    private $introduction;
+    protected $introduction;
+
 
     /**
      * @var string
@@ -68,7 +70,7 @@ class InfoVideoTranslation implements TranslateChildInterface
      * Set title
      *
      * @param string $title
-     * @return NewsArticleTranslation
+     * @return NewsVideoTranslation
      */
     public function setTitle($title)
     {
@@ -91,7 +93,7 @@ class InfoVideoTranslation implements TranslateChildInterface
      * Set introduction
      *
      * @param string $introduction
-     * @return NewsArticleTranslation
+     * @return NewsVideoTranslation
      */
     public function setIntroduction($introduction)
     {
@@ -114,7 +116,7 @@ class InfoVideoTranslation implements TranslateChildInterface
      * Set slug
      *
      * @param string $slug
-     * @return InfoVideoTranslation
+     * @return NewsVideoTranslation
      */
     public function setSlug($slug)
     {

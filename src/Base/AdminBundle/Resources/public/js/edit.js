@@ -38,11 +38,11 @@ jQuery(document).ready(function($) {
         });
     }
 
-    // previsualisation
+    // preview
     var url = window.location.href;
     var newsUrl = url.split("/");
 
-    if(newsUrl[6]== 'newsarticle' || newsUrl[6]== 'newsvideo' || newsUrl[6]== 'newsimage' || newsUrl[6]== 'newsaudio'  ){
+    if (newsUrl[6]== 'newsarticle' || newsUrl[6]== 'newsvideo' || newsUrl[6]== 'newsimage' || newsUrl[6]== 'newsaudio') {
         var slug = $('.a2lix_translationsFields-fr #btn-preview').data('preview')
 
         switch(newsUrl[6]) {
@@ -91,6 +91,22 @@ function editEvents() {
         } else {
             $('.form-group[id$="priorityStatus"]').show();
             $('ul[id$="translateOptions"]').show();
+        }
+    });
+
+    // displayed home on load
+    if ($('input[name$="[displayedHome]"]').is(':checked')) {
+        $('.displayed-home').show();
+    } else {
+        $('.displayed-home').hide();
+    }
+
+    // displayed home on click
+    $('input[name$="[displayedHome]"]').on('ifChanged', function() {
+        if (!$(this).is(':checked')) {
+            $('.displayed-home').hide();
+        } else {
+            $('.displayed-home').show();
         }
     });
 

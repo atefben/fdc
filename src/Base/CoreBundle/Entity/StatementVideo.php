@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * StatementVideo
  *
@@ -29,6 +31,7 @@ class StatementVideo extends Statement
      * @ORM\ManyToOne(targetEntity="MediaVideo")
      *
      * @Groups({"news_list", "news_show"})
+     * @Assert\NotNull()
      */
     private $video;
 
@@ -60,7 +63,7 @@ class StatementVideo extends Statement
      * Set video
      *
      * @param \Base\CoreBundle\Entity\MediaVideo $video
-     * @return StatementVideo
+     * @return NewsVideo
      */
     public function setVideo(\Base\CoreBundle\Entity\MediaVideo $video = null)
     {
@@ -72,7 +75,7 @@ class StatementVideo extends Statement
     /**
      * Get video
      *
-     * @return \Base\CoreBundle\Entity\MediaVideo 
+     * @return \Base\CoreBundle\Entity\MediaVideo
      */
     public function getVideo()
     {
@@ -83,7 +86,7 @@ class StatementVideo extends Statement
      * Set image
      *
      * @param \Base\CoreBundle\Entity\MediaImage $image
-     * @return StatementVideo
+     * @return NewsVideo
      */
     public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
     {
@@ -95,9 +98,20 @@ class StatementVideo extends Statement
     /**
      * Get image
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return \Base\CoreBundle\Entity\MediaImage
      */
     public function getImage()
+    {
+        return $this->image;
+    }
+
+
+    /**
+     * Get header
+     *
+     * @return MediaImage
+     */
+    public function getHeader()
     {
         return $this->image;
     }

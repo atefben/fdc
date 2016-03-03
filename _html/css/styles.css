@@ -9403,6 +9403,9 @@ header #searchContainer {
   display: inline-block;
   font-size: 0.625rem;
 }
+#featured-videos #slider-videos .vid .info span.category {
+  color: #c8a461;
+}
 #featured-videos #slider-videos .vid .picto {
   color: #c8a461;
 }
