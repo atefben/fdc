@@ -234,19 +234,24 @@ class StatementImageAdmin extends Admin
                 'help' => 'form.news.helper_signature'
             ))
             ->add('gallery', 'sonata_type_model_list', array(
-                'label' => 'form.label_gallery_image',
-                'help' => 'form.news.helper_gallery_image',
-                'translation_domain' => 'BaseAdminBundle'
+                'label' => 'form.label_header_gallery',
+                'help' => 'form.news.helper_header_gallery',
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false
+            ))
+            ->add('header', 'sonata_type_model_list', array(
+                'label' => 'form.label_header_image',
+                'help' => 'form.news.helper_header_image',
+                'translation_domain' => 'BaseAdminBundle',
+                'required' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',
-                'required' => false,
-                'btn_add' => false,
+                'required' => false
             ))
             ->add('associatedEvent', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_event_associated',
-                'required' => false,
-                'btn_add' => false,
+                'required' => false
             ))
             ->add('associatedProjections', 'sonata_type_collection', array(
                 'label' => 'form.label_news_film_projection_associated',
@@ -269,8 +274,8 @@ class StatementImageAdmin extends Admin
                 )
             )
             ->add('associatedStatement', 'sonata_type_collection', array(
-                'label' => 'form.label_statement_associated',
-                'help' => 'form.statement.helper_statement_associated',
+                'label' => 'form.label_news_news_associated',
+                'help' => 'form.news.helper_news_news_associated',
                 'by_reference' => false,
                 'btn_add' => false,
                 'required' => false,

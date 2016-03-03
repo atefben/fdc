@@ -32,7 +32,16 @@
                     {% if film.association is not null %}
                         <span class="category">{{ film.association.selectionSection|trans_fallback('name') }}</span>
                     {% endif %}
-                    <h2>{{ film.association|trans_fallback('title')  }}</h2>
+
+                    <h2 id="titleFilmOnHomepage">
+                    {% if film.association|trans_fallback('title') is not null and film.association.titleVOAlphabet != '' %}
+                        {{ film.association|trans_fallback('title') }}
+                    {% elseif film.association.titleVOAlphabet is not null and film.association.titleVOAlphabet != '' %}
+                        {{ film.association.titleVOAlphabet }}
+                    {% else %}
+                        {{ film.association.titleVO }}
+                    {% endif %}
+                    </h2>
                     <p class="director">
                         {{ 'home.video.text.de'|trans }}
                         {% for director in film.association|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}

@@ -664,6 +664,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.press_statement_info:
+        class: Base\AdminBundle\Admin\PressStatementInfoAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressStatementInfo, BaseAdminBundle:PressStatementInfoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_statement_info, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.press_homepage:
         class: Base\AdminBundle\Admin\PressHomepageAdmin
         arguments: [~, Base\CoreBundle\Entity\PressHomepage, BaseAdminBundle:PressHomepageAdmin]
@@ -716,7 +724,7 @@ services:
         class: Base\AdminBundle\Admin\PressAccreditProcedureAdmin
         arguments: [~, Base\CoreBundle\Entity\PressAccreditProcedure, BaseAdminBundle:PressAccreditProcedureAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm,group: dashboard.group.press, label: entity.press_accredit_procedure, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.press_accredit_procedure, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -764,7 +772,7 @@ services:
         class: Base\AdminBundle\Admin\PressDownloadSectionAdmin
         arguments: [~, Base\CoreBundle\Entity\PressDownloadSection, BaseAdminBundle:PressDownloadSectionAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.press, label: entity.press_download_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, label: entity.press_download_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 

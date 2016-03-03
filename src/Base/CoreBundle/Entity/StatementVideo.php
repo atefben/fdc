@@ -63,7 +63,7 @@ class StatementVideo extends Statement
      * Set video
      *
      * @param \Base\CoreBundle\Entity\MediaVideo $video
-     * @return NewsVideo
+     * @return StatementVideo
      */
     public function setVideo(\Base\CoreBundle\Entity\MediaVideo $video = null)
     {
@@ -86,7 +86,7 @@ class StatementVideo extends Statement
      * Set image
      *
      * @param \Base\CoreBundle\Entity\MediaImage $image
-     * @return NewsVideo
+     * @return StatementVideo
      */
     public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
     {

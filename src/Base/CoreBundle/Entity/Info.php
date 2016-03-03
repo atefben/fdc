@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\AdminBundle\Component\Admin\Export;
 use \DateTime;
 
 use Base\CoreBundle\Util\SeoMain;
@@ -41,7 +42,6 @@ abstract class Info implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @Groups({"info_list", "info_show"})
      */
     private $id;
 
@@ -50,7 +50,6 @@ abstract class Info implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Theme")
      *
-     * @Groups({"info_list", "info_show"})
      * @Assert\NotNull()
      */
     private $theme;
@@ -58,7 +57,7 @@ abstract class Info implements TranslateMainInterface
     /**
      * @var FilmFestival
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="infos")
      */
     private $festival;
 
@@ -74,7 +73,6 @@ abstract class Info implements TranslateMainInterface
      *
      * @ORM\Column(type="boolean", options={"default":0})
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $displayedHome;
 
@@ -90,51 +88,44 @@ abstract class Info implements TranslateMainInterface
      *
      * @ORM\Column(type="string", nullable=true)
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $signature;
 
     /**
      * @var InfoTag
      *
-     * @ORM\OneToMany(targetEntity="InfoTag", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="InfoTag", mappedBy="info", cascade={"persist"})
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $tags;
 
     /**
      * @ORM\OneToMany(targetEntity="InfoInfoAssociated", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedInfo;
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmFilm")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedFilm;
 
     /**
      * @ORM\ManyToOne(targetEntity="Event")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedEvent;
 
     /**
      * @ORM\OneToMany(targetEntity="InfoFilmProjectionAssociated", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedProjections;
 
     /**
      * @ORM\OneToMany(targetEntity="InfoFilmFilmAssociated", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedFilms;
 
@@ -144,7 +135,6 @@ abstract class Info implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="InfoWidget", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
-     * @Groups({"news_list", "news_show"})
      */
     private $widgets;
 
@@ -153,7 +143,6 @@ abstract class Info implements TranslateMainInterface
      *
      * @ORM\ManyToMany(targetEntity="Site")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $sites;
 
@@ -161,7 +150,6 @@ abstract class Info implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"web_tv_list", "web_tv_show"})
      */
     private $publishedAt;
 
@@ -169,14 +157,12 @@ abstract class Info implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({"web_tv_list", "web_tv_show"})
      */
     private $publishEndedAt;
 
     /**
      * ArrayCollection
      *
-     * @Groups({"news_list", "news_show"})
      */
     protected $translations;
 
@@ -185,7 +171,6 @@ abstract class Info implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $createdBy;
 
@@ -194,7 +179,6 @@ abstract class Info implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $updatedBy;
 
@@ -217,7 +201,7 @@ abstract class Info implements TranslateMainInterface
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->widgets = new ArrayCollection();
-        $this->associatedStatement = new ArrayCollection();
+        $this->associatedInfo = new ArrayCollection();
         $this->associatedProjections = new ArrayCollection();
         $this->associatedFilms = new ArrayCollection();
     }
@@ -246,11 +230,69 @@ abstract class Info implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"info_list", "info_show"})
      */
     public function getInfoType()
     {
         return substr(strrchr(get_called_class(), '\\'), 1);
+    }
+
+    public function getExportTitle()
+    {
+        return Export::translationField($this, 'title', 'fr');
+    }
+
+    public function getExportTheme()
+    {
+        return Export::translationField($this->getTheme(), 'name', 'fr');
+    }
+
+    public function getExportAuthor()
+    {
+        return $this->getCreatedBy()->getId();
+    }
+
+    public function getExportCreatedAt()
+    {
+        return Export::formatDate($this->getCreatedAt());
+    }
+
+    public function getExportPublishDates()
+    {
+        return Export::publishsDates($this->getPublishedAt(), $this->getPublishEndedAt());
+    }
+
+    public function getExportUpdatedAt()
+    {
+        return Export::formatDate($this->getUpdatedAt());
+    }
+
+    public function getExportStatusMaster()
+    {
+        $status = $this->findTranslationByLocale('fr')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusEn()
+    {
+        $status = $this->findTranslationByLocale('en')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusEs()
+    {
+        $status = $this->findTranslationByLocale('es')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusZh()
+    {
+        $status = $this->findTranslationByLocale('zh')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportSites()
+    {
+        return Export::sites($this->getSites());
     }
 
     /**
@@ -577,30 +619,6 @@ abstract class Info implements TranslateMainInterface
      * @param \Base\CoreBundle\Entity\InfoInfoAssociated $associatedInfo
      * @return Info
      */
-    public function addAssociatedNew(\Base\CoreBundle\Entity\InfoInfoAssociated $associatedInfo)
-    {
-        $this->associatedInfo[] = $associatedInfo;
-
-        return $this;
-    }
-
-    /**
-     * Remove associatedInfo
-     *
-     * @param \Base\CoreBundle\Entity\InfoInfoAssociated $associatedInfo
-     */
-    public function removeAssociatedNew(\Base\CoreBundle\Entity\InfoInfoAssociated $associatedInfo)
-    {
-        $this->associatedInfo->removeElement($associatedInfo);
-    }
-
-
-    /**
-     * Add associatedInfo
-     *
-     * @param \Base\CoreBundle\Entity\InfoInfoAssociated $associatedInfo
-     * @return Info
-     */
     public function addAssociatedInfo(\Base\CoreBundle\Entity\InfoInfoAssociated $associatedInfo)
     {
         $this->associatedInfo[] = $associatedInfo;
@@ -621,10 +639,18 @@ abstract class Info implements TranslateMainInterface
     /**
      * Get associatedInfo
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Base\CoreBundle\Entity\InfoInfoAssociated
      */
     public function getAssociatedInfo()
     {
+        if ($this->associatedInfo->count() < 2) {
+            while ($this->associatedInfo->count() != 2) {
+                $entity = new InfoInfoAssociated();
+                $entity->setInfo($this);
+                $this->associatedInfo->add($entity);
+            }
+        }
+
         return $this->associatedInfo;
     }
 
@@ -787,6 +813,14 @@ abstract class Info implements TranslateMainInterface
     }
 
     /**
+     * @param InfoWidget $widgets
+     */
+    public function setWidgets($widgets)
+    {
+        $this->widgets = $widgets;
+    }
+
+    /**
      * Set hideSameDay
      *
      * @param boolean $hideSameDay
@@ -802,7 +836,7 @@ abstract class Info implements TranslateMainInterface
     /**
      * Get hideSameDay
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHideSameDay()
     {

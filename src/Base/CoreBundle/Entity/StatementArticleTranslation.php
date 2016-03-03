@@ -65,10 +65,33 @@ class StatementArticleTranslation implements TranslateChildInterface
     }
 
     /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Settings
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
      * Set title
      *
      * @param string $title
-     * @return NewsArticleTranslation
+     * @return StatementArticleTranslation
      */
     public function setTitle($title)
     {
@@ -91,7 +114,7 @@ class StatementArticleTranslation implements TranslateChildInterface
      * Set introduction
      *
      * @param string $introduction
-     * @return NewsArticleTranslation
+     * @return StatementArticleTranslation
      */
     public function setIntroduction($introduction)
     {
@@ -108,29 +131,5 @@ class StatementArticleTranslation implements TranslateChildInterface
     public function getIntroduction()
     {
         return $this->introduction;
-    }
-
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return StatementArticleTranslation
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string 
-     */
-    public function getSlug()
-    {
-        return $this->slug;
     }
 }

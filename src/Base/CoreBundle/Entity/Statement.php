@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\AdminBundle\Component\Admin\Export;
 use \DateTime;
 
 use Base\CoreBundle\Util\SeoMain;
@@ -18,7 +19,6 @@ use JMS\Serializer\Annotation\Since;
 use JMS\Serializer\Annotation\VirtualProperty;
 
 use Symfony\Component\Validator\Constraints as Assert;
-
 /**
  * Statement
  *
@@ -233,6 +233,65 @@ abstract class Statement implements TranslateMainInterface
     public function getStatementType()
     {
         return substr(strrchr(get_called_class(), '\\'), 1);
+    }
+
+    public function getExportTitle()
+    {
+        return Export::translationField($this, 'title', 'fr');
+    }
+
+    public function getExportTheme()
+    {
+        return Export::translationField($this->getTheme(), 'name', 'fr');
+    }
+
+    public function getExportAuthor()
+    {
+        return $this->getCreatedBy()->getId();
+    }
+
+    public function getExportCreatedAt()
+    {
+        return Export::formatDate($this->getCreatedAt());
+    }
+
+    public function getExportPublishDates()
+    {
+        return Export::publishsDates($this->getPublishedAt(), $this->getPublishEndedAt());
+    }
+
+    public function getExportUpdatedAt()
+    {
+        return Export::formatDate($this->getUpdatedAt());
+    }
+
+    public function getExportStatusMaster()
+    {
+        $status = $this->findTranslationByLocale('fr')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusEn()
+    {
+        $status = $this->findTranslationByLocale('en')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusEs()
+    {
+        $status = $this->findTranslationByLocale('es')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusZh()
+    {
+        $status = $this->findTranslationByLocale('zh')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportSites()
+    {
+        return Export::sites($this->getSites());
     }
 
     /**
@@ -559,30 +618,6 @@ abstract class Statement implements TranslateMainInterface
      * @param \Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement
      * @return Statement
      */
-    public function addAssociatedNew(\Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement)
-    {
-        $this->associatedStatement[] = $associatedStatement;
-
-        return $this;
-    }
-
-    /**
-     * Remove associatedStatement
-     *
-     * @param \Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement
-     */
-    public function removeAssociatedNew(\Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement)
-    {
-        $this->associatedStatement->removeElement($associatedStatement);
-    }
-
-
-    /**
-     * Add associatedStatement
-     *
-     * @param \Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement
-     * @return Statement
-     */
     public function addAssociatedStatement(\Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement)
     {
         $this->associatedStatement[] = $associatedStatement;
@@ -603,10 +638,18 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Get associatedStatement
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Base\CoreBundle\Entity\StatementStatementAssociated
      */
     public function getAssociatedStatement()
     {
+        if ($this->associatedStatement->count() < 2) {
+            while ($this->associatedStatement->count() != 2) {
+                $entity = new StatementStatementAssociated();
+                $entity->setStatement($this);
+                $this->associatedStatement->add($entity);
+            }
+        }
+
         return $this->associatedStatement;
     }
 

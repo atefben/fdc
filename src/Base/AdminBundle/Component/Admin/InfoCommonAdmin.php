@@ -143,7 +143,7 @@ class InfoCommonAdmin extends BaseAdmin
     {
         return array(
             'Id'                                        => 'id',
-            'Titre de l\'actualité'                    => 'exportTitle',
+            'Titre de l\'info'                          => 'exportTitle',
             'Thème'                                     => 'exportTheme',
             'Identifiant créateur'                      => 'exportAuthor',
             'Date de création'                          => 'exportCreatedAt',

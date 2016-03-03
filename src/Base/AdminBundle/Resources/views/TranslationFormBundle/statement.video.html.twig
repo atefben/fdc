@@ -6,7 +6,10 @@
 
     <div class="a2lix_translationsFields tab-content">
         {% set themeTranslations = (form.parent.children.theme.vars.data is not null) ? form.parent.children.theme.vars.data.translations : null %}
+        {% set headerTranslations = (form.parent.children.image.vars.data is not null) ? form.parent.children.image.vars.data.translations : null %}
         {% set videoTranslations = (form.parent.children.video.vars.data is not null) ? form.parent.children.video.vars.data.translations : null %}
+        {% set statementStatementTag = (form.parent.children.tags.vars.data|length > 0) ? form.parent.children.tags.vars.data : null %}
+
         {% for translationsFields in form %}
             {% set locale = translationsFields.vars.name %}
 
@@ -20,10 +23,14 @@
                                 </h4>
                             </div>
                             {% if form.vars.default_locale == locale %}
+                                {% if translationsFields.vars.value.slug is defined %}
+                                    <div id="btn-preview" data-preview="{{ translationsFields.vars.value.slug }}"></div>
+                                {% endif %}
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
                                         {{ form_row(translationsFields.title) }}
                                         {{ form_row(form.parent.children.theme) }}
+                                        {{ form_row(form.parent.children.image) }}
                                         {{ form_row(form.parent.children.video) }}
                                         {{ form_row(translationsFields.introduction) }}
                                         {{ form_row(form.parent.children.signature) }}
@@ -54,7 +61,17 @@
                                                 Tags de recherche
                                             </label>
                                             <div>
-
+                                                {% if statementStatementTag is not null %}
+                                                    {% for tmp in statementStatementTag %}
+                                                        {% set tagTranslation = tmp.tag.translations %}
+                                                        {% if tagTranslation.get(locale) is not null %}
+                                                            <div>
+                                                                {{ tagTranslation.get(locale).name }}
+                                                                <a target="_blank" href="{{ path('admin_base_core_statementtag_edit', {'id': tmp.tag.id}) }}">modifier la traduction</a>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -65,40 +82,58 @@
                                                 <label>
                                                     Légende
                                                 </label>
-                                        <span>
-                                        {% if videoTranslations is not null and
-                                        videoTranslations.get(locale) is not null %}
-                                            {{ videoTranslations.get(locale).legend }}
-                                        {% endif %}
-                                        </span>
+                                                <span>
+                                                {% if headerTranslations is not null and
+                                                headerTranslations.get(locale) is not null %}
+                                                    {{ headerTranslations.get(locale).legend }}
+                                                {% endif %}
+                                                </span>
                                             </div>
                                             <div>
                                                 <label>
                                                     Alt
                                                 </label>
-                                        <span>
-                                        {% if videoTranslations is not null and
-                                        videoTranslations.get(locale) is not null %}
-                                            {{ videoTranslations.get(locale).alt }}
-                                        {% endif %}
-                                        </span>
+                                                <span>
+                                                {% if headerTranslations is not null and
+                                                headerTranslations.get(locale) is not null %}
+                                                    {{ headerTranslations.get(locale).alt }}
+                                                {% endif %}
+                                                </span>
                                             </div>
                                             <div>
                                                 <label>
                                                     Copyright
                                                 </label>
-                                        <span>
-                                        {% if videoTranslations is not null and
-                                        videoTranslations.get(locale) is not null %}
-                                            {{ videoTranslations.get(locale).copyright }}
-                                        {% endif %}
-                                        </span>
+                                                <span>
+                                                    {% if headerTranslations is not null and
+                                                    headerTranslations.get(locale) is not null %}
+                                                        {{ headerTranslations.get(locale).copyright }}
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                            {% if form.parent.children.image.vars.value is not null %}
+                                                <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': form.parent.children.image.vars.value}) }}">modifier les traductions</a>
+                                            {% endif %}
+                                        </div>
+                                        <div class="form-group">
+                                            <header>
+                                                Vidéo principale
+                                            </header>
+                                            <div>
+                                                <label>
+                                                    Titre
+                                                </label>
+                                                <span>
+                                                {% if videoTranslations is not null and
+                                                videoTranslations.get(locale) is not null %}
+                                                    {{ videoTranslations.get(locale).title }}
+                                                {% endif %}
+                                                </span>
                                             </div>
                                             {% if form.parent.children.video.vars.value is not null %}
                                                 <a target="_blank" href="{{ path('admin_base_core_mediavideo_edit', {'id': form.parent.children.video.vars.value}) }}">modifier les traductions</a>
                                             {% endif %}
                                         </div>
-                                        {{ form_row(translationsFields.introduction) }}
                                     </div>
                                 </div>
                             {% endif %}
@@ -114,25 +149,25 @@
                                 </div>
                                 <div class="box-body">
                                     {% if form.parent.children.createdAt.vars.data and form.parent.children.createdBy.vars.data %}
-                                        <div>
+                                        <div class="fdc-help form-group">
                                             {{ 'entity.created_infos'|trans(
                                             {
                                                 'date': form.parent.children.createdAt.vars.data|date('d/m/Y H:i'),
-                                                'user':  form.parent.children.createdBy.vars.data.fullName
+                                                'user': form.parent.children.createdBy.vars.data.fullName
                                             }
-                                            ) }}
+                                            )|raw }}
                                         </div>
                                     {% endif %}
-                                    {#{% if form.parent.children.updatedAt.vars.data and form.parent.children.updatedBy %}#}
-                                    {#<div>#}
-                                    {#{{ 'entity.updated_infos'|trans(#}
-                                    {#{#}
-                                    {#'date': form.parent.children.updatedAt.vars.data|date('d/m/Y H:i'),#}
-                                    {#'user':  form.parent.children.updatedBy.vars.data.fullName#}
-                                    {#}#}
-                                    {#) }}#}
-                                    {#</div>#}
-                                    {#{% endif %}#}
+                                    {% if form.parent.children.updatedAt.vars.data and form.parent.children.updatedBy.vars.data %}
+                                        <div class="fdc-help form-group">
+                                            {{ 'entity.updated_infos'|trans(
+                                            {
+                                                'date': form.parent.children.updatedAt.vars.data|date('d/m/Y H:i'),
+                                                'user': form.parent.children.updatedBy.vars.data.fullName
+                                            }
+                                            )|raw }}
+                                        </div>
+                                    {% endif %}
                                     <div class="sonata-ba-collapsed-fields">
                                         {{ form_row(form.parent.children.sites) }}
                                         <div class="form-group">
@@ -197,55 +232,71 @@
                                                 Tags de recherche
                                             </label>
                                             <div>
-
+                                                {% for tmp in statementStatementTag %}
+                                                    {% set tagTranslation = tmp.tag.translations %}
+                                                    {% if tagTranslation.get('fr') is not null %}
+                                                        <div>
+                                                            {{ tagTranslation.get('fr').name }}
+                                                        </div>
+                                                    {% endif %}
+                                                {% endfor %}
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <header>
-                                                Informations image principale
+                                                Informations Image principale
                                             </header>
                                             <div>
                                                 <label>
                                                     Légende
                                                 </label>
-                                        <span>
-                                        {% if videoTranslations is not null and
-                                        videoTranslations.get('fr') is not null %}
-                                            {{ videoTranslations.get('fr').legend }}
-                                        {% endif %}
-                                        </span>
+                                                <span>
+                                                {% if headerTranslations is not null and
+                                                headerTranslations.get(locale) is not null %}
+                                                    {{ headerTranslations.get(locale).legend }}
+                                                {% endif %}
+                                                </span>
                                             </div>
                                             <div>
                                                 <label>
                                                     Alt
                                                 </label>
-                                        <span>
-                                        {% if videoTranslations is not null and
-                                        videoTranslations.get('fr') is not null %}
-                                            {{ videoTranslations.get('fr').alt }}
-                                        {% endif %}
-                                        </span>
+                                                <span>
+                                                {% if headerTranslations is not null and
+                                                headerTranslations.get(locale) is not null %}
+                                                    {{ headerTranslations.get(locale).alt }}
+                                                {% endif %}
+                                                </span>
                                             </div>
                                             <div>
                                                 <label>
                                                     Copyright
                                                 </label>
-                                        <span>
-                                        {% if videoTranslations is not null and
-                                        videoTranslations.get('fr') is not null %}
-                                            {{ videoTranslations.get('fr').copyright }}
-                                        {% endif %}
-                                        </span>
+                                                <span>
+                                                    {% if headerTranslations is not null and
+                                                    headerTranslations.get(locale) is not null %}
+                                                        {{ headerTranslations.get(locale).copyright }}
+                                                    {% endif %}
+                                                </span>
                                             </div>
+                                            {% if form.parent.children.image.vars.value is not null %}
+                                                <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': form.parent.children.image.vars.value}) }}">modifier les traductions</a>
+                                            {% endif %}
                                         </div>
                                         <div class="form-group">
-                                            <header>
-                                                Chapeau
-                                            </header>
+                                            <label class="control-label">
+                                                Informations vidéo principale
+                                            </label>
                                             <div>
-                                                {% if form.children.fr.vars.value is not null %}
-                                                    {{ form.children.fr.vars.value.introduction|raw }}
-                                                {% endif %}
+                                                <label>
+                                                    Titre
+                                                </label>
+                                                <span>
+                                                    {% if videoTranslations is not null and
+                                                    videoTranslations.get('fr') is not null %}
+                                                        {{ videoTranslations.get('fr').title }}
+                                                    {% endif %}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -255,37 +306,55 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    {{ 'group.news.widgets'|trans }}
-                                </h4>
-                            </div>
+                    {% if form.vars.default_locale == locale %}
+                        <div class="col-md-12">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.news.widgets'|trans }}
+                                    </h4>
+                                </div>
 
-                            <div class="box-body">
-                                {% if form.vars.default_locale == locale %}
+                                <div class="box-body">
                                     <div id="fdc-widgets" data-form-widget="collection">
                                         {% for widget in form.parent.children.widgets.children %}
                                             <div class="item base-widget">
                                                 {% if widget.children._type.vars.value == 'statement_widget_text_type' %}
-                                                    <h4><strong>Module texte</strong></h4>
-                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                    <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_video_type' %}
+                                                    <h4><strong>{{ 'form.widget.video'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'statement_widget_video_youtube_type' %}
                                                     <h4><strong>{{ 'form.widget.video_youtube'|trans }}</strong></h4>
-                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_audio_type' %}
+                                                    <h4><strong>{{ 'form.widget.audio'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_image_type' %}
+                                                    <h4><strong>{{ 'form.widget.image'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_image_dual_align_type' %}
+                                                    <h4><strong>{{ 'form.widget.image_dual_align'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'statement_widget_quote_type' %}
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
-                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                {% elseif widget.children._type.vars.value == 'statement_widget_audio_type' %}
-                                                    <h4><strong>{{ 'news.widget.audio'|trans }}</strong></h4>
-                                                    {{ form_widget(widget.file) }}
-                                                {% elseif widget.children._type.vars.value == 'statement_widget_image_type' %}
-                                                    <h4><strong>Module gallery</strong></h4>
-                                                    {{ form_widget(widget.gallery) }}
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
+                                                {% if widget.children._type.vars.value == 'statement_widget_text_type' or
+                                                widget.children._type.vars.value == 'statement_widget_video_youtube_type' or
+                                                widget.children._type.vars.value == 'statement_widget_quote_type'
+                                                %}
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                {% endif %}
+                                                {% if widget.children._type.vars.value == 'statement_widget_video_type' or
+                                                widget.children._type.vars.value == 'statement_widget_audio_type'
+                                                %}
+                                                    {{ form_row(widget.file) }}
+                                                {% endif %}
+                                                {% if widget.children._type.vars.value == 'statement_widget_video_youtube_type' %}
+                                                    {{ form_row(widget.image) }}
+                                                {% endif %}
+                                                {% if widget.children._type.vars.value == 'statement_widget_image_type' or
+                                                widget.children._type.vars.value == 'statement_widget_image_dual_align_type'
+                                                %}
+                                                    {{ form_row(widget.gallery) }}
+                                                {% endif %}
                                                 <a class="btn btn-danger btn-sm btn-outline remove_item">
                                                     <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
                                                 </a>
@@ -298,33 +367,335 @@
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_video_youtube_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.video_youtube'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_audio_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.audio'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_image_dual_align_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image_dual_align'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.statement_widget_quote_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.quote'|trans }}</a>
-                                {% else %}
-                                    {% for widget in form.parent.children.widgets.children %}
-                                        <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'statement_widget_text_type' %}
-                                                <h4><strong>{{ 'news.widget.text'|trans }}</strong></h4>
-                                            {% elseif widget.children._type.vars.value == 'statement_widget_video_youtube_type' %}
-                                                <h4><strong>{{ 'news.widget.video_youtube'|trans }}</strong></h4>
-                                            {% elseif widget.children._type.vars.value == 'statement_widget_audio_type' %}
-                                                <h4><strong>{{ 'news.widget.audio'|trans }}</strong></h4>
-                                            {% elseif widget.children._type.vars.value == 'statement_widget_quote_type' %}
-                                                <h4><strong>{{ 'news.widget.quote'|trans }}</strong></h4>
-                                            {% endif %}
-                                            {{ form_row(widget._type) }}
-                                            {{ form_row(widget.position) }}
-                                            {% if widget.children._type.vars.value == 'statement_widget_text_type' or
-                                            widget.children._type.vars.value == 'statement_widget_video_youtube_type' or
-                                            widget.children._type.vars.value == 'statement_widget_quote_type'
-                                            %}
-                                                {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                            {% endif %}
-                                        </div>
-                                    {% endfor %}
-                                {% endif %}
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {% else %}
+                        <div class="col-md-8">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.news.widgets'|trans }}
+                                    </h4>
+                                </div>
+
+                                <div class="box-body">
+                                    <div id="fdc-widgets" data-form-widget="collection">
+                                        {% for widget in form.parent.children.widgets.children %}
+                                            <div class="item base-widget">
+                                                {% if widget.children._type.vars.value == 'statement_widget_text_type' %}
+                                                    <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_video_type' %}
+                                                    <h4><strong>{{ 'form.widget.video'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_video_youtube_type' %}
+                                                    <h4><strong>{{ 'form.widget.video_youtube'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_audio_type' %}
+                                                    <h4><strong>{{ 'form.widget.audio'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_image_type' %}
+                                                    <h4><strong>{{ 'form.widget.image'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_image_dual_align_type' %}
+                                                    <h4><strong>{{ 'form.widget.image_dual_align'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_quote_type' %}
+                                                    <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                {% endif %}
+                                                {{ form_row(widget._type) }}
+                                                {{ form_row(widget.position) }}
+                                                {% if widget.children._type.vars.value == 'statement_widget_text_type' or
+                                                widget.children._type.vars.value == 'statement_widget_video_youtube_type' or
+                                                widget.children._type.vars.value == 'statement_widget_quote_type'
+                                                %}
+                                                    {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                {% endif %}
+
+                                                {% if widget.children._type.vars.value == 'statement_widget_video_type' %}
+                                                    {% set fileTranslations = (widget.children.file.vars.data is not null) ? widget.children.file.vars.data.translations : null %}
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            {{ 'form.label_file'|trans }}
+                                                        </label>
+                                                        <div>
+                                                            <div class="form-group">
+                                                                <div>
+                                                                    <b>{{ 'form.label_title'|trans }}:</b>
+                                                                    {% if fileTranslations and fileTranslations.get(locale) is not null %}
+                                                                        {{ fileTranslations.get(locale).title }}
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            {% if widget.children.file.vars.value is not null %}
+                                                                <a target="_blank" href="{{ path('admin_base_core_mediavideo_edit', {'id': widget.children.file.vars.value}) }}">
+                                                                    modifier les traductions
+                                                                </a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_video_youtube_type' %}
+                                                    {% set imageTranslations = (widget.children.image.vars.data is not null) ? widget.children.image.vars.data.translations : null %}
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            {{ 'form.label_image'|trans }}
+                                                        </label>
+                                                        <div>
+                                                            <div class="form-group">
+                                                                <div>
+                                                                    <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                                    {% if imageTranslations.get(locale) is not null %}
+                                                                        {{ imageTranslations.get(locale).alt }}
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            {% if widget.children.image.vars.value is not null %}
+                                                                <a target="_blank" href="{{ path('admin_base_core_mediaimagesimple_edit', {'id': widget.children.image.vars.value}) }}">
+                                                                    modifier les traductions
+                                                                </a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_audio_type' %}
+                                                    {% set fileTranslations = (widget.children.file.vars.data is not null) ? widget.children.file.vars.data.translations : null %}
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            {{ 'form.label_file'|trans }}
+                                                        </label>
+                                                        <div>
+                                                            <div class="form-group">
+                                                                <div>
+                                                                    <b>{{ 'form.label_title'|trans }}:</b>
+                                                                    {% if fileTranslations and fileTranslations.get(locale) is not null %}
+                                                                        {{ fileTranslations.get(locale).title }}
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            {% if widget.children.file.vars.value is not null %}
+                                                                <a target="_blank" href="{{ path('admin_base_core_mediaaudio_edit', {'id': widget.children.file.vars.value}) }}">
+                                                                    modifier les traductions
+                                                                </a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                {% elseif
+                                                widget.children._type.vars.value == 'statement_widget_image_type' or
+                                                widget.children._type.vars.value == 'statement_widget_image_dual_align_type'
+                                                %}
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            {{ 'form.label_header_gallery'|trans }}
+                                                        </label>
+                                                        <div>
+                                                            {% for media in widget.children.gallery.vars.data.medias %}
+                                                                <div class="form-group">
+                                                                    <label>Media {{ loop.index }}</label>
+                                                                    {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
+                                                                    <div>
+                                                                        <b>{{ 'form.label_legend_img'|trans }}:</b>
+                                                                        {% if mediaTranslations.get(locale) is not null %}
+                                                                            {{ mediaTranslations.get(locale).legend }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div>
+                                                                        <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                                        {% if mediaTranslations.get(locale) is not null %}
+                                                                            {{ mediaTranslations.get(locale).alt }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div>
+                                                                        <b>{{ 'form.label_copyright'|trans }}:</b>
+                                                                        {% if mediaTranslations.get(locale) is not null %}
+                                                                            {{ mediaTranslations.get(locale).copyright }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': media.media.id }) }}">
+                                                                        modifier les traductions
+                                                                    </a>
+                                                                </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {% for widget in form.parent.children.widgets.children %}
+                                            <div class="item base-widget">
+                                                {% if
+                                                widget.children._type.vars.value == 'statement_widget_text_type' or
+                                                widget.children._type.vars.value == 'statement_widget_quote_type'
+                                                %}
+                                                    {% if widget.children._type.vars.value == 'statement_widget_text_type' %}
+                                                        <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
+                                                    {% elseif widget.children._type.vars.value == 'statement_widget_quote_type' %}
+                                                        <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                    {% endif %}
+                                                    <div class="form-group">
+                                                        <label>
+                                                            Texte
+                                                        </label>
+                                                        <div>
+                                                            {% if widget.children.translations.fr.vars.value is not null %}
+                                                                {{ widget.children.translations.fr.vars.value.content|raw }}
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_video_type' %}
+                                                    <h4><strong>{{ 'form.widget.video'|trans }}</strong></h4>
+                                                    {% set fileTranslations = (widget.children.file.vars.data is not null) ? widget.children.file.vars.data.translations : null %}
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            {{ 'form.label_file'|trans }}
+                                                        </label>
+                                                        <div>
+                                                            <div class="form-group">
+                                                                <div>
+                                                                    <b>{{ 'form.label_title'|trans }}:</b>
+                                                                    {% if fileTranslations and fileTranslations.get('fr') is not null %}
+                                                                        {{ fileTranslations.get('fr').title }}
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_video_youtube_type' %}
+                                                    <h4><strong>{{ 'form.widget.video_youtube'|trans }}</strong></h4>
+                                                    <div class="form-group">
+                                                        <label>
+                                                            {{ 'form.label_news_widget_video_youtube_url'|trans }}
+                                                        </label>
+                                                        <div>
+                                                            {% if widget.children.translations.fr.vars.value is not null %}
+                                                                {{ widget.children.translations.fr.vars.value.url }}
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>
+                                                            {{ 'form.label_news_widget_video_youtube_title'|trans }}
+                                                        </label>
+                                                        <div>
+                                                            {% if widget.children.translations.fr.vars.value is not null %}
+                                                                {{ widget.children.translations.fr.vars.value.title }}
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+
+
+                                                        {% set imageTranslations = (widget.vars.data.image is not null) ? widget.vars.data.image.translations : null %}
+                                                        <label>
+                                                            Informations image
+                                                        </label>
+                                                        <div>
+                                                            <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                            {% if imageTranslations.get('fr') is not null %}
+                                                                {{ imageTranslations.get('fr').alt }}
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_audio_type' %}
+                                                    <h4><strong>{{ 'form.widget.audio'|trans }}</strong></h4>
+                                                    {% set fileTranslations = (widget.children.file.vars.data is not null) ? widget.children.file.vars.data.translations : null %}
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            {{ 'form.label_file'|trans }}
+                                                        </label>
+                                                        <div>
+                                                            <div class="form-group">
+                                                                <div>
+                                                                    <b>{{ 'form.label_title'|trans }}:</b>
+                                                                    {% if fileTranslations and fileTranslations.get('fr') is not null %}
+                                                                        {{ fileTranslations.get('fr').title }}
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_image_type' %}
+                                                    <h4><strong>{{ 'form.widget.image'|trans }}</strong></h4>
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            {{ 'form.label_header_gallery'|trans }}
+                                                        </label>
+                                                        <div>
+                                                            {% for media in widget.children.gallery.vars.data.medias %}
+                                                                <div class="form-group">
+                                                                    <label>Media {{ loop.index }}</label>
+                                                                    {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
+                                                                    <div>
+                                                                        <b>{{ 'form.label_legend_img'|trans }}:</b>
+                                                                        {% if mediaTranslations.get('fr') is not null %}
+                                                                            {{ mediaTranslations.get('fr').legend }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div>
+                                                                        <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                                        {% if mediaTranslations.get('fr') is not null %}
+                                                                            {{ mediaTranslations.get('fr').alt }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div>
+                                                                        <b>{{ 'form.label_copyright'|trans }}:</b>
+                                                                        {% if mediaTranslations.get('fr') is not null %}
+                                                                            {{ mediaTranslations.get('fr').copyright }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                {% elseif widget.children._type.vars.value == 'statement_widget_image_dual_align_type' %}
+                                                    <h4><strong>{{ 'form.widget.image_dual_align'|trans }}</strong></h4>
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            {{ 'form.label_header_gallery'|trans }}
+                                                        </label>
+                                                        <div>
+                                                            {% for media in widget.children.gallery.vars.data.medias %}
+                                                                <div class="form-group">
+                                                                    <label>Media {{ loop.index }}</label>
+                                                                    {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
+                                                                    <div>
+                                                                        <b>{{ 'form.label_legend_img'|trans }}:</b>
+                                                                        {% if mediaTranslations.get('fr') is not null %}
+                                                                            {{ mediaTranslations.get('fr').legend }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div>
+                                                                        <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                                        {% if mediaTranslations.get('fr') is not null %}
+                                                                            {{ mediaTranslations.get('fr').alt }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div>
+                                                                        <b>{{ 'form.label_copyright'|trans }}:</b>
+                                                                        {% if mediaTranslations.get('fr') is not null %}
+                                                                            {{ mediaTranslations.get('fr').copyright }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
                 {% if form.vars.default_locale == locale %}
                     <div class="row">
@@ -340,9 +711,14 @@
                                     {{ form_row(form.parent.children.associatedEvent) }}
                                     {{ form_row(form.parent.children.associatedProjections) }}
                                     {{ form_row(form.parent.children.associatedFilms) }}
-                                    <div id="associatedNews">
-                                    {{ form_row(form.parent.children.associatedStatement) }}
+                                    <div id="associatedStatement">
+                                        {{ form_row(form.parent.children.associatedStatement) }}
                                     </div>
+                                    <div class="form-group">
+                                        {{ form_widget(form.parent.children.hideSameDay) }}
+                                        {{ form_label(form.parent.children.hideSameDay) }}
+                                    </div>
+                                    {{ form_row(form.parent.children.tags) }}
                                 </div>
                             </div>
                         </div>
