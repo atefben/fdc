@@ -30,6 +30,7 @@ class StatementVideoTranslation implements TranslateChildInterface
     use Time;
     use Translation;
 
+
     /**
      * @var string
      *
@@ -69,7 +70,7 @@ class StatementVideoTranslation implements TranslateChildInterface
      * Set title
      *
      * @param string $title
-     * @return NewsVideoTranslation
+     * @return StatementVideoTranslation
      */
     public function setTitle($title)
     {
@@ -92,7 +93,7 @@ class StatementVideoTranslation implements TranslateChildInterface
      * Set introduction
      *
      * @param string $introduction
-     * @return NewsVideoTranslation
+     * @return StatementVideoTranslation
      */
     public function setIntroduction($introduction)
     {
@@ -115,7 +116,7 @@ class StatementVideoTranslation implements TranslateChildInterface
      * Set slug
      *
      * @param string $slug
-     * @return NewsVideoTranslation
+     * @return StatementVideoTranslation
      */
     public function setSlug($slug)
     {

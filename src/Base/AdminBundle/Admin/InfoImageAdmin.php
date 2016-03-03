@@ -135,7 +135,7 @@ class InfoImageAdmin extends Admin
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.info.helper_title'
+                        'sonata_help' => 'form.news.helper_title'
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor',
@@ -161,7 +161,7 @@ class InfoImageAdmin extends Admin
                             'placeholder' => 'form.placeholder_seo_title'
                         ),
                         'label' => 'form.label_seo_title',
-                        'sonata_help' => 'form.info.helper_seo_title',
+                        'sonata_help' => 'form.news.helper_seo_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
                     ),
@@ -170,7 +170,7 @@ class InfoImageAdmin extends Admin
                             'placeholder' => 'form.placeholder_seo_description'
                         ),
                         'label' => 'form.label_seo_description',
-                        'sonata_help' => 'form.info.helper_description',
+                        'sonata_help' => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
 
@@ -218,7 +218,7 @@ class InfoImageAdmin extends Admin
             ))
             ->add('tags', 'sonata_type_collection', array(
                 'label' => 'form.label_article_tags',
-                'help' => 'form.info.helper_tags',
+                'help' => 'form.news.helper_tags',
                 'by_reference' => false,
                 'required' => false,
             ), array(
@@ -227,23 +227,27 @@ class InfoImageAdmin extends Admin
                 )
             )
             ->add('signature', null, array(
-                'help' => 'form.info.helper_signature'
+                'help' => 'form.news.helper_signature'
             ))
             ->add('gallery', 'sonata_type_model_list', array(
-                'label' => 'form.label_gallery_image',
-                'help' => 'form.news.helper_gallery_image',
+                'label' => 'form.label_header_gallery',
+                'help' => 'form.news.helper_header_gallery',
                 'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
+                'btn_delete' => false
+            ))
+            ->add('header', 'sonata_type_model_list', array(
+                'label' => 'form.label_header_image',
+                'help' => 'form.news.helper_header_image',
+                'translation_domain' => 'BaseAdminBundle',
+                'required' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',
-                'required' => false,
-                'btn_add' => false,
+                'required' => false
             ))
             ->add('associatedEvent', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_event_associated',
-                'required' => false,
-                'btn_add' => false,
+                'required' => false
             ))
             ->add('associatedProjections', 'sonata_type_collection', array(
                 'label' => 'form.label_news_film_projection_associated',
@@ -266,8 +270,8 @@ class InfoImageAdmin extends Admin
                 )
             )
             ->add('associatedInfo', 'sonata_type_collection', array(
-                'label' => 'form.label_info_associated',
-                'help' => 'form.info.helper_info_associated',
+                'label' => 'form.label_news_news_associated',
+                'help' => 'form.news.helper_news_news_associated',
                 'by_reference' => false,
                 'btn_add' => false,
                 'required' => false,
@@ -280,12 +284,6 @@ class InfoImageAdmin extends Admin
             ->add('displayedHome')
             ->add('displayedMobile')
             ->add('translate')
-            ->add('translateOptions', 'choice', array(
-                'choices' => Info::getAvailableTranslateOptions(),
-                'translation_domain' => 'BaseAdminBundle',
-                'multiple' => true,
-                'expanded' => true
-            ))
             ->add('translateOptions', 'choice', array(
                 'choices' => Info::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',

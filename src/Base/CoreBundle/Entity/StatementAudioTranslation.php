@@ -30,6 +30,7 @@ class StatementAudioTranslation implements TranslateChildInterface
     use Time;
     use Translation;
 
+
     /**
      * @var string
      *
@@ -37,7 +38,7 @@ class StatementAudioTranslation implements TranslateChildInterface
      *
      * @Groups({"news_list", "news_show"})
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -46,7 +47,8 @@ class StatementAudioTranslation implements TranslateChildInterface
      *
      * @Groups({"news_list", "news_show"})
      */
-    private $introduction;
+    protected $introduction;
+
 
     /**
      * @var string
@@ -68,7 +70,7 @@ class StatementAudioTranslation implements TranslateChildInterface
      * Set title
      *
      * @param string $title
-     * @return NewsArticleTranslation
+     * @return StatementAudioTranslation
      */
     public function setTitle($title)
     {
@@ -91,7 +93,7 @@ class StatementAudioTranslation implements TranslateChildInterface
      * Set introduction
      *
      * @param string $introduction
-     * @return NewsArticleTranslation
+     * @return StatementAudioTranslation
      */
     public function setIntroduction($introduction)
     {
@@ -110,6 +112,7 @@ class StatementAudioTranslation implements TranslateChildInterface
         return $this->introduction;
     }
 
+
     /**
      * Set slug
      *
@@ -126,7 +129,7 @@ class StatementAudioTranslation implements TranslateChildInterface
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {

@@ -2,6 +2,8 @@
 
 namespace Base\CoreBundle\Entity;
 
+use \DateTime;
+
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Base\CoreBundle\Util\Time;
@@ -11,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
+
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * StatementImage
@@ -24,9 +28,19 @@ class StatementImage extends Statement
     use Translatable;
 
     /**
+     * @var MediaImage
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImage")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $header;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Gallery")
      *
      * @Groups({"news_list", "news_show"})
+     * @Assert\NotNull()
      */
     private $gallery;
 
@@ -42,14 +56,37 @@ class StatementImage extends Statement
 
     public function getNewsFormat()
     {
-        return 'images';
+        return 'photos';
+    }
+
+    /**
+     * Set header
+     *
+     * @param MediaImage $header
+     * @return StatementArticle
+     */
+    public function setHeader(MediaImage $header = null)
+    {
+        $this->header = $header;
+
+        return $this;
+    }
+
+    /**
+     * Get header
+     *
+     * @return MediaImage
+     */
+    public function getHeader()
+    {
+        return $this->header;
     }
 
     /**
      * Set gallery
      *
      * @param \Base\CoreBundle\Entity\Gallery $gallery
-     * @return NewsImage
+     * @return StatementImage
      */
     public function setGallery(\Base\CoreBundle\Entity\Gallery $gallery = null)
     {

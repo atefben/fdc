@@ -37,7 +37,7 @@ class StatementImageTranslation implements TranslateChildInterface
      *
      * @Groups({"news_list", "news_show"})
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
@@ -46,7 +46,8 @@ class StatementImageTranslation implements TranslateChildInterface
      *
      * @Groups({"news_list", "news_show"})
      */
-    private $introduction;
+    protected $introduction;
+
 
     /**
      * @var string
@@ -68,7 +69,7 @@ class StatementImageTranslation implements TranslateChildInterface
      * Set title
      *
      * @param string $title
-     * @return NewsArticleTranslation
+     * @return StatementArticleTranslation
      */
     public function setTitle($title)
     {
@@ -91,7 +92,7 @@ class StatementImageTranslation implements TranslateChildInterface
      * Set introduction
      *
      * @param string $introduction
-     * @return NewsArticleTranslation
+     * @return StatementArticleTranslation
      */
     public function setIntroduction($introduction)
     {
@@ -111,6 +112,16 @@ class StatementImageTranslation implements TranslateChildInterface
     }
 
     /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * Set slug
      *
      * @param string $slug
@@ -126,7 +137,7 @@ class StatementImageTranslation implements TranslateChildInterface
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
