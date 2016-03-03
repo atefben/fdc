@@ -47,7 +47,10 @@ class HomepageFilmsAssociatedAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('association', 'sonata_type_model_list', array('btn_add' => false))
+            ->add('association', 'sonata_type_model_list', array(
+                'btn_add' => false,
+                'label' => 'form.label_films_associated'
+            ))
             ->add('video', 'sonata_type_model_list', array('btn_add' => false))
             ->add('tabletImage', 'sonata_type_model_list', array('btn_add' => false))
             ->add('mobileImage', 'sonata_type_model_list', array('btn_add' => false))

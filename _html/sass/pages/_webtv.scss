@@ -727,21 +727,34 @@
   }
 
   .video {
-    .type-video {
-      color: #c8a461;
-      display: block;
-      text-transform: uppercase;
-      padding-top: 25px;
-      font-size: 11px;
-      letter-spacing: .1em;
-      font-family: $CamphorBold;
-    }
+    .infos-videos {
+      .infos {
+        strong {
+          color:$gold;
+          font-size: 0.69rem;
+          text-transform: uppercase;
+          letter-spacing: .1em;
+          font-family: $CamphorBold;
+          display: inline-block;
+          padding-top: 25px;
+          font-size: 11px;
+        }
 
-    .name-video {
-      font-size: 1.125rem;
-      padding-top: 10px;
-      display: block;
-      font-family: $CamphorRegular;
+        .time{
+          margin-left: 9px;
+          color:#666666;
+          font-size: 0.69rem;
+          text-transform: uppercase;
+        }
+        
+        p {
+          color: #fff;
+          font-size: 1.125rem;
+          padding-top: 10px;
+          display: block;
+          font-family: $CamphorRegular;
+        }
+      }
     }
   }
 
