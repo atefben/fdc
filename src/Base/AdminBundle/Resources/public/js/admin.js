@@ -5,6 +5,38 @@ Admin.add_pretty_errors = function(){};
 
 $(document).ready(function() {
 
+    if( $('#topVideosAssociatedArea').length > 0) {
+        var countTopVideos = $('#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]').closest('div').find('tbody').find('tr').size();
+        if(countTopVideos >= 4) {
+            $('#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]').hide();
+        }
+
+        $(document).on('click', '#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]', function () {
+            var countTopVideos = $('#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]').closest('div').find('tbody').find('tr').size();
+            if(countTopVideos >= 4) {
+                setTimeout(function() {
+                    $('#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]').hide();
+                }, 3500);
+            }
+        });
+    }
+
+    if( $('#topWebTvsAssociatedArea').length > 0) {
+        var countTopVideos = $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').closest('div').find('tbody').find('tr').size();
+        if(countTopVideos >= 9) {
+            $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').hide();
+        }
+
+        $(document).on('click', '#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]', function () {
+            var countTopVideos = $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').closest('div').find('tbody').find('tr').size();
+            if(countTopVideos >= 9) {
+                setTimeout(function() {
+                    $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').hide();
+                }, 3500);
+            }
+        });
+    }
+
     if ($('input[name$="[displayedWebTv]"]').is(':checked')) {
         $('.form-group[id$="webTv"]').show();
     } else {
@@ -21,7 +53,7 @@ $(document).ready(function() {
 
     //change link to original edit for home
     if( $('#homepageSlide').length > 0) {
-        $('#homepageSlide table').on('change', function() {
+        $(document).on('change', '#homepageSlide table', function() {
             var timesRun = 0;
             var interval = window.setInterval(function(){
                 $('#homepageSlide div .field-short-description span a').each(function(index){
@@ -36,7 +68,6 @@ $(document).ready(function() {
                     $( this ).attr('href', old.join('/'));
                 });
                 timesRun += 1;
-                console.log(timesRun);
                 if(timesRun == 10){
                     clearInterval(interval);
                 }
@@ -61,11 +92,10 @@ $(document).ready(function() {
 
 
 
-
-
 // call the ajax method to handle lock
 function lockEvents()
 {
+
     // tooltip display
     $('.fdc-list-translation-type-square').tooltip({
         items: 'div[fdc-tooltip]',
