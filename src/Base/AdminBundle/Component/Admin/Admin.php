@@ -9,6 +9,9 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
 class Admin extends BaseAdmin
 {
+
+    protected $translationDomain = 'BaseAdminBundle';
+
     public function filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value)
     {
         static $joined = false;
