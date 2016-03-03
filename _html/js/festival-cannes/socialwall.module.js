@@ -177,12 +177,17 @@ $(document).ready(function() {
     // INSTAGRAM
     // load Instagram pictures and build array
     function loadInstagram(callback){
+      if (GLOBALS.env == "html") {
+        instagramDatatype = "jsonp";
+      } else {
+        instagramDatatype = "json";
+      }
+
       $.ajax({
         url: GLOBALS.api.instagramUrl,
         type: "GET",
-        dataType: "jsonp",
+        dataType: instagramDatatype,
         success: function(data) {
-          console.log(data);
           if (GLOBALS.env == "html") {
             var count = 15; 
             for (var i = 0; i < count; i++) {
@@ -192,7 +197,6 @@ $(document).ready(function() {
              
               if(i == count - 1) {
                 callback();
-                console.log('test');
               }
             }
           } else {
@@ -202,7 +206,6 @@ $(document).ready(function() {
               
               if(i == count - 1) {
                 callback();
-                console.log('test');
               }
             }
           }
@@ -285,12 +288,11 @@ $(document).ready(function() {
     }
 
     loadInstagram(function() {
-      console.log('in callback 1');
       loadTweets(function() {
-        console.log('in callback 2');
         // once all data is loaded, build html and display the grid
         var p = $('.post .side-2');
-        for (var i = 0; i < 13; ++i)
+        var number = Math.min(posts.length, 13);
+        for (var i = 0; i < number; ++i)
         {
           var random = Math.floor(Math.random() * posts.length);
           var item = posts.splice(random, 1)[0];
@@ -300,7 +302,7 @@ $(document).ready(function() {
 
           $(c).addClass(item.type);
           $(c).find('.side').addClass('flip');
-          if(item.img) {
+          if(item.img && item.img != '#') {
             $(c).addClass('hasimg').css('background-image', 'url(' + item.img + ')');
           }
           $(c).append(item.text);
