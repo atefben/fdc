@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\AdminBundle\Component\Admin\Export;
 use \DateTime;
 
 use Base\CoreBundle\Util\SeoMain;
@@ -41,7 +42,7 @@ abstract class Info implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @Groups({"info_list", "info_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $id;
 
@@ -50,7 +51,7 @@ abstract class Info implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Theme")
      *
-     * @Groups({"info_list", "info_show"})
+     * @Groups({"news_list", "news_show"})
      * @Assert\NotNull()
      */
     private $theme;
@@ -246,11 +247,70 @@ abstract class Info implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"info_list", "info_show"})
+     * @Groups({"news_list", "news_show"})
      */
     public function getInfoType()
     {
         return substr(strrchr(get_called_class(), '\\'), 1);
+    }
+
+    public function getExportTitle()
+    {
+        return Export::translationField($this, 'title', 'fr');
+    }
+
+    public function getExportTheme()
+    {
+        return Export::translationField($this->getTheme(), 'name', 'fr');
+    }
+
+    public function getExportAuthor()
+    {
+        return $this->getCreatedBy()->getId();
+    }
+
+    public function getExportCreatedAt()
+    {
+        return Export::formatDate($this->getCreatedAt());
+    }
+
+    public function getExportPublishDates()
+    {
+        return Export::publishsDates($this->getPublishedAt(), $this->getPublishEndedAt());
+    }
+
+    public function getExportUpdatedAt()
+    {
+        return Export::formatDate($this->getUpdatedAt());
+    }
+
+    public function getExportStatusMaster()
+    {
+        $status = $this->findTranslationByLocale('fr')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusEn()
+    {
+        $status = $this->findTranslationByLocale('en')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusEs()
+    {
+        $status = $this->findTranslationByLocale('es')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportStatusZh()
+    {
+        $status = $this->findTranslationByLocale('zh')->getStatus();
+        return Export::formatTranslationStatus($status);
+    }
+
+    public function getExportSites()
+    {
+        return Export::sites($this->getSites());
     }
 
     /**
