@@ -60,7 +60,7 @@ class SocialWallCommand extends ContainerAwareCommand {
         }
 
         // get all hashtags
-        $tags = explode(', ', $tagSettings->getSocialWallHashtags());
+        $tags = explode(',', $tagSettings->getSocialWallHashtags());
 
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////   TWITTER   ///////////////////////////////
@@ -92,6 +92,7 @@ class SocialWallCommand extends ContainerAwareCommand {
 
         // Get all tweets
         foreach ($tags as $tag) {
+            $tag = trim($tag);
             while (true) {
 
                 $request->getQuery()->set('q', $tag);
@@ -105,7 +106,7 @@ class SocialWallCommand extends ContainerAwareCommand {
                 // Process each tweet returned
                 $results = json_decode($response->getBody());
                 $tweets  = $results->statuses;
-
+                $output->writeln('TWEETS DONE: '. sizeof($tweets));
                 // Exit when no more tweets are returned
                 if (sizeof($tweets) !== $offset) {
                     $maxId = (sizeof($tweets) > 0) ? $tweets[0]->id : $maxId;
@@ -153,6 +154,7 @@ class SocialWallCommand extends ContainerAwareCommand {
 
         foreach ($tags as $tag) {
             $tag = substr($tag, 1);
+            $tag = trim($tag);
 
             while (true) {
 
@@ -165,6 +167,7 @@ class SocialWallCommand extends ContainerAwareCommand {
                 $instagramResults = json_decode($instagramResponse);
                 $instagramPosts   = $instagramResults->data;
 
+                $output->writeln('INSTAGRAMS POSTS DONE: '. sizeof($instagramPosts));
                 // Exit when no more tweets are returned
                 if (sizeof($instagramPosts) !== $offset) {
                     $maxIdInstagram = (isset($instagramResults->pagination->next_min_id)) ? $instagramResults->pagination->next_min_id : $maxIdInstagram;
