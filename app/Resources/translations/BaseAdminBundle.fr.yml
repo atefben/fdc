@@ -555,6 +555,7 @@ form:
     label_statement_associated : Communiqués associés
     label_info_associated : Infos associés
     label_link: Lien du push
+    label_films_associated: Films Associés
     label_push_image: Image du push
     label_webTv_required: Chaîne *
     label_column:
