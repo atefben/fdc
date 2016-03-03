@@ -6,22 +6,28 @@ Admin.add_pretty_errors = function(){};
 $(document).ready(function() {
 
     if( $('#topVideosAssociatedArea').length > 0) {
+        var timesRun = 0;
         var countTopVideos = $('#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]').closest('div').find('tbody').find('tr').size();
-        if(countTopVideos >= 4) {
+        if(countTopVideos > 4) {
             $('#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]').hide();
         }
 
         $(document).on('click', '#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]', function () {
             var countTopVideos = $('#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]').closest('div').find('tbody').find('tr').size();
-            if(countTopVideos > 4) {
-                setTimeout(function() {
+            if(countTopVideos >= 4) {
+                window.setInterval(function(){
                     $('#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]').hide();
-                }, 3500);
+                    timesRun += 1;
+                    if(timesRun == 10){
+                        clearInterval(interval);
+                    }
+                }, 100);
             }
         });
     }
 
     if( $('#topWebTvsAssociatedArea').length > 0) {
+        var timesRun = 0;
         var countTopVideos = $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').closest('div').find('tbody').find('tr').size();
         if(countTopVideos > 9) {
             $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').hide();
@@ -30,9 +36,13 @@ $(document).ready(function() {
         $(document).on('click', '#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]', function () {
             var countTopVideos = $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').closest('div').find('tbody').find('tr').size();
             if(countTopVideos >= 9) {
-                setTimeout(function() {
+                window.setInterval(function(){
                     $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').hide();
-                }, 3500);
+                    timesRun += 1;
+                    if(timesRun == 10){
+                        clearInterval(interval);
+                    }
+                }, 100);
             }
         });
     }
