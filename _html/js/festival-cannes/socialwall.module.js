@@ -208,7 +208,6 @@ $(document).ready(function() {
               
               if(i == count - 1) {
                 callback();
-                console.log('test');
               }
             }
           }
@@ -296,6 +295,7 @@ $(document).ready(function() {
         console.log('in callback 2');
         // once all data is loaded, build html and display the grid
         var p = $('.post .side-2');
+        console.log(posts);
         for (var i = 0; i < 13; ++i)
         {
           var random = Math.floor(Math.random() * posts.length);
@@ -303,6 +303,7 @@ $(document).ready(function() {
 
           var r = Math.floor(Math.random() * p.length);
           var c = p.splice(r, 1)[0];
+          console.log(item);
 
           $(c).addClass(item.type);
           $(c).find('.side').addClass('flip');
