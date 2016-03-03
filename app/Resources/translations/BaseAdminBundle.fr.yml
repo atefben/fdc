@@ -170,6 +170,7 @@ entity:
     press_guide: Guide pratique
     press_cinema_map: Plan des salles
     gallery: Galeries photos
+    press_statement_info: Communiqué / Info
 
 list:
     label_programmation_films: Film
@@ -385,11 +386,13 @@ dashboard:
         press_guide: Guide pratique
         press_contact: Contactez-nous
         press_download: A télécharger
-        press_download: A télécharger
+        press_download_section: Section à télécharger
         press_medialibrary: Médiathèque
         press_accredit: S'accréditer
+        press_accredit_procedure: Procédure d'accréditation
         press_cinemamap: Plan des salles
         press_projection: Programmation
+        press_statement_info: Communiqués / infos
 
 form:
     seo:
