@@ -69,8 +69,12 @@
                                     </h4>
                                 </div>
                                 <div class="box-body">
-                                    {{  form_row(form.parent.children.topVideosAssociated) }}
-                                    {{  form_row(form.parent.children.topWebTvsAssociated) }}
+                                    <div id="topVideosAssociatedArea">
+                                        {{  form_row(form.parent.children.topVideosAssociated) }}
+                                    </div>
+                                    <div id="topWebTvsAssociatedArea">
+                                        {{  form_row(form.parent.children.topWebTvsAssociated) }}
+                                    </div>
                                     {{  form_row(form.parent.children.displayedTopWebTv) }}
                                 </div>
                             </div>
