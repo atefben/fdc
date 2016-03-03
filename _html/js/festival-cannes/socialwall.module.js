@@ -178,19 +178,32 @@ $(document).ready(function() {
     // load Instagram pictures and build array
     function loadInstagram(callback){
       $.ajax({
+        url: GLOBALS.api.instagramUrl,
         type: "GET",
         dataType: "jsonp",
-        cache: false,
-        url: GLOBALS.api.instagramUrl ,
         success: function(data) {
-
-          var count = 15; 
-          for (var i = 0; i < count; i++) {
-            if (typeof data.data[i] !== 'undefined' ) {
-              posts.push({'type': 'instagram', 'img': data.data[i].images.low_resolution.url, 'date' : data.data[i].created_time, 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data.data[i].caption.text.substr(0, 140).parseURL().parseUsername().parseHashtag() + '</p></div></div></div>', 'user': data.data[i].user.username});
+          console.log(data);
+          if (GLOBALS.env == "html") {
+            var count = 15; 
+            for (var i = 0; i < count; i++) {
+              if (typeof data.data[i] !== 'undefined' ) {
+                posts.push({'type': 'instagram', 'img': data.data[i].images.low_resolution.url, 'date' : data.data[i].created_time, 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data.data[i].caption.text.substr(0, 140).parseURL().parseUsername().parseHashtag() + '</p></div></div></div>', 'user': data.data[i].user.username});
+              }
+             
+              if(i == count - 1) {
+                callback();
+                console.log('test');
+              }
             }
-            if( i == count - 1) {
-              callback();
+          } else {
+            var count = Math.min(data.length, 15);
+            for (var i = 0; i < count; i++) {
+              posts.push({'type': 'instagram', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].message.substr(0, 140).parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'img': data[i].content});
+              
+              if(i == count - 1) {
+                callback();
+                console.log('test');
+              }
             }
           }
         }
@@ -231,7 +244,6 @@ $(document).ready(function() {
             var img = '';
 
             for (var i = 0; i < data.length; i++) {
-            
               img = '';
               url = 'http://twitter.com/' + data[i].user.screen_name + '/status/' + data[i].id_str;
               try {
@@ -241,10 +253,10 @@ $(document).ready(function() {
               } catch (e) {
                 // no media
               }
-            
+        
               posts.push({'type': 'twitter', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].text.parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})
-
-              if(i==data.length - 1) {
+              
+              if(i == data.length - 1) {
                 callback();
               }
             }
@@ -263,7 +275,7 @@ $(document).ready(function() {
             
               posts.push({'type': 'twitter', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].message.parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'img': img})
 
-              if(i==data.length - 1) {
+              if(i == data.length - 1) {
                 callback();
               }
             }
@@ -273,7 +285,9 @@ $(document).ready(function() {
     }
 
     loadInstagram(function() {
+      console.log('in callback 1');
       loadTweets(function() {
+        console.log('in callback 2');
         // once all data is loaded, build html and display the grid
         var p = $('.post .side-2');
         for (var i = 0; i < 13; ++i)
