@@ -47,6 +47,27 @@ $(document).ready(function() {
         });
     }
 
+    if( $('#filmsAssociatedArea').length > 0) {
+        var timesRun = 0;
+        var countTopVideos = $('#filmsAssociatedArea a[onclick$="_filmsAssociated(this);"]').closest('div').find('tbody').find('tr').size();
+        if(countTopVideos > 4) {
+            $('#filmsAssociatedArea a[onclick$="_filmsAssociated(this);"]').hide();
+        }
+
+        $(document).on('click', '#filmsAssociatedArea a[onclick$="_filmsAssociated(this);"]', function () {
+            var countTopVideos = $('#filmsAssociatedArea a[onclick$="_filmsAssociated(this);"]').closest('div').find('tbody').find('tr').size();
+            if(countTopVideos >= 4) {
+                window.setInterval(function(){
+                    $('#filmsAssociatedArea a[onclick$="_filmsAssociated(this);"]').hide();
+                    timesRun += 1;
+                    if(timesRun == 10){
+                        clearInterval(interval);
+                    }
+                }, 100);
+            }
+        });
+    }
+
     if ($('input[name$="[displayedWebTv]"]').is(':checked')) {
         $('.form-group[id$="webTv"]').show();
     } else {

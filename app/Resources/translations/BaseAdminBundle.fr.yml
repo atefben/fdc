@@ -562,6 +562,9 @@ form:
     label_info_associated : Infos associés
     label_link: Lien du push
     label_films_associated: Films Associés
+    label_video_extract_associated: Extrait vidéo associé
+    label_tablet_image: Image tablette
+    label_image_mobile: Image mobile
     label_push_image: Image du push
     label_webTv_required: Chaîne *
     label_column:
