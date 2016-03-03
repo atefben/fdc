@@ -127,7 +127,7 @@ class NewsController extends Controller
     }
     
     /**
-     * @Route("/press-articles/{type}/{format}/{slug}", requirements={"format": "articles|audios|videos|photos", "type": "statement|info"})
+     * @Route("/press-articles/{type}/{format}/{slug}", requirements={"format": "articles|audios|videos|photos", "type": "statement|info"}, options={"expose"=true}))
      * @Template("FDCPressBundle:News:main.html.twig")
      * @param $slug
      * @param $format
