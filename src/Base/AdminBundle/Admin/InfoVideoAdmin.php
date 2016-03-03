@@ -175,33 +175,45 @@ class InfoVideoAdmin extends Admin
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
             ))
-
+            ->add('tags', 'sonata_type_collection', array(
+                'label' => 'form.label_article_tags',
+                'help' => 'form.news.helper_tags',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
             ->add('signature', null, array(
                 'help' => 'form.news.helper_signature'
             ))
-            ->add('video', 'sonata_type_model_list', array(
-                'label' => 'form.label_video_file',
-                'help' => 'form.news.helper_video_file',
+            ->add('image', 'sonata_type_model_list', array(
+                'label' => 'form.label_header_image',
+                'help' => 'form.news.helper_header_image',
                 'translation_domain' => 'BaseAdminBundle',
-                'required' => false,
-                'btn_delete' => false,
+                'required' => false
+            ))
+            ->add('video', 'sonata_type_model_list', array(
+                'label' => 'form.label_header_video',
+                'help' => 'form.news.helper_header_video',
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',
-                'required' => false,
-                'btn_add' => false,
+                'required' => false
             ))
             ->add('associatedEvent', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_event_associated',
-                'required' => false,
-                'btn_add' => false,
+                'required' => false
             ))
             ->add('associatedProjections', 'sonata_type_collection', array(
                 'label' => 'form.label_news_film_projection_associated',
                 'help' => 'form.news.helper_news_film_projection_associated',
                 'by_reference' => false,
                 'required' => false,
-                ), array(
+            ), array(
                     'edit' => 'inline',
                     'inline' => 'table'
                 )
@@ -217,12 +229,11 @@ class InfoVideoAdmin extends Admin
                 )
             )
             ->add('associatedInfo', 'sonata_type_collection', array(
-                'label' => 'form.label_info_associated',
-                'help' => 'form.info.helper_info_associated',
+                'label' => 'form.label_news_news_associated',
+                'help' => 'form.news.helper_news_news_associated',
                 'by_reference' => false,
-                'btn_add' => true,
+                'btn_add' => false,
                 'required' => false,
-                'btn_delete' => false,
             ), array(
                     'edit' => 'inline',
                     'inline' => 'table'

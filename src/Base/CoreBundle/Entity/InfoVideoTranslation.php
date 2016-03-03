@@ -70,7 +70,7 @@ class InfoVideoTranslation implements TranslateChildInterface
      * Set title
      *
      * @param string $title
-     * @return NewsVideoTranslation
+     * @return InfoVideoTranslation
      */
     public function setTitle($title)
     {
@@ -93,7 +93,7 @@ class InfoVideoTranslation implements TranslateChildInterface
      * Set introduction
      *
      * @param string $introduction
-     * @return NewsVideoTranslation
+     * @return InfoVideoTranslation
      */
     public function setIntroduction($introduction)
     {
@@ -116,7 +116,7 @@ class InfoVideoTranslation implements TranslateChildInterface
      * Set slug
      *
      * @param string $slug
-     * @return NewsVideoTranslation
+     * @return InfoVideoTranslation
      */
     public function setSlug($slug)
     {

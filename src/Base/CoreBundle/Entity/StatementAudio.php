@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * StatementAudio
  *
@@ -24,11 +26,21 @@ class StatementAudio extends Statement
     use Translatable;
 
     /**
+     * @var MediaImage
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImage")
+     *
+     * @Groups({"news_list", "news_show"})
+     */
+    private $header;
+
+    /**
      * @var MediaAudio
      *
      * @ORM\ManyToOne(targetEntity="MediaAudio")
      *
      * @Groups({"news_list", "news_show"})
+     * @Assert\NotNull()
      */
     private $audio;
 
@@ -46,6 +58,29 @@ class StatementAudio extends Statement
     public function getNewsFormat()
     {
         return 'audios';
+    }
+
+    /**
+     * Set header
+     *
+     * @param MediaImage $header
+     * @return StatementArticle
+     */
+    public function setHeader(MediaImage $header = null)
+    {
+        $this->header = $header;
+
+        return $this;
+    }
+
+    /**
+     * Get header
+     *
+     * @return MediaImage
+     */
+    public function getHeader()
+    {
+        return $this->header;
     }
 
     /**

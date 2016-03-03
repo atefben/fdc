@@ -66,7 +66,10 @@ class StatementArticleAdmin extends Admin
                     'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.news.helper_title'
+                        'sonata_help' => 'form.news.helper_title',
+                        'constraints' => array(
+                            new NotBlank()
+                        )
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor',
@@ -104,7 +107,6 @@ class StatementArticleAdmin extends Admin
                         'sonata_help' => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
-
                     )
                 )
             ))
@@ -142,7 +144,7 @@ class StatementArticleAdmin extends Admin
                 'allow_add' => true,
                 'allow_delete' => true,
                 'prototype' => true,
-                'by_reference' => true,
+                'by_reference' => false,
             ))
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
@@ -163,17 +165,18 @@ class StatementArticleAdmin extends Admin
             ->add('header', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_image',
                 'help' => 'form.news.helper_header_image',
-                'translation_domain' => 'BaseAdminBundle'
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',
                 'required' => false,
-                'btn_add' => false,
+                'btn_add' => false
             ))
             ->add('associatedEvent', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_event_associated',
                 'required' => false,
-                'btn_add' => false,
+                'btn_add' => false
             ))
             ->add('associatedProjections', 'sonata_type_collection', array(
                 'label' => 'form.label_news_film_projection_associated',
@@ -196,9 +199,10 @@ class StatementArticleAdmin extends Admin
                 )
             )
             ->add('associatedStatement', 'sonata_type_collection', array(
-                'label' => 'form.label_statement_associated',
-                'help' => 'form.statement.helper_statement_associated',
+                'label' => 'form.label_news_news_associated',
+                'help' => 'form.news.helper_news_news_associated',
                 'by_reference' => false,
+                'btn_add' => false,
                 'required' => false,
             ), array(
                     'edit' => 'inline',
@@ -223,7 +227,7 @@ class StatementArticleAdmin extends Admin
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
                 'help' => 'form.seo.helper_file',
-                'required' => false
+                'required' => false,
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)
             ->add('createdAt', null, array(

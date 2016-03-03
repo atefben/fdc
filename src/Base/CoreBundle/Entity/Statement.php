@@ -618,30 +618,6 @@ abstract class Statement implements TranslateMainInterface
      * @param \Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement
      * @return Statement
      */
-    public function addAssociatedNew(\Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement)
-    {
-        $this->associatedStatement[] = $associatedStatement;
-
-        return $this;
-    }
-
-    /**
-     * Remove associatedStatement
-     *
-     * @param \Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement
-     */
-    public function removeAssociatedNew(\Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement)
-    {
-        $this->associatedStatement->removeElement($associatedStatement);
-    }
-
-
-    /**
-     * Add associatedStatement
-     *
-     * @param \Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement
-     * @return Statement
-     */
     public function addAssociatedStatement(\Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement)
     {
         $this->associatedStatement[] = $associatedStatement;
@@ -662,10 +638,18 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Get associatedStatement
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Base\CoreBundle\Entity\StatementStatementAssociated
      */
     public function getAssociatedStatement()
     {
+        if ($this->associatedStatement->count() < 2) {
+            while ($this->associatedStatement->count() != 2) {
+                $entity = new StatementStatementAssociated();
+                $entity->setStatement($this);
+                $this->associatedStatement->add($entity);
+            }
+        }
+
         return $this->associatedStatement;
     }
 
