@@ -170,3 +170,8 @@
 #half-photo + #half-photo {
     margin: 0 0 0 -8px;
 }
+
+#titleFilmOnHomepage {
+    padding-left: 15%;
+    padding-right: 15%;
+}
