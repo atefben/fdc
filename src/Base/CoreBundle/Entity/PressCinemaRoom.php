@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * PressCinemaRoom
@@ -21,6 +22,7 @@ class PressCinemaRoom implements TranslateMainInterface
     use Time;
     use Translatable;
     use TranslateMain;
+
     /**
      * @var integer
      *
@@ -33,20 +35,14 @@ class PressCinemaRoom implements TranslateMainInterface
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="MediaImageSimple", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple", cascade={"persist"})
      */
     protected $image;
 
     /**
-     * @var string
+     * @var ArrayCollection
      *
-     * @ORM\OneToOne(targetEntity="MediaImageSimple", cascade={"persist"})
-     */
-    protected $zoneImage;
-
-
-    /**
-     * ArrayCollection
+     * @Assert\Valid()
      */
     protected $translations;
 
@@ -60,7 +56,10 @@ class PressCinemaRoom implements TranslateMainInterface
 
     public function __toString()
     {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
+        $string = $this->getCurrentTranslation()->getTitle();
+        if ($string == null) {
+            $string = substr(strrchr(get_class($this), '\\'), 1);
+        }
 
         return $string;
     }
@@ -98,26 +97,4 @@ class PressCinemaRoom implements TranslateMainInterface
         return $this->image;
     }
 
-    /**
-     * Set zoneImage
-     *
-     * @param \Base\CoreBundle\Entity\MediaImageSimple $zoneImage
-     * @return PressCinemaRoom
-     */
-    public function setZoneImage(\Base\CoreBundle\Entity\MediaImageSimple $zoneImage = null)
-    {
-        $this->zoneImage = $zoneImage;
-
-        return $this;
-    }
-
-    /**
-     * Get zoneImage
-     *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
-     */
-    public function getZoneImage()
-    {
-        return $this->zoneImage;
-    }
 }

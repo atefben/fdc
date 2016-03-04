@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 use Base\CoreBundle\Entity\PressCinemaMapTranslation;
 use Base\CoreBundle\Entity\PressCinemaMap;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 
 class PressCinemaMapAdmin extends Admin
@@ -18,6 +19,11 @@ class PressCinemaMapAdmin extends Admin
         'cascade_validation' => true
     );
 
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('acl');
+        $collection->remove('delete');
+    }
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -122,6 +128,10 @@ class PressCinemaMapAdmin extends Admin
                     'sortable'  => 'position',
                 )
             )
+            ->add('zoneImage', 'sonata_type_model_list', array(
+                'label' => 'form.label_map_zone_img',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
