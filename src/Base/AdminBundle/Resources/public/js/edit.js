@@ -18,7 +18,6 @@ jQuery(document).ready(function($) {
                     $( this ).attr('href', old.join('/'));
                 });
                 timesRun += 1;
-                console.log(timesRun);
                 if(timesRun == 10){
                     clearInterval(interval);
                 }
