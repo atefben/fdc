@@ -27,9 +27,9 @@ class PressAccreditProcedureTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="procedure_title", type="string", length=255, nullable=true)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
-    protected $procedureTitle;
+    protected $title;
 
     /**
      * @var string
@@ -46,27 +46,28 @@ class PressAccreditProcedureTranslation implements TranslateChildInterface
     {
     }
 
+
     /**
-     * Set procedureTitle
+     * Set title
      *
-     * @param string $procedureTitle
+     * @param string $title
      * @return PressAccreditProcedureTranslation
      */
-    public function setProcedureTitle($procedureTitle)
+    public function setTitle($title)
     {
-        $this->procedureTitle = $procedureTitle;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get procedureTitle
+     * Get title
      *
      * @return string 
      */
-    public function getProcedureTitle()
+    public function getTitle()
     {
-        return $this->procedureTitle;
+        return $this->title;
     }
 
     /**
