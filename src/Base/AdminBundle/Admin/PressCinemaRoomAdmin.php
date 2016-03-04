@@ -78,39 +78,22 @@ class PressCinemaRoomAdmin extends Admin
                         'choices' => PressCinemaRoomTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
-                    'seoTitle' => array(
-                        'attr' => array(
-                            'placeholder' => 'form.placeholder_seo_title'
-                        ),
-                        'label' => 'form.label_seo_title',
-                        'sonata_help' => 'form.news.helper_seo_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
-                    ),
-                    'seoDescription' => array(
-                        'attr' => array(
-                            'placeholder' => 'form.placeholder_seo_description'
-                        ),
-                        'label' => 'form.label_seo_description',
-                        'sonata_help' => 'form.news.helper_description',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
-
-                    )
                 )
             ))
             ->add('image', 'sonata_type_model_list', array(
                 'label' => 'form.label_map_img',
                 'translation_domain' => 'BaseAdminBundle'
             ))
-            ->add('zoneImage', 'sonata_type_model_list', array(
-                'label' => 'form.label_map_zone_img',
-                'translation_domain' => 'BaseAdminBundle'
-            ))
             ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices'            => PressCinemaRoom::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple'           => true,
+                'expanded'           => true
+            ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => PressCinemaRoom::getPriorityStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle'
+                'choices'                   => PressCinemaRoom::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle',
             ))
             ->end()
         ;

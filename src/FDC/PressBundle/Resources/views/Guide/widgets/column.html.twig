@@ -1,14 +1,14 @@
 {% trans_default_domain 'FDCPressBundle' %}
 
-{% set img = widget.gallery %}
-{% set trans = img.findTranslationByLocale(app.request.locale) %}
-{% if trans is null or trans.file is null %}
-{% set trans = img.findTranslationByLocale('fr') %}
-{% endif %}
-{% set file = trans.file %}
 <div class="contain-article">
     <div class="aside">
-        {% thumbnail file, '363x229' with {'alt': img|trans_fallback('alt')} %}
+        {% if widget.gallery is not null %}
+            {% set trans = widget.gallery.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = widget.gallery.findTranslationByLocale('fr') %}
+            {% endif %}
+            <img src="{% path trans.file, '363x229' %}" alt="{{ trans.alt }}" />
+        {% endif %}
         <div class="container-infos">
             {{ widget|trans_fallback('firstColumn')|raw }}
         </div>

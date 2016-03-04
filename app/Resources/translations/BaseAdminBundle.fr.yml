@@ -55,6 +55,7 @@ breadcrumb:
     link_press_accredit_list: S'accréditer
     link_press_accredit_procedure_list: Procédures d'accréditation
     link_press_statement_info_list: Communiqué / Info
+    link_press_cinema_room_list: Liste des salles
 link:
     action_soif_refresh: Mettre à jour
 
@@ -169,9 +170,10 @@ entity:
     press_download_section: Section à télécharger
     press_projection: Programmation
     press_guide: Guide pratique
-    press_cinema_map: Plan des salles
+    press_cinema_map: Plans des salles
     gallery: Galeries photos
     press_statement_info: Communiqué / Info
+    press_cinema_room: Salle
 
 list:
     label_programmation_films: Film
@@ -587,6 +589,8 @@ form:
     label_media_title: Nom du média
     label_procedure: Procédure
     label_download_section: Section à télécharger
+    label_map_img: Image de la salle
+    label_map_zone_img: Image de la zone
     gallery:
         medias: Médias
     encoding_state:

@@ -23,8 +23,7 @@ class PressCinemaRoomTranslation implements TranslateChildInterface
     use Time;
     use TranslateChild;
     use Translation;
-    use Seo;
-
+    
     /**
      * @var string
      *

@@ -40,11 +40,11 @@ class PressCinemaMap implements TranslateMainInterface
     protected $mapRoom;
 
     /**
-     * @var FilmFestival
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple", cascade={"persist"})
      */
-    private $festival;
+    protected $zoneImage;
 
     /**
      * ArrayCollection
@@ -111,26 +111,27 @@ class PressCinemaMap implements TranslateMainInterface
         return $this->mapRoom;
     }
 
+
     /**
-     * Set festival
+     * Set zoneImage
      *
-     * @param \Base\CoreBundle\Entity\FilmFestival $festival
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $zoneImage
      * @return PressCinemaMap
      */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
+    public function setZoneImage(\Base\CoreBundle\Entity\MediaImageSimple $zoneImage = null)
     {
-        $this->festival = $festival;
+        $this->zoneImage = $zoneImage;
 
         return $this;
     }
 
     /**
-     * Get festival
+     * Get zoneImage
      *
-     * @return \Base\CoreBundle\Entity\FilmFestival 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
      */
-    public function getFestival()
+    public function getZoneImage()
     {
-        return $this->festival;
+        return $this->zoneImage;
     }
 }

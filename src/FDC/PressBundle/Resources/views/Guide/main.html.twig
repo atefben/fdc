@@ -50,7 +50,7 @@
                         </span>
                         {{ guideContent|trans_fallback('informationTitle')}}
                     </h3>
-                    <i class="icon accordion icon_moins"></i>
+                    <i class="icon icon_case-plus accordion"></i>
                 </div>
                 {% for widget in guideContent.informationWidgets %}
                     {% if class(widget) == "PressGuideWidgetImage" %}
@@ -74,7 +74,7 @@
                         </span>
                         {{ guideContent|trans_fallback('meetingTitle')}}
                     </h3>
-                    <i class="icon accordion icon_moins"></i>
+                    <i class="icon icon_case-plus accordion"></i>
                 </div>
                 {% for widget in guideContent.meetingWidgets %}
                     {% if class(widget) == "PressGuideWidgetImage" %}
@@ -98,7 +98,7 @@
                         </span>
                         {{ guideContent|trans_fallback('serviceTitle')}}
                     </h3>
-                    <i class="icon accordion icon_moins"></i>
+                    <i class="icon icon_case-plus accordion"></i>
                 </div>
                 <div class="contain-article pictos-service">
                     {% for widget in guideContent.serviceWidgets %}
