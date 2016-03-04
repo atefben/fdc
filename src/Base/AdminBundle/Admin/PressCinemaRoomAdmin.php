@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 use Base\CoreBundle\Entity\PressCinemaRoomTranslation;
 use Base\CoreBundle\Entity\PressCinemaRoom;
@@ -17,6 +18,11 @@ class PressCinemaRoomAdmin extends Admin
         'cascade_validation' => true
     );
 
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('acl');
+        $collection->remove('show');
+    }
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -25,9 +31,26 @@ class PressCinemaRoomAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('title', 'doctrine_orm_callback', array(
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->andWhere('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.title LIKE :title');
+                    $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
+                    return true;
+                },
+                'field_type' => 'text',
+                'label'      => 'filter.cinema_room.label_title'
+            ))
         ;
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addUpdatedBetweenFilters($datagridMapper);
+
+
     }
 
     /**
@@ -36,15 +59,29 @@ class PressCinemaRoomAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
+            ->add('id', null, array('label' => 'list.common.label_id'))
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:News:list_title.html.twig',
+                'label'    => 'list.cinema_room.label_title',
+            ))
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
+            ->add('publishedInterval', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
+                'sortable' => 'publishedAt',
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices'   => PressCinemaRoom::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('statusMain', 'choice', array(
+                'choices'   => PressCinemaRoomTranslation::getMainStatuses(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
             ))
         ;
     }
