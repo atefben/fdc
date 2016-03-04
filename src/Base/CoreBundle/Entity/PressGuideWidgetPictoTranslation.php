@@ -29,7 +29,7 @@ class PressGuideWidgetPictoTranslation
     /**
      * @var string
      *
-     * @ORM\Column(name="press_guide_widget_column_text", type="string", nullable=true)
+     * @ORM\Column(name="press_guide_widget_column_text", type="text", nullable=true)
      */
     protected $content;
 
