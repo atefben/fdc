@@ -119,7 +119,7 @@ class TelevisionController extends Controller
                             $isPublished = $isPublished && $mediaVideo->findTranslationByLocale($locale)->getStatus() == MediaVideoTranslation::STATUS_TRANSLATED;
                         }
                         $isTrailer = $isPublished && $mediaVideo->getDisplayedTrailer();
-                        $hasFilms = $isTrailer && $mediaVideo->getAssociatedFilms();
+                        $hasFilms = $isTrailer && $mediaVideo->getAssociatedFilms()->count();
                         $associatedFilms = $mediaVideo->getAssociatedFilms();
                         $firstFilm = $associatedFilms[0]->getAssociation();
                         if ($hasFilms && $firstFilm) {
