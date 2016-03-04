@@ -130,7 +130,7 @@
               <a  href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a>
               <a href="#" class="button link"><i class="icon icon_link"></i></a>
               <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
-              <a href="#" class="button print"><i class="icon icon_print"></i></a>
+              <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i></a>
             </div>
           </div>
         </div>

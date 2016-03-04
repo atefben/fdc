@@ -446,13 +446,15 @@ class TelevisionController extends Controller
         $posterNext = null;
         if ($next instanceof FilmFilm) {
             foreach ($next->getMedias() as $media) {
-                if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER) {
-                    $posterNext = $media->getFilmMedia();
+                if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER && $media->getMedia() && $media->getMedia()->getFile()) {
+                    $posterNext = $media->getMedia()->getFile();
+                    $posterNextFormat = 'small';
                 }
             }
         }
         if ($posterNext === null) {
             $posterNext = $groups[$next->getId()]['video']->getImage();
+            $posterNextFormat = '640x404';
         }
 
         /************* Projections **************/
@@ -497,6 +499,7 @@ class TelevisionController extends Controller
             'poster'       => $poster,
             'next'         => $next instanceof FilmFilm ? $next : null,
             'posterNext'   => $posterNext,
+            'posterNextFormat'   => $posterNextFormat,
         );
     }
 }
