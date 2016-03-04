@@ -125,6 +125,7 @@ $(document).ready(function() {
                 }
             },500);
         });
+
         $('#homepageSlide div .field-short-description span a').each(function(index){
             var old = $( this ).attr('href');
             old = old.split('/');

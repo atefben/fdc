@@ -396,6 +396,7 @@ dashboard:
         press_cinemamap: Plan des salles
         press_projection: Programmation
         press_statement_info: Communiqués / infos
+        waiting_page: Page d'attente
 
 form:
     seo:
