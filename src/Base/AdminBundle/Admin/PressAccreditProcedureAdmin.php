@@ -29,7 +29,7 @@ class PressAccreditProcedureAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('procedureTitle', 'doctrine_orm_callback', array(
+            ->add('title', 'doctrine_orm_callback', array(
                 'callback'   => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
@@ -37,8 +37,8 @@ class PressAccreditProcedureAdmin extends Admin
                     $queryBuilder->join("{$alias}.translations", 't');
                     $queryBuilder->andWhere('t.locale = :locale');
                     $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.procedureTitle LIKE :procedureTitle');
-                    $queryBuilder->setParameter('procedureTitle', '%' . $value['value'] . '%');
+                    $queryBuilder->andWhere('t.title LIKE :title');
+                    $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
                     return true;
                 },
                 'field_type' => 'text',
@@ -110,7 +110,7 @@ class PressAccreditProcedureAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'procedureTitle' => array(
+                    'title' => array(
                         'label' => 'form.label_media_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(

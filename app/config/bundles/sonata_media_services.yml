@@ -81,11 +81,11 @@ services:
             - http://%s3_archive_bucket_name%.s3-website-%s3_archive_region%.amazonaws.com
 
     sonata.media.provider.archive:
-        class: Application\Sonata\MediaBundle\Provider\VideoProvider
+        class: Sonata\MediaBundle\Provider\FileProvider
         tags:
             - { name: sonata.media.provider }
         arguments:
-            - sonata.media.provider.video
+            - sonata.media.provider.archive
             - @sonata.media.filesystem.s3_archive
             - @sonata.media.cdn.server_archive
             - @sonata.media.generator.default

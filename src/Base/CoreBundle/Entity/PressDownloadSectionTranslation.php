@@ -25,7 +25,6 @@ class PressDownloadSectionTranslation implements TranslateChildInterface
     use TranslateChild;
     use Time;
     use Translation;
-    use Seo;
 
     /**
      * @var string

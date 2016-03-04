@@ -20,6 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PressDownloadSection implements TranslateMainInterface
 {
+    use Time;
     use Translatable;
     use TranslateMain;
 

@@ -115,24 +115,13 @@ class PressDownloadSectionAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.news.helper_title'
                     ),
-                    'seoTitle' => array(
-                        'attr' => array(
-                            'placeholder' => 'form.placeholder_seo_title'
-                        ),
-                        'label' => 'form.label_seo_title',
-                        'sonata_help' => 'form.news.helper_seo_title',
+                    'status' => array(
+                        'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
+                        'field_type' => 'choice',
+                        'choices' => PressDownloadSectionTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
                     ),
-                    'seoDescription' => array(
-                        'attr' => array(
-                            'placeholder' => 'form.placeholder_seo_description'
-                        ),
-                        'label' => 'form.label_seo_description',
-                        'sonata_help' => 'form.news.helper_description',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
-                    )
                 )
             ))
             ->add('translate')
