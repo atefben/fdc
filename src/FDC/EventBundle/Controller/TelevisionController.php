@@ -116,7 +116,7 @@ class TelevisionController extends Controller
                     if ($mediaVideo instanceof MediaVideo) {
                         $isPublished = $mediaVideo->findTranslationByLocale('fr')->getStatus() == MediaVideoTranslation::STATUS_PUBLISHED;
                         if ($locale !== 'fr') {
-                            $isPublished = $isPublished && $mediaVideo->findTranslationByLocale($locale)->getStatus('') == MediaVideoTranslation::STATUS_TRANSLATED;
+                            $isPublished = $isPublished && $mediaVideo->findTranslationByLocale($locale)->getStatus() == MediaVideoTranslation::STATUS_TRANSLATED;
                         }
                         $isTrailer = $isPublished && $mediaVideo->getDisplayedTrailer();
                         $hasFilms = $isTrailer && $mediaVideo->getAssociatedFilms();
