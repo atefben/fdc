@@ -7,7 +7,7 @@ use Base\CoreBundle\Entity\InfoImage;
 use Base\CoreBundle\Entity\InfoImageTranslation;
 use Base\CoreBundle\Entity\InfoInfoAssociated;
 
-use Base\AdminBundle\Component\Admin\Admin;
+use Base\AdminBundle\Component\Admin\InfoCommonAdmin as Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -27,18 +27,6 @@ class InfoImageAdmin extends Admin
     );
 
     protected $translationDomain = 'BaseAdminBundle';
-
-
-    public function getNewInstance()
-    {
-        $instance = parent::getNewInstance();
-
-        $instance->addAssociatedInfo(new InfoInfoAssociated());
-        $instance->addAssociatedInfo(new InfoInfoAssociated());
-
-        return $instance;
-    }
-
 
     public function configure()
     {
