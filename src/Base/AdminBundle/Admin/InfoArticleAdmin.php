@@ -14,6 +14,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
+
 /**
  * InfoArticleAdmin class.
  *
@@ -23,6 +24,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
  */
 class InfoArticleAdmin extends Admin
 {
+
     public function createQuery($context = 'list')
     {
         $query = parent::createQuery($context);
