@@ -440,7 +440,7 @@
 {% block press_guide_widget_image_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>Module image</h4>
+        <h4>Module image / texte</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         {{ form_row(form.children.gallery) }}

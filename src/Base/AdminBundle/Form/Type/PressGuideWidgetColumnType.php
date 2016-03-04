@@ -75,19 +75,22 @@ class PressGuideWidgetColumnType extends PressGuideWidgetType
                         'field_type' => 'ckeditor',
                         'label' => 'Bloc 1',
                         'sonata_help' => 'form.press_homepage.helper_desc',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'widget'
                     ),
                     'secondColumn' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'Bloc 2',
                         'sonata_help' => 'form.press_homepage.helper_desc',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'widget'
                     ),
                     'thirdColumn' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'Bloc 3',
                         'sonata_help' => 'form.press_homepage.helper_desc',
-                        'translation_domain' => 'BaseAdminBundle'
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'widget'
                     ),
                 )
             ))
