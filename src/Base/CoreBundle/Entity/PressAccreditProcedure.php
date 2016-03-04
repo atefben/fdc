@@ -58,12 +58,12 @@ class PressAccreditProcedure implements TranslateMainInterface
     }
 
     public function __toString() {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
-
-        if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+        if (is_object($this->getTranslations()->first())) {
+            $string = $this->getTranslations()->first()->getTitle();
         }
-
+        else {
+            $string = substr(strrchr(get_class($this), '\\'), 1);
+        }
         return $string;
     }
 
