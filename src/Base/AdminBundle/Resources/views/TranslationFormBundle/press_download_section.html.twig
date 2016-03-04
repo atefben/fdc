@@ -51,7 +51,6 @@
                                             {% if widget.children._type.vars.value == 'press_download_section_widget_file_type' %}
                                                 {{ form_row(widget.file)}}
                                                 {{ form_row(widget.secondFile)}}
-                                                {{ form_row(widget.updateDate)}}
 
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% elseif widget.children._type.vars.value == 'press_download_section_widget_document_type' %}
@@ -102,7 +101,6 @@
                                             {% if widget.children._type.vars.value == 'press_download_section_widget_file_type' %}
                                                 {{ form_row(widget.file)}}
                                                 {{ form_row(widget.secondFile)}}
-                                                {{ form_row(widget.updateDate)}}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% elseif widget.children._type.vars.value == 'press_download_section_widget_document_type' %}
                                                 {{ form_row(widget.image)}}
