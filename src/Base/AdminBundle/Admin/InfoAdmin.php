@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
  * InfoAdmin class.
@@ -22,6 +23,12 @@ use Symfony\Component\Validator\Constraints\NotBlank;
  */
 class InfoAdmin extends Admin
 {
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('acl');
+    }
+
     public function createQuery($context = 'list')
     {
         $query = parent::createQuery($context);

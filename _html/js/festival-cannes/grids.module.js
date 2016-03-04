@@ -325,6 +325,25 @@ $(document).ready(function () {
           var newURL = window.location.href.split('#')[0] + '#vid=' + vid;
           history.replaceState('', document.title, newURL);
 
+          // CUSTOM LINK FACEBOOK
+          var shareUrl = GLOBALS.urls.videosUrl+'#vid='+vid;
+          var fbHref   = facebookLink;
+          fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
+          $('#video-player-popin + .top-bar').find('.buttons .facebook').attr('href', fbHref);
+          // CUSTOM LINK TWITTER
+          var twHref   = twitterLink;
+          twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent(text+" "+shareUrl));
+          $('#video-player-popin + .top-bar').find('.buttons .twitter').attr('href', twHref);
+          // CUSTOM LINK COPY
+          $('#video-player-popin + .top-bar').find('.buttons .link').attr('href', encodeURIComponent(shareUrl));
+          $('#video-player-popin + .top-bar').find('.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
+
+          $('.popin-video').find('.popin-buttons.buttons .facebook').attr('data-href', fbHref);
+          $('.popin-video').find('.popin-buttons.buttons .facebook').attr('href', fbHref);
+          $('.popin-video').find('.popin-buttons.buttons .twitter').attr('href', twHref);
+          $('.popin-video').find('.popin-buttons.buttons .link').attr('href', encodeURIComponent(shareUrl));
+          $('.popin-video').find('.popin-buttons.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
+
           $popinVideo.find('.popin-info .category').text(category);
           $popinVideo.find('.popin-info .date').text(date);
           $popinVideo.find('.popin-info .hour').text(hour);

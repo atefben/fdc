@@ -116,10 +116,7 @@
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
-        {% if form.children.image is defined and form.children.image is not null %}
-            {{ form_row(form.children.image) }}
-        {% endif %}
-
+        {{ form_row(form.children.image) }}
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
                 <a class="btn btn-danger btn-sm btn-outline remove_item">
@@ -440,7 +437,7 @@
 {% block press_guide_widget_image_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>Module image</h4>
+        <h4>Module image / texte</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         {{ form_row(form.children.gallery) }}

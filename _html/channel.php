@@ -22,35 +22,45 @@
               "vid":21,
               "image":"//dummyimage.com/960x540/000/c8a461.png",
               "name":"Sils Maria",
-              "category":"Photocall"
+              "category":"Photocall",
+              "date":"11.03.2016",
+              "hour":"12:00"
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"}],
               "vid":22,
               "image":"//img.youtube.com/vi/_eaIurlPB7w/maxresdefault.jpg",
               "name":"Interviews des réalisateurs",
-              "category":"Montée des marches"
+              "category":"Montée des marches",
+              "date":"13.03.2016",
+              "hour":"15:00"
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=NtDG-Cnj-pw"}],
               "vid":23,
               "image":"img/slider-channels/03.jpg",
               "name":"Sils Maria",
-              "category":"Conférence de presse"
+              "category":"Conférence de presse",
+              "date":"21.03.2016",
+              "hour":"22:00"
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=4QmpYuVEwIU"}],
               "vid":24,
               "image":"img/slider-channels/01.jpg",
               "name":"Sils Maria",
-              "category":"Photocall"
+              "category":"Photocall",
+              "date":"11.03.2016",
+              "hour":"12:00"
             },
             {
               "sources":[{"file":"https://www.youtube.com/watch?v=YvjBXpmwhmk"}],
               "vid":25,
               "image":"img/slider-channels/02.jpg",
               "name":"Sils Maria",
-              "category":"Montée des marches"
+              "category":"Montée des marches",
+              "date":"11.03.2016",
+              "hour":"12:00"
             }
           ]'>
           <div id="video-player" class="video-player-pl v_<?php echo time();?>">
@@ -205,7 +215,7 @@
             </div>
           </div>
           <div class="video shadow-bottom"
-            data-vid="1"
+            data-vid="2"
             data-file='[{"file":"./files/mov_bbb.mp4"}]'
             data-img="//dummyimage.com/960x540/000/c8a461.png">
             <img src="http://dummyimage.com/463x291/000/fff" alt="" />
@@ -247,8 +257,8 @@
           <p></p>
         </div>
         <div class="popin-buttons buttons square">
-          <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-          <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a>
+          <a href="//www.facebook.com/sharer.php?u=CUSTOM_URL" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+          <a href="//twitter.com/intent/tweet?text=CUSTOM_TEXT" class="button twitter"><i class="icon icon_twitter"></i></a>
           <a href="#" class="button link"><i class="icon icon_link"></i></a>
           <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
         </div>

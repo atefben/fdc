@@ -18,7 +18,6 @@ jQuery(document).ready(function($) {
                     $( this ).attr('href', old.join('/'));
                 });
                 timesRun += 1;
-                console.log(timesRun);
                 if(timesRun == 10){
                     clearInterval(interval);
                 }
@@ -63,6 +62,46 @@ jQuery(document).ready(function($) {
         var route = Routing.generate('fdc_event_news_get', { _locale: 'fr', format: format, slug: slug });
         $('.well.well-small.form-actions').append('<a target="_blank" href="'+route+'" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
     }
+    else if (newsUrl[6]== 'statementarticle' || newsUrl[6]== 'statementvideo' || newsUrl[6]== 'statementimage' || newsUrl[6]== 'statementaudio' || newsUrl[6]== 'infoarticle' || newsUrl[6]== 'infovideo' || newsUrl[6]== 'infoimage' || newsUrl[6]== 'infoaudio') {
+        var slug = $('.a2lix_translationsFields-fr #btn-preview').data('preview')
+
+        switch(newsUrl[6]) {
+            case 'statementarticle':
+                var format = 'articles';
+                var type = 'statement';
+                break;
+            case 'statementvideo':
+                var format = 'videos';
+                var type = 'statement';
+                break;
+            case 'statementimage':
+                var format = 'photos';
+                var type = 'statement';
+                break;
+            case 'statementaudio':
+                var format = 'audios';
+                var type = 'statement';
+                break;
+            case 'infoarticle':
+                var format = 'articles';
+                var type = 'info';
+                break;
+            case 'infovideo':
+                var format = 'videos';
+                var type = 'info';
+                break;
+            case 'infoimage':
+                var format = 'photos';
+                var type = 'info';
+                break;
+            case 'infoaudio':
+                var format = 'audios';
+                var type = 'info';
+                break;
+        }
+        var route = Routing.generate('fdc_press_news_get', { _locale: 'fr', format: format, slug: slug, type: type });
+        $('.well.well-small.form-actions').append('<a target="_blank" href="'+route+'" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
+    }
     // on modal add, reload function
     $(window).on('shown.bs.modal', function() {
         if ($('.modal[aria-hidden="false"]').find('form[action*="create"]').length) {
@@ -83,9 +122,8 @@ function editEvents() {
         $('ul[id$="translateOptions"]').hide();
     }
 
-    // translate event on click
-    $('a[name$="[translate]"]').on('ifChanged', function() {
-        if (!$(this).is(':checked')) {
+    $('input[name$="[translate]"]').closest('.icheckbox_minimal').on('ifChanged', function(e) {
+        if (!$(e.target).is(':checked')) {
             $('.form-group[id$="priorityStatus"]').hide();
             $('ul[id$="translateOptions"]').hide();
         } else {

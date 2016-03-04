@@ -70,8 +70,8 @@ parameters:
         - admin_base_core_infoimage_list
         - admin_base_core_infoaudio_list
         - admin_base_core_infovideo_list
+        - admin_base_core_pressaccreditprocedure_list
     admin_routes_translation_lock:
-        - admin_base_core_newsarticle_edit
         - admin_base_core_webtv_edit
         - admin_base_core_tag_edit
         - admin_base_core_theme_edit
@@ -80,9 +80,19 @@ parameters:
         - admin_base_core_mediaimage_edit
         - admin_base_core_mediaaudio_edit
         - admin_base_core_mediavideo_edit
+        - admin_base_core_newsarticle_edit
         - admin_base_core_newsimage_edit
         - admin_base_core_newsaudio_edit
         - admin_base_core_newsvideo_edit
+        - admin_base_core_statementarticle_edit
+        - admin_base_core_statementimage_edit
+        - admin_base_core_statementaudio_edit
+        - admin_base_core_statementvideo_edit
+        - admin_base_core_infoarticle_edit
+        - admin_base_core_infoimage_edit
+        - admin_base_core_infoaudio_edit
+        - admin_base_core_infovideo_edit
+        - admin_base_core_pressaccreditprocedure_edit
     # soif
     soif_preprod_url: ~
     soif_prod_url: ~

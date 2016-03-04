@@ -11,11 +11,16 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class PressAccreditProcedureAdmin extends Admin
 {
 
-    protected $translationDomain = 'BaseAdminBundle';
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('acl');
+        $collection->remove('show');
+    }
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -52,30 +57,34 @@ class PressAccreditProcedureAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id', null, array(
-                'label' => 'list.common.label_id'
-            ))
-            ->add('procedureTitle', null, array(
-                'template' => 'BaseAdminBundle:AccreditProcedure:list_title.html.twig',
-                'label'    => 'list.label_section_title',
+            ->add('id', null, array('label' => 'list.common.label_id'))
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:News:list_title.html.twig',
+                'label'    => 'list.accredit_procedure.label_title',
             ))
             ->add('createdAt', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
                 'sortable' => 'createdAt',
             ))
-            ->add('updatedAt', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_updated_at.html.twig',
-                'sortable' => 'updatedAt',
+            ->add('publishedInterval', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
+                'sortable' => 'publishedAt',
             ))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
+            ->add('priorityStatus', 'choice', array(
+                'choices'   => PressAccreditProcedure::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('statusMain', 'choice', array(
+                'choices'   => PressAccreditProcedureTranslation::getMainStatuses(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
             ))
         ;
     }
+
+    protected $translationDomain = 'BaseAdminBundle';
 
     /**
      * @param FormMapper $formMapper

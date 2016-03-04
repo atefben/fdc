@@ -7,7 +7,7 @@ use Base\CoreBundle\Entity\StatementImage;
 use Base\CoreBundle\Entity\StatementImageTranslation;
 use Base\CoreBundle\Entity\StatementStatementAssociated;
 
-use Base\AdminBundle\Component\Admin\Admin;
+use Base\AdminBundle\Component\Admin\StatementCommonAdmin as Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -28,18 +28,6 @@ class StatementImageAdmin extends Admin
 
     protected $translationDomain = 'BaseAdminBundle';
 
-
-    public function getNewInstance()
-    {
-        $instance = parent::getNewInstance();
-
-        $instance->addAssociatedStatement(new StatementStatementAssociated());
-        $instance->addAssociatedStatement(new StatementStatementAssociated());
-
-        return $instance;
-    }
-
-
     public function configure()
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
@@ -51,79 +39,6 @@ class StatementImageAdmin extends Admin
             parent::getFormTheme(),
             array('BaseAdminBundle:Form:polycollection.html.twig')
         );
-    }
-
-    /**
-     * @param DatagridMapper $datagridMapper
-     */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('id')
-            ->add('title', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->andWhere('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.title LIKE :title');
-                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
-
-                    return true;
-                },
-                'field_type' => 'text'
-            ))
-            ->add('theme')
-            ->add('status', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->andWhere('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.status = :status');
-                    $queryBuilder->setParameter('status', $value['value']);
-
-                    return true;
-                },
-                'field_type' => 'choice',
-                'field_options' => array(
-                    'choices' => StatementImageTranslation::getStatuses(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
-            ))
-        ;
-    }
-
-    /**
-     * @param ListMapper $listMapper
-     */
-    protected function configureListFields(ListMapper $listMapper)
-    {
-        $listMapper
-            ->add('id')
-            ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
-            ->add('theme')
-            ->add('createdAt')
-            ->add('publishedInterval', null, array('template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig'))
-            ->add('priorityStatus', 'choice', array(
-                'choices' => StatementImage::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('statusMain', 'choice', array(
-                'choices' => StatementImageTranslation::getStatuses(),
-                'catalogue' => 'BaseAdminBundle'
-            ))
-            ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
-            ))
-            ->add('_preview', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_preview.html.twig'
-            ))
-        ;
     }
 
     /**

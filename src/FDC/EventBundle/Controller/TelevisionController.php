@@ -11,6 +11,7 @@ use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 use Base\CoreBundle\Entity\FilmFilmTranslation;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaVideo;
+use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\WebTv;
 use FDC\EventBundle\Component\Controller\Controller;
@@ -107,26 +108,24 @@ class TelevisionController extends Controller
             }
         }
 
-        $filmVideos = array();
+        $trailers = array();
         if (!$page->getDoNotDisplayTrailerArea()) {
-            $filmsIds = array();
-            foreach ($page->getAssociatedFilmFilms() as $associatedFilmFilm) {
-                if ($associatedFilmFilm->getAssociation()) {
-                    $filmsIds[$associatedFilmFilm->getAssociation()->getId()] = $associatedFilmFilm->getAssociation();
-                }
-            }
-
-            $filmVideosGroup = $this
-                ->getBaseCoreMediaVideoRepository()
-                ->getLastMediaVideoTrailerOfEachFilmFilm($festival, $locale, array_keys($filmsIds))
-            ;
-
-            foreach ($filmVideosGroup as $group) {
-                if (!empty($filmsIds[$group['film_id']])) {
-                    $filmVideos[] = array(
-                        'video' => $group['lastVideo'],
-                        'film'  => $filmsIds[$group['film_id']],
-                    );
+            foreach ($page->getAssociatedMediaVideos() as $associatedMediaVideo) {
+                if ($associatedMediaVideo->getAssociation()) {
+                    $mediaVideo = $associatedMediaVideo->getAssociation();
+                    if ($mediaVideo instanceof MediaVideo) {
+                        $isPublished = $mediaVideo->findTranslationByLocale('fr')->getStatus() == MediaVideoTranslation::STATUS_PUBLISHED;
+                        if ($locale !== 'fr') {
+                            $isPublished = $isPublished && $mediaVideo->findTranslationByLocale($locale)->getStatus() == MediaVideoTranslation::STATUS_TRANSLATED;
+                        }
+                        $isTrailer = $isPublished && $mediaVideo->getDisplayedTrailer();
+                        $hasFilms = $isTrailer && $mediaVideo->getAssociatedFilms()->count();
+                        $associatedFilms = $mediaVideo->getAssociatedFilms();
+                        $firstFilm = $associatedFilms[0]->getAssociation();
+                        if ($hasFilms && $firstFilm) {
+                            $trailers[$mediaVideo->getId()] = $mediaVideo;
+                        }
+                    }
                 }
             }
         }
@@ -152,7 +151,7 @@ class TelevisionController extends Controller
             'page'                 => $page,
             'sliderChosenChannels' => $sliderChosenChannels,
             'sliderOtherChannels'  => $sliderOtherChannels,
-            'filmVideos'           => $filmVideos,
+            'trailers'             => $trailers,
             'videoUrl'             => $videoUrl,
             'lastVideos'           => $lastVideos,
         );
@@ -307,9 +306,14 @@ class TelevisionController extends Controller
         $locale = $request->getLocale();
         $festival = $this->getFestival()->getId();
 
+        $pages = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageWebTvTrailers')
+            ->getAllTrailersPage($festival, $locale)
+        ;
+
         if ($slug === null) {
-            $page = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findBy(array(), null, 1);
-            $translation = current($page)->findTranslationByLocale($request->getLocale());
+            $translation = current($pages)->findTranslationByLocale($request->getLocale());
             if ($translation) {
                 if (!$translation->getSlug()) {
                     throw $this->createNotFoundException();
@@ -319,8 +323,10 @@ class TelevisionController extends Controller
                 ));
             }
         }
+
         $pageTranslation = $this
-            ->getBaseCoreFDCPageWebTvTrailersTranslationRepository()
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageWebTvTrailersTranslation')
             ->findOneBySlug($slug)
         ;
 
@@ -335,7 +341,8 @@ class TelevisionController extends Controller
         $sectionSection = $page->getSelectionSection()->getId();
 
         $filmsTrailers = $this
-            ->getBaseCoreMediaVideoRepository()
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
             ->getLastMediaVideoTrailerOfEachFilmFilm($festival, $locale, null, $sectionSection)
         ;
 
@@ -346,15 +353,15 @@ class TelevisionController extends Controller
             );
         }
 
-        $films = $this->getBaseCoreFilmFilmRepository()->getFilmsByIds(array_keys($groups));
+        $films = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->getFilmsByIds(array_keys($groups))
+        ;
 
         foreach ($films as $film) {
             $groups[$film->getId()]['film'] = $film;
         }
-
-
-        $pages = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findAll();
-
 
         return array(
             'page'   => $page,

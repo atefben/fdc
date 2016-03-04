@@ -8,9 +8,15 @@ use Base\CoreBundle\Entity\InfoArticleTranslation;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Tests\DependencyInjection\News;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class InfoCommonAdmin extends BaseAdmin
 {
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('acl');
+    }
 
     public function filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value)
     {

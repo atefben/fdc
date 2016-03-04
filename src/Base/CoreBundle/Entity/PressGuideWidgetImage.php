@@ -43,10 +43,10 @@ class PressGuideWidgetImage extends PressGuideWidget
     /**
      * Set gallery
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $gallery
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $gallery
      * @return PressGuideWidgetImage
      */
-    public function setGallery(\Base\CoreBundle\Entity\MediaImage $gallery = null)
+    public function setGallery(\Base\CoreBundle\Entity\MediaImageSimple $gallery = null)
     {
         $this->gallery = $gallery;
 

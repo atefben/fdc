@@ -15,13 +15,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * FDCPageWebTvLiveFilmFilmAssociated
+ * FDCPageWebTvLiveMediaVideoAssociated
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FDCPageWebTvLiveFilmFilmAssociated
+class FDCPageWebTvLiveMediaVideoAssociated
 {
     use Time;
 
@@ -37,14 +37,14 @@ class FDCPageWebTvLiveFilmFilmAssociated
     /**
      * @var FDCPageWebTvLive
      *
-     * @ORM\ManyToOne(targetEntity="FDCPageWebTvLive", inversedBy="associatedFilmFilms")
+     * @ORM\ManyToOne(targetEntity="FDCPageWebTvLive", inversedBy="associatedMediaVideos")
      */
     protected $FDCPageWebTvLive;
     
      /**
-     * @var FilmFilm
+     * @var MediaVideo
      *
-     * @ORM\ManyToOne(targetEntity="FilmFilm")
+     * @ORM\ManyToOne(targetEntity="MediaVideo")
      */
     protected $association;
     
@@ -79,7 +79,7 @@ class FDCPageWebTvLiveFilmFilmAssociated
      * Set FDCPageWebTvLive
      *
      * @param \Base\CoreBundle\Entity\FDCPageWebTvLive $FDCPageWebTvLive
-     * @return FDCPageWebTvLiveFilmFilmAssociated
+     * @return $this
      */
     public function setFDCPageWebTvLive(\Base\CoreBundle\Entity\FDCPageWebTvLive $FDCPageWebTvLive = null)
     {
@@ -101,10 +101,10 @@ class FDCPageWebTvLiveFilmFilmAssociated
     /**
      * Set association
      *
-     * @param \Base\CoreBundle\Entity\FilmFilm $association
-     * @return FDCPageWebTvLiveFilmFilmAssociated
+     * @param \Base\CoreBundle\Entity\MediaVideo $association
+     * @return $this
      */
-    public function setAssociation(\Base\CoreBundle\Entity\FilmFilm $association = null)
+    public function setAssociation(\Base\CoreBundle\Entity\MediaVideo $association = null)
     {
         $this->association = $association;
 
@@ -114,7 +114,7 @@ class FDCPageWebTvLiveFilmFilmAssociated
     /**
      * Get association
      *
-     * @return \Base\CoreBundle\Entity\FilmFilm 
+     * @return \Base\CoreBundle\Entity\MediaVideo
      */
     public function getAssociation()
     {

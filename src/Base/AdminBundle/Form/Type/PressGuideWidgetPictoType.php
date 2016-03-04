@@ -63,7 +63,8 @@ class PressGuideWidgetPictoType extends PressGuideWidgetType
                     'field_type' => 'ckeditor',
                     'label' => 'form.label_content',
                     'sonata_help' => 'form.press_homepage.helper_desc',
-                    'translation_domain' => 'BaseAdminBundle'
+                    'translation_domain' => 'BaseAdminBundle',
+                    'config_name' => 'widget'
                 )
             )
         ))
