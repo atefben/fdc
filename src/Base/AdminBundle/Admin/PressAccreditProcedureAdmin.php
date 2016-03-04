@@ -11,9 +11,16 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class PressAccreditProcedureAdmin extends Admin
 {
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('acl');
+        $collection->remove('show');
+    }
 
     protected $translationDomain = 'BaseAdminBundle';
 
@@ -69,7 +76,6 @@ class PressAccreditProcedureAdmin extends Admin
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
                 )
