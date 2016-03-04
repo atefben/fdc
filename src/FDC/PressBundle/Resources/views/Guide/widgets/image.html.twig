@@ -7,7 +7,7 @@
 {% set file = trans.file %}
 <div class="contain-article">
     <div class="aside">
-        {% thumbnail file, '363x229' with {'alt': img|trans_fallback('alt')} %}
+        <img src="{% path file, '363x229' %}" alt="{{ img|trans_fallback('alt') }}" />
     </div>
     <div class="texts">
         <strong>{{ widget|trans_fallback('title') }}</strong>

@@ -21,7 +21,7 @@ class PressGuideWidgetColumn extends PressGuideWidget
     use Translatable;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     private $gallery;
 
@@ -42,10 +42,10 @@ class PressGuideWidgetColumn extends PressGuideWidget
     /**
      * Set gallery
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $gallery
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $gallery
      * @return PressGuideWidgetColumn
      */
-    public function setGallery(\Base\CoreBundle\Entity\MediaImage $gallery = null)
+    public function setGallery(\Base\CoreBundle\Entity\MediaImageSimple $gallery = null)
     {
         $this->gallery = $gallery;
 
