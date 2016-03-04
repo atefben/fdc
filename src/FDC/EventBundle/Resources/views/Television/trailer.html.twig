@@ -144,7 +144,7 @@
 
         {% if next %}
             <div class="bandeau-list vCenter push-footer bandeau-list-footer">
-                <div class="bandeau-list-img vCenterKid"{% if posterNext %} style="background-image:url('{%- path posterNext|trans_fallback('file', 'fr'), '640x404' -%}');"{% endif %}>
+                <div class="bandeau-list-img vCenterKid"{% if posterNext %} style="background-image:url('{%- path posterNext, posterNextFormat -%}');"{% endif %}>
                     <h2 class="title title-list-header">{{ next.findTranslationByLocal(app.request.locale)?:next.titleVO }}</h2>
                     <a href="{{ path('fdc_event_television_gettrailer', {'slug': next.slug} ) }}"
                        class="bandeau-lien">
