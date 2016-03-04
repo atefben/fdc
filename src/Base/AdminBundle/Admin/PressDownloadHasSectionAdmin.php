@@ -43,8 +43,8 @@ class PressDownloadHasSectionAdmin extends Admin
         $formMapper
             ->add('section', 'sonata_type_model_list', array(
                 'required' => false,
-                'btn_add' => "Ajouter",
-                'label' => 'form.label_section'
+                'btn_add' => false,
+                'label' => 'form.label_download_section'
             ))
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;

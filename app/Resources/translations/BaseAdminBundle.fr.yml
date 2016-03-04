@@ -586,6 +586,7 @@ form:
     label_information_icon: Pictogramme du titre
     label_media_title: Nom du média
     label_procedure: Procédure
+    label_download_section: Section à télécharger
     gallery:
         medias: Médias
     encoding_state:
