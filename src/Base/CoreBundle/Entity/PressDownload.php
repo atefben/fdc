@@ -11,6 +11,8 @@ use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\SeoMain;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * PressDownload
  *
@@ -42,7 +44,9 @@ class PressDownload implements TranslateMainInterface
     protected $downloadSection;
 
     /**
-     * ArrayCollection
+     * @var ArrayCollection
+     *
+     * @Assert\Valid()
      */
     protected $translations;
 
@@ -55,11 +59,9 @@ class PressDownload implements TranslateMainInterface
         $this->downloadSection = new ArrayCollection();
     }
 
-    public function __toString() {
-
-        $string = substr(strrchr(get_class($this), '\\'), 1);
-
-        return $string;
+    public function __toString()
+    {
+        return "A télécharger";
     }
 
     /**
