@@ -14,10 +14,6 @@ use Base\CoreBundle\Entity\PressDownloadSection;
 class PressDownloadSectionAdmin extends Admin
 {
 
-    protected $formOptions = array(
-        'cascade_validation' => true
-    );
-
     protected $translationDomain = 'BaseAdminBundle';
 
     public function getFormTheme()
@@ -32,7 +28,7 @@ class PressDownloadSectionAdmin extends Admin
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
     }
-    
+
     /**
      * @param DatagridMapper $datagridMapper
      */
