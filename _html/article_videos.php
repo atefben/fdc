@@ -19,8 +19,7 @@
         <h2 class="title-article">The Lobster : Bande Annonce</h2>
         <div class="buttons">
           <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>
-          <a href="#" class="button print"><i class="icon icon_print"></i>
-Imprimer</a>
+          <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i> Imprimer</a>
         </div>
 
         <div class="video-container state-init video"
