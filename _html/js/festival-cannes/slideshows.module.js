@@ -163,11 +163,12 @@ $('body').on('click', '.chocolat-image', function() {
   }else{
     $('<a href="#" class="share"><i class="icon icon_share"></i></a>').insertBefore('.chocolat-wrapper .chocolat-left');
   }
-  $('<div class="buttons square"><a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a><a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>').appendTo('.chocolat-bottom');
+  $('<div class="buttons square img-slideshow-share"><a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a><a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>').appendTo('.chocolat-bottom');
   $('<div class="zoomCursor"><i class="icon icon_loupePlus"></i></div>').appendTo('.chocolat-wrapper');
   $('<div class="credit">' + $that.data('credit') + '</div>').insertBefore('.chocolat-wrapper .share');
 
-  linkPopinInit();
+  linkPopinInit(0,'.img-slideshow-share .button.link');
+  initPopinMail();
 
   setTimeout(function() {
     $('.chocolat-wrapper').addClass('show');
@@ -197,34 +198,27 @@ $('body').on('click', '.chocolat-image', function() {
   }
 
 
-  $('.chocolat-wrapper .thumbnails').owlCarousel({
+  $test = $('.chocolat-wrapper .thumbnails').owlCarousel({
     nav: false,
     dots: false,
     smartSpeed: 500,
     margin: 0,
-    responsive:{
-      0:{
-        items:5
-      },
-      1280: {
-        items: 6
-      },
-      1600:{
-        items:7
-      },
-      1800:{
-        items:8
-      },
-      1920: {
-        items: 9
-      }
-    }
+    autoWidth:true,
+    URLhashListener:false
+  });
+
+  $test.on('changed.owl.carousel',function(e){
+    cqsdfghjonsole.log(e);
   });
 });
+
+
 
 // on click on thumb from the list : change pic and update hash
 $('body').on('click', '.chocolat-wrapper .thumb', function() {
   var j = $(this).parent().index();
+
+
 
   $('.chocolat-wrapper .thumb').removeClass('active');
   $(this).addClass('active');

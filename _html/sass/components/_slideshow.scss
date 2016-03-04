@@ -58,9 +58,9 @@
       .thumb {
         background: $black;
         box-sizing: border-box;
-        height: 64px;
-        position: relative;
+        height: 61px;
         width: 97px;
+        position: relative;
         @include transition(all 0.6s $linear);
 
         &:after {
@@ -298,9 +298,10 @@ div.chocolat-wrapper {
 
       img {
         display: block;
-        max-height: 150px;
+        // max-height: 150px;
+        height: 150px;
         opacity: 0.3!important;
-        width: 101%;
+        width: auto;
         @include transform(translate3d(0, -40px, 0));
         @include transition(opacity 0.9s $smoothTransition, transform 0.9s ease);
       }

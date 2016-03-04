@@ -69,10 +69,10 @@
               </div>
               <div class="owl-carousel thumbnails">
                 <div data-id="photo1" class="thumb active">
-                  <img src="img/thumb01.jpg" />
+                  <img src="http://ohwee-symfony-test.s3-website-eu-west-1.amazonaws.com/media_image/0001/01/thumb_874_media_image_194x128.jpg" />
                 </div>
                 <div data-id="photo2" class="thumb">
-                  <img src="img/thumb01.jpg" />
+                  <img src="http://ohwee-symfony-test.s3-website-eu-west-1.amazonaws.com/media_image/0001/01/thumb_873_media_image_194x128.jpg" />
                 </div>
                 <div data-id="photo3" class="thumb">
                   <img src="img/thumb01.jpg" />
