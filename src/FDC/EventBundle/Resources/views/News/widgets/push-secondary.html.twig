@@ -68,7 +68,7 @@
             {% if trans is null or trans.file is null %}
                 {% set trans = homepage.pushsSecondaryImage4 .findTranslationByLocale('fr') %}
             {% endif %}
-            <div class="push">
+            <div class="push bigger">
                 <div class="image-wrapper">
                     <img src="{% path trans.file, '650x410' %}" alt="" />
                 </div>
