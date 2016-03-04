@@ -57,12 +57,13 @@ class PressDownloadSection implements TranslateMainInterface
     }
 
     public function __toString() {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
 
-        if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+        if (is_object($this->getTranslations()->last())) {
+            $string = $this->getTranslations()->last()->getTitle();
         }
-
+        else {
+            $string = substr(strrchr(get_class($this), '\\'), 1);
+        }
         return $string;
     }
 
