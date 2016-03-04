@@ -22,6 +22,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
  */
 class InfoAdmin extends Admin
 {
+
     public function createQuery($context = 'list')
     {
         $query = parent::createQuery($context);
