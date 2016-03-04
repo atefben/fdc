@@ -306,9 +306,14 @@ class TelevisionController extends Controller
         $locale = $request->getLocale();
         $festival = $this->getFestival()->getId();
 
+        $pages = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageWebTvTrailers')
+            ->getAllTrailersPage($festival, $locale)
+        ;
+
         if ($slug === null) {
-            $page = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findBy(array(), null, 1);
-            $translation = current($page)->findTranslationByLocale($request->getLocale());
+            $translation = current($pages)->findTranslationByLocale($request->getLocale());
             if ($translation) {
                 if (!$translation->getSlug()) {
                     throw $this->createNotFoundException();
@@ -318,8 +323,10 @@ class TelevisionController extends Controller
                 ));
             }
         }
+
         $pageTranslation = $this
-            ->getBaseCoreFDCPageWebTvTrailersTranslationRepository()
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageWebTvTrailersTranslation')
             ->findOneBySlug($slug)
         ;
 
@@ -334,7 +341,8 @@ class TelevisionController extends Controller
         $sectionSection = $page->getSelectionSection()->getId();
 
         $filmsTrailers = $this
-            ->getBaseCoreMediaVideoRepository()
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
             ->getLastMediaVideoTrailerOfEachFilmFilm($festival, $locale, null, $sectionSection)
         ;
 
@@ -345,15 +353,15 @@ class TelevisionController extends Controller
             );
         }
 
-        $films = $this->getBaseCoreFilmFilmRepository()->getFilmsByIds(array_keys($groups));
+        $films = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->getFilmsByIds(array_keys($groups))
+        ;
 
         foreach ($films as $film) {
             $groups[$film->getId()]['film'] = $film;
         }
-
-
-        $pages = $this->getBaseCoreFDCPageWebTvTrailersRepository()->findAll();
-
 
         return array(
             'page'   => $page,

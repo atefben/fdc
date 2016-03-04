@@ -90,7 +90,6 @@ class FilmFilmRepository extends EntityRepository
             ->join('mv.sites', 's')
             ->join('mv.translations', 'mvt')
             ->where('mv.displayedTrailer = :displayed_trailer')
-            ->where('mv.displayedTrailer = :displayed_trailer')
             ->andWhere('t.slug IS NOT NULL')
             ->andWhere("t.slug != ''")
             ->setParameter('displayed_trailer', true)
