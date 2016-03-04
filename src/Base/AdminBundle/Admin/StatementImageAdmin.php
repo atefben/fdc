@@ -7,7 +7,7 @@ use Base\CoreBundle\Entity\StatementImage;
 use Base\CoreBundle\Entity\StatementImageTranslation;
 use Base\CoreBundle\Entity\StatementStatementAssociated;
 
-use Base\AdminBundle\Component\Admin\Admin;
+use Base\AdminBundle\Component\Admin\StatementCommonAdmin as Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -27,18 +27,6 @@ class StatementImageAdmin extends Admin
     );
 
     protected $translationDomain = 'BaseAdminBundle';
-
-
-    public function getNewInstance()
-    {
-        $instance = parent::getNewInstance();
-
-        $instance->addAssociatedStatement(new StatementStatementAssociated());
-        $instance->addAssociatedStatement(new StatementStatementAssociated());
-
-        return $instance;
-    }
-
 
     public function configure()
     {
