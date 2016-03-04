@@ -91,7 +91,6 @@ sonata_media:
                 ##### OLDS #####
                 197x142: { width: 197 , height: 142 , quality: 100 }
                 197x142: { width: 197 , height: 142 , quality: 100 }
-                363x229: { width: 363 , height: 229 , quality: 100 }
                 646x567: { width: 646 , height: 567 , quality: 100 }
                 1980x300: { width: 1980 , height: 300 , quality: 100 }
 
@@ -109,6 +108,8 @@ sonata_media:
                 640x404: { width: 640 , height: 404 , quality: 100 }
                 # Pushs
                 650x410: { width: 650 , height: 410 , quality: 100 }
+                # PressGuide
+                363x229: { width: 363 , height: 229 , quality: 100 }
 
         media_audio:
             providers:

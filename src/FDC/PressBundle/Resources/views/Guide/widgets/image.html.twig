@@ -11,8 +11,6 @@
     </div>
     <div class="texts">
         <strong>{{ widget|trans_fallback('title') }}</strong>
-        <p>
-            {{ widget|trans_fallback('content')|raw }}
-        </p>
+        {{ widget|trans_fallback('content')|raw }}
     </div>
 </div>

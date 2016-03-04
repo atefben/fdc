@@ -22,21 +22,21 @@ class PressGuideWidgetColumnTranslation
     /**
      * @var string
      *
-     * @ORM\Column(name="press_guide_widget_column_first", type="string", nullable=true)
+     * @ORM\Column(name="press_guide_widget_column_first", type="text", nullable=true)
      */
     protected $firstColumn;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="press_guide_widget_column_second", type="string", nullable=true)
+     * @ORM\Column(name="press_guide_widget_column_second", type="text", nullable=true)
      */
     protected $secondColumn;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="press_guide_widget_column_third", type="string", nullable=true)
+     * @ORM\Column(name="press_guide_widget_column_third", type="text", nullable=true)
      */
     protected $thirdColumn;
 
