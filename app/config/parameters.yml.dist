@@ -72,6 +72,7 @@ parameters:
         - admin_base_core_infovideo_list
         - admin_base_core_pressaccreditprocedure_list
         - admin_base_core_pressdownloadsection_list
+        - admin_base_core_presscinemaroom_list
     admin_routes_translation_lock:
         - admin_base_core_webtv_edit
         - admin_base_core_tag_edit
@@ -95,6 +96,7 @@ parameters:
         - admin_base_core_infovideo_edit
         - admin_base_core_pressaccreditprocedure_edit
         - admin_base_core_pressdownloadsection_edit
+        - admin_base_core_presscinemaroom_edit
     # soif
     soif_preprod_url: ~
     soif_prod_url: ~

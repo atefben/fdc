@@ -28,19 +28,19 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=true)
      */
     private $file;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="second_file_id", referencedColumnName="id", nullable=true)
      */
     private $secondFile;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="third_file_id", referencedColumnName="id", nullable=true)
      */
     private $thirdFile;
 
@@ -90,6 +90,7 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
      */
     public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
     {
+
         $this->file = $file;
 
         return $this;
@@ -102,6 +103,7 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
      */
     public function getFile()
     {
+
         return $this->file;
     }
 

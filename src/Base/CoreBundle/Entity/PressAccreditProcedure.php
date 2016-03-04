@@ -39,7 +39,7 @@ class PressAccreditProcedure implements TranslateMainInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="procedure_link", type="string", length=255)
+     * @ORM\Column(name="procedure_link", type="string", length=122, nullable=true)
      */
     protected $procedureLink;
 

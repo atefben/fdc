@@ -31,7 +31,6 @@ class PressCinemaRoomTranslation implements TranslateChildInterface
      */
     protected $title;
 
-
     /**
      * Set title
      *
