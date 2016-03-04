@@ -222,7 +222,7 @@ article {
         text-transform: uppercase;
         @include transform(translateY(6px) translateZ(0));
         @include transition(opacity 0.5s $smoothTransition, visibility .5s $smoothTransition, transform 0.5s $smoothTransition);
-        
+
         &:after {
           content: ' ';
           height: 0;
@@ -425,7 +425,7 @@ article {
 
     .photo-container {
       display: inline-block;
-      width: 100%;
+      width: auto;
     }
 
     img {
@@ -692,15 +692,15 @@ article {
 
     a {
       color: $gold;
-      
+
       &:hover {
         background-color: #fff;
         border-color: $gold!important;
-        
+
         + .button {
           border-left-color: $gold;
         }
-        
+
         .icon {
           color: $gold;
           opacity: 1;
