@@ -55,6 +55,13 @@ class PressDownloadSectionWidgetDocumentTranslation
      */
     protected $secondBtnLabel;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $thirdBtnLabel;
+
 
     /**
      * Set label
@@ -169,5 +176,28 @@ class PressDownloadSectionWidgetDocumentTranslation
     public function getSecondBtnLabel()
     {
         return $this->secondBtnLabel;
+    }
+
+    /**
+     * Set thirdBtnLabel
+     *
+     * @param string $thirdBtnLabel
+     * @return PressDownloadSectionWidgetDocumentTranslation
+     */
+    public function setThirdBtnLabel($thirdBtnLabel)
+    {
+        $this->thirdBtnLabel = $thirdBtnLabel;
+
+        return $this;
+    }
+
+    /**
+     * Get thirdBtnLabel
+     *
+     * @return string 
+     */
+    public function getThirdBtnLabel()
+    {
+        return $this->thirdBtnLabel;
     }
 }
