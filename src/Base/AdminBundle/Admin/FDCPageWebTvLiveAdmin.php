@@ -156,9 +156,9 @@ class FDCPageWebTvLiveAdmin extends Admin
                     'inline' => 'table',
                 )
             )
-            ->add('associatedFilmFilms', 'sonata_type_collection', array(
-                'label'        => 'form.fdc_page_web_tv_live.label_film_films_associated',
-                'help'         => 'form.fdc_page_web_tv_live.helper_film_films_associated',
+            ->add('associatedMediaVideos', 'sonata_type_collection', array(
+                'label'        => 'form.fdc_page_web_tv_live.label_media_videos_associated',
+                'help'         => 'form.fdc_page_web_tv_live.helper_media_videos_associated',
                 'by_reference' => false,
                 'required'     => false,
             ), array(

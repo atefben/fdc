@@ -376,9 +376,7 @@ class MediaVideoAdmin extends Admin
         if ($pcode && $context == 'list') {
             $query->andWhere($query->getRootAlias() . '.displayedTrailer = 1');
         }
-
         return $query;
-
     }
 
     public function getExportFields()
