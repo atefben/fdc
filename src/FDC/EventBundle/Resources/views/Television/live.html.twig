@@ -88,25 +88,25 @@
                 </a>
             </p>
             <div id="slider-trailers" class="owl-carousel sliderDrag">
-                {% for filmVideo in filmVideos %}
+                {% for trailer in trailers %}
                     <div class="vid shadow-bottom">
                         <div class="image-wrapper">
-                            <img src="{% path filmVideo.video.image|trans_fallback('file'), '1950x1232' %}"
-                                 srcset="{% path filmVideo.video.image|trans_fallback('file'), '1950x1232' %} 1x, {% path filmVideo.video.image|trans_fallback('file'), '1950x1232' %} 2x"
+                            <img src="{% path trailer.image|trans_fallback('file'), '1950x1232' %}"
+                                 srcset="{% path trailer.image|trans_fallback('file'), '1950x1232' %} 1x, {% path trailer.image|trans_fallback('file'), '1950x1232' %} 2x"
                                  alt="">
                         </div>
                         <a class="linkVid"
-                           href="{{ path('fdc_event_television_gettrailer', {'slug': filmVideo.film.slug}) }}"></a>
+                           href="{{ path('fdc_event_television_gettrailer', {'slug': trailer.associatedFilms|first.association.slug}) }}"></a>
                         <div class="info">
                             <div class="picto"><i class="icon icon_video"></i>
                             </div>
                             <div class="info-container">
                                 <div class="vCenter">
                                     <div class="vCenterKid">
-                                        <a href="" class="category">{{ filmVideo.video.theme }}</a>
-                                        <span class="date">{{ filmVideo.video.publishedAt|date('d.m.Y') }}</span> .
-                                        <span class="hour">{{ filmVideo.video.publishedAt|date('H.i') }}</span>
-                                        <a href="#" class="titleLink">{{ filmVideo.video|trans_fallback('title')|truncate(85) }}</a>
+                                        <a href="" class="category">{{ trailer.theme }}</a>
+                                        <span class="date">{{ trailer.publishedAt|date('d.m.Y') }}</span> .
+                                        <span class="hour">{{ trailer.publishedAt|date('H.i') }}</span>
+                                        <a href="#" class="titleLink">{{ trailer|trans_fallback('title')|truncate(85) }}</a>
                                     </div>
                                 </div>
                             </div>
