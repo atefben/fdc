@@ -33,7 +33,10 @@ class PressDownloadSectionWidgetVideoDummyAdmin extends Admin
                         'provider' => 'sonata.media.provider.archive'
                     )
                 ))
-            ->add('secondFile', 'sonata_type_model_list',array(),
+            ->add('secondFile', 'sonata_type_model_list',
+                array(
+                    'required' => false
+                ),
                 array(
                     'link_parameters' => array(
                         'context'  => 'media_archive',

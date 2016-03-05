@@ -38,7 +38,7 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="second_file_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="second_file_id", referencedColumnName="id", nullable=true)
      */
     private $secondFile;
 
