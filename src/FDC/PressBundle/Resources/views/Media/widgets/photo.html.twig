@@ -3,7 +3,7 @@
     <h3 class="title-press">{{ s.section|trans_fallback('title') }}
         <span class="number">({{ widget.gallery.medias|length }})</span></h3>
     <div class="right-btn buttons">
-        <a href="{{ path('fdc_press_media_galleryarchive', {'id': widget.gallery.id }) }}" class="alldl button">
+        <a href="{% if is_granted("ROLE_FDC_PRESS_REPORTER") %}{{ path('fdc_press_media_galleryarchive', {'id': widget.gallery.id }) }}{% endif %}" class="alldl button">
             <i class="icon icon_telecharger"></i>
             {{ 'press.home.btn.touttelecharger'|trans }}
         </a>

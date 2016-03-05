@@ -19,12 +19,12 @@
         {{ widget|trans_fallback('content')|raw }}
     </div>
     <div class="buttons">
-        <a href="{% path widget.file, 'reference' %}" class=" button" target="_blank" download>
+        <a href="{% if is_granted("ROLE_FDC_PRESS_REPORTER") %}{% path widget.file, 'reference' %}{% endif %}" class=" button" target="_blank" download>
             <i class="icon icon_telecharger"></i>
             {{ widget|trans_fallback('btnLabel')|raw }}
         </a>
         {% if widget.secondFile is not null %}
-            <a href="{% path widget.secondFile, 'reference' %}" class=" button" target="_blank" download>
+            <a href="{% if is_granted("ROLE_FDC_PRESS_REPORTER") %}{% path widget.secondFile, 'reference' %}{% endif %}" class=" button" target="_blank" download>
                 <i class="icon icon_telecharger"></i>
                 {{ widget|trans_fallback('secondBtnLabel')|raw }}
             </a>
