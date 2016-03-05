@@ -102,6 +102,10 @@
                 }
             });
 
-        })
+        });
+        $(document).on('click', '.gridPressDownload .item a', function(e){
+            event.preventDefault();
+            event.stopPropagation();
+        });
     </script>
 {% endblock %}
