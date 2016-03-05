@@ -25,27 +25,31 @@ class LockController extends Controller
 {
 
     private static $entityMapper = array(
-        'webtv'            => 'WebTv',
-        'tag'              => 'Tag',
-        'theme'            => 'Theme',
-        'contacttheme'     => 'ContactTheme',
-        'event'            => 'Event',
-        'mediaimage'       => 'MediaImage',
-        'mediaimagesimple' => 'MediaImageSimple',
-        'mediaaudio'       => 'MediaAudio',
-        'mediavideo'       => 'MediaVideo',
-        'newsimage'        => 'NewsImage',
-        'newsaudio'        => 'NewsAudio',
-        'newsvideo'        => 'NewsVideo',
-        'newsarticle'      => 'NewsArticle',
-        'statementimage'   => 'StatementImage',
-        'statementaudio'   => 'StatementAudio',
-        'statementarticle' => 'StatementArticle',
-        'statementvideo'   => 'StatementVideo',
-        'infoimage'        => 'InfoImage',
-        'infoaudio'        => 'InfoAudio',
-        'infoarticle'      => 'InfoArticle',
-        'infovideo'        => 'InfoVideo',
+        'webtv'                  => 'WebTv',
+        'tag'                    => 'Tag',
+        'theme'                  => 'Theme',
+        'contacttheme'           => 'ContactTheme',
+        'event'                  => 'Event',
+        'mediaimage'             => 'MediaImage',
+        'mediaimagesimple'       => 'MediaImageSimple',
+        'mediaaudio'             => 'MediaAudio',
+        'mediavideo'             => 'MediaVideo',
+        'newsimage'              => 'NewsImage',
+        'newsaudio'              => 'NewsAudio',
+        'newsvideo'              => 'NewsVideo',
+        'newsarticle'            => 'NewsArticle',
+        'statementimage'         => 'StatementImage',
+        'statementaudio'         => 'StatementAudio',
+        'statementarticle'       => 'StatementArticle',
+        'statementvideo'         => 'StatementVideo',
+        'infoimage'              => 'InfoImage',
+        'infoaudio'              => 'InfoAudio',
+        'infoarticle'            => 'InfoArticle',
+        'infovideo'              => 'InfoVideo',
+        'pressdownloadsection'   => 'PressDownloadSection',
+        'pressaccreditprocedure' => 'PressAccreditProcedure',
+        'presscinemaroom'        => 'PressCinemaRoom',
+
     );
 
     /**
@@ -143,7 +147,6 @@ class LockController extends Controller
         $em = $this->get('doctrine')->getManager();
 
         $response = new JsonResponse();
-
         if ($entity == null || $id == null || $locale == null) {
             $logger->error(__CLASS__ . " - Couldnt verify the lock for entity '{$entity}' id '{$id}' locale '{$locale}', parameter id / entity / locale missing");
             $response->setStatusCode(400);
@@ -151,7 +154,6 @@ class LockController extends Controller
                 'message' => 'Impossible de vérifier l\'existence du verrou.',
             ));
         }
-
         if (!isset(self::$entityMapper[$entity])) {
             $logger->error(__CLASS__ . " - Couldnt verify the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
