@@ -80,13 +80,6 @@
             }
         });
 
-        $('#_submit').on('click', function(e){
-            e.preventDefault();
-            e.stopPropagation();
-
-            $('form#lockedForm').submit();
-        });
-
         $(document).on('click','.trailer-btn', function(event){
             event.preventDefault();
             event.stopPropagation();
@@ -103,9 +96,10 @@
             });
 
         });
-        $(document).on('click', '.gridPressDownload .item a', function(e){
-            event.preventDefault();
-            event.stopPropagation();
+        $(document).on('click', '#_submit', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            $('form#lockedForm').submit();
         });
     </script>
 {% endblock %}
