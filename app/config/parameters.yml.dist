@@ -53,6 +53,9 @@ parameters:
         - admin_base_core_tag_list
         - admin_base_core_webtv_list
         - admin_base_core_mediaimagesimple_list
+        - admin_base_core_pressaccreditprocedure_list
+        - admin_base_core_pressdownloadsection_list
+        - admin_base_core_presscinemaroom_list
     admin_routes_translation_legend:
         - admin_base_core_newsarticle_list
         - admin_base_core_event_list

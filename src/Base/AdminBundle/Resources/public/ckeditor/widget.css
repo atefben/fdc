@@ -1,3 +1,10 @@
+/* Golden link */
+.cke_editable .mail {
+    color: #c8a461;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 0.850rem;
+}
+
 /* Golden border */
 .cke_editable .big-quote {
     padding: 70px 70px;
@@ -193,4 +200,3 @@
     padding-top: 10px;
     border-top: 1px solid #dfdfdf;
 }
-

@@ -416,10 +416,11 @@
 {% block press_download_section_widget_video_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>Module photo</h4>
+        <h4>Module vidéo</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
         {{ form_row(form.children.image) }}
+        {{ form_row(form.children.video) }}
         {{ form_row(form.children.file) }}
         {{ form_row(form.children.secondFile) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}

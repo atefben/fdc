@@ -64,27 +64,29 @@ class PressDownloadSectionAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id', null, array(
-                'label' => 'list.common.label_id'
-            ))
+            ->add('id', null, array('label' => 'list.common.label_id'))
             ->add('title', null, array(
                 'template' => 'BaseAdminBundle:News:list_title.html.twig',
-                'label'    => 'list.label_section_title',
+                'label'    => 'list.cinema_room.label_title',
             ))
             ->add('createdAt', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
                 'sortable' => 'createdAt',
             ))
-            ->add('updatedAt', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_updated_at.html.twig',
-                'sortable' => 'updatedAt',
+            ->add('publishedInterval', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
+                'sortable' => 'publishedAt',
             ))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
+            ->add('priorityStatus', 'choice', array(
+                'choices'   => PressDownloadSection::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('statusMain', 'choice', array(
+                'choices'   => PressDownloadSectionTranslation::getMainStatuses(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
             ))
         ;
     }
