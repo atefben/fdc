@@ -56,15 +56,9 @@ class PressDownloadSection implements TranslateMainInterface
         $this->widgets = new ArrayCollection();
     }
 
-    public function __toString() {
-
-        if (is_object($this->getTranslations()->first())) {
-            $string = $this->getTranslations()->first()->getTitle();
-        }
-        else {
-            $string = substr(strrchr(get_class($this), '\\'), 1);
-        }
-        return $string;
+    public function __toString()
+    {
+        return (string) $this->getCurrentTranslation()->getTitle();
     }
 
     /**
