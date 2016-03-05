@@ -141,6 +141,7 @@ class PressDownloadSectionAdmin extends Admin
                     'press_download_section_widget_document_type',
                     'press_download_section_widget_file_type',
                     'press_download_section_widget_video_type',
+                    'press_download_section_widget_archive_type',
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,

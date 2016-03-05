@@ -814,6 +814,14 @@ services:
            - {name: sonata.admin, manager_type: orm, group: admin, label: Download Document widget, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+           
+    base.admin.press_download_section_widget_archive_dummy:
+        class: Base\AdminBundle\Admin\PressDownloadSectionWidgetArchiveDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetArchive, BaseAdminBundle:PressDownloadSectionWidgetArchiveDummyAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Archive widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
             
     base.admin.press_download_section_widget_file_dummy:
         class: Base\AdminBundle\Admin\PressDownloadSectionWidgetFileDummyAdmin

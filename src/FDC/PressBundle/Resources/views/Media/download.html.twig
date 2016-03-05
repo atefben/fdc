@@ -43,13 +43,9 @@
 
                         {% for key,widget in s.section.widgets %}
                             {% if class(widget) == "PressDownloadSectionWidgetDocument" %}
-                                {% if widget.file.contentType == "application/zip" or
-                                widget.secondFile.contentType == "application/zip"
-                                %}
-                                    {% include 'FDCPressBundle:Media:widgets/archive.html.twig' %}
-                                {% else %}
-                                    {% include 'FDCPressBundle:Media:widgets/document.html.twig' %}
-                                {% endif %}
+                                {% include 'FDCPressBundle:Media:widgets/document.html.twig' %}
+                            {% elseif class(widget) == "PressDownloadSectionArchiveFile" %}
+                                {% include 'FDCPressBundle:Media:widgets/archive.html.twig' %}
                             {% elseif class(widget) == "PressDownloadSectionWidgetFile" %}
                                 {% include 'FDCPressBundle:Media:widgets/file.html.twig' %}
                             {% elseif class(widget) == "PressDownloadSectionWidgetPhoto" %}

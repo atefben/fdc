@@ -1,10 +1,26 @@
 /* Golden link */
-.cke_editable .mail {
+.cke_editable a .mail {
     color: #c8a461;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     font-size: 0.850rem;
 }
-
+.cke_editable a .button {
+    border: 1px solid #dfdfdf;
+    border-right: none;
+    color: #c8a461;
+    display: inline-block;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 0.688rem;
+    height: 38px;
+    line-height: 38px;
+    margin: 0 0 0 0;
+    padding: 0 19px 0 19px;
+    text-transform: uppercase;
+    -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
 /* Golden border */
 .cke_editable .big-quote {
     padding: 70px 70px;
