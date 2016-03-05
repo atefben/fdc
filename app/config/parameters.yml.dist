@@ -97,9 +97,6 @@ parameters:
         - admin_base_core_infoimage_edit
         - admin_base_core_infoaudio_edit
         - admin_base_core_infovideo_edit
-        - admin_base_core_pressaccreditprocedure_edit
-        - admin_base_core_pressdownloadsection_edit
-        - admin_base_core_presscinemaroom_edit
     # soif
     soif_preprod_url: ~
     soif_prod_url: ~

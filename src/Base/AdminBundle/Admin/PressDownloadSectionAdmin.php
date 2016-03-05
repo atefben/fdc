@@ -67,8 +67,9 @@ class PressDownloadSectionAdmin extends Admin
             ->add('id', null, array('label' => 'list.common.label_id'))
             ->add('title', null, array(
                 'template' => 'BaseAdminBundle:News:list_title.html.twig',
-                'label'    => 'list.cinema_room.label_title',
+                'label'    => 'list.news_common.label_title',
             ))
+            ->add('theme', null, array())
             ->add('createdAt', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
                 'sortable' => 'createdAt',
