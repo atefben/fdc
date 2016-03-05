@@ -58,7 +58,7 @@ class PressDownloadSection implements TranslateMainInterface
 
     public function __toString()
     {
-        return (string) $this->getCurrentTranslation()->getTitle();
+        return (string) $this->findTranslationByLocale('fr')->getTitle();
     }
 
     /**
