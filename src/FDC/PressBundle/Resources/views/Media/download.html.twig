@@ -44,7 +44,7 @@
                         {% for key,widget in s.section.widgets %}
                             {% if class(widget) == "PressDownloadSectionWidgetDocument" %}
                                 {% include 'FDCPressBundle:Media:widgets/document.html.twig' %}
-                            {% elseif class(widget) == "PressDownloadSectionArchiveFile" %}
+                            {% elseif class(widget) == "PressDownloadSectionWidgetArchive" %}
                                 {% include 'FDCPressBundle:Media:widgets/archive.html.twig' %}
                             {% elseif class(widget) == "PressDownloadSectionWidgetFile" %}
                                 {% include 'FDCPressBundle:Media:widgets/file.html.twig' %}
