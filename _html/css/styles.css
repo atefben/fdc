@@ -3759,7 +3759,7 @@ body {
 
 /*!
  * Pikaday
- * Copyright © 2014 David Bushell | BSD & MIT license | http://dbushell.com/
+ * Copyright ┬® 2014 David Bushell | BSD & MIT license | http://dbushell.com/
  */
 .pika-single {
   z-index: 9999;
@@ -5091,6 +5091,9 @@ footer .footer-menu ul li a:hover {
   opacity: 1;
   visibility: visible;
 }
+.slideshow .slideshow-img .images .img:hover a {
+  position: absolute;
+}
 .slideshow .slideshow-img .images .img:hover img {
   -moz-transform: scale(1.05);
   -ms-transform: scale(1.05);
@@ -5335,6 +5338,7 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-description {
   padding-top: 30px;
   padding-left: 135px;
   text-align: left;
+  line-height: 12px;
   position: relative;
   z-index: 2;
   -moz-transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -5367,6 +5371,7 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-description span.date {
 div.chocolat-wrapper .chocolat-bottom .chocolat-description h2 {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 1rem;
+  line-height: 1rem;
   margin-top: 5px;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-description p {
@@ -5624,7 +5629,7 @@ div.chocolat-wrapper .zoomCursor .icon {
     float: left;
     line-height: 65px;
     margin-left: 28px;
-    margin-right: -51px;
+    margin-right: -71px;
   }
 }
 .filters {
@@ -8059,9 +8064,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -8087,11 +8092,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -8114,19 +8119,19 @@ header #searchContainer {
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -8492,14 +8497,14 @@ header #searchContainer {
   background-color: #141414;
 }
 
-.all-audios #share-box {
+.all-audios #share-box, .all-videos #share-box {
   width: 298px;
   top: 60px;
 }
-.all-audios #share-box .bubble:before {
+.all-audios #share-box .bubble:before, .all-videos #share-box .bubble:before {
   left: 60%;
 }
-.all-audios .square .email:hover {
+.all-audios .square .email:hover, .all-videos .square .email:hover {
   border-right: 1px solid #c8a461 !important;
 }
 
