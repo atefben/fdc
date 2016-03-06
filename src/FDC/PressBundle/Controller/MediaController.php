@@ -24,12 +24,6 @@ class MediaController extends Controller
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
 
-        $headerInfo = array(
-            'title' => 'Médiathèque films',
-            'description' => 'Vous trouverez ci-dessous les dossiers de presse, photos, et bandes annonces pour
-                              faciliter le traitement des films sur vos propres médias.'
-        );
-
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
         if ($settings === null || $settings->getFestival() === null) {
@@ -37,26 +31,38 @@ class MediaController extends Controller
         }
 
         $films = $em->getRepository('BaseCoreBundle:FilmFilm')
-            ->findByFestival($settings->getFestival()->getId());
-
+            ->findBy(array('festival' => $settings->getFestival()->getId()), array('selectionSection' => 'ASC'));
         $i = 0;
         $filmSection = array();
         $section = array();
 
         foreach ($films as $film) {
             //Construct sections
-            if ($film->getSelectionSection() !== null && !in_array($film->getSelectionSection()->findTranslationByLocale($locale)->getSlug(), $section)) {
+            $empty = true;
+            foreach ($film->getMedias() as $media) {
+                if ($media->getType() == '14' || $media->getType() == '18') {
+                    $empty = false;
+                }
+            }
+            foreach ($film->getAssociatedMediaVideos() as $mediaVideo ) {
+                if (isset($mediaVideo)){
+                    $empty = false;
+                }
+            }
+
+            if ($empty == false && $film->getSelectionSection() !== null && !in_array($film->getSelectionSection()->findTranslationByLocale($locale)->getSlug(), $section)) {
+
                 $filmSection[$i]['slug'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
                 $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
 
                 $section[] = $film->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
             }
 
+
             $i++;
         }
 
         return array(
-            'headerInfo' => $headerInfo,
             'filmSection' => $filmSection,
             'films' => $films
         );

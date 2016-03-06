@@ -32,7 +32,7 @@
                 <table>
                     <tr>
                         {% for key,filter in filmSection %}
-                        <td data-cat="{{ filter.slug }}" class="{% if key == 0 %}active{% endif %}">{{ filter.name }}</td>
+                        <td data-cat="{{ filter.slug }}" class="{{ loop.first ? 'active' : '' }}">{{ filter.name }}</td>
                         {% if  loop.index % 3 == 0 %}
                     </tr>
                     <tr>

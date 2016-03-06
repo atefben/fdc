@@ -5,7 +5,25 @@
         <div class="container-small">
             <div class="table">
                 {% for film in films %}
-                    {% if film.selectionSection|trans_fallback('slug') == section.slug %}
+                    {% set countVideo = 0 %}
+                    {% set countFolder = 0 %}
+                    {% set countImage = 0 %}
+                    {% for video in film.associatedMediaVideos %}
+                        {% if video.mediaVideo.displayedTrailer == 1 %}
+                            {% set countVideo = countVideo + 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% for media in film.medias %}
+                        {% if media.type == 18 %}
+                            {% set countFolder = countFolder + 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% for media in film.medias %}
+                        {% if media.type == 14 %}
+                            {% set countImage = countImage + 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if film.selectionSection|trans_fallback('slug') == section.slug and countVideo + countFolder + countImage != 0 %}
                     <div class="line">
                         <div class="container">
                             <div class="info">
@@ -15,32 +33,18 @@
                                         <div class="vCenterKid">
                                             <p>
                                                 {{ film|trans_fallback('title') }}
-                                                {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                    <a class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
+                                                {% for k,director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                    {% if k == 0 %}
+                                                        <a class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{{ loop.last ? ' ' : ',' }}
+                                                    {% else %}
+                                                        <a style="display: inline-block" class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{{ loop.last ? ' ' : ',' }}
+                                                    {% endif %}
                                                 {% endfor %}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {% set countVideo = 0 %}
-                            {% set countFolder = 0 %}
-                            {% set countImage = 0 %}
-                            {% for video in film.associatedMediaVideos %}
-                                {% if video.mediaVideo.displayedTrailer == 1 %}
-                                {% set countVideo = countVideo + 1 %}
-                                {% endif %}
-                            {% endfor %}
-                            {% for media in film.medias %}
-                                {% if media.type == 18 %}
-                                    {% set countFolder = countFolder + 1 %}
-                                {% endif %}
-                            {% endfor %}
-                            {% for media in film.medias %}
-                                {% if media.type == 14 %}
-                                    {% set countImage = countImage + 1 %}
-                                {% endif %}
-                            {% endfor %}
                             <div class="media folder">
                                 <i class="icon icon_dossier"></i>{{ 'mediatheque.label.dossiersdepresse'|trans }} ({{ countFolder }})
                             </div>
@@ -74,7 +78,7 @@
 
                                 </div>
                                 {% endif %}
-                                {% if countVideo %}
+                                {% if countVideo > 0 %}
                                 <div class="contain-buttons">
                                     <strong>{{ 'mediatheque.label.bandesannoncesetextraits'|trans }}<span>({{ countVideo }})</span></strong>
 
@@ -92,7 +96,7 @@
 
                                 </div>
                                 {% endif %}
-                                {% if countImage %}
+                                {% if countImage > 0 %}
                                 <div class="photos block slideshow">
                                     <div class="container">
                                         <div class="container-title">
