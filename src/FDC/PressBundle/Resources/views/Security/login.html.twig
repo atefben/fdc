@@ -15,12 +15,12 @@
                 </div>
             </div>
 
-            <form action="{{ path("fdc_press_security_check") }}" method="post" {% if error %}class="error"{% endif %}>
+            <form action="{{ path("fdc_press_security_check") }}" method="post" {% if error %}class="error"{% endif %} id="lockedForm">
                 <input type="hidden" id="username" name="_username" value="press" required="required" />
 
                 <input type="password" id="password" name="_password" required="required" placeholder="{{ 'press.header.placeholder.motdepasse'|trans }}"/>
 
-                <input type="submit" name="_submit" value="{{ 'press.header.btn.valider'|trans }}" />
+                <input type="submit" id="_submit" name="_submit" value="{{ 'press.header.btn.valider'|trans }}" />
             </form>
         </div>
 {% endif %}

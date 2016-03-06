@@ -82,12 +82,7 @@
             }
         });
 
-        $('#_submit').on('click', function(e){
-            e.preventDefault();
-            e.stopPropagation();
 
-            $('form#lockedForm').submit();
-        });
 
         $(document).on('click','.trailer-btn', function(event){
             event.preventDefault();
@@ -104,12 +99,6 @@
                 }
             });
 
-        });
-
-        $('.locked form').on('submit', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            $('form').submit();
         });
 
     </script>

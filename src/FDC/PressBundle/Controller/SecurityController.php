@@ -33,7 +33,7 @@ class SecurityController extends BaseController
         } else {
             $error = '';
         }
-        dump($error);
+        dump($error);exit;
 
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get(SecurityContext::LAST_USERNAME);
