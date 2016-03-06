@@ -125,9 +125,9 @@ class PressProjectionAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle'),
                 array(
                     'link_parameters' => array(
-                        'context'  => 'media_archive',
-                        'filter'   => array('context' => array('value' => 'media_archive')),
-                        'provider' => 'sonata.media.provider.archive'
+                        'context'  => 'pdf',
+                        'filter'   => array('context' => array('value' => 'pdf')),
+                        'provider' => 'sonata.media.provider.pdf'
                 )
             ))
             ->add('pressScheduling', 'sonata_type_model_list', array(
@@ -135,9 +135,9 @@ class PressProjectionAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle'),
                 array(
                     'link_parameters' => array(
-                        'context'  => 'media_archive',
-                        'filter'   => array('context' => array('value' => 'media_archive')),
-                        'provider' => 'sonata.media.provider.archive'
+                        'context'  => 'pdf',
+                        'filter'   => array('context' => array('value' => 'pdf')),
+                        'provider' => 'sonata.media.provider.pdf'
                 )
             ))
             ->add('translate', 'checkbox' , array(
