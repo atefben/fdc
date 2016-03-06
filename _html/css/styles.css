@@ -7170,6 +7170,7 @@ div.chocolat-wrapper .zoomCursor .icon {
 .popin-video .popin-info p {
   color: #333;
   font-size: 1rem;
+  line-height: normal;
   margin-top: 5px;
 }
 .popin-video .popin-info .category {
