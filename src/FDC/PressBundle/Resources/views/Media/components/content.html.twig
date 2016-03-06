@@ -112,7 +112,7 @@
                                                 <span class="number">({{ countImage }})</span>
                                             </h3>
                                             <div class="download-btns right-btn buttons {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'active-btn' : '' }} ">
-                                                <a href="{{ path('fdc_press_media_filmarchive', {'id': film.id }) }}" class="button" download>
+                                                <a href="{{ path('fdc_press_media_filmarchive', {'id': film.id }) }}" class="button" download target="_blank">
                                                     {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
                                                     {{ 'mediatheque.btn.touttelecharger'|trans }}
                                                 </a>

@@ -112,7 +112,7 @@ class MediaController extends Controller
         // Set headers
         $response->headers->set('Cache-Control', 'private');
         $response->headers->set('Content-type', mime_content_type($zipPath));
-        $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($zipPath) . '";');
+        $response->headers->set('Content-Disposition', 'archive; filename="' . basename($zipPath) . '";');
         $response->headers->set('Content-length', filesize($zipPath));
 
         // Send headers before outputting anything
@@ -166,8 +166,6 @@ class MediaController extends Controller
             $zip->close();
 
         }
-
-
 
         $response = new Response();
 
