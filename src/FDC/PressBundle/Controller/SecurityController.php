@@ -32,8 +32,9 @@ class SecurityController extends BaseController
             $session->remove(SecurityContext::AUTHENTICATION_ERROR);
         } else {
             $error = '';
-            $session->getFlashBag()->add('loginSuccess', 'my error message here');
         }
+
+        $session->getFlashBag()->add('loginSuccess', 'my success message');
 
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get(SecurityContext::LAST_USERNAME);
