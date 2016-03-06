@@ -1,0 +1,17 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
+{% if is_granted("ROLE_FDC_PRESS_REPORTER") == false %}
+    {{ render(controller('FDCPressBundle:Security:login')) }}
+{% else %}
+    {% for k,flash_message in app.session.flashbag.get('loginSuccess') %}
+        {% if loop.first %}
+            <div class="locked">
+                <div class="vCenter">
+                    <div class="vCenterKid">
+                        <p class="access">{{ 'press.header.success.contenusdebloques'|trans|raw }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}

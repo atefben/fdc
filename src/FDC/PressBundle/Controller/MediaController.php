@@ -97,7 +97,7 @@ class MediaController extends Controller
                 if ($media->getType() == 14) {
                     array_push($filmPhotos,$media->getMedia()->getFile());
                     $provider = $this->container->get($media->getMedia()->getFile()->getProviderName());
-                    $fUrl = $provider->generatePublicUrl($media->getMedia()->getFile(), $media->getMedia()->getFile()->getContext().'_reference');
+                    $fUrl = $provider->getCdn()->getPath($provider->getReferenceImage($media->getMedia()->getFile(), true), $provider);
                     if (@file_get_contents($fUrl) !== false) {
                         $zip->addFromString(basename($media->getMedia()->getFile()), file_get_contents($fUrl));
                     }
@@ -107,32 +107,21 @@ class MediaController extends Controller
 
         }
 
-        if ($zip->numFiles !== 0) {
-            // Generate response
-            $response = new Response();
+        // Generate response
+        $response = new Response();
+        // Set headers
+        $response->headers->set('Cache-Control', 'private');
+        $response->headers->set('Content-type', mime_content_type($zipPath));
+        $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($zipPath) . '";');
+        $response->headers->set('Content-length', filesize($zipPath));
 
-            // Set headers
-            $response->headers->set('Cache-Control', 'private');
-            $response->headers->set('Content-type', mime_content_type($zipPath));
-            $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($zipPath) . '";');
-            $response->headers->set('Content-length', filesize($zipPath));
+        // Send headers before outputting anything
+        $response->sendHeaders();
 
-            // Send headers before outputting anything
-            $response->sendHeaders();
+        $response->setContent(file_get_contents($zipPath));
 
-            $response->setContent(file_get_contents($zipPath));
+        return $response;
 
-            return $response;
-        }
-        else {
-
-            $request->getSession()
-                ->getFlashBag()
-                ->add('error', $translator->trans('press.archive.error.veuillezreessayerplustard'))
-            ;
-
-            return $this->redirectToRoute('fdc_press_media_main');
-        }
 
     }
 
@@ -169,7 +158,7 @@ class MediaController extends Controller
             foreach ($galleryImage as $media ) {
                 array_push($galleryPhotos,$media->getFile());
                 $provider = $this->container->get($media->getFile()->getProviderName());
-                $fUrl = $provider->generatePublicUrl($media->getFile(), $media->getFile()->getContext().'_reference');
+                $fUrl = $provider->getCdn()->getPath($provider->getReferenceImage($media->getMedia()->getFile(), true), $provider);
                 if (@file_get_contents($fUrl) !== false) {
                     $zip->addFromString(basename($media->getFile()), file_get_contents($fUrl));
                 }
@@ -180,30 +169,19 @@ class MediaController extends Controller
 
 
 
-        if ($zip->numFiles !== 0) {
-            $response = new Response();
+        $response = new Response();
 
-            // Set headers
-            $response->headers->set('Cache-Control', 'private');
-            $response->headers->set('Content-type', mime_content_type($zipPath));
-            $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($zipPath) . '";');
-            $response->headers->set('Content-length', filesize($zipPath));
+        // Set headers
+        $response->headers->set('Cache-Control', 'private');
+        $response->headers->set('Content-type', mime_content_type($zipPath));
+        $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($zipPath) . '";');
+        $response->headers->set('Content-length', filesize($zipPath));
 
-            // Send headers before outputting anything
-            $response->sendHeaders();
-            $response->setContent(file_get_contents($zipPath));
-            return $response;
+        // Send headers before outputting anything
+        $response->sendHeaders();
+        $response->setContent(file_get_contents($zipPath));
+        return $response;
 
-        }
-        else {
-
-            $request->getSession()
-                ->getFlashBag()
-                ->add('error', $translator->trans('press.archive.error.veuillezreessayerplustard'))
-            ;
-
-            return $this->redirectToRoute('fdc_press_media_download');
-        }
 
 
     }

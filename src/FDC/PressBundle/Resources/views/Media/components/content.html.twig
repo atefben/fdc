@@ -93,7 +93,10 @@
                                             {% if trans is null or trans.file is null %}
                                                 {% set trans = m.mediaVideo.findTranslationByLocale('fr') %}
                                             {% endif %}
-                                                <a href="#" class="button trailer-btn" data-film="{{ m.association.id }}"><i class="icon icon_telecharger"></i> {{ trans.title }}</a>
+                                                <a href="#" class="button {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'active-btn' : '' }}" data-film="{{ m.association.id }}">
+                                                    {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
+                                                    {{ trans.title }}
+                                                </a>
                                         {% endif %}
                                         {% endfor %}
                                     </div>
@@ -108,9 +111,9 @@
                                                 {{ 'mediatheque.title.photoshd'|trans }}
                                                 <span class="number">({{ countImage }})</span>
                                             </h3>
-                                            <div class="download-btns right-btn buttons ">
-                                                <a href="{{ path('fdc_press_media_filmarchive', {'id': film.id }) }}" class="alldl button">
-                                                    <i class="icon icon_telecharger"></i>
+                                            <div class="download-btns right-btn buttons {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'active-btn' : '' }} ">
+                                                <a href="{{ path('fdc_press_media_filmarchive', {'id': film.id }) }}" class="button" download>
+                                                    {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
                                                     {{ 'mediatheque.btn.touttelecharger'|trans }}
                                                 </a>
                                             </div>
