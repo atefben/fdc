@@ -104,7 +104,20 @@
             event.preventDefault();
             event.stopPropagation();
         });
-
+        var $info = $('.plus');
+        $info.click(function () {
+            var $active = $('.press-media .nav-container .table .line').find('.active');
+            var $parent = $(this).closest(".container");
+            if (!$parent.hasClass('active')) {
+                $active.removeClass('active');
+                $parent.addClass('active');
+                $('.icon_moins').removeClass('icon_moins').addClass('icon_case-plus');
+                $parent.find('.icon_case-plus').removeClass('icon_case-plus').addClass('icon_moins');
+            } else {
+                $active.removeClass('active');
+                $parent.find('.icon_moins').removeClass('icon_moins').addClass('icon_case-plus');
+            }
+        });
         $(document).on('click','.section-cat', function(event){
 
             $.ajax({
