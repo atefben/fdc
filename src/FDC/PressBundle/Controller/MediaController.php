@@ -54,15 +54,9 @@ class MediaController extends Controller
                 $mainSectionId = $film->getSelectionSection()->getId();
             }
         }
-
-        $films = $em->getRepository('BaseCoreBundle:FilmFilm')
-            ->findBy(array(
-                'festival' => $settings->getFestival()->getId(),
-                'selectionSection' => $mainSectionId,
-            ));
         $i = 0;
 
-        foreach ($films as $film) {
+        foreach ($sectionFilms as $film) {
 
             //Construct sections
             $empty = true;
@@ -88,6 +82,13 @@ class MediaController extends Controller
 
             $i++;
         }
+
+        $films = $em->getRepository('BaseCoreBundle:FilmFilm')
+            ->findBy(array(
+                'festival' => $settings->getFestival()->getId(),
+                'selectionSection' => $mainSectionId,
+            ));
+
 
         return array(
             'filmSection' => $filmSection,
