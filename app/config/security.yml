@@ -39,6 +39,7 @@ security:
                 path:           /admin/logout
             anonymous:          true
         press:
+             host: ^%fdc_press_domain_regexp%$
              context:            user
              pattern:            /
              form_login:
@@ -47,7 +48,7 @@ security:
                  login_path:     /%locale%/press/login
                  use_forward:    false
                  check_path:     /%locale%/press/login_check
-                 failure_path:   /%locale%/press
+                 failure_path:   /%locale%/press/
                  always_use_default_target_path: true
              logout:
                  path:           /logout

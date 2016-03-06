@@ -1,4 +1,5 @@
 {% block javascripts %}
+
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
     {% javascripts '@FDCEventBundle/Resources/public/js/vendor.min.js' %}
@@ -9,6 +10,7 @@
     {% endjavascripts %}
     <script>jwplayer.key="{{ jwplayer_key }}";</script>
     <script type="text/javascript">
+
         $(document).on('click','form#newsletter #submit',function(event){
 
             event.preventDefault();
@@ -80,6 +82,13 @@
             }
         });
 
+        $('#_submit').on('click', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+
+            $('form#lockedForm').submit();
+        });
+
         $(document).on('click','.trailer-btn', function(event){
             event.preventDefault();
             event.stopPropagation();
@@ -96,10 +105,12 @@
             });
 
         });
-        $(document).on('click', '#_submit', function(e){
+
+        $('.locked form').on('submit', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            $('form#lockedForm').submit();
+            $('form').submit();
         });
+
     </script>
 {% endblock %}

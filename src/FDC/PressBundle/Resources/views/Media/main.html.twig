@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    {% include 'FDCPressBundle:Global:components/login.html.twig' %}
+    {{ render(controller('FDCPressBundle:Security:login')) }}
 
     <div class="container-mediapress">
         <div class="nav-mediapress">

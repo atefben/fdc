@@ -1,4 +1,4 @@
-fdc_press:
+fdc_event:
     resource: "@FDCPressBundle/Controller/"
     type:     annotation
     prefix:   /

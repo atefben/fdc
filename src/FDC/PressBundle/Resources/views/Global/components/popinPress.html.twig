@@ -4,7 +4,7 @@
     <div class="container-popin">
         <strong><i class="icon icon_cadenas"></i>{{ 'press.popin.title.contenuverouille'|trans }}</strong>
         <p>{{ 'press.popin.text.cecontenuestexclusivementreservealapresse'|trans }}</p>
-        <form action="{{ path("fos_user_security_check") }}" method="post" id="lockedForm">
+        <form action="{{ path("fdc_press_security_check") }}" method="post" id="lockedForm">
             <input type="hidden" id="username" name="_username" value="press" required="required" />
 
             <input type="password" id="password" name="_password" required="required" placeholder="{{ 'press.header.placeholder.motdepasse'|trans }}"/>

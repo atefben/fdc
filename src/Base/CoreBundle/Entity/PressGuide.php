@@ -112,9 +112,14 @@ class PressGuide implements TranslateMainInterface
         $this->meetingWidgets = new ArrayCollection();
     }
 
-    public function __toString()
-    {
-        return "Guide pratique";
+    public function __toString() {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string .= ' #'. $this->getId();
+        }
+
+        return $string;
     }
 
     /**
