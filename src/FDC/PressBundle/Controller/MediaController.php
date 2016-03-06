@@ -151,6 +151,24 @@ class MediaController extends Controller
             }
 
         }
+        $i=0;
+        foreach ($films as $film) {
+            $empty = true;
+            foreach ($film->getMedias() as $media) {
+                if ($media->getType() == '14' || $media->getType() == '18') {
+                    $empty = false;
+                }
+            }
+            foreach ($film->getAssociatedMediaVideos() as $mediaVideo ) {
+                if (isset($mediaVideo)){
+                    $empty = false;
+                }
+            }
+            if ($empty == true) {
+                unset($films[$i]);
+            }
+            $i++;
+        }
 
         return array(
             'films' => $films,
