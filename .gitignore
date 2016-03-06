@@ -27,6 +27,8 @@
 /web/app_dev.php
 /web/bundles/
 /web/uploads/
+!web/uploads/archive/film/.gitkeep
+!web/uploads/archive/gallery/.gitkeep
 /web/css/
 /web/js/
 /web/images/
