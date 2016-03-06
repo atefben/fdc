@@ -9,7 +9,7 @@
                     <div class="line">
                         <div class="container">
                             <div class="info">
-                                {% thumbnail film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first, 'tiny' %}
+                                <img src="{% path film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'tiny' %}" alt="">
                                 <div class="txt">
                                     <div class="vCenter">
                                         <div class="vCenterKid">
