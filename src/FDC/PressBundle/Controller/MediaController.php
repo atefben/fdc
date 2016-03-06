@@ -136,7 +136,7 @@ class MediaController extends Controller
             $films = $em->getRepository('BaseCoreBundle:FilmFilm')
                 ->findBy(array(
                     'festival' => $settings->getFestival()->getId(),
-                    'selectionSectionId' => $mainSectionId,
+                    'selectionSection' => $mainSectionId,
                 ));
             $i = 0;
 
