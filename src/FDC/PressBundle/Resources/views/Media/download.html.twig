@@ -26,8 +26,17 @@
         <div class="downloading-nav">
             <ul>
                 {% for key,s in pressDownloads %}
+                    {% set slugSplit = s.section|trans_fallback('slug')|split('-', 2) %}
+                    {% set slugSection = "" %}
+                    {% if attribute(slugSplit, 0) == "dossier" %}
+                        {% set slugSection = "dossier-presse" %}
+                    {% elseif attribute(slugSplit, 0) == "signatures" %}
+                        {% set slugSection = "signature" %}
+                    {% else %}
+                        {% set slugSection = s.section|trans_fallback('slug') %}
+                    {% endif %}
                     <!-- Don't change ID value -->
-                    <li><a href="#{{ s.section|trans_fallback('slug') }}" class="ajax {% if key == 0 %}active{% endif %}">{{ s.section|trans_fallback('title') }}</a></li>
+                    <li><a href="#{{ slugSection }}" class="ajax {% if key == 0 %}active{% endif %}">{{ s.section|trans_fallback('title') }}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -35,8 +44,8 @@
         <div class="wrapper">
             {% for k,s in pressDownloads %}
                 {% set slugSplit = s.section|trans_fallback('slug')|split('-', 2) %}
-                <div class="{% if attribute(slugSplit, 0) == "photos" %}photos block slideshow{% else %}{{ attribute(slugSplit, 0) }} block {% endif %}"
-                     id="{% if attribute(slugSplit, 0) == "dossier" %}dossier-presse{% else if attribute(slugSplit, 0) == "signatures" %}signature{% else %}{{ s.section|trans_fallback('slug') }}{% endif %}">
+                <div class="{% if attribute(slugSplit, 0) == "photos" %}photos block slideshow{% elseif attribute(slugSplit, 0) == "affiche" %}affiche{% else %}{{ attribute(slugSplit, 0) }} block {% endif %}"
+                     id="{% if attribute(slugSplit, 0) == "dossier" %}dossier-presse{% elseif attribute(slugSplit, 0) == "signatures" %}signature{% else %}{{ s.section|trans_fallback('slug') }}{% endif %}">
                     <div class="container">
                         {% if attribute(slugSplit, 0) != "photos" %}
                             <h3 class="title-press">{{ s.section|trans_fallback('title') }}</h3>
