@@ -24,5 +24,13 @@
             </form>
         </div>
 {% endif %}
-
+{% for flash_message in app.session.flashbag.get('success') %}
+<div class="locked">
+    <div class="vCenter">
+        <div class="vCenterKid">
+            <p class="access">{{ flash_message }}</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
 

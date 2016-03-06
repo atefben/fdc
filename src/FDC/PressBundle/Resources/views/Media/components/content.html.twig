@@ -33,27 +33,31 @@
                                         <div class="vCenterKid">
                                             <p>
                                                 {{ film|trans_fallback('title') }}
+                                            </p>
+                                            <p>
                                                 {% for k,director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                    {% if k == 0 %}
-                                                        <a class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{{ loop.last ? ' ' : ',' }}
-                                                    {% else %}
-                                                        <a style="display: inline-block" class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{{ loop.last ? ' ' : ',' }}
-                                                    {% endif %}
+                                                    <a style="display: inline-block" class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{{ loop.last ? ' ' : ',' }}
                                                 {% endfor %}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {% if countFolder > 0 %}
                             <div class="media folder">
                                 <i class="icon icon_dossier"></i>{{ 'mediatheque.label.dossiersdepresse'|trans }} ({{ countFolder }})
                             </div>
+                            {% endif %}
+                            {% if countVideo > 0 %}
                             <div class="media trailer">
                                 <i class="icon icon_bande-annonce"></i>{{ 'mediatheque.label.bandesannonces'|trans }} ({{ countVideo }})
                             </div>
+                            {% endif %}
+                            {% if countImage > 0 %}
                             <div class="media photo">
                                 <i class="icon icon_photo"></i>{{ 'mediatheque.label.photos'|trans }} ({{ countImage }})
                             </div>
+                            {% endif %}
                             <span class="plus"><i class="icon icon_case-plus"></i></span>
                             <div class="contain">
                                 {% if countFolder > 0 %}
@@ -132,7 +136,7 @@
                                                     <div class="item">
                                                         <a id='photo{{ key }}' href="{% path m.media.file, 'reference' %}" class="chocolat-image ajax"
                                                            title='<h2>{{ imageTitle }}</h2>' data-credit="{{ m.media.credits }}">
-                                                            {% thumbnail m.media.file, 'tiny' %}
+                                                            <img src="{% path m.media.file, 'square' %}" />
                                                         </a>
                                                     </div>
                                                 {% endif %}
