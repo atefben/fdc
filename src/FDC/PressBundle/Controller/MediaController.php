@@ -71,7 +71,7 @@ class MediaController extends Controller
                 }
             }
 
-            if ($empty == false && $film->getSelectionSection() !== null && !in_array($film->getSelectionSection()->findTranslationByLocale($locale)->getSlug(), $section)) {
+            if ($empty == false && $film->getSelectionSection() !== null && !in_array($film->getSelectionSection()->getId(), $section)) {
 
                 $filmSection[$i]['id'] = $film->getSelectionSection()->getId();
                 $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
