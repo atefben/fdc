@@ -225,8 +225,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             $(sc).find('.buttons .facebook').attr('data-href', fbHref);
             $(sc).find('.buttons .facebook').attr('href', fbHref);
             $(sc).find('.buttons .twitter').attr('href', twHref);
-            $(sc).find('.buttons .link').attr('href', encodeURIComponent(shareUrl));
-            $(sc).find('.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
+            $(sc).find('.buttons .link').attr('href', shareUrl);
+            $(sc).find('.buttons .link').attr('data-clipboard-text', shareUrl);
         }
     }
 
@@ -384,8 +384,10 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         initChannel();
         playerInstance.load(playlist);
         if($('.infos-videos .buttons').length > 0) {
+            linkPopinInit(0, '.infos-videos .buttons .link');
             updateShareLink(0, '.infos-videos');
         } else if($('.informations-video .buttons').length > 0) {
+            linkPopinInit(0, '.informations-video .buttons .link');
             updateShareLink(0, '.informations-video');
         } else {
             updateShareLink();

@@ -167,7 +167,7 @@ $('body').on('click', '.chocolat-image', function() {
   $('<div class="zoomCursor"><i class="icon icon_loupePlus"></i></div>').appendTo('.chocolat-wrapper');
   $('<div class="credit">' + $that.data('credit') + '</div>').insertBefore('.chocolat-wrapper .share');
 
-  linkPopinInit(0,'.img-slideshow-share .button.link');
+  // linkPopinInit(0,'.img-slideshow-share .button.link');
   initPopinMail();
 
   setTimeout(function() {

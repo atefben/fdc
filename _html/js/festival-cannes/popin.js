@@ -1,5 +1,4 @@
 function initPopinMail(){
-  
   $('.button.email').on('click touchstart', function(e) {
     e.preventDefault();
       $('.popin-mail').addClass('visible-popin');
@@ -116,8 +115,6 @@ function initPopinMail(){
 }
 
 $(document).ready(function() {
-
-
   if($('.popin-mail').length) {
       initPopinMail();
   }
@@ -155,6 +152,7 @@ function linkPopinInit(link, cls) {
     $(cls).attr('data-clipboard-text',link);
 
     $(cls).on('click touchstart',function(e){
+      console.log("TEST");
       var that = $(this);
       e.preventDefault();
 
@@ -162,7 +160,7 @@ function linkPopinInit(link, cls) {
         $('.button.email').css('border-right','1px solid #2C2C2C');
       }
 
-      if($('.all-audios').length) {
+      if($('.all-audios, .all-videos').length) {
         $('.button.email').css('border-right','1px solid #dfdfdf');
       }
 

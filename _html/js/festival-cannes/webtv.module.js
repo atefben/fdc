@@ -94,6 +94,7 @@ $(document).ready(function() {
 
       if($('#content-latest').length) {
         videoPopin = playerInit('video-player-popin', false, false);
+        // linkPopinInit(0'.popin-video .popin-buttons.buttons .link');
 
         $('.ov').on('click', function (e) {
           e.preventDefault();
@@ -277,6 +278,7 @@ $(document).ready(function() {
   if($('.single-channel').length) {
     if($('#content-latest').length) {
         videoPopin = playerInit('video-player-popin', false, false);
+        linkPopinInit(0, '.popin-video .popin-buttons.buttons .link');
 
         $('.ov').on('click', function (e) {
           e.preventDefault();

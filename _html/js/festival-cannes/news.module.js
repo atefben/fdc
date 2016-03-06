@@ -215,6 +215,7 @@ $(document).ready(function() {
 
     if($('#featured-videos').length) {
       videoNews = playerInit('video-player-popin', false, false);
+      linkPopinInit(0, '.popin-video .popin-buttons.buttons .link');
 
       $('.ov').on('click', function (e) {
         e.preventDefault();

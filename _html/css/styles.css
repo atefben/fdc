@@ -8497,14 +8497,14 @@ header #searchContainer {
   background-color: #141414;
 }
 
-.all-audios #share-box {
+.all-audios #share-box, .all-videos #share-box {
   width: 298px;
   top: 60px;
 }
-.all-audios #share-box .bubble:before {
+.all-audios #share-box .bubble:before, .all-videos #share-box .bubble:before {
   left: 60%;
 }
-.all-audios .square .email:hover {
+.all-audios .square .email:hover, .all-videos .square .email:hover {
   border-right: 1px solid #c8a461 !important;
 }
 
