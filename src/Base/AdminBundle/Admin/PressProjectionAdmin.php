@@ -127,7 +127,7 @@ class PressProjectionAdmin extends Admin
                     'link_parameters' => array(
                         'context'  => 'pdf',
                         'filter'   => array('context' => array('value' => 'pdf')),
-                        'provider' => 'sonata.media.provider.pdf'
+                        'provider' => 'sonata.media.provider.file'
                 )
             ))
             ->add('pressScheduling', 'sonata_type_model_list', array(
@@ -137,7 +137,7 @@ class PressProjectionAdmin extends Admin
                     'link_parameters' => array(
                         'context'  => 'pdf',
                         'filter'   => array('context' => array('value' => 'pdf')),
-                        'provider' => 'sonata.media.provider.pdf'
+                        'provider' => 'sonata.media.provider.file'
                 )
             ))
             ->add('translate', 'checkbox' , array(
