@@ -314,7 +314,6 @@ class MediaController extends Controller
         $downloads = $section->getDownloadSection();
 
         return array(
-            'headerInfo' => $headerInfo,
             'pressDownloads' => $downloads
         );
     }

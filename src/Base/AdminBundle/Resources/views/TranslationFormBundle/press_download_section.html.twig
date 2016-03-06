@@ -46,7 +46,7 @@
                                             {% elseif widget.children._type.vars.value == 'press_download_section_widget_document_type' %}
                                                 <h4><strong>Module document</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'press_download_section_widget_archive_type' %}
-                                                <h4><strong>Module Archive</strong></h4>
+                                                <h4><strong>Module Signatures</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
@@ -88,7 +88,7 @@
                                 </div>
                                 <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_file_type)| escape }}"><i class="icon-plus"></i>Module Dossier</a>
                                 <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_document_type)| escape }}"><i class="icon-plus"></i>Module Document</a>
-                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_archive_type)| escape }}"><i class="icon-plus"></i>Module Archive</a>
+                                <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_archive_type)| escape }}"><i class="icon-plus"></i>Module Signatures</a>
                                 <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_video_type)| escape }}"><i class="icon-plus"></i>Module Vidéo</a>
                                 <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_photo_type)| escape }}"><i class="icon-plus"></i>Module photo</a>
                                 {% else %}
@@ -104,7 +104,7 @@
                                             {% elseif widget.children._type.vars.value == 'press_download_section_widget_document_type' %}
                                                 <h4><strong>Module document</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'press_download_section_widget_archive_type' %}
-                                                <h4><strong>Module Archive</strong></h4>
+                                                <h4><strong>Module Signatures</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
