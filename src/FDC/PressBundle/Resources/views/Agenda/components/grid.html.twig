@@ -1,4 +1,4 @@
-{% trans_default_domain 'FDCEventBundle' %}
+{% trans_default_domain 'FDCPressBundle' %}
 <div class="venue">
     <div class="v-head">{{ 'press.home.salle.grandtheatrelumière'|trans }}</div>
     <div class="v-container">
@@ -17,7 +17,7 @@
         {% if dayProjection is defined %}
             {% for p in dayProjection %}
                 {% if p.room.name == "Salle Debussy" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
+                    {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
                 {% endif %}
             {% endfor %}
         {% endif %}

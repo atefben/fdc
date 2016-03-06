@@ -5,9 +5,6 @@
 {% endif %}
 {% set image = trans.file %}
 {% set sizeClass = 'portrait' %}
-{% if file.width > 250 %}
-    {% set sizeClass = 'landscape' %}
-{% endif %}
 
 <div class="imgs-container {% if key == 0 %}first{% elseif key == 2 %}last{% endif %}">
     <div class="container-img">
