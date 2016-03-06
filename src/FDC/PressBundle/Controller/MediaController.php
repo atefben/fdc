@@ -30,13 +30,40 @@ class MediaController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $films = $em->getRepository('BaseCoreBundle:FilmFilm')
+        $sectionFilms = $em->getRepository('BaseCoreBundle:FilmFilm')
             ->findBy(array('festival' => $settings->getFestival()->getId()), array('selectionSection' => 'ASC'));
         $i = 0;
+
         $filmSection = array();
         $section = array();
+        $mainSectionId = 0;
+
+        foreach ($sectionFilms as $film) {
+            $empty = true;
+            foreach ($film->getMedias() as $media) {
+                if ($media->getType() == '14' || $media->getType() == '18') {
+                    $empty = false;
+                }
+            }
+            foreach ($film->getAssociatedMediaVideos() as $mediaVideo ) {
+                if (isset($mediaVideo)){
+                    $empty = false;
+                }
+            }
+            if ($film->getSelectionSection() !== null && $empty == false) {
+                $mainSectionId = $film->getSelectionSection()->getId();
+            }
+        }
+
+        $films = $em->getRepository('BaseCoreBundle:FilmFilm')
+            ->findBy(array(
+                'festival' => $settings->getFestival()->getId(),
+                'selectionSection' => $mainSectionId,
+            ));
+        $i = 0;
 
         foreach ($films as $film) {
+
             //Construct sections
             $empty = true;
             foreach ($film->getMedias() as $media) {
@@ -52,10 +79,10 @@ class MediaController extends Controller
 
             if ($empty == false && $film->getSelectionSection() !== null && !in_array($film->getSelectionSection()->findTranslationByLocale($locale)->getSlug(), $section)) {
 
-                $filmSection[$i]['slug'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
+                $filmSection[$i]['id'] = $film->getSelectionSection()->getId();
                 $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
 
-                $section[] = $film->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
+                $section[] = $film->getSelectionSection()->getId();
             }
 
 
@@ -68,6 +95,51 @@ class MediaController extends Controller
         );
     }
 
+    /**
+     * @Route("/media-section", options={"expose"=true})
+     * @Template("FDCPressBundle:Media:components/content.html.twig")
+     * @param Request $request
+     * @return array
+     */
+    public function mediaSectionAction(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
+
+        if ($request->isXmlHttpRequest()){
+
+            $mainSectionId = $request->get('id');
+            $films = $em->getRepository('BaseCoreBundle:FilmFilm')
+                ->findBy(array(
+                    'festival' => $settings->getFestival()->getId(),
+                    'selectionSection' => $mainSectionId,
+                ));
+            $i = 0;
+
+            $filmSection = array();
+            $section = array();
+            foreach ($films as $film) {
+                if ( $film->getSelectionSection()->getId() !== null ){
+                    $section['id'] = $film->getSelectionSection()->getId();
+                    $section['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
+                    break;
+                }
+            }
+
+        }
+
+        return array(
+            'films' => $films,
+            'section' => $section
+        );
+    }
 
     /**
      * @Route("/media/film/{id}/archive")
@@ -172,15 +244,13 @@ class MediaController extends Controller
         // Set headers
         $response->headers->set('Cache-Control', 'private');
         $response->headers->set('Content-type', mime_content_type($zipPath));
-        $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($zipPath) . '";');
+        $response->headers->set('Content-Disposition', 'archive; filename="' . basename($zipPath) . '";');
         $response->headers->set('Content-length', filesize($zipPath));
 
         // Send headers before outputting anything
         $response->sendHeaders();
         $response->setContent(file_get_contents($zipPath));
         return $response;
-
-
 
     }
 
@@ -191,12 +261,6 @@ class MediaController extends Controller
      */
     public function downloadAction()
     {
-        $headerInfo = array(
-            'title' => 'À télécharger',
-            'description' => 'Ces élements visuels sont à usage exclusif de la presse et des médias qui couvrent
-                              le Festival de Cannes. Aucune utilisation commerciale ou promotionnelle de ces visuels
-                              n’est autorisée.'
-        );
 
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();

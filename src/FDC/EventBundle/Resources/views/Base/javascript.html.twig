@@ -100,6 +100,25 @@
             });
 
         });
+        $(document).on('click','.press-media .nav-mediapress td', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+
+        $(document).on('click','.section-cat', function(event){
+
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: GLOBALS.urls.pressMediaSection,
+                data: {'id': $('.section-cat').attr('data-cat')},
+                success: function(data) {
+                    $('.nav-container').remove();
+                    $('.nav-mediapress').after(data);
+                }
+            });
+
+        });
 
     </script>
 {% endblock %}
