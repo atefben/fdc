@@ -27,7 +27,7 @@
                                data-url="{{ path('fdc_event_television_trailers', {'slug': slug}) }}"
                                class="{% if app.request.attributes.get('slug') == slug %}active{% endif %} ajax">
                                 {% if item|trans_fallback('overrideName') %}
-                                    {{ item|trans_fallback('overrideName') }}
+                            {{ item|trans_fallback('overrideName') }}
                                 {% else %}
                                     {{ item.selectionSection|trans_fallback('name') }}
                                 {% endif %}

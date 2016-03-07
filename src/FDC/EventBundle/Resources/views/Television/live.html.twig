@@ -7,7 +7,7 @@
         <div class="vCenter">
             <div class="vCenterKid">
                 <div class="textLive">
-                    <h2>{{ page|trans_fallback('title') }}</h2>
+                    <h2>{{ page|trans_fallback('title')|raw }}</h2>
                     {% if videoUrl %}
                         <a href="#" class="play-live"><i class="icon icon_play"></i></a>
                     {% elseif page.live == false %}
