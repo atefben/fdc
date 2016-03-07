@@ -84,6 +84,7 @@ class FDCPageWaitingAdmin extends Admin
                         'sonata_help'        => 'form.media_image.helper_file',
                         'provider'           => 'sonata.media.provider.image',
                         'context'            => 'media_image',
+                        'label'              => 'form.label_banner',
                         'constraints'        => array(
                             new NotBlank()
                         )
