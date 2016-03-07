@@ -85,7 +85,7 @@
             </div>
           </article>
         </div>
-        <div class="item all d2015 steps communique">
+        <div class="item all d2015 steps communique article">
           <article class="article">
             <div class="img"><span class="picto"><i class="icon icon_communique-presse"></i></span><a href="article-press.php"><img src='img/press/actu03.jpg' /></a> </div>
             <div class="info">
@@ -94,7 +94,7 @@
             </div>
           </article>
         </div>
-        <div class="item all d2016 press communique">
+        <div class="item all d2016 press communique article">
           <article class="article">
             <div class="img"><span class="picto"><i class="icon icon_communique-presse"></i></span><a href="article-press.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
@@ -103,7 +103,7 @@
             </div>
           </article>
         </div>
-        <div class="item all d2013 press communique">
+        <div class="item all d2013 press communique article">
           <article class="article">
             <div class="img"><span class="picto"><i class="icon icon_communique-presse"></i></span><a href="article-press.php"><img src='img/press/actu04.jpg' /></a> </div>
             <div class="info">
