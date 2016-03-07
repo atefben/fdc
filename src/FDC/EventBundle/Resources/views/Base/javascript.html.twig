@@ -1,4 +1,5 @@
 {% block javascripts %}
+
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
     {% javascripts '@FDCEventBundle/Resources/public/js/vendor.min.js' %}
@@ -9,6 +10,7 @@
     {% endjavascripts %}
     <script>jwplayer.key="{{ jwplayer_key }}";</script>
     <script type="text/javascript">
+
         $(document).on('click','form#newsletter #submit',function(event){
 
             event.preventDefault();
@@ -80,12 +82,7 @@
             }
         });
 
-        $('#_submit').on('click', function(e){
-            e.preventDefault();
-            e.stopPropagation();
 
-            $('form#lockedForm').submit();
-        });
 
         $(document).on('click','.trailer-btn', function(event){
             event.preventDefault();
@@ -102,6 +99,27 @@
                 }
             });
 
-        })
+        });
+        $(document).on('click','.press-media .nav-mediapress td', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+        // Surcharge de l'AjaxEvent de press.module.js
+        // A adapter
+        $(document).on('click','.section-cat', function(event){
+
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: GLOBALS.urls.pressMediaSection,
+                data: {'id': $('.section-cat').attr('data-cat')},
+                success: function(data) {
+                    $('.nav-container').remove();
+                    $('.nav-mediapress').after(data);
+                }
+            });
+
+        });
+
     </script>
 {% endblock %}

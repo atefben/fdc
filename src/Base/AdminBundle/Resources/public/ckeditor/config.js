@@ -23,11 +23,14 @@ CKEDITOR.editorConfig = function( config ) {
 
     // STYLES
     config.stylesSet =  [
+        // Golden mail link
+        { name: 'Lien Bouton doré', element: 'span', childRule: function (element) { return !element.is('a') }, attributes: {'class': 'button' } },
+        { name: 'Lien mail doré', element: 'span', childRule: function (element) { return !element.is('a') }, attributes: {'class': 'mail' } },
         // Golden border
         { name: 'Bordure dorée', element: 'div', attributes: { 'class': 'big-quote' } },
         { name: 'Bordure dorée titre', element: 'strong' },
         { name: 'Bordure dorée paragraphe', element: 'span', attributes: {'class': 'big-quote-paragraph' } },
-         // Grey text
+        // Grey text
         { name: 'Texte sur fond gris', element: 'div', attributes: {'class': 'txt-grey-bkg-container'} },
         { name: 'Texte sur fond gris titre', element: 'strong' },
         { name: 'Texte sur fond gris paragraphe', element: 'span', attributes: {'class': 'txt-grey-bkg-container-paragraph' } },

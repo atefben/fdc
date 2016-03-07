@@ -31,7 +31,7 @@ class PressDownloadHasSection
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="PressDownloadSection", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OneToOne(targetEntity="PressDownloadSection", cascade={"persist"}, orphanRemoval=false)
      */
     protected $section;
 

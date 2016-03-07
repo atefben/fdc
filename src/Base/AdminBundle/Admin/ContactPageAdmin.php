@@ -11,9 +11,20 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class ContactPageAdmin extends Admin
 {
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('acl');
+        $collection->remove('list');
+        $collection->remove('show');
+        $collection->remove('create');
+        $collection->remove('delete');
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */

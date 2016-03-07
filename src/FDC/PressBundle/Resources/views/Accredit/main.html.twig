@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        {{ render(controller('FDCPressBundle:Security:login')) }}
+        {% include 'FDCPressBundle:Global:components/login.html.twig' %}
 
         <div id="accreditation">
         <div class="wrapper">
@@ -35,8 +35,8 @@
                 <table>
                     <tr>
                     {% for key,sectionFilter in accredit.procedure %}
-                        <td data-cat="{{ sectionFilter.procedure|trans_fallback('procedureTitle')|replace({' ':'-'})|lower }}" class="{% if key == 0 %}active{% endif %}">
-                            {{ sectionFilter.procedure|trans_fallback('procedureTitle') }}
+                        <td data-cat="{{ sectionFilter.procedure|trans_fallback('title')|replace({' ':'-'})|lower }}" class="{% if key == 0 %}active{% endif %}">
+                            {{ sectionFilter.procedure|trans_fallback('title') }}
                         </td>
                         {% if  loop.index % 3 == 0 %}
                         </tr>
@@ -48,7 +48,7 @@
             </div>
         </div>
         {% for key, section in accredit.procedure %}
-            <div class="nav-container {% if key == 0 %}active{% endif %}" data-cat="{{ section.procedure|trans_fallback('procedureTitle')|replace({' ':'-'})|lower }}">
+            <div class="nav-container {% if key == 0 %}active{% endif %}" data-cat="{{ section.procedure|trans_fallback('title')|replace({' ':'-'})|lower }}">
                 <div class="wrapper">
                     <div class="container-small">
                         <div class="buttons">
@@ -61,7 +61,7 @@
                                 {{ 'press.accrediter.btn.enregistrer'|trans }}
                             </a>
                         </div>
-                        <h4>{{ section.procedure|trans_fallback('procedureTitle') }}</h4>
+                        <h4>{{ section.procedure|trans_fallback('title') }}</h4>
                         {{ section.procedure|trans_fallback('procedureContent')|raw }}
                     </div>
                 </div>

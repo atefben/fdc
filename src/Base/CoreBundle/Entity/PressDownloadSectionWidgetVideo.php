@@ -27,13 +27,18 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaVideo")
-     * @ORM\JoinColumn(referencedColumnName="id", nullable=false)
+     */
+    private $video;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
      */
     private $file;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaVideo")
-     * @ORM\JoinColumn(referencedColumnName="id", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\JoinColumn(name="second_file_id", referencedColumnName="id", nullable=true)
      */
     private $secondFile;
 
@@ -50,7 +55,7 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
     {
         $this->translations = new ArrayCollection();
     }
-
+    
 
     /**
      * Set image
@@ -76,12 +81,35 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
     }
 
     /**
-     * Set file
+     * Set video
      *
-     * @param \Base\CoreBundle\Entity\MediaVideo $file
+     * @param \Base\CoreBundle\Entity\MediaVideo $video
      * @return PressDownloadSectionWidgetVideo
      */
-    public function setFile(\Base\CoreBundle\Entity\MediaVideo $file)
+    public function setVideo(\Base\CoreBundle\Entity\MediaVideo $video = null)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get video
+     *
+     * @return \Base\CoreBundle\Entity\MediaVideo 
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * Set file
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $file
+     * @return PressDownloadSectionWidgetVideo
+     */
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
     {
         $this->file = $file;
 
@@ -91,7 +119,7 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
     /**
      * Get file
      *
-     * @return \Base\CoreBundle\Entity\MediaVideo 
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
      */
     public function getFile()
     {
@@ -101,10 +129,10 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
     /**
      * Set secondFile
      *
-     * @param \Base\CoreBundle\Entity\MediaVideo $secondFile
+     * @param \Application\Sonata\MediaBundle\Entity\Media $secondFile
      * @return PressDownloadSectionWidgetVideo
      */
-    public function setSecondFile(\Base\CoreBundle\Entity\MediaVideo $secondFile = null)
+    public function setSecondFile(\Application\Sonata\MediaBundle\Entity\Media $secondFile)
     {
         $this->secondFile = $secondFile;
 
@@ -114,7 +142,7 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
     /**
      * Get secondFile
      *
-     * @return \Base\CoreBundle\Entity\MediaVideo 
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
      */
     public function getSecondFile()
     {

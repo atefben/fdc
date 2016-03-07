@@ -1,28 +1,27 @@
 {% trans_default_domain 'FDCPressBundle' %}
 
-{% if is_granted("ROLE_FDC_PRESS_REPORTER") == false %}
-        <div class="locked">
-            <div class="vCenter">
-                <div class="vCenterKid">
-                    <h3 class="title-press">
-                        <i class="icon icon_cadenas"></i>
-                        {{ 'press.header.title.contenusverouilles'|trans }}
-                    </h3>
-                    <p>{{ 'press.header.text.journalistesveuillezsaisirvotremotdepasse'|trans }}</p>
-                    {% if error %}
-                        <p class="errors">{{ error.message|trans({}, 'FDCPressBundle') }}</p>
-                    {% endif %}
-                </div>
-            </div>
-
-            <form action="{{ path("fdc_press_security_check") }}" method="post" id="lockedForm" {% if error %}class="error"{% endif %}>
-                <input type="hidden" id="username" name="_username" value="press" required="required" />
-
-                <input type="password" id="password" name="_password" required="required" placeholder="{{ 'press.header.placeholder.motdepasse'|trans }}"/>
-
-                <input type="submit" id="_submit" name="_submit" value="{{ 'press.header.btn.valider'|trans }}" />
-            </form>
+<div class="locked">
+    <div class="vCenter">
+        <div class="vCenterKid">
+            <h3 class="title-press">
+                <i class="icon icon_cadenas"></i>
+                {{ 'press.header.title.contenusverouilles'|trans }}
+            </h3>
+            <p>{{ 'press.header.text.journalistesveuillezsaisirvotremotdepasse'|trans }}</p>
+            {% if error %}
+                <p class="errors">{{ 'press.header.title.messageerreur'|trans }}</p>
+            {% endif %}
         </div>
-{% endif %}
+    </div>
+
+    <form action="{{ path("fdc_press_security_check") }}" method="post" {% if error %}class="error"{% endif %} id="lockedForm">
+        <input type="hidden" id="username" name="_username" value="press" required="required" />
+
+        <input type="password" id="password" name="_password" required="required" placeholder="{{ 'press.header.placeholder.motdepasse'|trans }}"/>
+
+        <input type="submit" id="_submit" name="_submit" value="{{ 'press.header.btn.valider'|trans }}" />
+    </form>
+</div>
+
 
 

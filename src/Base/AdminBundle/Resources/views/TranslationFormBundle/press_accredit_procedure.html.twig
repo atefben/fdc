@@ -19,7 +19,7 @@
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.procedureTitle) }}
+                                    {{ form_row(translationsFields.title) }}
                                     {{ form_row(translationsFields.procedureContent) }}
                                 </div>
                             </div>
@@ -36,6 +36,7 @@
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
                                         <div class="form-group fdc-input-border">
+                                            {{ form_row(translationsFields.status) }}
                                             {{ form_widget(form.parent.children.translate) }}
                                             {{ form_label(form.parent.children.translate) }}
                                             {{ form_widget(form.parent.children.translateOptions) }}
@@ -62,7 +63,7 @@
                                             <span>
                                             {% if form.children.fr.vars.value is not null %}
                                                 <div>
-                                                    {{ form.children.fr.vars.value.procedureTitle }}
+                                                    {{ form.children.fr.vars.value.title }}
                                                 </div>
                                             {% endif %}
                                             </span>

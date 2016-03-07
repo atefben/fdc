@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    {{ render(controller('FDCPressBundle:Security:login')) }}
+    {% include 'FDCPressBundle:Global:components/login.html.twig' %}
 
     <div id="seatingchart">
         <div class="nav-map">
@@ -23,20 +23,14 @@
                 {% endfor %}
                 <li data-maps="zone-festival" id='more-map'>
                     <strong>{{ rooms|trans_fallback('mapZone') }}</strong>
-                    {% for key,r in rooms.mapRoom %}
-                        {% set roomActive = "room"~r.room.id %}
-                        {% set active = "" %}
-                        {% if key == 0 %}
-                        {% set active = "visible first" %}
-                        {% endif %}
-                        {% set img = r.room.image %}
-                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                        {% if trans is null or trans.file is null %}
-                            {% set trans = img.findTranslationByLocale('fr') %}
-                        {% endif %}
-                        {% set file = trans.file %}
-                        {% thumbnail file, '197x142' with {'alt': img|trans_fallback('alt'), 'class': active ,'data-image': roomActive } %}
-                    {% endfor %}
+                    {% set img = rooms.zoneImage %}
+                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                    {% thumbnail file, '197x142' with {'alt': img|trans_fallback('alt'), 'class': 'visible first' } %}
+
                 </li>
             </ul>
         </div>
@@ -54,5 +48,6 @@
             {% endfor %}
         </div>
     </div>
+    {{ render(controller('FDCPressBundle:Global:contact')) }}
 </div>
 {% endblock body %}

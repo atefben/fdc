@@ -27,6 +27,15 @@ sonata_media:
                   small: { width: 187 , height: 255 , quality: 100 }
                   big:   { width: 1000 , quality: 100 }
 
+        film_image:
+            providers:
+               - sonata.media.provider.image
+            formats:
+                 tiny:  { width: 46 , height: 64 , quality: 100 }
+                 square: { width: 146, height: 146, quality: 100 }
+                 small: { width: 187 , height: 255 , quality: 100 }
+                 big:   { width: 1000 , quality: 100 }
+
         film_film:
             providers:
                 - sonata.media.provider.image
@@ -81,17 +90,17 @@ sonata_media:
                 918x580: { width: 918 , height: 580 , quality: 100 }
                 # Articles le même jour
                 590x370: { width: 590 , height: 370 , quality: 100 }
+                # Articles Press Homepage
+                265x165: { width: 265 , height: 165 , quality: 100 }
                 # Détail
                 97x61: { width: 97 , height: 61 , quality: 100 }
                 # WebTv trailer navigation
                 293x185: { width: 293 , height: 185 , quality: 100 }
                 # WebTv trailer film poster
                 135x185: { width: 135 , height: 185 , quality: 100 }
-
+                # Grid Press Download #
+                146x146: { width: 146 , height: 146 , quality: 100 }
                 ##### OLDS #####
-                197x142: { width: 197 , height: 142 , quality: 100 }
-                197x142: { width: 197 , height: 142 , quality: 100 }
-                646x567: { width: 646 , height: 567 , quality: 100 }
                 1980x300: { width: 1980 , height: 300 , quality: 100 }
 
         media_image_simple:
@@ -101,7 +110,15 @@ sonata_media:
             formats:
                 212x134: { width: 212 , height: 134 , quality: 100 }
                 293x185: { width: 293 , height: 185 , quality: 100 }
+                # PressDownload
+                240x326: { width: 240 , height: 326 , quality: 100 }
+                543x326: { width: 543 , height: 326 , quality: 100 }
+                # PressDownload Video image
                 976x535: { width: 976 , height: 535 , quality: 100 }
+                # PressCinemaMap
+                646x567: { width: 646 , height: 567 , quality: 100 }
+                # PressCinemaZone
+                197x142: { width: 197 , height: 142 , quality: 100 }
                 586x370: { width: 586 , height: 370 , quality: 100 }
                 1280x808: { width: 1280 , height: 808 , quality: 100 }
                 2560×600: { width: 2560, height: 600 , quality: 100 }

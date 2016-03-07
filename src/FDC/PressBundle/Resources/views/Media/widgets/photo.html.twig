@@ -3,7 +3,7 @@
     <h3 class="title-press">{{ s.section|trans_fallback('title') }}
         <span class="number">({{ widget.gallery.medias|length }})</span></h3>
     <div class="right-btn buttons">
-        <a href="{{ path('fdc_press_media_galleryarchive', {'id': widget.gallery.id }) }}" class="alldl button">
+        <a href="{% if widget.lockedContent == 0 or is_granted("ROLE_FDC_PRESS_REPORTER") %}{{ path('fdc_press_media_galleryarchive', {'id': widget.gallery.id }) }}{% endif %}" class="alldl button" download target="_blank" >
             <i class="icon icon_telecharger"></i>
             {{ 'press.home.btn.touttelecharger'|trans }}
         </a>
@@ -28,15 +28,10 @@
 
         <div class="item">
 
-            <a href="{% path file, '1760x1108' %}" class="chocolat-image ajax"
+            <a href="{% path file, 'reference' %}" class="chocolat-image ajax"
                title='<h2>{{image.media|trans_fallback('alt')}}</h2>'
                data-credit="{{ image.media|trans_fallback('copyright')}}">
-                {% thumbnail file, '194x128' with {
-                'class': 'chocolat-image ajax',
-                'title': image.media|trans_fallback('alt'),
-                'data-credit': image.media|trans_fallback('copyright')
-                } %}
-
+                <img src="{% path file, '146x146' %}" data-credit="{{ image.media|trans_fallback('copyright') }}" alt="{{ image.media|trans_fallback('alt') }}" class="chocolat-image ajax" data-title="<h2>{{ image.media|trans_fallback('alt') }}</h2>" title="<h2>{{ image.media|trans_fallback('alt') }}</h2>">
             </a>
         </div>
     {% endfor %}
@@ -49,7 +44,7 @@
             {% set file = trans.file %}
             <div data-id="photo{{ key+1 }}" class="thumb {% if key == 0 %}active{% endif %}"
                  data-caption="<strong>{{ image.media|trans_fallback('alt')}}</strong>{{ image.media|trans_fallback('copyright')}}">
-                {% thumbnail file, '194x128' with {'alt': image.media|trans_fallback('alt')} %}
+                <img src="{% path file, '146x146' %}" />
             </div>
         {% endfor %}
     </div>

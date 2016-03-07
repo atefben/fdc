@@ -34,6 +34,8 @@ class SecurityController extends BaseController
             $error = '';
         }
 
+        $session->getFlashBag()->add('loginSuccess', 'my success message');
+
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get(SecurityContext::LAST_USERNAME);
 

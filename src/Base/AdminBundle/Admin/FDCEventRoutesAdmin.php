@@ -63,6 +63,7 @@ class FDCEventRoutesAdmin extends Admin
                     }
 
                     $queryBuilder->andWhere("{$alias}.parent = :value");
+                    $queryBuilder->orWhere("{$alias}.id = :value");
                     $queryBuilder->setParameter('value', $value['value']);
 
                     return true;

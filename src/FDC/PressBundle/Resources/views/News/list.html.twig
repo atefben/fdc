@@ -19,8 +19,6 @@
         </div>
     </div>
 
-    {{ render(controller('FDCPressBundle:Security:login')) }}
-
     <div class="container-pressactu">
 
         {% include 'FDCPressBundle:News:components/filters.html.twig' %}
@@ -29,7 +27,7 @@
             <div class="grid-sizer"></div>
 
             {% for article in pressNews %}
-                {% include 'FDCPressBundle:News:widgets/list.article.html.twig' %}
+                {% include 'FDCPressBundle:News:list/article.html.twig' %}
             {% endfor %}
 
 

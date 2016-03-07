@@ -28,15 +28,21 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=true)
      */
     private $file;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="second_file_id", referencedColumnName="id", nullable=true)
      */
     private $secondFile;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\JoinColumn(name="third_file_id", referencedColumnName="id", nullable=true)
+     */
+    private $thirdFile;
 
 
     /**
@@ -84,6 +90,7 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
      */
     public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
     {
+
         $this->file = $file;
 
         return $this;
@@ -96,6 +103,7 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
      */
     public function getFile()
     {
+
         return $this->file;
     }
 
@@ -120,5 +128,28 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
     public function getSecondFile()
     {
         return $this->secondFile;
+    }
+
+    /**
+     * Set thirdFile
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $thirdFile
+     * @return PressDownloadSectionWidgetDocument
+     */
+    public function setThirdFile(\Application\Sonata\MediaBundle\Entity\Media $thirdFile)
+    {
+        $this->thirdFile = $thirdFile;
+
+        return $this;
+    }
+
+    /**
+     * Get thirdFile
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getThirdFile()
+    {
+        return $this->thirdFile;
     }
 }

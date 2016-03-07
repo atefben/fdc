@@ -1,55 +1,62 @@
 {% trans_default_domain 'FDCPressBundle' %}
 
-<div class="nav-container active mediatheque" data-cat="{{ section.slug }}">
+<div class="nav-container mediatheque" data-cat="{{ section.id }}">
     <div class="wrapper">
         <div class="container-small">
             <div class="table">
                 {% for film in films %}
-                    {% if film.selectionSection|trans_fallback('slug') == section.slug %}
+                    {% set countVideo = 0 %}
+                    {% set countFolder = 0 %}
+                    {% set countImage = 0 %}
+                    {% for video in film.associatedMediaVideos %}
+                        {% if video.mediaVideo.displayedTrailer == 1 %}
+                            {% set countVideo = countVideo + 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% for media in film.medias %}
+                        {% if media.type == 18 %}
+                            {% set countFolder = countFolder + 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% for media in film.medias %}
+                        {% if media.type == 14 %}
+                            {% set countImage = countImage + 1 %}
+                        {% endif %}
+                    {% endfor %}
                     <div class="line">
                         <div class="container">
                             <div class="info">
-                                {% thumbnail film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first, 'tiny' %}
+                                <img src="{% path film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'tiny' %}" alt="">
                                 <div class="txt">
                                     <div class="vCenter">
                                         <div class="vCenterKid">
                                             <p>
                                                 {{ film|trans_fallback('title') }}
-                                                {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                    <a class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
+                                            </p>
+                                            <p>
+                                                {% for k,director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                    <a style="display: inline-block" class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{{ loop.last ? ' ' : ',' }}
                                                 {% endfor %}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {% set countVideo = 0 %}
-                            {% set countFolder = 0 %}
-                            {% set countImage = 0 %}
-                            {% for video in film.associatedMediaVideos %}
-                                {% if video.mediaVideo.displayedTrailer == 1 %}
-                                {% set countVideo = countVideo + 1 %}
-                                {% endif %}
-                            {% endfor %}
-                            {% for media in film.medias %}
-                                {% if media.type == 18 %}
-                                    {% set countFolder = countFolder + 1 %}
-                                {% endif %}
-                            {% endfor %}
-                            {% for media in film.medias %}
-                                {% if media.type == 14 %}
-                                    {% set countImage = countImage + 1 %}
-                                {% endif %}
-                            {% endfor %}
+                            {% if countFolder > 0 %}
                             <div class="media folder">
                                 <i class="icon icon_dossier"></i>{{ 'mediatheque.label.dossiersdepresse'|trans }} ({{ countFolder }})
                             </div>
+                            {% endif %}
+                            {% if countVideo > 0 %}
                             <div class="media trailer">
                                 <i class="icon icon_bande-annonce"></i>{{ 'mediatheque.label.bandesannonces'|trans }} ({{ countVideo }})
                             </div>
+                            {% endif %}
+                            {% if countImage > 0 %}
                             <div class="media photo">
                                 <i class="icon icon_photo"></i>{{ 'mediatheque.label.photos'|trans }} ({{ countImage }})
                             </div>
+                            {% endif %}
                             <span class="plus"><i class="icon icon_case-plus"></i></span>
                             <div class="contain">
                                 {% if countFolder > 0 %}
@@ -74,7 +81,7 @@
 
                                 </div>
                                 {% endif %}
-                                {% if countVideo %}
+                                {% if countVideo > 0 %}
                                 <div class="contain-buttons">
                                     <strong>{{ 'mediatheque.label.bandesannoncesetextraits'|trans }}<span>({{ countVideo }})</span></strong>
 
@@ -85,14 +92,17 @@
                                             {% if trans is null or trans.file is null %}
                                                 {% set trans = m.mediaVideo.findTranslationByLocale('fr') %}
                                             {% endif %}
-                                                <a href="#" class="button trailer-btn" data-film="{{ m.association.id }}"><i class="icon icon_telecharger"></i> {{ trans.title }}</a>
+                                                <a href="#" class="button {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'active-btn' : '' }}" data-film="{{ m.association.id }}">
+                                                    {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
+                                                    {{ trans.title }}
+                                                </a>
                                         {% endif %}
                                         {% endfor %}
                                     </div>
 
                                 </div>
                                 {% endif %}
-                                {% if countImage %}
+                                {% if countImage > 0 %}
                                 <div class="photos block slideshow">
                                     <div class="container">
                                         <div class="container-title">
@@ -100,9 +110,9 @@
                                                 {{ 'mediatheque.title.photoshd'|trans }}
                                                 <span class="number">({{ countImage }})</span>
                                             </h3>
-                                            <div class="download-btns right-btn buttons ">
-                                                <a href="{{ path('fdc_press_media_filmarchive', {'id': film.id }) }}" class="alldl button">
-                                                    <i class="icon icon_telecharger"></i>
+                                            <div class="download-btns right-btn buttons {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'active-btn' : '' }} ">
+                                                <a href="{{ path('fdc_press_media_filmarchive', {'id': film.id }) }}" class="button" download target="_blank">
+                                                    {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
                                                     {{ 'mediatheque.btn.touttelecharger'|trans }}
                                                 </a>
                                             </div>
@@ -128,7 +138,7 @@
                                                     <div class="item">
                                                         <a id='photo{{ key }}' href="{% path m.media.file, 'reference' %}" class="chocolat-image ajax"
                                                            title='<h2>{{ imageTitle }}</h2>' data-credit="{{ m.media.credits }}">
-                                                            {% thumbnail m.media.file, 'tiny' %}
+                                                            <img src="{% path m.media.file, 'square' %}" />
                                                         </a>
                                                     </div>
                                                 {% endif %}
@@ -158,7 +168,6 @@
                             </div>
                         </div>
                     </div>
-                    {% endif %}
                 {% endfor %}
             </div>
         </div>

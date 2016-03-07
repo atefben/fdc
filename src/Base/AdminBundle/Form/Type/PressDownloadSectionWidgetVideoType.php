@@ -115,6 +115,11 @@ class PressDownloadSectionWidgetVideoType extends PressDownloadSectionWidgetType
                 'model_manager' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getModelManager(),
                 'class' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getFormFieldDescriptions()['image']->getAssociationAdmin()->getClass(),
             ))
+            ->add('video', 'sonata_type_model_list', array(
+                'sonata_field_description' =>  $this->PressDownloadSectionWidgetVideoDummyAdmin->getFormFieldDescriptions()['video'],
+                'model_manager' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getModelManager(),
+                'class' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getFormFieldDescriptions()['video']->getAssociationAdmin()->getClass(),
+            ))
             ->add('file', 'sonata_type_model_list', array(
                 'sonata_field_description' =>  $this->PressDownloadSectionWidgetVideoDummyAdmin->getFormFieldDescriptions()['file'],
                 'model_manager' => $this->PressDownloadSectionWidgetVideoDummyAdmin->getModelManager(),

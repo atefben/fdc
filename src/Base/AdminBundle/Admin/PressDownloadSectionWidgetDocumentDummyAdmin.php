@@ -27,17 +27,25 @@ class PressDownloadSectionWidgetDocumentDummyAdmin extends Admin
             ->add('file', 'sonata_type_model_list',array(),
                 array(
                     'link_parameters' => array(
-                        'context'  => 'pdf',
-                        'filter'   => array('context' => array('value' => 'pdf')),
-                        'provider' => 'sonata.media.provider.file'
+                        'context'  => 'media_archive',
+                        'filter'   => array('context' => array('value' => 'media_archive')),
+                        'provider' => 'sonata.media.provider.archive'
                     )
             ))
             ->add('secondFile', 'sonata_type_model_list',array(),
                 array(
                     'link_parameters' => array(
-                        'context'  => 'pdf',
-                        'filter'   => array('context' => array('value' => 'pdf')),
-                        'provider' => 'sonata.media.provider.file'
+                        'context'  => 'media_archive',
+                        'filter'   => array('context' => array('value' => 'media_archive')),
+                        'provider' => 'sonata.media.provider.archive'
+                    )
+            ))
+            ->add('thirdFile', 'sonata_type_model_list',array(),
+                array(
+                    'link_parameters' => array(
+                        'context'  => 'media_archive',
+                        'filter'   => array('context' => array('value' => 'media_archive')),
+                        'provider' => 'sonata.media.provider.archive'
                     )
             ))
         ;

@@ -39,7 +39,7 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: entity.theme, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
-             - [ setTranslationDomain, ['BaseAdminBundle']]
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.fdc_event_routes:
         class: Base\AdminBundle\Admin\FDCEventRoutesAdmin
@@ -47,7 +47,15 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: entity.fdc_event_routes, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
-                     - [ setTranslationDomain, ['BaseAdminBundle']]
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_waiting:
+        class: Base\AdminBundle\Admin\FDCPageWaitingAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageWaiting, BaseAdminBundle:FDCPageWaitingAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageWaiting}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     # GROUP EVENT
     base.admin.event:
@@ -804,6 +812,14 @@ services:
         arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetDocument, BaseAdminBundle:PressDownloadSectionWidgetDocumentDummyAdmin]
         tags:
            - {name: sonata.admin, manager_type: orm, group: admin, label: Download Document widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+           
+    base.admin.press_download_section_widget_archive_dummy:
+        class: Base\AdminBundle\Admin\PressDownloadSectionWidgetArchiveDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetArchive, BaseAdminBundle:PressDownloadSectionWidgetArchiveDummyAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Archive widget, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
             

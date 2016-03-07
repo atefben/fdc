@@ -5,6 +5,7 @@ namespace Base\AdminBundle\Form\Type;
 use Sonata\AdminBundle\Form\DataTransformer\ModelToIdTransformer;
 
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * PressDownloadSectionWidgetFileType class.
@@ -104,7 +105,6 @@ class PressDownloadSectionWidgetFileType extends PressDownloadSectionWidgetType
                         'format' => 'yyyy-MM-dd H:m',
                         'translation_domain' => 'BaseAdminBundle',
                         'label' => 'form.label_updated_date',
-                        'required' => false,
                     )
 
                 )

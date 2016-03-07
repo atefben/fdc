@@ -27,6 +27,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
  *  "video" = "PressDownloadSectionWidgetVideo",
  *  "photo" = "PressDownloadSectionWidgetPhoto",
  *  "file" = "PressDownloadSectionWidgetFile",
+ *  "archive" = "PressDownloadSectionWidgetArchive",
  * })
  */
 abstract class PressDownloadSectionWidget implements TranslateMainInterface

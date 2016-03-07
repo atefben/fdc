@@ -4,7 +4,7 @@
     <div>
         {% set translationLocale = object.findTranslationByLocale('fr') %}
         {% if translationLocale is not null %}
-            {{ translationLocale.procedureTitle }}
+            {{ translationLocale.title }}
         {% endif %}
     </div>
 {% endblock %}

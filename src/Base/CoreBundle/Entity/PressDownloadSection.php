@@ -20,6 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PressDownloadSection implements TranslateMainInterface
 {
+    use Time;
     use Translatable;
     use TranslateMain;
 
@@ -55,13 +56,14 @@ class PressDownloadSection implements TranslateMainInterface
         $this->widgets = new ArrayCollection();
     }
 
-    public function __toString() {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
-
-        if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+    public function __toString()
+    {
+        if (is_object($this->findTranslationByLocale('fr'))) {
+            $string = $this->findTranslationByLocale('fr')->getTitle();
         }
-
+        else {
+            $string = substr(strrchr(get_class($this), '\\'), 1);
+        }
         return $string;
     }
 

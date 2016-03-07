@@ -167,7 +167,7 @@ entity:
     press_accredit_procedure: Procédures d’accréditation
     press_media_library: Médiathèque
     press_download: A télécharger
-    press_download_section: Section à télécharger
+    press_download_section: Sections à télécharger
     press_projection: Programmation
     press_guide: Guide pratique
     press_cinema_map: Plans des salles
@@ -273,6 +273,10 @@ list:
     info_common:
         label_title: Titre de l'info
         label_id: Identifiant
+    accredit_procedure:
+        label_title: Titre de la procédure
+    cinema_room:
+        label_title: Nom de la salle
 
 filter:
     label_have_trailer: Afficher film avec bande annonce
@@ -359,6 +363,8 @@ filter:
         label_updated_after: Modifié après le
     press_download:
         label_section : Nom de la section
+    cinema_room:
+        label_title: Nom de la salle
 
 dashboard:
     group:
@@ -389,13 +395,14 @@ dashboard:
         press_guide: Guide pratique
         press_contact: Contactez-nous
         press_download: A télécharger
-        press_download_section: Section à télécharger
+        press_download_section: Sections à télécharger
         press_medialibrary: Médiathèque
         press_accredit: S'accréditer
         press_accredit_procedure: Procédure d'accréditation
         press_cinemamap: Plan des salles
         press_projection: Programmation
         press_statement_info: Communiqués / infos
+        waiting_page: Page d'attente
 
 form:
     seo:
@@ -537,6 +544,7 @@ form:
     label_second_image: Seconde image
     label_btn: Libellé du bouton
     label_second_btn: Libellé du second bouton
+    label_third_btn: Libellé du troisième bouton
     label_label: Légende
     label_web_tv_name: Nom de la chaîne
     label_web_tv: Chaîne
@@ -588,7 +596,7 @@ form:
     label_information_icon: Pictogramme du titre
     label_media_title: Nom du média
     label_procedure: Procédure
-    label_download_section: Section à télécharger
+    label_download_section: Sections à télécharger
     label_map_img: Image de la salle
     label_map_zone_img: Image de la zone
     gallery:

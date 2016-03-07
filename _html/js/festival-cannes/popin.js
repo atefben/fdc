@@ -1,118 +1,122 @@
+function initPopinMail(){
+  $('.button.email').on('click touchstart', function(e) {
+    e.preventDefault();
+      $('.popin-mail').addClass('visible-popin');
+      $("#main").addClass('overlay-popin');
+  });
+
+  $(document).on('click', function (e) {
+    var $element= $(e.target);
+    if($element.hasClass('visible-popin')) {
+
+    } else {
+      var $isPopin = $element.closest('.visible-popin');
+      var isButton = $element.hasClass('button');
+
+      if($isPopin.length || isButton) {
+
+      } else {
+          $('.popin-mail').removeClass('visible-popin');
+          $("#main").removeClass('overlay-popin');
+          $('footer').removeClass('overlay');
+      }
+    }
+  });
+
+  // check that fields are not empty
+  $('.popin-mail input[type="text"], textarea').on('input', function() {
+    var input = $(this);
+    var is_name = input.val();
+
+    if(is_name) {
+      input.removeClass("invalid").addClass("valid");
+      $('.errors .' + input.attr('name')).remove();
+    } else {
+      input.removeClass("valid").addClass("invalid");
+      $('.errors .' + input.attr('name')).remove();
+      $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + '</li>');
+    }
+
+    if($('.invalid').length) {
+      $('.errors').addClass('show');
+    } else {
+      $('.errors').removeClass('show');
+    }
+  });
+
+  $('body').on('click', '.selectOptions span', function() {
+    var i = parseInt($(this).index()) + 1;
+    $('select option').eq(i).prop('selected', 'selected');
+    $('.select').removeClass('invalid');
+  });
+
+  // check valid email address
+  $('.popin-mail input[type="email"]').on('input', function() {
+    var input=$(this);
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    var is_email=re.test(input.val());
+    var is_email_name=input.val();
+
+    if(!is_email_name) {
+      input.removeClass("valid").addClass("invalid");
+      $('.errors .' + input.attr('name')).remove();
+      $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + GLOBALS.texts.popin.empty + '</li>');
+
+    } else if(is_email) {
+      input.removeClass("invalid").addClass("valid");
+      $('.errors .' + input.attr('name')).remove();
+
+    } else{
+      input.removeClass("valid").addClass("invalid");
+      $('.errors .' + input.attr('name')).remove();
+      $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + GLOBALS.texts.popin.error +'</li>');
+      // TODO remove string //
+    }
+
+    if($('.invalid').length) {
+      $('.errors').addClass('show');
+    } else {
+      $('.errors').removeClass('show');
+    }
+  });
+
+  // on submit : check if there are errors in the form
+  $('.popin-mail form').on('submit', function() {
+    var empty = false;
+
+    if($('select').val() == 'default') {
+      $('.select').addClass('invalid');
+    } else {
+      $('.select').removeClass('invalid');
+    }
+
+    $('.popin-mail input[type="text"], .popin-mail input[type="email"], .popin-mail textarea').each(function() {
+      if($(this).val() == '') {
+        empty = true;
+      }
+    });
+
+    if(empty) {
+      $('.popin-mail input[type="email"], .popin-mail input[type="text"], textarea').trigger('input');
+    }
+
+    if($('.invalid').length || empty) {
+      return false;
+    } else {
+      // TODO envoie du mail //
+      $('#form').remove();
+      $('.info-popin').remove();
+      $('.contain-popin').append('<div class="valid">'+GLOBALS.texts.popin.valid+'</div>');
+      $('.popin-mail').css('height','31%');
+
+      return false;
+    }
+  });
+}
+
 $(document).ready(function() {
   if($('.popin-mail').length) {
-    $('.button.email').on('click touchstart', function(e) {
-      e.preventDefault();
-        $('.popin-mail').addClass('visible-popin');
-        $("#main").addClass('overlay-popin');
-    });
-
-    $(document).on('click', function (e) {
-      var $element= $(e.target);
-      if($element.hasClass('visible-popin')) {
-
-      } else {
-        var $isPopin = $element.closest('.visible-popin');
-        var isButton = $element.hasClass('button');
-
-        if($isPopin.length || isButton) {
-
-        } else {
-            $('.popin-mail').removeClass('visible-popin');
-            $("#main").removeClass('overlay-popin');
-            $('footer').removeClass('overlay');
-        }
-      }
-    });
-
-    // check that fields are not empty
-    $('.popin-mail input[type="text"], textarea').on('input', function() {
-      var input = $(this);
-      var is_name = input.val();
-
-      if(is_name) {
-        input.removeClass("invalid").addClass("valid");
-        $('.errors .' + input.attr('name')).remove();
-      } else {
-        input.removeClass("valid").addClass("invalid");
-        $('.errors .' + input.attr('name')).remove();
-        $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + '</li>');
-      }
-
-      if($('.invalid').length) {
-        $('.errors').addClass('show');
-      } else {
-        $('.errors').removeClass('show');
-      }
-    });
-
-    $('body').on('click', '.selectOptions span', function() {
-      var i = parseInt($(this).index()) + 1;
-      $('select option').eq(i).prop('selected', 'selected');
-      $('.select').removeClass('invalid');
-    });
-
-    // check valid email address
-    $('.popin-mail input[type="email"]').on('input', function() {
-      var input=$(this);
-      var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-      var is_email=re.test(input.val());
-      var is_email_name=input.val();
-      
-      if(!is_email_name) {
-        input.removeClass("valid").addClass("invalid");
-        $('.errors .' + input.attr('name')).remove();
-        $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + GLOBALS.texts.popin.empty + '</li>');
-
-      } else if(is_email) {
-        input.removeClass("invalid").addClass("valid");
-        $('.errors .' + input.attr('name')).remove();
-
-      } else{
-        input.removeClass("valid").addClass("invalid");
-        $('.errors .' + input.attr('name')).remove();
-        $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + GLOBALS.texts.popin.error +'</li>');
-        // TODO remove string //
-      }
-
-      if($('.invalid').length) {
-        $('.errors').addClass('show');
-      } else {
-        $('.errors').removeClass('show');
-      }
-    });
-
-    // on submit : check if there are errors in the form
-    $('.popin-mail form').on('submit', function() {
-      var empty = false;
-
-      if($('select').val() == 'default') {
-        $('.select').addClass('invalid');
-      } else {
-        $('.select').removeClass('invalid');
-      }
-
-      $('.popin-mail input[type="text"], .popin-mail input[type="email"], .popin-mail textarea').each(function() {
-        if($(this).val() == '') {
-          empty = true;
-        }
-      });
-
-      if(empty) {
-        $('.popin-mail input[type="email"], .popin-mail input[type="text"], textarea').trigger('input');
-      }
-
-      if($('.invalid').length || empty) {
-        return false;
-      } else {
-        // TODO envoie du mail //
-        $('#form').remove();
-        $('.info-popin').remove();
-        $('.contain-popin').append('<div class="valid">'+GLOBALS.texts.popin.valid+'</div>');
-        $('.popin-mail').css('height','31%');
-        
-        return false;
-      }
-    });
+      initPopinMail();
   }
 
   linkPopinInit();
@@ -148,14 +152,15 @@ function linkPopinInit(link, cls) {
     $(cls).attr('data-clipboard-text',link);
 
     $(cls).on('click touchstart',function(e){
+      console.log("TEST");
       var that = $(this);
       e.preventDefault();
 
       if($('.single-channel').length) {
         $('.button.email').css('border-right','1px solid #2C2C2C');
       }
-      
-      if($('.all-audios').length) {
+
+      if($('.all-audios, .all-videos').length) {
         $('.button.email').css('border-right','1px solid #dfdfdf');
       }
 

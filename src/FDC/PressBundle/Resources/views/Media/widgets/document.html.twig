@@ -3,23 +3,31 @@
 {% if trans is null or trans.file is null %}
     {% set trans = widget.image.findTranslationByLocale('fr') %}
 {% endif %}
-{% set file = trans.file %}
+{% set image = trans.file %}
+
 {% set sizeClass = 'portrait' %}
-{% if file.width > 250 %}
+{% set format = '240x326' %}
+{% if image.width > 250 %}
 {% set sizeClass = 'landscape' %}
+{% set format = '543x326' %}
 {% endif %}
 
 <div class="{{ sizeClass }}">
-    {% thumbnail file, 'reference' with {'alt': widget.image|trans_fallback('alt')} %}
+    <img src="{% path image, 'reference' %}" alt="{{ widget.image|trans_fallback('alt') }}" />
     <span class="caption">{{ widget|trans_fallback('copyright') }}</span>
     <p>{{ widget|trans_fallback('label')|raw }}</p>
     {{ widget|trans_fallback('content')|raw }}
     <div class="buttons">
-        <a href="{% path widget.file, 'reference' %}" class="button" target="_blank" download>
+        <a href="{% if widget.lockedContent == 0 or is_granted("ROLE_FDC_PRESS_REPORTER") %}{% path widget.file, 'reference' %}{% endif %}" class="button" target="_blank" download>
             <i class="icon icon_telecharger"></i>{{ widget|trans_fallback('btnLabel') }}
         </a>
         {% if widget.secondFile is not null %}
-            <a href="{% path widget.secondFile, 'reference' %}" class="button"  target="_blank" download>
+            <a href="{% if widget.lockedContent == 0 or is_granted("ROLE_FDC_PRESS_REPORTER") %}{% path widget.secondFile, 'reference' %}{% endif %}" class="button"  target="_blank" download>
+                <i class="icon icon_telecharger"></i>{{ widget|trans_fallback('secondBtnLabel') }}
+            </a>
+        {% endif %}
+        {% if widget.thirdFile is not null %}
+            <a href="{% if widget.lockedContent == 0 or is_granted("ROLE_FDC_PRESS_REPORTER") %}{% path widget.thirdFile, 'reference' %}{% endif %}" class="button"  target="_blank" download>
                 <i class="icon icon_telecharger"></i>{{ widget|trans_fallback('secondBtnLabel') }}
             </a>
         {% endif %}

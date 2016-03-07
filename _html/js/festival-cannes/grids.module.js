@@ -294,7 +294,7 @@ $(document).ready(function () {
           videoPopin;
 
       videoPopin = playerInit('video-player-popin', false, 'grid');
-
+      linkPopinInit(0, '.popin-video .popin-buttons.buttons .link');
 
       $grid = $('#gridVideos').imagesLoaded(function() {
         setGrid($grid, ('#gridVideos'), true);

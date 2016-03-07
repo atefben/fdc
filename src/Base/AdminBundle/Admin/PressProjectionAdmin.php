@@ -122,11 +122,23 @@ class PressProjectionAdmin extends Admin
             ))
             ->add('scheduling', 'sonata_type_model_list', array(
                 'label' => 'form.label_scheduling',
-                'translation_domain' => 'BaseAdminBundle'
+                'translation_domain' => 'BaseAdminBundle'),
+                array(
+                    'link_parameters' => array(
+                        'context'  => 'pdf',
+                        'filter'   => array('context' => array('value' => 'pdf')),
+                        'provider' => 'sonata.media.provider.file'
+                )
             ))
             ->add('pressScheduling', 'sonata_type_model_list', array(
                 'label' => 'form.label_press_scheduling',
-                'translation_domain' => 'BaseAdminBundle'
+                'translation_domain' => 'BaseAdminBundle'),
+                array(
+                    'link_parameters' => array(
+                        'context'  => 'pdf',
+                        'filter'   => array('context' => array('value' => 'pdf')),
+                        'provider' => 'sonata.media.provider.file'
+                )
             ))
             ->add('translate', 'checkbox' , array(
                 'required' => false,

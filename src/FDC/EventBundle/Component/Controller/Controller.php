@@ -22,11 +22,15 @@ class Controller extends BaseController
 
     public function removeUnpublishedNewsAudioVideo($array, $locale, $count = null)
     {
-        $newsTypes = array('NewsAudio', 'NewsVideo');
+        $newsTypes = array('NewsAudio', 'NewsVideo', 'InfoAudio', 'StatementAudio', 'InfoVideo', 'StatementVideo');
 
         $mediaTypes = array(
-            'NewsAudio' => 'getAudio',
-            'NewsVideo' => 'getVideo'
+            'NewsAudio'      => 'getAudio',
+            'NewsVideo'      => 'getVideo',
+            'InfoAudio'      => 'getAudio',
+            'StatementAudio' => 'getAudio',
+            'InfoVideo'      => 'getVideo',
+            'StatementVideo' => 'getVideo'
         );
 
         foreach ($newsTypes as $newsType) {

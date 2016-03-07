@@ -56,11 +56,12 @@ class PressCinemaRoom implements TranslateMainInterface
 
     public function __toString()
     {
-        $string = $this->getCurrentTranslation()->getTitle();
-        if ($string == null) {
+        if (is_object($this->findTranslationByLocale('fr'))) {
+            $string = $this->findTranslationByLocale('fr')->getTitle();
+        }
+        else {
             $string = substr(strrchr(get_class($this), '\\'), 1);
         }
-
         return $string;
     }
 

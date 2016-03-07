@@ -5,12 +5,15 @@
     <div id="date" class="filter">
         <span class="label">{{ 'press.actu.filter.label.annees'|trans }} :</span>
         <span class="select">
-            {% for key, date in filters.dates %}
+            {% for key,date in filters.dates %}
                 {% if key == 0 %}
-                    <span class="active" data-filter="all">{{ 'search.result.filter.toutes'|trans }}</span>
+                    <span class="active" data-filter="d{{ date.content }}">
+                        {{ date.content }}
+                    </span>
+                    <i class="icon icon_fleche-down"></i>
                 {% else %}
-                    <span data-filter="{{ date.slug }}">
-                    {{ date.content }}
+                    <span data-filter="d{{ date.content }}">
+                        {{ date.content }}
                     </span>
                 {% endif %}
             {% endfor %}
@@ -19,14 +22,14 @@
 
     <div id="type" class="filter">
         <span class="label">{{ 'press.actu.filter.label.types'|trans }} :</span>
-            <span class="select">
-              <span class="active" data-filter="all">
-                  {{ 'press.actu.filter.type.tous'|trans }}
-              </span>
-                <i class="icon icon_fleche-down"></i>
-              <span data-filter="statement">{{ 'press.actu.filter.type.communiques'|trans }}</span>
-              <span data-filter="info">{{ 'press.actu.filter.type.infos'|trans }}</span>
+        <span class="select">
+            <span class="active" data-filter="all">
+              {{ 'press.actu.filter.type.tous'|trans }}
             </span>
+            <i class="icon icon_fleche-down"></i>
+            <span data-filter="communique">{{ 'press.actu.filter.type.communiques'|trans }}</span>
+            <span data-filter="info">{{ 'press.actu.filter.type.infos'|trans }}</span>
+        </span>
     </div>
 
     <div id="theme" class="filter">

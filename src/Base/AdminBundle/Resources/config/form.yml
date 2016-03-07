@@ -300,6 +300,14 @@ services:
         calls:
             - ['setPressDownloadSectionWidgetDocumentDummyAdmin', ['@base.admin.press_download_section_widget_document_dummy']]
 
+    base.admin.form.press_download_section_widget_archive_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\PressDownloadSectionWidgetArchiveType
+        tags:
+            - { name: form.type, alias: 'press_download_section_widget_archive_type'}
+        calls:
+            - ['setPressDownloadSectionWidgetArchiveDummyAdmin', ['@base.admin.press_download_section_widget_archive_dummy']]
+            
     base.admin.form.press_download_section_widget_video_type:
         scope: prototype
         class: Base\AdminBundle\Form\Type\PressDownloadSectionWidgetVideoType

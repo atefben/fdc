@@ -45,17 +45,17 @@ $(document).ready(function () {
     }
   }
 
-  $('.locked form').on('submit', function (e) {
-    e.preventDefault();
-    $this = $(this);
-    validateForm($this);
-  });
+  // $('.locked form').on('submit', function (e) {
+  //   e.preventDefault();
+  //   $this = $(this);
+  //   validateForm($this);
+  // });
 
-  $('#popin-press form').on('submit', function (e) {
-    e.preventDefault();
-    $this = $(this);
-    validateForm($this);
-  });
+  // $('#popin-press form').on('submit', function (e) {
+  //   e.preventDefault();
+  //   $this = $(this);
+  //   validateForm($this);
+  // });
 
   $('.service-presse').on('click', function (e) {
     e.preventDefault();

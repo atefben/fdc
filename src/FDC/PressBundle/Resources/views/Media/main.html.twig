@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    {{ render(controller('FDCPressBundle:Security:login')) }}
+    {% include 'FDCPressBundle:Global:components/login.html.twig' %}
 
     <div class="container-mediapress">
         <div class="nav-mediapress">
@@ -32,7 +32,7 @@
                 <table>
                     <tr>
                         {% for key,filter in filmSection %}
-                        <td data-cat="{{ filter.slug }}" class="{% if key == 0 %}active{% endif %}">{{ filter.name }}</td>
+                        <td data-cat="{{ filter.id }}" class="section-cat {{ loop.first ? 'active' : '' }}">{{ filter.name }}</td>
                         {% if  loop.index % 3 == 0 %}
                     </tr>
                     <tr>

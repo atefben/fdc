@@ -360,6 +360,7 @@
         {{ form_row(form.children.image) }}
         {{ form_row(form.children.file) }}
         {{ form_row(form.children.secondFile) }}
+        {{ form_row(form.children.thirdFile) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         {{ form_row(form.children.lockedContent) }}
 
@@ -372,7 +373,26 @@
         </div>
     </div>
 {% endblock %}
+{% block press_download_section_widget_archive_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>Module Signatures</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_row(form.children.image) }}
+        {{ form_row(form.children.file) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        {{ form_row(form.children.lockedContent) }}
 
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 {% block press_download_section_widget_file_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
@@ -415,10 +435,11 @@
 {% block press_download_section_widget_video_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>Module photo</h4>
+        <h4>Module vidéo</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
         {{ form_row(form.children.image) }}
+        {{ form_row(form.children.video) }}
         {{ form_row(form.children.file) }}
         {{ form_row(form.children.secondFile) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}

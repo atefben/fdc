@@ -300,7 +300,7 @@
             var position  = this.settings.currentImage + 1;
 
             this.elems.pagination
-                .html(position + ' ' + that.settings.separator2 + last);
+                .html(position + ' ' + that.settings.separator2 + last).append('<i class="icon icon_diaporama"></i>');
         },
 
         storeImgSize : function(img, i) {
@@ -409,7 +409,7 @@
 
             this.elems.bottom = $('<div/>', {
                 'class' : 'chocolat-bottom'
-            }).appendTo(this.elems.wrapper).append('<i class="icon icon_diaporama"></i>');
+            }).appendTo(this.elems.wrapper);
 
             this.elems.fullscreen = $('<span/>', {
                 'class' : 'chocolat-fullscreen'
@@ -421,7 +421,7 @@
 
             this.elems.pagination = $('<span/>', {
                 'class' : 'chocolat-pagination',
-            }).appendTo(this.elems.bottom);
+            }).appendTo(this.elems.bottom).append('<i class="icon icon_diaporama"></i>');
 
             this.elems.setTitle = $('<span/>', {
                 'class' : 'chocolat-set-title',

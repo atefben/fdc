@@ -39,7 +39,7 @@ class PressAccreditProcedure implements TranslateMainInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="procedure_link", type="string", length=255)
+     * @ORM\Column(name="procedure_link", type="string", length=122, nullable=true)
      */
     protected $procedureLink;
 
@@ -58,12 +58,12 @@ class PressAccreditProcedure implements TranslateMainInterface
     }
 
     public function __toString() {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
-
-        if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+        if (is_object($this->getTranslations()->first())) {
+            $string = $this->getTranslations()->first()->getTitle();
         }
-
+        else {
+            $string = substr(strrchr(get_class($this), '\\'), 1);
+        }
         return $string;
     }
 
