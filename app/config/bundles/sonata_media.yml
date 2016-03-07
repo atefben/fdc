@@ -99,9 +99,6 @@ sonata_media:
                 # Grid Press Download #
                 146x146: { width: 146 , height: 146 , quality: 100 }
                 ##### OLDS #####
-                197x142: { width: 197 , height: 142 , quality: 100 }
-                197x142: { width: 197 , height: 142 , quality: 100 }
-                646x567: { width: 646 , height: 567 , quality: 100 }
                 1980x300: { width: 1980 , height: 300 , quality: 100 }
 
         media_image_simple:
@@ -116,6 +113,10 @@ sonata_media:
                 543x326: { width: 543 , height: 326 , quality: 100 }
                 # PressDownload Video image
                 976x535: { width: 976 , height: 535 , quality: 100 }
+                # PressCinemaMap
+                646x567: { width: 646 , height: 567 , quality: 100 }
+                # PressCinemaZone
+                197x142: { width: 197 , height: 142 , quality: 100 }
                 586x370: { width: 586 , height: 370 , quality: 100 }
                 1280x808: { width: 1280 , height: 808 , quality: 100 }
                 2560×600: { width: 2560, height: 600 , quality: 100 }
