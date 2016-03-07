@@ -5,8 +5,6 @@
 
 CKEDITOR.editorConfig = function( config ) {
 
-    console.log(window.location.pathname);
-
     if (window.location.pathname.indexOf('press') != -1) {
         config.stylesSet = [
             // Golden mail link
