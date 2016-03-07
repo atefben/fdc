@@ -127,7 +127,7 @@ class NewsController extends Controller
     }
     
     /**
-     * @Route("/press-articles/{type}/{format}/{slug}", requirements={"format": "articles|audios|videos|photos", "type": "statement|info"}, options={"expose"=true}))
+     * @Route("/press-articles/{type}/{format}/{slug}", requirements={"format": "articles|audios|videos|photos", "type": "communique|info"}, options={"expose"=true}))
      * @Template("FDCPressBundle:News:main.html.twig")
      * @param $slug
      * @param $format
@@ -151,7 +151,7 @@ class NewsController extends Controller
         $format = substr($format, 0, -1);
 
         // GET STATEMENT / INFO
-        if ($type == "statement") {
+        if ($type == "communique") {
             $mapper = array_flip(Statement::getTypes());
             if (!isset($mapper[$format])) {
                 throw  new NotFoundHttpException();
