@@ -54,10 +54,13 @@ function filter() {
       $('.articles.nextDay article').show();
 
       $('.filter .select').each(function() {
+        var d = new Date();
+        var n = d.getFullYear();
+
         $that = $(this);
         $id   = $(this).closest('.filter').attr('id');
 
-        $that.find("span:not(.active):not([data-filter='all'])").each(function() {
+        $that.find("span:not(.active):not([data-filter='all'],[data-filter='d"+n+"'])").each(function() {
           $this = $(this);
 
           var getVal = $this.data('filter');
