@@ -113,9 +113,9 @@ $('body').on('click', '.chocolat-close', function(e){
 });
 
 // mouseover img : close thumbs
-$('body').on('mouseover', '.chocolat-img', function(e){
-  $('.chocolat-wrapper .thumbnails').removeClass('open');
+$('body').on('mouseover', '.chocolat-img', function() {
   $('.chocolat-pagination').removeClass('active');
+  $('.chocolat-wrapper .thumbnails').removeClass('open');
   $('.chocolat-content').removeClass('thumbsOpen');
 });
 
@@ -131,14 +131,10 @@ $('body').on('mouseout', '.chocolat-image', function() {
 });
 
 // show thumbs
-$('body').on('mouseover', '.chocolat-pagination', function() {
-  $(this).addClass('active');
+$('body').on('click', '.chocolat-pagination', function() {
+  $(this).toggleClass('active');
   $('.chocolat-wrapper .thumbnails').toggleClass('open');
-  $('.chocolat-content').addClass('thumbsOpen');
-});
-
-$('body').on('mouseour', '.chocolat-pagination', function() {
-  $(this).removeClass('active');
+  $('.chocolat-content').toggleClass('thumbsOpen');
 });
 
 $('body').on('click', '.chocolat-bottom .share', function() {
