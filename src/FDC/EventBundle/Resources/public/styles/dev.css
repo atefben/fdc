@@ -175,3 +175,19 @@
     padding-left: 15%;
     padding-right: 15%;
 }
+
+/* espace presse */
+.practicalguide #praticalguide .container-pguide .wrapper .contain-article .aside .container-infos p {
+    font-size: 0.81rem;
+    line-height: 24px;
+}
+
+.practicalguide #praticalguide .container-pguide .wrapper .contain-article .aside .container-infos a {
+    color: #c29f5f;
+    text-decoration: underline;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
