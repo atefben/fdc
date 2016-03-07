@@ -76,7 +76,6 @@ function initSlideshows() {
 
 // close slideshow on click
 $('body').on('click', '.chocolat-close', function(e){
-
   $('.chocolat-img').css('transition', 'all 0.9s ease').addClass('close');
 
   $('.chocolat-bottom').css('opacity', 0);
@@ -193,8 +192,7 @@ $('body').on('click', '.chocolat-image', function() {
     $('.chocolat-bottom').addClass('show');
   }
 
-
-  $test = $('.chocolat-wrapper .thumbnails').owlCarousel({
+  $('.chocolat-wrapper .thumbnails').owlCarousel({
     nav: false,
     dots: false,
     smartSpeed: 500,
@@ -202,19 +200,12 @@ $('body').on('click', '.chocolat-image', function() {
     autoWidth:true,
     URLhashListener:false
   });
-
-  $test.on('changed.owl.carousel',function(e){
-    cqsdfghjonsole.log(e);
-  });
 });
-
 
 
 // on click on thumb from the list : change pic and update hash
 $('body').on('click', '.chocolat-wrapper .thumb', function() {
   var j = $(this).parent().index();
-
-
 
   $('.chocolat-wrapper .thumb').removeClass('active');
   $(this).addClass('active');
