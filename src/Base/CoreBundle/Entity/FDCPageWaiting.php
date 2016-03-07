@@ -45,19 +45,18 @@ class FDCPageWaiting implements TranslateMainInterface
     private $enabled;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="page", type="integer")
-     */
-    private $page;
-
-    /**
      * @var ArrayCollection
      *
      * @Assert\Valid()
      */
     protected $translations;
-    
+
+    /**
+     * @ORM\OneToOne(targetEntity="FDCEventRoutes")
+     *
+     */
+    protected $page;
+
     /**
      * Get id
      *
@@ -91,13 +90,14 @@ class FDCPageWaiting implements TranslateMainInterface
         return $this->enabled;
     }
 
+
     /**
      * Set page
      *
-     * @param integer $page
+     * @param \Base\CoreBundle\Entity\FDCEventRoutes $page
      * @return FDCPageWaiting
      */
-    public function setPage($page)
+    public function setPage(\Base\CoreBundle\Entity\FDCEventRoutes $page = null)
     {
         $this->page = $page;
 
@@ -107,7 +107,7 @@ class FDCPageWaiting implements TranslateMainInterface
     /**
      * Get page
      *
-     * @return integer 
+     * @return \Base\CoreBundle\Entity\FDCEventRoutes 
      */
     public function getPage()
     {

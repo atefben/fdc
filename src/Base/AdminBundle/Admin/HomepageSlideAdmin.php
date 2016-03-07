@@ -46,9 +46,10 @@ class HomepageSlideAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('news', 'sonata_type_model_list', array('btn_add' => false))
-            ->add('infos', 'sonata_type_model_list', array('btn_add' => false))
-            ->add('statement', 'sonata_type_model_list', array('btn_add' => false))
+            ->add('news', 'sonata_type_model_list', array('btn_add' => false,'btn_delete' => false))
+            ->add('infos', 'sonata_type_model_list', array('btn_add' => false,'btn_delete' => false))
+            ->add('statement', 'sonata_type_model_list', array('btn_add' => false,'btn_delete' => false))
+            ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
     }
 

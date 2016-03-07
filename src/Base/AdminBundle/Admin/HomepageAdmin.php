@@ -203,7 +203,8 @@ class HomepageAdmin extends Admin
                 'required' => false,
             ), array(
                     'edit' => 'inline',
-                    'inline' => 'table'
+                    'inline' => 'table',
+                    'sortable'  => 'position'
                 )
             )
             ->add('filmsAssociated', 'sonata_type_collection', array(
@@ -213,7 +214,8 @@ class HomepageAdmin extends Admin
                 'required' => false,
             ), array(
                     'edit' => 'inline',
-                    'inline' => 'table'
+                    'inline' => 'table',
+                    'sortable'  => 'position'
                 )
             )
             ->add('topWebTvsAssociated', 'sonata_type_collection', array(
@@ -224,7 +226,8 @@ class HomepageAdmin extends Admin
 
             ), array(
                     'edit' => 'inline',
-                    'inline' => 'table'
+                    'inline' => 'table',
+                    'sortable'  => 'position'
                 )
             )
             ->add('homepageSlide', 'sonata_type_collection', array(
@@ -234,7 +237,8 @@ class HomepageAdmin extends Admin
                 'required' => false,
             ), array(
                     'edit' => 'inline',
-                    'inline' => 'table'
+                    'inline' => 'table',
+                    'sortable'  => 'position'
                 )
             )
             ->add('seoFile', 'sonata_media_type', array(

@@ -76,21 +76,21 @@ class PressGuideWidgetColumnType extends PressGuideWidgetType
                         'label' => 'Bloc 1',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'widget'
+                        'config_name' => 'press'
                     ),
                     'secondColumn' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'Bloc 2',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'widget'
+                        'config_name' => 'press'
                     ),
                     'thirdColumn' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'Bloc 3',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'widget'
+                        'config_name' => 'press'
                     ),
                 )
             ))

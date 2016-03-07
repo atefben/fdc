@@ -106,6 +106,7 @@ class FDCEventRoutesAdmin extends Admin
             ->add('enabled')
             ->add('parent')
             ->add('position')
+            ->add('hasWaitingPage')
         ;
     }
 

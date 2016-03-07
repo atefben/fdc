@@ -60,7 +60,7 @@ class NewsController extends Controller {
 
         $slides = $em->getRepository('BaseCoreBundle:HomepageSlide')->findBy(
             array(),
-            array('id' => 'DESC'),
+            array('position' => 'ASC'),
             6,
             0
         );

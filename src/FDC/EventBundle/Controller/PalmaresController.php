@@ -22,6 +22,18 @@ class PalmaresController extends Controller
     {
         $this->isPageEnabled($request->get('_route'));
         $movies = array();
+        $locale   = $request->getLocale();
+        $em = $this->getDoctrine()->getManager();
+
+        // check if waiting page is enabled
+        $waitingPage = $em->getRepository('BaseCoreBundle:FDCPageWaiting')->findBy(array('enabled' => true));
+        foreach($waitingPage as $waiting) {
+            if($waiting->getPage()->getRoute() == $request->get('_route')){
+                return $this->render('FDCEventBundle:Global:waiting-page.html.twig',array(
+                    'waitingPage' => $waiting
+                ));
+            }
+        }
 
         //Exemple de films pour les différentes section (sauf cameré d'or)
         $allMovies = array(

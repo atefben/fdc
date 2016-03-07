@@ -48,6 +48,13 @@ class HomepageTopVideosAssociated
      */
     protected $association;
 
+    /**
+     * @var position
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $position;
+
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
@@ -112,5 +119,28 @@ class HomepageTopVideosAssociated
     public function getAssociation()
     {
         return $this->association;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return HomepageTopVideosAssociated
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

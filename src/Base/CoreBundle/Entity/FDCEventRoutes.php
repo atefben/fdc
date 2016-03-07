@@ -42,6 +42,14 @@ class FDCEventRoutes implements FDCEventRoutesInterface
     /**
      * @var string
      *
+     * @ORM\Column(type="boolean", nullable=false)
+     *
+     */
+    private $hasWaitingPage;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string", nullable=false)
      *
      */
@@ -116,6 +124,8 @@ class FDCEventRoutes implements FDCEventRoutesInterface
      * @ORM\Column(name="position", type="integer", nullable=false, options={"default" = 0})
      */
     private $position = 0;
+
+
 
     public function __construct()
     {
@@ -449,5 +459,28 @@ class FDCEventRoutes implements FDCEventRoutesInterface
     public function getHidden()
     {
         return $this->hidden;
+    }
+    
+    /**
+     * Set hasWaitingPage
+     *
+     * @param boolean $hasWaitingPage
+     * @return FDCEventRoutes
+     */
+    public function setHasWaitingPage($hasWaitingPage)
+    {
+        $this->hasWaitingPage = $hasWaitingPage;
+
+        return $this;
+    }
+
+    /**
+     * Get hasWaitingPage
+     *
+     * @return boolean 
+     */
+    public function getHasWaitingPage()
+    {
+        return $this->hasWaitingPage;
     }
 }

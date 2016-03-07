@@ -445,8 +445,18 @@ class MovieController extends Controller
     public function selectionAction(Request $request,$slug)
     {
         $this->isPageEnabled($request->get('_route'));
-
+        $locale   = $request->getLocale();
         $em = $this->getDoctrine()->getManager();
+
+        // check if waiting page is enabled
+        $waitingPage = $em->getRepository('BaseCoreBundle:FDCPageWaiting')->findBy(array('enabled' => true));
+        foreach($waitingPage as $waiting) {
+            if($waiting->getPage()->getRoute() == $request->get('_route')){
+                return $this->render('FDCEventBundle:Global:waiting-page.html.twig',array(
+                    'waitingPage' => $waiting
+                ));
+            }
+        }
 
         // find all selected movies
         $movies = $em->getRepository('BaseCoreBundle:FilmFilm')->findBy(array('selection' => 1));
