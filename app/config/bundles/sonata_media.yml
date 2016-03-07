@@ -90,6 +90,8 @@ sonata_media:
                 918x580: { width: 918 , height: 580 , quality: 100 }
                 # Articles le même jour
                 590x370: { width: 590 , height: 370 , quality: 100 }
+                # Articles Press Homepage
+                265x165: { width: 265 , height: 165 , quality: 100 }
                 # Détail
                 97x61: { width: 97 , height: 61 , quality: 100 }
                 # WebTv trailer navigation
