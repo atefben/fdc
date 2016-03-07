@@ -225,22 +225,11 @@ class NewsController extends Controller
 
             }
         }
+        $focusArticles  = array();
 
         //get focus articles
-        if ($type == "communique") {
-            $associatedNews = $news->getAssociatedStatement();
-            $focusArticles  = array();
-            foreach ($associatedNews as $associatedNew) {
-                if($associatedNew->getAssociation() != null) {
-                    $focusArticles[] = $associatedNew->getAssociation();
-                }
-            }
-        }
-        else {
-
-            $associatedNews = $news->getAssociatedStatement();
-            $focusArticles  = array();
-            foreach ($associatedNews as $associatedNew) {
+        if ($news->getAssociatedStatement() !== null ) {
+            foreach ($news->getAssociatedStatement() as $associatedNew) {
                 if($associatedNew->getAssociation() != null) {
                     $focusArticles[] = $associatedNew->getAssociation();
                 }
