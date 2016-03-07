@@ -1,0 +1,13 @@
+.cke_editable {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    color: #333;
+    font-size: 1.125rem;
+    line-height: 2em;
+    margin-bottom: 70px;
+    text-align: center;
+}
+
+.cke_editable a {
+    color: #c8a461;
+    text-decoration: none;
+}
