@@ -6,7 +6,7 @@
         <span class="label">{{ 'press.actu.filter.label.annees'|trans }} :</span>
         <span class="select">
             {% for key, date in filters.dates %}
-                <span data-filter="d{{ date.slug }}">
+                <span data-filter="d{{ date.content }}">
                 {{ date.content }}
                 </span>
             {% endfor %}

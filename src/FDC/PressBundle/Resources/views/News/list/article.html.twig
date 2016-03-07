@@ -3,7 +3,7 @@
 {% if class(article) starts with "I" %}
     {% set articleType = "info" %}
 {% endif %}
-<div class="item all articleType {{ article.theme|trans_fallback('slug') }} d{{ article.publishedAt|date('D') }}">
+<div class="item all {{ articleType }} {{ article.theme|trans_fallback('slug') }} d{{ article.publishedAt|date('D') }}">
     <article class="article">
         <div class="img">
             <span class="picto">

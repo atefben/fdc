@@ -309,10 +309,6 @@ class NewsController extends Controller
         });
 
         $filters = array();
-        $filters['dates'][0] = array(
-            'slug' => 'all',
-            'content' => 'Toutes',
-        );
 
         $filters['themes'][0] = array(
             'id' => 'all',
@@ -341,7 +337,6 @@ class NewsController extends Controller
         foreach ($pressNews as $statement) {
 
             if (!in_array($statement->getPublishedAt()->format('Y'), $years)) {
-                $filters['dates'][$i]['slug'] = $statement->getPublishedAt()->format('Y');
                 $filters['dates'][$i]['content'] = $statement->getPublishedAt()->format('Y');
 
                 $years[] = $statement->getPublishedAt()->format('Y');
