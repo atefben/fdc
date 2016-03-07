@@ -351,8 +351,8 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
       </trans-unit>
       <trans-unit id="e094b81f2ac0baefc2bd68077a07e6d0f44f7bd7" resname="footer.nav.credit">
         <source>footer.nav.credit</source>
-        <target>Crédits</target>
         <jms:reference-file line="47">Resources/views/footer.html.twig</jms:reference-file>
+        <target>Crédits</target>
       </trans-unit>
       <trans-unit id="bae995e51979cb36dd426f2748deadafc5b6f10e" resname="footer.nav.faq">
         <source>footer.nav.faq</source>
@@ -1670,6 +1670,22 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
         <target>Les dernieres videos</target>
         <jms:reference-file line="110">views/Television/channel.html.twig</jms:reference-file>
         <jms:reference-file line="119">views/Television/live.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="breadcrumb.webtv.home" resname="breadcrumb.webtv.home">
+        <source>breadcrumb.webtv.home</source>
+        <target>Accueil</target>
+      </trans-unit>
+      <trans-unit id="breadcrumb.webtv.live" resname="breadcrumb.webtv.live">
+        <source>breadcrumb.webtv.live</source>
+        <target>Web TV</target>
+      </trans-unit>
+      <trans-unit id="breadcrumb.webtv.channels" resname="breadcrumb.webtv.channels">
+        <source>breadcrumb.webtv.channels</source>
+        <target>Chaines</target>
+      </trans-unit>
+      <trans-unit id="breadcrumb.webtv.trailers" resname="breadcrumb.webtv.trailers">
+        <source>breadcrumb.webtv.trailers</source>
+        <target>Bandes annonces</target>
       </trans-unit>
     </body>
   </file>

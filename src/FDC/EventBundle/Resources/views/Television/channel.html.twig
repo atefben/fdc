@@ -176,8 +176,28 @@
             </div>
         </div>
         <div class="ov"></div>
-        </div>
     {% endif %}
 
-    </div>
+
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+        [
+            {
+                "name" : 'breadcrumb.webtv.home'|trans,
+                "url"  : path('fdc_event_news_index')
+            },
+            {
+                "name" : 'breadcrumb.webtv.live'|trans,
+                "url"  : path('fdc_event_television_live')
+            },
+            {
+                "name" : 'breadcrumb.webtv.channels'|trans,
+                "url"  : path('fdc_event_television_channels')
+            },
+            {
+                "name" : channel|trans_fallback('name'),
+                "url"  : ''
+            }
+        ]
+    } %}
 {% endblock body %}

@@ -492,6 +492,7 @@ class TelevisionController extends Controller
             ->get('base.manager.seo')
             ->setFDCEventPageFDCPageWebTvTrailerSeo($path, $title, $description, $updatedAt, $image)
         ;
+
         return array(
             'film'         => $film,
             'videos'       => array_values($videos),
