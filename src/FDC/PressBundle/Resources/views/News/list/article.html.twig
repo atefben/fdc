@@ -108,7 +108,7 @@
             <span class="category">{{ article.theme|trans_fallback('name') }}</span>
             <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
             <h3>
-                <a href="{{ path('fdc_event_news_get', {'format': article.translatable.newsFormat, 'slug': article|trans_fallback('slug') }) }}">
+                <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': articleType }) }}">
                     {{ article|trans_fallback('title')|truncate(40) }}
                 </a>
             </h3>
