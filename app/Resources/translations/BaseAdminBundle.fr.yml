@@ -56,6 +56,7 @@ breadcrumb:
     link_press_accredit_procedure_list: Procédures d'accréditation
     link_press_statement_info_list: Communiqué / Info
     link_press_cinema_room_list: Liste des salles
+    link_f_d_c_page_waiting_list: Pages d'attente
 link:
     action_soif_refresh: Mettre à jour
 
@@ -562,6 +563,7 @@ form:
     label_btn_text: Texte sous le bouton
     label_prefooter_title: Titre du Pré-footer
     label_prefooter_url: URL du Pré-footer
+    label_has_waiting_page: Possède une page d'attente
     label_image_push: Image du push (media image semi-riche)
     label_image_prefooter: Image du Pré-footer (media image semi-riche)
     label_homepage_top_video_associated: Vidéos à la une
