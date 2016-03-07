@@ -142,6 +142,7 @@ class Homepage
      * @var HomepageSlide
      *
      * @ORM\OneToMany(targetEntity="HomepageSlide", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $homepageSlide;
 
@@ -156,18 +157,21 @@ class Homepage
      * @var WebTv
      *
      * @ORM\OneToMany(targetEntity="WebTv", mappedBy="homepage")
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $topWebTvs;
 
     /**
      * @var topVideosAssociated
      * @ORM\OneToMany(targetEntity="HomepageTopVideosAssociated", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $topVideosAssociated;
 
     /**
      * @var topWebTvsAssociated
      * @ORM\OneToMany(targetEntity="HomepageTopWebTvsAssociated", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $topWebTvsAssociated;
 
@@ -1154,6 +1158,7 @@ class Homepage
      */
     public function getTopVideosAssociated()
     {
+        $topVideos = array();
         if ($this->topVideosAssociated->count() < 2) {
             while ($this->topVideosAssociated->count() != 2) {
                 $entity = new HomepageTopVideosAssociated();
@@ -1245,4 +1250,5 @@ class Homepage
         }
         return $this->filmsAssociated;
     }
+
 }
