@@ -35,7 +35,7 @@ $(document).ready(function() {
       });
 
       $('#filters').remove();
-      $('body').append('<div id="filters" class="selectOptions"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"></div></div>');
+      $('body').append('<div id="filters" class="selectOptions"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon_close"></i></div></div>');
       $('#filters .vCenterKid').html(h);
 
       setTimeout(function() {
@@ -48,7 +48,7 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.selectOptions span', function() {
-      var i = parseInt($(this).index()) + 1; 
+      var i = parseInt($(this).index()) + 1;
       $('select option').eq(i).prop('selected', 'selected');
       $('.select').removeClass('invalid');
     });
@@ -106,5 +106,4 @@ $(document).ready(function() {
       }
     });
   }
-  
 });
