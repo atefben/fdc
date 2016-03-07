@@ -43,7 +43,7 @@ class FDCPageWebTvTrailersTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"overrideName"}, updatable=false)
+     * @Gedmo\Slug(fields={"overrideName"})
      * @ORM\Column(name="slug", type="string", length=255, unique=false, nullable=true)
      */
     private $slug;
