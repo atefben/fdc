@@ -128,6 +128,12 @@
       height: 100%;
       @include transition(all 1s $smoothTransition);
 
+      a {
+        position: absolute;
+        width: 100%;
+        height: 100%; 
+      }
+
       img {
         display: block;
         margin: 0 auto;
@@ -191,10 +197,6 @@
         &:after {
           opacity: 1;
           visibility: visible;
-        }
-
-        a {
-          position: absolute;
         }
 
         img {
