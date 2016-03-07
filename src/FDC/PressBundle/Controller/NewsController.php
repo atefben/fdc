@@ -330,6 +330,7 @@ class NewsController extends Controller
         }
 
         $i = 1;
+        $ii = 0;
 
         $years = array();
         $themes = array();
@@ -337,7 +338,7 @@ class NewsController extends Controller
         foreach ($pressNews as $statement) {
 
             if (!in_array($statement->getPublishedAt()->format('Y'), $years)) {
-                $filters['dates'][$i]['content'] = $statement->getPublishedAt()->format('Y');
+                $filters['dates'][$ii]['content'] = $statement->getPublishedAt()->format('Y');
 
                 $years[] = $statement->getPublishedAt()->format('Y');
             }
@@ -348,6 +349,7 @@ class NewsController extends Controller
                 $themes[] = $statement->getTheme()->getSlug();
             }
             $i++;
+            $ii++;
         }
 
         return array(

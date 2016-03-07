@@ -3,7 +3,16 @@
 {% if class(article) starts with "I" %}
     {% set articleType = "info" %}
 {% endif %}
-<div class="item all {{ articleType }} {{ article.theme|trans_fallback('slug') }} d{{ article.publishedAt|date('D') }}">
+{% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
+    {% set articleFormat = "article" %}
+{% elseif class(article) == "StatementVideo" or class(article) == "InfoVideo" %}
+    {% set articleFormat = "video" %}
+{% elseif class(article) == "StatementAudio" or class(article) == "InfoAudio" %}
+    {% set articleFormat = "audio" %}
+{% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
+    {% set articleFormat = "image" %}
+{% endif %}
+<div class="item all {{ articleType }} {{ article.theme|trans_fallback('slug') }} d{{ article.publishedAt|date('Y') }} {{ articleFormat }}">
     <article class="article">
         <div class="img">
             <span class="picto">

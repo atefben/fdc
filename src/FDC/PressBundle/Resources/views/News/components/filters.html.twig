@@ -5,10 +5,17 @@
     <div id="date" class="filter">
         <span class="label">{{ 'press.actu.filter.label.annees'|trans }} :</span>
         <span class="select">
-            {% for key, date in filters.dates %}
-                <span data-filter="d{{ date.content }}">
-                {{ date.content }}
-                </span>
+            {% for key,date in filters.dates %}
+                {% if key == 0 %}
+                    <span class="active" data-filter="d{{ date.content }}">
+                        {{ date.content }}
+                    </span>
+                    <i class="icon icon_fleche-down"></i>
+                {% else %}
+                    <span data-filter="d{{ date.content }}">
+                        {{ date.content }}
+                    </span>
+                {% endif %}
             {% endfor %}
         </span>
     </div>
