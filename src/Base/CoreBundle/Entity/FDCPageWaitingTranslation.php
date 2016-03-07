@@ -34,7 +34,7 @@ class FDCPageWaitingTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
 
@@ -42,7 +42,7 @@ class FDCPageWaitingTranslation implements TranslateChildInterface
      * @var \Application\Sonata\MediaBundle\Entity\Media
      *
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=true)
      * @Assert\Valid()
      */
     private $banner;
@@ -58,7 +58,7 @@ class FDCPageWaitingTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="text", type="text")
+     * @ORM\Column(name="text", type="text", nullable=true)
      */
     private $text;
 

@@ -4,6 +4,9 @@ namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
 use Base\CoreBundle\Entity\FDCPageWaiting;
+use Base\CoreBundle\Entity\FDCPageWebTvLive;
+use Base\CoreBundle\Entity\FDCPageWebTvLiveTranslation;
+use Base\CoreBundle\Repository\FDCEventRoutesRepository;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -36,12 +39,8 @@ class FDCPageWaitingAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('page')
             ->add('enabled')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -69,7 +68,14 @@ class FDCPageWaitingAdmin extends Admin
                     ),
                     'text' => array(
                         'label' => 'form.label_text',
-                        'field_type' => 'ckeditor'
+                        'field_type' => 'ckeditor',
+                        'config_name' => 'widget'
+                    ),
+                    'createdAt' => array(
+                        'display' => false
+                    ),
+                    'updatedAt' => array(
+                        'display' => false
                     ),
                     'banner' => array(
                         'required'           => $requiredFile,
@@ -82,20 +88,34 @@ class FDCPageWaitingAdmin extends Admin
                             new NotBlank()
                         )
                     ),
+                    'status'         => array(
+                        'label'                     => 'form.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => FDCPageWebTvLiveTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle'
+                    ),
                 )
             ))
-            ->add('page')
-            ->add('translate')
+            ->add('page', 'entity', array(
+                'class' => 'BaseCoreBundle:FDCEventRoutes',
+                'query_builder' => function(FDCEventRoutesRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->andWhere('u.hasWaitingPage = 1');
+                }
+            ))
+
             ->add('enabled')
+            ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => FDCPageWaiting::getAvailableTranslateOptions(),
+                'choices'            => FDCPageWebTvLive::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
-                'multiple' => true,
-                'expanded' => true
+                'multiple'           => true,
+                'expanded'           => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => FDCPageWaiting::getPriorityStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle'
+                'choices'                   => FDCPageWebTvLive::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle',
             ))
         ;
     }
@@ -114,5 +134,10 @@ class FDCPageWaitingAdmin extends Admin
             ->add('translateOptions')
             ->add('priorityStatus')
         ;
+    }
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
     }
 }
