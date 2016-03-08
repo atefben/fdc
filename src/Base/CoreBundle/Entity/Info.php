@@ -132,7 +132,7 @@ abstract class Info implements TranslateMainInterface
     /**
      * @var InfoWidget
      *
-     * @ORM\OneToMany(targetEntity="InfoWidget", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="InfoWidget", mappedBy="info", cascade={"all"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
