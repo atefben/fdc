@@ -49,7 +49,7 @@ class FDCPageNewsVideos implements TranslateMainInterface
 
     public function __toString()
     {
-        return 'Tous les articles';
+        return 'Toutes les vidéos';
     }
 
 

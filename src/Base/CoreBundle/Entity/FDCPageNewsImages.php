@@ -49,7 +49,7 @@ class FDCPageNewsImages implements TranslateMainInterface
 
     public function __toString()
     {
-        return 'Tous les articles';
+        return 'Toutes les images';
     }
 
 

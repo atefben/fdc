@@ -49,7 +49,7 @@ class FDCPageNewsAudios implements TranslateMainInterface
 
     public function __toString()
     {
-        return 'Tous les articles';
+        return 'Tous les audios';
     }
 
 
