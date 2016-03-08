@@ -157,6 +157,7 @@ class FDCPageWebTvTrailersAdmin extends Admin
             ->add('selectionSection', 'sonata_type_model_list', array(
                 'label'    => 'form.fdc_page_web_tv_trailers.label_festival_section',
                 'required' => false,
+                'btn_add' => false,
             ))
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',

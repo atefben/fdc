@@ -35,7 +35,7 @@ class FDCPageWebTvTrailersRepository extends EntityRepository
         $this->addFDCEventQueries($qb, 'si');
         $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
-        $qb->orderBy('p.id');
+        $qb->orderBy('s.position');
 
         return $qb->getQuery()->getResult();
     }

@@ -21,6 +21,14 @@
     -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
+
+/* Separator */
+.cke_editable hr {
+    height: 0;
+    border: 0;
+    border-top: 1px solid #e5e5e5;
+}
+
 /* Golden border */
 .cke_editable .big-quote {
     padding: 70px 70px;
