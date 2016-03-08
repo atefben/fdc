@@ -398,12 +398,11 @@ div.chocolat-wrapper {
     .icon_diaporama{
       font-size: 2rem;
       color: white;
-      position: relative;
+      position: absolute;
       z-index: 100;
-      float: left;
+      left: 50%;
+      margin-left: -16px;
       line-height: 85px;
-      margin-left: 38px;
-      margin-right: -38px;
     }
     .chocolat-pagination {
       border-right: 1px solid rgba(255, 255, 255, 0.4);
@@ -508,7 +507,7 @@ div.chocolat-wrapper {
 
     .icon {
       line-height: 100px;
-      color:#fff;
+      color:$gold;
       font-size: 1.1rem;
       @include transition(opacity 0.9s $linear);
       @include transform(translateZ(0));
