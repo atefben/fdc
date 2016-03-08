@@ -13,22 +13,24 @@ function initSlideshows() {
     dots: false,
     smartSpeed: 500,
     margin: 10,
+    // stagePadding: 20,
     dragEndSpeed: 900,
+    // autoWidth: true,
     items: nbItems
   });
 
-  sliderThumbs.owlCarousel();
+  // sliderThumbs.owlCarousel();
 
   if( navigator.userAgent.indexOf("Edge") > -1 ||
       navigator.userAgent.indexOf("MSIE") > -1 ||
       navigator.userAgent.indexOf("Trident") > -1 ) {
-    $('.thumbnails .thumb').each(function () {
+    $('.thumbnails .thumb, .slideshow .slideshow-img .images .img a').each(function () {
       var $container = $(this),
-          imgUrl = $container.find('img').prop('src');
+          imgUrl     = $container.find('img').prop('src');
       if (imgUrl) {
         $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
       }
-   });
+    });
   }
 
   $('body').on('click', '.slideshow .thumbnails .owl-item', function(e) {
