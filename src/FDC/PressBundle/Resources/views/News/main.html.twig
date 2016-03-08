@@ -4,7 +4,7 @@
 {% block body %}
 
     {% include 'FDCEventBundle:News:widgets/social-share.html.twig' %}
-
+    {{ dump(news.newsFormat) }}
     <div id="main" class="single-article single-actualite loading">
         <span id="addtext">{{ 'article.text.ajouteramaselection'|trans }}</span>
         <div id="canvasloader" class="canvasloader"></div>
@@ -196,7 +196,7 @@
                         <div class="articles center">
                             {% for article in sameDayArticles %}
                                 {% if article is not null %}
-                                    {% include 'FDCEventBundle:News:widgets/article.html.twig' with {type : 'same-day'} %}
+                                    {% include 'FDCPressBundle:News:widgets/article.html.twig' with {type : 'same-day'} %}
                                 {% endif %}
                             {% endfor %}
                         </div>
