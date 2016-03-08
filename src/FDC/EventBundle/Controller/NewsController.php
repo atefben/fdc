@@ -105,11 +105,20 @@ class NewsController extends Controller {
         ////////////////////////////////////////////////////////////////////////////////////
 
         $count = 7;
-        $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime , $count);
+        if($homepage->getTopNewsType() == 0) {
+            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime , $count);
+        } else {
+            $homeArticles = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTime , $count);
+        }
+
         $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
 
         while (count($homeArticles) === 0 && $dateTime > $festivalStart) {
-            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime->modify('-1 day'), $count);
+            if($homepage->getTopNewsType() == 0) {
+                $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime->modify('-1 day') , $count);
+            } else {
+                $homeArticles = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTime->modify('-1 day') , $count);
+            }
             $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
         }
 

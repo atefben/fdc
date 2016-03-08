@@ -49,6 +49,7 @@ class LockController extends Controller
         'pressdownloadsection'   => 'PressDownloadSection',
         'pressaccreditprocedure' => 'PressAccreditProcedure',
         'presscinemaroom'        => 'PressCinemaRoom',
+        'fdcpagewaiting'         => 'FDCPageWaiting',
 
     );
 
