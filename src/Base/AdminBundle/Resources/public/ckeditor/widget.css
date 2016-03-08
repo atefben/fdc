@@ -153,16 +153,6 @@
     border-color: #c8a461;
 }
 
-/* Quote */
-.cke_editable blockquote {
-    border-bottom: 1px solid #e5e5e5;
-    border-top: 1px solid #e5e5e5;
-    color: #666;
-    font-size: 1.688rem;
-    line-height: 1.4em;
-    padding: 40px 15px;
-    text-align: center;
-}
 /* Titles */
 .cke_editable h2.sub-title {
     font-family: "Playfair Display", Times New Roman, Times, serif;

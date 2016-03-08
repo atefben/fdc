@@ -1,3 +1,9 @@
+.fdc-clearfix {
+    content: '';
+    display: block;
+    clear: both;
+}
+
 .single-article hr {
     height: 0;
     border: 0;
