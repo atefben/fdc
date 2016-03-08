@@ -4,6 +4,7 @@ jQuery(document).ready(function($) {
         new window.infinite.Collection(this, $(this).siblings('[data-prototype]'));
     });
 
+    var config = null;
    // infinite collection sortable
    $('div[id$="fdc-widgets"][data-form-widget="collection"]').sortable({
         axis: 'y',
@@ -13,6 +14,7 @@ jQuery(document).ready(function($) {
             var textareaId = ui.item.find('textarea.ckeditor').attr('id');
             if (typeof textareaId != 'undefined') {
                 var editorInstance = CKEDITOR.instances[textareaId];
+                config = editorInstance.config;
                 editorInstance.destroy();
                 CKEDITOR.remove( textareaId );
             }
@@ -21,7 +23,7 @@ jQuery(document).ready(function($) {
             // ckeditor
             var textareaId = ui.item.find('textarea.ckeditor').attr('id');
             if (typeof textareaId != 'undefined') {
-                CKEDITOR.replace( textareaId, { customConfig : "/bundles/baseadmin/ckeditor/config.js"});
+                CKEDITOR.replace(textareaId, config);
             }
         }
     });
