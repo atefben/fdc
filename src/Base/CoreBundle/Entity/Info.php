@@ -221,7 +221,7 @@ abstract class Info implements TranslateMainInterface
         return array(
             'Base\CoreBundle\Entity\InfoArticle' => 'article',
             'Base\CoreBundle\Entity\InfoAudio' => 'audio',
-            'Base\CoreBundle\Entity\InfoImage' => 'image',
+            'Base\CoreBundle\Entity\InfoImage' => 'photo',
             'Base\CoreBundle\Entity\InfoVideo' => 'video'
         );
     }
