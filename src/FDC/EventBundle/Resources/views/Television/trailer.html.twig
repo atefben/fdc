@@ -5,9 +5,9 @@
     <div id="main" class=" webtv webtv-ba-video loading">
         <div class="container-webtv-ba-video">
             <div class="title-container">
-                <a href="#" class="bandeannone"><i
+                <a href="{{ path('fdc_event_television_trailers') }}" class="bandeannone"><i
                             class="icon icon_flecheGauche"></i>{{ 'trailer.btn.retourbandeannonces'|trans }}</a>
-                <h1 class="title">{{ film|trans_fallback('title') }}</h1>
+                <h1 class="title">{{ film|trans_fallback('title')?:film.titleVo }}</h1>
             </div>
             <section>
                 <article class="video">
@@ -28,12 +28,12 @@
                             {%- if videoImage is defined -%}
                                 {%- if first == false -%},{%- endif -%}{"sources":[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}],"vid":"{{ video.id }}","name":"{{ video|trans_fallback('title') }}","image":"{{ videoImage }}","category":"{{ video.theme }}","date":"{{ video.publishedAt|date('d.m.Y') }}","hour":"{{ video.publishedAt|date('H:i') }}"}{% set first = false %}{%- endif -%}
                             {%- endfor -%}]'
-                        data-file=""
-                        {%- if videos[0].image -%}
+                         data-file=""
+                            {%- if videos[0].image -%}
                         data-img="{%- path videos[0].image|trans_fallback('file'), '1950x1232' -%}"
-                        {%- elseif videos[0].image|trans_fallback('imageAmazonUrl')-%}
+                    {%- elseif videos[0].image|trans_fallback('imageAmazonUrl') -%}
                         data-img="{{ s3_server_global ~ videos[0].image|trans_fallback('imageAmazonUrl') }}"
-                        {%- endif -%}>
+                            {%- endif -%}>
                         <div id="video-player" class="video-player-pl">
                         </div>
                         <div class="video-overlay"></div>
@@ -46,14 +46,19 @@
                                            class="category">{{ videos[0].theme|trans_fallback('name') }}</a><span
                                                 class="date">{{ videos[0].publishedAt|date('d.m.y') }}</span> . <span
                                                 class="hour">{{ videos[0].publishedAt|date('H:i') }}</span>
-                                        <p>{{ videos[0].findTranslationByLocal(app.request.locale)?:videos[0].titleVO }}</p>
+                                        <p>{{ videos[0]|trans_fallback('title') }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <span class="type-video">{{ videos[0].theme }}</span>
-                    <span class="name-video">{{ videos[0]|trans_fallback('title') }}</span>
+                    <div class="infos-videos">
+                        <div class="infos">
+                            <strong>{{ videos[0].theme }}</strong>
+                                <span class="time">{{ videos[0].publishedAt|date('d.m.y . H:i') }}</span>
+                            <p>{{ videos[0]|trans_fallback('title') }}</p>
+                        </div>
+                    </div>
                 </article>
                 <aside class="informations-video">
                     <ul class="nav">
@@ -66,7 +71,7 @@
                                 <img src="{% path poster, 'small' %}" alt="affiche film" width="135">
                             {% endif %}
                             <h4 class="rubric-film">{{ film.selectionSection|trans_fallback('name') }}</h4>
-                            <strong class="name-video">{{ film|trans_fallback('title') }}</strong>
+                            <strong class="name-video">{{ film|trans_fallback('title')?:film.titleVo }}</strong>
                             <span class="name-person">
                                 {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                                     {{ loop.index0 ? ', ': '' }}{{ director.fullName }}
@@ -93,8 +98,10 @@
                     </div>
                     <div class="share">
                         <div class="buttons square">
-                            <a href="//www.facebook.com/sharer.php?u={{ url(app.request.get('_route'), app.request.get('_route_params')) }}&t={{ film|trans_fallback('title')|url_encode }}" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-                            <a  href="//twitter.com/intent/tweet?url={{ url(app.request.get('_route'), app.request.get('_route_params')) }}&text={{ film|trans_fallback('title')|url_encode }}" class="button twitter"><i class="icon icon_twitter"></i></a>
+                            <a href="//www.facebook.com/sharer.php?u={{ url(app.request.get('_route'), app.request.get('_route_params')) }}&t={{ film|trans_fallback('title')|url_encode }}"
+                               rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+                            <a href="//twitter.com/intent/tweet?url={{ url(app.request.get('_route'), app.request.get('_route_params')) }}&text={{ film|trans_fallback('title')|url_encode }}"
+                               class="button twitter"><i class="icon icon_twitter"></i></a>
                             <a href="#" class="button link"><i class="icon icon_link"></i></a>
                             <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
                         </div>
@@ -157,7 +164,6 @@
     </div>
     {% set author = '' %}
     {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-        {{ loop.index0 ? ', ': '' }}{{ director.fullName }}
         {% if loop.first == false %}
             {% set author = author ~ ', ' %}
         {% endif %}
@@ -172,24 +178,24 @@
 
     {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":
-        [
-            {
-                "name" : 'breadcrumb.webtv.home'|trans,
-                "url"  : path('fdc_event_news_index')
-            },
-            {
-                "name" : 'breadcrumb.webtv.live'|trans,
-                "url"  : path('fdc_event_television_live')
-            },
-            {
-                "name" : 'breadcrumb.webtv.trailers'|trans,
-                "url"  : path('fdc_event_television_trailers')
-            },
-            {
-                "name" : film|trans_fallback('title'),
-                "url"  : ''
-            }
-        ]
+    [
+    {
+    "name" : 'breadcrumb.webtv.home'|trans,
+    "url"  : path('fdc_event_news_index')
+    },
+    {
+    "name" : 'breadcrumb.webtv.live'|trans,
+    "url"  : path('fdc_event_television_live')
+    },
+    {
+    "name" : 'breadcrumb.webtv.trailers'|trans,
+    "url"  : path('fdc_event_television_trailers')
+    },
+    {
+    "name" : film|trans_fallback('title'),
+    "url"  : ''
+    }
+    ]
     } %}
 {% endblock body %}
 

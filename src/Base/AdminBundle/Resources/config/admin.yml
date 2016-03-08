@@ -292,6 +292,38 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_page_news_articles:
+        class: Base\AdminBundle\Admin\FDCPageNewsArticlesAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageNewsArticles, BaseAdminBundle:FDCPageNewsArticlesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageNewsArticles, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_news_images:
+        class: Base\AdminBundle\Admin\FDCPageNewsImagesAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageNewsImages, BaseAdminBundle:FDCPageNewsImagesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageNewsImages, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.adminfdc_page_news_audios:
+        class: Base\AdminBundle\Admin\FDCPageNewsAudiosAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageNewsAudios, BaseAdminBundle:FDCPageNewsAudiosAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageNewsAudios, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_news_videos:
+        class: Base\AdminBundle\Admin\FDCPageNewsVideosAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageNewsVideos, BaseAdminBundle:FDCPageNewsVideosAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageNewsVideos, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     #Homepage
     base.admin.homepage:
         class: Base\AdminBundle\Admin\HomepageAdmin

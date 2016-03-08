@@ -131,7 +131,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * @var StatementWidget
      *
-     * @ORM\OneToMany(targetEntity="StatementWidget", mappedBy="statement", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="StatementWidget", mappedBy="statement", cascade={"all"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
