@@ -2,22 +2,28 @@
 {% extends 'FDCPressBundle::layout.html.twig' %}
 
 {% block body %}
+
     {% include 'FDCEventBundle:News:widgets/social-share.html.twig' %}
-    {% if class(prev[0]) start with "S"%}
-        {% set prevArticleType = "communique"%}
-    {% else %}
-        {% set prevArticleType = "info"%}
-    {% endif %}
-    {% if class(next[0]) start with "S"%}
-        {% set nextArticleType = "communique"%}
-    {% else %}
-        {% set nextArticleType = "info"%}
-    {% endif %}
+
     <div id="main" class="single-article single-actualite loading">
         <span id="addtext">{{ 'article.text.ajouteramaselection'|trans }}</span>
         <div id="canvasloader" class="canvasloader"></div>
         <div class="content-article">
             <div class="container small-container">
+                {% if prev[0] is defined and not prev[0] is empty %}
+                    {% if class(prev[0]) starts with "S" %}
+                    {% set prevArticleType = "communique"%}
+                    {% else %}
+                        {% set prevArticleType = "info"%}
+                    {% endif %}
+                {% endif %}
+                {% if next[0] is defined and not next[0] is empty %}
+                    {% if class(next[0]) starts with "S" %}
+                    {% set nextArticleType = "communique"%}
+                    {% else %}
+                    {% set nextArticleType = "info"%}
+                    {% endif %}
+                {% endif %}
                 {% if prev[0] is defined and not prev[0] is empty %}<a href="{{ path('fdc_press_news_get', {'format': prev[0].newsFormat, 'slug': prev[0]|trans_fallback('slug'), 'type': prevArticleType }) }}" class="nav prev"><i class="icon icon_flecheGauche"></i></a>{% endif %}
                 {% if next[0] is defined and not next[0] is empty %}<a href="{{ path('fdc_press_news_get', {'format': next[0].newsFormat, 'slug': next[0]|trans_fallback('slug'), 'type': nextArticleType }) }}}) }}" class="nav next"><i class="icon icon_fleche-right"></i></a>{% endif %}
                 <div class="info">
