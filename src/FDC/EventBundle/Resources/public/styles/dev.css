@@ -27,6 +27,18 @@
     margin-bottom: 5px;
 }
 
+.single-article .text em {
+    font-style: italic;
+}
+
+.single-article .text sup {
+    vertical-align: super;
+}
+
+.single-article .text sub {
+    vertical-align: sub;
+}
+
 .single-article ul,
 .single-article ol {
     color: #666;
