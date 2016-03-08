@@ -86,9 +86,6 @@
 }
 
 /* Table */
-.cke_editable table {
-}
-
 .cke_editable .table-article tr:first-child td {
     text-transform: uppercase;
     color: #000;
@@ -97,7 +94,7 @@
     vertical-align: middle;
     border: 1px solid #dfdfdf;
     padding: 15px 0px;
-    width: 50%;
+    //width: 50%;
     font-size: .74rem;
     text-align: center;
 }
@@ -107,11 +104,23 @@
     vertical-align: middle;
     border: 1px solid #dfdfdf;
     padding: 15px 0px;
-    width: 50%;
+    width: 320px;
     text-align: center;
     color: #666666;
     font-size: .74rem;
     font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+
+.cke_editable table[border="0"] td {
+    border: none !important;
+}
+
+.cke_editable table caption {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
     text-align: center;
 }
 
@@ -144,16 +153,6 @@
     border-color: #c8a461;
 }
 
-/* Quote */
-.cke_editable blockquote {
-    border-bottom: 1px solid #e5e5e5;
-    border-top: 1px solid #e5e5e5;
-    color: #666;
-    font-size: 1.688rem;
-    line-height: 1.4em;
-    padding: 40px 15px;
-    text-align: center;
-}
 /* Titles */
 .cke_editable h2.sub-title {
     font-family: "Playfair Display", Times New Roman, Times, serif;

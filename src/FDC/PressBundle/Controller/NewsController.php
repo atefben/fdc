@@ -283,7 +283,9 @@ class NewsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
         $dateTime = new DateTime();
-
+        // LIST SETTINGS
+        $offset = 0;
+        $limit = 15;
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
         if ($settings === null || $settings->getFestival() === null) {
@@ -291,15 +293,25 @@ class NewsController extends Controller
         }
 
         //GET ALL STATEMENT ARTICLES
-        $statements = $em->getRepository('BaseCoreBundle:Statement')->getStatements($settings->getFestival()->getId(), $dateTime, $locale);
+        $statements = $em->getRepository('BaseCoreBundle:Statement')->getAllStatement($locale,$settings->getFestival()->getId());
+        //$statements = $this->removeUnpublishedNewsAudioVideo($statements, $locale);
 
         //GET ALL INFO ARTICLES
-        $infos = $em->getRepository('BaseCoreBundle:Info')->getInfos($settings->getFestival()->getId(), $dateTime, $locale);
+        $infos = $em->getRepository('BaseCoreBundle:Info')->getAllInfo($locale, $settings->getFestival()->getId());
+        //$infos = $this->removeUnpublishedNewsAudioVideo($infos, $locale);
 
         if ($statements === null && $infos === null) {
             throw new NotFoundHttpException();
         }
-        $pressNews = array_merge($infos, $statements);
+        $allPressNews = array_merge($infos, $statements);
+
+        $pressNews = array_slice($allPressNews, $offset, $limit);
+        if (count($allPressNews) > $limit ) {
+            $pressNewsLeft = $limit;
+        }
+        else {
+            $pressNewsLeft = false;
+        }
 
         usort($pressNews, function ($a, $b) {
             if ($a->getCreatedAt()->format('Y-m-d H:i:s') == $b->getCreatedAt()->format('Y-m-d H:i:s')) {
@@ -355,8 +367,69 @@ class NewsController extends Controller
         return array(
             'filters' => $filters,
             'pressNews' => $pressNews,
+            'pressNewsLeft' => $pressNewsLeft,
         );
 
+    }
+
+    /**
+     *
+     * @Route("/press-actu-ajax", options={"expose"=true})
+     * @Template("FDCPressBundle:News:list/article-list.html.twig")
+     * @return array
+     */
+    public function listAjaxAction(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+        $dateTime = new DateTime();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
+
+        if ($request->isXmlHttpRequest()) {
+
+            // LIST SETTINGS
+            $offset = $request->get('offset');
+            $limit = 15;
+            //GET ALL STATEMENT ARTICLES
+            $statements = $em->getRepository('BaseCoreBundle:Statement')->getAllStatement($locale, $settings->getFestival()->getId());
+            //$statements = $this->removeUnpublishedNewsAudioVideo($statements, $locale);
+
+            //GET ALL INFO ARTICLES
+            $infos = $em->getRepository('BaseCoreBundle:Info')->getAllInfo($locale, $settings->getFestival()->getId());
+            //$infos = $this->removeUnpublishedNewsAudioVideo($infos, $locale);
+
+            if ($statements === null && $infos === null) {
+                throw new NotFoundHttpException();
+            }
+
+            $allPressNews = array_merge($infos, $statements);
+            $pressNews = array_slice($allPressNews, $offset, $limit);
+
+            if (count($allPressNews) > $offset + $limit) {
+                $pressNewsLeft = $offset + $limit;
+            } else {
+                $pressNewsLeft = false;
+            }
+
+            usort($pressNews, function ($a, $b) {
+                if ($a->getCreatedAt()->format('Y-m-d H:i:s') == $b->getCreatedAt()->format('Y-m-d H:i:s')) {
+                    return 0;
+                }
+                return ($a->getCreatedAt()->format('Y-m-d H:i:s') > $b->getCreatedAt()->format('Y-m-d H:i:s')) ? -1 : 1;
+            });
+
+            return array(
+                'pressNews' => $pressNews,
+                'pressNewsLeft' => $pressNewsLeft,
+            );
+
+        }
     }
 
 }

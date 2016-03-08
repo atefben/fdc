@@ -121,5 +121,21 @@
 
         });
 
+        $(document).on('click','.read-more', function(event){
+            event.preventDefault();
+            event.stopPropagation();
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: GLOBALS.urls.loadPressReleaseUrl,
+                data: {'offset': $('.read-more').attr('data-offset')},
+                success: function(data) {
+                    $('.read-more').remove();
+                    $('#gridAudios .item:last-child').after(data);
+                }
+            });
+
+        });
+
     </script>
 {% endblock %}

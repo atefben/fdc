@@ -39,15 +39,6 @@ class FDCPageWaitingTranslation implements TranslateChildInterface
     private $title;
 
     /**
-     * @var \Application\Sonata\MediaBundle\Entity\Media
-     *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=true)
-     * @Assert\Valid()
-     */
-    private $banner;
-
-    /**
      * @var string
      *
      * @Gedmo\Slug(fields={"title"}, updatable=false)
@@ -140,28 +131,5 @@ class FDCPageWaitingTranslation implements TranslateChildInterface
     {
         return $this->slug;
     }
-    
 
-    /**
-     * Set banner
-     *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $banner
-     * @return FDCPageWaitingTranslation
-     */
-    public function setBanner(\Application\Sonata\MediaBundle\Entity\Media $banner = null)
-    {
-        $this->banner = $banner;
-
-        return $this;
-    }
-
-    /**
-     * Get banner
-     *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
-     */
-    public function getBanner()
-    {
-        return $this->banner;
-    }
 }
