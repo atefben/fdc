@@ -118,6 +118,17 @@
     margin-bottom: 40px;
 }
 
+.single-article table[border="0"] td {
+    border: none !important;
+}
+
+.single-article table caption {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    text-align: center;
+}
+
 .single-article .button a {
     color: #c8a461;
 }

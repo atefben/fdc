@@ -67,7 +67,7 @@ class FilmFilmPerson implements TranslateMainInterface
     /**
      * @var FilmFilmPersonFunction
      *
-     * @ORM\OneToMany(targetEntity="FilmFilmPersonFunction", mappedBy="filmPerson", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FilmFilmPersonFunction", mappedBy="filmPerson", cascade={"all"})
      *
      * @Groups({"film_list", "film_show"})
      */
