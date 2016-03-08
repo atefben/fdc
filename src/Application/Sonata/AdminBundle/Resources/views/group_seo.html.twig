@@ -67,6 +67,30 @@
                         {{ 'dashboard.link.fdc_page_web_tv_trailers_cinema_plage'|trans({}, 'BaseAdminBundle') }}
                     </a>
                 </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpagenewsarticles_edit', {id: admin_fdc_page_news_articles_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_news_articles'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpagenewsaudios_edit', {id: admin_fdc_page_news_audios_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_news_audios'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpagenewsimages_edit', {id: admin_fdc_page_news_images_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_news_images'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpagenewsvideos_edit', {id: admin_fdc_page_news_videos_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_news_videos'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
             {% endif %}
         </ul>
     </li>

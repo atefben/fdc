@@ -461,6 +461,20 @@ class NewsController extends Controller {
             throw new NotFoundHttpException();
         }
 
+        // SEO
+        $id = $this->getParameter('admin_fdc_page_news_articles_id');
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageNewsArticles')
+            ->find($id)
+        ;
+
+        if ($page === null) {
+            $this->createNotFoundException('Page not found');
+        }
+
+        $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
+
         //GET ALL NEWS ARTICLES
         $newsArticles = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $settings->getFestival()->getId());
         $newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale);
@@ -526,6 +540,20 @@ class NewsController extends Controller {
             throw new NotFoundHttpException();
         }
 
+        // SEO
+        $id = $this->getParameter('admin_fdc_page_news_photos_id');
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageNewsPhotos')
+            ->find($id)
+        ;
+
+        if ($page === null) {
+            $this->createNotFoundException('Page not found');
+        }
+
+        $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
+
         //GET ALL MEDIA PHOTOS
         $photos = $em
             ->getRepository('BaseCoreBundle:Media')
@@ -581,6 +609,20 @@ class NewsController extends Controller {
             throw new NotFoundHttpException();
         }
 
+        // SEO
+        $id = $this->getParameter('admin_fdc_page_news_videos_id');
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageNewsVideos')
+            ->find($id)
+        ;
+
+        if ($page === null) {
+            $this->createNotFoundException('Page not found');
+        }
+
+        $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
+
         //GET ALL MEDIA AUDIOS
         $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $settings->getFestival()->getId(), $dateTime);
 
@@ -633,6 +675,20 @@ class NewsController extends Controller {
         if ($settings === null || $settings->getFestival() === null) {
             throw new NotFoundHttpException();
         }
+
+        // SEO
+        $id = $this->getParameter('admin_fdc_page_news_audio_id');
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageNewsAudios')
+            ->find($id)
+        ;
+
+        if ($page === null) {
+            $this->createNotFoundException('Page not found');
+        }
+
+        $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
 
         //GET ALL MEDIA AUDIOS
         $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $settings->getFestival()->getId(), $dateTime);

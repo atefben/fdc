@@ -170,3 +170,7 @@ parameters:
     instagram_consumer_secret: ~
     instagram_token: ~
     tumblr_consumer_key: ~
+    admin_fdc_page_news_articles_id: ~
+    admin_fdc_page_news_audios_id: ~
+    admin_fdc_page_news_images_id: ~
+    admin_fdc_page_news_videos_id: ~

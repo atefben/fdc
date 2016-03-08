@@ -111,6 +111,10 @@ twig:
         admin_fdc_page_web_tv_trailers_courts_metrages_id: %admin_fdc_page_web_tv_trailers_courts_metrages_id%
         admin_fdc_page_web_tv_trailers_cannes_classics_id: %admin_fdc_page_web_tv_trailers_cannes_classics_id%
         admin_fdc_page_web_tv_trailers_cinema_plage_id: %admin_fdc_page_web_tv_trailers_cinema_plage_id%
+        admin_fdc_page_news_articles_id: %admin_fdc_page_news_articles_id%
+        admin_fdc_page_news_audios_id: %admin_fdc_page_news_audios_id%
+        admin_fdc_page_news_videos_id: %admin_fdc_page_news_videos_id%
+        admin_fdc_page_news_images_id: %admin_fdc_page_news_images_id%
         s3_server_global: http://%s3_global_bucket_name%.s3-website-%s3_global_region%.amazonaws.com/
         s3_server_video: http://%s3_video_bucket_name%.s3-website-%s3_video_region%.amazonaws.com/
         s3_server_audio: http://%s3_audio_bucket_name%.s3-website-%s3_audio_region%.amazonaws.com/

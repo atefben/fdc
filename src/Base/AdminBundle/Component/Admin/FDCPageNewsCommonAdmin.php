@@ -1,17 +1,17 @@
 <?php
 
-namespace Base\AdminBundle\Admin;
+namespace Base\AdminBundle\Component\Admin;
 
-use Base\CoreBundle\Entity\FDCPageWebTvChannels;
-use Base\CoreBundle\Entity\FDCPageWebTvChannelsTranslation;
-use Base\AdminBundle\Component\Admin\Admin;
+use Base\CoreBundle\Entity\FDCPageNewsArticles;
+use Base\CoreBundle\Entity\FDCPageNewsArticlesTranslation;
+use Sonata\AdminBundle\Admin\Admin as BaseAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Show\ShowMapper;
 
-class FDCPageWebTvChannelsAdmin extends Admin
+class FDCPageNewsCommonAdmin extends BaseAdmin
 {
     protected function configureRoutes(RouteCollection $collection)
     {
@@ -23,12 +23,24 @@ class FDCPageWebTvChannelsAdmin extends Admin
         $collection->remove('export');
     }
 
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('id');
+        $datagridMapper
+            ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
+            ->add('translate')
+            ->add('translateOptions')
+            ->add('priorityStatus')
+        ;
     }
 
     /**
@@ -38,13 +50,19 @@ class FDCPageWebTvChannelsAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
+            ->add('translate')
+            ->add('translateOptions')
+            ->add('priorityStatus')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
                 )
-            ));
+            ))
+        ;
     }
 
     /**
@@ -62,7 +80,7 @@ class FDCPageWebTvChannelsAdmin extends Admin
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
-                        'choices' => FDCPageWebTvChannelsTranslation::getStatuses(),
+                        'choices' => FDCPageNewsArticlesTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                     'seoTitle' => array(
@@ -97,25 +115,15 @@ class FDCPageWebTvChannelsAdmin extends Admin
                 'help' => 'form.media_image.helper_file',
                 'required' => false
             ))
-            ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.fdc_page_web_tv_channels.image',
-                'help' => 'form.fdc_page_web_tv_channels.helper_image',
-                'required' => false,
-            ))
-            ->add('sticky', 'sonata_type_model_list', array(
-                'label' => 'form.fdc_page_web_tv_channels.sticky',
-                'help' => 'form.fdc_page_web_tv_channels.helper_sticky',
-                'required' => false,
-            ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => FDCPageWebTvChannels::getAvailableTranslateOptions(),
+                'choices' => FDCPageNewsArticles::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
                 'multiple' => true,
                 'expanded' => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => FDCPageWebTvChannels::getPriorityStatuses(),
+                'choices' => FDCPageNewsArticles::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ));
     }
@@ -126,11 +134,12 @@ class FDCPageWebTvChannelsAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id');
-    }
-
-    public function configure()
-    {
-        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
+            ->add('id')
+            ->add('createdAt')
+            ->add('updatedAt')
+            ->add('translate')
+            ->add('translateOptions')
+            ->add('priorityStatus')
+        ;
     }
 }

@@ -9,6 +9,8 @@ use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * FDCPageNewsArticles

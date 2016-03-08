@@ -1,0 +1,99 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+{{ form_errors(form) }}
+<div class="a2lix_translations tabbable">
+    {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
+    {% include 'BaseAdminBundle:Block:languages.tabs.html.twig' %}
+
+    <div class="a2lix_translationsFields tab-content">
+        {% for translationsFields in form %}
+            {% set locale = translationsFields.vars.name %}
+
+            <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <div class="clearfix">
+                                    <h4 class="box-title">
+                                        {{ 'group.seo'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
+                                    {{ 'group.helper_seo'|trans|nl2br }}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                {{ form_row(translationsFields.seoTitle) }}
+                                {{ form_row(translationsFields.seoDescription) }}
+                                {% if form.vars.default_locale == locale %}
+                                    {{ form_row(form.parent.children.seoFile) }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% if form.vars.default_locale == locale %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <div class="form-group fdc-input-border">
+                                        {{ form_widget(form.parent.children.translate) }}
+                                        {{ form_label(form.parent.children.translate) }}
+                                        {{ form_widget(form.parent.children.translateOptions) }}
+                                        {{ form_row(form.parent.children.priorityStatus) }}
+                                    </div>
+                                    <div class="status-hidden">
+                                        {{ form_row(translationsFields.status) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.status) }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    {% if form.vars.default_locale == locale %}
+                        <div class="col-md-4">
+                            <p>
+                                {{ 'group.helper_seo_fdc_page_web_tv_channels_example'|trans|nl2br }}
+                            </p>
+                        </div>
+                    {% endif %}
+
+                    {% if form.vars.default_locale != locale %}
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        VERSION FRANÇAISE
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {% if form.children.fr.vars.value is not null %}
+                                            <label class="control-label">
+                                                {{ 'form.label_seo_title'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.children.fr.vars.value.seoTitle }}
+                                            </div>
+                                        {% endif %}
+                                        {% if form.children.fr.vars.value is not null %}
+                                            <label class="control-label">
+                                                {{ 'form.label_seo_description'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.children.fr.vars.value.seoDescription }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
