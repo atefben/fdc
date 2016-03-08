@@ -45,6 +45,11 @@ class FDCPageWaiting implements TranslateMainInterface
     private $enabled;
 
     /**
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $banner;
+
+    /**
      * @var ArrayCollection
      *
      * @Assert\Valid()
@@ -56,6 +61,13 @@ class FDCPageWaiting implements TranslateMainInterface
      *
      */
     protected $page;
+
+    public function __toString()
+    {
+        $string = strval($this->getId());
+
+        return $string;
+    }
 
     /**
      * Get id
@@ -112,5 +124,28 @@ class FDCPageWaiting implements TranslateMainInterface
     public function getPage()
     {
         return $this->page;
+    }
+
+    /**
+     * Set banner
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $banner
+     * @return FDCPageWaiting
+     */
+    public function setBanner(\Base\CoreBundle\Entity\MediaImageSimple $banner = null)
+    {
+        $this->banner = $banner;
+
+        return $this;
+    }
+
+    /**
+     * Get banner
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getBanner()
+    {
+        return $this->banner;
     }
 }

@@ -21,7 +21,7 @@ use DateTime;
  * FDCPageWebTvTrailersTranslation
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCPageWebTvTrailersTranslationRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FDCPageWebTvTrailersTranslation implements TranslateChildInterface

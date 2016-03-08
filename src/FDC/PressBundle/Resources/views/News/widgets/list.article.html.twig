@@ -101,7 +101,7 @@
             <span class="date">{{ article.createdAt|date('d.m.y') }}</span> . <span class="hour">{{ article.createdAt|date('H:i') }}</span>
             <h3>
                 <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': articleType }) }}">
-                    {{ article|trans_fallback('title')}}
+                    {{ article|trans_fallback('title')|truncate(40)}}
                 </a>
             </h3>
         </div>
