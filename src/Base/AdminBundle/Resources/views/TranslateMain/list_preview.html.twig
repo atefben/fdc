@@ -4,18 +4,26 @@
     <div>
         {% set trans = object.findTranslationByLocale('fr') %}
         {% if trans and trans.slug %}
-            {% if class(object) starts with 'S' %}
-                {% set type = 'statement' %}
-                {% else %}
-                {% set type = 'info' %}
-            {% endif %}
-                <a target="_blank" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
-                    <i class="fa fa-search"></i>
-                </a>
-            {% else %}
+
+            {% if class(object) == "NewsArticle"
+               or class(object) == "NewsVideo"
+               or class(object) == "NewsAudio"
+               or class(object) == "NewsImage"
+            %}
                 <a target="_blank" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">
                     <i class="fa fa-search"></i>
                 </a>
+            {% else %}
+                {% if class(object) starts with 'S' %}
+                    {% set type = 'communique' %}
+                {% else %}
+                    {% set type = 'info' %}
+                {% endif %}
+                <a target="_blank" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                    <i class="fa fa-search"></i>
+                </a>
+            {% endif %}
+
         {% endif %}
     </div>
 {% endblock %}
