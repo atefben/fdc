@@ -27,6 +27,23 @@
     margin-bottom: 5px;
 }
 
+.single-article .text em {
+    font-style: italic;
+}
+
+.single-article .text sup {
+    vertical-align: super;
+}
+
+.single-article .text sub {
+    vertical-align: sub;
+}
+
+.single-article .button:hover a,
+.single-article .button a:hover {
+    color: #FFFFFF;
+}
+
 .single-article ul,
 .single-article ol {
     color: #666;
@@ -76,7 +93,7 @@
     font-size: 1rem;
     line-height: 1.7em;
     margin-bottom: 5px;
-    padding: 88px 30px;
+    padding: 70px 70px;
 }
 
 .single-article .txt-grey-bkg-container .content span {
