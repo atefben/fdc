@@ -4374,6 +4374,7 @@ header #logo-wrapper #partners img {
   display: inline-block;
   margin-right: 25px;
   vertical-align: middle;
+  height: 100%;
 }
 header #logo-wrapper #partners img.chopard {
   margin-top: 10px;
