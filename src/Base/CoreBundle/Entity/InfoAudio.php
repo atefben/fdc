@@ -28,7 +28,7 @@ class InfoAudio extends Info
     /**
      * @var MediaImage
      *
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"persist"})
      *
      * @Groups({"news_list", "news_show"})
      */
@@ -37,7 +37,7 @@ class InfoAudio extends Info
     /**
      * @var MediaAudio
      *
-     * @ORM\ManyToOne(targetEntity="MediaAudio")
+     * @ORM\ManyToOne(targetEntity="MediaAudio", cascade={"persist"})
      *
      * @Groups({"news_list", "news_show"})
      * @Assert\NotNull()

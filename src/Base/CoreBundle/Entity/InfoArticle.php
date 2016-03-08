@@ -25,7 +25,7 @@ class InfoArticle extends Info
     /**
      * @var MediaImage
      *
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"persist"})
      *
      * @Groups({"news_list", "news_show"})
      * @Assert\NotNull()
