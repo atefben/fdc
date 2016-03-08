@@ -44,9 +44,16 @@ class FDCPageWebTvLiveWebTvAssociated
      /**
      * @var WebTv
      *
-     * @ORM\ManyToOne(targetEntity="WebTv")
+     * @ORM\ManyToOne(targetEntity="WebTv", inversedBy="associatedWebTvs")
      */
     protected $association;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $position = 0;
     
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);
@@ -120,5 +127,28 @@ class FDCPageWebTvLiveWebTvAssociated
     public function getAssociation()
     {
         return $this->association;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return FDCPageWebTvLiveWebTvAssociated
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

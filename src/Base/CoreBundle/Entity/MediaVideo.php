@@ -48,6 +48,10 @@ class MediaVideo extends Media
      * @var WebTv
      *
      * @ORM\ManyToOne(targetEntity="WebTv", inversedBy="mediaVideos")
+     * @Assert\Expression(
+     *     "this.isDisplayedWebTvChecked() == false",
+     *     message="Cette valeur ne doit pas être nulle."
+     * )
      */
     private $webTv;
 
