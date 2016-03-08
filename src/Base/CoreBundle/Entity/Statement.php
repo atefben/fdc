@@ -220,7 +220,7 @@ abstract class Statement implements TranslateMainInterface
         return array(
             'Base\CoreBundle\Entity\StatementArticle' => 'article',
             'Base\CoreBundle\Entity\StatementAudio' => 'audio',
-            'Base\CoreBundle\Entity\StatementImage' => 'image',
+            'Base\CoreBundle\Entity\StatementImage' => 'photo',
             'Base\CoreBundle\Entity\StatementVideo' => 'video'
         );
     }

@@ -103,7 +103,7 @@
         <a href="#" class="read-later">
             <i class="icon icon_lire-plus-tard"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
         </a>
-        <span class="picto"><i class="icon icon_{{ article.newsType|get_news_type }}"></i></span>
+        <span class="picto"><i class="icon icon_{{ articleType == "communique" ? 'communique-presse' : 'article' }}"></i></span>
     </div>
     <div class="info">
         <span class="category">{{ article.theme|trans_fallback('name') }}</span>
