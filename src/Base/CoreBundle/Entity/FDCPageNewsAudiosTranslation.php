@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FDCPageNewsArticlesTranslation implements TranslateChildInterface
+class FDCPageNewsAudiosTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
