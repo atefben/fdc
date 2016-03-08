@@ -11,13 +11,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * FDCPageNewsArticles
+ * FDCPageNewsAudios
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class FDCPageNewsArticles implements TranslateMainInterface
+class FDCPageNewsAudios implements TranslateMainInterface
 {
     use Time;
     use Translatable;
