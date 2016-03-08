@@ -5625,12 +5625,8 @@ div.chocolat-wrapper .zoomCursor .icon {
   div.chocolat-wrapper .chocolat-bottom .icon_diaporama {
     font-size: 2rem;
     color: white;
-    position: relative;
     z-index: 100;
-    float: left;
     line-height: 65px;
-    margin-left: 28px;
-    margin-right: -71px;
   }
 }
 .filters {
