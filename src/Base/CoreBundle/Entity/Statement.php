@@ -131,7 +131,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * @var StatementWidget
      *
-     * @ORM\OneToMany(targetEntity="StatementWidget", mappedBy="statement", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="StatementWidget", mappedBy="statement", cascade={"all"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
@@ -220,7 +220,7 @@ abstract class Statement implements TranslateMainInterface
         return array(
             'Base\CoreBundle\Entity\StatementArticle' => 'article',
             'Base\CoreBundle\Entity\StatementAudio' => 'audio',
-            'Base\CoreBundle\Entity\StatementImage' => 'image',
+            'Base\CoreBundle\Entity\StatementImage' => 'photo',
             'Base\CoreBundle\Entity\StatementVideo' => 'video'
         );
     }

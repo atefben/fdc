@@ -132,7 +132,7 @@ abstract class Info implements TranslateMainInterface
     /**
      * @var InfoWidget
      *
-     * @ORM\OneToMany(targetEntity="InfoWidget", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="InfoWidget", mappedBy="info", cascade={"all"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
@@ -221,7 +221,7 @@ abstract class Info implements TranslateMainInterface
         return array(
             'Base\CoreBundle\Entity\InfoArticle' => 'article',
             'Base\CoreBundle\Entity\InfoAudio' => 'audio',
-            'Base\CoreBundle\Entity\InfoImage' => 'image',
+            'Base\CoreBundle\Entity\InfoImage' => 'photo',
             'Base\CoreBundle\Entity\InfoVideo' => 'video'
         );
     }

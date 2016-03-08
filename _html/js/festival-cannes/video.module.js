@@ -423,7 +423,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $stateBtn.removeClass('icon_pause').addClass('icon_play');
         mouseMoving(false);
     }).on('buffer', function() {
-        console.log("i'm here");
+        // console.log("i'm here");
     }).on('complete', function () {
         this.stop();
         $stateBtn.removeClass('icon_pause').addClass('icon_play');

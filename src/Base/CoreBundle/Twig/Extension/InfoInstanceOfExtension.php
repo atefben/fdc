@@ -28,10 +28,10 @@ class InfoInstanceOfExtension extends Twig_Extension
     public function getTests()
     {
         return array(
-            new \Twig_SimpleTest('info_article', function (Info $info) { return $info instanceof InfoArticle; }),
-            new \Twig_SimpleTest('info_audio', function (Info $info) { return $info instanceof InfoAudio; }),
-            new \Twig_SimpleTest('info_image', function (Info $info) { return $info instanceof InfoImage; }),
-            new \Twig_SimpleTest('info_video', function (Info $info) { return $info instanceof InfoVideo; })
+            new \Twig_SimpleTest('info_article', function ($info) { return $info instanceof InfoArticle; }),
+            new \Twig_SimpleTest('info_audio', function ($info) { return $info instanceof InfoAudio; }),
+            new \Twig_SimpleTest('info_image', function ($info) { return $info instanceof InfoImage; }),
+            new \Twig_SimpleTest('info_video', function ($info) { return $info instanceof InfoVideo; })
         );
     }
 

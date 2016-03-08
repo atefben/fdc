@@ -1,5 +1,5 @@
 {% trans_default_domain 'FDCPressBundle' %}
-{% set articleType = "statement" %}
+{% set articleType = "communique" %}
 {% if class(article) starts with "I" %}
     {% set articleType = "info" %}
 {% endif %}
@@ -90,7 +90,7 @@
     <article class="article">
         <div class="img">
             <span class="picto">
-                <i class="icon icon_{{ articleType == "statement" ? 'communique-presse' : 'article'  }}"></i>
+                <i class="icon icon_{{ articleType == "communique" ? 'communique-presse' : 'article'  }}"></i>
             </span>
             <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': articleType }) }}">
                 {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
