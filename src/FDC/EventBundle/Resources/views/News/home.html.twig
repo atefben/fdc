@@ -88,9 +88,23 @@
                     <div class="content-news">
                         <div id="articles-wrapper">
                             <div class="articles left">
+                                {% set type = 'news' %}
                                 {% for article in homeArticles %}
                                     {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
+                                    {% if article is news_article or
+                                    article is news_video or
+                                    article is news_audio or
+                                    article is news_image %}
+                                        {% set type = 'news' %}
+                                    {% else %}
+                                        {% if class(article) starts with 'S' %}
+                                            {% set type = 'communique' %}
+                                        {% else %}
+                                            {% set type = 'info' %}
+                                        {% endif %}
+                                    {% endif %}
                                 {% endfor %}
+
                              </div>
 
                              {% if homeArticlesSlider is not empty %}
@@ -115,21 +129,26 @@
                                 </div>
                             {% endif %}
                         </div>
-
-                        <a href="#" class="read-more">{{ 'home.btn.afficherplusdactualite'|trans|raw }}</a>
+                        {% if type == 'news' %}
+                            <a href="#" class="read-more">{{ 'home.btn.afficherplusdactualite'|trans|raw }}</a>
+                        {% else %}
+                            <a href="#" class="read-more">{{ 'home.btn.test'|trans|raw }}</a>
+                        {% endif %}
                     </div>
 
-                    <div id="timeline">
-                        {% for key,date in festivalInterval %}
-                            {%  set timestamp = date ~ ' 23:59:59' %}
-                            <a href="#" data-timestamp="{{ timestamp|date('U') }}" data-date="{{ date|date('d') }}" class="{% if homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') == date|date('Y-m-d') %}active{% elseif homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') < date|date('Y-m-d') %}disabled{% endif %}">
-                                {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
-                                <span class="day">{{ date|date('d') }}</span>
-                            </a>
-                        {% endfor %}
-                    </div>
-                    <div id="shdMore" class="shadow-bottom"></div>
-                    <div id="shd" class="shadow-bottom"></div>
+                    {% if type == 'news' %}
+                        <div id="timeline">
+                            {% for key,date in festivalInterval %}
+                                {%  set timestamp = date ~ ' 23:59:59' %}
+                                <a href="#" data-timestamp="{{ timestamp|date('U') }}" data-date="{{ date|date('d') }}" class="{% if homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') == date|date('Y-m-d') %}active{% elseif homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') < date|date('Y-m-d') %}disabled{% endif %}">
+                                    {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                                    <span class="day">{{ date|date('d') }}</span>
+                                </a>
+                            {% endfor %}
+                        </div>
+                        <div id="shdMore" class="shadow-bottom"></div>
+                        <div id="shd" class="shadow-bottom"></div>
+                    {% endif %}
                 </div>
             </div>
         {% endif %}

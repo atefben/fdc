@@ -122,9 +122,6 @@ class StatementRepository extends EntityRepository
 
     public function getStatementByDate($locale,$festival,$dateTime,$count)
     {
-        $dateTime1 = $dateTime->format('Y-m-d') . ' 00:00:00';
-        $dateTime2 = $dateTime->format('Y-m-d') . ' 23:59:59';
-
         $qb = $this
             ->createQueryBuilder('n')
             ->select('n')
@@ -139,7 +136,7 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt <= :datetime2)');
+            ->andWhere('(n.publishedAt < :datetime)');
 
         $qb = $qb
             ->andWhere(
@@ -170,8 +167,7 @@ class StatementRepository extends EntityRepository
         $qb = $qb
             ->orderBy('n.publishedAt', 'DESC')
             ->setParameter('festival', $festival)
-            ->setParameter('datetime', $dateTime1)
-            ->setParameter('datetime2', $dateTime2)
+            ->setParameter('datetime', $dateTime)
             ->setParameter('site_slug', 'site-evenementiel');
 
         return $qb
