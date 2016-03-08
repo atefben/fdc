@@ -72,6 +72,12 @@ class WebTv implements TranslateMainInterface
     private $image;
 
     /**
+     * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveWebTvAssociated", mappedBy="association")
+     *
+     */
+    private $associatedWebTvs;
+
+    /**
      * @var ArrayCollection
      *
      * @Groups({"web_tv_list", "web_tv_show"})
@@ -271,5 +277,38 @@ class WebTv implements TranslateMainInterface
     public function getExportTranslationZh()
     {
         return Export::translationField($this, 'name', 'zh');
+    }
+
+    /**
+     * Add associatedWebTvs
+     *
+     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs
+     * @return WebTv
+     */
+    public function addAssociatedWebTv(\Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs)
+    {
+        $this->associatedWebTvs[] = $associatedWebTvs;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedWebTvs
+     *
+     * @param \Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs
+     */
+    public function removeAssociatedWebTv(\Base\CoreBundle\Entity\FDCPageWebTvLiveWebTvAssociated $associatedWebTvs)
+    {
+        $this->associatedWebTvs->removeElement($associatedWebTvs);
+    }
+
+    /**
+     * Get associatedWebTvs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedWebTvs()
+    {
+        return $this->associatedWebTvs;
     }
 }

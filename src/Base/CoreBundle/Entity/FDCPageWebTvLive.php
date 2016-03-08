@@ -79,11 +79,13 @@ class FDCPageWebTvLive implements TranslateMainInterface
     /**
      * @var FDCPageWebTvLiveWebTvAssociated
      * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveWebTvAssociated", mappedBy="FDCPageWebTvLive", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $associatedWebTvs;
 
     /**
      * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveMediaVideoAssociated", mappedBy="FDCPageWebTvLive", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $associatedMediaVideos;
 
