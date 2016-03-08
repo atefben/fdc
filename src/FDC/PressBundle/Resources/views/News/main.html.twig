@@ -8,8 +8,8 @@
         <div id="canvasloader" class="canvasloader"></div>
         <div class="content-article">
             <div class="container small-container">
-                {% if prev[0] is defined and not prev[0] is empty %}<a href="{{ path('fdc_event_press_get', {'format': prev[0].newsFormat, 'slug': prev[0]|trans_fallback('slug'), 'type': prev[0].newsType }) }}" class="nav prev"><i class="icon icon_flecheGauche"></i></a>{% endif %}
-                {% if next[0] is defined and not next[0] is empty %}<a href="{{ path('fdc_event_press_get', {'format': next[0].newsFormat, 'slug': next[0]|trans_fallback('slug'), 'type': next[0].newsType }) }}}) }}" class="nav next"><i class="icon icon_fleche-right"></i></a>{% endif %}
+                {% if prev[0] is defined and not prev[0] is empty %}<a href="{{ path('fdc_press_news_get', {'format': prev[0].newsFormat, 'slug': prev[0]|trans_fallback('slug'), 'type': prev[0].newsType }) }}" class="nav prev"><i class="icon icon_flecheGauche"></i></a>{% endif %}
+                {% if next[0] is defined and not next[0] is empty %}<a href="{{ path('fdc_press_news_get', {'format': next[0].newsFormat, 'slug': next[0]|trans_fallback('slug'), 'type': next[0].newsType }) }}}) }}" class="nav next"><i class="icon icon_fleche-right"></i></a>{% endif %}
                 <div class="info">
                     <span class="category">{{ news.theme|trans_fallback('name') }}</span>
                     <span class="date">{{ news.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.publishedAt|date('H:i') }}</span>
