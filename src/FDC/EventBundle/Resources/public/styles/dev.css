@@ -27,6 +27,14 @@
     margin-bottom: 5px;
 }
 
+.single-article ol {
+    list-style: decimal;
+}
+
+.single-article ul {
+    list-style: inherit;
+}
+
 .single-article .big-quote span.big-quote-paragraph {
     color: #b1b1b1;
     text-align: center;
