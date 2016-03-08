@@ -5,7 +5,7 @@
     <div id="main" class=" webtv webtv-ba-video loading">
         <div class="container-webtv-ba-video">
             <div class="title-container">
-                <a href="#" class="bandeannone"><i
+                <a href="{{ path('fdc_event_television_trailers') }}" class="bandeannone"><i
                             class="icon icon_flecheGauche"></i>{{ 'trailer.btn.retourbandeannonces'|trans }}</a>
                 <h1 class="title">{{ film|trans_fallback('title') }}</h1>
             </div>
@@ -157,7 +157,6 @@
     </div>
     {% set author = '' %}
     {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-        {{ loop.index0 ? ', ': '' }}{{ director.fullName }}
         {% if loop.first == false %}
             {% set author = author ~ ', ' %}
         {% endif %}
