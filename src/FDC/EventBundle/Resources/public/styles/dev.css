@@ -39,6 +39,11 @@
     vertical-align: sub;
 }
 
+.single-article .button:hover a,
+.single-article .button a:hover {
+    color: #FFFFFF;
+}
+
 .single-article ul,
 .single-article ol {
     color: #666;
