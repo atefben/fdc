@@ -478,9 +478,14 @@ class TelevisionController extends Controller
                 }
             }
         }
-        if ($posterNext === null) {
-            $posterNext = $groups[$next->getId()]['video']->getImage();
-            $posterNextFormat = '640x404';
+        if ($posterNext === null && $groups[$next->getId()]['video']->getImage()) {
+            if ($posterNextLocale = $groups[$next->getId()]['video']->getImage()->findTranslationByLocale($locale)) {
+                if ($posterNextLocale && $posterNextLocale->getFile()) {
+                    $posterNext = $posterNextLocale->getFile();
+                    $posterNextFormat = '640x404';
+                }
+
+            }
         }
 
         /************* Projections **************/

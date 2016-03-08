@@ -157,7 +157,6 @@
     </div>
     {% set author = '' %}
     {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-        {{ loop.index0 ? ', ': '' }}{{ director.fullName }}
         {% if loop.first == false %}
             {% set author = author ~ ', ' %}
         {% endif %}
