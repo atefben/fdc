@@ -28,10 +28,10 @@ class StatementInstanceOfExtension extends Twig_Extension
     public function getTests()
     {
         return array(
-            new \Twig_SimpleTest('statement_article', function (Statement $statement) { return $statement instanceof StatementArticle; }),
-            new \Twig_SimpleTest('statement_audio', function (Statement $statement) { return $statement instanceof StatementAudio; }),
-            new \Twig_SimpleTest('statement_image', function (Statement $statement) { return $statement instanceof StatementImage; }),
-            new \Twig_SimpleTest('statement_video', function (Statement $statement) { return $statement instanceof StatementVideo; })
+            new \Twig_SimpleTest('statement_article', function ($statement) { return $statement instanceof StatementArticle; }),
+            new \Twig_SimpleTest('statement_audio', function ($statement) { return $statement instanceof StatementAudio; }),
+            new \Twig_SimpleTest('statement_image', function ($statement) { return $statement instanceof StatementImage; }),
+            new \Twig_SimpleTest('statement_video', function ($statement) { return $statement instanceof StatementVideo; })
         );
     }
 

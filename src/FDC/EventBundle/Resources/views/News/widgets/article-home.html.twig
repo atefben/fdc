@@ -1,7 +1,24 @@
-<article class="{{ article.newsType|get_news_type  }} {% if isDouble is defined %} {{isDouble}} {% endif %} {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-time="{{ article.publishedAt|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-end="{{ endOfArticles }}">
+{% set type = 'news' %}
+{% set picto = null %}
+{% if article is news_article or
+article is news_video or
+article is news_audio or
+article is news_image %}
+    {% set type = 'news' %}
+    {% set picto = article.newsType|get_news_type %}
+{% else %}
+    {% if class(article) starts with 'S' %}
+        {% set type = 'communique' %}
+        {% set picto = article.statementType|get_statement_type %}
+    {% else %}
+        {% set type = 'info' %}
+        {% set picto = article.infoType|get_info_type %}
+    {% endif %}
+{% endif %}
+<article class="{{ picto }} {% if isDouble is defined %} {{isDouble}} {% endif %} {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-time="{{ article.publishedAt|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-end="{{ endOfArticles }}" data-type="{{ type }}">
     <div class="image">
         <div class="image-wrapper">
-            {% if article is news_article %}
+            {% if article is news_article or article is statement_article or article is info_article %}
                 {% set img = article.header %}
                 {% set trans = img.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is null %}
@@ -9,7 +26,7 @@
                 {% endif %}
                 {% set file = trans.file %}
                 {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
-            {% elseif article is news_video %}
+            {% elseif article is news_video or article is statement_video or article is info_video%}
                 {% set header = article.header %}
                 {% if header is not null %}
                     {% set trans = header.findTranslationByLocale(app.request.locale) %}
@@ -35,7 +52,7 @@
                 {% endif %}
 
                 {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
-            {% elseif article is news_audio %}
+            {% elseif article is news_audio or article is info_audio or article is statement_audio %}
                 {% set header = article.header %}
                 {% if header is not null %}
                     {% set trans = header.findTranslationByLocale(app.request.locale) %}
@@ -61,7 +78,7 @@
                 {% endif %}
 
                 {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
-            {% elseif article is news_image %}
+            {% elseif article is news_image or article is statement_image or article is info_image %}
                 {% set header = article.header %}
                 {% if header is not null %}
                     {% set trans = header.findTranslationByLocale(app.request.locale) %}
@@ -89,15 +106,26 @@
                 {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
             {% endif %}
         </div>
-        <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
+        {% set trans = article.findTranslationByLocale('fr') %}
+
+        {% if type == 'news' %}
+            <a class="linkImage" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+        {% else %}
+            <a class="linkImage" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+        {% endif %}
         <a href="#" class="read-later">
             <i class="icon icon_lire-plus-tard"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
         </a>
-        <span class="picto"><i class="icon icon_{{ article.newsType|get_news_type  }}"></i></span>
+        <span class="picto"><i class="icon icon_{{ picto }}"></i></span>
     </div>
     <div class="info">
         <span class="category">{{ article.theme|trans_fallback('name') }}</span>
         <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
-        <h2><a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a></h2>
+        <h2>
+            {% if type == 'news' %}
+                <a class="linkImage" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+            {% else %}
+                <a class="linkImage" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+            {% endif %}  </h2>
     </div>
 </article>
