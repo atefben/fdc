@@ -35,7 +35,7 @@ function filter() {
     $('*' + exp1).hide();
     $('*' + exp2).show();
 
-    if($('.articles').length != 0) {
+    if($('.articles').length > 0) {
       $('#articles-wrapper').prepend('<div class="articles center" id="filteredArticles"></div>');
 
       $('.articles:not(.nextDay) article').each(function() {

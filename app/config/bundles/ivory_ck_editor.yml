@@ -10,7 +10,8 @@ ivory_ck_editor:
                 - ['Link', 'Unlink']
                 - ['Maximize', 'ShowBlocks']
                 - ['Image']
-            customConfig: /bundles/baseadmin/ckeditor/config.js
+            customConfig: /bundles/baseadmin/ckeditor/config_default.js
+            contentsCss: /bundles/baseadmin/ckeditor/default.css
             filebrowserBrowseRoute: admin_sonata_media_media_browser
             filebrowserImageBrowseRoute: admin_sonata_media_media_browser
             # Display images by default when clicking the image dialog browse button
@@ -44,7 +45,7 @@ ivory_ck_editor:
         press:
             # extra_plugins: divarea
             customConfig: /bundles/baseadmin/ckeditor/config_press.js
-            contentsCss: /bundles/baseadmin/ckeditor/widget.css
+            contentsCss: /bundles/baseadmin/ckeditor/press.css
             #styles
             #browser sonata media
             filebrowserBrowseRoute: admin_sonata_media_media_browser

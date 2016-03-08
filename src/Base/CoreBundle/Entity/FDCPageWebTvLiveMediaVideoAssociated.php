@@ -33,28 +33,36 @@ class FDCPageWebTvLiveMediaVideoAssociated
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      * @var FDCPageWebTvLive
      *
      * @ORM\ManyToOne(targetEntity="FDCPageWebTvLive", inversedBy="associatedMediaVideos")
      */
     protected $FDCPageWebTvLive;
-    
-     /**
+
+    /**
      * @var MediaVideo
      *
      * @ORM\ManyToOne(targetEntity="MediaVideo")
      */
     protected $association;
-    
-    public function __toString() {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $position = 0;
+
+    public function __toString()
+    {
         $string = substr(strrchr(get_class($this), '\\'), 1);
-        
+
         if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+            $string .= ' #' . $this->getId();
         }
-        
+
         return $string;
     }
 
@@ -68,7 +76,7 @@ class FDCPageWebTvLiveMediaVideoAssociated
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -91,7 +99,7 @@ class FDCPageWebTvLiveMediaVideoAssociated
     /**
      * Get FDCPageWebTvLive
      *
-     * @return \Base\CoreBundle\Entity\FDCPageWebTvLive 
+     * @return \Base\CoreBundle\Entity\FDCPageWebTvLive
      */
     public function getFDCPageWebTvLive()
     {
@@ -119,5 +127,28 @@ class FDCPageWebTvLiveMediaVideoAssociated
     public function getAssociation()
     {
         return $this->association;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return FDCPageWebTvLiveMediaVideoAssociated
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

@@ -154,6 +154,7 @@ class FDCPageWebTvLiveAdmin extends Admin
             ), array(
                     'edit'   => 'inline',
                     'inline' => 'table',
+                    'sortable' => 'position',
                 )
             )
             ->add('associatedMediaVideos', 'sonata_type_collection', array(
@@ -164,6 +165,7 @@ class FDCPageWebTvLiveAdmin extends Admin
             ), array(
                     'edit'   => 'inline',
                     'inline' => 'table',
+                    'sortable' => 'position',
                 )
             )
             ->add('doNotDisplayWebTvArea', 'checkbox', array(

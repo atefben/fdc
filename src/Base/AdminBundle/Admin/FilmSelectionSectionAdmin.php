@@ -36,6 +36,7 @@ class FilmSelectionSectionAdmin extends Admin
             ->add('name', null, array(
                 'template' => 'BaseAdminBundle:FilmSelectionSection:list_name.html.twig',
             ))
+            ->add('position')
         ;
     }
 

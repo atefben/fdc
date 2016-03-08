@@ -1,5 +1,7 @@
 .single-article hr {
-    border: 1px solid #e5e5e5;
+    height: 0;
+    border: 0;
+    border-top: 1px solid #e5e5e5;
 }
 
 .single-article .single-photo img {
@@ -25,6 +27,15 @@
     font-size: 1rem;
     line-height: 1.7em;
     margin-bottom: 5px;
+    padding-left: 30px;
+}
+
+.single-article ol {
+    list-style: decimal;
+}
+
+.single-article ul {
+    list-style: inherit;
 }
 
 .single-article .big-quote span.big-quote-paragraph {
@@ -105,6 +116,17 @@
 .single-article .quote blockquote {
     margin-top: 35px;
     margin-bottom: 40px;
+}
+
+.single-article table[border="0"] td {
+    border: none !important;
+}
+
+.single-article table caption {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    text-align: center;
 }
 
 .single-article .button a {

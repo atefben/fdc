@@ -27,41 +27,41 @@
           <div id="date" class="filter">
             <span class="label">Années :</span>
             <span class="select">
-              <span class="active" data-filter="d2016">2016</span><i class="icon icon_fleche-down"></i>
-
+              <span class="active" data-filter="d2016">2016</span>
               <span data-filter="d2015">2015</span>
               <span data-filter="d2014">2014</span>
               <span data-filter="d2013">2013</span>
               <span data-filter="d2012">2012</span>
+              <i class="icon icon_fleche-down"></i>
             </span>
           </div>
           <div id="type" class="filter">
             <span class="label">Types :</span>
             <span class="select">
-              <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
-
+              <span class="active" data-filter="all">Tous</span>
               <span data-filter="communique">Communiqués</span>
               <span data-filter="infos">Infos</span>
+              <i class="icon icon_fleche-down"></i>
             </span>
           </div>
           <div id="theme" class="filter">
             <span class="label">Thèmes :</span>
             <span class="select">
-              <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
-
+              <span class="active" data-filter="all">Tous</span>
               <span data-filter="press">Conférence de Presse</span>
               <span data-filter="steps">Montée des marches</span>
+              <i class="icon icon_fleche-down"></i>
             </span>
           </div>
           <div id="format" class="filter">
             <span class="label">Formats :</span>
             <span class="select">
-              <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
-
+              <span class="active" data-filter="all">Tous</span>
               <span data-filter="article">Articles</span>
               <span data-filter="photos">Photos</span>
               <span data-filter="audios">Audios</span>
               <span data-filter="videos">Vidéos</span>
+              <i class="icon icon_fleche-down"></i>
             </span>
           </div>
         </div>
@@ -85,7 +85,7 @@
             </div>
           </article>
         </div>
-        <div class="item all d2015 steps communique">
+        <div class="item all d2015 steps communique article">
           <article class="article">
             <div class="img"><span class="picto"><i class="icon icon_communique-presse"></i></span><a href="article-press.php"><img src='img/press/actu03.jpg' /></a> </div>
             <div class="info">
@@ -94,7 +94,7 @@
             </div>
           </article>
         </div>
-        <div class="item all d2016 press communique">
+        <div class="item all d2016 press communique article">
           <article class="article">
             <div class="img"><span class="picto"><i class="icon icon_communique-presse"></i></span><a href="article-press.php"><img src='img/press/actu05.jpg' /></a> </div>
             <div class="info">
@@ -103,7 +103,7 @@
             </div>
           </article>
         </div>
-        <div class="item all d2013 press communique">
+        <div class="item all d2013 press communique article">
           <article class="article">
             <div class="img"><span class="picto"><i class="icon icon_communique-presse"></i></span><a href="article-press.php"><img src='img/press/actu04.jpg' /></a> </div>
             <div class="info">

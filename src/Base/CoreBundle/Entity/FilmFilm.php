@@ -231,10 +231,9 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @var FilmFilmPerson
      *
-     * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="film", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="film", cascade={"all"})
      *
      * @Groups({"film_list", "film_show"})
-     * 
      */
     private $persons;
 
@@ -250,7 +249,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $contacts;
     
     /**
-     * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="film", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="film", cascade={"all"})
      * @ORM\OrderBy({"position"="ASC"})
      *
      * @Groups({"film_list", "film_show"})

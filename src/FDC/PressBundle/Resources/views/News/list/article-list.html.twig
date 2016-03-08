@@ -1,0 +1,16 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
+
+    {% for article in pressNews %}
+        {% include 'FDCPressBundle:News:list/article.html.twig' %}
+    {% endfor %}
+
+{% if pressNewsLeft != false %}
+    <a href="#" class="read-more" data-offset="{{ pressNewsLeft }}">
+        {{ 'press.actu.btn.afficherplusdarticles'|trans|raw }}
+    </a>
+{% else %}
+    <a href="#" class="read-more" style="visibility: hidden">
+        {{ 'press.actu.btn.afficherplusdarticles'|trans|raw }}
+    </a>
+{% endif %}
