@@ -14365,7 +14365,7 @@ input[type=submit] {
 .webtv-ba-video .informations-video .program-film .contain-info {
   max-height: 222px;
   margin-bottom: 26px;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 .webtv-ba-video .informations-video .program-film .infos {
