@@ -28,10 +28,10 @@ class NewsInstanceOfExtension extends Twig_Extension
     public function getTests()
     {
         return array(
-            new \Twig_SimpleTest('news_article', function (News $news) { return $news instanceof NewsArticle; }),
-            new \Twig_SimpleTest('news_audio', function (News $news) { return $news instanceof NewsAudio; }),
-            new \Twig_SimpleTest('news_image', function (News $news) { return $news instanceof NewsImage; }),
-            new \Twig_SimpleTest('news_video', function (News $news) { return $news instanceof NewsVideo; })
+            new \Twig_SimpleTest('news_article', function ($object) { return $object instanceof NewsArticle; }),
+            new \Twig_SimpleTest('news_audio', function ($object) { return $object instanceof NewsAudio; }),
+            new \Twig_SimpleTest('news_image', function ($object) { return $object instanceof NewsImage; }),
+            new \Twig_SimpleTest('news_video', function ($object) { return $object instanceof NewsVideo; })
         );
     }
 

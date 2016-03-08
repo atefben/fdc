@@ -21,6 +21,14 @@
     -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
+
+/* Separator */
+.cke_editable hr {
+    height: 0;
+    border: 0;
+    border-top: 1px solid #e5e5e5;
+}
+
 /* Golden border */
 .cke_editable .big-quote {
     padding: 70px 70px;
@@ -78,9 +86,6 @@
 }
 
 /* Table */
-.cke_editable table {
-}
-
 .cke_editable .table-article tr:first-child td {
     text-transform: uppercase;
     color: #000;
@@ -89,7 +94,7 @@
     vertical-align: middle;
     border: 1px solid #dfdfdf;
     padding: 15px 0px;
-    width: 50%;
+    //width: 50%;
     font-size: .74rem;
     text-align: center;
 }
@@ -99,11 +104,23 @@
     vertical-align: middle;
     border: 1px solid #dfdfdf;
     padding: 15px 0px;
-    width: 50%;
+    width: 320px;
     text-align: center;
     color: #666666;
     font-size: .74rem;
     font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+
+.cke_editable table[border="0"] td {
+    border: none !important;
+}
+
+.cke_editable table caption {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
     text-align: center;
 }
 
@@ -195,15 +212,19 @@
     text-align: center;
 }
 
-
 /* Header text */
-.cked_editable .chapeau {
+.cke_editable .chapeau {
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     color: #333;
     font-size: 1.125rem;
     line-height: 2em;
     margin-bottom: 70px;
     text-align: center;
+}
+
+.cke_editable .chapeau a {
+    color: #c8a461;
+    text-decoration: none;
 }
 
 /* Notes */

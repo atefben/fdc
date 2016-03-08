@@ -3273,12 +3273,12 @@ body {
 
 .shadow-bottom:before {
   background: transparent;
-  background: -moz-linear-gradient(top, transparent 56%, transparent 70%, rgba(20, 20, 20, 0.8) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(56%, transparent), color-stop(70%, transparent), color-stop(100%, rgba(20, 20, 20, 0.8)));
-  background: -webkit-linear-gradient(top, transparent 56%, transparent 70%, rgba(20, 20, 20, 0.8) 100%);
-  background: -o-linear-gradient(top, transparent 56%, transparent 70%, rgba(20, 20, 20, 0.8) 100%);
-  background: -ms-linear-gradient(top, transparent 56%, transparent 70%, rgba(20, 20, 20, 0.8) 100%);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0) 70%, rgba(20, 20, 20, 0.8) 100%);
+  background: -moz-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(40%, transparent), color-stop(100%, rgba(0, 0, 0, 0.8)));
+  background: -webkit-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+  background: -o-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+  background: -ms-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.8) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
   content: '';
   display: block;
@@ -5024,6 +5024,19 @@ footer .footer-menu ul li a:hover {
   -webkit-transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
+.slideshow .slideshow-img .images .img a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.slideshow .slideshow-img .images .img a.compat-object-fit {
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.slideshow .slideshow-img .images .img a.compat-object-fit img {
+  opacity: 0;
+}
 .slideshow .slideshow-img .images .img img {
   display: block;
   margin: 0 auto;
@@ -5090,9 +5103,6 @@ footer .footer-menu ul li a:hover {
 .slideshow .slideshow-img .images .img:hover:after {
   opacity: 1;
   visibility: visible;
-}
-.slideshow .slideshow-img .images .img:hover a {
-  position: absolute;
 }
 .slideshow .slideshow-img .images .img:hover img {
   -moz-transform: scale(1.05);
@@ -5304,12 +5314,11 @@ div.chocolat-wrapper .chocolat-bottom:hover .buttons {
 div.chocolat-wrapper .chocolat-bottom .icon_diaporama {
   font-size: 2rem;
   color: white;
-  position: relative;
+  position: absolute;
   z-index: 100;
-  float: left;
+  left: 50%;
+  margin-left: -16px;
   line-height: 85px;
-  margin-left: 38px;
-  margin-right: -38px;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-pagination {
   border-right: 1px solid rgba(255, 255, 255, 0.4);
@@ -5410,7 +5419,7 @@ div.chocolat-wrapper .share {
 }
 div.chocolat-wrapper .share .icon {
   line-height: 100px;
-  color: #fff;
+  color: #c8a461;
   font-size: 1.1rem;
   -moz-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -5624,12 +5633,8 @@ div.chocolat-wrapper .zoomCursor .icon {
   div.chocolat-wrapper .chocolat-bottom .icon_diaporama {
     font-size: 2rem;
     color: white;
-    position: relative;
     z-index: 100;
-    float: left;
     line-height: 65px;
-    margin-left: 28px;
-    margin-right: -71px;
   }
 }
 .filters {

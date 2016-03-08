@@ -346,6 +346,7 @@ class FilmManager extends CoreManager
                 $filmSelectionSection = $this->em->getRepository('BaseCoreBundle:FilmSelectionSection')->findOneBy(array('id' => $object->SectionSelection->Code));
                 $filmSelectionSection = ($filmSelectionSection !== null) ? $filmSelectionSection : new FilmSelectionSection();
                 $filmSelectionSection->setId($object->SectionSelection->Code);
+                $filmSelectionSection->setPosition($object->SectionSelection->OrdreAffichage);
                 $filmSelection->addSection($filmSelectionSection);
                 $entity->setSelectionSection($filmSelectionSection);
 

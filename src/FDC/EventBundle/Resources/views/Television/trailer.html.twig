@@ -169,7 +169,29 @@
         'title': film|trans_fallback('title'),
         'description': film|trans_fallback('synopsis')
     })) }}
-{% endblock %}
+
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+        [
+            {
+                "name" : 'breadcrumb.webtv.home'|trans,
+                "url"  : path('fdc_event_news_index')
+            },
+            {
+                "name" : 'breadcrumb.webtv.live'|trans,
+                "url"  : path('fdc_event_television_live')
+            },
+            {
+                "name" : 'breadcrumb.webtv.trailers'|trans,
+                "url"  : path('fdc_event_television_trailers')
+            },
+            {
+                "name" : film|trans_fallback('title'),
+                "url"  : ''
+            }
+        ]
+    } %}
+{% endblock body %}
 
 {% block bandeauVideo %}
 {% endblock bandeauVideo %}

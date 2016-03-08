@@ -46,7 +46,7 @@ sonata_media:
 
         pdf:
             providers:
-                - sonata.media.provider.file
+                - sonata.media.provider.pdf
             formats:
 
         #CMS

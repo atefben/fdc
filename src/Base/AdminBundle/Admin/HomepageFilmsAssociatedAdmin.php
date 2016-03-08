@@ -51,19 +51,24 @@ class HomepageFilmsAssociatedAdmin extends Admin
             ->add('association', 'sonata_type_model_list', array(
                 'btn_add' => false,
                 'label' => 'form.label_films_associated',
+                'btn_delete' => false
             ))
             ->add('video', 'sonata_type_model_list', array(
                 'btn_add' => false,
                 'label' => 'form.label_video_extract_associated',
+                'btn_delete' => false
             ))
             ->add('tabletImage', 'sonata_type_model_list', array(
                 'btn_add' => false,
                 'label' => 'form.label_tablet_image',
+                'btn_delete' => false
             ))
             ->add('mobileImage', 'sonata_type_model_list', array(
                 'btn_add' => false,
-                'label' => 'form.label_image_mobile'
+                'label' => 'form.label_image_mobile',
+                'btn_delete' => false
             ))
+            ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
     }
 

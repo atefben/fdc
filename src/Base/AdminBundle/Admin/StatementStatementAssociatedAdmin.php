@@ -75,7 +75,6 @@ class StatementStatementAssociatedAdmin extends Admin
 
     public function preUpdate($object)
     {
-        exit('ok');
         foreach ($object->getStatement() as $statement) {
             $statement->setStatement($object);
         }

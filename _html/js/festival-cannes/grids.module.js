@@ -358,14 +358,18 @@ $(document).ready(function () {
 
     // filters
     $('body').on('click', '#filters span', function () {
+      var d = new Date(),
+          n = d.getFullYear();
 
       filterValues = "";
 
       $('.filter .select .active').each(function () {
-        if ($(this).data('filter') != 'all') {
+        if ($(this).data('filter') != 'all' && $(this).data('filter') != 'd'+n) {
           filterValues += '.' + $(this).data('filter');
         }
       });
+
+      console.log(filterValues);
 
       $container.isotope({
         filter: function() {
@@ -385,35 +389,27 @@ $(document).ready(function () {
 
       if($('#gridAudios') || $('#gridVideos')) {
         $('.filter .select').each(function() {
+          var d = new Date();
+          var n = d.getFullYear();
+          
           $that = $(this);
-          $that.find("span:not(.active):not([data-filter='all'])").each(function() {
+          $that.find("span:not(.active):not([data-filter='all'],[data-filter='d"+n+"'])").each(function() {
             $this = $(this);
 
             var getVal = '.'+$this.data('filter');
             var numItems = $('.item'+getVal+':not(.isotope-hidden)').length;
             if (numItems === 0) {
-                $this.addClass('disabled');
-                // $this.hide();
+              // console.log(1,$('.item'+getVal+':not(.isotope-hidden)'));
+              $this.addClass('disabled');
+              // $this.hide();
             } else {
-                $this.removeClass('disabled');
-                // $this.show();
+              // console.log(1,$('.item'+getVal+':not(.isotope-hidden)'));
+              $this.removeClass('disabled');
+              // $this.show();
             }
           });
         });
       }
-
-      // if($('.all-photos').length) {
-      //   setTimeout(function() {
-      //     for(var i=0; i<slideshows.length; i++) {
-      //       slideshows[i].api().destroy();
-      //     }
-
-      //     slideshows = [];
-      //     $('.chocolat-wrapper').remove();
-      //     initSlideshows();
-      //   }, 1500);
-      // }
     });
   }
-
 });

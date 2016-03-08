@@ -42,6 +42,13 @@ class HomepageTopWebTvsAssociated
     protected $homepage;
 
     /**
+     * @var position
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $position;
+
+    /**
      * @var WebTv
      *
      * @ORM\ManyToOne(targetEntity="WebTv")
@@ -112,5 +119,28 @@ class HomepageTopWebTvsAssociated
     public function getAssociation()
     {
         return $this->association;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return HomepageTopWebTvsAssociated
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

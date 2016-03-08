@@ -64,7 +64,7 @@ class PressGuideWidgetPictoType extends PressGuideWidgetType
                     'label' => 'form.label_content',
                     'sonata_help' => 'form.press_homepage.helper_desc',
                     'translation_domain' => 'BaseAdminBundle',
-                    'config_name' => 'widget'
+                    'config_name' => 'press'
                 )
             )
         ))

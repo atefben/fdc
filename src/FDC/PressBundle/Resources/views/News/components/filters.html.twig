@@ -10,25 +10,23 @@
                     <span class="active" data-filter="d{{ date.content }}">
                         {{ date.content }}
                     </span>
-                    <i class="icon icon_fleche-down"></i>
                 {% else %}
                     <span data-filter="d{{ date.content }}">
                         {{ date.content }}
                     </span>
                 {% endif %}
             {% endfor %}
+            <i class="icon icon_fleche-down"></i>
         </span>
     </div>
 
     <div id="type" class="filter">
         <span class="label">{{ 'press.actu.filter.label.types'|trans }} :</span>
         <span class="select">
-            <span class="active" data-filter="all">
-              {{ 'press.actu.filter.type.tous'|trans }}
-            </span>
-            <i class="icon icon_fleche-down"></i>
+            <span class="active" data-filter="all">{{ 'press.actu.filter.type.tous'|trans }}</span>
             <span data-filter="communique">{{ 'press.actu.filter.type.communiques'|trans }}</span>
             <span data-filter="info">{{ 'press.actu.filter.type.infos'|trans }}</span>
+            <i class="icon icon_fleche-down"></i>
         </span>
     </div>
 
@@ -38,6 +36,7 @@
             {% for key, theme in filters.themes %}
                 <span class="{% if key == 0 %}active{% endif %}" data-filter="theme-{{ theme.id }}">{{ theme.content }}</span>
             {% endfor %}
+            <i class="icon icon_fleche-down"></i>
         </span>
     </div>
 
@@ -47,6 +46,7 @@
             {% for key, format in filters.format %}
                 <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ format.slug }}">{{ format.content }}</span>
             {% endfor %}
+            <i class="icon icon_fleche-down"></i>
         </span>
     </div>
 

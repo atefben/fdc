@@ -7,7 +7,7 @@
         <div class="vCenter">
             <div class="vCenterKid">
                 <div class="textLive">
-                    <h2>{{ page|trans_fallback('title') }}</h2>
+                    <h2>{{ page|trans_fallback('title')|raw }}</h2>
                     {% if videoUrl %}
                         <a href="#" class="play-live"><i class="icon icon_play"></i></a>
                     {% elseif page.live == false %}
@@ -27,17 +27,17 @@
             <div class="trailer">
                 {% if videoUrl %}
                     <div class="video-container state-init video"
-                        data-facebook="//www.facebook.com/sharer.php?u={{ url('fdc_event_news_getvideos') }}t=le%20titre"
-                        data-twitter="//www.twitter.com"
-                        data-link="//www.example.com"
-                        data-email="//www.gmail.com"
-                        data-file='[{"file":"{{ videoUrl }}"}]'
+                         data-facebook="//www.facebook.com/sharer.php?u={{ url('fdc_event_news_getvideos') }}t=le%20titre"
+                         data-twitter="//www.twitter.com"
+                         data-link="//www.example.com"
+                         data-email="//www.gmail.com"
+                         data-file='[{"file":"{{ videoUrl }}"}]'
                             {% if page.image and page.image|trans_fallback('file') %}
                         data-vid="web-tv-live"
                         data-img="{% path page.image|trans_fallback('file'), '1280x808' %}"
-                        {% else %}
+                    {% else %}
                         data-img=""
-                        {% endif %}>
+                            {% endif %}>
                         <div id="video-webtv-live" class="video-player">
                         </div>
                         <div class="video-overlay"></div>
@@ -106,7 +106,8 @@
                                         <a href="" class="category">{{ trailer.theme }}</a>
                                         <span class="date">{{ trailer.publishedAt|date('d.m.Y') }}</span> .
                                         <span class="hour">{{ trailer.publishedAt|date('H.i') }}</span>
-                                        <a href="#" class="titleLink">{{ trailer|trans_fallback('title')|truncate(85) }}</a>
+                                        <a href="#"
+                                           class="titleLink">{{ trailer|trans_fallback('title')|truncate(85) }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -122,13 +123,13 @@
             <div class="container sliderDrag">
                 {% for video in lastVideos %}
                     <div class="video shadow-bottom"
-                        data-vid="{{ video.id }}"
-                        data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
-                        {% if video.image|trans_fallback('file') %}
+                         data-vid="{{ video.id }}"
+                         data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
+                            {% if video.image|trans_fallback('file') %}
                         data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
-                        {% else %}
+                    {% else %}
                         data-img="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
-                        {% endif %}>
+                            {% endif %}>
                         <div class="image-wrapper">
                             {% if video.image|trans_fallback('file') %}
                                 <img src="{% path video.image|trans_fallback('file'), '463x292' %}" alt="">
@@ -143,7 +144,8 @@
                                         <a class="category">{{ video.theme|trans_fallback('name') }}</a>
                                         <span class="date">{{ video.publishedAt|date('d.m.Y') }}</span> .
                                         <span class="hour">{{ video.publishedAt|date('H:i') }}</span>
-                                        <a href="#" class="titleLink">{{ video|trans_fallback('title')|truncate(50) }}</a>
+                                        <a href="#"
+                                           class="titleLink">{{ video|trans_fallback('title')|truncate(50) }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +157,7 @@
 
         <div class="popin-video video loading">
             <div class="video-container state-init video"
-                data-email="//www.gmail.com">
+                 data-email="//www.gmail.com">
                 <div id="video-player-popin" class="">
                 </div>
                 <div class="video-overlay"></div>
@@ -185,6 +187,20 @@
         <div class="ov"></div>
         </div>
     {% endif %}
+
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+        [
+            {
+                "name" : 'breadcrumb.webtv.home'|trans,
+                "url"  : path('fdc_event_news_index')
+            },
+            {
+                "name" : 'breadcrumb.webtv.live'|trans,
+                "url"  : ''
+            }
+        ]
+    } %}
 {% endblock body %}
 
 {% block WebTvLiveChannel %}

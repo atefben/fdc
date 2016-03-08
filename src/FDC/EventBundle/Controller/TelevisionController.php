@@ -67,7 +67,7 @@ class TelevisionController extends Controller
             $chosenChannels = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:WebTv')
-                ->getLiveWebTvs($locale, $festival->getId(), array(), $in)
+                ->getLiveWebTvs($locale, $festival->getId(), array(), $in, 10, $page)
             ;
 
             $inFlipped = array_flip($in);
@@ -85,7 +85,6 @@ class TelevisionController extends Controller
                     );
                 }
             }
-            ksort($sliderChosenChannels);
 
             $otherChannels = $this
                 ->getDoctrineManager()
@@ -121,9 +120,11 @@ class TelevisionController extends Controller
                         $isTrailer = $isPublished && $mediaVideo->getDisplayedTrailer();
                         $hasFilms = $isTrailer && $mediaVideo->getAssociatedFilms()->count();
                         $associatedFilms = $mediaVideo->getAssociatedFilms();
-                        $firstFilm = $associatedFilms[0]->getAssociation();
-                        if ($hasFilms && $firstFilm) {
-                            $trailers[$mediaVideo->getId()] = $mediaVideo;
+                        if ($associatedFilms && $associatedFilms[0]) {
+                            $firstFilm = $associatedFilms[0]->getAssociation();
+                            if ($hasFilms && $firstFilm) {
+                                $trailers[$mediaVideo->getId()] = $mediaVideo;
+                            }
                         }
                     }
                 }
@@ -492,14 +493,15 @@ class TelevisionController extends Controller
             ->get('base.manager.seo')
             ->setFDCEventPageFDCPageWebTvTrailerSeo($path, $title, $description, $updatedAt, $image)
         ;
+
         return array(
-            'film'         => $film,
-            'videos'       => array_values($videos),
-            'filmShowings' => $filmShowings,
-            'poster'       => $poster,
-            'next'         => $next instanceof FilmFilm ? $next : null,
-            'posterNext'   => $posterNext,
-            'posterNextFormat'   => $posterNextFormat,
+            'film'             => $film,
+            'videos'           => array_values($videos),
+            'filmShowings'     => $filmShowings,
+            'poster'           => $poster,
+            'next'             => $next instanceof FilmFilm ? $next : null,
+            'posterNext'       => $posterNext,
+            'posterNextFormat' => $posterNextFormat,
         );
     }
 }

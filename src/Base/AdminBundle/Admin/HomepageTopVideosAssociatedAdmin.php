@@ -51,6 +51,7 @@ class HomepageTopVideosAssociatedAdmin extends Admin
                 'btn_add' => false,
                 'btn_delete' => false,
             ))
+            ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
     }
 

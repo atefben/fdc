@@ -69,6 +69,13 @@ class HomepageFilmsAssociated
      */
     protected $association;
 
+    /**
+     * @var position
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $position;
+
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
@@ -202,5 +209,28 @@ class HomepageFilmsAssociated
     public function getMobileImage()
     {
         return $this->mobileImage;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return HomepageFilmsAssociated
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

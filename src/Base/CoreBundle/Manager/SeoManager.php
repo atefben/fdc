@@ -62,12 +62,12 @@ class SeoManager
     private $sonataSeoPage;
 
     /**
-     * @var Sonata\MediaBundle\Provider\ImageProvider
+     * @var \Sonata\MediaBundle\Provider\ImageProvider
      */
     private $sonataProviderImage;
 
     /**
-     * @var JMS\I18nRoutingBundle\Router\I18nRouter
+     * @var \JMS\I18nRoutingBundle\Router\I18nRouter
      */
     private $router;
 
@@ -362,7 +362,9 @@ class SeoManager
 
         if ($trans !== null) {
 
-            $this->sonataSeoPage->setTitle($trans->getTitle());
+
+            $title = strip_tags($trans->getTitle());
+            $this->sonataSeoPage->setTitle($title);
             // OG PARAMS
             $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
             $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
