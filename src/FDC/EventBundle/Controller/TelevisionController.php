@@ -314,13 +314,26 @@ class TelevisionController extends Controller
         ;
 
         if ($slug === null) {
-            $translation = current($pages)->findTranslationByLocale($request->getLocale());
+            $translation = current($pages)->findTranslationByLocale($locale);
             if ($translation) {
-                if (!$translation->getSlug()) {
-                    throw $this->createNotFoundException();
+                if (current($pages)->getSelectionSection()) {
+                    $sectionTrans =  current($pages)->getSelectionSection()->findTranslationByLocale($locale);
                 }
+                else {
+                    $sectionTrans = null;
+                }
+                if (!$translation->getSlug() && (!$sectionTrans || ($sectionTrans && !$sectionTrans->getSlug()))) {
+                    throw $this->createNotFoundException('notraileravailable');
+                }
+                if ($translation->getSlug()) {
+                    $slug = $translation->getSlug();
+                }
+                else {
+                    $slug = $sectionTrans->getSlug();
+                }
+
                 return $this->redirectToRoute('fdc_event_television_trailers', array(
-                    'slug' => $translation->getSlug(),
+                    'slug' => $slug,
                 ));
             }
         }
@@ -330,6 +343,14 @@ class TelevisionController extends Controller
             ->getRepository('BaseCoreBundle:FDCPageWebTvTrailersTranslation')
             ->findOneBySlug($slug)
         ;
+
+        if (!$pageTranslation) {
+            $pageTranslation = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FDCPageWebTvTrailersTranslation')
+                ->getByParentSelectionSectionSlug($locale, $slug)
+            ;
+        }
 
         if (!$pageTranslation) {
             throw $this->createNotFoundException('Page Translation not found');
@@ -411,9 +432,10 @@ class TelevisionController extends Controller
         $videos = $this->getBaseCoreMediaVideoRepository()->getFilmTrailersMediaVideos($festivalId, $locale, $film->getId());
 
 
-        /************* NextFilms **************/
+        /************* NextFilm **************/
         $filmsTrailers = $this
-            ->getBaseCoreMediaVideoRepository()
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
             ->getLastMediaVideoTrailerOfEachFilmFilm($festivalId, $locale, null, null)
         ;
 
@@ -424,7 +446,10 @@ class TelevisionController extends Controller
             );
         }
 
-        $films = $this->getBaseCoreFilmFilmRepository()->getFilmsByIds(array_keys($groups));
+        $films = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->getFilmsByIds(array_keys($groups));
 
         foreach ($films as $item) {
             $groups[$item->getId()]['film'] = $item;
