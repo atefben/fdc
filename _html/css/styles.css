@@ -5306,12 +5306,11 @@ div.chocolat-wrapper .chocolat-bottom:hover .buttons {
 div.chocolat-wrapper .chocolat-bottom .icon_diaporama {
   font-size: 2rem;
   color: white;
-  position: relative;
+  position: absolute;
   z-index: 100;
-  float: left;
+  left: 50%;
+  margin-left: -16px;
   line-height: 85px;
-  margin-left: 38px;
-  margin-right: -38px;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-pagination {
   border-right: 1px solid rgba(255, 255, 255, 0.4);
@@ -5412,7 +5411,7 @@ div.chocolat-wrapper .share {
 }
 div.chocolat-wrapper .share .icon {
   line-height: 100px;
-  color: #fff;
+  color: #c8a461;
   font-size: 1.1rem;
   -moz-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
