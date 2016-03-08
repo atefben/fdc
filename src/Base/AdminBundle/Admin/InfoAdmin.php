@@ -39,67 +39,96 @@ class InfoAdmin extends Admin
         return $query;
     }
 
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
+    }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('BaseAdminBundle:Form:polycollection.html.twig')
+        );
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            ->add('id', null, array('label' => 'filter.common.label_id'))
             ->add('title', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
                         return;
                     }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->andWhere('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
+                    $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
                     $queryBuilder->andWhere('t.title LIKE :title');
-                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
-
+                    $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
                     return true;
                 },
-                'field_type' => 'text'
+                'field_type' => 'text',
+                'label'      => 'list.info_common.label_title',
             ))
             ->add('theme')
-            ->add('publishedAt')
-            ->add('publishEndedAt')
-            ->add('status', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
+        ;
+
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addPublishedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addStatusFilter($datagridMapper);
+
+        $datagridMapper
+            ->add('status_translation_pending', 'doctrine_orm_callback', array(
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
                         return;
                     }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->andWhere('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.status = :status');
-                    $queryBuilder->setParameter('status', $value['value']);
-
+                    if ($value['value']) {
+                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value);
+                        $queryBuilder->andWhere('t2.status = :translation_pending');
+                        $queryBuilder->setParameter('translation_pending', InfoArticleTranslation::STATUS_TRANSLATION_PENDING);
+                    }
                     return true;
                 },
-                'field_type' => 'choice',
-                'field_options' => array(
-                    'choices' => InfoArticleTranslation::getStatuses(),
-                    'choice_translation_domain' => 'BaseAdminBundle'
-                ),
+                'field_type' => 'checkbox',
+                'label'      => 'list.news_common.translation_pending',
             ))
-            ->add('translate')
-            ->add('type', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
+            ->add('status_translation_validating', 'doctrine_orm_callback', array(
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
                         return;
                     }
 
-                    $queryBuilder->andWhere("{$alias} INSTANCE OF {$value['value']}");
-
+                    if ($value['value']) {
+                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value);
+                        $queryBuilder->andWhere('t2.status = :translation_validating');
+                        $queryBuilder->setParameter('translation_validating', InfoArticleTranslation::STATUS_TRANSLATION_VALIDATING);
+                    }
                     return true;
                 },
-                'field_type' => 'choice',
-                'field_options' => array(
-                    'choices' => Info::getTypes()
-                )
+                'field_type' => 'checkbox',
+                'label'      => 'list.news_common.translation_validating',
+            ))
+            ->add('status_translated', 'doctrine_orm_callback', array(
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+
+                    if ($value['value']) {
+                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value);
+                        $queryBuilder->andWhere('t2.status = :translated');
+                        $queryBuilder->setParameter('translated', InfoArticleTranslation::STATUS_TRANSLATED);
+                    }
+                    return true;
+                },
+                'field_type' => 'checkbox',
+                'label'      => 'list.news_common.translated',
             ))
         ;
+        $datagridMapper = $this->addPriorityFilter($datagridMapper);
     }
 
     /**
@@ -108,13 +137,28 @@ class InfoAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
-            ->add('type', null, array('template' => 'BaseAdminBundle:News:list_type.html.twig'))
-            ->add('theme')
-            ->add('priorityStatus', null, array('template' => 'BaseAdminBundle:News:priority.html.twig'))
-            ->add('status', null, array('template' => 'BaseAdminBundle:News:list_status.html.twig'))
-
+            ->add('id', null, array('label' => 'list.info_common.label_id'))
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:News:list_title.html.twig',
+                'label'    => 'list.info_common.label_title',
+            ))
+            ->add('theme', null, array())
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
+            ->add('publishedInterval', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
+                'sortable' => 'publishedAt',
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices'   => InfoArticle::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('statusMain', 'choice', array(
+                'choices'   => InfoArticleTranslation::getMainStatuses(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
         ;
     }
 
@@ -136,5 +180,23 @@ class InfoAdmin extends Admin
         $showMapper
             ->add('id')
         ;
+    }
+
+    public function getExportFields()
+    {
+        return array(
+            'Id'                                        => 'id',
+            'Titre de l\'actualité'                    => 'exportTitle',
+            'Thème'                                     => 'exportTheme',
+            'Identifiant créateur'                      => 'exportAuthor',
+            'Date de création'                          => 'exportCreatedAt',
+            'Dates de publication'                      => 'exportPublishDates',
+            'Date de modification'                      => 'exportUpdatedAt',
+            'Statut master'                             => 'exportStatusMaster',
+            'Statut traduction es'                      => 'exportStatusEn',
+            'Statut traduction en'                      => 'exportStatusEs',
+            'Statut traduction zh'                      => 'exportStatusZh',
+            'Publié sur'                                => 'exportSites',
+        );
     }
 }
