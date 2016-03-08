@@ -176,7 +176,7 @@ class Homepage
     private $topWebTvsAssociated;
 
     /**
-     * @var filmsAssociated
+     * @var HomepageFilmsAssociated
      * @ORM\OneToMany(targetEntity="HomepageFilmsAssociated", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
      */
     private $filmsAssociated;

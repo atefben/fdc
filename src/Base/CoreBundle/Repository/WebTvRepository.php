@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\FDCPageWebTvLive;
 use Base\CoreBundle\Entity\WebTv;
 use Base\CoreBundle\Entity\WebTvTranslation;
 
@@ -146,11 +147,11 @@ class WebTvRepository extends EntityRepository
      * @param int $limit
      * @return array
      */
-    public function getLiveWebTvs($locale, $festival, $excludes = null, $in = null, $limit = 10)
+    public function getLiveWebTvs($locale, $festival, $excludes = null, $in = null, $limit = 10, $page = null)
     {
         $qb = $this->createQueryBuilder('wt');
 
-        $qb = $qb->select('wt,
+        $qb->select('wt,
                 RAND() as HIDDEN rand')
             ->join('wt.translations', 'wtt')
             ->join('wt.mediaVideos', 'mv')
@@ -160,25 +161,34 @@ class WebTvRepository extends EntityRepository
             ->andWhere('SIZE(wt.mediaVideos) >= 1')
         ;
 
+        if ($page instanceof FDCPageWebTvLive) {
+            $qb
+                ->join('wt.associatedWebTvs', 'awtv')
+                ->join('awtv.FDCPageWebTvLive', 'fdcpage')
+                ->andWhere('fdcpage.id = :page_id')
+                ->setParameter('page_id', $page->getId())
+                ->orderBy('awtv.position', 'asc')
+            ;
+        }
+
         if ($excludes !== null && count($excludes)) {
-            $qb = $qb
+            $qb
                 ->andWhere('wt.id NOT IN (:excludes)')
                 ->setParameter(':excludes', $excludes)
             ;
         }
 
         if ($in !== null) {
-            $qb = $qb
+            $qb
                 ->andWhere('wt.id IN (:in)')
                 ->setParameter(':in', $in)
             ;
         }
 
-        $qb = $this->addTranslationQueries($qb, 'wtt', $locale);
-        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addTranslationQueries($qb, 'wtt', $locale);
+        $this->addTranslationQueries($qb, 'mvt', $locale);
 
-        $qb = $qb
-            ->orderBy('rand')
+        $qb
             ->setMaxResults((int)$limit)
         ;
 

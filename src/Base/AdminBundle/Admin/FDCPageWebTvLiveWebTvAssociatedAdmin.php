@@ -37,8 +37,8 @@ class FDCPageWebTvLiveWebTvAssociatedAdmin extends Admin
             ->add('updatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
+                    'show'   => array(),
+                    'edit'   => array(),
                     'delete' => array(),
                 )
             ))
@@ -52,6 +52,7 @@ class FDCPageWebTvLiveWebTvAssociatedAdmin extends Admin
     {
         $formMapper
             ->add('association', 'sonata_type_model_list', array('btn_delete' => false))
+            ->add('position', 'hidden', array('attr' => array("hidden" => true)))
         ;
     }
 
