@@ -243,7 +243,9 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="film", cascade={"all"})
      * @ORM\OrderBy({"position"="ASC"})
      * @Groups({
-     *  "trailer_list", "trailer_show"
+     *  "trailer_list", "trailer_show",
+     *  "award_list", "award_show",
+     *  "projection_list", "projection_show"
      * })
      * 
      */
@@ -321,7 +323,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="association", cascade={"all"})
      * @Groups({
-     *  "trailer_show"
+     *  "trailer_show",
+     *  "film_list", "film_show",
      * })
      */
     private $associatedMediaAudios;
