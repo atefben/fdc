@@ -83,6 +83,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
+     * @Groups({"film_list", "film_show"})
      */
     private $publishedAt;
     
@@ -199,7 +200,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="FilmSelection", inversedBy="films", cascade={"persist"})
      *
-	 * @Groups({"film_list", "film_show"})
      * 
      */
     private $selection;
@@ -208,6 +208,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @var FilmSelectionSection
      *
      * @ORM\ManyToOne(targetEntity="FilmSelectionSection", inversedBy="films", cascade={"persist"})
+     *
+     * @Groups({"film_list", "film_show"})
      *
      */
     private $selectionSection;
@@ -242,11 +244,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="film", cascade={"all"})
      * @ORM\OrderBy({"position"="ASC"})
-     * @Groups({
-     *  "trailer_list", "trailer_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
-     * })
+     *
+     * @Groups({"film_list", "film_show"})
      * 
      */
     private $medias;
@@ -302,6 +301,9 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @ORM\ManyToMany(targetEntity="FilmProjectionProgrammationFilmList", mappedBy="films", cascade={"all"})
      *
+     * @Groups({
+     *  "film_list", "film_show",
+     * })
      */
     protected $projectionProgrammationFilmsList;
 
