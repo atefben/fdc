@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-03-09T18:11:42Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-03-09T19:08:20Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -70,13 +70,13 @@
       <trans-unit id="3e12f213a10adb5625e4d7ab250e654bc240d3d3" resname="newsletter.form.error.emaildejaenregistre">
         <source>newsletter.form.error.emaildejaenregistre</source>
         <target>L'adresse email est déjà enregistré</target>
-        <jms:reference-file line="280">EventBundle/Controller/GlobalController.php</jms:reference-file>
+        <jms:reference-file line="307">EventBundle/Controller/GlobalController.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="8f2153dcfb9a423088a11691433387db818adc5c" resname="newsletter.form.error.ladresseemailnestpasvalide">
         <source>newsletter.form.error.ladresseemailnestpasvalide</source>
         <target>L'adresse email n'est pas valide</target>
-        <jms:reference-file line="198">EventBundle/Controller/GlobalController.php</jms:reference-file>
-        <jms:reference-file line="269">EventBundle/Controller/GlobalController.php</jms:reference-file>
+        <jms:reference-file line="225">EventBundle/Controller/GlobalController.php</jms:reference-file>
+        <jms:reference-file line="296">EventBundle/Controller/GlobalController.php</jms:reference-file>
       </trans-unit>
     </body>
   </file>
