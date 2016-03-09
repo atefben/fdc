@@ -31,7 +31,6 @@ class FilmAward
      *
      * @Groups({
      *  "award_list", "award_show",
-     *  "film_list", "film_show"
      * })
      */
     private $id;
@@ -67,7 +66,6 @@ class FilmAward
      *
      * @Groups({
      *  "award_list", "award_show",
-     *  "film_list", "film_show"
      * })
      */
     private $personMutual;
@@ -79,7 +77,6 @@ class FilmAward
      *
      * @Groups({
      *  "award_list", "award_show",
-     *  "film_list", "film_show"
      * })
      */
     private $exAequo;
@@ -91,7 +88,6 @@ class FilmAward
      *
      * @Groups({
      *  "award_list", "award_show",
-     *  "film_list", "film_show"
      * })
      */
     private $unanimity;
@@ -103,7 +99,6 @@ class FilmAward
      *
      * @Groups({
      *  "award_list", "award_show",
-     *  "film_list", "film_show"
      * })
      */
     private $comment;
