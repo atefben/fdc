@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Manager;
 
 use Base\CoreBundle\Entity\FDCPageNewsArticles;
+use Base\CoreBundle\Entity\FDCPageNewsImages;
 use Base\CoreBundle\Entity\FDCPageWebTvChannels;
 use Base\CoreBundle\Entity\FDCPageWebTvLive;
 use Base\CoreBundle\Entity\FDCPageWebTvTrailers;
@@ -190,7 +191,7 @@ class SeoManager
         } else if ($page instanceof FDCPageNewsAudios) {
             $route = 'fdc_event_news_getaudios';
         } else if ($page instanceof FDCPageNewsImages) {
-            $route = 'fdc_event_news_getimages';
+            $route = 'fdc_event_news_getphotos';
         } else if ($page instanceof FDCPageNewsVideos) {
             $route = 'fdc_event_news_getvideos';
         }

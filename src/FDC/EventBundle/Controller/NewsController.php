@@ -586,7 +586,7 @@ class NewsController extends Controller
         $id = $this->getParameter('admin_fdc_page_news_images_id');
         $page = $this
             ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FDCPageNewsPhotos')
+            ->getRepository('BaseCoreBundle:FDCPageNewsImages')
             ->find($id)
         ;
 
