@@ -5,13 +5,13 @@ namespace Base\AdminBundle\Controller;
 use Sonata\AdminBundle\Controller\CRUDController;
 
 /**
- * StatementWidgetVideoDummyAdminController class.
+ * InfoWidgetVideoYoutubeDummyAdminController class.
  *
  * \@extends CRUDController
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class StatementWidgetVideoDummyAdminController extends CRUDController
+class InfoWidgetVideoYoutubeDummyAdminController extends CRUDController
 {
 
 }
