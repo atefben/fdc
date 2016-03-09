@@ -657,7 +657,7 @@ form:
         label_section: Blocs
     fdc_page_web_tv_channels:
         image: Image cover
-        helper_image: Dimensions attendues : 2560×600. Format attendu.
+        helper_image: Dimensions attendues : 2560×1103. Format attendu.
         sticky: Chaîne à la une
 
         helper_sticky: Sélectionnez la première chaîne que vous souhaitez voir apparaître en haut à gauche de la page.
@@ -680,7 +680,7 @@ form:
           URL Youtube, type : http://www.youtube.com/watch?v=urCLo4vNpzs&1
           Si non renseigné, seule l'image existera, le picto "play" n'apparaitra pas.
         image: Image cover
-        helper_image: Dimensions attendues : 2560×600. Format attendu.
+        helper_image: Dimensions attendues : 2560×1103. Format attendu.
         channels: Chaînes WebTV
         label_web_tvs_associated: Chaînes à la une
         helper_web_tvs_associated: Sélectionnez de 3 à 5 vidéos de la webTV. Elles apparaitront en front-office dans l'ordre des champs.
@@ -697,7 +697,7 @@ form:
         content_page: Contenu de la page
         image: Image cover
         label_image: Image cover
-        helper_image: Dimensions attendues : 2560×600. Format attendu.
+        helper_image: Dimensions attendues : 2560×1103. Format attendu.
         placeholder_seo_title: À saisir manuellement
         placeholder_seo_description: À saisir manuellement
         label_festival_section: Sélection
