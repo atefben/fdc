@@ -32,6 +32,13 @@ trait TranslateChild
     private $lockedAt;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $isPublishedOnFDCEvent;
+
+    /**
      * getStatuses function.
      *
      * @access public
@@ -88,6 +95,33 @@ trait TranslateChild
     {
         return $this->status;
     }
+
+    /**
+     * @param $isPublishedOnFDCEvent
+     * @return $this
+     */
+    public function setisPublishedOnFDCEvent($isPublishedOnFDCEvent)
+    {
+        $this->isPublishedOnFDCEvent = $isPublishedOnFDCEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get IsPublishedOnFDCEvent
+     *
+     * @return integer
+     */
+    public function getIsPublishedOnFDCEvent()
+    {
+        return $this->isPublishedOnFDCEvent;
+    }
+
+    public function IsPublishedOnFDCEvent()
+    {
+        return $this->isPublishedOnFDCEvent;
+    }
+
 
 
     /**
