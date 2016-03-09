@@ -94,6 +94,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @Groups({
      *  "trailer_list", "trailer_show",
+     *  "film_list", "film_show",
      *  "award_list", "award_show",
      *  "projection_list", "projection_show"
      * })
@@ -107,7 +108,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Groups({
-     *  "trailer_list", "trailer_show",
      *  "film_list", "film_show",
      *  "award_list", "award_show",
      *  "projection_list", "projection_show"
@@ -160,6 +160,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Groups({
+     *  "film_list", "film_show",
      *  "trailer_list", "trailer_show",
      *  "award_list", "award_show",
      *  "projection_list", "projection_show"
@@ -174,6 +175,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="integer", nullable=true)
      *
      * @Groups({
+     *  "film_list", "film_show",
      *  "trailer_list", "trailer_show",
      *  "award_list", "award_show",
      *  "projection_list", "projection_show"
@@ -187,6 +189,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Groups({
+     *  "film_list", "film_show",
      *  "trailer_list", "trailer_show",
      *  "award_list", "award_show",
      *  "projection_list", "projection_show"
@@ -200,6 +203,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="FilmSelection", inversedBy="films", cascade={"persist"})
      *
+     * @Groups({"film_list", "film_show"})
      * 
      */
     private $selection;
@@ -227,6 +231,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="film", cascade={"all"})
      *
+     * @Groups({"film_list", "film_show"})
      */
     private $persons;
 
@@ -259,6 +264,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film", cascade={"all"})
      *
      * @Groups({
+     *  "film_list", "film_show",
      *  "trailer_list", "trailer_show",
      *  "award_list", "award_show",
      *  "projection_list", "projection_show"
@@ -317,7 +323,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="association", cascade={"all"})
      * @Groups({
-     *  "trailer_show"
+     *  "trailer_show",
+     *  "film_list", "film_show",
      * })
      */
     private $associatedMediaVideos;
