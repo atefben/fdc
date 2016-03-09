@@ -1743,26 +1743,5 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         return $this->associatedMediaAudios;
     }
 
-    /**
-     * Set publishedAt
-     *
-     * @param \DateTime $publishedAt
-     * @return FilmFilm
-     */
-    public function setPublishedAt($publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
 
-        return $this;
-    }
-
-    /**
-     * Get publishedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPublishedAt()
-    {
-        return $this->publishedAt;
-    }
 }
