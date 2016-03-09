@@ -42,7 +42,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Video de test avec un titre extralong pour voir comment ça s'affiche sur les chaînes et ailleurs pour voir une fois">Video de test avec un titre extralong pour voir comment ça s'affiche sur les chaînes et ailleurs pour voir une fois</p>
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Video de test avec un titre extralong pour voir comment ça s'affiche sur les chaînes et ailleurs pour voir une fois">Video de test avec un titre extralong pour voir comment ça s'affiche sur les chaînes et ailleurs pour voir une fois</p>
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Video de test avec un titre extralong pour voir comment ça s'affiche sur les chaînes et ailleurs pour voir une fois">Video de test avec un titre extralong pour voir comment ça s'affiche sur les chaînes et ailleurs pour voir une fois</p>
               </div>
             </div>
           </div>
@@ -87,7 +87,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de MaïwennLe photocall de Maïwenn">Le photocall de MaïwennLe photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -102,7 +102,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -117,7 +117,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Video de test avec un titre extralong pour voir comment ça s'affiche sur les chaînes et ailleurs pour voir une fois">Video de test avec un titre extralong pour voir comment ça s'affiche sur les chaînes et ailleurs pour voir une fois</p>
               </div>
             </div>
           </div>
@@ -132,7 +132,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -147,7 +147,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -162,7 +162,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -177,7 +177,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -192,7 +192,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -207,7 +207,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -222,7 +222,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -237,7 +237,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -252,7 +252,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -267,7 +267,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -282,7 +282,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -297,7 +297,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -312,7 +312,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -327,7 +327,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -342,7 +342,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -357,7 +357,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -372,7 +372,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -387,7 +387,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>
@@ -402,7 +402,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                <p>Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
               </div>
             </div>
           </div>

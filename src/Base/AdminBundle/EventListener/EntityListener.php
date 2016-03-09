@@ -69,8 +69,48 @@ class EntityListener
             }
         }
 
-
+        $this->setPublishedOn($entity, $args);
     }
+
+    private function setPublishedOn($entity, $args)
+    {
+        if (method_exists($entity, 'isPublishedOnFDCEvent')) {
+            $em = $args->getEntityManager();
+            $fdcEventSite = $em->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-evenementiel');
+            $master = $entity->getTranslatable();
+            $entityFr = $master->findTranslationByLocale('fr');
+            $hasSite = false;
+            $hasFrench = false;
+            $hasLocale = false;
+
+            // has site
+            if ($master->getSites()->contains($fdcEventSite)) {
+                $hasSite = true;
+            }
+
+            // verify fr translation
+            if ($entityFr->getStatus() == TranslateChildInterface::STATUS_PUBLISHED) {
+                $hasFrench = true;
+            }
+
+            // verify locale
+            $hasLocale = false;
+            if ($entityFr === $entity) {
+                $hasLocale = true;
+            } else {
+                if ($entityFr->getStatus() == TranslateChildInterface::STATUS_TRANSLATED) {
+                    $hasLocale = true;
+                }
+            }
+
+            if ($hasSite == true && $hasFrench == true && $hasLocale == true) {
+                $entity->setIsPublishedOnFDCEvent(true);
+            } else {
+                $entity->setIsPublishedOnFDCEvent(false);
+            }
+        }
+    }
+
 
     /**
      * @param $args
@@ -96,6 +136,8 @@ class EntityListener
         if (method_exists($entity, 'getTranslatable') && method_exists($entity->getTranslatable(), 'setPublishedAt')) {
             $this->setPublishedAt($entity);
         }
+
+        $this->setPublishedOn($entity, $args);
     }
 
     /**

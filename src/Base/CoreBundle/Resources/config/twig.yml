@@ -29,6 +29,11 @@ services:
         tags:
             - { name: twig.extension }
 
+    base.twig.publish_date_extension:
+        class: Base\CoreBundle\Twig\Extension\PublishDateExtension
+        tags:
+            - { name: twig.extension }
+
     base.twig.info_instance_of_extension:
         class: Base\CoreBundle\Twig\Extension\InfoInstanceOfExtension
         tags:

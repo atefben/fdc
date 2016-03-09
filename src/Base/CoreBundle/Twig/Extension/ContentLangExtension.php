@@ -40,7 +40,7 @@ class ContentLangExtension extends Twig_Extension
             return '';
         }
 
-        return "lang=\"{$this->localeFallback}\"";
+        return "lang=\"{$locale}\"";
     }
 
     /**

@@ -201,7 +201,6 @@ class NewsController extends Controller
         $films = $homepage->getFilmsAssociated();
 
         // TODO: clean this
-
         $wallPosts = array(
             array(
                 'big' => true
@@ -584,10 +583,10 @@ class NewsController extends Controller
         }
 
         // SEO
-        $id = $this->getParameter('admin_fdc_page_news_photos_id');
+        $id = $this->getParameter('admin_fdc_page_news_images_id');
         $page = $this
             ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FDCPageNewsPhotos')
+            ->getRepository('BaseCoreBundle:FDCPageNewsImages')
             ->find($id)
         ;
 

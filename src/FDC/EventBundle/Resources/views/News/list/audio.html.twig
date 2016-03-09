@@ -28,15 +28,13 @@
                         <img src="{% path transImage.file , '1144x724' %}"
                              srcset="{% path transImage.file , '640x404' %} 1x, {% path transImage.file , '2560x1620' %} 2x"
                              alt="">
-                        <div class="picto">
-                            <i class="icon icon_audio"></i>
-                        </div>
+                        <div class="picto"><i class="icon icon_audio"></i></div>
                         <div class="info">
                             <div class="vCenter">
                                 <div class="vCenterKid">
                                     <span class="category">{{ audio.theme|trans_fallback('name') }}</span>
                                     <span class="date">{{ audio.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ audio.publishedAt|date('H:i') }}</span>
-                                    <p data-title="{{ audio|trans_fallback('title') }}">{{ audio|trans_fallback('title')|truncate(40) }}</p>
+                                    <p data-title="{{ audio|trans_fallback('title') }}">{{ audio|trans_fallback('title') }}</p>
                                 </div>
                             </div>
                         </div>
