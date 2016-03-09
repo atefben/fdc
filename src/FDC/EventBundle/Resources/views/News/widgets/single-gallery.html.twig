@@ -64,10 +64,9 @@
                             <img src="{% path file, '2560x1620' %}" alt="{{ trans.alt }}", title="{{ trans.legend }}">
                         </a>
                     </div>
-                {% endif %}
-                <div data-id="photo{{ key+1 }}" data-caption="<strong>{{ photo|trans_fallback('legend') }}</strong>{% if copyright is not empty %} © {% endif %}{{ copyright }}" class="thumb {% if key == 0 %}active{% endif %}">
-                    {% thumbnail file, '197x142' %}
-                </div>
+                    <div data-id="photo{{ key+1 }}" data-caption="<strong>{{ photo|trans_fallback('legend') }}</strong>{% if copyright is not empty %} © {% endif %}{{ copyright }}" class="thumb {% if key == 0 %}active{% endif %}">
+                        {% thumbnail file, '197x142' %}
+                    </div>
                 {% endif %}
             {% endfor %}
         </div>

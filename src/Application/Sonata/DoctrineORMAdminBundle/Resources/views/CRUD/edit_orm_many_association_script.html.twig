@@ -398,7 +398,6 @@ This code manage the many-to-[one|many] association field popup
                 })}}'.replace('OBJECT_ID', jQuery(this).val()),
                 dataType: 'html',
                 success: function(html) {
-                    console.log(html);
                     jQuery('#field_widget_{{ id }}').html(html);
                     var media = jQuery('#field_widget_{{ id }}').find('.fdc-sonata-media-ajax-hidden').html();
 
