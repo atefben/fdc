@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
 
     var config = null;
    // infinite collection sortable
-   $('div[id$="fdc-widgets"][data-form-widget="collection"]').sortable({
+   $('div[class$="fdc-widgets"][data-form-widget="collection"]').sortable({
         axis: 'y',
         items: '> .base-widget',
         start: function(event, ui) {

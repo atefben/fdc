@@ -84,7 +84,7 @@ class EntityListener
             $hasLocale = false;
 
             // has site
-            if ($master->getSites()->contains($fdcEventSite)) {
+            if ($master->getSites() && $master->getSites()->contains($fdcEventSite)) {
                 $hasSite = true;
             }
 

@@ -96,7 +96,10 @@
             $row.trigger(event);
 
             if (!event.isDefaultPrevented()) {
-                $row.remove();
+                var index = $row.index();
+                $('.a2lix_translationsFields > .tab-pane').each(function(i, e) {
+                    $(e).find('.fdc-widgets .base-widget').eq(index).remove();
+                });
             }
         },
 
