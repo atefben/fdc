@@ -7,17 +7,6 @@ CKEDITOR.editorConfig = function( config ) {
 
     // STYLES
     config.stylesSet = [
-        // Golden mail link
-        {
-            name: 'Lien Bouton doré', element: 'span', childRule: function (element) {
-            return !element.is('a')
-        }, attributes: {'class': 'button'}
-        },
-        {
-            name: 'Lien mail doré', element: 'span', childRule: function (element) {
-            return !element.is('a')
-        }, attributes: {'class': 'mail'}
-        },
         // Golden border
         {name: 'Bordure dorée', element: 'div', attributes: {'class': 'big-quote'}},
         {name: 'Bordure dorée titre', element: 'strong'},
