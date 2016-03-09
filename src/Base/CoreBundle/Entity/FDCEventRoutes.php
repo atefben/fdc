@@ -50,6 +50,22 @@ class FDCEventRoutes implements FDCEventRoutesInterface
     /**
      * @var string
      *
+     * @ORM\Column(type="integer", nullable=false)
+     *
+     */
+    private $site;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="integer", nullable=false)
+     *
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string", nullable=false)
      *
      */
@@ -124,7 +140,6 @@ class FDCEventRoutes implements FDCEventRoutesInterface
      * @ORM\Column(name="position", type="integer", nullable=false, options={"default" = 0})
      */
     private $position = 0;
-
 
 
     public function __construct()
@@ -482,5 +497,51 @@ class FDCEventRoutes implements FDCEventRoutesInterface
     public function getHasWaitingPage()
     {
         return $this->hasWaitingPage;
+    }
+
+    /**
+     * Set site
+     *
+     * @param integer $site
+     * @return FDCEventRoutes
+     */
+    public function setSite($site)
+    {
+        $this->site = $site;
+
+        return $this;
+    }
+
+    /**
+     * Get site
+     *
+     * @return integer 
+     */
+    public function getSite()
+    {
+        return $this->site;
+    }
+
+    /**
+     * Set type
+     *
+     * @param integer $type
+     * @return FDCEventRoutes
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return integer 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

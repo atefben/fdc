@@ -73,30 +73,31 @@ class GlobalController extends Controller {
             });
         }
 
-        $routesArticles = array(
-            'fdc_event_news_index',
-            'fdc_event_news_get',
-            'fdc_event_news_getarticles',
-            'fdc_event_news_getphotos',
-            'fdc_event_news_getvideos',
-            'fdc_event_news_getaudios',
-        );
-
-        $routesWebTv = array(
-            'fdc_event_television_live',
-            'fdc_event_television_channels',
-            'fdc_event_television_getchannel',
-            'fdc_event_television_gettrailer',
-            'fdc_event_television_trailers'
-        );
-
         return array(
             'menus' => $displayedMenus,
-            'routesArticles' => $routesArticles,
-            'routesWebTv' => $routesWebTv,
             'route' => $route
         );
 
+    }
+
+    /**
+     * @Route("/menu")
+     * @Template("FDCEventBundle:Global:footer.html.twig")
+     * @return array
+     */
+    public function footerAction(Request $request, $route) {
+        $em = $this->get('doctrine')->getManager();
+        $displayedFooterElements = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->findBy(
+            array('type' => 2),
+            array('position' => 'asc'),
+            null,
+            null
+        );
+
+        return array(
+            'footer' => $displayedFooterElements,
+            'route' => $route
+        );
     }
 
 

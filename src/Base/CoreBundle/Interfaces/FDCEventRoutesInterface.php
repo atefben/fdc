@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Interfaces;
 
 interface FDCEventRoutesInterface
 {
+    //menus
     const HOMEPAGE = 1;
     const WEB_TV  = 2;
     const MOVIE_SELECTION = 3;
@@ -13,4 +14,11 @@ interface FDCEventRoutesInterface
     const PROGRAMMATION  = 7;
     const PARTICIPATE = 8;
 
+    //sites
+    const EVENT = 1;
+    const PRESS  = 2;
+
+    //types
+    const MENU = 1;
+    const FOOTER  = 2;
 }

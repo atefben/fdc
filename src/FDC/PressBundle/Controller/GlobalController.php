@@ -2,6 +2,7 @@
 
 namespace FDC\PressBundle\Controller;
 
+use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -35,6 +36,45 @@ class GlobalController extends Controller
 
         return array(
             'pressContact' => $contact
+        );
+
+    }
+
+    /**
+     * @Route("/menu")
+     * @Template("FDCPressBundle:Global:nav.html.twig")
+     * @return array
+     */
+    public function menuAction($route) {
+
+        $em = $this->get('doctrine')->getManager();
+        $menus = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->childrenHierarchy();
+        $displayedMenus = array();
+        foreach($menus as $menu){
+            if($menu['site'] == FDCEventRoutesInterface::PRESS) {
+                $displayedMenus[] = $menu;
+            }
+        }
+
+        usort($displayedMenus, function($a, $b) {
+            if ($a["position"] == $b["position"]) {
+                return 0;
+            }
+            return ($a["position"] < $b["position"]) ? -1 : 1;
+        });
+
+        foreach ($displayedMenus as $key => $menu) {
+            usort($displayedMenus[$key]['__children'], function($a, $b) {
+                if ($a["position"] == $b["position"]) {
+                    return 0;
+                }
+                return ($a["position"] < $b["position"]) ? -1 : 1;
+            });
+        }
+
+        return array(
+            'menus' => $displayedMenus,
+            'route' => $route
         );
 
     }

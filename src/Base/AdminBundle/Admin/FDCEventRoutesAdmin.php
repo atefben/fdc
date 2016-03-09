@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
+use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
 use Knp\Menu\ItemInterface;
 use Sonata\AdminBundle\Admin\AdminInterface;
 
@@ -82,6 +83,12 @@ class FDCEventRoutesAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('site', null, array(
+                'template' => 'BaseAdminBundle:FDCEventRoutes:list_site.html.twig',
+            ))
+            ->add('type', null, array(
+                'template' => 'BaseAdminBundle:FDCEventRoutes:list_type.html.twig',
+            ))
             ->add('name')
             ->add('parent')
             ->add('enabled', null, array('editable' => true))
@@ -106,6 +113,18 @@ class FDCEventRoutesAdmin extends Admin
             ->add('enabled')
             ->add('parent')
             ->add('position')
+            ->add('site', 'choice', array(
+                'choices' => array(
+                FDCEventRoutesInterface::EVENT => 'Site évènementiel',
+                FDCEventRoutesInterface::PRESS => 'Site presse' ),
+                'label' => 'Site'
+           ))
+            ->add('type', 'choice', array(
+                'choices' => array(
+                    FDCEventRoutesInterface::MENU => 'Menu',
+                    FDCEventRoutesInterface::FOOTER => 'Footer' ),
+                'label' => 'Site'
+            ))
             ->add('hasWaitingPage')
         ;
     }
