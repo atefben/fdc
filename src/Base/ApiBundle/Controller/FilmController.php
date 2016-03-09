@@ -70,7 +70,7 @@ class FilmController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 		
         // set context view
-        $groups = array('film_list', 'time');
+        $groups = array('film_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
