@@ -119,78 +119,7 @@
     </div>
     <div id="navigation">
         <div class="container">
-            <nav>
-                <ul class="main">
-                    <li>
-                        <a href="{{ path('fdc_press_news_home') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_press_news_home' %}active{% endif %}">
-                            {{ 'header.mainnav.nav.accueil'|trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fdc_press_news_list') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_press_news_list'
-                           or app.request.attributes.get('_route') == 'fdc_press_news_get' %}active{% endif %}">
-                            {{ 'header.mainnav.nav.communiques'|trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fdc_press_accredit_main') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_press_accredit_main' %}active{% endif %}">
-                            {{ 'header.mainnav.nav.accrediter'|trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fdc_press_guide_main') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_press_guide_main' %}active{% endif %}">
-                            {{ 'header.mainnav.nav.guide'|trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fdc_press_agenda_scheduling') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_scheduling'
-                           or app.request.attributes.get('_route') == 'fdc_press_agenda_get'
-                           or app.request.attributes.get('_route') == 'fdc_press_agenda_room' %}active{% endif %}">
-                            {{ 'header.mainnav.nav.programmation'|trans }}
-                        </a>
-                        <ul class="tcenter">
-                            <li>
-                                <a href="{{ path('fdc_press_agenda_scheduling') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_scheduling'%}active{% endif %}">
-                                    {{ 'header.mainnav.nav.programmation'|trans }}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('fdc_press_agenda_get') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_get' %}active{% endif %}">
-                                    {{ 'header.mainnav.nav.agenda'|trans }}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('fdc_press_agenda_room') }}"
-                                   class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_room' %}active{% endif %}">
-                                    {{ 'header.mainnav.nav.plandessalles'|trans }}
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="{{ path('fdc_press_media_main') }}"
-                           class="{% if app.request.attributes.get('_route') == 'fdc_press_media_main' %}active{% endif %}">
-                            {{ 'header.mainnav.nav.mediatheque'|trans }}
-                        </a>
-                    </li>
-                </ul>
-                <ul class="user">
-                    <li>
-                        <a href="{{ path('fdc_press_media_download') }}"
-                           class="download {% if app.request.attributes.get('_route') == 'fdc_press_media_download' %}active{% endif %}">
-                            <i class="icon icon_telecharger"></i>
-                            {{ 'header.mainnav.nav.telecharger'|trans }}
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            {{ render(controller('FDCPressBundle:Global:menu', {route : app.request.get('_route')})) }}
         </div>
     </div>
     <div id="searchContainer">

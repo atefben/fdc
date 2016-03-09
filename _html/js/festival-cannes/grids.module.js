@@ -19,7 +19,7 @@ function resizeGrid() {
     if($('#gridAudios').length) {
       setGrid(false, $('#gridAudios'), true);
     }
-    if($('#gridAudios').length) {
+    if($('#gridVideos').length) {
       setGrid(false, $('#gridVideos'), true);
     }
   }
@@ -39,61 +39,102 @@ function setGrid(grid, dom, init){
 
   function buildGrid() {
     $($img).closest('div.item').removeClass('w2');
-    if (window.matchMedia("(max-width: 1599px)").matches) {
+    if (window.matchMedia("(max-width: 1279px)").matches) {
       while (i < $img.length) {
-        if (j < 11) {
+        if (j < 15) {
+          if (j == 0 || j == 5 || j == 11) {
+            $($img[i]).closest('div.item').addClass('w2');
+          }
+          j++;
+        }
+        if (j == 14) {
+          j = 0;
+        }
+        i++;
+      }
+
+      $(dom).find('div.item:not(.w2)').each(function() {
+        $(this).find('.info p').text($(this).find('.info p').data('title').trunc(20,true));
+      });
+      $(dom).find('div.item.w2').each(function() {
+        $(this).find('.info p').text($(this).find('.info p').data('title').trunc(50,true));
+      });
+    } else if (window.matchMedia("(max-width: 1599px)").matches) {
+      while (i < $img.length) {
+        if (j < 10) {
           if (j == 0 || j == 3) {
             $($img[i]).closest('div.item').addClass('w2');
           }
           j++;
         }
-        if (j == 10) {
+        if (j == 9) {
           j = 0;
         }
         i++;
       }
-    } else if (window.matchMedia("(max-width: 1919px)").matches) {
 
+      $(dom).find('div.item:not(.w2)').each(function() {
+        $(this).find('.info p').text($(this).find('.info p').data('title').trunc(30,true));
+      });
+      $(dom).find('div.item.w2').each(function() {
+        $(this).find('.info p').text($(this).find('.info p').data('title').trunc(60,true));
+      });
+    } else if (window.matchMedia("(max-width: 1919px)").matches) {
       while (i < $img.length) {
-        if (j < 31) {
+        if (j < 30) {
           if (j == 0 || j == 3 || j == 12 || j == 17 || j == 25) {
             $($img[i]).closest('div.item').addClass('w2');
           }
           j++;
         }
-        if (j == 30) {
+        if (j == 29) {
           j = 0;
         }
         i++;
       }
 
+      $(dom).find('div.item:not(.w2)').each(function() {
+        $(this).find('.info p').text($(this).find('.info p').data('title').trunc(35,true));
+      });
+      $(dom).find('div.item.w2').each(function() {
+        $(this).find('.info p').text($(this).find('.info p').data('title').trunc(65,true));
+      });
     } else if (window.matchMedia("(min-width: 1920px)").matches) {
       while (i < $img.length) {
-        if (j < 16) {
-          if (j == 0 || j == 5 || j == 15) {
+        if (j < 15) {
+          if (j == 0 || j == 5 || j == 14) {
             $($img[i]).closest('div.item').addClass('w2');
-
           }
           j++;
         }
-        if (j == 10) {
+        if (j == 14) {
           j = 0;
         }
         i++;
       }
+
+      $(dom).find('div.item:not(.w2)').each(function() {
+        $(this).find('.info p').text($(this).find('.info p').data('title').trunc(35,true));
+      });
+      $(dom).find('div.item.w2').each(function() {
+        $(this).find('.info p').text($(this).find('.info p').data('title').trunc(80,true));
+      });
     }
   }
+
   if (!init) {
     if ($('#gridEvent').length) {
       $data = $(dom).find('.item');
     } else {
       $data = $(dom);
     }
+
     grid.append($data).isotope('appended', $data);
     grid.imagesLoaded().progress(function () {
       grid.isotope('layout');
     });
   }
+
   buildGrid();
 }
 
@@ -156,14 +197,11 @@ $(document).ready(function () {
   }
 
   if($('.grid').length) {
-
     if($('#gridPhotos').length) {
-
       var $container = $('#gridPhotos'),
-        $grid;
+          $grid;
 
       $grid = $('#gridPhotos').imagesLoaded(function() {
-
         setImages($grid, $('#gridPhotos'), true);
         $grid.isotope({
           itemSelector: '.item',
@@ -179,6 +217,13 @@ $(document).ready(function () {
             $grid.isotope({ sortBy : 'original-order' });
           }, 500);
         }
+
+        $('#gridPhotos div.item:not(.w2)').each(function() {
+          $(this).find('.info p').text($(this).find('.info p').data('title').trunc(30,true));
+        });
+        $('#gridPhotos div.item.w2').each(function() {
+          $(this).find('.info p').text($(this).find('.info p').data('title').trunc(60,true));
+        });
       });
     }
 

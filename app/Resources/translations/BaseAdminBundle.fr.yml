@@ -186,6 +186,7 @@ entity:
     fdc_page_news_videos: L'actualité - Toutes les vidéos
 
 list:
+    label_site: Site
     label_programmation_films: Film
     label_header_video: Vidéo principale
     label_title_video: Titre
@@ -618,6 +619,8 @@ form:
     label_page: Page
     label_text: Texte
     label_banner: Bannière
+    label_list_event: Evènementiel
+    label_list_press: Presse
     gallery:
         medias: Médias
     encoding_state:

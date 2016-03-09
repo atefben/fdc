@@ -1,0 +1,59 @@
+{% trans_default_domain 'FDCEventBundle' %}
+<div class="footer-menu">
+    <ul>
+        <li class="copyright">{{ 'footer.nav.copyright'|trans }} {{ 'now'|date('Y') }}</li>
+        {% for element in footer %}
+            {% if element.position == 5 %}
+            <li>
+                <a href="{{ footer_boutique }}">
+                    {{ 'footer.nav.boutique'|trans }}
+                </a>
+            </li>
+            {% endif %}
+            {% if element.route == 'fdc_event_footer_contact' %}
+            <li>
+                <a href="{{ path('fdc_event_footer_contact') }}">
+                    {{ 'footer.nav.contact'|trans }}
+                </a>
+            </li>
+            {% elseif element.transName == 'footer.nav.faq' and element.enabled == true %}
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'faq'}) }}">
+                        {{ 'footer.nav.faq'|trans }}
+                    </a>
+                </li>
+            {% elseif element.transName == 'footer.nav.credit' and element.enabled == true %}
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'credits'}) }}">
+                        {{ 'footer.nav.credit'|trans }}
+                    </a>
+                </li>
+            {% elseif element.transName == 'footer.nav.mentionslegales' and element.enabled == true %}
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'mentions-legales'}) }}">
+                        {{ 'footer.nav.mentionslegales'|trans }}
+                    </a>
+                </li>
+            {% elseif element.transName == 'footer.nav.nousrejoindre' and element.enabled == true %}
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'nous-rejoindre'}) }}">
+                        {{ 'footer.nav.nousrejoindre'|trans }}
+                    </a>
+                </li>
+            {% elseif element.transName == 'footer.nav.plandusite' and element.enabled == true %}
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'plan-du-site'}) }}">
+                        {{ 'footer.nav.plandusite'|trans }}
+                    </a>
+                </li>
+            {% elseif element.transName == 'footer.nav.politiqueconfidentialite' and element.enabled == true %}
+                <li>
+                    <a href="{{ path('fdc_event_footer_static', {'page': 'politique-confidentialite'}) }}">
+                        {{ 'footer.nav.politiqueconfidentialite'|trans }}
+                    </a>
+                </li>
+            {% endif %}
+
+        {% endfor %}
+    </ul>
+</div>

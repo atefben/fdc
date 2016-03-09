@@ -1,0 +1,12 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+{% trans_default_domain 'BaseAdminBundle' %}
+
+{% block field %}
+    <div>
+        {% if object.site == constant('Base\\CoreBundle\\Entity\\FDCEventRoutes::EVENT') %}
+            <p style="float: left">{{ 'form.label_list_event'|trans }}</p>
+        {% elseif object.site == constant('Base\\CoreBundle\\Entity\\FDCEventRoutes::PRESS') %}
+             <p style="float: left">{{ 'form.label_list_press'|trans }}</p>
+        {% endif %}
+    </div>
+{% endblock %}

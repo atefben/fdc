@@ -28,52 +28,7 @@
                 <li><a class="podcast" href="{{ social_podcast }}" target="_blank"><i class="icon icon_podcast"></i></a></li>
             </ul>
         </div>
-
-        <div class="footer-menu">
-            <ul>
-                <li class="copyright">{{ 'footer.nav.copyright'|trans }} {{ 'now'|date('Y') }}</li>
-                <li>
-                    <a href="{{ path('fdc_event_footer_contact') }}">
-                        {{ 'footer.nav.contact'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('fdc_event_footer_static', {'page': 'faq'}) }}">
-                        {{ 'footer.nav.faq'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('fdc_event_footer_static', {'page': 'credits'}) }}">
-                        {{ 'footer.nav.credit'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('fdc_event_footer_static', {'page': 'mentions-legales'}) }}">
-                        {{ 'footer.nav.mentionslegales'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('fdc_event_footer_static', {'page': 'nous-rejoindre'}) }}">
-                        {{ 'footer.nav.nousrejoindre'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ footer_boutique }}">
-                        {{ 'footer.nav.boutique'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('fdc_event_footer_static', {'page': 'plan-du-site'}) }}">
-                        {{ 'footer.nav.plandusite'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('fdc_event_footer_static', {'page': 'politique-confidentialite'}) }}">
-                        {{ 'footer.nav.politiqueconfidentialite'|trans }}
-                    </a>
-                </li>
-            </ul>
-        </div>
+        {{ render(controller('FDCEventBundle:Global:footer', {route : app.request.get('_route')})) }}
     </div>
 </footer>
 <div id="siteLoader" class="canvasloader"></div>
