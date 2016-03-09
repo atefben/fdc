@@ -1,24 +1,26 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% set file = widget.file %}
-{% set trans = file.findTranslationByLocale(app.request.locale) %}
+{% if file %}
+    {% set trans = file.findTranslationByLocale(app.request.locale) %}
 
-{% if trans is null or trans.file is null or trans.mp3Url is null or trans.jobMp3State != 3 %}
-    {% set trans = file.findTranslationByLocale('fr') %}
-{% endif %}
-{% set file = trans.file %}
-
-{% set header = widget.file.image %}
-{% if header is not null %}
-    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
-    {% if imageTrans is null or imageTrans.file is null %}
-        {% set imageTrans = header.findTranslationByLocale('fr') %}
+    {% if trans is null or trans.file is null or trans.mp3Url is null or trans.jobMp3State != 3 %}
+        {% set trans = file.findTranslationByLocale('fr') %}
     {% endif %}
-{% endif %}
-{% if imageTrans is defined %}
-    {% set image = imageTrans.file %}
-{% endif %}
-{% if image is not defined and trans.imageAmazonUrl %}
-    {% set image_s3 = s3_server_global ~ trans.imageAmazonUrl %}
+    {% set file = trans.file %}
+
+    {% set header = widget.file.image %}
+    {% if header is not null %}
+        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+        {% if imageTrans is null or imageTrans.file is null %}
+            {% set imageTrans = header.findTranslationByLocale('fr') %}
+        {% endif %}
+    {% endif %}
+    {% if imageTrans is defined %}
+        {% set image = imageTrans.file %}
+    {% endif %}
+    {% if image is not defined and trans.imageAmazonUrl %}
+        {% set image_s3 = s3_server_global ~ trans.imageAmazonUrl %}
+    {% endif %}
 {% endif %}
 
 {% if  imageTrans is defined and trans.jobMp3State == 3 and trans.mp3Url %}

@@ -201,7 +201,6 @@ class NewsController extends Controller
         $films = $homepage->getFilmsAssociated();
 
         // TODO: clean this
-
         $wallPosts = array(
             array(
                 'big' => true
