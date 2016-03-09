@@ -83,7 +83,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"film_list", "film_show"})
      */
     private $publishedAt;
     
@@ -108,7 +107,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Groups({
-     *  "film_list", "film_show",
      *  "award_list", "award_show",
      *  "projection_list", "projection_show"
      * })
@@ -323,8 +321,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="association", cascade={"all"})
      * @Groups({
-     *  "trailer_show",
-     *  "film_list", "film_show",
+     *  "trailer_show"
      * })
      */
     private $associatedMediaVideos;
@@ -332,8 +329,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="association", cascade={"all"})
      * @Groups({
-     *  "trailer_show",
-     *  "film_list", "film_show",
+     *  "trailer_show"
      * })
      */
     private $associatedMediaAudios;
