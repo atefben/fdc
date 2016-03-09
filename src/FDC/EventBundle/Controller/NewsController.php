@@ -720,7 +720,7 @@ class NewsController extends Controller
         }
 
         // SEO
-        $id = $this->getParameter('admin_fdc_page_news_audio_id');
+        $id = $this->getParameter('admin_fdc_page_news_audios_id');
         $page = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FDCPageNewsAudios')
