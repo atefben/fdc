@@ -3,6 +3,7 @@
 namespace FDC\EventBundle\Controller;
 
 use Base\CoreBundle\Entity\Newsletter;
+use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -55,7 +56,14 @@ class GlobalController extends Controller {
     public function menuAction($route) {
 
         $em = $this->get('doctrine')->getManager();
-        $displayedMenus = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->childrenHierarchy();
+        $menus = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->childrenHierarchy();
+
+        $displayedMenus = array();
+        foreach($menus as $menu){
+            if($menu['site'] == FDCEventRoutesInterface::EVENT) {
+                $displayedMenus[] = $menu;
+            }
+        }
 
         usort($displayedMenus, function($a, $b) {
             if ($a["position"] == $b["position"]) {
@@ -73,8 +81,27 @@ class GlobalController extends Controller {
             });
         }
 
+        $routesArticles = array(
+            'fdc_event_news_index',
+            'fdc_event_news_get',
+            'fdc_event_news_getarticles',
+            'fdc_event_news_getphotos',
+            'fdc_event_news_getvideos',
+            'fdc_event_news_getaudios',
+        );
+
+        $routesWebTv = array(
+            'fdc_event_television_live',
+            'fdc_event_television_channels',
+            'fdc_event_television_getchannel',
+            'fdc_event_television_gettrailer',
+            'fdc_event_television_trailers'
+        );
+
         return array(
             'menus' => $displayedMenus,
+            'routesArticles' => $routesArticles,
+            'routesWebTv' => $routesWebTv,
             'route' => $route
         );
 
