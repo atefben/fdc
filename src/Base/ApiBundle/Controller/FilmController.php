@@ -70,7 +70,7 @@ class FilmController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 		
         // set context view
-        $groups = array('film_list', 'time');
+        $groups = array('film_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
@@ -131,7 +131,7 @@ class FilmController extends FOSRestController
 
         // set context view
         $context = SerializationContext::create();
-        $context->setGroups(array('film_show', 'time'));
+        $context->setGroups(array('film_show'));
         $context->setVersion($version);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
 
