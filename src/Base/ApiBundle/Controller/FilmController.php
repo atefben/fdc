@@ -131,7 +131,7 @@ class FilmController extends FOSRestController
 
         // set context view
         $context = SerializationContext::create();
-        $context->setGroups(array('film_show', 'time'));
+        $context->setGroups(array('film_show'));
         $context->setVersion($version);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
 
