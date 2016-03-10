@@ -264,7 +264,6 @@
     .picto {
       bottom: 20px;
       left: 20px;
-      pointer-events: initial;
       cursor: pointer;
 
       &.hide {
@@ -689,7 +688,6 @@
   margin: -290px 0 0 -375px;
   padding: 20px;
   box-sizing: border-box;
-  pointer-events: none;
   z-index: 100;
   @include transform(translateY(30px));
   @include transition(all 1.2s $smoothTransition);
@@ -704,7 +702,6 @@
 
   &.show {
     opacity: 1;
-    pointer-events: initial;
     visibility: visible;
     @include transform(translateY(0));
   }
