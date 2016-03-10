@@ -46,7 +46,7 @@ class StatementWidgetTextType extends StatementWidgetType
                     ),
                     'field_type' => 'ckeditor',
                     'config_name' => 'widget',
-                    'required' => false
+                    'required' => true
                 ),
                 'createdAt' => array(
                     'display' => false
