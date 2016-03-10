@@ -1,6 +1,7 @@
 // Slideshow
 // =========================
-var slideshows = [];
+var slideshows = [],
+    thumbnails
 
 function initSlideshows() {
   // create slider of thumbs
@@ -14,8 +15,6 @@ function initSlideshows() {
     dragEndSpeed : 900,
     items        : nbItems
   });
-
-  // sliderThumbs.owlCarousel();
 
   if( navigator.userAgent.indexOf("Edge") > -1 ||
       navigator.userAgent.indexOf("MSIE") > -1 ||
@@ -191,17 +190,13 @@ $('body').on('click', '.chocolat-image', function() {
     $('.chocolat-bottom').addClass('show');
   }
 
-  var test = $('.chocolat-wrapper .thumbnails').owlCarousel({
+  thumbnails = $('.chocolat-wrapper .thumbnails').owlCarousel({
     nav: false,
     dots: false,
     smartSpeed: 500,
     margin: 0,
     autoWidth:true,
     URLhashListener:false
-  });
-
-  test.on('change.owl.carousel', function(e) {
-    console.log(e);
   });
 });
 
@@ -213,7 +208,7 @@ $('body').on('click', '.chocolat-wrapper .thumb', function() {
   $('.chocolat-wrapper .thumb').removeClass('active');
   $(this).addClass('active');
 
-  var slideshow = $('.slideshow .images').data('chocolat');
+  // var slideshow = $('.slideshow .images').data('chocolat');
   // for(var i=0; i<slideshows.length; i++) {
   //   slideshows[i].api().goto(j);
   // }
@@ -250,6 +245,10 @@ $('body').on('click', '.chocolat-left', function(e){
   if($('[data-'+type+'='+pid+']').closest('.item').index() - 1 > 0) {
     window.location.hash = 'pid='+$('[data-'+type+'='+pid+']').closest('.item').prev().find('a').data('pid');
 
+    if(typeof thumbnails != 'undefined') {
+      thumbnails.trigger('to.owl.carousel', [$('[data-'+type+'='+pid+']').closest('.item').index() - 2, 400, true]);
+    }
+
     $('.chocolat-wrapper .thumb').removeClass('active');
     $('.chocolat-wrapper .thumb[data-pid="' + $('[data-'+type+'='+pid+']').closest('.item').prev().find('a').data('pid') + '"]').addClass('active');
   }
@@ -262,6 +261,10 @@ $('body').on('click', '.chocolat-right', function(e) {
 
   if($('[data-'+type+'='+pid+']').closest('.item').index() + 1 < $('.item').length) {
     window.location.hash = 'pid='+$('[data-'+type+'='+pid+']').closest('.item').next().find('a').data('pid');
+
+    if(typeof thumbnails != 'undefined') {
+      thumbnails.trigger('to.owl.carousel', [$('[data-'+type+'='+pid+']').closest('.item').index() - 1, 400, true]);
+    }
 
     $('.chocolat-wrapper .thumb').removeClass('active');
     $('.chocolat-wrapper .thumb[data-pid="' + $('[data-'+type+'='+pid+']').closest('.item').next().find('a').data('pid') + '"]').addClass('active');
