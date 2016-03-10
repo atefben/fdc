@@ -134,6 +134,7 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
+            ->andWhere('n.displayedHome = 1')
             ->andWhere('n.festival = :festival')
             ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt <= :datetime2)');
 
@@ -251,6 +252,7 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
+            ->andWhere('n.displayedHome = 1')
             ->andWhere('(n.publishedAt >= :datetime_max) AND (n.publishedAt < :datetime)');
 
         $qb = $qb
