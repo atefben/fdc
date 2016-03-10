@@ -1,7 +1,7 @@
 // Slideshow
 // =========================
 var slideshows = [],
-    thumbnails
+    thumbnails = [];
 
 function initSlideshows() {
   // create slider of thumbs
@@ -67,7 +67,6 @@ function initSlideshows() {
 
     slideshows.push(slideshow);
   }
-
 }
 
 // close slideshow on click
@@ -160,7 +159,7 @@ $('body').on('click', '.chocolat-image', function() {
   $('<div class="zoomCursor"><i class="icon icon_loupePlus"></i></div>').appendTo('.chocolat-wrapper');
   $('<div class="credit">' + $that.data('credit') + '</div>').insertBefore('.chocolat-wrapper .share');
 
-  // linkPopinInit(0,'.img-slideshow-share .button.link');
+  linkPopinInit(0,'.img-slideshow-share .button.link');
   initPopinMail();
 
   setTimeout(function() {
@@ -208,14 +207,16 @@ $('body').on('click', '.chocolat-wrapper .thumb', function() {
   $('.chocolat-wrapper .thumb').removeClass('active');
   $(this).addClass('active');
 
-  // var slideshow = $('.slideshow .images').data('chocolat');
-  // for(var i=0; i<slideshows.length; i++) {
-  //   slideshows[i].api().goto(j);
-  // }
+  var slideshow = $('.slideshow .images').data('chocolat');
+  for(var i=0; i<slideshows.length; i++) {
+    slideshows[i].api().goto(j);
+  }
 
   $('.chocolat-pagination').trigger('click');
 
   window.location.hash = 'pid='+$(this).data('pid');
+
+  updatePhotoShare($(this).data('pid'), $(this).attr('title'));
 });
 
 $(document).ready(function() {
@@ -230,6 +231,8 @@ $(document).ready(function() {
         $('[data-'+type+'='+pid+']').trigger('click');
         $('.chocolat-wrapper .thumb').removeClass('active');
         $('.chocolat-wrapper .thumb[data-pid="' +  pid + '"]').addClass('active');
+
+        updatePhotoShare(pid, $('[data-'+type+'='+pid+']').attr('title'));
       } else {
         history.pushState("", document.title, window.location.pathname);
       }
@@ -251,6 +254,8 @@ $('body').on('click', '.chocolat-left', function(e){
 
     $('.chocolat-wrapper .thumb').removeClass('active');
     $('.chocolat-wrapper .thumb[data-pid="' + $('[data-'+type+'='+pid+']').closest('.item').prev().find('a').data('pid') + '"]').addClass('active');
+
+    updatePhotoShare($('[data-'+type+'='+pid+']').closest('.item').prev().find('a').data('pid'), $('[data-'+type+'='+pid+']').closest('.item').prev().find('a').attr('title'));
   }
 });
 
@@ -268,6 +273,8 @@ $('body').on('click', '.chocolat-right', function(e) {
 
     $('.chocolat-wrapper .thumb').removeClass('active');
     $('.chocolat-wrapper .thumb[data-pid="' + $('[data-'+type+'='+pid+']').closest('.item').next().find('a').data('pid') + '"]').addClass('active');
+    
+    updatePhotoShare($('[data-'+type+'='+pid+']').closest('.item').next().find('a').data('pid'), $('[data-'+type+'='+pid+']').closest('.item').next().find('a').attr('title'));
   }
 });
 
@@ -305,3 +312,38 @@ $('body').on('mousemove', '.chocolat-content', function(e) {
     $('.chocolat-bottom .buttons').removeClass('show');
   }, 4000);
 });
+
+
+function updatePhotoShare(pid, title) {
+  var pid      = pid || 0,
+      title    = title || "",
+      t0       = title.split('<h2>'),
+      t1       = t0[1].split('</h2>'),
+      shareUrl = GLOBALS.urls.photosUrl+'#pid='+pid;
+
+  $('.chocolat-bottom .img-slideshow-share .button.facebook').off('click');
+  $('.chocolat-bottom .img-slideshow-share .button.twitter').off('click');
+
+  // CUSTOM LINK FACEBOOK
+  var fbHref   = "//www.facebook.com/sharer.php?u=CUSTOM_URL";
+  fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
+  $('.chocolat-bottom .img-slideshow-share .facebook').attr('href', fbHref);
+  // CUSTOM LINK TWITTER
+  var twHref   = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
+  twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent(t1[0]+" "+shareUrl));
+  $('.chocolat-bottom .img-slideshow-share .twitter').attr('href', twHref);
+  // CUSTOM LINK COPY
+  $('.chocolat-bottom .img-slideshow-share .button.link').attr('href', encodeURIComponent(shareUrl));
+  $('.chocolat-bottom .img-slideshow-share .button.link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
+
+  $('.chocolat-bottom .img-slideshow-share .button.facebook').on('click',function(){
+      $('.chocolat-bottom .buttons').removeClass('show');
+      window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
+      return false;
+  });
+  $('.chocolat-bottom .img-slideshow-share .button.twitter').on('click', function(){
+      $('.chocolat-bottom .buttons').removeClass('show');
+      window.open(this.href,'','width=700,height=500');
+      return false;
+  });
+}
