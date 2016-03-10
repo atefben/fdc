@@ -27,10 +27,12 @@
 
 .single-article .text sup {
     vertical-align: super;
+    font-size: 11px;
 }
 
 .single-article .text sub {
     vertical-align: sub;
+    font-size: 11px;
 }
 
 .single-article .button:hover a,

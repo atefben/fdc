@@ -118,7 +118,7 @@ class PressDownloadSectionWidgetFileType extends PressDownloadSectionWidgetType
                 'link_parameters' => array(
                     'context'  => 'pdf',
                     'filter'   => array('context' => array('value' => 'pdf')),
-                    'provider' => 'sonata.media.provider.file'
+                    'provider' => 'sonata.media.provider.pdf'
                 )
             ))
             ->add('secondFile', 'sonata_type_model_list', array(
@@ -131,7 +131,7 @@ class PressDownloadSectionWidgetFileType extends PressDownloadSectionWidgetType
                 'link_parameters' => array(
                     'context'  => 'pdf',
                     'filter'   => array('context' => array('value' => 'pdf')),
-                    'provider' => 'sonata.media.provider.file'
+                    'provider' => 'sonata.media.provider.pdf'
                 )
             ))
 

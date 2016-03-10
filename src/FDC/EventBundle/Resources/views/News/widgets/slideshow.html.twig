@@ -50,8 +50,7 @@
                 {% endif %}
                 {% if
                     trans.isPublishedOnFDCEvent and
-                    (trans.translatable.publishedAt is null or trans.translatable.publishedAt <= 'now'|date) and
-                    (trans.translatable.publishEndedAt is null or trans.translatable.publishEndedAt >= 'now'|date)
+                    trans|publish_date
                 %}
                     {% set photo = gallery.media %}
                     {% if loop.index == 1 %}

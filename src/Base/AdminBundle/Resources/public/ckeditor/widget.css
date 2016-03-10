@@ -86,19 +86,6 @@
 }
 
 /* Table */
-.cke_editable .table-article tr:first-child td {
-    text-transform: uppercase;
-    color: #000;
-    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-weight: normal;
-    vertical-align: middle;
-    border: 1px solid #dfdfdf;
-    padding: 15px 0px;
-    //width: 50%;
-    font-size: .74rem;
-    text-align: center;
-}
-
 .cke_editable .table-article td {
     font-weight: normal;
     vertical-align: middle;

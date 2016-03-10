@@ -83,8 +83,14 @@ class EntityListener
             $hasFrench = false;
             $hasLocale = false;
 
+            $hasSiteCondition = false;
+            $masterSites = method_exists($master, 'getSites') && $master->getSites();
+            if ($masterSites) {
+                $sites = $master->getSites();
+                $hasSiteCondition = is_object($sites) && method_exists($sites, 'contains') && $sites->contains($fdcEventSite);
+            }
             // has site
-            if ($master->getSites() && $master->getSites()->contains($fdcEventSite)) {
+            if ($hasSiteCondition) {
                 $hasSite = true;
             }
 
