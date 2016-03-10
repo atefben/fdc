@@ -12,25 +12,25 @@
 
 .single-channel .small-container .player.video-container {
   width: 975px;
-  height: calc(975px*9/16);
+  height: calc(975px / 1.58);
 }
 
 .single-article .container .video-container.video-single {
   margin-top: 50px;
   width: 980px;
-  height: calc(980px*9/16);
+  height: calc(980px / 1.58);
 }
 
 .popin-video .video-container {
   width: 710px;
-  height: calc(710px*9/16);
+  height: calc(710px / 1.58);
 }
 
 .video-container {
   position: relative;
   overflow: hidden;
   width: 630px;
-  height: calc(630px*9/16);
+  height: calc(630px / 1.58);
 
   button {
     background: none;
