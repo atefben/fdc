@@ -136,18 +136,57 @@ class FilmFilmAdmin extends SoifAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
-            ->add('directorFirst')
-            ->add('restored')
-            ->add('titleVO')
-            ->add('titleVOAlphabet')
-            ->add('productionYear')
-            ->add('duration')
-            ->add('castingCommentary')
-            ->add('website')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('soifUpdatedAt');
+            ->add('associatedMediaAudios', 'sonata_type_collection', array(
+                'label' => 'form.label_film_film_media_audio',
+                'help' => 'form.film.helper_film_film_media_audio',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('associatedMediaVideos', 'sonata_type_collection', array(
+                'label' => 'form.label_film_film_media_video',
+                'help' => 'form.film.helper_film_film_media_video',
+                'by_reference' => false,
+                'required' => false,
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('associatedInfo', 'sonata_type_collection', array(
+                'label' => 'form.label_film_film_associated_info',
+                'help' => 'form.film.helper_film_film_associated_info',
+                'by_reference' => false,
+                'required' => false,
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('associatedStatement', 'sonata_type_collection', array(
+                'label' => 'form.label_film_film_associated_statement',
+                'help' => 'form.film.helper_film_film_associated_statement',
+                'by_reference' => false,
+                'required' => false,
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            )
+            ->add('associatedNews', 'sonata_type_collection', array(
+                'label' => 'form.label_film_film_associated_news',
+                'help' => 'form.film.helper_film_film_associated_news',
+                'by_reference' => false,
+                'required' => false,
+            ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                )
+            );
+
     }
 
     /**
