@@ -5409,6 +5409,7 @@ div.chocolat-wrapper .credit.hide {
 }
 div.chocolat-wrapper .share {
   border-left: 1px solid rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
   display: block;
   width: 100px;
   height: 100px;
@@ -5439,11 +5440,11 @@ div.chocolat-wrapper .share .icon:hover {
 div.chocolat-wrapper .chocolat-left {
   background: none;
   bottom: 0;
-  border-left: 1px solid rgba(255, 255, 255, 0.4);
-  display: block;
+  border-right: 2px solid rgba(20, 20, 20, 0.4);
+  display: none;
   top: auto;
   left: auto;
-  right: 101px;
+  right: 100px;
   width: 100px;
   height: 100px;
   margin-top: 0;
@@ -5453,11 +5454,16 @@ div.chocolat-wrapper .chocolat-left {
 div.chocolat-wrapper .chocolat-left .icon {
   line-height: 100px;
 }
+div.chocolat-wrapper .chocolat-left.active {
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+div.chocolat-wrapper .chocolat-left:not(.active) + .chocolat-right {
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+}
 div.chocolat-wrapper .chocolat-right {
   background: none;
   bottom: 0;
-  border-left: 1px solid rgba(255, 255, 255, 0.4);
-  display: block;
+  display: none;
   top: auto;
   width: 100px;
   height: 100px;
@@ -5573,7 +5579,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   div.chocolat-wrapper .chocolat-left {
     height: 80px;
     width: 80px;
-    right: 81px;
+    right: 80px;
   }
   div.chocolat-wrapper .thumbnails {
     bottom: 81px;
