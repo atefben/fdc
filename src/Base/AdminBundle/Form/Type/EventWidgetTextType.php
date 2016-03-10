@@ -47,6 +47,7 @@ class EventWidgetTextType extends EventWidgetType
                     'constraints' => array(
                         new NotBlank()
                     ),
+					'required' => true,
                     'field_type' => 'ckeditor',
                     'config_name' => 'widget'
                 ),

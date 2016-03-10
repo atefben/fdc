@@ -509,7 +509,7 @@ class MovieController extends Controller
             'selectionTabs' => $pages,
             'page'          => $page,
             'movies'        => $movies,
-            'next'          => $next,
+            'next'          => is_object($next) ? $next : false,
         );
     }
 

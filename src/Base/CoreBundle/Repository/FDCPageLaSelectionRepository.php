@@ -26,6 +26,7 @@ class FDCPageLaSelectionRepository extends EntityRepository
             ->join('p.translations', 't')
             ->andWhere('t.locale = :locale')
             ->andWhere('t.slug = :slug')
+            ->andWhere('p.image IS NOT NULL')
             ->setParameter('locale', $locale)
             ->setParameter('slug', $slug)
         ;
@@ -59,6 +60,7 @@ class FDCPageLaSelectionRepository extends EntityRepository
             ->join('p.selectionSection', 's')
             ->join('s.translations', 'st')
             ->andWhere('((t.locale = :locale AND t.slug IS NOT NULL AND t.slug <> \'\') OR (st.locale = :locale AND st.slug IS NOT NULL AND st.slug <> \'\'))')
+            ->andWhere('p.image IS NOT NULL')
             ->setParameter('locale', $locale)
             ->orderBy('s.position', 'asc')
         ;

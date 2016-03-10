@@ -47,6 +47,7 @@ class InfoWidgetTextType extends InfoWidgetType
                     'constraints' => array(
                         new NotBlank()
                     ),
+					'required' => true,
                     'field_type' => 'ckeditor',
                     'config_name' => 'widget'
                 ),
