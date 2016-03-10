@@ -53,9 +53,23 @@ class NewsFilmFilmAssociatedAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper
-            ->add('association', 'sonata_type_model_list', array('btn_add' => false, 'btn_delete' => false))
-        ;
+        $condition = false;
+        if(isset($_GET['code'])) {
+            $condition = ($_GET['code'] == 'base.admin.film_film');
+        } else {
+            $condition = in_array('filmfilm',explode('/',$_SERVER['REQUEST_URI']));
+        }
+
+        if($condition) {
+            $formMapper
+                ->add('news', 'sonata_type_model_list', array('btn_add' => false, 'btn_delete' => false))
+            ;
+        } else {
+            $formMapper
+                ->add('association', 'sonata_type_model_list', array('btn_add' => false, 'btn_delete' => false))
+            ;
+        }
+
     }
 
     /**

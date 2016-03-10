@@ -39,7 +39,7 @@ class StatementTypeExtension extends Twig_Extension
                 $type = 'audio';
                 break;
             case "StatementImage":
-                $type = 'image';
+                $type = 'photo';
                 break;
             case "StatementVideo":
                 $type = 'video';

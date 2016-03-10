@@ -39,7 +39,7 @@ class InfoTypeExtension extends Twig_Extension
                 $type = 'audio';
                 break;
             case "InfoImage":
-                $type = 'image';
+                $type = 'photo';
                 break;
             case "InfoVideo":
                 $type = 'video';

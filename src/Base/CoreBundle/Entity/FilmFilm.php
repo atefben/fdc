@@ -361,6 +361,9 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $this->translations = new ArrayCollection();
         $this->languages = new ArrayCollection();
         $this->projectionProgrammationFilms = new ArrayCollection();
+        $this->associatedNews = new ArrayCollection();
+        $this->associatedInfo = new ArrayCollection();
+        $this->associatedStatement = new ArrayCollection();
     }
 
     public function __toString()
@@ -1555,6 +1558,31 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         return $this->projectionProgrammationFilmsList;
     }
 
+
+
+    /**
+     * Set publishedAt
+     *
+     * @param \DateTime $publishedAt
+     * @return FilmFilm
+     */
+    public function setPublishedAt($publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishedAt
+     *
+     * @return \DateTime 
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
+
     /**
      * Set selectionSection
      *
@@ -1584,7 +1612,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @param \Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews
      * @return FilmFilm
      */
-    public function addAssociatedNews(\Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews)
+    public function addAssociatedNew(\Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews)
     {
         $this->associatedNews[] = $associatedNews;
 
@@ -1596,7 +1624,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @param \Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews
      */
-    public function removeAssociatedNews(\Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews)
+    public function removeAssociatedNew(\Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews)
     {
         $this->associatedNews->removeElement($associatedNews);
     }
@@ -1609,39 +1637,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getAssociatedNews()
     {
         return $this->associatedNews;
-    }
-
-    /**
-     * Add associatedStatement
-     *
-     * @param \Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedStatement
-     * @return FilmFilm
-     */
-    public function addAssociatedStatement(\Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedStatement)
-    {
-        $this->associatedStatement[] = $associatedStatement;
-
-        return $this;
-    }
-
-    /**
-     * Remove associatedStatement
-     *
-     * @param \Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedStatement
-     */
-    public function removeAssociatedStatement(\Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedStatement)
-    {
-        $this->associatedStatement->removeElement($associatedStatement);
-    }
-
-    /**
-     * Get associatedStatement
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAssociatedStatement()
-    {
-        return $this->associatedStatement;
     }
 
     /**
@@ -1678,39 +1673,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     }
 
     /**
-     * Add associatedInfo
-     *
-     * @param \Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedInfo
-     * @return FilmFilm
-     */
-    public function addAssociatedInfo(\Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedInfo)
-    {
-        $this->associatedInfo[] = $associatedInfo;
-
-        return $this;
-    }
-
-    /**
-     * Remove associatedInfo
-     *
-     * @param \Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedInfo
-     */
-    public function removeAssociatedInfo(\Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedInfo)
-    {
-        $this->associatedInfo->removeElement($associatedInfo);
-    }
-
-    /**
-     * Get associatedInfo
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAssociatedInfo()
-    {
-        return $this->associatedInfo;
-    }
-
-    /**
      * Add associatedMediaAudios
      *
      * @param \Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated $associatedMediaAudios
@@ -1743,5 +1705,69 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         return $this->associatedMediaAudios;
     }
 
+    /**
+     * Add associatedStatement
+     *
+     * @param \Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedStatement
+     * @return FilmFilm
+     */
+    public function addAssociatedStatement(\Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedStatement)
+    {
+        $this->associatedStatement[] = $associatedStatement;
 
+        return $this;
+    }
+
+    /**
+     * Remove associatedStatement
+     *
+     * @param \Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedStatement
+     */
+    public function removeAssociatedStatement(\Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedStatement)
+    {
+        $this->associatedStatement->removeElement($associatedStatement);
+    }
+
+    /**
+     * Get associatedStatement
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedStatement()
+    {
+        return $this->associatedStatement;
+    }
+
+    /**
+     * Add associatedInfo
+     *
+     * @param \Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedInfo
+     * @return FilmFilm
+     */
+    public function addAssociatedInfo(\Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedInfo)
+    {
+        $this->associatedInfo[] = $associatedInfo;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedInfo
+     *
+     * @param \Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedInfo
+     */
+    public function removeAssociatedInfo(\Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedInfo)
+    {
+        $this->associatedInfo->removeElement($associatedInfo);
+    }
+
+    /**
+     * Get associatedInfo
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssociatedInfo()
+    {
+        return $this->associatedInfo;
+    }
 }

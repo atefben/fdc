@@ -507,6 +507,12 @@ form:
         helper_file: Dimensions attendues : A adapter selon la page cible. Format attendu : .jpg, .png
     news_widget_video_youtube:
         helper_url: URL de la vidéo Youtube (ex: https://www.youtube.com/watch?v=-NDYBoQWOrU)
+    film:
+        helper_film_film_media_audio: Sélectionnez un ou plusieurs audios associés au film.
+        helper_film_film_media_video: Sélectionnez une ou plusieurs vidéos associées au film.
+        helper_film_film_associated_info: Sélectionnez une ou plusieurs infos associées au film.
+        helper_film_film_associated_statement: Sélectionnez un ou plusieurs communiqués associés au film.
+        helper_film_film_associated_news: Sélectionnez une ou plusieurs actualités associées au film.
     placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
     placeholder_seo_description: "[valeur champ chapô actualité]"
     label_position: Position
@@ -559,6 +565,11 @@ form:
     label_file: Fichier
     label_media_video_image: Image cover
     label_display: Ne pas afficher cette strate
+    label_film_film_media_audio: Audios associés
+    label_film_film_media_video: Vidéos associées
+    label_film_film_associated_info: Infos associées
+    label_film_film_associated_statement: Communiqués associés
+    label_film_film_associated_news: Actualités associées
     label_film: Films
     label_content: Contenu
     label_image: Image
