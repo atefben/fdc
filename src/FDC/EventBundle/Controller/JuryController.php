@@ -14,6 +14,7 @@ class JuryController extends Controller
     /**
      * @Route("/juries/{type}")
      * @Template("FDCEventBundle:Jury:section.html.twig")
+     * @param Request $request
      * @param type
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -24,14 +25,9 @@ class JuryController extends Controller
         $locale   = $request->getLocale();
         $em = $this->getDoctrine()->getManager();
 
-        // check if waiting page is enabled
-        $waitingPage = $em->getRepository('BaseCoreBundle:FDCPageWaiting')->findBy(array('enabled' => true));
-        foreach($waitingPage as $waiting) {
-            if($waiting->getPage()->getRoute() == $request->get('_route')){
-                return $this->render('FDCEventBundle:Global:waiting-page.html.twig',array(
-                    'waitingPage' => $waiting
-                ));
-            }
+        $waitingPage = $this->isWaitingPage($request);
+        if ($waitingPage) {
+            return $waitingPage;
         }
 
         // find all juries by type

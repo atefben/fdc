@@ -11,17 +11,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\Since;
-
 /**
- * FDCPageWebTvTrailers
+ * FDCPageLaSelection
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCPageWebTvTrailersRepository")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCPageLaSelectionRepository")
+ * * @ORM\HasLifecycleCallbacks
  */
-class FDCPageWebTvTrailers implements TranslateMainInterface
+class FDCPageLaSelection implements TranslateMainInterface
 {
     use Time;
     use Translatable;
@@ -59,6 +56,33 @@ class FDCPageWebTvTrailers implements TranslateMainInterface
      */
     protected $translations;
 
+    /**
+     * FDCPageLaSelection constructor.
+     */
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        if (!$this->getId()) {
+            return 'Nouvelle page sélection';
+        }
+
+        $names = array(
+            'La sélection COMPETITION',
+            'La sélection UN CERTAIN REGARD',
+            'La sélection HORS COMPÉTITION',
+            'La sélection SÉANCES SPÉCIALES',
+            'La sélection CINÉFONDATION',
+            'La sélection COURTS MÉTRAGES',
+        );
+        return $names[$this->getId() - 1];
+    }
 
     /**
      * Get id
@@ -74,7 +98,7 @@ class FDCPageWebTvTrailers implements TranslateMainInterface
      * Set image
      *
      * @param \Base\CoreBundle\Entity\MediaImageSimple $image
-     * @return FDCPageWebTvTrailers
+     * @return FDCPageLaSelection
      */
     public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
     {
@@ -94,33 +118,10 @@ class FDCPageWebTvTrailers implements TranslateMainInterface
     }
 
     /**
-     * @return string
-     */
-    public function __toString()
-    {
-        if (!$this->getId()) {
-            return 'Nouvelle Page Web TV - Ba et extraits';
-        }
-
-        $names = array(
-            'WebTV - BA et extraits (Compétition)',
-            'WebTV - BA et extraits (Un certain regard)',
-            'WebTV - BA et extraits (Hors compétition)',
-            'WebTV - BA et extraits (Séances spéciales)',
-            'WebTV - BA et extraits (Cinéfondation)',
-            'WebTV - BA et extraits (Courts métrages)',
-            'WebTV - BA et extraits (Cannes Classics)',
-            'WebTV - BA et extraits (Cinéma de plage)',
-        );
-        return $names[$this->getId()];
-    }
-
-
-    /**
      * Set selectionSection
      *
      * @param \Base\CoreBundle\Entity\FilmSelectionSection $selectionSection
-     * @return FDCPageWebTvTrailers
+     * @return FDCPageLaSelection
      */
     public function setSelectionSection(\Base\CoreBundle\Entity\FilmSelectionSection $selectionSection = null)
     {

@@ -8,6 +8,7 @@ use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\Settings;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
+use Symfony\Component\HttpFoundation\Request;
 
 class Controller extends BaseController
 {
@@ -69,16 +70,18 @@ class Controller extends BaseController
         if (strpos(get_class($trans), 'MediaAudioTranslation')) {
             if ($trans->getFile() === null ||
                 $trans->getJobMp3State() != MediaAudioTranslation::ENCODING_STATE_READY ||
-                $trans->getMp3Url() === null) {
+                $trans->getMp3Url() === null
+            ) {
                 return false;
             }
         }
 
         if (strpos(get_class($trans), 'MediaVideoTranslation')) {
-            if ($trans->getFile() === null  ||
+            if ($trans->getFile() === null ||
                 $trans->getJobMp4State() != MediaVideoTranslation::ENCODING_STATE_READY ||
                 $trans->getJobWebmState() != MediaVideoTranslation::ENCODING_STATE_READY ||
-                $trans->getMp4Url() === null || $trans->getWebmUrl() === null) {
+                $trans->getMp4Url() === null || $trans->getWebmUrl() === null
+            ) {
                 return false;
             }
         }
@@ -88,16 +91,18 @@ class Controller extends BaseController
 
 
     /**
-     * @return ObjectManager
+     * @param $route
      */
     public function isPageEnabled($route)
     {
         $page = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCEventRoutes')->findOneBy(array(
             'route' => $route
-        ));
+        ))
+        ;
 
-        if ($page && !$page->getEnabled())
+        if ($page && !$page->getEnabled()) {
             throw $this->createNotFoundException("This page is disabled.");
+        }
 
     }
 
@@ -142,5 +147,20 @@ class Controller extends BaseController
         return $this->getSettings()->getFestival();
     }
 
+    public function isWaitingPage(Request $request)
+    {
+        // check if waiting page is enabled
+        $waitingPage = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageWaiting')
+            ->getSingleWaitingPageByRoute($request->get('_route'))
+        ;
+
+        if ($waitingPage) {
+            return $this->render('FDCEventBundle:Global:waiting-page.html.twig', array(
+                'waitingPage' => $waitingPage
+            ));
+        }
+    }
 
 }

@@ -2,6 +2,7 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Base\CoreBundle\Entity\FDCPageLaSelection;
 use \DateTime;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -25,122 +26,122 @@ class MovieController extends Controller
     {
         $movies = array(
             array(
-                'slug' => 'youth',
-                'title' => 'Youth',
+                'slug'    => 'youth',
+                'title'   => 'Youth',
                 'titleVO' => 'Youth',
-                'image' => array(
+                'image'   => array(
                     'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
-                'author' => array(
+                'author'  => array(
                     'fullName' => 'Paolo SORRENTINO',
-                    'from' => 'Italie'
+                    'from'     => 'Italie'
                 )
             ),
             array(
-                'slug' => 'youth',
-                'title'=> 'Youth',
+                'slug'    => 'youth',
+                'title'   => 'Youth',
                 'titleVO' => 'Youth',
-                'image' => array(
+                'image'   => array(
                     'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
-                'author' => array(
+                'author'  => array(
                     'fullName' => 'Paolo SORRENTINO',
-                    'from' => 'Italie'
+                    'from'     => 'Italie'
                 )
             ),
             array(
-                'slug' => 'youth',
-                'title'=> 'Youth',
+                'slug'    => 'youth',
+                'title'   => 'Youth',
                 'titleVO' => 'Youth',
-                'image' => array(
+                'image'   => array(
                     'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
-                'author' => array(
+                'author'  => array(
                     'fullName' => 'Paolo SORRENTINO',
-                    'from' => 'Italie'
+                    'from'     => 'Italie'
                 )
             ),
             array(
-                'slug' => 'youth',
-                'title'=> 'Youth',
+                'slug'    => 'youth',
+                'title'   => 'Youth',
                 'titleVO' => 'Youth',
-                'image' => array(
+                'image'   => array(
                     'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
-                'author' => array(
+                'author'  => array(
                     'fullName' => 'Paolo SORRENTINO',
-                    'from' => 'Italie'
+                    'from'     => 'Italie'
                 )
             ),
             array(
-                'slug' => 'youth',
-                'title'=> 'Youth',
+                'slug'    => 'youth',
+                'title'   => 'Youth',
                 'titleVO' => 'Youth',
-                'image' => array(
+                'image'   => array(
                     'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
-                'author' => array(
+                'author'  => array(
                     'fullName' => 'Paolo SORRENTINO',
-                    'from' => 'Italie'
+                    'from'     => 'Italie'
                 )
             ),
             array(
-                'slug' => 'youth',
-                'title'=> 'Youth',
+                'slug'    => 'youth',
+                'title'   => 'Youth',
                 'titleVO' => 'Youth',
-                'image' => array(
+                'image'   => array(
                     'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
-                'author' => array(
+                'author'  => array(
                     'fullName' => 'Paolo SORRENTINO',
-                    'from' => 'Italie'
+                    'from'     => 'Italie'
                 )
             ),
             array(
-                'slug' => 'youth',
-                'title'=> 'Youth',
+                'slug'    => 'youth',
+                'title'   => 'Youth',
                 'titleVO' => 'Youth',
-                'image' => array(
+                'image'   => array(
                     'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
-                'author' => array(
+                'author'  => array(
                     'fullName' => 'Paolo SORRENTINO',
-                    'from' => 'Italie'
+                    'from'     => 'Italie'
                 )
             ),
             'prev' => array(
-                'slug' => 'youth',
-                'image' => array(
+                'slug'    => 'youth',
+                'image'   => array(
                     'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
-                'title' => 'Youth',
+                'title'   => 'Youth',
                 'titleVO' => 'Youth',
-                'author' => array(
+                'author'  => array(
                     'fullName' => 'Paolo SORRENTINO',
-                    'from' => 'Italie'
+                    'from'     => 'Italie'
                 )
             ),
             'next' => array(
-                'slug' => 'youth',
-                'image' => array(
+                'slug'    => 'youth',
+                'image'   => array(
                     'path' => 'http://dummyimage.com/210x284/000/fff'
                 ),
-                'title' => 'Youth',
+                'title'   => 'Youth',
                 'titleVO' => 'Youth',
-                'author' => array(
+                'author'  => array(
                     'fullName' => 'Paolo SORRENTINO',
-                    'from' => 'Italie'
+                    'from'     => 'Italie'
                 )
             ),
         );
 
         $movie = array(
-            'title' => 'Adieu au language',
-            'titleVO' => 'Adieu au language',
+            'title'          => 'Adieu au language',
+            'titleVO'        => 'Adieu au language',
             'productionYear' => '2000',
-            'releaseYear' => '2005',
-            'duration' => '1h33',
-            'synopsis' => 'Le propos est simple<br>
+            'releaseYear'    => '2005',
+            'duration'       => '1h33',
+            'synopsis'       => 'Le propos est simple<br>
                            Une femme mariée et un homme libre se rencontrent<br>
                            Ils s’aiment, se disputent, les coups pleuvent<br>
                            Un chien erre entre ville et campagne<br>
@@ -157,11 +158,11 @@ class MovieController extends Controller
                            De l’espèce humaine on passe à la métaphore<br>
                            Ça finira par des aboiements<br>
                            Et des cris de bébé',
-            'image' => array(
+            'image'          => array(
                 'banner' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/002.jpg',
-                'cover' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/006.jpg',
+                'cover'  => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/006.jpg',
             ),
-            'categories' => array(
+            'categories'     => array(
                 array(
                     'name' => 'En compétition',
                 ),
@@ -172,65 +173,65 @@ class MovieController extends Controller
                     'name' => 'films d\'ouverture',
                 )
             ),
-            'author' => array(
+            'author'         => array(
                 'fullName' => 'Jean-Luc Godard',
-                'from' => 'France',
-                'slug' => 'jean-luc-godard'
+                'from'     => 'France',
+                'slug'     => 'jean-luc-godard'
             ),
-            'persons' => array(
+            'persons'        => array(
                 array(
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/004.jpg',
-                        'cover' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/005.jpg',
+                    'image'   => array(
+                        'path'      => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/004.jpg',
+                        'cover'     => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/005.jpg',
                         'copyright' => '© FDC / Jean-Luc GODARD'
                     ),
                     'credits' => array(
-                        'slug' => 'LoremIpsum',
+                        'slug'     => 'LoremIpsum',
                         'fullName' => 'Lorem Ipsum',
-                        'role' => 'Auteur'
+                        'role'     => 'Auteur'
                     ),
                     'casting' => array(
-                        'slug' => 'LoremIpsum',
+                        'slug'     => 'LoremIpsum',
                         'fullName' => 'Lorem Ipsum',
-                        'role' => 'Auteur'
+                        'role'     => 'Auteur'
                     ),
                 ),
                 array(
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/004.jpg',
-                        'cover' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/005.jpg',
+                    'image'   => array(
+                        'path'      => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/004.jpg',
+                        'cover'     => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/005.jpg',
                         'copyright' => '© FDC / Jean-Luc GODARD'
                     ),
                     'credits' => array(
-                        'slug' => 'LoremIpsum',
+                        'slug'     => 'LoremIpsum',
                         'fullName' => 'Lorem Ipsum',
-                        'role' => 'Auteur'
+                        'role'     => 'Auteur'
                     ),
                     'casting' => array(
-                        'slug' => 'LoremIpsum',
+                        'slug'     => 'LoremIpsum',
                         'fullName' => 'Lorem Ipsum',
-                        'role' => 'Auteur'
+                        'role'     => 'Auteur'
                     ),
                 ),
                 array(
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/004.jpg',
-                        'cover' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/005.jpg',
+                    'image'   => array(
+                        'path'      => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/004.jpg',
+                        'cover'     => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/005.jpg',
                         'copyright' => '© FDC / Jean-Luc GODARD'
                     ),
                     'credits' => array(
-                        'slug' => 'LoremIpsum',
+                        'slug'     => 'LoremIpsum',
                         'fullName' => 'Lorem Ipsum',
-                        'role' => 'Auteur'
+                        'role'     => 'Auteur'
                     ),
                     'casting' => array(
-                        'slug' => 'LoremIpsum',
+                        'slug'     => 'LoremIpsum',
                         'fullName' => 'Lorem Ipsum',
-                        'role' => 'Auteur'
+                        'role'     => 'Auteur'
                     ),
                 )
             ),
-            'press' => array(
+            'press'          => array(
                 'links' => array(
                     array(
                         'name' => 'Site Web',
@@ -246,183 +247,181 @@ class MovieController extends Controller
                     )
                 ),
             ),
-            'photos' => array(
+            'photos'         => array(
                 array(
-                    'id' => 0,
-                    'title' => 'Lorem Ipsum',
-                    'caption' => '<a>Test</a>',
-                    'theme' => 'En compétition',
+                    'id'        => 0,
+                    'title'     => 'Lorem Ipsum',
+                    'caption'   => '<a>Test</a>',
+                    'theme'     => 'En compétition',
                     'createdAt' => new \DateTime(),
                     'copyright' => 'Lorem ipsum',
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                    'image'     => array(
+                        'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                         'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
                     ),
                 ),
                 array(
-                    'id' => 0,
-                    'title' => 'Lorem Ipsum',
-                    'caption' => '<a>Test</a>',
-                    'theme' => 'En compétition',
+                    'id'        => 0,
+                    'title'     => 'Lorem Ipsum',
+                    'caption'   => '<a>Test</a>',
+                    'theme'     => 'En compétition',
                     'createdAt' => new \DateTime(),
                     'copyright' => 'Lorem ipsum',
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                    'image'     => array(
+                        'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                         'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
                     ),
                 ),
                 array(
-                    'id' => 0,
-                    'title' => 'Lorem Ipsum',
-                    'caption' => '<a>Test</a>',
-                    'theme' => 'En compétition',
+                    'id'        => 0,
+                    'title'     => 'Lorem Ipsum',
+                    'caption'   => '<a>Test</a>',
+                    'theme'     => 'En compétition',
                     'createdAt' => new \DateTime(),
                     'copyright' => 'Lorem ipsum',
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                    'image'     => array(
+                        'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                         'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
                     ),
                 ),
                 array(
-                    'id' => 0,
-                    'title' => 'Lorem Ipsum',
-                    'caption' => '<a>Test</a>',
-                    'theme' => 'En compétition',
+                    'id'        => 0,
+                    'title'     => 'Lorem Ipsum',
+                    'caption'   => '<a>Test</a>',
+                    'theme'     => 'En compétition',
                     'createdAt' => new \DateTime(),
                     'copyright' => 'Lorem ipsum',
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                    'image'     => array(
+                        'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                         'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
                     ),
                 ),
                 array(
-                    'id' => 0,
-                    'title' => 'Lorem Ipsum',
-                    'caption' => '<a>Test</a>',
-                    'theme' => 'En compétition',
+                    'id'        => 0,
+                    'title'     => 'Lorem Ipsum',
+                    'caption'   => '<a>Test</a>',
+                    'theme'     => 'En compétition',
                     'createdAt' => new \DateTime(),
                     'copyright' => 'Lorem ipsum',
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                    'image'     => array(
+                        'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                         'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg',
                     ),
                 ),
             ),
-            'articles' => array(
+            'articles'       => array(
                 array(
-                    'title' => 'Stéphane Beizé interroge la loi du marché',
+                    'title'     => 'Stéphane Beizé interroge la loi du marché',
                     'createdAt' => new \DateTime(),
-                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                    'image' => array(
+                    'slug'      => 'enrages-polar-hybride-d-eric-hannezo',
+                    'image'     => array(
                         'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
-                    'format' => 'article',
-                    'theme' => 'competition',
-                    'category' => 'competition',
+                    'format'    => 'article',
+                    'theme'     => 'competition',
+                    'category'  => 'competition',
                 ),
                 array(
-                    'title' => 'Stéphane Beizé interroge la loi du marché',
+                    'title'     => 'Stéphane Beizé interroge la loi du marché',
                     'createdAt' => new \DateTime(),
-                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                    'image' => array(
+                    'slug'      => 'enrages-polar-hybride-d-eric-hannezo',
+                    'image'     => array(
                         'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
-                    'format' => 'article',
-                    'theme' => 'competition',
-                    'category' => 'competition',
+                    'format'    => 'article',
+                    'theme'     => 'competition',
+                    'category'  => 'competition',
                 ),
                 array(
-                    'title' => 'Stéphane Beizé interroge la loi du marché',
+                    'title'     => 'Stéphane Beizé interroge la loi du marché',
                     'createdAt' => new \DateTime(),
-                    'slug' => 'enrages-polar-hybride-d-eric-hannezo',
-                    'image' => array(
+                    'slug'      => 'enrages-polar-hybride-d-eric-hannezo',
+                    'image'     => array(
                         'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/articles/03.jpg'
                     ),
-                    'format' => 'article',
-                    'theme' => 'competition',
-                    'category' => 'competition',
+                    'format'    => 'article',
+                    'theme'     => 'competition',
+                    'category'  => 'competition',
                 ),
             ),
-            'audios' => array(
+            'audios'         => array(
                 array(
-                    'title' => 'Lorem Ipsum',
-                    'theme' => 'article',
-                    'sound' => 'sound.mp3',
+                    'title'     => 'Lorem Ipsum',
+                    'theme'     => 'article',
+                    'sound'     => 'sound.mp3',
                     'createdAt' => new \DateTime(),
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                    'image'     => array(
+                        'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                         'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                     ),
                 ),
             ),
-            'compete' => array(
-                array(
-
-                ),
+            'compete'        => array(
+                array(),
             ),
         );
 
         $videos = array(
             array(
                 'most_viewed' => true,
-                'theme' => 'Bande-annonce',
-                'createdAt' => new \DateTime(),
-                'title' => 'The Lobster',
-                'image' => array(
+                'theme'       => 'Bande-annonce',
+                'createdAt'   => new \DateTime(),
+                'title'       => 'The Lobster',
+                'image'       => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/movie/003.jpg'
                 ),
             ),
             array(
                 'most_viewed' => false,
-                'theme' => 'Photocall',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum dolor sit amet sit amet',
-                'image' => array(
+                'theme'       => 'Photocall',
+                'createdAt'   => new \DateTime(),
+                'title'       => 'Lorem ipsum dolor sit amet sit amet',
+                'image'       => array(
                     'path' => '//dummyimage.com/293x185/000/fff'
                 ),
             ),
             array(
                 'most_viewed' => false,
-                'theme' => 'Photocall',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum dolor sit amet sit amet',
-                'image' => array(
+                'theme'       => 'Photocall',
+                'createdAt'   => new \DateTime(),
+                'title'       => 'Lorem ipsum dolor sit amet sit amet',
+                'image'       => array(
                     'path' => 'http://dummyimage.com/293x185/000/fff'
                 ),
             ),
             array(
                 'most_viewed' => false,
-                'theme' => 'Photocall',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum dolor sit amet sit amet',
-                'image' => array(
+                'theme'       => 'Photocall',
+                'createdAt'   => new \DateTime(),
+                'title'       => 'Lorem ipsum dolor sit amet sit amet',
+                'image'       => array(
                     'path' => 'http://dummyimage.com/293x185/000/fff'
                 ),
             ),
             array(
                 'most_viewed' => false,
-                'theme' => 'Photocall',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum dolor sit amet sit amet',
-                'image' => array(
+                'theme'       => 'Photocall',
+                'createdAt'   => new \DateTime(),
+                'title'       => 'Lorem ipsum dolor sit amet sit amet',
+                'image'       => array(
                     'path' => 'http://dummyimage.com/293x185/000/fff'
                 ),
             ),
             array(
                 'most_viewed' => false,
-                'theme' => 'Photocall',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum dolor sit amet sit amet',
-                'image' => array(
+                'theme'       => 'Photocall',
+                'createdAt'   => new \DateTime(),
+                'title'       => 'Lorem ipsum dolor sit amet sit amet',
+                'image'       => array(
                     'path' => 'http://dummyimage.com/293x185/000/fff'
                 ),
             ),
             array(
                 'most_viewed' => false,
-                'theme' => 'Photocall',
-                'createdAt' => new \DateTime(),
-                'title' => 'Lorem ipsum dolor sit amet sit amet',
-                'image' => array(
+                'theme'       => 'Photocall',
+                'createdAt'   => new \DateTime(),
+                'title'       => 'Lorem ipsum dolor sit amet sit amet',
+                'image'       => array(
                     'path' => 'http://dummyimage.com/293x185/000/fff'
                 ),
             )
@@ -431,7 +430,7 @@ class MovieController extends Controller
 
         return array(
             'movies' => $movies,
-            'movie' => $movie,
+            'movie'  => $movie,
             'videos' => $videos,
         );
     }
@@ -439,30 +438,78 @@ class MovieController extends Controller
     /**
      * @Route("/selection/{slug}")
      * @Template("FDCEventBundle:Movie:selection.html.twig")
+     * @param Request $request
      * @param $slug
      * @return array
      */
-    public function selectionAction(Request $request,$slug)
+    public function selectionAction(Request $request, $slug = null)
     {
         $this->isPageEnabled($request->get('_route'));
-        $locale   = $request->getLocale();
-        $em = $this->getDoctrine()->getManager();
+        $locale = $request->getLocale();
+        $festival = $this->getFestival()->getId();
 
-        // check if waiting page is enabled
-        $waitingPage = $em->getRepository('BaseCoreBundle:FDCPageWaiting')->findBy(array('enabled' => true));
-        foreach($waitingPage as $waiting) {
-            if($waiting->getPage()->getRoute() == $request->get('_route')){
-                return $this->render('FDCEventBundle:Global:waiting-page.html.twig',array(
-                    'waitingPage' => $waiting
-                ));
-            }
+        $waitingPage = $this->isWaitingPage($request);
+        if ($waitingPage) {
+            return $waitingPage;
         }
 
-        // find all selected movies
-        $movies = $em->getRepository('BaseCoreBundle:FilmFilm')->findBy(array('selection' => 1));
+        $pages = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageLaSelection')
+            ->getPagesOrdoredBySelectionSectionOrder($locale)
+        ;
+        if ($slug === null) {
+            foreach ($pages as $page) {
+                if ($page instanceof FDCPageLaSelection) {
+                    if ($page->findTranslationByLocale($locale)) {
+                        $slug = $page->findTranslationByLocale($locale)->getSlug();
+                    }
+                    if (!$slug) {
+                        $page->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
+                    }
+                    if ($slug) {
+                        return $this->redirectToRoute('fdc_event_movie_selection', array('slug' => $slug));
+                    }
+                }
+            }
+            throw $this->createNotFoundException('There is not available selection.');
+        }
+
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageLaSelection')
+            ->getPageBySlug($locale, $slug)
+        ;
+
+        if (!$page || !$page->getSelectionSection()) {
+            throw  $this->createNotFoundException('Page Selection not found');
+        }
+
+        $next = false;
+        foreach ($pages as $item) {
+            if ($next) {
+                $next = $item;
+                break;
+            }
+            if ($item->getId() == $page->getId()) {
+                $next = true;
+            }
+        }
+        if (!$next) {
+            $next = reset($pages);
+        }
+
+        $movies = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->getFilmsBySelectionSection($festival, $locale, $page->getSelectionSection()->getId())
+        ;
 
         return array(
-            'movies' => $movies
+            'selectionTabs' => $pages,
+            'page'          => $page,
+            'movies'        => $movies,
+            'next'          => $next,
         );
     }
 
@@ -499,19 +546,19 @@ class MovieController extends Controller
         );
 
         $honnorContent = array(
-            'title' => 'Lumière sur deux réalisateurs',
+            'title'    => 'Lumière sur deux réalisateurs',
             'category' => array(
                 'title' => 'Hommage',
-                'slug' => 'hommage',
+                'slug'  => 'hommage',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-bandeau-push.jpg'
                 )
             ),
-            'guest' => array(
+            'guest'    => array(
                 array(
-                    'fullName' => 'Costa Gravas',
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/image-invitespecial.jpg',
+                    'fullName'    => 'Costa Gravas',
+                    'image'       => array(
+                        'path'      => '//html.festival-cannes-2016.com.ohwee.fr/img/films/image-invitespecial.jpg',
                         'copyright' => '© Lorem ipsum.'
                     ),
                     'description' => 'Cannes Classics 2015 est placé sous l\'égide de Costa-Gavras qui en sera l\'invité
@@ -519,32 +566,32 @@ class MovieController extends Controller
                                      1976 (il récompensa <a href="#">Taxi Driver</a>), Prix de la mise en scène avec
                                      <a href="#">Section spéciale</a> en 1975, c\'est en sa présence que sera projeté Z,
                                       Prix du Jury en 1969.',
-                    'widgets' => array(
+                    'widgets'     => array(
                         array(
-                            'type' => 'movie_widget_info',
-                            'title' => 'Z',
+                            'type'     => 'movie_widget_info',
+                            'title'    => 'Z',
                             'duration' => '1h58',
-                            'date' => '1968'
+                            'date'     => '1968'
                         ),
                         array(
-                            'type' => 'movie_widget_text',
+                            'type'    => 'movie_widget_text',
                             'content' => 'Présenté par KG Productions avec le soutien du CNC. Négatif original numérisé
                                           en 4K et restauré image par image en 2K par Eclair Group et par LE Diapason
                                           pour le son. Restauration et étalonnage supervisés par Costa-Gavras.'
                         ),
                         array(
-                            'type' => 'movie_widget_trailer',
+                            'type'        => 'movie_widget_trailer',
                             'description' => "Redécouvrez la bande-annonce du film lors de sa sortie en salles:",
-                            'image' => array(
+                            'image'       => array(
                                 'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-invitespecial.jpg'
                             )
                         ),
                     ),
                 ),
                 array(
-                    'fullName' => 'Woody Allen',
-                    'image' => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/image-invitespecial2.jpg',
+                    'fullName'    => 'Woody Allen',
+                    'image'       => array(
+                        'path'      => '//html.festival-cannes-2016.com.ohwee.fr/img/films/image-invitespecial2.jpg',
                         'copyright' => '© Lorem ipsum.'
                     ),
                     'description' => 'A l\'âge de seize ans, Woody Allen envoie des histoires drôles à différents
@@ -552,137 +599,137 @@ class MovieController extends Controller
                                       d\'innombrables chroniques pour des magazines comme Playboy, il décide en 1961 de
                                       monter sur les planches. Il arpente ainsi les cabarets et les plateaux de
                                       télévision.',
-                    'film' => array(
-                        'title' => 'Minuits à Paris',
+                    'film'        => array(
+                        'title'    => 'Minuits à Paris',
                         'duration' => '1h45',
-                        'date' => '2011'
+                        'date'     => '2011'
                     ),
-                    'widgets' => array(
+                    'widgets'     => array(
                         array(
-                            'type' => 'movie_widget_text',
+                            'type'    => 'movie_widget_text',
                             'content' => 'Présenté par KG Productions avec le soutien du CNC. Négatif original numérisé
                                           en 4K et restauré image par image en 2K par Eclair Group et par LE Diapason
                                           pour le son. Restauration et étalonnage supervisés par Costa-Gavras.'
                         ),
                         array(
-                            'type' => 'movie_widget_info',
-                            'title' => 'Z',
+                            'type'     => 'movie_widget_info',
+                            'title'    => 'Z',
                             'duration' => '1h58',
-                            'date' => '1968'
+                            'date'     => '1968'
                         ),
                         array(
-                            'type' => 'movie_widget_text',
+                            'type'    => 'movie_widget_text',
                             'content' => 'Présenté par KG Productions avec le soutien du CNC. Négatif original numérisé
                                           en 4K et restauré image par image en 2K par Eclair Group et par LE Diapason
                                           pour le son. Restauration et étalonnage supervisés par Costa-Gavras.'
                         ),
                         array(
-                            'type' => 'movie_widget_trailer',
+                            'type'        => 'movie_widget_trailer',
                             'description' => "Redécouvrez la bande-annonce du film lors de sa sortie en salles:",
-                            'image' => array(
+                            'image'       => array(
                                 'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-invitespecial2.jpg'
                             )
                         ),
                         array(
-                            'type' => 'movie_widget_audio',
-                            'title' => 'The lobster',
-                            'sound' => 'mp3',
+                            'type'      => 'movie_widget_audio',
+                            'title'     => 'The lobster',
+                            'sound'     => 'mp3',
                             'createdAt' => new DateTime(),
-                            'theme' => 'Cinéma de la plage',
-                            'image' => array(
+                            'theme'     => 'Cinéma de la plage',
+                            'image'     => array(
                                 'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg'
                             ),
-                            'akamaiId' => 'DAaDo5fgcUc'
+                            'akamaiId'  => 'DAaDo5fgcUc'
                         ),
                         array(
-                            'type' => 'movie_widget_quote',
+                            'type'    => 'movie_widget_quote',
                             'content' => 'J’ai découvert que Lambert avait une passion pour le film de genre',
 
                         ),
                         array(
-                            'type' => 'movie_widget_image',
+                            'type'      => 'movie_widget_image',
                             'copyright' => "Équipe du film - Photocall - The Lobster",
-                            'photos' => array(
+                            'photos'    => array(
                                 array(
-                                    'id' => 0,
-                                    'image' => array(
-                                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                                    'id'        => 0,
+                                    'image'     => array(
+                                        'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                                         'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg'
                                     ),
                                     'createdAt' => new DateTime(),
-                                    'theme' => 'Lorem Ipsum',
-                                    'title' => 'lorem ipsum',
-                                    'caption' => 'lorem ipsum',
-                                    'alt' => 'lorem ipsum',
+                                    'theme'     => 'Lorem Ipsum',
+                                    'title'     => 'lorem ipsum',
+                                    'caption'   => 'lorem ipsum',
+                                    'alt'       => 'lorem ipsum',
                                     'copyright' => 'Copyright'
                                 ),
                                 array(
-                                    'id' => 0,
-                                    'image' => array(
-                                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                                    'id'        => 0,
+                                    'image'     => array(
+                                        'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                                         'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg'
                                     ),
                                     'createdAt' => new DateTime(),
-                                    'theme' => 'Lorem Ipsum',
-                                    'title' => 'lorem ipsum',
-                                    'caption' => 'lorem ipsum',
-                                    'alt' => 'lorem ipsum',
+                                    'theme'     => 'Lorem Ipsum',
+                                    'title'     => 'lorem ipsum',
+                                    'caption'   => 'lorem ipsum',
+                                    'alt'       => 'lorem ipsum',
                                     'copyright' => 'Copyright'
                                 ),
                                 array(
-                                    'id' => 0,
-                                    'image' => array(
-                                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                                    'id'        => 0,
+                                    'image'     => array(
+                                        'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                                         'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg'
                                     ),
                                     'createdAt' => new DateTime(),
-                                    'theme' => 'Lorem Ipsum',
-                                    'title' => 'lorem ipsum',
-                                    'caption' => 'lorem ipsum',
-                                    'alt' => 'lorem ipsum',
+                                    'theme'     => 'Lorem Ipsum',
+                                    'title'     => 'lorem ipsum',
+                                    'caption'   => 'lorem ipsum',
+                                    'alt'       => 'lorem ipsum',
                                     'copyright' => 'Copyright'
                                 ),
                                 array(
-                                    'id' => 0,
-                                    'image' => array(
-                                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                                    'id'        => 0,
+                                    'image'     => array(
+                                        'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                                         'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg'
                                     ),
                                     'createdAt' => new DateTime(),
-                                    'theme' => 'Lorem Ipsum',
-                                    'title' => 'lorem ipsum',
-                                    'caption' => 'lorem ipsum',
-                                    'alt' => 'lorem ipsum',
+                                    'theme'     => 'Lorem Ipsum',
+                                    'title'     => 'lorem ipsum',
+                                    'caption'   => 'lorem ipsum',
+                                    'alt'       => 'lorem ipsum',
                                     'copyright' => 'Copyright'
                                 ),
                                 array(
-                                    'id' => 0,
-                                    'image' => array(
-                                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
+                                    'id'        => 0,
+                                    'image'     => array(
+                                        'path'  => '//html.festival-cannes-2016.com.ohwee.fr/img/slide001.jpg',
                                         'thumb' => '//html.festival-cannes-2016.com.ohwee.fr/img/thumb01.jpg'
                                     ),
                                     'createdAt' => new DateTime(),
-                                    'theme' => 'Lorem Ipsum',
-                                    'title' => 'lorem ipsum',
-                                    'caption' => 'lorem ipsum',
-                                    'alt' => 'lorem ipsum',
+                                    'theme'     => 'Lorem Ipsum',
+                                    'title'     => 'lorem ipsum',
+                                    'caption'   => 'lorem ipsum',
+                                    'alt'       => 'lorem ipsum',
                                     'copyright' => 'Copyright'
                                 )
                             )
                         ),
                         array(
-                            'type' => 'image_dual_align',
+                            'type'   => 'image_dual_align',
                             'photos' => array(
                                 array(
-                                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/article/005.jpg',
-                                    'title' => 'lorem ipsum',
-                                    'alt' => 'lorem ipsum',
+                                    'path'      => '//html.festival-cannes-2016.com.ohwee.fr/img/article/005.jpg',
+                                    'title'     => 'lorem ipsum',
+                                    'alt'       => 'lorem ipsum',
                                     'copyright' => 'VALERY HACHE / AFP'
                                 ),
                                 array(
-                                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/article/005.jpg',
-                                    'title' => 'lorem ipsum',
-                                    'alt' => 'lorem ipsum',
+                                    'path'      => '//html.festival-cannes-2016.com.ohwee.fr/img/article/005.jpg',
+                                    'title'     => 'lorem ipsum',
+                                    'alt'       => 'lorem ipsum',
                                     'copyright' => 'VALERY HACHE / AFP'
                                 )
                             )
@@ -692,17 +739,17 @@ class MovieController extends Controller
             ),
             'sections' => array(
                 array(
-                    'title' => 'Centenaire Orson Welles',
+                    'title'       => 'Centenaire Orson Welles',
                     'description' => '',
-                    'film' => array(
+                    'film'        => array(
                         array(
-                            'title' => 'Citizen Kane',
-                            'date' => '1941',
-                            'duration' => '1h59',
-                            'author' => array(
+                            'title'       => 'Citizen Kane',
+                            'date'        => '1941',
+                            'duration'    => '1h59',
+                            'author'      => array(
                                 'fullName' => 'Orson Welles'
                             ),
-                            'image' => array(
+                            'image'       => array(
                                 'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
                             ),
                             'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
@@ -712,13 +759,13 @@ class MovieController extends Controller
                                           Son optique " RCA squeeze duplex format. "'
                         ),
                         array(
-                            'title' => 'Citizen Kane',
-                            'date' => '1941',
-                            'duration' => '1h59',
-                            'author' => array(
+                            'title'       => 'Citizen Kane',
+                            'date'        => '1941',
+                            'duration'    => '1h59',
+                            'author'      => array(
                                 'fullName' => 'Orson Welles'
                             ),
-                            'image' => array(
+                            'image'       => array(
                                 'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
                             ),
                             'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
@@ -730,20 +777,20 @@ class MovieController extends Controller
                     )
                 ),
                 array(
-                    'title' => 'Hommage a Manoel De Oliveira',
+                    'title'       => 'Hommage a Manoel De Oliveira',
                     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente voluptatibus
                                       magnam culpa, ut quam est repellendus aliquam ipsum eos debitis. Lorem ipsum
                                       dolor sit amet, consectetur adipisicing elit. Repellendus consequuntur esse
                                       doloremque qui sunt vel voluptatem repudiandae eaque aliquid architecto.',
-                    'film' => array(
+                    'film'        => array(
                         array(
-                            'title' => 'Visita',
-                            'date' => '1982',
-                            'duration' => '1h08',
-                            'author' => array(
+                            'title'       => 'Visita',
+                            'date'        => '1982',
+                            'duration'    => '1h08',
+                            'author'      => array(
                                 'fullName' => 'Manoel De Oliveira'
                             ),
-                            'image' => array(
+                            'image'       => array(
                                 'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
                             ),
                             'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
@@ -760,24 +807,24 @@ class MovieController extends Controller
         $hommageContent = array(
             'category' => array(
                 'title' => 'Copies Restaurées',
-                'slug' => 'copies-restaurees',
+                'slug'  => 'copies-restaurees',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-bandeau-push.jpg'
                 )
             ),
             'sections' => array(
                 array(
-                    'title' => 'Centenaire Orson Welles',
+                    'title'       => 'Centenaire Orson Welles',
                     'description' => '',
-                    'film' => array(
+                    'film'        => array(
                         array(
-                            'title' => 'Citizen Kane',
-                            'date' => '1941',
-                            'duration' => '1h59',
-                            'author' => array(
+                            'title'       => 'Citizen Kane',
+                            'date'        => '1941',
+                            'duration'    => '1h59',
+                            'author'      => array(
                                 'fullName' => 'Orson Welles'
                             ),
-                            'image' => array(
+                            'image'       => array(
                                 'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
                             ),
                             'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
@@ -787,13 +834,13 @@ class MovieController extends Controller
                                           Son optique " RCA squeeze duplex format. "'
                         ),
                         array(
-                            'title' => 'Citizen Kane',
-                            'date' => '1941',
-                            'duration' => '1h59',
-                            'author' => array(
+                            'title'       => 'Citizen Kane',
+                            'date'        => '1941',
+                            'duration'    => '1h59',
+                            'author'      => array(
                                 'fullName' => 'Orson Welles'
                             ),
-                            'image' => array(
+                            'image'       => array(
                                 'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
                             ),
                             'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
@@ -805,20 +852,20 @@ class MovieController extends Controller
                     )
                 ),
                 array(
-                    'title' => 'Hommage a Manoel De Oliveira',
+                    'title'       => 'Hommage a Manoel De Oliveira',
                     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente voluptatibus
                                       magnam culpa, ut quam est repellendus aliquam ipsum eos debitis. Lorem ipsum
                                       dolor sit amet, consectetur adipisicing elit. Repellendus consequuntur esse
                                       doloremque qui sunt vel voluptatem repudiandae eaque aliquid architecto.',
-                    'film' => array(
+                    'film'        => array(
                         array(
-                            'title' => 'Visita',
-                            'date' => '1982',
-                            'duration' => '1h08',
-                            'author' => array(
+                            'title'       => 'Visita',
+                            'date'        => '1982',
+                            'duration'    => '1h08',
+                            'author'      => array(
                                 'fullName' => 'Manoel De Oliveira'
                             ),
-                            'image' => array(
+                            'image'       => array(
                                 'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
                             ),
                             'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
@@ -835,7 +882,7 @@ class MovieController extends Controller
         $copiesContent = array(
             'category' => array(
                 'title' => 'World cinema project',
-                'slug' => 'world-cinema',
+                'slug'  => 'world-cinema',
                 'image' => array(
                     'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-bandeau-push.jpg'
                 )
@@ -844,13 +891,13 @@ class MovieController extends Controller
                 array(
                     'film' => array(
                         array(
-                            'title' => 'Citizen Kane',
-                            'date' => '1941',
-                            'duration' => '1h59',
-                            'author' => array(
+                            'title'       => 'Citizen Kane',
+                            'date'        => '1941',
+                            'duration'    => '1h59',
+                            'author'      => array(
                                 'fullName' => 'Orson Welles'
                             ),
-                            'image' => array(
+                            'image'       => array(
                                 'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
                             ),
                             'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
@@ -860,13 +907,13 @@ class MovieController extends Controller
                                           Son optique " RCA squeeze duplex format. "'
                         ),
                         array(
-                            'title' => 'Citizen Kane',
-                            'date' => '1941',
-                            'duration' => '1h59',
-                            'author' => array(
+                            'title'       => 'Citizen Kane',
+                            'date'        => '1941',
+                            'duration'    => '1h59',
+                            'author'      => array(
                                 'fullName' => 'Orson Welles'
                             ),
-                            'image' => array(
+                            'image'       => array(
                                 'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
                             ),
                             'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
@@ -876,13 +923,13 @@ class MovieController extends Controller
                                           Son optique " RCA squeeze duplex format. "'
                         ),
                         array(
-                            'title' => 'Citizen Kane',
-                            'date' => '1941',
-                            'duration' => '1h59',
-                            'author' => array(
+                            'title'       => 'Citizen Kane',
+                            'date'        => '1941',
+                            'duration'    => '1h59',
+                            'author'      => array(
                                 'fullName' => 'Orson Welles'
                             ),
-                            'image' => array(
+                            'image'       => array(
                                 'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
                             ),
                             'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
@@ -892,13 +939,13 @@ class MovieController extends Controller
                                           Son optique " RCA squeeze duplex format. "'
                         ),
                         array(
-                            'title' => 'Citizen Kane',
-                            'date' => '1941',
-                            'duration' => '1h59',
-                            'author' => array(
+                            'title'       => 'Citizen Kane',
+                            'date'        => '1941',
+                            'duration'    => '1h59',
+                            'author'      => array(
                                 'fullName' => 'Orson Welles'
                             ),
-                            'image' => array(
+                            'image'       => array(
                                 'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film1.jpg'
                             ),
                             'description' => 'Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros.
@@ -942,46 +989,46 @@ class MovieController extends Controller
     {
         $content = array(
             'description' => 'Les projections du Cinéma de la Plage, qui se jouent chaque soir sous les étoiles, sont ouvertes au public',
-            'film' => array(
+            'film'        => array(
                 array(
-                    'title' => 'Le grand blond avec une chaussure noire',
-                    'author' => array(
+                    'title'          => 'Le grand blond avec une chaussure noire',
+                    'author'         => array(
                         'fullName' => 'Yves ROBERT'
                     ),
-                    'releaseDate' => new \DateTime(),
+                    'releaseDate'    => new \DateTime(),
                     'projectionDate' => new \DateTime(),
-                    'duration' => '1h30',
-                    'description' => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
+                    'duration'       => '1h30',
+                    'description'    => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
                                       son restauré par Diapason en partenariat avec Eclair.',
-                    'image' => array(
+                    'image'          => array(
                         'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film_cdp1.jpg'
                     )
                 ),
                 array(
-                    'title' => 'Le grand blond avec une chaussure noire',
-                    'author' => array(
+                    'title'          => 'Le grand blond avec une chaussure noire',
+                    'author'         => array(
                         'fullName' => 'Yves ROBERT'
                     ),
-                    'releaseDate' => new \DateTime(),
+                    'releaseDate'    => new \DateTime(),
                     'projectionDate' => new \DateTime(),
-                    'duration' => '1h30',
-                    'description' => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
+                    'duration'       => '1h30',
+                    'description'    => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
                                       son restauré par Diapason en partenariat avec Eclair.',
-                    'image' => array(
+                    'image'          => array(
                         'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film_cdp1.jpg'
                     )
                 ),
                 array(
-                    'title' => 'Le grand blond avec une chaussure noire',
-                    'author' => array(
+                    'title'          => 'Le grand blond avec une chaussure noire',
+                    'author'         => array(
                         'fullName' => 'Yves ROBERT'
                     ),
-                    'releaseDate' => new \DateTime(),
+                    'releaseDate'    => new \DateTime(),
                     'projectionDate' => new \DateTime(),
-                    'duration' => '1h30',
-                    'description' => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
+                    'duration'       => '1h30',
+                    'description'    => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
                                       son restauré par Diapason en partenariat avec Eclair.',
-                    'image' => array(
+                    'image'          => array(
                         'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film_cdp1.jpg'
                     )
                 )

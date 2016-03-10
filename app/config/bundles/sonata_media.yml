@@ -15,9 +15,10 @@ sonata_media:
             providers:
                 - sonata.media.provider.image
             formats:
-                tiny:  { width: 46 , height: 64 , quality: 100 }
-                small: { width: 187 , height: 255 , quality: 100 }
-                big:   { width: 1000 , quality: 100 }
+                tiny:     { width: 46 , height: 64 , quality: 100 }
+                small:    { width: 187 , height: 255 , quality: 100 }
+                big:      { width: 1000 , quality: 100 }
+                319x434:  { width: 319 , height: 434 , quality: 100 }
 
         film_main:
             providers:

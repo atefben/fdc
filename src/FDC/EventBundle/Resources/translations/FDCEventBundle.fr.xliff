@@ -1725,6 +1725,10 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
         <jms:reference-file line="113">views/Television/channel.html.twig</jms:reference-file>
         <jms:reference-file line="122">views/Television/live.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="breadcrumb.la_selection" resname="breadcrumb.la_selection">
+        <source>breadcrumb.la_selection</source>
+        <target>La sélection</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
