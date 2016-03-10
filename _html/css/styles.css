@@ -12136,6 +12136,10 @@ article .read-later.rAlign span:after {
 #gridPhotos .item {
   cursor: pointer;
   overflow: hidden;
+  visibility: hidden;
+}
+#gridPhotos .item.visible {
+  visibility: visible;
 }
 #gridPhotos .item img {
   -moz-transform: translateZ(0);
@@ -12230,6 +12234,11 @@ article .read-later.rAlign span:after {
 #gridVideos .item {
   cursor: pointer;
   overflow: hidden;
+  visibility: hidden;
+}
+#gridAudios .item.visible,
+#gridVideos .item.visible {
+  visibility: visible;
 }
 #gridAudios .item img,
 #gridVideos .item img {
