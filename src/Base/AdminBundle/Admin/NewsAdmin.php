@@ -123,7 +123,7 @@ class NewsAdmin extends Admin
             ))
             ->add('type', null, array(
                 'template' => 'BaseAdminBundle:News:list_type.html.twig',
-                'label'    => 'list.news_common.label_title',
+                'label'    => 'show.label_type',
             ))
             ->add('theme', null, array())
             ->add('createdAt', null, array(
