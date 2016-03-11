@@ -36,6 +36,7 @@ sonata_media:
                  square: { width: 146, height: 146, quality: 100 }
                  small: { width: 187 , height: 255 , quality: 100 }
                  big:   { width: 1000 , quality: 100 }
+                 319x434:  { width: 319 , height: 434 , quality: 100 }
 
         film_film:
             providers:
@@ -49,6 +50,7 @@ sonata_media:
             providers:
                 - sonata.media.provider.pdf
             formats:
+                319x434:  { width: 319 , height: 434 , quality: 100 }
 
         #CMS
         media_image:  # the default context is mandatory

@@ -967,4 +967,16 @@ article {
       }
     }
   }
+
+  .text{
+    table{
+      td{
+        p{
+          color: #666;
+          font-size: .74rem !important;
+          font-family: $CamphorMedium;
+        }
+      }
+    }
+  }
 }

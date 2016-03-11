@@ -505,6 +505,8 @@ class MovieController extends Controller
             ->getFilmsBySelectionSection($festival, $locale, $page->getSelectionSection()->getId())
         ;
 
+        $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
+
         return array(
             'selectionTabs' => $pages,
             'page'          => $page,
