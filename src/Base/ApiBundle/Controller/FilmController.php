@@ -77,7 +77,7 @@ class FilmController extends FOSRestController
 
         // create view
         $view = $this->view($items, 200);
-        $view->setSerializationContext($context);
+        //$view->setSerializationContext($context);
 
         return $view;
     }
