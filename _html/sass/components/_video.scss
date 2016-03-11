@@ -12,25 +12,25 @@
 
 .single-channel .small-container .player.video-container {
   width: 975px;
-  height: calc(975px*9/16);
+  height: calc(975px / 1.58);
 }
 
 .single-article .container .video-container.video-single {
   margin-top: 50px;
   width: 980px;
-  height: calc(980px*9/16);
+  height: calc(980px / 1.58);
 }
 
 .popin-video .video-container {
   width: 710px;
-  height: calc(710px*9/16);
+  height: calc(710px / 1.58);
 }
 
 .video-container {
   position: relative;
   overflow: hidden;
   width: 630px;
-  height: calc(630px*9/16);
+  height: calc(630px / 1.58);
 
   button {
     background: none;
@@ -264,7 +264,6 @@
     .picto {
       bottom: 20px;
       left: 20px;
-      pointer-events: initial;
       cursor: pointer;
 
       &.hide {
@@ -685,11 +684,10 @@
   top: 50%;
   left: 50%;
   width: 750px;
-  height: 540px;
+  height: 590px;
   margin: -290px 0 0 -375px;
   padding: 20px;
   box-sizing: border-box;
-  pointer-events: none;
   z-index: 100;
   @include transform(translateY(30px));
   @include transition(all 1.2s $smoothTransition);
@@ -704,7 +702,6 @@
 
   &.show {
     opacity: 1;
-    pointer-events: initial;
     visibility: visible;
     @include transform(translateY(0));
   }

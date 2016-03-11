@@ -9,6 +9,7 @@ use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use FDC\EventBundle\FDCEventBundle;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use JMS\Serializer\Annotation\Groups;
@@ -18,7 +19,7 @@ use JMS\Serializer\Annotation\Since;
  * FDCPageWaiting
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCPageWaitingRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FDCPageWaiting implements TranslateMainInterface
@@ -57,6 +58,7 @@ class FDCPageWaiting implements TranslateMainInterface
     protected $translations;
 
     /**
+     * @var FDCEventRoutes
      * @ORM\OneToOne(targetEntity="FDCEventRoutes")
      *
      */

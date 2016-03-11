@@ -15,7 +15,7 @@
 
   .slideshow-img {
     background-color: #000;
-    height: 555px;
+    height: 557px;
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -506,6 +506,7 @@ div.chocolat-wrapper {
 
   .share {
     border-left: 1px solid rgba(255, 255, 255, 0.4);
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
     display: block;
     width: 100px;
     height: 100px;
@@ -533,11 +534,11 @@ div.chocolat-wrapper {
   .chocolat-left {
     background: none;
     bottom: 0;
-    border-left: 1px solid rgba(255, 255, 255, 0.4);
-    display: block;
+    border-right: 2px solid rgba(20, 20, 20, 0.4);
+    display: none;
     top: auto;
     left: auto;
-    right: 101px;
+    right: 100px;
     width: 100px;
     height: 100px;
     margin-top: 0;
@@ -547,13 +548,20 @@ div.chocolat-wrapper {
     .icon{
         line-height: 100px;
     }
+
+    &.active {
+      border-right: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    &:not(.active) + .chocolat-right {
+      border-left: 1px solid rgba(255, 255, 255, 0.4);
+    }
   }
 
   .chocolat-right {
     background: none;
     bottom: 0;
-    border-left: 1px solid rgba(255, 255, 255, 0.4);
-    display: block;
+    display: none;
     top: auto;
     width: 100px;
     height: 100px;
@@ -686,7 +694,7 @@ div.chocolat-wrapper {
     .chocolat-left {
       height: 80px;
       width: 80px;
-      right: 81px;
+      right: 80px;
     }
 
     .thumbnails {
@@ -737,7 +745,7 @@ div.chocolat-wrapper {
 .article_photo{
     padding-top: 50px;
     .slideshow-img {
-        height: 615px !important;
+        height: 631px !important;
       .images .img img{
         width: 100%;
       }

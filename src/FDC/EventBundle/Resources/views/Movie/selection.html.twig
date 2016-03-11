@@ -2,54 +2,87 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-<div id="main" class="list-article films-list selection-officielle loading">
-    <div class="bandeau-list">
-        <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('//html.festival-cannes-2016.com.ohwee.fr/img/films/selection-officielle/selection-bandeau.jpg')">
-            <div class="vCenterKid">
-                <h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>
-            </div>
-        </div>
-
-        {% include 'FDCEventBundle:Movie:components/filters.html.twig' %}
-    </div>
-    <div class="container container-list ">
-        <section class="categorie-items">
-            <div class="grid">
-                <div id="gridFilmSelection" class="grid-wrapper">
-                    <div class="grid-sizer"></div>
-
-                    {% for movie in movies %}
-                        <div class="item">
-                            <figure>
-                                <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
-                                    <img src="//html.festival-cannes-2016.com.ohwee.fr/img/films/selection-officielle/cover-film1.jpg" alt="">
-                                </a>
-                                <figcaption>
-                                    <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
-                                        <span class="name">{{ movie.titleVO }}</span>
-                                    </a>
-                                    <a href="{{ path('fdc_event_artist_get', {'slug': "joachim-lafosse"}) }}">
-                                        <span class="author">{#{{ movie.author.fullName }}#}Joachim Lafosse</span>
-                                    </a>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    {% endfor %}
-
+    <div id="main" class="list-article films-list selection-officielle loading">
+        <div class="bandeau-list">
+            <div class="bandeau-list-img bandeau-head vCenter"
+                 style="background-image:url('{% path page.image|trans_fallback('file'), '976x535' %}')">
+                <div class="vCenterKid">
+                    <h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>
                 </div>
             </div>
-        </section>
-    </div>
-    <div class="bandeau-list  bandeau-list-footer push-footer vCenter">
-        <div class="bandeau-list-img vCenterKid" style="background-image:url('//html.festival-cannes-2016.com.ohwee.fr/img/films/selection-officielle/push.jpg')">
-            <h2 class="title title-list-header">Un certain regard</h2>
-            <a href="{{ path('fdc_event_movie_selection', {'slug': 'certain-regard'} ) }}" class="bandeau-lien">
-                {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                <img src="{{ asset_url }}" alt="{{ 'selection.btn.decouvrirrubrique'|trans }}" class="svg-arrow">
-                {% endimage %}
-                {{ 'selection.btn.decouvrirrubrique'|trans }}
-            </a>
+
+            {% include 'FDCEventBundle:Movie:components/filters.html.twig' %}
         </div>
+        <div class="container container-list ">
+            <section class="categorie-items">
+                <div class="grid">
+                    <div id="gridFilmSelection" class="grid-wrapper">
+                        <div class="grid-sizer"></div>
+
+                        {% for movie in movies %}
+                            {% set filmPoster = movie|film_poster %} {# Implements film images fallback #}
+                            {% if filmPoster %}
+                                <div class="item">
+                                    <figure>
+                                        <div class="image">
+                                            <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
+                                                <img src="{% path filmPoster, '319x434' %}" alt=""/>
+                                            </a>
+                                        </div>
+                                        <figcaption>
+                                            <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
+                                                <span class="name">{{ movie|trans_fallback('title')?:movie.titleVo }}</span>
+                                            </a>
+                                            <a href="{{ path('fdc_event_artist_get', {'slug': "joachim-lafosse"}) }}">
+                                                <span class="author">
+                                                    {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                        {{ loop.first == false ? ', ': '' }}{{ director.fullName }}
+                                                    {% endfor %}
+                                                </span>
+                                            </a>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        {% if next %}
+            <div class="bandeau-list  bandeau-list-footer push-footer vCenter">
+                <div class="bandeau-list-img vCenterKid"
+                     style="background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}')">
+                    <h2 class="title title-list-header">{{ next|trans_fallback('overrideName')?:next.selectionSection|trans_fallback('name') }}</h2>
+                    <a href="{{ path('fdc_event_movie_selection', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}"
+                       class="bandeau-lien">
+                        {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                        <img src="{{ asset_url }}" alt="{{ 'selection.btn.decouvrirrubrique'|trans }}"
+                             class="svg-arrow">
+                        {% endimage %}
+                        {{ 'selection.btn.decouvrirrubrique'|trans }}
+                    </a>
+                </div>
+            </div>
+        {% endif %}
     </div>
-</div>
+
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.webtv.home'|trans,
+    "url"  : path('fdc_event_news_index')
+    },
+    {
+    "name" : 'breadcrumb.la_selection'|trans,
+    "url"  : path('fdc_event_movie_selection')
+    },
+    {
+    "name" : (page|trans_fallback('overrideName')?:page.selectionSection|trans_fallback('name'))|trans,
+    }
+    ]
+    } %}
 {% endblock body %}

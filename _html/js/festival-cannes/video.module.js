@@ -142,12 +142,12 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     $topBar.find('.buttons .email').attr('href', $container.data('email'));
     linkPopinInit(encodeURIComponent(shareUrl), '#'+vid.id+' + .'+$topBar[0].className.replace(' ','.')+' .buttons .link');
 
-    $topBar.find('.buttons .twitter').on('click', function(){
-        window.open(this.href,'','width=700,height=500');
+    $topBar.find('.buttons .facebook').on('click',function(){
+        window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
         return false;
     });
-    $topBar.find('.buttons .facebook').on('click',function(){
-        window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');
+    $topBar.find('.buttons .twitter').on('click', function(){
+        window.open(this.href,'','width=700,height=500');
         return false;
     });
 

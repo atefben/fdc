@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Repository;
 
+use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
@@ -118,6 +119,35 @@ class FilmFilmRepository extends EntityRepository
             ->where('f.id  IN (:ids)')
             ->setParameter(':ids', $ids)
         ;
+
+        return $qb->getQuery()->getResult();
+
+    }
+
+    /**
+     * @param $festival
+     * @param $locale
+     * @param $selectionSection
+     * @return array
+     */
+    public function getFilmsBySelectionSection($festival, $locale, $selectionSection)
+    {
+        $qb = $this->createQueryBuilder('f');
+
+        $qb
+            ->join('f.translations', 't')
+            ->join('f.medias', 'm')
+            ->andWhere('m.type = :type')
+            ->setParameter('type', FilmFilmMediaInterface::TYPE_POSTER) // add condition for others film images fallback.
+            ->andWhere('f.selectionSection = :selectionSection')
+            ->setParameter('selectionSection', $selectionSection)
+        ;
+
+        $this->addMasterQueries($qb, 'f', $festival, false);
+        $this->addTranslationQueries($qb, 't', $locale);
+
+
+        $qb->orderBy('f.titleVO', 'asc');
 
         return $qb->getQuery()->getResult();
 

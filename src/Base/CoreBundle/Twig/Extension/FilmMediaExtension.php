@@ -2,6 +2,8 @@
 
 namespace Base\CoreBundle\Twig\Extension;
 
+use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 use \Twig_Extension;
 
 /**
@@ -25,18 +27,31 @@ class FilmMediaExtension extends Twig_Extension
     {
         return array(
             new \Twig_SimpleFilter('film_media', array($this, 'getMedias')),
+            new \Twig_SimpleFilter('film_poster', array($this, 'getFilmPoster')),
         );
     }
 
     public function getMedias($film, $type)
     {
         $medias = array();
-        foreach($film->getMedias() as $media) {
+        foreach ($film->getMedias() as $media) {
             if ($media->getMedia() !== null && $media->getType() == $type) {
                 $medias[] = $media->getMedia()->getFile();
             }
         }
         return $medias;
+    }
+
+    /**
+     * @param FilmFilm $film
+     */
+    public function getFilmPoster(FilmFilm $film)
+    {
+        foreach ($film->getMedias() as $media) {
+            if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER && $media->getMedia() && $media->getMedia()->getFile()) {
+                return $media->getMedia()->getFile();
+            }
+        }
     }
 
 

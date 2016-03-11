@@ -70,6 +70,7 @@ class FilmController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 		
         // set context view
+		$context = SerializationContext::create();
         $groups = array('film_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);

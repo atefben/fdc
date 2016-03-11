@@ -324,6 +324,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_page_la_selection:
+        class: Base\AdminBundle\Admin\FDCPageLaSelectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelection, BaseAdminBundle:FDCPageLaSelectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageLaSelection, label_translator_strategy: sonata.admin.label.strategy.underscore, , show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     #Homepage
     base.admin.homepage:
         class: Base\AdminBundle\Admin\HomepageAdmin

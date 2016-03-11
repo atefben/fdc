@@ -1,7 +1,8 @@
 {% if is_granted('ROLE_BASE_ADMIN_GROUP_SEO_ADMIN') %}
     {% set activePages = [
     'admin_base_core_fdcpagewebtvchannels_edit',
-    'admin_base_core_fdcpagewebtvtrailers_edit'
+    'admin_base_core_fdcpagewebtvtrailers_edit',
+    'admin_base_core_fdcpagelaselection_edit'
     ] %}
     <li class="treeview{% if app.request.attributes.get('_route') in activePages %} active{% endif %}">
         <a href="#">
@@ -89,6 +90,44 @@
                     <a href="{{ path('admin_base_core_fdcpagenewsvideos_edit', {id: admin_fdc_page_news_videos_id}) }}">
                         <i class="fa fa-angle-double-right"></i>
                         {{ 'dashboard.link.fdc_page_news_videos'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+            {% endif %}
+            {% if is_granted('ROLE_BASE_ADMIN_FDC_PAGE_LA_SELECTION_ADMIN') %}
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpagelaselection_edit', {id: admin_fdc_page_la_selection_competition_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_la_selection_competition'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpagelaselection_edit', {id: admin_fdc_page_la_selection_certain_regard_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_la_selection_certain_regard'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpagelaselection_edit', {id: admin_fdc_page_la_selection_hors_competition_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_la_selection_hors_competition'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpagelaselection_edit', {id: admin_fdc_page_la_selection_seances_speciales_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_la_selection_seances_speciales'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpagelaselection_edit', {id: admin_fdc_page_la_selection_cinefondation_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_la_selection_cinefondation'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpagelaselection_edit', {id: admin_fdc_page_la_selection_courts_metrages_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_la_selection_courts_metrages'|trans({}, 'BaseAdminBundle') }}
                     </a>
                 </li>
             {% endif %}

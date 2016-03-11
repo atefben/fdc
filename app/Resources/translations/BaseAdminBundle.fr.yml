@@ -61,6 +61,7 @@ breadcrumb:
     link_f_d_c_page_news_audios_list: Page L'actualité
     link_f_d_c_page_news_images_list: Page L'actualité
     link_f_d_c_page_news_videos_list: Page L'actualité
+    link_f_d_c_page_la_selection_list: La sélection
 
 link:
     action_soif_refresh: Mettre à jour
@@ -404,6 +405,12 @@ dashboard:
         fdc_page_web_tv_trailers_courts_metrages: WebTV - BA et extraits (Courts métrages)
         fdc_page_web_tv_trailers_cannes_classics: WebTV - BA et extraits (Cannes Classics)
         fdc_page_web_tv_trailers_cinema_plage: WebTV - BA et extraits (Cinéma de plage)
+        fdc_page_la_selection_competition: La sélection COMPETITION
+        fdc_page_la_selection_certain_regard: La sélection UN CERTAIN REGARD
+        fdc_page_la_selection_hors_competition: La sélection HORS COMPÉTITION
+        fdc_page_la_selection_seances_speciales: La sélection SÉANCES SPÉCIALES
+        fdc_page_la_selection_cinefondation: La sélection CINÉFONDATION
+        fdc_page_la_selection_courts_metrages: La sélection COURTS MÉTRAGES
         press_homepage: Homepage
         press_guide: Guide pratique
         press_contact: Contactez-nous
@@ -785,3 +792,4 @@ show:
 FDCPageWebTvChannels: Page WebTV - Les chaînes
 FDCPageWebTvLive: Accueil WebTV
 FDCPageWebTvTrailers: Page WebTV - Les bandes-annonces - Compétition
+FDCPageLaSelection: Page la sélection

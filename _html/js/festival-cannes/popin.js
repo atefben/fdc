@@ -152,7 +152,6 @@ function linkPopinInit(link, cls) {
     $(cls).attr('data-clipboard-text',link);
 
     $(cls).on('click touchstart',function(e){
-      console.log("TEST");
       var that = $(this);
       e.preventDefault();
 
