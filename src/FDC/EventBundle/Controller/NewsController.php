@@ -360,6 +360,10 @@ class NewsController extends Controller
             $filters['format'] = array_merge($filters['format'], array_values($format));
         }
 
+        if(count($homeArticles) > 6){
+            unset($homeArticles[6]);
+        }
+
         return array(
             'homeArticlesSlider' => $homeArticlesSlider,
             'endOfArticles' => $endOfArticles,

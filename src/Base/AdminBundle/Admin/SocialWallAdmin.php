@@ -27,8 +27,74 @@ class SocialWallAdmin extends Admin
             ->add('enabledMobile')
             ->add('enabledDesktop')
             ->add('tags')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('createdBefore', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere("{$alias}.createdAt < :before");
+                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'filter.media_audio.label_created_before',
+            ))
+            ->add('createdAfter', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere("{$alias}.createdAt > :after");
+                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'filter.media_audio.label_created_after',
+            ))
+            ->add('updatedBefore', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.updatedAt < :before');
+                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'filter.common.label_updated_before',
+            ))
+            ->add('updatedAfter', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.updatedAt > :after');
+                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'filter.common.label_updated_after',
+            ))
         ;
     }
 

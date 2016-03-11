@@ -806,12 +806,21 @@ article {
       }
 
       &+ .programmation-film {
+        float: left;
+        width: 50%;
+        
         .wrapper {
           color: #fff;
           height: 100%;
           float: left;
           margin-left: 85px;
           max-width: 470px;
+
+          ul {
+            li {
+              width: 211px;
+            }
+          }
         }
       }
     }
@@ -819,17 +828,15 @@ article {
 
     .programmation-film {
       background-color: #141414;
-      float: left;
       height: 100%;
       overflow: hidden;
-      width: 50%;
+      width: 100%;
 
       .wrapper {
         color: #fff;
         height: 100%;
-        float: right;
-        margin-right: 85px;
-        max-width: 470px;
+        margin: 0 auto;
+        max-width: 730px;
 
         .category {
           color: $gold;
@@ -845,7 +852,7 @@ article {
           li {
             display: inline-block;
             font-size: 0.625rem;
-            width: 211px;
+            width: 363px;
 
             span {
               font-family: $CamphorBold;

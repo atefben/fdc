@@ -449,6 +449,8 @@ form:
         helper_top_video_associated: Sélectionnez de 2 à 5 vidéos de la webTV. Elles apparaitront en front-office dans l'ordre des champs.
         helper_top_web_tvs_associated: Sélectionnez de 3 à 10 chaînes de la webTV. Elles apparaitront en front-office de façon aléatoire parmi celles sélectionnées.
         helper_films_associated: Sélectionnez de 1 à 5 films et leurs boucles vidéos associées. Ils apparaitront en front-office dans l'ordre des champs.
+        helper_pushes : Format de l'image recommandé : 650x410
+        helper_prefooter: Format de l'image recommandé : 1954x1200
     flashbag:
         modified: Modification effectuée.
     settings:
@@ -618,7 +620,7 @@ form:
     label_link: Lien du push
     label_films_associated: Films Associés
     label_video_extract_associated: Extrait vidéo associé
-    label_tablet_image: Image tablette
+    label_tablet_image: Image tablette (2560 x 1620)
     label_image_mobile: Image mobile
     label_push_image: Image du push
     label_webTv_required: Chaîne *

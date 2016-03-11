@@ -40,17 +40,27 @@
                         {{ 'header.mainnav.nav.programmation'|trans }}
                     </a>
                     <ul class="tcenter">
-                        {% if menu['__children'] is defined %}
-                            {% for child in menu['__children'] %}
-                                {% if child.enabled %}
-                                    <li>
-                                        <a href="{{ path(child.route) }}">
-                                            {{ child.transName|trans }}
-                                        </a>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
+                        {% if app.request.attributes.get('_route') == 'fdc_press_agenda_scheduling' %}
+                        <li>
+                            <a href="{{ path('fdc_press_agenda_scheduling') }}"
+                               class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_scheduling'%}active{% endif %}">
+                                {{ 'header.mainnav.nav.programmation'|trans }}
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="{{ path('fdc_press_agenda_get') }}"
+                               class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_get' %}active{% endif %}">
+                                {{ 'header.mainnav.nav.agenda'|trans }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fdc_press_agenda_room') }}"
+                               class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_room' %}active{% endif %}">
+                                {{ 'header.mainnav.nav.plandessalles'|trans }}
+                            </a>
+                        </li>
                     </ul>
                 </li>
             {% elseif menu.route == 'fdc_press_media_main' and menu.enabled == true %}
@@ -66,7 +76,7 @@
     <ul class="user">
         <li>
             {% for menu in menus %}
-                {% if menu.route == 'fdc_press_news_home' and menu.enabled == true %}
+                {% if menu.route == 'fdc_press_media_download' and menu.enabled == true %}
                 <a href="{{ path('fdc_press_media_download') }}"
                    class="download {% if app.request.attributes.get('_route') == 'fdc_press_media_download' %}active{% endif %}">
                     <i class="icon icon_telecharger"></i>
