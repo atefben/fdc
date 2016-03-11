@@ -3,14 +3,7 @@
     <ul>
         <li class="copyright">{{ 'footer.nav.copyright'|trans }} {{ 'now'|date('Y') }}</li>
         {% for element in footer %}
-            {% if element.position == 5 %}
-            <li>
-                <a href="{{ footer_boutique }}">
-                    {{ 'footer.nav.boutique'|trans }}
-                </a>
-            </li>
-            {% endif %}
-            {% if element.route == 'fdc_event_footer_contact' %}
+            {% if element.route == 'fdc_event_footer_contact' and element.enabled == true %}
             <li>
                 <a href="{{ path('fdc_event_footer_contact') }}">
                     {{ 'footer.nav.contact'|trans }}
@@ -50,6 +43,12 @@
                 <li>
                     <a href="{{ path('fdc_event_footer_static', {'page': 'politique-confidentialite'}) }}">
                         {{ 'footer.nav.politiqueconfidentialite'|trans }}
+                    </a>
+                </li>
+            {% elseif element.transName == 'footer.nav.boutique' and element.enabled == true  %}
+                <li>
+                    <a href="{{ footer_boutique }}">
+                        {{ 'footer.nav.boutique'|trans }}
                     </a>
                 </li>
             {% endif %}

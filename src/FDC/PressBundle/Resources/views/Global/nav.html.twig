@@ -40,24 +40,17 @@
                         {{ 'header.mainnav.nav.programmation'|trans }}
                     </a>
                     <ul class="tcenter">
-                        <li>
-                            <a href="{{ path('fdc_press_agenda_scheduling') }}"
-                               class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_scheduling'%}active{% endif %}">
-                                {{ 'header.mainnav.nav.programmation'|trans }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ path('fdc_press_agenda_get') }}"
-                               class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_get' %}active{% endif %}">
-                                {{ 'header.mainnav.nav.agenda'|trans }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ path('fdc_press_agenda_room') }}"
-                               class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_room' %}active{% endif %}">
-                                {{ 'header.mainnav.nav.plandessalles'|trans }}
-                            </a>
-                        </li>
+                        {% if menu['__children'] is defined %}
+                            {% for child in menu['__children'] %}
+                                {% if child.enabled %}
+                                    <li>
+                                        <a href="{{ path(child.route) }}">
+                                            {{ child.transName|trans }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
                     </ul>
                 </li>
             {% elseif menu.route == 'fdc_press_media_main' and menu.enabled == true %}
