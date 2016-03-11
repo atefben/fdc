@@ -38,7 +38,7 @@
             <div class="vCenter">
               <div class="vCenterKid">
                 <a href="#" class="category">Montée des marches</a><span class="date">18.05.15</span>
-                <p data-title="Le photocall de Maïwenn">Le photocall de Maïwenn</p>
+                <p data-title="Le photocall de Maïwenn test test test test test test test test test test test">Le photocall de Maïwenn test test test test test test test test test test test</p>
               </div>
             </div>
           </div>

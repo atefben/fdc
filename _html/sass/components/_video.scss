@@ -681,6 +681,7 @@
   position: fixed;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   top: 50%;
   left: 50%;
   width: 750px;
@@ -703,6 +704,7 @@
   &.show {
     opacity: 1;
     visibility: visible;
+    pointer-events: all;
     @include transform(translateY(0));
   }
 

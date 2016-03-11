@@ -3759,7 +3759,7 @@ body {
 
 /*!
  * Pikaday
- * Copyright © 2014 David Bushell | BSD & MIT license | http://dbushell.com/
+ * Copyright ┬® 2014 David Bushell | BSD & MIT license | http://dbushell.com/
  */
 .pika-single {
   z-index: 9999;
@@ -7136,6 +7136,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   position: fixed;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   top: 50%;
   left: 50%;
   width: 750px;
@@ -7162,6 +7163,7 @@ div.chocolat-wrapper .zoomCursor .icon {
 .popin-video.show {
   opacity: 1;
   visibility: visible;
+  pointer-events: all;
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
@@ -8074,9 +8076,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -8102,11 +8104,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -8129,19 +8131,19 @@ header #searchContainer {
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -10797,6 +10799,10 @@ article .read-later.rAlign span:after {
   position: absolute;
   width: 27px;
 }
+.single-article .film .info-film + .programmation-film {
+  float: left;
+  width: 50%;
+}
 .single-article .film .info-film + .programmation-film .wrapper {
   color: #fff;
   height: 100%;
@@ -10804,19 +10810,20 @@ article .read-later.rAlign span:after {
   margin-left: 85px;
   max-width: 470px;
 }
+.single-article .film .info-film + .programmation-film .wrapper ul li {
+  width: 211px;
+}
 .single-article .film .programmation-film {
   background-color: #141414;
-  float: left;
   height: 100%;
   overflow: hidden;
-  width: 50%;
+  width: 100%;
 }
 .single-article .film .programmation-film .wrapper {
   color: #fff;
   height: 100%;
-  float: right;
-  margin-right: 85px;
-  max-width: 470px;
+  margin: 0 auto;
+  max-width: 730px;
 }
 .single-article .film .programmation-film .wrapper .category {
   color: #c8a461;
@@ -10831,7 +10838,7 @@ article .read-later.rAlign span:after {
 .single-article .film .programmation-film .wrapper ul li {
   display: inline-block;
   font-size: 0.625rem;
-  width: 211px;
+  width: 363px;
 }
 .single-article .film .programmation-film .wrapper ul li span {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
