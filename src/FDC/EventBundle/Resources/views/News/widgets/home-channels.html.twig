@@ -1,7 +1,5 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-{% set channel = channel.association %}
-{% if channel.mediaVideos is defined and channel.mediaVideos != null and channel.mediaVideos|length > 0 %}
 <div class="image-wrapper">
 {%  if channel.image is defined and channel.image is not null  %}
     {% set transImage = channel.image.findTranslationByLocale(app.request.locale) %}
@@ -28,4 +26,4 @@
         </div>
     </div>
 </div>
-{% endif %}
+
