@@ -121,22 +121,30 @@ class NewsAdmin extends Admin
                 'template' => 'BaseAdminBundle:News:list_title.html.twig',
                 'label'    => 'list.news_common.label_title',
             ))
+            ->add('type', null, array(
+                'template' => 'BaseAdminBundle:News:list_type.html.twig',
+                'label'    => 'list.news_common.label_title',
+            ))
             ->add('theme', null, array())
             ->add('createdAt', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
                 'sortable' => 'createdAt',
+                'label'    => 'show.label_created_at'
             ))
             ->add('publishedInterval', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',
+                'label'    => 'form.label_published_at'
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => NewsArticle::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle'
+                'catalogue' => 'BaseAdminBundle',
+                'label'     => 'form.label_priority_status'
             ))
             ->add('statusMain', 'choice', array(
                 'choices'   => NewsArticleTranslation::getMainStatuses(),
-                'catalogue' => 'BaseAdminBundle'
+                'catalogue' => 'BaseAdminBundle',
+                'label'     => 'show.label_status'
             ))
         ;
     }
