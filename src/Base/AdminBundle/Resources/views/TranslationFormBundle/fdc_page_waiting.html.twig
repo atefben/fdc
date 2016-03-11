@@ -50,6 +50,37 @@
                             </div>
                         {% endif %}
                     </div>
+                    {% if form.vars.default_locale != locale %}
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        VERSION FRANÇAISE
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {% if form.children.fr.vars.value is not null %}
+                                            <label class="control-label">
+                                                {{ 'form.label_seo_title'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.children.fr.vars.value.title }}
+                                            </div>
+                                        {% endif %}
+                                        {% if form.children.fr.vars.value is not null %}
+                                            <label class="control-label">
+                                                {{ 'form.label_text'|trans }}
+                                            </label>
+                                            <div>
+                                                {{ form.children.fr.vars.value.text|raw }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

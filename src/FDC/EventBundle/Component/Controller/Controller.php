@@ -157,6 +157,7 @@ class Controller extends BaseController
         ;
 
         if ($waitingPage) {
+            $waitingPage->getBanner()->findTranslationByLocale('fr')->getFile()->getContext();
             return $this->render('FDCEventBundle:Global:waiting-page.html.twig', array(
                 'waitingPage' => $waitingPage
             ));

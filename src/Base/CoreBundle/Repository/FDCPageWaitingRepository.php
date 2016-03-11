@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\FDCPageWaiting;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 /**
@@ -12,6 +13,11 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 class FDCPageWaitingRepository extends EntityRepository
 {
 
+    /**
+     * @param $route
+     * @return FDCPageWaiting|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function getSingleWaitingPageByRoute($route)
     {
         $qb = $this->createQueryBuilder('p');
