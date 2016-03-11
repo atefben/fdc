@@ -1,6 +1,7 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 {% set channel = channel.association %}
+{% if channel.mediaVideos is defined and channel.mediaVideos != null and channel.mediaVideos|length > 0 %}
 <div class="image-wrapper">
 {%  if channel.image is defined and channel.image is not null  %}
     {% set transImage = channel.image.findTranslationByLocale(app.request.locale) %}
@@ -19,11 +20,12 @@
         <div class="vCenter">
             <div class="vCenterKid">
                 <a href="{{ path('fdc_event_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}" class="category">{{ channel|trans_fallback('name') }}</a>
-                <span>{% if channel.mediaVideos is defined and channel.mediaVideos != null and channel.mediaVideos|length > 0 %}
+                <span>
                     {{ 'webtv.direct.nb_videos'|transchoice(channel.mediaVideos|length) }}
-                {% endif %}</span>
+                </span>
 
             </div>
         </div>
     </div>
 </div>
+{% endif %}
