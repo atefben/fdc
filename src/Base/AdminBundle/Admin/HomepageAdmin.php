@@ -265,62 +265,77 @@ class HomepageAdmin extends Admin
             ))
             ->add('pushsMainImage1', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
+                'helper' => 'helper_pushes',
                 'required' => false,
             ))
             ->add('pushsMainImage2', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
+                'helper' => 'helper_pushes',
                 'required' => false,
             ))
             ->add('pushsMainImage3', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
+                'helper' => 'helper_pushes',
                 'required' => false,
             ))
             ->add('pushsSecondaryImage1', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
+                'helper' => 'helper_pushes',
                 'required' => false,
             ))
             ->add('pushsSecondaryImage2', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
+                'helper' => 'helper_pushes',
                 'required' => false,
             ))
             ->add('pushsSecondaryImage3', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
+                'helper' => 'helper_pushes',
                 'required' => false,
             ))
             ->add('pushsSecondaryImage4', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
+                'helper' => 'helper_pushes',
                 'required' => false,
             ))
             ->add('pushsSecondaryImage5', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
+                'helper' => 'helper_pushes',
                 'required' => false,
             ))
             ->add('pushsSecondaryImage6', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
+                'helper' => 'helper_pushes',
                 'required' => false,
             ))
             ->add('pushsSecondaryImage7', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
+                'helper' => 'helper_pushes',
                 'required' => false,
             ))
             ->add('pushsSecondaryImage8', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_prefooter',
+                'helper' => 'helper_pushes',
                 'required' => false,
             ))
             ->add('prefooterImage1', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_prefooter',
+                'helper' => 'helper_prefooter',
                 'required' => false,
             ))
             ->add('prefooterImage2', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_prefooter',
+                'helper' => 'helper_prefooter',
                 'required' => false,
             ))
             ->add('prefooterImage3', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_prefooter',
+                'helper' => 'helper_prefooter',
                 'required' => false,
             ))
             ->add('prefooterImage4', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_prefooter',
+                'helper' => 'helper_prefooter',
                 'required' => false,
             ))
             ->add('displayedPushsMain','checkbox',array(
