@@ -142,6 +142,10 @@ class InfoAdmin extends Admin
                 'template' => 'BaseAdminBundle:News:list_title.html.twig',
                 'label'    => 'list.info_common.label_title',
             ))
+            ->add('type', null, array(
+                'template' => 'BaseAdminBundle:News:list_type.html.twig',
+                'label'    => 'show.label_type',
+            ))
             ->add('theme', null, array())
             ->add('createdAt', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
