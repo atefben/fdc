@@ -44,7 +44,7 @@ class FilmJuryType implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="type")
      */
     private $juries;
-    
+
     /**
      * @var ArrayCollection
      *
@@ -59,6 +59,15 @@ class FilmJuryType implements TranslateMainInterface
     {
         $this->translations = new ArrayCollection();
         $this->juries = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        if ($translation) {
+            return (string)$translation->getName();
+        }
+        return 'Film Jury #' . $this->getId();
     }
 
     /**
@@ -77,7 +86,7 @@ class FilmJuryType implements TranslateMainInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -111,14 +120,14 @@ class FilmJuryType implements TranslateMainInterface
         if (!$this->juries->contains($juries)) {
             return;
         }
-        
+
         $this->juries->removeElement($juries);
     }
 
     /**
      * Get juries
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getJuries()
     {

@@ -36,9 +36,7 @@
                 jQuery('.sonata-ba-form h4.box-title').first().html(repaceTitleWith);
             });
         </script>
-    {% endif %}
-
-    {% if app.request.attributes.get('_route') == 'admin_base_core_fdcpagelaselection_edit' %}
+    {% elseif app.request.attributes.get('_route') == 'admin_base_core_fdcpagelaselection_edit' %}
         <script type="text/javascript">
             $(document).ready(function(){
                 {% if app.request.get('id') == 1 %}
@@ -53,6 +51,21 @@
                     var repaceTitleWith = '{{ 'dashboard.link.fdc_page_la_selection_cinefondation'|trans({}, 'BaseAdminBundle') }}';
                 {% elseif app.request.get('id') == 6 %}
                     var repaceTitleWith = '{{ 'dashboard.link.fdc_page_la_selection_courts_metrages'|trans({}, 'BaseAdminBundle') }}';
+                {% endif %}
+                jQuery('.sonata-ba-form h4.box-title').first().html(repaceTitleWith);
+            });
+        </script>
+    {% elseif app.request.attributes.get('_route') == 'admin_base_core_fdcpagejury_edit' %}
+        <script type="text/javascript">
+            $(document).ready(function(){
+                {% if app.request.get('id') == 1 %}
+                    var repaceTitleWith = '{{ 'dashboard.link.fdc_page_jury_longs_metrages'|trans({}, 'BaseAdminBundle') }}';
+                {% elseif app.request.get('id') == 2 %}
+                    var repaceTitleWith = '{{ 'dashboard.link.fdc_page_jury_cinefondation_courts_metrages'|trans({}, 'BaseAdminBundle') }}';
+                {% elseif app.request.get('id') == 3 %}
+                    var repaceTitleWith = '{{ 'dashboard.link.fdc_page_jury_certain_regard'|trans({}, 'BaseAdminBundle') }}';
+                {% elseif app.request.get('id') == 4 %}
+                    var repaceTitleWith = '{{ 'dashboard.link.fdc_page_jury_camera_dor'|trans({}, 'BaseAdminBundle') }}';
                 {% endif %}
                 jQuery('.sonata-ba-form h4.box-title').first().html(repaceTitleWith);
             });

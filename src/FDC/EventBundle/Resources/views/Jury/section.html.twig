@@ -12,25 +12,25 @@
         </div>
         <ul class="sub-nav-list">
             <li>
-                <a href="{{ path('fdc_event_jury_get', {'type': '1'}) }}"
+                <a href="{{ path('fdc_event_jury_get', {'slug': '1'}) }}"
                    class="{% if app.request.attributes.get('type') == '1' %}active{% endif %} ajax">
                     {{ 'juries.nav.longsmetrages'|trans }}
                 </a>
             </li>
             <li>
-                <a href="{{ path('fdc_event_jury_get', {'type': '2'}) }}"
+                <a href="{{ path('fdc_event_jury_get', {'slug': '2'}) }}"
                    class="{% if app.request.attributes.get('type') == '2' %}active{% endif %} ajax">
                     {{ 'juries.nav.cinefondation'|trans }}
                 </a>
             </li>
             <li>
-                <a href="{{ path('fdc_event_jury_get', {'type': '3'}) }}"
+                <a href="{{ path('fdc_event_jury_get', {'slug': '3'}) }}"
                    class="{% if app.request.attributes.get('type') == '3' %}active{% endif %} ajax">
                     {{ 'juries.nav.certainregard'|trans }}
                 </a>
             </li>
             <li>
-                <a href="{{ path('fdc_event_jury_get', {'type': '4'}) }}"
+                <a href="{{ path('fdc_event_jury_get', {'slug': '4'}) }}"
                    class="{% if app.request.attributes.get('type') == '4' %}active{% endif %} ajax">
                     {{ 'juries.nav.camerador'|trans }}
                 </a>
@@ -42,7 +42,7 @@
             <section class="categorie-items contain-jury">
                 {% if president %}
                     <a href="{{ path('fdc_event_artist_get', {'slug': president.person.slug}) }}">
-                        <div class="photo-jury" style="background-image:url({{ president.medias }})">
+                        <div class="photo-jury" style="background-image:url({#{{ president.medias }}#})">
                         </div>
                     </a>
                     <div class="contain-descript">

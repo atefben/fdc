@@ -2,14 +2,15 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Doctrine\ORM\EntityRepository;
+use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\FilmJuryType;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * FilmJuryRepository class.
  *
  * \@extends EntityRepository
- *  @author   Antoine Mineau
+ * @author   Antoine Mineau
  * \@company Ohwee
  */
 class FilmJuryRepository extends EntityRepository
@@ -18,11 +19,13 @@ class FilmJuryRepository extends EntityRepository
     {
         $query = $this->createQueryBuilder('j')
             ->where('j.festival = :festival')
-            ->setParameter('festival', $festival);
+            ->setParameter('festival', $festival)
+        ;
 
         if ($type !== null) {
             $query = $query->andWhere('j.type = :type')
-                ->setParameter('type', $type);
+                ->setParameter('type', $type)
+            ;
         }
 
         $query = $query->orderBy('j.position', 'ASC');
@@ -39,6 +42,25 @@ class FilmJuryRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->setParameter('id', $id)
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getOneOrNullResult()
+            ;
+    }
+
+    public function getJurysByType($festival, $locale, $type)
+    {
+        $qb = $this->createQueryBuilder('j');
+
+        $qb
+            ->join('j.translations', 't')
+            ->join('j.person', 'p')
+            ->andWhere('p.firstname IS NOT NULL')
+            ->andWhere('p.lastname IS NOT NULL')
+            ->andWhere('j.type = :type')
+            ->setParameter('type', $type)
+        ;
+        $this->addMasterQueries($qb, 'j', $festival, false);
+        $this->addTranslationQueries($qb, 't', $locale, null);
+
+        return $qb->getQuery()->getResult();
     }
 }

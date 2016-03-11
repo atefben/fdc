@@ -56,7 +56,7 @@ class FilmJury implements TranslateMainInterface
     private $festival;
 
     /**
-     * @var Person
+     * @var FilmPerson
      *
      * @ORM\ManyToOne(targetEntity="FilmPerson", inversedBy="juries", cascade={"persist"})
      *
@@ -74,7 +74,7 @@ class FilmJury implements TranslateMainInterface
     private $type;
     
     /**
-     * @var FilmJuryType
+     * @var FilmJuryFunction
      *
      * @ORM\ManyToOne(targetEntity="FilmJuryFunction", inversedBy="juries", cascade={"persist"})
      *
