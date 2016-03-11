@@ -203,11 +203,11 @@ $(document).ready(function() {
                   $('.read-more').hide();
               }
 
-              if($(".articles.center").length > 0) {
-                $('html, body').animate({
-                  scrollTop: $(".articles.center").offset().top + $(".articles.center").height() - 70
-                }, 500);
-              }
+              // if($(".articles.center").length > 0) {
+              //   $('html, body').animate({
+              //     scrollTop: $(".articles.center").offset().top + $(".articles.center").height() - 70
+              //   }, 500);
+              // }
             }
           });
         }
