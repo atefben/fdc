@@ -125,7 +125,7 @@ twig:
         admin_fdc_page_la_selection_cinefondation_id: %admin_fdc_page_la_selection_cinefondation_id%
         admin_fdc_page_la_selection_courts_metrages_id: %admin_fdc_page_la_selection_courts_metrages_id%
         admin_fdc_page_jury_long_metrages_id: %admin_fdc_page_jury_long_metrages_id%
-        admin_fdc_page_cinefondation_courts_metrages_id: %admin_fdc_page_cinefondation_courts_metrages_id%
+        admin_fdc_page_jury_cinefondation_courts_metrages_id: %admin_fdc_page_jury_cinefondation_courts_metrages_id%
         admin_fdc_page_jury_certain_regard_id: %admin_fdc_page_jury_certain_regard_id%
         admin_fdc_page_jury_camera_dor_id: %admin_fdc_page_jury_camera_dor_id%
 
