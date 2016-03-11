@@ -39,7 +39,7 @@ class MediaListener
     {
         $entity = $args->getEntity();
 
-        $this->createHomepageNews($entity, $args, false);
+        //$this->createHomepageNews($entity, $args, false);
     }
 
 
@@ -50,7 +50,7 @@ class MediaListener
     {
         $entity = $args->getEntity();
 
-        $this->createHomepageNews($entity, $args);
+        //$this->createHomepageNews($entity, $args);
     }
 
     private function createHomepageNews($entity, $args, $update = true)
