@@ -6752,6 +6752,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   bottom: 20px;
   left: 20px;
   cursor: pointer;
+  pointer-events: all;
 }
 .video-container .infos-bar .picto.hide {
   opacity: 0;
