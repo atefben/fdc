@@ -4910,7 +4910,7 @@ footer .footer-menu ul li a:hover {
 }
 .slideshow .slideshow-img {
   background-color: #000;
-  height: 555px;
+  height: 557px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -5618,7 +5618,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   padding-top: 50px;
 }
 .article_photo .slideshow-img {
-  height: 615px !important;
+  height: 631px !important;
 }
 .article_photo .slideshow-img .images .img img {
   width: 100%;
@@ -10528,7 +10528,7 @@ article .read-later.rAlign span:after {
   margin-bottom: 70px;
 }
 .single-article .slideshow .slideshow-img {
-  height: 460px;
+  height: 462px;
 }
 .single-article .slideshow .caption strong {
   color: #666;
@@ -11650,7 +11650,7 @@ article .read-later.rAlign span:after {
   margin-bottom: 0;
 }
 .single-movie .photos .slideshow .slideshow-img {
-  height: 615px;
+  height: 631px;
 }
 .single-movie .casting {
   border-top: 1px solid #dfdfdf;
@@ -13408,7 +13408,7 @@ input[type=submit] {
   margin-bottom: 60px;
 }
 .honneur-invit .slideshow .slideshow-img {
-  height: 398px;
+  height: 400px;
 }
 .honneur-invit .slideshow .caption {
   padding: 0px 0px !important;
