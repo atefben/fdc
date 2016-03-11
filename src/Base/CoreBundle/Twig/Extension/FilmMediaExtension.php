@@ -49,8 +49,6 @@ class FilmMediaExtension extends Twig_Extension
     {
         foreach ($film->getMedias() as $media) {
             if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER && $media->getMedia() && $media->getMedia()->getFile()) {
-                dump($media->getMedia()->getFile()->getContext());
-                dump($media->getType());
                 return $media->getMedia()->getFile();
             }
         }
