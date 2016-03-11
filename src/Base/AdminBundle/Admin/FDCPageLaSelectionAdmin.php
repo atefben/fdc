@@ -152,4 +152,11 @@ class FDCPageLaSelectionAdmin extends Admin
             ->add('priorityStatus')
         ;
     }
+
+
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
+    }
 }
