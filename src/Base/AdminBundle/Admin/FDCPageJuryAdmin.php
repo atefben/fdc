@@ -2,26 +2,16 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\FDCPageLaSelection;
-use Base\CoreBundle\Entity\FDCPageLaSelectionTranslation;
+use Base\CoreBundle\Entity\FDCPageJury;
+use Base\CoreBundle\Entity\FDCPageJuryTranslation;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class FDCPageLaSelectionAdmin extends Admin
+class FDCPageJuryAdmin extends Admin
 {
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection->remove('list');
-        $collection->remove('create');
-        $collection->remove('show');
-        $collection->remove('batch');
-        $collection->remove('delete');
-        $collection->remove('export');
-    }
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -74,13 +64,13 @@ class FDCPageLaSelectionAdmin extends Admin
                         'label'                     => 'form.label_status',
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
-                        'choices'                   => FDCPageLaSelectionTranslation::getStatuses(),
+                        'choices'                   => FDCPageJuryTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                     'overrideName'       => array(
-                        'label'              => 'form.fdc_page_web_tv_trailers.label_override_name',
+                        'label'              => 'form.fdc_page_jury.label_override_name',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false,
+                        'required'           => true,
                     ),
                     'seoTitle'       => array(
                         'attr'               => array(
@@ -113,8 +103,8 @@ class FDCPageLaSelectionAdmin extends Admin
                 'help'     => 'form.fdc_page_web_tv_trailers.helper_image',
                 'required' => false,
             ))
-            ->add('selectionSection', 'sonata_type_model_list', array(
-                'label'    => 'form.fdc_page_web_tv_trailers.label_festival_section',
+            ->add('juryType', 'sonata_type_model_list', array(
+                'label'    => 'form.fdc_page_jury.label_jury_type',
                 'required' => false,
                 'btn_add' => false,
             ))
@@ -126,13 +116,13 @@ class FDCPageLaSelectionAdmin extends Admin
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => FDCPageLaSelection::getAvailableTranslateOptions(),
+                'choices' => FDCPageJury::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
                 'multiple' => true,
                 'expanded' => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices'                   => FDCPageLaSelection::getPriorityStatuses(),
+                'choices'                   => FDCPageJury::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
             ))
         ;

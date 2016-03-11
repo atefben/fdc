@@ -283,6 +283,30 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_page_la_selection:
+        class: Base\AdminBundle\Admin\FDCPageLaSelectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelection, BaseAdminBundle:FDCPageLaSelectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageLaSelection, label_translator_strategy: sonata.admin.label.strategy.underscore, , show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_jury:
+            class: Base\AdminBundle\Admin\FDCPageJuryAdmin
+            arguments: [~, Base\CoreBundle\Entity\FDCPageJury, BaseAdminBundle:FDCPageJuryAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageJury, label_translator_strategy: sonata.admin.label.strategy.underscore, , show_in_dashboard: false}
+            calls:
+                - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.film_jury_type:
+        class: Base\AdminBundle\Admin\FilmJuryTypeAdmin
+        arguments: [~, Base\CoreBundle\Entity\FilmJuryType, BaseAdminBundle:FilmJuryTypeAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FilmJuryType, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+    #end SEO
 
     base.admin.film_selection_section:
         class: Base\AdminBundle\Admin\FilmSelectionSectionAdmin
@@ -291,6 +315,7 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: FilmSelectionSection, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
 
     base.admin.fdc_page_news_articles:
         class: Base\AdminBundle\Admin\FDCPageNewsArticlesAdmin
@@ -321,14 +346,6 @@ services:
         arguments: [~, Base\CoreBundle\Entity\FDCPageNewsVideos, BaseAdminBundle:FDCPageNewsVideosAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: entity.fdc_page_news_videos, label_translator_strategy: sonata.admin.label.strategy.underscore}
-        calls:
-            - [ setTranslationDomain, ['BaseAdminBundle']]
-
-    base.admin.fdc_page_la_selection:
-        class: Base\AdminBundle\Admin\FDCPageLaSelectionAdmin
-        arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelection, BaseAdminBundle:FDCPageLaSelectionAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageLaSelection, label_translator_strategy: sonata.admin.label.strategy.underscore, , show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 

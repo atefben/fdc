@@ -52,6 +52,10 @@ parameters:
     admin_fdc_page_la_selection_seances_speciales_id: 4
     admin_fdc_page_la_selection_cinefondation_id: 5
     admin_fdc_page_la_selection_courts_metrages_id: 6
+    admin_fdc_page_jury_long_metrages_id: 1
+    admin_fdc_page_cinefondation_courts_metrages_id: 2
+    admin_fdc_page_jury_certain_regard_id: 3
+    admin_fdc_page_jury_camera_dor_id: 4
     # routes where are displayed the translation legend
     admin_routes_translation_legend_without_master:
         - admin_base_core_theme_list

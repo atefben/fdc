@@ -62,7 +62,7 @@ breadcrumb:
     link_f_d_c_page_news_images_list: Page L'actualité
     link_f_d_c_page_news_videos_list: Page L'actualité
     link_f_d_c_page_la_selection_list: La sélection
-
+    link_f_d_c_page_jury_list: Les jurys
 link:
     action_soif_refresh: Mettre à jour
 
@@ -251,6 +251,7 @@ list:
     label_festival-year: Année de sélection
     label_section_title: Nom de la section
     label_page: Titre de la page d'attente
+    label_film_jury_type_name:  Type de jury
     tooltip:
         unlock: DÉBLOQUER
         modified_by: En cours de modification par </br>
@@ -410,6 +411,10 @@ dashboard:
         fdc_page_la_selection_seances_speciales: La sélection SÉANCES SPÉCIALES
         fdc_page_la_selection_cinefondation: La sélection CINÉFONDATION
         fdc_page_la_selection_courts_metrages: La sélection COURTS MÉTRAGES
+        fdc_page_jury_longs_metrages: Les jurys LONGS METRAGES
+        fdc_page_jury_cinefondation_courts_metrages: Les jurys CINEFONDATION & COURTS METRAGES
+        fdc_page_jury_certain_regard: Les jurys UN CERTAIN REGARD
+        fdc_page_jury_camera_dor: Les jurys CAMERA D'OR
         press_homepage: Homepage
         press_guide: Guide pratique
         press_contact: Contactez-nous
@@ -723,6 +728,9 @@ form:
         placeholder_seo_description: À saisir manuellement
         label_festival_section: Sélection
         label_override_name: Surcharger le nom de la sélection
+    fdc_page_jury:
+        label_jury_type: Type de jury
+        label_override_name: Nom apparaissant dans l'onglet
 
 
 nav:
@@ -792,3 +800,4 @@ FDCPageWebTvChannels: Page WebTV - Les chaînes
 FDCPageWebTvLive: Accueil WebTV
 FDCPageWebTvTrailers: Page WebTV - Les bandes-annonces - Compétition
 FDCPageLaSelection: Page la sélection
+FilmJuryType: Type des jurys

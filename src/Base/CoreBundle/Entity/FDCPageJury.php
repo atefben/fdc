@@ -12,13 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * FDCPageLaSelection
+ * FDCPageJury
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCPageLaSelectionRepository")
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCPageJuryRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class FDCPageLaSelection implements TranslateMainInterface
+class FDCPageJury implements TranslateMainInterface
 {
     use Time;
     use Translatable;
@@ -43,11 +43,11 @@ class FDCPageLaSelection implements TranslateMainInterface
     private $image;
 
     /**
-     * @var FilmSelectionSection
+     * @var FilmJuryType
      *
-     * @ORM\ManyToOne(targetEntity="FilmSelectionSection")
+     * @ORM\ManyToOne(targetEntity="FilmJuryType")
      */
-    private $selectionSection;
+    private $juryType;
 
     /**
      * @var ArrayCollection
@@ -56,38 +56,32 @@ class FDCPageLaSelection implements TranslateMainInterface
      */
     protected $translations;
 
-    /**
-     * FDCPageLaSelection constructor.
-     */
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
     public function __toString()
     {
         if (!$this->getId()) {
-            return 'Nouvelle page sélection';
+            return 'Nouvelle page jurys';
         }
 
         $names = array(
-            'La sélection COMPETITION',
-            'La sélection UN CERTAIN REGARD',
-            'La sélection HORS COMPÉTITION',
-            'La sélection SÉANCES SPÉCIALES',
-            'La sélection CINÉFONDATION',
-            'La sélection COURTS MÉTRAGES',
+            'Les jurys LONGS METRAGES',
+            'Les jurys CINEFONDATION & COURTS METRAGES',
+            'Les jurys UN CERTAIN REGARD',
+            'Les jurys CAMERA D\'OR',
         );
         return $names[$this->getId() - 1];
     }
 
+
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -98,7 +92,7 @@ class FDCPageLaSelection implements TranslateMainInterface
      * Set image
      *
      * @param \Base\CoreBundle\Entity\MediaImageSimple $image
-     * @return FDCPageLaSelection
+     * @return FDCPageJury
      */
     public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
     {
@@ -110,7 +104,7 @@ class FDCPageLaSelection implements TranslateMainInterface
     /**
      * Get image
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
      */
     public function getImage()
     {
@@ -118,25 +112,25 @@ class FDCPageLaSelection implements TranslateMainInterface
     }
 
     /**
-     * Set selectionSection
+     * Set juryType
      *
-     * @param \Base\CoreBundle\Entity\FilmSelectionSection $selectionSection
-     * @return FDCPageLaSelection
+     * @param \Base\CoreBundle\Entity\FilmJuryType $juryType
+     * @return FDCPageJury
      */
-    public function setSelectionSection(\Base\CoreBundle\Entity\FilmSelectionSection $selectionSection = null)
+    public function setJuryType(\Base\CoreBundle\Entity\FilmJuryType $juryType = null)
     {
-        $this->selectionSection = $selectionSection;
+        $this->juryType = $juryType;
 
         return $this;
     }
 
     /**
-     * Get selectionSection
+     * Get juryType
      *
-     * @return \Base\CoreBundle\Entity\FilmSelectionSection
+     * @return \Base\CoreBundle\Entity\FilmJuryType 
      */
-    public function getSelectionSection()
+    public function getJuryType()
     {
-        return $this->selectionSection;
+        return $this->juryType;
     }
 }
