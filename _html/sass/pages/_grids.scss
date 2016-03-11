@@ -190,6 +190,11 @@
   .item {
     cursor: pointer;
     overflow: hidden;
+    visibility: hidden;
+
+    &.visible {
+      visibility: visible;
+    }
 
     img {
 
@@ -268,6 +273,11 @@
   .item {
     cursor: pointer;
     overflow: hidden;
+    visibility: hidden;
+
+    &.visible {
+      visibility: visible;
+    }
 
     img {
       @include transform(translateZ(0));

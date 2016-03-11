@@ -14,7 +14,10 @@ var GLOBALS = {
     "newsUrl" : "news.html",
     "newsUrlNext" : "news_page2.html",
     "loadPressRelease" : "load-communique.php",
-    "selectionUrl" : "selection.html"
+    "selectionUrl" : "selection.html",
+    "audiosUrl": "audios.php",
+    "photosUrl": "photos.php",
+    "videosUrl": "videos.php"
   },
   "texts" : {
     "url" : {

@@ -48,6 +48,8 @@ _html/node_modules/
 _html/.tmp/
 _html/dist/
 _html/js/app.min.js
+_html/js/bower_components/owl.carousel/bower_components/
+_html/js/bower_components/owl.carousel/node_modules/
 
 node_modules/
 _html_mobile/node_modules

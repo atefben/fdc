@@ -9,7 +9,7 @@ $(document).ready(function() {
 
   cl.show();
   var $loader = $('#siteLoader'),
-      $main = $('#main'),
+      $main   = $('#main'),
       $header = $('header');
 
   if(parseInt(sessionStorage.scrolltop) > 10) {
@@ -27,6 +27,7 @@ $(document).ready(function() {
   setTimeout(function() {
     $('#main, footer, #breadcrumb, .sub-nav-list').removeClass('loading');
     cl.hide();
+    $loader.removeClass('show');
 
     $('#logo-wrapper, #logo img, #sticky-user, header #search, a.search').css('transition', '');
     $('p.stick').removeClass('noTrans');
