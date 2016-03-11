@@ -57,6 +57,42 @@ class FDCEventRoutesAdmin extends Admin
         $datagridMapper
             ->add('name')
             ->add('enabled')
+            ->add('site', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.site LIKE :site');
+                    $queryBuilder->setParameter('site', '%' . $value['value'] . '%');
+
+                    return true;
+                },
+                'field_type'    => 'choice',
+                'field_options' => array(
+                    'choices'                   => array(
+                        FDCEventRoutesInterface::EVENT => 'Site évènementiel',
+                        FDCEventRoutesInterface::PRESS => 'Site presse' ),
+                    'choice_translation_domain' => 'BaseAdminBundle'
+                ),
+            ))
+            ->add('type', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.type LIKE :type');
+                    $queryBuilder->setParameter('type', '%' . $value['value'] . '%');
+
+                    return true;
+                },
+                'field_type'    => 'choice',
+                'field_options' => array(
+                    'choices'                   => array(
+                        FDCEventRoutesInterface::MENU => 'Menu',
+                        FDCEventRoutesInterface::FOOTER => 'Footer' ),
+                    'choice_translation_domain' => 'BaseAdminBundle'
+                ),
+            ))
             ->add('parent', 'doctrine_orm_callback' , array(
                 'callback' => function($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
@@ -123,7 +159,7 @@ class FDCEventRoutesAdmin extends Admin
                 'choices' => array(
                     FDCEventRoutesInterface::MENU => 'Menu',
                     FDCEventRoutesInterface::FOOTER => 'Footer' ),
-                'label' => 'Site'
+                'label' => 'Type'
             ))
             ->add('hasWaitingPage')
         ;

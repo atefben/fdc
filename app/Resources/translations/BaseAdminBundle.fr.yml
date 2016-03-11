@@ -308,6 +308,7 @@ filter:
     label_session_name: Nom de la session
     label_budget_acquired: Budget acquis
     label_cinando_url: Url Cinando
+    label_site: Site
     label_lastname: Nom
     label_firstname: Prénom
     label_asian_name: Nom asiatique
