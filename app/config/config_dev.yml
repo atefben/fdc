@@ -51,3 +51,10 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+
+
+jms_serializer:
+    visitors:
+        json:
+            options: 128

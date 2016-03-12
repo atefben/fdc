@@ -34,7 +34,7 @@ class FilmFilmTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"trailer_list", "trailer_show", "film_list"})
+     * @Groups({"trailer_list", "trailer_show", "film_list", "film_show"})
      */
     private $title;
     
@@ -46,7 +46,7 @@ class FilmFilmTranslation implements TranslateChildInterface
      * @Groups({"trailer_list", "trailer_show", "film_list", "film_show"})
      */
     private $dialog;
-    
+
     /**
      * @var string
      *

@@ -40,10 +40,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Id
      *
      * @Groups({
-     *  "trailer_list", "trailer_show",
-     *  "film_list", "film_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show"
      * })
      * 
      */
@@ -63,9 +67,13 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="boolean")
      *
      * @Groups({
-     *  "trailer_list", "trailer_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "film_show"
      * })
      * 
      */
@@ -318,7 +326,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="association", cascade={"all"})
      * @Groups({
-     *  "trailer_show"
+     *     "trailer_show",
+     *     "film_show"
      * })
      */
     private $associatedMediaVideos;
@@ -326,7 +335,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="association", cascade={"all"})
      * @Groups({
-     *  "trailer_show"
+     *  "trailer_show",
+     *  "film_show"
      * })
      */
     private $associatedMediaAudios;
@@ -345,7 +355,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     private $associatedInfo;
 
-    /**
+    /**F
      * Constructor
      */
     public function __construct()

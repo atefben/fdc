@@ -3,11 +3,13 @@
 namespace Base\ApiBundle\Controller;
 
 use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
+use Base\CoreBundle\Entity\FilmFilm;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 
+use FOS\RestBundle\View\View;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use JMS\Serializer\SerializationContext;
 
@@ -47,6 +49,8 @@ class FilmController extends FOSRestController
      * @Rest\QueryParam(name="festival_id", description="The festival year")
      * @Rest\QueryParam(name="selection_id", description="The selection identifier")
      *
+     * @param  Paramfetcher $paramFetcher
+     *
      * @return View
      */
     public function getFilmsAction(Paramfetcher $paramFetcher)
@@ -70,7 +74,6 @@ class FilmController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 		
         // set context view
-		$context = SerializationContext::create();
         $groups = array('film_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
@@ -79,6 +82,7 @@ class FilmController extends FOSRestController
         // create view
         $view = $this->view($items, 200);
         $view->setSerializationContext($context);
+
 
         return $view;
     }

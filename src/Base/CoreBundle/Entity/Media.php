@@ -109,7 +109,7 @@ abstract class Media implements TranslateMainInterface
 
     /**
      * @var ArrayCollection
-     * @Groups({"news_show", "news_list", "trailer_show", "web_tv_list", "web_tv_show"})
+     * @Groups({"news_show", "news_list", "trailer_show", "web_tv_list", "web_tv_show", "film_show"})
      *
      * @Assert\Valid()
      */

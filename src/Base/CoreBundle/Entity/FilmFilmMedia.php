@@ -33,6 +33,7 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups({"film_list", "film_show"})
      */
     private $id;
     
@@ -69,6 +70,7 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"film_list", "film_show"})
      */
     private $type;
 

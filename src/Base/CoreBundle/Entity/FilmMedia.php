@@ -74,7 +74,7 @@ class FilmMedia
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
+     * @Groups({"jury_list", "jury_show"})
      */
     private $type;
 

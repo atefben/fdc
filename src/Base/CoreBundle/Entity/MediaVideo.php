@@ -34,6 +34,9 @@ class MediaVideo extends Media
      * @var boolean
      *
      * @ORM\Column(type="boolean", nullable=false, options={"default":0})
+     * @Groups({
+     *  "film_show"
+     * })
      */
     private $displayedTrailer;
 
@@ -60,7 +63,7 @@ class MediaVideo extends Media
      *
      * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"persist"})
      *
-     * @Groups({"trailer_list", "trailer_show", "web_tv_list", "web_tv_show"})
+     * @Groups({"trailer_list", "trailer_show", "web_tv_list", "web_tv_show", "film_show"})
      */
     private $image;
 
