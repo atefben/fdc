@@ -31,7 +31,7 @@ class EventController extends FOSRestController
      *   },
      *  output={
      *      "class"="Base\CoreBundle\Entity\Event",
-     *      "groups"={"event_list", "time"}
+     *      "groups"={"event_list"}
      *  }
      * )
      *
@@ -61,7 +61,7 @@ class EventController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $groups = array('event_list', 'time');
+        $groups = array('event_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
 
         // create view

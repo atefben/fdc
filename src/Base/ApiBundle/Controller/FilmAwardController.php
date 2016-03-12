@@ -68,7 +68,7 @@ class FilmAwardController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $groups = array('award_list', 'time');
+        $groups = array('award_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
@@ -128,7 +128,7 @@ class FilmAwardController extends FOSRestController
         $projection = $em->getRepository($this->repository)->getApiAward($id, $festival);
 
         // set context view
-        $groups = array('award_show', 'time');
+        $groups = array('award_show');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
 

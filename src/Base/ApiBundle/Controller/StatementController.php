@@ -67,7 +67,7 @@ class StatementController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher, array('distinct' => false));
 
         // set context view
-        $groups = array('statement_list', 'time');
+        $groups = array('statement_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
@@ -126,7 +126,7 @@ class StatementController extends FOSRestController
         $projection = $em->getRepository($this->repository)->getStatementById($id, $festival, new DateTime(), $lang);
 
         // set context view
-        $groups = array('statement_show', 'time');
+        $groups = array('statement_show');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);

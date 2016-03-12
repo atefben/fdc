@@ -32,7 +32,7 @@ class FilmJuryTypeController extends FOSRestController
      *   },
      *  output={
      *      "class"="Base\CoreBundle\Entity\FilmJuryType",
-     *      "groups"={"film_jury_type_list", "time"}
+     *      "groups"={"film_jury_type_list"}
      *  }
      * )
      *
@@ -56,7 +56,7 @@ class FilmJuryTypeController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $groups = array('film_jury_type_list', 'time');
+        $groups = array('film_jury_type_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
 
         // create view

@@ -55,7 +55,7 @@ class FilmSelectionController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $groups = array('film_selection_list', 'time');
+        $groups = array('film_selection_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
 
         // create view

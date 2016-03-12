@@ -69,7 +69,7 @@ class NewsController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher, array('distinct' => false));
 
         // set context view
-        $groups = array('news_list', 'time');
+        $groups = array('news_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
@@ -138,7 +138,7 @@ class NewsController extends FOSRestController
         }
 
         // set context view
-        $groups = array('news_show', 'time');
+        $groups = array('news_show');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);

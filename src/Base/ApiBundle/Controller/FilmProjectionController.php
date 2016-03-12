@@ -64,7 +64,7 @@ class FilmProjectionController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $groups = array('projection_list', 'time');
+        $groups = array('projection_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
 
         // create view
@@ -115,7 +115,7 @@ class FilmProjectionController extends FOSRestController
 
         // set context view
         $context = SerializationContext::create();
-        $context->setGroups(array('projection_show', 'time'));
+        $context->setGroups(array('projection_show'));
         $context->setVersion($version);
         $view = $this->view($projection, 200);
         $view->setSerializationContext($context);

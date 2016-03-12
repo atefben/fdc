@@ -60,7 +60,7 @@ class FilmPersonController extends FOSRestController
 
         // set context view
         $context = SerializationContext::create();
-        $context->setGroups(array('person_show', 'time'));
+        $context->setGroups(array('person_show'));
         $context->setVersion($version);
         $view = $this->view($film, 200);
         $view->setSerializationContext($context);
