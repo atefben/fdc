@@ -245,7 +245,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
     /**
      * @ORM\ManyToMany(targetEntity="FilmContact", inversedBy="films", cascade={"persist"})
-     * 
+     * @Groups({"film_show"})
      */
     private $contacts;
     
@@ -319,7 +319,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="NewsFilmFilmAssociated", mappedBy="association", cascade={"all"})
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "film_show"})
      */
     private $associatedNews;
 

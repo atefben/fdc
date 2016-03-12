@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
 
+use JMS\Serializer\Annotation\Groups;
+
 /**
  * FilmContact
  *
@@ -30,6 +32,7 @@ class FilmContact implements FilmContactInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"film_show"})
      */
     private $companyName;
 
@@ -37,18 +40,22 @@ class FilmContact implements FilmContactInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"film_show"})
      */
     private $type;
 
     /**
+     * @var FilmAddress
      * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="contacts", cascade={"persist"})
+     * @Groups({"film_show"})
      */
     private $address;
 
     /**
-     * @var Film
+     * @var FilmContactPerson
      *
      * @ORM\ManyToOne(targetEntity="FilmContactPerson", cascade={"persist"})
+     * @Groups({"film_show"})
      */
     private $person;
     
@@ -61,6 +68,7 @@ class FilmContact implements FilmContactInterface
     
     /**
      * @ORM\ManyToMany(targetEntity="FilmContact")
+     * @Groups({"film_show"})
      */
     private $subordinates;
 

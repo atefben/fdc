@@ -40,6 +40,7 @@ class MediaAudioFilmFilmAssociated
      * @var News
      *
      * @ORM\ManyToOne(targetEntity="MediaAudio", inversedBy="associatedFilms")
+     * @Groups("film_show")
      */
     protected $mediaAudio;
 

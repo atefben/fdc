@@ -3,14 +3,13 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
-use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
-
+use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use JMS\Serializer\Annotation\Groups;
 /**
  * FilmAddress
  *
@@ -37,6 +36,7 @@ class FilmAddress implements TranslateMainInterface
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Groups({"film_show"})
      */
     private $postalCode;
 
@@ -44,6 +44,7 @@ class FilmAddress implements TranslateMainInterface
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Groups({"film_show"})
      */
     private $email;
 
@@ -51,6 +52,7 @@ class FilmAddress implements TranslateMainInterface
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"film_show"})
      */
     private $position;
 
@@ -58,6 +60,7 @@ class FilmAddress implements TranslateMainInterface
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Groups({"film_show"})
      */
     private $fax;
     
@@ -65,20 +68,23 @@ class FilmAddress implements TranslateMainInterface
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Groups({"film_show"})
      */
      private $street;
      
      /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
+      * @var string
+      *
+      * @ORM\Column(type="string", nullable=true)
+      * @Groups({"film_show"})
+      */
      private $website;
      
      /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+      * @Groups({"film_show"})
      */
      private $mobilePhone;
      
@@ -86,6 +92,7 @@ class FilmAddress implements TranslateMainInterface
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+      * @Groups({"film_show"})
      */
      private $phone;
      
@@ -93,6 +100,7 @@ class FilmAddress implements TranslateMainInterface
       * @var string
       *
       * @ORM\Column(type="string", nullable=true)
+      * @Groups({"film_show"})
       */
      private $city;
 
@@ -100,6 +108,7 @@ class FilmAddress implements TranslateMainInterface
      * @var Country
      *
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="addresses")
+     * @Groups({"film_show"})
      */
     private $country;
 
@@ -115,6 +124,7 @@ class FilmAddress implements TranslateMainInterface
 
     /**
      * @var ArrayCollection
+     * @Groups({"film_show"})
      */
     protected $translations;
 
