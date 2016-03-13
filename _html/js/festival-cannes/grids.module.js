@@ -452,6 +452,11 @@ $(document).ready(function () {
           $('.popin-video').find('.popin-buttons.buttons .link').attr('href', encodeURIComponent(shareUrl));
           $('.popin-video').find('.popin-buttons.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
 
+          $('#video-player-popin + .top-bar').find('.info .category').text(category);
+          $('#video-player-popin + .top-bar').find('.info .date').text(date);
+          $('#video-player-popin + .top-bar').find('.info .hour').text(hour);
+          $('#video-player-popin + .top-bar').find('.info p').text(text);
+
           $popinVideo.find('.popin-info .category').text(category);
           $popinVideo.find('.popin-info .date').text(date);
           $popinVideo.find('.popin-info .hour').text(hour);

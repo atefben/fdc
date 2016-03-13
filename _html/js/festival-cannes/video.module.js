@@ -362,20 +362,20 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                     "image"    : $(p).data('img'),
                     "date"     : $(p).data('date'),
                     "hour"     : $(p).data('hour'),
-                    "name"     : $(p).find('.info .category').text(),
-                    "category" : $(p).find('.info p').text()
+                    "category" : $(p).find('.info .category').text(),
+                    "name"     : $(p).find('.info p').text()
                 }
                 playlist.push(tempList);
             });
         } else if (typeof $container.data('playlist') != "undefined") {
-            playlist = $container.data('playlist');
+            playlist = $container.data('categoplaylist');
         }
 
         $.each(playlist, function(i,p) {
             var tempSlide = $(slide);
             tempSlide.find('.image-wrapper img').attr('src',p.image);
             tempSlide.find('.info-container .category').text(p.category);
-            tempSlide.find('.info-container p').text(p.name)
+            tempSlide.find('.info-container p').text(p.name.trunc(30, true))
             tempSlide.data('json', JSON.stringify(p));
             tempSlider.find('.slider-channels-video').append(tempSlide);
         });
