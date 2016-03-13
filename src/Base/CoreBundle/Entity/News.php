@@ -116,7 +116,6 @@ abstract class News implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="NewsTag", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $tags;
 
@@ -148,7 +147,7 @@ abstract class News implements TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="NewsFilmFilmAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_show"})
      */
     private $associatedFilms;
 

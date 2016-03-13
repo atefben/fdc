@@ -39,7 +39,6 @@ class NewsImage extends News
     /**
      * @ORM\ManyToOne(targetEntity="Gallery")
      *
-     * @Groups({"news_list", "news_show"})
      * @Assert\NotNull()
      */
     private $gallery;

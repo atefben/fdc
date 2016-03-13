@@ -47,7 +47,8 @@ class Country implements TranslateMainInterface
      *  "film_list", "film_show",
      *  "trailer_list", "trailer_show",
      *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *  "projection_list", "projection_show",
+     *     "film_show"
      * })
      */
     private $iso;
@@ -81,10 +82,15 @@ class Country implements TranslateMainInterface
      * @var ArrayCollection
      *
      * @Groups({
-     *  "film_list", "film_show",
-     *  "trailer_list", "trailer_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *     "film_list",
+     *     "film_show",
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "film_show"
      * })
      */
     protected $translations;
