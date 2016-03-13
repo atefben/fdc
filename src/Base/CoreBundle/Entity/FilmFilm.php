@@ -234,7 +234,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="film", cascade={"all"})
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({"film_list", "film_show", "projection_list", "projection_show"})
      */
     private $persons;
 
@@ -253,8 +253,12 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="film", cascade={"all"})
      * @ORM\OrderBy({"position"="ASC"})
      *
-     * @Groups({"film_list", "film_show"})
-     * 
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     private $medias;
 

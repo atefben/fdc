@@ -39,6 +39,7 @@ class FilmFilmPersonFunction
      * @var int
      *
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"film_list", "film_show", "projection_list", "projection_show"})
      */
     private $position;
 
@@ -48,7 +49,7 @@ class FilmFilmPersonFunction
      * @ORM\ManyToOne(targetEntity="FilmFunction", inversedBy="filmPersons", cascade={"persist"})
      * @ORM\JoinColumn(name="function_id", referencedColumnName="id", nullable=false)
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({"film_list", "film_show", "projection_list", "projection_show"}))
      */
     private $function;
 

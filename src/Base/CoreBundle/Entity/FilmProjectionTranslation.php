@@ -33,7 +33,7 @@ class FilmProjectionTranslation implements TranslateChildInterface
      *
      * @Groups({
      *  "projection_list", "projection_show",
-     *  "film_list", "film_show"
+     *  "film_list", "film_show",
      * })
      */
     private $programSection;

@@ -48,7 +48,12 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      * @var FilmMedia
      *
      * @ORM\ManyToOne(targetEntity="FilmMedia", cascade={"persist"})
-     * @Groups({"film_list", "film_show"})
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     private $media;
     
@@ -63,6 +68,12 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     private $filename;
     
@@ -70,7 +81,12 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"film_list", "film_show"})
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     private $type;
 

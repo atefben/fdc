@@ -7,6 +7,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 
+use FOS\RestBundle\View\View;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use JMS\Serializer\SerializationContext;
 
@@ -41,27 +42,29 @@ class FilmProjectionController extends FOSRestController
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
+     * @Rest\QueryParam(name="day", description="The date of the day (YYYY-mm-dd format). Exemple: 2O15-03-29")
+     * @Rest\QueryParam(name="film_id", description="The film id")
      * @Rest\QueryParam(name="festival_id", description="The festival year")
      *
+     * @param ParamFetcher $paramFetcher
      * @return View
      */
     public function getProjectionsAction(Paramfetcher $paramFetcher)
     {
-        // coremanager shortcut
+        // core manager shortcut
         $coreManager = $this->get('base.api.core_manager');
 
         // get festival
         $festival = $coreManager->getApiFestivalYear();
 
-        // create query
-        $em = $this->getDoctrine()->getManager();
-        $dql = "SELECT fp FROM {$this->repository} fp WHERE fp.festival = :festival";
-        $query = $em
-            ->createQuery($dql)
-            ->setParameter('festival', $festival->getId());
+        $queryBuilder = $this
+            ->getDoctrine()
+            ->getRepository($this->repository)
+            ->getApiProjections($festival, $paramFetcher->get('day'), $paramFetcher->get('film_id'))
+        ;
 
         // get items
-        $items = $coreManager->getPaginationItems($query, $paramFetcher);
+        $items = $coreManager->getPaginationItems($queryBuilder, $paramFetcher);
 
         // set context view
         $groups = array('projection_list');

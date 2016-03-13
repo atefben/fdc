@@ -60,7 +60,7 @@ class FilmFilmPerson implements TranslateMainInterface
      *
      * @TODO: set nullable false / true ? related to FDC_Questions_LOT1_20150923 point 4
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({"film_list", "film_show", "projection_list", "projection_show"})
      */
     private $person;
 
@@ -69,7 +69,7 @@ class FilmFilmPerson implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="FilmFilmPersonFunction", mappedBy="filmPerson", cascade={"all"})
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({"film_list", "film_show", "projection_list", "projection_show"})
      */
     private $functions;
 
