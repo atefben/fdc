@@ -218,7 +218,7 @@
         {'section': article.theme,
          'detail': article.publishedAt|date('d.m.y'),
          'title': article.title,
-         'description': article.introduction
+         'description': article.introduction,
          'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
         }))
     }}
