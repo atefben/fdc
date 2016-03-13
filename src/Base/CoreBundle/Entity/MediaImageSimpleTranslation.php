@@ -33,7 +33,7 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      * @Assert\Valid()
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show"})
      */
     private $file;
 
@@ -42,7 +42,7 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show"})
      */
     private $alt;
     

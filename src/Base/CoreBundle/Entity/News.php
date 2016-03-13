@@ -44,7 +44,7 @@ abstract class News implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "home"})
      */
     private $id;
 
@@ -53,7 +53,7 @@ abstract class News implements TranslateMainInterface
       *
       * @ORM\ManyToOne(targetEntity="Theme")
       *
-      * @Groups({"news_list", "news_show"})
+      * @Groups({"news_list", "news_show", "home"})
       * @Assert\NotNull()
       */
     private $theme;
@@ -100,7 +100,7 @@ abstract class News implements TranslateMainInterface
      *
      * @ORM\Column(type="string", nullable=true)
      *
-     * @Groups({"news_list", "news_show", "film_show"})
+     * @Groups({"news_list", "news_show", "film_show", "home"})
      */
     private $signature;
 
@@ -116,7 +116,6 @@ abstract class News implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="NewsTag", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $tags;
 
@@ -148,7 +147,7 @@ abstract class News implements TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="NewsFilmFilmAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_show"})
      */
     private $associatedFilms;
 
@@ -173,7 +172,7 @@ abstract class News implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show"})
+     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show", "home"})
      */
     private $publishedAt;
 
@@ -181,14 +180,14 @@ abstract class News implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show"})
+     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show", "home"})
      */
     private $publishEndedAt;
 
     /**
      * ArrayCollection
      *
-     * @Groups({"news_list", "news_show", "film_show"})
+     * @Groups({"news_list", "news_show", "film_show", "home"})
      */
     protected $translations;
 
@@ -261,7 +260,7 @@ abstract class News implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"news_list", "news_show", "film_show"})
+     * @Groups({"news_list", "news_show", "film_show", "home"})
      */
     public function getNewsType()
     {

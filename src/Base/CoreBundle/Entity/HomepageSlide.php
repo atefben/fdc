@@ -31,6 +31,7 @@ class HomepageSlide
      * @var News
      *
      * @ORM\ManyToOne(targetEntity="News")
+     * @Groups("home")
      */
     private $news;
 

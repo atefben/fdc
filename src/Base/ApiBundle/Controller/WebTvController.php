@@ -26,7 +26,7 @@ class WebTvController extends FOSRestController
     /**
      * Return an array of web tvs, can be filtered with page / offset parameters
      *
-     * @Rest\Get("/web_tvs")
+     * @Rest\Get("/webtvs")
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
@@ -84,7 +84,7 @@ class WebTvController extends FOSRestController
     /**
      * Return a single web tv by $id
      *
-     * @Rest\Get("/web_tv/{id}")
+     * @Rest\Get("/webtvs/{id}")
      * @Rest\View()
      * @ApiDoc(
      *  resource = true,
@@ -111,9 +111,11 @@ class WebTvController extends FOSRestController
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
      *
+     * @param ParamFetcher $paramFetcher
+     * @param int $id
      * @return View
      */
-    public function getWebTvAction(Paramfetcher $paramFetcher, $id)
+    public function getWebTvAction(ParamFetcher $paramFetcher, $id)
     {
         // coremanager shortcut
         $coreManager = $this->get('base.api.core_manager');
@@ -126,9 +128,8 @@ class WebTvController extends FOSRestController
         // create query
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository($this->repository)->getApiWebTv($id, $festival, new DateTime(), $lang);
-
         // set context view
-        $groups = array('web_tv_list');
+        $groups = array('web_tv_show');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);

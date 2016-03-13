@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * Homepage
@@ -143,6 +144,7 @@ class Homepage
      *
      * @ORM\OneToMany(targetEntity="HomepageSlide", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
+     * @Groups("home")
      */
     private $homepageSlide;
 
@@ -162,14 +164,14 @@ class Homepage
     private $topWebTvs;
 
     /**
-     * @var topVideosAssociated
+     * @var HomepageTopVideosAssociated
      * @ORM\OneToMany(targetEntity="HomepageTopVideosAssociated", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
     private $topVideosAssociated;
 
     /**
-     * @var topWebTvsAssociated
+     * @var HomepageTopWebTvsAssociated
      * @ORM\OneToMany(targetEntity="HomepageTopWebTvsAssociated", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */

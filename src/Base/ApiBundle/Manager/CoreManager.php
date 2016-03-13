@@ -98,6 +98,7 @@ class CoreManager
 
     /**
      * @return mixed
+     * @throws Exception
      */
     public function getApiFestivalYear()
     {

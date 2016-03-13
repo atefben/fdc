@@ -2,17 +2,12 @@
 
 namespace Base\CoreBundle\Entity;
 
-use \DateTime;
-
-use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-
+use Base\CoreBundle\Util\Time;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\Time;
-
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use JMS\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * EventFilmProjectionAssociated
@@ -45,14 +40,16 @@ class EventFilmProjectionAssociated
      * @var FilmProjection
      *
      * @ORM\ManyToOne(targetEntity="FilmProjection")
+     * @Groups({"event_show"})
      */
     protected $association;
 
-    public function __toString() {
+    public function __toString()
+    {
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+            $string .= ' #' . $this->getId();
         }
 
         return $string;
@@ -91,7 +88,7 @@ class EventFilmProjectionAssociated
     /**
      * Get event
      *
-     * @return \Base\CoreBundle\Entity\Event 
+     * @return \Base\CoreBundle\Entity\Event
      */
     public function getEvent()
     {
@@ -114,7 +111,7 @@ class EventFilmProjectionAssociated
     /**
      * Get association
      *
-     * @return \Base\CoreBundle\Entity\FilmProjection 
+     * @return \Base\CoreBundle\Entity\FilmProjection
      */
     public function getAssociation()
     {

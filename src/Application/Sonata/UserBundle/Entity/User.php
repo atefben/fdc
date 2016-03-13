@@ -12,6 +12,7 @@
 namespace Application\Sonata\UserBundle\Entity;
 
 use Base\AdminBundle\Component\Admin\Export;
+use JMS\Serializer\Annotation\Groups;
 use Sonata\UserBundle\Entity\BaseUser as BaseUser;
 
 /**

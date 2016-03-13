@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Application\Sonata\UserBundle\Entity\User;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
@@ -22,7 +23,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * News
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\EventRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Event implements TranslateMainInterface
@@ -100,7 +101,6 @@ class Event implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="NewsTag", mappedBy="news", cascade={"persist"})
      *
-     * @Groups({"event_list", "event_show"})
      */
     private $tags;
 
@@ -109,7 +109,6 @@ class Event implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="EventWidget", mappedBy="events",  cascade={"persist"})
      *
-     * @Groups({"event_list", "event_show"})
      */
     private $widgets;
 
@@ -118,14 +117,14 @@ class Event implements TranslateMainInterface
      *
      * @ORM\ManyToMany(targetEntity="Site")
      *
-     * @Groups({"event_list", "event_show"})
      */
     private $sites;
 
     /**
      * @ORM\OneToMany(targetEntity="EventFilmProjectionAssociated", mappedBy="event", cascade={"persist"})
      *
-     * @Groups({"event_list", "event_show"})
+     * @Groups({"event_show"})
+     *
      */
     private $associatedProjections;
 
@@ -158,7 +157,7 @@ class Event implements TranslateMainInterface
     {
         $translationFr = $this->findTranslationByLocale('fr');
         if ($translationFr !== null) {
-            return $translationFr->getName();
+            return $translationFr->getTitle();
         }
         return '';
     }

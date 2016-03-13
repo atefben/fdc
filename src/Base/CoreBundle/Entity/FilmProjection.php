@@ -3,17 +3,11 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-
-use Base\CoreBundle\Interfaces\TranslateMainInterface;
-use Base\CoreBundle\Util\TranslateMain;
-use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\Soif;
-
+use Base\CoreBundle\Util\Time;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
 use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\Since;
 
 /**
  * FilmProjection
@@ -27,7 +21,7 @@ class FilmProjection
     use Translatable;
     use Time;
     use Soif;
-    
+
     /**
      * @var integer
      *
@@ -39,30 +33,37 @@ class FilmProjection
      *     "projection_show",
      *     "film_list",
      *     "film_show",
+     *     "event_show"
      * })
      */
     private $id;
-    
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      *
      * @Groups({
-     *  "projection_list", "projection_show",
-     *  "film_list", "film_show"
+     *     "projection_list",
+     *     "projection_show",
+     *     "film_list",
+     *     "film_show",
+     *     "event_show"
      * })
      */
     private $startsAt;
-    
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      *
      * @Groups({
-     *  "projection_list", "projection_show",
-     *  "film_list", "film_show"
+     *     "projection_list",
+     *     "projection_show",
+     *     "film_list",
+     *     "film_show",
+     *     "event_show"
      * })
      */
     private $endsAt;
@@ -73,8 +74,11 @@ class FilmProjection
      * @ORM\Column(type="string", nullable=true)
      *
      * @Groups({
-     *  "projection_list", "projection_show",
-     *  "film_list", "film_show"
+     *     "projection_list",
+     *     "projection_show",
+     *     "film_list",
+     *     "film_show",
+     *     "event_show"
      * })
      */
     private $type;
@@ -84,7 +88,10 @@ class FilmProjection
      *
      * @ORM\Column(type="string", nullable=true)
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({
+     *     "projection_list",
+     *     "projection_show",
+     * })
      */
     private $programmationSection;
 
@@ -106,7 +113,7 @@ class FilmProjection
      * })
      */
     private $room;
-    
+
     /**
      * @var FilmProjectionProgrammationFilm
      *
@@ -115,7 +122,7 @@ class FilmProjection
      * @Groups({"projection_list", "projection_show"})
      */
     private $programmationFilms;
-    
+
     /**
      * @var FilmProjectionProgrammationDynamic
      *
@@ -124,7 +131,7 @@ class FilmProjection
      * @Groups({"projection_list", "projection_show"})
      */
     private $programmationDynamics;
-    
+
     /**
      * @var FilmProjectionProgrammationFilmList
      *
@@ -160,7 +167,7 @@ class FilmProjection
     {
         $this->translations = new ArrayCollection();
         $this->programmationFilms = new ArrayCollection();
-        $this->programmationDynamics= new ArrayCollection();
+        $this->programmationDynamics = new ArrayCollection();
         $this->programmationFilmsList = new ArrayCollection();
         $this->medias = new ArrayCollection();
     }
@@ -168,7 +175,8 @@ class FilmProjection
     public function __toString()
     {
         if ($this->getId() && $this->getProgrammationFilms()->count() > 0 &&
-            $this->getProgrammationFilms()->get(0)->getFilm() !== null) {
+            $this->getProgrammationFilms()->get(0)->getFilm() !== null
+        ) {
             return $this->getProgrammationFilms()->get(0)->getFilm()->getTitleVo();
         }
 
@@ -179,7 +187,7 @@ class FilmProjection
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -217,7 +225,7 @@ class FilmProjection
     /**
      * Get startsAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartsAt()
     {
@@ -240,7 +248,7 @@ class FilmProjection
     /**
      * Get endsAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndsAt()
     {
@@ -309,7 +317,7 @@ class FilmProjection
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
@@ -343,13 +351,13 @@ class FilmProjection
     /**
      * Get medias
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMedias()
     {
         return $this->medias;
     }
-    
+
     public function hasMedia($id)
     {
         foreach ($this->medias as $media) {
@@ -357,7 +365,7 @@ class FilmProjection
                 return $media;
             }
         }
-        
+
         return null;
     }
 
@@ -377,7 +385,7 @@ class FilmProjection
     /**
      * Get programmationSection
      *
-     * @return string 
+     * @return string
      */
     public function getProgrammationSection()
     {
@@ -419,7 +427,7 @@ class FilmProjection
     /**
      * Get programmationFilms
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProgrammationFilms()
     {
@@ -437,7 +445,7 @@ class FilmProjection
         if ($this->programmationDynamics->contains($programmationDynamics)) {
             return;
         }
-        
+
         $this->programmationDynamics[] = $programmationDynamics;
 
         return $this;
@@ -453,14 +461,14 @@ class FilmProjection
         if (!$this->programmationDynamics->contains($programmationDynamics)) {
             return;
         }
-        
+
         $this->programmationDynamics->removeElement($programmationDynamics);
     }
 
     /**
      * Get programmationDynamics
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProgrammationDynamics()
     {
@@ -478,7 +486,7 @@ class FilmProjection
         if ($this->programmationFilmsList->contains($programmationFilmsList)) {
             return;
         }
-        
+
         $this->programmationFilmsList[] = $programmationFilmsList;
 
         return $this;
@@ -494,14 +502,14 @@ class FilmProjection
         if (!$this->programmationFilmsList->contains($programmationFilmsList)) {
             return;
         }
-        
+
         $this->programmationFilmsList->removeElement($programmationFilmsList);
     }
 
     /**
      * Get programmationFilmsList
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProgrammationFilmsList()
     {

@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Application\Sonata\UserBundle\Entity\User;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\TranslateMain;
@@ -109,7 +110,18 @@ abstract class Media implements TranslateMainInterface
 
     /**
      * @var ArrayCollection
-     * @Groups({"news_show", "news_list", "trailer_show", "web_tv_list", "web_tv_show", "film_show"})
+     * @Groups({
+     *     "news_show",
+     *     "news_list",
+     *     "trailer_show",
+     *     "web_tv_list",
+     *     "web_tv_show",
+     *     "film_show",
+     *     "event_list",
+     *     "event_show",
+     *     "home",
+     *     "today_images"
+     * })
      *
      * @Assert\Valid()
      */
