@@ -123,6 +123,8 @@ class Event implements TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="EventFilmProjectionAssociated", mappedBy="event", cascade={"persist"})
      *
+     * @Groups({"event_show"})
+     *
      */
     private $associatedProjections;
 

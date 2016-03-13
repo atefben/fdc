@@ -33,7 +33,7 @@ class EventTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"news_list", "news_show", "event_list"})
+     * @Groups({"news_list", "news_show", "event_list", "event_show"})
      */
     private $title;
 
@@ -42,7 +42,7 @@ class EventTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"news_list", "news_show", "event_list"})
+     * @Groups({"news_list", "news_show", "event_list", "event_show"})
      */
     private $introduction;
 

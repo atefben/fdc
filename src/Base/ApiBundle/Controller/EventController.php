@@ -5,10 +5,7 @@ namespace Base\ApiBundle\Controller;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
-
 use FOS\RestBundle\View\View;
-use JMS\Serializer\SerializationContext;
-
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 /**
@@ -19,6 +16,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 class EventController extends FOSRestController
 {
     private $repository = 'BaseCoreBundle:Event';
+
     /**
      * Return an array of events, can be filtered with page / offset parameters
      *
@@ -57,7 +55,7 @@ class EventController extends FOSRestController
         $queryBuilder = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('BaseCoreBundle:Event')
+            ->getRepository($this->repository)
             ->getApiEvents($festival, $paramFetcher->get('lang'))
         ;
 
@@ -70,6 +68,66 @@ class EventController extends FOSRestController
 
         // create view
         $view = $this->view($items, 200);
+        $view->setSerializationContext($context);
+
+        return $view;
+    }
+
+    /**
+     * Return an event,
+     *
+     * @Rest\View()
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Get an event",
+     *   section="Events",
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *   },
+     *   requirements={
+     *      {
+     *          "name"="id",
+     *          "requirement"="[\s-+]",
+     *          "dataType"="string",
+     *          "description"="The news identifier"
+     *      }
+     *  },
+     *  output={
+     *      "class"="Base\CoreBundle\Entity\Event",
+     *      "groups"={"event_show"}
+     *  }
+     * )
+     * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
+     *
+     * @param int $id
+     * @param ParamFetcher $paramFetcher
+     * @return View
+     * @throws \Exception
+     */
+    public function getEventAction(ParamFetcher $paramFetcher, $id)
+    {
+        //core manager shortcut
+        $coreManager = $this->get('base.api.core_manager');
+
+        // get festival
+        $festival = $coreManager->getApiFestivalYear();
+
+
+        $event = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository($this->repository)
+            ->getApiEvent($festival, $paramFetcher->get('lang'), $id)
+        ;;
+
+
+        // set context view
+        $groups = array('event_show');
+        $context = $coreManager->setContext($groups, $paramFetcher);
+
+        // create view
+        $view = $this->view($event, $event ? 200 : 204);
         $view->setSerializationContext($context);
 
         return $view;
