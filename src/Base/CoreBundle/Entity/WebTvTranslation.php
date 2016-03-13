@@ -45,6 +45,7 @@ class WebTvTranslation implements TranslateChildInterface
      *
      * @Gedmo\Slug(fields={"name"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     * @Groups({"web_tv_list", "web_tv_show"})
      */
     private $slug;
 

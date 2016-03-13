@@ -72,7 +72,7 @@ class MediaImageSimple implements TranslateMainInterface
      *
      *
      * @Assert\Valid()
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show"})
      */
     protected $translations;
 
