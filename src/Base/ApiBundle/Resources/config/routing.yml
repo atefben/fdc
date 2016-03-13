@@ -30,6 +30,10 @@ film_selection:
     type:       rest
     resource:   Base\ApiBundle\Controller\FilmSelectionController
 
+film_selection_section:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\FilmSelectionSectionController
+
 film_projection:
     type:       rest
     resource:   Base\ApiBundle\Controller\FilmProjectionController

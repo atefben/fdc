@@ -31,10 +31,15 @@ class FilmPersonTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Groups({
-            "person_list", "person_show",
-            "film_list", "film_show",
-            "jury_list", "jury_show"
-        })
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     protected $profession;
     
@@ -44,10 +49,15 @@ class FilmPersonTranslation implements TranslateChildInterface
      * @ORM\Column(type="text", nullable=true)
      *
      * @Groups({
-            "person_list", "person_show",
-            "film_list", "film_show",
-            "jury_list", "jury_show"
-        })
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     protected $biography;
 

@@ -32,7 +32,7 @@ class NewsImage extends News
      *
      * @ORM\ManyToOne(targetEntity="MediaImage")
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "film_show"})
      */
     private $header;
 

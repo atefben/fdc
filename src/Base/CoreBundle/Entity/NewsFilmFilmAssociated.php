@@ -14,6 +14,7 @@ use Base\CoreBundle\Util\Time;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use JMS\Serializer\Annotation\Groups;
 /**
  * NewsFilmFilmAssociated
  *
@@ -38,6 +39,7 @@ class NewsFilmFilmAssociated
      * @var News
      *
      * @ORM\ManyToOne(targetEntity="News", inversedBy="associatedFilms")
+     * @Groups({"film_show"})
      */
     protected $news;
 

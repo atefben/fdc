@@ -39,7 +39,7 @@ class SocialWallMobileController extends FOSRestController
      *   },
      *  output={
      *      "class"="Base\CoreBundle\Entity\SocialWall",
-     *      "groups"={"social_wall_list","time"}
+     *      "groups"={"social_wall_list"}
      *  }
      * )
      *
@@ -73,7 +73,7 @@ class SocialWallMobileController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher, array('distinct' => false));
 
         // set context view
-        $groups = array('social_wall_list', 'time');
+        $groups = array('social_wall_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
 

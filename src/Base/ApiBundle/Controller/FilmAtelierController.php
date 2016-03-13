@@ -63,7 +63,7 @@ class FilmAtelierController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $groups = array('film_atelier_list', 'time');
+        $groups = array('film_atelier_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
 
         // create view
@@ -113,7 +113,7 @@ class FilmAtelierController extends FOSRestController
 
         // set context view
         $context = SerializationContext::create();
-        $context->setGroups(array('film_atelier_show', 'time'));
+        $context->setGroups(array('film_atelier_show'));
         $context->setVersion($version);
         $view = $this->view($film, 200);
         $view->setSerializationContext($context);

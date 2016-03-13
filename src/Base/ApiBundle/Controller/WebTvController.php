@@ -10,6 +10,7 @@ use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 
+use FOS\RestBundle\View\View;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 /**
@@ -35,7 +36,7 @@ class WebTvController extends FOSRestController
      *   },
      *  output={
      *      "class"="Base\CoreBundle\Entity\WebTv",
-     *      "groups"={"web_tv_list", "time"}
+     *      "groups"={"web_tv_list"}
      *  }
      * )
      *
@@ -64,7 +65,7 @@ class WebTvController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $groups = array('web_tv_list', 'time');
+        $groups = array('web_tv_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
@@ -99,7 +100,7 @@ class WebTvController extends FOSRestController
      *  },
      *  output={
      *      "class"="Base\CoreBundle\Entity\WebTv",
-     *      "groups"={"web_tv_show", "time"}
+     *      "groups"={"web_tv_show"}
      *  }
      * )
      *
@@ -123,7 +124,7 @@ class WebTvController extends FOSRestController
         $entity = $em->getRepository($this->repository)->getApiWebTv($id, $festival, new DateTime(), $lang);
 
         // set context view
-        $groups = array('web_tv_list', 'time');
+        $groups = array('web_tv_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);

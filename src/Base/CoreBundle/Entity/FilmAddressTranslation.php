@@ -10,6 +10,8 @@ use Base\CoreBundle\Util\Time;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use JMS\Serializer\Annotation\Groups;
+
 /**
  * FilmAddressTranslation
  *
@@ -27,6 +29,7 @@ class FilmAddressTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"film_show"})
      */
     private $state;
 

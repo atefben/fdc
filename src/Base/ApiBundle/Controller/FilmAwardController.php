@@ -8,6 +8,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 
+use FOS\RestBundle\View\View;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use JMS\Serializer\SerializationContext;
 
@@ -46,6 +47,8 @@ class FilmAwardController extends FOSRestController
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      *
+     * @param  Paramfetcher $paramFetcher
+     *
      * @return View
      */
     public function getAwardsAction(Paramfetcher $paramFetcher)
@@ -68,7 +71,7 @@ class FilmAwardController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $groups = array('award_list', 'time');
+        $groups = array('award_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
@@ -128,7 +131,7 @@ class FilmAwardController extends FOSRestController
         $projection = $em->getRepository($this->repository)->getApiAward($id, $festival);
 
         // set context view
-        $groups = array('award_show', 'time');
+        $groups = array('award_show');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
 

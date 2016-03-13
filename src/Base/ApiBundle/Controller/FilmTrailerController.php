@@ -33,7 +33,7 @@ class FilmTrailerController extends FOSRestController
      *   },
      *  output={
      *      "class"="Base\CoreBundle\Entity\Film",
-     *      "groups"={"trailer_list", "time"}
+     *      "groups"={"trailer_list"}
      *  }
      * )
      *
@@ -62,7 +62,7 @@ class FilmTrailerController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $groups = array('trailer_list', 'time');
+        $groups = array('trailer_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
@@ -96,7 +96,7 @@ class FilmTrailerController extends FOSRestController
      *  },
      *  output={
      *      "class"="Base\CoreBundle\Entity\Film",
-     *      "groups"={"trailer_show", "time"}
+     *      "groups"={"trailer_show"}
      *  }
      * )
      *
@@ -121,7 +121,7 @@ class FilmTrailerController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository($this->repository)->getApiTrailers($id, $festival, $lang);
 
-        $groups = array('trailer_show', 'time');
+        $groups = array('trailer_show');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);

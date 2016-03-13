@@ -10,68 +10,119 @@
 {% block body %}
     <div id="main" class="home loading">
         <span id="addtext">{{ 'home.btn.ajouteramaselection'|trans }}</span>
-
         {% if displayHomeSlider == false %}
             <div id="sliderWrapper">
                 <div id="slider" class="owl-carousel">
-                    {% for slide in homeSlider %}
-                        {% if slide != null %}
-                            {% if slide is news_article %}
-                                {% set trans = slide.header.findTranslationByLocale(app.request.locale) %}
-                                {% if trans is null or trans.file is null %}
-                                    {% set trans = slide.header.findTranslationByLocale('fr') %}
+                    {% for article in homeSlider %}
+
+                        {% if article is news_article or
+                            article is news_video or
+                            article is news_audio or
+                            article is news_image %}
+                                {% set type = 'news' %}
+                            {% else %}
+                                {% if class(article) starts with 'S' %}
+                                    {% set type = 'communique' %}
+                                {% else %}
+                                    {% set type = 'info' %}
                                 {% endif %}
-                            {% elseif slide is news_audio %}
-                                {% if slide.header is not null %}
-                                    {% set trans = slide.header.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans is null or trans.file is null %}
-                                        {% set trans = slide.header.findTranslationByLocale('fr') %}
-                                    {% endif %}
-                                {% endif %}
-                                {% if trans is not defined or trans.file is null %}
-                                    {% set trans = slide.audio.image.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans is null or trans.file is null %}
-                                        {% set trans = slide.audio.image.findTranslationByLocale('fr') %}
-                                    {% endif %}
-                                {% endif %}
-                            {% elseif slide is news_video %}
-                                {% if slide.header is not null %}
-                                    {% set trans = slide.header.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans is null or trans.file is null %}
-                                        {% set trans = slide.header.findTranslationByLocale('fr') %}
-                                    {% endif %}
-                                {% endif %}
-                                {% if trans is not defined or trans.file is null %}
-                                    {% set trans = slide.video.image.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans is null or trans.file is null %}
-                                        {% set trans = slide.video.image.findTranslationByLocale('fr') %}
-                                    {% endif %}
-                                {% endif %}
-                            {% elseif slide is news_image %}
-                                {% if slide.header is not null %}
-                                    {% set trans = slide.header.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans is null or trans.file is null %}
-                                        {% set trans = slide.header.findTranslationByLocale('fr') %}
-                                    {% endif %}
-                                {% endif %}
-                                {% if trans is not defined or trans.file is null %}
-                                    {% set trans = slide.gallery.medias[0].media.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans is null or trans.file is null %}
-                                        {% set trans = slide.gallery.medias[0].media.findTranslationByLocale('fr') %}
+                            {% endif %}
+
+                        {% if article is news_article or article is statement_article or article is info_article %}
+                            {% set img = article.header %}
+                            {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is null or trans.file is null %}
+                                {% set trans = img.findTranslationByLocale('fr') %}
+                            {% endif %}
+                            {% set file = trans.file %}
+                        {% elseif article is news_video or article is statement_video or article is info_video%}
+                            {% set header = article.header %}
+                            {% if header is not null %}
+                                {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is not null and trans.file is not null %}
+                                    {% set imageTrans = trans %}
+                                {% else %}
+                                    {% set trans = article.header.findTranslationByLocale('fr') %}
+                                    {% if trans is not null and trans.file is not null %}
+                                        {% set imageTrans = trans %}
                                     {% endif %}
                                 {% endif %}
                             {% endif %}
+                            {% if imageTrans is defined and imageTrans is not null %}
+                                {% set file = imageTrans.file %}
+                                {% set img = article.header %}
+                            {% else %}
+                                {% set img = article.video.image %}
+                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = img.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set file = trans.file %}
+                            {% endif %}
+                        {% elseif article is news_audio or article is info_audio or article is statement_audio %}
+                            {% set header = article.header %}
+                            {% if header is not null %}
+                                {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is not null and trans.file is not null %}
+                                    {% set imageTrans = trans %}
+                                {% else %}
+                                    {% set trans = article.header.findTranslationByLocale('fr') %}
+                                    {% if trans is not null and trans.file is not null %}
+                                        {% set imageTrans = trans %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                            {% if imageTrans is defined and imageTrans is not null %}
+                                {% set file = imageTrans.file %}
+                                {% set img = article.header %}
+                            {% else %}
+                                {% set img = article.audio.image %}
+                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = img.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set file = trans.file %}
+                            {% endif %}
+                        {% elseif article is news_image or article is statement_image or article is info_image %}
+                            {% set header = article.header %}
+                            {% if header is not null %}
+                                {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is not null and trans.file is not null %}
+                                    {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
+                                {% else %}
+                                    {% set trans = article.header.findTranslationByLocale('fr') %}
+                                    {% if trans is not null and trans.file is not null %}
+                                        {% set imageTrans = trans %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                            {% if imageTrans is defined and imageTrans is not null %}
+                                {% set img = article.header %}
+                                {% set file = imageTrans.file %}
+                            {% else %}
+                                {% set img = article.gallery.medias[0].media %}
+                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = img.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set file = trans.file %}
+                            {% endif %}
+                        {% endif %}
                             <div>
                                 <div class="img-container">
-                                    <div class="img" style="background-image:url({% if trans is defined %}{% path trans.file , '2560x1620' %}{% endif %})"></div>
+                                    <div class="img" style="background-image:url({% path file , '2560x1620' %})"></div>
                                 </div>
                                 <div class="info">
-                                    <span class="category">{{ slide.theme|trans_fallback('name') }}</span>
-                                    <h2>{{ slide|trans_fallback('title') }}</h2>
+                                    <span class="category">{{ article.theme|trans_fallback('name') }}</span>
+                                    <h2>{{ article|trans_fallback('title') }}</h2>
                                 </div>
-                                <a href="{{ path('fdc_event_news_get', {format: slide.newsFormat, 'slug': slide.id }) }}" class="linkArticle"></a>
+                                {% set trans = article.findTranslationByLocale('fr') %}
+                                {% if type == 'news' %}
+                                    <a class="linkArticle" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                                {% else %}
+                                    <a class="linkArticle" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                                {% endif %}
                             </div>
-                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -220,9 +271,12 @@
                 <div id="slider-channels" class="owl-carousel sliderDrag">
                     {% for channel in channels %}
                         {% if channel is defined and channel.association != null %}
-                            <div class="channel">
-                                {% include 'FDCEventBundle:News:widgets/home-channels.html.twig' %}
-                            </div>
+                            {% set channel = channel.association %}
+                            {% if channel.mediaVideos is defined and channel.mediaVideos != null and channel.mediaVideos|length > 0 %}
+                                <div class="channel">
+                                    {% include 'FDCEventBundle:News:widgets/home-channels.html.twig' %}
+                                </div>
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
                 </div>

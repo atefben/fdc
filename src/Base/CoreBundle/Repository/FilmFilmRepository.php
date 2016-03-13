@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Repository;
 
+use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 
@@ -33,6 +34,12 @@ class FilmFilmRepository extends EntityRepository
         return $query;
     }
 
+    /**
+     * @param $id
+     * @param $festival
+     * @return FilmFilm
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function getApiFilm($id, $festival)
     {
         return $this->createQueryBuilder('f')

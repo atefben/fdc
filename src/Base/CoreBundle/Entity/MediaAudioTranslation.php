@@ -35,6 +35,7 @@ class MediaAudioTranslation implements TranslateChildInterface
      *
      * @Groups({"news_list", "news_show"})
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("film_show")
      */
     private $title;
 
@@ -56,6 +57,7 @@ class MediaAudioTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Groups("film_show")
      */
     private $mp3Url;
 

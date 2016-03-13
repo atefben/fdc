@@ -34,7 +34,14 @@ class FilmMedia
       * @var string
       *
       * @ORM\Column(type="string", length=255, nullable=true)
-      * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
+      * @Groups({
+      *     "film_list",
+      *     "film_show",
+      *     "jury_list",
+      *     "jury_show",
+      *     "projection_list",
+      *     "projection_show"
+      * })
       */
     private $contentType;
 
@@ -42,7 +49,14 @@ class FilmMedia
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     private $noteVf;
 
@@ -50,7 +64,14 @@ class FilmMedia
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     private $noteVa;
 
@@ -58,7 +79,14 @@ class FilmMedia
      * @var string
      *
      * @ORM\Column(type="string", length=80, nullable=true)
-     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     private $copyright;
 
@@ -66,7 +94,14 @@ class FilmMedia
      * @var string
      *
      * @ORM\Column(type="string", length=80, nullable=true)
-     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     private $credits;
 
@@ -74,7 +109,14 @@ class FilmMedia
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     private $type;
 
@@ -82,7 +124,14 @@ class FilmMedia
      * @var string
      *
      * @ORM\Column(type="string", length=1, nullable=true)
-     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     private $internet;
 
@@ -90,7 +139,14 @@ class FilmMedia
      * @var string
      *
      * @ORM\Column(type="string", length=80, nullable=true)
-     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     private $titleVf;
 
@@ -98,7 +154,14 @@ class FilmMedia
      * @var string
      *
      * @ORM\Column(type="string", length=80, nullable=true)
-     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     private $titleVa;
 
@@ -109,7 +172,14 @@ class FilmMedia
     
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="filmMedias")
-     * @Groups({"film_list", "film_show", "jury_list", "jury_show"})
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
      */
     private $file;
 

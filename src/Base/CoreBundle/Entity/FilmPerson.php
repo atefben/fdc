@@ -40,10 +40,16 @@ class FilmPerson implements TranslateMainInterface
      * @ORM\Id
      *
      * @Groups({
-     *  "person_list", "person_show",
-     *  "film_list", "film_show",
-     *  "jury_list", "jury_show",
-     *  "award_list", "award_show"
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show"
      * })
      */
     private $id;
@@ -62,10 +68,16 @@ class FilmPerson implements TranslateMainInterface
      * @ORM\Column(type="string", length=40, nullable=true)
      *
      * @Groups({
-     *  "person_list", "person_show",
-     *  "film_list", "film_show",
-     *  "jury_list", "jury_show",
-     *  "award_list", "award_show"
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show"
      * })
      */
     private $lastname;
@@ -76,10 +88,16 @@ class FilmPerson implements TranslateMainInterface
      * @ORM\Column(type="string", length=40, nullable=true)
      *
      * @Groups({
-     *  "person_list", "person_show",
-     *  "film_list", "film_show",
-     *  "jury_list", "jury_show",
-     *  "award_list", "award_show"
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show"
      * })
      */
     private $firstname;
@@ -90,10 +108,16 @@ class FilmPerson implements TranslateMainInterface
      * @ORM\Column(type="boolean", nullable=true)
      *
      * @Groups({
-     *  "person_list", "person_show",
-     *  "film_list", "film_show",
-     *  "jury_list", "jury_show",
-     *  "award_list", "award_show"
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show"
      * })
      */
     private $asianName;
@@ -102,10 +126,16 @@ class FilmPerson implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Country")
      *
      * @Groups({
-     *  "person_list", "person_show",
-     *  "film_list", "film_show",
-     *  "jury_list", "jury_show",
-     *  "award_list", "award_show"
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show"
      * })
      */
     private $nationality;
@@ -114,10 +144,16 @@ class FilmPerson implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Country")
      *
      * @Groups({
-     *  "person_list", "person_show",
-     *  "film_list", "film_show",
-     *  "jury_list", "jury_show",
-     *  "award_list", "award_show"
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show"
      * })
      */
     private $nationality2;
@@ -128,10 +164,16 @@ class FilmPerson implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="FilmFunction", inversedBy="persons")
      *
      * @Groups({
-     *  "person_list", "person_show",
-     *  "film_list", "film_show",
-     *  "jury_list", "jury_show",
-     *  "award_list", "award_show"
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show"
      * })
      */
     private $function;
@@ -140,10 +182,16 @@ class FilmPerson implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="persons")
      *
      * @Groups({
-     *  "person_list", "person_show",
-     *  "film_list", "film_show",
-     *  "jury_list", "jury_show",
-     *  "award_list", "award_show"
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show"
      * })
      */
     private $address;

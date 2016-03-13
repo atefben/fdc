@@ -16,28 +16,27 @@ use JMS\Serializer\SerializationContext;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 /**
- * FilmSelectionController class.
- *
- * \@extends FOSRestController
+ * Class FilmSelectionSectionController
+ * @package Base\ApiBundle\Controller
  */
-class FilmSelectionController extends FOSRestController
+class FilmSelectionSectionController extends FOSRestController
 {
-    private $repository = 'BaseCoreBundle:FilmSelection';
+    private $repository = 'BaseCoreBundle:FilmSelectionSection';
 
     /**
-     * Return an array of film selections, can be filtered with page / offset parameters
+     * Return an array of film selections section , can be filtered with page / offset, film_id parameters
      *
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
-     *   description = "Get all selections",
-     *   section="Film Selections",
+     *   description = "Get all selections sections",
+     *   section="Film Selections sections",
      *   statusCodes = {
      *     200 = "Returned when successful",
      *   },
      *  output={
-     *      "class"="Base\CoreBundle\Entity\FilmSelection",
-     *      "groups"={"film_selection_list"}
+     *      "class"="Base\CoreBundle\Entity\FilmSelectionSection",
+     *      "groups"={"film_selection_section_list"}
      *  }
      * )
      *
@@ -46,11 +45,12 @@ class FilmSelectionController extends FOSRestController
      * @Rest\QueryParam(name="film_id", description="The Film id")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      *
+     * @param ParamFetcher $paramFetcher
      * @return View
      */
-    public function getFilmSelectionsAction(Paramfetcher $paramFetcher)
+    public function getFilmSelectionSectionsAction(ParamFetcher $paramFetcher)
     {
-        // coremanager shortcut
+        // core manager shortcut
         $coreManager = $this->get('base.api.core_manager');
 
         // create query
@@ -58,14 +58,14 @@ class FilmSelectionController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository($this->repository)
-            ->getApiSelections($paramFetcher->get('film_id'))
+            ->getApiSections($paramFetcher->get('film_id'))
         ;
 
         // get items
         $items = $coreManager->getPaginationItems($queryBuilder, $paramFetcher);
 
         // set context view
-        $groups = array('film_selection_list');
+        $groups = array('film_selection_section_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
 
         // create view

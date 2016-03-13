@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
 
+use JMS\Serializer\Annotation\Groups;
+
 /**
  * FilmContactPerson
  *
@@ -30,6 +32,7 @@ class FilmContactPerson
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Groups({"film_show"})
      */
     private $email;
 
@@ -37,21 +40,25 @@ class FilmContactPerson
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Groups({"film_show"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Groups({"film_show"})
      */
     private $lastname;
     
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Groups({"film_show"})
      */
     private $mobilePhone;
     
     /**
      * @ORM\ManyToMany(targetEntity="FilmContactPerson", cascade={"persist"})
+     * @Groups({"film_show"})
      */
     private $subordinates;
 

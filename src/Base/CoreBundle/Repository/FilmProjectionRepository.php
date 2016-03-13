@@ -12,6 +12,52 @@ use Base\CoreBundle\Entity\FilmFilm;
  */
 class FilmProjectionRepository extends EntityRepository
 {
+
+    /**
+     * @param $festival
+     * @param \DateTime|null $day
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function getApiProjections($festival, $day = null, $filmId = null)
+    {
+        $qb = $this
+            ->createQueryBuilder('fp')
+            ->addOrderBy('fp.startsAt', 'desc');
+        ;
+
+        if ($day && is_string($day) && preg_match('/(19|20|21)[0-9]{2}-[0-9]{1,2}-[0-9]{1,2}/', $day)) {
+            $split = explode('-', $day);
+            if (count($split) === 3) {
+                $date = new \DateTime;
+                $date->setDate($split[0], $split[1], $split[2]);
+
+                $begin = new \DateTime();
+                $begin->setDate($date->format('Y'), $date->format('m'), $date->format('d'));
+                $begin->setTime(0, 0, 0);
+
+                $end = new \DateTime;
+                $end->setDate($date->format('Y'), $date->format('m'), $date->format('d'));
+                $end->setTime(23, 59, 59);
+
+                $qb
+                    ->andWhere('fp.startsAt BETWEEN :begin AND :end')
+                    ->setParameter('begin', $begin)
+                    ->setParameter('end', $end)
+                ;
+            }
+        }
+
+        if ($filmId) {
+            $qb->join('fp.programmationFilms', 'pf')
+                ->andWhere('pf.film = :film_id')
+                ->setParameter(':film_id', $filmId)
+            ;
+        }
+
+        $this->addMasterQueries($qb, 'fp', $festival, false);
+
+        return $qb;
+    }
     /**
      * @param FilmFilm $film
      * @return array

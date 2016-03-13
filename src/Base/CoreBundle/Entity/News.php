@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Application\Sonata\UserBundle\Entity\User;
 use Base\AdminBundle\Component\Admin\Export;
 use \DateTime;
 
@@ -15,6 +16,7 @@ use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 
 use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Discriminator;
 use JMS\Serializer\Annotation\Since;
 use JMS\Serializer\Annotation\VirtualProperty;
 
@@ -98,7 +100,7 @@ abstract class News implements TranslateMainInterface
      *
      * @ORM\Column(type="string", nullable=true)
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "film_show"})
      */
     private $signature;
 
@@ -190,7 +192,7 @@ abstract class News implements TranslateMainInterface
     /**
      * ArrayCollection
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "film_show"})
      */
     protected $translations;
 
@@ -263,7 +265,7 @@ abstract class News implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "film_show"})
      */
     public function getNewsType()
     {

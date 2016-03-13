@@ -16,7 +16,7 @@ use JMS\Serializer\Annotation\Since;
  * FilmSelection
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmSelectionRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FilmSelection implements TranslateMainInterface
@@ -31,7 +31,7 @@ class FilmSelection implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      *
-     * @Groups({"film_selection_list", "film_selection_show", "film_list", "film_show"})})
+     * @Groups({"film_selection_list", "film_selection_section_list", "film_selection_show", "film_list", "film_show"})})
      */
     private $id;
 
@@ -40,7 +40,7 @@ class FilmSelection implements TranslateMainInterface
      *
      * @ORM\Column(type="string", length=255)
      *
-     * @Groups({"film_selection_list", "film_selection_show", "film_list", "film_show"})
+     * @Groups({"film_selection_list", "film_selection_section_list", "film_selection_show", "film_list", "film_show"})
      */
     private $codeSignup;
 
@@ -49,7 +49,7 @@ class FilmSelection implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="FilmSelectionSection", mappedBy="selection", cascade={"persist"})
      *
-     * @Groups({"film_selection_list", "film_selection_show"})
+     * @Groups({"film_selection_list", "film_selection_section_list", "film_selection_show"})
      */
     private $sections;
     
@@ -58,7 +58,7 @@ class FilmSelection implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="FilmSelectionSubsection", mappedBy="selection", cascade={"persist"})
      *
-     * @Groups({"film_selection_list", "film_selection_show"})
+     * @Groups({"film_selection_list", "film_selection_section_list", "film_selection_show"})
      */
     private $subsections;
     

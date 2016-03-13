@@ -69,7 +69,7 @@ class FilmJuryController extends FOSRestController
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
-        $groups = array('jury_list', 'time');
+        $groups = array('jury_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
@@ -131,7 +131,7 @@ class FilmJuryController extends FOSRestController
         $projection = $em->getRepository($this->repository)->getApiJury($id, $festival);
 
         // set context view
-        $groups = array('jury_show', 'time');
+        $groups = array('jury_show');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
