@@ -35,7 +35,7 @@ class MediaImageTranslation implements TranslateChildInterface
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      * @Assert\Valid()
      *
-     * @Groups({"news_list", "news_show", "film_show", "event_list", "event_show"})
+     * @Groups({"news_list", "news_show", "film_show", "event_list", "event_show", "home"})
      */
     private $file;
 
@@ -43,7 +43,7 @@ class MediaImageTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"news_list", "news_show", "film_show", "event_list", "event_show"})
+     * @Groups({"news_list", "news_show", "film_show", "event_list", "event_show", "home"})
      */
     private $legend;
 
@@ -51,7 +51,7 @@ class MediaImageTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"news_list", "news_show", "film_show", "event_list", "event_show"})
+     * @Groups({"news_list", "news_show", "film_show", "event_list", "event_show", "home"})
      */
     private $alt;
 
@@ -59,7 +59,7 @@ class MediaImageTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"news_list", "news_show", "film_show", "event_list", "event_show"})
+     * @Groups({"news_list", "news_show", "film_show", "event_list", "event_show", "home"})
      */
     private $copyright;
 

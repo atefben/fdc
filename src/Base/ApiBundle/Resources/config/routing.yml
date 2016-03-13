@@ -18,6 +18,10 @@ film_person:
     type:       rest
     resource:   Base\ApiBundle\Controller\FilmPersonController
 
+film_home:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\HomeController
+
 film_jury:
     type:       rest
     resource:   Base\ApiBundle\Controller\FilmJuryController
