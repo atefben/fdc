@@ -56,11 +56,13 @@
             if ($('.invalid').length || empty) {
                 return false;
             } else {
+                var u = $that.closest('.popin-mail').hasClass('media') ? GLOBALS.urls.shareEmailMediaUrl : GLOBALS.urls.shareEmailUrl;
+
                 $.ajax({
                     type     : "POST",
                     dataType : "json",
                     cache    : false,
-                    url      : GLOBALS.urls.shareEmailUrl,
+                    url      : u,
                     data     : $that.closest('.popin-mail').find('form#form').serialize(),
                     success: function (data) {
                         if (data.success == false) {
