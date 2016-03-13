@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation\Since;
  * FilmSelectionSection
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmSelectionSectionRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FilmSelectionSection implements TranslateMainInterface
@@ -33,7 +33,7 @@ class FilmSelectionSection implements TranslateMainInterface
      * @ORM\Column(type="string", length=255)
      * @ORM\Id
      *
-     * @Groups({"film_show", "film_list", "film_selection_list", "film_selection_show"})
+     * @Groups({"film_show", "film_list", "film_selection_list", "film_selection_section_list", "film_selection_show"})
      */
     private $id;
     
@@ -42,7 +42,7 @@ class FilmSelectionSection implements TranslateMainInterface
      *
      * @ORM\Column(type="integer", nullable=true)
      *
-     * @Groups({"film_show", "film_list", "film_selection_list", "film_selection_show"})
+     * @Groups({"film_show", "film_list", "film_selection_list", "film_selection_section_list", "film_selection_show"})
      */
     private $position;
     
@@ -68,7 +68,7 @@ class FilmSelectionSection implements TranslateMainInterface
     /**
      * @var ArrayCollection
      *
-     * @Groups({"film_show", "film_list", "film_selection_list", "film_selection_show"})
+     * @Groups({"film_show", "film_list", "film_selection_list", "film_selection_section_list", "film_selection_show"})
      */
     protected $translations;
 

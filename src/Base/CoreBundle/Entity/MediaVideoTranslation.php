@@ -45,7 +45,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"trailer_show", "web_tv_list", "web_tv_show", "film_show"})
+     * @Groups({"news_list", "news_show", "trailer_show", "web_tv_list", "web_tv_show", "film_show"})
      */
     private $title;
 
@@ -54,7 +54,9 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      * @Groups({
-     *  "film_show"
+     *     "film_show",
+     *     "news_list",
+     *     "news_show",
      * })
      */
     private $imageAmazonUrl;
@@ -92,7 +94,9 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      * @Groups({
-     *  "film_show"
+     *     "film_show",
+     *     "news_list",
+     *     "news_show"
      * })
      */
     private $mp4Url;
@@ -102,7 +106,9 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      * @Groups({
-     *  "film_show"
+     *     "film_show",
+     *     "news_list",
+     *     "news_show"
      * })
      */
     private $webmUrl;

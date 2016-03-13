@@ -30,7 +30,7 @@ class FilmSelectionSectionTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"film_list", "film_show", "film_selection_list", "film_selection_show"})
+     * @Groups({"film_list", "film_show", "film_selection_list", "film_selection_section_list", "film_selection_show"})
      */
     protected $name;
 
