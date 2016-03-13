@@ -5,8 +5,9 @@
     <div id="main" class=" webtv webtv-ba-video loading">
         <div class="container-webtv-ba-video">
             <div class="title-container">
-                <a href="{{ path('fdc_event_television_trailers') }}" class="bandeannone"><i
-                            class="icon icon_flecheGauche"></i>{{ 'trailer.btn.retourbandeannonces'|trans }}</a>
+                <a href="{{ path('fdc_event_television_trailers') }}" class="bandeannone">
+                    <i class="icon icon_flecheGauche"></i>{{ 'trailer.btn.retourbandeannonces'|trans }}
+                </a>
                 <h1 class="title">{{ film|trans_fallback('title')?:film.titleVo }}</h1>
             </div>
             <section>
@@ -29,11 +30,11 @@
                                 {%- if first == false -%},{%- endif -%}{"sources":[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}],"vid":"{{ video.id }}","name":"{{ video|trans_fallback('title') }}","image":"{{ videoImage }}","category":"{{ video.theme }}","date":"{{ video.publishedAt|date('d.m.Y') }}","hour":"{{ video.publishedAt|date('H:i') }}"}{% set first = false %}{%- endif -%}
                             {%- endfor -%}]'
                          data-file=""
-                            {%- if videos[0].image -%}
-                        data-img="{%- path videos[0].image|trans_fallback('file'), '1950x1232' -%}"
-                    {%- elseif videos[0].image|trans_fallback('imageAmazonUrl') -%}
-                        data-img="{{ s3_server_global ~ videos[0].image|trans_fallback('imageAmazonUrl') }}"
-                            {%- endif -%}>
+                         {%- if videos[0].image -%}
+                         data-img="{%- path videos[0].image|trans_fallback('file'), '1950x1232' -%}"
+                         {%- elseif videos[0].image|trans_fallback('imageAmazonUrl') -%}
+                         data-img="{{ s3_server_global ~ videos[0].image|trans_fallback('imageAmazonUrl') }}"
+                         {%- endif -%}>
                         <div id="video-player" class="video-player-pl">
                         </div>
                         <div class="video-overlay"></div>
@@ -82,8 +83,7 @@
                             <div class="contain-info">
                                 {% for showing in filmShowings %}
                                     <div class="infos">
-                                        <p>{{ showing.type }} <span
-                                                    class="date">{{ showing.date|date('d.m.y') }} {{ showing.date|date('H:i') }}</span>
+                                        <p>{{ showing.type }} <span class="date">{{ showing.date|date('d.m.y') }} {{ showing.date|date('H:i') }}</span>
                                         </p>
                                         <span class="where">{{ showing.place }}</span>
                                         {% if loop.last == false %}
@@ -142,13 +142,10 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 {% endfor %}
             </div>
         </div>
-
         {% if next %}
             <div class="bandeau-list vCenter push-footer bandeau-list-footer">
                 <div class="bandeau-list-img vCenterKid"{% if posterNext %} style="background-image:url('{%- path posterNext, posterNextFormat -%}');"{% endif %}>
@@ -170,33 +167,31 @@
         {% set author = author ~ director.fullName %}
     {%- endfor -%}
     {{ render(controller('FDCEventBundle:Global:shareEmail',
-    {'section': film.theme,
-        'detail': author,
-        'title': film|trans_fallback('title'),
-        'description': film|trans_fallback('synopsis')
-    })) }}
+        {'section': film.theme,
+         'detail': author,
+         'title': film|trans_fallback('title'),
+         'description': film|trans_fallback('synopsis')
+        })) 
+    }}
 
-    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
-    {"breadcrumb":
-    [
-    {
-    "name" : 'breadcrumb.webtv.home'|trans,
-    "url"  : path('fdc_event_news_index')
-    },
-    {
-    "name" : 'breadcrumb.webtv.live'|trans,
-    "url"  : path('fdc_event_television_live')
-    },
-    {
-    "name" : 'breadcrumb.webtv.trailers'|trans,
-    "url"  : path('fdc_event_television_trailers')
-    },
-    {
-    "name" : film|trans_fallback('title'),
-    "url"  : ''
-    }
-    ]
-    } %}
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+        {
+            "name" : 'breadcrumb.webtv.home'|trans,
+            "url"  : path('fdc_event_news_index')
+        },
+        {
+            "name" : 'breadcrumb.webtv.live'|trans,
+            "url"  : path('fdc_event_television_live')
+        },
+        {
+            "name" : 'breadcrumb.webtv.trailers'|trans,
+            "url"  : path('fdc_event_television_trailers')
+        },
+        {
+            "name" : film|trans_fallback('title'),
+            "url"  : ''
+        }
+    ]} %}
 {% endblock body %}
 
 {% block bandeauVideo %}

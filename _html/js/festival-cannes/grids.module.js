@@ -425,7 +425,7 @@ $(document).ready(function () {
               category    = $(e.target).find('.category').text(),
               date        = $(e.target).find('.date').text(),
               hour        = $(e.target).find('.hour').text(),
-              text        = $(e.target).find('p').data('title');
+              name        = $(e.target).find('p').data('title');
 
           videoPopin.playlistItem($(this).index()-1);
           sliderChannelsVideo.trigger('to.owl.carousel',[$(this).index()-1,1,true]);
@@ -440,7 +440,7 @@ $(document).ready(function () {
           $('#video-player-popin + .top-bar').find('.buttons .facebook').attr('href', fbHref);
           // CUSTOM LINK TWITTER
           var twHref   = twitterLink;
-          twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent(text+" "+shareUrl));
+          twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name+" "+shareUrl));
           $('#video-player-popin + .top-bar').find('.buttons .twitter').attr('href', twHref);
           // CUSTOM LINK COPY
           $('#video-player-popin + .top-bar').find('.buttons .link').attr('href', encodeURIComponent(shareUrl));
@@ -455,12 +455,19 @@ $(document).ready(function () {
           $('#video-player-popin + .top-bar').find('.info .category').text(category);
           $('#video-player-popin + .top-bar').find('.info .date').text(date);
           $('#video-player-popin + .top-bar').find('.info .hour').text(hour);
-          $('#video-player-popin + .top-bar').find('.info p').text(text);
+          $('#video-player-popin + .top-bar').find('.info p').text(name);
+
+          launchPopinMedia({
+            'type'     : "video",
+            'category' : category,
+            'date'     : date,
+            'title'    : name
+          }, encodeURIComponent(shareUrl));
 
           $popinVideo.find('.popin-info .category').text(category);
           $popinVideo.find('.popin-info .date').text(date);
           $popinVideo.find('.popin-info .hour').text(hour);
-          $popinVideo.find('.popin-info p').text(text);
+          $popinVideo.find('.popin-info p').text(name);
           $popinVideo.addClass('video-player show loading');
           $('.ov').addClass('show');
         });

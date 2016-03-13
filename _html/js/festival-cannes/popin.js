@@ -1,30 +1,6 @@
-function initPopinMail(){
-  $('.button.email').on('click touchstart', function(e) {
-    e.preventDefault();
-      $('.popin-mail').addClass('visible-popin');
-      $("#main").addClass('overlay-popin');
-  });
-
-  $(document).on('click', function (e) {
-    var $element= $(e.target);
-    if($element.hasClass('visible-popin')) {
-
-    } else {
-      var $isPopin = $element.closest('.visible-popin');
-      var isButton = $element.hasClass('button');
-
-      if($isPopin.length || isButton) {
-
-      } else {
-          $('.popin-mail').removeClass('visible-popin');
-          $("#main").removeClass('overlay-popin');
-          $('footer').removeClass('overlay');
-      }
-    }
-  });
-
+function initPopinMail(cls){
   // check that fields are not empty
-  $('.popin-mail input[type="text"], textarea').on('input', function() {
+  $(cls+' input[type="text"], textarea').on('input', function() {
     var input = $(this);
     var is_name = input.val();
 
@@ -51,7 +27,7 @@ function initPopinMail(){
   });
 
   // check valid email address
-  $('.popin-mail input[type="email"]').on('input', function() {
+  $(cls+' input[type="email"]').on('input', function() {
     var input=$(this);
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     var is_email=re.test(input.val());
@@ -81,7 +57,7 @@ function initPopinMail(){
   });
 
   // on submit : check if there are errors in the form
-  $('.popin-mail form').on('submit', function() {
+  $(cls+' form').on('submit', function() {
     var empty = false;
 
     if($('select').val() == 'default') {
@@ -90,14 +66,14 @@ function initPopinMail(){
       $('.select').removeClass('invalid');
     }
 
-    $('.popin-mail input[type="text"], .popin-mail input[type="email"], .popin-mail textarea').each(function() {
+    $(cls+' input[type="text"], '+cls+' input[type="email"], '+cls+' textarea').each(function() {
       if($(this).val() == '') {
         empty = true;
       }
     });
 
     if(empty) {
-      $('.popin-mail input[type="email"], .popin-mail input[type="text"], textarea').trigger('input');
+      $(cls+' input[type="email"], '+cls+' input[type="text"], '+cls+' textarea').trigger('input');
     }
 
     if($('.invalid').length || empty) {
@@ -107,7 +83,7 @@ function initPopinMail(){
       $('#form').remove();
       $('.info-popin').remove();
       $('.contain-popin').append('<div class="valid">'+GLOBALS.texts.popin.valid+'</div>');
-      $('.popin-mail').css('height','31%');
+      $(cls).css('height','31%');
 
       return false;
     }
@@ -115,8 +91,31 @@ function initPopinMail(){
 }
 
 $(document).ready(function() {
-  if($('.popin-mail').length) {
-      initPopinMail();
+  if($('.popin-mail:not(.media)').length) {
+    initPopinMail('.popin-mail:not(.media)');
+
+    $('.button.email').on('click touchstart', function(e) {
+      e.preventDefault();
+      $('.popin-mail:not(.media)').addClass('visible-popin');
+      $("#main").addClass('overlay-popin');
+      
+      $(document).on('click touchstart', function (e) {
+        var $element= $(e.target);
+        console.log(!$element.hasClass('visible-popin'));
+        if(!$element.hasClass('visible-popin')) {
+          var $isPopin = $element.closest('.visible-popin');
+          var isButton = $element.hasClass('button');
+
+          if(!$isPopin.length && !isButton) {
+            $('.popin-mail:not(.media)').removeClass('visible-popin');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+
+            $(document).off('click touchstart');
+          }
+        }
+      });
+    });
   }
 
   linkPopinInit();
@@ -187,6 +186,44 @@ function linkPopinInit(link, cls) {
           $('#share-box').remove();
         });
       }, 3000);
+    });
+  }
+}
+
+function launchPopinMedia(data, url) {
+  url = url || document.location.href;
+
+  if($('.popin-mail.media').length) {
+    initPopinMail('.popin-mail.media');
+
+    $('.popin-mail.media').find('.contain-popin .theme-article').text(data['category']);
+    $('.popin-mail.media').find('.contain-popin .date-article').text(data['date']);
+    $('.popin-mail.media').find('.contain-popin .title-article').text(data['title']);
+    $('.popin-mail.media').find('form #contact_section').val(data['category']);
+    $('.popin-mail.media').find('form #contact_detail').val(data['date']);
+    $('.popin-mail.media').find('form #contact_title').val(data['title']);
+    $('.popin-mail.media').find('form #contact_url').val(url);
+
+    console.log('lol2');
+
+    $('.popin-mail.media').addClass('visible-popin');
+    $("#main").addClass('overlay-popin');
+    
+    $(document).on('click touchstart', function (e) {
+      var $element= $(e.target);
+      console.log(!$element.hasClass('visible-popin'));
+      if(!$element.hasClass('visible-popin')) {
+        var $isPopin = $element.closest('.visible-popin');
+        var isButton = $element.hasClass('button');
+
+        if(!$isPopin.length && !isButton) {
+          $('.popin-mail.media').removeClass('visible-popin');
+          $("#main").removeClass('overlay-popin');
+          $('footer').removeClass('overlay');
+
+          $(document).off('click touchstart');
+        }
+      }
     });
   }
 }

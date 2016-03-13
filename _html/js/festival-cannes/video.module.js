@@ -138,8 +138,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     // CUSTOM LINK COPY
     $topBar.find('.buttons .link').attr('href', encodeURIComponent(shareUrl));
     $topBar.find('.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
-    // CUSTOM LINK MAIL
-    $topBar.find('.buttons .email').attr('href', $container.data('email'));
     linkPopinInit(encodeURIComponent(shareUrl), '#'+vid.id+' + .'+$topBar[0].className.replace(' ','.')+' .buttons .link');
 
     $topBar.find('.buttons .facebook').on('click',function(){
@@ -149,6 +147,20 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     $topBar.find('.buttons .twitter').on('click', function(){
         window.open(this.href,'','width=700,height=500');
         return false;
+    });
+
+    // CUSTOM LINK MAIL
+    // $topBar.find('.buttons .email').attr('href', $container.data('email'));
+    $topBar.find('.buttons .email').on('click', function(e) {
+        e.preventDefault();
+        removeFullscreen();
+
+        launchPopinMedia({
+            'type'     : "video",
+            'category' : $topBar.find('.info .category').text(),
+            'date'     : $topBar.find('.info .date').text(),
+            'title'    : $topBar.find('.info p').text()
+        }, encodeURIComponent(shareUrl));
     });
 
     function updateVolume(x, vol) {
@@ -179,6 +191,15 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             playerInstance.setMute(true);
             $sound.find('.sound-seek').css('width','0%');
         }
+    }
+
+    function removeFullscreen() {
+        $container.find('.channels-video').removeClass('active');
+        $container.find('.jwplayer').removeClass('overlay-channels');
+        fullScreenApi.cancelFullScreen();
+        $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
+        playerInstance.resize('100%','100%');
+        mouseMoving(false);
     }
 
     function externeControl() {
@@ -220,6 +241,13 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         // CUSTOM LINK COPY
         $topBar.find('.buttons .link').attr('href', encodeURIComponent(shareUrl));
         $topBar.find('.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
+
+        launchPopinMedia({
+            'type'     : "video",
+            'category' : $playlist[index].category,
+            'date'     : $playlist[index].date,
+            'title'    : $playlist[index].name
+        }, encodeURIComponent(shareUrl));
 
         if (sc) {
             $(sc).find('.buttons .facebook').attr('data-href', fbHref);

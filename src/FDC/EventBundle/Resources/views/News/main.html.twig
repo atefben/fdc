@@ -199,10 +199,15 @@
     'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
    }))
 }}
-
-{% include "FDCEventBundle:Global:breadcrumb.html.twig" with
-{"breadcrumb":
-[
+{{ render(controller('FDCEventBundle:Global:shareEmailMedia',
+    {'section': article.theme,
+     'detail': article.publishedAt|date('d.m.y'),
+     'title': article.title,
+     'description': article.introduction,
+     'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    }))
+}}
+{% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
     {
         "name" : 'header.mainnav.nav.jourapresjour'|trans ,
         "url"  : path('fdc_event_news_index')
@@ -215,6 +220,5 @@
         "name" : news|trans_fallback('title') ,
         "url"  : ''
     }
-]
-} %}
+]} }
 {% endblock %}

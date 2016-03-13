@@ -150,6 +150,13 @@ $(document).ready(function() {
           $('.popin-video').find('.popin-buttons.buttons .link').attr('href', encodeURIComponent(shareUrl));
           $('.popin-video').find('.popin-buttons.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
 
+          launchPopinMedia({
+            'type'     : "video",
+            'category' : category,
+            'date'     : date,
+            'title'    : text
+          }, encodeURIComponent(shareUrl));
+
           $popinVideo.find('.popin-info .category').text(category);
           $popinVideo.find('.popin-info .date').text(date);
           $popinVideo.find('.popin-info .hour').text(hour);
@@ -333,6 +340,13 @@ $(document).ready(function() {
           $('.popin-video').find('.popin-buttons.buttons .twitter').attr('href', twHref);
           $('.popin-video').find('.popin-buttons.buttons .link').attr('href', encodeURIComponent(shareUrl));
           $('.popin-video').find('.popin-buttons.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
+
+          launchPopinMedia({
+            'type'     : "video",
+            'category' : category,
+            'date'     : date,
+            'title'    : text
+          }, encodeURIComponent(shareUrl));
 
           $popinVideo.find('.popin-info .category').text(category);
           $popinVideo.find('.popin-info .date').text(date);
