@@ -89,6 +89,9 @@
         "patches": {
             "a2lix/translation-form-bundle": {
                 "Fix Constraints only on required locales": "src/Base/CoreBundle/Resources/patches/a2lix-constraints-only-required-locales.patch"
+            },
+            "jms/serializer": {
+                    "Fix jms serializer format": "src/Base/CoreBundle/Resources/patches/jms-serializer.patch"
             }
         }
     }

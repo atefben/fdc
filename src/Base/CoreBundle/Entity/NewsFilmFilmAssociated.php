@@ -40,6 +40,7 @@ class NewsFilmFilmAssociated
      *
      * @ORM\ManyToOne(targetEntity="News", inversedBy="associatedFilms")
      * @Groups({"film_show"})
+     *
      */
     protected $news;
 
@@ -47,6 +48,11 @@ class NewsFilmFilmAssociated
      * @var FilmFilm
      *
      * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="associatedNews")
+     * * @Groups({
+     *     "film_show",
+     *     "news_list",
+     *     "news_show"
+     * })
      */
     protected $association;
 

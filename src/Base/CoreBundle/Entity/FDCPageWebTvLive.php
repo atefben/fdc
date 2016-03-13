@@ -15,6 +15,7 @@ use JMS\Serializer\Annotation\Since;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * FDCPageWebTvLive
  *
@@ -43,6 +44,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"web_tv_list"})
      */
     private $live;
 
@@ -50,6 +52,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean")
+     * @Groups({"web_tv_list"})
      */
     private $doNotDisplayWebTvArea = false;
 
@@ -57,6 +60,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean")
+     * @Groups({"web_tv_list"})
      */
     private $doNotDisplayTrailerArea = false;
 
@@ -64,6 +68,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean")
+     * @Groups({"web_tv_list"})
      */
     private $doNotDisplayLastVideosArea = false;
 
@@ -72,7 +77,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"web_tv_list"})
      */
     private $image;
 
@@ -80,12 +85,14 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @var FDCPageWebTvLiveWebTvAssociated
      * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveWebTvAssociated", mappedBy="FDCPageWebTvLive", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
+     * @Groups({"web_tv_list"})
      */
     private $associatedWebTvs;
 
     /**
      * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveMediaVideoAssociated", mappedBy="FDCPageWebTvLive", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
+     * @Groups({"web_tv_list"})
      */
     private $associatedMediaVideos;
 
@@ -93,6 +100,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @var ArrayCollection
      *
      * @Assert\Valid()
+     * @Groups({"web_tv_list"})
      */
     protected $translations;
 

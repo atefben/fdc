@@ -11,6 +11,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 
+use FOS\RestBundle\View\View;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use JMS\Serializer\SerializationContext;
 
@@ -24,6 +25,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 class NewsController extends FOSRestController
 {
     private $repository = 'BaseCoreBundle:News';
+
     /**
      * Return an array of news, can be filtered with page / offset parameters
      *
@@ -58,9 +60,25 @@ class NewsController extends FOSRestController
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
         $lang = $paramFetcher->get('lang');
 
-        //create query
-        $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository('BaseCoreBundle:News')->getApiNews($festival, new DateTime(), $lang);
+        $settings = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:Settings')
+            ->findOneBySlug('fdc-year');
+
+        if ($settings === null) {
+            throw $this->createNotFoundException();
+        }
+
+        $start = $settings->getFestival()->getFestivalStartsAt();
+        $end = $settings->getFestival()->getFestivalEndsAt();
+        $now = new \DateTime();
+
+            $query = $this
+                ->getDoctrine()->getManager()
+                ->getRepository('BaseCoreBundle:News')
+                ->getApiNews($festival, $lang, $start, $end);
+
 
         // TODO: filter MediaAudio/ MediaVIdeo with $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
         // cant use at the moment because we use the sql query to create the pagination
@@ -111,11 +129,12 @@ class NewsController extends FOSRestController
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
      *
+     * @param ParamFetcher $paramFetcher
      * @return View
      */
-    public function getNewAction(Paramfetcher $paramFetcher, $id)
+    public function getNewAction(ParamFetcher $paramFetcher, $id)
     {
-        // coremanager shortcut
+        // core manager shortcut
         $coreManager = $this->get('base.api.core_manager');
 
         // get festival year / version
@@ -129,12 +148,15 @@ class NewsController extends FOSRestController
 
         if ($entity !== null) {
             // add query for audio / video encoder
+            $array = array();
             if (strpos(get_class($entity), 'NewsAudio') !== false) {
                 $array = $this->removeUnpublishedNewsAudioVideo(array($entity), $lang);
             } else if (strpos(get_class($entity), 'NewsVideo') !== false) {
                 $array = $this->removeUnpublishedNewsAudioVideo(array($entity), $lang);
             }
-            $entity = (count($array) == 0) ? null : $array[0];
+            if (count($array)) {
+                $entity = $array[0];
+            }
         }
 
         // set context view

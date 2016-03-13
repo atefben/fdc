@@ -14,6 +14,8 @@ use Base\CoreBundle\Util\Time;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use JMS\Serializer\Annotation\Groups;
+
 /**
  * NewsNewsAssociated
  *
@@ -45,6 +47,7 @@ class FDCPageWebTvLiveWebTvAssociated
      * @var WebTv
      *
      * @ORM\ManyToOne(targetEntity="WebTv", inversedBy="associatedWebTvs")
+     * @Groups({"web_tv_list"})
      */
     protected $association;
 

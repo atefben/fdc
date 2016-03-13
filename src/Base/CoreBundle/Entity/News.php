@@ -130,21 +130,18 @@ abstract class News implements TranslateMainInterface
     /**
      * @ORM\ManyToOne(targetEntity="FilmFilm")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedFilm;
 
     /**
      * @ORM\ManyToOne(targetEntity="Event")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedEvent;
 
     /**
      * @ORM\OneToMany(targetEntity="NewsFilmProjectionAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $associatedProjections;
 
@@ -161,7 +158,6 @@ abstract class News implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
-     * @Groups({"news_list", "news_show"})
      */
     private $widgets;
 
@@ -177,7 +173,7 @@ abstract class News implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show"})
      */
     private $publishedAt;
 
@@ -185,7 +181,7 @@ abstract class News implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show"})
      */
     private $publishEndedAt;
 

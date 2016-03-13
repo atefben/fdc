@@ -57,6 +57,8 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "film_show",
      *     "news_list",
      *     "news_show",
+     *     "web_tv_list",
+     *     "web_tv_show"
      * })
      */
     private $imageAmazonUrl;
@@ -96,7 +98,9 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @Groups({
      *     "film_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "web_tv_list",
+     *     "web_tv_show"
      * })
      */
     private $mp4Url;
@@ -108,7 +112,9 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @Groups({
      *     "film_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "web_tv_list",
+     *     "web_tv_show"
      * })
      */
     private $webmUrl;
@@ -117,6 +123,10 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @var Theme
      *
      * @ORM\ManyToOne(targetEntity="Theme")
+     * @Groups({
+     *     "web_tv_list",
+     *     "web_tv_show"
+     * })
      */
     private $theme;
 

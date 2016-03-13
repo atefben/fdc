@@ -13,6 +13,7 @@ use Base\CoreBundle\Util\Time;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * FDCPageWebTvLiveMediaVideoAssociated
@@ -45,6 +46,7 @@ class FDCPageWebTvLiveMediaVideoAssociated
      * @var MediaVideo
      *
      * @ORM\ManyToOne(targetEntity="MediaVideo")
+     * @Groups({"web_tv_list"})
      */
     protected $association;
 

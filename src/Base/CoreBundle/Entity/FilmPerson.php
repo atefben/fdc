@@ -49,7 +49,9 @@ class FilmPerson implements TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
      * })
      */
     private $id;
@@ -77,7 +79,9 @@ class FilmPerson implements TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
      * })
      */
     private $lastname;
@@ -97,7 +101,9 @@ class FilmPerson implements TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
      * })
      */
     private $firstname;
@@ -117,7 +123,9 @@ class FilmPerson implements TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
      * })
      */
     private $asianName;
@@ -135,7 +143,9 @@ class FilmPerson implements TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
      * })
      */
     private $nationality;
@@ -153,7 +163,9 @@ class FilmPerson implements TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
      * })
      */
     private $nationality2;
@@ -163,19 +175,6 @@ class FilmPerson implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="FilmFunction", inversedBy="persons")
      *
-     * @Groups({
-     *     "person_list",
-     *     "person_show",
-     *     "film_list",
-     *     "film_show",
-     *     "jury_list",
-     *     "jury_show",
-     *     "award_list",
-     *     "award_show",
-     *     "projection_list",
-     *     "projection_show"
-     * })
-     */
     private $function;
     
     /**

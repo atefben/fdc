@@ -47,7 +47,9 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
      * })
      * 
      */
@@ -73,7 +75,9 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "film_show"
+     *     "film_show",
+     *     "news_list",
+     *     "news_show"
      * })
      * 
      */
@@ -100,10 +104,16 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="string", length=255)
      *
      * @Groups({
-     *  "trailer_list", "trailer_show",
-     *  "film_list", "film_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
      * })
      * 
      */
@@ -115,8 +125,16 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Groups({
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
      * })
      * 
      */
@@ -128,10 +146,16 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="string", length=4, nullable=true)
      *
      * @Groups({
-     *  "film_list", "film_show",
-     *  "trailer_list", "trailer_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
      * })
      * 
      */
@@ -143,10 +167,16 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="decimal", precision=22, scale=2)
      *
      * @Groups({
-     *  "film_list", "film_show",
-     *  "trailer_list", "trailer_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
      * })
      * 
      */
@@ -166,9 +196,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Groups({
-     *  "trailer_list", "trailer_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show"
      * })
      * 
      */
@@ -180,9 +215,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="integer", nullable=true)
      *
      * @Groups({
-     *  "trailer_list", "trailer_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show"
      * })
      */
     private $galaId;
@@ -193,9 +233,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Groups({
-     *  "trailer_list", "trailer_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show"
      * })
      * 
      */
@@ -216,7 +261,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="FilmSelectionSection", inversedBy="films", cascade={"persist"})
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({"film_list", "film_show", "news_list", "news_show"})
      *
      */
     private $selectionSection;
@@ -234,7 +279,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="film", cascade={"all"})
      *
-     * @Groups({"film_list", "film_show", "projection_list", "projection_show"})
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
+     * })
      */
     private $persons;
 
@@ -295,8 +347,11 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @var ArrayCollection
      *
      * @Groups({
-     *  "trailer_list", "trailer_show",
-     *  "film_list", "film_show"
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show",
+     *     "news_show"
      * })
      * 
      */
@@ -323,7 +378,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="NewsFilmFilmAssociated", mappedBy="association", cascade={"all"})
      *
-     * @Groups({"news_list", "news_show", "film_show"})
+     * @Groups({"film_show"})
      */
     private $associatedNews;
 
