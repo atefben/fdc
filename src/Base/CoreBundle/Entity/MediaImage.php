@@ -18,7 +18,7 @@ use JMS\Serializer\Annotation\Since;
  * MediaImage
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\MediaImageRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class MediaImage extends Media

@@ -65,3 +65,7 @@ social_wall_instagram:
 social_wall_twitter:
     type:       rest
     resource:   Base\ApiBundle\Controller\SocialWallTwitterController
+
+today_images:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\TodayImagesController

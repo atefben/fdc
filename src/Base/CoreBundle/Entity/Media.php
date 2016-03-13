@@ -119,7 +119,8 @@ abstract class Media implements TranslateMainInterface
      *     "film_show",
      *     "event_list",
      *     "event_show",
-     *     "home"
+     *     "home",
+     *     "today_images"
      * })
      *
      * @Assert\Valid()
