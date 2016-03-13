@@ -44,8 +44,6 @@ class FilmPerson implements TranslateMainInterface
      *     "person_show",
      *     "film_list",
      *     "film_show",
-     *     "jury_list",
-     *     "jury_show",
      *     "award_list",
      *     "award_show",
      *     "projection_list",
@@ -138,8 +136,6 @@ class FilmPerson implements TranslateMainInterface
      *     "person_show",
      *     "film_list",
      *     "film_show",
-     *     "jury_list",
-     *     "jury_show",
      *     "award_list",
      *     "award_show",
      *     "projection_list",
@@ -158,8 +154,6 @@ class FilmPerson implements TranslateMainInterface
      *     "person_show",
      *     "film_list",
      *     "film_show",
-     *     "jury_list",
-     *     "jury_show",
      *     "award_list",
      *     "award_show",
      *     "projection_list",
@@ -180,18 +174,6 @@ class FilmPerson implements TranslateMainInterface
     /**
      * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="persons")
      *
-     * @Groups({
-     *     "person_list",
-     *     "person_show",
-     *     "film_list",
-     *     "film_show",
-     *     "jury_list",
-     *     "jury_show",
-     *     "award_list",
-     *     "award_show",
-     *     "projection_list",
-     *     "projection_show"
-     * })
      */
     private $address;
 

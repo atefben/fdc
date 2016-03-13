@@ -23,6 +23,7 @@ use Symfony\Component\HttpFoundation\Request;
 class FilmJuryController extends FOSRestController
 {
     private $repository = 'BaseCoreBundle:FilmJury';
+
     /**
      * Return an array of juries, can be filtered with page / offset parameters
      *
@@ -64,7 +65,7 @@ class FilmJuryController extends FOSRestController
         // create query
         $em = $this->getDoctrine()->getManager();
         $query = $em->getRepository($this->repository)->getApiJuries($festival, $type);
-        
+
         // get items
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
@@ -73,15 +74,15 @@ class FilmJuryController extends FOSRestController
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
-        
+
         // create view
         $view = $this->view($items, 200);
         $view->setSerializationContext($context);
-         
+
         return $view;
     }
 
-    
+
     /**
      * Return a single jury by $id
      *
@@ -139,7 +140,7 @@ class FilmJuryController extends FOSRestController
         // create view
         $view = $this->view($projection, 200);
         $view->setSerializationContext($context);
-         
+
         return $view;
     }
 
