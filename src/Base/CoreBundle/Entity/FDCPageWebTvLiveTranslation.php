@@ -13,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+use JMS\Serializer\Annotation\Groups;
+
 /**
  * FDCPageWebTvLiveTranslation
  *
@@ -31,6 +33,11 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Groups({
+     *     "web_tv_list",
+     *     "web_tv_show"
+     * })
      */
     private $title;
 
@@ -38,6 +45,10 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({
+     *     "web_tv_list",
+     *     "web_tv_show"
+     * })
      */
     private $firstSubHead;
 
@@ -45,6 +56,10 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({
+     *     "web_tv_list",
+     *     "web_tv_show"
+     * })
      */
     private $secondSubHead;
 
@@ -52,6 +67,10 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({
+     *     "web_tv_list",
+     *     "web_tv_show"
+     * })
      */
     private $directUrl;
 
@@ -59,6 +78,10 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({
+     *     "web_tv_list",
+     *     "web_tv_show"
+     * })
      */
     private $teaserUrl;
 

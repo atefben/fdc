@@ -34,7 +34,14 @@ class FilmFilmTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"trailer_list", "trailer_show", "film_list", "film_show"})
+     * @Groups({
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show",
+     *     "news_list",
+     *     "news_show"
+     * })
      */
     private $title;
     
@@ -43,7 +50,12 @@ class FilmFilmTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"trailer_list", "trailer_show", "film_list", "film_show"})
+     * @Groups({
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show"
+     * })
      */
     private $dialog;
 
@@ -52,7 +64,12 @@ class FilmFilmTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"trailer_list", "trailer_show", "film_list", "film_show"})
+     * @Groups({
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show"
+     * })
      */
     private $synopsis;
     
@@ -61,7 +78,12 @@ class FilmFilmTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"trailer_list", "trailer_show", "film_list", "film_show"})
+     * @Groups({
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show"
+     * })
      */
     private $programSection;
 

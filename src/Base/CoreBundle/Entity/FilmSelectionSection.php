@@ -33,7 +33,15 @@ class FilmSelectionSection implements TranslateMainInterface
      * @ORM\Column(type="string", length=255)
      * @ORM\Id
      *
-     * @Groups({"film_show", "film_list", "film_selection_list", "film_selection_section_list", "film_selection_show"})
+     * @Groups({
+     *     "film_show",
+     *     "film_list",
+     *     "film_selection_list",
+     *     "film_selection_section_list",
+     *     "film_selection_show",
+     *     "news_list",
+     *     "news_show"
+     * })
      */
     private $id;
     
@@ -42,7 +50,15 @@ class FilmSelectionSection implements TranslateMainInterface
      *
      * @ORM\Column(type="integer", nullable=true)
      *
-     * @Groups({"film_show", "film_list", "film_selection_list", "film_selection_section_list", "film_selection_show"})
+     * @Groups({
+     *     "film_show",
+     *     "film_list",
+     *     "film_selection_list",
+     *     "film_selection_section_list",
+     *     "film_selection_show",
+     *     "news_list",
+     *     "news_show"
+     * })
      */
     private $position;
     
@@ -68,7 +84,15 @@ class FilmSelectionSection implements TranslateMainInterface
     /**
      * @var ArrayCollection
      *
-     * @Groups({"film_show", "film_list", "film_selection_list", "film_selection_section_list", "film_selection_show"})
+     * @Groups({
+     *     "film_show",
+     *     "film_list",
+     *     "film_selection_list",
+     *     "film_selection_section_list",
+     *     "film_selection_show",
+     *     "news_list",
+     *     "news_show"
+     * })
      */
     protected $translations;
 

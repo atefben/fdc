@@ -53,6 +53,7 @@ class NewsArticleTranslation implements TranslateChildInterface
      *
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     * @Groups({"news_list", "news_show"})
      */
     private $slug;
 

@@ -35,14 +35,16 @@ class FilmProjection
      * @ORM\Id
      *
      * @Groups({
-     *  "projection_list", "projection_show",
-     *  "film_list", "film_show"
+     *     "projection_list",
+     *     "projection_show",
+     *     "film_list",
+     *     "film_show",
      * })
      */
     private $id;
     
     /**
-     * @var DateTime
+     * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      *
@@ -54,7 +56,7 @@ class FilmProjection
     private $startsAt;
     
     /**
-     * @var DateTime
+     * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      *

@@ -2,11 +2,8 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Base\CoreBundle\Entity\MediaVideoTranslation;
-use Base\CoreBundle\Entity\NewsArticleTranslation;
-
 use Base\CoreBundle\Component\Repository\EntityRepository;
-
+use Base\CoreBundle\Entity\NewsArticleTranslation;
 use JMS\DiExtraBundle\Annotation as DI;
 
 /**
@@ -24,18 +21,21 @@ class NewsRepository extends EntityRepository
             ->createQueryBuilder('n')
             ->join('n.sites', 's')
             ->leftjoin($repository, 'na1', 'WITH', 'na1.id = n.id')
-            ->leftjoin('na1.translations', 'na1t');
+            ->leftjoin('na1.translations', 'na1t')
+        ;
 
         // add query for audio / video encoder
         if (strpos($repository, 'NewsAudio') !== false) {
             $qb
                 ->leftjoin('na1.audio', 'na1a')
-                ->leftjoin('na1a.translations', 'na1at');
+                ->leftjoin('na1a.translations', 'na1at')
+            ;
             $this->addTranslationQueries($qb, 'na1at', 'fr', null, 'MediaAudio');
         } else if (strpos($repository, 'NewsVideo') !== false) {
             $qb
                 ->leftjoin('na1.video', 'na1v')
-                ->leftjoin('na1v.translations', 'na1vt');
+                ->leftjoin('na1v.translations', 'na1vt')
+            ;
             $this->addTranslationQueries($qb, 'na1vt', 'fr', null, 'MediaVideo');
         }
 
@@ -43,7 +43,8 @@ class NewsRepository extends EntityRepository
             $qb
                 ->andWhere('(na1t.locale = :locale AND na1t.slug = :slug)')
                 ->setParameter('locale', $locale)
-                ->setParameter('slug', $slug);
+                ->setParameter('slug', $slug)
+            ;
         } else {
             $this->addMasterQueries($qb, 'na1', $festival);
             $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
@@ -53,7 +54,8 @@ class NewsRepository extends EntityRepository
 
         return $qb
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getOneOrNullResult()
+            ;
     }
 
     public function getSameDayNews($festival, $locale, $dateTime, $count, $id)
@@ -79,7 +81,8 @@ class NewsRepository extends EntityRepository
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
             ->andWhere('n.id != :id')
-            ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt < :datetime2)');
+            ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt < :datetime2)')
+        ;
 
         $qb
             ->andWhere(
@@ -89,7 +92,8 @@ class NewsRepository extends EntityRepository
                     (na4t.locale = :locale_fr AND na4t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb
@@ -100,7 +104,8 @@ class NewsRepository extends EntityRepository
                     (na4t.locale = :locale AND na4t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         $qb
@@ -109,14 +114,16 @@ class NewsRepository extends EntityRepository
             ->setParameter('datetime', $dateTime1)
             ->setParameter('datetime2', $dateTime2)
             ->setParameter('id', $id)
-            ->setParameter('site_slug', 'site-evenementiel');
+            ->setParameter('site_slug', 'site-evenementiel')
+        ;
 
         return $qb
             ->getQuery()
-            ->getResult();
+            ->getResult()
+            ;
     }
 
-    public function getNewsByDate($locale,$festival,$dateTime,$count)
+    public function getNewsByDate($locale, $festival, $dateTime, $count)
     {
         $dateTime1 = $dateTime->format('Y-m-d') . ' 00:00:00';
         $dateTime2 = $dateTime->format('Y-m-d') . ' 23:59:59';
@@ -136,7 +143,8 @@ class NewsRepository extends EntityRepository
             ->where('s.slug = :site_slug')
             ->andWhere('n.displayedHome = 1')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt <= :datetime2)');
+            ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt <= :datetime2)')
+        ;
 
         $qb = $qb
             ->andWhere(
@@ -146,7 +154,8 @@ class NewsRepository extends EntityRepository
                     (na4t.locale = :locale_fr AND na4t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -161,7 +170,8 @@ class NewsRepository extends EntityRepository
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         $qb = $qb
@@ -169,11 +179,13 @@ class NewsRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime1)
             ->setParameter('datetime2', $dateTime2)
-            ->setParameter('site_slug', 'site-evenementiel');
+            ->setParameter('site_slug', 'site-evenementiel')
+        ;
 
         $qb = $qb
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
@@ -193,7 +205,8 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('n.festival = :festival');
+            ->andWhere('n.festival = :festival')
+        ;
 
         $qb = $qb
             ->andWhere(
@@ -203,7 +216,8 @@ class NewsRepository extends EntityRepository
                     (na4t.locale = :locale_fr AND na4t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -218,22 +232,26 @@ class NewsRepository extends EntityRepository
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         $qb = $qb
             ->orderBy('n.publishedAt', 'DESC')
             ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-evenementiel');
+            ->setParameter('site_slug', 'site-evenementiel')
+        ;
 
         $qb = $qb
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
 
-    public function getOlderNewsButSameDay($locale, $festival, $dateTime, $count) {
+    public function getOlderNewsButSameDay($locale, $festival, $dateTime, $count)
+    {
 
         $dateTimeMax = $dateTime->format('Y-m-d') . ' 00:00:00';
         $dateTime = $dateTime->format('Y-m-d H:i:s');
@@ -253,7 +271,8 @@ class NewsRepository extends EntityRepository
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
             ->andWhere('n.displayedHome = 1')
-            ->andWhere('(n.publishedAt >= :datetime_max) AND (n.publishedAt < :datetime)');
+            ->andWhere('(n.publishedAt >= :datetime_max) AND (n.publishedAt < :datetime)')
+        ;
 
         $qb = $qb
             ->andWhere(
@@ -263,7 +282,8 @@ class NewsRepository extends EntityRepository
                     (na4t.locale = :locale_fr AND na4t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -278,7 +298,8 @@ class NewsRepository extends EntityRepository
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         $qb = $qb
@@ -286,16 +307,19 @@ class NewsRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime)
             ->setParameter('datetime_max', $dateTimeMax)
-            ->setParameter('site_slug', 'site-evenementiel');
+            ->setParameter('site_slug', 'site-evenementiel')
+        ;
 
         $qb = $qb
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
-	
-    public function getOlderNews($locale, $festival, $date) {
+
+    public function getOlderNews($locale, $festival, $date)
+    {
 
         $qb = $this
             ->createQueryBuilder('n')
@@ -310,8 +334,9 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-			->andWhere('n.publishedAt < :date')
-            ->andWhere('n.festival = :festival');
+            ->andWhere('n.publishedAt < :date')
+            ->andWhere('n.festival = :festival')
+        ;
 
         $qb = $qb
             ->andWhere(
@@ -321,7 +346,8 @@ class NewsRepository extends EntityRepository
                     (na4t.locale = :locale_fr AND na4t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -336,24 +362,28 @@ class NewsRepository extends EntityRepository
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         $qb = $qb
             ->orderBy('n.publishedAt', 'DESC')
             ->setMaxResults('1')
-			->setParameter('date', $date)
+            ->setParameter('date', $date)
             ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-evenementiel');
+            ->setParameter('site_slug', 'site-evenementiel')
+        ;
 
         $qb = $qb
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
-	
-    public function getNextNews($locale, $festival, $date) {
+
+    public function getNextNews($locale, $festival, $date)
+    {
 
         $qb = $this
             ->createQueryBuilder('n')
@@ -368,8 +398,9 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-			->andWhere('n.publishedAt > :date')
-            ->andWhere('n.festival = :festival');
+            ->andWhere('n.publishedAt > :date')
+            ->andWhere('n.festival = :festival')
+        ;
 
         $qb = $qb
             ->andWhere(
@@ -379,7 +410,8 @@ class NewsRepository extends EntityRepository
                     (na4t.locale = :locale_fr AND na4t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -394,24 +426,28 @@ class NewsRepository extends EntityRepository
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         $qb = $qb
             ->orderBy('n.publishedAt', 'ASC')
             ->setMaxResults('1')
-			->setParameter('date', $date)
+            ->setParameter('date', $date)
             ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-evenementiel');
+            ->setParameter('site_slug', 'site-evenementiel')
+        ;
 
         $qb = $qb
             ->getQuery()
-            ->getResult();
-		
+            ->getResult()
+        ;
+
         return $qb;
     }
 
-    public function getLastsNews($locale,$festival,$dateTime,$count) {
+    public function getLastsNews($locale, $festival, $dateTime, $count)
+    {
         $qb = $this
             ->createQueryBuilder('n')
             ->select('n')
@@ -426,7 +462,8 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+        ;
 
         $qb = $qb
             ->andWhere(
@@ -436,7 +473,8 @@ class NewsRepository extends EntityRepository
                     (na4t.locale = :locale_fr AND na4t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -451,23 +489,26 @@ class NewsRepository extends EntityRepository
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         $qb = $qb
             ->orderBy('n.publishedAt', 'DESC')
             ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime)
-            ->setParameter('site_slug', 'site-evenementiel');
+            ->setParameter('site_slug', 'site-evenementiel')
+        ;
 
         $qb = $qb
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
 
-    public function getNewsArticles($locale,$festival,$dateTime)
+    public function getNewsArticles($locale, $festival, $dateTime)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -476,14 +517,16 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na1.translations', 'na1t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+        ;
 
         $qb = $qb
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -492,7 +535,8 @@ class NewsRepository extends EntityRepository
                     '(na2t.locale = :locale AND na2t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         $qb = $qb
@@ -501,12 +545,13 @@ class NewsRepository extends EntityRepository
             ->setParameter('datetime', $dateTime)
             ->setParameter('site_slug', 'site-evenementiel')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
 
-    public function getNewsPhotos($locale,$festival,$dateTime)
+    public function getNewsPhotos($locale, $festival, $dateTime)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -515,23 +560,26 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na1.translations', 'na1t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+        ;
 
         $qb = $qb
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
 
-        if($locale != 'fr') {
+        if ($locale != 'fr') {
             $qb = $qb
                 ->leftjoin('na1.translations', 'na2t')
                 ->andWhere(
                     '(na2t.locale = :locale AND na2t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         $qb = $qb
@@ -539,12 +587,13 @@ class NewsRepository extends EntityRepository
             ->setParameter('datetime', $dateTime)
             ->setParameter('site_slug', 'site-evenementiel')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
 
-    public function getNewsVideos($locale,$festival,$dateTime)
+    public function getNewsVideos($locale, $festival, $dateTime)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -553,14 +602,16 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na1.translations', 'na1t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+        ;
 
         $qb = $qb
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -569,13 +620,15 @@ class NewsRepository extends EntityRepository
                     '(na2t.locale = :locale AND na2t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         // add query for video encoder
         $qb
             ->leftjoin('na1.video', 'na1v')
-            ->leftjoin('na1v.translations', 'na1vt');
+            ->leftjoin('na1v.translations', 'na1vt')
+        ;
         $this->addTranslationQueries($qb, 'na1vt', 'fr', null, 'MediaVideo');
 
 
@@ -584,12 +637,13 @@ class NewsRepository extends EntityRepository
             ->setParameter('datetime', $dateTime)
             ->setParameter('site_slug', 'site-evenementiel')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
 
-    public function getNewsAudios($locale,$festival,$dateTime)
+    public function getNewsAudios($locale, $festival, $dateTime)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -598,14 +652,16 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na1.translations', 'na1t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+            ->andWhere('(n.publishedAt IS NOT NULL AND n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+        ;
 
         $qb = $qb
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -614,13 +670,15 @@ class NewsRepository extends EntityRepository
                     '(na2t.locale = :locale AND na2t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         // add query for audio encoder
         $qb
             ->leftjoin('na1.audio', 'na1a')
-            ->leftjoin('na1a.translations', 'na1at');
+            ->leftjoin('na1a.translations', 'na1at')
+        ;
         $this->addTranslationQueries($qb, 'na1at', 'fr', null, 'MediaAudio');
 
         $qb = $qb
@@ -628,20 +686,20 @@ class NewsRepository extends EntityRepository
             ->setParameter('datetime', $dateTime)
             ->setParameter('site_slug', 'site-evenementiel')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
 
     /**
-     * get an array of only the $locale version News of current $festival and verify publish date is between $dateTime
-     *
      * @param $festival
-     * @param $dateTime
      * @param $locale
-     * @return mixed
+     * @param \DateTime $start
+     * @param \DateTime $end
+     * @return \Doctrine\ORM\QueryBuilder
      */
-    public function getApiNews($festival, $dateTime, $locale)
+    public function getApiNews($festival, $locale, $start, $end)
     {
         $qb = $this->createQueryBuilder('n')
             ->leftjoin('Base\CoreBundle\Entity\NewsArticle', 'na', 'WITH', 'na.id = n.id')
@@ -654,8 +712,26 @@ class NewsRepository extends EntityRepository
             ->leftjoin('nav.translations', 'navt')
             ->where('n.festival = :festival')
             ->andWhere('n.displayedMobile = :displayed_mobile')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
-            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+        ;
+
+        $now = new \DateTime();
+        if ($now >= $start && $now <= $end) {
+            $qb
+                ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
+                ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+                ->setParameter('datetime', $now)
+            ;
+        } elseif ($now < $start) {
+            $qb
+                ->andWhere('(n.publishedAt < :datetime)')
+                ->setParameter('datetime', $start)
+            ;
+        } elseif ($now > $end) {
+            $qb
+                ->andWhere('(n.publishedAt > :datetime)')
+                ->setParameter('datetime', $end)
+            ;
+        }
 
         $qb = $qb
             ->andWhere('
@@ -664,7 +740,8 @@ class NewsRepository extends EntityRepository
                 (nait.locale = :locale_fr AND nait.status = :status) OR
                 (navt.locale = :locale_fr AND navt.status = :status)')
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -679,14 +756,16 @@ class NewsRepository extends EntityRepository
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('locale', $locale)
-                ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED);
+                ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
+            ;
         }
 
         $qb = $qb
             ->setParameter('festival', $festival)
-            ->setParameter('datetime', $dateTime)
             ->setParameter('displayed_mobile', true)
-            ->getQuery();
+            ->orderBy('n.publishedAt', 'desc')
+            ->getQuery()
+        ;
 
         return $qb;
     }
@@ -715,7 +794,8 @@ class NewsRepository extends EntityRepository
             ->andWhere('n.id = :id')
             ->andWhere('n.displayedMobile = :displayed_mobile')
             ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
-            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+        ;
 
         $qb = $qb
             ->andWhere('
@@ -724,7 +804,8 @@ class NewsRepository extends EntityRepository
                 (nait.locale = :locale_fr AND nait.status = :status) OR
                 (navt.locale = :locale_fr AND navt.status = :status)')
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -739,7 +820,8 @@ class NewsRepository extends EntityRepository
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
         $qb = $qb
             ->setParameter('id', $id)
@@ -747,7 +829,8 @@ class NewsRepository extends EntityRepository
             ->setParameter('datetime', $dateTime)
             ->setParameter('displayed_mobile', true)
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getOneOrNullResult()
+        ;
 
         return $qb;
     }

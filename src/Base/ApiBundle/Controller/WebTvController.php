@@ -22,6 +22,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 class WebTvController extends FOSRestController
 {
     private $repository = 'BaseCoreBundle:WebTv';
+
     /**
      * Return an array of web tvs, can be filtered with page / offset parameters
      *
@@ -58,11 +59,14 @@ class WebTvController extends FOSRestController
         $lang = $paramFetcher->get('lang');
 
         // create query
-        $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository($this->repository)->getApiWebTvs($festival, new DateTime(), $lang);
+        $item = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:FDCPageWebTvLive')
+            ->find($this->getParameter('admin_fdc_page_web_tv_live_id'))
+        ;
 
         // get items
-        $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
         $groups = array('web_tv_list');
@@ -71,7 +75,7 @@ class WebTvController extends FOSRestController
         $context->setVersion($version);
 
         // create view
-        $view = $this->view($items, 200);
+        $view = $this->view($item, 200);
         $view->setSerializationContext($context);
 
         return $view;
