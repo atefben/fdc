@@ -2,10 +2,15 @@
 
 namespace Base\ApiBundle\Controller;
 
-use FOS\RestBundle\Controller\Annotations as Rest;
-use FOS\RestBundle\Controller\FOSRestController;
-use FOS\RestBundle\Request\ParamFetcher;
+use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
+use Base\ApiBundle\Component\FOSRestController;
 
+use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Request\ParamFetcher;
+use FOS\RestBundle\Routing\ClassResourceInterface;
+
+use FOS\RestBundle\View\View;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 use JMS\Serializer\SerializationContext;
 
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
@@ -18,6 +23,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 class FilmSelectionController extends FOSRestController
 {
     private $repository = 'BaseCoreBundle:FilmSelection';
+
     /**
      * Return an array of film selections, can be filtered with page / offset parameters
      *
@@ -37,6 +43,7 @@ class FilmSelectionController extends FOSRestController
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
+     * @Rest\QueryParam(name="film_id", description="The Film id")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      *
      * @return View
@@ -47,12 +54,15 @@ class FilmSelectionController extends FOSRestController
         $coreManager = $this->get('base.api.core_manager');
 
         // create query
-        $em = $this->getDoctrine()->getManager();
-        $dql = "SELECT fs FROM {$this->repository} fs";
-        $query = $em->createQuery($dql);
+        $queryBuilder = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository($this->repository)
+            ->getApiSelections($paramFetcher->get('film_id'))
+        ;
 
         // get items
-        $items = $coreManager->getPaginationItems($query, $paramFetcher);
+        $items = $coreManager->getPaginationItems($queryBuilder, $paramFetcher);
 
         // set context view
         $groups = array('film_selection_list');

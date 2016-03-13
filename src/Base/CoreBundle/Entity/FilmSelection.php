@@ -16,7 +16,7 @@ use JMS\Serializer\Annotation\Since;
  * FilmSelection
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmSelectionRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FilmSelection implements TranslateMainInterface
