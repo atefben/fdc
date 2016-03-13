@@ -302,6 +302,10 @@ article {
         &.chapeau {
           width: 100%;
         }
+
+        &.half-div {
+          width: 730px;
+        }
       }
     }
   }
@@ -451,6 +455,10 @@ article {
     width: 630px;
   }
 
+  .half-div {
+    width: 730px;
+  }
+
   .half-photo {
     display: inline-block;
     margin: 0 0 50px;
@@ -470,7 +478,7 @@ article {
   }
 
   .half-photo + .half-photo {
-    margin: 0 0 0 -8px;
+    // margin: 0 0 0 -8px;
 
     .photo-container {
       float: right;

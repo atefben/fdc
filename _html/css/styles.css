@@ -10376,6 +10376,9 @@ article .read-later.rAlign span:after {
 .single-article.single-actualite .small-container > div.single-photo, .single-article.single-actualite .small-container > div.single-video, .single-article.single-actualite .small-container > div.single-gallery, .single-article.single-actualite .small-container > div.chapeau {
   width: 100%;
 }
+.single-article.single-actualite .small-container > div.half-div {
+  width: 730px;
+}
 .single-article .print {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   color: #c8a461;
@@ -10494,6 +10497,9 @@ article .read-later.rAlign span:after {
   padding: 10px 0 80px;
   width: 630px;
 }
+.single-article .half-div {
+  width: 730px;
+}
 .single-article .half-photo {
   display: inline-block;
   margin: 0 0 50px;
@@ -10508,9 +10514,6 @@ article .read-later.rAlign span:after {
   color: #666;
   font-size: 0.750rem;
   margin: 10px 0 0;
-}
-.single-article .half-photo + .half-photo {
-  margin: 0 0 0 -8px;
 }
 .single-article .half-photo + .half-photo .photo-container {
   float: right;
