@@ -6,6 +6,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 
+use FOS\RestBundle\View\View;
 use JMS\Serializer\SerializationContext;
 
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
@@ -36,29 +37,32 @@ class EventController extends FOSRestController
      * )
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      * @Rest\QueryParam(name="festival_id", description="The festival year")
      *
+     * @param ParamFetcher $paramFetcher
      * @return View
      */
-    public function getEventsAction(Paramfetcher $paramFetcher)
+    public function getEventsAction(ParamFetcher $paramFetcher)
     {
-        //coremanager shortcut
+        //core manager shortcut
         $coreManager = $this->get('base.api.core_manager');
 
         // get festival
         $festival = $coreManager->getApiFestivalYear();
 
-        // create query
-        $em = $this->getDoctrine()->getManager();
-        $dql = "SELECT e FROM {$this->repository} e WHERE e.festival = :festival";
 
-        $query = $em->createQuery($dql)
-            ->setParameter('festival', $festival);
+        $queryBuilder = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:Event')
+            ->getApiEvents($festival, $paramFetcher->get('lang'))
+        ;
 
         // get items
-        $items = $coreManager->getPaginationItems($query, $paramFetcher);
+        $items = $coreManager->getPaginationItems($queryBuilder, $paramFetcher);
 
         // set context view
         $groups = array('event_list');
