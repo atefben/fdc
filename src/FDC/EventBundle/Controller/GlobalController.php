@@ -245,8 +245,8 @@ class GlobalController extends Controller {
     }
 
     /**
-     * @Route("/share-email-mail", options={"expose"=true})
-     * @Template("FDCEventBundle:Global:share-email-mail.html.twig")
+     * @Route("/share-email-media", options={"expose"=true})
+     * @Template("FDCEventBundle:Global:share-email-media.html.twig")
      * @param Request $request
      * @param $section
      * @param $detail
@@ -254,7 +254,7 @@ class GlobalController extends Controller {
      * @param $description
      * @return array
      */
-    public function shareEmailMailAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null) {
+    public function shareEmailMediaAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null) {
         $email = array(
             'section' => $section,
             'detail' => $detail,
