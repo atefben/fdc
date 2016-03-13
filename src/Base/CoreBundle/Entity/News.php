@@ -265,7 +265,7 @@ abstract class News implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "film_show"})
      */
     public function getNewsType()
     {
