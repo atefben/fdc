@@ -67,12 +67,8 @@
         <div class="share">
             <p>{{ 'article.text.partagerarticle'|trans }}</p>
             <div class="buttons square">
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="button facebook">
-                    <i class="icon icon_facebook"></i>
-                </a>
-                <a href="https://twitter.com/intent/tweet?url={{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="button twitter">
-                    <i class="icon icon_twitter"></i>
-                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="button facebook"><i class="icon icon_facebook"></i></a>
+                <a href="https://twitter.com/intent/tweet?url={{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="button twitter"><i class="icon icon_twitter"></i></a>
                 <a href="#" class="button link self"><i class="icon icon_link"></i></a>
                 <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
                 <a href="#" onclick="javascript:window.print()" class="button print"><i class="icon icon_print"></i></a>
@@ -82,63 +78,63 @@
         {% if associatedFilm is not null or programmations is not empty  %}
         <div class="film">
             {% if associatedFilm is not null %}
-            <div class="info-film">
-                    <div class="wrapper">
-                        <div class="vCenter">
-                            <div class="vCenterKid">
-                                <div class="poster">
-                                    {% set posterImg = associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-                                    {% set mainImg = associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+            <div class="info-film {% if programmations is empty %} single{% endif %}">
+                <div class="wrapper">
+                    <div class="vCenter">
+                        <div class="vCenterKid">
+                            <div class="poster">
+                                {% set posterImg = associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+                                {% set mainImg = associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
 
-                                    {% if posterImg %}
-                                        {% media posterImg, 'film_poster_small' %}
-                                    {% elseif mainImg %}
-                                        {% media mainImg, 'film_main_small' %}
-                                    {% endif %}
-                                </div>
-                                <div class="text-container" id="filmPoster">
-                                    {% if associatedFilm.selectionSection is not null %}
-                                        <span class="category">
-                                            {{ associatedFilm.selectionSection|trans_fallback('name') }}
-                                        </span>
-                                    {% endif %}
-                                    <h3>
-                                        <a href="#">
-                                            {% set title = associatedFilm|trans_fallback('title') %}
-                                            {% if title == '' %}
-                                                {% set title = associatedFilm.titleVO %}
-                                            {% endif %}
-                                            {{ title }}
-                                        </a>
-                                    </h3>
-                                    {%if director is defined and director|length > 1 %}
-                                        <p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
-                                    {% else %}
-                                            <p class="director">
-                                            {% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                {%if index < 4 %}
-                                                <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
-                                                    {% if loop.index != director|length and index != 3 %}
-                                                        ,
-                                                    {% endif %}
-                                                {% endif %}
-                                                {%if index == 4 %}...{% endif %}
-                                            {% endfor %}
-                                            </p>
-                                    {% endif %}
-                                    <p>
-                                        {% for country in associatedFilm.countries %}
-                                            {{ country.country|trans_fallback('name') }}
-                                        {% endfor %}
-                                        {% if associatedFilm.productionYear != 0 or associatedFilm.productionYear != null %}
-                                        - {{ associatedFilm.productionYear }}
+                                {% if posterImg %}
+                                    {% media posterImg, 'film_poster_small' %}
+                                {% elseif mainImg %}
+                                    {% media mainImg, 'film_main_small' %}
+                                {% endif %}
+                            </div>
+                            <div class="text-container" id="filmPoster">
+                                {% if associatedFilm.selectionSection is not null %}
+                                    <span class="category">
+                                        {{ associatedFilm.selectionSection|trans_fallback('name') }}
+                                    </span>
+                                {% endif %}
+                                <h3>
+                                    <a href="#">
+                                        {% set title = associatedFilm|trans_fallback('title') %}
+                                        {% if title == '' %}
+                                            {% set title = associatedFilm.titleVO %}
                                         {% endif %}
-                                    </p>
-                                    <p>{{ associatedFilmDuration }}</p>
-                                </div>
+                                        {{ title }}
+                                    </a>
+                                </h3>
+                                {%if director is defined and director|length > 1 %}
+                                    <p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
+                                {% else %}
+                                        <p class="director">
+                                        {% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                            {%if index < 4 %}
+                                            <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
+                                                {% if loop.index != director|length and index != 3 %}
+                                                    ,
+                                                {% endif %}
+                                            {% endif %}
+                                            {%if index == 4 %}...{% endif %}
+                                        {% endfor %}
+                                        </p>
+                                {% endif %}
+                                <p>
+                                    {% for country in associatedFilm.countries %}
+                                        {{ country.country|trans_fallback('name') }}
+                                    {% endfor %}
+                                    {% if associatedFilm.productionYear != 0 or associatedFilm.productionYear != null %}
+                                    - {{ associatedFilm.productionYear }}
+                                    {% endif %}
+                                </p>
+                                <p>{{ associatedFilmDuration }}</p>
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
             {% endif %}
             {% if programmations is not empty %}

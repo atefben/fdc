@@ -10515,6 +10515,9 @@ article .read-later.rAlign span:after {
   font-size: 0.750rem;
   margin: 10px 0 0;
 }
+.single-article .half-photo + .half-photo {
+  margin: 0 0 0 -8px;
+}
 .single-article .half-photo + .half-photo .photo-container {
   float: right;
 }
@@ -10802,6 +10805,14 @@ article .read-later.rAlign span:after {
   left: 0;
   position: absolute;
   width: 27px;
+}
+.single-article .film .info-film.single {
+  width: 100%;
+  float: none;
+}
+.single-article .film .info-film.single .wrapper {
+  margin: 0 auto;
+  float: none;
 }
 .single-article .film .info-film + .programmation-film {
   float: left;

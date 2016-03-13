@@ -478,7 +478,7 @@ article {
   }
 
   .half-photo + .half-photo {
-    // margin: 0 0 0 -8px;
+    margin: 0 0 0 -8px;
 
     .photo-container {
       float: right;
@@ -810,6 +810,16 @@ article {
               width: 27px;
             }
           }
+        }
+      }
+
+      &.single {
+        width: 100%;
+        float: none;
+
+        .wrapper {
+          margin: 0 auto;
+          float: none;
         }
       }
 
