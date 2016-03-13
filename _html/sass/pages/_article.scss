@@ -302,6 +302,10 @@ article {
         &.chapeau {
           width: 100%;
         }
+
+        &.half-div {
+          width: 730px;
+        }
       }
     }
   }
@@ -449,6 +453,10 @@ article {
     margin: 0 auto;
     padding: 10px 0 80px;
     width: 630px;
+  }
+
+  .half-div {
+    width: 730px;
   }
 
   .half-photo {
@@ -802,6 +810,16 @@ article {
               width: 27px;
             }
           }
+        }
+      }
+
+      &.single {
+        width: 100%;
+        float: none;
+
+        .wrapper {
+          margin: 0 auto;
+          float: none;
         }
       }
 
