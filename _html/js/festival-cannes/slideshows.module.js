@@ -246,17 +246,17 @@ $('body').on('click', '.chocolat-left', function(e){
   var type = window.location.hash.substring(1).split('=')[0] || 'pid'
       pid  = window.location.hash.substring(1).split('=')[1] || 0;
 
-  if($('[data-'+type+'='+pid+']').closest('.item').index() - 1 > 0) {
-    window.location.hash = 'pid='+$('[data-'+type+'='+pid+']').closest('.item').prev().find('a').data('pid');
+  if($('[data-'+type+'='+pid+']').parent().index() - 1 > 0) {
+    window.location.hash = 'pid='+$('[data-'+type+'='+pid+']').parent().prev().find('a').data('pid');
+
+    updatePhotoShare($('[data-'+type+'='+pid+']').parent().prev().find('a').data('pid'), $('[data-'+type+'='+pid+']').parent().prev().find('a').attr('title'));
 
     if(typeof thumbnails != 'undefined') {
-      thumbnails.trigger('to.owl.carousel', [$('[data-'+type+'='+pid+']').closest('.item').index() - 2, 400, true]);
+      thumbnails.trigger('to.owl.carousel', [$('[data-'+type+'='+pid+']').parent().index() - 2, 400, true]);
     }
 
     $('.chocolat-wrapper .thumb').removeClass('active');
-    $('.chocolat-wrapper .thumb[data-pid="' + $('[data-'+type+'='+pid+']').closest('.item').prev().find('a').data('pid') + '"]').addClass('active');
-
-    updatePhotoShare($('[data-'+type+'='+pid+']').closest('.item').prev().find('a').data('pid'), $('[data-'+type+'='+pid+']').closest('.item').prev().find('a').attr('title'));
+    $('.chocolat-wrapper .thumb[data-pid="' + $('[data-'+type+'='+pid+']').parent().prev().find('a').data('pid') + '"]').addClass('active');
   }
 });
 
@@ -265,17 +265,17 @@ $('body').on('click', '.chocolat-right', function(e) {
   var type = window.location.hash.substring(1).split('=')[0] || 'pid'
       pid  = window.location.hash.substring(1).split('=')[1] || 0;
 
-  if($('[data-'+type+'='+pid+']').closest('.item').index() + 1 < $('.item').length) {
-    window.location.hash = 'pid='+$('[data-'+type+'='+pid+']').closest('.item').next().find('a').data('pid');
+  if($('[data-'+type+'='+pid+']').parent().index() + 1 < $('[data-'+type+']').length) {
+    window.location.hash = 'pid='+$('[data-'+type+'='+pid+']').parent().next().find('a').data('pid');
 
     if(typeof thumbnails != 'undefined') {
-      thumbnails.trigger('to.owl.carousel', [$('[data-'+type+'='+pid+']').closest('.item').index() - 1, 400, true]);
+      thumbnails.trigger('to.owl.carousel', [$('[data-'+type+'='+pid+']').parent().index() - 1, 400, true]);
     }
 
     $('.chocolat-wrapper .thumb').removeClass('active');
-    $('.chocolat-wrapper .thumb[data-pid="' + $('[data-'+type+'='+pid+']').closest('.item').next().find('a').data('pid') + '"]').addClass('active');
+    $('.chocolat-wrapper .thumb[data-pid="' + $('[data-'+type+'='+pid+']').parent().next().find('a').data('pid') + '"]').addClass('active');
     
-    updatePhotoShare($('[data-'+type+'='+pid+']').closest('.item').next().find('a').data('pid'), $('[data-'+type+'='+pid+']').closest('.item').next().find('a').attr('title'));
+    updatePhotoShare($('[data-'+type+'='+pid+']').parent().next().find('a').data('pid'), $('[data-'+type+'='+pid+']').parent().next().find('a').attr('title'));
   }
 });
 

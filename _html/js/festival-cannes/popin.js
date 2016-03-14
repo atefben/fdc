@@ -193,6 +193,7 @@ function linkPopinInit(link, cls) {
 }
 
 function updatePopinMedia(data, url) {
+  console.log(data);
   var url = url || document.location.href;
 
   if($('.popin-mail.media').length) {
