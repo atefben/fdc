@@ -60,7 +60,7 @@ class SocialWallCommand extends ContainerAwareCommand {
         }
 
         // get all hashtags
-        $tags = explode(',', $tagSettings->getSocialWallHashtags());
+        $tags = explode(', ', $tagSettings->getSocialWallHashtags());
 
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////   TWITTER   ///////////////////////////////
@@ -158,7 +158,7 @@ class SocialWallCommand extends ContainerAwareCommand {
 
         $maxIdInstagram = (isset($lastIdInstagram[0])) ? $lastIdInstagram[0]->getMaxIdInstagram() : null;
         $instagramPosts = array();
-        
+
         foreach ($tags as $tag) {
             $tag = substr($tag, 1);
             $tag = trim($tag);
