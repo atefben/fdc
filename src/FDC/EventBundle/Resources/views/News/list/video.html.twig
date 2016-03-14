@@ -28,7 +28,6 @@
                          data-vid="{{ video.id }}"
                          data-file='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
                          data-img="{% if transImage is not null %}{% path transImage.file, '1144x724' %}{% endif %}">
-
                         <img src="{% if transImage is not null %}{% path transImage.file , '1144x724' %}" alt="{{ transImage|trans_fallback('alt') }}{% endif %}">
                         <div class="picto"><i class="icon icon_video"></i></div>
                         <div class="info">
@@ -78,18 +77,22 @@
             </div>
         </div>
         <div class="ov"></div>
+        {{ render(controller('FDCEventBundle:Global:shareEmailMedia',
+            {'section': '',
+             'detail': '',
+             'title': '',
+             'description': ''
+            }))
+        }}
     </div>
-    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
-    {"breadcrumb":
-    [
-    {
-    "name" : 'header.mainnav.nav.jourapresjour'|trans ,
-    "url"  : path('fdc_event_news_index')
-    },
-    {
-    "name" : 'header.mainnav.nav.videos'|trans ,
-    "url"  : path('fdc_event_news_getvideos')
-    },
-    ]
-    } %}
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+        {
+            "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+            "url"  : path('fdc_event_news_index')
+        },
+        {
+            "name" : 'header.mainnav.nav.videos'|trans ,
+            "url"  : path('fdc_event_news_getvideos')
+        }
+    ]} %}
 {% endblock %}

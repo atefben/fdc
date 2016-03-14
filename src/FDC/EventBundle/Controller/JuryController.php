@@ -56,36 +56,65 @@ class JuryController extends Controller
         ;
 
         // find all juries by type
-        $juries = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmJury')->findBy(
-            array(
-                'type' => 1,
-                'festival' => $festival
-            )
-        );
-
-//        // find all juries by type
-//        $juries = $this
-//            ->getDoctrineManager()
-//            ->getRepository('BaseCoreBundle:FilmJury')
-//            ->getJurysByType($festival, $locale, $page->getJuryType()->getId())
-//        ;
+        $juries = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmJury')
+            ->getJurysByType($locale, $locale, $page->getJuryType()->getId())
+        ;
 
         $members = array();
         $president = null;
         $hasPresident = false;
         foreach ($juries as $jury) {
-            if (!$hasPresident && $jury->getFunction()->getId() == 1) {
-                $president = $jury;
+            $filmMedia = null;
+            if ($jury->getMedias()->count()) {
+                foreach ($jury->getMedias() as $media) {
+                    $filmMedia = $media;
+                }
+            }
+            if (!$filmMedia && $jury->getPerson() && $jury->getPerson()->getMedias()->count()) {
+                foreach ($jury->getPerson()->getMedias() as $media) {
+                    $filmMedia = $media->getMedia();
+                }
+            }
+            if (!$hasPresident && in_array($jury->getFunction()->getId(), array(1, 4))) {
+                $president = array(
+                    'jury'       => $jury,
+                    'film_media' => $filmMedia,
+                );
                 $hasPresident = true;
             } else {
-                array_push($members, $jury);
+                array_push($members, array(
+                    'jury'       => $jury,
+                    'film_media' => $filmMedia,
+                ));
             }
         }
 
+        $next = null;
+        if (count($pages) > 1) {
+            foreach ($pages as $item) {
+                if ($next) {
+                    $next = $item;
+                    break;
+                }
+                if ($item->getId() == $page->getId()) {
+                    $next = true;
+                }
+            }
+            if ($next === true) {
+                if ($pages[0]->getId() !== $page->getId()) {
+                    $next = $pages[0];
+                } else {
+                    $next = $pages[1];
+                }
+            }
+        }
 
         return array(
             'page'      => $page,
             'pages'     => $pages,
+            'next'      => is_object($next) ? $next : true,
             'members'   => $members,
             'president' => $president,
         );

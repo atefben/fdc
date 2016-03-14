@@ -421,7 +421,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             linkPopinInit(0, '.infos-videos .buttons .link');
             updateShareLink(0, '.infos-videos');
 
-            $topBar.find('.infos-videos .buttons .email').on('click', function(e) {
+            $('.infos-videos .buttons .email').on('click', function(e) {
                 e.preventDefault();
                 launchPopinMedia({}, playerInstance);
             });
@@ -429,7 +429,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             linkPopinInit(0, '.informations-video .buttons .link');
             updateShareLink(0, '.informations-video');
 
-            $topBar.find('.informations-video .buttons .email').on('click', function(e) {
+            $('.informations-video .buttons .email').on('click', function(e) {
                 e.preventDefault();
                 launchPopinMedia({}, playerInstance);
             });
