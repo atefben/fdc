@@ -140,24 +140,27 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     $topBar.find('.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
     linkPopinInit(encodeURIComponent(shareUrl), '#'+vid.id+' + .'+$topBar[0].className.replace(' ','.')+' .buttons .link');
 
-    $topBar.find('.buttons .facebook').on('click',function(){
+    $topBar.find('.buttons .facebook').on('click',function() {
         window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
         return false;
     });
-    $topBar.find('.buttons .twitter').on('click', function(){
+    $topBar.find('.buttons .twitter').on('click', function() {
         window.open(this.href,'','width=700,height=500');
         return false;
     });
 
     // CUSTOM LINK MAIL
     // $topBar.find('.buttons .email').attr('href', $container.data('email'));
-    updatePopinMedia({
-        'type'     : "video",
-        'category' : $topBar.find('.info .category').text(),
-        'date'     : $topBar.find('.info .date').text(),
-        'title'    : $topBar.find('.info p').text()
-    }, encodeURIComponent(shareUrl));
-    launchPopinMedia('video', '#'+vid.id+' + .'+$topBar[0].className.replace(' ','.')+' .buttons .email', playerInstance);
+    $topBar.find('.buttons .email').on('click', function(e) {
+        e.preventDefault();
+        launchPopinMedia({
+            'type'     : "video",
+            'category' : $topBar.find('.info .category').text(),
+            'date'     : $topBar.find('.info .date').text(),
+            'title'    : $topBar.find('.info p').text(),
+            'url'      : encodeURIComponent(shareUrl)
+        }, playerInstance);
+    });
     
     function updateVolume(x, vol) {
         var volume = $sound.find('.sound-bar'),
@@ -242,8 +245,9 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             'type'     : "video",
             'category' : $playlist[index].category,
             'date'     : $playlist[index].date,
-            'title'    : $playlist[index].name
-        }, encodeURIComponent(shareUrl));
+            'title'    : $playlist[index].name,
+            'url'      : encodeURIComponent(shareUrl)
+        });
 
         if (sc) {
             $(sc).find('.buttons .facebook').attr('data-href', fbHref);
@@ -417,11 +421,18 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             linkPopinInit(0, '.infos-videos .buttons .link');
             updateShareLink(0, '.infos-videos');
 
-            launchPopinMedia('video', '.infos-videos .buttons .email', playerInstance);
+            $topBar.find('.infos-videos .buttons .email').on('click', function(e) {
+                e.preventDefault();
+                launchPopinMedia({}, playerInstance);
+            });
         } else if($('.informations-video .buttons').length > 0) {
             linkPopinInit(0, '.informations-video .buttons .link');
             updateShareLink(0, '.informations-video');
-            launchPopinMedia('video', '.informations-video .buttons .email', playerInstance);
+
+            $topBar.find('.informations-video .buttons .email').on('click', function(e) {
+                e.preventDefault();
+                launchPopinMedia({}, playerInstance);
+            });
         } else {
             updateShareLink();
         }
