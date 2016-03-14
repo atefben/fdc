@@ -340,14 +340,18 @@
     </div>
     <div class="ov"></div>
 
-    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
-    {"breadcrumb":
-    [
+    {{ render(controller('FDCEventBundle:Global:shareEmailMedia',
+        {'section': '',
+         'detail': '',
+         'title': '',
+         'description': ''
+        }))
+    }}
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
         {
-            "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+            "name" : 'header.mainnav.nav.jourapresjour'|trans,
             "url"  : path('fdc_event_news_index')
         }
-    ]
-    } %}
+    ]} %}
 
 {% endblock body %}
