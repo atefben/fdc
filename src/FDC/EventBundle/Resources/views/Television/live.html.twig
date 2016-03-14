@@ -95,7 +95,7 @@
                                  alt="">
                         </div>
                         <a class="linkVid"
-                           href="{{ path('fdc_event_television_gettrailer', {'slug': trailer.associatedFilms|first.association.slug}) }}"></a>
+                           href="{{ path('fdc_event_television_gettrailer', {'slug': trailer.associatedFilms|first.association.slug, 'video': trailer.id}) }}"></a>
                         <div class="info">
                             <div class="picto"><i class="icon icon_video"></i>
                             </div>

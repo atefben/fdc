@@ -395,6 +395,7 @@ class TelevisionController extends Controller
     /**
      * @param Request $request
      * @param $slug
+     * @param null $video
      * @return array
      * @Route("/trailer/{slug}/{video}")
      * @Template("FDCEventBundle:Television:trailer.html.twig")
@@ -416,10 +417,6 @@ class TelevisionController extends Controller
         $filmTranslation = $film->findTranslationByLocale($locale);
 
         /************* Trailers **************/
-        $videos = $this
-            ->getBaseCoreMediaVideoRepository()
-            ->getAvailableTrailersByFilm($festivalId, $locale, $film->getId())
-        ;
 
         $poster = null;
         foreach ($film->getMedias() as $media) {
@@ -428,8 +425,23 @@ class TelevisionController extends Controller
             }
         }
 
-
-        $videos = $this->getBaseCoreMediaVideoRepository()->getFilmTrailersMediaVideos($festivalId, $locale, $film->getId());
+        $videos = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
+            ->getFilmTrailersMediaVideos($festivalId, $locale, $film->getId());
+        if ($video) {
+            $temp = array();
+            $firstVideo = null;
+            foreach ($videos as $key => $item) {
+                if ($item->getId() == $video) {
+                    $firstVideo = $item;
+                    unset($videos[$key]);
+                }
+            }
+            if ($firstVideo) {
+                $videos = array_merge(array($firstVideo), array_values($videos));
+            }
+        }
 
 
         /************* NextFilm **************/

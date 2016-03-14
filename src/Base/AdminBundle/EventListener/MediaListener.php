@@ -39,9 +39,8 @@ class MediaListener
     {
         $entity = $args->getEntity();
 
-        //$this->createHomepageNews($entity, $args, false);
+        $this->createHomepageNews($entity, $args, false);
     }
-
 
     /**
      * @param $args
@@ -50,7 +49,7 @@ class MediaListener
     {
         $entity = $args->getEntity();
 
-        //$this->createHomepageNews($entity, $args);
+        $this->createHomepageNews($entity, $args);
     }
 
     private function createHomepageNews($entity, $args, $update = true)
@@ -58,14 +57,12 @@ class MediaListener
         $createNews = false;
         $deleteNews = false;
         $em = $args->getEntityManager();
-        $uow = $em->getUnitOfWork();
 
         if ($entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation) {
             $entity = $entity->getTranslatable();
         }
 
         if ($entity instanceof MediaVideo || $entity instanceof MediaAudio) {
-            $array = $uow->getEntityChangeSet($entity);
 
             if ($entity instanceof MediaVideo && $entity->getDisplayedHome() == true) {
                 if ($entity->getHomepageNews() == null) {
@@ -82,7 +79,6 @@ class MediaListener
                 }
                 $createNewsTranslation = new NewsAudioTranslation();
             }
-
 
             // create related news
             if ($createNews !== false) {
@@ -157,15 +153,13 @@ class MediaListener
                 }
 
                 $entity->setHomepageNews($createNews);
-
-                if ($createNews->getId() === null) {
-                    $em->persist($createNews);
-                }
                 $this->flush = true;
             }
         }
 
         if ($entity instanceof MediaVideo || $entity instanceof MediaAudio) {
+            $uow = $em->getUnitOfWork();
+            $array = $uow->getEntityChangeSet($entity);
             if (isset($array['displayedHome']) && $array['displayedHome'][0] == true && $array['displayedHome'][1] == false) {
                 $deleteNews = true;
             }
