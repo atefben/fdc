@@ -403,7 +403,10 @@ $(document).ready(function () {
 
       videoPopin = playerInit('video-player-popin', false, 'grid');
       linkPopinInit(0, '.popin-video .popin-buttons.buttons .link');
-      launchPopinMedia('video', '.popin-video .popin-buttons.buttons .email', videoPopin);
+      $('.popin-video .popin-buttons.buttons .email').on('click', function(e) {
+        e.preventDefault();
+        launchPopinMedia({}, videoPopin);
+      });
 
       $grid = $('#gridVideos').imagesLoaded(function() {
         setGrid($grid, ('#gridVideos'), true);
@@ -458,12 +461,13 @@ $(document).ready(function () {
           $('#video-player-popin + .top-bar').find('.info .hour').text(hour);
           $('#video-player-popin + .top-bar').find('.info p').text(name);
 
-          launchPopinMedia({
+          updatePopinMedia({
             'type'     : "video",
             'category' : category,
             'date'     : date,
-            'title'    : name
-          }, encodeURIComponent(shareUrl));
+            'title'    : name,
+            'url'      : encodeURIComponent(shareUrl)
+          });
 
           $popinVideo.find('.popin-info .category').text(category);
           $popinVideo.find('.popin-info .date').text(date);

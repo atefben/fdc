@@ -6,7 +6,7 @@
             <div class="images">
                 {% for key, photo in photos %}
                     <div class="img {% if key == 0 %}active{% endif %}">
-                        <a id="photo-{{ photo.id }}"
+                        <a id="photo{{ photo.id }}"
                            class="chocolat-image ajax"
                            href="{{ photo.image.path }}"
                            title='<span class="category">{{ photo.theme }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }}</span><h2>{{ photo.title }}</h2>'

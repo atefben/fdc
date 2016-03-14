@@ -113,7 +113,7 @@ $(document).ready(function() {
               category    = $(e.target).closest('.video').find('.category').text(),
               date        = $(e.target).closest('.video').find('.date').text(),
               hour        = $(e.target).closest('.video').find('.hour').text(),
-              text        = $(e.target).closest('.video').find('p').data('title');
+              name        = $(e.target).closest('.video').find('p').data('title');
 
           if (typeof videoPopin.getConfig().file === "undefined" || videoPopin.getConfig().file === "") {
             videoPopin.remove();
@@ -138,7 +138,7 @@ $(document).ready(function() {
           $('#video-player-popin + .top-bar').find('.buttons .facebook').attr('href', fbHref);
           // CUSTOM LINK TWITTER
           var twHref   = twitterLink;
-          twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent(text+" "+shareUrl));
+          twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name+" "+shareUrl));
           $('#video-player-popin + .top-bar').find('.buttons .twitter').attr('href', twHref);
           // CUSTOM LINK COPY
           $('#video-player-popin + .top-bar').find('.buttons .link').attr('href', encodeURIComponent(shareUrl));
@@ -154,13 +154,14 @@ $(document).ready(function() {
             'type'     : "video",
             'category' : category,
             'date'     : date,
-            'title'    : text
-          }, encodeURIComponent(shareUrl));
+            'title'    : name,
+            'url'      : encodeURIComponent(shareUrl)
+          });
 
           $popinVideo.find('.popin-info .category').text(category);
           $popinVideo.find('.popin-info .date').text(date);
           $popinVideo.find('.popin-info .hour').text(hour);
-          $popinVideo.find('.popin-info p').text(text);
+          $popinVideo.find('.popin-info p').text(name);
           $popinVideo.addClass('video-player show loading');
           $('.ov').addClass('show');
         });
@@ -286,7 +287,10 @@ $(document).ready(function() {
     if($('#content-latest').length) {
         videoPopin = playerInit('video-player-popin', false, false);
         linkPopinInit(0, '.popin-video .popin-buttons.buttons .link');
-        launchPopinMedia('video', '.popin-video .popin-buttons.buttons .email', videoPopin);
+        $('.popin-video .popin-buttons.buttons .email').on('click', function(e) {
+          e.preventDefault();
+          launchPopinMedia({}, videoPopin);
+        });
 
 
         $('.ov').on('click', function (e) {
@@ -306,7 +310,7 @@ $(document).ready(function() {
               category    = $(e.target).closest('.video').find('.category').text(),
               date        = $(e.target).closest('.video').find('.date').text(),
               hour        = $(e.target).closest('.video').find('.hour').text(),
-              text        = $(e.target).closest('.video').find('p').data('title');
+              name        = $(e.target).closest('.video').find('p').data('title');
 
           if (typeof videoPopin.getConfig().file === "undefined" || videoPopin.getConfig().file === "") {
             videoPopin.remove();
@@ -331,7 +335,7 @@ $(document).ready(function() {
           $('#video-player-popin + .top-bar').find('.buttons .facebook').attr('href', fbHref);
           // CUSTOM LINK TWITTER
           var twHref   = twitterLink;
-          twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent(text+" "+shareUrl));
+          twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name+" "+shareUrl));
           $('#video-player-popin + .top-bar').find('.buttons .twitter').attr('href', twHref);
           // CUSTOM LINK COPY
           $('#video-player-popin + .top-bar').find('.buttons .link').attr('href', encodeURIComponent(shareUrl));
@@ -347,13 +351,14 @@ $(document).ready(function() {
             'type'     : "video",
             'category' : category,
             'date'     : date,
-            'title'    : text
-          }, encodeURIComponent(shareUrl));
+            'title'    : name,
+            'url'      : encodeURIComponent(shareUrl)
+          });
 
           $popinVideo.find('.popin-info .category').text(category);
           $popinVideo.find('.popin-info .date').text(date);
           $popinVideo.find('.popin-info .hour').text(hour);
-          $popinVideo.find('.popin-info p').text(text);
+          $popinVideo.find('.popin-info p').text(name);
           $popinVideo.addClass('video-player show loading');
           $('.ov').addClass('show');
         });
