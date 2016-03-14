@@ -28,7 +28,6 @@ class PressDownloadSectionWidgetArchive extends PressDownloadSectionWidget
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=true)
      */
     private $file;
 
@@ -50,7 +49,7 @@ class PressDownloadSectionWidgetArchive extends PressDownloadSectionWidget
      * Set image
      *
      * @param \Base\CoreBundle\Entity\MediaImageSimple $image
-     * @return PressDownloadSectionWidgetDocument
+     * @return PressDownloadSectionWidgetArchive
      */
     public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
     {
@@ -73,11 +72,10 @@ class PressDownloadSectionWidgetArchive extends PressDownloadSectionWidget
      * Set file
      *
      * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return PressDownloadSectionWidgetDocument
+     * @return PressDownloadSectionWidgetArchive
      */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
     {
-
         $this->file = $file;
 
         return $this;
@@ -86,12 +84,10 @@ class PressDownloadSectionWidgetArchive extends PressDownloadSectionWidget
     /**
      * Get file
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
      */
     public function getFile()
     {
-
         return $this->file;
     }
-
 }

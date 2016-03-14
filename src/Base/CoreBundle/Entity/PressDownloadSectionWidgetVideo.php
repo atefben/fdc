@@ -32,16 +32,13 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
      */
     private $file;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="second_file_id", referencedColumnName="id", nullable=true)
      */
     private $secondFile;
-
 
     /**
      * ArrayCollection
@@ -55,7 +52,6 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
     {
         $this->translations = new ArrayCollection();
     }
-    
 
     /**
      * Set image
@@ -109,7 +105,7 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
      * @param \Application\Sonata\MediaBundle\Entity\Media $file
      * @return PressDownloadSectionWidgetVideo
      */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
     {
         $this->file = $file;
 
@@ -132,7 +128,7 @@ class PressDownloadSectionWidgetVideo extends PressDownloadSectionWidget
      * @param \Application\Sonata\MediaBundle\Entity\Media $secondFile
      * @return PressDownloadSectionWidgetVideo
      */
-    public function setSecondFile(\Application\Sonata\MediaBundle\Entity\Media $secondFile)
+    public function setSecondFile(\Application\Sonata\MediaBundle\Entity\Media $secondFile = null)
     {
         $this->secondFile = $secondFile;
 
