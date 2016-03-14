@@ -157,7 +157,8 @@ class SocialWallCommand extends ContainerAwareCommand {
         );
 
         $maxIdInstagram = (isset($lastIdInstagram[0])) ? $lastIdInstagram[0]->getMaxIdInstagram() : null;
-
+        $instagramPosts = array();
+        
         foreach ($tags as $tag) {
             $tag = substr($tag, 1);
             $tag = trim($tag);
@@ -171,7 +172,7 @@ class SocialWallCommand extends ContainerAwareCommand {
                 }
 
                 $instagramResults = json_decode($instagramResponse);
-                $instagramPosts   = $instagramResults->data;
+                $instagramPosts   = array_merge($instagramPosts, $instagramResults->data);
 
                 $output->writeln('INSTAGRAMS POSTS DONE: '. sizeof($instagramPosts));
                 // Exit when no more tweets are returned

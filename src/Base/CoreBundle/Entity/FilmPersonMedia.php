@@ -22,7 +22,7 @@ uniqueConstraints = {@ORM\UniqueConstraint(name="film_person_media", columns={"p
  * @UniqueEntity({"person", "media"})
  *
  */
-class FilmPersonMedia implements FilmFilmMediaInterface
+class FilmPersonMedia implements FilmPersonMediaInterface
 {
     use Time;
 
