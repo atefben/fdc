@@ -37,6 +37,7 @@ sonata_media:
                  small: { width: 187 , height: 255 , quality: 100 }
                  big:   { width: 1000 , quality: 100 }
                  319x434:  { width: 319 , height: 434 , quality: 100 }
+                 384x485:  { width: 384 , height: 485 , quality: 100 }
 
         film_film:
             providers:

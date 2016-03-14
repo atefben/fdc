@@ -1,0 +1,33 @@
+{% extends 'SonataAdminBundle:Form:form_admin_fields.html.twig' %}
+
+{% block base_admin_film_film_id_text_widget %}
+    {% set film = form.parent.vars.value %}
+
+    <h3>
+        {% if film|trans_fallback('title') %}
+            {{ film|trans_fallback('title') }}
+        {% else %}
+            {{ film.titleVO }}
+        {% endif %}
+    </h3>
+
+    <div>
+        {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+        {% for director in directors %}
+            {{ director.fullName }}<br/>
+        {% endfor %}
+    </div>
+
+    {% set poster = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+    {% set main = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+
+    <div>
+        {% if poster %}
+            {% media poster, 'film_poster_small' %}
+        {% elseif main %}
+            {% media main, 'film_main_small' %}
+        {% else %}
+            Aucune image renseignée
+        {% endif %}
+    </div>
+{% endblock %}

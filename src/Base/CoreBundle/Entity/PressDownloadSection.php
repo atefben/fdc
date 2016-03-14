@@ -100,6 +100,7 @@ class PressDownloadSection implements TranslateMainInterface
      */
     public function removeWidget(\Base\CoreBundle\Entity\PressDownloadSectionWidget $widgets)
     {
+        $widgets->setpressDownload(null);
         $this->widgets->removeElement($widgets);
     }
 

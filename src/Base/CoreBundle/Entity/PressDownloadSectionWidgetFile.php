@@ -22,13 +22,11 @@ class PressDownloadSectionWidgetFile extends PressDownloadSectionWidget
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
      */
     private $file;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="second_file_id", referencedColumnName="id", nullable=true)
      */
     private $secondFile;
 
@@ -52,7 +50,7 @@ class PressDownloadSectionWidgetFile extends PressDownloadSectionWidget
      * @param \Application\Sonata\MediaBundle\Entity\Media $file
      * @return PressDownloadSectionWidgetFile
      */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
     {
         $this->file = $file;
 
