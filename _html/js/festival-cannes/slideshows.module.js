@@ -73,6 +73,7 @@ function initSlideshows() {
 $('body').on('click', '.chocolat-close', function(e) {
   $('.chocolat-img').css('transition', 'all 0.9s ease').addClass('close');
   $('.chocolat-bottom').css('opacity', 0);
+  $('.chocolat-bottom .img-slideshow-share .button.email').off('click');
   $('.chocolat-close').css('opacity', 0);
 
   setTimeout(function() {
@@ -118,7 +119,7 @@ $('body').on('mouseover', '.chocolat-img', function() {
 // mouseover img : hide attribute title
 $('body').on('mouseover', '.chocolat-image', function() {
   $(this).attr('data-title', $(this).attr('title'));
-  $(this).removeAttr('title');
+  // $(this).removeAttr('title');
 });
 
 // mouseout img : reset attribute title
@@ -160,8 +161,13 @@ $('body').on('click', '.chocolat-image', function() {
   $('<div class="credit">' + $that.data('credit') + '</div>').insertBefore('.chocolat-wrapper .share');
 
   linkPopinInit(0,'.img-slideshow-share .button.link');
-  updatePhotoShare($that.data('pid'), $that.data('title'));
+  updatePhotoShare($that.data('pid'), $that.attr('title'));
   initPopinMail();
+
+  $('.chocolat-bottom .img-slideshow-share .button.email').on('click', function() {
+    var parsed = $('<div/>').append($that.attr('title'));
+    launchPopinMedia({}, '');
+  });
 
   setTimeout(function() {
     $('.chocolat-wrapper').addClass('show');
@@ -215,9 +221,9 @@ $('body').on('click', '.chocolat-wrapper .thumb', function() {
 
   $('.chocolat-pagination').trigger('click');
 
-  window.location.hash = 'pid='+$(this).data('pid');
+  window.location.hash = 'pid='+$('#'+$(this).data('id')).data('pid');
 
-  updatePhotoShare($(this).data('pid'), $(this).attr('title'));
+  updatePhotoShare($('#'+$(this).data('id')).data('pid'), $('#'+$(this).data('id')).attr('title'));
 });
 
 $(document).ready(function() {
@@ -337,23 +343,23 @@ function updatePhotoShare(pid, title) {
   $('.chocolat-bottom .img-slideshow-share .button.link').attr('href', encodeURIComponent(shareUrl));
   $('.chocolat-bottom .img-slideshow-share .button.link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
 
-  $('.chocolat-bottom .img-slideshow-share .button.facebook').on('click',function(){
-      $('.chocolat-bottom .buttons').removeClass('show');
-      window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
-      return false;
+  $('.chocolat-bottom .img-slideshow-share .button.facebook').on('click',function() {
+    $('.chocolat-bottom .buttons').removeClass('show');
+    window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
+    return false;
   });
-  $('.chocolat-bottom .img-slideshow-share .button.twitter').on('click', function(){
-      $('.chocolat-bottom .buttons').removeClass('show');
-      window.open(this.href,'','width=700,height=500');
-      return false;
+  $('.chocolat-bottom .img-slideshow-share .button.twitter').on('click', function() {
+    $('.chocolat-bottom .buttons').removeClass('show');
+    window.open(this.href,'','width=700,height=500');
+    return false;
   });
 
   var parsed = $('<div/>').append(title);
   updatePopinMedia({
-      'type'     : "photo",
-      'category' : parsed.find('.category').text(),
-      'date'     : parsed.find('.date').text(),
-      'title'    : parsed.find('h2').text()
-  }, encodeURIComponent(shareUrl));
-  launchPopinMedia('photo', '.img-slideshow-share .button.email', '');
+    'type'     : "photo",
+    'category' : parsed.find('.category').text(),
+    'date'     : parsed.find('.date').text(),
+    'title'    : parsed.find('h2').text(),
+    'url'      : encodeURIComponent(shareUrl),
+  });
 }

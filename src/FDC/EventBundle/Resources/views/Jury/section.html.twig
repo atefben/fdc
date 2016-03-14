@@ -3,86 +3,102 @@
 
 {% block body %}
 
-<div id="main" class="list-article jurys-list loading">
-    <div class="bandeau-list">
-        <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url({{ asset('bundles/fdcevent/img/jurys/bandeau.jpg') }})">
-            <div class="vCenterKid">
-                <h2 class="title title-list-header">{{ 'juries.title.lesjurys'|trans }}</h2>
-            </div>
-        </div>
-        <ul class="sub-nav-list">
-            <li>
-                <a href="{{ path('fdc_event_jury_get', {'slug': '1'}) }}"
-                   class="{% if app.request.attributes.get('type') == '1' %}active{% endif %} ajax">
-                    {{ 'juries.nav.longsmetrages'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_jury_get', {'slug': '2'}) }}"
-                   class="{% if app.request.attributes.get('type') == '2' %}active{% endif %} ajax">
-                    {{ 'juries.nav.cinefondation'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_jury_get', {'slug': '3'}) }}"
-                   class="{% if app.request.attributes.get('type') == '3' %}active{% endif %} ajax">
-                    {{ 'juries.nav.certainregard'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('fdc_event_jury_get', {'slug': '4'}) }}"
-                   class="{% if app.request.attributes.get('type') == '4' %}active{% endif %} ajax">
-                    {{ 'juries.nav.camerador'|trans }}
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="container-jurys">
-        <div class="container container-list">
-            <section class="categorie-items contain-jury">
-                {% if president %}
-                    <a href="{{ path('fdc_event_artist_get', {'slug': president.person.slug}) }}">
-                        <div class="photo-jury" style="background-image:url({#{{ president.medias }}#})">
-                        </div>
-                    </a>
-                    <div class="contain-descript">
-                        <h3 class="descript-title">{{ 'juries.role.title.presidentdujury'|trans }}</h3>
-                        <a href="{{ path('fdc_event_artist_get', {'slug': president.person.slug}) }}">
-                            <h2 class="descript-name">{{ president.person.lastname }} {{ president.person.firstname }}</h2>
-                        </a>
-                        <span class="descript-rank">{{ president.function|trans_fallback('name') }}</span>
-                        <p> {{ president|trans_fallback('biography') }}</p>
-                    </div>
-                {% endif %}
-            </section>
-            <section class="categorie-items contain-jurys-list grid">
-                <h1 class="title-list-cat title">{{ 'juries.role.title.membresdujury'|trans }}</h1>
-                <div id="gridJurys" class="grid-wrapper">
-                    <div class="grid-sizer"></div>
-                    {% for member in members %}
-                        <div class="jury-box item">
-                            <a href="{{ path('fdc_event_artist_get', {'slug': member.person.slug}) }}">
-                                <img src="{#{{ member.person.medias }}#}" alt="{{ member.person.lastname }} {{ member.person.firstname }}">
-                                <div class="legend">
-                                    <span class="name">{{ member.person.lastname }} {{ member.person.firstname }}</span>
-                                    <span class="rank">{{ member.function|trans_fallback('name') }}</span>
-                                </div>
-                            </a>
-                        </div>
-                    {% endfor %}
+    <div id="main" class="list-article jurys-list loading">
+        <div class="bandeau-list">
+            <div class="bandeau-list-img bandeau-head vCenter"
+                 style="background-image:url('{% path page.image|trans_fallback('file'), '2560×600' %}')">
+                <div class="vCenterKid">
+                    <h2 class="title title-list-header">{{ page|trans_fallback('overrideName')|trans }}</h2>
                 </div>
-            </section>
-        </div>
-        <div class="bandeau-list push-footer vCenter">
-            <div class="bandeau-list-img  bandeau-list-footer vCenterKid" style="background-image:url({{ asset('bundles/fdcevent/img/jurys/push.jpg') }})">
-                <h2 class="title title-list-header">{{ 'juries.title.retrospective'|trans }}</h2>
-                <a href="#" class="bandeau-lien">
-                    <i class="icon icon_fleche-right"></i>
-                    {{ 'juries.btn.decouvrirrubrique'|trans }}
-                </a>
             </div>
+            <ul class="sub-nav-list">
+                {% for tab in pages %}
+                    <li>
+                        <a href="{{ path('fdc_event_jury_get', {'slug': tab|trans_fallback('slug')}) }}"
+                           class="{% if app.request.attributes.get('slug') == (tab|trans_fallback('slug')) %}active {% endif %}ajax">
+                            {{ tab|trans_fallback('overrideName') }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="container-jurys">
+            <div class="container container-list">
+                <section class="categorie-items contain-jury">
+                    {% if president %}
+                        <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}">
+                            {% if president['film_media'] %}
+                                <div class="photo-jury"
+                                     style="background-image:url({% path president['film_media'].file, '384x485' %})">
+                                </div>
+                            {% else %}
+                                <div class="photo-jury"
+                                     style="background-image:url('{{ asset('bundles/fdcevent/img/jurys/president.jpg') }}');">
+                                </div>
+                            {% endif %}
+                        </a>
+                        <div class="contain-descript">
+                            <h3 class="descript-title">{{ 'juries.role.title.presidentdujury'|trans }}</h3>
+                            <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}">
+                                <h2 class="descript-name">{{ president['jury'].person.lastname }} {{ president['jury'].person.firstname }}</h2>
+                            </a>
+                            <span class="descript-rank">{{ president['jury'].function|trans_fallback('name') }}</span>
+                            <p> {{ president|trans_fallback('biography') }}</p>
+                        </div>
+                    {% endif %}
+                </section>
+                <section class="categorie-items contain-jurys-list grid">
+                    <h1 class="title-list-cat title">{{ 'juries.role.title.membresdujury'|trans }}</h1>
+                    <div id="gridJurys" class="grid-wrapper">
+                        <div class="grid-sizer"></div>
+                        {% for member in members %}
+                            <div class="jury-box item">
+                                <a href="{{ path('fdc_event_artist_get', {'slug': member['jury'].person.slug}) }}">
+                                    <div class="image">
+                                        {% if member['film_media'] %}
+                                            <img src="{% path member['film_media'].file, '384x485' %}"
+                                                 alt="{{ member['jury'].person.lastname }} {{ member['jury'].person.firstname }}">
+                                        {% else %}
+                                            <img src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}"
+                                                 alt="{{ member['jury'].person.lastname }} {{ member['jury'].person.firstname }}">
+                                        {% endif %}
+                                    </div>
+                                    <div class="legend">
+                                        <span class="name">{{ member['jury'].person.lastname }} {{ member['jury'].person.firstname }}</span>
+                                        <span class="rank">{{ member['jury'].function|trans_fallback('name') }}</span>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+            {% if next %}
+                <div class="bandeau-list push-footer vCenter">
+                    <div class="bandeau-list-img  bandeau-list-footer vCenterKid"
+                         style="background-image:url({% path next.image|trans_fallback('file'), '2560×600' %})">
+                        <h2 class="title title-list-header">{{ page|trans_fallback('overrideName')|trans }}</h2>
+                        <a href="#" class="bandeau-lien">
+                            <i class="icon icon_fleche-right"></i>
+                            {{ 'juries.btn.decouvrirrubrique'|trans }}
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
-</div>
 
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.webtv.home'|trans,
+    "url"  : path('fdc_event_news_index')
+    },
+    {
+    "name" : 'breadcrumb.jury.home'|trans,
+    "url"  : ''
+    }
+    ]
+    } %}
 {% endblock body %}

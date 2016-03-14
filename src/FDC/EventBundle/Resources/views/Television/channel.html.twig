@@ -117,10 +117,10 @@
                          data-vid="{{ video.id }}"
                          data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
                             {% if video.image|trans_fallback('file') %}
-                        data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
-                    {% else %}
-                        data-img="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
-                            {% endif %}>
+                         data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
+                         {% else %}
+                         data-img="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
+                         {% endif %}>
                         <div class="image-wrapper">
                             {% if video.image|trans_fallback('file') %}
                                 <img src="{% path video.image|trans_fallback('file'), '463x292' %}" alt="">
@@ -176,28 +176,32 @@
             </div>
         </div>
         <div class="ov"></div>
+        {{ render(controller('FDCEventBundle:Global:shareEmailMedia',
+            {'section': '',
+             'detail': '',
+             'title': '',
+             'description': ''
+            }))
+        }}
     {% endif %}
 
 
-    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
-    {"breadcrumb":
-        [
-            {
-                "name" : 'breadcrumb.webtv.home'|trans,
-                "url"  : path('fdc_event_news_index')
-            },
-            {
-                "name" : 'breadcrumb.webtv.live'|trans,
-                "url"  : path('fdc_event_television_live')
-            },
-            {
-                "name" : 'breadcrumb.webtv.channels'|trans,
-                "url"  : path('fdc_event_television_channels')
-            },
-            {
-                "name" : channel|trans_fallback('name'),
-                "url"  : ''
-            }
-        ]
-    } %}
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+        {
+            "name" : 'breadcrumb.webtv.home'|trans,
+            "url"  : path('fdc_event_news_index')
+        },
+        {
+            "name" : 'breadcrumb.webtv.live'|trans,
+            "url"  : path('fdc_event_television_live')
+        },
+        {
+            "name" : 'breadcrumb.webtv.channels'|trans,
+            "url"  : path('fdc_event_television_channels')
+        },
+        {
+            "name" : channel|trans_fallback('name'),
+            "url"  : ''
+        }
+    ]} %}
 {% endblock body %}

@@ -647,6 +647,9 @@ form:
     label_banner: Bannière
     label_list_event: Evènementiel
     label_list_press: Presse
+    label_image_main: Image principale
+    label_image_cover: Image cover
+    label_video_main: Vidéo principale
     gallery:
         medias: Médias
     encoding_state:
