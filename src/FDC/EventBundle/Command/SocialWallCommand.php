@@ -89,6 +89,7 @@ class SocialWallCommand extends ContainerAwareCommand {
         // Get last twitter id in db
         $maxId   = (isset($lastIdTwitter[0])) ? $lastIdTwitter[0]->getMaxIdTwitter() : null;
         $request = $twitterClient->get('search/tweets.json');
+        $tweets = array();
 
         // Get all tweets
         foreach ($tags as $tag) {
@@ -105,7 +106,7 @@ class SocialWallCommand extends ContainerAwareCommand {
                     $response = $request->send();
                     // Process each tweet returned
                     $results = json_decode($response->getBody());
-                    $tweets  = $results->statuses;
+                    $tweets  = array_merge($tweets, $results->statuses);
                     $output->writeln('TWEETS DONE: '. sizeof($tweets));
                     // Exit when no more tweets are returned
                     if (sizeof($tweets) !== $offset) {
@@ -138,10 +139,9 @@ class SocialWallCommand extends ContainerAwareCommand {
                 $socialWall->setMaxIdTwitter($maxId);
                 $socialWall->setDate($datetime);
                 $socialWall->setTags($tagSettings->getSocialWallHashtags());
-
-
                 $em->persist($socialWall);
             }
+            $em->flush();
         }
         $output->writeln('Tweet added: '. count($tweets));
 
