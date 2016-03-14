@@ -1729,6 +1729,10 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
         <source>breadcrumb.la_selection</source>
         <target>La sélection</target>
       </trans-unit>
+      <trans-unit id="breadcrumb.jury.home" resname="breadcrumb.jury.home">
+        <source>breadcrumb.jury.home</source>
+        <target>Jury</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
