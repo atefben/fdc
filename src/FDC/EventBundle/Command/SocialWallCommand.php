@@ -101,41 +101,47 @@ class SocialWallCommand extends ContainerAwareCommand {
                 if ($maxId !== null) {
                     $request->getQuery()->set('since_id', $maxId);
                 }
-                $response = $request->send();
-
-                // Process each tweet returned
-                $results = json_decode($response->getBody());
-                $tweets  = $results->statuses;
-                $output->writeln('TWEETS DONE: '. sizeof($tweets));
-                // Exit when no more tweets are returned
-                if (sizeof($tweets) !== $offset) {
-                    $maxId = (sizeof($tweets) > 0) ? $tweets[0]->id : $maxId;
+                try {
+                    $response = $request->send();
+                    // Process each tweet returned
+                    $results = json_decode($response->getBody());
+                    $tweets  = $results->statuses;
+                    $output->writeln('TWEETS DONE: '. sizeof($tweets));
+                    // Exit when no more tweets are returned
+                    if (sizeof($tweets) !== $offset) {
+                        $maxId = (sizeof($tweets) > 0) ? $tweets[0]->id : $maxId;
+                        break;
+                    }
+                } catch (\Exception $e) {
+                    $output->writeln($e->getMessage());
+                    $tweets = array();
                     break;
                 }
-
             }
         }
 
-        krsort($tweets);
-        foreach ($tweets as $tweet) {
+        if (count($tweets) > 0) {
+            krsort($tweets);
+            foreach ($tweets as $tweet) {
 
-            $socialWall = new SocialWall();
-            $socialWall->setMessage($tweet->text);
-            if (isset($tweet->entities->media[0]->media_url)) {
-                $socialWall->setContent($tweet->entities->media[0]->media_url);
-            } else {
-                $socialWall->setContent('#');
+                $socialWall = new SocialWall();
+                $socialWall->setMessage($tweet->text);
+                if (isset($tweet->entities->media[0]->media_url)) {
+                    $socialWall->setContent($tweet->entities->media[0]->media_url);
+                } else {
+                    $socialWall->setContent('#');
+                }
+                $socialWall->setUrl('https://twitter.com/' . $tweet->user->screen_name . '/status/' . $tweet->id);
+                $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER'));
+                $socialWall->setEnabledMobile(0);
+                $socialWall->setEnabledDesktop(0);
+                $socialWall->setMaxIdTwitter($maxId);
+                $socialWall->setDate($datetime);
+                $socialWall->setTags($tagSettings->getSocialWallHashtags());
+
+
+                $em->persist($socialWall);
             }
-            $socialWall->setUrl('https://twitter.com/' . $tweet->user->screen_name . '/status/' . $tweet->id);
-            $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER'));
-            $socialWall->setEnabledMobile(0);
-            $socialWall->setEnabledDesktop(0);
-            $socialWall->setMaxIdTwitter($maxId);
-            $socialWall->setDate($datetime);
-            $socialWall->setTags($tagSettings->getSocialWallHashtags());
-
-
-            $em->persist($socialWall);
         }
         $output->writeln('Tweet added: '. count($tweets));
 
