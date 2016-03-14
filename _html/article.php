@@ -378,7 +378,7 @@
     </div>
 
 
-<!-- POPIN MAIL SHARE ---->
+<!-- POPIN MAIL SHARE -->
     <div class="popin-mail popin">
       <div class="contain-popin popin">
         <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>
@@ -407,7 +407,7 @@
     </div>
 <!-- END POPIN MAIL SHARE -->
 
-<!-- POPIN MAIL SHARE ---->
+<!-- POPIN MAIL SHARE -->
     <div class="popin-mail media popin">
       <div class="contain-popin popin">
         <strong class="theme-article popin">Cinéma de la plage</strong><span class="date-article popin">18.05.15 . 09:00</span>

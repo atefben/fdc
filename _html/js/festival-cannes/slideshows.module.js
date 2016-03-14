@@ -16,12 +16,13 @@ function initSlideshows() {
     items        : nbItems
   });
 
-  if( navigator.userAgent.indexOf("Edge") > -1 ||
-      navigator.userAgent.indexOf("MSIE") > -1 ||
-      navigator.userAgent.indexOf("Trident") > -1 ) {
+  if(navigator.userAgent.indexOf("Edge")    > -1 ||
+     navigator.userAgent.indexOf("MSIE")    > -1 ||
+     navigator.userAgent.indexOf("Trident") > -1 ) {
     $('.thumbnails .thumb, .slideshow .slideshow-img .images .img a').each(function () {
       var $container = $(this),
           imgUrl     = $container.find('img').prop('src');
+
       if (imgUrl) {
         $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
       }
@@ -36,15 +37,14 @@ function initSlideshows() {
   $('.thumbnails .owl-item').on('click', function(e) {
     e.preventDefault();
 
-    $(this).parents('.slideshow').find('.thumb').removeClass('active');
-    $(this).parents('.slideshow').find('.images .img').removeClass('active');
-
     var i   = $(this).index(),
         cap = $(this).find('.thumb').data('caption');
 
-    $(this).find('.thumb').addClass('active');
+    $(this).parents('.slideshow').find('.thumb').removeClass('active');
+    $(this).parents('.slideshow').find('.images .img').removeClass('active');
     $(this).parents('.slideshow').find('.caption').html(cap);
     $(this).parents('.slideshow-img').find('.images .img').eq(i).addClass('active');
+    $(this).find('.thumb').addClass('active');
   });
 
   // init slideshow
@@ -70,7 +70,7 @@ function initSlideshows() {
 }
 
 // close slideshow on click
-$('body').on('click', '.chocolat-close', function(e){
+$('body').on('click', '.chocolat-close', function(e) {
   $('.chocolat-img').css('transition', 'all 0.9s ease').addClass('close');
   $('.chocolat-bottom').css('opacity', 0);
   $('.chocolat-close').css('opacity', 0);
@@ -86,7 +86,7 @@ $('body').on('click', '.chocolat-close', function(e){
 
         if($('[data-'+type+'='+pid+']').length > 0) {
           $('html, body').animate({
-            scrollTop: $('[data-'+type+'='+pid+']').parents('.slideshow').offset().top - 300
+            scrollTop : $('[data-'+type+'='+pid+']').parents('.slideshow').offset().top - 300
           }, 0);
         }
       }
@@ -160,6 +160,7 @@ $('body').on('click', '.chocolat-image', function() {
   $('<div class="credit">' + $that.data('credit') + '</div>').insertBefore('.chocolat-wrapper .share');
 
   linkPopinInit(0,'.img-slideshow-share .button.link');
+  updatePhotoShare($that.data('pid'), $that.data('title'));
   initPopinMail();
 
   setTimeout(function() {
@@ -190,12 +191,12 @@ $('body').on('click', '.chocolat-image', function() {
   }
 
   thumbnails = $('.chocolat-wrapper .thumbnails').owlCarousel({
-    nav: false,
-    dots: false,
-    smartSpeed: 500,
-    margin: 0,
-    autoWidth:true,
-    URLhashListener:false
+    nav             : false,
+    dots            : false,
+    smartSpeed      : 500,
+    margin          : 0,
+    autoWidth       : true,
+    URLhashListener : false
   });
 });
 
@@ -325,12 +326,12 @@ function updatePhotoShare(pid, title) {
   $('.chocolat-bottom .img-slideshow-share .button.twitter').off('click');
 
   // CUSTOM LINK FACEBOOK
-  var fbHref   = "//www.facebook.com/sharer.php?u=CUSTOM_URL";
-  fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
+  var fbHref = "//www.facebook.com/sharer.php?u=CUSTOM_URL";
+  fbHref     = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
   $('.chocolat-bottom .img-slideshow-share .facebook').attr('href', fbHref);
   // CUSTOM LINK TWITTER
-  var twHref   = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
-  twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent(t1[0]+" "+shareUrl));
+  var twHref = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
+  twHref     = twHref.replace('CUSTOM_TEXT', encodeURIComponent(t1[0]+" "+shareUrl));
   $('.chocolat-bottom .img-slideshow-share .twitter').attr('href', twHref);
   // CUSTOM LINK COPY
   $('.chocolat-bottom .img-slideshow-share .button.link').attr('href', encodeURIComponent(shareUrl));
@@ -346,4 +347,13 @@ function updatePhotoShare(pid, title) {
       window.open(this.href,'','width=700,height=500');
       return false;
   });
+
+  var parsed = $('<div/>').append(title);
+  updatePopinMedia({
+      'type'     : "photo",
+      'category' : parsed.find('.category').text(),
+      'date'     : parsed.find('.date').text(),
+      'title'    : parsed.find('h2').text()
+  }, encodeURIComponent(shareUrl));
+  launchPopinMedia('photo', '.img-slideshow-share .button.email', '');
 }

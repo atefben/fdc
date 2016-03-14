@@ -403,6 +403,7 @@ $(document).ready(function () {
 
       videoPopin = playerInit('video-player-popin', false, 'grid');
       linkPopinInit(0, '.popin-video .popin-buttons.buttons .link');
+      launchPopinMedia('video', '.popin-video .popin-buttons.buttons .email', videoPopin);
 
       $grid = $('#gridVideos').imagesLoaded(function() {
         setGrid($grid, ('#gridVideos'), true);

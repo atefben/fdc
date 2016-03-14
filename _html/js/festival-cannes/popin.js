@@ -94,7 +94,7 @@ $(document).ready(function() {
   if($('.popin-mail:not(.media)').length) {
     initPopinMail('.popin-mail:not(.media)');
 
-    $('.button.email').on('click touchstart', function(e) {
+    $('.button.email.self').on('click touchstart', function(e) {
       e.preventDefault();
       $('.popin-mail:not(.media)').addClass('visible-popin');
       $("#main").addClass('overlay-popin');
@@ -116,6 +116,8 @@ $(document).ready(function() {
         }
       });
     });
+  } else if($('.popin-mail.media').length) {
+    initPopinMail('.popin-mail.media');
   }
 
   linkPopinInit();
@@ -190,12 +192,10 @@ function linkPopinInit(link, cls) {
   }
 }
 
-function launchPopinMedia(data, url) {
-  url = url || document.location.href;
+function updatePopinMedia(data, url) {
+  var url = url || document.location.href;
 
   if($('.popin-mail.media').length) {
-    initPopinMail('.popin-mail.media');
-
     $('.popin-mail.media').find('.contain-popin .theme-article').text(data['category']);
     $('.popin-mail.media').find('.contain-popin .date-article').text(data['date']);
     $('.popin-mail.media').find('.contain-popin .title-article').text(data['title']);
@@ -203,15 +203,32 @@ function launchPopinMedia(data, url) {
     $('.popin-mail.media').find('form #contact_detail').val(data['date']);
     $('.popin-mail.media').find('form #contact_title').val(data['title']);
     $('.popin-mail.media').find('form #contact_url').val(url);
+  }
+}
 
-    console.log('lol2');
+function launchPopinMedia(type, cls, player) {
+  var type = type || '',
+      cls  = cls  || '.buttons .email';
+
+  $(cls).on('click', function(e) {
+    e.preventDefault();
+
+    switch(type) {
+      case 'audio' :
+        break;
+      case 'photo' :
+        // $('.chocolat-close').trigger('click');
+        break;
+      case 'video' :
+        player.removeFullscreen();
+        break;
+    }
 
     $('.popin-mail.media').addClass('visible-popin');
     $("#main").addClass('overlay-popin');
     
     $(document).on('click touchstart', function (e) {
       var $element= $(e.target);
-      console.log(!$element.hasClass('visible-popin'));
       if(!$element.hasClass('visible-popin')) {
         var $isPopin = $element.closest('.visible-popin');
         var isButton = $element.hasClass('button');
@@ -225,5 +242,5 @@ function launchPopinMedia(data, url) {
         }
       }
     });
-  }
+  });
 }

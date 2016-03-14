@@ -150,7 +150,7 @@ $(document).ready(function() {
           $('.popin-video').find('.popin-buttons.buttons .link').attr('href', encodeURIComponent(shareUrl));
           $('.popin-video').find('.popin-buttons.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
 
-          launchPopinMedia({
+          updatePopinMedia({
             'type'     : "video",
             'category' : category,
             'date'     : date,
@@ -286,6 +286,8 @@ $(document).ready(function() {
     if($('#content-latest').length) {
         videoPopin = playerInit('video-player-popin', false, false);
         linkPopinInit(0, '.popin-video .popin-buttons.buttons .link');
+        launchPopinMedia('video', '.popin-video .popin-buttons.buttons .email', videoPopin);
+
 
         $('.ov').on('click', function (e) {
           e.preventDefault();
@@ -341,7 +343,7 @@ $(document).ready(function() {
           $('.popin-video').find('.popin-buttons.buttons .link').attr('href', encodeURIComponent(shareUrl));
           $('.popin-video').find('.popin-buttons.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
 
-          launchPopinMedia({
+          updatePopinMedia({
             'type'     : "video",
             'category' : category,
             'date'     : date,

@@ -151,18 +151,14 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     // CUSTOM LINK MAIL
     // $topBar.find('.buttons .email').attr('href', $container.data('email'));
-    $topBar.find('.buttons .email').on('click', function(e) {
-        e.preventDefault();
-        removeFullscreen();
-
-        launchPopinMedia({
-            'type'     : "video",
-            'category' : $topBar.find('.info .category').text(),
-            'date'     : $topBar.find('.info .date').text(),
-            'title'    : $topBar.find('.info p').text()
-        }, encodeURIComponent(shareUrl));
-    });
-
+    updatePopinMedia({
+        'type'     : "video",
+        'category' : $topBar.find('.info .category').text(),
+        'date'     : $topBar.find('.info .date').text(),
+        'title'    : $topBar.find('.info p').text()
+    }, encodeURIComponent(shareUrl));
+    launchPopinMedia('video', '#'+vid.id+' + .'+$topBar[0].className.replace(' ','.')+' .buttons .email', playerInstance);
+    
     function updateVolume(x, vol) {
         var volume = $sound.find('.sound-bar'),
             percentage;
@@ -193,7 +189,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         }
     }
 
-    function removeFullscreen() {
+    playerInstance.removeFullscreen = function() {
         $container.find('.channels-video').removeClass('active');
         $container.find('.jwplayer').removeClass('overlay-channels');
         fullScreenApi.cancelFullScreen();
@@ -242,7 +238,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $topBar.find('.buttons .link').attr('href', encodeURIComponent(shareUrl));
         $topBar.find('.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
 
-        launchPopinMedia({
+        updatePopinMedia({
             'type'     : "video",
             'category' : $playlist[index].category,
             'date'     : $playlist[index].date,
@@ -396,7 +392,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 playlist.push(tempList);
             });
         } else if (typeof $container.data('playlist') != "undefined") {
-            playlist = $container.data('categoplaylist');
+            playlist = $container.data('playlist');
         }
 
         $.each(playlist, function(i,p) {
@@ -420,9 +416,12 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         if($('.infos-videos .buttons').length > 0) {
             linkPopinInit(0, '.infos-videos .buttons .link');
             updateShareLink(0, '.infos-videos');
+
+            launchPopinMedia('video', '.infos-videos .buttons .email', playerInstance);
         } else if($('.informations-video .buttons').length > 0) {
             linkPopinInit(0, '.informations-video .buttons .link');
             updateShareLink(0, '.informations-video');
+            launchPopinMedia('video', '.informations-video .buttons .email', playerInstance);
         } else {
             updateShareLink();
         }
