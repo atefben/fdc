@@ -41,7 +41,7 @@
                   </a>
                 </div>
                 <div class="img">
-                  <a data-pid="2" id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title="test" data-credit="Crédit Image : ">
+                  <a data-pid="2" id="photo2" class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg" title='<span class="category">test</span><span class="date">20.05.2012</span><h2>test</h2>' data-credit="Crédit Image : ">
                     <img src="img/slide002.jpg" alt="" />
                   </a>
                 </div>

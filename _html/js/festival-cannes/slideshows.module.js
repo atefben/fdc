@@ -214,6 +214,10 @@ $('body').on('click', '.chocolat-wrapper .thumb', function() {
   $('.chocolat-wrapper .thumb').removeClass('active');
   $(this).addClass('active');
 
+  if($('body').hasClass('chocolat-zoomed')) {
+    $('.chocolat-content img.chocolat-img').trigger('click');
+  }
+
   var slideshow = $('.slideshow .images').data('chocolat');
   for(var i=0; i<slideshows.length; i++) {
     slideshows[i].api().goto(j);
@@ -324,8 +328,8 @@ $('body').on('mousemove', '.chocolat-content', function(e) {
 function updatePhotoShare(pid, title) {
   var pid      = pid || 0,
       title    = title || "",
-      t0       = title.split('<h2>'),
-      t1       = t0[1].split('</h2>'),
+      t0       = title.split('<h2>') || "",
+      t1       = t0[1].split('</h2>') || "",
       shareUrl = GLOBALS.urls.photosUrl+'#pid='+pid;
 
   $('.chocolat-bottom .img-slideshow-share .button.facebook').off('click');
