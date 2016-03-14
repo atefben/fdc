@@ -192,9 +192,9 @@ function linkPopinInit(link, cls) {
   }
 }
 
-function updatePopinMedia(data, url) {
+function updatePopinMedia(data) {
   console.log(data);
-  var url = url || document.location.href;
+  data['url'] = data['url'] || document.location.href;
 
   if($('.popin-mail.media').length) {
     $('.popin-mail.media').find('.contain-popin .theme-article').text(data['category']);
@@ -203,45 +203,42 @@ function updatePopinMedia(data, url) {
     $('.popin-mail.media').find('form #contact_section').val(data['category']);
     $('.popin-mail.media').find('form #contact_detail').val(data['date']);
     $('.popin-mail.media').find('form #contact_title').val(data['title']);
-    $('.popin-mail.media').find('form #contact_url').val(url);
+    $('.popin-mail.media').find('form #contact_url').val(data['url']);
   }
 }
 
-function launchPopinMedia(type, cls, player) {
-  var type = type || '',
-      cls  = cls  || '.buttons .email';
+function launchPopinMedia(data, player) {
+  if(!$.isEmptyObject(data)) {
+    updatePopinMedia(data);
+  }
 
-  $(cls).on('click', function(e) {
-    e.preventDefault();
+  switch(data['type']) {
+    case 'audio' :
+      break;
+    case 'photo' :
+      // $('.chocolat-close').trigger('click');
+      break;
+    case 'video' :
+      player.removeFullscreen();
+      break;
+  }
 
-    switch(type) {
-      case 'audio' :
-        break;
-      case 'photo' :
-        // $('.chocolat-close').trigger('click');
-        break;
-      case 'video' :
-        player.removeFullscreen();
-        break;
-    }
+  $('.popin-mail.media').addClass('visible-popin');
+  $("#main").addClass('overlay-popin');
+  
+  $(document).on('click touchstart', function (e) {
+    var $element= $(e.target);
+    if(!$element.hasClass('visible-popin')) {
+      var $isPopin = $element.closest('.visible-popin');
+      var isButton = $element.hasClass('button');
 
-    $('.popin-mail.media').addClass('visible-popin');
-    $("#main").addClass('overlay-popin');
-    
-    $(document).on('click touchstart', function (e) {
-      var $element= $(e.target);
-      if(!$element.hasClass('visible-popin')) {
-        var $isPopin = $element.closest('.visible-popin');
-        var isButton = $element.hasClass('button');
+      if(!$isPopin.length && !isButton) {
+        $('.popin-mail.media').removeClass('visible-popin');
+        $("#main").removeClass('overlay-popin');
+        $('footer').removeClass('overlay');
 
-        if(!$isPopin.length && !isButton) {
-          $('.popin-mail.media').removeClass('visible-popin');
-          $("#main").removeClass('overlay-popin');
-          $('footer').removeClass('overlay');
-
-          $(document).off('click touchstart');
-        }
+        $(document).off('click touchstart');
       }
-    });
+    }
   });
 }
