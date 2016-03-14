@@ -40,7 +40,7 @@
                         {{ 'header.mainnav.nav.programmation'|trans }}
                     </a>
                     <ul class="tcenter">
-                        {% if app.request.attributes.get('_route') == 'fdc_press_agenda_scheduling' %}
+                        {#{% if app.request.attributes.get('_route') == 'fdc_press_agenda_scheduling' %}#}
                         <li>
                             <a href="{{ path('fdc_press_agenda_scheduling') }}"
                                class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_scheduling'%}active{% endif %}">
