@@ -75,6 +75,7 @@ class MediaImageSimpleAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $requiredFile = ($this->subject && $this->subject->getId()) ? false : true;
+        $context = ($this->getRequest()->query->get('context') !== null) ? $this->getRequest()->query->get('context') : 'media_image_simple';
 
         $formMapper
             ->add('translations', 'a2lix_translations', array(
@@ -91,7 +92,7 @@ class MediaImageSimpleAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help'        => 'form.media_image_simple.helper_file',
                         'provider'           => 'sonata.media.provider.image',
-                        'context'            => 'media_image_simple',
+                        'context'            => $context,
                         'required'           => $requiredFile,
                     ),
                     'alt'       => array(
