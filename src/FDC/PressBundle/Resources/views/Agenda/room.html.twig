@@ -42,7 +42,18 @@
         </div>
         <div class="maps">
             {% for key,r in rooms.mapRoom %}
-                <span id="room{{ r.room.id }}" class="{% if key == 0 %}first active{% endif %}">
+                {% if key == 0 %}
+                <span id="default" class="first active">
+                    {% set defaultImg = rooms.defaultRoomImage %}
+                    {% set trans = defaultImg.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = defaultImg.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set defaultImg = trans.file %}
+                    {% thumbnail defaultImg, '646x567' with {'alt': defaultImg|trans_fallback('alt') } %}
+                </span>
+                {% endif %}
+                <span id="room{{ r.room.id }}">
                     {% set img = r.room.image %}
                     {% set trans = img.findTranslationByLocale(app.request.locale) %}
                     {% if trans is null or trans.file is null %}

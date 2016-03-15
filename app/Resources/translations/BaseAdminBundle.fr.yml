@@ -642,6 +642,7 @@ form:
     label_download_section: Sections à télécharger
     label_map_img: Image de la salle
     label_map_zone_img: Image de la zone
+    label_map_default_img: Image du plan
     label_page: Page
     label_text: Texte
     label_banner: Bannière
