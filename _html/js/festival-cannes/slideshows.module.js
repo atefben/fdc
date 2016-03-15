@@ -344,8 +344,8 @@ function updatePhotoShare(pid, title) {
   twHref     = twHref.replace('CUSTOM_TEXT', encodeURIComponent(t1[0]+" "+shareUrl));
   $('.chocolat-bottom .img-slideshow-share .twitter').attr('href', twHref);
   // CUSTOM LINK COPY
-  $('.chocolat-bottom .img-slideshow-share .button.link').attr('href', encodeURIComponent(shareUrl));
-  $('.chocolat-bottom .img-slideshow-share .button.link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
+  $('.chocolat-bottom .img-slideshow-share .button.link').attr('href', shareUrl);
+  $('.chocolat-bottom .img-slideshow-share .button.link').attr('data-clipboard-text', shareUrl);
 
   $('.chocolat-bottom .img-slideshow-share .button.facebook').on('click',function() {
     $('.chocolat-bottom .buttons').removeClass('show');
@@ -364,6 +364,6 @@ function updatePhotoShare(pid, title) {
     'category' : parsed.find('.category').text(),
     'date'     : parsed.find('.date').text(),
     'title'    : parsed.find('h2').text(),
-    'url'      : encodeURIComponent(shareUrl),
+    'url'      : shareUrl,
   });
 }

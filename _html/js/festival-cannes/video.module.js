@@ -136,9 +136,9 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     }
     $topBar.find('.buttons .twitter').attr('href', twHref);
     // CUSTOM LINK COPY
-    $topBar.find('.buttons .link').attr('href', encodeURIComponent(shareUrl));
-    $topBar.find('.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
-    linkPopinInit(encodeURIComponent(shareUrl), '#'+vid.id+' + .'+$topBar[0].className.replace(' ','.')+' .buttons .link');
+    $topBar.find('.buttons .link').attr('href', shareUrl);
+    $topBar.find('.buttons .link').attr('data-clipboard-text', shareUrl);
+    linkPopinInit(shareUrl, '#'+vid.id+' + .'+$topBar[0].className.replace(' ','.')+' .buttons .link');
 
     $topBar.find('.buttons .facebook').on('click',function() {
         window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
@@ -158,7 +158,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             'category' : $topBar.find('.info .category').text(),
             'date'     : $topBar.find('.info .date').text(),
             'title'    : $topBar.find('.info p').text(),
-            'url'      : encodeURIComponent(shareUrl)
+            'url'      : shareUrl
         }, playerInstance);
     });
     
@@ -238,15 +238,15 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent($playlist[index].name+" "+shareUrl));
         $topBar.find('.buttons .twitter').attr('href', twHref);
         // CUSTOM LINK COPY
-        $topBar.find('.buttons .link').attr('href', encodeURIComponent(shareUrl));
-        $topBar.find('.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
+        $topBar.find('.buttons .link').attr('href', shareUrl);
+        $topBar.find('.buttons .link').attr('data-clipboard-text', shareUrl);
 
         updatePopinMedia({
             'type'     : "video",
             'category' : $playlist[index].category,
             'date'     : $playlist[index].date,
             'title'    : $playlist[index].name,
-            'url'      : encodeURIComponent(shareUrl)
+            'url'      : shareUrl
         });
 
         if (sc) {
