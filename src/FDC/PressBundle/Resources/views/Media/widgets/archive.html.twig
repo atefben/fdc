@@ -8,9 +8,9 @@
 
 <div class="imgs-container {% if key == 0 %}first{% elseif key == 2 %}last{% endif %}">
     <div class="container-img">
-        <img src="{% path image, 'reference' %}" alt="{{ widget.image|trans_fallback('alt') }}" />
+        <img src="{% path image, '233x233' %}" alt="{{ widget.image|trans_fallback('alt') }}" />
     </div>
-    <span class="caption">{{ widget|trans_fallback('copyright') }}</span>
+    <span class="caption">© {{ widget|trans_fallback('copyright') }}</span>
     <div class="infos">
         <h4>{{ widget|trans_fallback('label') }}</h4>
         {{ widget|trans_fallback('content')|raw }}

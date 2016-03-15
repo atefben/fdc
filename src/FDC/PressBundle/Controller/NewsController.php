@@ -104,6 +104,9 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
+        // SEO
+        $this->get('base.manager.seo')->setFDCPressPagePressHomepageSeo($homepage, $locale);
+
         return array(
             'headerInfo' => $headerInfo,
             'homeNews' => $homeNews,
@@ -363,6 +366,14 @@ class NewsController extends Controller
             $i++;
             $ii++;
         }
+
+        $pressStatementInfo = $em->getRepository('BaseCoreBundle:PressStatementInfo')->findOneById($this->getParameter('admin_press_statementinfo_id'));
+        if ($pressStatementInfo === null) {
+            throw new NotFoundHttpException();
+        }
+
+        // SEO
+        $this->get('base.manager.seo')->setFDCPressPagePressStatementInfoSeo($pressStatementInfo, $locale);
 
         return array(
             'filters' => $filters,

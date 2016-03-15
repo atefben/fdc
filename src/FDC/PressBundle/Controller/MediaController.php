@@ -106,6 +106,15 @@ class MediaController extends Controller
             }
             $i++;
         }
+
+        $pressMediaLibrary = $em->getRepository('BaseCoreBundle:PressMediaLibrary')->findOneById($this->getParameter('admin_press_medialibrary_id'));
+        if ($pressMediaLibrary === null) {
+            throw new NotFoundHttpException();
+        }
+
+        // SEO
+        $this->get('base.manager.seo')->setFDCPressPagePressMediaLibrarySeo($pressMediaLibrary, $locale);
+
         return array(
             'filmSection' => $filmSection,
             'films' => $films
@@ -305,11 +314,13 @@ class MediaController extends Controller
             throw new NotFoundHttpException();
         }
 
-        //GET PRESS HOMEPAGE
+        //GET PRESS DOWNLOADPAGE
         $section = $em->getRepository('BaseCoreBundle:PressDownload')->findOneById($this->getParameter('admin_press_download_id'));
         if ($section === null || $section->getDownloadSection() === null) {
             throw new NotFoundHttpException();
         }
+        // SEO
+        $this->get('base.manager.seo')->setFDCPressPagePressDownloadSeo($section, $locale);
 
         $downloads = $section->getDownloadSection();
 
