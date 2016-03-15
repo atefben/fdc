@@ -11,6 +11,10 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\NullOutput;
+
 /**
  * Class SocialGraphCommand
  * @package FDC\EventBundle\Command
@@ -129,6 +133,19 @@ class SocialGraphCommand extends ContainerAwareCommand
             }
 
         }
+
+        $kernel = $this->getContainer()->get('kernel');
+        $application = new Application($kernel);
+        $application->setAutoExit(false);
+
+        $input = new ArrayInput(array(
+            'command' => ' sonata:admin:generate-object-acl',
+            '--user_entity' => 'BaseCoreBundle:SocialGraph',
+        ));
+
+        $output = new NullOutput();
+        $application->run($input, $output);
+
     }
 
     private function writeError($output, $logger, $msg)
