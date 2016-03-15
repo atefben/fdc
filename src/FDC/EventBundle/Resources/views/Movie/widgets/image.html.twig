@@ -1,33 +1,41 @@
 {% trans_default_domain 'FDCEventBundle' %}
-
+{% if photos|length > 0 %}
 <div class="photos" data-section="photos">
     <div class="slideshow">
         <div class="slideshow-img">
             <div class="images">
                 {% for key, photo in photos %}
+                    {% set title = '' %}
+                    {% if app.request.locale == 'fr' and photo.media.titleVf %}
+                        {% set title =  photo.media.titleVf %}
+                    {% elseif app.request.locale != 'fr' and photo.media.titleVa %}
+                        {% set title = photo.media.titleVa %}
+                    {% endif %}
+
                     <div class="img {% if key == 0 %}active{% endif %}">
                         <a id="photo{{ photo.id }}"
                            class="chocolat-image ajax"
-                           href="{{ photo.image.path }}"
-                           title='<span class="category">{{ photo.theme }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }}</span><h2>{{ photo.title }}</h2>'
-                           data-credit="{{ photo.copyright }}">
-                            <img src="{{ photo.image.path }}" alt="" />
+                           href="{% path photo.media.file, photo.media.file.context ~ '_big' %}"
+                           title='<span class="category">{{ title }}</span><span class="date">{{ photo.media.createdAt|date('d.m.y') }}</span><h2>{{ photo.media.createdAt|trans_fallback('title') }}</h2>'
+                           data-credit="{{ photo.media.copyright }}">
+                            <img src="{% path photo.media.file, photo.media.file.context ~ '_small' %}" alt="" />
                         </a>
                     </div>
                 {% endfor %}
             </div>
             <div class="owl-carousel thumbnails">
                 {% for key, photo in photos %}
-                    <div class="thumb {% if key == 0 %}active{% endif %}" data-caption="{{ photo.caption }}">
-                        <img src="{{ photo.image.thumb }}" />
+                    <div class="thumb {% if key == 0 %}active{% endif %}" data-caption="{{ photo.media.copyright }}">
+                        <img src="{% path photo.media.file, photo.media.file.context ~ '_small' %}" />
                     </div>
                 {% endfor %}
             </div>
         </div>
         {% for key, photo in photos %}
             {% if key == 0 %}
-                <p class="caption">{{ photo.caption }}</p>
+                <p class="caption">{{ photo.media.copyright }}</p>
             {% endif %}
         {% endfor %}
     </div>
 </div>
+{% endif %}

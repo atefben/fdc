@@ -36,7 +36,7 @@
                       "vid":"{{ video.id }}",
                       "name":"{{ video|trans_fallback('title') }}",
                       "image":"{{ videoImage }}",
-                      "category":"{{ video.theme }}",
+                      "category":"{{ video.theme|trans_fallback('name') }}",
                       "date":"{{ video.publishedAt()|date('d/m/Y') }}",
                       "hour":"{{ video.publishedAt()|date('H:i') }}"
                     }
