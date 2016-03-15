@@ -106,11 +106,12 @@
         // Surcharge de l'AjaxEvent de press.module.js
         // A adapter
         $(document).on('click','.section-cat', function(event){
+            var sectionCat = $(this).data('cat');
             $.ajax({
                 type  : "POST",
                 cache : false,
                 url   : GLOBALS.urls.pressMediaSection,
-                data  : {'id': $('.section-cat').attr('data-cat')},
+                data  : {'id': sectionCat},
                 success: function(data) {
                     $('.nav-container').remove();
                     $('.nav-mediapress').after(data);

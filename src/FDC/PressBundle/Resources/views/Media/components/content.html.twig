@@ -65,7 +65,7 @@
 
                                     <div class="buttons active-btn">
                                         {% for m in film.medias %}
-                                        {% if m.type == 18 %}
+                                        {% if m.type == 18 and m.media is not null %}
                                             {% if 'French' in m.media.titleVa %}
                                                 <a href="{% path m.media.file, 'reference' %}" class="button" target="_blank" download><i class="icon icon_telecharger"></i>{{ 'mediatheque.label.btn.enfrancais'|trans }}</a>
                                             {% elseif 'English' in m.media.titleVa %}
@@ -128,7 +128,7 @@
                                             <div class="grid-sizer"></div>
 
                                             {% for key,m in film.medias %}
-                                                {% if m.type == 14 %}
+                                                {% if m.type == 14 and m.media is not null %}
                                                     {% set imageTitle = '' %}
                                                     {% if app.request.locale == 'fr' %}
                                                         {% set imageTitle = m.media.titleVf %}
@@ -147,7 +147,7 @@
                                             <div class="owl-carousel thumbnails">
 
                                                 {% for key,m in film.medias %}
-                                                    {% if m.type == 14 %}
+                                                    {% if m.type == 14 and m.media is not null %}
                                                         {% set imageTitle = '' %}
                                                         {% if app.request.locale == 'fr' %}
                                                             {% set imageTitle = m.media.titleVf %}
