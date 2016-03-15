@@ -8775,7 +8775,7 @@ header #searchContainer {
 
 #news {
   overflow: hidden;
-  padding-top: 80px;
+  padding: 80px 0;
 }
 #news #format {
   margin-right: 10px;
@@ -9016,6 +9016,10 @@ header #searchContainer {
   position: absolute;
   pointer-events: none;
   width: 44px;
+}
+
+#news + #social-wall {
+  padding-top: 0px;
 }
 
 #social-wall {
