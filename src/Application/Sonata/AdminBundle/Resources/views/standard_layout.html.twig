@@ -284,6 +284,14 @@ file that was distributed with this source code.
                                                                     {% endif %}
                                                                 {% endfor %}
                                                             {% endif %}
+                                                            {% if app.security.token and is_granted('ROLE_FDC_SETTINGS') %}
+                                                                <li>
+                                                                    <a href="{{ path('base_admin_settings_index') }}">
+                                                                        <i class="fa fa-angle-double-right"></i>
+                                                                        {{ 'dashboard.link.settings'|trans({}, 'BaseAdminBundle') }}
+                                                                    </a>
+                                                                </li>
+                                                            {% endif %}
                                                         </ul>
                                                     </li>
                                                 {% endif %}
@@ -367,13 +375,6 @@ file that was distributed with this source code.
                                                 </ul>
                                             </li>
                                             {% block side_bar_li %}
-                                                {% if app.security.token and is_granted('ROLE_FDC_SETTINGS') %}
-                                                <li>
-                                                    <a href="{{ path('base_admin_settings_index') }}">
-                                                        {{ 'dashboard.link.settings'|trans({}, 'BaseAdminBundle') }}
-                                                    </a>
-                                                </li>
-                                                {% endif %}
                                                 {% if app.security.token and is_granted('ROLE_JMS_TRANSLATION') %}
                                                 <li>
                                                     <a href="{{ path('jms_translation_index') }}">
