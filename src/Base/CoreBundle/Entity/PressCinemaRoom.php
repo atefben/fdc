@@ -40,6 +40,13 @@ class PressCinemaRoom implements TranslateMainInterface
     protected $image;
 
     /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple", cascade={"persist"})
+     */
+    protected $zoneImage;
+
+    /**
      * @var ArrayCollection
      *
      * @Assert\Valid()
@@ -98,4 +105,26 @@ class PressCinemaRoom implements TranslateMainInterface
         return $this->image;
     }
 
+    /**
+     * Set zoneImage
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $zoneImage
+     * @return PressCinemaRoom
+     */
+    public function setZoneImage(\Base\CoreBundle\Entity\MediaImageSimple $zoneImage = null)
+    {
+        $this->zoneImage = $zoneImage;
+
+        return $this;
+    }
+
+    /**
+     * Get zoneImage
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getZoneImage()
+    {
+        return $this->zoneImage;
+    }
 }

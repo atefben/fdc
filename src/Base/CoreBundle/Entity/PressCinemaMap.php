@@ -40,13 +40,6 @@ class PressCinemaMap implements TranslateMainInterface
     protected $mapRoom;
 
     /**
-     * @var string
-     *
-     * @ORM\ManyToOne(targetEntity="MediaImageSimple", cascade={"persist"})
-     */
-    protected $zoneImage;
-
-    /**
      * ArrayCollection
      */
     protected $translations;
