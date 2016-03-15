@@ -1,37 +1,51 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-<div class="casting" data-section="casting">
-    <div class="gallery">
-        <div class="img shadow-bottom">
-            {% for key, person in movie.persons %}
-                <img src="{{ person.image.path }}" alt="" class="{% if key == 0 %}active{% endif %}" />
-                {% if key == 0 %}
-                    <span class="caption">{{ person.image.copyright }}</span>
-                {% endif %}
-            {% endfor %}
-        </div>
-        <div class="thumbs">
-            {% for key, person in movie.persons %}
-                <a href="#" class="{% if key == 0 %}active{% endif %}" data-caption="{{ person.image.copyright }}">
-                    <img src="{{ person.image.cover }}" alt=""  />
-                </a>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="content">
-        <div class="vCenter">
-            <div class="vCenterKid">
-                <h3 class="title-section">{{ 'movie.title.credits'|trans }}</h3>
-                {% for person in movie.persons %}
-                    <p><a href="{{ path('fdc_event_artist_get', {'slug': person.credits.slug }) }}">{{ person.credits.fullName }} </a> - {{ person.credits.role }}</p>
+{% if movie.persons|length > 0 %}
+    <div class="casting" data-section="casting">
+        <div class="gallery">
+            <div class="img shadow-bottom">
+                {% for key, person in movie.persons %}
+                    {% set media = person|film_media(constant('Base\\CoreBundle\\Entity\\FilmPersonMedia::TYPE_DIRECTOR'))|first %}
+                    {% if media is not null and media is not false %}
+                        {% if mediafirst is not defined %}
+                            {% thumbnail media, 'film_film_small' with {'class': 'active'} %}
+                        {% else %}
+                            {% thumbnail media, 'film_film_small' %}
+                        {% endif %}
+                    {% endif %}
+
+                    {% if media is not null and medafirst is not defined %}
+                        <span class="caption">{{ dump(media) }}</span>
+                    {% endif %}s
+                    {% set mediafirst = false %}
                 {% endfor %}
-                <div class="actors">
-                    <h3 class="title-section">{{ 'movie.title.casting'|trans }}</h3>
+            </div>
+            <div class="thumbs">
+                {% for key, person in movie.persons %}
+                    {% set media = person|film_media(constant('Base\\CoreBundle\\Entity\\FilmPersonMedia::TYPE_DIRECTOR'))|first %}
+                    {% if media is not null %}
+                        {% media media, 'film_film_small' %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="content">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <h3 class="title-section">{{ 'movie.title.credits'|trans }}</h3>
                     {% for person in movie.persons %}
-                        <p><a href="{{ path('fdc_event_artist_get', {'slug': person.casting.slug }) }}">{{ person.casting.fullName }}</a> - {{ person.casting.role }}</p>
+                        {% if person
+                            <p><a href="{{ path('fdc_event_artist_get', {'slug': person.person.slug }) }}">{{ person.person.fullName }} </a> - {% for function in person.functions %}{{ function|trans_fallback('name') }} {% endfor %}</p>
+                        {% endif %}
                     {% endfor %}
+                    <div class="actors">
+                        <h3 class="title-section">{{ 'movie.title.casting'|trans }}</h3>
+                        {% for person in movie.persons %}
+                            <p><a href="{{ path('fdc_event_artist_get', {'slug': person.person.slug }) }}">{{ person.fullName }}</a> - {% for function in person.functions %}{{ function|trans_fallback('name') }} {% endfor %}</p>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+{% endif %}
