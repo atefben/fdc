@@ -2,13 +2,17 @@
 
 namespace FDC\EventBundle\Controller;
 
-use Base\CoreBundle\Entity\FDCPageLaSelection;
 use \DateTime;
 
-use Symfony\Component\HttpFoundation\Request;
+use Base\CoreBundle\Entity\FDCPageLaSelection;
+
 use FDC\EventBundle\Component\Controller\Controller;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @Route("/")
@@ -24,6 +28,18 @@ class MovieController extends Controller
      */
     public function getAction($slug)
     {
+        $em    = $this->get('doctrine')->getManager();
+
+        // GET MOVIE
+        $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
+            'slug' => $slug,
+          //  'festival' => $this->getFestival()
+        ));
+
+        if ($movie === null) {
+            throw new NotFoundHttpException('Movie not found');
+        }
+
         $movies = array(
             array(
                 'slug'    => 'youth',
@@ -134,7 +150,7 @@ class MovieController extends Controller
                 )
             ),
         );
-
+/*
         $movie = array(
             'title'          => 'Adieu au language',
             'titleVO'        => 'Adieu au language',
@@ -426,12 +442,11 @@ class MovieController extends Controller
                 ),
             )
 
-        );
+        );*/
 
         return array(
             'movies' => $movies,
-            'movie'  => $movie,
-            'videos' => $videos,
+            'movie'  => $movie
         );
     }
 

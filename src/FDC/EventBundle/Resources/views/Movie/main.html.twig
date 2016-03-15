@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        {% include 'FDCEventBundle:Movie:widgets/video.html.twig' %}
+        {% include 'FDCEventBundle:Movie:widgets/video.html.twig' with { videos: movie.associatedMediaVideos } %}
 
         <div class="container">
 
