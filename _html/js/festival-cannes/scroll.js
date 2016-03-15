@@ -272,7 +272,7 @@ $(document).ready(function() {
         $('#live').removeClass('on');
         $('#live').height($('#live').data('height'));
         $('#main').css('padding-top', 0);
-        if(videoWebtv.getState() === "playing") {
+        if(videoWebtv.getState() != "paused" && videoWebtv.getState() != "idle") {
           $('#live .trailer').removeClass('on');
           videoWebtv.pause();
         }
