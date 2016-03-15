@@ -112,16 +112,19 @@ function makePath(data){
   var minValue = 35;
 
   s = Snap('#graphSVG');
-  
-  // Creates the vertical lines in the graph
-  for (var i=0; i<dataLength; i++) {
-    var x = 4 + i*80;
-    var xLine = s.line(x, minValue, x, maxValue).attr({
-      stroke: "#000",
-      strokeWidth: 0.25,
-      strokeDasharray: '1 5'
-    });
-  }
+
+   if (s.length > 0) {
+
+     // Creates the vertical lines in the graph
+     for (var i = 0; i < dataLength; i++) {
+       var x = 4 + i * 80;
+       var xLine = s.line(x, minValue, x, maxValue).attr({
+         stroke: "#000",
+         strokeWidth: 0.25,
+         strokeDasharray: '1 5'
+       });
+     }
+   }
 }
 
 function displayGrid() {

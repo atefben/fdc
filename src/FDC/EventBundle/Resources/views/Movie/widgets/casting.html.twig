@@ -5,8 +5,9 @@
         <div class="gallery">
             <div class="img shadow-bottom">
                 {% for key, person in movie.persons %}
-                    {% set media = person|film_media(constant('Base\\CoreBundle\\Entity\\FilmPersonMedia::TYPE_DIRECTOR'))|first %}
-                    {% if media is not null and media is not false %}
+                    {% set medias = person|film_media(constant('Base\\CoreBundle\\Entity\\FilmPersonMedia::TYPE_DIRECTOR')) %}
+                    {% if medias|length > 0 %}
+                        {% set media = medias|first %}
                         {% if mediafirst is not defined %}
                             {% thumbnail media, 'film_film_small' with {'class': 'active'} %}
                         {% else %}
