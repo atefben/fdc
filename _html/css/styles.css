@@ -8720,7 +8720,6 @@ header #searchContainer {
   width: 100%;
   position: absolute;
   pointer-events: none;
-  background: #FFF;
   top: 0;
   background: transparent;
   background: -moz-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
