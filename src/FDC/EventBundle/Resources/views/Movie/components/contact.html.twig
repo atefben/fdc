@@ -9,7 +9,7 @@
                     <div class="folder">
                         <div class="vCenter">
                             <div class="vCenterKid">
-                                <img src="{{ movie.image.cover }}" alt="" />
+                                <img src="" alt="" />
                                 <h3>{{ 'movie.presse.title.dossierdepresse'|trans }}</h3>
                                 <a href="#">{{ 'movie.presse.btn.francaispdf'|trans }}</a>
                                 <a href="#">{{ 'movie.presse.btn.englishpdf'|trans }}</a>
@@ -18,9 +18,9 @@
                     </div>
                     <div class="links">
                         <p class="sub">{{ 'movie.presse.label.liens'|trans }}</p>
-                        {% for link in movie.press.links %}
+                        {#{% for link in movie.press.links %}
                             <a href="{{ link.href }}" target="_blank">{{ link.name }}</a>
-                        {% endfor %}
+                        {% endfor %}#}
                     </div>
                     <div class="buttons">
                         <p class="sub">{{ 'movie.presse.label.plusdinformations'|trans }}</p>

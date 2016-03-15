@@ -34,9 +34,11 @@ class FilmMediaExtension extends Twig_Extension
     public function getMedias($film, $type)
     {
         $medias = array();
-        foreach ($film->getMedias() as $media) {
-            if ($media->getMedia() !== null && $media->getType() == $type) {
-                $medias[] = $media->getMedia()->getFile();
+        if (count($film->getMedias()) > 0) {
+            foreach ($film->getMedias() as $media) {
+                if ($media->getMedia() !== null && $media->getType() == $type) {
+                    $medias[] = $media->getMedia()->getFile();
+                }
             }
         }
         return $medias;

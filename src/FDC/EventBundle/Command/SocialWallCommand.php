@@ -60,7 +60,7 @@ class SocialWallCommand extends ContainerAwareCommand {
         }
 
         // get all hashtags
-        $tags = explode(',', $tagSettings->getSocialWallHashtags());
+        $tags = explode(', ', $tagSettings->getSocialWallHashtags());
 
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////   TWITTER   ///////////////////////////////
@@ -89,6 +89,7 @@ class SocialWallCommand extends ContainerAwareCommand {
         // Get last twitter id in db
         $maxId   = (isset($lastIdTwitter[0])) ? $lastIdTwitter[0]->getMaxIdTwitter() : null;
         $request = $twitterClient->get('search/tweets.json');
+        $tweets = array();
 
         // Get all tweets
         foreach ($tags as $tag) {
@@ -101,41 +102,46 @@ class SocialWallCommand extends ContainerAwareCommand {
                 if ($maxId !== null) {
                     $request->getQuery()->set('since_id', $maxId);
                 }
-                $response = $request->send();
-
-                // Process each tweet returned
-                $results = json_decode($response->getBody());
-                $tweets  = $results->statuses;
-                $output->writeln('TWEETS DONE: '. sizeof($tweets));
-                // Exit when no more tweets are returned
-                if (sizeof($tweets) !== $offset) {
-                    $maxId = (sizeof($tweets) > 0) ? $tweets[0]->id : $maxId;
+                try {
+                    $response = $request->send();
+                    // Process each tweet returned
+                    $results = json_decode($response->getBody());
+                    $tweets  = array_merge($tweets, $results->statuses);
+                    $output->writeln('TWEETS DONE: '. sizeof($tweets));
+                    // Exit when no more tweets are returned
+                    if (sizeof($tweets) !== $offset) {
+                        $maxId = (sizeof($tweets) > 0) ? $tweets[0]->id : $maxId;
+                        break;
+                    }
+                } catch (\Exception $e) {
+                    $output->writeln($e->getMessage());
+                    $tweets = array();
                     break;
                 }
-
             }
         }
 
-        krsort($tweets);
-        foreach ($tweets as $tweet) {
+        if (count($tweets) > 0) {
+            krsort($tweets);
+            foreach ($tweets as $tweet) {
 
-            $socialWall = new SocialWall();
-            $socialWall->setMessage($tweet->text);
-            if (isset($tweet->entities->media[0]->media_url)) {
-                $socialWall->setContent($tweet->entities->media[0]->media_url);
-            } else {
-                $socialWall->setContent('#');
+                $socialWall = new SocialWall();
+                $socialWall->setMessage($tweet->text);
+                if (isset($tweet->entities->media[0]->media_url)) {
+                    $socialWall->setContent($tweet->entities->media[0]->media_url);
+                } else {
+                    $socialWall->setContent('#');
+                }
+                $socialWall->setUrl('https://twitter.com/' . $tweet->user->screen_name . '/status/' . $tweet->id);
+                $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER'));
+                $socialWall->setEnabledMobile(0);
+                $socialWall->setEnabledDesktop(0);
+                $socialWall->setMaxIdTwitter($maxId);
+                $socialWall->setDate($datetime);
+                $socialWall->setTags($tagSettings->getSocialWallHashtags());
+                $em->persist($socialWall);
             }
-            $socialWall->setUrl('https://twitter.com/' . $tweet->user->screen_name . '/status/' . $tweet->id);
-            $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER'));
-            $socialWall->setEnabledMobile(0);
-            $socialWall->setEnabledDesktop(0);
-            $socialWall->setMaxIdTwitter($maxId);
-            $socialWall->setDate($datetime);
-            $socialWall->setTags($tagSettings->getSocialWallHashtags());
-
-
-            $em->persist($socialWall);
+            $em->flush();
         }
         $output->writeln('Tweet added: '. count($tweets));
 
@@ -151,6 +157,7 @@ class SocialWallCommand extends ContainerAwareCommand {
         );
 
         $maxIdInstagram = (isset($lastIdInstagram[0])) ? $lastIdInstagram[0]->getMaxIdInstagram() : null;
+        $instagramPosts = array();
 
         foreach ($tags as $tag) {
             $tag = substr($tag, 1);
@@ -165,7 +172,7 @@ class SocialWallCommand extends ContainerAwareCommand {
                 }
 
                 $instagramResults = json_decode($instagramResponse);
-                $instagramPosts   = $instagramResults->data;
+                $instagramPosts   = array_merge($instagramPosts, $instagramResults->data);
 
                 $output->writeln('INSTAGRAMS POSTS DONE: '. sizeof($instagramPosts));
                 // Exit when no more tweets are returned

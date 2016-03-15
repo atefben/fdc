@@ -2,20 +2,20 @@
 
 namespace FDC\EventBundle\Controller;
 
-use Base\CoreBundle\Entity\MediaAudioTranslation;
-use Base\CoreBundle\Entity\MediaImageTranslation;
-use Base\CoreBundle\Entity\MediaVideoTranslation;
-use Base\CoreBundle\Entity\News;
-use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
 use \DateTime;
 
+use Base\CoreBundle\Entity\News;
+use Base\CoreBundle\Entity\NewsArticleTranslation;
+
+use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
+
 use FDC\EventBundle\Component\Controller\Controller;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Symfony\Component\Validator\Constraints\Date;
 
 /**
@@ -40,7 +40,7 @@ class NewsController extends Controller
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
         if ($settings === null || $settings->getFestival() === null) {
-            throw new NotFoundHttpException();
+            throw new NotFoundHttpException('Festival year settings not set');
         }
 
         // GET HOMEPAGE SETTINGS

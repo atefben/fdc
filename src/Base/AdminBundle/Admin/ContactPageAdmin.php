@@ -78,20 +78,20 @@ class ContactPageAdmin extends Admin
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_column.first',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'widget',
+                        'config_name' => 'press',
 
                     ),
                     'secondColumn' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_column.second',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'widget'
+                        'config_name' => 'press'
                     ),
                     'thirdColumn' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_column.third',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'widget'
+                        'config_name' => 'press'
                     ),
                     'createdAt' => array(
                         'display' => false

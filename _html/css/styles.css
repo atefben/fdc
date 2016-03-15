@@ -8714,8 +8714,21 @@ header #searchContainer {
     width: 974px !important;
   }
 }
-#sliderWrapper .owl-item .img-container.relative {
-  position: relative !important;
+#sliderWrapper .owl-item .img-container:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  pointer-events: none;
+  background: #FFF;
+  top: 0;
+  background: transparent;
+  background: -moz-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(40%, transparent), color-stop(100%, rgba(0, 0, 0, 0.8)));
+  background: -webkit-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+  background: -o-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+  background: -ms-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.8) 100%);
 }
 #sliderWrapper .owl-item .img {
   background-position: center top;
@@ -8775,7 +8788,7 @@ header #searchContainer {
 
 #news {
   overflow: hidden;
-  padding-top: 80px;
+  padding: 80px 0;
 }
 #news #format {
   margin-right: 10px;
@@ -9016,6 +9029,10 @@ header #searchContainer {
   position: absolute;
   pointer-events: none;
   width: 44px;
+}
+
+#news + #social-wall {
+  padding-top: 0px;
 }
 
 #social-wall {

@@ -856,6 +856,38 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.press_projection:
+        class: Base\AdminBundle\Admin\PressProjectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressProjection, BaseAdminBundle:PressProjectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_projection, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_cinema_room:
+        class: Base\AdminBundle\Admin\PressCinemaRoomAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressCinemaRoom, BaseAdminBundle:PressCinemaRoomAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_cinema_room, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_cinema_map:
+        class: Base\AdminBundle\Admin\PressCinemaMapAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressCinemaMap, BaseAdminBundle:PressCinemaMapAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_cinema_map, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.press_cinema_map_room:
+        class: Base\AdminBundle\Admin\PressCinemaMapRoomAdmin
+        arguments: [~, Base\CoreBundle\Entity\PressCinemaMapRoom, BaseAdminBundle:PressCinemaMapRoomAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.press_cinemap_map_room, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.press_download_section_widget_photo_dummy:
          class: Base\AdminBundle\Admin\PressDownloadSectionWidgetPhotoDummyAdmin
          arguments: [~, Base\CoreBundle\Entity\PressDownloadSectionWidgetPhoto, BaseAdminBundle:PressDownloadSectionWidgetPhotoDummyAdmin]
@@ -895,41 +927,15 @@ services:
            - {name: sonata.admin, manager_type: orm, group: admin, label: Download File widget, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-            
-    base.admin.press_projection:
-        class: Base\AdminBundle\Admin\PressProjectionAdmin
-        arguments: [~, Base\CoreBundle\Entity\PressProjection, BaseAdminBundle:PressProjectionAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, label: entity.press_projection, label_translator_strategy: sonata.admin.label.strategy.underscore}
-        calls:
-            - [ setTranslationDomain, ['BaseAdminBundle']]
-
-    base.admin.press_cinema_room:
-        class: Base\AdminBundle\Admin\PressCinemaRoomAdmin
-        arguments: [~, Base\CoreBundle\Entity\PressCinemaRoom, BaseAdminBundle:PressCinemaRoomAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, label: entity.press_cinema_room, label_translator_strategy: sonata.admin.label.strategy.underscore}
-        calls:
-            - [ setTranslationDomain, ['BaseAdminBundle']]
-
-    base.admin.press_cinema_map:
-        class: Base\AdminBundle\Admin\PressCinemaMapAdmin
-        arguments: [~, Base\CoreBundle\Entity\PressCinemaMap, BaseAdminBundle:PressCinemaMapAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, label: entity.press_cinema_map, label_translator_strategy: sonata.admin.label.strategy.underscore}
-        calls:
-            - [ setTranslationDomain, ['BaseAdminBundle']]
-
-    base.admin.press_cinema_map_room:
-        class: Base\AdminBundle\Admin\PressCinemaMapRoomAdmin
-        arguments: [~, Base\CoreBundle\Entity\PressCinemaMapRoom, BaseAdminBundle:PressCinemaMapRoomAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, label: entity.press_cinemap_map_room, label_translator_strategy: sonata.admin.label.strategy.underscore}
-        calls:
-            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base_admin.media_film_projection_associated:
         class: Base\AdminBundle\Admin\MediaFilmProjectionAssociatedAdmin
         arguments: [~, Base\CoreBundle\Entity\MediaFilmProjectionAssociated, BaseAdminBundle:MediaFilmProjectionAssociatedAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: MediaFilmProjectionAssociated}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: MediaFilmProjectionAssociated, show_in_dashboard: false}
+
+    base.admin.film_film_tag:
+        class: Base\AdminBundle\Admin\FilmFilmTagAdmin
+        arguments: [~, Base\CoreBundle\Entity\FilmFilmTag, BaseAdminBundle:FilmFilmTagAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FilmFilmTag, show_in_dashboard: false}

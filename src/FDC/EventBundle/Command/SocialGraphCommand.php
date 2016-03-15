@@ -92,39 +92,43 @@ class SocialGraphCommand extends ContainerAwareCommand
 
         // Count all tweet with hashtag during today
         while(true) {
+            try {
+                $request->getQuery()->set('q', $socialGraphSettings->getSocialGraphHashtagTwitter());
+                $request->getQuery()->set('count', $offset);
+                $request->getQuery()->set('since', $datetime->format('Y-m-d'));
+                if ($maxId !== null) {
+                    $request->getQuery()->set('max_id', $maxId);
+                }
+                $response = $request->send();
 
-            $request->getQuery()->set('q', $socialGraphSettings->getSocialGraphHashtagTwitter());
-            $request->getQuery()->set('count', $offset);
-            $request->getQuery()->set('since', $datetime->format('Y-m-d'));
-            if ($maxId !== null) {
-                $request->getQuery()->set('max_id', $maxId);
-            }
-            $response = $request->send();
+                // Process each tweet returned
+                $results = json_decode($response->getBody());
+                $tweets = $results->statuses;
 
-            // Process each tweet returned
-            $results = json_decode($response->getBody());
-            $tweets  = $results->statuses;
+                $totalTweets += count($tweets);
 
-            $totalTweets += count($tweets);
+                // Exit when no more tweets are returned
+                if (sizeof($tweets) !== $offset) {
+                    $maxId = (sizeof($tweets) > 0) ? $tweets[sizeof($tweets) - 1]->id : $maxId;
+                    $totalTweets = ($maxId != null && sizeof($tweets) > 0) ? ($totalTweets - 1) : $totalTweets;
+                    break;
+                }
 
-            // Exit when no more tweets are returned
-            if (sizeof($tweets) !== $offset) {
-                $maxId = (sizeof($tweets) > 0) ? $tweets[sizeof($tweets) - 1]->id : $maxId;
-                $totalTweets = ($maxId != null && sizeof($tweets) > 0) ? ($totalTweets - 1) : $totalTweets;
+                // Set tweets id & count
+                $socialGraph->setLastTweetId($maxId);
+                $socialGraph->setCount($socialGraph->getCount() + $totalTweets);
+
+                if ($socialGraph->getId() === null) {
+                    $em->persist($socialGraph);
+                }
+
+                $em->flush();
+            } catch (\Exception $e) {
+                $output->writeln($e->getMessage());
                 break;
             }
 
         }
-
-        // Set tweets id & count
-        $socialGraph->setLastTweetId($maxId);
-        $socialGraph->setCount($socialGraph->getCount() + $totalTweets);
-
-        if ($socialGraph->getId() === null) {
-            $em->persist($socialGraph);
-        }
-
-        $em->flush();
     }
 
     private function writeError($output, $logger, $msg)

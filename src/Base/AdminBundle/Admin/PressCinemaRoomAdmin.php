@@ -121,6 +121,10 @@ class PressCinemaRoomAdmin extends Admin
                 'label' => 'form.label_map_img',
                 'translation_domain' => 'BaseAdminBundle'
             ))
+            ->add('zoneImage', 'sonata_type_model_list', array(
+                'label' => 'form.label_map_zone_img',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(
                 'choices'            => PressCinemaRoom::getAvailableTranslateOptions(),

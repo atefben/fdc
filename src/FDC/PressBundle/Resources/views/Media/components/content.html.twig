@@ -35,7 +35,7 @@
                                             </p>
                                             <p>
                                                 {% for k,director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                    <a style="display: inline-block" class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{{ loop.last ? ' ' : ',' }}
+                                                    <a style="display: inline-block" class="director" href="#">{{ director.fullName }}</a>{{ loop.last ? ' ' : ',' }}
                                                 {% endfor %}
                                             </p>
                                         </div>

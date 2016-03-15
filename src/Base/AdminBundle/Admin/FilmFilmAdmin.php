@@ -10,6 +10,14 @@ use Sonata\AdminBundle\Show\ShowMapper;
 class FilmFilmAdmin extends SoifAdmin
 {
 
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('BaseAdminBundle:FilmFilm:edit.html.twig')
+        );
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -24,10 +32,7 @@ class FilmFilmAdmin extends SoifAdmin
                     if (!$value['value']) {
                         return;
                     }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->andWhere('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.title LIKE :title');
+                    $queryBuilder->where("{$alias}.titleVO LIKE :title");
                     $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
 
                     return true;
@@ -136,56 +141,84 @@ class FilmFilmAdmin extends SoifAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('associatedMediaAudios', 'sonata_type_collection', array(
-                'label' => 'form.label_film_film_media_audio',
-                'help' => 'form.film.helper_film_film_media_audio',
-                'by_reference' => false,
-                'required' => false,
-            ), array(
-                    'edit' => 'inline',
-                    'inline' => 'table'
-                )
-            )
-            ->add('associatedMediaVideos', 'sonata_type_collection', array(
-                'label' => 'form.label_film_film_media_video',
-                'help' => 'form.film.helper_film_film_media_video',
-                'by_reference' => false,
-                'required' => false,
+            ->with('Informations Générales')
+                ->add('id', 'text', array(
+                    'label' => false
+                ))
+                ->add('imageMain', 'sonata_type_model_list', array(
+                    'help' => 'Dimensions attendues : YxZpx - ratio paysage. Format Attendu.',
                 ), array(
-                    'edit' => 'inline',
-                    'inline' => 'table'
+                    'link_parameters' => array('context' => 'film_poster')
+                ))
+                ->add('imageCover', 'sonata_type_model_list', array(
+                    'help' => 'Dimensions attendues : YxZpx - ratio paysage. Format Attendu.'
+                ))
+                ->add('videoMain', 'sonata_type_model_list', array(
+                    'help' => 'Lorem ipsum sit dolor amet.'
+                ))
+            ->end()
+            ->with('Associations')
+                ->add('associatedMediaVideos', 'sonata_type_collection', array(
+                    'label' => 'form.label_film_film_media_video',
+                    'help' => 'form.film.helper_film_film_media_video',
+                    'by_reference' => false,
+                    'required' => false,
+                    ), array(
+                        'edit' => 'inline',
+                        'inline' => 'table'
+                    )
                 )
-            )
-            ->add('associatedInfo', 'sonata_type_collection', array(
-                'label' => 'form.label_film_film_associated_info',
-                'help' => 'form.film.helper_film_film_associated_info',
-                'by_reference' => false,
-                'required' => false,
+                ->add('associatedMediaAudios', 'sonata_type_collection', array(
+                    'label' => 'form.label_film_film_media_audio',
+                    'help' => 'form.film.helper_film_film_media_audio',
+                    'by_reference' => false,
+                    'required' => false,
                 ), array(
-                    'edit' => 'inline',
-                    'inline' => 'table'
+                        'edit' => 'inline',
+                        'inline' => 'table'
+                    )
                 )
-            )
-            ->add('associatedStatement', 'sonata_type_collection', array(
-                'label' => 'form.label_film_film_associated_statement',
-                'help' => 'form.film.helper_film_film_associated_statement',
-                'by_reference' => false,
-                'required' => false,
+                ->add('associatedInfo', 'sonata_type_collection', array(
+                    'label' => 'form.label_film_film_associated_info',
+                    'help' => 'form.film.helper_film_film_associated_info',
+                    'by_reference' => false,
+                    'required' => false,
+                    ), array(
+                        'edit' => 'inline',
+                        'inline' => 'table'
+                    )
+                )
+                ->add('associatedStatement', 'sonata_type_collection', array(
+                    'label' => 'form.label_film_film_associated_statement',
+                    'help' => 'form.film.helper_film_film_associated_statement',
+                    'by_reference' => false,
+                    'required' => false,
+                    ), array(
+                        'edit' => 'inline',
+                        'inline' => 'table'
+                    )
+                )
+                ->add('associatedNews', 'sonata_type_collection', array(
+                    'label' => 'form.label_film_film_associated_news',
+                    'help' => 'form.film.helper_film_film_associated_news',
+                    'by_reference' => false,
+                    'required' => false,
                 ), array(
-                    'edit' => 'inline',
-                    'inline' => 'table'
+                        'edit' => 'inline',
+                        'inline' => 'table'
+                    )
                 )
-            )
-            ->add('associatedNews', 'sonata_type_collection', array(
-                'label' => 'form.label_film_film_associated_news',
-                'help' => 'form.film.helper_film_film_associated_news',
-                'by_reference' => false,
-                'required' => false,
-            ), array(
-                    'edit' => 'inline',
-                    'inline' => 'table'
+                ->add('tags', 'sonata_type_collection', array(
+                    'label' => 'form.label_article_tags',
+                    'help' => 'form.news.helper_tags',
+                    'by_reference' => false,
+                    'required' => false,
+                ), array(
+                        'edit' => 'inline',
+                        'inline' => 'table'
+                    )
                 )
-            );
+            ->end();
 
     }
 

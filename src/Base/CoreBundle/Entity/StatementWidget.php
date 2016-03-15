@@ -2,12 +2,15 @@
 
 namespace Base\CoreBundle\Entity;
 
-use \DateTime;
+
+use Base\CoreBundle\Util\Time;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Since;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * StatementWidget
@@ -39,10 +42,12 @@ abstract class StatementWidget
      */
     protected $id;
 
+
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=false)
+     * @Groups({"news_list", "news_show"})
      */
     protected $position;
 
@@ -52,6 +57,35 @@ abstract class StatementWidget
      * @ORM\ManyToOne(targetEntity="Statement", inversedBy="widgets")
      */
     protected $statement;
+
+    /**
+     * Get the class type in the Api
+     *
+     * @VirtualProperty
+     * @Groups({"news_list", "news_show"})
+     */
+    public function getWidgetType()
+    {
+        return substr(strrchr(get_called_class(), '\\'), 1);
+    }
+
+    /**
+     * findTranslationByLocale function.
+     *
+     * @access public
+     * @param mixed $locale
+     * @return void
+     */
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
+    }
 
     /**
      * Get id

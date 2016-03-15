@@ -28,19 +28,16 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=true)
      */
     private $file;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="second_file_id", referencedColumnName="id", nullable=true)
      */
     private $secondFile;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="third_file_id", referencedColumnName="id", nullable=true)
      */
     private $thirdFile;
 
@@ -82,28 +79,26 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
         return $this->image;
     }
 
+
     /**
      * Set file
      *
      * @param \Application\Sonata\MediaBundle\Entity\Media $file
      * @return PressDownloadSectionWidgetDocument
      */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
     {
-
         $this->file = $file;
-
         return $this;
     }
 
     /**
      * Get file
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
      */
     public function getFile()
     {
-
         return $this->file;
     }
 
@@ -113,7 +108,7 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
      * @param \Application\Sonata\MediaBundle\Entity\Media $secondFile
      * @return PressDownloadSectionWidgetDocument
      */
-    public function setSecondFile(\Application\Sonata\MediaBundle\Entity\Media $secondFile)
+    public function setSecondFile(\Application\Sonata\MediaBundle\Entity\Media $secondFile = null)
     {
         $this->secondFile = $secondFile;
 
@@ -123,7 +118,7 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
     /**
      * Get secondFile
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
      */
     public function getSecondFile()
     {
@@ -136,7 +131,7 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
      * @param \Application\Sonata\MediaBundle\Entity\Media $thirdFile
      * @return PressDownloadSectionWidgetDocument
      */
-    public function setThirdFile(\Application\Sonata\MediaBundle\Entity\Media $thirdFile)
+    public function setThirdFile(\Application\Sonata\MediaBundle\Entity\Media $thirdFile = null)
     {
         $this->thirdFile = $thirdFile;
 
@@ -146,7 +141,7 @@ class PressDownloadSectionWidgetDocument extends PressDownloadSectionWidget
     /**
      * Get thirdFile
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
      */
     public function getThirdFile()
     {

@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 <div class="main-image">
-    <div class="img" style="background-image: url('http://html.festival-cannes-2016.com.ohwee.fr/img/movie/001.jpg')"></div>
+    <div class="img" style="background-image: url({% path movie.imageCover, 'media_image_simple_1280x808' %})"></div>
     <div class="links">
         <div class="container">
             <a class="movies" href="{{ path('fdc_event_movie_selection', {'slug': "competition"}) }}">{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
@@ -11,10 +11,12 @@
     <div class="trailer"></div>
 </div>
 <div class="container container-top">
+    {% if movie.videoMain is not null and movie.videoMain.image and movie.videoMain.image.file %}
     <div class="poster video">
         <a href="#" class="picto"><i class="icon icon_video"></i></a>
-        <img src="{{ movie.image.banner }}" alt="" />
+        {% media movie.videoMain.image.file, 'media_image_2560x1620' %}
     </div>
+    {% endif %}
     <div class="info-film">
         <div class="categories">
             {% for category in movie.categories %}
@@ -22,12 +24,31 @@
             {% endfor %}
         </div>
         <h2>{{ movie.title }}</h2>
-        <div class="title-original">({{ movie.titleVO }})</div>
-        <p>{{ 'movie.label.realisepar'|trans }} : <a href="{{ path('fdc_event_artist_get', {'slug': movie.author.slug }) }}">{{ movie.author.fullName }}</a></p>
-        <p>{{ 'movie.label.anneedeproduction'|trans }} : <span>{{ movie.productionYear }}</span>
-            {{ 'movie.label.pays'|trans }} : <span>{{ movie.author.from }}</span>
-            {{ 'movie.label.duree'|trans }} : <span>{{ movie.duration }}</span>
-            {{ 'movie.label.datedesortie'|trans }} : <span>{{ movie.releaseYear }}</span></p>
+        <div class="title-original">{% if movie|trans_fallback('title') is not null %}({{ movie|trans_fallback('title') }}){% else %}({{ movie.titleVO }}){% endif %}</div>
+        <p>
+            {{ 'movie.label.realisepar'|trans }} :
+            {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
+                {% if loop.index != director|length %}
+                    ,
+                {% endif %}
+            {% endfor %}
+        </p>
+        <p>
+            {% if movie.productionYear is not null %}
+                {{ 'movie.label.anneedeproduction'|trans }} : <span>{{ movie.productionYear }}</span>
+            {% endif %}
+            {% if movie.countries|length > 0 %}
+                {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}<span>{{ country|trans_fallback('name') }}</span> {% endfor %}
+            {% endif  %}
+            {% if movie.duration is not null and movie.duration > 0 %}
+                {{ 'movie.label.duree'|trans }} : <span>{{ movie.duration }}</span>
+            {% endif %}
+            {%  if movie.publishedAt is not null %}
+                {{ 'movie.label.datedesortie'|trans }} : <span>{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</span>
+            {% endif %}
+        </p>
+    </div>
     <div class="palmares">
         <i class="icon icon_palme"></i>
         <p>Prix Un Certain Regard - Fondation Groupama Gan pour le Cinéma , 2010</p>
@@ -35,7 +56,7 @@
     <div class="info-film">
         <div  class="synopsis">
             <h3 class="title-section">{{ 'movie.title.synopsis'|trans }}</h3>
-            <p>{{ movie.synopsis|raw }}</p>
+            <p>{{ movie|trans_fallback('synopsis')|raw }}</p>
         </div>
     </div>
 </div>

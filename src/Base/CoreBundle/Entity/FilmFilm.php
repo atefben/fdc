@@ -415,7 +415,42 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     private $associatedInfo;
 
-    /**F
+    /**
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     * })
+     */
+    private $imageMain;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     * })
+     */
+    private $imageCover;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MediaVideo")
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     * })
+     */
+    private $videoMain;
+
+    /**
+     * @var NewsTag
+     *
+     * @ORM\OneToMany(targetEntity="FilmFilmTag", mappedBy="film", cascade={"all"}, orphanRemoval=true)
+     *
+     */
+    private $tags;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -434,6 +469,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $this->associatedNews = new ArrayCollection();
         $this->associatedInfo = new ArrayCollection();
         $this->associatedStatement = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function __toString()
@@ -1839,5 +1875,130 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getAssociatedInfo()
     {
         return $this->associatedInfo;
+    }
+
+    /**
+     * Add associatedNews
+     *
+     * @param \Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews
+     * @return FilmFilm
+     */
+    public function addAssociatedNews(\Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews)
+    {
+        $this->associatedNews[] = $associatedNews;
+
+        return $this;
+    }
+
+    /**
+     * Remove associatedNews
+     *
+     * @param \Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews
+     */
+    public function removeAssociatedNews(\Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews)
+    {
+        $this->associatedNews->removeElement($associatedNews);
+    }
+
+    /**
+     * Set videoMain
+     *
+     * @param \Base\CoreBundle\Entity\MediaVideo $videoMain
+     * @return FilmFilm
+     */
+    public function setVideoMain(\Base\CoreBundle\Entity\MediaVideo $videoMain = null)
+    {
+        $this->videoMain = $videoMain;
+
+        return $this;
+    }
+
+    /**
+     * Get videoMain
+     *
+     * @return \Base\CoreBundle\Entity\MediaVideo 
+     */
+    public function getVideoMain()
+    {
+        return $this->videoMain;
+    }
+
+    /**
+     * Set imageMain
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $imageMain
+     * @return FilmFilm
+     */
+    public function setImageMain(\Base\CoreBundle\Entity\MediaImageSimple $imageMain = null)
+    {
+        $this->imageMain = $imageMain;
+
+        return $this;
+    }
+
+    /**
+     * Get imageMain
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getImageMain()
+    {
+        return $this->imageMain;
+    }
+
+    /**
+     * Set imageCover
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $imageCover
+     * @return FilmFilm
+     */
+    public function setImageCover(\Base\CoreBundle\Entity\MediaImageSimple $imageCover = null)
+    {
+        $this->imageCover = $imageCover;
+
+        return $this;
+    }
+
+    /**
+     * Get imageCover
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getImageCover()
+    {
+        return $this->imageCover;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilmTag $tags
+     * @return FilmFilm
+     */
+    public function addTag(\Base\CoreBundle\Entity\FilmFilmTag $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilmTag $tags
+     */
+    public function removeTag(\Base\CoreBundle\Entity\FilmFilmTag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }
