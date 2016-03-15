@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-01-20T17:32:59Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2016-03-15T11:55:33Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
-      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as &quot;form.label.firstname&quot;, then the developer has not provided a default message.</note>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
       <trans-unit id="632b24ed3fe97b7180a0dc23beb19c630efa3ba7" resname="agenda.btn.creerunevenement">
@@ -202,7 +202,7 @@
       </trans-unit>
       <trans-unit id="89b713b2851c2a524a2a08f1fa006fb62934e557" resname="header.partners.img.loreal">
         <source>header.partners.img.loreal</source>
-        <target>L&apos;Oréal</target>
+        <target>L'Oréal</target>
         <jms:reference-file line="77">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="596308acc833e13513a5d08f835276c206376902" resname="header.partners.img.mastercard">
@@ -340,17 +340,17 @@
       </trans-unit>
       <trans-unit id="f17a4998390631380a2431abf0d27a76ec6bc542" resname="press.actu.filter.dates.toutes">
         <source>press.actu.filter.dates.toutes</source>
-        <target state="new">press.actu.filter.dates.toutes</target>
+        <target></target>
         <jms:reference-file line="10">News/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="028edd963dc88e267edf46ecf6510cf95ae15b02" resname="press.actu.filter.label.annees">
         <source>press.actu.filter.label.annees</source>
-        <target state="new">press.actu.filter.label.annees</target>
+        <target></target>
         <jms:reference-file line="6">News/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bba861c4e009b5a8e3ea6bb2f67debe9c8d15148" resname="press.actu.filter.label.themes">
         <source>press.actu.filter.label.themes</source>
-        <target state="new">press.actu.filter.label.themes</target>
+        <target></target>
         <jms:reference-file line="22">News/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d34b0d426b42166f520f26f28ebc87ed9e812b0e" resname="press.actu.title.lactualitealaune">
@@ -365,7 +365,7 @@
       </trans-unit>
       <trans-unit id="0a4b951f16b43de276a696a9f288e5d1d23dfa68" resname="press.header.btn.valider">
         <source>press.header.btn.valider</source>
-        <target state="new">press.header.btn.valider</target>
+        <target></target>
         <jms:reference-file line="9">Global/components/popinPress.html.twig</jms:reference-file>
         <jms:reference-file line="12">News/components/lockedContents.html.twig</jms:reference-file>
       </trans-unit>
@@ -379,12 +379,12 @@
       </trans-unit>
       <trans-unit id="d908a7b300b9113e98e70b2a1bcbdb965852c336" resname="press.header.text.journalistesveuillezsaisirvotremotdepasse">
         <source>press.header.text.journalistesveuillezsaisirvotremotdepasse</source>
-        <target state="new">press.header.text.journalistesveuillezsaisirvotremotdepasse</target>
+        <target></target>
         <jms:reference-file line="7">News/components/lockedContents.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4c5b52781adcb1e05cc680995c582525c335ada1" resname="press.header.title.contenusverouilles">
         <source>press.header.title.contenusverouilles</source>
-        <target state="new">press.header.title.contenusverouilles</target>
+        <target></target>
         <jms:reference-file line="6">News/components/lockedContents.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a5be64ac59f0b7a885b59f53ed9c2c70fb031869" resname="press.home.btn.acceder">
@@ -400,7 +400,7 @@
       </trans-unit>
       <trans-unit id="56da8d501887829455928e0e3c8142d41cefb101" resname="press.home.btn.ok">
         <source>press.home.btn.ok</source>
-        <target state="new">press.home.btn.ok</target>
+        <target></target>
         <jms:reference-file line="24">News/components/calendar.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="14542da64830194a68691561aa1018e1bd4e165d" resname="press.home.btn.touslescommuniquesetinfos">
@@ -425,7 +425,7 @@
       </trans-unit>
       <trans-unit id="1682154734b90073f470776e201ff7d35f2707b7" resname="press.home.btn.toutmonagenda">
         <source>press.home.btn.toutmonagenda</source>
-        <target state="new">press.home.btn.toutmonagenda</target>
+        <target></target>
         <jms:reference-file line="10">News/components/calendar.html.twig</jms:reference-file>
         <jms:reference-file line="18">News/components/calendar.html.twig</jms:reference-file>
       </trans-unit>
@@ -436,7 +436,7 @@
       </trans-unit>
       <trans-unit id="40644e5c8b261ccfd438d5e32af45bbd2d84f6aa" resname="press.home.label.cliquezdeposez">
         <source>press.home.label.cliquezdeposez</source>
-        <target state="new">press.home.label.cliquezdeposez</target>
+        <target></target>
         <jms:reference-file line="21">News/components/calendar.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b20f8b3212e01a52122eb036a48fc66aad9df86a" resname="press.home.label.dossiersdepresse">
