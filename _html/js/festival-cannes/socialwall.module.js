@@ -113,7 +113,7 @@ function makePath(data){
 
   s = Snap('#graphSVG');
 
-   if (s != undefined) {
+   if (s != null) {
 
      // Creates the vertical lines in the graph
      for (var i = 0; i < dataLength; i++) {
