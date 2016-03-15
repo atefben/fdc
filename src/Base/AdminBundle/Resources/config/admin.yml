@@ -299,6 +299,15 @@ services:
             calls:
                 - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    bse.admin.fdc_page_award:
+        class: Base\AdminBundle\Admin\FDCPageAwardAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageAward, BaseAdminBundle:FDCPageAwardAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageAward, label_translator_strategy: sonata.admin.label.strategy.underscore, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+    #end SEO
+
     base.admin.film_jury_type:
         class: Base\AdminBundle\Admin\FilmJuryTypeAdmin
         arguments: [~, Base\CoreBundle\Entity\FilmJuryType, BaseAdminBundle:FilmJuryTypeAdmin]
@@ -306,7 +315,6 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: FilmJuryType, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-    #end SEO
 
     base.admin.film_selection_section:
         class: Base\AdminBundle\Admin\FilmSelectionSectionAdmin

@@ -31,7 +31,6 @@ class FDCPageWebTvTrailersTranslation implements TranslateChildInterface
     use TranslateChild;
     use Seo;
 
-
     /**
      * @var string
      *

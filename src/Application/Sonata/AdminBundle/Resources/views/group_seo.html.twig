@@ -3,7 +3,8 @@
     'admin_base_core_fdcpagewebtvchannels_edit',
     'admin_base_core_fdcpagewebtvtrailers_edit',
     'admin_base_core_fdcpagelaselection_edit',
-    'admin_base_core_fdcpagejury_edit'
+    'admin_base_core_fdcpagejury_edit',
+    'admin_base_core_fdcpageaward_edit'
     ] %}
     <li class="treeview{% if app.request.attributes.get('_route') in activePages %} active{% endif %}">
         <a href="#">
@@ -155,6 +156,38 @@
                     <a href="{{ path('admin_base_core_fdcpagejury_edit', {id: admin_fdc_page_jury_camera_dor_id}) }}">
                         <i class="fa fa-angle-double-right"></i>
                         {{ 'dashboard.link.fdc_page_jury_camera_dor'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+            {% endif %}
+            {% if is_granted('ROLE_BASE_ADMIN_FDC_PAGE_AWARD_ADMIN') %}
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpageaward_edit', {id: admin_fdc_page_award_competition_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_award_competition'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpageaward_edit', {id: admin_fdc_page_award_certain_regard_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_award_certain_regard'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpageaward_edit', {id: admin_fdc_page_award_cinefondation_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_award_cinefondation'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpageaward_edit', {id: admin_fdc_page_award_camera_dor_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_award_camera_dor'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpageaward_edit', {id: admin_fdc_page_award_all_awards_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_award_all_awards'|trans({}, 'BaseAdminBundle') }}
                     </a>
                 </li>
             {% endif %}

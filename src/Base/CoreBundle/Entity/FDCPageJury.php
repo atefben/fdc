@@ -56,7 +56,6 @@ class FDCPageJury implements TranslateMainInterface
      */
     protected $translations;
 
-
     public function __construct()
     {
         $this->translations = new ArrayCollection();

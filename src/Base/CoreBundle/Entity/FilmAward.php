@@ -93,7 +93,7 @@ class FilmAward
     private $unanimity;
 
     /**
-     * @var text
+     * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      *

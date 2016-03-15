@@ -2,7 +2,15 @@
 
 namespace Base\CoreBundle\Entity;
 
+
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Base\CoreBundle\Util\Seo;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateChild;
 use Doctrine\ORM\Mapping as ORM;
+
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * FDCPageAwardTranslation
@@ -10,55 +18,73 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCPageAwardTranslationRepository")
  */
-class FDCPageAwardTranslation
+class FDCPageAwardTranslation implements TranslateChildInterface
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+    use Time;
+    use Translation;
+    use TranslateChild;
+    use Seo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="yes", type="string", length=255)
+     * @ORM\Column(type="string", nullable=true)
+     *
      */
-    private $yes;
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=false, nullable=true)
+     */
+    private $slug;
 
 
     /**
-     * Get id
+     * Set name
      *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set yes
-     *
-     * @param string $yes
+     * @param string $name
      * @return FDCPageAwardTranslation
      */
-    public function setYes($yes)
-    {
-        $this->yes = $yes;
+    public function setName($name)
+{
+    $this->name = $name;
 
-        return $this;
-    }
+    return $this;
+}
 
     /**
-     * Get yes
+     * Get name
      *
-     * @return string 
+     * @return string
      */
-    public function getYes()
-    {
-        return $this->yes;
-    }
+    public function getName()
+{
+    return $this->name;
+}
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return FDCPageAwardTranslation
+     */
+    public function setSlug($slug)
+{
+    $this->slug = $slug;
+
+    return $this;
+}
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+{
+    return $this->slug;
+}
 }

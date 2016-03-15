@@ -82,10 +82,7 @@ class FilmPrize implements FilmPrizeInterface, TranslateMainInterface
     protected $translations;
 
     /**
-     * __construct function.
-     * 
-     * @access public
-     * @return void
+     * FilmPrize constructor.
      */
     public function __construct()
     {

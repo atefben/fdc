@@ -416,6 +416,11 @@ dashboard:
         fdc_page_jury_cinefondation_courts_metrages: Les jurys CINEFONDATION & COURTS METRAGES
         fdc_page_jury_certain_regard: Les jurys UN CERTAIN REGARD
         fdc_page_jury_camera_dor: Les jurys CAMERA D'OR
+        fdc_page_award_competition: Le palmarès COMPETITION
+        fdc_page_award_certain_regard: Le palmarès UN CERTAIN REGARD
+        fdc_page_award_cinefondation: Le palmarès CINEFONDATION
+        fdc_page_award_camera_dor: Le palmarès CAMERA D'OR
+        fdc_page_award_all_awards: Le palmarès TOUT LE PALMARES
         press_homepage: Homepage
         press_guide: Guide pratique
         press_contact: Contactez-nous
