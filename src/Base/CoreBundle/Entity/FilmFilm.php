@@ -95,6 +95,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
+     * @Groups({"film_show"})
      */
     private $publishedAt;
     
