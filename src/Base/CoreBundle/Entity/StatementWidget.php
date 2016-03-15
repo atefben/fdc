@@ -42,10 +42,12 @@ abstract class StatementWidget
      */
     protected $id;
 
+
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=false)
+     * @Groups({"news_list", "news_show"})
      */
     protected $position;
 
