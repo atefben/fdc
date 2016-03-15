@@ -1,7 +1,9 @@
 {% trans_default_domain 'FDCPressBundle' %}
 {% set articleType = "communique" %}
+{% set articleClass = "communique" %}
 {% if class(article) starts with "I" %}
     {% set articleType = "info" %}
+    {% set articleClass = "article" %}
 {% endif %}
 {% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
     {% set articleFormat = "article" %}
@@ -12,7 +14,7 @@
 {% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
     {% set articleFormat = "image" %}
 {% endif %}
-<article class="article" data-format="article" data-theme="press">
+<article class="{{ articleClass }}" data-format="article" data-theme="press">
     <div class="image">
         <div class="image-wrapper">
                 {% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
@@ -103,7 +105,7 @@
                     {% thumbnail file, '265x165' with {'alt': img|trans_fallback('alt') } %}
             {% endif %}
         </div>
-        <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': articleType }) }}"></a>
+        <a class="linkImage" href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': articleType }) }}"></a>
         <span class="picto">
             <i class="icon icon_{{ articleType == "communique" ? 'communique-presse' : 'article' }}"></i>
         </span>

@@ -17,6 +17,8 @@ CKEDITOR.editorConfig = function( config ) {
             return !element.is('a')
         }, attributes: {'class': 'mail'}
         },
+        // Title contact
+        {name: 'Titre contact', element: 'h3' },
         // Title bloc
         {name: 'Titre bloc', element: 'h5', attributes: {'class': 'container-title'}},
     ];
