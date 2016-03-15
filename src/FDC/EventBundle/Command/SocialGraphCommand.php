@@ -139,7 +139,7 @@ class SocialGraphCommand extends ContainerAwareCommand
         $application->setAutoExit(false);
 
         $input = new ArrayInput(array(
-            'command' => ' sonata:admin:generate-object-acl',
+            'command' => 'sonata:admin:generate-object-acl',
             '--user_entity' => 'BaseCoreBundle:SocialGraph',
         ));
 
