@@ -180,11 +180,9 @@ $(document).ready(function() {
     }
 
     // Render the path of hashtag graph
-    if (GLOBALS.socialWall.points.length > 0) {
-      if($('#graph').length) {
-        if(s > $('#graph').offset().top - ($(window).height()/2) && !graphRendered) {
-          makePath(GLOBALS.socialWall.points);
-        }
+    if (GLOBALS.socialWall.points.length > 0 && $('#graph').length > 0) {
+      if(s > $('#graph').offset().top - ($(window).height()/2) && !graphRendered) {
+        makePath(GLOBALS.socialWall.points);
       }
     }
 
@@ -274,7 +272,7 @@ $(document).ready(function() {
         $('#live').removeClass('on');
         $('#live').height($('#live').data('height'));
         $('#main').css('padding-top', 0);
-        if(videoWebtv.getState() === "playing") {
+        if(videoWebtv.getState() != "paused" && videoWebtv.getState() != "idle") {
           $('#live .trailer').removeClass('on');
           videoWebtv.pause();
         }

@@ -376,7 +376,7 @@
       </trans-unit>
       <trans-unit id="028edd963dc88e267edf46ecf6510cf95ae15b02" resname="press.actu.filter.label.annees">
         <source>press.actu.filter.label.annees</source>
-        <target state="new">press.actu.filter.label.annees</target>
+        <target></target>
         <jms:reference-file line="6">News/components/filters.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4c7dfa26feb206149579d5247af3025f028946b1" resname="press.actu.filter.label.format">

@@ -438,7 +438,9 @@
         <h4>Module vidéo</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
-        {{ form_row(form.children.image) }}
+        {{ form_label(form.children.image) }}
+        <span class="help-block sonata-ba-field-help">Dimensions attendues : 976*535.  Format attendu : .jpg, .png.</span>
+        {{ form_widget(form.children.image) }}
         {{ form_row(form.children.video) }}
         {{ form_row(form.children.file) }}
         {{ form_row(form.children.secondFile) }}

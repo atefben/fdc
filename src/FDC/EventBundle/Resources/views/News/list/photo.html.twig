@@ -29,11 +29,16 @@
             </div>
         {% endfor %}
     </div>
+    {{ render(controller('FDCEventBundle:Global:shareEmailMedia',
+        {'section': '',
+         'detail': '',
+         'title': '',
+         'description': ''
+        }))
+    }}
 </div>
 
-{% include "FDCEventBundle:Global:breadcrumb.html.twig" with
-{"breadcrumb":
-[
+{% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
     {
         "name" : 'header.mainnav.nav.jourapresjour'|trans ,
         "url"  : path('fdc_event_news_index')
@@ -42,8 +47,7 @@
         "name" : 'header.mainnav.nav.photos'|trans ,
         "url"  : path('fdc_event_news_getphotos')
     },
-]
-} %}
+]} %}
 {% endblock %}
 
 

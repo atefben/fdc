@@ -104,7 +104,7 @@
       </trans-unit>
       <trans-unit id="814d17a95f83b9bd4bfb7f1302eff84eb29c5a6b" resname="article.list.btn.ajouteramaselection">
         <source>article.list.btn.ajouteramaselection</source>
-        <target state="new">article.list.btn.ajouteramaselection</target>
+        <target>Ajouter à ma selection</target>
         <jms:reference-file line="113">News/list/article.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1740af3ae734cd445ffe73afdc1f5e28b1941c6c" resname="article.text.ajouteramaselection">
@@ -471,7 +471,7 @@
       </trans-unit>
       <trans-unit id="e7817ce563f9fa728fef69b58e33e7a93beaef37" resname="press.header.success.contenusdebloques">
         <source>press.header.success.contenusdebloques</source>
-        <target>Contenus débloqués !</target>
+        <target>Les contenus réservés à la presse sont à présent disponibles.</target>
         <jms:reference-file line="11">Global/components/login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d908a7b300b9113e98e70b2a1bcbdb965852c336" resname="press.header.text.journalistesveuillezsaisirvotremotdepasse">
