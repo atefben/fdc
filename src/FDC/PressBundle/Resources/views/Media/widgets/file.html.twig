@@ -1,19 +1,19 @@
 {% trans_default_domain 'FDCPressBundle' %}
 
 <div class="contain-dp">
-    <div class="buttons {% if widget.lockedContent == 0 %}active-btn{% endif %}">
+    <div class="buttons {% if widget.lockedContent == 0 or is_granted("ROLE_FDC_PRESS_REPORTER") %}active-btn{% endif %}">
         {% if widget.secondFile is not null %}
-        <a href="{% if widget.lockedContent == 0 %}{% path widget.file, 'reference' %}{% endif %}" class="button large" target="_blank" download>
-            <i class="icon icon_{{ widget.lockedContent == 0 ? 'telecharger' : 'cadenas' }}"></i>
+        <a href="{% if widget.lockedContent == 0 or is_granted("ROLE_FDC_PRESS_REPORTER") %}{% path widget.file, 'reference' %}{% endif %}" class="button large" target="_blank" download>
+            <i class="icon icon_{{ widget.lockedContent == 0 or is_granted("ROLE_FDC_PRESS_REPORTER") ? 'telecharger' : 'cadenas' }}"></i>
             {{ widget|trans_fallback('btnLabel') }}
         </a>
-        <a href="{% if widget.lockedContent == 0 %}{% path widget.secondFile, 'reference' %}{% endif %}" class="button large" target="_blank" download>
-            <i class="icon icon_{{ widget.lockedContent == 0 ? 'telecharger' : 'cadenas' }}"></i>
+        <a href="{% if widget.lockedContent == 0 or is_granted("ROLE_FDC_PRESS_REPORTER") %}{% path widget.secondFile, 'reference' %}{% endif %}" class="button large" target="_blank" download>
+            <i class="icon icon_{{ widget.lockedContent == 0 or is_granted("ROLE_FDC_PRESS_REPORTER") ? 'telecharger' : 'cadenas' }}"></i>
             {{ widget|trans_fallback('secondBtnLabel') }}
         </a>
         {% else %}
-        <a href="{% if widget.lockedContent == 0 %}{% path widget.file, 'reference' %}{% endif %}" class="button" target="_blank" download>
-            <i class="icon icon_{{ widget.lockedContent == 0 ? 'telecharger' : 'cadenas' }}"></i>
+        <a href="{% if widget.lockedContent == 0 or is_granted("ROLE_FDC_PRESS_REPORTER") %}{% path widget.file, 'reference' %}{% endif %}" class="button" target="_blank" download>
+            <i class="icon icon_{{ widget.lockedContent == 0 or is_granted("ROLE_FDC_PRESS_REPORTER") ? 'telecharger' : 'cadenas' }}"></i>
             {{ widget|trans_fallback('btnLabel') }}
         </a>
         {% endif %}
