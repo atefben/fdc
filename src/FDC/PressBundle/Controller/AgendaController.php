@@ -144,6 +144,9 @@ class AgendaController extends Controller
             throw new NotFoundHttpException();
         }
 
+        // SEO
+        $this->get('base.manager.seo')->setFDCPressPagePressCinemaMapSeo($rooms, $locale);
+
         return array(
             'rooms' => $rooms
         );
