@@ -4,7 +4,7 @@
     <div class="wrapper">
         <div class="container-small">
             <div class="table">
-                {% for film in films %}
+                {% for k,film in films %}
                     {% set countVideo = 0 %}
                     {% set countFolder = 0 %}
                     {% set countImage = 0 %}
@@ -24,7 +24,7 @@
                         {% endif %}
                     {% endfor %}
                     <div class="line">
-                        <div class="container">
+                        <div class="container {{ k == 0 ? 'active' : '' }}">
                             <div class="info">
                                 <img src="{% path film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'tiny' %}" alt="">
                                 <div class="txt">
@@ -57,7 +57,9 @@
                                 <i class="icon icon_photo"></i>{{ 'mediatheque.label.photos'|trans }} ({{ countImage }})
                             </div>
                             {% endif %}
-                            <span class="plus"><i class="icon icon_case-plus"></i></span>
+                            <span class="plus">
+                                <i class="icon icon_{{ k == 0 ? 'moins' : 'case-plus' }}"></i>
+                            </span>
                             <div class="contain">
                                 {% if countFolder > 0 %}
                                 <div class="contain-buttons">

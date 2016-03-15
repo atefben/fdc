@@ -1319,6 +1319,7 @@ $(document).ready(function () {
         $parent.find('.icon_moins').removeClass('icon_moins').addClass('icon_case-plus');
       }
     });
+
   }
 
   ajaxEvent();
