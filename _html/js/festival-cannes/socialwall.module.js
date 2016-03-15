@@ -105,26 +105,22 @@ function makePath(data){
   
 }
 
- function makeGrid(){
-  
+function makeGrid() {
   var dataLength = GLOBALS.socialWall.points.length;
   var maxValue = GLOBALS.socialWall.heightGraph;
   var minValue = 35;
 
   s = Snap('#graphSVG');
 
-   if (s != null) {
-
-     // Creates the vertical lines in the graph
-     for (var i = 0; i < dataLength; i++) {
-       var x = 4 + i * 80;
-       var xLine = s.line(x, minValue, x, maxValue).attr({
-         stroke: "#000",
-         strokeWidth: 0.25,
-         strokeDasharray: '1 5'
-       });
-     }
-   }
+  // Creates the vertical lines in the graph
+  for (var i = 0; i < dataLength; i++) {
+    var x = 4 + i * 80;
+    var xLine = s.line(x, minValue, x, maxValue).attr({
+      stroke: "#000",
+      strokeWidth: 0.25,
+      strokeDasharray: '1 5'
+    });
+  }
 }
 
 function displayGrid() {
@@ -173,7 +169,7 @@ $(document).ready(function() {
     // =========================
 
     // GRAPH SVG
-    if(GLOBALS.socialWall.points.length > 0) {
+    if(GLOBALS.socialWall.points.length > 0 && $('#graph').length > 0) {
       makeGrid();
     }
 
