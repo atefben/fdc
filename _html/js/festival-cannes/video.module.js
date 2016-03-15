@@ -182,13 +182,19 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         playerInstance.setVolume(percentage);
     };
 
-    function updateMute() {
-        if (playerInstance.getMute()) {
-            playerInstance.setMute(false);
-            $sound.find('.sound-seek').css('width',playerInstance.getVolume()+'%');
-        } else {
+    playerInstance.updateMute = function(force) {
+        force = force || false;
+        if (force) {
             playerInstance.setMute(true);
             $sound.find('.sound-seek').css('width','0%');
+        } else {
+            if (playerInstance.getMute()) {
+                playerInstance.setMute(false);
+                $sound.find('.sound-seek').css('width',playerInstance.getVolume()+'%');
+            } else {
+                playerInstance.setMute(true);
+                $sound.find('.sound-seek').css('width','0%');
+            }
         }
     }
 
@@ -517,7 +523,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     });
 
     $sound.on('click', '.icon_son', function() {
-        updateMute();
+        playerInstance.updateMute();
     });
 
     var volumeDrag = false;
