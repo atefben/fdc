@@ -2,49 +2,57 @@
 
 {% if movie.persons|length > 0 %}
     <div class="casting" data-section="casting">
+        {% set medias = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'), true) %}
+        {% if medias|length > 0 %}
         <div class="gallery">
             <div class="img shadow-bottom">
-                {% for key, person in movie.persons %}
-                    {% set medias = person|film_media(constant('Base\\CoreBundle\\Entity\\FilmPersonMedia::TYPE_DIRECTOR')) %}
-                    {% if medias|length > 0 %}
-                        {% set media = medias|first %}
-                        {% if mediafirst is not defined %}
-                            {% thumbnail media, 'film_film_small' with {'class': 'active'} %}
-                        {% else %}
-                            {% thumbnail media, 'film_film_small' %}
-                        {% endif %}
+                {% for media in medias %}
+                    {% if loop.index0 == 0 %}
+                        {% media media.file, media.file.context ~ '_small' with {'class': 'active', title: '', width: '', height: ''} %}
+                    {% else %}
+                        {% media media.file, media.file.context ~ '_small' with {title: ''} %}
                     {% endif %}
 
-                    {% if media is not null and medafirst is not defined %}
-                        <span class="caption">{{ dump(media) }}</span>
-                    {% endif %}s
-                    {% set mediafirst = false %}
+                    {% if loop.index0 == 0 %}
+                        <span class="caption">
+                            {% if media.copyright %}
+                                © {{ media.copyright }}
+                            {% endif %}
+                            {% if app.request.locale == 'fr' and media.titleVf %}
+                                {% if media.copyright %} / {% endif %}
+                                {{ media.titleVf }}
+                            {% elseif app.request.locale != 'fr' and media.titleVa %}
+                                {% if media.copyright %} / {% endif %}
+                                {{ media.titleVa }}
+                            {% endif %}
+                        </span>
+                    {% endif %}
                 {% endfor %}
             </div>
             <div class="thumbs">
-                {% for key, person in movie.persons %}
-                    {% set media = person|film_media(constant('Base\\CoreBundle\\Entity\\FilmPersonMedia::TYPE_DIRECTOR'))|first %}
-                    {% if media is not null %}
-                        {% media media, 'film_film_small' %}
-                    {% endif %}
+                {% for media in medias %}
+                    {% media media.file, media.file.context ~ '_tiny' %}
                 {% endfor %}
             </div>
         </div>
+        {% endif %}
         <div class="content">
             <div class="vCenter">
                 <div class="vCenterKid">
-                    <h3 class="title-section">{{ 'movie.title.credits'|trans }}</h3>
-                    {% for person in movie.persons %}
-                        {% if person
-                            <p><a href="{{ path('fdc_event_artist_get', {'slug': person.person.slug }) }}">{{ person.person.fullName }} </a> - {% for function in person.functions %}{{ function|trans_fallback('name') }} {% endfor %}</p>
-                        {% endif %}
-                    {% endfor %}
+                    {% if movie.getCredits()|length > 0 %}
+                        <h3 class="title-section">{{ 'movie.title.credits'|trans }}</h3>
+                        {% for filmPerson in movie.getCredits() %}
+                                <p><a href="{{ path('fdc_event_artist_get', {'slug': filmPerson.person.slug }) }}">{{ filmPerson.person.fullName }} </a> - {% for personFunction in filmPerson.functions %}{{ personFunction.function|trans_fallback('name') }} {% endfor %}</p>
+                        {% endfor %}
+                    {% endif %}
+                    {% if movie.getActors()|length > 0 %}
                     <div class="actors">
                         <h3 class="title-section">{{ 'movie.title.casting'|trans }}</h3>
-                        {% for person in movie.persons %}
-                            <p><a href="{{ path('fdc_event_artist_get', {'slug': person.person.slug }) }}">{{ person.fullName }}</a> - {% for function in person.functions %}{{ function|trans_fallback('name') }} {% endfor %}</p>
+                        {% for filmPerson in movie.getActors() %}
+                            <p><a href="{{ path('fdc_event_artist_get', {'slug': filmPerson.person.slug }) }}">{{ filmPerson.person.fullName }}</a> - {{ filmPerson|trans_fallback('role') }}</p>
                         {% endfor %}
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

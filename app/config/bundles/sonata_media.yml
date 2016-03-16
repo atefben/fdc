@@ -10,6 +10,8 @@ sonata_media:
             providers:
                - sonata.media.provider.image
             formats:
+                tiny:  { width: 76, height: 92, quality: 100 }
+                small: { width: 584 , height: 794 , quality: 100 }
 
         film_poster:
             providers:
@@ -26,7 +28,10 @@ sonata_media:
             formats:
                   tiny:  { width: 46 , height: 64 , quality: 100 }
                   small: { width: 187 , height: 255 , quality: 100 }
+                  300x400: { width: 300, height: 400, quality 100 }
+                  420x560: { width: 420, height: 560, quality: 100 }
                   big:   { width: 1000 , quality: 100 }
+                  highres: { width: 2500, quality: 100 }
 
         film_image:
             providers:
@@ -44,8 +49,11 @@ sonata_media:
                 - sonata.media.provider.image
             formats:
                 tiny:  { width: 146 , quality: 100 }
+                300x400: { width: 300, height: 400, quality 100 }
+                420x560: { width: 420, height: 560, quality: 100 }
                 small: { width: 500 , quality: 100 }
                 big:   { width: 1000 , quality: 100 }
+                highres: { width: 2500, quality: 100 }
 
         pdf:
             providers:
@@ -114,11 +122,15 @@ sonata_media:
             formats:
                 212x134: { width: 212 , height: 134 , quality: 100 }
                 293x185: { width: 293 , height: 185 , quality: 100 }
+                # Movie VideoMain
+                588x784: { width: 588 , height: 784 , quality: 100 }
                 # PressDownload
                 240x326: { width: 240 , height: 326 , quality: 100 }
                 543x326: { width: 543 , height: 326 , quality: 100 }
                 # PressDownload Video image
                 976x535: { width: 976 , height: 535 , quality: 100 }
+                # PressDownload Signature image
+                233x233: { width: 233 , height: 233 , quality: 100 }
                 # PressCinemaMap
                 646x567: { width: 646 , height: 567 , quality: 100 }
                 # PressCinemaZone
@@ -164,8 +176,8 @@ sonata_media:
     providers:
         image:
             filesystem: sonata.media.filesystem.s3
-            allowed_extensions: ['jpg', 'png', 'jpeg']
-            allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png']
+            allowed_extensions: ['jpg', 'png', 'jpeg', 'gif']
+            allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png', 'image/gif']
 
     filesystem:
         s3:

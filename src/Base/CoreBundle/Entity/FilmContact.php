@@ -45,6 +45,14 @@ class FilmContact implements FilmContactInterface
     private $type;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"film_show"})
+     */
+    private $position;
+
+    /**
      * @var FilmAddress
      * @ORM\ManyToOne(targetEntity="FilmAddress", inversedBy="contacts", cascade={"persist"})
      * @Groups({"film_show"})
@@ -247,7 +255,7 @@ class FilmContact implements FilmContactInterface
         if ($this->films->contains($films)) {
             return;
         }
-        
+
         $this->films[] = $films;
 
         return $this;
@@ -263,17 +271,40 @@ class FilmContact implements FilmContactInterface
         if (!$this->films->contains($films)) {
             return;
         }
-        
+
         $this->films->removeElement($films);
     }
 
     /**
      * Get films
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getFilms()
     {
         return $this->films;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return FilmContact
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

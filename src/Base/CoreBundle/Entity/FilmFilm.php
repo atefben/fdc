@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Interfaces\FilmFunctionInterface;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
@@ -288,6 +289,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_list",
      *     "news_show"
      * })
+     *
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $persons;
 
@@ -299,6 +302,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @ORM\ManyToMany(targetEntity="FilmContact", inversedBy="films", cascade={"persist"})
      * @Groups({"film_show"})
+     * @ORM\OrderBy({"position"="ASC"})
      */
     private $contacts;
     
@@ -476,6 +480,143 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     {
         return $this->getTitleVO();
     }
+
+    public function getActors()
+    {
+        $collection = new ArrayCollection();
+        if ($this->getPersons()->count() > 0) {
+            foreach ($this->getPersons() as $person) {
+                if ($person->getFunctions()->count() > 0) {
+                    foreach ($person->getFunctions() as $personFunction) {
+                        if ($personFunction->getFunction() &&
+                            $personFunction->getFunction()->getId() == FilmFunctionInterface::FUNCTION_ACTOR) {
+                            $collection->add($person);
+                            break;
+                        }
+                    }
+                }
+            }
+            $collection = $this->orderByNullLast($collection, 'ASC');
+        }
+
+        return $collection;
+    }
+
+    public function getDirectors()
+    {
+        $collection = new ArrayCollection();
+        if ($this->getPersons()->count() > 0) {
+            foreach ($this->getPersons() as $person) {
+                if ($person->getFunctions()->count() > 0) {
+                    foreach ($person->getFunctions() as $personFunction) {
+                        if ($personFunction->getFunction() &&
+                            $personFunction->getFunction()->getId() == FilmFunctionInterface::FUNCTION_DIRECTOR) {
+                            $collection->add($person);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            $collection = $this->orderByNullLast($collection, 'ASC');
+        }
+
+        return $collection;
+    }
+
+    public function getCredits()
+    {
+        $collection = new ArrayCollection();
+        if ($this->getPersons()->count() > 0) {
+            foreach ($this->getPersons() as $person) {
+                $hasCredit = false;
+                if ($person->getFunctions()->count() > 0) {
+                    foreach ($person->getFunctions() as $personFunction) {
+                        if ($personFunction->getFunction() &&
+                            $personFunction->getFunction()->getId() != FilmFunctionInterface::FUNCTION_ACTOR) {
+                            $clone = clone $person;
+                            $functions = new ArrayCollection();
+                            foreach ($person->getFunctions() as $function) {
+                                $functions->add($function);
+                            }
+                            $clone->setFunctions($functions);
+                            $collection->add($clone);
+                        }
+                    }
+                }
+            }
+
+            $collection = $this->removeMultipleFunctions($collection);
+            $collection = $this->orderByNullLast($collection, 'ASC');
+        }
+
+        return $collection;
+    }
+
+    private function orderByNullLast($array, $order)
+    {
+        if (!is_array($array)) {
+            $array = $array->toArray();
+        }
+        usort($array, function($a, $b) use ($order) {
+            if (null === $a->getPosition())
+                return 1;
+            if (null === $b->getPosition())
+                return -1;
+
+            if (strtoupper($order) == "DESC") {
+                if ($a->getPosition() > $b->getPosition())
+                    return -1;
+                if ($b->getPosition() > $a->getPosition())
+                    return 1;
+            } else {
+                if ($a->getPosition() < $b->getPosition())
+                    return -1;
+                if ($b->getPosition() < $a->getPosition())
+                    return 1;
+            }
+        });
+
+        return $array;
+    }
+
+    private function removeMultipleFunctions($collection)
+    {
+        foreach ($collection as $key => $filmPerson) {
+            if ($filmPerson->getFunctions()->count() > 1) {
+                $count = 0;
+                foreach ($collection as $key2 => $filmPerson2) {
+                    if ($filmPerson->getPerson() && $filmPerson->getPerson()->getId() == $filmPerson2->getPerson()->getId()) {
+                        foreach ($collection->get($key2)->getFunctions() as $keyFunction => $function) {
+                            if ($keyFunction != $count) {
+                                $collection->get($key2)->getFunctions()->remove($keyFunction);
+                            }
+                        }
+                        $collection->get($key2)->setFunctions($this->orderCollection($collection->get($key2)->getFunctions()));
+                        $count++;
+                    }
+                }
+            }
+
+            if ($collection->get($key)->getFunctions()->count() > 0) {
+                $collection->get($key)->setPosition($collection->get($key)->getFunctions()->get(0)->getPosition());
+            }
+        }
+
+        return $collection;
+    }
+
+    private function orderCollection($collection)
+    {
+        $collectionOrdered = new ArrayCollection();
+        foreach ($collection as $row) {
+            $collectionOrdered->add($row);
+        }
+
+        return $collectionOrdered;
+    }
+
+
 
     /**
      * Set id
@@ -1551,18 +1692,20 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         if (!$this->contacts->contains($contacts)) {
             return;
         }
-        
+
         $this->contacts->removeElement($contacts);
     }
 
     /**
      * Get contacts
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getContacts()
     {
-        return $this->contacts;
+        $collection = $this->orderByNullLast($this->contacts, 'ASC');
+
+        return $collection;
     }
 
     /**

@@ -11,6 +11,10 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\NullOutput;
+
 /**
  * Class SocialGraphCommand
  * @package FDC\EventBundle\Command
@@ -39,7 +43,6 @@ class SocialGraphCommand extends ContainerAwareCommand
      * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output) {
-
         $em = $this->getContainer()->get('doctrine')->getManager();
         $logger = $this->getContainer()->get('logger');
         $datetime = new DateTime();
@@ -129,6 +132,8 @@ class SocialGraphCommand extends ContainerAwareCommand
             }
 
         }
+
+
     }
 
     private function writeError($output, $logger, $msg)

@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+        <a target="_blank" href="{{ url('fdc_event_movie_get', { _locale: 'fr', slug: object.slug }) }}">
+            <i class="fa fa-search"></i>
+        </a>
+    </div>
+{% endblock %}

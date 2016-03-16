@@ -5,9 +5,7 @@ namespace FDC\EventBundle\Command;
 use Base\CoreBundle\Entity\SocialWall;
 use \DateTime;
 
-use Guzzle\Plugin\Oauth\OauthPlugin;
-use Guzzle\Service\Client;
-
+use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -40,6 +38,9 @@ class SocialWallTumblrCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $adminSecurityHandler = $this->getContainer()->get('sonata.admin.security.handler');
+        $modelAdmin = $this->getContainer()->get('base.admin.social_wall');
+
         $em       = $this->getContainer()->get('doctrine')->getManager();
         $logger   = $this->getContainer()->get('logger');
         $datetime = new DateTime();
@@ -84,9 +85,9 @@ class SocialWallTumblrCommand extends ContainerAwareCommand
 
         krsort($tumblrPosts);
         $count = null;
+        $socialWalls = array();
         foreach ($tumblrPosts as $key => $tumblrPost) {
             $canInsert = true;
-            $count = $key;
             //check if the post is'nt already inserted in the 40 last insert
             foreach($lastInsertionsTumblr as $lastInsert) {
                 if($lastInsert->getTumblrId() == $tumblrPost->id) {
@@ -94,7 +95,7 @@ class SocialWallTumblrCommand extends ContainerAwareCommand
                 }
             }
 
-            if($canInsert == true) {
+            if ($canInsert == true) {
                 $socialWall = new SocialWall();
                 $socialWall->setMessage($tumblrPost->summary);
                 if(isset($tumblrPost->photos[0]->original_size->url)) {
@@ -111,10 +112,23 @@ class SocialWallTumblrCommand extends ContainerAwareCommand
                 $socialWall->setTumblrId($tumblrPost->id);
 
                 $em->persist($socialWall);
+                $socialWalls[] = $socialWall;
             }
         }
-        $output->writeln('Tumblr added: '. $count);
 
         $em->flush();
+
+        //update ACL
+        foreach ($socialWalls as $socialWall) {
+            $objectIdentity = ObjectIdentity::fromDomainObject($socialWall);
+            $acl = $adminSecurityHandler->getObjectAcl($objectIdentity);
+            if (is_null($acl)) {
+                $acl = $adminSecurityHandler->createAcl($objectIdentity);
+            }
+            $adminSecurityHandler->addObjectClassAces($acl, $adminSecurityHandler->buildSecurityInformation($modelAdmin));
+            $adminSecurityHandler->updateAcl($acl);
+        }
+
+        $output->writeln('Tumblr added: '. count($socialWalls));
     }
 }

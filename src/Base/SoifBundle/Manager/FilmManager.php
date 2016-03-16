@@ -542,6 +542,7 @@ class FilmManager extends CoreManager
                 // find person
                 $persons[$object->Id]->setPerson($person);
                 $persons[$object->Id]->setFilm($entity);
+                $persons[$object->Id]->setPosition($object->OrdreAffichage);
                 
                 // set function
                 if (property_exists($object, 'IdFonction')) {
@@ -605,6 +606,7 @@ class FilmManager extends CoreManager
                 $filmContact->setId($object->IdContact);
                 $filmContact->setType($object->TypesContactId);
                 $filmContact->setCompanyName($object->NomSociete);
+                $filmContact->setPosition($object->Ordre);
                 
                 $entity->addContact($filmContact);
                 $collection->add($filmContact);

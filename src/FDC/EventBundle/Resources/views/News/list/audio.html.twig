@@ -73,20 +73,23 @@
             </div>
         </div>
         <div class="ov"></div>
+        {{ render(controller('FDCEventBundle:Global:shareEmailMedia',
+            {'section': '',
+             'detail': '',
+             'title': '',
+             'description': ''
+            }))
+        }}
     </div>
-
-    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
-    {"breadcrumb":
-    [
-    {
-    "name" : 'header.mainnav.nav.jourapresjour'|trans ,
-    "url"  : path('fdc_event_news_index')
-    },
-    {
-    "name" : 'header.mainnav.nav.audios'|trans ,
-    "url"  : path('fdc_event_news_getaudios')
-    },
-    ]
-    } %}
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+        {
+            "name" : 'header.mainnav.nav.jourapresjour'|trans ,
+            "url"  : path('fdc_event_news_index')
+        },
+        {
+            "name" : 'header.mainnav.nav.audios'|trans ,
+            "url"  : path('fdc_event_news_getaudios')
+        },
+    ]} %}
 {% endblock %}
 

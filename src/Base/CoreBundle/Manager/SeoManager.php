@@ -8,6 +8,13 @@ use Base\CoreBundle\Entity\FDCPageNewsImages;
 use Base\CoreBundle\Entity\FDCPageWebTvChannels;
 use Base\CoreBundle\Entity\FDCPageWebTvLive;
 use Base\CoreBundle\Entity\FDCPageWebTvTrailers;
+use Base\CoreBundle\Entity\PressDownload;
+use Base\CoreBundle\Entity\PressProjection;
+use Base\CoreBundle\Entity\PressStatementInfo;
+use Base\CoreBundle\Entity\PressMediaLibrary;
+use Base\CoreBundle\Entity\PressHomepage;
+use Base\CoreBundle\Entity\PressAccredit;
+use Base\CoreBundle\Entity\PressCinemaMap;
 use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\WebTv;
 use \DateTime;
@@ -557,6 +564,328 @@ class SeoManager
             $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
             $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
             $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_event_television_live', array(), UrlGeneratorInterface::ABSOLUTE_URL));
+            $this->sonataSeoPage->addMeta('property', 'og:updated_time', $page->getUpdatedAt()->format(DateTime::ISO8601));
+
+            // TWITTER
+            $this->sonataSeoPage->addMeta('property', 'twitter:card', 'summary_large_image');
+            $this->sonataSeoPage->addMeta('property', 'twitter:site', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'twitter:creator', '@' . substr(strrchr($this->socialTwitter, '/'), 1));
+
+            // PICTURE
+            $header = $page->getSeoFile();
+            if ($header) {
+                // OG PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+
+                // TWITTER PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            }
+
+            // overload default value by the one set on the article
+            if ($trans->getSeoTitle() !== null) {
+                $this->sonataSeoPage->setTitle("{$trans->getSeoTitle()}  - Festival de Cannes {$this->fdcYear}");
+                $this->sonataSeoPage->addMeta('property', 'og:title', $trans->getSeoTitle());
+                $this->sonataSeoPage->addMeta('property', 'twitter:title', $trans->getSeoTitle());
+            }
+            if ($trans->getSeoDescription() !== null) {
+                $this->sonataSeoPage->addMeta('name', 'description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'og:description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'twitter:description', $trans->getSeoDescription());
+            }
+        }
+    }
+
+    /**
+     * @param PressDownload $page
+     * @param $locale
+     */
+    public function setFDCPressPagePressDownloadSeo(PressDownload $page, $locale)
+    {
+        $trans = $page->findTranslationByLocale($locale);
+
+        if ($trans !== null) {
+            // OG PARAMS
+            $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
+            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_press_media_download', array(), UrlGeneratorInterface::ABSOLUTE_URL));
+            $this->sonataSeoPage->addMeta('property', 'og:updated_time', $page->getUpdatedAt()->format(DateTime::ISO8601));
+
+            // TWITTER
+            $this->sonataSeoPage->addMeta('property', 'twitter:card', 'summary_large_image');
+            $this->sonataSeoPage->addMeta('property', 'twitter:site', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'twitter:creator', '@' . substr(strrchr($this->socialTwitter, '/'), 1));
+
+            // PICTURE
+            $header = $page->getSeoFile();
+            if ($header) {
+                // OG PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+
+                // TWITTER PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            }
+
+            // overload default value by the one set on the article
+            if ($trans->getSeoTitle() !== null) {
+                $this->sonataSeoPage->setTitle("{$trans->getSeoTitle()}  - Festival de Cannes {$this->fdcYear}");
+                $this->sonataSeoPage->addMeta('property', 'og:title', $trans->getSeoTitle());
+                $this->sonataSeoPage->addMeta('property', 'twitter:title', $trans->getSeoTitle());
+            }
+            if ($trans->getSeoDescription() !== null) {
+                $this->sonataSeoPage->addMeta('name', 'description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'og:description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'twitter:description', $trans->getSeoDescription());
+            }
+        }
+    }
+
+    /**
+     * @param PressMediaLibrary $page
+     * @param $locale
+     */
+    public function setFDCPressPagePressMediaLibrarySeo(PressMediaLibrary $page, $locale)
+    {
+        $trans = $page->findTranslationByLocale($locale);
+
+        if ($trans !== null) {
+            // OG PARAMS
+            $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
+            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_press_media_main', array(), UrlGeneratorInterface::ABSOLUTE_URL));
+            $this->sonataSeoPage->addMeta('property', 'og:updated_time', $page->getUpdatedAt()->format(DateTime::ISO8601));
+
+            // TWITTER
+            $this->sonataSeoPage->addMeta('property', 'twitter:card', 'summary_large_image');
+            $this->sonataSeoPage->addMeta('property', 'twitter:site', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'twitter:creator', '@' . substr(strrchr($this->socialTwitter, '/'), 1));
+
+            // PICTURE
+            $header = $page->getSeoFile();
+            if ($header) {
+                // OG PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+
+                // TWITTER PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            }
+
+            // overload default value by the one set on the article
+            if ($trans->getSeoTitle() !== null) {
+                $this->sonataSeoPage->setTitle("{$trans->getSeoTitle()}  - Festival de Cannes {$this->fdcYear}");
+                $this->sonataSeoPage->addMeta('property', 'og:title', $trans->getSeoTitle());
+                $this->sonataSeoPage->addMeta('property', 'twitter:title', $trans->getSeoTitle());
+            }
+            if ($trans->getSeoDescription() !== null) {
+                $this->sonataSeoPage->addMeta('name', 'description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'og:description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'twitter:description', $trans->getSeoDescription());
+            }
+        }
+    }
+
+    /**
+     * @param PressProjection $page
+     * @param $locale
+     */
+    public function setFDCPressPagePressProjectionSeo(PressProjection $page, $locale)
+    {
+        $trans = $page->findTranslationByLocale($locale);
+
+        if ($trans !== null) {
+            // OG PARAMS
+            $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
+            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_press_agenda_scheduling', array(), UrlGeneratorInterface::ABSOLUTE_URL));
+            $this->sonataSeoPage->addMeta('property', 'og:updated_time', $page->getUpdatedAt()->format(DateTime::ISO8601));
+
+            // TWITTER
+            $this->sonataSeoPage->addMeta('property', 'twitter:card', 'summary_large_image');
+            $this->sonataSeoPage->addMeta('property', 'twitter:site', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'twitter:creator', '@' . substr(strrchr($this->socialTwitter, '/'), 1));
+
+            // PICTURE
+            $header = $page->getSeoFile();
+            if ($header) {
+                // OG PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+
+                // TWITTER PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            }
+
+            // overload default value by the one set on the article
+            if ($trans->getSeoTitle() !== null) {
+                $this->sonataSeoPage->setTitle("{$trans->getSeoTitle()}  - Festival de Cannes {$this->fdcYear}");
+                $this->sonataSeoPage->addMeta('property', 'og:title', $trans->getSeoTitle());
+                $this->sonataSeoPage->addMeta('property', 'twitter:title', $trans->getSeoTitle());
+            }
+            if ($trans->getSeoDescription() !== null) {
+                $this->sonataSeoPage->addMeta('name', 'description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'og:description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'twitter:description', $trans->getSeoDescription());
+            }
+        }
+    }
+
+    /**
+     * @param PressStatementInfo $page
+     * @param $locale
+     */
+    public function setFDCPressPagePressStatementInfoSeo(PressStatementInfo $page, $locale)
+    {
+        $trans = $page->findTranslationByLocale($locale);
+
+        if ($trans !== null) {
+            // OG PARAMS
+            $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
+            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_press_news_list', array(), UrlGeneratorInterface::ABSOLUTE_URL));
+            $this->sonataSeoPage->addMeta('property', 'og:updated_time', $page->getUpdatedAt()->format(DateTime::ISO8601));
+
+            // TWITTER
+            $this->sonataSeoPage->addMeta('property', 'twitter:card', 'summary_large_image');
+            $this->sonataSeoPage->addMeta('property', 'twitter:site', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'twitter:creator', '@' . substr(strrchr($this->socialTwitter, '/'), 1));
+
+            // PICTURE
+            $header = $page->getSeoFile();
+            if ($header) {
+                // OG PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+
+                // TWITTER PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            }
+
+            // overload default value by the one set on the article
+            if ($trans->getSeoTitle() !== null) {
+                $this->sonataSeoPage->setTitle("{$trans->getSeoTitle()}  - Festival de Cannes {$this->fdcYear}");
+                $this->sonataSeoPage->addMeta('property', 'og:title', $trans->getSeoTitle());
+                $this->sonataSeoPage->addMeta('property', 'twitter:title', $trans->getSeoTitle());
+            }
+            if ($trans->getSeoDescription() !== null) {
+                $this->sonataSeoPage->addMeta('name', 'description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'og:description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'twitter:description', $trans->getSeoDescription());
+            }
+        }
+    }
+
+    /**
+     * @param PressAccredit $page
+     * @param $locale
+     */
+    public function setFDCPressPagePressAccreditSeo(PressAccredit $page, $locale)
+    {
+        $trans = $page->findTranslationByLocale($locale);
+
+        if ($trans !== null) {
+            // OG PARAMS
+            $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
+            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_press_accredit_main', array(), UrlGeneratorInterface::ABSOLUTE_URL));
+            $this->sonataSeoPage->addMeta('property', 'og:updated_time', $page->getUpdatedAt()->format(DateTime::ISO8601));
+
+            // TWITTER
+            $this->sonataSeoPage->addMeta('property', 'twitter:card', 'summary_large_image');
+            $this->sonataSeoPage->addMeta('property', 'twitter:site', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'twitter:creator', '@' . substr(strrchr($this->socialTwitter, '/'), 1));
+
+            // PICTURE
+            $header = $page->getSeoFile();
+            if ($header) {
+                // OG PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+
+                // TWITTER PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            }
+
+            // overload default value by the one set on the article
+            if ($trans->getSeoTitle() !== null) {
+                $this->sonataSeoPage->setTitle("{$trans->getSeoTitle()}  - Festival de Cannes {$this->fdcYear}");
+                $this->sonataSeoPage->addMeta('property', 'og:title', $trans->getSeoTitle());
+                $this->sonataSeoPage->addMeta('property', 'twitter:title', $trans->getSeoTitle());
+            }
+            if ($trans->getSeoDescription() !== null) {
+                $this->sonataSeoPage->addMeta('name', 'description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'og:description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'twitter:description', $trans->getSeoDescription());
+            }
+        }
+    }
+
+    /**
+     * @param PressCinemaMap $page
+     * @param $locale
+     */
+    public function setFDCPressPagePressCinemaMapSeo(PressCinemaMap $page, $locale)
+    {
+        $trans = $page->findTranslationByLocale($locale);
+
+        if ($trans !== null) {
+            // OG PARAMS
+            $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
+            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_press_agenda_room', array(), UrlGeneratorInterface::ABSOLUTE_URL));
+            $this->sonataSeoPage->addMeta('property', 'og:updated_time', $page->getUpdatedAt()->format(DateTime::ISO8601));
+
+            // TWITTER
+            $this->sonataSeoPage->addMeta('property', 'twitter:card', 'summary_large_image');
+            $this->sonataSeoPage->addMeta('property', 'twitter:site', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'twitter:creator', '@' . substr(strrchr($this->socialTwitter, '/'), 1));
+
+            // PICTURE
+            $header = $page->getSeoFile();
+            if ($header) {
+                // OG PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+
+                // TWITTER PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            }
+
+            // overload default value by the one set on the article
+            if ($trans->getSeoTitle() !== null) {
+                $this->sonataSeoPage->setTitle("{$trans->getSeoTitle()}  - Festival de Cannes {$this->fdcYear}");
+                $this->sonataSeoPage->addMeta('property', 'og:title', $trans->getSeoTitle());
+                $this->sonataSeoPage->addMeta('property', 'twitter:title', $trans->getSeoTitle());
+            }
+            if ($trans->getSeoDescription() !== null) {
+                $this->sonataSeoPage->addMeta('name', 'description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'og:description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'twitter:description', $trans->getSeoDescription());
+            }
+        }
+    }
+
+    /**
+     * @param PressHomepage $page
+     * @param $locale
+     */
+    public function setFDCPressPagePressHomepageSeo(PressHomepage $page, $locale)
+    {
+        $trans = $page->findTranslationByLocale($locale);
+
+        if ($trans !== null) {
+            // OG PARAMS
+            $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
+            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_press_news_home', array(), UrlGeneratorInterface::ABSOLUTE_URL));
             $this->sonataSeoPage->addMeta('property', 'og:updated_time', $page->getUpdatedAt()->format(DateTime::ISO8601));
 
             // TWITTER

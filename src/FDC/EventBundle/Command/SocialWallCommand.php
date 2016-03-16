@@ -8,6 +8,7 @@ use \DateTime;
 use Guzzle\Plugin\Oauth\OauthPlugin;
 use Guzzle\Service\Client;
 
+use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -37,7 +38,8 @@ class SocialWallCommand extends ContainerAwareCommand {
      * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output) {
-
+        $adminSecurityHandler = $this->getContainer()->get('sonata.admin.security.handler');
+        $modelAdmin = $this->getContainer()->get('base.admin.social_wall');
 
         $em       = $this->getContainer()->get('doctrine')->getManager();
         $logger   = $this->getContainer()->get('logger');
@@ -121,6 +123,7 @@ class SocialWallCommand extends ContainerAwareCommand {
             }
         }
 
+        $socialWalls = array();
         if (count($tweets) > 0) {
             krsort($tweets);
             foreach ($tweets as $tweet) {
@@ -140,10 +143,23 @@ class SocialWallCommand extends ContainerAwareCommand {
                 $socialWall->setDate($datetime);
                 $socialWall->setTags($tagSettings->getSocialWallHashtags());
                 $em->persist($socialWall);
+                $socialWalls[] = $socialWall;
             }
             $em->flush();
+
+            //update ACL
+            foreach ($socialWalls as $socialWall) {
+                $objectIdentity = ObjectIdentity::fromDomainObject($socialWall);
+                $acl = $adminSecurityHandler->getObjectAcl($objectIdentity);
+                if (is_null($acl)) {
+                    $acl = $adminSecurityHandler->createAcl($objectIdentity);
+                }
+                $adminSecurityHandler->addObjectClassAces($acl, $adminSecurityHandler->buildSecurityInformation($modelAdmin));
+                $adminSecurityHandler->updateAcl($acl);
+            }
         }
-        $output->writeln('Tweet added: '. count($tweets));
+
+        $output->writeln('Tweet added: '. count($socialWalls));
 
         //////////////////////////////////////////////////////////////////////
         ///////////////////////////   INSTAGRAM   ////////////////////////////
@@ -186,6 +202,7 @@ class SocialWallCommand extends ContainerAwareCommand {
         }
 
         krsort($instagramPosts);
+        $socialWalls = array();
         foreach ($instagramPosts as $instagramPost) {
             $socialWall = new SocialWall();
             $socialWall->setMessage($instagramPost->caption->text);
@@ -198,10 +215,25 @@ class SocialWallCommand extends ContainerAwareCommand {
             $socialWall->setDate($datetime);
             $socialWall->setTags($tagSettings->getSocialWallHashtags());
             $em->persist($socialWall);
+            $socialWalls[] = $socialWall;
+
         }
-        $output->writeln('Instagram added: '. count($instagramPosts));
 
         $em->flush();
+
+        //update ACL
+        foreach ($socialWalls as $socialWall) {
+            $objectIdentity = ObjectIdentity::fromDomainObject($socialWall);
+            $acl = $adminSecurityHandler->getObjectAcl($objectIdentity);
+            if (is_null($acl)) {
+                $acl = $adminSecurityHandler->createAcl($objectIdentity);
+            }
+            $adminSecurityHandler->addObjectClassAces($acl, $adminSecurityHandler->buildSecurityInformation($modelAdmin));
+            $adminSecurityHandler->updateAcl($acl);
+        }
+
+        $output->writeln('Instagram added: '. count($instagramPosts));
+
     }
 
     private function writeError($output, $logger, $msg) {

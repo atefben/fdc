@@ -31,29 +31,13 @@ class MediaController extends Controller
         }
 
         $sectionFilms = $em->getRepository('BaseCoreBundle:FilmFilm')
-            ->findBy(array('festival' => $settings->getFestival()->getId()), array('selectionSection' => 'ASC'));
+            ->findBy(array('festival' => $settings->getFestival()->getId()), array('selectionSection' => 'DESC'));
         $i = 0;
 
         $filmSection = array();
         $section = array();
         $mainSectionId = 0;
 
-        foreach ($sectionFilms as $film) {
-            $empty = true;
-            foreach ($film->getMedias() as $media) {
-                if ($media->getType() == '14' || $media->getType() == '18') {
-                    $empty = false;
-                }
-            }
-            foreach ($film->getAssociatedMediaVideos() as $mediaVideo ) {
-                if (isset($mediaVideo)){
-                    $empty = false;
-                }
-            }
-            if ($film->getSelectionSection() !== null && $empty == false) {
-                $mainSectionId = $film->getSelectionSection()->getId();
-            }
-        }
         $i = 0;
 
         foreach ($sectionFilms as $film) {
@@ -77,11 +61,13 @@ class MediaController extends Controller
                 $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
 
                 $section[] = $film->getSelectionSection()->getId();
+                $i++;
             }
 
 
-            $i++;
+
         }
+        $mainSectionId = $filmSection[0]['id'];
 
         $films = $em->getRepository('BaseCoreBundle:FilmFilm')
             ->findBy(array(
@@ -106,6 +92,15 @@ class MediaController extends Controller
             }
             $i++;
         }
+
+        $pressMediaLibrary = $em->getRepository('BaseCoreBundle:PressMediaLibrary')->findOneById($this->getParameter('admin_press_medialibrary_id'));
+        if ($pressMediaLibrary === null) {
+            throw new NotFoundHttpException();
+        }
+
+        // SEO
+        $this->get('base.manager.seo')->setFDCPressPagePressMediaLibrarySeo($pressMediaLibrary, $locale);
+
         return array(
             'filmSection' => $filmSection,
             'films' => $films
@@ -152,6 +147,7 @@ class MediaController extends Controller
 
         }
         $i=0;
+
         foreach ($films as $film) {
             $empty = true;
             foreach ($film->getMedias() as $media) {
@@ -169,6 +165,7 @@ class MediaController extends Controller
             }
             $i++;
         }
+
         return array(
             'films' => $films,
             'section' => $section
@@ -305,11 +302,13 @@ class MediaController extends Controller
             throw new NotFoundHttpException();
         }
 
-        //GET PRESS HOMEPAGE
+        //GET PRESS DOWNLOADPAGE
         $section = $em->getRepository('BaseCoreBundle:PressDownload')->findOneById($this->getParameter('admin_press_download_id'));
         if ($section === null || $section->getDownloadSection() === null) {
             throw new NotFoundHttpException();
         }
+        // SEO
+        $this->get('base.manager.seo')->setFDCPressPagePressDownloadSeo($section, $locale);
 
         $downloads = $section->getDownloadSection();
 

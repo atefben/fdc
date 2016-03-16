@@ -1,30 +1,82 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 <div class="main-image">
-    <div class="img" style="background-image: url({% path movie.imageCover, 'media_image_simple_1280x808' %})"></div>
+
+    {% set media = '' %}
+    {% set format = '' %}
+    {% if movie.imageCover %}
+        {% set media = movie.imageCover %}
+        {% set format =  'media_image_simple_1280x808'%}
+    {% else %}
+        {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+        {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+        {% if mainImg %}
+            {% set media = mainImg %}
+            {% set format =  'film_main_highres' %}
+        {% elseif filmImg %}
+            {% set media = filmImg %}
+            {% set format = 'film_film_highres' %}
+        {% endif %}
+    {% endif %}
+    <div class="img" style="background-image: url({% path media, format %})"></div>
     <div class="links">
         <div class="container">
             <a class="movies" href="{{ path('fdc_event_movie_selection', {'slug': "competition"}) }}">{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
             <a class="programmation" href="#">{{ 'movie.nav.btn.voirlaprogrammation'|trans }}</a>
         </div>
     </div>
-    <div class="trailer"></div>
+    <div class="trailer">
+        {% if movie.videoMain is not null %}
+        <div class="video-container state-init video"
+             data-file='[{"file":"{{ s3_server_video ~ movie.videoMain|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ movie.videoMain|trans_fallback('mp4Url') }}"}]'
+             data-vid="{{ movie.videoMain.id }}"
+             {% if movie.imageCover %}
+             data-img="{% path media, format %}"
+             {% else %}
+                 {% set videoImage = '' %}
+                 {% if movie.videoMain.image %}
+                     {% set videoImage = media_public_url(movie.videoMain.image|trans_fallback('file'), '1280x808') %}
+                 {% elseif video|trans_fallback('imageAmazonUrl') %}
+                     {% set videoImage = s3_server_global ~ movie.videoMain|trans_fallback('imageAmazonUrl') %}
+                 {% endif %}
+             data-img="{{ videoImage }} %}"
+             {% endif %}>
+            <div id="video-movie-trailer" class="video-player"></div>
+            <div class="video-overlay"></div>
+            <div class="infos-bar">
+                <div class="picto"><i class="icon icon_video"></i></div>
+                <div class="info">
+                    <div class="vCenter">
+                        <div class="vCenterKid">
+                            <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                            <p>The Lobster</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
 </div>
 <div class="container container-top">
-    {% if movie.videoMain is not null and movie.videoMain.image and movie.videoMain.image.file %}
-    <div class="poster video">
-        <a href="#" class="picto"><i class="icon icon_video"></i></a>
-        {% media movie.videoMain.image.file, 'media_image_2560x1620' %}
-    </div>
-    {% endif %}
+        <div class="poster video">
+            <a href="#" class="picto"><i class="icon icon_video"></i></a>
+            {% if movie.imageMain %}
+                {% media movie.imageMain|trans_fallback('file'), 'media_image_simple_588x784' %}
+            {% elseif movie.videoMain is not null and movie.videoMain.image and movie.videoMain.image.file %}
+                {% media movie.videoMain.image.file, 'media_image_2560x1620' %}
+            {% elseif movie.videoMain is not null and movie.videoMain|trans_fallback('imageAmazonUrl') %}
+                <img src="{{ s3_server_global ~ movie.videoMain|trans_fallback('imageAmazonUrl') }}">
+            {% endif %}
+        </div>
     <div class="info-film">
         <div class="categories">
             {% for category in movie.categories %}
             <span>{{ category.name }}</span>
             {% endfor %}
         </div>
-        <h2>{{ movie.title }}</h2>
-        <div class="title-original">{% if movie|trans_fallback('title') is not null %}({{ movie|trans_fallback('title') }}){% else %}({{ movie.titleVO }}){% endif %}</div>
+        <h2>{% if movie|trans_fallback('title') is not empty %}{{ movie|trans_fallback('title') }}{% else %}{{ movie.titleVO }}{% endif %}</h2>
+        <div class="title-original">({{ movie.titleVO }})</div>
         <p>
             {{ 'movie.label.realisepar'|trans }} :
             {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
@@ -35,11 +87,11 @@
             {% endfor %}
         </p>
         <p>
-            {% if movie.productionYear is not null %}
+            {% if movie.productionYear is not null and movie.productionYear != 0 %}
                 {{ 'movie.label.anneedeproduction'|trans }} : <span>{{ movie.productionYear }}</span>
             {% endif %}
             {% if movie.countries|length > 0 %}
-                {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}<span>{{ country|trans_fallback('name') }}</span> {% endfor %}
+                {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}<span>{{ country.country|trans_fallback('name') }}</span> {% endfor %}
             {% endif  %}
             {% if movie.duration is not null and movie.duration > 0 %}
                 {{ 'movie.label.duree'|trans }} : <span>{{ movie.duration }}</span>

@@ -7,7 +7,7 @@
     <div id="canvasloader" class="canvasloader"></div>
     <div class="content-movie">
 
-        {% include 'FDCEventBundle:Movie:components/pagination.html.twig' %}
+        {#{% include 'FDCEventBundle:Movie:components/pagination.html.twig' %}#}
 
         <span id="plx"></span>
 
@@ -16,11 +16,21 @@
         <div id="nav-movie">
             <div class="container">
                 <ul>
-                    <li><a href="#videos">{{ 'movie.middlenav.videos'|trans }}</a></li>
-                    <li><a href="#casting">{{ 'movie.middlenav.creditcasting'|trans }}</a></li>
-                    <li><a href="#photos">{{ 'movie.middlenav.photos'|trans }}</a></li>
-                    <li><a href="#news">{{ 'movie.middlenav.actualites'|trans }}</a></li>
-                    <li><a href="#audios">{{ 'movie.middlenav.audios'|trans }}</a></li>
+                    {% if movie.associatedMediaVideos|length > 0 %}
+                        <li><a href="#videos">{{ 'movie.middlenav.videos'|trans }}</a></li>
+                    {% endif %}
+                    {% if movie.getActors()|length > 0 and movie.getCredits()|length > 0 %}
+                        <li><a href="#casting">{{ 'movie.middlenav.creditcasting'|trans }}</a></li>
+                    {% endif %}
+                    {% if movie.getMedias()|length > 0 %}
+                        <li><a href="#photos">{{ 'movie.middlenav.photos'|trans }}</a></li>
+                    {% endif %}
+                    {% if movie.associatedNews|length > 0 %}
+                        <li><a href="#news">{{ 'movie.middlenav.actualites'|trans }}</a></li>
+                    {% endif %}
+                    {% if movie.associatedMediaAudios|length > 0 %}
+                        <li><a href="#audios">{{ 'movie.middlenav.audios'|trans }}</a></li>
+                    {% endif %}
                     <li><a href="#press">{{ 'movie.middlenav.infospresse'|trans }}</a></li>
                 </ul>
                 <div class="buttons square">
@@ -43,7 +53,7 @@
 
             {% include 'FDCEventBundle:Movie:widgets/casting.html.twig' %}
 
-            {% include 'FDCEventBundle:Movie:widgets/image.html.twig' with {'photos': movie.photos} %}
+            {% include 'FDCEventBundle:Movie:widgets/image.html.twig' with {'photos': movie.medias} %}
 
             <div class="news" data-section="news">
                 <div class="articles center">

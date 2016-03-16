@@ -6,26 +6,43 @@
             <div class="vCenter">
                 <div class="vCenterKidTop">
                     <h3 class="gold">{{ 'movie.presse.title.infospresse'|trans }}</h3>
+                    {% set medias = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF'), true) %}
+                    {% if medias|length > 0 %}
                     <div class="folder">
                         <div class="vCenter">
                             <div class="vCenterKid">
-                                <img src="" alt="" />
+                                {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                                {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+                                {% set media = '' %}
+                                {% set format =  '300x400' %}
+                                {% if mainImg %}
+                                    {% set media = mainImg %}
+                                {% elseif filmImg %}
+                                    {% set media = filmImg %}
+                                {% endif %}
+                                {% if media is not empty %}
+                                    {% media media, '300x400' %}
+                                {% endif %}
                                 <h3>{{ 'movie.presse.title.dossierdepresse'|trans }}</h3>
-                                <a href="#">{{ 'movie.presse.btn.francaispdf'|trans }}</a>
-                                <a href="#">{{ 'movie.presse.btn.englishpdf'|trans }}</a>
+                                {% for media in medias %}
+                                    <a download href="{% path media.file, 'reference' %}">{% if app.request.locale == 'fr' %}{{ media.titleVf }}{% else %}{{ media.titleVa }}{% endif %}</a>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
+                    {% endif %}
+                    {% if movie.website %}
                     <div class="links">
-                        <p class="sub">{{ 'movie.presse.label.liens'|trans }}</p>
-                        {#{% for link in movie.press.links %}
-                            <a href="{{ link.href }}" target="_blank">{{ link.name }}</a>
-                        {% endfor %}#}
+                            <p class="sub">{{ 'movie.presse.label.liens'|trans }}</p>
+                            {% if movie.website %}
+                                <a href="{{ movie.website }}" target="_blank">{{ 'movie.presse.liens.website'|trans }}</a>
+                            {% endif %}
                     </div>
+                    {% endif %}
                     <div class="buttons">
                         <p class="sub">{{ 'movie.presse.label.plusdinformations'|trans }}</p>
-                        <a href="#" class="button">{{ 'movie.presse.btn.espacepresse'|trans }}</a>
-                        <a href="#" class="button">{{ 'movie.presse.btn.voirlaprogrammation'|trans }}</a>
+                        <a href="{{ path('fdc_press_news_home') }}" class="button">{{ 'movie.presse.btn.espacepresse'|trans }}</a>
+                        <a href="{{ path('fdc_press_agenda_scheduling') }}" class="button">{{ 'movie.presse.btn.voirlaprogrammation'|trans }}</a>
                     </div>
                 </div>
             </div>
@@ -36,29 +53,37 @@
         <div class="wrapper">
             <div class="vCenter">
                 <div class="vCenterKidTop">
-                    <h3>{{ 'movie.contact.title.contacts'|trans }}</h3>
-                    <div class="prod">
-                        <p class="sub">{{ 'movie.contact.label.production'|trans }}</p>
-                        <p>CG CINÉMA - 54 rue du Faubourg-Saint-Honoré 75008 Paris FRANCET: 0184173508 - <a href="#">production@cgcinema.eu</a></p>
-                    </div>
-                    <div>
-                        <p class="sub">{{ 'movie.contact.label.distribution'|trans }}</p>
-                        <p>LES FILMS DU LOSANGE - T: 01 44 43 87 10<br />
-                            <a href="#">r.vial@filmsdulosange.fr</a>  <a href="#">www.filmsdulosange.fr</a></p>
-                    </div>
-                    <div>
-                        <p class="sub">{{ 'movie.contact.label.pressefrancaise'|trans }}</p>
-                        <p>MONICA DONATI - T: +33 (0)1 43 07 55 22<br />
-                            <a href="#">monica.donati@mk2.com</a></p>
-                    </div>
-                    <div>
-                        <p class="sub">{{ 'movie.contact.label.presseinternationale'|trans }}</p>
-                        <p>MANLIN STERNER - <a href="#">manlin@manlin.se</a></p>
-                    </div>
-                    <div>
-                        <p class="sub">{{ 'movie.contact.label.ventealetranger'|trans }}</p>
-                        <p>MK2 - T: +33 (0)1 44 67 30 30</p>
-                    </div>
+                    {% if movie.contacts|length > 0 %}
+                        <h3>{{ 'movie.contact.title.contacts'|trans }}</h3>
+                        {% for contact in movie.contacts %}
+                            <div{% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') %} class="prod"{% endif %}>
+                                {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PERSON') %}
+                                    <p class="sub">{{ 'movie.contact.label.person'|trans }}</p>
+                                {% elseif contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') %}
+                                    <p class="sub">{{ 'movie.contact.label.production'|trans }}</p>
+                                {% elseif contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_INTERNATIONAL_SELLING') %}
+                                    <p class="sub">{{ 'movie.contact.label.ventealetranger'|trans }}</p>
+                                {% elseif contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_FRENCH_DISTRIBUTION') %}
+                                    <p class="sub">{{ 'movie.contact.label.distribution'|trans }}</p>
+                                {% elseif contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_SCHOOL') %}
+                                    <p class="sub">{{ 'movie.contact.label.school'|trans }}</p>
+                                {% elseif contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_MINOR_PRODUCTION_COMPANY') %}
+                                    <p class="sub">{{ 'movie.contact.label.minor_production_company'|trans }}</p>
+                                {% elseif contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_FRENCH_PRESS_COMPANY') %}
+                                    <p class="sub">{{ 'movie.contact.label.pressefrancaise'|trans }}</p>
+                                {% elseif contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_INTERNATIONAL_PRESS_COMPANY') %}
+                                    <p class="sub">{{ 'movie.contact.label.presseinternationale'|trans }}</p>
+                                {% endif %}
+                                <p>
+                                    {% if contact.companyName %}{{ contact.companyName }}{% if contact.address %} - {% endif %}{% endif %}
+                                    {% if contact.address %}{{ contact.address.street }} {{ contact.address.postalCode }} {{ contact.address.city }} {% if contact.address.country %} {{ contact.address.country|trans_fallback('name') }}{% endif %}{% endif %}
+                                    {% if contact.address.phone or contact.address.mobilePhone %}{% if contact.address %} - {% endif %}T: {{ contact.address.phone?:contact.address.mobilePhone  }}{% endif %}
+                                    {% if contact.address.email %}<a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>{% endif %}
+                                    {% if contact.address.website %}<a href="{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>{% endif %}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>

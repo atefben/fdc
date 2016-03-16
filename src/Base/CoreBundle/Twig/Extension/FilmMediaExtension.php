@@ -31,13 +31,17 @@ class FilmMediaExtension extends Twig_Extension
         );
     }
 
-    public function getMedias($film, $type)
+    public function getMedias($film, $type, $parent = false)
     {
         $medias = array();
         if (count($film->getMedias()) > 0) {
             foreach ($film->getMedias() as $media) {
                 if ($media->getMedia() !== null && $media->getType() == $type) {
-                    $medias[] = $media->getMedia()->getFile();
+                    if ($parent == true) {
+                        $medias[] = $media->getMedia();
+                    } else {
+                        $medias[] = $media->getMedia()->getFile();
+                    }
                 }
             }
         }

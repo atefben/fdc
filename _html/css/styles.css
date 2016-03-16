@@ -8720,7 +8720,6 @@ header #searchContainer {
   width: 100%;
   position: absolute;
   pointer-events: none;
-  background: #FFF;
   top: 0;
   background: transparent;
   background: -moz-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
@@ -11650,10 +11649,6 @@ article .read-later.rAlign span:after {
 .single-movie .videos #slider-movie-videos .owl-item.center .slide-video:after {
   opacity: 1;
   visibility: visible;
-}
-.single-movie .videos #slider-movie-videos .owl-item .linkVid {
-  display: block;
-  z-index: 3;
 }
 .single-movie .videos #slider-movie-videos .slide-video {
   height: 185px;

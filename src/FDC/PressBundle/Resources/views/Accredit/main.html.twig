@@ -2,7 +2,7 @@
 {% extends 'FDCPressBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="press loading accreditation {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
+    <div id="main" class="press loading accreditation">
 
         <div class="header-press">
             <div class="head">
@@ -19,8 +19,6 @@
                 </p>
             </div>
         </div>
-
-        {% include 'FDCPressBundle:Global:components/login.html.twig' %}
 
         <div id="accreditation">
         <div class="wrapper">

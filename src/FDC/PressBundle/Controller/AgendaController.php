@@ -89,6 +89,10 @@ class AgendaController extends Controller
         if ($pressProjection === null) {
             throw new NotFoundHttpException();
         }
+
+        // SEO
+        $this->get('base.manager.seo')->setFDCPressPagePressProjectionSeo($pressProjection, $locale);
+
         return array(
             'schedulingDays' => $schedulingDays,
             'typeFilters' => $typeFilters,
@@ -139,6 +143,9 @@ class AgendaController extends Controller
         if ($rooms === null) {
             throw new NotFoundHttpException();
         }
+
+        // SEO
+        $this->get('base.manager.seo')->setFDCPressPagePressCinemaMapSeo($rooms, $locale);
 
         return array(
             'rooms' => $rooms

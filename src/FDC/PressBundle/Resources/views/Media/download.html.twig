@@ -43,11 +43,27 @@
 
         <div class="wrapper">
             {% for k,s in pressDownloads %}
-                {% set slugSplit = s.section|trans_fallback('slug')|split('-', 2) %}
-                <div class="{% if attribute(slugSplit, 0) == "photos" %}photos block slideshow{% elseif attribute(slugSplit, 0) == "affiche" %}affiche{% else %}{{ attribute(slugSplit, 0) }} block {% endif %}"
-                     id="{% if attribute(slugSplit, 0) == "dossier" %}dossier-presse{% elseif attribute(slugSplit, 0) == "signatures" %}signature{% else %}{{ s.section|trans_fallback('slug') }}{% endif %}">
+                {% set sectionClass = "default" %}
+                {% set sectionId = "default" %}
+                {% if 'affiche' in s.section.findTranslationByLocale('fr').title|lower %}
+                    {% set sectionClass = "affiche" %}
+                    {% set sectionId = "affiche-officielle" %}
+                {% elseif 'signature' in s.section.findTranslationByLocale('fr').title|lower %}
+                    {% set sectionClass = "signature block" %}
+                    {% set sectionId = "signature" %}
+                {% elseif 'animation' in s.section.findTranslationByLocale('fr').title|lower %}
+                    {% set sectionClass = "animation block" %}
+                    {% set sectionId = "animation" %}
+                {% elseif 'photo' in s.section.findTranslationByLocale('fr').title|lower %}
+                    {% set sectionClass = "photos block slideshow" %}
+                    {% set sectionId = "photos-institutionnelles" %}
+                {% elseif 'dossier' in s.section.findTranslationByLocale('fr').title|lower %}
+                    {% set sectionClass = "dossier block" %}
+                    {% set sectionId = "dossier-presse" %}
+                {% endif %}
+                <div class="{{ sectionClass }}" id="{{ sectionId }}">
                     <div class="container">
-                        {% if attribute(slugSplit, 0) != "photos" %}
+                        {% if sectionId != "photos-institutionnelles" %}
                             <h3 class="title-press">{{ s.section|trans_fallback('title') }}</h3>
                         {% endif %}
 
