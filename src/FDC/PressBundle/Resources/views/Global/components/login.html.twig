@@ -1,7 +1,9 @@
 {% trans_default_domain 'FDCPressBundle' %}
 
 {% if is_granted("ROLE_FDC_PRESS_REPORTER") == false %}
-    {{ render(controller('FDCPressBundle:Security:login')) }}
+
+    {{ render(controller('FDCPressBundle:Security:setCurrentRoute', {'originalRequest': app.request})) }}
+
 {% else %}
     {% for k,flash_message in app.session.flashbag.get('loginSuccess') %}
         {% if loop.first %}
