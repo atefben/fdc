@@ -18,6 +18,8 @@
                     {% include 'FDCEventBundle:Palmares:competition.html.twig' %}
                 {% elseif page.id == 4 %}
                     {% include 'FDCEventBundle:Palmares:camerador.html.twig' %}
+                {% elseif page.id == 5 %}
+                        {% include 'FDCEventBundle:Palmares:all.html.twig' %}
                 {% else %}
                         {% include 'FDCEventBundle:Palmares:simple.html.twig' %}
                 {% endif %}

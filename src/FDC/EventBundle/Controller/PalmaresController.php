@@ -56,30 +56,58 @@ class PalmaresController extends Controller
         ;
 
         $parameters = array(
-            'pages' => $pages,
-            'page' => $page,
+            'pages'    => $pages,
+            'page'     => $page,
             'category' => $page->getCategory(),
             'festival' => $festival,
         );
 
-        if ($page->getId() == 1){
+        if ($page->getId() == 1) {
             $this->competitionParameters($parameters);
-        }
-        elseif ($page->getId() == 4){
+        } elseif ($page->getId() == 4) {
             $this->cameraDOrParameters($parameters);
-        }
-        elseif ($page->getId() == 5){
-            $this->cameraDOrParameters($parameters);
+        } elseif ($page->getId() == 5) {
+            $parameters['subpages'] = array();
             foreach ($pages as $subPage) {
-                if ($page->getId() == 1) { // competition
+                if ($subPage->getId() == 1) { // competition
                     $subParameters = array(
                         'festival' => $festival,
                         'category' => $subPage->getCategory(),
+                        'page'     => $subPage,
+
                     );
+                    $this->competitionParameters($subParameters);
+                    $parameters['subpages']['competition'] = $subParameters;
+                } elseif ($subPage->getId() == 2) { // un certain regard
+                    $subParameters = array(
+                        'festival' => $festival,
+                        'category' => $subPage->getCategory(),
+                        'page'     => $subPage,
+
+                    );
+                    $this->defaultParameters($subParameters);
+                    $parameters['subpages']['certain_regard'] = $subParameters;
+                } elseif ($subPage->getId() == 3) { // cinefondation
+                    $subParameters = array(
+                        'festival' => $festival,
+                        'category' => $subPage->getCategory(),
+                        'page'     => $subPage,
+
+                    );
+                    $this->defaultParameters($subParameters);
+                    $parameters['subpages']['cinefondation'] = $subParameters;
+                } elseif ($subPage->getId() == 4) { // caméra d'or
+                    $subParameters = array(
+                        'festival' => $festival,
+                        'category' => $subPage->getCategory(),
+                        'page'     => $subPage,
+
+                    );
+                    $this->cameraDOrParameters($subParameters);
+                    $parameters['subpages']['camera_d_or'] = $subParameters;
                 }
             }
-        }
-        else {
+        } else {
             $this->defaultParameters($parameters);
         }
         $this->commonParameters($parameters);
@@ -146,7 +174,6 @@ class PalmaresController extends Controller
             ->getRepository('BaseCoreBundle:FilmAwardAssociation')
             ->getByCategoryWithAward($parameters['festival'], $parameters['category'])
         ;
-
         $competitionIds = array(
             $parameters['page']->getSelectionLongsMetrages()->getId(),
             $parameters['page']->getSelectioncourtsMetrages()->getId(),

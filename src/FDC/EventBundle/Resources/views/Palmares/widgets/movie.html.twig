@@ -13,8 +13,17 @@
                     <i class="icon icon_palme palme-dor-img"></i>
                     <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
                     {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
-                        <img src="img/palmares/palmedor-compet-portait.jpg" alt="palme d or" class="palme-dor-portrait">
-                        <h3 class="title-item verticalline">{{ award_association.person.firstname }} {{ award_association.person.lastname }} </h3>
+                        {% set personImage = award_association.person|film_media(constant('Base\\CoreBundle\\Entity\\FilmPersonMediaInterface::TYPE_FILM'))|first %}
+                        {% if personImage == false %}
+                            {% set personImage = award_association.person|film_media(constant('Base\\CoreBundle\\Entity\\FilmPersonMediaInterface::TYPE_DIRECTOR'))|first %}
+                        {% endif %}
+                        {% if personImage == false %}
+                            {% set personImage = award_association.person|film_media(constant('Base\\CoreBundle\\Entity\\FilmPersonMediaInterface::TYPE_JURY'))|first %}
+                        {% endif %}
+                        {%  if personImage %}
+                        <img src="{% path personImage, 'small' %}" alt="{{ award_association.person.firstname|escape('html_attr') }} {{ award_association.person.lastname|escape('html_attr') }}" class="palme-dor-portrait">
+                        {% endif %}
+                        <h3 class="title-item verticalline">{{ award_association.person.firstname }} {{ award_association.person.lastname }}</h3>
                     {% endif %}
                 </div>
                 <h3 class="title-item">{{ movie.titleVO }}</h3>
