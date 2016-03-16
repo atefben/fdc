@@ -138,7 +138,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
     /**
      * Get live
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getLive()
     {
@@ -161,7 +161,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
     /**
      * Get doNotDisplayWebTvArea
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDoNotDisplayWebTvArea()
     {
@@ -184,7 +184,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
     /**
      * Get doNotDisplayTrailerArea
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDoNotDisplayTrailerArea()
     {
@@ -207,7 +207,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
     /**
      * Get doNotDisplayLastVideosArea
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDoNotDisplayLastVideosArea()
     {
@@ -230,7 +230,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
     /**
      * Get image
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getImage()
     {
@@ -263,7 +263,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
     /**
      * Get webTvs
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getWebTvs()
     {
@@ -273,7 +273,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
     /**
      * Get associatedWebTvs
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAssociatedWebTvs()
     {

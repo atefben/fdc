@@ -292,20 +292,29 @@ services:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.fdc_page_jury:
-            class: Base\AdminBundle\Admin\FDCPageJuryAdmin
-            arguments: [~, Base\CoreBundle\Entity\FDCPageJury, BaseAdminBundle:FDCPageJuryAdmin]
-            tags:
-                - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageJury, label_translator_strategy: sonata.admin.label.strategy.underscore, , show_in_dashboard: false}
-            calls:
-                - [ setTranslationDomain, ['BaseAdminBundle']]
+        class: Base\AdminBundle\Admin\FDCPageJuryAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageJury, BaseAdminBundle:FDCPageJuryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageJury, label_translator_strategy: sonata.admin.label.strategy.underscore, , show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    bse.admin.fdc_page_award:
+    base.admin.fdc_page_award:
         class: Base\AdminBundle\Admin\FDCPageAwardAdmin
         arguments: [~, Base\CoreBundle\Entity\FDCPageAward, BaseAdminBundle:FDCPageAwardAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageAward, label_translator_strategy: sonata.admin.label.strategy.underscore, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_award_other_selection_sections_associated:
+        class: Base\AdminBundle\Admin\FDCPageAwardOtherSelectionSectionsAssociatedAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageAwardOtherSelectionSectionsAssociated, BaseAdminBundle:FDCPageAwardOtherSelectionSectionsAssociatedAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageAwardOtherSelectionSectionsAssociated, label_translator_strategy: sonata.admin.label.strategy.underscore, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     #end SEO
 
     base.admin.film_jury_type:

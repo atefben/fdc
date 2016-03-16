@@ -1,19 +1,34 @@
 {% trans_default_domain 'FDCEventBundle' %}
+{% set movie = award_association.film %}
+{% set author = '' %}
 
-<article style="background-image:url({{ movie.thumbnail }})">
+{% set film_post_tpl = 'FDCEventBundle:Global:components/film.poster.html.twig' %}
+{% set film_post_tpl_attrs = {'film': movie, 'display_film_path': true, 'film_format': 'reference' } %}
+<article style="background-image:url('{% include film_post_tpl with (film_post_tpl_attrs) %}')">
     <div class="bck-hover">
         <div class="contain_item">
-            <img src="{{ movie.img }}" alt="{{ movie.title }}">
+            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({'film': movie }) %}
             <div class="infos-item-list">
                 <div class="logo-palme-dor-container">
                     <i class="icon icon_palme palme-dor-img"></i>
-                    <strong class="palme-dor-text verticalline">{{ 'palmares.price.palmedor'|trans }}</strong>
+                    <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
+                    {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
+                        <img src="img/palmares/palmedor-compet-portait.jpg" alt="palme d or" class="palme-dor-portrait">
+                        <h3 class="title-item verticalline">{{ award_association.person.firstname }} {{ award_association.person.lastname }} </h3>
+                    {% endif %}
                 </div>
-                {% if movie.status is defined %}
-                    <h4 class="sub-title-item">{{ movie.status }}</h4>
+                <h3 class="title-item">{{ movie.titleVO }}</h3>
+                {% if movie.findTranslationByLocale(app.request.get('_locale')) and movie.findTranslationByLocale(app.request.get('_locale')).title %}
+                    <h4 class="sub-title-item">{{ movie.findTranslationByLocale(app.request.get('_locale')).title }}</h4>
                 {% endif %}
-                <h3 class="title-item">{{ movie.title }}</h3>
-                <span class="nom-item">{{ movie.author }}</span>
+                <span class="nom-item">
+                    {%- for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                        {% if loop.first == false %}
+                            {% set author = author ~ ', ' %}
+                        {% endif %}
+                        {% set author = author ~ director.fullName %}
+                    {%- endfor -%}
+                </span>
             </div>
         </div>
     </div>

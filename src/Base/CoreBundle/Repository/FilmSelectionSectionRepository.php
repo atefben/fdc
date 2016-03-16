@@ -20,4 +20,23 @@ class FilmSelectionSectionRepository extends EntityRepository
 
         return $qb;
     }
+
+    /**
+     * Get selection section by ids
+     * @param array $ids
+     * @return array
+     */
+    public function getAllByIds(array $ids)
+    {
+        return $this
+            ->_em
+            ->createQueryBuilder()
+            ->from($this->getClassName(), 's', 's.id')
+            ->select('s')
+            ->andWhere('s.id in (:ids)')
+            ->setParameter('ids', $ids)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

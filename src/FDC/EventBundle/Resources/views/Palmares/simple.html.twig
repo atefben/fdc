@@ -1,26 +1,7 @@
 {% trans_default_domain 'FDCEventBundle' %}
-{% extends 'FDCEventBundle::layout.html.twig' %}
 
-{% block body %}
-<div id="main" class="list-article palmares-list loading ">
-    <div class="bandeau-list">
-        <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url({{ section.banner }})">
-            <div class="vCenterKid">
-                <h2 class="title title-list-header ">{{ 'palmares.title.palmares'|trans }}</h2>
-            </div>
-        </div>
-        {% include 'FDCEventBundle:Palmares:components/nav.html.twig' %}
-    </div>
-
-    <div class="container container-list">
-        <section class="categorie-items">
-            {% for movie in movies %}
-                    {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
-            {% endfor %}
-        </section>
-    </div>
-
-    {% include 'FDCEventBundle:Palmares:components/bandeau.html.twig' %}
-
-</div>
-{% endblock %}
+<section class="categorie-items">
+    {% for award_association in award_associations %}
+        {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
+    {% endfor %}
+</section>

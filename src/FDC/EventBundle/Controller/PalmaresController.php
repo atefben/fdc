@@ -5,7 +5,7 @@ namespace FDC\EventBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/")
@@ -13,180 +13,161 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class PalmaresController extends Controller
 {
     /**
-     * @Route("/palmares/{section}")
-     * @Template("")
-     * @param section
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/palmares/{slug}")
+     * @param Request $request
+     * @param $slug
+     * @return Response
      */
-    public function getAction(Request $request, $section)
+    public function getAction(Request $request, $slug = null)
     {
         $this->isPageEnabled($request->get('_route'));
-        $movies = array();
-        $locale   = $request->getLocale();
-        $em = $this->getDoctrine()->getManager();
 
-        // check if waiting page is enabled
-        $waitingPage = $em->getRepository('BaseCoreBundle:FDCPageWaiting')->findBy(array('enabled' => true));
-        foreach($waitingPage as $waiting) {
-            if($waiting->getPage()->getRoute() == $request->get('_route')){
-                return $this->render('FDCEventBundle:Global:waiting-page.html.twig',array(
-                    'waitingPage' => $waiting
-                ));
+        $festival = $this->getFestival()->getId();
+        $locale = $request->getLocale();
+
+        $waitingPage = $this->isWaitingPage($request);
+        if ($waitingPage) {
+            return $waitingPage;
+        }
+
+        $pages = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageAward')
+            ->getPages($locale)
+        ;
+
+        if ($slug === null) {
+            foreach ($pages as $page) {
+                if ($page->findTranslationByLocale($locale)) {
+                    $slug = $page->findTranslationByLocale($locale)->getSlug();
+                }
+                if ($slug) {
+                    return $this->redirectToRoute('fdc_event_palmares_get', array('slug' => $slug));
+                }
+
+            }
+            throw $this->createNotFoundException('Page palmares not found');
+        }
+
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageAward')
+            ->getPageBySlug($locale, $slug)
+        ;
+
+        $parameters = array(
+            'pages' => $pages,
+            'page' => $page,
+            'category' => $page->getCategory(),
+            'festival' => $festival,
+        );
+
+        if ($page->getId() == 1){
+            $this->competitionParameters($parameters);
+        }
+        elseif ($page->getId() == 4){
+            $this->cameraDOrParameters($parameters);
+        }
+        elseif ($page->getId() == 5){
+            $this->cameraDOrParameters($parameters);
+            foreach ($pages as $subPage) {
+                if ($page->getId() == 1) { // competition
+                    $subParameters = array(
+                        'festival' => $festival,
+                        'category' => $subPage->getCategory(),
+                    );
+                }
             }
         }
-
-        //Exemple de films pour les différentes section (sauf cameré d'or)
-        $allMovies = array(
-            array(
-                'type' => 0,//Longs métrages
-                'title' => 'DHEEPAN',
-                'author' => 'Jacques Audiard',
-                'price' => 'Palme d\'or',
-                'thumbnail' => 'img.jpg',
-                'img' => 'img.jpg'
-            ),
-            array(
-                'type' => 0,
-                'title' => 'DHEEPAN',
-                'author' => 'Jacques Audiard',
-                'price' => 'Grand prix',
-                'thumbnail' => 'img.jpg',
-                'img' => 'img.jpg'
-            ),
-            array(
-                'type' => 1,//Courts métrages
-                'title' => 'DHEEPAN',
-                'author' => 'Jacques Audiard',
-                'price' => 'Prix de la mise en scène',
-                'thumbnail' => 'img.jpg',
-                'img' => 'img.jpg'
-            ),
-            array(
-                'type' => 1,
-                'title' => 'DHEEPAN',
-                'author' => 'Jacques Audiard',
-                'price' => 'Palme d\'or',
-                'thumbnail' => 'img.jpg',
-                'img' => 'img.jpg'
-            ),
-            array(
-                'type' => 2,//UN CERTAIN REGARD
-                'title' => 'DHEEPAN',
-                'author' => 'Jacques Audiard',
-                'price' => 'Palme d\'or métrage',
-                'thumbnail' => 'img.jpg',
-                'img' => 'img.jpg'
-            ),
-            array(
-                'type' => 2,
-                'title' => 'DHEEPAN',
-                'author' => 'Jacques Audiard',
-                'price' => 'Prix un certain regard',
-                'thumbnail' => 'img.jpg',
-                'img' => 'img.jpg'
-            )
-
-        );
-
-        // Exemple de films pour camera d'or
-        $advancedMovie = array(
-            array(
-                'type' => 0, //Camera d'or
-                'title' => 'DHEEPAN',
-                'status' => 'En compétition',
-                'author' => 'Jacques Audiard',
-                'price' => 'Palme d\'or',
-                'thumbnail' => 'img.jpg',
-                'img' => 'img.jpg'
-            ),
-            array(
-                'type' => 1, //EN COMPÉTITION
-                'title' => 'DHEEPAN',
-                'author' => 'Jacques Audiard',
-                'price' => 'Palme d\'or',
-                'thumbnail' => 'img.jpg',
-                'img' => 'img.jpg'
-            ),
-            array(
-                'type' => 2, //UN CERTAIN REGARD
-                'title' => 'DHEEPAN',
-                'author' => 'Jacques Audiard',
-                'price' => 'Palme d\'or',
-                'thumbnail' => 'img.jpg',
-                'img' => 'img.jpg'
-            ),
-        );
-
-
-        switch ($section) {
-            case 'competition':
-                $section = array(
-                    'type' => 'classic',
-                    'banner' => 'img.jpg',
-                    'bottom_img' => 'img.jpg',
-                    'bottom_title' => 'Cannes Classic',
-                    'bottom_link' => '/test',
-                    'bottom_btn'  => 'Découvrir la rubrique'
-                );
-                $movies = $allMovies;
-                break;
-            case 'certain-regard':
-                $section = array(
-                    'type' => 'simple',
-                    'banner' => 'img.jpg',
-                    'bottom_img' => 'img.jpg',
-                    'bottom_title' => 'Cannes Classic',
-                    'bottom_link' => '/test',
-                    'bottom_btn'  => 'Découvrir la rubrique'
-                );
-                $movies = $allMovies;
-                break;
-            case 'cinefondation':
-                $section = array(
-                    'type' => 'simple',
-                    'banner' => 'img.jpg',
-                    'bottom_img' => 'img.jpg',
-                    'bottom_title' => 'Cannes Classic',
-                    'bottom_link' => '/test',
-                    'bottom_btn'  => 'Découvrir la rubrique'
-                );
-                $movies = $allMovies;
-                break;
-            case 'camera-dor':
-                $section = array(
-                    'type' => 'advanced',
-                    'banner' => 'img.jpg',
-                    'description' => 'Fondée en 1978, la Caméra d\'or consacre chaque année le meilleur premier film
-                                      issu de la Sélection officielle, de La <strong>Semaine de la Critique</strong> et
-                                      de la <strong>Quinzaine des Réalisateurs</strong>. En 2015, ils sont 26 à
-                                      concourir pour cette récompense qui sera remise lors de la soirée du Palmarès le
-                                      dimanche 24 mai. La Présidente est l\'actrice française Sabine Azéma.',
-                    'bottom_img' => 'img.jpg',
-                    'bottom_title' => 'Cannes Classic',
-                    'bottom_link' => '/test',
-                    'bottom_btn'  => 'Découvrir la rubrique'
-                );
-                $movies = $advancedMovie;
-                break;
-            case 'tout-palmares':
-                $section = array(
-                    'type' => 'all',
-                    'banner' => 'img.jpg',
-                    'bottom_img' => 'img.jpg',
-                    'bottom_title' => 'Cannes Classic',
-                    'bottom_link' => '/test',
-                    'bottom_btn'  => 'Découvrir la rubrique'
-                );
-                $movies = $allMovies;
-                break;
+        else {
+            $this->defaultParameters($parameters);
         }
+        $this->commonParameters($parameters);
 
-        return $this->render(
-            'FDCEventBundle:Palmares:'.$section["type"].'.html.twig',
-            array(
-                'section' => $section,
-                'movies' => $movies
-        ));
+        $template = 'FDCEventBundle:Palmares:award.html.twig';
+        return $this->render($template, $parameters);
 
+    }
+
+    private function commonParameters(&$parameters)
+    {
+        $next = null;
+        if (count($parameters['pages']) > 1) {
+            foreach ($parameters['pages'] as $item) {
+                if ($next) {
+                    $next = $item;
+                    break;
+                }
+                if ($item->getId() == $parameters['page']->getId()) {
+                    $next = true;
+                }
+            }
+            if ($next === true) {
+                if ($parameters['pages'][0]->getId() !== $parameters['page']->getId()) {
+                    $next = $parameters['pages'][0];
+                } else {
+                    $next = $parameters['pages'][1];
+                }
+            }
+        }
+        $parameters['next'] = $next;
+    }
+
+    private function defaultParameters(&$parameters)
+    {
+        $parameters['award_associations'] = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmAwardAssociation')
+            ->getByCategoryWithAward($parameters['festival'], $parameters['category'])
+        ;
+    }
+
+    private function competitionParameters(&$parameters)
+    {
+        $selectionSectionId = $parameters['page']->getSelectionLongsMetrages()->getId();
+        $parameters['award_associations'][$selectionSectionId] = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmAwardAssociation')
+            ->getByCategoryWithAward($parameters['festival'], $parameters['category'], $selectionSectionId)
+        ;
+
+        $selectionSectionId = $parameters['page']->getSelectioncourtsMetrages()->getId();
+        $parameters['award_associations'][$selectionSectionId] = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmAwardAssociation')
+            ->getByCategoryWithAward($parameters['festival'], $parameters['category'], $selectionSectionId)
+        ;
+    }
+
+    public function cameraDOrParameters(&$parameters)
+    {
+        $parameters['award_associations']['camerador'] = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmAwardAssociation')
+            ->getByCategoryWithAward($parameters['festival'], $parameters['category'])
+        ;
+
+        $competitionIds = array(
+            $parameters['page']->getSelectionLongsMetrages()->getId(),
+            $parameters['page']->getSelectioncourtsMetrages()->getId(),
+        );
+        $parameters['award_associations']['competition'] = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmAwardAssociation')
+            ->getCameraDOr($parameters['festival'], $competitionIds)
+        ;
+
+        $othersId = array();
+        foreach ($parameters['page']->getOtherSelectionSectionsAssociated() as $associated) {
+            if (!$associated->getAssociation()) {
+                continue;
+            }
+            $selectionSectionId = $associated->getAssociation()->getId();
+            $parameters['award_associations'][$selectionSectionId] = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmAwardAssociation')
+                ->getCameraDOr($parameters['festival'], array($selectionSectionId))
+            ;
+        }
     }
 }

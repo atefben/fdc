@@ -20,7 +20,7 @@
                             {{ menu.transName|trans }}
                         </a>
                     {% elseif menu.route == 'fdc_event_palmares_get' and menu.enabled == true %}
-                        <a href="{{ path(menu.route, { 'section': 'competition' }) }}"
+                        <a href="{{ path(menu.route) }}"
                            class="{% if route == 'fdc_event_palmares_get' %}active{% endif %}">
                             {{ menu.transName|trans }}
                         </a>
