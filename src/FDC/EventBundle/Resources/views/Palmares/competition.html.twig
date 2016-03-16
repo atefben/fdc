@@ -1,0 +1,21 @@
+<section class="categorie-items">
+    <div class="title-list-cat">
+        <h2 class="title">
+            {{ (page|trans_fallback('nameLongsMetrages'))?:(page.selectionLongsMetrages|trans_fallback('name')) }}
+        </h2>
+    </div>
+    {% for award_association in award_associations[page.selectionLongsMetrages.id] %}
+        {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
+    {% endfor %}
+</section>
+
+<section class="categorie-items">
+    <div class="title-list-cat">
+        <h2 class="title">
+            {{ (page|trans_fallback('nameCourtsMetrages'))?:(page.selectionCourtsMetrages|trans_fallback('name')) }}
+        </h2>
+    </div>
+    {% for award_association in award_associations[page.selectionLongsMetrages.id] %}
+        {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
+    {% endfor %}
+</section>
