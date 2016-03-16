@@ -302,6 +302,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @ORM\ManyToMany(targetEntity="FilmContact", inversedBy="films", cascade={"persist"})
      * @Groups({"film_show"})
+     * @ORM\OrderBy({"position"="ASC"})
      */
     private $contacts;
     
@@ -1691,18 +1692,20 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         if (!$this->contacts->contains($contacts)) {
             return;
         }
-        
+
         $this->contacts->removeElement($contacts);
     }
 
     /**
      * Get contacts
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getContacts()
     {
-        return $this->contacts;
+        $collection = $this->orderByNullLast($this->contacts, 'ASC');
+
+        return $collection;
     }
 
     /**

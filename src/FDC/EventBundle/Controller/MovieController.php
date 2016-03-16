@@ -28,13 +28,21 @@ class MovieController extends Controller
      */
     public function getAction($slug)
     {
-        $em    = $this->get('doctrine')->getManager();
+        $em = $this->get('doctrine')->getManager();
+        $isAdmin  = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
 
         // GET MOVIE
-        $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
-            'slug' => $slug,
-          //  'festival' => $this->getFestival()
-        ));
+        if ($isAdmin) {
+            $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
+                'slug' => $slug
+            ));
+        } else {
+            $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
+                'slug' => $slug,
+                'festival' => $this->getFestival()
+            ));
+
+        }
 
         if ($movie === null) {
             throw new NotFoundHttpException('Movie not found');

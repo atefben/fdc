@@ -118,6 +118,8 @@ sonata_media:
             formats:
                 212x134: { width: 212 , height: 134 , quality: 100 }
                 293x185: { width: 293 , height: 185 , quality: 100 }
+                # Movie VideoMain
+                588x784: { width: 588 , height: 784 , quality: 100 }
                 # PressDownload
                 240x326: { width: 240 , height: 326 , quality: 100 }
                 543x326: { width: 543 , height: 326 , quality: 100 }

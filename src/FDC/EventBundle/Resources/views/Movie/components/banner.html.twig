@@ -26,13 +26,20 @@
         </div>
     </div>
     <div class="trailer">
+        {% if movie.videoMain is not null %}
         <div class="video-container state-init video"
-             data-file='[{"file":"{{ videoUrl }}"}]'
-             data-vid="{{ video.id }}"
-             {% if page.image and page.image|trans_fallback('file') %}
-             data-img="{% path page.image|trans_fallback('file'), '1280x808' %}"
+             data-file='[{"file":"{{ s3_server_video ~ movie.videoMain|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ movie.videoMain|trans_fallback('mp4Url') }}"}]'
+             data-vid="{{ movie.videoMain.id }}"
+             {% if movie.imageCover %}
+             data-img="{% path media, format %}"
              {% else %}
-             data-img=""
+                 {% set videoImage = '' %}
+                 {% if movie.videoMain.image %}
+                     {% set videoImage = media_public_url(movie.videoMain.image|trans_fallback('file'), '1280x808') %}
+                 {% elseif video|trans_fallback('imageAmazonUrl') %}
+                     {% set videoImage = s3_server_global ~ movie.videoMain|trans_fallback('imageAmazonUrl') %}
+                 {% endif %}
+             data-img="{{ videoImage }} %}"
              {% endif %}>
             <div id="video-movie-trailer" class="video-player"></div>
             <div class="video-overlay"></div>
@@ -48,15 +55,20 @@
                 </div>
             </div>
         </div>
+        {% endif %}
     </div>
 </div>
 <div class="container container-top">
-    {% if movie.videoMain is not null and movie.videoMain.image and movie.videoMain.image.file %}
         <div class="poster video">
             <a href="#" class="picto"><i class="icon icon_video"></i></a>
-            {% media movie.videoMain.image.file, 'media_image_2560x1620' %}
+            {% if movie.imageMain %}
+                {% media movie.imageMain|trans_fallback('file'), 'media_image_simple_588x784' %}
+            {% elseif movie.videoMain is not null and movie.videoMain.image and movie.videoMain.image.file %}
+                {% media movie.videoMain.image.file, 'media_image_2560x1620' %}
+            {% elseif movie.videoMain is not null and movie.videoMain|trans_fallback('imageAmazonUrl') %}
+                <img src="{{ s3_server_global ~ movie.videoMain|trans_fallback('imageAmazonUrl') }}">
+            {% endif %}
         </div>
-    {% endif %}
     <div class="info-film">
         <div class="categories">
             {% for category in movie.categories %}

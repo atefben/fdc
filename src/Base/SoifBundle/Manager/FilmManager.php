@@ -606,6 +606,7 @@ class FilmManager extends CoreManager
                 $filmContact->setId($object->IdContact);
                 $filmContact->setType($object->TypesContactId);
                 $filmContact->setCompanyName($object->NomSociete);
+                $filmContact->setPosition($object->Ordre);
                 
                 $entity->addContact($filmContact);
                 $collection->add($filmContact);
