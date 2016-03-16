@@ -52,7 +52,7 @@ class FDCPageWaitingAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('page')
-            ->add('enabled')
+            ->add('enabled', null, array('editable' => true))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => Theme::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'

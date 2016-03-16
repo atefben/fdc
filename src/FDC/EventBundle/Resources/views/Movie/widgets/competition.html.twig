@@ -15,8 +15,9 @@
                 {% set format = '420x560' %}
             {% endif %}
             <div class="slide">
-
-                <img src="" alt="" />
+                {% if media is not empty %}
+                    {% media media, format %}
+                {% endif %}
                 <a class="linkVid" href="#"></a>
                 <div class="info-movie">
                     <p>{% if movie|trans_fallback('title') is not empty %}({{ movie|trans_fallback('title') }}){% else %}({{ movie.titleVO }}){% endif %}</p>
