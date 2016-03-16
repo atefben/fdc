@@ -52,7 +52,7 @@ class FDCPageWaitingAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('page')
-            ->add('enabled')
+            ->add('enabled', null, array('editable' => true))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => Theme::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
@@ -110,7 +110,7 @@ class FDCPageWaitingAdmin extends Admin
                 'help'     => 'form.fdc_page_web_tv_live.helper_image',
                 'required' => false,
             ))
-            ->add('enabled', null, array('editable' => true))
+            ->add('enabled')
             ->add('translate')
             ->add('translateOptions', 'choice', array(
                 'choices'            => FDCPageWebTvLive::getAvailableTranslateOptions(),
