@@ -18,11 +18,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressDownloadSection implements TranslateMainInterface
+class PressDownloadSection
 {
     use Time;
     use Translatable;
-    use TranslateMain;
 
     /**
      * @var integer

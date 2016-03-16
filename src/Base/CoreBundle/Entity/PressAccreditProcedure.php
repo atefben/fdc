@@ -20,12 +20,11 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressAccreditProcedure implements TranslateMainInterface
+class PressAccreditProcedure
 {
 
     use Time;
     use Translatable;
-    use TranslateMain;
 
     /**
      * @var integer

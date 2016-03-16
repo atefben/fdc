@@ -20,9 +20,8 @@ use Base\CoreBundle\Interfaces\TranslateChildInterface;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressDownloadSectionTranslation implements TranslateChildInterface
+class PressDownloadSectionTranslation
 {
-    use TranslateChild;
     use Time;
     use Translation;
 

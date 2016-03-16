@@ -37,6 +37,7 @@ parameters:
     admin_press_projection_id: ~
     admin_press_statementinfo_id: ~
     admin_fdc_page_web_tv_channels_id: ~
+    admin_fdc_participate_page_id: ~
     admin_fdc_page_web_tv_live_id: ~
     admin_fdc_page_web_tv_trailers_competition_id: ~
     admin_fdc_page_web_tv_trailers_certain_regard_id: ~
@@ -88,8 +89,6 @@ parameters:
         - admin_base_core_infoimage_list
         - admin_base_core_infoaudio_list
         - admin_base_core_infovideo_list
-        - admin_base_core_pressaccreditprocedure_list
-        - admin_base_core_pressdownloadsection_list
         - admin_base_core_presscinemaroom_list
     admin_routes_translation_lock:
         - admin_base_core_webtv_edit

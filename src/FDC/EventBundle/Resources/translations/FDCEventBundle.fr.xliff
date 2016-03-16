@@ -1683,6 +1683,10 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
         <jms:reference-file line="113">views/Television/channel.html.twig</jms:reference-file>
         <jms:reference-file line="121">views/Television/live.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="breadcrumb.palmares.main" resname="breadcrumb.palmares.main">
+        <source>breadcrumb.palmares.main</source>
+        <target>Palmarès</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

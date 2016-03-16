@@ -6,26 +6,43 @@
             <div class="vCenter">
                 <div class="vCenterKidTop">
                     <h3 class="gold">{{ 'movie.presse.title.infospresse'|trans }}</h3>
+                    {% set medias = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF'), true) %}
+                    {% if medias|length > 0 %}
                     <div class="folder">
                         <div class="vCenter">
                             <div class="vCenterKid">
-                                <img src="" alt="" />
+                                {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                                {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+                                {% set media = '' %}
+                                {% set format =  '300x400' %}
+                                {% if mainImg %}
+                                    {% set media = mainImg %}
+                                {% elseif filmImg %}
+                                    {% set media = filmImg %}
+                                {% endif %}
+                                {% if media is not empty %}
+                                    {% media media, '300x400' %}
+                                {% endif %}
                                 <h3>{{ 'movie.presse.title.dossierdepresse'|trans }}</h3>
-                                <a href="#">{{ 'movie.presse.btn.francaispdf'|trans }}</a>
-                                <a href="#">{{ 'movie.presse.btn.englishpdf'|trans }}</a>
+                                {% for media in medias %}
+                                    <a download href="{% path media.file, 'reference' %}">{% if app.request.locale == 'fr' %}{{ media.titleVf }}{% else %}{{ media.titleVa }}{% endif %}</a>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
+                    {% endif %}
+                    {% if movie.website %}
                     <div class="links">
-                        <p class="sub">{{ 'movie.presse.label.liens'|trans }}</p>
-                        {#{% for link in movie.press.links %}
-                            <a href="{{ link.href }}" target="_blank">{{ link.name }}</a>
-                        {% endfor %}#}
+                            <p class="sub">{{ 'movie.presse.label.liens'|trans }}</p>
+                            {% if movie.website %}
+                                <a href="{{ movie.website }}" target="_blank">{{ 'movie.presse.liens.website'|trans }}</a>
+                            {% endif %}
                     </div>
+                    {% endif %}
                     <div class="buttons">
                         <p class="sub">{{ 'movie.presse.label.plusdinformations'|trans }}</p>
-                        <a href="#" class="button">{{ 'movie.presse.btn.espacepresse'|trans }}</a>
-                        <a href="#" class="button">{{ 'movie.presse.btn.voirlaprogrammation'|trans }}</a>
+                        <a href="{{ path('fdc_press_news_home') }}" class="button">{{ 'movie.presse.btn.espacepresse'|trans }}</a>
+                        <a href="{{ path('fdc_press_agenda_scheduling') }}" class="button">{{ 'movie.presse.btn.voirlaprogrammation'|trans }}</a>
                     </div>
                 </div>
             </div>
@@ -61,12 +78,13 @@
                                     {% if contact.companyName %}{{ contact.companyName }}{% if contact.address %} - {% endif %}{% endif %}
                                     {% if contact.address %}{{ contact.address.street }} {{ contact.address.postalCode }} {{ contact.address.city }} {% if contact.address.country %} {{ contact.address.country|trans_fallback('name') }}{% endif %}{% endif %}
                                     {% if contact.address.phone or contact.address.mobilePhone %}{% if contact.address %} - {% endif %}T: {{ contact.address.phone?:contact.address.mobilePhone  }}{% endif %}
-                                    {% if contact.address.email %}<a href="#">{{ contact.address.email }}</a>{% endif %}
-                                    {% if contact.address.website %}<a href="#">{{ contact.address.website }}</a>{% endif %}
+                                    {% if contact.address.email %}<a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>{% endif %}
+                                    {% if contact.address.website %}<a href="{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>{% endif %}
                                 </p>
                             </div>
                         {% endfor %}
                     {% endif %}
+                </div>
             </div>
         </div>
     </div>
