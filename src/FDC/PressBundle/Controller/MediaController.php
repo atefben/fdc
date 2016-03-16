@@ -147,6 +147,7 @@ class MediaController extends Controller
 
         }
         $i=0;
+
         foreach ($films as $film) {
             $empty = true;
             foreach ($film->getMedias() as $media) {
@@ -164,6 +165,7 @@ class MediaController extends Controller
             }
             $i++;
         }
+
         return array(
             'films' => $films,
             'section' => $section
