@@ -20,7 +20,7 @@
                 {% endif %}
                 <a class="linkVid" href="#"></a>
                 <div class="info-movie">
-                    <p>{% if movie|trans_fallback('title') is not empty %}({{ movie|trans_fallback('title') }}){% else %}({{ movie.titleVO }}){% endif %}</p>
+                    <p>{% if movie|trans_fallback('title') is not empty %}{{ movie|trans_fallback('title') }}{% else %}{{ movie.titleVO }}{% endif %}</p>
                     {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                         <a class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
                         {% if loop.index != director|length %}

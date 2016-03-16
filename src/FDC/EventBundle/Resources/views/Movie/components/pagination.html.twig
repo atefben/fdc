@@ -1,32 +1,77 @@
 {% trans_default_domain 'FDCEventBundle' %}
-
+{% if prev is not null %}
 <div class="prevmovie">
     <div class="img">
-        <img src="{{ movies.prev.image.path }}" alt="" />
+        {% set posterImg = prev|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+        {% set mainImg = prev|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+
+        {% if posterImg %}
+            {% media posterImg, 'film_poster_small' %}
+        {% elseif mainImg %}
+            {% media mainImg, 'film_main_small' %}
+        {% endif %}
     </div>
     <div class="info">
         <div class="vCenter">
             <div class="vCenterKid">
-                <h2>{{ movies.prev.titleVO }}</h2>
-                <a href="#">{{ movies.prev.author.fullName }}</a>
-                <p>{{ 'movie.pagination.text.pays'|trans }} : {{ movies.prev.author.from }}</p>
+                {% set title = prev|trans_fallback('title') %}
+                {% if title == '' %}
+                    {% set title = prev.titleVO %}
+                {% endif %}
+                <h2>{{ title }}</h2>
+                {% set directors = prev|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                {% for director in directors %}
+                    <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
+                    {% if loop.index != directors|length %}
+                        ,
+                    {% endif %}
+                {% endfor %}
+                {% if prev.countries|length > 0 %}
+                    {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}<p>{{ country.country|trans_fallback('name') }}</p> {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
+{% endif %}
+{% if next is not null %}
 <div class="nextmovie">
     <div class="img">
-        <img src="{{ movies.next.image.path }}" alt="" />
+        {% set posterImg = next|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+        {% set mainImg = next|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+
+        {% if posterImg %}
+            {% media posterImg, 'film_poster_small' %}
+        {% elseif mainImg %}
+            {% media mainImg, 'film_main_small' %}
+        {% endif %}
     </div>
     <div class="info">
         <div class="vCenter">
             <div class="vCenterKid">
-                <h2>{{ movies.next.titleVO }}</h2>
-                <a href="#">{{ movies.next.author.fullName }}</a>
-                <p>{{ 'movie.pagination.text.pays'|trans }} : {{ movies.next.author.from }}</p>
+                {% set title = next|trans_fallback('title') %}
+                {% if title == '' %}
+                    {% set title = next.titleVO %}
+                {% endif %}
+                <h2>{{ title }}</h2>
+                {% set directors = next|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                {% for director in directors %}
+                    <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
+                    {% if loop.index != directors|length %}
+                        ,
+                    {% endif %}
+                {% endfor %}
+                {% if next.countries|length > 0 %}
+                    {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}<p>{{ country.country|trans_fallback('name') }}</p> {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
-<a href="{{ path('fdc_event_movie_get', {'slug':  movies.prev.slug }) }}" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
-<a href="{{ path('fdc_event_movie_get', {'slug':  movies.next.slug }) }}" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
+{% endif %}
+{% if prev is not null %}
+    <a href="{{ path('fdc_event_movie_get', {'slug':  prev.slug }) }}" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
+{% endif %}
+{% if next is not null %}
+    <a href="{{ path('fdc_event_movie_get', {'slug':  next.slug }) }}" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
+{% endif %}

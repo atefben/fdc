@@ -137,7 +137,7 @@ class FilmFilmRepository extends EntityRepository
      * @param $selectionSection
      * @return array
      */
-    public function getFilmsBySelectionSection($festival, $locale, $selectionSection)
+    public function getFilmsBySelectionSection($festival, $locale, $selectionSection, $idBanned = null)
     {
         $qb = $this->createQueryBuilder('f');
 
@@ -149,6 +149,12 @@ class FilmFilmRepository extends EntityRepository
             ->andWhere('f.selectionSection = :selectionSection')
             ->setParameter('selectionSection', $selectionSection)
         ;
+
+        if ($idBanned !== null) {
+            $qb->andWhere('f.id != :idBanned')
+                ->setParameter('idBanned', $idBanned)
+            ;
+        }
 
         $this->addMasterQueries($qb, 'f', $festival, false);
         $this->addTranslationQueries($qb, 't', $locale);
