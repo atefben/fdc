@@ -1,7 +1,24 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 <div class="main-image">
-    <div class="img" style="background-image: url({% path movie.imageCover, 'media_image_simple_1280x808' %})"></div>
+
+    {% set media = '' %}
+    {% set format = '' %}
+    {% if movie.imageCover %}
+        {% set media = movie.imageCover %}
+        {% set format =  'media_image_simple_1280x808'%}
+    {% else %}
+        {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+        {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+        {% if mainImg %}
+            {% set media = mainImg %}
+            {% set format =  'film_main_highres' %}
+        {% elseif filmImg %}
+            {% set media = filmImg %}
+            {% set format = 'film_film_highres' %}
+        {% endif %}
+    {% endif %}
+    <div class="img" style="background-image: url({% path media, format %})"></div>
     <div class="links">
         <div class="container">
             <a class="movies" href="{{ path('fdc_event_movie_selection', {'slug': "competition"}) }}">{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
@@ -12,10 +29,10 @@
 </div>
 <div class="container container-top">
     {% if movie.videoMain is not null and movie.videoMain.image and movie.videoMain.image.file %}
-    <div class="poster video">
-        <a href="#" class="picto"><i class="icon icon_video"></i></a>
-        {% media movie.videoMain.image.file, 'media_image_2560x1620' %}
-    </div>
+        <div class="poster video">
+            <a href="#" class="picto"><i class="icon icon_video"></i></a>
+            {% media movie.videoMain.image.file, 'media_image_2560x1620' %}
+        </div>
     {% endif %}
     <div class="info-film">
         <div class="categories">
@@ -24,7 +41,7 @@
             {% endfor %}
         </div>
         <h2>{{ movie.title }}</h2>
-        <div class="title-original">{% if movie|trans_fallback('title') is not null %}({{ movie|trans_fallback('title') }}){% else %}({{ movie.titleVO }}){% endif %}</div>
+        <div class="title-original">{% if movie|trans_fallback('title') is not empty %}({{ movie|trans_fallback('title') }}){% else %}({{ movie.titleVO }}){% endif %}</div>
         <p>
             {{ 'movie.label.realisepar'|trans }} :
             {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
@@ -35,11 +52,11 @@
             {% endfor %}
         </p>
         <p>
-            {% if movie.productionYear is not null %}
+            {% if movie.productionYear is not null and movie.productionYear != 0 %}
                 {{ 'movie.label.anneedeproduction'|trans }} : <span>{{ movie.productionYear }}</span>
             {% endif %}
             {% if movie.countries|length > 0 %}
-                {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}<span>{{ country|trans_fallback('name') }}</span> {% endfor %}
+                {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}<span>{{ country.country|trans_fallback('name') }}</span> {% endfor %}
             {% endif  %}
             {% if movie.duration is not null and movie.duration > 0 %}
                 {{ 'movie.label.duree'|trans }} : <span>{{ movie.duration }}</span>

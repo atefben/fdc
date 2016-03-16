@@ -32,6 +32,7 @@ $(document).ready(function() {
           videoWebtv.resize('100%','100%');
           if(videoWebtv.getState() == "paused" || videoWebtv.getState() == "idle") {
             videoWebtv.play();
+            videoWebtv.updateMute();
           }
           $('#live .trailer').addClass('on');
         }, 500);
@@ -141,21 +142,21 @@ $(document).ready(function() {
           twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name+" "+shareUrl));
           $('#video-player-popin + .top-bar').find('.buttons .twitter').attr('href', twHref);
           // CUSTOM LINK COPY
-          $('#video-player-popin + .top-bar').find('.buttons .link').attr('href', encodeURIComponent(shareUrl));
-          $('#video-player-popin + .top-bar').find('.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
+          $('#video-player-popin + .top-bar').find('.buttons .link').attr('href', shareUrl);
+          $('#video-player-popin + .top-bar').find('.buttons .link').attr('data-clipboard-text', shareUrl);
 
           $('.popin-video').find('.popin-buttons.buttons .facebook').attr('data-href', fbHref);
           $('.popin-video').find('.popin-buttons.buttons .facebook').attr('href', fbHref);
           $('.popin-video').find('.popin-buttons.buttons .twitter').attr('href', twHref);
-          $('.popin-video').find('.popin-buttons.buttons .link').attr('href', encodeURIComponent(shareUrl));
-          $('.popin-video').find('.popin-buttons.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
+          $('.popin-video').find('.popin-buttons.buttons .link').attr('href', shareUrl);
+          $('.popin-video').find('.popin-buttons.buttons .link').attr('data-clipboard-text', shareUrl);
 
           updatePopinMedia({
             'type'     : "video",
             'category' : category,
             'date'     : date,
             'title'    : name,
-            'url'      : encodeURIComponent(shareUrl)
+            'url'      : shareUrl
           });
 
           $popinVideo.find('.popin-info .category').text(category);
@@ -338,21 +339,21 @@ $(document).ready(function() {
           twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name+" "+shareUrl));
           $('#video-player-popin + .top-bar').find('.buttons .twitter').attr('href', twHref);
           // CUSTOM LINK COPY
-          $('#video-player-popin + .top-bar').find('.buttons .link').attr('href', encodeURIComponent(shareUrl));
-          $('#video-player-popin + .top-bar').find('.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
+          $('#video-player-popin + .top-bar').find('.buttons .link').attr('href', shareUrl);
+          $('#video-player-popin + .top-bar').find('.buttons .link').attr('data-clipboard-text', shareUrl);
 
           $('.popin-video').find('.popin-buttons.buttons .facebook').attr('data-href', fbHref);
           $('.popin-video').find('.popin-buttons.buttons .facebook').attr('href', fbHref);
           $('.popin-video').find('.popin-buttons.buttons .twitter').attr('href', twHref);
-          $('.popin-video').find('.popin-buttons.buttons .link').attr('href', encodeURIComponent(shareUrl));
-          $('.popin-video').find('.popin-buttons.buttons .link').attr('data-clipboard-text', encodeURIComponent(shareUrl));
+          $('.popin-video').find('.popin-buttons.buttons .link').attr('href', shareUrl);
+          $('.popin-video').find('.popin-buttons.buttons .link').attr('data-clipboard-text', shareUrl);
 
           updatePopinMedia({
             'type'     : "video",
             'category' : category,
             'date'     : date,
             'title'    : name,
-            'url'      : encodeURIComponent(shareUrl)
+            'url'      : shareUrl
           });
 
           $popinVideo.find('.popin-info .category').text(category);

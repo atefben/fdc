@@ -72,6 +72,22 @@ class FilmFilmPerson implements TranslateMainInterface
     private $person;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
+     * })
+     */
+    private $position;
+
+    /**
      * @var FilmFilmPersonFunction
      *
      * @ORM\OneToMany(targetEntity="FilmFilmPersonFunction", mappedBy="filmPerson", cascade={"all"})
@@ -215,6 +231,11 @@ class FilmFilmPerson implements TranslateMainInterface
         $this->functions->removeElement($functions);
     }
 
+    public function setFunctions($functions)
+    {
+        $this->functions = $functions;
+    }
+
     /**
      * Get functions
      *
@@ -223,5 +244,28 @@ class FilmFilmPerson implements TranslateMainInterface
     public function getFunctions()
     {
         return $this->functions;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return FilmFilmPerson
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

@@ -8,10 +8,13 @@ use \DateTime;
 use Guzzle\Plugin\Oauth\OauthPlugin;
 use Guzzle\Service\Client;
 
-
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\NullOutput;
 
 /**
  * Class SocialWallTumblrCommand
@@ -113,8 +116,21 @@ class SocialWallTumblrCommand extends ContainerAwareCommand
                 $em->persist($socialWall);
             }
         }
-        $output->writeln('Tumblr added: '. $count);
 
         $em->flush();
+
+        $kernel = $this->getContainer()->get('kernel');
+        $application = new Application($kernel);
+        $application->setAutoExit(false);
+
+        $input = new ArrayInput(array(
+            'command' => 'sonata:admin:generate-object-acl',
+            '--user_entity' => 'BaseCoreBundle:SocialWall',
+        ));
+
+        $output = new NullOutput();
+        $application->run($input, $output);
+
+        $output->writeln('Tumblr added: '. $count);
     }
 }
