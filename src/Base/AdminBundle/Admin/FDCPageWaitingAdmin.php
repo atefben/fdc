@@ -110,7 +110,7 @@ class FDCPageWaitingAdmin extends Admin
                 'help'     => 'form.fdc_page_web_tv_live.helper_image',
                 'required' => false,
             ))
-            ->add('enabled')
+            ->add('enabled', null, array('editable' => true))
             ->add('translate')
             ->add('translateOptions', 'choice', array(
                 'choices'            => FDCPageWebTvLive::getAvailableTranslateOptions(),
