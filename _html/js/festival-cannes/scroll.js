@@ -274,9 +274,9 @@ $(document).ready(function() {
     // SINGLE MOVIE
     if($('.single-movie').length ) {
       // NAV
-      if((s > ($('.videos').offset().top - $navMovie.height() - 100))) {
+      if($('.videos').length > 0 && (s > ($('.videos').offset().top - $navMovie.height() - 100))) {
         $navMovie.addClass('sticky');
-        if(s > $('div.press').offset().top + 1 - $navMovie.height()) {
+        if($('div.press').length > 0 && (s > $('div.press').offset().top + 1 - $navMovie.height())) {
           $navMovie.css('top', 0);
         } else {
           $navMovie.css('top', '91px');
@@ -285,19 +285,19 @@ $(document).ready(function() {
         $navMovie.removeClass('sticky');
       }
 
-      if(s > $('.competition').offset().top - ($(window).height() - $header.height() - 200)) {
+      if($('.competition').length > 0 && (s > $('.competition').offset().top - ($(window).height() - $header.height() - 200))) {
         $('.nav').addClass('hide');
       } else {
         $('.nav').removeClass('hide');
       }
 
-      if(s > 50 && s < $('div.press').offset().top - $('div.press').height()) {
+      if($('div.press').length > 0 && (s > 50 && s < $('div.press').offset().top - $('div.press').height())) {
         $('.nav, .prevmovie, .nextmovie').addClass('black');
       } else {
         $('.nav, .prevmovie, .nextmovie').removeClass('black');
       }
 
-      if(s > 100 && $('.main-image').hasClass('trailer')) {
+      if($('.main-image').length > 0 && (s > 100 && $('.main-image').hasClass('trailer'))) {
         $('.main-image').height($('.main-image').data('height')).css('padding-top', 0);
         $('.main-image, .poster, .info-film, .nav').removeClass('trailer');
         if(videoMovie.getState() === "playing") {
