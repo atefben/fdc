@@ -25,7 +25,30 @@
             <a class="programmation" href="#">{{ 'movie.nav.btn.voirlaprogrammation'|trans }}</a>
         </div>
     </div>
-    <div class="trailer"></div>
+    <div class="trailer">
+        <div class="video-container state-init video"
+             data-file='[{"file":"{{ videoUrl }}"}]'
+             data-vid="{{ video.id }}"
+             {% if page.image and page.image|trans_fallback('file') %}
+             data-img="{% path page.image|trans_fallback('file'), '1280x808' %}"
+             {% else %}
+             data-img=""
+             {% endif %}>
+            <div id="video-movie-trailer" class="video-player"></div>
+            <div class="video-overlay"></div>
+            <div class="infos-bar">
+                <div class="picto"><i class="icon icon_video"></i></div>
+                <div class="info">
+                    <div class="vCenter">
+                        <div class="vCenterKid">
+                            <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                            <p>The Lobster</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="container container-top">
     {% if movie.videoMain is not null and movie.videoMain.image and movie.videoMain.image.file %}
