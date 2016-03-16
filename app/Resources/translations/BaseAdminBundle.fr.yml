@@ -63,6 +63,7 @@ breadcrumb:
     link_f_d_c_page_news_videos_list: Page L'actualité
     link_f_d_c_page_la_selection_list: La sélection
     link_f_d_c_page_jury_list: Les jurys
+    link_f_d_c_page_award_list: Le palmarès
 link:
     action_soif_refresh: Mettre à jour
 
@@ -661,7 +662,18 @@ form:
         in_progress: En cours
         error: Erreur
         ready: Prêt
-
+    fdc_page_award:
+        content_page: Contenu de la page
+        label_name: Nom
+        image: Image cover
+        helper_image: Dimensions attendues : 2560×1103. Format attendu.
+        selections: Sélections
+        selection: Sélection
+        selection_longs_metrages: Sélection longs métrages
+        label_name_longs_metrages: Surcharger le nom de la sélection longs métrages
+        selection_courts_metrages: Sélection courts métrages
+        label_name_courts_metrages: Surcharger le nom de la sélection courts métrages
+        label_other_selection_sections: Autres sélections du prix Caméra d'OR
     web_tv:
         helper_name: 255 caractères max.
         helper_image:  Dimensions attendues : 1280x808. Format attendu : .jpg, .png. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.
@@ -812,3 +824,4 @@ FDCPageWebTvLive: Accueil WebTV
 FDCPageWebTvTrailers: Page WebTV - Les bandes-annonces - Compétition
 FDCPageLaSelection: Page la sélection
 FilmJuryType: Type des jurys
+FilmSelectionSection: Sélections

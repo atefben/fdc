@@ -1733,6 +1733,10 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
         <source>breadcrumb.jury.home</source>
         <target>Jury</target>
       </trans-unit>
+      <trans-unit id="breadcrumb.palmares.main" resname="breadcrumb.palmares.main">
+        <source>breadcrumb.palmares.main</source>
+        <target>Palmarès</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
