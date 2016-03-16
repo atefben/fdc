@@ -675,6 +675,8 @@ form:
         selection_courts_metrages: Sélection courts métrages
         label_name_courts_metrages: Surcharger le nom de la sélection courts métrages
         label_other_selection_sections: Autres sélections du prix Caméra d'OR
+        label_name_en_competition: Étiquette catégorie compétition
+        label_header: Chapeau
     web_tv:
         helper_name: 255 caractères max.
         helper_image:  Dimensions attendues : 1280x808. Format attendu : .jpg, .png. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.

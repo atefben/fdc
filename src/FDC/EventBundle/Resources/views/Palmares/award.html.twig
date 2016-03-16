@@ -1,0 +1,33 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="list-article palmares-list loading ">
+        <div class="bandeau-list">
+            <div class="bandeau-list-img bandeau-head vCenter"
+                 style="background-image:url('{% path page.image|trans_fallback('file'), '2560×600' %}')">
+                <div class="vCenterKid">
+                    <h2 class="title title-list-header ">{{ page|trans_fallback('name') }}</h2>
+                </div>
+            </div>
+            {% include 'FDCEventBundle:Palmares:components/nav.html.twig' %}
+        </div>
+        <div class="container container-list">
+            <section class="categorie-items">
+                {% if page.id == 1 %}
+                    {% include 'FDCEventBundle:Palmares:competition.html.twig' %}
+                {% elseif page.id == 4 %}
+                    {% include 'FDCEventBundle:Palmares:camerador.html.twig' %}
+                {% elseif page.id == 5 %}
+                        {% include 'FDCEventBundle:Palmares:all.html.twig' %}
+                {% else %}
+                        {% include 'FDCEventBundle:Palmares:simple.html.twig' %}
+                {% endif %}
+            </section>
+            {% if next %}
+                {% include 'FDCEventBundle:Palmares:components/bandeau.html.twig' %}
+            {% endif %}
+        </div>
+        {% include 'FDCEventBundle:Palmares/components:breadcrumb.html.twig' %}
+    </div>
+{% endblock %}

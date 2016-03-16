@@ -45,6 +45,7 @@ class FilmPrize implements FilmPrizeInterface, TranslateMainInterface
     /**
      * @var integer
      *
+     *
      * @ORM\Column(type="integer", nullable=true)
      *
      * @Groups({

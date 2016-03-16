@@ -9,16 +9,33 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\SecurityContext;
 use FOS\UserBundle\Controller\SecurityController as BaseController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class SecurityController extends BaseController
 {
+
+    protected $currentRoute;
+
+    /**
+     * @param Request $originalRequest
+     * @return RedirectResponse
+     */
+    public function setCurrentRouteAction(Request $originalRequest)
+    {
+
+        $this->setCurrentRoute($originalRequest->get('_route'));
+        return $this->loginAction();
+
+    }
+
+
     /**
      * @Route("/login")
-     *
-     * @return RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function loginAction()
     {
+
         $request = $this->container->get('request');
         /* @var $request \Symfony\Component\HttpFoundation\Request */
         $session = $request->getSession();
@@ -44,8 +61,25 @@ class SecurityController extends BaseController
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
             'error'         => $error,
-            'csrf_token' => $csrfToken,
+            'csrf_token'    => $csrfToken,
+            'current_route' => $this->getCurrentRoute()
         ));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrentRoute()
+    {
+        return $this->currentRoute;
+    }
+
+    /**
+     * @param mixed $currentRoute
+     */
+    public function setCurrentRoute($currentRoute)
+    {
+        $this->currentRoute = $currentRoute;
     }
 
     protected function renderLogin(array $data)

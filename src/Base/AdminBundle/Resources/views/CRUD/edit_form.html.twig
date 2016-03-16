@@ -70,6 +70,23 @@
                 jQuery('.sonata-ba-form h4.box-title').first().html(repaceTitleWith);
             });
         </script>
+    {% elseif app.request.attributes.get('_route') == 'admin_base_core_fdcpageaward_edit' %}
+        <script type="text/javascript">
+            $(document).ready(function(){
+                {% if app.request.get('id') == 1 %}
+                    var repaceTitleWith = '{{ 'dashboard.link.fdc_page_award_competition'|trans({}, 'BaseAdminBundle') }}';
+                {% elseif app.request.get('id') == 2 %}
+                    var repaceTitleWith = '{{ 'dashboard.link.fdc_page_award_certain_regard'|trans({}, 'BaseAdminBundle') }}';
+                {% elseif app.request.get('id') == 3 %}
+                    var repaceTitleWith = '{{ 'dashboard.link.fdc_page_award_cinefondation'|trans({}, 'BaseAdminBundle') }}';
+                {% elseif app.request.get('id') == 4 %}
+                    var repaceTitleWith = '{{ 'dashboard.link.fdc_page_award_camera_dor'|trans({}, 'BaseAdminBundle') }}';
+                {% elseif app.request.get('id') == 5 %}
+                    var repaceTitleWith = '{{ 'dashboard.link.fdc_page_award_all_awards'|trans({}, 'BaseAdminBundle') }}';
+                {% endif %}
+                jQuery('.sonata-ba-form h4.box-title').first().html(repaceTitleWith);
+            });
+        </script>
     {% endif %}
 {% endblock %}
 

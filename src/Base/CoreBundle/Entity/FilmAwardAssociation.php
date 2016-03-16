@@ -13,7 +13,7 @@ use JMS\Serializer\Annotation\Since;
  * FilmAwardAssociation
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmAwardAssociationRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FilmAwardAssociation
@@ -32,7 +32,7 @@ class FilmAwardAssociation
     private $id;
 
     /**
-     * @var FilmPerson
+     * @var FilmAward
      *
      * @ORM\ManyToOne(targetEntity="FilmAward", inversedBy="associations", cascade={"all"})
      *

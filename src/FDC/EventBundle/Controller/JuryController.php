@@ -59,7 +59,7 @@ class JuryController extends Controller
         $juries = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmJury')
-            ->getJurysByType($locale, $locale, $page->getJuryType()->getId())
+            ->getJurysByType($festival, $locale, $page->getJuryType()->getId())
         ;
 
         $members = array();

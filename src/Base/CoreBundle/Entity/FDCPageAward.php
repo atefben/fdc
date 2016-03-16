@@ -16,9 +16,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCPageAwardRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class FDCPageAward implements TranslateMainInterface
 {
+
     use Time;
     use Translatable;
     use TranslateMain;
@@ -42,23 +44,66 @@ class FDCPageAward implements TranslateMainInterface
 
     /**
      * @var FilmSelectionSection
-     *
      * @ORM\ManyToOne(targetEntity="FilmSelectionSection")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $selectionSection;
+    private $selectionLongsMetrages;
+
+    /**
+     * @var FilmSelectionSection
+     * @ORM\ManyToOne(targetEntity="FilmSelectionSection")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $selectionCourtsMetrages;
 
     /**
      * @var ArrayCollection
-     *
-     * @Assert\Valid()
+     * @ORM\OneToMany(targetEntity="FDCPageAwardOtherSelectionSectionsAssociated", mappedBy="FDCPageAward", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
+    private $otherSelectionSectionsAssociated;
+
+
     protected $translations;
 
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->otherSelectionSectionsAssociated = new ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        if (!$this->getId()) {
+            return 'Nouvelle page Le Palmarès';
+        }
+
+        $names = array(
+            'La palmarès COMPETITION',
+            'Le palmarès UN CERTAIN REGARD',
+            'Le palmarès CINÉFONDATION',
+            'La sélection CAMÉRA D\'OR',
+            'La sélection TOUT LE PALMARÈS',
+        );
+        return $names[$this->getId() - 1];
+    }
+
+    public function getCategory()
+    {
+        $names = array(
+            'Compétition',
+            'Un Certain Regard',
+            'Cinéfondation',
+            'Caméra d\'or',
+        );
+
+        if (array_key_exists($this->getId() - 1, $names)) {
+            return $names[$this->getId() - 1];
+        }
+    }
 
     /**
      * Get id
@@ -73,10 +118,10 @@ class FDCPageAward implements TranslateMainInterface
     /**
      * Set image
      *
-     * @param \Base\CoreBundle\Entity\MediaImageSimple $image
+     * @param MediaImageSimple $image
      * @return FDCPageAward
      */
-    public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
+    public function setImage(MediaImageSimple $image = null)
     {
         $this->image = $image;
 
@@ -86,33 +131,98 @@ class FDCPageAward implements TranslateMainInterface
     /**
      * Get image
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return MediaImageSimple 
      */
     public function getImage()
     {
         return $this->image;
     }
 
+
     /**
-     * Set selectionSection
+     * Set selectionLongsMetrages
      *
-     * @param \Base\CoreBundle\Entity\FilmSelectionSection $selectionSection
+     * @param FilmSelectionSection $selectionLongsMetrages
      * @return FDCPageAward
      */
-    public function setSelectionSection(\Base\CoreBundle\Entity\FilmSelectionSection $selectionSection = null)
+    public function setSelectionLongsMetrages(FilmSelectionSection $selectionLongsMetrages = null)
     {
-        $this->selectionSection = $selectionSection;
+        $this->selectionLongsMetrages = $selectionLongsMetrages;
 
         return $this;
     }
 
     /**
-     * Get selectionSection
+     * Get selectionLongsMetrages
      *
-     * @return \Base\CoreBundle\Entity\FilmSelectionSection 
+     * @return FilmSelectionSection 
      */
-    public function getSelectionSection()
+    public function getSelectionLongsMetrages()
     {
-        return $this->selectionSection;
+        return $this->selectionLongsMetrages;
+    }
+
+    /**
+     * Set selectionCourtsMetrages
+     *
+     * @param FilmSelectionSection $selectionCourtsMetrages
+     * @return FDCPageAward
+     */
+    public function setSelectionCourtsMetrages(FilmSelectionSection $selectionCourtsMetrages = null)
+    {
+        $this->selectionCourtsMetrages = $selectionCourtsMetrages;
+
+        return $this;
+    }
+
+    /**
+     * Get selectionCourtsMetrages
+     *
+     * @return FilmSelectionSection 
+     */
+    public function getSelectionCourtsMetrages()
+    {
+        return $this->selectionCourtsMetrages;
+    }
+
+    /**
+     * Add otherSelectionSectionsAssociated
+     *
+     * @param FDCPageAwardOtherSelectionSectionsAssociated $otherSelectionSectionsAssociated
+     * @return FDCPageAward
+     */
+    public function addOtherSelectionSectionsAssociated(FDCPageAwardOtherSelectionSectionsAssociated $otherSelectionSectionsAssociated)
+    {
+        $otherSelectionSectionsAssociated->setFDCPageAward($this);
+        $this->otherSelectionSectionsAssociated[] = $otherSelectionSectionsAssociated;
+
+        return $this;
+    }
+
+    /**
+     * Remove otherSelectionSectionsAssociated
+     *
+     * @param FDCPageAwardOtherSelectionSectionsAssociated $otherSelectionSectionsAssociated
+     */
+    public function removeOtherSelectionSectionsAssociated(FDCPageAwardOtherSelectionSectionsAssociated $otherSelectionSectionsAssociated)
+    {
+        $this->otherSelectionSectionsAssociated->removeElement($otherSelectionSectionsAssociated);
+    }
+
+    /**
+     * Get otherSelectionSectionsAssociated
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOtherSelectionSectionsAssociated()
+    {
+        if ($this->otherSelectionSectionsAssociated->count() < 2) {
+            while ($this->otherSelectionSectionsAssociated->count() != 2) {
+                $entity = new FDCPageAwardOtherSelectionSectionsAssociated();
+                $entity->setFDCPageAward($this);
+                $this->otherSelectionSectionsAssociated->add($entity);
+            }
+        }
+        return $this->otherSelectionSectionsAssociated;
     }
 }
