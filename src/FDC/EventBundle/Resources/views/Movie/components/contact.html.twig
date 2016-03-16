@@ -40,7 +40,9 @@
                         <h3>{{ 'movie.contact.title.contacts'|trans }}</h3>
                         {% for contact in movie.contacts %}
                             <div{% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') %} class="prod"{% endif %}>
-                                {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') %}
+                                {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PERSON') %}
+                                    <p class="sub">{{ 'movie.contact.label.person'|trans }}</p>
+                                {% elseif contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') %}
                                     <p class="sub">{{ 'movie.contact.label.production'|trans }}</p>
                                 {% elseif contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_INTERNATIONAL_SELLING') %}
                                     <p class="sub">{{ 'movie.contact.label.ventealetranger'|trans }}</p>
@@ -57,8 +59,8 @@
                                 {% endif %}
                                 <p>
                                     {% if contact.companyName %}{{ contact.companyName }}{% if contact.address %} - {% endif %}{% endif %}
-                                    {% if contact.address %}{{ contact.address.street }} {{ contact.address.postalCode }} {{ contact.address.city }} {% endif %}
-                                    {% if contact.address.phone or contact.address.mobilePhone %}T: {{ contact.address.phone?:contact.address.mobilePhone  }}{% endif %}
+                                    {% if contact.address %}{{ contact.address.street }} {{ contact.address.postalCode }} {{ contact.address.city }} {% if contact.address.country %} {{ contact.address.country|trans_fallback('name') }}{% endif %}{% endif %}
+                                    {% if contact.address.phone or contact.address.mobilePhone %}{% if contact.address %} - {% endif %}T: {{ contact.address.phone?:contact.address.mobilePhone  }}{% endif %}
                                     {% if contact.address.email %}<a href="#">{{ contact.address.email }}</a>{% endif %}
                                     {% if contact.address.website %}<a href="#">{{ contact.address.website }}</a>{% endif %}
                                 </p>
