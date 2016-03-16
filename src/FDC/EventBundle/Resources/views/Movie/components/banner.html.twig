@@ -75,8 +75,8 @@
             <span>{{ category.name }}</span>
             {% endfor %}
         </div>
-        <h2>{{ movie.title }}</h2>
-        <div class="title-original">{% if movie|trans_fallback('title') is not empty %}({{ movie|trans_fallback('title') }}){% else %}({{ movie.titleVO }}){% endif %}</div>
+        <h2>{% if movie|trans_fallback('title') is not empty %}{{ movie|trans_fallback('title') }}{% else %}{{ movie.titleVO }}{% endif %}</h2>
+        <div class="title-original">({{ movie.titleVO }})</div>
         <p>
             {{ 'movie.label.realisepar'|trans }} :
             {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}

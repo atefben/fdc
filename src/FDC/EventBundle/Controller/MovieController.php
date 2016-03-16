@@ -26,9 +26,11 @@ class MovieController extends Controller
      * @param $slug
      * @return array
      */
-    public function getAction($slug)
+    public function getAction(Request $request, $slug)
     {
         $em = $this->get('doctrine')->getManager();
+        $locale = $request->getLocale();
+        $festival = $this->getFestival()->getId();
         $isAdmin  = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
 
         // GET MOVIE
@@ -48,116 +50,11 @@ class MovieController extends Controller
             throw new NotFoundHttpException('Movie not found');
         }
 
-        $movies = array(
-            array(
-                'slug'    => 'youth',
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            array(
-                'slug'    => 'youth',
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            array(
-                'slug'    => 'youth',
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            array(
-                'slug'    => 'youth',
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            array(
-                'slug'    => 'youth',
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            array(
-                'slug'    => 'youth',
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            array(
-                'slug'    => 'youth',
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            'prev' => array(
-                'slug'    => 'youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            'next' => array(
-                'slug'    => 'youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-        );
+        $movies = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->getFilmsBySelectionSection($festival, $locale, $movie->getSelectionSection()->getId())
+        ;
 
         return array(
             'movies' => $movies,
