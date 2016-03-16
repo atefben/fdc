@@ -11650,10 +11650,6 @@ article .read-later.rAlign span:after {
   opacity: 1;
   visibility: visible;
 }
-.single-movie .videos #slider-movie-videos .owl-item .linkVid {
-  display: block;
-  z-index: 3;
-}
 .single-movie .videos #slider-movie-videos .slide-video {
   height: 185px;
   position: relative;

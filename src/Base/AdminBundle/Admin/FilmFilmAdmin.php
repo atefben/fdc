@@ -132,7 +132,11 @@ class FilmFilmAdmin extends SoifAdmin
                     'delete' => array(),
                     'soif_refresh' => array('template' => 'BaseAdminBundle:CRUD:list__action_soif_refresh.html.twig'),
                 )
-            ));
+            ))
+            ->add('_preview', null, array(
+                'template' => 'BaseAdminBundle:FilmFilm:list_preview.html.twig'
+            ))
+        ;
     }
 
     /**
@@ -142,8 +146,9 @@ class FilmFilmAdmin extends SoifAdmin
     {
         $formMapper
             ->with('Informations Générales')
-                ->add('id', 'text', array(
-                    'label' => false
+                ->add('director', 'text', array(
+                    'label' => false,
+                    'mapped' => false
                 ))
                 ->add('imageMain', 'sonata_type_model_list', array(
                     'help' => 'Dimensions attendues : YxZpx - ratio paysage. Format Attendu.',

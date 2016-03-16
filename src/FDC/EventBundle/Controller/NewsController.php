@@ -35,7 +35,6 @@ class NewsController extends Controller
         $em       = $this->get('doctrine')->getManager();
         $dateTime = new DateTime();
         $locale   = $request->getLocale();
-        $isAdmin  = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');

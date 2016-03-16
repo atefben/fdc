@@ -17,10 +17,9 @@ use Base\CoreBundle\Util\Seo;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressAccreditProcedureTranslation implements TranslateChildInterface
+class PressAccreditProcedureTranslation
 {
     use Seo;
-    use TranslateChild;
     use Time;
     use Translation;
 

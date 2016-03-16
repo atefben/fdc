@@ -21,135 +21,40 @@ class MovieController extends Controller
 {
 
     /**
-     * @Route("/movie/{slug}")
+     * @Route("/films/{slug}")
      * @Template("FDCEventBundle:Movie:main.html.twig")
      * @param $slug
      * @return array
      */
-    public function getAction($slug)
+    public function getAction(Request $request, $slug)
     {
-        $em    = $this->get('doctrine')->getManager();
+        $em = $this->get('doctrine')->getManager();
+        $locale = $request->getLocale();
+        $festival = $this->getFestival()->getId();
+        $isAdmin  = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
 
         // GET MOVIE
-        $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
-            'slug' => $slug,
-          //  'festival' => $this->getFestival()
-        ));
+        if ($isAdmin) {
+            $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
+                'slug' => $slug
+            ));
+        } else {
+            $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
+                'slug' => $slug,
+                'festival' => $this->getFestival()
+            ));
+
+        }
 
         if ($movie === null) {
             throw new NotFoundHttpException('Movie not found');
         }
 
-        $movies = array(
-            array(
-                'slug'    => 'youth',
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            array(
-                'slug'    => 'youth',
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            array(
-                'slug'    => 'youth',
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            array(
-                'slug'    => 'youth',
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            array(
-                'slug'    => 'youth',
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            array(
-                'slug'    => 'youth',
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            array(
-                'slug'    => 'youth',
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            'prev' => array(
-                'slug'    => 'youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-            'next' => array(
-                'slug'    => 'youth',
-                'image'   => array(
-                    'path' => 'http://dummyimage.com/210x284/000/fff'
-                ),
-                'title'   => 'Youth',
-                'titleVO' => 'Youth',
-                'author'  => array(
-                    'fullName' => 'Paolo SORRENTINO',
-                    'from'     => 'Italie'
-                )
-            ),
-        );
+        $movies = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->getFilmsBySelectionSection($festival, $locale, $movie->getSelectionSection()->getId())
+        ;
 
         return array(
             'movies' => $movies,
@@ -238,7 +143,7 @@ class MovieController extends Controller
     }
 
     /**
-     * @Route("/movie/cannes-classics/{slug}")
+     * @Route("/films/cannes-classics/{slug}")
      * @Template("FDCEventBundle:Movie:classics.html.twig")
      * @param $slug
      * @return array

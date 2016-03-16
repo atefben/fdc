@@ -10,7 +10,7 @@
 
             <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-{{ currentLocale == locale ? '12' : '8' }}">
                         <div class="box box-success">
                             <div class="box-header">
                                 <h4 class="box-title">
@@ -27,24 +27,7 @@
                     </div>
                     <div class="col-md-4">
                         {% if form.vars.default_locale == locale %}
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        {{ 'group.news.publish_parameters'|trans }}
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
-                                        <div class="form-group fdc-input-border">
-                                            {{ form_row(translationsFields.status) }}
-                                            {{ form_widget(form.parent.children.translate) }}
-                                            {{ form_label(form.parent.children.translate) }}
-                                            {{ form_widget(form.parent.children.translateOptions) }}
-                                            {{ form_row(form.parent.children.priorityStatus) }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                             {% else %}
                                 <div class="box box-success">
                                     <div class="box-header">
@@ -82,18 +65,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="box box-success">
-                                    <div class="box-header">
-                                        <h4 class="box-title">
-                                            {{ 'group.news.publish_parameters'|trans }}
-                                        </h4>
-                                    </div>
-                                    <div class="box-body">
-                                        <div class="sonata-ba-collapsed-fields">
-                                            {{ form_widget(translationsFields.status) }}
-                                        </div>
-                                    </div>
-                                </div>
+
                         {% endif %}
                     </div>
                 </div>
