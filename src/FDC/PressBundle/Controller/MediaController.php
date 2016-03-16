@@ -31,29 +31,13 @@ class MediaController extends Controller
         }
 
         $sectionFilms = $em->getRepository('BaseCoreBundle:FilmFilm')
-            ->findBy(array('festival' => $settings->getFestival()->getId()), array('selectionSection' => 'ASC'));
+            ->findBy(array('festival' => $settings->getFestival()->getId()), array('selectionSection' => 'DESC'));
         $i = 0;
 
         $filmSection = array();
         $section = array();
         $mainSectionId = 0;
 
-        foreach ($sectionFilms as $film) {
-            $empty = true;
-            foreach ($film->getMedias() as $media) {
-                if ($media->getType() == '14' || $media->getType() == '18') {
-                    $empty = false;
-                }
-            }
-            foreach ($film->getAssociatedMediaVideos() as $mediaVideo ) {
-                if (isset($mediaVideo)){
-                    $empty = false;
-                }
-            }
-            if ($film->getSelectionSection() !== null && $empty == false) {
-                $mainSectionId = $film->getSelectionSection()->getId();
-            }
-        }
         $i = 0;
 
         foreach ($sectionFilms as $film) {
@@ -77,11 +61,13 @@ class MediaController extends Controller
                 $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
 
                 $section[] = $film->getSelectionSection()->getId();
+                $i++;
             }
 
 
-            $i++;
+
         }
+        $mainSectionId = $filmSection[0]['id'];
 
         $films = $em->getRepository('BaseCoreBundle:FilmFilm')
             ->findBy(array(
