@@ -1896,6 +1896,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function addAssociatedMediaVideo(\Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedMediaVideos)
     {
+        $associatedMediaVideos->setAssociation($this);
         $this->associatedMediaVideos[] = $associatedMediaVideos;
 
         return $this;
@@ -1929,6 +1930,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function addAssociatedMediaAudio(\Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated $associatedMediaAudios)
     {
+        $associatedMediaAudios->setAssociation($this);
         $this->associatedMediaAudios[] = $associatedMediaAudios;
 
         return $this;
@@ -1962,6 +1964,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function addAssociatedStatement(\Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedStatement)
     {
+        $associatedStatement->setAssociation($this);
         $this->associatedStatement[] = $associatedStatement;
 
         return $this;
@@ -1995,6 +1998,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function addAssociatedInfo(\Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedInfo)
     {
+        $associatedInfo->setAssociation($this);
         $this->associatedInfo[] = $associatedInfo;
 
         return $this;
@@ -2028,6 +2032,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function addAssociatedNews(\Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews)
     {
+        $associatedNews->setAssociation($this);
         $this->associatedNews[] = $associatedNews;
 
         return $this;
@@ -2120,6 +2125,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function addTag(\Base\CoreBundle\Entity\FilmFilmTag $tags)
     {
+        $tags->setFilm($this);
         $this->tags[] = $tags;
 
         return $this;

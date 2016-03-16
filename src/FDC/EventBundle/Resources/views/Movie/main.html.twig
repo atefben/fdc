@@ -64,8 +64,8 @@
             </div>
 
             <div class="audios" data-section="audios">
-            {% for widget in movie.audios %}
-                {% include 'FDCEventBundle:News:widgets/audio.html.twig' %}
+            {% for associatedMediaAudio in movie.associatedMediaAudios %}
+                {% include 'FDCEventBundle:Movie:widgets/audio.html.twig' with { 'mediaAudio': associatedMediaAudio.mediaAudio } %}
             {% endfor %}
             </div>
 
