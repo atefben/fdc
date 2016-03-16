@@ -43,7 +43,6 @@ class SocialGraphCommand extends ContainerAwareCommand
      * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output) {
-
         $em = $this->getContainer()->get('doctrine')->getManager();
         $logger = $this->getContainer()->get('logger');
         $datetime = new DateTime();
@@ -134,17 +133,6 @@ class SocialGraphCommand extends ContainerAwareCommand
 
         }
 
-        $kernel = $this->getContainer()->get('kernel');
-        $application = new Application($kernel);
-        $application->setAutoExit(false);
-
-        $input = new ArrayInput(array(
-            'command' => 'sonata:admin:generate-object-acl',
-            '--user_entity' => 'BaseCoreBundle:SocialGraph',
-        ));
-
-        $output = new NullOutput();
-        $application->run($input, $output);
 
     }
 
