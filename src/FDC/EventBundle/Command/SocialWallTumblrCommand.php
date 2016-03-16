@@ -79,7 +79,6 @@ class SocialWallTumblrCommand extends ContainerAwareCommand
             $tag = substr($tag, 1);
 
             $tumblrResponse = file_get_contents('https://api.tumblr.com/v2/tagged?tag='.$tag.'&api_key='. $this->getContainer()->getParameter('tumblr_consumer_key'));
-            echo 'https://api.tumblr.com/v2/tagged?tag='.$tag.'&api_key='. $this->getContainer()->getParameter('tumblr_consumer_key');
             $tumblrPosts = json_decode($tumblrResponse)->response;
 
         }
