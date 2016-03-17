@@ -111,7 +111,7 @@ class PressAccreditProcedureAdmin extends Admin
                         'label' => 'form.label_procedure',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'widget'
+                        'config_name' => 'press'
                     ),
                 )
             ));
