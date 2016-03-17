@@ -6,9 +6,9 @@
         {% set mainImg = prev|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
 
         {% if posterImg %}
-            {% media posterImg, 'film_poster_small' %}
+            {% media posterImg, 'small' %}
         {% elseif mainImg %}
-            {% media mainImg, 'film_main_small' %}
+            {% media mainImg, 'small' %}
         {% endif %}
     </div>
     <div class="info">
@@ -41,9 +41,9 @@
         {% set mainImg = next|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
 
         {% if posterImg %}
-            {% media posterImg, 'film_poster_small' %}
+            {% media posterImg, 'small' %}
         {% elseif mainImg %}
-            {% media mainImg, 'film_main_small' %}
+            {% media mainImg, 'small' %}
         {% endif %}
     </div>
     <div class="info">
