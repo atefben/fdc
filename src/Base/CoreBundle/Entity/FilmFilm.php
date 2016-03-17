@@ -1834,6 +1834,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                 }
             }
         }
+        return false;
     }
 
     /**
@@ -1855,6 +1856,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                 }
             }
         }
+        return false;
     }
 
     /**
