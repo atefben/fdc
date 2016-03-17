@@ -18857,35 +18857,35 @@ input[type=submit] {
 .practicalguide #praticalguide .container-pguide .wrapper .contain-article .texts p .media {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
-.practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service {
+.practicalguide #praticalguide .container-pguide .wrapper .contain-service {
   width: 486px;
   text-align: center;
   display: inline-block;
   margin-top: 5px;
   vertical-align: text-top;
 }
-.practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service .icon {
+.practicalguide #praticalguide .container-pguide .wrapper .contain-service .icon {
   font-size: 3rem;
   margin-bottom: 12px;
   color: #B5B5B5;
 }
-.practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service .icon_casier {
+.practicalguide #praticalguide .container-pguide .wrapper .contain-service .icon_casier {
   font-size: 2rem;
   margin-bottom: 26px;
 }
-.practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service .icon_plateau-tv {
+.practicalguide #praticalguide .container-pguide .wrapper .contain-service .icon_plateau-tv {
   font-size: 2.4rem;
   margin-bottom: 22px;
 }
-.practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service .icon_zone-media {
+.practicalguide #praticalguide .container-pguide .wrapper .contain-service .icon_zone-media {
   font-size: 2.4rem;
   margin-bottom: 22px;
 }
-.practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service .icon_divers {
+.practicalguide #praticalguide .container-pguide .wrapper .contain-service .icon_divers {
   font-size: 2.4rem;
   margin-bottom: 22px;
 }
-.practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service strong {
+.practicalguide #praticalguide .container-pguide .wrapper .contain-service strong {
   display: block;
   letter-spacing: .2em;
   color: #000;
@@ -18894,14 +18894,14 @@ input[type=submit] {
   font-size: 0.75rem;
   padding-bottom: 30px;
 }
-.practicalguide #praticalguide .container-pguide .wrapper .pictos-service .contain-service p {
+.practicalguide #praticalguide .container-pguide .wrapper .contain-service p {
   display: block;
   width: 370px;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   line-height: 24px;
   font-size: 0.81rem;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  height: 137px;
+  min-height: 117px;
 }
 .practicalguide #praticalguide .container-pguide.active {
   min-height: auto;
