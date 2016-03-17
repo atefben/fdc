@@ -41,20 +41,10 @@ class PressHomepageSectionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('class', 'choice',array(
+            ->add('title', 'text', array(
                 // disabled : true when block are created
-                'choices' => array(
-                    'communique' => "Communiqué et info",
-                    'programmation' => "Programmation du jour",
-                    'media' => "Médiathèque",
-                    'download' => "A télécharger",
-                    'push1' => "Push 1",
-                    'push2' => "Push 2",
-                    'statistics' => "Statistiques",
-                ),
-                'disabled' => false,
-                'label' => 'form.press_homepage.label_section',
-                'required' => false
+                'disabled' => true,
+                'label' => 'form.press_homepage.label_section'
             ))
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;

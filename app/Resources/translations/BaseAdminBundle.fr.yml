@@ -292,6 +292,8 @@ list:
         label_title: Titre de la procédure
     cinema_room:
         label_title: Nom de la salle
+    press_download:
+        label_title: Nom de la section
 
 filter:
     label_have_trailer: Afficher film avec bande annonce

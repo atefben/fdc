@@ -74,7 +74,7 @@ class PressAccreditAdmin extends Admin
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_content',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'widget'
+                        'config_name' => 'press'
                     ),
                     'btnLabel' => array(
                         'label' => 'form.label_btn',

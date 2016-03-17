@@ -17,11 +17,21 @@ CKEDITOR.editorConfig = function( config ) {
             return !element.is('a')
         }, attributes: {'class': 'mail'}
         },
-        // Title contact
-        {name: 'Titre contact', element: 'h3' },
-        // Title bloc
+        // Links
+        {name: 'Lien gras', element: 'a' , attributes: {'class': 'bold'}},
+        {name: 'Lien standard', element: 'a'},
+        // Titles
+        {name: 'Titre h3', element: 'h3' },
+        {name: 'Titre doré', element: 'h4' },
+        {name: 'Titre h5', element: 'h5'},
         {name: 'Titre bloc', element: 'h5', attributes: {'class': 'container-title'}},
-        {name: 'Titre de module', element: 'strong'}
+        {name: 'Titre centré', element: 'strong', attributes: {'class': 'title-center'}},
+        {name: 'Titre de module', element: 'strong'},
+        // Paragraphs
+        {name: 'Description titre centré', element: 'p', attributes: {'class': 'descrip-title'}},
+        {name: 'Description google map', element: 'span', attributes: {'class': 'googlemap-descrip'}},
+        {name: 'Cadre doré', element: 'p', attributes: {'class': 'info'}}
+
     ];
 
     // TOOLBAR
