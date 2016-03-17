@@ -45,7 +45,7 @@ abstract class Media implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Theme")
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "film_show"})
      * @Assert\NotNull()
      */
     private $theme;
