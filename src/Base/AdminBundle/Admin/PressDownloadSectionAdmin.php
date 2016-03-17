@@ -10,9 +10,16 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 use Base\CoreBundle\Entity\PressDownloadSectionTranslation;
 use Base\CoreBundle\Entity\PressDownloadSection;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class PressDownloadSectionAdmin extends Admin
 {
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('acl');
+        $collection->remove('show');
+    }
 
     protected $translationDomain = 'BaseAdminBundle';
 
@@ -66,9 +73,8 @@ class PressDownloadSectionAdmin extends Admin
             ->add('id', null, array('label' => 'list.common.label_id'))
             ->add('title', null, array(
                 'template' => 'BaseAdminBundle:News:list_title.html.twig',
-                'label' => 'list.news_common.label_title',
+                'label' => 'list.press_download.label_title',
             ))
-            ->add('theme', null, array())
             ->add('createdAt', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
                 'sortable' => 'createdAt',
