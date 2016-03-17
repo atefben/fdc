@@ -198,17 +198,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({
-     *     "trailer_list",
-     *     "trailer_show",
-     *     "film_list",
-     *     "film_show",
-     *     "award_list",
-     *     "award_show",
-     *     "projection_list",
-     *     "projection_show"
-     * })
-     *
      */
     private $website;
 
@@ -1834,6 +1823,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                 }
             }
         }
+        return false;
     }
 
     /**
@@ -1855,6 +1845,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                 }
             }
         }
+        return false;
     }
 
     /**
