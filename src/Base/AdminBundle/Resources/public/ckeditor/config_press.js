@@ -21,6 +21,7 @@ CKEDITOR.editorConfig = function( config ) {
         {name: 'Titre contact', element: 'h3' },
         // Title bloc
         {name: 'Titre bloc', element: 'h5', attributes: {'class': 'container-title'}},
+        {name: 'Titre de module', element: 'strong'}
     ];
 
     // TOOLBAR
