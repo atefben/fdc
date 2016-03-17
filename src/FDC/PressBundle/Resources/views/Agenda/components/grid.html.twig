@@ -17,7 +17,7 @@
         {% if dayProjection is defined %}
             {% for p in dayProjection %}
                 {% if p.room.name == "Salle Debussy" %}
-                    {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                    {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
                 {% endif %}
             {% endfor %}
         {% endif %}

@@ -646,8 +646,9 @@ class SeoManager
     /**
      * @param PressMediaLibrary $page
      * @param $locale
+     * @param $sectionId
      */
-    public function setFDCPressPagePressMediaLibrarySeo(PressMediaLibrary $page, $locale)
+    public function setFDCPressPagePressMediaLibrarySeo(PressMediaLibrary $page, $locale, $sectionId)
     {
         $trans = $page->findTranslationByLocale($locale);
 
@@ -655,7 +656,7 @@ class SeoManager
             // OG PARAMS
             $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
             $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
-            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_press_media_main', array(), UrlGeneratorInterface::ABSOLUTE_URL));
+            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_press_media_main', array('sectionId' => $sectionId), UrlGeneratorInterface::ABSOLUTE_URL));
             $this->sonataSeoPage->addMeta('property', 'og:updated_time', $page->getUpdatedAt()->format(DateTime::ISO8601));
 
             // TWITTER

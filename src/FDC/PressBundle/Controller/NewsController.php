@@ -28,14 +28,6 @@ class NewsController extends Controller
      */
     public function homeAction(Request $request)
     {
-        $headerInfo = array(
-            'title' => 'Accueil',
-            'description' => 'L\'espace presse met également à la disposition du grand public des contenus en libre
-                              accès. Journalistes, pour visualiser les contenus et services qui vous sont exclusivement
-                              réservés, nous vous invitons à saisir le code qui vous a été délivré par le
-                              <a href="#" class="service-presse">service de presse</a>'
-        );
-
         $translator = $this->get('translator');
 
         $em = $this->getDoctrine()->getManager();
@@ -83,19 +75,39 @@ class NewsController extends Controller
             $value = $schedulingYear ."-". $schedulingMonth ."-". $value;
         });
 
+        // If festival in started
         $date = new \DateTime;
+
         if (in_array($date->format('Ymd'), $schedulingDays)) {
 
             $dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
                 ->getProjectionByDate($date->format('Ymd'));
 
         }
+        // Else first festival day
         else {
 
             $dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
                 ->getProjectionByDate($festivalStartsAt->format('Ymd'));
 
         }
+        // Event have to be in 5h max
+        $hourRange = array();
+        $newDate = new \DateTime;
+        $endHour = $newDate->modify('+ 5 hour')->format('H');
+
+        while ($date->format('H') <= $endHour) {
+
+            array_push($hourRange, $date->format('H'));
+            $date->modify('+ 1 hour')->format('H');
+        }
+
+        foreach ( $dayProjection as $key => $projection ) {
+            if (!in_array($projection->getStartsAt()->format('H'), $hourRange)) {
+                unset($dayProjection[$key]);
+            }
+        }
+
 
         //GET PRESS HOMEPAGE
         $homepage = $em->getRepository('BaseCoreBundle:PressHomepage')->findOneById($this->getParameter('admin_press_homepage_id'));
@@ -108,9 +120,9 @@ class NewsController extends Controller
         $this->get('base.manager.seo')->setFDCPressPagePressHomepageSeo($homepage, $locale);
 
         return array(
-            'headerInfo' => $headerInfo,
             'homeNews' => $homeNews,
             'schedulingDays' => $this->createDateRangeArray($festivalStartsAt->format('Y-m-d'),$festivalEndsAt->format('Y-m-d')),
+            'hourRange' => $hourRange,
             'dayProjection' => $dayProjection,
             'pressHome' => $homepage
         );

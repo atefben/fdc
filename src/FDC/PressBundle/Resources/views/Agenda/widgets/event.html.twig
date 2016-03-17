@@ -16,9 +16,9 @@
      data-url="eventPopin.html"
      data-id="{{ p.id }}"
      data-picto='.pen' data-color='#9b9b9b'
-     data-start="{{ p.startAt|date('Y-m-d') }}T{{ p.startAt|date('H:i:s') }}"
-     data-end="{{ p.endAt|date('Y-m-d') }}T{{ p.endAt|date('H:i:s') }}"
-     data-time="{{ p.startAt|date('H') }}"
+     data-start="{{ p.startsAt|date('Y-m-d') }}T{{ p.startsAt|date('H:i:s') }}"
+     data-end="{{ p.endsAt|date('Y-m-d') }}T{{ p.endsAt|date('H:i:s') }}"
+     data-time="{{ p.startsAt|date('H') }}"
      data-duration="{{ eventDuration }}">
     <span class="category">
         <i class="icon icon_evt-conference"></i>

@@ -40,15 +40,12 @@
                         {{ 'header.mainnav.nav.programmation'|trans }}
                     </a>
                     <ul class="tcenter">
-                        {#{% if app.request.attributes.get('_route') == 'fdc_press_agenda_scheduling' %}#}
                         <li>
                             <a href="{{ path('fdc_press_agenda_scheduling') }}"
                                class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_scheduling'%}active{% endif %}">
                                 {{ 'header.mainnav.nav.programmation'|trans }}
                             </a>
                         </li>
-
-
                         <li>
                             <a href="{{ path('fdc_press_agenda_get') }}"
                                class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_get' %}active{% endif %}">
@@ -65,7 +62,8 @@
                 </li>
             {% elseif menu.route == 'fdc_press_media_main' and menu.enabled == true %}
                 <li>
-                    <a href="{{ path('fdc_press_media_main') }}"
+                    {# TODO ! add press_media_section_id to parameters.yml #}
+                    <a href="{{ path('fdc_press_media_main', {'sectionId': '7'} ) }}"
                        class="{% if app.request.attributes.get('_route') == 'fdc_press_media_main' %}active{% endif %}">
                         {{ 'header.mainnav.nav.mediatheque'|trans }}
                     </a>

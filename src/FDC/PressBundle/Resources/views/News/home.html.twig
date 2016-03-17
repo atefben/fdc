@@ -76,20 +76,16 @@
                             </div>
                             <div class="calendar">
                                 <div class="timeCol">
-                                    {% set currentHour = "now"|date('H') %}
                                     <div class="empty"></div>
-                                    <div class="time">{{ currentHour }}</div>
-                                    <div class="time">{{ currentHour + 1}}</div>
-                                    <div class="time">{{ currentHour + 2}}</div>
-                                    <div class="time">{{ currentHour + 3}}</div>
-                                    <div class="time">{{ currentHour + 4}}</div>
-                                    <div class="time">{{ currentHour + 5}}</div>
+                                    {% for hour in hourRange %}
+                                    <div class="time">{{ hour }}H</div>
+                                    {% endfor %}
                                 </div>
                                 <div class="venues">
                                     <a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
                                     <a href="#" class="nav next"><i class="icon icon_fleche-right"></i></a>
                                     <div class="v-wrapper">
-                                        {% include 'FDCEventBundle:Agenda:components/grid.html.twig' %}
+                                        {% include 'FDCPressBundle:Agenda:components/grid.html.twig' %}
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +98,8 @@
                         <div class="chap">
                             <h3 class="title-press">{{ 'press.home.title.mediatheque'|trans }}</h3>
                             <p class="link">
-                                <a href="{{ path('fdc_press_media_main') }}">
+                                {# TODO ! add press_media_section_id to parameters.yml #}
+                                <a href="{{ path('fdc_press_media_main', {'sectionId': '7'} ) }}">
                                     <i class="icon icon_fleche-right"></i>
                                     {{ 'press.home.btn.toutelamediatheque'|trans }}
                                 </a>
@@ -148,7 +145,7 @@
                                         <div class="media photo">
                                             <span>{{ 'press.home.label.photos'|trans }}</span> ({{ photoCount }})
                                         </div>
-                                        <a class="button" href="{{ path('fdc_press_media_main') }}">
+                                        <a class="button" href="{{ path('fdc_press_media_main', {'sectionId': media.film.selectionSection.id} ) }}">
                                             {{ 'press.home.btn.decouvrir'|trans }}
                                         </a>
                                     </div>
@@ -163,7 +160,7 @@
                         <div class="chap">
                             <h3 class="title-press">{{ 'press.home.title.atelecharger'|trans }}</h3>
                             <p class="link">
-                                <a href="{{ path('fdc_press_media_main') }}">
+                                <a href="{{ path('fdc_press_media_download') }}">
                                     <i class="icon icon_fleche-right"></i>
                                     {{ 'press.home.btn.touslestelechargements'|trans }}
                                 </a>
@@ -192,7 +189,7 @@
                     {% endfor %}
                 {% endif %}
             {% elseif section.class == "push1" %}
-                {% if pressHome.pushMainImage %}
+                {% if pressHome.pushMainImage is not null %}
                     {% set trans = pressHome.pushMainImage.findTranslationByLocale(app.request.locale) %}
                     {% if trans is null or trans.file is null %}
                         {% set trans = push.findTranslationByLocale('fr') %}
@@ -213,7 +210,7 @@
                     </div>
                 {% endif %}
             {% elseif section.class == "push2" %}
-                {% if pressHome.pushSecondaryImage %}
+                {% if pressHome.pushSecondaryImage is not null%}
                     {% set trans = pressHome.pushSecondaryImage.findTranslationByLocale(app.request.locale) %}
                     {% if trans is null or trans.file is null %}
                         {% set trans = push.findTranslationByLocale('fr') %}
