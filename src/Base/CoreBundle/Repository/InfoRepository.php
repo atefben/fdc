@@ -460,6 +460,10 @@ class InfoRepository extends EntityRepository
             ->setParameter('locale_fr', 'fr')
             ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED);
 
+        $qb = $qb
+            ->andWhere('n.publishedAt <= :today')
+            ->setParameter('today', date("Y-m-d H:i:s"));
+
         if ($locale != 'fr') {
             $qb = $qb
                 ->leftjoin('na1.translations', 'na5t')

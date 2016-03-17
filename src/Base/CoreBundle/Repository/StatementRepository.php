@@ -120,7 +120,7 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
-    public function getStatementByDate($locale,$festival,$dateTime,$count)
+    public function getStatementByDate($locale, $festival, $dateTime, $count)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -324,7 +324,7 @@ class StatementRepository extends EntityRepository
      */
     public function getLastStatements($festival, $dateTime, $locale, $count)
     {
-        $qb =  $this->createQueryBuilder('n')
+        $qb = $this->createQueryBuilder('n')
             ->join('n.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
@@ -373,7 +373,8 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
-    public function getOlderStatement($locale, $festival, $date) {
+    public function getOlderStatement($locale, $festival, $date)
+    {
 
         $qb = $this
             ->createQueryBuilder('n')
@@ -431,7 +432,8 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
-    public function getNextStatement($locale, $festival, $date) {
+    public function getNextStatement($locale, $festival, $date)
+    {
 
         $qb = $this
             ->createQueryBuilder('n')
@@ -515,6 +517,10 @@ class StatementRepository extends EntityRepository
             )
             ->setParameter('locale_fr', 'fr')
             ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED);
+
+        $qb = $qb
+            ->andWhere('n.publishedAt <= :today')
+            ->setParameter('today', date("Y-m-d H:i:s"));
 
         if ($locale != 'fr') {
             $qb = $qb
