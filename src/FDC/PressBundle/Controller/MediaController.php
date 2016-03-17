@@ -17,10 +17,11 @@ class MediaController extends Controller
     /**
      * @Route("/media/{sectionId}")
      * @Template("FDCPressBundle:Media:main.html.twig")
-     * @param Request $sectionId
+     * @param int $sectionId
      * @return array
      */
-    public function mainAction($sectionId)
+    /* TODO ! add press_media_section_id to parameters.yml  */
+    public function mainAction($sectionId = 7)
     {
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();

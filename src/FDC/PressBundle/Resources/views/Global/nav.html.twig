@@ -62,8 +62,7 @@
                 </li>
             {% elseif menu.route == 'fdc_press_media_main' and menu.enabled == true %}
                 <li>
-                    {# TODO ! add press_media_section_id to parameters.yml #}
-                    <a href="{{ path('fdc_press_media_main', {'sectionId': '7'} ) }}"
+                    <a href="{{ path('fdc_press_media_main') }}"
                        class="{% if app.request.attributes.get('_route') == 'fdc_press_media_main' %}active{% endif %}">
                         {{ 'header.mainnav.nav.mediatheque'|trans }}
                     </a>
