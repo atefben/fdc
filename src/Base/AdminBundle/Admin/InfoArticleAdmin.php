@@ -151,7 +151,7 @@ class InfoArticleAdmin extends Admin
             ->add('theme', 'sonata_type_model_list', array(
                 'btn_delete' => false
             ))
-            ->add('tags', 'sonata_type_model_list', array(
+            ->add('tags', 'sonata_type_collection', array(
                 'label' => 'form.label_article_tags',
                 'help' => 'form.news.helper_tags',
                 'by_reference' => false,
