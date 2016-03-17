@@ -6,6 +6,15 @@ sonata_media:
     db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
     contexts:
         # SOIF
+        film_image:
+            providers:
+               - sonata.media.provider.image
+            formats:
+                tiny:  { width: 76, height: 92, quality: 100 }
+                small: { width: 256 , height: 348 , quality: 1 }
+                300x400: { width: 300 , height: 400 , quality: 1 }
+                420x560: { width: 420 , height: 560 , quality: 1 }
+        # SOIF
         film_director:
             providers:
                - sonata.media.provider.image
@@ -22,6 +31,7 @@ sonata_media:
                 big:      { width: 1000 , quality: 100 }
                 319x434:  { width: 319 , height: 434 , quality: 100 }
                 420x560: { width: 420, height: 560, quality: 100 }
+                300x400: { width: 300 , height: 400 , quality: 1 }
 
         film_main:
             providers:
@@ -138,6 +148,8 @@ sonata_media:
                 650x410: { width: 650 , height: 410 , quality: 100 }
                 # PressGuide
                 363x229: { width: 363 , height: 229 , quality: 100 }
+                #palmares film
+                256x348: { width: 256 , height: 348 , quality: 100 }
 
         media_audio:
             providers:

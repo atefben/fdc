@@ -109,7 +109,7 @@ class FilmController extends FOSRestController
      *  },
      *  output={
      *      "class"="Base\CoreBundle\Entity\FilmFilm",
-     *      "groups"={"film_show", "time"}
+     *      "groups"={"film_show"}
      *  }
      * )
      *
@@ -136,7 +136,7 @@ class FilmController extends FOSRestController
 
         // set context view
         $context = SerializationContext::create();
-        $context->setGroups(array('film_show', 'time'));
+        $context->setGroups(array('film_show'));
         $context->setVersion($version);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
 

@@ -44,7 +44,7 @@ abstract class News implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @Groups({"news_list", "news_show", "home"})
+     * @Groups({"news_list", "news_show", "home", "film_show"})
      */
     private $id;
 
