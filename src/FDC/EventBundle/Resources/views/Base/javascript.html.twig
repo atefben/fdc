@@ -105,40 +105,6 @@
 
         // Surcharge de l'AjaxEvent de press.module.js
         // A adapter
-
-        function menuMedia() {
-            var $info = $('.info, .media, .plus');
-            $info.click(function () {
-                var $active = $('.press-media .nav-container .table .line').find('.active');
-                var $parent = $(this).closest(".container");
-                if (!$parent.hasClass('active')) {
-                    $active.removeClass('active');
-                    $parent.addClass('active');
-                    $('.icon_moins').removeClass('icon_moins').addClass('icon_case-plus');
-                    $parent.find('.icon_case-plus').removeClass('icon_case-plus').addClass('icon_moins');
-                } else {
-                    $active.removeClass('active');
-                    $parent.find('.icon_moins').removeClass('icon_moins').addClass('icon_case-plus');
-                }
-            });
-
-        }
-
-        $(document).on('click','.section-cat', function(event){
-            var sectionCat = $(this).data('cat');
-            $.ajax({
-                type  : "POST",
-                cache : false,
-                url   : GLOBALS.urls.pressMediaSection,
-                data  : {'id': sectionCat},
-                success: function(data) {
-                    $('.nav-container').remove();
-                    $('.nav-mediapress').after(data);
-                    menuMedia();
-                }
-            });
-        });
-
         $(document).on('click','.read-more', function(event){
             event.preventDefault();
             event.stopPropagation();
