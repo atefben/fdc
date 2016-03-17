@@ -1791,17 +1791,29 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
         $now = time();
 
-        $output = array();
+        $days = array();
+        $projections = array();
         foreach ($this->projectionProgrammationFilms as $projection) {
             if ($projection instanceof FilmProjectionProgrammationFilm) {
                 $key = $projection->getProjection()->getStartsAt()->getTimestamp();
-//                if ($key > $now) { //
-                $output[$key] = $projection->getProjection();
-//                }
+//                if ($key > $now) { // to be uncommented
+                    $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
+                    if (!array_key_exists($dayKey, $days)) {
+                        $newTime = $projection->getProjection()->getStartsAt();
+                        $newTime->setTime(3, 0, 0);
+                        $days[$dayKey]['date'] = $newTime->getTimestamp();
+                        $days[$dayKey]['projections'] = array();
+                    }
+                    $days[$dayKey]['projections'][$key] = $projection->getProjection();
+//                } // to be uncommented
             }
         }
-        ksort($output);
-        return $output;
+        foreach ($days as $key => $projection) {
+            ksort($days[$key]['projections']);
+            $days[$key]['projections'] = array_values($days[$key]['projections']);
+            $days[$key]['projections'] = array_values($days[$key]['projections']);
+        }
+        return array_values($days);
     }
 
     /**
