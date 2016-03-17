@@ -61,7 +61,7 @@ abstract class Media implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"web_tv_list", "web_tv_show", "web_tv_list"})
+     * @Groups({"web_tv_list", "web_tv_show", "web_tv_list", "film_show"})
      */
     private $publishedAt;
 
@@ -69,7 +69,7 @@ abstract class Media implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({"web_tv_list", "web_tv_show", "web_tv_list"})
+     * @Groups({"web_tv_list", "web_tv_show", "web_tv_list", "film_show"})
      */
     private $publishEndedAt;
 
