@@ -30,7 +30,7 @@ class PressAccreditProcedureAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('title', 'doctrine_orm_callback', array(
-                'callback' => function ($queryBuilder, $alias, $field, $value) {
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -42,8 +42,9 @@ class PressAccreditProcedureAdmin extends Admin
                     return true;
                 },
                 'field_type' => 'text',
-                'label' => 'filter.press_download.label_section'
-            ));
+                'label'      => 'list.accredit_procedure.label_title'
+            ))
+        ;
         $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
         $datagridMapper = $this->addUpdatedBetweenFilters($datagridMapper);
 
@@ -58,8 +59,8 @@ class PressAccreditProcedureAdmin extends Admin
         $listMapper
             ->add('id', null, array('label' => 'list.common.label_id'))
             ->add('title', null, array(
-                'template' => 'BaseAdminBundle:News:list_title.html.twig',
-                'label' => 'list.accredit_procedure.label_title',
+                'template' => 'BaseAdminBundle:AccreditProcedure:list_title.html.twig',
+                'label'    => 'list.accredit_procedure.label_title',
             ))
             ->add('createdAt', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
@@ -69,13 +70,18 @@ class PressAccreditProcedureAdmin extends Admin
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',
             ))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ));
+            ->add('priorityStatus', 'choice', array(
+                'choices'   => PressAccreditProcedure::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('statusMain', 'choice', array(
+                'choices'   => PressAccreditProcedureTranslation::getMainStatuses(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+            ))
+        ;
     }
 
     protected $translationDomain = 'BaseAdminBundle';
@@ -91,6 +97,13 @@ class PressAccreditProcedureAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array(),
                 'fields' => array(
+                    'status' => array(
+                        'label' => 'form.label_status',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'choice',
+                        'choices' => PressAccreditProcedureTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                    ),
                     'createdAt' => array(
                         'display' => false
                     ),
@@ -114,7 +127,19 @@ class PressAccreditProcedureAdmin extends Admin
                         'config_name' => 'press'
                     ),
                 )
-            ));
+            ))
+            ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => PressAccreditProcedure::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => PressAccreditProcedure::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
+            ))
+        ;
 
     }
 
@@ -126,7 +151,8 @@ class PressAccreditProcedureAdmin extends Admin
         $showMapper
             ->add('id')
             ->add('createdAt')
-            ->add('updatedAt');
+            ->add('updatedAt')
+        ;
     }
 
     public function configure()

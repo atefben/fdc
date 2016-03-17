@@ -76,6 +76,7 @@
                     </h3>
                     <i class="icon icon_case-plus accordion"></i>
                 </div>
+                <div class="contain-article pictos-service">
                 {% for widget in guideContent.meetingWidgets %}
                     {% if class(widget) == "PressGuideWidgetImage" %}
                         {% include 'FDCPressBundle:Guide:widgets/image.html.twig' %}
@@ -85,6 +86,7 @@
                         {% include 'FDCPressBundle:Guide:widgets/column.html.twig' %}
                     {% endif %}
                 {% endfor %}
+                </div>
             </div>
         </section>
 
