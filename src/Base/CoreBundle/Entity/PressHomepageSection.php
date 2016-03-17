@@ -35,6 +35,13 @@ class PressHomepageSection
      *
      * @ORM\Column(type="string", nullable=false)
      */
+    protected $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=false)
+     */
     protected $class;
 
     /**
@@ -57,6 +64,7 @@ class PressHomepageSection
         return $this->getClass();
     }
 
+
     /**
      * Get id
      *
@@ -65,6 +73,29 @@ class PressHomepageSection
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return PressHomepageSection
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**

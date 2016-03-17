@@ -152,8 +152,8 @@ class FDCPageWebTvLiveAdmin extends Admin
                 'by_reference' => false,
                 'required'     => false,
             ), array(
-                    'edit'   => 'inline',
-                    'inline' => 'table',
+                    'edit'     => 'inline',
+                    'inline'   => 'table',
                     'sortable' => 'position',
                 )
             )
@@ -163,8 +163,8 @@ class FDCPageWebTvLiveAdmin extends Admin
                 'by_reference' => false,
                 'required'     => false,
             ), array(
-                    'edit'   => 'inline',
-                    'inline' => 'table',
+                    'edit'     => 'inline',
+                    'inline'   => 'table',
                     'sortable' => 'position',
                 )
             )

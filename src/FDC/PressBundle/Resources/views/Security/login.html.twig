@@ -1,5 +1,4 @@
 {% trans_default_domain 'FDCPressBundle' %}
-
 <div class="locked">
     <div class="vCenter">
         <div class="vCenterKid">
@@ -18,6 +17,9 @@
         <input type="hidden" id="username" name="_username" value="press" required="required" />
 
         <input type="password" id="password" name="_password" required="required" placeholder="{{ 'press.header.placeholder.motdepasse'|trans }}"/>
+
+        <input type="hidden" name="_target_path" value="{{ current_route }}" />
+        <input type="hidden" name="_failure_path" value="{{ current_route }}" />
 
         <input type="submit" id="_submit" name="_submit" value="{{ 'press.header.btn.valider'|trans }}" />
     </form>

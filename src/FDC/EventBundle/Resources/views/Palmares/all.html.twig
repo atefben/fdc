@@ -1,46 +1,30 @@
 {% trans_default_domain 'FDCEventBundle' %}
-{% extends 'FDCEventBundle::layout.html.twig' %}
-{% block body %}
-<div id="main" class="list-article palmares-list loading ">
-    <div class="bandeau-list">
-        <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url({{ section.banner }})">
-            <div class="vCenterKid">
-                <h2 class="title title-list-header ">{{ 'palmares.title.palmares'|trans }}</h2>
-            </div>
-        </div>
-        {% include 'FDCEventBundle:Palmares:components/nav.html.twig' %}
-    </div>
-    <div class="container container-list">
-    <section class="categorie-items">
-        <div class="title-list-cat">
-            <h2 class="title">{{ 'palmares.title.encompetition'|trans }}</h2>
-        </div>
-        <h3 class="sub-cat-title">{{ 'palmares.title.longsmetrages'|trans }}</h3>
-        {% for movie in movies %}
-            {% if movie.type == 0 %}
-                {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
-            {% endif %}
-        {% endfor %}
-    </section>
-    <section class="categorie-items">
-        <h3 class="sub-cat-title">{{ 'palmares.title.courtsmetrages'|trans }}</h3>
-        {% for movie in movies %}
-            {% if movie.type == 1 %}
-                {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
-            {% endif %}
-        {% endfor %}
-    </section>
-    <section class="categorie-items">
-        <div class="title-list-cat">
-            <h2 class="title">{{ 'palmares.title.uncertainregard'|trans }}</h2>
-        </div>
-        {% for movie in movies %}
-            {% if movie.type == 2 %}
-                {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
-            {% endif %}
-        {% endfor %}
-    </section>
-    </div>
-    {% include 'FDCEventBundle:Palmares:components/bandeau.html.twig' %}
+
+
+<div class="title-list-cat">
+    <h2 class="title">
+        {{ subpages['camera_d_or']['page']|trans_fallback('nameEnCompetition') }}
+    </h2>
 </div>
-{% endblock body %}
+{% include 'FDCEventBundle:Palmares:competition.html.twig' with (subpages['competition']|merge({'all': true })) %}
+
+<div class="title-list-cat">
+    <h2 class="title">
+        {{ subpages['certain_regard']['page']|trans_fallback('name') }}
+    </h2>
+</div>
+{% include 'FDCEventBundle:Palmares:simple.html.twig' with (subpages['certain_regard'])%}
+
+<div class="title-list-cat">
+    <h2 class="title">
+        {{ subpages['cinefondation']['page']|trans_fallback('name') }}
+    </h2>
+</div>
+{% include 'FDCEventBundle:Palmares:simple.html.twig' with (subpages['cinefondation'])%}
+
+<div class="title-list-cat">
+    <h2 class="title">
+        {{ subpages['camera_d_or']['page']|trans_fallback('name') }}
+    </h2>
+</div>
+{% include 'FDCEventBundle:Palmares:camerador.html.twig' with (subpages['camera_d_or'])%}

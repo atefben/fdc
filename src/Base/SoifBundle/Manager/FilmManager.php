@@ -111,6 +111,21 @@ class FilmManager extends CoreManager
             )
         );
     }
+
+    public function updateAll($output)
+    {
+        $films = $this->em->getRepository('BaseCoreBundle:FilmFilm')->findAll();
+
+        $count = count($films);
+        $output->writeln('Film count : '. $count);
+
+        foreach ($films as $key => $film) {
+            $this->getById($film->getId());
+            $output->writeln("Film {$key} / {$count}");
+        }
+    }
+
+
     
     /**
      * getById function.

@@ -30,7 +30,6 @@ class MovieController extends Controller
     {
         $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
-        $festival = $this->getFestival()->getId();
         $isAdmin  = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
 
         // GET MOVIE
@@ -53,12 +52,38 @@ class MovieController extends Controller
         $movies = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmFilm')
-            ->getFilmsBySelectionSection($festival, $locale, $movie->getSelectionSection()->getId())
+            ->getFilmsBySelectionSection($movie->getFestival()->getId(), $locale, $movie->getSelectionSection()->getId(), $movie->getId())
         ;
+
+        $moviesAll = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->getFilmsBySelectionSection($movie->getFestival()->getId(), $locale, $movie->getSelectionSection()->getId())
+        ;
+
+        $prev = null;
+        $next = null;
+        foreach ($moviesAll as $key => $tmp) {
+            if ($tmp->getId() == $movie->getId()) {
+                if ($key == 0) {
+                    $prev = $movies[count($movies) - 1];
+                    $next = $movies[1];
+                } elseif ($key == count($movies) - 1) {
+                    $prev = $movies[count($movies) - 2];
+                    $next = $movies[0];
+                } else {
+                    $prev = $movies[$key - 1];
+                    $next = $movies[$key + 1];
+                }
+                break;
+            }
+        }
 
         return array(
             'movies' => $movies,
-            'movie'  => $movie
+            'movie'  => $movie,
+            'prev' => $prev,
+            'next' => $next
         );
     }
 

@@ -44,7 +44,7 @@ abstract class News implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @Groups({"news_list", "news_show", "home"})
+     * @Groups({"news_list", "news_show", "home", "film_show"})
      */
     private $id;
 
@@ -53,7 +53,7 @@ abstract class News implements TranslateMainInterface
       *
       * @ORM\ManyToOne(targetEntity="Theme")
       *
-      * @Groups({"news_list", "news_show", "home"})
+      * @Groups({"news_list", "news_show", "home", "film_show"})
       * @Assert\NotNull()
       */
     private $theme;
@@ -172,7 +172,7 @@ abstract class News implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show", "home"})
+     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show", "home", "film_show"})
      */
     private $publishedAt;
 
@@ -180,7 +180,7 @@ abstract class News implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show", "home"})
+     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show", "home", "film_show"})
      */
     private $publishEndedAt;
 

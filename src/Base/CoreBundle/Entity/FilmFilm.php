@@ -33,7 +33,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     use TranslateMain;
     use Time;
     use Soif;
-    
+
     /**
      * @var string
      *
@@ -52,7 +52,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_list",
      *     "news_show"
      * })
-     * 
+     *
      */
     private $id;
 
@@ -63,7 +63,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
     private $slug;
-    
+
     /**
      * @var boolean
      *
@@ -76,19 +76,20 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
+     *     "film_list",
      *     "film_show",
      *     "news_list",
      *     "news_show"
      * })
-     * 
+     *
      */
     private $directorFirst;
-    
+
     /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
-     * 
+     *
      */
     private $restored;
 
@@ -96,10 +97,10 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"film_show"})
+     * @Groups({"film_list", "film_show"})
      */
     private $publishedAt;
-    
+
     /**
      * @var string
      *
@@ -117,10 +118,10 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_list",
      *     "news_show"
      * })
-     * 
+     *
      */
     private $titleVO;
-    
+
     /**
      * @var string
      *
@@ -138,10 +139,10 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_list",
      *     "news_show"
      * })
-     * 
+     *
      */
     private $titleVOAlphabet;
-    
+
     /**
      * @var string
      *
@@ -159,10 +160,10 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_list",
      *     "news_show"
      * })
-     * 
+     *
      */
     private $productionYear;
-    
+
     /**
      * @var string
      *
@@ -180,34 +181,23 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_list",
      *     "news_show"
      * })
-     * 
+     *
      */
     private $duration;
-    
+
     /**
      * @var text
      *
      * @ORM\Column(type="text", nullable=true)
-     * 
+     *
      */
     private $castingCommentary;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({
-     *     "trailer_list",
-     *     "trailer_show",
-     *     "film_list",
-     *     "film_show",
-     *     "award_list",
-     *     "award_show",
-     *     "projection_list",
-     *     "projection_show"
-     * })
-     * 
      */
     private $website;
 
@@ -244,7 +234,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_list",
      *     "projection_show"
      * })
-     * 
+     *
      */
     private $galaName;
 
@@ -254,7 +244,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="FilmSelection", inversedBy="films", cascade={"persist"})
      *
      * @Groups({"film_list", "film_show"})
-     * 
+     *
      */
     private $selection;
 
@@ -272,23 +262,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="films", cascade={"persist"})
-     * 
+     *
      */
     private $festival;
-    
+
     /**
      * @var FilmFilmPerson
      *
      * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="film", cascade={"all"})
-     *
-     * @Groups({
-     *     "film_list",
-     *     "film_show",
-     *     "projection_list",
-     *     "projection_show",
-     *     "news_list",
-     *     "news_show"
-     * })
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
@@ -305,7 +286,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @ORM\OrderBy({"position"="ASC"})
      */
     private $contacts;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="film", cascade={"all"})
      * @ORM\OrderBy({"position"="ASC"})
@@ -358,25 +339,17 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show",
      *     "news_show"
      * })
-     * 
+     *
      */
     protected $translations;
 
     /**
      * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilm", mappedBy="film", cascade={"all"})
-     *
-     * @Groups({
-     *  "film_list", "film_show",
-     * })
      */
     protected $projectionProgrammationFilms;
 
     /**
      * @ORM\ManyToMany(targetEntity="FilmProjectionProgrammationFilmList", mappedBy="films", cascade={"all"})
-     *
-     * @Groups({
-     *  "film_list", "film_show",
-     * })
      */
     protected $projectionProgrammationFilmsList;
 
@@ -481,6 +454,18 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         return $this->getTitleVO();
     }
 
+    /**
+     * @VirtualProperty()
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
+     * })
+     * @return array|ArrayCollection
+     */
     public function getActors()
     {
         $collection = new ArrayCollection();
@@ -489,7 +474,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                 if ($person->getFunctions()->count() > 0) {
                     foreach ($person->getFunctions() as $personFunction) {
                         if ($personFunction->getFunction() &&
-                            $personFunction->getFunction()->getId() == FilmFunctionInterface::FUNCTION_ACTOR) {
+                            $personFunction->getFunction()->getId() == FilmFunctionInterface::FUNCTION_ACTOR
+                        ) {
                             $collection->add($person);
                             break;
                         }
@@ -510,7 +496,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                 if ($person->getFunctions()->count() > 0) {
                     foreach ($person->getFunctions() as $personFunction) {
                         if ($personFunction->getFunction() &&
-                            $personFunction->getFunction()->getId() == FilmFunctionInterface::FUNCTION_DIRECTOR) {
+                            $personFunction->getFunction()->getId() == FilmFunctionInterface::FUNCTION_DIRECTOR
+                        ) {
                             $collection->add($person);
                             break;
                         }
@@ -524,6 +511,18 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         return $collection;
     }
 
+    /**
+     * @VirtualProperty()
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
+     * })
+     * @return array|ArrayCollection
+     */
     public function getCredits()
     {
         $collection = new ArrayCollection();
@@ -533,7 +532,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                 if ($person->getFunctions()->count() > 0) {
                     foreach ($person->getFunctions() as $personFunction) {
                         if ($personFunction->getFunction() &&
-                            $personFunction->getFunction()->getId() != FilmFunctionInterface::FUNCTION_ACTOR) {
+                            $personFunction->getFunction()->getId() != FilmFunctionInterface::FUNCTION_ACTOR
+                        ) {
                             $clone = clone $person;
                             $functions = new ArrayCollection();
                             foreach ($person->getFunctions() as $function) {
@@ -558,7 +558,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         if (!is_array($array)) {
             $array = $array->toArray();
         }
-        usort($array, function($a, $b) use ($order) {
+        usort($array, function ($a, $b) use ($order) {
             if (null === $a->getPosition())
                 return 1;
             if (null === $b->getPosition())
@@ -617,7 +617,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     }
 
 
-
     /**
      * Set id
      *
@@ -634,7 +633,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get id
      *
-     * @return string 
+     * @return string
      */
     public function getId()
     {
@@ -680,7 +679,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get titleVO
      *
-     * @return string 
+     * @return string
      */
     public function getTitleVO()
     {
@@ -703,7 +702,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get titleVF
      *
-     * @return string 
+     * @return string
      */
     public function getTitleVF()
     {
@@ -726,7 +725,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get titleVA
      *
-     * @return string 
+     * @return string
      */
     public function getTitleVA()
     {
@@ -749,7 +748,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get courtlong
      *
-     * @return string 
+     * @return string
      */
     public function getCourtlong()
     {
@@ -772,7 +771,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get duration
      *
-     * @return string 
+     * @return string
      */
     public function getDuration()
     {
@@ -795,7 +794,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get filmFirst
      *
-     * @return string 
+     * @return string
      */
     public function getFilmFirst()
     {
@@ -818,7 +817,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get worldFirst
      *
-     * @return string 
+     * @return string
      */
     public function getWorldFirst()
     {
@@ -841,7 +840,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get productionYear
      *
-     * @return string 
+     * @return string
      */
     public function getProductionYear()
     {
@@ -864,7 +863,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get genre
      *
-     * @return string 
+     * @return string
      */
     public function getGenre()
     {
@@ -887,7 +886,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get section
      *
-     * @return string 
+     * @return string
      */
     public function getSection()
     {
@@ -910,7 +909,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get synopsisVf
      *
-     * @return string 
+     * @return string
      */
     public function getSynopsisVf()
     {
@@ -933,7 +932,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get synopsisVa
      *
-     * @return string 
+     * @return string
      */
     public function getSynopsisVa()
     {
@@ -956,7 +955,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get dialogueVf
      *
-     * @return string 
+     * @return string
      */
     public function getDialogueVf()
     {
@@ -979,7 +978,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get dialogueVa
      *
-     * @return string 
+     * @return string
      */
     public function getDialogueVa()
     {
@@ -1002,7 +1001,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get previousEvent
      *
-     * @return string 
+     * @return string
      */
     public function getPreviousEvent()
     {
@@ -1025,7 +1024,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get exploitationCountries
      *
-     * @return string 
+     * @return string
      */
     public function getExploitationCountries()
     {
@@ -1048,7 +1047,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get internetDisplayed
      *
-     * @return string 
+     * @return string
      */
     public function getInternetDisplayed()
     {
@@ -1071,7 +1070,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get internet
      *
-     * @return string 
+     * @return string
      */
     public function getInternet()
     {
@@ -1094,7 +1093,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get restaurantOwner
      *
-     * @return string 
+     * @return string
      */
     public function getRestaurantOwner()
     {
@@ -1117,7 +1116,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get restorationType
      *
-     * @return string 
+     * @return string
      */
     public function getRestorationType()
     {
@@ -1140,7 +1139,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get noDialog
      *
-     * @return string 
+     * @return string
      */
     public function getNoDialog()
     {
@@ -1163,7 +1162,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get color
      *
-     * @return string 
+     * @return string
      */
     public function getColor()
     {
@@ -1209,7 +1208,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get website
      *
-     * @return string 
+     * @return string
      */
     public function getWebsite()
     {
@@ -1232,7 +1231,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get gala
      *
-     * @return string 
+     * @return string
      */
     public function getGala()
     {
@@ -1255,7 +1254,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get subSelectionVF
      *
-     * @return string 
+     * @return string
      */
     public function getSubSelectionVF()
     {
@@ -1278,7 +1277,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get subSelectionVA
      *
-     * @return string 
+     * @return string
      */
     public function getSubSelectionVA()
     {
@@ -1296,7 +1295,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         if ($this->minorProductions->contains($minorProductions)) {
             return;
         }
-        
+
         $this->minorProductions[] = $minorProductions;
 
         return $this;
@@ -1312,14 +1311,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         if (!$this->minorProductions->contains($minorProductions)) {
             return;
         }
-        
+
         $this->minorProductions->removeElement($minorProductions);
     }
 
     /**
      * Get minorProductions
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMinorProductions()
     {
@@ -1337,7 +1336,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         if ($this->countries->contains($countries)) {
             return;
         }
-        
+
         $countries->setFilm($this);
         $this->countries[] = $countries;
 
@@ -1361,7 +1360,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get countries
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCountries()
     {
@@ -1379,7 +1378,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         if ($this->languages->contains($languages)) {
             return;
         }
-        
+
         $this->languages[] = $languages;
 
         return $this;
@@ -1395,14 +1394,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         if (!$this->languages->contains($languages)) {
             return;
         }
-        
+
         $this->languages->removeElement($languages);
     }
 
     /**
      * Get languages
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getLanguages()
     {
@@ -1421,7 +1420,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
             return;
         }
         $medias->setFilm($this);
-        
+
         $this->medias[] = $medias;
 
         return $this;
@@ -1437,20 +1436,20 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         if (!$this->medias->contains($medias)) {
             return;
         }
-        
+
         $this->medias->removeElement($medias);
     }
 
     /**
      * Get medias
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMedias()
     {
         return $this->medias;
     }
-    
+
     public function hasMedia($id)
     {
         foreach ($this->medias as $media) {
@@ -1458,7 +1457,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                 return $media;
             }
         }
-        
+
         return null;
     }
 
@@ -1478,7 +1477,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get directorFirst
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDirectorFirst()
     {
@@ -1501,7 +1500,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get restored
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getRestored()
     {
@@ -1524,7 +1523,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get titleVOAlphabet
      *
-     * @return string 
+     * @return string
      */
     public function getTitleVOAlphabet()
     {
@@ -1547,7 +1546,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get commentaryCasting
      *
-     * @return string 
+     * @return string
      */
     public function getCastingCommentary()
     {
@@ -1570,7 +1569,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get galaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getGalaId()
     {
@@ -1593,7 +1592,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get galaName
      *
-     * @return string 
+     * @return string
      */
     public function getGalaName()
     {
@@ -1634,7 +1633,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         if ($this->persons->contains($persons)) {
             return;
         }
-        
+
         $persons->setFilm($this);
         $this->persons[] = $persons;
 
@@ -1651,14 +1650,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         if (!$this->persons->contains($persons)) {
             return;
         }
-        
+
         $this->persons->removeElement($persons);
     }
 
     /**
      * Get persons
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPersons()
     {
@@ -1734,7 +1733,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get awards
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAwards()
     {
@@ -1767,11 +1766,86 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get projectionProgrammationFilms
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     *
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProjectionProgrammationFilms()
     {
         return $this->projectionProgrammationFilms;
+    }
+
+    /**
+     * Get projectionProgrammationFilms
+     *
+     * @VirtualProperty()
+     * @Groups({
+     *     "film_list",
+     *     "film_show"
+     * })
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     * @todo: uncomment condition
+     */
+    public function getProjections()
+    {
+
+        $now = time();
+
+        $output = array();
+        foreach ($this->projectionProgrammationFilms as $projection) {
+            if ($projection instanceof FilmProjectionProgrammationFilm) {
+                $key = $projection->getProjection()->getStartsAt()->getTimestamp();
+//                if ($key > $now) { //
+                $output[$key] = $projection->getProjection();
+//                }
+            }
+        }
+        ksort($output);
+        return $output;
+    }
+
+    /**
+     * Get projectionProgrammationFilms
+     *
+     * @VirtualProperty()
+     * @Groups({
+     *     "film_show"
+     * })
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIsOpenningFilm()
+    {
+        foreach ($this->projectionProgrammationFilms as $projection) {
+            if ($projection instanceof FilmProjectionProgrammationFilm) {
+                if ($projection->getType()->getId() == 3) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Get projectionProgrammationFilms
+     *
+     * @VirtualProperty()
+     * @Groups({
+     *     "film_show"
+     * })
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIsClosingFilm()
+    {
+        foreach ($this->projectionProgrammationFilms as $projection) {
+            if ($projection instanceof FilmProjectionProgrammationFilm) {
+                if ($projection->getType()->getId() == 4) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -1800,13 +1874,12 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get projectionProgrammationFilmsList
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProjectionProgrammationFilmsList()
     {
         return $this->projectionProgrammationFilmsList;
     }
-
 
 
     /**
@@ -1825,7 +1898,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get publishedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishedAt()
     {
@@ -1848,7 +1921,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get selectionSection
      *
-     * @return \Base\CoreBundle\Entity\FilmSelectionSection 
+     * @return \Base\CoreBundle\Entity\FilmSelectionSection
      */
     public function getSelectionSection()
     {
@@ -1881,7 +1954,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get associatedNews
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAssociatedNews()
     {
@@ -1896,6 +1969,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function addAssociatedMediaVideo(\Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedMediaVideos)
     {
+        $associatedMediaVideos->setAssociation($this);
         $this->associatedMediaVideos[] = $associatedMediaVideos;
 
         return $this;
@@ -1914,7 +1988,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get associatedMediaVideos
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAssociatedMediaVideos()
     {
@@ -1929,6 +2003,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function addAssociatedMediaAudio(\Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated $associatedMediaAudios)
     {
+        $associatedMediaAudios->setAssociation($this);
         $this->associatedMediaAudios[] = $associatedMediaAudios;
 
         return $this;
@@ -1947,7 +2022,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get associatedMediaAudios
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAssociatedMediaAudios()
     {
@@ -1962,6 +2037,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function addAssociatedStatement(\Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedStatement)
     {
+        $associatedStatement->setAssociation($this);
         $this->associatedStatement[] = $associatedStatement;
 
         return $this;
@@ -1980,7 +2056,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get associatedStatement
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAssociatedStatement()
     {
@@ -1995,6 +2071,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function addAssociatedInfo(\Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedInfo)
     {
+        $associatedInfo->setAssociation($this);
         $this->associatedInfo[] = $associatedInfo;
 
         return $this;
@@ -2013,7 +2090,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get associatedInfo
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAssociatedInfo()
     {
@@ -2028,6 +2105,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function addAssociatedNews(\Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews)
     {
+        $associatedNews->setAssociation($this);
         $this->associatedNews[] = $associatedNews;
 
         return $this;
@@ -2059,7 +2137,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get videoMain
      *
-     * @return \Base\CoreBundle\Entity\MediaVideo 
+     * @return \Base\CoreBundle\Entity\MediaVideo
      */
     public function getVideoMain()
     {
@@ -2082,7 +2160,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get imageMain
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getImageMain()
     {
@@ -2105,7 +2183,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get imageCover
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getImageCover()
     {
@@ -2120,6 +2198,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function addTag(\Base\CoreBundle\Entity\FilmFilmTag $tags)
     {
+        $tags->setFilm($this);
         $this->tags[] = $tags;
 
         return $this;
@@ -2138,7 +2217,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {

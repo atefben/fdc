@@ -37,7 +37,7 @@ class PressDownloadSectionAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('title', 'doctrine_orm_callback', array(
-                'callback' => function ($queryBuilder, $alias, $field, $value) {
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -49,8 +49,9 @@ class PressDownloadSectionAdmin extends Admin
                     return true;
                 },
                 'field_type' => 'text',
-                'label' => 'filter.press_download.label_section'
-            ));
+                'label'      => 'filter.press_download.label_section'
+            ))
+        ;
         $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
         $datagridMapper = $this->addUpdatedBetweenFilters($datagridMapper);
 
@@ -66,7 +67,7 @@ class PressDownloadSectionAdmin extends Admin
             ->add('id', null, array('label' => 'list.common.label_id'))
             ->add('title', null, array(
                 'template' => 'BaseAdminBundle:News:list_title.html.twig',
-                'label' => 'list.news_common.label_title',
+                'label'    => 'list.news_common.label_title',
             ))
             ->add('theme', null, array())
             ->add('createdAt', null, array(
@@ -77,13 +78,10 @@ class PressDownloadSectionAdmin extends Admin
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',
             ))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ));
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
+            ))
+        ;
     }
 
     /**
@@ -108,7 +106,25 @@ class PressDownloadSectionAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.news.helper_title'
                     ),
+                    'status' => array(
+                        'label' => 'form.label_status',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'choice',
+                        'choices' => PressDownloadSectionTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle',
+                    ),
                 )
+            ))
+            ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => PressDownloadSection::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices' => PressDownloadSection::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('widgets', 'infinite_form_polycollection', array(
                 'label' => false,
@@ -124,7 +140,8 @@ class PressDownloadSectionAdmin extends Admin
                 'prototype' => true,
                 'by_reference' => false,
             ))
-            ->end();
+            ->end()
+        ;
 
     }
 
@@ -136,6 +153,7 @@ class PressDownloadSectionAdmin extends Admin
         $showMapper
             ->add('id')
             ->add('createdAt')
-            ->add('updatedAt');
+            ->add('updatedAt')
+        ;
     }
 }

@@ -1,0 +1,110 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+{{ form_errors(form) }}
+<div class="a2lix_translations tabbable">
+    {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
+    {% include 'BaseAdminBundle:Block:languages.tabs.html.twig' %}
+
+    <div class="a2lix_translationsFields tab-content">
+        {% for translationsFields in form %}
+            {% set locale = translationsFields.vars.name %}
+
+            <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'form.fdc_page_award.content_page'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {% if form.vars.default_locale == locale %}
+                                        {{ form_row(form.parent.children.image) }}
+                                    {% endif %}
+                                    {{ form_row(translationsFields.name) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if form.parent.vars.data.id  in [1, 4] %}
+                        <div class="col-md-12">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'form.fdc_page_award.selections'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {% if form.parent.vars.data.id == 4 %}
+                                            {{ form_row(translationsFields.nameEnCompetition) }}
+                                            {{ form_row(translationsFields.header) }}
+                                        {% endif %}
+                                        {{ form_row(translationsFields.name) }}
+                                        {{ form_row(form.parent.children.selectionLongsMetrages) }}
+                                        {% if form.parent.vars.data.id == 1 %}
+                                        {{ form_row(translationsFields.nameLongsMetrages) }}
+                                        {% endif %}
+                                        {{ form_row(form.parent.children.selectionCourtsMetrages) }}
+                                        {% if form.parent.vars.data.id == 1 %}
+                                        {{ form_row(translationsFields.nameCourtsMetrages) }}
+                                        {% endif %}
+                                        {% if form.parent.vars.data.id == 4 %}
+                                            {{ form_row(form.parent.children.otherSelectionSectionsAssociated) }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <div class="clearfix">
+                                    <h4 class="box-title">
+                                        {{ 'group.seo'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="base-admin-padding-helper help-block sonata-ba-field-widget-help">
+                                    {{ 'group.helper_seo'|trans|nl2br }}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                {{ form_row(translationsFields.seoTitle) }}
+                                {{ form_row(translationsFields.seoDescription) }}
+                                {% if form.vars.default_locale == locale %}
+                                    {{ form_row(form.parent.children.seoFile) }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        {% if form.vars.default_locale == locale %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <div class="form-group fdc-input-border">
+                                        {{ form_widget(form.parent.children.translate) }}
+                                        {{ form_label(form.parent.children.translate) }}
+                                        {{ form_widget(form.parent.children.translateOptions) }}
+                                        {{ form_row(form.parent.children.priorityStatus) }}
+                                    </div>
+                                    <div class="status-hidden">
+                                        {{ form_row(translationsFields.status) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.status) }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

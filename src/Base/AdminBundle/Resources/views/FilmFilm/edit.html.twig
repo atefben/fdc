@@ -23,9 +23,9 @@
 
     <div>
         {% if poster %}
-            {% media poster, 'film_poster_small' %}
+            {% media poster, 'small' %}
         {% elseif main %}
-            {% media main, 'film_main_small' %}
+            {% media main, 'small' %}
         {% else %}
             Aucune image renseignée
         {% endif %}

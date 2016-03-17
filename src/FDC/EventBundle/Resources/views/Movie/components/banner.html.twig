@@ -79,9 +79,10 @@
         <div class="title-original">({{ movie.titleVO }})</div>
         <p>
             {{ 'movie.label.realisepar'|trans }} :
-            {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+            {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+            {% for director in directors %}
                 <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
-                {% if loop.index != director|length %}
+                {% if loop.index != directors|length %}
                     ,
                 {% endif %}
             {% endfor %}
@@ -102,8 +103,12 @@
         </p>
     </div>
     <div class="palmares">
-        <i class="icon icon_palme"></i>
-        <p>Prix Un Certain Regard - Fondation Groupama Gan pour le Cinéma , 2010</p>
+        {% for movieAward in movie.awards %}
+            {% if movieAward.award and movieAward.award.prize %}
+                <i class="icon icon_palme"></i>
+                <p>{{ movieAward.award.prize|trans_fallback('title') }}, {{  movieAward.award.festival.year }}</p>
+            {% endif %}
+        {% endfor %}
     </div>
     <div class="info-film">
         <div  class="synopsis">

@@ -15,11 +15,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class MediaController extends Controller
 {
     /**
-     * @Route("/media")
+     * @Route("/media/{sectionId}")
      * @Template("FDCPressBundle:Media:main.html.twig")
+     * @param int $sectionId
      * @return array
      */
-    public function mainAction()
+    /* TODO ! add press_media_section_id to parameters.yml  */
+    public function mainAction($sectionId = 7)
     {
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
@@ -35,8 +37,7 @@ class MediaController extends Controller
         $i = 0;
 
         $filmSection = array();
-        $section = array();
-        $mainSectionId = 0;
+        $sections = array();
 
         $i = 0;
 
@@ -55,25 +56,25 @@ class MediaController extends Controller
                 }
             }
 
-            if ($empty == false && $film->getSelectionSection() !== null && !in_array($film->getSelectionSection()->getId(), $section)) {
+            if ($empty == false && $film->getSelectionSection() !== null && !in_array($film->getSelectionSection()->getId(), $sections)) {
 
                 $filmSection[$i]['id'] = $film->getSelectionSection()->getId();
                 $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
 
-                $section[] = $film->getSelectionSection()->getId();
+                $sections[] = $film->getSelectionSection()->getId();
                 $i++;
             }
 
 
 
         }
-        $mainSectionId = $filmSection[0]['id'];
 
         $films = $em->getRepository('BaseCoreBundle:FilmFilm')
             ->findBy(array(
                 'festival' => $settings->getFestival()->getId(),
-                'selectionSection' => $mainSectionId,
+                'selectionSection' => $sectionId,
             ));
+
         $i=0;
         foreach ($films as $film) {
             $empty = true;
@@ -99,7 +100,7 @@ class MediaController extends Controller
         }
 
         // SEO
-        $this->get('base.manager.seo')->setFDCPressPagePressMediaLibrarySeo($pressMediaLibrary, $locale);
+        $this->get('base.manager.seo')->setFDCPressPagePressMediaLibrarySeo($pressMediaLibrary, $locale, $sectionId);
 
         return array(
             'filmSection' => $filmSection,

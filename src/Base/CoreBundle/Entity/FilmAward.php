@@ -65,7 +65,7 @@ class FilmAward
      * @ORM\Column(type="boolean", nullable=true)
      *
      * @Groups({
-     *  "award_list", "award_show",
+     *  "award_list", "award_show"
      * })
      */
     private $personMutual;

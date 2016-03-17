@@ -137,7 +137,7 @@ class FilmFilmRepository extends EntityRepository
      * @param $selectionSection
      * @return array
      */
-    public function getFilmsBySelectionSection($festival, $locale, $selectionSection)
+    public function getFilmsBySelectionSection($festival, $locale, $selectionSection, $idBanned = null)
     {
         $qb = $this->createQueryBuilder('f');
 
@@ -150,6 +150,12 @@ class FilmFilmRepository extends EntityRepository
             ->setParameter('selectionSection', $selectionSection)
         ;
 
+        if ($idBanned !== null) {
+            $qb->andWhere('f.id != :idBanned')
+                ->setParameter('idBanned', $idBanned)
+            ;
+        }
+
         $this->addMasterQueries($qb, 'f', $festival, false);
         $this->addTranslationQueries($qb, 't', $locale);
 
@@ -157,6 +163,66 @@ class FilmFilmRepository extends EntityRepository
         $qb->orderBy('f.titleVO', 'asc');
 
         return $qb->getQuery()->getResult();
-
     }
+
+    /**
+     * @param int $festival
+     * @param string $category
+     * @return array
+     */
+    public function getFilmsByCategoryWithAward($festival, $category)
+    {
+        $qb = $this
+            ->createQueryBuilder('f')
+            ->select('f')
+            ->join('f.translations', 't')
+            ->join('f.selectionSection', 'ss')
+            ->join('f.medias', 'm')
+            ->join('f.awards', 'aa')
+            ->join('aa.award', 'a')
+            ->join('a.prize', 'p')
+            ->join('p.translations', 'pt')
+            ->andWhere('pt.category = :category')
+            ->setParameter('category', $category)
+            ->addOrderBy('ss.position', 'asc')
+            ->addOrderBy('p.position', 'asc')
+        ;
+
+        $this->addMasterQueries($qb, 'f', $festival, false);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @param integer $festival
+     * @param array $exclude
+     * @return array
+     */
+    public function getCamerDOrFilms($festival, array $selectionsSections, array $exclude)
+    {
+        $qb = $this
+            ->createQueryBuilder('f')
+            ->select('f')
+            ->join('f.translations', 't')
+            ->join('f.selectionSection', 'ss')
+            ->join('f.medias', 'm')
+            ->join('f.awards', 'aa')
+            ->join('aa.award', 'a')
+            ->join('a.prize', 'p')
+            ->join('p.translations', 'pt')
+            ->andWhere('f.directorFirst = :true')
+            ->setParameter('true', true)
+            ->andWhere('f.selectionSection IN (:selectionsSections)')
+            ->setParameter('selectionsSections', $selectionsSections)
+            ->andWhere('f.id NOT IN (:exclude)')
+            ->setParameter('exclude', $exclude)
+            ->addOrderBy('ss.position', 'asc')
+            ->addOrderBy('p.position', 'asc')
+        ;
+
+        $this->addMasterQueries($qb, 'f', $festival, false);
+
+        return $qb->getQuery()->getResult();
+    }
+
 }
