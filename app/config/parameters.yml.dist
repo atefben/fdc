@@ -89,7 +89,6 @@ parameters:
         - admin_base_core_infoimage_list
         - admin_base_core_infoaudio_list
         - admin_base_core_infovideo_list
-        - admin_base_core_presscinemaroom_list
     admin_routes_translation_lock:
         - admin_base_core_webtv_edit
         - admin_base_core_tag_edit
