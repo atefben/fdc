@@ -761,7 +761,19 @@ form:
     fdc_page_jury:
         label_jury_type: Type de jury
         label_override_name: Nom apparaissant dans l'onglet
-
+    film_person:
+        general: Informations générales
+        label_portrait_image: Image portrait
+        helper_portrait_image: Dimensions attendues :  584x794 - ratio portrait. Format Attendu.
+        label_landscape_image: Image paysage
+        helper_landscape_image: Dimensions attendues : 1946x1226 - ratio portrait. Format Attendu.
+        label_displayed_image: Image affichée sur la fiche personne
+        help_displayed_image: Au choix, l'image portrait ou l'image paysage.
+        label_chose_portrait_image: Image portrait
+        label_chose_landscape_image: Image paysage
+        president_jury: Président du jury
+        label_president_jury_image: Image portrait
+        help_president_jury_image: Dimensions attendues : 1600x1510 - ratio paysage. Format Attendu. Affichée uniquement sur la page Les jurys.
 
 nav:
     site_modal: Ouvrir la sélection des sites
