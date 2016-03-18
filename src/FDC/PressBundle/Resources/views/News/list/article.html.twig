@@ -12,7 +12,7 @@
 {% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
     {% set articleFormat = "image" %}
 {% endif %}
-<div class="item all {{ articleType }} {{ article.theme|trans_fallback('slug') }} d{{ article.publishedAt|date('Y') }} article">
+<div class="item all {{ articleType }} theme-{{ article.theme.id }} d{{ article.publishedAt|date('Y') }} article">
     <article class="article">
         <div class="img">
             <span class="picto">
