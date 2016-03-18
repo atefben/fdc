@@ -105,6 +105,7 @@ class PressDownloadSectionWidgetFileType extends PressDownloadSectionWidgetType
                         'format' => 'yyyy-MM-dd H:m',
                         'translation_domain' => 'BaseAdminBundle',
                         'label' => 'form.label_updated_date',
+                        'required' => false
                     )
 
                 )
