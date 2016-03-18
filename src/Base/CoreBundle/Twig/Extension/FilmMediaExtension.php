@@ -32,7 +32,7 @@ class FilmMediaExtension extends Twig_Extension
      * @param string $localeFallback
      * @param RequestStack $requestStack
      */
-    public function __construct($localeFallback, RequestStack $requestStack)
+    public function __construct($localeFallback, $requestStack)
     {
         $this->localeFallback = $localeFallback;
         $this->requestStack = $requestStack;
