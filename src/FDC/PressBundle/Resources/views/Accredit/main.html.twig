@@ -55,12 +55,12 @@
                                 {{ 'press.accrediter.btn.imprimer'|trans }}
                             </a>
                             {% if app.request.locale == "fr" and section.procedure.procedureFile is not null %}
-                                <a href="{% path section.procedure.procedureFile, 'reference' %}" class="button save" download>
+                                <a href="{% path section.procedure.procedureFile, 'reference' %}" class="button save" target="_blank" download>
                                     <i class="icon icon_pdf"></i>
                                     {{ 'press.accrediter.btn.enregistrer'|trans }}
                                 </a>
                             {% elseif section.procedure.procedureSecondFile is not null  %}
-                                <a href="{% path section.procedure.procedureSecondFile, 'reference' %}" class="button save" download>
+                                <a href="{% path section.procedure.procedureSecondFile, 'reference' %}" class="button save" target="_blank" download>
                                     <i class="icon icon_pdf"></i>
                                     {{ 'press.accrediter.btn.enregistrer'|trans }}
                                 </a>
