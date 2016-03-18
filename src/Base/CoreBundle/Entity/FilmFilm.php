@@ -488,6 +488,18 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         return $collection;
     }
 
+    /**
+     * @VirtualProperty()
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show"
+     * })
+     * @return array|ArrayCollection
+     */
     public function getDirectors()
     {
         $collection = new ArrayCollection();
@@ -521,6 +533,51 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_list",
      *     "news_show"
      * })
+     * @return array|ArrayCollection
+     */
+    public function getOtherCredits()
+    {
+        $collection = new ArrayCollection();
+        if ($this->getPersons()->count() > 0) {
+            foreach ($this->getPersons() as $person) {
+                $hasCredit = false;
+                if ($person->getFunctions()->count() > 0) {
+                    foreach ($person->getFunctions() as $personFunction) {
+                        if ($personFunction->getFunction()) {
+                            $exclude = array(
+                                FilmFunctionInterface::FUNCTION_DIRECTOR,
+                                FilmFunctionInterface::FUNCTION_ACTOR,
+                            );
+                            $personFunctionFunctionId = $personFunction->getFunction()->getId();
+
+                            $clone = clone $person;
+                            $functions = new ArrayCollection();
+                            foreach ($person->getFunctions() as $function) {
+                                $functions->add($function);
+                            }
+                            $clone->setFunctions($functions);
+                            if (!in_array($personFunctionFunctionId, $exclude)) {
+                                if ($collection->contains($clone)) {
+                                    $collection->removeElement($clone);
+                                }
+                                break;
+                            }
+                            else {
+                                $collection->add($clone);
+                            }
+                        }
+                    }
+                }
+            }
+
+            $collection = $this->removeMultipleFunctions($collection);
+            $collection = $this->orderByNullLast($collection, 'ASC');
+        }
+
+        return $collection;
+    }
+
+    /**
      * @return array|ArrayCollection
      */
     public function getCredits()
@@ -1797,14 +1854,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
             if ($projection instanceof FilmProjectionProgrammationFilm) {
                 $key = $projection->getProjection()->getStartsAt()->getTimestamp();
 //                if ($key > $now) { // to be uncommented
-                    $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
-                    if (!array_key_exists($dayKey, $days)) {
-                        $newTime = $projection->getProjection()->getStartsAt();
-                        $newTime->setTime(3, 0, 0);
-                        $days[$dayKey]['date'] = $newTime->getTimestamp();
-                        $days[$dayKey]['projections'] = array();
-                    }
-                    $days[$dayKey]['projections'][$key] = $projection->getProjection();
+                $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
+                if (!array_key_exists($dayKey, $days)) {
+                    $newTime = $projection->getProjection()->getStartsAt();
+                    $newTime->setTime(3, 0, 0);
+                    $days[$dayKey]['date'] = $newTime->getTimestamp();
+                    $days[$dayKey]['projections'] = array();
+                }
+                $days[$dayKey]['projections'][$key] = $projection->getProjection();
 //                } // to be uncommented
             }
         }
