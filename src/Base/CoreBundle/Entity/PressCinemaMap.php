@@ -47,6 +47,13 @@ class PressCinemaMap implements TranslateMainInterface
     protected $defaultRoomImage;
 
     /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple", cascade={"persist"})
+     */
+    protected $defaultZoneImage;
+
+    /**
      * ArrayCollection
      */
     protected $translations;
@@ -133,5 +140,28 @@ class PressCinemaMap implements TranslateMainInterface
     public function getDefaultRoomImage()
     {
         return $this->defaultRoomImage;
+    }
+
+    /**
+     * Set defaultZoneImage
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $defaultZoneImage
+     * @return PressCinemaMap
+     */
+    public function setDefaultZoneImage(\Base\CoreBundle\Entity\MediaImageSimple $defaultZoneImage = null)
+    {
+        $this->defaultZoneImage = $defaultZoneImage;
+
+        return $this;
+    }
+
+    /**
+     * Get defaultZoneImage
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getDefaultZoneImage()
+    {
+        return $this->defaultZoneImage;
     }
 }
