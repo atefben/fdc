@@ -3,7 +3,7 @@
 <div id="popin-download-press" class='popin'>
     <div class="container-popin">
         <div class="contain-info-item">
-            {% thumbnail film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first, 'tiny' %}
+            <img src="{% path film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'tiny' %}" alt="">
             <div class="contain-text vCenter">
                 <div class="vCenterKid">
                     <h3> {{ film|trans_fallback('title') }} </h3>
