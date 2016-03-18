@@ -132,6 +132,10 @@ class PressCinemaMapAdmin extends Admin
                 'label' => 'form.label_map_default_img',
                 'translation_domain' => 'BaseAdminBundle'
             ))
+            ->add('defaultZoneImage', 'sonata_type_model_list', array(
+                'label' => 'form.label_zone_default_img',
+                'translation_domain' => 'BaseAdminBundle'
+            ))
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
