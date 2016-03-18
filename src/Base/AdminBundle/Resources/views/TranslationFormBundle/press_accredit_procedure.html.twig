@@ -21,6 +21,8 @@
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(translationsFields.title) }}
                                     {{ form_row(translationsFields.procedureContent) }}
+                                    {{ form_row(form.parent.children.procedureFile) }}
+                                    {{ form_row(form.parent.children.procedureSecondFile) }}
                                 </div>
                             </div>
                         </div>
@@ -40,6 +42,9 @@
                                             {{ form_label(form.parent.children.translate) }}
                                             {{ form_widget(form.parent.children.translateOptions) }}
                                             {{ form_row(form.parent.children.priorityStatus) }}
+                                        </div>
+                                        <div class="status-hidden">
+                                            {{ form_row(translationsFields.status) }}
                                         </div>
                                     </div>
                                 </div>

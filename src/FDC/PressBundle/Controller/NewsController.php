@@ -398,7 +398,7 @@ class NewsController extends Controller
     /**
      *
      * @Route("/press-actu-ajax", options={"expose"=true})
-     * @Template("FDCPressBundle:News:list/article-list.html.twig")
+     * @Template("FDCPressBundle:News:list/article-list-ajax.html.twig")
      * @return array
      */
     public function listAjaxAction(Request $request)

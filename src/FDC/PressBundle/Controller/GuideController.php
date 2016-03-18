@@ -22,6 +22,7 @@ class GuideController extends Controller
     public function mainAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -35,13 +36,10 @@ class GuideController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $headerInfo = array(
-            'title' => 'Guide pratique',
-            'description' => ''
-        );
+        // SEO
+        $this->get('base.manager.seo')->setFDCPressPagePressGuideSeo($guide, $locale);
 
         return array(
-            'headerInfo' => $headerInfo,
             'guideContent' => $guide,
         );
 
