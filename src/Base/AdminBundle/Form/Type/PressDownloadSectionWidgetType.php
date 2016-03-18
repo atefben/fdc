@@ -66,30 +66,6 @@ class PressDownloadSectionWidgetType extends BaseType
     }
 
     /**
-     * @param mixed $object
-     */
-    public function prePersist($object)
-    {
-
-        foreach ($object->getWidgets() as $widget) {
-            $object->addWidget($widget);
-        }
-
-    }
-
-    /**
-     * @param mixed $object
-     */
-    public function preUpdate($object)
-    {
-
-        foreach ($object->getWidgets() as $widget) {
-            $object->addWidget($widget);
-        }
-
-    }
-
-    /**
      * getName function.
      * 
      * @access public
