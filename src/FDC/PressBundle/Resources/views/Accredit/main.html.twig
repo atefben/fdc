@@ -26,7 +26,7 @@
                 {{ accredit|trans_fallback('commonContent')|raw }}
             </div>
         </div>
-
+        {% if accredit.procedure|length > 0 %}
         <div class="nav-accre">
             <div class="wrapper">
                 <h2>{{ 'press.accrediter.title.consultezlaprocedure'|trans }}</h2>
@@ -45,6 +45,7 @@
                 </table>
             </div>
         </div>
+        {% endif %}
         {% for key, section in accredit.procedure %}
             <div class="nav-container {% if key == 0 %}active{% endif %}" data-cat="{{ section.procedure|trans_fallback('title')|replace({' ':'-'})|lower }}">
                 <div class="wrapper">
