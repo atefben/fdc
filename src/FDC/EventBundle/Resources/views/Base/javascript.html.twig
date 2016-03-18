@@ -102,19 +102,23 @@
             event.preventDefault();
             event.stopPropagation();
         });
-
-        // Surcharge de l'AjaxEvent de press.module.js
-        // A adapter
         $(document).on('click','.read-more', function(event){
             event.preventDefault();
             event.stopPropagation();
+        });
+        // Surcharge de l'AjaxEvent de press.module.js
+        // A adapter
+        $(document).on('click','.read-more', function(){
+
+            var offset = $(this).attr('data-offset');
+            $(this).attr('data-offset', parseInt(offset) + GLOBALS.news.count );
+
             $.ajax({
                 type  : "POST",
                 cache : false,
                 url   : GLOBALS.urls.loadPressReleaseUrl,
-                data  : {'offset': $('.read-more').attr('data-offset')},
+                data  : {'offset': offset},
                 success: function(data) {
-                    $('.read-more').remove();
                     $('#gridAudios .item:last-child').after(data);
                 }
             });

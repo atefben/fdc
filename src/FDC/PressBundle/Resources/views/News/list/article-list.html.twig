@@ -1,9 +1,11 @@
 {% trans_default_domain 'FDCPressBundle' %}
 
+<div id="gridAudios" class="grid-wrapper" data-type="articles">
+    <div class="grid-sizer"></div>
 
-    {% for article in pressNews %}
-        {% include 'FDCPressBundle:News:list/article.html.twig' %}
-    {% endfor %}
+    {% include 'FDCPressBundle:News:list/article-list-ajax.html.twig' %}
+
+</div>
 
 {% if pressNewsLeft != false %}
     <a href="#" class="read-more" data-offset="{{ pressNewsLeft }}">
