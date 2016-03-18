@@ -22,7 +22,7 @@ class PressGuideWidgetPicto extends PressGuideWidget
     /**
      * @var string
      *
-     * @ORM\Column(name="press_guide_widget_picto_icon", type="string")
+     * @ORM\Column(name="press_guide_widget_picto_icon", type="string", nullable=true)
      */
     protected $picto;
 

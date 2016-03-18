@@ -81,7 +81,9 @@ class PressGuideWidgetPictoType extends PressGuideWidgetType
             ),
             'label' => 'form.label_service_icon',
             'translation_domain' => 'BaseAdminBundle',
-            'choice_translation_domain' => 'BaseAdminBundle'
+            'choice_translation_domain' => 'BaseAdminBundle',
+            'required' => false,
+            'empty_data'  => null
         ))
         ;
     }

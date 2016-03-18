@@ -92,6 +92,7 @@ class PressGuideWidgetImageType extends PressGuideWidgetType
                 'model_manager' => $this->PressGuideWidgetImageDummyAdmin->getModelManager(),
                 'class' => $this->PressGuideWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery']->getAssociationAdmin()->getClass(),
                 'label' => 'form.label_image',
+                'required' => false
             ));
 
     }
