@@ -94,7 +94,7 @@
                                             {% if trans is null or trans.file is null %}
                                                 {% set trans = m.mediaVideo.findTranslationByLocale('fr') %}
                                             {% endif %}
-                                                <a href="#" class="button {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'active-btn' : '' }}" data-film="{{ m.association.id }}">
+                                                <a href="#" class="trailer-btn button {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'active-btn' : '' }}" data-film="{{ m.association.id }}">
                                                     {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
                                                     {{ trans.title }}
                                                 </a>
