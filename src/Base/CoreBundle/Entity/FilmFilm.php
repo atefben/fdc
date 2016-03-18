@@ -393,6 +393,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $associatedInfo;
 
     /**
+     * @var MediaImageSimple
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      * @Groups({
      *     "film_list",

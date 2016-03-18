@@ -70,9 +70,15 @@ services:
 
     base.twig.film_media_extension:
         class: Base\CoreBundle\Twig\Extension\FilmMediaExtension
-        arguments: [@doctrine.orm.entity_manager]
         tags:
             - { name: twig.extension }
+        arguments: [%locale_fallback%, @request_stack]
+
+    base.twig.person_media_extension:
+        class: Base\CoreBundle\Twig\Extension\PersonMediaExtension
+        tags:
+            - { name: twig.extension }
+        arguments: [%locale_fallback%, @request_stack]
 
     base.twig.news_type_extension:
         class: Base\CoreBundle\Twig\Extension\NewsTypeExtension

@@ -3,13 +3,13 @@
 
 {% block body %}
 
-<div id="main" class="single-article artist loading">
-    <div class="content-article">
-        <div class="container">
+    <div id="main" class="single-article artist loading">
+        <div class="content-article">
+            <div class="container">
                 <div class="info">
                     {% set profession = artist|trans_fallback('profession') %}
                     {% if profession %}
-                    <span href="#" class="category" {{ artist|content_lang('profession') }}>
+                        <span href="#" class="category" {{ artist|content_lang('profession') }}>
                         {{ profession }}
                     </span>
                     {% endif %}
@@ -26,7 +26,10 @@
                 </div>
                 <div class="single-photo">
                     <div class="photo-container">
-                        <img src="" alt="{{ artist.fullName }}" />
+                        {% set artistImage = artist|person_image %}
+                        {% if artistImage %}
+                            <img src="{% path artistImage, '976x535' %}" alt="{{ artist.fullName }}"/>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="small-container">
@@ -40,13 +43,21 @@
                         </div>
                     {% endif %}
                     {% if artist.films|length > 0 %}
-                        <h2  class="title title-art-artist">{{ 'juries.artiste.title.filmspresentes'|trans }}</h2>
-                        <div class="contain-films-list">
+                    <h2 class="title title-art-artist">{{ 'juries.artiste.title.filmspresentes'|trans }}</h2>
+                    <div class="contain-films-list">
                         {% for filmPerson in artist.films %}
                             <div class="item">
-                                <img src="" alt="">
+                                {% set filmPersonfilmPoster = filmPerson.film|film_poster %}
+                                {% if filmPersonfilmPoster %}
+                                    <img src="{% path filmPersonFilmPoster, '976x535' %}" alt="">
+                                {% else %}
+                                    <img src="{{ asset('bundles/fdcevent/img/palmares/film_w181.jpg') }}" alt="">
+                                {% endif %}
                                 <div class="content-text">
                                     <span class="item-title">{{ filmPerson.film.titleVO }}</span>
+                                    {% if filmPerson.film|trans_fallback('title') %}
+                                        <span class="item-sub-title">{{ filmPerson.film|trans_fallback('title') }}</span>
+                                    {% endif %}
                                     {% if filmPerson.film.festival %}
                                         <span class="item-date">{{ filmPerson.film.festival.year }}</span>
                                     {% endif %}
@@ -54,123 +65,145 @@
                                         <span class="item-categ" {{ filmPerson.film.selectionSection|content_lang('name') }}>{{ filmPerson.film.selectionSection|trans_fallback('name') }}</span>
                                     {% endif %}
                                     {% if filmPerson.functions|length > 0 %}
-                                        <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
+                                        {% spaceless %}
+                                            <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
                                             {% for filmPersonFunction in filmPerson.functions %}
-                                                {{ filmPersonFunction.function|trans_fallback('name') }}<br/>
+                                                {{ loop.first == false ?',':'' }} {{ filmPersonFunction.function|trans_fallback('name') }}
+                                                <br/>
                                             {% endfor %}
                                         </span>
+                                        {% endspaceless %}
                                     {% endif %}
                                 </div>
                             </div>
                         {% endfor %}
-                    {% endif %}
-                </div>
-                {% set awardsCount = 0 %}
-                {% for filmPerson in artist.films %}
-                    {% for awardAssociation in filmPerson.film.awards %}
-                        {% if
-                            awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') or
-                            (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and
-                            awardAssociation.person.id == artist.id)
-                        %}
-                            {% set awardsCount = awardsCount + 1 %}
                         {% endif %}
-                    {% endfor %}
-                {% endfor %}
-                {% if awardsCount > 0 %}
-                <h2 class="title title-art-artist">{{ 'juries.artiste.title.palmares'|trans }}</h2>
-                <div class="contain-films-list">
+                    </div>
+                    {% set awardsCount = 0 %}
                     {% for filmPerson in artist.films %}
                         {% for awardAssociation in filmPerson.film.awards %}
                             {% if
-                                awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') or
-                                (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and
-                                awardAssociation.person.id == artist.id)
-                            %}
-                                <div class="item">
-                                    <img src="" alt="">
-                                    <div class="content-text">
-                                        <span class="item-title">{{ filmPerson.film.titleVO }}</span>
-                                        {% if awardAssociation.award.festival %}
-                                        <span class="item-date">
-                                            {{ awardAssociation.award.festival.year }}
-                                        </span>
-                                        {% endif %}
-                                        <span class="item-categ" {{ awardAssociation.award.prize|content_lang('title') }}>
-                                            {{ awardAssociation.award.prize|trans_fallback('title') }}
-                                        </span>
-                                        {% if filmPerson.functions|length > 0 %}
-                                            <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
-                                            {% for filmPersonFunction in filmPerson.functions %}
-                                                {{ filmPersonFunction.function|trans_fallback('name') }}<br/>
-                                            {% endfor %}
-                                        </span>
-                                        {% endif %}
-                                    </div>
-                                </div>
+                            awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') or
+                            (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and
+                            awardAssociation.person.id == artist.id) %}
+                                {% set awardsCount = awardsCount + 1 %}
                             {% endif %}
                         {% endfor %}
                     {% endfor %}
+                    {% if awardsCount > 0 %}
+                        <h2 class="title title-art-artist">{{ 'juries.artiste.title.palmares'|trans }}</h2>
+                        <div class="contain-films-list">
+                            {% for filmPerson in artist.films %}
+                                {% for awardAssociation in filmPerson.film.awards %}
+                                    {% if
+                                    awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') or
+                                    (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and
+                                    awardAssociation.person.id == artist.id) %}
+                                        <div class="item">
+                                            {% set filmPersonfilmPoster = filmPerson.film|film_poster %}
+                                            {% if filmPersonfilmPoster %}
+                                                <img src="{% path filmPersonFilmPoster, '976x535' %}" alt="">
+                                            {% else %}
+                                                <img src="{{ asset('bundles/fdcevent/img/palmares/film_w181.jpg') }}"
+                                                     alt="">
+                                            {% endif %}
+                                            <div class="content-text">
+                                                <span class="item-title">{{ filmPerson.film.titleVO }}</span>
+                                                {% if awardAssociation.award.festival %}
+                                                    <span class="item-date">{{ awardAssociation.award.festival.year }}</span>
+                                                {% endif %}
+                                                <span class="item-categ" {{ awardAssociation.award.prize|content_lang('title') }}>
+                                            {{ awardAssociation.award.prize|trans_fallback('title') }}
+                                        </span>
+                                                {% if filmPerson.functions|length > 0 %}
+                                                    {% spaceless %}
+                                                        <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
+                                                        {% for filmPersonFunction in filmPerson.functions %}
+                                                            {{ filmPersonFunction.function|trans_fallback('name') }}
+                                                            <br/>
+                                                        {% endfor %}
+                                                    </span>
+                                                    {% endspaceless %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if artist.juries|length > 0 %}
+                        <h2 class="title title-art-artist">{{ 'juries.artiste.title.presences'|trans }}</h2>
+                        {% for jury in artist.juries %}
+                            <div class="jury">
+                                {% if jury.function %}
+                                    <span class="rank" {{ jury.function|content_lang('name') }}>{{ jury.function|trans_fallback('name') }}</span>
+                                {% endif %}
+                                {% if jury.type %}
+                                    {% if jury.function %}
+                                        <span class="item-separate">-</span>
+                                    {% endif %}
+                                    <span class="role" {{ jury.type|content_lang('name') }}>{{ jury.type|trans_fallback('name') }}</span>
+                                {% endif %}
+                                {% if jury.festival %}
+                                    {% if jury.function or jury.type %}
+                                        <span class="item-separate">-</span>
+                                    {% endif %}
+                                    <span class="date">{{ jury.festival.year }}</span>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
-                {% endif %}
-                {% if artist.juries|length > 0 %}
-                    <h2 class="title title-art-artist">{{ 'juries.artiste.title.presences'|trans }}</h2>
-                    {% for jury in artist.juries %}
-                        <div class="jury">
-                            {% if jury.function %}
-                                <span class="rank" {{ jury.function|content_lang('name') }}>{{ jury.function|trans_fallback('name') }}</span>
-                            {% endif %}
-                            {% if jury.type %}
-                                <span class="item-separate">-</span>
-                                <span class="role" {{ jury.type|content_lang('name') }}>{{ jury.type|trans_fallback('name') }}</span>
-                            {% endif %}
-                            {% if jury.festival %}
-                                <span class="item-separate">-</span>
-                                <span class="date">{{ jury.festival.year }}</span>
-                            {% endif %}
+            </div>
+            <div class="share">
+                <p>{{ 'juries.artiste.title.share'|trans }}</p>
+                <div class="buttons square">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_event_news_index') }}"
+                       rel="nofollow" class="button facebook">
+                        <i class="icon icon_facebook"></i>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_news_index') }}" rel="nofollow"
+                       class="button twitter">
+                        <i class="icon icon_twitter"></i>
+                    </a>
+                    <a href="#" rel="nofollow" class="button link self"><i class="icon icon_link"></i></a>
+                    <a href="#" rel="nofollow" class="button email self"><i class="icon icon_lettre"></i></a>
+                    <a href="#" rel="nofollow" onclick="javascript:window.print()" class="button print"><i
+                                class="icon icon_print"></i></a>
+                </div>
+            </div>
+            <div class="realisateurs">
+                <h1 class="title">{{ 'juries.artiste.title.realisateurs'|trans }}</h1>
+                <div id="slide-artist">
+                    {% for director in directors %}
+                        <div class="item first">
+                            <figure>
+                                {% set directorImage = director|person_image_portait %}
+                                {% if directorImage %}
+                                    <img src="{% path directorImage, '212x134' %}" alt="{{ director.fullName }}">
+                                {% endif %}
+                                <figcaption>
+                                    <span class="name">{{ director.fullName }}</span>
+                                    <span class="rank" {{ artist|content_lang('profession') }}>{{ artist|trans_fallback('profession') }}</span>
+                                </figcaption>
+                            </figure>
                         </div>
                     {% endfor %}
-                {% endif %}
+                </div>
             </div>
         </div>
-        <div class="share">
-            <p>{{ 'juries.artiste.title.share'|trans }}</p>
-            <div class="buttons square">
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_event_news_index') }}" rel="nofollow" class="button facebook">
-                    <i class="icon icon_facebook"></i>
-                </a>
-                <a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_news_index') }}" rel="nofollow" class="button twitter">
-                    <i class="icon icon_twitter"></i>
-                </a>
-                <a href="#" rel="nofollow" class="button link self"><i class="icon icon_link"></i></a>
-                <a href="#" rel="nofollow" class="button email self"><i class="icon icon_lettre"></i></a>
-                <a href="#" rel="nofollow" onclick="javascript:window.print()" class="button print"><i class="icon icon_print"></i></a>
-            </div>
-        </div>
-        <div class="realisateurs">
-            <h1 class="title">{{ 'juries.artiste.title.realisateurs'|trans }}</h1>
-            <div id="slide-artist">
-                {% for director in directors %}
-                    <div class="item first">
-                        <figure>
-                            <img src="" alt="{{ director.fullName }}">
-                            <figcaption>
-                                <span class="name">{{ director.fullName }}</span>
-                                <span class="rank" {{ artist|content_lang('profession') }}>{{ artist|trans_fallback('profession') }}</span>
-                            </figcaption>
-                        </figure>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
+        <span class="anim"></span>
     </div>
-    <span class="anim"></span>
-</div>
-{{ render(controller('FDCEventBundle:Global:shareEmail',
-   {'section': artist.functions,
-    'detail': artist.from,
-    'title':artist.name,
-    'description': artist.bio
-   }))
-}}
+
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+    {
+    "name" : 'breadcrumb.webtv.home'|trans,
+    "url"  : path('fdc_event_news_index')
+    },
+    {
+    "name" : artist.fullName,
+    "url"  : ''
+    }
+    ]} %}
 {% endblock body %}

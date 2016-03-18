@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Twig\Extension;
 
 use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\FilmFilmMediaInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use \Twig_Extension;
 
 /**
@@ -16,11 +17,25 @@ use \Twig_Extension;
 class FilmMediaExtension extends Twig_Extension
 {
 
-    private $em;
+    /**
+     * @var string
+     */
+    private $localeFallback;
 
-    public function __construct($em)
+    /**
+     * @var RequestStack
+     */
+    private $requestStack;
+
+    /**
+     * FilmMediaExtension constructor.
+     * @param string $localeFallback
+     * @param RequestStack $requestStack
+     */
+    public function __construct($localeFallback, RequestStack $requestStack)
     {
-        $this->em = $em;
+        $this->localeFallback = $localeFallback;
+        $this->requestStack = $requestStack;
     }
 
     public function getFilters()
@@ -53,6 +68,18 @@ class FilmMediaExtension extends Twig_Extension
      */
     public function getFilmPoster(FilmFilm $film)
     {
+        $locale = $this
+            ->requestStack
+            ->getCurrentRequest()
+            ->getLocale()
+        ;
+
+        $hasImageMain = $film->getImageMain() && $film->getImageMain()->findTranslationByLocale($locale);
+        $hasImageMain = $hasImageMain && $film->getImageMain()->findTranslationByLocale($locale)->getFile();
+        if ($hasImageMain) {
+            return $film->getImageMain()->findTranslationByLocale($locale)->getFile();
+        }
+
         foreach ($film->getMedias() as $media) {
             if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER && $media->getMedia() && $media->getMedia()->getFile()) {
                 return $media->getMedia()->getFile();

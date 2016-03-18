@@ -114,7 +114,7 @@ class JuryController extends Controller
         return array(
             'page'      => $page,
             'pages'     => $pages,
-            'next'      => is_object($next) ? $next : true,
+            'next'      => is_object($next) ? $next : false,
             'members'   => $members,
             'president' => $president,
         );
