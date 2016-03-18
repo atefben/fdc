@@ -659,6 +659,8 @@ form:
     label_image_main: Image principale
     label_image_cover: Image cover
     label_video_main: Vidéo principale
+    label_procedure_file : Fichier procédure
+    label_procedure_second_file : Fichier procédure (en)
     gallery:
         medias: Médias
     encoding_state:

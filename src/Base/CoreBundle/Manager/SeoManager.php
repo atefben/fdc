@@ -15,6 +15,7 @@ use Base\CoreBundle\Entity\PressMediaLibrary;
 use Base\CoreBundle\Entity\PressHomepage;
 use Base\CoreBundle\Entity\PressAccredit;
 use Base\CoreBundle\Entity\PressCinemaMap;
+use Base\CoreBundle\Entity\PressGuide;
 use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\WebTv;
 use \DateTime;
@@ -921,10 +922,10 @@ class SeoManager
     }
 
     /**
-     * @param PressAccredit $page
+     * @param PressGuide $page
      * @param $locale
      */
-    public function setFDCPressPagePressGuideSeo(PressAccredit $page, $locale)
+    public function setFDCPressPagePressGuideSeo(PressGuide $page, $locale)
     {
         $trans = $page->findTranslationByLocale($locale);
 
