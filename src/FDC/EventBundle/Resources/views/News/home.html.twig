@@ -110,13 +110,19 @@
                         {% endif %}
                             <div>
                                 <div class="img-container">
-                                    <div class="img" style="background-image:url({% path file , '2560x1620' %})"></div>
+                                    {% set trans = article.findTranslationByLocale('fr') %}
+                                    {% if type == 'news' %}
+                                    <a href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                                    {% else %}
+                                    <a href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                                    {% endif %}
+                                        <div class="img" style="background-image:url({% path file , '2560x1620' %})"></div>
+                                    </a>
                                 </div>
                                 <div class="info">
                                     <span class="category">{{ article.theme|trans_fallback('name') }}</span>
                                     <h2>{{ article|trans_fallback('title') }}</h2>
                                 </div>
-                                {% set trans = article.findTranslationByLocale('fr') %}
                                 {% if type == 'news' %}
                                     <a class="linkArticle" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
                                 {% else %}

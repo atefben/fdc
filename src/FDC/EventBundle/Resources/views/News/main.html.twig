@@ -200,10 +200,10 @@
    }))
 }}
 {{ render(controller('FDCEventBundle:Global:shareEmailMedia',
-    {'section': article.theme,
-     'detail': article.publishedAt|date('d.m.y'),
-     'title': article.title,
-     'description': article.introduction,
+    {'section': news.theme|trans_fallback('name'),
+     'detail': news.publishedAt|date('d.m.y'),
+     'title': news|trans_fallback('title'),
+     'description': news|trans_fallback('introduction')|raw,
      'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
     }))
 }}
