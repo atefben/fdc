@@ -460,6 +460,7 @@ form:
         helper_films_associated: Sélectionnez de 1 à 5 films et leurs boucles vidéos associées. Ils apparaitront en front-office dans l'ordre des champs.
         helper_pushes : Format de l'image recommandé : 650x410
         helper_prefooter: Format de l'image recommandé : 1954x1200
+        helper_pushes_grand: Format de l'image recommandé : 1300x410
     flashbag:
         modified: Modification effectuée.
     settings:
