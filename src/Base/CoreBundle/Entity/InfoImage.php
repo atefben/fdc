@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Base\CoreBundle\Util\TruncatePro;
 use \DateTime;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
@@ -26,6 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class InfoImage extends Info
 {
     use Translatable;
+    use TruncatePro;
 
     /**
      * @var MediaImage
@@ -48,7 +50,8 @@ class InfoImage extends Info
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            $string = $this->findTranslationByLocale('fr')->getTitle();
+            $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
+            $string = $this->truncate($string, 40, '..."', true);
         }
 
         return $string;

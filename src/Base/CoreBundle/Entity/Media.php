@@ -8,6 +8,7 @@ use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
 
+use Base\CoreBundle\Util\TruncatePro;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -30,6 +31,7 @@ abstract class Media implements TranslateMainInterface
     use Time;
     use SeoMain;
     use TranslateMain;
+    use TruncatePro;
 
     /**
      * @var integer
@@ -173,9 +175,11 @@ abstract class Media implements TranslateMainInterface
 
         if ($this->getId()) {
             if($string != 'MediaImage'){
-                $string = $this->findTranslationByLocale('fr')->getTitle();
+                $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
+                $string = $this->truncate($string, 40, '..."', true);
             } else {
-                $string = $this->findTranslationByLocale('fr')->getLegend();
+                $string .= ' "' . $this->findTranslationByLocale('fr')->getLegend() . '"';
+                $string = $this->truncate($string, 40, '..."', true);
             }
         }
 

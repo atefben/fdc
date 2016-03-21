@@ -6,6 +6,7 @@ use Base\CoreBundle\Util\Time;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Util\TruncatePro;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,6 +25,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class NewsAudio extends News
 {
     use Translatable;
+    use TruncatePro;
 
     /**
      * @var MediaImage
@@ -49,7 +51,8 @@ class NewsAudio extends News
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            $string = $this->findTranslationByLocale('fr')->getTitle();
+            $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
+            $string = $this->truncate($string, 40, '..."', true);
         }
 
         return $string;
