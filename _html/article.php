@@ -209,19 +209,21 @@
               <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
             </div>
           </div>
-          <div class="half-photo">
-            <div class="photo-container">
-              <img src="img/article/005.jpg" alt="" />
-              <p class="caption">© FDC / Théophile Delange</p>
+          <div class="half-div">
+            <div class="half-photo">
+              <div class="photo-container">
+                <img src="img/article/005.jpg" alt="" />
+                <p class="caption">© FDC / Théophile Delange</p>
+              </div>
             </div>
-          </div>
-          <div class="half-photo">
-            <div class="photo-container">
-              <img src="img/article/006.jpg" alt="" />
-              <p class="caption">© FDC / Théophile Delange</p>
+            <div class="half-photo">
+              <div class="photo-container">
+                <img src="img/article/006.jpg" alt="" />
+                <p class="caption">© FDC / Théophile Delange</p>
+              </div>
             </div>
+            <div class="author">Rédigé par Morgane Urbain</div>
           </div>
-          <div class="author">Rédigé par Morgane Urbain</div>
         </div>
         <div class="share">
           <p>Partagez l'article</p>

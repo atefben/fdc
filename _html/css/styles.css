@@ -10405,7 +10405,7 @@ article .read-later.rAlign span:after {
 .single-article.single-actualite .small-container > div.single-photo, .single-article.single-actualite .small-container > div.single-video, .single-article.single-actualite .small-container > div.single-gallery, .single-article.single-actualite .small-container > div.chapeau {
   width: 100%;
 }
-.single-article.single-actualite .small-container > div.half-div {
+.single-article.single-actualite .small-container > div.half-div, .single-article.single-actualite .small-container > div.slideshow {
   width: 730px;
 }
 .single-article .print {
