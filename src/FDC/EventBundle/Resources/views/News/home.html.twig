@@ -246,7 +246,7 @@
         {% endif %}
 
         {% if homepage.displayedTopWebTv == false %}
-            {% if videos is not null and videos|length > 0 %}
+            {% if videos[0].id is not null %}
             <div id="featured-videos">
                 <h2 class="title">{{ 'home.title.lesvideosalaune'|trans }}</h2>
                 <p class="link">
@@ -274,7 +274,7 @@
                 </div>
             </div>
             {% endif %}
-            {% if channels is not null and channels|length > 0 %}
+            {% if channels[0].id is not null %}
             <div id="channels">
                 <h2 class="title">{{ 'home.title.leschaines'|trans }}</h2>
                 <div id="slider-channels" class="owl-carousel sliderDrag">
