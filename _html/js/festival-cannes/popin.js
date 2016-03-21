@@ -4,7 +4,7 @@ function initPopinMail(cls){
     var input = $(this);
     var is_name = input.val();
 
-    if(is_name) {
+    if(typeof $(this).attr('required') != undefined && $(this).attr('required') == true && is_name.length > 0) {
       input.removeClass("invalid").addClass("valid");
       $('.errors .' + input.attr('name')).remove();
     } else {
@@ -67,7 +67,7 @@ function initPopinMail(cls){
     }
 
     $(cls+' input[type="text"], '+cls+' input[type="email"], '+cls+' textarea').each(function() {
-      if($(this).val() == '') {
+      if(typeof $(this).attr('required') != undefined && $(this).attr('required') == true && $(this).val() == '') {
         empty = true;
       }
     });
@@ -101,7 +101,6 @@ $(document).ready(function() {
       
       $(document).on('click touchstart', function (e) {
         var $element= $(e.target);
-        console.log(!$element.hasClass('visible-popin'));
         if(!$element.hasClass('visible-popin')) {
           var $isPopin = $element.closest('.visible-popin');
           var isButton = $element.hasClass('button');
@@ -207,12 +206,15 @@ function updatePopinMedia(data) {
 }
 
 function launchPopinMedia(data, player) {
+  console.log(data);
+
   if(!$.isEmptyObject(data)) {
     updatePopinMedia(data);
   }
 
   switch(data['type']) {
     case 'audio' :
+      AudioFullScreen(false, player);
       break;
     case 'photo' :
       // $('.chocolat-close').trigger('click');

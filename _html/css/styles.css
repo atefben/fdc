@@ -5944,6 +5944,14 @@ div.chocolat-wrapper .zoomCursor .icon {
 .audio-player.on .off .picto {
   display: none;
 }
+.audio-player .top {
+  height: 0px;
+  overflow: hidden;
+}
+.audio-player #channels-audio {
+  height: 0px;
+  visibility: hidden;
+}
 .audio-player .playpause {
   display: block;
   height: 20px;
@@ -6240,11 +6248,14 @@ div.chocolat-wrapper .zoomCursor .icon {
   height: 80px;
   left: 0;
   margin: 0;
-  overflow: hidden;
+  overflow: visible;
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 3;
+}
+.audio-player.full .top #share-box {
+  top: 87px;
 }
 .audio-player.full .top:after {
   content: '';

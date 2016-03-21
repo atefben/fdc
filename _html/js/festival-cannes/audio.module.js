@@ -1,6 +1,23 @@
 var waves = [],
     inter = null,
-    duration = null;
+    duration = null,
+    audioTop = 
+      '<div class="top">\
+        <a href="#" class="channels"><i class="icon icon_Micro"></i></a>\
+        <div class="info">\
+          <div class="vCenter">\
+            <div class="vCenterKid"></div>\
+          </div>\
+        </div>\
+      </div>',
+    audioShare =
+      '<div class="buttons square">\
+        <a href="//www.facebook.com/sharer.php?u=CUSTOM_URL" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>\
+        <a href="//twitter.com/intent/tweet?text=CUSTOM_TEXT" rel-"nofollow" class="button twitter"><i class="icon icon_twitter"></i></a>\
+        <a href="#" class="button link"><i class="icon icon_link"></i></a>\
+        <a href="#" class="button email"><i class="icon icon_lettre"></i></a>\
+      </div>',
+    audioSlider = '<div id="channels-audio"></div>';
 
 function redraw() {
   for(var i=0; i<waves.length; i++) {
@@ -10,6 +27,8 @@ function redraw() {
 
 function initAudioPlayers() {
   $('.audio-player').each(function(i) {
+    var $that = $(this);
+
     $(this).addClass('loading').find('.wave-container').attr('id', 'wave-' + i);
     var h = $(this).hasClass('bigger') ? 55 : 55;
     var wave = Object.create(WaveSurfer);
@@ -43,16 +62,13 @@ function initAudioPlayers() {
     waves.push(wave);
 
     // on click on play/pause
-
     var $playpause = $('.playpause');
     var $fullscreen = $('.fullscreen');
     var $volume = $('.volume');
 
-
     $playpause.html('<i class="icon icon_video"></i>');
     $fullscreen.html('<i class="icon icon_fullscreen"></i>');
     if($volume.find('.icon_son').length == 0) $volume.append('<i class="icon icon_son"></i>');
-
 
     $(this).find('.playpause').on('click', function(e) {
       e.preventDefault();
@@ -114,6 +130,45 @@ function initAudioPlayers() {
 
       $audioplayer.toggleClass('pause');
     });
+  
+    $(this).append(audioTop);
+    $(this).find('.top .info .vCenterKid').append($(this).find('.off .info').html());
+    $(this).find('.top').append(audioShare);
+    $(this).append(audioSlider);
+
+    var shareUrl = GLOBALS.urls.audiosUrl+'#aid='+$(this).data('aid');
+    // CUSTOM LINK FACEBOOK
+    var fbHref = $(this).find('.top .buttons .facebook').attr('href');
+    fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
+    $(this).find('.top .buttons .facebook').attr('href', fbHref);
+    // CUSTOM LINK TWITTER
+    var twHref = $(this).find('.top .buttons .twitter').attr('href');
+    twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($(this).find('.top .info p').text()+" "+shareUrl));
+    $(this).find('.top .buttons .twitter').attr('href', twHref);
+    // CUSTOM LINK COPY
+    $(this).find('.top .buttons .link').attr('href', shareUrl);
+    $(this).find('.top .buttons .link').attr('data-clipboard-text', shareUrl);
+    linkPopinInit(shareUrl, '[data-aid="' + $(this).data('aid') + '"] .top .buttons .link');
+
+    $(this).find('.top .buttons .facebook').on('click',function(e) {
+        window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
+        return false;
+    });
+    $(this).find('.top .buttons .twitter').on('click', function(e) {
+        window.open(this.href,'','width=700,height=500');
+        return false;
+    });
+    // CUSTOM LINK MAIL
+    $(this).find('.top .buttons .email').on('click', function(e) {
+        e.preventDefault();
+        launchPopinMedia({
+            'type'     : "audio",
+            'category' : $('[data-aid="' + $that.data('aid') + '"] .top .info .category').text(),
+            'date'     : $('[data-aid="' + $that.data('aid') + '"] .top .info .date').text(),
+            'title'    : $('[data-aid="' + $that.data('aid') + '"] .top .info p').text(),
+            'url'      : shareUrl
+        }, $that);
+    });
   });
 }
 
@@ -123,30 +178,28 @@ function initAudioPlayers() {
 $(document).ready(function() {
 
   function FShandler() {
-
     setTimeout(function() {
       redraw();
     }, 200);
     if (document.fullscreenEnabled && document.fullscreenElement == null) {
       $('.audio-player').removeClass("full overlay-channels");
-      $('.audio-player .top, .audio-player .bottom, .audio-player #channels-audio').remove();
+      $('.audio-player .bottom').remove();
     }
     if (document.webkitFullscreenEnabled && document.webkitFullscreenElement == null) {
       $('.audio-player').removeClass("full overlay-channels");
-      $('.audio-player .top, .audio-player .bottom, .audio-player #channels-audio').remove();
+      $('.audio-player .bottom').remove();
     }
     if (document.mozFullScreenEnabled && document.mozFullScreenElement == null) {
       $('.audio-player').removeClass("full overlay-channels");
-      $('.audio-player .top, .audio-player .bottom, .audio-player #channels-audio').remove();
+      $('.audio-player .bottom').remove();
     }
     if (document.msFullscreenEnabled && document.msFullscreenElement == null) {
       $('.audio-player').removeClass("full overlay-channels");
-      $('.audio-player .top, .audio-player .bottom, .audio-player #channels-audio').remove();
+      $('.audio-player .bottom').remove();
     }
   }
 
   $('body').on('click', '.volume', function(e) {
-
     if($(this).parents('.audio-player').hasClass('full')) {
       if((e.offsetX/100) < 0.15) {
         for(var i = 0; i < waves.length; i++) {
@@ -161,7 +214,6 @@ $(document).ready(function() {
 
         $(this).toggleClass('mute');
       } else {
-
         var newVolume = e.offsetX / 100;
 
         $('.audio-player .volume span').css('width', newVolume * 100 + "%");
@@ -223,10 +275,10 @@ $(document).ready(function() {
 
     var s = $newAudio.data('sound'),
         img = $newAudio.find('img').attr('src'),
-        info = $newAudio.find('.info').html();
+        info = $newAudio.find('.off .info').html();
 
     $audioPlayer.find('.image').css('background-image', 'url(' + img + ')');
-    $audioPlayer.children('.info .vCenterKid').html(info);
+    $audioPlayer.append('.top .info .vCenterKid').html(info);
 
     waves[ind].load(s);
 
@@ -252,34 +304,16 @@ $(document).ready(function() {
     e.preventDefault();
     var audioPlayer = $(this).parents('.audio-player')[0];
 
-    $('.fullscreen .icon').removeClass('icon_fullscreen').addClass('icon_reverseFullScreen');
-    if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
-
-
+    $(audioPlayer).find('.fullscreen .icon').removeClass('icon_fullscreen').addClass('icon_reverseFullScreen');
+    if (document.fullscreenEnabled || 
+        document.webkitFullscreenEnabled || 
+        document.mozFullScreenEnabled || 
+        document.msFullscreenEnabled) {
       if($(this).parents('.audio-player').hasClass('full')) {
-
-        $('.fullscreen .icon').removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
-
-        setTimeout(function() {
-          redraw();
-        }, 200);
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-          document.mozCancelFullScreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
-        }
+        AudioFullScreen(false, audioPlayer);
       }
       else {
         $(audioPlayer).addClass('full');
-
-        var info = $(audioPlayer).find('.info').html();
-        $(audioPlayer).append('<div class="top"><a href="#" class="channels"><i class="icon icon_Micro"></i></a><div class="info"><div class="vCenter"><div class="vCenterKid">' + info + '</div></div></div></div>');
-        $(audioPlayer).find('.top').append('<div class="buttons square"><a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a><a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a><a href="#" class="button link"><i class="icon icon_link"></i></a><a href="#" class="button email"><i class="icon icon_lettre"></i></a></div>')
-        $(audioPlayer).append('<div id="channels-audio"></div>');
 
         if (audioPlayer.requestFullscreen) {
           audioPlayer.requestFullscreen();
@@ -328,3 +362,23 @@ $(document).ready(function() {
     }
   });
 });
+
+function AudioFullScreen(toggle, audioInstance) {
+  if (!toggle) {
+    $(audioInstance).find('.fullscreen .icon').removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
+
+    setTimeout(function() {
+      redraw();
+    }, 200);
+
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+  }
+}
