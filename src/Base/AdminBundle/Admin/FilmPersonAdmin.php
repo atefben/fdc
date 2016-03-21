@@ -10,6 +10,13 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class FilmPersonAdmin extends SoifAdmin
 {
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('BaseAdminBundle:FilmPerson:edit.html.twig')
+        );
+    }
 
     /**
      * @param DatagridMapper $datagridMapper
