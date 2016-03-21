@@ -25,6 +25,7 @@ class FDCPageAward implements TranslateMainInterface
     use Translatable;
     use TranslateMain;
     use SeoMain;
+    
     /**
      * @var integer
      *

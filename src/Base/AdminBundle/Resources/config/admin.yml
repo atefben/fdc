@@ -315,6 +315,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_page_event:
+        class: Base\AdminBundle\Admin\FDCPageEventAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageEvent, BaseAdminBundle:FDCPageEventAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageEvent, label_translator_strategy: sonata.admin.label.strategy.underscore, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     #end SEO
 
     base.admin.film_jury_type:
