@@ -246,6 +246,7 @@
         {% endif %}
 
         {% if homepage.displayedTopWebTv == false %}
+            {% if videos is not null and videos|length > 0 %}
             <div id="featured-videos">
                 <h2 class="title">{{ 'home.title.lesvideosalaune'|trans }}</h2>
                 <p class="link">
@@ -272,6 +273,8 @@
                     {% endfor %}
                 </div>
             </div>
+            {% endif %}
+            {% if channels is not null and channels|length > 0 %}
             <div id="channels">
                 <h2 class="title">{{ 'home.title.leschaines'|trans }}</h2>
                 <div id="slider-channels" class="owl-carousel sliderDrag">
@@ -287,6 +290,7 @@
                     {% endfor %}
                 </div>
             </div>
+            {% endif %}
         {% endif %}
 
         {% if homepage.displayedFilms == false %}
