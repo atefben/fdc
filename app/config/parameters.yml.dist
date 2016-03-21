@@ -62,6 +62,7 @@ parameters:
     admin_fdc_page_award_cinefondation_id: 3
     admin_fdc_page_award_camera_dor_id: 4
     admin_fdc_page_award_all_awards_id: 5
+    admin_fdc_page_event_id: 1
     # routes where are displayed the translation legend
     admin_routes_translation_legend_without_master:
         - admin_base_core_theme_list
