@@ -172,7 +172,11 @@ abstract class Media implements TranslateMainInterface
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+            if($string != 'MediaImage'){
+                $string = $this->findTranslationByLocale('fr')->getTitle();
+            } else {
+                $string = $this->findTranslationByLocale('fr')->getLegend();
+            }
         }
 
         return $string;

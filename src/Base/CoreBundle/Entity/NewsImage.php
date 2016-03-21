@@ -47,7 +47,7 @@ class NewsImage extends News
         $string = substr(strrchr(get_class($this), '\\'), 1);
         
         if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+            $string = $this->findTranslationByLocale('fr')->getTitle();
         }
         
         return $string;
