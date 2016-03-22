@@ -511,8 +511,8 @@ class NewsController extends Controller
             ->find($id)
         ;
 
-        if ($page === null) {
-            $this->createNotFoundException('Page not found');
+        if ($page == NULL) {
+            throw $this->createNotFoundException('Page not found');
         }
 
         $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
