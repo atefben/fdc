@@ -31,7 +31,7 @@ class HomeController extends FOSRestController
      *     200 = "Returned when successful",
      *   },
      *  output={
-     *      "class"="Base\CoreBundle\Entity\HomePage",
+     *      "class"="Base\CoreBundle\Entity\Homepage",
      *      "groups"={"home"}
      *  }
      * )

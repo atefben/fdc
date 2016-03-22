@@ -2,6 +2,7 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Base\CoreBundle\Entity\Event;
 use Symfony\Component\HttpFoundation\Request;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -23,81 +24,81 @@ class EventController extends Controller
     {
 
         $event = array(
-            'id'    => 0,
-            'theme' => 'Leçon de cinéma',
-            'createdAt' => new \Datetime(),
-            'updatedAt' => new \Datetime(),
-            'title' => "Marco Bellocchio",
-            'prev' => array(
+            'id'           => 0,
+            'theme'        => 'Leçon de cinéma',
+            'createdAt'    => new \Datetime(),
+            'updatedAt'    => new \Datetime(),
+            'title'        => "Marco Bellocchio",
+            'prev'         => array(
                 'slug' => 'test'
             ),
-            'next' => array(
+            'next'         => array(
                 'slug' => 'test'
             ),
-            'mainImg' => array(
-                'path' => 'img.jpg',
+            'mainImg'      => array(
+                'path'      => 'img.jpg',
                 'copyright' => 'Maïwenn - Photocall © FDC / Théophile Delange'
             ),
-            'author' => array(
+            'author'       => array(
                 'fullName' => 'Morgane Urbain'
             ),
             'introduction' => "Ancien journaliste devenu producteur et cinéaste, Éric Hannezo s'aventure pour son
                                premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel
                                on retrouve <a href=\"#\">Lambert Wilson</a> et Franck Gastambide",
-            'widgets' => array(
+            'widgets'      => array(
                 array(
-                    'type' => 'image',
-                    'title' => 'Revivez la Leçon de Cinéma de Marco Bellochio en photos',
+                    'type'      => 'image',
+                    'title'     => 'Revivez la Leçon de Cinéma de Marco Bellochio en photos',
                     'copyright' => "Équipe du film - Photocall - The Lobster",
-                    'photos' => array(
+                    'photos'    => array(
                         array(
-                            'path' => 'img.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'thumb' => 'img.jpg',
+                            'path'      => 'img.jpg',
+                            'title'     => 'lorem ipsum',
+                            'alt'       => 'lorem ipsum',
+                            'thumb'     => 'img.jpg',
                             'copyright' => 'Crédit Image : VALERY HACHE / AFP'
                         ),
                         array(
-                            'path' => 'img.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'thumb' => 'img.jpg',
+                            'path'      => 'img.jpg',
+                            'title'     => 'lorem ipsum',
+                            'alt'       => 'lorem ipsum',
+                            'thumb'     => 'img.jpg',
                             'copyright' => 'Crédit Image : VALERY HACHE / AFP'
                         )
                     )
                 ),
                 array(
-                    'type' => 'image',
+                    'type'      => 'image',
                     'copyright' => "Équipe du film - Photocall - The Lobster",
-                    'photos' => array(
+                    'photos'    => array(
                         array(
-                            'path' => 'img.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
-                            'thumb' => 'img.jpg',
+                            'path'      => 'img.jpg',
+                            'title'     => 'lorem ipsum',
+                            'alt'       => 'lorem ipsum',
+                            'thumb'     => 'img.jpg',
                             'copyright' => 'Crédit Image : VALERY HACHE / AFP'
                         )
                     )
                 ),
                 array(
-                    'type' => 'image_dual_align',
+                    'type'   => 'image_dual_align',
                     'photos' => array(
                         array(
-                            'path' => 'img.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
+                            'path'      => 'img.jpg',
+                            'title'     => 'lorem ipsum',
+                            'alt'       => 'lorem ipsum',
                             'copyright' => 'VALERY HACHE / AFP'
                         ),
                         array(
-                            'path' => 'img.jpg',
-                            'title' => 'lorem ipsum',
-                            'alt' => 'lorem ipsum',
+                            'path'      => 'img.jpg',
+                            'title'     => 'lorem ipsum',
+                            'alt'       => 'lorem ipsum',
                             'copyright' => 'VALERY HACHE / AFP'
                         )
                     )
                 ),
                 array(
-                    'type' => 'text',
+                    'type'    => 'text',
                     'content' => '<p class="text-quote">“…Une leçon de cinéma n’a de sens, à mes yeux, que si elle est
                                   pratique, le travail sur le plateau, les prises, diriger l’équipe, les acteurs,
                                   commander, fais ceci, fais cela... Sur le plateau, la démocratie, l’égalité n’existent
@@ -136,43 +137,43 @@ class EventController extends Controller
                                   Compétition à Cannes, salué par la critique internationale.</p>'
                 ),
                 array(
-                    'type' => 'quote',
+                    'type'    => 'quote',
                     'content' => 'J’ai découvert que Lambert avait une passion pour le film de genre',
 
                 ),
                 array(
-                    'type' => 'video_youtube',
-                    'title' => 'The lobster',
-                    'theme' => 'Cinéma de la plage',
+                    'type'      => 'video_youtube',
+                    'title'     => 'The lobster',
+                    'theme'     => 'Cinéma de la plage',
                     'createdAt' => new \Datetime(),
-                    'img' => array(
+                    'img'       => array(
                         'path' => 'img.jpg'
                     ),
                     'youtubeId' => 'DAaDo5fgcUc'
                 ), array(
-                    'type' => 'video_akamai',
-                    'title' => 'The lobster',
-                    'theme' => 'Cinéma de la plage',
+                    'type'      => 'video_akamai',
+                    'title'     => 'The lobster',
+                    'theme'     => 'Cinéma de la plage',
                     'createdAt' => new \DateTime(),
-                    'img' => array(
+                    'img'       => array(
                         'path' => 'img.jpg'
                     ),
-                    'akamaiId' => 'DAaDo5fgcUc'
+                    'akamaiId'  => 'DAaDo5fgcUc'
                 ),
                 array(
-                    'type' => 'audio',
-                    'title' => 'Revivez la Leçon de Cinéma de Marco Bellocchio en audio',
+                    'type'    => 'audio',
+                    'title'   => 'Revivez la Leçon de Cinéma de Marco Bellocchio en audio',
                     'podcast' => array(
                         array(
-                            'theme' => 'Conférence de presse',
-                            'title' => 'Sur le tournage de "Deephan" de Jacques Audiard',
+                            'theme'     => 'Conférence de presse',
+                            'title'     => 'Sur le tournage de "Deephan" de Jacques Audiard',
                             'createdAt' => new \DateTime(),
                             'copyright' => 'Crédit Image : VALERY HACHE / AFP',
-                            'sound'=> 'audio.mp3',
-                            'image' => array(
-                                'path' => 'img.jpg',
-                                'src'      => 'http://dummyimage.com/320x404/3498db/.png',
-                                'large'    => 'http://dummyimage.com/640x808/000/fff.png',
+                            'sound'     => 'audio.mp3',
+                            'image'     => array(
+                                'path'  => 'img.jpg',
+                                'src'   => 'http://dummyimage.com/320x404/3498db/.png',
+                                'large' => 'http://dummyimage.com/640x808/000/fff.png',
                             ),
                         ),
                     ),
@@ -189,154 +190,100 @@ class EventController extends Controller
     /**
      * @Route("/events")
      * @Template("FDCEventBundle:Event:list.html.twig")
+     * @param Request $request
      * @return array
      */
     public function getEventsAction(Request $request)
     {
+        $locale = $request->getLocale();
+        $festival = $this->getFestival()->getId();
+
         $this->isPageEnabled($request->get('_route'));
+
+
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageEvent')
+            ->find($this->getParameter('admin_fdc_page_event_id'))
+        ;
+        if (!$page) {
+            throw $this->createNotFoundException('Page event is not well-configured');
+        }
+
         $filters = array(
-            'dates' => array(
+            'dates'  => array(
                 array(
-                    'slug' => 'all',
+                    'slug'    => 'all',
                     'content' => 'Toutes',
                 ),
                 array(
-                    'slug' => 'date1',
+                    'slug'    => 'date1',
                     'content' => 'Date 1',
                 ),
                 array(
-                    'slug' => 'date2',
+                    'slug'    => 'date2',
                     'content' => 'Date 2',
                 ),
                 array(
-                    'slug' => 'date3',
+                    'slug'    => 'date3',
                     'content' => 'Date 3',
                 ),
                 array(
-                    'slug' => 'date4',
+                    'slug'    => 'date4',
                     'content' => 'Date 4',
                 ),
                 array(
-                    'slug' => 'date5',
+                    'slug'    => 'date5',
                     'content' => 'Date 5',
                 ),
                 array(
-                    'slug' => 'date6',
+                    'slug'    => 'date6',
                     'content' => 'Date 6',
                 ),
             ),
             'themes' => array(
                 array(
-                    'slug' => 'all',
+                    'slug'    => 'all',
                     'content' => 'Tous',
                 ),
                 array(
-                    'slug' => 'theme1',
+                    'slug'    => 'theme1',
                     'content' => 'Conférence de presse',
                 ),
                 array(
-                    'slug' => 'theme2',
+                    'slug'    => 'theme2',
                     'content' => 'Montée des marches',
                 ),
             )
         );
 
-        $events = array(
-            array(
-                'slug' => 'rendez-vous-europeens',
-                'theme' => 'Rendez-Vous Européen',
-                'title' => 'Rendez-vous Européen',
-                'createdAt' => new \DateTime(),
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/evenements/evenement1.jpg'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                )
-            ),
-            array(
-                'slug' => 'rendez-vous-europeens',
-                'theme' => 'Rendez-Vous Européen',
-                'title' => 'Rendez-vous Européen',
-                'createdAt' => new \DateTime(),
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/evenements/evenement2.jpg'
-                ),
-                'filter' => array(
-                    'date' => 'date3',
-                    'theme' => 'theme',
-                )
-            ),
-            array(
-                'slug' => 'enrages-polar',
-                'theme' => 'Expositions',
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                'createdAt' => new \DateTime(),
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/evenements/evenement3.jpg'
-                ),
-                'filter' => array(
-                    'date' => 'date4',
-                    'theme' => 'theme2',
-                )
-            ),
-            array(
-                'slug' => 'enrages-polar',
-                'theme' => 'Expositions',
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                'createdAt' => new \DateTime(),
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/evenements/evenement1.jpg'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'all',
-                )
-            ),
-            array(
-                'slug' => 'enrages-polar',
-                'theme' => 'Expositions',
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                'createdAt' => new \DateTime(),
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/evenements/evenement2.jpg'
-                ),
-                'filter' => array(
-                    'date' => 'date2',
-                    'theme' => 'theme1',
-                )
-            ),
-            array(
-                'slug' => 'enrages-polar',
-                'theme' => 'Expositions',
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                'createdAt' => new \DateTime(),
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/evenements/evenement3.jpg'
-                ),
-                'filter' => array(
-                    'date' => 'date1',
-                    'theme' => 'theme1',
-                )
-            ),
-            array(
-                'slug' => 'enrages-polar',
-                'theme' => 'Expositions',
-                'title' => 'Enragés, polar hybride d\'Eric Hannezo',
-                'createdAt' => new \DateTime(),
-                'image' => array(
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/evenements/evenement1.jpg'
-                ),
-                'filter' => array(
-                    'date' => 'date5',
-                    'theme' => 'theme2',
-                )
-            )
-        );
+        $events =
+            $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:Event')
+            ->getEvents($festival, $locale)
+        ;
+
+        $dates = array();
+        $themes = array();
+        foreach ($events as $event) {
+            if ($event instanceof Event) {
+                $key = $event->getPublishedAt()->format('Y-m-d');
+                if (!array_key_exists($key, $dates)) {
+                    $dates[$key] = $event->getPublishedAt();
+                }
+                $key = $event->getTheme()->getId();
+                if (!array_key_exists($key, $themes)) {
+                    $themes[$key] = $event->getTheme();
+                }
+            }
+        }
+        $filters['dates'] = $dates;
+        $filters['themes'] = $themes;
 
         return array(
-            'events' => $events,
+            'page'  => $page,
+            'events'  => $events,
             'filters' => $filters,
         );
     }

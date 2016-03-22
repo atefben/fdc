@@ -60,18 +60,12 @@ class SocialWallInstagramController extends FOSRestController
 
         //create query
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository($this->repository)->findBy(array(
-            'festival' => $festival,
-            'enabledDesktop' => true,
-            'network' => constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_INSTAGRAM')
-            ),
-            array('date' => 'ASC'),
-            null,
-            null);
+        $query = $em->getRepository($this->repository)->getApiSocialWallInstagram($festival);
 
-        // get items, passing options to fix Cannot count query which selects two FROM components, cannot make distinction
+        // get items
+        $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
-        $items = $coreManager->getPaginationItems($query, $paramFetcher, array('distinct' => false));
+//        dump($query->getQuery()->getResult());exit;
 
         // set context view
         $groups = array('social_wall_list');

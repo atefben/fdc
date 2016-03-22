@@ -22,18 +22,26 @@ class EventWidgetAudioType extends EventWidgetType
      * @access protected
      */
     protected $dataClass = 'Base\\CoreBundle\\Entity\\EventWidgetAudio';
-    
+
     /**
      * admin
-     * 
+     *
      * @var mixed
      * @access private
      */
     private $admin;
-    
+
+    /**
+     * mediaAudioAdmin
+     *
+     * @var mixed
+     * @access private
+     */
+    private $mediaAudioAdmin;
+
     /**
      * setSonataAdmin function.
-     * 
+     *
      * @access public
      * @param mixed $admin
      * @return void
@@ -43,9 +51,14 @@ class EventWidgetAudioType extends EventWidgetType
         $this->admin = $admin;
     }
 
+    public function setMediaAudioAdmin($mediaAudioAdmin)
+    {
+        $this->mediaAudioAdmin = $mediaAudioAdmin;
+    }
+
     /**
      * buildForm function.
-     * 
+     *
      * @access public
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -54,15 +67,14 @@ class EventWidgetAudioType extends EventWidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-       /* $builder->add('gallery', 'sonata_type_model', array(
-            'model_manager' => $this->admin->getModelManager(),
-            'class' => $this->admin->getClass()
-        ));*/
 
-      /*  $builder->add('file', 'sonata_type_model', array(
-            'model_manager' => $this->admin->getModelManager(),
-            'class' => $this->admin->getClass()
-        ));*/
+        $builder->add('file', 'sonata_type_model_list', array(
+            'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['file'],
+            'model_manager' => $this->mediaAudioAdmin->getModelManager(),
+            'class' => $this->mediaAudioAdmin->getClass(),
+            'btn_delete' => false,
+            'label' => false
+        ));
     }
 
     /**

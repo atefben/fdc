@@ -20,7 +20,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * SocialWall
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\SocialWallRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class SocialWall implements SocialWallInterface

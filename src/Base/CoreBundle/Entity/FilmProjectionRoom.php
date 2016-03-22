@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use Base\CoreBundle\Util\Time;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use JMS\Serializer\Annotation\Groups;
@@ -13,7 +14,7 @@ use JMS\Serializer\Annotation\Since;
  * FilmProjectionRoom
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmProjectionRoomRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FilmProjectionRoom
@@ -46,6 +47,9 @@ class FilmProjectionRoom
      * @var string
      *
      * @ORM\OneToMany(targetEntity="FilmProjection", mappedBy="room")
+     * @Groups({
+     *  "projection_list", "projection_show"
+     * })
      */
     private $projections;
     /**
@@ -141,5 +145,16 @@ class FilmProjectionRoom
     public function getProjections()
     {
         return $this->projections;
+    }
+
+    /**
+     * @param ArrayCollection $projections
+     * @return ArrayCollection|string
+     */
+    public function setProjections(ArrayCollection $projections)
+    {
+        $this->projections = $projections;
+
+        return $this;
     }
 }

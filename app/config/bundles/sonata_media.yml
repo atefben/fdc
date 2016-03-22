@@ -119,6 +119,8 @@ sonata_media:
                 135x185: { width: 135 , height: 185 , quality: 100 }
                 # Grid Press Download #
                 146x146: { width: 146 , height: 146 , quality: 100 }
+                # Event list #
+                976x615: { width: 976 , height: 615 , quality: 100 }
                 ##### OLDS #####
                 1980x300: { width: 1980 , height: 300 , quality: 100 }
 
