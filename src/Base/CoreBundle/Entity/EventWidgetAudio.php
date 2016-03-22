@@ -16,7 +16,7 @@ use Base\CoreBundle\Util\Time;
 class EventWidgetAudio extends EventWidget
 {
     /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
+     * @var \Application\Sonata\MediaBundle\Entity\Media
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)

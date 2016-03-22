@@ -391,6 +391,7 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    # event widgets
     base.admin.event_widget_image_dummy:
         class: Base\AdminBundle\Admin\EventWidgetImageDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\EventWidgetImage, BaseAdminBundle:EventWidgetImageDummyAdmin]
@@ -399,13 +400,62 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.event_widget_audio_dummy:
+        class: Base\AdminBundle\Admin\EventWidgetAudioDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventWidgetAudio, BaseAdminBundle:EventWidgetAudioDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: EventWidgetAudio, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.event_widget_image_dual_align_dummy:
+        class: Base\AdminBundle\Admin\EventWidgetImageDualAlignDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventWidgetImageDualAlign, BaseAdminBundle:EventWidgetImageDualAlignDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: EventWidgetImageDualAlign, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.event_widget_quote_dummy:
+        class: Base\AdminBundle\Admin\EventWidgetQuoteDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventWidgetQuote, BaseAdminBundle:EventWidgetQuoteDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: EventWidgetQuote}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.event_widget_text_dummy:
+        class: Base\AdminBundle\Admin\EventWidgetTextDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventWidgetText, BaseAdminBundle:EventWidgetTextDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: EventWidgetText, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.event_widget_video_dummy:
+        class: Base\AdminBundle\Admin\EventWidgetVideoDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventWidgetVideo, BaseAdminBundle:EventWidgetVideoDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: EventWidgetVideo, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.event_widget_video_youtube_dummy:
+        class: Base\AdminBundle\Admin\EventWidgetVideoYoutubeDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventWidgetVideoYoutube, BaseAdminBundle:EventWidgetVideoYoutubeDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: EventWidgetVideoYoutube, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+     #end event widgets
+
     base.admin.news_widget_audio_dummy:
         class: Base\AdminBundle\Admin\NewsWidgetAudioDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\NewsWidgetAudio, BaseAdminBundle:NewsWidgetAudioDummyAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: News Widget Audio, show_in_dashboard: false}
         calls:
-             - [ setTranslationDomain, ['BaseAdminBundle']]
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.news_widget_image_dummy:
         class: Base\AdminBundle\Admin\NewsWidgetImageDummyAdmin
