@@ -59,7 +59,8 @@ function initPopinMail(cls){
   });
 
   // on submit : check if there are errors in the form
-  $(cls+' form').on('submit', function() {
+  $(cls+' form').on('submit', function(e) {
+    var $that = $(this);
     var empty = false;
 
     if($('select').val() == 'default') {
@@ -82,12 +83,28 @@ function initPopinMail(cls){
       return false;
     } else {
       // TODO envoie du mail //
-      $('#form').remove();
-      $('.info-popin').remove();
-      $('.contain-popin').append('<div class="valid">'+GLOBALS.texts.popin.valid+'</div>');
-      $(cls).css('height','31%');
+      var u = $(cls).hasClass('media') ? GLOBALS.urls.shareEmailMediaUrl : GLOBALS.urls.shareEmailUrl;
 
-      return false;
+      $.ajax({
+        type     : "POST",
+        dataType : "json",
+        cache    : false,
+        url      : u,
+        data     : $(cls).find('form#form').serialize(),
+        success: function (data) {
+          if (data.success == false) {
+
+          }
+          else {
+            // TODO envoie du mail //
+            $(cls).find('#form').remove();
+            $(cls).find('.info-popin').remove();
+            $(cls).find('.contain-popin').append('<div class="valid">' + GLOBALS.texts.popin.valid + '</div>');
+            $(cls).css('height', '31%');
+            return false;
+          }
+        }
+      });
     }
   });
 }
