@@ -15,6 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -45,6 +47,15 @@ class EventTranslation implements TranslateChildInterface
      * @Groups({"news_list", "news_show", "event_list", "event_show"})
      */
     private $introduction;
+
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
 
     /**
      * Constructor
@@ -98,5 +109,28 @@ class EventTranslation implements TranslateChildInterface
     public function getIntroduction()
     {
         return $this->introduction;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return EventTranslation
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

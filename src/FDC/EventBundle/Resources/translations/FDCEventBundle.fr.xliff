@@ -1687,6 +1687,12 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
         <jms:reference-file line="113">views/Television/channel.html.twig</jms:reference-file>
         <jms:reference-file line="121">views/Television/live.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="breadcrumb.event.list" resname="breadcrumb.event.list">
+        <source>breadcrumb.event.list</source>
+        <target>Évènements</target>
+        <jms:reference-file line="113">views/Television/channel.html.twig</jms:reference-file>
+        <jms:reference-file line="121">views/Television/live.html.twig</jms:reference-file>
+      </trans-unit>
     </body>
   </file>
 </xliff>
