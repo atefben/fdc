@@ -60,14 +60,7 @@ class SocialWallMobileController extends FOSRestController
 
         //create query
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository($this->repository)->findBy(array(
-            'festival'      => $festival,
-            'enabledMobile' => true
-        ),
-            array('date' => 'ASC'),
-            null,
-            null)
-        ;
+        $query = $em->getRepository($this->repository)->getApiSocialWallMobile($festival);
 
         // get items, passing options to fix Cannot count query which selects two FROM components, cannot make distinction
 
