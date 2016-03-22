@@ -6,17 +6,28 @@
             <h2>{{ 'home.prefooter.title.vivezlefestivaldecannes'|trans }}</h2>
             <h3 class="subtitle">{{ 'home.prefooter.subtitle.suivezlefestival'|trans }}</h3>
             <ul>
+                {% if homepage|trans_fallback('prefooterTitle1') != null %}
                 <li><a href="{{ homepage|trans_fallback('prefooterUrl1') }}" class="active" target="_blank">{{ homepage|trans_fallback('prefooterTitle1') }}</a></li>
+                {% endif %}
+
+                {% if homepage|trans_fallback('prefooterTitle2') != null %}
                 <li><a href="{{ homepage|trans_fallback('prefooterUrl2') }}">{{ homepage|trans_fallback('prefooterTitle2') }}</a></li>
+                {% endif %}
+
+                {% if homepage|trans_fallback('prefooterTitle3') != null %}
                 <li><a href="{{ homepage|trans_fallback('prefooterUrl3') }}" target="_blank">{{ homepage|trans_fallback('prefooterTitle3') }}</a></li>
+                {% endif %}
+
+                {% if homepage|trans_fallback('prefooterTitle4') != null %}
                 <li><a href="{{ homepage|trans_fallback('prefooterUrl4') }}">{{ homepage|trans_fallback('prefooterTitle4') }}</a></li>
+                {% endif %}
             </ul>
         </div>
         <div id="slider-prefooter" class="owl-carousel">
             {% if homepage.prefooterImage1 is not null %}
                 {% set trans = homepage.prefooterImage1.findTranslationByLocale(app.request.locale) %}
-                {% if trans is null or trans.file is not null %}
-                    {% set trans = homepage.prefooterImage1 .findTranslationByLocale('fr') %}
+                {% if trans is null %}
+                    {% set trans = homepage.prefooterImage1.findTranslationByLocale('fr') %}
                 {% endif %}
             <div class="imgSlide active bottom">
                 <div class="vCenter">
@@ -27,9 +38,9 @@
             </div>
             {% endif %}
             {% if homepage.prefooterImage2 is not null %}
-                {% set trans = homepage.prefooterImage1.findTranslationByLocale(app.request.locale) %}
+                {% set trans = homepage.prefooterImage2.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is not null %}
-                    {% set trans = homepage.prefooterImage1 .findTranslationByLocale('fr') %}
+                    {% set trans = homepage.prefooterImage2.findTranslationByLocale('fr') %}
                 {% endif %}
             <div class="imgSlide bottom">
                 <div class="vCenter">
@@ -40,9 +51,9 @@
             </div>
             {% endif %}
             {% if homepage.prefooterImage3 is not null %}
-                {% set trans = homepage.prefooterImage1.findTranslationByLocale(app.request.locale) %}
+                {% set trans = homepage.prefooterImage3.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is not null %}
-                    {% set trans = homepage.prefooterImage1 .findTranslationByLocale('fr') %}
+                    {% set trans = homepage.prefooterImage3.findTranslationByLocale('fr') %}
                 {% endif %}
             <div class="imgSlide">
                 <div class="vCenter">
@@ -53,9 +64,9 @@
             </div>
             {% endif %}
             {% if homepage.prefooterImage4 is not null %}
-                {% set trans = homepage.prefooterImage1.findTranslationByLocale(app.request.locale) %}
+                {% set trans = homepage.prefooterImage4.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is not null %}
-                    {% set trans = homepage.prefooterImage1 .findTranslationByLocale('fr') %}
+                    {% set trans = homepage.prefooterImage4 .findTranslationByLocale('fr') %}
                 {% endif %}
             <div class="imgSlide top">
                 <div class="vCenter">

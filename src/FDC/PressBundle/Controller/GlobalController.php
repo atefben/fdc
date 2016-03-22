@@ -81,7 +81,7 @@ class GlobalController extends Controller
 
     /**
      * @Route("/programmation/day-projections", options={"expose"=true}))
-     * @Template("FDCEventBundle:Global:projection.html.twig")
+     * @Template("FDCPressBundle:Global:projection.html.twig")
      * @param Request $request
      * @return array
      */
@@ -91,18 +91,49 @@ class GlobalController extends Controller
 
         $date = $request->get('date');
 
-        $projection = array();
+        $dayProjection = array();
         if ( $request->headers->get('host') == $this->getParameter('fdc_press_domain') ) {
+
             // GET DAY PROJECTIONS
-            $projection = $em->getRepository('BaseCoreBundle:FilmProjection')
+            $dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
                 ->getProjectionByDate($date);
 
+            $path = $request->headers->get('referer');
+            if ($path !== null) {
+                $path = parse_url($path)['path'];
+                if (strpos($path, '/app_dev.php') !== false) {
+                    $path = explode('/', $path);
+                    unset($path[1]);
+                    $path = implode('/', $path);
+                }
+                $router = $this->get('router');
+                $route = $router->match($path)['_route'];
+                // If we are on homepage
+                if ($route == 'fdc_press_news_home') {
+                    // Event have to be in 5h max
+                    $hourRange = array();
+                    $newDate = new \DateTime;
+                    $endHour = $newDate->modify('+ 5 hour')->format('H');
+
+                    while ($date->format('H') <= $endHour) {
+
+                        array_push($hourRange, $date->format('H'));
+                        $date->modify('+ 1 hour')->format('H');
+                    }
+
+                    foreach ( $dayProjection as $key => $projection ) {
+                        if (!in_array($projection->getStartsAt()->format('H'), $hourRange)) {
+                            unset($dayProjection[$key]);
+                        }
+                    }
+                }
+            }
         }
         else {
             // Grab Event Site projections
         }
         return array(
-            'dayProjection' => $projection,
+            'dayProjection' => $dayProjection,
         );
     }
 

@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 * HomepageSlide
 *
 * @ORM\Table()
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\HomepageSlideRepository")
 * @ORM\HasLifecycleCallbacks()
 */
 class HomepageSlide

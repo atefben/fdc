@@ -2,6 +2,9 @@
 
 namespace Base\ApiBundle\Controller;
 
+use Base\CoreBundle\Entity\FilmProjection;
+use Base\CoreBundle\Entity\FilmProjectionRoom;
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
@@ -14,6 +17,8 @@ use JMS\Serializer\SerializationContext;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\DateTime;
+
 /**
  * FilmProjectionController class.
  * 
@@ -41,8 +46,7 @@ class FilmProjectionController extends FOSRestController
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
-     * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
-     * @Rest\QueryParam(name="day", description="The date of the day (YYYY-mm-dd format). Exemple: 2O15-03-29")
+     * @Rest\QueryParam(name="time", description="Timestamp of the day")
      * @Rest\QueryParam(name="film_id", description="The film id")
      * @Rest\QueryParam(name="festival_id", description="The festival year")
      *
@@ -57,21 +61,38 @@ class FilmProjectionController extends FOSRestController
         // get festival
         $festival = $coreManager->getApiFestivalYear();
 
-        $queryBuilder = $this
+
+        $time = $paramFetcher->get('time') ? $paramFetcher->get('time') : time();
+        $filmId = $paramFetcher->get('film_id') ? $paramFetcher->get('film_id') : null;
+        $rooms = $this
             ->getDoctrine()
-            ->getRepository($this->repository)
-            ->getApiProjections($festival, $paramFetcher->get('day'), $paramFetcher->get('film_id'))
+            ->getRepository('BaseCoreBundle:FilmProjectionRoom')
+            ->getApiRooms($festival, $time, $filmId)
+            ->getQuery()
+            ->getResult()
         ;
 
-        // get items
-        $items = $coreManager->getPaginationItems($queryBuilder, $paramFetcher);
+        $date = new \DateTime();
+        $date->setTimestamp($time);
 
-        // set context view
+        foreach ($rooms as &$room) {
+            $ac = new ArrayCollection();
+            if ($room instanceof FilmProjectionRoom) {
+                foreach ($room->getProjections() as $projection) {
+                    if ($projection instanceof FilmProjection) {
+                        if ($projection->getStartsAt()->format('d-m-y') === $date->format('d-m-y')) {
+                            $ac->add($projection);
+                        }
+                    }
+                }
+            }
+            $room->setProjections($ac);
+        }
         $groups = array('projection_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
 
         // create view
-        $view = $this->view($items, 200);
+        $view = $this->view($rooms, 200);
         $view->setSerializationContext($context);
 
         return $view;

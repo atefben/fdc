@@ -55,6 +55,31 @@ class FilmPerson implements TranslateMainInterface
     private $id;
 
     /**
+     * @var MediaImageSimple
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $portraitImage;
+
+    /**
+     * @var MediaImageSimple
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $landscapeImage;
+
+    /**
+     * Image to use: false = portaitImage, true landscapeImage
+     * @var bool
+     * @ORM\Column(type="bigint")
+     */
+    private $displayedImage = false;
+
+    /**
+     * @var MediaImageSimple
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $presidentJuryImage;
+
+    /**
      * @var string
      *
      * @Gedmo\Slug(fields={"firstname", "lastname"}, updatable=false)
@@ -664,5 +689,97 @@ class FilmPerson implements TranslateMainInterface
     public function getNationality2()
     {
         return $this->nationality2;
+    }
+
+    /**
+     * Set displayedImage
+     *
+     * @param integer $displayedImage
+     * @return FilmPerson
+     */
+    public function setDisplayedImage($displayedImage)
+    {
+        $this->displayedImage = $displayedImage;
+
+        return $this;
+    }
+
+    /**
+     * Get displayedImage
+     *
+     * @return integer 
+     */
+    public function getDisplayedImage()
+    {
+        return $this->displayedImage;
+    }
+
+    /**
+     * Set portraitImage
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $portraitImage
+     * @return FilmPerson
+     */
+    public function setPortraitImage(\Base\CoreBundle\Entity\MediaImageSimple $portraitImage = null)
+    {
+        $this->portraitImage = $portraitImage;
+
+        return $this;
+    }
+
+    /**
+     * Get portraitImage
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPortraitImage()
+    {
+        return $this->portraitImage;
+    }
+
+    /**
+     * Set landscapeImage
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $landscapeImage
+     * @return FilmPerson
+     */
+    public function setLandscapeImage(\Base\CoreBundle\Entity\MediaImageSimple $landscapeImage = null)
+    {
+        $this->landscapeImage = $landscapeImage;
+
+        return $this;
+    }
+
+    /**
+     * Get landscapeImage
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getLandscapeImage()
+    {
+        return $this->landscapeImage;
+    }
+
+    /**
+     * Set presidentJuryImage
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $presidentJuryImage
+     * @return FilmPerson
+     */
+    public function setPresidentJuryImage(\Base\CoreBundle\Entity\MediaImageSimple $presidentJuryImage = null)
+    {
+        $this->presidentJuryImage = $presidentJuryImage;
+
+        return $this;
+    }
+
+    /**
+     * Get presidentJuryImage
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPresidentJuryImage()
+    {
+        return $this->presidentJuryImage;
     }
 }

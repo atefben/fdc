@@ -12,7 +12,7 @@
 {% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
     {% set articleFormat = "image" %}
 {% endif %}
-<div class="item all {{ articleType }} {{ article.theme|trans_fallback('slug') }} d{{ article.publishedAt|date('Y') }} article">
+<div class="item all {{ articleType }} theme-{{ article.theme.id }} d{{ article.publishedAt|date('Y') }} article">
     <article class="article">
         <div class="img">
             <span class="picto">
@@ -107,10 +107,6 @@
 
                     {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
                 {% endif %}
-            </a>
-            <a href="#" class="read-later">
-                <i class="icon icon_lire-plus-tard"></i>
-                <span>{{ 'article.list.btn.ajouteramaselection'|trans }}</span>
             </a>
         </div>
         <div class="info">

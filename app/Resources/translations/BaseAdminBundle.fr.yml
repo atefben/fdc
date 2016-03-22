@@ -64,10 +64,12 @@ breadcrumb:
     link_f_d_c_page_la_selection_list: La sélection
     link_f_d_c_page_jury_list: Les jurys
     link_f_d_c_page_award_list: Le palmarès
+    link_f_d_c_page_event_list: Page - Les événements
 link:
     action_soif_refresh: Mettre à jour
 
 homepage:
+    big_push: (GRAND PUSH)
     group:
         social_wall: Social Wall
         push_main: Pushs Principaux
@@ -292,6 +294,8 @@ list:
         label_title: Titre de la procédure
     cinema_room:
         label_title: Nom de la salle
+    press_download:
+        label_title: Nom de la section
 
 filter:
     label_have_trailer: Afficher film avec bande annonce
@@ -422,6 +426,7 @@ dashboard:
         fdc_page_award_cinefondation: Le palmarès CINEFONDATION
         fdc_page_award_camera_dor: Le palmarès CAMERA D'OR
         fdc_page_award_all_awards: Le palmarès TOUT LE PALMARES
+        fdc_page_event: TOUS LES EVENEMENTS
         press_homepage: Homepage
         press_guide: Guide pratique
         press_contact: Contactez-nous
@@ -457,6 +462,7 @@ form:
         helper_films_associated: Sélectionnez de 1 à 5 films et leurs boucles vidéos associées. Ils apparaitront en front-office dans l'ordre des champs.
         helper_pushes : Format de l'image recommandé : 650x410
         helper_prefooter: Format de l'image recommandé : 1954x1200
+        helper_pushes_grand: Format de l'image recommandé : 1300x410
     flashbag:
         modified: Modification effectuée.
     settings:
@@ -648,7 +654,8 @@ form:
     label_download_section: Sections à télécharger
     label_map_img: Image de la salle
     label_map_zone_img: Image de la zone
-    label_map_default_img: Image du plan
+    label_map_default_img: Image de la salle du festival par default
+    label_zone_default_img: Image de la zone du festival par default
     label_page: Page
     label_text: Texte
     label_banner: Bannière
@@ -657,6 +664,8 @@ form:
     label_image_main: Image principale
     label_image_cover: Image cover
     label_video_main: Vidéo principale
+    label_procedure_file : Fichier procédure
+    label_procedure_second_file : Fichier procédure (en)
     gallery:
         medias: Médias
     encoding_state:
@@ -757,7 +766,37 @@ form:
     fdc_page_jury:
         label_jury_type: Type de jury
         label_override_name: Nom apparaissant dans l'onglet
+    film_person:
+        general: Informations générales
+        label_portrait_image: Image portrait
+        helper_portrait_image: Dimensions attendues :  584x794 - ratio portrait. Format Attendu.
+        label_landscape_image: Image paysage
+        helper_landscape_image: Dimensions attendues : 1946x1226 - ratio portrait. Format Attendu.
+        label_displayed_image: Image affichée sur la fiche personne
+        help_displayed_image: Au choix, l'image portrait ou l'image paysage.
+        label_chose_portrait_image: Image portrait
+        label_chose_landscape_image: Image paysage
+        president_jury: Président du jury
+        label_president_jury_image: Image portrait
+        help_president_jury_image: Dimensions attendues : 1600x1510 - ratio paysage. Format Attendu. Affichée uniquement sur la page Les jurys.
+    fdc_page_event:
+        helper_seo: |
+            <title> : Tous les événements - Festival de Cannes 2016
+            meta desc  : Retrouvez tous les événements de l'édition 2016 du Festival de Cannes
 
+            og:site_name : Festival de Cannes 2016
+            og:type : website
+            og:title : Tous les événements - Festival de Cannes 2016
+            og:description : Retrouvez tous les événements de l'édition 2016 du Festival de Cannes
+            og:url : [URL page]
+            og:image : [preset dernier article remonté]
+
+            twitter:card : summary_large_image
+            twitter:site : Festival de Cannes 2016
+            twitter:creator : @Festival_Cannes
+            twitter:title : Tous les événéments - Festival de Cannes 2016
+            twitter:description : Retrouvez tous les événements de l'édition 2016 du Festival de Cannes
+            twitter:image : [preset dernier article remonté]
 
 nav:
     site_modal: Ouvrir la sélection des sites
@@ -828,3 +867,4 @@ FDCPageWebTvTrailers: Page WebTV - Les bandes-annonces - Compétition
 FDCPageLaSelection: Page la sélection
 FilmJuryType: Type des jurys
 FilmSelectionSection: Sélections
+FDCPageEvent: Page les événements

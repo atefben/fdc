@@ -100,6 +100,7 @@ class PressGuideWidgetColumnType extends PressGuideWidgetType
                 'model_manager' => $this->PressGuideWidgetColumnDummyAdmin->getModelManager(),
                 'class' => $this->PressGuideWidgetColumnDummyAdmin->getFormFieldDescriptions()['gallery']->getAssociationAdmin()->getClass(),
                 'label' => 'form.label_image',
+                'required' => false
             ));
 
     }

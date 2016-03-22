@@ -18,10 +18,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressDownloadSection
+class PressDownloadSection implements TranslateMainInterface
 {
     use Time;
     use Translatable;
+    use TranslateMain;
 
     /**
      * @var integer
@@ -53,6 +54,24 @@ class PressDownloadSection
     {
         $this->translations = new ArrayCollection();
         $this->widgets = new ArrayCollection();
+    }
+
+    /**
+     * findTranslationByLocale function.
+     *
+     * @access public
+     * @param mixed $locale
+     * @return void
+     */
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
     }
 
     public function __toString()

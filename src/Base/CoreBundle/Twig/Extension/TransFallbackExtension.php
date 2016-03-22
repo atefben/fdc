@@ -22,6 +22,7 @@ class TransFallbackExtension extends Twig_Extension
         $this->localeFallback = $localeFallback;
         $this->requestStack = $requestStack;
     }
+
     public function getFilters()
     {
         return array(

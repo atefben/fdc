@@ -284,7 +284,7 @@ file that was distributed with this source code.
                                                                     {% endif %}
                                                                 {% endfor %}
                                                             {% endif %}
-                                                            {% if app.security.token and is_granted('ROLE_FDC_SETTINGS') %}
+                                                            {% if app.security.token and is_granted('ROLE_FDC_SETTINGS') and group.label == 'dashboard.group.general' %}
                                                                 <li>
                                                                     <a href="{{ path('base_admin_settings_index') }}">
                                                                         <i class="fa fa-angle-double-right"></i>

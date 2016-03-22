@@ -7,47 +7,53 @@
 // 1. Global
 // =========================
 
-.practicalguide{
-  .header-press{
+.practicalguide {
+  .header-press {
     border-bottom: 1px solid #e3e3e3 !important;
   }
-  #praticalguide{
-    .container-pguide{
+
+  #praticalguide {
+    .container-pguide {
       border-bottom: 1px solid #e5e5e5;
       max-height: 95px;
       min-height: 95px;
       overflow: hidden;
       @include transition(all 0.5s $linear);
-      .wrapper{
+
+      .wrapper {
         width: 976px;
         margin: 0 auto;
         margin-top: 38px;
         position: relative;
         margin-bottom: 43px;
-        .contain-title-pg{
-            .title-pguide{
-              color:#999;
-              letter-spacing: .2em;
-              font-size: 0.88rem;
-              font-family: $CamphorBold;
-              text-transform: uppercase;
-              @include transition(all 0.5s $linear);
-              cursor: pointer;
-              margin-bottom: 46px;
 
-              .icon {
-                font-size: 1.3rem;
-                margin-right: 22px;
-                vertical-align: sub !important;
-              }
+        .contain-title-pg {
+          .title-pguide {
+            color:#999;
+            letter-spacing: .2em;
+            font-size: 0.88rem;
+            font-family: $CamphorBold;
+            text-transform: uppercase;
+            @include transition(all 0.5s $linear);
+            cursor: pointer;
+            margin-bottom: 46px;
+
+            .icon {
+              font-size: 1.3rem;
+              margin-right: 22px;
+              vertical-align: sub !important;
             }
-          .title-pguide:hover{
+          }
+
+          .title-pguide:hover {
             color:#c8a461;
           }
-          .accordion{
+
+          .accordion {
             position: absolute;
           }
-          .icon_case-plus{
+
+          .icon_case-plus {
             font-size: 2.7rem;
             top: -5px;
             right: 0px;
@@ -56,151 +62,177 @@
             position: absolute;
           }
         }
-        .contain-article{
-          .aside{
+
+        .contain-article {
+          .aside {
             width: 364px;
             display: inline-block;
             margin-right: 53px;
-            img{
+
+            img {
               margin-bottom: 36px;
             }
-            .container-infos{
+
+            .container-infos {
               margin-bottom: 40px;
             }
-            .container-infos:last-child{
+
+            .container-infos:last-child {
               margin-bottom: 36px;
             }
-            .container-infos{
+
+            .container-infos {
               padding: 29px;
               border: 1px solid #d8c29f;
               padding-bottom: 22px;
-              .container-title{
+
+              .container-title {
                 font-size: 0.75rem;
                 letter-spacing: .2em;
                 font-family: $CamphorBold;
                 text-transform: uppercase;
                 line-height: 16px;
               }
-              .infos{
+
+              .infos {
                 margin-top:16px;
                 line-height: 24px;
                 font-size: 0.81rem;
-                .date{
+
+                .date {
                   font-family: $CamphorItalic;
                   font-size: 0.81rem;
                   display: block;
                 }
-                .name{
+
+                .name {
                   font-family: $CamphorBold;
                   font-size: 0.81rem;
                 }
-                .addr{
+
+                .addr {
                   color: #c29f5f;
                   text-decoration: underline;
                   font-family: $CamphorRegular;
                   @include transition(all 0.5s $linear);
                 }
-                .addr:hover{
+
+                .addr:hover {
                    color:#8e6d30;
                 }
-                .num{
+
+                .num {
                   display:block;
                   font-size: 0.81rem;
                 }
               }
             }
           }
-          .texts{
+
+          .texts {
             width: 552px;
             display: inline-block;
             vertical-align: top;
-            strong{
+
+            strong {
               color:#000;
               letter-spacing: .2em;
               font-size: 0.75rem;
               font-family: $CamphorBold;
               text-transform: uppercase;
             }
-            p{
+
+            p {
               line-height: 24px;
               font-size: 0.81rem;
               font-family: $CamphorRegular;
               padding-top: 8px;
               padding-bottom: 38px;
-              a{
+
+              a {
                 color: #c29f5f;
                 text-decoration: underline;
                 font-size: 0.81rem;
                 @include transition(all 0.5s $linear);
               }
-              a:hover{
+
+              a:hover {
                  color: #8e6d30;
               }
-              .media{
+
+              .media {
                 font-family: $CamphorBold;
               }
             }
           }
         }
-        .pictos-service{
-          .contain-service{
-            width: 486px;
-            text-align: center;
-            display: inline-block;
-            margin-top: 5px;
-            vertical-align: text-top;
-            .icon{
-              font-size: 3rem;
-              margin-bottom: 12px;
-              color: #B5B5B5;
-            }
-            .icon_casier{
-              font-size: 2rem;
-              margin-bottom: 26px;
-            }
-            .icon_plateau-tv{
-              font-size: 2.4rem;
-              margin-bottom: 22px;
-            }
-            .icon_zone-media{
-              font-size: 2.4rem;
-              margin-bottom: 22px;
-            }
-            .icon_divers{
-              font-size: 2.4rem;
-              margin-bottom: 22px;
-            }
-            strong{
-              display: block;
-              letter-spacing: .2em;
-              color:#000;
-              text-transform: uppercase;
-              font-family: $CamphorBold;
-              font-size: 0.75rem;
-              padding-bottom: 30px;
-            }
-            p{
-              display: block;
-              width: 370px;
-              margin:0 auto;
-              line-height: 24px;
-              font-size: 0.81rem;
-              font-family: $CamphorRegular;
-              height: 137px;
-            }
+        
+        .contain-service {
+          width: 486px;
+          text-align: center;
+          display: inline-block;
+          margin-top: 5px;
+          vertical-align: text-top;
+
+          .icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            color: #B5B5B5;
+          }
+
+          .icon_casier {
+            font-size: 2rem;
+            margin-bottom: 26px;
+          }
+
+          .icon_plateau-tv {
+            font-size: 2.4rem;
+            margin-bottom: 22px;
+          }
+
+          .icon_zone-media {
+            font-size: 2.4rem;
+            margin-bottom: 22px;
+          }
+
+          .icon_divers {
+            font-size: 2.4rem;
+            margin-bottom: 22px;
+          }
+
+          strong {
+            display: block;
+            letter-spacing: .2em;
+            color:#000;
+            text-transform: uppercase;
+            font-family: $CamphorBold;
+            font-size: 0.75rem;
+            padding-bottom: 30px;
+          }
+
+          p {
+            display: block;
+            width: 370px;
+            margin:0 auto 20px auto;
+            line-height: 24px;
+            font-size: 0.81rem;
+            font-family: $CamphorRegular;
+            min-height: 117px;
           }
         }
       }
     }
-    .container-pguide.active{
+    .container-pguide.active {
       min-height: auto;
       max-height: 3000px;
       overflow: auto;
-      .contain-title-pg{
-        .title-pguide{
+
+      .contain-title-pg {
+        .title-pguide {
           color:#c9a562;
         }
-        .icon_moins{
+
+        .icon_moins {
           top: 10px;
           right: 15px;
           font-size: .7rem;

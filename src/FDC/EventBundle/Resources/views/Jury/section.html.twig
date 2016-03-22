@@ -27,9 +27,13 @@
                 <section class="categorie-items contain-jury">
                     {% if president %}
                         <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}">
-                            {% if president['film_media'] %}
+                            {% if president['jury'].person.presidentJuryImage and president['jury'].person.presidentJuryImage|trans_fallback('file') %}
                                 <div class="photo-jury"
-                                     style="background-image:url({% path president['film_media'].file, '384x485' %})">
+                                     style="background-image:url({% path president['jury'].person.presidentJuryImage|trans_fallback('file'), '384x485' %})">
+                                </div>
+                            {% elseif president['film_media'] %}
+                                <div class="photo-jury"
+                                     style="background-image:url({% path president['film_media'], '384x485' %})">
                                 </div>
                             {% else %}
                                 <div class="photo-jury"
@@ -57,6 +61,9 @@
                                     <div class="image">
                                         {% if member['film_media'] %}
                                             <img src="{% path member['film_media'].file, '384x485' %}"
+                                                 alt="{{ member['jury'].person.lastname }} {{ member['jury'].person.firstname }}">
+                                        {% elseif member['jury'].person.portraitImage and member['jury'].person.portraitImage|trans_fallback('file') %}
+                                            <img src="{% path member['jury'].person.portraitImage|trans_fallback('file'), '384x485' %}"
                                                  alt="{{ member['jury'].person.lastname }} {{ member['jury'].person.firstname }}">
                                         {% else %}
                                             <img src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}"

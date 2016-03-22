@@ -74,21 +74,24 @@ class PressAccreditAdmin extends Admin
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_content',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'widget'
+                        'config_name' => 'press'
                     ),
                     'btnLabel' => array(
                         'label' => 'form.label_btn',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                     ),
                     'btnLink' => array(
                         'label' => 'form.label_btn_link',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                     ),
                     'btnText' => array(
                         'label' => 'form.label_btn_text',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                     ),
                     'status' => array(
                         'label' => 'form.label_status',
@@ -127,14 +130,7 @@ class PressAccreditAdmin extends Admin
             ->add('procedure', 'sonata_type_collection',
                 array(
                     'type_options' => array(
-                        'delete' => false,
-                        'delete_options' => array(
-                            'type'         => 'hidden',
-                            'type_options' => array(
-                                'mapped'   => false,
-                                'required' => false,
-                            )
-                        )
+                        'delete' => true,
                     ),
                     'cascade_validation' => true,
                     'by_reference' => false,

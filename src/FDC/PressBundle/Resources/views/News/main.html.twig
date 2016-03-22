@@ -49,10 +49,12 @@
                 <div class="chapeau">{{ news|trans_fallback('introduction')|raw }}</div>
 
                 {% for widget in news.widgets %}
-                    {% if class(widget) == "StatementWidgetImage" or class(widget) == "InfoWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
+                    {% if class(widget) == "StatementWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1
+                       or class(widget) == "InfoWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
                         {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : widget.gallery.medias[0].media } %}
-                    {% elseif class(widget) == "StatementWidgetImage" or class(widget) == "InfoWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
-                        {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
+                    {% elseif class(widget) == "StatementWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length > 1
+                       or class(widget) == "InfoWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
+                        {% include 'FDCPressBundle:News:widgets/slideshow.html.twig' %}
                     {% elseif class(widget) == "StatementWidgetText" or class(widget) == "InfoWidgetText" %}
                         {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
                     {% elseif class(widget) == "StatementWidgetVideo" or class(widget) == "InfoWidgetVideo" %}

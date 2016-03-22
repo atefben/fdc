@@ -2,22 +2,30 @@
 
 namespace Base\CoreBundle\Repository;
 
+use Base\CoreBundle\Entity\FilmPerson;
 use Base\CoreBundle\Interfaces\FilmFunctionInterface;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 
 /**
  * FilmPersonRepository class.
  *
  * \@extends EntityRepository
- *  @author   Antoine Mineau
+ * @author   Antoine Mineau
  * \@company Ohwee
  */
 class FilmPersonRepository extends EntityRepository
 {
-    public function getArtist($locale, $slug)
+    /**
+     * @param $slug
+     * @return FilmPerson
+     * @throws NonUniqueResultException
+     */
+    public function getArtist($slug)
     {
-        return $this->createQueryBuilder('fp')
+        return $this
+            ->createQueryBuilder('fp')
             ->leftJoin('fp.translations', 'fpt')
             ->leftJoin('fp.nationality', 'fpc')
             ->leftJoin('fpc.translations', 'fpct')
@@ -26,25 +34,38 @@ class FilmPersonRepository extends EntityRepository
             ->where('fp.slug = :slug')
             ->setParameter('slug', $slug)
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getOneOrNullResult()
+            ;
     }
 
-    public function getDirectorsRandomly($count)
+    public function getDirectorsRandomly($festival, $count, $exclude)
     {
-        return $this->createQueryBuilder('fp')
+        return $this
+            ->createQueryBuilder('fp')
             ->select('
                 fp,
                 RAND() as HIDDEN rand
             ')
-            ->leftJoin('fp.films', 'ffp')
-            ->leftJoin('ffp.functions', 'ffpf')
-            ->leftJoin('ffpf.function', 'ff')
-            ->where('ff.id = :id_director')
-            ->setParameter('id_director', FilmFunctionInterface::ID_DIRECTOR)
+            ->join('fp.films', 'ffp')
+            ->join('ffp.film', 'film')
+            ->join('ffp.functions', 'ffpf')
+            ->join('ffpf.function', 'ff')
+            ->join('fp.medias', 'fpm')
+            ->andWhere('fp.firstname IS NOT NULL')
+            ->andWhere('fp.firstname != :empty')
+            ->setParameter('empty', "")
+            ->andWhere('film.festival = :festival')
+            ->setParameter('festival', $festival)
+            ->andWhere('ff.id = :id_director')
+            ->setParameter('id_director', FilmFunctionInterface::FUNCTION_DIRECTOR)
+            ->andWhere('(fp.portraitImage IS NOT NULL OR fpm.media IS NOT NULL)')
+            ->andWhere('fp.id != :exclude')
+            ->setParameter('exclude', $exclude)
             ->addOrderBy('rand')
             ->setMaxResults($count)
             ->getQuery()
-            ->getResult();
+            ->getResult()
+            ;
     }
 
 }

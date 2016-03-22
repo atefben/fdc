@@ -26,7 +26,7 @@
                 {{ accredit|trans_fallback('commonContent')|raw }}
             </div>
         </div>
-
+        {% if accredit.procedure|length > 0 %}
         <div class="nav-accre">
             <div class="wrapper">
                 <h2>{{ 'press.accrediter.title.consultezlaprocedure'|trans }}</h2>
@@ -45,6 +45,7 @@
                 </table>
             </div>
         </div>
+        {% endif %}
         {% for key, section in accredit.procedure %}
             <div class="nav-container {% if key == 0 %}active{% endif %}" data-cat="{{ section.procedure|trans_fallback('title')|replace({' ':'-'})|lower }}">
                 <div class="wrapper">
@@ -54,10 +55,17 @@
                                 <i class="icon icon_print"></i>
                                 {{ 'press.accrediter.btn.imprimer'|trans }}
                             </a>
-                            <a href="#" class="button save">
-                                <i class="icon icon_pdf"></i>
-                                {{ 'press.accrediter.btn.enregistrer'|trans }}
-                            </a>
+                            {% if app.request.locale == "fr" and section.procedure.procedureFile is not null %}
+                                <a href="{% path section.procedure.procedureFile, 'reference' %}" class="button save" target="_blank" download>
+                                    <i class="icon icon_pdf"></i>
+                                    {{ 'press.accrediter.btn.enregistrer'|trans }}
+                                </a>
+                            {% elseif section.procedure.procedureSecondFile is not null  %}
+                                <a href="{% path section.procedure.procedureSecondFile, 'reference' %}" class="button save" target="_blank" download>
+                                    <i class="icon icon_pdf"></i>
+                                    {{ 'press.accrediter.btn.enregistrer'|trans }}
+                                </a>
+                            {% endif %}
                         </div>
                         <h4>{{ section.procedure|trans_fallback('title') }}</h4>
                         {{ section.procedure|trans_fallback('procedureContent')|raw }}
@@ -66,7 +74,7 @@
             </div>
         {% endfor %}
 
-
+    {% if accredit.btnLink is not null and accredit.btnLabel is not null %}
         <div class="request">
             <div class="wrapper">
                 <a href="{{ accredit|trans_fallback('btnLink') }}" class="button request-btn" target="_blank">
@@ -74,11 +82,11 @@
                     {{ accredit|trans_fallback('btnLabel') }}
                 </a>
                 <span class="legend">
-                    <sup>*</sup>
                     {{ accredit|trans_fallback('btnText') }}
                 </span>
             </div>
         </div>
+    {% endif %}
     </div>
 
     {{ render(controller('FDCPressBundle:Global:contact')) }}

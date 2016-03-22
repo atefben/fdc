@@ -20,11 +20,11 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class PressAccreditProcedure
+class PressAccreditProcedure implements TranslateMainInterface
 {
-
     use Time;
     use Translatable;
+    use TranslateMain;
 
     /**
      * @var integer
@@ -42,6 +42,15 @@ class PressAccreditProcedure
      */
     protected $procedureLink;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     */
+    private $procedureFile;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     */
+    private $procedureSecondFile;
 
     /**
      * ArrayCollection
@@ -97,5 +106,51 @@ class PressAccreditProcedure
     public function getProcedureLink()
     {
         return $this->procedureLink;
+    }
+
+    /**
+     * Set procedureFile
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $procedureFile
+     * @return PressAccreditProcedure
+     */
+    public function setProcedureFile(\Application\Sonata\MediaBundle\Entity\Media $procedureFile = null)
+    {
+        $this->procedureFile = $procedureFile;
+
+        return $this;
+    }
+
+    /**
+     * Get procedureFile
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     */
+    public function getProcedureFile()
+    {
+        return $this->procedureFile;
+    }
+
+    /**
+     * Set procedureSecondFile
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $procedureSecondFile
+     * @return PressAccreditProcedure
+     */
+    public function setProcedureSecondFile(\Application\Sonata\MediaBundle\Entity\Media $procedureSecondFile = null)
+    {
+        $this->procedureSecondFile = $procedureSecondFile;
+
+        return $this;
+    }
+
+    /**
+     * Get procedureSecondFile
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     */
+    public function getProcedureSecondFile()
+    {
+        return $this->procedureSecondFile;
     }
 }

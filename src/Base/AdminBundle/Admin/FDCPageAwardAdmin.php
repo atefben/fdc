@@ -61,18 +61,12 @@ class FDCPageAwardAdmin extends Admin
                     'required'           => true,
                 ),
                 'seoTitle'       => array(
-                    'attr'               => array(
-                        'placeholder' => 'form.fdc_page_award.placeholder_seo_title'
-                    ),
                     'label'              => 'form.label_seo_title',
                     'sonata_help'        => 'form.news.helper_seo_title',
                     'translation_domain' => 'BaseAdminBundle',
                     'required'           => false,
                 ),
                 'seoDescription' => array(
-                    'attr'               => array(
-                        'placeholder' => 'form.fdc_page_award.placeholder_seo_description'
-                    ),
                     'label'              => 'form.label_seo_description',
                     'sonata_help'        => 'form.news.helper_description',
                     'translation_domain' => 'BaseAdminBundle',
@@ -98,8 +92,7 @@ class FDCPageAwardAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'required'           => false,
             );
-        }
-        elseif ($this->subject && $this->subject->getId() == 4) {
+        } elseif ($this->subject && $this->subject->getId() == 4) {
             $translationsFields['fields']['nameEnCompetition'] = array(
                 'label'              => 'form.fdc_page_award.label_name_en_competition',
                 'translation_domain' => 'BaseAdminBundle',
@@ -109,6 +102,9 @@ class FDCPageAwardAdmin extends Admin
                 'label'              => 'form.fdc_page_award.label_header',
                 'translation_domain' => 'BaseAdminBundle',
                 'required'           => true,
+                'attr'               => array(
+                    'rows' => 5,
+                )
             );
         }
 
@@ -150,7 +146,7 @@ class FDCPageAwardAdmin extends Admin
                 ))
             ;
 
-            if ($this->subject->getId()) {
+            if ($this->subject->getId() == 4) {
                 $formMapper
                     ->add('otherSelectionSectionsAssociated', 'sonata_type_collection', array(
                         'label'        => 'form.fdc_page_award.label_other_selection_sections',

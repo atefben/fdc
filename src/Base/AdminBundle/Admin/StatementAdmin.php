@@ -22,30 +22,6 @@ use Sonata\AdminBundle\Route\RouteCollection;
  */
 class StatementAdmin extends Admin
 {
-
-//    public function filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value)
-//    {
-//        static $joined = false;
-//        if (!$joined) {
-//            $queryBuilder
-//                ->join("{$alias}.sites", 's')
-//                ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na1', 'WITH', 'na1.id = n.id')
-//                ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'na2', 'WITH', 'na2.id = n.id')
-//                ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'na3', 'WITH', 'na3.id = n.id')
-//                ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'na4', 'WITH', 'na4.id = n.id')
-//                ->leftjoin('na1.translations', 'na1t')
-//                ->leftjoin('na2.translations', 'na2t')
-//                ->leftjoin('na3.translations', 'na3t')
-//                ->leftjoin('na4.translations', 'na4t')
-//                ->andWhere('t.locale = :locale')
-//                ->setParameter('locale', 'fr')
-//            ;
-//            $joined = true;
-//        }
-//
-//        return $queryBuilder;
-//    }
-
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('acl');
@@ -184,6 +160,10 @@ class StatementAdmin extends Admin
             ->add('statusMain', 'choice', array(
                 'choices'   => StatementArticleTranslation::getMainStatuses(),
                 'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_see_translations.html.twig',
+                'label'    => 'dashboard.link.bo_translation',
             ))
         ;
     }

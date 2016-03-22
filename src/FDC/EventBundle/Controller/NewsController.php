@@ -58,9 +58,7 @@ class NewsController extends Controller
         /////////////////////////      SLIDER      //////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////
 
-        $slides = $em->getRepository('BaseCoreBundle:HomepageSlide')->findBy(array(), array(
-            'position' => 'ASC'
-        ), 6, 0);
+        $slides = $em->getRepository('BaseCoreBundle:HomepageSlide')->getAllSlide($locale,$dateTime);
 
         $displayHomeSlider = $homepage->getDisplayedSlider();
 
@@ -513,8 +511,8 @@ class NewsController extends Controller
             ->find($id)
         ;
 
-        if ($page === null) {
-            $this->createNotFoundException('Page not found');
+        if ($page == NULL) {
+            throw $this->createNotFoundException('Page not found');
         }
 
         $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);

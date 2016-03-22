@@ -6,6 +6,7 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Base\CoreBundle\Util\Time;
 
+use Base\CoreBundle\Util\TruncatePro;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,6 +25,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class StatementVideo extends Statement
 {
     use Translatable;
+    use TruncatePro;
 
     /**
      * @var MediaVideo
@@ -48,7 +50,8 @@ class StatementVideo extends Statement
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+            $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
+            $string = $this->truncate($string, 40, '..."', true);
         }
 
         return $string;

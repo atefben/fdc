@@ -1,14 +1,18 @@
 {% trans_default_domain 'FDCPressBundle' %}
-{% set img = widget.gallery %}
-{% set trans = img.findTranslationByLocale(app.request.locale) %}
-{% if trans is null or trans.file is null %}
-{% set trans = img.findTranslationByLocale('fr') %}
+{% if widget.gallery is not null %}
+    {% set img = widget.gallery %}
+    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+    {% if trans is null or trans.file is null %}
+    {% set trans = img.findTranslationByLocale('fr') %}
+    {% endif %}
+    {% set file = trans.file %}
 {% endif %}
-{% set file = trans.file %}
 <div class="contain-article">
-    <div class="aside">
-        <img src="{% path file, '363x229' %}" alt="{{ img|trans_fallback('alt') }}" />
-    </div>
+    {% if widget.gallery is not null %}
+        <div class="aside">
+            <img src="{% path file, '363x229' %}" alt="{{ img|trans_fallback('alt') }}" />
+        </div>
+    {% endif %}
     <div class="texts">
         <strong>{{ widget|trans_fallback('title') }}</strong>
         {{ widget|trans_fallback('content')|raw }}

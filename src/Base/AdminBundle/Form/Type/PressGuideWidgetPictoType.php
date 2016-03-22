@@ -71,7 +71,7 @@ class PressGuideWidgetPictoType extends PressGuideWidgetType
         ->add('picto', new ChoiceType() , array(
             'choices' => array(
                 'icon_wifi' => 'Icone Wifi',
-                'icon_enregistreur' => 'Icone enregistreur',
+                'icon_enregistreur' => 'Icone appareil photo',
                 'icon_salle-presse' => 'Icone salle presse',
                 'icon_casier' => 'Icone casier',
                 'icon_plateau-tv' => 'Icone plateau TV',
@@ -81,7 +81,9 @@ class PressGuideWidgetPictoType extends PressGuideWidgetType
             ),
             'label' => 'form.label_service_icon',
             'translation_domain' => 'BaseAdminBundle',
-            'choice_translation_domain' => 'BaseAdminBundle'
+            'choice_translation_domain' => 'BaseAdminBundle',
+            'required' => false,
+            'empty_data'  => null
         ))
         ;
     }

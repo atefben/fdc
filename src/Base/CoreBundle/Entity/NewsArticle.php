@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Util\TruncatePro;
 use Doctrine\ORM\Mapping as ORM;
 
 use JMS\Serializer\Annotation\Groups;
@@ -21,6 +22,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class NewsArticle extends News
 {
     use Translatable;
+    use TruncatePro;
     
     /**
      * @var MediaImage
@@ -41,11 +43,12 @@ class NewsArticle extends News
 
     public function __toString() {
         $string = substr(strrchr(get_class($this), '\\'), 1);
-        
+
         if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+            $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
+            $string = $this->truncate($string, 40, '..."', true);
         }
-        
+
         return $string;
     }
 

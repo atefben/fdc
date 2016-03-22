@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
 
     var config = null;
    // infinite collection sortable
-   $('div[class$="fdc-widgets"][data-form-widget="collection"]').sortable({
+    $('div[class$="fdc-widgets"][data-form-widget="collection"]').sortable({
         axis: 'y',
         items: '> .base-widget',
         start: function(event, ui) {
@@ -27,7 +27,6 @@ jQuery(document).ready(function($) {
             }
         }
     });
-
     // refresh input position value
     $('form[action*="news"]').submit(function() {
         var inputs = $('input[name$="[position]"]');
@@ -35,13 +34,27 @@ jQuery(document).ready(function($) {
             $(this).val(idx + 1);
         });
     });
+
     $('form[action*="statement"]').submit(function() {
         var inputs = $('input[name$="[position]"]');
         inputs.each(function(idx) {
             $(this).val(idx + 1);
         });
     });
+
     $('form[action*="info"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="pressguide"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="pressdownloadsection"]').submit(function() {
         var inputs = $('input[name$="[position]"]');
         inputs.each(function(idx) {
             $(this).val(idx + 1);
