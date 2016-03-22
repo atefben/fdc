@@ -3,10 +3,6 @@
 // 1. Global
 // =========================
 
-
-// 1. Global
-// =========================
-
 .audio-player {
   box-sizing: border-box;
   height: 87px;
@@ -32,7 +28,6 @@
       left: 50px;
     }
   }
-
 
   .on {
     opacity: 0;
@@ -97,6 +92,16 @@
         display: none;
       }
     }
+  }
+
+  .top {
+    height: 0px;
+    overflow: hidden;
+  }
+
+  #channels-audio {
+    height: 0px;
+    visibility: hidden;
   }
 
   .playpause {
@@ -276,7 +281,7 @@
     }
   }
 
-  @media only screen and (max-device-width: 1024px){
+  @media only screen and (max-device-width: 1024px) {
     .fullscreen {
       display: none;
     }
@@ -411,11 +416,15 @@
       height: 80px;
       left: 0;
       margin: 0;
-      overflow: hidden;
+      overflow: visible;
       position: absolute;
       top: 0;
       width: 100%;
       z-index: 3;
+
+      #share-box {
+        top: 87px;
+      }
 
       &:after {
         content: '';
@@ -637,7 +646,8 @@
         border-left-color: $gold;
       }
     }
-    a{
+
+    a {
       .icon{
         font-size: .8rem;
         position: absolute;
@@ -703,6 +713,7 @@
     visibility: visible;
   }
 }
+
 
 // 2. Actualité Article audio
 // =========================

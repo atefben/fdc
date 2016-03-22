@@ -163,6 +163,10 @@ class InfoAdmin extends Admin
                 'choices'   => InfoArticleTranslation::getMainStatuses(),
                 'catalogue' => 'BaseAdminBundle'
             ))
+            ->add('translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_see_translations.html.twig',
+                'label'    => 'dashboard.link.bo_translation'
+            ))
         ;
     }
 

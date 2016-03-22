@@ -5042,9 +5042,14 @@ footer .footer-menu ul li a:hover {
 }
 .slideshow .slideshow-img .images .img img {
   display: block;
-  margin: 0 auto;
-  height: 100%;
-  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   object-fit: contain;
   pointer-events: none;
   -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -5944,6 +5949,14 @@ div.chocolat-wrapper .zoomCursor .icon {
 .audio-player.on .off .picto {
   display: none;
 }
+.audio-player .top {
+  height: 0px;
+  overflow: hidden;
+}
+.audio-player #channels-audio {
+  height: 0px;
+  visibility: hidden;
+}
 .audio-player .playpause {
   display: block;
   height: 20px;
@@ -6240,11 +6253,14 @@ div.chocolat-wrapper .zoomCursor .icon {
   height: 80px;
   left: 0;
   margin: 0;
-  overflow: hidden;
+  overflow: visible;
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 3;
+}
+.audio-player.full .top #share-box {
+  top: 87px;
 }
 .audio-player.full .top:after {
   content: '';
@@ -10394,7 +10410,7 @@ article .read-later.rAlign span:after {
 .single-article.single-actualite .small-container > div.single-photo, .single-article.single-actualite .small-container > div.single-video, .single-article.single-actualite .small-container > div.single-gallery, .single-article.single-actualite .small-container > div.chapeau {
   width: 100%;
 }
-.single-article.single-actualite .small-container > div.half-div {
+.single-article.single-actualite .small-container > div.half-div, .single-article.single-actualite .small-container > div.slideshow {
   width: 730px;
 }
 .single-article .print {

@@ -59,7 +59,7 @@ class FDCPageWaiting implements TranslateMainInterface
 
     /**
      * @var FDCEventRoutes
-     * @ORM\OneToOne(targetEntity="FDCEventRoutes")
+     * @ORM\ManyToOne(targetEntity="FDCEventRoutes")
      *
      */
     protected $page;

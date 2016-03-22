@@ -46,7 +46,7 @@ class ShareEmailType extends AbstractType
                 ),
                 'label' => false
             ))
-            ->add('user', 'email', array(
+            ->add('user', 'text', array(
                 'attr' => array(
                     'placeholder' => 'sharemail.form.placeholder.votreemail',
                     'class'       => 'popin'
@@ -97,9 +97,7 @@ class ShareEmailType extends AbstractType
                 new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))),
                 new Email(array('message' => $this->translator->trans('contact.form.errors.email')))
             ),
-            'message' => array(
-                new NotBlank(array('message' => $this->translator->trans('contact.form.errors.email'))
-            )),
+            'message' => array(),
             'copy'=> array(),
             'newsletter' => array(),
             'section' => array(),

@@ -2,34 +2,33 @@
 var posts = [],
     s = null;
 
-
-function convertToPath(points){
-  var path = 'M4,' + (GLOBALS.socialWall.heightGraph - points[0]);
+function convertToPath(points) {
+  var maxPoint = Math.max.apply(null, points);
+  var path = 'M4,' + (GLOBALS.socialWall.heightGraph - (160*points[0]) / maxPoint);
   
-  for (var i=0; i<points.length; i++){
+  for(var i=0; i<points.length; i++){
     var x = i*80 + 4;
-    var y = -points[i]+GLOBALS.socialWall.heightGraph;
-    if (i===0){
+    var y = -((160*points[i]) / maxPoint)+GLOBALS.socialWall.heightGraph;
+    if(i===0) {
       path += 'L'+x+','+y+' ';
-    }
-    else if (i===points.length-1){
+    } else if (i===points.length-1){
       path += x+','+y;
-    }
-    else {
+    } else {
       path += x+','+y+',';
     }
   }
   return path;
 }
 
-function makePath(data){
-  var pathString = convertToPath(data);
-  var graphHeight = $('#graph').height();
+function makePath(data) {
+  var pathString  = convertToPath(data),
+      graphHeight = $('#graph').height(),
+      maxPoint    = Math.max.apply(null, data);
   
   function getDefaultPath(){
     var defaultPathString = 'M4,'+ (graphHeight - 30) +' H';
   
-    for (var i=0; i<data.length; i++) {
+    for(var i=0; i<data.length; i++) {
       if (i!==0){ 
         defaultPathString += i*80+4+' ';
       }
@@ -43,8 +42,6 @@ function makePath(data){
     strokeWidth: 1,
     fill: 'transparent'
   });
-
-  
   
   path.animate({ path: pathString }, 2000, mina.easeInOutQuint);
 
@@ -55,10 +52,8 @@ function makePath(data){
   setTimeout(function() {
     for (var i = 0, length = data.length; i < length; i++) {
       var xPos = i*80 + 4;
-      var yPos = GLOBALS.socialWall.heightGraph - data[i];
-      
+      var yPos = GLOBALS.socialWall.heightGraph - (160*data[i]) / maxPoint;      
       var circle = s.circle(xPos, yPos, radius);
-
       var circle2 = s.circle(xPos, yPos, 15);
 
       circle.attr({
@@ -94,7 +89,6 @@ function makePath(data){
       circle2.mouseout(function() {
         $('#tipGraph').removeClass('show');
       });
-
     }
 
     var j = $('#graph ul li.active').index();
@@ -102,7 +96,6 @@ function makePath(data){
   }, 2000);
 
   graphRendered = true;
-  
 }
 
 function makeGrid() {
@@ -113,7 +106,7 @@ function makeGrid() {
   s = Snap('#graphSVG');
 
   // Creates the vertical lines in the graph
-  for (var i = 0; i < dataLength; i++) {
+  for(var i = 0; i < dataLength; i++) {
     var x = 4 + i * 80;
     var xLine = s.line(x, minValue, x, maxValue).attr({
       stroke: "#000",
@@ -140,8 +133,7 @@ function displayGrid() {
   // randomly display new posts
   var p = $('.post .side-2');
 
-  for (var i = 0; i < posts.length; ++i)
-  {
+  for(var i = 0; i < posts.length; ++i) {
     setTimeout(function() {
       var r = Math.floor(Math.random() * p.length);
       var c = p.splice(r, 1)[0];
@@ -153,6 +145,7 @@ function displayGrid() {
       $(c).parent().find('.side-2').addClass('overlay');
       $(c).parent().find('.side').removeClass('flip');
       $(c).parent().find('.side-1').css('z-index', '5');
+      
       if(item.img) {
         $(c).prev().addClass('hasimg').css('background-image', 'url(' + item.img + ')');
       }
@@ -162,12 +155,9 @@ function displayGrid() {
 }
 
 $(document).ready(function() {
-
   if($('.home').length) {
-
     // Social Wall
     // =========================
-
     // GRAPH SVG
     if(GLOBALS.socialWall.points.length > 0 && $('#graph').length > 0) {
       makeGrid();
@@ -175,7 +165,7 @@ $(document).ready(function() {
 
     // INSTAGRAM
     // load Instagram pictures and build array
-    function loadInstagram(callback){
+    function loadInstagram(callback) {
       if (GLOBALS.env == "html") {
         instagramDatatype = "jsonp";
       } else {
@@ -210,7 +200,6 @@ $(document).ready(function() {
           }
         }
       });
-
     }
 
     // TWITTER
@@ -291,11 +280,9 @@ $(document).ready(function() {
         // once all data is loaded, build html and display the grid
         var p = $('.post .side-2');
         var number = Math.min(posts.length, 13);
-        for (var i = 0; i < number; ++i)
-        {
+        for(var i = 0; i < number; ++i) {
           var random = Math.floor(Math.random() * posts.length);
           var item = posts.splice(random, 1)[0];
-
           var r = Math.floor(Math.random() * p.length);
           var c = p.splice(r, 1)[0];
 

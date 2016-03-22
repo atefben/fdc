@@ -1,13 +1,15 @@
 function initPopinMail(cls){
   // check that fields are not empty
-  $(cls+' input[type="text"], textarea').on('input', function() {
+  $(cls+' input[type="text"]', cls+' textarea').on('input', function() {
     var input = $(this);
     var is_name = input.val();
 
-    if(is_name) {
+    if(typeof $(this).attr('required') != undefined && $(this).attr('required') && is_name.length > 0) {
+      console.log($(this));
       input.removeClass("invalid").addClass("valid");
       $('.errors .' + input.attr('name')).remove();
     } else {
+      console.log($(this));
       input.removeClass("valid").addClass("invalid");
       $('.errors .' + input.attr('name')).remove();
       $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + '</li>');
@@ -67,7 +69,7 @@ function initPopinMail(cls){
     }
 
     $(cls+' input[type="text"], '+cls+' input[type="email"], '+cls+' textarea').each(function() {
-      if($(this).val() == '') {
+      if(typeof $(this).attr('required') != undefined && $(this).attr('required') == true && $(this).val() == '') {
         empty = true;
       }
     });
@@ -101,7 +103,6 @@ $(document).ready(function() {
       
       $(document).on('click touchstart', function (e) {
         var $element= $(e.target);
-        console.log(!$element.hasClass('visible-popin'));
         if(!$element.hasClass('visible-popin')) {
           var $isPopin = $element.closest('.visible-popin');
           var isButton = $element.hasClass('button');
@@ -207,12 +208,15 @@ function updatePopinMedia(data) {
 }
 
 function launchPopinMedia(data, player) {
+  console.log(data);
+
   if(!$.isEmptyObject(data)) {
     updatePopinMedia(data);
   }
 
   switch(data['type']) {
     case 'audio' :
+      AudioFullScreen(false, player);
       break;
     case 'photo' :
       // $('.chocolat-close').trigger('click');
