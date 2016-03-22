@@ -45,12 +45,12 @@
                 $('.select').removeClass('invalid');
             }
 
-            $that.closest('.popin-mail').find('input[type="text"], input[type="email"], textarea').each(function () {
+            $that.closest('.popin-mail').find('input[type="text"], input[type="email"]').each(function () {
                 if ($(this).val() == '') empty = true;
             });
 
             if (empty) {
-                $that.closest('.popin-mail').find('input[type="email"], input[type="text"], textarea').trigger('input');
+                $that.closest('.popin-mail').find('input[type="email"], input[type="text"]').trigger('input');
             }
 
             if ($('.invalid').length || empty) {
