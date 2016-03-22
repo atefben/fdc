@@ -135,6 +135,11 @@ group:
         twitter:title : WebTV - Toutes les chaînes - Festival de Cannes 2016
         twitter:description : Retrouvez toutes les chaînes de la webTV du Festival de Cannes 2016
         twitter:image : [preset chaîne à la une]
+    event:
+        widgets: Modules éditoriaux
+        publish_parameters: Paramètres de publication
+        french_version: Version française
+        association: Association
 
 entity:
     fdc_event_routes: Menu
@@ -797,6 +802,15 @@ form:
             twitter:title : Tous les événéments - Festival de Cannes 2016
             twitter:description : Retrouvez tous les événements de l'édition 2016 du Festival de Cannes
             twitter:image : [preset dernier article remonté]
+    event:
+        label_title: Titre
+        helper_title: 255 caractères max
+        label_theme: Thème
+        label_header_image: Image principale
+        label_introduction: Chapô
+        label_signature: Signature
+        helper_signature: 255 caractères max.
+        helper_widgets: Ajouter un module de type :
 
 nav:
     site_modal: Ouvrir la sélection des sites
