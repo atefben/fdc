@@ -379,7 +379,7 @@
         <div class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</div>
       </div>
       <form action="" id="form" class="popin">
-        <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas valide" required><span class="complet-infos popin">Séparez les adresses par des virgules</span>
+        <input class="popin" type="text" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas valide" required><span class="complet-infos popin">Séparez les adresses par des virgules</span>
         <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas valide" required>
         <span class="complet-infos popin">
           <input type="checkbox" class="popin" id="mail-copy" name='mail-copy'>
@@ -413,7 +413,7 @@
         <h2 class="title-article popin">Enragés, polar hybride d'Éric Hannezo</h2>
       </div>
       <form action="" id="form" class="popin">
-        <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas " required><span class="complet-infos popin">Séparez les adresses par des virgules</span>
+        <input class="popin" type="text" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas " required><span class="complet-infos popin">Séparez les adresses par des virgules</span>
         <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas" required>
         <span class="complet-infos popin"><input type="checkbox" class="popin" id="mail-copy" name='mail-copy'><label for="mail-copy" class="popin">M'envoyez une copie par email</label></span>
         <textarea placeholder="Votre message*" name="message" data-error="Votre message n'est pas renseigné" class="popin"></textarea>
