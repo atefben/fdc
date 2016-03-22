@@ -146,6 +146,10 @@ class NewsAdmin extends Admin
                 'catalogue' => 'BaseAdminBundle',
                 'label'     => 'show.label_status'
             ))
+            ->add('translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_see_translations.html.twig',
+                'label'    => 'list.statement_common.label_title',
+            ))
         ;
     }
 
