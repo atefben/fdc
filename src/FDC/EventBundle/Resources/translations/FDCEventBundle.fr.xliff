@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-03-15T16:16:23Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-03-22T14:27:56Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -186,6 +186,10 @@
         <source>breadcrumb.la_selection</source>
         <target>La sélection</target>
         <jms:reference-file line="80">views/Movie/selection.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="490a20a0aac3e9ede9baa79084ce635ec734fe4c" resname="breadcrumb.palmares.main">
+        <source>breadcrumb.palmares.main</source>
+        <target>Palmarès</target>
       </trans-unit>
       <trans-unit id="dee566b3056c02a5334342d644e2e46cc214ae0e" resname="breadcrumb.webtv.channels">
         <source>breadcrumb.webtv.channels</source>
@@ -1518,7 +1522,7 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
       </trans-unit>
       <trans-unit id="7b1dafe6f88c7fb35125e5fb7424125f7f05a776" resname="sharemail.form.placeholder.message">
         <source>sharemail.form.placeholder.message</source>
-        <target>Votre message*</target>
+        <target>Votre message</target>
         <jms:reference-file line="66">Form/Type/ShareEmailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="4a242351d5fd2d0511a44d02e793a9924a5f32bf" resname="sharemail.form.placeholder.votreemail">
@@ -1682,10 +1686,6 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
         <target>Les dernieres videos</target>
         <jms:reference-file line="113">views/Television/channel.html.twig</jms:reference-file>
         <jms:reference-file line="121">views/Television/live.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="breadcrumb.palmares.main" resname="breadcrumb.palmares.main">
-        <source>breadcrumb.palmares.main</source>
-        <target>Palmarès</target>
       </trans-unit>
     </body>
   </file>
