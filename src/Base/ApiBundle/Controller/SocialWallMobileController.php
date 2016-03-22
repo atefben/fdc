@@ -62,9 +62,8 @@ class SocialWallMobileController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $query = $em->getRepository($this->repository)->getApiSocialWallMobile($festival);
 
-        // get items, passing options to fix Cannot count query which selects two FROM components, cannot make distinction
-
-        $items = $coreManager->getPaginationItems($query, $paramFetcher, array('distinct' => false));
+        // get items
+        $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
         $groups = array('social_wall_list');

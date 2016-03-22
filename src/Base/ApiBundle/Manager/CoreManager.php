@@ -119,7 +119,7 @@ class CoreManager
     public function getPaginationItems($query, $paramFetcher, $options = array())
     {
         $offset = ($paramFetcher->get('offset') !== null) ? (int)$paramFetcher->get('offset') : $this->apiPageOffset;
-        $offset = ($offset <= 10) ? $offset : 10;
+        $offset = ($offset <= 50) ? $offset : 50;
         $page = ($paramFetcher->get('page') !== null) ? (int)$paramFetcher->get('page') : 1;
 
         $pagination = $this->knpPaginator->paginate(
