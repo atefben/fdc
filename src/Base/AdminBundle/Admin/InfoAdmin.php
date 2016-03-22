@@ -165,7 +165,7 @@ class InfoAdmin extends Admin
             ))
             ->add('translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_see_translations.html.twig',
-                'label'    => 'list.statement_common.label_title'
+                'label'    => 'dashboard.link.bo_translation'
             ))
         ;
     }
