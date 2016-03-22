@@ -1,6 +1,6 @@
 function initPopinMail(cls){
   // check that fields are not empty
-  $(cls+' input[type="text"], textarea').on('input', function() {
+  $(cls+' input[type="text"]').on('input', function() {
     var input = $(this);
     var is_name = input.val();
 
@@ -66,14 +66,14 @@ function initPopinMail(cls){
       $('.select').removeClass('invalid');
     }
 
-    $(cls+' input[type="text"], '+cls+' input[type="email"], '+cls+' textarea').each(function() {
+    $(cls+' input[type="text"], '+cls+' input[type="email"]').each(function() {
       if(typeof $(this).attr('required') != undefined && $(this).attr('required') == true && $(this).val() == '') {
         empty = true;
       }
     });
 
     if(empty) {
-      $(cls+' input[type="email"], '+cls+' input[type="text"], '+cls+' textarea').trigger('input');
+      $(cls+' input[type="email"], '+cls+' input[type="text"]').trigger('input');
     }
 
     if($('.invalid').length || empty) {
