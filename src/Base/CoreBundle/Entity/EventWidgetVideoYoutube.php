@@ -2,15 +2,12 @@
 
 namespace Base\CoreBundle\Entity;
 
-use \DateTime;
-
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\Since;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -61,7 +58,7 @@ class EventWidgetVideoYoutube extends EventWidget
     /**
      * Get image
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getImage()
     {

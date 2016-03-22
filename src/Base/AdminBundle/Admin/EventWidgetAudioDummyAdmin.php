@@ -2,7 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 
 class EventWidgetAudioDummyAdmin extends Admin

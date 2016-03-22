@@ -187,7 +187,7 @@ class EventAdmin extends Admin
                 )
             )
             ->add('header', 'sonata_type_model_list', array(
-                'label' => 'form.label_header_image',
+                'label' => 'form.event.label_header_image',
                 'help' => 'form.news.helper_header_image',
                 'translation_domain' => 'BaseAdminBundle',
             ))
