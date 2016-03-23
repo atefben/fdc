@@ -32,54 +32,6 @@
                 }
             });
         });
-        $(document).on('click','form#form #share_mail',function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-
-            var $that = $(this);
-                empty = false;
-
-            if ($('select').val() == 'default') {
-                $('.select').addClass('invalid');
-            } else {
-                $('.select').removeClass('invalid');
-            }
-
-            $that.closest('.popin-mail').find('input[type="text"], input[type="email"]').each(function () {
-                if ($(this).val() == '') empty = true;
-            });
-
-            if (empty) {
-                $that.closest('.popin-mail').find('input[type="email"], input[type="text"]').trigger('input');
-            }
-
-            if ($('.invalid').length || empty) {
-                return false;
-            } else {
-                var u = $that.closest('.popin-mail').hasClass('media') ? GLOBALS.urls.shareEmailMediaUrl : GLOBALS.urls.shareEmailUrl;
-
-                $.ajax({
-                    type     : "POST",
-                    dataType : "json",
-                    cache    : false,
-                    url      : u,
-                    data     : $that.closest('.popin-mail').find('form#form').serialize(),
-                    success: function (data) {
-                        if (data.success == false) {
-
-                        }
-                        else {
-                            // TODO envoie du mail //
-                            $that.closest('.popin-mail').find('#form').remove();
-                            $that.closest('.popin-mail').find('.info-popin').remove();
-                            $that.closest('.popin-mail').find('.contain-popin').append('<div class="valid">' + GLOBALS.texts.popin.valid + '</div>');
-                            $that.closest('.popin-mail').css('height', '31%');
-                            return false;
-                        }
-                    }
-                });
-            }
-        });
 
         $(document).on('click','.trailer-btn', function(event){
             event.preventDefault();
