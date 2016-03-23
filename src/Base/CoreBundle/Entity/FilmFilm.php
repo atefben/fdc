@@ -323,8 +323,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *  "film_list", "film_show",
      *  "trailer_list", "trailer_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *  "award_list", "award_show"
      * })
      */
     protected $awards;
