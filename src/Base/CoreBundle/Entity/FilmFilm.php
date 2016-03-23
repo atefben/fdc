@@ -337,7 +337,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "trailer_show",
      *     "film_list",
      *     "film_show",
-     *     "news_show"
+     *     "news_show",
+     *     "projection_list"
      * })
      *
      */
