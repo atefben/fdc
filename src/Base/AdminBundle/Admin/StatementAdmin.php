@@ -50,6 +50,31 @@ class StatementAdmin extends Admin
         return $query;
     }
 
+    public function filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $status)
+    {
+        static $joined = false;
+        if (!$joined) {
+            $queryBuilder
+                ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na1', 'WITH', "na1.id = {$alias}.id")
+                ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'na2', 'WITH', "na2.id = {$alias}.id")
+                ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'na3', 'WITH', "na3.id = {$alias}.id")
+                ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'na4', 'WITH', "na4.id = {$alias}.id")
+                ->leftjoin('na1.translations', 'na1t')
+                ->leftjoin('na2.translations', 'na2t')
+                ->leftjoin('na3.translations', 'na3t')
+                ->leftjoin('na4.translations', 'na4t')
+                ->andWhere( '(na1t.status = :status) OR
+                             (na2t.status = :status) OR
+                             (na3t.status = :status) OR
+                             (na4t.status = :status)'
+                )
+                ->setParameter('status', $status)
+            ;
+            $joined = true;
+        }
+        return $queryBuilder;
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -84,9 +109,7 @@ class StatementAdmin extends Admin
                         return;
                     }
                     if ($value['value']) {
-                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value);
-                        $queryBuilder->andWhere('t2.status = :translation_pending');
-                        $queryBuilder->setParameter('translation_pending', StatementArticleTranslation::STATUS_TRANSLATION_PENDING);
+                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, StatementArticleTranslation::STATUS_TRANSLATION_PENDING);
                     }
                     return true;
                 },
@@ -100,9 +123,7 @@ class StatementAdmin extends Admin
                     }
 
                     if ($value['value']) {
-                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value);
-                        $queryBuilder->andWhere('t2.status = :translation_validating');
-                        $queryBuilder->setParameter('translation_validating', StatementArticleTranslation::STATUS_TRANSLATION_VALIDATING);
+                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, StatementArticleTranslation::STATUS_TRANSLATION_VALIDATING);
                     }
                     return true;
                 },
@@ -116,9 +137,7 @@ class StatementAdmin extends Admin
                     }
 
                     if ($value['value']) {
-                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value);
-                        $queryBuilder->andWhere('t2.status = :translated');
-                        $queryBuilder->setParameter('translated', StatementArticleTranslation::STATUS_TRANSLATED);
+                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, StatementArticleTranslation::STATUS_TRANSLATED);
                     }
                     return true;
                 },

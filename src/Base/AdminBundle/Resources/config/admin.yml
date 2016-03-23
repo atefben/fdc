@@ -919,6 +919,40 @@ services:
 
 
 
+
+    base.admin.fdc_page_participate:
+        class: Base\AdminBundle\Admin\FDCPageParticipateAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipate, BaseAdminBundle:FDCPageParticipateAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.fdc_page_participate, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_participate_section:
+        class: Base\AdminBundle\Admin\FDCPageParticipateSectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSection, BaseAdminBundle:FDCPageParticipateSectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.fdc_page_participate_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_participate_has_section:
+        class: Base\AdminBundle\Admin\FDCPageParticipateHasSectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateHasSection, BaseAdminBundle:FDCPageParticipateHasSectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: entity.fdc_page_participate_has_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_participate_section_widget_archive_dummy:
+        class: Base\AdminBundle\Admin\FDCPageParticipateSectionWidgetArchiveDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetArchive, BaseAdminBundle:FDCPageParticipateSectionWidgetArchiveDummyAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Archive widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+
     base.admin.press_media_library:
         class: Base\AdminBundle\Admin\PressMediaLibraryAdmin
         arguments: [~, Base\CoreBundle\Entity\PressMediaLibrary, BaseAdminBundle:PressMediaLibraryAdmin]
