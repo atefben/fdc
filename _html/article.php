@@ -104,10 +104,6 @@
             <p>Symboliquement, j’avais une famille : Lambert qui joue le père, Virginie la mère, Guillaume l’ainé, Franck le jeune un peu perdu et François le sale gosse. Et oui, j’en suis super content parce que je voulais une lecture nouvelle sur le film de genre .</p>
           </div>
           <div class="video-container state-init video"
-            data-facebook="//www.facebook.com"
-            data-twitter="//www.twitter.com"
-            data-link="//www.example.com"
-            data-email="//www.gmail.com"
             data-file='[{"file":"./files/mov_bbb.webm"},
             {"file":"./files/mov_bbb.mp4"}]'
             data-img="/img/article/004.jpg">
@@ -126,16 +122,11 @@
               </div>
             </div>
           </div>
-          <script type="text/javascript">
-            document.addEventListener("DOMContentLoaded", function() {
-              playarticle = playerInit(false, 'video-player', false, false);
-            });
-          </script>
           <div class="text">
             <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
             <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>
           </div>
-          <div class="audio-player audio" data-sound="img/article/sound.mp3">
+          <div class="audio-player audio" data-aid="11" data-sound="img/article/sound.mp3">
             <div class="image" style="background-image: url(img/slide001.jpg);"></div>
             <a href="#" class="playpause"></a>
             <div class="off">
@@ -143,7 +134,7 @@
                 <div class="vCenterKid">
                   <div class="picto"><i class="icon icon_audio"></i></div>
                   <div class="info">
-                    <a href="#" class="category">Conférence de presse</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                    <a href="#" class="category">Conférence de test</a><span class="date">11.03.15</span> . <span class="hour">09:00</span>
                     <p>The Lobster de Yoros Lanthinos</p>
                   </div>
                 </div>
@@ -164,7 +155,7 @@
               </div>
             </div>
           </div>
-          <div class="audio-player audio" data-sound="img/article/sound2.mp3">
+          <div class="audio-player audio" data-aid="2" data-sound="img/article/sound2.mp3">
             <div class="image" style="background-image: url(img/slider-videos/001.jpg);"></div>
             <a href="#" class="playpause"></a>
             <div class="off">
@@ -218,19 +209,21 @@
               <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
             </div>
           </div>
-          <div class="half-photo">
-            <div class="photo-container">
-              <img src="img/article/005.jpg" alt="" />
-              <p class="caption">© FDC / Théophile Delange</p>
+          <div class="half-div">
+            <div class="half-photo">
+              <div class="photo-container">
+                <img src="img/article/005.jpg" alt="" />
+                <p class="caption">© FDC / Théophile Delange</p>
+              </div>
             </div>
-          </div>
-          <div class="half-photo">
-            <div class="photo-container">
-              <img src="img/article/006.jpg" alt="" />
-              <p class="caption">© FDC / Théophile Delange</p>
+            <div class="half-photo">
+              <div class="photo-container">
+                <img src="img/article/006.jpg" alt="" />
+                <p class="caption">© FDC / Théophile Delange</p>
+              </div>
             </div>
+            <div class="author">Rédigé par Morgane Urbain</div>
           </div>
-          <div class="author">Rédigé par Morgane Urbain</div>
         </div>
         <div class="share">
           <p>Partagez l'article</p>
@@ -238,8 +231,8 @@
             <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
             <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i>
   </a>
-            <a href="#" class="button link"><i class="icon icon_link"></i></a>
-            <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
+            <a href="#" class="button link self"><i class="icon icon_link"></i></a>
+            <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
             <a href="#" class="button print"><i class="icon icon_print"></i></a>
           </div>
         </div>
@@ -386,11 +379,17 @@
         <div class="chap-article popin">Ancien journaliste devenu producteur et cinéastre, Éric Hannezo s'aventure pour son premier film sur les routes nord-américaines et signe un polar hybride à l'affiche duquel on retrouve Lambert Wilson et Franck Gastambide.</div>
       </div>
       <form action="" id="form" class="popin">
-        <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas "><span class="complet-infos popin">Séparez les adresses par des virgules</span>
-        <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas">
-        <span class="complet-infos popin"><input type="checkbox" class="popin" id="mail-copy" name='mail-copy'><label for="mail-copy" class="popin">M'envoyez une copie par email</label></span>
-        <textarea placeholder="Votre message*" name="message" data-error="Votre message n'est pas renseigné" class="popin"></textarea>
-        <span class="complet-infos newsletter popin"><input type="checkbox" class="popin" id="newsletter-mail" name='newsletter-mail'><label class="popin" for="newsletter-mail">Je souhaite recevoir la newsletter du Festival de Cannes</label></span>
+        <input class="popin" type="text" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas valide" required><span class="complet-infos popin">Séparez les adresses par des virgules</span>
+        <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas valide" required>
+        <span class="complet-infos popin">
+          <input type="checkbox" class="popin" id="mail-copy" name='mail-copy'>
+          <label for="mail-copy" class="popin">M'envoyez une copie par email</label>
+        </span>
+        <textarea placeholder="Votre message" name="message" class="popin"></textarea>
+        <span class="complet-infos newsletter popin">
+          <input type="checkbox" class="popin" id="newsletter-mail" name='newsletter-mail'>
+          <label class="popin" for="newsletter-mail">Je souhaite recevoir la newsletter du Festival de Cannes</label>
+        </span>
         <span class="detail popin">* Champs obligatoires</span>
         <input type="submit" value='envoyer' class='popin'>
         <div class="errors popin">
@@ -414,8 +413,8 @@
         <h2 class="title-article popin">Enragés, polar hybride d'Éric Hannezo</h2>
       </div>
       <form action="" id="form" class="popin">
-        <input class="popin" type="email" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas "><span class="complet-infos popin">Séparez les adresses par des virgules</span>
-        <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas">
+        <input class="popin" type="text" placeholder="Email des destinataires*" name="email-dest" data-error="L'adresse email du destinataire n'est pas " required><span class="complet-infos popin">Séparez les adresses par des virgules</span>
+        <input type="email" placeholder="Votre adresse email*" class="popin" name="email-user" data-error="Votre adresse email n'est pas" required>
         <span class="complet-infos popin"><input type="checkbox" class="popin" id="mail-copy" name='mail-copy'><label for="mail-copy" class="popin">M'envoyez une copie par email</label></span>
         <textarea placeholder="Votre message*" name="message" data-error="Votre message n'est pas renseigné" class="popin"></textarea>
         <span class="complet-infos newsletter popin"><input type="checkbox" class="popin" id="newsletter-mail" name='newsletter-mail'><label class="popin" for="newsletter-mail">Je souhaite recevoir la newsletter du Festival de Cannes</label></span>

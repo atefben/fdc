@@ -50,4 +50,26 @@ class EventRepository extends EntityRepository
 
         return $qb->getQuery()->getOneOrNullResult();
     }
+
+    /**
+     * @param $festival
+     * @param $locale
+     * @return arrays
+     */
+    public function getEvents($festival, $locale)
+    {
+        $qb = $this
+            ->createQueryBuilder('e')
+            ->join('e.translations', 't')
+        ;
+
+        $this->addMasterQueries($qb, 'e', $festival, true);
+        $this->addTranslationQueries($qb, 't', $locale);
+
+        $qb
+            ->addOrderBy('e.publishedAt', 'desc');
+
+
+        return $qb->getQuery()->getResult();
+    }
 }

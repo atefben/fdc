@@ -49,11 +49,11 @@ class FilmController extends FOSRestController
      * @Rest\QueryParam(name="festival_id", description="The festival year")
      * @Rest\QueryParam(name="selection_id", description="The selection identifier")
      *
-     * @param  Paramfetcher $paramFetcher
+     * @param  ParamFetcher $paramFetcher
      *
      * @return View
      */
-    public function getFilmsAction(Paramfetcher $paramFetcher)
+    public function getFilmsAction(ParamFetcher $paramFetcher)
     {
         // coremanager shortcut
         $coreManager = $this->get('base.api.core_manager');

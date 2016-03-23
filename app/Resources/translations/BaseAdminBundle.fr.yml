@@ -1,713 +1,884 @@
-FDCPageWebTvChannels: 'Page WebTV - Les chaînes'
-FDCPageWebTvLive: 'Accueil WebTV'
-FDCPageWebTvTrailers: 'Page WebTV - Les bandes-annonces - Compétition'
-FDCPageLaSelection: 'Page la sélection'
-FilmJuryType: 'Type des jurys'
+lang:
+    en: Anglais
+    fr: Français
+    es: Espagnol
+    zh: Chinois
+
+settings:
+    fdc: Paramètres du Festival de Cannes
+    fdc_api: Paramètres de l'API Festival de Cannes
+    fdc_press_password: Mot de passe de l'Espace presse
+
+breadcrumb:
+    link_film_person_list: Liste des personnes
+    link_film_film_list: Liste des films
+    link_tag_list: Liste des tags
+    link_news_article_list: Liste des actualités - articles
+    link_news_video_list: Liste des actualités - vidéos
+    link_news_audio_list: Liste des actualités - audios
+    link_news_image_list: Liste des actualités - photos
+    link_theme_list: Liste des Thèmes
+    link_media_image_list : Liste des Médias photos
+    link_media_video_list: Liste des Médias vidéo
+    link_media_audio_list: Liste des Médias audio
+    link_homepage_list: Homepage
+    link_social_wall_list: Liste du Social Wall
+    link_web_tv_list: Liste des chaînes
+    link_f_d_c_page_web_tv_channels_list: Page WebTV - Les chaînes
+    link_media_image_simple_list: Images semi-riches
+    link_f_d_c_page_web_tv_live_list: Accueil WebTV
+    link_country_list: Liste des pays
+    link_film_projection_list: Programmations
+    link_film_atelier_list: Liste des films ateliers
+    link_f_d_c_page_web_tv_trailers_list: WebTV - Les bandes annonces
+    link_contact_theme_list: Liste des thèmes de contact
+    link_event_list: Liste des évènements
+    link_statement_article_list: Liste des communiqués - articles
+    link_statement_video_list: Liste des communiqués - vidéos
+    link_statement_image_list: Liste des communiqués - photos
+    link_statement_audio_list: Liste des communiqués - audios
+    link_info_article_list: Liste des infos - articles
+    link_info_video_list: Liste des infos - vidéos
+    link_info_image_list: Liste des infos - photos
+    link_info_audio_list: Liste des infos - audios
+    link_press_guide_list: Guide pratique
+    link_press_homepage_list: Home
+    link_contact_page_list: Contactez-nous
+    link_press_cinema_map_list: Plan des salles
+    link_f_d_c_event_routes_list: Liste des pages
+    link_gallery_list: Galeries photos
+    link_press_projection_list: Programmation
+    link_press_download_section_list: Liste des sections à télécharger
+    link_press_download_list: A télécharger
+    link_press_media_library_list: Médiathèque
+    link_press_accredit_procedure_list: Procédures d'accréditation
+    link_press_accredit_list: S'accréditer
+    link_press_accredit_procedure_list: Procédures d'accréditation
+    link_press_statement_info_list: Communiqué / Info
+    link_press_cinema_room_list: Liste des salles
+    link_f_d_c_page_waiting_list: Pages d'attente
+    link_f_d_c_page_news_articles_list: Page L'actualité
+    link_f_d_c_page_news_audios_list: Page L'actualité
+    link_f_d_c_page_news_images_list: Page L'actualité
+    link_f_d_c_page_news_videos_list: Page L'actualité
+    link_f_d_c_page_la_selection_list: La sélection
+    link_f_d_c_page_jury_list: Les jurys
+    link_f_d_c_page_award_list: Le palmarès
+    link_f_d_c_page_event_list: Page - Les événements
+link:
+    action_soif_refresh: Mettre à jour
+
+homepage:
+    big_push: (GRAND PUSH)
+    group:
+        social_wall: Social Wall
+        push_main: Pushs Principaux
+        push_secondary: Pushs Secondaires
+        prefooter: Pré-footer
+        slider: Slider
+        top_news: L'actualité à la une
+        web_tv: WebTV
+        film: Films
+        seo: Métadonnées & SEO
+
+    top_news_type:
+        displayed_news: Afficher la grille d'actualités (pendant le festival)
+        displayed_events: Afficher la grille de communiqués & infos (avant le festival)
+
+group:
+    french_version: Version française
+    main_infos: Informations générales
+    news:
+        publish_parameters: Paramètres de publication
+        associations: Associations
+        widgets: Modules éditoriaux
+    seo: Métadonnées & SEO
+    helper_seo: |
+        Laissez ces champs vides, les informations renseignées ci-dessus seront reprises automatiquement.
+        Vous pouvez également renseignez ces champs dans le cas où vous souhaitez surcharger les informations reprises automatiquement.
+    helper_seo_example: |
+        <title> : [valeur champ titre actualité] - Festival de Cannes 2016
+        meta desc  : [valeur champ chapô actualité]
+
+        og:site_name : Festival de Cannes 2016
+        og:type : article
+        og:title : [valeur champ titre actualité]
+        og:url : [URL actualité]
+        og:description : [valeur champ chapô actualité]
+        og:updated_time : [valeur date de modif actualité]
+        og:image : [preset spécifique image principale (1200x630px)]
+
+        twitter:card : summary_large_image
+        twitter:site : Festival de Cannes 2016
+        twitter:creator : @Festival_Cannes
+        twitter:title : [valeur champ titre actualité]
+        twitter:description : [valeur champ chapô actualité]
+        twitter:image : [preset spécifique image principale (600x380px)]
+
+        article:author : [valeur signature actualité]
+        article:published_time : [valeur date de publication de l'actu]
+        article:modified_time : [valeur date de modif actualité]
+    helper_seo_fdc_page_web_tv_channels_example: |
+        <title> : WebTV - Toutes les chaînes - Festival de Cannes 2016
+        meta desc  : Retrouvez toutes les chaînes de la webTV du Festival de Cannes 2016
+
+        og:site_name : Festival de Cannes 2016
+        og:type : website
+        og:title : WebTV - Toutes les chaînes - Festival de Cannes 2016
+        og:description : Retrouvez toutes les chaînes de la webTV du Festival de Cannes 2016
+        og:url : [URL page]
+        og:image : [preset chaîne à la une]
+
+        twitter:card : summary_large_image
+        twitter:site : Festival de Cannes 2016
+        twitter:creator : @Festival_Cannes
+        twitter:title : WebTV - Toutes les chaînes - Festival de Cannes 2016
+        twitter:description : Retrouvez toutes les chaînes de la webTV du Festival de Cannes 2016
+        twitter:image : [preset chaîne à la une]
+    event:
+        widgets: Modules éditoriaux
+        publish_parameters: Paramètres de publication
+        french_version: Version française
+        association: Association
+
+entity:
+    fdc_event_routes: Menu
+    news_article: Articles
+    news_video: Vidéos
+    news_image: Photos
+    news_audio: Audios
+    theme: Thèmes
+    tag: Tags de recherche
+    web_tv: Chaînes
+    media_image: Photos
+    media_image_simple: Images semi-riches
+    media_audio: Audios
+    media_video: Vidéos
+    statement_article: Articles
+    statement_image: Images
+    statement_video: Vidéos
+    statement_audio: Audios
+    info_article: Articles
+    info_image: Images
+    info_video: Vidéos
+    info_audio: Audios
+    film_film: Films
+    film_person: Personnes
+    film_atelier: Films Atelier
+    film_projection: Programmations
+    country: Pays
+    contact_theme: Thèmes de contact
+    event: Événements
+    created_infos: |
+        Crée le date par :<br/>
+        <b>user</b>
+    updated_infos: |
+        Modifiée le date par :<br/>
+        <b>user</b>
+    social_wall: Social Wall
+    press_homepage: Accueil Espace Presse
+    contact_page: Contactez-nous
+    press_accredit: S’accréditer
+    press_accredit_procedure: Procédures d’accréditation
+    press_media_library: Médiathèque
+    press_download: A télécharger
+    press_download_section: Sections à télécharger
+    press_projection: Programmation
+    press_guide: Guide pratique
+    press_cinema_map: Plans des salles
+    gallery: Galeries photos
+    press_statement_info: Communiqué / Info
+    press_cinema_room: Salle
+    fdc_page_news_articles: L'actualité - Tous les articles
+    fdc_page_news_audios: L'actualité - Tous les audios
+    fdc_page_news_images: L'actualité - Toutes les images
+    fdc_page_news_videos: L'actualité - Toutes les vidéos
+    fdc_page_prepare: 'Préparer son séjour'
+
+list:
+    label_site: Site
+    label_programmation_films: Film
+    label_header_video: Vidéo principale
+    label_title_video: Titre
+    label_parent: Parent
+    label_position: Position
+    label_route: Route
+    label_enabled: Actif
+    label_starts_at: Date de début
+    label_ends_at: Date de fin
+    label_type: Type
+    label_programmation_section: Section de programmation
+    label_iso: ISO
+    label_budget_estimation : Budget Estimé
+    label_filming_date: Date filmé
+    label_filming_place: Lieu du film
+    label_session_name: Nom de la session
+    label_budget_acquired: Budget acquis
+    label_cinando_url: Url Cinando
+    label_lastname: Nom
+    label_firstname: Prénom
+    label_asian_name: Nom asiatique
+    label_nationality: Nationalité
+    label_nationality2: Nationalité 2
+    label_director_first: Premier film du directeur
+    label_restored: Film restauré
+    label_title_v_o: Titre VO
+    label_title_v_o_alphabet: Titre Alphabet VO
+    label_production_year: Année de production
+    label_duration: Durée
+    label_casting_commentary: Commentaire du casting
+    label_soif_updated_at: Mise à jour SOIF le
+    label_website: Site web
+    label_id: Identifiant
+    label_title: Titre
+    label_name: Nom
+    label_theme: Thème
+    label_status: Statut
+    label_status_main: Statut
+    label_type: Type
+    label_created_at: Date de création
+    label_updated_at: Mis à jour le
+    label_published_interval: Date(s) de publication
+    label__action: Actions
+    label_theme_name: Nom du thème
+    label_priority_status: Priorité
+    label__preview: Prévisualiser
+    label__edit_translations: Éditer
+    label_social_wall_content_none: Pas d'image
+    label_legend_img: Légende de l'image
+    label_url: Lien
+    label_network: Réseau Social
+    label_content: Contenu
+    label_message: Message
+    label_enabled_mobile: Visible sur mobile
+    label_enabled_desktop: Visible sur le site
+    label_alt: Alt de l'image
+    label_web_tv_name: Nom de la chaîne
+    label_title_audio: Titre de l'audio
+    label_realisator: Réalisateur(s)
+    label_selection: Sélection
+    label_festival-year: Année de sélection
+    label_section_title: Nom de la section
+    label_page: Titre de la page d'attente
+    label_film_jury_type_name:  Type de jury
+    tooltip:
+        unlock: DÉBLOQUER
+        modified_by: En cours de modification par </br>
+        since: depuis
+    media_video:
+        label_id: Id
+        label_title_video: Titre de la vidéo
+        label_web_tv: Chaîne
+        label_encoding_state: Encodage
+    media_audio:
+        label_published_at: Publié le
+    media_image_simple:
+        label_name: Nom de l'image
+        label_alt: Alt de l'image
+    common:
+        label_id: Id
+        label_title: Titre
+        label_type: Titre
+        label_theme: Thème
+        label_created_at: Crée le
+        label_published_interval: Date(s) de publication
+        label_priority_status: Priorité
+        label_status: Statut
+        label_main_status: Statut
+    news_common:
+        label_title: Titre de l'actualité
+        translation_pending: En attente de traduction
+        translation_validating: Traduction à valider
+        translated: Traduit
+    statement_common:
+        label_title: Titre du communiqué
+        label_id: Identifiant
+    info_common:
+        label_title: Titre de l'info
+        label_id: Identifiant
+    accredit_procedure:
+        label_title: Titre de la procédure
+    cinema_room:
+        label_title: Nom de la salle
+    press_download:
+        label_title: Nom de la section
+
+filter:
+    label_have_trailer: Afficher film avec bande annonce
+    label_position: Position
+    label_parent: Parent
+    label_route: Route
+    label_enabled: Actif
+    label_email: Email
+    label_starts_at: Date de début
+    label_ends_at: Date de fin
+    label_type: Type
+    label_programmation_section: Section de programmation
+    label_iso: ISO
+    label_budget_estimation : Budget Estimé
+    label_filming_date: Date filmé
+    label_filming_place: Lieu du film
+    label_session_name: Nom de la session
+    label_budget_acquired: Budget acquis
+    label_cinando_url: Url Cinando
+    label_site: Site
+    label_lastname: Nom
+    label_firstname: Prénom
+    label_asian_name: Nom asiatique
+    label_nationality: Nationalité
+    label_nationality2: Nationalité 2
+    label_director_first: Premier film du directeur
+    label_restored: Film restauré
+    label_title_v_o: Titre VO
+    label_title_v_o_alphabet: Titre Alphabet VO
+    label_production_year: Année de production
+    label_duration: Durée
+    label_casting_commentary: Commentaire du casting
+    label_soif_updated_at: Mise à jour SOIF le
+    label_website: Site web
+    label_legend: Légende contenant
+    label_festival: Festival
+    label_id: Identifiant
+    label_title: Titre
+    label_theme: Thème
+    label_status: Statut
+    label_translate: Traduit
+    label_priority_status: Priorité
+    label_url: Lien
+    label_network: Réseau Social
+    label_content: Contenu
+    label_message: Message
+    label_enabled_mobile: Visible sur mobile
+    label_enabled_desktop: Visible sur le site
+    label_tags: Hashtag
+    label_created_at: Créé le
+    label_updated_at: Mis à jour le
+    label_name: Nom
+    label_alt: Alt de l'image
+    label_format: Formats
+    label_created_before: Créé avant le
+    label_created_after: Créé après le
+    label_web_tv_name: Nom de la chaîne
+    label_realisator: Réalisateurs
+    label_selection: Sélection
+    label_festival-year: Année de sélection
+    label_programmation_films: Film
+    media_image:
+        label_created_before: Publié avant le
+        label_created_after: Publié après le
+        label_legend: Légende de l'image
+        displayed_home: Photos remontées dans le diaporama du quotidien en home page
+        displayed_all: Photos remontées dans toutes les photos
+    media_audio:
+        displayed_home: Audios affichés en tant qu'actualités sur la homepage
+        displayed_all: Audios remontés dans "Tous les audios"
+        label_created_before: Créé avant le
+        label_created_after: Créé après le
+        label_published_before: Publié avant le
+        label_published_after: Publié après le
+    media_video:
+        label_title_video: Titre de la vidéo
+        label_web_tv: Chaîne
+        displayed_home: Vidéos affichées en tant qu'actualités sur la home page
+        displayed_trailer: Bandes annonces et extraits
+    common:
+        label_id: Id
+        label_created_before: Créé avant le
+        label_created_after: Créé après le
+        label_updated_before: Modifié avant le
+        label_updated_after: Modifié après le
+    press_download:
+        label_section : Nom de la section
+    cinema_room:
+        label_title: Nom de la salle
+
+dashboard:
+    group:
+        soif: SOIF
+        general: Général
+        media: Médias
+        news: Actualités
+        statement: Communiqués
+        info: Infos
+        event: Événements
+        press: Espace presse
+        seo: SEO + TETIERES
+    link:
+        settings: Paramètres
+        bo_translation: Traductions
+        homepage: Homepage
+        fdc_page_web_tv_channels: WEBTV - Les chaînes
+        fdc_page_web_tv_live: Accueil WebTV
+        fdc_page_web_tv_trailers_competition: WebTV - BA et extraits (Compétition)
+        fdc_page_web_tv_trailers_certain_regard: WebTV - BA et extraits (Un certain regard)
+        fdc_page_web_tv_trailers_hors_competition: WebTV - BA et extraits (Hors compétition)
+        fdc_page_web_tv_trailers_seances_speciales: WebTV - BA et extraits (Séances spéciales)
+        fdc_page_web_tv_trailers_cinefondation: WebTV - BA et extraits (Cinéfondation)
+        fdc_page_web_tv_trailers_courts_metrages: WebTV - BA et extraits (Courts métrages)
+        fdc_page_web_tv_trailers_cannes_classics: WebTV - BA et extraits (Cannes Classics)
+        fdc_page_web_tv_trailers_cinema_plage: WebTV - BA et extraits (Cinéma de plage)
+        fdc_page_la_selection_competition: La sélection COMPETITION
+        fdc_page_la_selection_certain_regard: La sélection UN CERTAIN REGARD
+        fdc_page_la_selection_hors_competition: La sélection HORS COMPÉTITION
+        fdc_page_la_selection_seances_speciales: La sélection SÉANCES SPÉCIALES
+        fdc_page_la_selection_cinefondation: La sélection CINÉFONDATION
+        fdc_page_la_selection_courts_metrages: La sélection COURTS MÉTRAGES
+        fdc_page_jury_longs_metrages: Les jurys LONGS METRAGES
+        fdc_page_jury_cinefondation_courts_metrages: Les jurys CINEFONDATION & COURTS METRAGES
+        fdc_page_jury_certain_regard: Les jurys UN CERTAIN REGARD
+        fdc_page_jury_camera_dor: Les jurys CAMERA D'OR
+        fdc_page_award_competition: Le palmarès COMPETITION
+        fdc_page_award_certain_regard: Le palmarès UN CERTAIN REGARD
+        fdc_page_award_cinefondation: Le palmarès CINEFONDATION
+        fdc_page_award_camera_dor: Le palmarès CAMERA D'OR
+        fdc_page_award_all_awards: Le palmarès TOUT LE PALMARES
+        fdc_page_event: TOUS LES EVENEMENTS
+        press_homepage: Homepage
+        press_guide: Guide pratique
+        press_contact: Contactez-nous
+        press_download: A télécharger
+        press_download_section: Sections à télécharger
+        press_medialibrary: Médiathèque
+        press_accredit: S'accréditer
+        press_accredit_procedure: Procédure d'accréditation
+        press_cinemamap: Plan des salles
+        press_projection: Programmation
+        press_statement_info: Communiqués / infos
+        waiting_page: Page d'attente
+        fdc_page_news_articles: L'actualité - Tous les articles
+        fdc_page_news_audios: L'actualité - Tous les audios
+        fdc_page_news_images: L'actualité - Toutes les images
+        fdc_page_news_videos: L'actualité - Toutes les vidéos
+
+form:
+    seo:
+        helper_file: Dimensions attendues : 1200x627. Format attendu : .jpg, .png
+    tag:
+        helper_name: 255 caractères max.
+    translate_option:
+        en: Anglais
+        zh : Chinois
+        es: Espagnol
+    homepage:
+        helper_social_graph: Séparer par des virgules les tags que vous souhaitez.
+        helper_social_wall: Séparer par des virgules les tags que vous souhaitez.
+        helper_home_slider: Sélectionnez de 3 à 6 actualités ou communiqués ou infos. Elles apparaitront en front-office dans l'ordre des lignes.
+        helper_top_video_associated: Sélectionnez de 2 à 5 vidéos de la webTV. Elles apparaitront en front-office dans l'ordre des champs.
+        helper_top_web_tvs_associated: Sélectionnez de 3 à 10 chaînes de la webTV. Elles apparaitront en front-office de façon aléatoire parmi celles sélectionnées.
+        helper_films_associated: Sélectionnez de 1 à 5 films et leurs boucles vidéos associées. Ils apparaitront en front-office dans l'ordre des champs.
+        helper_pushes : Format de l'image recommandé : 650x410
+        helper_prefooter: Format de l'image recommandé : 1954x1200
+        helper_pushes_grand: Format de l'image recommandé : 1300x410
+    flashbag:
+        modified: Modification effectuée.
+    settings:
+        festival: Année du festival
+    news:
+        helper_header_audio: Lorem ipsum sit dolor amet.
+        helper_header_image: "Dimensions attendues : 2560x1620 - ratio paysage. Format attendu : .jpg, .png"
+        helper_title: "255 caractères max."
+        helper_seo_title: "Recommandé : 60 caractères"
+        helper_description: "Recommandé : 155 caractères"
+        helper_file: |
+            Par défaut, c'est l'image principale qui est utilisée comme image de partage.
+            Dimensions attendues : 2560x1620 - ratio paysage. Format attendu : .jpg, .png
+        helper_news_association: Sélectionnez 2 actualités au maximum. Ils apparaitront en front-office en bas de l'article.
+        helper_signature: 255 caractères max.
+        helper_widgets: Ajouter un module de type :
+        helper_tags: Ajoutez des tags à l'article pour le voir ressortir dans les résultats de recherche.
+        helper_film_film_associated: Sélectionnez un film associé à l'article. La programmation associée apparaitra automatiquement en front-office. Ce champ est prioritaire sur les champs "Événement & programmation associés" et "Programmation associée".
+        helper_event_associated: Sélectionnez un événement associé à l'article. La programmation associée apparaitra automatiquement en front-office. Ce champ est prioritaire sur le champ "Programmation associée".
+        helper_news_film_projection_associated: Sélectionnez un ou plusieurs événements de programmation associés à l'article.
+        helper_news_film_film_associated: Sélectionnez les films sur lesquels vous souhaitez voir l'actualité apparaitre.
+        helper_news_news_associated: Sélectionnez 2 actualités au maximum. Ils apparaitront en front-office en bas de l'article.
+        helper_media_audio: Ajouter un fichier au format mp3
+        helper_video_file: Ajouter un fichier au format mp4/mpeg
+    info:
+        helper_info_associated: Sélectionnez 2 infos au maximum. Ils apparaitront en front-office en bas de l'article.
+    statement:
+        helper_statement_associated: Sélectionnez 2 communiqués au maximum. Ils apparaitront en front-office en bas de l'article.
+    social_wall:
+        twitter: Twitter
+        instagram: Instagram
+        tumblr: Tumblr
+    widget:
+        text: Module de texte
+        video: Module vidéo Amazon
+        video_youtube: Module vidéo Youtube
+        audio: Module audio
+        image: Module photo(s)
+        image_dual_align: Module 2 photos / ligne
+        quote: Module citation
+    media_audio:
+        helper_title: 200 caractères max.
+        displayed_home: Remonter en tant qu'actualité sur la homepage
+        displayed_all: Remonter dans "Toutes les audios"
+    media_video:
+        helper_title: 200 caractères max.
+        displayed_all: Remonter dans "Toutes les vidéos"
+        displayed_home: Remonter en tant qu'actualité sur la homepage
+        displayed_webTv: Afficher dans une chaîne de la webTV
+        displayed_trailer: Afficher en tant que bande-annonce de la webTV
+        displayed_mobile: Flux mobiles
+    media:
+        helper_legend: 255 caractères max.
+        helper_alt: 255 caractères max.
+        helper_copyright: 255 caractères max. Le symbole © est généré automatiquement.
+        helper_tags: Ajoutez des tags à l'article pour le voir ressortir dans les résultats de recherche.
+    media_image:
+        helper_file: Dimensions attendues : 2560x1620 - ratio paysage. Format attendu : .jpg, .png
+        displayed_home: Remonter dans le diaporama du quotidien en homepage
+        displayed_all: Remonter dans "Toutes les photos"
+    media_image_simple:
+        helper_file: Dimensions attendues : A adapter selon la page cible. Format attendu : .jpg, .png
+    news_widget_video_youtube:
+        helper_url: URL de la vidéo Youtube (ex: https://www.youtube.com/watch?v=-NDYBoQWOrU)
+    film:
+        helper_film_film_media_audio: Sélectionnez un ou plusieurs audios associés au film.
+        helper_film_film_media_video: Sélectionnez une ou plusieurs vidéos associées au film.
+        helper_film_film_associated_info: Sélectionnez une ou plusieurs infos associées au film.
+        helper_film_film_associated_statement: Sélectionnez un ou plusieurs communiqués associés au film.
+        helper_film_film_associated_news: Sélectionnez une ou plusieurs actualités associées au film.
+    placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
+    placeholder_seo_description: "[valeur champ chapô actualité]"
+    label_position: Position
+    label_header_video: Vidéo principale
+    label_parent: Parent
+    label_contact_theme_theme: Theme
+    label_route: Route
+    label_enabled: Actif
+    label_tag_name: Nom du tag
+    label_header_audio: Audio principal
+    label_social_graph_hashtag_twitter: Social graph - hashtags
+    label_displayed_social_wall: Afficher le social wall
+    label_news: Actualités
+    label_infos : Info
+    label_statement : Communiqué
+    label_social_wall_hashtags: Social Wall - hashtags
+    label_news_widget_video_youtube_title: Titre de la vidéo
+    label_news_widget_video_youtube_url: Url de la vidéo
+    label_save: Sauvegarder
+    label_email: Email
+    label_copyright: Copyright
+    label_tags: Tags de recherche
+    label_legend_img: Légende de l'image
+    label_alt_img: Alt de l'image
+    label_signature: Signature
+    label_introduction: Chapô
+    label_header_image: Image principale
+    label_header_gallery: Diaporama
+    label_associated_film: Film & programmation associés
+    label_associated_event: Événement & programmation associés
+    label_news_film_projection_associated: Objets de programmation associés
+    label_news_film_film_associated: Association à une ou plusieurs fiches films
+    label_news_news_associated: Actualités associés
+    label_displayed_home: Remonter en homepage
+    label_displayed_mobile: Flux mobiles
+    label_translate: Envoyer en traduction
+    label_theme: Thème
+    label_title: Titre
+    label_subtitle: Sous-Titre
+    label_publish_on: Publié sur
+    label_published_at: Date de début de publication
+    label_publish_ended_at: Date de fin de publication
+    label_status: Statut
+    label_article_tags: Tags de recherche associés à l'article
+    label_priority_status: Priorité
+    label_seo_title: Titre
+    label_seo_description: Description
+    label_seo_file: Vignette partage
+    label_theme_name: Nom du thème
+    label_file: Fichier
+    label_media_video_image: Image cover
+    label_display: Ne pas afficher cette strate
+    label_film_film_media_audio: Audios associés
+    label_film_film_media_video: Vidéos associées
+    label_film_film_associated_info: Infos associées
+    label_film_film_associated_statement: Communiqués associés
+    label_film_film_associated_news: Actualités associées
+    label_film: Films
+    label_content: Contenu
+    label_image: Image
+    label_image_link: Image et lien
+    label_main_image: Première image
+    label_second_image: Seconde image
+    label_btn: Libellé du bouton
+    label_second_btn: Libellé du second bouton
+    label_third_btn: Libellé du troisième bouton
+    label_label: Légende
+    label_web_tv_name: Nom de la chaîne
+    label_web_tv: Chaîne
+    label_hide_same_day: Ne pas afficher la strate "le même jour"
+    label_primary_push_title: Titre du push principal
+    label_primary_push_url: URL du push principal
+    label_secondary_push_title: Titre du push secondaire
+    label_secondary_push_url: URL du push secondaire
+    label_name: Nom
+    label_media_audio: Fichier audio
+    label_video_file: Fichier vidéo
+    label_procedure: Procédures
+    label_accredit_procedure: Choisissez les procédures à afficher
+    label_btn_link: Lien du bouton
+    label_btn_text: Texte sous le bouton
+    label_prefooter_title: Titre du Pré-footer
+    label_prefooter_url: URL du Pré-footer
+    label_has_waiting_page: Possède une page d'attente
+    label_image_push: Image du push (media image semi-riche)
+    label_image_prefooter: Image du Pré-footer (media image semi-riche)
+    label_homepage_top_video_associated: Vidéos à la une
+    label_homepage_top_web_tvs_associated: Chaînes à la une
+    label_homepage_films_associated: Films présentés
+    label_projection: Projection
+    label_projection_p: Projection presse
+    label_arrive_icon: Pictogramme du titre
+    label_trans_name: Slug pour traduction
+    label_locked_content: Contenu locké
+    label_statement_associated : Communiqués associés
+    label_info_associated : Infos associés
+    label_link: Lien du push
+    label_films_associated: Films Associés
+    label_video_extract_associated: Extrait vidéo associé
+    label_tablet_image: Image tablette (2560 x 1620)
+    label_image_mobile: Image mobile
+    label_push_image: Image du push
+    label_webTv_required: Chaîne *
+    label_column:
+        first: Première colonne
+        second: Deuxième colonne
+        third: Troisième colonne
+    label_download_section: Documents
+    label_map_room: Salles
+    label_section: Liste des salles
+    label_map_zone: Zone du festival
+    label_scheduling: Programmation
+    label_press_scheduling: Programmation presse
+    label_updated_date: Date de mise à jour
+    label_service_icon: Pictogramme
+    label_information_icon: Pictogramme du titre
+    label_media_title: Nom du média
+    label_procedure: Procédure
+    label_download_section: Sections à télécharger
+    label_map_img: Image de la salle
+    label_map_zone_img: Image de la zone
+    label_map_default_img: Image de la salle du festival par default
+    label_zone_default_img: Image de la zone du festival par default
+    label_page: Page
+    label_text: Texte
+    label_banner: Bannière
+    label_list_event: Evènementiel
+    label_list_press: Presse
+    label_image_main: Image principale
+    label_image_cover: Image cover
+    label_video_main: Vidéo principale
+    label_procedure_file : Fichier procédure
+    label_procedure_second_file : Fichier procédure (en)
+    gallery:
+        medias: Médias
+    encoding_state:
+        in_progress: En cours
+        error: Erreur
+        ready: Prêt
+    fdc_page_award:
+        content_page: Contenu de la page
+        label_name: Nom
+        image: Image cover
+        helper_image: Dimensions attendues : 2560×1103. Format attendu.
+        selections: Sélections
+        selection: Sélection
+        selection_longs_metrages: Sélection longs métrages
+        label_name_longs_metrages: Surcharger le nom de la sélection longs métrages
+        selection_courts_metrages: Sélection courts métrages
+        label_name_courts_metrages: Surcharger le nom de la sélection courts métrages
+        label_other_selection_sections: Autres sélections du prix Caméra d'OR
+        label_name_en_competition: Étiquette catégorie compétition
+        label_header: Chapeau
+    web_tv:
+        helper_name: 255 caractères max.
+        helper_image:  Dimensions attendues : 1280x808. Format attendu : .jpg, .png. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.
+    contact_theme:
+        helper_theme: 255 caractères max.
+    status:
+        draft: Brouillon
+        translation_pending: À traduire
+        translation_validating: Traduction(s) à valider
+        validating: À valider
+        translated: Traduit
+        published: Publié
+        deactivated: Désactivé
+        locked: Bloquée
+    priority_status:
+        low: Bas
+        average: Moyen
+        urgent: Urgent
+        now: Immédiat
+    theme:
+        helper_name: 30 caractères max.
+    press_homepage:
+        helper_media: « Sélectionnez de 2 à 4 films ». Elles apparaitront en front-office dans l'ordre des champs.
+        push_link: Lien du push
+        media_film: Medias du film
+        download: A télécharger
+        helper_title: 255 caractères max.
+        helper_subtitle: 255 caractères max.
+        helper_desc: 255 caractères max.
+        label_section: Blocs
+    fdc_page_web_tv_channels:
+        image: Image cover
+        helper_image: Dimensions attendues : 2560×1103. Format attendu.
+        sticky: Chaîne à la une
+
+        helper_sticky: Sélectionnez la première chaîne que vous souhaitez voir apparaître en haut à gauche de la page.
+    fdc_page_web_tv_live:
+        festival_live: Le festival en direct
+        live_false: Avant le festival
+        live_true: Pendant le festival
+        label_title: Titre
+        label_title: 255 caractères max
+        label_first_sub_head: Sous-titre ligne 1
+        helper_first_sub_head: 255 caractères max. Couleur blanche.
+        label_second_sub_head: Sous-titre ligne 2
+        helper_second_sub_head: 255 caractères max. Couleur dorée.
+        label_direct_url: URL du direct
+        helper_direct_url: |
+          URL du live Youtube, type : http://www.youtube.com/watch?v=urCLo4vNpzs&1
+          Si non renseigné, seule l'image existera, le picto "play" n'apparaitra pas.
+        label_teaser_url: URL du teaser (avant le festival)
+        helper_teaser_url: |
+          URL Youtube, type : http://www.youtube.com/watch?v=urCLo4vNpzs&1
+          Si non renseigné, seule l'image existera, le picto "play" n'apparaitra pas.
+        image: Image cover
+        helper_image: Dimensions attendues : 2560×1103. Format attendu.
+        channels: Chaînes WebTV
+        label_web_tvs_associated: Chaînes à la une
+        helper_web_tvs_associated: Sélectionnez de 3 à 5 vidéos de la webTV. Elles apparaitront en front-office dans l'ordre des champs.
+        label_display_web_tv_area: Ne pas afficher cette strate
+        last_videos: Les dernières vidéos
+        label_display_last_video_area: Ne pas afficher cette strate
+        placeholder_seo_title: À saisir manuellement
+        placeholder_seo_description: À saisir manuellement
+        trailers: Bandes-annonces & extraits
+        label_media_videos_associated: Bandes-annonces & extraits à la une
+        helper_media_videos_associated: Sélectionnez de 3 à 10 films. Ils apparaitront en front-office dans l'ordre des champs.
+        label_display_trailer_area: Ne pas afficher cette strate
+    fdc_page_web_tv_trailers:
+        content_page: Contenu de la page
+        image: Image cover
+        label_image: Image cover
+        helper_image: Dimensions attendues : 2560×1103. Format attendu.
+        placeholder_seo_title: À saisir manuellement
+        placeholder_seo_description: À saisir manuellement
+        label_festival_section: Sélection
+        label_override_name: Surcharger le nom de la sélection
+    fdc_page_jury:
+        label_jury_type: Type de jury
+        label_override_name: Nom apparaissant dans l'onglet
+    film_person:
+        general: Informations générales
+        label_portrait_image: Image portrait
+        helper_portrait_image: Dimensions attendues :  584x794 - ratio portrait. Format Attendu.
+        label_landscape_image: Image paysage
+        helper_landscape_image: Dimensions attendues : 1946x1226 - ratio portrait. Format Attendu.
+        label_displayed_image: Image affichée sur la fiche personne
+        help_displayed_image: Au choix, l'image portrait ou l'image paysage.
+        label_chose_portrait_image: Image portrait
+        label_chose_landscape_image: Image paysage
+        president_jury: Président du jury
+        label_president_jury_image: Image portrait
+        help_president_jury_image: Dimensions attendues : 1600x1510 - ratio paysage. Format Attendu. Affichée uniquement sur la page Les jurys.
+    fdc_page_event:
+        helper_seo: |
+            <title> : Tous les événements - Festival de Cannes 2016
+            meta desc  : Retrouvez tous les événements de l'édition 2016 du Festival de Cannes
+
+            og:site_name : Festival de Cannes 2016
+            og:type : website
+            og:title : Tous les événements - Festival de Cannes 2016
+            og:description : Retrouvez tous les événements de l'édition 2016 du Festival de Cannes
+            og:url : [URL page]
+            og:image : [preset dernier article remonté]
+
+            twitter:card : summary_large_image
+            twitter:site : Festival de Cannes 2016
+            twitter:creator : @Festival_Cannes
+            twitter:title : Tous les événéments - Festival de Cannes 2016
+            twitter:description : Retrouvez tous les événements de l'édition 2016 du Festival de Cannes
+            twitter:image : [preset dernier article remonté]
+    event:
+        label_title: Titre
+        helper_title: 255 caractères max
+        label_theme: Thème
+        label_header_image: Image principale
+        label_introduction: Chapô
+        label_signature: Signature
+        helper_signature: 255 caractères max.
+        helper_widgets: Ajouter un module de type :
+
+nav:
+    site_modal: Ouvrir la sélection des sites
+
+show:
+    label_programmation_films: Film
+    label_header_video: Vidéo principale
+    label_title_video: Titre
+    label_parent: Parent
+    label_position: Position
+    label_route: Route
+    label_enabled: Actif
+    label_starts_at: Date de début
+    label_ends_at: Date de fin
+    label_type: Type
+    label_programmation_section: Section de programmation
+    label_iso: ISO
+    label_budget_estimation : Budget Estimé
+    label_filming_date: Date filmé
+    label_filming_place: Lieu du film
+    label_session_name: Nom de la session
+    label_budget_acquired: Budget acquis
+    label_cinando_url: Url Cinando
+    label_lastname: Nom
+    label_firstname: Prénom
+    label_asian_name: Nom asiatique
+    label_nationality: Nationalité
+    label_nationality2: Nationalité 2
+    label_director_first: Premier film du directeur
+    label_restored: Film restauré
+    label_title_v_o: Titre VO
+    label_title_v_o_alphabet: Titre Alphabet VO
+    label_production_year: Année de production
+    label_duration: Durée
+    label_casting_commentary: Commentaire du casting
+    label_soif_updated_at: Mise à jour SOIF le
+    label_website: Site web
+    label_id: Identifiant
+    label_title: Titre
+    label_name: Nom
+    label_theme: Thème
+    label_status: Statut
+    label_status_main: Statut
+    label_type: Type
+    label_created_at: Date de création
+    label_updated_at: Mis à jour le
+    label_published_interval: Date(s) de publication
+    label__action: Actions
+    label_theme_name: Nom du thème
+    label_priority_status: Priorité
+    label__preview: Prévisualiser
+    label__edit_translations: Éditer
+    label_social_wall_content_none: Pas d'image
+    label_legend_img: Légende de l'image
+    label_url: Lien
+    label_network: Réseau Social
+    label_content: Contenu
+    label_message: Message
+    label_enabled_mobile: Visible sur mobile
+    label_enabled_desktop: Visible sur le site
+    label_alt: Alt de l'image
+    label_web_tv_name: Nom de la chaîne
+    label_title_audio: Titre de l'audio
+
+FDCPageWebTvChannels: Page WebTV - Les chaînes
+FDCPageWebTvLive: Accueil WebTV
+FDCPageWebTvTrailers: Page WebTV - Les bandes-annonces - Compétition
+FDCPageLaSelection: Page la sélection
+FilmJuryType: Type des jurys
 FilmSelectionSection: Sélections
-lang.en: Anglais
-lang.fr: Français
-lang.es: Espagnol
-lang.zh: Chinois
-settings.fdc: 'Paramètres du Festival de Cannes'
-settings.fdc_api: 'Paramètres de l''API Festival de Cannes'
-settings.fdc_press_password: 'Mot de passe de l''Espace presse'
-breadcrumb.link_film_person_list: 'Liste des personnes'
-breadcrumb.link_film_film_list: 'Liste des films'
-breadcrumb.link_tag_list: 'Liste des tags'
-breadcrumb.link_news_article_list: 'Liste des actualités - articles'
-breadcrumb.link_news_video_list: 'Liste des actualités - vidéos'
-breadcrumb.link_news_audio_list: 'Liste des actualités - audios'
-breadcrumb.link_news_image_list: 'Liste des actualités - photos'
-breadcrumb.link_theme_list: 'Liste des Thèmes'
-breadcrumb.link_media_image_list: 'Liste des Médias photos'
-breadcrumb.link_media_video_list: 'Liste des Médias vidéo'
-breadcrumb.link_media_audio_list: 'Liste des Médias audio'
-breadcrumb.link_homepage_list: Homepage
-breadcrumb.link_social_wall_list: 'Liste du Social Wall'
-breadcrumb.link_web_tv_list: 'Liste des chaînes'
-breadcrumb.link_f_d_c_page_web_tv_channels_list: 'Page WebTV - Les chaînes'
-breadcrumb.link_media_image_simple_list: 'Images semi-riches'
-breadcrumb.link_f_d_c_page_web_tv_live_list: 'Accueil WebTV'
-breadcrumb.link_country_list: 'Liste des pays'
-breadcrumb.link_film_projection_list: Programmations
-breadcrumb.link_film_atelier_list: 'Liste des films ateliers'
-breadcrumb.link_f_d_c_page_web_tv_trailers_list: 'WebTV - Les bandes annonces'
-breadcrumb.link_contact_theme_list: 'Liste des thèmes de contact'
-breadcrumb.link_event_list: 'Liste des évènements'
-breadcrumb.link_statement_article_list: 'Liste des communiqués - articles'
-breadcrumb.link_statement_video_list: 'Liste des communiqués - vidéos'
-breadcrumb.link_statement_image_list: 'Liste des communiqués - photos'
-breadcrumb.link_statement_audio_list: 'Liste des communiqués - audios'
-breadcrumb.link_info_article_list: 'Liste des infos - articles'
-breadcrumb.link_info_video_list: 'Liste des infos - vidéos'
-breadcrumb.link_info_image_list: 'Liste des infos - photos'
-breadcrumb.link_info_audio_list: 'Liste des infos - audios'
-breadcrumb.link_press_guide_list: 'Guide pratique'
-breadcrumb.link_press_homepage_list: Home
-breadcrumb.link_contact_page_list: Contactez-nous
-breadcrumb.link_press_cinema_map_list: 'Plan des salles'
-breadcrumb.link_f_d_c_event_routes_list: 'Liste des pages'
-breadcrumb.link_gallery_list: 'Galeries photos'
-breadcrumb.link_press_projection_list: Programmation
-breadcrumb.link_press_download_section_list: 'Liste des sections à télécharger'
-breadcrumb.link_press_download_list: 'A télécharger'
-breadcrumb.link_press_media_library_list: Médiathèque
-breadcrumb.link_press_accredit_procedure_list: 'Procédures d''accréditation'
-breadcrumb.link_press_accredit_list: 'S''accréditer'
-breadcrumb.link_press_statement_info_list: 'Communiqué / Info'
-breadcrumb.link_press_cinema_room_list: 'Liste des salles'
-breadcrumb.link_f_d_c_page_waiting_list: 'Pages d''attente'
-breadcrumb.link_f_d_c_page_news_articles_list: 'Page L''actualité'
-breadcrumb.link_f_d_c_page_news_audios_list: 'Page L''actualité'
-breadcrumb.link_f_d_c_page_news_images_list: 'Page L''actualité'
-breadcrumb.link_f_d_c_page_news_videos_list: 'Page L''actualité'
-breadcrumb.link_f_d_c_page_la_selection_list: 'La sélection'
-breadcrumb.link_f_d_c_page_jury_list: 'Les jurys'
-breadcrumb.link_f_d_c_page_award_list: 'Le palmarès'
-breadcrumb.link_f_d_c_participate_page_list: 'Préparer son séjour'
-link.action_soif_refresh: 'Mettre à jour'
-homepage.group.social_wall: 'Social Wall'
-homepage.group.push_main: 'Pushs Principaux'
-homepage.group.push_secondary: 'Pushs Secondaires'
-homepage.group.prefooter: Pré-footer
-homepage.group.slider: Slider
-homepage.group.top_news: 'L''actualité à la une'
-homepage.group.web_tv: WebTV
-homepage.group.film: Films
-homepage.group.seo: 'Métadonnées & SEO'
-homepage.top_news_type.displayed_news: 'Afficher la grille d''actualités (pendant le festival)'
-homepage.top_news_type.displayed_events: 'Afficher la grille de communiqués & infos (avant le festival)'
-group.french_version: 'Version française'
-group.main_infos: 'Informations générales'
-group.news.publish_parameters: 'Paramètres de publication'
-group.news.associations: Associations
-group.news.widgets: 'Modules éditoriaux'
-group.seo: 'Métadonnées & SEO'
-group.helper_seo: "Laissez ces champs vides, les informations renseignées ci-dessus seront reprises automatiquement.\nVous pouvez également renseignez ces champs dans le cas où vous souhaitez surcharger les informations reprises automatiquement.\n"
-group.helper_seo_example: "<title> : [valeur champ titre actualité] - Festival de Cannes 2016\nmeta desc  : [valeur champ chapô actualité]\n\nog:site_name : Festival de Cannes 2016\nog:type : article\nog:title : [valeur champ titre actualité]\nog:url : [URL actualité]\nog:description : [valeur champ chapô actualité]\nog:updated_time : [valeur date de modif actualité]\nog:image : [preset spécifique image principale (1200x630px)]\n\ntwitter:card : summary_large_image\ntwitter:site : Festival de Cannes 2016\ntwitter:creator : @Festival_Cannes\ntwitter:title : [valeur champ titre actualité]\ntwitter:description : [valeur champ chapô actualité]\ntwitter:image : [preset spécifique image principale (600x380px)]\n\narticle:author : [valeur signature actualité]\narticle:published_time : [valeur date de publication de l'actu]\narticle:modified_time : [valeur date de modif actualité]\n"
-group.helper_seo_fdc_page_web_tv_channels_example: "<title> : WebTV - Toutes les chaînes - Festival de Cannes 2016\nmeta desc  : Retrouvez toutes les chaînes de la webTV du Festival de Cannes 2016\n\nog:site_name : Festival de Cannes 2016\nog:type : website\nog:title : WebTV - Toutes les chaînes - Festival de Cannes 2016\nog:description : Retrouvez toutes les chaînes de la webTV du Festival de Cannes 2016\nog:url : [URL page]\nog:image : [preset chaîne à la une]\n\ntwitter:card : summary_large_image\ntwitter:site : Festival de Cannes 2016\ntwitter:creator : @Festival_Cannes\ntwitter:title : WebTV - Toutes les chaînes - Festival de Cannes 2016\ntwitter:description : Retrouvez toutes les chaînes de la webTV du Festival de Cannes 2016\ntwitter:image : [preset chaîne à la une]\n"
-entity.fdc_event_routes: Menu
-entity.news_article: Articles
-entity.news_video: Vidéos
-entity.news_image: Photos
-entity.news_audio: Audios
-entity.theme: Thèmes
-entity.tag: 'Tags de recherche'
-entity.web_tv: Chaînes
-entity.media_image: Photos
-entity.media_image_simple: 'Images semi-riches'
-entity.media_audio: Audios
-entity.media_video: Vidéos
-entity.statement_article: Articles
-entity.statement_image: Images
-entity.statement_video: Vidéos
-entity.statement_audio: Audios
-entity.info_article: Articles
-entity.info_image: Images
-entity.info_video: Vidéos
-entity.info_audio: Audios
-entity.film_film: Films
-entity.film_person: Personnes
-entity.film_atelier: 'Films Atelier'
-entity.film_projection: Programmations
-entity.country: Pays
-entity.contact_theme: 'Thèmes de contact'
-entity.event: Événements
-entity.created_infos: "Crée le date par :<br/>\n<b>user</b>\n"
-entity.updated_infos: "Modifiée le date par :<br/>\n<b>user</b>\n"
-entity.social_wall: 'Social Wall'
-entity.press_homepage: 'Accueil Espace Presse'
-entity.contact_page: Contactez-nous
-entity.press_accredit: S’accréditer
-entity.press_accredit_procedure: 'Procédures d’accréditation'
-entity.press_media_library: Médiathèque
-entity.press_download: 'A télécharger'
-entity.press_download_section: 'Sections à télécharger'
-entity.press_projection: Programmation
-entity.press_guide: 'Guide pratique'
-entity.press_cinema_map: 'Plans des salles'
-entity.gallery: 'Galeries photos'
-entity.press_statement_info: 'Communiqué / Info'
-entity.press_cinema_room: Salle
-entity.fdc_page_news_articles: 'L''actualité - Tous les articles'
-entity.fdc_page_news_audios: 'L''actualité - Tous les audios'
-entity.fdc_page_news_images: 'L''actualité - Toutes les images'
-entity.fdc_page_news_videos: 'L''actualité - Toutes les vidéos'
-entity.fdc_page_prepare: 'Préparer son séjour'
-list.label_site: Site
-list.label_programmation_films: Film
-list.label_header_video: 'Vidéo principale'
-list.label_title_video: Titre
-list.label_parent: Parent
-list.label_position: Position
-list.label_route: Route
-list.label_enabled: Actif
-list.label_starts_at: 'Date de début'
-list.label_ends_at: 'Date de fin'
-list.label_type: Type
-list.label_programmation_section: 'Section de programmation'
-list.label_iso: ISO
-list.label_budget_estimation: 'Budget Estimé'
-list.label_filming_date: 'Date filmé'
-list.label_filming_place: 'Lieu du film'
-list.label_session_name: 'Nom de la session'
-list.label_budget_acquired: 'Budget acquis'
-list.label_cinando_url: 'Url Cinando'
-list.label_lastname: Nom
-list.label_firstname: Prénom
-list.label_asian_name: 'Nom asiatique'
-list.label_nationality: Nationalité
-list.label_nationality2: 'Nationalité 2'
-list.label_director_first: 'Premier film du directeur'
-list.label_restored: 'Film restauré'
-list.label_title_v_o: 'Titre VO'
-list.label_title_v_o_alphabet: 'Titre Alphabet VO'
-list.label_production_year: 'Année de production'
-list.label_duration: Durée
-list.label_casting_commentary: 'Commentaire du casting'
-list.label_soif_updated_at: 'Mise à jour SOIF le'
-list.label_website: 'Site web'
-list.label_id: Identifiant
-list.label_title: Titre
-list.label_name: Nom
-list.label_theme: Thème
-list.label_status: Statut
-list.label_status_main: Statut
-list.label_created_at: 'Date de création'
-list.label_updated_at: 'Mis à jour le'
-list.label_published_interval: 'Date(s) de publication'
-list.label__action: Actions
-list.label_theme_name: 'Nom du thème'
-list.label_priority_status: Priorité
-list.label__preview: Prévisualiser
-list.label__edit_translations: Éditer
-list.label_social_wall_content_none: 'Pas d''image'
-list.label_legend_img: 'Légende de l''image'
-list.label_url: Lien
-list.label_network: 'Réseau Social'
-list.label_content: Contenu
-list.label_message: Message
-list.label_enabled_mobile: 'Visible sur mobile'
-list.label_enabled_desktop: 'Visible sur le site'
-list.label_alt: 'Alt de l''image'
-list.label_web_tv_name: 'Nom de la chaîne'
-list.label_title_audio: 'Titre de l''audio'
-list.label_realisator: Réalisateur(s)
-list.label_selection: Sélection
-list.label_festival-year: 'Année de sélection'
-list.label_section_title: 'Nom de la section'
-list.label_page: 'Titre de la page d''attente'
-list.label_film_jury_type_name: 'Type de jury'
-list.tooltip.unlock: DÉBLOQUER
-list.tooltip.modified_by: 'En cours de modification par </br>'
-list.tooltip.since: depuis
-list.media_video.label_id: Id
-list.media_video.label_title_video: 'Titre de la vidéo'
-list.media_video.label_web_tv: Chaîne
-list.media_video.label_encoding_state: Encodage
-list.media_audio.label_published_at: 'Publié le'
-list.media_image_simple.label_name: 'Nom de l''image'
-list.media_image_simple.label_alt: 'Alt de l''image'
-list.common.label_id: Id
-list.common.label_title: Titre
-list.common.label_type: Titre
-list.common.label_theme: Thème
-list.common.label_created_at: 'Crée le'
-list.common.label_published_interval: 'Date(s) de publication'
-list.common.label_priority_status: Priorité
-list.common.label_status: Statut
-list.common.label_main_status: Statut
-list.news_common.label_title: 'Titre de l''actualité'
-list.news_common.translation_pending: 'En attente de traduction'
-list.news_common.translation_validating: 'Traduction à valider'
-list.news_common.translated: Traduit
-list.statement_common.label_title: 'Titre du communiqué'
-list.statement_common.label_id: Identifiant
-list.info_common.label_title: 'Titre de l''info'
-list.info_common.label_id: Identifiant
-list.accredit_procedure.label_title: 'Titre de la procédure'
-list.cinema_room.label_title: 'Nom de la salle'
-list.press_download.label_title: 'Nom de la section'
-filter.label_have_trailer: 'Afficher film avec bande annonce'
-filter.label_position: Position
-filter.label_parent: Parent
-filter.label_route: Route
-filter.label_enabled: Actif
-filter.label_email: Email
-filter.label_starts_at: 'Date de début'
-filter.label_ends_at: 'Date de fin'
-filter.label_type: Type
-filter.label_programmation_section: 'Section de programmation'
-filter.label_iso: ISO
-filter.label_budget_estimation: 'Budget Estimé'
-filter.label_filming_date: 'Date filmé'
-filter.label_filming_place: 'Lieu du film'
-filter.label_session_name: 'Nom de la session'
-filter.label_budget_acquired: 'Budget acquis'
-filter.label_cinando_url: 'Url Cinando'
-filter.label_site: Site
-filter.label_lastname: Nom
-filter.label_firstname: Prénom
-filter.label_asian_name: 'Nom asiatique'
-filter.label_nationality: Nationalité
-filter.label_nationality2: 'Nationalité 2'
-filter.label_director_first: 'Premier film du directeur'
-filter.label_restored: 'Film restauré'
-filter.label_title_v_o: 'Titre VO'
-filter.label_title_v_o_alphabet: 'Titre Alphabet VO'
-filter.label_production_year: 'Année de production'
-filter.label_duration: Durée
-filter.label_casting_commentary: 'Commentaire du casting'
-filter.label_soif_updated_at: 'Mise à jour SOIF le'
-filter.label_website: 'Site web'
-filter.label_legend: 'Légende contenant'
-filter.label_festival: Festival
-filter.label_id: Identifiant
-filter.label_title: Titre
-filter.label_theme: Thème
-filter.label_status: Statut
-filter.label_translate: Traduit
-filter.label_priority_status: Priorité
-filter.label_url: Lien
-filter.label_network: 'Réseau Social'
-filter.label_content: Contenu
-filter.label_message: Message
-filter.label_enabled_mobile: 'Visible sur mobile'
-filter.label_enabled_desktop: 'Visible sur le site'
-filter.label_tags: Hashtag
-filter.label_created_at: 'Créé le'
-filter.label_updated_at: 'Mis à jour le'
-filter.label_name: Nom
-filter.label_alt: 'Alt de l''image'
-filter.label_format: Formats
-filter.label_created_before: 'Créé avant le'
-filter.label_created_after: 'Créé après le'
-filter.label_web_tv_name: 'Nom de la chaîne'
-filter.label_realisator: Réalisateurs
-filter.label_selection: Sélection
-filter.label_festival-year: 'Année de sélection'
-filter.label_programmation_films: Film
-filter.media_image.label_created_before: 'Publié avant le'
-filter.media_image.label_created_after: 'Publié après le'
-filter.media_image.label_legend: 'Légende de l''image'
-filter.media_image.displayed_home: 'Photos remontées dans le diaporama du quotidien en home page'
-filter.media_image.displayed_all: 'Photos remontées dans toutes les photos'
-filter.media_audio.displayed_home: 'Audios affichés en tant qu''actualités sur la homepage'
-filter.media_audio.displayed_all: 'Audios remontés dans "Tous les audios"'
-filter.media_audio.label_created_before: 'Créé avant le'
-filter.media_audio.label_created_after: 'Créé après le'
-filter.media_audio.label_published_before: 'Publié avant le'
-filter.media_audio.label_published_after: 'Publié après le'
-filter.media_video.label_title_video: 'Titre de la vidéo'
-filter.media_video.label_web_tv: Chaîne
-filter.media_video.displayed_home: 'Vidéos affichées en tant qu''actualités sur la home page'
-filter.media_video.displayed_trailer: 'Bandes annonces et extraits'
-filter.common.label_id: Id
-filter.common.label_created_before: 'Créé avant le'
-filter.common.label_created_after: 'Créé après le'
-filter.common.label_updated_before: 'Modifié avant le'
-filter.common.label_updated_after: 'Modifié après le'
-filter.press_download.label_section: 'Nom de la section'
-filter.cinema_room.label_title: 'Nom de la salle'
-dashboard.group.soif: SOIF
-dashboard.group.general: Général
-dashboard.group.media: Médias
-dashboard.group.news: Actualités
-dashboard.group.statement: Communiqués
-dashboard.group.info: Infos
-dashboard.group.event: Événements
-dashboard.group.press: 'Espace presse'
-dashboard.group.seo: 'SEO + TETIERES'
-dashboard.group.participate: Participer
-dashboard.link.settings: Paramètres
-dashboard.link.bo_translation: Traductions
-dashboard.link.homepage: Homepage
-dashboard.link.fdc_page_web_tv_channels: 'WEBTV - Les chaînes'
-dashboard.link.fdc_page_web_tv_live: 'Accueil WebTV'
-dashboard.link.fdc_page_web_tv_trailers_competition: 'WebTV - BA et extraits (Compétition)'
-dashboard.link.fdc_page_web_tv_trailers_certain_regard: 'WebTV - BA et extraits (Un certain regard)'
-dashboard.link.fdc_page_web_tv_trailers_hors_competition: 'WebTV - BA et extraits (Hors compétition)'
-dashboard.link.fdc_page_web_tv_trailers_seances_speciales: 'WebTV - BA et extraits (Séances spéciales)'
-dashboard.link.fdc_page_web_tv_trailers_cinefondation: 'WebTV - BA et extraits (Cinéfondation)'
-dashboard.link.fdc_page_web_tv_trailers_courts_metrages: 'WebTV - BA et extraits (Courts métrages)'
-dashboard.link.fdc_page_web_tv_trailers_cannes_classics: 'WebTV - BA et extraits (Cannes Classics)'
-dashboard.link.fdc_page_web_tv_trailers_cinema_plage: 'WebTV - BA et extraits (Cinéma de plage)'
-dashboard.link.fdc_page_la_selection_competition: 'La sélection COMPETITION'
-dashboard.link.fdc_page_la_selection_certain_regard: 'La sélection UN CERTAIN REGARD'
-dashboard.link.fdc_page_la_selection_hors_competition: 'La sélection HORS COMPÉTITION'
-dashboard.link.fdc_page_la_selection_seances_speciales: 'La sélection SÉANCES SPÉCIALES'
-dashboard.link.fdc_page_la_selection_cinefondation: 'La sélection CINÉFONDATION'
-dashboard.link.fdc_page_la_selection_courts_metrages: 'La sélection COURTS MÉTRAGES'
-dashboard.link.fdc_page_jury_longs_metrages: 'Les jurys LONGS METRAGES'
-dashboard.link.fdc_page_jury_cinefondation_courts_metrages: 'Les jurys CINEFONDATION & COURTS METRAGES'
-dashboard.link.fdc_page_jury_certain_regard: 'Les jurys UN CERTAIN REGARD'
-dashboard.link.fdc_page_jury_camera_dor: 'Les jurys CAMERA D''OR'
-dashboard.link.fdc_page_award_competition: 'Le palmarès COMPETITION'
-dashboard.link.fdc_page_award_certain_regard: 'Le palmarès UN CERTAIN REGARD'
-dashboard.link.fdc_page_award_cinefondation: 'Le palmarès CINEFONDATION'
-dashboard.link.fdc_page_award_camera_dor: 'Le palmarès CAMERA D''OR'
-dashboard.link.fdc_page_award_all_awards: 'Le palmarès TOUT LE PALMARES'
-dashboard.link.press_homepage: Homepage
-dashboard.link.press_guide: 'Guide pratique'
-dashboard.link.press_contact: Contactez-nous
-dashboard.link.press_download: 'A télécharger'
-dashboard.link.press_download_section: 'Sections à télécharger'
-dashboard.link.press_medialibrary: Médiathèque
-dashboard.link.press_accredit: 'S''accréditer'
-dashboard.link.press_accredit_procedure: 'Procédure d''accréditation'
-dashboard.link.press_cinemamap: 'Plan des salles'
-dashboard.link.press_projection: Programmation
-dashboard.link.press_statement_info: 'Communiqués / infos'
-dashboard.link.waiting_page: 'Page d''attente'
-dashboard.link.fdc_page_news_articles: 'L''actualité - Tous les articles'
-dashboard.link.fdc_page_news_audios: 'L''actualité - Tous les audios'
-dashboard.link.fdc_page_news_images: 'L''actualité - Toutes les images'
-dashboard.link.fdc_page_news_videos: 'L''actualité - Toutes les vidéos'
-form.seo.helper_file: 'Dimensions attendues : 1200x627. Format attendu : .jpg, .png'
-form.tag.helper_name: '255 caractères max.'
-form.translate_option.en: Anglais
-form.translate_option.zh: Chinois
-form.translate_option.es: Espagnol
-form.homepage.helper_social_graph: 'Séparer par des virgules les tags que vous souhaitez.'
-form.homepage.helper_social_wall: 'Séparer par des virgules les tags que vous souhaitez.'
-form.homepage.helper_home_slider: 'Sélectionnez de 3 à 6 actualités ou communiqués ou infos. Elles apparaitront en front-office dans l''ordre des lignes.'
-form.homepage.helper_top_video_associated: 'Sélectionnez de 2 à 5 vidéos de la webTV. Elles apparaitront en front-office dans l''ordre des champs.'
-form.homepage.helper_top_web_tvs_associated: 'Sélectionnez de 3 à 10 chaînes de la webTV. Elles apparaitront en front-office de façon aléatoire parmi celles sélectionnées.'
-form.homepage.helper_films_associated: 'Sélectionnez de 1 à 5 films et leurs boucles vidéos associées. Ils apparaitront en front-office dans l''ordre des champs.'
-form.homepage.helper_pushes: 'Format de l''image recommandé : 650x410'
-form.homepage.helper_prefooter: 'Format de l''image recommandé : 1954x1200'
-form.flashbag.modified: 'Modification effectuée.'
-form.settings.festival: 'Année du festival'
-form.news.helper_header_audio: 'Lorem ipsum sit dolor amet.'
-form.news.helper_header_image: 'Dimensions attendues : 2560x1620 - ratio paysage. Format attendu : .jpg, .png'
-form.news.helper_title: '255 caractères max.'
-form.news.helper_seo_title: 'Recommandé : 60 caractères'
-form.news.helper_description: 'Recommandé : 155 caractères'
-form.news.helper_file: "Par défaut, c'est l'image principale qui est utilisée comme image de partage.\nDimensions attendues : 2560x1620 - ratio paysage. Format attendu : .jpg, .png\n"
-form.news.helper_news_association: 'Sélectionnez 2 actualités au maximum. Ils apparaitront en front-office en bas de l''article.'
-form.news.helper_signature: '255 caractères max.'
-form.news.helper_widgets: 'Ajouter un module de type :'
-form.news.helper_tags: 'Ajoutez des tags à l''article pour le voir ressortir dans les résultats de recherche.'
-form.news.helper_film_film_associated: 'Sélectionnez un film associé à l''article. La programmation associée apparaitra automatiquement en front-office. Ce champ est prioritaire sur les champs "Événement & programmation associés" et "Programmation associée".'
-form.news.helper_event_associated: 'Sélectionnez un événement associé à l''article. La programmation associée apparaitra automatiquement en front-office. Ce champ est prioritaire sur le champ "Programmation associée".'
-form.news.helper_news_film_projection_associated: 'Sélectionnez un ou plusieurs événements de programmation associés à l''article.'
-form.news.helper_news_film_film_associated: 'Sélectionnez les films sur lesquels vous souhaitez voir l''actualité apparaitre.'
-form.news.helper_news_news_associated: 'Sélectionnez 2 actualités au maximum. Ils apparaitront en front-office en bas de l''article.'
-form.news.helper_media_audio: 'Ajouter un fichier au format mp3'
-form.news.helper_video_file: 'Ajouter un fichier au format mp4/mpeg'
-form.info.helper_info_associated: 'Sélectionnez 2 infos au maximum. Ils apparaitront en front-office en bas de l''article.'
-form.statement.helper_statement_associated: 'Sélectionnez 2 communiqués au maximum. Ils apparaitront en front-office en bas de l''article.'
-form.social_wall.twitter: Twitter
-form.social_wall.instagram: Instagram
-form.social_wall.tumblr: Tumblr
-form.widget.text: 'Module de texte'
-form.widget.video: 'Module vidéo Amazon'
-form.widget.video_youtube: 'Module vidéo Youtube'
-form.widget.audio: 'Module audio'
-form.widget.image: 'Module photo(s)'
-form.widget.image_dual_align: 'Module 2 photos / ligne'
-form.widget.quote: 'Module citation'
-form.media_audio.helper_title: '200 caractères max.'
-form.media_audio.displayed_home: 'Remonter en tant qu''actualité sur la homepage'
-form.media_audio.displayed_all: 'Remonter dans "Toutes les audios"'
-form.media_video.helper_title: '200 caractères max.'
-form.media_video.displayed_all: 'Remonter dans "Toutes les vidéos"'
-form.media_video.displayed_home: 'Remonter en tant qu''actualité sur la homepage'
-form.media_video.displayed_webTv: 'Afficher dans une chaîne de la webTV'
-form.media_video.displayed_trailer: 'Afficher en tant que bande-annonce de la webTV'
-form.media_video.displayed_mobile: 'Flux mobiles'
-form.media.helper_legend: '255 caractères max.'
-form.media.helper_alt: '255 caractères max.'
-form.media.helper_copyright: '255 caractères max. Le symbole © est généré automatiquement.'
-form.media.helper_tags: 'Ajoutez des tags à l''article pour le voir ressortir dans les résultats de recherche.'
-form.media_image.helper_file: 'Dimensions attendues : 2560x1620 - ratio paysage. Format attendu : .jpg, .png'
-form.media_image.displayed_home: 'Remonter dans le diaporama du quotidien en homepage'
-form.media_image.displayed_all: 'Remonter dans "Toutes les photos"'
-form.media_image_simple.helper_file: 'Dimensions attendues : A adapter selon la page cible. Format attendu : .jpg, .png'
-form.news_widget_video_youtube.helper_url: 'URL de la vidéo Youtube (ex: https://www.youtube.com/watch?v=-NDYBoQWOrU)'
-form.film.helper_film_film_media_audio: 'Sélectionnez un ou plusieurs audios associés au film.'
-form.film.helper_film_film_media_video: 'Sélectionnez une ou plusieurs vidéos associées au film.'
-form.film.helper_film_film_associated_info: 'Sélectionnez une ou plusieurs infos associées au film.'
-form.film.helper_film_film_associated_statement: 'Sélectionnez un ou plusieurs communiqués associés au film.'
-form.film.helper_film_film_associated_news: 'Sélectionnez une ou plusieurs actualités associées au film.'
-form.placeholder_seo_title: '[valeur champ titre actualité] - Festival de Cannes 2016'
-form.placeholder_seo_description: '[valeur champ chapô actualité]'
-form.label_position: Position
-form.label_header_video: 'Vidéo principale'
-form.label_parent: Parent
-form.label_contact_theme_theme: Theme
-form.label_route: Route
-form.label_enabled: Actif
-form.label_tag_name: 'Nom du tag'
-form.label_header_audio: 'Audio principal'
-form.label_social_graph_hashtag_twitter: 'Social graph - hashtags'
-form.label_displayed_social_wall: 'Afficher le social wall'
-form.label_news: Actualités
-form.label_infos: Info
-form.label_statement: Communiqué
-form.label_social_wall_hashtags: 'Social Wall - hashtags'
-form.label_news_widget_video_youtube_title: 'Titre de la vidéo'
-form.label_news_widget_video_youtube_url: 'Url de la vidéo'
-form.label_save: Sauvegarder
-form.label_email: Email
-form.label_copyright: Copyright
-form.label_tags: 'Tags de recherche'
-form.label_legend_img: 'Légende de l''image'
-form.label_alt_img: 'Alt de l''image'
-form.label_signature: Signature
-form.label_introduction: Chapô
-form.label_header_image: 'Image principale'
-form.label_header_gallery: Diaporama
-form.label_associated_film: 'Film & programmation associés'
-form.label_associated_event: 'Événement & programmation associés'
-form.label_news_film_projection_associated: 'Objets de programmation associés'
-form.label_news_film_film_associated: 'Association à une ou plusieurs fiches films'
-form.label_news_news_associated: 'Actualités associés'
-form.label_displayed_home: 'Remonter en homepage'
-form.label_displayed_mobile: 'Flux mobiles'
-form.label_translate: 'Envoyer en traduction'
-form.label_theme: Thème
-form.label_title: Titre
-form.label_subtitle: Sous-Titre
-form.label_publish_on: 'Publié sur'
-form.label_published_at: 'Date de début de publication'
-form.label_publish_ended_at: 'Date de fin de publication'
-form.label_status: Statut
-form.label_article_tags: 'Tags de recherche associés à l''article'
-form.label_priority_status: Priorité
-form.label_seo_title: Titre
-form.label_seo_description: Description
-form.label_seo_file: 'Vignette partage'
-form.label_theme_name: 'Nom du thème'
-form.label_file: Fichier
-form.label_media_video_image: 'Image cover'
-form.label_display: 'Ne pas afficher cette strate'
-form.label_film_film_media_audio: 'Audios associés'
-form.label_film_film_media_video: 'Vidéos associées'
-form.label_film_film_associated_info: 'Infos associées'
-form.label_film_film_associated_statement: 'Communiqués associés'
-form.label_film_film_associated_news: 'Actualités associées'
-form.label_film: Films
-form.label_content: Contenu
-form.label_image: Image
-form.label_image_link: 'Image et lien'
-form.label_main_image: 'Première image'
-form.label_second_image: 'Seconde image'
-form.label_btn: 'Libellé du bouton'
-form.label_second_btn: 'Libellé du second bouton'
-form.label_third_btn: 'Libellé du troisième bouton'
-form.label_label: Légende
-form.label_web_tv_name: 'Nom de la chaîne'
-form.label_web_tv: Chaîne
-form.label_hide_same_day: 'Ne pas afficher la strate "le même jour"'
-form.label_primary_push_title: 'Titre du push principal'
-form.label_primary_push_url: 'URL du push principal'
-form.label_secondary_push_title: 'Titre du push secondaire'
-form.label_secondary_push_url: 'URL du push secondaire'
-form.label_name: Nom
-form.label_media_audio: 'Fichier audio'
-form.label_video_file: 'Fichier vidéo'
-form.label_procedure: Procédures
-form.label_accredit_procedure: 'Choisissez les procédures à afficher'
-form.label_btn_link: 'Lien du bouton'
-form.label_btn_text: 'Texte sous le bouton'
-form.label_prefooter_title: 'Titre du Pré-footer'
-form.label_prefooter_url: 'URL du Pré-footer'
-form.label_has_waiting_page: 'Possède une page d''attente'
-form.label_image_push: 'Image du push (media image semi-riche)'
-form.label_image_prefooter: 'Image du Pré-footer (media image semi-riche)'
-form.label_homepage_top_video_associated: 'Vidéos à la une'
-form.label_homepage_top_web_tvs_associated: 'Chaînes à la une'
-form.label_homepage_films_associated: 'Films présentés'
-form.label_projection: Projection
-form.label_projection_p: 'Projection presse'
-form.label_arrive_icon: 'Pictogramme du titre'
-form.label_trans_name: 'Slug pour traduction'
-form.label_locked_content: 'Contenu locké'
-form.label_statement_associated: 'Communiqués associés'
-form.label_info_associated: 'Infos associés'
-form.label_link: 'Lien du push'
-form.label_films_associated: 'Films Associés'
-form.label_video_extract_associated: 'Extrait vidéo associé'
-form.label_tablet_image: 'Image tablette (2560 x 1620)'
-form.label_image_mobile: 'Image mobile'
-form.label_push_image: 'Image du push'
-form.label_webTv_required: 'Chaîne *'
-form.label_column.first: 'Première colonne'
-form.label_column.second: 'Deuxième colonne'
-form.label_column.third: 'Troisième colonne'
-form.label_download_section: Documents
-form.label_map_room: Salles
-form.label_section: 'Liste des salles'
-form.label_map_zone: 'Zone du festival'
-form.label_scheduling: Programmation
-form.label_press_scheduling: 'Programmation presse'
-form.label_updated_date: 'Date de mise à jour'
-form.label_service_icon: Pictogramme
-form.label_information_icon: 'Pictogramme du titre'
-form.label_media_title: 'Nom du média'
-form.label_map_img: 'Image de la salle'
-form.label_map_zone_img: 'Image de la zone'
-form.label_map_default_img: 'Image de la salle du festival par default'
-form.label_zone_default_img: 'Image de la zone du festival par default'
-form.label_page: Page
-form.label_text: Texte
-form.label_banner: Bannière
-form.label_list_event: Evènementiel
-form.label_list_press: Presse
-form.label_image_main: 'Image principale'
-form.label_image_cover: 'Image cover'
-form.label_video_main: 'Vidéo principale'
-form.label_procedure_file: 'Fichier procédure'
-form.label_procedure_second_file: 'Fichier procédure (en)'
-form.gallery.medias: Médias
-form.encoding_state.in_progress: 'En cours'
-form.encoding_state.error: Erreur
-form.encoding_state.ready: Prêt
-form.fdc_page_award.content_page: 'Contenu de la page'
-form.fdc_page_award.label_name: Nom
-form.fdc_page_award.image: 'Image cover'
-form.fdc_page_award.helper_image: 'Dimensions attendues : 2560×1103. Format attendu.'
-form.fdc_page_award.selections: Sélections
-form.fdc_page_award.selection: Sélection
-form.fdc_page_award.selection_longs_metrages: 'Sélection longs métrages'
-form.fdc_page_award.label_name_longs_metrages: 'Surcharger le nom de la sélection longs métrages'
-form.fdc_page_award.selection_courts_metrages: 'Sélection courts métrages'
-form.fdc_page_award.label_name_courts_metrages: 'Surcharger le nom de la sélection courts métrages'
-form.fdc_page_award.label_other_selection_sections: 'Autres sélections du prix Caméra d''OR'
-form.fdc_page_award.label_name_en_competition: 'Étiquette catégorie compétition'
-form.fdc_page_award.label_header: Chapeau
-form.web_tv.helper_name: '255 caractères max.'
-form.web_tv.helper_image: 'Dimensions attendues : 1280x808. Format attendu : .jpg, .png. En laissant ce champ vide, c''est l''image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu''image de présentation de la chaîne.'
-form.contact_theme.helper_theme: '255 caractères max.'
-form.status.draft: Brouillon
-form.status.translation_pending: 'À traduire'
-form.status.translation_validating: 'Traduction(s) à valider'
-form.status.validating: 'À valider'
-form.status.translated: Traduit
-form.status.published: Publié
-form.status.deactivated: Désactivé
-form.status.locked: Bloquée
-form.priority_status.low: Bas
-form.priority_status.average: Moyen
-form.priority_status.urgent: Urgent
-form.priority_status.now: Immédiat
-form.theme.helper_name: '30 caractères max.'
-form.press_homepage.helper_media: '« Sélectionnez de 2 à 4 films ». Elles apparaitront en front-office dans l''ordre des champs.'
-form.press_homepage.push_link: 'Lien du push'
-form.press_homepage.media_film: 'Medias du film'
-form.press_homepage.download: 'A télécharger'
-form.press_homepage.helper_title: '255 caractères max.'
-form.press_homepage.helper_subtitle: '255 caractères max.'
-form.press_homepage.helper_desc: '255 caractères max.'
-form.press_homepage.label_section: Blocs
-form.fdc_page_web_tv_channels.image: 'Image cover'
-form.fdc_page_web_tv_channels.helper_image: 'Dimensions attendues : 2560×1103. Format attendu.'
-form.fdc_page_web_tv_channels.sticky: 'Chaîne à la une'
-form.fdc_page_web_tv_channels.helper_sticky: 'Sélectionnez la première chaîne que vous souhaitez voir apparaître en haut à gauche de la page.'
-form.fdc_page_web_tv_live.festival_live: 'Le festival en direct'
-form.fdc_page_web_tv_live.live_false: 'Avant le festival'
-form.fdc_page_web_tv_live.live_true: 'Pendant le festival'
-form.fdc_page_web_tv_live.label_title: Titre
-form.fdc_page_web_tv_live.label_first_sub_head: 'Sous-titre ligne 1'
-form.fdc_page_web_tv_live.helper_first_sub_head: '255 caractères max. Couleur blanche.'
-form.fdc_page_web_tv_live.label_second_sub_head: 'Sous-titre ligne 2'
-form.fdc_page_web_tv_live.helper_second_sub_head: '255 caractères max. Couleur dorée.'
-form.fdc_page_web_tv_live.label_direct_url: 'URL du direct'
-form.fdc_page_web_tv_live.helper_direct_url: "URL du live Youtube, type : http://www.youtube.com/watch?v=urCLo4vNpzs&1\nSi non renseigné, seule l'image existera, le picto \"play\" n'apparaitra pas.\n"
-form.fdc_page_web_tv_live.label_teaser_url: 'URL du teaser (avant le festival)'
-form.fdc_page_web_tv_live.helper_teaser_url: "URL Youtube, type : http://www.youtube.com/watch?v=urCLo4vNpzs&1\nSi non renseigné, seule l'image existera, le picto \"play\" n'apparaitra pas.\n"
-form.fdc_page_web_tv_live.image: 'Image cover'
-form.fdc_page_web_tv_live.helper_image: 'Dimensions attendues : 2560×1103. Format attendu.'
-form.fdc_page_web_tv_live.channels: 'Chaînes WebTV'
-form.fdc_page_web_tv_live.label_web_tvs_associated: 'Chaînes à la une'
-form.fdc_page_web_tv_live.helper_web_tvs_associated: 'Sélectionnez de 3 à 5 vidéos de la webTV. Elles apparaitront en front-office dans l''ordre des champs.'
-form.fdc_page_web_tv_live.label_display_web_tv_area: 'Ne pas afficher cette strate'
-form.fdc_page_web_tv_live.last_videos: 'Les dernières vidéos'
-form.fdc_page_web_tv_live.label_display_last_video_area: 'Ne pas afficher cette strate'
-form.fdc_page_web_tv_live.placeholder_seo_title: 'À saisir manuellement'
-form.fdc_page_web_tv_live.placeholder_seo_description: 'À saisir manuellement'
-form.fdc_page_web_tv_live.trailers: 'Bandes-annonces & extraits'
-form.fdc_page_web_tv_live.label_media_videos_associated: 'Bandes-annonces & extraits à la une'
-form.fdc_page_web_tv_live.helper_media_videos_associated: 'Sélectionnez de 3 à 10 films. Ils apparaitront en front-office dans l''ordre des champs.'
-form.fdc_page_web_tv_live.label_display_trailer_area: 'Ne pas afficher cette strate'
-form.fdc_page_web_tv_trailers.content_page: 'Contenu de la page'
-form.fdc_page_web_tv_trailers.image: 'Image cover'
-form.fdc_page_web_tv_trailers.label_image: 'Image cover'
-form.fdc_page_web_tv_trailers.helper_image: 'Dimensions attendues : 2560×1103. Format attendu.'
-form.fdc_page_web_tv_trailers.placeholder_seo_title: 'À saisir manuellement'
-form.fdc_page_web_tv_trailers.placeholder_seo_description: 'À saisir manuellement'
-form.fdc_page_web_tv_trailers.label_festival_section: Sélection
-form.fdc_page_web_tv_trailers.label_override_name: 'Surcharger le nom de la sélection'
-form.fdc_page_jury.label_jury_type: 'Type de jury'
-form.fdc_page_jury.label_override_name: 'Nom apparaissant dans l''onglet'
-form.film_person.general: 'Informations générales'
-form.film_person.label_portrait_image: 'Image portrait'
-form.film_person.helper_portrait_image: 'Dimensions attendues :  584x794 - ratio portrait. Format Attendu.'
-form.film_person.label_landscape_image: 'Image paysage'
-form.film_person.helper_landscape_image: 'Dimensions attendues : 1946x1226 - ratio portrait. Format Attendu.'
-form.film_person.label_displayed_image: 'Image affichée sur la fiche personne'
-form.film_person.help_displayed_image: 'Au choix, l''image portrait ou l''image paysage.'
-form.film_person.label_chose_portrait_image: 'Image portrait'
-form.film_person.label_chose_landscape_image: 'Image paysage'
-form.film_person.president_jury: 'Président du jury'
-form.film_person.label_president_jury_image: 'Image portrait'
-form.film_person.help_president_jury_image: 'Dimensions attendues : 1600x1510 - ratio paysage. Format Attendu. Affichée uniquement sur la page Les jurys.'
-nav.site_modal: 'Ouvrir la sélection des sites'
-show.label_programmation_films: Film
-show.label_header_video: 'Vidéo principale'
-show.label_title_video: Titre
-show.label_parent: Parent
-show.label_position: Position
-show.label_route: Route
-show.label_enabled: Actif
-show.label_starts_at: 'Date de début'
-show.label_ends_at: 'Date de fin'
-show.label_type: Type
-show.label_programmation_section: 'Section de programmation'
-show.label_iso: ISO
-show.label_budget_estimation: 'Budget Estimé'
-show.label_filming_date: 'Date filmé'
-show.label_filming_place: 'Lieu du film'
-show.label_session_name: 'Nom de la session'
-show.label_budget_acquired: 'Budget acquis'
-show.label_cinando_url: 'Url Cinando'
-show.label_lastname: Nom
-show.label_firstname: Prénom
-show.label_asian_name: 'Nom asiatique'
-show.label_nationality: Nationalité
-show.label_nationality2: 'Nationalité 2'
-show.label_director_first: 'Premier film du directeur'
-show.label_restored: 'Film restauré'
-show.label_title_v_o: 'Titre VO'
-show.label_title_v_o_alphabet: 'Titre Alphabet VO'
-show.label_production_year: 'Année de production'
-show.label_duration: Durée
-show.label_casting_commentary: 'Commentaire du casting'
-show.label_soif_updated_at: 'Mise à jour SOIF le'
-show.label_website: 'Site web'
-show.label_id: Identifiant
-show.label_title: Titre
-show.label_name: Nom
-show.label_theme: Thème
-show.label_status: Statut
-show.label_status_main: Statut
-show.label_created_at: 'Date de création'
-show.label_updated_at: 'Mis à jour le'
-show.label_published_interval: 'Date(s) de publication'
-show.label__action: Actions
-show.label_theme_name: 'Nom du thème'
-show.label_priority_status: Priorité
-show.label__preview: Prévisualiser
-show.label__edit_translations: Éditer
-show.label_social_wall_content_none: 'Pas d''image'
-show.label_legend_img: 'Légende de l''image'
-show.label_url: Lien
-show.label_network: 'Réseau Social'
-show.label_content: Contenu
-show.label_message: Message
-show.label_enabled_mobile: 'Visible sur mobile'
-show.label_enabled_desktop: 'Visible sur le site'
-show.label_alt: 'Alt de l''image'
-show.label_web_tv_name: 'Nom de la chaîne'
-show.label_title_audio: 'Titre de l''audio'

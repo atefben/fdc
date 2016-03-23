@@ -61,6 +61,14 @@ class Event implements TranslateMainInterface
     private $displayedMobile;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Site")
+     *
+     */
+    private $sites;
+
+    /**
      * @var MediaImage
      *
      * @ORM\ManyToOne(targetEntity="MediaImage")
@@ -105,20 +113,20 @@ class Event implements TranslateMainInterface
     private $tags;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     *
+     */
+    private $signature;
+
+    /**
      * @var EventWidget
      *
      * @ORM\OneToMany(targetEntity="EventWidget", mappedBy="events",  cascade={"persist"})
      *
      */
     private $widgets;
-
-    /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="Site")
-     *
-     */
-    private $sites;
 
     /**
      * @ORM\OneToMany(targetEntity="EventFilmProjectionAssociated", mappedBy="event", cascade={"persist"})
@@ -165,6 +173,7 @@ class Event implements TranslateMainInterface
 
     public function __construct()
     {
+        $this->sites = new ArrayCollection();
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->widgets = new ArrayCollection();
@@ -494,5 +503,28 @@ class Event implements TranslateMainInterface
     public function getHeader()
     {
         return $this->header;
+    }
+
+    /**
+     * Set signature
+     *
+     * @param string $signature
+     * @return Event
+     */
+    public function setSignature($signature)
+    {
+        $this->signature = $signature;
+
+        return $this;
+    }
+
+    /**
+     * Get signature
+     *
+     * @return string 
+     */
+    public function getSignature()
+    {
+        return $this->signature;
     }
 }

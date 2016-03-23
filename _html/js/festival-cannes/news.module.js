@@ -1,12 +1,10 @@
 var videoNews;
 
 $(document).ready(function() {
-
   if($('.home').length) {
 
     // News
     // =========================
-
     if ($('#news').length > 0) {
       var cl = new CanvasLoader('canvasloader');
       cl.setColor('#ceb06e');
@@ -84,6 +82,9 @@ $(document).ready(function() {
         
       });
 
+      if($('#news .articles').length == 0 || $('#news .articles:not(.nextDay) article:last').data('end')) {
+        $('.read-more').hide();
+      }
       
       if($('#articles-wrapper .nextDay').length > 0) {
         $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay').show();

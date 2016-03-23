@@ -31,40 +31,42 @@ class EventWidgetVideoYoutubeTranslation
      *
      * @ORM\Column(type="text", nullable=false)
      *
-     * @Groups({"event_list", "event_show"})
+     * @Groups({"news_list", "news_show"})
      */
-    private $youtubeId;
+    private $url;
 
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=false)
      *
-     * @Groups({"event_list", "event_show"})
+     * @Groups({"news_list", "news_show"})
      */
     private $title;
 
+    
+
     /**
-     * Set youtubeId
+     * Set url
      *
-     * @param string $youtubeId
+     * @param string $url
      * @return EventWidgetVideoYoutubeTranslation
      */
-    public function setYoutubeId($youtubeId)
+    public function setUrl($url)
     {
-        $this->youtubeId = $youtubeId;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get youtubeId
+     * Get url
      *
      * @return string 
      */
-    public function getYoutubeId()
+    public function getUrl()
     {
-        return $this->youtubeId;
+        return $this->url;
     }
 
     /**

@@ -4,7 +4,8 @@
     'admin_base_core_fdcpagewebtvtrailers_edit',
     'admin_base_core_fdcpagelaselection_edit',
     'admin_base_core_fdcpagejury_edit',
-    'admin_base_core_fdcpageaward_edit'
+    'admin_base_core_fdcpageaward_edit',
+    'admin_base_core_fdcpageevent_edit'
     ] %}
     <li class="treeview{% if app.request.attributes.get('_route') in activePages %} active{% endif %}">
         <a href="#">
@@ -13,6 +14,14 @@
             <i class="fa pull-right fa-angle-left"></i>
         </a>
         <ul class="treeview-menu{% if app.request.attributes.get('_route') in activePages %} active{% endif %}">
+            {% if is_granted('ROLE_BASE_ADMIN_FDC_PAGE_EVENT_ADMIN') %}
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpageevent_edit', {id: admin_fdc_page_event_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_event'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+            {% endif %}
             {% if is_granted('ROLE_BASE_ADMIN_FDC_PAGE_WEB_TV_CHANNELS_ADMIN') %}
                 <li>
                     <a href="{{ path('admin_base_core_fdcpagewebtvchannels_edit', {id: admin_fdc_page_web_tv_channels_id}) }}">

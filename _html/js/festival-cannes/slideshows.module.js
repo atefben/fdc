@@ -19,7 +19,7 @@ function initSlideshows() {
   if(navigator.userAgent.indexOf("Edge")    > -1 ||
      navigator.userAgent.indexOf("MSIE")    > -1 ||
      navigator.userAgent.indexOf("Trident") > -1 ) {
-    $('.thumbnails .thumb, .slideshow .slideshow-img .images .img a').each(function () {
+    $('.thumbnails .thumb').each(function () {
       var $container = $(this),
           imgUrl     = $container.find('img').prop('src');
 

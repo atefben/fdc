@@ -60,18 +60,10 @@ class SocialWallTwitterController extends FOSRestController
 
         //create query
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository($this->repository)->findBy(array(
-            'festival' => $festival,
-            'enabledDesktop' => true,
-            'network' => constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER')
-        ),
-            array('date' => 'ASC'),
-            null,
-            null);
+        $query = $em->getRepository($this->repository)->getApiSocialWallTwitter($festival);
 
-        // get items, passing options to fix Cannot count query which selects two FROM components, cannot make distinction
-
-        $items = $coreManager->getPaginationItems($query, $paramFetcher, array('distinct' => false));
+        // get items
+        $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
         // set context view
         $groups = array('social_wall_list');

@@ -1,0 +1,14 @@
+{% extends 'SonataAdminBundle:Form:form_admin_fields.html.twig' %}
+
+{% block form_label %}
+    {{ parent() }}
+
+    {% set thumbnailsImages = ['portraitImage', 'landscapeImage', 'presidentJuryImage'] %}
+    {% if form.vars.name in thumbnailsImages and form.vars.data %}
+        <p>
+            {% media form.vars.data|trans_fallback('file'), '293x185' with({'class': 'img-thumbnail'}) %}
+        </p>
+    {% endif %}
+{% endblock %}
+
+

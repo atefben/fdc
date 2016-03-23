@@ -15,36 +15,34 @@ class FilmProjectionRepository extends EntityRepository
 
     /**
      * @param $festival
-     * @param \DateTime|null $day
+     * @param null $time
+     * @param null $filmId
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function getApiProjections($festival, $day = null, $filmId = null)
+    public function getApiProjections($festival, $time = null, $filmId = null)
     {
         $qb = $this
             ->createQueryBuilder('fp')
-            ->addOrderBy('fp.startsAt', 'desc');
-        ;
+            ->addOrderBy('fp.startsAt', 'desc')
+        ;;
 
-        if ($day && is_string($day) && preg_match('/(19|20|21)[0-9]{2}-[0-9]{1,2}-[0-9]{1,2}/', $day)) {
-            $split = explode('-', $day);
-            if (count($split) === 3) {
-                $date = new \DateTime;
-                $date->setDate($split[0], $split[1], $split[2]);
+        if ($time) {
+            $date = new \DateTime;
+            $date->setTimestamp($time);
 
-                $begin = new \DateTime();
-                $begin->setDate($date->format('Y'), $date->format('m'), $date->format('d'));
-                $begin->setTime(0, 0, 0);
+            $begin = new \DateTime();
+            $begin->setDate($date->format('Y'), $date->format('m'), $date->format('d'));
+            $begin->setTime(0, 0, 0);
 
-                $end = new \DateTime;
-                $end->setDate($date->format('Y'), $date->format('m'), $date->format('d'));
-                $end->setTime(23, 59, 59);
+            $end = new \DateTime;
+            $end->setDate($date->format('Y'), $date->format('m'), $date->format('d'));
+            $end->setTime(23, 59, 59);
 
-                $qb
-                    ->andWhere('fp.startsAt BETWEEN :begin AND :end')
-                    ->setParameter('begin', $begin)
-                    ->setParameter('end', $end)
-                ;
-            }
+            $qb
+                ->andWhere('fp.startsAt BETWEEN :begin AND :end')
+                ->setParameter('begin', $begin)
+                ->setParameter('end', $end)
+            ;
         }
 
         if ($filmId) {
@@ -58,6 +56,7 @@ class FilmProjectionRepository extends EntityRepository
 
         return $qb;
     }
+
     /**
      * @param FilmFilm $film
      * @return array
@@ -87,13 +86,15 @@ class FilmProjectionRepository extends EntityRepository
         $qb = $this
             ->createQueryBuilder('p')
             ->select('p')
-            ->where("DATE_FORMAT(p.startsAt,'%Y%m%d') = :date");
+            ->where("DATE_FORMAT(p.startsAt,'%Y%m%d') = :date")
+        ;
 
 
         $qb = $qb
             ->setParameter('date', $date)
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }

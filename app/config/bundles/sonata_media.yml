@@ -119,6 +119,8 @@ sonata_media:
                 135x185: { width: 135 , height: 185 , quality: 100 }
                 # Grid Press Download #
                 146x146: { width: 146 , height: 146 , quality: 100 }
+                # Event list #
+                976x615: { width: 976 , height: 615 , quality: 100 }
                 ##### OLDS #####
                 1980x300: { width: 1980 , height: 300 , quality: 100 }
 
@@ -153,6 +155,7 @@ sonata_media:
                 #palmares film
                 256x348: { width: 256 , height: 348 , quality: 100 }
                 384x485: { width: 384 , height: 485 , quality: 100 }
+                1954x1200: { width: 1954 , height: 1200 , quality: 100 }
 
         media_audio:
             providers:

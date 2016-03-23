@@ -40,7 +40,8 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "film_list",
      *     "film_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "projection_list"
      * })
      */
     private $title;
@@ -54,7 +55,8 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "trailer_list",
      *     "trailer_show",
      *     "film_list",
-     *     "film_show"
+     *     "film_show",
+     *     "projection_list"
      * })
      */
     private $dialog;
@@ -68,7 +70,8 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "trailer_list",
      *     "trailer_show",
      *     "film_list",
-     *     "film_show"
+     *     "film_show",
+     *     "projection_list"
      * })
      */
     private $synopsis;
@@ -82,7 +85,8 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "trailer_list",
      *     "trailer_show",
      *     "film_list",
-     *     "film_show"
+     *     "film_show",
+     *     "projection_list"
      * })
      */
     private $programSection;

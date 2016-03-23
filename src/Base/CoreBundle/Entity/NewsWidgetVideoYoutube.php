@@ -35,7 +35,7 @@ class NewsWidgetVideoYoutube extends NewsWidget
     /**
      * @var MediaImageSimple
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      * @Groups({"news_list", "news_show"})
      */
     protected $image;
@@ -48,10 +48,10 @@ class NewsWidgetVideoYoutube extends NewsWidget
     /**
      * Set image
      *
-     * @param \Base\CoreBundle\Entity\MediaImageSimple $image
+     * @param MediaImageSimple $image
      * @return NewsWidgetVideoYoutube
      */
-    public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
+    public function setImage(MediaImageSimple $image = null)
     {
         $this->image = $image;
 
@@ -61,7 +61,7 @@ class NewsWidgetVideoYoutube extends NewsWidget
     /**
      * Get image
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return MediaImageSimple
      */
     public function getImage()
     {
