@@ -49,7 +49,7 @@ class FDCPageParticipateSectionAdmin extends Admin
                     return true;
                 },
                 'field_type' => 'text',
-                'label'      => 'filter.press_download.label_section'
+                'label'      => 'filter.fdc_page_participate.label_section'
             ))
         ;
         $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
@@ -129,11 +129,7 @@ class FDCPageParticipateSectionAdmin extends Admin
             ->add('widgets', 'infinite_form_polycollection', array(
                 'label' => false,
                 'types' => array(
-                    'press_download_section_widget_photo_type',
-                    'press_download_section_widget_document_type',
-                    'press_download_section_widget_file_type',
-                    'press_download_section_widget_video_type',
-                    'press_download_section_widget_archive_type',
+                    'fdc_page_participate_section_widget_archive_type',
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,
