@@ -33,7 +33,8 @@ class FilmProjection
      *     "projection_show",
      *     "film_list",
      *     "film_show",
-     *     "event_show"
+     *     "event_show",
+     *     "home"
      * })
      */
     private $id;
@@ -48,7 +49,8 @@ class FilmProjection
      *     "projection_show",
      *     "film_list",
      *     "film_show",
-     *     "event_show"
+     *     "event_show",
+     *     "home"
      * })
      */
     private $startsAt;
@@ -78,7 +80,8 @@ class FilmProjection
      *     "projection_show",
      *     "film_list",
      *     "film_show",
-     *     "event_show"
+     *     "event_show",
+     *     "home"
      * })
      */
     private $type;
@@ -109,7 +112,8 @@ class FilmProjection
      *
      * @Groups({
      *  "projection_show",
-     *  "film_list", "film_show"
+     *  "film_list", "film_show",
+     *     "home"
      * })
      */
     private $room;
@@ -119,7 +123,7 @@ class FilmProjection
      *
      * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilm", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({"projection_list", "projection_show", "home"})
      */
     private $programmationFilms;
 

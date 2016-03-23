@@ -37,7 +37,8 @@ class FilmSelectionSectionTranslation implements TranslateChildInterface
      *     "film_selection_section_list",
      *     "film_selection_section_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "home"
      * })
      */
     protected $name;

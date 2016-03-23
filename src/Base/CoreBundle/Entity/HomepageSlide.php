@@ -39,6 +39,7 @@ class HomepageSlide
      * @var Info
      *
      * @ORM\ManyToOne(targetEntity="Info")
+     * @Groups("home")
      */
     private $infos;
 
@@ -46,6 +47,7 @@ class HomepageSlide
      * @var Info
      *
      * @ORM\ManyToOne(targetEntity="Statement")
+     * @Groups("home")
      */
     private $statement;
 

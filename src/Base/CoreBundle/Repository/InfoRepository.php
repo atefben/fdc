@@ -18,6 +18,8 @@ use Base\CoreBundle\Entity\InfoArticleTranslation;
  */
 class InfoRepository extends EntityRepository
 {
+    
+    
     public function getInfoBySlug($slug, $festival, $locale, $isAdmin, $repository)
     {
         $qb = $this

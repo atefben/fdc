@@ -229,6 +229,7 @@ abstract class Statement implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
+     * @Groups("home")
      */
     public function getStatementType()
     {

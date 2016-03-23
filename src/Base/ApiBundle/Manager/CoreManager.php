@@ -2,6 +2,7 @@
 
 namespace Base\ApiBundle\Manager;
 
+use Base\CoreBundle\Entity\FilmFestival;
 use \Exception;
 
 use Doctrine\ORM\NoResultException;
@@ -97,7 +98,7 @@ class CoreManager
     }
 
     /**
-     * @return mixed
+     * @return FilmFestival
      * @throws Exception
      */
     public function getApiFestivalYear()

@@ -257,7 +257,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="FilmSelectionSection", inversedBy="films", cascade={"persist"})
      *
-     * @Groups({"film_list", "film_show", "news_list", "news_show"})
+     * @Groups({"film_list", "film_show", "news_list", "news_show", "home"})
      *
      */
     private $selectionSection;
@@ -343,7 +343,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show",
      *     "news_show",
      *     "projection_list",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "home"
      * })
      *
      */
@@ -507,7 +508,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_show",
      *     "news_list",
      *     "news_show",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "home"
      * })
      * @return array|ArrayCollection
      */

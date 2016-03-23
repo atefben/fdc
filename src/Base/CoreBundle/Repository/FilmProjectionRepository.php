@@ -58,6 +58,30 @@ class FilmProjectionRepository extends EntityRepository
     }
 
     /**
+     * @param $festival
+     * @param $count
+     * @return array
+     * @todo uncomment date condition
+     */
+    public function getApiNextProjections($festival, $count)
+    {
+        $qb = $this
+            ->createQueryBuilder('fp')
+            //->andWhere('fp.startsAt > :datetime')
+            //->setParameter('datetime', new \DateTime())
+        ;
+
+        $this->addMasterQueries($qb, 'fp', $festival, false);
+
+        $qb
+            ->addOrderBy('fp.startsAt', 'desc')
+            ->setMaxResults($count)
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
      * @param FilmFilm $film
      * @return array
      */

@@ -41,6 +41,7 @@ abstract class Info implements TranslateMainInterface
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups("home")
      *
      */
     private $id;
@@ -49,6 +50,7 @@ abstract class Info implements TranslateMainInterface
      * @var Theme
      *
      * @ORM\ManyToOne(targetEntity="Theme")
+     * @Groups("home")
      *
      * @Assert\NotNull()
      */
@@ -162,6 +164,7 @@ abstract class Info implements TranslateMainInterface
 
     /**
      * ArrayCollection
+     * @Groups({"home"})
      *
      */
     protected $translations;
@@ -206,11 +209,12 @@ abstract class Info implements TranslateMainInterface
         $this->associatedFilms = new ArrayCollection();
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+            $string .= ' #' . $this->getId();
         }
 
         return $string;
@@ -220,9 +224,9 @@ abstract class Info implements TranslateMainInterface
     {
         return array(
             'Base\CoreBundle\Entity\InfoArticle' => 'article',
-            'Base\CoreBundle\Entity\InfoAudio' => 'audio',
-            'Base\CoreBundle\Entity\InfoImage' => 'photo',
-            'Base\CoreBundle\Entity\InfoVideo' => 'video'
+            'Base\CoreBundle\Entity\InfoAudio'   => 'audio',
+            'Base\CoreBundle\Entity\InfoImage'   => 'photo',
+            'Base\CoreBundle\Entity\InfoVideo'   => 'video'
         );
     }
 
@@ -230,6 +234,7 @@ abstract class Info implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
+     * @Groups("home")
      */
     public function getInfoType()
     {

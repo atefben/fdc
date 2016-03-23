@@ -27,7 +27,8 @@ class FilmProjectionRoom
      * @ORM\Column(type="integer")
      * @ORM\Id
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({"projection_list", "projection_show",
+     *     "home"})
      */
     private $id;
 
@@ -38,7 +39,8 @@ class FilmProjectionRoom
      *
      * @Groups({
      *  "projection_list", "projection_show",
-     *  "film_list", "film_show"
+     *  "film_list", "film_show",
+     *     "home"
      * })
      */
     private $name;
@@ -52,6 +54,7 @@ class FilmProjectionRoom
      * })
      */
     private $projections;
+
     /**
      * Constructor
      */
@@ -76,7 +79,7 @@ class FilmProjectionRoom
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -99,7 +102,7 @@ class FilmProjectionRoom
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -133,14 +136,14 @@ class FilmProjectionRoom
         if (!$this->projections->contains($projections)) {
             return;
         }
-        
+
         $this->projections->removeElement($projections);
     }
 
     /**
      * Get projections
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProjections()
     {

@@ -42,7 +42,7 @@ class Theme implements TranslateMainInterface
     /**
      * @var ArrayCollection
      *
-     * @Groups({"news_list", "news_show", "event_list", "film_show"})
+     * @Groups({"news_list", "news_show", "event_list", "film_show", "home"})
      */
     protected $translations;
 
@@ -60,7 +60,7 @@ class Theme implements TranslateMainInterface
         } else {
             $string = strval($this->getId());
         }
-        return $string;
+        return (string) $string;
     }
 
     public function getName()

@@ -104,7 +104,8 @@ class FilmPerson implements TranslateMainInterface
      *     "projection_list",
      *     "projection_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "home"
      * })
      */
     private $lastname;
@@ -126,7 +127,8 @@ class FilmPerson implements TranslateMainInterface
      *     "projection_list",
      *     "projection_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "home"
      * })
      */
     private $firstname;
