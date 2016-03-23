@@ -44,7 +44,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"web_tv_list"})
+     * @Groups({"live"})
      */
     private $live;
 
@@ -52,7 +52,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean")
-     * @Groups({"web_tv_list"})
+     * @Groups({"live"})
      */
     private $doNotDisplayWebTvArea = false;
 
@@ -60,7 +60,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean")
-     * @Groups({"web_tv_list"})
+     * @Groups({"live"})
      */
     private $doNotDisplayTrailerArea = false;
 
@@ -68,7 +68,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean")
-     * @Groups({"web_tv_list"})
+     * @Groups({"live"})
      */
     private $doNotDisplayLastVideosArea = false;
 
@@ -77,7 +77,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
-     * @Groups({"web_tv_list"})
+     * @Groups({"live"})
      */
     private $image;
 
@@ -85,14 +85,14 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @var FDCPageWebTvLiveWebTvAssociated
      * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveWebTvAssociated", mappedBy="FDCPageWebTvLive", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
-     * @Groups({"web_tv_list"})
+     * @Groups({"live"})
      */
     private $associatedWebTvs;
 
     /**
      * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveMediaVideoAssociated", mappedBy="FDCPageWebTvLive", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
-     * @Groups({"web_tv_list"})
+     * @Groups({"live"})
      */
     private $associatedMediaVideos;
 
@@ -100,7 +100,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @var ArrayCollection
      *
      * @Assert\Valid()
-     * @Groups({"web_tv_list"})
+     * @Groups({"live"})
      */
     protected $translations;
 

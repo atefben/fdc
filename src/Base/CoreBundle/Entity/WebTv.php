@@ -39,7 +39,7 @@ class WebTv implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"live", "web_tv_show", "live"})
      */
     private $id;
 
@@ -53,7 +53,7 @@ class WebTv implements TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="MediaVideo", mappedBy="webTv")
      *
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"live", "web_tv_show", "live"})
      */
     private $mediaVideos;
 
@@ -67,7 +67,7 @@ class WebTv implements TranslateMainInterface
     /**
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"live", "web_tv_show", "live"})
      */
     private $image;
 
@@ -80,7 +80,7 @@ class WebTv implements TranslateMainInterface
     /**
      * @var ArrayCollection
      *
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"live", "web_tv_show", "live"})
      * @Assert\Valid()
      */
     protected $translations;

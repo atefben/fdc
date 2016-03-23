@@ -26,7 +26,7 @@ class WebTvController extends FOSRestController
     /**
      * Return an array of web tvs, can be filtered with page / offset parameters
      *
-     * @Rest\Get("/webtvs")
+     * @Rest\Get("/live")
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
@@ -37,39 +37,63 @@ class WebTvController extends FOSRestController
      *   },
      *  output={
      *      "class"="Base\CoreBundle\Entity\WebTv",
-     *      "groups"={"web_tv_list"}
+     *      "groups"={"live"}
      *  }
      * )
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
-     * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
-     * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      *
+     * @param ParamFetcher $paramFetcher
      * @return View
      */
-    public function getWebTvsAction(Paramfetcher $paramFetcher)
+    public function getLiveAction(ParamFetcher $paramFetcher)
     {
         // coremanager shortcut
         $coreManager = $this->get('base.api.core_manager');
 
         // get festival year / version
-        $festival = $coreManager->getApiFestivalYear();
+        $festival = $coreManager->getApiFestivalYear()->getId();
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
         $lang = $paramFetcher->get('lang');
 
         // create query
-        $item = $this
+        $live = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:FDCPageWebTvLive')
             ->find($this->getParameter('admin_fdc_page_web_tv_live_id'))
         ;
 
-        // get items
+        $homepage = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:Homepage')
+            ->findOneByFestival($festival);
+
+        $webTvs = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:WebTv')
+            ->getWebTvByLocale($lang, $festival)
+        ;
+
+
+        $videos = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
+            ->getApiLiveMediaVideos($festival, $lang)
+        ;
+
+        $item = array(
+            'live' => $live,
+            'web_tvs' => $webTvs,
+            'videos' => $videos,
+        );
 
         // set context view
-        $groups = array('web_tv_list');
+        $groups = array('live');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);

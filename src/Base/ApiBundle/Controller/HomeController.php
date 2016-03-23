@@ -86,10 +86,8 @@ class HomeController extends FOSRestController
 
         $news = array();
         foreach ($items as $item) {
-            if ($item instanceof News) {
-                $key = $item->getPublishedAt()->format('Y-m-d-H-i-s') . '-' . $item->getId();
-                $news[$key] = $item;
-            }
+            $key = $item->getPublishedAt()->format('Y-m-d-H-i-s') . '-' . $item->getId();
+            $news[$key] = $item;
         }
         return $news;
     }
@@ -105,10 +103,8 @@ class HomeController extends FOSRestController
 
         $infos = array();
         foreach ($items as $item) {
-            if ($item instanceof Info) {
-                $key = $item->getPublishedAt()->format('Y-m-d-H-i-s') . '-' . $item->getId();
-                $infos[$key] = $item;
-            }
+            $key = $item->getPublishedAt()->format('Y-m-d-H-i-s') . '-' . $item->getId();
+            $infos[$key] = $item;
         }
         return $infos;
     }
@@ -124,10 +120,8 @@ class HomeController extends FOSRestController
 
         $statements = array();
         foreach ($items as $item) {
-            if ($item instanceof Statement) {
-                $key = $item->getPublishedAt()->format('Y-m-d-H-i-s') . '-' . $item->getId();
-                $statements[$key] = $item;
-            }
+            $key = $item->getPublishedAt()->format('Y-m-d-H-i-s') . '-' . $item->getId();
+            $statements[$key] = $item;
         }
 
         return $statements;
@@ -140,7 +134,7 @@ class HomeController extends FOSRestController
             ->getManager()
             ->getRepository('BaseCoreBundle:FilmProjection')
             ->getApiNextProjections($festival, 3)
-        ;
+            ;
     }
 
 }

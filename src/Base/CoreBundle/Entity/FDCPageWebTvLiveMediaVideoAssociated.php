@@ -46,7 +46,7 @@ class FDCPageWebTvLiveMediaVideoAssociated
      * @var MediaVideo
      *
      * @ORM\ManyToOne(targetEntity="MediaVideo")
-     * @Groups({"web_tv_list"})
+     * @Groups({"live"})
      */
     protected $association;
 

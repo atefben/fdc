@@ -49,8 +49,8 @@ class MediaImageSimple implements TranslateMainInterface
      * @Groups({
      *     "news_list",
      *     "news_show",
-     *     "web_tv_list",
-     *     "web_tv_show",
+     *     "live",
+     *     "web_tv_show", "live",
      *     "film_show"
      * })
      */
@@ -81,8 +81,8 @@ class MediaImageSimple implements TranslateMainInterface
      * @Groups({
      *     "news_list",
      *     "news_show",
-     *     "web_tv_list",
-     *     "web_tv_show",
+     *     "live",
+     *     "web_tv_show", "live",
      *     "film_show"
      * })
      */

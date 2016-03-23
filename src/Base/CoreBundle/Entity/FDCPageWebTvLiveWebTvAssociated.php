@@ -47,7 +47,7 @@ class FDCPageWebTvLiveWebTvAssociated
      * @var WebTv
      *
      * @ORM\ManyToOne(targetEntity="WebTv", inversedBy="associatedWebTvs")
-     * @Groups({"web_tv_list"})
+     * @Groups({"live"})
      */
     protected $association;
 

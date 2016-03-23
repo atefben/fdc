@@ -2,6 +2,7 @@
 
 namespace Base\ApiBundle\Controller;
 
+use Base\CoreBundle\Entity\News;
 use \DateTime;
 
 use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
@@ -64,7 +65,8 @@ class NewsController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Settings')
-            ->findOneBySlug('fdc-year');
+            ->findOneBySlug('fdc-year')
+        ;
 
         if ($settings === null) {
             throw $this->createNotFoundException();
@@ -74,17 +76,29 @@ class NewsController extends FOSRestController
         $end = $settings->getFestival()->getFestivalEndsAt();
         $now = new \DateTime();
 
-            $query = $this
-                ->getDoctrine()->getManager()
-                ->getRepository('BaseCoreBundle:News')
-                ->getApiNews($festival, $lang, $start, $end);
+        $results = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:News')
+            ->getApiNews($festival, $lang, $start, $end)
+            ->getResult()
+        ;
+
+        $items = array();
+        foreach ($results as $item) {
+            if ($item instanceof News) {
+                $key = $item->getPublishedAt()->format('Y-m-d');
+                if (!array_key_exists($key, $items)) {
+                    $items[$key] = array(
+                        'date' => $item->getPublishedAt(),
+                        'news' => array(),
+                    );
+                }
+                $items[$key]['news'] = $item;
+            }
+        }
 
 
-        // TODO: filter MediaAudio/ MediaVIdeo with $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
-        // cant use at the moment because we use the sql query to create the pagination
-
-        // get items, passing options to fix Cannot count query which selects two FROM components, cannot make distinction
-        $items = $coreManager->getPaginationItems($query, $paramFetcher, array('distinct' => false));
 
         // set context view
         $groups = array('news_list');
@@ -93,7 +107,7 @@ class NewsController extends FOSRestController
         $context->setVersion($version);
 
         // create view
-        $view = $this->view($items, 200);
+        $view = $this->view(array_values($items), 200);
         $view->setSerializationContext($context);
 
         return $view;

@@ -196,4 +196,33 @@ class MediaVideoRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function getApiLiveMediaVideos($festival, $locale)
+    {
+        $qb = $this->createQueryBuilder('mv');
+
+        $qb
+            ->select('mv')
+            ->join('mv.translations', 'mvt')
+            ->join('mv.webTv', 'wtv')
+            ->join('wtv.translations', 'wtvt')
+            ->andWhere('(mv.image IS NOT NULL OR mvt.imageAmazonUrl IS NOT NULL)')
+            ->andWhere('mv.displayedHome = :displayedHome')
+            ->setParameter('displayedHome', true)
+        ;
+
+        $this->addMasterQueries($qb, 'mv', $festival, true);
+        $this->addMasterQueries($qb, 'wtv', $festival, false);
+        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addTranslationQueries($qb, 'wtvt', $locale);
+        $this->addAWSVideoEncodersQueries($qb, 'mvt');
+
+        $qb
+            ->orderBy('mv.publishedAt', 'desc')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
+
+
+
 }

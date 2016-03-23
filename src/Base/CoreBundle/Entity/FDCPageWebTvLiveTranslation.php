@@ -35,8 +35,9 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Groups({
-     *     "web_tv_list",
-     *     "web_tv_show"
+     *     "live",
+     *     "web_tv_show",
+     *     "live"
      * })
      */
     private $title;
@@ -46,8 +47,9 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({
-     *     "web_tv_list",
-     *     "web_tv_show"
+     *     "live",
+     *     "web_tv_show",
+     *     "live"
      * })
      */
     private $firstSubHead;
@@ -57,8 +59,9 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({
-     *     "web_tv_list",
-     *     "web_tv_show"
+     *     "live",
+     *     "web_tv_show",
+     *     "live"
      * })
      */
     private $secondSubHead;
@@ -68,8 +71,9 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="text", nullable=true)
      * @Groups({
-     *     "web_tv_list",
-     *     "web_tv_show"
+     *     "live",
+     *     "web_tv_show",
+     *     "live"
      * })
      */
     private $directUrl;
@@ -79,8 +83,9 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="text", nullable=true)
      * @Groups({
-     *     "web_tv_list",
-     *     "web_tv_show"
+     *     "live",
+     *     "web_tv_show",
+     *     "live"
      * })
      */
     private $teaserUrl;

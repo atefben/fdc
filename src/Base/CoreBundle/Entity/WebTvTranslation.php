@@ -36,7 +36,7 @@ class WebTvTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"live", "web_tv_show", "live"})
      */
     protected $name;
 
@@ -45,7 +45,7 @@ class WebTvTranslation implements TranslateChildInterface
      *
      * @Gedmo\Slug(fields={"name"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
-     * @Groups({"web_tv_list", "web_tv_show"})
+     * @Groups({"live", "web_tv_show", "live"})
      */
     private $slug;
 

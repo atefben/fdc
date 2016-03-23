@@ -172,7 +172,7 @@ abstract class News implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show", "home", "film_show"})
+     * @Groups({"news_list", "news_show", "live", "web_tv_show", "live", "home", "film_show"})
      */
     private $publishedAt;
 
@@ -180,7 +180,7 @@ abstract class News implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({"news_list", "news_show", "web_tv_list", "web_tv_show", "home", "film_show"})
+     * @Groups({"news_list", "news_show", "live", "web_tv_show", "live", "home", "film_show"})
      */
     private $publishEndedAt;
 
