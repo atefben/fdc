@@ -9907,15 +9907,14 @@ header #searchContainer {
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .push-container .push .image-wrapper img {
-  position: absolute;
-  min-width: 100%;
+  width: 100%;
   min-height: 100%;
-  width: auto;
   height: auto;
-  -moz-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -o-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -webkit-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transition: all 3s cubic-bezier(.25,.46,.45,.94);
+  -o-transition: all 3s cubic-bezier(.25,.46,.45,.94);
+  -webkit-transition: all 3s cubic-bezier(.25,.46,.45,.94);
+  transition: all 3s cubic-bezier(.25,.46,.45,.94);
+  display: block;
 }
 .push-container .push.right {
   float: right;
