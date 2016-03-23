@@ -98,8 +98,6 @@ class NewsController extends FOSRestController
             }
         }
 
-
-
         // set context view
         $groups = array('news_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
