@@ -286,7 +286,9 @@ $(document).ready(function() {
       loadTweets(function() {
         // once all data is loaded, build html and display the grid
         var p = $('.post .side-2');
-        var number = Math.min(posts.length, 13);
+        console.log("posts : "+posts);
+        console.log("posts : "+posts.length);
+        var number = Math.min(posts.length, 15);
         for(var i = 0; i < number; ++i) {
           var random = Math.floor(Math.random() * posts.length);
           var item = posts.splice(random, 1)[0];

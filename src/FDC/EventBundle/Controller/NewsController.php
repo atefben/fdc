@@ -200,40 +200,6 @@ class NewsController extends Controller
         // SEO
         $this->get('base.manager.seo')->setFDCEventPageHomepageSeo($homepage, $locale);
 
-        // TODO: clean this
-        $wallPosts = array(
-            array(
-                'big' => true
-            ),
-            array(
-                'big' => true
-            ),
-            array(
-                'big' => false
-            ),
-            array(
-                'big' => false
-            ),
-            array(
-                'big' => false
-            ),
-            array(
-                'big' => false
-            ),
-            array(
-                'big' => false
-            ),
-            array(
-                'big' => false
-            ),
-            array(
-                'big' => false
-            ),
-            array(
-                'big' => false
-            )
-        );
-
         return array(
             'homepage' => $homepage,
             'socialGraph' => $socialGraph,
@@ -250,9 +216,7 @@ class NewsController extends Controller
             'videos' => $videos,
             'channels' => $channels,
             'films' => $films,
-            'endOfArticles' => $endOfArticles,
-            // TODO: clean this
-            'wallPosts' => $wallPosts
+            'endOfArticles' => $endOfArticles
         );
     }
 
