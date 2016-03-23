@@ -108,7 +108,7 @@ class FilmProjection
      * @ORM\ManyToOne(targetEntity="FilmProjectionRoom", inversedBy="projections", cascade={"persist"})
      *
      * @Groups({
-     *  "projection_list", "projection_show",
+     *  "projection_show",
      *  "film_list", "film_show"
      * })
      */
@@ -128,7 +128,6 @@ class FilmProjection
      *
      * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationDynamic", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"projection_list", "projection_show"})
      */
     private $programmationDynamics;
 
@@ -137,7 +136,6 @@ class FilmProjection
      *
      * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilmList", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"projection_list", "projection_show"})
      */
     private $programmationFilmsList;
 

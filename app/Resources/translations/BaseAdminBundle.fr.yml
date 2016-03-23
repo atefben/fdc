@@ -193,6 +193,7 @@ entity:
     fdc_page_news_audios: L'actualité - Tous les audios
     fdc_page_news_images: L'actualité - Toutes les images
     fdc_page_news_videos: L'actualité - Toutes les vidéos
+    fdc_page_prepare: 'Préparer son séjour'
 
 list:
     label_site: Site
@@ -881,4 +882,3 @@ FDCPageWebTvTrailers: Page WebTV - Les bandes-annonces - Compétition
 FDCPageLaSelection: Page la sélection
 FilmJuryType: Type des jurys
 FilmSelectionSection: Sélections
-FDCPageEvent: Page les événements

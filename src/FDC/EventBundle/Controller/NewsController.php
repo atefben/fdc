@@ -197,6 +197,9 @@ class NewsController extends Controller
 
         $films = $homepage->getFilmsAssociated();
 
+        // SEO
+        $this->get('base.manager.seo')->setFDCEventPageHomepageSeo($homepage, $locale);
+
         // TODO: clean this
         $wallPosts = array(
             array(

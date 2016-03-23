@@ -75,7 +75,7 @@ class FilmProjectionController extends FOSRestController
         $date = new \DateTime();
         $date->setTimestamp($time);
 
-        foreach ($rooms as &$room) {
+        foreach ($rooms as $key => $room) {
             $ac = new ArrayCollection();
             if ($room instanceof FilmProjectionRoom) {
                 foreach ($room->getProjections() as $projection) {
@@ -86,7 +86,7 @@ class FilmProjectionController extends FOSRestController
                     }
                 }
             }
-            $room->setProjections($ac);
+            $rooms[$key]->setProjections($ac);
         }
         $groups = array('projection_list');
         $context = $coreManager->setContext($groups, $paramFetcher);

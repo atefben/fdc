@@ -55,13 +55,15 @@ sonata_admin:
             dashboard.group.press:
                 items: ~
                 label_catalogue: BaseAdminBundle
+            dashboard.group.participate:
+                items: ~
+                label_catalogue: BaseAdminBundle
             sonata_user:
                 items: ~
                 label_catalogue: SonataUserBundle
             sonata_media:
                 items: ~
                 label_catalogue: SonataMediaBundle
-
     assets:
         javascripts:
 
