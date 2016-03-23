@@ -65,12 +65,6 @@ class WebTvController extends FOSRestController
             ->find($this->getParameter('admin_fdc_page_web_tv_live_id'))
         ;
 
-        $homepage = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('BaseCoreBundle:Homepage')
-            ->findOneByFestival($festival);
-
         $webTvs = $this
             ->getDoctrine()
             ->getManager()

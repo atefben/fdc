@@ -94,7 +94,7 @@ class NewsController extends FOSRestController
                         'news' => array(),
                     );
                 }
-                $items[$key]['news'] = $item;
+                $items[$key]['news'][] = $item;
             }
         }
 
