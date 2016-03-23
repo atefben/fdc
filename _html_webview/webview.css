@@ -110,9 +110,10 @@ strong.color, span.number, .item-info a, .link .icon, .link .icon-mobile-partici
 	text-transform: uppercase;
   letter-spacing: 3px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-size: 19px;
-  padding-bottom: 30px;
+  font-size: 10px;
+  padding-bottom: 15px;
 	text-align: center;
+	font-weight: bold;
 }
 
 .title-contain .icon, .title-contain  .icon-mobile-participer{
@@ -190,7 +191,7 @@ strong.color, span.number, .item-info a, .link .icon, .link .icon-mobile-partici
 	margin: 0 auto;
 }
 .item-good-practice{
-	width: 49%;
+	width: 150px;
 	display: inline-block;
 	text-align: center;
 	height: 235px;
@@ -213,13 +214,14 @@ strong.color, span.number, .item-info a, .link .icon, .link .icon-mobile-partici
 	line-height: 90px;
 }
 .item-good-practice p{
-	width: 281px;
+	width: 150px;
   height: 115px;
   display: block;
-  font-size: 20px;
+  font-size: 10px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  line-height: 36px;
+  line-height: 20px;
   margin: 0 auto;
+	font-weight: bold;
 }
 .contain-transport .item-info .icon{
 	color:#c8a461;
@@ -248,53 +250,6 @@ section .button .icon{
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 	color:#666666;
 }
-.instructions-container .item-info{
-
-	width: 490px;
-	margin:0 auto 80px auto;
-}
-#google-map{
-	width: 100%;
-	height: 300px;
-	margin-bottom: 40px;
-}
-.img-container{
-
-	text-align: center;
-	margin-bottom: 40px;
-}
-.partners-container .title-participate{
-	padding:60px 0;
-	width: 450px
-}
-a.partners-link{
-	text-transform: uppercase;
-	color: #c8a461;
-    font-size: 20px;
-    padding-right: 20px;
-    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-weight: 700;
-}
-.partner{
-	border-bottom: 1px solid #e0e0e0;
-	padding: 40px 0;
-	text-align: center;
-}
-.portrait img{
-	float: left;
-	padding-right: 20px;
-}
-.portrait {
-	min-height: 85px;
-	margin-top: 40px;
-	font-size: 20px;
-	line-height: 36px;
-	display: inline-block;
-	text-align: left;
-}
-.portrait .rank{
-	line-height: 20px;
-}
 
 .open .section-title .icon, .open .section-title .icon-mobile-participer {
     color: #c29f5f;
@@ -308,8 +263,8 @@ a.partners-link{
 .title-participate {
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     color: #999999;
-    font-size: 24px;
-    padding-left: 43px;
+    font-size: 12px;
+    padding-left: 9px;
     text-transform: uppercase;
     display: inline-block;
     line-height: 35px;
@@ -318,6 +273,7 @@ a.partners-link{
     -o-transition: all 0.6s;
     -webkit-transition: all 0.6s;
     transition: all 0.6s;
+		font-weight: bold;
 }
 
 .open .title-participate {
@@ -325,7 +281,7 @@ a.partners-link{
 }
 
 .acces-container section{
-    max-height: 58px;
+    max-height: 21px;
 	  overflow: hidden;
 }
 
@@ -338,8 +294,8 @@ a.partners-link{
 	padding-top:60px;
 }
 .section-contain img {
-		padding-bottom: 30px;
-		width: 100%;
+	padding-bottom: 20px;
+	width: 100%;
 }
 
 .icon.accordion.icon_case-plus{
@@ -348,10 +304,10 @@ a.partners-link{
 
 .section-contain .description {
     color:#333333;
-		font-size: 20px;
+		font-size: 11px;
 		text-align: center;
 		font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-		line-height: 38px;
+		line-height: 20px;
 		width: 100%;
 }
 
@@ -360,10 +316,10 @@ display:block;
 }
 
 .description {
-    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-    margin-bottom: 50px;
-    font-size: 24px;
-    line-height: 36px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  margin-bottom: 25px;
+  font-size: 24px;
+  line-height: 36px;
 }
 
 
@@ -409,7 +365,7 @@ display:block;
 }
 
 .participer section{
-	max-height: 58px;
+	max-height: 21px;
 	overflow: hidden;
 }
 
@@ -428,11 +384,19 @@ display:block;
 }
 
 .icon.accordion.icon_moins{
-	font-size: .75rem;
+	font-size: .55rem;
   float: right;
-  margin-top: 17px;
-  margin-right: 20px;
+  margin-top: 12px;
+  margin-right: ®1px;
 }
+
+.icon.accordion.icon_case-plus{
+	font-size: 2rem;
+  float: right;
+  /*margin-top: 12px;*/
+  margin-right: -10px;
+}
+
 
 .press > section:nth-child(1) > div.section-title > h3{
 	vertical-align: super;
@@ -446,4 +410,34 @@ display:block;
 	font-size: 28px;
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 	line-height: 48px;
+}
+
+.section-title .icon, .section-title .icon-mobile-participer{
+	font-size: 1.2rem;
+  color: #999999;
+}
+
+.acces section{
+	padding: 0 25px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.acces .section-contain{
+	padding-top: 25px;
+}
+
+.acces img{
+	margin-bottom: 0px;
+}
+
+.title-contain .icon{
+	font-size: 1rem;
+	padding-right: 5px;
+	top: -2px;
+}
+
+.acces .contain-good-practice{
+	width: 120%;
+	margin-left: -5%;
 }
