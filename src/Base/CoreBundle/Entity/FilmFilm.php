@@ -50,7 +50,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_list",
      *     "projection_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "film_selection_section_show"
      * })
      *
      */
@@ -79,7 +80,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "film_selection_section_show"
      * })
      *
      */
@@ -116,7 +118,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_list",
      *     "projection_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "film_selection_section_show"
      * })
      *
      */
@@ -137,7 +140,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_list",
      *     "projection_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "film_selection_section_show"
      * })
      *
      */
@@ -295,7 +299,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "film_selection_section_show"
      * })
      */
     private $medias;
@@ -337,7 +342,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "news_show",
-     *     "projection_list"
+     *     "projection_list",
+     *     "film_selection_section_show"
      * })
      *
      */
@@ -398,6 +404,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
+     *     "film_selection_section_show"
      * })
      */
     private $imageMain;
@@ -407,6 +414,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
+     *     "film_selection_section_show"
      * })
      */
     private $imageCover;
@@ -416,6 +424,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
+     *     "film_selection_section_show"
      * })
      */
     private $videoMain;
@@ -497,7 +506,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_list",
      *     "projection_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "film_selection_section_show"
      * })
      * @return array|ArrayCollection
      */
@@ -644,7 +654,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
             if ($filmPerson->getFunctions()->count() > 1) {
                 $count = 0;
                 foreach ($collection as $key2 => $filmPerson2) {
-                    if ($filmPerson->getPerson() && $filmPerson->getPerson()->getId() == $filmPerson2->getPerson()->getId()) {
+                    if ($filmPerson->getPerson() && $filmPerson2->getPerson() && $filmPerson->getPerson()->getId() == $filmPerson2->getPerson()->getId()) {
                         foreach ($collection->get($key2)->getFunctions() as $keyFunction => $function) {
                             if ($keyFunction != $count) {
                                 $collection->get($key2)->getFunctions()->remove($keyFunction);

@@ -38,13 +38,13 @@ class FilmSelectionSection implements TranslateMainInterface
      *     "film_list",
      *     "film_selection_list",
      *     "film_selection_section_list",
-     *     "film_selection_show",
+     *     "film_selection_section_show",
      *     "news_list",
      *     "news_show"
      * })
      */
     private $id;
-    
+
     /**
      * @var string
      *
@@ -55,13 +55,13 @@ class FilmSelectionSection implements TranslateMainInterface
      *     "film_list",
      *     "film_selection_list",
      *     "film_selection_section_list",
-     *     "film_selection_show",
+     *     "film_selection_section_show",
      *     "news_list",
      *     "news_show"
      * })
      */
     private $position;
-    
+
     /**
      * @var string
      *
@@ -77,7 +77,12 @@ class FilmSelectionSection implements TranslateMainInterface
     private $selection;
 
     /**
+     * @var ArrayCollection
+     *
      * @ORM\OneToMany(targetEntity="FilmFilm", mappedBy="selectionSection")
+     * @Groups({
+     *     "film_selection_section_show"
+     * })
      */
     private $films;
 
@@ -89,7 +94,7 @@ class FilmSelectionSection implements TranslateMainInterface
      *     "film_list",
      *     "film_selection_list",
      *     "film_selection_section_list",
-     *     "film_selection_show",
+     *     "film_selection_section_show",
      *     "news_list",
      *     "news_show"
      * })
@@ -251,6 +256,17 @@ class FilmSelectionSection implements TranslateMainInterface
     public function getFilms()
     {
         return $this->films;
+    }
+
+    /**
+     * @param ArrayCollection $films
+     * @return $this
+     */
+    public function setFilms(ArrayCollection $films)
+    {
+        $this->films = $films;
+
+        return $this;
     }
 
 

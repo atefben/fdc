@@ -40,7 +40,8 @@ class FilmMedia
       *     "jury_list",
       *     "jury_show",
       *     "projection_list",
-      *     "projection_show"
+      *     "projection_show",
+      *     "film_selection_section_show"
       * })
       */
     private $contentType;
@@ -55,7 +56,8 @@ class FilmMedia
      *     "jury_list",
      *     "jury_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "film_selection_section_show"
      * })
      */
     private $noteVf;
@@ -70,7 +72,8 @@ class FilmMedia
      *     "jury_list",
      *     "jury_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "film_selection_section_show"
      * })
      */
     private $noteVa;
@@ -85,7 +88,8 @@ class FilmMedia
      *     "jury_list",
      *     "jury_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "film_selection_section_show"
      * })
      */
     private $copyright;
@@ -100,7 +104,8 @@ class FilmMedia
      *     "jury_list",
      *     "jury_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "film_selection_section_show"
      * })
      */
     private $credits;
@@ -115,7 +120,8 @@ class FilmMedia
      *     "jury_list",
      *     "jury_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "film_selection_section_show"
      * })
      */
     private $type;
@@ -130,7 +136,8 @@ class FilmMedia
      *     "jury_list",
      *     "jury_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "film_selection_section_show"
      * })
      */
     private $internet;
@@ -145,7 +152,8 @@ class FilmMedia
      *     "jury_list",
      *     "jury_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "film_selection_section_show"
      * })
      */
     private $titleVf;
@@ -160,7 +168,8 @@ class FilmMedia
      *     "jury_list",
      *     "jury_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "film_selection_section_show"
      * })
      */
     private $titleVa;
@@ -178,7 +187,8 @@ class FilmMedia
      *     "jury_list",
      *     "jury_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "film_selection_section_show"
      * })
      */
     private $file;
