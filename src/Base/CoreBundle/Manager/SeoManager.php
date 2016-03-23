@@ -8,6 +8,7 @@ use Base\CoreBundle\Entity\FDCPageNewsImages;
 use Base\CoreBundle\Entity\FDCPageWebTvChannels;
 use Base\CoreBundle\Entity\FDCPageWebTvLive;
 use Base\CoreBundle\Entity\FDCPageWebTvTrailers;
+use Base\CoreBundle\Entity\Homepage;
 use Base\CoreBundle\Entity\PressDownload;
 use Base\CoreBundle\Entity\PressProjection;
 use Base\CoreBundle\Entity\PressStatementInfo;
@@ -347,6 +348,54 @@ class SeoManager
 
             // PICTURE
             $header = $page->getSeoFile();
+            if ($header) {
+                // OG PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+
+                // TWITTER PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            }
+
+            // overload default value by the one set on the article
+            if ($trans->getSeoTitle() !== null) {
+                $this->sonataSeoPage->setTitle($trans->getSeoTitle());
+                $this->sonataSeoPage->addMeta('property', 'og:title', $trans->getSeoTitle());
+                $this->sonataSeoPage->addMeta('property', 'twitter:title', $trans->getSeoTitle());
+            }
+            if ($trans->getSeoDescription() !== null) {
+                $this->sonataSeoPage->addMeta('name', 'description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'og:description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'twitter:description', $trans->getSeoDescription());
+            }
+        }
+    }
+
+    /**
+     * @param Homepage $homepage
+     * @param $locale
+     */
+    public function setFDCEventPageHomepageSeo(Homepage $homepage, $locale)
+    {
+        $trans = $homepage->findTranslationByLocale($locale);
+
+        if ($trans !== null) {
+            $bannedChars = array('&nbsp;');
+
+            // OG PARAMS
+            $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
+            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_event_television_channels', array(), UrlGeneratorInterface::ABSOLUTE_URL));
+            $this->sonataSeoPage->addMeta('property', 'og:updated_time', $homepage->getUpdatedAt()->format(DateTime::ISO8601));
+
+            // TWITTER
+            $this->sonataSeoPage->addMeta('property', 'twitter:card', 'summary_large_image');
+            $this->sonataSeoPage->addMeta('property', 'twitter:site', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'twitter:creator', '@' . substr(strrchr($this->socialTwitter, '/'), 1));
+
+            // PICTURE
+            $header = $homepage->getSeoFile();
             if ($header) {
                 // OG PICTURE
                 $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
