@@ -2,35 +2,17 @@
 
 namespace Base\AdminBundle\Admin;
 
+use Base\CoreBundle\Entity\FDCPageParticipate;
+use Base\CoreBundle\Entity\FDCPageParticipateTranslation;
+
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Base\CoreBundle\Entity\FDCPageParticipateTranslation;
-use Base\CoreBundle\Entity\FDCPageParticipate;
 
 class FDCPageParticipateAdmin extends Admin
 {
-    protected $formOptions = array(
-        'cascade_validation' => true
-    );
-
-    public function configure()
-    {
-        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
-    }
-
-    public function getFormTheme()
-    {
-        return array_merge(
-            parent::getFormTheme(),
-            array('BaseAdminBundle:Form:polycollection.html.twig')
-        );
-    }
-
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -40,7 +22,8 @@ class FDCPageParticipateAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('createdAt')
-            ->add('updatedAt');
+            ->add('updatedAt')
+        ;
     }
 
     /**
@@ -58,7 +41,8 @@ class FDCPageParticipateAdmin extends Admin
                     'edit' => array(),
                     'delete' => array(),
                 )
-            ));
+            ))
+        ;
     }
 
     /**
@@ -78,24 +62,13 @@ class FDCPageParticipateAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'mainTitle' => array(
-                        'label' => 'form.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
+                    'status'         => array(
+                        'label'                     => 'form.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => FDCPageParticipateTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle'
                     ),
-                    'mainDescription' => array(
-                        'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'press'
-                    ),
-
-
-
                     'seoTitle' => array(
                         'attr' => array(
                             'placeholder' => 'form.placeholder_seo_title'
@@ -115,46 +88,41 @@ class FDCPageParticipateAdmin extends Admin
                         'required' => false
 
                     ),
-                    'status' => array(
-                        'label' => 'form.label_status',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'choice',
-                        'choices' => FDCPageParticipateTranslation::getStatuses(),
-                        'choice_translation_domain' => 'BaseAdminBundle'
-                    ),
                 )
-            ))
-            ->add('translate', 'checkbox', array(
-                'required' => false,
-            ))
-            ->add('translateOptions', 'choice', array(
-                'choices' => FDCPageParticipate::getAvailableTranslateOptions(),
-                'translation_domain' => 'BaseAdminBundle',
-                'multiple' => true,
-                'expanded' => true
-            ))
-            ->add('priorityStatus', 'choice', array(
-                'choices' => FDCPageParticipate::getPriorityStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
-                'context' => 'seo_file',
+                'context'  => 'seo_file',
                 'help' => 'form.seo.helper_file',
                 'required' => false,
             ))
-            ->add('mainIcon', new ChoiceType(), array(
-                'choices' => array(
-                    'icon_palme' => 'Préparer son séjour',
+            ->add('downloadSection', 'sonata_type_collection',
+                array(
+                    'type_options' => array(
+                        'delete' => true,
+                    ),
+                    'cascade_validation' => true,
+                    'by_reference' => false,
                 ),
-                'label' => 'form.label_information_icon',
+                array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                    'sortable'  => 'position',
+                )
+            )
+            ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices'            => FDCPageParticipate::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
-                'choice_translation_domain' => 'BaseAdminBundle'
+                'multiple'           => true,
+                'expanded'           => true
             ))
-            ->add('mainImage', 'sonata_type_model_list', array(
-                'label' => 'form.label_image'
+            ->add('priorityStatus', 'choice', array(
+                'choices'                   => FDCPageParticipate::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle',
             ))
-            ->end();
+            ->end()
+        ;
 
     }
 
@@ -166,6 +134,13 @@ class FDCPageParticipateAdmin extends Admin
         $showMapper
             ->add('id')
             ->add('createdAt')
-            ->add('updatedAt');
+            ->add('updatedAt')
+        ;
     }
+
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
+    }
+
 }

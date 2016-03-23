@@ -3,14 +3,15 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-
-use Base\CoreBundle\Interfaces\TranslateMainInterface;
-use Base\CoreBundle\Util\SeoMain;
-use Base\CoreBundle\Util\TranslateMain;
-use Base\CoreBundle\Util\Time;
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\SeoMain;
+
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * FDCPageParticipate
@@ -36,19 +37,16 @@ class FDCPageParticipate implements TranslateMainInterface
     private $id;
 
     /**
-     * @var string
+     * @var FDCPageParticipateHasSection
+     * @ORM\OneToMany(targetEntity="FDCPageParticipateHasSection", mappedBy="download", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    protected $downloadSection;
+
+    /**
+     * @var ArrayCollection
      *
-     * @ORM\Column(name="participate_main_icon", type="string", length=122)
-     */
-    protected $mainIcon;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
-     */
-    private $mainImage;
-
-    /**
-     * ArrayCollection
+     * @Assert\Valid()
      */
     protected $translations;
 
@@ -58,27 +56,18 @@ class FDCPageParticipate implements TranslateMainInterface
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-        $this->serviceWidgets = new ArrayCollection();
-        $this->arriveWidgets = new ArrayCollection();
-        $this->informationWidgets = new ArrayCollection();
-        $this->meetingWidgets = new ArrayCollection();
+        $this->downloadSection = new ArrayCollection();
     }
 
     public function __toString()
     {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
-
-        if ($this->getId()) {
-            $string .= ' #' . $this->getId();
-        }
-
-        return $string;
+        return "Strate";
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -86,48 +75,49 @@ class FDCPageParticipate implements TranslateMainInterface
     }
 
     /**
-     * Set mainIcon
+     * Add FDCPageParticipateSection
      *
-     * @param string $mainIcon
-     * @return FDCPageParticipate
+     * @param \Base\CoreBundle\Entity\FDCPageParticipateHasSection $downloadSection
+     * @return FDCPageParticipateHasSection
      */
-    public function setMainIcon($mainIcon)
+    public function addDownloadSection(\Base\CoreBundle\Entity\FDCPageParticipateHasSection $downloadSection)
     {
-        $this->mainIcon = $mainIcon;
-
-        return $this;
+        $downloadSection->setDownload($this);
+        $this->downloadSection->add($downloadSection);
     }
 
     /**
-     * Get mainIcon
+     * Remove downloadSection
      *
-     * @return string 
+     * @param \Base\CoreBundle\Entity\FDCPageParticipateHasSection $downloadSection
      */
-    public function getMainIcon()
+    public function removeDownloadSection(\Base\CoreBundle\Entity\FDCPageParticipateHasSection $downloadSection)
     {
-        return $this->mainIcon;
+        $this->downloadSection->removeElement($downloadSection);
     }
 
     /**
-     * Set mainImage
+     * Get downloadSection
      *
-     * @param \Base\CoreBundle\Entity\MediaImageSimple $mainImage
-     * @return FDCPageParticipate
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function setMainImage(\Base\CoreBundle\Entity\MediaImageSimple $mainImage = null)
+    public function getDownloadSection()
     {
-        $this->mainImage = $mainImage;
-
-        return $this;
+        return $this->downloadSection;
     }
 
     /**
-     * Get mainImage
-     *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @param PressDownloadSection $downloadSection
      */
-    public function getMainImage()
+    public function setDownloadSection($downloadSection)
     {
-        return $this->mainImage;
+
+        foreach($downloadSection as $section)
+        {
+            $section->setDownload($this);
+        }
+
+        $this->downloadSection = $downloadSection;
     }
+
 }
