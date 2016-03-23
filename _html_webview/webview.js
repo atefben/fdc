@@ -13,7 +13,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
       if(parent.className == "open"){
         icon.className= "icon accordion icon_case-plus";
         parent.className = "";
-        parent.style.maxHeight = "42px";
+        parent.style.maxHeight = "30px";
         parent.style.overflow = "hidden";
 
       }else{
