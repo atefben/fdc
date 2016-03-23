@@ -67,17 +67,19 @@ section {
 section a.button {
   border: 1px solid #c8a461;
   font-size: 9px;
-  height: 25px;
-  line-height: 25px;
+  height: 42px;
+	width: 170px;
+  line-height: 42px;
   font-weight: 700;
   margin: 10px 0;
   text-decoration: none;
   color: #c29f5f;
   display: inline-block;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  padding: 3px 40px 3px 40px;
+  /*padding: 3px 40px 3px 40px;*/
   text-transform: uppercase;
   text-decoration: none;
+	box-sizing: border-box;
 }
 
 .link .icon, .link .icon-mobile-participer {
@@ -242,6 +244,7 @@ section .button:last-child{
 }
 section .button .icon{
 	padding-right: 20px;
+	vertical-align: text-top;
 }
 
 .item-info p{
