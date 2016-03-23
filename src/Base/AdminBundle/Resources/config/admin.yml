@@ -833,6 +833,34 @@ services:
          calls:
               - [ setTranslationDomain, ['BaseAdminBundle']]
 
+
+
+    base.admin.fdc_page_prepare:
+        class: Base\AdminBundle\Admin\FDCPagePrepareAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPagePrepare, BaseAdminBundle:FDCPagePrepareAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.participate, label: entity.fdc_page_prepare, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_prepare_widget_image_dummy:
+        class: Base\AdminBundle\Admin\FDCPagePrepareWidgetImageDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPagePrepareWidgetImage, BaseAdminBundle:FDCPagePrepareWidgetImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Guide Image widget, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_prepare_widget_column_dummy:
+         class: Base\AdminBundle\Admin\FDCPagePrepareWidgetColumnDummyAdmin
+         arguments: [~, Base\CoreBundle\Entity\FDCPagePrepareWidgetColumn, BaseAdminBundle:FDCPagePrepareWidgetColumnDummyAdmin]
+         tags:
+             - {name: sonata.admin, manager_type: orm, group: admin, label: Guide Column widget, show_in_dashboard: false}
+         calls:
+              - [ setTranslationDomain, ['BaseAdminBundle']]
+
+
+
     base.admin.press_media_library:
         class: Base\AdminBundle\Admin\PressMediaLibraryAdmin
         arguments: [~, Base\CoreBundle\Entity\PressMediaLibrary, BaseAdminBundle:PressMediaLibraryAdmin]

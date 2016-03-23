@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @Route("/participer")
@@ -22,10 +23,20 @@ class ParticipateController extends Controller
     public function prepareAction(Request $request)
     {
         $this->isPageEnabled($request->get('_route'));
-        $pageContent = "Contenu de la page";
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET PARTICIPATE PAGE
+        $content = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findOneById($this->getParameter('admin_event_fdc_page_prepare_id'));
+        if ($content === null) {
+            throw new NotFoundHttpException();
+        }
+
+        // SEO
+         $this->get('base.manager.seo')->setFDCPagePrepareSeo($content, $locale);
 
         return array(
-            'content' => $pageContent
+            'content' => $content,
         );
     }
 
@@ -72,7 +83,7 @@ class ParticipateController extends Controller
             array(
                 'type' => 0,
                 'img' => 'img.jpg',
-                'alt' =>  'alt',
+                'alt' => 'alt',
                 'title' => 'title',
                 'description' => 'lorem ipsum',
                 'website' => 'http://google.fr',
@@ -84,7 +95,7 @@ class ParticipateController extends Controller
             array(
                 'type' => 0,
                 'img' => 'img.jpg',
-                'alt' =>  'alt',
+                'alt' => 'alt',
                 'title' => 'title',
                 'description' => 'lorem ipsum',
                 'website' => 'http://google.fr',
@@ -96,7 +107,7 @@ class ParticipateController extends Controller
             array(
                 'type' => 0,
                 'img' => 'img.jpg',
-                'alt' =>  'alt',
+                'alt' => 'alt',
                 'title' => 'title',
                 'description' => 'lorem ipsum',
                 'website' => 'http://google.fr',
@@ -108,7 +119,7 @@ class ParticipateController extends Controller
             array(
                 'type' => 1,
                 'img' => 'img.jpg',
-                'alt' =>  'alt',
+                'alt' => 'alt',
                 'title' => 'title',
                 'description' => 'lorem ipsum',
                 'website' => 'http://google.fr',
@@ -120,7 +131,7 @@ class ParticipateController extends Controller
             array(
                 'type' => 1,
                 'img' => 'img.jpg',
-                'alt' =>  'alt',
+                'alt' => 'alt',
                 'title' => 'title',
                 'description' => 'lorem ipsum',
                 'website' => 'http://google.fr',
@@ -148,7 +159,7 @@ class ParticipateController extends Controller
         $suppliers = array(
             array(
                 'img' => 'img.jpg',
-                'alt' =>  'alt',
+                'alt' => 'alt',
                 'title' => 'title',
                 'description' => 'lorem ipsum',
                 'website' => 'http://google.fr',
@@ -156,7 +167,7 @@ class ParticipateController extends Controller
             ),
             array(
                 'img' => 'img.jpg',
-                'alt' =>  'alt',
+                'alt' => 'alt',
                 'title' => 'title',
                 'description' => 'lorem ipsum',
                 'website' => 'http://google.fr',
@@ -164,7 +175,7 @@ class ParticipateController extends Controller
             ),
             array(
                 'img' => 'img.jpg',
-                'alt' =>  'alt',
+                'alt' => 'alt',
                 'title' => 'title',
                 'description' => 'lorem ipsum',
                 'website' => '',
