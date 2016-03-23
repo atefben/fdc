@@ -113,7 +113,7 @@ strong.color, span.number, .item-info a, .link .icon, .link .icon-mobile-partici
   font-size: 10px;
   padding-bottom: 15px;
 	text-align: center;
-	font-weight: bold;
+	font-weight: normal;
 }
 
 .title-contain .icon, .title-contain  .icon-mobile-participer{
@@ -221,7 +221,7 @@ strong.color, span.number, .item-info a, .link .icon, .link .icon-mobile-partici
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   line-height: 20px;
   margin: 0 auto;
-	font-weight: bold;
+	font-weight: normal;
 }
 .contain-transport .item-info .icon{
 	color:#c8a461;
@@ -273,7 +273,7 @@ section .button .icon{
     -o-transition: all 0.6s;
     -webkit-transition: all 0.6s;
     transition: all 0.6s;
-		font-weight: bold;
+		font-weight: normal;
 }
 
 .open .title-participate {
@@ -355,7 +355,7 @@ section .button .icon{
 
 .participer .description strong{
 	display: inline-block;
-	font-weight: bold;
+	font-weight: normal;
 	font-size: 10px;
 }
 
@@ -383,7 +383,7 @@ section .button .icon{
 }
 
 .se-rendre p strong{
-	font-weight: bold;
+	font-weight: normal;;
 	color:#000;
 }
 
