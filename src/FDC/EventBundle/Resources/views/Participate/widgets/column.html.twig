@@ -1,0 +1,36 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
+<div class="contain-map">
+    <strong class="name">{{ widget|trans_fallback('title') }}</strong>
+    {% if widget.image is not null %}
+        {% set trans = widget.image.findTranslationByLocale(app.request.locale) %}
+        {% if trans is null or trans.file is null %}
+            {% set trans = widget.image.findTranslationByLocale('fr') %}
+        {% endif %}
+        {% set image = trans.file %}
+
+        {% set sizeClass = 'portrait' %}
+        {% set format = '240x326' %}
+        {% if image.width > image.height %}
+            {% set sizeClass = 'landscape' %}
+            {% set format = '543x326' %}
+        {% endif %}
+        <img src="{% path image, format %}" alt="{{ widget.image|trans_fallback('alt') }}" class="map" />
+    {% endif %}
+
+    {% if widget.file is not null %}
+        <a href="{% path widget.file, 'reference' %}"
+           class="btn telecharger">
+            <i class="icon icon_telecharger"></i>
+            {{ 'Télécharger'|trans }}
+        </a>
+    {% endif %}
+    {% if widget.btnLabel is not null %}
+        <div class="link">
+            <i class="icon icon_a-votre-service"></i>
+            <a href="{{ widget.btnLabel }}" target="_blank">
+                {{ 'Se repérer sur Google Maps'|trans }}
+            </a>
+        </div>
+    {% endif %}
+</div>
