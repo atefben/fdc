@@ -919,6 +919,33 @@ services:
 
 
 
+
+    base.admin.fdc_page_participate:
+        class: Base\AdminBundle\Admin\FDCPageParticipateAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipate, BaseAdminBundle:FDCPageParticipateAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.participate, label: entity.fdc_page_participate, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_participate_widget_image_dummy:
+        class: Base\AdminBundle\Admin\FDCPageParticipateWidgetImageDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateWidgetImage, BaseAdminBundle:FDCPageParticipateWidgetImageDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Guide Image widget, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_participate_widget_column_dummy:
+         class: Base\AdminBundle\Admin\FDCPageParticipateWidgetColumnDummyAdmin
+         arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateWidgetColumn, BaseAdminBundle:FDCPageParticipateWidgetColumnDummyAdmin]
+         tags:
+             - {name: sonata.admin, manager_type: orm, group: admin, label: Guide Column widget, show_in_dashboard: false}
+         calls:
+              - [ setTranslationDomain, ['BaseAdminBundle']]
+
+
+
     base.admin.press_media_library:
         class: Base\AdminBundle\Admin\PressMediaLibraryAdmin
         arguments: [~, Base\CoreBundle\Entity\PressMediaLibrary, BaseAdminBundle:PressMediaLibraryAdmin]

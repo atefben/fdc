@@ -38,6 +38,7 @@ parameters:
     admin_press_statementinfo_id: ~
     admin_fdc_page_web_tv_channels_id: ~
     admin_fdc_page_prepare_id: ~
+    admin_event_fdc_page_participate_id: ~
     admin_fdc_page_web_tv_live_id: ~
     admin_fdc_page_web_tv_trailers_competition_id: ~
     admin_fdc_page_web_tv_trailers_certain_regard_id: ~
