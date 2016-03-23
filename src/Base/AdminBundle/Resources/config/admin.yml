@@ -944,6 +944,13 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_page_participate_section_widget_archive_dummy:
+        class: Base\AdminBundle\Admin\FDCPageParticipateSectionWidgetArchiveDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetArchive, BaseAdminBundle:FDCPageParticipateSectionWidgetArchiveDummyAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Archive widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
 
     base.admin.press_media_library:

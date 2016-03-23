@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 /**
  * FDCPageParticipateSectionWidgetArchiveType class.
  *
- * \@extends PressGuideWidgetType
+ * \@extends FDCPageParticipateWidgetType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */

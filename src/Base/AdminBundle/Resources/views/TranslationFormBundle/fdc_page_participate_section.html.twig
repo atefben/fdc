@@ -37,12 +37,12 @@
                                         {% for widget in form.parent.children.widgets.children %}
 
                                             <div class="item base-widget">
-                                                {% if widget.children._type.vars.value == 'press_download_section_widget_archive_type' %}
+                                                {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_archive_type' %}
                                                     <h4><strong>Module Signatures</strong></h4>
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
-                                                {% if widget.children._type.vars.value == 'press_download_section_widget_archive_type' %}
+                                                {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_archive_type' %}
                                                     {{ form_row(widget.image)}}
                                                     {{ form_row(widget.file)}}
                                                     {{ form_row(attribute(widget.children.translations, locale)) }}
@@ -58,17 +58,17 @@
                                             </div>
                                         {% endfor %}
                                     </div>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.press_download_section_widget_archive_type)| escape }}"><i class="icon-plus"></i>Module Strates</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_participate_section_widget_archive_type)| escape }}"><i class="icon-plus"></i>Module Strates</a>
                                 {% else %}
                                     {% for widget in form.parent.children.widgets.children %}
 
                                         <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'press_download_section_widget_archive_type' %}
+                                            {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_archive_type' %}
                                                 <h4><strong>Module Signatures</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
-                                            {% if widget.children._type.vars.value == 'press_download_section_widget_archive_type' %}
+                                            {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_archive_type' %}
                                                 {{ form_row(widget.image)}}
                                                 {{ form_row(widget.file)}}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
