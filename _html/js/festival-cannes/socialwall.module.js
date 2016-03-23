@@ -168,14 +168,19 @@ $(document).ready(function() {
     function loadInstagram(callback) {
       if (GLOBALS.env == "html") {
         instagramDatatype = "jsonp";
+        instagramRequest  = {};
       } else {
         instagramDatatype = "json";
+        instagramRequest  = {
+          offset : 40
+        }
       }
 
       $.ajax({
-        url: GLOBALS.api.instagramUrl,
-        type: "GET",
-        dataType: instagramDatatype,
+        url      : GLOBALS.api.instagramUrl,
+        type     : "GET",
+        data     : instagramRequest,
+        dataType : instagramDatatype,
         success: function(data) {
           if (GLOBALS.env == "html") {
             var count = 15; 
@@ -211,20 +216,22 @@ $(document).ready(function() {
         twitterUrl     = "twitter.php";
         twitterType    = "POST";
         twitterRequest = {
-          q: "%23Cannes2016",
-          count:  15,
-          api:  "search_tweets"
+          q     : "%23Cannes2016",
+          count :  15,
+          api   :  "search_tweets"
         };
       } else {
         twitterUrl     = GLOBALS.api.twitterUrl;
         twitterType    = "GET";
-        twitterRequest = {};
+        twitterRequest = {
+          offset : 40
+        };
       }
 
       $.ajax({
-        url: twitterUrl,
-        type: twitterType,
-        data: twitterRequest,
+        url  : twitterUrl,
+        type : twitterType,
+        data : twitterRequest,
         success: function(data, textStatus, xhr) {
           if (GLOBALS.env == "html") {
             data = JSON.parse(data)
