@@ -135,6 +135,7 @@ class FilmFilmRepository extends EntityRepository
      * @param $festival
      * @param $locale
      * @param $selectionSection
+     * @param integer|null $idBanned
      * @return array
      */
     public function getFilmsBySelectionSection($festival, $locale, $selectionSection, $idBanned = null)
