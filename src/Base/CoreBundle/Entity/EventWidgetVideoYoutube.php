@@ -4,6 +4,8 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -18,9 +20,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class EventWidgetVideoYoutube extends EventWidget
+class EventWidgetVideoYoutube extends EventWidget implements TranslateMainInterface
 {
     use Translatable;
+    use TranslateMain;
 
     /**
      * @var ArrayCollection

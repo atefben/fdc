@@ -322,6 +322,7 @@ class Event implements TranslateMainInterface
      */
     public function addWidget(\Base\CoreBundle\Entity\EventWidget $widgets)
     {
+        $widgets->setEvents($this);
         $this->widgets[] = $widgets;
 
         return $this;
