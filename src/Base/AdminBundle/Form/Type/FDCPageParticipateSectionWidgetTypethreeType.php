@@ -100,9 +100,7 @@ class FDCPageParticipateSectionWidgetTypethreeType extends FDCPageParticipateSec
                     ),
                 )
             ))
-            ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.label_image'
-            ));
+            ;
 
     }
 

@@ -147,6 +147,9 @@ class FDCPageParticipateAdmin extends Admin
                 'choices' => FDCPageParticipate::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
             ))
+            ->add('image', 'sonata_type_model_list', array(
+                'label' => 'form.label_image'
+            ))
             ->end();
 
     }
