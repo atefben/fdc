@@ -10,7 +10,6 @@ $(document).ready(function() {
         var urlPath = $(this).attr('href');
 
         $.get(urlPath, function(data) {
-          console.log(data);
           $( ".container-list" ).html( $(data).find('.container-list').html());
           $('.bandeau-head').html( $(data).find('.bandeau-head') );
           $('.push-footer').html( $(data).find('.push-footer').html() );

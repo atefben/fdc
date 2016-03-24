@@ -225,8 +225,6 @@ function updatePopinMedia(data) {
 }
 
 function launchPopinMedia(data, player) {
-  console.log(data);
-
   if(!$.isEmptyObject(data)) {
     updatePopinMedia(data);
   }
