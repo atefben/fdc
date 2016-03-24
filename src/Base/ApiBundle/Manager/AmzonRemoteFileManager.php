@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Manager;
 use Base\CoreBundle\Entity\AmazonRemoteFile;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Aws\S3\S3Client;
 
 class AmzonRemoteFileManager
 {
@@ -52,11 +53,27 @@ class AmzonRemoteFileManager
 
     public function sync()
     {
-        $files = array(array('id' => 1, 'name' => 'test video', 'url' => '/amazon/test.mp4'));
+        $files = array();
+		
+		$s3 = S3Client::factory(array(
+            'credentials' => array(
+                'key'    => 'AKIAJHXD67GEPPA2F4TQ',
+                'secret' => '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',
+            ),
+            'region'      => 'eu-west-1',
+		));
 
-        /**
-         * @todo Put here the amazon sync code.
-         */
+		$bucket = 'ohwee-symfony-test-video';
+
+		$objects = $s3->getIterator('ListObjects', array(
+		    "Bucket" => $bucket,
+		    "Prefix" => 'media_video_direct_upload/'
+		));
+
+		foreach ($objects as $object) {
+			error_log(print_r(\Doctrine\Common\Util\Debug::export($object, 5),1));
+			$files[] = array('id' => 1, 'name' =>  $object['Key'], 'url' => '/amazon/test.mp4');
+		}
 		
         $this->populate($files);
     }
