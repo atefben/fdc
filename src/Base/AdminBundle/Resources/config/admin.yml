@@ -960,6 +960,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_page_participate_section_widget_typethree_dummy:
+        class: Base\AdminBundle\Admin\FDCPageParticipateSectionWidgetTypethreeDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypethree, BaseAdminBundle:FDCPageParticipateSectionWidgetTypethreeDummyAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Typethree widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
 
     base.admin.press_media_library:
         class: Base\AdminBundle\Admin\PressMediaLibraryAdmin

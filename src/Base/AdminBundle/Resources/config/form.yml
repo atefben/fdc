@@ -376,3 +376,11 @@ services:
             - { name: form.type, alias: 'fdc_page_participate_section_widget_typetwo_type'}
         calls:
             - ['setFDCPageParticipateSectionWidgetTypetwoDummyAdmin', ['@base.admin.fdc_page_participate_section_widget_typetwo_dummy']]
+
+    base.admin.form.fdc_page_participate_section_widget_typethree_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\FDCPageParticipateSectionWidgetTypethreeType
+        tags:
+            - { name: form.type, alias: 'fdc_page_participate_section_widget_typethree_type'}
+        calls:
+            - ['setFDCPageParticipateSectionWidgetTypethreeDummyAdmin', ['@base.admin.fdc_page_participate_section_widget_typethree_dummy']]

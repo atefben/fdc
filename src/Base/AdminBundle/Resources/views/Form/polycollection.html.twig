@@ -600,6 +600,21 @@
         </div>
     </div>
 {% endblock %}
+{% block fdc_page_participate_section_widget_typethree_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>Module Signatures</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
 {% block fdc_page_prepare_section_widget_archive_type_widget %}
     {% set locale = locale_default_translation %}
