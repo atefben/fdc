@@ -118,10 +118,13 @@ class FDCPageParticipateSectionAdmin extends Admin
                     'mainIcon' => array(
                         'field_type' => 'choice',
                         'choices' => array(
-                            'icon_palme' => 'Palme',
-                            'icon_camera' => 'Camera',
-                            'icon_mains' => 'Mains',
-                            'icon_camion' => 'Camion',
+                            'icon_horaires' => 'Horloge',
+                            'icon_acces' => 'Carte ID',
+                            'icon_informations' => 'Informations',
+                            'icon_les-differents-types-dacces' => 'Différents types d\'accès',
+                            'icon_les-salles-de-projections' => 'Projecteur',
+                            'icon_les-bonnes-pratiques' => 'Check'
+
                         ),
                         'label' => 'form.label_information_icon',
                         'translation_domain' => 'BaseAdminBundle',
