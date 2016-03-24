@@ -42,6 +42,13 @@ class MediaVideoTranslation implements TranslateChildInterface
     private $file;
 
     /**
+     * @var AmazonRemoteFile
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\AmazonRemoteFile")
+     * @ORM\JoinColumn(name="amazon_remote_file_id", referencedColumnName="id")
+     */
+    private $amazonRemoteFile;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -455,5 +462,28 @@ class MediaVideoTranslation implements TranslateChildInterface
     public function getJobWebmId()
     {
         return $this->jobWebmId;
+    }
+
+    /**
+     * Set amazonRemoteFile
+     *
+     * @param \Base\CoreBundle\Entity\AmazonRemoteFile $amazonRemoteFile
+     * @return MediaVideoTranslation
+     */
+    public function setAmazonRemoteFile(\Base\CoreBundle\Entity\AmazonRemoteFile $amazonRemoteFile = null)
+    {
+        $this->amazonRemoteFile = $amazonRemoteFile;
+
+        return $this;
+    }
+
+    /**
+     * Get amazonRemoteFile
+     *
+     * @return \Base\CoreBundle\Entity\AmazonRemoteFile 
+     */
+    public function getAmazonRemoteFile()
+    {
+        return $this->amazonRemoteFile;
     }
 }

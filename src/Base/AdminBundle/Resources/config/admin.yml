@@ -1068,3 +1068,12 @@ services:
         arguments: [~, Base\CoreBundle\Entity\FilmFilmTag, BaseAdminBundle:FilmFilmTagAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: FilmFilmTag, show_in_dashboard: false}
+
+    base.admin.amazon_remote_file:
+        class: Base\AdminBundle\Admin\AmazonRemoteFileAdmin
+        arguments: [~, Base\CoreBundle\Entity\AmazonRemoteFile, BaseAdminBundle:AmazonRemoteFileAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: AmazonRemoteFile, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+

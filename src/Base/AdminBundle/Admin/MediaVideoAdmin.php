@@ -161,7 +161,7 @@ class MediaVideoAdmin extends Admin
                         'display' => false
                     ),
                     'file'           => array(
-                        'required'           => $requiredFile,
+                        'required'           => false,
                         'field_type'         => 'sonata_media_type',
                         'translation_domain' => 'BaseAdminBundle',
                         'provider'           => 'sonata.media.provider.video',
@@ -169,6 +169,11 @@ class MediaVideoAdmin extends Admin
                         'constraints'        => array(
                             new NotBlank()
                         )
+                    ),
+                    'amazonRemoteFile'           => array(
+                        'required'           => false,
+                        'field_type'         => 'entity',
+                        'class' => 'BaseCoreBundle:AmazonRemoteFile',
                     ),
                     'title'          => array(
                         'label'              => 'form.label_title',

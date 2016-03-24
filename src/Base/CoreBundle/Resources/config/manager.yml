@@ -12,3 +12,7 @@ services:
             - "@sonata.seo.page"
             - "@sonata.media.provider.image"
             - "@router"
+    base.amazon_remote_file:
+        class: Base\CoreBundle\Manager\AmzonRemoteFileManager
+        arguments:
+            -  "@service_container"
