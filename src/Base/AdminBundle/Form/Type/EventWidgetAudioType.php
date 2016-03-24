@@ -81,7 +81,7 @@ class EventWidgetAudioType extends EventWidgetType
      * getName function.
      * 
      * @access public
-     * @return void
+     * @return string
      */
     public function getName()
     {

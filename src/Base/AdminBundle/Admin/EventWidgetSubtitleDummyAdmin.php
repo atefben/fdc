@@ -2,13 +2,13 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\AdminBundle\Component\Admin\Admin;
+use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class EventFilmProjectionAssociatedAdmin extends Admin
+class EventWidgetSubtitleDummyAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -17,6 +17,7 @@ class EventFilmProjectionAssociatedAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
+            ->add('position')
             ->add('createdAt')
             ->add('updatedAt')
         ;
@@ -29,6 +30,7 @@ class EventFilmProjectionAssociatedAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('position')
             ->add('createdAt')
             ->add('updatedAt')
             ->add('_action', 'actions', array(
@@ -41,16 +43,16 @@ class EventFilmProjectionAssociatedAdmin extends Admin
         ;
     }
 
-
-
     /**
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('association', 'sonata_type_model_list', array('btn_delete' => false))
-            ->add('position', 'hidden', array('attr' => array("hidden" => true)))
+            ->add('id')
+            ->add('position')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 
@@ -61,6 +63,7 @@ class EventFilmProjectionAssociatedAdmin extends Admin
     {
         $showMapper
             ->add('id')
+            ->add('position')
             ->add('createdAt')
             ->add('updatedAt')
         ;

@@ -5,15 +5,13 @@
     <div id="main" class="single-article single-evenement loading">
         <div class="content-article">
             <div class="container">
-                <a href="{{ path('fdc_event_event_get', {'slug': article.prev.slug}) }}" class="nav prev"><i
-                            class="icon icon_flecheGauche"></i></a>
-                <a href="{{ path('fdc_event_event_get', {'slug': article.next.slug}) }}" class="nav next"><i
-                            class="icon icon_fleche-right"></i></a>
                 <div class="info">
                     <span class="category">{{ event.theme|trans_fallback('name') }}</span>
-                    <span class="date">{{ event.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ event.publishedAt|date('H:i') }}</span>
+                    <span class="date">{{ event.publishedAt|date('d.m.y') }}</span> . <span
+                            class="hour">{{ event.publishedAt|date('H:i') }}</span>
                     <span class="update">{{ 'event.single.label.miseajour'|trans }}</span>
-                    <span class="date">{{ event.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ event.updatedAt|date('H:i') }}</span>
+                    <span class="date">{{ event.updatedAt|date('d.m.y') }}</span> . <span
+                            class="hour">{{ event.updatedAt|date('H:i') }}</span>
                 </div>
                 <h2 class="title-article">{{ event|trans_fallback('title') }}</h2>
                 <div class="buttons">
@@ -36,15 +34,17 @@
                         {% include 'FDCEventBundle:News:widgets/video.html.twig' with {'widget': widget} %}
                     {% elseif widget.widgetType == 'EventWidgetVideoYoutube' %}
                         {% include 'FDCEventBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
-                    {% elseif widget is news_widget_audio %}
+                    {% elseif widget.widgetType == 'EventWidgetAudio' %}
                         {% if widget.title is defined %}
                             <h2 class="title">{{ widget.title }}</h2>
                         {% endif %}
                         {% include 'FDCEventBundle:News:widgets/audio.html.twig' with {'widget': widget} %}
                     {% elseif widget.widgetType == 'EventWidgetQuote' %}
                         {% include 'FDCEventBundle:News:widgets/quote.html.twig' %}
-                    {% elseif widget is news_widget_image_dual_align %}
+                    {% elseif widget.widgetType == 'EventWidgetImagDualAlign' %}
                         {% include 'FDCEventBundle:News:widgets/dual-photo.html.twig' %}
+                    {% elseif widget.widgetType == 'EventWidgetSubtitle' %}
+                        <h2 class="title">{{ widget.content }}</h2>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -52,11 +52,12 @@
             <div class="share">
                 <p>{{ 'event.text.partagerlarticle'|trans }}</p>
                 <div class="buttons square">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_event_news_index') }}"
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_event_event_get', {'slug': event|trans_fallback('slug')}) }}"
                        rel="nofollow" class="button facebook">
                         <i class="icon icon_facebook"></i>
                     </a>
-                    <a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_news_index') }}" rel="nofollow"
+                    <a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_event_get', {'slug': event|trans_fallback('slug')}) }}"
+                       rel="nofollow"
                        class="button twitter">
                         <i class="icon icon_twitter"></i>
                     </a>
@@ -67,7 +68,34 @@
                 </div>
             </div>
         </div>
+
+        {% if programmations is not empty %}
+            <div class="film">
+                <div class="programmation-film">
+                    <div class="wrapper">
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <span class="category">{{ 'article.film.label.programmation'|trans }}</span>
+                                <ul>
+                                    {% for programmation in programmations %}
+                                        <li>
+                                            <span class="type">{{ 'article.film.text.projection'|trans }}</span>
+                                            <span>{{ programmation.startsAt|date('d-m-Y') }}</span>
+                                            <span>{{ programmation.startsAt|date('H') }}h</span>
+                                            <span class="location">{{ programmation.room.name }}</span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <a href="" class="button">{{ 'article.film.btn.toutelaprojection'|trans }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
     </div>
+
 
     {{ render(controller('FDCEventBundle:Global:shareEmail',
     {'section': article.theme,

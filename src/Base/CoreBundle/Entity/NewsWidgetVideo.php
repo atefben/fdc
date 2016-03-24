@@ -2,17 +2,8 @@
 
 namespace Base\CoreBundle\Entity;
 
-use \DateTime;
-
-use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\Time;
-
 use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\Since;
 
 /**
  * NewsWidgetVideo
@@ -26,7 +17,7 @@ class NewsWidgetVideo extends NewsWidget
     /**
      * @var MediaVideo
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaVideo")
+     * @ORM\ManyToOne(targetEntity="MediaVideo")
      * @Groups({"news_list", "news_show"})
      */
     private $file;
@@ -34,10 +25,10 @@ class NewsWidgetVideo extends NewsWidget
     /**
      * Set file
      *
-     * @param \Base\CoreBundle\Entity\MediaVideo $file
+     * @param MediaVideo $file
      * @return NewsWidgetVideo
      */
-    public function setFile(\Base\CoreBundle\Entity\MediaVideo $file = null)
+    public function setFile(MediaVideo $file = null)
     {
         $this->file = $file;
 
@@ -47,7 +38,7 @@ class NewsWidgetVideo extends NewsWidget
     /**
      * Get file
      *
-     * @return \Base\CoreBundle\Entity\MediaVideo 
+     * @return MediaVideo
      */
     public function getFile()
     {
