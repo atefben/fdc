@@ -27,6 +27,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
  *  "typetwo" = "FDCPageParticipateSectionWidgetTypetwo",
  *  "typethree" = "FDCPageParticipateSectionWidgetTypethree",
  *  "typefour" = "FDCPageParticipateSectionWidgetTypefour",
+ *  "typefive" = "FDCPageParticipateSectionWidgetTypefive",
  * })
  */
 abstract class FDCPageParticipateSectionWidget implements TranslateMainInterface
