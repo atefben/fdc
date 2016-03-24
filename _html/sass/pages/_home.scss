@@ -17,8 +17,12 @@
 
 #prehome-container {
   background-color: #fff;
-  min-height: 600px;
+  height: 0px;
   position: relative;
+
+  &.show {
+    min-height: 600px;
+  }
 
   #prehome {
     position:fixed;

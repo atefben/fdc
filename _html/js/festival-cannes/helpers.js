@@ -59,7 +59,7 @@ String.prototype.trunc = function( n, useWordBoundary ){
 
 
 // Disable window.console
-if (GLOBALS.env != "html") {
+if (GLOBALS.env == "prod") {
     console.log =
     console.info =
     console.error =
