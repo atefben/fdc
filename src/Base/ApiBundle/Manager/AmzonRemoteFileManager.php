@@ -64,15 +64,16 @@ class AmzonRemoteFileManager
 		));
 
 		$bucket = 'ohwee-symfony-test-video';
-
+		$prefix = 'media_video_direct_upload/';
 		$objects = $s3->getIterator('ListObjects', array(
 		    "Bucket" => $bucket,
-		    "Prefix" => 'media_video_direct_upload/'
+		    "Prefix" => $prefix
 		));
 
+		error_log(print_r(\Doctrine\Common\Util\Debug::export($objects, 6),1));
+
 		foreach ($objects as $object) {
-			error_log(print_r(\Doctrine\Common\Util\Debug::export($object, 5),1));
-			$files[] = array('id' => 1, 'name' =>  $object['Key'], 'url' => '/amazon/test.mp4');
+			$files[] = array('id' => md5(rand(0,10000000)), 'name' =>  $object['Key'], 'url' => $bucket . '/' . $prefix . $object['Key']);
 		}
 		
         $this->populate($files);
