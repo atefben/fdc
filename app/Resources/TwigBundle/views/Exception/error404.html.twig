@@ -1,16 +1,8 @@
-{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
-{% extends 'base.html.twig' %}
-
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
 {% block body %}
-    <h1>Page not found</h1>
-
-    {# example security usage, see below #}
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        {# ... #}
-    {% endif %}
-
+    <h1>Erreur 404</h1>
     <p>
-        The requested page couldn't be located. Checkout for any URL
-        misspelling or <a href="{{ path('homepage') }}">return to the homepage</a>.
+        Erreur 404
     </p>
 {% endblock %}
