@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html {{ sonata_seo_html_attributes() }}>
-    <head {{ sonata_seo_head_attributes() }}>
-        {{ sonata_seo_title() }}
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {{ sonata_seo_metadatas() }}
-        {{ sonata_seo_link_canonical() }}
-        {{ sonata_seo_lang_alternates() }}
-        {% include 'FDCEventBundle:Base:stylesheet.html.twig' %}
-        {% include 'FDCEventBundle:Base:javascript_head.html.twig' %}
-    </head>
-    <body>
-        {% block pre_home %}
-        {% endblock %}
-        {% include 'FDCEventBundle::header.html.twig' %}
-        {% block body %}
-			ERREUR 500
-        {% endblock %}
-        {% include 'FDCEventBundle:Global:cookies.html.twig' %}
-        {% include 'FDCEventBundle::footer.html.twig' %}
-        {% include 'FDCEventBundle:Base:javascript_footer.html.twig' %}
-        {% include 'FDCEventBundle:Base:javascript.html.twig' %}
-    </body>
-</html>
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+{% block body %}
+	500
+{% endblock body %}
