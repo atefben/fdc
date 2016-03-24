@@ -24,6 +24,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({
  *  "typeone" = "FDCPageParticipateSectionWidgetTypeone",
+ *  "typetwo" = "FDCPageParticipateSectionWidgetTypetwo",
  * })
  */
 abstract class FDCPageParticipateSectionWidget implements TranslateMainInterface
