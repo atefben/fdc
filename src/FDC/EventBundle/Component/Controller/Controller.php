@@ -164,4 +164,11 @@ class Controller extends BaseController
         }
     }
 
+    public function throwNotFoundExceptionOnNullObject($object, $message = '')
+    {
+        if (!$object) {
+            throw $this->createNotFoundException($message);
+        }
+    }
+
 }
