@@ -944,11 +944,11 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.fdc_page_participate_section_widget_archive_dummy:
-        class: Base\AdminBundle\Admin\FDCPageParticipateSectionWidgetArchiveDummyAdmin
-        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetArchive, BaseAdminBundle:FDCPageParticipateSectionWidgetArchiveDummyAdmin]
+    base.admin.fdc_page_participate_section_widget_typeone_dummy:
+        class: Base\AdminBundle\Admin\FDCPageParticipateSectionWidgetTypeoneDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypeone, BaseAdminBundle:FDCPageParticipateSectionWidgetTypeoneDummyAdmin]
         tags:
-           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Archive widget, show_in_dashboard: false}
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Typeone widget, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 

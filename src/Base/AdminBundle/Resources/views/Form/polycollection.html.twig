@@ -567,17 +567,13 @@
     </div>
 {% endblock %}
 
-{% block fdc_page_participate_section_widget_archive_type_widget %}
+{% block fdc_page_participate_section_widget_typeone_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
         <h4>Module Signatures</h4>
         {{ form_widget(form.children._type) }}
-        {{ form_widget(form.children.position) }}
-        {{ form_row(form.children.image) }}
-        {{ form_row(form.children.file) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
-        {{ form_row(form.children.lockedContent) }}
-
+        {{ form_row(form.children.image) }}
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
                 <a class="btn btn-danger btn-sm btn-outline remove_item">

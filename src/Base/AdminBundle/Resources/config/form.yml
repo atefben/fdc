@@ -361,10 +361,10 @@ services:
         tags:
             - { name: form.type, alias: 'fdc_page_participate_section_widget_type'}
 
-    base.admin.form.fdc_page_participate_section_widget_archive_type:
+    base.admin.form.fdc_page_participate_section_widget_typeone_type:
         scope: prototype
-        class: Base\AdminBundle\Form\Type\FDCPageParticipateSectionWidgetArchiveType
+        class: Base\AdminBundle\Form\Type\FDCPageParticipateSectionWidgetTypeoneType
         tags:
-            - { name: form.type, alias: 'fdc_page_participate_section_widget_archive_type'}
+            - { name: form.type, alias: 'fdc_page_participate_section_widget_typeone_type'}
         calls:
-            - ['setFDCPageParticipateSectionWidgetArchiveDummyAdmin', ['@base.admin.fdc_page_participate_section_widget_archive_dummy']]
+            - ['setFDCPageParticipateSectionWidgetTypeoneDummyAdmin', ['@base.admin.fdc_page_participate_section_widget_typeone_dummy']]

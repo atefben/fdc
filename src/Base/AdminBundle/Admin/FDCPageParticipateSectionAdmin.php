@@ -37,7 +37,7 @@ class FDCPageParticipateSectionAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('title', 'doctrine_orm_callback', array(
-                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                'callback' => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -49,9 +49,8 @@ class FDCPageParticipateSectionAdmin extends Admin
                     return true;
                 },
                 'field_type' => 'text',
-                'label'      => 'filter.fdc_page_participate.label_section'
-            ))
-        ;
+                'label' => 'filter.fdc_page_participate.label_section'
+            ));
         $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
         $datagridMapper = $this->addUpdatedBetweenFilters($datagridMapper);
 
@@ -67,7 +66,7 @@ class FDCPageParticipateSectionAdmin extends Admin
             ->add('id', null, array('label' => 'list.common.label_id'))
             ->add('title', null, array(
                 'template' => 'BaseAdminBundle:News:list_title.html.twig',
-                'label'    => 'list.news_common.label_title',
+                'label' => 'list.news_common.label_title',
             ))
             ->add('theme', null, array())
             ->add('createdAt', null, array(
@@ -80,8 +79,7 @@ class FDCPageParticipateSectionAdmin extends Admin
             ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
-            ))
-        ;
+            ));
     }
 
     /**
@@ -101,17 +99,39 @@ class FDCPageParticipateSectionAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'title' => array(
-                        'label' => 'form.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.news.helper_title'
-                    ),
                     'status' => array(
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
                         'choices' => FDCPageParticipateSectionTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
+                    ),
+                    'mainTitle' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'mainIcon' => array(
+                        'field_type' => 'choice',
+                        'choices' => array(
+                            'icon_palme' => 'Palme',
+                            'icon_camera' => 'Camera',
+                            'icon_mains' => 'Mains',
+                            'icon_camion' => 'Camion',
+                        ),
+                        'label' => 'form.label_information_icon',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'choice_translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'mainDescription' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_content',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'press'
                     ),
                 )
             ))
@@ -129,15 +149,14 @@ class FDCPageParticipateSectionAdmin extends Admin
             ->add('widgets', 'infinite_form_polycollection', array(
                 'label' => false,
                 'types' => array(
-                    'fdc_page_participate_section_widget_archive_type',
+                    'fdc_page_participate_section_widget_typeone_type',
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,
                 'prototype' => true,
                 'by_reference' => false,
             ))
-            ->end()
-        ;
+            ->end();
 
     }
 
@@ -149,7 +168,6 @@ class FDCPageParticipateSectionAdmin extends Admin
         $showMapper
             ->add('id')
             ->add('createdAt')
-            ->add('updatedAt')
-        ;
+            ->add('updatedAt');
     }
 }

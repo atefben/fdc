@@ -21,7 +21,9 @@
                                 </div>
                             </div>
                             <div class="box-body">
-                                {{ form_row(translationsFields.title) }}
+                                {{ form_row(translationsFields.mainTitle) }}
+                                {{ form_row(translationsFields.mainIcon) }}
+                                {{ form_row(translationsFields.mainDescription) }}
                             </div>
                         </div>
                         <div class="box box-success">
@@ -37,12 +39,12 @@
                                         {% for widget in form.parent.children.widgets.children %}
 
                                             <div class="item base-widget">
-                                                {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_archive_type' %}
+                                                {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_typeone_type' %}
                                                     <h4><strong>Module Signatures</strong></h4>
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
-                                                {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_archive_type' %}
+                                                {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_typeone_type' %}
                                                     {{ form_row(widget.image)}}
                                                     {{ form_row(widget.file)}}
                                                     {{ form_row(attribute(widget.children.translations, locale)) }}
@@ -58,17 +60,17 @@
                                             </div>
                                         {% endfor %}
                                     </div>
-                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_participate_section_widget_archive_type)| escape }}"><i class="icon-plus"></i>Module Strates</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_participate_section_widget_typeone_type)| escape }}"><i class="icon-plus"></i>Type 1</a>
                                 {% else %}
                                     {% for widget in form.parent.children.widgets.children %}
 
                                         <div class="item base-widget">
-                                            {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_archive_type' %}
+                                            {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_typeone_type' %}
                                                 <h4><strong>Module Signatures</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
-                                            {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_archive_type' %}
+                                            {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_typeone_type' %}
                                                 {{ form_row(widget.image)}}
                                                 {{ form_row(widget.file)}}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
@@ -128,7 +130,9 @@
                                             <span>
                                             {% if form.children.fr.vars.value is not null %}
                                                 <div>
-                                                    {{ form.children.fr.vars.value.title }}
+                                                    {{ form.children.fr.vars.value.mainTitle }}
+                                                    {{ form.children.fr.vars.value.mainIcon }}
+                                                    {{ form.children.fr.vars.value.mainDescription }}
                                                 </div>
                                             {% endif %}
                                             </span>
