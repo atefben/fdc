@@ -968,6 +968,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_page_participate_section_widget_typefour_dummy:
+        class: Base\AdminBundle\Admin\FDCPageParticipateSectionWidgetTypefourDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypefour, BaseAdminBundle:FDCPageParticipateSectionWidgetTypefourDummyAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Typefour widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
 
     base.admin.press_media_library:
         class: Base\AdminBundle\Admin\PressMediaLibraryAdmin

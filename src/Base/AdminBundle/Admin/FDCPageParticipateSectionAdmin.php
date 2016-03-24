@@ -155,6 +155,7 @@ class FDCPageParticipateSectionAdmin extends Admin
                     'fdc_page_participate_section_widget_typeone_type',
                     'fdc_page_participate_section_widget_typetwo_type',
                     'fdc_page_participate_section_widget_typethree_type',
+                    'fdc_page_participate_section_widget_typefour_type',
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,

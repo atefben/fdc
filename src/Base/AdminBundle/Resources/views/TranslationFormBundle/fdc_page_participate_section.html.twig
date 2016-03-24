@@ -45,6 +45,8 @@
                                                     <h4><strong>Type 2</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typethree_type' %}
                                                     <h4><strong>Type 3</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefour_type' %}
+                                                    <h4><strong>Type 4</strong></h4>
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
@@ -55,6 +57,9 @@
                                                     {{ form_row(widget.image) }}
                                                     {{ form_row(attribute(widget.children.translations, locale)) }}
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typethree_type' %}
+                                                    {{ form_row(attribute(widget.children.translations, locale)) }}
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefour_type' %}
+                                                    {{ form_row(widget.image) }}
                                                     {{ form_row(attribute(widget.children.translations, locale)) }}
                                                 {% endif %}
                                                 {{ form_row(widget.lockedContent) }}
@@ -77,6 +82,9 @@
                                     <a class="btn btn-primary btn-add-base-widget"
                                        data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_participate_section_widget_typethree_type)| escape }}"><i
                                                 class="icon-plus"></i>Type 3</a>
+                                    <a class="btn btn-primary btn-add-base-widget"
+                                       data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_participate_section_widget_typefour_type)| escape }}"><i
+                                                class="icon-plus"></i>Type 4</a>
                                 {% else %}
                                     {% for widget in form.parent.children.widgets.children %}
 
@@ -87,6 +95,8 @@
                                                 <h4><strong>Type 2</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typethree_type' %}
                                                 <h4><strong>Type 3</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefour_type' %}
+                                                <h4><strong>Type 4</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
@@ -97,6 +107,9 @@
                                                 {{ form_row(widget.image) }}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typethree_type' %}
+                                                {{ form_row(attribute(widget.children.translations, locale)) }}
+                                            {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefour_type' %}
+                                                {{ form_row(widget.image) }}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% endif %}
                                             {{ form_row(widget.lockedContent) }}
