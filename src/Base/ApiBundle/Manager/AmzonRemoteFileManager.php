@@ -52,12 +52,12 @@ class AmzonRemoteFileManager
 
     public function sync()
     {
-        $files = array();
+        $files = array(array('id' => 1, 'name' => 'test video', 'url' => '/amazon/test.mp4'));
 
         /**
          * @todo Put here the amazon sync code.
          */
-
+		
         $this->populate($files);
     }
 
