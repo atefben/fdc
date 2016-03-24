@@ -56,3 +56,13 @@ String.prototype.trunc = function( n, useWordBoundary ){
   s_ = (useWordBoundary && isTooLong) ? s_.substr(0,s_.lastIndexOf(' ')) : s_;
   return  isTooLong ? s_ + '...' : s_;
 };
+
+
+// Disable window.console
+if (GLOBALS.env == "prod") {
+    console.log =
+    console.info =
+    console.error =
+    console.warn =
+    console.trace = function() {}
+}

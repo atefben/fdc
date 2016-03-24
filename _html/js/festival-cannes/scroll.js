@@ -346,26 +346,14 @@ $(document).ready(function() {
     hW = $(window).height();
   });
 
-  setTimeout(function() {
-    if($('#prehome-container').length == 0) {
-      initParallaxElements();
+  // setTimeout(function() {
+  //   scrollTarget = 0;
+  //   initParallaxElements();
 
-      // launch RAF
-      if(parallaxElements.length != 0) {
-        update();
-      }
-    } else {
-      setTimeout(function() {
-        scrollTarget = 0;
-        initParallaxElements();
-
-        // launch RAF
-        if(parallaxElements.length != 0) {
-          update();
-        }
-      }, 3500);
-    }
-  }, 100);
+  //   if(parallaxElements.length != 0) {
+  //     update();
+  //   }
+  // }, 3500);
 
 //========== Scroll footer breadcrumb ==========/
 
