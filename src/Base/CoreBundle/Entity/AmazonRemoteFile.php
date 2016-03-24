@@ -50,7 +50,7 @@ class AmazonRemoteFile
      */
     public function __toString()
     {
-        return $this->getName();
+        return 'Sélection fichier Amazon S3';
     }
 
 
