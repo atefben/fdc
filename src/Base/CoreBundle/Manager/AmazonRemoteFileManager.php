@@ -7,7 +7,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Aws\S3\S3Client;
 
-class AmzonRemoteFileManager
+class AmazonRemoteFileManager
 {
     /**
      * @var ContainerInterface
@@ -75,7 +75,7 @@ class AmzonRemoteFileManager
 		foreach ($objects as $object) {
 			$files[] = array('id' => md5(rand(0,10000000)), 'name' =>  $object['Key'], 'url' => $bucket . '/' . $prefix . $object['Key']);
 		}
-		
+
         $this->populate($files);
     }
 
