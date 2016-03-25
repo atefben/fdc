@@ -68,7 +68,6 @@ class EventAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
-            ->add('translate')
             ->add('createdAt')
             ->add('updatedAt')
             ->add('_edit_translations', null, array(
