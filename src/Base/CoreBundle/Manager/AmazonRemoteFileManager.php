@@ -31,7 +31,7 @@ class AmazonRemoteFileManager
     {
         $i = 0;
         foreach ($files as $key => $file) {
-			$entity = $this->getDoctrine()->getRepository('BaseCoreBundle:AmazonRemoteFile')->findOneBy(array('id' => $file['id']));
+			$entity = $this->container->get('doctrine')->getRepository('BaseCoreBundle:AmazonRemoteFile')->findOneBy(array('id' => $file['id']));
 			if ($entity == null)
 			{
 	            $amazonRemoteFile = new AmazonRemoteFile();
