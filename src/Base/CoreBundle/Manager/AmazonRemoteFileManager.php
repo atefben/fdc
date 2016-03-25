@@ -70,10 +70,8 @@ class AmazonRemoteFileManager
 		    "Prefix" => $prefix
 		));
 
-		error_log(print_r(\Doctrine\Common\Util\Debug::export($objects, 6),1));
-
 		foreach ($objects as $object) {
-			$files[] = array('id' => md5(rand(0,10000000)), 'name' =>  $object['Key'], 'url' => $bucket . '/' . $prefix . $object['Key']);
+			$files[] = array('id' => md5($object['Key']), 'name' => substr($prefix, '', $object['Key']), 'url' => $bucket . '/' . $object['Key']);
 		}
 
         $this->populate($files);
