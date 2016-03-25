@@ -37,6 +37,11 @@ class FDCPageParticipate implements TranslateMainInterface
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $image;
+
+    /**
      * @var FDCPageParticipateHasSection
      * @ORM\OneToMany(targetEntity="FDCPageParticipateHasSection", mappedBy="download", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
@@ -118,6 +123,29 @@ class FDCPageParticipate implements TranslateMainInterface
         }
 
         $this->downloadSection = $downloadSection;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $image
+     * @return FDCPageParticipateSectionWidgetTypefour
+     */
+    public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 
 }

@@ -10,13 +10,13 @@ use JMS\Serializer\Annotation\Groups;
 use Base\CoreBundle\Util\Time;
 
 /**
- * FDCPageParticipateSectionWidgetArchive
+ * FDCPageParticipateSectionWidgetTypeone
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FDCPageParticipateSectionWidgetArchive extends FDCPageParticipateSectionWidget
+class FDCPageParticipateSectionWidgetTypeone extends FDCPageParticipateSectionWidget
 {
 
     use Translatable;
@@ -25,11 +25,6 @@ class FDCPageParticipateSectionWidgetArchive extends FDCPageParticipateSectionWi
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      */
     private $image;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     */
-    private $file;
 
     /**
      * ArrayCollection
@@ -49,7 +44,7 @@ class FDCPageParticipateSectionWidgetArchive extends FDCPageParticipateSectionWi
      * Set image
      *
      * @param \Base\CoreBundle\Entity\MediaImageSimple $image
-     * @return FDCPageParticipateSectionWidgetArchive
+     * @return FDCPageParticipateSectionWidgetTypeone
      */
     public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
     {
@@ -66,28 +61,5 @@ class FDCPageParticipateSectionWidgetArchive extends FDCPageParticipateSectionWi
     public function getImage()
     {
         return $this->image;
-    }
-
-    /**
-     * Set file
-     *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return FDCPageParticipateSectionWidgetArchive
-     */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
-    {
-        $this->file = $file;
-
-        return $this;
-    }
-
-    /**
-     * Get file
-     *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
-     */
-    public function getFile()
-    {
-        return $this->file;
     }
 }

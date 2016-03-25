@@ -88,7 +88,7 @@ class FDCPageParticipateSection implements TranslateMainInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -125,11 +125,11 @@ class FDCPageParticipateSection implements TranslateMainInterface
     /**
      * Get widgets
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getWidgets()
     {
         return $this->widgets;
     }
-    
+
 }

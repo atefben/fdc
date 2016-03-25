@@ -9,13 +9,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * FDCPageParticipateSectionWidgetArchiveDummyAdmin class.
+ * FDCPageParticipateSectionWidgetTypefourDummyAdmin class.
  * 
  * \@extends Admin
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class FDCPageParticipateSectionWidgetArchiveDummyAdmin extends Admin
+class FDCPageParticipateSectionWidgetTypefourDummyAdmin extends Admin
 {
     /**
      * @param FormMapper $formMapper
@@ -24,14 +24,6 @@ class FDCPageParticipateSectionWidgetArchiveDummyAdmin extends Admin
     {
         $formMapper
             ->add('image', 'sonata_type_model_list')
-            ->add('file', 'sonata_type_model_list',array(),
-                array(
-                    'link_parameters' => array(
-                        'context'  => 'media_archive',
-                        'filter'   => array('context' => array('value' => 'media_archive')),
-                        'provider' => 'sonata.media.provider.archive'
-                    )
-            ))
         ;
     }
 }
