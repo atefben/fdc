@@ -14,12 +14,12 @@ class VideoProvider extends FileProvider
      */
     public function getProviderMetadata()
     {
+	error_log('ici');
         return new Metadata($this->getName(), $this->getName() . '.description', false, 'SonataMediaBundle', array('class' => 'fa fa-picture-o'));
     }
 
     public function generateThumbnails(MediaInterface $media)
     {
-	error_log('ici');
         if ($media->getParentVideoTranslation()) {
             $parentVideo = $media->getParentVideoTranslation();
         } elseif ($media->getParentAudioTranslation()) {
