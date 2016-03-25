@@ -100,7 +100,7 @@ abstract class News implements TranslateMainInterface
      *
      * @ORM\Column(type="string", nullable=true)
      *
-     * @Groups({"news_list", "news_show", "film_show", "home"})
+     * @Groups({"news_list", "news_show", "film_show"})
      */
     private $signature;
 
