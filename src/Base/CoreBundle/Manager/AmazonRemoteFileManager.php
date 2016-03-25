@@ -38,7 +38,7 @@ class AmazonRemoteFileManager
                 ->setUrl($file['url'])
             ;
             ++$i;
-            $this->getDoctrineManager()->persist($amazonRemoteFile);
+            //$this->getDoctrineManager()->persist($amazonRemoteFile);
             if ($i === 99) {
                 $i = 0;
                 $this->getDoctrineManager()->flush();
@@ -70,10 +70,10 @@ class AmazonRemoteFileManager
 		    "Prefix" => $prefix
 		));
 
-		error_log(print_r(\Doctrine\Common\Util\Debug::export($objects, 6),1));
-
 		foreach ($objects as $object) {
-			$files[] = array('id' => md5(rand(0,10000000)), 'name' =>  $object['Key'], 'url' => $bucket . '/' . $prefix . $object['Key']);
+			if(isset($object['Key']) && !empty(str_replace($prefix, '', $object['Key']))) {
+				$files[] = array('id' => md5($object['Key']), 'name' => str_replace($prefix, '', $object['Key']), 'url' => $object['Key']);
+			}
 		}
 
         $this->populate($files);

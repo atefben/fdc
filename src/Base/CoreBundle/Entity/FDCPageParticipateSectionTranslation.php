@@ -31,21 +31,21 @@ class FDCPageParticipateSectionTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $mainTitle;
+    protected $title;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=122)
      */
-    protected $mainIcon;
+    protected $icon;
 
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $mainDescription;
+    protected $description;
 
     /**
      * Set title
@@ -53,9 +53,9 @@ class FDCPageParticipateSectionTranslation implements TranslateChildInterface
      * @param string $title
      * @return FDCPageParticipateSectionTranslation
      */
-    public function setMainTitle($mainTitle)
+    public function setTitle($title)
     {
-        $this->mainTitle = $mainTitle;
+        $this->title = $title;
 
         return $this;
     }
@@ -65,54 +65,54 @@ class FDCPageParticipateSectionTranslation implements TranslateChildInterface
      *
      * @return string 
      */
-    public function getMainTitle()
+    public function getTitle()
     {
-        return $this->mainTitle;
+        return $this->title;
     }
 
     /**
-     * Set mainIcon
+     * Set Icon
      *
-     * @param string $mainIcon
+     * @param string $Icon
      * @return FDCPagePrepare
      */
-    public function setMainIcon($mainIcon)
+    public function setIcon($icon)
     {
-        $this->mainIcon = $mainIcon;
+        $this->icon = $icon;
 
         return $this;
     }
 
     /**
-     * Get mainIcon
+     * Get Icon
      *
      * @return string
      */
-    public function getMainIcon()
+    public function getIcon()
     {
-        return $this->mainIcon;
+        return $this->icon;
     }
 
     /**
-     * Set mainDescription
+     * Set Description
      *
-     * @param string $mainDescription
+     * @param string $Description
      * @return FDCPagePrepareTranslation
      */
-    public function setMainDescription($mainDescription)
+    public function setDescription($description)
     {
-        $this->mainDescription = $mainDescription;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get mainDescription
+     * Get Description
      *
      * @return string
      */
-    public function getMainDescription()
+    public function getDescription()
     {
-        return $this->mainDescription;
+        return $this->description;
     }
 }
