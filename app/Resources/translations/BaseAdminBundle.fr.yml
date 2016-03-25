@@ -71,6 +71,7 @@ link:
     action_soif_refresh: Mettre à jour
 
 homepage:
+    tetiere: Tétière
     big_push: (GRAND PUSH)
     group:
         social_wall: Social Wall
@@ -470,6 +471,8 @@ form:
         en: Anglais
         zh : Chinois
         es: Espagnol
+    classics:
+        helper_title: 60 caractères max. Optionnel. Si le titre est renseigné les boutons de partage sont affichés en haut et bas de page.
     homepage:
         helper_social_graph: Séparer par des virgules les tags que vous souhaitez.
         helper_social_wall: Séparer par des virgules les tags que vous souhaitez.
@@ -647,6 +650,8 @@ form:
     label_statement_associated : Communiqués associés
     label_info_associated : Infos associés
     label_link: Lien du push
+    label_navigation_title: Titre dans la navigation
+    label_page_title: Titre de la page
     label_films_associated: Films Associés
     label_video_extract_associated: Extrait vidéo associé
     label_tablet_image: Image tablette (2560 x 1620)
