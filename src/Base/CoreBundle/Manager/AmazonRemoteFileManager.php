@@ -71,7 +71,7 @@ class AmazonRemoteFileManager
 		));
 
 		foreach ($objects as $object) {
-			if(isset($object['Key']) && !empty($object['Key'])) {
+			if(isset($object['Key']) && !empty(str_replace($prefix, '', $object['Key']))) {
 				$files[] = array('id' => md5($object['Key']), 'name' => str_replace($prefix, '', $object['Key']), 'url' => $object['Key']);
 			}
 		}
