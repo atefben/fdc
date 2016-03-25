@@ -142,8 +142,7 @@ group:
         widgets: Modules éditoriaux
         publish_parameters: Paramètres de publication
         french_version: Version française
-        association: Association
-
+        associations: Association
 entity:
     fdc_event_routes: Menu
     news_article: Articles
@@ -523,6 +522,7 @@ form:
         image: Module photo(s)
         image_dual_align: Module 2 photos / ligne
         quote: Module citation
+        subtitle: Module sous-titre
     media_audio:
         helper_title: 200 caractères max.
         displayed_home: Remonter en tant qu'actualité sur la homepage

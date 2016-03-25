@@ -10,7 +10,7 @@
                             {{ menu.transName|trans }}
                         </a>
                     {% elseif menu.route == 'fdc_event_movie_selection' and menu.enabled == true %}
-                        <a href="{{ path(menu.route, { 'slug': 'competition' }) }}"
+                        <a href="{{ path(menu.route) }}"
                            class="{% if route =='fdc_event_movie_selection' %}active{% endif %}">
                             {{ menu.transName|trans }}
                         </a>

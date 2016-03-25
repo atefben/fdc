@@ -109,7 +109,7 @@ services:
             - { name: form.type, alias: 'event_widget_image_dual_align_type'}
         calls:
             - ['setEventWidgetImageDummyAdmin', ['@base.admin.event_widget_image_dual_align_dummy']]
-            - ['setGalleryDualAlignAdmin', ['@base.admin.gallery_dual_align']]
+            - ['setGalleryAdmin', ['@base.admin.gallery']]
 
     base.admin.form.event_widget_video_type:
         scope: prototype
