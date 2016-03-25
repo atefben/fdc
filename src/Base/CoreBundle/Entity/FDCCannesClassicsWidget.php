@@ -59,7 +59,6 @@ abstract class FDCCannesClassicsWidget
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"news_list", "news_show"})
      */
     public function getWidgetType()
     {

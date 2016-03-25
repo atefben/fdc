@@ -44,9 +44,9 @@ class FDCCannesClassics implements TranslateMainInterface
     private $image;
 
     /**
-     * @var NewsWidget
+     * @var FDCCannesClassicsWidget
      *
-     * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="news", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="FDCCannesClassicsWidget", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
@@ -108,10 +108,10 @@ class FDCCannesClassics implements TranslateMainInterface
     /**
      * Add widgets
      *
-     * @param \Base\CoreBundle\Entity\NewsWidget $widgets
+     * @param \Base\CoreBundle\Entity\FDCCannesClassicsWidget $widgets
      * @return FDCCannesClassics
      */
-    public function addWidget(\Base\CoreBundle\Entity\NewsWidget $widgets)
+    public function addWidget(\Base\CoreBundle\Entity\FDCCannesClassicsWidget $widgets)
     {
         $this->widgets[] = $widgets;
 
@@ -121,9 +121,9 @@ class FDCCannesClassics implements TranslateMainInterface
     /**
      * Remove widgets
      *
-     * @param \Base\CoreBundle\Entity\NewsWidget $widgets
+     * @param \Base\CoreBundle\Entity\FDCCannesClassicsWidget $widgets
      */
-    public function removeWidget(\Base\CoreBundle\Entity\NewsWidget $widgets)
+    public function removeWidget(\Base\CoreBundle\Entity\FDCCannesClassicsWidget $widgets)
     {
         $this->widgets->removeElement($widgets);
     }

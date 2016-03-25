@@ -14,6 +14,12 @@ use Sonata\AdminBundle\Show\ShowMapper;
 class FDCCannesClassicsAdmin extends Admin
 {
 
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
+    }
+
+
     /**
      * @param DatagridMapper $datagridMapper
      */
