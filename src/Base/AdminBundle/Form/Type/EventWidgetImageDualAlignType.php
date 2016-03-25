@@ -34,7 +34,7 @@ class EventWidgetImageDualAlignType extends EventWidgetType
      */
     private $eventWidgetImageDummyAdmin;
 
-    private $galleryDualAlignDummyAdmin;
+    private $galleryAdmin;
 
     /**
      * setEventWidgetImageDummyAdmin function.
@@ -48,9 +48,9 @@ class EventWidgetImageDualAlignType extends EventWidgetType
         $this->eventWidgetImageDummyAdmin = $eventWidgetImageDummyAdmin;
     }
 
-    public function setGalleryDualAlignAdmin($galleryDualAlignDummyAdmin)
+    public function setGalleryAdmin($galleryAdmin)
     {
-        $this->galleryDualAlignDummyAdmin = $galleryDualAlignDummyAdmin;
+        $this->galleryAdmin = $galleryAdmin;
     }
 
     /**
@@ -66,8 +66,8 @@ class EventWidgetImageDualAlignType extends EventWidgetType
         parent::buildForm($builder, $options);
         $builder->add('gallery', 'sonata_type_model_list', array(
             'sonata_field_description' => $this->eventWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
-            'model_manager'            => $this->galleryDualAlignDummyAdmin->getModelManager(),
-            'class'                    => $this->galleryDualAlignDummyAdmin->getClass(),
+            'model_manager'            => $this->galleryAdmin->getModelManager(),
+            'class'                    => $this->galleryAdmin->getClass(),
             'label'                    => false,
         ));
     }

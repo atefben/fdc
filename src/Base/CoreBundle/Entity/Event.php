@@ -123,8 +123,8 @@ class Event implements TranslateMainInterface
     /**
      * @var EventWidget
      *
-     * @ORM\OneToMany(targetEntity="EventWidget", mappedBy="events",  cascade={"persist"})
-     *
+     * @ORM\OneToMany(targetEntity="EventWidget", mappedBy="events",  cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $widgets;
 

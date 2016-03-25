@@ -41,7 +41,7 @@
                         {% include 'FDCEventBundle:News:widgets/audio.html.twig' with {'widget': widget} %}
                     {% elseif widget.widgetType == 'EventWidgetQuote' %}
                         {% include 'FDCEventBundle:News:widgets/quote.html.twig' %}
-                    {% elseif widget.widgetType == 'EventWidgetImagDualAlign' %}
+                    {% elseif widget.widgetType == 'EventWidgetImageDualAlign' %}
                         {% include 'FDCEventBundle:News:widgets/dual-photo.html.twig' %}
                     {% elseif widget.widgetType == 'EventWidgetSubtitle' %}
                         <h2 class="title">{{ widget.content }}</h2>
