@@ -38,7 +38,7 @@ class AmazonRemoteFileManager
                 ->setUrl($file['url'])
             ;
             ++$i;
-            //$this->getDoctrineManager()->persist($amazonRemoteFile);
+            $this->getDoctrineManager()->persist($amazonRemoteFile);
             if ($i === 99) {
                 $i = 0;
                 $this->getDoctrineManager()->flush();
