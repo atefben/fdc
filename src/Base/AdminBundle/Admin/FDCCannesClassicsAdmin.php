@@ -2,6 +2,8 @@
 
 namespace Base\AdminBundle\Admin;
 
+use Base\CoreBundle\Entity\FDCCannesClassics;
+use Base\CoreBundle\Entity\FDCCannesClassicsTranslation;
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Sonata\AdminBundle\Admin\Admin;
@@ -17,6 +19,14 @@ class FDCCannesClassicsAdmin extends Admin
     public function configure()
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
+    }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('BaseAdminBundle:Form:polycollection.html.twig')
+        );
     }
 
 
@@ -81,7 +91,7 @@ class FDCCannesClassicsAdmin extends Admin
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
-                        'choices' => NewsArticleTranslation::getStatuses(),
+                        'choices' => FDCCannesClassicsTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                     'seoDescription' => array(
@@ -124,13 +134,13 @@ class FDCCannesClassicsAdmin extends Admin
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => News::getAvailableTranslateOptions(),
+                'choices' => FDCCannesClassics::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
                 'multiple' => true,
                 'expanded' => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => News::getPriorityStatuses(),
+                'choices' => FDCCannesClassics::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('seoFile', 'sonata_media_type', array(

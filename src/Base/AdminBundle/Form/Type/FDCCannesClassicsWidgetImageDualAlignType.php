@@ -34,7 +34,7 @@ class FDCCannesClassicsWidgetImageDualAlignType extends FDCCannesClassicsWidgetT
      */
     private $FDCCannesClassicsWidgetImageDummyAdmin;
 
-    private $galleryDualAlignDummyAdmin;
+    private $galleryAdmin;
 
     /**
      * setFDCCannesClassicsWidgetImageDummyAdmin function.
@@ -48,9 +48,9 @@ class FDCCannesClassicsWidgetImageDualAlignType extends FDCCannesClassicsWidgetT
         $this->FDCCannesClassicsWidgetImageDummyAdmin = $FDCCannesClassicsWidgetImageDummyAdmin;
     }
 
-    public function setGalleryDualAlignAdmin($galleryDualAlignDummyAdmin)
+    public function setGalleryAdmin($galleryAdmin)
     {
-        $this->galleryDualAlignAdmin = $galleryDualAlignDummyAdmin;
+        $this->galleryAdmin = $galleryAdmin;
     }
 
     /**
@@ -66,8 +66,8 @@ class FDCCannesClassicsWidgetImageDualAlignType extends FDCCannesClassicsWidgetT
         parent::buildForm($builder, $options);
         $builder->add('gallery', 'sonata_type_model_list', array(
             'sonata_field_description' =>  $this->FDCCannesClassicsWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
-            'model_manager' => $this->galleryDualAlignAdmin->getModelManager(),
-            'class' => $this->galleryDualAlignAdmin->getClass(),
+            'model_manager' => $this->galleryAdmin->getModelManager(),
+            'class' => $this->galleryAdmin->getClass(),
             'label' => false
         ));
     }

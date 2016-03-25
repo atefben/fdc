@@ -46,7 +46,7 @@ class FDCCannesClassics implements TranslateMainInterface
     /**
      * @var FDCCannesClassicsWidget
      *
-     * @ORM\OneToMany(targetEntity="FDCCannesClassicsWidget", mappedBy="news", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="FDCCannesClassicsWidget", mappedBy="classics", cascade={"all"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
@@ -62,13 +62,13 @@ class FDCCannesClassics implements TranslateMainInterface
     {
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
-        return $string;
+        return (string)$string;
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -91,12 +91,13 @@ class FDCCannesClassics implements TranslateMainInterface
     /**
      * Get image
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getImage()
     {
         return $this->image;
     }
+
     /**
      * Constructor
      */
@@ -113,6 +114,7 @@ class FDCCannesClassics implements TranslateMainInterface
      */
     public function addWidget(\Base\CoreBundle\Entity\FDCCannesClassicsWidget $widgets)
     {
+        $widgets->setClassics($this);   
         $this->widgets[] = $widgets;
 
         return $this;
@@ -131,7 +133,7 @@ class FDCCannesClassics implements TranslateMainInterface
     /**
      * Get widgets
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getWidgets()
     {

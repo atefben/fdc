@@ -252,7 +252,8 @@
                                                 {% endif %}
 
                                                 {% if widget.children._type.vars.value == 'event_widget_video_type' %}
-                                                    {% set fileTranslations = (widget.children.file.vars.data is not null) ? widget.children.file.vars.data.translations : null %}
+                                                    {{ dump(widget.children.file.vars.data) }}
+                                                    {#{% set fileTranslations = (widget.children.file.vars.data is not null) ? widget.children.file.vars.data.translations : null %}
                                                     <div class="form-group">
                                                         <label class="control-label">
                                                             {{ 'form.label_file'|trans }}
@@ -272,7 +273,7 @@
                                                                 </a>
                                                             {% endif %}
                                                         </div>
-                                                    </div>
+                                                    </div>#}
                                                 {% elseif widget.children._type.vars.value == 'event_widget_video_youtube_type' %}
                                                     {% set imageTranslations = (widget.children.image.vars.data is not null) ? widget.children.image.vars.data.translations : null %}
                                                     <div class="form-group">
