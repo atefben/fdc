@@ -71,7 +71,9 @@ class AmazonRemoteFileManager
 		));
 
 		foreach ($objects as $object) {
-			$files[] = array('id' => md5($object['Key']), 'name' => str_replace($prefix, '', $object['Key']), 'url' => $bucket . '/' . $object['Key']);
+			if(isset($object['Key']) && !empty($object['Key'])) {
+				$files[] = array('id' => md5($object['Key']), 'name' => str_replace($prefix, '', $object['Key']), 'url' => $object['Key']);
+			}
 		}
 
         $this->populate($files);
