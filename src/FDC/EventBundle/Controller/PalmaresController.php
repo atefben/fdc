@@ -55,6 +55,9 @@ class PalmaresController extends Controller
             ->getPageBySlug($locale, $slug)
         ;
 
+        //SEO
+        $this->get('base.manager.seo')->setFDCEventPageAwardSeo($page, $locale);
+
         $parameters = array(
             'pages'    => $pages,
             'page'     => $page,

@@ -55,6 +55,9 @@ class JuryController extends Controller
             ->getPageBySlug($locale, $slug)
         ;
 
+        //SEO
+        $this->get('base.manager.seo')->setFDCEventPageJurySeo($page, $locale);
+
         // find all juries by type
         $juries = $this
             ->getDoctrineManager()
