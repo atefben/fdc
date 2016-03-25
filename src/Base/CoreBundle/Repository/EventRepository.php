@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\Event;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\QueryBuilder;
 
 /**
@@ -71,5 +72,26 @@ class EventRepository extends EntityRepository
 
 
         return $qb->getQuery()->getResult();
+    }
+
+
+    /**
+     * @param int $festival
+     * @param string $locale
+     * @param string $slug
+     * @return Event|null
+     * @throws NonUniqueResultException
+     */
+    public function getEventBySlug($festival, $locale, $slug)
+    {
+        $qb = $this
+            ->createQueryBuilder('e')
+            ->join('e.translations', 't')
+        ;
+
+        $this->addMasterQueries($qb, 'e', $festival, true);
+        $this->addTranslationQueries($qb, 't', $locale, $slug);
+
+        return $qb->getQuery()->getOneOrNullResult();
     }
 }

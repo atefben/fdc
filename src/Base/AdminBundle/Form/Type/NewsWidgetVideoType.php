@@ -80,7 +80,7 @@ class NewsWidgetVideoType extends NewsWidgetType
      * getName function.
      * 
      * @access public
-     * @return void
+     * @return string
      */
     public function getName()
     {

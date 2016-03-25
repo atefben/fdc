@@ -19,8 +19,7 @@ class PressHomepageSectionAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('createdAt')
-            ->add('updatedAt')
-        ;
+            ->add('updatedAt');
     }
 
     /**
@@ -31,8 +30,7 @@ class PressHomepageSectionAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('createdAt')
-            ->add('updatedAt')
-        ;
+            ->add('updatedAt');
     }
 
     /**
@@ -41,13 +39,22 @@ class PressHomepageSectionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title', 'text', array(
+            ->add('class', 'choice', array(
                 // disabled : true when block are created
-                'disabled' => true,
-                'label' => 'form.press_homepage.label_section'
+                'choices' => array(
+                    'communique' => "Communiqué et info",
+                    'programmation' => "Programmation du jour",
+                    'media' => "Médiathèque",
+                    'download' => "A télécharger",
+                    'push1' => "Push 1",
+                    'push2' => "Push 2",
+                    'statistics' => "Statistiques",
+                ),
+                'disabled' => false,
+                'label' => 'form.press_homepage.label_section',
+                'required' => false
             ))
-            ->add('position','hidden',array('attr'=>array("hidden" => true)))
-        ;
+            ->add('position', 'hidden', array('attr' => array("hidden" => true)));
 
     }
 
@@ -59,8 +66,7 @@ class PressHomepageSectionAdmin extends Admin
         $showMapper
             ->add('id')
             ->add('createdAt')
-            ->add('updatedAt')
-        ;
+            ->add('updatedAt');
     }
 
     public function prePersist($homepage)

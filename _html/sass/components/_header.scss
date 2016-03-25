@@ -253,6 +253,14 @@ header {
         }
       }
     }
+
+    .icon_ma-selection, .icon_mon-compte {
+      min-width: 9.5px;
+    }
+    
+    .icon_langue {
+      min-width: 20.5px;
+    }
   }
 
   #logo-wrapper {
@@ -572,12 +580,14 @@ header {
             }
           }
         }
+
+        .icon_participer, .icon_programmation, .icon_espace-presse{
+          min-width: 9.5px;
+        }
       }
     }
   }
 }
-
-
 
 @include breakpoint(1024px) {
   .mob header #navigation ul.main {

@@ -26,6 +26,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
  *  "image_dual_align" = "EventWidgetImageDualAlign",
  *  "video" = "EventWidgetVideo",
  *  "video_youtube" = "EventWidgetVideoYoutube",
+ *  "subtitle" = "EventWidgetSubtitle",
  * })
  */
 abstract class EventWidget
@@ -44,7 +45,7 @@ abstract class EventWidget
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $position;
 

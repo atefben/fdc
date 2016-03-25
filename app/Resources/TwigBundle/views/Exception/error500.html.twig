@@ -1,0 +1,16 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+{% set locales = [] %}
+{% block body %}
+<div id="main" class="loading error-not-found">
+       <div class="vCenter">
+         <div class="vCenterKid">
+           <div class="texts">
+            <h1>Error 500</h1>
+            <p>We are sorry.<br />An error has occurred on the page you're trying to view.<br />Our technical team has been warned.</p>
+             <a href="/"><i class="icon icon_fleche-right"></i> return to news</a>
+           </div>
+         </div>
+       </div>
+    </div>
+{% endblock %}

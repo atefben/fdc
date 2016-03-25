@@ -8,13 +8,13 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Util\Time;
 
 /**
- * FDCPageParticipateSectionWidgetArchiveTranslation
+ * FDCPageParticipateSectionWidgetTypefourTranslation
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FDCPageParticipateSectionWidgetArchiveTranslation
+class FDCPageParticipateSectionWidgetTypefourTranslation
 {
 
     use Translation;
@@ -25,14 +25,14 @@ class FDCPageParticipateSectionWidgetArchiveTranslation
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $label;
+    protected $title;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $copyright;
+    protected $subtitle;
 
     /**
      * @var string
@@ -41,13 +41,6 @@ class FDCPageParticipateSectionWidgetArchiveTranslation
      */
     protected $content;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $btnLabel;
-
 
     /**
      * Set label
@@ -55,9 +48,9 @@ class FDCPageParticipateSectionWidgetArchiveTranslation
      * @param string $label
      * @return FDCPageParticipateSectionWidgetDocumentTranslation
      */
-    public function setLabel($label)
+    public function setTitle($title)
     {
-        $this->label = $label;
+        $this->title = $title;
 
         return $this;
     }
@@ -65,34 +58,11 @@ class FDCPageParticipateSectionWidgetArchiveTranslation
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
-    public function getLabel()
+    public function getTitle()
     {
-        return $this->label;
-    }
-
-    /**
-     * Set copyright
-     *
-     * @param string $copyright
-     * @return FDCPageParticipateSectionWidgetDocumentTranslation
-     */
-    public function setCopyright($copyright)
-    {
-        $this->copyright = $copyright;
-
-        return $this;
-    }
-
-    /**
-     * Get copyright
-     *
-     * @return string 
-     */
-    public function getCopyright()
-    {
-        return $this->copyright;
+        return $this->title;
     }
 
     /**
@@ -111,7 +81,7 @@ class FDCPageParticipateSectionWidgetArchiveTranslation
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
@@ -119,26 +89,25 @@ class FDCPageParticipateSectionWidgetArchiveTranslation
     }
 
     /**
-     * Set btnLabel
+     * Set subtitle
      *
-     * @param string $btnLabel
-     * @return FDCPageParticipateSectionWidgetDocumentTranslation
+     * @param string $subtitle
+     * @return FDCPageParticipateSectionWidgetTypefourTranslation
      */
-    public function setBtnLabel($btnLabel)
+    public function setSubtitle($subtitle)
     {
-        $this->btnLabel = $btnLabel;
+        $this->subtitle = $subtitle;
 
         return $this;
     }
 
     /**
-     * Get btnLabel
+     * Get subtitle
      *
      * @return string 
      */
-    public function getBtnLabel()
+    public function getSubtitle()
     {
-        return $this->btnLabel;
+        return $this->subtitle;
     }
-
 }

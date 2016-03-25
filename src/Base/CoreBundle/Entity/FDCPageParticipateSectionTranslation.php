@@ -31,7 +31,21 @@ class FDCPageParticipateSectionTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $title;
+    protected $mainTitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=122)
+     */
+    protected $mainIcon;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $mainDescription;
 
     /**
      * Set title
@@ -39,9 +53,9 @@ class FDCPageParticipateSectionTranslation implements TranslateChildInterface
      * @param string $title
      * @return FDCPageParticipateSectionTranslation
      */
-    public function setTitle($title)
+    public function setMainTitle($mainTitle)
     {
-        $this->title = $title;
+        $this->mainTitle = $mainTitle;
 
         return $this;
     }
@@ -51,8 +65,54 @@ class FDCPageParticipateSectionTranslation implements TranslateChildInterface
      *
      * @return string 
      */
-    public function getTitle()
+    public function getMainTitle()
     {
-        return $this->title;
+        return $this->mainTitle;
+    }
+
+    /**
+     * Set mainIcon
+     *
+     * @param string $mainIcon
+     * @return FDCPagePrepare
+     */
+    public function setMainIcon($mainIcon)
+    {
+        $this->mainIcon = $mainIcon;
+
+        return $this;
+    }
+
+    /**
+     * Get mainIcon
+     *
+     * @return string
+     */
+    public function getMainIcon()
+    {
+        return $this->mainIcon;
+    }
+
+    /**
+     * Set mainDescription
+     *
+     * @param string $mainDescription
+     * @return FDCPagePrepareTranslation
+     */
+    public function setMainDescription($mainDescription)
+    {
+        $this->mainDescription = $mainDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get mainDescription
+     *
+     * @return string
+     */
+    public function getMainDescription()
+    {
+        return $this->mainDescription;
     }
 }

@@ -2,10 +2,7 @@
 
 namespace Base\CoreBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\Time;
 
 /**
  * EventWidgetImage
@@ -17,6 +14,7 @@ use Base\CoreBundle\Util\Time;
 class EventWidgetImage extends EventWidget
 {
     /**
+     * @var Gallery
      * @ORM\ManyToOne(targetEntity="Gallery")
      */
     private $gallery;
@@ -24,10 +22,10 @@ class EventWidgetImage extends EventWidget
     /**
      * Set gallery
      *
-     * @param \Base\CoreBundle\Entity\Gallery $gallery
+     * @param Gallery $gallery
      * @return EventWidgetImage
      */
-    public function setGallery(\Base\CoreBundle\Entity\Gallery $gallery = null)
+    public function setGallery(Gallery $gallery = null)
     {
         $this->gallery = $gallery;
 
@@ -37,7 +35,7 @@ class EventWidgetImage extends EventWidget
     /**
      * Get gallery
      *
-     * @return \Base\CoreBundle\Entity\Gallery
+     * @return Gallery
      */
     public function getGallery()
     {

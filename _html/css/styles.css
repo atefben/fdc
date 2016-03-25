@@ -3176,6 +3176,10 @@ body {
   font-size: 16px;
   overflow-x: hidden;
 }
+body.fix {
+  overflow-y: hidden;
+  height: 100vh;
+}
 
 ::-moz-selection {
   background: #fff;
@@ -3759,7 +3763,7 @@ body {
 
 /*!
  * Pikaday
- * Copyright ┬® 2014 David Bushell | BSD & MIT license | http://dbushell.com/
+ * Copyright © 2014 David Bushell | BSD & MIT license | http://dbushell.com/
  */
 .pika-single {
   z-index: 9999;
@@ -4275,6 +4279,12 @@ header #top-bar .main-nav li a.active {
   border-right: 1px solid #404040;
   padding-bottom: 1px;
 }
+header #top-bar .icon_ma-selection, header #top-bar .icon_mon-compte {
+  min-width: 9.5px;
+}
+header #top-bar .icon_langue {
+  min-width: 20.5px;
+}
 header #logo-wrapper {
   background-color: #141414;
   height: 160px;
@@ -4580,6 +4590,9 @@ header #navigation ul.user .programmation-wrapper ul {
 }
 header #navigation ul.user .programmation-wrapper ul li a {
   font-size: 0.688rem;
+}
+header #navigation ul.user .icon_participer, header #navigation ul.user .icon_programmation, header #navigation ul.user .icon_espace-presse {
+  min-width: 9.5px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -8095,9 +8108,9 @@ header #searchContainer {
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -8123,11 +8136,11 @@ header #searchContainer {
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -8150,19 +8163,19 @@ header #searchContainer {
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -8565,8 +8578,11 @@ header #searchContainer {
 
 #prehome-container {
   background-color: #fff;
-  min-height: 600px;
+  height: 0px;
   position: relative;
+}
+#prehome-container.show {
+  min-height: 600px;
 }
 #prehome-container #prehome {
   position: fixed;
@@ -9907,14 +9923,15 @@ header #searchContainer {
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .push-container .push .image-wrapper img {
-  width: 100%;
+  position: absolute;
+  min-width: 100%;
   min-height: 100%;
+  width: auto;
   height: auto;
-  -moz-transition: all 3s cubic-bezier(.25,.46,.45,.94);
-  -o-transition: all 3s cubic-bezier(.25,.46,.45,.94);
-  -webkit-transition: all 3s cubic-bezier(.25,.46,.45,.94);
-  transition: all 3s cubic-bezier(.25,.46,.45,.94);
-  display: block;
+  -moz-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .push-container .push.right {
   float: right;
@@ -19863,7 +19880,7 @@ input[type=submit] {
   background-size: cover;
 }
 .error-not-found .texts {
-  width: 550px;
+  width: 555px;
   margin: 0 auto;
   color: #fff;
   text-align: center;

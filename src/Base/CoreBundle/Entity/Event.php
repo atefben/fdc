@@ -322,6 +322,7 @@ class Event implements TranslateMainInterface
      */
     public function addWidget(\Base\CoreBundle\Entity\EventWidget $widgets)
     {
+        $widgets->setEvents($this);
         $this->widgets[] = $widgets;
 
         return $this;
@@ -383,11 +384,12 @@ class Event implements TranslateMainInterface
     /**
      * Add associatedProjections
      *
-     * @param \Base\CoreBundle\Entity\EventFilmProjectionAssociated $associatedProjections
+     * @param EventFilmProjectionAssociated $associatedProjections
      * @return Event
      */
-    public function addAssociatedProjection(\Base\CoreBundle\Entity\EventFilmProjectionAssociated $associatedProjections)
+    public function addAssociatedProjection(EventFilmProjectionAssociated $associatedProjections)
     {
+        $associatedProjections->setEvent($this);
         $this->associatedProjections[] = $associatedProjections;
 
         return $this;
@@ -396,9 +398,9 @@ class Event implements TranslateMainInterface
     /**
      * Remove associatedProjections
      *
-     * @param \Base\CoreBundle\Entity\EventFilmProjectionAssociated $associatedProjections
+     * @param EventFilmProjectionAssociated $associatedProjections
      */
-    public function removeAssociatedProjection(\Base\CoreBundle\Entity\EventFilmProjectionAssociated $associatedProjections)
+    public function removeAssociatedProjection(EventFilmProjectionAssociated $associatedProjections)
     {
         $this->associatedProjections->removeElement($associatedProjections);
     }

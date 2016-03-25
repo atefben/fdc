@@ -8,35 +8,37 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 /**
  * EventWidgetImageType class.
- * 
+ *
  * \@extends EventWidgetType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
 class EventWidgetImageType extends EventWidgetType
 {
-    
+
     /**
      * dataClass
-     * 
+     *
      * (default value: 'Base\\CoreBundle\\Entity\\EventWidgetImage')
-     * 
+     *
      * @var string
      * @access protected
      */
     protected $dataClass = 'Base\\CoreBundle\\Entity\\EventWidgetImage';
-    
+
     /**
      * eventWidgetImageDummyAdmin
-     * 
+     *
      * @var mixed
      * @access private
      */
     private $eventWidgetImageDummyAdmin;
-    
+
+    private $galleryAdmin;
+
     /**
      * setEventWidgetImageDummyAdmin function.
-     * 
+     *
      * @access public
      * @param mixed $eventWidgetImageDummyAdmin
      * @return void
@@ -45,10 +47,15 @@ class EventWidgetImageType extends EventWidgetType
     {
         $this->eventWidgetImageDummyAdmin = $eventWidgetImageDummyAdmin;
     }
-    
+
+    public function setgalleryAdmin($galleryAdmin)
+    {
+        $this->galleryAdmin = $galleryAdmin;
+    }
+
     /**
      * buildForm function.
-     * 
+     *
      * @access public
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -58,28 +65,16 @@ class EventWidgetImageType extends EventWidgetType
     {
         parent::buildForm($builder, $options);
         $builder->add('gallery', 'sonata_type_model_list', array(
-            'sonata_field_description' =>  $this->eventWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
-            'model_manager' => $this->eventWidgetImageDummyAdmin->getModelManager(),
-            'class' => $this->eventWidgetImageDummyAdmin->getClass(),
+            'sonata_field_description' => $this->eventWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
+            'model_manager'            => $this->galleryAdmin->getModelManager(),
+            'class'                    => $this->galleryAdmin->getClass(),
+            'label'                    => false,
         ));
-       // $builder->add('medias', 'sonata_type_collection', array(
-           // 'sonata_field_description' =>  $this->eventWidgetImageDummyAdmin->getFormFieldDescriptions()['medias'],
-        //    'model_manager' => $this->eventWidgetImageDummyAdmin->getModelManager(),
-          //  'class' => $this->eventWidgetImageDummyAdmin->getClass(),
-       // ));
-       /* $builder->add('medias', 'sonata_type_collection', array(
-            'by_reference' => false,
-            'sonata_field_description' =>  $this->eventWidgetImageDummyAdmin->getFormFieldDescriptions()['medias'],
-        ), array(
-            'edit' => 'inline',
-            'inline' => 'table',
-            'sortable' => 'position',
-        ));*/
     }
 
     /**
      * getName function.
-     * 
+     *
      * @access public
      * @return void
      */

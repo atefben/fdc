@@ -63,7 +63,7 @@ class EventWidgetType extends BaseType
      * getName function.
      * 
      * @access public
-     * @return void
+     * @return string
      */
     public function getName()
     {

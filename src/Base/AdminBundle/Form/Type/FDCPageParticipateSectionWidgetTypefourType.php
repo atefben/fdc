@@ -7,13 +7,13 @@ use Sonata\AdminBundle\Form\DataTransformer\ModelToIdTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * FDCPageParticipateSectionWidgetArchiveType class.
+ * FDCPageParticipateSectionWidgetTypefourType class.
  *
  * \@extends FDCPageParticipateWidgetType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class FDCPageParticipateSectionWidgetArchiveType extends FDCPageParticipateSectionWidgetType
+class FDCPageParticipateSectionWidgetTypefourType extends FDCPageParticipateSectionWidgetType
 {
 
     /**
@@ -24,7 +24,7 @@ class FDCPageParticipateSectionWidgetArchiveType extends FDCPageParticipateSecti
      * @var string
      * @access protected
      */
-    protected $dataClass = 'Base\\CoreBundle\\Entity\\FDCPageParticipateSectionWidgetArchive';
+    protected $dataClass = 'Base\\CoreBundle\\Entity\\FDCPageParticipateSectionWidgetTypefour';
 
     /**
      * PressGuideWidgetDocumentDummyAdmin
@@ -32,18 +32,18 @@ class FDCPageParticipateSectionWidgetArchiveType extends FDCPageParticipateSecti
      * @var mixed
      * @access private
      */
-    private $FDCPageParticipateSectionWidgetArchiveDummyAdmin;
+    private $FDCPageParticipateSectionWidgetTypefourDummyAdmin;
 
     /**
-     * setFDCPageParticipateSectionWidgetArchiveDummyAdmin function.
+     * setFDCPageParticipateSectionWidgetTypefourDummyAdmin function.
      *
      * @access public
-     * @param mixed $FDCPageParticipateSectionWidgetArchiveDummyAdmin
+     * @param mixed $FDCPageParticipateSectionWidgetTypefourDummyAdmin
      * @return void
      */
-    public function setFDCPageParticipateSectionWidgetArchiveDummyAdmin($FDCPageParticipateSectionWidgetArchiveDummyAdmin)
+    public function setFDCPageParticipateSectionWidgetTypefourDummyAdmin($FDCPageParticipateSectionWidgetTypefourDummyAdmin)
     {
-        $this->FDCPageParticipateSectionWidgetArchiveDummyAdmin = $FDCPageParticipateSectionWidgetArchiveDummyAdmin;
+        $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin = $FDCPageParticipateSectionWidgetTypefourDummyAdmin;
     }
 
     /**
@@ -70,8 +70,8 @@ class FDCPageParticipateSectionWidgetArchiveType extends FDCPageParticipateSecti
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'label' => array(
-                        'label' => 'form.label_label',
+                    'title' => array(
+                        'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -79,8 +79,8 @@ class FDCPageParticipateSectionWidgetArchiveType extends FDCPageParticipateSecti
                             )
                         )
                     ),
-                    'btnLabel' => array(
-                        'label' => 'form.label_btn',
+                    'subtitle' => array(
+                        'label' => 'form.label_subtitle',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -95,27 +95,13 @@ class FDCPageParticipateSectionWidgetArchiveType extends FDCPageParticipateSecti
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'widget'
                     ),
-                    'copyright' => array(
-                        'label' => 'Copyright',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    )
                 )
             ))
 
             ->add('image', 'sonata_type_model_list', array(
-                'sonata_field_description' =>  $this->FDCPageParticipateSectionWidgetArchiveDummyAdmin->getFormFieldDescriptions()['image'],
-                'model_manager' => $this->FDCPageParticipateSectionWidgetArchiveDummyAdmin->getModelManager(),
-                'class' => $this->FDCPageParticipateSectionWidgetArchiveDummyAdmin->getFormFieldDescriptions()['image']->getAssociationAdmin()->getClass(),
-            ))
-            ->add('file', 'sonata_type_model_list', array(
-                'sonata_field_description' =>  $this->FDCPageParticipateSectionWidgetArchiveDummyAdmin->getFormFieldDescriptions()['file'],
-                'model_manager' => $this->FDCPageParticipateSectionWidgetArchiveDummyAdmin->getModelManager(),
-                'class' => $this->FDCPageParticipateSectionWidgetArchiveDummyAdmin->getFormFieldDescriptions()['file']->getAssociationAdmin()->getClass(),
+                'sonata_field_description' =>  $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getFormFieldDescriptions()['image'],
+                'model_manager' => $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getModelManager(),
+                'class' => $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getFormFieldDescriptions()['image']->getAssociationAdmin()->getClass(),
             ))
             ;
 
@@ -130,6 +116,6 @@ class FDCPageParticipateSectionWidgetArchiveType extends FDCPageParticipateSecti
      */
     public function getName()
     {
-        return 'fdc_page_participate_section_widget_archive_type';
+        return 'fdc_page_participate_section_widget_typefour_type';
     }
 }

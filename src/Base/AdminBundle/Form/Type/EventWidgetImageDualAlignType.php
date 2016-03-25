@@ -34,6 +34,8 @@ class EventWidgetImageDualAlignType extends EventWidgetType
      */
     private $eventWidgetImageDummyAdmin;
 
+    private $galleryDualAlignDummyAdmin;
+
     /**
      * setEventWidgetImageDummyAdmin function.
      *
@@ -44,6 +46,11 @@ class EventWidgetImageDualAlignType extends EventWidgetType
     public function setEventWidgetImageDummyAdmin($eventWidgetImageDummyAdmin)
     {
         $this->eventWidgetImageDummyAdmin = $eventWidgetImageDummyAdmin;
+    }
+
+    public function setGalleryDualAlignAdmin($galleryDualAlignDummyAdmin)
+    {
+        $this->galleryDualAlignDummyAdmin = $galleryDualAlignDummyAdmin;
     }
 
     /**
@@ -58,30 +65,18 @@ class EventWidgetImageDualAlignType extends EventWidgetType
     {
         parent::buildForm($builder, $options);
         $builder->add('gallery', 'sonata_type_model_list', array(
-            'sonata_field_description' =>  $this->eventWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
-            'model_manager' => $this->eventWidgetImageDummyAdmin->getModelManager(),
-            'class' => $this->eventWidgetImageDummyAdmin->getClass(),
+            'sonata_field_description' => $this->eventWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
+            'model_manager'            => $this->galleryDualAlignDummyAdmin->getModelManager(),
+            'class'                    => $this->galleryDualAlignDummyAdmin->getClass(),
+            'label'                    => false,
         ));
-        // $builder->add('medias', 'sonata_type_collection', array(
-        // 'sonata_field_description' =>  $this->eventWidgetImageDummyAdmin->getFormFieldDescriptions()['medias'],
-        //    'model_manager' => $this->eventWidgetImageDummyAdmin->getModelManager(),
-        //  'class' => $this->eventWidgetImageDummyAdmin->getClass(),
-        // ));
-        /* $builder->add('medias', 'sonata_type_collection', array(
-             'by_reference' => false,
-             'sonata_field_description' =>  $this->eventWidgetImageDummyAdmin->getFormFieldDescriptions()['medias'],
-         ), array(
-             'edit' => 'inline',
-             'inline' => 'table',
-             'sortable' => 'position',
-         ));*/
     }
 
     /**
      * getName function.
      *
      * @access public
-     * @return void
+     * @return string
      */
     public function getName()
     {

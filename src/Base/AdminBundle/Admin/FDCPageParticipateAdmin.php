@@ -22,8 +22,7 @@ class FDCPageParticipateAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('createdAt')
-            ->add('updatedAt')
-        ;
+            ->add('updatedAt');
     }
 
     /**
@@ -41,8 +40,7 @@ class FDCPageParticipateAdmin extends Admin
                     'edit' => array(),
                     'delete' => array(),
                 )
-            ))
-        ;
+            ));
     }
 
     /**
@@ -62,11 +60,11 @@ class FDCPageParticipateAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'status'         => array(
-                        'label'                     => 'form.label_status',
-                        'translation_domain'        => 'BaseAdminBundle',
-                        'field_type'                => 'choice',
-                        'choices'                   => FDCPageParticipateTranslation::getStatuses(),
+                    'status' => array(
+                        'label' => 'form.label_status',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'choice',
+                        'choices' => FDCPageParticipateTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                     'seoTitle' => array(
@@ -88,11 +86,39 @@ class FDCPageParticipateAdmin extends Admin
                         'required' => false
 
                     ),
+                    'title' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'icon' => array(
+                        'field_type' => 'choice',
+                        'choices' => array(
+                            'icon_palme' => 'Palme',
+                            'icon_camera' => 'Camera',
+                            'icon_mains' => 'Mains',
+                            'icon_camion' => 'Camion',
+                        ),
+                        'label' => 'form.label_information_icon',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'choice_translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'content' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_content',
+                        'sonata_help' => 'form.press_homepage.helper_desc',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'widget'
+                    ),
                 )
             ))
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
-                'context'  => 'seo_file',
+                'context' => 'seo_file',
                 'help' => 'form.seo.helper_file',
                 'required' => false,
             ))
@@ -107,22 +133,24 @@ class FDCPageParticipateAdmin extends Admin
                 array(
                     'edit' => 'inline',
                     'inline' => 'table',
-                    'sortable'  => 'position',
+                    'sortable' => 'position',
                 )
             )
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices'            => FDCPageParticipate::getAvailableTranslateOptions(),
+                'choices' => FDCPageParticipate::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
-                'multiple'           => true,
-                'expanded'           => true
+                'multiple' => true,
+                'expanded' => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices'                   => FDCPageParticipate::getPriorityStatuses(),
+                'choices' => FDCPageParticipate::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
             ))
-            ->end()
-        ;
+            ->add('image', 'sonata_type_model_list', array(
+                'label' => 'form.label_image'
+            ))
+            ->end();
 
     }
 
@@ -134,8 +162,7 @@ class FDCPageParticipateAdmin extends Admin
         $showMapper
             ->add('id')
             ->add('createdAt')
-            ->add('updatedAt')
-        ;
+            ->add('updatedAt');
     }
 
     public function configure()

@@ -2,11 +2,8 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Datagrid\ListMapper;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
 
 class EventWidgetImageDualAlignDummyAdmin extends Admin
 {
@@ -17,7 +14,7 @@ class EventWidgetImageDualAlignDummyAdmin extends Admin
     {
         $formMapper
             ->add('gallery', 'sonata_type_model_list',array(
-                'btn_delete' => true
+                'btn_delete' => true,
             ))
         ;
     }

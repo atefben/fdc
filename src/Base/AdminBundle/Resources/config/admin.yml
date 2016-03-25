@@ -456,6 +456,15 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: EventWidgetVideoYoutube, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.event_widget_subtitle_dummy:
+        class: Base\AdminBundle\Admin\EventWidgetSubtitleDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventWidgetSubtitle, BaseAdminBundle:EventWidgetSubtitleDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: EventWidgetSubtitle, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
      #end event widgets
 
     base.admin.news_widget_audio_dummy:
@@ -721,6 +730,8 @@ services:
         arguments: [~, Base\CoreBundle\Entity\EventFilmProjectionAssociated, BaseAdminBundle:EventFilmProjectionAssociatedAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: EventFilmProjectionAssociated, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     #INFO 
     base.admin.info_widget_image_dummy:
@@ -933,7 +944,7 @@ services:
         class: Base\AdminBundle\Admin\FDCPageParticipateAdmin
         arguments: [~, Base\CoreBundle\Entity\FDCPageParticipate, BaseAdminBundle:FDCPageParticipateAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, label: entity.fdc_page_participate, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.participate, label: entity.fdc_page_participate, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -941,7 +952,7 @@ services:
         class: Base\AdminBundle\Admin\FDCPageParticipateSectionAdmin
         arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSection, BaseAdminBundle:FDCPageParticipateSectionAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, label: entity.fdc_page_participate_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.participate, label: entity.fdc_page_participate_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -953,14 +964,45 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.fdc_page_participate_section_widget_archive_dummy:
-        class: Base\AdminBundle\Admin\FDCPageParticipateSectionWidgetArchiveDummyAdmin
-        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetArchive, BaseAdminBundle:FDCPageParticipateSectionWidgetArchiveDummyAdmin]
+    base.admin.fdc_page_participate_section_widget_typeone_dummy:
+        class: Base\AdminBundle\Admin\FDCPageParticipateSectionWidgetTypeoneDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypeone, BaseAdminBundle:FDCPageParticipateSectionWidgetTypeoneDummyAdmin]
         tags:
-           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Archive widget, show_in_dashboard: false}
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Typeone widget, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_page_participate_section_widget_typetwo_dummy:
+        class: Base\AdminBundle\Admin\FDCPageParticipateSectionWidgetTypetwoDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypetwo, BaseAdminBundle:FDCPageParticipateSectionWidgetTypetwoDummyAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Typetwo widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_participate_section_widget_typethree_dummy:
+        class: Base\AdminBundle\Admin\FDCPageParticipateSectionWidgetTypethreeDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypethree, BaseAdminBundle:FDCPageParticipateSectionWidgetTypethreeDummyAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Typethree widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_participate_section_widget_typefour_dummy:
+        class: Base\AdminBundle\Admin\FDCPageParticipateSectionWidgetTypefourDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypefour, BaseAdminBundle:FDCPageParticipateSectionWidgetTypefourDummyAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Typefour widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_participate_section_widget_typefive_dummy:
+        class: Base\AdminBundle\Admin\FDCPageParticipateSectionWidgetTypefiveDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypefive, BaseAdminBundle:FDCPageParticipateSectionWidgetTypefiveDummyAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: admin, label: Download Typefive widget, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.press_media_library:
         class: Base\AdminBundle\Admin\PressMediaLibraryAdmin
@@ -1107,3 +1149,12 @@ services:
         arguments: [~, Base\CoreBundle\Entity\FDCCannesClassicsWidgetVideoYoutube, BaseAdminBundle:FDCCannesClassicsWidgetVideoYoutubeDummyAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: FDCCannesClassicsWidgetVideoYoutube}
+
+    base.admin.amazon_remote_file:
+        class: Base\AdminBundle\Admin\AmazonRemoteFileAdmin
+        arguments: [~, Base\CoreBundle\Entity\AmazonRemoteFile, BaseAdminBundle:AmazonRemoteFileAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: AmazonRemoteFile, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+

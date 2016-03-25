@@ -14,16 +14,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class EventController extends Controller
 {
 
-    /**
-     * @Route("/event/{slug}")
-     * @Template("FDCEventBundle:Event:page.html.twig")
-     * @param $slug
-     * @return array
-     */
-    public function getAction($slug)
+    protected function getTemporaryEvent()
     {
-
-        $event = array(
+        return array(
             'id'           => 0,
             'theme'        => 'Leçon de cinéma',
             'createdAt'    => new \Datetime(),
@@ -180,9 +173,38 @@ class EventController extends Controller
                 ),
             )
         );
+    }
+
+    /**
+     * @Route("/event/{slug}")
+     * @Template("FDCEventBundle:Event:page.html.twig")
+     * @param Request $request
+     * @param $slug
+     * @return array
+     */
+    public function getAction(Request $request, $slug)
+    {
+        $festival = $this->getFestival()->getId();
+        $locale = $request->getLocale();
+
+        $event = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Event')
+            ->getEventBySlug($festival, $locale, $slug)
+        ;
+        $this->throwNotFoundExceptionOnNullObject($event);
+
+        $programmations = array();
+        foreach ($event->getAssociatedProjections() as $projection) {
+            if ($projection->getAssociation()) {
+                $programmations[] = $projection->getAssociation();
+            }
+        }
 
         return array(
-            'article' => $event
+            'article' => $this->getTemporaryEvent(),
+            'event'   => $event,
+            'programmations'   => $programmations,
         );
     }
 
@@ -261,7 +283,7 @@ class EventController extends Controller
             $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Event')
-            ->getEvents($festival, $locale)
+                ->getEvents($festival, $locale)
         ;
 
         $dates = array();
@@ -282,7 +304,7 @@ class EventController extends Controller
         $filters['themes'] = $themes;
 
         return array(
-            'page'  => $page,
+            'page'    => $page,
             'events'  => $events,
             'filters' => $filters,
         );

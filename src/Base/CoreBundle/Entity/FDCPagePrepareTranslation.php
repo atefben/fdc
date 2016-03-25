@@ -279,7 +279,7 @@ class FDCPagePrepareTranslation implements TranslateChildInterface
     /**
      * Get serviceLabel
      *
-     * @return string 
+     * @return string
      */
     public function getServiceLabel()
     {
@@ -302,7 +302,7 @@ class FDCPagePrepareTranslation implements TranslateChildInterface
     /**
      * Get serviceUrl
      *
-     * @return string 
+     * @return string
      */
     public function getServiceUrl()
     {
@@ -325,7 +325,7 @@ class FDCPagePrepareTranslation implements TranslateChildInterface
     /**
      * Get meetingLabel
      *
-     * @return string 
+     * @return string
      */
     public function getMeetingLabel()
     {
@@ -348,7 +348,7 @@ class FDCPagePrepareTranslation implements TranslateChildInterface
     /**
      * Get meetingUrl
      *
-     * @return string 
+     * @return string
      */
     public function getMeetingUrl()
     {
@@ -371,7 +371,7 @@ class FDCPagePrepareTranslation implements TranslateChildInterface
     /**
      * Get mainTitle
      *
-     * @return string 
+     * @return string
      */
     public function getMainTitle()
     {
@@ -394,7 +394,7 @@ class FDCPagePrepareTranslation implements TranslateChildInterface
     /**
      * Get mainDescription
      *
-     * @return string 
+     * @return string
      */
     public function getMainDescription()
     {
