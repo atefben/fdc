@@ -41,7 +41,7 @@ class StatementImage extends Statement
     /**
      * @ORM\ManyToOne(targetEntity="Gallery", cascade={"persist"})
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "home"})
      * @Assert\NotNull()
      */
     private $gallery;

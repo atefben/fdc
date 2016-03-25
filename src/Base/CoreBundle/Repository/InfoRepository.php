@@ -19,6 +19,64 @@ use Base\CoreBundle\Entity\InfoArticleTranslation;
 class InfoRepository extends EntityRepository
 {
 
+    public function getNewsApiSameDayInfos($festival, $locale, $dateTime)
+    {
+        $midnight = $dateTime;
+        $midnight->setTime(23, 59, 59);
+
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->select('n,
+                RAND() as HIDDEN rand')
+            ->join('n.sites', 's')
+            ->leftjoin('Base\CoreBundle\Entity\InfoArticle', 'na1', 'WITH', 'na1.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\InfoAudio', 'na2', 'WITH', 'na2.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\InfoImage', 'na3', 'WITH', 'na3.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\InfoVideo', 'na4', 'WITH', 'na4.id = n.id')
+            ->leftjoin('na1.translations', 'na1t')
+            ->leftjoin('na2.translations', 'na2t')
+            ->leftjoin('na3.translations', 'na3t')
+            ->leftjoin('na4.translations', 'na4t')
+            ->andWhere('n.festival = :festival')
+            ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt < :midnight)')
+        ;
+
+
+        $qb = $qb
+            ->andWhere(
+                '(na1t.locale = :locale_fr AND na1t.status = :status) OR
+                    (na2t.locale = :locale_fr AND na2t.status = :status) OR
+                    (na3t.locale = :locale_fr AND na3t.status = :status) OR
+                    (na4t.locale = :locale_fr AND na4t.status = :status)'
+            )
+            ->setParameter('locale_fr', 'fr')
+            ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED)
+        ;
+
+        if ($locale != 'fr') {
+            $qb = $qb
+                ->andWhere(
+                    '(na1t.locale = :locale AND na1t.status = :status_translated) OR
+                    (na2t.locale = :locale AND na2t.status = :status_translated) OR
+                    (na3t.locale = :locale AND na3t.status = :status_translated) OR
+                    (na4t.locale = :locale AND na4t.status = :status_translated)'
+                )
+                ->setParameter('status_translated', InfoArticleTranslation::STATUS_TRANSLATED)
+                ->setParameter('locale', $locale)
+            ;
+        }
+
+        $qb = $qb
+            ->addOrderBy('n.publishedAt', 'desc')
+            ->setParameter('festival', $festival)
+            ->setParameter('datetime', $dateTime)
+            ->setParameter('midnight', $midnight)
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $qb;
+    }
 
     public function getInfoBySlug($slug, $festival, $locale, $isAdmin, $repository)
     {
@@ -126,7 +184,6 @@ class InfoRepository extends EntityRepository
 
     public function getSameDayInfo($festival, $locale, $dateTime, $count, $id)
     {
-        $dateTime1 = $dateTime->format('Y-m-d') . ' 00:00:00';
         $dateTime2 = $dateTime->format('Y-m-d') . ' 23:59:59';
 
         $qb = $this
@@ -177,7 +234,7 @@ class InfoRepository extends EntityRepository
             ->addOrderBy('rand')
             ->setMaxResults($count)
             ->setParameter('festival', $festival)
-            ->setParameter('datetime', $dateTime1)
+            ->setParameter('datetime', $dateTime)
             ->setParameter('datetime2', $dateTime2)
             ->setParameter('id', $id)
             ->setParameter('site_slug', 'site-press')

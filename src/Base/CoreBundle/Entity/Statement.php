@@ -40,6 +40,7 @@ abstract class Statement implements TranslateMainInterface
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"news_list", "news_show", "home"})
      *
      */
     private $id;
@@ -48,6 +49,8 @@ abstract class Statement implements TranslateMainInterface
      * @var Theme
      *
      * @ORM\ManyToOne(targetEntity="Theme")
+     *
+     * @Groups({"news_list", "news_show", "home"})
      *
      * @Assert\NotNull()
      */
@@ -161,6 +164,7 @@ abstract class Statement implements TranslateMainInterface
 
     /**
      * ArrayCollection
+     * @Groups({"news_list", "news_show", "home"})
      *
      */
     protected $translations;

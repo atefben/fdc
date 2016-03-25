@@ -18,6 +18,64 @@ use Base\CoreBundle\Entity\StatementArticleTranslation;
  */
 class StatementRepository extends EntityRepository
 {
+    public function getNewsApiSameDayStatements($festival, $locale, $dateTime)
+    {
+        $midnight = $dateTime;
+        $midnight->setTime(23, 59, 59);
+
+    $qb = $this
+        ->createQueryBuilder('n')
+        ->select('n,
+                RAND() as HIDDEN rand')
+        ->join('n.sites', 's')
+        ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na1', 'WITH', 'na1.id = n.id')
+        ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'na2', 'WITH', 'na2.id = n.id')
+        ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'na3', 'WITH', 'na3.id = n.id')
+        ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'na4', 'WITH', 'na4.id = n.id')
+        ->leftjoin('na1.translations', 'na1t')
+        ->leftjoin('na2.translations', 'na2t')
+        ->leftjoin('na3.translations', 'na3t')
+        ->leftjoin('na4.translations', 'na4t')
+        ->andWhere('n.festival = :festival')
+        ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt <= :midnight)');
+
+
+    $qb = $qb
+        ->andWhere(
+            "(na1t.locale = 'fr' AND na1t.status = :status) OR
+                (na2t.locale = 'fr' AND na2t.status = :status) OR
+                (na3t.locale = 'fr' AND na3t.status = :status) OR
+                (na4t.locale = 'fr' AND na4t.status = :status)"
+        )
+        ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED);
+
+    if ($locale != 'fr') {
+        $qb = $qb
+            ->leftjoin('na1.translations', 'na5t')
+            ->leftjoin('na2.translations', 'na6t')
+            ->leftjoin('na3.translations', 'na7t')
+            ->leftjoin('na4.translations', 'na8t')
+            ->andWhere(
+                '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na8t.status = :status_translated)'
+            )
+            ->setParameter('locale', $locale)
+            ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED);
+    }
+
+
+    $qb = $qb
+        ->setParameter('festival', $festival)
+        ->setParameter('datetime', $dateTime)
+        ->setParameter('midnight', $midnight)
+        ->addOrderBy('n.publishedAt', 'asc')
+        ->getQuery()
+        ->getResult();
+
+    return $qb;
+}
     public function getStatementBySlug($slug, $festival, $locale, $isAdmin, $repository)
     {
         $qb = $this
