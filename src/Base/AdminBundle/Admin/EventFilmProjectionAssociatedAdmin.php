@@ -41,15 +41,16 @@ class EventFilmProjectionAssociatedAdmin extends Admin
         ;
     }
 
+
+
     /**
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('association', 'sonata_type_model_list', array('btn_delete' => false))
+            ->add('position', 'hidden', array('attr' => array("hidden" => true)))
         ;
     }
 

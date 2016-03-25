@@ -194,9 +194,17 @@ class EventController extends Controller
         ;
         $this->throwNotFoundExceptionOnNullObject($event);
 
+        $programmations = array();
+        foreach ($event->getAssociatedProjections() as $projection) {
+            if ($projection->getAssociation()) {
+                $programmations[] = $projection->getAssociation();
+            }
+        }
+
         return array(
             'article' => $this->getTemporaryEvent(),
-            'event' => $event,
+            'event'   => $event,
+            'programmations'   => $programmations,
         );
     }
 
@@ -275,7 +283,7 @@ class EventController extends Controller
             $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Event')
-            ->getEvents($festival, $locale)
+                ->getEvents($festival, $locale)
         ;
 
         $dates = array();
@@ -296,7 +304,7 @@ class EventController extends Controller
         $filters['themes'] = $themes;
 
         return array(
-            'page'  => $page,
+            'page'    => $page,
             'events'  => $events,
             'filters' => $filters,
         );

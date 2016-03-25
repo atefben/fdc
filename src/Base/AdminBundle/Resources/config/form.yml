@@ -99,6 +99,7 @@ services:
             - { name: form.type, alias: 'event_widget_image_type'}
         calls:
             - ['setEventWidgetImageDummyAdmin', ['@base.admin.event_widget_image_dummy']]
+            - ['setGalleryAdmin', ['@base.admin.gallery']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.event_widget_image_dual_align_type:
@@ -107,13 +108,17 @@ services:
         tags:
             - { name: form.type, alias: 'event_widget_image_dual_align_type'}
         calls:
-            - ['setEventWidgetImageDummyAdmin', ['@base.admin.event_widget_image_dummy']]
+            - ['setEventWidgetImageDummyAdmin', ['@base.admin.event_widget_image_dual_align_dummy']]
+            - ['setGalleryDualAlignAdmin', ['@base.admin.gallery_dual_align']]
 
     base.admin.form.event_widget_video_type:
         scope: prototype
         class: Base\AdminBundle\Form\Type\EventWidgetVideoType
         tags:
             - { name: form.type, alias: 'event_widget_video_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.event_widget_video_dummy']]
+            - ['setMediaVideoAdmin', ['@base.admin.media_video']]
 
     base.admin.form.event_widget_video_youtube_type:
         scope: prototype
@@ -122,7 +127,13 @@ services:
             - { name: form.type, alias: 'event_widget_video_youtube_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.event_widget_video_youtube_dummy']]
-            - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
+            - ['setMediaImageSimpleAdmin  ', ['@base.admin.media_image_simple']]
+
+    base.admin.form.event_widget_subtitle_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\EventWidgetSubtitleType
+        tags:
+            - { name: form.type, alias: 'event_widget_subtitle_type'}
 
     #Statement services
     base.admin.form.statement_widget_type:
@@ -361,10 +372,42 @@ services:
         tags:
             - { name: form.type, alias: 'fdc_page_participate_section_widget_type'}
 
-    base.admin.form.fdc_page_participate_section_widget_archive_type:
+    base.admin.form.fdc_page_participate_section_widget_typeone_type:
         scope: prototype
-        class: Base\AdminBundle\Form\Type\FDCPageParticipateSectionWidgetArchiveType
+        class: Base\AdminBundle\Form\Type\FDCPageParticipateSectionWidgetTypeoneType
         tags:
-            - { name: form.type, alias: 'fdc_page_participate_section_widget_archive_type'}
+            - { name: form.type, alias: 'fdc_page_participate_section_widget_typeone_type'}
         calls:
-            - ['setFDCPageParticipateSectionWidgetArchiveDummyAdmin', ['@base.admin.fdc_page_participate_section_widget_archive_dummy']]
+            - ['setFDCPageParticipateSectionWidgetTypeoneDummyAdmin', ['@base.admin.fdc_page_participate_section_widget_typeone_dummy']]
+
+    base.admin.form.fdc_page_participate_section_widget_typetwo_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\FDCPageParticipateSectionWidgetTypetwoType
+        tags:
+            - { name: form.type, alias: 'fdc_page_participate_section_widget_typetwo_type'}
+        calls:
+            - ['setFDCPageParticipateSectionWidgetTypetwoDummyAdmin', ['@base.admin.fdc_page_participate_section_widget_typetwo_dummy']]
+
+    base.admin.form.fdc_page_participate_section_widget_typethree_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\FDCPageParticipateSectionWidgetTypethreeType
+        tags:
+            - { name: form.type, alias: 'fdc_page_participate_section_widget_typethree_type'}
+        calls:
+            - ['setFDCPageParticipateSectionWidgetTypethreeDummyAdmin', ['@base.admin.fdc_page_participate_section_widget_typethree_dummy']]
+
+    base.admin.form.fdc_page_participate_section_widget_typefour_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\FDCPageParticipateSectionWidgetTypefourType
+        tags:
+            - { name: form.type, alias: 'fdc_page_participate_section_widget_typefour_type'}
+        calls:
+            - ['setFDCPageParticipateSectionWidgetTypefourDummyAdmin', ['@base.admin.fdc_page_participate_section_widget_typefour_dummy']]
+
+    base.admin.form.fdc_page_participate_section_widget_typefive_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\FDCPageParticipateSectionWidgetTypefiveType
+        tags:
+            - { name: form.type, alias: 'fdc_page_participate_section_widget_typefive_type'}
+        calls:
+            - ['setFDCPageParticipateSectionWidgetTypefiveDummyAdmin', ['@base.admin.fdc_page_participate_section_widget_typefive_dummy']]

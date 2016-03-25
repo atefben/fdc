@@ -26,6 +26,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
  *  "image_dual_align" = "EventWidgetImageDualAlign",
  *  "video" = "EventWidgetVideo",
  *  "video_youtube" = "EventWidgetVideoYoutube",
+ *  "subtitle" = "EventWidgetSubtitle",
  * })
  */
 abstract class EventWidget

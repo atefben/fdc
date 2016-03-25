@@ -23,7 +23,11 @@ use JMS\Serializer\Annotation\VirtualProperty;
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({
- *  "archive" = "FDCPageParticipateSectionWidgetArchive",
+ *  "typeone" = "FDCPageParticipateSectionWidgetTypeone",
+ *  "typetwo" = "FDCPageParticipateSectionWidgetTypetwo",
+ *  "typethree" = "FDCPageParticipateSectionWidgetTypethree",
+ *  "typefour" = "FDCPageParticipateSectionWidgetTypefour",
+ *  "typefive" = "FDCPageParticipateSectionWidgetTypefive",
  * })
  */
 abstract class FDCPageParticipateSectionWidget implements TranslateMainInterface

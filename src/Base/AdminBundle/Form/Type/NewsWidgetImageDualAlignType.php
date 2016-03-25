@@ -50,7 +50,7 @@ class NewsWidgetImageDualAlignType extends NewsWidgetType
 
     public function setGalleryDualAlignAdmin($galleryDualAlignDummyAdmin)
     {
-        $this->galleryDualAlignAdmin = $galleryDualAlignDummyAdmin;
+        $this->galleryDualAlignDummyAdmin = $galleryDualAlignDummyAdmin;
     }
 
     /**
@@ -65,10 +65,10 @@ class NewsWidgetImageDualAlignType extends NewsWidgetType
     {
         parent::buildForm($builder, $options);
         $builder->add('gallery', 'sonata_type_model_list', array(
-            'sonata_field_description' =>  $this->newsWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
-            'model_manager' => $this->galleryDualAlignAdmin->getModelManager(),
-            'class' => $this->galleryDualAlignAdmin->getClass(),
-            'label' => false
+            'sonata_field_description' => $this->newsWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
+            'model_manager'            => $this->galleryDualAlignDummyAdmin->getModelManager(),
+            'class'                    => $this->galleryDualAlignDummyAdmin->getClass(),
+            'label'                    => false,
         ));
     }
 
@@ -76,7 +76,7 @@ class NewsWidgetImageDualAlignType extends NewsWidgetType
      * getName function.
      *
      * @access public
-     * @return void
+     * @return string
      */
     public function getName()
     {

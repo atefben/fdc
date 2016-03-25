@@ -61,51 +61,6 @@ class PressHomepageAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'sectionStatementInfoTitle' => array(
-                        'label' => 'form.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
-                    'sectionSchedulingTitle' => array(
-                        'label' => 'form.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
-                    'sectionMediaTitle' => array(
-                        'label' => 'form.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
-                    'sectionMediaSubtitle' => array(
-                        'label' => 'form.label_subtitle',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
-                    'sectionDownloadTitle' => array(
-                        'label' => 'form.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
                     'sectionStatisticTitle' => array(
                         'label' => 'form.label_title',
                         'sonata_help' => 'form.press_homepage.helper_title',

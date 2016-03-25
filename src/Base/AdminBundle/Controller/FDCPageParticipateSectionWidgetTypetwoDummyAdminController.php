@@ -11,7 +11,7 @@ use Sonata\AdminBundle\Controller\CRUDController;
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class FDCPageParticipateSectionWidgetArchiveDummyAdminController extends CRUDController
+class FDCPageParticipateSectionWidgetTypetwoDummyAdminController extends CRUDController
 {
 
 }
