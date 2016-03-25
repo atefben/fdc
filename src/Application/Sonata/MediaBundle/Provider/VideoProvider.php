@@ -4,7 +4,6 @@ namespace Application\Sonata\MediaBundle\Provider;
 
 use Sonata\MediaBundle\Provider\FileProvider;
 use Sonata\MediaBundle\Model\MediaInterface;
-
 use Aws\ElasticTranscoder\ElasticTranscoderClient;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -20,6 +19,7 @@ class VideoProvider extends FileProvider
 
     public function generateThumbnails(MediaInterface $media)
     {
+	error_log('ici');
         if ($media->getParentVideoTranslation()) {
             $parentVideo = $media->getParentVideoTranslation();
         } elseif ($media->getParentAudioTranslation()) {
