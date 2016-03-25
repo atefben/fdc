@@ -106,7 +106,7 @@ class FDCPageParticipateSectionAdmin extends Admin
                         'choices' => FDCPageParticipateSectionTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
                     ),
-                    'mainTitle' => array(
+                    'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
@@ -115,7 +115,7 @@ class FDCPageParticipateSectionAdmin extends Admin
                             )
                         )
                     ),
-                    'mainIcon' => array(
+                    'icon' => array(
                         'field_type' => 'choice',
                         'choices' => array(
                             'icon_horaires' => 'Horloge',
@@ -130,7 +130,7 @@ class FDCPageParticipateSectionAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
-                    'mainDescription' => array(
+                    'description' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_content',
                         'translation_domain' => 'BaseAdminBundle',

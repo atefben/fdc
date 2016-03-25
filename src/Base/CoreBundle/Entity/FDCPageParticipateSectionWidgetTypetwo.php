@@ -90,27 +90,4 @@ class FDCPageParticipateSectionWidgetTypetwo extends FDCPageParticipateSectionWi
     {
         return $this->sponsorImage;
     }
-
-    /**
-     * Set pressDownload
-     *
-     * @param \Base\CoreBundle\Entity\FDCPageParticipateSection $pressDownload
-     * @return FDCPageParticipateSectionWidgetTypetwo
-     */
-    public function setPressDownload(\Base\CoreBundle\Entity\FDCPageParticipateSection $pressDownload = null)
-    {
-        $this->pressDownload = $pressDownload;
-
-        return $this;
-    }
-
-    /**
-     * Get pressDownload
-     *
-     * @return \Base\CoreBundle\Entity\FDCPageParticipateSection 
-     */
-    public function getPressDownload()
-    {
-        return $this->pressDownload;
-    }
 }

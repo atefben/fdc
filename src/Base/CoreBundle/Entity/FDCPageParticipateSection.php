@@ -36,7 +36,7 @@ class FDCPageParticipateSection implements TranslateMainInterface
     /**
      * @var FDCPageParticipateSectionWidget
      *
-     * @ORM\OneToMany(targetEntity="FDCPageParticipateSectionWidget", mappedBy="FDCPageParticipate", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="FDCPageParticipateSectionWidget", mappedBy="pressDownload", cascade={"persist", "remove"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
@@ -78,8 +78,7 @@ class FDCPageParticipateSection implements TranslateMainInterface
     {
         if (is_object($this->findTranslationByLocale('fr'))) {
             $string = $this->findTranslationByLocale('fr')->getTitle();
-        }
-        else {
+        } else {
             $string = substr(strrchr(get_class($this), '\\'), 1);
         }
         return $string;
@@ -105,8 +104,8 @@ class FDCPageParticipateSection implements TranslateMainInterface
     public function addWidget(\Base\CoreBundle\Entity\FDCPageParticipateSectionWidget $widgets)
     {
 
-        $widgets->setFDCPageParticipate($this);
-        $this->widgets[] = $widgets;
+        $widgets->setPressDownload($this);
+        $this->widgets->add($widgets);
 
         return $this;
     }
@@ -118,7 +117,7 @@ class FDCPageParticipateSection implements TranslateMainInterface
      */
     public function removeWidget(\Base\CoreBundle\Entity\FDCPageParticipateSectionWidget $widgets)
     {
-        $widgets->setFDCPageParticipate(null);
+        $widgets->setPressDownload(null);
         $this->widgets->removeElement($widgets);
     }
 

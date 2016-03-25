@@ -56,6 +56,7 @@ abstract class FDCPageParticipateSectionWidget implements TranslateMainInterface
      * @var FDCPageParticipateSection
      *
      * @ORM\ManyToOne(targetEntity="FDCPageParticipateSection", inversedBy="widgets")
+     * @ORM\JoinColumn(nullable=true)
      */
     protected $pressDownload;
 
@@ -68,11 +69,12 @@ abstract class FDCPageParticipateSectionWidget implements TranslateMainInterface
     private $lockedContent;
 
 
-    public function __toString() {
+    public function __toString()
+    {
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+            $string .= ' #' . $this->getId();
         }
 
         return $string;
@@ -81,7 +83,7 @@ abstract class FDCPageParticipateSectionWidget implements TranslateMainInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -105,7 +107,7 @@ abstract class FDCPageParticipateSectionWidget implements TranslateMainInterface
     /**
      * Get lockedContent
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getLockedContent()
     {
@@ -113,26 +115,26 @@ abstract class FDCPageParticipateSectionWidget implements TranslateMainInterface
     }
 
     /**
-     * Set FDCPageParticipate
+     * Set pressDownload
      *
-     * @param \Base\CoreBundle\Entity\FDCPageParticipateSection $FDCPageParticipate
-     * @return FDCPageParticipateSectionWidget
+     * @param \Base\CoreBundle\Entity\PressDownloadSection $pressDownload
+     * @return PressDownloadSectionWidget
      */
-    public function setFDCPageParticipate(\Base\CoreBundle\Entity\FDCPageParticipateSection $FDCPageParticipate = null)
+    public function setPressDownload(\Base\CoreBundle\Entity\FDCPageParticipateSection $pressDownload = null)
     {
-        $this->FDCPageParticipate = $FDCPageParticipate;
+        $this->pressDownload = $pressDownload;
 
         return $this;
     }
 
     /**
-     * Get FDCPageParticipate
+     * Get pressDownload
      *
-     * @return \Base\CoreBundle\Entity\FDCPageParticipateSection
+     * @return \Base\CoreBundle\Entity\PressDownloadSection
      */
-    public function getFDCPageParticipate()
+    public function getPressDownload()
     {
-        return $this->FDCPageParticipate;
+        return $this->pressDownload;
     }
 
     /**

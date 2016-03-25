@@ -21,9 +21,9 @@
                                 </div>
                             </div>
                             <div class="box-body">
-                                {{ form_row(translationsFields.mainTitle) }}
-                                {{ form_row(translationsFields.mainIcon) }}
-                                {{ form_row(translationsFields.mainDescription) }}
+                                {{ form_row(translationsFields.title) }}
+                                {{ form_row(translationsFields.icon) }}
+                                {{ form_row(translationsFields.description) }}
                             </div>
                         </div>
                         <div class="box box-success">
@@ -178,9 +178,9 @@
                                             <span>
                                             {% if form.children.fr.vars.value is not null %}
                                                 <div>
-                                                    {{ form.children.fr.vars.value.mainTitle }}
-                                                    {{ form.children.fr.vars.value.mainIcon }}
-                                                    {{ form.children.fr.vars.value.mainDescription }}
+                                                    {{ form.children.fr.vars.value.title }}
+                                                    {{ form.children.fr.vars.value.icon }}
+                                                    {{ form.children.fr.vars.value.description }}
                                                 </div>
                                             {% endif %}
                                             </span>
