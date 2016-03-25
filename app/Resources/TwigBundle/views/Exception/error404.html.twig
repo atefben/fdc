@@ -1,25 +1,16 @@
 {% trans_default_domain 'FDCEventBundle' %}
-<!DOCTYPE html>
-<html {{ sonata_seo_html_attributes() }}>
-    <head {{ sonata_seo_head_attributes() }}>
-        {{ sonata_seo_title() }}
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {{ sonata_seo_metadatas() }}
-        {{ sonata_seo_link_canonical() }}
-        {{ sonata_seo_lang_alternates() }}
-        {% include 'FDCEventBundle:Base:stylesheet.html.twig' %}
-        {% include 'FDCEventBundle:Base:javascript_head.html.twig' %}
-    </head>
-    <body>
-        {% block pre_home %}
-        {% endblock %}
-        {% include 'FDCEventBundle::header.html.twig' %}
-        {% block body %}
-			ERREUR 404
-        {% endblock %}
-        {% include 'FDCEventBundle:Global:cookies.html.twig' %}
-        {% include 'FDCEventBundle::footer.html.twig' %}
-        {% include 'FDCEventBundle:Base:javascript_footer.html.twig' %}
-        {% include 'FDCEventBundle:Base:javascript.html.twig' %}
-    </body>
-</html>
+{% extends 'FDCEventBundle::layout.html.twig' %}
+{% set locales = [] %}
+{% block body %}
+<div id="main" class="loading error-not-found">
+       <div class="vCenter">
+         <div class="vCenterKid">
+           <div class="texts">
+            <h1>Error 404</h1>
+            <p>The page you are trying to view does not exist.<br />It's possible that its content is currently being translated.<br />Please try again later.</p>
+             <a href="/"><i class="icon icon_fleche-right"></i> return to news</a>
+           </div>
+         </div>
+       </div>
+    </div>
+{% endblock %}

@@ -447,6 +447,15 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: EventWidgetVideoYoutube, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.event_widget_subtitle_dummy:
+        class: Base\AdminBundle\Admin\EventWidgetSubtitleDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventWidgetSubtitle, BaseAdminBundle:EventWidgetSubtitleDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: EventWidgetSubtitle, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
      #end event widgets
 
     base.admin.news_widget_audio_dummy:
@@ -712,6 +721,8 @@ services:
         arguments: [~, Base\CoreBundle\Entity\EventFilmProjectionAssociated, BaseAdminBundle:EventFilmProjectionAssociatedAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: EventFilmProjectionAssociated, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     #INFO 
     base.admin.info_widget_image_dummy:
@@ -1107,4 +1118,3 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: AmazonRemoteFile, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-

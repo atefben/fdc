@@ -2,13 +2,9 @@
 
 namespace Base\CoreBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
-
 use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\Since;
 /**
  * NewsWidgetImage
  *
@@ -19,6 +15,7 @@ use JMS\Serializer\Annotation\Since;
 class NewsWidgetImage extends NewsWidget
 {
     /**
+     * @var Gallery
      * @ORM\ManyToOne(targetEntity="Gallery")
      * @Groups({"news_list", "news_show"})
      */
@@ -27,10 +24,10 @@ class NewsWidgetImage extends NewsWidget
     /**
      * Set gallery
      *
-     * @param \Base\CoreBundle\Entity\Gallery $gallery
+     * @param Gallery $gallery
      * @return NewsWidgetImage
      */
-    public function setGallery(\Base\CoreBundle\Entity\Gallery $gallery = null)
+    public function setGallery(Gallery $gallery = null)
     {
         $this->gallery = $gallery;
 
@@ -40,7 +37,7 @@ class NewsWidgetImage extends NewsWidget
     /**
      * Get gallery
      *
-     * @return \Base\CoreBundle\Entity\Gallery
+     * @return Gallery
      */
     public function getGallery()
     {

@@ -81,11 +81,28 @@
                         {% endif %}
                         </ul>
                     </li>
-                {% elseif menu.route == 'fdc_event_participate_prepare' or menu.route == 'fdc_press_news_home' %}
+                {% elseif menu.route == 'fdc_event_participate_prepare' %}
                     {% if menu.enabled == true %}
                         <li class="participate-wrapper">
                             <a href="{{ path(menu.route) }}" class="participate">
                                 <i class="icon icon_participer"></i>{{ menu.transName|trans }}
+                            </a>
+                            {% if menu['__children'] is defined %}
+                                <ul>
+                                    {% for child in menu['__children'] %}
+                                        {% if child.enabled %}
+                                            <li><a href="{{ path(child.route) }}"> {{ child.transName|trans }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endif %}
+                {% elseif menu.route == 'fdc_press_news_home' %}
+                    {% if menu.enabled == true %}
+                        <li>
+                            <a href="{{ path(menu.route) }}" class="press">
+                                <i class="icon icon_espace-presse"></i>{{ menu.transName|trans }}
                             </a>
                             {% if menu['__children'] is defined %}
                                 <ul>

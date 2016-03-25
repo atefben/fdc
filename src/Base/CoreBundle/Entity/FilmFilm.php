@@ -62,6 +62,20 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @Gedmo\Slug(fields={"titleVO"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     *
+     * @Groups({
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show",
+     *     "film_selection_section_show"
+     * })
      */
     private $slug;
 

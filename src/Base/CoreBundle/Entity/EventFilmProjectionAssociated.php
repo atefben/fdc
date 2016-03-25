@@ -44,6 +44,13 @@ class EventFilmProjectionAssociated
      */
     protected $association;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $position = 0;
+
     public function __toString()
     {
         $string = substr(strrchr(get_class($this), '\\'), 1);
@@ -116,5 +123,28 @@ class EventFilmProjectionAssociated
     public function getAssociation()
     {
         return $this->association;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return EventFilmProjectionAssociated
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

@@ -2,14 +2,8 @@
 
 namespace Base\CoreBundle\Entity;
 
-use \DateTime;
-
-use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-use Base\CoreBundle\Util\Time;
 
 /**
  * EventWidgetVideo
@@ -21,20 +15,19 @@ use Base\CoreBundle\Util\Time;
 class EventWidgetVideo extends EventWidget
 {
     /**
-     * @var \Application\Sonata\MediaBundle\Entity\Media
+     * @var MediaVideo
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="MediaVideo")
      */
     private $file;
 
     /**
      * Set file
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return EventWidgetVideo
+     * @param MediaVideo $file
+     * @return $this
      */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    public function setFile(MediaVideo $file)
     {
         $this->file = $file;
 
@@ -44,7 +37,7 @@ class EventWidgetVideo extends EventWidget
     /**
      * Get file
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     * @return MediaVideo
      */
     public function getFile()
     {
