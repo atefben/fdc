@@ -65,8 +65,6 @@ class SocialWallInstagramController extends FOSRestController
         // get items
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
-//        dump($query->getQuery()->getResult());exit;
-
         // set context view
         $groups = array('social_wall_list');
         $context = $coreManager->setContext($groups, $paramFetcher);

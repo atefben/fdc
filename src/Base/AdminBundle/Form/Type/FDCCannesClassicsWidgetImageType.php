@@ -7,48 +7,48 @@ use Sonata\AdminBundle\Form\DataTransformer\ModelToIdTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * EventWidgetImageDualAlignType class.
+ * FDCCannesClassicsWidgetImageType class.
  *
- * \@extends EventWidgetType
+ * \@extends FDCCannesClassicsWidgetType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class EventWidgetImageDualAlignType extends EventWidgetType
+class FDCCannesClassicsWidgetImageType extends FDCCannesClassicsWidgetType
 {
 
     /**
      * dataClass
      *
-     * (default value: 'Base\\CoreBundle\\Entity\\EventWidgetImageDualAlign')
+     * (default value: 'Base\\CoreBundle\\Entity\\FDCCannesClassicsWidgetImage')
      *
      * @var string
      * @access protected
      */
-    protected $dataClass = 'Base\\CoreBundle\\Entity\\EventWidgetImageDualAlign';
+    protected $dataClass = 'Base\\CoreBundle\\Entity\\FDCCannesClassicsWidgetImage';
 
     /**
-     * eventWidgetImageDummyAdmin
+     * FDCCannesClassicsWidgetImageDummyAdmin
      *
      * @var mixed
      * @access private
      */
-    private $eventWidgetImageDummyAdmin;
+    private $FDCCannesClassicsWidgetImageDummyAdmin;
 
     private $galleryAdmin;
 
     /**
-     * setEventWidgetImageDummyAdmin function.
+     * setFDCCannesClassicsWidgetImageDummyAdmin function.
      *
      * @access public
-     * @param mixed $eventWidgetImageDummyAdmin
+     * @param mixed $FDCCannesClassicsWidgetImageDummyAdmin
      * @return void
      */
-    public function setEventWidgetImageDummyAdmin($eventWidgetImageDummyAdmin)
+    public function setFDCCannesClassicsWidgetImageDummyAdmin($FDCCannesClassicsWidgetImageDummyAdmin)
     {
-        $this->eventWidgetImageDummyAdmin = $eventWidgetImageDummyAdmin;
+        $this->FDCCannesClassicsWidgetImageDummyAdmin = $FDCCannesClassicsWidgetImageDummyAdmin;
     }
 
-    public function setGalleryAdmin($galleryAdmin)
+    public function setgalleryAdmin($galleryAdmin)
     {
         $this->galleryAdmin = $galleryAdmin;
     }
@@ -65,10 +65,9 @@ class EventWidgetImageDualAlignType extends EventWidgetType
     {
         parent::buildForm($builder, $options);
         $builder->add('gallery', 'sonata_type_model_list', array(
-            'sonata_field_description' => $this->eventWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
-            'model_manager'            => $this->galleryAdmin->getModelManager(),
-            'class'                    => $this->galleryAdmin->getClass(),
-            'label'                    => false,
+            'model_manager' => $this->galleryAdmin->getModelManager(),
+            'class' => $this->galleryAdmin->getClass(),
+            'label' => false
         ));
     }
 
@@ -80,6 +79,6 @@ class EventWidgetImageDualAlignType extends EventWidgetType
      */
     public function getName()
     {
-        return 'event_widget_image_dual_align_type';
+        return 'fdc_cannes_classics_widget_image_type';
     }
 }

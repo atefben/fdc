@@ -238,19 +238,21 @@
                                                     <h4><strong>{{ 'form.widget.image_dual_align'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'event_widget_quote_type' %}
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'event_widget_subtitle_type' %}
+                                                    <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
                                                 {% if widget.children._type.vars.value == 'event_widget_text_type' or
                                                 widget.children._type.vars.value == 'event_widget_video_youtube_type' or
-                                                widget.children._type.vars.value == 'event_widget_quote_type'
+                                                widget.children._type.vars.value == 'event_widget_quote_type' or
+                                                widget.children._type.vars.value == 'event_widget_subtitle_type'
                                                 %}
                                                     {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% endif %}
 
                                                 {% if widget.children._type.vars.value == 'event_widget_video_type' %}
-                                                    {{ dump(widget.children.file.vars.data) }}
-                                                    {#{% set fileTranslations = (widget.children.file.vars.data is not null) ? widget.children.file.vars.data.translations : null %}
+                                                    {% set fileTranslations = (widget.children.file.vars.data is not null) ? widget.children.file.vars.data.translations : null %}
                                                     <div class="form-group">
                                                         <label class="control-label">
                                                             {{ 'form.label_file'|trans }}
@@ -270,7 +272,7 @@
                                                                 </a>
                                                             {% endif %}
                                                         </div>
-                                                    </div>#}
+                                                    </div>
                                                 {% elseif widget.children._type.vars.value == 'event_widget_video_youtube_type' %}
                                                     {% set imageTranslations = (widget.children.image.vars.data is not null) ? widget.children.image.vars.data.translations : null %}
                                                     <div class="form-group">

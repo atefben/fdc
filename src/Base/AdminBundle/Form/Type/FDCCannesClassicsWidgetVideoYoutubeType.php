@@ -7,23 +7,24 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Url;
 
 /**
- * EventWidgetVideoYoutubeType class.
+ * FDCCannesClassicsWidgetVideoYoutubeType class.
  *
- * \@extends NewsWidgetType
+ * \@extends FDCCannesClassicsWidgetType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class EventWidgetVideoYoutubeType extends EventWidgetType
+class FDCCannesClassicsWidgetVideoYoutubeType extends FDCCannesClassicsWidgetType
 {
     /**
      * dataClass
      *
-     * (default value: 'Base\\CoreBundle\\Entity\\EventWidgetVideoYoutubeType')
+     * (default value: 'Base\\CoreBundle\\Entity\\FDCCannesClassicsWidgetVideoYoutubeType')
      *
      * @var string
      * @access protected
      */
-    protected $dataClass = 'Base\\CoreBundle\\Entity\\EventWidgetVideoYoutube';
+    protected $dataClass = 'Base\\CoreBundle\\Entity\\FDCCannesClassicsWidgetVideoYoutube';
+
     /**
      * admin
      *
@@ -81,8 +82,8 @@ class EventWidgetVideoYoutubeType extends EventWidgetType
                             new Url()
                         ),
                         'required' => true,
-                        'label' => 'form.label_news_widget_video_youtube_url',
-                        'sonata_help' => 'form.news_widget_video_youtube.helper_url',
+                        'label' => 'form.label_FDCCannesClassics_widget_video_youtube_url',
+                        'sonata_help' => 'form.FDCCannesClassics_widget_video_youtube.helper_url',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'title' => array(
@@ -90,7 +91,7 @@ class EventWidgetVideoYoutubeType extends EventWidgetType
                             new NotBlank()
                         ),
                         'required' => true,
-                        'label' => 'form.label_news_widget_video_youtube_title',
+                        'label' => 'form.label_FDCCannesClassics_widget_video_youtube_title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'createdAt' => array(
@@ -119,6 +120,6 @@ class EventWidgetVideoYoutubeType extends EventWidgetType
      */
     public function getName()
     {
-        return 'event_widget_video_youtube_type';
+        return 'fdc_cannes_classics_widget_video_youtube_type';
     }
 }
