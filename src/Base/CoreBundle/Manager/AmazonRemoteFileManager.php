@@ -31,7 +31,8 @@ class AmazonRemoteFileManager
     {
         $i = 0;
         foreach ($files as $key => $file) {
-			$entity = $em->getRepository('AmazonRemoteFile')->findOneBy(array('id' => $file['id']));
+			$em = $args->getEntityManager();
+			$entity = $em->getRepository('BaseCoreBundle:AmazonRemoteFile')->findOneBy(array('id' => $file['id']));
 			if ($entity == null)
 			{
 	            $amazonRemoteFile = new AmazonRemoteFile();
