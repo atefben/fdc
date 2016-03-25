@@ -8,7 +8,7 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Util\Time;
 
 /**
- * FDCPageParticipateSectionWidgetTypeOneTranslation
+ * FDCPageParticipateSectionWidgetTypeoneTranslation
  *
  * @ORM\Table()
  * @ORM\Entity
@@ -38,13 +38,12 @@ class FDCPageParticipateSectionWidgetTypeoneTranslation
     /**
      * Set label
      *
-     * @param string $label
-     * @return FDCPageParticipateSectionWidgetDocumentTranslation
+     * @param string $title
+     * @return FDCPageParticipateSectionWidgetTypeoneTranslation
      */
     public function setTitle($title)
     {
         $this->title = $title;
-
         return $this;
     }
 
@@ -62,12 +61,11 @@ class FDCPageParticipateSectionWidgetTypeoneTranslation
      * Set content
      *
      * @param string $content
-     * @return FDCPageParticipateSectionWidgetDocumentTranslation
+     * @return FDCPageParticipateSectionWidgetTypeoneTranslation
      */
     public function setContent($content)
     {
         $this->content = $content;
-
         return $this;
     }
 

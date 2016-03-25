@@ -79,6 +79,122 @@ class FDCPageParticipateSectionWidgetTypefiveType extends FDCPageParticipateSect
                             )
                         )
                     ),
+
+                    'oneTitle' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'oneIcon' => array(
+                        'field_type' => 'choice',
+                        'choices' => array(
+                            'icon_enregistreur' => 'Appareil photo',
+                            'icon_selfie' => 'Selfie',
+                            'icon_telephone' => 'Téléphone',
+                            'icon_dress-code' => 'Noeud papillon',
+                        ),
+                        'label' => 'form.label_information_icon',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'choice_translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'oneDescription' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_content',
+                        'sonata_help' => 'form.press_homepage.helper_desc',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'widget'
+                    ),
+
+                    'twoTitle' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'twoIcon' => array(
+                        'field_type' => 'choice',
+                        'choices' => array(
+                            'icon_enregistreur' => 'Appareil photo',
+                            'icon_selfie' => 'Selfie',
+                            'icon_telephone' => 'Téléphone',
+                            'icon_dress-code' => 'Noeud papillon',
+                        ),
+                        'label' => 'form.label_information_icon',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'choice_translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'twoDescription' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_content',
+                        'sonata_help' => 'form.press_homepage.helper_desc',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'widget'
+                    ),
+
+                    'threeTitle' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'threeIcon' => array(
+                        'field_type' => 'choice',
+                        'choices' => array(
+                            'icon_enregistreur' => 'Appareil photo',
+                            'icon_selfie' => 'Selfie',
+                            'icon_telephone' => 'Téléphone',
+                            'icon_dress-code' => 'Noeud papillon',
+                        ),
+                        'label' => 'form.label_information_icon',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'choice_translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'threeDescription' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_content',
+                        'sonata_help' => 'form.press_homepage.helper_desc',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'widget'
+                    ),
+
+                    'fourTitle' => array(
+                        'label' => 'form.label_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'locale_options' => array(
+                            'fr' => array(
+                                'required' => true
+                            )
+                        )
+                    ),
+                    'fourIcon' => array(
+                        'field_type' => 'choice',
+                        'choices' => array(
+                            'icon_enregistreur' => 'Appareil photo',
+                            'icon_selfie' => 'Selfie',
+                            'icon_telephone' => 'Téléphone',
+                            'icon_dress-code' => 'Noeud papillon',
+                        ),
+                        'label' => 'form.label_information_icon',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'choice_translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'fourDescription' => array(
+                        'field_type' => 'ckeditor',
+                        'label' => 'form.label_content',
+                        'sonata_help' => 'form.press_homepage.helper_desc',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'widget'
+                    ),
                 )
             ));
 

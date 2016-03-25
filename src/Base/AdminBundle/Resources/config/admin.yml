@@ -924,7 +924,7 @@ services:
         class: Base\AdminBundle\Admin\FDCPageParticipateAdmin
         arguments: [~, Base\CoreBundle\Entity\FDCPageParticipate, BaseAdminBundle:FDCPageParticipateAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, label: entity.fdc_page_participate, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.participate, label: entity.fdc_page_participate, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -932,7 +932,7 @@ services:
         class: Base\AdminBundle\Admin\FDCPageParticipateSectionAdmin
         arguments: [~, Base\CoreBundle\Entity\FDCPageParticipateSection, BaseAdminBundle:FDCPageParticipateSectionAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, label: entity.fdc_page_participate_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.participate, label: entity.fdc_page_participate_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
