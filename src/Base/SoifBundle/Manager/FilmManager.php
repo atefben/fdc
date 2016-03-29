@@ -295,6 +295,9 @@ class FilmManager extends CoreManager
         // set film elements multimedia
         if (property_exists($resultObject, 'FilmElementsMultimedias') && property_exists($resultObject->FilmElementsMultimedias, 'ElementMultimediaRefDto')) {
             $collection = new ArrayCollection();
+            if (gettype($resultObject->FilmElementsMultimedias->ElementMultimediaRefDto) == 'object') {
+                $resultObject->FilmElementsMultimedias->ElementMultimediaRefDto = array($resultObject->FilmElementsMultimedias->ElementMultimediaRefDto);
+            }
             foreach ($resultObject->FilmElementsMultimedias->ElementMultimediaRefDto as $filmFilmMedia) {
                 // find if filmMedia already exists
                 $entityRelated = $this->em->getRepository('BaseCoreBundle:FilmFilmMedia')->findOneBy(array(

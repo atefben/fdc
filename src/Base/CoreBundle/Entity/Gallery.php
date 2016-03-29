@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Base\AdminBundle\Component\Admin\Export;
+use Base\CoreBundle\Util\TruncatePro;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -21,6 +22,7 @@ use JMS\Serializer\Annotation\Groups;
 class Gallery
 {   
     use Time;
+    use TruncatePro;
 
     /**
      * @var integer
@@ -58,7 +60,8 @@ class Gallery
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+            $string .= ' "' . $this->getName() . '"';
+            $string = $this->truncate($string, 40, '..."', true);
         }
 
         return $string;
