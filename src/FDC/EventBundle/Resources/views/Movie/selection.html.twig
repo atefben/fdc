@@ -22,7 +22,7 @@
                         {% for movie in movies %}
                             {% set media = movie|film_poster %} {# Implements film images fallback #}
                             {% if media is null %}
-                                {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                                {% set media = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
                             {% endif %}
                             <div class="item">
                                 <figure>
