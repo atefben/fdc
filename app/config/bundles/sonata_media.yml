@@ -194,7 +194,7 @@ sonata_media:
 
     providers:
         image:
-            filesystem: sonata.media.filesystem.s3
+       #     filesystem: sonata.media.filesystem.s3
             allowed_extensions: ['jpg', 'png', 'jpeg', 'gif']
             allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png', 'image/gif']
 

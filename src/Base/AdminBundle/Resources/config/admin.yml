@@ -292,6 +292,12 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.fdc_page_la_selection_cannes_classics:
+        class: Base\AdminBundle\Admin\FDCPageLaSelectionCannesClassicsAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics, BaseAdminBundle:FDCPageLaSelectionCannesClassicsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageLaSelectionCannesClassics, label_translator_strategy: sonata.admin.label.strategy.underscore}
+
     base.admin.fdc_page_la_selection:
         class: Base\AdminBundle\Admin\FDCPageLaSelectionAdmin
         arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelection, BaseAdminBundle:FDCPageLaSelectionAdmin]
@@ -331,7 +337,6 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageEvent, label_translator_strategy: sonata.admin.label.strategy.underscore, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-
     #end SEO
 
     base.admin.film_jury_type:
@@ -1157,4 +1162,3 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: AmazonRemoteFile, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
-

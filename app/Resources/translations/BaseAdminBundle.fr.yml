@@ -426,6 +426,7 @@ dashboard:
         fdc_page_web_tv_trailers_courts_metrages: WebTV - BA et extraits (Courts métrages)
         fdc_page_web_tv_trailers_cannes_classics: WebTV - BA et extraits (Cannes Classics)
         fdc_page_web_tv_trailers_cinema_plage: WebTV - BA et extraits (Cinéma de plage)
+        fdc_page_la_selection_cannes_classics: La sélection CANNES CLASSICS
         fdc_page_la_selection_competition: La sélection COMPETITION
         fdc_page_la_selection_certain_regard: La sélection UN CERTAIN REGARD
         fdc_page_la_selection_hors_competition: La sélection HORS COMPÉTITION
@@ -463,7 +464,7 @@ dashboard:
 
 form:
     seo:
-        helper_file: Dimensions attendues : 1200x627. Format attendu : .jpg, .png
+        helper_file: Dimensions attendues : 1200x627. Format attendu : .jpg, .png, .gif
     tag:
         helper_name: 255 caractères max.
     translate_option:
@@ -488,13 +489,13 @@ form:
         festival: Année du festival
     news:
         helper_header_audio: Lorem ipsum sit dolor amet.
-        helper_header_image: "Dimensions attendues : 2560x1620 - ratio paysage. Format attendu : .jpg, .png"
+        helper_header_image: "Dimensions attendues : 2560x1620 - ratio paysage. Format attendu : .jpg, .png, .gif"
         helper_title: "255 caractères max."
         helper_seo_title: "Recommandé : 60 caractères"
         helper_description: "Recommandé : 155 caractères"
         helper_file: |
             Par défaut, c'est l'image principale qui est utilisée comme image de partage.
-            Dimensions attendues : 2560x1620 - ratio paysage. Format attendu : .jpg, .png
+            Dimensions attendues : 2560x1620 - ratio paysage. Format attendu : .jpg, .png, .gif
         helper_news_association: Sélectionnez 2 actualités au maximum. Ils apparaitront en front-office en bas de l'article.
         helper_signature: 255 caractères max.
         helper_widgets: Ajouter un module de type :
@@ -540,11 +541,11 @@ form:
         helper_copyright: 255 caractères max. Le symbole © est généré automatiquement.
         helper_tags: Ajoutez des tags à l'article pour le voir ressortir dans les résultats de recherche.
     media_image:
-        helper_file: Dimensions attendues : 2560x1620 - ratio paysage. Format attendu : .jpg, .png
+        helper_file: Dimensions attendues : 2560x1620 - ratio paysage. Format attendu : .jpg, .png, .gif
         displayed_home: Remonter dans le diaporama du quotidien en homepage
         displayed_all: Remonter dans "Toutes les photos"
     media_image_simple:
-        helper_file: Dimensions attendues : A adapter selon la page cible. Format attendu : .jpg, .png
+        helper_file: Dimensions attendues : A adapter selon la page cible. Format attendu : .jpg, .png, .gif
     news_widget_video_youtube:
         helper_url: URL de la vidéo Youtube (ex: https://www.youtube.com/watch?v=-NDYBoQWOrU)
     film:
@@ -710,7 +711,7 @@ form:
         label_header: Chapeau
     web_tv:
         helper_name: 255 caractères max.
-        helper_image:  Dimensions attendues : 1280x808. Format attendu : .jpg, .png. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.
+        helper_image:  Dimensions attendues : 1280x808. Format attendu : .jpg, .png, .gif. En laissant ce champ vide, c'est l'image de la dernière vidéo associée à la chaîne qui sera utilisée en tant qu'image de présentation de la chaîne.
     contact_theme:
         helper_theme: 255 caractères max.
     status:
