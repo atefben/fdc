@@ -68,7 +68,9 @@ abstract class Media implements TranslateMainInterface
      * @Groups({
      *     "live",
      *     "web_tv_show",
-     *     "film_show"
+     *     "film_show",
+     *     "news_list",
+     *     "news_show"
      * })
      */
     private $publishedAt;
@@ -80,7 +82,9 @@ abstract class Media implements TranslateMainInterface
      * @Groups({
      *     "live",
      *     "web_tv_show",
-     *     "film_show"
+     *     "film_show",
+     *     "news_list",
+     *     "news_show"
      * })
      *
      */
