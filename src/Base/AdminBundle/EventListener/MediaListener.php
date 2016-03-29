@@ -214,7 +214,7 @@ class MediaListener
         $path_video_output = 'media_video_encoded' . '/direct_encoded/';
         //$mediaVideo->getAmazonRemoteFile()->getId();
         $s3 = S3Client::factory(array('key'    => 'AKIAJHXD67GEPPA2F4TQ','secret' => '8TtlhHgQEIPwQBQiDqCzG7h5Eq856H2jst1PtER6'));
-		$info = $s3->getObjectInfo('ohwee-symfony-test-video', array($path_video_output .  str_replace('.mov', '.mp4', $file_name)));
+		$info = $s3->getObjectInfo('ohwee-symfony-test-video', $path_video_output .  str_replace('.mov', '.mp4', $file_name));
 		if ($info)
 		{
 			$mediaVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
