@@ -2,17 +2,16 @@
 
 <div class="image-wrapper">
 
-
 {%  if channel.image is defined and channel.image is not null  %}
     {% set transImage = channel.image.findTranslationByLocale(app.request.locale) %}
     {% if transImage is null or transImage.file is null %}
         {% set transImage = channel.image.findTranslationByLocale('fr') %}
     {% endif %}
     {% thumbnail transImage.file, '586x370' %}
-{% elseif channel.mediaVideos[0].image is defined and channel.mediaVideos[0].image != null %}
-    {% thumbnail channel.mediaVideos[0].image|trans_fallback('file'), '586x370' %}
+{% elseif channel.availableChannels|last.image is defined and channel.availableChannels|last.image != null %}
+    <img src="{{ media_public_url(channel.availableChannels|last.image|trans_fallback('file'), '293x185') }}" alt="">
 {% else %}
-    {% thumbnail channel.mediaVideos[0]|trans_fallback('imageAmazonUrl'), '586x370' %}
+    <img src="{{ s3_server_global ~ channel.availableChannels|last|trans_fallback('imageAmazonUrl') }}" alt="">
 {% endif %}
 
 </div>
@@ -26,7 +25,7 @@
             <div class="vCenterKid">
                 <a href="{{ path('fdc_event_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}" class="category">{{ channel|trans_fallback('name') }}</a>
                 <span>
-                    {{ 'webtv.direct.nb_videos'|transchoice(channel.mediaVideos|length) }}
+                    {{ 'webtv.direct.nb_videos'|transchoice(channel.availableChannels|length) }}
                 </span>
             </div>
         </div>
