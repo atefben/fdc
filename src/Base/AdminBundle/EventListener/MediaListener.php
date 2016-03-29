@@ -212,7 +212,7 @@ class MediaListener
         $path_video_input = $file_path['0'] . '/';
         $path_video_output = 'media_video_encoded' . '/direct_encoded/';
         //$mediaVideo->getAmazonRemoteFile()->getId();
-        $s3 = S3::factory(array(
+        $s3 = S3Client::factory(array(
             'credentials' => array(
                 'key'    => 'AKIAJHXD67GEPPA2F4TQ',
                 'secret' => '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',
