@@ -1,0 +1,2 @@
+INSERT INTO `fdcpage_la_selection_cannes_classics` (`id`, `cover_id`, `selection_section_id`, `seo_file_id`, `created_at`, `updated_at`, `translate`, `translate_options`, `priority_status`) VALUES
+(1, NULL, NULL, NULL, '2016-03-22 19:13:28', '2016-03-22 19:13:28', 0, 'N;', 1);

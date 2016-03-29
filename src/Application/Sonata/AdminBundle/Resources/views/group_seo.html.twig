@@ -5,7 +5,8 @@
     'admin_base_core_fdcpagelaselection_edit',
     'admin_base_core_fdcpagejury_edit',
     'admin_base_core_fdcpageaward_edit',
-    'admin_base_core_fdcpageevent_edit'
+    'admin_base_core_fdcpageevent_edit',
+    'admin_base_core_fdcpagelaselectioncannesclassics_edit'
     ] %}
     <li class="treeview{% if app.request.attributes.get('_route') in activePages %} active{% endif %}">
         <a href="#">
@@ -139,6 +140,12 @@
                     <a href="{{ path('admin_base_core_fdcpagelaselection_edit', {id: admin_fdc_page_la_selection_courts_metrages_id}) }}">
                         <i class="fa fa-angle-double-right"></i>
                         {{ 'dashboard.link.fdc_page_la_selection_courts_metrages'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpagelaselectioncannesclassics_edit', {id: admin_fdc_page_la_selection_cannes_classics_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_la_selection_cannes_classics'|trans({}, 'BaseAdminBundle') }}
                     </a>
                 </li>
             {% endif %}

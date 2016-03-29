@@ -192,3 +192,4 @@ parameters:
     admin_fdc_page_news_audios_id: ~
     admin_fdc_page_news_images_id: ~
     admin_fdc_page_news_videos_id: ~
+    admin_fdc_page_la_selection_cannes_classics_id: 1

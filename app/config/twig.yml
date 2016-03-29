@@ -73,3 +73,4 @@ twig:
         admin_fdc_page_award_camera_dor_id: %admin_fdc_page_award_camera_dor_id%
         admin_fdc_page_award_all_awards_id: %admin_fdc_page_award_all_awards_id%
         admin_fdc_page_event_id: %admin_fdc_page_event_id%
+        admin_fdc_page_la_selection_cannes_classics_id: %admin_fdc_page_la_selection_cannes_classics_id%

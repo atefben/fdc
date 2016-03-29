@@ -275,7 +275,7 @@
     </div>
 {% endblock %}
 
-{% block fdc_cannes_classics_widget_text_type_widget %}
+{% block fdc_page_la_selection_cannes_classics_widget_text_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
         <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
@@ -675,7 +675,7 @@
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
         {{ form_label(form.children.image) }}
-        <span class="help-block sonata-ba-field-help">Dimensions attendues : 976*535.  Format attendu : .jpg, .png.</span>
+        <span class="help-block sonata-ba-field-help">Dimensions attendues : 976*535.  Format attendu : .jpg, .png, .gif.</span>
         {{ form_widget(form.children.image) }}
         {{ form_row(form.children.video) }}
         {{ form_row(form.children.file) }}
