@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use JMS\DiExtraBundle\Annotation as DI;
 
@@ -19,13 +20,8 @@ use Base\CoreBundle\Entity\InfoArticleTranslation;
 class InfoRepository extends EntityRepository
 {
 
-    public function getNewsApiSameDayInfos($festival, $locale, $dateTime)
+    public function getNewsApiSameDayInfos($locale, FilmFestival $festival, \DateTime $dateTime)
     {
-        $morning = clone $dateTime;
-        $morning->setTime(0, 0, 0);
-        $midnight = clone $dateTime;
-        $midnight->setTime(23, 59, 59);
-
         $qb = $this
             ->createQueryBuilder('n')
             ->select('n,
@@ -40,13 +36,28 @@ class InfoRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->andWhere('n.festival = :festival')
-            ->andWhere('n.publishedAt BETWEEN :morning AND :midnight')
-            ->andWhere('n.publishedAt <= :datetime')
-            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;
 
+        if ($festival->getFestivalStartsAt() > $dateTime || $festival->getFestivalEndsAt() < $dateTime) {
+            $this->addMasterQueries($qb, 'n', $festival, true);
+        } else {
+            $morning = clone $dateTime;
+            $morning->setTime(0, 0, 0);
+            $midnight = clone $dateTime;
+            $midnight->setTime(23, 59, 59);
 
-        $qb = $qb
+            $qb
+                ->andWhere('n.festival = :festival')
+                ->andWhere('n.publishedAt BETWEEN :morning AND :midnight')
+                ->andWhere('n.publishedAt <= :datetime')
+                ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+                ->setParameter('datetime', $dateTime)
+                ->setParameter('morning', $morning)
+                ->setParameter('midnight', $midnight)
+            ;
+        }
+
+        $qb
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
@@ -58,7 +69,7 @@ class InfoRepository extends EntityRepository
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->andWhere(
                     '(na1t.locale = :locale AND na1t.status = :status_translated) OR
                     (na2t.locale = :locale AND na2t.status = :status_translated) OR
@@ -70,17 +81,12 @@ class InfoRepository extends EntityRepository
             ;
         }
 
-        $qb = $qb
+        return $qb
             ->addOrderBy('n.publishedAt', 'desc')
-            ->setParameter('festival', $festival)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('morning', $morning)
-            ->setParameter('midnight', $midnight)
+            ->setParameter('festival', $festival->getId())
             ->getQuery()
             ->getResult()
         ;
-
-        return $qb;
     }
 
     public function getInfoBySlug($slug, $festival, $locale, $isAdmin, $repository)

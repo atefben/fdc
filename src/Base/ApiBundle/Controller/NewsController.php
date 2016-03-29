@@ -80,10 +80,7 @@ class NewsController extends FOSRestController
         $infos = $this->getApiSameDayInfos($festival, $lang);
         $statements = $this->getApiSameDayStatements($festival, $lang);
 
-        $output['news'] = array_merge($news, $infos, $statements);
-        ksort($output['news']);
-
-        $output['news'] = array_values($output['news']);
+        $output['news'] = $this->buildDaysGroup(array_merge($news, $infos, $statements));
 
         // projections
         $output['projections'] = $this
@@ -93,12 +90,13 @@ class NewsController extends FOSRestController
             ->getNewsApiProjections($festival, new DateTime())
         ;
 
-        $output['images'] = $this
+        $images = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:MediaImage')
-            ->getNewsApiImages($festival, $lang, new \DateTime())
+            ->getNewsApiImages($lang, $festival, new DateTime())
         ;
+        $output['images'] = $this->buildDaysGroup($images);
 
         // set context view
         $groups = array('news_list');
@@ -121,13 +119,7 @@ class NewsController extends FOSRestController
             ->getRepository('BaseCoreBundle:News')
             ->getNewsApiSameDayNews($locale, $festival, new \DateTime())
         ;
-
-        $news = array();
-        foreach ($items as $item) {
-            $key = $item->getPublishedAt()->format('Y-m-d-H-i-s') . '-news-' . $item->getId();
-            $news[$key] = $item;
-        }
-        return $news;
+        return $items ? $items : array();
     }
 
     public function getApiSameDayInfos($festival, $locale)
@@ -136,15 +128,9 @@ class NewsController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getNewsApiSameDayInfos($festival, $locale, new \DateTime())
+            ->getNewsApiSameDayInfos($locale, $festival, new \DateTime())
         ;
-
-        $infos = array();
-        foreach ($items as $item) {
-            $key = $item->getPublishedAt()->format('Y-m-d-H-i-s') . '-info-' . $item->getId();
-            $infos[$key] = $item;
-        }
-        return $infos;
+        return $items ? $items : array();
     }
 
     public function getApiSameDayStatements($festival, $locale)
@@ -153,17 +139,9 @@ class NewsController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getNewsApiSameDayStatements($festival, $locale, new \DateTime())
+            ->getNewsApiSameDayStatements($locale, $festival, new \DateTime())
         ;
-
-        $statements = array();
-        foreach ($items as $item) {
-            $key = $item->getPublishedAt()->format('Y-m-d-H-i-s') . '-statement-' . $item->getId();
-            $statements[$key] = $item;
-        }
-
-
-        return $statements;
+        return $items ? $items : array();
     }
 
 
@@ -236,6 +214,31 @@ class NewsController extends FOSRestController
         $view->setSerializationContext($context);
 
         return $view;
+    }
+
+    protected function buildDaysGroup($items)
+    {
+        $days = array();
+        foreach ($items as $item) {
+            $dayKey = $item->getPublishedAt()->format("Y-m-d");
+            if (!array_key_exists($dayKey, $days)) {
+                $dateTime = $item->getPublishedAt();
+                $dayTime = clone $dateTime;
+                $days[$dayKey] = array(
+                    'date' => $dayTime,
+                    'news' => array(),
+                );
+            }
+            $itemKey = $item->getPublishedAt()->format('Y-m-d-H-i-s-') . $item->getId() . '-' . strtolower(get_class($item));
+            $days[$dayKey]['news'][$itemKey] = $item;
+        }
+
+        foreach ($days as $key => $value) {
+            krsort($days[$key]['news']);
+            $days[$key]['news'] = array_values($days[$key]['news']);
+        }
+        ksort($days);
+        return array_values($days);
     }
 
 }
