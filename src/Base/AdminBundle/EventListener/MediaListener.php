@@ -39,10 +39,14 @@ class MediaListener
      */
     private $container;
 
-    public function __construct($container)
+    public function __construct()
+    {
+        $this->flush = false;
+    }
+
+    public function setContainer($container)
     {
         $this->container = $container;
-        $this->flush = false;
     }
 
     /**
@@ -223,9 +227,6 @@ class MediaListener
 
     protected function createAmazonVideoJob(MediaVideoTranslation $mediaVideo)
     {
-        /**
-         * @todo create amazon video job here
-         */
 		$file_name = $mediaVideo->getAmazonRemoteFile()->getName();
         $file_path = explode('/', $mediaVideo->getAmazonRemoteFile()->getUrl());
         $path_video_input = $file_path['0'] . '/';
@@ -328,6 +329,7 @@ class MediaListener
     protected function generateThumbnails(MediaInterface $media)
     {
         $provider = $this->container->get($media->getProviderName());
+
         if ($media->getParentVideoTranslation()) {
             $parentVideo = $media->getParentVideoTranslation();
         } elseif ($media->getParentAudioTranslation()) {
