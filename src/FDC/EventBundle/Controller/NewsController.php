@@ -192,10 +192,12 @@ class NewsController extends Controller
         $channels = $homepage->getTopWebTvsAssociated();
 
         foreach($channels as $channel) {
-            $channel->getAssociation()->availableChannels = $this
-                ->getDoctrineManager()
-                ->getRepository('BaseCoreBundle:MediaVideo')
-                ->getAvailableMediaVideosByWebTv($this->getFestival(), $locale, $channel->getAssociation()->getId());
+            if($channel->getAssociation() != null) {
+                $channel->getAssociation()->availableChannels = $this
+                    ->getDoctrineManager()
+                    ->getRepository('BaseCoreBundle:MediaVideo')
+                    ->getAvailableMediaVideosByWebTv($this->getFestival(), $locale, $channel->getAssociation()->getId());
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////////////////
