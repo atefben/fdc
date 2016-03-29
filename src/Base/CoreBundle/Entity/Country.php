@@ -48,7 +48,8 @@ class Country implements TranslateMainInterface
      *  "trailer_list", "trailer_show",
      *  "award_list", "award_show",
      *  "projection_list", "projection_show",
-     *     "film_show"
+     *     "film_show",
+     *     "film_selection_section_show"
      * })
      */
     private $iso;
@@ -90,7 +91,8 @@ class Country implements TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "film_show"
+     *     "film_show",
+     *     "film_selection_section_show"
      * })
      */
     protected $translations;

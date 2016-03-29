@@ -49,7 +49,8 @@ class FilmPerson implements TranslateMainInterface
      *     "projection_list",
      *     "projection_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "film_selection_section_show"
      * })
      */
     private $id;
@@ -57,12 +58,39 @@ class FilmPerson implements TranslateMainInterface
     /**
      * @var MediaImageSimple
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     * @Groups({
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show",
+     *     "film_selection_section_show"
+     * })
      */
     private $portraitImage;
 
     /**
      * @var MediaImageSimple
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     *
+     * @Groups({
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show",
+     *     "film_selection_section_show"
+     * })
      */
     private $landscapeImage;
 
@@ -76,6 +104,20 @@ class FilmPerson implements TranslateMainInterface
     /**
      * @var MediaImageSimple
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     *
+     * @Groups({
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show",
+     *     "film_selection_section_show"
+     * })
      */
     private $presidentJuryImage;
 
@@ -105,7 +147,8 @@ class FilmPerson implements TranslateMainInterface
      *     "projection_show",
      *     "news_list",
      *     "news_show",
-     *     "home"
+     *     "home",
+     *     "film_selection_section_show"
      * })
      */
     private $lastname;
@@ -128,7 +171,8 @@ class FilmPerson implements TranslateMainInterface
      *     "projection_show",
      *     "news_list",
      *     "news_show",
-     *     "home"
+     *     "home",
+     *     "film_selection_section_show"
      * })
      */
     private $firstname;
@@ -151,7 +195,8 @@ class FilmPerson implements TranslateMainInterface
      *     "projection_show",
      *     "news_list",
      *     "news_show",
-     *     "home"
+     *     "home",
+     *     "film_selection_section_show"
      * })
      */
     private $asianName;
@@ -169,7 +214,8 @@ class FilmPerson implements TranslateMainInterface
      *     "projection_list",
      *     "projection_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "film_selection_section_show"
      * })
      */
     private $nationality;
@@ -187,7 +233,8 @@ class FilmPerson implements TranslateMainInterface
      *     "projection_list",
      *     "projection_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "film_selection_section_show"
      * })
      */
     private $nationality2;
