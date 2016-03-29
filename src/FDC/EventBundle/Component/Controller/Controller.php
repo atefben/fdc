@@ -77,8 +77,7 @@ class Controller extends BaseController
         }
 
         if (strpos(get_class($trans), 'MediaVideoTranslation')) {
-            if ($trans->getFile() === null ||
-                $trans->getJobMp4State() != MediaVideoTranslation::ENCODING_STATE_READY ||
+            if ($trans->getJobMp4State() != MediaVideoTranslation::ENCODING_STATE_READY ||
                 $trans->getJobWebmState() != MediaVideoTranslation::ENCODING_STATE_READY ||
                 $trans->getMp4Url() === null || $trans->getWebmUrl() === null
             ) {

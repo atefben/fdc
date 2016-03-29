@@ -19,17 +19,4 @@ use JMS\Serializer\Annotation\Since;
  */
 class FDCPageLaSelectionCannesClassicsWidgetMovie extends FDCPageLaSelectionCannesClassicsWidget
 {
-    use Translatable;
-
-    /**
-     * @var ArrayCollection
-     *
-     * @Groups({"news_list", "news_show"})
-     */
-    protected $translations;
-
-    public function __construct()
-    {
-        $this->translations = new ArrayCollection();
-    }
 }
