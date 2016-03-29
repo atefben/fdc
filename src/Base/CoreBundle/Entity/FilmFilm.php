@@ -51,7 +51,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_show",
      *     "news_list",
      *     "news_show",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "home"
      * })
      *
      */
