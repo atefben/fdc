@@ -74,8 +74,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
-     *     "news_show",
      *     "film_selection_section_show"
      * })
      */
@@ -95,8 +93,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_show",
      *     "film_list",
      *     "film_show",
-     *     "news_list",
-     *     "news_show",
      *     "film_selection_section_show"
      * })
      *
@@ -155,8 +151,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
-     *     "news_show",
      *     "film_selection_section_show"
      * })
      *
@@ -176,9 +170,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list",
-     *     "projection_show",
-     *     "news_list",
-     *     "news_show"
+     *     "projection_show"
      * })
      *
      */
@@ -197,9 +189,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list",
-     *     "projection_show",
-     *     "news_list",
-     *     "news_show"
+     *     "projection_show"
      * })
      *
      */
@@ -491,9 +481,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "projection_list",
-     *     "projection_show",
-     *     "news_list",
-     *     "news_show"
+     *     "projection_show"
      * })
      * @return array|ArrayCollection
      */
@@ -563,9 +551,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "projection_list",
-     *     "projection_show",
-     *     "news_list",
-     *     "news_show"
+     *     "projection_show"
      * })
      * @return array|ArrayCollection
      */
