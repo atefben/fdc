@@ -2,7 +2,11 @@
 
 namespace Base\ApiBundle\Controller;
 
+use Base\CoreBundle\Entity\FilmProjection;
+use Base\CoreBundle\Entity\Info;
+use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\News;
+use Base\CoreBundle\Entity\Statement;
 use \DateTime;
 
 use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
@@ -73,17 +77,13 @@ class NewsController extends FOSRestController
             throw $this->createNotFoundException();
         }
 
-        $output = array();
-
         // news
         $news = $this->getApiSameDayNews($festival, $lang);
         $infos = $this->getApiSameDayInfos($festival, $lang);
         $statements = $this->getApiSameDayStatements($festival, $lang);
 
-        $output['news'] = $this->buildDaysGroup(array_merge($news, $infos, $statements));
-
         // projections
-        $output['projections'] = $this
+        $projections = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:FilmProjection')
@@ -96,8 +96,10 @@ class NewsController extends FOSRestController
             ->getRepository('BaseCoreBundle:MediaImage')
             ->getNewsApiImages($lang, $festival, new DateTime())
         ;
-        $output['images'] = $this->buildDaysGroup($images);
 
+        $items = array_merge($news, $infos, $statements, $projections, $images);
+
+        $items = $this->buildDays($items);
         // set context view
         $groups = array('news_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
@@ -105,7 +107,7 @@ class NewsController extends FOSRestController
         $context->setVersion($version);
 
         // create view
-        $view = $this->view($output, 200);
+        $view = $this->view($items, 200);
         $view->setSerializationContext($context);
 
         return $view;
@@ -236,6 +238,37 @@ class NewsController extends FOSRestController
         foreach ($days as $key => $value) {
             krsort($days[$key]['news']);
             $days[$key]['news'] = array_values($days[$key]['news']);
+        }
+        ksort($days);
+        return array_values($days);
+    }
+
+    protected function buildDays($items)
+    {
+        $days = array();
+        foreach ($items as $item) {
+            if ($item instanceof News || $item instanceof Info || $item instanceof Statement || $item instanceof MediaImage) {
+                $timeMethod = 'getPublishedAt';
+            }
+            elseif ($item instanceof FilmProjection) {
+                $timeMethod = 'getStartsAt';
+            }
+            $dayKey = $item->{$timeMethod}()->format("Y-m-d");
+            if (!array_key_exists($dayKey, $days)) {
+                $dateTime = $item->{$timeMethod}();
+                $dayTime = clone $dateTime;
+                $days[$dayKey] = array(
+                    'date' => $dayTime,
+                    'items' => array(),
+                );
+            }
+            $itemKey = $item->{$timeMethod}()->format('Y-m-d-H-i-s-') . $item->getId() . '-' . strtolower(get_class($item));
+            $days[$dayKey]['items'][$itemKey] = $item;
+        }
+
+        foreach ($days as $key => $value) {
+            krsort($days[$key]['items']);
+            $days[$key]['items'] = array_values($days[$key]['items']);
         }
         ksort($days);
         return array_values($days);
