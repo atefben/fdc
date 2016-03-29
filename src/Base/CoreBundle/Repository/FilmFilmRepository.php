@@ -143,11 +143,7 @@ class FilmFilmRepository extends EntityRepository
         $qb = $this->createQueryBuilder('f');
 
         $qb
-            ->join('f.translations', 't')
-            ->join('f.medias', 'm')
-            ->andWhere('m.type = :type')
-            ->setParameter('type', FilmFilmMediaInterface::TYPE_POSTER) // add condition for others film images fallback.
-            ->andWhere('f.selectionSection = :selectionSection')
+            ->where('f.selectionSection = :selectionSection')
             ->setParameter('selectionSection', $selectionSection)
         ;
 
@@ -158,8 +154,6 @@ class FilmFilmRepository extends EntityRepository
         }
 
         $this->addMasterQueries($qb, 'f', $festival, false);
-        $this->addTranslationQueries($qb, 't', $locale);
-
 
         $qb->orderBy('f.titleVO', 'asc');
 

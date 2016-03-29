@@ -66,6 +66,6 @@ class FDCPageLaSelectionCannesClassicsWidgetQuoteType extends FDCPageLaSelection
      */
     public function getName()
     {
-        return 'fdc_page_la_selection_cannes_classics_quote_type';
+        return 'fdc_page_la_selection_cannes_classics_widget_quote_type';
     }
 }
