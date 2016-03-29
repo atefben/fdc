@@ -40,7 +40,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
      */
-    private $cover;
+    private $image;
 
     /**
      * @var NewsWidget
@@ -51,12 +51,6 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
      */
     private $widgets;
 
-    /**
-     * @var FilmSelectionSection
-     *
-     * @ORM\ManyToOne(targetEntity="FilmSelectionSection")
-     */
-    private $selectionSection;
 
     /**
      * @var ArrayCollection
@@ -71,6 +65,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->widgets = new ArrayCollection();
     }
 
     /**
@@ -81,6 +76,15 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
         if (!$this->getId()) {
             return 'Nouvelle page sélection';
         }
+
+        $names = array(
+            'Invité d\'honneur',
+            'Hommages',
+            'Copies restaurées',
+            'WCP',
+            'Documentaires'
+        );
+        return $names[$this->getId() - 1];
     }
 
     /**
@@ -117,25 +121,35 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     }
 
     /**
-     * Set selectionSection
+     * Add widgets
      *
-     * @param \Base\CoreBundle\Entity\FilmSelectionSection $selectionSection
-     * @return FDCPageLaSelection
+     * @param \Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget $widgets
+     * @return FDCPageLaSelectionCannesClassics
      */
-    public function setSelectionSection(\Base\CoreBundle\Entity\FilmSelectionSection $selectionSection = null)
+    public function addWidget(\Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget $widgets)
     {
-        $this->selectionSection = $selectionSection;
+        $this->widgets[] = $widgets;
 
         return $this;
     }
 
     /**
-     * Get selectionSection
+     * Remove widgets
      *
-     * @return \Base\CoreBundle\Entity\FilmSelectionSection
+     * @param \Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget $widgets
      */
-    public function getSelectionSection()
+    public function removeWidget(\Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget $widgets)
     {
-        return $this->selectionSection;
+        $this->widgets->removeElement($widgets);
+    }
+
+    /**
+     * Get widgets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getWidgets()
+    {
+        return $this->widgets;
     }
 }

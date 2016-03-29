@@ -46,4 +46,50 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
      *
      */
     private $title;
+
+    /**
+     * Set titleNav
+     *
+     * @param string $titleNav
+     * @return FDCPageLaSelectionCannesClassicsTranslation
+     */
+    public function setTitleNav($titleNav)
+    {
+        $this->titleNav = $titleNav;
+
+        return $this;
+    }
+
+    /**
+     * Get titleNav
+     *
+     * @return string 
+     */
+    public function getTitleNav()
+    {
+        return $this->titleNav;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return FDCPageLaSelectionCannesClassicsTranslation
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 }
