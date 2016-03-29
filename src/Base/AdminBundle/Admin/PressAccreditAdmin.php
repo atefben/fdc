@@ -130,7 +130,7 @@ class PressAccreditAdmin extends Admin
             ->add('procedure', 'sonata_type_collection',
                 array(
                     'type_options' => array(
-                        'delete' => true,
+                        'delete' => false,
                     ),
                     'cascade_validation' => true,
                     'by_reference' => false,
