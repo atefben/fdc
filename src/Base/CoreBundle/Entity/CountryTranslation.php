@@ -37,7 +37,9 @@ class CountryTranslation implements TranslateChildInterface
      *  "award_list", "award_show",
      *  "projection_list", "projection_show",
      *     "film_show",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "news_list",
+     *     "news_show"
      * })
      */
     private $name;
@@ -57,7 +59,9 @@ class CountryTranslation implements TranslateChildInterface
      *  "projection_list",
      *     "projection_show",
      *  "film_show",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "news_list",
+     *     "news_show"
      * })
      */
     private $lang;

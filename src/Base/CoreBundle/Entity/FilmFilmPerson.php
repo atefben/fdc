@@ -98,9 +98,7 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "projection_list",
-     *     "projection_show",
-     *     "news_list",
-     *     "news_show"
+     *     "projection_show"
      * })
      */
     private $functions;
