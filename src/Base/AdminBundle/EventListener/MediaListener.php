@@ -18,7 +18,9 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Aws\ElasticTranscoder\ElasticTranscoderClient;
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
+use Sonata\MediaBundle\Model\MediaInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class MediaListener
@@ -26,7 +28,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class MediaListener
 {
-
 
     /**
      * @var bool
@@ -56,6 +57,10 @@ class MediaListener
         if ($entity instanceof MediaVideoTranslation && $entity->getAmazonRemoteFile()) {
             $this->createAmazonVideoJob($entity);
         }
+
+        if (($entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation )&& $entity->getFile()) {
+            $this->generateThumbnails($entity->getFile());
+        }
     }
 
     /**
@@ -69,6 +74,11 @@ class MediaListener
 
         if ($entity instanceof MediaVideoTranslation && $entity->getAmazonRemoteFile() && $args->hasChangedField('amazonRemoteFile')) {
             $this->createAmazonVideoJob($entity);
+        }
+
+        $firstCondition = $entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation;
+        if ($firstCondition && $entity->getFile() && $args->hasChangedField('file')) {
+            $this->generateThumbnails($entity->getFile());
         }
     }
 
@@ -313,6 +323,122 @@ class MediaListener
     protected function getParameter($name)
     {
         return $this->container->getParameter($name);
+    }
+
+    protected function generateThumbnails(MediaInterface $media)
+    {
+        $provider = $this->container->get($media->getProviderName());
+        if ($media->getParentVideoTranslation()) {
+            $parentVideo = $media->getParentVideoTranslation();
+        } elseif ($media->getParentAudioTranslation()) {
+            $parentAudio = $media->getParentAudioTranslation();
+        } else {
+            throw new NotFoundHttpException('Media parent not found.');
+        }
+
+        $elasticTranscoder = ElasticTranscoderClient::factory(array(
+            'credentials' => array(
+                'key'    => 'AKIAJHXD67GEPPA2F4TQ',
+                'secret' => '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',
+            ),
+            'region'      => 'eu-west-1',
+        ));
+
+        if (isset($parentVideo)) {
+
+            $file_name = $media->getProviderReference();
+            $path = $provider->generatePublicUrl($media, $media->getProviderReference());
+
+            $file_path = explode('/', $path);
+            $path_video_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
+            $path_video_output = 'media_video_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
+
+            //System preset generic 1080p MP4 ID : 1456133456345-3dts1g
+            $job = $elasticTranscoder->createJob(array(
+                'PipelineId'      => '1454076999739-uy533t',
+                'OutputKeyPrefix' => $path_video_output,
+                'Input'           => array(
+                    'Key'         => $path_video_input . $file_name,
+                    'FrameRate'   => 'auto',
+                    'Resolution'  => 'auto',
+                    'AspectRatio' => 'auto',
+                    'Interlaced'  => 'auto',
+                    'Container'   => 'auto',
+                ),
+                'Outputs'         => array(
+                    array(
+                        'Key'      => str_replace('.mov', '.mp4', $file_name),
+                        'Rotate'   => 'auto',
+                        'PresetId' => '1456133456345-3dts1g',
+                    ),
+                ),
+            ));
+
+            /* @TODO
+            récupérer l'URL du fichier généré par amazon
+             */
+
+            $parentVideo->setJobMp4Id($job->get('Job')['Id']);
+            $parentVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
+            $parentVideo->setJobMp4State(1);
+
+
+            //System preset: Webm 720p ID : 1456133404879-sv127j
+            $job = $elasticTranscoder->createJob(array(
+                'PipelineId'      => '1454076999739-uy533t',
+                'OutputKeyPrefix' => $path_video_output,
+                'Input'           => array(
+                    'Key'         => $path_video_input . $file_name,
+                    'FrameRate'   => 'auto',
+                    'Resolution'  => 'auto',
+                    'AspectRatio' => 'auto',
+                    'Interlaced'  => 'auto',
+                    'Container'   => 'auto',
+                ),
+                'Outputs'         => array(
+                    array(
+                        'Key'      => str_replace(array('.mp4', '.mov'), '.webm', $file_name),
+                        'Rotate'   => 'auto',
+                        'PresetId' => '1456133404879-sv127j',
+                    ),
+                ),
+            ));
+
+            /* @TODO
+            récupérer l'URL du fichier généré par amazon
+             */
+            //$parentVideo->setImageAmazonUrl($job->get('Job')['img_url']);
+
+            $parentVideo->setJobWebmId($job->get('Job')['Id']);
+            $parentVideo->setWebmURL($path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name));
+            $parentVideo->setJobWebmState(1);
+
+        } elseif (isset($parentAudio)) {
+            $file_name = $media->getProviderReference();
+            $path = $provider->generatePublicUrl($media, $media->getProviderReference());
+            $file_path = explode('/', $path);
+            $path_audio_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
+            $path_audio_output = 'media_audio_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
+
+            //System preset: Audio MP3 - 128k : 1351620000001-300040
+            $job = $elasticTranscoder->createJob(array(
+                'PipelineId'      => '1455903590532-u7lwud',
+                'OutputKeyPrefix' => $path_audio_output,
+                'Input'           => array(
+                    'Key'         => $path_audio_input . $file_name,
+                ),
+                'Outputs'         => array(
+                    array(
+                        'Key'      => $file_name,
+                        'PresetId' => '1351620000001-300040',
+                    ),
+                ),
+            ));
+            $parentAudio->setJobMp3Id($job->get('Job')['Id']);
+            $parentAudio->setMp3Url($path_audio_output . $file_name);
+            $parentAudio->setJobMp3State(1);
+        }
+
     }
 
 
