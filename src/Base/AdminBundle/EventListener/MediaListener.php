@@ -16,6 +16,7 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Aws\ElasticTranscoder\ElasticTranscoderClient;
+use Aws\S3\S3Client;
 
 /**
  * Class MediaListener
@@ -206,81 +207,93 @@ class MediaListener
         /**
          * @todo create amazon video job here
          */
-
-        //$mediaVideo->getAmazonRemoteFile()->getId();
-		
-        $elasticTranscoder = ElasticTranscoderClient::factory(array(
-            'credentials' => array(
-                'key'    => 'AKIAJHXD67GEPPA2F4TQ',
-                'secret' => '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',
-            ),
-            'region'      => 'eu-west-1',
-        ));
-		
 		$file_name = $mediaVideo->getAmazonRemoteFile()->getName();
         $file_path = explode('/', $mediaVideo->getAmazonRemoteFile()->getUrl());
         $path_video_input = $file_path['0'] . '/';
         $path_video_output = 'media_video_encoded' . '/direct_encoded/';
-
-        //System preset generic 1080p MP4 ID : 1456133456345-3dts1g
-        $job = $elasticTranscoder->createJob(array(
-            'PipelineId'      => '1454076999739-uy533t',
-            'OutputKeyPrefix' => $path_video_output,
-            'Input'           => array(
-                'Key'         => $path_video_input . $file_name,
-                'FrameRate'   => 'auto',
-                'Resolution'  => 'auto',
-                'AspectRatio' => 'auto',
-                'Interlaced'  => 'auto',
-                'Container'   => 'auto',
-            ),
-            'Outputs'         => array(
-                array(
-                    'Key'      => str_replace('.mov', '.mp4', $file_name),
-                    'Rotate'   => 'auto',
-                    'PresetId' => '1456133456345-3dts1g',
-                ),
-            ),
-        ));
+        //$mediaVideo->getAmazonRemoteFile()->getId();
+		$s3 = new S3();
+		$info = $s3->getObjectInfo('use', $path_video_output .  str_replace('.mov', '.mp4', $file_name));
+		if ($info)
+		{
+			$mediaVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
+	        $mediaVideo->setJobMp4State(3);
+			
+			$mediaVideo->setWebmURL($path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name));
+	        $mediaVideo->setJobWebmState(3);
+		}
+		else
+		{
+	        $elasticTranscoder = ElasticTranscoderClient::factory(array(
+	            'credentials' => array(
+	                'key'    => 'AKIAJHXD67GEPPA2F4TQ',
+	                'secret' => '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',
+	            ),
+	            'region'      => 'eu-west-1',
+	        ));
 		
-		/* @TODO
-		récupérer l'URL du fichier généré par amazon
-		*/
+			
 
-        $mediaVideo->setJobMp4Id($job->get('Job')['Id']);
-		$mediaVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
-        $mediaVideo->setJobMp4State(1);
-
-
-        //System preset: Webm 720p ID : 1456133404879-sv127j
-        $job = $elasticTranscoder->createJob(array(
-            'PipelineId'      => '1454076999739-uy533t',
-            'OutputKeyPrefix' => $path_video_output,
-            'Input'           => array(
-                'Key'         => $path_video_input . $file_name,
-                'FrameRate'   => 'auto',
-                'Resolution'  => 'auto',
-                'AspectRatio' => 'auto',
-                'Interlaced'  => 'auto',
-                'Container'   => 'auto',
-            ),
-            'Outputs'         => array(
-                array(
-                    'Key'      => str_replace(array('.mp4', '.mov'), '.webm', $file_name),
-                    'Rotate'   => 'auto',
-                    'PresetId' => '1456133404879-sv127j',
-                ),
-            ),
-        ));
+	        //System preset generic 1080p MP4 ID : 1456133456345-3dts1g
+	        $job = $elasticTranscoder->createJob(array(
+	            'PipelineId'      => '1454076999739-uy533t',
+	            'OutputKeyPrefix' => $path_video_output,
+	            'Input'           => array(
+	                'Key'         => $path_video_input . $file_name,
+	                'FrameRate'   => 'auto',
+	                'Resolution'  => 'auto',
+	                'AspectRatio' => 'auto',
+	                'Interlaced'  => 'auto',
+	                'Container'   => 'auto',
+	            ),
+	            'Outputs'         => array(
+	                array(
+	                    'Key'      => str_replace('.mov', '.mp4', $file_name),
+	                    'Rotate'   => 'auto',
+	                    'PresetId' => '1456133456345-3dts1g',
+	                ),
+	            ),
+	        ));
 		
-		/* @TODO
-		 récupérer l'URL du fichier généré par amazon
-		*/
-		//$parentVideo->setImageAmazonUrl($job->get('Job')['img_url']);
+			/* @TODO
+			récupérer l'URL du fichier généré par amazon
+			*/
 
-        $mediaVideo->setJobWebmId($job->get('Job')['Id']);
-		$mediaVideo->setWebmURL($path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name));
-        $mediaVideo->setJobWebmState(1);
+	        $mediaVideo->setJobMp4Id($job->get('Job')['Id']);
+			$mediaVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
+	        $mediaVideo->setJobMp4State(1);
+
+
+	        //System preset: Webm 720p ID : 1456133404879-sv127j
+	        $job = $elasticTranscoder->createJob(array(
+	            'PipelineId'      => '1454076999739-uy533t',
+	            'OutputKeyPrefix' => $path_video_output,
+	            'Input'           => array(
+	                'Key'         => $path_video_input . $file_name,
+	                'FrameRate'   => 'auto',
+	                'Resolution'  => 'auto',
+	                'AspectRatio' => 'auto',
+	                'Interlaced'  => 'auto',
+	                'Container'   => 'auto',
+	            ),
+	            'Outputs'         => array(
+	                array(
+	                    'Key'      => str_replace(array('.mp4', '.mov'), '.webm', $file_name),
+	                    'Rotate'   => 'auto',
+	                    'PresetId' => '1456133404879-sv127j',
+	                ),
+	            ),
+	        ));
+		
+			/* @TODO
+			 récupérer l'URL du fichier généré par amazon
+			*/
+			//$parentVideo->setImageAmazonUrl($job->get('Job')['img_url']);
+
+	        $mediaVideo->setJobWebmId($job->get('Job')['Id']);
+			$mediaVideo->setWebmURL($path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name));
+	        $mediaVideo->setJobWebmState(1);
+		}
 
     }
 
