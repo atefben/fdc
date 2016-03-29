@@ -52,7 +52,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_list",
      *     "news_show",
      *     "film_selection_section_show",
-     *     "home"
+     *     "home",
+     *     "news_list"
      * })
      *
      */
@@ -315,7 +316,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show",
      *     "projection_list",
      *     "projection_show",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "news_list"
      * })
      */
     private $medias;
@@ -359,7 +361,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_show",
      *     "projection_list",
      *     "film_selection_section_show",
-     *     "home"
+     *     "home",
+     *     "news_list"
      * })
      *
      */
@@ -420,7 +423,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "news_list"
      * })
      */
     private $imageMain;
@@ -430,7 +434,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "news_list"
      * })
      */
     private $imageCover;
@@ -524,7 +529,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_list",
      *     "news_show",
      *     "film_selection_section_show",
-     *     "home"
+     *     "home",
+     *     "news_list"
      * })
      * @return array|ArrayCollection
      */

@@ -59,11 +59,48 @@ class FilmProjectionRepository extends EntityRepository
 
     /**
      * @param $festival
+     * @param \DateTime $dateTime
+     * @return array
+     * @todo Uncomment condition
+     * @todo remove limit
+     */
+    public function getNewsApiProjections($festival, \DateTime $dateTime)
+    {
+        $qb = $this
+            ->createQueryBuilder('fp')
+            ->addOrderBy('fp.startsAt', 'desc')
+        ;
+
+
+        // To be uncommented.
+//        $begin = clone $dateTime;
+//        $begin->setTime(0, 0, 0);
+//
+//        $end = clone $dateTime;
+//        $end->setTimestamp($dateTime->getTimestamp() + 3600);
+//
+//        $qb
+//            ->andWhere('fp.startsAt BETWEEN :begin AND :end')
+//            ->setParameter('begin', $begin)
+//            ->setParameter('end', $end)
+//        ;
+
+        // To be removed
+        $qb->setMaxResults(20);
+
+        $this->addMasterQueries($qb, 'fp', $festival, false);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @param $festival
      * @param $count
      * @return array
      * @todo uncomment date condition
      */
-    public function getApiNextProjections($festival, $count)
+    public
+    function getApiNextProjections($festival, $count)
     {
         $qb = $this
             ->createQueryBuilder('fp')
@@ -85,7 +122,8 @@ class FilmProjectionRepository extends EntityRepository
      * @param FilmFilm $film
      * @return array
      */
-    public function getNextProjectionByFilm(FilmFilm $film)
+    public
+    function getNextProjectionByFilm(FilmFilm $film)
     {
         $qb = $this->createQueryBuilder('p');
 
@@ -104,7 +142,8 @@ class FilmProjectionRepository extends EntityRepository
      * @param $date
      * @return array|\Doctrine\ORM\QueryBuilder
      */
-    public function getProjectionByDate($date)
+    public
+    function getProjectionByDate($date)
     {
 
         $qb = $this

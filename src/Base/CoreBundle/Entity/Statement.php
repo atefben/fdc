@@ -152,6 +152,7 @@ abstract class Statement implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
+     * @Groups({"news_list"})
      */
     private $publishedAt;
 
@@ -159,6 +160,7 @@ abstract class Statement implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
+     * @Groups({"news_list"})
      */
     private $publishEndedAt;
 
@@ -233,7 +235,7 @@ abstract class Statement implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups("home")
+     * @Groups({"home", "news_list"})
      */
     public function getStatementType()
     {

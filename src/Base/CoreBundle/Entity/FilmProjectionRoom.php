@@ -27,8 +27,11 @@ class FilmProjectionRoom
      * @ORM\Column(type="integer")
      * @ORM\Id
      *
-     * @Groups({"projection_list", "projection_show",
-     *     "home"})
+     * @Groups({
+     *     "projection_list",
+     *     "projection_show",
+     *     "home",
+     *     "news_list"})
      */
     private $id;
 
@@ -38,9 +41,12 @@ class FilmProjectionRoom
      * @ORM\Column(type="string", length=80, nullable=true)
      *
      * @Groups({
-     *  "projection_list", "projection_show",
-     *  "film_list", "film_show",
-     *     "home"
+     *     "projection_list",
+     *     "projection_show",
+     *     "film_list",
+     *     "film_show",
+     *     "home",
+     *     "news_list"
      * })
      */
     private $name;

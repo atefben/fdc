@@ -14,6 +14,7 @@ use Base\CoreBundle\Entity\NewsAudioTranslation;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
 
 /**
  * Class MediaListener
@@ -40,16 +41,24 @@ class MediaListener
         $entity = $args->getEntity();
 
         $this->createHomepageNews($entity, $args, false);
+
+        if ($entity instanceof MediaVideoTranslation && $entity->getAmazonRemoteFile()) {
+            $this->createAmazonVideoJob($entity);
+        }
     }
 
     /**
      * @param $args
      */
-    public function preUpdate($args)
+    public function preUpdate(PreUpdateEventArgs $args)
     {
         $entity = $args->getEntity();
 
         $this->createHomepageNews($entity, $args);
+
+        if ($entity instanceof MediaVideoTranslation && $entity->getAmazonRemoteFile() && $args->hasChangedField('amazonRemoteFile')) {
+            $this->createAmazonVideoJob($entity);
+        }
     }
 
     private function createHomepageNews($entity, $args, $update = true)
@@ -99,7 +108,7 @@ class MediaListener
                         }
                     }
                     foreach ($entity->getSites() as $site) {
-                         if ($hasEvenementiel === false && $site->getSlug() == 'site-evenementiel') {
+                        if ($hasEvenementiel === false && $site->getSlug() == 'site-evenementiel') {
                             $createNews->addSite($site);
                         }
                     }
@@ -189,4 +198,15 @@ class MediaListener
             $eventArgs->getEntityManager()->flush();
         }
     }
+
+
+    protected function createAmazonVideoJob(MediaVideoTranslation $mediaVideo)
+    {
+        /**
+         * @todo create amazon video job here
+         */
+
+    }
+
+
 }
