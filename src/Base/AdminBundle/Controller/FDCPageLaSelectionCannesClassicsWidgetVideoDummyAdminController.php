@@ -4,7 +4,7 @@ namespace Base\AdminBundle\Controller;
 
 use Sonata\AdminBundle\Controller\CRUDController;
 
-class FDCCannesClassicsWidgetAudioDummyAdminController extends CRUDController
+class FDCPageLaSelectionCannesClassicsWidgetVideoDummyAdminController extends CRUDController
 {
 
 }

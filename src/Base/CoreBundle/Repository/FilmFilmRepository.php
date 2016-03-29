@@ -158,7 +158,6 @@ class FilmFilmRepository extends EntityRepository
         }
 
         $this->addMasterQueries($qb, 'f', $festival, false);
-        $this->addTranslationQueries($qb, 't', $locale);
 
 
         $qb->orderBy('f.titleVO', 'asc');
