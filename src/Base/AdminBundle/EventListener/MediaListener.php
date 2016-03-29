@@ -18,6 +18,7 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Aws\ElasticTranscoder\ElasticTranscoderClient;
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class MediaListener
@@ -26,13 +27,20 @@ use Aws\S3\Exception\S3Exception;
 class MediaListener
 {
 
+
     /**
      * @var bool
      */
     private $flush;
 
-    public function __construct()
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
+
+    public function __construct($container)
     {
+        $this->container = $container;
         $this->flush = false;
     }
 
@@ -296,6 +304,15 @@ class MediaListener
 	        $mediaVideo->setJobWebmState(1);
 		}
 
+    }
+
+    /**
+     * @param $name
+     * @return mixed
+     */
+    protected function getParameter($name)
+    {
+        return $this->container->getParameter($name);
     }
 
 
