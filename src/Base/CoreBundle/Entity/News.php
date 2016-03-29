@@ -127,7 +127,6 @@ abstract class News implements TranslateMainInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmFilm")
-     *
      */
     private $associatedFilm;
 
