@@ -35,6 +35,4 @@ services:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: postFlush }
-        calls:
-            - ['setProviderVideo', ['@sonata.media.provider.video']]
-            - ['setProviderAudio', ['@sonata.media.provider.audio']]
+        arguments: [@service_container]

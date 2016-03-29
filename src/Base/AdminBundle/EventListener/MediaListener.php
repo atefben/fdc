@@ -34,23 +34,15 @@ class MediaListener
      */
     private $flush;
 
-    private $providerAudio;
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
 
-    private $providerVideo;
-
-    public function __construct()
+    public function __construct($container)
     {
+        $this->container = $container;
         $this->flush = false;
-    }
-
-    public function setProviderVideo($provider)
-    {
-        $this->providerVideo = $provider;
-    }
-
-    public function setProviderAudio($provider)
-    {
-        $this->providerAudio = $provider;
     }
 
     /**
@@ -231,6 +223,9 @@ class MediaListener
 
     protected function createAmazonVideoJob(MediaVideoTranslation $mediaVideo)
     {
+        /**
+         * @todo create amazon video job here
+         */
 		$file_name = $mediaVideo->getAmazonRemoteFile()->getName();
         $file_path = explode('/', $mediaVideo->getAmazonRemoteFile()->getUrl());
         $path_video_input = $file_path['0'] . '/';
@@ -321,8 +316,18 @@ class MediaListener
 
     }
 
+    /**
+     * @param $name
+     * @return mixed
+     */
+    protected function getParameter($name)
+    {
+        return $this->container->getParameter($name);
+    }
+
     protected function generateThumbnails(MediaInterface $media)
     {
+        $provider = $this->container->get($media->getProviderName());
         if ($media->getParentVideoTranslation()) {
             $parentVideo = $media->getParentVideoTranslation();
         } elseif ($media->getParentAudioTranslation()) {
@@ -342,8 +347,7 @@ class MediaListener
         if (isset($parentVideo)) {
 
             $file_name = $media->getProviderReference();
-            $path = $this->providerVideo->generatePublicUrl($media, $media->getProviderReference());
-            error_log($path);
+            $path = $provider->generatePublicUrl($media, $media->getProviderReference());
 
             $file_path = explode('/', $path);
             $path_video_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
@@ -411,7 +415,7 @@ class MediaListener
 
         } elseif (isset($parentAudio)) {
             $file_name = $media->getProviderReference();
-            $path = $this->providerAudio->generatePublicUrl($media, $media->getProviderReference());
+            $path = $provider->generatePublicUrl($media, $media->getProviderReference());
             $file_path = explode('/', $path);
             $path_audio_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
             $path_audio_output = 'media_audio_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
