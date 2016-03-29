@@ -218,9 +218,9 @@ class MediaListener
         ));
 		
 		$file_name = $mediaVideo->getAmazonRemoteFile()->getName();
-		
         $file_path = explode('/', $mediaVideo->getAmazonRemoteFile()->getUrl());
-        $path_video_input = $file_path['1'] . '/' . $file_path['2'] . '/' . $file_path['3'] . '/';
+		//error_log(print_r(\Doctrine\Common\Util\Debug::export($file_path, 6),1));
+        $path_video_input = $file_path['0'] . '/';
         $path_video_output = 'media_video_encoded' . '/direct_encoded/';
 
         //System preset generic 1080p MP4 ID : 1456133456345-3dts1g
