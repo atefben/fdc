@@ -15,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
+use JMS\Serializer\Annotation\VirtualProperty;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -39,6 +40,7 @@ abstract class Media implements TranslateMainInterface
      * @ORM\Column(type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups("news_list")
      */
     protected $id;
 
@@ -63,7 +65,11 @@ abstract class Media implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"live", "web_tv_show", "live", "live", "film_show"})
+     * @Groups({
+     *     "live",
+     *     "web_tv_show",
+     *     "film_show"
+     * })
      */
     private $publishedAt;
 
@@ -71,7 +77,12 @@ abstract class Media implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({"live", "web_tv_show", "live", "live", "film_show"})
+     * @Groups({
+     *     "live",
+     *     "web_tv_show",
+     *     "film_show"
+     * })
+     *
      */
     private $publishEndedAt;
 
@@ -147,21 +158,21 @@ abstract class Media implements TranslateMainInterface
     /**
      * @ORM\ManyToOne(targetEntity="FilmFilm")
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_show"})
      */
     private $associatedFilm;
 
     /**
      * @ORM\ManyToOne(targetEntity="Event")
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_show"})
      */
     private $associatedEvent;
 
     /**
      * @ORM\OneToMany(targetEntity="MediaFilmProjectionAssociated", mappedBy="media", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_show"})
      */
     private $associatedProjections;
 
@@ -171,11 +182,12 @@ abstract class Media implements TranslateMainInterface
         $this->tags = new ArrayCollection();
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            if($string != 'MediaImage'){
+            if ($string != 'MediaImage') {
                 $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
                 $string = $this->truncate($string, 40, '..."', true);
             } else {
@@ -187,11 +199,22 @@ abstract class Media implements TranslateMainInterface
         return $string;
     }
 
+    /**
+     * Get the class type in the Api
+     *
+     * @VirtualProperty
+     * @Groups({"news_list"})
+     */
+    public function getMediaType()
+    {
+        return substr(strrchr(get_called_class(), '\\'), 1);
+    }
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -233,7 +256,7 @@ abstract class Media implements TranslateMainInterface
     /**
      * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {
@@ -336,7 +359,7 @@ abstract class Media implements TranslateMainInterface
     /**
      * Get displayedAll
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedAll()
     {
@@ -359,7 +382,7 @@ abstract class Media implements TranslateMainInterface
     /**
      * Get displayedHome
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayedHome()
     {
@@ -382,7 +405,7 @@ abstract class Media implements TranslateMainInterface
     /**
      * Get theme
      *
-     * @return \Base\CoreBundle\Entity\Theme 
+     * @return \Base\CoreBundle\Entity\Theme
      */
     public function getTheme()
     {
@@ -428,7 +451,7 @@ abstract class Media implements TranslateMainInterface
     /**
      * Get createdBy
      *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getCreatedBy()
     {
@@ -451,7 +474,7 @@ abstract class Media implements TranslateMainInterface
     /**
      * Get updatedBy
      *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getUpdatedBy()
     {
@@ -474,7 +497,7 @@ abstract class Media implements TranslateMainInterface
     /**
      * Get festival
      *
-     * @return \Base\CoreBundle\Entity\FilmFestival 
+     * @return \Base\CoreBundle\Entity\FilmFestival
      */
     public function getFestival()
     {
@@ -497,7 +520,7 @@ abstract class Media implements TranslateMainInterface
     /**
      * Get associatedFilm
      *
-     * @return \Base\CoreBundle\Entity\FilmFilm 
+     * @return \Base\CoreBundle\Entity\FilmFilm
      */
     public function getAssociatedFilm()
     {
@@ -520,7 +543,7 @@ abstract class Media implements TranslateMainInterface
     /**
      * Get associatedEvent
      *
-     * @return \Base\CoreBundle\Entity\Event 
+     * @return \Base\CoreBundle\Entity\Event
      */
     public function getAssociatedEvent()
     {
@@ -555,7 +578,7 @@ abstract class Media implements TranslateMainInterface
     /**
      * Get associatedProjections
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAssociatedProjections()
     {

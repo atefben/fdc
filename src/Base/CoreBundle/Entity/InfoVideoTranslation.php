@@ -45,7 +45,6 @@ class InfoVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"news_list", "news_show"})
      */
     protected $introduction;
 

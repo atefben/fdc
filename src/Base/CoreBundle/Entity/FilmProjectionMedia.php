@@ -28,7 +28,7 @@ class FilmProjectionMedia
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="projectionMedias", cascade={"persist"})
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({"projection_list", "projection_show", "news_list"})
      */
     private $file;
     

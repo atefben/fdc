@@ -26,10 +26,10 @@ class NewsRepository extends EntityRepository
     public function getNewsApiSameDayNews($locale, $festival, $dateTime)
     {
 
+        $morning = clone $dateTime;
+        $morning->setTime(0, 0, 0);
         $midnight = clone $dateTime;
         $midnight->setTime(23, 59, 59);
-        dump($dateTime);
-        dump($midnight);
 
         $qb = $this
             ->createQueryBuilder('n')
@@ -44,8 +44,9 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->andWhere('n.festival = :festival')
-            ->andWhere('n.publishedAt >= :datetime')
-            ->andWhere('n.publishedAt <= :midnight')
+            ->andWhere('n.publishedAt BETWEEN :morning AND :midnight')
+            ->andWhere('n.publishedAt <= :datetime')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;
 
         $qb = $qb
@@ -75,14 +76,13 @@ class NewsRepository extends EntityRepository
                 ->setParameter('locale', $locale)
             ;
         }
-
         $qb = $qb
             ->orderBy('n.publishedAt', 'desc')
             ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime)
+            ->setParameter('morning', $morning)
             ->setParameter('midnight', $midnight)
         ;
-
         return $qb
             ->getQuery()
             ->getResult()

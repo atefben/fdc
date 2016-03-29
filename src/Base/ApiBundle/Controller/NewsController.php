@@ -49,9 +49,10 @@ class NewsController extends FOSRestController
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      *
+     * @param ParamFetcher $paramFetcher
      * @return View
      */
-    public function getNewsAction(Paramfetcher $paramFetcher)
+    public function getNewsAction(ParamFetcher $paramFetcher)
     {
         // coremanager shortcut
         $coreManager = $this->get('base.api.core_manager');
@@ -72,31 +73,32 @@ class NewsController extends FOSRestController
             throw $this->createNotFoundException();
         }
 
-        $start = $settings->getFestival()->getFestivalStartsAt();
-        $end = $settings->getFestival()->getFestivalEndsAt();
-        $now = new \DateTime();
+        $output = array();
 
-        $results = $this
+        // news
+        $news = $this->getApiSameDayNews($festival, $lang);
+        $infos = $this->getApiSameDayInfos($festival, $lang);
+        $statements = $this->getApiSameDayStatements($festival, $lang);
+
+        $output['news'] = array_merge($news, $infos, $statements);
+        ksort($output['news']);
+
+        $output['news'] = array_values($output['news']);
+
+        // projections
+        $output['projections'] = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('BaseCoreBundle:News')
-            ->getApiNews($festival, $lang, $start, $end)
-            ->getResult()
+            ->getRepository('BaseCoreBundle:FilmProjection')
+            ->getNewsApiProjections($festival, new DateTime())
         ;
 
-        $items = array();
-        foreach ($results as $item) {
-            if ($item instanceof News) {
-                $key = $item->getPublishedAt()->format('Y-m-d');
-                if (!array_key_exists($key, $items)) {
-                    $items[$key] = array(
-                        'date' => $item->getPublishedAt(),
-                        'news' => array(),
-                    );
-                }
-                $items[$key]['news'][] = $item;
-            }
-        }
+        $output['images'] = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaImage')
+            ->getNewsApiImages($festival, $lang, new \DateTime())
+        ;
 
         // set context view
         $groups = array('news_list');
@@ -105,10 +107,63 @@ class NewsController extends FOSRestController
         $context->setVersion($version);
 
         // create view
-        $view = $this->view(array_values($items), 200);
+        $view = $this->view($output, 200);
         $view->setSerializationContext($context);
 
         return $view;
+    }
+
+    public function getApiSameDayNews($festival, $locale)
+    {
+        $items = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:News')
+            ->getNewsApiSameDayNews($locale, $festival, new \DateTime())
+        ;
+
+        $news = array();
+        foreach ($items as $item) {
+            $key = $item->getPublishedAt()->format('Y-m-d-H-i-s') . '-news-' . $item->getId();
+            $news[$key] = $item;
+        }
+        return $news;
+    }
+
+    public function getApiSameDayInfos($festival, $locale)
+    {
+        $items = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:Info')
+            ->getNewsApiSameDayInfos($festival, $locale, new \DateTime())
+        ;
+
+        $infos = array();
+        foreach ($items as $item) {
+            $key = $item->getPublishedAt()->format('Y-m-d-H-i-s') . '-info-' . $item->getId();
+            $infos[$key] = $item;
+        }
+        return $infos;
+    }
+
+    public function getApiSameDayStatements($festival, $locale)
+    {
+        $items = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:Statement')
+            ->getNewsApiSameDayStatements($festival, $locale, new \DateTime())
+        ;
+
+        $statements = array();
+        foreach ($items as $item) {
+            $key = $item->getPublishedAt()->format('Y-m-d-H-i-s') . '-statement-' . $item->getId();
+            $statements[$key] = $item;
+        }
+
+
+        return $statements;
     }
 
 
