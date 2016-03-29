@@ -36,4 +36,5 @@ services:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: postFlush }
         calls:
-            - ['setContainer', ['@service_container']]
+            - ['setProviderVideo', ['@sonata.media.provider.video']]
+            - ['setProviderAudio', ['@sonata.media.provider.audio']]
