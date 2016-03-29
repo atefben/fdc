@@ -23,7 +23,7 @@
         $fichier= array(); // on déclare le tableau contenant le nom des fichiers
         $dossier= array(); // on déclare le tableau contenant le nom des dossiers
 
-        $exclusion = '/(.gitignore$|.rb$|.ico$|.info$|.txt$|_index.php|header.html|footer.html|.js$|.json$|.png$|.jpg$)/';
+        $exclusion = '/(.gitignore$|.rb$|.ico$|.info$|.txt$|index.php|header.html|footer.html|.js$|.json$|.png$|.jpg$)/';
 
 
         while($element = readdir($dir)) {
