@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use JMS\DiExtraBundle\Annotation as DI;
 
@@ -18,13 +19,8 @@ use Base\CoreBundle\Entity\StatementArticleTranslation;
  */
 class StatementRepository extends EntityRepository
 {
-    public function getNewsApiSameDayStatements($festival, $locale, $dateTime)
+    public function getNewsApiSameDayStatements($locale, FilmFestival $festival, \DateTime $dateTime)
     {
-        $morning = clone $dateTime;
-        $morning->setTime(0, 0, 0);
-        $midnight = clone $dateTime;
-        $midnight->setTime(23, 59, 59);
-
         $qb = $this
             ->createQueryBuilder('n')
             ->select('n,
@@ -39,10 +35,26 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->andWhere('n.festival = :festival')
-            ->andWhere('n.publishedAt BETWEEN :morning AND :midnight')
-            ->andWhere('n.publishedAt <= :datetime')
-            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;
+
+        if ($festival->getFestivalStartsAt() > $dateTime || $festival->getFestivalEndsAt() < $dateTime) {
+            $this->addMasterQueries($qb, 'n', $festival, true);
+        } else {
+            $morning = clone $dateTime;
+            $morning->setTime(0, 0, 0);
+            $midnight = clone $dateTime;
+            $midnight->setTime(23, 59, 59);
+
+            $qb
+                ->andWhere('n.festival = :festival')
+                ->andWhere('n.publishedAt BETWEEN :morning AND :midnight')
+                ->andWhere('n.publishedAt <= :datetime')
+                ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+                ->setParameter('datetime', $dateTime)
+                ->setParameter('morning', $morning)
+                ->setParameter('midnight', $midnight)
+            ;
+        }
 
 
         $qb = $qb
@@ -76,10 +88,6 @@ class StatementRepository extends EntityRepository
         $qb = $qb
             ->addOrderBy('n.publishedAt', 'desc')
             ->setParameter('festival', $festival)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('morning', $morning)
-            ->setParameter('midnight', $midnight)
-            ->addOrderBy('n.publishedAt', 'asc')
             ->getQuery()
             ->getResult()
         ;

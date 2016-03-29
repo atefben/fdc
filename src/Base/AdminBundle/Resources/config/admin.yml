@@ -199,15 +199,6 @@ services:
          calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    #Cannes Classics
-    base.admin.fdc_cannes_classics:
-       class: Base\AdminBundle\Admin\FDCCannesClassicsAdmin
-       arguments: [~, Base\CoreBundle\Entity\FDCCannesClassics, BaseAdminBundle:FDCCannesClassicsAdmin]
-       tags:
-           - {name: sonata.admin, manager_type: orm, group: admin, label: FDCCannesClassics}
-       calls:
-           - [ setTranslationDomain, ['BaseAdminBundle']]
-
     #SOIF
     base.admin.film_film:
         class: Base\AdminBundle\Admin\FilmFilmAdmin
@@ -1125,35 +1116,62 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: FilmFilmTag, show_in_dashboard: false}
 
-    base.admin.fdc_cannes_classics_widget_audio_dummy:
-        class: Base\AdminBundle\Admin\FDCCannesClassicsWidgetAudioDummyAdmin
-        arguments: [~, Base\CoreBundle\Entity\FDCCannesClassicsWidgetAudio, BaseAdminBundle:FDCCannesClassicsWidgetAudioDummyAdmin]
+    #cannes classics
+    base.admin.fdc_page_la_selection_cannes_classics_widget_audio_dummy:
+        class: Base\AdminBundle\Admin\FDCPageLaSelectionCannesClassicsWidgetAudioDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetAudio, BaseAdminBundle:FDCPageLaSelectionCannesClassicsWidgetAudioDummyAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCCannesClassicsWidgetAudio}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageLaSelectionCannesClassicsWidgetAudioDummyAdmin, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.fdc_cannes_classics_widget_image_dual_align_dummy:
-        class: Base\AdminBundle\Admin\FDCCannesClassicsWidgetImageDualAlignDummyAdmin
-        arguments: [~, Base\CoreBundle\Entity\FDCCannesClassicsWidgetImageDualAlign, BaseAdminBundle:FDCCannesClassicsWidgetImageDualAlignDummyAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCCannesClassicsWidgetImageDualAlign}
+    base.admin.fdc_page_la_selection_cannes_classics_widget_image_dummy:
+            class: Base\AdminBundle\Admin\FDCPageLaSelectionCannesClassicsWidgetImageDummyAdmin
+            arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetImage, BaseAdminBundle:FDCPageLaSelectionCannesClassicsWidgetImageDummyAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageLaSelectionCannesClassicsWidgetImageDummyAdmin, show_in_dashboard: false}
+            calls:
+                - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.fdc_cannes_classics_widget_image_dummy:
-        class: Base\AdminBundle\Admin\FDCCannesClassicsWidgetImageDummyAdmin
-        arguments: [~, Base\CoreBundle\Entity\FDCCannesClassicsWidgetImage, BaseAdminBundle:FDCCannesClassicsWidgetImageDummyAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCCannesClassicsWidgetImage}
+    base.admin.fdc_page_la_selection_cannes_classics_widget_image_dual_align_dummy:
+            class: Base\AdminBundle\Admin\FDCPageLaSelectionCannesClassicsWidgetImageDualAlignDummyAdmin
+            arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetImageDualAlign, BaseAdminBundle:FDCPageLaSelectionCannesClassicsWidgetImageDualAlignDummyAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageLaSelectionCannesClassicsWidgetImageDualAlignDummyAdmin, show_in_dashboard: false}
+            calls:
+                - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.fdc_cannes_classics_widget_video_dummy:
-        class: Base\AdminBundle\Admin\FDCCannesClassicsWidgetVideoDummyAdmin
-        arguments: [~, Base\CoreBundle\Entity\FDCCannesClassicsWidgetVideo, BaseAdminBundle:FDCCannesClassicsWidgetVideoDummyAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCCannesClassicsWidgetVideo}
+    base.admin.fdc_page_la_selection_cannes_classics_widget_quote_dummy:
+            class: Base\AdminBundle\Admin\FDCPageLaSelectionCannesClassicsWidgetQuoteDummyAdmin
+            arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetQuote, BaseAdminBundle:FDCPageLaSelectionCannesClassicsWidgetQuoteDummyAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageLaSelectionCannesClassicsWidgetQuoteDummyAdmin, show_in_dashboard: false}
+            calls:
+                - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.fdc_cannes_classics_widget_video_youtube_dummy:
-        class: Base\AdminBundle\Admin\FDCCannesClassicsWidgetVideoYoutubeDummyAdmin
-        arguments: [~, Base\CoreBundle\Entity\FDCCannesClassicsWidgetVideoYoutube, BaseAdminBundle:FDCCannesClassicsWidgetVideoYoutubeDummyAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCCannesClassicsWidgetVideoYoutube}
+    base.admin.fdc_page_la_selection_cannes_classics_widget_text_dummy:
+                class: Base\AdminBundle\Admin\FDCPageLaSelectionCannesClassicsWidgetTextDummyAdmin
+                arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetText, BaseAdminBundle:FDCPageLaSelectionCannesClassicsWidgetTextDummyAdmin]
+                tags:
+                    - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageLaSelectionCannesClassicsWidgetTextDummyAdmin, show_in_dashboard: false}
+                calls:
+                    - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_la_selection_cannes_classics_widget_video_dummy:
+                class: Base\AdminBundle\Admin\FDCPageLaSelectionCannesClassicsWidgetVideoDummyAdmin
+                arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetVideo, BaseAdminBundle:FDCPageLaSelectionCannesClassicsWidgetVideoDummyAdmin]
+                tags:
+                    - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageLaSelectionCannesClassicsWidgetVideoDummyAdmin, show_in_dashboard: false}
+                calls:
+                    - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_la_selection_cannes_classics_widget_video_youtube_dummy:
+                class: Base\AdminBundle\Admin\FDCPageLaSelectionCannesClassicsWidgetVideoYoutubeDummyAdmin
+                arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetVideoYoutube, BaseAdminBundle:FDCPageLaSelectionCannesClassicsWidgetVideoYoutubeDummyAdmin]
+                tags:
+                    - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageLaSelectionCannesClassicsWidgetVideoYoutubeDummyAdmin, show_in_dashboard: false}
+                calls:
+                    - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.amazon_remote_file:
         class: Base\AdminBundle\Admin\AmazonRemoteFileAdmin

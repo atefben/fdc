@@ -149,6 +149,7 @@ parameters:
     s3_pdf_region: ~
     # fdc
     fdc_event_domain: ~
+    fdc_event_mobile_domain: ~
     fdc_event_scheme: ~
     fdc_press_domain: ~
     fdc_press_scheme: ~

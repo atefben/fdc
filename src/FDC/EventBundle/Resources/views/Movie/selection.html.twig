@@ -20,33 +20,38 @@
                         <div class="grid-sizer"></div>
 
                         {% for movie in movies %}
-                            {% set filmPoster = movie|film_poster %} {# Implements film images fallback #}
-                            {% if filmPoster %}
-                                <div class="item">
-                                    <figure>
-                                        <div class="image">
-                                            <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
-                                                <img src="{% path filmPoster, '319x434' %}" alt=""/>
-                                            </a>
-                                        </div>
-                                        <figcaption>
-                                            <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
-                                                {% if movie|trans_fallback('title') != null and movie.titleVo != null and movie|trans_fallback('title')|lower != movie.titleVo|lower %}
-                                                    <span class="name">{{ movie|trans_fallback('title') }}</span>
-                                                    <span class="sub-name">({{ movie.titleVo }})</span>
-                                                {% else %}
-                                                    <span class="name">{{ movie|trans_fallback('title')?:movie.titleVo }}</span>
-                                                {% endif %}
-                                            </a>
-                                            {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">
-                                                    <span class="author">{{ loop.first == false ? ', ': '' }}{{ director.fullName }}</span>
-                                                </a>
-                                            {% endfor %}
-                                        </figcaption>
-                                    </figure>
-                                </div>
+                            {% set media = movie|film_poster %} {# Implements film images fallback #}
+                            {% if media is null %}
+                                {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
                             {% endif %}
+                            <div class="item">
+                                <figure>
+                                    <div class="image">
+                                        <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
+                                            {% if media %}
+                                                <img src="{% path media, '319x434' %}" alt=""/>
+                                            {% else %}
+                                                <img src="{{ asset('bundles/fdcevent/img/palmares/film_w256.jpg') }}" alt="Affiche film"/>
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                    <figcaption>
+                                        <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
+                                            {% if movie|trans_fallback('title') != null and movie.titleVo != null and movie|trans_fallback('title')|lower != movie.titleVo|lower %}
+                                                <span class="name">{{ movie|trans_fallback('title') }}</span>
+                                                <span class="sub-name">({{ movie.titleVo }})</span>
+                                            {% else %}
+                                                <span class="name">{{ movie|trans_fallback('title')?:movie.titleVo }}</span>
+                                            {% endif %}
+                                        </a>
+                                        {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                            <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">
+                                                <span class="author">{{ loop.first == false ? ', ': '' }}{{ director.fullName }}</span>
+                                            </a>
+                                        {% endfor %}
+                                    </figcaption>
+                                </figure>
+                            </div>
                         {% endfor %}
 
                     </div>

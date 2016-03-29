@@ -51,7 +51,18 @@ class MediaImageSimple implements TranslateMainInterface
      *     "news_show",
      *     "live",
      *     "web_tv_show", "live",
-     *     "film_show"
+     *     "film_show",
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show",
+     *     "film_selection_section_show"
      * })
      */
     protected $name;

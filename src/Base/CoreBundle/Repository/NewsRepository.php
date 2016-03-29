@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use JMS\DiExtraBundle\Annotation as DI;
@@ -23,13 +24,8 @@ class NewsRepository extends EntityRepository
      * @param $dateTime
      * @return array
      */
-    public function getNewsApiSameDayNews($locale, $festival, $dateTime)
+    public function getNewsApiSameDayNews($locale, FilmFestival $festival, \DateTime $dateTime)
     {
-
-        $morning = clone $dateTime;
-        $morning->setTime(0, 0, 0);
-        $midnight = clone $dateTime;
-        $midnight->setTime(23, 59, 59);
 
         $qb = $this
             ->createQueryBuilder('n')
@@ -44,10 +40,26 @@ class NewsRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->andWhere('n.festival = :festival')
-            ->andWhere('n.publishedAt BETWEEN :morning AND :midnight')
-            ->andWhere('n.publishedAt <= :datetime')
-            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;
+
+        if ($festival->getFestivalStartsAt() > $dateTime || $festival->getFestivalEndsAt() < $dateTime) {
+            $this->addMasterQueries($qb, 'n', $festival, true);
+        } else {
+            $morning = clone $dateTime;
+            $morning->setTime(0, 0, 0);
+            $midnight = clone $dateTime;
+            $midnight->setTime(23, 59, 59);
+
+            $qb
+                ->andWhere('n.festival = :festival')
+                ->andWhere('n.publishedAt BETWEEN :morning AND :midnight')
+                ->andWhere('n.publishedAt <= :datetime')
+                ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+                ->setParameter('datetime', $dateTime)
+                ->setParameter('morning', $morning)
+                ->setParameter('midnight', $midnight)
+            ;
+        }
 
         $qb = $qb
             ->andWhere(
@@ -78,16 +90,12 @@ class NewsRepository extends EntityRepository
         }
         $qb = $qb
             ->orderBy('n.publishedAt', 'desc')
-            ->setParameter('festival', $festival)
-            ->setParameter('datetime', $dateTime)
-            ->setParameter('morning', $morning)
-            ->setParameter('midnight', $midnight)
-        ;
-        return $qb
+            ->setParameter('festival', $festival->getId())
             ->getQuery()
             ->getResult()
-        ;
+            ;
 
+        return $qb;
     }
 
     public function getApiLastsNews($locale, $festival, $dateTime, $count)

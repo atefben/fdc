@@ -129,7 +129,7 @@ class FilmProjection
      *
      * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilm", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"projection_list", "projection_show", "home"})
+     * @Groups({"projection_list", "projection_show", "home", "news_list"})
      */
     private $programmationFilms;
 
