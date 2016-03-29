@@ -32,7 +32,6 @@ class StatementVideo extends Statement
      *
      * @ORM\ManyToOne(targetEntity="MediaVideo", cascade={"persist"})
      *
-     * @Groups({"news_list", "news_show"})
      * @Assert\NotNull()
      */
     private $video;
@@ -42,7 +41,7 @@ class StatementVideo extends Statement
      *
      * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"persist"})
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "home"})
      */
     private $image;
 

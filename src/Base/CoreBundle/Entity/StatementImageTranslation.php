@@ -35,7 +35,7 @@ class StatementImageTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "home"})
      */
     protected $title;
 
@@ -44,7 +44,6 @@ class StatementImageTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"news_list", "news_show"})
      */
     protected $introduction;
 

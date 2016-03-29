@@ -84,7 +84,6 @@ abstract class News implements TranslateMainInterface
      *
      * @ORM\Column(type="boolean", options={"default":0})
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $displayedHome;
 
@@ -100,7 +99,7 @@ abstract class News implements TranslateMainInterface
      *
      * @ORM\Column(type="string", nullable=true)
      *
-     * @Groups({"news_list", "news_show", "film_show"})
+     * @Groups({"news_show", "film_show"})
      */
     private $signature;
 
@@ -196,7 +195,7 @@ abstract class News implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_show"})
      */
     private $createdBy;
 
@@ -205,7 +204,6 @@ abstract class News implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
-     * @Groups({"news_list", "news_show"})
      */
     private $updatedBy;
 

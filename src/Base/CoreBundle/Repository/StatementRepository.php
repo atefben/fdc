@@ -18,24 +18,96 @@ use Base\CoreBundle\Entity\StatementArticleTranslation;
  */
 class StatementRepository extends EntityRepository
 {
+    public function getNewsApiSameDayStatements($festival, $locale, $dateTime)
+    {
+        $morning = clone $dateTime;
+        $morning->setTime(0, 0, 0);
+        $midnight = clone $dateTime;
+        $midnight->setTime(23, 59, 59);
+
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->select('n,
+                RAND() as HIDDEN rand')
+            ->join('n.sites', 's')
+            ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na1', 'WITH', 'na1.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'na2', 'WITH', 'na2.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'na3', 'WITH', 'na3.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'na4', 'WITH', 'na4.id = n.id')
+            ->leftjoin('na1.translations', 'na1t')
+            ->leftjoin('na2.translations', 'na2t')
+            ->leftjoin('na3.translations', 'na3t')
+            ->leftjoin('na4.translations', 'na4t')
+            ->andWhere('n.festival = :festival')
+            ->andWhere('n.publishedAt BETWEEN :morning AND :midnight')
+            ->andWhere('n.publishedAt <= :datetime')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+        ;
+
+
+        $qb = $qb
+            ->andWhere(
+                "(na1t.locale = 'fr' AND na1t.status = :status) OR
+                (na2t.locale = 'fr' AND na2t.status = :status) OR
+                (na3t.locale = 'fr' AND na3t.status = :status) OR
+                (na4t.locale = 'fr' AND na4t.status = :status)"
+            )
+            ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED)
+        ;
+
+        if ($locale != 'fr') {
+            $qb = $qb
+                ->leftjoin('na1.translations', 'na5t')
+                ->leftjoin('na2.translations', 'na6t')
+                ->leftjoin('na3.translations', 'na7t')
+                ->leftjoin('na4.translations', 'na8t')
+                ->andWhere(
+                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na8t.status = :status_translated)'
+                )
+                ->setParameter('locale', $locale)
+                ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED)
+            ;
+        }
+
+
+        $qb = $qb
+            ->addOrderBy('n.publishedAt', 'desc')
+            ->setParameter('festival', $festival)
+            ->setParameter('datetime', $dateTime)
+            ->setParameter('morning', $morning)
+            ->setParameter('midnight', $midnight)
+            ->addOrderBy('n.publishedAt', 'asc')
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $qb;
+    }
+
     public function getStatementBySlug($slug, $festival, $locale, $isAdmin, $repository)
     {
         $qb = $this
             ->createQueryBuilder('n')
             ->join('n.sites', 's')
             ->leftjoin($repository, 'na1', 'WITH', 'na1.id = n.id')
-            ->leftjoin('na1.translations', 'na1t');
+            ->leftjoin('na1.translations', 'na1t')
+        ;
 
         // add query for audio / video encoder
         if (strpos($repository, 'StatementAudio') !== false) {
             $qb
                 ->leftjoin('na1.audio', 'na1a')
-                ->leftjoin('na1a.translations', 'na1at');
+                ->leftjoin('na1a.translations', 'na1at')
+            ;
             $this->addTranslationQueries($qb, 'na1at', 'fr', null, 'MediaAudio');
         } else if (strpos($repository, 'StatementVideo') !== false) {
             $qb
                 ->leftjoin('na1.video', 'na1v')
-                ->leftjoin('na1v.translations', 'na1vt');
+                ->leftjoin('na1v.translations', 'na1vt')
+            ;
             $this->addTranslationQueries($qb, 'na1vt', 'fr', null, 'MediaVideo');
         }
 
@@ -43,7 +115,8 @@ class StatementRepository extends EntityRepository
             $qb
                 ->andWhere('(na1t.locale = :locale AND na1t.slug = :slug)')
                 ->setParameter('locale', $locale)
-                ->setParameter('slug', $slug);
+                ->setParameter('slug', $slug)
+            ;
         } else {
             $this->addMasterQueries($qb, 'na1', $festival);
             $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
@@ -53,7 +126,8 @@ class StatementRepository extends EntityRepository
 
         return $qb
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getOneOrNullResult()
+            ;
     }
 
     public function getSameDayStatement($festival, $locale, $dateTime, $count, $id)
@@ -77,7 +151,8 @@ class StatementRepository extends EntityRepository
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
             ->andWhere('n.id != :id')
-            ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt <= :datetime2)');
+            ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt <= :datetime2)')
+        ;
 
 
         $qb = $qb
@@ -87,7 +162,8 @@ class StatementRepository extends EntityRepository
                 (na3t.locale = 'fr' AND na3t.status = :status) OR
                 (na4t.locale = 'fr' AND na4t.status = :status)"
             )
-            ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -102,7 +178,8 @@ class StatementRepository extends EntityRepository
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('locale', $locale)
-                ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED);
+                ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED)
+            ;
         }
 
 
@@ -115,7 +192,8 @@ class StatementRepository extends EntityRepository
             ->setParameter('id', $id)
             ->setParameter('site_slug', 'site-press')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
@@ -137,7 +215,8 @@ class StatementRepository extends EntityRepository
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
             ->andWhere('n.displayedHome = 1')
-            ->andWhere('(n.publishedAt < :datetime)');
+            ->andWhere('(n.publishedAt < :datetime)')
+        ;
 
         $qb = $qb
             ->andWhere(
@@ -147,7 +226,8 @@ class StatementRepository extends EntityRepository
                     (na4t.locale = :locale_fr AND na4t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -162,18 +242,21 @@ class StatementRepository extends EntityRepository
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         $qb = $qb
             ->orderBy('n.publishedAt', 'DESC')
             ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime)
-            ->setParameter('site_slug', 'site-evenementiel');
+            ->setParameter('site_slug', 'site-evenementiel')
+        ;
 
         return $qb
             ->getQuery()
-            ->getResult();
+            ->getResult()
+            ;
     }
 
     public function getStatementArticles($locale, $festival, $dateTime)
@@ -185,18 +268,21 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na1.translations', 'na1t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)');
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+        ;
 
         $qb = $qb
             ->andWhere("(na1t.locale = 'fr' AND na1t.status = :status)")
-            ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
                 ->leftJoin('na1.translations', 'na2t')
                 ->andWhere('(na2t.locale = :locale AND na2t.status = :status)')
                 ->setParameter('status', StatementArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         $qb = $qb
@@ -204,7 +290,8 @@ class StatementRepository extends EntityRepository
             ->setParameter('datetime', $dateTime)
             ->setParameter('site_slug', 'site-press')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
@@ -238,7 +325,8 @@ class StatementRepository extends EntityRepository
                 OR (nit.locale = 'fr' AND nit.status = :status)
                 OR (naat.locale = 'fr' AND naat.status = :status)
                 OR (nvt.locale = 'fr' AND nvt.status = :status)"
-            );
+            )
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -253,7 +341,8 @@ class StatementRepository extends EntityRepository
                         (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('locale', $locale)
-                ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED);
+                ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED)
+            ;
         }
 
         $qb = $qb
@@ -262,7 +351,8 @@ class StatementRepository extends EntityRepository
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'site-press')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
@@ -287,14 +377,16 @@ class StatementRepository extends EntityRepository
             ->andWhere('s.slug = :site')
             ->andWhere('mv.inWebTv = :inWebTv')
             ->andWhere('(mvt.locale = :locale AND mvt.status = :status)')
-            ->andWhere("(wtt.locale = 'fr' AND wtt.status = :status)");
+            ->andWhere("(wtt.locale = 'fr' AND wtt.status = :status)")
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
                 ->leftJoin('wt.translations', 'na2t')
                 ->andWhere('(na2t.locale = :locale AND na2t.status = :status_translated)')
                 ->setParameter('locale', $locale)
-                ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED);
+                ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED)
+            ;
         }
 
         $qb = $qb->andWhere('(mv.publishedAt IS NULL OR mv.publishedAt <= :datetime)')
@@ -307,7 +399,8 @@ class StatementRepository extends EntityRepository
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getOneOrNullResult()
+        ;
 
         return $qb;
     }
@@ -343,7 +436,8 @@ class StatementRepository extends EntityRepository
                 OR (nit.locale = 'fr' AND nit.status = :status)
                 OR (naat.locale = 'fr' AND naat.status = :status)
                 OR (nvt.locale = 'fr' AND nvt.status = :status)"
-            );
+            )
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -358,7 +452,8 @@ class StatementRepository extends EntityRepository
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('locale', $locale)
-                ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED);
+                ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED)
+            ;
         }
 
         $qb = $qb->addOrderBy('n.publishedAt', 'DESC')
@@ -368,7 +463,8 @@ class StatementRepository extends EntityRepository
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'site-press')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
@@ -390,7 +486,8 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.publishedAt < :date')
-            ->andWhere('n.festival = :festival');
+            ->andWhere('n.festival = :festival')
+        ;
 
         $qb = $qb
             ->andWhere(
@@ -400,7 +497,8 @@ class StatementRepository extends EntityRepository
                     (na4t.locale = :locale_fr AND na4t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -415,7 +513,8 @@ class StatementRepository extends EntityRepository
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         $qb = $qb
@@ -423,11 +522,13 @@ class StatementRepository extends EntityRepository
             ->setMaxResults('1')
             ->setParameter('date', $date)
             ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-press');
+            ->setParameter('site_slug', 'site-press')
+        ;
 
         $qb = $qb
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
@@ -449,7 +550,8 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.publishedAt > :date')
-            ->andWhere('n.festival = :festival');
+            ->andWhere('n.festival = :festival')
+        ;
 
         $qb = $qb
             ->andWhere(
@@ -459,7 +561,8 @@ class StatementRepository extends EntityRepository
                     (na4t.locale = :locale_fr AND na4t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -474,7 +577,8 @@ class StatementRepository extends EntityRepository
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         $qb = $qb
@@ -482,11 +586,13 @@ class StatementRepository extends EntityRepository
             ->setMaxResults('1')
             ->setParameter('date', $date)
             ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-press');
+            ->setParameter('site_slug', 'site-press')
+        ;
 
         $qb = $qb
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }
@@ -506,7 +612,8 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('n.festival = :festival');
+            ->andWhere('n.festival = :festival')
+        ;
 
         $qb = $qb
             ->andWhere(
@@ -516,11 +623,13 @@ class StatementRepository extends EntityRepository
                     (na4t.locale = :locale_fr AND na4t.status = :status)'
             )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED);
+            ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED)
+        ;
 
         $qb = $qb
             ->andWhere('n.publishedAt <= :today')
-            ->setParameter('today', date("Y-m-d H:i:s"));
+            ->setParameter('today', date("Y-m-d H:i:s"))
+        ;
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -535,17 +644,20 @@ class StatementRepository extends EntityRepository
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale);
+                ->setParameter('locale', $locale)
+            ;
         }
 
         $qb = $qb
             ->orderBy('n.publishedAt', 'DESC')
             ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-press');
+            ->setParameter('site_slug', 'site-press')
+        ;
 
         $qb = $qb
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         return $qb;
     }

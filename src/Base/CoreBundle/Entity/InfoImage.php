@@ -41,7 +41,6 @@ class InfoImage extends Info
     /**
      * @ORM\ManyToOne(targetEntity="Gallery", cascade={"persist"})
      *
-     * @Groups({"news_list", "news_show"})
      * @Assert\NotNull()
      */
     private $gallery;

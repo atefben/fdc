@@ -41,7 +41,6 @@ class InfoAudio extends Info
      *
      * @ORM\ManyToOne(targetEntity="MediaAudio", cascade={"persist"})
      *
-     * @Groups({"news_list", "news_show"})
      * @Assert\NotNull()
      */
     private $audio;
