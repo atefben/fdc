@@ -41,7 +41,7 @@ class MediaImageRepository extends EntityRepository
         ;
 
         if ($festival->getFestivalStartsAt() > $dateTime || $festival->getFestivalEndsAt() < $dateTime) {
-            $this->addMasterQueries($qb, 'n', $festival, true);
+            $this->addMasterQueries($qb, 'mi', $festival, true);
         } else {
             $morning = clone $dateTime;
             $morning->setTime(0, 0, 0);

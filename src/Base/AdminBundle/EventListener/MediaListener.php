@@ -205,6 +205,9 @@ class MediaListener
         /**
          * @todo create amazon video job here
          */
+        //$mediaVideo->getAmazonRemoteFile()->getName();
+        //$mediaVideo->getAmazonRemoteFile()->getId();
+        //$mediaVideo->getAmazonRemoteFile()->getUrl();
 
     }
 
