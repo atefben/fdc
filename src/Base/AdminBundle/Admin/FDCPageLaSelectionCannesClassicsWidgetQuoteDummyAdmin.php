@@ -23,7 +23,10 @@ class FDCPageLaSelectionCannesClassicsWidgetQuoteDummyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('file', 'sonata_type_model_list',array('btn_add' => false))
+            ->add('id')
+            ->add('position')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 }

@@ -120,6 +120,6 @@ class FDCPageLaSelectionCannesClassicsWidgetVideoYoutubeType extends FDCPageLaSe
      */
     public function getName()
     {
-        return 'fdc_page_la_seletion_cannes_classics_widget_video_youtube_type';
+        return 'fdc_page_la_selection_cannes_classics_widget_video_youtube_type';
     }
 }

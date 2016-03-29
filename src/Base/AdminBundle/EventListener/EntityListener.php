@@ -42,9 +42,11 @@ class EntityListener
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
+        $allowedEntities = array('News', 'Statement', 'Event', 'Info', 'Media', 'SocialWall', 'SocialGraph');
+        $entityName = substr(strrchr(get_class($entity), '\\'), 1);
 
         // set festival year
-        if (method_exists($entity, 'setFestival')) {
+        if (method_exists($entity, 'setFestival') && in_array($entityName, $allowedEntities)) {
             $em = $args->getEntityManager();
             $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
             if ($settings !== null) {
