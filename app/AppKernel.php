@@ -63,10 +63,11 @@ class AppKernel extends Kernel
             new Base\ApiBundle\BaseApiBundle(),
             new FDC\CorporateBundle\FDCCorporateBundle(),
             new FDC\EventBundle\FDCEventBundle(),
+            new FDC\EventMobileBundle\FDCEventMobileBundle(),
             new FDC\PressBundle\FDCPressBundle(),
             new Misd\GuzzleBundle\MisdGuzzleBundle(),
             /* Console */
-            new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle()
+            new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

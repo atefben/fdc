@@ -1,0 +1,5 @@
+fdc_event_mobile:
+    resource: "@FDCEventMobileBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    host:     "%fdc_event_mobile_domain%"

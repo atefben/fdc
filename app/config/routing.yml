@@ -106,6 +106,10 @@ fdc_event:
     resource: "@FDCEventBundle/Resources/config/routing.yml"
     prefix:   /
 
+fdc_event_mobile:
+    resource: "@FDCEventMobileBundle/Resources/config/routing.yml"
+    prefix:   /mobile
+
 fdc_press:
     resource: "@FDCPressBundle/Resources/config/routing.yml"
     prefix:   /press
