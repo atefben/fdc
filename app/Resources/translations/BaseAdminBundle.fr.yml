@@ -10,6 +10,7 @@ settings:
     fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
+    link_f_d_c_page_la_selection_cannes_classics_list: Cannes Classics
     link_film_person_list: Liste des personnes
     link_film_film_list: Liste des films
     link_tag_list: Liste des tags
@@ -463,6 +464,11 @@ dashboard:
         fdc_page_participate_section: Strates Participer
 
 form:
+    fdc_page_la_selection_cannes_classics:
+        page_title: Titre de la page
+        title_nav: Titre dans la navigation
+        title: Titre
+        helper_title: Si le titre est renseigné les boutons de partage sont affichés en haut et bas de page.
     seo:
         helper_file: Dimensions attendues : 1200x627. Format attendu : .jpg, .png, .gif
     tag:

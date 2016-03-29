@@ -117,4 +117,27 @@ abstract class FDCPageLaSelectionCannesClassicsWidget
     {
         return $this->position;
     }
+
+    /**
+     * Set FDCPageLaSelectionCannesClassics
+     *
+     * @param \Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics $fDCPageLaSelectionCannesClassics
+     * @return FDCPageLaSelectionCannesClassicsWidget
+     */
+    public function setFDCPageLaSelectionCannesClassics(\Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics $fDCPageLaSelectionCannesClassics = null)
+    {
+        $this->FDCPageLaSelectionCannesClassics = $fDCPageLaSelectionCannesClassics;
+
+        return $this;
+    }
+
+    /**
+     * Get FDCPageLaSelectionCannesClassics
+     *
+     * @return \Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics 
+     */
+    public function getFDCPageLaSelectionCannesClassics()
+    {
+        return $this->FDCPageLaSelectionCannesClassics;
+    }
 }

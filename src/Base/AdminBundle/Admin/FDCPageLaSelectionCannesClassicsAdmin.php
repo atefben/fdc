@@ -98,8 +98,14 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                         'choices'                   => FDCPageLaSelectionCannesClassicsTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
-                    'overrideName'       => array(
-                        'label'              => 'form.fdc_page_web_tv_trailers.label_override_name',
+                    'title'       => array(
+                        'label'              => 'form.fdc_page_la_selection_cannes_classics.title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false,
+                        'sonata_help'        => 'form.fdc_page_la_selection_cannes_classics.helper_title'
+                    ),
+                    'titleNav'       => array(
+                        'label'              => 'form.fdc_page_la_selection_cannes_classics.title_nav',
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => false,
                     ),
@@ -133,11 +139,6 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                 'label'    => 'form.fdc_page_web_tv_trailers.image',
                 'help'     => 'form.fdc_page_web_tv_trailers.helper_image',
                 'required' => false,
-            ))
-            ->add('selectionSection', 'sonata_type_model_list', array(
-                'label'    => 'form.fdc_page_web_tv_trailers.label_festival_section',
-                'required' => false,
-                'btn_add' => false,
             ))
             ->add('widgets', 'infinite_form_polycollection', array(
                 'label' => false,
