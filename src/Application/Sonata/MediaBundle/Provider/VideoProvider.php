@@ -4,7 +4,6 @@ namespace Application\Sonata\MediaBundle\Provider;
 
 use Sonata\MediaBundle\Provider\FileProvider;
 use Sonata\MediaBundle\Model\MediaInterface;
-
 use Aws\ElasticTranscoder\ElasticTranscoderClient;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -15,6 +14,7 @@ class VideoProvider extends FileProvider
      */
     public function getProviderMetadata()
     {
+	error_log('ici');
         return new Metadata($this->getName(), $this->getName() . '.description', false, 'SonataMediaBundle', array('class' => 'fa fa-picture-o'));
     }
 

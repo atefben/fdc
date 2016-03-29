@@ -31,19 +31,23 @@ class AmazonRemoteFileManager
     {
         $i = 0;
         foreach ($files as $key => $file) {
-            $amazonRemoteFile = new AmazonRemoteFile();
-            $amazonRemoteFile
-                ->setId($file['id'])
-                ->setName($file['name'])
-                ->setUrl($file['url'])
-            ;
-            ++$i;
-            //$this->getDoctrineManager()->persist($amazonRemoteFile);
-            if ($i === 99) {
-                $i = 0;
-                $this->getDoctrineManager()->flush();
-                $this->getDoctrineManager()->clear();
-            }
+			$entity = $this->container->get('doctrine')->getRepository('BaseCoreBundle:AmazonRemoteFile')->findOneBy(array('id' => $file['id']));
+			if ($entity == null)
+			{
+	            $amazonRemoteFile = new AmazonRemoteFile();
+	            $amazonRemoteFile
+	                ->setId($file['id'])
+	                ->setName($file['name'])
+	                ->setUrl($file['url'])
+	            ;
+	            ++$i;
+	            $this->getDoctrineManager()->persist($amazonRemoteFile);
+	            if ($i === 99) {
+	                $i = 0;
+	                $this->getDoctrineManager()->flush();
+	                $this->getDoctrineManager()->clear();
+	            }
+			}
         }
         if ($i) {
             $this->getDoctrineManager()->flush();
