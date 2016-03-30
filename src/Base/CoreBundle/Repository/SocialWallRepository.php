@@ -46,8 +46,28 @@ class SocialWallRepository extends EntityRepository
         return $query;
     }
 
-    public function getApiSocialWallMobile($festival)
+    public function getApiSocialWallMobile($festival, $dateTime)
     {
+
+        if ($festival->getFestivalStartsAt() > $dateTime || $festival->getFestivalEndsAt() < $dateTime) {
+            $this->addMasterQueries($qb, 'n', $festival, true);
+        } else {
+            $morning = clone $dateTime;
+            $morning->setTime(0, 0, 0);
+            $midnight = clone $dateTime;
+            $midnight->setTime(23, 59, 59);
+
+            $qb
+                ->andWhere('n.festival = :festival')
+                ->andWhere('n.publishedAt BETWEEN :morning AND :midnight')
+                ->andWhere('n.publishedAt <= :datetime')
+                ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+                ->setParameter('datetime', $dateTime)
+                ->setParameter('morning', $morning)
+                ->setParameter('midnight', $midnight)
+            ;
+        }
+
         $query = $this->createQueryBuilder('f')
             ->where('f.festival = :festival')
             ->andWhere('f.enabledMobile = 1')

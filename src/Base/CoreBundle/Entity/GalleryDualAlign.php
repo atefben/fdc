@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * GalleryDualAlign
@@ -33,6 +34,7 @@ class GalleryDualAlign
      * @var Media
      *
      * @ORM\OneToMany(targetEntity="GalleryDualAlignMedia", mappedBy="gallery", cascade={"persist"})
+     * @Groups({"news_show"})
      */
     private $medias;
 
