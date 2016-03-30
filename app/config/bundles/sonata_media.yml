@@ -23,6 +23,8 @@ sonata_media:
                 mobile: { width: 584 , height: 794 , quality: 100 }
                 tiny:  { width: 76, height: 92, quality: 100 }
                 small: { width: 584 , height: 794 , quality: 100 }
+                38x46: { width: 38 , height: 46 , quality: 100 }
+
 
         film_poster:
             providers:
