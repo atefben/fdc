@@ -751,6 +751,7 @@ abstract class Statement implements TranslateMainInterface
      */
     public function addAssociatedFilm(\Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedFilms)
     {
+        $associatedFilms->setStatement($this);
         $this->associatedFilms[] = $associatedFilms;
 
         return $this;

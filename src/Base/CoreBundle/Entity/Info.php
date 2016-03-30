@@ -750,6 +750,7 @@ abstract class Info implements TranslateMainInterface
      */
     public function addAssociatedFilm(\Base\CoreBundle\Entity\InfoFilmFilmAssociated $associatedFilms)
     {
+        $associatedFilms->setInfo($this);
         $this->associatedFilms[] = $associatedFilms;
 
         return $this;
