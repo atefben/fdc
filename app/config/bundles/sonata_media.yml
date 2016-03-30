@@ -38,6 +38,7 @@ sonata_media:
                 420x560: { width: 420, height: 560, quality: 100 }
                 300x400: { width: 300 , height: 400 , quality: 100 }
                 976x535: { width: 976 , height: 535 , quality: 100 }
+                210x284: { width: 210 , height: 284 , quality: 100 }
 
         film_main:
             providers:
