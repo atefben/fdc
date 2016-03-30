@@ -11876,8 +11876,9 @@ article .read-later.rAlign span:after {
   padding: 45px 0;
 }
 .single-movie .press {
-  height: 600px;
+  min-height: 600px;
   overflow: hidden;
+  background-color: #141414;
 }
 .single-movie .press h3 {
   color: #fff;
