@@ -19,7 +19,7 @@
                     {% if movie.associatedMediaVideos|length > 0 %}
                         <li><a href="#videos">{{ 'movie.middlenav.videos'|trans }}</a></li>
                     {% endif %}
-                    {% if movie.getActors()|length > 0 and movie.getCredits()|length > 0 %}
+                    {% if movie.getActors()|length > 0 or movie.getCredits()|length > 0 %}
                         <li><a href="#casting">{{ 'movie.middlenav.creditcasting'|trans }}</a></li>
                     {% endif %}
                     {% if movie.getMedias()|length > 0 %}
