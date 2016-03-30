@@ -86,6 +86,8 @@
         <h2>{{ mainTitle }}</h2>
         {% if mainTitle != movie.titleVO %}
             <div class="title-original">({{ movie.titleVO }})</div>
+        {% else %}
+            <div class="title-original"></div>
         {% endif %}
         <p>
             {{ 'movie.label.realisepar'|trans }} :
