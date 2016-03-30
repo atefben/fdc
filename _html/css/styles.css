@@ -11226,7 +11226,7 @@ article .read-later.rAlign span:after {
   color: #fff;
   float: left;
   padding-top: 15px;
-  width: 639px;
+  width: 740px;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -11753,6 +11753,8 @@ article .read-later.rAlign span:after {
   margin-bottom: 10px;
   position: relative;
   width: 292px;
+  overflow: hidden;
+  text-align: center;
 }
 .single-movie .casting .gallery .img .caption {
   bottom: 10px;
@@ -11763,10 +11765,9 @@ article .read-later.rAlign span:after {
   z-index: 1;
 }
 .single-movie .casting .gallery .img img {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
+  height: 100%;
+  width: auto;
+  margin: 0 -100%;
   opacity: 0;
   visibility: hidden;
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
