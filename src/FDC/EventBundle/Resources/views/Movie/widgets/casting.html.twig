@@ -7,6 +7,7 @@
         <div class="gallery">
             <div class="img shadow-bottom">
                 {% for media in medias %}
+					{%set i+=1}
                     {% if loop.index0 == 0 %}
                         {% media media.file, media.file.context ~ '_small' with {'class': 'active', title: '', width: '', height: ''} %}
                     {% else %}
@@ -29,11 +30,13 @@
                     {% endif %}
                 {% endfor %}
             </div>
-            <div class="thumbs" style="display:none;">
+			{% if medias|length > 1 %}
+            <div class="thumbs">
                 {% for media in medias %}
                     {% media media.file, media.file.context ~ '_tiny' %}
                 {% endfor %}
             </div>
+			 {% endif %}
         </div>
         {% endif %}
         <div class="content">

@@ -2,6 +2,7 @@
 
 namespace Base\ApiBundle\Controller;
 
+use Base\CoreBundle\Entity\SocialWall;
 use \DateTime;
 
 use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
@@ -11,6 +12,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 
+use FOS\RestBundle\View\View;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use JMS\Serializer\SerializationContext;
 
@@ -28,7 +30,7 @@ class SocialWallMobileController extends FOSRestController
     /**
      * Get all socialwall datas enabled for mobile
      *
-     * @Rest\Get("/social_wall/mobile")
+     * @Rest\Get("/socialwall")
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
@@ -47,9 +49,10 @@ class SocialWallMobileController extends FOSRestController
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      *
+     * @param  ParamFetcher $paramFetcher
      * @return View
      */
-    public function getSocialWallMobileAction(Paramfetcher $paramFetcher)
+    public function getSocialWallAction(ParamFetcher $paramFetcher)
     {
         // coremanager shortcut
         $coreManager = $this->get('base.api.core_manager');
@@ -75,5 +78,31 @@ class SocialWallMobileController extends FOSRestController
         $view->setSerializationContext($context);
 
         return $view;
+    }
+
+
+    protected function buildDays($items)
+    {
+        $days = array();
+        foreach ($items as $item) {
+            $dayKey = $item->getDate()->format("Y-m-d");
+            if (!array_key_exists($dayKey, $days)) {
+                $dateTime = $item->getDate();
+                $dayTime = clone $dateTime;
+                $days[$dayKey] = array(
+                    'date'  => $dayTime,
+                    'items' => array(),
+                );
+            }
+            $itemKey = $item->getDate()->format('Y-m-d-H-i-s-') . $item->getId() . '-' . strtolower(get_class($item));
+            $days[$dayKey]['items'][$itemKey] = $item;
+        }
+
+        foreach ($days as $key => $value) {
+            krsort($days[$key]['items']);
+            $days[$key]['items'] = array_values($days[$key]['items']);
+        }
+        ksort($days);
+        return array_values($days);
     }
 }
