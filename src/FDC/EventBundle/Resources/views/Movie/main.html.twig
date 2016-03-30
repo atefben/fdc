@@ -85,4 +85,31 @@
      'description': ''
     }))
 }}
+    {% if movie|trans_fallback('title') is not empty %}
+        {% set mainTitle = movie|trans_fallback('title') %}
+    {% else %}
+        {% set mainTitle = movie.titleVO %}
+    {% endif %}
+
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.webtv.home'|trans,
+    "url"  : path('fdc_event_news_index')
+    },
+    {
+    "name" : 'breadcrumb.la_selection'|trans,
+    "url"  : path('fdc_event_movie_selection')
+    },
+    {
+    "name" : movie.selectionSection|trans_fallback('name')|trans,
+    "url"  : path('fdc_event_movie_selection', {'slug': movie.selectionSection|trans_fallback('slug') })
+    },
+    {
+    "name" : mainTitle,
+    "url"  : ""
+    }
+    ]
+    } %}
 {% endblock body %}
