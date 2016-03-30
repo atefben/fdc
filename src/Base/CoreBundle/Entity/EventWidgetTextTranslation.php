@@ -29,7 +29,7 @@ class EventWidgetTextTranslation
      *
      * @ORM\Column(type="text", nullable=false)
      *
-     * @Groups({"event_list", "event_show"})
+     * @Groups({"event_show"})
      */
     private $content;
 
