@@ -231,7 +231,7 @@ class MediaListener
         $path_video_input = $file_path['0'] . '/';
         $path_video_output = 'media_video_encoded' . '/direct_encoded/';
         //$mediaVideo->getAmazonRemoteFile()->getId();
-        $s3 = S3Client::factory(array('key'    => 'AKIAJHXD67GEPPA2F4TQ','secret' => '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'));
+        $s3 = S3Client::factory(array('key'    => $this->getParamter('s3_access_key'),'secret' => $this->getParameter('s3_secret_key')));
 		$info = $s3->doesObjectExist('ohwee-symfony-test-video', $path_video_output .  str_replace('.mov', '.mp4', $file_name));
 		if ($info)
 		{
@@ -245,17 +245,14 @@ class MediaListener
 		{
 	        $elasticTranscoder = ElasticTranscoderClient::factory(array(
 	            'credentials' => array(
-	                'key'    => 'AKIAJHXD67GEPPA2F4TQ',
-	                'secret' => '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',
+	                'key'    => $this->getParameter('s3_access_key'),
+	                'secret' => $this->getParameter('s3_secret_key'),
 	            ),
 	            'region'      => 'eu-west-1',
 	        ));
 		
-			
-
-	        //System preset generic 1080p MP4 ID : 1456133456345-3dts1g
-	        $job = $elasticTranscoder->createJob(array(
-	            'PipelineId'      => '1454076999739-uy533t',
+            $job = $elasticTranscoder->createJob(array(
+	            'PipelineId'      => $this->getParameter('s3_elastic_mp4_pipeline_id'),
 	            'OutputKeyPrefix' => $path_video_output,
 	            'Input'           => array(
 	                'Key'         => $path_video_input . $file_name,
@@ -269,11 +266,11 @@ class MediaListener
 	                array(
 	                    'Key'      => str_replace('.mov', '.mp4', $file_name),
 	                    'Rotate'   => 'auto',
-	                    'PresetId' => '1456133456345-3dts1g',
+	                    'PresetId' => $this->getParameter('s3_elastic_mp4_preset_id'),
 	                ),
 	            ),
 	        ));
-		
+
 			/* @TODO
 			récupérer l'URL du fichier généré par amazon
 			*/
@@ -282,10 +279,8 @@ class MediaListener
 			$mediaVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
 	        $mediaVideo->setJobMp4State(1);
 
-
-	        //System preset: Webm 720p ID : 1456133404879-sv127j
 	        $job = $elasticTranscoder->createJob(array(
-	            'PipelineId'      => '1454076999739-uy533t',
+	            'PipelineId'      => $this->getParameter('s3_elastic_webm_pipeline_id'),
 	            'OutputKeyPrefix' => $path_video_output,
 	            'Input'           => array(
 	                'Key'         => $path_video_input . $file_name,
@@ -299,7 +294,7 @@ class MediaListener
 	                array(
 	                    'Key'      => str_replace(array('.mp4', '.mov'), '.webm', $file_name),
 	                    'Rotate'   => 'auto',
-	                    'PresetId' => '1456133404879-sv127j',
+	                    'PresetId' => $this->getParameter('s3_elastic_webm_preset_id'),
 	                ),
 	            ),
 	        ));
@@ -338,8 +333,8 @@ class MediaListener
 
         $elasticTranscoder = ElasticTranscoderClient::factory(array(
             'credentials' => array(
-                'key'    => 'AKIAJHXD67GEPPA2F4TQ',
-                'secret' => '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',
+                'key'    => $this->getParameter('s3_access_key'),
+                'secret' => $this->getParameter('s3_secret_key'),
             ),
             'region'      => 'eu-west-1',
         ));
@@ -347,15 +342,14 @@ class MediaListener
         if (isset($parentVideo)) {
 
             $file_name = $media->getProviderReference();
-            $path = $provider->generatePublicUrl($media, $media->getProviderReference());
+            $path = $provider->generatePublicUrl($media, 'reference');
 
             $file_path = explode('/', $path);
             $path_video_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
             $path_video_output = 'media_video_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 
-            //System preset generic 1080p MP4 ID : 1456133456345-3dts1g
             $job = $elasticTranscoder->createJob(array(
-                'PipelineId'      => '1454076999739-uy533t',
+                'PipelineId'      => $this->getParameter('s3_elastic_mp4_pipeline_id'),
                 'OutputKeyPrefix' => $path_video_output,
                 'Input'           => array(
                     'Key'         => $path_video_input . $file_name,
@@ -369,7 +363,7 @@ class MediaListener
                     array(
                         'Key'      => str_replace('.mov', '.mp4', $file_name),
                         'Rotate'   => 'auto',
-                        'PresetId' => '1456133456345-3dts1g',
+                        'PresetId' => $this->getParameter('s3_elastic_mp4_preset_id'),
                     ),
                 ),
             ));
@@ -382,10 +376,8 @@ class MediaListener
             $parentVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
             $parentVideo->setJobMp4State(1);
 
-
-            //System preset: Webm 720p ID : 1456133404879-sv127j
             $job = $elasticTranscoder->createJob(array(
-                'PipelineId'      => '1454076999739-uy533t',
+                'PipelineId'      => $this->getParameter('s3_elastic_webm_pipeline_id'),
                 'OutputKeyPrefix' => $path_video_output,
                 'Input'           => array(
                     'Key'         => $path_video_input . $file_name,
@@ -399,7 +391,7 @@ class MediaListener
                     array(
                         'Key'      => str_replace(array('.mp4', '.mov'), '.webm', $file_name),
                         'Rotate'   => 'auto',
-                        'PresetId' => '1456133404879-sv127j',
+                        'PresetId' => $this->getParameter('s3_elastic_webm_preset_id'),
                     ),
                 ),
             ));
@@ -420,9 +412,8 @@ class MediaListener
             $path_audio_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
             $path_audio_output = 'media_audio_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 
-            //System preset: Audio MP3 - 128k : 1351620000001-300040
             $job = $elasticTranscoder->createJob(array(
-                'PipelineId'      => '1455903590532-u7lwud',
+                'PipelineId'      => $this->getParameter('s3_elastic_mp3_pipeline_id'),
                 'OutputKeyPrefix' => $path_audio_output,
                 'Input'           => array(
                     'Key'         => $path_audio_input . $file_name,
@@ -430,7 +421,7 @@ class MediaListener
                 'Outputs'         => array(
                     array(
                         'Key'      => $file_name,
-                        'PresetId' => '1351620000001-300040',
+                        'PresetId' => $this->getParameter('s3_elastic_mp3_preset_id'),
                     ),
                 ),
             ));
