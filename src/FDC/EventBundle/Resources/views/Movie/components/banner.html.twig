@@ -157,7 +157,7 @@
     <div class="info-film">
         <div  class="synopsis">
             <h3 class="title-section">{{ 'movie.title.synopsis'|trans }}</h3>
-            <p>{{ movie|trans_fallback('synopsis')|raw }}</p>
+            <p>{{ movie|trans_fallback('synopsis')|nl2br|raw }}</p>
         </div>
     </div>
 </div>
