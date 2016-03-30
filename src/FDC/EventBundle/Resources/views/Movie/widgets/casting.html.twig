@@ -29,11 +29,13 @@
                     {% endif %}
                 {% endfor %}
             </div>
+			{% if medias|length > 1 %}
             <div class="thumbs">
                 {% for media in medias %}
                     {% media media.file, media.file.context ~ '_tiny' %}
                 {% endfor %}
             </div>
+			 {% endif %}
         </div>
         {% endif %}
         <div class="content">

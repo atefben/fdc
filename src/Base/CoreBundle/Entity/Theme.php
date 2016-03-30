@@ -42,7 +42,7 @@ class Theme implements TranslateMainInterface
     /**
      * @var ArrayCollection
      *
-     * @Groups({"news_list", "news_show", "event_list", "film_show", "home", "live"})
+     * @Groups({"news_list", "news_show", "event_list", "event_show", "film_show", "home", "live"})
      */
     protected $translations;
 

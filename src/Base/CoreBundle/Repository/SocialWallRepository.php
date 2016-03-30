@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Repository;
 
+use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
@@ -24,7 +25,7 @@ class SocialWallRepository extends EntityRepository
             ->where('f.festival = :festival')
             ->andWhere('f.enabledDesktop = 1')
             ->andWhere('f.network = :network')
-            ->orderBy('f.updatedAt','ASC')
+            ->orderBy('f.updatedAt', 'ASC')
             ->setParameter('network', constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER'))
             ->setParameter('festival', $festival)
         ;
@@ -38,7 +39,7 @@ class SocialWallRepository extends EntityRepository
             ->where('f.festival = :festival')
             ->andWhere('f.enabledDesktop = 1')
             ->andWhere('f.network = :network')
-            ->orderBy('f.updatedAt','ASC')
+            ->orderBy('f.updatedAt', 'ASC')
             ->setParameter('network', constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_INSTAGRAM'))
             ->setParameter('festival', $festival)
         ;
@@ -46,16 +47,47 @@ class SocialWallRepository extends EntityRepository
         return $query;
     }
 
-    public function getApiSocialWallMobile($festival)
+    /**
+     * @param FilmFestival $festival
+     * @param \DateTime $dateTime
+     * @param bool $mobile
+     * @param $maxResults
+     * @param $page
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function getApiSocialWall(FilmFestival $festival, \DateTime $dateTime, $mobile = true, $maxResults, $page)
     {
-        $query = $this->createQueryBuilder('f')
-            ->where('f.festival = :festival')
-            ->andWhere('f.enabledMobile = 1')
-            ->orderBy('f.updatedAt','ASC')
+
+        $qb = $this->createQueryBuilder('s')
+            ->where('s.festival = :festival')
+            ->andWhere('s.enabledMobile = :enabledMobile')
+            ->orderBy('s.updatedAt', 'ASC')
             ->setParameter('festival', $festival)
+            ->setParameter('enabledMobile', $mobile)
+            ->setMaxResults($maxResults)
+            ->setFirstResult(($page - 1) * $maxResults)
         ;
 
-        return $query;
+        if ($festival->getFestivalStartsAt() > $dateTime || $festival->getFestivalEndsAt() < $dateTime) {
+            $this->addMasterQueries($qb, 's', $festival, false);
+        } else {
+            $morning = clone $dateTime;
+            $morning->setTime(0, 0, 0);
+            $midnight = clone $dateTime;
+            $midnight->setTime(23, 59, 59);
+            $now = new \DateTime();
+
+            $qb
+                ->andWhere('s.publishedAt BETWEEN :morning AND :midnight')
+                ->andWhere('s.publishedAt <= :now')
+                ->andWhere('(s.publishEndedAt IS NULL OR s.publishEndedAt >= :now)')
+                ->setParameter('now', $now)
+                ->setParameter('morning', $morning)
+                ->setParameter('midnight', $midnight)
+            ;
+        }
+
+        return $qb;
     }
 
 }

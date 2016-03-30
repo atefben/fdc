@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2016-03-30T13:41:11Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="6b59e1974915f354644ab9e2d89bcf2f9b6909e0" resname="En savoir plus">
+        <source>En savoir plus</source>
+        <target state="new">En savoir plus</target>
+        <jms:reference-file line="11">Participate/widgets/picto.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b89021730e70f73ad21d8e0c7cac66c17e5cca25" resname="Se repérer sur Google Maps">
+        <source>Se repérer sur Google Maps</source>
+        <target state="new">Se repérer sur Google Maps</target>
+        <jms:reference-file line="32">Participate/widgets/column.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b332d06dcdd0b2884263ca3e3d3b8c2224c7cef2" resname="Télécharger">
+        <source>Télécharger</source>
+        <target state="new">Télécharger</target>
+        <jms:reference-file line="25">Participate/widgets/column.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -18,7 +18,7 @@
                            href="{% path photo.media.file, photo.media.file.context ~ '_big' %}"
                            title='<span class="category">{{ title }}</span><span class="date">{{ photo.media.createdAt|date('d.m.y') }}</span><h2>{{ photo.media.createdAt|trans_fallback('title') }}</h2>'
                            data-credit="{{ photo.media.copyright }}">
-                            <img src="{% path photo.media.file, photo.media.file.context ~ '_small' %}" alt="" />
+                            <img src="{% path photo.media.file, photo.media.file.context ~ '_big' %}" alt="" />
                         </a>
                     </div>
                 {% endfor %}

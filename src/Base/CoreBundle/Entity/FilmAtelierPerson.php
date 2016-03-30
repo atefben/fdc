@@ -49,7 +49,7 @@ class FilmAtelierPerson
     /**
      * @var FilmAtelierPersonFunction
      *
-     * @ORM\oneToMany(targetEntity="FilmAtelierPersonFunction", mappedBy="filmAtelier", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FilmAtelierPersonFunction", mappedBy="filmAtelier", cascade={"persist"})
      */
     private $functions;
     

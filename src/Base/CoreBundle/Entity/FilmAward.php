@@ -125,7 +125,7 @@ class FilmAward
     /**
      * @var FilmAwardAssociation
      *
-     * @ORM\oneToMany(targetEntity="FilmAwardAssociation", mappedBy="award", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="award", cascade={"all"})
      *
      * @Groups({"award_list", "award_show"})
      */
