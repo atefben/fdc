@@ -50,8 +50,8 @@ class MediaController extends Controller
                     $empty = false;
                 }
             }
-            foreach ($film->getAssociatedMediaVideos() as $mediaVideo ) {
-                if (isset($mediaVideo)){
+            foreach ($film->getAssociatedMediaVideos() as $mediaVideo) {
+                if (isset($mediaVideo)) {
                     $empty = false;
                 }
             }
@@ -60,14 +60,16 @@ class MediaController extends Controller
 
                 $filmSection[$i]['id'] = $film->getSelectionSection()->getId();
                 $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
+                $filmSection[$i]['position'] = $film->getSelectionSection()->getPosition();
 
                 $sections[] = $film->getSelectionSection()->getId();
                 $i++;
             }
-
-
-
         }
+
+        usort($filmSection, function (array $a, array $b) {
+            return $a["position"] - $b["position"];
+        });
 
         $films = $em->getRepository('BaseCoreBundle:FilmFilm')
             ->findBy(array(
@@ -75,7 +77,7 @@ class MediaController extends Controller
                 'selectionSection' => $sectionId,
             ));
 
-        $i=0;
+        $i = 0;
         foreach ($films as $film) {
             $empty = true;
             foreach ($film->getMedias() as $media) {
@@ -83,8 +85,8 @@ class MediaController extends Controller
                     $empty = false;
                 }
             }
-            foreach ($film->getAssociatedMediaVideos() as $mediaVideo ) {
-                if (isset($mediaVideo)){
+            foreach ($film->getAssociatedMediaVideos() as $mediaVideo) {
+                if (isset($mediaVideo)) {
                     $empty = false;
                 }
             }
@@ -126,7 +128,7 @@ class MediaController extends Controller
             throw new NotFoundHttpException();
         }
 
-        if ($request->isXmlHttpRequest()){
+        if ($request->isXmlHttpRequest()) {
 
             $mainSectionId = $request->get('id');
             $films = $em->getRepository('BaseCoreBundle:FilmFilm')
@@ -139,7 +141,7 @@ class MediaController extends Controller
             $filmSection = array();
             $section = array();
             foreach ($films as $film) {
-                if ( $film->getSelectionSection()->getId() !== null ){
+                if ($film->getSelectionSection()->getId() !== null) {
                     $section['id'] = $film->getSelectionSection()->getId();
                     $section['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
                     break;
@@ -147,7 +149,7 @@ class MediaController extends Controller
             }
 
         }
-        $i=0;
+        $i = 0;
 
         foreach ($films as $film) {
             $empty = true;
@@ -156,8 +158,8 @@ class MediaController extends Controller
                     $empty = false;
                 }
             }
-            foreach ($film->getAssociatedMediaVideos() as $mediaVideo ) {
-                if (isset($mediaVideo)){
+            foreach ($film->getAssociatedMediaVideos() as $mediaVideo) {
+                if (isset($mediaVideo)) {
                     $empty = false;
                 }
             }
@@ -190,16 +192,16 @@ class MediaController extends Controller
 
         $filmPhotos = array();
 
-        $zipName = $film->getId().'-'.$film->getUpdatedAt()->format('YmdHis').".zip";
-        $zipPath = $this->get('kernel')->getRootDir()."/../web/uploads/archive/film/".$zipName;
+        $zipName = $film->getId() . '-' . $film->getUpdatedAt()->format('YmdHis') . ".zip";
+        $zipPath = $this->get('kernel')->getRootDir() . "/../web/uploads/archive/film/" . $zipName;
         $zip = new \ZipArchive();
 
         if (!file_exists($zipPath)) {
             $zip->open($zipPath, \ZipArchive::CREATE);
 
-            foreach ($film->getMedias() as $media ) {
+            foreach ($film->getMedias() as $media) {
                 if ($media->getType() == 14) {
-                    array_push($filmPhotos,$media->getMedia()->getFile());
+                    array_push($filmPhotos, $media->getMedia()->getFile());
                     $provider = $this->container->get($media->getMedia()->getFile()->getProviderName());
                     $fUrl = $provider->getCdn()->getPath($provider->getReferenceImage($media->getMedia()->getFile(), true), $provider);
                     if (@file_get_contents($fUrl) !== false) {
@@ -248,19 +250,19 @@ class MediaController extends Controller
             ->findOneById($id);
 
         $galleryImage = $em->getRepository('BaseCoreBundle:MediaImageTranslation')
-            ->getGalleryImage($id,$locale);
+            ->getGalleryImage($id, $locale);
 
         $galleryPhotos = array();
 
-        $zipName = $gallery->getId().'-'.$gallery->getUpdatedAt()->format('YmdHis').".zip";
-        $zipPath = $this->get('kernel')->getRootDir()."/../web/uploads/archive/gallery/".$zipName;
+        $zipName = $gallery->getId() . '-' . $gallery->getUpdatedAt()->format('YmdHis') . ".zip";
+        $zipPath = $this->get('kernel')->getRootDir() . "/../web/uploads/archive/gallery/" . $zipName;
         $zip = new \ZipArchive();
 
         if (!file_exists($zipPath)) {
             $zip->open($zipPath, \ZipArchive::CREATE);
 
-            foreach ($galleryImage as $media ) {
-                array_push($galleryPhotos,$media->getFile());
+            foreach ($galleryImage as $media) {
+                array_push($galleryPhotos, $media->getFile());
                 $provider = $this->container->get($media->getFile()->getProviderName());
                 $fUrl = $provider->getCdn()->getPath($provider->getReferenceImage($media->getMedia()->getFile(), true), $provider);
                 if (@file_get_contents($fUrl) !== false) {
@@ -332,7 +334,7 @@ class MediaController extends Controller
         $translator = $this->get('translator');
         $film = new FilmFilm();
 
-        if ($request->isXmlHttpRequest()){
+        if ($request->isXmlHttpRequest()) {
 
             $id = $request->get('id');
             $film = $em->getRepository('BaseCoreBundle:FilmFilm')
