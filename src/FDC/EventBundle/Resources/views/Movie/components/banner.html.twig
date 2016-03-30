@@ -72,6 +72,11 @@
     <div class="info-film">
         <div class="categories">
             <span>{{ movie.selectionSection|trans_fallback('name') }}</span>
+            {% if 'Ouverture' in movie.galaName %}
+                <span>{{ 'movie.fdc_open'|trans }}</span>
+            {% elseif 'Fermeture' in movie.galaName %}
+                <span>{{ 'movie.fdc_close'|trans }}</span>
+            {% endif %}
         </div>
         {% if movie|trans_fallback('title') is not empty %}
             {% set mainTitle = movie|trans_fallback('title') %}
