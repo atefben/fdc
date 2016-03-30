@@ -13451,6 +13451,13 @@ input[type=submit] {
 .selection-officielle figure .image {
   overflow: hidden;
 }
+.selection-officielle figure .image.compat-object-fit {
+  background-size: cover;
+  background-position: center center;
+}
+.selection-officielle figure .image.compat-object-fit img {
+  opacity: 0;
+}
 .selection-officielle .container:after {
   content: ".";
   display: block;

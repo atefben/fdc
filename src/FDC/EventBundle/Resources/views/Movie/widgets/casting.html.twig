@@ -10,7 +10,7 @@
                     {% if loop.index0 == 0 %}
                         {% media media.file, media.file.context ~ '_small' with {'class': 'active', title: '', width: '', height: ''} %}
                     {% else %}
-                        {% media media.file, media.file.context ~ '_small' with {title: ''} %}
+                        {% media media.file, media.file.context ~ '_small' with {title: '', width: '', height: ''} %}
                     {% endif %}
 
                     {% if loop.index0 == 0 %}
@@ -32,7 +32,9 @@
 			{% if medias|length > 1 %}
             <div class="thumbs">
                 {% for media in medias %}
-                    {% media media.file, media.file.context ~ '_tiny' %}
+                    <a href="#" data-caption="">
+                        <img src="{% path media.file, media.file.context ~ '_38x46'  %}">
+                    </a>
                 {% endfor %}
             </div>
 			 {% endif %}
@@ -44,6 +46,7 @@
                     {% if movie.getCredits()|length > 0 %}
                         <h3 class="title-section">{{ 'movie.title.credits'|trans }}</h3>
                         {% for filmPerson in movie.getCredits() %}
+                            <span style="display:none">{{ filmPerson.position }}</span>
                                 <p><a href="{{ path('fdc_event_artist_get', {'slug': filmPerson.person.slug }) }}">{{ filmPerson.person.fullName }} </a> - {% for personFunction in filmPerson.functions %}{{ personFunction.function|trans_fallback('name') }} {% endfor %}</p>
                         {% endfor %}
                     {% endif %}

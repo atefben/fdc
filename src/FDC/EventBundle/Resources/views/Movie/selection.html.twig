@@ -29,9 +29,9 @@
                                     <div class="image">
                                         <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
                                             {% if media %}
-                                                <img src="{% path media, '319x434' %}" alt=""/>
+                                                <img src="{% path media, '319x434' %}" alt="" />
                                             {% else %}
-                                                <img src="{{ asset('bundles/fdcevent/img/palmares/film_w256.jpg') }}" alt="Affiche film"/>
+                                                <img src="{{ asset('bundles/fdcevent/img/palmares/film_w256.jpg') }}" alt="Affiche film" />
                                             {% endif %}
                                         </a>
                                     </div>
