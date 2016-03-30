@@ -116,10 +116,14 @@
         </p>
     </div>
     <div class="palmares">
+        {% set awardsUnique = [] %}
         {% for movieAward in movie.awards %}
             {% if movieAward.award and movieAward.award.prize %}
-                <i class="icon icon_palme"></i>
-                <p>{{ movieAward.award.prize|trans_fallback('title') }}, {{  movieAward.award.festival.year }}</p>
+                {% if movieAward.award.id not in awardsUnique %}
+                    {% set awardsUnique|merge([movieAward.award.id]) %}
+                    <i class="icon icon_palme"></i>
+                    <p>{{ movieAward.award.prize|trans_fallback('title') }}, {{  movieAward.award.festival.year }}</p>
+                {% endif %}
             {% endif %}
         {% endfor %}
     </div>
