@@ -489,7 +489,7 @@ class FilmManager extends CoreManager
                 }
 
                 $persons[$object->Id]->setPerson($person);
-                $persons[$object->Id]->setPosition($object->OrdreAffichage);
+                $persons[$object->Id]->setPosition($order);
 
                 // set function
                 if (property_exists($object, 'FonctionsTraductions') && property_exists($object->FonctionsTraductions, 'FonctionTraductionDto')) {
