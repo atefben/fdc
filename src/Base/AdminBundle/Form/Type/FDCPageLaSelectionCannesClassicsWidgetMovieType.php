@@ -22,7 +22,7 @@ class FDCPageLaSelectionCannesClassicsWidgetMovieType extends FDCPageLaSelection
      * @var string
      * @access protected
      */
-    protected $dataClass = 'Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetMovieType';
+    protected $dataClass = 'Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetMovie';
 
     private $FDCPageLaSelectionCannesClassicsMovieDummyAdmin;
 
@@ -49,7 +49,7 @@ class FDCPageLaSelectionCannesClassicsWidgetMovieType extends FDCPageLaSelection
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('gallery', 'sonata_type_model_list', array(
+        $builder->add('films', 'sonata_type_collection', array(
             'sonata_field_description' =>  $this->FDCPageLaSelectionCannesClassicsMovieDummyAdmin->getFormFieldDescriptions()['films'],
          //   'model_manager' => $this->galleryAdmin->getModelManager(),
          //   'class' => $this->galleryAdmin->getClass(),

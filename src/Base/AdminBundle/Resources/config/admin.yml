@@ -1117,6 +1117,14 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: FilmFilmTag, show_in_dashboard: false}
 
     #cannes classics
+    base.admin.fdc_page_la_selection_cannes_classics_widget_movie_dummy:
+        class: Base\AdminBundle\Admin\FDCPageLaSelectionCannesClassicsWidgetMovieDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetMovie, BaseAdminBundle:FDCPageLaSelectionCannesClassicsWidgetMovieDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageLaSelectionCannesClassicsWidgetMovieDummyAdmin, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.fdc_page_la_selection_cannes_classics_widget_audio_dummy:
         class: Base\AdminBundle\Admin\FDCPageLaSelectionCannesClassicsWidgetAudioDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetAudio, BaseAdminBundle:FDCPageLaSelectionCannesClassicsWidgetAudioDummyAdmin]

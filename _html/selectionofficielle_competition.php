@@ -64,7 +64,7 @@
                 <div class="item">
                  <figure>
                    <div class="image">
-                     <a href="movie.php"> <img src="img/films/selection-officielle/cover-film2.jpg" alt=""></a>
+                     <a href="movie.php"> <img src="http://dummyimage.com/293x434/000/fff.png" alt=""></a>
                    </div>
                    <figcaption>
                      <a href="movie.php"><span class="name">Chronic</span></a>

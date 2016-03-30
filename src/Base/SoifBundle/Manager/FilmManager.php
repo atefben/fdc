@@ -191,8 +191,6 @@ class FilmManager extends CoreManager
 
         // set entities
         foreach ($resultObjects as $resultObject) {
-            var_dump($resultObject);
-            die();
             $entity = $this->set($resultObject, $result);
             $this->update($entity);
         }
