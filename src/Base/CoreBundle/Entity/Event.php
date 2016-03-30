@@ -105,7 +105,7 @@ class Event implements TranslateMainInterface
     private $publishEndedAt;
 
     /**
-     * @var NewsTag
+     * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="NewsTag", mappedBy="news", cascade={"persist"})
      *
@@ -117,6 +117,7 @@ class Event implements TranslateMainInterface
      *
      * @ORM\Column(type="string", nullable=true)
      *
+     * @Groups({"event_show"})
      */
     private $signature;
 
@@ -125,13 +126,13 @@ class Event implements TranslateMainInterface
      *
      * @ORM\OneToMany(targetEntity="EventWidget", mappedBy="events",  cascade={"persist"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
+     * @Groups({"event_show"})
      */
     private $widgets;
 
     /**
      * @ORM\OneToMany(targetEntity="EventFilmProjectionAssociated", mappedBy="event", cascade={"persist"})
      *
-     * @Groups({"event_show"})
      *
      */
     private $associatedProjections;
@@ -141,7 +142,6 @@ class Event implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
-     * @Groups({"event_list", "event_show"})
      */
     private $createdBy;
 
@@ -150,7 +150,6 @@ class Event implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
-     * @Groups({"event_list", "event_show"})
      */
     private $updatedBy;
 

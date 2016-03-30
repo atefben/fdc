@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * EventWidgetImageDualAlign
@@ -16,6 +17,7 @@ class EventWidgetImageDualAlign extends EventWidget
     /**
      * @var Gallery
      * @ORM\ManyToOne(targetEntity="Gallery")
+     * @Groups({"event_show"})
      */
     private $gallery;
 

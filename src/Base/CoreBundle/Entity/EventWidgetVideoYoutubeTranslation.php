@@ -31,7 +31,7 @@ class EventWidgetVideoYoutubeTranslation
      *
      * @ORM\Column(type="text", nullable=false)
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"event_show"})
      */
     private $url;
 
@@ -40,7 +40,7 @@ class EventWidgetVideoYoutubeTranslation
      *
      * @ORM\Column(type="text", nullable=false)
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"event_show"})
      */
     private $title;
 

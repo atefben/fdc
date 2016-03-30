@@ -46,6 +46,7 @@ abstract class EventWidget
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"event_show"})
      */
     protected $position;
 
@@ -60,7 +61,7 @@ abstract class EventWidget
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"event_list", "event_show"})
+     * @Groups({"event_show"})
      */
     public function getWidgetType()
     {
