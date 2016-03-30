@@ -26,7 +26,15 @@
                     <div class="line">
                         <div class="container {{ k == 0 ? 'active' : '' }}">
                             <div class="info">
-                                <img src="{% path film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first, 'tiny' %}" alt="">
+                                {% set film_media = null %}
+                                {% if film.imageMain is not null %}
+                                {% set film_media = film.imageMain %}
+                                {% elseif film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first is not null %}
+                                {% set film_media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                                {% endif %}
+                                {% if film_media is not null %}
+                                <img src="{% path film_media, 'tiny' %}" alt="">
+                                {% endif %}
                                 <div class="txt">
                                     <div class="vCenter">
                                         <div class="vCenterKid">
