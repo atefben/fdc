@@ -37,8 +37,11 @@ class FilmAwardAssociation
      * @ORM\ManyToOne(targetEntity="FilmAward", inversedBy="associations", cascade={"all"})
      *
      * @Groups({
-     *  "film_list", "film_show",
-     *  "person_list", "person_show"
+     *     "film_list",
+     *     "film_show",
+     *     "person_list",
+     *     "person_show",
+     *     "award_list"
      * })
      *
      */

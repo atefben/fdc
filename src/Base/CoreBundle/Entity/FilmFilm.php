@@ -170,7 +170,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "news_show"
      * })
      *
      */
@@ -189,7 +190,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "news_show"
      * })
      *
      */
@@ -319,12 +321,17 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
     /**
      * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film", cascade={"all"})
-     *
      * @Groups({
-     *  "film_list", "film_show",
-     *  "trailer_list", "trailer_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *     "film_list",
+     *     "film_show",
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_show"
+     *
      * })
      */
     private $countries;
