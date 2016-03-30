@@ -292,6 +292,59 @@
     </div>
 {% endblock %}
 
+{% block fdc_page_la_selection_cannes_classics_widget_intro_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4><strong>{{ 'form.widget.intro'|trans }}</strong></h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block fdc_page_la_selection_cannes_classics_widget_subtitle_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block fdc_page_la_selection_cannes_classics_widget_movie_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4><strong>{{ 'form.widget.movie'|trans }}</strong></h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {# set the default locale to locale_default_translation to handle the language used when adding new text widget #}
 {# render only the content block and the other values #}
 {% block news_widget_quote_type_widget %}

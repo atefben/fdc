@@ -417,6 +417,11 @@ dashboard:
         settings: Paramètres
         bo_translation: Traductions
         homepage: Homepage
+        fdc_page_la_selection_cannes_classics_honor: Invité d'honneur
+        fdc_page_la_selection_cannes_classics_hommages: Hommages
+        fdc_page_la_selection_cannes_classics_copy: Copies Restaurées
+        fdc_page_la_selection_cannes_classics_wcp: World Cinema Project
+        fdc_page_la_selection_cannes_classics_documentaries: Documentaires
         fdc_page_web_tv_channels: WEBTV - Les chaînes
         fdc_page_web_tv_live: Accueil WebTV
         fdc_page_web_tv_trailers_competition: WebTV - BA et extraits (Compétition)
@@ -522,6 +527,9 @@ form:
         instagram: Instagram
         tumblr: Tumblr
     widget:
+        movie: Module liste de films
+        subtitle: Module sous-titre
+        intro: Module chapeau
         text: Module de texte
         video: Module vidéo Amazon
         video_youtube: Module vidéo Youtube

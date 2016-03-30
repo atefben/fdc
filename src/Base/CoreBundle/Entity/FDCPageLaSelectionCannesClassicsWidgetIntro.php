@@ -17,7 +17,7 @@ use JMS\Serializer\Annotation\Since;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FDCPageLaSelectionCannesClassicsWidgetIntroduction extends FDCPageLaSelectionCannesClassicsWidget
+class FDCPageLaSelectionCannesClassicsWidgetIntro extends FDCPageLaSelectionCannesClassicsWidget
 {
     use Translatable;
 

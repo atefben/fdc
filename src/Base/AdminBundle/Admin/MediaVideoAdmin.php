@@ -171,6 +171,7 @@ class MediaVideoAdmin extends Admin
                         'required'           => false,
                         'field_type'         => 'entity',
                         'class'				 => 'BaseCoreBundle:AmazonRemoteFile',
+                        'label'              => 'Fichiers Amazon'
                     ),
                     'title'          => array(
                         'label'              => 'form.label_title',

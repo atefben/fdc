@@ -31,8 +31,9 @@ services:
 
     base.admin.event.media_listener:
         class: Base\AdminBundle\EventListener\MediaListener
+        arguments:
+            - "@service_container"
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: postFlush }
-        arguments: [@service_container]
