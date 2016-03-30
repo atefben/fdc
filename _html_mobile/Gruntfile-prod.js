@@ -106,7 +106,7 @@ module.exports = function(grunt) {
             dest: '../src/FDC/EventMobileBundle/Resources/public/js/dev/'
           }
         ]
-      }
+      },
       js: {
         files: [
            {
@@ -180,6 +180,9 @@ module.exports = function(grunt) {
     'copy:css'
   ]);
 
+  grunt.registerTask('copyapp', [
+    'copy:app'
+  ]);
 
   grunt.registerTask('copyjs', [
     'copy:js'
