@@ -9,6 +9,8 @@
             {% media posterImg, 'small' %}
         {% elseif mainImg %}
             <img src="{% path mainImg, 'small' %}" alt="" id="notposter">
+        {% else %}
+            <img src="{{ asset('bundles/fdcevent/img/palmares/film420x560.jpg') }}" alt="" width="187" height="249">
         {% endif %}
     </div>
     <div class="info">
@@ -43,7 +45,9 @@
         {% if posterImg %}
             {% media posterImg, 'small' %}
         {% elseif mainImg %}
-            {% media mainImg, 'small' %}
+            <img src="{% path mainImg, 'small' %}" alt="" id="notposter">
+        {% else %}
+            <img src="{{ asset('bundles/fdcevent/img/palmares/film420x560.jpg') }}" alt="" width="187" height="249">
         {% endif %}
     </div>
     <div class="info">
@@ -62,7 +66,7 @@
                     {% endif %}
                 {% endfor %}
                 {% if next.countries|length > 0 %}
-                    {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}<p>{{ country.country|trans_fallback('name') }}</p> {% endfor %}
+                    <p>{{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{{ country.country|trans_fallback('name')|capitalize }}</p> {% endfor %}
                 {% endif %}
             </div>
         </div>
