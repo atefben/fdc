@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Groups;
 
 
 /**
@@ -18,6 +19,7 @@ class EventWidgetVideo extends EventWidget
      * @var MediaVideo
      *
      * @ORM\ManyToOne(targetEntity="MediaVideo")
+     * @Groups({"event_show"})
      */
     private $file;
 

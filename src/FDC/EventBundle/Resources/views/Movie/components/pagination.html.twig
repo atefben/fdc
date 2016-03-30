@@ -8,7 +8,7 @@
         {% if posterImg %}
             {% media posterImg, 'small' %}
         {% elseif mainImg %}
-            {% media mainImg, 'small' %}
+            <img src="{% path mainImg, 'small' %}" alt="" id="notposter">
         {% endif %}
     </div>
     <div class="info">

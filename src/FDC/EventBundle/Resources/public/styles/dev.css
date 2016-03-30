@@ -227,5 +227,12 @@
 /* movie */
 .single-movie .casting img {
     width: 100%;
-    height: 100%;
 }
+
+#notposter {
+    height:100%;
+    margin-top: 47px;
+    display: block;
+    width: 100%;
+}
+

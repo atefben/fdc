@@ -59,7 +59,8 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "live",
      *     "web_tv_show",
      *     "live",
-     *     "film_show"
+     *     "film_show",
+     *     "event_show"
      * })
      */
     private $title;
@@ -74,7 +75,8 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "news_show",
      *     "live",
      *     "web_tv_show",
-     *     "live"
+     *     "live",
+     *     "event_show"
      * })
      */
     private $imageAmazonUrl;
@@ -117,7 +119,8 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "news_show",
      *     "live",
      *     "web_tv_show",
-     *     "live"
+     *     "live",
+     *     "event_show"
      * })
      */
     private $mp4Url;
@@ -132,7 +135,8 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "news_show",
      *     "live",
      *     "web_tv_show",
-     *     "live"
+     *     "live",
+     *     "event_show"
      * })
      */
     private $webmUrl;

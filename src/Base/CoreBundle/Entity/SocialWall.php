@@ -134,6 +134,18 @@ class SocialWall implements SocialWallInterface
     }
 
     /**
+     * @VirtualProperty()
+     * @Groups({"social_wall_list"})
+     * @return mixed
+     */
+    public function getNetworkName()
+    {
+        $networks = array('twitter', 'instagram', 'tumblr');
+
+        return $networks[$this->network];
+    }
+
+    /**
      * Get id
      *
      * @return integer 
