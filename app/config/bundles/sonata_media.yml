@@ -152,7 +152,7 @@ sonata_media:
                 197x142: { width: 197 , height: 142 , quality: 100 }
                 586x370: { width: 586 , height: 370 , quality: 100 }
                 1280x808: { width: 1280 , height: 808 , quality: 100 }
-                2560×600: { width: 2560, height: 600 , quality: 100 }
+                2560×1103: { width: 2560, height: 1103 , quality: 100 }
                 640x404: { width: 640 , height: 404 , quality: 100 }
                 # Pushs
                 650x410: { width: 650 , height: 410 , quality: 100 }
