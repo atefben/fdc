@@ -113,7 +113,7 @@
             {% set mainTitle = movie.titleVO %}
         {% endif %}
         <h2>{{ mainTitle }}</h2>
-        {% if secondTile %}
+        {% if secondTile and mainTitle != secondTile %}
             <div class="title-original">({{ secondTile }})</div>
         {% else %}
             <div class="title-original"></div>
