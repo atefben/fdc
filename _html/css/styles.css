@@ -11259,7 +11259,7 @@ article .read-later.rAlign span:after {
   font-weight: normal;
   margin-bottom: 28px;
   text-transform: uppercase;
-  min-height: 60px;
+  min-height: 24px;
 }
 .single-movie .info-film p {
   font-size: 0.750rem;
@@ -11314,6 +11314,9 @@ article .read-later.rAlign span:after {
   -ms-transform: translateY(570px);
   -webkit-transform: translateY(570px);
   transform: translateY(570px);
+}
+.single-movie .palmares .palmares-item {
+  display: block;
 }
 .single-movie .palmares i {
   font-size: 2.75rem;
