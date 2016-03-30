@@ -26,7 +26,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
  *  "image_dual_align" = "FDCPageLaSelectionCannesClassicsWidgetImageDualAlign",
  *  "video" = "FDCPageLaSelectionCannesClassicsWidgetVideo",
  *  "video_youtube" = "FDCPageLaSelectionCannesClassicsWidgetVideoYoutube",
- *  "introduction" = "FDCPageLaSelectionCannesClassicsWidgetIntroduction",
+ *  "introduction" = "FDCPageLaSelectionCannesClassicsWidgetIntro",
  *  "subtitle" = "FDCPageLaSelectionCannesClassicsWidgetSubtitle",
  *  "movie" = "FDCPageLaSelectionCannesClassicsWidgetMovie"
  *

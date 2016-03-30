@@ -19,7 +19,7 @@ use JMS\Serializer\Annotation\Since;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FDCPageLaSelectionCannesClassicsWidgetIntroductionTranslation
+class FDCPageLaSelectionCannesClassicsWidgetIntroTranslation
 {
     use Translation;
     use Time;
