@@ -27,11 +27,10 @@
                             <div class="item">
                                 <figure>
                                     <div class="image">
-                                        <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
                                             {% if media %}
-                                                <img src="{% path media, '319x434' %}" alt=""/>
+												 <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}" class="link" style="background-image:{% path media, '319x434' %};">
                                             {% else %}
-                                                <img src="{{ asset('bundles/fdcevent/img/palmares/film_w256.jpg') }}" alt="Affiche film"/>
+											 	<a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}" class="link" style="background-image:{{ asset('bundles/fdcevent/img/palmares/film_w256.jpg') }};">
                                             {% endif %}
                                         </a>
                                     </div>
