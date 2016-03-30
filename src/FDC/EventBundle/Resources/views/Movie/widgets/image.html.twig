@@ -4,7 +4,9 @@
     <div class="slideshow">
         <div class="slideshow-img">
             <div class="images">
+                {% set firstPicture = true %}
                 {% for key, photo in photos %}
+
                     {% if
                         photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') and
                         photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR')
@@ -16,7 +18,7 @@
                             {% set title = photo.media.titleVa %}
                         {% endif %}
 
-                        <div class="img {% if key == 0 %}active{% endif %}">
+                        <div class="img {% if firstPicture == true %}active{% endif %}">
                             <a id="photo{{ photo.id }}"
                                class="chocolat-image ajax"
                                href="{% path photo.media.file, photo.media.file.context ~ '_big' %}"
@@ -25,6 +27,7 @@
                                 <img src="{% path photo.media.file, photo.media.file.context ~ '_big' %}" alt="" />
                             </a>
                         </div>
+                        {% set firstPicture = false %}
                     {% endif %}
                 {% endfor %}
             </div>
