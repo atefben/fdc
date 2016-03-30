@@ -12,9 +12,9 @@ sonata_media:
             formats:
                 mobile: { width: 584 , height: 794 , quality: 100 }
                 tiny:  { width: 76, height: 92, quality: 100 }
-                small: { width: 256 , height: 348 , quality: 1 }
-                300x400: { width: 300 , height: 400 , quality: 1 }
-                420x560: { width: 420 , height: 560 , quality: 1 }
+                small: { width: 256 , height: 348 , quality: 100 }
+                300x400: { width: 300 , height: 400 , quality: 100 }
+                420x560: { width: 420 , height: 560 , quality: 100 }
         # SOIF
         film_director:
             providers:
@@ -36,8 +36,8 @@ sonata_media:
                 big:      { width: 1000 , quality: 100 }
                 319x434:  { width: 319 , height: 434 , quality: 100 }
                 420x560: { width: 420, height: 560, quality: 100 }
-                300x400: { width: 300 , height: 400 , quality: 1 }
-                976x535: { width: 976 , height: 535 , quality: 1 }
+                300x400: { width: 300 , height: 400 , quality: 100 }
+                976x535: { width: 976 , height: 535 , quality: 100 }
                 210x284: { width: 210 , height: 284 , quality: 100 }
 
         film_main:
