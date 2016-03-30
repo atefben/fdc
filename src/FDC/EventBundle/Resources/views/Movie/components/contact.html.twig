@@ -17,12 +17,18 @@
                                 {% set format =  '300x400' %}
                                 {% if mainImg %}
                                     {% set media = mainImg %}
+                                    {% if media is not empty %}
+                                        <img src="{% path media, '300x400' %}" id="infosPressImageFilmPoster">
+                                    {% endif %}
                                 {% elseif filmImg %}
                                     {% set media = filmImg %}
+                                    {% if media is not empty %}
+                                        <img src="{% path media, '300x400' %}">
+                                    {% endif %}
+                                {% else %}
+                                    <img src="{{ asset('bundles/fdcevent/img/palmares/film420x560.jpg') }}" alt="" width="300" height="400">
                                 {% endif %}
-                                {% if media is not empty %}
-                                    {% media media, '300x400' %}
-                                {% endif %}
+
                                 <h3>{{ 'movie.presse.title.dossierdepresse'|trans }}</h3>
                                 {% for media in medias %}
                                     <a download href="{% path media.file, 'reference' %}">{% if app.request.locale == 'fr' %}{{ media.titleVf }}{% else %}{{ media.titleVa }}{% endif %}</a>

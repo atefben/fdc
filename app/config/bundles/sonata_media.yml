@@ -68,6 +68,7 @@ sonata_media:
                 big:   { width: 1000 , quality: 100 }
                 highres: { width: 2500, quality: 100 }
                 212x134: { width: 212 , height: 134 , quality: 100 }
+                210x284: { width: 210 , height: 284 , quality: 100 }
 
         pdf:
             providers:
