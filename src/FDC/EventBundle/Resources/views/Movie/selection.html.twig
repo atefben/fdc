@@ -35,16 +35,11 @@
                                     <figcaption>
                                         <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
                                             {% if movie|trans_fallback('title') != null and movie.titleVo != null and movie|trans_fallback('title')|lower != movie.titleVo|lower %}
-
-                                                {% if movie|trans_fallback('title') is not empty %}
-                                                    {% set mainTitle = movie|trans_fallback('title') %}
-                                                {% else %}
-                                                    {% set mainTitle = movie.titleVO %}
-                                                {% endif %}
-                                                <span class="name">{{ mainTitle }}</span>
-                                                {% if mainTitle != movie.titleVO %}
-                                                    <span class="sub-name">({{ movie.titleVO }})</span>
-                                                {% endif %}
+                                                <span class="name">{{ movie.titleVo }}</span>
+                                                <span class="sub-name">({{ movie|trans_fallback('title') }})</span>
+                                            {% else %}
+                                                <span class="name">{{ movie|trans_fallback('title')?:movie.titleVo }}</span>
+                                            {% endif %}
                                         </a>
                                         {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                                             <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">
