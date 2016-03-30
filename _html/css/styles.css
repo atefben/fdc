@@ -11250,6 +11250,7 @@ article .read-later.rAlign span:after {
   letter-spacing: 0.1em;
   margin: 12px 0 12px 0;
   text-transform: uppercase;
+  min-height: 60px;
 }
 .single-movie .info-film .title-original {
   font-size: 0.750rem;
