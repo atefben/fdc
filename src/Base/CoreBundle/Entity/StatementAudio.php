@@ -41,7 +41,7 @@ class StatementAudio extends Statement
      *
      * @ORM\ManyToOne(targetEntity="MediaAudio", cascade={"persist"})
      *
-     * @Groups({"home"})
+     * @Groups({"home", "news"})
      * @Assert\NotNull()
      */
     private $audio;

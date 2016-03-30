@@ -20,7 +20,7 @@ class InfoWidgetImageDualAlign extends InfoWidget
 {
     /**
      * @ORM\ManyToOne(targetEntity="GalleryDualAlign")
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_show"})
      */
     private $gallery;
 

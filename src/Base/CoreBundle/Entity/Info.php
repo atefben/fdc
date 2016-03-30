@@ -41,7 +41,7 @@ abstract class Info implements TranslateMainInterface
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups({"home", "news_list"})
+     * @Groups({"home", "news_list", "news_show"})
      *
      */
     private $id;
@@ -50,7 +50,7 @@ abstract class Info implements TranslateMainInterface
      * @var Theme
      *
      * @ORM\ManyToOne(targetEntity="Theme")
-     * @Groups({"home", "news_list"})
+     * @Groups({"home", "news_list", "news_show"})
      *
      * @Assert\NotNull()
      */
@@ -89,7 +89,7 @@ abstract class Info implements TranslateMainInterface
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
-     *
+     * @Groups({"news_show"})
      */
     private $signature;
 
@@ -127,14 +127,15 @@ abstract class Info implements TranslateMainInterface
 
     /**
      * @ORM\OneToMany(targetEntity="InfoFilmFilmAssociated", mappedBy="info", cascade={"persist"}, orphanRemoval=true)
-     *
+     * @Groups({"news_show"})
      */
     private $associatedFilms;
 
     /**
-     * @var InfoWidget
+     * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="InfoWidget", mappedBy="info", cascade={"all"}, orphanRemoval=true)
+     * @Groups({"news_show"})
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
@@ -152,7 +153,7 @@ abstract class Info implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups("news_list")
+     * @Groups({"news_list", "news_show"})
      */
     private $publishedAt;
 
@@ -160,19 +161,19 @@ abstract class Info implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups("news_list")
+     * @Groups({"news_list", "news_show"})
      */
     private $publishEndedAt;
 
     /**
      * ArrayCollection
-     * @Groups({"home", "news_list"})
+     * @Groups({"home", "news_list", "news_show"})
      *
      */
     protected $translations;
 
     /**
-     * @var User
+     * @var \Application\Sonata\UserBundle\Entity\User
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
@@ -180,7 +181,7 @@ abstract class Info implements TranslateMainInterface
     private $createdBy;
 
     /**
-     * @var User
+     * @var \Application\Sonata\UserBundle\Entity\User
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
@@ -191,6 +192,7 @@ abstract class Info implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
+     * @Groups({"news_show"})
      */
     private $hideSameDay;
 
@@ -236,7 +238,7 @@ abstract class Info implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"home", "news_list"})
+     * @Groups({"home", "news_list", "news_show"})
      */
     public function getInfoType()
     {

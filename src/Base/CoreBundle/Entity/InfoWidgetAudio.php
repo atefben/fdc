@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * InfoWidgetAudio
@@ -19,6 +20,7 @@ class InfoWidgetAudio extends InfoWidget
      *
      * @ORM\ManyToOne(targetEntity="MediaAudio")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @Groups({"news_show"})
      */
     private $file;
 

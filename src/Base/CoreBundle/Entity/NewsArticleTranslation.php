@@ -44,7 +44,7 @@ class NewsArticleTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_show"})
      */
     private $introduction;
 

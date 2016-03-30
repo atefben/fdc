@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * StatementWidgetText
@@ -24,6 +25,7 @@ class StatementWidgetText extends StatementWidget
 
     /**
      * @var ArrayCollection
+     * @Groups({"news_show"})
      *
      */
     protected $translations;
