@@ -96,7 +96,7 @@
                 <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{% if loop.index != directors|length %}, {% endif %}
             {% endfor %}
         </p>
-        <p>
+        <p class="information-movie">
             {% if movie.productionYear is not null and movie.productionYear != 0 %}
                 {{ 'movie.label.anneedeproduction'|trans }} : <span>{{ movie.productionYear }}</span>
             {% endif %}
@@ -120,8 +120,7 @@
             {% if movieAward.award and movieAward.award.prize %}
                 {% if movieAward.award.id not in awardsUnique %}
                     {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
-                    <i class="icon icon_palme"></i>
-                    <p>{{ movieAward.award.prize|trans_fallback('title') }}, {{  movieAward.award.festival.year }}</p>
+                    <div class="palmares-item"><i class="icon icon_palme"></i><p>{{ movieAward.award.prize|trans_fallback('title') }}, {{  movieAward.award.festival.year }}</p></div>
                 {% endif %}
             {% endif %}
         {% endfor %}
