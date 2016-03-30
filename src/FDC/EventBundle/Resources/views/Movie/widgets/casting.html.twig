@@ -29,7 +29,7 @@
                     {% endif %}
                 {% endfor %}
             </div>
-            <div class="thumbs">
+            <div class="thumbs" style="display:none;">
                 {% for media in medias %}
                     {% media media.file, media.file.context ~ '_tiny' %}
                 {% endfor %}

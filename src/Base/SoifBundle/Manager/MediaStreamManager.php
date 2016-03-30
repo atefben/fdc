@@ -100,7 +100,7 @@ class MediaStreamManager extends CoreManager
         $media->setBinaryContent($filename);
         $media->setEnabled(true);
         $media->setProviderReference($filename);
-        $provider = ($extension == 'pdf') ? 'sonata.media.provider.file' : $provider;
+        $provider = ($extension == 'pdf') ? 'sonata.media.provider.pdf' : $provider;
         $context = ($extension == 'pdf') ? 'pdf' : $context;
         $this->sonataMediaManager->save($media, $context, $provider);
 

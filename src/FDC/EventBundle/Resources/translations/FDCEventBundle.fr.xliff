@@ -870,7 +870,7 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
       </trans-unit>
       <trans-unit id="6e2e0eb80419c13bc3c8711628269e41bdcf0f84" resname="movie.contact.label.minor_production_company">
         <source>movie.contact.label.minor_production_company</source>
-        <target state="new">movie.contact.label.minor_production_company</target>
+        <target>Production</target>
         <jms:reference-file line="71">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="914ee6128e938246cb5d4e3f34b33f26dc5c445a" resname="movie.contact.label.person">
