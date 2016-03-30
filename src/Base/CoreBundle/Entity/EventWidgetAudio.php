@@ -19,7 +19,7 @@ class EventWidgetAudio extends EventWidget
     /**
      * @var \Application\Sonata\MediaBundle\Entity\Media
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
      * @Groups({"event_show"})
      */
@@ -28,10 +28,10 @@ class EventWidgetAudio extends EventWidget
     /**
      * Set file
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $file
+     * @param MediaAudio $file
      * @return EventWidgetAudio
      */
-    public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
+    public function setFile(MediaAudio $file)
     {
         $this->file = $file;
 
@@ -41,7 +41,7 @@ class EventWidgetAudio extends EventWidget
     /**
      * Get file
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     * @return MediaAudio
      */
     public function getFile()
     {
