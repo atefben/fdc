@@ -117,7 +117,7 @@
     </div>
     <div class="palmares">
         {% for movieAward in movie.awards %}
-            {% if movieAward.award and movieAward.award.prize and movieAward.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrize::TYPE_FILM') %}
+            {% if movieAward.award and movieAward.award.prize %}
                 <i class="icon icon_palme"></i>
                 <p>{{ movieAward.award.prize|trans_fallback('title') }}, {{  movieAward.award.festival.year }}</p>
             {% endif %}
