@@ -11837,7 +11837,7 @@ article .read-later.rAlign span:after {
 }
 .single-movie .casting .content {
   float: left;
-  height: 357px;
+  min-height: 357px;
   width: 635px;
 }
 .single-movie .casting .content p {

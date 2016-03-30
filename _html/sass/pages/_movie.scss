@@ -861,7 +861,7 @@
 
     .content {
       float: left;
-      height: 357px;
+      min-height: 357px;
       width: 635px;
 
       p {
@@ -911,8 +911,9 @@
   }
 
   .press {
-    height: 600px;
+    min-height: 600px;
     overflow: hidden;
+	background-color: #141414;
 
     h3 {
       color: #fff;
