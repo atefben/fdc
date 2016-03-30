@@ -510,6 +510,15 @@
      }
      .image{
        overflow: hidden;
+	   
+       &.compat-object-fit {
+         background-size: cover;
+         background-position: center center;
+
+         img {
+           opacity: 0;
+         }
+       }
      }
    }
    .container:after {

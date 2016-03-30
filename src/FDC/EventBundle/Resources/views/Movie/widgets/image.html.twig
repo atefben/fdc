@@ -5,22 +5,25 @@
         <div class="slideshow-img">
             <div class="images">
                 {% for key, photo in photos %}
-                    {% set title = '' %}
-                    {% if app.request.locale == 'fr' and photo.media.titleVf %}
-                        {% set title =  photo.media.titleVf %}
-                    {% elseif app.request.locale != 'fr' and photo.media.titleVa %}
-                        {% set title = photo.media.titleVa %}
-                    {% endif %}
+                    <span style="display:none;">{{ photo.id }}</span>
+                    {% if photo.media.type and photo.media.type.id != constant('Base\\CoreBundle\\Entity\\FilmFilmMediaInterface::TYPE_PRESS_PDF') %}
+                        {% set title = '' %}
+                        {% if app.request.locale == 'fr' and photo.media.titleVf %}
+                            {% set title =  photo.media.titleVf %}
+                        {% elseif app.request.locale != 'fr' and photo.media.titleVa %}
+                            {% set title = photo.media.titleVa %}
+                        {% endif %}
 
-                    <div class="img {% if key == 0 %}active{% endif %}">
-                        <a id="photo{{ photo.id }}"
-                           class="chocolat-image ajax"
-                           href="{% path photo.media.file, photo.media.file.context ~ '_big' %}"
-                           title='<span class="category">{{ title }}</span><span class="date">{{ photo.media.createdAt|date('d.m.y') }}</span><h2>{{ photo.media.createdAt|trans_fallback('title') }}</h2>'
-                           data-credit="{{ photo.media.copyright }}">
-                            <img src="{% path photo.media.file, photo.media.file.context ~ '_big' %}" alt="" />
-                        </a>
-                    </div>
+                        <div class="img {% if key == 0 %}active{% endif %}">
+                            <a id="photo{{ photo.id }}"
+                               class="chocolat-image ajax"
+                               href="{% path photo.media.file, photo.media.file.context ~ '_big' %}"
+                               title='<span class="category">{{ title }}</span><span class="date">{{ photo.media.createdAt|date('d.m.y') }}</span><h2>{{ photo.media.createdAt|trans_fallback('title') }}</h2>'
+                               data-credit="{{ photo.media.copyright }}">
+                                <img src="{% path photo.media.file, photo.media.file.context ~ '_big' %}" alt="" />
+                            </a>
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </div>
             <div class="owl-carousel thumbnails">
@@ -32,15 +35,17 @@
             </div>
         </div>
         {% for key, photo in photos %}
-            {% set title = '' %}
-            {% if app.request.locale == 'fr' and photo.media.titleVf %}
-                {% set title =  photo.media.titleVf %}
-            {% elseif app.request.locale != 'fr' and photo.media.titleVa %}
-                {% set title = photo.media.titleVa %}
-            {% endif %}
+            {% if photo.media.type and photo.media.type.id != constant('Base\\CoreBundle\\Entity\\FilmFilmMediaInterface::TYPE_PRESS_PDF') %}
+                {% set title = '' %}
+                {% if app.request.locale == 'fr' and photo.media.titleVf %}
+                    {% set title =  photo.media.titleVf %}
+                {% elseif app.request.locale != 'fr' and photo.media.titleVa %}
+                    {% set title = photo.media.titleVa %}
+                {% endif %}
 
-            {% if key == 0 %}
-                <p class="caption">{{ title }}{% if photo.media.copyright is not null %}© {{ photo.media.copyright }}{% endif %}</p>
+                {% if key == 0 %}
+                    <p class="caption">{{ title }}{% if photo.media.copyright is not null %}© {{ photo.media.copyright }}{% endif %}</p>
+                {% endif %}
             {% endif %}
         {% endfor %}
     </div>
