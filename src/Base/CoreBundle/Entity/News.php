@@ -76,6 +76,7 @@ abstract class News implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
+     * @Groups({"news_show"})
      */
     private $hideSameDay;
 
@@ -155,6 +156,7 @@ abstract class News implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="NewsWidget", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
+     * @Groups({"news_show"})
      */
     private $widgets;
 

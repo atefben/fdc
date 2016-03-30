@@ -31,6 +31,7 @@ class InfoVideo extends Info
      * @var MediaVideo
      *
      * @ORM\ManyToOne(targetEntity="MediaVideo", cascade={"persist"})
+     * @Groups({"news_show"})
      *
      * @Assert\NotNull()
      */

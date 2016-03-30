@@ -29,7 +29,7 @@ class StatementWidgetQuoteTranslation
      *
      * @ORM\Column(type="text", nullable=false)
      *
-     * @Groups({"statement_list", "statement_show"})
+     * @Groups({"statement_list", "statement_show", "news_show"})
      */
     private $content;
 

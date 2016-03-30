@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * InfoWidgetImage
@@ -18,6 +19,7 @@ class InfoWidgetImage extends InfoWidget
 {
     /**
      * @ORM\ManyToOne(targetEntity="Gallery")
+     * @Groups({"news_show"})
      */
     private $gallery;
 

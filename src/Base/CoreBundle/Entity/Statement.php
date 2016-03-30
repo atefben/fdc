@@ -89,6 +89,7 @@ abstract class Statement implements TranslateMainInterface
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Groups({"news_show"})
      *
      */
     private $signature;
@@ -127,6 +128,7 @@ abstract class Statement implements TranslateMainInterface
 
     /**
      * @ORM\OneToMany(targetEntity="StatementFilmFilmAssociated", mappedBy="statement", cascade={"persist"}, orphanRemoval=true)
+     * @Groups({"news_show"})
      *
      */
     private $associatedFilms;
@@ -137,6 +139,7 @@ abstract class Statement implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="StatementWidget", mappedBy="statement", cascade={"all"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
+     * @Groups({"news_show"})
      */
     private $widgets;
 
@@ -152,7 +155,7 @@ abstract class Statement implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"news_list"})
+     * @Groups({"news_list", "news_show"})
      */
     private $publishedAt;
 
@@ -160,7 +163,7 @@ abstract class Statement implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({"news_list"})
+     * @Groups({"news_list", "news_show"})
      */
     private $publishEndedAt;
 
@@ -191,6 +194,7 @@ abstract class Statement implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
+     * @Groups({"news_show"})
      */
     private $hideSameDay;
 
@@ -235,7 +239,7 @@ abstract class Statement implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"home", "news_list"})
+     * @Groups({"home", "news_list", "news_show"})
      */
     public function getStatementType()
     {
