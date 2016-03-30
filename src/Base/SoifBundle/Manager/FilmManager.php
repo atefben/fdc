@@ -176,7 +176,7 @@ class FilmManager extends CoreManager
     {
         $this->wsMethod = 'GetModifiedMovies';
         $this->wsResultKey = 'GetModifiedMoviesResult';
-         
+
         // start timer
         $this->start(__METHOD__);
 

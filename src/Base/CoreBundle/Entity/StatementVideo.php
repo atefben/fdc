@@ -31,6 +31,7 @@ class StatementVideo extends Statement
      * @var MediaVideo
      *
      * @ORM\ManyToOne(targetEntity="MediaVideo", cascade={"persist"})
+     * @Groups({"news_show"})
      *
      * @Assert\NotNull()
      */

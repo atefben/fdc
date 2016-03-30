@@ -43,6 +43,7 @@ class StatementArticleTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"news_show"})
      *
      */
     private $introduction;
@@ -52,6 +53,7 @@ class StatementArticleTranslation implements TranslateChildInterface
      *
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     * @Groups({"news_show"})
      */
     private $slug;
 

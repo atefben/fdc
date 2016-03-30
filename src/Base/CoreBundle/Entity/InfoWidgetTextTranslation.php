@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * InfoWidgetTextTranslation
@@ -27,6 +28,7 @@ class InfoWidgetTextTranslation
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"news_show"})
      */
     private $content;
 

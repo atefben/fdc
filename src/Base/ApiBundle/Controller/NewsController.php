@@ -153,78 +153,6 @@ class NewsController extends FOSRestController
         return $items ? $items : array();
     }
 
-
-    /**
-     * Return a single news by $id
-     *
-     * @Rest\View()
-     * @ApiDoc(
-     *  resource = true,
-     *  description = "Get a news by $id",
-     *  section="News",
-     *  statusCodes = {
-     *     200 = "Returned when successful",
-     *     204 = "Returned when no news is found"
-     *  },
-     *  requirements={
-     *      {
-     *          "name"="id",
-     *          "requirement"="[\s-+]",
-     *          "dataType"="string",
-     *          "description"="The news identifier"
-     *      }
-     *  },
-     *  output={
-     *      "class"="Base\CoreBundle\Entity\News",
-     *      "groups"={"news_show"}
-     *  }
-     * )
-     *
-     * @Rest\QueryParam(name="version", description="Api Version number")
-     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
-     *
-     * @param ParamFetcher $paramFetcher
-     * @return View
-     */
-    public function getNewAction(ParamFetcher $paramFetcher, $id)
-    {
-        // core manager shortcut
-        $coreManager = $this->get('base.api.core_manager');
-
-        // get festival year / version
-        $festival = $coreManager->getApiFestivalYear();
-        $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
-        $lang = $paramFetcher->get('lang');
-
-        // create query
-        $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository($this->repository)->getApiNewsById($id, $festival, new DateTime(), $lang);
-
-        if ($entity !== null) {
-            // add query for audio / video encoder
-            $array = array();
-            if (strpos(get_class($entity), 'NewsAudio') !== false) {
-                $array = $this->removeUnpublishedNewsAudioVideo(array($entity), $lang);
-            } else if (strpos(get_class($entity), 'NewsVideo') !== false) {
-                $array = $this->removeUnpublishedNewsAudioVideo(array($entity), $lang);
-            }
-            if (count($array)) {
-                $entity = $array[0];
-            }
-        }
-
-        // set context view
-        $groups = array('news_show');
-        $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
-        $context->setVersion($version);
-
-        $view = $this->view($entity, 200);
-        $view->setSerializationContext($context);
-
-        return $view;
-    }
-
     protected function buildDaysGroup($items)
     {
         $days = array();
@@ -256,8 +184,7 @@ class NewsController extends FOSRestController
         foreach ($items as $item) {
             if ($item instanceof News || $item instanceof Info || $item instanceof Statement || $item instanceof MediaImage) {
                 $timeMethod = 'getPublishedAt';
-            }
-            elseif ($item instanceof FilmProjection) {
+            } elseif ($item instanceof FilmProjection) {
                 $timeMethod = 'getStartsAt';
             }
             $dayKey = $item->{$timeMethod}()->format("Y-m-d");
@@ -265,7 +192,7 @@ class NewsController extends FOSRestController
                 $dateTime = $item->{$timeMethod}();
                 $dayTime = clone $dateTime;
                 $days[$dayKey] = array(
-                    'date' => $dayTime,
+                    'date'  => $dayTime,
                     'items' => array(),
                 );
             }
@@ -279,6 +206,192 @@ class NewsController extends FOSRestController
         }
         ksort($days);
         return array_values($days);
+    }
+
+
+    /**
+     * Return a single news by $id
+     *
+     * @Rest\View()
+     * @ApiDoc(
+     *  resource = true,
+     *  description = "Get a news by $id",
+     *  section="News",
+     *  statusCodes = {
+     *     200 = "Returned when successful",
+     *     204 = "Returned when no news is found"
+     *  },
+     *  requirements={
+     *      {
+     *          "name"="id",
+     *          "requirement"="[\s-+]",
+     *          "dataType"="string",
+     *          "description"="The news identifier"
+     *      }
+     *  },
+     *  output={
+     *      "class"="Base\CoreBundle\Entity\News|Base\CoreBundle\Entity\Info|Base\CoreBundle\Entity\Statement",
+     *      "groups"={"news_show"}
+     *  }
+     * )
+     *
+     * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
+     * @Rest\QueryParam(name="type", requirements="(news|info|statement)", default="news", description="The news type")
+     *
+     * @param ParamFetcher $paramFetcher
+     * @param integer $id
+     * @return View
+     */
+    public function getNewAction(ParamFetcher $paramFetcher, $id)
+    {
+        // core manager shortcut
+        $coreManager = $this->get('base.api.core_manager');
+
+        // get festival year / version
+        $festival = $coreManager->getApiFestivalYear();
+        $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+        $lang = $paramFetcher->get('lang');
+        $type = $paramFetcher->get('type');
+
+        $dateTime = new DateTime;
+        $entityFunction = 'getSingle' . ucfirst($type);
+        $sameDayFunction = 'getSameDayForSingle' . ucfirst($type);
+        if (method_exists($this, $entityFunction)) {
+            $entity = $this->$entityFunction($id, $festival, $lang, $dateTime);
+        }
+
+        $output = array();
+        if ($entity) {
+            $output['news'] = $entity;
+            $count = 3;
+            $dateTime = $entity->getPublishedAt();
+            $output['same_day'] = $this->$sameDayFunction($festival, $lang, $dateTime, $count, $entity->getId());
+        }
+
+        // set context view
+        $groups = array('news_show');
+        $context = $coreManager->setContext($groups, $paramFetcher);
+        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+        $context->setVersion($version);
+
+        $view = $this->view($output, $output ? 200 : 204);
+        $view->setSerializationContext($context);
+
+        return $view;
+    }
+
+    /**
+     * @param $id
+     * @param $festival
+     * @param $lang
+     * @param DateTime $dateTime
+     * @return News|null
+     */
+    protected function getSingleNews($id, $festival, $lang, DateTime $dateTime)
+    {
+        $news = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:News')
+            ->getApiNewsById($id, $festival, $dateTime, $lang)
+        ;
+        return $news;
+    }
+
+    /**
+     * @param mixed $festival
+     * @param string $locale
+     * @param DateTime $dateTime
+     * @param integer $count
+     * @param integer $id
+     * @return array
+     */
+    protected function getSameDayForSingleNews($festival, $locale, DateTime $dateTime, $count, $id)
+    {
+        $news = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:News')
+            ->getSameDayNews($festival, $locale, $dateTime, $count, $id)
+        ;
+        return $news;
+    }
+
+    /**
+     * @param $id
+     * @param $festival
+     * @param $lang
+     * @param DateTime $dateTime
+     * @return Statement|null
+     */
+    protected function getSingleInfo($id, $festival, $lang, DateTime $dateTime)
+    {
+        $info = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:Info')
+            ->getApiInfoById($id, $festival, $dateTime, $lang)
+        ;
+        return $info;
+    }
+
+    /**
+     * @param mixed $festival
+     * @param string $locale
+     * @param DateTime $dateTime
+     * @param integer $count
+     * @param integer $id
+     * @return array
+     */
+    protected function getSameDayForSingleInfo($festival, $locale, DateTime $dateTime, $count, $id)
+    {
+        $news = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:Info')
+            ->getSameDayInfo($festival, $locale, $dateTime, $count, $id)
+        ;
+        return $news;
+    }
+
+    /**
+     * @param $id
+     * @param $festival
+     * @param $lang
+     * @param DateTime $dateTime
+     * @return Statement|null
+     */
+    protected function getSingleStatement($id, $festival, $lang, DateTime $dateTime)
+    {
+        $statement = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:Statement')
+            ->getApiStatementById($id, $festival, $dateTime, $lang)
+        ;
+        return $statement;
+    }
+
+
+
+    /**
+     * @param mixed $festival
+     * @param string $locale
+     * @param DateTime $dateTime
+     * @param integer $count
+     * @param integer $id
+     * @return array
+     */
+    protected function getSameDayForSingleStatement($festival, $locale, DateTime $dateTime, $count, $id)
+    {
+        $news = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:Statement')
+            ->getSameDayStatement($festival, $locale, $dateTime, $count, $id)
+        ;
+        return $news;
     }
 
 }

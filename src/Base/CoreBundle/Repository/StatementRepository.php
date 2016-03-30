@@ -19,6 +19,70 @@ use Base\CoreBundle\Entity\StatementArticleTranslation;
  */
 class StatementRepository extends EntityRepository
 {
+
+    /**
+     *  Get the $locale version of Statement of current $festival by $id and verify publish date is between $dateTime
+     *
+     * @param $id
+     * @param $festival
+     * @param $dateTime
+     * @param $locale
+     * @return mixed
+     */
+    public function getApiStatementById($id, $festival, $dateTime, $locale)
+    {
+        $qb = $this->createQueryBuilder('n')
+            ->leftJoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\StatementImage', 'nai', 'WITH', 'nai.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\StatementVideo', 'nav', 'WITH', 'nav.id = n.id')
+            ->leftJoin('naa.translations', 'naat')
+            ->leftJoin('na.translations', 'nat')
+            ->leftJoin('nai.translations', 'nait')
+            ->leftJoin('nav.translations', 'navt')
+            ->where('n.festival = :festival')
+            ->andWhere('n.id = :id')
+            ->andWhere('n.displayedMobile = :displayed_mobile')
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+        ;
+
+        $qb = $qb
+            ->andWhere('
+                (nat.locale = :locale_fr AND nat.status = :status) OR
+                (naat.locale = :locale_fr AND naat.status = :status) OR
+                (nait.locale = :locale_fr AND nait.status = :status) OR
+                (navt.locale = :locale_fr AND navt.status = :status)')
+            ->setParameter('locale_fr', 'fr')
+            ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED)
+        ;
+
+        if ($locale != 'fr') {
+            $qb = $qb
+                ->leftJoin('naa.translations', 'na5t')
+                ->leftJoin('na.translations', 'na6t')
+                ->leftJoin('nai.translations', 'na7t')
+                ->leftJoin('nav.translations', 'na8t')
+                ->andWhere(
+                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na8t.status = :status_translated)'
+                )
+                ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED)
+                ->setParameter('locale', $locale)
+            ;
+        }
+        return $qb
+            ->setParameter('id', $id)
+            ->setParameter('festival', $festival)
+            ->setParameter('datetime', $dateTime)
+            ->setParameter('displayed_mobile', true)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
     public function getNewsApiSameDayStatements($locale, FilmFestival $festival, \DateTime $dateTime)
     {
         $qb = $this
@@ -35,6 +99,8 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->andWhere('n.festival = :festival')
+            ->andWhere('n.displayedMobile = :displayed_mobile')
+            ->setParameter('displayed_mobile', true)
         ;
 
         if ($festival->getFestivalStartsAt() > $dateTime || $festival->getFestivalEndsAt() < $dateTime) {
@@ -138,7 +204,7 @@ class StatementRepository extends EntityRepository
             ;
     }
 
-    public function getSameDayStatement($festival, $locale, $dateTime, $count, $id)
+    public function getSameDayStatement($festival, $locale, $dateTime, $count, $id, $mobile = null)
     {
         $dateTime1 = $dateTime->format('Y-m-d') . ' 00:00:00';
         $dateTime2 = $dateTime->format('Y-m-d') . ' 23:59:59';
@@ -159,7 +225,9 @@ class StatementRepository extends EntityRepository
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
             ->andWhere('n.id != :id')
-            ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt <= :datetime2)')
+            ->andWhere('n.publishedAt BETWEEN :datetime1 AND :datetime2')
+            ->andWhere('n.publishedAt <= :datetime')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;
 
 
@@ -190,12 +258,19 @@ class StatementRepository extends EntityRepository
             ;
         }
 
+        if ($mobile !== null) {
+            $qb
+                ->andWhere('n.displayedMobile = :displayedMobile')
+                ->setParameter('displayedMobile', $mobile)
+            ;
+        }
 
         $qb = $qb
             ->addOrderBy('rand')
             ->setMaxResults($count)
             ->setParameter('festival', $festival)
-            ->setParameter('datetime', $dateTime1)
+            ->setParameter('datetime', $dateTime)
+            ->setParameter('datetime1', $dateTime1)
             ->setParameter('datetime2', $dateTime2)
             ->setParameter('id', $id)
             ->setParameter('site_slug', 'site-press')

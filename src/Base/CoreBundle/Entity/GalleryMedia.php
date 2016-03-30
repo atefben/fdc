@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * GalleryMedia
@@ -28,6 +29,7 @@ class GalleryMedia
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @Groups("news_show")
      */
     private $media;
     
