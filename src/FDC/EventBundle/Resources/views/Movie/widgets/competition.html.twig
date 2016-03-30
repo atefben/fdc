@@ -17,6 +17,8 @@
             <div class="slide">
                 {% if media is not empty %}
                     {% media media, format %}
+                {% else %}
+                    <img src="{{ asset('bundles/fdcevent/img/palmares/film420x560.jpg') }}" alt="">
                 {% endif %}
                 <a class="linkVid" href="#"></a>
                 <div class="info-movie">
