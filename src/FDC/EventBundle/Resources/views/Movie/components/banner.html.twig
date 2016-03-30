@@ -21,8 +21,8 @@
     <div class="img" style="background-image: url({% path media, format %})"></div>
     <div class="links">
         <div class="container">
-            <a class="movies" href="{{ path('fdc_event_movie_selection', {'slug': "competition"}) }}"><i class="icon icon_flecheGauche"></i>{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
-            <a class="programmation" href="#"><i class="icon icon_programmation"></i>{{ 'movie.nav.btn.voirlaprogrammation'|trans }}</a>
+            <a class="movies" href="{{ path('fdc_event_movie_selection') }}"><i class="icon icon_flecheGauche"></i>{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
+            <a class="programmation" href="{{ path('fdc_event_agenda_scheduling') }}"><i class="icon icon_programmation"></i>{{ 'movie.nav.btn.voirlaprogrammation'|trans }}</a>
         </div>
     </div>
     <div class="trailer">
