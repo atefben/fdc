@@ -5,8 +5,7 @@
         <div class="slideshow-img">
             <div class="images">
                 {% for key, photo in photos %}
-                    <span style="display:none;">{{ photo.id }}</span>
-                    {% if photo.media.type and photo.media.type.id != constant('Base\\CoreBundle\\Entity\\FilmFilmMediaInterface::TYPE_PRESS_PDF') %}
+                    {% if photo.media.type and photo.media.type.id != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') %}
                         {% set title = '' %}
                         {% if app.request.locale == 'fr' and photo.media.titleVf %}
                             {% set title =  photo.media.titleVf %}
@@ -35,7 +34,7 @@
             </div>
         </div>
         {% for key, photo in photos %}
-            {% if photo.media.type and photo.media.type.id != constant('Base\\CoreBundle\\Entity\\FilmFilmMediaInterface::TYPE_PRESS_PDF') %}
+            {% if photo.media.type and photo.media.type.id != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') %}
                 {% set title = '' %}
                 {% if app.request.locale == 'fr' and photo.media.titleVf %}
                     {% set title =  photo.media.titleVf %}
