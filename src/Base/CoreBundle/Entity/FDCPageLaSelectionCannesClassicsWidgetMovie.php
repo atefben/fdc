@@ -19,4 +19,48 @@ use JMS\Serializer\Annotation\Since;
  */
 class FDCPageLaSelectionCannesClassicsWidgetMovie extends FDCPageLaSelectionCannesClassicsWidget
 {
+    /**
+     * @ORM\ManyToMany(targetEntity="FilmFilm", cascade={"all"}, orphanRemoval=true)
+     */
+    private $films;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->films = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add films
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $films
+     * @return FDCPageLaSelectionCannesClassicsWidgetMovie
+     */
+    public function addFilm(\Base\CoreBundle\Entity\FilmFilm $films)
+    {
+        $this->films[] = $films;
+
+        return $this;
+    }
+
+    /**
+     * Remove films
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $films
+     */
+    public function removeFilm(\Base\CoreBundle\Entity\FilmFilm $films)
+    {
+        $this->films->removeElement($films);
+    }
+
+    /**
+     * Get films
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFilms()
+    {
+        return $this->films;
+    }
 }
