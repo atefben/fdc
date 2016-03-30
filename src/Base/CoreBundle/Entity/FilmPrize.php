@@ -14,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * FilmPrize
@@ -135,6 +136,20 @@ class FilmPrize implements FilmPrizeInterface, TranslateMainInterface
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * @return mixed
+     * @VirtualProperty()
+     * @Groups({"award_list"})
+     */
+    public function getTypeName()
+    {
+        $types = array(
+            'film',
+            'person',
+        );
+        return $types[$this->type];
     }
 
     /**
