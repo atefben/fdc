@@ -29,7 +29,7 @@
                     {% endif %}
                 {% endfor %}
                 {% if prev.countries|length > 0 %}
-                    <p>{{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{{ country.country|trans_fallback('name')|capitalize }}</p> {% endfor %}
+                    <p>{{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{{ country.country|trans_fallback('name')|capitalize }}{% if loop.index != movie.countries|length %}, {% endif %}{% endfor %}</p>
                 {% endif %}
             </div>
         </div>
