@@ -265,6 +265,7 @@ class NewsController extends FOSRestController
         if ($entity) {
             $output['news'] = $entity;
             $count = 3;
+            $dateTime = $entity->getPublishedAt();
             $output['same_day'] = $this->$sameDayFunction($festival, $lang, $dateTime, $count, $entity->getId());
         }
 
