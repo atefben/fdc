@@ -442,9 +442,11 @@ class FilmManager extends CoreManager
                     $persons[$object->Id] = $this->em->getRepository('BaseCoreBundle:FilmFilmPerson')->findOneBy(array('person' => $object->Id, 'film' => $entity->getId()));
                     $persons[$object->Id] = ($persons[$object->Id] !== null) ? $persons[$object->Id] : new FilmFilmPerson();
                 }
+
                 // set person
                 $persons[$object->Id]->setPerson($person);
-                
+                $persons[$object->Id]->setPosition($object->OrdreAffichage);
+
                 // set function
                 $function = $this->em->getRepository('BaseCoreBundle:FilmFunction')->findOneById($object->IdFonction);
                 if ($function !== null) {
@@ -485,7 +487,9 @@ class FilmManager extends CoreManager
                     $persons[$object->Id] = $this->em->getRepository('BaseCoreBundle:FilmFilmPerson')->findOneBy(array('person' => $object->Id, 'film' => $entity->getId()));
                     $persons[$object->Id] = ($persons[$object->Id] !== null) ? $persons[$object->Id] : new FilmFilmPerson();
                 }
+
                 $persons[$object->Id]->setPerson($person);
+                $persons[$object->Id]->setPosition($order);
 
                 // set function
                 if (property_exists($object, 'FonctionsTraductions') && property_exists($object->FonctionsTraductions, 'FonctionTraductionDto')) {

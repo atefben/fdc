@@ -34,10 +34,15 @@ class FilmFilmCountry
      *
      * @ORM\Column(type="integer")
      * @Groups({
-     *  "film_list", "film_show",
-     *  "trailer_list", "trailer_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *     "film_list",
+     *     "film_show",
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_show"
      * })
      */
     private $position;
@@ -47,10 +52,15 @@ class FilmFilmCountry
      *
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="countryFilms")
      * @Groups({
-     *  "film_list", "film_show",
-     *  "trailer_list", "trailer_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *     "film_list",
+     *     "film_show",
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_show"
      * })
      */
     private $country;

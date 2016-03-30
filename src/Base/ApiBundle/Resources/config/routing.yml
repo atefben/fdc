@@ -10,9 +10,9 @@ film_atelier:
     type:       rest
     resource:   Base\ApiBundle\Controller\FilmAtelierController
 
-film_award:
+palmares:
     type:       rest
-    resource:   Base\ApiBundle\Controller\FilmAwardController
+    resource:   Base\ApiBundle\Controller\PalmaresController
 
 film_person:
     type:       rest

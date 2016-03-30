@@ -11226,7 +11226,7 @@ article .read-later.rAlign span:after {
   color: #fff;
   float: left;
   padding-top: 15px;
-  width: 639px;
+  width: 740px;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -11250,6 +11250,7 @@ article .read-later.rAlign span:after {
   letter-spacing: 0.1em;
   margin: 12px 0 12px 0;
   text-transform: uppercase;
+  min-height: 60px;
 }
 .single-movie .info-film .title-original {
   font-size: 0.750rem;
