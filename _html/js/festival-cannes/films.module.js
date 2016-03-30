@@ -54,6 +54,7 @@ $(document).ready(function() {
             });
             initAudioPlayers();
             ajaxEvent();
+            resizeGrid();
           });
           $('.films-list .sub-nav-list').find('a.active').removeClass('active');
           $(this).addClass('active');

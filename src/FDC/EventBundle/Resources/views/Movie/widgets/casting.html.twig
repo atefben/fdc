@@ -10,7 +10,7 @@
                     {% if loop.index0 == 0 %}
                         {% media media.file, media.file.context ~ '_small' with {'class': 'active', title: '', width: '', height: ''} %}
                     {% else %}
-                        {% media media.file, media.file.context ~ '_small' with {title: ''} %}
+                        {% media media.file, media.file.context ~ '_small' with {title: '', width: '', height: ''} %}
                     {% endif %}
 
                     {% if loop.index0 == 0 %}
@@ -32,7 +32,9 @@
 			{% if medias|length > 1 %}
             <div class="thumbs">
                 {% for media in medias %}
-                    {% media media.file, media.file.context ~ '_tiny' %}
+                    <a href="#" data-caption="">
+                        <img src="{% path media.file, media.file.context ~ '_tiny'  %}">
+                    </a>
                 {% endfor %}
             </div>
 			 {% endif %}

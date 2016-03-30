@@ -24,7 +24,7 @@ class EventWidgetText extends EventWidget
     /**
      * @var ArrayCollection
      *
-     * @Groups({"event_list", "event_show"})
+     * @Groups({"event_show"})
      */
     protected $translations;
     

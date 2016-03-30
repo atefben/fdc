@@ -36,7 +36,7 @@ class EventWidgetVideoYoutube extends EventWidget implements TranslateMainInterf
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
-     *
+     * @Groups({"event_list", "event_show"})
      */
     protected $image;
 

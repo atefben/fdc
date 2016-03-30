@@ -25,6 +25,7 @@ class EventWidgetSubtitle extends EventWidget
 
     /**
      * @var ArrayCollection
+     * @Groups({"news_show", "event_show"})
      */
     protected $translations;
 

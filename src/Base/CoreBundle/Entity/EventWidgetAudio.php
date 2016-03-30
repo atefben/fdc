@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * EventWidgetAudio
@@ -20,6 +21,7 @@ class EventWidgetAudio extends EventWidget
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", nullable=false)
+     * @Groups({"event_show"})
      */
     private $file;
 
