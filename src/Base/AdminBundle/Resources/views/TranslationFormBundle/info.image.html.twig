@@ -635,7 +635,7 @@
                                                         </label>
                                                         <div>
                                                             <b>{{ 'form.label_alt_img'|trans }}:</b>
-                                                            {% if imageTranslations.get('fr') is not null %}
+                                                            {% if imageTranslations and imageTranslations.get('fr') is not null %}
                                                                 {{ imageTranslations.get('fr').alt }}
                                                             {% endif %}
                                                         </div>
