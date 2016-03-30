@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
@@ -169,56 +170,24 @@ class AgendaController extends Controller
     public function roomAction(Request $request)
     {
         $this->isPageEnabled($request->get('_route'));
-        $rooms = array(
-            array(
-                'name' => 'Grand Théatre Lumière',
-                'slug' => 'grand-theatre',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle Debussy',
-                'slug' => 'salle-debussy',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle du 60e',
-                'slug' => 'salle-60e',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle Bunuel',
-                'slug' => 'salle-bunuel',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle bazin',
-                'slug' => 'salle-bazin',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle de presse',
-                'slug' => 'salle-presse',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-        );
+
+        $translator = $this->get('translator');
+
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+        $dateTime = new DateTime();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
+
+        //GET PressCinemaMap PAGE
+        $rooms = $em->getRepository('BaseCoreBundle:PressCinemaMap')->findOneById($this->getParameter('admin_press_cinemamap_id'));
+        if ($rooms === null) {
+            throw new NotFoundHttpException();
+        }
 
         return array(
             'rooms' => $rooms
