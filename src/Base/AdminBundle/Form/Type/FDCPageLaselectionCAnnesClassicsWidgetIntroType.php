@@ -22,7 +22,7 @@ class FDCPageLaSelectionCannesClassicsWidgetIntroType extends FDCPageLaSelection
      * @var string
      * @access protected
      */
-    protected $dataClass = 'Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetIntroType';
+    protected $dataClass = 'Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetIntro';
 
     /**
      * buildForm function.
@@ -40,7 +40,13 @@ class FDCPageLaSelectionCannesClassicsWidgetIntroType extends FDCPageLaSelection
             'required_locales' => array('fr'),
             'fields' => array(
                 'introduction' => array(
-                    'field_type' => 'text',
+                    'label' => false,
+                    'attr' => array(
+                        'class' => 'ckeditor'
+                    ),
+                    'required' => true,
+                    'field_type' => 'ckeditor',
+                    'config_name' => 'widget'
                 ),
                 'createdAt' => array(
                     'display' => false

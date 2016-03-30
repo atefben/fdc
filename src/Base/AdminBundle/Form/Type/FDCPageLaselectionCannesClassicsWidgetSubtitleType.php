@@ -41,9 +41,15 @@ class FDCPageLaSelectionCannesClassicsWidgetSubtitleType extends FDCPageLaSelect
             'fields' => array(
                 'subtitle' => array(
                     'field_type' => 'text',
+                    'label' => 'Sous-titre',
+                    'sonata_help' => '255 caractères max',
+                    'required' => false
                 ),
-                'content' => array(
+                'paragraph' => array(
                     'field_type' => 'textarea',
+                    'label' => 'Paragraphe de texte',
+                    'sonata_help' => '255 caractères max',
+                    'required' => false
                 ),
                 'createdAt' => array(
                     'display' => false

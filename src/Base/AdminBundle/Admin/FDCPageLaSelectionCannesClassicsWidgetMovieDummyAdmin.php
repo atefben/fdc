@@ -20,7 +20,7 @@ class FDCPageLaSelectionCannesClassicsWidgetMovieDummyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('films', 'sonata_type_model_collection')
+            ->add('films', 'sonata_type_collection')
         ;
     }
 }
