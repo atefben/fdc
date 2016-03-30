@@ -24,7 +24,7 @@ module.exports = function(grunt) {
           './js/include/menu.js',
           './js/include/myselection.js',
         ],
-        dest: './inc/scripts.inc.php'
+        dest: './scripts.inc.php'
       },
       vendor: {
         options: {
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
         src: [
           './js/vendors/*.js',
         ],
-        dest: './inc/scripts.inc.php'
+        dest: './scripts.inc.php'
       },
       css: {
         options: {
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
           './css/*.css',
           './css/include/*.css',
         ],
-        dest: './inc/head.inc.php'
+        dest: './head.inc.php'
       },
       base: {
         options: {
@@ -58,12 +58,12 @@ module.exports = function(grunt) {
         src: [
           './css/vendors/*.css',
         ],
-        dest: './inc/head.inc.php'
+        dest: './head.inc.php'
       }
     },
     useminPrepare: {
-      scripts: './inc/scripts.inc.php',
-      styles: './inc/head.inc.php',
+      scripts: './scripts.inc.php',
+      styles: './head.inc.php',
       options: {
           root: './',
           dest: './'
@@ -71,10 +71,10 @@ module.exports = function(grunt) {
     },
     usemin: {
       js: {
-        scripts: './inc/scripts.dist.php'
+        scripts: './scripts.dist.php'
       },
       css: {
-        styles: './inc/head.dist.php'
+        styles: './head.dist.php'
       }
     },
     concat: {
@@ -97,14 +97,24 @@ module.exports = function(grunt) {
       }
     },
     copy: {
+      app: {
+        files: [
+          {
+            expand:true,
+            cwd: './js/',
+            src: ['*.js', 'include/footer.js', 'include/menu.js', 'include/myselection.js'],
+            dest: '../src/FDC/EventMobileBundle/Resources/public/js/dev/'
+          }
+        ]
+      }
       js: {
         files: [
            {
-              src: "./js/vendor.min.js",
+              src: "./dist/js/vendor.min.js",
               dest: "../src/FDC/EventMobileBundle/Resources/public/js/vendor.min.js"
            },
            {
-              src: "./js/app.min.js",
+              src: "./dist/js/app.min.js",
               dest: "../src/FDC/EventMobileBundle/Resources/public/js/app.min.js"
            }
         ]

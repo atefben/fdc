@@ -75,7 +75,7 @@
                 <div class="item">
                  <figure>
                     <div class="image">
-                        <a href="movie.php"> <img src="img/films/selection-officielle/cover-film1.jpg" alt=""></a>
+                     <a href="movie.php"> <img src="http://dummyimage.com/293x34/000/fff.png" alt=""></a>
                     </div>
                    <figcaption>
                      <a href="movie.php"><span class="name">Carol</span></a>

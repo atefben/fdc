@@ -1,4 +1,4 @@
-<!-- build:js js/vendor.min.js -->
+<!-- build:js dist/js/vendor.min.js -->
 <!-- fdc-vendor tags start -->
 <script src="../js/vendors/classie.js"></script>
 <script src="../js/vendors/codebird.js"></script>
@@ -17,7 +17,7 @@
 <!-- fdc-vendor tags end -->
 <!-- endbuild -->
 
-<!-- build:js js/app.min.js -->
+<!-- build:js dist/js/app.min.js -->
 <!-- fdc-app tags start -->
 <script src="../js/accordeon.js"></script>
 <script src="../js/add-to-selection.js"></script>

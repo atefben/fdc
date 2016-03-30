@@ -769,6 +769,8 @@
         margin-bottom: 10px;
         position: relative;
         width: 292px;
+        overflow: hidden;
+        text-align: center;
 
         .caption {
           bottom: 10px;
@@ -780,10 +782,9 @@
         }
 
         img {
-          display: block;
-          position: absolute;
-          top: 0;
-          left: 0;
+          height: 100%;
+          width: auto;
+          margin: 0 -100%;
           opacity: 0;
           visibility: hidden;
           @include transition(all 0.8s $smoothTransition);
