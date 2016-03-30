@@ -27,7 +27,7 @@
                     {% endif %}
                 {% endfor %}
                 {% if prev.countries|length > 0 %}
-                    {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}<p>{{ country.country|trans_fallback('name') }}</p> {% endfor %}
+                    <p>{{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{{ country.country|trans_fallback('name')|capitalize }}</p> {% endfor %}
                 {% endif %}
             </div>
         </div>
