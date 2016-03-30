@@ -5,8 +5,8 @@
         <div class="slideshow-img">
             <div class="images">
                 {% for key, photo in photos %}
-                    {% if photo.media.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') %}
-                        <span style="display: none;">{{ photo.media.type }}</span>
+                    {% if photo.media.type.id != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') %}
+                        <span style="display: none;">{{ photo.media.type.id }}</span>
                         {% set title = '' %}
                         {% if app.request.locale == 'fr' and photo.media.titleVf %}
                             {% set title =  photo.media.titleVf %}

@@ -93,10 +93,7 @@
             {{ 'movie.label.realisepar'|trans }} :
             {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
             {% for director in directors %}
-                <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
-                {% if loop.index != directors|length %}
-                    ,
-                {% endif %}
+                <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{% if loop.index != directors|length %}, {% endif %}
             {% endfor %}
         </p>
         <p>
@@ -104,7 +101,8 @@
                 {{ 'movie.label.anneedeproduction'|trans }} : <span>{{ movie.productionYear }}</span>
             {% endif %}
             {% if movie.countries|length > 0 %}
-                {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}<span>{{ country.country|trans_fallback('name') }}</span> {% endfor %}
+                {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{% if loop.index != movie.countries|length %}<span id="TetiereMovieCountry">{{ country.country|trans_fallback('name')|replace({' ': ""}) }}, </span>{% else %}<span>{{ country.country|trans_fallback('name')|replace({' ': ""}) }}</span>{% endif %}
+            {% endfor %}
             {% endif  %}
             {% if movie.duration is not null and movie.duration > 0 %}
                 {% set duration = movie.duration|split('.') %}
