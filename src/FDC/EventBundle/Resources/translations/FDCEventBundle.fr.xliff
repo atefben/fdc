@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-03-30T15:34:16Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-03-30T16:01:08Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -1012,7 +1012,7 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
       </trans-unit>
       <trans-unit id="f44fa34c3bc854a078a24a4923b436a8d8305d0d" resname="movie.presse.liens.website">
         <source>movie.presse.liens.website</source>
-        <target state="new">movie.presse.liens.website</target>
+        <target>site internet</target>
         <jms:reference-file line="38">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="681c0ae93c81474979157e8b5841bcd44e797df3" resname="movie.presse.title.dossierdepresse">

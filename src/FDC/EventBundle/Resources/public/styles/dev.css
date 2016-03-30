@@ -229,6 +229,10 @@
     width: 100%;
 }
 
+.grid .item img {
+    object-fit: cover;
+}
+
 #notposter {
     height:100%;
     margin-top: 47px;
