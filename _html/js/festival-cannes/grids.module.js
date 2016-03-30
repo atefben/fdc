@@ -22,6 +22,12 @@ function resizeGrid() {
     if($('#gridVideos').length) {
       setGrid(false, $('#gridVideos'), true);
     }
+    if($('#gridFilmSelection').length) {
+      var w = $('#gridFilmSelection .image').first().width();
+      $('#gridFilmSelection .image').each(function() {
+        $(this).css('height', (w / 0.75));
+      });
+    }
   }
 }
 
@@ -331,6 +337,7 @@ $(document).ready(function () {
           itemSelector: '.item'
         });
       });
+      resizeGrid();
     }
 
     if($('#gridAudios').length) {

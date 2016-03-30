@@ -229,8 +229,3 @@
     width: 100%;
     height: 100%;
 }
-
-/* force psote img height */
-#gridFilmSelection .image {
-    max-height: 403px;
-}
