@@ -113,6 +113,7 @@
             {% endif %}
         </p>
     </div>
+	{% if movie.awards|length > 0 %}
     <div class="palmares">
         {% set awardsUnique = [] %}
         {% for movieAward in movie.awards %}
@@ -125,6 +126,7 @@
             {% endif %}
         {% endfor %}
     </div>
+	{% endif %}
     <div class="info-film">
         <div  class="synopsis">
             <h3 class="title-section">{{ 'movie.title.synopsis'|trans }}</h3>

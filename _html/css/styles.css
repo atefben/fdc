@@ -11243,6 +11243,9 @@ article .read-later.rAlign span:after {
     padding-top: 0;
   }
 }
+.single-movie .info-film .information-movie {
+  min-height: 28px;
+}
 .single-movie .info-film h2 {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 2.250rem;
@@ -11256,6 +11259,7 @@ article .read-later.rAlign span:after {
   font-weight: normal;
   margin-bottom: 28px;
   text-transform: uppercase;
+  min-height: 60px;
 }
 .single-movie .info-film p {
   font-size: 0.750rem;
@@ -11302,7 +11306,7 @@ article .read-later.rAlign span:after {
   float: left;
   width: 63%;
   padding-bottom: 5px;
-  margin-top: 48px;
+  margin-top: 35px;
   margin-bottom: -38px;
 }
 .single-movie .palmares.trailer {
