@@ -22,7 +22,7 @@
                             <a id="photo{{ photo.id }}"
                                class="chocolat-image ajax"
                                href="{% path photo.media.file, photo.media.file.context ~ '_big' %}"
-                               title='<span class="category">{{ title }}</span><span class="date">{{ photo.media.createdAt|date('d.m.y') }}</span><h2>{{ photo.media.createdAt|trans_fallback('title') }}</h2>'
+                               title='<span>{{ title }}</span>'
                                data-credit="{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
                                 <img src="{% path photo.media.file, photo.media.file.context ~ '_big' %}" alt="" />
                             </a>
