@@ -23,7 +23,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
  *
  * \@extends FOSRestController
  */
-class SocialWallMobileController extends FOSRestController
+class SocialWallController extends FOSRestController
 {
     private $repository = 'BaseCoreBundle:SocialWall';
 
@@ -47,6 +47,7 @@ class SocialWallMobileController extends FOSRestController
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
+     * @Rest\QueryParam(name="time", description="The day timestamp")
      * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
      *
      * @param  ParamFetcher $paramFetcher
@@ -60,13 +61,24 @@ class SocialWallMobileController extends FOSRestController
         // get festival year / version
         $festival = $coreManager->getApiFestivalYear();
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+        $page = $paramFetcher->get('time');
+        $offset = $paramFetcher->get('offset');
+
+        $dateTime = new \DateTime();
+        if ($paramFetcher->get('time')) {
+            $dateTime->setTimestamp($paramFetcher->get('time'));
+        }
 
         //create query
-        $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository($this->repository)->getApiSocialWallMobile($festival);
+        $queryBuilder = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:SocialWall')
+            ->getApiSocialWall($festival, $dateTime, true, $offset, $page)
+        ;
 
         // get items
-        $items = $coreManager->getPaginationItems($query, $paramFetcher);
+        $items = $coreManager->getPaginationItems($queryBuilder, $paramFetcher);
 
         // set context view
         $groups = array('social_wall_list');
@@ -74,7 +86,7 @@ class SocialWallMobileController extends FOSRestController
         $context->setVersion($version);
 
         // create view
-        $view = $this->view($items, 200);
+        $view = $this->view($this->buildDays($items), $items ? 200 : 204);
         $view->setSerializationContext($context);
 
         return $view;
