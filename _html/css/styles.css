@@ -11579,6 +11579,7 @@ article .read-later.rAlign span:after {
   opacity: 0.6;
 }
 .single-movie #nav-movie {
+  border-bottom: 1px solid #dfdfdf;
   border-top: 1px solid #dfdfdf;
   clear: both;
   height: 73px;
@@ -11746,7 +11747,7 @@ article .read-later.rAlign span:after {
 .single-movie .casting {
   border-top: 1px solid #dfdfdf;
   border-bottom: 1px solid #dfdfdf;
-  margin: 45px 0 0 0;
+  margin: 0 0 0 0;
   overflow: hidden;
   padding: 45px 0;
 }
