@@ -232,5 +232,5 @@
 
 /* force psote img height */
 #gridFilmSelection .image {
-    height: 403px;
+    max-height: 403px;
 }
