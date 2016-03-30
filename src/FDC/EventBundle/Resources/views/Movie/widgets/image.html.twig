@@ -32,8 +32,15 @@
             </div>
         </div>
         {% for key, photo in photos %}
+            {% set title = '' %}
+            {% if app.request.locale == 'fr' and photo.media.titleVf %}
+                {% set title =  photo.media.titleVf %}
+            {% elseif app.request.locale != 'fr' and photo.media.titleVa %}
+                {% set title = photo.media.titleVa %}
+            {% endif %}
+
             {% if key == 0 %}
-                <p class="caption">{{ photo.media.copyright }}</p>
+                <p class="caption">{{ title }}{% if photo.media.copyright is not null %}© {{ photo.media.copyright }}{% endif %}</p>
             {% endif %}
         {% endfor %}
     </div>
