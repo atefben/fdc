@@ -100,7 +100,8 @@
                 {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}<span>{{ country.country|trans_fallback('name') }}</span> {% endfor %}
             {% endif  %}
             {% if movie.duration is not null and movie.duration > 0 %}
-                {{ 'movie.label.duree'|trans }} : <span>{{ movie.duration }}</span>
+                {% set duration = movie.duration|split('.') %}
+                {{ 'movie.label.duree'|trans }} : {% if duration|length >= 1 %}<span>{{ duration[0] }} {{ 'movie.duration.minutes'|trans }}</span>{% endif %}
             {% endif %}
             {%  if movie.publishedAt is not null %}
                 {{ 'movie.label.datedesortie'|trans }} : <span>{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</span>
