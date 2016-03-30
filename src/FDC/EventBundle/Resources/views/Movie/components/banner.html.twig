@@ -59,14 +59,42 @@
     </div>
 </div>
 <div class="container container-top">
+    {% set hasVideo = false %}
+    {% if movie.imageMain %}
+        {% set hasVideo = true %}
+    {% elseif movie.videoMain is not null and movie.videoMain.image and movie.videoMain.image.file %}
+        {% set hasVideo = true %}
+    {% elseif movie.videoMain is not null and movie.videoMain|trans_fallback('imageAmazonUrl') %}
+        {% set hasVideo = true %}
+    {% endif %}
+
         <div class="poster video">
+            {% if hasVideo == true %}
             <a href="#" class="picto"><i class="icon icon_video"></i></a>
+            {% endif %}
+            {% if hasVideo == true %}
             {% if movie.imageMain %}
                 {% media movie.imageMain|trans_fallback('file'), 'media_image_simple_588x784' %}
             {% elseif movie.videoMain is not null and movie.videoMain.image and movie.videoMain.image.file %}
                 {% media movie.videoMain.image.file, 'media_image_2560x1620' %}
             {% elseif movie.videoMain is not null and movie.videoMain|trans_fallback('imageAmazonUrl') %}
                 <img src="{{ s3_server_global ~ movie.videoMain|trans_fallback('imageAmazonUrl') }}">
+            {% endif %}
+            {% else %}
+                {% set posterImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+                {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+                {% set media = null %}
+                {% set format =  '293x397' %}
+                {% if posterImg is not null %}
+                    {% set media = posterImg %}
+                {% elseif filmImg is not null %}
+                    {% set media = filmImg %}
+                {% endif %}
+                {% if media is not null %}
+                    {% media media, format %}
+                {% else %}
+                    <img src="{{ asset('bundles/fdcevent/img/palmares/film_w293.jpg') }}" alt="Affiche film" />
+                {% endif %}
             {% endif %}
         </div>
     <div class="info-film">

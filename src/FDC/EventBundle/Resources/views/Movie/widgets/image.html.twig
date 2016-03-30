@@ -23,7 +23,7 @@
                                class="chocolat-image ajax"
                                href="{% path photo.media.file, photo.media.file.context ~ '_big' %}"
                                title='<span class="category">{{ title }}</span><span class="date">{{ photo.media.createdAt|date('d.m.y') }}</span><h2>{{ photo.media.createdAt|trans_fallback('title') }}</h2>'
-                               data-credit="{{ photo.media.copyright }}">
+                               data-credit="{{ title }}{% if photo.media.copyright is not null%} © {{ photo.media.copyright }}{% endif %}">
                                 <img src="{% path photo.media.file, photo.media.file.context ~ '_big' %}" alt="" />
                             </a>
                         </div>
@@ -32,18 +32,21 @@
                 {% endfor %}
             </div>
             <div class="owl-carousel thumbnails">
+                {% set firstPicture = true %}
                 {% for key, photo in photos %}
                     {% if
                         photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') and
                         photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR')
                     %}
-                        <div class="thumb {% if key == 0 %}active{% endif %}" data-caption="{{ photo.media.copyright }}">
+                        <div class="thumb {% if firstPicture == true %}active{% endif %}" data-caption="{{ photo.media.copyright }}">
                             <img src="{% path photo.media.file, photo.media.file.context ~ '_small' %}" />
                         </div>
+                        {% set firstPicture = false %}
                     {% endif %}
                 {% endfor %}
             </div>
         </div>
+        {% set firstPicture = true %}
         {% for key, photo in photos %}
             {% if
                 photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') and
@@ -56,9 +59,10 @@
                     {% set title = photo.media.titleVa %}
                 {% endif %}
 
-                {% if key == 0 %}
-                    <p class="caption">{{ title }}{% if photo.media.copyright is not null %}© {{ photo.media.copyright }}{% endif %}</p>
+                {% if firstPicture == true %}
+                    <p class="caption">{{ title }}{% if photo.media.copyright is not null %} © {{ photo.media.copyright }}{% endif %}</p>
                 {% endif %}
+                {% set firstPicture = false %}
             {% endif %}
         {% endfor %}
     </div>
