@@ -583,7 +583,7 @@ $(document).ready(function() {
       margin: 50,
       autoWidth: true,
       onInitialized: function() {
-        var v = ($(window).width() - 978) / 2 + "px";
+        var v = ($(window).width() - 977) / 2 + "px";
         $('#slider-channels .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
       }
     });
@@ -1187,7 +1187,7 @@ $(document).ready(function() {
           margin: 50,
           autoWidth: true,
           onInitialized: function() {
-            var v = ($(window).width() - 978) / 2 + "px";
+            var v = ($(window).width() - 977) / 2 + "px";
             $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
             $('#selection').addClass('open');
           }
@@ -1269,7 +1269,7 @@ $(document).ready(function() {
     setTimeout(function() {
       sliderSelection.trigger('del.owl.carousel', i);
       sliderSelection.trigger('refresh.owl.carousel');
-      var v = ($(window).width() - 978) / 2 + "px";
+      var v = ($(window).width() - 977) / 2 + "px";
       $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
     }, 500);
   });
@@ -1289,7 +1289,7 @@ $(document).ready(function() {
       setTimeout(function() {
         sliderSelection.trigger('add.owl.carousel', [$('<div class="owl-item">' + $article + '</div>'), 0]);
         sliderSelection.trigger('refresh.owl.carousel');
-        var v = ($(window).width() - 978) / 2 + "px";
+        var v = ($(window).width() - 977) / 2 + "px";
         $('#slider-selection .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
       }, 700);
     });
@@ -1318,7 +1318,7 @@ $(document).ready(function() {
       margin: 50,
       autoWidth: true,
       onInitialized: function() {
-        var v = ($(window).width() - 978) / 2 + "px";
+        var v = ($(window).width() - 977) / 2 + "px";
         $('#slider-movie-videos .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
       }
     });
@@ -1369,7 +1369,7 @@ $(document).ready(function() {
       margin: 50,
       autoWidth: true,
       onInitialized: function() {
-        var v = ($(window).width() - 978) / 2 + "px";
+        var v = ($(window).width() - 977) / 2 + "px";
         $('#slider-competition .owl-stage').css({ transform: "translate3d(" + v + ", 0, 0)" });
       }
     });
