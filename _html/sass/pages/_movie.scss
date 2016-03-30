@@ -480,15 +480,23 @@
       }
     }
 
+    &:before {
+      background: rgba(0,0,0,0);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(20,20,20,0) 50%);
+      content: '';
+      display: block;
+      height: 100%;
+      width: 100%;
+      opacity: 0.3;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
     &:after {
       background: rgba(0,0,0,0);
-      background: -moz-linear-gradient(top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
-      background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0.7)), color-stop(50%, rgba(20,20,20,0)));
-      background: -webkit-linear-gradient(top, rgba(0,0,0,0.7) 0%, rgba(20,20,20,0) 50%);
-      background: -o-linear-gradient(top, rgba(0,0,0,0.7) 0%, rgba(20,20,20,0) 50%);
-      background: -ms-linear-gradient(top, rgba(0,0,0,0.7) 0%, rgba(20,20,20,0) 50%);
-      background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(20,20,20,0) 50%);
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(20,20,20,0) 80%);
       content: '';
       display: block;
       height: 100%;
@@ -616,6 +624,7 @@
 
       a {
         border-top: none;
+        line-height: 73px;
         @include transition(border-color .9s $smoothTransition);
       }
 
@@ -626,9 +635,9 @@
 
       .icon{
         font-size: .8rem;
-        position: absolute;
-        top: 30px;
-        left: 30px;
+        // position: absolute;
+        // top: 30px;
+        // left: 30px;
       }
 
       #share-box{
