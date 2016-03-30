@@ -113,7 +113,7 @@
             {% endif %}
         </p>
     </div>
-	{% if movieAward|length > 0 %}
+	{% if movie.awards|length > 0 %}
     <div class="palmares">
         {% set awardsUnique = [] %}
         {% for movieAward in movie.awards %}
