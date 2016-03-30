@@ -259,8 +259,9 @@ class InfoRepository extends EntityRepository
 
     public function getSameDayInfo($festival, $locale, $dateTime, $count, $id, $mobile = null)
     {
-        $dateTime2 = $dateTime->format('Y-m-d') . ' 00:00:00';
+        $dateTime1 = $dateTime->format('Y-m-d') . ' 00:00:00';
         $dateTime2 = $dateTime->format('Y-m-d') . ' 23:59:59';
+        $now = new \DateTime();
 
         $qb = $this
             ->createQueryBuilder('n')
@@ -279,8 +280,8 @@ class InfoRepository extends EntityRepository
             ->andWhere('n.festival = :festival')
             ->andWhere('n.id != :id')
             ->andWhere('n.publishedAt BETWEEN :datetime1 AND :datetime2')
-            ->andWhere('n.publishedAt <= :datetime')
-            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+            ->andWhere('n.publishedAt <= :now')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
         ;
 
 
@@ -319,7 +320,7 @@ class InfoRepository extends EntityRepository
             ->addOrderBy('rand')
             ->setMaxResults($count)
             ->setParameter('festival', $festival)
-            ->setParameter('datetime', $dateTime)
+            ->setParameter('now', $now)
             ->setParameter('datetime1', $dateTime1)
             ->setParameter('datetime2', $dateTime2)
             ->setParameter('id', $id)

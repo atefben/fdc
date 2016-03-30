@@ -7,6 +7,7 @@ use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use JMS\DiExtraBundle\Annotation as DI;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * NewsRepository class.
@@ -210,6 +211,7 @@ class NewsRepository extends EntityRepository
     {
         $dateTime1 = $dateTime->format('Y-m-d') . ' 00:00:00';
         $dateTime2 = $dateTime->format('Y-m-d') . ' 23:59:59';
+        $now = new \DateTime();
 
         $qb = $this
             ->createQueryBuilder('n')
@@ -230,8 +232,8 @@ class NewsRepository extends EntityRepository
             ->andWhere('n.festival = :festival')
             ->andWhere('n.id != :id')
             ->andWhere('n.publishedAt BETWEEN :datetime1 AND :datetime2')
-            ->andWhere('n.publishedAt <= :datetime')
-            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+            ->andWhere('n.publishedAt <= :now')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
         ;
 
         $qb
@@ -261,7 +263,7 @@ class NewsRepository extends EntityRepository
         $qb
             ->addOrderBy('rand')
             ->setParameter('festival', $festival)
-            ->setParameter('datetime', $dateTime)
+            ->setParameter('now', $now)
             ->setParameter('datetime1', $dateTime1)
             ->setParameter('datetime2', $dateTime2)
             ->setParameter('id', $id)
