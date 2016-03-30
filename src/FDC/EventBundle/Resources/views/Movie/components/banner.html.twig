@@ -107,13 +107,14 @@
             {% endif %}
         </div>
         {% if movie|trans_fallback('title') is not empty %}
-            {% set mainTitle = movie|trans_fallback('title') %}
+            {% set mainTitle = movie.titleVO %}
+			{% set secondTile = movie|trans_fallback('title') %}
         {% else %}
             {% set mainTitle = movie.titleVO %}
         {% endif %}
         <h2>{{ mainTitle }}</h2>
-        {% if mainTitle != movie.titleVO %}
-            <div class="title-original">({{ movie.titleVO }})</div>
+        {% if secondTile %}
+            <div class="title-original">({{ secondTile }})</div>
         {% else %}
             <div class="title-original"></div>
         {% endif %}
@@ -157,7 +158,7 @@
     <div class="info-film">
         <div  class="synopsis">
             <h3 class="title-section">{{ 'movie.title.synopsis'|trans }}</h3>
-            <p>{{ movie|trans_fallback('synopsis')|raw }}</p>
+            <p>{{ movie|trans_fallback('synopsis')|nl2br|raw }}</p>
         </div>
     </div>
 </div>
