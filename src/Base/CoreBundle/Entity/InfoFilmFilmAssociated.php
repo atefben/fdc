@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
 
+use JMS\Serializer\Annotation\Groups;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -45,6 +46,7 @@ class InfoFilmFilmAssociated
      * @var FilmFilm
      *
      * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="associatedInfo")
+     * @Groups({"news_show"})
      */
     protected $association;
 
