@@ -86,6 +86,8 @@ class FilmManager extends CoreManager
             'setProductionYear' => 'AnneeDeProduction',
             'setDuration' => 'Duree',
             'setWebsite' => 'SiteWeb',
+            'setFacebook' => 'LienFacebook',
+            'setTwitter' => 'LienTwitter',
             'setCastingCommentary' => 'CommentaireCasting',
             'setGalaId' => 'IdGala',
             'setGalaName' => 'NomGala'

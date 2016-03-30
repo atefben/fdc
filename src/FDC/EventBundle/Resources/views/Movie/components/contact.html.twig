@@ -37,12 +37,18 @@
                         </div>
                     </div>
                     {% endif %}
-                    {% if movie.website %}
+                    {% if movie.website or movie.facebook or movie.twitter %}
                     <div class="links">
-                            <p class="sub">{{ 'movie.presse.label.liens'|trans }}</p>
-                            {% if movie.website %}
-                                <a href="{{ movie.website }}" target="_blank">{{ 'movie.presse.liens.website'|trans }}</a>
-                            {% endif %}
+                        <p class="sub">{{ 'movie.presse.label.liens'|trans }}</p>
+                        {% if movie.website %}
+                            <a href="{{ movie.website }}" target="_blank">{{ 'movie.presse.liens.website'|trans }}</a>
+                        {% endif %}
+                        {% if movie.facebook %}
+                            <a href="{{ movie.facebook }}" target="_blank">{{ 'movie.presse.liens.facebook'|trans }}</a>
+                        {% endif %}
+                        {% if movie.twitter %}
+                            <a href="{{ movie.twitter }}" target="_blank">{{ 'movie.presse.liens.twitter'|trans }}</a>
+                        {% endif %}
                     </div>
                     {% endif %}
                     <div class="buttons">
