@@ -11226,7 +11226,7 @@ article .read-later.rAlign span:after {
   color: #fff;
   float: left;
   padding-top: 15px;
-  width: 740px;
+  width: 639px;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -11242,6 +11242,9 @@ article .read-later.rAlign span:after {
   .single-movie .info-film {
     padding-top: 0;
   }
+}
+.single-movie .info-film .information-movie {
+  min-height: 28px;
 }
 .single-movie .info-film h2 {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
@@ -11303,7 +11306,7 @@ article .read-later.rAlign span:after {
   float: left;
   width: 63%;
   padding-bottom: 5px;
-  margin-top: 48px;
+  margin-top: 35px;
   margin-bottom: -38px;
 }
 .single-movie .palmares.trailer {
