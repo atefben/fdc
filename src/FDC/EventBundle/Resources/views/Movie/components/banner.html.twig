@@ -120,7 +120,7 @@
         {% for movieAward in movie.awards %}
             {% if movieAward.award and movieAward.award.prize %}
                 {% if movieAward.award.id not in awardsUnique %}
-                    {% set awardsUnique|merge([movieAward.award.id]) %}
+                    {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
                     <i class="icon icon_palme"></i>
                     <p>{{ movieAward.award.prize|trans_fallback('title') }}, {{  movieAward.award.festival.year }}</p>
                 {% endif %}
