@@ -10,6 +10,12 @@
   height: 100%;
 }
 
+.single-movie .videos .video-container {
+  width: 977px;
+  height: calc(977px / 1.58);
+  margin-bottom: 30px;
+}
+
 .single-channel .small-container .player.video-container {
   width: 975px;
   height: calc(975px / 1.58);
