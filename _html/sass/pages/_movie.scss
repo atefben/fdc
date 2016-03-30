@@ -782,8 +782,8 @@
         }
 
         img {
-          height: 100%;
-          width: auto;
+          min-height: 100%;
+          min-width: auto;
           margin: 0 -100%;
           opacity: 0;
           visibility: hidden;
