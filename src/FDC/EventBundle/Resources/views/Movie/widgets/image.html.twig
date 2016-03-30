@@ -23,7 +23,7 @@
                                class="chocolat-image ajax"
                                href="{% path photo.media.file, photo.media.file.context ~ '_big' %}"
                                title='<span class="category">{{ title }}</span><span class="date">{{ photo.media.createdAt|date('d.m.y') }}</span><h2>{{ photo.media.createdAt|trans_fallback('title') }}</h2>'
-                               data-credit="{{ title }}{% if photo.media.copyright is not null%} © {{ photo.media.copyright }}{% endif %}">
+                               data-credit="{% if photo.media.copyright is not null%} © {{ photo.media.copyright }}{% endif %}">
                                 <img src="{% path photo.media.file, photo.media.file.context ~ '_big' %}" alt="" />
                             </a>
                         </div>
@@ -38,7 +38,14 @@
                         photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') and
                         photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR')
                     %}
-                        <div class="thumb {% if firstPicture == true %}active{% endif %}" data-caption="{{ photo.media.copyright }}">
+                        {% set title = '' %}
+                        {% if app.request.locale == 'fr' and photo.media.titleVf %}
+                            {% set title =  photo.media.titleVf %}
+                        {% elseif app.request.locale != 'fr' and photo.media.titleVa %}
+                            {% set title = photo.media.titleVa %}
+                        {% endif %}
+
+                        <div class="thumb {% if firstPicture == true %}active{% endif %}" data-caption="{{ title }}{% if photo.media.copyright is not null %} © {{ photo.media.copyright }}{% endif %}">
                             <img src="{% path photo.media.file, photo.media.file.context ~ '_small' %}" />
                         </div>
                         {% set firstPicture = false %}
