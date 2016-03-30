@@ -5,7 +5,6 @@
         <div class="slideshow-img">
             <div class="images">
                 {% for key, photo in photos %}
-                    <span style="display:none">{{  photo.type }}</span>
                     {% if photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') %}
                         {% set title = '' %}
                         {% if app.request.locale == 'fr' and photo.media.titleVf %}
@@ -28,9 +27,11 @@
             </div>
             <div class="owl-carousel thumbnails">
                 {% for key, photo in photos %}
-                    <div class="thumb {% if key == 0 %}active{% endif %}" data-caption="{{ photo.media.copyright }}">
-                        <img src="{% path photo.media.file, photo.media.file.context ~ '_small' %}" />
-                    </div>
+                    {% if photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') %}
+                        <div class="thumb {% if key == 0 %}active{% endif %}" data-caption="{{ photo.media.copyright }}">
+                            <img src="{% path photo.media.file, photo.media.file.context ~ '_small' %}" />
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
