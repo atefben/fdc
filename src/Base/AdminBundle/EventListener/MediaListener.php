@@ -237,7 +237,7 @@ class MediaListener extends Controller
 		$info2 = $s3->doesObjectExist($this->getParameter('s3_video_bucket_name'), $nameWebm);
 		if ($info1 || $info2)
 		{
-			$em = $args->getEntityManager();
+			$em = $this->getDoctrine()->getManager();
 			if ($info1)
 			{
 				$mediaVideo->setMp4Url($nameMp4);
