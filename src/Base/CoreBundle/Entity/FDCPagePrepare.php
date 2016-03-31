@@ -131,13 +131,7 @@ class FDCPagePrepare implements TranslateMainInterface
 
     public function __toString()
     {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
-
-        if ($this->getId()) {
-            $string .= ' #' . $this->getId();
-        }
-
-        return $string;
+        return 'Preparer son séjour';
     }
 
     /**

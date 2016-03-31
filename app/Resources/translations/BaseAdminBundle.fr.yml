@@ -66,6 +66,7 @@ breadcrumb:
     link_f_d_c_page_jury_list: Les jurys
     link_f_d_c_page_award_list: Le palmarès
     link_f_d_c_page_event_list: Page - Les événements
+    link_f_d_c_page_prepare_list: Participer
     link_fdc_page_participate_section_list: Liste des sections à télécharger
     link_fdc_page_participate_list: A télécharger
 link:
@@ -466,6 +467,7 @@ dashboard:
         fdc_page_news_audios: L'actualité - Tous les audios
         fdc_page_news_images: L'actualité - Toutes les images
         fdc_page_news_videos: L'actualité - Toutes les vidéos
+        fdc_page_prepare: Participer
         fdc_page_participate: Participer
         fdc_page_participate_section: Strates Participer
 
@@ -845,6 +847,7 @@ form:
         label_signature: Signature
         helper_signature: 255 caractères max.
         helper_widgets: Ajouter un module de type :
+    url_btn: URL du bouton
 
 nav:
     site_modal: Ouvrir la sélection des sites
