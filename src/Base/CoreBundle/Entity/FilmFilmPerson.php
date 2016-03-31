@@ -68,7 +68,8 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "news_list",
      *     "news_show",
      *     "home",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "award_list"
      * })
      */
     private $person;
@@ -84,7 +85,8 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "projection_list",
      *     "projection_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "award_list"
      * })
      */
     private $position;
