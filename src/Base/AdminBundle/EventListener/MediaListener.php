@@ -233,38 +233,34 @@ class MediaListener
         $s3 = S3Client::factory(array('key'    => $this->getParameter('s3_access_key'),'secret' => $this->getParameter('s3_secret_key')));
 		$nameMp4 = $path_video_output . str_replace('.mov', '.mp4', $file_name);
 		$nameWebm = $path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name);
-		$info1 = $s3->doesObjectExist($this->getParameter('s3_video_bucket_name'), $nameMp4);
-		$info2 = $s3->doesObjectExist($this->getParameter('s3_video_bucket_name'), $nameWebm);
-		if ($info1 || $info2)
+		
+		$em = $args->getEntityManager();
+		$medias_1 = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('mp4Url' => $nameMp4));
+		$medias_2 = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('webmUrl' => $nameWebm));
+		error_log(print_r(\Doctrine\Common\Util\Debug::export($medias, 6),1));
+		error_log(print_r(\Doctrine\Common\Util\Debug::export($medias, 6),1));
+		if ($medias_1[0] || $medias_2[0])
 		{
-			$em = $args->getEntityManager();
-			if ($info1)
+			if ($medias_1[0])
 			{
 				$mediaVideo->setMp4Url($nameMp4);
-				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('mp4Url' => $nameMp4, 'amazonRemoteFile' => ''));
-				error_log(print_r(\Doctrine\Common\Util\Debug::export($medias, 6),1));
-				if($medias[0]) {
-					$mediaVideo->setJobMp4Id($medias[0]->getJobMp4Id());
-	        		$mediaVideo->setJobMp4State($medias[0]->getJobMp4State());
-				}
-				else
-				{
-	        		$mediaVideo->setJobMp4State(2);
-				}
+				$mediaVideo->setJobMp4Id($medias_1[0]->getJobMp4Id());
+        		$mediaVideo->setJobMp4State($medias_1[0]->getJobMp4State());
 			}
-			if ($info2)
+			else
+			{
+        		$mediaVideo->setJobMp4State(2);
+			}
+			
+			if ($medias_2[0])
 			{
 				$mediaVideo->setWebmURL($nameWebm);
-				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('webmUrl' => $nameWebm, 'amazonRemoteFile' => ''));
-				error_log(print_r(\Doctrine\Common\Util\Debug::export($medias, 6),1));
-				if($medias[0]) {
-					$mediaVideo->setJobWebmId($medias[0]->getJobWebmId());
-	        		$mediaVideo->setJobWebmState($medias[0]->getJobWebmState());
-				}
-				else
-				{
-	        		$mediaVideo->setJobWebmState(2);
-				}
+				$mediaVideo->setJobWebmId($medias[0]->getJobWebmId());
+	        	$mediaVideo->setJobWebmState($medias[0]->getJobWebmState());
+			}
+			else
+			{
+	        	$mediaVideo->setJobWebmState(2);
 			}
 		}
 		else
