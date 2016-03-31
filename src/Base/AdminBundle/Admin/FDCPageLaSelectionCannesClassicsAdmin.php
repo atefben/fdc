@@ -15,11 +15,7 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
 {
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->remove('list');
-        $collection->remove('create');
         $collection->remove('show');
-        $collection->remove('batch');
-        $collection->remove('delete');
         $collection->remove('export');
     }
 
@@ -50,11 +46,7 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
+            ->add('name')
         ;
     }
 
@@ -65,16 +57,11 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
+            ->add('name')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show' => array(),
                     'edit' => array(),
-                    'delete' => array(),
+                    'show' => array()
                 )
             ))
         ;
@@ -98,16 +85,17 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                         'choices'                   => FDCPageLaSelectionCannesClassicsTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
+                    'titleNav'       => array(
+                        'label'              => 'form.fdc_page_la_selection_cannes_classics.title_nav',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false,
+                        'sonata_help'        => 'form.fdc_page_la_selection_cannes_classics.helper_titleNav'
+                    ),
                     'title'       => array(
                         'label'              => 'form.fdc_page_la_selection_cannes_classics.title',
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => false,
                         'sonata_help'        => 'form.fdc_page_la_selection_cannes_classics.helper_title'
-                    ),
-                    'titleNav'       => array(
-                        'label'              => 'form.fdc_page_la_selection_cannes_classics.title_nav',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false,
                     ),
                     'seoTitle'       => array(
                         'attr'               => array(
@@ -135,6 +123,7 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                     ),
                 )
             ))
+            ->add('name')
             ->add('image', 'sonata_type_model_list', array(
                 'label'    => 'form.fdc_page_web_tv_trailers.image',
                 'help'     => 'form.fdc_page_web_tv_trailers.helper_image',
