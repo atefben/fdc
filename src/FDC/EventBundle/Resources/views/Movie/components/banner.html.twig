@@ -84,7 +84,6 @@
                 {% set posterImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
                 {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
 
-                {{  posterImg }}
                 {% set media = null %}
                 {% set format =  '293x397' %}
                 {% if posterImg is not empty %}
