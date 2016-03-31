@@ -130,7 +130,7 @@ class PressAccreditAdmin extends Admin
             ->add('procedure', 'sonata_type_collection',
                 array(
                     'type_options' => array(
-                        'delete' => false,
+                        'delete' => true,
                     ),
                     'cascade_validation' => true,
                     'by_reference' => false,
@@ -141,7 +141,7 @@ class PressAccreditAdmin extends Admin
                     'inline' => 'table',
                     'sortable'  => 'position',
                 )
-            )
+            )->remove('delete')
             ->add('translate')
             ->add('translateOptions', 'choice', array(
                 'choices'            => PressAccredit::getAvailableTranslateOptions(),

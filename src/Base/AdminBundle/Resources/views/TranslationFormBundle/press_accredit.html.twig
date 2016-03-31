@@ -12,90 +12,95 @@
             <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 <div class="row">
                     {% if form.vars.default_locale == locale %}
-                    <div class="col-md-12">
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    {{ 'group.main_infos'|trans }}
-                                </h4>
+                        <div class="col-md-12">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.main_infos'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.commonContent) }}
+                                    </div>
+                                </div>
                             </div>
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.commonContent) }}
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        Procédure par type de média
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields" id="sonata-btn-procedure-collection">
+                                        <style>
+                                            #sonata-btn-procedure-collection .btn.btn-danger.btn-sm.btn-outline.sonata-ba-action {
+                                                display: none;
+                                            }
+                                        </style>
+                                        {{ form_row(form.parent.children.procedure) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        Demande d’accréditation
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.btnLabel) }}
+                                        {{ form_row(translationsFields.btnLink) }}
+                                        {{ form_row(translationsFields.btnText) }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    Procédure par type de média
-                                </h4>
-                            </div>
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(form.parent.children.procedure) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    Demande d’accréditation
-                                </h4>
-                            </div>
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.btnLabel) }}
-                                    {{ form_row(translationsFields.btnLink) }}
-                                    {{ form_row(translationsFields.btnText) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     {% else %}
-                    <div class="col-md-8">
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    {{ 'group.main_infos'|trans }}
-                                </h4>
+                        <div class="col-md-8">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.main_infos'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.commonContent) }}
+                                    </div>
+                                </div>
                             </div>
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.commonContent) }}
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        Demande d’accréditation
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.btnLabel) }}
+                                        {{ form_row(translationsFields.btnLink) }}
+                                        {{ form_row(translationsFields.btnText) }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    Demande d’accréditation
-                                </h4>
-                            </div>
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
-                                    {{ form_row(translationsFields.btnLabel) }}
-                                    {{ form_row(translationsFields.btnLink) }}
-                                    {{ form_row(translationsFields.btnText) }}
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    {{ 'group.french_version'|trans|nl2br }}
-                                </h4>
-                            </div>
-                            <div class="box-body">
-                                <h4 class="box-title">
-                                    Informations communes
-                                </h4>
-                                <div>
-                                    <label>
-                                        Contenu
-                                    </label>
+                                <div class="box-body">
+                                    <h4 class="box-title">
+                                        Informations communes
+                                    </h4>
+                                    <div>
+                                        <label>
+                                            Contenu
+                                        </label>
                                     <span>
                                     {% if form.children.fr.vars.value is not null %}
                                         <div>
@@ -103,18 +108,18 @@
                                         </div>
                                     {% endif %}
                                     </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="box box-success">
-                            <div class="box-body">
-                                <h4 class="box-title">
-                                    Demande d’accréditation
-                                </h4>
-                                <div>
-                                    <label>
-                                        Libelle du bouton
-                                    </label>
+                            <div class="box box-success">
+                                <div class="box-body">
+                                    <h4 class="box-title">
+                                        Demande d’accréditation
+                                    </h4>
+                                    <div>
+                                        <label>
+                                            Libelle du bouton
+                                        </label>
                                     <span>
                                     {% if form.children.fr.vars.value is not null %}
                                         <div>
@@ -122,11 +127,11 @@
                                         </div>
                                     {% endif %}
                                     </span>
-                                </div>
-                                <div>
-                                    <label>
-                                        Lien du bouton
-                                    </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Lien du bouton
+                                        </label>
                                     <span>
                                     {% if form.children.fr.vars.value is not null %}
                                         <div>
@@ -134,11 +139,11 @@
                                         </div>
                                     {% endif %}
                                     </span>
-                                </div>
-                                <div>
-                                    <label>
-                                        Texte sous le bouton
-                                    </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Texte sous le bouton
+                                        </label>
                                     <span>
                                     {% if form.children.fr.vars.value is not null %}
                                         <div>
@@ -146,11 +151,11 @@
                                         </div>
                                     {% endif %}
                                     </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endif %}
+                    {% endif %}
                 </div>
                 <div class="row">
                     {% if form.vars.default_locale == locale %}
