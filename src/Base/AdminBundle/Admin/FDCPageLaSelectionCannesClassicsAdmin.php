@@ -46,7 +46,21 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('name')
+            ->add('title', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->andWhere('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.title LIKE :title');
+                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
+
+                    return true;
+                },
+                'field_type' => 'text'
+            ))
         ;
     }
 
@@ -200,11 +214,6 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
         ;
     }
 }
