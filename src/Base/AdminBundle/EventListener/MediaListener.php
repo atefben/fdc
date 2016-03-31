@@ -54,7 +54,7 @@ class MediaListener
         $this->createHomepageNews($entity, $args, false);
 
         if ($entity instanceof MediaVideoTranslation && $entity->getAmazonRemoteFile()) {
-            $this->createAmazonVideoJob($entity);
+            $this->createAmazonVideoJob($entity, $args);
         }
 
         if (($entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation )&& $entity->getFile()) {
