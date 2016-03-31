@@ -242,6 +242,7 @@ class MediaListener
 			{
 				$mediaVideo->setMp4Url($nameMp4);
 				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('mp4Url' => $nameMp4, 'amazonRemoteFile' => ''));
+				error_log(print_r(\Doctrine\Common\Util\Debug::export($medias, 6),1));
 				$mediaVideo->setJobMp4Id($medias[0]->getJobMp4Id());
 				error_log(print_r(\Doctrine\Common\Util\Debug::export($medias[0]->getJobMp4Id(), 6),1));
         		$mediaVideo->setJobMp4State($medias[0]->getJobMp4State());
