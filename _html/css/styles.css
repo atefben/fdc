@@ -17590,6 +17590,9 @@ input[type=submit] {
   display: block;
   float: left;
   margin-right: 15px;
+  width: 55px;
+  height: 75px;
+  object-fit: cover;
 }
 .press .mediatheque .table .line .info .txt {
   height: 75px;

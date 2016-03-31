@@ -54,7 +54,7 @@
                 <div class="line">
                   <div class="container">
                     <div class="info">
-                      <img src="http://dummyimage.com/55x75/000/fff" alt="" />
+                      <img src="http://dummyimage.com/55x75/000/fff" alt="" data-object-fit="cover">
                       <div class="txt">
                         <div class="vCenter">
                           <div class="vCenterKid">
@@ -212,7 +212,7 @@
                 <div class="line">
                   <div class="container">
                     <div class="info">
-                      <img src="http://dummyimage.com/55x75/000/fff" alt="" />
+                      <img src="http://dummyimage.com/55x55/000/fff" alt="" data-object-fit="cover">
                       <div class="txt">
                         <div class="vCenter">
                           <div class="vCenterKid">
@@ -337,7 +337,7 @@
                 <div class="line">
                   <div class="container active">
                     <div class="info">
-                      <img src="http://dummyimage.com/55x75/000/fff" alt="" />
+                      <img src="http://dummyimage.com/25x55/000/fff" alt="" data-object-fit="cover">
                       <div class="txt">
                         <div class="vCenter">
                           <div class="vCenterKid">
@@ -462,7 +462,7 @@
                 <div class="line">
                   <div class="container">
                     <div class="info">
-                      <img src="http://dummyimage.com/55x75/000/fff" alt="" />
+                      <img src="http://dummyimage.com/55x75/000/fff" alt="">
                       <div class="txt">
                         <div class="vCenter">
                           <div class="vCenterKid">
@@ -587,7 +587,7 @@
                 <div class="line">
                   <div class="container">
                     <div class="info">
-                      <img src="http://dummyimage.com/55x75/000/fff" alt="" />
+                      <img src="http://dummyimage.com/55x75/000/fff" alt="">
                       <div class="txt">
                         <div class="vCenter">
                           <div class="vCenterKid">
