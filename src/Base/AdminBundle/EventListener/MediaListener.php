@@ -25,7 +25,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * Class MediaListener
  * @package Base\CoreBundle\Listener
  */
-class MediaListener extends Controller
+class MediaListener
 {
 
     /**
@@ -54,7 +54,7 @@ class MediaListener extends Controller
         $this->createHomepageNews($entity, $args, false);
 
         if ($entity instanceof MediaVideoTranslation && $entity->getAmazonRemoteFile()) {
-            $this->createAmazonVideoJob($entity);
+            $this->createAmazonVideoJob($entity, $args);
         }
 
         if (($entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation) && $entity->getFile()) {
@@ -72,7 +72,7 @@ class MediaListener extends Controller
         $this->createHomepageNews($entity, $args);
 
         if ($entity instanceof MediaVideoTranslation && $entity->getAmazonRemoteFile() && $args->hasChangedField('amazonRemoteFile')) {
-            $this->createAmazonVideoJob($entity);
+            $this->createAmazonVideoJob($entity, $args);
         }
 
         $firstCondition = $entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation;
@@ -220,7 +220,7 @@ class MediaListener extends Controller
     }
 
 
-    protected function createAmazonVideoJob(MediaVideoTranslation $mediaVideo)
+    protected function createAmazonVideoJob(MediaVideoTranslation $mediaVideo, $args)
     {
         /**
          * @todo create amazon video job here
@@ -241,18 +241,28 @@ class MediaListener extends Controller
 			if ($info1)
 			{
 				$mediaVideo->setMp4Url($nameMp4);
-				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findByOne(array('mp4url' => $nameMp4, 'amazon_remote_file_id' => ''));
-				$mediaVideo->setJobMp4Id($medias[0]->getJobMp4Id());
-				error_log(print_r(\Doctrine\Common\Util\Debug::export($medias[0]->getJobMp4Id(), 6),1));
-        		$mediaVideo->setJobMp4State($medias[0]->getJobMp4State());
-				error_log(print_r(\Doctrine\Common\Util\Debug::export($medias[0]->getJobMp4State(), 6),1));
+				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('mp4Url' => $nameMp4, 'amazonRemoteFile' => ''));
+				if($medias[0]) {
+					$mediaVideo->setJobMp4Id($medias[0]->getJobMp4Id());
+	        		$mediaVideo->setJobMp4State($medias[0]->getJobMp4State());
+				}
+				else
+				{
+	        		$mediaVideo->setJobMp4State(2);
+				}
 			}
 			if ($info2)
 			{
 				$mediaVideo->setWebmURL($nameWebm);
-				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findByOne(array('webm_url' => $nameWebm, 'amazon_remote_file_id' => ''));
-				$mediaVideo->setJobWebmId($medias[0]->getJobWebmId());
-        		$mediaVideo->setJobWebmState($medias[0]->getJobWebmState());
+				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('webmUrl' => $nameWebm, 'amazonRemoteFile' => ''));
+				if($medias[0]) {
+					$mediaVideo->setJobWebmId($medias[0]->getJobWebmId());
+	        		$mediaVideo->setJobWebmState($medias[0]->getJobWebmState());
+				}
+				else
+				{
+	        		$mediaVideo->setJobWebmState(2);
+				}
 			}
 		}
 		else
