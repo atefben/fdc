@@ -26,7 +26,17 @@
     </span>
     <div class="info">
         {% for f in p.programmationFilms %}
-            {% media f.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first, 'reference' %}
+            {% set media = associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+            {% if media is empty %}
+                {% set media = associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+            {% endif %}
+            {% if media is empty %}
+                {% set media = associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+            {% endif %}
+
+            {% if media is not empty %}
+                {% media media, 'reference' %}
+            {% endif %}
         {% endfor %}
         <div class="txt">
             {% for f in p.programmationFilms %}

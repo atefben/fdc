@@ -5,11 +5,15 @@
     <div id="slider-competition" class="owl-carousel sliderDrag">
         {% for movie in movies %}
             {% set posterImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+            {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
             {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
             {% set media = '' %}
             {% if posterImg %}
                 {% set media = posterImg %}
                 {% set format =  '210x284' %}
+            {% elseif mainImg %}
+                {% set media = mainImg %}
+                {% set format = '210x284' %}
             {% elseif filmImg %}
                 {% set media = filmImg %}
                 {% set format = '210x284' %}

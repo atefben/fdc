@@ -20,12 +20,15 @@
 
     {% set poster = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
     {% set main = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+    {% set photo = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
 
     <div>
         {% if poster %}
             {% media poster, 'small' %}
         {% elseif main %}
             {% media main, 'small' %}
+        {% elseif photo %}
+            {% media photo, 'small' %}
         {% else %}
             Aucune image renseignée
         {% endif %}

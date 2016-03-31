@@ -99,6 +99,7 @@ services:
             - { name: form.type, alias: 'fdc_page_la_selection_cannes_classics_widget_movie_type'}
         calls:
             - ['setFDCPageLaSelectionCannesClassicsWidgetMovieDummyAdmin', ['@base.admin.fdc_page_la_selection_cannes_classics_widget_movie_dummy']]
+            - ['setWidgetMovieAdmin', ['@base.admin.widget_movie']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.fdc_page_la_selection_cannes_classics_widget_audio_type:

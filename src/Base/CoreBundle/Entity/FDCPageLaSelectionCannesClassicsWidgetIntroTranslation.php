@@ -32,4 +32,27 @@ class FDCPageLaSelectionCannesClassicsWidgetIntroTranslation
      * @Groups({"news_list", "news_show"})
      */
     private $introduction;
+
+    /**
+     * Set introduction
+     *
+     * @param string $introduction
+     * @return FDCPageLaSelectionCannesClassicsWidgetIntroTranslation
+     */
+    public function setIntroduction($introduction)
+    {
+        $this->introduction = $introduction;
+
+        return $this;
+    }
+
+    /**
+     * Get introduction
+     *
+     * @return string 
+     */
+    public function getIntroduction()
+    {
+        return $this->introduction;
+    }
 }

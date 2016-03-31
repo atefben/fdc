@@ -1189,3 +1189,15 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: AmazonRemoteFile, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.widget_movie:
+        class: Base\AdminBundle\Admin\WidgetMovieAdmin
+        arguments: [~, Base\CoreBundle\Entity\WidgetMovie, BaseAdminBundle:WidgetMovieAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: WidgetMovie}
+
+    base.admin.widget_movie_film_film:
+        class: Base\AdminBundle\Admin\WidgetMovieFilmFilmAdmin
+        arguments: [~, Base\CoreBundle\Entity\WidgetMovieFilmFilm, BaseAdminBundle:WidgetMovieFilmFilmAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: WidgetMovieFilmFilm}

@@ -85,11 +85,14 @@
                             <div class="poster">
                                 {% set posterImg = associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
                                 {% set mainImg = associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                                {% set filmImg = associatedFilm|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
 
                                 {% if posterImg %}
                                     {% media posterImg, 'film_poster_small' %}
                                 {% elseif mainImg %}
                                     {% media mainImg, 'film_main_small' %}
+                                {% elseif mainImg %}
+                                    {% media filmImg, 'film_film_small' %}
                                 {% endif %}
                             </div>
                             <div class="text-container" id="filmPoster">

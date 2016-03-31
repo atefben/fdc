@@ -24,7 +24,15 @@ class FDCPageLaSelectionCannesClassicsWidgetMovieType extends FDCPageLaSelection
      */
     protected $dataClass = 'Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetMovie';
 
+    /**
+     * @var
+     */
     private $FDCPageLaSelectionCannesClassicsMovieDummyAdmin;
+
+    /**
+     * @var
+     */
+    private $widgetMovieAdmin;
 
     /**
      * setFDCPageLaSelectionCannesClassicsWidgetImageDummyAdmin function.
@@ -38,6 +46,15 @@ class FDCPageLaSelectionCannesClassicsWidgetMovieType extends FDCPageLaSelection
         $this->FDCPageLaSelectionCannesClassicsMovieDummyAdmin = $FDCPageLaSelectionCannesClassicsMovieDummyAdmin;
     }
 
+
+    /**
+     * @param $FDCPageLaSelectionCannesClassicsWidgetMovieFilmFilmAdmin
+     */
+    public function setWidgetMovieAdmin($widgetMovieAdmin)
+    {
+        $this->widgetMovieAdmin = $widgetMovieAdmin;
+    }
+
     /**
      * buildForm function.
      *
@@ -49,10 +66,10 @@ class FDCPageLaSelectionCannesClassicsWidgetMovieType extends FDCPageLaSelection
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('films', 'sonata_type_collection', array(
-            'sonata_field_description' =>  $this->FDCPageLaSelectionCannesClassicsMovieDummyAdmin->getFormFieldDescriptions()['films'],
-         //   'model_manager' => $this->galleryAdmin->getModelManager(),
-         //   'class' => $this->galleryAdmin->getClass(),
+        $builder->add('widgetMovie', 'sonata_type_model_list', array(
+            'sonata_field_description' =>  $this->FDCPageLaSelectionCannesClassicsMovieDummyAdmin->getFormFieldDescriptions()['widgetMovie'],
+            'model_manager' => $this->widgetMovieAdmin->getModelManager(),
+            'class' => $this->widgetMovieAdmin->getClass(),
             'label' => false
         ));
     }

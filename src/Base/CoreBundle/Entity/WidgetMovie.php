@@ -63,4 +63,38 @@ class WidgetMovie
     {
         return $this->id;
     }
+
+    /**
+     * Add films
+     *
+     * @param \Base\CoreBundle\Entity\WidgetMovieFilmFilm $films
+     * @return WidgetMovie
+     */
+    public function addFilm(\Base\CoreBundle\Entity\WidgetMovieFilmFilm $films)
+    {
+        $films->setWidgetMovie($this);
+        $this->films[] = $films;
+
+        return $this;
+    }
+
+    /**
+     * Remove films
+     *
+     * @param \Base\CoreBundle\Entity\WidgetMovieFilmFilm $films
+     */
+    public function removeFilm(\Base\CoreBundle\Entity\WidgetMovieFilmFilm $films)
+    {
+        $this->films->removeElement($films);
+    }
+
+    /**
+     * Get films
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFilms()
+    {
+        return $this->films;
+    }
 }

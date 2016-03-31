@@ -1,6 +1,8 @@
 {% spaceless %}
 {% set posterImg = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
 {% set mainImg = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+{% set photoImg = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PHOTO'))|first %}
+
 
 {% if film_attrs is not defined %}
     {% set film_attrs = {'alt': (film|trans_fallback('title')?:movie.titleVO)} %}
@@ -15,6 +17,8 @@
         {% path posterImg, film_format %}
     {% elseif mainImg %}
         {% path mainImg, film_format %}
+    {% elseif photoImg %}
+        {% path photoImg, film_format %}
     {% else %}
         {{ asset('bundles/fdcevent/img/palmares/film.jpg') }}
     {% endif %}
