@@ -799,6 +799,11 @@
             min-width: auto;
             margin: 0 -100%;
             display: inline-block;
+
+            &.landscape {
+              height: 100%;
+              width: auto;
+            }
           }
         }
       }
@@ -809,6 +814,9 @@
           display: inline-block;
           margin-right: 5px;
           position: relative;
+          width: 36px;
+          height: 48px;
+          overflow: hidden;
 
           &:before {
             content: '';
@@ -854,6 +862,9 @@
           opacity: 0.5;
           position: relative;
           z-index: 1;
+          object-fit: cover;
+          height: 48px;
+          width: 37px;
           @include transition(all 0.3s $smoothTransition);
         }
       }
