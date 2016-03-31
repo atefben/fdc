@@ -45,7 +45,7 @@ class MediaListener
     {
         $this->container = $container;
         $this->flush = false;
-		$this->em = $em;
+		$this->em = $this->container->get('doctrine')->getManager();
     }
 
     /**
