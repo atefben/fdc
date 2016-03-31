@@ -325,7 +325,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "news_list"
+     *     "news_list",
+     *     "award_list"
      * })
      */
     private $medias;
@@ -437,7 +438,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "film_selection_section_show",
-     *     "news_list"
+     *     "news_list",
+     *     "award_list"
      * })
      */
     private $imageMain;
@@ -448,7 +450,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "film_selection_section_show",
-     *     "news_list"
+     *     "news_list",
+     *     "award_list"
      * })
      */
     private $imageCover;
