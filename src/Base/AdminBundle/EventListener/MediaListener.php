@@ -243,7 +243,7 @@ class MediaListener
 		error_log(print_r(\Doctrine\Common\Util\Debug::export($medias_2, 1),1));
 		if ($medias_1 || $medias_2)
 		{
-			if ($medias_1->0)
+			if ($medias_1)
 			{
 				$mediaVideo->setMp4Url($nameMp4);
 				//$mediaVideo->setJobMp4Id($medias_1->0['jobMp4Id']);
