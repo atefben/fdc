@@ -4,7 +4,7 @@
     <div class="img">
         {% set posterImg = prev|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
         {% set mainImg = prev|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-        {% set photoImg = prev|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PHOTO'))|first %}
+        {% set photoImg = prev|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
 
         {% if posterImg %}
             {% media posterImg, 'small' %}
@@ -44,7 +44,7 @@
     <div class="img">
         {% set posterImg = next|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
         {% set mainImg = next|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-        {% set photoImg = next|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PHOTO'))|first %}
+        {% set photoImg = next|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
 
         {% if posterImg %}
             {% media posterImg, 'small' %}

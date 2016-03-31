@@ -1,7 +1,7 @@
 {% spaceless %}
 {% set posterImg = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
 {% set mainImg = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-{% set photoImg = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PHOTO'))|first %}
+{% set photoImg = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
 
 
 {% if film_attrs is not defined %}
