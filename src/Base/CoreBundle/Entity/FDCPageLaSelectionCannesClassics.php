@@ -43,19 +43,6 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     private $image;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @Gedmo\Slug(fields={"name"}, updatable=false)
-     * @ORM\Column(name="slug", type="string", length=255, unique=true)
-     */
-    private $slug;
-
-    /**
      * @var NewsWidget
      *
      * @ORM\OneToMany(targetEntity="FDCPageLaSelectionCannesClassicsWidget", mappedBy="FDCPageLaSelectionCannesClassics", cascade={"all"}, orphanRemoval=true)
@@ -64,6 +51,21 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
      */
     private $widgets;
 
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     *
+     */
+    private $createdBy;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     *
+     */
+    private $updatedBy;
 
     /**
      * @var ArrayCollection
@@ -86,12 +88,13 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
      */
     public function __toString()
     {
-        $string = '';
+        $string = 'Cannes Classics';
 
-        if (!$this->getId()) {
-            $string = 'Nouvelle page sélection';
-        } else {
-            $string = $this->getName();
+        if ($this->getId()) {
+            $trans = $this->findTranslationByLocale('fr');
+            if ($trans !== null && $trans->getTitle() !== null) {
+                $string = $trans->getTitle();
+            }
         }
 
         return $string;
@@ -165,48 +168,48 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     }
 
     /**
-     * Set slug
+     * Set createdBy
      *
-     * @param string $slug
+     * @param \Application\Sonata\UserBundle\Entity\User $createdBy
      * @return FDCPageLaSelectionCannesClassics
      */
-    public function setSlug($slug)
+    public function setCreatedBy(\Application\Sonata\UserBundle\Entity\User $createdBy = null)
     {
-        $this->slug = $slug;
+        $this->createdBy = $createdBy;
 
         return $this;
     }
 
     /**
-     * Get slug
+     * Get createdBy
      *
-     * @return string 
+     * @return \Application\Sonata\UserBundle\Entity\User 
      */
-    public function getSlug()
+    public function getCreatedBy()
     {
-        return $this->slug;
+        return $this->createdBy;
     }
 
     /**
-     * Set name
+     * Set updatedBy
      *
-     * @param string $name
+     * @param \Application\Sonata\UserBundle\Entity\User $updatedBy
      * @return FDCPageLaSelectionCannesClassics
      */
-    public function setName($name)
+    public function setUpdatedBy(\Application\Sonata\UserBundle\Entity\User $updatedBy = null)
     {
-        $this->name = $name;
+        $this->updatedBy = $updatedBy;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get updatedBy
      *
-     * @return string 
+     * @return \Application\Sonata\UserBundle\Entity\User 
      */
-    public function getName()
+    public function getUpdatedBy()
     {
-        return $this->name;
+        return $this->updatedBy;
     }
 }

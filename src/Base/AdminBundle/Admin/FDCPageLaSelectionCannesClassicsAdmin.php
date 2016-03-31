@@ -57,7 +57,7 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('name')
+            ->add('title', null, array('template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
@@ -123,7 +123,6 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                     ),
                 )
             ))
-            ->add('name')
             ->add('image', 'sonata_type_model_list', array(
                 'label'    => 'form.fdc_page_web_tv_trailers.image',
                 'help'     => 'form.fdc_page_web_tv_trailers.helper_image',
@@ -165,6 +164,31 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
             ->add('priorityStatus', 'choice', array(
                 'choices'                   => FDCPageLaSelectionCannesClassics::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
+            ))
+            // must be added to display informations about creation user / date, update user / date (top of right sidebar)
+            ->add('createdAt', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('createdBy', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('updatedAt', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
+            ))
+            ->add('updatedBy', null, array(
+                'label' => false,
+                'attr' => array (
+                    'class' => 'hidden'
+                )
             ))
         ;
     }

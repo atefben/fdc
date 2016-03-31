@@ -20,7 +20,6 @@
                             </div>
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
-                                    {{  form_row(form.parent.children.name) }}
                                     {{ form_row(form.parent.children.image) }}
                                 </div>
                             </div>
@@ -72,24 +71,22 @@
                                 {% endif %}
                             </div>
                         </div>
-                </div>
-                <div class="row">
-                    {% if form.vars.default_locale == locale %}
-                        <div class="col-md-12">
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        {{ 'form.fdc_page_la_selection_cannes_classics.page_title'|trans }}
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.titleNav) }}
-                                        {{ form_row(translationsFields.title) }}
-                                    </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'form.fdc_page_la_selection_cannes_classics.page_title'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.titleNav) }}
+                                    {{ form_row(translationsFields.title) }}
                                 </div>
                             </div>
                         </div>
+                    </div>
                     {% else %}
                         <div class="col-md-6">
                             <div class="box box-success">
@@ -141,9 +138,9 @@
                                 </div>
                             </div>
                         </div>
-
                     {% endif %}
                 </div>
+
                 <div class="row">
                     {% if form.vars.default_locale == locale %}
                     <div class="col-md-12">
@@ -658,21 +655,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        {% if form.vars.default_locale == locale %}
-                            <div class="box-body">
-                                <div class="sonata-ba-collapsed-fields">
-                                    <div class="form-group fdc-input-border">
-                                        {{ form_widget(form.parent.children.translate) }}
-                                        {{ form_label(form.parent.children.translate) }}
-                                        {{ form_widget(form.parent.children.translateOptions) }}
-                                        {{ form_row(form.parent.children.priorityStatus) }}
-                                    </div>
-                                    <div>
-                                        {{ form_row(translationsFields.status) }}
-                                    </div>
-                                </div>
-                            </div>
-                        {% else %}
+                        {% if form.vars.default_locale != locale %}
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(translationsFields.status) }}

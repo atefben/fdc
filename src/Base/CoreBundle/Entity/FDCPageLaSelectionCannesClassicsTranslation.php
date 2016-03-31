@@ -48,6 +48,14 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
     private $title;
 
     /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"title"}, updatable=false)
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
+
+    /**
      * Set titleNav
      *
      * @param string $titleNav
@@ -91,5 +99,28 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return FDCPageLaSelectionCannesClassicsTranslation
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
