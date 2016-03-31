@@ -1,7 +1,7 @@
 <?php
 
 namespace Base\AdminBundle\EventListener;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaVideo;
@@ -11,7 +11,6 @@ use Base\CoreBundle\Entity\NewsFilmProjectionAssociated;
 use Base\CoreBundle\Entity\NewsVideo;
 use Base\CoreBundle\Entity\NewsVideoTranslation;
 use Base\CoreBundle\Entity\NewsAudioTranslation;
-
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
@@ -238,7 +237,7 @@ class MediaListener extends Controller
 		$info2 = $s3->doesObjectExist($this->getParameter('s3_video_bucket_name'), $nameWebm);
 		if ($info1 || $info2)
 		{
-			$em = $this->getDoctrine()->getManager();
+			$em = $args->getEntityManager();
 			if ($info1)
 			{
 				$mediaVideo->setMp4Url($nameMp4);
