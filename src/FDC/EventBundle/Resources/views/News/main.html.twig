@@ -67,8 +67,8 @@
         <div class="share">
             <p>{{ 'article.text.partagerarticle'|trans }}</p>
             <div class="buttons square">
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="button facebook"><i class="icon icon_facebook"></i></a>
-                <a href="https://twitter.com/intent/tweet?url={{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="button twitter"><i class="icon icon_twitter"></i></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" class="button facebook"><i class="icon icon_facebook"></i></a>
+                <a href="https://twitter.com/intent/tweet?url={{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" class="button twitter"><i class="icon icon_twitter"></i></a>
                 <a href="#" class="button link self"><i class="icon icon_link"></i></a>
                 <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
                 <a href="#" onclick="javascript:window.print()" class="button print"><i class="icon icon_print"></i></a>
