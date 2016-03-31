@@ -170,8 +170,8 @@ module.exports = function(grunt) {
     'concat:generated',
     'uglify:generated',
     'usemin:js',
-    'clean:tmp'
-    // 'copy:js'
+    'clean:tmp',
+    'copy:js'
   ]);
 
   grunt.registerTask('build:css', [
