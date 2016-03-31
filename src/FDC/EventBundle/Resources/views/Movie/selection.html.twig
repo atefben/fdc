@@ -20,7 +20,7 @@
                         <div class="grid-sizer"></div>
 
                         {% for movie in movies %}
-                            {% set media = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                            {% set media = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
                             {% if media is null %}
                                 {% set media = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
                             {% endif %}
