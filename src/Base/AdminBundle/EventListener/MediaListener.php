@@ -11,7 +11,6 @@ use Base\CoreBundle\Entity\NewsFilmProjectionAssociated;
 use Base\CoreBundle\Entity\NewsVideo;
 use Base\CoreBundle\Entity\NewsVideoTranslation;
 use Base\CoreBundle\Entity\NewsAudioTranslation;
-
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
@@ -21,13 +20,12 @@ use Aws\S3\Exception\S3Exception;
 use Sonata\MediaBundle\Model\MediaInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Doctrine\ORM\EntityManager;
 
 /**
  * Class MediaListener
  * @package Base\CoreBundle\Listener
  */
-class MediaListener
+class MediaListener extends Controller
 {
 
     /**
@@ -239,7 +237,7 @@ class MediaListener
 		$info2 = $s3->doesObjectExist($this->getParameter('s3_video_bucket_name'), $nameWebm);
 		if ($info1 || $info2)
 		{
-			$em = $this->getDoctrine()->getManager();
+			$em = $args->getEntityManager();
 			if ($info1)
 			{
 				$mediaVideo->setMp4Url($nameMp4);
