@@ -13477,6 +13477,7 @@ input[type=submit] {
 }
 .selection-officielle figure .image.compat-object-fit img {
   opacity: 0;
+  height: 100%;
 }
 .selection-officielle .container:after {
   content: ".";
