@@ -108,7 +108,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", nullable=true)
      */
     private $jobWebmId;
-	
+
     /**
      * @var string
      *
@@ -124,7 +124,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * })
      */
     private $mp4Url;
-	
+
     /**
      * @var string
      *
@@ -173,8 +173,8 @@ class MediaVideoTranslation implements TranslateChildInterface
     {
         return array(
             self::ENCODING_STATE_IN_PROGRESS => 'form.encoding_state.in_progress',
-            self::ENCODING_STATE_ERROR => 'form.encoding_state.error',
-            self::ENCODING_STATE_READY => 'form.encoding_state.ready',
+            self::ENCODING_STATE_ERROR       => 'form.encoding_state.error',
+            self::ENCODING_STATE_READY       => 'form.encoding_state.ready',
         );
     }
 
@@ -195,7 +195,7 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get akamaiId
      *
-     * @return integer 
+     * @return integer
      */
     public function getAkamaiId()
     {
@@ -218,7 +218,7 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -241,7 +241,7 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get alt
      *
-     * @return string 
+     * @return string
      */
     public function getAlt()
     {
@@ -264,7 +264,7 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get copyright
      *
-     * @return string 
+     * @return string
      */
     public function getCopyright()
     {
@@ -288,11 +288,16 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get file
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     * @return \Application\Sonata\MediaBundle\Entity\Media
      */
     public function getFile()
     {
-        return $this->file;
+        if (strpos($_SERVER['REQUEST_URI'], 'admin') !== false) {
+            return $this->file ? $this->file : $this->amazonRemoteFile;
+        } else {
+            return $this->file;
+        }
+
     }
 
     /**
@@ -311,7 +316,7 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get theme
      *
-     * @return \Base\CoreBundle\Entity\Theme 
+     * @return \Base\CoreBundle\Entity\Theme
      */
     public function getTheme()
     {
@@ -358,13 +363,13 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get webmUrl
      *
-     * @return string 
+     * @return string
      */
     public function getWebmUrl()
     {
         return $this->webmUrl;
     }
-	
+
     /**
      * Set mp4Url
      *
@@ -381,13 +386,13 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get mp4URL
      *
-     * @return string 
+     * @return string
      */
     public function getMp4Url()
     {
         return $this->mp4Url;
     }
-	
+
     /**
      * Set jobWebmState
      *
@@ -404,7 +409,7 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get jobWebmState
      *
-     * @return integer 
+     * @return integer
      */
     public function getJobWebmState()
     {
@@ -427,7 +432,7 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get jobMp4State
      *
-     * @return integer 
+     * @return integer
      */
     public function getJobMp4State()
     {
@@ -450,7 +455,7 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get jobMp4Id
      *
-     * @return string 
+     * @return string
      */
     public function getJobMp4Id()
     {
@@ -473,7 +478,7 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get jobWebmId
      *
-     * @return string 
+     * @return string
      */
     public function getJobWebmId()
     {
@@ -496,7 +501,7 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get amazonRemoteFile
      *
-     * @return \Base\CoreBundle\Entity\AmazonRemoteFile 
+     * @return \Base\CoreBundle\Entity\AmazonRemoteFile
      */
     public function getAmazonRemoteFile()
     {
