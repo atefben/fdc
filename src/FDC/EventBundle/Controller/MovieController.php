@@ -159,7 +159,10 @@ class MovieController extends Controller
 
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
+        $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll();
+
         return array(
+            'cannesClassics' => $cannesClassics,
             'selectionTabs' => $pages,
             'page'          => $page,
             'movies'        => $movies,
@@ -193,6 +196,7 @@ class MovieController extends Controller
         $filters = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll();
 
         return array(
+            'cannesClassics' => $filters,
             'classic' => $classic,
             'filters' => $filters,
             'selectionTabs' => $pages
