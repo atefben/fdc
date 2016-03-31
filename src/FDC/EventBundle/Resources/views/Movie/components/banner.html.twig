@@ -95,7 +95,7 @@
                     {% set media = filmImg %}
                 {% endif %}
                 {% if media is not empty %}
-                    {% media media, format %}
+                    {% media media, format with {'data-object-fit': 'cover'} %}
                 {% else %}
                     <img src="{{ asset('bundles/fdcevent/img/palmares/film_w293.jpg') }}" alt="Affiche film" />
                 {% endif %}

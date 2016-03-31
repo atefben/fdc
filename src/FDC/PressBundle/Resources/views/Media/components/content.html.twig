@@ -35,9 +35,9 @@
                                     {% set film_media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
                                 {% endif %}
                                 {% if film_media is not null and film_media != false %}
-                                    <img src="{% path film_media, 'tiny' %}" alt="" class="film_image">
+                                    <img src="{% path film_media, 'tiny' %}" alt="" class="film_image" data-object-fit="cover">
                                 {% else %}
-                                    <img src="{{ asset('images/default_image_film.jpg') }}" class="default_image" alt="">
+                                    <img src="{{ asset('images/default_image_film.jpg') }}" class="default_image" alt="" data-object-fit="cover">
                                 {% endif %}
                                 <div class="txt">
                                     <div class="vCenter">

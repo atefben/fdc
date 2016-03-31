@@ -79,7 +79,7 @@
         <div class="container container-top">
           <div class="poster video">
             <a href="#" class="picto"><i class="icon icon_video"></i></a>
-            <img src="img/movie/002.jpg" alt="" />
+            <img src="img/movie/002.jpg" alt="" data-object-fit="cover">
           </div>
           <div class="info-film">
             <div class="categories"><span>En compétition</span><span>longs métrages</span><span>Film d'ouverture</span></div>

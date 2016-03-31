@@ -11182,6 +11182,9 @@ article .read-later.rAlign span:after {
 }
 .single-movie .poster img {
   display: block;
+  width: 293px;
+  height: 397px;
+  object-fit: cover;
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -17590,6 +17593,9 @@ input[type=submit] {
   display: block;
   float: left;
   margin-right: 15px;
+  width: 55px;
+  height: 75px;
+  object-fit: cover;
 }
 .press .mediatheque .table .line .info .txt {
   height: 75px;

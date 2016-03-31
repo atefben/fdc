@@ -168,6 +168,9 @@
 
     img {
       display: block;
+      width: 293px;
+      height: 397px;
+      object-fit: cover;
       @include transform(translateZ(0));
       @include transition(all 4s $linear);
     }
