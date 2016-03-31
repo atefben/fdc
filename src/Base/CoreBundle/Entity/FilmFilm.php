@@ -544,7 +544,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_show",
      *     "film_selection_section_show",
      *     "home",
-     *     "news_list"
+     *     "news_list",
+     *     "award_list"
      * })
      * @return array|ArrayCollection
      */
