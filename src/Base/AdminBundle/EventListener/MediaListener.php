@@ -247,8 +247,8 @@ class MediaListener
 			if ($medias_1)
 			{
 				$mediaVideo->setMp4Url($nameMp4);
-				//$mediaVideo->setJobMp4Id($medias_1->0['jobMp4Id']);
-        		//$mediaVideo->setJobMp4State($medias_1->0['jobMp4State']);
+				$mediaVideo->setJobMp4Id($medias_1->getJobMp4Id());
+        		$mediaVideo->setJobMp4State($medias_1->getJobMp4State());
 			}
 			else
 			{
@@ -258,8 +258,8 @@ class MediaListener
 			if ($medias_2)
 			{
 				$mediaVideo->setWebmURL($nameWebm);
-				//$mediaVideo->setJobWebmId($medias_2->0['jobWebmId']));
-	        	//$mediaVideo->setJobWebmState($medias_2->0['jobWebmId']);
+				$mediaVideo->setJobWebmId($medias_2->getJobWebmId());
+	        	$mediaVideo->setJobWebmState($medias_2->getJobWebmState());
 			}
 			else
 			{
