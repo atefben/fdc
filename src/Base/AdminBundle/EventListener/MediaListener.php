@@ -242,19 +242,27 @@ class MediaListener
 			{
 				$mediaVideo->setMp4Url($nameMp4);
 				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('mp4Url' => $nameMp4, 'amazonRemoteFile' => ''));
-				error_log(print_r(\Doctrine\Common\Util\Debug::export($nameMp4, 6),1));
-				error_log(print_r(\Doctrine\Common\Util\Debug::export($medias, 6),1));
-				/*$mediaVideo->setJobMp4Id($medias[0]->getJobMp4Id());
-				error_log(print_r(\Doctrine\Common\Util\Debug::export($medias[0]->getJobMp4Id(), 6),1));
-        		$mediaVideo->setJobMp4State($medias[0]->getJobMp4State());
-				error_log(print_r(\Doctrine\Common\Util\Debug::export($medias[0]->getJobMp4State(), 6),1));*/
+				if($medias[0]) {
+					$mediaVideo->setJobMp4Id($medias[0]->getJobMp4Id());
+	        		$mediaVideo->setJobMp4State($medias[0]->getJobMp4State());
+				}
+				else
+				{
+	        		$mediaVideo->setJobMp4State(2);
+				}
 			}
 			if ($info2)
 			{
-				/*$mediaVideo->setWebmURL($nameWebm);
+				$mediaVideo->setWebmURL($nameWebm);
 				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('webmUrl' => $nameWebm, 'amazonRemoteFile' => ''));
-				$mediaVideo->setJobWebmId($medias[0]->getJobWebmId());
-        		$mediaVideo->setJobWebmState($medias[0]->getJobWebmState());*/
+				if($medias[0]) {
+					$mediaVideo->setJobWebmId($medias[0]->getJobWebmId());
+	        		$mediaVideo->setJobWebmState($medias[0]->getJobWebmState());
+				}
+				else
+				{
+	        		$mediaVideo->setJobWebmState(2);
+				}
 			}
 		}
 		else
