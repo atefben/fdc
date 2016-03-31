@@ -94,7 +94,10 @@ $(document).ready(function() {
       var w = $(this).width(),
           h = $(this).height();
 
-      if(w/h > 1) {
+      console.log($(this));
+      console.log(w/h);
+
+      if(w/h > 0.8179) {
         $(this).addClass('landscape');
       }
     })

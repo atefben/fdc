@@ -270,9 +270,9 @@
           <div class="casting" data-section="casting">
             <div class="gallery">
               <div class="img shadow-bottom">
-                <img src="img/movie/004.jpg" alt="" class="active" />
-                <img src="img/movie/004.jpg" alt="" />
-                <img src="img/movie/004.jpg" alt="" />
+                <img src="//dummyimage.com/600x400/000/fff.jpg" alt="" class="active" />
+                <img src="//dummyimage.com/400x400/000/fff.jpg" alt="" />
+                <img src="//dummyimage.com/500x800/000/fff.jpg" alt="" />
                 <span class="caption">© FDC / Jean-Luc GODARD</span>
               </div>
               <div class="thumbs">
