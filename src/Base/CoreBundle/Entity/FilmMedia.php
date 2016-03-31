@@ -42,7 +42,8 @@ class FilmMedia
       *     "projection_list",
       *     "projection_show",
       *     "film_selection_section_show",
-      *     "news_list"
+      *     "news_list",
+      *     "award_list"
       * })
       */
     private $contentType;
@@ -59,7 +60,8 @@ class FilmMedia
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "news_list"
+     *     "news_list",
+     *     "award_list"
      * })
      */
     private $noteVf;
@@ -76,7 +78,8 @@ class FilmMedia
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "news_list"
+     *     "news_list",
+     *     "award_list"
      * })
      */
     private $noteVa;
@@ -93,7 +96,8 @@ class FilmMedia
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "news_list"
+     *     "news_list",
+     *     "award_list"
      * })
      */
     private $copyright;
@@ -110,7 +114,8 @@ class FilmMedia
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "news_list"
+     *     "news_list",
+     *     "award_list"
      * })
      */
     private $credits;
@@ -127,7 +132,8 @@ class FilmMedia
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "news_list"
+     *     "news_list",
+     *     "award_list"
      * })
      */
     private $type;
@@ -159,7 +165,8 @@ class FilmMedia
      *     "jury_show",
      *     "projection_list",
      *     "projection_show",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "award_list"
      * })
      */
     private $titleVf;
@@ -175,7 +182,8 @@ class FilmMedia
      *     "jury_show",
      *     "projection_list",
      *     "projection_show",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "award_list"
      * })
      */
     private $titleVa;
@@ -195,7 +203,8 @@ class FilmMedia
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "news_list"
+     *     "news_list",
+     *     "award_list"
      * })
      */
     private $file;

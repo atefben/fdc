@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-03-30T13:40:56Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-03-31T12:27:46Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -667,7 +667,7 @@
       </trans-unit>
       <trans-unit id="21162cc41c525cbc6d333c5c6f1e69fa30499613" resname="press.popin.title.contenuverouille">
         <source>press.popin.title.contenuverouille</source>
-        <target>Contenu vérrouillé</target>
+        <target>Contenu verrouillé</target>
         <jms:reference-file line="5">Global/components/popinPress.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3c224a8c173733f82cd4547bf6349dbf418558e9" resname="programmation.btn.telechargerformatpdf">

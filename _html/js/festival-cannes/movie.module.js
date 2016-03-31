@@ -90,6 +90,15 @@ $(document).ready(function() {
     initSliders();
 
     // gallery slideshow
+    $('.gallery .img img').each(function() {
+      var w = $(this).width(),
+          h = $(this).height();
+
+      if(w/h > 1) {
+        $(this).addClass('landscape');
+      }
+    })
+
     $('body').on('click', '.gallery .thumbs a', function(e) {
       e.preventDefault();
       var i = $(this).index(),

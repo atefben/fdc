@@ -11,7 +11,6 @@ use Base\CoreBundle\Entity\NewsFilmProjectionAssociated;
 use Base\CoreBundle\Entity\NewsVideo;
 use Base\CoreBundle\Entity\NewsVideoTranslation;
 use Base\CoreBundle\Entity\NewsAudioTranslation;
-
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
@@ -38,7 +37,7 @@ class MediaListener
      * @var ContainerInterface
      */
     private $container;
-
+	
     public function __construct($container)
     {
         $this->container = $container;
@@ -55,10 +54,10 @@ class MediaListener
         $this->createHomepageNews($entity, $args, false);
 
         if ($entity instanceof MediaVideoTranslation && $entity->getAmazonRemoteFile()) {
-            $this->createAmazonVideoJob($entity);
+            $this->createAmazonVideoJob($entity, $args);
         }
 
-        if (($entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation )&& $entity->getFile()) {
+        if (($entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation) && $entity->getFile()) {
             $this->generateThumbnails($entity->getFile());
         }
     }
@@ -73,7 +72,7 @@ class MediaListener
         $this->createHomepageNews($entity, $args);
 
         if ($entity instanceof MediaVideoTranslation && $entity->getAmazonRemoteFile() && $args->hasChangedField('amazonRemoteFile')) {
-            $this->createAmazonVideoJob($entity);
+            $this->createAmazonVideoJob($entity, $args);
         }
 
         $firstCondition = $entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation;
@@ -221,7 +220,7 @@ class MediaListener
     }
 
 
-    protected function createAmazonVideoJob(MediaVideoTranslation $mediaVideo)
+    protected function createAmazonVideoJob(MediaVideoTranslation $mediaVideo, $args)
     {
         /**
          * @todo create amazon video job here
@@ -231,15 +230,36 @@ class MediaListener
         $path_video_input = $file_path['0'] . '/';
         $path_video_output = 'media_video_encoded' . '/direct_encoded/';
         //$mediaVideo->getAmazonRemoteFile()->getId();
-        $s3 = S3Client::factory(array('key'    => $this->getParamter('s3_access_key'),'secret' => $this->getParameter('s3_secret_key')));
-		$info = $s3->doesObjectExist('ohwee-symfony-test-video', $path_video_output .  str_replace('.mov', '.mp4', $file_name));
-		if ($info)
+        $s3 = S3Client::factory(array('key'    => $this->getParameter('s3_access_key'),'secret' => $this->getParameter('s3_secret_key')));
+		$nameMp4 = $path_video_output . str_replace('.mov', '.mp4', $file_name);
+		$nameWebm = $path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name);
+		
+		$em = $args->getEntityManager();
+		$medias_1 = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('mp4Url' => $nameMp4));
+		$medias_2 = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('webmUrl' => $nameWebm));
+		if ($medias_1 || $medias_2)
 		{
-			$mediaVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
-	        $mediaVideo->setJobMp4State(3);
+			if ($medias_1)
+			{
+				$mediaVideo->setMp4Url($nameMp4);
+				$mediaVideo->setJobMp4Id($medias_1->getJobMp4Id());
+        		$mediaVideo->setJobMp4State($medias_1->getJobMp4State());
+			}
+			else
+			{
+        		$mediaVideo->setJobMp4State(2);
+			}
 			
-			$mediaVideo->setWebmURL($path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name));
-	        $mediaVideo->setJobWebmState(3);
+			if ($medias_2)
+			{
+				$mediaVideo->setWebmURL($nameWebm);
+				$mediaVideo->setJobWebmId($medias_2->getJobWebmId());
+	        	$mediaVideo->setJobWebmState($medias_2->getJobWebmState());
+			}
+			else
+			{
+	        	$mediaVideo->setJobWebmState(2);
+			}
 		}
 		else
 		{
@@ -248,7 +268,7 @@ class MediaListener
 	                'key'    => $this->getParameter('s3_access_key'),
 	                'secret' => $this->getParameter('s3_secret_key'),
 	            ),
-	            'region'      => 'eu-west-1',
+	            'region'      => $this->getParameter('s3_video_region'),
 	        ));
 		
             $job = $elasticTranscoder->createJob(array(
@@ -336,7 +356,7 @@ class MediaListener
                 'key'    => $this->getParameter('s3_access_key'),
                 'secret' => $this->getParameter('s3_secret_key'),
             ),
-            'region'      => 'eu-west-1',
+            'region'      => $this->getParameter('s3_video_region'),
         ));
 
         if (isset($parentVideo)) {

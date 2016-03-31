@@ -230,7 +230,7 @@ class PalmaresController extends FOSRestController
             ->getCameraDOr($festival, $selectionSectionIds)
         ;
 
-        $awards['cinefondation'] = array(
+        $awards['camera_dor'] = array(
             'name'        => $name,
             'awards'      => $items,
             'competitors' => $others,

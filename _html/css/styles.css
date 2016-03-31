@@ -11783,10 +11783,17 @@ article .read-later.rAlign span:after {
   margin: 0 -100%;
   display: inline-block;
 }
+.single-movie .casting .gallery .img img.active.landscape {
+  height: 100%;
+  width: auto;
+}
 .single-movie .casting .gallery .thumbs a {
   display: inline-block;
   margin-right: 5px;
   position: relative;
+  width: 36px;
+  height: 48px;
+  overflow: hidden;
 }
 .single-movie .casting .gallery .thumbs a:before {
   content: '';
@@ -11830,6 +11837,9 @@ article .read-later.rAlign span:after {
   opacity: 0.5;
   position: relative;
   z-index: 1;
+  object-fit: cover;
+  height: 48px;
+  width: 37px;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);

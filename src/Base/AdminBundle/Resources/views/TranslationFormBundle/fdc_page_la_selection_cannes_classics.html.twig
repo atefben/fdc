@@ -21,6 +21,7 @@
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(form.parent.children.image) }}
+                                    {{  form_row(form.parent.children.name) }}
                                 </div>
                             </div>
                         </div>
@@ -278,7 +279,6 @@
                                             </div>
                                         {% endfor %}
                                     </div>
-                                    {{ 'form.news.helper_widgets'|trans }}<br/>
                                 </div>
                             </div>
                         </div>
