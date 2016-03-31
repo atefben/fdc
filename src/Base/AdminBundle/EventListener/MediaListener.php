@@ -237,8 +237,9 @@ class MediaListener
 		$em = $args->getEntityManager();
 		$medias_1 = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('mp4Url' => $nameMp4));
 		$medias_2 = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('webmUrl' => $nameWebm));
-		//error_log(print_r(\Doctrine\Common\Util\Debug::export($nameMp4, 2),1));
-		//error_log(print_r(\Doctrine\Common\Util\Debug::export($nameWebm, 2),1));
+		error_log(print_r(\Doctrine\Common\Util\Debug::export($nameMp4, 1),1));
+		error_log(print_r(\Doctrine\Common\Util\Debug::export($nameWebm, 1),1));
+		error_log(print_r(\Doctrine\Common\Util\Debug::export('###################', 1),1));
 		error_log(print_r(\Doctrine\Common\Util\Debug::export($medias_1, 1),1));
 		error_log(print_r(\Doctrine\Common\Util\Debug::export($medias_2, 1),1));
 		if ($medias_1 || $medias_2)
