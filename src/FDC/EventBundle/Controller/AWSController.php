@@ -25,7 +25,6 @@ class AWSController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('jobMp4State' => '3'));
-
         foreach ($medias as $media) {
             $this->updateAmazonStatus($media, $media->getJobMp4Id(), 'setJobMp4');
         }
@@ -49,10 +48,10 @@ class AWSController extends Controller
     {
         $elasticTranscoder = ElasticTranscoderClient::factory(array(
             'credentials' => array(
-                'key'    => 'AKIAJHXD67GEPPA2F4TQ',
-                'secret' => '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',
+                'key'    => $this->getParameter('s3_access_key'),
+                'secret' => $this->getParameter('s3_secret_key'),
             ),
-            'region'      => 'eu-west-1',
+            'region'      => $this->getParameter('s3_video_region'),
         ));
         $response = $elasticTranscoder->readJob(array('Id' => $jobid));
         $jobData = $response->get('Job');
