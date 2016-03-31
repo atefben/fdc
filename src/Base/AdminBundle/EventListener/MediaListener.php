@@ -1,7 +1,7 @@
 <?php
 
 namespace Base\AdminBundle\EventListener;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaVideo;
@@ -11,7 +11,6 @@ use Base\CoreBundle\Entity\NewsFilmProjectionAssociated;
 use Base\CoreBundle\Entity\NewsVideo;
 use Base\CoreBundle\Entity\NewsVideoTranslation;
 use Base\CoreBundle\Entity\NewsAudioTranslation;
-
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
@@ -26,7 +25,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * Class MediaListener
  * @package Base\CoreBundle\Listener
  */
-class MediaListener extends Controller
+class MediaListener
 {
 
     /**
@@ -55,7 +54,7 @@ class MediaListener extends Controller
         $this->createHomepageNews($entity, $args, false);
 
         if ($entity instanceof MediaVideoTranslation && $entity->getAmazonRemoteFile()) {
-            $this->createAmazonVideoJob($entity);
+            $this->createAmazonVideoJob($entity, $args);
         }
 
         if (($entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation )&& $entity->getFile()) {
@@ -73,7 +72,7 @@ class MediaListener extends Controller
         $this->createHomepageNews($entity, $args);
 
         if ($entity instanceof MediaVideoTranslation && $entity->getAmazonRemoteFile() && $args->hasChangedField('amazonRemoteFile')) {
-            $this->createAmazonVideoJob($entity);
+            $this->createAmazonVideoJob($entity, $args);
         }
 
         $firstCondition = $entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation;
@@ -221,7 +220,7 @@ class MediaListener extends Controller
     }
 
 
-    protected function createAmazonVideoJob(MediaVideoTranslation $mediaVideo)
+    protected function createAmazonVideoJob(MediaVideoTranslation $mediaVideo, $args)
     {
         /**
          * @todo create amazon video job here
@@ -238,11 +237,11 @@ class MediaListener extends Controller
 		$info2 = $s3->doesObjectExist($this->getParameter('s3_video_bucket_name'), $nameWebm);
 		if ($info1 || $info2)
 		{
-			$em = $this->getDoctrine()->getManager();
+			$em = $args->getEntityManager();
 			if ($info1)
 			{
 				$mediaVideo->setMp4Url($nameMp4);
-				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findByOne(array('mp4url' => $nameMp4, 'amazon_remote_file_id' => ''));
+				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('mp4Url' => $nameMp4, 'amazonRemoteFileId' => ''));
 				$mediaVideo->setJobMp4Id($medias[0]->getJobMp4Id());
 				error_log(print_r(\Doctrine\Common\Util\Debug::export($medias[0]->getJobMp4Id(), 6),1));
         		$mediaVideo->setJobMp4State($medias[0]->getJobMp4State());
@@ -251,7 +250,7 @@ class MediaListener extends Controller
 			if ($info2)
 			{
 				$mediaVideo->setWebmURL($nameWebm);
-				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findByOne(array('webm_url' => $nameWebm, 'amazon_remote_file_id' => ''));
+				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('webmUrl' => $nameWebm, 'amazonRemoteFileId' => ''));
 				$mediaVideo->setJobWebmId($medias[0]->getJobWebmId());
         		$mediaVideo->setJobWebmState($medias[0]->getJobWebmState());
 			}
