@@ -39,13 +39,11 @@ class MediaListener
      * @var ContainerInterface
      */
     private $container;
-	protected $em;
 	
     public function __construct($container)
     {
         $this->container = $container;
         $this->flush = false;
-		$this->em = $em;
     }
 
     /**
