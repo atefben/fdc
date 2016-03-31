@@ -231,7 +231,7 @@ class MediaListener
         $path_video_input = $file_path['0'] . '/';
         $path_video_output = 'media_video_encoded' . '/direct_encoded/';
         //$mediaVideo->getAmazonRemoteFile()->getId();
-        $s3 = S3Client::factory(array('key'    => $this->getParamter('s3_access_key'),'secret' => $this->getParameter('s3_secret_key')));
+        $s3 = S3Client::factory(array('key'    => $this->getParameter('s3_access_key'),'secret' => $this->getParameter('s3_secret_key')));
 		$nameMp4 = $path_video_output . str_replace('.mov', '.mp4', $file_name);
 		$nameWebm = $path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name);
 		$info1 = $s3->doesObjectExist($this->getParameter('s3_video_bucket_name'), $nameMp4);
