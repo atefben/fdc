@@ -110,15 +110,16 @@
                 <span>{{ 'movie.fdc_close'|trans }}</span>
             {% endif %}
         </div>
+        {% set secondTitle = null %}
         {% if movie|trans_fallback('title') is not empty %}
             {% set mainTitle = movie.titleVO %}
-			{% set secondTile = movie|trans_fallback('title') %}
+			{% set secondTitle = movie|trans_fallback('title') %}
         {% else %}
             {% set mainTitle = movie.titleVO %}
         {% endif %}
         <h2>{{ mainTitle }}</h2>
-        {% if secondTile and mainTitle != secondTile %}
-            <div class="title-original">({{ secondTile }})</div>
+        {% if secondTitle and mainTitle != secondTitle %}
+            <div class="title-original">({{ secondTitle }})</div>
         {% else %}
             <div class="title-original"></div>
         {% endif %}
