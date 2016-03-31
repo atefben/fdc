@@ -25,7 +25,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * Class MediaListener
  * @package Base\CoreBundle\Listener
  */
-class MediaListener extends Controller
+class MediaListener
 {
 
     /**
