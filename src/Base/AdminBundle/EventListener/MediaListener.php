@@ -255,8 +255,8 @@ class MediaListener
 			if ($medias_2[0])
 			{
 				$mediaVideo->setWebmURL($nameWebm);
-				$mediaVideo->setJobWebmId($medias[0]->getJobWebmId());
-	        	$mediaVideo->setJobWebmState($medias[0]->getJobWebmState());
+				$mediaVideo->setJobWebmId($medias_2[0]->getJobWebmId());
+	        	$mediaVideo->setJobWebmState($medias_2[0]->getJobWebmState());
 			}
 			else
 			{
