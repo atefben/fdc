@@ -57,7 +57,7 @@ class MediaListener extends Controller
             $this->createAmazonVideoJob($entity);
         }
 
-        if (($entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation )&& $entity->getFile()) {
+        if (($entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation) && $entity->getFile()) {
             $this->generateThumbnails($entity->getFile());
         }
     }

@@ -313,7 +313,7 @@ class NewsController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:News')
-            ->getSameDayNews($festival, $locale, $dateTime, $count, $id)
+            ->getSameDayNews($festival, $locale, $dateTime, $count, $id, true)
         ;
         return $news;
     }
@@ -350,7 +350,7 @@ class NewsController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getSameDayInfo($festival, $locale, $dateTime, $count, $id)
+            ->getSameDayInfo($festival, $locale, $dateTime, $count, $id, true)
         ;
         return $news;
     }
@@ -389,7 +389,7 @@ class NewsController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getSameDayStatement($festival, $locale, $dateTime, $count, $id)
+            ->getSameDayStatement($festival, $locale, $dateTime, $count, $id, true)
         ;
         return $news;
     }
