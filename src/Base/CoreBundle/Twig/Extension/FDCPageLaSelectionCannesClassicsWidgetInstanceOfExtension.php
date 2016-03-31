@@ -54,6 +54,6 @@ class FDCPageLaSelectionCannesClassicsWidgetInstanceOfExtension extends Twig_Ext
      */
     public function getName()
     {
-        return 'news_widget_instance_of_extension';
+        return 'fdcpagelaselectioncannesclassicswidgetinstanceof';
     }
 }
