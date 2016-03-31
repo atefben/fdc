@@ -241,7 +241,7 @@ class MediaListener
 			if ($info1)
 			{
 				$mediaVideo->setMp4Url($nameMp4);
-				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('mp4url' => $nameMp4, 'amazon_remote_file_id' => ''));
+				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('mp4Url' => $nameMp4, 'amazonRemoteFileId' => ''));
 				$mediaVideo->setJobMp4Id($medias[0]->getJobMp4Id());
 				error_log(print_r(\Doctrine\Common\Util\Debug::export($medias[0]->getJobMp4Id(), 6),1));
         		$mediaVideo->setJobMp4State($medias[0]->getJobMp4State());
@@ -250,7 +250,7 @@ class MediaListener
 			if ($info2)
 			{
 				$mediaVideo->setWebmURL($nameWebm);
-				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('webm_url' => $nameWebm, 'amazon_remote_file_id' => ''));
+				$medias = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findBy(array('webmUrl' => $nameWebm, 'amazonRemoteFileId' => ''));
 				$mediaVideo->setJobWebmId($medias[0]->getJobWebmId());
         		$mediaVideo->setJobWebmState($medias[0]->getJobWebmState());
 			}
