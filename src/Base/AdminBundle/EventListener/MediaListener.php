@@ -239,26 +239,26 @@ class MediaListener
 		$medias_2 = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('webmUrl' => $nameWebm));
 		//error_log(print_r(\Doctrine\Common\Util\Debug::export($nameMp4, 2),1));
 		//error_log(print_r(\Doctrine\Common\Util\Debug::export($nameWebm, 2),1));
-		error_log(print_r(\Doctrine\Common\Util\Debug::export($medias_1->0, 1),1));
-		error_log(print_r(\Doctrine\Common\Util\Debug::export($medias_2->0, 1),1));
-		if ($medias_1->0 || $medias_2->0)
+		error_log(print_r(\Doctrine\Common\Util\Debug::export($medias_1, 1),1));
+		error_log(print_r(\Doctrine\Common\Util\Debug::export($medias_2, 1),1));
+		if ($medias_1 || $medias_2)
 		{
 			if ($medias_1->0)
 			{
 				$mediaVideo->setMp4Url($nameMp4);
-				$mediaVideo->setJobMp4Id($medias_1->0['jobMp4Id']);
-        		$mediaVideo->setJobMp4State($medias_1->0['jobMp4State']);
+				//$mediaVideo->setJobMp4Id($medias_1->0['jobMp4Id']);
+        		//$mediaVideo->setJobMp4State($medias_1->0['jobMp4State']);
 			}
 			else
 			{
         		$mediaVideo->setJobMp4State(2);
 			}
 			
-			if ($medias_2[0])
+			if ($medias_2)
 			{
 				$mediaVideo->setWebmURL($nameWebm);
-				$mediaVideo->setJobWebmId($medias_2->0['jobWebmId']));
-	        	$mediaVideo->setJobWebmState($medias_2->0['jobWebmId']);
+				//$mediaVideo->setJobWebmId($medias_2->0['jobWebmId']));
+	        	//$mediaVideo->setJobWebmState($medias_2->0['jobWebmId']);
 			}
 			else
 			{
