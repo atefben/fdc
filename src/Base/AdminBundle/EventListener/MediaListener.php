@@ -21,6 +21,7 @@ use Aws\S3\Exception\S3Exception;
 use Sonata\MediaBundle\Model\MediaInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Doctrine\ORM\EntityManager;
 
 /**
  * Class MediaListener
