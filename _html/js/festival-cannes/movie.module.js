@@ -57,6 +57,19 @@ $(document).ready(function() {
         sliderMovieVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
       });
 
+      if(navigator.userAgent.indexOf("Edge")    > -1 ||
+         navigator.userAgent.indexOf("MSIE")    > -1 ||
+         navigator.userAgent.indexOf("Trident") > -1 ) {
+        $('#slider-competition .slide').each(function () {
+          var $container = $(this),
+              imgUrl     = $container.find('img').prop('src');
+
+          if (imgUrl) {
+            $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
+          }
+        });
+      }
+
       // slider competitions
       var sliderCompetition = $("#slider-competition").owlCarousel({
         nav: false,
@@ -93,9 +106,6 @@ $(document).ready(function() {
     $('.gallery .img img').each(function() {
       var w = $(this).width(),
           h = $(this).height();
-
-      console.log($(this));
-      console.log(w/h);
 
       if(w/h > 0.8179) {
         $(this).addClass('landscape');

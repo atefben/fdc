@@ -1107,6 +1107,26 @@
       .owl-item {
         opacity: 1;
 
+        .slide {
+          &.compat-object-fit {
+            background-size: cover;
+            background-position: top center;
+            background-repeat: no-repeat;
+            height: 284px;
+            margin-bottom: 60px;
+
+            img {
+              opacity: 0;
+            }
+          }
+        }
+
+        img {
+          height: 284px;
+          width: 210px;
+          object-fit: cover;
+        }
+
         .linkVid {
           height: 284px;
           display: block;

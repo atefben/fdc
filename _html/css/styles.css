@@ -12049,6 +12049,21 @@ article .read-later.rAlign span:after {
 .single-movie .competition #slider-competition .owl-item {
   opacity: 1;
 }
+.single-movie .competition #slider-competition .owl-item .slide.compat-object-fit {
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  height: 284px;
+  margin-bottom: 60px;
+}
+.single-movie .competition #slider-competition .owl-item .slide.compat-object-fit img {
+  opacity: 0;
+}
+.single-movie .competition #slider-competition .owl-item img {
+  height: 284px;
+  width: 210px;
+  object-fit: cover;
+}
 .single-movie .competition #slider-competition .owl-item .linkVid {
   height: 284px;
   display: block;

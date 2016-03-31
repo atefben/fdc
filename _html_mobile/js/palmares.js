@@ -1,4 +1,4 @@
-$.initFilmsSliders = function(){
+function initFilmsSliders() {
   var slider = $(".film-slider").owlCarousel({ 
     nav: false,
     dots: false,
@@ -31,5 +31,5 @@ $.initFilmsSliders = function(){
 }
 
 $(document).ready(function() {
-  $.initFilmsSliders();
+  initFilmsSliders();
 });
