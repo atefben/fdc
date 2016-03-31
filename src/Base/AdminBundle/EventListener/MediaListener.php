@@ -1,7 +1,7 @@
 <?php
 
 namespace Base\AdminBundle\EventListener;
-
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaVideo;
@@ -21,13 +21,12 @@ use Aws\S3\Exception\S3Exception;
 use Sonata\MediaBundle\Model\MediaInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Doctrine\ORM\EntityManager;
 
 /**
  * Class MediaListener
  * @package Base\CoreBundle\Listener
  */
-class MediaListener
+class MediaListener extends Controller
 {
 
     /**
