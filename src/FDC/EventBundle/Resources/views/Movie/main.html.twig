@@ -19,7 +19,7 @@
                     {% if movie.associatedMediaVideos|length > 0 %}
                         <li><a href="#videos">{{ 'movie.middlenav.videos'|trans }}</a></li>
                     {% endif %}
-                    {% if movie.getActors()|length > 0 and movie.getCredits()|length > 0 %}
+                    {% if movie.getActors()|length > 0 or movie.getCredits()|length > 0 %}
                         <li><a href="#casting">{{ 'movie.middlenav.creditcasting'|trans }}</a></li>
                     {% endif %}
                     {% if movie.getMedias()|length > 0 %}
@@ -55,6 +55,7 @@
 
             {% include 'FDCEventBundle:Movie:widgets/image.html.twig' with {'photos': movie.medias} %}
 
+			{% if movie.articles|length > 0 %}
             <div class="news" data-section="news">
                 <div class="articles center">
                 {% for article in movie.articles %}
@@ -62,12 +63,15 @@
                 {% endfor %}
                 </div>
             </div>
-
+			{% endif %}
+			
+			{% if movie.associatedMediaAudios|length > 0 %}
             <div class="audios" data-section="audios">
             {% for associatedMediaAudio in movie.associatedMediaAudios %}
                 {% include 'FDCEventBundle:Movie:widgets/audio.html.twig' with { 'mediaAudio': associatedMediaAudio.mediaAudio } %}
             {% endfor %}
             </div>
+			{% endif %}
 
         </div>
 

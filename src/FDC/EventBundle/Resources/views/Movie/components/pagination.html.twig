@@ -29,7 +29,7 @@
                     {% endif %}
                 {% endfor %}
                 {% if prev.countries|length > 0 %}
-                    <p>{{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{{ country.country|trans_fallback('name')|capitalize }}</p> {% endfor %}
+                    <p>{{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{{ country.country|trans_fallback('name')|capitalize }}{% if loop.index != movie.countries|length %}, {% endif %}{% endfor %}</p>
                 {% endif %}
             </div>
         </div>
@@ -45,7 +45,7 @@
         {% if posterImg %}
             {% media posterImg, 'small' %}
         {% elseif mainImg %}
-            <img src="{% path mainImg, 'small' %}" alt="" id="notposter">
+            <img src="{% path mainImg, 'small' %}" alt="" id="notposter" width="150" height="100">
         {% else %}
             <img src="{{ asset('bundles/fdcevent/img/palmares/film420x560.jpg') }}" alt="" width="187" height="249">
         {% endif %}
@@ -66,7 +66,7 @@
                     {% endif %}
                 {% endfor %}
                 {% if next.countries|length > 0 %}
-                    <p>{{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{{ country.country|trans_fallback('name')|capitalize }}</p> {% endfor %}
+                    <p>{{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{{ country.country|trans_fallback('name')|capitalize }} {% if loop.index != movie.countries|length %}, {% endif %}{% endfor %}</p>
                 {% endif %}
             </div>
         </div>

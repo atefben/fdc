@@ -11243,6 +11243,9 @@ article .read-later.rAlign span:after {
     padding-top: 0;
   }
 }
+.single-movie .info-film .information-movie {
+  min-height: 28px;
+}
 .single-movie .info-film h2 {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 2.250rem;
@@ -11256,6 +11259,7 @@ article .read-later.rAlign span:after {
   font-weight: normal;
   margin-bottom: 28px;
   text-transform: uppercase;
+  min-height: 24px;
 }
 .single-movie .info-film p {
   font-size: 0.750rem;
@@ -11302,7 +11306,7 @@ article .read-later.rAlign span:after {
   float: left;
   width: 63%;
   padding-bottom: 5px;
-  margin-top: 48px;
+  margin-top: 35px;
   margin-bottom: -38px;
 }
 .single-movie .palmares.trailer {
@@ -11310,6 +11314,9 @@ article .read-later.rAlign span:after {
   -ms-transform: translateY(570px);
   -webkit-transform: translateY(570px);
   transform: translateY(570px);
+}
+.single-movie .palmares .palmares-item {
+  display: block;
 }
 .single-movie .palmares i {
   font-size: 2.75rem;
@@ -11739,7 +11746,7 @@ article .read-later.rAlign span:after {
 .single-movie .casting {
   border-top: 1px solid #dfdfdf;
   border-bottom: 1px solid #dfdfdf;
-  margin: 45px 0 0 0;
+  margin: 0 0 0 0;
   overflow: hidden;
   padding: 45px 0;
 }
@@ -11752,6 +11759,8 @@ article .read-later.rAlign span:after {
   margin-bottom: 10px;
   position: relative;
   width: 292px;
+  overflow: hidden;
+  text-align: center;
 }
 .single-movie .casting .gallery .img .caption {
   bottom: 10px;
@@ -11762,20 +11771,17 @@ article .read-later.rAlign span:after {
   z-index: 1;
 }
 .single-movie .casting .gallery .img img {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
+  display: none;
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .single-movie .casting .gallery .img img.active {
-  opacity: 1;
-  visibility: visible;
+  min-height: 100%;
+  min-width: auto;
+  margin: 0 -100%;
+  display: inline-block;
 }
 .single-movie .casting .gallery .thumbs a {
   display: inline-block;
@@ -11831,7 +11837,7 @@ article .read-later.rAlign span:after {
 }
 .single-movie .casting .content {
   float: left;
-  height: 357px;
+  min-height: 357px;
   width: 635px;
 }
 .single-movie .casting .content p {
@@ -11870,8 +11876,9 @@ article .read-later.rAlign span:after {
   padding: 45px 0;
 }
 .single-movie .press {
-  height: 600px;
+  min-height: 600px;
   overflow: hidden;
+  background-color: #141414;
 }
 .single-movie .press h3 {
   color: #fff;
@@ -11980,6 +11987,7 @@ article .read-later.rAlign span:after {
   height: 100%;
   overflow: hidden;
   width: 50%;
+  padding-bottom: 100px;
 }
 .single-movie .press .contacts h3 {
   margin-bottom: 15px;
@@ -12048,6 +12056,9 @@ article .read-later.rAlign span:after {
   font-size: 0.875rem;
   margin-bottom: 3px;
   text-transform: uppercase;
+}
+.single-movie .competition #slider-competition .info-movie a {
+  color: #2c2c2c;
 }
 .single-movie .competition #slider-competition .info-movie a.director {
   color: #c8a461;

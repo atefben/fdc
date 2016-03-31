@@ -134,7 +134,7 @@
             </div>
           </div>
         </div>
-        <div class="videos" data-section="videos">
+        <!-- <div class="videos" data-section="videos">
           <div class="container">
             <div class="video-container state-init video"
               data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
@@ -265,7 +265,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="container">
           <div class="casting" data-section="casting">
             <div class="gallery">

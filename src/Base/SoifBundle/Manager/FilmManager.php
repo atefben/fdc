@@ -86,6 +86,8 @@ class FilmManager extends CoreManager
             'setProductionYear' => 'AnneeDeProduction',
             'setDuration' => 'Duree',
             'setWebsite' => 'SiteWeb',
+            'setFacebook' => 'LienFacebook',
+            'setTwitter' => 'LienTwitter',
             'setCastingCommentary' => 'CommentaireCasting',
             'setGalaId' => 'IdGala',
             'setGalaName' => 'NomGala'
@@ -246,7 +248,7 @@ class FilmManager extends CoreManager
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmFilm();
 
-       // set soif last update time
+        // set soif last update time
         $this->setSoifUpdatedAt($result, $entity);
         
         // set entity properties
@@ -442,18 +444,22 @@ class FilmManager extends CoreManager
                     $persons[$object->Id] = $this->em->getRepository('BaseCoreBundle:FilmFilmPerson')->findOneBy(array('person' => $object->Id, 'film' => $entity->getId()));
                     $persons[$object->Id] = ($persons[$object->Id] !== null) ? $persons[$object->Id] : new FilmFilmPerson();
                 }
+
                 // set person
                 $persons[$object->Id]->setPerson($person);
-                
+                $persons[$object->Id]->setPosition($object->OrdreAffichage);
+
                 // set function
-                $function = $this->em->getRepository('BaseCoreBundle:FilmFunction')->findOneById($object->IdFonction);
+                $function = $this->em->getRepository('BaseCoreBundle:FilmFunction')->findOneById(3);
                 if ($function !== null) {
-                    $filmFilmPersonFunction = $this->em->getRepository('BaseCoreBundle:FilmFilmPersonFunction')->findOneBy(array('filmPerson' => $persons[$object->Id]->getId(), 'function' => $object->IdFonction));
+                    $filmFilmPersonFunction = $this->em->getRepository('BaseCoreBundle:FilmFilmPersonFunction')->findOneBy(array('filmPerson' => $persons[$object->Id]->getId(), 'function' => $function->getId()));
                     $filmFilmPersonFunction = ($filmFilmPersonFunction !== null) ? $filmFilmPersonFunction : new FilmFilmPersonFunction();
                     $filmFilmPersonFunction->setFunction($function);
                     $filmFilmPersonFunction->setFilmPerson($persons[$object->Id]);
                     $filmFilmPersonFunction->setPosition($object->OrdreAffichage);
-                    $persons[$object->Id]->addFunction($filmFilmPersonFunction);
+                    if ($filmFilmPersonFunction->getId() == null) {
+                        $persons[$object->Id]->addFunction($filmFilmPersonFunction);
+                    }
                 } else {
                     $this->logger->error(__METHOD__. "Function {$object->IdFonction} not found");
                 }
@@ -463,7 +469,7 @@ class FilmManager extends CoreManager
                 }
             }
         }
-        
+
         // set persons (credits)
         if (property_exists($resultObject, 'FilmCredits') && property_exists($resultObject->FilmCredits, 'FilmCreditDto')) {
             $objects = $resultObject->FilmCredits->FilmCreditDto;
@@ -485,7 +491,9 @@ class FilmManager extends CoreManager
                     $persons[$object->Id] = $this->em->getRepository('BaseCoreBundle:FilmFilmPerson')->findOneBy(array('person' => $object->Id, 'film' => $entity->getId()));
                     $persons[$object->Id] = ($persons[$object->Id] !== null) ? $persons[$object->Id] : new FilmFilmPerson();
                 }
+
                 $persons[$object->Id]->setPerson($person);
+                $persons[$object->Id]->setPosition($order);
 
                 // set function
                 if (property_exists($object, 'FonctionsTraductions') && property_exists($object->FonctionsTraductions, 'FonctionTraductionDto')) {

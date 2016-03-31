@@ -21,8 +21,8 @@
     <div class="img" style="background-image: url({% path media, format %})"></div>
     <div class="links">
         <div class="container">
-            <a class="movies" href="{{ path('fdc_event_movie_selection', {'slug': "competition"}) }}"><i class="icon icon_flecheGauche"></i>{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
-            <a class="programmation" href="#"><i class="icon icon_programmation"></i>{{ 'movie.nav.btn.voirlaprogrammation'|trans }}</a>
+            <a class="movies" href="{{ path('fdc_event_movie_selection') }}"><i class="icon icon_flecheGauche"></i>{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
+            <a class="programmation" href="{{ path('fdc_event_agenda_scheduling') }}"><i class="icon icon_programmation"></i>{{ 'movie.nav.btn.voirlaprogrammation'|trans }}</a>
         </div>
     </div>
     <div class="trailer">
@@ -59,14 +59,42 @@
     </div>
 </div>
 <div class="container container-top">
+    {% set hasVideo = false %}
+    {% if movie.imageMain %}
+        {% set hasVideo = true %}
+    {% elseif movie.videoMain is not null and movie.videoMain.image and movie.videoMain.image.file %}
+        {% set hasVideo = true %}
+    {% elseif movie.videoMain is not null and movie.videoMain|trans_fallback('imageAmazonUrl') %}
+        {% set hasVideo = true %}
+    {% endif %}
+
         <div class="poster video">
+            {% if hasVideo == true %}
             <a href="#" class="picto"><i class="icon icon_video"></i></a>
+            {% endif %}
+            {% if hasVideo == true %}
             {% if movie.imageMain %}
                 {% media movie.imageMain|trans_fallback('file'), 'media_image_simple_588x784' %}
             {% elseif movie.videoMain is not null and movie.videoMain.image and movie.videoMain.image.file %}
                 {% media movie.videoMain.image.file, 'media_image_2560x1620' %}
             {% elseif movie.videoMain is not null and movie.videoMain|trans_fallback('imageAmazonUrl') %}
                 <img src="{{ s3_server_global ~ movie.videoMain|trans_fallback('imageAmazonUrl') }}">
+            {% endif %}
+            {% else %}
+                {% set posterImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+                {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+                {% set media = null %}
+                {% set format =  '293x397' %}
+                {% if posterImg is not null %}
+                    {% set media = posterImg %}
+                {% elseif filmImg is not null %}
+                    {% set media = filmImg %}
+                {% endif %}
+                {% if media is not null %}
+                    {% media media, format %}
+                {% else %}
+                    <img src="{{ asset('bundles/fdcevent/img/palmares/film_w293.jpg') }}" alt="Affiche film" />
+                {% endif %}
             {% endif %}
         </div>
     <div class="info-film">
@@ -79,13 +107,14 @@
             {% endif %}
         </div>
         {% if movie|trans_fallback('title') is not empty %}
-            {% set mainTitle = movie|trans_fallback('title') %}
+            {% set mainTitle = movie.titleVO %}
+			{% set secondTile = movie|trans_fallback('title') %}
         {% else %}
             {% set mainTitle = movie.titleVO %}
         {% endif %}
         <h2>{{ mainTitle }}</h2>
-        {% if mainTitle != movie.titleVO %}
-            <div class="title-original">({{ movie.titleVO }})</div>
+        {% if secondTile and mainTitle != secondTile %}
+            <div class="title-original">({{ secondTile }})</div>
         {% else %}
             <div class="title-original"></div>
         {% endif %}
@@ -93,18 +122,16 @@
             {{ 'movie.label.realisepar'|trans }} :
             {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
             {% for director in directors %}
-                <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
-                {% if loop.index != directors|length %}
-                    ,
-                {% endif %}
+                <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{% if loop.index != directors|length %}, {% endif %}
             {% endfor %}
         </p>
-        <p>
+        <p class="information-movie">
             {% if movie.productionYear is not null and movie.productionYear != 0 %}
                 {{ 'movie.label.anneedeproduction'|trans }} : <span>{{ movie.productionYear }}</span>
             {% endif %}
             {% if movie.countries|length > 0 %}
-                {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}<span>{{ country.country|trans_fallback('name') }}</span> {% endfor %}
+                {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{% if loop.index != movie.countries|length %}<span id="TetiereMovieCountry">{{ country.country|trans_fallback('name')|replace({' ': ""}) }}, </span>{% else %}<span>{{ country.country|trans_fallback('name')|replace({' ': ""}) }}</span>{% endif %}
+            {% endfor %}
             {% endif  %}
             {% if movie.duration is not null and movie.duration > 0 %}
                 {% set duration = movie.duration|split('.') %}
@@ -115,22 +142,23 @@
             {% endif %}
         </p>
     </div>
+	{% if movie.awards|length > 0 %}
     <div class="palmares">
         {% set awardsUnique = [] %}
         {% for movieAward in movie.awards %}
             {% if movieAward.award and movieAward.award.prize %}
                 {% if movieAward.award.id not in awardsUnique %}
                     {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
-                    <i class="icon icon_palme"></i>
-                    <p>{{ movieAward.award.prize|trans_fallback('title') }}, {{  movieAward.award.festival.year }}</p>
+                    <div class="palmares-item"><i class="icon icon_palme"></i><p>{{ movieAward.award.prize|trans_fallback('title') }}, {{  movieAward.award.festival.year }}</p></div>
                 {% endif %}
             {% endif %}
         {% endfor %}
     </div>
+	{% endif %}
     <div class="info-film">
         <div  class="synopsis">
             <h3 class="title-section">{{ 'movie.title.synopsis'|trans }}</h3>
-            <p>{{ movie|trans_fallback('synopsis')|raw }}</p>
+            <p>{{ movie|trans_fallback('synopsis')|nl2br|raw }}</p>
         </div>
     </div>
 </div>

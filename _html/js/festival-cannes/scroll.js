@@ -274,7 +274,8 @@ $(document).ready(function() {
     // SINGLE MOVIE
     if($('.single-movie').length ) {
       // NAV
-      if($('.videos').length > 0 && (s > ($('.videos').offset().top - $navMovie.height() - 100))) {
+      if($navMovie.next('div').length > 0 && (s > ($navMovie.next('div').offset().top - $navMovie.height() - 100))) {
+        console.log('test');
         $navMovie.addClass('sticky');
         if($('div.press').length > 0 && (s > $('div.press').offset().top + 1 - $navMovie.height())) {
           $navMovie.css('top', 0);

@@ -44,12 +44,17 @@ class Country implements TranslateMainInterface
      * @ORM\Column(type="string", length=3, nullable=true)
      *
      * @Groups({
-     *  "film_list", "film_show",
-     *  "trailer_list", "trailer_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show",
+     *     "film_list",
      *     "film_show",
-     *     "film_selection_section_show"
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "film_show",
+     *     "film_selection_section_show",
+     *     "news_show"
      * })
      */
     private $iso;

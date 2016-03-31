@@ -170,7 +170,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "news_show"
      * })
      *
      */
@@ -189,7 +190,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "news_show"
      * })
      *
      */
@@ -210,6 +212,22 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      */
     private $website;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     */
+    private $facebook;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     */
+    private $twitter;
 
     /**
      * @var integer
@@ -319,12 +337,17 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
     /**
      * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film", cascade={"all"})
-     *
      * @Groups({
-     *  "film_list", "film_show",
-     *  "trailer_list", "trailer_show",
-     *  "award_list", "award_show",
-     *  "projection_list", "projection_show"
+     *     "film_list",
+     *     "film_show",
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_show"
+     *
      * })
      */
     private $countries;
@@ -2311,5 +2334,51 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set facebook
+     *
+     * @param string $facebook
+     * @return FilmFilm
+     */
+    public function setFacebook($facebook)
+    {
+        $this->facebook = $facebook;
+
+        return $this;
+    }
+
+    /**
+     * Get facebook
+     *
+     * @return string 
+     */
+    public function getFacebook()
+    {
+        return $this->facebook;
+    }
+
+    /**
+     * Set twitter
+     *
+     * @param string $twitter
+     * @return FilmFilm
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+
+        return $this;
+    }
+
+    /**
+     * Get twitter
+     *
+     * @return string 
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
     }
 }

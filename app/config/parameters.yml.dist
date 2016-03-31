@@ -194,3 +194,9 @@ parameters:
     admin_fdc_page_news_images_id: ~
     admin_fdc_page_news_videos_id: ~
     admin_fdc_page_la_selection_cannes_classics_id: 1
+    s3_elastic_mp4_pipeline_id: '1454076999739-uy533t'
+    s3_elastic_mp4_preset_id: '1456133456345-3dts1g'
+    s3_elastic_webm_pipeline_id: '1454076999739-uy533t'
+    s3_elastic_webm_preset_id: '1456133404879-sv127j'
+    s3_elastic_mp3_pipeline_id: '1455903590532-u7lwud'
+    s3_elastic_mp3_preset_id: '1351620000001-300040'

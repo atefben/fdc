@@ -229,16 +229,19 @@
     width: 100%;
 }
 
-.grid .item img {
-	height: 100%;
-	width: 100%;
-	object-fit: cover;
-}
-
 #notposter {
     height:100%;
     margin-top: 47px;
     display: block;
     width: 100%;
+}
+
+#TetiereMovieCountry{
+    margin-right: 0px;
+}
+
+#infosPressImageFilmPoster {
+    margin-top: 42px;
+    width: 148px;
 }
 

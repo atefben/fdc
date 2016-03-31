@@ -4,43 +4,72 @@
     <div class="slideshow">
         <div class="slideshow-img">
             <div class="images">
+                {% set firstPicture = true %}
                 {% for key, photo in photos %}
-                    {% set title = '' %}
-                    {% if app.request.locale == 'fr' and photo.media.titleVf %}
-                        {% set title =  photo.media.titleVf %}
-                    {% elseif app.request.locale != 'fr' and photo.media.titleVa %}
-                        {% set title = photo.media.titleVa %}
-                    {% endif %}
 
-                    <div class="img {% if key == 0 %}active{% endif %}">
-                        <a id="photo{{ photo.id }}"
-                           class="chocolat-image ajax"
-                           href="{% path photo.media.file, photo.media.file.context ~ '_big' %}"
-                           title='<span class="category">{{ title }}</span><span class="date">{{ photo.media.createdAt|date('d.m.y') }}</span><h2>{{ photo.media.createdAt|trans_fallback('title') }}</h2>'
-                           data-credit="{{ photo.media.copyright }}">
-                            <img src="{% path photo.media.file, photo.media.file.context ~ '_big' %}" alt="" />
-                        </a>
-                    </div>
+                    {% if
+                        photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') and
+                        photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR')
+                    %}
+                        {% set title = '' %}
+                        {% if app.request.locale == 'fr' and photo.media.titleVf %}
+                            {% set title =  photo.media.titleVf %}
+                        {% elseif app.request.locale != 'fr' and photo.media.titleVa %}
+                            {% set title = photo.media.titleVa %}
+                        {% endif %}
+
+                        <div class="img {% if firstPicture == true %}active{% endif %}">
+                            <a id="photo{{ photo.id }}"
+                               class="chocolat-image ajax"
+                               href="{% path photo.media.file, photo.media.file.context ~ '_big' %}"
+                               title='<span>{{ title }}</span>'
+                               data-credit="{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
+                                <img src="{% path photo.media.file, photo.media.file.context ~ '_big' %}" alt="" />
+                            </a>
+                        </div>
+                        {% set firstPicture = false %}
+                    {% endif %}
                 {% endfor %}
             </div>
             <div class="owl-carousel thumbnails">
+                {% set firstPicture = true %}
                 {% for key, photo in photos %}
-                    <div class="thumb {% if key == 0 %}active{% endif %}" data-caption="{{ photo.media.copyright }}">
-                        <img src="{% path photo.media.file, photo.media.file.context ~ '_small' %}" />
-                    </div>
+                    {% if
+                        photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') and
+                        photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR')
+                    %}
+                        {% set title = '' %}
+                        {% if app.request.locale == 'fr' and photo.media.titleVf %}
+                            {% set title =  photo.media.titleVf %}
+                        {% elseif app.request.locale != 'fr' and photo.media.titleVa %}
+                            {% set title = photo.media.titleVa %}
+                        {% endif %}
+
+                        <div class="thumb {% if firstPicture == true %}active{% endif %}" data-caption="{{ title }}{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
+                            <img src="{% path photo.media.file, photo.media.file.context ~ '_small' %}" />
+                        </div>
+                        {% set firstPicture = false %}
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
+        {% set firstPicture = true %}
         {% for key, photo in photos %}
-            {% set title = '' %}
-            {% if app.request.locale == 'fr' and photo.media.titleVf %}
-                {% set title =  photo.media.titleVf %}
-            {% elseif app.request.locale != 'fr' and photo.media.titleVa %}
-                {% set title = photo.media.titleVa %}
-            {% endif %}
+            {% if
+                photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') and
+                photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR')
+            %}
+                {% set title = '' %}
+                {% if app.request.locale == 'fr' and photo.media.titleVf %}
+                    {% set title =  photo.media.titleVf %}
+                {% elseif app.request.locale != 'fr' and photo.media.titleVa %}
+                    {% set title = photo.media.titleVa %}
+                {% endif %}
 
-            {% if key == 0 %}
-                <p class="caption">{{ title }}{% if photo.media.copyright is not null %}© {{ photo.media.copyright }}{% endif %}</p>
+                {% if firstPicture == true %}
+                    <p class="caption">{{ title }}{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}</p>
+                {% endif %}
+                {% set firstPicture = false %}
             {% endif %}
         {% endfor %}
     </div>
