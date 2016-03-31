@@ -373,8 +373,6 @@ $(document).ready(function () {
         var $ev = $(this).parent().find('.fc-event');
 
         //recuperation des données
-        var eventObject = {};
-        console.log('test');
         var eventObject = {
           title: $ev.find('.txt span').text(),
           eventColor: $ev.data('color'),
