@@ -15,7 +15,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * FDCPageLaSelectionCannesClassics
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCPageLaSelectionCannesClassicsRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
