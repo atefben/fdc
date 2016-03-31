@@ -104,6 +104,10 @@ module.exports = function(grunt) {
             cwd: './js/',
             src: ['*.js', 'include/footer.js', 'include/menu.js', 'include/myselection.js'],
             dest: '../src/FDC/EventMobileBundle/Resources/public/js/dev/'
+          },
+          {
+            src: "./dist/js/vendor.min.js",
+            dest: "../src/FDC/EventMobileBundle/Resources/public/js/vendor.min.js"
           }
         ]
       },
@@ -160,13 +164,14 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build:js', [
-    'tags:all',
+    'tags:app',
+    'tags:vendor',
     'useminPrepare',
     'concat:generated',
     'uglify:generated',
     'usemin:js',
-    'clean:tmp',
-    'copy:js'
+    'clean:tmp'
+    // 'copy:js'
   ]);
 
   grunt.registerTask('build:css', [
