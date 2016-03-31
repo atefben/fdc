@@ -292,7 +292,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      */
     public function getFile()
     {
-        if (strpos($_SERVER['REQUEST_URI'], 'admin') !== false) {
+        if (strpos($_SERVER['REQUEST_URI'], 'admin') === false) {
             return $this->file ? $this->file : $this->amazonRemoteFile;
         } else {
             return $this->file;
