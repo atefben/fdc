@@ -72,7 +72,7 @@ class MediaListener
         $this->createHomepageNews($entity, $args);
 
         if ($entity instanceof MediaVideoTranslation && $entity->getAmazonRemoteFile() && $args->hasChangedField('amazonRemoteFile')) {
-            $this->createAmazonVideoJob($entity);
+            $this->createAmazonVideoJob($entity, $args);
         }
 
         $firstCondition = $entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation;
@@ -220,7 +220,7 @@ class MediaListener
     }
 
 
-    protected function createAmazonVideoJob(MediaVideoTranslation $mediaVideo)
+    protected function createAmazonVideoJob(MediaVideoTranslation $mediaVideo, $args)
     {
         /**
          * @todo create amazon video job here
@@ -237,7 +237,7 @@ class MediaListener
 		$info2 = $s3->doesObjectExist($this->getParameter('s3_video_bucket_name'), $nameWebm);
 		if ($info1 || $info2)
 		{
-			$em = $this->getDoctrine()->getManager();
+			$em = $args->getEntityManager();
 			if ($info1)
 			{
 				$mediaVideo->setMp4Url($nameMp4);
