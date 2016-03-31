@@ -27,7 +27,7 @@ class ParticipateController extends Controller
         $locale = $this->getRequest()->getLocale();
 
         // GET PARTICIPATE PAGE
-        $content = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findOneById($this->getParameter('admin_event_fdc_page_prepare_id'));
+        $content = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findOneById($this->getParameter('admin_fdc_page_prepare_id'));
         if ($content === null) {
             throw new NotFoundHttpException();
         }

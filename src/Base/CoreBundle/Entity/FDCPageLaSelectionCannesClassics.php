@@ -10,7 +10,7 @@ use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * FDCPageLaSelectionCannesClassics
  *
@@ -43,6 +43,19 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     private $image;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"name"}, updatable=false)
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
+
+    /**
      * @var NewsWidget
      *
      * @ORM\OneToMany(targetEntity="FDCPageLaSelectionCannesClassicsWidget", mappedBy="FDCPageLaSelectionCannesClassics", cascade={"all"}, orphanRemoval=true)
@@ -73,18 +86,15 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
      */
     public function __toString()
     {
+        $string = '';
+
         if (!$this->getId()) {
-            return 'Nouvelle page sélection';
+            $string = 'Nouvelle page sélection';
+        } else {
+            $string = $this->getName();
         }
 
-        $names = array(
-            'Invité d\'honneur',
-            'Hommages',
-            'Copies restaurées',
-            'WCP',
-            'Documentaires'
-        );
-        return $names[$this->getId() - 1];
+        return $string;
     }
 
     /**
@@ -128,6 +138,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
      */
     public function addWidget(\Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget $widgets)
     {
+        $widgets->setFDCPageLaSelectionCannesClassics($this);
         $this->widgets[] = $widgets;
 
         return $this;
@@ -151,5 +162,51 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     public function getWidgets()
     {
         return $this->widgets;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return FDCPageLaSelectionCannesClassics
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return FDCPageLaSelectionCannesClassics
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

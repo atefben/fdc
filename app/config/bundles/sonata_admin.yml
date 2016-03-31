@@ -43,6 +43,9 @@ sonata_admin:
             dashboard.group.info:
                 items: ~
                 label_catalogue: BaseAdminBundle
+            dashboard.group.cannes_classics:
+                items: ~
+                label_catalogue: BaseAdminBundle
             dashboard.group.media:
                 items: ~
                 label_catalogue: BaseAdminBundle

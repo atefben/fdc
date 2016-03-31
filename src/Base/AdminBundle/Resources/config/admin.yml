@@ -283,11 +283,12 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    # cannes classics
     base.admin.fdc_page_la_selection_cannes_classics:
         class: Base\AdminBundle\Admin\FDCPageLaSelectionCannesClassicsAdmin
         arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics, BaseAdminBundle:FDCPageLaSelectionCannesClassicsAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.seo, label: FDCPageLaSelectionCannesClassics, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.cannes_classics, label: Cannes Classics, label_translator_strategy: sonata.admin.label.strategy.underscore}
 
     base.admin.fdc_page_la_selection:
         class: Base\AdminBundle\Admin\FDCPageLaSelectionAdmin
