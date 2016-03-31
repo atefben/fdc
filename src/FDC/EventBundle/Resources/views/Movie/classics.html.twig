@@ -129,9 +129,6 @@
                                     <h2 class="title">{{ transWidget.subtitle }}</h2>
                                     <p>{{ transWidget.paragraph }}</p>
                                 </div>
-                                {% else %}
-                                {{ dump(widget) }}
-                                no match
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -140,110 +137,21 @@
         </div>
     </div>
 
-                            {#<div class="contain-img-honneur">
-                                <img src="{{ guest.image.path }}" alt="invite d honneur" class="photo-realisateur">
-                                <span class="copy">{{ guest.image.copyright }}</span>
-                            </div>
-
-                            <div class="small-pres">
-
-                            {% for widget in guest.widgets %}
-                                {% if widget.type == 'movie_widget_info' %}
-                                    {% include 'FDCEventBundle:Movie:widgets/info.html.twig' %}
-
-                                {% elseif widget.type == 'movie_widget_text' %}
-                                    <p>
-                                        {{ widget.content|raw }}
-                                    </p>
-
-                                {% elseif widget.type == 'movie_widget_trailer' %}
-                                    {% include 'FDCEventBundle:Movie:widgets/trailer.html.twig' %}
-
-                            </div>
-
-                                {% elseif widget.type == 'movie_widget_audio' %}
-                                    {% include 'FDCEventBundle:News:widgets/audio.html.twig' %}
-
-                                {% elseif widget.type == 'movie_widget_quote' %}
-                                    {% include 'FDCEventBundle:News:widgets/quote.html.twig' %}
-                            <div class="small-pres container">
-                                {% elseif widget.type == 'movie_widget_image' and widget.photos|length > 1 %}
-                                    {% include 'FDCEventBundle:Movie:widgets/image.html.twig' with {'photos': widget.photos} %}
-
-                                {% elseif widget.type == 'image_dual_align' %}
-                                    {% include 'FDCEventBundle:Movie:widgets/dual-photo.html.twig' %}
-
-                            </div>
-
-                                {% endif %}
-                            {% endfor %}
-                        {% endfor %}
-                    {% endif %}
-                    {% for section in content.sections %}
-                    <section class="categorie-items">
-                        {% if section.title is defined  %}
-                            <div class="title-list-cat title-film-detail">
-                                <h2 class="title">{{ section.title }}</h2>
-                            {% if section.description is defined %}
-                                <p class="title-item">
-                                    {{ section.description }}
-                                </p>
-                            {% endif %}
-                            </div>
-                        {% endif %}
-
-                        {% for film in section.film %}
-                            <article style="background-image:url({{ film.image.path }})">
-                                <div class="bck-hover">
-                                    <div class="contain_item">
-                                        <img src="{{ film.image.path }}" alt="images films">
-                                        <div class="infos-item-list">
-                                            <h3 class="title-item">{{ film.title }}</h3>
-                                            <span class="nom-item">{{ film.author.fullName }}</span>
-                                            <span class="date-item">{{ film.date }} - {{ film.duration }}</span>
-                                            <p class="description-item">
-                                                {{ film.description|raw }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        {% endfor %}
-                    </section>
-                    {% endfor %}
-                    {% if content.title is defined %}
-                    <div class="share">
-                        <p>{{ 'cannesclassics.btn.partagerlarticle'|trans }}</p>
-                        <div class="buttons square">
-                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_event_news_index') }}" class="button facebook">
-                                <i class="icon icon_facebook"></i>
-                            </a>
-                            <a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_news_index') }}" class="button twitter">
-                                <i class="icon icon_twitter"></i>
-                            </a>
-                            <a href="#" rel="nofollow" class="button link self"><i class="icon icon_link"></i></a>
-                            <a href="#" rel="nofollow" class="button email self"><i class="icon icon_lettre"></i></a>
-                            <a href="#" rel="nofollow" onclick="javascript:window.print()" class="button print"><i class="icon icon_print"></i></a>
-                        </div>
-                    </div>
-                    {% endif %}
-                </section>
-            </div>
-        </div>
-        <div class="bandeau-list  bandeau-list-footer push-footer vCenter">
-            <div class="bandeau-list-img vCenterKid" style="background-image:url({{ content.category.image.path }});">
-                <h2 class="title title-list-header">{{ content.category.title }}</h2>
-                <a href="{{ content.category.slug }}" class="bandeau-lien">
-                    {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                    <img class="svg-arrow" src="{{ asset_url }}" alt="{{ 'cannesclassics.btn.decouvrirlarubrique'|trans }}" />
-                    {% endimage %}
-                    {{ 'cannesclassics.btn.decouvrirlarubrique'|trans }}
-                </a>
-            </div>
-        </div>
-    </div>
-    #}
-    <!-- POPIN MAIL SHARE ---->
-
-    <!-- END POPIN MAIL SHARE -->
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+        {
+            "name" : 'breadcrumb.webtv.home'|trans,
+            "url"  : path('fdc_event_news_index')
+        },
+        {
+            "name" : 'selection.nav.cannes-classics'|trans,
+            "url"  : path('fdc_event_movie_classics', {slug: transClassic.slug})
+        },
+        {
+            "name" : transClassic.title,
+            "url"  : ""
+        }
+    ]
+    } %}
 {% endblock body %}

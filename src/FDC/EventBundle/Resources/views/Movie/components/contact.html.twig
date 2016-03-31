@@ -68,8 +68,141 @@
                     {% if movie.contacts|length > 0 %}
                         <h3>{{ 'movie.contact.title.contacts'|trans }}</h3>
                         {% for contact in movie.contacts %}
-                            <div{% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') %} class="prod"{% endif %}>
-                                {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PERSON') %}
+                            {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') %}
+                                <div class="prod">
+                                    <p class="sub">{{ 'movie.contact.label.production'|trans }}</p>
+                                    <p>
+                                        {% if contact.companyName %}{{ contact.companyName }}{% endif %}
+                                        {% if contact.address %}
+                                            {% if contact.companyName %} - {% endif %}
+                                            {{ contact.address.street }} {{ contact.address.postalCode }} {{ contact.address.city }}
+                                            {% if contact.address.country %}
+                                                {{ contact.address.country|trans_fallback('name') }}
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if contact.address and (contact.address.phone or contact.address.mobilePhone) %}
+                                            {% if contact.address %} - {% endif %}
+                                            T: {{ contact.address.phone?:contact.address.mobilePhone }}{% if (contact.address.phone or contact.address.mobilePhone) and contact.address.fax %} - F: {{ contact.address.fax }} {% endif %}
+                                        {% endif %}
+                                        {% if contact.address.email %}
+                                            {% if contact.address and contact.address.fax %} - {% endif %}
+                                            <a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
+                                        {% endif %}
+                                        {% if contact.address and contact.address.website %}
+                                            {% if contact.address and contact.address.email %} - {% endif %}
+                                            <a href="{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        {% for contact in movie.contacts %}
+                            {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_MINOR_PRODUCTION_COMPANY') %}
+                                <div>
+                                    <p class="sub">{{ 'movie.contact.label.minor_production_company'|trans }}</p>
+                                    <p>
+                                        {% if contact.companyName %}{{ contact.companyName }}{% endif %}
+                                        {% if contact.address and contact.address.country %}
+                                            {% if contact.companyName  %} - {% endif %}
+                                            {{ contact.address.country|trans_fallback('name') }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        {% for contact in movie.contacts %}
+                            {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_FRENCH_DISTRIBUTION') %}
+                                <div>
+                                    <p class="sub">{{ 'movie.contact.label.distribution'|trans }}</p>
+                                    <p>
+                                        {% if contact.companyName %}{{ contact.companyName }}{% endif %}
+                                        {% if contact.address %}
+                                            {% if (contact.address.phone or contact.address.mobilePhone) %}
+                                                {% if contact.companyName %} - {% endif %}
+                                                T: {{ contact.address.phone?:contact.address.mobilePhone }}
+                                            {% endif %}
+                                            {% if contact.address.email %}
+                                                {% if (contact.address.phone or contact.address.mobilePhone) %} - {% endif %}
+                                                <a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
+                                            {% endif %}
+                                            {% if contact.address and contact.address.website %}
+                                                {% if contact.address and contact.address.email %} - {% endif %}
+                                                <a href="{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>
+                                            {% endif %}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        {% for contact in movie.contacts %}
+                            {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_FRENCH_PRESS_COMPANY') %}
+                                <div>
+                                    <p class="sub">{{ 'movie.contact.label.pressefrancaise'|trans }}</p>
+                                    <p>
+                                        {% if contact.companyName %}{{ contact.companyName }} {% endif %}
+                                        {% if contact.address %}
+                                            {% if (contact.address.phone or contact.address.mobilePhone) %}
+                                                {% if contact.companyName %} - {% endif %}
+                                                T: {{ contact.address.phone?:contact.address.mobilePhone }}
+                                            {% endif %}
+
+                                            {% if contact.address and contact.address.website %}
+                                                {% if (contact.address.phone or contact.address.mobilePhone) %} - {% endif %}
+                                                <a href="{{ contact.address.website }}" target="_blank">
+                                                    {{ contact.address.website }}
+                                                </a>
+                                            {% endif %}
+                                            {% if contact.address and contact.address.person %}
+                                                {% if contact.address and contact.address.website %} - {% endif %}
+                                                {{ contact.address.person.firstname }} {{ contact.address.person.lastname }}
+                                            {% endif %}
+
+                                            {% if contact.address and contact.address.email %}
+                                                {% if contact.address.person %} - {% endif %}
+                                                <a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
+                                            {% endif %}
+                                            {% if contact.address and contact.address.person %}
+                                                <br/>
+                                                {% for subordinate in contact.address.person.subordinates %}
+                                                    {{ subordinate.firstname }} {{ subordinate.lastname }}
+                                                    {% if loop.index != contact.address.person.subordinates|length %}
+                                                        ,
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        {% for contact in movie.contacts %}
+                            {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_INTERNATIONAL_SELLING') %}
+                                <div>
+                                    <p class="sub">{{ 'movie.contact.label.minor_production_company'|trans }}</p>
+                                    <p>
+                                        {% if contact.companyName %}{{ contact.companyName }}{% endif %}
+                                        {% if contact.address %}
+                                            {% if (contact.address.phone or contact.address.mobilePhone) %}
+                                                {% if contact.companyName %} - {% endif %}
+                                                T: {{ contact.address.phone?:contact.address.mobilePhone }}
+                                            {% endif %}
+                                            {% if contact.address and contact.address.website %}
+                                                {% if (contact.address.phone or contact.address.mobilePhone) %} - {% endif %}
+                                                <a href="{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>
+                                            {% endif %}
+                                            {% if contact.address.email %}
+                                                {% if contact.address and contact.address.website %} - {% endif %}
+                                                <a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
+                                            {% endif %}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+
+
+                               {# {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PERSON') %}
                                     <p class="sub">{{ 'movie.contact.label.person'|trans }}</p>
                                 {% elseif contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') %}
                                     <p class="sub">{{ 'movie.contact.label.production'|trans }}</p>
@@ -92,9 +225,7 @@
                                     {% if contact.address.phone or contact.address.mobilePhone %}{% if contact.address %} - {% endif %}T: {{ contact.address.phone?:contact.address.mobilePhone  }}{% endif %}
                                     {% if contact.address.email %}<a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>{% endif %}
                                     {% if contact.address.website %}<a href="{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>{% endif %}
-                                </p>
-                            </div>
-                        {% endfor %}
+                                </p>#}
                     {% endif %}
                 </div>
             </div>
