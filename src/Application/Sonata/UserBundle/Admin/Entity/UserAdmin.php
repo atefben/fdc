@@ -76,7 +76,8 @@ class UserAdmin extends SonataUserAdmin
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
-                )
+                ),
+                'translation_domain' => 'BaseAdminBundle',
             ))
         ;
     }
