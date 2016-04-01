@@ -1,0 +1,81 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventMobileBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="all-videos grid loading">
+        <h2 class="title">{{ 'article.photos.title.touteslesvideos'|trans }}</h2>
+        {% include 'FDCEventMobileBundle:News:components/filters.html.twig' %}
+        <div id="gridVideos" class="grid-wrapper">
+            <div class="grid-sizer"></div>
+            {% for video in videos %}
+                {% set trans = video.findTranslationByLocale(app.request.locale) %}
+                {% set transImage = null %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = video.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% if video.header is not null %}
+                    {% set transImage = video.header.findTranslationByLocale(app.request.locale) %}
+                    {% if transImage is null %}
+                        {% set transImage = video.header.findTranslationByLocale('fr') %}
+                    {% endif %}
+                {% elseif video.image %}
+                    {% set transImage = video.image.findTranslationByLocale(app.request.locale) %}
+                    {% if transImage is null or transImage.file is null %}
+                        {% set transImage = video.image.findTranslationByLocale('fr') %}
+                    {% endif %}
+                {% endif %}
+                {% if transImage is defined %}
+                    <div class="item {{ video.theme|trans_fallback('slug') }} {{ video.publishedAt|date('d-m-y') }} date theme shadow-bottom video"
+                         data-vid="{{ video.id }}"
+                         data-file='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
+                         data-img="{% if transImage is not null %}{% path transImage.file, '1144x724' %}{% endif %}">
+                        <img src="{% if transImage is not null %}{% path transImage.file , '1144x724' %}" alt="{{ transImage|trans_fallback('alt') }}{% endif %}">
+                        <div class="picto"><i class="icon icon_video"></i></div>
+                        <div class="info">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <span class="category">{{ video.theme|trans_fallback('name') }}</span>
+                                    <span class="date">{{ video.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ video.publishedAt|date('H:i') }}</span>
+                                    <p data-title="{{ video|trans_fallback('title') }}">{{ video|trans_fallback('title') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="popin-video video loading">
+            <div class="video-container state-init video"
+                 data-link="//www.example.com"
+                 data-email="//www.gmail.com"
+                 data-file=''
+                 data-img="">
+                <div id="video-player-popin" class="">
+                </div>
+                <div class="video-overlay"></div>
+                <div class="infos-bar">
+                    <div class="picto"><i class="icon icon_video"></i></div>
+                    <div class="info">
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <a href="#" class="category"></a><span class="date"></span> . <span
+                                        class="hour"></span>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="popin-info info">
+                <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+                <p></p>
+            </div>
+            <div class="popin-buttons buttons square">
+                <a href="#" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
+                <a href="#" rel="nofollow" class="button twitter"><i class="icon icon_twitter"></i></a>
+                <a href="#" rel="nofollow" class="button link"><i class="icon icon_link"></i></a>
+                <a href="#" rel="nofollow" class="button email"><i class="icon icon_lettre"></i></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

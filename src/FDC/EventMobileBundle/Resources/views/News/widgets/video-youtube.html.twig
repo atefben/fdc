@@ -1,0 +1,37 @@
+{% set trans = widget.findTranslationByLocale(app.request.locale) %}
+{% if trans is null %}
+    {% set trans = widget.findTranslationByLocale('fr') %}
+{% endif %}
+
+{% set header = widget.image %}
+{% if header is not null %}
+    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+        {% set imageTrans = header.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+{% if imageTrans is defined %}
+    {% set image = imageTrans.file %}
+{% endif %}
+
+<div class="video-container state-init video"
+    data-link="//www.example.com"
+    data-email="//www.gmail.com"
+    data-vid="{{ widget.id }}"
+    data-file='[{"file":"{{ trans.url }}"}]'
+    data-img="{% if image is defined %}{% path image, 'reference' %}{% endif %}"
+    data-name="{{ trans.title }}">
+    <div id="video-player-0{{ widget.id }}" class="video-player">
+    </div>
+    <div class="video-overlay"></div>
+    <div class="infos-bar">
+        <div class="picto"><i class="icon icon_video"></i></div>
+        <div class="info">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <p>{{ trans.title }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

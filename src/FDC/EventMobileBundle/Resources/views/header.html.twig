@@ -1,0 +1,37 @@
+{% trans_default_domain 'FDCEventBundle' %}
+<header>
+    <div class="dark-container" id="header">
+        <div class="header-container">
+            <div class="menu-btn" id="menu-btn">
+                <i class="icon-mobile-burger"></i>
+            </div>
+            <div id="logo">
+                <a href="/">
+                    {% image '@FDCEventMobileBundle/Resources/public/img/palme.svg'  %}
+                    <img src="{{ asset_url }}" class="palm" alt="{{ 'header.img.palme'|trans }}" />
+                    {% endimage %}
+                </a>
+                <h1>
+                    <a href="/">
+                        {% image '@FDCEventMobileBundle/Resources/public/img/logo.svg' %}
+                        <img width="225" src="{{ asset_url }}" alt="{{ 'header.logo.img.cannes'|trans }}" />
+                        {% endimage %}
+                    </a>
+                </h1>
+                <h2>
+                    {{ render(controller('FDCEventMobileBundle:Header:date')) }}
+                </h2>
+                <p class="stick">
+                    <a href="/">
+                        {% image '@FDCEventMobileBundle/Resources/public/img/palme.svg' %}
+                        <img src="{{ asset_url }}" alt="{{ 'header.img.palme'|trans }}" />
+                        {% endimage %}
+                    </a>
+                </p>
+            </div>
+            <div id="selection-btn">
+                <i class="icon icon_lire-plus-tard"></i>
+            </div>
+        </div>
+    </div>
+</header>

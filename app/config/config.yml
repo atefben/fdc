@@ -32,6 +32,8 @@ imports:
     - { resource: roles/groups/security_master_translator.yml }
     - { resource: roles/groups/security_translator.yml }
     - { resource: roles/groups/security_super_admin.yml }
+    - { resource: roles/groups/security_admin_pages.yml }
+    - { resource: roles/groups/security_journalist.yml }
 
 parameters:
     #sonata
@@ -73,7 +75,7 @@ twig:
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle, FDCPressBundle ]
+    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle, FDCEventMobileBundle, FDCPressBundle ]
     use_controller: true
     filters:
         cssrewrite:

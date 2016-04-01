@@ -1,0 +1,23 @@
+{% trans_default_domain 'FDCEventBundle' %}
+<!DOCTYPE html>
+<html {{ sonata_seo_html_attributes() }}>
+    <head {{ sonata_seo_head_attributes() }}>
+        {{ sonata_seo_title() }}
+		<meta name="viewport" content="user-scalable=no, width=640">
+        {{ sonata_seo_metadatas() }}
+        {{ sonata_seo_link_canonical() }}
+        {{ sonata_seo_lang_alternates() }}
+        {% include 'FDCEventMobileBundle:Base:stylesheet.html.twig' %}
+        {% include 'FDCEventMobileBundle:Base:javascript_head.html.twig' %}
+    </head>
+    <body>
+        {% block pre_home %}
+        {% endblock %}
+        {% include 'FDCEventMobileBundle::header.html.twig' %}
+        {% block body %}
+        {% endblock %}
+        {% include 'FDCEventMobileBundle::footer.html.twig' %}
+        {% include 'FDCEventMobileBundle:Base:javascript_footer.html.twig' %}
+        {% include 'FDCEventMobileBundle:Base:javascript.html.twig' %}
+    </body>
+</html>

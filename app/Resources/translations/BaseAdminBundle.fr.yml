@@ -469,7 +469,7 @@ dashboard:
         fdc_page_prepare: Préparer son séjour
         fdc_page_participate: Participer
         fdc_page_participate_section: Strates Participer
-
+        users: Utilisateurs
 form:
     fdc_page_la_selection_cannes_classics:
         page_title: Titre de la page

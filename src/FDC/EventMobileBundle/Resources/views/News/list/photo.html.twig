@@ -1,0 +1,42 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventMobileBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="all-photos grid loading">
+        <h2 class="title">{{ 'article.photos.title.touteslesphotos'|trans }}</h2>
+        {% include 'FDCEventMobileBundle:News:components/filters.html.twig' %}
+        <div id="gridPhotos" class="grid-wrapper">
+            <div class="grid-sizer"></div>
+            {% for photo in photos %}
+                {% set trans = photo.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = photo.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% set format = trans.file.width > trans.file.height ? 'paysage' : 'portrait' %}
+                <div class="item {{ photo.theme|trans_fallback('slug') }} {{ photo.publishedAt|date('d-m-y') }} shadow-bottom photo {{ format }}">
+                    <a id="photo{{ photo.id }}" class="ajax chocolat-image" data-pid="{{ photo.id }}"
+                       href="{% path trans.file , 'reference' %}"
+                       title='<span class="category">{{ photo.theme|trans_fallback('name') }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }} . {{ photo.publishedAt|date('H:i') }}</span><h2>{{ trans.legend }}</h2>'
+                       data-credit="{{ photo.copyright }}"></a>
+
+                    {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
+                    <img src="{% path trans.file , resolution %}" alt="{{ trans.alt }}" title="{{ trans.legend }}">
+                    <div class="picto"><i class="icon icon_photo"></i></div>
+                    <div class="info">
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <span class="category">{{ photo.theme|trans_fallback('name')|truncate(22) }}</span>
+                                <span class="date">{{ photo.publishedAt|date('d.m.y') }}</span> . <span
+                                        class="hour">{{ photo.publishedAt|date('H:i') }}</span>
+                                <p data-title="{{ photo|trans_fallback('legend') }}">{{ photo|trans_fallback('legend') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+
+
