@@ -6,6 +6,7 @@ use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsTranslation;
 use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -64,10 +65,10 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                 'field_type' => 'text'
             ))
         ;
-		//$datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
-		//$datagridMapper = $this->addPublishedBetweenFilters($datagridMapper);
+		$datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+		$datagridMapper = $this->addPublishedBetweenFilters($datagridMapper);
 		$datagridMapper = $this->addStatusFilter($datagridMapper);
-		//$datagridMapper = $this->addPriorityFilter($datagridMapper);		
+		$datagridMapper = $this->addPriorityFilter($datagridMapper);		
     }
 
     /**
