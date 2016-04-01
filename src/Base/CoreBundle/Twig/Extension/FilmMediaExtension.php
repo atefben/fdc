@@ -49,7 +49,7 @@ class FilmMediaExtension extends Twig_Extension
     public function getMedias($film, $type, $parent = false)
     {
         $medias = array();
-        if (count($film->getMedias()) > 0) {
+        if ($film && method_exists($film, 'getMedias') && count($film->getMedias()) > 0) {
             foreach ($film->getMedias() as $media) {
                 if ($media->getMedia() !== null && $media->getType() == $type) {
                     if ($parent == true) {
