@@ -34,7 +34,7 @@
                     {% endif %}
 
                     <h2 id="titleFilmOnHomepage">
-                    {% if film.association|trans_fallback('title') is not null and film.association.titleVOAlphabet != '' %}
+                    {% if film.association|trans_fallback('title') is not null %}
                         {{ film.association|trans_fallback('title') }}
                     {% elseif film.association.titleVOAlphabet is not null and film.association.titleVOAlphabet != '' %}
                         {{ film.association.titleVOAlphabet }}

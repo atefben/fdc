@@ -24,6 +24,14 @@ imports:
     - { resource: bundles/sonata_seo.yml }
     - { resource: bundles/stof_doctrine_extensions.yml }
     - { resource: twig.yml }
+    #roles
+    - { resource: roles/groups/security_admin_fdc.yml }
+    - { resource: roles/groups/security_community_manager.yml }
+    - { resource: roles/groups/security_contributor_photos.yml }
+    - { resource: roles/groups/security_contributor_videos_audios.yml }
+    - { resource: roles/groups/security_master_translator.yml }
+    - { resource: roles/groups/security_translator.yml }
+    - { resource: roles/groups/security_super_admin.yml }
 
 parameters:
     #sonata
@@ -116,3 +124,4 @@ misd_guzzle:
     service_builder:
         class:              "Guzzle\Service\Builder\ServiceBuilder"
         configuration_file: "%kernel.root_dir%/config/webservices.json"
+
