@@ -72,6 +72,18 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('title', null, array('template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig'))
+      	  	->add('createdAt', null, array(
+            'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+            'sortable' => 'createdAt',
+       	 	))
+            ->add('priorityStatus', 'choice', array(
+                'choices'   => MediaVideo::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+	        ->add('statusMain', 'choice', array(
+	             'choices'   => MediaVideoTranslation::getStatuses(),
+	             'catalogue' => 'BaseAdminBundle',
+	        ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
             ))
