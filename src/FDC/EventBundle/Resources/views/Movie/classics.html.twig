@@ -47,7 +47,7 @@
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                                 <div class="quote">
                                     <blockquote>
-                                        {{ transWidget.content }}
+                                        “ {{ transWidget.content }} ”
                                     </blockquote>
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_audio %}
