@@ -41,7 +41,7 @@
                             {% if widget is fdc_page_la_selection_cannes_classics_widget_text %}
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                                 <div class="small-pres">
-                                    {{ transWidget.content|raw }}
+                                    {{ transWidget.content }}
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_quote %}
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
