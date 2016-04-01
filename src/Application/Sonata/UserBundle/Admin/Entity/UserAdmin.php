@@ -73,6 +73,11 @@ class UserAdmin extends SonataUserAdmin
                 'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
                 'sortable' => 'createdAt',
             ))
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'edit' => array(),
+                )
+            ))
         ;
     }
 
