@@ -4,6 +4,7 @@ namespace Base\AdminBundle\Admin;
 
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsTranslation;
+use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
