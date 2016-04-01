@@ -90,18 +90,12 @@
                                                     {% endif %}
                                                     <div class="infos-item-list">
                                                         <h3 class="title-item">{{ film.titleVO }}</h3>
-                                                        {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                            <span class="nom-item">{{ director.fullName }}</span>,
-                                                            {% if loop.index != director|length %}
-                                                            {% endif %}
-                                                        {% endfor %}
+                                                        {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}<span class="nom-item">{{ director.fullName }}</span>, {% if loop.index != director|length %}{% endif %}{% endfor %}
                                                         <span class="date-item">
-                                                            {% if  film.productionYear is not null and  film.productionYear != 0 %}
-                                                                {{  film.productionYear }}
+                                                            {% if  film.productionYear is not null and  film.productionYear != 0 %}{{  film.productionYear }}
                                                                 {% if  film.duration is not null and  film.duration > 0 %}
                                                                     -
-                                                                {% endif %}
-                                                            {% endif %}
+                                                                {% endif %}{% endif %}
                                                             {% if  film.duration is not null and  film.duration > 0 %}
                                                                 {{  film.duration }}
                                                             {% endif %}
