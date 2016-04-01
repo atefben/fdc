@@ -81,7 +81,7 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                 'catalogue' => 'BaseAdminBundle'
             ))
 	        ->add('statusMain', 'choice', array(
-	             'choices'   => FDCPageLaSelectionCannesClassics::getStatuses(),
+	             'choices'   => FDCPageLaSelectionCannesClassicsTranslation::getStatuses(),
 	             'catalogue' => 'BaseAdminBundle',
 	        ))
             ->add('_edit_translations', null, array(
