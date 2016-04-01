@@ -4,13 +4,6 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    concat: {
-        generated: {
-            options: {
-                separator: ";"
-            }
-        }
-    },
     tags: {
       app: {
         options: {
@@ -77,11 +70,20 @@ module.exports = function(grunt) {
         styles: './head.dist.php'
       }
     },
-    concat: {
-      options: {
-      separator: ';\n'
-      }
-    },
+    // concat: {
+    //   js: {
+    //     options: {
+    //       separator: ';\n'
+    //     }
+    //   },
+    //   css: {
+    //     generated: {
+    //       options: {
+    //         separator: "\n"
+    //       }
+    //     }
+    //   }
+    // },
     uglify: {
       options: {
         banner: ['/**\n * Festival de Cannes\n',
