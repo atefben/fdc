@@ -121,9 +121,8 @@ $(document).ready(function() {
     displayProgrammationDay($('.timeline-container .active').data('date'));
   });
 
-  $('#timeline-calendar .prev').on('click',function(e){
+  $('#timeline-calendar .prev').on('click',function(e) {
     e.preventDefault();
-
     var day = $('.timeline-container').find('.active').data('date');
 
     if(day == 11) {
@@ -134,12 +133,12 @@ $(document).ready(function() {
     }
   });
 
-  $('#timeline-calendar  .next').on('click',function(e){
+  $('#timeline-calendar .next').on('click',function(e) {
     e.preventDefault();
-
     var day = $('.timeline-container').find('.active').data('date'), numDay = 0;
 
-    if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')) 
+    if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')) {
+      return false;
     } else {
       moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1);
       displayProgrammationDay($('.timeline-container .active').data('date'));

@@ -157,7 +157,7 @@ $(document).ready(function() {
     }
   });
 
-  $('#timeline-calendar  .next').on('click',function(e) {
+  $('#timeline-calendar .next').on('click',function(e) {
     e.preventDefault();
     var day = $('.timeline-container').find('.active').data('date'), numDay = 0;
 

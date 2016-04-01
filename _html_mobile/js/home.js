@@ -60,7 +60,6 @@ function moveTimeline(element, day,url){
 function setActiveThumbnail() {
   $('.thumbnails .owl-item').removeClass('center');
   $('.thumbnails .owl-item.active').first().addClass('center');
-
   if($('.thumbnails .owl-item.center').index() >= $('.thumbnails .owl-item').length - 4) {
     $('.thumbnails .owl-item').last().addClass('center');
   }
