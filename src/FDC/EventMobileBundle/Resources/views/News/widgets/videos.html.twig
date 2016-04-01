@@ -1,0 +1,60 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+{% if film.video is not null %}
+    {% set transVideo = film.video.findTranslationByLocale(app.request.locale) %}
+    {% if transVideo is null %}
+        {% set transVideo = film.video.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+
+{% if film.video is not null and film.video.image is not null %}
+    {% set transImage = film.video.image.findTranslationByLocale(app.request.locale) %}
+    {% if transImage is null %}
+        {% set transImage = film.video.image.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+
+<div>
+    <div class="video">
+        <video preload muted>
+            {% if transVideo is defined and transVideo is not null %}
+                <source src="{% path transVideo.file , 'reference' %}" type="video/webm">
+            {% endif %}
+        </video>
+        {% if transImage is defined and transImage is not null %}
+            <div class="img" style="background-image:url({% path transImage.file, '1280x808' %})"></div>
+        {% endif %}
+    </div>
+    <div class="textVideo">
+        <div class="info">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    {% if film.association is not null %}
+                        <span class="category">{{ film.association.selectionSection|trans_fallback('name') }}</span>
+                    {% endif %}
+
+                    <h2 id="titleFilmOnHomepage">
+                    {% if film.association|trans_fallback('title') is not null and film.association.titleVOAlphabet != '' %}
+                        {{ film.association|trans_fallback('title') }}
+                    {% elseif film.association.titleVOAlphabet is not null and film.association.titleVOAlphabet != '' %}
+                        {{ film.association.titleVOAlphabet }}
+                    {% else %}
+                        {{ film.association.titleVO }}
+                    {% endif %}
+                    </h2>
+                    <p class="director">
+                        {{ 'home.video.text.de'|trans }}
+                        {% for director in film.association|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                        <a href="#">{{ director.fullName }}</a>
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="links">
+            <a href="#" class="seances"><i class="icon icon_programmation"></i>{{ 'home.video.btn.voirlesseances'|trans }}</a>
+            <a href="#" class="all"><i class="icon icon_fleche-right"></i>{{ 'home.video.btn.touslesfilms'|trans }}</a>
+        </div>
+    </div>
+</div>
+

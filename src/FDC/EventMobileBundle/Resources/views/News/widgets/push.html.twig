@@ -1,0 +1,13 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+<div class="push{% if category.bigger %} bigger{% endif %}">
+    <div class="image-wrapper">
+        <img src="{{ category.image.path }}" alt="" />
+    </div>
+    <div class="vCenter">
+        <div class="vCenterKid">
+            <h3>{{ category.title|raw }}</h3>
+        </div>
+    </div>
+    <a href="{{ category.href }}"></a>
+</div>

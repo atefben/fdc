@@ -1,0 +1,18 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventMobileBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="legal-notice">
+        <h2 class="title">{{ 'credits.title.credits'|trans }}</h2>
+        <section class="legal-notice-container">
+
+            {% for article in content %}
+                <article class="legal-notice-art">
+                    <h3 class="legal-notice-art-title">{{ article.title }}</h3>
+                    <p>{{ article.content }}</p>
+                </article>
+            {% endfor %}
+
+        </section>
+    </div>
+{% endblock %}

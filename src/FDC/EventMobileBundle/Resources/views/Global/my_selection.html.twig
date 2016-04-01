@@ -1,0 +1,29 @@
+{% trans_default_domain 'FDCEventBundle' %}
+<div class="my-selection st-effect">
+    <h2 class="title one-line">{{ 'header.maselection.title.maselection'|trans }} <span class="count">(<span></span>)</span></h2>
+
+    <div class="selection-main-container">
+        <div id="myselection-filters" class="owl-carousel sliderDrag ">
+            <div class="vid">
+                <p><a class="active" href="#" data-filter="all">{{ 'header.maselection.nav.tous'|trans }}</a></p>
+            </div>
+            <div class="vid">
+                <p><a href="#" data-filter="article">{{ 'header.maselection.nav.articles'|trans }}</a></p>
+            </div>
+            <div class="vid">
+                <p><a  href="#" data-filter="video">{{ 'header.maselection.nav.videos'|trans }}</a></p>
+            </div>
+            <div class="vid">
+                <p><a href="#" data-filter="audio">{{ 'header.maselection.nav.audios'|trans }}</a></p>
+            </div>
+            <div class="vid">
+                <p><a href="#" data-filter="suggestion">{{ 'header.maselection.nav.suggestions'|trans }}</a></p>
+            </div>
+        </div>
+
+        <div class="content-container">
+            <div class="my-selection-container"></div>
+            <div class="suggestion"></div>
+        </div>
+    </div>
+</div>

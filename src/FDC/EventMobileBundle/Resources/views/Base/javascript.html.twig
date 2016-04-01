@@ -1,0 +1,81 @@
+{% block javascripts %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+    {% javascripts '@FDCEventMobileBundle/Resources/public/js/vendor.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% javascripts '@FDCEventMobileBundle/Resources/public/js/app.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script>jwplayer.key="{{ jwplayer_key }}";</script>
+    <script type="text/javascript">
+        $(document).on('click','form#newsletter #submit',function(event){
+            event.preventDefault();
+            event.stopPropagation();
+            var input = $('.newsletter #email');
+
+            $.ajax({
+                type     : "POST",
+                dataType : "json",
+                cache    : false,
+                url      : GLOBALS.urls.newsletterUrl,
+                data     : $('form#newsletter').serialize(),
+                success: function(data) {
+                    if (data.success == false) {
+                        input.addClass("error").val(data.object);
+                    }
+                    else {
+                        $('.newsletter form').addClass('hide');
+                        $('#confirmation span').html($('#email').val());
+                        $('#confirmation').addClass('show');
+                    }
+                }
+            });
+        });
+
+        $(document).on('click','.trailer-btn', function(event){
+            event.preventDefault();
+            event.stopPropagation();
+
+            $.ajax({
+                type  : "POST",
+                cache : false,
+                url   : GLOBALS.urls.pressDownloadTrailerUrl,
+                data  : {'id': $('.trailer-btn').attr('data-film')},
+                success: function(data) {
+                    $('#main').append(data).addClass('overlay-popin');
+                    $('#popin-download-press').addClass('visible-popin');
+                }
+            });
+
+        });
+        
+        $(document).on('click','.press-media .nav-mediapress td', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+        $(document).on('click','.read-more', function(event){
+            event.preventDefault();
+            event.stopPropagation();
+        });
+        // Surcharge de l'AjaxEvent de press.module.js
+        // A adapter
+        $(document).on('click','.read-more', function(){
+
+            var offset = $(this).attr('data-offset');
+            $(this).attr('data-offset', parseInt(offset) + GLOBALS.news.count );
+
+            $.ajax({
+                type  : "POST",
+                cache : false,
+                url   : GLOBALS.urls.loadPressReleaseUrl,
+                data  : {'offset': offset},
+                success: function(data) {
+                    $('#gridAudios .item:last-child').after(data);
+                }
+            });
+        });
+    </script>
+    <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
+{% endblock %}

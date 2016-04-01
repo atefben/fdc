@@ -1,0 +1,14 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+<div class="newsletter">
+    <form name="newsletter" id="newsletter" action="{{ path('fdc_event_global_newsletter') }}" method="post" {{ form_enctype(newsform) }}>
+        {{ form_widget(newsform.email, { 'id': 'email' }) }}
+        <input id="submit" type="submit" name="submit" value="{{ 'footer.newsletter.btn.abonner'|trans }}">
+        {{ form_errors(newsform) }}
+        {{ form_rest(newsform) }}
+    </form>
+
+    <div id="confirmation">
+        <p>{{ 'footer.newsletter.text.confirmation'|trans|raw }} <span id="newsletter-email"></span></p>
+    </div>
+</div>
