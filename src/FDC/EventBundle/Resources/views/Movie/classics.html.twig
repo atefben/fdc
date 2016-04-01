@@ -91,9 +91,7 @@
                                                     <div class="infos-item-list">
                                                         <h3 class="title-item">{{ film.titleVO }}</h3>
                                                         {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                            <span class="nom-item">
-                                                                {{ director.fullName }}
-                                                            </span>,
+                                                            <span class="nom-item">{{ director.fullName }}</span>,
                                                             {% if loop.index != director|length %}
                                                             {% endif %}
                                                         {% endfor %}
@@ -124,9 +122,9 @@
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_subtitle %}
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
-                                <div class="title-list-cat">
+                                <div class="title-list-cat title-film-detail">
                                     <h2 class="title">{{ transWidget.subtitle }}</h2>
-                                    <p>{{ transWidget.paragraph }}</p>
+                                    <p class="title-item">{{ transWidget.paragraph }}</p>
                                 </div>
                             {% endif %}
                         {% endfor %}
