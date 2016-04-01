@@ -77,14 +77,14 @@
      letter-spacing: 3px;
    }
    article {
-     height: 422px;
      box-sizing: border-box;
      float: none;
      padding-left: 0px;
      clear: both;
      color: #ffffff;
      width: 100%;
-     min-height: 405px;
+     min-height: 422px;
+     height: auto;
      overflow: hidden;
      background: center 0 no-repeat fixed;
      background-size: cover;
@@ -145,6 +145,7 @@
          font-size: 0.8125rem;
        }
        .date-item {
+         display: block;
          font-weight: 100;
          padding-bottom: 4px;
          color: #999999;
@@ -367,6 +368,8 @@
        width: 1000px;
        margin: 0 auto;
        text-align: center;
+       padding-left: 0;
+       padding-right: 0;
 
        &:after {
          background-color: $black;

@@ -32,6 +32,8 @@ imports:
     - { resource: roles/groups/security_master_translator.yml }
     - { resource: roles/groups/security_translator.yml }
     - { resource: roles/groups/security_super_admin.yml }
+    - { resource: roles/groups/security_admin_pages.yml }
+    - { resource: roles/groups/security_journalist.yml }
 
 parameters:
     #sonata
