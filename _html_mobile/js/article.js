@@ -96,5 +96,5 @@ $(document).ready(function() {
   }
 
   // PLAYERS AUDIO
-  $.initAudioPlayers(false);
+  initAudioPlayers(false);
 });
