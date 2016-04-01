@@ -94,14 +94,12 @@ class MediaRepository extends EntityRepository
             ->andWhere('m.displayedAll = 1');
 
         $this->addMasterQueries($qb, 'mi', $festival);
-        $this->addTranslationQueries($qb, 'mit', $locale);
-        $this->addFDCEventQueries($qb, 's');
-        $qb
+        $this->addTranslationQueries($qb, 'mit', $locale);$qb = $this->addFDCEventQueries($qb, 's');
+        $this->addAWSVideoEncodersQueries($qb, 'mit');
+        return $qb
             ->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult();
-
-        return $qb->getQuery()->getResult();
     }
 
     /**
