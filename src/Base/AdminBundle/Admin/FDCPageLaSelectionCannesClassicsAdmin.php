@@ -65,10 +65,10 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                 'field_type' => 'text'
             ))
         ;
-		$datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
-		$datagridMapper = $this->addPublishedBetweenFilters($datagridMapper);
-		$datagridMapper = $this->addStatusFilter($datagridMapper);
-		$datagridMapper = $this->addPriorityFilter($datagridMapper);		
+		//$datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+		//$datagridMapper = $this->addPublishedBetweenFilters($datagridMapper);
+		//$datagridMapper = $this->addStatusFilter($datagridMapper);
+		//$datagridMapper = $this->addPriorityFilter($datagridMapper);		
     }
 
     /**
