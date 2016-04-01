@@ -244,8 +244,7 @@ file that was distributed with this source code.
                                                         {% endif %}
                                                     {% endfor %}
                                                 {% endif %}
-
-                                                {% if display and (item_count > 0) %}
+                                                {% if display and (item_count > 0) and group.label != "dashboard.group.participate" %}
                                                     {% set active = false %}
                                                     {% for admin in group.items %}
                                                         {% if admin.hasroute('list') and admin.isGranted('LIST') and app.request.get('_sonata_admin') == admin.code %}
@@ -296,6 +295,37 @@ file that was distributed with this source code.
                                                     </li>
                                                 {% endif %}
                                             {% endfor %}
+                                            <!--------------------------->
+                                            <!-- DASHBOARD GROUP PARTICIPATE -->
+                                            <!--------------------------->
+                                            <li class="treeview">
+                                                <a href="#">
+                                                    <i class="fa fa-folder"></i>
+                                                    <span>Participer</span>
+                                                    <i class="fa pull-right fa-angle-left"></i>
+                                                </a>
+                                                <ul class="treeview-menu">
+                                                    <li>
+                                                        <a href="{{ path('admin_base_core_fdcpageprepare_edit', {id: admin_fdc_page_prepare_id}) }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            {{ 'dashboard.link.fdc_page_prepare'|trans({}, 'BaseAdminBundle') }}
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ path('admin_base_core_fdcpageparticipate_list') }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            {{ 'dashboard.link.fdc_page_participate'|trans({}, 'BaseAdminBundle') }}
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ path('admin_base_core_fdcpageparticipatesection_list') }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            {{ 'dashboard.link.fdc_page_participate_section'|trans({}, 'BaseAdminBundle') }}
+                                                        </a>
+                                                    </li>
+
+                                                </ul>
+                                            </li>
                                             <!--------------------------->
                                             <!-- DASHBOARD GROUP PRESS -->
                                             <!--------------------------->
