@@ -91,15 +91,22 @@ class FDCPagePrepareWidgetColumnType extends FDCPagePrepareWidgetType
                 )
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'sonata_field_description' =>  $this->FDCPagePrepareWidgetColumnDummyAdmin->getFormFieldDescriptions()['image'],
+                'sonata_field_description' => $this->FDCPagePrepareWidgetColumnDummyAdmin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->FDCPagePrepareWidgetColumnDummyAdmin->getModelManager(),
                 'class' => $this->FDCPagePrepareWidgetColumnDummyAdmin->getFormFieldDescriptions()['image']->getAssociationAdmin()->getClass(),
             ))
             ->add('file', 'sonata_type_model_list', array(
-                'sonata_field_description' =>  $this->FDCPagePrepareWidgetColumnDummyAdmin->getFormFieldDescriptions()['file'],
+                'sonata_field_description' => $this->FDCPagePrepareWidgetColumnDummyAdmin->getFormFieldDescriptions()['file'],
                 'model_manager' => $this->FDCPagePrepareWidgetColumnDummyAdmin->getModelManager(),
                 'class' => $this->FDCPagePrepareWidgetColumnDummyAdmin->getFormFieldDescriptions()['file']->getAssociationAdmin()->getClass(),
-            ))
+            ),
+                array(
+                    'link_parameters' => array(
+                        'context' => 'pdf',
+                        'filter' => array('context' => array('value' => 'pdf')),
+                        'provider' => 'sonata.media.provider.pdf'
+                    )
+                ))
 //            ->add('createdAt', 'hidden')
 //            ->add('updatedAt', 'hidden')
         ;

@@ -49,6 +49,7 @@
                     <i class="icon accordion icon_case-plus"></i>
                     <h4 class="descrip-participate">{{ content|trans_fallback('informationDescription')|raw }}</h4>
                     {% for widget in content.informationWidgets %}
+                        {{ dump(class(widget)) }}
                         {% if class(widget) == "FDCPagePrepareWidgetColumn" %}
                             {% include 'FDCEventBundle:Participate:widgets/column.html.twig' %}
                         {% endif %}
@@ -77,18 +78,20 @@
             </section>
 
             {# SECTION - INFORMATIONS #}
-            <section>
-                <div class="contain-section">
-                    <h3 class="title-participate">
-                        <i class="icon {{ content.serviceIcon }}"></i>
-                        {{ content|trans_fallback('serviceTitle') }}
-                    </h3>
-                    <i class="icon accordion icon_case-plus"></i>
-                    <div class="descrip-section">
-                        {{ content|trans_fallback('serviceDescription')|raw }}
+            {% if content|trans_fallback('serviceTitle') != "" or content|trans_fallback('serviceDescription')|raw != "" %}
+                <section>
+                    <div class="contain-section">
+                        <h3 class="title-participate">
+                            <i class="icon {{ content.serviceIcon }}"></i>
+                            {{ content|trans_fallback('serviceTitle') }}
+                        </h3>
+                        <i class="icon accordion icon_case-plus"></i>
+                        <div class="descrip-section">
+                            {{ content|trans_fallback('serviceDescription')|raw }}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            {% endif %}
         </div>
     </div>
 {% endblock body %}

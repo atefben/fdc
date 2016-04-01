@@ -5,6 +5,7 @@ sonata_admin:
         information:
             WRITER:    [VIEW, LIST, CREATE, EDIT, OPERATOR]
             EDITOR: [VIEW, LIST, CREATE, EDIT, DELETE, UNDELETE, OPERATOR]
+            LIST: [LIST]
             TRANSLATOR: [VIEW, LIST, EDIT, EXPORT]
             ADMIN:    [VIEW, LIST, CREATE, EDIT, DELETE, UNDELETE, EXPORT, OPERATOR]
         # permissions not related to an object instance and also to be available when objects do not exist

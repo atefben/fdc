@@ -13144,7 +13144,6 @@ input[type=submit] {
 }
 .categorie-items article .infos-item-list .nom-item {
   color: #c8a461;
-  display: block;
   padding-bottom: 4px;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-weight: 700;
