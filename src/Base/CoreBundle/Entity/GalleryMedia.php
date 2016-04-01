@@ -29,7 +29,7 @@ class GalleryMedia
 
     /**
      * @ORM\ManyToOne(targetEntity="MediaImage")
-     * @Groups({"news_show", "event_show"})
+     * @Groups({"news_list", "news_show", "event_show"})
      */
     private $media;
     
