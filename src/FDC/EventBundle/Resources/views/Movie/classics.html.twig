@@ -32,8 +32,8 @@
                     <div class="title-list-cat">
                         <h2 class="title-big">{{ transClassic.title }}</h2>
                         <div class="buttons">
-                            <a id="share-article" href="#" class="button">{{ 'cannesclassics.btn.partager'|trans }}</a>
-                            <a href="#" onclick="javascript:window.print()" class="button print"> {{ 'cannesclassics.btn.imprimer'|trans }}</a>
+                            <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{{ 'cannesclassics.btn.partager'|trans }}</a>
+                            <a href="#" onclick="javascript:window.print()" class="button print"><i class="icon icon_print"></i>{{ 'cannesclassics.btn.imprimer'|trans }}</a>
                         </div>
                     </div>
                     <div class="contain-article-invit">
@@ -93,9 +93,8 @@
                                                         {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                                                             <span class="nom-item">
                                                                 {{ director.fullName }}
-                                                            </span>
+                                                            </span>,
                                                             {% if loop.index != director|length %}
-                                                                ,
                                                             {% endif %}
                                                         {% endfor %}
                                                         <span class="date-item">
