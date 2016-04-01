@@ -11182,6 +11182,9 @@ article .read-later.rAlign span:after {
 }
 .single-movie .poster img {
   display: block;
+  width: 293px;
+  height: 397px;
+  object-fit: cover;
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -11778,8 +11781,7 @@ article .read-later.rAlign span:after {
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .single-movie .casting .gallery .img img.active {
-  min-height: 100%;
-  min-width: auto;
+  width: 100%;
   margin: 0 -100%;
   display: inline-block;
 }
@@ -12049,6 +12051,21 @@ article .read-later.rAlign span:after {
 }
 .single-movie .competition #slider-competition .owl-item {
   opacity: 1;
+}
+.single-movie .competition #slider-competition .owl-item .slide.compat-object-fit {
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  height: 284px;
+  margin-bottom: 60px;
+}
+.single-movie .competition #slider-competition .owl-item .slide.compat-object-fit img {
+  opacity: 0;
+}
+.single-movie .competition #slider-competition .owl-item img {
+  height: 284px;
+  width: 210px;
+  object-fit: cover;
 }
 .single-movie .competition #slider-competition .owl-item .linkVid {
   height: 284px;
@@ -13478,6 +13495,7 @@ input[type=submit] {
 }
 .selection-officielle figure .image.compat-object-fit img {
   opacity: 0;
+  height: 100%;
 }
 .selection-officielle .container:after {
   content: ".";
@@ -17575,6 +17593,9 @@ input[type=submit] {
   display: block;
   float: left;
   margin-right: 15px;
+  width: 55px;
+  height: 75px;
+  object-fit: cover;
 }
 .press .mediatheque .table .line .info .txt {
   height: 75px;

@@ -90,6 +90,7 @@ var GLOBALS = {
 <script src="js/bower_components/canvasloader/js/heartcode-canvasloader-min.js"></script>
 <script src="js/components/snap.svg.easing.js"></script>
 <script src="js/components/fullscreenjs.js"></script>
+<script src="js/components/object-fit-polyfill.js"></script>
 <script src="js/components/jwplayer.js"></script>
 <script src="js/components/clipboard.min.js"></script>
 <script src="js/components/pikaday.js"></script>

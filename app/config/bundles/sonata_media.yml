@@ -25,6 +25,11 @@ sonata_media:
                 small: { width: 584 , height: 794 , quality: 100 }
                 38x46: { width: 38 , height: 46 , quality: 100 }
 
+        film_image_cover:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                2560x1103: { width: 2560, height: 1103, quality: 100 }
 
         film_poster:
             providers:
@@ -40,6 +45,8 @@ sonata_media:
                 976x535: { width: 976 , height: 535 , quality: 100 }
                 210x284: { width: 210 , height: 284 , quality: 100 }
                 293x397: { width: 293, height: 397, quality: 100 }
+                588x784: { width: 588, height: 784, quality: 100 }
+                259x352: { width: 259, height: 352, quality: 100 }
 
         film_main:
             providers:
@@ -53,6 +60,9 @@ sonata_media:
                   420x560: { width: 420, height: 560, quality: 100 }
                   big:   { width: 1000 , quality: 100 }
                   highres: { width: 2500, quality: 100 }
+                  210x284: { width: 210 , height: 284 , quality: 100 }
+                  293x397: { width: 293, height: 397, quality: 100 }
+                  259x352: { width: 259, height: 352, quality: 100 }
 
         film_film:
             providers:
@@ -72,6 +82,7 @@ sonata_media:
                 highres: { width: 2500, quality: 100 }
                 212x134: { width: 212 , height: 134 , quality: 100 }
                 210x284: { width: 210 , height: 284 , quality: 100 }
+                259x352: { width: 259, height: 352, quality: 100 }
 
         pdf:
             providers:

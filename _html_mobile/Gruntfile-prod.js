@@ -101,9 +101,13 @@ module.exports = function(grunt) {
         files: [
           {
             expand:true,
-            cwd: './js/',
-            src: ['*.js', 'include/footer.js', 'include/menu.js', 'include/myselection.js'],
+            cwd: './js-concat/',
+            src: ['*.js', 'include/footer.js', 'include/menu.js', 'include/myselection.js', '!*.min.js'],
             dest: '../src/FDC/EventMobileBundle/Resources/public/js/dev/'
+          },
+          {
+            src: "./dist/js/vendor.min.js",
+            dest: "../src/FDC/EventMobileBundle/Resources/public/js/vendor.min.js"
           }
         ]
       },
@@ -160,7 +164,8 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build:js', [
-    'tags:all',
+    'tags:app',
+    'tags:vendor',
     'useminPrepare',
     'concat:generated',
     'uglify:generated',

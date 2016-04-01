@@ -23,37 +23,34 @@
                             {% set countImage = countImage + 1 %}
                         {% endif %}
                     {% endfor %}
-                    {% if film.selectionSection.id == section.id %}
-                        <div class="line" data-film="{{ film.id }}" data-section="{{ film.selectionSection.id }}">
-                            <div class="container {{ k == 0 ? 'active' : '' }}">
-                                <div class="info">
-                                    {% set film_media = null %}
-                                    {% if film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first != false %}
-                                        {% set film_media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-                                    {% elseif film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first != false %}
-                                        {% set film_media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-                                    {% elseif film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first != false %}
-                                        {% set film_media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-                                    {% endif %}
-                                    {% if film_media is not null and film_media != false %}
-                                        <img src="{% path film_media, 'tiny' %}" alt="" class="film_image">
-                                    {% else %}
-                                        <img src="{{ asset('images/default_image_film.jpg') }}" class="default_image"
-                                             alt="">
-                                    {% endif %}
-                                    <div class="txt">
-                                        <div class="vCenter">
-                                            <div class="vCenterKid">
-                                                <p>
-                                                    {{ film|trans_fallback('title') }}
-                                                </p>
-                                                <p>
-                                                    {% for k,director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                        <a style="display: inline-block" class="director"
-                                                           href="#">{{ director.fullName }}</a>{{ loop.last ? ' ' : ',' }}
-                                                    {% endfor %}
-                                                </p>
-                                            </div>
+                    <div class="line">
+                        <div class="container {{ k == 0 ? 'active' : '' }}">
+                            <div class="info">
+                                {% set film_media = null %}
+                                {% if film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first != false %}
+                                    {% set film_media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+                                {% elseif film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first != false %}
+                                    {% set film_media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                                {% elseif film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first != false %}
+                                    {% set film_media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+                                {% endif %}
+                                {% if film_media is not null and film_media != false %}
+                                    <img src="{% path film_media, 'tiny' %}" alt="" class="film_image" data-object-fit="cover">
+                                {% else %}
+                                    <img src="{{ asset('images/default_image_film.jpg') }}" class="default_image" alt="" data-object-fit="cover">
+                                {% endif %}
+                                <div class="txt">
+                                    <div class="vCenter">
+                                        <div class="vCenterKid">
+                                            <p>
+                                                {{ film|trans_fallback('title') }}
+                                            </p>
+                                            <p>
+                                                {% for k,director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                    <a style="display: inline-block" class="director"
+                                                       href="#">{{ director.fullName }}</a>{{ loop.last ? ' ' : ',' }}
+                                                {% endfor %}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

@@ -109,7 +109,16 @@
                                 <div class="line">
                                     <div class="container">
                                         <div class="info">
-                                            {% thumbnail media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first, 'tiny' %}
+                                            {% set media = media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+                                            {% if media is empty %}
+                                                {% set media = media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                                            {% endif %}
+                                            {% if media is empty %}
+                                                {% set media = media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+                                            {% endif %}
+                                            {% if media is not empty %}
+                                                {% thumbnail media, 'tiny' %}
+                                            {% endif %}
                                             <div class="txt">
                                                 <div class="vCenter">
                                                     <div class="vCenterKid">

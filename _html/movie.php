@@ -79,7 +79,7 @@
         <div class="container container-top">
           <div class="poster video">
             <a href="#" class="picto"><i class="icon icon_video"></i></a>
-            <img src="img/movie/002.jpg" alt="" />
+            <img src="img/movie/002.jpg" alt="" data-object-fit="cover">
           </div>
           <div class="info-film">
             <div class="categories"><span>En compétition</span><span>longs métrages</span><span>Film d'ouverture</span></div>
@@ -270,9 +270,9 @@
           <div class="casting" data-section="casting">
             <div class="gallery">
               <div class="img shadow-bottom">
-                <img src="img/movie/004.jpg" alt="" class="active" />
-                <img src="img/movie/004.jpg" alt="" />
-                <img src="img/movie/004.jpg" alt="" />
+                <img src="//dummyimage.com/600x400/000/fff.jpg" alt="" class="active" />
+                <img src="//dummyimage.com/400x400/000/fff.jpg" alt="" />
+                <img src="//dummyimage.com/500x800/000/fff.jpg" alt="" />
                 <span class="caption">© FDC / Jean-Luc GODARD</span>
               </div>
               <div class="thumbs">
@@ -500,7 +500,7 @@
           <h2 class="title">En compétition 2016</h2>
           <div id="slider-competition" class="owl-carousel sliderDrag">
             <div class="slide">
-              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <img src="http://dummyimage.com/210x84/000/fff" alt="" />
               <a class="linkVid" href="#"></a>
               <div class="info-movie">
                 <p>Carol</p>

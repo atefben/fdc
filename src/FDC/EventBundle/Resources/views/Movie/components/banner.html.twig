@@ -82,17 +82,20 @@
                 {% endif %}
             {% else %}
                 {% set posterImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+                {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
                 {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
 
                 {% set media = null %}
                 {% set format =  '293x397' %}
                 {% if posterImg is not empty %}
                     {% set media = posterImg %}
+                {% elseif mainImg is not empty %}
+                    {% set media = mainImg %}
                 {% elseif filmImg is not empty %}
                     {% set media = filmImg %}
                 {% endif %}
                 {% if media is not empty %}
-                    {% media media, format %}
+                    {% media media, format with {'data-object-fit': 'cover'} %}
                 {% else %}
                     <img src="{{ asset('bundles/fdcevent/img/palmares/film_w293.jpg') }}" alt="Affiche film" />
                 {% endif %}
@@ -107,15 +110,16 @@
                 <span>{{ 'movie.fdc_close'|trans }}</span>
             {% endif %}
         </div>
+        {% set secondTitle = null %}
         {% if movie|trans_fallback('title') is not empty %}
             {% set mainTitle = movie.titleVO %}
-			{% set secondTile = movie|trans_fallback('title') %}
+			{% set secondTitle = movie|trans_fallback('title') %}
         {% else %}
             {% set mainTitle = movie.titleVO %}
         {% endif %}
         <h2>{{ mainTitle }}</h2>
-        {% if secondTile and mainTitle != secondTile %}
-            <div class="title-original">({{ secondTile }})</div>
+        {% if secondTitle and mainTitle != secondTitle %}
+            <div class="title-original">({{ secondTitle }})</div>
         {% else %}
             <div class="title-original"></div>
         {% endif %}

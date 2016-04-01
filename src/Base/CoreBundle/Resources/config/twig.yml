@@ -103,3 +103,9 @@ services:
         arguments: [@service_container]
         tags:
             - { name: twig.extension }
+
+    base.twig.fdc_page_la_selection_cannes_classics_widget_instance_of_extension:
+            class: Base\CoreBundle\Twig\Extension\FDCPageLaSelectionCannesClassicsWidgetInstanceOfExtension
+            arguments: [@service_container]
+            tags:
+                - { name: twig.extension }

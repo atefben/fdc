@@ -13,23 +13,4 @@
     %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
-
-    {% if app.request.attributes.get('_route') == 'admin_base_core_fdcpagelaselectioncannesclassics_edit' %}
-        <script type="text/javascript">
-            $(document).ready(function(){
-                {% if app.request.get('id') == 1 %}
-                var repaceTitleWith = '{{ 'dashboard.link.fdc_page_la_selection_cannes_classics_honor'|trans({}, 'BaseAdminBundle') }}';
-                {% elseif app.request.get('id') == 2 %}
-                var repaceTitleWith = '{{ 'dashboard.link.fdc_page_la_selection_cannes_classics_hommages'|trans({}, 'BaseAdminBundle') }}';
-                {% elseif app.request.get('id') == 3 %}
-                var repaceTitleWith = '{{ 'dashboard.link.fdc_page_la_selection_cannes_classics_copy'|trans({}, 'BaseAdminBundle') }}';
-                {% elseif app.request.get('id') == 4 %}
-                var repaceTitleWith = '{{ 'dashboard.link.fdc_page_la_selection_cannes_classics_wcp'|trans({}, 'BaseAdminBundle') }}';
-                {% elseif app.request.get('id') == 5 %}
-                var repaceTitleWith = '{{ 'dashboard.link.fdc_page_la_selection_cannes_classics_documentaries'|trans({}, 'BaseAdminBundle') }}';
-                {% endif %}
-                jQuery('.sonata-ba-form h4.box-title').first().html(repaceTitleWith);
-            });
-        </script>
-    {% endif %}
 {% endblock %}

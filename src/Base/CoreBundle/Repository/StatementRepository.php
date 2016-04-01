@@ -334,7 +334,7 @@ class StatementRepository extends EntityRepository
             ->orderBy('n.publishedAt', 'DESC')
             ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime)
-            ->setParameter('site_slug', 'site-evenementiel')
+            ->setParameter('site_slug', 'site-press')
         ;
 
         return $qb
