@@ -1,0 +1,36 @@
+<div id="filter-update">
+{% include 'FDCEventMobileBundle:News:components/filters.html.twig' %}
+</div>
+
+{% set vars = {'isDouble': 'double'} %}
+{% for article in homeArticles %}
+    {% if loop.first %}
+    <div class="articles right pad">
+        {% include 'FDCEventMobileBundle:News:widgets/article-home.html.twig' with vars %}
+    {% elseif loop.index == 4 %}
+        {% if homeArticlesSlider is not empty %}
+            {% include 'FDCEventMobileBundle:News:widgets/slideshow-actu-home.html.twig' %}
+        {% endif %}
+    <div class="articles left">
+        {% include 'FDCEventMobileBundle:News:widgets/article-home.html.twig' with vars %}
+    {% else %}
+        {% include 'FDCEventMobileBundle:News:widgets/article-home.html.twig' %}
+    {% endif %}
+    {% if loop.index == 3 %}
+    </div>
+    {% endif %}
+    {% if loop.last %}
+    </div>
+    {% endif %}
+{% endfor %}
+{% if homeArticlesNext %}
+    <div class="articles right nextDay">
+        {% for article in homeArticlesNext %}
+            {% if loop.first %}
+            {% include 'FDCEventMobileBundle:News:widgets/article-home.html.twig' with vars %}
+            {% else %}
+            {% include 'FDCEventMobileBundle:News:widgets/article-home.html.twig' %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}

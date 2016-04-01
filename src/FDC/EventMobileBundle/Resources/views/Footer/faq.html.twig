@@ -1,0 +1,29 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventMobileBundle::layout.html.twig' %}
+
+{% block body %}
+<div id="main" class="loading">
+    <div class="faq">
+        <h2 class="title">{{ 'faq.title.faq'|trans }}</h2>
+        <div id="horizontal-menu" class="owl-carousel sliderDrag videosSlider">
+            {% for key, section in content %}
+                <div class="vid selected">
+                  <p><a href="#" {% if key == 0 %}class="active"{% endif %} data-section="{{ section.slug }}">{{ section.name }}</a></p>
+                </div>
+            {% endfor %}
+        </div>
+        {% for section in content %}
+            <section class="faq-container{% if loop.first %} faq-active{% endif %}" data-name="{{ section.slug }}">
+            {% for article in section.articles %}
+                <div class="faq-question">
+                    <div class="faq-question">
+                        <h3 class="faq-title">{{ article.title }}</h3><i class="fa fa-plus"></i>
+                    </div>
+                    <p class="faq-description">{{ article.content }}</p>
+                </div>
+            {% endfor %}
+            </section>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

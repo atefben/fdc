@@ -1,0 +1,17 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+<div class="half-div">
+{% for gallery in widget.gallery.medias %}
+    {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
+    {% if trans is null or trans.file is null %}
+        {% set trans = gallery.media.findTranslationByLocale('fr') %}
+    {% endif %}
+    {% set file = trans.file %}
+    <div class="half-photo">
+        <div class="photo-container">
+            <img src="{% path file, 'reference' %}" alt="{{ trans.alt }}" title="{{ trans.legend }}">
+            <p class="caption">{{ trans.copyright }}</p>
+        </div>
+    </div>
+{% endfor %}
+</div>
