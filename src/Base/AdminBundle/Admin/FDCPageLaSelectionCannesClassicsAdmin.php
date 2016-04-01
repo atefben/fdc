@@ -4,6 +4,8 @@ namespace Base\AdminBundle\Admin;
 
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsTranslation;
+use Base\CoreBundle\Entity\MediaVideo;
+use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -81,11 +83,11 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
             'sortable' => 'createdAt',
        	 	))
             ->add('priorityStatus', 'choice', array(
-                'choices'   => FDCPageLaSelectionCannesClassics::getPriorityStatusesList(),
+                'choices'   => MediaVideo::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
             ))
 	        ->add('statusMain', 'choice', array(
-	             'choices'   => FDCPageLaSelectionCannesClassicsTranslation::getStatuses(),
+	             'choices'   => MediaVideoTranslation::getStatuses(),,
 	             'catalogue' => 'BaseAdminBundle',
 	        ))
             ->add('_edit_translations', null, array(
