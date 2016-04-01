@@ -16,138 +16,142 @@
                 <div class="bandeau-list">
                     <ul class="sub-nav-list nav-movie">
                         {% for filter in filters %}
-                            <li>
-                                <a href="{{ path('fdc_event_movie_classics', {'slug': filter.slug }) }}"
-                                   class="{% if app.request.attributes.get('slug') == filter.slug %}active{% endif %} ajax">
-                                    {{ filter.name }}
-                                </a>
-                            </li>
+                            {% set trans = filter.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is not null %}
+                                <li>
+                                    <a href="{{ path('fdc_event_movie_classics', {'slug': trans.slug }) }}">
+                                        {{ trans.titleNav }}
+                                    </a>
+                                </li>
+                            {% endif %}
                         {% endfor %}
                     </ul>
                 </div>
+                {% set transClassic = classic.findTranslationByLocale(app.request.locale) %}
                 <section class="categorie-items honneur-invit">
-                    {% if content.title is defined %}
                     <div class="title-list-cat">
-                        <h2 class="title-big">{{ content.title }}</h2>
+                        <h2 class="title-big">{{ transClassic.title }}</h2>
                         <div class="buttons">
                             <a id="share-article" href="#" class="button">{{ 'cannesclassics.btn.partager'|trans }}</a>
-                                            <a href="#" onclick="javascript:window.print()" class="button print"> {{ 'cannesclassics.btn.imprimer'|trans }}</a>
+                            <a href="#" onclick="javascript:window.print()" class="button print"> {{ 'cannesclassics.btn.imprimer'|trans }}</a>
                         </div>
                     </div>
-                    {% endif %}
-                    {% if content.guest is defined %}
-                        <div class="contain-article-invit">
-
-                        {% for guest in content.guest %}
-                            <div class="title-list-cat">
-                                <h2 class="title">{{ guest.fullName }}</h2>
-                            </div>
-                            <div class="contain-img-honneur">
-                                <img src="{{ guest.image.path }}" alt="invite d honneur" class="photo-realisateur">
-                                <span class="copy">{{ guest.image.copyright }}</span>
-                            </div>
-                            <p class="pres-honneur">
-                                {{ guest.description|raw }}
-                            </p>
-
-                            <div class="small-pres">
-
-                            {% for widget in guest.widgets %}
-                                {% if widget.type == 'movie_widget_info' %}
-                                    {% include 'FDCEventBundle:Movie:widgets/info.html.twig' %}
-
-                                {% elseif widget.type == 'movie_widget_text' %}
-                                    <p>
-                                        {{ widget.content|raw }}
-                                    </p>
-
-                                {% elseif widget.type == 'movie_widget_trailer' %}
-                                    {% include 'FDCEventBundle:Movie:widgets/trailer.html.twig' %}
-
-                            </div>
-
-                                {% elseif widget.type == 'movie_widget_audio' %}
-                                    {% include 'FDCEventBundle:News:widgets/audio.html.twig' %}
-
-                                {% elseif widget.type == 'movie_widget_quote' %}
-                                    {% include 'FDCEventBundle:News:widgets/quote.html.twig' %}
-                            <div class="small-pres container">
-                                {% elseif widget.type == 'movie_widget_image' and widget.photos|length > 1 %}
-                                    {% include 'FDCEventBundle:Movie:widgets/image.html.twig' with {'photos': widget.photos} %}
-
-                                {% elseif widget.type == 'image_dual_align' %}
-                                    {% include 'FDCEventBundle:Movie:widgets/dual-photo.html.twig' %}
-
-                            </div>
-
-                                {% endif %}
-                            {% endfor %}
-                        {% endfor %}
-                    {% endif %}
-                    {% for section in content.sections %}
-                    <section class="categorie-items">
-                        {% if section.title is defined  %}
-                            <div class="title-list-cat title-film-detail">
-                                <h2 class="title">{{ section.title }}</h2>
-                            {% if section.description is defined %}
-                                <p class="title-item">
-                                    {{ section.description }}
-                                </p>
-                            {% endif %}
-                            </div>
-                        {% endif %}
-
-                        {% for film in section.film %}
-                            <article style="background-image:url({{ film.image.path }})">
-                                <div class="bck-hover">
-                                    <div class="contain_item">
-                                        <img src="{{ film.image.path }}" alt="images films">
-                                        <div class="infos-item-list">
-                                            <h3 class="title-item">{{ film.title }}</h3>
-                                            <span class="nom-item">{{ film.author.fullName }}</span>
-                                            <span class="date-item">{{ film.date }} - {{ film.duration }}</span>
-                                            <p class="description-item">
-                                                {{ film.description|raw }}
-                                            </p>
-                                        </div>
-                                    </div>
+                    <div class="contain-article-invit">
+                        {% for widget in classic.widgets %}
+                            {% if widget is fdc_page_la_selection_cannes_classics_widget_text %}
+                                {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
+                                <div class="small-pres">
+                                    {{ transWidget.content|raw }}
                                 </div>
-                            </article>
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_quote %}
+                                {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
+                                <div class="quote">
+                                    <blockquote>
+                                        {{ transWidget.content }}
+                                    </blockquote>
+                                </div>
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_audio %}
+                                {% include 'FDCEventBundle:News:widgets/audio.html.twig' %}
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video_youtube %}
+                                {% include 'FDCEventBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video %}
+                                {% include 'FDCEventBundle:News:widgets/video.html.twig' with {'widget': widget} %}
+                            {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
+                                <div class="contain-img-honneur">
+                                    {% set photo = widget.gallery.medias[0].media %}
+                                    {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : photo, 'hideCopyright': true } %}
+                                    {% set copyright = photo|trans_fallback('copyright') %}
+                                    <span class="copy">{% if copyright is not empty %} © {{ copyright }}{% endif %}</span>
+                                </div>
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
+                                <div class="small-pres container">
+                                    {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
+                                </div>
+                            {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image_dual_align %}
+                                <div class="small-pres container">
+                                    {% include 'FDCEventBundle:News:widgets/dual-photo.html.twig' with {'hideHalfDiv': true} %}
+                                </div>
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_movie %}
+                                {% if widget.widgetMovie is not null and widget.widgetMovie.films|length > 0 %}
+                                    {% for film in widget.widgetMovie.films %}
+                                        {% set film = film.film %}
+                                        {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+                                        {% if media is empty %}
+                                            {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                                        {% endif %}
+                                        {% if media is empty %}
+                                            {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+                                        {% endif %}
+                                        <article style="background-image:url('{% if media is not empty %}{% path media, 'reference' %}{% endif %}')">
+                                            <div class="bck-hover">
+                                                <div class="contain_item">
+                                                    {% if media is not empty %}
+                                                        {% media media, '259x352' %}
+                                                    {% endif %}
+                                                    <div class="infos-item-list">
+                                                        <h3 class="title-item">{{ film.titleVO }}</h3>
+                                                        {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                            <span class="nom-item">
+                                                                {{ director.fullName }}
+                                                            </span>
+                                                            {% if loop.index != director|length %}
+                                                                ,
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        <span class="date-item">
+                                                            {% if  film.productionYear is not null and  film.productionYear != 0 %}
+                                                                {{  film.productionYear }}
+                                                                {% if  film.duration is not null and  film.duration > 0 %}
+                                                                    -
+                                                                {% endif %}
+                                                            {% endif %}
+                                                            {% if  film.duration is not null and  film.duration > 0 %}
+                                                                {{  film.duration }}
+                                                            {% endif %}
+                                                        </span>
+                                                        <p class="description-item">
+                                                            {{ film|trans_fallback('synopsis')|nl2br|raw }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    {% endfor %}
+                                {% endif %}
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_intro %}
+                                {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
+                                <div class="pres-honneur">
+                                    {{ transWidget.introduction|raw }}
+                                </div>
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_subtitle %}
+                                {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
+                                <div class="title-list-cat">
+                                    <h2 class="title">{{ transWidget.subtitle }}</h2>
+                                    <p>{{ transWidget.paragraph }}</p>
+                                </div>
+                            {% endif %}
                         {% endfor %}
-                    </section>
-                    {% endfor %}
-                    {% if content.title is defined %}
-                    <div class="share">
-                        <p>{{ 'cannesclassics.btn.partagerlarticle'|trans }}</p>
-                        <div class="buttons square">
-                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_event_news_index') }}" class="button facebook">
-                                <i class="icon icon_facebook"></i>
-                            </a>
-                            <a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_news_index') }}" class="button twitter">
-                                <i class="icon icon_twitter"></i>
-                            </a>
-                            <a href="#" rel="nofollow" class="button link self"><i class="icon icon_link"></i></a>
-                            <a href="#" rel="nofollow" class="button email self"><i class="icon icon_lettre"></i></a>
-                            <a href="#" rel="nofollow" onclick="javascript:window.print()" class="button print"><i class="icon icon_print"></i></a>
-                        </div>
                     </div>
-                    {% endif %}
                 </section>
             </div>
         </div>
-        <div class="bandeau-list  bandeau-list-footer push-footer vCenter">
-            <div class="bandeau-list-img vCenterKid" style="background-image:url({{ content.category.image.path }});">
-                <h2 class="title title-list-header">{{ content.category.title }}</h2>
-                <a href="{{ content.category.slug }}" class="bandeau-lien">
-                    {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                    <img class="svg-arrow" src="{{ asset_url }}" alt="{{ 'cannesclassics.btn.decouvrirlarubrique'|trans }}" />
-                    {% endimage %}
-                    {{ 'cannesclassics.btn.decouvrirlarubrique'|trans }}
-                </a>
-            </div>
-        </div>
     </div>
-    <!-- POPIN MAIL SHARE ---->
 
-    <!-- END POPIN MAIL SHARE -->
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+        {
+            "name" : 'breadcrumb.webtv.home'|trans,
+            "url"  : path('fdc_event_news_index')
+        },
+        {
+            "name" : 'selection.nav.cannes-classics'|trans,
+            "url"  : path('fdc_event_movie_classics', {slug: transClassic.slug})
+        },
+        {
+            "name" : transClassic.title,
+            "url"  : ""
+        }
+    ]
+    } %}
 {% endblock body %}

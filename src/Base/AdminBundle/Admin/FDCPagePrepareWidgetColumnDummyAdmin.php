@@ -27,9 +27,9 @@ class FDCPagePrepareWidgetColumnDummyAdmin extends Admin
             ->add('file', 'sonata_type_model_list',array(),
                 array(
                     'link_parameters' => array(
-                        'context'  => 'media_archive',
-                        'filter'   => array('context' => array('value' => 'media_archive')),
-                        'provider' => 'sonata.media.provider.archive'
+                        'context'  => 'pdf',
+                        'filter'   => array('context' => array('value' => 'pdf')),
+                        'provider' => 'sonata.media.provider.pdf'
                     )
                 ))
         ;

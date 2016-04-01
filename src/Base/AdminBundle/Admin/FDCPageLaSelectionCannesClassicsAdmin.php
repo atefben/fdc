@@ -4,7 +4,10 @@ namespace Base\AdminBundle\Admin;
 
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsTranslation;
-use Sonata\AdminBundle\Admin\Admin;
+use Base\CoreBundle\Entity\MediaVideo;
+use Base\CoreBundle\Entity\MediaVideoTranslation;
+
+use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -62,6 +65,9 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                 'field_type' => 'text'
             ))
         ;
+		$datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+		$datagridMapper = $this->addStatusFilter($datagridMapper);
+		$datagridMapper = $this->addPriorityFilter($datagridMapper);		
     }
 
     /**
@@ -72,11 +78,20 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('title', null, array('template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig'))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit' => array(),
-                    'show' => array()
-                )
+      	  	->add('createdAt', null, array(
+            'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+            'sortable' => 'createdAt',
+       	 	))
+            ->add('priorityStatus', 'choice', array(
+                'choices'   => MediaVideo::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+	        ->add('statusMain', 'choice', array(
+	             'choices'   => MediaVideoTranslation::getStatuses(),
+	             'catalogue' => 'BaseAdminBundle',
+	        ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
             ))
         ;
     }

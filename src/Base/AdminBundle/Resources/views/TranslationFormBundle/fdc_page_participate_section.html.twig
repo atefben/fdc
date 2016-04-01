@@ -40,15 +40,15 @@
 
                                             <div class="item base-widget">
                                                 {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_typeone_type' %}
-                                                    <h4><strong>Type 1</strong></h4>
+                                                    <h4><strong>Image + texte</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typetwo_type' %}
-                                                    <h4><strong>Type 2</strong></h4>
+                                                    <h4><strong>Partenaires / Fournisseurs</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typethree_type' %}
-                                                    <h4><strong>Type 3</strong></h4>
+                                                    <h4><strong>Pictos</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefour_type' %}
-                                                    <h4><strong>Type 4</strong></h4>
+                                                    <h4><strong>3 colonnes</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefive_type' %}
-                                                    <h4><strong>Type 5</strong></h4>
+                                                    <h4><strong>4 colonnes</strong></h4>
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
@@ -79,33 +79,33 @@
                                     </div>
                                     <a class="btn btn-primary btn-add-base-widget"
                                        data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_participate_section_widget_typeone_type)| escape }}"><i
-                                                class="icon-plus"></i>Type 1</a>
+                                                class="icon-plus"></i>Image + texte</a>
                                     <a class="btn btn-primary btn-add-base-widget"
                                        data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_participate_section_widget_typetwo_type)| escape }}"><i
-                                                class="icon-plus"></i>Type 2</a>
+                                                class="icon-plus"></i>Partenaires / Fournisseurs</a>
                                     <a class="btn btn-primary btn-add-base-widget"
                                        data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_participate_section_widget_typethree_type)| escape }}"><i
-                                                class="icon-plus"></i>Type 3</a>
+                                                class="icon-plus"></i>Pictos</a>
                                     <a class="btn btn-primary btn-add-base-widget"
                                        data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_participate_section_widget_typefour_type)| escape }}"><i
-                                                class="icon-plus"></i>Type 4</a>
+                                                class="icon-plus"></i>3 colonnes</a>
                                     <a class="btn btn-primary btn-add-base-widget"
                                        data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_participate_section_widget_typefive_type)| escape }}"><i
-                                                class="icon-plus"></i>Type 5</a>
+                                                class="icon-plus"></i>4 colonnes</a>
                                 {% else %}
                                     {% for widget in form.parent.children.widgets.children %}
 
                                         <div class="item base-widget">
                                             {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_typeone_type' %}
-                                                <h4><strong>Type 1</strong></h4>
+                                                <h4><strong>Image + texte</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typetwo_type' %}
-                                                <h4><strong>Type 2</strong></h4>
+                                                <h4><strong>Partenaires / Fournisseurs</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typethree_type' %}
-                                                <h4><strong>Type 3</strong></h4>
+                                                <h4><strong>Pictos</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefour_type' %}
-                                                <h4><strong>Type 4</strong></h4>
+                                                <h4><strong>3 colonnes</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefive_type' %}
-                                                <h4><strong>Type 5</strong></h4>
+                                                <h4><strong>4 colonnes</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}

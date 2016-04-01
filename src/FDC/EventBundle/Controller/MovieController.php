@@ -159,7 +159,10 @@ class MovieController extends Controller
 
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
+        $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll();
+
         return array(
+            'cannesClassics' => $cannesClassics,
             'selectionTabs' => $pages,
             'page'          => $page,
             'movies'        => $movies,
@@ -173,9 +176,33 @@ class MovieController extends Controller
      * @param $slug
      * @return array
      */
-    public function classicsAction($slug)
+    public function classicsAction(Request $request, $slug)
     {
+        $em = $this->get('doctrine')->getManager();
+        $locale = $request->getLocale();
 
+        $classic = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getBySlug($locale, $slug);
+
+        if ($classic == null) {
+            throw new NotFoundHttpException('Cannes Classic not found');
+        }
+
+        $pages = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageLaSelection')
+            ->getPagesOrdoredBySelectionSectionOrder($locale)
+        ;
+
+        $filters = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll();
+
+        return array(
+            'cannesClassics' => $filters,
+            'classic' => $classic,
+            'filters' => $filters,
+            'selectionTabs' => $pages
+        );
+
+        /*
         $filters = array(
             array(
                 'name' => 'Invités d\'honneur',
@@ -631,7 +658,7 @@ class MovieController extends Controller
         return array(
             'content' => $content,
             'filters' => $filters
-        );
+        );*/
     }
 
     /**
