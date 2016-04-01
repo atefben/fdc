@@ -1,8 +1,8 @@
-var waves = [];
-var inter = null;
-$.initAudioPlayers = function(autoplay) {
+var waves = [],
+    inter = null;
 
-    var duration = null;
+function initAudioPlayers(autoplay) {
+  var duration = null;
 
   $('.audio-player').each(function(i) {
     $(this).addClass('loading').find('.wave-container').attr('id', 'wave-' + i);
@@ -23,12 +23,11 @@ $.initAudioPlayers = function(autoplay) {
     // once it's ready
     wave.on('ready', function() {
       $(wave.container).parents('.audio-player').removeClass('loading');
-      if(autoplay){
+      if(autoplay) {
         wave.play();
         // update current time
         inter = setInterval(function() {
           var curr = wave.getCurrentTime();
-
           var minutes = parseInt(Math.floor(curr / 60));
           var seconds = parseInt(curr - minutes * 60);
 
@@ -38,12 +37,11 @@ $.initAudioPlayers = function(autoplay) {
           $('.audio-player').find('.duration .curr').text(minutes + ':' + seconds);
         }, 1000);
       }
-
     });
 
     wave.on('finish', function() {
-    	$(wave.container).parents('.audio-player').find(".playpause .icon").toggleClass("icon_play");
-    	wave.stop();
+      $(wave.container).parents('.audio-player').find(".playpause .icon").toggleClass("icon_play");
+      wave.stop();
     });
 
     waves.push(wave);
@@ -51,16 +49,12 @@ $.initAudioPlayers = function(autoplay) {
     $(this).find('.playpause').on('click', function(e) {
       e.preventDefault();
 
-    	if ($(this).find(".icon").hasClass('icon_audio')){
-    		$(this).find(".icon").removeClass('icon_audio');
-    		$(this).find(".icon").addClass('icon_pause');
-    	}
-    	else{
-    		$(this).find(".icon").toggleClass("icon_play");
-    	}
-    	
-
-      
+      if ($(this).find(".icon").hasClass('icon_audio')) {
+        $(this).find(".icon").removeClass('icon_audio');
+        $(this).find(".icon").addClass('icon_pause');
+      } else {
+        $(this).find(".icon").toggleClass("icon_play");
+      }
 
       if(inter) {
         clearInterval(inter);
@@ -85,7 +79,6 @@ $.initAudioPlayers = function(autoplay) {
       // update current time
       inter = setInterval(function() {
         var curr = wave.getCurrentTime();
-
         var minutes = parseInt(Math.floor(curr / 60));
         var seconds = parseInt(curr - minutes * 60);
 
@@ -103,6 +96,7 @@ $.initAudioPlayers = function(autoplay) {
           }
         }
       }
+      
       $('.audio-player').not($audioplayer).removeClass('pause');
       $('.audio-player').not($audioplayer).removeClass('on');
       $('.audio-player').not($audioplayer).find(".playpause .icon").addClass('icon_audio');
@@ -116,13 +110,13 @@ $.initAudioPlayers = function(autoplay) {
     });
   });
 }
-$.stopSound = function(){
-  if(waves[0].isPlaying()){
+
+function stopSound() {
+  if(waves[0].isPlaying()) {
     waves[0].stop();
   }
-  
 }
-$.loadSound = function(url){
-  waves[0].load(url);
 
+function loadSound(url) {
+  waves[0].load(url);
 }
