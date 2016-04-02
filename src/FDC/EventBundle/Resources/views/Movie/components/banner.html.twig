@@ -86,7 +86,7 @@
                 {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
 
                 {% set media = null %}
-                {% set format =  'big' %}
+                {% set format =  'mobile' %}
                 {% if posterImg is not empty %}
                     {% set media = posterImg %}
                 {% elseif mainImg is not empty %}
