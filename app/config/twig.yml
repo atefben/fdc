@@ -36,6 +36,9 @@ twig:
         admin_press_homepage_id: %admin_press_homepage_id%
         admin_press_guide_id: %admin_press_guide_id%
         admin_press_contact_id: %admin_press_contact_id%
+        admin_fdc_page_prepare_id: %admin_fdc_page_prepare_id%
+        admin_event_fdc_page_prepare_id: %admin_event_fdc_page_prepare_id%
+        admin_event_fdc_page_participate_id: %admin_event_fdc_page_participate_id%
         admin_press_download_id: %admin_press_download_id%
         admin_press_medialibrary_id: %admin_press_medialibrary_id%
         admin_press_accredit_id: %admin_press_accredit_id%

@@ -4,7 +4,7 @@
 {% block body %}
     <div id="main" class="list-article films-list loading honneur-invit canne-classic selection-officielle">
         <div class="bandeau-list">
-            <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('//html.festival-cannes-2016.com.ohwee.fr/img/films/selection-officielle/selection-bandeau.jpg')">
+            <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('/img/films/selection-officielle/selection-bandeau.jpg')">
                 <div class="vCenterKid">
                     <h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>
                 </div>
@@ -32,8 +32,8 @@
                     <div class="title-list-cat">
                         <h2 class="title-big">{{ transClassic.title }}</h2>
                         <div class="buttons">
-                            <a id="share-article" href="#" class="button">{{ 'cannesclassics.btn.partager'|trans }}</a>
-                            <a href="#" onclick="javascript:window.print()" class="button print"> {{ 'cannesclassics.btn.imprimer'|trans }}</a>
+                            <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{{ 'cannesclassics.btn.partager'|trans }}</a>
+                            <a href="#" onclick="javascript:window.print()" class="button print"><i class="icon icon_print"></i>{{ 'cannesclassics.btn.imprimer'|trans }}</a>
                         </div>
                     </div>
                     <div class="contain-article-invit">
@@ -47,7 +47,7 @@
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                                 <div class="quote">
                                     <blockquote>
-                                        {{ transWidget.content }}
+                                        “ {{ transWidget.content }} ”
                                     </blockquote>
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_audio %}
@@ -90,21 +90,12 @@
                                                     {% endif %}
                                                     <div class="infos-item-list">
                                                         <h3 class="title-item">{{ film.titleVO }}</h3>
-                                                        {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                            <span class="nom-item">
-                                                                {{ director.fullName }}
-                                                            </span>
-                                                            {% if loop.index != director|length %}
-                                                                ,
-                                                            {% endif %}
-                                                        {% endfor %}
+                                                        {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}<span class="nom-item">{{ director.fullName }}</span>{% if loop.index != director|length %}, {% endif %}{% endfor %}<br />
                                                         <span class="date-item">
-                                                            {% if  film.productionYear is not null and  film.productionYear != 0 %}
-                                                                {{  film.productionYear }}
+                                                            {% if  film.productionYear is not null and  film.productionYear != 0 %}{{  film.productionYear }}
                                                                 {% if  film.duration is not null and  film.duration > 0 %}
                                                                     -
-                                                                {% endif %}
-                                                            {% endif %}
+                                                                {% endif %}{% endif %}
                                                             {% if  film.duration is not null and  film.duration > 0 %}
                                                                 {{  film.duration }}
                                                             {% endif %}
@@ -125,9 +116,9 @@
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_subtitle %}
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
-                                <div class="title-list-cat">
+                                <div class="title-list-cat title-film-detail">
                                     <h2 class="title">{{ transWidget.subtitle }}</h2>
-                                    <p>{{ transWidget.paragraph }}</p>
+                                    <p class="title-item">{{ transWidget.paragraph }}</p>
                                 </div>
                             {% endif %}
                         {% endfor %}

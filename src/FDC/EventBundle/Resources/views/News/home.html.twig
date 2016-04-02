@@ -281,7 +281,7 @@
                     {% for channel in channels %}
                         {% if channel is defined and channel.association != null %}
                             {% set channel = channel.association %}
-                            {% if channel.mediaVideos is defined and channel.mediaVideos != null and channel.mediaVideos|length > 0 and channel.availableChannels is not empty %}
+                            {% if channel.mediaVideos is defined and channel.mediaVideos != null and channel.mediaVideos|length > 0 and channel.availableChannels is not empty and channel.availableChannels|length > 0 %}
                                 <div class="channel">
                                     {% include 'FDCEventBundle:News:widgets/home-channels.html.twig' %}
                                 </div>

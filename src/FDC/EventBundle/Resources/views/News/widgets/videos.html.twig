@@ -33,9 +33,9 @@
                         <span class="category">{{ film.association.selectionSection|trans_fallback('name') }}</span>
                         <h2 id="titleFilmOnHomepage">
 
-                        {% if film.association|trans_fallback('title') is not null and ilm.association and film.association.titleVOAlphabet != '' %}
+                        {% if film.association|trans_fallback('title') is not null and film.association and film.association.titleVOAlphabet != '' %}
                             {{ film.association|trans_fallback('title') }}
-                        {% elseif film.association.titleVOAlphabet is not null and ilm.association and film.association.titleVOAlphabet != '' %}
+                        {% elseif film.association.titleVOAlphabet is not null and film.association and film.association.titleVOAlphabet != '' %}
                             {{ film.association.titleVOAlphabet }}
                         {% else %}
                             {{ film.association.titleVO }}

@@ -1,0 +1,19 @@
+{% trans_default_domain 'FDCEventBundle' %}
+<footer class="dark-container">
+    <div class="container">
+        <h2 class="title">{{ 'footer.newsletter.title.newsletter'|trans }}</h2>
+        <h3 class="subtitle">{{ 'footer.newsletter.title.toutelactualite'|trans }}</h3>
+
+        {{ render(controller('FDCEventMobileBundle:Global:newsletter')) }}
+    </div>
+</footer>
+<div id="landscape">
+    <div class="content vCenter">
+        <div class="vCenterKid">
+        	{% image '@FDCEventMobileBundle/Resources/public/img/MobileTurn.svg' %}
+            <img src="{{ asset_url }}" alt="">
+			{% endimage %}
+            <p>Tournez votre smartphone pour accéder au site</p>
+        </div>
+    </div>
+</div>

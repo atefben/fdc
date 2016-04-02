@@ -1,0 +1,29 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+{% set video = video.association %}
+{% set transImage = video.image.findTranslationByLocale(app.request.locale) %}
+{% if transImage is null %}
+    {% set transImage = video.image.findTranslationByLocale('fr') %}
+{% endif %}
+
+{% set transVideo = video.findTranslationByLocale(app.request.locale) %}
+{% if transVideo is null %}
+    {% set transVideo = video.findTranslationByLocale('fr') %}
+{% endif %}
+<div class="image-wrapper">
+    <img src="{% path transImage.file, '640x404' %}" alt="{{ video.image|trans_fallback('alt') }}" />
+</div>
+<a class="linkVid" href="#"></a>
+<div class="info">
+    <div class="picto vCenter">
+        <div class="vCenterKid"><i class="icon icon_video"></i></div>
+    </div>
+    <div class="info-container">
+        <div class="vCenter">
+            <div class="vCenterKid">
+                <a class="category">{{ video.theme|trans_fallback('name') }}</a>
+                <a class="titleLink" data-title="{{ video|trans_fallback('title') }}">{{ video|trans_fallback('title') }}</a>
+            </div>
+        </div>
+    </div>
+</div>

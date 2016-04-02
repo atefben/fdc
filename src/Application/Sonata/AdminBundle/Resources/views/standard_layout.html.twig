@@ -244,8 +244,7 @@ file that was distributed with this source code.
                                                         {% endif %}
                                                     {% endfor %}
                                                 {% endif %}
-
-                                                {% if display and (item_count > 0) %}
+                                                {% if display and (item_count > 0) and group.label != "dashboard.group.participate" and group.label != "sonata_user" %}
                                                     {% set active = false %}
                                                     {% for admin in group.items %}
                                                         {% if admin.hasroute('list') and admin.isGranted('LIST') and app.request.get('_sonata_admin') == admin.code %}
@@ -260,20 +259,32 @@ file that was distributed with this source code.
                                                         </a>
                                                         <ul class="treeview-menu{% if active %} active{% endif %}">
                                                             {%  if group.label == 'dashboard.group.general' %}
+                                                                {% if is_granted('ROLE_BASE_ADMIN_HOMEPAGE_ADMIN') %}
                                                                 <li>
                                                                     <a href="{{ path('admin_base_core_homepage_edit', {id: admin_homepage_id}) }}">
                                                                         <i class="fa fa-angle-double-right"></i>
                                                                         {{ 'dashboard.link.homepage'|trans({}, 'BaseAdminBundle') }}
                                                                     </a>
                                                                 </li>
+                                                                {% endif %}
+                                                                {% if is_granted('ROLE_BASE_ADMIN_WEB_TV_ADMIN') %}
                                                                 <li>
                                                                     <a href="{{ path('admin_base_core_fdcpagewebtvlive_edit', {id: admin_fdc_page_web_tv_live_id}) }}">
                                                                         <i class="fa fa-angle-double-right"></i>
                                                                         {{ 'dashboard.link.fdc_page_web_tv_live'|trans({}, 'BaseAdminBundle') }}
                                                                     </a>
                                                                 </li>
+                                                                {% endif %}
+                                                                {% if is_granted('ROLE_SONATA_USER_ADMIN_USER_ADMIN') %}
+                                                                    <li>
+                                                                        <a href="{{ path('admin_sonata_user_user_list') }}">
+                                                                            <i class="fa fa-angle-double-right"></i>
+                                                                            {{ 'dashboard.link.users'|trans({}, 'BaseAdminBundle') }}
+                                                                        </a>
+                                                                    </li>
+                                                                {% endif %}
                                                             {%  endif %}
-                                                            {%  if group.label != 'dashboard.group.seo' %}
+                                                            {%  if group.label not in ['dashboard.group.seo', 'sonata_user'] %}
                                                                 {% for admin in group.items %}
                                                                     {% if admin.hasroute('list') and admin.isGranted('LIST') %}
                                                                         <li{% if app.request.get('_sonata_admin') == admin.code %} class="active"{% endif %}>
@@ -296,6 +307,38 @@ file that was distributed with this source code.
                                                     </li>
                                                 {% endif %}
                                             {% endfor %}
+                                            {% if is_granted('ROLE_BASE_ADMIN_PRESS_HOMEPAGE_ADMIN') %}
+                                            <!--------------------------->
+                                            <!-- DASHBOARD GROUP PARTICIPATE -->
+                                            <!--------------------------->
+                                            <li class="treeview">
+                                                <a href="#">
+                                                    <i class="fa fa-folder"></i>
+                                                    <span>Participer</span>
+                                                    <i class="fa pull-right fa-angle-left"></i>
+                                                </a>
+                                                <ul class="treeview-menu">
+                                                    <li>
+                                                        <a href="{{ path('admin_base_core_fdcpageprepare_edit', {id: admin_fdc_page_prepare_id}) }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            {{ 'dashboard.link.fdc_page_prepare'|trans({}, 'BaseAdminBundle') }}
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ path('admin_base_core_fdcpageparticipate_list') }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            {{ 'dashboard.link.fdc_page_participate'|trans({}, 'BaseAdminBundle') }}
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ path('admin_base_core_fdcpageparticipatesection_list') }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            {{ 'dashboard.link.fdc_page_participate_section'|trans({}, 'BaseAdminBundle') }}
+                                                        </a>
+                                                    </li>
+
+                                                </ul>
+                                            </li>
                                             <!--------------------------->
                                             <!-- DASHBOARD GROUP PRESS -->
                                             <!--------------------------->
@@ -374,6 +417,7 @@ file that was distributed with this source code.
                                                     </li>
                                                 </ul>
                                             </li>
+                                            {% endif %}
                                             {% block side_bar_li %}
                                                 {% if app.security.token and is_granted('ROLE_JMS_TRANSLATION') %}
                                                 <li>

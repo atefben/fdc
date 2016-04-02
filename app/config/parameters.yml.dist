@@ -202,3 +202,4 @@ parameters:
     s3_elastic_webm_preset_id: '1456133404879-sv127j'
     s3_elastic_mp3_pipeline_id: '1455903590532-u7lwud'
     s3_elastic_mp3_preset_id: '1351620000001-300040'
+    admin_event_fdc_page_prepare_id: 1

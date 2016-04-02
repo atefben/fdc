@@ -1,18 +1,13 @@
-// Contact
-// =========================
-
 $(document).ready(function() {
-
   if($('.contact').length) {
     // check that fields are not empty
     $('.contact input[type="text"], textarea').on('input', function() {
       var input = $(this);
       var is_name = input.val();
-      if(is_name){
+      if(is_name) {
         input.removeClass("invalid").addClass("valid");
         $('.errors .' + input.attr('name')).remove();
-      }
-      else{
+      } else {
         input.removeClass("valid").addClass("invalid");
         $('.errors .' + input.attr('name')).remove();
         $('.errors ul').append('<li class="' + input.attr('name') + '">- ' + input.data('error') + '</li>');
@@ -46,13 +41,15 @@ $(document).ready(function() {
         $('#filters span').addClass('show');
       }, 400);
     });
-// close filters
-  $('body').on('click', '#filters', function() {
+
+    // close filters
+    $('body').on('click', '#filters', function() {
     $('#filters').removeClass('show');
-    setTimeout(function() {
-      $('#filters').remove();
-    }, 700);
-  });
+      setTimeout(function() {
+        $('#filters').remove();
+      }, 700);
+    });
+
     $('body').on('click', '.selectOptions span', function() {
       var i = parseInt($(this).index()) + 1; 
       $('select option').eq(i).prop('selected', 'selected');
@@ -64,11 +61,10 @@ $(document).ready(function() {
       var input=$(this);
       var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
       var is_email=re.test(input.val());
-      if(is_email){
+      if(is_email) {
         input.removeClass("invalid").addClass("valid");
         $('.errors .' + input.attr('name')).remove();
-      }
-      else{
+      } else {
         input.removeClass("valid").addClass("invalid");
         $('.errors .' + input.attr('name')).remove();
         $('.errors ul').append('<li class="' + input.attr('name') + '">- ' + input.data('error') + '</li>');
@@ -114,5 +110,4 @@ $(document).ready(function() {
       }
     });
   }
-  
 });

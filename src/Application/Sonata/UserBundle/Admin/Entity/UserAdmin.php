@@ -21,6 +21,67 @@ use Sonata\UserBundle\Admin\Entity\UserAdmin as SonataUserAdmin;
 
 class UserAdmin extends SonataUserAdmin
 {
+
+    /**
+     * @param DatagridMapper $datagridMapper
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('username')
+            ->add('groups')
+            ->add('email')
+            ->add('firstname')
+            ->add('lastname')
+            ->add('enabled', null, array('editable' => true))
+            ->add('createdAt', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+
+                    $dateTime1 = $value['value']->format('Y-m-d') . ' 00:00:00';
+                    $dateTime2 = $value['value']->format('Y-m-d') . ' 23:59:59';
+                    $queryBuilder->andWhere("{$alias}.createdAt BETWEEN :datetime1 AND :datetime2");
+                    $queryBuilder->setParameter('datetime1', $dateTime1);
+                    $queryBuilder->setParameter('datetime2', $dateTime2);
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                )
+            ))
+        ;
+    }
+
+    /**
+     * @param ListMapper $listMapper
+     */
+    protected function configureListFields(ListMapper $listMapper)
+    {
+        $listMapper
+            ->add('username')
+            ->add('groups')
+            ->add('email')
+            ->add('firstname')
+            ->add('lastname')
+            ->add('enabled', null, array('editable' => true))
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+            ))
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'edit' => array(),
+                ),
+                'translation_domain' => 'BaseAdminBundle',
+            ))
+        ;
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -35,18 +96,8 @@ class UserAdmin extends SonataUserAdmin
             ->add('groups')
             ->end()
             ->with('Profile')
-            ->add('dateOfBirth', 'birthday', array('required' => false))
             ->add('firstname', null, array('required' => false))
             ->add('lastname', null, array('required' => false))
-            ->add('website', 'url', array('required' => false))
-            ->add('biography', 'text', array('required' => false))
-            ->add('gender', 'sonata_user_gender', array(
-                'required'           => true,
-                'translation_domain' => $this->getTranslationDomain()
-            ))
-            ->add('locale', 'locale', array('required' => false))
-            ->add('timezone', 'timezone', array('required' => false))
-            ->add('phone', null, array('required' => false))
             ->end()
         ;
 

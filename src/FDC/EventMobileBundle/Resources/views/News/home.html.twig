@@ -1,0 +1,304 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventMobileBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="home st-container" data-menu="actu">
+        <!-- <div class="fullscreenplayer">
+            <div class="close-button"><i class="icon icon_close"></i></div>
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <div id="player1"></div>
+                    <p class="category">Conférence de presse</p>
+                    <p class="title-video">Rencontre avec l'équipe de Carol</p>
+                </div>
+            </div>
+        </div> -->
+        
+        <div id="sliderWrapper" class="dark-container">
+            <div id="slider" class="owl-carousel">
+                {% for article in homeSlider %}
+                    {% if article is news_article or
+                        article is news_video or
+                        article is news_audio or
+                        article is news_image %}
+                            {% set type = 'news' %}
+                        {% else %}
+                            {% if class(article) starts with 'S' %}
+                                {% set type = 'communique' %}
+                            {% else %}
+                                {% set type = 'info' %}
+                            {% endif %}
+                        {% endif %}
+
+                    {% if article is news_article or article is statement_article or article is info_article %}
+                        {% set img = article.header %}
+                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = img.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% set file = trans.file %}
+                    {% elseif article is news_video or article is statement_video or article is info_video%}
+                        {% set header = article.header %}
+                        {% if header is not null %}
+                            {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is not null and trans.file is not null %}
+                                {% set imageTrans = trans %}
+                            {% else %}
+                                {% set trans = article.header.findTranslationByLocale('fr') %}
+                                {% if trans is not null and trans.file is not null %}
+                                    {% set imageTrans = trans %}
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                        {% if imageTrans is defined and imageTrans is not null %}
+                            {% set file = imageTrans.file %}
+                            {% set img = article.header %}
+                        {% else %}
+                            {% set img = article.video.image %}
+                            {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is null or trans.file is null %}
+                                {% set trans = img.findTranslationByLocale('fr') %}
+                            {% endif %}
+                            {% set file = trans.file %}
+                        {% endif %}
+                    {% elseif article is news_audio or article is info_audio or article is statement_audio %}
+                        {% set header = article.header %}
+                        {% if header is not null %}
+                            {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is not null and trans.file is not null %}
+                                {% set imageTrans = trans %}
+                            {% else %}
+                                {% set trans = article.header.findTranslationByLocale('fr') %}
+                                {% if trans is not null and trans.file is not null %}
+                                    {% set imageTrans = trans %}
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                        {% if imageTrans is defined and imageTrans is not null %}
+                            {% set file = imageTrans.file %}
+                            {% set img = article.header %}
+                        {% else %}
+                            {% set img = article.audio.image %}
+                            {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is null or trans.file is null %}
+                                {% set trans = img.findTranslationByLocale('fr') %}
+                            {% endif %}
+                            {% set file = trans.file %}
+                        {% endif %}
+                    {% elseif article is news_image or article is statement_image or article is info_image %}
+                        {% set header = article.header %}
+                        {% if header is not null %}
+                            {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is not null and trans.file is not null %}
+                                {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
+                            {% else %}
+                                {% set trans = article.header.findTranslationByLocale('fr') %}
+                                {% if trans is not null and trans.file is not null %}
+                                    {% set imageTrans = trans %}
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                        {% if imageTrans is defined and imageTrans is not null %}
+                            {% set img = article.header %}
+                            {% set file = imageTrans.file %}
+                        {% else %}
+                            {% set img = article.gallery.medias[0].media %}
+                            {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is null or trans.file is null %}
+                                {% set trans = img.findTranslationByLocale('fr') %}
+                            {% endif %}
+                            {% set file = trans.file %}
+                        {% endif %}
+                    {% endif %}
+                        <div>
+                            <div class="img-container">
+                                {% set trans = article.findTranslationByLocale('fr') %}
+                                {% if type == 'news' %}
+                                <a href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                                {% else %}
+                                <a href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                                {% endif %}
+                                    <div class="img" style="background-image:url({% path file , '2560x1620' %})"></div>
+                                </a>
+                            </div>
+                            <div class="info">
+                                <span class="category">{{ article.theme|trans_fallback('name') }}</span>
+                                <h2>{{ article|trans_fallback('title') }}</h2>
+                            </div>
+                            {% if type == 'news' %}
+                                <a class="linkArticle" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                            {% else %}
+                                <a class="linkArticle" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                            {% endif %}
+                        </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div  id="news">
+            <h2 class="title">{{ 'home.title.lactualitealaune'|trans }}</h2>
+
+            <div id="calendar">
+                <a href="#" class="prev"><i class="icon icon_flecheGauche"></i></a>
+                <div id="timeline" class="" >
+                <div class="timeline-container">
+                    {% for key,date in festivalInterval %}
+                        {%  set timestamp = date ~ ' 23:59:59' %}
+                        <a href="#"
+                           data-timestamp="{{ timestamp|date('U') }}"
+                           data-date="{{ date|date('d') }}"
+                           class="{% if homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') == date|date('Y-m-d') %}active{% elseif homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') < date|date('Y-m-d') %}disabled{% endif %}">
+                            {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                            <span class="day">{{ date|date('d') }}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+                    
+                </div>
+                <a href="#" class="next"><i class="icon icon_fleche-right"></i></a>
+            </div>
+           
+            <div class="container" id="articles" >
+                <div class="articles-container">
+                    <div id="articles-wrapper">
+                        {% for article in homeArticles %}
+                            {% include 'FDCEventMobileBundle:News:widgets/article-home.html.twig' %}
+                            {% if article is news_article or
+                            article is news_video or
+                            article is news_audio or
+                            article is news_image %}
+                                {% set type = 'news' %}
+                            {% else %}
+                                {% if class(article) starts with 'S' %}
+                                    {% set type = 'communique' %}
+                                {% else %}
+                                    {% set type = 'info' %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if homeArticlesSlider is not empty %}
+                            {% include 'FDCEventMobileBundle:News:widgets/slideshow-actu-home.html.twig' %}
+                        {% endif %}
+                        
+                        {% for article in homeArticlesBottom %}
+                            {% include 'FDCEventMobileBundle:News:widgets/article-home.html.twig' %}
+                        {% endfor %}
+                        
+                        {% if homeArticlesNext %}
+                            <div class="articles right nextDay">
+                                {% for article in homeArticlesNext %}
+                                    {% if loop.first %}
+                                    {% include 'FDCEventMobileBundle:News:widgets/article-home.html.twig' with {'isDouble': 'double'} %}
+                                    {% else %}
+                                    {% include 'FDCEventMobileBundle:News:widgets/article-home.html.twig' %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <a href="#" class="read-more">{{ 'home.btn.afficherplusdactualite'|trans|raw }}</a>
+               
+                <div id="socials">
+                    {% image '@FDCEventMobileBundle/Resources/public/img/palme.svg' %}
+                    <img src="{{ asset_url }}" alt="{{ 'header.img.palme'|trans }}" class="palm">
+                    {% endimage %}
+                    <h2 class="title">#Cannes2016</h2>
+                    <div class="post-container">
+                        {% for i in 0..6 %}
+                            {% include 'FDCEventMobileBundle:News:widgets/post.html.twig' %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {% include 'FDCEventMobileBundle:News:components/socials.html.twig' %}
+            </div>
+        </div>
+
+        <div class="dark-container">
+            <div class="featured-videos">
+                {% if videos[0].id is not null %}
+                    <h2 class="title">{{ 'home.title.lesvideosalaune'|trans }}</h2>
+
+                    <div id="slider-videos" class="owl-carousel sliderDrag videosSlider">
+                        {% for video in videos %}
+                            {% if video.association is defined and video.association != null %}
+                                {% include 'FDCEventMobileBundle:Television:widgets/video.date.html.twig' %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if channels[0].id is not null %}
+                    <div id="channels">
+                        <h2 class="title one-line">{{ 'home.title.leschaines'|trans }}</h2>
+                        <div id="slider-channels" class="owl-carousel sliderDrag">
+                            {% for channel in channels %}
+                                {% if channel is defined and channel.association != null %}
+                                    {% set channel = channel.association %}
+                                    {% if channel.mediaVideos is defined and channel.mediaVideos != null and channel.mediaVideos|length > 0 %}
+                                        <div class="channel">
+                                            {% include 'FDCEventMobileBundle:News:widgets/home-channels.html.twig' %}
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="dark-container" id="today">
+            
+           <h2 class="title one-line">Focus du jour</h2>
+            
+            <div class="special-event">
+                <div class="img-container">
+                    <div class="img" style="background-image:url(img/slider/slider01.jpg)"></div>
+                </div>
+                <div class="info-container vCenter">
+                    <div class="vCenterKid">
+                        <div class="category">Séance spéciale</div>
+                        <h3 class="title tall">A tale of love and darkness</h3>
+                        <div class="title-translate">(une histoire d'amour et de ténèbres)</div>
+                        <div class="director">Laurent <strong>Larivière</strong></div>
+                    </div>
+                </div>
+
+                <div class="links">
+                    <a href="#" class="seances"><i class="icon icon_programmation"></i>{{ 'home.video.btn.voirlesseances'|trans }}</a>
+                </div>
+            </div>
+
+            <div class="trailer">
+                <div class="img-container">
+                    <div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>
+                </div>
+                <div class="info-container vCenter">
+                    <div class="vCenterKid">
+                        <div class="icon-container"><i class="icon icon_video"></i></div>
+                        <h3 class="title tall">Les bandes annonces et extraits</h3>
+                    </div>
+               </div>
+            </div>
+        </div>
+
+        <div class="" id="more">
+            <div id="slider-more" class="owl-carousel sliderDrag">
+                {% include 'FDCEventMobileBundle:News:widgets/push-main.html.twig' %}
+                <div class="item">
+                    <div class="image-wrapper">
+                        <div class="img" style="background-image:url(img/slider/slider01.jpg)"></div>
+                    </div>
+                    <a class="linkVid" href="#"></a>
+                    <div class="info">
+                        <h3 class="category">Le jury</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

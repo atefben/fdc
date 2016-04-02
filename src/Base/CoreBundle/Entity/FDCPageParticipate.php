@@ -66,7 +66,7 @@ class FDCPageParticipate implements TranslateMainInterface
 
     public function __toString()
     {
-        return "Strate";
+        return $this->getTitle();
     }
 
     /**
@@ -117,8 +117,7 @@ class FDCPageParticipate implements TranslateMainInterface
     public function setDownloadSection($downloadSection)
     {
 
-        foreach($downloadSection as $section)
-        {
+        foreach ($downloadSection as $section) {
             $section->setDownload($this);
         }
 
