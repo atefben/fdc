@@ -113,8 +113,8 @@
                                                     <span class="item-date">{{ awardAssociation.award.festival.year }}</span>
                                                 {% endif %}
                                                 <span class="item-categ" {{ awardAssociation.award.prize|content_lang('title') }}>
-                                            {{ awardAssociation.award.prize|trans_fallback('title') }}
-                                        </span>
+                                                    {{ awardAssociation.award.prize|trans_fallback('title') }}
+                                                </span>
                                                 {% if filmPerson.functions|length > 0 %}
                                                     {% spaceless %}
                                                         <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
@@ -158,12 +158,15 @@
             </div>
             <div class="share">
                 <p>{{ 'juries.artiste.title.share'|trans }}</p>
+                {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                 <div class="buttons square">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_event_news_index') }}"
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ currentUrl }}
+
+"
                        rel="nofollow" class="button facebook">
                         <i class="icon icon_facebook"></i>
                     </a>
-                    <a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_news_index') }}" rel="nofollow"
+                    <a href="https://twitter.com/intent/tweet?url={{ currentUrl }}" rel="nofollow"
                        class="button twitter">
                         <i class="icon icon_twitter"></i>
                     </a>

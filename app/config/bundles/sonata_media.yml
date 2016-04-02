@@ -24,6 +24,8 @@ sonata_media:
                 tiny:  { width: 76, height: 92, quality: 100 }
                 small: { width: 584 , height: 794 , quality: 100 }
                 38x46: { width: 38 , height: 46 , quality: 100 }
+                212x134: { width: 212 , height: 134 , quality: 100 }
+                976x535: { width: 976 , height: 535 , quality: 100 }
 
         film_image_cover:
             providers:
