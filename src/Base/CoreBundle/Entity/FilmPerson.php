@@ -274,6 +274,7 @@ class FilmPerson implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="FilmJury", mappedBy="person")
      *
      * @Groups({"person_list", "person_show"})
+     * @ORM\OrderBy({"festival" = "DESC"})
      */
     private $juries;
 
