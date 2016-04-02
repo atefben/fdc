@@ -1,3 +1,5 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
 {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
 {% if media is empty %}
     {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
@@ -10,6 +12,8 @@
         <div class="contain_item">
             {% if media is not empty %}
                 {% media media, '259x352' %}
+            {% else %}
+                <img src="{{ asset('bundles/fdcevent/img/palmares/film_w256.jpg') }}" alt="Affiche film"/>
             {% endif %}
             <div class="infos-item-list">
                 {% if projection is defined and projection is not empty %}
@@ -19,16 +23,27 @@
                 <h3 class="title-item">{{ film.titleVO }}</h3>
                 {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}<span class="nom-item">{{ director.fullName }}</span>{% if loop.index != director|length %}, {% endif %}{% endfor %}<br />
                     <span class="date-item">
-                        {% if  film.productionYear is not null and  film.productionYear != 0 %}{{  film.productionYear }}
-                            {% if  film.duration is not null and  film.duration > 0 %}
+                        {% set duration = [] %}
+                        {% if film.duration is not empty %}
+                            {% set duration = film.duration|split('.') %}
+                        {% endif %}
+                        {% if film.productionYear is not null and  film.productionYear != 0 %}{{  film.productionYear }}
+                            {% if duration|length > 0 and duration[0] > 0 %}
                                 -
-                            {% endif %}{% endif %}
-                        {% if  film.duration is not null and  film.duration > 0 %}
-                            {{  film.duration }}
+                            {% endif %}
+                        {% endif %}
+                        {% if duration|length > 0 and duration[0] > 0 %}
+                            {% set hours = (duration[0] / 60)|round(0, 'floor') %}
+                            {% set minutes = duration[0] % 60 %}
+                            {% if hours > 0 %}{{ hours }}:{% endif %}{{ minutes }}
                         {% endif %}
                     </span>
                 <p class="description-item">
-                    {{ film|trans_fallback('synopsis')|nl2br|raw }}
+                    {% if restauration is defined and restauration == true %}
+                        {{ film|trans_fallback('infoRestauration')|nl2br|raw }}
+                    {% else %}
+                        {{ film|trans_fallback('synopsis')|nl2br|raw }}
+                    {% endif %}
                 </p>
             </div>
         </div>

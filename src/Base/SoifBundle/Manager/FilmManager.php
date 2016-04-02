@@ -107,7 +107,8 @@ class FilmManager extends CoreManager
                 'setters' => array(
                     'setDialog' => 'Dialogue',
                     'setSynopsis' => 'Synopsis',
-                    'setTitle' => 'Titre'
+                    'setTitle' => 'Titre',
+                    'setInfoRestauration' => 'InformationsRestauration'
                 ),
                 'wsLangKey' => 'IdLangue'
             )

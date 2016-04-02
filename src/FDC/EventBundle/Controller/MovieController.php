@@ -202,7 +202,7 @@ class MovieController extends Controller
 
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
-        $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll();
+        $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale);
 
         return $this->render('FDCEventBundle:Movie:selection.html.twig', array(
             'cannesClassics' => $cannesClassics,

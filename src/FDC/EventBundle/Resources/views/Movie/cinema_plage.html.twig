@@ -20,7 +20,7 @@
                 {% for projection in projections %}
                     {%  if projection.programmationFilms|length > 0 %}
                         {% set film = projection.programmationFilms[0].film %}
-                        {% include 'FDCEventBundle:Movie:widgets/movie.html.twig' with {'film': film, 'projection': projection} %}
+                        {% include 'FDCEventBundle:Movie:widgets/movie.html.twig' with {'film': film, 'projection': projection, 'restauration': true} %}
                     {% endif %}
                 {% endfor %}
 
