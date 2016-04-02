@@ -48,8 +48,8 @@
                 <div class="info">
                     <div class="vCenter">
                         <div class="vCenterKid">
-                            <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                            <p>The Lobster</p>
+                            <a href="#" class="category">XXX</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+                            <p>XXX</p>
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                 {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
 
                 {% set media = null %}
-                {% set format =  '293x397' %}
+                {% set format =  'big' %}
                 {% if posterImg is not empty %}
                     {% set media = posterImg %}
                 {% elseif mainImg is not empty %}
