@@ -7,10 +7,13 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 class SoifAdmin extends Admin
 {
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit.html.twig');
+    }
+
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->remove('create');
-        $collection->remove('show');
         $collection->add('soif-refresh', $this->getRouterIdParameter() . '/soif-refresh');
     }
 }
