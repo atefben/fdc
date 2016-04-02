@@ -106,18 +106,29 @@ class MovieController extends Controller
                 throw new NotFoundHttpException('Cinema de la plage not found');
             }
 
+            // ALL SELECTION
             $selectionTabs = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FDCPageLaSelection')
                 ->getPagesOrdoredBySelectionSectionOrder($locale)
             ;
 
+            // NEXT SELECTION
+            $next = null;
+            if (count($selectionTabs) > 0) {
+                $next = $selectionTabs[0];
+            }
+
+            $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll();
+
             //SEO
             $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
             return $this->render('FDCEventBundle:Movie:cinema_plage.html.twig', array(
-                'cinemaContent' => $page,
-                'selectionTabs' => $selectionTabs
+                'page' => $page,
+                'cannesClassics' => $cannesClassics,
+                'selectionTabs' => $selectionTabs,
+                'next' => $next
             ));
         }
 

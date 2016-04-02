@@ -51,6 +51,13 @@ class PersonManager extends CoreManager
             'setFirstname' => 'Prenom'
         );
         $this->mapperTranslations = array(
+            'CiviliteTraductions' => array(
+                'result' => 'CiviliteTraductionDto',
+                'setters' => array(
+                    'setGender' => 'Libelle'
+                ),
+                'wsLangKey' => 'CodeLangue'
+            ),
             'BiographieTraductions' => array(
                 'result' => 'BiographieTraductionDto',
                 'setters' => array(

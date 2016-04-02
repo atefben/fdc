@@ -4,7 +4,7 @@
 {% block body %}
     <div id="main" class="list-article films-list loading honneur-invit canne-classic selection-officielle">
         <div class="bandeau-list">
-            <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('/img/films/selection-officielle/selection-bandeau.jpg')">
+            <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('{% path classic.image|trans_fallback('file'), '2560x1103' %}')">
                 <div class="vCenterKid">
                     <h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>
                 </div>

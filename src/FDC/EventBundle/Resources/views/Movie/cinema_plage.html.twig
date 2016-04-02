@@ -4,14 +4,14 @@
 {% block body %}
     <div id="main" class="list-article films-list loading honneur-invit canne-classic selection-officielle">
         <div class="bandeau-list">
-            <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('//html.festival-cannes-2016.com.ohwee.fr/img/films/selection-officielle/selection-bandeau.jpg')">
+            <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('{% path page.image|trans_fallback('file'), '2560x1103' %}')">
                 <div class="vCenterKid">
                     <h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>
                 </div>
             </div>
                 {% include 'FDCEventBundle:Movie:components/filters.html.twig' %}
         </div>
-        <div class="container container-list">
+       {#<div class="container container-list">
             <section class="categorie-items">
                 <div class="title-list-cat">
                     <h2 class="titre-document">{{ cinemaContent.description }}</h2>
@@ -38,9 +38,9 @@
                 {% endfor %}
 
             </section>
-        </div>
+        </div>#}
         <div class="bandeau-list bandeau-list-footer push-footer vCenter">
-            <div class="bandeau-list-img vCenterKid" style="background-image:url('/img/films/cover-bandeau-push.jpg');">
+            <div class="bandeau-list-img vCenterKid" style="{% if next is not empty %}background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}{% endif %}')">
                 <h2 class="title title-list-header">{{ 'selection.cinemaplage.title.competition'|trans }}</h2>
                 <a href="#" class="bandeau-lien">
                     {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}

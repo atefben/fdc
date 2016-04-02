@@ -42,6 +42,14 @@ class FDCPageLaSelectionCinemaPlage implements TranslateMainInterface
      *
      */
     private $image;
+
+    /**
+     * @var FilmSelectionSection
+     *
+     * @ORM\ManyToOne(targetEntity="FilmSelectionSection")
+     */
+    private $selectionSection;
+    
     /**
      * @var User
      *
@@ -223,5 +231,28 @@ class FDCPageLaSelectionCinemaPlage implements TranslateMainInterface
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set selectionSection
+     *
+     * @param \Base\CoreBundle\Entity\FilmSelectionSection $selectionSection
+     * @return FDCPageLaSelectionCinemaPlage
+     */
+    public function setSelectionSection(\Base\CoreBundle\Entity\FilmSelectionSection $selectionSection = null)
+    {
+        $this->selectionSection = $selectionSection;
+
+        return $this;
+    }
+
+    /**
+     * Get selectionSection
+     *
+     * @return \Base\CoreBundle\Entity\FilmSelectionSection 
+     */
+    public function getSelectionSection()
+    {
+        return $this->selectionSection;
     }
 }

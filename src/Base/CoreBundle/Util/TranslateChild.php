@@ -15,7 +15,7 @@ trait TranslateChild
      *
      * @ORM\Column(type="integer")
      */
-    private $status;
+    private $status = self::STATUS_DRAFT;
 
     /**
      * @var User
@@ -48,6 +48,7 @@ trait TranslateChild
     public static function getStatuses()
     {
         return array(
+            '' => '',
             self::STATUS_DRAFT => 'form.status.draft',
             self::STATUS_TRANSLATION_PENDING => 'form.status.translation_pending',
             self::STATUS_TRANSLATION_VALIDATING => 'form.status.translation_validating',

@@ -122,6 +122,11 @@ class FDCPageLaSelectionCinemaPlageAdmin extends Admin
                 'multiple' => true,
                 'expanded' => true
             ))
+            ->add('selectionSection', 'sonata_type_model_list', array(
+                'label'    => 'form.fdc_page_web_tv_trailers.label_festival_section',
+                'required' => false,
+                'btn_add' => false,
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices'                   => FDCPageLaSelectionCinemaPlage::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
