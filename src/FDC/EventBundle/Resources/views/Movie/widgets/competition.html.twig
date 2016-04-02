@@ -10,13 +10,13 @@
             {% set media = '' %}
             {% if posterImg %}
                 {% set media = posterImg %}
-                {% set format =  'big' %}
+                {% set format =  '588x784' %}
             {% elseif mainImg %}
                 {% set media = mainImg %}
-                {% set format = 'big' %}
+                {% set format = '588x784' %}
             {% elseif filmImg %}
                 {% set media = filmImg %}
-                {% set format = 'big' %}
+                {% set format = '588x784' %}
             {% endif %}
             <div class="slide">
                 {% if media is not empty %}
