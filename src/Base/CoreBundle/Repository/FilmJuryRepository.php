@@ -42,8 +42,7 @@ class FilmJuryRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->setParameter('id', $id)
             ->getQuery()
-            ->getOneOrNullResult()
-            ;
+            ->getOneOrNullResult();
     }
 
     public function getJurysByType($festival, $locale, $type)
@@ -51,15 +50,14 @@ class FilmJuryRepository extends EntityRepository
         $qb = $this->createQueryBuilder('j');
 
         $qb
-            ->join('j.translations', 't')
             ->join('j.person', 'p')
             ->andWhere('p.firstname IS NOT NULL')
             ->andWhere('p.lastname IS NOT NULL')
             ->andWhere('j.type = :type')
             ->setParameter('type', $type)
         ;
+
         $this->addMasterQueries($qb, 'j', $festival, false);
-        $this->addTranslationQueries($qb, 't', $locale, null);
 
         return $qb->getQuery()->getResult();
     }

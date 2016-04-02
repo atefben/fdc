@@ -240,3 +240,7 @@
     width: 148px;
 }
 
+/* Juries */
+.contain-jurys-list .jury-box .image {
+    height: 485px;
+}
