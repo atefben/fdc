@@ -29,6 +29,18 @@
                         {% set artistImage = artist|person_image %}
                         {% if artistImage %}
                             <img src="{% path artistImage, '976x535' %}" alt="{{ artist.fullName }}"/>
+                        {% else %}
+                            {% set media = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
+                            {% if media is empty %}
+                                {% set media = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
+                            {% endif %}
+                            {% if media is empty %}
+                                {% set photo = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                            {% endif %}
+                            {% if media is not empty %}
+                                <img src="{% path media, '976x535' %}" alt="{{ artist.fullName }}"/>
+                            {% endif %}
+
                         {% endif %}
                     </div>
                 </div>
