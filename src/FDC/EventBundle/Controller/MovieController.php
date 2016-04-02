@@ -98,6 +98,9 @@ class MovieController extends Controller
     {
         $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
+        $festival = $this->getFestival()->getId();
+
+        $this->isPageEnabled($request->get('_route'));
 
         if ($slug == 'cinema-de-la-plage') {
             $page = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCinemaPlage')->getBySlug($locale, 'cinema-de-la-plage');
@@ -113,28 +116,32 @@ class MovieController extends Controller
                 ->getPagesOrdoredBySelectionSectionOrder($locale)
             ;
 
+            $projections = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmProjection')
+                ->getProjectionsByFestivalYearAndProgrammationSection($festival, $page->getTitle())
+            ;
+
             // NEXT SELECTION
             $next = null;
             if (count($selectionTabs) > 0) {
                 $next = $selectionTabs[0];
             }
 
-            $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll();
+            $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale);
 
             //SEO
             $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
             return $this->render('FDCEventBundle:Movie:cinema_plage.html.twig', array(
                 'page' => $page,
+                'projections' => $projections,
                 'cannesClassics' => $cannesClassics,
                 'selectionTabs' => $selectionTabs,
                 'next' => $next
             ));
         }
 
-        $this->isPageEnabled($request->get('_route'));
-        $locale = $request->getLocale();
-        $festival = $this->getFestival()->getId();
 
         $waitingPage = $this->isWaitingPage($request);
         if ($waitingPage) {

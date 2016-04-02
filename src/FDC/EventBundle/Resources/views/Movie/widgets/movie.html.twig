@@ -1,0 +1,36 @@
+{% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+{% if media is empty %}
+    {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+{% endif %}
+{% if media is empty %}
+    {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+{% endif %}
+<article style="background-image:url('{% if media is not empty %}{% path media, 'reference' %}{% endif %}')">
+    <div class="bck-hover">
+        <div class="contain_item">
+            {% if media is not empty %}
+                {% media media, '259x352' %}
+            {% endif %}
+            <div class="infos-item-list">
+                {% if projection is defined and projection is not empty %}
+                <span class="date-pres-item">{{ projection.startsAt|localizeddate('full', 'none', app.request.locale)  }} </span>
+                <span class="heure-pres-item">{{ projection.startsAt|date('H:i') }}</span>
+                {% endif %}
+                <h3 class="title-item">{{ film.titleVO }}</h3>
+                {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}<span class="nom-item">{{ director.fullName }}</span>{% if loop.index != director|length %}, {% endif %}{% endfor %}<br />
+                    <span class="date-item">
+                        {% if  film.productionYear is not null and  film.productionYear != 0 %}{{  film.productionYear }}
+                            {% if  film.duration is not null and  film.duration > 0 %}
+                                -
+                            {% endif %}{% endif %}
+                        {% if  film.duration is not null and  film.duration > 0 %}
+                            {{  film.duration }}
+                        {% endif %}
+                    </span>
+                <p class="description-item">
+                    {{ film|trans_fallback('synopsis')|nl2br|raw }}
+                </p>
+            </div>
+        </div>
+    </div>
+</article>

@@ -13,6 +13,22 @@ use Base\CoreBundle\Entity\FilmFilm;
 class FilmProjectionRepository extends EntityRepository
 {
 
+
+    public function getProjectionsByFestivalYearAndProgrammationSection($festival, $programmationSection)
+    {
+        $qb = $this
+            ->createQueryBuilder('fp')
+            ->where('fp.festival = :festival')
+            ->andWhere('fp.programmationSection = :programmation_section')
+            ->setParameter('programmation_section', $programmationSection)
+            ->setParameter('festival', $festival)
+            ->addOrderBy('fp.startsAt', 'asc')
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $qb;
+    }
     /**
      * @param $festival
      * @param null $time
@@ -24,7 +40,7 @@ class FilmProjectionRepository extends EntityRepository
         $qb = $this
             ->createQueryBuilder('fp')
             ->addOrderBy('fp.startsAt', 'desc')
-        ;;
+        ;
 
         if ($time) {
             $date = new \DateTime;
@@ -99,8 +115,7 @@ class FilmProjectionRepository extends EntityRepository
      * @return array
      * @todo uncomment date condition
      */
-    public
-    function getApiNextProjections($festival, $count)
+    public function getApiNextProjections($festival, $count)
     {
         $qb = $this
             ->createQueryBuilder('fp')
@@ -122,8 +137,7 @@ class FilmProjectionRepository extends EntityRepository
      * @param FilmFilm $film
      * @return array
      */
-    public
-    function getNextProjectionByFilm(FilmFilm $film)
+    public function getNextProjectionByFilm(FilmFilm $film)
     {
         $qb = $this->createQueryBuilder('p');
 
@@ -142,8 +156,7 @@ class FilmProjectionRepository extends EntityRepository
      * @param $date
      * @return array|\Doctrine\ORM\QueryBuilder
      */
-    public
-    function getProjectionByDate($date)
+    public function getProjectionByDate($date)
     {
 
         $qb = $this

@@ -9,36 +9,23 @@
                     <h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>
                 </div>
             </div>
-                {% include 'FDCEventBundle:Movie:components/filters.html.twig' %}
+            {% include 'FDCEventBundle:Movie:components/filters.html.twig' %}
         </div>
-       {#<div class="container container-list">
+        <div class="container container-list">
             <section class="categorie-items">
                 <div class="title-list-cat">
-                    <h2 class="titre-document">{{ cinemaContent.description }}</h2>
+                    <h2 class="titre-document">{{ page|trans_fallback('subtitle') }}</h2>
                 </div>
 
-                {% for film in cinemaContent.film %}
-                    <article style="background-image:url({{ film.image.path }})">
-                        <div class="bck-hover">
-                            <div class="contain_item">
-                                <img src="{{ film.image.path }}" alt="images films">
-                                <div class="infos-item-list">
-                                    <span class="date-pres-item">{{ film.projectionDate|localizeddate('long', 'none', app.request.locale)  }} </span>
-                                    <span class="heure-pres-item"> {{ film.projectionDate|date('H:i')  }} </span>
-                                    <h3 class="title-item">{{ film.title }}</h3>
-                                    <span class="nom-item">{{ film.author.fullName }}</span>
-                                    <span class="date-item">{{ film.releaseDate|date('Y') }} - {{ film.duration }}</span>
-                                    <p class="description-item">
-                                        {{ film.description }}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+                {% for projection in projections %}
+                    {%  if projection.programmationFilms|length > 0 %}
+                        {% set film = projection.programmationFilms[0].film %}
+                        {% include 'FDCEventBundle:Movie:widgets/movie.html.twig' with {'film': film, 'projection': projection} %}
+                    {% endif %}
                 {% endfor %}
 
             </section>
-        </div>#}
+        </div>
         <div class="bandeau-list bandeau-list-footer push-footer vCenter">
             <div class="bandeau-list-img vCenterKid" style="{% if next is not empty %}background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}{% endif %}')">
                 <h2 class="title title-list-header">{{ 'selection.cinemaplage.title.competition'|trans }}</h2>
