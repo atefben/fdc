@@ -54,7 +54,7 @@
                         <div class="contain-descript">
                             <h3 class="descript-title">{{ 'juries.role.title.presidentdujury'|trans }}</h3>
                             <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}">
-                                <h2 class="descript-name">{{ president['jury'].person.lastname }} {{ president['jury'].person.firstname }}</h2>
+                                <h2 class="descript-name">{{ president['jury'].person.firstname }} {{ president['jury'].person.lastname }}</h2>
                             </a>
                             <span class="descript-rank">{{ president['jury'].function|trans_fallback('name') }}</span>
                             <p> {{ president['jury'].person|trans_fallback('biography') }}</p>
