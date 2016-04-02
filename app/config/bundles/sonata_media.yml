@@ -29,6 +29,7 @@ sonata_media:
                 976x535: { width: 976 , height: 535 , quality: 100 }
                 384x485: { width: 384 , height: 485 , quality: 100 }
                 640x603: { width: 384 , height: 485 , quality: 100 }
+                976x535: { width: 976 , height: 535 , quality: 100 }
 
         film_image_cover:
             providers:
@@ -52,6 +53,7 @@ sonata_media:
                 293x397: { width: 293, height: 397, quality: 100 }
                 588x784: { width: 588, height: 784, quality: 100 }
                 259x352: { width: 259, height: 352, quality: 100 }
+                976x535: { width: 976 , height: 535 , quality: 100 }
 
         film_main:
             providers:
@@ -69,6 +71,7 @@ sonata_media:
                   293x397: { width: 293, height: 397, quality: 100 }
                   259x352: { width: 259, height: 352, quality: 100 }
                   588x784: { width: 588 , height: 784 , quality: 100 }
+                  976x535: { width: 976 , height: 535 , quality: 100 }
 
         film_film:
             providers:
@@ -91,6 +94,7 @@ sonata_media:
                 259x352: { width: 259, height: 352, quality: 100 }
                 640x603: { width: 384, height: 485, quality: 100 }
                 976x535: { width: 976, height: 535, quality: 100 }
+                588x784: { width: 588 , height: 784 , quality: 100 }
 
         pdf:
             providers:

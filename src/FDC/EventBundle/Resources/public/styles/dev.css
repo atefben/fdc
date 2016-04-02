@@ -244,3 +244,8 @@
 .contain-jurys-list .jury-box .image {
     height: 485px;
 }
+
+.contain-jurys-list .jury-box .image img {
+    width: auto !important;
+}
+

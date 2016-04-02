@@ -68,7 +68,19 @@
                                 {% if filmPersonfilmPoster %}
                                     <img src="{% path filmPersonFilmPoster, '976x535' %}" alt="">
                                 {% else %}
-                                    <img src="{{ asset('bundles/fdcevent/img/palmares/film_w181.jpg') }}" alt="">
+                                    {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+                                    {% if media is empty %}
+                                        {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                                    {% endif %}
+                                    {% if media is empty %}
+                                        {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+                                    {% endif %}
+
+                                    {% if media is not empty %}
+                                        <img src="{% path media, '976x535' %}" alt="">
+                                    {% else %}
+                                        <img src="{{ asset('bundles/fdcevent/img/palmares/film_w181.jpg') }}" alt="">
+                                    {% endif %}
                                 {% endif %}
                                 <div class="content-text">
                                     <span class="item-title">{{ filmPerson.film.titleVO }}</span>
@@ -121,8 +133,19 @@
                                             {% if filmPersonfilmPoster %}
                                                 <img src="{% path filmPersonFilmPoster, '976x535' %}" alt="">
                                             {% else %}
-                                                <img src="{{ asset('bundles/fdcevent/img/palmares/film_w181.jpg') }}"
-                                                     alt="">
+                                                {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+                                                {% if media is empty %}
+                                                    {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                                                {% endif %}
+                                                {% if media is empty %}
+                                                    {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+                                                {% endif %}
+                                                {% if media is not empty %}
+                                                    <img src="{% path media, '976x535' %}" alt="">
+                                                {% else %}
+                                                    <img src="{{ asset('bundles/fdcevent/img/palmares/film_w181.jpg') }}"
+                                                        alt="">
+                                                {% endif %}
                                             {% endif %}
                                             <div class="content-text">
                                                 <span class="item-title">{{ filmPerson.film.titleVO }}</span>
