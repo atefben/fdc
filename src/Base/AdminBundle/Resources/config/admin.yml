@@ -289,6 +289,17 @@ services:
         arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics, BaseAdminBundle:FDCPageLaSelectionCannesClassicsAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.cannes_classics, label: Cannes Classics, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    #cinema plage
+    base.admin.fdc_page_la_selection_cinema_plage:
+        class: Base\AdminBundle\Admin\FDCPageLaSelectionCinemaPlageAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCinemaPlage, BaseAdminBundle:FDCPageLaSelectionCinemaPlageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.cinema_plage, label: Cinéma de la plage, label_translator_strategy: sonata.admin.label.strategy.underscore }
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.fdc_page_la_selection:
         class: Base\AdminBundle\Admin\FDCPageLaSelectionAdmin

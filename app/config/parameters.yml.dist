@@ -74,6 +74,7 @@ parameters:
         - admin_base_core_pressaccreditprocedure_list
         - admin_base_core_pressdownloadsection_list
         - admin_base_core_presscinemaroom_list
+        - admin_base_core_fdcpagelaselectioncinemaplage_list
     admin_routes_translation_legend:
         - admin_base_core_newsarticle_list
         - admin_base_core_event_list
@@ -117,6 +118,7 @@ parameters:
         - admin_base_core_pressdownloadsection_edit
         - admin_base_core_presscinemaroom_edit
         - admin_base_core_fdcpagelaselectioncannesclassics_edit
+        - admin_base_core_fdcpagelaselectioncinemaplage_edit
     # soif
     soif_preprod_url: ~
     soif_prod_url: ~
@@ -203,3 +205,4 @@ parameters:
     s3_elastic_mp3_pipeline_id: '1455903590532-u7lwud'
     s3_elastic_mp3_preset_id: '1351620000001-300040'
     admin_event_fdc_page_prepare_id: 1
+    admin_event_fdc_page_la_selection_cinema_plage_id: 1

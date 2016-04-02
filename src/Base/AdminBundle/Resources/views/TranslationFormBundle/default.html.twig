@@ -143,6 +143,10 @@
     {% include 'BaseAdminBundle:TranslationFormBundle:fdc_page_la_selection_cannes_classics.html.twig' %}
 {% endblock %}
 
+{% block base_admin_fdc_page_la_selection_cinema_plage_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:fdc_page_la_selection_cinema_plage.html.twig' %}
+{% endblock %}
+
 {% block base_admin_fdc_page_jury_translations_a2lix_translations_widget %}
     {% include 'BaseAdminBundle:TranslationFormBundle:fdc_page_jury.html.twig' %}
 {% endblock %}
@@ -244,6 +248,8 @@
                     </div>
                     {% if sonata_admin_enabled is defined and sonata_admin_enabled %}
                         <a href="{{ url('admin_sonata_media_media_edit', {id: value.id}) }}"><strong>{{ value.name }}</strong></a>
+                    {% else %}
+                        <strong>{{ value.name }}</strong>
                     {% endif %}
                 {% else %}
                     <div class="pull-left" style="margin-right: 5px">

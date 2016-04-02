@@ -25,8 +25,8 @@
         {% endif %}
     {% endif %}
     <li>
-        <a href="{{ path('fdc_event_movie_cinema') }}"
-           class="{% if app.request.attributes.get('_route') == 'fdc_event_movie_cinema' %}active{% endif %} ajax">
+        <a href="{{ path('fdc_event_movie_selection', {'slug': 'cinema-de-la-plage'}) }}"
+           class="{% if app.request.attributes.get('slug') == 'cinema-de-la-plage' %}active{% endif %} ajax">
             {{ 'selection.nav.cinema-la-plage'|trans }}
         </a>
     </li>
