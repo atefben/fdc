@@ -2,9 +2,8 @@
 
 namespace Base\AdminBundle\Controller;
 
-use Sonata\AdminBundle\Controller\CRUDController;
 
-class FilmAtelierAdminController extends CRUDController
+class FilmAtelierAdminController extends SoifAdminController
 {
 
 }
