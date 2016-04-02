@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class FilmPersonAdmin extends SoifAdmin
 {
+
     public function getFormTheme()
     {
         return array_merge(
@@ -53,9 +54,7 @@ class FilmPersonAdmin extends SoifAdmin
             ->add('soifUpdatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show'         => array(),
                     'edit'         => array(),
-                    'delete'       => array(),
                     'soif_refresh' => array('template' => 'BaseAdminBundle:CRUD:list__action_soif_refresh.html.twig')
                 )
             ))
