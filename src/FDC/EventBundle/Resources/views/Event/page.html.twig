@@ -15,10 +15,14 @@
                 </div>
                 <h2 class="title-article">{{ event|trans_fallback('title') }}</h2>
                 <div class="buttons">
-                    <a id="share-article" href="#" class="button"><i
-                                class="icon icon_share"></i>{{ 'event.btn.partager'|trans }}</a>
-                    <a href="#" onclick="javascript:window.print()" class="button print"> <i
-                                class="icon icon_print"></i>{{ 'event.btn.imprimer'|trans }}</a>
+                    <a id="share-article" href="#" class="button">
+                        <i class="icon icon_share"></i>
+                        {{ 'event.btn.partager'|trans }}
+                    </a>
+                    <a href="#" onclick="javascript:window.print()" class="button print">
+                        <i class="icon icon_print"></i>
+                        {{ 'event.btn.imprimer'|trans }}
+                    </a>
                 </div>
 
                 {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with({'photo':event.header}) only %}
