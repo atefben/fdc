@@ -11524,7 +11524,7 @@ article .read-later.rAlign span:after {
   display: block;
   height: 100%;
   width: 100%;
-  opacity: 0.3;
+  opacity: 1;
   position: absolute;
   top: 0;
   left: 0;
@@ -11888,7 +11888,7 @@ article .read-later.rAlign span:after {
   padding: 45px 0;
 }
 .single-movie .press {
-  min-height: 600px;
+  min-height: 470px;
   overflow: hidden;
   background-color: #141414;
 }
