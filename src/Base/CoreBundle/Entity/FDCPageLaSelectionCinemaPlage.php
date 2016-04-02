@@ -42,13 +42,6 @@ class FDCPageLaSelectionCinemaPlage implements TranslateMainInterface
      *
      */
     private $image;
-
-    /**
-     * @var FilmSelectionSection
-     *
-     * @ORM\ManyToOne(targetEntity="FilmSelectionSection")
-     */
-    private $selectionSection;
     
     /**
      * @var User
