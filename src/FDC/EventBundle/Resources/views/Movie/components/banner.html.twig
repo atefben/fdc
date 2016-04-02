@@ -6,7 +6,7 @@
     {% set format = '' %}
     {% if movie.imageCover %}
         {% set media = movie.imageCover %}
-        {% set format =  'media_image_simple_1280x808'%}
+        {% set format =  'big'%}
     {% else %}
         {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
         {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
