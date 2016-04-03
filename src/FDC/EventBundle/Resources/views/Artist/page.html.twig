@@ -64,6 +64,7 @@
                     <div class="contain-films-list">
                         {% for filmPerson in artist.films %}
                             <div class="item">
+								<a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
 								<div class="image compat-object-fit-b">
                                 {% set filmPersonfilmPoster = filmPerson.film|film_poster %}
                                 {% if filmPersonfilmPoster %}
@@ -105,6 +106,7 @@
                                         {% endspaceless %}
                                     {% endif %}
                                 </div>
+								</a>
                             </div>
                         {% endfor %}
                         {% endif %}
@@ -130,6 +132,7 @@
                                     (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and
                                     awardAssociation.person.id == artist.id) %}
                                         <div class="item">
+											<a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
 											<div class="image compat-object-fit-b">
                                             {% set filmPersonfilmPoster = filmPerson.film|film_poster %}
                                             {% if filmPersonfilmPoster %}
@@ -169,6 +172,7 @@
                                                     {% endspaceless %}
                                                 {% endif %}
                                             </div>
+										</a>
                                         </div>
                                     {% endif %}
                                 {% endfor %}
@@ -225,6 +229,7 @@
                     {% for director in directors %}
                         <div class="item first">
                             <figure>
+								<a href="{{ path('fdc_event_artist_get', {'slug': director.slug }) }}">
 								<div class="image compat-object-fit-c">
                                 {% set directorImage = director|person_image_portait %}
                                 {% if directorImage %}
@@ -246,6 +251,7 @@
                                     <span class="name">{{ director.fullName }}</span>
                                     <span class="rank" {{ director|content_lang('profession') }}>{{ director|trans_fallback('profession') }}</span>
                                 </figcaption>
+								</a>
                             </figure>
                         </div>
                     {% endfor %}

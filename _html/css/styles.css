@@ -15673,11 +15673,14 @@ input[type=submit] {
   height: 284px;
 }
 .artist .realisateurs #slide-artist .item .compat-object-fit-c img {
-  opacity: 0;
+  opacity: 0 !important;
+}
+.artist .realisateurs #slide-artist .item a {
+  color: #333;
 }
 .artist .realisateurs #slide-artist .item figcaption {
   margin-top: 15px;
-  height: 30px;
+  height: 38px;
 }
 .artist .realisateurs #slide-artist .item img {
   display: block;

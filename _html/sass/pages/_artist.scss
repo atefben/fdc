@@ -160,12 +160,15 @@
 		  width: 210px;
           height: 284px;
           img {
-            opacity: 0;
+            opacity: 0 !important;
           }
   	   }
+	  a {
+		  color:#333;
+	   }
 	   figcaption {
 		   margin-top:15px;
-		   height:30px;
+		   height:38px;
 	   }
       }
     }
