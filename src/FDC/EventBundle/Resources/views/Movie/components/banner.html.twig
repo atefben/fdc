@@ -4,19 +4,24 @@
 
     {% set media = '' %}
     {% set format = '' %}
-    {% if movie.imageCover %}
+    {% set posterImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+    {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+    {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+    {% set media = null %}
+    {% set format =  'mobile' %}
+    {% if posterImg is not empty %}
+        {% set media = posterImg %}
+    {% elseif mainImg is not empty %}
+        {% set media = mainImg %}
+    {% elseif filmImg is not empty %}
+        {% set media = filmImg %}
+    {% endif %}
+    {% if mainImg %}
+        {% set media = mainImg %}
+        {% set format =  'film_main_highres' %}
+    {% elseif movie.imageCover %}
         {% set media = movie.imageCover %}
         {% set format =  'media_image_simple_2560x1103'%}
-    {% else %}
-        {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-        {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-        {% if mainImg %}
-            {% set media = mainImg %}
-            {% set format =  'film_main_highres' %}
-        {% elseif filmImg %}
-            {% set media = filmImg %}
-            {% set format = 'film_film_highres' %}
-        {% endif %}
     {% endif %}
     <div class="img" style="background-image: url({% path media, format %})"></div>
     <div class="links">
@@ -68,21 +73,7 @@
         {% set hasVideo = true %}
     {% endif %}
 
-        <div class="poster video">
-            {% set posterImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-            {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-            {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-
-            {% set media = null %}
-            {% set format =  'mobile' %}
-            {% if posterImg is not empty %}
-                {% set media = posterImg %}
-            {% elseif mainImg is not empty %}
-                {% set media = mainImg %}
-            {% elseif filmImg is not empty %}
-                {% set media = filmImg %}
-            {% endif %}
-			
+        <div class="poster video">	
             {% if hasVideo == true %}
             <a href="#" class="picto"><i class="icon icon_video"></i></a>
             {% endif %}
