@@ -71,7 +71,7 @@
                                     <div class="image">
                                         {% if member['jury'].person.portraitImage and member['jury'].person.portraitImage|trans_fallback('file') %}
                                             <img src="{% path member['jury'].person.portraitImage|trans_fallback('file'), '384x485' %}"
-                                                 alt="{{ member['jury'].person.lastname }} {{ member['jury'].person.firstname }}">
+                                                 alt="{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}">
                                         {% else %}
                                             {% set media = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
                                             {% if media is empty %}
@@ -83,15 +83,15 @@
 
                                             {% if media is not empty %}
                                                 <img src="{% path media, '384x485' %}"
-                                                     alt="{{ member['jury'].person.lastname }} {{ member['jury'].person.firstname }}">
+                                                     alt="{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}">
                                             {% else %}
                                                 <img src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}"
-                                                    alt="{{ member['jury'].person.lastname }} {{ member['jury'].person.firstname }}">
+                                                    alt="{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}">
                                             {% endif %}
                                         {% endif %}
                                     </div>
                                     <div class="legend">
-                                        <span class="name">{{ member['jury'].person.lastname }} {{ member['jury'].person.firstname }}</span>
+                                        <span class="name">{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}</span>
                                         {% set profession =  member['jury'].person|trans_fallback('profession') %}
                                         {% if profession %}
                                             <span class="rank" {{ member['jury'].person|content_lang('profession') }}>
