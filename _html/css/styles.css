@@ -15665,16 +15665,19 @@ input[type=submit] {
 .artist .realisateurs .owl-carousel .owl-item {
   width: auto !important;
 }
-.artist .realisateurs #slide-artist .item {
-  width: 248px;
-}
-.artist .realisateurs #slide-artist .compat-object-fit-c {
+.artist .realisateurs #slide-artist .item .compat-object-fit-c {
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
+  width: 210px;
+  height: 284px;
 }
-.artist .realisateurs #slide-artist .compat-object-fit-c img {
+.artist .realisateurs #slide-artist .item .compat-object-fit-c img {
   opacity: 0;
+}
+.artist .realisateurs #slide-artist .item figcaption {
+  margin-top: 15px;
+  height: 30px;
 }
 .artist .realisateurs #slide-artist .item img {
   display: block;

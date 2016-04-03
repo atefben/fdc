@@ -153,16 +153,21 @@
     }
     #slide-artist{
       .item{
-        width: 248px;
-      }
-      .compat-object-fit-c {
-        background-size: cover;
-        background-position: top center;
-        background-repeat: no-repeat;
-        img {
-          opacity: 0;
-        }
+        .compat-object-fit-c {
+          background-size: cover;
+          background-position: top center;
+          background-repeat: no-repeat;
+		  width: 210px;
+          height: 284px;
+          img {
+            opacity: 0;
+          }
+  	   }
+	   figcaption {
+		   margin-top:15px;
+		   height:30px;
 	   }
+      }
     }
     .first{
 //       margin-left: 128px !important;

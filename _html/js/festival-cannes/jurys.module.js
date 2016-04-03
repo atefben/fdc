@@ -46,7 +46,6 @@ $(document).ready(function() {
   function imageCover() {
     $('.compat-object-fit-b').each(function() {
     	var $container = $(this), imgUrl = $container.find('img').prop('src');
-   	 	console.log(imgUrl);
    		if (imgUrl) {
 		$container.css('backgroundImage', 'url('+imgUrl+')');
     	}
