@@ -64,9 +64,10 @@
                     <div class="contain-films-list">
                         {% for filmPerson in artist.films %}
                             <div class="item">
+								<div class="image compat-object-fit-b">
                                 {% set filmPersonfilmPoster = filmPerson.film|film_poster %}
                                 {% if filmPersonfilmPoster %}
-                                    <img src="{% path filmPersonFilmPoster, '976x535' %}" alt="">
+                                    <img src="{% path filmPersonFilmPoster, 'mobile' %}" alt="">
                                 {% else %}
                                     {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
                                     {% if media is empty %}
@@ -75,13 +76,13 @@
                                     {% if media is empty %}
                                         {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
                                     {% endif %}
-
                                     {% if media is not empty %}
                                         <img src="{% path media, '976x535' %}" alt="">
                                     {% else %}
                                         <img src="{{ asset('bundles/fdcevent/img/palmares/film_w181.jpg') }}" alt="">
                                     {% endif %}
                                 {% endif %}
+								</div>
                                 <div class="content-text">
                                     <span class="item-title">{{ filmPerson.film.titleVO }}</span>
                                     {% if filmPerson.film|trans_fallback('title') %}
@@ -129,9 +130,10 @@
                                     (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and
                                     awardAssociation.person.id == artist.id) %}
                                         <div class="item">
+											<div class="image compat-object-fit-b">
                                             {% set filmPersonfilmPoster = filmPerson.film|film_poster %}
                                             {% if filmPersonfilmPoster %}
-                                                <img src="{% path filmPersonFilmPoster, '976x535' %}" alt="">
+                                                <img src="{% path filmPersonFilmPoster, 'mobile' %}" alt="">
                                             {% else %}
                                                 {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
                                                 {% if media is empty %}
@@ -147,6 +149,7 @@
                                                         alt="">
                                                 {% endif %}
                                             {% endif %}
+											</div>
                                             <div class="content-text">
                                                 <span class="item-title">{{ filmPerson.film.titleVO }}</span>
                                                 {% if awardAssociation.award.festival %}

@@ -72,6 +72,16 @@
       min-height: 418px;
       vertical-align: bottom;
       width: 181px;
+      .compat-object-fit {
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        height: 284px;
+        margin-bottom: 60px;
+        img {
+          opacity: 0;
+        }
+	   }
       .content-text{
        margin: 0 auto;
        text-align: center;

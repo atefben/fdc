@@ -15589,6 +15589,16 @@ input[type=submit] {
   vertical-align: bottom;
   width: 181px;
 }
+.artist .contain-films-list .item .compat-object-fit {
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  height: 284px;
+  margin-bottom: 60px;
+}
+.artist .contain-films-list .item .compat-object-fit img {
+  opacity: 0;
+}
 .artist .contain-films-list .item .content-text {
   margin: 0 auto;
   text-align: center;

@@ -43,6 +43,16 @@ $(document).ready(function() {
     });
   }
   
+  function imageCover() {
+    $('.compat-object-fit-b').each(function() {
+    var $container = $(this),
+        imgUrl     = $container.find('img').prop('src');
+    if (imgUrl) {
+      $container.css('backgroundImage', 'url('+imgUrl+')');
+    }
+    });
+	}
+  
   //2. Artist
   if($('.artist').length){
     $(window).on('scroll', function() {
