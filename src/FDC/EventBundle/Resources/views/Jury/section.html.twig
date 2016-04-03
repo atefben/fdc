@@ -110,7 +110,7 @@
                     <div class="bandeau-list-img  bandeau-list-footer vCenterKid"
                          style="background-image:url({% path next.image|trans_fallback('file'), '2560×1103' %})">
                         <h2 class="title title-list-header">{{ (next|trans_fallback('overrideName'))?:(next.juryType|trans_fallback('name')) }}</h2>
-                        <a href="#" class="bandeau-lien">
+                        <a href="{{ path('fdc_event_movie_selection', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}" class="bandeau-lien">
                             <i class="icon icon_fleche-right"></i>
                             {{ 'juries.btn.decouvrirrubrique'|trans }}
                         </a>
