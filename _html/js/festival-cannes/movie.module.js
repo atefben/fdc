@@ -18,6 +18,16 @@ $(document).ready(function() {
       $('#slider-movie-videos .owl-item').removeClass('center');
       $('#slider-movie-videos .owl-item.active').first().addClass('center');
     }
+	
+    function imageCover() {
+      $('.compat-object-fit-d').each(function() {
+      	var $container = $(this), imgUrl = $container.find('img').prop('src');
+     		if (imgUrl) {
+  		$container.css('backgroundImage', 'url('+imgUrl+')');
+      	}
+      });
+  	}
+  	imageCover();
 
     function initSliders() {
       // init slider

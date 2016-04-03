@@ -29,7 +29,7 @@
         <div class="bandeau-list bandeau-list-footer push-footer vCenter">
             <div class="bandeau-list-img vCenterKid" style="{% if next is not empty %}background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}{% endif %}')">
                 <h2 class="title title-list-header">{{ 'selection.cinemaplage.title.competition'|trans }}</h2>
-                <a href="#" class="bandeau-lien">
+                <a href="{{ path('fdc_event_movie_selection', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}" class="bandeau-lien">
                     {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
                     <img class="svg-arrow" src="{{ asset_url }}" alt="{{ 'selection.cinemaplage.btn.decouvrirlarubrique'|trans }}" />
                     {% endimage %}

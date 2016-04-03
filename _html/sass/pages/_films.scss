@@ -107,6 +107,17 @@
        max-width: 100%;
        margin: 0 auto;
        display: table;
+	   
+       .compat-object-fit-d {
+		 height:341px;
+		 width:256px;
+         background-size: cover;
+         background-position: top center;
+         background-repeat: no-repeat;
+         img {
+           opacity: 0;
+         }
+ 	   }
        .list-camera-or {
          //Centrer les informations seulement pour la version Camera Or
          .title-item {

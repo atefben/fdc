@@ -10,11 +10,13 @@
 <article style="background-image:url('{% if media is not empty %}{% path media, 'reference' %}{% endif %}')">
     <div class="bck-hover">
         <div class="contain_item">
+			<div class="image compat-object-fit-d">
             {% if media is not empty %}
                 {% media media, '259x352' %}
             {% else %}
                 <img src="{{ asset('bundles/fdcevent/img/palmares/film_w256.jpg') }}" alt="Affiche film"/>
             {% endif %}
+			</div>
             <div class="infos-item-list">
                 {% if projection is defined and projection is not empty %}
                 <span class="date-pres-item">{{ projection.startsAt|localizeddate('full', 'none', app.request.locale)  }} </span>

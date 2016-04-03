@@ -67,8 +67,7 @@
                 <div class="bandeau-list-img vCenterKid"
                      style="background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}')">
                     <h2 class="title title-list-header">{{ next|trans_fallback('overrideName')?:next.selectionSection|trans_fallback('name') }}</h2>
-                    <a href="{{ path('fdc_event_movie_selection', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}"
-                       class="bandeau-lien">
+                    <a href="{{ path('fdc_event_movie_selection', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}" class="bandeau-lien">
                         {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
                         <img src="{{ asset_url }}" alt="{{ 'selection.btn.decouvrirrubrique'|trans }}"
                              class="svg-arrow">

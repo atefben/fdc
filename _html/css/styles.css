@@ -13115,6 +13115,16 @@ input[type=submit] {
   margin: 0 auto;
   display: table;
 }
+.categorie-items article .contain_item .compat-object-fit-d {
+  height: 341px;
+  width: 256px;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+.categorie-items article .contain_item .compat-object-fit-d img {
+  opacity: 0;
+}
 .categorie-items article .contain_item .list-camera-or .title-item {
   padding-top: 85px;
 }
@@ -13745,6 +13755,17 @@ input[type=submit] {
 }
 .camerador .categorie-items article .contain_item {
   width: 674px;
+}
+.camerador .categorie-items article .contain_item .compat-object-fit-d {
+  height: 341px;
+  width: 256px;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  margin: 40px 0 0 0;
+}
+.camerador .categorie-items article .contain_item .compat-object-fit-d img {
+  opacity: 0;
 }
 .camerador .categorie-items article img {
   margin-left: 74px;

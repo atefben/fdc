@@ -155,6 +155,17 @@
   }
   .categorie-items article .contain_item{
     width: 674px;
+    .compat-object-fit-d {
+	 height:341px;
+	 width:256px;
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+	  margin: 40px 0 0 0;
+      img {
+        opacity: 0;
+      }
+   }
   }
   .categorie-items article img{
     margin-left: 74px;
