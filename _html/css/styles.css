@@ -15589,14 +15589,13 @@ input[type=submit] {
   vertical-align: bottom;
   width: 181px;
 }
-.artist .contain-films-list .item .compat-object-fit {
+.artist .contain-films-list .item .compat-object-fit-b {
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
   height: 284px;
-  margin-bottom: 60px;
 }
-.artist .contain-films-list .item .compat-object-fit img {
+.artist .contain-films-list .item .compat-object-fit-b img {
   opacity: 0;
 }
 .artist .contain-films-list .item .content-text {
@@ -15668,6 +15667,14 @@ input[type=submit] {
 }
 .artist .realisateurs #slide-artist .item {
   width: 248px;
+}
+.artist .realisateurs #slide-artist .compat-object-fit-c {
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+.artist .realisateurs #slide-artist .compat-object-fit-c img {
+  opacity: 0;
 }
 .artist .realisateurs #slide-artist .item img {
   display: block;

@@ -24,5 +24,16 @@ $(document).ready(function() {
         $('#slide-artist .owl-stage').css({ 'margin-left': m });
       }
     });
+	alert('ici');
+    if(navigator.userAgent.indexOf("Edge")    > -1 ||
+       navigator.userAgent.indexOf("MSIE")    > -1 ||
+       navigator.userAgent.indexOf("Trident") > -1 ) {
+      $('#slide-artist .compat-object-fit-c').each(function () {
+		  var $container = $(this), imgUrl = $container.find('img').prop('src');
+        if (imgUrl) {
+          $container.css('backgroundImage', 'url('+imgUrl+')');
+        }
+      });
+    }
   }
 });

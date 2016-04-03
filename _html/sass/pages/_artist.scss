@@ -72,12 +72,11 @@
       min-height: 418px;
       vertical-align: bottom;
       width: 181px;
-      .compat-object-fit {
+      .compat-object-fit-b {
         background-size: cover;
         background-position: top center;
         background-repeat: no-repeat;
         height: 284px;
-        margin-bottom: 60px;
         img {
           opacity: 0;
         }
@@ -156,6 +155,14 @@
       .item{
         width: 248px;
       }
+      .compat-object-fit-c {
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        img {
+          opacity: 0;
+        }
+	   }
     }
     .first{
 //       margin-left: 128px !important;

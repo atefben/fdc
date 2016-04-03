@@ -225,6 +225,7 @@
                     {% for director in directors %}
                         <div class="item first">
                             <figure>
+								<div class="image compat-object-fit-c">
                                 {% set directorImage = director|person_image_portait %}
                                 {% if directorImage %}
                                     <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}">
@@ -240,7 +241,7 @@
                                         <img src="{% path media, '210x284' %}" alt="{{ director.fullName }}"/>
                                     {% endif %}
                                 {% endif %}
-
+								</div>
                                 <figcaption>
                                     <span class="name">{{ director.fullName }}</span>
                                     <span class="rank" {{ artist|content_lang('profession') }}>{{ artist|trans_fallback('profession') }}</span>
