@@ -2,12 +2,16 @@ security:
     role_hierarchy:
         ROLE_TRANSLATOR_FR:
         - ROLE_TRANSLATOR
+        - ROLE_TRANSLATE_FR
 
         ROLE_TRANSLATOR_EN:
         - ROLE_TRANSLATOR
+        - ROLE_TRANSLATE_EN
 
         ROLE_TRANSLATOR_ES:
         - ROLE_TRANSLATOR
+        - ROLE_TRANSLATE_ES
 
         ROLE_TRANSLATOR_ZH:
         - ROLE_TRANSLATOR
+        - ROLE_TRANSLATE_ZH
