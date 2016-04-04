@@ -283,6 +283,14 @@ file that was distributed with this source code.
                                                                         </a>
                                                                     </li>
                                                                 {% endif %}
+                                                                {% if app.security.token and is_granted('ROLE_JMS_TRANSLATION') %}
+                                                                    <li>
+                                                                        <a href="{{ path('jms_translation_index') }}">
+                                                                            <i class="fa fa-angle-double-right"></i>
+                                                                            {{ 'dashboard.link.bo_translation'|trans({}, 'BaseAdminBundle') }}
+                                                                        </a>
+                                                                    </li>
+                                                                {% endif %}
                                                             {%  endif %}
                                                             {%  if group.label not in ['dashboard.group.seo', 'sonata_user'] %}
                                                                 {% for admin in group.items %}
@@ -419,15 +427,6 @@ file that was distributed with this source code.
                                                 </ul>
                                             </li>
                                             {% endif %}
-                                            {% block side_bar_li %}
-                                                {% if app.security.token and is_granted('ROLE_JMS_TRANSLATION') %}
-                                                <li>
-                                                    <a href="{{ path('jms_translation_index') }}">
-                                                        {{ 'dashboard.link.bo_translation'|trans({}, 'BaseAdminBundle') }}
-                                                    </a>
-                                                </li>
-                                                {% endif %}
-                                            {% endblock side_bar_li %}
                                             {% include 'ApplicationSonataAdminBundle::group_seo.html.twig' %}
                                         </ul>
                                     {% endif %}

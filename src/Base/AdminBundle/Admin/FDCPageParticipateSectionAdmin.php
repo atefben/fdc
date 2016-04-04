@@ -14,6 +14,10 @@ use Base\CoreBundle\Entity\FDCPageParticipateSection;
 class FDCPageParticipateSectionAdmin extends Admin
 {
 
+    protected $formOptions = array(
+        'cascade_validation' => true
+    );
+
     protected $translationDomain = 'BaseAdminBundle';
 
     public function getFormTheme()
@@ -79,7 +83,8 @@ class FDCPageParticipateSectionAdmin extends Admin
             ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
-            ));
+            ))
+            ;
     }
 
     /**
