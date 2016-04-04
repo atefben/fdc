@@ -133,7 +133,6 @@ class UserAdmin extends SonataUserAdmin
             'Nom'                     => 'lastname',
             'Prénom'                  => 'firstname',
             'Email'                   => 'email',
-            'Téléphone'               => 'phone',
             'Groupe(s)'               => 'exportGroup',
             'Date de création'        => 'exportCreatedAt',
             'Date de modification'    => 'exportUpdatedAt',
