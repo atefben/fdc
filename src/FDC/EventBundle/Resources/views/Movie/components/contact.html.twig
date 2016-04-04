@@ -164,20 +164,20 @@
                                                     {{ contact.address.website }}
                                                 </a>
                                             {% endif %}
-                                            {% if contact.address and contact.address.person %}
+                                            {% if contact.address and contact.person %}
                                                 {% if contact.address and contact.address.website %} - {% endif %}
-                                                {{ contact.address.person.firstname }} {{ contact.address.person.lastname }}
+                                                {{ contact.person.firstname }} {{ contact.person.lastname }}
                                             {% endif %}
 
                                             {% if contact.address and contact.address.email %}
-                                                {% if contact.address.person %} - {% endif %}
+                                                {% if contact.person %} - {% endif %}
                                                 <a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
                                             {% endif %}
-                                            {% if contact.address and contact.address.person %}
+                                            {% if contact.address and contact.person %}
                                                 <br/>
-                                                {% for subordinate in contact.address.person.subordinates %}
+                                                {% for subordinate in contact.person.subordinates %}
                                                     {{ subordinate.firstname }} {{ subordinate.lastname }}
-                                                    {% if loop.index != contact.address.person.subordinates|length %}
+                                                    {% if loop.index != contact.person.subordinates|length %}
                                                         ,
                                                     {% endif %}
                                                 {% endfor %}
