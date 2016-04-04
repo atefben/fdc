@@ -88,16 +88,21 @@ class UserAdmin extends SonataUserAdmin
             ->with('General')
             ->add('username')
             ->add('email')
-            ->add('plainPassword', 'text', array(
-                'required' => (!$this->getSubject() || is_null($this->getSubject()->getId()))
+            ->add('plainPassword', 'repeated', array(
+                'type' => 'password',
+                'options' => array('translation_domain' => 'FOSUserBundle'),
+                'first_options' => array('label' => 'form.password'),
+                'second_options' => array('label' => 'form.password_confirmation'),
+                'invalid_message' => 'fos_user.password.mismatch',
             ))
             ->end()
             ->with('Groups')
-            ->add('groups')
+            ->add('groups', null, array('required' => true))
             ->end()
             ->with('Profile')
             ->add('firstname', null, array('required' => false))
             ->add('lastname', null, array('required' => false))
+            ->add('enabled')
             ->end()
         ;
 

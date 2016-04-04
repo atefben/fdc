@@ -28,7 +28,10 @@ security:
         #tag
         - ROLE_BASE_ADMIN_TAG_ADMIN
         - ROLE_AUDIO
-
+        - ROLE_TRANSLATE_FR
+        - ROLE_TRANSLATE_EN
+        - ROLE_TRANSLATE_ES
+        - ROLE_TRANSLATE_ZH
 
 
 
