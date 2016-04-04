@@ -78,7 +78,7 @@ class FDCPagePrepareAdmin extends Admin
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'mainTitle' => array(
+                    'title' => array(
                         'label' => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(

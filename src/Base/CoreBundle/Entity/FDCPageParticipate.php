@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * FDCPageParticipate
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCPageParticipateRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class FDCPageParticipate implements TranslateMainInterface

@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+
 use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
@@ -29,7 +30,7 @@ class FDCPagePrepareTranslation implements TranslateChildInterface
      *
      * @ORM\Column(name="guide_main_title", type="string", length=122, nullable=true)
      */
-    protected $mainTitle;
+    protected $title;
 
     /**
      * @var string
@@ -356,26 +357,26 @@ class FDCPagePrepareTranslation implements TranslateChildInterface
     }
 
     /**
-     * Set mainTitle
+     * Set title
      *
-     * @param string $mainTitle
+     * @param string $title
      * @return FDCPagePrepareTranslation
      */
-    public function setMainTitle($mainTitle)
+    public function setTitle($title)
     {
-        $this->mainTitle = $mainTitle;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get mainTitle
+     * Get title
      *
      * @return string
      */
-    public function getMainTitle()
+    public function getTitle()
     {
-        return $this->mainTitle;
+        return $this->title;
     }
 
     /**
