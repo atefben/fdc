@@ -46,7 +46,7 @@
                     {% if movie.getCredits()|length > 0 %}
                         <h3 class="title-section">{{ 'movie.title.credits'|trans }}</h3>
                         {% for filmPerson in movie.getCredits() %}
-                            <p><a href="{{ path('fdc_event_artist_get', {'slug': filmPerson.person.slug }) }}">{{ filmPerson.person.fullName }} </a> - {% for personFunction in filmPerson.functions %}{{ personFunction.function|trans_fallback('name') }} {% endfor %}</p>
+                            <p><a href="{{ path('fdc_event_artist_get', {'slug': filmPerson.person.slug }) }}">{{ filmPerson.person.fullName }} </a> - {% for personFunction in filmPerson.functions %}{{ filmPerson.person|person_function_gender(personFunction.function, 'name') }} {% endfor %}</p>
                         {% endfor %}
                     {% endif %}
                     {% if movie.getActors()|length > 0 %}

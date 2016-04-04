@@ -105,7 +105,13 @@ services:
             - { name: twig.extension }
 
     base.twig.fdc_page_la_selection_cannes_classics_widget_instance_of_extension:
-            class: Base\CoreBundle\Twig\Extension\FDCPageLaSelectionCannesClassicsWidgetInstanceOfExtension
-            arguments: [@service_container]
-            tags:
-                - { name: twig.extension }
+        class: Base\CoreBundle\Twig\Extension\FDCPageLaSelectionCannesClassicsWidgetInstanceOfExtension
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }
+
+    base.twig.person_function_gender_extension:
+        class: Base\CoreBundle\Twig\Extension\PersonFunctionGenderExtension
+        arguments: [%locale_fallback%, @request_stack]
+        tags:
+            - { name: twig.extension }
