@@ -239,7 +239,7 @@ file that was distributed with this source code.
                                                 {% set item_count = 0 %}
                                                 {% if display %}
                                                     {% for admin in group.items if item_count == 0 %}
-                                                        {% if admin.hasroute('list') and admin.isGranted('LIST') %}
+                                                        {% if admin.hasroute('list') and admin.isGranted('EDIT') %}
                                                             {% set item_count = item_count+1 %}
                                                         {% endif %}
                                                     {% endfor %}
@@ -247,7 +247,7 @@ file that was distributed with this source code.
                                                 {% if display and (item_count > 0) and group.label != "dashboard.group.participate" and group.label != "sonata_user" %}
                                                     {% set active = false %}
                                                     {% for admin in group.items %}
-                                                        {% if admin.hasroute('list') and admin.isGranted('LIST') and app.request.get('_sonata_admin') == admin.code %}
+                                                        {% if admin.hasroute('list') and admin.isGranted('EDIT') and app.request.get('_sonata_admin') == admin.code %}
                                                             {% set active = true %}
                                                         {% endif %}
                                                     {% endfor %}
@@ -286,7 +286,7 @@ file that was distributed with this source code.
                                                             {%  endif %}
                                                             {%  if group.label not in ['dashboard.group.seo', 'sonata_user'] %}
                                                                 {% for admin in group.items %}
-                                                                    {% if admin.hasroute('list') and admin.isGranted('LIST') %}
+                                                                    {% if admin.hasroute('list') and admin.isGranted('EDIT') %}
                                                                         <li{% if app.request.get('_sonata_admin') == admin.code %} class="active"{% endif %}>
                                                                             {% if admin.code == 'base.admin.fdc_page_la_selection_cinema_plage' %}
                                                                                 <a href="{{ path('admin_base_core_fdcpagelaselectioncinemaplage_edit', {id: admin_event_fdc_page_la_selection_cinema_plage_id}) }}">
