@@ -41,8 +41,8 @@ class ParticipateController extends Controller
     }
 
     /**
-     * @Route("/page/{slug}")
-     * @Template("FDCEventBundle:Participate:festival.html.twig")
+     * @Route("/{slug}")
+     * @Template("FDCEventBundle:Participate:participate.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @param Request $request
