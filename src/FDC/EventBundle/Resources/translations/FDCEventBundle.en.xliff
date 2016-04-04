@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-04-03T15:20:26Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2016-04-04T12:14:25Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -195,7 +195,7 @@
         <source>breadcrumb.la_selection</source>
         <target state="new">breadcrumb.la_selection</target>
         <jms:reference-file line="106">views/Movie/main.html.twig</jms:reference-file>
-        <jms:reference-file line="97">views/Movie/selection.html.twig</jms:reference-file>
+        <jms:reference-file line="96">views/Movie/selection.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="490a20a0aac3e9ede9baa79084ce635ec734fe4c" resname="breadcrumb.palmares.main">
         <source>breadcrumb.palmares.main</source>
@@ -211,13 +211,13 @@
       <trans-unit id="7daad9dcfe98302143b7b1dfaed3890e479cb31b" resname="breadcrumb.webtv.home">
         <source>breadcrumb.webtv.home</source>
         <target state="new">breadcrumb.webtv.home</target>
-        <jms:reference-file line="256">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="266">views/Artist/page.html.twig</jms:reference-file>
         <jms:reference-file line="82">views/Event/list.html.twig</jms:reference-file>
         <jms:reference-file line="118">views/Event/page.html.twig</jms:reference-file>
         <jms:reference-file line="127">views/Jury/section.html.twig</jms:reference-file>
         <jms:reference-file line="103">views/Movie/classics.html.twig</jms:reference-file>
         <jms:reference-file line="102">views/Movie/main.html.twig</jms:reference-file>
-        <jms:reference-file line="93">views/Movie/selection.html.twig</jms:reference-file>
+        <jms:reference-file line="92">views/Movie/selection.html.twig</jms:reference-file>
         <jms:reference-file line="6">Palmares/components/breadcrumb.html.twig</jms:reference-file>
         <jms:reference-file line="191">views/Television/channel.html.twig</jms:reference-file>
         <jms:reference-file line="55">views/Television/channels.html.twig</jms:reference-file>
@@ -787,22 +787,22 @@
       <trans-unit id="84ee77c30f04e53fe7f970d55b337ac69a8b85cc" resname="juries.artiste.title.palmares">
         <source>juries.artiste.title.palmares</source>
         <target>Awards</target>
-        <jms:reference-file line="123">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="126">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b5d533d7400ab24da13f0d6f3294538ecce201eb" resname="juries.artiste.title.presences">
         <source>juries.artiste.title.presences</source>
         <target>Jury members</target>
-        <jms:reference-file line="176">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="183">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="33b26f2872f664925accafb74841d6604162fab9" resname="juries.artiste.title.realisateurs">
         <source>juries.artiste.title.realisateurs</source>
         <target>Directors</target>
-        <jms:reference-file line="220">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="227">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a9d8fce1f7777b3177ea072e204a26acda0256db" resname="juries.artiste.title.share">
         <source>juries.artiste.title.share</source>
         <target>Share article</target>
-        <jms:reference-file line="200">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="207">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7a17713a51882265ca5d66304e2657cbc0109143" resname="juries.btn.decouvrirrubrique">
         <source>juries.btn.decouvrirrubrique</source>
@@ -857,23 +857,22 @@
       <trans-unit id="2b1ab9d5bf5dc87d8419720abb41547c304af261" resname="movie.contact.label.distribution">
         <source>movie.contact.label.distribution</source>
         <target state="new">movie.contact.label.distribution</target>
-        <jms:reference-file line="116">Movie/components/contact.html.twig</jms:reference-file>
+        <jms:reference-file line="128">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="6e2e0eb80419c13bc3c8711628269e41bdcf0f84" resname="movie.contact.label.minor_production_company">
-        <source>movie.contact.label.minor_production_company</source>
-        <target state="new">movie.contact.label.minor_production_company</target>
-        <jms:reference-file line="102">Movie/components/contact.html.twig</jms:reference-file>
-        <jms:reference-file line="181">Movie/components/contact.html.twig</jms:reference-file>
+      <trans-unit id="664c080a02fd242db4b72ddd90bcfe37cf31b3ec" resname="movie.contact.label.international_selling">
+        <source>movie.contact.label.international_selling</source>
+        <target state="new">movie.contact.label.international_selling</target>
+        <jms:reference-file line="193">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="511ea54939112daee72bcfbaf36d4d9524c5481b" resname="movie.contact.label.pressefrancaise">
         <source>movie.contact.label.pressefrancaise</source>
         <target state="new">movie.contact.label.pressefrancaise</target>
-        <jms:reference-file line="140">Movie/components/contact.html.twig</jms:reference-file>
+        <jms:reference-file line="152">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bab0b494f5ed776a38aea64e71ef7e7986ae1809" resname="movie.contact.label.production">
         <source>movie.contact.label.production</source>
         <target state="new">movie.contact.label.production</target>
-        <jms:reference-file line="73">Movie/components/contact.html.twig</jms:reference-file>
+        <jms:reference-file line="84">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="0e1e9f194e42e9d6733ab104346cd12c82814a93" resname="movie.contact.title.contacts">
         <source>movie.contact.title.contacts</source>
@@ -1415,8 +1414,8 @@
       <trans-unit id="868764a9864046f821076081e72b21e146351008" resname="selection.btn.decouvrirrubrique">
         <source>selection.btn.decouvrirrubrique</source>
         <target>Discover section</target>
-        <jms:reference-file line="73">views/Movie/selection.html.twig</jms:reference-file>
-        <jms:reference-file line="76">views/Movie/selection.html.twig</jms:reference-file>
+        <jms:reference-file line="72">views/Movie/selection.html.twig</jms:reference-file>
+        <jms:reference-file line="75">views/Movie/selection.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="05686fb21d772e1f7e2857acf290926a72885447" resname="selection.cinemaplage.btn.decouvrirlarubrique">
         <source>selection.cinemaplage.btn.decouvrirlarubrique</source>
