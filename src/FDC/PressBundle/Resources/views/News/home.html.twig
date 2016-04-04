@@ -109,15 +109,21 @@
                                 <div class="line">
                                     <div class="container">
                                         <div class="info">
-                                            {% set media = media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-                                            {% if media is empty %}
-                                                {% set media = media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                                            {% set film_media = null %}
+                                            {% if media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first != false %}
+                                                {% set film_media = media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+                                            {% elseif media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first != false %}
+                                                {% set film_media = media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                                            {% elseif media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first != false %}
+                                                {% set film_media = media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
                                             {% endif %}
-                                            {% if media is empty %}
-                                                {% set media = media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-                                            {% endif %}
-                                            {% if media is not empty %}
-                                                {% thumbnail media, 'tiny' %}
+                                            {% if film_media is not null and film_media != false %}
+                                                <img src="{% path film_media, 'tiny' %}" alt="" class="film_image"
+                                                     data-object-fit="cover">
+                                            {% else %}
+                                                <img src="{{ asset('images/default_image_film.jpg') }}" class="default_image"
+                                                     alt=""
+                                                     data-object-fit="cover">
                                             {% endif %}
                                             <div class="txt">
                                                 <div class="vCenter">
@@ -153,7 +159,7 @@
                                         <div class="media photo">
                                             <span>{{ 'press.home.label.photos'|trans }}</span> ({{ photoCount }})
                                         </div>
-                                        <a class="button" href="{{ path('fdc_press_media_main', {'sectionId': media.film.selectionSection.id} ) }}">
+                                        <a class="button" href="{{ path('fdc_press_media_main', {'sectionId': media.film.selectionSection.id } ) }}">
                                             {{ 'press.home.btn.decouvrir'|trans }}
                                         </a>
                                     </div>

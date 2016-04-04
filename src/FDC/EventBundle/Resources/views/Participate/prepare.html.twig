@@ -49,7 +49,6 @@
                     <i class="icon accordion icon_case-plus"></i>
                     <h4 class="descrip-participate">{{ content|trans_fallback('informationDescription')|raw }}</h4>
                     {% for widget in content.informationWidgets %}
-                        {{ dump(class(widget)) }}
                         {% if class(widget) == "FDCPagePrepareWidgetColumn" %}
                             {% include 'FDCEventBundle:Participate:widgets/column.html.twig' %}
                         {% endif %}
