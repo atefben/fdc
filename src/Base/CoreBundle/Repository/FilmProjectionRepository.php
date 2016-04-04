@@ -106,6 +106,7 @@ class FilmProjectionRepository extends EntityRepository
             ->createQueryBuilder('fp')
             //->andWhere('fp.startsAt > :datetime')
             //->setParameter('datetime', new \DateTime())
+            ->andWhere('SIZE(fp.programmationFilms) >= 1')
         ;
 
         $this->addMasterQueries($qb, 'fp', $festival, false);
