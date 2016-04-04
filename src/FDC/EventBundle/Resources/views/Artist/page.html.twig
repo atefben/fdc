@@ -55,7 +55,7 @@
                         <div class="biographie">
                             <h2 class="title title-cat-artist">{{ 'juries.artiste.title.biographie'|trans }}</h2>
                             <p class="paragraph" {{ artist|content_lang('biography') }}>
-                                {{ biography }}
+                                {{ biography|raw }}
                             </p>
                         </div>
                     {% endif %}

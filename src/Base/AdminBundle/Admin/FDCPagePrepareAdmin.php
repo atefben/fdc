@@ -105,7 +105,7 @@ class FDCPagePrepareAdmin extends Admin
                         )
                     ),
                     'meetingTitle' => array(
-                        'label' => 'form.label_title',
+                        'label' => 'Titre strate',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -115,12 +115,12 @@ class FDCPagePrepareAdmin extends Admin
                     ),
                     'meetingDescription' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_content',
+                        'label' => 'Description',
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press'
                     ),
                     'meetingLabel' => array(
-                        'label' => 'form.label_label',
+                        'label' => 'Libellé lien PDF',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -129,7 +129,7 @@ class FDCPagePrepareAdmin extends Admin
                         )
                     ),
                     'meetingUrl' => array(
-                        'label' => 'form.url_btn',
+                        'label' => 'URL Googlemaps',
                         'translation_domain' => 'BaseAdminBundle',
                         'locale_options' => array(
                             'fr' => array(
@@ -306,7 +306,7 @@ class FDCPagePrepareAdmin extends Admin
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('meetingFile', 'sonata_type_model_list', array(
-                'label' => 'form.label_file'
+                'label' => 'PDF'
             ))
             ->end();
 
