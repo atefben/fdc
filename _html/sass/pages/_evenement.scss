@@ -4,20 +4,23 @@
 // 2. Single evenement
 // 3. Media bandeau push
 // =========================
+
+
 // 1. Global
 // =========================
-
-
 .evenement {
   .title {
     margin-bottom: 20px;
   }
+
   #gridEvent {
     padding-top: 60px;
+
     .item .info .category{
       margin-right: 0px;
     }
   }
+
   .grid {
     padding-top: 0px;
   }
@@ -26,6 +29,7 @@
     margin-top: 0px;
     margin-bottom: 70px;
   }
+
   .grid:after {
     content: ".";
     display: block;
@@ -33,6 +37,7 @@
     clear: both;
     visibility: hidden;
   }
+
   .read-more {
     border: 1px solid #d9d9d9;
     clear: both;
@@ -50,32 +55,37 @@
     @include transition(all 0.9s $smoothTransition);
     margin-top: 37px;
     margin-bottom: 70px;
+    
     strong {
       color: #000;
       font-weight: normal;
     }
+
     &:hover {
       opacity: 0.5;
     }
   }
+
   .list-article .bandeau-list .bandeau-list-img {
     height: 300px;
     background-size: cover;
   }
+
   .bandeau-list-img {
     height: 444px !important;
+
     .icon{
       font-size: .4rem;
       vertical-align: middle !important;
       margin-bottom: 2px;
     }
   }
+
   .bandeau-list-img {
     height: 443px !important;
     @include transition(all 0.9s $linear);
   }
 }
-
 
 .evenement:after {
   content: ".";
@@ -84,6 +94,7 @@
   clear: both;
   visibility: hidden;
 }
+
 
 // 2. single evenement
 // =====================
@@ -98,34 +109,43 @@
       padding: 20px 0px;
     }
   }
+
   a.nav.bottom {
     bottom: 85px;
   }
+
   .title-article {
     margin-bottom: 37px;
   }
+
   .single-photo {
     margin-top: 64px;
   }
+
   .quote {
     padding: 60px 0px;
     width: auto;
+
     blockquote {
       font-size: 1.5rem !important;
       font-family: $CamphorItalic;
       padding: 40px 88px;
     }
   }
+
   .text {
     //    padding-top: 60px;
     width: 634px;
+
     a {
       color: #c8a461;
     }
+
     .text-quote {
       font-style: italic;
     }
   }
+
   .title {
     letter-spacing: normal;
     text-transform: none;
@@ -133,40 +153,50 @@
     margin-bottom: 35px;
     font-weight: 200;
   }
+
   .paragraph {
     padding-top: 40px;
   }
+
   .small-container {
     width: 634px;
     margin: 0 auto;
+
     .slideshow .slideshow-img .thumbnails .thumb{
       width: 81px;
       height: 57px;
     }
   }
+
   .chapeau {
     margin-bottom: 40px;
   }
+
   .film {
     height: 290px;
+
     .programmation-film {
       background-color: #141414;
       float: none;
       height: 100%;
       overflow: hidden;
       width: 100%;
+
       .wrapper {
         margin: 0 auto;
         max-width: 630px;
         float: none;
+
         ul {
           width: 630px;
+          margin-bottom: 35px;
+          
           li {
             width: auto;
             margin-right: 14px;
           }
-          margin-bottom: 35px;
         }
+
         .location {
           margin: 10px 0px !important;
           text-transform: uppercase;
@@ -174,6 +204,7 @@
           font-size: 0.63rem;
           font-family: $CamphorBold;
         }
+
         .location:after {
           background-color: #525252;
           bottom: -18px;
@@ -184,9 +215,11 @@
           position: absolute;
           width: 27px;
         }
+
         .date {
           color: #bababa !important;
         }
+
         .descript {
           font-size: 1rem;
           font-family: $CamphorRegular;
@@ -195,20 +228,23 @@
       }
     }
   }
+
   .video {
     .vCenterKid {
       text-align: left;
     }
   }
 
-  .best-films{
+  .best-films {
     padding-top: 37px;
-    .item-film{
+
+    .item-film {
       width: 185px;
       display: inline-block;
       margin: 0 28px;
       padding-bottom: 41px;
-      .title{
+
+      .title {
         padding-top: 17px;
         color: $gold;
         font-size: 0.88rem;
@@ -220,7 +256,8 @@
         text-transform: uppercase;
         text-align: center;
       }
-      .desc{
+
+      .desc {
         display:block;
         font-family: $CamphorBold;
         color: $gold;
@@ -229,7 +266,8 @@
         text-align: center;
         line-height: 14px;
       }
-      .date{
+
+      .date {
         font-size: 0.69rem;
         color:#999;
         font-family: $CamphorRegular;
@@ -242,14 +280,16 @@
   }
 }
 
+
 //3. media bandeau push
 // ==========================
 @media screen and (min-width: 1920px) {
   .evenement .bandeau-list-img {
     height: 444px !important;
   }
+
   .evenement .title-list-header {
-    //      padding-top: 210px !important;
+    // padding-top: 210px !important;
   }
 }
 
@@ -257,8 +297,9 @@
   .evenement .bandeau-list-img {
     height: 373px !important;
   }
+
   .evenement .title-list-header {
-    //      padding-top: 173px !important;
+    // padding-top: 173px !important;
   }
 }
 
@@ -266,8 +307,9 @@
   .evenement .bandeau-list-img {
     height: 296px !important;
   }
+
   .evenement .title-list-header {
-    //      padding-top: 134px !important;
+    // padding-top: 134px !important;
   }
 }
 
@@ -275,8 +317,9 @@
   .evenement .bandeau-list-img {
     height: 294px !important;
   }
+
   .evenement .title-list-header {
-    //      padding-top: 134px !important;
+    // padding-top: 134px !important;
   }
 }
 
@@ -285,17 +328,13 @@
     height: 294px !important;
   }
   .evenement .title-list-header {
-    //      padding-top: 134px !important;
+    // padding-top: 134px !important;
   }
 }
 
 
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (-webkit-min-device-pixel-ratio: 1){
-  .single-evenement .best-films .item-film{
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .single-evenement .best-films .item-film {
     margin: 0 23px;
   }
-
 }

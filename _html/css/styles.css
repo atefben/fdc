@@ -13245,7 +13245,8 @@ input[type=submit] {
   text-transform: uppercase;
   color: #fff !important;
 }
-.categorie-items .contain-article-invit .table-article th, .categorie-items .contain-article-invit .table-article td {
+.categorie-items .contain-article-invit .table-article th,
+.categorie-items .contain-article-invit .table-article td {
   border: 1px solid #2c2c2c;
   color: #999999;
 }
@@ -13461,6 +13462,8 @@ input[type=submit] {
   padding: 0px !important;
 }
 .selection-officielle figure figcaption {
+  position: relative;
+  z-index: 2;
   height: 103px;
   text-align: center;
 }
@@ -13488,7 +13491,7 @@ input[type=submit] {
   color: #c8a461;
   border-top: 0px solid #fff;
 }
-.selection-officielle figure:hover a img {
+.selection-officielle figure:hover a img, .selection-officielle figure:hover a .compat-object-fit {
   -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -13502,6 +13505,8 @@ input[type=submit] {
   overflow: hidden;
 }
 .selection-officielle figure .image.compat-object-fit {
+  position: relative;
+  z-index: 1;
   background-size: cover;
   background-position: center center;
 }
@@ -13695,8 +13700,6 @@ input[type=submit] {
   text-align: center;
   padding-top: 0px;
   display: table-cell;
-  /* padding-bottom: 82px; */
-  /* padding-left: 100px; */
 }
 .palmares-list .categorie-items article img {
   float: none;
@@ -15395,7 +15398,7 @@ input[type=submit] {
 .contain-jurys-list .jury-box a {
   color: #000;
 }
-.contain-jurys-list .jury-box:hover a .image img {
+.contain-jurys-list .jury-box:hover a .image img, .contain-jurys-list .jury-box:hover a .compat-object-fit {
   -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -15407,6 +15410,10 @@ input[type=submit] {
 }
 .contain-jurys-list .jury-box .image {
   overflow: hidden;
+}
+.contain-jurys-list .jury-box .image.compat-object-fit {
+  position: relative;
+  z-index: 1;
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
@@ -15415,6 +15422,8 @@ input[type=submit] {
   opacity: 0 !important;
 }
 .contain-jurys-list .legend {
+  position: relative;
+  z-index: 2;
   background-color: #fff;
   margin: 0px;
   vertical-align: middle;
