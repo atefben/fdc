@@ -1,6 +1,7 @@
 <ul class="a2lix_translationsLocales nav nav-tabs">
     {% for translationsFields in form %}
         {% set locale = translationsFields.vars.name %}
+        {% if is_granted('ROLE_TRANSLATOR_' ~ locale|upper) %}
         <li data-locale="{{ locale }}" {% if currentLocale == locale %}class="nav-tab-active active"{% endif %}>
             {% if app.request.get('code') is not null %}
             <a {% if translationsFields.vars.value is not null and translationsFields.vars.value.status is defined %}class="{{ translationsFields.vars.value.status|translate_status_to_admin_class }}"{% endif %} href="#" data-toggle="tab" data-target=".popin-a2lix-{{ locale }}">
@@ -14,5 +15,6 @@
             </a>
             {% endif %}
         </li>
+        {% endif %}
     {% endfor %}
 </ul>

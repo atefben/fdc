@@ -7,66 +7,76 @@
 
 // 1. Global
 // =========================
-.jurys-list{
-  .bandeau-list{
-    .sub-nav-list{
+.jurys-list {
+  .bandeau-list {
+    .sub-nav-list {
       li{
         padding: 16px 13px;
       }
     }
-    .sticky{
+
+    .sticky {
       z-index: 9;
       width: 100%;
       background-color: #1b1b1b;
     }
   }
-  .bandeau-list-img{
+
+  .bandeau-list-img {
     height: 443px !important;
     @include transition(all 1s $linear);
   }
-  .title-list-header{
-//    padding-top: 210px !important;
+
+  .title-list-header {
+    // padding-top: 210px !important;
     @include transition(all 1s $linear);
   }
-  .sub-nav-list{
-    a{
+
+  .sub-nav-list {
+    a {
       color:#999 !important;
       font-family: $CamphorBold;
       font-size: 0.75rem !important;
     }
-    a.active{
+
+    a.active {
       color:#c8a461 !important;
     }
-    a:hover{
+
+    a:hover {
       color:#c8a461 !important;
     }
   }
-  .grid{
+
+  .grid {
     padding: 0px !important;
   }
-  .grid-wrapper{
+
+  .grid-wrapper {
     margin: 0px;
   }
 }
-.contain-jury{
+.contain-jury {
   max-height: 603px;
   min-height: 603px;
   overflow: hidden;
 
-  .photo-jury{
+  .photo-jury {
     float: left;
     width: 50%;
     background-size:cover;
     max-height: 603px;
     min-height: 603px;
     max-width: 635px;
-    img{
+    
+    img {
       width: 100%;
         max-height: 603px;
         min-height: 603px;
     }
   }
-  .contain-descript{
+
+  .contain-descript {
     background-color:#ffffff;
     max-height: 606px;
     height: 603px;
@@ -76,17 +86,20 @@
     box-sizing: border-box;
     overflow-x: auto;
     @include transition(all 1s $linear);
-    a{
+    
+    a {
       color:#000;
     }
-    .descript-title{
+
+    .descript-title {
       text-transform: uppercase;
       font-family: $CamphorHeavy;
       font-size: .625rem;
       padding-top: 25px;
       letter-spacing: .2em;
     }
-    .descript-name{
+
+    .descript-name {
       text-transform: uppercase;
       font-family: $CamphorHeavy;
       font-size: 2.25rem;
@@ -94,7 +107,8 @@
       padding-bottom: 7px;
       letter-spacing: .1em;
     }
-    .descript-rank{
+
+    .descript-rank {
       color: #ccab6e;
       font-family: $CamphorItalic;
       font-size: .75rem;
@@ -102,7 +116,8 @@
       letter-spacing: .1em;
       display: block;
     }
-    p{
+
+    p {
        font-size: 0.88rem;
       line-height: 24px;
       padding-top:35px;
@@ -110,46 +125,62 @@
     }
   }
 }
-.contain-jurys-list{
+
+.contain-jurys-list {
   background-color: #1a1a1a;
-  .title-list-cat{
+
+  .title-list-cat {
     border: 0px solid #000;
     font-weight: 700;
     font-size: 1.13rem;
     padding: 70px;
   }
-  .title{
+  
+  .title {
     margin-bottom: 0px;
     line-height: 1.75rem;
   }
-  article img{
+  
+  article img {
     float: left;
     margin-right: 0px;
     margin-left: 0px;
   }
-  .jury-box{
 
+  .jury-box {
     display: inline-block;
-	overflow:hidden;
-      a{
-    color:#000;
-      }
+    overflow:hidden;
+    
+    a {
+      color:#000;
+    }
 
-      &:hover a .image img {
-        @include transition(all 4s $linear);
-        @include transform(scale(1.08) translateZ(0));
+    &:hover a .image img,
+    &:hover a .compat-object-fit {
+      @include transition(all 4s $linear);
+      @include transform(scale(1.08) translateZ(0));
+    }
+
+    .image {
+      overflow: hidden;
+      
+      &.compat-object-fit {
+        position: relative;
+        z-index: 1;
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
       }
-      .image{
-        overflow: hidden;
-	  	background-size: cover;
-      	background-position: top center;
-      	background-repeat: no-repeat;
-	    img {
-	       opacity: 0 !important;
-	    }
+      
+      img {
+        opacity: 0 !important;
       }
+    }
   }
-  .legend{
+
+  .legend {
+    position: relative;
+    z-index: 2;
     background-color: #fff;
     margin: 0px;
     vertical-align: middle;
@@ -157,7 +188,8 @@
     text-align: center;
     height: 100px;
   }
-  .name{
+
+  .name {
     display: block;
     font-family:$CamphorBold;
     font-size:.875rem;
@@ -165,145 +197,162 @@
     padding-top:24px;
     padding-bottom: 3px;
   }
-  .rank{
+
+  .rank {
     font-family: $CamphorItalic;
     color:#ccab6e;
     font-size: .8125rem;
   }
-
 }
 
 //2. media
 // ==========================
+@media screen and (min-width: 1920px) {
+  .contain-jury {
+    max-height: 904px;
+    min-height: 904px;
 
-
-
-  @media screen and (min-width: 1920px) {
-    .contain-jury{
+    .contain-descript {
+      padding-top: 72px;
+      padding-left: 160px;
+      padding-right: 160px;
+      padding-bottom: 66px;
       max-height: 904px;
       min-height: 904px;
-      .contain-descript{
-        padding-top: 72px;
-        padding-left: 160px;
-        padding-right: 160px;
-        padding-bottom: 66px;
-        max-height: 904px;
-        min-height: 904px;
-      }
-      .photo-jury{
-        max-height: 904px;
-        min-height: 904px;
-        max-width: 960px;
-      }
     }
-    .jurys-list .bandeau-list-img{
-      height: 444px !important;
-    }
-    .jurys-list .title-list-header {
-//      padding-top: 210px !important;
+
+    .photo-jury {
+      max-height: 904px;
+      min-height: 904px;
+      max-width: 960px;
     }
   }
 
-  @media screen and (min-width: 1600px) and (max-width:1919px) {
-    .contain-jury{
+  .jurys-list .bandeau-list-img {
+    height: 444px !important;
+  }
+
+  .jurys-list .title-list-header {
+    // padding-top: 210px !important;
+  }
+}
+
+@media screen and (min-width: 1600px) and (max-width:1919px) {
+  .contain-jury {
+    max-height: 748px;
+    min-height: 748px;
+
+    .contain-descript {
+      padding-top: 33px;
+      padding-left: 120px;
+      padding-right: 120px;
+      padding-bottom: 66px;
       max-height: 748px;
       min-height: 748px;
-      .contain-descript{
-        padding-top: 33px;
-        padding-left: 120px;
-        padding-right: 120px;
-        padding-bottom: 66px;
-        max-height: 748px;
-        min-height: 748px;
-      }
-      .photo-jury{
-        max-height: 748px;
-        min-height: 748px;
-        max-width: 800px;
-      }
     }
-    .jurys-list .bandeau-list-img{
-      height: 373px !important;
-    }
-    .jurys-list .title-list-header {
-//      padding-top: 173px !important;
+
+    .photo-jury {
+      max-height: 748px;
+      min-height: 748px;
+      max-width: 800px;
     }
   }
 
-  @media screen and (min-width: 1280px) and (max-width:1599px) {
-    .contain-jury{
+  .jurys-list .bandeau-list-img {
+    height: 373px !important;
+  }
+
+  .jurys-list .title-list-header {
+    // padding-top: 173px !important;
+  }
+}
+
+@media screen and (min-width: 1280px) and (max-width:1599px) {
+  .contain-jury {
+    max-height: 603px;
+    min-height: 603px;
+
+    .contain-descript {
+      padding-top: 25px;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-bottom: 66px;
       max-height: 603px;
       min-height: 603px;
-      .contain-descript{
-        padding-top: 25px;
-        padding-left: 50px;
-        padding-right: 50px;
-        padding-bottom: 66px;
-        max-height: 603px;
-        min-height: 603px;
-      }
-      .photo-jury{
-        max-height: 603px;
-        min-height: 603px;
-        max-width: 640px;
-      }
     }
-    .jurys-list .bandeau-list-img{
-      height: 296px !important;
-    }
-    .jurys-list .title-list-header {
-//      padding-top: 134px !important;
+
+    .photo-jury {
+      max-height: 603px;
+      min-height: 603px;
+      max-width: 640px;
     }
   }
 
-  @media screen and (min-width: 1024px) and (max-width:1279px) {
-    .contain-jury{
+  .jurys-list .bandeau-list-img {
+    height: 296px !important;
+  }
+
+  .jurys-list .title-list-header {
+    // padding-top: 134px !important;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width:1279px) {
+  .contain-jury {
+    max-height: 603px;
+    min-height: 603px;
+
+    .contain-descript {
+      padding-top: 25px;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-bottom: 66px;
       max-height: 603px;
       min-height: 603px;
-      .contain-descript{
-        padding-top: 25px;
-        padding-left: 50px;
-        padding-right: 50px;
-        padding-bottom: 66px;
-        max-height: 603px;
-        min-height: 603px;
-      }
-      .photo-jury{
-        max-height: 603px;
-        min-height: 603px;
-        max-width: 512px;
-      }
     }
-    .jurys-list .bandeau-list-img{
-      height: 294px !important;
-    }
-    .jurys-list .title-list-header {
-//      padding-top: 134px !important;
+
+    .photo-jury {
+      max-height: 603px;
+      min-height: 603px;
+      max-width: 512px;
     }
   }
 
-  @media screen and (max-width:1023px) {
-    .contain-jury{
+  .jurys-list .bandeau-list-img {
+    height: 294px !important;
+  }
+
+  .jurys-list .title-list-header {
+    // padding-top: 134px !important;
+  }
+}
+
+@media screen and (max-width:1023px) {
+  .contain-jury {
+    max-height: 603px;
+    min-height: 603px;
+
+    .contain-descript {
+      padding-top: 25px;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-bottom: 66px;
       max-height: 603px;
       min-height: 603px;
-      .contain-descript{
-        padding-top: 25px;
-        padding-left: 50px;
-        padding-right: 50px;
-        padding-bottom: 66px;
-        max-height: 603px;
-        min-height: 603px;
-      }
-      .photo-jury{
-        max-height: 603px;
-        min-height: 603px;
-        max-width: 512px;
-      }
     }
-    .jurys-list .bandeau-list-img{
-      height: 294px !important;
-    }
-    .jurys-list .title-list-header {
-//      padding-top: 134px !important;
+
+    .photo-jury {
+      max-height: 603px;
+      min-height: 603px;
+      max-width: 512px;
     }
   }
+
+  .jurys-list .bandeau-list-img {
+    height: 294px !important;
+  }
+
+  .jurys-list .title-list-header {
+    // padding-top: 134px !important;
+  }
+}

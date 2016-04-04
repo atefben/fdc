@@ -104,11 +104,11 @@
       overflow: hidden;
       transition: 1s;
 
-      .faq-question{
+      .faq-question {
         position: relative;
 
-        &:hover{
-          .icon_case-plus{
+        &:hover {
+          .icon_case-plus {
             color: $gold;
             cursor: pointer;
           }
@@ -142,7 +142,7 @@
         @include transition(color 0.5s $smoothTransition);
       }
 
-      .icon_moins{
+      .icon_moins {
         position: absolute;
         top: 21px;
         right: 12px;

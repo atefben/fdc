@@ -6,7 +6,6 @@
 
 // 1. Global
 // =========================
-
 input[type=text],
 input[type=email],
 input[type=tel],
@@ -16,7 +15,6 @@ input[type=submit] {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
-
   border-radius: 0;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
@@ -225,7 +223,6 @@ input[type=submit] {
       opacity: 0;
       padding: 20px;
       visibility: hidden;
-
       @include transition(all 0.3s $smoothTransition);
 
       &.show {
