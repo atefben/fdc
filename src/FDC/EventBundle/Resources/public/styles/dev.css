@@ -248,3 +248,7 @@
 .artist .paragraph i {
     font-style: italic;
 }
+
+.single-movie .press .contacts .wrapper .vCenterKidTop .prod div {
+    padding: 2px 0;
+}

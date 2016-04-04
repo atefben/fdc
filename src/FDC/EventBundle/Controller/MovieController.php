@@ -72,8 +72,12 @@ class MovieController extends Controller
                     $prev = $movies[count($movies) - 2];
                     $next = $movies[0];
                 } else {
-                    $prev = $movies[$key - 1];
-                    $next = $movies[$key + 1];
+                    if (isset($movies[$key - 1])) {
+                        $prev = $movies[$key - 1];
+                    }
+                    if (isset($movies[$key + 1])) {
+                        $next = $movies[$key + 1];
+                    }
                 }
                 break;
             }
