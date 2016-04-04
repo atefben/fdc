@@ -136,6 +136,12 @@
                         {{ 'dashboard.link.fdc_page_la_selection_courts_metrages'|trans({}, 'BaseAdminBundle') }}
                     </a>
                 </li>
+                <li>
+                    <a href="{{ path('admin_base_core_fdcpagelaselectioncinemaplage_edit', {id: admin_fdc_page_la_selection_cinema_plage_id}) }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        {{ 'dashboard.link.fdc_page_la_selection_cinema_plage'|trans({}, 'BaseAdminBundle') }}
+                    </a>
+                </li>
             {% endif %}
             {% if is_granted('ROLE_BASE_ADMIN_FDC_PAGE_JURY_ADMIN') %}
                 <li>
