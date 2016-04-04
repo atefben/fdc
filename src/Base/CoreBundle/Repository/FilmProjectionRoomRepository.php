@@ -10,8 +10,9 @@ class FilmProjectionRoomRepository extends EntityRepository
     {
         $qb = $this
             ->createQueryBuilder('r')
-            ->leftJoin('r.projections', 'p')
-            ->andWhere('SIZE(p.programmationFilms) >= 1')
+            ->join('r.projections', 'p')
+            ->join('p.programmationFilms', 'pf')
+            ->andWhere('pf.film IS NOT NULL')
         ;
 
 //        if ($time) {
@@ -33,7 +34,7 @@ class FilmProjectionRoomRepository extends EntityRepository
 //            ;
 //        }
         if ($filmId) {
-            $qb->join('.programmationFilms', 'f')
+            $qb->join('r.programmationFilms', 'f')
                 ->andWhere('f.film = :film_id')
                 ->setParameter(':film_id', $filmId)
             ;

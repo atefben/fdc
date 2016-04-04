@@ -75,19 +75,22 @@ class FilmProjectionController extends FOSRestController
         $date = new \DateTime();
         $date->setTimestamp($time);
 
-//        foreach ($rooms as $key => $room) {
-//            $ac = new ArrayCollection();
-//            if ($room instanceof FilmProjectionRoom) {
-//                foreach ($room->getProjections() as $projection) {
+        foreach ($rooms as $key => $room) {
+            $ac = new ArrayCollection();
+            if ($room instanceof FilmProjectionRoom) {
+                foreach ($room->getProjections() as $projection) {
+                    if ($projection->getProgrammationFilms()->count()) {
+                        $ac->add($projection);
+                    }
 //                    if ($projection instanceof FilmProjection) {
 //                        if ($projection->getStartsAt()->format('d-m-y') === $date->format('d-m-y')) {
 //                            $ac->add($projection);
 //                        }
 //                    }
-//                }
-//            }
-//            $rooms[$key]->setProjections($ac);
-//        }
+                }
+            }
+            $rooms[$key]->setProjections($ac);
+        }
         $groups = array('projection_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
 
