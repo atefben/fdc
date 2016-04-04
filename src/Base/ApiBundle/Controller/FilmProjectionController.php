@@ -53,7 +53,7 @@ class FilmProjectionController extends FOSRestController
      * @param ParamFetcher $paramFetcher
      * @return View
      */
-    public function getProjectionsAction(Paramfetcher $paramFetcher)
+    public function getProjectionsAction(ParamFetcher $paramFetcher)
     {
         // core manager shortcut
         $coreManager = $this->get('base.api.core_manager');
@@ -75,19 +75,19 @@ class FilmProjectionController extends FOSRestController
         $date = new \DateTime();
         $date->setTimestamp($time);
 
-        foreach ($rooms as $key => $room) {
-            $ac = new ArrayCollection();
-            if ($room instanceof FilmProjectionRoom) {
-                foreach ($room->getProjections() as $projection) {
-                    if ($projection instanceof FilmProjection) {
-                        if ($projection->getStartsAt()->format('d-m-y') === $date->format('d-m-y')) {
-                            $ac->add($projection);
-                        }
-                    }
-                }
-            }
-            $rooms[$key]->setProjections($ac);
-        }
+//        foreach ($rooms as $key => $room) {
+//            $ac = new ArrayCollection();
+//            if ($room instanceof FilmProjectionRoom) {
+//                foreach ($room->getProjections() as $projection) {
+//                    if ($projection instanceof FilmProjection) {
+//                        if ($projection->getStartsAt()->format('d-m-y') === $date->format('d-m-y')) {
+//                            $ac->add($projection);
+//                        }
+//                    }
+//                }
+//            }
+//            $rooms[$key]->setProjections($ac);
+//        }
         $groups = array('projection_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
 
