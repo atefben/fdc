@@ -288,15 +288,10 @@ file that was distributed with this source code.
                                                                 {% for admin in group.items %}
                                                                     {% if admin.hasroute('list') and admin.isGranted('EDIT') %}
                                                                         <li{% if app.request.get('_sonata_admin') == admin.code %} class="active"{% endif %}>
-                                                                            {% if admin.code == 'base.admin.fdc_page_la_selection_cinema_plage' %}
-                                                                                <a href="{{ path('admin_base_core_fdcpagelaselectioncinemaplage_edit', {id: admin_event_fdc_page_la_selection_cinema_plage_id}) }}">
-                                                                                    <i class="fa fa-angle-double-right"></i> {{ admin.label|trans({}, admin.translationdomain) }}
-                                                                                </a>
-                                                                            {% else %}
-                                                                                <a href="{{ admin.generateUrl('list') }}">
-                                                                                    <i class="fa fa-angle-double-right"></i> {{ admin.label|trans({}, admin.translationdomain) }}
-                                                                                </a>
-                                                                            {% endif %}
+                                                                            <a href="{{ admin.generateUrl('list') }}">
+                                                                                <i class="fa fa-angle-double-right"></i>
+                                                                                {{ admin.label|trans({}, admin.translationdomain) }}
+                                                                            </a>
                                                                         </li>
                                                                     {% endif %}
                                                                 {% endfor %}

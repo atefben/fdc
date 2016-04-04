@@ -30,21 +30,29 @@ twig:
         admin_routes_translation_legend_without_master: %admin_routes_translation_legend_without_master%
         admin_routes_translation_legend: %admin_routes_translation_legend%
         admin_routes_translation_lock: %admin_routes_translation_lock%
+        #homepage
         admin_homepage_id: %admin_homepage_id%
-        admin_fdc_page_web_tv_live_id: %admin_fdc_page_web_tv_live_id%
-        admin_fdc_page_web_tv_channels_id: %admin_fdc_page_web_tv_channels_id%
-        admin_press_homepage_id: %admin_press_homepage_id%
-        admin_press_guide_id: %admin_press_guide_id%
-        admin_press_contact_id: %admin_press_contact_id%
+        # prepare / participate
         admin_fdc_page_prepare_id: %admin_fdc_page_prepare_id%
         admin_event_fdc_page_prepare_id: %admin_event_fdc_page_prepare_id%
         admin_event_fdc_page_participate_id: %admin_event_fdc_page_participate_id%
+        #s3
+        s3_server_global: http://%s3_global_bucket_name%.s3-website-%s3_global_region%.amazonaws.com/
+        s3_server_video: http://%s3_video_bucket_name%.s3-website-%s3_video_region%.amazonaws.com/
+        s3_server_audio: http://%s3_audio_bucket_name%.s3-website-%s3_audio_region%.amazonaws.com/
+        #press
+        admin_press_homepage_id: %admin_press_homepage_id%
+        admin_press_guide_id: %admin_press_guide_id%
+        admin_press_contact_id: %admin_press_contact_id%
         admin_press_download_id: %admin_press_download_id%
         admin_press_medialibrary_id: %admin_press_medialibrary_id%
         admin_press_accredit_id: %admin_press_accredit_id%
         admin_press_cinemamap_id: %admin_press_cinemamap_id%
         admin_press_projection_id: %admin_press_projection_id%
         admin_press_statementinfo_id: %admin_press_statementinfo_id%
+        #webtv
+        admin_fdc_page_web_tv_live_id: %admin_fdc_page_web_tv_live_id%
+        admin_fdc_page_web_tv_channels_id: %admin_fdc_page_web_tv_channels_id%
         admin_fdc_page_web_tv_trailers_competition_id: %admin_fdc_page_web_tv_trailers_competition_id%
         admin_fdc_page_web_tv_trailers_certain_regard_id: %admin_fdc_page_web_tv_trailers_certain_regard_id%
         admin_fdc_page_web_tv_trailers_hors_competition_id: %admin_fdc_page_web_tv_trailers_hors_competition_id%
@@ -53,28 +61,28 @@ twig:
         admin_fdc_page_web_tv_trailers_courts_metrages_id: %admin_fdc_page_web_tv_trailers_courts_metrages_id%
         admin_fdc_page_web_tv_trailers_cannes_classics_id: %admin_fdc_page_web_tv_trailers_cannes_classics_id%
         admin_fdc_page_web_tv_trailers_cinema_plage_id: %admin_fdc_page_web_tv_trailers_cinema_plage_id%
+        #news
         admin_fdc_page_news_articles_id: %admin_fdc_page_news_articles_id%
         admin_fdc_page_news_audios_id: %admin_fdc_page_news_audios_id%
         admin_fdc_page_news_videos_id: %admin_fdc_page_news_videos_id%
         admin_fdc_page_news_images_id: %admin_fdc_page_news_images_id%
-        s3_server_global: http://%s3_global_bucket_name%.s3-website-%s3_global_region%.amazonaws.com/
-        s3_server_video: http://%s3_video_bucket_name%.s3-website-%s3_video_region%.amazonaws.com/
-        s3_server_audio: http://%s3_audio_bucket_name%.s3-website-%s3_audio_region%.amazonaws.com/
+        #la selection
         admin_fdc_page_la_selection_competition_id: %admin_fdc_page_la_selection_competition_id%
         admin_fdc_page_la_selection_certain_regard_id: %admin_fdc_page_la_selection_certain_regard_id%
         admin_fdc_page_la_selection_hors_competition_id: %admin_fdc_page_la_selection_hors_competition_id%
         admin_fdc_page_la_selection_seances_speciales_id: %admin_fdc_page_la_selection_seances_speciales_id%
         admin_fdc_page_la_selection_cinefondation_id: %admin_fdc_page_la_selection_cinefondation_id%
         admin_fdc_page_la_selection_courts_metrages_id: %admin_fdc_page_la_selection_courts_metrages_id%
-        admin_fdc_page_jury_long_metrages_id: %admin_fdc_page_jury_long_metrages_id%
-        admin_fdc_page_jury_cinefondation_courts_metrages_id: %admin_fdc_page_jury_cinefondation_courts_metrages_id%
+        admin_fdc_page_la_selection_cinema_plage_id: %admin_fdc_page_la_selection_cinema_plage_id%
+        #jury
         admin_fdc_page_jury_certain_regard_id: %admin_fdc_page_jury_certain_regard_id%
         admin_fdc_page_jury_camera_dor_id: %admin_fdc_page_jury_camera_dor_id%
+        admin_fdc_page_jury_long_metrages_id: %admin_fdc_page_jury_long_metrages_id%
+        admin_fdc_page_jury_cinefondation_courts_metrages_id: %admin_fdc_page_jury_cinefondation_courts_metrages_id%
+        #award
         admin_fdc_page_award_competition_id: %admin_fdc_page_award_competition_id%
         admin_fdc_page_award_certain_regard_id: %admin_fdc_page_award_certain_regard_id%
         admin_fdc_page_award_cinefondation_id: %admin_fdc_page_award_cinefondation_id%
         admin_fdc_page_award_camera_dor_id: %admin_fdc_page_award_camera_dor_id%
         admin_fdc_page_award_all_awards_id: %admin_fdc_page_award_all_awards_id%
         admin_fdc_page_event_id: %admin_fdc_page_event_id%
-        admin_fdc_page_la_selection_cannes_classics_id: %admin_fdc_page_la_selection_cannes_classics_id%
-        admin_event_fdc_page_la_selection_cinema_plage_id: %admin_event_fdc_page_la_selection_cinema_plage_id%

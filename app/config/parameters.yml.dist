@@ -54,6 +54,7 @@ parameters:
     admin_fdc_page_la_selection_seances_speciales_id: 4
     admin_fdc_page_la_selection_cinefondation_id: 5
     admin_fdc_page_la_selection_courts_metrages_id: 6
+    admin_fdc_page_la_selection_cinema_plage_id: 1
     admin_fdc_page_jury_long_metrages_id: 1
     admin_fdc_page_jury_cinefondation_courts_metrages_id: 2
     admin_fdc_page_jury_certain_regard_id: 3
@@ -197,7 +198,6 @@ parameters:
     admin_fdc_page_news_audios_id: ~
     admin_fdc_page_news_images_id: ~
     admin_fdc_page_news_videos_id: ~
-    admin_fdc_page_la_selection_cannes_classics_id: 1
     s3_elastic_mp4_pipeline_id: '1454076999739-uy533t'
     s3_elastic_mp4_preset_id: '1456133456345-3dts1g'
     s3_elastic_webm_pipeline_id: '1454076999739-uy533t'
@@ -205,4 +205,3 @@ parameters:
     s3_elastic_mp3_pipeline_id: '1455903590532-u7lwud'
     s3_elastic_mp3_preset_id: '1351620000001-300040'
     admin_event_fdc_page_prepare_id: 1
-    admin_event_fdc_page_la_selection_cinema_plage_id: 1

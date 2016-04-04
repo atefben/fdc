@@ -73,9 +73,9 @@ class FDCPageParticipateTranslation implements TranslateChildInterface
     }
 
     /**
-     * Set label
+     * Set title
      *
-     * @param string $label
+     * @param string $title
      * @return FDCPageParticipateSectionWidgetDocumentTranslation
      */
     public function setTitle($title)
