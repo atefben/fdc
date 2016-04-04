@@ -196,7 +196,7 @@ class MediaVideoRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function getApiLiveMediaVideos($festival, $locale)
+    public function getApiLiveMediaVideos($festival, $locale, $maxResults = 5)
     {
         $qb = $this->createQueryBuilder('mv');
 
@@ -208,6 +208,7 @@ class MediaVideoRepository extends EntityRepository
             ->andWhere('(mv.image IS NOT NULL OR mvt.imageAmazonUrl IS NOT NULL)')
             ->andWhere('mv.displayedHome = :displayedHome')
             ->setParameter('displayedHome', true)
+            ->setMaxResults($maxResults)
         ;
 
         $this->addMasterQueries($qb, 'mv', $festival, true);
