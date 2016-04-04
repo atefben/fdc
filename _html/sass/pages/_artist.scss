@@ -72,6 +72,15 @@
       min-height: 418px;
       vertical-align: bottom;
       width: 181px;
+      .compat-object-fit-b {
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        height: 284px;
+        img {
+          opacity: 0;
+        }
+	   }
       .content-text{
        margin: 0 auto;
        text-align: center;
@@ -144,7 +153,23 @@
     }
     #slide-artist{
       .item{
-        width: 248px;
+        .compat-object-fit-c {
+          background-size: cover;
+          background-position: top center;
+          background-repeat: no-repeat;
+		  width: 210px;
+          height: 284px;
+          img {
+            opacity: 0 !important;
+          }
+  	   }
+	  a {
+		  color:#333;
+	   }
+	   figcaption {
+		   margin-top:15px;
+		   height:38px;
+	   }
       }
     }
     .first{

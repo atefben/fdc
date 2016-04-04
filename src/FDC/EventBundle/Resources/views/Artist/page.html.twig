@@ -20,15 +20,32 @@
                 </div>
                 <h2 class="title-article">{{ artist.fullName }}</h2>
                 <div class="buttons">
-                    <a id="share-article" href="#" class="button">{{ 'juries.artist.btn.partager'|trans }}</a>
+                    <a id="share-article" href="#" class="button">
+                        <i class="icon icon_share"></i>
+                        {{ 'juries.artist.btn.partager'|trans }}
+                    </a>
                     <a href="#" onclick="javascript:window.print()" class="button print">
-                        {{ 'juries.artiste.btn.imprimer'|trans }}</a>
+                        <i class="icon icon_print"></i>
+                        {{ 'juries.artiste.btn.imprimer'|trans }}
+                    </a>
                 </div>
                 <div class="single-photo">
                     <div class="photo-container">
                         {% set artistImage = artist|person_image %}
                         {% if artistImage %}
                             <img src="{% path artistImage, '976x535' %}" alt="{{ artist.fullName }}"/>
+                        {% else %}
+                            {% set media = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
+                            {% if media is empty %}
+                                {% set media = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
+                            {% endif %}
+                            {% if media is empty %}
+                                {% set photo = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                            {% endif %}
+                            {% if media is not empty %}
+                                <img src="{% path media, '976x535' %}" alt="{{ artist.fullName }}"/>
+                            {% endif %}
+
                         {% endif %}
                     </div>
                 </div>
@@ -47,12 +64,26 @@
                     <div class="contain-films-list">
                         {% for filmPerson in artist.films %}
                             <div class="item">
+								<a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
+								<div class="image compat-object-fit-b">
                                 {% set filmPersonfilmPoster = filmPerson.film|film_poster %}
                                 {% if filmPersonfilmPoster %}
-                                    <img src="{% path filmPersonFilmPoster, '976x535' %}" alt="">
+                                    <img src="{% path filmPersonFilmPoster, 'mobile' %}" alt="">
                                 {% else %}
-                                    <img src="{{ asset('bundles/fdcevent/img/palmares/film_w181.jpg') }}" alt="">
+                                    {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+                                    {% if media is empty %}
+                                        {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                                    {% endif %}
+                                    {% if media is empty %}
+                                        {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+                                    {% endif %}
+                                    {% if media is not empty %}
+                                        <img src="{% path media, '976x535' %}" alt="">
+                                    {% else %}
+                                        <img src="{{ asset('bundles/fdcevent/img/palmares/film_w181.jpg') }}" alt="">
+                                    {% endif %}
                                 {% endif %}
+								</div>
                                 <div class="content-text">
                                     <span class="item-title">{{ filmPerson.film.titleVO }}</span>
                                     {% if filmPerson.film|trans_fallback('title') %}
@@ -75,6 +106,7 @@
                                         {% endspaceless %}
                                     {% endif %}
                                 </div>
+								</a>
                             </div>
                         {% endfor %}
                         {% endif %}
@@ -100,21 +132,35 @@
                                     (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and
                                     awardAssociation.person.id == artist.id) %}
                                         <div class="item">
+											<a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
+											<div class="image compat-object-fit-b">
                                             {% set filmPersonfilmPoster = filmPerson.film|film_poster %}
                                             {% if filmPersonfilmPoster %}
-                                                <img src="{% path filmPersonFilmPoster, '976x535' %}" alt="">
+                                                <img src="{% path filmPersonFilmPoster, 'mobile' %}" alt="">
                                             {% else %}
-                                                <img src="{{ asset('bundles/fdcevent/img/palmares/film_w181.jpg') }}"
-                                                     alt="">
+                                                {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+                                                {% if media is empty %}
+                                                    {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+                                                {% endif %}
+                                                {% if media is empty %}
+                                                    {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+                                                {% endif %}
+                                                {% if media is not empty %}
+                                                    <img src="{% path media, '976x535' %}" alt="">
+                                                {% else %}
+                                                    <img src="{{ asset('bundles/fdcevent/img/palmares/film_w181.jpg') }}"
+                                                        alt="">
+                                                {% endif %}
                                             {% endif %}
+											</div>
                                             <div class="content-text">
                                                 <span class="item-title">{{ filmPerson.film.titleVO }}</span>
                                                 {% if awardAssociation.award.festival %}
                                                     <span class="item-date">{{ awardAssociation.award.festival.year }}</span>
                                                 {% endif %}
                                                 <span class="item-categ" {{ awardAssociation.award.prize|content_lang('title') }}>
-                                            {{ awardAssociation.award.prize|trans_fallback('title') }}
-                                        </span>
+                                                    {{ awardAssociation.award.prize|trans_fallback('title') }}
+                                                </span>
                                                 {% if filmPerson.functions|length > 0 %}
                                                     {% spaceless %}
                                                         <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
@@ -126,6 +172,7 @@
                                                     {% endspaceless %}
                                                 {% endif %}
                                             </div>
+										</a>
                                         </div>
                                     {% endif %}
                                 {% endfor %}
@@ -158,12 +205,15 @@
             </div>
             <div class="share">
                 <p>{{ 'juries.artiste.title.share'|trans }}</p>
+                {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                 <div class="buttons square">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_event_news_index') }}"
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ currentUrl }}
+
+"
                        rel="nofollow" class="button facebook">
                         <i class="icon icon_facebook"></i>
                     </a>
-                    <a href="https://twitter.com/intent/tweet?url={{ url('fdc_event_news_index') }}" rel="nofollow"
+                    <a href="https://twitter.com/intent/tweet?url={{ currentUrl }}" rel="nofollow"
                        class="button twitter">
                         <i class="icon icon_twitter"></i>
                     </a>
@@ -179,14 +229,29 @@
                     {% for director in directors %}
                         <div class="item first">
                             <figure>
+								<a href="{{ path('fdc_event_artist_get', {'slug': director.slug }) }}">
+								<div class="image compat-object-fit-c">
                                 {% set directorImage = director|person_image_portait %}
                                 {% if directorImage %}
-                                    <img src="{% path directorImage, '212x134' %}" alt="{{ director.fullName }}">
+                                    <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}">
+                                {% else %}
+                                    {% set media = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
+                                    {% if media is empty %}
+                                        {% set media = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
+                                    {% endif %}
+                                    {% if media is empty %}
+                                        {% set photo = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                                    {% endif %}
+                                    {% if media is not empty %}
+                                        <img src="{% path media, '210x284' %}" alt="{{ director.fullName }}"/>
+                                    {% endif %}
                                 {% endif %}
+								</div>
                                 <figcaption>
                                     <span class="name">{{ director.fullName }}</span>
-                                    <span class="rank" {{ artist|content_lang('profession') }}>{{ artist|trans_fallback('profession') }}</span>
+                                    <span class="rank" {{ director|content_lang('profession') }}>{{ director|trans_fallback('profession') }}</span>
                                 </figcaption>
+								</a>
                             </figure>
                         </div>
                     {% endfor %}

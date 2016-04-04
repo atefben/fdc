@@ -13,11 +13,13 @@
         {% endif %}>
     <div class="bck-hover">
         <div class="contain_item">
+			<div class="image compat-object-fit-d">
             {% if movie.imageMain and movie.imageMain.file %}
                 {% media movie.imageMain, '516x688' with ({'alt': (film|trans_fallback('title')?:movie.titleVO)}) %}
             {% else %}
                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({'film': movie }) %}
             {% endif %}
+			</div>
             <div class="infos-item-list">
                 <div class="logo-palme-dor-container">
                     <i class="icon icon_palme palme-dor-img"></i>

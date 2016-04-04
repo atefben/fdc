@@ -130,17 +130,23 @@
   .jury-box{
 
     display: inline-block;
-
+	overflow:hidden;
       a{
     color:#000;
       }
 
-      &:hover a img {
+      &:hover a .image img {
         @include transition(all 4s $linear);
         @include transform(scale(1.08) translateZ(0));
       }
       .image{
         overflow: hidden;
+	  	background-size: cover;
+      	background-position: top center;
+      	background-repeat: no-repeat;
+	    img {
+	       opacity: 0 !important;
+	    }
       }
   }
   .legend{

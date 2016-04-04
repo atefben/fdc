@@ -17,30 +17,45 @@ class FDCPageLaSelectionCannesClassicsRepository extends EntityRepository
             ->createQueryBuilder('cc')
             ->join('cc.translations', 't')
             ->where('t.slug = :slug')
-            ->andWhere('t.locale = :locale')
-            ->andWhere('t.status = :status_published')
-            ->setParameter('status_published', FDCPageLaSelectionCannesClassicsTranslation::STATUS_PUBLISHED)
+            ->andWhere('t.status = :status_published AND t.locale = :locale_fr')
+            ->setParameter('locale_fr', 'fr')
             ->setParameter('slug', $slug)
-            ->setParameter('locale', $locale)
+            ->setParameter('status_published', FDCPageLaSelectionCannesClassicsTranslation::STATUS_PUBLISHED);
+
+        if ($locale != 'fr') {
+            $qb
+                ->join('cc.translations', 't2')
+                ->andWhere('t2.status = :status_translated AND t2.locale = :locale')
+                ->setParameter('status_translated', FDCPageLaSelectionCannesClassicsTranslation::STATUS_TRANSLATED)
+                ->setParameter('locale', $locale);
+        }
+
+        return $qb
             ->getQuery()
             ->getOneOrNullResult()
         ;
-
-        return $qb;
     }
 
-    public function getAll()
+    public function getAll($locale)
     {
         $qb = $this
             ->createQueryBuilder('cc')
             ->join('cc.translations', 't')
-            ->where('t.status = :status_published')
+            ->where('t.status = :status_published AND t.locale = :locale_fr')
             ->setParameter('status_published', FDCPageLaSelectionCannesClassicsTranslation::STATUS_PUBLISHED)
+            ->setParameter('locale_fr', 'fr');
+        if ($locale != 'fr') {
+            $qb
+                ->join('cc.translations', 't2')
+                ->andWhere('t2.status = :status_translated AND t2.locale = :locale')
+                ->setParameter('status_translated', FDCPageLaSelectionCannesClassicsTranslation::STATUS_TRANSLATED)
+                ->setParameter('locale', $locale);
+        }
+
+        return $qb
             ->getQuery()
             ->getResult()
         ;
-
-        return $qb;
     }
 
 }

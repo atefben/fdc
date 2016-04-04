@@ -50,8 +50,8 @@ class LockController extends Controller
         'pressaccreditprocedure' => 'PressAccreditProcedure',
         'presscinemaroom'        => 'PressCinemaRoom',
         'fdcpagewaiting'         => 'FDCPageWaiting',
-        'fdcpagelaselectioncannesclassics' => 'FDCPageLaSelectionCannesClassics'
-
+        'fdcpagelaselectioncannesclassics' => 'FDCPageLaSelectionCannesClassics',
+        'fdcpagelaselectioncinemaplage' => 'FDCPageLaSelectionCinemaPlage'
     );
 
     /**

@@ -41,7 +41,7 @@
                     <div class="links">
                         <p class="sub">{{ 'movie.presse.label.liens'|trans }}</p>
                         {% if movie.website %}
-                            <a href="{{ movie.website }}" target="_blank">{{ 'movie.presse.liens.website'|trans }}</a>
+                            <a href="http://{{ movie.website }}" target="_blank">{{ 'movie.presse.liens.website'|trans }}</a>
                         {% endif %}
                         {% if movie.facebook %}
                             <a href="{{ movie.facebook }}" target="_blank">{{ 'movie.presse.liens.facebook'|trans }}</a>
@@ -90,7 +90,7 @@
                                         {% endif %}
                                         {% if contact.address and contact.address.website %}
                                             {% if contact.address and contact.address.email %} - {% endif %}
-                                            <a href="{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>
+                                            <a href="http://{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>
                                         {% endif %}
                                     </p>
                                 </div>
@@ -127,7 +127,7 @@
                                             {% endif %}
                                             {% if contact.address and contact.address.website %}
                                                 {% if contact.address and contact.address.email %} - {% endif %}
-                                                <a href="{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>
+                                                <a href="http://{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>
                                             {% endif %}
                                         {% endif %}
                                     </p>
@@ -148,7 +148,7 @@
 
                                             {% if contact.address and contact.address.website %}
                                                 {% if (contact.address.phone or contact.address.mobilePhone) %} - {% endif %}
-                                                <a href="{{ contact.address.website }}" target="_blank">
+                                                <a href="http://{{ contact.address.website }}" target="_blank">
                                                     {{ contact.address.website }}
                                                 </a>
                                             {% endif %}
@@ -188,7 +188,7 @@
                                             {% endif %}
                                             {% if contact.address and contact.address.website %}
                                                 {% if (contact.address.phone or contact.address.mobilePhone) %} - {% endif %}
-                                                <a href="{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>
+                                                <a href="http://{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>
                                             {% endif %}
                                             {% if contact.address.email %}
                                                 {% if contact.address and contact.address.website %} - {% endif %}

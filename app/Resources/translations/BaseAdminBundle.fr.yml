@@ -10,6 +10,7 @@ settings:
     fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
+    link_f_d_c_page_la_selection_cinema_plage_list: Cinéma de la plage
     link_f_d_c_page_la_selection_cannes_classics_list: Cannes Classics
     link_film_person_list: Liste des personnes
     link_film_film_list: Liste des films
@@ -414,6 +415,7 @@ dashboard:
         seo: SEO + TETIERES
         participate: Participer
         cannes_classics: Cannes Classics
+        cinema_plage: Cinéma de la plage
     link:
         settings: Paramètres
         bo_translation: Traductions
@@ -469,8 +471,11 @@ dashboard:
         fdc_page_prepare: Préparer son séjour
         fdc_page_participate: Participer
         fdc_page_participate_section: Strates Participer
-
+        users: Utilisateurs
 form:
+    fdc_page_la_selection_cinema_plage:
+        header: Têtière
+        subtitle: Sous-titre
     fdc_page_la_selection_cannes_classics:
         page_title: Titre de la page
         title_nav: Titre dans la navigation

@@ -18,6 +18,12 @@ $(document).ready(function() {
       onInitialized: function() {
         var m = ($(window).width() - $('.container').width()) / 2;
         $('#slide-artist .owl-stage').css({ 'margin-left': m });
+	      $('.compat-object-fit-c').each(function () {
+			  var $container = $(this), imgUrl = $container.find('img').prop('src');
+	        if (imgUrl) {
+	          $container.css('backgroundImage', 'url('+imgUrl+')');
+	        }
+	      });
       },
       onResized: function() {
         var m = ($(window).width() - $('.container').width()) / 2;

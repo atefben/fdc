@@ -102,6 +102,16 @@ $(document).ready(function() {
     callback();
 
   }
+  
+  function imageCover() {
+    $('.compat-object-fit-d').each(function() {
+    	var $container = $(this), imgUrl = $container.find('img').prop('src');
+   		if (imgUrl) {
+		$container.css('backgroundImage', 'url('+imgUrl+')');
+    	}
+    });
+	}
+	imageCover();
 
   function closeSelection() {
     $('#main, footer').removeClass('overlay');

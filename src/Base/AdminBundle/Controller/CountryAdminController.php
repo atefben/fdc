@@ -2,9 +2,7 @@
 
 namespace Base\AdminBundle\Controller;
 
-use Sonata\AdminBundle\Controller\CRUDController;
-
-class CountryAdminController extends CRUDController
+class CountryAdminController extends SoifAdminController
 {
 
 }

@@ -29,8 +29,21 @@ function resizeGrid() {
   	  	// if(navigator.userAgent.indexOf("Edge")    > -1 ||
   	   //    navigator.userAgent.indexOf("MSIE")    > -1 ||
   	   //    navigator.userAgent.indexOf("Trident") > -1 ) {
- 	       var $container = $(this),
- 	           imgUrl     = $container.find('img').prop('src');
+ 	       var $container = $(this), imgUrl = $container.find('img').prop('src');
+ 	       if (imgUrl) {
+ 	         $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
+ 	       }
+  	   	// }
+      });
+    }
+    if($('#gridJurys').length) {
+      var w = $('#gridJurys .image').first().width();
+      $('#gridJurys .image').each(function() {
+        $(this).css('height', (w / 0.75));
+  	  	// if(navigator.userAgent.indexOf("Edge")    > -1 ||
+  	   //    navigator.userAgent.indexOf("MSIE")    > -1 ||
+  	   //    navigator.userAgent.indexOf("Trident") > -1 ) {
+ 	       var $container = $(this), imgUrl = $container.find('img').prop('src');
  	       if (imgUrl) {
  	         $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
  	       }

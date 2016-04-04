@@ -77,3 +77,4 @@ twig:
         admin_fdc_page_award_all_awards_id: %admin_fdc_page_award_all_awards_id%
         admin_fdc_page_event_id: %admin_fdc_page_event_id%
         admin_fdc_page_la_selection_cannes_classics_id: %admin_fdc_page_la_selection_cannes_classics_id%
+        admin_event_fdc_page_la_selection_cinema_plage_id: %admin_event_fdc_page_la_selection_cinema_plage_id%

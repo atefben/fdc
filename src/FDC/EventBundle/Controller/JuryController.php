@@ -55,6 +55,10 @@ class JuryController extends Controller
             ->getPageBySlug($locale, $slug)
         ;
 
+        if ($page == null) {
+            throw new NotFoundHttpException("Page Jury {$slug} not found");
+        }
+
         //SEO
         $this->get('base.manager.seo')->setFDCEventPageJurySeo($page, $locale);
 

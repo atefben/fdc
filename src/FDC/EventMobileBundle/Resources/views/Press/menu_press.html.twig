@@ -1,0 +1,274 @@
+{% trans_default_domain 'FDCEventBundle' %}
+<nav class="st-menu st-effect" id="menu">
+    <div id="top-menu" class="owl-carousel sliderDrag">
+        <div class="item">
+            <a href="/" class="active" > {{ 'header.topbar.nav.festival'|trans }} </a>
+        </div>
+        <div class="item">
+            <a href="{{ header_fdc }}" target="_blank" > {{ 'header.topbar.nav.festivalcannes'|trans }} </a>
+        </div>
+        <div class="item">
+            <a href="{{ header_cine }}" target="_blank" > {{ 'header.topbar.nav.cinefondation'|trans }} </a>
+        </div>
+        <div class="item">
+            <a href="{{ header_ccm }}" target="_blank" > {{ 'header.topbar.nav.courtmetrage'|trans }} </a>
+        </div>
+        <div class="item">
+            <a href="{{ header_mdf }}" target="_blank" > {{ 'header.topbar.nav.marche'|trans }} </a>
+        </div>
+    </div>
+    
+    <div id="logo">
+        <a href="/">
+            {% image '@FDCEventMobileBundle/Resources/public/img/palme.svg'  %}
+            <img src="{{ asset_url }}" class="palm" alt="{{ 'header.img.palme'|trans }}" />
+            {% endimage %}
+        </a>
+        <h1>
+            <a href="/">
+                {% image '@FDCEventMobileBundle/Resources/public/img/logo.svg' %}
+                <img width="225" src="{{ asset_url }}" alt="{{ 'header.logo.img.cannes'|trans }}" />
+                {% endimage %}
+            </a>
+        </h1>
+        <h2>
+            {{ render(controller('FDCEventMobileBundle:Header:date')) }}
+        </h2>
+    </div>
+
+    <div id="main-nav" class="menu-section">
+
+        <ul id="main-nav-list" class="">
+            {% for menu in menus %}
+                <li class="{% if menu.route == 'fdc_press_news_home' %} press {% elseif menu.route == 'fdc_press_news_list' %} communique {% elseif menu.route == 'fdc_press_accredit_main' %} accreditation {% elseif menu.route == 'fdc_press_guide_main' %} practical {% elseif menu.route == 'fdc_press_agenda_scheduling' %} programmation {% elseif menu.route == 'fdc_press_media_main' %} medias {% endif %}">
+                    <!-- accueil -->
+                    {% if menu.route == 'fdc_press_news_home' and menu.enabled == true %}
+                        <a href="{{ path('fdc_press_news_home') }}"
+                           class="{% if app.request.attr
+                           ibutes.get('_route') == 'fdc_press_news_home' %}active{% endif %}">
+                            <div class="section-title"><h3 class="title-menu">{{ 'header.mainnav.nav.accueil'|trans }}</h3></div>
+                        </a>
+                    <!-- communiqués -->
+                    {% elseif menu.route == 'fdc_press_news_list' and menu.enabled == true %}
+                        <a href="{{ path('fdc_press_news_list') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_press_news_list'
+                           or app.request.attributes.get('_route') == 'fdc_press_news_get' %}active{% endif %}">
+                            <div class="section-title"><h3 class="title-menu">{{ 'header.mainnav.nav.communiques'|trans }}</h3></div>
+                        </a>
+                    <!-- s'accréditer -->
+                    {% elseif menu.route == 'fdc_press_accredit_main' and menu.enabled == true %}
+                        <a href="{{ path('fdc_press_accredit_main') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_press_accredit_main' %}active{% endif %}">
+                            <div class="section-title"><h3 class="title-menu">{{ 'header.mainnav.nav.accrediter'|trans }}</h3></div>
+                        </a>
+                    <!-- guide pratique -->
+                    {% elseif menu.route == 'fdc_press_guide_main' and menu.enabled == true %}
+                        <a href="{{ path('fdc_press_guide_main') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_press_guide_main' %}active{% endif %}">
+                            <div class="section-title"><h3 class="title-menu">{{ 'header.mainnav.nav.guide'|trans }}</h3></div>
+                        </a>
+                    <!-- programmation -->
+                    {% elseif menu.route == 'fdc_press_agenda_scheduling' and menu.enabled == true %}
+                        <a href="{{ path('fdc_press_agenda_scheduling') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_scheduling'
+                           or app.request.attributes.get('_route') == 'fdc_press_agenda_get'
+                           or app.request.attributes.get('_route') == 'fdc_press_agenda_room' %}active{% endif %}">
+                            <div class="section-title"><h3 class="title-menu">{{ 'header.mainnav.nav.programmation'|trans }}</h3></div>
+                        </a>
+                        <ul class="section-menu">
+                            <li>
+                                <a href="{{ path('fdc_press_agenda_scheduling') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_scheduling'%}active{% endif %}">
+                                    {{ 'header.mainnav.nav.programmation'|trans }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('fdc_press_agenda_get') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_get' %}active{% endif %}">
+                                    {{ 'header.mainnav.nav.agenda'|trans }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('fdc_press_agenda_room') }}"
+                                   class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_room' %}active{% endif %}">
+                                    {{ 'header.mainnav.nav.plandessalles'|trans }}
+                                </a>
+                            </li>
+                        </ul>
+                    <!-- médiathèque -->
+                    {% elseif menu.route == 'fdc_press_media_main' and menu.enabled == true %}
+                        <a href="{{ path('fdc_press_media_main') }}"
+                           class="{% if app.request.attributes.get('_route') == 'fdc_press_media_main' %}active{% endif %}">
+                            <div class="section-title"><h3 class="title-menu">{{ 'header.mainnav.nav.mediatheque'|trans }}</h3></div>
+                        </a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="small-separator"></div>
+
+        <ul class="second-nav">
+            <li class="prog">
+                {% for menu in menus %}
+                    {% if menu.route == 'fdc_press_media_download' and menu.enabled == true %}
+                        <a href="{{ path('fdc_press_media_download') }}"
+                           class="download {% if app.request.attributes.get('_route') == 'fdc_press_media_download' %}active{% endif %}">
+                            <div class="section-title">
+                                <h3 class="title-menu"><i class="icon icon_telecharger"></i>{{ 'header.mainnav.nav.telecharger'|trans }}</h3>
+                            </div>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </li>
+        </ul>
+
+       <div class="small-separator"></div>
+
+       <ul class="third-nav">
+            <li class="search-nav">
+                <a href="search.html">
+                    <i class="icon icon_recherche"></i>
+                    {{ 'header.usernav.nav.rechercher'|trans }}
+                </a>
+            </li>
+            <li class="">
+                <a href="{{ header_account }}" rel="nofollow" class="account" target="_blank">
+                    <i class="icon icon_mon-compte"></i>
+                    {{ 'header.usernav.nav.moncompte'|trans }}
+                </a>
+            </li>
+            <li class="language">
+                <i class="icon icon_langue"></i>
+                <ul class="hide">
+                    {% for locale in locales %}
+                        {% if locale != app.request.locale %}
+                            <li class="active-language">
+                                {% set params = {'_locale' : locale} %}
+                                {% if localeSlugs is defined and localeSlugs[app.request.locale] %}
+                                    {% set params = params|merge({'slug': localeSlugs[locale]}) %}
+                                {% endif %}
+                                <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge(params)) }}">
+                                    {{ locales[loop.index0]|upper }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="menu-section socials">
+        <h3 class="menu-section-title">
+            {% image '@FDCEventMobileBundle/Resources/public/img/logo-white.svg'  %}
+            <img width="302" src="{{ header_ccm }}" alt="Festival de Cannes">
+            {% endimage %}
+        </h3>
+        <ul>
+            <li><a class="appli" href="{{ path('fdc_event_footer_static', {'page': social_appli}) }}" target="_blank"><i class="icon icon_appli"></i></a></li>
+            <li><a class="facebook" href="{{ social_facebook }}" target="_blank"><i class="icon icon_facebook"></i></a>
+            </li><li><a class="twitter" href="{{ social_twitter }}" target="_blank"><i class="icon icon_twitter"></i></a>
+            </li><li><a class="instagram" href="{{ social_instagram }}" target="_blank"><i class="icon icon_instagram"></i></a>
+            </li><li><a class="tumblr" href="{{ social_tumblr }}" target="_blank"><i class="icon icon_tumblr"></i></a>
+            </li><li><a class="rss" href="{{ social_rss }}" target="_blank"><i class="icon icon_rss"></i></a>
+            </li><li><a class="youtube" href="{{ social_youtube }}" target="_blank"><i class="icon icon_youtube"></i></a>
+            </li><li><a class="dailymotion" href="{{ social_dailymotion }}" target="_blank"><i class="icon-mobile-dailymotion"></i></a>
+            </li><li><a class="podcast" href="{{ social_podcast }}" target="_blank"><i class="icon icon_podcast"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="menu-section">
+        <div id="partners">
+            <a href="{{ partner_chopard }}" target="_blank">
+                {% image '@FDCEventMobileBundle/Resources/public/img/menu/Logo_Chopard.svg' %}
+                <img width="131" src="{{ asset_url }}" class="chopard" alt="{{ 'header.partners.img.chopard'|trans }}" />
+                {% endimage %}
+            </a>
+            <a href="{{ partner_loreal }}" target="_blank">
+                {% image '@FDCEventMobileBundle/Resources/public/img/menu/loreal.svg' %}
+                <img width="98" src="{{ asset_url }}" class="oreal" alt="{{ 'header.partners.img.loreal'|trans }}" />
+                {% endimage %}
+            </a>
+            <a href="{{ partner_hp }}" target="_blank">
+                {% image '@FDCEventMobileBundle/Resources/public/img/menu/hp.svg' %}
+                <img width="40" src="{{ asset_url }}" class="hp" alt="{{ 'header.partners.img.hp'|trans }}" />
+                {% endimage %}
+            </a>
+            <a href="{{ partner_kering }}" target="_blank">
+                {% image '@FDCEventMobileBundle/Resources/public/img/menu/Kering-logo.svg' %}
+                <img width="131" src="{{ asset_url }}" class="kering" alt="{{ 'header.partners.img.kering'|trans }}" />
+                {% endimage %}
+            </a>
+            <a href="{{ partner_renault }}" target="_blank">
+                {% image '@FDCEventMobileBundle/Resources/public/img/menu/renault.svg' %}
+                <img width="124" src="{{ asset_url }}" class="renault" alt="{{ 'header.partners.img.renault'|trans }}" />
+                {% endimage %}
+            </a>
+            <a href="{{ partner_mastercard }}" target="_blank">
+                {% image '@FDCEventMobileBundle/Resources/public/img/menu/mastercard.png' %}
+                <img width="85" src="{{ asset_url }}" class="mastercard" alt="{{ 'header.partners.img.mastercard'|trans }}" />
+                {% endimage %}
+            </a>
+        </div>
+
+        <div class="footer-menu">
+            <p>{{ 'footer.nav.copyright'|trans }} {{ 'now'|date('Y') }}</p>
+            <ul>
+                {% for element in footer %}
+                    {% if element.route == 'fdc_event_footer_contact' and element.enabled == true %}
+                        <li class="contact">
+                            <a href="{{ path('fdc_event_footer_contact') }}">
+                                {{ 'footer.nav.contact'|trans }}
+                            </a>
+                        </li>
+                    {% elseif element.transName == 'footer.nav.faq' and element.enabled == true %}
+                        <li class="faq">
+                            <a href="{{ path('fdc_event_footer_static', {'page': 'faq'}) }}">
+                                {{ 'footer.nav.faq'|trans }}
+                            </a>
+                        </li>
+                    {% elseif element.transName == 'footer.nav.credit' and element.enabled == true %}
+                        <li class="credits">
+                            <a href="{{ path('fdc_event_footer_static', {'page': 'credits'}) }}">
+                                {{ 'footer.nav.credit'|trans }}
+                            </a>
+                        </li>
+                    {% elseif element.transName == 'footer.nav.mentionslegales' and element.enabled == true %}
+                        <li class="legals">
+                            <a href="{{ path('fdc_event_footer_static', {'page': 'mentions-legales'}) }}">
+                                {{ 'footer.nav.mentionslegales'|trans }}
+                            </a>
+                        </li>
+                    {% elseif element.transName == 'footer.nav.nousrejoindre' and element.enabled == true %}
+                        <li class="">
+                            <a href="{{ path('fdc_event_footer_static', {'page': 'nous-rejoindre'}) }}">
+                                {{ 'footer.nav.nousrejoindre'|trans }}
+                            </a>
+                        </li>
+                    {% elseif element.transName == 'footer.nav.plandusite' and element.enabled == true %}
+                        <li class="">
+                            <a href="{{ path('fdc_event_footer_static', {'page': 'plan-du-site'}) }}">
+                                {{ 'footer.nav.plandusite'|trans }}
+                            </a>
+                        </li>
+                    {% elseif element.transName == 'footer.nav.politiqueconfidentialite' and element.enabled == true %}
+                        <li class="sitemap">
+                            <a href="{{ path('fdc_event_footer_static', {'page': 'politique-confidentialite'}) }}">
+                                {{ 'footer.nav.politiqueconfidentialite'|trans }}
+                            </a>
+                        </li>
+                    {% elseif element.transName == 'footer.nav.boutique' and element.enabled == true  %}
+                        <li class="privacy_policy">
+                            <a href="{{ footer_boutique }}">
+                                {{ 'footer.nav.boutique'|trans }}
+                            </a>
+                        </li>
+                    {% endif %}
+
+                {% endfor %}
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+</nav>

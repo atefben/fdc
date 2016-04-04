@@ -217,14 +217,6 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.film_person:
-        class: Base\AdminBundle\Admin\FilmPersonAdmin
-        arguments: [~, Base\CoreBundle\Entity\FilmPerson, BaseAdminBundle:FilmPersonAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.soif, label: entity.film_person, label_translator_strategy: sonata.admin.label.strategy.underscore}
-        calls:
-            - [ setTranslationDomain, ['BaseAdminBundle']]
-
     base.admin.film_atelier:
         class: Base\AdminBundle\Admin\FilmAtelierAdmin
         arguments: [~, Base\CoreBundle\Entity\FilmAtelier, BaseAdminBundle:FilmAtelierAdmin]
@@ -233,15 +225,13 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.country:
-        class: Base\AdminBundle\Admin\CountryAdmin
-        arguments: [~, Base\CoreBundle\Entity\Country, BaseAdminBundle:CountryAdmin]
+    base.admin.film_person:
+        class: Base\AdminBundle\Admin\FilmPersonAdmin
+        arguments: [~, Base\CoreBundle\Entity\FilmPerson, BaseAdminBundle:FilmPersonAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.soif, label: entity.country, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.soif, label: entity.film_person, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
-             - [ setTranslationDomain, ['BaseAdminBundle']]
-
-    #HIDDEN
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     #seo
     base.admin.fdc_page_web_tv_channels:
@@ -289,6 +279,17 @@ services:
         arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics, BaseAdminBundle:FDCPageLaSelectionCannesClassicsAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.cannes_classics, label: Cannes Classics, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    #cinema plage
+    base.admin.fdc_page_la_selection_cinema_plage:
+        class: Base\AdminBundle\Admin\FDCPageLaSelectionCinemaPlageAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageLaSelectionCinemaPlage, BaseAdminBundle:FDCPageLaSelectionCinemaPlageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.cinema_plage, label: Cinéma de la plage, label_translator_strategy: sonata.admin.label.strategy.underscore }
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
 
     base.admin.fdc_page_la_selection:
         class: Base\AdminBundle\Admin\FDCPageLaSelectionAdmin
@@ -396,6 +397,17 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: HomepageSlide, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+
+    #HIDDEN
+
+    base.admin.country:
+        class: Base\AdminBundle\Admin\CountryAdmin
+        arguments: [~, Base\CoreBundle\Entity\Country, BaseAdminBundle:CountryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.soif, label: entity.country, label_translator_strategy: sonata.admin.label.strategy.underscore, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
 
     # event widgets
     base.admin.event_widget_image_dummy:

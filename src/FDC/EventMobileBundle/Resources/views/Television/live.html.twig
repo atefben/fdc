@@ -1,0 +1,201 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventMobileBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="webtv loading webtv-live">
+        <div id="live">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <div class="textLive">
+                        <h2>{{ page|trans_fallback('title')|raw }}</h2>
+                        {% if videoUrl %}
+                            <a href="#" class="play-live"><i class="icon icon_play"></i></a>
+                        {% elseif page.live == false %}
+                            <p>
+                                {{ page.firstSubHead }}
+                                <span>{{ page.secondSubHead }}</span>
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="main-image">
+                {% if page.image and page.image|trans_fallback('file') %}
+                    <div class="img"
+                         style="background-image:url('{% path page.image|trans_fallback('file'), '2560×1103' %}'); background-size: contain;"></div>
+                {% endif %}
+                <div class="trailer">
+                    {% if videoUrl %}
+                        <div class="video-container state-init video"
+                             data-facebook="//www.facebook.com/sharer.php?u={{ url('fdc_event_news_getvideos') }}t=le%20titre"
+                             data-twitter="//www.twitter.com"
+                             data-link="//www.example.com"
+                             data-email="//www.gmail.com"
+                             data-file='[{"file":"{{ videoUrl }}"}]'
+                             {% if page.image and page.image|trans_fallback('file') %}
+                             data-vid="web-tv-live"
+                             data-img="{% path page.image|trans_fallback('file'), '1280x808' %}"
+                             {% else %}
+                             data-img=""
+                             {% endif %}>
+                            <div id="video-webtv-live" class="video-player"></div>
+                            <div class="video-overlay"></div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% if page.doNotDisplayWebTvArea == false %}
+        <div class="dark-container featured-videos">
+            <div id="content-channels">
+                <h2 class="title">{{ 'webtv.direct.title.leschainesdufestival'|trans }}</h2>
+                <p class="link">
+                    <a href="{{ path('fdc_event_television_channels') }}">
+                        <i class="icon icon_fleche-right"></i>
+                        {{ 'webtv.direct.btn.toutesleschaines'|trans }}
+                    </a>
+                </p>
+                <div id="slider-videos" class="owl-carousel sliderDrag">
+                    {% for group in sliderChosenChannels %}
+                        {% if group.channel.image or (group.channelVideos|length and group.channelVideos|first.image) %}
+                            {% set format = '640x404' %}
+                            <div class="vid shadow-bottom">
+                                {{ block('WebTvLiveChannel') }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div id="slider-channels" class="owl-carousel sliderDrag">
+                    {% for group in sliderOtherChannels %}
+                        {% if group.channel.image or (group.channelVideos|length and group.channelVideos|first.image) %}
+                            {% set cropTitle = true %}
+                            {% set format = '293x185' %}
+                            <div class="channel shadow-bottom">
+                                {{ block('WebTvLiveChannel') }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if page.doNotDisplayTrailerArea == false %}
+        <div class="dark-container featured-videos">
+            <div id="content-trailers">
+                <h2 class="title">{{ 'webtv.direct.title.lesbandesannonces'|trans }}</h2>
+                <p class="link">
+                    <a href="{{ path('fdc_event_television_trailers') }}">
+                        <i class="icon icon_fleche-right"></i>
+                        {{ 'webtv.direct.btn.touteslesbandesannonces'|trans }}
+                    </a>
+                </p>
+                <div id="slider-trailers" class="owl-carousel sliderDrag">
+                    {% for trailer in trailers %}
+                        <div class="vid shadow-bottom">
+                            <div class="image-wrapper">
+                                <img src="{% path trailer.image|trans_fallback('file'), '1950x1232' %}"
+                                     srcset="{% path trailer.image|trans_fallback('file'), '1950x1232' %} 1x, {% path trailer.image|trans_fallback('file'), '1950x1232' %} 2x"
+                                     alt="">
+                            </div>
+                            <a class="linkVid"
+                               href="{{ path('fdc_event_television_gettrailer', {'slug': trailer.associatedFilms|first.association.slug, 'video': trailer.id}) }}"></a>
+                            <div class="info">
+                                <div class="picto"><i class="icon icon_video"></i>
+                                </div>
+                                <div class="info-container">
+                                    <div class="vCenter">
+                                        <div class="vCenterKid">
+                                            <a href="" class="category">{{ trailer.theme }}</a>
+                                            <span class="date">{{ trailer.publishedAt|date('d.m.Y') }}</span> .
+                                            <span class="hour">{{ trailer.publishedAt|date('H.i') }}</span>
+                                            <a href="#"
+                                               class="titleLink">{{ trailer|trans_fallback('title')|truncate(85) }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if page.doNotDisplayLastVideosArea == false %}
+        <div class="dark-container featured-videos">
+            <div id="content-latest">
+                <h2 class="title">{{ 'webtv.direct.title.lesdernieresvideos'|trans }}</h2>
+                <div class="container sliderDrag">
+                    {% for video in lastVideos %}
+                        <div class="video shadow-bottom"
+                             data-vid="{{ video.id }}"
+                             data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
+                                {% if video.image|trans_fallback('file') %}
+                            data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
+                        {% else %}
+                            data-img="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
+                                {% endif %}>
+                            <div class="image-wrapper">
+                                {% if video.image|trans_fallback('file') %}
+                                    <img src="{% path video.image|trans_fallback('file'), '463x292' %}" alt="">
+                                {% endif %}
+                            </div>
+                            <a class="linkVid" href="#"></a>
+                            <div class="info">
+                                <div class="picto"><i class="icon icon_video"></i></div>
+                                <div class="info-container">
+                                    <div class="vCenter">
+                                        <div class="vCenterKid">
+                                            <a class="category">{{ video.theme|trans_fallback('name') }}</a>
+                                            <span class="date">{{ video.publishedAt|date('d.m.Y') }}</span> .
+                                            <span class="hour">{{ video.publishedAt|date('H:i') }}</span>
+                                            <a href="#"
+                                               class="titleLink">{{ video|trans_fallback('title')|truncate(50) }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock body %}
+
+{% block WebTvLiveChannel %}
+<div class="image-wrapper">
+    {% set channel = group.channel %}
+    {% set channelVideos = group.channelVideos %}
+    {% set count = group.channelVideos|length %}
+    {% if channel.image and channel.image|trans_fallback('file') %}
+        <img src="{% path channel.image|trans_fallback('file'), format %}"
+             srcset="{% path channel.image|trans_fallback('file'), format %} 1x, {% path channel.image|trans_fallback('file'), format %} 2x"
+             alt="{{ channel.image|trans_fallback('alt') }}">
+    {% elseif channelVideos|length and channelVideos|first.image and channelVideos|first.image|trans_fallback('file') %}{# If channel image does not exist #}
+        <img src="{% path channelVideos|first.image|trans_fallback('file'), format %}"
+             srcset="{% path channelVideos|first.image|trans_fallback('file'), format %} 1x, {% path channelVideos|first.image|trans_fallback('file'), format %} 2x"
+             alt="{{ channelVideos|first.image|trans_fallback('alt') }}">
+    {% endif %}
+</div>
+<a class="linkVid"
+   href="{{ path('fdc_event_television_getchannel', {'slug': channel|trans_fallback('slug')}) }}"></a>
+<div class="info">
+    <div class="picto"><i class="icon icon_playlist"></i></div>
+    <div class="info-container">
+        <div class="vCenter">
+            <div class="vCenterKid">
+                <a href="{{ path('fdc_event_television_getchannel', {'slug': channel|trans_fallback('slug')}) }}"
+                   class="category">
+                    {% if cropTitle is defined and cropTitle %}
+                        {{ (channel|trans_fallback('name'))|truncate(25) }}
+                    {% else %}
+                        {{ channel|trans_fallback('name') }}
+                    {% endif %}
+                </a>
+                <span>{{ 'webtv.direct.nb_videos'|transchoice(count) }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock WebTvLiveChannel %}
