@@ -58,6 +58,12 @@ class GlobalController extends Controller {
         $em = $this->get('doctrine')->getManager();
         $menus = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->childrenHierarchy();
 
+        // Menu Participer
+        $participatePage = $em->getRepository('BaseCoreBundle:FDCPageParticipate')->findAll();
+        $preparePage = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findById($this->getParameter('admin_fdc_page_prepare_id'));
+
+        $participateMenu = array_merge($preparePage, $participatePage);
+
         $displayedMenus = array();
         foreach($menus as $menu){
             if($menu['site'] == FDCEventRoutesInterface::EVENT) {
@@ -102,7 +108,8 @@ class GlobalController extends Controller {
             'menus' => $displayedMenus,
             'routesArticles' => $routesArticles,
             'routesWebTv' => $routesWebTv,
-            'route' => $route
+            'route' => $route,
+            'participateMenu' => $participateMenu
         );
 
     }

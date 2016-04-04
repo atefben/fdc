@@ -27,6 +27,36 @@ class GroupsUpdateCommand extends ContainerAwareCommand
         $doctrine = $this->getContainer()->get('doctrine');
         $em = $doctrine->getManager();
 
+        $group = $em->getRepository('ApplicationSonataUserBundle:Group')->findOneBy(array('name' => 'SOIF'));
+        if($group != null) {
+            $em->remove($group);
+        }
+
+        $group = $em->getRepository('ApplicationSonataUserBundle:Group')->findOneBy(array('name' => 'FDC Writer'));
+        if($group != null) {
+            $em->remove($group);
+        }
+
+        $group = $em->getRepository('ApplicationSonataUserBundle:Group')->findOneBy(array('name' => 'Press Reporter'));
+        if($group != null) {
+            $em->remove($group);
+        }
+
+        $group = $em->getRepository('ApplicationSonataUserBundle:Group')->findOneBy(array('name' => 'Translator'));
+        if($group != null) {
+            $em->remove($group);
+        }
+
+        $group = $em->getRepository('ApplicationSonataUserBundle:Group')->findOneBy(array('name' => 'SOIF'));
+        if($group != null) {
+            $em->remove($group);
+        }
+
+        $group = $em->getRepository('ApplicationSonataUserBundle:Group')->findOneBy(array('name' => 'Traducteur'));
+        if($group != null) {
+            $em->remove($group);
+        }
+
         $group = $em->getRepository('ApplicationSonataUserBundle:Group')->findOneBy(array('name' => 'Super Admin'));
         if ($group == null) {
             $group = new Group('Super Admin');
@@ -63,11 +93,38 @@ class GroupsUpdateCommand extends ContainerAwareCommand
             $em->persist($group);
         }
 
-        $group = $em->getRepository('ApplicationSonataUserBundle:Group')->findOneBy(array('name' => 'Traducteur'));
+        $group = $em->getRepository('ApplicationSonataUserBundle:Group')->findOneBy(array('name' => 'Traducteur FR'));
         if ($group == null) {
-            $group = new Group('Traducteur');
+            $group = new Group('Traducteur FR');
         }
-        $group->setRoles(array('ROLE_TRANSLATOR'));
+        $group->setRoles(array('ROLE_TRANSLATOR_FR'));
+        if ($group->getId() == null) {
+            $em->persist($group);
+        }
+
+        $group = $em->getRepository('ApplicationSonataUserBundle:Group')->findOneBy(array('name' => 'Traducteur EN'));
+        if ($group == null) {
+            $group = new Group('Traducteur EN');
+        }
+        $group->setRoles(array('ROLE_TRANSLATOR_EN'));
+        if ($group->getId() == null) {
+            $em->persist($group);
+        }
+
+        $group = $em->getRepository('ApplicationSonataUserBundle:Group')->findOneBy(array('name' => 'Traducteur CH'));
+        if ($group == null) {
+            $group = new Group('Traducteur CH');
+        }
+        $group->setRoles(array('ROLE_TRANSLATOR_ZH'));
+        if ($group->getId() == null) {
+            $em->persist($group);
+        }
+
+        $group = $em->getRepository('ApplicationSonataUserBundle:Group')->findOneBy(array('name' => 'Traducteur ES'));
+        if ($group == null) {
+            $group = new Group('Traducteur ES');
+        }
+        $group->setRoles(array('ROLE_TRANSLATOR_ES'));
         if ($group->getId() == null) {
             $em->persist($group);
         }

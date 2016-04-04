@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Time;
@@ -23,6 +24,15 @@ class FDCPageParticipateTranslation implements TranslateChildInterface
     use TranslateChild;
     use Translation;
     use Seo;
+
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
 
     /**
      * @var string
@@ -45,6 +55,22 @@ class FDCPageParticipateTranslation implements TranslateChildInterface
      */
     protected $icon;
 
+
+    /**
+     * Find page by slug
+     * @param $slug
+     * @return mixed
+     */
+    public function findOneBySlug($slug)
+    {
+        $qb = $this->createQueryBuilder('n')
+            ->select('n, t')
+            ->join('n.translations', 't')
+            ->where('t.slug = :slug')
+            ->setParameter('slug', $slug);
+
+        return $qb->getQuery()->getSingleResult();
+    }
 
     /**
      * Set label
@@ -113,5 +139,21 @@ class FDCPageParticipateTranslation implements TranslateChildInterface
     public function getIcon()
     {
         return $this->icon;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
     }
 }
