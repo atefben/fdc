@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Class SoifAdminController
@@ -54,12 +55,13 @@ class SoifAdminController extends CRUDController
     {
         $object = $this->admin->getObject($id);
 
+
         if (!$object) {
             throw new NotFoundHttpException(sprintf('unable to find the object with id : %s', $id));
         }
 
-        if (false === $this->admin->isGranted('SOIF_REFRESH', $object)) {
-            throw new AccessDeniedException();
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_SOIF') === false) {
+            throw new AccessDeniedHttpException();
         }
 
         $kernel = $this->get('kernel');

@@ -61,6 +61,24 @@ class FilmPersonTranslation implements TranslateChildInterface
      */
     protected $biography;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "jury_list",
+     *     "jury_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
+     */
+    protected $gender;
+
     public function __construct()
     {
         $this->status = self::STATUS_PUBLISHED;
@@ -110,5 +128,28 @@ class FilmPersonTranslation implements TranslateChildInterface
     public function getBiography()
     {
         return $this->biography;
+    }
+
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     * @return FilmPersonTranslation
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return string 
+     */
+    public function getGender()
+    {
+        return $this->gender;
     }
 }

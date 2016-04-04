@@ -4,7 +4,7 @@
 {% block body %}
     <div id="main" class="list-article films-list loading honneur-invit canne-classic selection-officielle">
         <div class="bandeau-list">
-            <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('/img/films/selection-officielle/selection-bandeau.jpg')">
+            <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('{% path classic.image|trans_fallback('file'), '2560x1103' %}')">
                 <div class="vCenterKid">
                     <h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>
                 </div>
@@ -74,39 +74,7 @@
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_movie %}
                                 {% if widget.widgetMovie is not null and widget.widgetMovie.films|length > 0 %}
                                     {% for film in widget.widgetMovie.films %}
-                                        {% set film = film.film %}
-                                        {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-                                        {% if media is empty %}
-                                            {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-                                        {% endif %}
-                                        {% if media is empty %}
-                                            {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-                                        {% endif %}
-                                        <article style="background-image:url('{% if media is not empty %}{% path media, 'reference' %}{% endif %}')">
-                                            <div class="bck-hover">
-                                                <div class="contain_item">
-                                                    {% if media is not empty %}
-                                                        {% media media, '259x352' %}
-                                                    {% endif %}
-                                                    <div class="infos-item-list">
-                                                        <h3 class="title-item">{{ film.titleVO }}</h3>
-                                                        {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}<span class="nom-item">{{ director.fullName }}</span>{% if loop.index != director|length %}, {% endif %}{% endfor %}<br />
-                                                        <span class="date-item">
-                                                            {% if  film.productionYear is not null and  film.productionYear != 0 %}{{  film.productionYear }}
-                                                                {% if  film.duration is not null and  film.duration > 0 %}
-                                                                    -
-                                                                {% endif %}{% endif %}
-                                                            {% if  film.duration is not null and  film.duration > 0 %}
-                                                                {{  film.duration }}
-                                                            {% endif %}
-                                                        </span>
-                                                        <p class="description-item">
-                                                            {{ film|trans_fallback('synopsis')|nl2br|raw }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
+                                        {% include 'FDCEventBundle:Movie:widgets/movie.html.twig' with {'film': film.film} %}
                                     {% endfor %}
                                 {% endif %}
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_intro %}

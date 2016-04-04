@@ -4,19 +4,24 @@
 
     {% set media = '' %}
     {% set format = '' %}
-    {% if movie.imageCover %}
+    {% set posterImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+    {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+    {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+    {% set media = null %}
+    {% set format =  'mobile' %}
+    {% if posterImg is not empty %}
+        {% set media = posterImg %}
+    {% elseif mainImg is not empty %}
+        {% set media = mainImg %}
+    {% elseif filmImg is not empty %}
+        {% set media = filmImg %}
+    {% endif %}
+    {% if mainImg %}
+        {% set media = mainImg %}
+        {% set format =  'film_main_highres' %}
+    {% elseif movie.imageCover %}
         {% set media = movie.imageCover %}
-        {% set format =  'media_image_simple_1280x808'%}
-    {% else %}
-        {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-        {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-        {% if mainImg %}
-            {% set media = mainImg %}
-            {% set format =  'film_main_highres' %}
-        {% elseif filmImg %}
-            {% set media = filmImg %}
-            {% set format = 'film_film_highres' %}
-        {% endif %}
+        {% set format =  'media_image_simple_2560x1103'%}
     {% endif %}
     <div class="img" style="background-image: url({% path media, format %})"></div>
     <div class="links">
@@ -48,8 +53,8 @@
                 <div class="info">
                     <div class="vCenter">
                         <div class="vCenterKid">
-                            <a href="#" class="category">Bande-annonce</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-                            <p>The Lobster</p>
+                            <a href="#" class="category"></a><span class="date"></span><span class="hour"></span>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -60,7 +65,7 @@
 </div>
 <div class="container container-top">
     {% set hasVideo = false %}
-    {% if movie.imageMain %}
+    {% if movie.videoMain is not null %}
         {% set hasVideo = true %}
     {% elseif movie.videoMain is not null and movie.videoMain.image and movie.videoMain.image.file %}
         {% set hasVideo = true %}
@@ -68,7 +73,7 @@
         {% set hasVideo = true %}
     {% endif %}
 
-        <div class="poster video">
+        <div class="poster video">	
             {% if hasVideo == true %}
             <a href="#" class="picto"><i class="icon icon_video"></i></a>
             {% endif %}
@@ -79,21 +84,12 @@
                     {% media movie.videoMain.image.file, 'media_image_2560x1620' %}
                 {% elseif movie.videoMain is not null and movie.videoMain|trans_fallback('imageAmazonUrl') %}
                     <img src="{{ s3_server_global ~ movie.videoMain|trans_fallback('imageAmazonUrl') }}">
-                {% endif %}
+                {% elseif media is not empty %}
+                    {% media media, format with {'data-object-fit': 'cover'} %}
+               {% else %}
+                   <img src="{{ asset('bundles/fdcevent/img/palmares/film_w293.jpg') }}" alt="Affiche film" />
+               {% endif %}
             {% else %}
-                {% set posterImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-                {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-                {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-
-                {% set media = null %}
-                {% set format =  '293x397' %}
-                {% if posterImg is not empty %}
-                    {% set media = posterImg %}
-                {% elseif mainImg is not empty %}
-                    {% set media = mainImg %}
-                {% elseif filmImg is not empty %}
-                    {% set media = filmImg %}
-                {% endif %}
                 {% if media is not empty %}
                     {% media media, format with {'data-object-fit': 'cover'} %}
                 {% else %}

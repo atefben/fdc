@@ -240,3 +240,11 @@
     width: 148px;
 }
 
+/* Juries */
+.contain-jurys-list .jury-box .image {
+    height: 404px;
+}
+
+.artist .paragraph i {
+    font-style: italic;
+}

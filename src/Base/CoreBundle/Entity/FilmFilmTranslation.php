@@ -80,6 +80,22 @@ class FilmFilmTranslation implements TranslateChildInterface
      * })
      */
     private $synopsis;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({
+     *     "trailer_list",
+     *     "trailer_show",
+     *     "film_list",
+     *     "film_show",
+     *     "projection_list",
+     *     "film_selection_section_show"
+     * })
+     */
+    private $infoRestauration;
     
     /**
      * @var string
@@ -222,5 +238,28 @@ class FilmFilmTranslation implements TranslateChildInterface
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set infoRestauration
+     *
+     * @param string $infoRestauration
+     * @return FilmFilmTranslation
+     */
+    public function setInfoRestauration($infoRestauration)
+    {
+        $this->infoRestauration = $infoRestauration;
+
+        return $this;
+    }
+
+    /**
+     * Get infoRestauration
+     *
+     * @return string 
+     */
+    public function getInfoRestauration()
+    {
+        return $this->infoRestauration;
     }
 }

@@ -149,28 +149,35 @@
 
   .jury-box {
     display: inline-block;
+    overflow:hidden;
+    
+    a {
+      color:#000;
+    }
 
-      a {
-        color:#000;
+    &:hover a .image img,
+    &:hover a .compat-object-fit {
+      @include transition(all 4s $linear);
+      @include transform(scale(1.08) translateZ(0));
+    }
+
+    .image {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+      
+      img {
+        opacity: 0 !important;
       }
-
-      &:hover a img {
-        @include transition(all 4s $linear);
-        @include transform(scale(1.08) translateZ(0));
-      }
-
-      &:hover a .compat-object-fit {
-        @include transition(all 4s $linear);
-        @include transform(scale(1.08) translateZ(0));
-
-      }
-
-      .image {
-        overflow: hidden;
-      }
+    }
   }
 
   .legend {
+    position: relative;
+    z-index: 2;
     background-color: #fff;
     margin: 0px;
     vertical-align: middle;

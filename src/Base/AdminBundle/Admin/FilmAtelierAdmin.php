@@ -2,7 +2,6 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -53,9 +52,7 @@ class FilmAtelierAdmin extends SoifAdmin
             ->add('soifUpdatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show' => array(),
                     'edit' => array(),
-                    'delete' => array(),
                     'soif_refresh' => array('template' => 'BaseAdminBundle:CRUD:list__action_soif_refresh.html.twig')
                 )
             ))

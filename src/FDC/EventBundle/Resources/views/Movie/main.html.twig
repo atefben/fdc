@@ -55,11 +55,11 @@
 
             {% include 'FDCEventBundle:Movie:widgets/image.html.twig' with {'photos': movie.medias} %}
 
-			{% if movie.articles|length > 0 %}
+			{% if movie.associatedNews|length > 0 %}
             <div class="news" data-section="news">
                 <div class="articles center">
-                {% for article in movie.articles %}
-                    {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
+                {% for NewsFilmFilmAssociated in movie.associatedNews %}
+					{% include 'FDCEventBundle:News:widgets/article.html.twig' with { 'article': NewsFilmFilmAssociated.news } %}
                 {% endfor %}
                 </div>
             </div>

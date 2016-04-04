@@ -127,9 +127,7 @@ class FilmFilmAdmin extends SoifAdmin
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show' => array(),
                     'edit' => array(),
-                    'delete' => array(),
                     'soif_refresh' => array('template' => 'BaseAdminBundle:CRUD:list__action_soif_refresh.html.twig'),
                 )
             ))
@@ -151,18 +149,17 @@ class FilmFilmAdmin extends SoifAdmin
                     'mapped' => false
                 ))
                 ->add('imageMain', 'sonata_type_model_list', array(
-                    'help' => 'Dimensions attendues : YxZpx - ratio paysage. Format Attendu.',
+                    'help' => 'Dimensions attendues : 1000x548 - ratio paysage. Format Attendu.',
                 ), array(
                     'link_parameters' => array('context' => 'film_poster')
                 ))
                 ->add('imageCover', 'sonata_type_model_list', array(
-                    'help' => 'Dimensions attendues : YxZpx - ratio paysage. Format Attendu.'
+                    'help' => 'Dimensions attendues : la meilleure définition possible - ratio paysage. Format Attendu.'
 
                 ), array(
                     'link_parameters' => array('context' => 'film_image_cover')
                 ))
                 ->add('videoMain', 'sonata_type_model_list', array(
-                    'help' => 'Lorem ipsum sit dolor amet.'
                 ))
             ->end()
             ->with('Associations')

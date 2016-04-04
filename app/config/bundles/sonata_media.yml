@@ -20,10 +20,16 @@ sonata_media:
             providers:
                - sonata.media.provider.image
             formats:
-                mobile: { width: 584 , height: 794 , quality: 100 }
-                tiny:  { width: 76, height: 92, quality: 100 }
-                small: { width: 584 , height: 794 , quality: 100 }
-                38x46: { width: 38 , height: 46 , quality: 100 }
+                mobile:  { width: 584 , height: 794 , quality: 100 }
+                tiny:    { width: 76, height: 92, quality: 100 }
+                small:   { width: 584 , height: 794 , quality: 100 }
+                38x46:   { width: 38 , height: 46 , quality: 100 }
+                212x134: { width: 212 , height: 134 , quality: 100 }
+                210x284: { width: 210 , height: 284 , quality: 100 }
+                976x535: { width: 976 , height: 535 , quality: 100 }
+                384x485: { width: 384 , height: 485 , quality: 100 }
+                640x603: { width: 384 , height: 485 , quality: 100 }
+                976x535: { width: 976 , height: 535 , quality: 100 }
 
         film_image_cover:
             providers:
@@ -47,6 +53,7 @@ sonata_media:
                 293x397: { width: 293, height: 397, quality: 100 }
                 588x784: { width: 588, height: 784, quality: 100 }
                 259x352: { width: 259, height: 352, quality: 100 }
+                976x535: { width: 976 , height: 535 , quality: 100 }
 
         film_main:
             providers:
@@ -63,26 +70,31 @@ sonata_media:
                   210x284: { width: 210 , height: 284 , quality: 100 }
                   293x397: { width: 293, height: 397, quality: 100 }
                   259x352: { width: 259, height: 352, quality: 100 }
+                  588x784: { width: 588 , height: 784 , quality: 100 }
+                  976x535: { width: 976 , height: 535 , quality: 100 }
 
         film_film:
             providers:
                 - sonata.media.provider.image
             formats:
-                mobile: { width: 584 , height: 794 , quality: 100 }
-                tiny:  { width: 146 , quality: 100 }
-                square: { width: 146, height: 146, quality: 100 }
-                small: { width: 187 , height: 255 , quality: 100 }
+                mobile:  { width: 584 , height: 794 , quality: 100 }
+                tiny:    { width: 146 , quality: 100 }
+                square:  { width: 146, height: 146, quality: 100 }
+                small:   { width: 187, height: 255, quality: 100 }
                 300x400: { width: 300, height: 400, quality: 100 }
                 293x397: { width: 293, height: 397, quality: 100 }
-                319x434:  { width: 319 , height: 434 , quality: 100 }
-                384x485:  { width: 384 , height: 485 , quality: 100 }
+                319x434: { width: 319, height: 434, quality: 100 }
+                384x485: { width: 384, height: 485, quality: 100 }
                 420x560: { width: 420, height: 560, quality: 100 }
-                small: { width: 500 , quality: 100 }
-                big:   { width: 1000 , quality: 100 }
+                small:   { width: 500, quality: 100 }
+                big:     { width: 1000, quality: 100 }
                 highres: { width: 2500, quality: 100 }
-                212x134: { width: 212 , height: 134 , quality: 100 }
-                210x284: { width: 210 , height: 284 , quality: 100 }
+                212x134: { width: 212, height: 134, quality: 100 }
+                210x284: { width: 210, height: 284, quality: 100 }
                 259x352: { width: 259, height: 352, quality: 100 }
+                640x603: { width: 384, height: 485, quality: 100 }
+                976x535: { width: 976, height: 535, quality: 100 }
+                588x784: { width: 588 , height: 784 , quality: 100 }
 
         pdf:
             providers:
@@ -156,6 +168,8 @@ sonata_media:
                 mobile: { width: 584 , height: 794 , quality: 100 }
                 212x134: { width: 212 , height: 134 , quality: 100 }
                 293x185: { width: 293 , height: 185 , quality: 100 }
+                #Photo Jury
+                640x603: { width: 640 , height: 603 , quality: 100 }
                 # Movie VideoMain
                 588x784: { width: 588 , height: 784 , quality: 100 }
                 # PressDownload
@@ -171,7 +185,7 @@ sonata_media:
                 197x142: { width: 197 , height: 142 , quality: 100 }
                 586x370: { width: 586 , height: 370 , quality: 100 }
                 1280x808: { width: 1280 , height: 808 , quality: 100 }
-                2560×1103: { width: 2560, height: 1103 , quality: 100 }
+                2560x1103: { width: 2560, height: 1103 , quality: 100 }
                 640x404: { width: 640 , height: 404 , quality: 100 }
                 # Pushs
                 650x410: { width: 650 , height: 410 , quality: 100 }

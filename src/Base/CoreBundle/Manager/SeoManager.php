@@ -605,10 +605,10 @@ class SeoManager
         }
     }
     /**
-     * @param FDCPageLaSelection $page
+     * @param (FDCPageLaSelection|FDCPageLaSelectionCannesClassics|FDCPageLaSelectionCinemaPlage) $page
      * @param $locale
      */
-    public function setFDCEventPageFDCPageLaSelectionSeo(FDCPageLaSelection $page, $locale)
+    public function setFDCEventPageFDCPageLaSelectionSeo($page, $locale)
     {
         $trans = $page->findTranslationByLocale($locale);
 
