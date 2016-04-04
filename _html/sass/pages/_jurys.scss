@@ -162,12 +162,15 @@
     }
 
     .image {
-      position: relative;
-      z-index: 1;
       overflow: hidden;
-      background-size: cover;
-      background-position: top center;
-      background-repeat: no-repeat;
+      
+      &.compat-object-fit {
+        position: relative;
+        z-index: 1;
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+      }
       
       img {
         opacity: 0 !important;

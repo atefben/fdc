@@ -7,7 +7,7 @@
 
 // 1. Global
 // =========================
-.icon{
+.icon {
   vertical-align: baseline !important; //todocss
 }
 
@@ -149,7 +149,6 @@ body {
 
 // 2. Responsive 768
 // =========================
-
 @include breakpoint(768px) {
   #main, header, footer {
     width: 1024px;

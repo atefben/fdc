@@ -1,618 +1,688 @@
- //       SUMMARY TABLE
- // =========================
- // 1. Global
- // 2. Bandeau
- // 3. Selection officielles
- // 4. Invit honnor
- // 5. Cannes classic
- // 6. MEDIA (bandeau)
- // =========================
+//       SUMMARY TABLE
+// =========================
+// 1. Global
+// 2. Bandeau
+// 3. Selection officielles
+// 4. Invit honnor
+// 5. Cannes classic
+// 6. MEDIA (bandeau)
+// =========================
 
- // 1. Global
- // =========================
+// 1. Global
+// =========================
 
- .container-list {
-   width: 100%;
-   clear: both;
- }
+.container-list {
+  width: 100%;
+  clear: both;
+}
 
- .categorie-items {
-   clear: both;
-   .titre-document {
-     color: #999;
-     width: 958px;
-     margin: 0 auto;
-   }
-   .title-list-cat {
-     color: #ffffff;
-     padding: 42px;
-     border-bottom: #202020 1px solid;
-     border-top: #202020 1px solid;
-     font-size: 1rem;
-     text-align: center;
-     .title {
-       margin-bottom: 0px;
-       width: 549px;
-       margin: 0 auto;
-       font-size: 1rem;
-       line-height: 30px;
-     }
-     .title-item {
-       text-align: center;
-       padding: 20px;
-       font-size: .875rem;
-       width: 977px;
-       margin: 10px auto;
-       line-height: 26px;
-       font-family: $CamphorItalic;
-       margin-bottom: 2px;
-       padding-bottom: 0px;
-     }
-     .title-big {
-       color: #ffffff;
-       font-family: "Playfair Display";
-       font-size: 3rem;
-       font-weight: 400;
-       line-height: 1.3em;
-       margin: 20px auto;
-       max-width: 700px;
-       text-align: center;
-       padding-bottom: 20px;
-     }
-      .button{
-        border-color: #2c2c2c;
+.categorie-items {
+  clear: both;
+  
+  .titre-document {
+    color: #999;
+    width: 958px;
+    margin: 0 auto;
+  }
+  
+  .title-list-cat {
+    color: #ffffff;
+    padding: 42px;
+    border-bottom: #202020 1px solid;
+    border-top: #202020 1px solid;
+    font-size: 1rem;
+    text-align: center;
+  
+    .title {
+      margin-bottom: 0px;
+      width: 549px;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 30px;
+    }
+  
+    .title-item {
+      text-align: center;
+      padding: 20px;
+      font-size: .875rem;
+      width: 977px;
+      margin: 10px auto;
+      line-height: 26px;
+      font-family: $CamphorItalic;
+      margin-bottom: 2px;
+      padding-bottom: 0px;
+    }
+  
+    .title-big {
+      color: #ffffff;
+      font-family: "Playfair Display";
+      font-size: 3rem;
+      font-weight: 400;
+      line-height: 1.3em;
+      margin: 20px auto;
+      max-width: 700px;
+      text-align: center;
+      padding-bottom: 20px;
+    }
+  
+    .button{
+      border-color: #2c2c2c;
 
-        &:hover{
-          background-color: #141414 !important;
-          border-color: $gold;
+      &:hover{
+        background-color: #141414 !important;
+        border-color: $gold;
+      }
+    }
+  }
+  
+  .sub-cat-title {
+    padding: 20px;
+    background-color: #656565;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+  
+  article {
+    box-sizing: border-box;
+    float: none;
+    padding-left: 0px;
+    clear: both;
+    color: #ffffff;
+    width: 100%;
+    min-height: 422px;
+    height: auto;
+    overflow: hidden;
+    background: center 0 no-repeat fixed;
+    background-size: cover;
+
+    .bck-hover {
+      background-color: #141414;
+      width: 100%;
+      padding: 37px;
+      height: 425px;
+      display: table;
+      @include transition-property(background);
+      @include transition-duration(.5s);
+      box-sizing: border-box;
+    }
+  
+    .bck-hover:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  
+    .contain_item {
+      width: 977px;
+      max-width: 100%;
+      margin: 0 auto;
+      display: table;
+     
+      .compat-object-fit-d {
+        height:341px;
+        width:256px;
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        
+        img {
+          opacity: 0;
         }
       }
-   }
-   .sub-cat-title {
-     padding: 20px;
-     background-color: #656565;
-     color: #fff;
-     text-align: center;
-     text-transform: uppercase;
-     letter-spacing: 3px;
-   }
-   article {
-     box-sizing: border-box;
-     float: none;
-     padding-left: 0px;
-     clear: both;
-     color: #ffffff;
-     width: 100%;
-     min-height: 422px;
-     height: auto;
-     overflow: hidden;
-     background: center 0 no-repeat fixed;
-     background-size: cover;
-
-     .bck-hover {
-       background-color: #141414;
-       width: 100%;
-       padding: 37px;
-       height: 425px;
-       display: table;
-       @include transition-property(background);
-       @include transition-duration(.5s);
-       box-sizing: border-box;
-     }
-     .bck-hover:hover {
-       background-color: rgba(0, 0, 0, 0.5);
-     }
-     .contain_item {
-       width: 977px;
-       max-width: 100%;
-       margin: 0 auto;
-       display: table;
-	   
-       .compat-object-fit-d {
-		 height:341px;
-		 width:256px;
-         background-size: cover;
-         background-position: top center;
-         background-repeat: no-repeat;
-         img {
-           opacity: 0;
-         }
- 	   }
-       .list-camera-or {
-         //Centrer les informations seulement pour la version Camera Or
-         .title-item {
-           padding-top: 85px;
-         }
-       }
-     }
-     img {
-       float: left;
-       margin-right: 50px;
-       margin-left: 96px;
-     }
-     .infos-item-list {
+      .list-camera-or {
+        //Centrer les informations seulement pour la version Camera Or
+        .title-item {
+          padding-top: 85px;
+        }
+      }
+    }
+    
+    img {
+      float: left;
+      margin-right: 50px;
+      margin-left: 96px;
+    }
+    
+    .infos-item-list {
       text-align: center;
       vertical-align: middle;
       width: 475px;
       display: table-cell;
       padding-right: 100px;
-       .title-item {
-         text-transform: uppercase;
-         padding-bottom: 4px;
-         font-size: 0.875rem;
-         line-height: 16px;
-         font-family: $CamphorBold;
-       }
-       .sub-title-item {
-         padding-bottom: 4px;
-         font-size: 0.63rem;
-         text-transform: uppercase;
-       }
-       .nom-item {
-         color: #c8a461;
-         padding-bottom: 4px;
-         font-family: $CamphorItalic;
-         font-weight: 700;
-         font-size: 0.8125rem;
-       }
-       .date-item {
-         display: block;
-         font-weight: 100;
-         padding-bottom: 4px;
-         color: #999999;
-         font-size: 0.6875rem;
-       }
-       .description-item {
-         padding-top: 40px;
-         line-height: 26px;
-         font-size: 0.875rem;
-         strong {
-           color: #c8a461;
-           font-family: $CamphorBold;
-         }
-       }
-       .date-pres-item {
-         text-transform: uppercase;
-         color: #fff;
-         letter-spacing: .2em;
-         margin-bottom: 18px;
-         display: inline-block;
-         font-size: 0.75rem;
+      
+      .title-item {
+        text-transform: uppercase;
+        padding-bottom: 4px;
+        font-size: 0.875rem;
+        line-height: 16px;
         font-family: $CamphorBold;
-         margin-right: 6px;
-       }
-       .heure-pres-item {
-         color: #999;
-         letter-spacing: 3px;
-         text-transform: uppercase;
-         font-size: 0.75rem;
-         font-family: $CamphorBold;
-       }
-     }
-   }
-   .contain-article-invit {
-     color: #ffffff;
-
-     .title-list-cat {
-       margin-bottom: 60px;
-     }
-
-     .contain-img-honneur {
-       position: relative;
-       width: 975px;
-       margin: 0 auto;
-       margin-bottom: 50px;
-
-       .copy {
-         position: absolute;
-         bottom: 18px;
-         left: 18px;
-         color: #DEDEDE;
-         font-size: 0.63rem;
-       }
-
-       .caption{
-         font-size: .75rem;
-         font-family: $CamphorRegular;
-       }
-     }
-
-      .big-txt p{
-        color: #999999;
       }
-
-      .txt-grey-bkg-container{
-        background-color: #202020;
-
-        strong {
-            color: #fff;
-        }
-
-        p {
-            color: #999999;
-        }
+      
+      .sub-title-item {
+        padding-bottom: 4px;
+        font-size: 0.63rem;
+        text-transform: uppercase;
       }
-
-      .caption-article {
-        color: #999999;
-        font-size: 0.750rem;
-        margin: 10px 0 0;
-        text-align: left;
+      
+      .nom-item {
+        color: #c8a461;
+        padding-bottom: 4px;
+        font-family: $CamphorItalic;
+        font-weight: 700;
+        font-size: 0.8125rem;
+      }
+      
+      .date-item {
         display: block;
-        margin: 0 auto;
-        width: 644px;
-        padding-top: 10px;
-        border-top: 1px solid #2c2c2c;
-
-        .name{
-          color:#fefefe;
+        font-weight: 100;
+        padding-bottom: 4px;
+        color: #999999;
+        font-size: 0.6875rem;
+      }
+      
+      .description-item {
+        padding-top: 40px;
+        line-height: 26px;
+        font-size: 0.875rem;
+        strong {
+          color: #c8a461;
+          font-family: $CamphorBold;
         }
       }
+      
+      .date-pres-item {
+        text-transform: uppercase;
+        color: #fff;
+        letter-spacing: .2em;
+        margin-bottom: 18px;
+        display: inline-block;
+        font-size: 0.75rem;
+        font-family: $CamphorBold;
+        margin-right: 6px;
+      }
+      
+      .heure-pres-item {
+        color: #999;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        font-family: $CamphorBold;
+      }
+    }
+  }
+  
+  .contain-article-invit {
+    color: #ffffff;
 
-      .table-article {
-        th {
-             text-transform: uppercase;
-             color: #fff !important;
-         }
-         th,td{
-            border: 1px solid #2c2c2c;
-            color: #999999;
-         }
+    .title-list-cat {
+      margin-bottom: 60px;
+    }
+
+    .contain-img-honneur {
+      position: relative;
+      width: 975px;
+      margin: 0 auto;
+      margin-bottom: 50px;
+
+      .copy {
+        position: absolute;
+        bottom: 18px;
+        left: 18px;
+        color: #DEDEDE;
+        font-size: 0.63rem;
       }
 
-      .sub-title, .sub-title2, h3.sub-title{
-        color:#fff;
+      .caption{
+        font-size: .75rem;
+        font-family: $CamphorRegular;
+      }
+    }
+
+    .big-txt p{
+      color: #999999;
+    }
+
+    .txt-grey-bkg-container{
+      background-color: #202020;
+
+      strong {
+        color: #fff;
       }
 
+      p {
+        color: #999999;
+      }
+    }
 
+    .caption-article {
+      color: #999999;
+      font-size: 0.750rem;
+      margin: 10px 0 0;
+      text-align: left;
+      display: block;
+      margin: 0 auto;
+      width: 644px;
+      padding-top: 10px;
+      border-top: 1px solid #2c2c2c;
 
-     .pres-honneur {
-       width: 975px;
-       margin: 0 auto;
-       text-align: center;
-       font-size: 1.125rem;
-       line-height: 36px;
-       padding-bottom: 40px;
-       a {
-         text-decoration: underline;
-         color: #c8a461;
-       }
-     }
-     .small-pres {
-       width: 632px;
-       margin: 0 auto;
-       color: #999999;
-       font-size: 1rem;
-       line-height: 26px;
-       p {
-         padding: 16px 0px;
-         strong {
-           color: #c8a461;
-         }
-       }
-       h3 {
-         color: #cccccc;
-         strong {
-           color: #c8a461;
-         }
-       }
-       h4 {
-         color: #cccccc;
-       }
-       .video {
-         line-height: 18px;
-         position: relative;
-         margin-top: 30px;
-         margin-bottom: 80px;
-         p {
-           padding: 0px;
-         }
-       }
-     }
-     .share {
-       color: white;
-       border-top: 1px solid #2C2C2C;
-       .button {
-         border: 1px solid #2c2c2c;
-       }
-     }
-   }
+      .name{
+        color:#fefefe;
+      }
+    }
+
+    .table-article {
+      th {
+        text-transform: uppercase;
+        color: #fff !important;
+      }
+      
+      th,
+      td {
+        border: 1px solid #2c2c2c;
+        color: #999999;
+      }
+    }
+
+    .sub-title, .sub-title2, h3.sub-title{
+      color:#fff;
+    }
+
+    .pres-honneur {
+      width: 975px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.125rem;
+      line-height: 36px;
+      padding-bottom: 40px;
+    
+      a {
+        text-decoration: underline;
+        color: #c8a461;
+      }
+    }
+    
+    .small-pres {
+      width: 632px;
+      margin: 0 auto;
+      color: #999999;
+      font-size: 1rem;
+      line-height: 26px;
+    
+      p {
+        padding: 16px 0px;
+    
+        strong {
+          color: #c8a461;
+        }
+      }
+    
+      h3 {
+        color: #cccccc;
+    
+        strong {
+          color: #c8a461;
+        }
+      }
+    
+      h4 {
+        color: #cccccc;
+      }
+    
+      .video {
+        line-height: 18px;
+        position: relative;
+        margin-top: 30px;
+        margin-bottom: 80px;
+    
+        p {
+          padding: 0px;
+        }
+      }
+    }
+    
+    .share {
+      color: white;
+      border-top: 1px solid #2C2C2C;
+    
+      .button {
+        border: 1px solid #2c2c2c;
+      }
+    }
+  }
  }
 
- // 1. Bandeau
- // =========================
-
- .list-article {
-   h3{
-     color: #fff;
-   }
+// 1. Bandeau
+// =========================
+.list-article {
    background-color: #141414 !important;
-   .bandeau-list {
-     background-color: #1b1b1b;
-
-     .icon_fleche-right{
-       font-size: .5rem;
-       margin-bottom: 2px;
-       vertical-align: middle !important;
-       margin-right: 6px;
-     }
-
-
-     .bandeau-list-img {
-       height: 300px;
-
-       //TEST PARALLAX//
-       background: center 0 no-repeat fixed;
-       background-size: cover;
-       @include transition(all 1s $linear);
-       .title-list-header {
-         color: #ffffff;
-         font-size: 1.75rem;
-//         padding-top: 138px;
-//         margin-bottom: 20px;
-       }
-       .push-footer .title-list-header, .bandeau-listfooter .title-list-header{
-         margin-bottom: 20px;
-       }
-       .bandeau-lien {
-         color: #c8a461;
-         width: 178px;
-         margin: 0 auto;
-         display: block;
-         text-transform: uppercase;
-         font-size: 0.75rem;
-         font-family: $CamphorHeavy;
-         @include transition(all 1s $linear);
-
-         &:hover {
-           opacity: 0.5;
-         }
-
-         .svg-arrow{
-           width: 12px;
-           vertical-align: baseline;
-           padding-right: 3px;
-         }
-       }
-     }
-     .sub-nav-list {
-       width: 1000px;
-       margin: 0 auto;
-       text-align: center;
-       padding-left: 0;
-       padding-right: 0;
-
-       &:after {
-         background-color: $black;
-         content: '';
-         display: block;
-         height: 100%;
-         left: 0;
-         opacity: 0;
-         position: absolute;
-         top: 0;
-         visibility: hidden;
-         width: 100%;
-         z-index: 5;
-         @include transition(all 0.3s $smoothTransition);
-       }
-
-       &:before {
-         background-color: $black;
-         content: '';
-         display: block;
-         height: 110%;
-         left: 0;
-         opacity: 0;
-         position: absolute;
-         top: -2px;
-         visibility: hidden;
-         width: 100%;
-         z-index: 5;
-         @include transition(all 0.9s $smoothTransition);
-       }
-
-       &.loading:before {
-         opacity: 1;
-         visibility: visible;
-       }
-
-       &.overlay:after {
-         opacity: 0.6;
-         visibility: visible;
-       }
-
-
-       a {
-         color: #686868;
-         font-size: 0.8rem;
-       }
-       a.active {
-         color: #c8a461;
-       }
-       li {
-         display: inline-block;
-         padding: 18px 6.5px;
-         text-transform: uppercase;
-       }
-     }
-     .nav-movie{
-       a{
-         color: #fff;
-         font-size: 0.63rem;
-         font-family: $CamphorHeavy;
-       }
-       a:hover{
-         color: #c8a461;
-       }
-     }
-     .nav-movie.sticky{
-       z-index: 10;
-       width: 100%;
-       background-color: #1b1b1b;
-     }
-     .nav-list {
-       margin: 0 auto;
-       text-align: center;
-       font-family: $CamphorBold;
-       background-color: #202020;
-       width: 100%;
-       z-index: 5;
-       transition: .3s;
-       a {
-         color: #999999;
-         font-size: 0.75rem;
-       }
-       a.active {
-         color: #c8a461;
-       }
-       a:hover {
-         color: #c8a461;
-       }
-       li {
-         display: inline-block;
-         padding: 16px 6.5px;
-         text-transform: uppercase;
-       }
-     }
+  
+   h3{
+    color: #fff;
    }
-   .title-film-detail{
-     border-top: #202020 1px solid !important;
-   }
- }
 
- // 3. Selection officielle
- //==========================
+  .bandeau-list {
+    background-color: #1b1b1b;
 
- .selection-officielle {
-   .single-article{
-     padding: 0px !important;
-   }
-   figure {
-     figcaption {
-       height: 103px;
-       text-align: center;
-       .name {
-         color: #fff;
-         text-transform: uppercase;
-         text-align: center;
-         font-family: $CamphorBold;
-         font-size: .875rem;
-         display: block;
-         padding-top: 25px;
-       }
-       .sub-name {
-         color: #fff;
-         text-transform: uppercase;
-         text-align: center;
-         font-family: $CamphorBold;
-         font-size: .625rem;
-         display: block;
-       }
-       .author {
-         text-align: center;
-         font-family: $CamphorItalic;
-         font-size: .8125rem;
-         color: #c8a461;
-         border-top: 0px solid #fff;
-       }
-     }
-     &:hover a img {
-       @include transition(all 4s $linear);
-       @include transform(scale(1.08) translateZ(0));
-     }
-     .image{
-       overflow: hidden;
-	   
-       &.compat-object-fit {
-         background-size: cover;
-         background-position: center center;
+    .icon_fleche-right {
+      font-size: .5rem;
+      margin-bottom: 2px;
+      vertical-align: middle !important;
+      margin-right: 6px;
+    }
 
-         img {
-           opacity: 0;
-           height: 100%;
-         }
-       }
-     }
-   }
-   .container:after {
-     content: ".";
-     display: block;
-     height: 0;
-     clear: both;
-     visibility: hidden;
-   }
-   .grid {
-     padding-top: 0px;
-     .grid-wrapper {
-       margin-top: 0px;
-     }
-   }
- }
+    .bandeau-list-img {
+      height: 300px;
+
+      //TEST PARALLAX//
+      background: center 0 no-repeat fixed;
+      background-size: cover;
+      @include transition(all 1s $linear);
+    
+      .title-list-header {
+        color: #ffffff;
+        font-size: 1.75rem;
+        // padding-top: 138px;
+        // margin-bottom: 20px;
+      }
+
+      .push-footer .title-list-header, .bandeau-listfooter .title-list-header{
+        margin-bottom: 20px;
+      }
+
+      .bandeau-lien {
+        color: #c8a461;
+        width: 178px;
+        margin: 0 auto;
+        display: block;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        font-family: $CamphorHeavy;
+        @include transition(all 1s $linear);
+
+        &:hover {
+          opacity: 0.5;
+        }
+
+        .svg-arrow{
+          width: 12px;
+          vertical-align: baseline;
+          padding-right: 3px;
+        }
+      }
+    }
+
+    .sub-nav-list {
+      width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+      padding-left: 0;
+      padding-right: 0;
+
+      &:after {
+        background-color: $black;
+        content: '';
+        display: block;
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        visibility: hidden;
+        width: 100%;
+        z-index: 5;
+        @include transition(all 0.3s $smoothTransition);
+      }
+
+      &:before {
+        background-color: $black;
+        content: '';
+        display: block;
+        height: 110%;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: -2px;
+        visibility: hidden;
+        width: 100%;
+        z-index: 5;
+        @include transition(all 0.9s $smoothTransition);
+      }
+
+      &.loading:before {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      &.overlay:after {
+        opacity: 0.6;
+        visibility: visible;
+      }
+
+      a {
+        color: #686868;
+        font-size: 0.8rem;
+      }
+
+      a.active {
+        color: #c8a461;
+      }
+      
+      li {
+        display: inline-block;
+        padding: 18px 6.5px;
+        text-transform: uppercase;
+      }
+    }
+
+    .nav-movie {
+      a {
+        color: #fff;
+        font-size: 0.63rem;
+        font-family: $CamphorHeavy;
+      }
+
+      a:hover {
+        color: #c8a461;
+      }
+    }
+
+    .nav-movie.sticky {
+      z-index: 10;
+      width: 100%;
+      background-color: #1b1b1b;
+    }
+
+    .nav-list {
+      margin: 0 auto;
+      text-align: center;
+      font-family: $CamphorBold;
+      background-color: #202020;
+      width: 100%;
+      z-index: 5;
+      transition: .3s;
+    
+      a {
+        color: #999999;
+        font-size: 0.75rem;
+      }
+
+      a.active {
+        color: #c8a461;
+      }
+
+      a:hover {
+        color: #c8a461;
+      }
+
+      li {
+        display: inline-block;
+        padding: 16px 6.5px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .title-film-detail{
+    border-top: #202020 1px solid !important;
+  }
+}
+
+// 3. Selection officielle
+//==========================
+.selection-officielle {
+  .single-article {
+    padding: 0px !important;
+  }
+
+  figure {
+    figcaption {
+      position: relative;
+      z-index: 2;
+      height: 103px;
+      text-align: center;
+
+      .name {
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        font-family: $CamphorBold;
+        font-size: .875rem;
+        display: block;
+        padding-top: 25px;
+      }
+
+      .sub-name {
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        font-family: $CamphorBold;
+        font-size: .625rem;
+        display: block;
+      }
+
+      .author {
+        text-align: center;
+        font-family: $CamphorItalic;
+        font-size: .8125rem;
+        color: #c8a461;
+        border-top: 0px solid #fff;
+      }
+    }
+     
+    &:hover a img,
+    &:hover a .compat-object-fit {
+      @include transition(all 4s $linear);
+      @include transform(scale(1.08) translateZ(0));
+    }
+
+    .image {
+      overflow: hidden;
+
+      &.compat-object-fit {
+        position: relative;
+        z-index: 1;
+        background-size: cover;
+        background-position: center center;
+
+        img {
+          opacity: 0;
+          height: 100%;
+        }
+      }
+    }
+  }
+  
+  .container:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  
+  .grid {
+    padding-top: 0px;
+  
+    .grid-wrapper {
+      margin-top: 0px;
+    }
+  }
+}
 
 // 4. Invit honneur
 // ================
-
-.honneur-invit{
-  .buttons{
+.honneur-invit {
+  .buttons {
     margin-bottom: 14px;
   }
-  .buttons.square{
+  
+  .buttons.square {
       margin-bottom: 0px;
-    .button{
+    .button {
       border-right: 0px solid #000;
     }
-    .button:last-child{
+
+    .button:last-child {
       border-right: 1px solid #2c2c2c;
     }
   }
-  .container{
+
+  .container {
     padding: 0px 0px;
   }
-  .quote{
-    blockquote{
+  
+  .quote {
+    margin-bottom: 60px;
+
+    blockquote {
       color: white;
       border-top: 1px solid #2C2C2C;
       border-bottom: 1px solid #2C2C2C;
     }
-    margin-bottom: 60px;
   }
-  .slideshow{
+  
+  .slideshow {
     margin-bottom: 60px;
-    .slideshow-img{
+    .slideshow-img {
       height: 400px;
     }
-    .caption{
+    .caption {
       padding: 0px 0px !important;
     }
-    .slideshow-img{
-      .thumbnails{
+
+    .slideshow-img {
+      .thumbnails {
         bottom: -3px;
-        .thumb{
+    
+        .thumb {
           width: 80px;
           height: 52px;
         }
       }
     }
   }
-  .half-photo{
+
+  .half-photo {
     margin: 0px 29px 50px 0;
     margin-bottom: 60px;
     width: 48%;
-    .caption{
+  
+    .caption {
       padding: 0px 0px !important;
     }
-    img{
+  
+    img {
       max-width: auto;
       width: 100%;
     }
   }
-  .title-film-detail{
+  
+  .title-film-detail {
     margin-bottom: 0px !important;
   }
 
-  .square{
-    .button:hover{
+  .square {
+    .button:hover {
       background-color: #141414;
     }
   }
@@ -620,72 +690,60 @@
 
 // 5. cannes Classic
 // ================
+.cannes-classic {
+  .title-list-cat:first-child {
+    border-top: 0px solid #000;
+  }
 
-.cannes-classic{
-     .title-list-cat:first-child{
-       border-top: 0px solid #000;
-     }
-    .container{
+  .container {
     padding: 0px ;
   }
 }
 
 // 5. Media
 // ================
-
 // MEDIA NAV
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (-webkit-min-device-pixel-ratio: 1){
-  .list-article .bandeau-list .nav-list li{
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .list-article .bandeau-list .nav-list li {
     display: inline-block;
     padding: 17px 1.5px;
     text-transform: uppercase;
   }
 }
 
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (-webkit-min-device-pixel-ratio: 1){
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (-webkit-min-device-pixel-ratio: 1) {
   .single-evenement .best-films .item-film{
-        margin: 0 20px;
+    margin: 0 20px;
   }
 }
 
-
-
-
 //MEDIA BANDEAU
-  @media screen and (min-width: 1920px) {
-    .films-list .bandeau-list-img{
-      height: 448px !important;
-    }
+@media screen and (min-width: 1920px) {
+  .films-list .bandeau-list-img {
+    height: 448px !important;
   }
+}
 
-  @media screen and (min-width: 1600px) and (max-width:1919px) {
-
-    .films-list .bandeau-list-img{
-      height: 373px !important;
-    }
+@media screen and (min-width: 1600px) and (max-width:1919px) {
+  .films-list .bandeau-list-img {
+    height: 373px !important;
   }
+}
 
-  @media screen and (min-width: 1280px) and (max-width:1599px) {
-
-    .films-list .bandeau-list-img{
-      height: 297px !important;
-    }
+@media screen and (min-width: 1280px) and (max-width:1599px) {
+  .films-list .bandeau-list-img {
+    height: 297px !important;
   }
+}
 
-  @media screen and (min-width: 1024px) and (max-width:1279px) {
-    .films-list .bandeau-list-img{
-      height: 296px !important;
-    }
+@media screen and (min-width: 1024px) and (max-width:1279px) {
+  .films-list .bandeau-list-img {
+    height: 296px !important;
   }
+}
 
-  @media screen and (max-width:1023px) {
-    .films-list .bandeau-list-img{
-      height: 296px !important;
-    }
+@media screen and (max-width:1023px) {
+  .films-list .bandeau-list-img {
+    height: 296px !important;
   }
+}
