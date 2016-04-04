@@ -14,7 +14,7 @@
         <div class="container container-list">
             <section class="categorie-items">
                 <div class="title-list-cat">
-                    <h2 class="titre-document">{{ 'selection.cinemaplage.titlesub'|trans }}</h2>
+                    <h2 class="titre-document">{{ page|trans_fallback('subtitle') }}</h2>
                 </div>
 
                 {% for projection in projections %}

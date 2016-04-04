@@ -2,7 +2,6 @@ security:
     role_hierarchy:
         ROLE_JOURNALIST:
         - ROLE_ADMIN
-        - ROLE_JMS_TRANSLATION
         - ROLE_FDC_TRANSLATOR_MASTER
         - ROLE_THEME
         - ROLE_BASE_ADMIN_TAG_ADMIN
