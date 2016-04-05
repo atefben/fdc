@@ -51,7 +51,8 @@ class LockController extends Controller
         'presscinemaroom'        => 'PressCinemaRoom',
         'fdcpagewaiting'         => 'FDCPageWaiting',
         'fdcpagelaselectioncannesclassics' => 'FDCPageLaSelectionCannesClassics',
-        'fdcpagelaselectioncinemaplage' => 'FDCPageLaSelectionCinemaPlage'
+        'fdcpagelaselectioncinemaplage' => 'FDCPageLaSelectionCinemaPlage',
+        'orangeseriesandcie' => 'OrangeSeriesAndCie'
     );
 
     /**

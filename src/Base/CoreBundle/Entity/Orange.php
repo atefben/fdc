@@ -1,0 +1,121 @@
+<?php
+
+namespace Base\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\SeoMain;
+
+use Base\CoreBundle\Util\Time;
+
+use Doctrine\Common\Collections\ArrayCollection;
+
+
+/**
+ * OrangeSeriesAndCie
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({
+ *      "series" = "OrangeSeriesAndCie", 
+ *      "ocs" = "OrangeProgrammationOCS",
+ *      "vod" = "OrangeVideoOnDemand",
+ *      "studio" = "OrangeStudio",
+ * })
+ */
+abstract class Orange implements TranslateMainInterface
+{
+    use Time;
+    use TranslateMain;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var OrangeWidget
+     *
+     * @ORM\OneToMany(targetEntity="OrangeWidget", mappedBy="parent", cascade={"all"}, orphanRemoval=true)
+     *
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    protected $widgets;
+    
+    /**
+     * ArrayCollection
+     */
+    protected $translations;
+
+    
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+        $this->widgets = new ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Add widgets
+     *
+     * @param \Base\CoreBundle\Entity\OrangeWidget $widgets
+     * @return OrangeSeriesAndCie
+     */
+    public function addWidget(\Base\CoreBundle\Entity\OrangeWidget $widgets)
+    {
+        $widgets->setParent($this);
+        $this->widgets[] = $widgets;
+
+        return $this;
+    }
+
+    /**
+     * Remove widgets
+     *
+     * @param \Base\CoreBundle\Entity\OrangeWidget $widgets
+     */
+    public function removeWidget(\Base\CoreBundle\Entity\OrangeWidget $widgets)
+    {
+        $this->widgets->removeElement($widgets);
+    }
+    
+    /**
+     * Set widgets
+     *
+     * @param string $widgets
+     * @return OrangeSeriesAndCie
+     */
+    public function setWidgets($widgets)
+    {
+        $this->widgets = $widgets;
+
+        return $this;
+    }
+
+    /**
+     * Get widgets
+     *
+     * @return string 
+     */
+    public function getWidgets()
+    {
+        return $this->widgets;
+    }
+}

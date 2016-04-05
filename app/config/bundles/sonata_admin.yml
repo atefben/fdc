@@ -29,6 +29,9 @@ sonata_admin:
         # setting messages as label_catalogue for groups because JmsTranslation can't handle variables translation.
         # Related translations available in app/Resources/translations
         groups:
+            dashboard.group.orange:
+                items: ~
+                label_catalogue: BaseAdminBundle
             dashboard.group.general:
                 items: ~
                 label_catalogue: BaseAdminBundle
