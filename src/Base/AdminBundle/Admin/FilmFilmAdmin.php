@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
+use Base\CoreBundle\Entity\FilmFestival;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -71,23 +72,7 @@ class FilmFilmAdmin extends SoifAdmin
                 },
                 'field_type' => 'text'
             ))
-            ->add('festival-year', 'doctrine_orm_callback', array(
-                'callback' => function ($queryBuilder, $alias, $field, $value) {
-                    $em = $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
-                    $years = $em->getRepository('BaseCoreBundle:FilmFestival')->findAll();
-                    if ($value['value'] === null) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.festival", 'fs');
-                    $queryBuilder->andWhere('fs.year LIKE :year');
-                    $queryBuilder->setParameter('year', '%' . $years[$value['value']] . '%');
-                    return true;
-                },
-                'field_type' => 'choice',
-                'field_options' => array(
-                    'choices' => $years
-                )
-            ))
+            ->add('festival')
             ->add('have_trailer', 'doctrine_orm_callback', array(
                 'callback' => function ($queryBuilder, $alias, $field, $value) {
                     if ($value['value'] === null) {
