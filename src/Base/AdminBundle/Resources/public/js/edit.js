@@ -162,6 +162,14 @@ function editEvents() {
             var status = ['3'];
         }
 
+        if ($('select[name*="status"]').hasClass('master_translator')) {
+            var status = ['0', '1', '4'];
+        }
+
+        if ($('select[name*="status"]').hasClass('journalist')) {
+            var status = ['0', '4'];
+        }
+
         $(e).find('option').each(function(i, e) {
             if ($.inArray($(e).val(), status) == -1) {
                 $(e).remove();
@@ -171,6 +179,7 @@ function editEvents() {
         if ($('select[name*="status"]').hasClass('translator')) {
             {$("select").val("3").trigger("change");
         }
+
     }
 
     });
