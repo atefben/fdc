@@ -116,9 +116,10 @@ class FilmController extends FOSRestController
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
      *
+     * @param ParamFetcher $paramFetcher
      * @return View
      */
-    public function getFilmAction(Paramfetcher $paramFetcher, $id)
+    public function getFilmAction(ParamFetcher $paramFetcher, $id)
     {
         // coremanager shortcut
         $coreManager =  $this->get('base.api.core_manager');

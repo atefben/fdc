@@ -626,6 +626,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
     /**
      * @return array|ArrayCollection
+     * @VirtualProperty()
+     * @Groups({
+     *     "film_list",
+     *     "film_show",
+     *     "projection_list",
+     *     "projection_show"
+     * })
+     *
      */
     public function getCredits()
     {
