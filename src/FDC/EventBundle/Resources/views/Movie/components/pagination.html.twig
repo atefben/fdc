@@ -2,19 +2,11 @@
 {% if prev is not null %}
 <div class="prevmovie">
     <div class="img">
-        {% set posterImg = prev|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-        {% set mainImg = prev|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-        {% set photoImg = prev|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-
-        {% if posterImg %}
-            {% media posterImg, 'small' %}
-        {% elseif mainImg %}
-            <img src="{% path mainImg, 'small' %}" alt="" id="notposter">
-        {% elseif photoImg %}
-            <img src="{% path photoImg, 'small' %}" alt="" id="notposter">
-        {% else %}
-            <img src="{{ asset('bundles/fdcevent/img/palmares/film420x560.jpg') }}" alt="" width="187" height="249">
-        {% endif %}
+        {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+            film: prev,
+            film_format: 'small',
+            film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
+        }) %}
     </div>
     <div class="info">
         <div class="vCenter">
@@ -42,19 +34,11 @@
 {% if next is not null %}
 <div class="nextmovie">
     <div class="img">
-        {% set posterImg = next|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-        {% set mainImg = next|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-        {% set photoImg = next|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-
-        {% if posterImg %}
-            {% media posterImg, 'small' %}
-        {% elseif mainImg %}
-            <img src="{% path mainImg, 'small' %}" alt="" id="notposter" width="150" height="100">
-        {% elseif photoImg %}
-            <img src="{% path photoImg, 'small' %}" alt="" id="notposter" width="150" height="100">
-        {% else %}
-            <img src="{{ asset('bundles/fdcevent/img/palmares/film420x560.jpg') }}" alt="" width="187" height="249">
-        {% endif %}
+        {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+            film: next,
+            film_format: 'small',
+            film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
+        }) %}
     </div>
     <div class="info">
         <div class="vCenter">

@@ -109,22 +109,17 @@
                                 <div class="line">
                                     <div class="container">
                                         <div class="info">
-                                            {% set film_media = null %}
-                                            {% if media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first != false %}
-                                                {% set film_media = media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-                                            {% elseif media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first != false %}
-                                                {% set film_media = media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-                                            {% elseif media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first != false %}
-                                                {% set film_media = media.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-                                            {% endif %}
-                                            {% if film_media is not null and film_media != false %}
-                                                <img src="{% path film_media, 'tiny' %}" alt="" class="film_image"
-                                                     data-object-fit="cover">
-                                            {% else %}
-                                                <img src="{{ asset('images/default_image_film.jpg') }}" class="default_image"
-                                                     alt=""
-                                                     data-object-fit="cover">
-                                            {% endif %}
+                                            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                                film: media.film,
+                                                film_format: 'tiny',
+                                                film_attrs: {
+                                                    class: "film_image"
+                                                    data-object-fit: "cover",
+                                                    alt: (film|trans_fallback('title')?:movie.titleVO
+                                                },
+                                                film_image_default: 'bundles/fdcevent/img/palmares/film_w46.jpg',
+                                                film_image_default_attrs: 'class: "default_image" data-object-fit: "cover"'
+                                            }) %}
                                             <div class="txt">
                                                 <div class="vCenter">
                                                     <div class="vCenterKid">

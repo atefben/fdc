@@ -34,7 +34,7 @@ class PressCinemaMap implements TranslateMainInterface
 
     /**
      * @var PressCinemaMapRoom
-     * @ORM\OneToMany(targetEntity="PressCinemaMapRoom", mappedBy="roomMap", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="PressCinemaMapRoom", mappedBy="roomMap", cascade={"persist"})
      * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $mapRoom;
@@ -101,11 +101,12 @@ class PressCinemaMap implements TranslateMainInterface
     /**
      * Remove mapRoom
      *
-     * @param \Base\CoreBundle\Entity\PressCinemaRoom $mapRoom
+     * @param \Base\CoreBundle\Entity\PressCinemaMapRoom $mapRoom
      */
-    public function removeMapRoom(\Base\CoreBundle\Entity\PressCinemaRoom $mapRoom)
+    public function removeMapRoom(\Base\CoreBundle\Entity\PressCinemaMapRoom $mapRoom)
     {
-        $this->mapRoom->removeElement($mapRoom);
+        $mapRoom->setRoomMap(null);
+        $mapRoom->setRoom(null);
     }
 
     /**

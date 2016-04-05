@@ -1,29 +1,15 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 <div class="main-image">
-
-    {% set media = '' %}
-    {% set format = '' %}
-    {% set posterImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-    {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-    {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-    {% set media = null %}
-    {% set format =  'mobile' %}
-    {% if posterImg is not empty %}
-        {% set media = posterImg %}
-    {% elseif mainImg is not empty %}
-        {% set media = mainImg %}
-    {% elseif filmImg is not empty %}
-        {% set media = filmImg %}
-    {% endif %}
-    {% if mainImg %}
-        {% set media = mainImg %}
-        {% set format =  'film_main_highres' %}
-    {% elseif movie.imageCover %}
-        {% set media = movie.imageCover %}
-        {% set format =  'media_image_simple_2560x1103'%}
-    {% endif %}
-    <div class="img" style="background-image: url({% path media, format %})"></div>
+    <div class="img" style="background-image: url('{% spaceless %}
+        {% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+            film: movie,
+            film_format: '2560x1103',
+            display_film_path: true,
+            film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
+        }) %}
+    {% endspaceless %}
+    ')"></div>
     <div class="links">
         <div class="container">
             <a class="movies" href="{{ path('fdc_event_movie_selection') }}"><i class="icon icon_flecheGauche"></i>{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
@@ -35,17 +21,13 @@
         <div class="video-container state-init video"
              data-file='[{"file":"{{ s3_server_video ~ movie.videoMain|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ movie.videoMain|trans_fallback('mp4Url') }}"}]'
              data-vid="{{ movie.videoMain.id }}"
-             {% if movie.imageCover %}
-             data-img="{% path media, format %}"
-             {% else %}
-                 {% set videoImage = '' %}
-                 {% if movie.videoMain.image %}
-                     {% set videoImage = media_public_url(movie.videoMain.image|trans_fallback('file'), '1280x808') %}
-                 {% elseif video|trans_fallback('imageAmazonUrl') %}
-                     {% set videoImage = s3_server_global ~ movie.videoMain|trans_fallback('imageAmazonUrl') %}
-                 {% endif %}
-             data-img="{{ videoImage }} %}"
-             {% endif %}>
+             data-img="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+                 film: movie,
+                 film_format: '2560x1103',
+                 display_film_path: true,
+                 film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
+             }) %}{% endspaceless %}"
+        >
             <div id="video-movie-trailer" class="video-player"></div>
             <div class="video-overlay"></div>
             <div class="infos-bar">
@@ -67,35 +49,21 @@
     {% set hasVideo = false %}
     {% if movie.videoMain is not null %}
         {% set hasVideo = true %}
-    {% elseif movie.videoMain is not null and movie.videoMain.image and movie.videoMain.image.file %}
-        {% set hasVideo = true %}
-    {% elseif movie.videoMain is not null and movie.videoMain|trans_fallback('imageAmazonUrl') %}
-        {% set hasVideo = true %}
     {% endif %}
 
         <div class="poster video">	
             {% if hasVideo == true %}
-            <a href="#" class="picto"><i class="icon icon_video"></i></a>
+                <a href="#" class="picto"><i class="icon icon_video"></i></a>
             {% endif %}
-            {% if hasVideo == true %}
-                {% if movie.imageMain %}
-                    {% media movie.imageMain|trans_fallback('file'), 'media_image_simple_588x784' %}
-                {% elseif movie.videoMain is not null and movie.videoMain.image and movie.videoMain.image.file %}
-                    {% media movie.videoMain.image.file, 'media_image_2560x1620' %}
-                {% elseif movie.videoMain is not null and movie.videoMain|trans_fallback('imageAmazonUrl') %}
-                    <img src="{{ s3_server_global ~ movie.videoMain|trans_fallback('imageAmazonUrl') }}">
-                {% elseif media is not empty %}
-                    {% media media, format with {'data-object-fit': 'cover'} %}
-               {% else %}
-                   <img src="{{ asset('bundles/fdcevent/img/palmares/film_w293.jpg') }}" alt="Affiche film" />
-               {% endif %}
-            {% else %}
-                {% if media is not empty %}
-                    {% media media, format with {'data-object-fit': 'cover'} %}
-                {% else %}
-                    <img src="{{ asset('bundles/fdcevent/img/palmares/film_w293.jpg') }}" alt="Affiche film" />
-                {% endif %}
-            {% endif %}
+            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                film: movie,
+                film_format: '588x784',
+                film_attrs: {
+                    alt: movie|trans_fallback('title')?:movie.titleVO,
+                    'data-object-fit': 'cover'
+                },
+                film_image_default: 'bundles/fdcevent/img/palmares/film_w293.jpg',
+            }) %}
         </div>
     <div class="info-film">
         <div class="categories">
