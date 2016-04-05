@@ -55,15 +55,15 @@ class PalmaresController extends Controller
             ->getPageBySlug($locale, $slug)
         ;
 
-        //SEO
-        $this->get('base.manager.seo')->setFDCEventPageAwardSeo($page, $locale);
-
         $parameters = array(
             'pages'    => $pages,
             'page'     => $page,
             'category' => $page->getCategory(),
             'festival' => $festival,
         );
+
+        //SEO
+        $this->get('base.manager.seo')->setFDCEventPageAwardSeo($page, $locale);
 
         if ($page->getId() == 1) {
             $this->competitionParameters($parameters);
@@ -72,6 +72,7 @@ class PalmaresController extends Controller
         } elseif ($page->getId() == 5) {
             $parameters['subpages'] = array();
             foreach ($pages as $subPage) {
+
                 if ($subPage->getId() == 1) { // competition
                     $subParameters = array(
                         'festival' => $festival,
