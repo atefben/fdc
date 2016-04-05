@@ -1,6 +1,5 @@
 jQuery(document).ready(function($) {
     editEvents();
-
     //change link to original edit
     if( $('#associatedNews').length > 0) {
         $('#associatedNews table').on('change', function() {
@@ -150,6 +149,7 @@ function editEvents() {
 
     // remove select2 status option for each language
     $('select[name*="status"]').each(function(i, e) {
+        console.log(e);
         var idArray = $(e).attr('id').split('_');
         var locale = idArray[idArray.length - 2];
         var status = ['0', '1', '4', '6'];
@@ -158,11 +158,21 @@ function editEvents() {
             var status = ['0', '2', '3', '5'];
         }
 
+        if ($('select[name*="status"]').hasClass('translator')) {
+            var status = ['3'];
+        }
+
         $(e).find('option').each(function(i, e) {
             if ($.inArray($(e).val(), status) == -1) {
                 $(e).remove();
             }
         });
+
+        if ($('select[name*="status"]').hasClass('translator')) {
+            {$("select").val("3").trigger("change");
+        }
+    }
+
     });
 
     // add border on changing lang
