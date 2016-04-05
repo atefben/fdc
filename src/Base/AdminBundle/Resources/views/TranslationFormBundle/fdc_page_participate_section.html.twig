@@ -37,7 +37,6 @@
                                     <div class="fdc-widgets" data-form-widget="collection">
 
                                         {% for widget in form.parent.children.widgets.children %}
-
                                             <div class="item base-widget">
                                                 {% if widget.children._type.vars.value == 'fdc_page_participate_section_widget_typeone_type' %}
                                                     <h4><strong>Image + texte</strong></h4>
@@ -49,6 +48,8 @@
                                                     <h4><strong>3 colonnes</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefive_type' %}
                                                     <h4><strong>4 colonnes</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_subtitle_type' %}
+                                                    <h4><strong>Sous titre</strong></h4>
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
@@ -58,6 +59,7 @@
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typetwo_type' %}
                                                     {{ form_row(widget.image) }}
                                                     {{ form_row(attribute(widget.children.translations, locale)) }}
+                                                    {{ form_row(widget.sponsorImage) }}
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typethree_type' %}
                                                     {{ form_row(attribute(widget.children.translations, locale)) }}
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefour_type' %}
@@ -65,8 +67,9 @@
                                                     {{ form_row(attribute(widget.children.translations, locale)) }}
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefive_type' %}
                                                     {{ form_row(attribute(widget.children.translations, locale)) }}
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_subtitle_type' %}
+                                                    {{ form_row(attribute(widget.children.translations, locale)) }}
                                                 {% endif %}
-                                                {{ form_row(widget.lockedContent) }}
                                                 <div class="clearfix">
                                                     <div class="fdc-widget-remove-btn">
                                                         <a class="btn btn-danger btn-sm btn-outline remove_item">
@@ -92,6 +95,9 @@
                                     <a class="btn btn-primary btn-add-base-widget"
                                        data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_participate_section_widget_typefive_type)| escape }}"><i
                                                 class="icon-plus"></i>4 colonnes</a>
+                                    <a class="btn btn-primary btn-add-base-widget"
+                                       data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_participate_section_widget_subtitle_type)| escape }}"><i
+                                                class="icon-plus"></i>Sous titre</a>
                                 {% else %}
                                     {% for widget in form.parent.children.widgets.children %}
 
@@ -106,6 +112,8 @@
                                                 <h4><strong>3 colonnes</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefive_type' %}
                                                 <h4><strong>4 colonnes</strong></h4>
+                                            {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_subtitle_type' %}
+                                                <h4><strong>Sous titre</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
@@ -115,6 +123,7 @@
                                             {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typetwo_type' %}
                                                 {{ form_row(widget.image) }}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
+                                                {{ form_row(widget.sponsorImage) }}
                                             {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typethree_type' %}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefour_type' %}
@@ -122,8 +131,9 @@
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefive_type' %}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
+                                            {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_subtitle_type' %}
+                                                {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% endif %}
-                                            {{ form_row(widget.lockedContent) }}
                                             <div class="clearfix">
                                                 <div class="fdc-widget-remove-btn">
                                                     <a class="btn btn-danger btn-sm btn-outline remove_item">

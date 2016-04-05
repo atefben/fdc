@@ -8,13 +8,13 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Util\Time;
 
 /**
- * FDCPageParticipateSectionWidgetTypefourTranslation
+ * FDCPageParticipateSectionWidgetSubTitleTranslation
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class FDCPageParticipateSectionWidgetTypefourTranslation
+class FDCPageParticipateSectionWidgetSubTitleTranslation
 {
 
     use Translation;
@@ -23,23 +23,23 @@ class FDCPageParticipateSectionWidgetTypefourTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=122)
      */
     protected $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
      */
-    protected $content;
+    protected $description;
 
 
     /**
-     * Set label
+     * Set title
      *
      * @param string $title
-     * @return FDCPageParticipateSectionWidgetTypefourTranslation
+     * @return FDCPageParticipateSectionWidgetSubTitleTranslation
      */
     public function setTitle($title)
     {
@@ -49,9 +49,9 @@ class FDCPageParticipateSectionWidgetTypefourTranslation
     }
 
     /**
-     * Get label
+     * Get title
      *
-     * @return string
+     * @return string 
      */
     public function getTitle()
     {
@@ -59,26 +59,25 @@ class FDCPageParticipateSectionWidgetTypefourTranslation
     }
 
     /**
-     * Set content
+     * Set description
      *
-     * @param string $content
-     * @return FDCPageParticipateSectionWidgetTypefourTranslation
+     * @param string $description
+     * @return FDCPageParticipateSectionWidgetSubTitleTranslation
      */
-    public function setContent($content)
+    public function setDescription($description)
     {
-        $this->content = $content;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get content
+     * Get description
      *
-     * @return string
+     * @return string 
      */
-    public function getContent()
+    public function getDescription()
     {
-        return $this->content;
+        return $this->description;
     }
-
 }

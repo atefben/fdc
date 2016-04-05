@@ -7,44 +7,25 @@ use Sonata\AdminBundle\Form\DataTransformer\ModelToIdTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * FDCPageParticipateSectionWidgetTypefourType class.
+ * FDCPageParticipateSectionWidgetSubTitleType class.
  *
  * \@extends FDCPageParticipateWidgetType
  * @author  Antoine Mineau <a.mineau@ohwee.fr>
  * \@company Ohwee
  */
-class FDCPageParticipateSectionWidgetTypefourType extends FDCPageParticipateSectionWidgetType
+class FDCPageParticipateSectionWidgetSubTitleType extends FDCPageParticipateSectionWidgetType
 {
 
     /**
      * dataClass
      *
-     * (default value: 'Base\\CoreBundle\\Entity\\FDCPageParticipateSectionWidgetDocument')
+     * (default value: 'Base\\CoreBundle\\Entity\\FDCPageParticipateSectionWidgetSubTitle')
      *
      * @var string
      * @access protected
      */
-    protected $dataClass = 'Base\\CoreBundle\\Entity\\FDCPageParticipateSectionWidgetTypefour';
+    protected $dataClass = 'Base\\CoreBundle\\Entity\\FDCPageParticipateSectionWidgetSubTitle';
 
-    /**
-     * PressGuideWidgetDocumentDummyAdmin
-     *
-     * @var mixed
-     * @access private
-     */
-    private $FDCPageParticipateSectionWidgetTypefourDummyAdmin;
-
-    /**
-     * setFDCPageParticipateSectionWidgetTypefourDummyAdmin function.
-     *
-     * @access public
-     * @param mixed $FDCPageParticipateSectionWidgetTypefourDummyAdmin
-     * @return void
-     */
-    public function setFDCPageParticipateSectionWidgetTypefourDummyAdmin($FDCPageParticipateSectionWidgetTypefourDummyAdmin)
-    {
-        $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin = $FDCPageParticipateSectionWidgetTypefourDummyAdmin;
-    }
 
     /**
      * buildForm function.
@@ -79,7 +60,7 @@ class FDCPageParticipateSectionWidgetTypefourType extends FDCPageParticipateSect
                             )
                         )
                     ),
-                    'content' => array(
+                    'description' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_content',
                         'sonata_help' => 'form.press_homepage.helper_desc',
@@ -87,14 +68,7 @@ class FDCPageParticipateSectionWidgetTypefourType extends FDCPageParticipateSect
                         'config_name' => 'widget'
                     ),
                 )
-            ))
-
-            ->add('image', 'sonata_type_model_list', array(
-                'sonata_field_description' =>  $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getFormFieldDescriptions()['image'],
-                'model_manager' => $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getModelManager(),
-                'class' => $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getFormFieldDescriptions()['image']->getAssociationAdmin()->getClass(),
-            ))
-            ;
+            ));
 
     }
 
@@ -107,6 +81,6 @@ class FDCPageParticipateSectionWidgetTypefourType extends FDCPageParticipateSect
      */
     public function getName()
     {
-        return 'fdc_page_participate_section_widget_typefour_type';
+        return 'fdc_page_participate_section_widget_subtitle_type';
     }
 }

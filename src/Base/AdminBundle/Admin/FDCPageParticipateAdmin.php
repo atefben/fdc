@@ -32,6 +32,10 @@ class FDCPageParticipateAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:News:list_title.html.twig',
+                'label' => 'Titre de la page',
+            ))
             ->add('createdAt')
             ->add('updatedAt')
             ->add('_action', 'actions', array(

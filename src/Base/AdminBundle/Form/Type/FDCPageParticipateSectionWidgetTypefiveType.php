@@ -70,25 +70,6 @@ class FDCPageParticipateSectionWidgetTypefiveType extends FDCPageParticipateSect
                     'updatedAt' => array(
                         'display' => false
                     ),
-                    'title' => array(
-                        'label' => 'form.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
-
-                    'oneTitle' => array(
-                        'label' => 'form.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
                     'oneIcon' => array(
                         'field_type' => 'choice',
                         'choices' => array(
@@ -107,16 +88,6 @@ class FDCPageParticipateSectionWidgetTypefiveType extends FDCPageParticipateSect
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'widget'
-                    ),
-
-                    'twoTitle' => array(
-                        'label' => 'form.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
                     ),
                     'twoIcon' => array(
                         'field_type' => 'choice',
@@ -137,16 +108,6 @@ class FDCPageParticipateSectionWidgetTypefiveType extends FDCPageParticipateSect
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'widget'
                     ),
-
-                    'threeTitle' => array(
-                        'label' => 'form.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
                     'threeIcon' => array(
                         'field_type' => 'choice',
                         'choices' => array(
@@ -165,16 +126,6 @@ class FDCPageParticipateSectionWidgetTypefiveType extends FDCPageParticipateSect
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'widget'
-                    ),
-
-                    'fourTitle' => array(
-                        'label' => 'form.label_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
                     ),
                     'fourIcon' => array(
                         'field_type' => 'choice',
