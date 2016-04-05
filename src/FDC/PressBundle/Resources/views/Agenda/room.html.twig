@@ -23,19 +23,21 @@
                 {% endfor %}
                 <li data-maps="zone-festival" id='more-map'>
                     <strong>{{ rooms|trans_fallback('mapZone') }}</strong>
+                    {#                      #}
+                    {#  Default Zone Image  #}
+                    {#                      #}
+                    {% set img = rooms.defaultZoneImage %}
+                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                    {% thumbnail file, '197x142' with {'alt': img|trans_fallback('alt'), 'class': "visible first" ,'data-image': 'default' } %}
+
+                    {#                      #}
+                    {#      Zone Image      #}
+                    {#                      #}
                     {% for key,r in rooms.mapRoom %}
-
-                        {% if key == 0 %}
-                            {% set img = rooms.defaultZoneImage %}
-                            {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is null or trans.file is null %}
-                                {% set trans = img.findTranslationByLocale('fr') %}
-                            {% endif %}
-                            {% set file = trans.file %}
-                            {% thumbnail file, '197x142' with {'alt': img|trans_fallback('alt'), 'class': "visible first" ,'data-image': 'default' } %}
-                        {% endif %}
-
-
                         {% set roomActive = "room"~r.room.id %}
                         {% set active = "" %}
 
@@ -51,18 +53,22 @@
             </ul>
         </div>
         <div class="maps">
-            {% for key,r in rooms.mapRoom %}
-                {% if key == 0 %}
-                <span id="default" class="first active">
+            {#                      #}
+            {#   Default Map Image  #}
+            {#                      #}
+            <span id="default" class="first active">
                     {% set defaultImg = rooms.defaultRoomImage %}
-                    {% set trans = defaultImg.findTranslationByLocale(app.request.locale) %}
-                    {% if trans is null or trans.file is null %}
-                        {% set trans = defaultImg.findTranslationByLocale('fr') %}
-                    {% endif %}
-                    {% set defaultImg = trans.file %}
-                    {% thumbnail defaultImg, '646x567' with {'alt': defaultImg|trans_fallback('alt') } %}
-                </span>
+                {% set trans = defaultImg.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = defaultImg.findTranslationByLocale('fr') %}
                 {% endif %}
+                {% set defaultImg = trans.file %}
+                {% thumbnail defaultImg, '646x567' with {'alt': defaultImg|trans_fallback('alt') } %}
+            </span>
+            {#                      #}
+            {#        Map Image     #}
+            {#                      #}
+            {% for key,r in rooms.mapRoom %}
                 <span id="room{{ r.room.id }}">
                     {% set img = r.room.image %}
                     {% set trans = img.findTranslationByLocale(app.request.locale) %}
