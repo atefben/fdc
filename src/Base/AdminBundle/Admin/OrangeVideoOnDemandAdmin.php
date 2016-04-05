@@ -2,8 +2,8 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\OrangeSeriesAndCie;
-use Base\CoreBundle\Entity\OrangeSeriesAndCieTranslation;
+use Base\CoreBundle\Entity\OrangeVideoOnDemand;
+use Base\CoreBundle\Entity\OrangeVideoOnDemandTranslation;
 
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -71,7 +71,8 @@ class OrangeVideoOnDemandAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
             ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+                'locales' => array('fr', 'en')
             ))
         ;
     }
@@ -83,6 +84,7 @@ class OrangeVideoOnDemandAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
+                'locales' => array('fr', 'en'),
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array(),
@@ -109,7 +111,7 @@ class OrangeVideoOnDemandAdmin extends Admin
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
-                        'choices' => OrangeSeriesAndCieTranslation::getStatuses(),
+                        'choices' => OrangeVideoOnDemandTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
                     ),
                 )
@@ -140,13 +142,13 @@ class OrangeVideoOnDemandAdmin extends Admin
             
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => OrangeSeriesAndCie::getAvailableTranslateOptions(),
+                'choices' => OrangeVideoOnDemand::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
                 'multiple' => true,
                 'expanded' => true,
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => OrangeSeriesAndCie::getPriorityStatuses(),
+                'choices' => OrangeVideoOnDemand::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)
