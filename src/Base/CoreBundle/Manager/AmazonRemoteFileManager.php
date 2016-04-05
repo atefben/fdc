@@ -61,13 +61,13 @@ class AmazonRemoteFileManager
 		
 		$s3 = S3Client::factory(array(
             'credentials' => array(
-                'key'    => $this->getParameter('s3_access_key'),
-                'secret' => $this->getParameter('s3_secret_key'),
+                'key'    => $this->container->getParameter('s3_access_key'),
+                'secret' => $this->container->getParameter('s3_secret_key'),
             ),
-            'region'      => $this->getParameter('s3_video_region'),
+            'region'      => $this->container->getParameter('s3_video_region'),
 		));
 
-		$bucket = $this->getParameter('_video_bucket_name');
+		$bucket = $this->container->getParameter('s3_video_bucket_name');
 		$prefix = 'media_video_direct_upload/';
 		$objects = $s3->getIterator('ListObjects', array(
 		    "Bucket" => $bucket,
