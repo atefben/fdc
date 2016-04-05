@@ -983,3 +983,81 @@
         </div>
     </div>
 {% endblock %}
+
+{% block orange_widget_movie_youtube_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.widget.video_youtube'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        {{ form_row(form.children.url) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block orange_widget_film_studio_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.widget.film_studio'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_row(form.children.image) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        {{ form_row(form.children.producer) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block orange_widget_film_ocs_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.widget.film_studio'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_row(form.children.image) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        {{ form_row(form.children.name) }}
+        {{ form_row(form.children.producer) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block orange_widget_film_vod_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.widget.film_studio'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_row(form.children.section) }}
+        {{ form_row(form.children.image) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        {{ form_row(form.children.copy) }}
+        {{ form_row(form.children.producer) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

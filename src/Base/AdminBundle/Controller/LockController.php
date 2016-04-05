@@ -54,7 +54,8 @@ class LockController extends Controller
         'fdcpagelaselectioncinemaplage'    => 'FDCPageLaSelectionCinemaPlage',
         'fdcpageprepare'                   => 'FDCPagePrepare',
         'fdcpageparticipate'               => 'FDCPageParticipate',
-        'fdcpageparticipatesection'        => 'FDCPageParticipateSection'
+        'fdcpageparticipatesection'        => 'FDCPageParticipateSection',
+        'orangeseriesandcie'               => 'OrangeSeriesAndCie'
     );
 
     /**

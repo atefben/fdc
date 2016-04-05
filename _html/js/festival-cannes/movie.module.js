@@ -186,6 +186,7 @@ $(document).ready(function() {
           videoMovie.play();
         }, 500);
       });
+	  imageCover();
     }
 
     // previous and next over

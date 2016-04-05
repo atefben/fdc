@@ -496,3 +496,36 @@ services:
         class: Base\AdminBundle\Form\Type\FDCPageParticipateSectionWidgetSubTitleType
         tags:
             - { name: form.type, alias: 'fdc_page_participate_section_widget_subtitle_type'}
+
+    #orange services
+    base.admin.form.orange_widget_movie_youtube_type:
+        class: Base\AdminBundle\Form\Type\OrangeWidgetMovieYoutubeType
+        tags:
+            - { name: form.type, alias: 'orange_widget_movie_youtube_type'}
+            
+    base.admin.form.orange_widget_film_studio_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\OrangeWidgetFilmStudioType
+        tags:
+            - { name: form.type, alias: 'orange_widget_film_studio_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.orange_widget_film_studio_dummy']]
+            - ['setMediaImageSimpleAdmin  ', ['@base.admin.media_image']]
+           
+    base.admin.form.orange_widget_film_vod_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\OrangeWidgetFilmVODType
+        tags:
+            - { name: form.type, alias: 'orange_widget_film_vod_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.orange_widget_film_vod_dummy']]
+            - ['setMediaImageSimpleAdmin  ', ['@base.admin.media_image']]
+            
+    base.admin.form.orange_widget_film_ocs_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\OrangeWidgetFilmOCSType
+        tags:
+            - { name: form.type, alias: 'orange_widget_film_ocs_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.orange_widget_film_ocs_dummy']]
+            - ['setMediaImageSimpleAdmin  ', ['@base.admin.media_image']]
