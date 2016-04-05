@@ -30,14 +30,7 @@ class FDCPageParticipateSectionWidgetTypefourTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $subtitle;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $content;
 
@@ -45,8 +38,8 @@ class FDCPageParticipateSectionWidgetTypefourTranslation
     /**
      * Set label
      *
-     * @param string $label
-     * @return FDCPageParticipateSectionWidgetDocumentTranslation
+     * @param string $title
+     * @return FDCPageParticipateSectionWidgetTypefourTranslation
      */
     public function setTitle($title)
     {
@@ -69,7 +62,7 @@ class FDCPageParticipateSectionWidgetTypefourTranslation
      * Set content
      *
      * @param string $content
-     * @return FDCPageParticipateSectionWidgetDocumentTranslation
+     * @return FDCPageParticipateSectionWidgetTypefourTranslation
      */
     public function setContent($content)
     {
@@ -88,26 +81,4 @@ class FDCPageParticipateSectionWidgetTypefourTranslation
         return $this->content;
     }
 
-    /**
-     * Set subtitle
-     *
-     * @param string $subtitle
-     * @return FDCPageParticipateSectionWidgetTypefourTranslation
-     */
-    public function setSubtitle($subtitle)
-    {
-        $this->subtitle = $subtitle;
-
-        return $this;
-    }
-
-    /**
-     * Get subtitle
-     *
-     * @return string 
-     */
-    public function getSubtitle()
-    {
-        return $this->subtitle;
-    }
 }

@@ -61,13 +61,13 @@ class AmazonRemoteFileManager
 		
 		$s3 = S3Client::factory(array(
             'credentials' => array(
-                'key'    => 'AKIAJHXD67GEPPA2F4TQ',
-                'secret' => '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',
+                'key'    => $this->container->getParameter('s3_access_key'),
+                'secret' => $this->container->getParameter('s3_secret_key'),
             ),
-            'region'      => 'eu-west-1',
+            'region'      => $this->container->getParameter('s3_video_region'),
 		));
 
-		$bucket = 'ohwee-symfony-test-video';
+		$bucket = $this->container->getParameter('s3_video_bucket_name');
 		$prefix = 'media_video_direct_upload/';
 		$objects = $s3->getIterator('ListObjects', array(
 		    "Bucket" => $bucket,

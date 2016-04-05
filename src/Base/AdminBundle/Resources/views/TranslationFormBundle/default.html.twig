@@ -215,6 +215,22 @@
     {% include 'BaseAdminBundle:TranslationFormBundle:contact_theme.html.twig' %}
 {% endblock %}
 
+{% block base_admin_orange_series_and_cie_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:orange_series_and_cie.html.twig' %}
+{% endblock %}
+
+{% block base_admin_orange_programmation_ocs_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:orange_programmation_ocs.html.twig' %}
+{% endblock %}
+
+{% block base_admin_orange_vod_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:orange_vod.html.twig' %}
+{% endblock %}
+
+{% block base_admin_orange_studio_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:orange_studio.html.twig' %}
+{% endblock %}
+
 {% block a2lix_translationsForms_widget %}
     {{ block('a2lix_translations_widget') }}
 {% endblock %}

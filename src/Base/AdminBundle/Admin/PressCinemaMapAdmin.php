@@ -108,17 +108,6 @@ class PressCinemaMapAdmin extends Admin
             ))
             ->add('mapRoom', 'sonata_type_collection',
                 array(
-                    'type_options' => array(
-                        'delete' => false,
-                        'delete_options' => array(
-                            'type'         => 'hidden',
-                            'type_options' => array(
-                                'mapped'   => false,
-                                'required' => false,
-                            )
-                        ),
-
-                    ),
                     'cascade_validation' => true,
                     'by_reference' => false,
                 ),

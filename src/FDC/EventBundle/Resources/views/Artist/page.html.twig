@@ -66,23 +66,11 @@
                             <div class="item">
 								<a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
 								<div class="image compat-object-fit-b">
-                                {% set filmPersonfilmPoster = filmPerson.film|film_poster %}
-                                {% if filmPersonfilmPoster %}
-                                    <img src="{% path filmPersonFilmPoster, 'mobile' %}" alt="">
-                                {% else %}
-                                    {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-                                    {% if media is empty %}
-                                        {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-                                    {% endif %}
-                                    {% if media is empty %}
-                                        {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-                                    {% endif %}
-                                    {% if media is not empty %}
-                                        <img src="{% path media, '976x535' %}" alt="">
-                                    {% else %}
-                                        <img src="{{ asset('bundles/fdcevent/img/palmares/film_w181.jpg') }}" alt="">
-                                    {% endif %}
-                                {% endif %}
+                                    {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                        film: movie,
+                                        film_format: 'mobile',
+                                        film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
+                                    }) %}
 								</div>
                                 <div class="content-text">
                                     <span class="item-title">{{ filmPerson.film.titleVO }}</span>
@@ -134,24 +122,12 @@
                                         <div class="item">
 											<a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
 											<div class="image compat-object-fit-b">
-                                            {% set filmPersonfilmPoster = filmPerson.film|film_poster %}
-                                            {% if filmPersonfilmPoster %}
-                                                <img src="{% path filmPersonFilmPoster, 'mobile' %}" alt="">
-                                            {% else %}
-                                                {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-                                                {% if media is empty %}
-                                                    {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-                                                {% endif %}
-                                                {% if media is empty %}
-                                                    {% set media = filmPerson.film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-                                                {% endif %}
-                                                {% if media is not empty %}
-                                                    <img src="{% path media, '976x535' %}" alt="">
-                                                {% else %}
-                                                    <img src="{{ asset('bundles/fdcevent/img/palmares/film_w181.jpg') }}"
-                                                        alt="">
-                                                {% endif %}
-                                            {% endif %}
+                                                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                                    film: movie,
+                                                    film_format: '366x488',
+                                                    film_attrs: true,
+                                                    film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
+                                                }) %}
 											</div>
                                             <div class="content-text">
                                                 <span class="item-title">{{ filmPerson.film.titleVO }}</span>

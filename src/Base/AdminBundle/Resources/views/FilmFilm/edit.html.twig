@@ -18,19 +18,22 @@
         {% endfor %}
     </div>
 
+    {% set imageMain = film.imageMain|trans_fallback('file') %}
     {% set poster = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
     {% set main = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
     {% set photo = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
 
     <div>
-        {% if poster %}
+        {% if imageMain is not empty %}
+            {% media imageMain, 'small' %}
+        {% elseif poster is not empty %}
             {% media poster, 'small' %}
-        {% elseif main %}
+        {% elseif main is not empty %}
             {% media main, 'small' %}
-        {% elseif photo %}
+        {% elseif photo is not empty %}
             {% media photo, 'small' %}
         {% else %}
-            Aucune image renseignée
+            Aucune image renseignée dans SOIF
         {% endif %}
     </div>
 {% endblock %}

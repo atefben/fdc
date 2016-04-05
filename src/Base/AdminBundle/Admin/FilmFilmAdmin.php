@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
+use Base\CoreBundle\Entity\FilmFestival;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -71,23 +72,7 @@ class FilmFilmAdmin extends SoifAdmin
                 },
                 'field_type' => 'text'
             ))
-            ->add('festival-year', 'doctrine_orm_callback', array(
-                'callback' => function ($queryBuilder, $alias, $field, $value) {
-                    $em = $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
-                    $years = $em->getRepository('BaseCoreBundle:FilmFestival')->findAll();
-                    if ($value['value'] === null) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.festival", 'fs');
-                    $queryBuilder->andWhere('fs.year LIKE :year');
-                    $queryBuilder->setParameter('year', '%' . $years[$value['value']] . '%');
-                    return true;
-                },
-                'field_type' => 'choice',
-                'field_options' => array(
-                    'choices' => $years
-                )
-            ))
+            ->add('festival')
             ->add('have_trailer', 'doctrine_orm_callback', array(
                 'callback' => function ($queryBuilder, $alias, $field, $value) {
                     if ($value['value'] === null) {
@@ -149,12 +134,12 @@ class FilmFilmAdmin extends SoifAdmin
                     'mapped' => false
                 ))
                 ->add('imageMain', 'sonata_type_model_list', array(
-                    'help' => 'Dimensions attendues : 1000x548 - ratio paysage. Format Attendu.',
+                    'help' => 'Dimensions attendues : 588x784 - ratio portrait.',
                 ), array(
                     'link_parameters' => array('context' => 'film_poster')
                 ))
                 ->add('imageCover', 'sonata_type_model_list', array(
-                    'help' => 'Dimensions attendues : la meilleure définition possible - ratio paysage. Format Attendu.'
+                    'help' => 'Dimensions attendues : 2560x1103 - ratio paysage.'
 
                 ), array(
                     'link_parameters' => array('context' => 'film_image_cover')

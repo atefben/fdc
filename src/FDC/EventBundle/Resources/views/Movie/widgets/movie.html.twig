@@ -1,21 +1,21 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-{% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-{% if media is empty %}
-    {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-{% endif %}
-{% if media is empty %}
-    {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-{% endif %}
-<article style="background-image:url('{% if media is not empty %}{% path media, 'reference' %}{% endif %}')">
+<article style="background-image:url('{% spaceless %}
+{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+    film: film,
+    film_format: '2560x1103',
+    film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
+    display_film_path: true
+}) %}
+{% endspaceless %}')">
     <div class="bck-hover">
         <div class="contain_item">
 			<div class="image compat-object-fit-d">
-            {% if media is not empty %}
-                {% media media, '259x352' %}
-            {% else %}
-                <img src="{{ asset('bundles/fdcevent/img/palmares/film_w256.jpg') }}" alt="Affiche film"/>
-            {% endif %}
+                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                    film: film,
+                    film_format: '259x352',
+                    film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg'
+                }) %}
 			</div>
             <div class="infos-item-list">
                 {% if projection is defined and projection is not empty %}

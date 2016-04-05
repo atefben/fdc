@@ -2,23 +2,22 @@
 {% set movie = award_association.film %}
 {% set author = '' %}
 
-{% set film_post_tpl = 'FDCEventBundle:Global:components/film.poster.html.twig' %}
-{% set film_post_tpl_attrs = {'film': movie, 'display_film_path': true, 'film_format': 'reference' } %}
-
-<article
-        {% if movie.imageCover and movier.ImageCover.file %}
-            style="background-image:url('{% path movie.imageCover.file, 'reference'  %}')"
-        {% else %}
-            style="background-image:url('{% include film_post_tpl with (film_post_tpl_attrs) %}')"
-        {% endif %}>
+<article style="background-image:url('{% spaceless %}
+    {% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+        film: movie,
+        film_format: '2560x1103',
+        display_film_path: true,
+        film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg'
+    }) %}
+{% endspaceless %}')">
     <div class="bck-hover">
         <div class="contain_item">
 			<div class="image compat-object-fit-d">
-            {% if movie.imageMain and movie.imageMain.file %}
-                {% media movie.imageMain, '516x688' with ({'alt': (film|trans_fallback('title')?:movie.titleVO)}) %}
-            {% else %}
-                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({'film': movie }) %}
-            {% endif %}
+                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                    film: movie,
+                    film_format: '516x688',
+                    film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg'
+                }) %}
 			</div>
             <div class="infos-item-list">
                 <div class="logo-palme-dor-container">

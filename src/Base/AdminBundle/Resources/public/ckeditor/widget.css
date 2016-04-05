@@ -214,3 +214,41 @@
     padding-top: 10px;
     border-top: 1px solid #dfdfdf;
 }
+
+/* Title center */
+.cke_editable .descrip-participate {
+    width: 607px;
+    font-size: 1.25rem;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 36px;
+}
+
+/* Paragraph */
+.cke_editable .descrip-title {
+    text-align: center;
+    line-height: 26px;
+    font-size: 0.81rem;
+}
+
+/* Localisation */
+.cke_editable .loc {
+    display: block;
+    width: 246px;
+    margin: 0 auto;
+    line-height: 20px;
+}
+
+/* Accès */
+.cke_editable .title-acces {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: .75rem;
+    padding-bottom: 20px;
+}
+.cke_editable .descript-acces {
+    padding-bottom: 20px;
+    font-size: .8125rem;
+    line-height: 24px;
+}

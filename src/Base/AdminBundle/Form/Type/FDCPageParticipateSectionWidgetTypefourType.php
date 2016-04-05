@@ -79,15 +79,6 @@ class FDCPageParticipateSectionWidgetTypefourType extends FDCPageParticipateSect
                             )
                         )
                     ),
-                    'subtitle' => array(
-                        'label' => 'form.label_subtitle',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'locale_options' => array(
-                            'fr' => array(
-                                'required' => true
-                            )
-                        )
-                    ),
                     'content' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_content',

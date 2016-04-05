@@ -1,34 +1,37 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
 {% spaceless %}
-{% set posterImg = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-{% set mainImg = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-{% set photoImg = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+    {% set media = film.imageMain|trans_fallback('file') %}
 
-
-{% if film_attrs is not defined %}
-    {% set film_attrs = {'alt': (film|trans_fallback('title')?:movie.titleVO)} %}
-{% endif %}
-
-{% if format is not defined %}
-    {% set film_format = 'small' %}
-{% endif %}
-
-{% if display_film_path is defined and display_film_path %}
-    {% if posterImg %}
-        {% path posterImg, film_format %}
-    {% elseif mainImg %}
-        {% path mainImg, film_format %}
-    {% elseif photoImg %}
-        {% path photoImg, film_format %}
-    {% else %}
-        {{ asset('bundles/fdcevent/img/palmares/film.jpg') }}
+    {% if media is empty %}
+        {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
     {% endif %}
-{% else %}
-    {% if posterImg %}
-        {% media posterImg, film_format with film_attrs %}
-    {% elseif mainImg %}
-        {% media mainImg, film_format with film_attrs %}
-    {% else %}
-        <img src="{{ asset('bundles/fdcevent/img/palmares/film_w256.jpg') }}" alt="Affiche film"/>
+    {% if media is empty %}
+        {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
     {% endif %}
-{% endif %}
+    {% if media is empty %}
+        {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+    {% endif %}
+
+    {% if film_attrs is not defined %}
+        {% set film_attrs = {'alt': (film|trans_fallback('title')?:movie.titleVO)} %}
+    {% endif %}
+
+    {% if film_format is not defined %}
+        {% set film_format = 'small' %}
+    {% endif %}
+
+    {% if display_film_path is defined and display_film_path %}
+        {% if media is not empty %}
+            {% path media, film_format %}
+        {% else %}
+            {{ asset(film_image_default) }}
+        {% endif %}
+    {% else %}
+        {% if media is not empty %}
+            {% media media, film_format with film_attrs %}
+        {% else %}
+            <img src="{{ asset(film_image_default) }}" alt="{{ 'movie.poster'|trans() }}"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}/>
+        {% endif %}
+    {% endif %}
 {% endspaceless %}

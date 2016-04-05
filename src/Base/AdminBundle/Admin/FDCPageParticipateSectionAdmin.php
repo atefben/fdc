@@ -14,6 +14,10 @@ use Base\CoreBundle\Entity\FDCPageParticipateSection;
 class FDCPageParticipateSectionAdmin extends Admin
 {
 
+    protected $formOptions = array(
+        'cascade_validation' => true
+    );
+
     protected $translationDomain = 'BaseAdminBundle';
 
     public function getFormTheme()
@@ -66,7 +70,7 @@ class FDCPageParticipateSectionAdmin extends Admin
             ->add('id', null, array('label' => 'list.common.label_id'))
             ->add('title', null, array(
                 'template' => 'BaseAdminBundle:News:list_title.html.twig',
-                'label' => 'list.news_common.label_title',
+                'label' => 'Titre de la section',
             ))
             ->add('theme', null, array())
             ->add('createdAt', null, array(
@@ -79,7 +83,8 @@ class FDCPageParticipateSectionAdmin extends Admin
             ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
-            ));
+            ))
+            ;
     }
 
     /**
@@ -157,6 +162,7 @@ class FDCPageParticipateSectionAdmin extends Admin
                     'fdc_page_participate_section_widget_typethree_type',
                     'fdc_page_participate_section_widget_typefour_type',
                     'fdc_page_participate_section_widget_typefive_type',
+                    'fdc_page_participate_section_widget_subtitle_type',
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,
