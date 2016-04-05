@@ -59,6 +59,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "live",
      *     "web_tv_show",
      *     "live",
+     *     "film_list",
      *     "film_show",
      *     "event_show"
      * })
@@ -70,6 +71,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      * @Groups({
+     *     "film_list",
      *     "film_show",
      *     "news_list",
      *     "news_show",
@@ -114,6 +116,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      * @Groups({
+     *     "film_list",
      *     "film_show",
      *     "news_list",
      *     "news_show",
@@ -130,6 +133,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      * @Groups({
+     *     "film_list",
      *     "film_show",
      *     "news_list",
      *     "news_show",

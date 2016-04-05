@@ -68,6 +68,7 @@ abstract class Media implements TranslateMainInterface
      * @Groups({
      *     "live",
      *     "web_tv_show",
+     *     "film_list",
      *     "film_show",
      *     "news_list",
      *     "news_show",
@@ -83,6 +84,7 @@ abstract class Media implements TranslateMainInterface
      * @Groups({
      *     "live",
      *     "web_tv_show",
+     *     "film_list",
      *     "film_show",
      *     "news_list",
      *     "news_show",
@@ -134,7 +136,9 @@ abstract class Media implements TranslateMainInterface
      *     "news_list",
      *     "trailer_show",
      *     "live",
-     *     "web_tv_show", "live",
+     *     "web_tv_show",
+     *     "live",
+     *     "film_list",
      *     "film_show",
      *     "event_list",
      *     "event_show",
