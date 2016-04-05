@@ -1,11 +1,8 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 {% spaceless %}
-    {% set media = film.imageMain|trans_fallback('file') %}
+    {% set media = film.imageCover|trans_fallback('file') %}
 
-    {% if media is empty %}
-        {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-    {% endif %}
     {% if media is empty %}
         {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
     {% endif %}

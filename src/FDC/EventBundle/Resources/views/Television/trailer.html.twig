@@ -68,9 +68,15 @@
                     </ul>
                     <div class="container-video">
                         <div class="infos-film block">
-                            {% if poster %}
-                                <img src="{% path poster, 'small' %}" alt="affiche film" width="135">
-                            {% endif %}
+                            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                film: film,
+                                film_format: 'small',
+                                film_attrs: {
+                                    alt: film|trans_fallback('title')?:movie.titleVO
+                                },
+                                film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
+                                film_image_default_attrs: 'width="135"'
+                            }) %}
                             <h4 class="rubric-film">{{ film.selectionSection|trans_fallback('name') }}</h4>
                             <strong class="name-video">{{ film|trans_fallback('title')?:film.titleVo }}</strong>
                             <span class="name-person">
@@ -148,7 +154,17 @@
         </div>
         {% if next %}
             <div class="bandeau-list vCenter push-footer bandeau-list-footer">
-                <div class="bandeau-list-img vCenterKid"{% if posterNext %} style="background-image:url('{%- path posterNext, posterNextFormat -%}');"{% endif %}>
+                <div class="bandeau-list-img vCenterKid" style="background-image:url('{% spaceless %}
+                        {% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+                            film: next,
+                            film_format: '2560x1103',
+                            display_film_path: true,
+                            film_attrs: {
+                                alt: next|trans_fallback('title')?:movie.titleVO
+                            },
+                            film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
+                        }) %}
+                    {% endspaceless %}');">
                     <h2 class="title title-list-header">{{ next.findTranslationByLocal(app.request.locale)?:next.titleVO }}</h2>
                     <a href="{{ path('fdc_event_television_gettrailer', {'slug': next.slug} ) }}"
                        class="bandeau-lien">

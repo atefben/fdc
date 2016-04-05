@@ -4,26 +4,12 @@
     <h2 class="title">{{ movie.selectionSection|trans_fallback('name') }} {{ "now"|date('Y') }}</h2>
     <div id="slider-competition" class="owl-carousel sliderDrag">
         {% for movie in movies %}
-            {% set posterImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-            {% set mainImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-            {% set filmImg = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-            {% set media = '' %}
-            {% if posterImg %}
-                {% set media = posterImg %}
-                {% set format =  'mobile' %}
-            {% elseif mainImg %}
-                {% set media = mainImg %}
-                {% set format = 'mobile' %}
-            {% elseif filmImg %}
-                {% set media = filmImg %}
-                {% set format = 'mobile' %}
-            {% endif %}
             <div class="slide">
-                {% if media is not empty %}
-                {% media media, format %}
-                {% else %}
-                <img src="{{ asset('bundles/fdcevent/img/palmares/film_w210.jpg') }}" alt="">
-                {% endif %}
+                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                    film: movie,
+                    film_format: 'mobile',
+                    film_image_default: 'bundles/fdcevent/img/palmares/film_w210.jpg'
+                }) %}
                 <a class="linkVid" href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}"></a>
                 <div class="info-movie">
                     <p>

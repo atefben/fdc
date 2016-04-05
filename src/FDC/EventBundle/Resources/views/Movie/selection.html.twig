@@ -20,22 +20,15 @@
                         <div class="grid-sizer"></div>
 
                         {% for movie in movies %}
-                            {% set media = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
-                            {% if media is empty %}
-                                {% set media = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
-                            {% endif %}
-                            {% if media is empty %}
-                                {% set media = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
-                            {% endif %}
                             <div class="item">
                                 <figure>
                                     <div class="image">
                                         <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
-                                            {% if media is not empty %}
-                                                <img src="{% path media, 'mobile' %}" alt="" />
-                                            {% else %}
-                                                <img src="{{ asset('bundles/fdcevent/img/palmares/film_w256.jpg') }}" alt="Affiche film" />
-                                            {% endif %}
+                                            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                                film: movie,
+                                                film_format: 'mobile',
+                                                film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg'
+                                            }) %}
                                         </a>
                                     </div>
                                     <figcaption>

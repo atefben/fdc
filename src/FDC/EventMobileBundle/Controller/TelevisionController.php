@@ -418,13 +418,6 @@ class TelevisionController extends Controller
 
         /************* Trailers **************/
 
-        $poster = null;
-        foreach ($film->getMedias() as $media) {
-            if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER && $media->getMedia()->getFile()) {
-                $poster = $media->getMedia()->getFile();
-            }
-        }
-
         $videos = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:MediaVideo')
@@ -479,25 +472,6 @@ class TelevisionController extends Controller
         }
         if (!($next instanceof FilmFilm) && $films) {
             $next = reset($films);
-        }
-
-        $posterNext = null;
-        if ($next instanceof FilmFilm) {
-            foreach ($next->getMedias() as $media) {
-                if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER && $media->getMedia() && $media->getMedia()->getFile()) {
-                    $posterNext = $media->getMedia()->getFile();
-                    $posterNextFormat = 'small';
-                }
-            }
-        }
-        if ($posterNext === null && $groups[$next->getId()]['video']->getImage()) {
-            if ($posterNextLocale = $groups[$next->getId()]['video']->getImage()->findTranslationByLocale($locale)) {
-                if ($posterNextLocale && $posterNextLocale->getFile()) {
-                    $posterNext = $posterNextLocale->getFile();
-                    $posterNextFormat = '640x404';
-                }
-
-            }
         }
 
         /************* Projections **************/
