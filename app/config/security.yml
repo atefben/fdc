@@ -37,6 +37,7 @@ security:
                 domain:   ~
             logout:
                 path:           /admin/logout
+                target:         /admin/login
             anonymous:          true
         press:
              host: ^%fdc_press_domain_regexp%$
