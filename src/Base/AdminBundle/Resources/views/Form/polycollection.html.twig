@@ -751,7 +751,7 @@
 {% block fdc_page_participate_section_widget_typeone_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>Module Type 1</h4>
+        <h4>Image + texte</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         {{ form_row(form.children.image) }}
@@ -767,7 +767,7 @@
 {% block fdc_page_participate_section_widget_typetwo_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>Module Type 2</h4>
+        <h4>Partenaires / Fournisseurs</h4>
         {{ form_widget(form.children._type) }}
         {{ form_row(form.children.image) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
@@ -784,7 +784,7 @@
 {% block fdc_page_participate_section_widget_typethree_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>Module Type 3</h4>
+        <h4>Pictos</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         <div class="clearfix">
@@ -799,7 +799,7 @@
 {% block fdc_page_participate_section_widget_typefour_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>Module Type 4</h4>
+        <h4>3 colonnes</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         {{ form_row(form.children.image) }}
@@ -815,27 +815,22 @@
 {% block fdc_page_participate_section_widget_typefive_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
-        <h4>Module Type 5</h4>
+        <h4>4 colonnes</h4>
         {{ form_widget(form.children._type) }}
-        {{ form_widget(attribute(form.children.translations, locale).children.title) }}
 
         <h5>Bloc 1</h5>
-        {{ form_row(attribute(form.children.translations, locale).children.oneTitle) }}
         {{ form_row(attribute(form.children.translations, locale).children.oneIcon) }}
         {{ form_row(attribute(form.children.translations, locale).children.oneDescription) }}
 
         <h5>Bloc 2</h5>
-        {{ form_row(attribute(form.children.translations, locale).children.twoTitle) }}
         {{ form_row(attribute(form.children.translations, locale).children.twoIcon) }}
         {{ form_row(attribute(form.children.translations, locale).children.twoDescription) }}
 
         <h5>Bloc 3</h5>
-        {{ form_row(attribute(form.children.translations, locale).children.threeTitle) }}
         {{ form_row(attribute(form.children.translations, locale).children.threeIcon) }}
         {{ form_row(attribute(form.children.translations, locale).children.threeDescription) }}
 
         <h5>Bloc 4</h5>
-        {{ form_row(attribute(form.children.translations, locale).children.fourTitle) }}
         {{ form_row(attribute(form.children.translations, locale).children.fourIcon) }}
         {{ form_row(attribute(form.children.translations, locale).children.fourDescription) }}
 
@@ -849,7 +844,21 @@
         </div>
     </div>
 {% endblock %}
-
+{% block fdc_page_participate_section_widget_subtitle_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>Sous titre</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 {% block fdc_page_prepare_section_widget_archive_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">

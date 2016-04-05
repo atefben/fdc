@@ -23,22 +23,6 @@ class FDCPageParticipateSectionWidgetTypefiveTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $title;
-
-
-    // BLOC ONE
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $oneTitle;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(type="string", length=122)
      */
     protected $oneIcon;
@@ -46,17 +30,9 @@ class FDCPageParticipateSectionWidgetTypefiveTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=122)
+     * @ORM\Column(type="text")
      */
     protected $oneDescription;
-
-    // BLOC TWO
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $twoTitle;
 
     /**
      * @var string
@@ -68,17 +44,9 @@ class FDCPageParticipateSectionWidgetTypefiveTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=122)
+     * @ORM\Column(type="text")
      */
     protected $twoDescription;
-
-    // BLOC THREE
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $threeTitle;
 
     /**
      * @var string
@@ -90,17 +58,9 @@ class FDCPageParticipateSectionWidgetTypefiveTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=122)
+     * @ORM\Column(type="text")
      */
     protected $threeDescription;
-
-    // BLOC FOUR
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $fourTitle;
 
     /**
      * @var string
@@ -112,56 +72,9 @@ class FDCPageParticipateSectionWidgetTypefiveTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=122)
+     * @ORM\Column(type="text")
      */
     protected $fourDescription;
-
-
-    /**
-     * Set label
-     *
-     * @param string $label
-     * @return FDCPageParticipateSectionWidgetDocumentTranslation
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get label
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set oneTitle
-     *
-     * @param string $oneTitle
-     * @return FDCPageParticipateSectionWidgetTypefiveTranslation
-     */
-    public function setOneTitle($oneTitle)
-    {
-        $this->oneTitle = $oneTitle;
-
-        return $this;
-    }
-
-    /**
-     * Get oneTitle
-     *
-     * @return string 
-     */
-    public function getOneTitle()
-    {
-        return $this->oneTitle;
-    }
 
     /**
      * Set oneIcon
@@ -207,29 +120,6 @@ class FDCPageParticipateSectionWidgetTypefiveTranslation
     public function getOneDescription()
     {
         return $this->oneDescription;
-    }
-
-    /**
-     * Set twoTitle
-     *
-     * @param string $twoTitle
-     * @return FDCPageParticipateSectionWidgetTypefiveTranslation
-     */
-    public function setTwoTitle($twoTitle)
-    {
-        $this->twoTitle = $twoTitle;
-
-        return $this;
-    }
-
-    /**
-     * Get twoTitle
-     *
-     * @return string 
-     */
-    public function getTwoTitle()
-    {
-        return $this->twoTitle;
     }
 
     /**
@@ -279,29 +169,6 @@ class FDCPageParticipateSectionWidgetTypefiveTranslation
     }
 
     /**
-     * Set threeTitle
-     *
-     * @param string $threeTitle
-     * @return FDCPageParticipateSectionWidgetTypefiveTranslation
-     */
-    public function setThreeTitle($threeTitle)
-    {
-        $this->threeTitle = $threeTitle;
-
-        return $this;
-    }
-
-    /**
-     * Get threeTitle
-     *
-     * @return string 
-     */
-    public function getThreeTitle()
-    {
-        return $this->threeTitle;
-    }
-
-    /**
      * Set threeIcon
      *
      * @param string $threeIcon
@@ -345,29 +212,6 @@ class FDCPageParticipateSectionWidgetTypefiveTranslation
     public function getThreeDescription()
     {
         return $this->threeDescription;
-    }
-
-    /**
-     * Set fourTitle
-     *
-     * @param string $fourTitle
-     * @return FDCPageParticipateSectionWidgetTypefiveTranslation
-     */
-    public function setFourTitle($fourTitle)
-    {
-        $this->fourTitle = $fourTitle;
-
-        return $this;
-    }
-
-    /**
-     * Get fourTitle
-     *
-     * @return string 
-     */
-    public function getFourTitle()
-    {
-        return $this->fourTitle;
     }
 
     /**
