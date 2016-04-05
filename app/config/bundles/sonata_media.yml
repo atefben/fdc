@@ -209,6 +209,12 @@ sonata_media:
                 256x348: { width: 256 , height: 348 , quality: 100 }
                 384x485: { width: 384 , height: 485 , quality: 100 }
                 1954x1200: { width: 1954 , height: 1200 , quality: 100 }
+                # Participate
+                363x260: { width: 363 , height: 260 , quality: 100 }
+                228x181: { width: 228 , height: 181 , quality: 100 }
+
+                # Partners portrait
+                60x81: { width: 60, height: 81, quality: 100 }
 
         media_audio:
             providers:

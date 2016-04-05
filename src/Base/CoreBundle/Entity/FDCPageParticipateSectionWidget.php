@@ -28,6 +28,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
  *  "typethree" = "FDCPageParticipateSectionWidgetTypethree",
  *  "typefour" = "FDCPageParticipateSectionWidgetTypefour",
  *  "typefive" = "FDCPageParticipateSectionWidgetTypefive",
+ *  "subtitle" = "FDCPageParticipateSectionWidgetSubTitle",
  * })
  */
 abstract class FDCPageParticipateSectionWidget implements TranslateMainInterface
@@ -60,14 +61,6 @@ abstract class FDCPageParticipateSectionWidget implements TranslateMainInterface
      */
     protected $pressDownload;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", options={"default":0})
-     *
-     */
-    private $lockedContent;
-
 
     public function __toString()
     {
@@ -90,35 +83,11 @@ abstract class FDCPageParticipateSectionWidget implements TranslateMainInterface
         return $this->id;
     }
 
-
-    /**
-     * Set lockedContent
-     *
-     * @param boolean $lockedContent
-     * @return FDCPageParticipateSectionWidget
-     */
-    public function setLockedContent($lockedContent)
-    {
-        $this->lockedContent = $lockedContent;
-
-        return $this;
-    }
-
-    /**
-     * Get lockedContent
-     *
-     * @return boolean
-     */
-    public function getLockedContent()
-    {
-        return $this->lockedContent;
-    }
-
     /**
      * Set pressDownload
      *
-     * @param \Base\CoreBundle\Entity\PressDownloadSection $pressDownload
-     * @return PressDownloadSectionWidget
+     * @param \Base\CoreBundle\Entity\FDCPageParticipateSection $pressDownload
+     * @return FDCPageParticipateSectionWidget
      */
     public function setPressDownload(\Base\CoreBundle\Entity\FDCPageParticipateSection $pressDownload = null)
     {
@@ -130,7 +99,7 @@ abstract class FDCPageParticipateSectionWidget implements TranslateMainInterface
     /**
      * Get pressDownload
      *
-     * @return \Base\CoreBundle\Entity\PressDownloadSection
+     * @return \Base\CoreBundle\Entity\FDCPageParticipateSectionWidget
      */
     public function getPressDownload()
     {

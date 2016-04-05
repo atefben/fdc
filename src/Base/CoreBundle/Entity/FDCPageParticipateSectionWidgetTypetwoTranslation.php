@@ -30,7 +30,7 @@ class FDCPageParticipateSectionWidgetTypetwoTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $content;
 
@@ -59,8 +59,8 @@ class FDCPageParticipateSectionWidgetTypetwoTranslation
     /**
      * Set label
      *
-     * @param string $label
-     * @return FDCPageParticipateSectionWidgetDocumentTranslation
+     * @param string $title
+     * @return FDCPageParticipateSectionWidgetTypetwoTranslation
      */
     public function setTitle($title)
     {
@@ -83,7 +83,7 @@ class FDCPageParticipateSectionWidgetTypetwoTranslation
      * Set content
      *
      * @param string $content
-     * @return FDCPageParticipateSectionWidgetDocumentTranslation
+     * @return FDCPageParticipateSectionWidgetTypetwoTranslation
      */
     public function setContent($content)
     {

@@ -93,7 +93,7 @@
                                         {% if k == 0 %}
                                             <li><a href="{{ path('fdc_event_participate_prepare') }}"> {{ child.title|trans }}</a></li>
                                         {% else %}
-                                            <li><a href="{{ path('fdc_event_participate_getpage', {'slug': child.slug|trans }) }}"> {{ child.title|trans }}</a></li>
+                                            <li><a href="{{ path('fdc_event_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"> {{ child|trans_fallback('title') }}</a></li>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>

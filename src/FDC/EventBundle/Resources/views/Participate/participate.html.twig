@@ -2,7 +2,7 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="list-article participate prepare manual loading">
+    <div id="main" class="list-article participate prepare partners manual loading">
         <div class="bandeau-list vCenter">
             {% set mainTrans = participatePage.image.findTranslationByLocale(app.request.locale) %}
             {% if mainTrans is null or mainTrans.file is null %}
@@ -23,8 +23,8 @@
         {#                  #}
         <div class="contain-participate">
             {% for s in participatePage.downloadSection %}
-                <section class="content-manual">
-                    <div class="contain-section">
+                <section class="content-manual content-partners item-manual">
+                    <div class="contain-section contain-cinema contain-infos">
                         <h3 class="title-participate">
                             <i class="icon {{ s.section|trans_fallback('icon') }}"></i>
                             {{ s.section|trans_fallback('title') }}
@@ -35,25 +35,23 @@
                                 {{ s.section|trans_fallback('description')|raw }}
                             </div>
                         {% endif %}
+
+                        {#                  #}
+                        {#     WIDGETS      #}
+                        {#                  #}
                         {% for widget in s.section.widgets %}
                             {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
                                 {% include 'FDCEventBundle:Participate:widgets/participate-one.html.twig' %}
                             {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
                                 {% include 'FDCEventBundle:Participate:widgets/participate-two.html.twig' %}
                             {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypethree" %}
-                                {% if loop.first %}
-                                <div class="item-manual">
-                                    <div class="contain-infos">
-                                {% endif %}
-                                    {% include 'FDCEventBundle:Participate:widgets/participate-three.html.twig' %}
-                                {% if loop.last %}
-                                    </div>
-                                </div>
-                                {% endif %}
+                                {% include 'FDCEventBundle:Participate:widgets/participate-three.html.twig' %}
                             {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefour" %}
                                 {% include 'FDCEventBundle:Participate:widgets/participate-four.html.twig' %}
                             {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefive" %}
                                 {% include 'FDCEventBundle:Participate:widgets/participate-five.html.twig' %}
+                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetSubTitle" %}
+                                {% include 'FDCEventBundle:Participate:widgets/participate-subtitle.html.twig' %}
                             {% endif %}
                         {% endfor %}
                     </div>

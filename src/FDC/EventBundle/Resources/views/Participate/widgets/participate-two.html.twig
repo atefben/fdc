@@ -2,12 +2,36 @@
 
 <div class="item-partners">
     <div class="contain-img">
-        <img src="img/participate/Logo-partners1.jpg" alt="">
+        {% if widget.image is not null %}
+            {% set trans = widget.image.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = widget.image.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set image = trans.file %}
+            <img src="{% path image, 'reference' %}" alt="{{ widget.image|trans_fallback('alt') }}" />
+        {% endif %}
     </div>
     <div class="text-partners">
-        <h4 class="title-partners">Air france</h4>
-        <p class="descrip-partners">
-            Air France, partenaire officiel du Festival de Cannes, s'attache à faire vibrer tout au long de l'année le cinéma à bord de ses avions. La compagnie offre l'accès à plus de 1 000 heures de programmation à la demande sur de larges écrans tactiles sur ses vols long-courriers, idéal pour une projection en plein ciel.</p>
-        <a href="#" class="link">Site internet</a>
+        {% if widget|trans_fallback('sponsorLastName') is not null %}
+            <div class="content-text-with-portrait">
+                <h4 class="title-partners">{{widget|trans_fallback('title')}}</h4>
+                {{ widget|trans_fallback('content')|raw }}
+            </div>
+            <div class="portrait">
+                {% if widget.sponsorImage is not null %}
+                    {% set trans = widget.sponsorImage.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = widget.sponsorImage.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set image = trans.file %}
+                    <img src="{% path image, '60x81' %}" alt="{{ widget.sponsorImage|trans_fallback('alt') }}" />
+                {% endif %}
+                <strong class="name">{{ widget|trans_fallback('sponsorLastName') }} {{ widget|trans_fallback('sponsorFirstName') }}</strong>
+                <span class="rank">{{ widget|trans_fallback('sponsorRole') }}</span>
+            </div>
+        {% else %}
+        <h4 class="title-partners">{{widget|trans_fallback('title')}}</h4>
+        {{ widget|trans_fallback('content')|raw }}
+        {% endif %}
     </div>
 </div>

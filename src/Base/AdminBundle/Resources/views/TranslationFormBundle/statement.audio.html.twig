@@ -182,7 +182,11 @@
                                         </div>
                                         {{ form_row(form.parent.children.publishedAt) }}
                                         {{ form_row(form.parent.children.publishEndedAt) }}
-                                        {{ form_row(translationsFields.status) }}
+                                        {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                            {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                        {% else %}
+                                            {{ form_row(translationsFields.status) }}
+                                        {% endif %}
                                         <div class="form-group fdc-input-border">
                                             {{ form_widget(form.parent.children.translate) }}
                                             {{ form_label(form.parent.children.translate) }}
@@ -798,7 +802,11 @@
                 {% if form.vars.default_locale != locale %}
                     <div class="row">
                         <div class="col-md-4">
-                            {{ form_row(translationsFields.status) }}
+                            {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                            {% else %}
+                                {{ form_row(translationsFields.status) }}
+                            {% endif %}
                         </div>
                     </div>
                 {% endif %}

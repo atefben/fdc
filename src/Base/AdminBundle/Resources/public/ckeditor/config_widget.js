@@ -26,13 +26,22 @@ CKEDITOR.editorConfig = function( config ) {
         {name: 'Sous-titre 1', element: 'h2', attributes: {'class': 'sub-title'}},
         {name: 'Sous-titre 2', element: 'h2', attributes: {'class': 'sub-title2'}},
         {name: 'Sous-titre 3', element: 'h3', attributes: {'class': 'sub-title'}},
+        {name: 'Titre centré', element: 'h4', attributes: {'class': 'descrip-participate'}},
+        // Paragraph
+        {name: 'Decription centrée', element: 'p', attributes: {'class': 'big-quote-paragraph'}},
+        // Localisation
+        {name: 'Localisation', element: 'span', attributes: {'class': 'loc'}},
         // Text size
         {name: 'Texte petit', element: 'div', attributes: {'class': 'little-txt'}},
         {name: 'Texte gros', element: 'div', attributes: {'class': 'big-txt'}},
         // Header text
         {name: 'Chapo', element: 'div', attributes: {'class': 'chapeau'}},
         // Notes
-        {name: 'Note de bas de page', element: 'div', attributes: {'class': 'caption-article'}}
+        {name: 'Note de bas de page', element: 'div', attributes: {'class': 'caption-article'}},
+        // Accès
+        {name: 'Titre accès', element: 'h4', attributes: {'class': 'title-acces'}},
+        {name: 'Paragraph accès', element: 'p', attributes: {'class': 'descript-acces'}}
+
     ];
 
     // TOOLBAR
