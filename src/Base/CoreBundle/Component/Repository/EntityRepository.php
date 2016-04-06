@@ -58,6 +58,7 @@ class EntityRepository extends BaseRepository
      * @param $qb
      * @param $alias
      * @param $festival
+     * @param boolean $published
      * @return QueryBuilder
      */
     public function addMasterQueries($qb, $alias, $festival, $published = true)

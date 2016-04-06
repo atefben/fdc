@@ -41,7 +41,7 @@ class NewsAudio extends News
      *
      * @ORM\ManyToOne(targetEntity="MediaAudio")
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "home"})
      * @Assert\NotNull()
      */
     private $audio;

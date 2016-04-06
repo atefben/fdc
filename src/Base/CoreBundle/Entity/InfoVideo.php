@@ -31,7 +31,7 @@ class InfoVideo extends Info
      * @var MediaVideo
      *
      * @ORM\ManyToOne(targetEntity="MediaVideo", cascade={"persist"})
-     * @Groups({"news_show"})
+     * @Groups({"news_show", "news_list", "home"})
      *
      * @Assert\NotNull()
      */
@@ -42,7 +42,7 @@ class InfoVideo extends Info
      *
      * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"persist"})
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "home"})
      */
     private $image;
 

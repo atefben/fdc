@@ -118,4 +118,18 @@ abstract class Orange implements TranslateMainInterface
     {
         return $this->widgets;
     }
+    
+    /**
+     * getAvailableTranslateOptions function.
+     *
+     * @access public
+     * @static
+     * @return void
+     */
+    public static function getAvailableTranslateOptions()
+    {
+        return array(
+            self::TRANSLATE_OPTION_EN => 'form.translate_option.en',
+        );
+    }
 }

@@ -49,7 +49,7 @@ abstract class Media implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Theme")
      *
-     * @Groups({"news_list", "news_show", "film_show", "live", "event_show"})
+     * @Groups({"news_list", "news_show", "film_show", "live", "event_show", "home"})
      * @Assert\NotNull()
      */
     private $theme;
@@ -68,10 +68,12 @@ abstract class Media implements TranslateMainInterface
      * @Groups({
      *     "live",
      *     "web_tv_show",
+     *     "film_list",
      *     "film_show",
      *     "news_list",
      *     "news_show",
-     *     "event_show"
+     *     "event_show",
+     *     "home"
      * })
      */
     private $publishedAt;
@@ -83,10 +85,12 @@ abstract class Media implements TranslateMainInterface
      * @Groups({
      *     "live",
      *     "web_tv_show",
+     *     "film_list",
      *     "film_show",
      *     "news_list",
      *     "news_show",
-     *     "event_show"
+     *     "event_show",
+     *     "home"
      * })
      *
      */
@@ -134,13 +138,16 @@ abstract class Media implements TranslateMainInterface
      *     "news_list",
      *     "trailer_show",
      *     "live",
-     *     "web_tv_show", "live",
+     *     "web_tv_show",
+     *     "live",
+     *     "film_list",
      *     "film_show",
      *     "event_list",
      *     "event_show",
      *     "home",
      *     "today_images",
-     *     "live"
+     *     "live",
+     *     "home"
      * })
      *
      * @Assert\Valid()
@@ -209,7 +216,7 @@ abstract class Media implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"news_list"})
+     * @Groups({"home", "news_list", "news_show"})
      */
     public function getMediaType()
     {

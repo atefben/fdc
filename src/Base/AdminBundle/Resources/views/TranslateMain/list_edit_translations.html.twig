@@ -3,6 +3,9 @@
 
 {% block field %}
     {% if admin.hasRoute('edit') %}
+        {% if field_description.options.locales is defined and field_description.options.locales|length %}
+            {% set locales = field_description.options.locales %}
+        {% endif %}
         {% for locale in locales %}
             {% if is_granted('ROLE_TRANSLATE_' ~ locale|upper) %}
                 {% set trans = object.findTranslationByLocale(locale) %}

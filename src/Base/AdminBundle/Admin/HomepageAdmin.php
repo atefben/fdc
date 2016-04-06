@@ -3,6 +3,8 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use Base\CoreBundle\Entity\Homepage;
+use Base\CoreBundle\Entity\HomepageTranslation;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -11,6 +13,19 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class HomepageAdmin extends Admin
 {
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
+    }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('BaseAdminBundle:Form:polycollection.html.twig')
+        );
+    }
+
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('list');
@@ -86,6 +101,13 @@ class HomepageAdmin extends Admin
                         'sonata_help' => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
+                    ),
+                    'status' => array(
+                        'label' => 'form.label_status',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'choice',
+                        'choices' => HomepageTranslation::getStatuses(),
+                        'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                     'primaryPushTitle1' => array(
                         'label' => 'form.label_primary_push_title'
@@ -246,6 +268,17 @@ class HomepageAdmin extends Admin
                 'context'  => 'seo_file',
                 'help' => 'form.seo.helper_file',
                 'required' => false,
+            ))
+            ->add('translate')
+            ->add('translateOptions', 'choice', array(
+                'choices' => Homepage::getAvailableTranslateOptions(),
+                'translation_domain' => 'BaseAdminBundle',
+                'multiple' => true,
+                'expanded' => true
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices'                   => Homepage::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle',
             ))
             ->add('displayedTopNews','checkbox',array(
                 'label' => 'form.label_display',

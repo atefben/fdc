@@ -37,17 +37,6 @@
                                             </header>
                                             <div>
                                                 <label>
-                                                    Légende
-                                                </label>
-                                                <span>
-                                                {% if headerTranslations is not null and
-                                                    headerTranslations.get(locale) is not null %}
-                                                    {{ headerTranslations.get(locale).legend }}
-                                                {% endif %}
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <label>
                                                     Alt
                                                 </label>
                                                 <span>
@@ -57,19 +46,8 @@
                                                 {% endif %}
                                                 </span>
                                             </div>
-                                            <div>
-                                                <label>
-                                                    Copyright
-                                                </label>
-                                                <span>
-                                                {% if headerTranslations is not null and
-                                                    headerTranslations.get(locale) is not null %}
-                                                    {{ headerTranslations.get(locale).copyright }}
-                                                {% endif %}
-                                                </span>
-                                            </div>
                                             {% if form.parent.children.header.vars.value is not null %}
-                                            <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': form.parent.children.header.vars.value}) }}">modifier les traductions</a>
+                                            <a target="_blank" href="{{ path('admin_base_core_mediaimagesimple_edit', {'id': form.parent.children.header.vars.value}) }}">modifier les traductions</a>
                                             {% endif %}
                                         </div>
                                         <div class="form-group">
@@ -138,7 +116,7 @@
                                     <div class="sonata-ba-collapsed-fields">
                                         <div class="form-group">
                                             <label class="control-label">
-                                                {{ 'form.orange_vod.label_title'|trans }}
+                                                {{ 'form.label_title'|trans }}
                                             </label>
                                             {% if form.children.fr.vars.value is not null %}
                                                 <div>
@@ -149,7 +127,7 @@
                                         
                                         <div class="form-group">
                                             <label class="control-label">
-                                                {{ 'form.orange_vod.label_introduction'|trans }}
+                                                {{ 'form.label_introduction'|trans }}
                                             </label>
                                             {% if form.children.fr.vars.value is not null %}
                                                 <div>
@@ -220,7 +198,7 @@
                                                 {% endfor %}
                                                 <div class="form-group">
                                                     <label class="control-label">
-                                                        {{ 'form.orange_vod.label_section'|trans }}
+                                                        {{ 'form.label_orange_widget_film_vod_section'|trans }}
                                                     </label>
                                                     <div>
                                                         <div class="form-group">
@@ -273,7 +251,7 @@
                                         {% for widget in form.parent.children.widgets.children %}
                                             <div class="item base-widget">
                                                 
-                                                    <h4><strong>{{ 'form.widget.orange_studio_film_title'|trans }}</strong></h4>
+                                                    <h4><strong>{{ 'form.widget.film_vod'|trans }}</strong></h4>
                                                     <div class="form-group">
                                                         {% set section_label = '' %}
                                                         {% for choice in widget.children.section.vars.choices %}
@@ -282,7 +260,7 @@
                                                             {% endif %}
                                                         {% endfor %}
                                                         <label>
-                                                            {{ 'form.label_orange_studio_widget_film_vod_section'|trans }}
+                                                            {{ 'form.label_orange_widget_film_vod_section'|trans }}
                                                         </label>
                                                         <div>
                                                             {{ section_label }}
@@ -302,7 +280,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label_orange_studio_widget_film_vod_title'|trans }}
+                                                            {{ 'form.label_orange_widget_film_vod_title'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
@@ -312,7 +290,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label_orange_studio_widget_film_vod_description'|trans }}
+                                                            {{ 'form.label_orange_widget_film_vod_description'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
@@ -322,7 +300,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label_orange_studio_widget_film_vod_copy'|trans }}
+                                                            {{ 'form.label_orange_widget_film_vod_copy'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
@@ -332,7 +310,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label_orange_studio_widget_film_vod_producer'|trans }}
+                                                            {{ 'form.label_orange_widget_film_vod_producer'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}

@@ -59,8 +59,10 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "live",
      *     "web_tv_show",
      *     "live",
+     *     "film_list",
      *     "film_show",
-     *     "event_show"
+     *     "event_show",
+     *     "home"
      * })
      */
     private $title;
@@ -70,13 +72,15 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      * @Groups({
+     *     "film_list",
      *     "film_show",
      *     "news_list",
      *     "news_show",
      *     "live",
      *     "web_tv_show",
      *     "live",
-     *     "event_show"
+     *     "event_show",
+     *     "home"
      * })
      */
     private $imageAmazonUrl;
@@ -114,13 +118,15 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      * @Groups({
+     *     "film_list",
      *     "film_show",
      *     "news_list",
      *     "news_show",
      *     "live",
      *     "web_tv_show",
      *     "live",
-     *     "event_show"
+     *     "event_show",
+     *     "home"
      * })
      */
     private $mp4Url;
@@ -130,13 +136,15 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      * @Groups({
+     *     "film_list",
      *     "film_show",
      *     "news_list",
      *     "news_show",
      *     "live",
      *     "web_tv_show",
      *     "live",
-     *     "event_show"
+     *     "event_show",
+     *     "home"
      * })
      */
     private $webmUrl;
@@ -148,7 +156,8 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @Groups({
      *     "live",
      *     "web_tv_show",
-     *     "live"
+     *     "live",
+     *     "home"
      * })
      */
     private $theme;

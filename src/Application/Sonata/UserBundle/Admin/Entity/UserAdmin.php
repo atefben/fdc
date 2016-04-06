@@ -22,6 +22,36 @@ use Sonata\UserBundle\Admin\Entity\UserAdmin as SonataUserAdmin;
 class UserAdmin extends SonataUserAdmin
 {
 
+    public function prePersist($object)
+    {
+        $container = $this->getConfigurationPool()->getContainer();
+        $templating = $container->get('templating');
+
+        $message = \Swift_Message::newInstance()->setSubject('Identifiants/Credentials Festival de Cannes')->setFrom($object->getEmail())->setTo($object->getEmail())->setBody($templating->render('ApplicationSonataAdminBundle::user_email.html.twig', array(
+            'username' => $object->getUsername(),
+            'password' => $object->getPlainPassword(),
+            'role'     => $object->getGroups()
+        )), 'text/html');
+        $mailer  = $container->get('mailer');
+        $mailer->send($message);
+
+    }
+
+    public function preUpdate($object)
+    {
+        $container = $this->getConfigurationPool()->getContainer();
+        $templating = $container->get('templating');
+
+        $message = \Swift_Message::newInstance()->setSubject('Identifiants/Credentials Festival de Cannes')->setFrom($object->getEmail())->setTo($object->getEmail())->setBody($templating->render('ApplicationSonataAdminBundle::user_email.html.twig', array(
+            'username' => $object->getUsername(),
+            'password' => $object->getPlainPassword(),
+            'role'     => $object->getGroups()
+        )), 'text/html');
+       $mailer  = $container->get('mailer');
+       $mailer->send($message);
+
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */

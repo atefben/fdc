@@ -48,7 +48,9 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "event_show"
+     *     "event_show",
+     *     "jury_list",
+     *     "jury_show"
      * })
      */
     private $file;
@@ -73,7 +75,9 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "event_show"
+     *     "event_show",
+     *     "jury_list",
+     *     "jury_show"
      * })
      */
     private $alt;
