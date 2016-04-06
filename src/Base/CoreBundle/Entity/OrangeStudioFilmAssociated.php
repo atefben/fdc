@@ -3,7 +3,7 @@
 namespace Base\CoreBundle\Entity;
 
 use Base\CoreBundle\Util\Time;
-use Doctrine\Common\Collections\ArrayCollection;
+
 use Doctrine\ORM\Mapping as ORM;
 
 

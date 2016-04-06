@@ -13,7 +13,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table()
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  */
 class OrangeStudio extends Orange
 {
@@ -22,8 +21,9 @@ class OrangeStudio extends Orange
     /**
      * @var FilmFilm
      *
-     * @ORM\OneToMany(targetEntity="OrangeStudioFilmAssociated", mappedBy="orangeStudio", cascade={"persist"})
-     *
+     * @ORM\OneToMany(targetEntity="OrangeStudioFilmAssociated", mappedBy="orangeStudio", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
+     * 
      */
     private $associatedFilms;
     
@@ -39,10 +39,10 @@ class OrangeStudio extends Orange
      * @param OrangeStudioFilmAssociated $associatedFilms
      * @return Event
      */
-    public function addAssociatedFilms(OrangeStudioFilmAssociated $associatedFilms)
+    public function addAssociatedFilm(OrangeStudioFilmAssociated $associatedFilms)
     {
         $associatedFilms->setOrangeStudio($this);
-        $this->associatedFilms[] = $associatedFilms;
+        $this->associatedFilms->add($associatedFilms);
 
         return $this;
     }
@@ -52,24 +52,11 @@ class OrangeStudio extends Orange
      *
      * @param OrangeStudioFilmAssociated $associatedFilms
      */
-    public function removeAssociatedFilms(OrangeStudioFilmAssociated $associatedFilms)
+    public function removeAssociatedFilm(OrangeStudioFilmAssociated $associatedFilms)
     {
         $this->associatedFilms->removeElement($associatedFilms);
     }
     
-    /**
-     * Set associatedFilms
-     *
-     * @param  $associatedFilms
-     * @return OrangeStudio
-     */
-    public function setAssociatedFilms($associatedFilms = null)
-    {
-        $this->associatedFilms = $associatedFilms;
-
-        return $this;
-    }
-
     /**
      * Get associatedFilms
      *
