@@ -18,7 +18,7 @@
         {% endfor %}
     </div>
 
-    {% set imageMain = movie.imageMain|trans_fallback('file') %}
+    {% set imageMain = film.imageMain|trans_fallback('file') %}
     {% set poster = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
     {% set main = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
     {% set photo = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
