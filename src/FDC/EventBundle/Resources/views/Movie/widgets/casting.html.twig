@@ -47,7 +47,7 @@
                         <h3 class="title-section">{{ 'movie.title.credits'|trans }}</h3>
                         {% for filmPerson in movie.getCredits() %}
                             <p> {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': filmPerson.person} %}
-                                -
+                               {% if filmPerson.functions  %} - {% endif %}
                                 {% for personFunction in filmPerson.functions %}
                                     {{ filmPerson.person|person_function_gender(personFunction.function, 'name') }}
                                 {% endfor %}
@@ -59,7 +59,9 @@
                         <h3 class="title-section">{{ 'movie.title.casting'|trans }}</h3>
                         {% for filmPerson in movie.getActors() %}
                             <p>{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': filmPerson.person} %}
-                                - {{ filmPerson|trans_fallback('role') }}
+                                {% if filmPerson|trans_fallback('role') is not null and filmPerson|trans_fallback('role') != '' %}
+                                    - {{ filmPerson|trans_fallback('role') }}
+                                {% endif %}
                             </p>
                         {% endfor %}
                     </div>
