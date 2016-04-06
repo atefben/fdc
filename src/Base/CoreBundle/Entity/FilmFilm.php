@@ -293,6 +293,16 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $selectionSection;
 
     /**
+     * @var FilmSelectionSubsection
+     *
+     * @ORM\ManyToOne(targetEntity="FilmSelectionSubsection", inversedBy="films", cascade={"persist"})
+     *
+     * @Groups({"film_list", "film_show", "news_list", "news_show", "home"})
+     *
+     */
+    private $selectionSubsection;
+
+    /**
      * @var FilmFestival
      *
      * @ORM\ManyToOne(targetEntity="FilmFestival", inversedBy="films", cascade={"persist"})
@@ -2403,5 +2413,28 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getTwitter()
     {
         return $this->twitter;
+    }
+
+    /**
+     * Set selectionSubsection
+     *
+     * @param \Base\CoreBundle\Entity\FilmSelectionSubsection $selectionSubsection
+     * @return FilmFilm
+     */
+    public function setSelectionSubsection(\Base\CoreBundle\Entity\FilmSelectionSubsection $selectionSubsection = null)
+    {
+        $this->selectionSubsection = $selectionSubsection;
+
+        return $this;
+    }
+
+    /**
+     * Get selectionSubsection
+     *
+     * @return \Base\CoreBundle\Entity\FilmSelectionSubsection 
+     */
+    public function getSelectionSubsection()
+    {
+        return $this->selectionSubsection;
     }
 }

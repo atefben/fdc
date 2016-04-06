@@ -67,7 +67,7 @@
         </div>
     <div class="info-film">
         <div class="categories">
-            <span>{{ movie.selectionSection|trans_fallback('name') }}</span>
+            <span>{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}</span>
             {% if 'Ouverture' in movie.galaName %}
                 <span>{{ 'movie.fdc_open'|trans }}</span>
             {% elseif 'Fermeture' in movie.galaName %}
@@ -91,7 +91,8 @@
             {{ 'movie.label.realisepar'|trans }} :
             {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
             {% for director in directors %}
-                <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{% if loop.index != directors|length %}, {% endif %}
+                {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
+                {% if loop.index != directors|length %}, {% endif %}
             {% endfor %}
         </p>
         <p class="information-movie">

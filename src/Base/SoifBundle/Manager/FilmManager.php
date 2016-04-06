@@ -405,24 +405,35 @@ class FilmManager extends CoreManager
                 if (gettype($object->SousSectionSelection->Traductions->FilmSousSectionSelectionTraductionDto) == 'object') {
                      $object->SousSectionSelection->Traductions->FilmSousSectionSelectionTraductionDto = array($object->SousSectionSelection->Traductions->FilmSousSectionSelectionTraductionDto);
                 }
+                $filmSelectionSubsection =  $this->em->getRepository('BaseCoreBundle:FilmSelectionSubsection')->findOneById($object->SousSectionSelection->Id);
+
+                if ($filmSelectionSubsection === null) {
+                    $filmSelectionSubsection = new FilmSelectionSubsection();
+                }
                 
                 // loop through translations
                 $translations = $object->SousSectionSelection->Traductions->FilmSousSectionSelectionTraductionDto;
-                
-                $filmSelectionSubsection = new FilmSelectionSubsection();
                 $filmSelection->addSubsection($filmSelectionSubsection);
+                $entity->setSelectionSubsection($filmSelectionSubsection);
                 
                 foreach ($translations as $translation) {
                     if (!isset($localesMapper[$translation->CodeLangue])) {
                         $this->logger->warning(__METHOD__. " the locales mapper {$translation->CodeLangue} doesn't exist");
                         continue;
                     }
-                    
+
                     // set translations
-                    $filmSelectionSubsectionTranslation = new FilmSelectionSubsectionTranslation();
+                    $filmSelectionSubsectionTranslation = $filmSelectionSection->findTranslationByLocale($localesMapper[$translation->CodeLangue]);
+
+                    if ($filmSelectionSubsectionTranslation === null) {
+                        $filmSelectionSubsectionTranslation = new FilmSelectionSubsectionTranslation();
+                    }
+
                     $filmSelectionSubsectionTranslation->setName($translation->Libelle);
                     $filmSelectionSubsectionTranslation->setLocale($localesMapper[$translation->CodeLangue]);
-                    $filmSelectionSubsection->addTranslation($filmSelectionSubsectionTranslation);
+                    if ($filmSelectionSubsectionTranslation->getId() === null) {
+                        $filmSelectionSubsection->addTranslation($filmSelectionSubsectionTranslation);
+                    }
                 }
             }
         }

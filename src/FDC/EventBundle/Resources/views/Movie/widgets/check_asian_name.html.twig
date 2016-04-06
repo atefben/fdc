@@ -1,0 +1,5 @@
+{% if person.asianName %}
+    <a href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}">{{ person.lastName ~ ' ' ~ person.firstName }}</a>
+{% else %}
+    <a href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}">{{ person.fullName }}</a>
+{% endif %}
