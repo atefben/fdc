@@ -24,7 +24,7 @@
                 <span class="heure-pres-item">{{ projection.startsAt|date('H:i') }}</span>
                 {% endif %}
                 <h3 class="title-item">{{ film.titleVO }}</h3>
-                {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}<span class="nom-item">{{ director.fullName }}</span>{% if loop.index != director|length %}, {% endif %}{% endfor %}<br />
+                {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}<span class="nom-item">{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}</span>{% if loop.index != director|length %}, {% endif %}{% endfor %}<br />
                     <span class="date-item">
                         {% set duration = [] %}
                         {% if film.duration is not empty %}

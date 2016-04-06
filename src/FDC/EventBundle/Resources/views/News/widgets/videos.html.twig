@@ -44,7 +44,7 @@
                         <p class="director">
                             {{ 'home.video.text.de'|trans }}
                             {% for director in film.association|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                            <a href="#">{{ director.fullName }}</a>
+                                {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
                             {% endfor %}
                         </p>
                     {% endif %}
