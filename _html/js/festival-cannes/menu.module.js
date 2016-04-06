@@ -21,7 +21,7 @@ $(document).ready(function() {
     });
   }
 
-  $('.main>li>a, .user>li>a').on('click', function(e) {
+  $('.main>li>a, .user>li>a').on('click touchstart', function(e) {
     console.log($(this).parent().find('ul').length);
     if($('body').hasClass('mob')) {
       if($(this).parent().find('ul').length != 0) {
