@@ -67,7 +67,17 @@ class OrangeVideoOnDemandAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('title')
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:News:list_title.html.twig',
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices'   => OrangeVideoOnDemand::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle',
+            ))
+            ->add('statusMain', 'choice', array(
+                'choices'   => OrangeVideoOnDemandTranslation::getMainStatuses(),
+                'catalogue' => 'BaseAdminBundle',
+            ))
             ->add('createdAt')
             ->add('updatedAt')
             ->add('_edit_translations', null, array(

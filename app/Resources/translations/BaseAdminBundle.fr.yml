@@ -736,7 +736,6 @@ form:
     label_procedure_file : Fichier procédure
     label_procedure_second_file : Fichier procédure (en)
     
-    
     label_orange_series_widget_video_youtube_title: Titre
     label_orange_series_widget_video_youtube_subtitle: Sous-titre
     label_orange_series_widget_video_youtube_url: URL de la chaîne Youtube
@@ -749,14 +748,12 @@ form:
     label_orange_widget_film_vod_producer: Réalisateur du film
     label_orange_widget_film_vod_section: Sous-rubrique
     
-    
+    helper_orange_widget_film_ocs_image: Dimensions attendues : 580x365 - ratio paysage. Format attendu : .jpg, .png, .gif
     label_orange_widget_film_ocs_legend: Légend
     label_orange_widget_film_ocs_title: Titre du film
     label_orange_widget_film_ocs_description: Description
     label_orange_widget_film_ocs_name: Nom de la chaîne
     label_orange_widget_film_ocs_producer: Réalisateur du film
-    
-    
     
     label_orange_widget_film_studio_image: Image cover
     helper_orange_widget_film_studio_image: Dimensions attendues : 320x435 - ratio paysage. Format attendu : .jpg, .png, .gif
