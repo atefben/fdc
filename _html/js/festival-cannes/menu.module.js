@@ -1,13 +1,9 @@
 // Main menu
 // =========================
-
-var displayed = false,
+var displayed     = false,
     graphRendered = false;
 
 $(document).ready(function() {
-
-  $('body').addClass('mob');
-
   // overlay on main menu : show submenu and overlay
   if(!$('body').hasClass('mob')) {
     $('.main>li, .user>li').hover(function() {
@@ -21,9 +17,6 @@ $(document).ready(function() {
     });
   } else {
     $('.main>li>a, .user>li>a').on('click touchstart', function(e) {
-      console.log(e.target);
-      console.log($(this).parent().find('ul').length);
-      
       if($(this).parent().find('ul').length != 0) {
         e.preventDefault();
         $('#main, footer').addClass('overlay');
@@ -32,6 +25,4 @@ $(document).ready(function() {
       }
     });
   }
-
-
 });
