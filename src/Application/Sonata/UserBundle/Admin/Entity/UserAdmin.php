@@ -27,7 +27,7 @@ class UserAdmin extends SonataUserAdmin
         $container = $this->getConfigurationPool()->getContainer();
         $templating = $container->get('templating');
 
-        $message = \Swift_Message::newInstance()->setSubject('Identifiants/Credentials Festival de Cannes')->setFrom($object->getEmail())->setTo($object->getEmail())->setBody($templating->render('ApplicationSonataAdminBundle::user_email.html.twig', array(
+        $message = \Swift_Message::newInstance()->setSubject('Activation de votre compte à l\'interface d\'administration du Festival de Cannes')->setFrom($object->getEmail())->setTo($object->getEmail())->setBody($templating->render('ApplicationSonataAdminBundle::user_email.html.twig', array(
             'username' => $object->getUsername(),
             'password' => $object->getPlainPassword(),
             'role'     => $object->getGroups()
@@ -42,7 +42,7 @@ class UserAdmin extends SonataUserAdmin
         $container = $this->getConfigurationPool()->getContainer();
         $templating = $container->get('templating');
 
-        $message = \Swift_Message::newInstance()->setSubject('Identifiants/Credentials Festival de Cannes')->setFrom($object->getEmail())->setTo($object->getEmail())->setBody($templating->render('ApplicationSonataAdminBundle::user_email.html.twig', array(
+        $message = \Swift_Message::newInstance()->setSubject('Activation de votre compte à l\'interface d\'administration du Festival de Cannes')->setFrom($object->getEmail())->setTo($object->getEmail())->setBody($templating->render('ApplicationSonataAdminBundle::user_email.html.twig', array(
             'username' => $object->getUsername(),
             'password' => $object->getPlainPassword(),
             'role'     => $object->getGroups()
