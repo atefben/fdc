@@ -155,19 +155,25 @@ function editEvents() {
         var status = ['0', '1', '4', '6'];
 
         if (locale != 'fr') {
-            var status = ['0', '2', '3', '5'];
+             status = ['0', '2', '3', '5'];
         }
 
         if ($('select[name*="status"]').hasClass('translator')) {
-            var status = ['3'];
+             status = ['3'];
         }
 
         if ($('select[name*="status"]').hasClass('master_translator')) {
-            var status = ['0', '1', '4'];
+            status = ['0', '1', '4'];
+            if(locale != 'fr') {
+                status = ['0', '2', '3', '5'];
+            }
         }
 
         if ($('select[name*="status"]').hasClass('journalist')) {
-            var status = ['0', '4'];
+            status = ['0', '4'];
+            if(locale != 'fr') {
+                status = ['0', '2', '3', '5'];
+            }
         }
 
         $(e).find('option').each(function(i, e) {
@@ -175,12 +181,6 @@ function editEvents() {
                 $(e).remove();
             }
         });
-
-        if ($('select[name*="status"]').hasClass('translator')) {
-            {$("select").val("3").trigger("change");
-        }
-
-    }
 
     });
 
