@@ -38,6 +38,7 @@ class OrangeWidgetMovieYoutubeType extends BaseType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('translations', 'a2lix_translations', array(
+                    'locales' => array('fr', 'en'),
                     'label' => false,
                     'translation_domain' => 'BaseAdminBundle',
                     'required_locales' => array('fr'),

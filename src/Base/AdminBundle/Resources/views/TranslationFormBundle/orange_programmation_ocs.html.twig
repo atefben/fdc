@@ -106,14 +106,14 @@
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4 class="box-title">
-                                        {{ 'group.orange_series.widgets'|trans }}
+                                        {{ 'group.orange_ocs.widgets'|trans }}
                                     </h4>
                                 </div>
                                 <div class="box-body">
                                     <div class="fdc-widgets" data-form-widget="collection">
                                         {% for widget in form.parent.children.widgets.children %}
                                             <div class="item base-widget">
-                                                <h4><strong>{{ 'form.widget.film_studio'|trans }}</strong></h4>
+                                                <h4><strong>{{ 'form.widget.film_ocs'|trans }}</strong></h4>
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
                                                 {{ form_row(widget.image) }}
@@ -126,7 +126,7 @@
                                             </div>
                                         {% endfor %}
                                     </div>
-                                    {{ 'form.orange_studio.helper_widgets'|trans }}<br/>
+                                    {{ 'form.orange_ocs.helper_widgets'|trans }}<br/>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.orange_widget_film_ocs_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.film_studio'|trans }}</a>
                                     </div>
                             </div>
@@ -136,7 +136,7 @@
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4 class="box-title">
-                                        {{ 'group.orange_studio.widgets'|trans }}
+                                        {{ 'group.orange_ocs.widgets'|trans }}
                                     </h4>
                                 </div>
 
@@ -144,7 +144,7 @@
                                     <div class="fdc-widgets" data-form-widget="collection">
                                         {% for widget in form.parent.children.widgets.children %}
                                             <div class="item base-widget">
-                                                <h4><strong>{{ 'form.widget.film_studio'|trans }}</strong></h4>
+                                                <h4><strong>{{ 'form.widget.film_ocs'|trans }}</strong></h4>
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
                                                 
@@ -179,7 +179,7 @@
                                                 {% endfor %}
                                                 <div class="form-group">
                                                     <label class="control-label">
-                                                        {{ 'form.orange_ocs.label_name'|trans }}
+                                                        {{ 'form.label_orange_widget_film_ocs_name'|trans }}
                                                     </label>
                                                     <div>
                                                         <div class="form-group">
@@ -208,7 +208,7 @@
                                         {% for widget in form.parent.children.widgets.children %}
                                             <div class="item base-widget">
                                                 
-                                                    <h4><strong>{{ 'form.widget.orange_studio_film_title'|trans }}</strong></h4>
+                                                    <h4><strong>{{ 'form.widget.film_ocs'|trans }}</strong></h4>
                                                     <div class="form-group">
                                                         {% set imageTranslations = (widget.vars.data.image is not null) ? widget.vars.data.image.translations : null %}
                                                         <label>
@@ -223,7 +223,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label_orange_studio_widget_film_studio_title'|trans }}
+                                                            {{ 'form.label_orange_widget_film_ocs_title'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
@@ -233,7 +233,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label_orange_studio_widget_film_studio_description'|trans }}
+                                                            {{ 'form.label_orange_widget_film_ocs_description'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
@@ -249,7 +249,7 @@
                                                     {% endfor %}
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label_orange_studio_widget_film_studio_name'|trans }}
+                                                            {{ 'form.label_orange_widget_film_ocs_name'|trans }}
                                                         </label>
                                                         <div>
                                                             {{ name_label }}
@@ -257,7 +257,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label_orange_studio_widget_film_studio_producer'|trans }}
+                                                            {{ 'form.label_orange_widget_film_ocs_producer'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
