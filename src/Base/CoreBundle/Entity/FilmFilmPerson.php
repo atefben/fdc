@@ -69,7 +69,8 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "news_show",
      *     "home",
      *     "film_selection_section_show",
-     *     "award_list"
+     *     "award_list",
+     *     "classics"
      * })
      */
     private $person;
@@ -86,7 +87,8 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "projection_show",
      *     "news_list",
      *     "news_show",
-     *     "award_list"
+     *     "award_list",
+     *     "classics"
      * })
      */
     private $position;
@@ -100,7 +102,8 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "classics"
      * })
      */
     private $functions;
@@ -108,7 +111,7 @@ class FilmFilmPerson implements TranslateMainInterface
     /**
      * @var ArrayCollection
      *
-     * @Groups({"film_list", "film_show"})
+     * @Groups({"film_list", "film_show", "classics"})
      */
     protected $translations;
 

@@ -69,3 +69,7 @@ social_wall_twitter:
 today_images:
     type:       rest
     resource:   Base\ApiBundle\Controller\TodayImagesController
+
+classics:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\ClassicsController

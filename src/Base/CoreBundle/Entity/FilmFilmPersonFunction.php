@@ -46,7 +46,8 @@ class FilmFilmPersonFunction
      *     "projection_list",
      *     "projection_show",
      *     "news_list",
-     *     "news_show"
+     *     "news_show",
+     *     "classics"
      * })
      */
     private $position;
@@ -61,7 +62,8 @@ class FilmFilmPersonFunction
      *     "film_list",
      *     "film_show",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "classics"
      * })
      */
     private $function;

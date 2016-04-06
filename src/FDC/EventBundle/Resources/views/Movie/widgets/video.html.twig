@@ -4,6 +4,7 @@
         <div class="container">
             <div class="video-container state-init video"
                 data-playlist='[
+                {% set videoImage = null %}
                 {% if videos[0].mediaVideo.image %}
                     {% set videoImage = media_public_url(videos[0].mediaVideo.image|trans_fallback('file'), '586x370') %}
                 {% elseif videos[0].mediaVideo.image|trans_fallback('imageAmazonUrl') %}
@@ -13,7 +14,7 @@
                       "sources":[{"file":"{{ s3_server_video ~ videos[0].mediaVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ videos[0].mediaVideo|trans_fallback('mp4Url') }}"}],
                       "vid":"{{ videos[0].mediaVideo.id }}",
                       "name":"{{ videos[0].mediaVideo|trans_fallback('title') }}",
-                      "image":"{{ videoImage }}",
+                      "image":"{% if videoImage is not empty %}{{ videoImage }}{% endif %}",
                       "category":"{{ videos[0].mediaVideo.theme|trans_fallback('name') }}",
                       "date":"{{ videos[0].mediaVideo.publishedAt()|date('d/m/Y') }}",
                       "hour":"{{ videos[0].mediaVideo.publishedAt()|date('H:i') }}"
