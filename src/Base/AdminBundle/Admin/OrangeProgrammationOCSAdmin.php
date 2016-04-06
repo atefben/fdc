@@ -67,7 +67,17 @@ class OrangeProgrammationOCSAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('title')
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:News:list_title.html.twig',
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices'   => OrangeProgrammationOCS::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle',
+            ))
+            ->add('statusMain', 'choice', array(
+                'choices'   => OrangeProgrammationOCSTranslation::getMainStatuses(),
+                'catalogue' => 'BaseAdminBundle',
+            ))
             ->add('createdAt')
             ->add('updatedAt')
             ->add('_edit_translations', null, array(
