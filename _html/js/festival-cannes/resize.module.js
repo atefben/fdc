@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  if (navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)) {
+    $('body').addClass('mob');
+  }
 
   $(window).on('resize', function() {
     if($('.home').length) {
@@ -16,10 +19,6 @@ $(document).ready(function() {
     var pxT = parseInt(($('#selection .owl-stage-outer').width() / 2) - 131) + "px";
     $('#selection .owl-stage').css('transform', 'translate3d(' + pxT + ',0, 0)');
   });
-
-  if (navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)) {
-    $('body').addClass('mob');
-  }
 
   var dragging = false;
 
