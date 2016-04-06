@@ -69,6 +69,7 @@ class OrangeWidgetFilmOCSType extends BaseType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('translations', 'a2lix_translations', array(
+                    'locales' => array('fr', 'en'),
                     'label' => false,
                     'translation_domain' => 'BaseAdminBundle',
                     'required_locales' => array('fr'),
@@ -76,21 +77,21 @@ class OrangeWidgetFilmOCSType extends BaseType
                         'legend' => array(
                             'constraints' => array(
                             ),
-                            'required' => true,
+                            'required' => false,
                             'label' => 'form.label_orange_widget_film_ocs_legend',
                             'translation_domain' => 'BaseAdminBundle',
                         ),
                         'title' => array(
                             'constraints' => array(
                             ),
-                            'required' => true,
+                            'required' => false,
                             'label' => 'form.label_orange_widget_film_ocs_title',
                             'translation_domain' => 'BaseAdminBundle',
                         ),
                         'description' => array(
                             'constraints' => array(
                             ),
-                            'required' => true,
+                            'required' => false,
                             'label' => 'form.label_orange_widget_film_ocs_description',
                             'translation_domain' => 'BaseAdminBundle',
                         ),
@@ -116,7 +117,7 @@ class OrangeWidgetFilmOCSType extends BaseType
                     'translation_domain' => 'BaseAdminBundle',
                 ))
                 ->add('producer', null,  array(
-                    'required' => true,
+                    'required' => false,
                     'label' => 'form.label_orange_widget_film_ocs_producer',
                     'translation_domain' => 'BaseAdminBundle',
                 ))
