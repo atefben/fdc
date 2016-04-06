@@ -176,8 +176,8 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
-                small:   { width: 187, height: 255, quality: 100 }
                 mobile: { width: 584 , height: 794 , quality: 100 }
+                small:   { width: 187, height: 255, quality: 100 }
                 212x134: { width: 212 , height: 134 , quality: 100 }
                 293x185: { width: 293 , height: 185 , quality: 100 }
                 #film
@@ -234,6 +234,7 @@ sonata_media:
             providers:
                 - sonata.media.provider.image
             formats:
+                mobile: { width: 584 , height: 794 , quality: 100 }
                 small: { width: 400 , quality: 100 }
 
         media_archive:
