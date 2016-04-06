@@ -51,7 +51,9 @@ class FilmPerson implements TranslateMainInterface
      *     "news_list",
      *     "news_show",
      *     "film_selection_section_show",
-     *     "award_list"
+     *     "award_list",
+     *     "jury_list",
+     *     "jury_show"
      * })
      */
     private $id;
@@ -71,7 +73,9 @@ class FilmPerson implements TranslateMainInterface
      *     "news_list",
      *     "news_show",
      *     "film_selection_section_show",
-     *     "award_list"
+     *     "award_list",
+     *     "jury_list",
+     *     "jury_show"
      * })
      */
     private $portraitImage;
@@ -92,7 +96,9 @@ class FilmPerson implements TranslateMainInterface
      *     "news_list",
      *     "news_show",
      *     "film_selection_section_show",
-     *     "award_list"
+     *     "award_list",
+     *     "jury_list",
+     *     "jury_show"
      * })
      */
     private $landscapeImage;
@@ -101,6 +107,23 @@ class FilmPerson implements TranslateMainInterface
      * Image to use: false = portaitImage, true landscapeImage
      * @var bool
      * @ORM\Column(type="bigint")
+     *
+     * @Groups({
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show",
+     *     "film_selection_section_show",
+     *     "award_list",
+     *     "jury_list",
+     *     "jury_show"
+     * })
      */
     private $displayedImage = false;
 
@@ -120,7 +143,9 @@ class FilmPerson implements TranslateMainInterface
      *     "news_list",
      *     "news_show",
      *     "film_selection_section_show",
-     *     "award_list"
+     *     "award_list",
+     *     "jury_list",
+     *     "jury_show"
      * })
      */
     private $presidentJuryImage;

@@ -32,7 +32,7 @@ class NewsVideo extends News
      *
      * @ORM\ManyToOne(targetEntity="MediaVideo")
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "home"})
      * @Assert\NotNull()
      */
     private $video;

@@ -592,6 +592,40 @@
                         </div>
                     </div>
                 {% endif %}
+                <div class="row">
+                    <div class="col-md-12">
+                        {% if form.vars.default_locale == locale %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    <div class="form-group fdc-input-border">
+                                        {{ form_widget(form.parent.children.translate) }}
+                                        {{ form_label(form.parent.children.translate) }}
+                                        {{ form_widget(form.parent.children.translateOptions) }}
+                                        {{ form_row(form.parent.children.priorityStatus) }}
+                                    </div>
+                                    {{ form_row(form.parent.children.priorityStatus) }}
+                                    <div class="status-hidden">
+                                        {{ form_row(translationsFields.status) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                    {% elseif is_granted('ROLE_JOURNALIST') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                    {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                    {% else %}
+                                        {{ form_row(translationsFields.status) }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         {% endfor %}
     </div>

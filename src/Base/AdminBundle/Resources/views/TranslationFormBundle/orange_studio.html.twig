@@ -194,7 +194,7 @@
                                         {% for widget in form.parent.children.widgets.children %}
                                             <div class="item base-widget">
                                                 
-                                                    <h4><strong>{{ 'form.widget.orange_studio_film_title'|trans }}</strong></h4>
+                                                    <h4><strong>{{ 'form.widget.film_studio'|trans }}</strong></h4>
                                                     <div class="form-group">
                                                         {% set imageTranslations = (widget.vars.data.image is not null) ? widget.vars.data.image.translations : null %}
                                                         <label>
@@ -209,7 +209,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label_orange_studio_widget_film_studio_title'|trans }}
+                                                            {{ 'form.label_orange_widget_film_studio_title'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
@@ -219,7 +219,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label_orange_studio_widget_film_studio_description'|trans }}
+                                                            {{ 'form.label_orange_widget_film_studio_description'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
@@ -229,7 +229,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            {{ 'form.label_orange_studio_widget_film_studio_producer'|trans }}
+                                                            {{ 'form.label_orange_widget_film_studio_producer'|trans }}
                                                         </label>
                                                         <div>
                                                             {% if widget.children.translations.fr.vars.value is not null %}
