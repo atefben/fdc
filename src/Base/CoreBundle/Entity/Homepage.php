@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\SeoMain;
 
 use Base\CoreBundle\Util\TranslateMain;
@@ -19,12 +20,12 @@ use JMS\Serializer\Annotation\Groups;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class Homepage
+class Homepage implements TranslateMainInterface
 {
     use SeoMain;
     use Translatable;
     use Time;
-
+    use TranslateMain;
     /**
      * @var integer
      *

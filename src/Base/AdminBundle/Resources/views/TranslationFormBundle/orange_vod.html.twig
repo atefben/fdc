@@ -37,17 +37,6 @@
                                             </header>
                                             <div>
                                                 <label>
-                                                    Légende
-                                                </label>
-                                                <span>
-                                                {% if headerTranslations is not null and
-                                                    headerTranslations.get(locale) is not null %}
-                                                    {{ headerTranslations.get(locale).legend }}
-                                                {% endif %}
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <label>
                                                     Alt
                                                 </label>
                                                 <span>
@@ -57,19 +46,8 @@
                                                 {% endif %}
                                                 </span>
                                             </div>
-                                            <div>
-                                                <label>
-                                                    Copyright
-                                                </label>
-                                                <span>
-                                                {% if headerTranslations is not null and
-                                                    headerTranslations.get(locale) is not null %}
-                                                    {{ headerTranslations.get(locale).copyright }}
-                                                {% endif %}
-                                                </span>
-                                            </div>
                                             {% if form.parent.children.header.vars.value is not null %}
-                                            <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': form.parent.children.header.vars.value}) }}">modifier les traductions</a>
+                                            <a target="_blank" href="{{ path('admin_base_core_mediaimagesimple_edit', {'id': form.parent.children.header.vars.value}) }}">modifier les traductions</a>
                                             {% endif %}
                                         </div>
                                         <div class="form-group">

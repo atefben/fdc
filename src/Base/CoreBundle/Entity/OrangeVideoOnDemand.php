@@ -22,7 +22,7 @@ class OrangeVideoOnDemand extends Orange
     /**
      * @var MediaImage
      *
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
      */
     private $header;
@@ -48,7 +48,7 @@ class OrangeVideoOnDemand extends Orange
     /**
      * Set header
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $header
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $header
      * @return OrangeVideoOnDemand
      */
     public function setHeader(\Base\CoreBundle\Entity\MediaImage $header = null)
@@ -61,7 +61,7 @@ class OrangeVideoOnDemand extends Orange
     /**
      * Get header
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
      */
     public function getHeader()
     {
