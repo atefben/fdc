@@ -90,14 +90,14 @@ class OrangeVideoOnDemandAdmin extends Admin
                 'required_locales' => array(),
                 'fields' => array(
                     'title' => array(
-                        'label' => 'form.event.label_title',
+                        'label' => 'form.label_title',
                         'required' => true,
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.event.helper_title',
                     ),
                     'introduction' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.event.label_introduction',
+                        'label' => 'form.label_introduction',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                     ),

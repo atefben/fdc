@@ -117,7 +117,7 @@ class OrangeStudioAdmin extends Admin
                 )
             ))
             ->add('associatedFilms', 'sonata_type_collection', array(
-                'label' => 'form.label_orange_studio_film_associated',
+                'label' => 'form.orange_studio.label_orange_studio_film_associated',
                 'help' => 'form.orange_studio.helper_orange_studio_film_associated',
                 'by_reference' => false,
                 'required' => false,

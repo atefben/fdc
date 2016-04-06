@@ -20,7 +20,7 @@ class OrangeWidgetFilmOCS extends OrangeWidget
     /**
      * @var MediaImage
      *
-     * @ORM\ManyToOne(targetEntity="MediaImage")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
      */
     private $image;
@@ -43,7 +43,7 @@ class OrangeWidgetFilmOCS extends OrangeWidget
     /**
      * Set image
      *
-     * @param integer $image
+     * @param MediaImageSimple $image
      * @return OrangeWidgetFilmOCS
      */
     public function setImage($image)
@@ -56,7 +56,7 @@ class OrangeWidgetFilmOCS extends OrangeWidget
     /**
      * Get image
      *
-     * @return integer 
+     * @return MediaImageSimple 
      */
     public function getImage()
     {

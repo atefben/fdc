@@ -14,7 +14,9 @@ class OrangeWidgetFilmVODDummyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('image', 'sonata_type_model_list')
+            ->add('image', 'sonata_type_model_list', array(
+              'help' => 'form.helper_orange_widget_film_vod_image',
+            ))
         ;
     }
 }
