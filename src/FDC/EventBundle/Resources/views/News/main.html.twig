@@ -105,7 +105,7 @@
                                     </a>
                                 </h3>
                                 {%if director is defined and director|length > 1 %}
-                                    <p class="director"><a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
+                                    <p class="director">{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}<p>
                                 {% else %}
                                         <p class="director">
                                         {% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}

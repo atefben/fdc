@@ -9,6 +9,8 @@ use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 /**
@@ -31,6 +33,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"classics"})
      */
     private $id;
 
@@ -52,7 +55,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     private $widgets;
 
     /**
-     * @var User
+     * @var \Application\Sonata\UserBundle\Entity\User
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
@@ -60,7 +63,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     private $createdBy;
 
     /**
-     * @var User
+     * @var \Application\Sonata\UserBundle\Entity\User
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      *
@@ -71,6 +74,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
      * @var ArrayCollection
      *
      * @Assert\Valid()
+     * @Groups({"classics"})
      */
     protected $translations;
 
@@ -165,6 +169,22 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     public function getWidgets()
     {
         return $this->widgets;
+    }
+
+    /**
+     * @VirtualProperty()
+     * @Groups({"classics"})
+     * @return array
+     */
+    public function getMovieWidgets()
+    {
+        $widgets = array();
+        foreach ($this->widgets as $widget) {
+            if ($widget instanceof FDCPageLaSelectionCannesClassicsWidgetMovie) {
+                $widgets[] = $widget;
+            }
+        }
+        return $widgets;
     }
 
     /**

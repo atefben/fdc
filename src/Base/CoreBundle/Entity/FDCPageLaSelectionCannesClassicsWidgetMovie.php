@@ -21,7 +21,7 @@ class FDCPageLaSelectionCannesClassicsWidgetMovie extends FDCPageLaSelectionCann
 {
     /**
      * @ORM\ManyToOne(targetEntity="WidgetMovie")
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"classics"})
      */
     private $widgetMovie;
 

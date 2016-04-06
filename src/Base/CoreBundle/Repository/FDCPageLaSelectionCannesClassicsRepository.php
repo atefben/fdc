@@ -11,6 +11,22 @@ use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsTranslation;
  */
 class FDCPageLaSelectionCannesClassicsRepository extends EntityRepository
 {
+
+    /**
+     * @param $festival
+     * @return array
+     */
+    public function getApiList($festival, $locale)
+    {
+        $qb = $this
+            ->createQueryBuilder('cc')
+            ->join('cc.translations', 't')
+        ;
+        $this->addTranslationQueries($qb, 't', $locale);
+        return $qb->getQuery()->getResult();
+
+    }
+
     public function getBySlug($locale, $slug)
     {
         $qb = $this

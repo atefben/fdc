@@ -18,7 +18,7 @@
                 <h2>{{ title }}</h2>
                 {% set directors = prev|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                 {% for director in directors %}
-                    <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
+                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
                     {% if loop.index != directors|length %}
                         ,
                     {% endif %}

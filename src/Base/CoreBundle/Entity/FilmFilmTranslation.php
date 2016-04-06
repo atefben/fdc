@@ -44,7 +44,8 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "projection_list",
      *     "film_selection_section_show",
      *     "home",
-     *     "news_list"
+     *     "news_list",
+     *     "classics"
      * })
      */
     private $title;

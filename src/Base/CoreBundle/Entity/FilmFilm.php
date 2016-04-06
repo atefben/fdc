@@ -53,7 +53,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_show",
      *     "film_selection_section_show",
      *     "home",
-     *     "news_list"
+     *     "news_list",
+     *     "classics"
      * })
      *
      */
@@ -74,7 +75,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "classics"
      * })
      */
     private $slug;
@@ -93,7 +95,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_show",
      *     "film_list",
      *     "film_show",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
      * })
      *
      */
@@ -111,7 +113,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"film_list", "film_show"})
+     * @Groups({"film_list", "film_show", "classics"})
      */
     private $publishedAt;
 
@@ -131,7 +133,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_show",
      *     "news_list",
      *     "news_show",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "classics"
      * })
      *
      */
@@ -151,7 +154,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "classics"
      * })
      *
      */
@@ -171,7 +175,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_show"
+     *     "news_show",
+     *     "classics"
      * })
      *
      */
@@ -191,7 +196,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_show"
+     *     "news_show",
+     *     "classics"
      * })
      *
      */
@@ -336,7 +342,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_show",
      *     "film_selection_section_show",
      *     "news_list",
-     *     "award_list"
+     *     "award_list",
+     *     "classics"
      * })
      */
     private $medias;
@@ -386,7 +393,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_list",
      *     "film_selection_section_show",
      *     "home",
-     *     "news_list"
+     *     "news_list",
+     *     "classics"
      * })
      *
      */
@@ -449,7 +457,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show",
      *     "film_selection_section_show",
      *     "news_list",
-     *     "award_list"
+     *     "award_list",
+     *     "classics"
      * })
      */
     private $imageMain;
@@ -461,7 +470,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show",
      *     "film_selection_section_show",
      *     "news_list",
-     *     "award_list"
+     *     "award_list",
+     *     "classics"
      * })
      */
     private $imageCover;
@@ -555,7 +565,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_selection_section_show",
      *     "home",
      *     "news_list",
-     *     "award_list"
+     *     "award_list",
+     *     "classics"
      * })
      * @return array|ArrayCollection
      */

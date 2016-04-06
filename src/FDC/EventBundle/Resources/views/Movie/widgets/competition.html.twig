@@ -23,7 +23,7 @@
                     </p>
                     {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                     {% for director in directors %}
-                        <a class="director" href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">{{ director.fullName }}</a>
+                        {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
                         {% if loop.index != directors|length %}
                             ,
                         {% endif %}
