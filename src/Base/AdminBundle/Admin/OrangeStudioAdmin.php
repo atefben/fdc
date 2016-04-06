@@ -2,8 +2,8 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\OrangeSeriesAndCie;
-use Base\CoreBundle\Entity\OrangeSeriesAndCieTranslation;
+use Base\CoreBundle\Entity\OrangeStudio;
+use Base\CoreBundle\Entity\OrangeStudioTranslation;
 
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -71,7 +71,8 @@ class OrangeStudioAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
             ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+                'locales' => array('fr', 'en')
             ))
         ;
     }
@@ -83,6 +84,7 @@ class OrangeStudioAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
+                'locales' => array('fr', 'en'),
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array(),
@@ -109,13 +111,13 @@ class OrangeStudioAdmin extends Admin
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
-                        'choices' => OrangeSeriesAndCieTranslation::getStatuses(),
+                        'choices' => OrangeStudioTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle',
                     ),
                 )
             ))
             ->add('associatedFilms', 'sonata_type_collection', array(
-                'label' => 'form.label_orange_studio_film_associated',
+                'label' => 'form.orange_studio.label_orange_studio_film_associated',
                 'help' => 'form.orange_studio.helper_orange_studio_film_associated',
                 'by_reference' => false,
                 'required' => false,
@@ -137,13 +139,13 @@ class OrangeStudioAdmin extends Admin
             
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => OrangeSeriesAndCie::getAvailableTranslateOptions(),
+                'choices' => OrangeStudio::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
                 'multiple' => true,
                 'expanded' => true,
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => OrangeSeriesAndCie::getPriorityStatuses(),
+                'choices' => OrangeStudio::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)

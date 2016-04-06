@@ -32,7 +32,7 @@ class StatementAudio extends Statement
      *
      * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"persist"})
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "home"})
      */
     private $header;
 
@@ -40,7 +40,7 @@ class StatementAudio extends Statement
      * @var MediaAudio
      *
      * @ORM\ManyToOne(targetEntity="MediaAudio", cascade={"persist"})
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "news_show", "home"})
      * @Assert\NotNull()
      */
     private $audio;

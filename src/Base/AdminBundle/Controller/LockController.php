@@ -55,7 +55,10 @@ class LockController extends Controller
         'fdcpageprepare'                   => 'FDCPagePrepare',
         'fdcpageparticipate'               => 'FDCPageParticipate',
         'fdcpageparticipatesection'        => 'FDCPageParticipateSection',
-        'orangeseriesandcie'               => 'OrangeSeriesAndCie'
+        'orangeseriesandcie'               => 'OrangeSeriesAndCie',
+        'orangeprogrammationocs'           => 'OrangeProgrammationOCS',
+        'orangevideoondemand'              => 'OrangeVideoOnDemand',
+        'orangestudio'                     => 'OrangeStudio',
     );
 
     /**

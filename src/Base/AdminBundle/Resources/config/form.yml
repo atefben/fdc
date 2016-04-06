@@ -510,7 +510,7 @@ services:
             - { name: form.type, alias: 'orange_widget_film_studio_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.orange_widget_film_studio_dummy']]
-            - ['setMediaImageSimpleAdmin  ', ['@base.admin.media_image']]
+            - ['setMediaImageSimpleAdmin  ', ['@base.admin.media_image_simple']]
            
     base.admin.form.orange_widget_film_vod_type:
         scope: prototype
@@ -519,7 +519,7 @@ services:
             - { name: form.type, alias: 'orange_widget_film_vod_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.orange_widget_film_vod_dummy']]
-            - ['setMediaImageSimpleAdmin  ', ['@base.admin.media_image']]
+            - ['setMediaImageSimpleAdmin  ', ['@base.admin.media_image_simple']]
             
     base.admin.form.orange_widget_film_ocs_type:
         scope: prototype
@@ -528,4 +528,4 @@ services:
             - { name: form.type, alias: 'orange_widget_film_ocs_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.orange_widget_film_ocs_dummy']]
-            - ['setMediaImageSimpleAdmin  ', ['@base.admin.media_image']]
+            - ['setMediaImageSimpleAdmin  ', ['@base.admin.media_image_simple']]

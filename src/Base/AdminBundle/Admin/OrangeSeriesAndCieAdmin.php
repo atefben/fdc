@@ -2,7 +2,7 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\OrangeSeriesAndCie;
+use Base\CoreBundle\Entity\Orange;
 use Base\CoreBundle\Entity\OrangeSeriesAndCieTranslation;
 
 use Base\AdminBundle\Component\Admin\Admin;
@@ -71,7 +71,8 @@ class OrangeSeriesAndCieAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
             ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+                'locales' => array('fr', 'en')
             ))
         ;
     }
@@ -83,6 +84,7 @@ class OrangeSeriesAndCieAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
+                'locales' => array('fr', 'en'),
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array(),
@@ -127,13 +129,13 @@ class OrangeSeriesAndCieAdmin extends Admin
             
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => OrangeSeriesAndCie::getAvailableTranslateOptions(),
+                'choices' => Orange::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
                 'multiple' => true,
                 'expanded' => true,
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => OrangeSeriesAndCie::getPriorityStatuses(),
+                'choices' => Orange::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
             ))
             // must be added to display informations about creation user / date, update user / date (top of right sidebar)
