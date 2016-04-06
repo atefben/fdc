@@ -63,7 +63,8 @@ class MediaImageSimple implements TranslateMainInterface
      *     "film_selection_section_show",
      *     "event_show",
      *     "jury_list",
-     *     "jury_show"
+     *     "jury_show",
+     *     "classics"
      * })
      */
     protected $name;
@@ -98,7 +99,8 @@ class MediaImageSimple implements TranslateMainInterface
      *     "film_show",
      *     "event_show",
      *     "jury_list",
-     *     "jury_show"
+     *     "jury_show",
+     *     "classics"
      * })
      */
     protected $translations;
