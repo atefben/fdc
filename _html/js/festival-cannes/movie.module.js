@@ -3,7 +3,6 @@ var videoMovie;
 // Single Movie
 // =========================
 $(document).ready(function() {
-
   if($('.single-movie').length) {
 
     var cl = new CanvasLoader('canvasloader');
@@ -18,16 +17,16 @@ $(document).ready(function() {
       $('#slider-movie-videos .owl-item').removeClass('center');
       $('#slider-movie-videos .owl-item.active').first().addClass('center');
     }
-	
+  
     function imageCover() {
       $('.compat-object-fit-d').each(function() {
-      	var $container = $(this), imgUrl = $container.find('img').prop('src');
-     		if (imgUrl) {
-  		$container.css('backgroundImage', 'url('+imgUrl+')');
-      	}
+        var $container = $(this), imgUrl = $container.find('img').prop('src');
+        if (imgUrl) {
+          $container.css('backgroundImage', 'url('+imgUrl+')');
+        }
       });
-  	}
-  	imageCover();
+    }
+    imageCover();
 
     function initSliders() {
       // init slider
@@ -186,7 +185,7 @@ $(document).ready(function() {
           videoMovie.play();
         }, 500);
       });
-	  imageCover();
+      imageCover();
     }
 
     // previous and next over

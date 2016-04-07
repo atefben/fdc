@@ -64,14 +64,14 @@
                     <div class="contain-films-list">
                         {% for filmPerson in artist.films %}
                             <div class="item">
-								<a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
-								<div class="image compat-object-fit-b">
+                                <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
+                                <div class="image compat-object-fit-b">
                                     {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                         film: movie,
                                         film_format: 'mobile',
                                         film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                     }) %}
-								</div>
+                                </div>
                                 <div class="content-text">
                                     <span class="item-title">{{ filmPerson.film.titleVO }}</span>
                                     {% if filmPerson.film|trans_fallback('title') %}
@@ -94,7 +94,7 @@
                                         {% endspaceless %}
                                     {% endif %}
                                 </div>
-								</a>
+                                </a>
                             </div>
                         {% endfor %}
                         {% endif %}
@@ -120,15 +120,15 @@
                                     (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and
                                     awardAssociation.person.id == artist.id) %}
                                         <div class="item">
-											<a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
-											<div class="image compat-object-fit-b">
+                                            <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
+                                            <div class="image compat-object-fit-b">
                                                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                                     film: movie,
                                                     film_format: '366x488',
                                                     film_attrs: true,
                                                     film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                                 }) %}
-											</div>
+                                            </div>
                                             <div class="content-text">
                                                 <span class="item-title">{{ filmPerson.film.titleVO }}</span>
                                                 {% if awardAssociation.award.festival %}
@@ -148,7 +148,7 @@
                                                     {% endspaceless %}
                                                 {% endif %}
                                             </div>
-										</a>
+                                        </a>
                                         </div>
                                     {% endif %}
                                 {% endfor %}
@@ -205,8 +205,8 @@
                     {% for director in directors %}
                         <div class="item first">
                             <figure>
-								<a href="{{ path('fdc_event_artist_get', {'slug': director.slug }) }}">
-								<div class="image compat-object-fit-c">
+                                <a href="{{ path('fdc_event_artist_get', {'slug': director.slug }) }}">
+                                <div class="image compat-object-fit-c">
                                 {% set directorImage = director|person_image_portait %}
                                 {% if directorImage %}
                                     <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}">
@@ -222,12 +222,12 @@
                                         <img src="{% path media, '210x284' %}" alt="{{ director.fullName }}"/>
                                     {% endif %}
                                 {% endif %}
-								</div>
+                                </div>
                                 <figcaption>
                                 <span class="name">{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}</span>
                                     <span class="rank" {{ director|content_lang('profession') }}>{{ director|trans_fallback('profession') }}</span>
                                 </figcaption>
-								</a>
+                                </a>
                             </figure>
                         </div>
                     {% endfor %}

@@ -195,4 +195,5 @@ function editEvents() {
         $('.status-hidden select').val(1).change();
         $('.status-hidden').hide();
     }
+
 }

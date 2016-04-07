@@ -558,6 +558,8 @@ form:
         twitter: Twitter
         instagram: Instagram
         tumblr: Tumblr
+    widget_mosaic_movie_film_film_translation:
+        title: Titre traduit
     widget:
         mosaic_movie: Module mosaïque de films
         movie: Module liste de films

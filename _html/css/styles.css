@@ -13707,6 +13707,9 @@ input[type=submit] {
   margin-left: 190px;
   margin-top: 50px;
   margin-right: 86px;
+  width: 256px;
+  height: 348px;
+  object-fit: cover;
 }
 .palmares-list .categorie-items article .lot-item {
   padding-top: 0px;

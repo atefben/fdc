@@ -1,6 +1,15 @@
 <ul class="a2lix_translationsLocales nav nav-tabs">
     {% for translationsFields in form %}
         {% set locale = translationsFields.vars.name %}
+        {% if is_granted('ROLE_TRANSLATE_FR') %}
+            {% set currentLocale = 'fr' %}
+        {% elseif is_granted('ROLE_TRANSLATE_EN') %}
+            {% set currentLocale = 'en' %}
+        {% elseif is_granted('ROLE_TRANSLATE_ES') %}
+            {% set currentLocale = 'es' %}
+        {% elseif is_granted('ROLE_TRANSLATE_ZH') %}
+            {% set currentLocale = 'zh' %}
+        {% endif %}
         {% if is_granted('ROLE_TRANSLATE_' ~ locale|upper) %}
         <li data-locale="{{ locale }}" {% if currentLocale == locale %}class="nav-tab-active active"{% endif %}>
             {% if app.request.get('code') is not null %}
@@ -18,3 +27,7 @@
         {% endif %}
     {% endfor %}
 </ul>
+
+<script type="text/javascript">
+
+</script>
