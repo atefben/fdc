@@ -85,6 +85,8 @@ class FilmProjectionRepository extends EntityRepository
         $qb = $this
             ->createQueryBuilder('fp')
             ->addOrderBy('fp.startsAt', 'desc')
+            ->join('fp.programmationFilms', 'pf')
+            ->andWhere('pf.film IS NOT NULL')
         ;
 
 

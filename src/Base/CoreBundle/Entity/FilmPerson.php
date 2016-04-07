@@ -362,7 +362,13 @@ class FilmPerson implements TranslateMainInterface
     
     public function getFullName()
     {
-        return $this->getFirstname(). ' '. $this->getLastname();
+        if ($this->asianName) {
+            return $this->getLastname() . ' ' . $this->getFirstname();
+        }
+        else {
+            return $this->getFirstname(). ' '. $this->getLastname();
+        }
+
     }
 
     /**

@@ -14,10 +14,16 @@
 {% endspaceless %}')">
     <div class="bck-hover">
         <div class="contain_item">
-            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-            film: movie,
-            film_format: '259x352',
-            film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg'
+            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with (
+            {
+                film: movie,
+                film_format: '259x352',
+                film_attrs: {
+                    alt: movie|trans_fallback('title')?:movie.titleVO,
+                    'data-object-fit': 'cover'
+                },
+                film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg',
+            }
             }) %}
             <div class="infos-item-list">
                 {% if award_association is defined and award_association %}
@@ -26,21 +32,7 @@
                         <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
                         {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
                             {% set person = award_association.person %}
-                            {% if person.displayedImage == false and person.portraitImage and person.portraitImage|trans_fallback('file') %}
-                                <img src="{% path person.portraitImage|trans_fallback('file'), '55x75' %}"
-                                     alt="{{ person.firstname|escape('html_attr') }} {{ person.lastname|escape('html_attr') }}"
-                                     class="palme-dor-portrait">
-                            {% elseif person.landscapeImage == true and person.landscapeImage and person.landscapeImage|trans_fallback('file') %}
-                                <img src="{% path person.portraitImage|trans_fallback('file'), '55x75' %}"
-                                     alt="{{ person.firstname|escape('html_attr') }} {{ person.lastname|escape('html_attr') }}"
-                                     class="palme-dor-portrait">
-                            {% elseif person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
-                                {% set personImage = award_association.person|film_media(constant('Base\\CoreBundle\\Entity\\FilmPersonMediaInterface::TYPE_PERSON'))|first %}
-                                <img src="{% path personImage, 'tiny' %}"
-                                     alt="{{ person.firstname|escape('html_attr') }} {{ award_association.person.lastname|escape('html_attr') }}"
-                                     class="palme-dor-portrait">
-                            {% endif %}
-                            <h3 class="title-item">{{ person.firstname }} {{ person.lastname }}</h3>
+                            <h3 class="title-item">{{ person.fullName }}</h3>
                         {% endif %}
                     </div>
                 {% endif %}
