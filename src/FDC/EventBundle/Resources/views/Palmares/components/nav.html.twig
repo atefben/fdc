@@ -2,7 +2,7 @@
 
 <ul class="sub-nav-list">
     {% for tab in pages %}
-        {% set tabActive = (app.request.attributes.get('slug') == tab.slug) ? true : false %}
+        {% set tabActive = (app.request.attributes.get('slug') == tab|trans_fallback('slug')) ? true : false %}
         {% set tabPath = path('fdc_event_palmares_get', {'slug': tab|trans_fallback('slug') }) %}
         <li>
             <a href="{{ tabPath }}" class="{% if tabActive %}active{% endif %} ajax">
