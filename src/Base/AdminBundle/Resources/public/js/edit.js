@@ -176,6 +176,13 @@ function editEvents() {
             }
         }
 
+        if ($('select[name*="status"]').hasClass('orange')) {
+            status = ['4'];
+            if(locale != 'fr') {
+                status = ['0', '2', '3', '5'];
+            }
+        }
+
         $(e).find('option').each(function(i, e) {
             if ($.inArray($(e).val(), status) == -1) {
                 $(e).remove();
