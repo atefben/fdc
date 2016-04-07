@@ -180,6 +180,8 @@ sonata_media:
                 small:   { width: 187, height: 255, quality: 100 }
                 212x134: { width: 212 , height: 134 , quality: 100 }
                 293x185: { width: 293 , height: 185 , quality: 100 }
+                #event mosaic movie widget
+                180x240: { width: 180 , height: 240 , quality: 100 }
                 #film
                 366x488: { width: 366 , height: 488 , quality: 100 }
                 55x75: { width: 55 , height: 75 , quality: 100 }
