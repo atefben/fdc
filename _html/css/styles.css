@@ -15629,14 +15629,10 @@ input[type=submit] {
   vertical-align: bottom;
   width: 181px;
 }
-.artist .contain-films-list .item .compat-object-fit-b {
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  height: 284px;
-}
-.artist .contain-films-list .item .compat-object-fit-b img {
-  opacity: 0;
+.artist .contain-films-list .item img {
+  width: 183px;
+  height: 244px;
+  object-fit: cover;
 }
 .artist .contain-films-list .item .content-text {
   margin: 0 auto;
@@ -15705,15 +15701,11 @@ input[type=submit] {
 .artist .realisateurs .owl-carousel .owl-item {
   width: auto !important;
 }
-.artist .realisateurs #slide-artist .item .compat-object-fit-c {
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
+.artist .realisateurs #slide-artist .item img {
+  margin-bottom: 19px;
   width: 210px;
   height: 284px;
-}
-.artist .realisateurs #slide-artist .item .compat-object-fit-c img {
-  opacity: 0 !important;
+  object-fit: cover;
 }
 .artist .realisateurs #slide-artist .item a {
   color: #333;
@@ -15721,12 +15713,6 @@ input[type=submit] {
 .artist .realisateurs #slide-artist .item figcaption {
   margin-top: 15px;
   height: 38px;
-}
-.artist .realisateurs #slide-artist .item img {
-  display: block;
-  width: auto;
-  height: auto;
-  margin-bottom: 19px;
 }
 .artist .realisateurs .owl-controls {
   display: none;

@@ -79,7 +79,8 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      *     "projection_show",
      *     "film_selection_section_show",
      *     "news_list",
-     *     "award_list"
+     *     "award_list",
+     *     "classics"
      * })
      */
     private $filename;
@@ -94,7 +95,8 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "award_list"
+     *     "award_list",
+     *     "classics"
      * })
      */
     private $type;

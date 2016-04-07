@@ -65,10 +65,14 @@
                         {% for filmPerson in artist.films %}
                             <div class="item">
                                 <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
-                                <div class="image compat-object-fit-b">
+                                <div class="image">
                                     {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                         film: movie,
                                         film_format: 'mobile',
+                                        film_attrs: {
+                                            alt: movie|trans_fallback('title')?:movie.titleVO,
+                                            'data-object-fit': 'cover'
+                                        },
                                         film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                     }) %}
                                 </div>
@@ -121,11 +125,14 @@
                                     awardAssociation.person.id == artist.id) %}
                                         <div class="item">
                                             <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
-                                            <div class="image compat-object-fit-b">
+                                            <div class="image">
                                                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                                     film: movie,
                                                     film_format: '366x488',
-                                                    film_attrs: true,
+                                                    film_attrs: {
+                                                        alt: movie|trans_fallback('title')?:movie.titleVO,
+                                                        'data-object-fit': 'cover'
+                                                    },
                                                     film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                                 }) %}
                                             </div>
@@ -206,10 +213,10 @@
                         <div class="item first">
                             <figure>
                                 <a href="{{ path('fdc_event_artist_get', {'slug': director.slug }) }}">
-                                <div class="image compat-object-fit-c">
+                                <div class="image">
                                 {% set directorImage = director|person_image_portait %}
                                 {% if directorImage %}
-                                    <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}">
+                                    <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}" data-object-fit="cover">
                                 {% else %}
                                     {% set media = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
                                     {% if media is empty %}
@@ -219,7 +226,7 @@
                                         {% set photo = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
                                     {% endif %}
                                     {% if media is not empty %}
-                                        <img src="{% path media, '210x284' %}" alt="{{ director.fullName }}"/>
+                                        <img src="{% path media, '210x284' %}" alt="{{ director.fullName }}" data-object-fit="cover">
                                     {% endif %}
                                 {% endif %}
                                 </div>
