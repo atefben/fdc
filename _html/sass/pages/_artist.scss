@@ -147,12 +147,14 @@
       color:#c8a461;
       font-size: 1.125rem;
     }
-    .role{
+
+    .role {
       text-transform: uppercase;
       font-size: .875rem;
       font-family: $CamphorMedium;
     }
-    .item-separate{
+
+    .item-separate {
       color:#c8a461;
       font-family: $CamphorBold;
       font-size: 1.125rem;
@@ -176,9 +178,10 @@
     #slide-artist {
       .item {
         img {
-            width: 210px;
-            height: 284px;
-            object-fit: cover;
+          margin-bottom: 19px;
+          width: 210px;
+          height: 284px;
+          object-fit: cover;
         }
     
         a {
@@ -196,12 +199,6 @@
       // margin-left: 128px !important;
     }
 
-    #slide-artist .item img {
-      display: block;
-      width: auto;
-      height: auto;
-      margin-bottom: 19px;
-    }
     .owl-controls {
       display: none;
     }

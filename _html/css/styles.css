@@ -15706,6 +15706,7 @@ input[type=submit] {
   width: auto !important;
 }
 .artist .realisateurs #slide-artist .item img {
+  margin-bottom: 19px;
   width: 210px;
   height: 284px;
   object-fit: cover;
@@ -15716,12 +15717,6 @@ input[type=submit] {
 .artist .realisateurs #slide-artist .item figcaption {
   margin-top: 15px;
   height: 38px;
-}
-.artist .realisateurs #slide-artist .item img {
-  display: block;
-  width: auto;
-  height: auto;
-  margin-bottom: 19px;
 }
 .artist .realisateurs .owl-controls {
   display: none;
