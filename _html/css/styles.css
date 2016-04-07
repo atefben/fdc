@@ -15705,15 +15705,9 @@ input[type=submit] {
 .artist .realisateurs .owl-carousel .owl-item {
   width: auto !important;
 }
-.artist .realisateurs #slide-artist .item .compat-object-fit-c {
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
+.artist .realisateurs #slide-artist .item img {
   width: 210px;
   height: 284px;
-}
-.artist .realisateurs #slide-artist .item .compat-object-fit-c img {
-  opacity: 0 !important;
 }
 .artist .realisateurs #slide-artist .item a {
   color: #333;

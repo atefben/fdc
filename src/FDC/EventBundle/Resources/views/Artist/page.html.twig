@@ -206,10 +206,10 @@
                         <div class="item first">
                             <figure>
                                 <a href="{{ path('fdc_event_artist_get', {'slug': director.slug }) }}">
-                                <div class="image compat-object-fit-c">
+                                <div class="image">
                                 {% set directorImage = director|person_image_portait %}
                                 {% if directorImage %}
-                                    <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}">
+                                    <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}" data-object-fit="cover">
                                 {% else %}
                                     {% set media = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
                                     {% if media is empty %}
@@ -219,7 +219,7 @@
                                         {% set photo = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
                                     {% endif %}
                                     {% if media is not empty %}
-                                        <img src="{% path media, '210x284' %}" alt="{{ director.fullName }}"/>
+                                        <img src="{% path media, '210x284' %}" alt="{{ director.fullName }}" data-object-fit="cover">
                                     {% endif %}
                                 {% endif %}
                                 </div>

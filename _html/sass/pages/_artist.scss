@@ -6,36 +6,43 @@
 
 // 1. Global
 // =========================
-.artist{
-
-    padding: 0px 0px;
-    padding-top: 65px;
-  .nav.next, .nav.prev{
+.artist{ 
+  padding: 0px 0px;
+  padding-top: 65px;
+  
+  .nav.next, .nav.prev {
       @include transition(all 0.2s $smoothTransition);
   }
-  .info{
-    .category{
+  
+  .info {
+    .category {
       margin-right: 2px;
     }
   }
-  .button{
+  
+  .button {
     padding: 0 19px 0 39px;
   }
-  .small-container{
+  
+  .small-container {
     margin: 0 auto;
     width: 649px;
   }
-  .single-photo{
+  
+  .single-photo {
     margin-bottom: 76px;
   }
-  .city{
+  
+  .city {
     text-transform: uppercase;
   }
-  .title-article{
+  
+  .title-article {
     margin-top: 16px;
     margin-bottom:29px;
   }
-  .title-cat-artist{
+  
+  .title-cat-artist {
     font-family: $Playfair;
     text-transform: none;
     letter-spacing: normal;
@@ -44,7 +51,8 @@
     margin-bottom: 0px;
     font-weight: normal;
   }
-  .title-art-artist{
+
+  .title-art-artist {
     font-family: $Playfair;
     text-transform: none;
     letter-spacing: normal;
@@ -54,37 +62,43 @@
     border-top: 1px solid #dfdfdf;
     font-weight: normal;
   }
-  .paragraph{
+  
+  .paragraph {
     color: #666;
     font-size: 1rem;
     line-height: 1.7em;
     margin-bottom: 5px;
   }
-  .biographie{
+  
+  .biographie {
      margin-bottom: 70px;
   }
-  .contain-films-list{
 
-    .item{
+  .contain-films-list {
+    .item {
       line-height: 18px;
       margin: 0px 16px;
       display: inline-block;
       min-height: 418px;
       vertical-align: bottom;
       width: 181px;
+
       .compat-object-fit-b {
         background-size: cover;
         background-position: top center;
         background-repeat: no-repeat;
         height: 284px;
+
         img {
           opacity: 0;
         }
-	   }
-      .content-text{
-       margin: 0 auto;
-       text-align: center;
-        .item-title{
+      }
+
+      .content-text {
+        margin: 0 auto;
+        text-align: center;
+     
+        .item-title {
           font-family: $CamphorBold;
           text-transform: uppercase;
           color:#c8a461;
@@ -92,25 +106,29 @@
           display: block;
           padding-top: 13px;
         }
+        
         .item-date{
           font-family: $CamphorRegular;
           color:#999999;
           font-size: .6875rem;
           padding-right: 5px;
         }
-        .item-categ{
+        
+        .item-categ {
           font-family: $CamphorMedium;
           text-transform: uppercase;
           font-size: .6875rem;
           color:#333333;
         }
-        .item-details{
+
+        .item-details {
           font-family: $CamphorRegular;
           font-size: .75rem;
           color:#666666;
           display: block;
         }
-        .item-sub-title{
+
+        .item-sub-title {
           font-size: .625rem;
            text-transform: uppercase;
           color:#c8a461;
@@ -119,11 +137,12 @@
       }
     }
   }
-  
-  .jury{
+
+  .jury {
     text-align: center;
     padding-bottom: 50px;
-    .rank{
+
+    .rank {
       font-family: $CamphorBold;
       color:#c8a461;
       font-size: 1.125rem;
@@ -141,62 +160,67 @@
     }
   }
   
-  .realisateurs{
+  .realisateurs {
     background-color: #f6f6f6;
     padding-bottom: 48px;
-    .title{
+
+    .title {
       padding: 70px 0px;
       padding-bottom: 53px;
     }
-    .owl-carousel .owl-item{
-            width: auto !important;
+    
+    .owl-carousel .owl-item {
+      width: auto !important;
     }
-    #slide-artist{
-      .item{
-        .compat-object-fit-c {
-          background-size: cover;
-          background-position: top center;
-          background-repeat: no-repeat;
-		  width: 210px;
-          height: 284px;
-          img {
-            opacity: 0 !important;
-          }
-  	   }
-	  a {
-		  color:#333;
-	   }
-	   figcaption {
-		   margin-top:15px;
-		   height:38px;
-	   }
+
+    #slide-artist {
+      .item {
+        img {
+            width: 210px;
+            height: 284px;
+        }
+    
+        a {
+          color:#333;
+        }
+
+        figcaption {
+          margin-top:15px;
+          height:38px;
+        }
       }
     }
-    .first{
-//       margin-left: 128px !important;
+
+    .first {
+      // margin-left: 128px !important;
     }
-    #slide-artist .item img{
+
+    #slide-artist .item img {
       display: block;
       width: auto;
       height: auto;
       margin-bottom: 19px;
     }
-    .owl-controls{
+    .owl-controls {
       display: none;
     }
-    figure{
+
+    figure {
       text-align: center;
       margin: 0px 20px;
-      span{
+      
+      span {
         display: block;
       }
-      .name{
+      
+      .name {
         text-transform: uppercase;
         font-family: $CamphorBold;
         padding-bottom: 4px;
         font-size: .875rem;
       }
-      .rank{
+      
+      .rank {
         color:#c8a461;
         font-size:.8125rem;
         font-family: $CamphorItalic;
