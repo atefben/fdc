@@ -125,3 +125,4 @@ security:
         - ROLE_TRANSLATE_ZH
         - ROLE_ORANGE
         - ROLE_BASE_ADMIN_FILM_FILM_TAG_ADMIN
+        - ROLE_EVENT
