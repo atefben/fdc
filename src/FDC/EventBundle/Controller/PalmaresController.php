@@ -176,7 +176,7 @@ class PalmaresController extends Controller
         $parameters['award_associations']['camerador'] = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmAwardAssociation')
-            ->getByCategoryWithAward($parameters['festival'], $parameters['category'])
+            ->getCameraDorWithAward($parameters['festival'])
         ;
         $competitionIds = array(
             $parameters['page']->getSelectionLongsMetrages()->getId(),
@@ -184,21 +184,27 @@ class PalmaresController extends Controller
         );
         $parameters['award_associations']['competition'] = $this
             ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FilmAwardAssociation')
-            ->getCameraDOr($parameters['festival'], $competitionIds)
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->getPalmaresCameraDOr($parameters['festival'], $competitionIds, $parameters['award_associations']['camerador'])
         ;
 
-        $othersId = array();
+        $parameters['award_associations']['others'] = array();
         foreach ($parameters['page']->getOtherSelectionSectionsAssociated() as $associated) {
             if (!$associated->getAssociation()) {
                 continue;
             }
             $selectionSectionId = $associated->getAssociation()->getId();
-            $parameters['award_associations'][$selectionSectionId] = $this
+            $movies = $this
                 ->getDoctrineManager()
-                ->getRepository('BaseCoreBundle:FilmAwardAssociation')
-                ->getCameraDOr($parameters['festival'], array($selectionSectionId))
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->getPalmaresCameraDOr($parameters['festival'], array($selectionSectionId), $parameters['award_associations']['camerador'])
             ;
+            if ($movies) {
+                $parameters['award_associations']['others'][] = array(
+                    'selection' => $associated->getAssociation(),
+                    'movies' => $movies,
+                );
+            }
         }
     }
 }

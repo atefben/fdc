@@ -119,7 +119,8 @@ class FilmFilmRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function getFilmsByIds($ids) {
+    public function getFilmsByIds($ids)
+    {
         $qb = $this->createQueryBuilder('f');
 
         $qb
@@ -217,6 +218,30 @@ class FilmFilmRepository extends EntityRepository
 
         $this->addMasterQueries($qb, 'f', $festival, false);
 
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getPalmaresCameraDOr($festival, $selectionSectionIds = array(), $exclude = array())
+    {
+        $qb = $this
+            ->createQueryBuilder('f')
+            ->select('f')
+            ->join('f.translations', 't')
+            ->join('f.selectionSection', 'ss')
+            ->join('f.medias', 'm')
+            ->andWhere('f.directorFirst = :true')
+            ->setParameter('true', true)
+            ->andWhere('f.selectionSection IN (:selectionsSections)')
+            ->setParameter('selectionsSections', $selectionSectionIds)
+            ->addOrderBy('ss.position', 'asc')
+        ;
+        if ($exclude) {
+            $qb
+                ->andWhere('f.id NOT IN (:exclude)')
+                ->setParameter('exclude', $exclude)
+            ;
+        }
+        $this->addMasterQueries($qb, 'f', $festival, false);
         return $qb->getQuery()->getResult();
     }
 
