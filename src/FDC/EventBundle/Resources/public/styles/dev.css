@@ -252,3 +252,8 @@
 .single-movie .press .contacts .wrapper .vCenterKidTop .prod div {
     padding: 2px 0;
 }
+
+.categorie-items article .infos-item-list .nom-item a {
+    color: #c8a461;
+
+}

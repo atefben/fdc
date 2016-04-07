@@ -34,7 +34,7 @@
                     {% if movie.awards %}
                         {% set award_association = movie.awards|first %}
                     {% endif %}
-                    {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
+                    {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' with({'displayDuration': true}) %}
                 {% endfor %}
             </section>
         {% endif %}
@@ -48,7 +48,7 @@
                     {% if movie.awards %}
                         {% set award_association = movie.awards|first %}
                     {% endif %}
-                    {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
+                    {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' with({'displayDuration': true}) %}
                 {% endfor %}
             </section>
         {% endfor %}
