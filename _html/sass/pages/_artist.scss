@@ -6,7 +6,7 @@
 
 // 1. Global
 // =========================
-.artist{ 
+.artist { 
   padding: 0px 0px;
   padding-top: 65px;
   
@@ -107,7 +107,7 @@
           padding-top: 13px;
         }
         
-        .item-date{
+        .item-date {
           font-family: $CamphorRegular;
           color:#999999;
           font-size: .6875rem;
@@ -178,6 +178,7 @@
         img {
             width: 210px;
             height: 284px;
+            object-fit: cover;
         }
     
         a {

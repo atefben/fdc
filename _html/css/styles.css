@@ -15708,6 +15708,7 @@ input[type=submit] {
 .artist .realisateurs #slide-artist .item img {
   width: 210px;
   height: 284px;
+  object-fit: cover;
 }
 .artist .realisateurs #slide-artist .item a {
   color: #333;
