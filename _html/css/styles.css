@@ -13115,15 +13115,10 @@ input[type=submit] {
   margin: 0 auto;
   display: table;
 }
-.categorie-items article .contain_item .compat-object-fit-d {
+.categorie-items article .contain_item img {
   height: 341px;
   width: 256px;
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-}
-.categorie-items article .contain_item .compat-object-fit-d img {
-  opacity: 0;
+  object-fit: cover;
 }
 .categorie-items article .contain_item .list-camera-or .title-item {
   padding-top: 85px;
@@ -13153,6 +13148,7 @@ input[type=submit] {
   text-transform: uppercase;
 }
 .categorie-items article .infos-item-list .nom-item {
+  display: inline-block;
   color: #c8a461;
   padding-bottom: 4px;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
@@ -13461,11 +13457,15 @@ input[type=submit] {
 .selection-officielle .single-article {
   padding: 0px !important;
 }
+.selection-officielle figure {
+  overflow: hidden;
+}
 .selection-officielle figure figcaption {
   position: relative;
   z-index: 2;
   height: 103px;
   text-align: center;
+  background: #141414;
 }
 .selection-officielle figure figcaption .name {
   color: #fff;
@@ -13491,7 +13491,7 @@ input[type=submit] {
   color: #c8a461;
   border-top: 0px solid #fff;
 }
-.selection-officielle figure:hover a img, .selection-officielle figure:hover a .compat-object-fit {
+.selection-officielle figure:hover a .image img, .selection-officielle figure:hover a .image.compat-object-fit {
   -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -13762,16 +13762,11 @@ input[type=submit] {
 .camerador .categorie-items article .contain_item {
   width: 674px;
 }
-.camerador .categorie-items article .contain_item .compat-object-fit-d {
+.camerador .categorie-items article .contain_item img {
+  margin: 40px 0 0 0;
   height: 341px;
   width: 256px;
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  margin: 40px 0 0 0;
-}
-.camerador .categorie-items article .contain_item .compat-object-fit-d img {
-  opacity: 0;
+  object-fit: cover;
 }
 .camerador .categorie-items article img {
   margin-left: 74px;
