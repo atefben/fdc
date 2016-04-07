@@ -3,10 +3,9 @@ sonata_admin:
     security:
         handler: sonata.admin.security.handler.acl
         information:
-            WRITER:    [VIEW, LIST, CREATE, EDIT, OPERATOR]
-            EDITOR: [VIEW, LIST, CREATE, EDIT, DELETE, UNDELETE, OPERATOR]
+            # must be added for role listed in groups/security_*.yml to works
             LIST: [LIST]
-            TRANSLATOR: [VIEW, LIST, EDIT, EXPORT]
+            LIST_CREATE_EDIT_DELETE: [LIST, CREATE, EDIT, DELETE]
             ADMIN:    [VIEW, LIST, CREATE, EDIT, DELETE, UNDELETE, EXPORT, OPERATOR]
         # permissions not related to an object instance and also to be available when objects do not exist
         # the DELETE admin permission means the user is allowed to batch delete objects

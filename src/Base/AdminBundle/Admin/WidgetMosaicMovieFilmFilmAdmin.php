@@ -51,10 +51,11 @@ class WidgetMosaicMovieFilmFilmAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
-                'label'  => false,
+                'label'  => 'form.widget_mosaic_movie_film_film_translation.label_title',
+                'locales' => array('fr'),
                 'fields' => array(
                     'title'      => array(
-                        'label'              => 'form.widget_mosaic_movie_film_film_translation.label_title',
+                        'label'              => false,
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'createdAt' => array(
