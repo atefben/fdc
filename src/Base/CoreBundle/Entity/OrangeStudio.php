@@ -66,4 +66,15 @@ class OrangeStudio extends Orange
     {
         return $this->associatedFilms;
     }
+    
+    public function __toString() {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId() && $this->findTranslationByLocale('fr')) {
+            $string = $this->findTranslationByLocale('fr')->getTitle();
+            $string = $this->truncate($string, 40, '..."', true);
+        }
+
+        return $string;
+    }
 }

@@ -18,7 +18,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class OrangeVideoOnDemand extends Orange
 {
     use Translatable;
-    
+
     /**
      * @var MediaImage
      *
@@ -26,7 +26,7 @@ class OrangeVideoOnDemand extends Orange
      *
      */
     private $header;
-    
+
     /**
      * @var MediaImage
      *
@@ -34,8 +34,8 @@ class OrangeVideoOnDemand extends Orange
      *
      */
     private $video;
-    
-    
+
+
     /**
      * @var OrangeWidget
      *
@@ -44,7 +44,7 @@ class OrangeVideoOnDemand extends Orange
      * @ORM\OrderBy({"section" = "ASC", "position" = "ASC"})
      */
     protected $widgets;
-    
+
     /**
      * Set video
      *
@@ -61,7 +61,7 @@ class OrangeVideoOnDemand extends Orange
     /**
      * Get video
      *
-     * @return \Base\CoreBundle\Entity\MediaVideo 
+     * @return \Base\CoreBundle\Entity\MediaVideo
      */
     public function getVideo()
     {
@@ -84,10 +84,21 @@ class OrangeVideoOnDemand extends Orange
     /**
      * Get header
      *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     * @return \Base\CoreBundle\Entity\MediaImageSimple
      */
     public function getHeader()
     {
         return $this->header;
+    }
+
+    public function __toString() {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId() && $this->findTranslationByLocale('fr')) {
+            $string = $this->findTranslationByLocale('fr')->getTitle();
+            $string = $this->truncate($string, 40, '..."', true);
+        }
+
+        return $string;
     }
 }
