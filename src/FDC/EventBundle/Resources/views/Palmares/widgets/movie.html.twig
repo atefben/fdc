@@ -56,7 +56,8 @@
                     {% endfor %}
                         {{ author|raw }}
                     {% endspaceless %}</span>
-                <span class="time-item">{% spaceless %}
+                {% if displayDuration is defined %}
+                    <span class="time-item">{% spaceless %}
                         {% set duration = [] %}
                         {% if movie.duration is not empty %}
                             {% set duration = movie.duration|split('.') %}
@@ -67,6 +68,7 @@
                             {% if hours > 0 %}{{ hours }}:{% endif %}{{ (minutes|length) == 1 ? '0' ~ minutes : minutes }}
                         {% endif %}
                     {% endspaceless %}</span>
+                {% endif %}
             </div>
         </div>
     </div>
