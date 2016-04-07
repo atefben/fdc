@@ -27,10 +27,6 @@
                                             {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                                 film: movie,
                                                 film_format: 'mobile',
-                                                film_attrs: {
-                                                    alt: movie|trans_fallback('title')?:movie.titleVO,
-                                                    'data-object-fit': 'cover'
-                                                },
                                                 film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg'
                                             }) %}
                                         </a>
