@@ -53,7 +53,7 @@ class OrangeWidgetMovieYoutubeType extends BaseType
                         'subtitle' => array(
                             'constraints' => array(
                             ),
-                            'required' => true,
+                            'required' => false,
                             'label' => 'form.label_orange_series_widget_video_youtube_subtitle',
                             'translation_domain' => 'BaseAdminBundle',
                         ),

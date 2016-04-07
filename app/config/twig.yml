@@ -86,3 +86,7 @@ twig:
         admin_fdc_page_award_camera_dor_id: %admin_fdc_page_award_camera_dor_id%
         admin_fdc_page_award_all_awards_id: %admin_fdc_page_award_all_awards_id%
         admin_fdc_page_event_id: %admin_fdc_page_event_id%
+        #orange
+        admin_fdc_orange_series_id: %admin_fdc_orange_series_id%
+        admin_fdc_orange_vod_id: %admin_fdc_orange_vod_id%
+        admin_fdc_orange_studio_id: %admin_fdc_orange_studio_id%
