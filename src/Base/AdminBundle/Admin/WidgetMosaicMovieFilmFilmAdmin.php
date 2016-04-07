@@ -50,11 +50,17 @@ class WidgetMosaicMovieFilmFilmAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('image', 'sonata_type_model_list', array(
+                'label' => 'form.widget_mosaic_movie_film_film.image',
+                'required' => false
+            ))
             ->add('translations', 'a2lix_translations', array(
                 'label'  => 'form.widget_mosaic_movie_film_film_translation.label_title',
+                'required' => false,
                 'locales' => array('fr'),
                 'fields' => array(
                     'title'      => array(
+                        'required' => false,
                         'label'              => false,
                         'translation_domain' => 'BaseAdminBundle',
                     ),
@@ -66,7 +72,6 @@ class WidgetMosaicMovieFilmFilmAdmin extends Admin
                     ),
                 )
             ))
-            ->add('film', 'sonata_type_model_list')
             ->add('titleOriginal')
             ->add('year')
         ;

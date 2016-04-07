@@ -62,7 +62,17 @@
                     {% endif %}
                 </section>
                 <section class="categorie-items contain-jurys-list grid">
-                    <h1 class="title-list-cat title">{{ 'juries.role.title.membresdujury'|trans }}</h1>
+                    <h1 class="title-list-cat title">
+                        {% if page.id == admin_fdc_page_jury_certain_regard_id %}
+                            {{ 'juries.role.title.membresdujury.regard'|trans }}
+                        {%  elseif page.id == admin_fdc_page_jury_camera_dor_id %}
+                            {{ 'juries.role.title.membresdujury.camera'|trans }}
+                        {%  elseif page.id == admin_fdc_page_jury_long_metrages_id %}
+                            {{ 'juries.role.title.membresdujury.long'|trans }}
+                        {%  elseif page.id == admin_fdc_page_jury_cinefondation_courts_metrages_id %}
+                            {{ 'juries.role.title.membresdujury.court'|trans }}
+                        {%  endif %}
+                    </h1>
                     <div id="gridJurys" class="grid-wrapper">
                         <div class="grid-sizer"></div>
                         {% for member in members %}

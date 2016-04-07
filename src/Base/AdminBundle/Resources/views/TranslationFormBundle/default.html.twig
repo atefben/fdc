@@ -1,4 +1,9 @@
 {# added translations custom display #}
+
+{% block base_admin_widget_mosaic_movie_film_film_a2lix_translations_widget %}
+    {{ form_widget(form.children.fr) }}
+{% endblock %}
+
 {% block base_admin_press_statement_info_translations_a2lix_translations_widget %}
     {% include 'BaseAdminBundle:TranslationFormBundle:press_statement_info.html.twig' %}
 {% endblock %}
