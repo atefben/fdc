@@ -133,7 +133,7 @@ class GroupsUpdateCommand extends ContainerAwareCommand
         if ($group == null) {
             $group = new Group('Orange');
         }
-        $group->setRoles(array('ROLE_ORANGE'));
+        $group->setRoles(array('ROLE_ORANGE_ADMIN'));
         if ($group->getId() == null) {
             $em->persist($group);
         }
