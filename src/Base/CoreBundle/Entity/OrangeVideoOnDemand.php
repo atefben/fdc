@@ -46,29 +46,6 @@ class OrangeVideoOnDemand extends Orange
     protected $widgets;
     
     /**
-     * Set header
-     *
-     * @param \Base\CoreBundle\Entity\MediaImageSimple $header
-     * @return OrangeVideoOnDemand
-     */
-    public function setHeader(\Base\CoreBundle\Entity\MediaImage $header = null)
-    {
-        $this->header = $header;
-
-        return $this;
-    }
-
-    /**
-     * Get header
-     *
-     * @return \Base\CoreBundle\Entity\MediaImageSimple 
-     */
-    public function getHeader()
-    {
-        return $this->header;
-    }
-    
-    /**
      * Set video
      *
      * @param \Base\CoreBundle\Entity\MediaVideo $video
@@ -89,5 +66,28 @@ class OrangeVideoOnDemand extends Orange
     public function getVideo()
     {
         return $this->video;
+    }
+
+    /**
+     * Set header
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $header
+     * @return OrangeVideoOnDemand
+     */
+    public function setHeader(\Base\CoreBundle\Entity\MediaImageSimple $header = null)
+    {
+        $this->header = $header;
+
+        return $this;
+    }
+
+    /**
+     * Get header
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getHeader()
+    {
+        return $this->header;
     }
 }
