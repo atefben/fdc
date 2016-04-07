@@ -122,3 +122,4 @@ security:
         - ROLE_TRANSLATE_EN
         - ROLE_TRANSLATE_ES
         - ROLE_TRANSLATE_ZH
+        - ROLE_ORANGE

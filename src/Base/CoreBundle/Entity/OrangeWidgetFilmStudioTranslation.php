@@ -22,14 +22,14 @@ class OrangeWidgetFilmStudioTranslation
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="text")
+     * @ORM\Column(name="title", type="text", nullable=true)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 

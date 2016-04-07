@@ -27,7 +27,7 @@ class OrangeWidgetFilmStudio extends OrangeWidget
     /**
      * @var string
      *
-     * @ORM\Column(name="producer", type="text")
+     * @ORM\Column(name="producer", type="text", nullable=true)
      */
     private $producer;
 

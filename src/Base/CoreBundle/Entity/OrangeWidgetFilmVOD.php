@@ -28,14 +28,14 @@ class OrangeWidgetFilmVOD extends OrangeWidget
     /**
      * @var string
      *
-     * @ORM\Column(name="copy", type="text")
+     * @ORM\Column(name="copy", type="text", nullable=true)
      */
     private $copy;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="producer", type="text")
+     * @ORM\Column(name="producer", type="text", nullable=true)
      */
     private $producer;
     

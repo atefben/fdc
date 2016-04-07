@@ -28,14 +28,14 @@ class OrangeWidgetFilmOCS extends OrangeWidget
     /**
      * @var integer
      *
-     * @ORM\Column(name="name", type="integer")
+     * @ORM\Column(name="name", type="integer", nullable=true)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="producer", type="text")
+     * @ORM\Column(name="producer", type="text", nullable=true)
      */
     private $producer;
 

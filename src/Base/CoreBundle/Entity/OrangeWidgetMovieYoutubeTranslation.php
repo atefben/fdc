@@ -22,14 +22,14 @@ class OrangeWidgetMovieYoutubeTranslation
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="text")
+     * @ORM\Column(name="title", type="text", nullable=true)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="subtitle", type="text")
+     * @ORM\Column(name="subtitle", type="text", nullable=true)
      */
     private $subtitle;
 

@@ -21,21 +21,21 @@ class OrangeWidgetFilmOCSTranslation
     /**
      * @var string
      *
-     * @ORM\Column(name="legend", type="text")
+     * @ORM\Column(name="legend", type="text", nullable=true)
      */
     private $legend;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="text")
+     * @ORM\Column(name="title", type="text", nullable=true)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
