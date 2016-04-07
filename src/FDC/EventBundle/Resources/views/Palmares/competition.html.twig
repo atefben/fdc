@@ -1,34 +1,37 @@
-<section class="categorie-items">
-
-    {% if all is defined and all %}
-        <h3 class="sub-cat-title">
-            {{ (page|trans_fallback('nameLongsMetrages'))?:(page.selectionLongsMetrages|trans_fallback('name')) }}
-        </h3>
-    {% else %}
-        <div class="title-list-cat">
-            <h2 class="title">
+{% if award_associations[page.selectionLongsMetrages.id] and award_associations[page.selectionLongsMetrages.id]|length %}
+    <section class="categorie-items">
+        {% if all is defined and all %}
+            <h3 class="sub-cat-title">
                 {{ (page|trans_fallback('nameLongsMetrages'))?:(page.selectionLongsMetrages|trans_fallback('name')) }}
-            </h2>
-        </div>
-    {% endif %}
-    {% for award_association in award_associations[page.selectionLongsMetrages.id] %}
-        {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
-    {% endfor %}
-</section>
+            </h3>
+        {% else %}
+            <div class="title-list-cat">
+                <h2 class="title">
+                    {{ (page|trans_fallback('nameLongsMetrages'))?:(page.selectionLongsMetrages|trans_fallback('name')) }}
+                </h2>
+            </div>
+        {% endif %}
+        {% for award_association in award_associations[page.selectionLongsMetrages.id] %}
+            {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
+        {% endfor %}
+    </section>
+{% endif %}
 
-<section class="categorie-items">
-    {% if all is defined and all %}
-        <h3 class="sub-cat-title">
-            {{ (page|trans_fallback('nameCourtsMetrages'))?:(page.selectionCourtsMetrages|trans_fallback('name')) }}
-        </h3>
-    {% else %}
-        <div class="title-list-cat">
-            <h2 class="title">
+{% if award_associations[page.selectionLongsMetrages.id] and award_associations[page.selectionCourtsMetrages.id]|length %}
+    <section class="categorie-items">
+        {% if all is defined and all %}
+            <h3 class="sub-cat-title">
                 {{ (page|trans_fallback('nameCourtsMetrages'))?:(page.selectionCourtsMetrages|trans_fallback('name')) }}
-            </h2>
-        </div>
-    {% endif %}
-    {% for award_association in award_associations[page.selectionCourtsMetrages.id] %}
-        {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
-    {% endfor %}
-</section>
+            </h3>
+        {% else %}
+            <div class="title-list-cat">
+                <h2 class="title">
+                    {{ (page|trans_fallback('nameCourtsMetrages'))?:(page.selectionCourtsMetrages|trans_fallback('name')) }}
+                </h2>
+            </div>
+        {% endif %}
+        {% for award_association in award_associations[page.selectionCourtsMetrages.id] %}
+            {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
+        {% endfor %}
+    </section>
+{% endif %}
