@@ -5,17 +5,16 @@
 $(document).ready(function() {
   //1. Jury
   if($('.jurys-list').length){
-      if($('#gridJurys').length) {
-        $('#gridJurys .image').each(function() {
-          if(isIE()) {
-            var $container = $(this), imgUrl     = $container.find('img').prop('src');
-            if (imgUrl) {
-              $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
-            }
-          }
-        });
-      }
-  $('.jurys-list .sub-nav-list a').on('click',function(e){
+    if($('#gridJurys').length) {
+      $('#gridJurys .image').each(function() {
+        var $container = $(this), imgUrl     = $container.find('img').prop('src');
+        if (imgUrl) {
+          $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
+        }
+      });
+    }
+    
+    $('.jurys-list .sub-nav-list a').on('click',function(e){
       e.preventDefault();
 
       if($(this).is(':not(.active)')) {
@@ -33,11 +32,9 @@ $(document).ready(function() {
                   itemSelector: '.item'
                 });
               $('#gridJurys .image').each(function() {
-                if(isIE()) {
-                  var $container = $(this), imgUrl     = $container.find('img').prop('src');
-                  if (imgUrl) {
-                    $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
-                  }
+                var $container = $(this), imgUrl     = $container.find('img').prop('src');
+                if (imgUrl) {
+                  $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
                 }
               });
              });

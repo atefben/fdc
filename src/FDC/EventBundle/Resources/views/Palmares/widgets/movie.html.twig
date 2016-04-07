@@ -14,8 +14,7 @@
 {% endspaceless %}')">
     <div class="bck-hover">
         <div class="contain_item">
-            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with (
-            {
+            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                 film: movie,
                 film_format: '259x352',
                 film_attrs: {
@@ -23,7 +22,6 @@
                     'data-object-fit': 'cover'
                 },
                 film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg',
-            }
             }) %}
             <div class="infos-item-list">
                 {% if award_association is defined and award_association %}
