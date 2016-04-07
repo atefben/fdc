@@ -27,6 +27,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
  *  "video" = "EventWidgetVideo",
  *  "video_youtube" = "EventWidgetVideoYoutube",
  *  "subtitle" = "EventWidgetSubtitle",
+ *  "mosaic_movie" = "EventWidgetMosaicMovie"
  * })
  */
 abstract class EventWidget

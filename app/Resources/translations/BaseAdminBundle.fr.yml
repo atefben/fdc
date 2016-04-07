@@ -559,6 +559,7 @@ form:
         instagram: Instagram
         tumblr: Tumblr
     widget:
+        mosaic_movie: Module mosaïque de films
         movie: Module liste de films
         subtitle: Module sous-titre
         intro: Module chapeau

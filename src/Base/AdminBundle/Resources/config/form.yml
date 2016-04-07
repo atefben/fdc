@@ -168,6 +168,16 @@ services:
             - { name: form.type, alias: 'event_widget_quote_type'}
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
+    base.admin.form.event_widget_mosaic_movie_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\EventWidgetMosaicMovieType
+        tags:
+            - { name: form.type, alias: 'event_widget_mosaic_movie_type'}
+        calls:
+            - ['setEventWidgetMosaicMovieDummyAdmin', ['@base.admin.event_widget_mosaic_movie_dummy']]
+            - ['setWidgetMosaicMovieAdmin', ['@base.admin.widget_mosaic_movie']]
+
+    # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.event_widget_audio_type:
         scope: prototype
         class: Base\AdminBundle\Form\Type\EventWidgetAudioType

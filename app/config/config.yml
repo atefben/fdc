@@ -34,6 +34,7 @@ imports:
     - { resource: roles/groups/security_super_admin.yml }
     - { resource: roles/groups/security_admin_pages.yml }
     - { resource: roles/groups/security_journalist.yml }
+    - { resource: roles/groups/security_orange.yml }
 
 parameters:
     #sonata

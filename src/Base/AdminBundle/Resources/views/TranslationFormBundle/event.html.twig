@@ -71,10 +71,8 @@
                                             {{ form_label(form.parent.children.displayedMobile) }}
                                         </div>
 
-                                        {{ form_widget(form.parent.children.publishedAt) }}
-                                        {{ form_widget(form.parent.children.publishEndedAt) }}
-
-
+                                        {{ form_row(form.parent.children.publishedAt) }}
+                                        {{ form_row(form.parent.children.publishEndedAt) }}
                                         {{ form_row(translationsFields.status) }}
 
                                         <div class="form-group fdc-input-border">
@@ -170,6 +168,8 @@
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'event_widget_subtitle_type' %}
                                                     <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'event_widget_subtitle_type' %}
+                                                    <h4><strong>{{ 'form.widget.mosaic_movie'|trans }}</strong></h4>
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
@@ -193,6 +193,10 @@
                                                 %}
                                                     {{ form_row(widget.gallery) }}
                                                 {% endif %}
+                                                {% if widget.children._type.vars.value == 'event_widget_mosaic_movie_type'
+                                                %}
+                                                    {{ form_row(widget.widgetMosaicMovie) }}
+                                                {% endif %}
                                                 <a class="btn btn-danger btn-sm btn-outline remove_item">
                                                     <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
                                                 </a>
@@ -208,6 +212,7 @@
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.event_widget_image_dual_align_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image_dual_align'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.event_widget_quote_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.quote'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.event_widget_subtitle_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.subtitle'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.event_widget_mosaic_movie_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.mosaic_movie'|trans }}</a>
                                 </div>
                             </div>
                         </div>
@@ -240,6 +245,8 @@
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'event_widget_subtitle_type' %}
                                                     <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'event_widget_mosaic_movie_type' %}
+                                                    <h4><strong>{{ 'form.widget.mosaic_movie'|trans }}</strong></h4>
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}

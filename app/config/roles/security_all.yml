@@ -123,7 +123,7 @@ security:
             - ROLE_TRANSLATE_ES
             - ROLE_TRANSLATE_ZH
             - ROLE_ORANGE
-            
+
         ROLE_ALL_TRANSLATOR:
             - ROLE_ADMIN
             - ROLE_JMS_TRANSLATION

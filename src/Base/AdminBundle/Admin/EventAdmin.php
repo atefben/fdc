@@ -162,6 +162,7 @@ class EventAdmin extends Admin
                     'event_widget_video_type',
                     'event_widget_video_youtube_type',
                     'event_widget_subtitle_type',
+                    'event_widget_mosaic_movie_type'
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,

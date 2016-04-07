@@ -444,6 +444,24 @@ services:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
     # event widgets
+    base.admin.event_widget_mosaic_movie_dummy:
+        class: Base\AdminBundle\Admin\EventWidgetMosaicMovieDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventWidgetMosaicMovie, BaseAdminBundle:EventWidgetMosaicMovieDummyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: EventWidgetMosaicMovie, show_in_dashboard: false}
+
+    base.admin.widget_mosaic_movie:
+        class: Base\AdminBundle\Admin\WidgetMosaicMovieAdmin
+        arguments: [~, Base\CoreBundle\Entity\WidgetMosaicMovie, BaseAdminBundle:WidgetMosaicMovieAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: WidgetMosaicMovie, show_in_dashboard: false}
+
+    base.admin.widget_mosaic_movie_film_film:
+        class: Base\AdminBundle\Admin\WidgetMosaicMovieFilmFilmAdmin
+        arguments: [~, Base\CoreBundle\Entity\WidgetMosaicMovieFilmFilm, BaseAdminBundle:WidgetMosaicMovieFilmFilmAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: WidgetMosaicMovieFilmFilm, show_in_dashboard: false}
+
     base.admin.event_widget_image_dummy:
         class: Base\AdminBundle\Admin\EventWidgetImageDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\EventWidgetImage, BaseAdminBundle:EventWidgetImageDummyAdmin]
