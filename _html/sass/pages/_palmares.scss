@@ -181,17 +181,11 @@
   .categorie-items article .contain_item {
     width: 674px;
     
-    .compat-object-fit-d {
+    img {
+      margin: 40px 0 0 0;
       height:341px;
       width:256px;
-      background-size: cover;
-      background-position: top center;
-      background-repeat: no-repeat;
-      margin: 40px 0 0 0;
-      
-      img {
-        opacity: 0;
-      }
+      object-fit: cover;
     }
   }
 

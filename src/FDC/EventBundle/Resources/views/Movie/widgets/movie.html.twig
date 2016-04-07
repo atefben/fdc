@@ -10,13 +10,17 @@
 {% endspaceless %}')">
     <div class="bck-hover">
         <div class="contain_item">
-			<div class="image compat-object-fit-d">
+            <div class="image">
                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                     film: film,
                     film_format: '259x352',
+                    film_attrs: {
+                        alt: film|trans_fallback('title')?:film.titleVO,
+                        'data-object-fit': 'cover'
+                    },
                     film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg'
                 }) %}
-			</div>
+            </div>
             <div class="infos-item-list">
                 {% if projection is defined and projection is not empty %}
                     {% set substr = projection.startsAt|localizeddate('full', 'none', app.request.locale)|split(' ') %}
@@ -24,7 +28,7 @@
                 <span class="heure-pres-item">{{ projection.startsAt|date('H:i') }}</span>
                 {% endif %}
                 <h3 class="title-item">{{ film.titleVO }}</h3>
-                {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}<span class="nom-item">{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}</span>{% if loop.index != director|length %}, {% endif %}{% endfor %}<br />
+                {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}{% if loop.index != director|length %}, {% endif %}{% endfor %}<br />
                     <span class="date-item">
                         {% set duration = [] %}
                         {% if film.duration is not empty %}
