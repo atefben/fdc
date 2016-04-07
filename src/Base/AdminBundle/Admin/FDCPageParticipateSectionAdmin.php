@@ -139,7 +139,8 @@ class FDCPageParticipateSectionAdmin extends Admin
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_content',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'press'
+                        'config_name' => 'press',
+                        'required' => false
                     ),
                 )
             ))
