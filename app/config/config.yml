@@ -1,10 +1,6 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: roles/security_all.yml }
-    - { resource: roles/security_fdc.yml }
-    - { resource: roles/security_soif.yml }
-    - { resource: roles/security_translation.yml }
     - { resource: services.yml }
     - { resource: bundles/a2lix_i18n_doctrine.yml }
     - { resource: bundles/a2lix_translation_form.yml }
@@ -24,7 +20,12 @@ imports:
     - { resource: bundles/sonata_seo.yml }
     - { resource: bundles/stof_doctrine_extensions.yml }
     - { resource: twig.yml }
-    #roles
+    # old roles
+    - { resource: roles/security_all.yml }
+    - { resource: roles/security_fdc.yml }
+    - { resource: roles/security_soif.yml }
+    - { resource: roles/security_translation.yml }
+    # news roles
     - { resource: roles/groups/security_admin_fdc.yml }
     - { resource: roles/groups/security_community_manager.yml }
     - { resource: roles/groups/security_contributor_photos.yml }
