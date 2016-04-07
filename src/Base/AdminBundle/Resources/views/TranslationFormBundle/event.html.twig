@@ -176,7 +176,7 @@
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'event_widget_subtitle_type' %}
                                                     <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
-                                                {% elseif widget.children._type.vars.value == 'event_widget_subtitle_type' %}
+                                                {% elseif widget.children._type.vars.value == 'event_widget_mosaic_movie_type' %}
                                                     <h4><strong>{{ 'form.widget.mosaic_movie'|trans }}</strong></h4>
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
@@ -267,7 +267,7 @@
                                                 {% endif %}
 
                                                 {% if widget.children._type.vars.value == 'event_widget_video_type' %}
-                                                    {#{% set fileTranslations = (widget.children.file.vars.data is not null) ? widget.children.file.vars.data.translations : null %}
+                                                    {% set fileTranslations = (widget.children.file.vars.data is not null) ? widget.children.file.vars.data.translations : null %}
                                                     <div class="form-group">
                                                         <label class="control-label">
                                                             {{ 'form.label_file'|trans }}
@@ -287,7 +287,7 @@
                                                                 </a>
                                                             {% endif %}
                                                         </div>
-                                                    </div>#}
+                                                    </div>
                                                 {% elseif widget.children._type.vars.value == 'event_widget_video_youtube_type' %}
                                                     {% set imageTranslations = (widget.children.image.vars.data is not null) ? widget.children.image.vars.data.translations : null %}
                                                     <div class="form-group">
@@ -367,6 +367,38 @@
                                                                         <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': media.media.id }) }}">
                                                                             modifier les traductions
                                                                         </a>
+                                                                    </div>
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                {% elseif widget.children._type.vars.value == 'event_widget_mosaic_movie_type' %}
+                                                    <div class="form-group">
+                                                        <div>
+                                                            {% if widget.children.widgetMosaicMovie.vars.data.films is defined and widget.children.widgetMosaicMovie.vars.data.films is not null %}
+                                                                {% for film in widget.children.widgetMosaicMovie.vars.data.films %}
+                                                                    <div class="form-group">
+                                                                        <label>Film {{ loop.index }}</label>
+                                                                        <div>
+                                                                            <b>{{ 'form.widget_mosaic_movie_film_film_translation.label_title'|trans }}:</b>
+                                                                            {% if film.translations and film.translations.get(locale) is not empty %}
+                                                                                {{ film.translations.get(locale).title }}
+                                                                            {% endif %}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>{{ 'form.widget_mosaic_movie_film_film.image'|trans }}</label>
+                                                                        {% if film.image is not empty %}
+                                                                        <div>
+                                                                            <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                                            {% if film.image.translations and film.image.translations.get(locale) is not empty %}
+                                                                                {{ film.image.translations.get(locale).alt }}
+                                                                            {% endif %}
+                                                                        </div>
+                                                                        <a target="_blank" href="{{ path('admin_base_core_mediaimagesimple_edit', {'id': film.image.id }) }}">
+                                                                            modifier les traductions
+                                                                        </a>
+                                                                        {% endif %}
                                                                     </div>
                                                                 {% endfor %}
                                                             {% endif %}
@@ -548,6 +580,36 @@
                                                                     </div>
                                                                 </div>
                                                             {% endfor %}
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                {% elseif widget.children._type.vars.value == 'event_widget_mosaic_movie_type'%}
+                                                    <h4><strong>{{ 'form.widget.mosaic_movie'|trans }}</strong></h4>
+                                                    <div class="form-group">
+                                                        <div>
+                                                            {% if widget.children.widgetMosaicMovie.vars.data.films is defined and widget.children.widgetMosaicMovie.vars.data.films is not null %}
+                                                                {% for film in widget.children.widgetMosaicMovie.vars.data.films %}
+                                                                    <div class="form-group">
+                                                                        <label>Film {{ loop.index }}</label>
+                                                                        <div>
+                                                                            <b>{{ 'form.widget_mosaic_movie_film_film_translation.label_title'|trans }}:</b>
+                                                                            {% if film.translations and film.translations.get('fr') is not empty %}
+                                                                                {{ film.translations.get('fr').title }}
+                                                                            {% endif %}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>{{ 'form.widget_mosaic_movie_film_film.image'|trans }}</label>
+                                                                        {% if film.image is not empty and film.image.translations %}
+                                                                            <div>
+                                                                                <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                                                {% if film.image.translations.get('fr') is not empty %}
+                                                                                    {{ film.image.translations.get('fr').alt }}
+                                                                                {% endif %}
+                                                                            </div>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                {% endfor %}
                                                             {% endif %}
                                                         </div>
                                                     </div>

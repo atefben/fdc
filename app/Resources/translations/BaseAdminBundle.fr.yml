@@ -558,8 +558,10 @@ form:
         twitter: Twitter
         instagram: Instagram
         tumblr: Tumblr
+    widget_mosaic_movie_film_film:
+        image: Affiche film
     widget_mosaic_movie_film_film_translation:
-        title: Titre traduit
+        label_title: Titre traduit
     widget:
         mosaic_movie: Module mosaïque de films
         movie: Module liste de films
@@ -577,7 +579,6 @@ form:
         film_vod: Module film
         film_ocs: Module film
         film_studio: Module film
-            
     media_audio:
         helper_title: 200 caractères max.
         displayed_home: Remonter en tant qu'actualité sur la homepage
@@ -611,6 +612,9 @@ form:
     placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
     placeholder_seo_description: "[valeur champ chapô actualité]"
     label_position: Position
+    label_film: Film
+    label_title_original: Titre original
+    label_year: Année
     label_header_video: Vidéo principale
     label_parent: Parent
     label_contact_theme_theme: Theme
