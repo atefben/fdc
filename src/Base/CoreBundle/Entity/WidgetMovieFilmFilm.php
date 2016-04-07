@@ -29,6 +29,7 @@ class WidgetMovieFilmFilm
 
     /**
      * @ORM\ManyToOne(targetEntity="FilmFilm")
+     * @Groups({"classics"})
      */
     private $film;
 

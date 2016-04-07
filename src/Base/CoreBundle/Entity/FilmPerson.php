@@ -53,7 +53,8 @@ class FilmPerson implements TranslateMainInterface
      *     "film_selection_section_show",
      *     "award_list",
      *     "jury_list",
-     *     "jury_show"
+     *     "jury_show",
+     *     "classics"
      * })
      */
     private $id;
@@ -178,7 +179,8 @@ class FilmPerson implements TranslateMainInterface
      *     "news_show",
      *     "home",
      *     "film_selection_section_show",
-     *     "award_list"
+     *     "award_list",
+     *     "classics"
      * })
      */
     private $lastname;
@@ -203,7 +205,8 @@ class FilmPerson implements TranslateMainInterface
      *     "news_show",
      *     "home",
      *     "film_selection_section_show",
-     *     "award_list"
+     *     "award_list",
+     *     "classics"
      * })
      */
     private $firstname;
@@ -228,7 +231,8 @@ class FilmPerson implements TranslateMainInterface
      *     "news_show",
      *     "home",
      *     "film_selection_section_show",
-     *     "award_list"
+     *     "award_list",
+     *     "classics"
      * })
      */
     private $asianName;

@@ -205,3 +205,6 @@ parameters:
     s3_elastic_mp3_pipeline_id: '1455903590532-u7lwud'
     s3_elastic_mp3_preset_id: '1351620000001-300040'
     admin_event_fdc_page_prepare_id: 1
+    admin_fdc_orange_series_id: 1
+    admin_fdc_orange_vod_id: 2
+    admin_fdc_orange_studio_id: 3

@@ -14,6 +14,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 use Gedmo\Sluggable\Util\Urlizer;
+use JMS\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use DateTime;
 
@@ -35,6 +36,7 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Groups({"classics"})
      *
      */
     private $titleNav;
@@ -43,6 +45,7 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Groups({"classics"})
      *
      */
     private $title;
@@ -52,6 +55,7 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
      *
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     * @Groups({"classics"})
      */
     private $slug;
 

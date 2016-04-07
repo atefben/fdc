@@ -105,7 +105,7 @@
                                                 <div class="vCenter">
                                                     <div class="vCenterKid">
                                                         <h2>
-                                                            <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">{{ artist.fullName }}</a>
+                                                            {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': artist} %}
                                                         </h2>
                                                         <span class="category">{{ artist.role }}</span>
                                                         <span class="country">{{ artist.from }}</span>
@@ -183,9 +183,7 @@
                                                         </h2>
                                                         <span class="category">
                                                             {{ 'search.result.film.text.de'|trans }}
-                                                            <a href="{{ path('fdc_event_artist_get', {'slug': film.author.slug }) }}">
-                                                                {{ film.author.fullName }}
-                                                            </a>
+                                                            {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': film.author} %}
                                                         </span>
                                                         <span class="country">{{ film.author.from }}</span>
                                                     </div>

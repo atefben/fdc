@@ -491,6 +491,11 @@ dashboard:
         fdc_page_participate: Participer
         fdc_page_participate_section: Strates Participer
         users: Utilisateurs
+        orange_series: Cannes, Séries & Cie
+        orange_vod: Vidéo à la demande
+        orange_ocs: Programmation OCS
+        orange_studio: Orange Studio
+
 form:
     fdc_page_la_selection_cinema_plage:
         header: Têtière
