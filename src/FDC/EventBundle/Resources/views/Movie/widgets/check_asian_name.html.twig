@@ -1,5 +1,5 @@
 {% if person.asianName %}
-    <a href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}">{{ person.lastName ~ ' ' ~ person.firstName }}</a>
+    <a href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}"><span class="nom-item">{{ person.lastName ~ ' ' ~ person.firstName }}</span></a>
 {% else %}
-    <a href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}">{{ person.fullName }}</a>
+    <a href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}"><span class="nom-item">{{ person.fullName }}</span></a>
 {% endif %}

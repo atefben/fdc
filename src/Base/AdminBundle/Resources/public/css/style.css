@@ -243,3 +243,8 @@ textarea.quote {
     padding: 40px 15px;
     text-align: center;
 }
+
+/* remove label Fr / En.. of a2lix */
+form[action*="widgetmosaicmovie"] div[id$="translations"] > .form-group > label.control-label {
+    display: none;
+}

@@ -1,19 +1,16 @@
 $(document).ready(function() {
-
   // Selection
   // =========================
-
-  var sliderSelection = '',
+  var sliderSelection  = '',
       sliderSuggestion = '',
-      tr = 0,
-      selectionCookie = [];
+      tr               = 0,
+      selectionCookie  = [];
 
   if(localStorage.getItem('selection')) {
     selectionCookie = JSON.parse(localStorage.getItem('selection'));
 
     for(var i=0; i<selectionCookie.length; i++) {
       var $art = $('#toClone').clone();
-
       $art.find('article').addClass(selectionCookie[i].format);
       $art.attr('id', 'article' + selectionCookie[i].id);
       $art.find('article').data('format', selectionCookie[i].format);
@@ -30,23 +27,23 @@ $(document).ready(function() {
   }
 
   $.ajax({
-    type: "GET",
-    dataType: "html",
-    cache: false,
-    url: GLOBALS.urls.selectionUrl ,
+    type     : "GET",
+    dataType : "html",
+    cache    : false,
+    url      : GLOBALS.urls.selectionUrl ,
     success: function(data) {
       $('#slider-suggestion').append(data);
 
       sliderSuggestion = $("#slider-suggestion").owlCarousel({
-        nav: false,
-        dots: false,
-        smartSpeed: 500,
-        fluidSpeed: 500,
-        loop: false,
-        margin: 44,
-        autoWidth: true,
-        dragEndSpeed: 900,
-        items: 4,
+        nav          : false,
+        dots         : false,
+        smartSpeed   : 500,
+        fluidSpeed   : 500,
+        loop         : false,
+        margin       : 44,
+        autoWidth    : true,
+        dragEndSpeed : 900,
+        items        : 4,
         onInitialized: function() {
           var m = ($(window).width() - $('.container').width()) / 2;
           $('#slider-selection .owl-stage').css({ 'margin-left': m });
@@ -60,15 +57,15 @@ $(document).ready(function() {
   $('#selection .title span').text(selectionCookie.length);
 
   sliderSelection = $("#slider-selection").owlCarousel({
-    nav: false,
-    dots: false,
-    smartSpeed: 500,
-    fluidSpeed: 500,
-    loop: false,
-    margin: 44,
-    autoWidth: true,
-    dragEndSpeed: 900,
-    items: 4,
+    nav          : false,
+    dots         : false,
+    smartSpeed   : 500,
+    fluidSpeed   : 500,
+    loop         : false,
+    margin       : 44,
+    autoWidth    : true,
+    dragEndSpeed : 900,
+    items        : 4,
     onInitialized: function() {
       // if($('#selection .owl-stage').css('transform') == 'none') {
       //   var pxT = parseInt(($('#selection .owl-stage-outer').width() / 2) - 131) + "px";
@@ -88,9 +85,7 @@ $(document).ready(function() {
 
   function openSelection(callback) {
     $('#main, footer').addClass('overlay');
-
     $('#selection').addClass('open');
-
     $('header .selection').addClass('opened');
 
     if(selectionCookie.length == 0) {
@@ -100,18 +95,7 @@ $(document).ready(function() {
     }
 
     callback();
-
   }
-  
-  function imageCover() {
-    $('.compat-object-fit-d').each(function() {
-      var $container = $(this), imgUrl = $container.find('img').prop('src');
-      if (imgUrl) {
-        $container.css('backgroundImage', 'url('+imgUrl+')');
-      }
-    });
-  }
-  imageCover();
 
   function closeSelection() {
     $('#main, footer').removeClass('overlay');
@@ -150,7 +134,6 @@ $(document).ready(function() {
 
       });
     }
-
   });
 
   var widthFilter = 0;
@@ -211,7 +194,6 @@ $(document).ready(function() {
 
     $(this).parent().addClass('deleted');
     var i = $(this).parent().parent().index();
-
     var id = parseInt($(this).parent().attr('id').replace('article', ''));
 
     selectionCookie = selectionCookie.filter(function (el) {return el.id !== id; });
@@ -249,7 +231,6 @@ $(document).ready(function() {
 
       $('#addtext').addClass('show');
     }
-
 
     var $article = $(this).parents('article').clone().removeClass('double').wrapAll("<div class='article'></div>").parent().wrapAll('<div></div>').parent();
         $article.find('.read-later').remove();
@@ -304,7 +285,6 @@ $(document).ready(function() {
         }, 800);
       }, 400);
     });
-
   });
 
   $('body').on('mouseover', '.read-later', function() {
@@ -330,5 +310,4 @@ $(document).ready(function() {
   $('body').on('mouseout', '.read-later', function() {
     $('#addtext').removeClass('show');
   });
-
 });

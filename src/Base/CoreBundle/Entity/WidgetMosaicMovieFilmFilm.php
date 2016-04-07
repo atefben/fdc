@@ -43,6 +43,7 @@ class WidgetMosaicMovieFilmFilm
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"event_show"})
      */
     private $titleOriginal;
 
@@ -50,6 +51,7 @@ class WidgetMosaicMovieFilmFilm
      * @var string
      *
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"event_show"})
      */
     private $year;
 
@@ -61,7 +63,7 @@ class WidgetMosaicMovieFilmFilm
     /**
      * @var ArrayCollection
      *
-     * @Groups({"live", "web_tv_show", "live"})
+     * @Groups({"event_show"})
      * @Assert\Valid()
      */
     protected $translations;
@@ -69,6 +71,24 @@ class WidgetMosaicMovieFilmFilm
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * findTranslationByLocale function.
+     *
+     * @access public
+     * @param mixed $locale
+     * @return void
+     */
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
     }
 
     /**

@@ -81,7 +81,15 @@
 
                                         {{ form_row(form.parent.children.publishedAt) }}
                                         {{ form_row(form.parent.children.publishEndedAt) }}
-                                        {{ form_row(translationsFields.status) }}
+                                        {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                            {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                        {% elseif is_granted('ROLE_JOURNALIST') %}
+                                            {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                        {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                            {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                        {% else %}
+                                            {{ form_row(translationsFields.status) }}
+                                        {% endif %}
 
                                         <div class="form-group fdc-input-border">
                                             {{ form_widget(form.parent.children.translate) }}
@@ -385,6 +393,9 @@
                                                                                 {{ film.translations.get(locale).title }}
                                                                             {% endif %}
                                                                         </div>
+                                                                        <a target="_blank" href="{{ path('admin_base_core_widgetmosaicmovie_edit', {'id': widget.children.widgetMosaicMovie.vars.data.id, locale: locale, trans: '1' }) }}">
+                                                                            modifier les traductions
+                                                                        </a>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>{{ 'form.widget_mosaic_movie_film_film.image'|trans }}</label>
@@ -711,7 +722,15 @@
                 {% if form.vars.default_locale != locale %}
                 <div class="row">
                     <div class="col-md-4">
-                        {{ form_row(translationsFields.status) }}
+                        {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                        {% elseif is_granted('ROLE_JOURNALIST') %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                        {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                        {% else %}
+                            {{ form_row(translationsFields.status) }}
+                        {% endif %}
                     </div>
                 </div>
                 {% endif %}
