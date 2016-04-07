@@ -13457,11 +13457,15 @@ input[type=submit] {
 .selection-officielle .single-article {
   padding: 0px !important;
 }
+.selection-officielle figure {
+  overflow: hidden;
+}
 .selection-officielle figure figcaption {
   position: relative;
   z-index: 2;
   height: 103px;
   text-align: center;
+  background: #141414;
 }
 .selection-officielle figure figcaption .name {
   color: #fff;
@@ -13487,7 +13491,7 @@ input[type=submit] {
   color: #c8a461;
   border-top: 0px solid #fff;
 }
-.selection-officielle figure:hover a img, .selection-officielle figure:hover a .compat-object-fit {
+.selection-officielle figure:hover a .image img, .selection-officielle figure:hover a .image.compat-object-fit {
   -moz-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);

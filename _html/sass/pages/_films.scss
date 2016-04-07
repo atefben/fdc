@@ -531,11 +531,14 @@
   }
 
   figure {
+    overflow: hidden;
+
     figcaption {
       position: relative;
       z-index: 2;
       height: 103px;
       text-align: center;
+      background: #141414;
 
       .name {
         color: #fff;
@@ -565,8 +568,8 @@
       }
     }
      
-    &:hover a img,
-    &:hover a .compat-object-fit {
+    &:hover a .image img,
+    &:hover a .image.compat-object-fit {
       @include transition(all 4s $linear);
       @include transform(scale(1.08) translateZ(0));
     }
