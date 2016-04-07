@@ -16,4 +16,15 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 class OrangeProgrammationOCS extends Orange
 {
     use Translatable;
+    
+    public function __toString() {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId() && $this->findTranslationByLocale('fr')) {
+            $string = $this->findTranslationByLocale('fr')->getTitle();
+            $string = $this->truncate($string, 40, '..."', true);
+        }
+
+        return $string;
+    }
 }

@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\SeoMain;
+use Base\CoreBundle\Util\TruncatePro;
 
 use Base\CoreBundle\Util\Time;
 
@@ -31,6 +32,7 @@ abstract class Orange implements TranslateMainInterface
 {
     use Time;
     use TranslateMain;
+    use TruncatePro;
     
     /**
      * @var integer
