@@ -65,10 +65,14 @@
                         {% for filmPerson in artist.films %}
                             <div class="item">
                                 <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
-                                <div class="image compat-object-fit-b">
+                                <div class="image">
                                     {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                         film: movie,
                                         film_format: 'mobile',
+                                        film_attrs: {
+                                            alt: movie|trans_fallback('title')?:movie.titleVO,
+                                            'data-object-fit': 'cover'
+                                        },
                                         film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                     }) %}
                                 </div>
@@ -121,11 +125,14 @@
                                     awardAssociation.person.id == artist.id) %}
                                         <div class="item">
                                             <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
-                                            <div class="image compat-object-fit-b">
+                                            <div class="image">
                                                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                                     film: movie,
                                                     film_format: '366x488',
-                                                    film_attrs: true,
+                                                    film_attrs: {
+                                                        alt: movie|trans_fallback('title')?:movie.titleVO,
+                                                        'data-object-fit': 'cover'
+                                                    },
                                                     film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                                 }) %}
                                             </div>

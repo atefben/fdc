@@ -83,15 +83,10 @@
       vertical-align: bottom;
       width: 181px;
 
-      .compat-object-fit-b {
-        background-size: cover;
-        background-position: top center;
-        background-repeat: no-repeat;
-        height: 284px;
-
-        img {
-          opacity: 0;
-        }
+      img {
+        width: 183px;
+        height: 244px;
+        object-fit: cover;
       }
 
       .content-text {
