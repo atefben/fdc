@@ -35,12 +35,29 @@ class FilmAwardAssociationRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+    public function getCameraDorWithAward($festival)
+    {
+        $qb = $this
+            ->createQueryBuilder('aa')
+            ->join('aa.award', 'a')
+            ->join('a.prize', 'p')
+            ->join('p.translations', 'pt')
+            ->andWhere('pt.category LIKE :category')
+            ->setParameter('category', "%Caméra d'Or%")
+            ->addOrderBy('p.position', 'asc')
+        ;
+
+        $this->addMasterQueries($qb, 'a', $festival, false);
+
+        return $qb->getQuery()->getResult();
+    }
 
     public function getCameraDOr($festival, array $selectionSectionIds)
     {
         $qb = $this
             ->createQueryBuilder('aa')
             ->join('aa.film', 'f')
+            ->distinct()
             ->join('f.selectionSection', 'ss')
             ->andWhere('f.directorFirst = :true')
             ->setParameter('true', true)

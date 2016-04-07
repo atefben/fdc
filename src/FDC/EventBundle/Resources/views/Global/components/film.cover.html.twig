@@ -1,7 +1,10 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 {% spaceless %}
-    {% set media = film.imageCover|trans_fallback('file') %}
+    {% set media = null %}
+    {% if film.imageCover %}
+        {% set media = film.imageCover|trans_fallback('file') %}
+    {% endif %}
 
     {% if media is empty %}
         {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
@@ -28,7 +31,8 @@
         {% if media is not empty %}
             {% media media, film_format with film_attrs %}
         {% else %}
-            <img src="{{ asset(film_image_default) }}" alt="{{ 'movie.poster'|trans() }}"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}/>
+            <img src="{{ asset(film_image_default) }}"
+                 alt="{{ 'movie.poster'|trans() }}"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}/>
         {% endif %}
     {% endif %}
 {% endspaceless %}
