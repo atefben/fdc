@@ -2,11 +2,14 @@
 
 <div class="camerador">
 
-    <div class="title-list-cat">
-        <h2 class="titre-document">
-            {{ page|trans_fallback('header')|raw }}
-        </h2>
-    </div>
+    {% if displayOnylCameraDorWinner is not defined or displayOnylCameraDorWinner == false %}
+        <div class="title-list-cat">
+            <h2 class="titre-document">
+                {{ page|trans_fallback('header')|raw }}
+            </h2>
+        </div>
+    {% endif %}
+
     <div class="contain-winner container-list">
         <section class="categorie-items ">
             {% for award_association in award_associations['camerador'] %}
@@ -15,60 +18,63 @@
         </section>
     </div>
 
-    <div class="title-list-cat">
-        <h2 class="title">{{ 'palmares.camerador.title.lesfilmsenlice'|trans }}</h2>
-    </div>
+
+    {% if displayOnylCameraDorWinner is not defined or displayOnylCameraDorWinner == false %}
+        <div class="title-list-cat">
+            <h2 class="title">{{ 'palmares.camerador.title.lesfilmsenlice'|trans }}</h2>
+        </div>
 
 
-    {% if award_associations['competition']|length %}
-    <section class="categorie-items">
-        <h3 class="sub-cat-title">
-            {{ page|trans_fallback('nameEnCompetition') }}
-        </h3>
-        {% for movie in award_associations['competition'] %}
-            {% if movie.awards %}
-                {% set award_association = movie.awards|first %}
-            {% endif %}
-            {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
+        {% if award_associations['competition']|length %}
+            <section class="categorie-items">
+                <h3 class="sub-cat-title">
+                    {{ page|trans_fallback('nameEnCompetition') }}
+                </h3>
+                {% for movie in award_associations['competition'] %}
+                    {% if movie.awards %}
+                        {% set award_association = movie.awards|first %}
+                    {% endif %}
+                    {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
+                {% endfor %}
+            </section>
+        {% endif %}
+
+        {% for key,item in award_associations['others'] %}
+            <section class="categorie-items">
+                <h3 class="sub-cat-title">
+                    {{ item['selection']|trans_fallback('name') }}
+                </h3>
+                {% for movie in item['movies'] %}
+                    {% if movie.awards %}
+                        {% set award_association = movie.awards|first %}
+                    {% endif %}
+                    {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
+                {% endfor %}
+            </section>
         {% endfor %}
-    </section>
-    {% endif %}
 
-    {% for key,item in award_associations['others'] %}
-        <section class="categorie-items">
-            <h3 class="sub-cat-title">
-                {{ item['selection']|trans_fallback('name') }}
-            </h3>
-            {% for movie in item['movies'] %}
-                {% if movie.awards %}
-                    {% set award_association = movie.awards|first %}
-                {% endif %}
-                {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
-            {% endfor %}
+        <div class="title-list-cat">
+            <h2 class="title">{{ 'palmares.camerador.title.lesautresfilmsenlice'|trans|raw }}</h2>
+        </div>
+
+        <section class='categorie-items-columns'>
+            <ul>
+                <li>
+                    <a href="http://www.quinzaine-realisateurs.com/" target="_blank">
+                        {% image '@FDCEventBundle/Resources/public/img/palmares/quinzaine.jpg' %}
+                        <img src="{{ asset_url }}" alt="{{ 'palmares.camerador.alt.quinzaine'|trans }}"/>
+                        {% endimage %}
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.semainedelacritique.com/" target="_blank">
+                        {% image '@FDCEventBundle/Resources/public/img/palmares/semaine-critique.jpg' %}
+                        <img src="{{ asset_url }}" alt="{{ 'palmares.camerador.alt.semainecritique'|trans }}"/>
+                        {% endimage %}
+                    </a>
+                </li>
+            </ul>
         </section>
-    {% endfor %}
-
-    <div class="title-list-cat">
-        <h2 class="title">{{ 'palmares.camerador.title.lesautresfilmsenlice'|trans|raw }}</h2>
-    </div>
-
-    <section class='categorie-items-columns'>
-        <ul>
-            <li>
-                <a href="http://www.quinzaine-realisateurs.com/" target="_blank">
-                    {% image '@FDCEventBundle/Resources/public/img/palmares/quinzaine.jpg' %}
-                    <img src="{{ asset_url }}" alt="{{ 'palmares.camerador.alt.quinzaine'|trans }}"/>
-                    {% endimage %}
-                </a>
-            </li>
-            <li>
-                <a href="http://www.semainedelacritique.com/" target="_blank">
-                    {% image '@FDCEventBundle/Resources/public/img/palmares/semaine-critique.jpg' %}
-                    <img src="{{ asset_url }}" alt="{{ 'palmares.camerador.alt.semainecritique'|trans }}"/>
-                    {% endimage %}
-                </a>
-            </li>
-        </ul>
-    </section>
+    {% endif %}
 
 </div>
