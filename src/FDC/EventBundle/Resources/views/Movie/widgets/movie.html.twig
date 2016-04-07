@@ -20,7 +20,7 @@
             <div class="infos-item-list">
                 {% if projection is defined and projection is not empty %}
                     {% set substr = projection.startsAt|localizeddate('full', 'none', app.request.locale)|split(' ') %}
-                <span class="date-pres-item">{% for i in 0..2 %}{{ substr[i] }}{% endor %} </span>
+                <span class="date-pres-item">{% for i in 0..2 %}{{ substr[i] }}{% endfor %} </span>
                 <span class="heure-pres-item">{{ projection.startsAt|date('H:i') }}</span>
                 {% endif %}
                 <h3 class="title-item">{{ film.titleVO }}</h3>
