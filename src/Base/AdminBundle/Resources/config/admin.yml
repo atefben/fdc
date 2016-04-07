@@ -448,7 +448,7 @@ services:
         class: Base\AdminBundle\Admin\EventWidgetMosaicMovieDummyAdmin
         arguments: [~, Base\CoreBundle\Entity\EventWidgetMosaicMovie, BaseAdminBundle:EventWidgetMosaicMovieDummyAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: EventWidgetMosaicMovie, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: EventWidgetMosaicMovie, show_in_dashboard: false, label_translator_strategy: sonata.admin.label.strategy.underscore}
 
     base.admin.widget_mosaic_movie:
         class: Base\AdminBundle\Admin\WidgetMosaicMovieAdmin
@@ -460,7 +460,7 @@ services:
         class: Base\AdminBundle\Admin\WidgetMosaicMovieFilmFilmAdmin
         arguments: [~, Base\CoreBundle\Entity\WidgetMosaicMovieFilmFilm, BaseAdminBundle:WidgetMosaicMovieFilmFilmAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: WidgetMosaicMovieFilmFilm, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: WidgetMosaicMovieFilmFilm, show_in_dashboard: false, label_translator_strategy: sonata.admin.label.strategy.underscore}
 
     base.admin.event_widget_image_dummy:
         class: Base\AdminBundle\Admin\EventWidgetImageDummyAdmin
