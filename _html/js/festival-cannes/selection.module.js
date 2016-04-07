@@ -105,13 +105,13 @@ $(document).ready(function() {
   
   function imageCover() {
     $('.compat-object-fit-d').each(function() {
-    	var $container = $(this), imgUrl = $container.find('img').prop('src');
-   		if (imgUrl) {
-		$container.css('backgroundImage', 'url('+imgUrl+')');
-    	}
+      var $container = $(this), imgUrl = $container.find('img').prop('src');
+      if (imgUrl) {
+        $container.css('backgroundImage', 'url('+imgUrl+')');
+      }
     });
-	}
-	imageCover();
+  }
+  imageCover();
 
   function closeSelection() {
     $('#main, footer').removeClass('overlay');

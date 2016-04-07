@@ -7,14 +7,12 @@ $(document).ready(function() {
   if($('.jurys-list').length){
       if($('#gridJurys').length) {
         $('#gridJurys .image').each(function() {
-    	  	// if(navigator.userAgent.indexOf("Edge")    > -1 ||
-    	   //    navigator.userAgent.indexOf("MSIE")    > -1 ||
-    	   //    navigator.userAgent.indexOf("Trident") > -1 ) {
-   	       var $container = $(this), imgUrl     = $container.find('img').prop('src');
-   	       if (imgUrl) {
-   	         $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
-   	       }
-    	   	// }
+          if(isIE()) {
+            var $container = $(this), imgUrl     = $container.find('img').prop('src');
+            if (imgUrl) {
+              $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
+            }
+          }
         });
       }
   $('.jurys-list .sub-nav-list a').on('click',function(e){
@@ -34,21 +32,19 @@ $(document).ready(function() {
                   layoutMode: 'packery',
                   itemSelector: '.item'
                 });
-	            $('#gridJurys .image').each(function() {
-	        	  	// if(navigator.userAgent.indexOf("Edge")    > -1 ||
-	        	   //    navigator.userAgent.indexOf("MSIE")    > -1 ||
-	        	   //    navigator.userAgent.indexOf("Trident") > -1 ) {
-	       	       var $container = $(this), imgUrl     = $container.find('img').prop('src');
-	       	       if (imgUrl) {
-	       	         $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
-	       	       }
-	        	   	// }
-	            });
+              $('#gridJurys .image').each(function() {
+                if(isIE()) {
+                  var $container = $(this), imgUrl     = $container.find('img').prop('src');
+                  if (imgUrl) {
+                    $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
+                  }
+                }
+              });
              });
         });
         $('.jurys-list .sub-nav-list').find('a.active').removeClass('active');
         $(this).addClass('active');
-		imageCover();
+        imageCover();
       }
     });
     
@@ -68,13 +64,13 @@ $(document).ready(function() {
   
   function imageCover() {
     $('.compat-object-fit-b').each(function() {
-    	var $container = $(this), imgUrl = $container.find('img').prop('src');
-   		if (imgUrl) {
-		$container.css('backgroundImage', 'url('+imgUrl+')');
-    	}
+      var $container = $(this), imgUrl = $container.find('img').prop('src');
+       if (imgUrl) {
+    $container.css('backgroundImage', 'url('+imgUrl+')');
+      }
     });
-	}
-	imageCover();
+  }
+  imageCover();
   
   //2. Artist
   if($('.artist').length){
