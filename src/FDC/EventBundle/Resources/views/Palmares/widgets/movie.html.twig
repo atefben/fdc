@@ -4,47 +4,62 @@
 
 <article style="background-image:url('{% spaceless %}
     {% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
-        film: movie,
-        film_format: '2560x1103',
-        display_film_path: true,
-        film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg'
+    film: movie,
+    film_format: '2560x1103',
+    display_film_path: true,
+    film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg'
     }) %}
 {% endspaceless %}')">
     <div class="bck-hover">
         <div class="contain_item">
-			<div class="image compat-object-fit-d">
-                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                    film: movie,
-                    film_format: '516x688',
-                    film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg'
-                }) %}
-			</div>
+            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+            film: movie,
+            film_format: '259x352',
+            film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg'
+            }) %}
             <div class="infos-item-list">
                 <div class="logo-palme-dor-container">
                     <i class="icon icon_palme palme-dor-img"></i>
                     <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
                     {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
-                        {% set personImage = award_association.person|film_media(constant('Base\\CoreBundle\\Entity\\FilmPersonMediaInterface::TYPE_FILM'))|first %}
-                        {% if personImage %}
-                            <img src="{% path personImage, 'small' %}"
-                                 alt="{{ award_association.person.firstname|escape('html_attr') }} {{ award_association.person.lastname|escape('html_attr') }}"
+                        {% set person = award_association.person %}
+                        {% if person.displayedImage == false and person.portraitImage and person.portraitImage|trans_fallback('file') %}
+                            <img src="{% path person.portraitImage|trans_fallback('file'), '55x75' %}"
+                                 alt="{{ person.firstname|escape('html_attr') }} {{ person.lastname|escape('html_attr') }}"
+                                 class="palme-dor-portrait">
+                        {% elseif person.landscapeImage == true and person.landscapeImage and person.landscapeImage|trans_fallback('file') %}
+                            <img src="{% path person.portraitImage|trans_fallback('file'), '55x75' %}"
+                                 alt="{{ person.firstname|escape('html_attr') }} {{ person.lastname|escape('html_attr') }}"
+                                 class="palme-dor-portrait">
+                        {% elseif person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
+                            {% set personImage = award_association.person|film_media(constant('Base\\CoreBundle\\Entity\\FilmPersonMediaInterface::TYPE_PERSON'))|first %}
+                            <img src="{% path personImage, 'tiny' %}"
+                                 alt="{{ person.firstname|escape('html_attr') }} {{ award_association.person.lastname|escape('html_attr') }}"
                                  class="palme-dor-portrait">
                         {% endif %}
+                        <h3 class="title-item">{{ person.firstname }} {{ person.lastname }}</h3>
                     {% endif %}
-                    <h3 class="title-item verticalline">{{ award_association.person.firstname }} {{ award_association.person.lastname }}</h3>
                 </div>
                 <h3 class="title-item">{{ movie.titleVO }}</h3>
-                {% if movie.findTranslationByLocale(app.request.get('_locale')) and movie.findTranslationByLocale(app.request.get('_locale')).title %}
-                    <h4 class="sub-title-item">{{ movie.findTranslationByLocale(app.request.get('_locale')).title }}</h4>
+                {% if movie.findTranslationByLocale(app.request.get('_locale')) %}
+                    {% if movie.findTranslationByLocale(app.request.get('_locale')).title %}
+                        {% if movie.findTranslationByLocale(app.request.get('_locale')).title != movie.titleVO %}
+                            <h4 class="sub-title-item">
+                                ({{ movie.findTranslationByLocale(app.request.get('_locale')).title }}
+                                )</h4>
+                        {% endif %}
+                    {% endif %}
                 {% endif %}
                 <span class="nom-item">
-                    {%- for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                        {% if loop.first == false %}
-                            {% set author = author ~ ', ' %}
-                        {% endif %}
-                        {% set author = author ~ director.fullName %}
-                    {%- endfor -%}
-                </span>
+                    {% spaceless %}
+                        {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                            {% if loop.first == false %}
+                                {% set author = author ~ ', ' %}
+                            {% endif %}
+                            {% set author = author ~ director.fullName %}
+                        {% endfor %}
+                        {{ author }}
+                    {% endspaceless %}</span>
             </div>
         </div>
     </div>

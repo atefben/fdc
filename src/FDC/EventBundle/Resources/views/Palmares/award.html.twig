@@ -7,7 +7,7 @@
             <div class="bandeau-list-img bandeau-head vCenter"
                  style="background-image:url('{% path page.image|trans_fallback('file'), '2560×1103' %}')">
                 <div class="vCenterKid">
-                    <h2 class="title title-list-header ">{{ page|trans_fallback('name') }}</h2>
+                    <h2 class="title title-list-header ">{{ 'palmares.title.palmares'|trans }}</h2>
                 </div>
             </div>
             {% include 'FDCEventBundle:Palmares:components/nav.html.twig' %}

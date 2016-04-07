@@ -115,7 +115,8 @@ class NewsRepository extends EntityRepository
             ->leftJoin('na2.translations', 'na2t')
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
-            ->where('s.slug = :site_slug')
+            ->andWhere('n.displayedMobile= :displayedMobile')
+            ->andWhere('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
             ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;
@@ -152,6 +153,7 @@ class NewsRepository extends EntityRepository
             ->orderBy('n.publishedAt', 'DESC')
             ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime)
+            ->setParameter('displayedMobile', true)
             ->setParameter('site_slug', 'site-evenementiel')
         ;
 

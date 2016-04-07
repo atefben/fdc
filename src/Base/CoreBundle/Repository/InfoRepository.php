@@ -447,7 +447,8 @@ class InfoRepository extends EntityRepository
             ->leftJoin('naa.translations', 'naat')
             ->leftJoin('nv.translations', 'nvt')
             ->leftJoin('ni.translations', 'nit')
-            ->where('s.slug = :site')
+            ->andWhere('s.slug = :site')
+            ->andWhere('n.displayedMobile = :displayedMobile')
         ;
 
         $qb = $qb
@@ -482,6 +483,7 @@ class InfoRepository extends EntityRepository
             ->addOrderBy('n.publishedAt', 'DESC')
             ->setMaxResults($count)
             ->setParameter('site', 'site-press')
+            ->setParameter('displayedMobile', true)
             ->getQuery()
             ->getResult()
         ;
