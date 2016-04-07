@@ -755,7 +755,7 @@ form:
     label_orange_widget_film_vod_section: Sous-rubrique
     
     helper_orange_widget_film_ocs_image: Dimensions attendues : 580x365 - ratio paysage. Format attendu : .jpg, .png, .gif
-    label_orange_widget_film_ocs_legend: Légend
+    label_orange_widget_film_ocs_legend: Légende
     label_orange_widget_film_ocs_title: Titre du film
     label_orange_widget_film_ocs_description: Description
     label_orange_widget_film_ocs_name: Nom de la chaîne
