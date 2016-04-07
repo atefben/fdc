@@ -34,10 +34,10 @@ class WidgetMosaicMovieFilmFilm
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmFilm")
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
      * @Groups({"event_show"})
      */
-    private $film;
+    private $image;
 
     /**
      * @var string
@@ -79,29 +79,6 @@ class WidgetMosaicMovieFilmFilm
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set film
-     *
-     * @param \Base\CoreBundle\Entity\FilmFilm $film
-     * @return WidgetMovieFilmFilm
-     */
-    public function setFilm(\Base\CoreBundle\Entity\FilmFilm $film = null)
-    {
-        $this->film = $film;
-
-        return $this;
-    }
-
-    /**
-     * Get film
-     *
-     * @return \Base\CoreBundle\Entity\FilmFilm 
-     */
-    public function getFilm()
-    {
-        return $this->film;
     }
 
     /**
@@ -171,5 +148,28 @@ class WidgetMosaicMovieFilmFilm
     public function getWidgetMosaicMovie()
     {
         return $this->widgetMosaicMovie;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $image
+     * @return WidgetMosaicMovieFilmFilm
+     */
+    public function setImage(\Base\CoreBundle\Entity\MediaImageSimple $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }
