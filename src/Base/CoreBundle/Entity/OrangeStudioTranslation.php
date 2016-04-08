@@ -12,6 +12,7 @@ use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Time;
 
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * OrangeProgrammationOCS
@@ -30,6 +31,7 @@ class OrangeStudioTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     * @Groups({"orange_studio"})
      */
     private $title;
 
@@ -37,6 +39,7 @@ class OrangeStudioTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(name="introduction", type="text", nullable=true)
+     * @Groups({"orange_studio"})
      */
     private $introduction;
     
