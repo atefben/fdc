@@ -753,8 +753,8 @@ form:
     label_download_section: Sections à télécharger
     label_map_img: Image de la salle
     label_map_zone_img: Image de la zone
-    label_map_default_img: Image de la salle du festival par default
-    label_zone_default_img: Image de la zone du festival par default
+    label_map_default_img: Image de la salle du festival par defaut
+    label_zone_default_img: Image de la zone du festival par defaut
     label_page: Page
     label_text: Texte
     label_banner: Bannière
