@@ -35,7 +35,16 @@ class FilmSelectionSubsection implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      *
-     * @Groups({"film_selection_list", "film_selection_show"})
+     * @Groups({
+     *     "film_show",
+     *     "film_list",
+     *     "film_selection_list",
+     *     "film_selection_section_list",
+     *     "film_selection_section_show",
+     *     "news_list",
+     *     "news_show",
+     *     "home"
+     * })
      */
     private $id;
     
@@ -43,7 +52,16 @@ class FilmSelectionSubsection implements TranslateMainInterface
     /**
      * @var ArrayCollection
      *
-     * @Groups({"film_selection_list", "film_selection_show"})
+     * @Groups({
+     *     "film_show",
+     *     "film_list",
+     *     "film_selection_list",
+     *     "film_selection_section_list",
+     *     "film_selection_section_show",
+     *     "news_list",
+     *     "news_show",
+     *     "home"
+     * })
      */
     protected $translations;
     
