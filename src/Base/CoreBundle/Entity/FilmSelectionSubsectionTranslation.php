@@ -28,7 +28,7 @@ class FilmSelectionSubsectionTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * * @Groups({
+     * @Groups({
      *     "film_show",
      *     "film_list",
      *     "film_selection_list",

@@ -423,7 +423,7 @@ class FilmManager extends CoreManager
                     }
 
                     // set translations
-                    $filmSelectionSubsectionTranslation = $filmSelectionSection->findTranslationByLocale($localesMapper[$translation->CodeLangue]);
+                    $filmSelectionSubsectionTranslation = $filmSelectionSubsection->findTranslationByLocale($localesMapper[$translation->CodeLangue]);
 
                     if ($filmSelectionSubsectionTranslation === null) {
                         $filmSelectionSubsectionTranslation = new FilmSelectionSubsectionTranslation();
