@@ -38,10 +38,10 @@
                     {#      Zone Image      #}
                     {#                      #}
                     {% for key,r in rooms.mapRoom %}
+
                         {% set roomActive = "room"~r.room.id %}
                         {% set active = "" %}
-
-                        {% set img = r.room.image %}
+                        {% set img = r.room.zoneImage %}
                         {% set trans = img.findTranslationByLocale(app.request.locale) %}
                         {% if trans is null or trans.file is null %}
                             {% set trans = img.findTranslationByLocale('fr') %}
