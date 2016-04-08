@@ -13,6 +13,21 @@ use Doctrine\ORM\QueryBuilder;
 
 class EntityRepository extends BaseRepository
 {
+    public function countByStatus($status)
+    {
+        $qb = $this
+            ->createQueryBuilder('e')
+            ->select('count(t.id)')
+            ->leftJoin('e.translations', 't')
+            ->where('e.status = :status')
+            ->setParameter('status', $status)
+            ->getQuery()
+            ->getSingleScalarResult();
+        ;
+
+        return $qb;
+    }
+
     /**
      * @param $qb
      * @param $alias

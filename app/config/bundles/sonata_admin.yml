@@ -14,8 +14,11 @@ sonata_admin:
         object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR]
     dashboard:
         blocks:
-           # - { position: top, class: col-md-12, type: base_admin.block.sites }
+            #DASHBOARD TRANSLATOR
             -
+                position: center
+                type: base.admin.block.translator_stats
+
                 position: left
                 type: sonata.admin.block.admin_list
                 settings:

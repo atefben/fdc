@@ -1,0 +1,167 @@
+From b8cc89f3edeee9c5749754e1e095953971e2364f Mon Sep 17 00:00:00 2001
+From: Thomas Rabaix <thomas.rabaix@gmail.com>
+Date: Mon, 5 Jan 2015 10:30:05 +0100
+Subject: [PATCH] add support for roles with dashboard's blocks
+
+---
+ DependencyInjection/Configuration.php           | 11 ++++++++++-
+ Resources/doc/reference/dashboard.rst           |  8 ++++++--
+ Resources/views/Core/dashboard.html.twig        | 22 +++++++++++++++-------
+ Tests/DependencyInjection/ConfigurationTest.php | 23 +++++++++++++++++++++++
+ 4 files changed, 54 insertions(+), 10 deletions(-)
+
+diff --git a/DependencyInjection/Configuration.php b/DependencyInjection/Configuration.php
+index 2a3ef14..24d0dae 100644
+--- a/DependencyInjection/Configuration.php
++++ b/DependencyInjection/Configuration.php
+@@ -115,11 +115,20 @@ public function getConfigTreeBuilder()
+                             ->end()
+                         ->end()
+                         ->arrayNode('blocks')
+-                            ->defaultValue(array(array('position' => 'left', 'settings' => array(), 'type' => 'sonata.admin.block.admin_list')))
++                            ->defaultValue(array(array(
++                                'position' => 'left',
++                                'settings' => array(),
++                                'type'     => 'sonata.admin.block.admin_list',
++                                'roles'    => array()
++                            )))
+                             ->prototype('array')
+                                 ->fixXmlConfig('setting')
+                                 ->children()
+                                     ->scalarNode('type')->cannotBeEmpty()->end()
++                                    ->arrayNode('roles')
++                                        ->defaultValue(array())
++                                        ->prototype('scalar')->end()
++                                    ->end()
+                                     ->arrayNode('settings')
+                                         ->useAttributeAsKey('id')
+                                         ->prototype('variable')->defaultValue(array())->end()
+diff --git a/Resources/doc/reference/dashboard.rst b/Resources/doc/reference/dashboard.rst
+index f5000be..b6837e2 100644
+--- a/Resources/doc/reference/dashboard.rst
++++ b/Resources/doc/reference/dashboard.rst
+@@ -33,8 +33,8 @@ The Dashboard is actually built using ``Blocks`` from ``SonataBlockBundle``. You
+ can learn more about this bundle and how to build your own Blocks on the
+ `SonataBlock documentation page`_.
+
+-The ``Admin`` list
+-------------------
++The ``Admin`` list block
++------------------------
+
+ The ``Admin`` list is a ``Block`` that fetches information from the ``Admin`` service's
+ ``Pool`` and prints it in the nicely formated list you have on your default Dashboard.
+@@ -219,6 +219,7 @@ a text block and RSS feed block on the right. The configuration for this scenari
+                     -
+                         position: right
+                         type: sonata.block.service.rss
++                        roles: [POST_READER]
+                         settings:
+                             title: Sonata Project's Feeds
+                             url: http://sonata-project.org/blog/archive.rss
+@@ -230,6 +231,9 @@ a text block and RSS feed block on the right. The configuration for this scenari
+     work properly. Refer to the associated documentation/implementation to
+     get more information on each block's options and requirements.
+
++    You can also configure the ``roles`` section to configure users that can
++    view the block.
++
+ Display two ``Admin`` list blocks with different dashboard groups
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+diff --git a/Resources/views/Core/dashboard.html.twig b/Resources/views/Core/dashboard.html.twig
+index 17a6cbc..61a6270 100644
+--- a/Resources/views/Core/dashboard.html.twig
++++ b/Resources/views/Core/dashboard.html.twig
+@@ -21,7 +21,9 @@ file that was distributed with this source code.
+         <div class="row">
+             {% for block in blocks.top %}
+                 <div class="{{ block.class }}">
+-                    {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
++                    {% if block.roles|length == 0 or is_granted(block.roles) %}
++                        {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
++                    {% endif %}
+                 </div>
+             {% endfor %}
+         </div>
+@@ -32,21 +34,27 @@ file that was distributed with this source code.
+
+         <div class="{% if blocks.center|length > 0 %}col-md-4{% else %}col-md-6{% endif %}">
+             {% for block in blocks.left %}
+-                {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
++                {% if block.roles|length == 0 or is_granted(block.roles) %}
++                    {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
++                {% endif %}
+             {% endfor %}
+         </div>
+
+         {% if blocks.center|length > 0 %}
+             <div class="col-md-4">
+                 {% for block in blocks.center %}
+-                    {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
++                    {% if block.roles|length == 0 or is_granted(block.roles) %}
++                        {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
++                    {% endif %}
+                 {% endfor %}
+             </div>
+         {% endif %}
+
+         <div class="{% if blocks.center|length > 0 %}col-md-4{% else %}col-md-6{% endif %}">
+             {% for block in blocks.right %}
+-                {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
++                {% if block.roles|length == 0 or is_granted(block.roles) %}
++                    {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
++                {% endif %}
+             {% endfor %}
+         </div>
+     </div>
+@@ -55,14 +63,14 @@ file that was distributed with this source code.
+         <div class="row">
+             {% for block in blocks.bottom %}
+                 <div class="{{ block.class }}">
+-                    {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
++                    {% if block.roles|length == 0 or is_granted(block.roles) %}
++                        {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
++                    {% endif %}
+                 </div>
+             {% endfor %}
+         </div>
+     {% endif %}
+
+-
+-
+     {{ sonata_block_render_event('sonata.admin.dashboard.bottom', { 'admin_pool': admin_pool }) }}
+
+ {% endblock %}
+diff --git a/Tests/DependencyInjection/ConfigurationTest.php b/Tests/DependencyInjection/ConfigurationTest.php
+index 650b273..8339c54 100644
+--- a/Tests/DependencyInjection/ConfigurationTest.php
++++ b/Tests/DependencyInjection/ConfigurationTest.php
+@@ -91,4 +91,27 @@ public function testAdminServicesDefault()
+             )
+         ), $config['admin_services']['my_admin_id']);
+     }
++
++    public function testDashboardWithoutRoles()
++    {
++        $processor = new Processor();
++        $config = $processor->processConfiguration(new Configuration(), array());
++
++        $this->assertEmpty($config['dashboard']["blocks"][0]["roles"]);
++    }
++
++    public function testDashboardWithRoles()
++    {
++        $processor = new Processor();
++        $config = $processor->processConfiguration(new Configuration(), array(array(
++            "dashboard" => array(
++                "blocks" => array(array(
++                    "roles" => array("ROLE_ADMIN"),
++                    "type"  => "my.type"
++                ))
++            )
++        )));
++
++        $this->assertEquals($config['dashboard']["blocks"][0]["roles"], array("ROLE_ADMIN"));
++    }
+ }

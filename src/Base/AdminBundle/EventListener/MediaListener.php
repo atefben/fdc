@@ -436,6 +436,8 @@ class MediaListener
             $path_audio_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
             $path_audio_output = 'media_audio_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 
+            error_log($path_audio_input);
+            error_log($file_name);
             $job = $elasticTranscoder->createJob(array(
                 'PipelineId'      => $this->getParameter('s3_elastic_mp3_pipeline_id'),
                 'OutputKeyPrefix' => $path_audio_output,
