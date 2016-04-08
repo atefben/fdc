@@ -3,14 +3,40 @@
 namespace Base\AdminBundle\Admin;
 
 use Base\CoreBundle\Entity\FDCPageFooter;
+use Base\CoreBundle\Entity\FDCPageFooterTranslation;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class FDCPageFooterAdmin extends Admin
 {
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
+    }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('BaseAdminBundle:Form:polycollection.html.twig')
+        );
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('list');
+        $collection->remove('create');
+        $collection->remove('show');
+        $collection->remove('batch');
+        $collection->remove('delete');
+        $collection->remove('export');
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -66,9 +92,10 @@ class FDCPageFooterAdmin extends Admin
                             new NotBlank()
                         )
                     ),
-                    'introduction' => array(
+                    'content' => array(
                         'field_type' => 'ckeditor',
-                        'label' => 'form.label_introduction',
+                        'config_name' => 'widget',
+                        'label' => 'form.label_content',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false
                     ),
@@ -82,7 +109,7 @@ class FDCPageFooterAdmin extends Admin
                         'label' => 'form.label_status',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'choice',
-                        'choices' => FDCPageFooter::getStatuses(),
+                        'choices' => FDCPageFooterTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
                     'seoTitle' => array(
@@ -107,13 +134,13 @@ class FDCPageFooterAdmin extends Admin
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => News::getAvailableTranslateOptions(),
+                'choices' => FDCPageFooter::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
                 'multiple' => true,
                 'expanded' => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => News::getPriorityStatuses(),
+                'choices' => FDCPageFooter::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('seoFile', 'sonata_media_type', array(
