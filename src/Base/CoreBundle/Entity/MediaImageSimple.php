@@ -23,7 +23,7 @@ use Application\Sonata\UserBundle\Entity\User;
  * MediaImageSimple
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class MediaImageSimple implements TranslateMainInterface

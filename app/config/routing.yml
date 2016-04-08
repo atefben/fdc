@@ -33,6 +33,7 @@ sonata_user_resetting:
 #sonata_user_profile:
 #    resource: "@SonataUserBundle/Resources/config/routing/sonata_profile_1.xml"
 #    prefix: /profile
+#    options: { i18n: false }
 
 #sonata_user_register:
 #    resource: "@SonataUserBundle/Resources/config/routing/sonata_registration_1.xml"
@@ -45,7 +46,7 @@ sonata_user_change_password:
     options: { i18n: false }
 
 sonata_user:
-    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    resource: '@ApplicationSonataUserBundle/Resources/config/routing/admin_security.xml'
     prefix: /admin
     options: { i18n: false }
 

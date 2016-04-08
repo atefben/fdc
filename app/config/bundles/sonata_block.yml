@@ -6,6 +6,6 @@ sonata_block:
         sonata.user.block.menu:    # used to display the menu in profile pages
         sonata.user.block.account: # used to display menu option (login option)
         sonata.block.service.text: # used to if you plan to use Sonata user routes
-        #Base blocks
-        base_admin.block.sites: ~
-        base_admin.block.locale_switcher: ~
+        # custom blocks
+        # base.admin.block.sites: ~
+        base.admin.block.translator_stats: ~

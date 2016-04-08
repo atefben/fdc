@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Tag
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Tag implements TranslateMainInterface

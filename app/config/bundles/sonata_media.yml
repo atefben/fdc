@@ -170,6 +170,8 @@ sonata_media:
                 976x615: { width: 976 , height: 615 , quality: 100 }
                 ##### OLDS #####
                 1980x300: { width: 1980 , height: 300 , quality: 100 }
+                #Widget Mosaic Movie Widget
+                368x500: { width: 368, height: 500, quality: 100 }
 
         media_image_simple:
             providers:
