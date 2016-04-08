@@ -20,7 +20,7 @@
 
     {% if widget.file is not null %}
         <a href="{% path widget.file, 'reference' %}"
-           class="btn telecharger">
+           class="btn telecharger" target="_blank" download>
             <i class="icon icon_telecharger"></i>
             {{ 'Télécharger'|trans }}
         </a>
