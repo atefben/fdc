@@ -77,3 +77,7 @@ classics:
 orange_series_and_cie:
     type:       rest
     resource:   Base\ApiBundle\Controller\OrangeSeriesAndCieController
+
+orange_programmation_ocs:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\OrangeProgrammationOCSController

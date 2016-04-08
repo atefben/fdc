@@ -52,7 +52,8 @@ abstract class Orange implements TranslateMainInterface
      * @ORM\OrderBy({"position" = "ASC"})
      * 
      * @Groups({
-     *     "orange_series_and_cie"
+     *     "orange_series_and_cie",
+     *     "orange_programmation_ocs"
      * })
      */
     protected $widgets;
@@ -60,7 +61,8 @@ abstract class Orange implements TranslateMainInterface
     /**
      * ArrayCollection
      * @Groups({
-     *     "orange_series_and_cie"
+     *     "orange_series_and_cie",
+     *     "orange_programmation_ocs"
      * })
      */
     protected $translations;
