@@ -286,7 +286,7 @@ class MediaListener
 	                array(
 	                    'Key'      => str_replace('.mov', '.mp4', $file_name),
 	                    'Rotate'   => 'auto',
-						'ThumbnailPattern' => '{count}/test.png',
+						'ThumbnailPattern' => str_replace(array('.mov', '.mp4'), '.png'), $file_name),
 	                    'PresetId' => $this->getParameter('s3_elastic_mp4_preset_id'),
 	                ),
 	            ),
@@ -384,7 +384,7 @@ class MediaListener
                     array(
                         'Key'      => str_replace('.mov', '.mp4', $file_name),
                         'Rotate'   => 'auto',
-						'ThumbnailPattern' => '{count}/test.png',
+						'ThumbnailPattern' => str_replace(array('.mov', '.mp4'), '.png'), $file_name),
                         'PresetId' => $this->getParameter('s3_elastic_mp4_preset_id'),
                     ),
                 ),
@@ -426,7 +426,6 @@ class MediaListener
             $parentVideo->setJobWebmId($job->get('Job')['Id']);
             $parentVideo->setWebmURL($path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name));
             $parentVideo->setJobWebmState(1);
-
 
         } elseif (isset($parentAudio)) {
             $file_name = $media->getProviderReference();
