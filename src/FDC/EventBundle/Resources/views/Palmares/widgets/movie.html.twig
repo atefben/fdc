@@ -15,13 +15,13 @@
     <div class="bck-hover">
         <div class="contain_item">
             {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                film: movie,
-                film_format: '259x352',
-                film_attrs: {
-                    alt: movie|trans_fallback('title')?:movie.titleVO,
-                    'data-object-fit': 'cover'
-                },
-                film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg',
+            film: movie,
+            film_format: '259x352',
+            film_attrs: {
+            alt: movie|trans_fallback('title')?:movie.titleVO,
+            'data-object-fit': 'cover'
+            },
+            film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg',
             }) %}
             <div class="infos-item-list">
                 {% if award_association is defined and award_association %}
@@ -30,7 +30,7 @@
                         <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
                         {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
                             {% set person = award_association.person %}
-                            <h3 class="title-item">{{ person.fullName }}</h3>
+                            <h3 class="title-item verticalline">{{ person.fullName }}</h3>
                         {% endif %}
                     </div>
                 {% endif %}
@@ -44,16 +44,31 @@
                         {% endif %}
                     {% endif %}
                 {% endif %}
-                <span class="nom-item">
-                    {% spaceless %}
+                <span class="nom-item">{% spaceless %}
                         {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                            {% if loop.first == false %}
-                                {% set author = author ~ ', ' %}
-                            {% endif %}
-                            {% set author = author ~ director.fullName %}
-                        {% endfor %}
-                        {{ author }}
+                        {% if loop.first == false %}
+                            {% set author = author ~ ', ' %}
+                        {% endif %}
+
+                        {% set author = author ~ '<a href="' ~ path('fdc_event_artist_get', {slug: director.slug }) ~ '">' %}
+                        {% set author = author ~ director.fullName %}
+                        {% set author = author ~ '</a>' %}
+                    {% endfor %}
+                        {{ author|raw }}
                     {% endspaceless %}</span>
+                {% if displayDuration is defined %}
+                    <span class="time-item">{% spaceless %}
+                        {% set duration = [] %}
+                        {% if movie.duration is not empty %}
+                            {% set duration = movie.duration|split('.') %}
+                        {% endif %}
+                        {% if duration|length > 0 and duration[0] > 0 %}
+                            {% set hours = (duration[0] / 60)|round(0, 'floor') %}
+                            {% set minutes = duration[0] % 60 %}
+                            {% if hours > 0 %}{{ hours }}:{% endif %}{{ (minutes|length) == 1 ? '0' ~ minutes : minutes }}
+                        {% endif %}
+                    {% endspaceless %}</span>
+                {% endif %}
             </div>
         </div>
     </div>

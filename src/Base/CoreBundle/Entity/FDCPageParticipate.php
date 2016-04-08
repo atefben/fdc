@@ -66,7 +66,16 @@ class FDCPageParticipate implements TranslateMainInterface
 
     public function __toString()
     {
-        return $this->getTitle();
+        $string = 'Page Participer';
+
+        if ($this->getId()) {
+            $trans = $this->findTranslationByLocale('fr');
+            if ($trans !== null && $trans->getTitle() !== null) {
+                $string = $trans->getTitle();
+            }
+        }
+
+        return $string;
     }
 
     /**

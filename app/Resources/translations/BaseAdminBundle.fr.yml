@@ -772,7 +772,13 @@ form:
     label_orange_widget_film_studio_title: Titre du film
     label_orange_widget_film_studio_description: Description
     label_orange_widget_film_studio_producer: Réalisateur du film
-    
+
+    label_first_name: Nom
+    label_last_name: Prénom
+    label_role: Fonction
+    label_sponsor_image: Image du partenaire/fournisseur
+    label_sponsor_logo: Logo du partenaire / fournisseur
+
     gallery:
         medias: Médias
     encoding_state:
