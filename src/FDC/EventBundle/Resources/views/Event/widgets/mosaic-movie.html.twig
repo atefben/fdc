@@ -8,7 +8,7 @@
                     {% set media = film.image.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% if media is not empty and media.file is not empty %}
-                    <img src="{% path media.file, '180x240' %}" alt="{{ media|trans_fallback('alt') }}" />
+                    <img src="{% path media.file, '368x500' %}" alt="{{ media|trans_fallback('alt') }}" />
                 {% endif %}
             {% endif %}
             {% if film.titleOriginal is not empty %}

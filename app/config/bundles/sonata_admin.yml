@@ -15,19 +15,25 @@ sonata_admin:
     dashboard:
         blocks:
             #DASHBOARD TRANSLATOR
-#            -
-#                position: center
-#                type: base.admin.block.translator_stats
+            -
+                position: top
+                class: col-md-12
+                type: base.admin.block.translator_stats
+                roles: [ ROLE_TRANSLATOR ]
+
+            #EVERYONE EXCEPT ORANGE AND TRANSLATOR DASHBOARD
             -
                 position: left
                 type: sonata.admin.block.admin_list
                 settings:
                     groups: [dashboard.group.news]
+                roles: [ ROLE_ALL_ADMIN, ROLE_ADMIN_FDC, ROLE_COMMUNITY_MANAGER, ROLE_CONTRIBUTOR_PHOTOS, ROLE_CONTRIBUTOR_VIDEOS_AUDIOS, ROLE_JOURNALIST, ROLE_SUPER_ADMIN ]
             -
                 position: right
                 type: sonata.admin.block.admin_list
                 settings:
                     groups: [dashboard.group.general]
+                roles: [ ROLE_ALL_ADMIN, ROLE_ADMIN_FDC, ROLE_COMMUNITY_MANAGER, ROLE_CONTRIBUTOR_PHOTOS, ROLE_CONTRIBUTOR_VIDEOS_AUDIOS, ROLE_JOURNALIST, ROLE_SUPER_ADMIN ]
         # setting messages as label_catalogue for groups because JmsTranslation can't handle variables translation.
         # Related translations available in app/Resources/translations
         groups:

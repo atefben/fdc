@@ -455,7 +455,7 @@ services:
         class: Base\AdminBundle\Admin\WidgetMosaicMovieAdmin
         arguments: [~, Base\CoreBundle\Entity\WidgetMosaicMovie, BaseAdminBundle:WidgetMosaicMovieAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: WidgetMosaicMovie, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: 'Module mosaïque de film', show_in_dashboard: false, , label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 

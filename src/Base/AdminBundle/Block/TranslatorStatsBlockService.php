@@ -108,38 +108,88 @@ class TranslatorStatsBlockService extends BaseBlockService
         $settings = array_merge($this->getDefaultSettings(), $blockContext->getSettings());
         $repositories = array(
             'news' => array(
+                'BaseCoreBundle:NewsArticle',
                 'BaseCoreBundle:NewsAudio',
                 'BaseCoreBundle:NewsVideo',
-                'BaseCoreBundle:NewsArticle',
                 'BaseCoreBundle:NewsImage',
+            ),
+            'videos' => array(
+                'BaseCoreBundle:MediaVideo'
+            ),
+            'audios' => array(
+                'BaseCoreBundle:MediaAudio'
+            ),
+            'photos' => array(
+                'BaseCoreBundle:MediaImage'
+            ),
+            'statements' => array(
+                'BaseCoreBundle:StatementArticle',
+                'BaseCoreBundle:StatementAudio',
+                'BaseCoreBundle:StatementImage',
+                'BaseCoreBundle:StatementVideo'
+            ),
+            'infos' => array(
+                'BaseCoreBundle:InfoArticle',
+                'BaseCoreBundle:InfoAudio',
+                'BaseCoreBundle:InfoImage',
+                'BaseCoreBundle:InfoVideo'
+            ),
+            'themes' => array(
+                'BaseCoreBundle:Theme',
+            ),
+            'tags' => array(
+                'BaseCoreBundle:Tag'
+            ),
+            'webtv' => array(
+                'BaseCoreBundle:WebTv'
+            ),
+            'images' => array(
+                'BaseCoreBundle:MediaImageSimple'
             )
         );
 
+        $statuses = NewsArticleTranslation::getStatuses();
+        $status = null;
+        $counts = array();
+        $locales = array();
+        $statusName = null;
 
         if ($this->securityContext->isGranted('ROLE_TRANSLATOR')) {
             $status = NewsArticleTranslation::STATUS_TRANSLATION_PENDING;
-        } else {
+            if ($this->securityContext->isGranted('ROLE_TRANSLATOR_FR')) {
+                $locales[] = 'fr';
+            } else if ($this->securityContext->isGranted('ROLE_TRANSLATOR_EN')) {
+                $locales[] = 'en';
+            } else if ($this->securityContext->isGranted('ROLE_TRANSLATOR_ES')) {
+                $locales[] = 'es';
+        } else if ($this->securityContext->isGranted('ROLE_TRANSLATOR_ZH')) {
+                $locales[] = 'zh';
+            }
+        } else if ($this->securityContext->isGranted('ROLE_TRANSLATOR_MASTER')) {
+            $locales = array('fr', 'en', 'es', 'zh');
             $status = NewsArticleTranslation::STATUS_TRANSLATION_VALIDATING;
+        }
+
+        if (isset($statuses[$status])) {
+            $statusName = $statuses[$status];
         }
 
         foreach ($repositories as $key => $repository) {
             if (is_array($repository)) {
-                $count[$key] = 0;
+                $counts[$key] = 0;
                 foreach ($repository as $rep) {
-                    $count[$key] += $this->em->getRepository($rep)->countByStatus($status);
+                    $counts[$key] += $this->em->getRepository($rep)->countByStatusAndLocales($status, $locales);
                 }
             } else {
-                $count[$key] = $this->em->getRepository($repository)->countByStatus($status);
+                $counts[$key] = $this->em->getRepository($repository)->countByStatusAndocales($status, $locales);
             }
         }
-
-        var_dump($count);
-        die();
 
         return $this->renderResponse('BaseAdminBundle:Block:translator_stats.html.twig', array(
             'block'     => $blockContext->getBlock(),
             'settings'  => $settings,
-            'count' =>  $count,
+            'statusName' => $statusName,
+            'counts' =>  $counts,
         ), $response);
     }
 }

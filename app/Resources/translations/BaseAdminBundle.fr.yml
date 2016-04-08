@@ -10,6 +10,7 @@ settings:
     fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
+    link_widget_mosaic_movie_list: Mosaïque de film
     link_f_d_c_page_la_selection_cinema_plage_list: Cinéma de la plage
     link_f_d_c_page_la_selection_cannes_classics_list: Cannes Classics
     link_film_person_list: Liste des personnes
@@ -420,6 +421,19 @@ filter:
         label_section: Nom de la section
 
 dashboard:
+    translator:
+        object:
+            news: actualités
+            videos: vidéos
+            audios: audios
+            photos: photos
+            statements: communiqués
+            infos: infos
+            pages: pages
+            themes: themes
+            tags: tags
+            webtv: chaînes webTV
+            images: images
     group:
         soif: SOIF
         general: Général
@@ -559,7 +573,7 @@ form:
         instagram: Instagram
         tumblr: Tumblr
     widget_mosaic_movie_film_film:
-        image: Affiche film
+        image: Affiche film (368x500)
     widget_mosaic_movie_film_film_translation:
         label_title: Titre traduit
     widget:
@@ -612,6 +626,7 @@ form:
     placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
     placeholder_seo_description: "[valeur champ chapô actualité]"
     label_position: Position
+    label_films: Films
     label_film: Film
     label_title_original: Titre original
     label_year: Année

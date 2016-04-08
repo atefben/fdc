@@ -21,7 +21,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Theme
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Theme implements TranslateMainInterface
