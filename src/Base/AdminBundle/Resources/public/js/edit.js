@@ -67,19 +67,19 @@ jQuery(document).ready(function($) {
         switch(newsUrl[6]) {
             case 'statementarticle':
                 var format = 'articles';
-                var type = 'statement';
+                var type = 'communique';
                 break;
             case 'statementvideo':
                 var format = 'videos';
-                var type = 'statement';
+                var type = 'communique';
                 break;
             case 'statementimage':
                 var format = 'photos';
-                var type = 'statement';
+                var type = 'communique';
                 break;
             case 'statementaudio':
                 var format = 'audios';
-                var type = 'statement';
+                var type = 'communique';
                 break;
             case 'infoarticle':
                 var format = 'articles';

@@ -17,7 +17,7 @@
     {% set image = imageTrans.file %}
 {% endif %}
 {% if image is not defined and trans.imageAmazonUrl %}
-    {% set image_s3 = s3_server_global ~ trans.imageAmazonUrl %}
+    {% set image_s3 = s3_server_video ~ trans.imageAmazonUrl %}
 {% endif %}
 
 <div class="video-container state-init video"

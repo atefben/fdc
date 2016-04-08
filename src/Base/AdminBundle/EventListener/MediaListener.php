@@ -286,15 +286,13 @@ class MediaListener
 	                array(
 	                    'Key'      => str_replace('.mov', '.mp4', $file_name),
 	                    'Rotate'   => 'auto',
+						'ThumbnailPattern' => '{count}/' . str_replace(array('.mov', '.mp4'), '', $file_name),
 	                    'PresetId' => $this->getParameter('s3_elastic_mp4_preset_id'),
 	                ),
 	            ),
 	        ));
 
-			/* @TODO
-			récupérer l'URL du fichier généré par amazon
-			*/
-
+			$mediaVideo->setImageAmazonUrl($path_video_output . '00002/' . str_replace(array('.mov', '.mp4'), '.png', $file_name));
 	        $mediaVideo->setJobMp4Id($job->get('Job')['Id']);
 			$mediaVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
 	        $mediaVideo->setJobMp4State(1);
@@ -318,11 +316,6 @@ class MediaListener
 	                ),
 	            ),
 	        ));
-		
-			/* @TODO
-			 récupérer l'URL du fichier généré par amazon
-			*/
-			//$parentVideo->setImageAmazonUrl($job->get('Job')['img_url']);
 
 	        $mediaVideo->setJobWebmId($job->get('Job')['Id']);
 			$mediaVideo->setWebmURL($path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name));
@@ -383,15 +376,13 @@ class MediaListener
                     array(
                         'Key'      => str_replace('.mov', '.mp4', $file_name),
                         'Rotate'   => 'auto',
+						'ThumbnailPattern' => '{count}/' . str_replace(array('.mov', '.mp4'), '', $file_name),
                         'PresetId' => $this->getParameter('s3_elastic_mp4_preset_id'),
                     ),
                 ),
             ));
 
-            /* @TODO
-            récupérer l'URL du fichier généré par amazon
-             */
-
+            $parentVideo->setImageAmazonUrl($path_video_output . '00002/' . str_replace(array('.mov', '.mp4'), '.png', $file_name));
             $parentVideo->setJobMp4Id($job->get('Job')['Id']);
             $parentVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
             $parentVideo->setJobMp4State(1);
@@ -415,11 +406,6 @@ class MediaListener
                     ),
                 ),
             ));
-
-            /* @TODO
-            récupérer l'URL du fichier généré par amazon
-             */
-            //$parentVideo->setImageAmazonUrl($job->get('Job')['img_url']);
 
             $parentVideo->setJobWebmId($job->get('Job')['Id']);
             $parentVideo->setWebmURL($path_video_output . str_replace(array('.mp4', '.mov'), '.webm', $file_name));

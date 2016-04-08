@@ -64,6 +64,9 @@ class ParticipateController extends Controller
             throw new NotFoundHttpException();
         }
 
+        // SEO
+        $this->get('base.manager.seo')->setFDCPageParticipateSeo($page, $locale);
+
         return array(
             'participatePage' => $page
         );
