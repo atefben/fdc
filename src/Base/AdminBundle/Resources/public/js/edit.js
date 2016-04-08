@@ -179,7 +179,7 @@ function editEvents() {
         if ($('select[name*="status"]').hasClass('orange')) {
             status = ['0', '2', '3', '5'];
             if(locale != 'fr') {
-                status = ['4'];
+                status = ['5'];
             }
         }
 
