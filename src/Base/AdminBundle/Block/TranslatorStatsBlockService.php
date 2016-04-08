@@ -116,7 +116,7 @@ class TranslatorStatsBlockService extends BaseBlockService
         );
 
 
-        if ($this->securityContext->is_granted('ROLE_TRANSLATOR')) {
+        if ($this->securityContext->isGranted('ROLE_TRANSLATOR')) {
             $status = NewsArticleTranslation::STATUS_TRANSLATION_PENDING;
         } else {
             $status = NewsArticleTranslation::STATUS_TRANSLATION_VALIDATING;

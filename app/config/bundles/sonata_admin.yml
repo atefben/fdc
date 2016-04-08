@@ -15,10 +15,10 @@ sonata_admin:
     dashboard:
         blocks:
             #DASHBOARD TRANSLATOR
+#            -
+#                position: center
+#                type: base.admin.block.translator_stats
             -
-                position: center
-                type: base.admin.block.translator_stats
-
                 position: left
                 type: sonata.admin.block.admin_list
                 settings:
