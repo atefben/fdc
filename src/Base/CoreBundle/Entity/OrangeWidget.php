@@ -47,7 +47,8 @@ abstract class OrangeWidget
      * @ORM\Column(type="integer", nullable=false)
      * @Groups({
      *     "orange_series_and_cie",
-     *     "orange_programmation_ocs"
+     *     "orange_programmation_ocs",
+     *     "orange_video_on_demand"
      * })
      */
     protected $position;
@@ -56,7 +57,8 @@ abstract class OrangeWidget
      * @var ArrayCollection
      * @Groups({
      *     "orange_series_and_cie",
-     *     "orange_programmation_ocs"
+     *     "orange_programmation_ocs",
+     *     "orange_video_on_demand"
      * })
      */
     protected $translations;

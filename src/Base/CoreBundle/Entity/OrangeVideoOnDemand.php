@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * OrangeProgrammationOCS
@@ -23,6 +24,7 @@ class OrangeVideoOnDemand extends Orange
      * @var MediaImage
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     * @Groups({"orange_video_on_demand"})
      *
      */
     private $header;
@@ -31,6 +33,7 @@ class OrangeVideoOnDemand extends Orange
      * @var MediaImage
      *
      * @ORM\ManyToOne(targetEntity="MediaVideo")
+     * @Groups({"orange_video_on_demand"})
      *
      */
     private $video;
@@ -42,6 +45,7 @@ class OrangeVideoOnDemand extends Orange
      * @ORM\OneToMany(targetEntity="OrangeWidgetFilmVOD", mappedBy="parent", cascade={"all"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"section" = "ASC", "position" = "ASC"})
+     * @Groups({"orange_video_on_demand"})
      */
     protected $widgets;
 

@@ -81,3 +81,7 @@ orange_series_and_cie:
 orange_programmation_ocs:
     type:       rest
     resource:   Base\ApiBundle\Controller\OrangeProgrammationOCSController
+
+orange_video_on_demand:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\OrangeVideoOnDemandController

@@ -53,7 +53,8 @@ abstract class Orange implements TranslateMainInterface
      * 
      * @Groups({
      *     "orange_series_and_cie",
-     *     "orange_programmation_ocs"
+     *     "orange_programmation_ocs",
+     *     "orange_video_on_demand"
      * })
      */
     protected $widgets;
@@ -62,7 +63,8 @@ abstract class Orange implements TranslateMainInterface
      * ArrayCollection
      * @Groups({
      *     "orange_series_and_cie",
-     *     "orange_programmation_ocs"
+     *     "orange_programmation_ocs",
+     *     "orange_video_on_demand"
      * })
      */
     protected $translations;

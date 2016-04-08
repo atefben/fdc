@@ -52,7 +52,8 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      *     "jury_list",
      *     "jury_show",
      *     "classics",
-     *     "orange_programmation_ocs"
+     *     "orange_programmation_ocs",
+     *     "orange_video_on_demand"
      * })
      */
     private $file;
@@ -81,7 +82,8 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      *     "jury_list",
      *     "jury_show",
      *     "classics",
-     *     "orange_programmation_ocs"
+     *     "orange_programmation_ocs",
+     *     "orange_video_on_demand"
      * })
      */
     private $alt;

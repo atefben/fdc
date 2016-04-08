@@ -5,6 +5,8 @@ namespace Base\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * OrangeWidgetFilmVOD
@@ -21,6 +23,7 @@ class OrangeWidgetFilmVOD extends OrangeWidget
      * @var MediaImage
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     * @Groups({"orange_video_on_demand"})
      *
      */
     private $image;
@@ -29,6 +32,7 @@ class OrangeWidgetFilmVOD extends OrangeWidget
      * @var string
      *
      * @ORM\Column(name="copy", type="text", nullable=true)
+     * @Groups({"orange_video_on_demand"})
      */
     private $copy;
     
@@ -36,6 +40,7 @@ class OrangeWidgetFilmVOD extends OrangeWidget
      * @var string
      *
      * @ORM\Column(name="producer", type="text", nullable=true)
+     * @Groups({"orange_video_on_demand"})
      */
     private $producer;
     
@@ -43,6 +48,7 @@ class OrangeWidgetFilmVOD extends OrangeWidget
      * @var string
      *
      * @ORM\Column(name="section", type="integer")
+     * @Groups({"orange_video_on_demand"})
      */
     private $section;
     
@@ -143,6 +149,18 @@ class OrangeWidgetFilmVOD extends OrangeWidget
     public function getSection()
     {
         return $this->section;
+    }
+
+    /**
+     * Get section
+     *
+     * @return integer
+     * @VirtualProperty()
+     * @Groups({"orange_video_on_demand"})
+     */
+    public function getStringSection()
+    {
+        return static::getSections()[$this->section];
     }
     
     /**
