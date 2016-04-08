@@ -133,6 +133,7 @@ class FDCPageParticipateAdmin extends Admin
                     ),
                     'cascade_validation' => true,
                     'by_reference' => false,
+                    'label' => 'Association des strates participer'
                 ),
                 array(
                     'edit' => 'inline',
@@ -152,7 +153,8 @@ class FDCPageParticipateAdmin extends Admin
                 'choice_translation_domain' => 'BaseAdminBundle',
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.label_image'
+                'label' => 'form.label_image',
+                'help' => 'Dimensions attendues : 2560×1103. Format attendu.'
             ))
             ->end();
 
