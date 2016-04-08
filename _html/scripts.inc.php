@@ -136,7 +136,6 @@ var GLOBALS = {
 <script src="js/festival-cannes/transitions.module.js"></script>
 <script src="js/festival-cannes/video.module.js"></script>
 <script src="js/festival-cannes/webtv.module.js"></script>
-<script src="js/festival-cannes/evenement.js"></script>
 <script src="js/festival-cannes/popin.js"></script>
 <script src="js/festival-cannes/scroll.js"></script>
 <!-- festival-cannes tags end -->

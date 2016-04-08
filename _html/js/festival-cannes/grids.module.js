@@ -500,6 +500,46 @@ $(document).ready(function () {
       });
     }
 
+    if ($('#gridEvent').length) {
+      var $container = $('#gridEvent'),
+          $grid;
+
+      $grid = $('#gridEvent').imagesLoaded(function () {
+        setGrid($grid, $('#gridEvent'), true);
+        $grid.isotope({
+          itemSelector: '.item',
+          percentPosition: true,
+          layoutMode: 'packery',
+          packery: {
+            columnWidth: '.grid-sizer'
+          }
+        });
+
+        $grid.isotope('layout');
+      });
+
+      $('.read-more').on('click', function (e) {
+        e.preventDefault();
+        $(this).hide();
+
+        $.ajax({
+          type: "GET",
+          dataType: "html",
+          cache: false,
+          url: GLOBALS.urls.eventUrl /* TODO DEV : context URL */,
+          success: function (data) {
+            var $data      = $(data).find('.gridelement');
+            var $container = $('#gridEvent');
+            var $grid;
+
+            $grid = $container.imagesLoaded(function () {
+              setGrid($grid, $data, false);
+            });
+          }
+        });
+      });
+    }
+
     var filterValues = "";
 
     // filters
