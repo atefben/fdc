@@ -211,3 +211,6 @@ parameters:
     admin_fdc_orange_series_id: 1
     admin_fdc_orange_vod_id: 2
     admin_fdc_orange_studio_id: 3
+    admin_fdc_footer_confidentialite_id: 1
+    admin_fdc_footer_mentions_legales_id: 2
+    admin_fdc_footer_credits_id: 3
