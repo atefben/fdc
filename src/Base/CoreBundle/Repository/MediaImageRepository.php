@@ -2,10 +2,9 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FilmFestival;
 
-class MediaImageRepository extends EntityRepository
+class MediaImageRepository extends TranslationRepository
 {
     /**
      * @param $festival

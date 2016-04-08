@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * StatementVideo
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class StatementVideo extends Statement
