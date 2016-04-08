@@ -9,6 +9,7 @@
             {% for video in videos %}
                 {% set trans = video.findTranslationByLocale(app.request.locale) %}
                 {% set transImage = null %}
+				{% set amazonImage = null %}
                 {% if trans is null or trans.file is null %}
                     {% set trans = video.findTranslationByLocale('fr') %}
                 {% endif %}
@@ -22,13 +23,15 @@
                     {% if transImage is null or transImage.file is null %}
                         {% set transImage = video.image.findTranslationByLocale('fr') %}
                     {% endif %}
-                {% endif %}
-                {% if transImage is defined %}
+                {%- elseif video|trans_fallback('imageAmazonUrl') -%}
+                    {% set amazonImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
+                {%- endif -%}
+                {% if transImage is defined or amazonImage is defined %}
                     <div class="item {{ video.theme|trans_fallback('slug') }} {{ video.publishedAt|date('d-m-y') }} date theme shadow-bottom video"
                          data-vid="{{ video.id }}"
                          data-file='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
                          data-img="{% if transImage is not null %}{% path transImage.file, '1144x724' %}{% endif %}">
-                        <img src="{% if transImage is not null %}{% path transImage.file , '1144x724' %}" alt="{{ transImage|trans_fallback('alt') }}{% endif %}">
+                        <img src="{% if transImage is not null %}{% path transImage.file , '1144x724' %}" alt="{{ transImage|trans_fallback('alt') }}{% elseif amazonImage is not null %}{{ amazonImage }}" alt="{% endif %}">
                         <div class="picto"><i class="icon icon_video"></i></div>
                         <div class="info">
                             <div class="vCenter">

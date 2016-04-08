@@ -73,3 +73,15 @@ today_images:
 classics:
     type:       rest
     resource:   Base\ApiBundle\Controller\ClassicsController
+
+orange_series_and_cie:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\OrangeSeriesAndCieController
+
+orange_programmation_ocs:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\OrangeProgrammationOCSController
+
+orange_video_on_demand:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\OrangeVideoOnDemandController

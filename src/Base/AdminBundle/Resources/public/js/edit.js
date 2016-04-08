@@ -177,9 +177,9 @@ function editEvents() {
         }
 
         if ($('select[name*="status"]').hasClass('orange')) {
-            status = ['4'];
+            status = ['0', '1', '4', '6'];
             if(locale != 'fr') {
-                status = ['0', '2', '3', '5'];
+                status = ['5'];
             }
         }
 

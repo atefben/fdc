@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * OrangeWidgetMovieYoutube
@@ -21,6 +22,9 @@ class OrangeWidgetMovieYoutube extends OrangeWidget
      * @var string
      *
      * @ORM\Column(name="url", type="text", nullable=true)
+     * @Groups({
+     *     "orange_series_and_cie"
+     * })
      */
     private $url;
 

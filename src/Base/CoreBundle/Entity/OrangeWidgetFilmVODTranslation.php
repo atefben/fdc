@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * OrangeWidgetFilmOCS
@@ -22,6 +23,7 @@ class OrangeWidgetFilmVODTranslation
      * @var string
      *
      * @ORM\Column(name="title", type="text", nullable=true)
+     * @Groups({"orange_video_on_demand"})
      */
     private $title;
 
@@ -29,6 +31,7 @@ class OrangeWidgetFilmVODTranslation
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     * @Groups({"orange_video_on_demand"})
      */
     private $description;
 
