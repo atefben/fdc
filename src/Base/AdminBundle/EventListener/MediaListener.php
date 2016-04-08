@@ -286,6 +286,7 @@ class MediaListener
 	                array(
 	                    'Key'      => str_replace('.mov', '.mp4', $file_name),
 	                    'Rotate'   => 'auto',
+						'thumbnail_pattern' => 'test.png',
 	                    'PresetId' => $this->getParameter('s3_elastic_mp4_preset_id'),
 	                ),
 	            ),
@@ -314,6 +315,7 @@ class MediaListener
 	                array(
 	                    'Key'      => str_replace(array('.mp4', '.mov'), '.webm', $file_name),
 	                    'Rotate'   => 'auto',
+						'thumbnail_pattern' => 'test.png',
 	                    'PresetId' => $this->getParameter('s3_elastic_webm_preset_id'),
 	                ),
 	            ),
@@ -383,6 +385,7 @@ class MediaListener
                     array(
                         'Key'      => str_replace('.mov', '.mp4', $file_name),
                         'Rotate'   => 'auto',
+						'thumbnail_pattern' => 'test.png',
                         'PresetId' => $this->getParameter('s3_elastic_mp4_preset_id'),
                     ),
                 ),
@@ -411,6 +414,7 @@ class MediaListener
                     array(
                         'Key'      => str_replace(array('.mp4', '.mov'), '.webm', $file_name),
                         'Rotate'   => 'auto',
+						'thumbnail_pattern' => 'test.png',
                         'PresetId' => $this->getParameter('s3_elastic_webm_preset_id'),
                     ),
                 ),
