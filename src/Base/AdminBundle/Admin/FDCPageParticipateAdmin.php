@@ -21,8 +21,24 @@ class FDCPageParticipateAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt');
+            ->add('title', 'doctrine_orm_callback', array(
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->andWhere('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.title LIKE :title');
+                    $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
+                    return true;
+                },
+                'field_type' => 'text',
+                'label' => 'Titre de la page',
+            ))
+        ;
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addUpdatedBetweenFilters($datagridMapper);
     }
 
     /**
@@ -38,13 +54,14 @@ class FDCPageParticipateAdmin extends Admin
             ))
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ));
+            ->add('priorityStatus', 'choice', array(
+                'choices'   => FDCPageParticipate::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
+            ))
+            ;
     }
 
     /**
@@ -102,6 +119,7 @@ class FDCPageParticipateAdmin extends Admin
                     'icon' => array(
                         'field_type' => 'choice',
                         'choices' => array(
+                            null => null,
                             'icon_palme' => 'Palme',
                             'icon_camera' => 'Camera',
                             'icon_mains' => 'Mains',
