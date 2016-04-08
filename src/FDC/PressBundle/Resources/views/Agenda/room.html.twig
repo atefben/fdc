@@ -32,7 +32,7 @@
                         {% set trans = img.findTranslationByLocale('fr') %}
                     {% endif %}
                     {% set file = trans.file %}
-                    {% thumbnail file, '197x142' with {'alt': img|trans_fallback('alt'), 'class': "visible first" ,'data-image': 'default' } %}
+                    {% thumbnail file, '646x567' with {'alt': img|trans_fallback('alt'), 'class': "visible first" ,'data-image': 'default' } %}
 
                     {#                      #}
                     {#      Zone Image      #}
@@ -47,7 +47,7 @@
                             {% set trans = img.findTranslationByLocale('fr') %}
                         {% endif %}
                         {% set file = trans.file %}
-                        {% thumbnail file, '197x142' with {'alt': img|trans_fallback('alt'), 'data-image': roomActive } %}
+                        {% thumbnail file, '646x567' with {'alt': img|trans_fallback('alt'), 'data-image': roomActive } %}
                     {% endfor %}
                 </li>
             </ul>
