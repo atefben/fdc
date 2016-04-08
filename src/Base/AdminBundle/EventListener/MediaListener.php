@@ -286,7 +286,7 @@ class MediaListener
 	                array(
 	                    'Key'      => str_replace('.mov', '.mp4', $file_name),
 	                    'Rotate'   => 'auto',
-						'ThumbnailPattern' => str_replace(array('.mov', '.mp4'), '.png'), $file_name),
+						'ThumbnailPattern' => str_replace(array('.mov', '.mp4'), '.png', $file_name),
 	                    'PresetId' => $this->getParameter('s3_elastic_mp4_preset_id'),
 	                ),
 	            ),
@@ -384,7 +384,7 @@ class MediaListener
                     array(
                         'Key'      => str_replace('.mov', '.mp4', $file_name),
                         'Rotate'   => 'auto',
-						'ThumbnailPattern' => str_replace(array('.mov', '.mp4'), '.png'), $file_name),
+						'ThumbnailPattern' => str_replace(array('.mov', '.mp4'), '.png', $file_name),
                         'PresetId' => $this->getParameter('s3_elastic_mp4_preset_id'),
                     ),
                 ),
