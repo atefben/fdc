@@ -77,6 +77,7 @@ parameters:
         - admin_base_core_presscinemaroom_list
         - admin_base_core_fdcpagelaselectioncinemaplage_list
         - admin_base_core_fdcpageparticipate_list
+        - admin_base_core_fdcpageparticipatesection_list
     admin_routes_translation_legend:
         - admin_base_core_newsarticle_list
         - admin_base_core_event_list
@@ -96,6 +97,7 @@ parameters:
         - admin_base_core_infovideo_list
         - admin_base_core_fdcpagelaselectioncannesclassics_list
         - admin_base_core_fdcpageparticipate_list
+        - admin_base_core_fdcpageparticipatesection_list
     admin_routes_translation_lock:
         - admin_base_core_webtv_edit
         - admin_base_core_tag_edit
@@ -123,6 +125,7 @@ parameters:
         - admin_base_core_fdcpagelaselectioncannesclassics_edit
         - admin_base_core_fdcpagelaselectioncinemaplage_edit
         - admin_base_core_fdcpageparticipate_edit
+        - admin_base_core_fdcpageparticipatesection_edit
     # soif
     soif_preprod_url: ~
     soif_prod_url: ~

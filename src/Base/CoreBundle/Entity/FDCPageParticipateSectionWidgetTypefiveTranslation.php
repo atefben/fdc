@@ -30,7 +30,7 @@ class FDCPageParticipateSectionWidgetTypefiveTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $oneDescription;
 
@@ -44,7 +44,7 @@ class FDCPageParticipateSectionWidgetTypefiveTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $twoDescription;
 
@@ -58,7 +58,7 @@ class FDCPageParticipateSectionWidgetTypefiveTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $threeDescription;
 
@@ -72,7 +72,7 @@ class FDCPageParticipateSectionWidgetTypefiveTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $fourDescription;
 
