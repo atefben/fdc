@@ -12,8 +12,11 @@
             <div class="bandeau-list-img vCenterKid"
                  style="background-image:url({% path mainImage, '1280x808' %})">
                 <h2 class="title title-list-header">
-                    <i class="icon {{ participatePage|trans_fallback('icon') }}"></i>
-                    <br> {{ participatePage|trans_fallback('title') }}
+                    {% if participatePage|trans_fallback('icon') is not null %}
+                        <i class="icon {{ participatePage|trans_fallback('icon') }}"></i>
+                        <br>
+                    {% endif %}
+                    {{ participatePage|trans_fallback('title') }}
                 </h2>
             </div>
         </div>

@@ -10,6 +10,7 @@ settings:
     fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
+    link_widget_mosaic_movie_list: Mosaïque de film
     link_f_d_c_page_la_selection_cinema_plage_list: Cinéma de la plage
     link_f_d_c_page_la_selection_cannes_classics_list: Cannes Classics
     link_film_person_list: Liste des personnes
@@ -158,6 +159,7 @@ group:
         widgets: Modules film
     orange_ocs:
         widgets: Modules film
+    content: Contenu
 entity:
     fdc_event_routes: Menu
     news_article: Articles
@@ -420,6 +422,19 @@ filter:
         label_section: Nom de la section
 
 dashboard:
+    translator:
+        object:
+            news: actualités
+            videos: vidéos
+            audios: audios
+            photos: photos
+            statements: communiqués
+            infos: infos
+            pages: pages
+            themes: themes
+            tags: tags
+            webtv: chaînes webTV
+            images: images
     group:
         soif: SOIF
         general: Général
@@ -495,6 +510,9 @@ dashboard:
         orange_vod: Vidéo à la demande
         orange_ocs: Programmation OCS
         orange_studio: Orange Studio
+        credits: Crédits
+        mentions_legales: Mentions légales
+        confidentialite: Politique de confidentialité
 
 form:
     fdc_page_la_selection_cinema_plage:
@@ -559,7 +577,7 @@ form:
         instagram: Instagram
         tumblr: Tumblr
     widget_mosaic_movie_film_film:
-        image: Affiche film
+        image: Affiche film (368x500)
     widget_mosaic_movie_film_film_translation:
         label_title: Titre traduit
     widget:
@@ -612,6 +630,7 @@ form:
     placeholder_seo_title: "[valeur champ titre actualité] - Festival de Cannes 2016"
     placeholder_seo_description: "[valeur champ chapô actualité]"
     label_position: Position
+    label_films: Films
     label_film: Film
     label_title_original: Titre original
     label_year: Année
@@ -735,8 +754,8 @@ form:
     label_download_section: Sections à télécharger
     label_map_img: Image de la salle
     label_map_zone_img: Image de la zone
-    label_map_default_img: Image de la salle du festival par default
-    label_zone_default_img: Image de la zone du festival par default
+    label_map_default_img: Image de la salle du festival par defaut
+    label_zone_default_img: Image de la zone du festival par defaut
     label_page: Page
     label_text: Texte
     label_banner: Bannière
@@ -772,7 +791,13 @@ form:
     label_orange_widget_film_studio_title: Titre du film
     label_orange_widget_film_studio_description: Description
     label_orange_widget_film_studio_producer: Réalisateur du film
-    
+
+    label_first_name: Nom
+    label_last_name: Prénom
+    label_role: Fonction
+    label_sponsor_image: Image du partenaire/fournisseur
+    label_sponsor_logo: Logo du partenaire / fournisseur
+
     gallery:
         medias: Médias
     encoding_state:

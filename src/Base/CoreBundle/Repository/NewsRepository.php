@@ -18,7 +18,6 @@ use Symfony\Component\Validator\Constraints\DateTime;
  */
 class NewsRepository extends EntityRepository
 {
-
     /**
      * @param $locale
      * @param $festival

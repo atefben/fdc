@@ -170,6 +170,8 @@ sonata_media:
                 976x615: { width: 976 , height: 615 , quality: 100 }
                 ##### OLDS #####
                 1980x300: { width: 1980 , height: 300 , quality: 100 }
+                #Widget Mosaic Movie Widget
+                368x500: { width: 368, height: 500, quality: 100 }
 
         media_image_simple:
             providers:
@@ -180,6 +182,8 @@ sonata_media:
                 small:   { width: 187, height: 255, quality: 100 }
                 212x134: { width: 212 , height: 134 , quality: 100 }
                 293x185: { width: 293 , height: 185 , quality: 100 }
+                #event mosaic movie widget
+                180x240: { width: 180 , height: 240 , quality: 100 }
                 #film
                 366x488: { width: 366 , height: 488 , quality: 100 }
                 55x75: { width: 55 , height: 75 , quality: 100 }
@@ -194,10 +198,9 @@ sonata_media:
                 976x535: { width: 976 , height: 535 , quality: 100 }
                 # PressDownload Signature image
                 233x233: { width: 233 , height: 233 , quality: 100 }
-                # PressCinemaMap
+                # PressCinemaMap || PressCinemaZone
                 646x567: { width: 646 , height: 567 , quality: 100 }
-                # PressCinemaZone
-                197x142: { width: 197 , height: 142 , quality: 100 }
+
                 586x370: { width: 586 , height: 370 , quality: 100 }
                 1280x808: { width: 1280 , height: 808 , quality: 100 }
                 2560x1103: { width: 2560, height: 1103 , quality: 100 }
@@ -213,7 +216,8 @@ sonata_media:
                 # Participate
                 363x260: { width: 363 , height: 260 , quality: 100 }
                 228x181: { width: 228 , height: 181 , quality: 100 }
-
+                # Partners logo
+                220x85: { width: 220 , height: 85, quality: 100 }
                 # Partners portrait
                 60x81: { width: 60, height: 81, quality: 100 }
 

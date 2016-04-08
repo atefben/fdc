@@ -87,7 +87,8 @@ class FDCPageParticipateSectionWidgetTypefiveType extends FDCPageParticipateSect
                         'label' => 'form.label_content',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'widget'
+                        'config_name' => 'press',
+                        'required' => false
                     ),
                     'twoIcon' => array(
                         'field_type' => 'choice',
@@ -106,7 +107,8 @@ class FDCPageParticipateSectionWidgetTypefiveType extends FDCPageParticipateSect
                         'label' => 'form.label_content',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'widget'
+                        'config_name' => 'press',
+                        'required' => false
                     ),
                     'threeIcon' => array(
                         'field_type' => 'choice',
@@ -125,7 +127,8 @@ class FDCPageParticipateSectionWidgetTypefiveType extends FDCPageParticipateSect
                         'label' => 'form.label_content',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'widget'
+                        'config_name' => 'press',
+                        'required' => false
                     ),
                     'fourIcon' => array(
                         'field_type' => 'choice',
@@ -144,7 +147,8 @@ class FDCPageParticipateSectionWidgetTypefiveType extends FDCPageParticipateSect
                         'label' => 'form.label_content',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'widget'
+                        'config_name' => 'press',
+                        'required' => false
                     ),
                 )
             ));

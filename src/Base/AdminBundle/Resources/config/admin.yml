@@ -455,7 +455,7 @@ services:
         class: Base\AdminBundle\Admin\WidgetMosaicMovieAdmin
         arguments: [~, Base\CoreBundle\Entity\WidgetMosaicMovie, BaseAdminBundle:WidgetMosaicMovieAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: WidgetMosaicMovie, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: 'Module mosaïque de film', show_in_dashboard: false, , label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -1311,3 +1311,15 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: OrangeStudioFilmAssociated, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_footer:
+        class: Base\AdminBundle\Admin\FDCPageFooterAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageFooter, BaseAdminBundle:FDCPageFooterAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageFooter}
+
+    base.admin.event_tag:
+        class: Base\AdminBundle\Admin\EventTagAdmin
+        arguments: [~, Base\CoreBundle\Entity\EventTag, BaseAdminBundle:EventTagAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: EventTag}

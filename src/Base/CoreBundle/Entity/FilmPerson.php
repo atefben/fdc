@@ -54,7 +54,8 @@ class FilmPerson implements TranslateMainInterface
      *     "award_list",
      *     "jury_list",
      *     "jury_show",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $id;
@@ -180,7 +181,8 @@ class FilmPerson implements TranslateMainInterface
      *     "home",
      *     "film_selection_section_show",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $lastname;
@@ -206,7 +208,8 @@ class FilmPerson implements TranslateMainInterface
      *     "home",
      *     "film_selection_section_show",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $firstname;
@@ -232,7 +235,8 @@ class FilmPerson implements TranslateMainInterface
      *     "home",
      *     "film_selection_section_show",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $asianName;

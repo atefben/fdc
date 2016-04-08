@@ -1,0 +1,27 @@
+{% if films|length > 0 %}
+<div class="best-films">
+    {% for film in films %}
+        <div class="item-film">
+            {% if film.image %}
+                {% set media = film.image.findTranslationByLocale(app.request.locale) %}
+                {% if media is empty or media.file is empty %}
+                    {% set media = film.image.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% if media is not empty and media.file is not empty %}
+                    <img src="{% path media.file, '368x500' %}" alt="{{ media|trans_fallback('alt') }}" />
+                {% endif %}
+            {% endif %}
+            {% if film.titleOriginal is not empty %}
+                <strong class="title">{{ film.titleOriginal }}</strong>
+            {% endif %}
+            {% set titleTrans = film|trans_fallback('title') %}
+            {% if titleTrans is not empty %}
+                <span class="desc">({{ titleTrans }})</span>
+            {% endif %}
+            {% if film.year %}
+                <span class="date">{{ film.year }}</span>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% endif %}

@@ -393,6 +393,9 @@
                                                                                 {{ film.translations.get(locale).title }}
                                                                             {% endif %}
                                                                         </div>
+                                                                        <a target="_blank" href="{{ path('admin_base_core_widgetmosaicmovie_edit', {'id': widget.children.widgetMosaicMovie.vars.data.id, locale: locale, trans: '1' }) }}">
+                                                                            modifier les traductions
+                                                                        </a>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>{{ 'form.widget_mosaic_movie_film_film.image'|trans }}</label>

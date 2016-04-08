@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * InfoArticle
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class InfoArticle extends Info

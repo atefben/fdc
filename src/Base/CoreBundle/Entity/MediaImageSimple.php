@@ -23,7 +23,7 @@ use Application\Sonata\UserBundle\Entity\User;
  * MediaImageSimple
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class MediaImageSimple implements TranslateMainInterface
@@ -64,7 +64,10 @@ class MediaImageSimple implements TranslateMainInterface
      *     "event_show",
      *     "jury_list",
      *     "jury_show",
-     *     "classics"
+     *     "classics",
+     *     "orange_programmation_ocs",
+     *     "orange_video_on_demand",
+     *     "orange_studio"
      * })
      */
     protected $name;
@@ -100,7 +103,10 @@ class MediaImageSimple implements TranslateMainInterface
      *     "event_show",
      *     "jury_list",
      *     "jury_show",
-     *     "classics"
+     *     "classics",
+     *     "orange_programmation_ocs",
+     *     "orange_video_on_demand",
+     *     "orange_studio"
      * })
      */
     protected $translations;

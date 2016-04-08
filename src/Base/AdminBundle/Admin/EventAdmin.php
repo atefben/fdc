@@ -73,6 +73,9 @@ class EventAdmin extends Admin
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
             ))
+            ->add('_preview', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_preview_event.html.twig'
+            ))
         ;
     }
 

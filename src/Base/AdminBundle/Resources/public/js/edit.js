@@ -67,19 +67,19 @@ jQuery(document).ready(function($) {
         switch(newsUrl[6]) {
             case 'statementarticle':
                 var format = 'articles';
-                var type = 'statement';
+                var type = 'communique';
                 break;
             case 'statementvideo':
                 var format = 'videos';
-                var type = 'statement';
+                var type = 'communique';
                 break;
             case 'statementimage':
                 var format = 'photos';
-                var type = 'statement';
+                var type = 'communique';
                 break;
             case 'statementaudio':
                 var format = 'audios';
-                var type = 'statement';
+                var type = 'communique';
                 break;
             case 'infoarticle':
                 var format = 'articles';
@@ -177,9 +177,9 @@ function editEvents() {
         }
 
         if ($('select[name*="status"]').hasClass('orange')) {
-            status = ['4'];
+            status = ['0', '1', '4', '6'];
             if(locale != 'fr') {
-                status = ['0', '2', '3', '5'];
+                status = ['5'];
             }
         }
 

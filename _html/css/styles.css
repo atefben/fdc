@@ -15347,6 +15347,7 @@ input[type=submit] {
   font-size: .625rem;
   padding-top: 25px;
   letter-spacing: .2em;
+  color: #000;
 }
 .contain-jury .contain-descript .descript-name {
   text-transform: uppercase;

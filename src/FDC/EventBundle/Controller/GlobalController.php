@@ -134,6 +134,59 @@ class GlobalController extends Controller {
         );
     }
 
+    /**
+     * @Route("/privacy")
+     * @Template("FDCEventBundle:Global:footer_page.html.twig")
+     * @return array
+     */
+    public function privacyAction(Request $request) {
+
+        $pageId = $this->getParameter('admin_fdc_footer_confidentialite_id');
+        $em = $this->get('doctrine')->getManager();
+        $content = $em->getRepository('BaseCoreBundle:FDCPageFooter')->findOneBy(
+            array('id' => $pageId)
+        );
+
+        return array(
+            'page' => $content,
+        );
+    }
+
+    /**
+     * @Route("/mentions-legales")
+     * @Template("FDCEventBundle:Global:footer_page.html.twig")
+     * @return array
+     */
+    public function mentionsLegalesAction(Request $request) {
+
+        $pageId = $this->getParameter('admin_fdc_footer_mentions_legales_id');
+        $em = $this->get('doctrine')->getManager();
+        $content = $em->getRepository('BaseCoreBundle:FDCPageFooter')->findOneBy(
+            array('id' => $pageId)
+        );
+
+        return array(
+            'page' => $content,
+        );
+    }
+
+    /**
+     * @Route("/credits")
+     * @Template("FDCEventBundle:Global:footer_page.html.twig")
+     * @return array
+     */
+    public function creditsAction(Request $request) {
+
+        $pageId = $this->getParameter('admin_fdc_footer_credits_id');
+        $em = $this->get('doctrine')->getManager();
+        $content = $em->getRepository('BaseCoreBundle:FDCPageFooter')->findOneBy(
+            array('id' => $pageId)
+        );
+
+        return array(
+            'page' => $content,
+        );
+    }
 
     /**
      * @Route("/share-email", options={"expose"=true})

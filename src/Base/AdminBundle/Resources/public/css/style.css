@@ -243,3 +243,37 @@ textarea.quote {
     padding: 40px 15px;
     text-align: center;
 }
+
+/* remove label Fr / En.. of a2lix */
+form[action*="widgetmosaicmovie"] div[id$="translations"] > .form-group > label.control-label {
+    display: none;
+}
+
+/* dashboard translator */
+
+.dashboard-translator {
+    background-color: #FFFFFF;
+}
+
+#dashboard-translator-statuses-preview {
+    font-size: 20px;
+}
+
+#dashboard-translator-statuses-preview header {
+    padding: 5px;
+}
+
+#dashboard-translator-statuses-preview-container {
+    padding: 40px;
+}
+
+#dashboard-translator-statuses-preview-container .col-md-2 {
+    padding: 30px 20px;
+    background-color: #EEEEEE;
+    border: 1px solid #CCCCCC;
+    text-align: center;
+}
+
+#dashboard-translator-statuses-preview-container .col-md-2 strong {
+    font-size: 32px;
+}

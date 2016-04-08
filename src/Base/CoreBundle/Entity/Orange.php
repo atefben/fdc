@@ -12,6 +12,7 @@ use Base\CoreBundle\Util\TruncatePro;
 use Base\CoreBundle\Util\Time;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation\Groups;
 
 
 /**
@@ -49,11 +50,24 @@ abstract class Orange implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="OrangeWidget", mappedBy="parent", cascade={"all"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
+     * 
+     * @Groups({
+     *     "orange_series_and_cie",
+     *     "orange_programmation_ocs",
+     *     "orange_video_on_demand",
+     *     "orange_studio"
+     * })
      */
     protected $widgets;
     
     /**
      * ArrayCollection
+     * @Groups({
+     *     "orange_series_and_cie",
+     *     "orange_programmation_ocs",
+     *     "orange_video_on_demand",
+     *     "orange_studio"
+     * })
      */
     protected $translations;
 

@@ -107,7 +107,7 @@ class Event implements TranslateMainInterface
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="NewsTag", mappedBy="news", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="EventTag", mappedBy="event", cascade={"persist"})
      *
      */
     private $tags;
@@ -278,39 +278,6 @@ class Event implements TranslateMainInterface
     public function getFestival()
     {
         return $this->festival;
-    }
-
-    /**
-     * Add tags
-     *
-     * @param \Base\CoreBundle\Entity\NewsTag $tags
-     * @return Event
-     */
-    public function addTag(\Base\CoreBundle\Entity\NewsTag $tags)
-    {
-        $this->tags[] = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Remove tags
-     *
-     * @param \Base\CoreBundle\Entity\NewsTag $tags
-     */
-    public function removeTag(\Base\CoreBundle\Entity\NewsTag $tags)
-    {
-        $this->tags->removeElement($tags);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTags()
-    {
-        return $this->tags;
     }
 
     /**
@@ -527,5 +494,38 @@ class Event implements TranslateMainInterface
     public function getSignature()
     {
         return $this->signature;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \Base\CoreBundle\Entity\EventTag $tags
+     * @return Event
+     */
+    public function addTag(\Base\CoreBundle\Entity\EventTag $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \Base\CoreBundle\Entity\EventTag $tags
+     */
+    public function removeTag(\Base\CoreBundle\Entity\EventTag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

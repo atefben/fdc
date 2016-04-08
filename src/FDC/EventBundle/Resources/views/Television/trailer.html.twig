@@ -18,10 +18,10 @@
                          data-playlist='[{%- set first = true -%}
                             {%- for video in videos %}
                             {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
-                            {%- if video.image -%}
+                            {%- if video|trans_fallback('imageAmazonUrl') -%}
+                                {% set videoImage = s3_server_video ~ video.image|trans_fallback('imageAmazonUrl') %}
+                            {%- elseif video.image -%}
                                 {% set videoImage = media_public_url(video.image|trans_fallback('file'), '1950x1232') %}
-                            {%- elseif video.image|trans_fallback('imageAmazonUrl') -%}
-                                {% set videoImage = s3_server_global ~ video.image|trans_fallback('imageAmazonUrl') %}
                             {%- endif -%}
                             {%- if trans is null or trans.file is null -%}
                                 {%- set trans = video.file.findTranslationByLocale('fr') -%}
@@ -33,7 +33,7 @@
                          {%- if videos[0].image -%}
                          data-img="{%- path videos[0].image|trans_fallback('file'), '1950x1232' -%}"
                          {%- elseif videos[0].image|trans_fallback('imageAmazonUrl') -%}
-                         data-img="{{ s3_server_global ~ videos[0].image|trans_fallback('imageAmazonUrl') }}"
+                         data-img="{{ s3_server_video ~ videos[0].image|trans_fallback('imageAmazonUrl') }}"
                          {%- endif -%}>
                         <div id="video-player" class="video-player-pl">
                         </div>
@@ -125,7 +125,7 @@
                                     {% set videoImage = media_public_url(video.image|trans_fallback('file'), '293x185') %}
                                     {% set alt = video.image|trans_fallback('alt') %}
                                 {% elseif video|trans_fallback('imageAmazonUrl') %}
-                                    {% set videoImage = s3_server_global ~ video|trans_fallback('imageAmazonUrl') %}
+                                    {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                                     {% if video.image %}
                                         {% set alt = video.image|trans_fallback('alt') %}
                                     {% else %}

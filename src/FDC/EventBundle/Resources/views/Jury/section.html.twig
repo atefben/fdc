@@ -56,7 +56,7 @@
                             <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}">
                                 <h2 class="descript-name">{{ president['jury'].person.firstname }} {{ president['jury'].person.lastname }}</h2>
                             </a>
-                            <span class="descript-rank">{{ president['jury'].function|trans_fallback('name') }}</span>
+                            <span class="descript-rank">{{ president['jury'].person|trans_fallback('profession')  }} </span>
                             <p> {{ president['jury'].person|trans_fallback('biography') }}</p>
                         </div>
                     {% endif %}

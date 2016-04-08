@@ -45,7 +45,8 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "film_selection_section_show",
      *     "home",
      *     "news_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $title;

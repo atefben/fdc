@@ -15,7 +15,7 @@ use Base\CoreBundle\Entity\WebTvTranslation;
  * @author   Antoine Mineau
  * \@company Ohwee
  */
-class WebTvRepository extends EntityRepository
+class WebTvRepository extends TranslationRepository
 {
 
     /**

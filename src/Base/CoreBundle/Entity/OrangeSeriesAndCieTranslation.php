@@ -12,6 +12,7 @@ use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Time;
 
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * OrangeSeriesAndCie
@@ -30,6 +31,7 @@ class OrangeSeriesAndCieTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(name="title", type="text", nullable=true)
+     * @Groups({"orange_series_and_cie"})
      */
     private $title;
 
@@ -37,6 +39,7 @@ class OrangeSeriesAndCieTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(name="introduction", type="text", nullable=true)
+     * @Groups({"orange_series_and_cie"})
      */
     private $introduction;
     
@@ -45,6 +48,7 @@ class OrangeSeriesAndCieTranslation implements TranslateChildInterface
      *
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     * @Groups({"orange_series_and_cie"})
      */
     private $slug;
 

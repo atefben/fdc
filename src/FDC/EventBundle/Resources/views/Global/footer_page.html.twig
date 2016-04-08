@@ -1,0 +1,11 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+<div id="main" class="list-article landing-page">
+    <div class="container">
+        <h2 class="title" >{{ page|trans_fallback('title') }}</h2>
+        <section class="legal-notice-container">{{ page|trans_fallback('content')|raw }}</section>
+    </div>
+</div>
+{% endblock body %}
