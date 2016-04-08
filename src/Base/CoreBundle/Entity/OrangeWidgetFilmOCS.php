@@ -5,6 +5,8 @@ namespace Base\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * OrangeWidgetFilmOCS
@@ -21,6 +23,9 @@ class OrangeWidgetFilmOCS extends OrangeWidget
      * @var MediaImage
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     * @Groups({
+     *     "orange_programmation_ocs"
+     * })
      *
      */
     private $image;
@@ -29,6 +34,9 @@ class OrangeWidgetFilmOCS extends OrangeWidget
      * @var integer
      *
      * @ORM\Column(name="name", type="integer", nullable=true)
+     * @Groups({
+     *     "orange_programmation_ocs"
+     * })
      */
     private $name;
 
@@ -36,6 +44,10 @@ class OrangeWidgetFilmOCS extends OrangeWidget
      * @var string
      *
      * @ORM\Column(name="producer", type="text", nullable=true)
+     *
+     * @Groups({
+     *     "orange_programmation_ocs"
+     * })
      */
     private $producer;
 
@@ -85,6 +97,20 @@ class OrangeWidgetFilmOCS extends OrangeWidget
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     * @VirtualProperty()
+     * @Groups({
+     *     "orange_programmation_ocs"
+     * })
+     */
+    public function getStringName()
+    {
+        return static::getNames()[$this->name];
     }
 
     /**

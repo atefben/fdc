@@ -5,6 +5,8 @@ namespace Base\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * OrangeWidgetFilm
@@ -43,11 +45,19 @@ abstract class OrangeWidget
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=false)
+     * @Groups({
+     *     "orange_series_and_cie",
+     *     "orange_programmation_ocs"
+     * })
      */
     protected $position;
 
     /**
      * @var ArrayCollection
+     * @Groups({
+     *     "orange_series_and_cie",
+     *     "orange_programmation_ocs"
+     * })
      */
     protected $translations;
     
@@ -55,7 +65,21 @@ abstract class OrangeWidget
     {
         $this->translations = new ArrayCollection();
     }
-    
+
+    /**
+     * Get the class type in the Api
+     *
+     * @VirtualProperty()
+     * @Groups({
+     *     "orange_series_and_cie"
+     * })
+     */
+    public function getWidgetType()
+    {
+        return substr(strrchr(get_called_class(), '\\'), 1);
+    }
+
+
     /**
      * Get id
      *

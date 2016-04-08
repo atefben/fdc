@@ -64,7 +64,8 @@ class MediaImageSimple implements TranslateMainInterface
      *     "event_show",
      *     "jury_list",
      *     "jury_show",
-     *     "classics"
+     *     "classics",
+     *     "orange_programmation_ocs"
      * })
      */
     protected $name;
@@ -100,7 +101,8 @@ class MediaImageSimple implements TranslateMainInterface
      *     "event_show",
      *     "jury_list",
      *     "jury_show",
-     *     "classics"
+     *     "classics",
+     *     "orange_programmation_ocs"
      * })
      */
     protected $translations;
