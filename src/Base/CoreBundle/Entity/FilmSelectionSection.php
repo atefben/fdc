@@ -41,7 +41,8 @@ class FilmSelectionSection implements TranslateMainInterface, FilmSelectionSecti
      *     "film_selection_section_show",
      *     "news_list",
      *     "news_show",
-     *     "home"
+     *     "home",
+     *     "orange_studio"
      * })
      */
     private $id;
@@ -59,7 +60,8 @@ class FilmSelectionSection implements TranslateMainInterface, FilmSelectionSecti
      *     "film_selection_section_show",
      *     "news_list",
      *     "news_show",
-     *     "home"
+     *     "home",
+     *     "orange_studio"
      * })
      */
     private $position;
@@ -99,7 +101,8 @@ class FilmSelectionSection implements TranslateMainInterface, FilmSelectionSecti
      *     "film_selection_section_show",
      *     "news_list",
      *     "news_show",
-     *     "home"
+     *     "home",
+     *     "orange_studio"
      * })
      */
     protected $translations;

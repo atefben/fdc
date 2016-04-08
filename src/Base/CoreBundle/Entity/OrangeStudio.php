@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * OrangeProgrammationOCS
@@ -23,6 +24,7 @@ class OrangeStudio extends Orange
      *
      * @ORM\OneToMany(targetEntity="OrangeStudioFilmAssociated", mappedBy="orangeStudio", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
+     * @Groups({"orange_studio"})
      * 
      */
     private $associatedFilms;
