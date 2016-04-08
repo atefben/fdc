@@ -8,6 +8,7 @@ use Base\CoreBundle\Entity\FDCPageLaSelection;
 use Base\CoreBundle\Entity\FDCPageNewsArticles;
 use Base\CoreBundle\Entity\FDCPageNewsImages;
 use Base\CoreBundle\Entity\FDCPagePrepare;
+use Base\CoreBundle\Entity\FDCPageParticipate;
 use Base\CoreBundle\Entity\FDCPageWebTvChannels;
 use Base\CoreBundle\Entity\FDCPageWebTvLive;
 use Base\CoreBundle\Entity\FDCPageWebTvTrailers;
@@ -1127,7 +1128,7 @@ class SeoManager
             // OG PARAMS
             $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
             $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
-            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_press_guide_main', array(), UrlGeneratorInterface::ABSOLUTE_URL));
+            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_event_participate_prepare', array(), UrlGeneratorInterface::ABSOLUTE_URL));
             $this->sonataSeoPage->addMeta('property', 'og:updated_time', $page->getUpdatedAt()->format(DateTime::ISO8601));
 
             // TWITTER
@@ -1173,7 +1174,9 @@ class SeoManager
             // OG PARAMS
             $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
             $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
-            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_press_guide_main', array(), UrlGeneratorInterface::ABSOLUTE_URL));
+
+
+            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_event_participate_getpage', array('slug' => $trans->getSlug()), UrlGeneratorInterface::ABSOLUTE_URL));
             $this->sonataSeoPage->addMeta('property', 'og:updated_time', $page->getUpdatedAt()->format(DateTime::ISO8601));
 
             // TWITTER

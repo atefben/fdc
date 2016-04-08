@@ -333,20 +333,20 @@ file that was distributed with this source code.
                                                     <span>Participer</span>
                                                     <i class="fa pull-right fa-angle-left"></i>
                                                 </a>
-                                                <ul class="treeview-menu">
-                                                    <li>
+                                                <ul class="treeview-menu {% if active %} active{% endif %}">
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_fdcpageprepare_edit' ? 'active' }}">
                                                         <a href="{{ path('admin_base_core_fdcpageprepare_edit', {id: admin_fdc_page_prepare_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.fdc_page_prepare'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_fdcpageparticipate_list' ? 'active' }}">
                                                         <a href="{{ path('admin_base_core_fdcpageparticipate_list') }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.fdc_page_participate'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_fdcpageparticipatesection_list' ? 'active' }}">
                                                         <a href="{{ path('admin_base_core_fdcpageparticipatesection_list') }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.fdc_page_participate_section'|trans({}, 'BaseAdminBundle') }}
@@ -378,68 +378,68 @@ file that was distributed with this source code.
                                                     <span>Espace presse</span>
                                                     <i class="fa pull-right fa-angle-left"></i>
                                                 </a>
-                                                <ul class="treeview-menu">
-                                                    <li>
+                                                <ul class="treeview-menu {% if active %} active{% endif %}">
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_presshomepage_edit' ? 'active' }}">
                                                         <a href="{{ path('admin_base_core_presshomepage_edit', {id: admin_press_homepage_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_homepage'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_pressstatementinfo_edit' ? 'active' }}">
                                                         <a href="{{ path('admin_base_core_pressstatementinfo_edit', {id: admin_press_statementinfo_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_statement_info'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_pressaccredit_edit' ? 'active' }}">
                                                         <a href="{{ path('admin_base_core_pressaccredit_edit', {id: admin_press_accredit_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_accredit'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_pressaccreditprocedure_list' ? 'active' }}">
                                                         <a href="{{ path('admin_base_core_pressaccreditprocedure_list') }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_accredit_procedure'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_pressguide_edit' ? 'active' }}">
                                                         <a href="{{ path('admin_base_core_pressguide_edit', {id: admin_press_guide_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_guide'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_pressmedialibrary_edit' ? 'active' }}">
                                                         <a href="{{ path('admin_base_core_pressmedialibrary_edit', {id: admin_press_medialibrary_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_medialibrary'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_pressdownload_edit' ? 'active' }}">
                                                         <a href="{{ path('admin_base_core_pressdownload_edit', {id: admin_press_download_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_download'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_pressdownloadsection_list' ? 'active' }}">
                                                         <a href="{{ path('admin_base_core_pressdownloadsection_list') }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_download_section'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_pressprojection_edit' ? 'active' }}">
                                                         <a href="{{ path('admin_base_core_pressprojection_edit', {id: admin_press_projection_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_projection'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_presscinemamap_edit' ? 'active' }}">
                                                         <a href="{{ path('admin_base_core_presscinemamap_edit', {id: admin_press_cinemamap_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_cinemamap'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_contactpage_edit' ? 'active' }}">
                                                         <a href="{{ path('admin_base_core_contactpage_edit', {id: admin_press_contact_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_contact'|trans({}, 'BaseAdminBundle') }}
