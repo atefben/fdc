@@ -73,3 +73,7 @@ today_images:
 classics:
     type:       rest
     resource:   Base\ApiBundle\Controller\ClassicsController
+
+orange_series_and_cie:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\OrangeSeriesAndCieController
