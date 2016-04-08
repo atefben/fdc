@@ -8,7 +8,7 @@
                 {% if videos[0].mediaVideo.image %}
                     {% set videoImage = media_public_url(videos[0].mediaVideo.image|trans_fallback('file'), '586x370') %}
                 {% elseif videos[0].mediaVideo.image|trans_fallback('imageAmazonUrl') %}
-                    {% set videoImage = s3_server_global ~ videos[0].mediaVideo.image|trans_fallback('imageAmazonUrl') %}
+                    {% set videoImage = s3_server_video ~ videos[0].mediaVideo.image|trans_fallback('imageAmazonUrl') %}
                 {% endif %}
                     {
                       "sources":[{"file":"{{ s3_server_video ~ videos[0].mediaVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ videos[0].mediaVideo|trans_fallback('mp4Url') }}"}],
@@ -41,7 +41,7 @@
                 {% if video.image %}
                     {% set videoImage = media_public_url(video.image|trans_fallback('file'), '586x370') %}
                 {% elseif video.image|trans_fallback('imageAmazonUrl') %}
-                    {% set videoImage = s3_server_global ~ video.image|trans_fallback('imageAmazonUrl') %}
+                    {% set videoImage = s3_server_video ~ video.image|trans_fallback('imageAmazonUrl') %}
                 {% endif %}
                 <div class="slide-video shadow-bottom">
                     <img src="{{ videoImage }}" alt="" />

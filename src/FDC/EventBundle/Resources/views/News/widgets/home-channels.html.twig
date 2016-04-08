@@ -11,7 +11,7 @@
 {% elseif channel.availableChannels|last.image is defined and channel.availableChannels|last.image != null %}
     <img src="{{ media_public_url(channel.availableChannels|last.image|trans_fallback('file'), '293x185') }}" alt="">
 {% else %}
-    <img src="{{ s3_server_global ~ channel.availableChannels|last|trans_fallback('imageAmazonUrl') }}" alt="">
+    <img src="{{ s3_server_video ~ channel.availableChannels|last|trans_fallback('imageAmazonUrl') }}" alt="">
 {% endif %}
 
 </div>

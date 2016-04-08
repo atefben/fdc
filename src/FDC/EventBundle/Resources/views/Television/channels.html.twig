@@ -28,8 +28,8 @@
                              srcset="{% path group.video.image|trans_fallback('file'), '1280x808' %} 1x, {% path group.video.image|trans_fallback('file'), '1280x808' %} 2x"
                              alt="">
                     {% elseif group.video|trans_fallback('imageAmazonUrl') %}
-                        <img src="{{ s3_server_global ~ group.video|trans_fallback('imageAmazonUrl') }}"
-                             srcset="{{ s3_server_global ~ group.video|trans_fallback('imageAmazonUrl') }} 1x, {{ s3_server_global ~ group.video|trans_fallback('imageAmazonUrl') }} 2x"
+                        <img src="{{ s3_server_video ~ group.video|trans_fallback('imageAmazonUrl') }}"
+                             srcset="{{ s3_server_video ~ group.video|trans_fallback('imageAmazonUrl') }} 1x, {{ s3_server_video ~ group.video|trans_fallback('imageAmazonUrl') }} 2x"
                              alt="">
                     {% endif %}
                     <div class="picto"><i class="icon icon_playlist"></i></div>

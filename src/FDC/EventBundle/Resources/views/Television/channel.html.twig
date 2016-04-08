@@ -84,7 +84,7 @@
                 {% if video.image %}
                     {% set videoImage = media_public_url(video.image|trans_fallback('file'), '293x185') %}
                 {% elseif video.image|trans_fallback('imageAmazonUrl') %}
-                    {% set videoImage = s3_server_global ~ video.image|trans_fallback('imageAmazonUrl') %}
+                    {% set videoImage = s3_server_video ~ video.image|trans_fallback('imageAmazonUrl') %}
                 {% endif %}
                 {% if videoImage is defined %}
                     <div class="channel shadow-bottom">
