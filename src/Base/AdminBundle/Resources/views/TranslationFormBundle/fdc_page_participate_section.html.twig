@@ -64,9 +64,13 @@
                                                 {{ form_row(widget.image) }}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typetwo_type' %}
-                                                {{ form_row(widget.image) }}
+                                                {{ form_label(widget.image) }}
+                                                <span class="help-block sonata-ba-field-help">Dimensions attendues : 800x270 - ratio paysage. Format attendu : .jpg, .png, .gif</span>
+                                                {{ form_widget(widget.image) }}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
-                                                {{ form_row(widget.sponsorImage) }}
+                                                {{ form_label(widget.sponsorImage) }}
+                                                <span class="help-block sonata-ba-field-help">Dimensions attendues : 120x162 - ratio paysage. Format attendu : .jpg, .png, .gif</span>
+                                                {{ form_widget(widget.sponsorImage) }}
                                             {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typethree_type' %}
                                                 {{ form_row(attribute(widget.children.translations, locale)) }}
                                             {% elseif widget.children._type.vars.value == 'fdc_page_participate_section_widget_typefour_type' %}
