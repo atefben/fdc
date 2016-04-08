@@ -115,3 +115,4 @@ security:
         - ROLE_TRANSLATE_ES
         - ROLE_TRANSLATE_ZH
         - ROLE_ORANGE
+        - ROLE_BASE_ADMIN_FDC_PAGE_FOOTER_ADMIN
