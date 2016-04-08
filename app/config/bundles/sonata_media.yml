@@ -215,7 +215,8 @@ sonata_media:
                 # Participate
                 363x260: { width: 363 , height: 260 , quality: 100 }
                 228x181: { width: 228 , height: 181 , quality: 100 }
-
+                # Partners logo
+                174x35: { width: 174 , height: 35 , quality: 100 }
                 # Partners portrait
                 60x81: { width: 60, height: 81, quality: 100 }
 
