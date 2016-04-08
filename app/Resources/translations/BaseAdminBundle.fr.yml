@@ -159,6 +159,7 @@ group:
         widgets: Modules film
     orange_ocs:
         widgets: Modules film
+    content: Contenu
 entity:
     fdc_event_routes: Menu
     news_article: Articles
