@@ -317,10 +317,17 @@ file that was distributed with this source code.
                                                 {% endif %}
                                             {% endfor %}
                                             {% if is_granted('ROLE_BASE_ADMIN_PRESS_HOMEPAGE_ADMIN') %}
+                                            {% set active = false %}
+                                            {% if app.request.attributes.get('_route') == 'admin_base_core_fdcpageprepare_edit'
+                                               or app.request.attributes.get('_route') == 'admin_base_core_fdcpageparticipate_list'
+                                               or app.request.attributes.get('_route') == 'admin_base_core_fdcpageparticipatesection_list'
+                                            %}
+                                                {% set active = true %}
+                                            {% endif %}
                                             <!--------------------------->
                                             <!-- DASHBOARD GROUP PARTICIPATE -->
                                             <!--------------------------->
-                                            <li class="treeview">
+                                            <li class="treeview {% if active %} active{% endif %}">
                                                 <a href="#">
                                                     <i class="fa fa-folder"></i>
                                                     <span>Participer</span>
@@ -351,7 +358,21 @@ file that was distributed with this source code.
                                             <!--------------------------->
                                             <!-- DASHBOARD GROUP PRESS -->
                                             <!--------------------------->
-                                            <li class="treeview">
+                                            {% set active = false %}
+                                            {% if app.request.attributes.get('_route') == 'admin_base_core_presshomepage_edit'
+                                            or app.request.attributes.get('_route') == 'admin_base_core_pressstatementinfo_edit'
+                                            or app.request.attributes.get('_route') == 'admin_base_core_pressaccredit_edit'
+                                            or app.request.attributes.get('_route') == 'admin_base_core_pressaccreditprocedure_list'
+                                            or app.request.attributes.get('_route') == 'admin_base_core_pressguide_edit'
+                                            or app.request.attributes.get('_route') == 'admin_base_core_pressmedialibrary_edit'
+                                            or app.request.attributes.get('_route') == 'admin_base_core_pressdownload_edit'
+                                            or app.request.attributes.get('_route') == 'admin_base_core_pressdownloadsection_list'
+                                            or app.request.attributes.get('_route') == 'admin_base_core_presscinemamap_edit'
+                                            or app.request.attributes.get('_route') == 'admin_base_core_contactpage_edit'
+                                            %}
+                                                {% set active = true %}
+                                            {% endif %}
+                                            <li class="treeview {% if active %} active{% endif %}">
                                                 <a href="#">
                                                     <i class="fa fa-folder"></i>
                                                     <span>Espace presse</span>
