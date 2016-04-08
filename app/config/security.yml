@@ -33,7 +33,6 @@ security:
             remember_me:
                 key:      "%secret%"
                 lifetime: 31536000
-                path:     /
                 domain:   ~
             logout:
                 path:           /admin/logout
