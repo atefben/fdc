@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Entity;
 use Base\CoreBundle\Util\Time;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Groups;
 
 
 /**
@@ -38,6 +39,7 @@ class OrangeStudioFilmAssociated
      * @var FilmProjection
      *
      * @ORM\ManyToOne(targetEntity="FilmFilm")
+     * @Groups({"orange_studio"})
      */
     protected $association;
 

@@ -44,7 +44,8 @@ class FilmMedia
       *     "film_selection_section_show",
       *     "news_list",
       *     "award_list",
-      *     "classics"
+      *     "classics",
+      *     "orange_studio"
       * })
       */
     private $contentType;
@@ -63,7 +64,8 @@ class FilmMedia
      *     "film_selection_section_show",
      *     "news_list",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $noteVf;
@@ -82,7 +84,8 @@ class FilmMedia
      *     "film_selection_section_show",
      *     "news_list",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $noteVa;
@@ -101,7 +104,8 @@ class FilmMedia
      *     "film_selection_section_show",
      *     "news_list",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $copyright;
@@ -120,7 +124,8 @@ class FilmMedia
      *     "film_selection_section_show",
      *     "news_list",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $credits;
@@ -139,7 +144,8 @@ class FilmMedia
      *     "film_selection_section_show",
      *     "news_list",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $type;
@@ -156,7 +162,8 @@ class FilmMedia
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $internet;
@@ -174,7 +181,8 @@ class FilmMedia
      *     "projection_show",
      *     "film_selection_section_show",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $titleVf;
@@ -192,7 +200,8 @@ class FilmMedia
      *     "projection_show",
      *     "film_selection_section_show",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $titleVa;
@@ -214,7 +223,8 @@ class FilmMedia
      *     "film_selection_section_show",
      *     "news_list",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $file;

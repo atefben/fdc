@@ -48,7 +48,8 @@ abstract class OrangeWidget
      * @Groups({
      *     "orange_series_and_cie",
      *     "orange_programmation_ocs",
-     *     "orange_video_on_demand"
+     *     "orange_video_on_demand",
+     *     "orange_studio"
      * })
      */
     protected $position;
@@ -58,7 +59,8 @@ abstract class OrangeWidget
      * @Groups({
      *     "orange_series_and_cie",
      *     "orange_programmation_ocs",
-     *     "orange_video_on_demand"
+     *     "orange_video_on_demand",
+     *     "orange_studio"
      * })
      */
     protected $translations;
@@ -73,7 +75,10 @@ abstract class OrangeWidget
      *
      * @VirtualProperty()
      * @Groups({
-     *     "orange_series_and_cie"
+     *     "orange_series_and_cie",
+     *     "orange_programmation_ocs",
+     *     "orange_video_on_demand",
+     *     "orange_studio"
      * })
      */
     public function getWidgetType()

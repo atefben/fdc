@@ -47,7 +47,8 @@ class FilmFilmPersonFunction
      *     "projection_show",
      *     "news_list",
      *     "news_show",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $position;
@@ -63,7 +64,8 @@ class FilmFilmPersonFunction
      *     "film_show",
      *     "projection_list",
      *     "projection_show",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $function;

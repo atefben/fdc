@@ -50,7 +50,7 @@ class FilmFunction implements TranslateMainInterface, FilmFunctionInterface
     /**
      * @var ArrayCollection
      *
-     * @Groups({"film_list", "film_show", "projection_list", "projection_show", "classics"})
+     * @Groups({"film_list", "film_show", "projection_list", "projection_show", "classics", "orange_studio"})
      */
     protected $translations;
 

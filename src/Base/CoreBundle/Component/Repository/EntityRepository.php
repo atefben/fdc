@@ -13,6 +13,23 @@ use Doctrine\ORM\QueryBuilder;
 
 class EntityRepository extends BaseRepository
 {
+    public function countByStatusAndLocales($status, $locales)
+    {
+        $qb = $this
+            ->createQueryBuilder('e')
+            ->select('count(t.id)')
+            ->leftJoin('e.translations', 't')
+            ->where('t.status = :status')
+            ->andWhere('t.locale IN (:locales)')
+            ->setParameter('status', $status)
+            ->setParameter('locales', $locales)
+            ->getQuery()
+            ->getSingleScalarResult();
+        ;
+
+        return $qb;
+    }
+
     /**
      * @param $qb
      * @param $alias

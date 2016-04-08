@@ -17,8 +17,7 @@ class WidgetMosaicMovieAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('title')
         ;
     }
 
@@ -29,8 +28,7 @@ class WidgetMosaicMovieAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -47,6 +45,7 @@ class WidgetMosaicMovieAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('title')
             ->add('films', 'sonata_type_collection', array(
                 'by_reference' => false,
             ), array(
@@ -65,8 +64,7 @@ class WidgetMosaicMovieAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('title')
         ;
     }
 }
