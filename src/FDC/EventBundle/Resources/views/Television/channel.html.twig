@@ -21,7 +21,7 @@
                 {% if video.image %}
                     {% set videoImage = media_public_url(video.image|trans_fallback('file'), '1950x1232') %}
                 {% elseif video.image|trans_fallback('imageAmazonUrl') %}
-                    {% set videoImage = s3_server_global ~ video.image|trans_fallback('imageAmazonUrl') %}
+                    {% set videoImage = s3_server_video ~ video.image|trans_fallback('imageAmazonUrl') %}
                 {% endif %}
                 {%- if trans is null or trans.file is null -%}
                     {%- set trans = video.file.findTranslationByLocale('fr') -%}
