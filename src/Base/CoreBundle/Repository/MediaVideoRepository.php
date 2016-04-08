@@ -2,10 +2,7 @@
 
 namespace Base\CoreBundle\Repository;
 
-
-use Base\CoreBundle\Component\Repository\EntityRepository;
-
-class MediaVideoRepository extends EntityRepository
+class MediaVideoRepository extends TranslationRepository
 {
 
     public function get2VideosFromTheLast10($festival, $locale, $excludeWebTv = null)

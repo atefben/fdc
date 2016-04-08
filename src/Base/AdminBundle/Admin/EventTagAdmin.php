@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class WidgetMosaicMovieAdmin extends Admin
+class EventTagAdmin extends Admin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -17,7 +17,8 @@ class WidgetMosaicMovieAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('title')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 
@@ -28,7 +29,8 @@ class WidgetMosaicMovieAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('title')
+            ->add('createdAt')
+            ->add('updatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -45,17 +47,9 @@ class WidgetMosaicMovieAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title')
-            ->add('films', 'sonata_type_collection', array(
-                'by_reference' => false,
-            ), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-                'sortable' => 'position',
-            ));
+            ->add('tag', 'sonata_type_model', array('btn_add' => 'Créer'))
         ;
     }
-
 
     /**
      * @param ShowMapper $showMapper
@@ -64,7 +58,8 @@ class WidgetMosaicMovieAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('title')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 }

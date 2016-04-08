@@ -31,6 +31,13 @@ class WidgetMosaicMovie
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $title;
+
+    /**
      * @var Media
      *
      * @ORM\OneToMany(targetEntity="WidgetMosaicMovieFilmFilm", mappedBy="widgetMosaicMovie", cascade={"persist"})
@@ -97,5 +104,28 @@ class WidgetMosaicMovie
     public function getFilms()
     {
         return $this->films;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return WidgetMosaicMovie
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

@@ -15,7 +15,7 @@ use JMS\Serializer\Annotation\Since;
  * MediaAudio
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class MediaAudio extends Media
