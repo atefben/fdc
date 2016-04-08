@@ -1311,3 +1311,9 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: OrangeStudioFilmAssociated, show_in_dashboard: false}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.fdc_page_footer:
+        class: Base\AdminBundle\Admin\FDCPageFooterAdmin
+        arguments: [~, Base\CoreBundle\Entity\FDCPageFooter, BaseAdminBundle:FDCPageFooterAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FDCPageFooter}

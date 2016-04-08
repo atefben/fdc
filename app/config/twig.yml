@@ -90,3 +90,7 @@ twig:
         admin_fdc_orange_series_id: %admin_fdc_orange_series_id%
         admin_fdc_orange_vod_id: %admin_fdc_orange_vod_id%
         admin_fdc_orange_studio_id: %admin_fdc_orange_studio_id%
+        #footer
+        admin_fdc_footer_confidentialite_id: %admin_fdc_footer_confidentialite_id%
+        admin_fdc_footer_mentions_legales_id: %admin_fdc_footer_mentions_legales_id%
+        admin_fdc_footer_credits_id: %admin_fdc_footer_credits_id%

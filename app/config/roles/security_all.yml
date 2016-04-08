@@ -125,6 +125,8 @@ security:
             - ROLE_TRANSLATE_ZH
             - ROLE_ORANGE
             - ROLE_BASE_ADMIN_FILM_FILM_TAG_ADMIN
+            - ROLE_BASE_ADMIN_FDC_PAGE_FOOTER_ADMIN
+
 
         ROLE_ALL_TRANSLATOR:
             - ROLE_ADMIN

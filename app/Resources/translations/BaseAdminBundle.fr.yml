@@ -495,6 +495,9 @@ dashboard:
         orange_vod: Vidéo à la demande
         orange_ocs: Programmation OCS
         orange_studio: Orange Studio
+        credits: Crédits
+        mentions_legales: Mentions légales
+        confidentialite: Politique de confidentialité
 
 form:
     fdc_page_la_selection_cinema_plage:
