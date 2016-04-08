@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * OrangeWidgetFilmOCS
@@ -21,6 +22,7 @@ class OrangeWidgetFilmStudio extends OrangeWidget
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     * @Groups({"orange_studio"})
      */
     private $image;
 
@@ -28,6 +30,7 @@ class OrangeWidgetFilmStudio extends OrangeWidget
      * @var string
      *
      * @ORM\Column(name="producer", type="text", nullable=true)
+     * @Groups({"orange_studio"})
      */
     private $producer;
 

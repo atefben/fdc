@@ -54,7 +54,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_selection_section_show",
      *     "home",
      *     "news_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      *
      */
@@ -134,7 +135,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_list",
      *     "news_show",
      *     "film_selection_section_show",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      *
      */
@@ -155,7 +157,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      *
      */
@@ -204,7 +207,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $duration;
 
     /**
-     * @var text
+     * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      *
@@ -287,7 +290,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="FilmSelectionSection", inversedBy="films", cascade={"persist"})
      *
-     * @Groups({"film_list", "film_show", "news_list", "news_show", "home"})
+     * @Groups({"film_list", "film_show", "news_list", "news_show", "home", "orange_studio"})
      *
      */
     private $selectionSection;
@@ -343,7 +346,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_selection_section_show",
      *     "news_list",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $medias;
@@ -394,7 +398,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_selection_section_show",
      *     "home",
      *     "news_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      *
      */
@@ -458,7 +463,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_selection_section_show",
      *     "news_list",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $imageMain;
@@ -471,7 +477,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_selection_section_show",
      *     "news_list",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $imageCover;
@@ -566,7 +573,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "home",
      *     "news_list",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      * @return array|ArrayCollection
      */

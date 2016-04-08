@@ -38,7 +38,8 @@ class FilmSelectionSectionTranslation implements TranslateChildInterface
      *     "film_selection_section_show",
      *     "news_list",
      *     "news_show",
-     *     "home"
+     *     "home",
+     *     "orange_studio"
      * })
      */
     protected $name;

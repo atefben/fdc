@@ -70,7 +70,8 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "home",
      *     "film_selection_section_show",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $person;
@@ -88,7 +89,8 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "news_list",
      *     "news_show",
      *     "award_list",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $position;
@@ -103,7 +105,8 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "film_show",
      *     "projection_list",
      *     "projection_show",
-     *     "classics"
+     *     "classics",
+     *     "orange_studio"
      * })
      */
     private $functions;

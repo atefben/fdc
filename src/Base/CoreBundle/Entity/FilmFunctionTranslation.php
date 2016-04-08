@@ -27,7 +27,7 @@ class FilmFunctionTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"film_list", "film_show", "projection_list", "projection_show", "classics"})
+     * @Groups({"film_list", "film_show", "projection_list", "projection_show", "classics", "orange_studio"})
      */
     protected $name;
 
