@@ -286,13 +286,13 @@ class MediaListener
 	                array(
 	                    'Key'      => str_replace('.mov', '.mp4', $file_name),
 	                    'Rotate'   => 'auto',
-						'ThumbnailPattern' => '{count}/' . str_replace(array('.mov', '.mp4'), '.png', $file_name),
+						'ThumbnailPattern' => '{count}/' . str_replace(array('.mov', '.mp4'), '', $file_name),
 	                    'PresetId' => $this->getParameter('s3_elastic_mp4_preset_id'),
 	                ),
 	            ),
 	        ));
 
-			$mediaVideo->setImageAmazonUrl($path_video_output . '/00001/' . str_replace(array('.mov', '.mp4'), '.png', $file_name));
+			$mediaVideo->setImageAmazonUrl($path_video_output . '00001/' . str_replace(array('.mov', '.mp4'), '.png', $file_name));
 	        $mediaVideo->setJobMp4Id($job->get('Job')['Id']);
 			$mediaVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
 	        $mediaVideo->setJobMp4State(1);
@@ -376,13 +376,13 @@ class MediaListener
                     array(
                         'Key'      => str_replace('.mov', '.mp4', $file_name),
                         'Rotate'   => 'auto',
-						'ThumbnailPattern' => '{count}/' . str_replace(array('.mov', '.mp4'), '.png', $file_name),
+						'ThumbnailPattern' => '{count}/' . str_replace(array('.mov', '.mp4'), '', $file_name),
                         'PresetId' => $this->getParameter('s3_elastic_mp4_preset_id'),
                     ),
                 ),
             ));
 
-            $parentVideo->setImageAmazonUrl($path_video_output . '/00001/' . str_replace(array('.mov', '.mp4'), '.png', $file_name));
+            $parentVideo->setImageAmazonUrl($path_video_output . '00001/' . str_replace(array('.mov', '.mp4'), '.png', $file_name));
             $parentVideo->setJobMp4Id($job->get('Job')['Id']);
             $parentVideo->setMp4Url($path_video_output . str_replace('.mov', '.mp4', $file_name));
             $parentVideo->setJobMp4State(1);
