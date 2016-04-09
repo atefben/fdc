@@ -10,7 +10,7 @@
                 <span class="label">{{ 'event.filter.label.date'|trans }} :</span>
                 {% spaceless %}
                 <span class="select">
-                    <span class="active" data-filter="all">{{ 'search.result.filter.tous'|trans }}</span><i class="icon icon_fleche-down"></i>
+                    <span class="active" data-filter="all">[ {{ 'search.result.filter.toutes'|trans }} ]</span>
                     {% for key, date in filters.dates %}
                         <span data-filter="{{ key }}">
                             {% if app.request.locale != 'cn' %}
@@ -20,16 +20,18 @@
                             {% endif %}
                         </span>
                     {% endfor %}
+                    <i class="icon icon_fleche-down"></i>
                 </span>
                 {% endspaceless %}
             </div>
             <div id="theme" class="filter">
                 <span class="label">{{ 'event.filter.label.theme'|trans }} :</span>
                 <span class="select">
-                    <span class="active" data-filter="all">{{ 'search.result.filter.tous'|trans }}</span><i class="icon icon_fleche-down"></i>
-                      {% for theme in filters.themes %}
-                          <span data-filter="{{ theme|trans_fallback('slug') }}">{{ theme|trans_fallback('name') }}</span>
-                      {% endfor %}
+                    <span class="active" data-filter="all">[ {{ 'search.result.filter.tous'|trans }} ]</span>
+                    {% for theme in filters.themes %}
+                        <span data-filter="{{ theme|trans_fallback('slug') }}">{{ theme|trans_fallback('name') }}</span>
+                    {% endfor %}
+                    <i class="icon icon_fleche-down"></i>
                 </span>
             </div>
         </div>

@@ -14,20 +14,22 @@
           <div id="date" class="filter">
             <span class="label">Dates :</span>
             <span class="select">
-              <span class="active" data-filter="all">Toutes</span><i class="icon icon_fleche-down"></i>
-			  <span data-filter="photo">Date 1</span>
-              <span data-filter="photo">Date 2</span>
-              <span data-filter="video">Date 3</span>
-              <span data-filter="audio">Date 4</span>
-              <span data-filter="article">Date 5</span>
+              <span class="active" data-filter="all">Toutes</span>
+              <span data-filter="date1">Date 1</span>
+              <span data-filter="date2">Date 2</span>
+              <span data-filter="date3">Date 3</span>
+              <span data-filter="date4">Date 4</span>
+              <span data-filter="date5">Date 5</span>
+              <i class="icon icon_fleche-down"></i>
             </span>
           </div>
           <div id="theme" class="filter">
             <span class="label">Thèmes :</span>
             <span class="select">
-              <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
-              <span data-filter="press">Conférence de Presse</span>
-              <span data-filter="steps">Montée des marches</span>
+              <span class="active" data-filter="all">Tous</span>
+              <span data-filter="theme1">Conférence de Presse</span>
+              <span data-filter="theme2">Montée des marches</span>
+              <i class="icon icon_fleche-down"></i>
             </span>
           </div>
         </div>
@@ -87,7 +89,7 @@
             </div>
           </article>
         </div>
-        <div class="item theme1 date1 date theme article evenement">
+        <div class="item theme2 date1 date theme article evenement">
           <article class="article evenement">
             <div class="img"> <a href="evenement2.php"><img src='img/evenements/evenement1.jpg' /></a></div>
             <div class="info">
