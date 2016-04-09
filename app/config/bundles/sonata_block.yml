@@ -9,3 +9,4 @@ sonata_block:
         # custom blocks
         # base.admin.block.sites: ~
         base.admin.block.translator_stats: ~
+        base.admin.block.search: ~

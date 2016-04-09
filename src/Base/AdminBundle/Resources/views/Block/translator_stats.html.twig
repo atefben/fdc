@@ -6,17 +6,15 @@
         if  is_granted('ROLE_TRANSLATOR') or
             is_granted('ROLE_TRANSLATOR_MASTER')
     %}
-        <div class="dashboard-translator">
-            <div id="dashboard-translator-statuses-preview">
-                <header>{{ statusName|trans }}</header>
-                <div id="dashboard-translator-statuses-preview-container" class="row">
-                {% for name, count in counts %}
-                    <div class="col-md-2">
-                        <strong>{{ count }}</strong><br/>
-                        {{ ('dashboard.translator.object.' ~ name)|trans }}
-                    </div>
-                {% endfor %}
+        <div id="dashboard-translator-statuses-preview" class="bg-white">
+            <header>{{ statusName|trans }}</header>
+            <div id="dashboard-translator-statuses-preview-container" class="row">
+            {% for name, count in counts %}
+                <div class="col-md-2">
+                    <strong>{{ count }}</strong><br/>
+                    {{ ('dashboard.translator.object.' ~ name)|trans }}
                 </div>
+            {% endfor %}
             </div>
         </div>
     {% endif %}

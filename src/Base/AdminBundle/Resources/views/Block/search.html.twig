@@ -1,0 +1,57 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+{% extends 'SonataBlockBundle:Block:block_base.html.twig' %}
+
+{% block block %}
+    {%
+        if  is_granted('ROLE_TRANSLATOR') or
+        is_granted('ROLE_TRANSLATOR_MASTER')
+    %}
+        <div id="dashboard-search" class="bg-white">
+            <header>Rechercher</header>
+            <div id="dashboard-search-container">
+                <form action="{{ path('sonata_admin_dashboard') }}" method="get" {{ form_enctype(form) }}>
+                    <div class="row">
+                        <div class="col-md-3">
+                            {{ form_errors(form.type) }}
+                            {{ form_label(form.type) }}
+                            {{ form_widget(form.type) }}
+                        </div>
+                        <div class="col-md-4">
+                            {{ form_errors(form.title) }}
+                            {{ form_label(form.title) }}
+                            {{ form_widget(form.title) }}
+                        </div>
+                        <div class="col-md-2">
+                            {{ form_errors(form.id) }}
+                            {{ form_label(form.id) }}
+                            {{ form_widget(form.id) }}
+                        </div>
+                        <div class="col-md-3">
+                            {{ form_errors(form.priorityStatus) }}
+                            {{ form_label(form.priorityStatus) }}
+                            {{ form_widget(form.priorityStatus) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            {{ form_errors(form.translationStatus) }}
+                            {{ form_widget(form.translationStatus) }}
+                            {{ form_label(form.translationStatus) }}
+                            {{ form_rest(form) }}
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="pull-right btn btn-primary">
+                                <i class="fa fa-search"></i>
+                                Rechercher
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% if params.type is defined %}
+            {% include 'BaseAdminBundle:Block:search/' ~ params.type ~ '.html.twig' %}
+        {% endif %}
+    {% endif %}
+{% endblock %}

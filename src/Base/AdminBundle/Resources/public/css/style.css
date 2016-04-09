@@ -249,22 +249,33 @@ form[action*="widgetmosaicmovie"] div[id$="translations"] > .form-group > label.
     display: none;
 }
 
-/* dashboard translator */
+/* DASHBOARD TRANSLATOR PREVIEW */
 
-.dashboard-translator {
+.bg-white {
     background-color: #FFFFFF;
 }
 
-#dashboard-translator-statuses-preview {
+.dashboard-search-results {
+    margin: 20px;
+    padding: 25px 10px;
+}
+
+.dashboard-search-results header {
     font-size: 20px;
+    margin-bottom: 10px;
 }
 
-#dashboard-translator-statuses-preview header {
-    padding: 5px;
+#dashboard-translator-statuses-preview,
+#dashboard-search {
+    font-size: 20px;
+    margin: 20px 0;
+    padding: 25px 10px;
 }
 
-#dashboard-translator-statuses-preview-container {
-    padding: 40px;
+#dashboard-translator-statuses-preview .row,
+#dashboard-search .row {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 #dashboard-translator-statuses-preview-container .col-md-2 {
@@ -276,4 +287,23 @@ form[action*="widgetmosaicmovie"] div[id$="translations"] > .form-group > label.
 
 #dashboard-translator-statuses-preview-container .col-md-2 strong {
     font-size: 32px;
+}
+
+/* DASHBOARD TRANSLATOR SEARCH*/
+#dashboard-search-container .row:first-child {
+    margin-bottom: 10px;
+}
+
+#dashboard-search-container label {
+    display: block;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+#dashboard-search-container label[for="dashboard_search_type_translationStatus"] {
+    display: inline-block;
+}
+
+#dashboard-search-container #dashboard_search_type_id {
+    width: 100px;
 }

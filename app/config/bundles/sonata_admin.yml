@@ -20,6 +20,11 @@ sonata_admin:
                 class: col-md-12
                 type: base.admin.block.translator_stats
                 roles: [ ROLE_TRANSLATOR ]
+            -
+                position: top
+                class: col-md-12
+                type: base.admin.block.search
+                roles: [ ROLE_TRANSLATOR ]
 
             #EVERYONE EXCEPT ORANGE AND TRANSLATOR DASHBOARD
             -

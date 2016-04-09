@@ -13,6 +13,35 @@ use Doctrine\ORM\QueryBuilder;
 
 class EntityRepository extends BaseRepository
 {
+
+    public function addDashboardTranslatorQueries($qb, $aliases, $params)
+    {
+        $query = '';
+        $query2 = '';
+        foreach ($aliases as $alias) {
+            $query .= "({$alias}.locale IN (:locales) AND {$alias}.status = :status";
+            $query .= ") OR";
+        }
+        $query = substr($query, 0, -3);
+        $qb = $qb->where($query);
+
+        if (isset($params['title']) && !empty($params['title'])) {
+            foreach ($aliases as $key => $alias) {
+                $aliasMain = substr($alias, 0, -1);
+                $aliasTrans = $aliasMain. 't'. $key;
+                $qb->leftJoin("{$aliasMain}.translations", $aliasTrans);
+                $query2 .= "({$aliasTrans}.locale = 'fr' AND {$aliasTrans}.title LIKE :title";
+                $query2 .= ") OR";
+            }
+            $qb->setParameter('title', '%'. $params['title']. '%');
+            $query2 = substr($query2, 0, -3);
+            $qb = $qb->andWhere($query2);
+        }
+
+        return $qb;
+
+    }
+
     public function countByStatusAndLocales($status, $locales)
     {
         $qb = $this

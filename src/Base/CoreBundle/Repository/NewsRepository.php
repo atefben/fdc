@@ -18,6 +18,47 @@ use Symfony\Component\Validator\Constraints\DateTime;
  */
 class NewsRepository extends EntityRepository
 {
+    public function dashboardSearch($params, $locales)
+    {
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->leftJoin('Base\CoreBundle\Entity\NewsArticle', 'na1', 'WITH', 'na1.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\NewsAudio', 'na2', 'WITH', 'na2.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\NewsImage', 'na3', 'WITH', 'na3.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\NewsVideo', 'na4', 'WITH', 'na4.id = n.id')
+            ->leftJoin('na1.translations', 'na1t')
+            ->leftJoin('na2.translations', 'na2t')
+            ->leftJoin('na3.translations', 'na3t')
+            ->leftJoin('na4.translations', 'na4t')
+            ->setParameter('status', $params['status'])
+            ->setParameter('locales', $locales)
+        ;
+
+        $this->addDashboardTranslatorQueries($qb, array('na1t', 'na2t', 'na3t', 'na4t'), $params);
+
+        if (isset($params['id']) && !empty($params['id'])) {
+            $qb
+                ->andWhere('n.id = :id')
+                ->setParameter('id', $params['id'])
+            ;
+        }
+
+        if (isset($params['priorityStatus']) && !empty($params['priorityStatus']) &&
+            $params['priorityStatus'] != 'all') {
+            $qb
+                ->andWhere('
+                    na1.priorityStatus = :priorityStatus OR
+                    na2.priorityStatus = :priorityStatus OR
+                    na3.priorityStatus = :priorityStatus OR
+                    na4.priorityStatus = :priorityStatus
+                ')
+                ->setParameter('priorityStatus', $params['priorityStatus'])
+            ;
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
     /**
      * @param $locale
      * @param $festival

@@ -19,6 +19,47 @@ use Base\CoreBundle\Entity\InfoArticleTranslation;
  */
 class InfoRepository extends EntityRepository
 {
+    public function dashboardSearch($params, $locales)
+    {
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'nai', 'WITH', 'nai.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nav', 'WITH', 'nav.id = n.id')
+            ->leftJoin('naa.translations', 'naat')
+            ->leftJoin('na.translations', 'nat')
+            ->leftJoin('nai.translations', 'nait')
+            ->leftJoin('nav.translations', 'navt')
+            ->setParameter('status', $params['status'])
+            ->setParameter('locales', $locales)
+        ;
+
+        $this->addDashboardTranslatorQueries($qb, array('naat', 'nat', 'nait', 'navt'), $params);
+
+        if (isset($params['id']) && !empty($params['id'])) {
+            $qb
+                ->andWhere('n.id = :id')
+                ->setParameter('id', $params['id'])
+            ;
+        }
+
+        if (isset($params['priorityStatus']) && !empty($params['priorityStatus']) &&
+            $params['priorityStatus'] != 'all') {
+            $qb
+                ->andWhere('
+                    na.priorityStatus = :priorityStatus OR
+                    naa.priorityStatus = :priorityStatus OR
+                    nai.priorityStatus = :priorityStatus OR
+                    nav.priorityStatus = :priorityStatus
+                ')
+                ->setParameter('priorityStatus', $params['priorityStatus'])
+            ;
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
     /**
      *  Get the $locale version of Info of current $festival by $id and verify publish date is between $dateTime
      *

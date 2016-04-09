@@ -16,3 +16,15 @@ services:
         calls:
           - [ setSecurityContext, ['@security.context']]
           - [ setEntityManager, ['@doctrine.orm.default_entity_manager']]
+
+
+    base.admin.block.search:
+        class: Base\AdminBundle\Block\SearchBlockService
+        arguments: ['base_admin.block.search', @templating ]
+        tags:
+            - { name: sonata.block }
+        calls:
+          - [ setSecurityContext, ['@security.context']]
+          - [ setEntityManager, ['@doctrine.orm.default_entity_manager']]
+          - [ setFormFactory, ['@form.factory']]
+          - [ setRequestStack, ['@request_stack']]

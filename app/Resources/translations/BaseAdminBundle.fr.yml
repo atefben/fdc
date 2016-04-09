@@ -833,10 +833,10 @@ form:
         deactivated: Désactivé
         locked: Bloquée
     priority_status:
-        low: Bas
+        low: Basse
         average: Moyen
         urgent: Urgent
-        now: Immédiat
+        now: Immédiate
     theme:
         helper_name: 30 caractères max.
     press_homepage:
