@@ -10,7 +10,7 @@
                     {% if medias|length > 0 %}
                     <div class="folder">
                         <div class="vCenter">
-                            <div class="vCenterKid">
+                            <div class="vCenterKid">ICI
                                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with
                                     ({
                                         film: movie,
@@ -20,6 +20,7 @@
                                             id: 'infosPressImageFilmPoster'
                                         },
                                         film_image_default: 'bundles/fdcevent/img/palmares/film420x560.jpg',
+                                        film_image_default_attrs: ''
                                     })
                                 %}
                                 <h3>{{ 'movie.presse.title.dossierdepresse'|trans }}</h3>
