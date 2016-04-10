@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * FDCPageEvent
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FDCPageEvent implements TranslateMainInterface

@@ -15,7 +15,7 @@ use Base\CoreBundle\Util\SeoMain;
  * PressDownload
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class PressProjection implements TranslateMainInterface

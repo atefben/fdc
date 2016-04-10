@@ -10,7 +10,7 @@ use Doctrine\ORM\NonUniqueResultException;
  * Class FDCPageAwardRepository
  * @package Base\CoreBundle\Repository
  */
-class FDCPageAwardRepository extends EntityRepository
+class FDCPageAwardRepository extends TranslationRepository
 {
 
     /**

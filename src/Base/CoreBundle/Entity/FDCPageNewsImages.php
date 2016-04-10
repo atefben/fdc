@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * FDCPageNewsImages
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FDCPageNewsImages implements TranslateMainInterface

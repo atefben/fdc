@@ -28,3 +28,4 @@ services:
           - [ setEntityManager, ['@doctrine.orm.default_entity_manager']]
           - [ setFormFactory, ['@form.factory']]
           - [ setRequestStack, ['@request_stack']]
+          - [ setPool, ['@sonata.admin.pool']]

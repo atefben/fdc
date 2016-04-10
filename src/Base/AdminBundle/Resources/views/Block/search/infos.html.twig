@@ -32,6 +32,9 @@
                 <th class="sonata-ba-list-field-header-text ">
                     Libellés
                 </th>
+                <th class="sonata-ba-list-field-header-text ">
+                    Prévisualiser
+                </th>
             </tr>
             </thead>
 
@@ -94,7 +97,8 @@
                             {{ priorityStatuses[entity.priorityStatus]|trans }}
                         {% endif %}
                     </td>
-                    {% include 'BaseAdminBundle:Block:search/edit.html.twig' %}
+                    {% include 'BaseAdminBundle:Block:components/edit.html.twig' %}
+                    {% include 'BaseAdminBundle:Block:components/preview.html.twig' %}
                 </tr>
             {% endfor %}
             </tbody>

@@ -70,6 +70,12 @@ class SearchBlockService extends BaseBlockService
     {
         $this->requestStack = $requestStack;
     }
+
+    public function setPool($pool)
+    {
+        $this->pool = $pool;
+    }
+
     /**
      * getDefaultSettings function.
      *
@@ -120,6 +126,47 @@ class SearchBlockService extends BaseBlockService
         $form = $this->formFactory->create(new DashboardSearchType());
         $request = $this->requestStack->getCurrentRequest();
         $params = $request->query->get('dashboard_search_type');
+
+        $dashboards = array(
+            'Homepage' => 'Général',
+            'FDCPageWebTvLive' => 'Général',
+            'FDCPageWaiting' => 'Général',
+            // events
+            'Event' => 'Événements',
+            // cannes classics
+            'FDCPageLaSelectionCannesClassics' => 'Cannes Classics',
+            // participer
+            'FDCPagePrepare' => 'Participer',
+            'FDCPageParticipate' => 'Participer',
+            'FDCPageParticipateSection' => 'Participer',
+            // espace presse
+            'PressHomepage' => 'Espace presse',
+            'PressStatementInfo' => 'Espace presse',
+            'PressAccredit' => 'Espace presse',
+            'PressAccreditProcedure' => 'Espace presse',
+            'PressGuide' => 'Espace presse',
+            'PressMediaLibrary' => 'Espace presse',
+            'PressDownload' => 'Espace presse',
+            'PressDownloadSection' => 'Espace presse',
+            'PressProjection' => 'Espace presse',
+            'PressCinemaMap' => 'Espace presse',
+            'ContactPage' => 'Espace presse',
+            // pages
+            'FDCPageFooter' => 'Pages',
+            // seo + tetieres
+            'FDCPageEvent' => 'SEO + TETIÈRES',
+            'FDCPageWebTvChannels' => 'SEO + TETIÈRES',
+            'FDCPageWebTvTrailers' => 'SEO + TETIÈRES',
+            'FDCPageNewsArticles' => 'SEO + TETIÈRES',
+            'FDCPageNewsAudios' => 'SEO + TETIÈRES',
+            'FDCPageNewsVideos' => 'SEO + TETIÈRES',
+            'FDCPageNewsImages' => 'SEO + TETIÈRES',
+            'FDCPageLaSelection' => 'SEO + TETIÈRES',
+            'FDCPageLaSelectionCinemaPlage' => 'SEO + TETIÈRES',
+            'FDCPageJury' => 'SEO + TETIÈRES',
+            'FDCPageAward' => 'SEO + TETIÈRES',
+        );
+
         $repositories = array(
             'news' => 'BaseCoreBundle:News',
             'videos' => 'BaseCoreBundle:MediaVideo',
@@ -130,11 +177,119 @@ class SearchBlockService extends BaseBlockService
             'themes' => 'BaseCoreBundle:Theme',
             'tags' => 'BaseCoreBundle:Tag',
             'webtvs' => 'BaseCoreBundle:WebTv',
-            'images' => 'BaseCoreBundle:MediaImageSimple'
+            'images' => 'BaseCoreBundle:MediaImageSimple',
+            'pages' => array(
+                // general
+                'BaseCoreBundle:Homepage',
+                'BaseCoreBundle:FDCPageWebTvLive',
+                'BaseCoreBundle:FDCPageWaiting',
+                // events
+                'BaseCoreBundle:Event',
+                // cannes classics
+                'BaseCoreBundle:FDCPageLaSelectionCannesClassics',
+                // participer
+                'BaseCoreBundle:FDCPagePrepare',
+                'BaseCoreBundle:FDCPageParticipate',
+                'BaseCoreBundle:FDCPageParticipateSection',
+                // espace presse
+                'BaseCoreBundle:PressHomepage',
+                'BaseCoreBundle:PressStatementInfo',
+                'BaseCoreBundle:PressAccredit',
+                'BaseCoreBundle:PressAccreditProcedure',
+                'BaseCoreBundle:PressGuide',
+                'BaseCoreBundle:PressMediaLibrary',
+                'BaseCoreBundle:PressDownload',
+                'BaseCoreBundle:PressDownloadSection',
+                'BaseCoreBundle:PressProjection',
+                'BaseCoreBundle:PressCinemaMap',
+                'BaseCoreBundle:ContactPage',
+                // pages
+                'BaseCoreBundle:FDCPageFooter',
+                // seo + tetieres
+                'BaseCoreBundle:FDCPageEvent',
+                'BaseCoreBundle:FDCPageWebTvChannels',
+                'BaseCoreBundle:FDCPageWebTvTrailers',
+                'BaseCoreBundle:FDCPageNewsArticles',
+                'BaseCoreBundle:FDCPageNewsAudios',
+                'BaseCoreBundle:FDCPageNewsVideos',
+                'BaseCoreBundle:FDCPageNewsImages',
+                'BaseCoreBundle:FDCPageLaSelection',
+                'BaseCoreBundle:FDCPageLaSelectionCinemaPlage',
+                'BaseCoreBundle:FDCPageJury',
+                'BaseCoreBundle:FDCPageAward'
+            )
         );
         $locales = array();
         $status = null;
         $entities = array();
+
+        $admins = array(
+            'news' => array(
+                'article' => $this->pool->getAdminByAdminCode('base.admin.news_article'),
+                'audio' => $this->pool->getAdminByAdminCode('base.admin.news_audio'),
+                'video' => $this->pool->getAdminByAdminCode('base.admin.news_video'),
+                'image' => $this->pool->getAdminByAdminCode('base.admin.news_image')
+            ) ,
+            'statements' => array(
+                'article' => $this->pool->getAdminByAdminCode('base.admin.statement_article'),
+                'audio' => $this->pool->getAdminByAdminCode('base.admin.statement_audio'),
+                'video' => $this->pool->getAdminByAdminCode('base.admin.statement_video'),
+                'image' => $this->pool->getAdminByAdminCode('base.admin.statement_image')
+            ) ,
+            'infos' => array(
+                'article' => $this->pool->getAdminByAdminCode('base.admin.info_article'),
+                'audio' => $this->pool->getAdminByAdminCode('base.admin.info_audio'),
+                'video' => $this->pool->getAdminByAdminCode('base.admin.info_video'),
+                'image' => $this->pool->getAdminByAdminCode('base.admin.info_image')
+            ) ,
+            'videos' => $this->pool->getAdminByAdminCode('base.admin.media_video'),
+            'audios' => $this->pool->getAdminByAdminCode('base.admin.media_audio'),
+            'photos' => $this->pool->getAdminByAdminCode('base.admin.media_image'),
+            'themes' => $this->pool->getAdminByAdminCode('base.admin.theme'),
+            'tags' => $this->pool->getAdminByAdminCode('base.admin.tag'),
+            'webtvs' => $this->pool->getAdminByAdminCode('base.admin.web_tv'),
+            'images' => $this->pool->getAdminByAdminCode('base.admin.media_image_simple'),
+            'pages' => array(
+                // general
+                'Homepage'=> $this->pool->getAdminByAdminCode('base.admin.homepage'),
+                'FDCPageWebTvLive'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_web_tv_live'),
+                'FDCPageWaiting' => $this->pool->getAdminByAdminCode('base.admin.fdc_page_waiting'),
+                // events
+                'Event'=> $this->pool->getAdminByAdminCode('base.admin.event'),
+                // cannes classics
+                'FDCPageLaSelectionCannesClassics'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_la_selection_cannes_classics'),
+                // participer
+                'FDCPagePrepare'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_prepare'),
+                'FDCPageParticipate'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_participate'),
+                'FDCPageParticipateSection'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_participate_section'),
+                // espace presse
+                'PressHomepage'=> $this->pool->getAdminByAdminCode('base.admin.press_homepage'),
+                'PressStatementInfo'=> $this->pool->getAdminByAdminCode('base.admin.press_statement_info'),
+                'PressAccredit'=> $this->pool->getAdminByAdminCode('base.admin.press_accredit'),
+                'PressAccreditProcedure'=> $this->pool->getAdminByAdminCode('base.admin.press_accredit_procedure'),
+                'PressGuide'=> $this->pool->getAdminByAdminCode('base.admin.press_guide'),
+                'PressMediaLibrary'=> $this->pool->getAdminByAdminCode('base.admin.press_media_library'),
+                'PressDownload'=> $this->pool->getAdminByAdminCode('base.admin.press_download'),
+                'PressDownloadSection'=> $this->pool->getAdminByAdminCode('base.admin.press_download_section'),
+                'PressProjection'=> $this->pool->getAdminByAdminCode('base.admin.press_projection'),
+                'PressCinemaMap'=> $this->pool->getAdminByAdminCode('base.admin.press_cinema_map'),
+                'ContactPage'=> $this->pool->getAdminByAdminCode('base.admin.contact_page'),
+                // pages
+                'FDCPageFooter'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_footer'),
+                // seo + tetieres
+                'FDCPageEvent'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_event'),
+                'FDCPageWebTvChannels'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_web_tv_channels'),
+                'FDCPageWebTvTrailers'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_web_tv_trailers'),
+                'FDCPageNewsArticles'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_news_articles'),
+                'FDCPageNewsAudios'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_news_audios'),
+                'FDCPageNewsVideos'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_news_videos'),
+                'FDCPageNewsImages'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_news_images'),
+                'FDCPageLaSelection'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_la_selection'),
+                'FDCPageLaSelectionCinemaPlage'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_la_selection_cinema_plage'),
+                'FDCPageJury'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_jury'),
+                'FDCPageAward' => $this->pool->getAdminByAdminCode('base.admin.fdc_page_award')
+            )
+        );
 
         // get locales / status by current user
         if ($this->securityContext->isGranted('ROLE_TRANSLATOR')) {
@@ -164,11 +319,15 @@ class SearchBlockService extends BaseBlockService
         $params['status'] = $status;
         $priorityStatuses = News::getPriorityStatuses();
 
-
         if (isset($params['type']) && isset($repositories[$params['type']])) {
-            $entities = $this->em->getRepository($repositories[$params['type']])->dashboardSearch($params, $locales);
+            if (is_array($repositories[$params['type']])) {
+                foreach ($repositories[$params['type']] as $rep) {
+                    $entities = array_merge($entities, $this->em->getRepository($rep)->dashboardSearch($params, $locales));
+                }
+            } else {
+                $entities = $this->em->getRepository($repositories[$params['type']])->dashboardSearch($params, $locales);
+            }
         }
-
 
         return $this->renderResponse('BaseAdminBundle:Block:search.html.twig', array(
             'block'     => $blockContext->getBlock(),
@@ -176,7 +335,10 @@ class SearchBlockService extends BaseBlockService
             'form' =>  $form->createView(),
             'params' => $params,
             'priorityStatuses' => $priorityStatuses,
-            'entities' => $entities
+            'entities' => $entities,
+            'admins' => $admins,
+            'dashboards' => $dashboards
+
         ), $response);
     }
 }

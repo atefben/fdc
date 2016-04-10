@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * PressDownloadSection
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class PressDownloadSection implements TranslateMainInterface

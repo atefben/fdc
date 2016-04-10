@@ -10,7 +10,7 @@ use Doctrine\ORM\NonUniqueResultException;
  * Class FDCPageLaSelectionRepository
  * @package Base\CoreBundle\Repository
  */
-class FDCPageLaSelectionRepository extends EntityRepository
+class FDCPageLaSelectionRepository extends TranslationRepository
 {
     /**
      * @param $locale

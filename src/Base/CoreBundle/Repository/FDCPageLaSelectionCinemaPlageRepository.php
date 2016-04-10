@@ -9,7 +9,7 @@ use Base\CoreBundle\Entity\FDCPageLaSelectionCinemaPlageTranslation;
  * Class FDCPageLaSelectionCinmePlageRepository
  * @package Base\CoreBundle\Repository
  */
-class FDCPageLaSelectionCinemaPlageRepository extends EntityRepository
+class FDCPageLaSelectionCinemaPlageRepository extends TranslationRepository
 {
     public function getBySlug($locale, $slug)
     {

@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  * FDCPagePrepare
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class FDCPagePrepare implements TranslateMainInterface

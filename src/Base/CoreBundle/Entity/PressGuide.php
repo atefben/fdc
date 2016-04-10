@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  * PressGuide
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class PressGuide implements TranslateMainInterface

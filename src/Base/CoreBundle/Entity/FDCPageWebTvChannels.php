@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * FDCPageWebTvChannels
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FDCPageWebTvChannels implements TranslateMainInterface

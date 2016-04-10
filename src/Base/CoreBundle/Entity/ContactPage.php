@@ -23,7 +23,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * ContactPage
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class ContactPage implements TranslateMainInterface

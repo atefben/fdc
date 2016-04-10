@@ -5,7 +5,7 @@ namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
 
-class FDCPageWebTvTrailersRepository extends EntityRepository
+class FDCPageWebTvTrailersRepository extends TranslationRepository
 {
     /**
      * @param $festival

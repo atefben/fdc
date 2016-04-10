@@ -15,7 +15,7 @@ use Base\CoreBundle\Util\SeoMain;
  * PressHomepage
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class PressHomepage implements TranslateMainInterface

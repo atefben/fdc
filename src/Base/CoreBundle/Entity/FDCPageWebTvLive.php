@@ -20,7 +20,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * FDCPageWebTvLive
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FDCPageWebTvLive implements TranslateMainInterface

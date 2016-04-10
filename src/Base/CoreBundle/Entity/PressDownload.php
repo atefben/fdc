@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * PressDownload
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class PressDownload implements TranslateMainInterface

@@ -145,6 +145,46 @@ class TranslatorStatsBlockService extends BaseBlockService
             ),
             'images' => array(
                 'BaseCoreBundle:MediaImageSimple'
+            ),
+            'pages' => array(
+                 // general
+                'BaseCoreBundle:Homepage',
+                'BaseCoreBundle:FDCPageWebTvLive',
+                'BaseCoreBundle:FDCPageWaiting',
+                 // events
+                'BaseCoreBundle:Event',
+                 // cannes classics
+                'BaseCoreBundle:FDCPageLaSelectionCannesClassics',
+                 // participer
+                'BaseCoreBundle:FDCPagePrepare',
+                'BaseCoreBundle:FDCPageParticipate',
+                'BaseCoreBundle:FDCPageParticipateSection',
+                 // espace presse
+                'BaseCoreBundle:PressHomepage',
+                'BaseCoreBundle:PressStatementInfo',
+                'BaseCoreBundle:PressAccredit',
+                'BaseCoreBundle:PressAccreditProcedure',
+                'BaseCoreBundle:PressGuide',
+                'BaseCoreBundle:PressMediaLibrary',
+                'BaseCoreBundle:PressDownload',
+                'BaseCoreBundle:PressDownloadSection',
+                'BaseCoreBundle:PressProjection',
+                'BaseCoreBundle:PressCinemaMap',
+                'BaseCoreBundle:ContactPage',
+                // pages
+                'BaseCoreBundle:FDCPageFooter',
+                // seo + tetieres
+                'BaseCoreBundle:FDCPageEvent',
+                'BaseCoreBundle:FDCPageWebTvChannels',
+                'BaseCoreBundle:FDCPageWebTvTrailers',
+                'BaseCoreBundle:FDCPageNewsArticles',
+                'BaseCoreBundle:FDCPageNewsAudios',
+                'BaseCoreBundle:FDCPageNewsVideos',
+                'BaseCoreBundle:FDCPageNewsImages',
+                'BaseCoreBundle:FDCPageLaSelection',
+                'BaseCoreBundle:FDCPageLaSelectionCinemaPlage',
+                'BaseCoreBundle:FDCPageJury',
+                'BaseCoreBundle:FDCPageAward'
             )
         );
 

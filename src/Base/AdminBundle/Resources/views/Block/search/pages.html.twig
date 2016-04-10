@@ -1,7 +1,7 @@
 {% trans_default_domain 'BaseAdminBundle' %}
 <div class="dashboard-search-results bg-white">
     <header>
-        Tags -
+        Pages -
         {% if params.status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATION_PENDING') %}
             En attente de traduction
         {% else %}
@@ -18,7 +18,10 @@
                     Id
                 </th>
                 <th class="sonata-ba-list-field-header-text ">
-                    Nom du tag
+                    Nom de la page
+                </th>
+                <th class="sonata-ba-list-field-header-text ">
+                    Arboresence
                 </th>
                 <th class="sonata-ba-list-field-header-choice  sonata-ba-list-field-header-order-asc ">
                     Priorité
@@ -32,6 +35,7 @@
             <tbody>
             {% for entity in entities %}
                 {% set object = entity %}
+                {% set admin = admins[params.type][class(object)] %}
                 {% set transFr = entity.findTranslationByLocale('fr') %}
                 <tr>
                     <td class="sonata-ba-list-field sonata-ba-list-field-integer">
@@ -39,8 +43,14 @@
                     </td>
                     <td class="sonata-ba-list-field sonata-ba-list-field-text">
                         <div>
-                            {{ transFr.name }}
+                            {{ admin.label|trans }}
                         </div>
+                    </td>
+                    <td class="sonata-ba-list-field sonata-ba-list-field-orm_many_to_one">
+                        {% if dashboards[class(object)] is defined %}
+                            {{ dashboards[class(object)] }} >
+                        {% endif %}
+                        {{ admin.label|trans }}
                     </td>
                     <td class="sonata-ba-list-field sonata-ba-list-field-choice">
                         {% if entity.priorityStatus in priorityStatuses|keys %}

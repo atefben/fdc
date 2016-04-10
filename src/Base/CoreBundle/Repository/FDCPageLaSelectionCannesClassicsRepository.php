@@ -9,7 +9,7 @@ use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsTranslation;
  * Class FDCPageJuryTranslationRepository
  * @package Base\CoreBundle\Repository
  */
-class FDCPageLaSelectionCannesClassicsRepository extends EntityRepository
+class FDCPageLaSelectionCannesClassicsRepository extends TranslationRepository
 {
 
     /**

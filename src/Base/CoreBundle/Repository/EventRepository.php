@@ -2,7 +2,6 @@
 
 namespace Base\CoreBundle\Repository;
 
-use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\Event;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\QueryBuilder;
@@ -11,7 +10,7 @@ use Doctrine\ORM\QueryBuilder;
  * Class EventRepository
  * @package Base\CoreBundle\Repository
  */
-class EventRepository extends EntityRepository
+class EventRepository extends TranslationRepository
 {
     /**
      * @param $festival

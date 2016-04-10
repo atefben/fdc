@@ -14,7 +14,7 @@ use Base\CoreBundle\Util\SeoMain;
  * PressCinemaMap
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class PressCinemaMap implements TranslateMainInterface

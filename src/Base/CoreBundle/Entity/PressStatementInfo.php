@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * PressStatementInfo
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class PressStatementInfo implements TranslateMainInterface

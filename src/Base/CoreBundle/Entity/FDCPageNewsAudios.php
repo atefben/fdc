@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * FDCPageNewsAudios
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FDCPageNewsAudios implements TranslateMainInterface

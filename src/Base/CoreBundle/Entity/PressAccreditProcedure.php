@@ -17,7 +17,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * PressAccreditProcedure
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class PressAccreditProcedure implements TranslateMainInterface

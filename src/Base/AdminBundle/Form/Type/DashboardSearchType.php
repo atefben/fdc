@@ -30,7 +30,8 @@ class DashboardSearchType extends BaseType
                     'Thème' => 'themes',
                     'Tag' => 'tags',
                     'Chaîne WebTV' => 'webtvs',
-                    'Image' => 'images'
+                    'Image' => 'images',
+                    'Page' => 'pages'
                 ),
                 'choices_as_values' => true,
                 'required' => false,

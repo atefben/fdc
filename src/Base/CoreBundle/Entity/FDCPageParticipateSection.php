@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * FDCPageParticipateSection
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class FDCPageParticipateSection implements TranslateMainInterface

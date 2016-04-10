@@ -10,7 +10,7 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
  * Class FDCEventRoutesRepository
  * @package Base\CoreBundle\Repository
  */
-class FDCPageWaitingRepository extends EntityRepository
+class FDCPageWaitingRepository extends TranslationRepository
 {
 
     /**

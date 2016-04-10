@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
  * @author   Antoine Mineau
  * \@company Ohwee
  */
-class FDCPageParticipateRepository extends EntityRepository
+class FDCPageParticipateRepository extends TranslationRepository
 {
 
 
