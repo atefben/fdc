@@ -34,6 +34,7 @@ class TranslationRepository extends EntityRepository
                 ->setParameter('priorityStatus', $params['priorityStatus'])
             ;
         }
+        $qb->orderBy('n.priorityStatus', 'DESC');
 
         return $qb->getQuery()->getResult();
     }
