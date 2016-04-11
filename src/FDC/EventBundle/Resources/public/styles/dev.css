@@ -1,4 +1,5 @@
 .legal-notice hr,
+.faq hr,
 .single-article hr {
     height: 0;
     border: 0;
@@ -6,11 +7,13 @@
 }
 
 .legal-notice .single-photo img,
+.faq .single-photo img,
 .single-article .single-photo img {
     height: auto;
 }
 
 .legal-notice .big-quote,
+.faq .big-quote,
 .single-article .big-quote {
     width: 630px;
     margin: 0 auto;
@@ -25,17 +28,20 @@
 }
 
 .legal-notice .text em,
+.faq .text em,
 .single-article .text em {
     font-style: italic;
 }
 
 .legal-notice .text sup,
+.faq .text sup,
 .single-article .text sup {
     vertical-align: super;
     font-size: 11px;
 }
 
 .legal-notice .text sub,
+.faq .text sub,
 .single-article .text sub {
     vertical-align: sub;
     font-size: 11px;
@@ -43,6 +49,8 @@
 
 .legal-notice .button:hover a,
 .legal-notice .button a:hover,
+.faq .button:hover a,
+.faq .button a:hover,
 .single-article .button:hover a,
 .single-article .button a:hover {
     color: #FFFFFF;
@@ -70,6 +78,7 @@
 }
 
 .legal-notice .big-quote span.big-quote-paragraph,
+.faq .big-quote span.big-quote-paragraph,
 .single-article .big-quote span.big-quote-paragraph {
     color: #b1b1b1;
     text-align: center;
@@ -80,12 +89,14 @@
 }
 
 .legal-notice .big-quote strong,
+.faq .big-quote strong,
 .single-article .big-quote strong {
     color: #c8a461 !important;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
 }
 
 .legal-notice .txt-grey-bkg-container,
+.faq .txt-grey-bkg-container,
 .single-article .txt-grey-bkg-container {
     color: #666;
     font-size: 1rem;
@@ -95,6 +106,7 @@
 }
 
 .legal-notice .txt-grey-bkg-container .content span,
+.faq .txt-grey-bkg-container .content span,
 .single-article .txt-grey-bkg-container .content span {
     font-size: 1rem;
     font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
@@ -103,6 +115,7 @@
 }
 
 .legal-notice .blockquote,
+.faq .blockquote,
 .single-article .blockquote {
     border-bottom: 1px solid #e5e5e5;
     border-top: 1px solid #e5e5e5;
@@ -113,7 +126,8 @@
     text-align: center;
 }
 
-.legal-notice ,.big-txt
+.legal-notice .big-txt,
+.faq .big-txt,
 .single-article .big-txt {
     color: #333333;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
@@ -123,6 +137,7 @@
 }
 
 .legal-notice .little-txt,
+.faq .little-txt,
 .single-article .little-txt {
     color: #969696;
     font-size: 0.750rem;
@@ -131,6 +146,7 @@
 }
 
 .legal-notice .txt-grey-bkg-container span.txt-grey-bkg-container-paragraph,
+.faq .txt-grey-bkg-container span.txt-grey-bkg-container-paragraph,
 .single-article .txt-grey-bkg-container span.txt-grey-bkg-container-paragraph {
     font-size: 1rem;
     font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
@@ -140,17 +156,20 @@
 }
 
 .legal-notice .quote blockquote,
+.faq .quote blockquote,
 .single-article .quote blockquote {
     margin-top: 35px;
     margin-bottom: 40px;
 }
 
 .legal-notice table[border="0"] td,
+.faq table[border="0"] td,
 .single-article table[border="0"] td {
     border: none !important;
 }
 
 .legal-notice table caption,
+.faq table caption,
 .single-article table caption {
     color: #666;
     font-size: 1rem;
@@ -159,11 +178,13 @@
 }
 
 .legal-notice .button a,
+.faq .button a,
 .single-article .button a {
     color: #c8a461;
 }
 
 .legal-notice .author,
+.faq .author,
 .single-article .author {
     clear: both;
 }
@@ -174,6 +195,7 @@
 }
 
 .legal-notice .slideshow.article_photo .slideshow-img .thumbnails .thumb img,
+.faq .slideshow.article_photo .slideshow-img .thumbnails .thumb img,
 .single-article .slideshow.article_photo .slideshow-img .thumbnails .thumb img {
     height: auto;
 }
