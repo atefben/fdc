@@ -1324,6 +1324,13 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: EventTag}
 
+    base.admin.mobile_notification:
+        class: Base\AdminBundle\Admin\MobileNotificationAdmin
+        arguments: [~, Base\CoreBundle\Entity\MobileNotification, BaseAdminBundle:MobileNotificationAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: mobile_notification, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
     base.admin.faq_theme:
         class: Base\AdminBundle\Admin\FAQThemeAdmin
         arguments: [~, Base\CoreBundle\Entity\FAQTheme, BaseAdminBundle:FAQThemeAdmin]
