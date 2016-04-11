@@ -15,6 +15,7 @@ article is news_image %}
         {% set picto = article.infoType|get_info_type %}
     {% endif %}
 {% endif %}
+
 <article class="{{ picto }} {% if isDouble is defined %} {{isDouble}} {% endif %} {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ picto }}" data-time="{{ article.publishedAt|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-end="{{ endOfArticles }}" data-type="{{ type }}">
     <div class="image">
         <div class="image-wrapper">
@@ -42,7 +43,7 @@ article is news_image %}
                 {% if imageTrans is defined and imageTrans is not null %}
                     {% set file = imageTrans.file %}
                     {% set img = article.header %}
-                {% else %}
+                {% elseif article.video.image is defined and article.video.image is not null %}
                     {% set img = article.video.image %}
                     {% set trans = img.findTranslationByLocale(app.request.locale) %}
                     {% if trans is null or trans.file is null %}
@@ -50,8 +51,9 @@ article is news_image %}
                     {% endif %}
                     {% set file = trans.file %}
                 {% endif %}
-
+				{% if file is defined and file is not null %}
                 {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
+				{% endif %}
             {% elseif article is news_audio or article is info_audio or article is statement_audio %}
                 {% set header = article.header %}
                 {% if header is not null %}
