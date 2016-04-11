@@ -14905,6 +14905,8 @@ input[type=submit] {
   vertical-align: top;
 }
 .faq .faq-active {
+  top: 1px;
+  opacity: 1;
   display: inline-block;
 }
 .faq section[data-name="informations-generales"] {

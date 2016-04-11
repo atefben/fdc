@@ -105,6 +105,7 @@ group:
         associations: Associations
         widgets: Modules éditoriaux
     seo: Métadonnées & SEO
+    theme: Thème
     helper_seo: |
         Laissez ces champs vides, les informations renseignées ci-dessus seront reprises automatiquement.
         Vous pouvez également renseignez ces champs dans le cas où vous souhaitez surcharger les informations reprises automatiquement.
@@ -453,6 +454,8 @@ dashboard:
         settings: Paramètres
         bo_translation: Libellés
         homepage: Homepage
+        FAQ: FAQ
+        FAQTheme: Thèmes FAQ
         fdc_page_la_selection_cannes_classics_honor: Invité d'honneur
         fdc_page_la_selection_cannes_classics_hommages: Hommages
         fdc_page_la_selection_cannes_classics_copy: Copies Restaurées
@@ -797,6 +800,8 @@ form:
     label_role: Fonction
     label_sponsor_image: Image du partenaire/fournisseur
     label_sponsor_logo: Logo du partenaire / fournisseur
+    label_question: Question
+    label_answer: Réponse
 
     gallery:
         medias: Médias

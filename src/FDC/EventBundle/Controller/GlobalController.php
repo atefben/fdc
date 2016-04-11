@@ -189,6 +189,28 @@ class GlobalController extends Controller {
     }
 
     /**
+     * @Route("/faq")
+     * @Template("FDCEventBundle:Global:faq.html.twig")
+     * @return array
+     */
+    public function faqAction(Request $request) {
+
+        $em = $this->get('doctrine')->getManager();
+        $themes = $em->getRepository('BaseCoreBundle:FAQTheme')->findAll();
+        $faq = array();
+        foreach($themes as $key => $theme) {
+            $faq[$key]['faq'] = $em->getRepository('BaseCoreBundle:FAQPage')->findby(
+                array('theme' => $theme)
+            );
+            $faq[$key]['theme'] = $theme;
+        }
+
+        return array(
+            'faq' => $faq
+        );
+    }
+
+    /**
      * @Route("/share-email", options={"expose"=true})
      * @Template("FDCEventBundle:Global:share-email.html.twig")
      * @param Request $request
