@@ -24,12 +24,6 @@ class MobileNotificationAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('token')
-            ->add('sendAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
         ;
     }
 
@@ -40,17 +34,22 @@ class MobileNotificationAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('token')
-            ->add('sendAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
+            ->add('translation_title', null, array(
+                'template'           => 'BaseAdminBundle:MobileNotification:list_title.html.twig',
+                'label'              => 'list.label_title',
+                'translation_domain' => 'BaseAdminBundle',
+            ))
+            ->add('token',  'boolean', array(
+                'label' => 'form.mobile_notification.label_token',
+            ))
+            ->add('sendAt', null, array(
+                'template' => 'BaseAdminBundle:MobileNotification:list_send_at.html.twig',
+                'sortable' => 'sendAt',
+                'label' => 'form.mobile_notification.label_send_at',
+            ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+                'locales' => array('fr', 'en')
             ))
         ;
     }

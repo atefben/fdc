@@ -59,6 +59,7 @@ class LockController extends Controller
         'orangeprogrammationocs'           => 'OrangeProgrammationOCS',
         'orangevideoondemand'              => 'OrangeVideoOnDemand',
         'orangestudio'                     => 'OrangeStudio',
+        'mobilenotification'               => 'MobileNotification',
     );
 
     /**
