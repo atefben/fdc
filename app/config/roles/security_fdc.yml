@@ -96,6 +96,7 @@ security:
             - ROLE_TRANSLATE_EN
             - ROLE_TRANSLATE_ES
             - ROLE_TRANSLATE_ZH
+            - ROLE_BASE_ADMIN_MOBILE_NOTIFICATION_ADMIN
 
         ROLE_FDC_WRITER:
             - ROLE_ADMIN

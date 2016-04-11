@@ -70,11 +70,11 @@ breadcrumb:
     link_f_d_c_page_event_list: Page - Les événements
     link_f_d_c_page_prepare_list: Participer
     link_f_d_c_page_participate_list: Participer
-    
     link_orange_series_and_cie_list: Cannes, Séries & Cie
     link_orange_programmation_o_c_s_list: Programmation OCS
     link_orange_video_on_demand_list: Vidéo à la demande
     link_orange_studio_list: Orange Studio
+    link_mobile_notification_list: Notifications mobiles
     
 link:
     action_soif_refresh: Mettre à jour
@@ -160,6 +160,8 @@ group:
     orange_ocs:
         widgets: Modules film
     content: Contenu
+    mobile_notificaton:
+        publish: Publication
 entity:
     fdc_event_routes: Menu
     news_article: Articles
@@ -955,6 +957,10 @@ form:
         helper_orange_studio_film_associated: Ajouter un film du Festival de Cannes
     orange_ocs:
         helper_widgets: Ajouter un module de type
+    mobile_notification:
+        label_description: Message
+        label_token: Token
+        label_send_at: Envoyé le
 nav:
     site_modal: Ouvrir la sélection des sites
 
@@ -1024,3 +1030,4 @@ FDCPageWebTvTrailers: Page WebTV - Les bandes-annonces - Compétition
 FDCPageLaSelection: Page la sélection
 FilmJuryType: Type des jurys
 FilmSelectionSection: Sélections
+mobile_notification: Notifications mobiles
