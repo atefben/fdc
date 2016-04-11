@@ -18,11 +18,11 @@
                 {% set first = true %}
                 {%- for video in webTvVideos %}
                 {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
-                {% if video|trans_fallback('imageAmazonUrl') %}
+                {% if video.image %}
+                    {% set videoImage = media_public_url(video.image|trans_fallback('file'), '1950x1232') %}
+                {% elseif video|trans_fallback('imageAmazonUrl') %}
                     {% set videoImage = s3_server_video ~ video.image|trans_fallback('imageAmazonUrl') %}
                 {% endif %}
-                {% elseif video.image %}
-                    {% set videoImage = media_public_url(video.image|trans_fallback('file'), '1950x1232') %}
                 {%- if trans is null or trans.file is null -%}
                     {%- set trans = video.file.findTranslationByLocale('fr') -%}
                 {%- endif -%}

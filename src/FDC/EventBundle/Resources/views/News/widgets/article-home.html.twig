@@ -15,6 +15,7 @@ article is news_image %}
         {% set picto = article.infoType|get_info_type %}
     {% endif %}
 {% endif %}
+
 <article class="{{ picto }} {% if isDouble is defined %} {{isDouble}} {% endif %} {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ picto }}" data-time="{{ article.publishedAt|date('U') }}" data-theme="{{ article.theme|trans_fallback('slug') }}" data-end="{{ endOfArticles }}" data-type="{{ type }}">
     <div class="image">
         <div class="image-wrapper">

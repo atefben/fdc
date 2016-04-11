@@ -20,8 +20,6 @@ class FilmAwardAssociationRepository extends EntityRepository
             ->setParameter('category', $category)
             ->addOrderBy('ss.position', 'asc')
             ->addOrderBy('p.position', 'asc')
-            ->groupBy('a.id')
-            ->distinct()
         ;
 
         if ($selectionSection) {

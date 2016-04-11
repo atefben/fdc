@@ -123,12 +123,14 @@
                 {% for video in lastVideos %}
                     <div class="video shadow-bottom"
                          data-vid="{{ video.id }}"
-                         data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
-                            {% if video.image|trans_fallback('file') %}
-                        data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
-                    {% else %}
-                        data-img="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
-                            {% endif %}>
+                        data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
+                        {% if video.image|trans_fallback('file') %}
+                       	    data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
+	                    {% else %}
+	                        data-img="{{ s3_server_video ~ video|trans_fallback('imageAmazonUrl') }}"
+                    	{% else %}
+                        	data-img="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
+                        {% endif %}>
                         <div class="image-wrapper">
                             {% if video.image|trans_fallback('file') %}
                                 <img src="{% path video.image|trans_fallback('file'), '463x292' %}" alt="">
