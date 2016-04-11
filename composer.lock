@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6100299be6fa2eada30c108845bf7c0b",
-    "content-hash": "cfd27dc28cbd05130c52702ceec0adf7",
+    "hash": "46ee5fab32799b88a8feff462261bf4b",
+    "content-hash": "5d000fa051cb5c4324474d72017287c2",
     "packages": [
         {
             "name": "a2lix/i18n-doctrine-bundle",
@@ -2027,7 +2027,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSDiExtraBundle/zipball/659318915e56637de2de8736851269a5fc33e3bb",
+                "url": "https://api.github.com/repos/schmittjoh/JMSDiExtraBundle/zipball/3f9d4b06df6a9554cfef0654ad0ea5ee6d737350",
                 "reference": "e2181b81c9",
                 "shasum": ""
             },
@@ -2443,12 +2443,12 @@
             "target-dir": "JMS/TranslationBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/schmittjoh/JMSTranslationBundle.git",
+                "url": "git@github.com:schmittjoh/JMSTranslationBundle.git",
                 "reference": "c2b4c6de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSTranslationBundle/zipball/c97c57151ce0283d89a1bea8dbdb15b222052135",
+                "url": "https://api.github.com/repos/schmittjoh/JMSTranslationBundle/zipball/8fb514716cecaecbcf58e1bd79da6dd2316186ea",
                 "reference": "c2b4c6de",
                 "shasum": ""
             },
@@ -3739,6 +3739,9 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.3.x-dev"
+                },
+                "patches_applied": {
+                    "Added feature roles in dashboard blocks": "src/Base/CoreBundle/Resources/patches/sonata-project-admin-dashboard-block-roles.patch"
                 }
             },
             "autoload": {
@@ -4331,7 +4334,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/7757052a1f59e42e5c482374260a52d4befd9c97",
+                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/8658ee7b4fceeb6ae10e33a4d94d1927bc6717a9",
                 "reference": "b3b26a2",
                 "shasum": ""
             },
