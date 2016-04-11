@@ -2,7 +2,7 @@
 
 namespace Base\AdminBundle\Controller;
 
-use Sonata\AdminBundle\Controller\CRUDController;
+use Application\Sonata\AdminBundle\Controller\CRUDController;
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;

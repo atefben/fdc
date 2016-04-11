@@ -1,13 +1,13 @@
 <ul class="a2lix_translationsLocales nav nav-tabs">
     {% for translationsFields in form %}
         {% set locale = translationsFields.vars.name %}
-        {% if is_granted('ROLE_TRANSLATE_FR') %}
+        {% if is_granted('ROLE_TRANSLATOR_FR') %}
             {% set currentLocale = 'fr' %}
-        {% elseif is_granted('ROLE_TRANSLATE_EN') %}
+        {% elseif is_granted('ROLE_TRANSLATOR_EN') %}
             {% set currentLocale = 'en' %}
-        {% elseif is_granted('ROLE_TRANSLATE_ES') %}
+        {% elseif is_granted('ROLE_TRANSLATOR_ES') %}
             {% set currentLocale = 'es' %}
-        {% elseif is_granted('ROLE_TRANSLATE_ZH') %}
+        {% elseif is_granted('ROLE_TRANSLATOR_ZH') %}
             {% set currentLocale = 'zh' %}
         {% endif %}
         {% if is_granted('ROLE_TRANSLATE_' ~ locale|upper) %}

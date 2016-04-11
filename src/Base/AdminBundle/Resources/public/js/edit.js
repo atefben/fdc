@@ -191,16 +191,28 @@ function editEvents() {
 
     });
 
-    // add border on changing lang
+    // add border and set locale in form action on tab change
     $('body').on('click', '.a2lix_translationsLocales li', function() {
         $(this).closest('.a2lix_translationsLocales').find('li').removeClass('nav-tab-active');
         $(this).addClass('nav-tab-active');
+
+        var action = $('.sonata-ba-form > form').attr('action');
+        var locale = $('.a2lix_translationsLocales li.nav-tab-active').attr('data-locale');
+
+        $('.sonata-ba-form > form').attr('action', action.slice(0, -2) + locale);
     });
+
+    // set locale in form action on load
+    var action = $('.sonata-ba-form > form').attr('action');
+    var locale = $('.a2lix_translationsLocales li.active').attr('data-locale');
+    console.log(locale);
+    $('.sonata-ba-form > form').attr('action', action + '&locale=' + locale);
+
+
 
     // Hide the status for french translation
     if ($('.status-hidden').length) {
         $('.status-hidden select').val(1).change();
         $('.status-hidden').hide();
     }
-
 }
