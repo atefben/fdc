@@ -30,6 +30,8 @@
             {% if imageTrans is defined %}
                 {% set file = imageTrans.file %}
                 {% set img = article.header %}
+			{% elseif article.video|trans_fallback('imageAmazonUrl') is not null %}
+				{% set imgamazon = s3_server_video ~ article.video|trans_fallback('imageAmazonUrl') %}
             {% else %}
                 {% set tmp = article.video %}
                 {% if tmp is not null %}
@@ -43,7 +45,9 @@
             {% endif %}
             {% if file is defined and imageTrans is defined and imageTrans.file is not null %}
                 {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
-            {% endif %}
+			{% elseif imgamazon is defined and imgamazon is not null %}
+				<img src="{{ imgamazon }}" alt="" />
+			{% endif %}
         {% elseif article is news_audio %}
             {% set header = article.header %}
             {% if header is not null %}

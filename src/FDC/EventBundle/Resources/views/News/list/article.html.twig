@@ -44,16 +44,23 @@
                                 {% if imageTrans is defined and imageTrans is not null %}
                                     {% set file = imageTrans.file %}
                                     {% set img = article.header %}
-                                {% else %}
+								{% elseif article.video|trans_fallback('imageAmazonUrl') is not null %}
+									{% set imgamazon = s3_server_video ~ article.video|trans_fallback('imageAmazonUrl') %}
+                                {% elseif trans is defined and trans is not null %}
                                     {% set img = article.video.image %}
-                                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans is null or trans.file is null %}
-                                        {% set trans = img.findTranslationByLocale('fr') %}
-                                    {% endif %}
+									{% if img is defined and img is not null %}
+                                   	 {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                   	 {% if trans is null or trans.file is null %}
+                                      	  {% set trans = img.findTranslationByLocale('fr') %}
+                                    	{% endif %}
+									 {% endif %}
                                     {% set file = trans.file %}
                                 {% endif %}
-
+								{% if file is defined and file is not null %}
                                 {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
+								{% elseif imgamazon is defined and imgamazon is not null %}
+									<img src="{{ imgamazon }}" alt="" />
+								{% endif %}
                             {% elseif article is news_audio %}
                                 {% set header = article.header %}
                                 {% if header is not null %}
