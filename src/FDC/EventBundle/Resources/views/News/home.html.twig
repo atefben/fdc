@@ -263,10 +263,12 @@
                                 data-vid="{{ video.association.id }}"
                                 data-file='[{"file":"{{ s3_server_video ~ video.association|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video.association|trans_fallback('mp4Url') }}"}]'
                                 {% if video.association.image|trans_fallback('file') %}
-                                data-img="{% path video.association.image|trans_fallback('file'), '463x292' %}"
+                               	 data-img="{% path video.association.image|trans_fallback('file'), '463x292' %}"
                                 {% else %}
-                                data-img="{% path video.association.image|trans_fallback('file', 'fr'), '463x292' %}"
-                                {% endif %}>
+                               	 data-img="{% path video.association.image|trans_fallback('file', 'fr'), '463x292' %}"
+				                {%- elseif video|trans_fallback('imageAmazonUrl') -%}
+								 data-img="{% path s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}"
+				                {%- endif -%}
                                 {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' %}
                             </div>
                         {% endif %}
