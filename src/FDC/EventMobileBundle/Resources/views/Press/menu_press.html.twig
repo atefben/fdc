@@ -44,8 +44,7 @@
                     <!-- accueil -->
                     {% if menu.route == 'fdc_press_news_home' and menu.enabled == true %}
                         <a href="{{ path('fdc_press_news_home') }}"
-                           class="{% if app.request.attr
-                           ibutes.get('_route') == 'fdc_press_news_home' %}active{% endif %}">
+                           class="{% if app.request.attributes.get('_route') == 'fdc_press_news_home' %}active{% endif %}">
                             <div class="section-title"><h3 class="title-menu">{{ 'header.mainnav.nav.accueil'|trans }}</h3></div>
                         </a>
                     <!-- communiqués -->
