@@ -28,14 +28,14 @@
 {% endif %}
 
 <div class="video-container video-single state-init video"
-    data-link="//www.example.com"
-    data-email="//www.gmail.com"
+    data-link="{{ s3_server_video ~ trans.mp4Url }}"
+    data-email="{{ s3_server_video ~ trans.mp4Url }}"
     {% if playlist is defined %}
     data-playlist='{{ playlist }}'
     {% else %}
     data-file='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
     {% endif %}
-    data-img="{% if image is defined and image is not null %}{% path image, 'reference' %}{% endif %}"
+    data-img="{% if image is defined and image is not null %}{% path image, 'reference' %}{% elseif trans.imageAmazonUrl is defined and trans.imageAmazonUrl is not null %}{{ s3_server_video ~ trans.imageAmazonUrl }}{% endif %}"
     data-name="{{ trans.title }}">
     <div id="video-player-{{ trans.id }}" class="video-player">
     </div>
