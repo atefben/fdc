@@ -1331,3 +1331,14 @@ services:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: mobile_notification, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
+    base.admin.faq_theme:
+        class: Base\AdminBundle\Admin\FAQThemeAdmin
+        arguments: [~, Base\CoreBundle\Entity\FAQTheme, BaseAdminBundle:FAQThemeAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FAQTheme}
+
+    base.admin.faq_page:
+        class: Base\AdminBundle\Admin\FAQPageAdmin
+        arguments: [~, Base\CoreBundle\Entity\FAQPage, BaseAdminBundle:FAQPageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FAQPage}

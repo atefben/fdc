@@ -124,5 +124,6 @@ security:
         - ROLE_TRANSLATE_ES
         - ROLE_TRANSLATE_ZH
         - ROLE_ORANGE
-
+        - ROLE_BASE_ADMIN_FAQ_THEME_ADMIN
+        - ROLE_BASE_ADMIN_FAQ_PAGE_ADMIN
 

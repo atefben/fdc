@@ -24,6 +24,18 @@
                     {{ 'dashboard.link.credits'|trans({}, 'BaseAdminBundle') }}
                 </a>
             </li>
+            <li>
+                <a href="{{ path('admin_base_core_faqtheme_list') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    {{ 'dashboard.link.FAQTheme'|trans({}, 'BaseAdminBundle') }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('admin_base_core_faqpage_list') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    {{ 'dashboard.link.FAQ'|trans({}, 'BaseAdminBundle') }}
+                </a>
+            </li>
         </ul>
     </li>
 {% endif %}

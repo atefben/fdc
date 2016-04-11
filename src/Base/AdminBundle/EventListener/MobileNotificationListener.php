@@ -12,6 +12,7 @@ use Base\CoreBundle\Entity\MobileNotification;
 use Base\CoreBundle\Entity\MobileNotificationTranslation;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
+
 /**
  * Class MobileNotificationListener
  * @package Base\AdminBundle\EventListener
@@ -27,9 +28,16 @@ class MobileNotificationListener
         $object = $args->getObject();
 
         if ($object instanceof MobileNotification) {
-            $this->sendTestMobileNotification($object);
+            if ($object->getSendTest()) {
+                $object->setSendTest(false);
+                $this->sendTestMobileNotification($object);
+            }
         } elseif ($object instanceof MobileNotificationTranslation) {
-            $this->sendTestMobileNotification($object->getTranslatable());
+            $mobileNotification = $object->getTranslatable();
+            if ($mobileNotification->getSendTest()) {
+                $mobileNotification->setSendTest(false);
+                $this->sendTestMobileNotification($mobileNotification);
+            }
         }
 
     }
@@ -42,9 +50,16 @@ class MobileNotificationListener
         $object = $args->getObject();
 
         if ($object instanceof MobileNotification) {
-            $this->sendTestMobileNotification($object);
+            if ($object->getSendTest()) {
+                $object->setSendTest(false);
+                $this->sendTestMobileNotification($object);
+            }
         } elseif ($object instanceof MobileNotificationTranslation) {
-            $this->sendTestMobileNotification($object->getTranslatable());
+            $mobileNotification = $object->getTranslatable();
+            if ($mobileNotification->getSendTest()) {
+                $mobileNotification->setSendTest(false);
+                $this->sendTestMobileNotification($mobileNotification);
+            }
         }
     }
 
@@ -53,11 +68,10 @@ class MobileNotificationListener
         $token = $object->getToken();
 
         foreach ($object->getTranslations() as $translation) {
-            $published  = $translation->getStatus() === MobileNotificationTranslation::STATUS_PUBLISHED;
-            $published = $published || MobileNotificationTranslation::STATUS_TRANSLATION_VALIDATING;
+            $published = $translation->getStatus() === MobileNotificationTranslation::STATUS_PUBLISHED;
+            $published = $published || $translation->getStatus() === MobileNotificationTranslation::STATUS_TRANSLATION_VALIDATING;
             $title = $translation->getTitle();
             $message = $translation->getDescription();
-
         }
     }
 
