@@ -60,6 +60,8 @@ class LockController extends Controller
         'orangevideoondemand'              => 'OrangeVideoOnDemand',
         'orangestudio'                     => 'OrangeStudio',
         'mobilenotification'               => 'MobileNotification',
+        'faqpage'                          => 'FAQPage',
+        'faqtheme'                         => 'FAQTheme',
     );
 
     /**
