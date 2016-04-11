@@ -149,7 +149,6 @@ function editEvents() {
 
     // remove select2 status option for each language
     $('select[name*="status"]').each(function(i, e) {
-        console.log(e);
         var idArray = $(e).attr('id').split('_');
         var locale = idArray[idArray.length - 2];
         var status = ['0', '1', '4', '6'];
@@ -205,7 +204,6 @@ function editEvents() {
     // set locale in form action on load
     var action = $('.sonata-ba-form > form').attr('action');
     var locale = $('.a2lix_translationsLocales li.active').attr('data-locale');
-    console.log(locale);
     $('.sonata-ba-form > form').attr('action', action + '&locale=' + locale);
 
 
