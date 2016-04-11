@@ -125,7 +125,7 @@ class FilmAward
     /**
      * @var FilmAwardAssociation
      *
-     * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="award", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="award", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"award_list", "award_show"})
      */
@@ -374,7 +374,7 @@ class FilmAward
         if (!$this->associations->contains($associations)) {
             return;
         }
-        
+
         $this->associations->removeElement($associations);
     }
 

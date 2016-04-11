@@ -79,7 +79,7 @@ class UpdateCommand extends ContainerAwareCommand
         // managers
         $managers = array(
             $this->getContainer()->get('base.soif.country_manager'),
-           $this->getContainer()->get('base.soif.festival_manager'),
+            $this->getContainer()->get('base.soif.festival_manager'),
             $this->getContainer()->get('base.soif.award_manager'),
             $this->getContainer()->get('base.soif.festival_poster_manager'),
             $this->getContainer()->get('base.soif.film_atelier_manager'),
@@ -103,9 +103,9 @@ class UpdateCommand extends ContainerAwareCommand
         foreach ($managers as $manager) {
             $manager->getModified($start, $end);
             // verify if method exists before call because prize manager doenst have a getRemoved method
-            /*if (method_exists($manager, 'getRemoved')) {
+            if (method_exists($manager, 'getRemoved')) {
                 $manager->getRemoved($start, $end);
-            }*/
+            }
         }
         
         // save in database the end timestamp
