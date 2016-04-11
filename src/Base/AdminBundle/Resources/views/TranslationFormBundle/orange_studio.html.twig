@@ -117,7 +117,7 @@
                         {% endif %}
                     </div>
                 </div>
-           
+
                 <div class="row">
                     {% if form.vars.default_locale == locale %}
                         <div class="col-md-12">
@@ -169,7 +169,7 @@
                                                 <h4><strong>{{ 'form.widget.film_studio'|trans }}</strong></h4>
                                                 {{ form_row(widget._type) }}
                                                 {{ form_row(widget.position) }}
-                                                
+
                                                 {% set imageTranslations = (widget.children.image.vars.data is not null) ? widget.children.image.vars.data.translations : null %}
                                                 <div class="form-group">
                                                     <label class="control-label">
@@ -191,7 +191,7 @@
                                                         {% endif %}
                                                     </div>
                                                 </div>
-                                                
+
                                                 {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {{ form_row(widget.producer) }}
                                             </div>
@@ -211,7 +211,7 @@
                                     <div class="sonata-ba-collapsed-fields">
                                         {% for widget in form.parent.children.widgets.children %}
                                             <div class="item base-widget">
-                                                
+
                                                     <h4><strong>{{ 'form.widget.film_studio'|trans }}</strong></h4>
                                                     <div class="form-group">
                                                         {% set imageTranslations = (widget.vars.data.image is not null) ? widget.vars.data.image.translations : null %}
@@ -263,7 +263,7 @@
                         </div>
                     {% endif %}
                 </div>
-                
+
                 {% if form.vars.default_locale != locale %}
                 <div class="row">
                     <div class="col-md-4">

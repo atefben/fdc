@@ -215,4 +215,18 @@ function editEvents() {
         $('.status-hidden select').val(1).change();
         $('.status-hidden').hide();
     }
+
+    if ($('.is-mobile-notification-form').length) {
+        $('.form-actions').append('<button class="btn btn-warning" id="btn-send-test" type="button"><i class="fa fa-paper-plane-o"></i> Envoyer un test</button>')
+    }
+    $('#btn-send-test').click(function () {
+        $('input[id*=sendTest]').val('1');
+        if ($('button[name=btn_create_and_edit]').length) {
+            $('button[name=btn_create_and_edit]').click();
+        }
+        else if ($('button[name=btn_update_and_edit]').length) {
+            $('button[name=btn_update_and_edit]').click();
+        }
+    });
+
 }
