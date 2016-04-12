@@ -31,7 +31,7 @@ $(document).ready(function() {
       var h = '';
 
       $('.select option').not('.default').each(function() {
-        h += '<span>' + $(this).val() + '</span>';
+        h += '<span data-select="' + $(this).val() + '">' + $(this).html() + '</span>';
       });
 
       $('#filters').remove();
