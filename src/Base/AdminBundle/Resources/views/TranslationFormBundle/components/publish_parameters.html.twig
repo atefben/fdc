@@ -10,7 +10,7 @@
         </h4>
     </div>
     <div class="box-body">
-        {% if form.parent.children.createdAt and form.parent.children.createdAt.vars.data and
+        {% if form.parent.children.createdAt is defined and form.parent.children.createdAt.vars.data and
             form.parent.children.createdBy.vars.data
         %}
             <div class="fdc-help form-group">
@@ -22,7 +22,7 @@
                 }}
             </div>
         {% endif %}
-        {% if form.parent.children.updatedAt and form.parent.children.updatedAt.vars.data and
+        {% if form.parent.children.updatedAt is defined and form.parent.children.updatedAt.vars.data and
             form.parent.children.updatedBy.vars.data
         %}
             <div class="fdc-help form-group">
@@ -65,14 +65,14 @@
                 {% if form.parent.children.publishedAt is defined %}
                     {{ form_row(form.parent.children.publishedAt, {'attr': {'disabled': 'disabled'}}) }}
                 {% endif %}
-            {% if form.parent.children.publishEndedAt is defined %}
+                {% if form.parent.children.publishEndedAt is defined %}
                     {{ form_row(form.parent.children.publishEndedAt, {'attr': {'disabled': 'disabled'}}) }}
                 {% endif %}
 
                 {% if status is defined and status == false %}
-                <div class="status-hidden">
-                    {{ form_row(translationsFields.status) }}
-                </div>
+                    <div class="status-hidden">
+                        {{ form_row(translationsFields.status) }}
+                    </div>
                 {% else %}
                     {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
                         {{ form_row(translationsFields.status, {'attr': {'disabled': 'disabled', 'class': 'translator'}}) }}
@@ -96,7 +96,6 @@
                         {{ form_label(form.parent.children.priorityStatus) }}
                         {{ form_widget(form.parent.children.priorityStatus, {'attr': {'disabled': 'disabled'}}) }}
                     </div>
-
                 </div>
             {% else %}
                 {% if form.parent.children.sites is not empty %}
@@ -142,8 +141,8 @@
                     {{ form_widget(form.parent.children.translateOptions) }}
                     {{ form_row(form.parent.children.priorityStatus) }}
                 </div>
+            {% endif %}
         </div>
-        {% endif %}
         {% if app.request.get('id') is not null %}
             <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save"></i> Mettre à jour</button>
             <button type="submit" class="btn btn-success" name="btn_update_and_list"><i class="fa fa-save"></i> <i class="fa fa-list"></i> Mettre à jour et fermer</button>
