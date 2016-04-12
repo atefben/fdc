@@ -38,7 +38,7 @@ class OrangeVideoOnDemandController extends FOSRestController
      * @param ParamFetcher $paramFetcher
      * @return View
      */
-    public function getAction(ParamFetcher $paramFetcher)
+    public function getOrangeVideoOnDemandAction(ParamFetcher $paramFetcher)
     {
         //core manager shortcut
         $coreManager = $this->get('base.api.core_manager');
