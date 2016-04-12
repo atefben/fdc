@@ -621,22 +621,23 @@ class FooterController extends Controller
         $em = $this->getDoctrine()->getManager();
         $translator = $this->get('translator');
         $hasErrors = false;
-
         $themes = $em->getRepository('BaseCoreBundle:ContactTheme')->findSelectValues($locale);
         $form = $this->createForm(new ContactType($themes, $translator));
 
         if ($request->isMethod('POST')) {
             $form->submit($request);
-
+            $theme = $em->getRepository('BaseCoreBundle:ContactTheme')->findOneById($form->get('select')->getData());
             if ($form->isValid()) {
                 $message = \Swift_Message::newInstance()
                     ->setSubject($form->get('subject')->getData())
                     ->setFrom($form->get('email')->getData())
-                    ->setTo('lrocher@webqam.fr')
+                    ->setTo($theme->getEmail())
+                    ->setContentType('text/html')
                     ->setBody(
                         $this->renderView(
                             'FDCEventBundle:Mail:contact.html.twig',
                             array(
+                                'contact_email' => $form->get('email')->getData(),
                                 'contact_ip' => $request->getClientIp(),
                                 'contact_name' => $form->get('name')->getData(),
                                 'contact_subject' => $form->get('subject')->getData(),
@@ -647,8 +648,7 @@ class FooterController extends Controller
                     );
 
                 $this->get('mailer')->send($message);
-
-                return $this->redirect($this->generateUrl('fdc_event_contact'));
+                $this->get('session')->getFlashBag()->add('success', 'Email sent');
             } else {
                 $hasErrors = true;
             }

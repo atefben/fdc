@@ -39,7 +39,6 @@ class ContactType extends AbstractType
     private function createSelectValues($themes)
     {
         $default = $this->translator->trans('contact.form.placeholder.theme');
-
         $select = array($default => 'default');
         if (count($themes) > 0) {
             foreach ($themes as $theme) {
