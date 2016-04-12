@@ -86,43 +86,7 @@
                     </div>
                     <div class="col-md-4">
                         {% if form.vars.default_locale == locale %}
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        {{ 'group.orange_series.publish_parameters'|trans }}
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
-
-                                        {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
-                                            {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
-                                        {% elseif is_granted('ROLE_JOURNALIST') %}
-                                            {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
-                                        {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
-                                            {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
-                                        {% elseif is_granted('ROLE_ORANGE') %}
-                                            {{ form_row(translationsFields.status, {'attr': {'class': 'orange'}}) }}
-                                        {% else %}
-                                            {{ form_row(translationsFields.status) }}
-                                        {% endif %}
-
-                                        <div class="form-group fdc-input-border">
-                                            {{ form_widget(form.parent.children.translate) }}
-                                            {{ form_label(form.parent.children.translate) }}
-                                            {{ form_widget(form.parent.children.translateOptions) }}
-                                            {{ form_row(form.parent.children.priorityStatus) }}
-                                        </div>
-                                    </div>
-                                    {% if app.request.get('id') is not null %}
-                                        <button type="submit" class="btn btn-success" name="btn_update_and_"><i class="fa fa-save"></i> Mettre à jour</button>
-                                        <button type="submit" class="btn btn-success" name="btn_update_and_list"><i class="fa fa-save"></i> <i class="fa fa-list"></i> Mettre à jour et fermer</button>
-                                    {% else %}
-                                        <button type="submit" class="btn btn-success" name="btn_create_and_edit"><i class="fa fa-save"></i> Créer</button>
-                                        <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> <i class="fa fa-list"></i> Créer et retourner à la liste</button>
-                                    {% endif %}
-                                </div>
-                            </div>
+                            {% include 'BaseAdminBundle:TranslationFormBundle:components/publish_parameters.html.twig' with {orange: true} %}
                         {% else %}
                             <div class="box box-success">
                                 <div class="box-header">
