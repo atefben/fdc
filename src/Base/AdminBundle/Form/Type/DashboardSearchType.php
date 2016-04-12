@@ -75,7 +75,7 @@ class DashboardSearchType extends BaseType
                 'choices' => array(
                     'Toutes' => 'all',
                     'Immédiate' => News::PRIORITY_STATUS_NOW,
-                    'Haute' => News::PRIORITY_STATUS_URGENT,
+                    'Urgente' => News::PRIORITY_STATUS_URGENT,
                     'Moyenne' => News::PRIORITY_STATUS_AVERAGE,
                     'Basse' => News::PRIORITY_STATUS_LOW
                 ),
