@@ -48,6 +48,10 @@ class FAQPageAdmin extends Admin
                 'label'      => 'form.label_question',
             ))
             ->add('theme')
+            ->add('priorityStatus', 'doctrine_orm_choice', array(), 'choice', array(
+                'choices'                   => FAQPage::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
+            ))
         ;
     }
 
@@ -144,5 +148,23 @@ class FAQPageAdmin extends Admin
             ->add('translateOptions')
             ->add('priorityStatus')
         ;
+    }
+
+    public function getExportFields()
+    {
+        return array(
+            'Id'                   => 'id',
+            'Question'             => 'exportName',
+            'Thème'                => 'theme',
+            'Date de création'     => 'exportCreatedAt',
+            'Date de modification' => 'exportUpdatedAt',
+            'Statut master'        => 'exportStatusMaster',
+            'Traduction en'        => 'exportTranslationEn',
+            'Statut en'            => 'exportStatusEn',
+            'Traduction es'        => 'exportTranslationEs',
+            'Statut es'            => 'exportStatusEs',
+            'Traduction zh'        => 'exportTranslationZh',
+            'Statut zh'            => 'exportStatusZh',
+        );
     }
 }
