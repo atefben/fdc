@@ -46,6 +46,7 @@ class DashboardSearchType extends BaseType
         $builder = $builder
             ->add('type', 'choice', array(
                 'choices' => array(
+                    'Tous' => 'tous',
                     'Actualité' => 'news',
                     'Vidéo' => 'videos',
                     'Audio' => 'audios',

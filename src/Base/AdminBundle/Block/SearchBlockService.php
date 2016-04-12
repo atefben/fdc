@@ -401,7 +401,7 @@ class SearchBlockService extends BaseBlockService
             $status = $params['status'];
 
             if (!isset($params['status'])) {
-                $status = NewsArticleTranslation::STATUS_TRANSLATION_VALIDATING;
+                $status = NewsArticleTranslation::STATUS_TRANSLATION_PENDING;
             }
         }
 
@@ -427,9 +427,13 @@ class SearchBlockService extends BaseBlockService
         $params['status'] = $status;
         $priorityStatuses = News::getPriorityStatuses();
 
-        if (count($_GET) == 0 ||
-            (isset($_GET['dashboard_search_type']) && isset($_GET['dashboard_search_type']['reset']) && $_GET['dashboard_search_type']['reset'] == '1')) {
+        if (!isset($params['priorityStatus'])) {
             $params['priorityStatus'] = NewsArticle::PRIORITY_STATUS_NOW;
+        }
+
+        if (count($_GET) == 0 ||
+            (isset($_GET['dashboard_search_type']) && isset($_GET['dashboard_search_type']['reset']) && $_GET['dashboard_search_type']['reset'] == '1') ||
+            (isset($_GET['dashboard_search_type']) && isset($_GET['dashboard_search_type']['type']) && $_GET['dashboard_search_type']['type'] == 'tous')) {
             foreach (self::$repositoriesSearch as $type => $rep) {
                 if (is_array($rep)) {
                     $entitiesAll[$type] = array();
