@@ -3,11 +3,20 @@
 namespace Base\AdminBundle\Form\Type;
 
 use Base\CoreBundle\Entity\News;
+use Base\CoreBundle\Entity\NewsArticleTranslation;
+
 use Symfony\Component\Form\AbstractType as BaseType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class DashboardSearchType extends BaseType
 {
+    private $securityContext;
+
+    public function __construct($securityContext)
+    {
+        $this->securityContext = $securityContext;
+    }
+
     /**
      * buildForm function.
      *
@@ -18,7 +27,21 @@ class DashboardSearchType extends BaseType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
+        if ($this->securityContext->isGranted('ROLE_TRANSLATOR_MASTER')) {
+            $builder = $builder
+                ->add('status', 'choice', array(
+                    'choices' => array(
+                        'Traductions à valider' => NewsArticleTranslation::STATUS_TRANSLATION_VALIDATING,
+                        'En attente de traduction' => NewsArticleTranslation::STATUS_TRANSLATION_PENDING
+                    ),
+                    'label' => 'Statut',
+                    'choices_as_values' => true,
+                    'required' => false,
+                    'empty_value' => false
+                ));
+        }
+
+        $builder = $builder
             ->add('type', 'choice', array(
                 'choices' => array(
                     'Actualité' => 'news',
@@ -62,6 +85,9 @@ class DashboardSearchType extends BaseType
                 'required' => false,
                 'label' => 'Afficher les objets en statut "Traduction à valider"'
             ))
+            ->add('reset', 'hidden', array(
+                'data' => '0'
+            ));
         ;
     }
 

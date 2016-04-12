@@ -4,6 +4,7 @@ namespace Base\AdminBundle\Block;
 
 use Base\AdminBundle\Form\Type\DashboardSearchType;
 use Base\CoreBundle\Entity\News;
+use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -111,119 +112,9 @@ class SearchBlockService extends BaseBlockService
     {
     }
 
-    /**
-     * execute function.
-     *
-     * @access public
-     * @param BlockContextInterface $blockContext
-     * @param Response $response (default: null)
-     * @return void
-     */
-    public function execute(BlockContextInterface $blockContext, Response $response = null)
+    public function getAdmins()
     {
-        $user = $this->securityContext->getToken()->getUser();
-        $settings = array_merge($this->getDefaultSettings(), $blockContext->getSettings());
-        $form = $this->formFactory->create(new DashboardSearchType());
-        $request = $this->requestStack->getCurrentRequest();
-        $params = $request->query->get('dashboard_search_type');
-
-        $dashboards = array(
-            'Homepage' => 'Général',
-            'FDCPageWebTvLive' => 'Général',
-            'FDCPageWaiting' => 'Général',
-            // events
-            'Event' => 'Événements',
-            // cannes classics
-            'FDCPageLaSelectionCannesClassics' => 'Cannes Classics',
-            // participer
-            'FDCPagePrepare' => 'Participer',
-            'FDCPageParticipate' => 'Participer',
-            'FDCPageParticipateSection' => 'Participer',
-            // espace presse
-            'PressHomepage' => 'Espace presse',
-            'PressStatementInfo' => 'Espace presse',
-            'PressAccredit' => 'Espace presse',
-            'PressAccreditProcedure' => 'Espace presse',
-            'PressGuide' => 'Espace presse',
-            'PressMediaLibrary' => 'Espace presse',
-            'PressDownload' => 'Espace presse',
-            'PressDownloadSection' => 'Espace presse',
-            'PressProjection' => 'Espace presse',
-            'PressCinemaMap' => 'Espace presse',
-            'ContactPage' => 'Espace presse',
-            // pages
-            'FDCPageFooter' => 'Pages',
-            // seo + tetieres
-            'FDCPageEvent' => 'SEO + TETIÈRES',
-            'FDCPageWebTvChannels' => 'SEO + TETIÈRES',
-            'FDCPageWebTvTrailers' => 'SEO + TETIÈRES',
-            'FDCPageNewsArticles' => 'SEO + TETIÈRES',
-            'FDCPageNewsAudios' => 'SEO + TETIÈRES',
-            'FDCPageNewsVideos' => 'SEO + TETIÈRES',
-            'FDCPageNewsImages' => 'SEO + TETIÈRES',
-            'FDCPageLaSelection' => 'SEO + TETIÈRES',
-            'FDCPageLaSelectionCinemaPlage' => 'SEO + TETIÈRES',
-            'FDCPageJury' => 'SEO + TETIÈRES',
-            'FDCPageAward' => 'SEO + TETIÈRES',
-        );
-
-        $repositories = array(
-            'news' => 'BaseCoreBundle:News',
-            'videos' => 'BaseCoreBundle:MediaVideo',
-            'audios' => 'BaseCoreBundle:MediaAudio',
-            'photos' => 'BaseCoreBundle:MediaImage',
-            'statements' => 'BaseCoreBundle:Statement',
-            'infos' => 'BaseCoreBundle:Info',
-            'themes' => 'BaseCoreBundle:Theme',
-            'tags' => 'BaseCoreBundle:Tag',
-            'webtvs' => 'BaseCoreBundle:WebTv',
-            'images' => 'BaseCoreBundle:MediaImageSimple',
-            'pages' => array(
-                // general
-                'BaseCoreBundle:Homepage',
-                'BaseCoreBundle:FDCPageWebTvLive',
-                'BaseCoreBundle:FDCPageWaiting',
-                // events
-                'BaseCoreBundle:Event',
-                // cannes classics
-                'BaseCoreBundle:FDCPageLaSelectionCannesClassics',
-                // participer
-                'BaseCoreBundle:FDCPagePrepare',
-                'BaseCoreBundle:FDCPageParticipate',
-                'BaseCoreBundle:FDCPageParticipateSection',
-                // espace presse
-                'BaseCoreBundle:PressHomepage',
-                'BaseCoreBundle:PressStatementInfo',
-                'BaseCoreBundle:PressAccredit',
-                'BaseCoreBundle:PressAccreditProcedure',
-                'BaseCoreBundle:PressGuide',
-                'BaseCoreBundle:PressMediaLibrary',
-                'BaseCoreBundle:PressDownload',
-                'BaseCoreBundle:PressDownloadSection',
-                'BaseCoreBundle:PressProjection',
-                'BaseCoreBundle:PressCinemaMap',
-                'BaseCoreBundle:ContactPage',
-                // pages
-                'BaseCoreBundle:FDCPageFooter',
-                // seo + tetieres
-                'BaseCoreBundle:FDCPageEvent',
-                'BaseCoreBundle:FDCPageWebTvChannels',
-                'BaseCoreBundle:FDCPageWebTvTrailers',
-                'BaseCoreBundle:FDCPageNewsArticles',
-                'BaseCoreBundle:FDCPageNewsAudios',
-                'BaseCoreBundle:FDCPageNewsVideos',
-                'BaseCoreBundle:FDCPageNewsImages',
-                'BaseCoreBundle:FDCPageLaSelection',
-                'BaseCoreBundle:FDCPageLaSelectionCinemaPlage',
-                'BaseCoreBundle:FDCPageJury',
-                'BaseCoreBundle:FDCPageAward'
-            )
-        );
-        $locales = array();
-        $status = null;
-        $entities = array();
-
-        $admins = array(
+       return array(
             'news' => array(
                 'article' => $this->pool->getAdminByAdminCode('base.admin.news_article'),
                 'audio' => $this->pool->getAdminByAdminCode('base.admin.news_audio'),
@@ -290,6 +181,204 @@ class SearchBlockService extends BaseBlockService
                 'FDCPageAward' => $this->pool->getAdminByAdminCode('base.admin.fdc_page_award')
             )
         );
+    }
+
+    private static $repositoriesTranslatorStats = array(
+        'news' => array(
+            'BaseCoreBundle:NewsArticle',
+            'BaseCoreBundle:NewsAudio',
+            'BaseCoreBundle:NewsVideo',
+            'BaseCoreBundle:NewsImage',
+        ),
+        'videos' => array(
+            'BaseCoreBundle:MediaVideo'
+        ),
+        'audios' => array(
+            'BaseCoreBundle:MediaAudio'
+        ),
+        'photos' => array(
+            'BaseCoreBundle:MediaImage'
+        ),
+        'statements' => array(
+            'BaseCoreBundle:StatementArticle',
+            'BaseCoreBundle:StatementAudio',
+            'BaseCoreBundle:StatementImage',
+            'BaseCoreBundle:StatementVideo'
+        ),
+        'infos' => array(
+            'BaseCoreBundle:InfoArticle',
+            'BaseCoreBundle:InfoAudio',
+            'BaseCoreBundle:InfoImage',
+            'BaseCoreBundle:InfoVideo'
+        ),
+        'themes' => array(
+            'BaseCoreBundle:Theme',
+        ),
+        'tags' => array(
+            'BaseCoreBundle:Tag'
+        ),
+        'webtv' => array(
+            'BaseCoreBundle:WebTv'
+        ),
+        'images' => array(
+            'BaseCoreBundle:MediaImageSimple'
+        ),
+        'pages' => array(
+            // general
+            'BaseCoreBundle:Homepage',
+            'BaseCoreBundle:FDCPageWebTvLive',
+            'BaseCoreBundle:FDCPageWaiting',
+            // events
+            'BaseCoreBundle:Event',
+            // cannes classics
+            'BaseCoreBundle:FDCPageLaSelectionCannesClassics',
+            // participer
+            'BaseCoreBundle:FDCPagePrepare',
+            'BaseCoreBundle:FDCPageParticipate',
+            'BaseCoreBundle:FDCPageParticipateSection',
+            // espace presse
+            'BaseCoreBundle:PressHomepage',
+            'BaseCoreBundle:PressStatementInfo',
+            'BaseCoreBundle:PressAccredit',
+            'BaseCoreBundle:PressAccreditProcedure',
+            'BaseCoreBundle:PressGuide',
+            'BaseCoreBundle:PressMediaLibrary',
+            'BaseCoreBundle:PressDownload',
+            'BaseCoreBundle:PressDownloadSection',
+            'BaseCoreBundle:PressProjection',
+            'BaseCoreBundle:PressCinemaMap',
+            'BaseCoreBundle:ContactPage',
+            // pages
+            'BaseCoreBundle:FDCPageFooter',
+            // seo + tetieres
+            'BaseCoreBundle:FDCPageEvent',
+            'BaseCoreBundle:FDCPageWebTvChannels',
+            'BaseCoreBundle:FDCPageWebTvTrailers',
+            'BaseCoreBundle:FDCPageNewsArticles',
+            'BaseCoreBundle:FDCPageNewsAudios',
+            'BaseCoreBundle:FDCPageNewsVideos',
+            'BaseCoreBundle:FDCPageNewsImages',
+            'BaseCoreBundle:FDCPageLaSelection',
+            'BaseCoreBundle:FDCPageLaSelectionCinemaPlage',
+            'BaseCoreBundle:FDCPageJury',
+            'BaseCoreBundle:FDCPageAward'
+        )
+    );
+
+    private static $dashboards = array(
+        'Homepage' => 'Général',
+        'FDCPageWebTvLive' => 'Général',
+        'FDCPageWaiting' => 'Général',
+        // events
+        'Event' => 'Événements',
+        // cannes classics
+        'FDCPageLaSelectionCannesClassics' => 'Cannes Classics',
+        // participer
+        'FDCPagePrepare' => 'Participer',
+        'FDCPageParticipate' => 'Participer',
+        'FDCPageParticipateSection' => 'Participer',
+        // espace presse
+        'PressHomepage' => 'Espace presse',
+        'PressStatementInfo' => 'Espace presse',
+        'PressAccredit' => 'Espace presse',
+        'PressAccreditProcedure' => 'Espace presse',
+        'PressGuide' => 'Espace presse',
+        'PressMediaLibrary' => 'Espace presse',
+        'PressDownload' => 'Espace presse',
+        'PressDownloadSection' => 'Espace presse',
+        'PressProjection' => 'Espace presse',
+        'PressCinemaMap' => 'Espace presse',
+        'ContactPage' => 'Espace presse',
+        // pages
+        'FDCPageFooter' => 'Pages',
+        // seo + tetieres
+        'FDCPageEvent' => 'SEO + TETIÈRES',
+        'FDCPageWebTvChannels' => 'SEO + TETIÈRES',
+        'FDCPageWebTvTrailers' => 'SEO + TETIÈRES',
+        'FDCPageNewsArticles' => 'SEO + TETIÈRES',
+        'FDCPageNewsAudios' => 'SEO + TETIÈRES',
+        'FDCPageNewsVideos' => 'SEO + TETIÈRES',
+        'FDCPageNewsImages' => 'SEO + TETIÈRES',
+        'FDCPageLaSelection' => 'SEO + TETIÈRES',
+        'FDCPageLaSelectionCinemaPlage' => 'SEO + TETIÈRES',
+        'FDCPageJury' => 'SEO + TETIÈRES',
+        'FDCPageAward' => 'SEO + TETIÈRES',
+    );
+
+    private static $repositoriesSearch = array(
+        'news' => 'BaseCoreBundle:News',
+        'videos' => 'BaseCoreBundle:MediaVideo',
+        'audios' => 'BaseCoreBundle:MediaAudio',
+        'photos' => 'BaseCoreBundle:MediaImage',
+        'statements' => 'BaseCoreBundle:Statement',
+        'infos' => 'BaseCoreBundle:Info',
+        'themes' => 'BaseCoreBundle:Theme',
+        'tags' => 'BaseCoreBundle:Tag',
+        'webtvs' => 'BaseCoreBundle:WebTv',
+        'images' => 'BaseCoreBundle:MediaImageSimple',
+        'pages' => array(
+            // general
+            'BaseCoreBundle:Homepage',
+            'BaseCoreBundle:FDCPageWebTvLive',
+            'BaseCoreBundle:FDCPageWaiting',
+            // events
+            'BaseCoreBundle:Event',
+            // cannes classics
+            'BaseCoreBundle:FDCPageLaSelectionCannesClassics',
+            // participer
+            'BaseCoreBundle:FDCPagePrepare',
+            'BaseCoreBundle:FDCPageParticipate',
+            'BaseCoreBundle:FDCPageParticipateSection',
+            // espace presse
+            'BaseCoreBundle:PressHomepage',
+            'BaseCoreBundle:PressStatementInfo',
+            'BaseCoreBundle:PressAccredit',
+            'BaseCoreBundle:PressAccreditProcedure',
+            'BaseCoreBundle:PressGuide',
+            'BaseCoreBundle:PressMediaLibrary',
+            'BaseCoreBundle:PressDownload',
+            'BaseCoreBundle:PressDownloadSection',
+            'BaseCoreBundle:PressProjection',
+            'BaseCoreBundle:PressCinemaMap',
+            'BaseCoreBundle:ContactPage',
+            // pages
+            'BaseCoreBundle:FDCPageFooter',
+            // seo + tetieres
+            'BaseCoreBundle:FDCPageEvent',
+            'BaseCoreBundle:FDCPageWebTvChannels',
+            'BaseCoreBundle:FDCPageWebTvTrailers',
+            'BaseCoreBundle:FDCPageNewsArticles',
+            'BaseCoreBundle:FDCPageNewsAudios',
+            'BaseCoreBundle:FDCPageNewsVideos',
+            'BaseCoreBundle:FDCPageNewsImages',
+            'BaseCoreBundle:FDCPageLaSelection',
+            'BaseCoreBundle:FDCPageLaSelectionCinemaPlage',
+            'BaseCoreBundle:FDCPageJury',
+            'BaseCoreBundle:FDCPageAward'
+        )
+    );
+
+    /**
+     * execute function.
+     *
+     * @access public
+     * @param BlockContextInterface $blockContext
+     * @param Response $response (default: null)
+     * @return void
+     */
+    public function execute(BlockContextInterface $blockContext, Response $response = null)
+    {
+        $user = $this->securityContext->getToken()->getUser();
+        $settings = array_merge($this->getDefaultSettings(), $blockContext->getSettings());
+        $form = $this->formFactory->create(new DashboardSearchType($this->securityContext));
+        $request = $this->requestStack->getCurrentRequest();
+        $params = $request->query->get('dashboard_search_type');
+        $statuses = NewsArticleTranslation::getStatuses();
+        $locales = array();
+        $status = null;
+        $entities = array();
+        $entitiesAll = array();
+        $type = null;
 
         // get locales / status by current user
         if ($this->securityContext->isGranted('ROLE_TRANSLATOR')) {
@@ -309,6 +398,11 @@ class SearchBlockService extends BaseBlockService
             }
         } else if ($this->securityContext->isGranted('ROLE_TRANSLATOR_MASTER')) {
             $locales = array('fr', 'en', 'es', 'zh');
+
+            if (isset($params['status'])) {
+                $status = $params['status'];
+            }
+
             if (isset($params['translationStatus']) && $params['translationStatus'] == '1') {
                 $status = NewsArticleTranslation::STATUS_TRANSLATION_PENDING;
             } else {
@@ -316,18 +410,53 @@ class SearchBlockService extends BaseBlockService
             }
         }
 
+        // TRANSLATOR STATS
+        if (isset($statuses[$status])) {
+            $statusName = $statuses[$status];
+        }
+
+        foreach (self::$repositoriesTranslatorStats as $key => $repository) {
+            if (is_array($repository)) {
+                $counts[$key] = 0;
+                foreach ($repository as $rep) {
+                    $counts[$key] += $this->em->getRepository($rep)->countByStatusAndLocales($status, $locales);
+                }
+            } else {
+                $counts[$key] = $this->em->getRepository($repository)->countByStatusAndLocales($status, $locales);
+            }
+        }
+
+
+        // SEARCH
         $params['status'] = $status;
         $priorityStatuses = News::getPriorityStatuses();
 
-        if (isset($params['type']) && isset($repositories[$params['type']])) {
-            if (is_array($repositories[$params['type']])) {
-                foreach ($repositories[$params['type']] as $rep) {
-                    $entities = array_merge($entities, $this->em->getRepository($rep)->dashboardSearch($params, $locales));
+        if (count($_GET) == 0 ||
+            (isset($_GET['dashboard_search_type']) && isset($_GET['dashboard_search_type']['reset']) && $_GET['dashboard_search_type']['reset'] == '1')) {
+            $params['priorityStatus'] = NewsArticle::PRIORITY_STATUS_NOW;
+            foreach (self::$repositoriesSearch as $type => $rep) {
+                if (is_array($rep)) {
+                    $entitiesAll[$type] = array();
+                    foreach ($rep as $repository) {
+                        $entitiesAll[$type] = array_merge($entitiesAll[$type], $this->em->getRepository($repository)->dashboardSearch($params, $locales));
+                    }
+                } else {
+                    $entitiesAll[$type] = $this->em->getRepository($rep)->dashboardSearch($params, $locales);
                 }
-            } else {
-                $entities = $this->em->getRepository($repositories[$params['type']])->dashboardSearch($params, $locales);
+            }
+        } else {
+            if (isset($params['type']) && isset($repositories[$params['type']])) {
+                $type = $params['type'];
+                if (is_array($repositories[$params['type']])) {
+                    foreach ($repositories[$params['type']] as $rep) {
+                        $entities = array_merge($entities, $this->em->getRepository($rep)->dashboardSearch($params, $locales));
+                    }
+                } else {
+                    $entities = $this->em->getRepository($repositories[$params['type']])->dashboardSearch($params, $locales);
+                }
             }
         }
+
 
         return $this->renderResponse('BaseAdminBundle:Block:search.html.twig', array(
             'block'     => $blockContext->getBlock(),
@@ -336,8 +465,12 @@ class SearchBlockService extends BaseBlockService
             'params' => $params,
             'priorityStatuses' => $priorityStatuses,
             'entities' => $entities,
-            'admins' => $admins,
-            'dashboards' => $dashboards
+            'entitiesAll' => $entitiesAll,
+            'admins' => $this->getAdmins(),
+            'dashboards' => self::$dashboards,
+            'type' => $type,
+            'statusName' => $statusName,
+            'counts' =>  $counts,
 
         ), $response);
     }

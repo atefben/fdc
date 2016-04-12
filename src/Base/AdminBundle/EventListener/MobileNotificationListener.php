@@ -72,6 +72,7 @@ class MobileNotificationListener
             $published = $published || $translation->getStatus() === MobileNotificationTranslation::STATUS_TRANSLATION_VALIDATING;
             $title = $translation->getTitle();
             $message = $translation->getDescription();
+			//TODO CODE NOTIFICATION ICI
         }
     }
 

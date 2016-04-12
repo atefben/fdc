@@ -4,12 +4,34 @@
 {% block block %}
     {%
         if  is_granted('ROLE_TRANSLATOR') or
-        is_granted('ROLE_TRANSLATOR_MASTER')
+            is_granted('ROLE_TRANSLATOR_MASTER')
     %}
-        <div id="dashboard-search" class="bg-white">
-            <header>Rechercher</header>
-            <div id="dashboard-search-container">
-                <form action="{{ path('sonata_admin_dashboard') }}" method="get" {{ form_enctype(form) }}>
+        <form action="{{ path('sonata_admin_dashboard') }}" method="get" {{ form_enctype(form) }}>
+            {% if is_granted('ROLE_TRANSLATOR_MASTER') %}
+
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-5">
+                        {{ form_errors(form.status) }}
+                        {{ form_label(form.status) }}
+                        {{ form_widget(form.status) }}
+                    </div>
+                </div>
+            {% endif %}
+            <div id="dashboard-translator-statuses-preview" class="bg-white">
+                <header>{{ statusName|trans }}</header>
+                <div id="dashboard-translator-statuses-preview-container" class="row">
+                    {% for name, count in counts %}
+                        <div class="col-md-2">
+                            <strong>{{ count }}</strong><br/>
+                            {{ ('dashboard.translator.object.' ~ name)|trans }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div id="dashboard-search" class="bg-white">
+                <header>Rechercher</header>
+                <div id="dashboard-search-container">
                     <div class="row">
                         <div class="col-md-3">
                             {{ form_errors(form.type) }}
@@ -33,7 +55,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             {{ form_errors(form.translationStatus) }}
                             {{ form_widget(form.translationStatus) }}
                             {% if is_granted('ROLE_TRANSLATOR_MASTER') %}
@@ -43,19 +65,30 @@
                             {% endif %}
                             {{ form_rest(form) }}
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-1">
                             <button type="submit" class="pull-right btn btn-primary">
                                 <i class="fa fa-search"></i>
                                 Rechercher
                             </button>
                         </div>
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-default">
+                                Effacer
+                            </button>
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
 
-        {% if params.type is defined %}
-            {% include 'BaseAdminBundle:Block:search/' ~ params.type ~ '.html.twig' %}
+        {% if entitiesAll|length > 0 %}
+            {% for type, entities in entitiesAll %}
+                {% if entities|length > 0 %}
+                    {% include 'BaseAdminBundle:Block:search/' ~ type ~ '.html.twig' %}
+                {% endif %}
+            {% endfor %}
+        {% elseif params.type is defined %}
+            {% include 'BaseAdminBundle:Block:search/' ~ params.type ~ '.html.twig' with {search: true, slice: true} %}
         {% endif %}
     {% endif %}
 {% endblock %}

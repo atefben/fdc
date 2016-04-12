@@ -2,7 +2,7 @@
 
 namespace Base\AdminBundle\Controller;
 
-use Sonata\AdminBundle\Controller\CRUDController;
+use Application\Sonata\AdminBundle\Controller\CRUDController;
 
 /**
  * StatementImageAdminController class.

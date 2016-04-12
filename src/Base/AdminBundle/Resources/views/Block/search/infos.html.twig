@@ -10,98 +10,102 @@
         ({{ entities|length }})
     </header>
     <div id="dashboard-search-container">
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr class="sonata-ba-list-field-header">
+        {% if search is defined and search == true and entities|length == 0 %}
+            Il n'y a pas de traduction.
+        {% else %}
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr class="sonata-ba-list-field-header">
 
-                <th class="sonata-ba-list-field-header-integer  sonata-ba-list-field-header-order-asc sonata-ba-list-field-order-active">
-                    Id
-                </th>
-                <th class="sonata-ba-list-field-header-text ">
-                    Titre de l'info
-                </th>
-                <th class="sonata-ba-list-field-header-text ">
-                    Type
-                </th>
-                <th class="sonata-ba-list-field-header-orm_many_to_one ">
-                    Theme
-                </th>
-                <th class="sonata-ba-list-field-header-choice  sonata-ba-list-field-header-order-asc ">
-                    Priorité
-                </th>
-                <th class="sonata-ba-list-field-header-text ">
-                    Libellés
-                </th>
-                <th class="sonata-ba-list-field-header-text ">
-                    Prévisualiser
-                </th>
-            </tr>
-            </thead>
-
-            <tbody>
-            {% for entity in entities %}
-                {% set object = entity %}
-                {% set transFr = entity.findTranslationByLocale('fr') %}
-                <tr>
-                    <td class="sonata-ba-list-field sonata-ba-list-field-integer">
-                        {{ entity.id }}
-                    </td>
-                    <td class="sonata-ba-list-field sonata-ba-list-field-text">
-                        <div>
-                            {{ transFr.title }}
-                        </div>
-
-                    </td>
-                    <td class="sonata-ba-list-field sonata-ba-list-field-text">
-                        <div>
-                            {% if class(object) starts with 'S' %}
-                                {% if object is statement_article %}
-                                    article
-                                {% elseif object is statement_audio %}
-                                    audio
-                                {% elseif object is statement_video %}
-                                    video
-                                {% elseif object is statement_image %}
-                                    image
-                                {% endif %}
-                            {% elseif class(object) starts with 'I' %}
-                                {% if object is info_article %}
-                                    article
-                                {% elseif object is info_audio %}
-                                    audio
-                                {% elseif object is info_video %}
-                                    video
-                                {% elseif object is info_image %}
-                                    image
-                                {% endif %}
-                            {% else %}
-                                {% if object is news_article %}
-                                    article
-                                {% elseif object is news_audio %}
-                                    audio
-                                {% elseif object is news_video %}
-                                    video
-                                {% elseif object is news_image %}
-                                    image
-                                {% endif %}
-                            {% endif %}
-                        </div>
-                    </td>
-                    <td class="sonata-ba-list-field sonata-ba-list-field-orm_many_to_one">
-                        {% if entity.theme is not empty and entity.theme.findTranslationByLocale('fr') is not empty %}
-                            {{ entity.theme.findTranslationByLocale('fr').name }}
-                        {% endif %}
-                    </td>
-                    <td class="sonata-ba-list-field sonata-ba-list-field-choice">
-                        {% if entity.priorityStatus in priorityStatuses|keys %}
-                            {{ priorityStatuses[entity.priorityStatus]|trans }}
-                        {% endif %}
-                    </td>
-                    {% include 'BaseAdminBundle:Block:components/edit.html.twig' %}
-                    {% include 'BaseAdminBundle:Block:components/preview.html.twig' %}
+                    <th class="sonata-ba-list-field-header-integer  sonata-ba-list-field-header-order-asc sonata-ba-list-field-order-active">
+                        Id
+                    </th>
+                    <th class="sonata-ba-list-field-header-text ">
+                        Titre de l'info
+                    </th>
+                    <th class="sonata-ba-list-field-header-text ">
+                        Type
+                    </th>
+                    <th class="sonata-ba-list-field-header-orm_many_to_one ">
+                        Theme
+                    </th>
+                    <th class="sonata-ba-list-field-header-choice  sonata-ba-list-field-header-order-asc ">
+                        Priorité
+                    </th>
+                    <th class="sonata-ba-list-field-header-text ">
+                        Libellés
+                    </th>
+                    <th class="sonata-ba-list-field-header-text ">
+                        Prévisualiser
+                    </th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+
+                <tbody>
+                {% for entity in entities %}
+                    {% set object = entity %}
+                    {% set transFr = entity.findTranslationByLocale('fr') %}
+                    <tr>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-integer">
+                            {{ entity.id }}
+                        </td>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-text">
+                            <div>
+                                {{ transFr.title }}
+                            </div>
+
+                        </td>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-text">
+                            <div>
+                                {% if class(object) starts with 'S' %}
+                                    {% if object is statement_article %}
+                                        article
+                                    {% elseif object is statement_audio %}
+                                        audio
+                                    {% elseif object is statement_video %}
+                                        video
+                                    {% elseif object is statement_image %}
+                                        image
+                                    {% endif %}
+                                {% elseif class(object) starts with 'I' %}
+                                    {% if object is info_article %}
+                                        article
+                                    {% elseif object is info_audio %}
+                                        audio
+                                    {% elseif object is info_video %}
+                                        video
+                                    {% elseif object is info_image %}
+                                        image
+                                    {% endif %}
+                                {% else %}
+                                    {% if object is news_article %}
+                                        article
+                                    {% elseif object is news_audio %}
+                                        audio
+                                    {% elseif object is news_video %}
+                                        video
+                                    {% elseif object is news_image %}
+                                        image
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-orm_many_to_one">
+                            {% if entity.theme is not empty and entity.theme.findTranslationByLocale('fr') is not empty %}
+                                {{ entity.theme.findTranslationByLocale('fr').name }}
+                            {% endif %}
+                        </td>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-choice">
+                            {% if entity.priorityStatus in priorityStatuses|keys %}
+                                {{ priorityStatuses[entity.priorityStatus]|trans }}
+                            {% endif %}
+                        </td>
+                        {% include 'BaseAdminBundle:Block:components/edit.html.twig' %}
+                        {% include 'BaseAdminBundle:Block:components/preview.html.twig' %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
     </div>
 </div>
