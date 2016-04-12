@@ -399,7 +399,12 @@ class SearchBlockService extends BaseBlockService
         } else if ($this->securityContext->isGranted('ROLE_TRANSLATOR_MASTER')) {
             $locales = array('fr', 'en', 'es', 'zh');
             $status = $params['status'];
+
+            if (!isset($params['status'])) {
+                $status = NewsArticleTranslation::STATUS_TRANSLATION_VALIDATING;
+            }
         }
+
 
         // TRANSLATOR STATS
         if (isset($statuses[$status])) {
@@ -436,14 +441,14 @@ class SearchBlockService extends BaseBlockService
                 }
             }
         } else {
-            if (isset($params['type']) && isset($repositories[$params['type']])) {
+            if (isset($params['type']) && isset(self::$repositoriesSearch[$params['type']])) {
                 $type = $params['type'];
-                if (is_array($repositories[$params['type']])) {
-                    foreach ($repositories[$params['type']] as $rep) {
+                if (is_array(self::$repositoriesSearch[$params['type']])) {
+                    foreach (self::$repositoriesSearch[$params['type']] as $rep) {
                         $entities = array_merge($entities, $this->em->getRepository($rep)->dashboardSearch($params, $locales));
                     }
                 } else {
-                    $entities = $this->em->getRepository($repositories[$params['type']])->dashboardSearch($params, $locales);
+                    $entities = $this->em->getRepository(self::$repositoriesSearch[$params['type']])->dashboardSearch($params, $locales);
                 }
             }
         }

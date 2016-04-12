@@ -47,10 +47,10 @@ class NewsRepository extends EntityRepository
             $params['priorityStatus'] != 'all') {
             $qb
                 ->andWhere('
-                    na1.priorityStatus = :priorityStatus OR
+                    (na1.priorityStatus = :priorityStatus OR
                     na2.priorityStatus = :priorityStatus OR
                     na3.priorityStatus = :priorityStatus OR
-                    na4.priorityStatus = :priorityStatus
+                    na4.priorityStatus = :priorityStatus)
                 ')
                 ->setParameter('priorityStatus', $params['priorityStatus'])
             ;
