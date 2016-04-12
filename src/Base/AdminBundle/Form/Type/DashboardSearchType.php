@@ -80,15 +80,19 @@ class DashboardSearchType extends BaseType
                 'required' => false,
                 'label' => 'Priorité',
                 'empty_value' => false
-            ))
-            ->add('translationStatus', 'checkbox', array(
-                'required' => false,
-                'label' => 'Afficher les objets en statut "Traduction à valider"'
-            ))
-            ->add('reset', 'hidden', array(
-                'data' => '0'
             ));
-        ;
+
+
+        if ($this->securityContext->isGranted('ROLE_TRANSLATOR')) {
+            $builder = $builder
+                ->add('translationStatus', 'checkbox', array(
+                    'required' => false,
+                    'label' => 'Afficher les objets en statut "Traduction à valider"'
+                ))
+                    ->add('reset', 'hidden', array(
+                        'data' => '0'
+                    ));;
+        }
     }
 
     /**

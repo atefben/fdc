@@ -398,16 +398,7 @@ class SearchBlockService extends BaseBlockService
             }
         } else if ($this->securityContext->isGranted('ROLE_TRANSLATOR_MASTER')) {
             $locales = array('fr', 'en', 'es', 'zh');
-
-            if (isset($params['status'])) {
-                $status = $params['status'];
-            }
-
-            if (isset($params['translationStatus']) && $params['translationStatus'] == '1') {
-                $status = NewsArticleTranslation::STATUS_TRANSLATION_PENDING;
-            } else {
-                $status = NewsArticleTranslation::STATUS_TRANSLATION_VALIDATING;
-            }
+            $status = $params['status'];
         }
 
         // TRANSLATOR STATS

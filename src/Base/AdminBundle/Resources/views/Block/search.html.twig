@@ -56,11 +56,9 @@
                     </div>
                     <div class="row">
                         <div class="col-md-10">
-                            {{ form_errors(form.translationStatus) }}
-                            {{ form_widget(form.translationStatus) }}
-                            {% if is_granted('ROLE_TRANSLATOR_MASTER') %}
-                                {{ form_label(form.translationStatus, 'Afficher les objets en statut "En attente de traduction"') }}
-                            {% else %}
+                            {% if (is_granted('ROLE_TRANSLATOR')) %}
+                                {{ form_errors(form.translationStatus) }}
+                                {{ form_widget(form.translationStatus) }}
                                 {{ form_label(form.translationStatus) }}
                             {% endif %}
                             {{ form_rest(form) }}
