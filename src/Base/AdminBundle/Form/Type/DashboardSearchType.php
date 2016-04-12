@@ -44,12 +44,6 @@ class DashboardSearchType extends BaseType
         }
 
         $builder = $builder
-            ->add('orderType', 'hidden', array(
-                'data' => (isset($_GET['dashboard_search_type']['orderType'])) ? $_GET['dashboard_search_type']['orderType'] : 'ASC',
-            ))
-            ->add('orderProperty', 'hidden', array(
-                'data' => (isset($_GET['dashboard_search_type']['orderProperty'])) ? $_GET['dashboard_search_type']['orderProperty'] : 'id',
-            ))
             ->add('type', 'choice', array(
                 'choices' => array(
                     'Tous' => 'tous',
