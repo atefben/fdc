@@ -146,6 +146,7 @@ class FDCPageFooterAdmin extends Admin
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
+                'label'    => 'form.label_seo_file',
                 'help' => 'form.seo.helper_file',
                 'required' => false,
             ))
