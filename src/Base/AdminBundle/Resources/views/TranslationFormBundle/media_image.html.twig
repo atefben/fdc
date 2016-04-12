@@ -68,35 +68,7 @@
                 </div>
                 <div class="col-md-4">
                     {% if form.vars.default_locale == locale %}
-                    <div class="box box-success">
-                        <div class="box-header">
-                            <h4 class="box-title">
-                                Paramètres de publication
-                            </h4>
-                        </div>
-                        <div class="box-body">
-                            <div class="sonata-ba-collapsed-fields">
-                                {{ form_row(form.parent.children.sites) }}
-                                <div class="form-group">
-                                    {{ form_widget(form.parent.children.displayedMobile) }}
-                                    {{ form_label(form.parent.children.displayedMobile) }}
-                                </div>
-                                {{ form_row(form.parent.children.publishedAt) }}
-                                {{ form_row(form.parent.children.publishEndedAt) }}
-                                {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
-                                    {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
-                                {% else %}
-                                    {{ form_row(translationsFields.status) }}
-                                {% endif %}
-                                <div class="form-group fdc-input-border">
-                                    {{ form_widget(form.parent.children.translate) }}
-                                    {{ form_label(form.parent.children.translate) }}
-                                    {{ form_widget(form.parent.children.translateOptions) }}
-                                    {{ form_row(form.parent.children.priorityStatus) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        {% include 'BaseAdminBundle:TranslationFormBundle:components/publish_parameters.html.twig' %}
                     {% else %}
                     <div class="box box-success">
                         <div class="box-header">

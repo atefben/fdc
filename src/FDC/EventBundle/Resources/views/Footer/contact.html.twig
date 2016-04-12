@@ -12,7 +12,7 @@
 {% endblock form_errors %}
 
 {% block body %}
-<div id="main" class="contact loading"> |!| JS |!|
+<div id="main" class="contact loading">
     <h2 class="title">{{ 'contact.title.contact'|trans }}</h2>
     <div class="coords">
         <h3>{{ 'contact.title.festival'|trans }}</h3>
@@ -20,23 +20,21 @@
         <p>{{ 'contact.text.contact'|trans }}</p>
     </div>
 
-    {% for label, flashes in app.session.flashbag.all %}
-        {% if label == "success" %}
-            {#<div class="{{ label }}"> |!| JS |!|#}
-            <div class="">
-                {% for flash in flashes %}
-                    <h3>{{ 'contact.sucess.title.votremessage'|trans }}</h3>
-                    <p>{{ 'contact.sucess.text.lequipeconcerne'|trans }}</p>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endfor %}
-
     <div class="container">
+        {% for label, flashes in app.session.flashbag.all %}
+            {% if label == "success" %}
+                {#<div class="{{ label }}"> |!| JS |!|#}
+                <div class="valid">
+                    {% for flash in flashes %}
+                        <p>{{ 'contact.sucess.title.votremessage'|trans }}<br>
+                        {{ 'contact.sucess.text.lequipeconcerne'|trans }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
         <p>{{ 'contact.form.text.precisezvotredemande'|trans|raw }}</p>
         <div id="form">
-            {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-
+            {{ form_start(form) }}
             <div class="select{% if form_errors(form.select) %} invalid{% endif %}">
                 {{ form_label(form.select) }}
                 {{ form_widget(form.select) }}
