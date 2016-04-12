@@ -336,7 +336,7 @@ function hasLockEntity(entity, id, locale, button)
         }
     });
 
-    request.fail(function (xhr) {
+    request.fail(function(xhr) {
         $('#fdc-dialog-text').html(xhr.responseJSON.message);
         $('#fdc-dialog').dialog({
             autoOpen: true
@@ -386,7 +386,7 @@ function hasLockList(entity, id, locale, isLocked, redirect)
         }
     });
 
-    request.fail(function (xhr) {
+    request.fail(function(xhr) {
         $('#fdc-dialog-text').html(xhr.responseJSON.message);
         $('#fdc-dialog').dialog({
             autoOpen: true
@@ -431,7 +431,7 @@ function deleteLock(entity, id, locale, success)
 
 
     if (success) {
-        request.success(function () {
+        request.success(function() {
             window.location.reload(true);
         });
     }
@@ -447,7 +447,11 @@ function deleteLock(entity, id, locale, success)
 function dashboardTranslator()
 {
     // on click clear dashboard filter
-    $('#dashboard-search button[type="submit"].btn-default').click(function () {
+    $('#dashboard-search button[type="submit"].btn-default').click(function() {
         $('#dashboard_search_type_reset').val(1);
-    })
+    });
+
+    $('#dashboard_search_type_status').on('change', function() {
+        $(this).closest('form').submit();
+    });
 }

@@ -18,11 +18,6 @@ sonata_admin:
             -
                 position: top
                 class: col-md-12
-                type: base.admin.block.translator_stats
-                roles: [ ROLE_TRANSLATOR, ROLE_TRANSLATOR_MASTER ]
-            -
-                position: top
-                class: col-md-12
                 type: base.admin.block.search
                 roles: [ ROLE_TRANSLATOR, ROLE_TRANSLATOR_MASTER ]
 

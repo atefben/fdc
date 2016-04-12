@@ -14,7 +14,7 @@
                         {% set typeSecond = 'image' %}
                     {% endif %}
                     {% set admin = admins[type][typeSecond] %}
-                {% elseif type == 'pages'%}
+                {% elseif type == 'pages' %}
                     {% set admin = admins[type][class(object)] %}
                 {% else %}
                     {% set admin = admins[type] %}

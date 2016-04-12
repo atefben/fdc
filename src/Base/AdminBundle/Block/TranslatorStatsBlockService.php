@@ -221,7 +221,7 @@ class TranslatorStatsBlockService extends BaseBlockService
                     $counts[$key] += $this->em->getRepository($rep)->countByStatusAndLocales($status, $locales);
                 }
             } else {
-                $counts[$key] = $this->em->getRepository($repository)->countByStatusAndocales($status, $locales);
+                $counts[$key] = $this->em->getRepository($repository)->countByStatusAndLocales($status, $locales);
             }
         }
 

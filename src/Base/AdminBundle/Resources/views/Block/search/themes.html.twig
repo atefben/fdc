@@ -10,47 +10,51 @@
         ({{ entities|length }})
     </header>
     <div id="dashboard-search-container">
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr class="sonata-ba-list-field-header">
+        {% if search is defined and search == true and entities|length == 0 %}
+            Il n'y a pas de traduction.
+        {% else %}
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr class="sonata-ba-list-field-header">
 
-                <th class="sonata-ba-list-field-header-integer  sonata-ba-list-field-header-order-asc sonata-ba-list-field-order-active">
-                    Id
-                </th>
-                <th class="sonata-ba-list-field-header-text ">
-                    Nom du thème
-                </th>
-                <th class="sonata-ba-list-field-header-choice  sonata-ba-list-field-header-order-asc ">
-                    Priorité
-                </th>
-                <th class="sonata-ba-list-field-header-text ">
-                    Libellés
-                </th>
-            </tr>
-            </thead>
-
-            <tbody>
-            {% for entity in entities %}
-                {% set object = entity %}
-                {% set transFr = entity.findTranslationByLocale('fr') %}
-                <tr>
-                    <td class="sonata-ba-list-field sonata-ba-list-field-integer">
-                        {{ entity.id }}
-                    </td>
-                    <td class="sonata-ba-list-field sonata-ba-list-field-text">
-                        <div>
-                            {{ transFr.name }}
-                        </div>
-                    </td>
-                    <td class="sonata-ba-list-field sonata-ba-list-field-choice">
-                        {% if entity.priorityStatus in priorityStatuses|keys %}
-                            {{ priorityStatuses[entity.priorityStatus]|trans }}
-                        {% endif %}
-                    </td>
-                    {% include 'BaseAdminBundle:Block:components/edit.html.twig' %}
+                    <th class="sonata-ba-list-field-header-integer  sonata-ba-list-field-header-order-asc sonata-ba-list-field-order-active">
+                        Id
+                    </th>
+                    <th class="sonata-ba-list-field-header-text ">
+                        Nom du thème
+                    </th>
+                    <th class="sonata-ba-list-field-header-choice  sonata-ba-list-field-header-order-asc ">
+                        Priorité
+                    </th>
+                    <th class="sonata-ba-list-field-header-text ">
+                        Libellés
+                    </th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+
+                <tbody>
+                {% for entity in entities %}
+                    {% set object = entity %}
+                    {% set transFr = entity.findTranslationByLocale('fr') %}
+                    <tr>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-integer">
+                            {{ entity.id }}
+                        </td>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-text">
+                            <div>
+                                {{ transFr.name }}
+                            </div>
+                        </td>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-choice">
+                            {% if entity.priorityStatus in priorityStatuses|keys %}
+                                {{ priorityStatuses[entity.priorityStatus]|trans }}
+                            {% endif %}
+                        </td>
+                        {% include 'BaseAdminBundle:Block:components/edit.html.twig' %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
     </div>
 </div>
