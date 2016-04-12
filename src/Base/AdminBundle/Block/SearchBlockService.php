@@ -4,6 +4,7 @@ namespace Base\AdminBundle\Block;
 
 use Base\AdminBundle\Form\Type\DashboardSearchType;
 use Base\CoreBundle\Entity\News;
+use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -222,6 +223,7 @@ class SearchBlockService extends BaseBlockService
         $locales = array();
         $status = null;
         $entities = array();
+        $entitiesAll = array();
 
         $admins = array(
             'news' => array(
@@ -319,13 +321,29 @@ class SearchBlockService extends BaseBlockService
         $params['status'] = $status;
         $priorityStatuses = News::getPriorityStatuses();
 
-        if (isset($params['type']) && isset($repositories[$params['type']])) {
-            if (is_array($repositories[$params['type']])) {
-                foreach ($repositories[$params['type']] as $rep) {
-                    $entities = array_merge($entities, $this->em->getRepository($rep)->dashboardSearch($params, $locales));
+        if (count($_GET) == 0 ||
+            (isset($_GET['dashboard_search_type']) && isset($_GET['dashboard_search_type']['reset']) && $_GET['dashboard_search_type']['reset'] == '1')) {
+            $params['priorityStatus'] = NewsArticle::PRIORITY_STATUS_NOW;
+            foreach ($repositories as $type => $rep) {
+                if (is_array($rep)) {
+                    $entitiesAll[$type] = array();
+                    foreach ($rep as $repository) {
+                        $entitiesAll[$type] = array_merge($entitiesAll[$type], $this->em->getRepository($repository)->dashboardSearch($params, $locales));
+                    }
+                } else {
+                    $entitiesAll[$type] = $this->em->getRepository($rep)->dashboardSearch($params, $locales);
                 }
-            } else {
-                $entities = $this->em->getRepository($repositories[$params['type']])->dashboardSearch($params, $locales);
+            }
+        } else {
+            if (isset($params['type']) && isset($repositories[$params['type']])) {
+                $type = $params['type'];
+                if (is_array($repositories[$params['type']])) {
+                    foreach ($repositories[$params['type']] as $rep) {
+                        $entities = array_merge($entities, $this->em->getRepository($rep)->dashboardSearch($params, $locales));
+                    }
+                } else {
+                    $entities = $this->em->getRepository($repositories[$params['type']])->dashboardSearch($params, $locales);
+                }
             }
         }
 
@@ -336,8 +354,10 @@ class SearchBlockService extends BaseBlockService
             'params' => $params,
             'priorityStatuses' => $priorityStatuses,
             'entities' => $entities,
+            'entitiesAll' => $entitiesAll,
             'admins' => $admins,
-            'dashboards' => $dashboards
+            'dashboards' => $dashboards,
+            'type' => $type
 
         ), $response);
     }

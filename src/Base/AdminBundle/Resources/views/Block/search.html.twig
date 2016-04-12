@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             {{ form_errors(form.translationStatus) }}
                             {{ form_widget(form.translationStatus) }}
                             {% if is_granted('ROLE_TRANSLATOR_MASTER') %}
@@ -43,10 +43,15 @@
                             {% endif %}
                             {{ form_rest(form) }}
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-1">
                             <button type="submit" class="pull-right btn btn-primary">
                                 <i class="fa fa-search"></i>
                                 Rechercher
+                            </button>
+                        </div>
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-default">
+                                Effacer
                             </button>
                         </div>
                     </div>
@@ -54,8 +59,12 @@
             </div>
         </div>
 
-        {% if params.type is defined %}
-            {% include 'BaseAdminBundle:Block:search/' ~ params.type ~ '.html.twig' %}
+        {% if entitiesAll|length > 0 %}
+            {% for type, entities in entitiesAll %}
+                {% include 'BaseAdminBundle:Block:search/' ~ type ~ '.html.twig' %}
+            {% endfor %}
+        {% elseif params.type is defined %}
+            {% include 'BaseAdminBundle:Block:search/' ~ params.type ~ '.html.twig' with {slice: true} %}
         {% endif %}
     {% endif %}
 {% endblock %}

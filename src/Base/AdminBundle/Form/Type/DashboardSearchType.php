@@ -62,6 +62,9 @@ class DashboardSearchType extends BaseType
                 'required' => false,
                 'label' => 'Afficher les objets en statut "Traduction à valider"'
             ))
+            ->add('reset', 'hidden', array(
+                'data' => '0'
+            ));
         ;
     }
 

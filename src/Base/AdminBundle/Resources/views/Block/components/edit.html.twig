@@ -5,16 +5,19 @@
             {% set trans = object.findTranslationByLocale(locale) %}
             {% if trans is not null %}
                 {% if
-                    params.type == 'news' or
-                    params.type == 'statements' or
-                    params.type == 'infos'
+                    type == 'news' or
+                    type == 'statements' or
+                    type == 'infos'
                 %}
-                    {% set type = class(object)|slice(params.type|length)|lower %}
-                    {% set admin = admins[params.type][type] %}
-                {% elseif params.type == 'pages'%}
-                    {% set admin = admins[params.type][class(object)] %}
+                    {% set typeSecond = object.newsFormat|slice(0, -1) %}
+                    {% if typeSecond == 'photo' %}
+                        {% set typeSecond = 'image' %}
+                    {% endif %}
+                    {% set admin = admins[type][typeSecond] %}
+                {% elseif type == 'pages'%}
+                    {% set admin = admins[type][class(object)] %}
                 {% else %}
-                    {% set admin = admins[params.type] %}
+                    {% set admin = admins[type] %}
                 {% endif %}
                 {% set tooltip = '' %}
                 {% set isTranslator = false %}

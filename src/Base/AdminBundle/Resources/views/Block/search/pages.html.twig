@@ -35,7 +35,7 @@
             <tbody>
             {% for entity in entities %}
                 {% set object = entity %}
-                {% set admin = admins[params.type][class(object)] %}
+                {% set admin = admins[type][class(object)] %}
                 {% set transFr = entity.findTranslationByLocale('fr') %}
                 <tr>
                     <td class="sonata-ba-list-field sonata-ba-list-field-integer">

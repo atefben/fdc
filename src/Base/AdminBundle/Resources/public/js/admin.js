@@ -141,6 +141,7 @@ $(document).ready(function() {
     }
 
     lockEvents();
+    dashboardTranslator();
 });
 
 
@@ -441,4 +442,12 @@ function deleteLock(entity, id, locale, success)
             autoOpen: true
         });
     });
+}
+
+function dashboardTranslator()
+{
+    // on click clear dashboard filter
+    $('#dashboard-search button[type="submit"].btn-default').click(function () {
+        $('#dashboard_search_type_reset').val(1);
+    })
 }
