@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-md-4">
                         {% if form.vars.default_locale == locale %}
-                            {% include 'BaseAdminBundle:TranslationFormBundle:components/publish_parameters.html.twig' %}
+                            {% include 'BaseAdminBundle:TranslationFormBundle:components/publish_parameters.html.twig' with {'isDisplayedHome': false} %}
                         {% else %}
                             <div class="box box-success">
                                 <div class="box-header">
