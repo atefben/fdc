@@ -164,8 +164,48 @@ class EntityListener
         $this->setPublishedOn($entity, $args);
     }
 
+
+    /**
+     * Set french version in all languages for multiples entities
+     *
+     * @param $entity
+     * @param $entityName
+     */
     private function setTransWysiwyg($entity, $entityName)
     {
+        $news = array(
+            'NewsArticleTranslation', 'NewsImageTranslation', 'NewsVideoTranslation', 'NewsAudioTranslation',
+            'StatementArticleTranslation', 'StatementImageTranslation', 'StatementVideoTranslation', 'StatementAudioTranslation',
+            'InfoArticleTranslation', 'InfoImageTranslation', 'InfoVideoTranslation', 'InfoAudioTranslation',
+        );
+
+        if (in_array($entityName, $news)) {
+            $parent = $entity->getTranslatable();
+            if ($entity->getLocale() == 'fr') {
+                foreach ($parent->getTranslations() as $trans) {
+
+                    // introduction
+                    if ($trans->getIntroduction() == '') {
+                        $trans->setIntroduction($entity->getIntroduction());
+                    }
+                }
+
+                // widget texts
+                /*foreach ($parent->getWidgets() as $widget) {
+                    $widgetEntityName = substr(strrchr(get_class($widget), '\\'), 1);
+                    if (strpos($widgetEntityName, 'WidgetText') !== false) {
+                        $frenchVersion = $widget->findTranslationBylocale('fr')->getContent();
+                        foreach ($widget->getTranslations() as $trans) {
+                            error_log($trans->getLocale());
+                            error_log($trans->getContent());
+                            if ($trans->getContent() == '') {
+                                $trans->setContent($frenchVersion);
+                            }
+                        }
+                    }
+                }*/
+            }
+        }
     }
 
 
