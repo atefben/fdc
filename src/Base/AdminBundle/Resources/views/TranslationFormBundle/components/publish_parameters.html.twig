@@ -75,48 +75,58 @@
                     </div>
                 {% else %}
                     {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
-                        {{ form_row(translationsFields.status, {'attr': {'disabled': 'disabled', 'class': 'translator'}}) }}
+                        {% if translationsFields.status is defined %}
+                            {{ form_row(translationsFields.status, {'attr': {'disabled': 'disabled', 'class': 'translator'}}) }}
+                        {% endif %}
                     {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
-                        {{ form_row(translationsFields.status, {'attr': {'disabled': 'disabled', 'class': 'master_translator'}}) }}
+                        {% if translationsFields.status is defined %}
+                            {{ form_row(translationsFields.status, {'attr': {'disabled': 'disabled', 'class': 'master_translator'}}) }}
+                        {% endif %}
                     {% endif %}
                 {% endif %}
 
                 <div class="form-group fdc-input-border">
-                    {{ form_widget(form.parent.children.translate, {'attr': {'disabled': 'disabled'}}) }}
-                    {{ form_label(form.parent.children.translate) }}
-                    <div>
-                        {% for translateOption in form.parent.children.translateOptions %}
-                            <div>
-                                {{ form_widget(translateOption, {'attr': {'disabled': 'disabled'}}) }}
-                                {{ form_label(translateOption) }}
-                            </div>
-                        {% endfor %}
-                    </div>
+                    {% if form.parent.children.translate is defined %}
+                        {{ form_widget(form.parent.children.translate, {'attr': {'disabled': 'disabled'}}) }}
+                        {{ form_label(form.parent.children.translate) }}
+                    {% endif %}
+                    {% if form.parent.children.translateOptions is defined %}
+                        <div>
+                            {% for translateOption in form.parent.children.translateOptions %}
+                                <div>
+                                    {{ form_widget(translateOption, {'attr': {'disabled': 'disabled'}}) }}
+                                    {{ form_label(translateOption) }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if form.parent.children.priorityStatus is defined %}
                     <div>
                         {{ form_label(form.parent.children.priorityStatus) }}
                         {{ form_widget(form.parent.children.priorityStatus, {'attr': {'disabled': 'disabled'}}) }}
                     </div>
+                    {% endif %}
                 </div>
             {% else %}
-                {% if form.parent.children.sites is not empty %}
+                {% if form.parent.children.sites is defined %}
                     {{ form_row(form.parent.children.sites) }}
                 {% endif %}
-                {% if form.parent.children.displayedHome is not empty %}
+                {% if form.parent.children.displayedHome is defined %}
                 <div class="form-group">
                     {{ form_widget(form.parent.children.displayedHome) }}
                     {{ form_label(form.parent.children.displayedHome) }}
                 </div>
                 {% endif %}
-                {% if form.parent.children.displayedMobile is not empty %}
+                {% if form.parent.children.displayedMobile is defined %}
                 <div class="form-group">
                     {{ form_widget(form.parent.children.displayedMobile) }}
                     {{ form_label(form.parent.children.displayedMobile) }}
                 </div>
                 {% endif %}
-                {% if form.parent.children.publishedAt is not empty %}
+                {% if form.parent.children.publishedAt is defined %}
                     {{ form_row(form.parent.children.publishedAt) }}
                 {% endif %}
-                {% if form.parent.children.publishEndedAt is not empty %}
+                {% if form.parent.children.publishEndedAt is defined %}
                     {{ form_row(form.parent.children.publishEndedAt) }}
                 {% endif %}
 
@@ -126,20 +136,34 @@
                     </div>
                 {% else %}
                     {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
-                        {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                        {% if translationsFields.status is defined %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                        {% endif %}
                     {% elseif is_granted('ROLE_JOURNALIST') %}
-                        {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                        {% if translationsFields.status is defined %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                        {% endif %}
                     {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
-                        {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                        {% if translationsFields.status is defined %}
+                            {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                        {% endif %}
                     {% else %}
-                        {{ form_row(translationsFields.status) }}
+                        {% if translationsFields.status is defined %}
+                            {{ form_row(translationsFields.status) }}
+                        {% endif %}
                     {% endif %}
                 {% endif %}
                 <div class="form-group fdc-input-border">
-                    {{ form_widget(form.parent.children.translate) }}
-                    {{ form_label(form.parent.children.translate) }}
-                    {{ form_widget(form.parent.children.translateOptions) }}
-                    {{ form_row(form.parent.children.priorityStatus) }}
+                    {% if form.parent.children.translate is defined %}
+                        {{ form_widget(form.parent.children.translate) }}
+                        {{ form_label(form.parent.children.translate) }}
+                    {% endif %}
+                    {% if form.parent.children.translateOptions is defined %}
+                        {{ form_widget(form.parent.children.translateOptions) }}
+                    {% endif %}
+                    {% if form.parent.children.priorityStatus is defined %}
+                        {{ form_row(form.parent.children.priorityStatus) }}
+                    {% endif %}
                 </div>
             {% endif %}
         </div>
