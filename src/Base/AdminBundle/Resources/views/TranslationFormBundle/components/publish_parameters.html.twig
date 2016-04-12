@@ -50,7 +50,7 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-                {%  if form.parent.children.displayedHome is defined %}
+                {% if form.parent.children.displayedHome is defined and isDisplayedHome is not defined %}
                 <div class="form-group">
                     {{ form_widget(form.parent.children.displayedHome, {'attr': {'disabled': 'disabled'}}) }}
                     {{ form_label(form.parent.children.displayedHome) }}
