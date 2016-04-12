@@ -451,7 +451,10 @@ function dashboardTranslator()
         $('#dashboard_search_type_reset').val(1);
     });
 
+    // submit form on value change of status
     $('#dashboard_search_type_status').on('change', function() {
         $(this).closest('form').submit();
     });
+
+    // submit form on select filter of search
 }
