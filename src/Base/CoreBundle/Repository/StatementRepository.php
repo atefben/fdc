@@ -49,10 +49,10 @@ class StatementRepository extends EntityRepository
             $params['priorityStatus'] != 'all') {
             $qb
                 ->andWhere('
-                    na.priorityStatus = :priorityStatus OR
+                    (na.priorityStatus = :priorityStatus OR
                     naa.priorityStatus = :priorityStatus OR
                     nai.priorityStatus = :priorityStatus OR
-                    nav.priorityStatus = :priorityStatus
+                    nav.priorityStatus = :priorityStatus)
                 ')
                 ->setParameter('priorityStatus', $params['priorityStatus'])
             ;

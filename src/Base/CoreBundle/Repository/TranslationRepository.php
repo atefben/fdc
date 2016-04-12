@@ -29,7 +29,7 @@ class TranslationRepository extends EntityRepository
             $params['priorityStatus'] != 'all') {
             $qb
                 ->andWhere('
-                    n.priorityStatus = :priorityStatus
+                    (n.priorityStatus = :priorityStatus)
                 ')
                 ->setParameter('priorityStatus', $params['priorityStatus'])
             ;

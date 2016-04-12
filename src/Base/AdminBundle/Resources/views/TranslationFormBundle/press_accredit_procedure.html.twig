@@ -37,26 +37,7 @@
                     </div>
                     <div class="col-md-4">
                         {% if form.vars.default_locale == locale %}
-                            <div class="box box-success">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        {{ 'group.news.publish_parameters'|trans }}
-                                    </h4>
-                                </div>
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
-                                        <div class="form-group fdc-input-border">
-                                            {{ form_widget(form.parent.children.translate) }}
-                                            {{ form_label(form.parent.children.translate) }}
-                                            {{ form_widget(form.parent.children.translateOptions) }}
-                                            {{ form_row(form.parent.children.priorityStatus) }}
-                                        </div>
-                                        <div class="status-hidden">
-                                            {{ form_row(translationsFields.status) }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {% include 'BaseAdminBundle:TranslationFormBundle:components/publish_parameters.html.twig' with {status: false} %}
                         {% else %}
                             <div class="box box-success">
                                 <div class="box-header">

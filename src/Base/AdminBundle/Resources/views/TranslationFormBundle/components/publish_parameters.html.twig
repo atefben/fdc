@@ -1,0 +1,154 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+<div class="box box-success">
+    <div class="box-header">
+        <h4 class="box-title">
+            {% if orange is defined and orange == true %}
+                {{ 'group.orange_series.publish_parameters'|trans }}
+            {% else %}
+                {{ 'group.news.publish_parameters'|trans }}
+            {% endif %}
+        </h4>
+    </div>
+    <div class="box-body">
+        {% if form.parent.children.createdAt is defined and form.parent.children.createdAt.vars.data and
+            form.parent.children.createdBy.vars.data
+        %}
+            <div class="fdc-help form-group">
+                {{ 'entity.created_infos'|trans(
+                    {
+                        'date': form.parent.children.createdAt.vars.data|date('d/m/Y H:i'),
+                        'user': form.parent.children.createdBy.vars.data.fullName
+                    })|raw
+                }}
+            </div>
+        {% endif %}
+        {% if form.parent.children.updatedAt is defined and form.parent.children.updatedAt.vars.data and
+            form.parent.children.updatedBy.vars.data
+        %}
+            <div class="fdc-help form-group">
+                {{ 'entity.updated_infos'|trans(
+                    {
+                        'date': form.parent.children.updatedAt.vars.data|date('d/m/Y H:i'),
+                        'user': form.parent.children.updatedBy.vars.data.fullName
+                    })|raw
+                }}
+            </div>
+        {% endif %}
+        <div class="sonata-ba-collapsed-fields">
+            {%
+                if  is_granted('ROLE_TRANSLATOR_MASTER') or
+                    is_granted('ROLE_TRANSLATOR')
+            %}
+                {% if form.parent.children.sites is defined %}
+                    <div class="form-group">
+                        {{ form_label(form.parent.children.sites) }}
+                        {% for site in form.parent.children.sites %}
+                            <div>
+                                {{ form_widget(site, {'attr': {'disabled': 'disabled'}}) }}
+                                {{ form_label(site) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {%  if form.parent.children.displayedHome is defined %}
+                <div class="form-group">
+                    {{ form_widget(form.parent.children.displayedHome, {'attr': {'disabled': 'disabled'}}) }}
+                    {{ form_label(form.parent.children.displayedHome) }}
+                </div>
+                {% endif %}
+                {%  if form.parent.children.displayedMobile is defined %}
+                <div class="form-group">
+                    {{ form_widget(form.parent.children.displayedMobile, {'attr': {'disabled': 'disabled'}}) }}
+                    {{ form_label(form.parent.children.displayedMobile) }}
+                </div>
+                {% endif %}
+                {% if form.parent.children.publishedAt is defined %}
+                    {{ form_row(form.parent.children.publishedAt, {'attr': {'disabled': 'disabled'}}) }}
+                {% endif %}
+                {% if form.parent.children.publishEndedAt is defined %}
+                    {{ form_row(form.parent.children.publishEndedAt, {'attr': {'disabled': 'disabled'}}) }}
+                {% endif %}
+
+                {% if status is defined and status == false %}
+                    <div class="status-hidden">
+                        {{ form_row(translationsFields.status) }}
+                    </div>
+                {% else %}
+                    {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                        {{ form_row(translationsFields.status, {'attr': {'disabled': 'disabled', 'class': 'translator'}}) }}
+                    {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                        {{ form_row(translationsFields.status, {'attr': {'disabled': 'disabled', 'class': 'master_translator'}}) }}
+                    {% endif %}
+                {% endif %}
+
+                <div class="form-group fdc-input-border">
+                    {{ form_widget(form.parent.children.translate, {'attr': {'disabled': 'disabled'}}) }}
+                    {{ form_label(form.parent.children.translate) }}
+                    <div>
+                        {% for translateOption in form.parent.children.translateOptions %}
+                            <div>
+                                {{ form_widget(translateOption, {'attr': {'disabled': 'disabled'}}) }}
+                                {{ form_label(translateOption) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {{ form_label(form.parent.children.priorityStatus) }}
+                        {{ form_widget(form.parent.children.priorityStatus, {'attr': {'disabled': 'disabled'}}) }}
+                    </div>
+                </div>
+            {% else %}
+                {% if form.parent.children.sites is not empty %}
+                    {{ form_row(form.parent.children.sites) }}
+                {% endif %}
+                {% if form.parent.children.displayedHome is not empty %}
+                <div class="form-group">
+                    {{ form_widget(form.parent.children.displayedHome) }}
+                    {{ form_label(form.parent.children.displayedHome) }}
+                </div>
+                {% endif %}
+                {% if form.parent.children.displayedMobile is not empty %}
+                <div class="form-group">
+                    {{ form_widget(form.parent.children.displayedMobile) }}
+                    {{ form_label(form.parent.children.displayedMobile) }}
+                </div>
+                {% endif %}
+                {% if form.parent.children.publishedAt is not empty %}
+                    {{ form_row(form.parent.children.publishedAt) }}
+                {% endif %}
+                {% if form.parent.children.publishEndedAt is not empty %}
+                    {{ form_row(form.parent.children.publishEndedAt) }}
+                {% endif %}
+
+                {% if status is defined and status == true %}
+                    <div class="status-hidden">
+                        {{ form_row(translationsFields.status) }}
+                    </div>
+                {% else %}
+                    {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                        {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                    {% elseif is_granted('ROLE_JOURNALIST') %}
+                        {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                    {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                        {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                    {% else %}
+                        {{ form_row(translationsFields.status) }}
+                    {% endif %}
+                {% endif %}
+                <div class="form-group fdc-input-border">
+                    {{ form_widget(form.parent.children.translate) }}
+                    {{ form_label(form.parent.children.translate) }}
+                    {{ form_widget(form.parent.children.translateOptions) }}
+                    {{ form_row(form.parent.children.priorityStatus) }}
+                </div>
+            {% endif %}
+        </div>
+        {% if app.request.get('id') is not null %}
+            <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save"></i> Mettre à jour</button>
+            <button type="submit" class="btn btn-success" name="btn_update_and_list"><i class="fa fa-save"></i> <i class="fa fa-list"></i> Mettre à jour et fermer</button>
+        {% else %}
+            <button type="submit" class="btn btn-success" name="btn_create_and_edit"><i class="fa fa-save"></i> Créer</button>
+            <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> <i class="fa fa-list"></i> Créer et retourner à la liste</button>
+        {% endif %}
+    </div>
+</div>

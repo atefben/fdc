@@ -31,10 +31,11 @@ class DashboardSearchType extends BaseType
             $builder = $builder
                 ->add('status', 'choice', array(
                     'choices' => array(
-                        'Traductions à valider' => NewsArticleTranslation::STATUS_TRANSLATION_VALIDATING,
                         'En attente de traduction' => NewsArticleTranslation::STATUS_TRANSLATION_PENDING,
+                        'Traductions à valider' => NewsArticleTranslation::STATUS_TRANSLATION_VALIDATING,
+
                     ),
-                    'data' => (isset($_GET['dashboard_search_type']['status'])) ? $_GET['dashboard_search_type']['status'] : false,
+                    'data' => (isset($_GET['dashboard_search_type']['status'])) ? $_GET['dashboard_search_type']['status'] : NewsArticleTranslation::STATUS_TRANSLATION_PENDING,
                     'label' => 'Statut',
                     'choices_as_values' => true,
                     'required' => false,
@@ -78,7 +79,7 @@ class DashboardSearchType extends BaseType
                     'Moyenne' => News::PRIORITY_STATUS_AVERAGE,
                     'Basse' => News::PRIORITY_STATUS_LOW
                 ),
-                'data' => (isset($_GET['dashboard_search_type']['priorityStatus'])) ? $_GET['dashboard_search_type']['priorityStatus'] : false,
+                'data' => (isset($_GET['dashboard_search_type']['priorityStatus'])) ? $_GET['dashboard_search_type']['priorityStatus'] : News::PRIORITY_STATUS_NOW,
                 'choices_as_values' => true,
                 'required' => false,
                 'label' => 'Priorité',

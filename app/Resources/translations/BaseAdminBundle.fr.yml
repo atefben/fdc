@@ -842,8 +842,8 @@ form:
         locked: Bloquée
     priority_status:
         low: Basse
-        average: Moyen
-        urgent: Urgent
+        average: Moyenne
+        urgent: Urgente
         now: Immédiate
     theme:
         helper_name: 30 caractères max.
