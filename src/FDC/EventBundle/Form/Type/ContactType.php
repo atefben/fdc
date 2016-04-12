@@ -46,7 +46,6 @@ class ContactType extends AbstractType
                 $select[$theme['theme']] = $theme['id'];
             }
         }
-
         return $select;
     }
 
