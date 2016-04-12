@@ -283,7 +283,8 @@ class MediaAudioAdmin extends Admin
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices'                   => MediaAudio::getPriorityStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle'
+                'choice_translation_domain' => 'BaseAdminBundle',
+                'multiple'           => false
             ))
             ->end()
         ;

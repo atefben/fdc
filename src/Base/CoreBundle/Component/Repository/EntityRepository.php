@@ -25,7 +25,7 @@ class EntityRepository extends BaseRepository
         $query = substr($query, 0, -3);
         $qb = $qb->where($query);
 
-       /* if (isset($params['title']) && !empty($params['title'])) {
+       if (isset($params['title']) && !empty($params['title'])) {
             foreach ($aliases as $key => $alias) {
                 $aliasMain = substr($alias, 0, -1);
                 $aliasTrans = $aliasMain. 't'. $key;
@@ -36,7 +36,7 @@ class EntityRepository extends BaseRepository
             $qb->setParameter('title', '%'. $params['title']. '%');
             $query2 = substr($query2, 0, -3);
             $qb = $qb->andWhere($query2);
-        }*/
+        }
 
         return $qb;
 
@@ -46,17 +46,18 @@ class EntityRepository extends BaseRepository
     {
         $qb = $this
             ->createQueryBuilder('e')
-            ->select('count(t.id)')
+            ->select('e.id')
             ->leftJoin('e.translations', 't')
             ->where('t.status = :status')
             ->andWhere('t.locale IN (:locales)')
             ->setParameter('status', $status)
             ->setParameter('locales', $locales)
+            ->groupBy('e.id')
             ->getQuery()
-            ->getSingleScalarResult();
+            ->getArrayResult();
         ;
 
-        return $qb;
+        return count($qb);
     }
 
     /**

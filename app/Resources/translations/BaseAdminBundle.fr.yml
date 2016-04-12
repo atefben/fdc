@@ -832,6 +832,13 @@ form:
     contact_theme:
         helper_theme: 255 caractères max.
     status:
+        0: Brouillon
+        1: Publié
+        2: À traduire
+        3: Traduction(s) à valider
+        4: À valider
+        5: Publié
+        6: Désactivé
         draft: Brouillon
         translation_pending: À traduire
         translation_validating: Traduction(s) à valider
@@ -841,6 +848,11 @@ form:
         deactivated: Désactivé
         locked: Bloquée
     priority_status:
+        0: Aucune
+        1: Basse
+        2: Moyenne
+        3: Urgente
+        4: Immédiate
         low: Basse
         average: Moyenne
         urgent: Urgente
