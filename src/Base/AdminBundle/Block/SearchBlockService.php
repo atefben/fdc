@@ -470,8 +470,8 @@ class SearchBlockService extends BaseBlockService
             'dashboards' => self::$dashboards,
             'type' => $type,
             'statusName' => $statusName,
-            'counts' =>  $counts,
-
+            'statuses' => $statuses,
+            'counts' =>  $counts
         ), $response);
     }
 }

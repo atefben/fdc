@@ -15,24 +15,33 @@
         {% else %}
             <table class="table table-bordered table-striped">
                 <thead>
-                <tr class="sonata-ba-list-field-header">
+                    <tr class="sonata-ba-list-field-header">
 
-                    <th class="sonata-ba-list-field-header-integer  sonata-ba-list-field-header-order-asc sonata-ba-list-field-order-active">
-                        Id
-                    </th>
-                    <th class="sonata-ba-list-field-header-text ">
-                        Légende de l'image
-                    </th>
-                    <td class="sonata-ba-list-field sonata-ba-list-field-orm_many_to_one">
-                        Thème
-                    </td>
-                    <th class="sonata-ba-list-field-header-choice  sonata-ba-list-field-header-order-asc ">
-                        Priorité
-                    </th>
-                    <th class="sonata-ba-list-field-header-text ">
-                        Libellés
-                    </th>
-                </tr>
+                        <th class="sonata-ba-list-field-header-integer  sonata-ba-list-field-header-order-asc sonata-ba-list-field-order-active">
+                            Id
+                        </th>
+                        <th class="sonata-ba-list-field-header-text ">
+                            Légende de l'image
+                        </th>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-orm_many_to_one">
+                            Thème
+                        </td>
+                        <th class="sonata-ba-list-field-header-choice  sonata-ba-list-field-header-order-asc ">
+                            Priorité
+                        </th>
+                        <th>
+                            Statut du master
+                        </th>
+                        <th>
+                            Date de création
+                        </th>
+                        <th>
+                            Date de publication
+                        </th>
+                        <th class="sonata-ba-list-field-header-text ">
+                            Libellés
+                        </th>
+                    </tr>
                 </thead>
 
                 <tbody>
@@ -58,6 +67,19 @@
                         <td class="sonata-ba-list-field sonata-ba-list-field-choice">
                             {% if entity.priorityStatus in priorityStatuses|keys %}
                                 {{ priorityStatuses[entity.priorityStatus]|trans }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ statuses[transFr.status]|trans }}
+                        </td>
+                        <td>
+                            {{ object.createdAt|localizeddate }}
+                        </td>
+                        <td>
+                            {% if object.publishedAt and object.publishEndedAt %}
+                                Du {{ object.publishedAt|localizeddate }} au {{ object.publishedAt|localizeddate }}
+                            {% elseif object.publishedAt and object.publishEndedAt is null %}
+                                {{ object.publishedAt|localizeddate }}
                             {% endif %}
                         </td>
                         {% include 'BaseAdminBundle:Block:components/edit.html.twig' %}

@@ -15,26 +15,29 @@
         {% else %}
             <table class="table table-bordered table-striped">
                 <thead>
-                <tr class="sonata-ba-list-field-header">
-                    <th class="sonata-ba-list-field-header-integer  sonata-ba-list-field-header-order-asc sonata-ba-list-field-order-active">
-                        Id
-                    </th>
-                    <th class="sonata-ba-list-field-header-text ">
-                        Titre de la vidéo
-                    </th>
-                    <th class="sonata-ba-list-field-header-text ">
-                        Thème
-                    </th>
-                    <th class="sonata-ba-list-field-header-text ">
-                        Chaine
-                    </th>
-                    <th class="sonata-ba-list-field-header-choice  sonata-ba-list-field-header-order-asc ">
-                        Priorité
-                    </th>
-                    <th class="sonata-ba-list-field-header-text ">
-                        Libellés
-                    </th>
-                </tr>
+                    <tr class="sonata-ba-list-field-header">
+                        <th class="sonata-ba-list-field-header-integer  sonata-ba-list-field-header-order-asc sonata-ba-list-field-order-active">
+                            Id
+                        </th>
+                        <th class="sonata-ba-list-field-header-text ">
+                            Titre de la vidéo
+                        </th>
+                        <th class="sonata-ba-list-field-header-text ">
+                            Thème
+                        </th>
+                        <th class="sonata-ba-list-field-header-text ">
+                            Chaine
+                        </th>
+                        <th class="sonata-ba-list-field-header-choice  sonata-ba-list-field-header-order-asc ">
+                            Priorité
+                        </th>
+                        <th>
+                            Statut du master
+                        </th>
+                        <th class="sonata-ba-list-field-header-text ">
+                            Libellés
+                        </th>
+                    </tr>
                 </thead>
 
                 <tbody>
@@ -64,6 +67,9 @@
                             {% if entity.priorityStatus in priorityStatuses|keys %}
                                 {{ priorityStatuses[entity.priorityStatus]|trans }}
                             {% endif %}
+                        </td>
+                        <td>
+                            {{ statuses[transFr.status]|trans }}
                         </td>
                         {% include 'BaseAdminBundle:Block:components/edit.html.twig' %}
                     </tr>

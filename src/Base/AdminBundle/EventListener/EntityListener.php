@@ -82,6 +82,8 @@ class EntityListener
             }
         }
 
+
+        $this->setTransWysiwyg($entity, $entityName);
         $this->setPublishedOn($entity, $args);
     }
 
@@ -138,6 +140,8 @@ class EntityListener
     {
 
         $entity = $args->getEntity();
+        $entityName = substr(strrchr(get_class($entity), '\\'), 1);
+
         if (method_exists($entity, 'getTranslate')) {
             if ($args->hasChangedField('translateOptions')) {
                 $languages = array('en', 'zh', 'es');
@@ -156,8 +160,14 @@ class EntityListener
             $this->setPublishedAt($entity);
         }
 
+        $this->setTransWysiwyg($entity, $entityName);
         $this->setPublishedOn($entity, $args);
     }
+
+    private function setTransWysiwyg($entity, $entityName)
+    {
+    }
+
 
     /**
      * @param $entity
