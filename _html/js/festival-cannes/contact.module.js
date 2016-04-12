@@ -95,14 +95,6 @@ $(document).ready(function() {
 
       if($('.invalid').length || empty) {
         return false;
-      } else {
-        $('.success').show();
-        $('.coords, .contact .container').hide();
-        $('.contact').css('min-height', '800px');
-        $('html, body').animate({
-          scrollTop: 0
-        }, 500);
-        return false;
       }
     });
   }
