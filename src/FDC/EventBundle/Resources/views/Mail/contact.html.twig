@@ -1,15 +1,9 @@
-{% trans_default_domain 'FDCEventBundle' %}
-{% extends 'FDCEventBundle:Mail:layout.html.twig' %}
+<p>Bonjour,<br>
+Vous avez une nouvelle demande de contact :</p>
+<ul>
+    <li>Nom : {{ contact_name }}</li>
+    <li>Email : {{ contact_email }}</li>
+    <li>Sujet : {{ contact_subject }}</li>
+    <li>Message : {{ contact_message }}</li>
+</ul>
 
-{% block email_title %}
-    Email de contact
-{% endblock %}
-
-{% block email_body %}
-    New message from {{ contact_name }}
-    Thème : {{ contact_theme }}
-    About {{ contact_subject }}
-    IP: {{ contact_ip }}
-
-    Message: {{ contact_message|raw }}
-{% endblock %}

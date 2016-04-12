@@ -304,3 +304,16 @@
     color: #c8a461;
 
 }
+
+.contact .valid {
+    margin-top: 40PX;
+    border: 1px solid #25a20c;
+    color: #25a20c;
+    width: 60%;
+    margin-left: 20%;
+}
+
+.contact .valid p{
+    color: #25a20c;
+    margin-top: 21px;
+}
