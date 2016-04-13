@@ -5,16 +5,177 @@
 <div id="main" class="sitemap loading">
     <h2 class="title">{{ 'sitemap.title.plandusite'|trans }}</h2>
     <section class="sitemap-container">
-        {% for notice in content %}
-            <article class="sitemap-item">
-                <h3 class="title sitemap-item-title">{{ notice.title }}</h3>
-                <ul>
-                    {% for link in notice.links %}
-                        <li><a href="{{ link.path }}">{{ link.name }}</a></li>
+        {% for route in routes %}
+            {% if route.route == 'fdc_event_movie_selection' and route.enabled == true %}
+                <article class="sitemap-item">
+                    <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                    <ul>
+                        {% for selectionTab in selectionTabs %}
+                            {% set selectionSlug = selectionTab|trans_fallback('slug')?:selectionTab.selectionSection|trans_fallback('slug') %}
+                            {% set selectionName = selectionTab|trans_fallback('overrideName')?:selectionTab.selectionSection|trans_fallback('name') %}
+                                <li><a href="{{ path('fdc_event_movie_selection', {'slug': selectionSlug}) }}">{{ selectionName }}</a></li>
+                        {% endfor %}
+                        {% if cannesClassics is defined and cannesClassics|length > 0 %}
+                            {% set transClassics = cannesClassics[0].findTranslationByLocale(app.request.locale) %}
+                            {% if transClassics is not empty and transClassics.slug is not empty %}
+                                <li><a href="{{ path('fdc_event_movie_classics', {'slug': transClassics.slug}) }}">{{ 'selection.nav.cannes-classics'|trans }}</a></li>
+                            {% endif %}
+                        {% endif %}
+                        <li><a href="{{ path('fdc_event_movie_selection', {'slug': 'cinema-de-la-plage'}) }}">{{ 'selection.nav.cinema-la-plage'|trans }}</a></li>
+                    </ul>
+                </article>
+            {% elseif route.route == 'fdc_event_jury_get' and route.enabled == true %}
+                <article class="sitemap-item">
+                    <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                    <ul>
+                    {% for tab in jury %}
+                        <li>
+                            <a href="{{ path('fdc_event_jury_get', {'slug': tab|trans_fallback('slug')}) }}">
+                            {{ (tab|trans_fallback('overrideName'))?:(tab.juryType|trans_fallback('name')) }}
+                            </a>
+                        </li>
                     {% endfor %}
                 </ul>
+                </article>
+            {% elseif route.route == 'fdc_event_palmares_get' and route.enabled == true %}
+                <article class="sitemap-item">
+                    <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                    <ul>
+                    {% for tab in award %}
+                        {% set tabPath = path('fdc_event_palmares_get', {'slug': tab|trans_fallback('slug') }) %}
+                        <li>
+                            <a href="{{ tabPath }}">
+                                {{ tab|trans_fallback('name') }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                </article>
+            {% elseif route.route == 'fdc_press_news_home' and route.enabled == true %}
+                <article class="sitemap-item">
+                    <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                    <ul>
+                        {% for menu in press %}
+                            {% if menu.route == 'fdc_press_news_home' and menu.enabled == true %}
+                                <li>
+                                    <a href="{{ path('fdc_press_news_home') }}">
+                                        {{ 'header.mainnav.nav.accueil'|trans({}, 'FDCPressBundle') }}
+                                    </a>
+                                </li>
+                            {% elseif menu.route == 'fdc_press_news_list' and menu.enabled == true %}
+                                <li>
+                                    <a href="{{ path('fdc_press_news_list') }}">
+                                        {{ 'header.mainnav.nav.communiques'|trans({}, 'FDCPressBundle') }}
+                                    </a>
+                                </li>
+                            {% elseif menu.route == 'fdc_press_accredit_main' and menu.enabled == true %}
+                                <li>
+                                    <a href="{{ path('fdc_press_accredit_main') }}">
+                                        {{ 'header.mainnav.nav.accrediter'|trans({}, 'FDCPressBundle') }}
+                                    </a>
+                                </li>
+                            {% elseif menu.route == 'fdc_press_guide_main' and menu.enabled == true %}
+                                <li>
+                                    <a href="{{ path('fdc_press_guide_main') }}">
+                                        {{ 'header.mainnav.nav.guide'|trans({}, 'FDCPressBundle') }}
+                                    </a>
+                                </li>
+                            {% elseif menu.route == 'fdc_press_agenda_scheduling' and menu.enabled == true %}
+                                <li>
+                                    <a href="{{ path('fdc_press_agenda_scheduling') }}">
+                                        {{ 'header.mainnav.nav.programmation'|trans({}, 'FDCPressBundle') }}
+                                    </a>
+                                </li>
+                            {% elseif menu.route == 'fdc_press_media_main' and menu.enabled == true %}
+                                <li>
+                                    <a href="{{ path('fdc_press_media_main') }}">
+                                        {{ 'header.mainnav.nav.mediatheque'|trans({}, 'FDCPressBundle') }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </article>
+            {% elseif  route.route == 'fdc_event_footer_contact' or
+                       route.transName == 'footer.nav.faq' or
+                       route.transName == 'footer.nav.credit' or
+                       route.transName == 'footer.nav.mentionslegales' or
+                       route.transName == 'footer.nav.nousrejoindre' or
+                       route.transName == 'footer.nav.plandusite' or
+                       route.transName == 'footer.nav.politiqueconfidentialite' or
+                       route.transName == 'footer.nav.boutique' %}
+            {% else %}
+            <article class="sitemap-item">
+                <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                <ul>
+                {% for child in route['__children'] %}
+                    {% if child.enabled %}
+                        <li><a href="{{ path(child.route, {locale: app.request.get('locale')}) }}">{{ child.transName|trans }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
             </article>
+            {% endif %}
         {% endfor %}
+        <article class="sitemap-item">
+            <h3 class="title sitemap-item-title">{{ 'Footer' }}</h3>
+            <ul>
+                {% for route in footer %}
+                    {% if route.route == 'fdc_event_footer_contact' and route.enabled == true %}
+                        <li>
+                            <a href="{{ path('fdc_event_footer_contact') }}">
+                                {{ 'footer.nav.contact'|trans }}
+                            </a>
+                        </li>
+                    {% elseif route.transName == 'footer.nav.faq' and route.enabled == true %}
+                        <li>
+                            <a href="{{ path('fdc_event_footer_faq') }}">
+                                {{ 'footer.nav.faq'|trans }}
+                            </a>
+                        </li>
+                    {% elseif route.transName == 'footer.nav.credit' and route.enabled == true %}
+                        <li>
+                            <a href="{{ path('fdc_event_footer_credits') }}">
+                                {{ 'footer.nav.credit'|trans }}
+                            </a>
+                        </li>
+                    {% elseif route.transName == 'footer.nav.mentionslegales' and route.enabled == true %}
+                        <li>
+                            <a href="{{ path('fdc_event_footer_mentionslegales') }}">
+                                {{ 'footer.nav.mentionslegales'|trans }}
+                            </a>
+                        </li>
+                    {% elseif route.transName == 'footer.nav.nousrejoindre' and route.enabled == true %}
+                        <li>
+                            <a href="{{ path('fdc_event_footer_static', {'page': 'nous-rejoindre'}) }}">
+                                {{ 'footer.nav.nousrejoindre'|trans }}
+                            </a>
+                        </li>
+                    {% elseif route.transName == 'footer.nav.plandusite' and route.enabled == true %}
+                        <li>
+                            <a href="{{ path('fdc_event_footer_sitemap') }}">
+                                {{ 'footer.nav.plandusite'|trans }}
+                            </a>
+                        </li>
+                    {% elseif route.transName == 'footer.nav.politiqueconfidentialite' and route.enabled == true %}
+                        <li>
+                            <a href="{{ path('fdc_event_footer_privacy') }}">
+                                {{ 'footer.nav.politiqueconfidentialite'|trans }}
+                            </a>
+                        </li>
+                    {% elseif route.transName == 'footer.nav.boutique' and element.enabled == true  %}
+                        <li>
+                            <a href="{{ footer_boutique }}">
+                                {{ 'footer.nav.boutique'|trans }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </article>
+
+
+
     </section>
 </div>
 {% endblock %}

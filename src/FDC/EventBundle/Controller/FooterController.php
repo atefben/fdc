@@ -2,6 +2,7 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -611,7 +612,7 @@ class FooterController extends Controller
 
     /**
      * @Route("/privacy")
-     * @Template("FDCEventBundle:Global:footer_page.html.twig")
+     * @Template("FDCEventBundle:Footer:footer_page.html.twig")
      * @return array
      */
     public function privacyAction(Request $request) {
@@ -634,7 +635,7 @@ class FooterController extends Controller
 
     /**
      * @Route("/mentions-legales")
-     * @Template("FDCEventBundle:Global:footer_page.html.twig")
+     * @Template("FDCEventBundle:Footer:footer_page.html.twig")
      * @return array
      */
     public function mentionsLegalesAction(Request $request) {
@@ -657,7 +658,7 @@ class FooterController extends Controller
 
     /**
      * @Route("/credits")
-     * @Template("FDCEventBundle:Global:footer_page.html.twig")
+     * @Template("FDCEventBundle:Footer:footer_page.html.twig")
      * @return array
      */
     public function creditsAction(Request $request) {
@@ -665,7 +666,7 @@ class FooterController extends Controller
         $locale   = $request->getLocale();
         $pageId = $this->getParameter('admin_fdc_footer_credits_id');
         $em = $this->get('doctrine')->getManager();
-        
+
         $content = $em->getRepository('BaseCoreBundle:FDCPageFooter')->findOneBy(
             array('id' => $pageId)
         );
@@ -680,7 +681,7 @@ class FooterController extends Controller
 
     /**
      * @Route("/faq")
-     * @Template("FDCEventBundle:Global:faq.html.twig")
+     * @Template("FDCEventBundle:Footer:faq.html.twig")
      * @return array
      */
     public function faqAction(Request $request) {
@@ -697,6 +698,76 @@ class FooterController extends Controller
 
         return array(
             'faq' => $faq
+        );
+    }
+
+    /**
+     * @Route("/sitemap")
+     * @Template("FDCEventBundle:Footer:plan-du-site.html.twig")
+     * @return array
+     */
+    public function siteMapAction(Request $request) {
+
+        $locale = $request->getLocale();
+        $em     = $this->get('doctrine')->getManager();
+
+        //routes from menu
+        $routes = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->childrenHierarchy();
+
+        // Menu Participer
+        $participatePage    = $em->getRepository('BaseCoreBundle:FDCPageParticipate')->findAll();
+        $preparePage        = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findById($this->getParameter('admin_fdc_page_prepare_id'));
+
+        $participateMenu = array_merge($preparePage, $participatePage);
+        $routes = array_merge($routes, $participateMenu);
+
+        $displayedRoutes = array();
+        $press = array();
+        foreach($routes as $menu){
+            if($menu['site'] == FDCEventRoutesInterface::EVENT){
+                $displayedRoutes[] = $menu;
+            }
+
+            if($menu['site'] == FDCEventRoutesInterface::PRESS){
+                $press[] = $menu;
+            }
+        }
+
+        // la selection
+        $selectionTabs = $em
+            ->getRepository('BaseCoreBundle:FDCPageLaSelection')
+            ->getPagesOrdoredBySelectionSectionOrder($locale)
+        ;
+        $cannesClassics = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale);
+
+        //jury
+        $jury = $em
+            ->getRepository('BaseCoreBundle:FDCPageJury')
+            ->getPages($locale)
+        ;
+
+        //palmares
+        $award = $em
+            ->getRepository('BaseCoreBundle:FDCPageAward')
+            ->getPages($locale)
+        ;
+
+        //footer
+        $displayedFooterElements = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->findBy(
+            array('type' => 2),
+            array('position' => 'asc'),
+            null,
+            null
+        );
+
+        return array(
+            'footer'            => $displayedFooterElements,
+            'press'             => $press,
+            'award'             => $award,
+            'jury'              => $jury,
+            'cannesClassics'    => $cannesClassics,
+            'selectionTabs'     => $selectionTabs,
+            'routes'            => $displayedRoutes
         );
     }
 
