@@ -474,21 +474,21 @@ class EntityListener
                 foreach ($widgets as $widget) {
                     if ($parentWidgetEntityName == $widget['widgetName']) {
                         $frenchVersion = $parentWidget->findTranslationBylocale('fr');
-                        error_log(get_class($frenchVersion));
-                        error_log(gettype($frenchVersion));
-                        foreach ($this->locales as $locale) {
-                            $trans = $parentWidget->findTranslationBylocale($locale);
-                            if ($trans == null) {
-                                $trans = clone $widget['widgetEntity'];
-                                $trans->setLocale($locale);
-                                $parentWidget->addTranslation($trans);
-                            }
+                        if ($frenchVersion !== null) {
+                            foreach ($this->locales as $locale) {
+                                $trans = $parentWidget->findTranslationBylocale($locale);
+                                if ($trans == null) {
+                                    $trans = clone $widget['widgetEntity'];
+                                    $trans->setLocale($locale);
+                                    $parentWidget->addTranslation($trans);
+                                }
 
-                            foreach ($widget['setters'] as $setter) {
-                                $setter = ucfirst($setter);
-                                if ($trans->{'get'. $setter}() == '') {
-                                    $trans->{'set'. $setter}($frenchVersion->{'get'. $setter}());
-                                    $this->flush = true;
+                                foreach ($widget['setters'] as $setter) {
+                                    $setter = ucfirst($setter);
+                                    if ($trans->{'get' . $setter}() == '') {
+                                        $trans->{'set' . $setter}($frenchVersion->{'get' . $setter}());
+                                        $this->flush = true;
+                                    }
                                 }
                             }
                         }
