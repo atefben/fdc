@@ -134,6 +134,7 @@ class GlobalController extends Controller {
         );
     }
 
+
     /**
      * @Route("/share-email", options={"expose"=true})
      * @Template("FDCEventBundle:Global:share-email.html.twig")
