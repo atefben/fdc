@@ -126,7 +126,7 @@
                         data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
                         {% if video.image|trans_fallback('file') %}
                        	    data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
-	                    {% else if video|trans_fallback('imageAmazonUrl') is not null %}
+	                    {% elseif video|trans_fallback('imageAmazonUrl') %}
 	                        data-img="{{ s3_server_video ~ video|trans_fallback('imageAmazonUrl') }}"
                     	{% else %}
                         	data-img="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
