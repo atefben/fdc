@@ -37,6 +37,19 @@
                     {% endfor %}
                 </ul>
                 </article>
+            {% elseif route.route == 'fdc_event_participate_prepare' and route.enabled == true %}
+                <article class="sitemap-item">
+                    <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                    <ul>
+                        {% for k,child in participate %}
+                            {% if k == 0 %}
+                                <li><a href="{{ path('fdc_event_participate_prepare') }}"> {{ child.title|trans }}</a></li>
+                            {% else %}
+                                <li><a href="{{ path('fdc_event_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"> {{ child|trans_fallback('title') }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                </ul>
+                </article>
             {% elseif route.route == 'fdc_event_palmares_get' and route.enabled == true %}
                 <article class="sitemap-item">
                     <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
@@ -163,7 +176,7 @@
                                 {{ 'footer.nav.politiqueconfidentialite'|trans }}
                             </a>
                         </li>
-                    {% elseif route.transName == 'footer.nav.boutique' and element.enabled == true  %}
+                    {% elseif route.transName == 'footer.nav.boutique' and route.enabled == true  %}
                         <li>
                             <a href="{{ footer_boutique }}">
                                 {{ 'footer.nav.boutique'|trans }}

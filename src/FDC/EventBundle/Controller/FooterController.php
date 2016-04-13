@@ -719,7 +719,6 @@ class FooterController extends Controller
         $preparePage        = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findById($this->getParameter('admin_fdc_page_prepare_id'));
 
         $participateMenu = array_merge($preparePage, $participatePage);
-        $routes = array_merge($routes, $participateMenu);
 
         $displayedRoutes = array();
         $press = array();
@@ -761,6 +760,7 @@ class FooterController extends Controller
         );
 
         return array(
+            'participate'       => $participateMenu,
             'footer'            => $displayedFooterElements,
             'press'             => $press,
             'award'             => $award,
