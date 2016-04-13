@@ -3,10 +3,25 @@
 namespace Base\AdminBundle\EventListener;
 
 use Application\Sonata\MediaBundle\Entity\Media;
-use Application\Sonata\MediaBundle\Model\MediaInterface;
-use Base\CoreBundle\Entity\MediaAudio;
-use Base\CoreBundle\Entity\MediaAudioTranslation;
-use Base\CoreBundle\Entity\MediaVideoTranslation;
+use Base\CoreBundle\Entity\EventWidgetTextTranslation;
+use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetIntroTranslation;
+use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTextTranslation;
+use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetSubTitleTranslation;
+use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypefiveTranslation;
+use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypefourTranslation;
+use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypeoneTranslation;
+use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypethreeTranslation;
+use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypetwoTranslation;
+use Base\CoreBundle\Entity\FDCPagePrepareWidgetImageTranslation;
+use Base\CoreBundle\Entity\FDCPagePrepareWidgetPictoTranslation;
+use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
+use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
+use Base\CoreBundle\Entity\PressDownloadSectionWidgetArchiveTranslation;
+use Base\CoreBundle\Entity\PressDownloadSectionWidgetDocumentTranslation;
+use Base\CoreBundle\Entity\PressGuideWidgetColumnTranslation;
+use Base\CoreBundle\Entity\PressGuideWidgetImageTranslation;
+use Base\CoreBundle\Entity\PressGuideWidgetPictoTranslation;
+use Base\CoreBundle\Entity\StatementWidgetTextTranslation;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use \DateTime;
 
@@ -16,7 +31,6 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 /**
  * Class EntityListener
@@ -29,9 +43,16 @@ class EntityListener
      */
     private $flush;
 
+    private $locales;
+
     public function __construct()
     {
         $this->flush = false;
+    }
+
+    public function setLocales($locales)
+    {
+        $this->locales = $locales;
     }
 
     private $toTranslate = array();
@@ -82,8 +103,6 @@ class EntityListener
             }
         }
 
-
-        $this->setTransWysiwyg($entity, $entityName);
         $this->setPublishedOn($entity, $args);
     }
 
@@ -160,10 +179,26 @@ class EntityListener
             $this->setPublishedAt($entity);
         }
 
-        $this->setTransWysiwyg($entity, $entityName);
         $this->setPublishedOn($entity, $args);
     }
 
+    private function setFrenchVersion($entities, $entity, $entityName, $properties)
+    {
+        if (in_array($entityName, $entities)) {
+            $parent = $entity->getTranslatable();
+            foreach ($parent->getTranslations() as $trans) {
+                foreach ($properties as $property) {
+                    $property = ucfirst($property);
+                    // introduction
+                    if ($trans->{'get'. $property}() == '') {
+                        $trans->{'set'. $property}($entity->{'get'. $property}());
+                        $this->flush = true;
+                    }
+                }
+            }
+        }
+
+    }
 
     /**
      * Set french version in all languages for multiples entities
@@ -173,40 +208,293 @@ class EntityListener
      */
     private function setTransWysiwyg($entity, $entityName)
     {
-        $news = array(
-            'NewsArticleTranslation', 'NewsImageTranslation', 'NewsVideoTranslation', 'NewsAudioTranslation',
-            'StatementArticleTranslation', 'StatementImageTranslation', 'StatementVideoTranslation', 'StatementAudioTranslation',
-            'InfoArticleTranslation', 'InfoImageTranslation', 'InfoVideoTranslation', 'InfoAudioTranslation',
-        );
+        if (method_exists($entity, 'getLocale') && $entity->getLocale() == 'fr') {
+            // news
+            $entitiesNews = array(
+                'NewsArticleTranslation', 'NewsImageTranslation', 'NewsVideoTranslation', 'NewsAudioTranslation',
+                'StatementArticleTranslation', 'StatementImageTranslation', 'StatementVideoTranslation', 'StatementAudioTranslation',
+                'InfoArticleTranslation', 'InfoImageTranslation', 'InfoVideoTranslation', 'InfoAudioTranslation',
+                'EventTranslation'
+            );
+            $entitiesIntroduction = array_merge($entitiesNews, array(
+                'OrangeProgrammationOCSTranslation',
+                'OrangeSeriesAndCieTranslation',
+                'OrangeStudioTranslation',
+                'OrangeVideoOnDemandTranslation'
+            ));
+            $this->setFrenchVersion($entitiesIntroduction, $entity, $entityName, array('introduction'));
+            // contact page
+            $this->setFrenchVersion(array('ContactPageTranslation'), $entity, $entityName, array('firstColumn', 'secondColumn', 'thirdColumn'));
+            // faq page / fdc page footer / fdc page participate
+            $entitiesContent = array(
+                'FAQPageTranslation', 'FDCPageFooterTranslation', 'FDCPageFooterTranslation',
+            );
+            $this->setFrenchVersion($entitiesContent, $entity, $entityName, array('content'));
+            // fdc page participate section
+            $entitiesDescription = array(
+                'FDCPageParticipateSection'
+            );
+            $this->setFrenchVersion($entitiesDescription, $entity, $entityName, array('description'));
+            // fdc page prepare
+            $this->setFrenchVersion(array('FDCPagePreareTranslation'), $entity, $entityName, array('mainDescription', 'meetingDescription', 'informationDescription', 'serviceDescription'));
+            // fdc page waiting
+            $this->setFrenchVersion(array('FDCPageWaitingTranslation'), $entity, $entityName, array('text'));
+            // press accredit
+            $this->setFrenchVersion(array('PressAccreditTranslation'), $entity, $entityName, array('commonContent'));
+            // press accredit procedure
+            $this->setFrenchVersion(array('PressAccreditProcedureTranslation'), $entity, $entityName, array('procedureContent'));
+            // press homepage
+            $this->setFrenchVersion(array('PressHomepageTranslation'), $entity, $entityName, array('sectionStatisticDescription'));
 
-        if (in_array($entityName, $news)) {
+
+            // widgets
+            if (($key = array_search('fr', $this->locales)) !== false) {
+                unset($this->locales[$key]);
+            }
+
+            $this->setWidgetsFrenchVersion(
+                array('NewsArticleTranslation', 'NewsImageTranslation', 'NewsVideoTranslation', 'NewsAudioTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new NewsWidgetTextTranslation(),
+                        'widgetName' => 'NewsWidgetText',
+                        'setters' => array(
+                            'content'
+                        )
+                    )
+                )
+            );
+
+            $this->setWidgetsFrenchVersion(
+                array('StatementArticleTranslation', 'StatementImageTranslation', 'StatementVideoTranslation', 'StatementAudioTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new StatementWidgetTextTranslation(),
+                        'widgetName' => 'StatementWidgetText',
+                        'setters' => array(
+                            'content'
+                        )
+                    )
+                )
+            );
+
+            $this->setWidgetsFrenchVersion(
+                array('InfoArticleTranslation', 'InfoImageTranslation', 'InfoVideoTranslation', 'InfoAudioTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new InfoWidgetTextTranslation(),
+                        'widgetName' => 'InfoWidgetText',
+                        'setters' => array(
+                            'content'
+                        )
+                    )
+                )
+            );
+
+            $this->setWidgetsFrenchVersion(
+                array('EventTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new EventWidgetTextTranslation(),
+                        'widgetName' => 'EventWidgetText',
+                        'setters' => array(
+                            'content'
+                        )
+                    )
+                )
+            );
+
+            $this->setWidgetsFrenchVersion(
+                array('FDCPageLaSelectionCannesClassicsTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new FDCPageLaSelectionCannesClassicsWidgetIntroTranslation(),
+                        'widgetName' => 'FDCPageLaSelectionCannesClassicsWidgetIntro',
+                        'setters' => array(
+                            'introduction'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new FDCPageLaSelectionCannesClassicsWidgetTextTranslation(),
+                        'widgetName' => 'FDCPageLaSelectionCannesClassicsWidgetText',
+                        'setters' => array(
+                            'content'
+                        )
+                    )
+                )
+            );
+
+            $this->setWidgetsFrenchVersion(
+                array('FDCPageParticipateSectionTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new FDCPageParticipateSectionWidgetSubTitleTranslation(),
+                        'widgetName' => 'FDCPageParticipateSectionWidgetSubTitle',
+                        'setters' => array(
+                            'description'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new FDCPageParticipateSectionWidgetTypefiveTranslation(),
+                        'widgetName' => 'FDCPageParticipateSectionWidgetTypefive',
+                        'setters' => array(
+                            'oneDescription',
+                            'twoDescription',
+                            'threeDescription',
+                            'fourDescription',
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new FDCPageParticipateSectionWidgetTypefourTranslation(),
+                        'widgetName' => 'FDCPageParticipateSectionWidgetTypefour',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new FDCPageParticipateSectionWidgetTypeoneTranslation(),
+                        'widgetName' => 'FDCPageParticipateSectionWidgetTypeone',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new FDCPageParticipateSectionWidgetTypethreeTranslation(),
+                        'widgetName' => 'FDCPageParticipateSectionWidgetTypethree',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new FDCPageParticipateSectionWidgetTypetwoTranslation(),
+                        'widgetName' => 'FDCPageParticipateSectionWidgetTypetwo',
+                        'setters' => array(
+                            'content'
+                        )
+                    )
+                )
+            );
+
+            $this->setWidgetsFrenchVersion(
+                array('FDCPagePrepareTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new FDCPagePrepareWidgetImageTranslation(),
+                        'widgetName' => 'FDCPagePrepareWidgetImage',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new FDCPagePrepareWidgetPictoTranslation(),
+                        'widgetName' => 'FDCPagePrepareWidgetPicto',
+                        'setters' => array(
+                            'content'
+                        )
+                    )
+                )
+            );
+
+            $this->setWidgetsFrenchVersion(
+                array('PressDownloadSectionTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new PressDownloadSectionWidgetArchiveTranslation(),
+                        'widgetName' => 'PressDownloadSectionWidgetArchive',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new PressDownloadSectionWidgetDocumentTranslation(),
+                        'widgetName' => 'PressDownloadSectionWidgetDocument',
+                        'setters' => array(
+                            'content'
+                        )
+                    )
+                )
+            );
+
+            $this->setWidgetsFrenchVersion(
+                array('PressGuideTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new PressGuideWidgetColumnTranslation(),
+                        'widgetName' => 'PressGuideWidgetColumn',
+                        'setters' => array(
+                            'firstColumn',
+                            'secondColumn',
+                            'thirdColumn'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new PressGuideWidgetImageTranslation(),
+                        'widgetName' => 'PressGuideWidgetImage',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new PressGuideWidgetPictoTranslation(),
+                        'widgetName' => 'PressGuideWidgetPicto',
+                        'setters' => array(
+                            'content'
+                        )
+                    )
+                )
+            );
+
+        }
+    }
+
+    private function setWidgetsFrenchVersion($entities, $entity, $entityName, $widgets)
+    {
+        if (in_array($entityName, $entities)) {
             $parent = $entity->getTranslatable();
-            if ($entity->getLocale() == 'fr') {
-                foreach ($parent->getTranslations() as $trans) {
+            foreach ($parent->getWidgets() as $parentWidget) {
+                $parentWidgetEntityName = substr(strrchr(get_class($parentWidget), '\\'), 1);
+                foreach ($widgets as $widget) {
+                    if ($parentWidgetEntityName == $widget['widgetName']) {
+                        foreach ($this->locales as $locale) {
+                            $trans = $parentWidget->findTranslationBylocale($locale);
+                            if ($trans == null) {
+                                $trans = clone $widget['widgetEntity'];
+                                $trans->setLocale($locale);
+                                $parentWidget->addTranslation($trans);
+                            }
 
-                    // introduction
-                    if ($trans->getIntroduction() == '') {
-                        $trans->setIntroduction($entity->getIntroduction());
-                    }
-                }
-
-                // widget texts
-                /*foreach ($parent->getWidgets() as $widget) {
-                    $widgetEntityName = substr(strrchr(get_class($widget), '\\'), 1);
-                    if (strpos($widgetEntityName, 'WidgetText') !== false) {
-                        $frenchVersion = $widget->findTranslationBylocale('fr')->getContent();
-                        foreach ($widget->getTranslations() as $trans) {
-                            error_log($trans->getLocale());
-                            error_log($trans->getContent());
-                            if ($trans->getContent() == '') {
-                                $trans->setContent($frenchVersion);
+                            foreach ($widget['setters'] as $setter) {
+                                $setter = ucfirst($setter);
+                                if ($trans->{'get'. $setter}() == '') {
+                                    $trans->{'set'. $setter}($trans->getTranslatable()->findTranslationByLocale('fr')->{'get'. $setter}());
+                                    $this->flush = true;
+                                }
                             }
                         }
                     }
-                }*/
+                }
             }
         }
     }
+
 
 
     /**
@@ -256,20 +544,32 @@ class EntityListener
 
     public function postUpdate(LifecycleEventArgs $eventArgs) {
         $object =  $eventArgs->getObject();
+
+        $entity = $eventArgs->getEntity();
+        $entityName = substr(strrchr(get_class($entity), '\\'), 1);
+
         if ($object instanceof Media) {
             if ($object->getParentAudioTranslation() || $object->getParentVideoTranslation()) {
                 $this->flush = true;
             }
         }
+
+        $this->setTransWysiwyg($entity, $entityName);
     }
 
     public function postPersist(LifecycleEventArgs $eventArgs)
     {
         $object =  $eventArgs->getObject();
+
+        $entity = $eventArgs->getEntity();
+        $entityName = substr(strrchr(get_class($entity), '\\'), 1);
+
         if ($object instanceof Media) {
             if ($object->getParentAudioTranslation() || $object->getParentVideoTranslation()) {
                 $this->flush = true;
             }
         }
+
+        $this->setTransWysiwyg($entity, $entityName);
     }
 }
