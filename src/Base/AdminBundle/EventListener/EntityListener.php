@@ -474,6 +474,8 @@ class EntityListener
                 foreach ($widgets as $widget) {
                     if ($parentWidgetEntityName == $widget['widgetName']) {
                         $frenchVersion = $parentWidget->findTranslationBylocale('fr');
+                        error_log(get_class($frenchVersion));
+                        error_log(gettype($frenchVersion));
                         foreach ($this->locales as $locale) {
                             $trans = $parentWidget->findTranslationBylocale($locale);
                             if ($trans == null) {
