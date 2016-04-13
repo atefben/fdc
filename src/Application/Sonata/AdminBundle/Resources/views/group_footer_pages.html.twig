@@ -1,11 +1,19 @@
-{% if is_granted('ROLE_BASE_ADMIN_FDC_PAGE_FOOTER_ADMIN') %}
-    <li class="treeview">
+{% if app.security.token and is_granted('ROLE_BASE_ADMIN_FDC_PAGE_FOOTER_ADMIN') %}
+    {% set active = false %}
+    {% set pages = ['admin_base_core_fdcpagefooter_edit','admin_base_core_fdcpagefooter_edit',
+    'admin_base_core_fdcpagefooter_edit','admin_base_core_faqtheme_list','admin_base_core_faqpage_list'] %}
+
+    {% if app.request.get('_route') in pages %}
+        {% set active = true %}
+    {% endif %}
+
+    <li class="treeview {% if active %}active{% endif %}">
         <a href="#">
             <i class="fa fa-folder"></i>
             <span>Pages</span>
             <i class="fa pull-right fa-angle-left"></i>
         </a>
-        <ul class="treeview-menu">
+        <ul class="treeview-menu {% if active %}active{% endif %}">
             <li>
                 <a href="{{ path('admin_base_core_fdcpagefooter_edit', {id: admin_fdc_footer_confidentialite_id}) }}">
                     <i class="fa fa-angle-double-right"></i>

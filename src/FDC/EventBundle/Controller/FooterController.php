@@ -610,6 +610,97 @@ class FooterController extends Controller
     }
 
     /**
+     * @Route("/privacy")
+     * @Template("FDCEventBundle:Global:footer_page.html.twig")
+     * @return array
+     */
+    public function privacyAction(Request $request) {
+
+        $locale   = $request->getLocale();
+        $pageId = $this->getParameter('admin_fdc_footer_confidentialite_id');
+        $em = $this->get('doctrine')->getManager();
+
+        $content = $em->getRepository('BaseCoreBundle:FDCPageFooter')->findOneBy(
+            array('id' => $pageId)
+        );
+
+        // SEO
+        $this->get('base.manager.seo')->setFDCPageFooterSeo($content, $locale);
+
+        return array(
+            'page' => $content,
+        );
+    }
+
+    /**
+     * @Route("/mentions-legales")
+     * @Template("FDCEventBundle:Global:footer_page.html.twig")
+     * @return array
+     */
+    public function mentionsLegalesAction(Request $request) {
+
+        $locale   = $request->getLocale();
+        $pageId = $this->getParameter('admin_fdc_footer_mentions_legales_id');
+        $em = $this->get('doctrine')->getManager();
+
+        $content = $em->getRepository('BaseCoreBundle:FDCPageFooter')->findOneBy(
+            array('id' => $pageId)
+        );
+
+        // SEO
+        $this->get('base.manager.seo')->setFDCPageFooterSeo($content, $locale);
+
+        return array(
+            'page' => $content,
+        );
+    }
+
+    /**
+     * @Route("/credits")
+     * @Template("FDCEventBundle:Global:footer_page.html.twig")
+     * @return array
+     */
+    public function creditsAction(Request $request) {
+
+        $locale   = $request->getLocale();
+        $pageId = $this->getParameter('admin_fdc_footer_credits_id');
+        $em = $this->get('doctrine')->getManager();
+        
+        $content = $em->getRepository('BaseCoreBundle:FDCPageFooter')->findOneBy(
+            array('id' => $pageId)
+        );
+
+        // SEO
+        $this->get('base.manager.seo')->setFDCPageFooterSeo($content, $locale);
+
+        return array(
+            'page' => $content,
+        );
+    }
+
+    /**
+     * @Route("/faq")
+     * @Template("FDCEventBundle:Global:faq.html.twig")
+     * @return array
+     */
+    public function faqAction(Request $request) {
+
+        $em = $this->get('doctrine')->getManager();
+        $themes = $em->getRepository('BaseCoreBundle:FAQTheme')->findAll();
+        $faq = array();
+        foreach($themes as $key => $theme) {
+            $faq[$key]['faq'] = $em->getRepository('BaseCoreBundle:FAQPage')->findby(
+                array('theme' => $theme)
+            );
+            $faq[$key]['theme'] = $theme;
+        }
+
+        return array(
+            'faq' => $faq
+        );
+    }
+
+    /**
      * @Route("/contact")
      * @Template("FDCEventBundle:Footer:contact.html.twig")
      * @param Request $request

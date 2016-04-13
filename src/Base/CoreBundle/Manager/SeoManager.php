@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Manager;
 
 use Base\CoreBundle\Entity\FDCPageAward;
+use Base\CoreBundle\Entity\FDCPageFooter;
 use Base\CoreBundle\Entity\FDCPageJury;
 use Base\CoreBundle\Entity\FDCPageLaSelection;
 use Base\CoreBundle\Entity\FDCPageNewsArticles;
@@ -768,6 +769,54 @@ class SeoManager
 
             // PICTURE
             $header = $jury->getSeoFile();
+            if ($header) {
+                // OG PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+
+                // TWITTER PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');
+                $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            }
+
+            // overload default value by the one set on the article
+            if ($trans->getSeoTitle() !== null) {
+                $this->sonataSeoPage->setTitle($trans->getSeoTitle());
+                $this->sonataSeoPage->addMeta('property', 'og:title', $trans->getSeoTitle());
+                $this->sonataSeoPage->addMeta('property', 'twitter:title', $trans->getSeoTitle());
+            }
+            if ($trans->getSeoDescription() !== null) {
+                $this->sonataSeoPage->addMeta('name', 'description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'og:description', $trans->getSeoDescription());
+                $this->sonataSeoPage->addMeta('property', 'twitter:description', $trans->getSeoDescription());
+            }
+        }
+    }
+
+    /**
+     * @param FDCPageFooter $pageFooter
+     * @param $locale
+     */
+    public function setFDCPageFooterSeo(FDCPageFooter $pageFooter, $locale)
+    {
+        $trans = $pageFooter->findTranslationByLocale($locale);
+
+        if ($trans !== null) {
+            $bannedChars = array('&nbsp;');
+
+            // OG PARAMS
+            $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
+            $this->sonataSeoPage->addMeta('property', 'og:url', $this->router->generate('fdc_event_television_channels', array(), UrlGeneratorInterface::ABSOLUTE_URL));
+            $this->sonataSeoPage->addMeta('property', 'og:updated_time', $pageFooter->getUpdatedAt()->format(DateTime::ISO8601));
+
+            // TWITTER
+            $this->sonataSeoPage->addMeta('property', 'twitter:card', 'summary_large_image');
+            $this->sonataSeoPage->addMeta('property', 'twitter:site', "Festival de Cannes {$this->fdcYear}");
+            $this->sonataSeoPage->addMeta('property', 'twitter:creator', '@' . substr(strrchr($this->socialTwitter, '/'), 1));
+
+            // PICTURE
+            $header = $pageFooter->getSeoFile();
             if ($header) {
                 // OG PICTURE
                 $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, $header->getContext() . '_small');

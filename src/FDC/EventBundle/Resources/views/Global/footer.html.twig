@@ -11,19 +11,19 @@
             </li>
             {% elseif element.transName == 'footer.nav.faq' and element.enabled == true %}
                 <li>
-                    <a href="{{ path('fdc_event_global_faq') }}">
+                    <a href="{{ path('fdc_event_footer_faq') }}">
                         {{ 'footer.nav.faq'|trans }}
                     </a>
                 </li>
             {% elseif element.transName == 'footer.nav.credit' and element.enabled == true %}
                 <li>
-                    <a href="{{ path('fdc_event_global_credits') }}">
+                    <a href="{{ path('fdc_event_footer_credits') }}">
                         {{ 'footer.nav.credit'|trans }}
                     </a>
                 </li>
             {% elseif element.transName == 'footer.nav.mentionslegales' and element.enabled == true %}
                 <li>
-                    <a href="{{ path('fdc_event_global_mentionslegales') }}">
+                    <a href="{{ path('fdc_event_footer_mentionslegales') }}">
                         {{ 'footer.nav.mentionslegales'|trans }}
                     </a>
                 </li>
@@ -41,7 +41,7 @@
                 </li>
             {% elseif element.transName == 'footer.nav.politiqueconfidentialite' and element.enabled == true %}
                 <li>
-                    <a href="{{ path('fdc_event_global_privacy') }}">
+                    <a href="{{ path('fdc_event_footer_privacy') }}">
                         {{ 'footer.nav.politiqueconfidentialite'|trans }}
                     </a>
                 </li>
