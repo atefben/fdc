@@ -106,6 +106,13 @@
                                     </a>
                                 </li>
                             {% endif %}
+                            {% if menu.route == 'fdc_press_media_download' and menu.enabled == true %}
+                                <li>
+                                    <a href="{{ path('fdc_press_media_download') }}">
+                                        {{ 'header.mainnav.nav.telecharger'|trans({}, 'FDCPressBundle') }}
+                                    </a>
+                                </li>
+                            {% endif %}
                         {% endfor %}
                     </ul>
                 </article>

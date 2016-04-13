@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 <div class="footer-menu">
-    <ul>                        {{ 'header.mainnav.nav.communiques'|trans({}, 'FDCPressBundle') }}
+    <ul>     
         <li class="copyright">{{ 'footer.nav.copyright'|trans }} {{ 'now'|date('Y') }}</li>
         {% for element in footer %}
             {% if element.route == 'fdc_event_footer_contact' and element.enabled == true %}
