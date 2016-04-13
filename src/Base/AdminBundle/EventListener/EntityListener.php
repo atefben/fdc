@@ -483,7 +483,12 @@ class EntityListener
                         }
                         if ($frenchVersion !== null) {
                             foreach ($this->locales as $locale) {
-                                $trans = $parentWidget->findTranslationBylocale($locale);
+                                $trans = null;
+                                foreach ($translations as $translation) {
+                                    if ($translation->getLocale() == $locale) {
+                                        $trans = $translation;
+                                    }
+                                }
                                 if ($trans == null) {
                                     $trans = clone $widget['widgetEntity'];
                                     $trans->setLocale($locale);
