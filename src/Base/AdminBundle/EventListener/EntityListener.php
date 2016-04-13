@@ -3,7 +3,7 @@
 namespace Base\AdminBundle\EventListener;
 
 use Application\Sonata\MediaBundle\Entity\Media;
-use Application\Sonata\MediaBundle\Model\MediaInterface;
+use Base\CoreBundle\Entity\EventWidgetTextTranslation;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetIntroTranslation;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTextTranslation;
 use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetSubTitleTranslation;
@@ -15,12 +15,12 @@ use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypetwoTranslation;
 use Base\CoreBundle\Entity\FDCPagePrepareWidgetImageTranslation;
 use Base\CoreBundle\Entity\FDCPagePrepareWidgetPictoTranslation;
 use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
-use Base\CoreBundle\Entity\MediaAudio;
-use Base\CoreBundle\Entity\MediaAudioTranslation;
-use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
 use Base\CoreBundle\Entity\PressDownloadSectionWidgetArchiveTranslation;
 use Base\CoreBundle\Entity\PressDownloadSectionWidgetDocumentTranslation;
+use Base\CoreBundle\Entity\PressGuideWidgetColumnTranslation;
+use Base\CoreBundle\Entity\PressGuideWidgetImageTranslation;
+use Base\CoreBundle\Entity\PressGuideWidgetPictoTranslation;
 use Base\CoreBundle\Entity\StatementWidgetTextTranslation;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use \DateTime;
@@ -31,7 +31,6 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 /**
  * Class EntityListener
@@ -209,7 +208,7 @@ class EntityListener
      */
     private function setTransWysiwyg($entity, $entityName)
     {
-        if (method_exists('getLocale', $entity) && $entity->getLocale() == 'fr') {
+        if (method_exists($entity, 'getLocale') && $entity->getLocale() == 'fr') {
             // news
             $entitiesNews = array(
                 'NewsArticleTranslation', 'NewsImageTranslation', 'NewsVideoTranslation', 'NewsAudioTranslation',
@@ -254,7 +253,7 @@ class EntityListener
             }
 
             $this->setWidgetsFrenchVersion(
-                array('NewsArticle', 'NewsImage', 'NewsVideo', 'NewsAudio'),
+                array('NewsArticleTranslation', 'NewsImageTranslation', 'NewsVideoTranslation', 'NewsAudioTranslation'),
                 $entity,
                 $entityName,
                 array(
@@ -269,7 +268,7 @@ class EntityListener
             );
 
             $this->setWidgetsFrenchVersion(
-                array('StatementArticle', 'StatementImage', 'StatementVideo', 'StatementAudio'),
+                array('StatementArticleTranslation', 'StatementImageTranslation', 'StatementVideoTranslation', 'StatementAudioTranslation'),
                 $entity,
                 $entityName,
                 array(
@@ -284,7 +283,7 @@ class EntityListener
             );
 
             $this->setWidgetsFrenchVersion(
-                array('StatementArticle', 'StatementImage', 'StatementVideo', 'StatementAudio'),
+                array('InfoArticleTranslation', 'InfoImageTranslation', 'InfoVideoTranslation', 'InfoAudioTranslation'),
                 $entity,
                 $entityName,
                 array(
@@ -299,7 +298,7 @@ class EntityListener
             );
 
             $this->setWidgetsFrenchVersion(
-                array('Event'),
+                array('EventTranslation'),
                 $entity,
                 $entityName,
                 array(
@@ -314,7 +313,7 @@ class EntityListener
             );
 
             $this->setWidgetsFrenchVersion(
-                array('FDCPageLaSelectionCannesClassics'),
+                array('FDCPageLaSelectionCannesClassicsTranslation'),
                 $entity,
                 $entityName,
                 array(
@@ -336,7 +335,7 @@ class EntityListener
             );
 
             $this->setWidgetsFrenchVersion(
-                array('FDCPageParticipateSection'),
+                array('FDCPageParticipateSectionTranslation'),
                 $entity,
                 $entityName,
                 array(
@@ -389,7 +388,7 @@ class EntityListener
             );
 
             $this->setWidgetsFrenchVersion(
-                array('FDCPagePrepare'),
+                array('FDCPagePrepareTranslation'),
                 $entity,
                 $entityName,
                 array(
@@ -411,7 +410,7 @@ class EntityListener
             );
 
             $this->setWidgetsFrenchVersion(
-                array('PressDownloadSection'),
+                array('PressDownloadSectionTranslation'),
                 $entity,
                 $entityName,
                 array(
@@ -432,6 +431,36 @@ class EntityListener
                 )
             );
 
+            $this->setWidgetsFrenchVersion(
+                array('PressGuideTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new PressGuideWidgetColumnTranslation(),
+                        'widgetName' => 'PressGuideWidgetColumn',
+                        'setters' => array(
+                            'firstColumn',
+                            'secondColumn',
+                            'thirdColumn'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new PressGuideWidgetImageTranslation(),
+                        'widgetName' => 'PressGuideWidgetImage',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new PressGuideWidgetPictoTranslation(),
+                        'widgetName' => 'PressGuideWidgetPicto',
+                        'setters' => array(
+                            'content'
+                        )
+                    )
+                )
+            );
 
         }
     }
@@ -440,33 +469,24 @@ class EntityListener
     {
         if (in_array($entityName, $entities)) {
             $parent = $entity->getTranslatable();
-            // remove french from locales
-
-            // widget text
-            $widgetName = 'WidgetText';
-            $widgetTranslations = array(
-                'news' => new NewsWidgetTextTranslation(),
-                'statement' => new StatementWidgetTextTranslation(),
-                'info' => new InfoWidgetTextTranslation()
-            );
-
-            foreach ($parent->getWidgets() as $widget) {
-                $widgetEntityName = substr(strrchr(get_class($widget), '\\'), 1);
-                $type = substr($widgetEntityName, 0, -strlen($widgetName));
-                error_log($type);
-                if (strpos($widgetEntityName, $widgetName) !== false) {
-                    $frenchVersion = $widget->findTranslationBylocale('fr')->getContent();
-                    foreach ($this->locales as $locale) {
-                        $trans = $widget->findTranslationBylocale($locale);
-                        if (isset($widgetTranslations[strtolower($type)])) {
+            foreach ($parent->getWidgets() as $parentWidget) {
+                $parentWidgetEntityName = substr(strrchr(get_class($parentWidget), '\\'), 1);
+                foreach ($widgets as $widget) {
+                    if ($parentWidgetEntityName == $widget['widgetName']) {
+                        foreach ($this->locales as $locale) {
+                            $trans = $parentWidget->findTranslationBylocale($locale);
                             if ($trans == null) {
-                                $trans = clone $widgetTranslations[strtolower($type)];
+                                $trans = clone $widget['widgetEntity'];
                                 $trans->setLocale($locale);
-                                $widget->addTranslation($trans);
+                                $parentWidget->addTranslation($trans);
                             }
-                            if ($trans->getContent() == '') {
-                                $trans->setContent($frenchVersion);
-                                $this->flush = true;
+
+                            foreach ($widget['setters'] as $setter) {
+                                $setter = ucfirst($setter);
+                                if ($trans->{'get'. $setter}() == '') {
+                                    $trans->{'set'. $setter}($trans->getTranslatable()->findTranslationByLocale('fr')->{'get'. $setter}());
+                                    $this->flush = true;
+                                }
                             }
                         }
                     }
