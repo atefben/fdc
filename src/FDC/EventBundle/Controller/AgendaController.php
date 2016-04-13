@@ -2,12 +2,15 @@
 
 namespace FDC\EventBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
 use FDC\EventBundle\Component\Controller\Controller;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Validator\Constraints\DateTime;
+
+use \DateTime;
 
 /**
  * @Route("/programmation")
@@ -25,7 +28,54 @@ class AgendaController extends Controller
     public function schedulingAction(Request $request)
     {
         $this->isPageEnabled($request->get('_route'));
-        $schedulingDays = array(
+        $festival = $this->getFestival()->getId();
+        $date = $request->get('date') ?: new DateTime();
+        $festivalStart    = $this->getFestival()->getFestivalStartsAt();
+        $festivalEnd      = $this->getFestival()->getFestivalEndsAt();
+
+        if ($request->get('date')) {
+           $date = $request->get('date');
+        } else {
+            $date = new DateTime();
+
+            if ($date < $festivalStart) {
+                $date = $festivalStart->format('Y-m-d');
+            } else if ($date > $festivalEnd) {
+                $date = $festivalEnd->format('Y-m-d');
+            } else {
+                $date = $date->format('Y-m-d');
+            }
+        }
+
+        $rooms = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmProjectionRoom')
+            ->findAll()
+        ;
+
+        foreach ($rooms as $room) {
+            $projections[$room->getId()] = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmProjection')
+                ->getProjectionsByFestivalAndDateAndRoom($festival, $date, $room->getId())
+            ;
+            var_dump(count($projections[$room->getId()]));
+        }
+
+        // remove projection not matching current festival
+        /*foreach ($rooms as $room) {
+            foreach ($room->getProjections() as $projection) {
+                if ($projection->getFestival() && $projection->getFestival()->getId() != $festival &&
+                    ($projection->getStartsAt() <= $date. ' 00:00:00' ||  $projection->getEndsat() >= $date. ' 23:59:59')) {
+                    $room->removeProjection($projection);
+                }
+            }
+        }*/
+
+        $schedulingDays = $this->createDateRangeArrayEvent($festivalStart->format('Y-m-d'), $festivalEnd->format('Y-m-d'), false);
+
+
+        /*$schedulingDays = array(
             array(
                 'date' => new \DateTime(),
             ),
@@ -50,7 +100,7 @@ class AgendaController extends Controller
             array(
                 'date' => new \DateTime(),
             )
-        );
+        );*/
 
         $selectionFilters = array(
             array(
@@ -86,7 +136,7 @@ class AgendaController extends Controller
             ),
         );
 
-        $events = array(
+        /*$events = array(
             'place' => array(
                 'grandTheatre' => array(
                     'events' => array(
@@ -135,13 +185,15 @@ class AgendaController extends Controller
                     )
                 ),
             )
-        );
+        );*/
 
         return array(
             'schedulingDays' => $schedulingDays,
-            'schedulingEvents' => $events,
+            'rooms' => $rooms,
+            'projections' => $projections,
             'typeFilters' => $typeFilters,
             'selectionFilters' => $selectionFilters,
+            'festival' => $festival
         );
 
     }

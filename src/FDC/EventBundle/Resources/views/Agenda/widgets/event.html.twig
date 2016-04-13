@@ -1,23 +1,32 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-<div class="fc-event" data-category="{{ event.category.slug }}"
-     data-type="{{ event.category.slug }}" data-url="eventPopin.html"
+{% set isPress = (event.type == 'Conférence de presse') ? 1 : 0 %}
+<div class="fc-event" data-category="{{ event.type }}"
+     data-type="{{ event.type }}" data-url="eventPopin.html"
      data-id="{{ event.id }}" data-picto='.pen' data-color='#000'
-     data-start="{{ event.startAt|date('Y-m-d') }}T{{ event.startAt|date('H:i:s') }}"
-     data-end="{{ event.endAt|date('Y-m-d') }}T{{ event.endAt|date('H:i:s') }}"
-     data-time="{{ event.startAt|date('H') }}" data-duration="{{ event.duration }}">
+     data-start="{{ event.startsAt|date('Y-m-d') }}T{{ event.startsAt|date('H:i:s') }}"
+     data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"
+     data-time="{{ event.startsAt|date('H') }}" data-duration="{{ event.duration }}">
 
-    <span class="category"><i class="icon icon_espace-{{ event.category.slug }}"></i>{{ event.category.name }}</span>
-    <div class="info">
-        <img src="{{ event.image.path }}" />
-        <div class="txt">
-            <span>{{ event.title }}</span>
-            <strong>{{ event.author.fullName }}</strong>
+    <span class="category"><i class="icon{% if isPress %} icon_espace-presse{% endif %}"></i>{{ event.type }}</span>
+    {% if event.programmationFilms|length > 0 %}
+        <div class="info">
+            <img src="" />
+            <div class="txt">
+                {% set film = event.programmationFilms[0].film %}
+                <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
+                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                <strong>
+                {% for director in directors %}
+                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}
+                    {% if loop.index != directors|length %}, {% endif %}
+                {% endfor %}
+                </strong>
+            </div>
         </div>
-    </div>
-    <div class="bottom">
-        <span class="duration">{{ event.duration }}min</span> - <span class="ven">{{ event.place }}</span>
-        <span class="competition">{{ event.competition }}</span>
-    </div>
+        <div class="bottom">
+            <span class="duration">12min</span> - <span class="ven">{% if event.room %}{{ event.room.name }}{% endif %}</span>
+            <span class="competition">{{ film.selectionSection|trans_fallback('name') }}</span>
+        </div>
+    {% endif %}
 </div>
-

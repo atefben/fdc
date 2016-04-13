@@ -44,4 +44,22 @@ class FilmProjectionRoomRepository extends EntityRepository
 
         return $qb;
     }
+
+    public function getProjectionsByFestivalAndDate($festival, $date)
+    {
+        $qb = $this
+            ->createQueryBuilder('r')
+            ->join('r.projections', 'p')
+            ->where('p.festival = :festival')
+            ->andWhere('(p.startsAt >= :startDate AND p.endsAt <= :endDate)')
+            ->setParameter('festival', $festival)
+            ->setParameter('startDate', $date. ' 00:00:00')
+            ->setParameter('endDate', $date. ' 23:59:59')
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $qb;
+    }
+
 }
