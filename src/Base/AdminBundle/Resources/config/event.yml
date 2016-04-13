@@ -29,6 +29,9 @@ services:
             - { name: doctrine.event_listener, event: postUpdate }
             - { name: doctrine.event_listener, event: postPersist }
 
+        calls:
+            - [ setLocales, ['%locales%']]
+
     base.admin.event.media_listener:
         class: Base\AdminBundle\EventListener\MediaListener
         arguments:
