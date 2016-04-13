@@ -473,7 +473,14 @@ class EntityListener
                 $parentWidgetEntityName = substr(strrchr(get_class($parentWidget), '\\'), 1);
                 foreach ($widgets as $widget) {
                     if ($parentWidgetEntityName == $widget['widgetName']) {
-                        $frenchVersion = $parentWidget->findTranslationBylocale('fr');
+                        // no easy way to get the fr translations
+                        $translations = $parentWidget->getTranslations();
+                        $frenchVersion = null;
+                        foreach ($translations as $translation) {
+                            if ($translation->getLocale() == 'fr') {
+                                $frenchVersion = $translation;
+                            }
+                        }
                         if ($frenchVersion !== null) {
                             foreach ($this->locales as $locale) {
                                 $trans = $parentWidget->findTranslationBylocale($locale);
