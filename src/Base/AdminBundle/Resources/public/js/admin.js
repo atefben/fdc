@@ -331,8 +331,7 @@ function hasLockEntity(entity, id, locale, button)
             });
         } else if (xhr.success == true) {
             deleteLock(entity, id, locale);
-            button.unbind('click');
-            button.click();
+            button.closest('form').submit();
         }
     });
 
