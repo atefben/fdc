@@ -473,6 +473,7 @@ class EntityListener
                 $parentWidgetEntityName = substr(strrchr(get_class($parentWidget), '\\'), 1);
                 foreach ($widgets as $widget) {
                     if ($parentWidgetEntityName == $widget['widgetName']) {
+                        $frenchVersion = $parentWidget->findTranslationBylocale('fr');
                         foreach ($this->locales as $locale) {
                             $trans = $parentWidget->findTranslationBylocale($locale);
                             if ($trans == null) {
@@ -484,7 +485,7 @@ class EntityListener
                             foreach ($widget['setters'] as $setter) {
                                 $setter = ucfirst($setter);
                                 if ($trans->{'get'. $setter}() == '') {
-                                    $trans->{'set'. $setter}($trans->getTranslatable()->findTranslationByLocale('fr')->{'get'. $setter}());
+                                    $trans->{'set'. $setter}($frenchVersion->{'get'. $setter}());
                                     $this->flush = true;
                                 }
                             }
