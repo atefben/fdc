@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 <div class="footer-menu">
-    <ul>
+    <ul>                        {{ 'header.mainnav.nav.communiques'|trans({}, 'FDCPressBundle') }}
         <li class="copyright">{{ 'footer.nav.copyright'|trans }} {{ 'now'|date('Y') }}</li>
         {% for element in footer %}
             {% if element.route == 'fdc_event_footer_contact' and element.enabled == true %}
@@ -35,7 +35,7 @@
                 </li>
             {% elseif element.transName == 'footer.nav.plandusite' and element.enabled == true %}
                 <li>
-                    <a href="{{ path('fdc_event_footer_static', {'page': 'plan-du-site'}) }}">
+                    <a href="{{ path('fdc_event_footer_sitemap') }}">
                         {{ 'footer.nav.plandusite'|trans }}
                     </a>
                 </li>
