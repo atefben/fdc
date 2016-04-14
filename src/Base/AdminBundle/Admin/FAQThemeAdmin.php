@@ -139,4 +139,21 @@ class FAQThemeAdmin extends Admin
             ->add('priorityStatus')
         ;
     }
+
+    public function getExportFields()
+    {
+        return array(
+            'Id'                   => 'id',
+            'Nom du thème FAQ'     => 'exportName',
+            'Date de création'     => 'exportCreatedAt',
+            'Date de modification' => 'exportUpdatedAt',
+            'Statut master'        => 'exportStatusMaster',
+            'Traduction en'        => 'exportTranslationEn',
+            'Statut en'            => 'exportStatusEn',
+            'Traduction es'        => 'exportTranslationEs',
+            'Statut es'            => 'exportStatusEs',
+            'Traduction zh'        => 'exportTranslationZh',
+            'Statut zh'            => 'exportStatusZh',
+        );
+    }
 }
