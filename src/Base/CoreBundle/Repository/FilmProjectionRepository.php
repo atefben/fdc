@@ -13,6 +13,37 @@ use Base\CoreBundle\Entity\FilmFilm;
 class FilmProjectionRepository extends EntityRepository
 {
 
+    public function getProjectionsByFestivalAndDateAndRoom($festival, $date, $room, $isPress)
+    {
+        $qb = $this
+            ->createQueryBuilder('p')
+            ->join('p.room', 'r')
+            ->where('p.festival = :festival');
+
+        if ($room != false) {
+            $qb = $qb
+                ->andWhere('p.room = :room');
+        }
+        $qb->andWhere('(p.startsAt >= :startDate AND p.startsAt <= :endDate)');
+
+        if ($isPress == false) {
+            $qb = $qb->andWhere('p.type != "Séance de presse"');
+        }
+
+        $qb = $qb->setParameter('festival', $festival);
+        if ($room != false) {
+            $qb = $qb->setParameter('room', $room);
+        }
+        $qb = $qb
+            ->setParameter('startDate', $date. ' 00:00:00')
+            ->setParameter('endDate', $date. ' 23:59:59')
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $qb;
+    }
+
 
     public function getProjectionsByFestivalYearAndProgrammationSection($festival, $programmationSection)
     {

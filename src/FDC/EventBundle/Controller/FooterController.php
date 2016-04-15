@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 use FDC\EventBundle\Form\Type\ContactType;
 use FDC\EventBundle\Form\Type\NewsletterType;
@@ -830,5 +831,30 @@ class FooterController extends Controller
             'hasErrors' => $hasErrors
         );
 
+    }
+
+    /**
+     * Generate the article feed
+     * @Route("/rss")
+     * @return Response XML Feed
+     */
+    public function rssAction(Request $request)
+    {
+        $id = $request->query->get('id');
+
+        if($id == null) {
+
+            $articles = $this->getDoctrine()->getRepository('BaseCoreBundle:MediaAudio')->findAll();
+            $feed = $this->get('eko_feed.feed.manager')->get('article');
+            $feed->addFromArray($articles);
+
+            return new Response($feed->render('rss')); // ou 'atom'
+        } else {
+            $articles = $this->getDoctrine()->getRepository('BaseCoreBundle:MediaAudio')->findById($id);
+            $feed = $this->get('eko_feed.feed.manager')->get('article');
+            $feed->addFromArray($articles);
+
+            return new Response($feed->render('rss')); // ou 'atom'
+        }
     }
 }

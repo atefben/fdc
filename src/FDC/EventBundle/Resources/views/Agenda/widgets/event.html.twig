@@ -1,23 +1,49 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-<div class="fc-event" data-category="{{ event.category.slug }}"
-     data-type="{{ event.category.slug }}" data-url="eventPopin.html"
-     data-id="{{ event.id }}" data-picto='.pen' data-color='#000'
-     data-start="{{ event.startAt|date('Y-m-d') }}T{{ event.startAt|date('H:i:s') }}"
-     data-end="{{ event.endAt|date('Y-m-d') }}T{{ event.endAt|date('H:i:s') }}"
-     data-time="{{ event.startAt|date('H') }}" data-duration="{{ event.duration }}">
+{% set isPress = (event.type == 'Conférence de presse') ? true : false %}
+{% set difference = date(event.endsAt).diff(date(event.startsAt)) %}
+{% set minutes = difference.i %}
 
-    <span class="category"><i class="icon icon_espace-{{ event.category.slug }}"></i>{{ event.category.name }}</span>
-    <div class="info">
-        <img src="{{ event.image.path }}" />
-        <div class="txt">
-            <span>{{ event.title }}</span>
-            <strong>{{ event.author.fullName }}</strong>
+{% if difference.h > 0 %}
+    {% set minutes = minutes + (difference.h * 60) %}
+{% endif %}
+
+{% if event.programmationFilms|length > 0 %}
+    {% set film = event.programmationFilms[0].film %}
+    <div class="fc-event" data-category="{{ film.selectionSection|trans_fallback('slug') }}"
+         data-type="{{ event.type }}" data-url="eventPopin.html"
+         data-id="{{ event.id }}" data-picto=".pen" data-color="#000"
+         data-start="{{ event.startsAt|date('Y-m-d') }}T{{ event.startsAt|date('H:i:s') }}"
+         data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"
+         data-time="{{ event.startsAt|date('H') }}" data-duration="{{ minutes }}">
+        <span class="category">
+            <i class="icon{% if isPress %} icon_espace-presse{% endif %}"></i>
+            {{ event.type }}
+        </span>
+        <div class="info">
+            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                film: film,
+                film_format: '90x120',
+                film_attrs: {
+                    alt: film|trans_fallback('title')?:film.titleVO,
+                },
+                film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
+                film_image_default_attrs: 'width="46"'
+            }) %}
+            <div class="txt">
+                <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
+                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                <strong>
+                {% for director in directors %}
+                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}
+                    {% if loop.index != directors|length %}, {% endif %}
+                {% endfor %}
+                </strong>
+            </div>
+        </div>
+        <div class="bottom">
+            <span class="duration">{% if difference.h > 0 %}{{ difference.h }}H{% endif %}{{ difference.i }}</span> - <span class="ven">{% if event.room %}{{ event.room.name }}{% endif %}</span>
+            <span class="{{ film.selectionSection|trans_fallback('slug') }}">{{ film.selectionSection|trans_fallback('name') }}</span>
         </div>
     </div>
-    <div class="bottom">
-        <span class="duration">{{ event.duration }}min</span> - <span class="ven">{{ event.place }}</span>
-        <span class="competition">{{ event.competition }}</span>
-    </div>
-</div>
-
+{% endif %}

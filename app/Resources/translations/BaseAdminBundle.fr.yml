@@ -238,6 +238,7 @@ list:
     label_starts_at: Date de début
     label_ends_at: Date de fin
     label_type: Type
+    page_title: Titre de la page
     label_programmation_section: Section de programmation
     label_iso: ISO
     label_budget_estimation : Budget Estimé
@@ -461,6 +462,8 @@ dashboard:
         homepage: Homepage
         FAQ: FAQ
         FAQTheme: Thèmes FAQ
+        pages: Pages
+        pages_libre: Pages libres
         fdc_page_la_selection_cannes_classics_honor: Invité d'honneur
         fdc_page_la_selection_cannes_classics_hommages: Hommages
         fdc_page_la_selection_cannes_classics_copy: Copies Restaurées

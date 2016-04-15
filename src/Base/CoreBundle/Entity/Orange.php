@@ -54,7 +54,7 @@ abstract class Orange implements TranslateMainInterface
     /**
      * @var OrangeWidget
      *
-     * @ORM\OneToMany(targetEntity="OrangeWidget", mappedBy="parent", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="OrangeWidget", mappedBy="parent", cascade={"all"})
      *
      * @ORM\OrderBy({"position" = "ASC"})
      * 

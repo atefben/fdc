@@ -2,12 +2,15 @@
 
 namespace FDC\EventBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
 use FDC\EventBundle\Component\Controller\Controller;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Validator\Constraints\DateTime;
+
+use \DateTime;
 
 /**
  * @Route("/programmation")
@@ -25,7 +28,59 @@ class AgendaController extends Controller
     public function schedulingAction(Request $request)
     {
         $this->isPageEnabled($request->get('_route'));
-        $schedulingDays = array(
+        $festival = $this->getFestival()->getId();
+        $date = $request->get('date') ?: new DateTime();
+        $festivalStart    = $this->getFestival()->getFestivalStartsAt();
+        $festivalEnd      = $this->getFestival()->getFestivalEndsAt();
+        $isPress = ($request->headers->get('host') == $this->getParameter('fdc_press_domain')) ? true : false;
+
+        if ($request->get('date')) {
+           $date = $request->get('date');
+        } else {
+            $date = new DateTime();
+
+            if ($date < $festivalStart) {
+                $date = $festivalStart->format('Y-m-d');
+            } else if ($date > $festivalEnd) {
+                $date = $festivalEnd->format('Y-m-d');
+            } else {
+                $date = $date->format('Y-m-d');
+            }
+        }
+
+        // get all rooms
+        $rooms = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmProjectionRoom')
+            ->findAll()
+        ;
+
+        // get projections by room
+        foreach ($rooms as $room) {
+            $projections[$room->getId()] = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmProjection')
+                ->getProjectionsByFestivalAndDateAndRoom($festival, $date, $room->getId(), $isPress)
+            ;
+        }
+
+        // get all selections - filter selection
+        $projectionsAll = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmProjection')
+            ->getProjectionsByFestivalAndDateAndRoom($festival, $date, false, $isPress);
+        $selections = array();
+        foreach ($projectionsAll as $projection) {
+            foreach ($projection->getProgrammationFilms() as $projectionProgrammationFilm) {
+                $film = $projectionProgrammationFilm->getFilm();
+                $selections[$film->getSelectionSection()->getId()] = $film->getSelectionSection();
+            }
+        }
+
+        $schedulingDays = $this->createDateRangeArrayEvent($festivalStart->format('Y-m-d'), $festivalEnd->format('Y-m-d'), false);
+
+
+        /*$schedulingDays = array(
             array(
                 'date' => new \DateTime(),
             ),
@@ -50,9 +105,9 @@ class AgendaController extends Controller
             array(
                 'date' => new \DateTime(),
             )
-        );
+        );*/
 
-        $selectionFilters = array(
+       /* $selectionFilters = array(
             array(
                 'name' => 'Toutes',
                 'slug' => 'all'
@@ -69,7 +124,7 @@ class AgendaController extends Controller
                 'name' => 'Un certain regard',
                 'slug' => 'certain-regard'
             )
-        );
+        );*/
 
         $typeFilters = array(
             array(
@@ -86,64 +141,50 @@ class AgendaController extends Controller
             ),
         );
 
-        $events = array(
-            'place' => array(
-                'grandTheatre' => array(
-                    'events' => array(
-                        array(
-                            'id' => 3,
-                            'title' => 'Orson welles, autopsie d’une légende',
-                            'author' => array(
-                                'fullName' => 'Elisabet KAPNIST'
-                            ),
-                            'category' => array(
-                                'name' => 'Séance de reprise',
-                                'slug' => 'reprise'
-                            ),
-                            'startAt' => new \DateTime(),
-                            'endAt' => new \DateTime(),
-                            'duration' => 120,
-                            'image' => array(
-                                'path' => '//dummyimage.com/46x64/000/fff'
-                            ),
-                            'place' => 'Grand Théatre Lumière',
-                            'competition' => 'Hors compétition'
-                        ),
-                    )
-                ),
-                'salleBunuel' => array(
-                    'events' => array(
-                        array(
-                            'id' => 5,
-                            'title' => 'Mad max, fury road',
-                            'author' => array(
-                                'fullName' => 'Elisabet KAPNIST'
-                            ),
-                            'category' => array(
-                                'name' => 'conférence de presse',
-                                'slug' => 'presse'
-                            ),
-                            'startAt' => new \DateTime(),
-                            'endAt' => new \DateTime(),
-                            'duration' => 60,
-                            'image' => array(
-                                'path' => '//dummyimage.com/46x64/000/fff'
-                            ),
-                            'place' => 'Grand Théatre Lumière',
-                            'competition' => 'Hors compétition'
-                        ),
-                    )
-                ),
-            )
-        );
-
         return array(
             'schedulingDays' => $schedulingDays,
-            'schedulingEvents' => $events,
+            'rooms' => $rooms,
+            'projections' => $projections,
             'typeFilters' => $typeFilters,
-            'selectionFilters' => $selectionFilters,
+            'selections' => $selections,
+            'festival' => $festival,
+            'date' => $date
         );
 
+    }
+
+    /**
+     * @Route("/day", options={"expose"=true})
+     * @Template("FDCEventBundle:Global:projection.html.twig")
+     * @param Request $request
+     * @return array
+     */
+    public function getDayProjectionsAction(Request $request) {
+
+        $festival = $this->getFestival()->getId();
+        $date = $request->get('date');
+        $isPress = ($request->headers->get('host') == $this->getParameter('fdc_press_domain')) ? true : false;
+
+        // get all rooms
+        $rooms = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmProjectionRoom')
+            ->findAll()
+        ;
+
+        // get projections by room
+        foreach ($rooms as $room) {
+            $projections[$room->getId()] = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmProjection')
+                ->getProjectionsByFestivalAndDateAndRoom($festival, $date, $room->getId(), $isPress)
+            ;
+        }
+
+        return array(
+            'rooms' => $rooms,
+            'projections' => $projections
+        );
     }
 
     /**
@@ -192,6 +233,5 @@ class AgendaController extends Controller
         return array(
             'rooms' => $rooms
         );
-
     }
 }

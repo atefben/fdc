@@ -130,3 +130,12 @@ misd_guzzle:
         class:              "Guzzle\Service\Builder\ServiceBuilder"
         configuration_file: "%kernel.root_dir%/config/webservices.json"
 
+eko_feed:
+    translation_domain: FDCEventBundle # Optional, if you want to use a custom translation domain
+    feeds:
+        article:
+            title:       'Festival de Cannes AUDIOS'
+            description: 'Latest audios from Festival de Cannes'
+            link:        ''
+            encoding:    'utf-8'
+            author:      ~ # Only required for Atom feeds

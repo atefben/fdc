@@ -12,6 +12,26 @@ use Symfony\Component\HttpFoundation\Request;
 
 class Controller extends BaseController
 {
+    public function createDateRangeArrayEvent($strDateFrom, $strDateTo, $reverse = true)
+    {
+        $aryRange  = array();
+        $iDateFrom = mktime(1, 0, 0, substr($strDateFrom, 5, 2), substr($strDateFrom, 8, 2), substr($strDateFrom, 0, 4));
+        $iDateTo   = mktime(1, 0, 0, substr($strDateTo, 5, 2), substr($strDateTo, 8, 2), substr($strDateTo, 0, 4));
+        if ($iDateTo >= $iDateFrom) {
+            array_push($aryRange, date('Y-m-d', $iDateFrom));
+            while ($iDateFrom < $iDateTo) {
+                $iDateFrom += 86400;
+                array_push($aryRange, date('Y-m-d', $iDateFrom));
+            }
+        }
+
+        if ($reverse == true) {
+            return array_reverse($aryRange);
+        } else {
+            return ($aryRange);
+        }
+
+    }
 
     /**
      * @return ObjectManager
