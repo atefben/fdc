@@ -164,8 +164,8 @@
                     {% endif %}
                     {% if artist.juries|length > 0 %}
                         <h2 class="title title-art-artist">{{ 'juries.artiste.title.presences'|trans }}</h2>
-                        {% for jury in artist.juries %}
-                            <div class="jury">
+                        <div class="jury">
+                            {% for jury in artist.juries %}
                                 {% if jury.function %}
                                     <span class="rank" {{ jury.function|content_lang('name') }}>{{ jury.function|trans_fallback('name') }}</span>
                                 {% endif %}
@@ -181,8 +181,9 @@
                                     {% endif %}
                                     <span class="date">{{ jury.festival.year }}</span>
                                 {% endif %}
-                            </div>
-                        {% endfor %}
+                                {{ loop.last == false ? '<br>':'' }}
+                            {% endfor %}
+                        </div>
                     {% endif %}
                 </div>
             </div>
