@@ -1,19 +1,34 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 {% set isPress = (event.type == 'Conférence de presse') ? 1 : 0 %}
-<div class="fc-event" data-category="{{ event.type }}"
-     data-type="{{ event.type }}" data-url="eventPopin.html"
-     data-id="{{ event.id }}" data-picto='.pen' data-color='#000'
-     data-start="{{ event.startsAt|date('Y-m-d') }}T{{ event.startsAt|date('H:i:s') }}"
-     data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"
-     data-time="{{ event.startsAt|date('H') }}" data-duration="{{ event.duration }}">
+{% set difference = date(event.endsAt).diff(date(event.startsAt)) %}
+{% set minutes = difference.i %}
 
-    <span class="category"><i class="icon{% if isPress %} icon_espace-presse{% endif %}"></i>{{ event.type }}</span>
-    {% if event.programmationFilms|length > 0 %}
+{% if difference.h > 0 %}
+    {% set minutes = minutes + (difference.h * 60) %}
+{% endif %}
+
+{% if event.programmationFilms|length > 0 %}
+    {% set film = event.programmationFilms[0].film %}
+    <div class="fc-event" data-category="{{ film.selectionSection|trans_fallback('slug') }}"
+         data-type="{{ event.type }}" data-url="eventPopin.html"
+         data-id="{{ event.id }}" data-picto='.pen' data-color='#000'
+         data-start="{{ event.startsAt|date('Y-m-d') }}T{{ event.startsAt|date('H:i:s') }}"
+         data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"
+         data-time="{{ event.startsAt|date('H') }}" data-duration="{{ minutes }}">
+        <span class="category"><i class="icon{% if isPress %} icon_espace-presse{% endif %}"></i>{{ event.type }}</span>
         <div class="info">
+            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                film: film,
+                film_format: '90x120',
+                film_attrs: {
+                    alt: film|trans_fallback('title')?:film.titleVO,
+                },
+                film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
+                film_image_default_attrs: 'width="46"'
+            }) %}
             <img src="" />
             <div class="txt">
-                {% set film = event.programmationFilms[0].film %}
                 <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
                 {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                 <strong>
@@ -25,8 +40,8 @@
             </div>
         </div>
         <div class="bottom">
-            <span class="duration">12min</span> - <span class="ven">{% if event.room %}{{ event.room.name }}{% endif %}</span>
-            <span class="competition">{{ film.selectionSection|trans_fallback('name') }}</span>
+            <span class="duration">{% if difference.h > 0 %}{{ difference.h }}H{% endif %}{{ difference.i }}</span> - <span class="ven">{% if event.room %}{{ event.room.name }}{% endif %}</span>
+            <span class="{{ film.selectionSection|trans_fallback('slug') }}">{{ film.selectionSection|trans_fallback('name') }}</span>
         </div>
-    {% endif %}
-</div>
+    </div>
+{% endif %}

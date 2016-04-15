@@ -32,6 +32,7 @@ class AgendaController extends Controller
         $date = $request->get('date') ?: new DateTime();
         $festivalStart    = $this->getFestival()->getFestivalStartsAt();
         $festivalEnd      = $this->getFestival()->getFestivalEndsAt();
+        $isPress = ($request->headers->get('host') == $this->getParameter('fdc_press_domain')) ? true : false;
 
         if ($request->get('date')) {
            $date = $request->get('date');
@@ -47,19 +48,31 @@ class AgendaController extends Controller
             }
         }
 
+        // get all rooms
         $rooms = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmProjectionRoom')
             ->findAll()
         ;
 
+        // get projections by room
         foreach ($rooms as $room) {
             $projections[$room->getId()] = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FilmProjection')
-                ->getProjectionsByFestivalAndDateAndRoom($festival, $date, $room->getId())
+                ->getProjectionsByFestivalAndDateAndRoom($festival, $date, $room->getId(), $isPress)
             ;
-            var_dump(count($projections[$room->getId()]));
+        }
+
+        // filter selection
+        $selections = array();
+        foreach ($projections as $tmp) {
+            foreach ($tmp as $projection) {
+                foreach ($projection->getProgrammationFilms() as $projectionProgrammationFilm) {
+                    $film = $projectionProgrammationFilm->getFilm();
+                    $selections[$film->getSelectionSection()->getId()] = $film->getSelectionSection();
+                }
+            }
         }
 
         // remove projection not matching current festival
@@ -102,7 +115,7 @@ class AgendaController extends Controller
             )
         );*/
 
-        $selectionFilters = array(
+       /* $selectionFilters = array(
             array(
                 'name' => 'Toutes',
                 'slug' => 'all'
@@ -119,7 +132,7 @@ class AgendaController extends Controller
                 'name' => 'Un certain regard',
                 'slug' => 'certain-regard'
             )
-        );
+        );*/
 
         $typeFilters = array(
             array(
@@ -136,66 +149,74 @@ class AgendaController extends Controller
             ),
         );
 
-        /*$events = array(
-            'place' => array(
-                'grandTheatre' => array(
-                    'events' => array(
-                        array(
-                            'id' => 3,
-                            'title' => 'Orson welles, autopsie d’une légende',
-                            'author' => array(
-                                'fullName' => 'Elisabet KAPNIST'
-                            ),
-                            'category' => array(
-                                'name' => 'Séance de reprise',
-                                'slug' => 'reprise'
-                            ),
-                            'startAt' => new \DateTime(),
-                            'endAt' => new \DateTime(),
-                            'duration' => 120,
-                            'image' => array(
-                                'path' => '//dummyimage.com/46x64/000/fff'
-                            ),
-                            'place' => 'Grand Théatre Lumière',
-                            'competition' => 'Hors compétition'
-                        ),
-                    )
-                ),
-                'salleBunuel' => array(
-                    'events' => array(
-                        array(
-                            'id' => 5,
-                            'title' => 'Mad max, fury road',
-                            'author' => array(
-                                'fullName' => 'Elisabet KAPNIST'
-                            ),
-                            'category' => array(
-                                'name' => 'conférence de presse',
-                                'slug' => 'presse'
-                            ),
-                            'startAt' => new \DateTime(),
-                            'endAt' => new \DateTime(),
-                            'duration' => 60,
-                            'image' => array(
-                                'path' => '//dummyimage.com/46x64/000/fff'
-                            ),
-                            'place' => 'Grand Théatre Lumière',
-                            'competition' => 'Hors compétition'
-                        ),
-                    )
-                ),
-            )
-        );*/
-
         return array(
             'schedulingDays' => $schedulingDays,
             'rooms' => $rooms,
             'projections' => $projections,
             'typeFilters' => $typeFilters,
-            'selectionFilters' => $selectionFilters,
-            'festival' => $festival
+            'selections' => $selections,
+            'festival' => $festival,
+            'date' => $date
         );
 
+    }
+
+    /**
+     * @Route("/day", options={"expose"=true}))
+     * @Template("FDCEventBundle:Global:projection.html.twig")
+     * @param Request $request
+     * @return array
+     */
+    public function getDayProjectionsAction(Request $request) {
+
+        $em = $this->get('doctrine')->getManager();
+
+        $date = $request->get('date');
+
+        $dayProjection = array();
+        if ($request->headers->get('host') == $this->getParameter('fdc_press_domain') ) {
+
+            // GET DAY PROJECTIONS
+            /*$dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
+                ->getProjectionByDate($date);
+
+            $path = $request->headers->get('referer');
+            if ($path !== null) {
+                $path = parse_url($path)['path'];
+                if (strpos($path, '/app_dev.php') !== false) {
+                    $path = explode('/', $path);
+                    unset($path[1]);
+                    $path = implode('/', $path);
+                }
+                $router = $this->get('router');
+                $route = $router->match($path)['_route'];
+                // If we are on homepage
+                if ($route == 'fdc_press_news_home') {
+                    // Event have to be in 5h max
+                    $hourRange = array();
+                    $newDate = new \DateTime;
+                    $endHour = $newDate->modify('+ 5 hour')->format('H');
+
+                    while ($date->format('H') <= $endHour) {
+
+                        array_push($hourRange, $date->format('H'));
+                        $date->modify('+ 1 hour')->format('H');
+                    }
+
+                    foreach ( $dayProjection as $key => $projection ) {
+                        if (!in_array($projection->getStartsAt()->format('H'), $hourRange)) {
+                            unset($dayProjection[$key]);
+                        }
+                    }
+                }
+            }*/
+        }
+        else {
+            // Grab Event Site projections
+        }
+        return array(
+            'dayProjection' => $dayProjection,
+        );
     }
 
     /**
@@ -244,6 +265,5 @@ class AgendaController extends Controller
         return array(
             'rooms' => $rooms
         );
-
     }
 }
