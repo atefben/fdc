@@ -13,6 +13,22 @@ use Base\CoreBundle\Entity\FilmFilm;
 class FilmProjectionRepository extends EntityRepository
 {
 
+    public function getAllExceptTypes($festival, $types)
+    {
+        $qb = $this
+            ->createQueryBuilder('p')
+            ->join('p.programmationFilms', 'pf')
+            ->where('p.festival = :festival')
+            ->andWhere('p.type NOT IN (:types)')
+            ->setParameter('festival', $festival)
+            ->setParameter('types', $types)
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $qb;
+    }
+
     public function getProjectionsByFestivalAndDateAndRoom($festival, $date, $room, $isPress)
     {
         $qb = $this
@@ -27,7 +43,9 @@ class FilmProjectionRepository extends EntityRepository
         $qb->andWhere('(p.startsAt >= :startDate AND p.startsAt <= :endDate)');
 
         if ($isPress == false) {
-            $qb = $qb->andWhere('p.type != "Séance de presse"');
+            $qb = $qb
+                ->andWhere('p.type NOT IN (:types)')
+                ->setParameter('types', array('Séance de presse', 'Conférence de presse'));
         }
 
         $qb = $qb->setParameter('festival', $festival);
