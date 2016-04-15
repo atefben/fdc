@@ -1,0 +1,213 @@
+//       SUMMARY TABLE
+// =========================
+// 1. Style font
+// 2. Boutons
+// =========================
+
+
+// 1. Style font
+// =========================
+
+
+.quote.italic{
+  font-family: $CamphorItalic;
+}
+
+.title {
+  font-family: $CamphorRegular;
+  font-weight: 700;
+  font-size: 1.125rem;//18px
+  letter-spacing: 0.5em;//500
+  margin-bottom: 15px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.title-2{
+  font-family: $CamphorHeavy;
+  font-weight: 700;
+  font-size: 1.875rem;//30 px
+  letter-spacing: 0.5em;
+  margin-bottom: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.title-2a{
+  font-family: $CamphorHeavy;
+  font-size: .75rem;//30 px
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: $gold;
+}
+
+.title-3{
+  font-family: $CamphorBold;
+  font-size: .875rem;//14px
+  color:$gold;
+  text-transform: uppercase;
+}
+
+.title-4{
+  font-family: $CamphorBold;
+  font-size: 1.125rem; //18px
+  color:#000;
+  text-transform: uppercase;
+  line-height: 24px;
+}
+
+.title-4a{
+  font-family: $CamphorBold;
+  font-size: 1.75rem; //28px
+  color:#000;
+  text-transform: uppercase;
+  line-height: 36px;
+}
+
+.title-5{
+  font-family: $CamphorBold;
+  color:$gold;
+  font-size: .75rem; //12px
+  line-height: 24px;
+}
+
+.title-6{
+  font-size: .6875rem;//11px
+  text-transform: uppercase;
+  line-height: 24px;
+  font-family: $CamphorBold;
+  color:#000;
+}
+
+.title-7{
+  font-size: .875rem;//14px
+  text-transform: uppercase;
+  line-height: 24px;
+  font-family: $CamphorBold;
+  color:#000;
+}
+
+.title-8{
+  font-family: $CamphorBold;
+  font-size: .875rem; //14px
+  letter-spacing: .5rem; //500
+  text-transform: uppercase;
+  line-height: 18px;
+}
+
+.subtitle {
+  font-family: $Playfair;
+  font-style: italic;
+  font-size: 0.875rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+figcaption, .caption{
+  color:#868686;
+  font-size:.625rem;
+  font-family:$CamphorMedium;
+  margin-top:10px;
+  text-align: left;
+}
+
+.canvasloader {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  z-index: 11;
+  @include transition(all 0.5s $smoothTransition);
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+
+// 2. Boutons
+// =========================
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+.button {
+  border: 1px solid #dfdfdf;
+  border-right: none;
+  color: $gold;
+  display: inline-block;
+  font-family: $CamphorBold;
+  font-size: 0.688rem;
+  height: 38px;
+  line-height: 38px;
+  margin: 0 0 0 0;
+  padding: 0 19px 0 19px;
+  text-transform: uppercase;
+  @include transition(all 0.9s $smoothTransition);
+
+  &:last-child {
+    border-right: 1px solid #dfdfdf;
+  }
+
+  &:hover {
+    background-color: $gold;
+    border-color: $gold;
+    color: #fff;
+  }
+}
+
+.buttons {
+  font-size: 0;
+  text-align: center;
+
+  &.square .button {
+    height: 73px;
+    // line-height: 73px;
+    position: relative;
+    padding: 0;
+    text-align: center;
+    width: 73px;
+
+    &:hover {
+      border-color: #dfdfdf;
+    }
+  }
+}
+
+.single-button{
+  border-right: 1px solid $gold !important;
+  border-color: $gold;
+}
+
+.read-more {
+  border: 1px solid #d9d9d9;
+  clear: both;
+  color: #999;
+  display: block;
+  height: 55px;
+  font-family: $CamphorHeavy;
+  font-size: 0.625rem;
+  line-height: 55px;
+  margin-top: 45px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  @include transition(all 0.9s $smoothTransition);
+
+  strong {
+    color: #000;
+    font-weight: normal;
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
