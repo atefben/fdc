@@ -3135,9 +3135,10 @@ Copyright (c) 2015 Daniel Eden
   font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: 0.5em;
-  margin-bottom: 15px;
+  margin-bottom: 23px;
   text-align: center;
   text-transform: uppercase;
+  color: #141414;
 }
 
 .title-2 {
@@ -3308,7 +3309,7 @@ a {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.625rem;
   line-height: 55px;
-  margin-top: 45px;
+  margin-top: 71px;
   letter-spacing: 0.2em;
   text-align: center;
   text-transform: uppercase;
@@ -3604,7 +3605,8 @@ body .icon:before {
 }
 
 .block-legend {
-  padding: 30px 0;
+  padding: 25px 0;
+  padding-bottom: 33px;
 }
 .block-legend .info, .block-legend .info h2 {
   text-align: left;
@@ -3617,7 +3619,7 @@ body .icon:before {
 .block-legend .texts h2 {
   width: 38%;
   box-sizing: border-box;
-  padding-right: 113px;
+  padding-right: 100px;
 }
 .block-legend .texts .text-01 {
   width: 62%;
@@ -3758,7 +3760,7 @@ body .icon:before {
 
 video {
   padding: 30px 0;
-  padding-top: 50px;
+  padding-top: 23px;
   width: 100%;
 }
 
@@ -6073,7 +6075,7 @@ header #searchContainer {
 
 .filters {
   text-align: center;
-  padding-bottom: 50px;
+  padding-bottom: 24px;
 }
 .filters .icon {
   font-size: .4rem;
@@ -6090,7 +6092,7 @@ header #searchContainer {
   margin-right: 0;
 }
 .filters div .label {
-  color: #333;
+  color: #141414;
   margin-right: 15px;
   letter-spacing: 0.1em;
 }
@@ -6570,7 +6572,8 @@ h3.sub-title {
   float: left;
   padding-left: 45px;
   position: relative;
-  width: 35%;
+  width: 32%;
+  padding-top: 24px;
 }
 .card .info {
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
@@ -6589,16 +6592,19 @@ h3.sub-title {
   display: inline-block;
   font-size: 0.625rem;
 }
+.card .info h2 {
+  max-width: 70%;
+}
 .card.double {
   height: 575px;
   padding-left: 0;
-  width: 65%;
+  width: 68%;
 }
 .card.double h2 {
   font-size: 2.250rem;
   line-height: 1.3em;
   margin-top: 20px;
-  max-width: 70%;
+  max-width: 74%;
 }
 .card.double .image {
   height: 362px;
@@ -6728,6 +6734,7 @@ h3.sub-title {
 .slider-home {
   position: relative;
   height: 581px;
+  margin-bottom: 29px;
 }
 .slider-home .slider-carousel, .slider-home .owl-stage-outer, .slider-home .owl-stage, .slider-home .owl-item {
   height: 100%;
@@ -6737,7 +6744,7 @@ h3.sub-title {
 }
 .slider-home .owl-dots {
   position: absolute;
-  bottom: 100px;
+  bottom: 113px;
   width: 100%;
   text-align: center;
 }
@@ -6746,7 +6753,7 @@ h3.sub-title {
   width: 6px;
   display: inline-block;
   border-radius: 100%;
-  margin: 10px;
+  margin: 7px;
   border: 0px solid #c8a461;
   background-color: #000;
   vertical-align: middle;
@@ -6791,16 +6798,23 @@ h3.sub-title {
 }
 .slider-home .texts .title-4a {
   width: 310px;
-  margin-bottom: 25px;
+  margin-bottom: 16px;
+  color: #141414;
 }
 .slider-home .texts p {
   width: 335px;
   text-align: center;
   color: #838383;
-  margin-top: 37px;
+  margin-top: 29px;
   padding-bottom: 72px;
+  font-size: .875rem;
+  line-height: 24px;
+  font-size: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 }
 
+.slider-01 {
+  margin-bottom: 9px;
+}
 .slider-01 .owl-stage {
   margin-left: -147px;
 }

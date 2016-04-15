@@ -11,6 +11,7 @@
 .slider-home {
   position: relative;
   height: 581px;
+  margin-bottom: 29px;
 
   .slider-carousel, .owl-stage-outer, .owl-stage, .owl-item {
     height: 100%;
@@ -22,7 +23,7 @@
 
   .owl-dots {
     position: absolute;
-    bottom: 100px;
+    bottom: 113px;
     width: 100%;
     text-align: center;
   }
@@ -32,7 +33,7 @@
     width: 6px;
     display: inline-block;
     border-radius: 100%;
-    margin: 10px;
+    margin: 7px;
     border: 0px solid $gold;
     background-color: #000;
     vertical-align: middle;
@@ -85,15 +86,19 @@
 
     .title-4a {
       width: 310px;
-      margin-bottom: 25px;
+      margin-bottom: 16px;
+      color:#141414;
     }
 
     p {
       width: 335px;
       text-align: center;
       color: #838383;
-      margin-top: 37px;
+      margin-top: 29px;
       padding-bottom: 72px;
+      font-size:.875rem;
+      line-height:24px;
+      font-size:$CamphorMedium;
     }
   }
 }
@@ -101,6 +106,7 @@
 // 2. Slider 01
 // =========================
 .slider-01 {
+  margin-bottom: 9px;
 
   .owl-stage {
     margin-left: -147px;

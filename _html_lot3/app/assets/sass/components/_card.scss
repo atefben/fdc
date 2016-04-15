@@ -36,7 +36,8 @@ h3 {
   float: left;
   padding-left: 45px;
   position: relative;
-  width: 35%;
+  width: 32%;
+  padding-top: 24px;
 
   .info {
     font-family: $CamphorMedium;
@@ -56,19 +57,24 @@ h3 {
       display: inline-block;
       font-size: 0.625rem;
     }
+
+    h2{
+      max-width: 70%;
+    }
   }
 
 
   &.double {
+    height: 575px;
+    padding-left: 0;
+    width: 68%;
+
     h2 {
       font-size: 2.250rem;
       line-height: 1.3em;
       margin-top: 20px;
-      max-width: 70%;
+      max-width: 74%;
     }
-    height: 575px;
-    padding-left: 0;
-    width: 65%;
 
     .image {
       height: 362px;
