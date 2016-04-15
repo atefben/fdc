@@ -15,13 +15,9 @@
         <span class="label">{{ 'programmation.filters.label.types'|trans }} :</span>
         <span class="select">
             <span class="active" data-filter="all">{{ 'filter.tout'|trans }}</span>
-            {% for key, type in types %}
-                <span data-filter="{{ key }}">
-                     {% if type == 'Film' %}
-                        Séances
-                     {% else %}
-                         {{ type }}
-                    {% endif %}
+            {% for type in types %}
+                <span data-filter="{{ type|lower|replace(' ', '-') }}">
+                    {{ type }}
                 </span>
             {% endfor %}
             <i class="icon icon_fleche-down"></i>

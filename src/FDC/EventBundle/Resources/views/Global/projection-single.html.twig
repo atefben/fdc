@@ -3,75 +3,77 @@
 {% if projection is not empty %}
     <div class="popin-event">
         <div class="films">
-            {% for programmationFilm in projection.programmationFilms %}
-                {% set film = programmationFilm.film %}
-                <div class="film">
-                    {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                        film: film,
-                        film_format: '444x600',
-                        film_attrs: {
-                            alt: film|trans_fallback('title')?:film.titleVO,
-                        },
-                        film_image_default: 'bundles/fdcevent/img/palmares/film420x560.jpg',
-                        film_image_default_attrs: 'width="444"'
-                    }) %}
-                    <div class="content">
-                        <div class="categories">
-                            <span>{{ film.selectionSection|trans_fallback('name') }}{% if film.selectionSubsection %}{{ film.selectionSubsection|trans_fallback('name') }}{% endif %}</span>
-                            {% if 'Ouverture' in film.galaName %}
-                                <span>{{ 'movie.fdc_open'|trans }}</span>
-                            {% elseif 'Fermeture' in film.galaName %}
-                                <span>{{ 'movie.fdc_close'|trans }}</span>
-                            {% endif %}
-                            {% if film.directorFirst %}
-                                <span>{{ 'movie.first_film'|trans }}</span>
-                            {% endif %}
-                        </div>
-                        {% set secondTitle = null %}
-                        {% if film|trans_fallback('title') is not empty %}
-                            {% set mainTitle = film.titleVO %}
-                            {% set secondTitle = film|trans_fallback('title') %}
-                        {% else %}
-                            {% set mainTitle = film.titleVO %}
-                        {% endif %}
-                        <h2>{{ mainTitle }}</h2>
-                        {% if secondTitle and mainTitle != secondTitle %}
-                            <div class="title-original">({{ secondTitle }})</div>
-                        {% else %}
-                            <div class="title-original"></div>
-                        {% endif %}
-                        <p>
-                            {{ 'movie.label.realisepar'|trans }} :
-                            {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                            {% for director in directors %}
-                                {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
-                                {% if loop.index != directors|length %}, {% endif %}
-                            {% endfor %}
-                        </p>
-                        <p>
-                            {% if film.productionYear is not null and film.productionYear != 0 %}
-                                {{ 'movie.label.anneedeproduction'|trans }} : <span>{{ film.productionYear }}</span>
-                            {% endif %}
-                            {% if film.countries|length > 0 %}
-                                {{ 'movie.label.pays'|trans }} :
-                                {% for country in film.countries %}
-                                    <span>{{ country.country|trans_fallback('name')|replace({' ': ""}) }}</span>
-                                {% endfor %}
-                            {% endif %}
-                            {% if film.duration is not null and film.duration > 0 %}
-                                {% set duration = film.duration|split('.') %}
-                                {{ 'movie.label.duree'|trans }} :
-                                {% if duration|length >= 1 %}
-                                    <span>{{ duration[0] }} {{ 'movie.duration.minutes'|trans }}</span>
+            {% if projection.programmationFilms|length > 0 %}
+                {% for programmationFilm in projection.programmationFilms %}
+                    {% set film = programmationFilm.film %}
+                    <div class="film">
+                        {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                            film: film,
+                            film_format: '444x600',
+                            film_attrs: {
+                                alt: film|trans_fallback('title')?:film.titleVO,
+                            },
+                            film_image_default: 'bundles/fdcevent/img/palmares/film420x560.jpg',
+                            film_image_default_attrs: 'width="444"'
+                        }) %}
+                        <div class="content">
+                            <div class="categories">
+                                <span>{{ film.selectionSection|trans_fallback('name') }}{% if film.selectionSubsection %}{{ film.selectionSubsection|trans_fallback('name') }}{% endif %}</span>
+                                {% if 'Ouverture' in film.galaName %}
+                                    <span>{{ 'movie.fdc_open'|trans }}</span>
+                                {% elseif 'Fermeture' in film.galaName %}
+                                    <span>{{ 'movie.fdc_close'|trans }}</span>
                                 {% endif %}
+                                {% if film.directorFirst %}
+                                    <span>{{ 'movie.first_film'|trans }}</span>
+                                {% endif %}
+                            </div>
+                            {% set secondTitle = null %}
+                            {% if film|trans_fallback('title') is not empty %}
+                                {% set mainTitle = film.titleVO %}
+                                {% set secondTitle = film|trans_fallback('title') %}
+                            {% else %}
+                                {% set mainTitle = film.titleVO %}
                             {% endif %}
-                        </p>
-                        <a href="{{ path('fdc_event_movie_get', {slug: film.slug}) }}" class="button">
-                            {{ 'movie.see_movie_page'|trans }}
-                        </a>
+                            <h2>{{ mainTitle }}</h2>
+                            {% if secondTitle and mainTitle != secondTitle %}
+                                <div class="title-original">({{ secondTitle }})</div>
+                            {% else %}
+                                <div class="title-original"></div>
+                            {% endif %}
+                            <p>
+                                {{ 'movie.label.realisepar'|trans }} :
+                                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                {% for director in directors %}
+                                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
+                                    {% if loop.index != directors|length %}, {% endif %}
+                                {% endfor %}
+                            </p>
+                            <p>
+                                {% if film.productionYear is not null and film.productionYear != 0 %}
+                                    {{ 'movie.label.anneedeproduction'|trans }} : <span>{{ film.productionYear }}</span>
+                                {% endif %}
+                                {% if film.countries|length > 0 %}
+                                    {{ 'movie.label.pays'|trans }} :
+                                    {% for country in film.countries %}
+                                        <span>{{ country.country|trans_fallback('name')|replace({' ': ""}) }}</span>
+                                    {% endfor %}
+                                {% endif %}
+                                {% if film.duration is not null and film.duration > 0 %}
+                                    {% set duration = film.duration|split('.') %}
+                                    {{ 'movie.label.duree'|trans }} :
+                                    {% if duration|length >= 1 %}
+                                        <span>{{ duration[0] }} {{ 'movie.duration.minutes'|trans }}</span>
+                                    {% endif %}
+                                {% endif %}
+                            </p>
+                            <a href="{{ path('fdc_event_movie_get', {slug: film.slug}) }}" class="button">
+                                {{ 'movie.see_movie_page'|trans }}
+                            </a>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            {% endif %}
         </div>
         <div class="events-container">
             {% if seances|length > 0 %}
@@ -107,16 +109,20 @@
                                             film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
                                             film_image_default_attrs: 'width="46"'
                                         }) %}
-                                        <div class="txt">
-                                            <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
-                                            {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                            <strong>
-                                                {% for director in directors %}
-                                                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}
-                                                    {% if loop.index != directors|length %}, {% endif %}
-                                                {% endfor %}
-                                            </strong>
-                                        </div>
+                                        {% if seance.programmationFilms|length == 1 %}
+                                            <div class="txt">
+                                                <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
+                                                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                <strong>
+                                                    {% for director in directors %}
+                                                        {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}
+                                                        {% if loop.index != directors|length %}, {% endif %}
+                                                    {% endfor %}
+                                                </strong>
+                                            </div>
+                                        {% else %}
+                                            <span> {{ seance.programmationSection }}</span>
+                                        {% endif %}
                                     </div>
                                     <div class="bottom">
                                         <span class="duration">
@@ -170,16 +176,20 @@
                                         film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
                                         film_image_default_attrs: 'width="46"'
                                         }) %}
-                                        <div class="txt">
-                                            <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
-                                            {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                            <strong>
-                                                {% for director in directors %}
-                                                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}
-                                                    {% if loop.index != directors|length %}, {% endif %}
-                                                {% endfor %}
-                                            </strong>
-                                        </div>
+                                        {% if conference.programmationFilms|length == 1 %}
+                                            <div class="txt">
+                                                <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
+                                                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                <strong>
+                                                    {% for director in directors %}
+                                                        {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}
+                                                        {% if loop.index != directors|length %}, {% endif %}
+                                                    {% endfor %}
+                                                </strong>
+                                            </div>
+                                        {% else %}
+                                            <span> {{ conference.programmationSection }}</span>
+                                        {% endif %}
                                     </div>
                                     <div class="bottom">
                                         <span class="duration">
@@ -233,16 +243,20 @@
                                         film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
                                         film_image_default_attrs: 'width="46"'
                                         }) %}
-                                        <div class="txt">
-                                            <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
-                                            {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                            <strong>
-                                                {% for director in directors %}
-                                                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}
-                                                    {% if loop.index != directors|length %}, {% endif %}
-                                                {% endfor %}
-                                            </strong>
-                                        </div>
+                                        {% if relatedProjection.programmationFilms|length == 1 %}
+                                            <div class="txt">
+                                                <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
+                                                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                <strong>
+                                                    {% for director in directors %}
+                                                        {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}
+                                                        {% if loop.index != directors|length %}, {% endif %}
+                                                    {% endfor %}
+                                                </strong>
+                                            </div>
+                                        {% else %}
+                                            <span> {{ relatedProjection.programmationSection }}</span>
+                                        {% endif %}
                                     </div>
                                     <div class="bottom">
                                         <span class="duration">

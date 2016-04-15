@@ -85,12 +85,13 @@ class AgendaController extends Controller
         $types = array();
 
         foreach ($projectionsAll as $projection) {
+            if (array_search($projection->getType(), $types) === false) {
+                $types[] = $projection->getType();
+            }
+
             foreach ($projection->getProgrammationFilms() as $projectionProgrammationFilm) {
                 $film = $projectionProgrammationFilm->getFilm();
                 $selections[$film->getSelectionSection()->getId()] = $film->getSelectionSection();
-                if ($projectionProgrammationFilm->getType() !== null) {
-                    $types[$projectionProgrammationFilm->getType()->getId()] = $projectionProgrammationFilm->getType()->getName();
-                }
             }
         }
 

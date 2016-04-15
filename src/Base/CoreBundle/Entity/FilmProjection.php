@@ -100,6 +100,18 @@ class FilmProjection
      *     "projection_show",
      * })
      */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @Groups({
+     *     "projection_list",
+     *     "projection_show",
+     * })
+     */
     private $programmationSection;
 
     /**
@@ -522,5 +534,28 @@ class FilmProjection
     public function getProgrammationFilmsList()
     {
         return $this->programmationFilmsList;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return FilmProjection
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }
