@@ -311,6 +311,7 @@ abstract class CoreManager
             // create log output
             $content = "Method : {$method}\n";
             $content .= 'Parameters: '. implode(', ', $parameters). "\n";
+            $content .= 'Webservice: '. $this->wsUrl . "\n";
             $content .= "\n\n";
             $content .= $this->client->__getLastResponse();
             $this->soifLogger->write(date('Y_m_d__H_i_s'). '__'. $method. '_'. reset($parameters). '.log.xml', $content);

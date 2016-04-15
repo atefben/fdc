@@ -2,12 +2,14 @@
 
 namespace FDC\PressBundle\Controller;
 
-use Base\CoreBundle\Entity\PressProjection;
-use Guzzle\Http\Message\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use \DateTime;
+
+use FDC\EventBundle\Component\Controller\Controller;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\Validator\Constraints\DateTime;
+
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -23,69 +25,78 @@ class AgendaController extends Controller
      * @Template("FDCPressBundle:Agenda:scheduling.html.twig")
      *
      */
-    public function schedulingAction()
+    public function schedulingAction(Request $request)
     {
-
-        $em = $this->getDoctrine()->getManager();
+        $festival = $this->getFestival()->getId();
+        $festivalStart    = $this->getFestival()->getFestivalStartsAt();
+        $festivalEnd      = $this->getFestival()->getFestivalEndsAt();
+        $isPress = false;
         $locale = $this->getRequest()->getLocale();
 
-        // GET FDC SETTINGS
-        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null || $settings->getFestival() === null) {
-            throw new NotFoundHttpException();
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_FDC_PRESS_REPORTER') &&
+            strpos($request->headers->get('refer'), 'press') !== false) {
+            $isPress = true;
         }
 
-        $festivalStartsAt = $settings->getFestival()->getFestivalStartsAt();
-        $festivalEndsAt = $settings->getFestival()->getFestivalEndsAt();
-        $schedulingDays = range($festivalStartsAt->format('d'), $festivalEndsAt->format('d'));
-        $schedulingYear = $festivalStartsAt->format('Y');
-        $schedulingMonth = $festivalStartsAt->format('m');
+        if ($request->get('date')) {
+            $date = $request->get('date');
+        } else {
+            $date = new DateTime();
 
-        array_walk($schedulingDays, function (&$value) use(&$schedulingYear, &$schedulingMonth) {
-            $value = $schedulingYear ."-". $schedulingMonth ."-". $value;
-        });
-
-        $date = new \DateTime;
-
-        $date = new \DateTime;
-        if (in_array($date->format('Ymd'), $schedulingDays)) {
-
-            $dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
-                ->getProjectionByDate($date->format('Ymd'));
-
-        }
-        else {
-
-            $dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
-                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
-
-        }
-
-        $typeFilters = array();
-        $selectionFilters = array();
-        $type = array();
-        $selection = array();
-
-        $i = 0;
-
-        foreach ($dayProjection as $projection) {
-
-            if (!in_array($projection->getType(), $type)) {
-                $typeFilters[$i]['name'] = $projection->getType();
-                $typeFilters[$i]['slug'] = mb_strtolower(preg_replace('/\s*/', '', $projection->getType()), mb_detect_encoding($projection->getType()));
-
-                $type[] = $projection->getType();
+            if ($date < $festivalStart) {
+                $date = $festivalStart->format('Y-m-d');
+            } else if ($date > $festivalEnd) {
+                $date = $festivalEnd->format('Y-m-d');
+            } else {
+                $date = $date->format('Y-m-d');
             }
-            if (!in_array($projection->getProgrammationSection(), $selection)) {
-                $selectionFilters[$i]['name'] = $projection->getProgrammationSection();
-                $selectionFilters[$i]['slug'] = mb_strtolower(preg_replace('/\s*/', '', $projection->getProgrammationSection()), mb_detect_encoding($projection->getProgrammationSection()));
-
-                $selection[] = $projection->getProgrammationSection();
-            }
-            $i++;
         }
 
-        $pressProjection = $em->getRepository('BaseCoreBundle:PressProjection')->findOneById($this->getParameter('admin_press_projection_id'));
+        // get all rooms
+        $rooms = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmProjectionRoom')
+            ->findAll()
+        ;
+
+        if (!$isPress) {
+            foreach ($rooms as $key => $room) {
+                if ($room->getName() == 'Salle de Conférence de Presse') {
+                    unset($rooms[$key]);
+                }
+            }
+        }
+
+        // get projections by room
+        foreach ($rooms as $room) {
+            $projections[$room->getId()] = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmProjection')
+                ->getProjectionsByFestivalAndDateAndRoom($festival, $date, $room->getId(), $isPress)
+            ;
+        }
+
+        // get all selections - filter selection
+        $projectionsAll = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmProjection')
+            ->getProjectionsByFestivalAndDateAndRoom($festival, $date, false, $isPress);
+        $selections = array();
+        $types = array();
+
+        foreach ($projectionsAll as $projection) {
+            foreach ($projection->getProgrammationFilms() as $projectionProgrammationFilm) {
+                $film = $projectionProgrammationFilm->getFilm();
+                $selections[$film->getSelectionSection()->getId()] = $film->getSelectionSection();
+                if ($projectionProgrammationFilm->getType() !== null) {
+                    $types[$projectionProgrammationFilm->getType()->getId()] = $projectionProgrammationFilm->getType()->getName();
+                }
+            }
+        }
+
+        $schedulingDays = $this->createDateRangeArrayEvent($festivalStart->format('Y-m-d'), $festivalEnd->format('Y-m-d'), false);
+
+        $pressProjection = $this->getDoctrineManager()->getRepository('BaseCoreBundle:PressProjection')->findOneById($this->getParameter('admin_press_projection_id'));
         if ($pressProjection === null) {
             throw new NotFoundHttpException();
         }
@@ -94,13 +105,15 @@ class AgendaController extends Controller
         $this->get('base.manager.seo')->setFDCPressPagePressProjectionSeo($pressProjection, $locale);
 
         return array(
+            'pressProjection' => $pressProjection,
             'schedulingDays' => $schedulingDays,
-            'typeFilters' => $typeFilters,
-            'selectionFilters' => $selectionFilters,
-            'dayProjection' => $dayProjection,
-            'pressProjection' => $pressProjection
+            'rooms' => $rooms,
+            'projections' => $projections,
+            'types' => $types,
+            'selections' => $selections,
+            'festival' => $festival,
+            'date' => $date
         );
-
     }
 
     /**
