@@ -53,7 +53,7 @@
         </div>
         <div class="bottom">
             <span class="duration">{% if difference.h > 0 %}{{ difference.h }}H{% endif %}{{ difference.i }}</span> - <span class="ven">{% if event.room %}{{ event.room.name }}{% endif %}</span>
-            <span class="{{ film.selectionSection|trans_fallback('slug') }}">{{ film.selectionSection|trans_fallback('name') }}</span>
+            <span class="competition">{{ film.selectionSection|trans_fallback('name') }}</span>
         </div>
     </div>
 {% elseif event.programmationDynamics|length > 0 %}
