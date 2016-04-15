@@ -271,7 +271,7 @@ list:
     label_updated_at: Mis à jour le
     label_published_interval: Date(s) de publication
     label__action: Actions
-    label_theme_name: Nom du thème FAQ
+    label_theme_name: Nom du thème
     label_priority_status: Priorité
     label__preview: Prévisualiser
     label__edit_translations: Éditer
@@ -687,7 +687,7 @@ form:
     label_seo_title: Titre
     label_seo_description: Description
     label_seo_file: Vignette partage
-    label_theme_name: Nom du thème
+    label_theme_name: Nom du thème FAQ
     label_file: Fichier
     label_media_video_image: Image cover
     label_display: Ne pas afficher cette strate

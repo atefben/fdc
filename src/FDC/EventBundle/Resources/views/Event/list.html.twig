@@ -52,7 +52,7 @@
                             <span class="category">{{ event.theme|trans_fallback('name') }}</span>
                             <span class="date">{{ event.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ event.publishedAt|date('H:i') }}</span>
                             <h3>
-                                <a href="{{ path('fdc_event_event_get', {'slug': event.slug }) }}">
+                                <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug') }) }}">
                                     {{ event|trans_fallback('title') }}
                                 </a>
                             </h3>

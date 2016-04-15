@@ -205,14 +205,17 @@ $(document).ready(function() {
     }
 
     // STICKY Menu on FAQ page on scroll
+
     if($('.faq').length) {
-      if(s > $('.faq-container.faq-active').offset().top - 120 && s < ($('.faq-container.faq-active').height() - $('.faq-container.faq-active').offset().top - 70)) {
-        $faqmenu.removeClass('bottom').addClass('stick');
-      } else {
-        if (s >= ($('.faq-container.faq-active').height() - $('.faq-container.faq-active').offset().top - 70)) {
-          $faqmenu.addClass('bottom');
+      if($('.faq-container.faq-active').height() > 500 ) {
+        if(s > $('.faq-container.faq-active').offset().top - 120 && s < ($('.faq-container.faq-active').height() - $('.faq-container.faq-active').offset().top - 70)) {
+          $faqmenu.removeClass('bottom').addClass('stick');
         } else {
-          $faqmenu.removeClass('stick');
+          if (s >= ($('.faq-container.faq-active').height() - $('.faq-container.faq-active').offset().top - 70)) {
+            $faqmenu.addClass('bottom');
+          } else {
+            $faqmenu.removeClass('stick');
+          }
         }
       }
     }

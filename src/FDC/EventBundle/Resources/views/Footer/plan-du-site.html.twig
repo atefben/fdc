@@ -37,6 +37,20 @@
                     {% endfor %}
                 </ul>
                 </article>
+            {% elseif route.route == 'fdc_event_event_getevents' and route.enabled == true %}
+                <article class="sitemap-item">
+                    <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                    <ul>
+
+                    {% for event in events %}
+                        <li>
+                            <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug') }) }}">
+                                {{ event|trans_fallback('title') }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                </article>
             {% elseif route.route == 'fdc_event_participate_prepare' and route.enabled == true %}
                 <article class="sitemap-item">
                     <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
@@ -103,6 +117,13 @@
                                 <li>
                                     <a href="{{ path('fdc_press_media_main') }}">
                                         {{ 'header.mainnav.nav.mediatheque'|trans({}, 'FDCPressBundle') }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if menu.route == 'fdc_press_media_download' and menu.enabled == true %}
+                                <li>
+                                    <a href="{{ path('fdc_press_media_download') }}">
+                                        {{ 'header.mainnav.nav.telecharger'|trans({}, 'FDCPressBundle') }}
                                     </a>
                                 </li>
                             {% endif %}
@@ -186,9 +207,6 @@
                 {% endfor %}
             </ul>
         </article>
-
-
-
     </section>
 </div>
 {% endblock %}

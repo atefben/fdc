@@ -27,16 +27,6 @@ class FDCPageFooterAdmin extends Admin
         );
     }
 
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection->remove('list');
-        $collection->remove('create');
-        $collection->remove('show');
-        $collection->remove('batch');
-        $collection->remove('delete');
-        $collection->remove('export');
-    }
-
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -66,8 +56,8 @@ class FDCPageFooterAdmin extends Admin
             ->add('priorityStatus')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
+                    'show'   => array(),
+                    'edit'   => array(),
                     'delete' => array(),
                 )
             ))
@@ -81,73 +71,73 @@ class FDCPageFooterAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
-                'label' => false,
+                'label'              => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'fields' => array(
-                    'title' => array(
-                        'label' => 'form.label_title',
+                'fields'             => array(
+                    'title'          => array(
+                        'label'              => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.news.helper_title',
-                        'constraints' => array(
+                        'sonata_help'        => 'form.news.helper_title',
+                        'constraints'        => array(
                             new NotBlank()
                         )
                     ),
-                    'content' => array(
-                        'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
-                        'label' => 'form.label_content',
+                    'content'        => array(
+                        'field_type'         => 'ckeditor',
+                        'config_name'        => 'widget',
+                        'label'              => 'form.label_content',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
+                        'required'           => false
                     ),
-                    'createdAt' => array(
+                    'createdAt'      => array(
                         'display' => false
                     ),
-                    'updatedAt' => array(
+                    'updatedAt'      => array(
                         'display' => false
                     ),
-                    'status' => array(
-                        'label' => 'form.label_status',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'choice',
-                        'choices' => FDCPageFooterTranslation::getStatuses(),
+                    'status'         => array(
+                        'label'                     => 'form.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => FDCPageFooterTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
-                    'seoTitle' => array(
-                        'attr' => array(
+                    'seoTitle'       => array(
+                        'attr'               => array(
                             'placeholder' => 'form.placeholder_seo_title'
                         ),
-                        'label' => 'form.label_seo_title',
-                        'sonata_help' => 'form.news.helper_seo_title',
+                        'label'              => 'form.label_seo_title',
+                        'sonata_help'        => 'form.news.helper_seo_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
+                        'required'           => false
                     ),
                     'seoDescription' => array(
-                        'attr' => array(
+                        'attr'               => array(
                             'placeholder' => 'form.placeholder_seo_description'
                         ),
-                        'label' => 'form.label_seo_description',
-                        'sonata_help' => 'form.news.helper_description',
+                        'label'              => 'form.label_seo_description',
+                        'sonata_help'        => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
+                        'required'           => false
                     )
                 )
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => FDCPageFooter::getAvailableTranslateOptions(),
+                'choices'            => FDCPageFooter::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
-                'multiple' => true,
-                'expanded' => true
+                'multiple'           => true,
+                'expanded'           => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => FDCPageFooter::getPriorityStatuses(),
+                'choices'                   => FDCPageFooter::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
                 'label'    => 'form.label_seo_file',
-                'help' => 'form.seo.helper_file',
+                'help'     => 'form.seo.helper_file',
                 'required' => false,
             ))
             ->end()

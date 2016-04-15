@@ -41,7 +41,7 @@
                 {% set video = video.mediaVideo %}
                 {% if video.image %}
                     {% set videoImage = media_public_url(video.image|trans_fallback('file'), '586x370') %}
-                {% elseif video.image|trans_fallback('imageAmazonUrl') %}
+                {% elseif video|trans_fallback('imageAmazonUrl') %}
                     {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                 {% endif %}
                 <div class="slide-video shadow-bottom">

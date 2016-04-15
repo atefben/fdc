@@ -3,7 +3,8 @@
 namespace FDC\EventBundle\Controller;
 
 use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -759,7 +760,15 @@ class FooterController extends Controller
             null
         );
 
+        //events
+        $festival = $this->getFestival()->getId();
+        $events = $em
+                ->getRepository('BaseCoreBundle:Event')
+                ->getEvents($festival, $locale)
+        ;
+
         return array(
+            'events'            => $events,
             'participate'       => $participateMenu,
             'footer'            => $displayedFooterElements,
             'press'             => $press,

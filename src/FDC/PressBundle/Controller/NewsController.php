@@ -97,7 +97,6 @@ class NewsController extends Controller
         $endHour = $newDate->modify('+ 5 hour')->format('H');
 
         while ($date->format('H') <= $endHour) {
-
             array_push($hourRange, $date->format('H'));
             $date->modify('+ 1 hour')->format('H');
         }
