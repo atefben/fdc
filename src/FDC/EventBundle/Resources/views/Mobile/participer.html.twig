@@ -1,0 +1,86 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+{% stylesheets "bundles/fdcevent/styles/mobile/*.css" filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+{% endstylesheets %}
+{% javascripts 'bundles/fdcevent/js/mobile/mobile.js' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+<body class="participer" id="main">
+    <section class="open">
+        <div class="section-title">
+            <i class="icon icon_horaires"></i>
+            <h3 class="title-participate">{{ landing|trans_fallback('title')  }}</h3>
+            <i class="icon accordion icon_moins"></i>
+        </div>
+        <div class="section-contain" >
+            {% for widget in landing.widgets %}
+                {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
+                    {% include 'FDCEventBundle:Mobile/widgets:widget_one.html.twig' with {'widget': widget} %}
+                {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
+                    {% include 'FDCEventBundle:Mobile/widgets:widget_two.html.twig' with {'widget': widget} %}
+                {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypethree" %}
+                    {% include 'FDCEventBundle:Mobile/widgets:widget_three.html.twig' with {'widget': widget} %}
+                {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefour" %}
+                    {% include 'FDCEventBundle:Mobile/widgets:widget_four.html.twig' with {'widget': widget} %}
+                {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefive" %}
+                    {% include 'FDCEventBundle:Mobile/widgets:widget_five.html.twig' with {'widget': widget} %}
+                {% elseif class(widget) == "FDCPageParticipateSectionWidgetSubTitle" %}
+                    {% include 'FDCEventBundle:Mobile/widgets:widget_subtitle.html.twig' with {'widget': widget} %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+    <section>
+        <div class="section-title">
+            <i class="icon icon_acces"></i>
+            <h3 class="title-participate">{{ medias|trans_fallback('title')  }}</h3>
+            <i class="icon accordion icon_case-plus"></i>
+        </div>
+        <div class="section-contain" >
+            {% for widget in medias.widgets %}
+                {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
+                    {% include 'FDCEventBundle:Mobile/widgets:widget_one.html.twig' with {'widget': widget} %}
+                {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
+                    {% include 'FDCEventBundle:Mobile/widgets:widget_two.html.twig' with {'widget': widget} %}
+                {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypethree" %}
+                    {% include 'FDCEventBundle:Mobile/widgets:widget_three.html.twig' with {'widget': widget} %}
+                {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefour" %}
+                    {% include 'FDCEventBundle:Mobile/widgets:widget_four.html.twig' with {'widget': widget} %}
+                {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefive" %}
+                    {% include 'FDCEventBundle:Mobile/widgets:widget_five.html.twig' with {'widget': widget} %}
+                {% elseif class(widget) == "FDCPageParticipateSectionWidgetSubTitle" %}
+                    {% include 'FDCEventBundle:Mobile/widgets:widget_subtitle.html.twig' with {'widget': widget} %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+    <section>
+        <div class="section-title">
+            <i class="icon icon_informations"></i>
+            <h3 class="title-participate">{{ services|trans_fallback('title')  }}</h3>
+            <i class="icon accordion icon_case-plus"></i>
+        </div>
+        <div class="section-contain">
+            <div class="contain-infos description">
+                {% for widget in services.widgets %}
+                    {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
+                        {% include 'FDCEventBundle:Mobile/widgets:widget_one.html.twig' with {'widget': widget} %}
+                    {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
+                        {% include 'FDCEventBundle:Mobile/widgets:widget_two.html.twig' with {'widget': widget} %}
+                    {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypethree" %}
+                        {% include 'FDCEventBundle:Mobile/widgets:widget_three.html.twig' with {'widget': widget} %}
+                    {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefour" %}
+                        {% include 'FDCEventBundle:Mobile/widgets:widget_four.html.twig' with {'widget': widget} %}
+                    {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefive" %}
+                        {% include 'FDCEventBundle:Mobile/widgets:widget_five.html.twig' with {'widget': widget} %}
+                    {% elseif class(widget) == "FDCPageParticipateSectionWidgetSubTitle" %}
+                        {% include 'FDCEventBundle:Mobile/widgets:widget_subtitle.html.twig' with {'widget': widget} %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</body>
+
