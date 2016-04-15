@@ -11,7 +11,7 @@
 {% if event.programmationFilms|length > 0 %}
     {% set film = event.programmationFilms[0].film %}
     <div class="fc-event" data-category="{{ film.selectionSection|trans_fallback('slug') }}"
-         data-type="{{ event.type|lower }}" data-url="{{ path('fdc_event_agenda_getprojection', {id: event.id}) }}"
+         data-type="{{ event.type|lower|replace(' ', '-') }}" data-url="{{ path('fdc_event_agenda_getprojection', {id: event.id}) }}"
          data-id="{{ event.id }}" data-picto=".pen" data-color="#000"
          data-start="{{ event.startsAt|date('Y-m-d') }}T{{ event.startsAt|date('H:i:s') }}"
          data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"

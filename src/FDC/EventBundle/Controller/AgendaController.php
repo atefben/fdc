@@ -47,6 +47,8 @@ class AgendaController extends Controller
             }
         }
 
+        $date = '2015-05-20';
+
         // get all rooms
         $rooms = $this
             ->getDoctrineManager()
@@ -75,7 +77,7 @@ class AgendaController extends Controller
         $projectionsAll = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmProjection')
-            ->getProjectionsByFestivalAndDateAndRoom($festival, $date, false, $isPress);
+            ->getProjectionsByFestivalAndDateAndRoom($festival, false, false, $isPress);
         $selections = array();
         $types = array();
 

@@ -40,7 +40,12 @@ class FilmProjectionRepository extends EntityRepository
             $qb = $qb
                 ->andWhere('p.room = :room');
         }
-        $qb->andWhere('(p.startsAt >= :startDate AND p.startsAt <= :endDate)');
+        if ($date != false) {
+            $qb
+                ->andWhere('(p.startsAt >= :startDate AND p.startsAt <= :endDate)')
+                ->setParameter('startDate', $date . ' 00:00:00')
+                ->setParameter('endDate', $date . ' 23:59:59');
+        }
 
         if ($isPress == false) {
             $qb = $qb
@@ -53,8 +58,7 @@ class FilmProjectionRepository extends EntityRepository
             $qb = $qb->setParameter('room', $room);
         }
         $qb = $qb
-            ->setParameter('startDate', $date. ' 00:00:00')
-            ->setParameter('endDate', $date. ' 23:59:59')
+
             ->getQuery()
             ->getResult()
         ;

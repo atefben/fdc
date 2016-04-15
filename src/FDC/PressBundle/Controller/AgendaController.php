@@ -80,7 +80,7 @@ class AgendaController extends Controller
         $projectionsAll = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmProjection')
-            ->getProjectionsByFestivalAndDateAndRoom($festival, $date, false, $isPress);
+            ->getProjectionsByFestivalAndDateAndRoom($festival, false, false, $isPress);
         $selections = array();
         $types = array();
 
