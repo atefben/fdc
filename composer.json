@@ -45,7 +45,8 @@
         "tilleuls/ckeditor-sonata-media-bundle": "^1.0",
         "egeloen/ckeditor-bundle": "^4.0",
         "misd/guzzle-bundle": "~1.0",
-        "coresphere/console-bundle": "^0.4.0"
+        "coresphere/console-bundle": "^0.4.0",
+
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
