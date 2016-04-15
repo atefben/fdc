@@ -89,7 +89,8 @@
                                 </p>
                                 <div class="fc-event" data-url="{{ path('fdc_event_agenda_getprojection', {id: seance.id}) }}"
                                      data-id="{{ seance.id }}" data-picto='.seance' data-color='#9b9b9b'
-                                     data-start="{{ seance.startsAt }}" data-end="{{ seance.endsAt }}"
+                                     data-start="{{ seance.startsAt|date('Y-m-d') }}T{{ seance.startsAt|date('H:i:s') }}"
+                                     data-end="{{ seance.endsAt|date('Y-m-d') }}T{{ seance.endsAt|date('H:i:s') }}"
                                      data-time="{{ seance.startsAt|date('H') }}" data-duration="{{ minutes }}"
                                 >
                                     <span class="category">
@@ -151,7 +152,8 @@
                                 </p>
                                 <div class="fc-event" data-url="{{ path('fdc_event_agenda_getprojection', {id: conference.id}) }}"
                                      data-id="{{ conference.id }}" data-picto='.seance' data-color='#9b9b9b'
-                                     data-start="{{ conference.startsAt }}" data-end="{{ conference.endsAt }}"
+                                     ddata-start="{{ conference.startsAt|date('Y-m-d') }}T{{ conference.startsAt|date('H:i:s') }}"
+                                     data-end="{{ conference.endsAt|date('Y-m-d') }}T{{ conference.endsAt|date('H:i:s') }}"
                                      data-time="{{ conference.startsAt|date('H') }}" data-duration="{{ minutes }}"
                                 >
                                         <span class="category">

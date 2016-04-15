@@ -172,7 +172,7 @@ class AgendaController extends Controller
         $filmIds = array();
         foreach ($projection->getProgrammationFilms() as $programmationFilm) {
             if (!in_array($programmationFilm->getFilm()->getId(), $filmIds)) {
-                $filmsIds[] = $programmationFilm->getFilm()->getId();
+                $filmIds[] = $programmationFilm->getFilm()->getId();
             }
         }
 
