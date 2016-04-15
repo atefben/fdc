@@ -19,10 +19,9 @@
 {% if image is not defined and trans.imageAmazonUrl is not null %}
     {% set image_s3 = s3_server_video ~ trans.imageAmazonUrl %}
 {% endif %}
-
 <div class="video-container state-init video"
-    data-link="//www.example.com"
-    data-email="//www.gmail.com"
+    data-link="{{ s3_server_video ~ trans.mp4Url }}"
+    data-email="{{ s3_server_video ~ trans.mp4Url }}"
     data-vid="{{ trans.id }}"
     {% if playlist is defined %}
     data-playlist='{{ playlist }}'

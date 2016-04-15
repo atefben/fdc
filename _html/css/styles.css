@@ -10606,16 +10606,10 @@ article .read-later.rAlign span:after {
   width: 128px;
   height: 84px;
 }
-
-.legal-notice .quote,
-.faq .quote,
 .single-article .quote {
   width: 630px;
   margin: 30px auto;
 }
-
-.legal-notice .quote blockquote,
-.faq .quote blockquote,
 .single-article .quote blockquote {
   border-bottom: 1px solid #e5e5e5;
   border-top: 1px solid #e5e5e5;
@@ -10625,9 +10619,6 @@ article .read-later.rAlign span:after {
   padding: 40px 15px;
   text-align: center;
 }
-
-.legal-notice .big-quote,
-.faq .big-quote,
 .single-article .big-quote {
   width: 697px;
   margin: 0 auto;
@@ -10636,9 +10627,6 @@ article .read-later.rAlign span:after {
   border: 1px solid #c8a461;
   margin-bottom: 70px;
 }
-
-.legal-notice .big-quote strong,
-.faq .big-quote strong,
 .single-article .big-quote strong {
   color: #c8a461;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -10649,9 +10637,6 @@ article .read-later.rAlign span:after {
   display: block;
   margin-bottom: 25px;
 }
-
-.legal-notice .big-quote p,
-.faq .big-quote p,
 .single-article .big-quote p {
   color: #b1b1b1;
   text-align: center;
@@ -10660,46 +10645,28 @@ article .read-later.rAlign span:after {
   font-weight: bold;
   line-height: 26px;
 }
-
-.legal-notice .text,
-.faq .text,
 .single-article .text {
   width: 630px;
   margin: 0 auto 70px;
 }
-
-.legal-notice .text p,
-.faq .text p,
 .single-article .text p {
   color: #666;
   font-size: 1rem;
   line-height: 1.7em;
   margin-bottom: 5px;
 }
-
-.legal-notice .text p a,
-.faq .text p a,
 .single-article .text p a {
   color: #c8a461;
 }
-
-.legal-notice .text strong,
-.faq .text strong,
 .single-article .text strong {
   color: #333;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-weight: normal;
 }
-
-.legal-notice .big-txt,
-.faq .big-txt,
 .single-article .big-txt {
   width: 630px;
   margin: 0 auto 70px;
 }
-
-.legal-notice .big-txt p,
-.faq .big-txt p,
 .single-article .big-txt p {
   color: #333333;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
@@ -10707,24 +10674,16 @@ article .read-later.rAlign span:after {
   line-height: 40px;
   text-align: center;
 }
-
-.legal-notice .txt-grey-bkg-container,
-.faq .txt-grey-bkg-container,
 .single-article .txt-grey-bkg-container {
   background-color: #f4f4f4;
   padding: 88px 0px;
   margin-bottom: 70px;
 }
-.legal-notice .txt-grey-bkg-container .content,
-.faq .txt-grey-bkg-container .content,
 .single-article .txt-grey-bkg-container .content {
   width: 634px;
   margin: 0 auto;
   display: block;
 }
-
-.legal-notice .txt-grey-bkg-container .content strong,
-.faq .txt-grey-bkg-container .content strong,
 .single-article .txt-grey-bkg-container .content strong {
   font-size: 1rem;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -10732,18 +10691,12 @@ article .read-later.rAlign span:after {
   margin-bottom: 20px;
   display: block;
 }
-
-.legal-notice .txt-grey-bkg-container .content p,
-.faq .txt-grey-bkg-container .content p,
 .single-article .txt-grey-bkg-container .content p {
   font-size: 1rem;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   color: #666666;
   line-height: 26px;
 }
-
-.legal-notice .table-article,
-.faq .table-article,
 .single-article .table-article {
   text-align: center;
   display: block;
@@ -10751,9 +10704,6 @@ article .read-later.rAlign span:after {
   width: 644px;
   padding-bottom: 50px;
 }
-
-.legal-notice .table-article td, .legal-notice .table-article th,
-.faq .table-article td, .faq .table-article th,
 .single-article .table-article td, .single-article .table-article th {
   font-weight: normal;
   vertical-align: middle;
@@ -10766,17 +10716,11 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
 }
-
-.legal-notice .table-article th,
-.faq .table-article th,
 .single-article .table-article th {
   text-transform: uppercase;
   color: #000;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
-
-.legal-notice .caption-article,
-.faq .caption-article,
 .single-article .caption-article {
   color: #333333;
   font-size: 0.750rem;
@@ -10788,9 +10732,6 @@ article .read-later.rAlign span:after {
   padding-top: 10px;
   border-top: 1px solid #dfdfdf;
 }
-
-.legal-notice .caption-article .name,
-.faq .caption-article .name,
 .single-article .caption-article .name {
   color: #000;
 }
@@ -14964,8 +14905,6 @@ input[type=submit] {
   vertical-align: top;
 }
 .faq .faq-active {
-  top: 1px;
-  opacity: 1;
   display: inline-block;
 }
 .faq section[data-name="informations-generales"] {
@@ -15408,7 +15347,6 @@ input[type=submit] {
   font-size: .625rem;
   padding-top: 25px;
   letter-spacing: .2em;
-  color: #000;
 }
 .contain-jury .contain-descript .descript-name {
   text-transform: uppercase;
@@ -15730,6 +15668,7 @@ input[type=submit] {
 .artist .jury {
   text-align: center;
   padding-bottom: 50px;
+  line-height: 30px;
 }
 .artist .jury .rank {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;

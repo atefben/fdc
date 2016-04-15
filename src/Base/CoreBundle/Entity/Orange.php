@@ -41,6 +41,13 @@ abstract class Orange implements TranslateMainInterface
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Groups({
+     *     "orange_series_and_cie",
+     *     "orange_programmation_ocs",
+     *     "orange_video_on_demand",
+     *     "orange_studio"
+     * })
      */
     private $id;
 

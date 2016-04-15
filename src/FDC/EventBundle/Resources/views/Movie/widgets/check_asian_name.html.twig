@@ -1,5 +1,13 @@
-{% if person.asianName %}
-    <a href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}"><span class="nom-item">{{ person.lastName ~ ' ' ~ person.firstName }}</span></a>
+{% if link is defined and link == false %}
+    {% if person.asianName %}
+        {{ person.lastName ~ ' ' ~ person.firstName }}
+    {% else %}
+        {{ person.fullName }}
+    {% endif %}
 {% else %}
-    <a href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}"><span class="nom-item">{{ person.fullName }}</span></a>
+    {% if person.asianName %}
+        <a href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}"><span class="nom-item">{{ person.lastName ~ ' ' ~ person.firstName }}</span></a>
+    {% else %}
+        <a href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}"><span class="nom-item">{{ person.fullName }}</span></a>
+    {% endif %}
 {% endif %}
