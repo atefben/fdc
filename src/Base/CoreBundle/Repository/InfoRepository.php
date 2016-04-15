@@ -143,8 +143,18 @@ class InfoRepository extends EntityRepository
             ->setParameter('displayed_mobile', true)
         ;
 
-        if ($festival->getFestivalStartsAt() > $dateTime || $festival->getFestivalEndsAt() < $dateTime) {
+        if ($festival->getFestivalStartsAt() >= $dateTime) {
             $this->addMasterQueries($qb, 'n', $festival, true);
+            $qb
+                ->andWhere(':festivalStartAt  >= n.publishedAt')
+                ->setParameter('festivalStartAt', $festival->getFestivalStartsAt())
+            ;
+        } else if ($festival->getFestivalEndsAt() <= $dateTime) {
+            $this->addMasterQueries($qb, 'n', $festival, true);
+            $qb
+                ->andWhere(':festivalEndAt < n.publishedAt')
+                ->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
+            ;
         } else {
             $morning = clone $dateTime;
             $morning->setTime(0, 0, 0);
@@ -524,6 +534,70 @@ class InfoRepository extends EntityRepository
             ->addOrderBy('n.publishedAt', 'DESC')
             ->setMaxResults($count)
             ->setParameter('site', 'site-press')
+            ->setParameter('displayedMobile', true)
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $qb;
+    }
+
+    /**
+     * get an array of only the $count last Info of $locale version of current
+     * $festival and verify publish date is between $dateTime
+     *
+     * @param $festival
+     * @param $dateTime
+     * @param $count
+     * @param $locale
+     * @return mixed
+     */
+    public function getApiLastInfos($festival, $dateTime, $locale, $count)
+    {
+        $qb = $this->createQueryBuilder('n')
+            ->join('n.sites', 's')
+            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
+            ->leftJoin('na.translations', 'nat')
+            ->leftJoin('naa.translations', 'naat')
+            ->leftJoin('nv.translations', 'nvt')
+            ->leftJoin('ni.translations', 'nit')
+            ->andWhere('n.displayedMobile = :displayedMobile')
+        ;
+
+        $qb = $qb
+            ->andWhere(
+                '(nat.locale = :locale_fr AND nat.status = :status)
+                OR (nit.locale = :locale_fr AND nit.status = :status)
+                OR (naat.locale = :locale_fr AND naat.status = :status)
+                OR (nvt.locale = :locale_fr AND nvt.status = :status)')
+            ->setParameter('locale_fr', 'fr')
+            ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED)
+        ;
+
+        if ($locale != 'fr') {
+
+            $qb = $qb
+                ->leftJoin('na.translations', 'na5t')
+                ->leftJoin('naa.translations', 'na6t')
+                ->leftJoin('nv.translations', 'na7t')
+                ->leftJoin('ni.translations', 'na8t')
+                ->andWhere(
+                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na8t.status = :status_translated)'
+                )
+                ->setParameter('status_translated', InfoArticleTranslation::STATUS_TRANSLATED)
+                ->setParameter('locale', $locale)
+            ;
+        }
+        $qb = $this->addMasterQueries($qb, 'n', $festival);
+        $qb = $qb
+            ->addOrderBy('n.publishedAt', 'DESC')
+            ->setMaxResults($count)
             ->setParameter('displayedMobile', true)
             ->getQuery()
             ->getResult()

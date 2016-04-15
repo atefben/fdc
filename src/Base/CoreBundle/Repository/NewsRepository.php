@@ -84,9 +84,18 @@ class NewsRepository extends EntityRepository
             ->andWhere('n.displayedMobile = :displayed_mobile')
             ->setParameter('displayed_mobile', true)
         ;
-
-        if ($festival->getFestivalStartsAt() > $dateTime || $festival->getFestivalEndsAt() < $dateTime) {
+        if ($festival->getFestivalStartsAt() >= $dateTime) {
             $this->addMasterQueries($qb, 'n', $festival, true);
+            $qb
+                ->andWhere(':festivalStartAt  >= n.publishedAt')
+                ->setParameter('festivalStartAt', $festival->getFestivalStartsAt())
+            ;
+        } else if ($festival->getFestivalEndsAt() <= $dateTime) {
+            $this->addMasterQueries($qb, 'n', $festival, true);
+            $qb
+                ->andWhere(':festivalEndAt < n.publishedAt')
+                ->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
+            ;
         } else {
             $morning = clone $dateTime;
             $morning->setTime(0, 0, 0);
@@ -156,7 +165,6 @@ class NewsRepository extends EntityRepository
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
             ->andWhere('n.displayedMobile= :displayedMobile')
-            ->andWhere('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
             ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;
@@ -194,7 +202,6 @@ class NewsRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime)
             ->setParameter('displayedMobile', true)
-            ->setParameter('site_slug', 'site-evenementiel')
         ;
 
         $qb = $qb
