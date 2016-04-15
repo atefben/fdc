@@ -127,7 +127,7 @@ class MobileController extends Controller
         $locale = $request->getLocale();
 
 
-        $plan = $em
+        $seRendre = $em
             ->getRepository('BaseCoreBundle:FDCPageParticipateSection')
             ->findOneBy(array(
                 'page' => '6',
@@ -135,7 +135,7 @@ class MobileController extends Controller
             ));
 
         return array(
-            'plan' => $plan,
+            'seRendre' => $seRendre,
         );
     }
 }
