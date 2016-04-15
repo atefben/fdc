@@ -12,11 +12,12 @@ use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
+
 class FDCPageFooterAdmin extends Admin
 {
     public function configure()
     {
-        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
     }
 
     public function getFormTheme()
@@ -34,11 +35,95 @@ class FDCPageFooterAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
+            ->add('title', 'doctrine_orm_callback', array(
+                'label'              => 'list.page_title',
+                'translation_domain' => 'BaseAdminBundle',
+                'callback'           => function ($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->andWhere('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.title LIKE :name');
+                    $queryBuilder->setParameter('name', '%' . $value['value'] . '%');
+
+                    return true;
+                },
+                'field_type'         => 'text'
+            ))
+            ->add('createdBefore', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere("{$alias}.createdAt < :before");
+                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'filter.media_audio.label_created_before',
+            ))
+            ->add('createdAfter', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere("{$alias}.createdAt > :after");
+                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'filter.media_audio.label_created_after',
+            ))
+            ->add('updatedBefore', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.updatedAt < :before');
+                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'filter.common.label_updated_before',
+            ))
+            ->add('updatedAfter', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.updatedAt > :after');
+                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'filter.common.label_updated_after',
+            ))
+            ->add('priorityStatus', 'doctrine_orm_choice', array(), 'choice', array(
+                'choices'                   => FDCPageFooter::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
+            ))
         ;
     }
 
@@ -49,17 +134,26 @@ class FDCPageFooterAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show'   => array(),
-                    'edit'   => array(),
-                    'delete' => array(),
-                )
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:FDCPageFooter:list_title.html.twig',
+                'label'      => 'list.page_title',
+            ))
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+                'label'    => 'show.label_created_at'
+            ))
+            ->add('updatedAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_updated_at.html.twig',
+                'sortable' => 'updatedAt',
+                'label'    => 'show.label_updated_at'
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices'   => FDCPageFooter::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
             ))
         ;
     }

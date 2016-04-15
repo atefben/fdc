@@ -62,6 +62,7 @@ class LockController extends Controller
         'mobilenotification'               => 'MobileNotification',
         'faqpage'                          => 'FAQPage',
         'faqtheme'                         => 'FAQTheme',
+        'fdcpagefooter'                    => 'FDCPageFooter',
     );
 
     /**

@@ -80,6 +80,7 @@ parameters:
         - admin_base_core_fdcpageparticipatesection_list
         - admin_base_core_faqpage_list
         - admin_base_core_faqtheme_list
+        - admin_base_core_fdcpagefooter_list
     admin_routes_translation_legend:
         - admin_base_core_newsarticle_list
         - admin_base_core_event_list
