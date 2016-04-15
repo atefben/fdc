@@ -1,0 +1,445 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    line-height: 1;
+}
+
+html{
+    font-size: 16px;
+}
+
+section {
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0 20px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    max-height: 5000px;
+}
+
+section a.button {
+    border: 1px solid #c8a461;
+    font-size: 9px;
+    height: 42px;
+    width: 170px;
+    line-height: 42px;
+    font-weight: 700;
+    margin: 10px 0;
+    text-decoration: none;
+    color: #c29f5f;
+    display: inline-block;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    /*padding: 3px 40px 3px 40px;*/
+    text-transform: uppercase;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.link .icon, .link .icon-mobile-participer {
+    padding-right: 10px;
+    margin-top: -3px;
+}
+
+strong.color, span.number, .item-info a, .link .icon, .link .icon-mobile-participer {
+    color: #c29f5f;
+}
+
+.description a {
+    color: #c29f5f;
+    text-decoration: underline;
+}
+
+.section-contain h3{
+
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 23px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    display: inline-block;
+    padding-bottom: 65px;
+    font-weight: 600;
+    color: #000;
+}
+
+.title-contain{
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    padding-bottom: 15px;
+    text-align: center;
+    font-weight: normal;
+}
+
+.title-contain .icon, .title-contain  .icon-mobile-participer{
+    color: #999999;
+    font-size: 1.8rem;
+    padding-right: 10px;
+    position: relative;
+    top: -4px;
+}
+
+.description.half{
+    width: 50%;
+    float: left;
+}
+
+.description.center{
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.description.center .title-contain{
+    text-align: center;
+}
+.description.center{
+    max-height: 3000px;
+    padding-top: 40px;
+}
+img{
+    display: inline-block;
+    /*margin-bottom: 15px;*/
+}
+#logo img{
+    margin-bottom: 0;
+}
+strong{
+    font-weight: 700;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+strong.color, span.number, .item-info a, .link .icon, .link .icon-mobile-participer{
+
+    color:#c29f5f;
+}
+.link .icon, .link .icon-mobile-participer{
+    padding-right: 10px;
+    margin-top: -3px;
+}
+.item-info a:not(.button){
+    text-decoration: underline;
+}
+.description strong.center{
+    color:#000;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+    display: block;
+    padding:60px 0 10px 0;
+    letter-spacing: 1px;
+}
+.description a {
+
+    color: #c29f5f;
+    text-decoration: underline;
+}
+.description li{
+    list-style: disc;
+    list-style-position: inside;
+}
+.loc{
+    display: block;
+}
+.contain-good-practice, .contain-infos{
+    width: 525px;
+    margin: 0 auto;
+}
+.item-good-practice{
+    width: 150px;
+    display: inline-block;
+    text-align: center;
+    height: 145px;
+    vertical-align: top;
+}
+.item-info{
+    height: auto;
+    max-height: 1000px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.item-good-practice .icon, .item-info .icon,.item-good-practice .icon-mobile-participer {
+    font-size: 3rem;
+    color: #999999;
+    display: block;
+    margin-bottom: 13px;
+}
+.item-info .icon{
+    font-size: 40px;
+    line-height: 20px;
+}
+.item-good-practice p{
+    width: 150px;
+    height: 115px;
+    display: block;
+    font-size: 10px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    line-height: 20px;
+    margin: 0 auto;
+    font-weight: normal;
+}
+.contain-transport .item-info .icon{
+    color:#c8a461;
+    font-size: 90px;
+    margin-bottom: 30px;
+}
+section .button{
+    border: 1px solid #c8a461;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    font-weight: 700;
+    margin: 20px 0;
+    text-decoration: none;
+}
+section .button:last-child{
+    border: 1px solid #c8a461;
+}
+section .button .icon{
+    padding-right: 20px;
+    vertical-align: text-top;
+}
+
+.item-info p{
+    font-size: 10px;
+    line-height: 20px;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    color:#666666;
+}
+
+.open .section-title .icon, .open .section-title .icon-mobile-participer {
+    color: #c29f5f;
+}
+
+.section-title .icon, .section-title .icon-mobile-participer {
+    font-size: 3rem;
+    color: #999999;
+}
+
+.title-participate {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    color: #999999;
+    font-size: 12px;
+    padding-left: 9px;
+    text-transform: uppercase;
+    display: inline-block;
+    line-height: 35px;
+    vertical-align: middle;
+    -moz-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+    font-weight: normal;
+}
+
+.open .title-participate {
+    color: #c29f5f;
+}
+
+.acces-container section{
+    max-height: 30px;
+    overflow: hidden;
+}
+
+.open .section-contain {
+    max-height: 6000px;
+    height: auto;
+}
+
+.section-contain{
+    padding-top: 30px;
+}
+
+.section-contain img {
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.icon.accordion.icon_case-plus{
+    float: right;
+}
+
+.section-contain .description {
+    color:#333333;
+    font-size: 11px;
+    text-align: center;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    line-height: 20px;
+    width: 100%;
+}
+
+.section-contain .description strong {
+    display:block;
+}
+
+.description {
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    margin-bottom: 25px;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+
+.participer .section-contain .description.big{
+    font-size: 14px;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    line-height: 26px;
+    color:#141414;
+    padding-top: 0px;
+}
+
+.participer .description{
+    margin-bottom: 0px;
+    line-height: 36px;
+}
+
+.participer ul.description{
+    margin-bottom: 25px;
+}
+
+.participer .section-contain .description{
+    color:#333333;
+    font-size: 10px;
+    line-height: 22px;
+}
+
+.participer .title-contain{
+    font-size: 10px;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+    line-height: 20px;
+}
+
+.participer .description strong{
+    display: inline-block;
+    font-weight: normal;
+    font-size: 10px;
+}
+
+.participer .description.half{
+    margin-bottom: 18px;
+}
+
+.participer strong span{
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.participer section{
+    max-height: 30px;
+    overflow: hidden;
+}
+
+.participer section.open, .acces section.open{
+    max-height: 30000px;
+    overflow: hidden;
+}
+
+.se-rendre .description.center{
+    margin-bottom: 0px;
+}
+
+.se-rendre p strong{
+    font-weight: normal;;
+    color:#000;
+}
+
+.icon.accordion.icon_moins{
+    font-size: .55rem;
+    float: right;
+    margin-top: 12px;
+    margin-right: ®1px;
+}
+
+.icon.accordion.icon_case-plus{
+    font-size: 2rem;
+    float: right;
+    /*margin-top: 12px;*/
+    margin-right: -10px;
+}
+
+.plan img{
+    width: 114px !important;
+}
+
+.plan .description{
+    font-size: 14px;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    line-height: 24px;
+}
+
+.section-title .icon, .section-title .icon-mobile-participer{
+    font-size: 1.2rem;
+    color: #999999;
+}
+
+.acces section{
+    padding: 0 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.acces .section-contain{
+    padding-top: 25px;
+}
+
+.acces img{
+    margin-bottom: 0px;
+}
+
+.title-contain .icon{
+    font-size: 1rem;
+    padding-right: 5px;
+    top: -2px;
+}
+
+.acces .contain-good-practice{
+    width: 120%;
+    margin-left: -5%;
+}

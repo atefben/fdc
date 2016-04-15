@@ -119,6 +119,17 @@
                         </div>
                     </div>
                     <div class="col-md-4">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Mobile
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                            {{ form_row(form.parent.children.mobile) }}
+                            {{ form_row(form.parent.children.page) }}
+                            </div>
+                        </div>
                         {% include 'BaseAdminBundle:TranslationFormBundle:components/publish_parameters.html.twig' %}
                     </div>
                     {% else %}

@@ -53,6 +53,7 @@ _html/js/bower_components/owl.carousel/node_modules/
 
 node_modules/
 _html_mobile/node_modules
+_html_lot3/node_modules
 _html_mobile/dist/
 
 #OS junk files
@@ -60,12 +61,12 @@ _html_mobile/dist/
 .idea
 .DS_Store
 .DS_Store?
-.svn 
-.cvs 
+.svn
+.cvs
 *~
 *.bak
 *.mwb.beforefix
-*.swp 
+*.swp
 [Tt]humbs.db
 ._*
 .Spotlight-V100
