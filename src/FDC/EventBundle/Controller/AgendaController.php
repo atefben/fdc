@@ -64,26 +64,18 @@ class AgendaController extends Controller
             ;
         }
 
-        // filter selection
+        // get all selections - filter selection
+        $projectionsAll = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmProjection')
+            ->getProjectionsByFestivalAndDateAndRoom($festival, $date, false, $isPress);
         $selections = array();
-        foreach ($projections as $tmp) {
-            foreach ($tmp as $projection) {
-                foreach ($projection->getProgrammationFilms() as $projectionProgrammationFilm) {
-                    $film = $projectionProgrammationFilm->getFilm();
-                    $selections[$film->getSelectionSection()->getId()] = $film->getSelectionSection();
-                }
+        foreach ($projectionsAll as $projection) {
+            foreach ($projection->getProgrammationFilms() as $projectionProgrammationFilm) {
+                $film = $projectionProgrammationFilm->getFilm();
+                $selections[$film->getSelectionSection()->getId()] = $film->getSelectionSection();
             }
         }
-
-        // remove projection not matching current festival
-        /*foreach ($rooms as $room) {
-            foreach ($room->getProjections() as $projection) {
-                if ($projection->getFestival() && $projection->getFestival()->getId() != $festival &&
-                    ($projection->getStartsAt() <= $date. ' 00:00:00' ||  $projection->getEndsat() >= $date. ' 23:59:59')) {
-                    $room->removeProjection($projection);
-                }
-            }
-        }*/
 
         $schedulingDays = $this->createDateRangeArrayEvent($festivalStart->format('Y-m-d'), $festivalEnd->format('Y-m-d'), false);
 
@@ -162,60 +154,36 @@ class AgendaController extends Controller
     }
 
     /**
-     * @Route("/day", options={"expose"=true}))
+     * @Route("/day", options={"expose"=true})
      * @Template("FDCEventBundle:Global:projection.html.twig")
      * @param Request $request
      * @return array
      */
     public function getDayProjectionsAction(Request $request) {
 
-        $em = $this->get('doctrine')->getManager();
-
+        $festival = $this->getFestival()->getId();
         $date = $request->get('date');
+        $isPress = ($request->headers->get('host') == $this->getParameter('fdc_press_domain')) ? true : false;
 
-        $dayProjection = array();
-        if ($request->headers->get('host') == $this->getParameter('fdc_press_domain') ) {
+        // get all rooms
+        $rooms = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmProjectionRoom')
+            ->findAll()
+        ;
 
-            // GET DAY PROJECTIONS
-            /*$dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
-                ->getProjectionByDate($date);
-
-            $path = $request->headers->get('referer');
-            if ($path !== null) {
-                $path = parse_url($path)['path'];
-                if (strpos($path, '/app_dev.php') !== false) {
-                    $path = explode('/', $path);
-                    unset($path[1]);
-                    $path = implode('/', $path);
-                }
-                $router = $this->get('router');
-                $route = $router->match($path)['_route'];
-                // If we are on homepage
-                if ($route == 'fdc_press_news_home') {
-                    // Event have to be in 5h max
-                    $hourRange = array();
-                    $newDate = new \DateTime;
-                    $endHour = $newDate->modify('+ 5 hour')->format('H');
-
-                    while ($date->format('H') <= $endHour) {
-
-                        array_push($hourRange, $date->format('H'));
-                        $date->modify('+ 1 hour')->format('H');
-                    }
-
-                    foreach ( $dayProjection as $key => $projection ) {
-                        if (!in_array($projection->getStartsAt()->format('H'), $hourRange)) {
-                            unset($dayProjection[$key]);
-                        }
-                    }
-                }
-            }*/
+        // get projections by room
+        foreach ($rooms as $room) {
+            $projections[$room->getId()] = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmProjection')
+                ->getProjectionsByFestivalAndDateAndRoom($festival, $date, $room->getId(), $isPress)
+            ;
         }
-        else {
-            // Grab Event Site projections
-        }
+
         return array(
-            'dayProjection' => $dayProjection,
+            'rooms' => $rooms,
+            'projections' => $projections
         );
     }
 

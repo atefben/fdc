@@ -18,16 +18,23 @@ class FilmProjectionRepository extends EntityRepository
         $qb = $this
             ->createQueryBuilder('p')
             ->join('p.room', 'r')
-            ->where('p.festival = :festival')
-            ->andWhere('p.room = :room')
-            ->andWhere('(p.startsAt >= :startDate AND p.startsAt <= :endDate)');
+            ->where('p.festival = :festival');
+
+        if ($room != false) {
+            $qb = $qb
+                ->andWhere('p.room = :room');
+        }
+        $qb->andWhere('(p.startsAt >= :startDate AND p.startsAt <= :endDate)');
 
         if ($isPress == false) {
             $qb = $qb->andWhere('p.type != "Séance de presse"');
         }
 
-        $qb = $qb->setParameter('festival', $festival)
-            ->setParameter('room', $room)
+        $qb = $qb->setParameter('festival', $festival);
+        if ($room != false) {
+            $qb = $qb->setParameter('room', $room);
+        }
+        $qb = $qb
             ->setParameter('startDate', $date. ' 00:00:00')
             ->setParameter('endDate', $date. ' 23:59:59')
             ->getQuery()
