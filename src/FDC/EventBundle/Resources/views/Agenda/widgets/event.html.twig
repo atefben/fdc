@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-{% set isPress = (event.type == 'Conférence de presse') ? 1 : 0 %}
+{% set isPress = (event.type == 'Conférence de presse') ? true : false %}
 {% set difference = date(event.endsAt).diff(date(event.startsAt)) %}
 {% set minutes = difference.i %}
 
@@ -12,11 +12,14 @@
     {% set film = event.programmationFilms[0].film %}
     <div class="fc-event" data-category="{{ film.selectionSection|trans_fallback('slug') }}"
          data-type="{{ event.type }}" data-url="eventPopin.html"
-         data-id="{{ event.id }}" data-picto='.pen' data-color='#000'
+         data-id="{{ event.id }}" data-picto=".pen" data-color="#000"
          data-start="{{ event.startsAt|date('Y-m-d') }}T{{ event.startsAt|date('H:i:s') }}"
          data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"
          data-time="{{ event.startsAt|date('H') }}" data-duration="{{ minutes }}">
-        <span class="category"><i class="icon{% if isPress %} icon_espace-presse{% endif %}"></i>{{ event.type }}</span>
+        <span class="category">
+            <i class="icon{% if isPress %} icon_espace-presse{% endif %}"></i>
+            {{ event.type }}
+        </span>
         <div class="info">
             {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                 film: film,
@@ -27,7 +30,6 @@
                 film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
                 film_image_default_attrs: 'width="46"'
             }) %}
-            <img src="" />
             <div class="txt">
                 <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
                 {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
