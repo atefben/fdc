@@ -1316,7 +1316,7 @@ services:
         class: Base\AdminBundle\Admin\FDCPageFooterAdmin
         arguments: [~, Base\CoreBundle\Entity\FDCPageFooter, BaseAdminBundle:FDCPageFooterAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Pages, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Pages, label_translator_strategy: sonata.admin.label.strategy.underscore}
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
