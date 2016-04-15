@@ -86,7 +86,7 @@ class AgendaController extends Controller
 
             foreach ($projection->getProgrammationFilms() as $projectionProgrammationFilm) {
                 $film = $projectionProgrammationFilm->getFilm();
-                if ($film->getSelectionSection() != null) {
+                if ($film != null && $film->getSelectionSection() != null) {
                     $selections[$film->getSelectionSection()->getId()] = $film->getSelectionSection();
                 }
             }
