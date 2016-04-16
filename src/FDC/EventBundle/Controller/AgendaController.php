@@ -211,7 +211,7 @@ class AgendaController extends Controller
         }
 
         // projections (everything except the 2 two other type)
-        $relatedProjections = $this
+       $relatedProjections = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmProjection')
             ->getAllExceptTypes($festival, array('Séance de presse', 'Conférence de presse'))
@@ -220,12 +220,14 @@ class AgendaController extends Controller
         // remove conference not matching current films
         foreach($relatedProjections as $key => $relatedProjection) {
             foreach ($relatedProjection->getProgrammationFilms() as $programmationFilm) {
-                if (!in_array($programmationFilm->getFilm()->getId(), $filmIds)) {
+				//TODO ANTOINE
+                /*if (isset($programmationFilm) && !empty($programmationFilm) && !in_array($programmationFilm->getFilm()->getId(), $filmIds)) {
                     unset($relatedProjections[$key]);
-                }
+                }*/
             }
         }
-
+	   
+	   $relatedProjections = null;
         return array(
             'projection' => $projection,
             'seances' => $seances,

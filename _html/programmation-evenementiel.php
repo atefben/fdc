@@ -61,6 +61,7 @@ Télécharger au format .ics</a>
                 <span data-filter="cannes">Cannes Classics</span>
                 <span data-filter="cinema">Cinéma de la plage</span>
                 <span data-filter="cinefondation">Cinéfondation</span>
+				<span data-filter="reprise">Reprise</span>
               </span>
             </div>
             <div id="type" class="filter">
@@ -76,11 +77,11 @@ Télécharger au format .ics</a>
               <span class="arrow left"><i class="icon icon_flecheGauche"></i></span>
               <div class="timeline-container">
                 <a href="#" class="" data-date="2016-05-11">mer<span class="day">11</span></a>
-                <a href="#" class="active" data-date="2016-05-12">jeu<span class="day">12</span></a>
-                <a href="#" class="disabled">ven<span class="day">13</span></a>
-                <a href="#" class="disabled">sam<span class="day">14</span></a>
-                <a href="#" class="disabled">dim<span class="day">15</span></a>
-                <a href="#" class="disabled">lun<span class="day">16</span></a>
+                <a href="#" class="ajaxi active" data-date="2016-05-12">jeu<span class="day">12</span></a>
+                <a href="#" class="ajaxi disabled">ven<span class="day">13</span></a>
+                <a href="#" class="ajaxi disabled">sam<span class="day">14</span></a>
+                <a href="#" class="ajaxi disabled">dim<span class="day">15</span></a>
+                <a href="#" class="ajaxi disabled">lun<span class="day">16</span></a>
                 <a href="#" class="disabled">mar<span class="day">17</span></a>
                 <a href="#" class="disabled">mer<span class="day">18</span></a>
                 <a href="#" class="disabled">jeu<span class="day">19</span></a>

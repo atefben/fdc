@@ -66,6 +66,7 @@
                             <div class="item">
                                 <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
                                 <div class="image">
+									{% if movie is defined and movie is not null %}
                                     {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                         film: movie,
                                         film_format: 'mobile',
@@ -75,6 +76,7 @@
                                         },
                                         film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                     }) %}
+									{% endif %}
                                 </div>
                                 <div class="content-text">
                                     <span class="item-title">{{ filmPerson.film.titleVO }}</span>

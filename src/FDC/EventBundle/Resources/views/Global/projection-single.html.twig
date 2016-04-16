@@ -9,12 +9,11 @@
                     <div class="film">
                         {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                             film: film,
-                            film_format: '444x600',
                             film_attrs: {
                                 alt: film|trans_fallback('title')?:film.titleVO,
                             },
                             film_image_default: 'bundles/fdcevent/img/palmares/film420x560.jpg',
-                            film_image_default_attrs: 'width="444"'
+                            film_image_default_attrs: ''
                         }) %}
                         <div class="content">
                             <div class="categories">
