@@ -2,10 +2,10 @@
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
     {% javascripts '@FDCEventBundle/Resources/public/js/vendor.min.js' %}
-    <script src="{{ asset_url }}"></script>
+    <script src="{{ asset(asset_url) }}"></script>
     {% endjavascripts %}
     {% javascripts '@FDCEventBundle/Resources/public/js/app.min.js' %}
-    <script src="{{ asset_url }}"></script>
+    <script src="{{ asset(asset_url) }}"></script>
     {% endjavascripts %}
     <script>jwplayer.key="{{ jwplayer_key }}";</script>
     <script type="text/javascript">
