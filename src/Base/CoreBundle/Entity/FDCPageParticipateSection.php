@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Base\CoreBundle\Interfaces\FDCPageParticipateSectionInterface;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
@@ -46,6 +47,20 @@ class FDCPageParticipateSection implements TranslateMainInterface
      * ArrayCollection
      */
     protected $translations;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $mobile;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $page;
 
     /**
      * Constructor
@@ -131,4 +146,50 @@ class FDCPageParticipateSection implements TranslateMainInterface
         return $this->widgets;
     }
 
+
+    /**
+     * Set mobile
+     *
+     * @param boolean $mobile
+     * @return FDCPageParticipateSection
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
+
+        return $this;
+    }
+
+    /**
+     * Get mobile
+     *
+     * @return boolean 
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * Set page
+     *
+     * @param integer $page
+     * @return FDCPageParticipateSection
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
+
+        return $this;
+    }
+
+    /**
+     * Get page
+     *
+     * @return integer 
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
 }

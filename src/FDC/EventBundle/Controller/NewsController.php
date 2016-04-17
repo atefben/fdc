@@ -52,7 +52,7 @@ class NewsController extends Controller
 
         $festivalStart    = $this->getFestival()->getFestivalStartsAt();
         $festivalEnd      = $this->getFestival()->getFestivalEndsAt();
-        $festivalInterval = $this->createDateRangeArray($festivalStart->format('Y-m-d'), $festivalEnd->format('Y-m-d'));
+        $festivalInterval = $this->createDateRangeArrayEvent($festivalStart->format('Y-m-d'), $festivalEnd->format('Y-m-d'));
 
         /////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////      SLIDER      //////////////////////////////////////////
@@ -767,26 +767,4 @@ class NewsController extends Controller
         return $partition;
     }
 
-
-    /**
-     * retur an array of days
-     *
-     * @param  date $strDateFrom
-     * @param  date $strDateTo
-     * @return array
-     */
-    private function createDateRangeArray($strDateFrom, $strDateTo)
-    {
-        $aryRange  = array();
-        $iDateFrom = mktime(1, 0, 0, substr($strDateFrom, 5, 2), substr($strDateFrom, 8, 2), substr($strDateFrom, 0, 4));
-        $iDateTo   = mktime(1, 0, 0, substr($strDateTo, 5, 2), substr($strDateTo, 8, 2), substr($strDateTo, 0, 4));
-        if ($iDateTo >= $iDateFrom) {
-            array_push($aryRange, date('Y-m-d', $iDateFrom));
-            while ($iDateFrom < $iDateTo) {
-                $iDateFrom += 86400;
-                array_push($aryRange, date('Y-m-d', $iDateFrom));
-            }
-        }
-        return array_reverse($aryRange);
-    }
 }

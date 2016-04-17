@@ -43,9 +43,19 @@
                 <div id="gridWebtv" class="grid-wrapper">
                     <div class="grid-sizer"></div>
                     {% for group in groups %}
+		                {% if group.video.image|trans_fallback('file') %}
+		                    {% set videoImage = media_public_url(group.video.image|trans_fallback('file'), '640x404') %}
+		                {% elseif group.video|trans_fallback('imageAmazonUrl') %}
+		                    {% set videoImage = s3_server_video ~ group.video|trans_fallback('imageAmazonUrl') %}
+		                {% endif %}
                         <div class="item {{ group.video.publishedAt|date('d-m-Y') }} {{ group.video.theme }} shadow-bottom video">
-                            <img src="{% path group.video.image|trans_fallback('file'), '640x404' %}"
-                                 srcset="{% path group.video.image|trans_fallback('file'), '640x404' %} 1x, {% path group.video.image|trans_fallback('file'), '1760x1108' %} 2x"
+                            <img src="{{videoImage}}"
+			                {% if group.video.image|trans_fallback('file') %}
+								srcset="{% path group.video.image|trans_fallback('file'), '640x404' %} 1x, {% path group.video.image|trans_fallback('file'), '1760x1108' %} 2x"
+			                {% elseif group.video|trans_fallback('imageAmazonUrl') %}
+								srcset="{{videoImage}} 1x, {{videoImage}} 2x"
+			                {% endif %}
+                                 
                                  alt="{{ group.video.image|trans_fallback('alt') }}">
                             <div class="info">
                                 <div class="picto">

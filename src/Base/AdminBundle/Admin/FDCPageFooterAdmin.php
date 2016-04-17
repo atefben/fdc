@@ -12,11 +12,12 @@ use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
+
 class FDCPageFooterAdmin extends Admin
 {
     public function configure()
     {
-        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
     }
 
     public function getFormTheme()
@@ -27,16 +28,6 @@ class FDCPageFooterAdmin extends Admin
         );
     }
 
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection->remove('list');
-        $collection->remove('create');
-        $collection->remove('show');
-        $collection->remove('batch');
-        $collection->remove('delete');
-        $collection->remove('export');
-    }
-
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -44,11 +35,95 @@ class FDCPageFooterAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
+            ->add('title', 'doctrine_orm_callback', array(
+                'label'              => 'list.page_title',
+                'translation_domain' => 'BaseAdminBundle',
+                'callback'           => function ($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->andWhere('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.title LIKE :name');
+                    $queryBuilder->setParameter('name', '%' . $value['value'] . '%');
+
+                    return true;
+                },
+                'field_type'         => 'text'
+            ))
+            ->add('createdBefore', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere("{$alias}.createdAt < :before");
+                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'filter.media_audio.label_created_before',
+            ))
+            ->add('createdAfter', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere("{$alias}.createdAt > :after");
+                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'filter.media_audio.label_created_after',
+            ))
+            ->add('updatedBefore', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.updatedAt < :before');
+                    $queryBuilder->setParameter('before', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'filter.common.label_updated_before',
+            ))
+            ->add('updatedAfter', 'doctrine_orm_callback', array(
+                'callback'      => function ($queryBuilder, $alias, $field, $value) {
+                    if ($value['value'] === null) {
+                        return;
+                    }
+                    $queryBuilder->andWhere('o.updatedAt > :after');
+                    $queryBuilder->setParameter('after', $value['value']->format('Y-m-d H:i:s'));
+
+                    return true;
+                },
+                'field_type'    => 'sonata_type_date_picker',
+                'field_options' =>  array(
+                    'dp_language' => 'fr',
+                    'format' => 'dd/MM/yyyy',
+                ),
+                'label'         => 'filter.common.label_updated_after',
+            ))
+            ->add('priorityStatus', 'doctrine_orm_choice', array(), 'choice', array(
+                'choices'                   => FDCPageFooter::getPriorityStatuses(),
+                'choice_translation_domain' => 'BaseAdminBundle'
+            ))
         ;
     }
 
@@ -59,17 +134,26 @@ class FDCPageFooterAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('translate')
-            ->add('translateOptions')
-            ->add('priorityStatus')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:FDCPageFooter:list_title.html.twig',
+                'label'      => 'list.page_title',
+            ))
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+                'label'    => 'show.label_created_at'
+            ))
+            ->add('updatedAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_updated_at.html.twig',
+                'sortable' => 'updatedAt',
+                'label'    => 'show.label_updated_at'
+            ))
+            ->add('priorityStatus', 'choice', array(
+                'choices'   => FDCPageFooter::getPriorityStatusesList(),
+                'catalogue' => 'BaseAdminBundle'
+            ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
             ))
         ;
     }
@@ -81,73 +165,73 @@ class FDCPageFooterAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
-                'label' => false,
+                'label'              => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'fields' => array(
-                    'title' => array(
-                        'label' => 'form.label_title',
+                'fields'             => array(
+                    'title'          => array(
+                        'label'              => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.news.helper_title',
-                        'constraints' => array(
+                        'sonata_help'        => 'form.news.helper_title',
+                        'constraints'        => array(
                             new NotBlank()
                         )
                     ),
-                    'content' => array(
-                        'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
-                        'label' => 'form.label_content',
+                    'content'        => array(
+                        'field_type'         => 'ckeditor',
+                        'config_name'        => 'widget',
+                        'label'              => 'form.label_content',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
+                        'required'           => false
                     ),
-                    'createdAt' => array(
+                    'createdAt'      => array(
                         'display' => false
                     ),
-                    'updatedAt' => array(
+                    'updatedAt'      => array(
                         'display' => false
                     ),
-                    'status' => array(
-                        'label' => 'form.label_status',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'choice',
-                        'choices' => FDCPageFooterTranslation::getStatuses(),
+                    'status'         => array(
+                        'label'                     => 'form.label_status',
+                        'translation_domain'        => 'BaseAdminBundle',
+                        'field_type'                => 'choice',
+                        'choices'                   => FDCPageFooterTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
-                    'seoTitle' => array(
-                        'attr' => array(
+                    'seoTitle'       => array(
+                        'attr'               => array(
                             'placeholder' => 'form.placeholder_seo_title'
                         ),
-                        'label' => 'form.label_seo_title',
-                        'sonata_help' => 'form.news.helper_seo_title',
+                        'label'              => 'form.label_seo_title',
+                        'sonata_help'        => 'form.news.helper_seo_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
+                        'required'           => false
                     ),
                     'seoDescription' => array(
-                        'attr' => array(
+                        'attr'               => array(
                             'placeholder' => 'form.placeholder_seo_description'
                         ),
-                        'label' => 'form.label_seo_description',
-                        'sonata_help' => 'form.news.helper_description',
+                        'label'              => 'form.label_seo_description',
+                        'sonata_help'        => 'form.news.helper_description',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
+                        'required'           => false
                     )
                 )
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(
-                'choices' => FDCPageFooter::getAvailableTranslateOptions(),
+                'choices'            => FDCPageFooter::getAvailableTranslateOptions(),
                 'translation_domain' => 'BaseAdminBundle',
-                'multiple' => true,
-                'expanded' => true
+                'multiple'           => true,
+                'expanded'           => true
             ))
             ->add('priorityStatus', 'choice', array(
-                'choices' => FDCPageFooter::getPriorityStatuses(),
+                'choices'                   => FDCPageFooter::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
                 'label'    => 'form.label_seo_file',
-                'help' => 'form.seo.helper_file',
+                'help'     => 'form.seo.helper_file',
                 'required' => false,
             ))
             ->end()

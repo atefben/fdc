@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-04-07T16:28:32Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-04-15T21:25:46Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="6b59e1974915f354644ab9e2d89bcf2f9b6909e0" resname="En savoir plus">
+        <source>En savoir plus</source>
+        <target state="new">En savoir plus</target>
+        <jms:reference-file line="10">Mobile/widgets/picto.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="0d02d9a9740bf54359e24d2b25c61c3fab85af0c" resname="MESSAGE DE L’EXPÉDITEUR">
         <source>MESSAGE DE L’EXPÉDITEUR</source>
         <target state="new">MESSAGE DE L’EXPÉDITEUR</target>
@@ -19,8 +24,8 @@
       <trans-unit id="5faa0192d02aa45746cc1449c13e472833308364" resname="contact.form.errors.email">
         <source>contact.form.errors.email</source>
         <target>L'adresse email n'est pas valide</target>
-        <jms:reference-file line="116">Form/Type/ContactType.php</jms:reference-file>
-        <jms:reference-file line="117">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="114">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="115">Form/Type/ContactType.php</jms:reference-file>
         <jms:reference-file line="93">Form/Type/ShareEmailType.php</jms:reference-file>
         <jms:reference-file line="94">Form/Type/ShareEmailType.php</jms:reference-file>
         <jms:reference-file line="97">Form/Type/ShareEmailType.php</jms:reference-file>
@@ -29,22 +34,22 @@
       <trans-unit id="08d76bebf9dca034727ab36b9ea6595b433b8bde" resname="contact.form.errors.message">
         <source>contact.form.errors.message</source>
         <target>Votre message n'est pas renseigné</target>
-        <jms:reference-file line="123">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="121">Form/Type/ContactType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="f303400e3b0c09bf268e5a96e7fd30f1e64d2769" resname="contact.form.errors.nom">
         <source>contact.form.errors.nom</source>
         <target>Votre nom n'est pas renseigné</target>
-        <jms:reference-file line="113">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="111">Form/Type/ContactType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="ae02ff3398faddcf5c8d799ce620b2efc4805f15" resname="contact.form.errors.objet">
         <source>contact.form.errors.objet</source>
         <target>L'objet de votre message n'est pas renseigné</target>
-        <jms:reference-file line="120">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="118">Form/Type/ContactType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="954ff73ad29e56eb196fb482325ae606ab3d7c59" resname="contact.form.errors.theme">
         <source>contact.form.errors.theme</source>
         <target>Votre thème n'est pas renseigné</target>
-        <jms:reference-file line="110">Form/Type/ContactType.php</jms:reference-file>
+        <jms:reference-file line="108">Form/Type/ContactType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="3297837e1c6b935cdd8c42ff35ed055f5205dbbc" resname="contact.form.placeholder.theme">
         <source>contact.form.placeholder.theme</source>
@@ -64,7 +69,7 @@
       <trans-unit id="b86d744d13ed71f256ea14a9ae234e5977e3a740" resname="home.article.btn.ajouteramaselection">
         <source>home.article.btn.ajouteramaselection</source>
         <target>Ajouter à ma sélection</target>
-        <jms:reference-file line="117">News/widgets/article-home.html.twig</jms:reference-file>
+        <jms:reference-file line="123">News/widgets/article-home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3e12f213a10adb5625e4d7ab250e654bc240d3d3" resname="newsletter.form.error.emaildejaenregistre">
         <source>newsletter.form.error.emaildejaenregistre</source>

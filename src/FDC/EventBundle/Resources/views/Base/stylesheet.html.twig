@@ -2,9 +2,9 @@
     <link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css">
     <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel='stylesheet' type='text/css'>
     {% stylesheets "bundles/fdcevent/styles/*.css" filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}">
+    <link rel="stylesheet" href="{{ asset(asset_url) }}">
     {% endstylesheets %}
     {% stylesheets "bundles/fdcevent/print/*.css" filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" media="print">
+    <link rel="stylesheet" href="{{ asset(asset_url) }}" media="print">
     {% endstylesheets %}
 {% endblock %}

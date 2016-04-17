@@ -129,7 +129,8 @@ class EntityListener
             }
 
             // verify fr translation
-            if ($entityFr->getStatus() == TranslateChildInterface::STATUS_PUBLISHED) {
+            if (method_exists('getStatus', $entityFr) &&
+                $entityFr->getStatus() == TranslateChildInterface::STATUS_PUBLISHED) {
                 $hasFrench = true;
             }
 
@@ -138,7 +139,8 @@ class EntityListener
             if ($entityFr === $entity) {
                 $hasLocale = true;
             } else {
-                if ($entityFr->getStatus() == TranslateChildInterface::STATUS_TRANSLATED) {
+                if (method_exists('getStatus', $entityFr) &&
+                    $entityFr->getStatus() == TranslateChildInterface::STATUS_TRANSLATED) {
                     $hasLocale = true;
                 }
             }

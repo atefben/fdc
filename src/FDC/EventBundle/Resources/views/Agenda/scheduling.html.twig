@@ -27,7 +27,7 @@
                     <div class="drag">
                         <h2>{{ 'programmation.title.preparezvotresejour'|trans }}</h2>
                         {% image '@FDCEventBundle/Resources/public/img/svg/main-drag.svg' %}
-                        <img src="{{ asset_url }}" width="43">
+                        <img src="{{ asset(asset_url) }}" width="43">
                         {% endimage %}
                         <p>
                             {{ 'programmation.text.cliquezdeposezlesevenementsdansvotragenda'|trans|raw }}
@@ -44,8 +44,11 @@
                     <div id="timeline">
                         <span class="arrow left"><i class="icon icon_flecheGauche"></i></span>
                         <div class="timeline-container">
-                            {% for day in schedulingDays %}
-                                <a href="#" class="" data-date="{{ day.date|date('Y-m-d') }}">{{ day.date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}<span class="day">{{ day.date|date('d') }}</span></a>
+                            {% for day in schedulingDays if day|date('m') == 5 and day|date('d') > 10 and day|date('d') < 23 %}
+                                <a href="#" class="ajaxi{% if day == date %} active{% endif %}" data-date="{{ day|date('Y-m-d') }}">
+                                    {{ day|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                                    <span class="day">{{ day|date('d') }}</span>
+                                </a>
                             {% endfor %}
                         </div>
                         <span class="arrow right"><i class="icon icon_fleche-right"></i></span>
@@ -77,78 +80,18 @@
                         <div class="venues">
                             <a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
                             <a href="#" class="nav next"><i class="icon icon_fleche-right"></i></a>
-                            <div class="v-wrapper">
+							<div class="v-wrapper">
+                            {% for room in rooms %}
                                 <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.grandtheatrelumière'|trans }}</div>
+                                    <div class="v-head">{{  room.name }}</div>
                                     <div class="v-container">
-                                        {% if schedulingEvents.place.grandTheatre is defined %}
-                                            {% for event in schedulingEvents.place.grandTheatre.events %}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {% endfor %}
-                                        {% endif %}
+                                        {% for event in projections[room.id] %}
+                                            {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                        {% endfor %}
                                     </div>
                                 </div>
-                                <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.salledebussy'|trans }}</div>
-                                    <div class="v-container">
-                                        {% if schedulingEvents.place.salleDebussy is defined %}
-                                            {% for event in schedulingEvents.place.salleDebussy.events %}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.salledu60e'|trans }}</div>
-                                    <div class="v-container">
-                                        {% if schedulingEvents.place.salle60 is defined %}
-                                            {% for event in schedulingEvents.place.salle60.events %}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.sallebunuel'|trans }}</div>
-                                    <div class="v-container">
-                                        {% if schedulingEvents.place.salleBunuel is defined %}
-                                            {% for event in schedulingEvents.place.salleBunuel.events %}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.sallebunuel'|trans }}</div>
-                                    <div class="v-container">
-                                        {% if schedulingEvents.place.salleBunuel is defined %}
-                                            {% for event in schedulingEvents.place.salleBunuel.events %}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.sallebunuel'|trans }}</div>
-                                    <div class="v-container">
-                                        {% if schedulingEvents.place.salleBunuel is defined %}
-                                            {% for event in schedulingEvents.place.salleBunuel.events %}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="venue">
-                                    <div class="v-head">{{ 'programmation.salle.sallebunuel'|trans }}</div>
-                                    <div class="v-container">
-                                        {% if schedulingEvents.place.salleBunuel is defined %}
-                                            {% for event in schedulingEvents.place.salleBunuel.events %}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
+							</div>
                         </div>
                     </div>
                 </div>

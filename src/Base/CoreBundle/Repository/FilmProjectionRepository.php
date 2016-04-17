@@ -13,6 +13,59 @@ use Base\CoreBundle\Entity\FilmFilm;
 class FilmProjectionRepository extends EntityRepository
 {
 
+    public function getAllExceptTypes($festival, $types)
+    {
+        $qb = $this
+            ->createQueryBuilder('p')
+            ->join('p.programmationFilms', 'pf')
+            ->where('p.festival = :festival')
+            ->andWhere('p.type NOT IN (:types)')
+            ->setParameter('festival', $festival)
+            ->setParameter('types', $types)
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $qb;
+    }
+
+    public function getProjectionsByFestivalAndDateAndRoom($festival, $date, $room, $isPress)
+    {
+        $qb = $this
+            ->createQueryBuilder('p')
+            ->join('p.room', 'r')
+            ->where('p.festival = :festival');
+
+        if ($room != false) {
+            $qb = $qb
+                ->andWhere('p.room = :room');
+        }
+        if ($date != false) {
+            $qb
+                ->andWhere('(p.startsAt >= :startDate AND p.startsAt <= :endDate)')
+                ->setParameter('startDate', $date . ' 00:00:00')
+                ->setParameter('endDate', $date . ' 23:59:59');
+        }
+
+        if ($isPress == false) {
+            $qb = $qb
+                ->andWhere('p.type NOT IN (:types)')
+                ->setParameter('types', array('Séance de presse', 'Conférence de presse'));
+        }
+
+        $qb = $qb->setParameter('festival', $festival);
+        if ($room != false) {
+            $qb = $qb->setParameter('room', $room);
+        }
+        $qb = $qb
+
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $qb;
+    }
+
 
     public function getProjectionsByFestivalYearAndProgrammationSection($festival, $programmationSection)
     {

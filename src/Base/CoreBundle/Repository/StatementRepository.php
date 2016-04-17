@@ -46,7 +46,8 @@ class StatementRepository extends EntityRepository
         }
 
         if (isset($params['priorityStatus']) && !empty($params['priorityStatus']) &&
-            $params['priorityStatus'] != 'all') {
+            $params['priorityStatus'] != 'all'
+        ) {
             $qb
                 ->andWhere('
                     (na.priorityStatus = :priorityStatus OR
@@ -144,8 +145,18 @@ class StatementRepository extends EntityRepository
             ->setParameter('displayed_mobile', true)
         ;
 
-        if ($festival->getFestivalStartsAt() > $dateTime || $festival->getFestivalEndsAt() < $dateTime) {
+        if ($festival->getFestivalStartsAt() >= $dateTime) {
             $this->addMasterQueries($qb, 'n', $festival, true);
+            $qb
+                ->andWhere(':festivalStartAt  >= n.publishedAt')
+                ->setParameter('festivalStartAt', $festival->getFestivalStartsAt())
+            ;
+        } else if ($festival->getFestivalEndsAt() <= $dateTime) {
+            $this->addMasterQueries($qb, 'n', $festival, true);
+            $qb
+                ->andWhere(':festivalEndAt < n.publishedAt')
+                ->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
+            ;
         } else {
             $morning = clone $dateTime;
             $morning->setTime(0, 0, 0);
@@ -589,6 +600,70 @@ class StatementRepository extends EntityRepository
             ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'site-press')
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $qb;
+    }
+
+    /**
+     * get an array of only the $count last Statement of $locale version of current
+     * $festival and verify publish date is between $dateTime
+     *
+     * @param $festival
+     * @param $dateTime
+     * @param $count
+     * @param $locale
+     * @return mixed
+     */
+    public function getApiLastStatements($festival, $dateTime, $locale, $count)
+    {
+        $qb = $this->createQueryBuilder('n')
+            ->join('n.sites', 's')
+            ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'nv', 'WITH', 'nv.id = n.id')
+            ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'ni', 'WITH', 'ni.id = n.id')
+            ->leftjoin('na.translations', 'nat')
+            ->leftjoin('naa.translations', 'naat')
+            ->leftjoin('nv.translations', 'nvt')
+            ->leftjoin('ni.translations', 'nit')
+            ->andWhere('n.displayedMobile = :displayedMobile')
+            ->andWhere('n.festival = :festival')
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+            ->andWhere(
+                "(nat.locale = 'fr' AND nat.status = :status)
+                OR (nit.locale = 'fr' AND nit.status = :status)
+                OR (naat.locale = 'fr' AND naat.status = :status)
+                OR (nvt.locale = 'fr' AND nvt.status = :status)"
+            )
+        ;
+
+        if ($locale != 'fr') {
+            $qb = $qb
+                ->leftjoin('na.translations', 'na5t')
+                ->leftjoin('naa.translations', 'na6t')
+                ->leftjoin('nv.translations', 'na7t')
+                ->leftjoin('ni.translations', 'na8t')
+                ->andWhere(
+                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
+                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
+                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
+                    (na8t.locale = :locale AND na8t.status = :status_translated)'
+                )
+                ->setParameter('locale', $locale)
+                ->setParameter('status_translated', StatementArticleTranslation::STATUS_TRANSLATED)
+            ;
+        }
+
+        $qb = $qb->addOrderBy('n.publishedAt', 'DESC')
+            ->setMaxResults($count)
+            ->setParameter('festival', $festival)
+            ->setParameter('displayedMobile', true)
+            ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
+            ->setParameter('datetime', $dateTime)
             ->getQuery()
             ->getResult()
         ;

@@ -1,0 +1,22 @@
+<body class="se-rendre" id="main">
+<section>
+    <p class="description center">Toute l’équipe du Festival de Cannes est heureuse de vous accueillir pour cette 68e édition. Pour que votre séjour se passe dans les meilleures conditions, voici quelques informations utiles.</p>
+    <div class="section-contain contain-transport">
+        {% for widget in seRendre.widgets %}
+            {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
+                {% include 'FDCEventBundle:Mobile/widgets:widget_one.html.twig' with {'widget': widget} %}
+            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
+                {% include 'FDCEventBundle:Mobile/widgets:widget_two.html.twig' with {'widget': widget} %}
+            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypethree" %}
+                {% include 'FDCEventBundle:Mobile/widgets:widget_three.html.twig' with {'widget': widget} %}
+            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefour" %}
+                {% include 'FDCEventBundle:Mobile/widgets:widget_four.html.twig' with {'widget': widget} %}
+            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefive" %}
+                {% include 'FDCEventBundle:Mobile/widgets:widget_five.html.twig' with {'widget': widget} %}
+            {% elseif class(widget) == "FDCPageParticipateSectionWidgetSubTitle" %}
+                {% include 'FDCEventBundle:Mobile/widgets:widget_subtitle.html.twig' with {'widget': widget} %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+</body>

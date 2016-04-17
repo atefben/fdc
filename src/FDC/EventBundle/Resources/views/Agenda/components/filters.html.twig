@@ -4,19 +4,23 @@
     <div id="category" class="filter">
         <span class="label">{{ 'programmation.filters.label.selections'|trans }} :</span>
         <span class="select">
-            {% for key,filter in selectionFilters %}
-                <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ filter.slug }}">{{ filter.name }}</span>
-                {% if key == 0 %}<i class="icon icon_fleche-down"></i>{% endif %}
+            <span class="active" data-filter="all">{{ 'filter.toutes'|trans }}</span>
+            {% for key, selection in selections %}
+                <span data-filter="{{ selection|trans_fallback('slug') }}">{{ selection|trans_fallback('name') }}</span>
             {% endfor %}
+            <i class="icon icon_fleche-down"></i>
         </span>
     </div>
     <div id="type" class="filter">
         <span class="label">{{ 'programmation.filters.label.types'|trans }} :</span>
         <span class="select">
-            {% for key,filter in typeFilters %}
-                <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ filter.slug }}">{{ filter.name }}</span>
-                {% if key == 0 %}<i class="icon icon_fleche-down"></i>{% endif %}
+            <span class="active" data-filter="all">{{ 'filter.tout'|trans }}</span>
+            {% for type in types %}
+                <span data-filter="{{ type|lower|replace(' ', '-') }}">
+                    {{ type }}
+                </span>
             {% endfor %}
+            <i class="icon icon_fleche-down"></i>
         </span>
     </div>
 </div>

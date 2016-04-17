@@ -2,10 +2,8 @@ imports:
     - { resource: config.yml }
 
 #framework:
-#    validation:
-#        cache: validator.mapping.cache.apc
-#    serializer:
-#        cache: serializer.mapping.cache.apc
+#    templating:
+#        assets_base_urls: http://affif-sitepublic-vendor-prod.s3-website-eu-west-1.amazonaws.com/
 
 #doctrine:
 #    orm:
