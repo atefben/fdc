@@ -19449,10 +19449,7 @@ input[type=submit] {
   -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.downloading-press .downloading-nav ul li a:hover {
-  color: #c29f5f;
-}
-.downloading-press .downloading-nav ul li a.active {
+.downloading-press .downloading-nav ul li a:hover, .downloading-press .downloading-nav ul li a.active {
   color: #c29f5f;
 }
 .downloading-press .affiche {
@@ -19625,6 +19622,9 @@ input[type=submit] {
 }
 .downloading-press .block .container .contain-dp .infos strong {
   color: #c8a461;
+}
+.downloading-press .block.animation .buttons {
+  margin-top: 40px;
 }
 
 .press-media.lock .mediatheque .table .line .button:hover {
