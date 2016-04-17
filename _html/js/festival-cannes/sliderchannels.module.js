@@ -1,10 +1,5 @@
 $(document).ready(function() {
-
   if($('.home').length || $('.webtv').length) {
-
-    // Slider Channels
-    // =========================
-
     function setActiveChannels() {
       $('#slider-channels .owl-item').removeClass('center');
       $('#slider-channels .owl-item.active').first().addClass('center');
@@ -49,7 +44,5 @@ $(document).ready(function() {
     $('body').on('click', '#slider-channels .owl-item', function(e) {
       sliderChannels.trigger('to.owl.carousel', [$(this).index(), 400, true]);
     });
-
   }
-
 });
