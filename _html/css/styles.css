@@ -18972,7 +18972,8 @@ input[type=submit] {
   display: inline-block;
   vertical-align: top;
 }
-.practicalguide #praticalguide .container-pguide .wrapper .contain-article .texts strong {
+.practicalguide #praticalguide .container-pguide .wrapper .contain-article .texts strong,
+.practicalguide #praticalguide .container-pguide .wrapper .contain-article .texts .container-title {
   color: #000;
   letter-spacing: .2em;
   font-size: 0.75rem;
