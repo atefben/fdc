@@ -27,7 +27,7 @@
                     <div class="drag">
                         <h2>{{ 'programmation.title.preparezvotresejour'|trans }}</h2>
                         {% image '@FDCEventBundle/Resources/public/img/svg/main-drag.svg' %}
-                        <img src="{{ asset_url }}" width="43">
+                        <img src="{{ asset(asset_url) }}" width="43">
                         {% endimage %}
                         <p>
                             {{ 'programmation.text.cliquezdeposezlesevenementsdansvotragenda'|trans|raw }}

@@ -1,10 +1,10 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 {% stylesheets "bundles/fdcevent/styles/mobile/*.css" filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}">
+    <link rel="stylesheet" href="{{ asset(asset_url) }}">
 {% endstylesheets %}
 {% javascripts 'bundles/fdcevent/js/mobile/mobile.js' %}
-    <script src="{{ asset_url }}"></script>
+    <script src="{{ asset(asset_url) }}"></script>
 {% endjavascripts %}
 
 <body class="acces" id="main">

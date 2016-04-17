@@ -31,7 +31,7 @@
                 <h2 class="title title-list-header">{{ 'selection.cinemaplage.title.competition'|trans }}</h2>
                 <a href="{{ path('fdc_event_movie_selection', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}" class="bandeau-lien">
                     {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                    <img class="svg-arrow" src="{{ asset_url }}" alt="{{ 'selection.cinemaplage.btn.decouvrirlarubrique'|trans }}" />
+                    <img class="svg-arrow" src="{{ asset(asset_url) }}" alt="{{ 'selection.cinemaplage.btn.decouvrirlarubrique'|trans }}" />
                     {% endimage %}
                     {{ 'selection.cinemaplage.btn.decouvrirlarubrique'|trans }}
                 </a>

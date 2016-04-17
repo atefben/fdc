@@ -9,7 +9,7 @@
         <div class="social">
             <p>
                 {% image '@FDCEventBundle/Resources/public/img/svg/logo-white.svg' %}
-                <img width="230" src="{{ asset_url }}" alt="{{ 'footer.social.logo.festival'|trans }}" />
+                <img width="230" src="{{ asset(asset_url) }}" alt="{{ 'footer.social.logo.festival'|trans }}" />
                 {% endimage %}
             </p>
             <ul>

@@ -9,12 +9,12 @@
         <div class="logo-app">
             <a href="{{ fdc_app_ios_download_url }}">
                 {% image '@FDCEventBundle/Resources/public/img/appstore.png' %}
-                <img src="{{ asset_url }}" alt="apple" />
+                <img src="{{ asset(asset_url) }}" alt="apple" />
                 {% endimage %}
             </a>
             <a href="{{ fdc_app_android_download_url }}">
                 {% image '@FDCEventBundle/Resources/public/img/appgoogle.png' %}
-                <img src="{{ asset_url }}" alt="android" />
+                <img src="{{ asset(asset_url) }}" alt="android" />
                 {% endimage %}
             </a>
         </div>

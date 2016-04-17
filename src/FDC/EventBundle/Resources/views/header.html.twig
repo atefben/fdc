@@ -61,13 +61,13 @@
             <div id="logo">
                 <a href="/">
                     {% image '@FDCEventBundle/Resources/public/img/svg/palme.svg'  %}
-                    <img src="{{ asset_url }}" class="palm" alt="{{ 'header.img.palme'|trans }}" />
+                    <img src="{{ asset(asset_url) }}" class="palm" alt="{{ 'header.img.palme'|trans }}" />
                     {% endimage %}
                 </a>
                 <h1>
                     <a href="/">
                         {% image '@FDCEventBundle/Resources/public/img/svg/logo.svg' %}
-                        <img width="200" src="{{ asset_url }}" alt="{{ 'header.logo.img.cannes'|trans }}" />
+                        <img width="200" src="{{ asset(asset_url) }}" alt="{{ 'header.logo.img.cannes'|trans }}" />
                         {% endimage %}
                     </a>
                 </h1>
@@ -77,7 +77,7 @@
                 <p class="stick">
                     <a href="/">
                         {% image '@FDCEventBundle/Resources/public/img/svg/logo.svg' %}
-                        <img width="178" src="{{ asset_url }}" alt="{{ 'header.logo.img.cannes'|trans }}" />
+                        <img width="178" src="{{ asset(asset_url) }}" alt="{{ 'header.logo.img.cannes'|trans }}" />
                         {% endimage %}
                     </a>
                 </p>
@@ -85,32 +85,32 @@
             <div id="partners">
                 <a href="{{ partner_chopard }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/Logo_Chopard.svg' %}
-                    <img width="84" src="{{ asset_url }}" class="chopard" alt="{{ 'header.partners.img.chopard'|trans }}" />
+                    <img width="84" src="{{ asset(asset_url) }}" class="chopard" alt="{{ 'header.partners.img.chopard'|trans }}" />
                     {% endimage %}
                 </a>
                 <a href="{{ partner_loreal }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/loreal.svg' %}
-                    <img width="75" src="{{ asset_url }}" class="oreal" alt="{{ 'header.partners.img.loreal'|trans }}" />
+                    <img width="75" src="{{ asset(asset_url) }}" class="oreal" alt="{{ 'header.partners.img.loreal'|trans }}" />
                     {% endimage %}
                 </a>
                 <a href="{{ partner_hp }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/hp.svg' %}
-                    <img width="28" src="{{ asset_url }}" class="hp" alt="{{ 'header.partners.img.hp'|trans }}" />
+                    <img width="28" src="{{ asset(asset_url) }}" class="hp" alt="{{ 'header.partners.img.hp'|trans }}" />
                     {% endimage %}
                 </a>
                 <a href="{{ partner_kering }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/Kering-logo.svg' %}
-                    <img width="82" src="{{ asset_url }}" class="kering" alt="{{ 'header.partners.img.kering'|trans }}" />
+                    <img width="82" src="{{ asset(asset_url) }}" class="kering" alt="{{ 'header.partners.img.kering'|trans }}" />
                     {% endimage %}
                 </a>
                 <a href="{{ partner_renault }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/renault.svg' %}
-                    <img width="95" src="{{ asset_url }}" class="renault" alt="{{ 'header.partners.img.renault'|trans }}" />
+                    <img width="95" src="{{ asset(asset_url) }}" class="renault" alt="{{ 'header.partners.img.renault'|trans }}" />
                     {% endimage %}
                 </a>
                 <a href="{{ partner_mastercard }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/mastercard.png' %}
-                    <img width="57" src="{{ asset_url }}" class="mastercard" alt="{{ 'header.partners.img.mastercard'|trans }}" />
+                    <img width="57" src="{{ asset(asset_url) }}" class="mastercard" alt="{{ 'header.partners.img.mastercard'|trans }}" />
                     {% endimage %}
                 </a>
             </div>
