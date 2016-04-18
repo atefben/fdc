@@ -245,19 +245,24 @@ $(document).ready(function() {
 
       if($(this).is(':not(.active)')) {
         var urlPath = $(this).attr('href');
-        // $.get($(this).data('url'), function(data){
-        $.get(urlPath, function(data){
+        
+        $.get(urlPath, function(data) {
+          var matches = data.match(/<title>(.*?)<\/title>/);
+          var spUrlTitle = matches[1];
 
+          document.title = spUrlTitle;
           $( ".content-webtv" ).html( $(data).find('.content-webtv') );
           $('#live').html( $(data).find('#live') );
           history.pushState('',GLOBALS.texts.url.title, urlPath);
-            $grid = $('#gridWebtv').imagesLoaded(function() {
-              $grid.isotope({
-                layoutMode: 'packery',
-                itemSelector: '.item'
-              });
+
+          $grid = $('#gridWebtv').imagesLoaded(function() {
+            $grid.isotope({
+              layoutMode: 'packery',
+              itemSelector: '.item'
             });
+          });
         });
+
         $('.webtv-ba .sub-nav-list').find('a.active').removeClass('active');
         $(this).addClass('active');
       }

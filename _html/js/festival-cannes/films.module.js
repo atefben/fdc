@@ -41,7 +41,10 @@ $(document).ready(function() {
           var urlPath = $(this).attr('href');
           
           $.get(urlPath, function(data){
-            document.title = $(data).filter('title').text();
+            var matches = data.match(/<title>(.*?)<\/title>/);
+            var spUrlTitle = matches[1];
+
+            document.title = spUrlTitle;
             $( ".container-list" ).html( $(data).find('.container-list') );
             $( ".bandeau-list-footer" ).html( $(data).find('.bandeau-list-footer').html() );
             $( ".bandeau-head" ).html( $(data).find('.bandeau-head') );

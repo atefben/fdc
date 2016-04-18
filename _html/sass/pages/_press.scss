@@ -442,7 +442,7 @@
       }
 
       .fc-bg .fc-axis, .fc-content-skeleton .fc-axis {
-        width: 60px!important;
+        width: 60px !important;
       }
     }
 
@@ -545,7 +545,7 @@
 
         &.list {
           border-top: none;
-//          display: none;
+          // display: none;
           display: block;
           opacity: 0;
           visibility: hidden;
@@ -556,12 +556,19 @@
           &.show {
             opacity: 1;
             visibility: visible;
+
+            &:hover {
+              background-color: $gold;
+              color: #fff;
+              cursor: pointer;
+            }
           }
         }
+
         &.subnav:hover {
           background-color: #fff;
           color: $gold;
-          opacity: 0.5;
+          cursor: default;
         }
       }
     }
@@ -930,11 +937,11 @@
                 border: 1px solid #e5e5e5;
                 position: absolute;
                 width: 220px;
-                z-index: 0!important;
-				min-height:90px;
+                z-index: 0 !important;
+                min-height:90px;
 
                 &.ui-draggable-dragging {
-                  z-index: 10!important;
+                  z-index: 10 !important;
                 }
 
                 &.ui-draggable-dragging .category:after {
@@ -1514,11 +1521,6 @@
       display: block;
     }
 
-    .programmation {
-
-
-    }
-
     .wrapper {
       width: calc(100% - 310px);
     }
@@ -1640,11 +1642,11 @@
   #calendar {
     #mycalendar {
       .fc-time-grid-container {
-        height: auto!important;
+        height: auto !important;
       }
 
       .fc-divider {
-        display: none!important;
+        display: none !important;
       }
 
       .fc-toolbar {
@@ -1673,7 +1675,7 @@
 
       .fc-head .fc-axis {
         background-color: #373737;
-        width: 60px!important;
+        width: 60px !important;
       }
 
       .fc-head .fc-day-header {
@@ -1919,7 +1921,7 @@
         .fc-event {
           background-color: #fff;
           border: 1px solid #e5e5e5;
-          margin: 0!important;
+          margin: 0 !important;
 
           .category:after {
             display: none;
@@ -2421,7 +2423,6 @@
 }
 
 // Press programmation //
-
 .press-programmation{
   .header-press{
     .container{
@@ -2432,7 +2433,7 @@
       right: 1px;
     }
     .button.list:hover{
-      color:$gold !important;
+      color: $gold;
     }
   }
 }

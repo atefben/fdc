@@ -208,9 +208,6 @@ body .icon{
   height: 600px;
 }
 
-.block-04{
-  height: 325px;
-}
 
 .block-05{
   color: #fff;
@@ -224,6 +221,7 @@ body .icon{
 .block-push{
   // background: center 0 no-repeat fixed;
   background-size: cover;
+  transition: height .5s;
 
   .link{
     margin-top: 20px;
@@ -252,6 +250,47 @@ body .icon{
     font-size: .875rem;
     margin-top: 17px;
   }
+
+  &.half-div{
+    text-align:center;
+    height: 325px;
+
+    strong{
+      font-size:1.25rem;
+    }
+
+    p{
+      font-size: .875rem;
+      color:#f6f6f6;
+      padding-bottom: 6px;
+    }
+
+    @media screen and (min-width: 1280px) and (max-width: 1599px) {
+      height: 405px;
+    }
+
+    @media screen and (min-width: 1600px) and (max-width: 1920px) {
+      height: 503px;
+    }
+
+    @media screen and (min-width: 1920px){
+      height: 603px;
+    }
+
+  }
+
+  @media screen and (min-width: 1600px) and (max-width: 1920px) {
+      &{
+        height:751px;
+      }
+  }
+
+  @media screen and (min-width: 1920px){
+    &{
+      height: 825px;
+    }
+  }
+
 }
 
 .block-push-02{
@@ -295,7 +334,7 @@ body .icon{
 
   strong{
     z-index: 0;
-    width: 190px;
+    width: 221px;
     text-align: center;
   }
 }
@@ -307,6 +346,12 @@ body .icon{
   .info, .info h2{
     text-align: left;
     margin: 0px;
+  }
+
+  .info h2{
+    a{
+      color:#141414;
+    }
   }
 
   .texts{
@@ -323,7 +368,7 @@ body .icon{
       width: 62%;
       font-family: $CamphorRegular;
       line-height: 24px;
-      color:868686;
+      color:#868686;
       font-size: .875rem;
       box-sizing: border-box;
       padding-right: 65px;
@@ -332,7 +377,7 @@ body .icon{
 }
 
 .block-films{
-  margin-top: 30px;
+  padding-top: 15px;
   height: 382px;
 
   video{
@@ -358,7 +403,22 @@ body .icon{
     font-size: .75rem;
     color: #a4a4a4;
     font-family: $CamphorMedium;
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: rgba(102, 102, 102, 0.10);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      height: 10px;
+      background-color: #c8a461;
+    }
+
   }
+
 
   .block-infos{
     border-top: 1px solid #dfdfdf;
@@ -366,32 +426,65 @@ body .icon{
     flex-direction: column;
     height: calc( 100% - 76px );
     overflow: scroll;
+    overflow-x:hidden;
 
     .title-3{
       padding-bottom: 30px;
     }
+
+    .date{
+      color:#999999;
+      font-size:.6875rem;
+      font-family:$CamphorRegular;
+    }
   }
 
-  .icon-palme{
+  .text-infos{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+
+    &:after {
+      content:'';
+      display:block;
+      height:0px;
+      width: 25px;
+      border-top:1px solid #e7e7e7;
+      margin-top:30px;
+      position:absolute;
+      left:46%;
+    }
+
+    &:last-child:after {
+      display:none;
+    }
+  }
+
+  .icon-palme {
     padding-top: 20px;
-    font-size: 4rem;
+    font-size: 3rem;
     color: $gold;
+    max-height: 39px;
+    margin-bottom:8px;
   }
 }
 
 .block-list-img{
   margin-top: 30px;
 
-  .item{
+  .item {
     display: inline-block;
     margin: 0 11.5px;
+    margin-bottom:13px;
     position: relative;
     cursor:pointer;
 
-    &:after{
+    &:after {
       content:'';
       width: 100%;
-      height: 98%;
+      height: 100%;
       opacity: .5;
       background-color:#000;
       position:absolute;
@@ -400,15 +493,27 @@ body .icon{
       transition:.5s;
     }
 
-    &:hover:after{
-      opacity:0;
+    &:hover:after {
+      opacity:.1;
     }
 
-    .wrapper{
+    img {
+      transition: .5s;
+    }
+
+    &:first-child {
+      margin-left: 0px;
+    }
+
+    &:last-child {
+      margin-right: 0px;
+    }
+
+    .wrapper {
       display: block;
 
       &:after{
-        border: 0 solid $gold;
+        border: 0px solid $gold;
         box-sizing: border-box;
         content: '';
         display: block;
@@ -427,21 +532,25 @@ body .icon{
       &:hover:after{
         border: 4px solid $gold;
       }
-
     }
 
-    img {
-      transition: .5s;
+  }
+
+  .center{
+
+    .wrapper {
+      &:after{
+        border: 4px solid $gold;
+      }
     }
 
-    &:first-child{
-      margin-left: 0px;
-    }
-
-    &:last-child{
-      margin-right: 0px;
+    .item{
+      &:after {
+        opacity:0;
+      }
     }
   }
+
 }
 
 .block-social-network{
