@@ -9,39 +9,15 @@
 
 <body class="acces" id="main">
 <div class="acces-container">
-    <section class="open">
-        <div class="section-title">
-            <i class="icon icon_les-differents-types-dacces"></i>
-            <h3 class="title-participate">{{ acces|trans_fallback('title')  }}</h3>
-            <i class="icon accordion icon_moins"></i>
-        </div>
-        <div class="section-contain" >
-            {% for widget in acces.widgets %}
-                {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
-                    {% include 'FDCEventBundle:Mobile/widgets:widget_one.html.twig' with {'widget': widget} %}
-                {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
-                    {% include 'FDCEventBundle:Mobile/widgets:widget_two.html.twig' with {'widget': widget} %}
-                {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypethree" %}
-                    {% include 'FDCEventBundle:Mobile/widgets:widget_three.html.twig' with {'widget': widget} %}
-                {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefour" %}
-                    {% include 'FDCEventBundle:Mobile/widgets:widget_four.html.twig' with {'widget': widget} %}
-                {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefive" %}
-                    {% include 'FDCEventBundle:Mobile/widgets:widget_five.html.twig' with {'widget': widget} %}
-                {% elseif class(widget) == "FDCPageParticipateSectionWidgetSubTitle" %}
-                    {% include 'FDCEventBundle:Mobile/widgets:widget_subtitle.html.twig' with {'widget': widget} %}
-                {% endif %}
-            {% endfor %}
-        </div>
-    </section>
-
+    {% for strate in strates %}
     <section>
         <div class="section-title">
-            <i class="icon icon_les-bonnes-pratiques"></i>
-            <h3 class="title-participate">{{ pratique|trans_fallback('title') }}</h3>
+            <i class="icon {{ strate|trans_fallback('icon') }}"></i>
+            <h3 class="title-participate">{{ strate|trans_fallback('title') }}</h3>
             <i class="icon accordion icon_case-plus"></i>
         </div>
         <div class="section-contain">
-            {% for widget in pratique.widgets %}
+            {% for widget in strate.widgets %}
                 {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
                     {% include 'FDCEventBundle:Mobile/widgets:widget_one.html.twig' with {'widget': widget} %}
                 {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
@@ -58,6 +34,7 @@
             {% endfor %}
         </div>
     </section>
+    {% endfor %}
 </div>
 
 </body>

@@ -9,6 +9,4 @@ interface FDCPageParticipateSectionInterface
     const FDC_MODE_EMPLOI = 3;
     const ACCES_PROJECTION = 4;
     const GUIDE_PRESS = 5;
-
-    public static function getPages();
 }
