@@ -76,10 +76,13 @@ class MobileNotificationListener
         foreach ($object->getTranslations() as $translation) {
             $published = $translation->getStatus() === MobileNotificationTranslation::STATUS_PUBLISHED;
             $published = $published || $translation->getStatus() === MobileNotificationTranslation::STATUS_TRANSLATION_VALIDATING;
-			
-			$conn = $this->getApnsConnection();
-			$conn->add($this->setNewMessage($object->getToken(), $translation->getDescription() , 1));
-			$this->sendPush($conn);
+
+            if ($published) {
+
+                $conn = $this->getApnsConnection();
+                $conn->add($this->setNewMessage($object->getToken(), $translation->getDescription() , 1));
+                $this->sendPush($conn);
+            }
 		}
     }
 	
