@@ -19,7 +19,7 @@ use JMS\Serializer\Annotation\Since;
  * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class MediaAudio extends Media implements RoutedItemInterface
+class MediaAudio extends Media // implements RoutedItemInterface
 {
     use Translatable;
 
@@ -197,71 +197,5 @@ class MediaAudio extends Media implements RoutedItemInterface
     {
         return Export::yesOrNo($this->getDisplayedAll());
 
-    }
-
-    /**
-     * This method returns feed item title.
-     *
-     * @abstract
-     *
-     * @return string
-     */
-    public function getFeedItemTitle(){
-        return array('title' => $this->findTranslationByLocale('fr')->getTitle());
-    }
-
-    /**
-     * This method returns feed item description (or content).
-     *
-     * @abstract
-     *
-     * @return string
-     */
-    public function getFeedItemDescription(){
-        return array('description' => 'description');
-    }
-
-    /**
-     * This method returns the name of the route.
-     *
-     * @abstract
-     *
-     * @return string
-     */
-    public function getFeedItemRouteName(){
-        return 'fdc_event_news_getaudios';
-    }
-
-    /**
-     * This method returns the parameters for the route.
-     *
-     * @abstract
-     *
-     * @return array
-     */
-    public function getFeedItemRouteParameters(){
-        return null;
-    }
-
-    /**
-     * This method returns the anchor to be appended on this item's url.
-     *
-     * @abstract
-     *
-     * @return string The anchor, without the "#"
-     */
-    public function getFeedItemUrlAnchor() {
-        return 'aid='.$this->id;
-    }
-
-    /**
-     * This method returns item publication date.
-     *
-     * @abstract
-     *
-     * @return \DateTime
-     */
-    public function getFeedItemPubDate() {
-        return array('date' => $this->getUpdatedAt());
     }
 }

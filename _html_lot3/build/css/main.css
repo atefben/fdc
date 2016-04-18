@@ -3216,12 +3216,54 @@ Copyright (c) 2015 Daniel Eden
   line-height: 18px;
 }
 
+.title-9 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: .75rem;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+  line-height: 18px;
+  color: #fff;
+  display: block;
+  text-align: center;
+  margin-bottom: 19px;
+  padding-top: 60px;
+}
+
 .subtitle {
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-style: italic;
   font-size: 0.875rem;
   font-weight: normal;
   text-align: center;
+}
+
+.return-back {
+  color: #fff;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: .625rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding-top: 20px;
+  display: block;
+  transition: .5s;
+}
+.return-back .icon {
+  font-size: .4rem;
+  margin-right: 10px;
+}
+.return-back:hover {
+  opacity: .75;
+}
+
+.contain-title {
+  min-height: 152px;
+}
+.contain-title .title-01 {
+  font-size: 1.125rem;
+  color: #fff;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .5rem;
 }
 
 figcaption, .caption {
@@ -3639,6 +3681,26 @@ body .icon:before {
   text-align: center;
 }
 
+.block-push-top {
+  height: 300px;
+  display: block;
+}
+.block-push-top .txts {
+  text-align: center;
+}
+.block-push-top .title-4 {
+  font-size: .75rem;
+  color: #fff;
+  display: block;
+}
+.block-push-top .title-2 {
+  font-size: 3.75rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: block;
+  letter-spacing: 10px;
+}
+
 .block-legend {
   padding: 25px 0;
   padding-bottom: 33px;
@@ -3749,6 +3811,59 @@ body .icon:before {
   margin-bottom: 8px;
 }
 
+.block-movie-preview {
+  background: center no-repeat fixed;
+  background-size: cover;
+}
+.block-movie-preview .bck-hover {
+  height: 448px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #141414;
+  transition: .5s;
+}
+.block-movie-preview .bck-hover:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.block-movie-preview .wrapper-item {
+  width: 708px;
+  display: flex;
+  margin: 0 auto;
+}
+.block-movie-preview .poster {
+  display: inline-block;
+}
+.block-movie-preview .infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 80px;
+}
+.block-movie-preview .description {
+  color: #666666;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 26px;
+  text-align: center;
+  width: 355px;
+  margin-bottom: 40px;
+}
+.block-movie-preview .name-f {
+  color: #fff;
+  font-size: .875rem;
+  text-transform: uppercase;
+  line-height: 18px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.block-movie-preview .names-a {
+  color: #c8a461;
+  font-size: .8125rem;
+  line-height: 18px;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+
 .block-list-img {
   margin-top: 30px;
 }
@@ -3841,10 +3956,36 @@ body .icon:before {
   border-left-color: #c8a461;
 }
 
+.block-social-network-all {
+  width: 380px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+.block-social-network-all a {
+  width: 76px;
+  border-color: #222222;
+}
+.block-social-network-all a:first-child {
+  border-left: 1px solid #222222;
+}
+.block-social-network-all a:last-child {
+  border-color: #222222;
+}
+.block-social-network-all a:hover {
+  border-color: #c8a461;
+}
+.block-social-network-all a:hover + a {
+  border-left-color: #c8a461;
+}
+
 video {
   padding: 30px 0;
   padding-top: 23px;
   width: 100%;
+}
+
+.black {
+  background-color: #0c0c0c;
 }
 
 .fullHeight {
@@ -3916,6 +4057,10 @@ video {
   border-bottom: 1px solid #2C2C2C;
 }
 
+.border-top {
+  border-top: 1px solid #2C2C2C;
+}
+
 .padding-bottom {
   padding-bottom: 70px;
   display: block;
@@ -3982,13 +4127,6 @@ video {
   #main, header, footer {
     width: 1024px;
     zoom: 0.75;
-  }
-
-  #featured-movies .video {
-    width: 1024px !important;
-  }
-  #featured-movies .video video {
-    height: 576px !important;
   }
 }
 @font-face {
@@ -5516,7 +5654,6 @@ footer .footer-menu ul li a:hover {
 }
 
 #breadcrumb {
-  border-bottom: 1px solid #2c2c2c;
   position: relative;
 }
 #breadcrumb:after {
@@ -6955,4 +7092,32 @@ header #searchContainer {
 }
 .slider-02 .owl-stage-outer {
   overflow: visible;
+}
+
+.navigation-sticky {
+  background-color: #0c0c0c;
+  height: 45px;
+  line-height: 45px;
+}
+.navigation-sticky a {
+  color: #999999;
+  transition: .5s;
+}
+.navigation-sticky ul {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.navigation-sticky li {
+  font-size: .75rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  padding: 0px 7.5px;
+}
+.navigation-sticky li.active a {
+  color: #c8a461;
+}
+.navigation-sticky li a:hover {
+  color: #c8a461;
 }
