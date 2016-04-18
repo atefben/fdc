@@ -25,7 +25,7 @@
                 <li><a class="rss" href="{{ path('fdc_event_footer_rss') }}" target="_blank"><i class="icon icon_rss"></i></a></li>
                 <li><a class="youtube" href="{{ social_youtube }}" target="_blank"><i class="icon icon_youtube"></i></a></li>
                 <li><a class="dailymotion" href="{{ social_dailymotion }}" target="_blank"><i class="icon icon_dailymotion"></i></a></li>
-                <li><a class="podcast" href="{{ social_podcast }}" target="_blank"><i class="icon icon_podcast"></i></a></li>
+                <li><a class="podcast" href="{{ path('fdc_event_footer_podcast') }}" target="_blank"><i class="icon icon_podcast"></i></a></li>
             </ul>
         </div>
         {{ render(controller('FDCEventBundle:Global:footer', {route : app.request.get('_route')})) }}

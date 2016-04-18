@@ -15,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 
+use Eko\FeedBundle\Item\Writer\RoutedItemInterface;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Discriminator;
 use JMS\Serializer\Annotation\Since;
@@ -31,7 +32,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "NewsArticle", "audio" = "NewsAudio", "image" = "NewsImage", "video" = "NewsVideo"})
  */
-abstract class News implements TranslateMainInterface
+abstract class News implements TranslateMainInterface,RoutedItemInterface
 {
     use Time;
     use SeoMain;
@@ -958,5 +959,72 @@ abstract class News implements TranslateMainInterface
     public function getHomepageMediaVideo()
     {
         return $this->homepageMediaVideo;
+    }
+
+
+    /**
+     * This method returns feed item title.
+     *
+     * @abstract
+     *
+     * @return string
+     */
+    public function getFeedItemTitle(){
+        return array('title' => $this->findTranslationByLocale('fr')->getTitle());
+    }
+
+    /**
+     * This method returns feed item description (or content).
+     *
+     * @abstract
+     *
+     * @return string
+     */
+    public function getFeedItemDescription(){
+        return array('description' => 'description');
+    }
+
+    /**
+     * This method returns the name of the route.
+     *
+     * @abstract
+     *
+     * @return string
+     */
+    public function getFeedItemRouteName(){
+        return 'fdc_event_news_getaudios';
+    }
+
+    /**
+     * This method returns the parameters for the route.
+     *
+     * @abstract
+     *
+     * @return array
+     */
+    public function getFeedItemRouteParameters(){
+        return null;
+    }
+
+    /**
+     * This method returns the anchor to be appended on this item's url.
+     *
+     * @abstract
+     *
+     * @return string The anchor, without the "#"
+     */
+    public function getFeedItemUrlAnchor() {
+        return 'aid='.$this->id;
+    }
+
+    /**
+     * This method returns item publication date.
+     *
+     * @abstract
+     *
+     * @return \DateTime
+     */
+    public function getFeedItemPubDate() {
+        return array('date' => $this->findTranslationByLocale('fr')->getUpdatedAt());
     }
 }
