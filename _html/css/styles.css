@@ -6687,20 +6687,21 @@ div.chocolat-wrapper .zoomCursor .icon {
   margin-left: 0;
   color: #c8a461;
   display: inline-block;
-  font-size: 0.625rem;
+  font-size: 0.7rem;
   letter-spacing: 0.1em;
   margin-right: 12px;
   text-transform: uppercase;
 }
 .video-container .top-bar .info span {
-  color: #666;
+  color: #777;
   display: inline-block;
-  font-size: 0.625rem;
+  font-size: 0.7rem;
 }
 .video-container .top-bar .info p {
   color: #fff;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  font-size: 0.850rem;
+  font-size: 0.9rem;
+  line-height: 20px;
   text-align: left;
   width: auto;
 }
@@ -19173,9 +19174,6 @@ input[type=submit] {
 .accreditation #accreditation .wrapper .container-small p strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
-.accreditation #accreditation .wrapper .container-small ul {
-  list-style: inherit;
-}
 .accreditation #accreditation .wrapper .container-small ul li strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.75rem;
@@ -19193,14 +19191,6 @@ input[type=submit] {
 }
 .accreditation #accreditation .wrapper .container-small ul li a:hover {
   color: #8e6d30;
-}
-.accreditation #accreditation .wrapper .container-small ol {
-  list-style: decimal;
-}
-.accreditation #accreditation .wrapper .container-small ul, .accreditation #accreditation .wrapper .container-small ol {
-  margin-bottom: 5px;
-  padding-left: 30px;
-  line-height: 1.7em;
 }
 .accreditation #accreditation .wrapper .container-small h5 {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
