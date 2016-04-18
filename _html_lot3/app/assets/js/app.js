@@ -23,6 +23,7 @@ $(document).ready(function() {
   if($('.home').length){
     owInitSlider('home');
     owInitSlider('slider-01');
+    owInitSlider('slider-02');
   }
 
 });

@@ -4,31 +4,31 @@
   margin: 0 6.5%;
 }
 
-h2 {
-  &.sub-title{
-    font-family: $Playfair;
-    font-size: 1.5rem;
-    margin-bottom: 50px;
-    text-align: center;
-  }
-
-  &.sub-title2{
-    font-family: $Playfair;
-    font-weight: 700;
-    font-size: 1.125rem;
-    margin: 25px 0px;
-  }
-}
-
-h3 {
-  &.sub-title {
-    font-family: $CamphorBold;
-    font-size: 0.875rem;
-    margin: 50px 0;
-    text-align: center;
-    text-transform: uppercase;
-  }
-}
+// h2 {
+//   &.sub-title{
+//     font-family: $Playfair;
+//     font-size: 1.5rem;
+//     margin-bottom: 50px;
+//     text-align: center;
+//   }
+//
+//   &.sub-title2{
+//     font-family: $Playfair;
+//     font-weight: 700;
+//     font-size: 1.125rem;
+//     margin: 25px 0px;
+//   }
+// }
+//
+// h3 {
+//   &.sub-title {
+//     font-family: $CamphorBold;
+//     font-size: 0.875rem;
+//     margin: 50px 0;
+//     text-align: center;
+//     text-transform: uppercase;
+//   }
+// }
 
 .card {
   height: 305px;
@@ -59,7 +59,7 @@ h3 {
     }
 
     h2{
-      max-width: 70%;
+      max-width: 75%;
     }
   }
 
@@ -70,7 +70,7 @@ h3 {
     width: 68%;
 
     h2 {
-      font-size: 2.250rem;
+      font-size: 1.875rem;
       line-height: 1.3em;
       margin-top: 20px;
       max-width: 74%;

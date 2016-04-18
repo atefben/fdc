@@ -545,7 +545,7 @@
 
         &.list {
           border-top: none;
-//          display: none;
+          // display: none;
           display: block;
           opacity: 0;
           visibility: hidden;
@@ -556,12 +556,17 @@
           &.show {
             opacity: 1;
             visibility: visible;
+
+            &:hover {
+              background-color: $gold;
+              color: #fff;
+              cursor: pointer;
+            }
           }
         }
+
         &.subnav:hover {
-          background-color: #fff;
-          color: $gold;
-          opacity: 0.5;
+          cursor: default;
         }
       }
     }
