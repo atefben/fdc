@@ -216,15 +216,15 @@ $(document).ready(function () {
   });
 
   if ($('#mycalendar').length) {
-    var maxDate = '22';
-    var minDate = '11';
+    var minDate = typeof GLOBALS.dateStart !== "undefined" ? GLOBALS.dateStart.slice(-2) : '11';
+    var maxDate = typeof GLOBALS.dateEnd !== "undefined" ? GLOBALS.dateEnd.slice(-2) : '22';
 
     // full width calendar (page 'my calendar')
     if ($('#calendar').hasClass('fullwidth')) {
       var lang = GLOBALS.locale;
       $('#mycalendar').fullCalendar({
         lang: lang,
-        defaultDate: '2016-05-11', // TODO A REVOIR //
+        defaultDate: typeof GLOBALS.defaultDate !== "undefined" ? GLOBALS.calendar.defaultDate : '2016-05-11',
         header: {
           left: 'prev',
           center: 'title',
@@ -236,7 +236,7 @@ $(document).ready(function () {
             duration: {
               days: 6
             },
-            buttonText: '5 day',
+            buttonText: '5 day'
           },
           agendaFour: {
             type: 'agenda',
@@ -251,7 +251,7 @@ $(document).ready(function () {
               days: 4
             },
             buttonText: '3 day'
-          },
+          }
         },
         firstDay: 3,
         defaultView: 'agendaWeek',
@@ -318,10 +318,10 @@ $(document).ready(function () {
             $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
 
             if (moment.format('DD') > maxDate) {
-              $('#mycalendar').fullCalendar('gotoDate', '2016-05-22');
+              $('#mycalendar').fullCalendar('gotoDate', GLOBALS.dateStart);
             }
             if (moment.format('DD') < minDate) {
-              $('#mycalendar').fullCalendar('gotoDate', '2016-05-11');
+              $('#mycalendar').fullCalendar('gotoDate', GLOBALS.dateEnd);
             }
             if (parseInt(moment.format('DD')) + 4 >= maxDate) {
               $('#mycalendar .fc-right').addClass('hide');

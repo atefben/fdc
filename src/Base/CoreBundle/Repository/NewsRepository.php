@@ -103,11 +103,7 @@ class NewsRepository extends EntityRepository
             $midnight->setTime(23, 59, 59);
 
             $qb
-                ->andWhere('n.festival = :festival')
                 ->andWhere('n.publishedAt BETWEEN :morning AND :midnight')
-                ->andWhere('n.publishedAt <= :datetime')
-                ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
-                ->setParameter('datetime', $dateTime)
                 ->setParameter('morning', $morning)
                 ->setParameter('midnight', $midnight)
             ;
@@ -146,7 +142,6 @@ class NewsRepository extends EntityRepository
             ->getQuery()
             ->getResult()
             ;
-
         return $qb;
     }
 
