@@ -845,11 +845,11 @@ class FooterController extends Controller
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
         $dateTime = new DateTime();
 
-        $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $settings->getFestival()->getId(), $dateTime);
+        /*$audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $settings->getFestival()->getId(), $dateTime);
         $feed = $this->get('eko_feed.feed.manager')->get('article');
-        $feed->addFromArray($audios);
+        $feed->addFromArray($audios);*/
 
-        return new Response($feed->render('rss')); // ou 'atom'
+        return new Response(); // ou 'atom'
     }
 
     /**
@@ -863,12 +863,12 @@ class FooterController extends Controller
         $em = $this->getDoctrine()->getManager();
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
 
-        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $settings->getFestival()->getId());
-        $newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale);
+        //$newsArticles = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $settings->getFestival()->getId());
+        //$newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale);
 
-        $feed = $this->get('eko_feed.feed.manager')->get('article');
-        $feed->addFromArray($newsArticles);
+        //$feed = $this->get('eko_feed.feed.manager')->get('article');
+        //$feed->addFromArray($newsArticles);
 
-        return new Response($feed->render('rss')); // ou 'atom'
+        return new Response(); // ou 'atom'
     }
 }
