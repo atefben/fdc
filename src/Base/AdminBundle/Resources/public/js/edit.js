@@ -108,6 +108,18 @@ jQuery(document).ready(function($) {
         }
     });
 
+    //preview footer
+    //var url = window.location.href;
+    //var footerUrl = url.split("/");
+    //if(footerUrl[6] == 'fdcpagefooter') {
+    //    if (footerUrl[7] == 1) {
+    //
+    //    }
+    //    var route = Routing.generate('fdc_press_news_get', { _locale: 'fr', format: format, slug: slug, type: type });
+    //    $('.well.well-small.form-actions').append('<a target="_blank" href="'+route+'" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
+    //}
+
+
 });
 
 function editEvents() {
