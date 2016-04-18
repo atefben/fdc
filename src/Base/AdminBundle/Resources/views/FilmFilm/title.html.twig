@@ -3,10 +3,6 @@
 
 {% block field %}
     <div>
-        {% if object|trans_fallback('title') %}
-            {{ object|trans_fallback('title') }}
-        {% else %}
-            {{ object.titleVO }}
-        {% endif %}
+        {{ object.titleVO }}
     </div>
 {% endblock %}
