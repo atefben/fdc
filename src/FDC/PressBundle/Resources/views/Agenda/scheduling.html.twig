@@ -43,16 +43,18 @@
                     {% include 'FDCEventBundle:Agenda:components/filters.html.twig' %}
 
                     <div id="timeline">
-                        {% set festivalStarted = 0 %}
-                        {% for key, day in schedulingDays %}
-                            <a href="#"
-                               class="{% if day|date('Ymd') == "now"|date('Ymd') %}{% set festivalStarted = 1 %}active
-                                {% elseif festivalStarted == 0 and key == 0 %}active{% endif %}"
-                               data-date="{{ day|date('Ymd') }}">
-                                {{ day|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
-                                <span class="day">{{ day|date('d') }}</span>
-                            </a>
-                        {% endfor %}
+                        <span class="arrow left"><i class="icon icon_flecheGauche"></i></span>
+                        <div class="timeline-container">
+
+
+                            {% for day in schedulingDays %}
+                                <a href="#" {% if day == date %}class="active"{% endif %} data-date="{{ day|date('Y-m-d') }}">
+                                    {{ day|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                                    <span class="day">{{ day|date('d') }}</span>
+                                </a>
+                            {% endfor %}
+                        </div>
+                        <span class="arrow right"><i class="icon icon_fleche-right"></i></span>
                     </div>
                     <div class="calendar">
                         <div class="timeCol">
