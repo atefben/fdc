@@ -6687,20 +6687,21 @@ div.chocolat-wrapper .zoomCursor .icon {
   margin-left: 0;
   color: #c8a461;
   display: inline-block;
-  font-size: 0.625rem;
+  font-size: 0.7rem;
   letter-spacing: 0.1em;
   margin-right: 12px;
   text-transform: uppercase;
 }
 .video-container .top-bar .info span {
-  color: #666;
+  color: #777;
   display: inline-block;
-  font-size: 0.625rem;
+  font-size: 0.7rem;
 }
 .video-container .top-bar .info p {
   color: #fff;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  font-size: 0.850rem;
+  font-size: 0.9rem;
+  line-height: 20px;
   text-align: left;
   width: auto;
 }
@@ -12107,6 +12108,7 @@ article .read-later.rAlign span:after {
 }
 .grid .grid-wrapper {
   margin-top: 60px;
+  overflow: hidden;
 }
 .grid .item {
   padding: 0;
@@ -19248,11 +19250,7 @@ input[type=submit] {
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
 }
-.accreditation #accreditation .nav-accre .wrapper table .active {
-  background-color: #c8a461;
-  border: 1px solid #c8a461;
-  color: #fff;
-}
+.accreditation #accreditation .nav-accre .wrapper table .active,
 .accreditation #accreditation .nav-accre .wrapper table .active:hover {
   background-color: #c8a461;
   border: 1px solid #c8a461;
