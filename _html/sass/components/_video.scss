@@ -138,22 +138,23 @@
         margin-left: 0;
         color: #c8a461;
         display: inline-block;
-        font-size: 0.625rem;
+        font-size: 0.7rem;
         letter-spacing: 0.1em;
         margin-right: 12px;
         text-transform: uppercase;
       }
 
       span {
-        color: #666;
+        color: #777;
         display: inline-block;
-        font-size: 0.625rem;
+        font-size: 0.7rem;
       }
 
       p {
         color: #fff;
         font-family: $CamphorRegular;
-        font-size: 0.850rem;
+        font-size: 0.9rem;
+        line-height: 20px;
         text-align: left;
         width: auto;
       }
