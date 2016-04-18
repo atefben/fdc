@@ -218,7 +218,7 @@ class MediaAudio extends Media implements RoutedItemInterface
      * @return string
      */
     public function getFeedItemDescription(){
-        return array('description' => 'descritpion');
+        return array('description' => 'description');
     }
 
     /**
@@ -229,7 +229,7 @@ class MediaAudio extends Media implements RoutedItemInterface
      * @return string
      */
     public function getFeedItemRouteName(){
-        return 'fdc_event_footer_rss';
+        return 'fdc_event_news_getaudios';
     }
 
     /**
@@ -240,7 +240,7 @@ class MediaAudio extends Media implements RoutedItemInterface
      * @return array
      */
     public function getFeedItemRouteParameters(){
-        return array('id' => $this->id);
+        return null;
     }
 
     /**
@@ -251,7 +251,7 @@ class MediaAudio extends Media implements RoutedItemInterface
      * @return string The anchor, without the "#"
      */
     public function getFeedItemUrlAnchor() {
-        return null;
+        return 'aid='.$this->id;
     }
 
     /**
