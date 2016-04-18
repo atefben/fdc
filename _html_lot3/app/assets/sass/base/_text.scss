@@ -54,7 +54,7 @@
 .title-4{
   font-family: $CamphorBold;
   font-size: 1.125rem; //18px
-  color:#000;
+  color:#141414;
   text-transform: uppercase;
   line-height: 24px;
 }
@@ -68,7 +68,8 @@
 }
 
 .title-5{
-  font-family: $CamphorBold;
+  font-family: $CamphorMedium;
+  font-style: italic;
   color:$gold;
   font-size: .75rem; //12px
   line-height: 24px;
@@ -79,7 +80,7 @@
   text-transform: uppercase;
   line-height: 24px;
   font-family: $CamphorBold;
-  color:#000;
+  color:#333333;
 }
 
 .title-7{
@@ -87,7 +88,7 @@
   text-transform: uppercase;
   line-height: 24px;
   font-family: $CamphorBold;
-  color:#000;
+  color:#141414;
 }
 
 .title-8{
@@ -188,9 +189,9 @@ a {
 }
 
 .read-more {
-  border: 1px solid #d9d9d9;
+  border: 1px solid #e5e5e5;
   clear: both;
-  color: #999;
+  color: #666666;
   display: block;
   height: 55px;
   font-family: $CamphorHeavy;
@@ -204,7 +205,7 @@ a {
   @include transition(all 0.9s $smoothTransition);
 
   strong {
-    color: #000;
+    color: #141414;
     font-weight: normal;
   }
 

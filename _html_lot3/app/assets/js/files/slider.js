@@ -50,7 +50,7 @@ var owInitSlider = function(sliderName) {
       items               : 1,
       autoWidth           : true,
       smartSpeed          : 700,
-      center              : true
+      center              : true,
     });
 
     // Custom Navigation Events
@@ -58,6 +58,28 @@ var owInitSlider = function(sliderName) {
       var number = $(this).index();
 
       $('.slider-01 .center').removeClass('center');
+      $(this).addClass('center');
+      slide01.trigger('to.owl.carousel', number);
+    });
+  }
+
+  /* SLIDER 02
+  ----------------------------------------------------------------------------- */
+  if(sliderName == 'slider-02') {
+    var slide01 = $('.slider-02').owlCarousel({
+      navigation          : false,
+      items               : 1,
+      autoWidth           : true,
+      smartSpeed          : 700,
+      center              : true,
+      margin              : 27.5
+    }); 
+
+    // Custom Navigation Events
+    $(document).on('click', '.slider-02 .owl-item', function(){
+      var number = $(this).index();
+
+      $('.slider-02 .center').removeClass('center');
       $(this).addClass('center');
       slide01.trigger('to.owl.carousel', number);
     });
