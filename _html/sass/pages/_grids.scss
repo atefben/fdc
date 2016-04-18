@@ -281,6 +281,10 @@
     overflow: hidden;
     visibility: hidden;
 
+    .press.press-actu & {
+      cursor: default
+    }
+
     &.visible {
       visibility: visible;
     }
