@@ -2,6 +2,7 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Base\CoreBundle\Interfaces\FDCPageParticipateSectionInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -14,7 +15,7 @@ class MobileController extends Controller
 {
     /**
      * @Route("/mobile-acces")
-     * @Template("FDCEventBundle:Mobile:acces.html.twig")
+     * @Template("FDCEventBundle:Mobile:mobile.html.twig")
      */
     public function mobileAccesAction(Request $request)
     {
@@ -23,39 +24,52 @@ class MobileController extends Controller
         $locale = $request->getLocale();
 
 
-        $pratiques = $em
+        $strates = $em
             ->getRepository('BaseCoreBundle:FDCPageParticipateSection')
-            ->findOneBy(array(
-                'page' => '1',
+            ->findBy(
+                array(
+                'page' => FDCPageParticipateSectionInterface::ACCES_PROJECTION,
                 'mobile' => true
-            ));
-
-        $acces = $em
-            ->getRepository('BaseCoreBundle:FDCPageParticipateSection')
-            ->findOneBy(array(
-                'page' => '2',
-                'mobile' => true
-            ));
+                ),
+                array('stratePosition' => 'asc')
+            );
 
 
         return array(
-            'pratique' => $pratiques,
-            'acces' => $acces
+            'strates' => $strates,
         );
     }
 
     /**
      * @Route("/mobile-guide-presse")
-     * @Template("FDCEventBundle:Mobile:guide-press.html.twig")
+     * @Template("FDCEventBundle:Mobile:mobile.html.twig")
      */
     public function mobileGuidePressAction(Request $request)
     {
+        $this->isPageEnabled($request->get('_route'));
+        $em = $this->getDoctrine()->getManager();
+        $locale = $request->getLocale();
 
+
+        $strates = $em
+            ->getRepository('BaseCoreBundle:FDCPageParticipateSection')
+            ->findBy(
+                array(
+                    'page' => FDCPageParticipateSectionInterface::GUIDE_PRESS,
+                    'mobile' => true
+                ),
+                array('stratePosition' => 'asc')
+            );
+
+
+        return array(
+            'strates' => $strates,
+        );
     }
 
     /**
      * @Route("/mobile-participer")
-     * @Template("FDCEventBundle:Mobile:participer.html.twig")
+     * @Template("FDCEventBundle:Mobile:mobile.html.twig")
      */
     public function mobileParticiperAction(Request $request)
     {
@@ -64,38 +78,25 @@ class MobileController extends Controller
         $locale = $request->getLocale();
 
 
-        $landing = $em
+        $strates = $em
             ->getRepository('BaseCoreBundle:FDCPageParticipateSection')
-            ->findOneBy(array(
-                'page' => '3',
-                'mobile' => true
-            ));
-
-        $medias = $em
-            ->getRepository('BaseCoreBundle:FDCPageParticipateSection')
-            ->findOneBy(array(
-                'page' => '4',
-                'mobile' => true
-            ));
-
-        $services = $em
-            ->getRepository('BaseCoreBundle:FDCPageParticipateSection')
-            ->findOneBy(array(
-                'page' => '5',
-                'mobile' => true
-            ));
+            ->findBy(
+                array(
+                    'page' => FDCPageParticipateSectionInterface::FDC_MODE_EMPLOI,
+                    'mobile' => true
+                ),
+                array('stratePosition' => 'asc')
+            );
 
 
         return array(
-            'landing' => $landing,
-            'medias' => $medias,
-            'services' => $services,
+            'strates' => $strates,
         );
     }
 
     /**
      * @Route("/mobile-plan")
-     * @Template("FDCEventBundle:Mobile:plan.html.twig")
+     * @Template("FDCEventBundle:Mobile:mobile.html.twig")
      */
     public function planAction(Request $request)
     {
@@ -104,21 +105,25 @@ class MobileController extends Controller
         $locale = $request->getLocale();
 
 
-        $plan = $em
+        $strates = $em
             ->getRepository('BaseCoreBundle:FDCPageParticipateSection')
-            ->findOneBy(array(
-                'page' => '10',
-                'mobile' => true
-            ));
+            ->findBy(
+                array(
+                    'page' => FDCPageParticipateSectionInterface::BONNE_PRATIQUES,
+                    'mobile' => true
+                ),
+                array('stratePosition' => 'asc')
+            );
+
 
         return array(
-            'plan' => $plan,
+            'strates' => $strates,
         );
     }
 
     /**
      * @Route("/mobile-se-rendre")
-     * @Template("FDCEventBundle:Mobile:se-rendre.html.twig")
+     * @Template("FDCEventBundle:Mobile:mobile.html.twig")
      */
     public function seRendreAction(Request $request)
     {
@@ -126,16 +131,19 @@ class MobileController extends Controller
         $em = $this->getDoctrine()->getManager();
         $locale = $request->getLocale();
 
-
-        $seRendre = $em
+        $strates = $em
             ->getRepository('BaseCoreBundle:FDCPageParticipateSection')
-            ->findOneBy(array(
-                'page' => '6',
-                'mobile' => true
-            ));
+            ->findBy(
+                array(
+                    'page' => FDCPageParticipateSectionInterface::TYPES_ACCES,
+                    'mobile' => true
+                ),
+                array('stratePosition' => 'asc')
+            );
+
 
         return array(
-            'seRendre' => $seRendre,
+            'strates' => $strates,
         );
     }
 }

@@ -19,7 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class FDCPageParticipateSection implements TranslateMainInterface
+class FDCPageParticipateSection implements TranslateMainInterface,FDCPageParticipateSectionInterface
 {
     use Time;
     use Translatable;
@@ -61,6 +61,13 @@ class FDCPageParticipateSection implements TranslateMainInterface
      * @ORM\Column(type="integer", nullable=true)
      */
     private $page;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $stratePosition;
 
     /**
      * Constructor
@@ -191,5 +198,46 @@ class FDCPageParticipateSection implements TranslateMainInterface
     public function getPage()
     {
         return $this->page;
+    }
+
+    /**
+     * Get order
+     *
+     * @return integer
+     */
+    public static function getPages()
+    {
+        return array(
+            self::BONNE_PRATIQUES => 'Plan',
+            self::TYPES_ACCES => 'Se rendre à Cannes',
+            self::FDC_MODE_EMPLOI => "Festival mode d'emploi",
+            self::ACCES_PROJECTION => 'Accès aux projections',
+            self::GUIDE_PRESS => 'Guide de la presse',
+        );
+    }
+
+
+
+    /**
+     * Set stratePosition
+     *
+     * @param integer $stratePosition
+     * @return FDCPageParticipateSection
+     */
+    public function setStratePosition($stratePosition)
+    {
+        $this->stratePosition = $stratePosition;
+
+        return $this;
+    }
+
+    /**
+     * Get stratePosition
+     *
+     * @return integer 
+     */
+    public function getStratePosition()
+    {
+        return $this->stratePosition;
     }
 }

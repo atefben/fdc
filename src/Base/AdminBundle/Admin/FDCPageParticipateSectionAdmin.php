@@ -146,20 +146,9 @@ class FDCPageParticipateSectionAdmin extends Admin
             ))
             ->add('mobile')
             ->add('page', 'choice' ,array(
-                'choices' => array(
-                    null => '',
-                    '1' => 'Bonne Pratiques',
-                    '2' => 'Différents types accès',
-                    '3' => "Horaires",
-                    '4' => 'Accès aux accréditations',
-                    '5' => 'Informations utiles',
-                    '6' => 'Se rendre',
-                    '7' => 'A votre arrivée',
-                    '8' => 'Rendez-vous des médias',
-                    '9' => 'Services',
-                    '10' => 'Plan'
-                )
+                'choices' => FDCPageParticipateSection::getPages()
             ))
+            ->add('stratePosition')
             ->add('translate')
             ->add('translateOptions', 'choice', array(
                 'choices' => FDCPageParticipateSection::getAvailableTranslateOptions(),
