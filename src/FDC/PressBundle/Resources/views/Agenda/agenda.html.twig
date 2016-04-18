@@ -39,19 +39,23 @@
         <div class="container">
             <h3>{{ 'agenda.title.creerunevenement'|trans }}</h3>
             <p>{{ 'agenda.text.completezvotreagendainteractif'|trans }}</p>
-            <form action="#">
+            <form action="#" id="form_data">
                 <label for="title">{{ 'agenda.popin.label.titre'|trans }}</label>
-                <input type="text">
+                <input type="text" name="title">
                 <div class="time first">
                     <label for="begin">{{ 'agenda.popin.label.debut'|trans }}</label>
-                    <input type="text" value="07/11/2015">
-                        <span class="pictodate"></span>
-                    <input type="text" class="hours" value="15h30">
+                    <input type="text" value="{{ festival_date.festivalStartsAt|date('d/m/Y') }}" name="datebegin" id="datepickerBegin">
+                    <span class="pictodate">
+                        <i class="icon icon_programmation"></i>
+                    </span>
+                    <input type="text" class="hours" name="hoursbegin" value="15h30">
                 </div>
                 <div class="time">
                     <label for="end">{{ 'agenda.popin.label.fin'|trans }}</label>
-                    <input type="text"  value="14/11/2015">
-                    <span class="pictodate"></span>
+                    <input type="text"  value="{{ festival_date.festivalEndsAt|date('d/m/Y') }}" id="datepickerEnd">
+                    <span class="pictodate">
+                        <i class="icon icon_programmation"></i>
+                    </span>
                     <input type="text" value="15h30" class="hours">
                 </div>
                 <label for="place">{{ 'agenda.popin.label.lieu'|trans }}</label>

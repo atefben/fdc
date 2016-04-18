@@ -68,7 +68,7 @@ Télécharger au format .ics</a>
           </div>
            <div class="time">
             <label for="end">Fin</label>
-            <input type="text"  value="14/11/2015" id="datepickerEnd"name="dateend"><span class="pictodate"><i class="icon icon_programmation"></i></span><input type="text" value="15h30" class="hours" name="hoursend">
+            <input type="text"  value="14/11/2015" id="datepickerEnd" name="dateend"><span class="pictodate"><i class="icon icon_programmation"></i></span><input type="text" value="15h30" class="hours" name="hoursend">
            </div>
           <label for="place">Lieu</label>
           <input type="text" name="place">
