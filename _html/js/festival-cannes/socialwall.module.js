@@ -141,7 +141,7 @@ function displayGrid() {
       var random = Math.floor(Math.random() * posts.length);
       var item = posts.splice(random, 1)[0];
 
-      $(c).prev().addClass(item.type);
+      $(c).prev().addClass(item.type).removeClass('hasimg');
       $(c).parent().find('.side-2').addClass('overlay');
       $(c).parent().find('.side').removeClass('flip');
       $(c).parent().find('.side-1').css('z-index', '5');

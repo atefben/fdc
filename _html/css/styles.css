@@ -100,7 +100,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 .owl-carousel .owl-item img {
   display: block;
-  width: 100%;
   -webkit-transform-style: preserve-3d;
 }
 
@@ -16797,7 +16796,7 @@ input[type=submit] {
   font-size: 0.813rem;
   float: left;
   width: 145px;
-  margin: 10px 0 0 0;
+  margin: 5px 0 0 0;
   text-transform: uppercase;
 }
 .press .fc-event .info .txt span {
@@ -16805,8 +16804,6 @@ input[type=submit] {
   /* Fallback for non-webkit */
   display: -webkit-box;
   max-width: 145px;
-  height: 47px;
-  /* Fallback for non-webkit */
   margin: 0 auto;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -17477,6 +17474,7 @@ input[type=submit] {
   position: absolute;
   width: 220px;
   z-index: 0 !important;
+  min-height: 90px;
 }
 .press .programmation #calendar-programmation .calendar .venues .venue .v-container .fc-event.ui-draggable-dragging {
   z-index: 10 !important;
@@ -18230,6 +18228,10 @@ input[type=submit] {
   float: left;
   width: 325px;
 }
+.popin-event .films .owl-item img {
+  margin: 0 auto;
+  width: auto;
+}
 .popin-event .films .owl-item .film .content {
   opacity: 0;
   visibility: hidden;
@@ -18366,6 +18368,9 @@ input[type=submit] {
 .popin-event .film p span {
   color: #ccc;
   margin-right: 10px;
+}
+.popin-event .film p .nom-item {
+  color: #c8a461;
 }
 .popin-event .film .categories {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -18967,7 +18972,8 @@ input[type=submit] {
   display: inline-block;
   vertical-align: top;
 }
-.practicalguide #praticalguide .container-pguide .wrapper .contain-article .texts strong {
+.practicalguide #praticalguide .container-pguide .wrapper .contain-article .texts strong,
+.practicalguide #praticalguide .container-pguide .wrapper .contain-article .texts .container-title {
   color: #000;
   letter-spacing: .2em;
   font-size: 0.75rem;
@@ -19443,10 +19449,7 @@ input[type=submit] {
   -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.downloading-press .downloading-nav ul li a:hover {
-  color: #c29f5f;
-}
-.downloading-press .downloading-nav ul li a.active {
+.downloading-press .downloading-nav ul li a:hover, .downloading-press .downloading-nav ul li a.active {
   color: #c29f5f;
 }
 .downloading-press .affiche {
@@ -19619,6 +19622,9 @@ input[type=submit] {
 }
 .downloading-press .block .container .contain-dp .infos strong {
   color: #c8a461;
+}
+.downloading-press .block.animation .buttons {
+  margin-top: 40px;
 }
 
 .press-media.lock .mediatheque .table .line .button:hover {

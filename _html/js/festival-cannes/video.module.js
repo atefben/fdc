@@ -271,7 +271,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
           smartSpeed: 500,
           center: true,
           loop: false,
-          margin: 80,
+          margin: 81,
           autoWidth: true,
         });
 

@@ -67,7 +67,8 @@ class ProjectionManager extends CoreManager
             'setId' => $this->entityIdKey,
             'setStartsAt' => 'DateDebut',
             'setEndsAt' => 'DateFin',
-            'setType' => 'TypeProjection'
+            'setType' => 'TypeProjection',
+            'setName' => 'Nom'
         );
         $this->mapperEntity = array(
             array(

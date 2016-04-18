@@ -134,7 +134,8 @@
             display: inline-block;
             vertical-align: top;
 
-            strong {
+            strong,
+            .container-title {
               color:#000;
               letter-spacing: .2em;
               font-size: 0.75rem;

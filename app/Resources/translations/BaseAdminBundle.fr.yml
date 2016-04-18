@@ -526,6 +526,7 @@ dashboard:
         confidentialite: Politique de confidentialité
 
 form:
+    label_mobile: Utiliser cette strate sur mobile
     fdc_page_la_selection_cinema_plage:
         header: Têtière
         subtitle: Sous-titre

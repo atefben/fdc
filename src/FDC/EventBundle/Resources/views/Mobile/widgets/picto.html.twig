@@ -1,0 +1,13 @@
+<div class="item {% if loop.index <= 2 %}large {% endif %}visible">
+    {% if widget.picto is not null %}
+        <i class="icon {{ widget.picto }}"></i>
+    {% endif %}
+    <strong class="transport">{{ widget|trans_fallback('title') }}</strong>
+    <span class="time">{{ widget|trans_fallback('content')|raw }}</span>
+    {% if widget.btnLabel is not null %}
+        <a href="{{ widget|trans_fallback('btnLabel') }}" class="btn" target="_blank">
+            <i class="icon icon_creer"></i>
+            {{ 'En savoir plus' | trans }}
+        </a>
+    {% endif %}
+</div>
