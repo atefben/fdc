@@ -17138,10 +17138,13 @@ input[type=submit] {
   opacity: 1;
   visibility: visible;
 }
+.press .header-press .buttons .button.list.show:hover {
+  background-color: #c8a461;
+  color: #fff;
+  cursor: pointer;
+}
 .press .header-press .buttons .button.subnav:hover {
-  background-color: #fff;
-  color: #c8a461;
-  opacity: 0.5;
+  cursor: default;
 }
 .press .locked {
   background-color: #f4f4f4;
