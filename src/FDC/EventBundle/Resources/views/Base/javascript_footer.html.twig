@@ -5,7 +5,9 @@
             var GLOBALS = {
                 "env" : "{{ app.environment }}",
                 "locale" : "{{ app.request.locale }}",
-                "defaultDate" : "2016-05-12",
+                "defaultDate" : "{{ festival_date.festivalStartsAt|date('Y-m-d') }}",
+                "dateStart": "{{ festival_date.festivalStartsAt|date('Y-m-d') }}",
+                "dateEnd": "{{ festival_date.festivalEndsAt|date('Y-m-d') }}",
                 "api" : {
                     "instagram" : {
                         "token" : "18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
