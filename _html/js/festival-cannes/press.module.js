@@ -1317,9 +1317,15 @@ $(document).ready(function () {
   function ajaxEvent() {
     $('.press-media .nav-mediapress td').on('click', function (e) {
       e.preventDefault();
+      
       if ($(this).is(':not(.active)')) {
         var urlPath = $(this).data('cat');
+
         $.get(urlPath, function (data) {
+          var matches = data.match(/<title>(.*?)<\/title>/);
+          var spUrlTitle = matches[1];
+
+          document.title = spUrlTitle;
           $(".nav-container").html($(data).find('.nav-container'));
           history.pushState('', GLOBALS.texts.url.title, urlPath);
           ajaxEvent();
@@ -1327,6 +1333,7 @@ $(document).ready(function () {
           initSlideshows();
           popinInit();
         });
+        
         $('.press-media .nav-mediapress').find('td.active').removeClass('active');
         $(this).addClass('active');
       }

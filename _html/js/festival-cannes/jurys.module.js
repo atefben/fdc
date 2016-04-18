@@ -21,12 +21,16 @@ $(document).ready(function() {
       if($(this).is(':not(.active)')) {
         var urlPath = $(this).attr('href');
 
-        $.get(urlPath, function(data){
+        $.get(urlPath, function(data) {
+          var matches = data.match(/<title>(.*?)<\/title>/);
+          var spUrlTitle = matches[1];
+
+          document.title = spUrlTitle;
           $( ".container-jurys" ).html( $(data).find('.container-jurys') );
           $('.bandeau-head').html( $(data).find('.bandeau-head') );
           $('.bandeau-list-footer').html( $(data).find('.bandeau-list-footer').html() );
 
-          history.pushState('',GLOBALS.texts.url.title, urlPath);
+          history.pushState('', GLOBALS.texts.url.title, urlPath);
           $grid = $('#gridJurys').imagesLoaded(function() {
             $grid.isotope({
               layoutMode: 'packery',
