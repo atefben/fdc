@@ -89,3 +89,7 @@ orange_video_on_demand:
 orange_studio:
     type:       rest
     resource:   Base\ApiBundle\Controller\OrangeStudioController
+
+push_mobile:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\PushMobileController

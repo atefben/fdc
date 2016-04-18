@@ -128,20 +128,24 @@ class EntityListener
                 $hasSite = true;
             }
 
-            // verify fr translation
-            if (method_exists('getStatus', $entityFr) &&
-                $entityFr->getStatus() == TranslateChildInterface::STATUS_PUBLISHED) {
-                $hasFrench = true;
-            }
+            if ($entityFr !== null) {
+                // verify fr translation
+                if (method_exists($entityFr, 'getStatus') &&
+                    $entityFr->getStatus() == TranslateChildInterface::STATUS_PUBLISHED
+                ) {
+                    $hasFrench = true;
+                }
 
-            // verify locale
-            $hasLocale = false;
-            if ($entityFr === $entity) {
-                $hasLocale = true;
-            } else {
-                if (method_exists('getStatus', $entityFr) &&
-                    $entityFr->getStatus() == TranslateChildInterface::STATUS_TRANSLATED) {
+                // verify locale
+                $hasLocale = false;
+                if ($entityFr === $entity) {
                     $hasLocale = true;
+                } else {
+                    if (method_exists($entityFr, 'getStatus') &&
+                        $entityFr->getStatus() == TranslateChildInterface::STATUS_TRANSLATED
+                    ) {
+                        $hasLocale = true;
+                    }
                 }
             }
 

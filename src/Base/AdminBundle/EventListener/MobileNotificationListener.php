@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jeapet
- * Date: 11/04/2016
- * Time: 17:05
- */
 
 namespace Base\AdminBundle\EventListener;
 
@@ -12,6 +6,10 @@ use Base\CoreBundle\Entity\MobileNotification;
 use Base\CoreBundle\Entity\MobileNotificationTranslation;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+require __DIR__ . '/../ApnsPHP/Autoload.php';
 
 /**
  * Class MobileNotificationListener
@@ -19,6 +17,16 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
  */
 class MobileNotificationListener
 {
+
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
+
+    public function __construct($container)
+    {
+        $this->container = $container;
+    }
 
     /**
      * @param LifecycleEventArgs $args
@@ -30,13 +38,13 @@ class MobileNotificationListener
         if ($object instanceof MobileNotification) {
             if ($object->getSendTest()) {
                 $object->setSendTest(false);
-                $this->sendTestMobileNotification($object);
+                $this->sendMobileNotification($object);
             }
         } elseif ($object instanceof MobileNotificationTranslation) {
             $mobileNotification = $object->getTranslatable();
             if ($mobileNotification->getSendTest()) {
                 $mobileNotification->setSendTest(false);
-                $this->sendTestMobileNotification($mobileNotification);
+                $this->sendMobileNotification($mobileNotification);
             }
         }
 
@@ -52,28 +60,115 @@ class MobileNotificationListener
         if ($object instanceof MobileNotification) {
             if ($object->getSendTest()) {
                 $object->setSendTest(false);
-                $this->sendTestMobileNotification($object);
+                $this->sendMobileNotification($object);
             }
         } elseif ($object instanceof MobileNotificationTranslation) {
             $mobileNotification = $object->getTranslatable();
             if ($mobileNotification->getSendTest()) {
                 $mobileNotification->setSendTest(false);
-                $this->sendTestMobileNotification($mobileNotification);
+                $this->sendMobileNotification($mobileNotification);
             }
         }
     }
 
-    public function sendTestMobileNotification(MobileNotification $object)
+    public function sendMobileNotification(MobileNotification $object)
     {
-        $token = $object->getToken();
-
         foreach ($object->getTranslations() as $translation) {
             $published = $translation->getStatus() === MobileNotificationTranslation::STATUS_PUBLISHED;
             $published = $published || $translation->getStatus() === MobileNotificationTranslation::STATUS_TRANSLATION_VALIDATING;
-            $title = $translation->getTitle();
-            $message = $translation->getDescription();
-			//TODO CODE NOTIFICATION ICI
+
+            if ($published) {
+                if ($object->getToken() && !$object->getSendToAll()) {
+                    $uuids = explode(',', $object->getToken());
+                    foreach ($uuids as $uuid) {
+                        if (!trim($uuid)) {
+                            continue;
+                        }
+                        $conn = $this->getApnsConnection();
+                        $conn->add($this->setNewMessage(trim($uuid), $translation->getDescription(), 1));
+                        $this->sendPushAndroid($conn);
+                        $this->sendPushIos($conn);
+                    }
+                } elseif ($object->getSendToAll()) {
+
+                    $androidDevices = $this->getDevices('android');
+                    foreach ($androidDevices as $device) {
+                        $conn = $this->getApnsConnection();
+                        $conn->add($this->setNewMessage(trim($device->getUuid()), $translation->getDescription(), 1));
+                        $this->sendPushAndroid($conn);
+                    }
+
+                    $iosDevices = $this->getDevices('ios');
+                    foreach ($iosDevices as $device) {
+                        $conn = $this->getApnsConnection();
+                        $conn->add($this->setNewMessage(trim($device->getUuid()), $translation->getDescription(), 1));
+                        $this->sendPushIos($conn);
+                    }
+
+                }
+
+
+            }
         }
+    }
+
+    /**
+     * @param string $os
+     * @return mixed
+     */
+    private function getDevices($os = 'android')
+    {
+        return $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:PushMobile')
+            ->findBy(array('os' => $os))
+            ;
+    }
+
+
+    private function getApnsConnection()
+    {
+        $env = \ApnsPHP_Abstract::ENVIRONMENT_PRODUCTION;
+        if ($this->container->getParameter('instancemobile') == 'preprod') {
+            $env = \ApnsPHP_Abstract::ENVIRONMENT_SANDBOX;
+        }
+
+        $conn = new \ApnsPHP_Push($env, $this->container->getParameter('apns'));
+        $conn->setRootCertificationAuthority($this->container->getParameter('app'));
+        $conn->connect();
+
+        return $conn;
+    }
+
+    private function sendPushIos($conn)
+    {
+        $conn->send();
+        $conn->disconnect();
+    }
+
+    private function sendPushAndroid($conn)
+    {
+        $conn->send();
+        $conn->disconnect();
+    }
+
+    private function setNewMessage($token, $text, $badges)
+    {
+        $message = new \ApnsPHP_Message_Custom($token);
+        $message->setBadge($badges);
+        $message->setText($text);
+        $message->setExpiry(30);
+        $message->setSound();
+
+        return $message;
+    }
+
+    /**
+     * @return \Doctrine\Common\Persistence\ObjectManager|object
+     */
+    private function getDoctrineManager()
+    {
+        return $this->container->get('doctrine')->getManager();
     }
 
 }

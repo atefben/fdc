@@ -23,6 +23,8 @@
                                         {{ form_row(translationsFields.title) }}
                                         {{ form_row(translationsFields.description) }}
                                         {{ form_row(form.parent.children.token) }}
+                                        {{ form_widget(form.parent.children.sendToAll) }}
+                                        {{ form_label(form.parent.children.sendToAll) }}
                                     </div>
                                 </div>
                             {% else %}
