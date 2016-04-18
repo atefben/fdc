@@ -566,6 +566,8 @@
         }
 
         &.subnav:hover {
+          background-color: #fff;
+          color: $gold;
           cursor: default;
         }
       }

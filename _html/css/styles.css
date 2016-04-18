@@ -17144,6 +17144,8 @@ input[type=submit] {
   cursor: pointer;
 }
 .press .header-press .buttons .button.subnav:hover {
+  background-color: #fff;
+  color: #c8a461;
   cursor: default;
 }
 .press .locked {
