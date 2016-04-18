@@ -369,7 +369,7 @@ abstract class CoreManager
                 $this->logger->warning(__METHOD__. ' Method '. $setter. ' not found in Entity '. get_class($entity));
                 continue;
             }
-            $result->{$soapKey} = (strpos($soapKey, 'Date') === false) ? $result->{$soapKey} : new DateTime($result->{$soapKey});
+            $result->{$soapKey} = (strpos($soapKey, 'Date') === false) ? $result->{$soapKey} : ($result->{$soapKey} ? new DateTime($result->{$soapKey}) : null);
             $entity->{$setter}($result->{$soapKey});
         }
     }

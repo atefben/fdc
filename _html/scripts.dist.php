@@ -3,6 +3,8 @@ var GLOBALS = {
   "env" : "html",
   "locale" : "fr",
   "defaultDate" : "2016-05-12",
+  "dateStart": "2016-05-12",
+  "dateEnd": "2016-05-24",
   "api" : {
     "instagramUrl" : "https://api.instagram.com/v1/tags/Cannes2016/media/recent/?access_token=18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
     "twitterUrl" : ""
