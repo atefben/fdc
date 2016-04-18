@@ -893,6 +893,10 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
         <jms:reference-file line="25">views/Global/projection-single.html.twig</jms:reference-file>
         <jms:reference-file line="74">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="movie.director_first" resname="movie.director_first">
+        <source>movie.director_first</source>
+        <target>Premier film</target>
+      </trans-unit>
       <trans-unit id="ecd0fbeec916c78e3b20588955e8f2113f9f212b" resname="movie.fdc_open">
         <source>movie.fdc_open</source>
         <target>Film d'ouverture</target>
