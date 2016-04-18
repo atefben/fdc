@@ -215,7 +215,7 @@ function editEvents() {
     }
 
     if ($('.is-mobile-notification-form').length) {
-        $('.form-actions').append('<button class="btn btn-warning" id="btn-send-test" type="button"><i class="fa fa-paper-plane-o"></i> Envoyer un test</button>')
+        $('.form-actions').append('<button class="btn btn-warning" id="btn-send-test" type="button"><i class="fa fa-paper-plane-o"></i> Envoyer</button>')
     }
     $('#btn-send-test').click(function () {
         $('input[id*=sendTest]').val('1');

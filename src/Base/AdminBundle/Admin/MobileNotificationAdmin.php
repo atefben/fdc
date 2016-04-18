@@ -86,13 +86,8 @@ class MobileNotificationAdmin extends Admin
                     )
                 )
             ))
-            ->add('sendAt', 'sonata_type_datetime_picker', array(
-                'label' => 'form.mobile_notification.label_send_at',
-                'format' => 'dd/MM/yyyy HH:mm',
-                'required' => false,
-                'attr' => array(
-                    'data-date-format' => 'dd/MM/yyyy HH:mm',
-                )
+            ->add('sendAt', 'hidden', array(
+                'data' => false,
             ))
             ->add('token', null, array(
                 'label' => 'form.mobile_notification.label_token'
