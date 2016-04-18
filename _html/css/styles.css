@@ -12354,6 +12354,10 @@ article .read-later.rAlign span:after {
   overflow: hidden;
   visibility: hidden;
 }
+.press.press-actu #gridAudios .item, .press.press-actu
+#gridVideos .item {
+  cursor: default;
+}
 #gridAudios .item.visible,
 #gridVideos .item.visible {
   visibility: visible;
