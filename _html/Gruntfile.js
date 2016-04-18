@@ -96,10 +96,8 @@ module.exports = function(grunt) {
           ' * @author: Ohwee\n',
           ' * @credits: Ohwee\n',
           ' * @date: 2015\n',
-          '**/\n'].join('')
-        // mangle: {
-        //   except: ['jQuery', 'angular']
-        // }
+          '**/\n'].join(''),
+        sourceMap: true
       }
     },
     clean: {
@@ -117,6 +115,10 @@ module.exports = function(grunt) {
            {
               src: "./js/app.min.js",
               dest: "../src/FDC/EventBundle/Resources/public/js/app.min.js"
+           },
+           {
+              src: "./js/app.min.js.map",
+              dest: "../src/FDC/EventBundle/Resources/public/js/app.min.js.map"
            }
         ]
       },
@@ -153,8 +155,11 @@ module.exports = function(grunt) {
   /**
    * Build JavaScript only
    **/
-  grunt.registerTask('build:js', [
+  grunt.registerTask('prebuild:js', [
     'tags:app',
+  ]);
+
+  grunt.registerTask('build:js', [
     'useminPrepare',
     'concat:generated',
     'uglify:generated',
