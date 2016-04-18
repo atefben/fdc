@@ -1495,11 +1495,11 @@ $(document).ready(function () {
   var dateEndArray = dateEnd.split('-');
 
   dateStartArray[0] = parseInt(dateStartArray[0]);
-  dateStartArray[1] = parseInt(dateStartArray[1]);
+  dateStartArray[1] = parseInt(dateStartArray[1]) - 1;
   dateStartArray[2] = parseInt(dateStartArray[2]);
 
   dateEndArray[0] = parseInt(dateEndArray[0]);
-  dateEndArray[1] = parseInt(dateEndArray[1]);
+  dateEndArray[1] = parseInt(dateEndArray[1]) - 1;
   dateEndArray[2] = parseInt(dateEndArray[2]);
 
   var minDatePicker = new Date(dateStartArray[0], dateStartArray[1], dateStartArray[2]);
