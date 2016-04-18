@@ -834,14 +834,12 @@ class FooterController extends Controller
     }
 
     /**
-     * Generate the article feed
-     * @Route("/rss")
+     * Generate the podcast feed
+     * @Route("/podcast")
      * @return Response XML Feed
      */
-    public function rssAction(Request $request)
+    public function podcastAction(Request $request)
     {
-        $id = $request->query->get('id');
-
         $locale = $request->getLocale();
         $em = $this->getDoctrine()->getManager();
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -850,6 +848,26 @@ class FooterController extends Controller
         $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $settings->getFestival()->getId(), $dateTime);
         $feed = $this->get('eko_feed.feed.manager')->get('article');
         $feed->addFromArray($audios);
+
+        return new Response($feed->render('rss')); // ou 'atom'
+    }
+
+    /**
+     * Generate the news rss feed
+     * @Route("/rss")
+     * @return Response XML Feed
+     */
+    public function rssFeedAction(Request $request)
+    {
+        $locale = $request->getLocale();
+        $em = $this->getDoctrine()->getManager();
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+
+        $newsArticles = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $settings->getFestival()->getId());
+        $newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale);
+
+        $feed = $this->get('eko_feed.feed.manager')->get('article');
+        $feed->addFromArray($newsArticles);
 
         return new Response($feed->render('rss')); // ou 'atom'
     }
