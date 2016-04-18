@@ -1,88 +1,89 @@
-{% trans_default_domain 'FDCEventBundle' %}
+{%- spaceless -%}
+{%- trans_default_domain 'FDCEventBundle' -%}
 
-{% if projection is not empty %}
+{%- if projection is not empty -%}
     <div class="popin-event">
         <div class="films">
-            {% if projection.programmationFilms|length > 0 %}
-                {% for programmationFilm in projection.programmationFilms %}
-                    {% set film = programmationFilm.film %}
+            {%- if projection.programmationFilms|length > 0 -%}
+                {%- for programmationFilm in projection.programmationFilms -%}
+                    {%- set film = programmationFilm.film -%}
                     <div class="film">
-                        {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                        {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                             film: film,
                             film_attrs: {
                                 alt: film|trans_fallback('title')?:film.titleVO,
                             },
                             film_image_default: 'bundles/fdcevent/img/palmares/film420x560.jpg',
                             film_image_default_attrs: ''
-                        }) %}
+                        }) -%}
                         <div class="content">
                             <div class="categories">
-                                <span>{{ film.selectionSection|trans_fallback('name') }}{% if film.selectionSubsection %}{{ film.selectionSubsection|trans_fallback('name') }}{% endif %}</span>
-                                {% if 'Ouverture' in film.galaName %}
+                                <span>{{ film.selectionSection|trans_fallback('name') }}{%- if film.selectionSubsection -%}{{ film.selectionSubsection|trans_fallback('name') }}{%- endif -%}</span>
+                                {%- if 'Ouverture' in film.galaName -%}
                                     <span>{{ 'movie.fdc_open'|trans }}</span>
-                                {% elseif 'Fermeture' in film.galaName %}
+                                {%- elseif 'Fermeture' in film.galaName -%}
                                     <span>{{ 'movie.fdc_close'|trans }}</span>
-                                {% endif %}
-                                {% if film.directorFirst %}
+                                {%- endif -%}
+                                {%- if film.directorFirst -%}
                                     <span>{{ 'movie.first_film'|trans }}</span>
-                                {% endif %}
+                                {%- endif -%}
                             </div>
-                            {% set secondTitle = null %}
-                            {% if film|trans_fallback('title') is not empty %}
-                                {% set mainTitle = film.titleVO %}
-                                {% set secondTitle = film|trans_fallback('title') %}
-                            {% else %}
-                                {% set mainTitle = film.titleVO %}
-                            {% endif %}
+                            {%- set secondTitle = null -%}
+                            {%- if film|trans_fallback('title') is not empty -%}
+                                {%- set mainTitle = film.titleVO -%}
+                                {%- set secondTitle = film|trans_fallback('title') -%}
+                            {%- else -%}
+                                {%- set mainTitle = film.titleVO -%}
+                            {%- endif -%}
                             <h2>{{ mainTitle }}</h2>
-                            {% if secondTitle and mainTitle != secondTitle %}
+                            {%- if secondTitle and mainTitle != secondTitle -%}
                                 <div class="title-original">({{ secondTitle }})</div>
-                            {% else %}
+                            {%- else -%}
                                 <div class="title-original"></div>
-                            {% endif %}
+                            {%- endif -%}
                             <p>
                                 {{ 'movie.label.realisepar'|trans }} :
-                                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                {% for director in directors %}
-                                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
-                                    {% if loop.index != directors|length %}, {% endif %}
-                                {% endfor %}
+                                {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                                {%- for director in directors -%}
+                                    {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} -%}
+                                    {%- if loop.index != directors|length -%}, {%- endif -%}
+                                {%- endfor -%}
                             </p>
                             <p>
-                                {% if film.productionYear is not null and film.productionYear != 0 %}
+                                {%- if film.productionYear is not null and film.productionYear != 0 -%}
                                     {{ 'movie.label.anneedeproduction'|trans }} : <span>{{ film.productionYear }}</span>
-                                {% endif %}
-                                {% if film.countries|length > 0 %}
+                                {%- endif -%}
+                                {%- if film.countries|length > 0 -%}
                                     {{ 'movie.label.pays'|trans }} :
-                                    {% for country in film.countries %}
+                                    {%- for country in film.countries -%}
                                         <span>{{ country.country|trans_fallback('name')|replace({' ': ""}) }}</span>
-                                    {% endfor %}
-                                {% endif %}
-                                {% if film.duration is not null and film.duration > 0 %}
-                                    {% set duration = film.duration|split('.') %}
+                                    {%- endfor -%}
+                                {%- endif -%}
+                                {%- if film.duration is not null and film.duration > 0 -%}
+                                    {%- set duration = film.duration|split('.') -%}
                                     {{ 'movie.label.duree'|trans }} :
-                                    {% if duration|length >= 1 %}
+                                    {%- if duration|length >= 1 -%}
                                         <span>{{ duration[0] }} {{ 'movie.duration.minutes'|trans }}</span>
-                                    {% endif %}
-                                {% endif %}
+                                    {%- endif -%}
+                                {%- endif -%}
                             </p>
                             <a href="{{ path('fdc_event_movie_get', {slug: film.slug}) }}" class="button">
                                 {{ 'movie.see_movie_page'|trans }}
                             </a>
                         </div>
                     </div>
-                {% endfor %}
-            {% endif %}
+                {%- endfor -%}
+            {%- endif -%}
         </div>
         <div class="events-container">
-            {% if seances|length > 0 %}
+            {%- if seances|length > 0 -%}
                 <h2>Séances de presse</h2>
                 <div class="events-wrapper">
-                    {% for seance in seances %}
-                        {% if seance.programmationFilms|length > 0 %}
-                            {% set film = seance.programmationFilms[0].film %}
-                            {% set difference = date(seance.endsAt).diff(date(seance.startsAt)) %}
-                            {% set minutes = difference.i %}
+                    {%- for seance in seances -%}
+                        {%- if seance.programmationFilms|length > 0 -%}
+                            {%- set film = seance.programmationFilms[0].film -%}
+                            {%- set difference = date(seance.endsAt).diff(date(seance.startsAt)) -%}
+                            {%- set minutes = difference.i -%}
                             <div class="event">
                                 <p class="date">
                                     {{ seance.startsAt|localizeddate('full', 'none') }} -
@@ -99,7 +100,7 @@
                                         {{ seance.type }}
                                     </span>
                                     <div class="info">
-                                        {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                        {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                             film: film,
                                             film_format: '90x120',
                                             film_attrs: {
@@ -107,28 +108,29 @@
                                             },
                                             film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
                                             film_image_default_attrs: 'width="46"'
-                                        }) %}
-                                        {% if seance.programmationFilms|length == 1 %}
+                                        }) -%}
+                                        {%- if seance.programmationFilms|length == 1 -%}
                                             <div class="txt">
                                                 <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
-                                                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                                                 <strong>
-                                                    {% for director in directors %}
-                                                        {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}
-                                                        {% if loop.index != directors|length %}, {% endif %}
-                                                    {% endfor %}
+                                                    {%- for director in directors -%}
+                                                        {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}
+                                                        {%- if loop.index != directors|length -%}, {%- endif -%}
+                                                    {%- endfor -%}
                                                 </strong>
                                             </div>
-                                        {% else %}
+                                        {%- else -%}
                                             <span> {{ seance.programmationSection }}</span>
-                                        {% endif %}
+                                        {%- endif -%}
                                     </div>
                                     <div class="bottom">
                                         <span class="duration">
-                                            {% if difference.h > 0 %}{{ difference.h }}H{% endif %}{{ difference.i }}
+                                            {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
+                                            {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                         </span> -
                                         <span class="ven">
-                                            {% if seance.room %}{{ seance.room.name }}{% endif %}
+                                            {%- if seance.room -%}{{ seance.room.name }}{%- endif -%}
                                         </span>
                                         <span class="{{ film.selectionSection|trans_fallback('slug') }}">
                                             {{ film.selectionSection|trans_fallback('name') }}
@@ -137,19 +139,19 @@
                                 </div>
                                 <a href="#" class="button add">Ajouter</a>
                             </div>
-                        {% endif %}
-                    {% endfor %}
+                        {%- endif -%}
+                    {%- endfor -%}
                 </div>
-            {% endif %}
+            {%- endif -%}
 
-            {% if conferences|length > 0 %}
+            {%- if conferences|length > 0 -%}
                 <h2>Conférences de presse</h2>
                 <div class="events-wrapper">
-                    {% for conference in conferences %}
-                        {% if conference.programmationFilms|length > 0 %}
-                            {% set film = conference.programmationFilms[0].film %}
-                            {% set difference = date(conference.endsAt).diff(date(conference.startsAt)) %}
-                            {% set minutes = difference.i %}
+                    {%- for conference in conferences -%}
+                        {%- if conference.programmationFilms|length > 0 -%}
+                            {%- set film = conference.programmationFilms[0].film -%}
+                            {%- set difference = date(conference.endsAt).diff(date(conference.startsAt)) -%}
+                            {%- set minutes = difference.i -%}
                             <div class="event">
                                 <p class="date">
                                     {{ conference.startsAt|localizeddate('full', 'none') }} -
@@ -166,7 +168,7 @@
                                             {{ conference.type }}
                                         </span>
                                     <div class="info">
-                                        {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                        {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                         film: film,
                                         film_format: '90x120',
                                         film_attrs: {
@@ -174,28 +176,29 @@
                                         },
                                         film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
                                         film_image_default_attrs: 'width="46"'
-                                        }) %}
-                                        {% if conference.programmationFilms|length == 1 %}
+                                        }) -%}
+                                        {%- if conference.programmationFilms|length == 1 -%}
                                             <div class="txt">
                                                 <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
-                                                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                                                 <strong>
-                                                    {% for director in directors %}
-                                                        {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}
-                                                        {% if loop.index != directors|length %}, {% endif %}
-                                                    {% endfor %}
+                                                    {%- for director in directors -%}
+                                                        {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}
+                                                        {%- if loop.index != directors|length -%}, {%- endif -%}
+                                                    {%- endfor -%}
                                                 </strong>
                                             </div>
-                                        {% else %}
+                                        {%- else -%}
                                             <span> {{ conference.programmationSection }}</span>
-                                        {% endif %}
+                                        {%- endif -%}
                                     </div>
                                     <div class="bottom">
                                         <span class="duration">
-                                            {% if difference.h > 0 %}{{ difference.h }}H{% endif %}{{ difference.i }}
+                                            {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
+                                            {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                         </span> -
                                         <span class="ven">
-                                            {% if conference.room %}{{ conference.room.name }}{% endif %}
+                                            {%- if conference.room -%}{{ conference.room.name }}{%- endif -%}
                                         </span>
                                         <span class="{{ film.selectionSection|trans_fallback('slug') }}">
                                             {{ film.selectionSection|trans_fallback('name') }}
@@ -204,19 +207,19 @@
                                 </div>
                                 <a href="#" class="button add">Ajouter</a>
                             </div>
-                        {% endif %}
-                    {% endfor %}
+                        {%- endif -%}
+                    {%- endfor -%}
                 </div>
-            {% endif %}
+            {%- endif -%}
 
-            {% if relatedProjections|length > 0 %}
+            {%- if relatedProjections|length > 0 -%}
                 <h2>Projections</h2>
                 <div class="events-wrapper">
-                    {% for relatedProjection in relatedProjections %}
-                        {% if relatedProjection.programmationFilms|length > 0 %}
-                            {% set film = relatedProjection.programmationFilms[0].film %}
-                            {% set difference = date(relatedProjection.endsAt).diff(date(relatedProjection.startsAt)) %}
-                            {% set minutes = difference.i %}
+                    {%- for relatedProjection in relatedProjections -%}
+                        {%- if relatedProjection.programmationFilms|length > 0 -%}
+                            {%- set film = relatedProjection.programmationFilms[0].film -%}
+                            {%- set difference = date(relatedProjection.endsAt).diff(date(relatedProjection.startsAt)) -%}
+                            {%- set minutes = difference.i -%}
                             <div class="event">
                                 <p class="date">
                                     {{ relatedProjection.startsAt|localizeddate('full', 'none') }} -
@@ -233,7 +236,7 @@
                                             {{ relatedProjection.type }}
                                         </span>
                                     <div class="info">
-                                        {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                        {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                         film: film,
                                         film_format: '90x120',
                                         film_attrs: {
@@ -241,28 +244,29 @@
                                         },
                                         film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
                                         film_image_default_attrs: 'width="46"'
-                                        }) %}
-                                        {% if relatedProjection.programmationFilms|length == 1 %}
+                                        }) -%}
+                                        {%- if relatedProjection.programmationFilms|length == 1 -%}
                                             <div class="txt">
                                                 <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
-                                                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                                                 <strong>
-                                                    {% for director in directors %}
-                                                        {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}
-                                                        {% if loop.index != directors|length %}, {% endif %}
-                                                    {% endfor %}
+                                                    {%- for director in directors -%}
+                                                        {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}
+                                                        {%- if loop.index != directors|length -%}, {%- endif -%}
+                                                    {%- endfor -%}
                                                 </strong>
                                             </div>
-                                        {% else %}
+                                        {%- else -%}
                                             <span> {{ relatedProjection.programmationSection }}</span>
-                                        {% endif %}
+                                        {%- endif -%}
                                     </div>
                                     <div class="bottom">
                                         <span class="duration">
-                                            {% if difference.h > 0 %}{{ difference.h }}H{% endif %}{{ difference.i }}
+                                            {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
+                                            {{ difference.i }}
                                         </span> -
                                         <span class="ven">
-                                            {% if relatedProjection.room %}{{ relatedProjection.room.name }}{% endif %}
+                                            {%- if relatedProjection.room -%}{{ relatedProjection.room.name }}{%- endif -%}
                                         </span>
                                         <span class="{{ film.selectionSection|trans_fallback('slug') }}">
                                             {{ film.selectionSection|trans_fallback('name') }}
@@ -271,11 +275,12 @@
                                 </div>
                                 <a href="#" class="button add">Ajouter</a>
                             </div>
-                        {% endif %}
-                    {% endfor %}
+                        {%- endif -%}
+                    {%- endfor -%}
                 </div>
-            {% endif %}
+            {%- endif -%}
         </div>
         <div class="close-button"><i class="icon icon_close"></i></div>
     </div>
-{% endif %}
+{%- endif -%}
+{%- endspaceless -%}
