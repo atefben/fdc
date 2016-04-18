@@ -105,9 +105,11 @@
                                             film_format: '90x120',
                                             film_attrs: {
                                                 alt: film|trans_fallback('title')?:film.titleVO,
+                                                width: 45,
+                                                height: 60
                                             },
                                             film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
-                                            film_image_default_attrs: 'width="46"'
+                                            film_image_default_attrs: 'width="45"'
                                         }) -%}
                                         {%- if seance.programmationFilms|length == 1 -%}
                                             <div class="txt">
@@ -172,10 +174,12 @@
                                         film: film,
                                         film_format: '90x120',
                                         film_attrs: {
-                                        alt: film|trans_fallback('title')?:film.titleVO,
+                                            alt: film|trans_fallback('title')?:film.titleVO,
+                                            width: 45,
+                                            height: 60
                                         },
                                         film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
-                                        film_image_default_attrs: 'width="46"'
+                                        film_image_default_attrs: 'width="45"'
                                         }) -%}
                                         {%- if conference.programmationFilms|length == 1 -%}
                                             <div class="txt">
@@ -240,10 +244,12 @@
                                         film: film,
                                         film_format: '90x120',
                                         film_attrs: {
-                                        alt: film|trans_fallback('title')?:film.titleVO,
+                                            alt: film|trans_fallback('title')?:film.titleVO,
+                                            width: 45,
+                                            height: 60
                                         },
                                         film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
-                                        film_image_default_attrs: 'width="46"'
+                                        film_image_default_attrs: 'width="45"'
                                         }) -%}
                                         {%- if relatedProjection.programmationFilms|length == 1 -%}
                                             <div class="txt">
