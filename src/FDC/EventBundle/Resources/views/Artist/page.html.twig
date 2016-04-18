@@ -13,10 +13,12 @@
                         {{ profession }}
                     </span>
                     {% endif %}
-                    <span class="city" {{ artist.nationality|content_lang('name') }}>
+                    {% if artist.nationality %}
+                        <span class="city" {{ artist.nationality|content_lang('name') }}>
                         {{ artist.nationality|trans_fallback('name') }}
-                        {% if artist.nationality2 %}, {{ artist.nationality2|trans_fallback('name') }}{% endif %}
-                    </span>
+                            {% if artist.nationality2 %}, {{ artist.nationality2|trans_fallback('name') }}{% endif %}
+                        </span>
+                    {% endif %}
                 </div>
                 <h2 class="title-article">{{ artist.fullName }}</h2>
                 <div class="buttons">
@@ -35,12 +37,12 @@
                         {% if artistImage %}
                             <img src="{% path artistImage, '976x535' %}" alt="{{ artist.fullName }}"/>
                         {% else %}
-                            {% set media = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
+                            {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
                             {% if media is empty %}
-                                {% set media = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
+                                {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
                             {% endif %}
                             {% if media is empty %}
-                                {% set photo = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                                {% set photo = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
                             {% endif %}
                             {% if media is not empty %}
                                 <img src="{% path media, '976x535' %}" alt="{{ artist.fullName }}"/>
@@ -64,43 +66,45 @@
                     <div class="contain-films-list">
                         {% for filmPerson in artist.films %}
                             <div class="item">
+                                {% if filmPerson.film.festival.id == festival %}
                                 <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
-                                <div class="image">
-									{% if movie is defined and movie is not null %}
-                                    {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                                        film: movie,
-                                        film_format: 'mobile',
+                                    {% endif %}
+                                    <div class="image">
+                                        {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                        film: filmPerson.film,
+                                        film_format: '366x488',
                                         film_attrs: {
-                                            alt: movie|trans_fallback('title')?:movie.titleVO,
-                                            'data-object-fit': 'cover'
+                                        alt: filmPerson.film|trans_fallback('title')?:filmPerson.film.titleVO,
+                                        'data-object-fit': 'cover'
                                         },
                                         film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
-                                    }) %}
-									{% endif %}
-                                </div>
-                                <div class="content-text">
-                                    <span class="item-title">{{ filmPerson.film.titleVO }}</span>
-                                    {% if filmPerson.film|trans_fallback('title') %}
-                                        <span class="item-sub-title">{{ filmPerson.film|trans_fallback('title') }}</span>
-                                    {% endif %}
-                                    {% if filmPerson.film.festival %}
-                                        <span class="item-date">{{ filmPerson.film.festival.year }}</span>
-                                    {% endif %}
-                                    {% if filmPerson.film.selectionSection %}
-                                        <span class="item-categ" {{ filmPerson.film.selectionSection|content_lang('name') }}>{{ filmPerson.film.selectionSection|trans_fallback('name') }}</span>
-                                    {% endif %}
-                                    {% if filmPerson.functions|length > 0 %}
-                                        {% spaceless %}
-                                            <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
-                                            {% for filmPersonFunction in filmPerson.functions %}
-                                                {{ loop.first == false ?',':'' }} {{ filmPersonFunction.function|trans_fallback('name') }}
-                                                <br/>
-                                            {% endfor %}
-                                        </span>
-                                        {% endspaceless %}
-                                    {% endif %}
-                                </div>
+                                        }) %}
+
+                                    </div>
+                                    <div class="content-text">
+                                        <span class="item-title">{{ filmPerson.film.titleVO }}</span>
+                                        {% if filmPerson.film|trans_fallback('title') %}
+                                            <span class="item-sub-title">{{ filmPerson.film|trans_fallback('title') }}</span>
+                                        {% endif %}
+                                        {% if filmPerson.film.festival %}
+                                            <span class="item-date">{{ filmPerson.film.festival.year }}</span>
+                                        {% endif %}
+                                        {% if filmPerson.film.selectionSection %}
+                                            <span class="item-categ" {{ filmPerson.film.selectionSection|content_lang('name') }}>{{ filmPerson.film.selectionSection|trans_fallback('name') }}</span>
+                                        {% endif %}
+                                        {% if filmPerson.functions|length > 0 %}
+                                            {% spaceless -%}
+                                                <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
+                                            {% for filmPersonFunction in filmPerson.functions -%}
+                                                {{ loop.first == false ? ',' : '' }} {{ filmPersonFunction.function|trans_fallback('name') }}
+                                            {%- endfor %}
+                                                </span>
+                                            {%- endspaceless %}
+                                        {% endif %}
+                                    </div>
+                                    {% if filmPerson.film.festival.id == festival %}
                                 </a>
+                                {% endif %}
                             </div>
                         {% endfor %}
                         {% endif %}
@@ -108,8 +112,7 @@
                     {% set awardsCount = 0 %}
                     {% for filmPerson in artist.films %}
                         {% for awardAssociation in filmPerson.film.awards %}
-                            {% if
-                            awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') or
+                            {% if awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') or
                             (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and
                             awardAssociation.person.id == artist.id) %}
                                 {% set awardsCount = awardsCount + 1 %}
@@ -121,43 +124,45 @@
                         <div class="contain-films-list">
                             {% for filmPerson in artist.films %}
                                 {% for awardAssociation in filmPerson.film.awards %}
-                                    {% if
-                                    awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') or
+                                    {% if awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') or
                                     (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and
                                     awardAssociation.person.id == artist.id) %}
                                         <div class="item">
+                                            {% if filmPerson.film.festival.id == festival %}
                                             <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
-                                            <div class="image">
-                                                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                                                    film: movie,
+                                                {% endif %}
+                                                <div class="image">
+                                                    {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                                    film: filmPerson.film,
                                                     film_format: '366x488',
                                                     film_attrs: {
-                                                        alt: movie|trans_fallback('title')?:movie.titleVO,
-                                                        'data-object-fit': 'cover'
+                                                    alt: filmPerson.film|trans_fallback('title')?:filmPerson.film.titleVO,
+                                                    'data-object-fit': 'cover'
                                                     },
                                                     film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
-                                                }) %}
-                                            </div>
-                                            <div class="content-text">
-                                                <span class="item-title">{{ filmPerson.film.titleVO }}</span>
-                                                {% if awardAssociation.award.festival %}
-                                                    <span class="item-date">{{ awardAssociation.award.festival.year }}</span>
-                                                {% endif %}
-                                                <span class="item-categ" {{ awardAssociation.award.prize|content_lang('title') }}>
+                                                    }) %}
+                                                </div>
+                                                <div class="content-text">
+                                                    <span class="item-title">{{ filmPerson.film.titleVO }}</span>
+                                                    {% if awardAssociation.award.festival %}
+                                                        <span class="item-date">{{ awardAssociation.award.festival.year }}</span>
+                                                    {% endif %}
+                                                    <span class="item-categ" {{ awardAssociation.award.prize|content_lang('title') }}>
                                                     {{ awardAssociation.award.prize|trans_fallback('title') }}
-                                                </span>
-                                                {% if filmPerson.functions|length > 0 %}
-                                                    {% spaceless %}
-                                                        <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
-                                                        {% for filmPersonFunction in filmPerson.functions %}
-                                                            {{ filmPersonFunction.function|trans_fallback('name') }}
-                                                            <br/>
-                                                        {% endfor %}
                                                     </span>
-                                                    {% endspaceless %}
-                                                {% endif %}
-                                            </div>
-                                        </a>
+                                                    {% if filmPerson.functions|length > 0 %}
+                                                        {% spaceless -%}
+                                                            <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
+                                                        {% for filmPersonFunction in filmPerson.functions -%}
+                                                            {{ loop.first == false ? ',' : '' }} {{ filmPersonFunction.function|trans_fallback('name') }}
+                                                        {%- endfor %}
+                                                        </span>
+                                                        {%- endspaceless %}
+                                                    {% endif %}
+                                                </div>
+                                                {% if filmPerson.film.festival.id == festival %}
+                                            </a>
+                                            {% endif %}
                                         </div>
                                     {% endif %}
                                 {% endfor %}
@@ -216,27 +221,29 @@
                         <div class="item first">
                             <figure>
                                 <a href="{{ path('fdc_event_artist_get', {'slug': director.slug }) }}">
-                                <div class="image">
-                                {% set directorImage = director|person_image_portait %}
-                                {% if directorImage %}
-                                    <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}" data-object-fit="cover">
-                                {% else %}
-                                    {% set media = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
-                                    {% if media is empty %}
-                                        {% set media = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
-                                    {% endif %}
-                                    {% if media is empty %}
-                                        {% set photo = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
-                                    {% endif %}
-                                    {% if media is not empty %}
-                                        <img src="{% path media, '210x284' %}" alt="{{ director.fullName }}" data-object-fit="cover">
-                                    {% endif %}
-                                {% endif %}
-                                </div>
-                                <figcaption>
-                                <span class="name">{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}</span>
-                                    <span class="rank" {{ director|content_lang('profession') }}>{{ director|trans_fallback('profession') }}</span>
-                                </figcaption>
+                                    <div class="image">
+                                        {% set directorImage = director|person_image_portait %}
+                                        {% if directorImage %}
+                                            <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}"
+                                                 data-object-fit="cover">
+                                        {% else %}
+                                            {% set media = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
+                                            {% if media is empty %}
+                                                {% set media = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
+                                            {% endif %}
+                                            {% if media is empty %}
+                                                {% set photo = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                                            {% endif %}
+                                            {% if media is not empty %}
+                                                <img src="{% path media, '210x284' %}" alt="{{ director.fullName }}"
+                                                     data-object-fit="cover">
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                    <figcaption>
+                                        <span class="name">{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}</span>
+                                        <span class="rank" {{ director|content_lang('profession') }}>{{ director|trans_fallback('profession') }}</span>
+                                    </figcaption>
                                 </a>
                             </figure>
                         </div>

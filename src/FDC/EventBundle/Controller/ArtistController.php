@@ -60,6 +60,7 @@ class ArtistController extends Controller
         usort($directors, array($this, 'sortByFirstname'));
 
         return array(
+            'festival'    => $festival,
             'artist'    => $artist,
             'directors' => $directors,
         );

@@ -99,12 +99,57 @@
   line-height: 18px;
 }
 
+.title-9{
+  font-family: $CamphorBold;
+  font-size: .75rem; //12px
+  letter-spacing: .2rem; //200
+  text-transform: uppercase;
+  line-height: 18px;
+  color:#fff;
+  display:block;
+  text-align: center;
+  margin-bottom: 19px;
+  padding-top: 60px;
+}
+
 .subtitle {
   font-family: $Playfair;
   font-style: italic;
   font-size: 0.875rem;
   font-weight: normal;
   text-align: center;
+}
+
+.return-back{
+  color:#fff;
+  font-family: $CamphorHeavy;
+  font-size:.625rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding-top: 20px;
+  display:block;
+  transition: .5s;
+
+  .icon{
+    font-size: .4rem;
+    margin-right: 10px;
+  }
+
+  &:hover{
+    opacity: .75;
+  }
+}
+
+.contain-title{
+  min-height: 152px;
+
+  .title-01{
+    font-size: 1.125rem;
+    color:#fff;
+    font-family: $CamphorRegular;
+    text-transform: uppercase;
+    letter-spacing: .5rem;
+  }
 }
 
 figcaption, .caption{
