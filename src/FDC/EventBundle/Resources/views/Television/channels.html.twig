@@ -11,7 +11,7 @@
             </div>
             {% if page.image  and page.image|trans_fallback('status') %}
                 <div class="img"
-                     style="background-image:url('{% path page.image|trans_fallback('file'), '2560×1103' %}'); background-size: contain;"></div>
+                     style="background-image:url('{% path page.image|trans_fallback('file'), '2560x1103' %}'); background-size: contain;"></div>
             {% endif %}
         </div>
         <div id="gridChannels" class="grid grid-wrapper">

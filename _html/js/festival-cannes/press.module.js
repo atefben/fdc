@@ -224,7 +224,7 @@ $(document).ready(function () {
       var lang = GLOBALS.locale;
       $('#mycalendar').fullCalendar({
         lang: lang,
-        defaultDate: typeof GLOBALS.defaultDate !== "undefined" ? GLOBALS.calendar.defaultDate : '2016-05-11',
+        defaultDate: typeof GLOBALS.defaultDate !== "undefined" ? GLOBALS.defaultDate : '2016-05-11',
         header: {
           left: 'prev',
           center: 'title',
@@ -318,10 +318,10 @@ $(document).ready(function () {
             $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
 
             if (moment.format('DD') > maxDate) {
-              $('#mycalendar').fullCalendar('gotoDate', GLOBALS.dateStart);
+              $('#mycalendar').fullCalendar('gotoDate', GLOBALS.dateEnd);
             }
             if (moment.format('DD') < minDate) {
-              $('#mycalendar').fullCalendar('gotoDate', GLOBALS.dateEnd);
+              $('#mycalendar').fullCalendar('gotoDate', GLOBALS.dateStart);
             }
             if (parseInt(moment.format('DD')) + 4 >= maxDate) {
               $('#mycalendar .fc-right').addClass('hide');
@@ -450,8 +450,8 @@ $(document).ready(function () {
 
       // create the 'my calendar' module
       $('#mycalendar').fullCalendar({
-        lang: GLOBALS.locale, // TODO a verifier
-        defaultDate: GLOBALS.defaultDate, // TODO a supprimer
+        lang: GLOBALS.locale,
+        defaultDate: typeof GLOBALS.defaultDate !== "undefined" ? GLOBALS.defaultDate : '2016-05-11',
         header: {
           left: 'prev',
           center: 'title',
@@ -518,10 +518,10 @@ $(document).ready(function () {
           $('#mycalendar .fc-left, #mycalendar .fc-right').removeClass('hide');
 
           if (moment.format('DD') > maxDate) {
-            $('#mycalendar').fullCalendar('gotoDate', '2016-05-22');
+            $('#mycalendar').fullCalendar('gotoDate', GLOBALS.dateEnd);
           }
           if (moment.format('DD') < minDate) {
-            $('#mycalendar').fullCalendar('gotoDate', '2016-05-11');
+            $('#mycalendar').fullCalendar('gotoDate', GLOBALS.dateStart);
           }
           if (moment.format('DD') == maxDate) {
             $('#mycalendar .fc-right').addClass('hide');
@@ -1489,8 +1489,21 @@ $(document).ready(function () {
 
 
   //Pikaday init//
-  var minDatePicker = new Date(2016,4,11);
-  var maxDatePicker = new Date(2016,4,22);
+  var dateStart = typeof GLOBALS.dateStart !== "undefined" ? GLOBALS.dateStart : '2016-05-11';
+  var dateEnd = typeof GLOBALS.dateEnd !== "undefined" ? GLOBALS.dateEnd : '2016-05-22';
+  var dateStartArray = dateStart.split('-');
+  var dateEndArray = dateEnd.split('-');
+
+  dateStartArray[0] = parseInt(dateStartArray[0]);
+  dateStartArray[1] = parseInt(dateStartArray[1]) - 1;
+  dateStartArray[2] = parseInt(dateStartArray[2]);
+
+  dateEndArray[0] = parseInt(dateEndArray[0]);
+  dateEndArray[1] = parseInt(dateEndArray[1]) - 1;
+  dateEndArray[2] = parseInt(dateEndArray[2]);
+
+  var minDatePicker = new Date(dateStartArray[0], dateStartArray[1], dateStartArray[2]);
+  var maxDatePicker = new Date(dateEndArray[0], dateEndArray[1], dateEndArray[2]);
   var pickerBegin = new Pikaday({
       field        : document.getElementById('datepickerBegin'),
       format       : 'YYYY/MM/D',
