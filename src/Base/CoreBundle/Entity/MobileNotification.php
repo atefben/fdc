@@ -52,6 +52,13 @@ class MobileNotification implements TranslateMainInterface
     private $sendTest = false;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $sendToAll = false;
+
+    /**
      * @var ArrayCollection
      */
     private $translations;
@@ -209,5 +216,28 @@ class MobileNotification implements TranslateMainInterface
     {
         $this->translations = $translations;
         return $this;
+    }
+
+    /**
+     * Set sendToAll
+     *
+     * @param boolean $sendToAll
+     * @return MobileNotification
+     */
+    public function setSendToAll($sendToAll)
+    {
+        $this->sendToAll = $sendToAll;
+
+        return $this;
+    }
+
+    /**
+     * Get sendToAll
+     *
+     * @return boolean 
+     */
+    public function getSendToAll()
+    {
+        return $this->sendToAll;
     }
 }

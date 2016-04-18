@@ -983,7 +983,9 @@ form:
         helper_widgets: Ajouter un module de type
     mobile_notification:
         label_description: Message
-        label_token: Token
+        label_token: UUID
+        help_token: Utilisez le séparateur <b>virgule</b> pour envoyer la notification à plusieurs devices
+        label_send_to_all: Envoyer à tous les devices de la base de données (le champ UUID sera ignoré)
         label_send_at: Envoyé le
 nav:
     site_modal: Ouvrir la sélection des sites

@@ -90,7 +90,11 @@ class MobileNotificationAdmin extends Admin
                 'data' => false,
             ))
             ->add('token', null, array(
-                'label' => 'form.mobile_notification.label_token'
+                'label' => 'form.mobile_notification.label_token',
+                'help' => 'form.mobile_notification.help_token',
+            ))
+            ->add('sendToAll', null, array(
+                'label' => 'form.mobile_notification.label_send_to_all',
             ))
             ->add('sendTest', 'hidden', array(
                 'data' => false,
