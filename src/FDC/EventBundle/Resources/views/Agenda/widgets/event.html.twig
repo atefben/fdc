@@ -1,7 +1,8 @@
 {%- spaceless -%}
 {%- trans_default_domain 'FDCEventBundle' -%}
 
-{%- set isPress = (event.type == 'Conférence de presse' or event.type == 'Séance de presse') ? true : false -%}
+{%- set isConferencePress = (event.type == 'Conférence de presse') ? true : false -%}
+{%- set isSeancePress = (event.type == 'Séance de presse') ? true : false -%}
 {%- set difference = date(event.endsAt).diff(date(event.startsAt)) -%}
 {%- set minutes = difference.i -%}
 
@@ -18,7 +19,7 @@
          data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"
          data-time="{{ event.startsAt|date('H') }}" data-duration="{{ minutes }}">
         <span class="category">
-            <i class="icon{%- if isPress -%} icon_espace-presse{%- endif -%}"></i>
+            <i class="icon {% if isSeancePress -%}icon_espace-presse{%- elseif isConferencePress -%}icon_evt-conference{%- else -%}icon_evt-seance{%- endif -%}"></i>
             {{ event.type }}
         </span>
         <div class="info">
@@ -76,7 +77,7 @@
          data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"
          data-time="{{ event.startsAt|date('H') }}" data-duration="{{ minutes }}">
         <span class="category">
-            <i class="icon{%- if isPress -%} icon_espace-presse{%- endif -%}"></i>
+            <i class="icon {% if isSeancePress -%}icon_espace-presse{%- elseif isConferencePress -%}icon_evt-conference{%- else -%}icon_evt-seance{%- endif -%}"></i>
             {{ event.type }}
         </span>
         <div class="info">
