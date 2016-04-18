@@ -19,7 +19,7 @@ use JMS\Serializer\Annotation\Since;
  * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class MediaAudio extends Media implements RoutedItemInterface
+class MediaAudio extends Media // implements RoutedItemInterface
 {
     use Translatable;
 
