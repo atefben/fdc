@@ -70,7 +70,7 @@
             <span>{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}</span>
             {% if 'Ouverture' in movie.galaName %}
                 <span>{{ 'movie.fdc_open'|trans }}</span>
-            {% elseif 'Fermeture' in movie.galaName %}
+            {% elseif 'Fermeture' in movie.galaName or 'Clôture' in movie.galaName %}
                 <span>{{ 'movie.fdc_close'|trans }}</span>
             {% endif %}
         </div>

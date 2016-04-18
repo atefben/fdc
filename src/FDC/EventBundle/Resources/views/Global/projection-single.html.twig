@@ -21,7 +21,7 @@
                                 <span>{{ film.selectionSection|trans_fallback('name') }}{%- if film.selectionSubsection -%}{{ film.selectionSubsection|trans_fallback('name') }}{%- endif -%}</span>
                                 {%- if 'Ouverture' in film.galaName -%}
                                     <span>{{ 'movie.fdc_open'|trans }}</span>
-                                {%- elseif 'Fermeture' in film.galaName -%}
+                                {%- elseif 'Fermeture' in film.galaName or 'Clôture' in film.galaName -%}
                                     <span>{{ 'movie.fdc_close'|trans }}</span>
                                 {%- endif -%}
                                 {%- if film.directorFirst -%}
