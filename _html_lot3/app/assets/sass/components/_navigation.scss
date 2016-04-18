@@ -1,0 +1,42 @@
+//       SUMMARY TABLE
+// =========================
+// 1. Navigation Sticky
+// =========================
+
+// 1. Navigation Sticky
+.navigation-sticky {
+  background-color: #0c0c0c;
+  height: 45px;
+  line-height: 45px;
+
+  a {
+    color: #999999;
+    transition:.5s;
+  }
+
+  ul {
+    display : flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  li {
+    font-size: .75rem;
+    text-transform: uppercase;
+    font-family: $CamphorBold;
+    padding: 0px 7.5px;
+
+     &.active {
+       a {
+         color:$gold;
+       }
+     }
+
+     & {
+       a:hover {
+         color:$gold;
+       }
+     }
+  }
+}
