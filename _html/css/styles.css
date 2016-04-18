@@ -18747,7 +18747,7 @@ input[type=submit] {
   right: 1px;
 }
 .press-programmation .header-press .button.list:hover {
-  color: #c8a461 !important;
+  color: #c8a461;
 }
 
 .press #calendar.fullwidth #mycalendar .fc-day {
