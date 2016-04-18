@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 use FDC\EventBundle\Form\Type\ContactType;
 use FDC\EventBundle\Form\Type\NewsletterType;
-
+use Symfony\Component\Validator\Constraints\DateTime;
 
 
 /**
@@ -842,19 +842,15 @@ class FooterController extends Controller
     {
         $id = $request->query->get('id');
 
-        if($id == null) {
+        $locale = $request->getLocale();
+        $em = $this->getDoctrine()->getManager();
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        $dateTime = new DateTime();
 
-            $articles = $this->getDoctrine()->getRepository('BaseCoreBundle:MediaAudio')->findAll();
-            $feed = $this->get('eko_feed.feed.manager')->get('article');
-            $feed->addFromArray($articles);
+        $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $settings->getFestival()->getId(), $dateTime);
+        $feed = $this->get('eko_feed.feed.manager')->get('article');
+        $feed->addFromArray($audios);
 
-            return new Response($feed->render('rss')); // ou 'atom'
-        } else {
-            $articles = $this->getDoctrine()->getRepository('BaseCoreBundle:MediaAudio')->findById($id);
-            $feed = $this->get('eko_feed.feed.manager')->get('article');
-            $feed->addFromArray($articles);
-
-            return new Response($feed->render('rss')); // ou 'atom'
-        }
+        return new Response($feed->render('rss')); // ou 'atom'
     }
 }
