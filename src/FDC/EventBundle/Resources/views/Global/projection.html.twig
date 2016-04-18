@@ -1,11 +1,13 @@
-{% trans_default_domain 'FDCEventBundle' %}
-{% for room in rooms %}
+{%- spaceless -%}
+{%- trans_default_domain 'FDCEventBundle' -%}
+{%- for room in rooms -%}
     <div class="venue">
         <div class="v-head">{{ room.name }}</div>
         <div class="v-container">
-            {% for event in projections[room.id] %}
-                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-            {% endfor %}
+            {%- for event in projections[room.id] -%}
+                {%- include 'FDCEventBundle:Agenda:widgets/event.html.twig' -%}
+            {%- endfor -%}
         </div>
     </div>
-{% endfor %}
+{%- endfor -%}
+{%- endspaceless -%}

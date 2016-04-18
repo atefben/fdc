@@ -12,15 +12,15 @@
 
 {%- if event.programmationFilms|length > 0 -%}
     {%- set film = event.programmationFilms[0].film -%}
-    <div class="fc-event" data-category="{{ film.selectionSection|trans_fallback('slug') }}"
-         data-type="{{ event.type|lower|replace(' ', '-') }}" data-url="{{ path('fdc_event_agenda_getprojection', {id: event.id}) }}"
-         data-id="{{ event.id }}" data-picto=".pen" data-color="#000"
-         data-start="{{ event.startsAt|date('Y-m-d') }}T{{ event.startsAt|date('H:i:s') }}"
-         data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"
+    <div class="fc-event" data-category="{{ film.selectionSection|trans_fallback('slug') }}"{{- ' ' -}}
+         data-type="{{ event.type|lower|replace(' ', '-') }}" data-url="{{ path('fdc_event_agenda_getprojection', {id: event.id}) }}"{{- ' ' -}}
+         data-id="{{ event.id }}" data-picto=".pen" data-color="#000"{{- ' ' -}}
+         data-start="{{ event.startsAt|date('Y-m-d') }}T{{ event.startsAt|date('H:i:s') }}"{{- ' ' -}}
+         data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"{{- ' ' -}}
          data-time="{{ event.startsAt|date('H') }}" data-duration="{{ minutes }}">
         <span class="category">
             <i class="icon {% if isSeancePress -%}icon_espace-presse{%- elseif isConferencePress -%}icon_evt-conference{%- else -%}icon_evt-seance{%- endif -%}"></i>
-            {{ event.type }}
+            {{- event.type -}}
         </span>
         <div class="info">
             {%- if event.medias|length > 0 -%}
@@ -57,28 +57,27 @@
             <span class="duration">
                 {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
                 {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i -}}
-            </span>
-            -
+            </span> - {{- ' ' -}}
             <span class="ven">
                 {%- if event.room -%}
-                    {{ event.room.name }}
+                    {{- event.room.name -}}
                 {%- endif -%}
             </span>
-            <span class="{{ film.selectionSection|trans_fallback('slug') }}">
+            <span class="competition">
                 {{- film.selectionSection|trans_fallback('name') -}}
             </span>
         </div>
     </div>
 {%- elseif event.programmationDynamics|length > 0 -%}
-    <div class="fc-event" data-category=""
-         data-type="{{ event.type|lower|replace(' ', '-') }}"
-         data-id="{{ event.id }}" data-picto=".pen" data-color="#000"
-         data-start="{{ event.startsAt|date('Y-m-d') }}T{{ event.startsAt|date('H:i:s') }}"
-         data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"
+    <div class="fc-event" data-category=""{{- ' ' -}}
+         data-type="{{ event.type|lower|replace(' ', '-') }}"{{- ' ' -}}
+         data-id="{{ event.id }}" data-picto=".pen" data-color="#000"{{- ' ' -}}
+         data-start="{{ event.startsAt|date('Y-m-d') }}T{{ event.startsAt|date('H:i:s') }}"{{- ' ' -}}
+         data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"{{- ' ' -}}
          data-time="{{ event.startsAt|date('H') }}" data-duration="{{ minutes }}">
         <span class="category">
             <i class="icon {% if isSeancePress -%}icon_espace-presse{%- elseif isConferencePress -%}icon_evt-conference{%- else -%}icon_evt-seance{%- endif -%}"></i>
-            {{ event.type }}
+            {{- event.type -}}
         </span>
         <div class="info">
             <div class="txt">
@@ -89,8 +88,7 @@
             <span class="duration">
                 {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
                 {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
-            </span>
-            -
+            </span> -{{- ' ' -}}
             <span class="ven">
                 {%- if event.room -%}
                     {{ event.room.name }}

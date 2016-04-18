@@ -48,7 +48,7 @@
 
 
                             {% for day in schedulingDays %}
-                                <a href="#" {% if day == date %}class="active"{% endif %} data-date="{{ day|date('Y-m-d') }}">
+                                <a href="#" class="ajaxi {% if day == date %}active{% endif %}" data-date="{{ day|date('Y-m-d') }}">
                                     {{ day|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                                     <span class="day">{{ day|date('d') }}</span>
                                 </a>
@@ -83,16 +83,18 @@
                         <div class="venues">
                             <a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
                             <a href="#" class="nav next"><i class="icon icon_fleche-right"></i></a>
-                            {% for room in rooms %}
-                                <div class="venue">
-                                    <div class="v-head">{{  room.name }}</div>
-                                    <div class="v-container">
-                                        {% for event in projections[room.id] %}
-                                            {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                        {% endfor %}
+                            <div class="v-wrapper">
+                                {%- for room in rooms -%}
+                                    <div class="venue">
+                                        <div class="v-head">{{  room.name }}</div>
+                                        <div class="v-container">
+                                            {%- for event in projections[room.id] -%}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {%- endfor -%}
+                                        </div>
                                     </div>
-                                </div>
-                            {% endfor %}
+                                {%- endfor -%}
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -42,7 +42,7 @@
                                 <div class="title-original"></div>
                             {%- endif -%}
                             <p>
-                                {{ 'movie.label.realisepar'|trans }} :
+                                {{- 'movie.label.realisepar'|trans }} :
                                 {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                                 {%- for director in directors -%}
                                     {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} -%}
@@ -132,7 +132,7 @@
                                         <span class="ven">
                                             {%- if seance.room -%}{{ seance.room.name }}{%- endif -%}
                                         </span>
-                                        <span class="{{ film.selectionSection|trans_fallback('slug') }}">
+                                        <span class="competition">
                                             {{ film.selectionSection|trans_fallback('name') }}
                                         </span>
                                     </div>
@@ -200,7 +200,7 @@
                                         <span class="ven">
                                             {%- if conference.room -%}{{ conference.room.name }}{%- endif -%}
                                         </span>
-                                        <span class="{{ film.selectionSection|trans_fallback('slug') }}">
+                                        <span class="competition">
                                             {{ film.selectionSection|trans_fallback('name') }}
                                         </span>
                                     </div>
@@ -264,11 +264,11 @@
                                         <span class="duration">
                                             {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
                                             {{ difference.i }}
-                                        </span> -
+                                        </span> - {{- ' ' -}}
                                         <span class="ven">
                                             {%- if relatedProjection.room -%}{{ relatedProjection.room.name }}{%- endif -%}
                                         </span>
-                                        <span class="{{ film.selectionSection|trans_fallback('slug') }}">
+                                        <span class="competition">
                                             {{ film.selectionSection|trans_fallback('name') }}
                                         </span>
                                     </div>
