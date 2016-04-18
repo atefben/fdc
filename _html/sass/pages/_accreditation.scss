@@ -115,7 +115,7 @@
         }
 
         ul {
-          list-style: inherit;
+          // list-style: inherit;
 
           li {
             strong {
@@ -138,15 +138,15 @@
           }
         }
 
-        ol {
-          list-style: decimal;
-        }
+        // ol {
+        //   list-style: decimal;
+        // }
 
-        ul, ol {
-          margin-bottom: 5px;
-          padding-left: 30px;
-          line-height: 1.7em;
-        }
+        // ul, ol {
+        //   margin-bottom: 5px;
+        //   padding-left: 30px;
+        //   line-height: 1.7em;
+        // }
 
         h5 {
           font-family: $CamphorBold;

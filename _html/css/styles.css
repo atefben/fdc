@@ -19173,9 +19173,6 @@ input[type=submit] {
 .accreditation #accreditation .wrapper .container-small p strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
-.accreditation #accreditation .wrapper .container-small ul {
-  list-style: inherit;
-}
 .accreditation #accreditation .wrapper .container-small ul li strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.75rem;
@@ -19193,14 +19190,6 @@ input[type=submit] {
 }
 .accreditation #accreditation .wrapper .container-small ul li a:hover {
   color: #8e6d30;
-}
-.accreditation #accreditation .wrapper .container-small ol {
-  list-style: decimal;
-}
-.accreditation #accreditation .wrapper .container-small ul, .accreditation #accreditation .wrapper .container-small ol {
-  margin-bottom: 5px;
-  padding-left: 30px;
-  line-height: 1.7em;
 }
 .accreditation #accreditation .wrapper .container-small h5 {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
