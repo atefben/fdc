@@ -12,6 +12,7 @@
   position: relative;
   height: 581px;
   margin-bottom: 29px;
+  transition: height .5s;
 
   .slider-carousel, .owl-stage-outer, .owl-stage, .owl-item {
     height: 100%;
@@ -101,6 +102,51 @@
       font-size:$CamphorMedium;
     }
   }
+
+  @media screen and (min-width: 1280px) and (max-width: 1599px) {
+      &{
+        height: 577px;
+
+        .container-images .item {
+          width: 76%;
+        }
+
+        .texts {
+          top:42px;
+          right: -103px;
+        }
+      }
+  }
+
+  @media screen and (min-width: 1600px) and (max-width: 1920px) {
+      &{
+        height: 683px;
+
+        .container-images .item {
+          width: 71.3%;
+        }
+
+        .texts {
+          top:115px;
+          right: -111px;
+        }
+      }
+  }
+
+  @media screen and (min-width: 1920px){
+    &{
+      height: 774px;
+
+      .container-images .item {
+        width: 67.7%;
+      }
+
+      .texts {
+        top:115px;
+        right: -111px;
+      }
+    }
+  }
 }
 
 // 2. Slider 01
@@ -112,30 +158,29 @@
     margin-left: -147px;
   }
 
-  & .owl-stage-outer{
+  & .owl-stage-outer {
     overflow: visible;
   }
 
-  .item{
+  .item {
     position:relative;
 
-    &:after{
+    &:after {
       content:'';
       width: 100%;
       height: calc(100% - 20px);
       opacity: .5;
-      background-color:#000;
+      background-color:#fff;
       position:absolute;
       top:0;
       left:0;
       transition:.5s;
     }
-
   }
 
   .center {
 
-    .item:after{
+    .item:after {
       opacity:0;
     }
 
@@ -147,5 +192,23 @@
   figcaption {
     opacity:0;
     transition:.5s;
+  }
+}
+
+// 2. Slider 02
+// =========================
+.slider-02 {
+  .owl-stage {
+    margin-left: -419px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    & .owl-stage-outer {
+      overflow: hidden !important;
+    }
+  }
+
+  & .owl-stage-outer {
+    overflow: visible;
   }
 }
