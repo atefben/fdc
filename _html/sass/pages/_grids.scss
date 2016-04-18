@@ -29,6 +29,7 @@
 
   .grid-wrapper {
     margin-top: 60px;
+    overflow: hidden;
   }
 
   .item {
@@ -280,6 +281,10 @@
     cursor: pointer;
     overflow: hidden;
     visibility: hidden;
+
+    .press.press-actu & {
+      cursor: default
+    }
 
     &.visible {
       visibility: visible;

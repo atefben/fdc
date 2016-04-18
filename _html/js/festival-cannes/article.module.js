@@ -47,6 +47,10 @@ $(document).ready(function() {
       // remove timeout once on server. only for animation.
       setTimeout(function() {
         $.get(urlPath, function(data){
+          var matches = data.match(/<title>(.*?)<\/title>/);
+          var spUrlTitle = matches[1];
+
+          document.title = spUrlTitle;
           $(".content-article").html( $(data).find('.content-article') );
           history.pushState('',GLOBALS.texts.url.title, urlPath);
 

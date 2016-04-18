@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-03-31T12:27:46Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-04-18T14:46:08Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -569,7 +569,7 @@
       </trans-unit>
       <trans-unit id="40644e5c8b261ccfd438d5e32af45bbd2d84f6aa" resname="press.home.label.cliquezdeposez">
         <source>press.home.label.cliquezdeposez</source>
-        <target>Cliquez déposez</target>
+        <target>Cliquez - déposez</target>
         <jms:reference-file line="18">Agenda/components/calendar.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b20f8b3212e01a52122eb036a48fc66aad9df86a" resname="press.home.label.dossiersdepresse">
@@ -612,7 +612,7 @@
       </trans-unit>
       <trans-unit id="2139de003425c376fa2afac7fa14adfde4c7d410" resname="press.home.text.lesevenementsdansvotreagenda">
         <source>press.home.text.lesevenementsdansvotreagenda</source>
-        <target>Les événements dans votre agenda</target>
+        <target>Les événements dans votre agenda puis exportez votre programme</target>
         <jms:reference-file line="19">Agenda/components/calendar.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c86fd3a4351ed338322b92a28fc665a5dad45437" resname="press.home.title.atelecharger">
@@ -632,7 +632,7 @@
       </trans-unit>
       <trans-unit id="9a5d48012950b487d5926b7754031f341022baf0" resname="press.home.title.preparezvotresejour">
         <source>press.home.title.preparezvotresejour</source>
-        <target>Préparez votre séjour</target>
+        <target>Préparez votre séjour au festival de cannes</target>
         <jms:reference-file line="13">Agenda/components/calendar.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c5e52f80cf169e815a044ac01969ac4ed882c78b" resname="press.home.title.programmedu">

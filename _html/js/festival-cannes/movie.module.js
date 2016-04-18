@@ -234,6 +234,10 @@ $(document).ready(function() {
           scrollTop: 0
         }, 0);
         $.get(urlPath, function(data){
+          var matches = data.match(/<title>(.*?)<\/title>/);
+          var spUrlTitle = matches[1];
+
+          document.title = spUrlTitle;
           $(".content-movie").html( $(data).find('.content-movie') );
           history.pushState('',GLOBALS.texts.url.title, urlPath);
 

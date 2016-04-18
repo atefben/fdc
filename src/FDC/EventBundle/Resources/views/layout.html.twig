@@ -1,4 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
+{% set festival_date = festival_date() %}
+
 <!DOCTYPE html>
 <html {{ sonata_seo_html_attributes() }}>
     <head {{ sonata_seo_head_attributes() }}>
@@ -11,7 +13,7 @@
         {% include 'FDCEventBundle:Base:javascript_head.html.twig' %}
     </head>
     <body>
-        {% block pre_home %}
+    {% block pre_home %}
         {% endblock %}
         {% include 'FDCEventBundle::header.html.twig' %}
         {% block body %}
