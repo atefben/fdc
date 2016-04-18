@@ -236,7 +236,7 @@ $(document).ready(function () {
             duration: {
               days: 6
             },
-            buttonText: '5 day',
+            buttonText: '5 day'
           },
           agendaFour: {
             type: 'agenda',

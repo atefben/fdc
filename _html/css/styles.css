@@ -12107,6 +12107,7 @@ article .read-later.rAlign span:after {
 }
 .grid .grid-wrapper {
   margin-top: 60px;
+  overflow: hidden;
 }
 .grid .item {
   padding: 0;
