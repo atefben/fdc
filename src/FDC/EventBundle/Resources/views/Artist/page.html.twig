@@ -13,10 +13,12 @@
                         {{ profession }}
                     </span>
                     {% endif %}
-                    <span class="city" {{ artist.nationality|content_lang('name') }}>
+                    {% if artist.nationality %}
+                        <span class="city" {{ artist.nationality|content_lang('name') }}>
                         {{ artist.nationality|trans_fallback('name') }}
-                        {% if artist.nationality2 %}, {{ artist.nationality2|trans_fallback('name') }}{% endif %}
-                    </span>
+                            {% if artist.nationality2 %}, {{ artist.nationality2|trans_fallback('name') }}{% endif %}
+                        </span>
+                    {% endif %}
                 </div>
                 <h2 class="title-article">{{ artist.fullName }}</h2>
                 <div class="buttons">
@@ -149,13 +151,13 @@
                                                     {{ awardAssociation.award.prize|trans_fallback('title') }}
                                                     </span>
                                                     {% if filmPerson.functions|length > 0 %}
-                                                    {% spaceless -%}
-                                                        <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
+                                                        {% spaceless -%}
+                                                            <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
                                                         {% for filmPersonFunction in filmPerson.functions -%}
                                                             {{ loop.first == false ? ',' : '' }} {{ filmPersonFunction.function|trans_fallback('name') }}
                                                         {%- endfor %}
                                                         </span>
-                                                    {%- endspaceless %}
+                                                        {%- endspaceless %}
                                                     {% endif %}
                                                 </div>
                                                 {% if filmPerson.film.festival.id == festival %}
