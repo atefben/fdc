@@ -348,6 +348,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_show",
      *     "film_selection_section_show",
      *     "news_list",
+     *     "news_show",
      *     "award_list",
      *     "classics",
      *     "orange_studio"
