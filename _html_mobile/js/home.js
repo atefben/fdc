@@ -47,7 +47,7 @@ function moveTimeline(element, day,url){
       url:url,
       success: function(data) {
         $('.articles-container').html(data);
-        $.initAddToSelection();
+        initAddToSelection();
         initSlideshows();
         $('.articles-container').animate({
           opacity: 1
@@ -115,16 +115,24 @@ function initSlideshows() {
 
   
 var posts = [];
-var url = "https://api.instagram.com/v1/tags/"+GLOBALS.api.instagram.hashtag+"/media/recent/?access_token="+GLOBALS.api.instagram.token;
 
 // load Instagram pictures and build array
-function loadInstagram(url, callback){
+function loadInstagram(callback) {
+  if (GLOBALS.env == "html") {
+    instagramDatatype = "jsonp";
+    instagramRequest  = {};
+  } else {
+    instagramDatatype = "json";
+    instagramRequest  = {
+      offset : 40
+    }
+  }
   
   $.ajax({
+    url      : GLOBALS.api.instagramUrl,
     type     : "GET",
-    dataType : "jsonp",
-    cache    : false,
-    url      : url ,
+    data     : instagramRequest,
+    dataType : instagramDatatype,
     success: function(data) {
       var count = 10; 
       for (var i = 0; i < count; i++) {
@@ -142,17 +150,26 @@ function loadInstagram(url, callback){
 // TWITTER
 // load Twitter posts and pictures and build array
 function loadTweets(callback) {
-  var request = {
-    q: GLOBALS.api.twitter.hashtag,
-    count:  GLOBALS.api.twitter.count,
-    api:  GLOBALS.api.twitter.uri
-  };
+  if (GLOBALS.env == "html") {
+    twitterUrl     = "twitter.php";
+    twitterType    = "POST";
+    twitterRequest = {
+      q     : "%23Cannes2016",
+      count :  15,
+      api   :  "search_tweets"
+    };
+  } else {
+    twitterUrl     = GLOBALS.api.twitterUrl;
+    twitterType    = "GET";
+    twitterRequest = {
+      offset : 40
+    };
+  }
 
   $.ajax({
-    url      : GLOBALS.api.twitter.url,
-    type     : 'POST',
-    datatype : 'json',
-    data     : request,
+    url  : twitterUrl,
+    type : twitterType,
+    data : twitterRequest,
     success: function(data, textStatus, xhr) {
       data = JSON.parse(data);
       data = data.statuses;
@@ -217,7 +234,7 @@ $(document).ready(function() {
         success: function(data) {
             $('.articles-container').append(data);
             $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
-            $.initAddToSelection();
+            initAddToSelection();
 
         }
       });
@@ -265,7 +282,7 @@ $(document).ready(function() {
   });
   
 
-  loadInstagram(url, function() {
+  loadInstagram(function() {
     loadTweets(function() {
       shuffle(posts);
       // once all data is loaded, build html and display the grid
