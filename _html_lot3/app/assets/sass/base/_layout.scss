@@ -344,6 +344,11 @@ body .icon{
   display:block;
   position:relative;
 
+  sub{
+    vertical-align: super;
+    font-size:.5rem;
+  }
+
   .vFlexAlign{
     height: calc( 100% - 42px );
   }
@@ -352,18 +357,27 @@ body .icon{
     text-align:center;
   }
 
-  .title-4 {
-    font-size: .75rem;
-    color:#fff;
-    display:block;
-  }
-
   .title-2 {
     font-size: 3.75rem;
     font-family: $CamphorHeavy;
     color:#fff;
     display:block;
-    letter-spacing: 10px;
+    letter-spacing: .1rem;
+  }
+
+  .title-3 {
+    font-size: 1.75rem;
+    font-family: $CamphorHeavy;
+    color:#fff;
+    display:block;
+    letter-spacing: .5rem;
+  }
+
+  .title-4 {
+    font-size: .75rem;
+    color:#fff;
+    display:block;
+    letter-spacing: .1rem;
   }
 
   .date-back, .date-next{
@@ -550,6 +564,11 @@ body .icon{
 
     &:hover {
       background-color:rgba(0, 0, 0, .7);
+
+      .infos p, figcaption{
+        color:#fff;
+        transition: .5s;
+      }
     }
   }
 
@@ -557,6 +576,22 @@ body .icon{
     width: 708px;
     display:flex;
     margin: 0 auto;
+  }
+
+  .wrapper-item-big {
+    width: 989px;
+    display:flex;
+    margin: 0 auto;
+
+    .description {
+      width: auto;
+    }
+  }
+
+  figcaption {
+    font-size:.75rem;
+    font-family: $CamphorMedium;
+    color: #666666;
   }
 
   .poster {
@@ -570,6 +605,15 @@ body .icon{
     justify-content: center;
     margin-left: 80px;
     width: 100%;
+  }
+
+  .big-date {
+    color: $gold;
+    font-size: 1.125rem;
+    font-family: $CamphorBold;
+    line-height: 24px;
+    letter-spacing: .2rem;
+    margin-bottom: 38px;
   }
 
   .description {

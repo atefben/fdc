@@ -34,4 +34,8 @@ $(document).ready(function() {
     owInitNavSticky(2);
   }
 
+  if($('.edition-69.palm-gold').length) {
+    owInitNavSticky(1);
+  }
+
 });
