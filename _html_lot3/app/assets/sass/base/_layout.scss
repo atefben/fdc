@@ -198,6 +198,19 @@ body .icon{
   width: 977px;
 }
 
+.block-01-s{
+  margin: 40px auto;
+  max-width: 100%;
+  width: 790px;
+  margin-bottom: 20px;
+}
+
+.block-01-xs{
+  margin: 0 auto;
+  max-width: 100%;
+  width: 633px;
+}
+
 .block-02{
   background-color: #f6f6f6;
   width: 100%;
@@ -343,11 +356,6 @@ body .icon{
   height: 300px;
   display:block;
   position:relative;
-
-  sub{
-    vertical-align: super;
-    font-size:.5rem;
-  }
 
   .vFlexAlign{
     height: calc( 100% - 42px );
