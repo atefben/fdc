@@ -294,7 +294,7 @@ $(document).ready(function () {
           if (c == "#fff") {
             $(element).append('<div class="info"><div class="txt" style="margin-left:10px"><span>' + event.description + '</span></div></div>');
           } else {
-            $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
+            $(element).append('<div class="info"><img src="' + event.picture + '" width="45" height="60" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
           }
 
           if (c == "#fff") {
@@ -493,7 +493,7 @@ $(document).ready(function () {
           if (c == "#fff") {
             $(element).append('<div class="info"><div class="txt" style="margin-left:10px"><span>' + event.description + '</span></div></div>');
           } else {
-            $(element).append('<div class="info"><img src="' + event.picture + '" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
+            $(element).append('<div class="info"><img src="' + event.picture + '" width="45" height="60" /><div class="txt"><span>' + event.title + '</span><strong>' + event.author + '</strong></div></div>');
           }
 
           if (c == "#fff") {
