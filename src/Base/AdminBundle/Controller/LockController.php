@@ -193,9 +193,19 @@ class LockController extends Controller
             ));
         }
 
-        $response->setData(array(
-            'locked' => ($trans->getLockedBy() !== null) ? true : false
-        ));
+        if ($trans->getLockedBy()) {
+            $data = array(
+                'locked' => true,
+                'lockedBy' => ($trans->getLockedBy()->getFullName() != ' ') ? $trans->getLockedBy()->getFullName() : $trans->getLockedBy()->getUsername()
+            );
+        } else {
+            $data = array(
+                'locked' => false,
+                'lockedBy' => null
+            );
+        }
+
+        $response->setData($data);
 
         return $response;
     }
