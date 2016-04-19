@@ -3686,6 +3686,9 @@ body .icon:before {
   display: block;
   position: relative;
 }
+.block-push-top .vFlexAlign {
+  height: calc( 100% - 42px );
+}
 .block-push-top .txts {
   text-align: center;
 }
@@ -3835,11 +3838,11 @@ body .icon:before {
   display: none;
 }
 .block-films .icon-palme {
-  padding-top: 20px;
-  font-size: 3rem;
+  padding-top: 22px;
+  font-size: 2.5rem;
   color: #c8a461;
   max-height: 39px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .block-movie-preview {
@@ -3871,6 +3874,7 @@ body .icon:before {
   align-items: center;
   justify-content: center;
   margin-left: 80px;
+  width: 100%;
 }
 .block-movie-preview .description {
   color: #666666;
@@ -3887,12 +3891,52 @@ body .icon:before {
   text-transform: uppercase;
   line-height: 18px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  width: 183px;
+  text-align: center;
+}
+.block-movie-preview .name-fb {
+  color: #fff;
+  font-size: .625rem;
+  text-transform: uppercase;
+  line-height: 18px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  width: 183px;
+  text-align: center;
 }
 .block-movie-preview .names-a {
   color: #c8a461;
   font-size: .8125rem;
   line-height: 18px;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+.block-movie-preview .name-award {
+  color: #fff;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  line-height: 24px;
+  text-align: center;
+}
+.block-movie-preview .portrait {
+  max-width: 52px;
+  max-height: 70px;
+  margin-bottom: 8px;
+}
+.block-movie-preview .line:after {
+  content: '';
+  height: 20px;
+  width: 1px;
+  background-color: #434343;
+  display: block;
+  margin: 10px auto;
+}
+.block-movie-preview .icon-palme {
+  color: #fff;
+  font-size: 2.5rem;
+  max-height: 40px;
+  margin-bottom: 10px;
+  margin-top: -9px;
 }
 
 .block-list-img {
@@ -7157,6 +7201,40 @@ header #searchContainer {
   color: #c8a461;
 }
 .navigation-sticky.sticky {
+  position: fixed;
+  top: 91px;
+  width: 100%;
+}
+
+.navigation-sticky-02 {
+  background-color: #141414;
+  height: 45px;
+  line-height: 45px;
+}
+.navigation-sticky-02 a {
+  color: #fff;
+  transition: .5s;
+  letter-spacing: .1rem;
+}
+.navigation-sticky-02 ul {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.navigation-sticky-02 li {
+  font-size: .625rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  padding: 0px 7.5px;
+}
+.navigation-sticky-02 li.active a {
+  color: #c8a461;
+}
+.navigation-sticky-02 li a:hover {
+  color: #c8a461;
+}
+.navigation-sticky-02.sticky {
   position: fixed;
   top: 91px;
   width: 100%;

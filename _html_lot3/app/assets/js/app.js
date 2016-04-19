@@ -20,14 +20,18 @@ $(document).ready(function() {
 
  initHeaderSticky();
 
-  if($('.home').length){
+  if($('.home').length) {
     owInitSlider('home');
     owInitSlider('slider-01');
     owInitSlider('slider-02');
   }
 
-  if($('.retrospective.poster').length){
-    owInitNavSticky();
+  if($('.retrospective.poster').length) {
+    owInitNavSticky(1);
+  }
+
+  if($('.retrospective.palmares').length) {
+    owInitNavSticky(2);
   }
 
 });

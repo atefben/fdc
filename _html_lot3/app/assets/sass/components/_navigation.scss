@@ -1,6 +1,7 @@
 //       SUMMARY TABLE
 // =========================
 // 1. Navigation Sticky
+// 2. Navigation 02 Sticky
 // =========================
 
 // 1. Navigation Sticky
@@ -25,6 +26,52 @@
     font-size: .75rem;
     text-transform: uppercase;
     font-family: $CamphorBold;
+    padding: 0px 7.5px;
+
+     &.active {
+       a {
+         color:$gold;
+       }
+     }
+
+     & {
+       a:hover {
+         color:$gold;
+       }
+     }
+  }
+
+  &.sticky{
+    position:fixed;
+    top: 91px;
+    width: 100%;
+  }
+}
+
+
+// 2. Navigation 02 Sticky
+.navigation-sticky-02{
+  background-color: #141414;
+  height: 45px;
+  line-height: 45px;
+
+  a {
+    color: #fff;
+    transition:.5s;
+    letter-spacing: .1rem;
+  }
+
+  ul {
+    display : flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  li {
+    font-size: .625rem;
+    text-transform: uppercase;
+    font-family: $CamphorHeavy;
     padding: 0px 7.5px;
 
      &.active {

@@ -344,6 +344,10 @@ body .icon{
   display:block;
   position:relative;
 
+  .vFlexAlign{
+    height: calc( 100% - 42px );
+  }
+
   .txts {
     text-align:center;
   }
@@ -524,11 +528,11 @@ body .icon{
   }
 
   .icon-palme {
-    padding-top: 20px;
-    font-size: 3rem;
+    padding-top: 22px;
+    font-size: 2.5rem;
     color: $gold;
     max-height: 39px;
-    margin-bottom:8px;
+    margin-bottom:10px;
   }
 }
 
@@ -565,9 +569,10 @@ body .icon{
     align-items: center;
     justify-content: center;
     margin-left: 80px;
+    width: 100%;
   }
 
-  .description{
+  .description {
     color:#666666;
     font-family: $CamphorItalic;
     font-size : 1rem;
@@ -577,19 +582,64 @@ body .icon{
     margin-bottom: 40px;
   }
 
-  .name-f{
+  .name-f {
     color:#fff;
     font-size: .875rem;//14px
     text-transform: uppercase;
     line-height: 18px;
     font-family: $CamphorBold;
+    width: 183px;
+    text-align: center;
   }
 
-  .names-a{
+  .name-fb {
+    color:#fff;
+    font-size: .625rem;//10px
+    text-transform: uppercase;
+    line-height: 18px;
+    font-family: $CamphorBold;
+    width: 183px;
+    text-align: center;
+  }
+
+  .names-a {
     color:$gold;
     font-size: .8125rem;
     line-height: 18px;
     font-family: $CamphorItalic;
+  }
+
+  .name-award {
+    color:#fff;
+    font-size:1.125rem;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    font-family: $CamphorBold;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  .portrait{
+    max-width: 52px;
+    max-height: 70px;
+    margin-bottom: 8px;
+  }
+
+  .line:after{
+    content:'';
+    height: 20px;
+    width: 1px;
+    background-color: #434343;
+    display:block;
+    margin: 10px auto;
+  }
+
+  .icon-palme{
+    color: #fff;
+    font-size: 2.5rem;
+    max-height: 40px;
+    margin-bottom: 10px;
+    margin-top: -9px;
   }
 }
 
