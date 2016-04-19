@@ -133,7 +133,7 @@ class SocialWallCommand extends ContainerAwareCommand {
                 if (isset($tweet->entities->media[0]->media_url)) {
                     $socialWall->setContent($tweet->entities->media[0]->media_url);
                 } else {
-                    $socialWall->setContent('#');
+                    $socialWall->setContent(NULL);
                 }
                 $socialWall->setUrl('https://twitter.com/' . $tweet->user->screen_name . '/status/' . $tweet->id);
                 $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER'));
