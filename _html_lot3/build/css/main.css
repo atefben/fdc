@@ -3265,6 +3265,13 @@ Copyright (c) 2015 Daniel Eden
   text-transform: uppercase;
   letter-spacing: .5rem;
 }
+.contain-title .title-02 {
+  font-size: 1.125rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: block;
+  letter-spacing: .1rem;
+}
 
 figcaption, .caption {
   color: #868686;
@@ -3327,6 +3334,11 @@ a {
   font-size: 0;
   text-align: center;
 }
+.buttons .icon {
+  margin-right: 12px;
+  font-size: .85rem;
+  vertical-align: sub;
+}
 .buttons.square .button {
   height: 73px;
   position: relative;
@@ -3336,6 +3348,21 @@ a {
 }
 .buttons.square .button:hover {
   border-color: #dfdfdf;
+}
+
+.buttons-01 {
+  margin-bottom: 94px;
+}
+.buttons-01 .button {
+  border-color: #292929;
+  color: #c8a461;
+}
+.buttons-01 .button:hover {
+  border-color: #c8a461;
+  background-color: rgba(255, 255, 255, 0);
+}
+.buttons-01 .button:hover + a {
+  border-left-color: #c8a461;
 }
 
 .single-button {
@@ -3686,23 +3713,35 @@ body .icon:before {
   display: block;
   position: relative;
 }
+.block-push-top sub {
+  vertical-align: super;
+  font-size: .5rem;
+}
 .block-push-top .vFlexAlign {
   height: calc( 100% - 42px );
 }
 .block-push-top .txts {
   text-align: center;
 }
-.block-push-top .title-4 {
-  font-size: .75rem;
-  color: #fff;
-  display: block;
-}
 .block-push-top .title-2 {
   font-size: 3.75rem;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   color: #fff;
   display: block;
-  letter-spacing: 10px;
+  letter-spacing: .1rem;
+}
+.block-push-top .title-3 {
+  font-size: 1.75rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: block;
+  letter-spacing: .5rem;
+}
+.block-push-top .title-4 {
+  font-size: .75rem;
+  color: #fff;
+  display: block;
+  letter-spacing: .1rem;
 }
 .block-push-top .date-back, .block-push-top .date-next {
   position: absolute;
@@ -3860,10 +3899,27 @@ body .icon:before {
 .block-movie-preview .bck-hover:hover {
   background-color: rgba(0, 0, 0, 0.7);
 }
+.block-movie-preview .bck-hover:hover .infos p, .block-movie-preview .bck-hover:hover figcaption {
+  color: #fff;
+  transition: .5s;
+}
 .block-movie-preview .wrapper-item {
   width: 708px;
   display: flex;
   margin: 0 auto;
+}
+.block-movie-preview .wrapper-item-big {
+  width: 989px;
+  display: flex;
+  margin: 0 auto;
+}
+.block-movie-preview .wrapper-item-big .description {
+  width: auto;
+}
+.block-movie-preview figcaption {
+  font-size: .75rem;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  color: #666666;
 }
 .block-movie-preview .poster {
   display: inline-block;
@@ -3875,6 +3931,14 @@ body .icon:before {
   justify-content: center;
   margin-left: 80px;
   width: 100%;
+}
+.block-movie-preview .big-date {
+  color: #c8a461;
+  font-size: 1.125rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  line-height: 24px;
+  letter-spacing: .2rem;
+  margin-bottom: 38px;
 }
 .block-movie-preview .description {
   color: #666666;
