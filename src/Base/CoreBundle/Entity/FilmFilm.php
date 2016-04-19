@@ -15,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 
+use JMS\Serializer\Annotation as Serializer;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 use JMS\Serializer\Annotation\VirtualProperty;
@@ -329,7 +330,9 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
     /**
      * @ORM\ManyToMany(targetEntity="FilmContact", inversedBy="films", cascade={"persist"})
-     * @Groups({"film_show"})
+     * @Groups({
+     *     "film_show"
+     * })
      * @ORM\OrderBy({"position"="ASC"})
      */
     private $contacts;
@@ -637,8 +640,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                                     $collection->removeElement($clone);
                                 }
                                 break;
-                            }
-                            else {
+                            } else {
                                 $collection->add($clone);
                             }
                         }
@@ -1849,6 +1851,53 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     }
 
     /**
+     * Get contacts
+     *
+     * @VirtualProperty()
+     * @Groups({
+     *     "film_show"
+     * })
+     * @return array
+     */
+    public function getOrdoredContacts()
+    {
+        $contacts = $this->getContacts();
+
+        $collection = array();
+
+        $translation = $this->selectionSection ? $this->selectionSection->findTranslationByLocale('fr') : null;
+
+        if ($translation && mb_strtoupper($translation->getName()) == 'CINÉFONDATION') {
+            $order = array(
+                FilmContactInterface::TYPE_PRODUCTION_COMPANY,
+                FilmContactInterface::TYPE_FRENCH_DISTRIBUTION,
+                FilmContactInterface::TYPE_SCHOOL,
+            );
+        } else {
+            $order = array(
+                FilmContactInterface::TYPE_PRODUCTION_COMPANY,
+                FilmContactInterface::TYPE_MINOR_PRODUCTION_COMPANY,
+                FilmContactInterface::TYPE_FRENCH_DISTRIBUTION,
+                FilmContactInterface::TYPE_FRENCH_PRESS_COMPANY,
+                FilmContactInterface::TYPE_INTERNATIONAL_PRESS_COMPANY,
+                FilmContactInterface::TYPE_INTERNATIONAL_SELLING,
+            );
+        }
+
+        foreach ($order as $type) {
+            foreach ($contacts as $contact) {
+                if ($contact instanceof FilmContact) {
+                    if ((integer)$contact->getType() == $type) {
+                        $collection[] = $contact;
+                    }
+                }
+            }
+        }
+
+        return $collection;
+    }
+
+    /**
      * Add awards
      *
      * @param \Base\CoreBundle\Entity\FilmAwardAssociation $awards
@@ -2393,7 +2442,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get facebook
      *
-     * @return string 
+     * @return string
      */
     public function getFacebook()
     {
@@ -2416,7 +2465,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get twitter
      *
-     * @return string 
+     * @return string
      */
     public function getTwitter()
     {
@@ -2439,7 +2488,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get selectionSubsection
      *
-     * @return \Base\CoreBundle\Entity\FilmSelectionSubsection 
+     * @return \Base\CoreBundle\Entity\FilmSelectionSubsection
      */
     public function getSelectionSubsection()
     {
