@@ -1,0 +1,7 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+<section class="categorie-items">
+    {% for award_association in award_associations %}
+        {% include 'FDCEventMobileBundle:Palmares:widgets/movie.html.twig' %}
+    {% endfor %}
+</section>

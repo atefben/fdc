@@ -1,0 +1,68 @@
+{% trans_default_domain 'FDCEventBundle' %}
+<div class="popin-mail popin">
+    <div class="contain-popin popin">
+        <div id="popinContent">
+            <strong class="theme-article popin">{{ share_email.section }}</strong><span class="date-article popin">{{ share_email.detail }}</span>
+            <h2 class="title-article popin">{{ share_email.title }}</h2>
+            <div class="chap-article popin">{{ share_email.description|raw }}</div>
+        </div>
+    </div>
+    {{ form_start(form, {'action': path('fdc_event_global_shareemail'),attr: {class:'popin', id:'form'}}) }}
+        {% if form_errors(form.email) %}
+            {{ form_widget(form.email, {'attr': {'class': 'invalid'}}) }}
+        {% else %}
+            {{ form_widget(form.email) }}
+        {% endif %}
+        <span class="complet-infos popin">{{ 'sharemail.text.separerparvirgule'|trans }}</span>
+
+        {% if form_errors(form.user) %}
+            {{ form_widget(form.user, {'attr': {'class': 'invalid'}}) }}
+        {% else %}
+            {{ form_widget(form.user) }}
+        {% endif %}
+
+        <span class="complet-infos popin">
+            {{ form_widget(form.copy) }}
+            <label for="contact_copy" class="popin">{{ 'sharemail.label.copiemail'|trans }}</label>
+        </span>
+
+        {% if form_errors(form.message) %}
+            {{ form_widget(form.message, {'attr': {'class': 'invalid'}}) }}
+        {% else %}
+            {{ form_widget(form.message) }}
+        {% endif %}
+
+        {{ form_widget(form.section, {'value' : share_email.section}) }}
+        {{ form_widget(form.detail, {'value' : share_email.detail }) }}
+        {{ form_widget(form.title, {'value' : share_email.title}) }}
+        {{ form_widget(form.description, {'value' : share_email.description}) }}
+        {{ form_widget(form.url, {'value' : share_email.url}) }}
+        {{ form_widget(form._token) }}
+        <span class="complet-infos newsletter popin">
+            {{ form_widget(form.newsletter) }}
+            <label class="popin" for="contact_newsletter">
+                {{ 'sharemail.label.inscriptionnewsletter'|trans }}
+            </label>
+        </span>
+
+        <span class="detail popin">* {{ 'sharemail.text.champsobligatoires'|trans }}</span>
+        <input type="submit" value='{{ 'sharemail.btn.envoyer'|trans }}' class='popin' id="share_mail">
+        {{ form_rest(form) }}
+    {{ form_end(form) }}
+
+    {% if hasErrors %}
+        <div class="errors popin">
+            <ul class="popin">
+                {{ form_errors(form.email) }}
+                {{ form_errors(form.user) }}
+                {{ form_errors(form.message) }}
+                {{ form_errors(form.newsletter) }}
+            </ul>
+        </div>
+    {% endif %}
+    <div class="info-popin popin">
+        <p class="popin">
+            {{ 'sharemail.text.enapplicationdelaloi'|trans|raw }}
+        </p>
+    </div>
+</div>

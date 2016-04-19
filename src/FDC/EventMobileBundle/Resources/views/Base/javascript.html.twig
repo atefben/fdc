@@ -7,6 +7,9 @@
     {% javascripts '@FDCEventMobileBundle/Resources/public/js/app.min.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+    {#% javascripts '@FDCEventMobileBundle/Resources/public/js/dev/*.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %#}
 
     <script>jwplayer.key="{{ jwplayer_key }}";</script>
     <script type="text/javascript">

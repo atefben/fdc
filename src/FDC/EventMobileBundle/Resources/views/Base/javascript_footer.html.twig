@@ -1,11 +1,21 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% block javascripts_footer %}
     {% spaceless %}
+        {% set defaultDate = 'now'|date('Ymd') %}
+        {%- if defaultDate < festival_date.festivalStartsAt|date('Ymd') -%}
+            {%- set defaultDate = festival_date.festivalStartsAt|date('Y-m-d') -%}
+        {%- elseif defaultDate > festival_date.festivalEndsAt|date('Ymd') -%}
+            {%- set defaultDate = festival_date.festivalEndsAt|date('Y-m-d') -%}
+        {% else %}
+            {% set defaultDate = 'now'|date('Y-m-d') %}
+        {%- endif -%}
         <script>
             var GLOBALS = {
                 "env" : "{{ app.environment }}",
                 "locale" : "{{ app.request.locale }}",
-                "defaultDate" : "2016-05-12",
+                "defaultDate" : "{{ defaultDate }}",
+                "dateStart": "{{ festival_date.festivalStartsAt|date('Y-m-d') }}",
+                "dateEnd": "{{ festival_date.festivalEndsAt|date('Y-m-d') }}",
                 "api" : {
                     "instagram" : {
                         "token" : "18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
@@ -22,7 +32,7 @@
                 },
                 "baseUrl" : "{{ url('fdc_event_news_index') }}",
                 "urls" : {
-                    "calendarProgrammationUrl" : "{{ url('fdc_press_global_getdayprojections') }}",
+                    "calendarProgrammationUrl" : "{{ url('fdc_event_agenda_getdayprojections') }}",
                     "eventUrl" : "load-evenements.php",
                     "newsUrl" : "{{ url('fdc_event_news_getarticlesfrom') }}",
                     "loadPressReleaseUrl" : "{{ url('fdc_press_news_listajax') }}",

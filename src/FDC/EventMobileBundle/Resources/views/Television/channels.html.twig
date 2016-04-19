@@ -1,0 +1,50 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventMobileBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="webtv list-channels loading">
+        <div id="live">
+            <div class="banner-img vCenter">
+                <div class="vCenterKid">
+                    <i class="icon-mobile-chaines"></i>
+                    <h2>{{ 'webtv.channel.title.leschaines'|trans }}</h2>
+                </div>
+            </div>
+            {% if page.image  and page.image|trans_fallback('status') %}
+                <div class="img"
+                     style="background-image:url('{% path page.image|trans_fallback('file'), '2560×1103' %}'); background-size: contain;"></div>
+            {% endif %}
+        </div>
+        <div id="gridChannels" class="grid grid-wrapper">
+            <div class="grid-sizer"></div>
+
+            {% for group in channelsVideos %}
+                <div class="item {{ group.channel.publishedAt|date('d-m-Y') }} {{ group.channel.theme }} shadow-bottom playlist">
+                    {% if group.channel.image and group.channel.image|trans_fallback('file') %}
+                        <img src="{% path group.channel.image|trans_fallback('file'), '1280x808' %}"
+                             srcset="{% path group.channel.image|trans_fallback('file'), '1280x808' %} 1x, {% path group.channel.image|trans_fallback('file'), '1280x808' %} 2x"
+                             alt="">
+                    {% elseif group.video.image  and group.video.image|trans_fallback('file') %}
+                        <img src="{% path group.video.image|trans_fallback('file'), '1280x808' %}"
+                             srcset="{% path group.video.image|trans_fallback('file'), '1280x808' %} 1x, {% path group.video.image|trans_fallback('file'), '1280x808' %} 2x"
+                             alt="">
+                    {% elseif group.video|trans_fallback('imageAmazonUrl') %}
+                        <img src="{{ s3_server_video ~ group.video|trans_fallback('imageAmazonUrl') }}"
+                             srcset="{{ s3_server_video ~ group.video|trans_fallback('imageAmazonUrl') }} 1x, {{ s3_server_video ~ group.video|trans_fallback('imageAmazonUrl') }} 2x"
+                             alt="">
+                    {% endif %}
+                    <div class="picto"><i class="icon icon_playlist"></i></div>
+                    <div class="info">
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <a href="{{ path('fdc_event_television_getchannel', {'slug': group.channel|trans_fallback('slug') }) }}"
+                                   class="category" data-category="{{ group.channel|trans_fallback('name') }}">{{ group.channel|trans_fallback('name') }}</a>
+                                <p>{{ 'webtv.direct.nb_videos'|transchoice(group.nbVideos) }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock body %}

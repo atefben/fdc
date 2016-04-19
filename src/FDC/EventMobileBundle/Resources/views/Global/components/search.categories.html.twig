@@ -1,0 +1,54 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+<div id="colSearch">
+    <ul>
+        <li>
+            <a href="#" class="active all">
+                {{ 'search.result.category.tout'|trans }}
+                <span>{{ nbResult }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" data-ajax="searchArtists.html" class="artists ajax">
+                {{ 'search.result.category.artistes'|trans }}
+                <span>{{ searchResult.category.artist|length }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" data-ajax="searchFilms.html" class="films ajax">
+                {{ 'search.result.category.films'|trans }}
+                <span>{{ searchResult.category.film|length }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" data-ajax="searchNews.html" class="news ajax">
+                {{ 'search.result.category.actualites'|trans }}
+                <span>{{ searchResult.category.actualite|length }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" data-ajax="searchCommuniques.html" class="communiques ajax">
+                {{ 'search.result.category.communiques'|trans }}
+                <span>{{ searchResult.category.info|length }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" data-ajax="searchMedias.html" class="medias ajax">
+                {{ 'search.result.category.medias'|trans }}
+                <span>{{ searchResult.category.media|length }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" data-ajax="searchEvents.html" class="events ajax">
+                {{ 'search.result.category.evenements'|trans }}
+                <span>{{ searchResult.category.event|length }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" data-ajax="searchParticipate.html" class="participate ajax">
+                {{ 'search.result.category.participer'|trans }}
+                <span>{{ searchResult.category.participate|length }}</span>
+            </a>
+        </li>
+    </ul>
+</div>

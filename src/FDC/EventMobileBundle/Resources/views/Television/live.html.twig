@@ -55,16 +55,6 @@
                         {{ 'webtv.direct.btn.toutesleschaines'|trans }}
                     </a>
                 </p>
-                <div id="slider-videos" class="owl-carousel sliderDrag">
-                    {% for group in sliderChosenChannels %}
-                        {% if group.channel.image or (group.channelVideos|length and group.channelVideos|first.image) %}
-                            {% set format = '640x404' %}
-                            <div class="vid shadow-bottom">
-                                {{ block('WebTvLiveChannel') }}
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
                 <div id="slider-channels" class="owl-carousel sliderDrag">
                     {% for group in sliderOtherChannels %}
                         {% if group.channel.image or (group.channelVideos|length and group.channelVideos|first.image) %}

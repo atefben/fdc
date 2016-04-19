@@ -1,0 +1,74 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventMobileBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="list-article films-list selection-officielle loading">
+        <div class="bandeau-list">
+            <div class="bandeau-list-img bandeau-head vCenter"
+                 style="background-image:url('{% path page.image|trans_fallback('file'), '2560x1103' %}')">
+                <div class="vCenterKid">
+                    <h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>
+                </div>
+            </div>
+
+            {% include 'FDCEventMobileBundle:Movie:components/filters.html.twig' %}
+        </div>
+        <div class="container container-list ">
+            <section class="categorie-items">
+                <div class="grid">
+                    <div id="gridFilmSelection" class="grid-wrapper">
+                        <div class="grid-sizer"></div>
+
+                        {% for movie in movies %}
+                            <div class="item">
+                                <figure>
+                                    <div class="image">
+                                        <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
+                                            {% include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
+                                                film: movie,
+                                                film_format: 'mobile',
+                                                film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg'
+                                            }) %}
+                                        </a>
+                                    </div>
+                                    <figcaption>
+                                        <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
+                                            {% if movie|trans_fallback('title') != null and movie.titleVo != null and movie|trans_fallback('title')|lower != movie.titleVo|lower %}
+                                                <span class="name">{{ movie.titleVo }}</span>
+                                                <span class="sub-name">({{ movie|trans_fallback('title') }})</span>
+                                            {% else %}
+                                                <span class="name">{{ movie|trans_fallback('title')?:movie.titleVo }}</span>
+                                            {% endif %}
+                                        </a>
+                                        {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                            <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">
+                                                <span class="author">{{ loop.first == false ? ', ': '' }}{{ director.fullName }}</span>
+                                            </a>
+                                        {% endfor %}
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        {% if next %}
+            <div class="bandeau-list  bandeau-list-footer push-footer vCenter">
+                <div class="bandeau-list-img vCenterKid"
+                     style="background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}')">
+                    <h2 class="title title-list-header">{{ next|trans_fallback('overrideName')?:next.selectionSection|trans_fallback('name') }}</h2>
+                    <a href="{{ path('fdc_event_movie_selection', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}" class="bandeau-lien">
+                        {% image '@FDCEventMobileBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
+                        <img src="{{ asset(asset_url) }}" alt="{{ 'selection.btn.decouvrirrubrique'|trans }}"
+                             class="svg-arrow">
+                        {% endimage %}
+                        {{ 'selection.btn.decouvrirrubrique'|trans }}
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock body %}
