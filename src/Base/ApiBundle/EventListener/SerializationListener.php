@@ -35,7 +35,13 @@ class SerializationListener implements EventSubscriberInterface
         global $kernel;
         $imageProvider = $kernel->getContainer()->get('sonata.media.provider.image');
 
-        $event->getVisitor()->addData('url', $imageProvider->generatePublicUrl($event->getObject(), $event->getObject()->getContext().'_mobile'));
+        if ($event->getObject()->getContext() == 'pdf') {
+            $event->getVisitor()->addData('url', $imageProvider->generatePublicUrl($event->getObject(), 'reference'));
+        }
+        else {
+            $event->getVisitor()->addData('url', $imageProvider->generatePublicUrl($event->getObject(), $event->getObject()->getContext().'_mobile'));
+        }
+
     }
 
     public function onPostSerializeNews(ObjectEvent $event)
