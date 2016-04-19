@@ -34,6 +34,12 @@ class FilmFilmAdmin extends SoifAdmin
                         return;
                     }
                     $queryBuilder->where("{$alias}.titleVO LIKE :title");
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->orWhere('(t.locale = :locale AND t.title LIKE :title)');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->join("{$alias}.translations", 't2');
+                    $queryBuilder->orWhere('(t2.locale = :localeEn AND t.title LIKE :title)');
+                    $queryBuilder->setParameter('localeEn', 'en');
                     $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
 
                     return true;
