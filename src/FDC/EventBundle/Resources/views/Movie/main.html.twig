@@ -16,7 +16,22 @@
             <div class="container">
                 <ul>
                     {% if movie.associatedMediaVideos|length > 0 %}
-                        <li><a href="#videos">{{ 'movie.middlenav.videos'|trans }}</a></li>
+                        {% set firstVideo = null %}
+                        {% for video in movie.associatedMediaVideos if firstVideo is null %}
+                            {% set video = video.mediaVideo %}
+                            {% set trans = video.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is not null and trans.jobWebmState == 3 and trans.jobMp4State == 3 %}
+                                {% set firstVideo = video %}
+                            {% else %}
+                                {% set trans = video.findTranslationByLocale('fr') %}
+                                {% if trans is not null and trans.jobWebmState == 3 and trans.jobMp4State == 3 %}
+                                    {% set firstVideo = video %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if firstVideo is not null %}
+                            <li><a href="#videos">{{ 'movie.middlenav.videos'|trans }}</a></li>
+                        {% endif %}
                     {% endif %}
                     {% if movie.getActors()|length > 0 or movie.getCredits()|length > 0 %}
                         <li><a href="#casting">{{ 'movie.middlenav.creditcasting'|trans }}</a></li>
@@ -65,11 +80,11 @@
 			{% endif %}
 			
 			{% if movie.associatedMediaAudios|length > 0 %}
-            <div class="audios" data-section="audios">
-            {% for associatedMediaAudio in movie.associatedMediaAudios %}
-                {% include 'FDCEventBundle:Movie:widgets/audio.html.twig' with { 'mediaAudio': associatedMediaAudio.mediaAudio } %}
-            {% endfor %}
-            </div>
+                <div class="audios" data-section="audios">
+                {% for associatedMediaAudio in movie.associatedMediaAudios %}
+                    {% include 'FDCEventBundle:Movie:widgets/audio.html.twig' with { 'mediaAudio': associatedMediaAudio.mediaAudio } %}
+                {% endfor %}
+                </div>
 			{% endif %}
 
         </div>

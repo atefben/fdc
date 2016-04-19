@@ -3,8 +3,23 @@
 
 {%- set isConferencePress = (event.type == 'Conférence de presse') ? true : false -%}
 {%- set isSeancePress = (event.type == 'Séance de presse') ? true : false -%}
+{%- set isSeanceDuJour = (event.type == 'Séance du jour') ? true : false -%}
+{%- set isSeanceDuLendemain = (event.type == 'Séance du lendemain') ? true : false -%}
+
 {%- set difference = date(event.endsAt).diff(date(event.startsAt)) -%}
 {%- set minutes = difference.i -%}
+
+{% if isConferencePress %}
+    {% set dataColor = '#a68851' %}
+{% elseif isSeancePress %}
+    {% set dataColor = '#000' %}
+{% elseif isSeanceDuJour %}
+    {% set dataColor = '#5b5b5b' %}
+{% elseif isSeanceDuLendemain %}
+    {% set dataColor = '#9b9b9b' %}
+{% else %}
+    {% set dataColor = '#9b9b9b' %}
+{% endif %}
 
 {%- if difference.h > 0 -%}
     {%- set minutes = minutes + (difference.h * 60) -%}
@@ -14,7 +29,7 @@
     {%- set film = event.programmationFilms[0].film -%}
     <div class="fc-event" data-category="{{ film.selectionSection|trans_fallback('slug') }}"{{- ' ' -}}
          data-type="{{ event.type|lower|replace(' ', '-') }}" data-url="{{ path('fdc_event_agenda_getprojection', {id: event.id}) }}"{{- ' ' -}}
-         data-id="{{ event.id }}" data-picto=".pen" data-color="#000"{{- ' ' -}}
+         data-id="{{ event.id }}" data-picto=".pen" data-color="{{ dataColor }}"{{- ' ' -}}
          data-start="{{ event.startsAt|date('Y-m-d') }}T{{ event.startsAt|date('H:i:s') }}"{{- ' ' -}}
          data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"{{- ' ' -}}
          data-time="{{ event.startsAt|date('H') }}" data-duration="{{ minutes }}">
@@ -71,7 +86,7 @@
 {%- elseif event.programmationDynamics|length > 0 -%}
     <div class="fc-event" data-category=""{{- ' ' -}}
          data-type="{{ event.type|lower|replace(' ', '-') }}"{{- ' ' -}}
-         data-id="{{ event.id }}" data-picto=".pen" data-color="#000"{{- ' ' -}}
+         data-id="{{ event.id }}" data-picto=".pen" data-color="{{ dataColor }}"{{- ' ' -}}
          data-start="{{ event.startsAt|date('Y-m-d') }}T{{ event.startsAt|date('H:i:s') }}"{{- ' ' -}}
          data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"{{- ' ' -}}
          data-time="{{ event.startsAt|date('H') }}" data-duration="{{ minutes }}">

@@ -220,7 +220,7 @@ class AgendaController extends Controller
         // remove conference not matching current films
         foreach($relatedProjections as $key => $relatedProjection) {
             foreach ($relatedProjection->getProgrammationFilms() as $programmationFilm) {
-                if (isset($programmationFilm) && !empty($programmationFilm) && !in_array($programmationFilm->getFilm()->getId(), $filmIds)) {
+                if ($programmationFilm->getFilm() == null || !in_array($programmationFilm->getFilm()->getId(), $filmIds)) {
                     unset($relatedProjections[$key]);
                 }
             }

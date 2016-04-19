@@ -1,11 +1,19 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% block javascripts_footer %}
     {% spaceless %}
+        {% set defaultDate = 'now'|date('Ymd') %}
+        {%- if defaultDate < festival_date.festivalStartsAt|date('Ymd') -%}
+            {%- set defaultDate = festival_date.festivalStartsAt|date('Y-m-d') -%}
+        {%- elseif defaultDate > festival_date.festivalEndsAt|date('Ymd') -%}
+            {%- set defaultDate = festival_date.festivalEndsAt|date('Y-m-d') -%}
+        {% else %}
+            {% set defaultDate = 'now'|date('Y-m-d') %}
+        {%- endif -%}
         <script>
             var GLOBALS = {
                 "env" : "{{ app.environment }}",
                 "locale" : "{{ app.request.locale }}",
-                "defaultDate" : "{{ festival_date.festivalStartsAt|date('Y-m-d') }}",
+                "defaultDate" : "{{ defaultDate }}",
                 "dateStart": "{{ festival_date.festivalStartsAt|date('Y-m-d') }}",
                 "dateEnd": "{{ festival_date.festivalEndsAt|date('Y-m-d') }}",
                 "api" : {

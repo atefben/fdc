@@ -7,7 +7,7 @@ var initHeaderSticky = function() {
     scrollTarget = s;
 
     // STICKY HEADER
-    if (s > lastScrollTop){
+    if(s > lastScrollTop) {
       if(($('#prehome-container').length == 0 && s > 30)) {
         $header.addClass('sticky');
         $('body').css('margin-top', '91px');
@@ -17,6 +17,28 @@ var initHeaderSticky = function() {
         $header.removeClass('sticky');
         $('body').css('margin-top', '0');
       }
+    }
+  });
+}
+
+var owInitNavSticky = function(number) {
+
+  if(number == 1) {
+    var $header    = $('.navigation-sticky');
+  }else if(number == 2) {
+    var $header    = $('.navigation-sticky-02');
+  }
+
+  $(window).on('scroll', function() {
+
+
+    var pushHeight = $('.block-push-top').height();
+    var s          = $(this).scrollTop();
+
+    if(s > pushHeight) {
+      $header.addClass('sticky');
+    }else{
+      $header.removeClass('sticky');
     }
   });
 }

@@ -55,6 +55,7 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      *     "projection_show",
      *     "film_selection_section_show",
      *     "news_list",
+     *     "news_show",
      *     "award_list",
      *     "classics",
      *     "orange_studio"
@@ -80,6 +81,7 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      *     "projection_show",
      *     "film_selection_section_show",
      *     "news_list",
+     *     "news_show",
      *     "award_list",
      *     "classics",
      *     "orange_studio"
@@ -99,6 +101,8 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      *     "film_selection_section_show",
      *     "award_list",
      *     "classics",
+     *     "news_list",
+     *     "news_show",
      *     "orange_studio"
      * })
      */
