@@ -3135,7 +3135,15 @@ sub {
   font-size: .59rem;
 }
 
+.italic {
+  font-size: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+
 .dark figcaption {
+  color: #666666;
+}
+.dark .italic {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   color: #666666;
 }
 
@@ -3608,6 +3616,19 @@ body .icon:before {
   max-width: 100%;
   width: 977px;
 }
+.block-01 img {
+  max-width: 100%;
+}
+
+.block-01-m {
+  margin: 40px auto;
+  max-width: 100%;
+  width: 900px;
+  margin-bottom: 20px;
+}
+.block-01-m img {
+  max-width: 100%;
+}
 
 .block-01-s {
   margin: 40px auto;
@@ -3615,11 +3636,17 @@ body .icon:before {
   width: 790px;
   margin-bottom: 20px;
 }
+.block-01-s img {
+  max-width: 100%;
+}
 
 .block-01-xs {
   margin: 0 auto;
   max-width: 100%;
   width: 633px;
+}
+.block-01-xs img {
+  max-width: 100%;
 }
 
 .block-02 {
@@ -7347,5 +7374,5 @@ header #searchContainer {
 }
 
 .edition-69 figure.padding-bottom {
-  padding-bottom: 60px;
+  padding-bottom: 56px;
 }

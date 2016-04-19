@@ -9,17 +9,27 @@
 // =========================
 
 
-.quote.italic{
+.quote.italic {
   font-family: $CamphorItalic;
 }
 
-sub{
+sub {
   vertical-align: super;
   font-size:.59rem;
 }
 
-.dark{
+.italic {
+  font-size: $CamphorItalic;
+}
+
+.dark {
+
   figcaption{
+    color:#666666;
+  }
+
+  .italic {
+    font-family: $CamphorItalic;
     color:#666666;
   }
 }
@@ -35,7 +45,7 @@ sub{
   color:#141414;
 }
 
-.title-2{
+.title-2 {
   font-family: $CamphorHeavy;
   font-weight: 700;
   font-size: 1.875rem;//30 px
@@ -46,7 +56,7 @@ sub{
   color: #fff;
 }
 
-.title-2a{
+.title-2a {
   font-family: $CamphorHeavy;
   font-size: .75rem;//30 px
   letter-spacing: 0.1em;
@@ -55,14 +65,14 @@ sub{
   color: $gold;
 }
 
-.title-3{
+.title-3 {
   font-family: $CamphorBold;
   font-size: .875rem;//14px
   color:$gold;
   text-transform: uppercase;
 }
 
-.title-4{
+.title-4 {
   font-family: $CamphorBold;
   font-size: 1.125rem; //18px
   color:#141414;
@@ -70,7 +80,7 @@ sub{
   line-height: 24px;
 }
 
-.title-4a{
+.title-4a {
   font-family: $CamphorBold;
   font-size: 1.75rem; //28px
   color:#000;
@@ -78,7 +88,7 @@ sub{
   line-height: 36px;
 }
 
-.title-5{
+.title-5 {
   font-family: $CamphorMedium;
   font-style: italic;
   color:$gold;
@@ -86,7 +96,7 @@ sub{
   line-height: 24px;
 }
 
-.title-6{
+.title-6 {
   font-size: .6875rem;//11px
   text-transform: uppercase;
   line-height: 24px;
@@ -94,7 +104,7 @@ sub{
   color:#333333;
 }
 
-.title-7{
+.title-7 {
   font-size: .875rem;//14px
   text-transform: uppercase;
   line-height: 24px;
@@ -102,7 +112,7 @@ sub{
   color:#141414;
 }
 
-.title-8{
+.title-8 {
   font-family: $CamphorBold;
   font-size: .875rem; //14px
   letter-spacing: .5rem; //500
@@ -110,7 +120,7 @@ sub{
   line-height: 18px;
 }
 
-.title-9{
+.title-9 {
   font-family: $CamphorBold;
   font-size: .75rem; //12px
   letter-spacing: .2rem; //200
@@ -123,14 +133,14 @@ sub{
   padding-top: 60px;
 }
 
-.title-10{
+.title-10 {
   font-family: $CamphorBold;
   font-size: 1rem; //16px
   line-height: 24px;
   color:#fff;
 }
 
-.texte-01{
+.texte-01 {
    color: #666666;
    font-size: 1rem;
    line-height: 26px;
