@@ -47,11 +47,13 @@ article is news_image %}
 					{% set imgamazon = s3_server_video ~ article.video|trans_fallback('imageAmazonUrl') %}
                 {% elseif article.video.image is defined and article.video.image is not null %}
                     {% set img = article.video.image %}
-                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                    {% if trans is null or trans.file is null %}
-                        {% set trans = img.findTranslationByLocale('fr') %}
-                {% endif %}
-                    {% set file = trans.file %}
+                    {% if img is not null %}
+                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = img.findTranslationByLocale('fr') %}
+                            {% set file = trans.file %}
+                        {% endif %}
+                    {% endif %}
                 {% endif %}
 				{% if file is defined and file is not null %}
                 {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}

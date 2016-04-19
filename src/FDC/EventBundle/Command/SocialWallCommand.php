@@ -133,7 +133,7 @@ class SocialWallCommand extends ContainerAwareCommand {
                 if (isset($tweet->entities->media[0]->media_url)) {
                     $socialWall->setContent($tweet->entities->media[0]->media_url);
                 } else {
-                    $socialWall->setContent('#');
+                    $socialWall->setContent(NULL);
                 }
                 $socialWall->setUrl('https://twitter.com/' . $tweet->user->screen_name . '/status/' . $tweet->id);
                 $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER'));
@@ -180,11 +180,10 @@ class SocialWallCommand extends ContainerAwareCommand {
             $tag = trim($tag);
 
             while (true) {
-
                 if ($maxIdInstagram == null) {
                     $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100');
                 } else {
-                    $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100&min_tag_id=' . $maxIdInstagram);
+                    $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100&next_min_tag_id=' . $maxIdInstagram);
                 }
 
                 $instagramResults = json_decode($instagramResponse);

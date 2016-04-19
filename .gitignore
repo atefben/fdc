@@ -53,7 +53,9 @@ _html/js/bower_components/owl.carousel/node_modules/
 
 node_modules/
 _html_mobile/node_modules
+_html_mobile/.tmp
 _html_lot3/node_modules
+_html_lot3/bower_components
 _html_mobile/dist/
 
 #OS junk files

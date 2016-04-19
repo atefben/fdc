@@ -1,0 +1,344 @@
+{%- spaceless -%}
+{%- trans_default_domain 'FDCEventBundle' -%}
+
+<div class="popin-event">
+    <div class="films">
+        {%- if projection.programmationFilms|length > 0 -%}
+            {%- for programmationFilm in projection.programmationFilms -%}
+                {%- set film = programmationFilm.film -%}
+                <div class="film">
+                    {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                        film: film,
+                        film_attrs: {
+                            alt: film|trans_fallback('title')?:film.titleVO,
+                        },
+                        film_image_default: 'bundles/fdcevent/img/palmares/film420x560.jpg',
+                        film_image_default_attrs: ''
+                    }) -%}
+                    <div class="content">
+                        <div class="categories">
+                            <span>{{ film.selectionSection|trans_fallback('name') }}{%- if film.selectionSubsection -%}{{ film.selectionSubsection|trans_fallback('name') }}{%- endif -%}</span>
+                            {%- if 'Ouverture' in film.galaName -%}
+                                <span>{{ 'movie.fdc_open'|trans }}</span>
+                            {%- elseif 'Fermeture' in film.galaName or 'Clôture' in film.galaName -%}
+                                <span>{{ 'movie.fdc_close'|trans }}</span>
+                            {%- endif -%}
+                            {%- if film.directorFirst -%}
+                                <span>{{ 'movie.first_film'|trans }}</span>
+                            {%- endif -%}
+                        </div>
+                        {%- set secondTitle = null -%}
+                        {%- if film|trans_fallback('title') is not empty -%}
+                            {%- set mainTitle = film.titleVO -%}
+                            {%- set secondTitle = film|trans_fallback('title') -%}
+                        {%- else -%}
+                            {%- set mainTitle = film.titleVO -%}
+                        {%- endif -%}
+                        <h2>{{ mainTitle }}</h2>
+                        {%- if secondTitle and mainTitle != secondTitle -%}
+                            <div class="title-original">({{ secondTitle }})</div>
+                        {%- else -%}
+                            <div class="title-original"></div>
+                        {%- endif -%}
+                        <p>
+                            {{- 'movie.label.realisepar'|trans }} :
+                            {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                            {%- for director in directors -%}
+                                {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} -%}
+                                {%- if loop.index != directors|length -%}, {%- endif -%}
+                            {%- endfor -%}
+                        </p>
+                        <p>
+                            {%- if film.productionYear is not null and film.productionYear != 0 -%}
+                                {{ 'movie.label.anneedeproduction'|trans }} : <span>{{ film.productionYear }}</span>
+                            {%- endif -%}
+                            {%- if film.countries|length > 0 -%}
+                                {{ 'movie.label.pays'|trans }} :
+                                {%- for country in film.countries -%}
+                                    <span>{{ country.country|trans_fallback('name')|replace({' ': ""}) }}</span>
+                                {%- endfor -%}
+                            {%- endif -%}
+                            {%- if film.duration is not null and film.duration > 0 -%}
+                                {%- set duration = film.duration|split('.') -%}
+                                {{ 'movie.label.duree'|trans }} :
+                                {%- if duration|length >= 1 -%}
+                                    <span>{{ duration[0] }} {{ 'movie.duration.minutes'|trans }}</span>
+                                {%- endif -%}
+                            {%- endif -%}
+                        </p>
+                        <a href="{{ path('fdc_event_movie_get', {slug: film.slug}) }}" class="button">
+                            {{ 'movie.see_movie_page'|trans }}
+                        </a>
+                    </div>
+                </div>
+            {%- endfor -%}
+        {%- endif -%}
+    </div>
+    <div class="events-container">
+        {%- if seances|length > 0 -%}
+            <h2>Séances de presse</h2>
+            <div class="events-wrapper">
+                {%- for seance in seances -%}
+
+                    {%- set isConferencePress = (seance.type == 'Conférence de presse') ? true : false -%}
+                    {%- set isSeancePress = (seance.type == 'Séance de presse') ? true : false -%}
+                    {%- set isSeanceDuJour = (seance.type == 'Séance du jour') ? true : false -%}
+                    {%- set isSeanceDuLendemain = (seance.type == 'Séance du lendemain') ? true : false -%}
+
+                    {% if isConferencePress %}
+                        {% set dataColor = '#a68851' %}
+                    {% elseif isSeancePress %}
+                        {% set dataColor = '#000' %}
+                    {% elseif isSeanceDuJour %}
+                        {% set dataColor = '#5b5b5b' %}
+                    {% elseif isSeanceDuLendemain %}
+                        {% set dataColor = '#9b9b9b' %}
+                    {% else %}
+                        {% set dataColor = '#9b9b9b' %}
+                    {% endif %}
+
+                    {%- if seance.programmationFilms|length > 0 -%}
+                        {%- set film = seance.programmationFilms[0].film -%}
+                        {%- set difference = date(seance.endsAt).diff(date(seance.startsAt)) -%}
+                        {%- set minutes = difference.i -%}
+                        <div class="event">
+                            <p class="date">
+                                {{ seance.startsAt|localizeddate('full', 'none') }} -
+                                <span>{{ seance.startsAt|date('H:i') }}</span>
+                            </p>
+                            <div class="fc-event" data-url="{{ path('fdc_event_agenda_getprojection', {id: seance.id}) }}"
+                                 data-id="{{ seance.id }}" data-picto='.seance' data-color='{{ dataColor }}'
+                                 data-start="{{ seance.startsAt|date('Y-m-d') }}T{{ seance.startsAt|date('H:i:s') }}"
+                                 data-end="{{ seance.endsAt|date('Y-m-d') }}T{{ seance.endsAt|date('H:i:s') }}"
+                                 data-time="{{ seance.startsAt|date('H') }}" data-duration="{{ minutes }}"
+                            >
+                                <span class="category">
+                                    <i class="icon icon_evt-seance-presse"></i>
+                                    {{ seance.type }}
+                                </span>
+                                <div class="info">
+                                    {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                        film: film,
+                                        film_format: '90x120',
+                                        film_attrs: {
+                                            alt: film|trans_fallback('title')?:film.titleVO,
+                                            width: 45,
+                                            height: 60
+                                        },
+                                        film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
+                                        film_image_default_attrs: 'width="45"'
+                                    }) -%}
+                                    {%- if seance.programmationFilms|length == 1 -%}
+                                        <div class="txt">
+                                            <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
+                                            {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                                            <strong>
+                                                {%- for director in directors -%}
+                                                    {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}
+                                                    {%- if loop.index != directors|length -%}, {%- endif -%}
+                                                {%- endfor -%}
+                                            </strong>
+                                        </div>
+                                    {%- else -%}
+                                        <span> {{ seance.programmationSection }}</span>
+                                    {%- endif -%}
+                                </div>
+                                <div class="bottom">
+                                    <span class="duration">
+                                        {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
+                                        {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
+                                    </span> -
+                                    <span class="ven">
+                                        {%- if seance.room -%}{{ seance.room.name }}{%- endif -%}
+                                    </span>
+                                    <span class="competition">
+                                        {{ film.selectionSection|trans_fallback('name') }}
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="#" class="button add">Ajouter</a>
+                        </div>
+                    {%- endif -%}
+                {%- endfor -%}
+            </div>
+        {%- endif -%}
+
+        {%- if conferences|length > 0 -%}
+            <h2>Conférences de presse</h2>
+            <div class="events-wrapper">
+                {%- for conference in conferences -%}
+
+                    {%- set isConferencePress = (conference.type == 'Conférence de presse') ? true : false -%}
+                    {%- set isSeancePress = (conference.type == 'Séance de presse') ? true : false -%}
+                    {%- set isSeanceDuJour = (conference.type == 'Séance du jour') ? true : false -%}
+                    {%- set isSeanceDuLendemain = (conference.type == 'Séance du lendemain') ? true : false -%}
+
+                    {% if isConferencePress %}
+                        {% set dataColor = '#a68851' %}
+                    {% elseif isSeancePress %}
+                        {% set dataColor = '#000' %}
+                    {% elseif isSeanceDuJour %}
+                        {% set dataColor = '#5b5b5b' %}
+                    {% elseif isSeanceDuLendemain %}
+                        {% set dataColor = '#9b9b9b' %}
+                    {% else %}
+                        {% set dataColor = '#9b9b9b' %}
+                    {% endif %}
+
+                    {%- if conference.programmationFilms|length > 0 -%}
+                        {%- set film = conference.programmationFilms[0].film -%}
+                        {%- set difference = date(conference.endsAt).diff(date(conference.startsAt)) -%}
+                        {%- set minutes = difference.i -%}
+                        <div class="event">
+                            <p class="date">
+                                {{ conference.startsAt|localizeddate('full', 'none') }} -
+                                <span>{{ conference.startsAt|date('H:i') }}</span>
+                            </p>
+                            <div class="fc-event" data-url="{{ path('fdc_event_agenda_getprojection', {id: conference.id}) }}"
+                                 data-id="{{ conference.id }}" data-picto='.seance' data-color='{{ dataColor }}'
+                                 ddata-start="{{ conference.startsAt|date('Y-m-d') }}T{{ conference.startsAt|date('H:i:s') }}"
+                                 data-end="{{ conference.endsAt|date('Y-m-d') }}T{{ conference.endsAt|date('H:i:s') }}"
+                                 data-time="{{ conference.startsAt|date('H') }}" data-duration="{{ minutes }}"
+                            >
+                                    <span class="category">
+                                        <i class="icon icon_evt-seance-conference"></i>
+                                        {{ conference.type }}
+                                    </span>
+                                <div class="info">
+                                    {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                    film: film,
+                                    film_format: '90x120',
+                                    film_attrs: {
+                                        alt: film|trans_fallback('title')?:film.titleVO,
+                                        width: 45,
+                                        height: 60
+                                    },
+                                    film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
+                                    film_image_default_attrs: 'width="45"'
+                                    }) -%}
+                                    {%- if conference.programmationFilms|length == 1 -%}
+                                        <div class="txt">
+                                            <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
+                                            {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                                            <strong>
+                                                {%- for director in directors -%}
+                                                    {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}
+                                                    {%- if loop.index != directors|length -%}, {%- endif -%}
+                                                {%- endfor -%}
+                                            </strong>
+                                        </div>
+                                    {%- else -%}
+                                        <span> {{ conference.programmationSection }}</span>
+                                    {%- endif -%}
+                                </div>
+                                <div class="bottom">
+                                    <span class="duration">
+                                        {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
+                                        {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
+                                    </span> -
+                                    <span class="ven">
+                                        {%- if conference.room -%}{{ conference.room.name }}{%- endif -%}
+                                    </span>
+                                    <span class="competition">
+                                        {{ film.selectionSection|trans_fallback('name') }}
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="#" class="button add">Ajouter</a>
+                        </div>
+                    {%- endif -%}
+                {%- endfor -%}
+            </div>
+        {%- endif -%}
+
+        {%- if relatedProjections|length > 0 -%}
+            <h2>Projections</h2>
+            <div class="events-wrapper">
+                {%- for relatedProjection in relatedProjections -%}
+
+                    {%- set isConferencePress = (relatedProjection.type == 'Conférence de presse') ? true : false -%}
+                    {%- set isSeancePress = (relatedProjection.type == 'Séance de presse') ? true : false -%}
+                    {%- set isSeanceDuJour = (relatedProjection.type == 'Séance du jour') ? true : false -%}
+                    {%- set isSeanceDuLendemain = (relatedProjection.type == 'Séance du lendemain') ? true : false -%}
+
+                    {% if isConferencePress %}
+                        {% set dataColor = '#a68851' %}
+                    {% elseif isSeancePress %}
+                        {% set dataColor = '#000' %}
+                    {% elseif isSeanceDuJour %}
+                        {% set dataColor = '#5b5b5b' %}
+                    {% elseif isSeanceDuLendemain %}
+                        {% set dataColor = '#9b9b9b' %}
+                    {% else %}
+                        {% set dataColor = '#9b9b9b' %}
+                    {% endif %}
+
+                    {%- if relatedProjection.programmationFilms|length > 0 -%}
+                        {%- set film = relatedProjection.programmationFilms[0].film -%}
+                        {%- set difference = date(relatedProjection.endsAt).diff(date(relatedProjection.startsAt)) -%}
+                        {%- set minutes = difference.i -%}
+                        <div class="event">
+                            <p class="date">
+                                {{ relatedProjection.startsAt|localizeddate('full', 'none') }} -
+                                <span>{{ relatedProjection.startsAt|date('H:i') }}</span>
+                            </p>
+                            <div class="fc-event" data-url="{{ path('fdc_event_agenda_getprojection', {id: relatedProjection.id}) }}"
+                                 data-id="{{ relatedProjection.id }}" data-picto='.seance' data-color='{{ dataColor }}'
+                                 data-start="{{ relatedProjection.startsAt|date('Y-m-d') }}T{{ relatedProjection.startsAt|date('H:i:s') }}"
+                                 data-end="{{ relatedProjection.endsAt|date('Y-m-d') }}T{{ relatedProjection.endsAt|date('H:i:s') }}"
+                                 data-time="{{ relatedProjection.startsAt|date('H') }}" data-duration="{{ minutes }}"
+                                    >
+                                    <span class="category">
+                                        <i class="icon icon_evt-seance"></i>
+                                        {{ relatedProjection.type }}
+                                    </span>
+                                <div class="info">
+                                    {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                    film: film,
+                                    film_format: '90x120',
+                                    film_attrs: {
+                                        alt: film|trans_fallback('title')?:film.titleVO,
+                                        width: 45,
+                                        height: 60
+                                    },
+                                    film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
+                                    film_image_default_attrs: 'width="45"'
+                                    }) -%}
+                                    {%- if relatedProjection.programmationFilms|length == 1 -%}
+                                        <div class="txt">
+                                            <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
+                                            {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                                            <strong>
+                                                {%- for director in directors -%}
+                                                    {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}
+                                                    {%- if loop.index != directors|length -%}, {%- endif -%}
+                                                {%- endfor -%}
+                                            </strong>
+                                        </div>
+                                    {%- else -%}
+                                        <span> {{ relatedProjection.programmationSection }}</span>
+                                    {%- endif -%}
+                                </div>
+                                <div class="bottom">
+                                    <span class="duration">
+                                        {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
+                                        {{ difference.i }}
+                                    </span> - {{- ' ' -}}
+                                    <span class="ven">
+                                        {%- if relatedProjection.room -%}{{ relatedProjection.room.name }}{%- endif -%}
+                                    </span>
+                                    <span class="competition">
+                                        {{ film.selectionSection|trans_fallback('name') }}
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="#" class="button add">Ajouter</a>
+                        </div>
+                    {%- endif -%}
+                {%- endfor -%}
+            </div>
+        {%- endif -%}
+    </div>
+    <div class="close-button"><i class="icon icon_close"></i></div>
+</div>
+{%- endspaceless -%}

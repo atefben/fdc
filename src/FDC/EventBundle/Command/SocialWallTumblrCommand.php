@@ -101,7 +101,7 @@ class SocialWallTumblrCommand extends ContainerAwareCommand
                 if(isset($tumblrPost->photos[0]->original_size->url)) {
                     $socialWall->setContent($tumblrPost->photos[0]->original_size->url);
                 } else {
-                    $socialWall->setContent('#');
+                    $socialWall->setContent(NULL);
                 }
                 $socialWall->setUrl($tumblrPost->post_url);
                 $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TUMBLR'));

@@ -1,0 +1,137 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+<div class="main-image">
+    <div class="img" style="background-image: url('{% spaceless %}
+        {% include 'FDCEventMobileBundle:Global:components/film.cover.html.twig' with ({
+            film: movie,
+            film_format: '2560x1103',
+            display_film_path: true,
+            film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
+        }) %}
+    {% endspaceless %}
+    ')"></div>
+    <div class="links">
+        <div class="container">
+            <a class="movies" href="{{ path('fdc_event_movie_selection') }}"><i class="icon icon_flecheGauche"></i>{{ 'movie.nav.btn.touslesfilms'|trans }}</a>
+            <a class="programmation" href="{{ path('fdc_event_agenda_scheduling') }}"><i class="icon icon_programmation"></i>{{ 'movie.nav.btn.voirlaprogrammation'|trans }}</a>
+        </div>
+    </div>
+    <div class="trailer">
+        {% if movie.videoMain is not null %}
+        <div class="video-container state-init video"
+             data-file='[{"file":"{{ s3_server_video ~ movie.videoMain|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ movie.videoMain|trans_fallback('mp4Url') }}"}]'
+             data-vid="{{ movie.videoMain.id }}"
+             data-img="{% spaceless %}{% include 'FDCEventMobileBundle:Global:components/film.cover.html.twig' with ({
+                 film: movie,
+                 film_format: '2560x1103',
+                 display_film_path: true,
+                 film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
+             }) %}{% endspaceless %}"
+        >
+            <div id="video-movie-trailer" class="video-player"></div>
+            <div class="video-overlay"></div>
+            <div class="infos-bar">
+                <div class="picto"><i class="icon icon_video"></i></div>
+                <div class="info">
+                    <div class="vCenter">
+                        <div class="vCenterKid">
+                            <a href="#" class="category"></a><span class="date"></span><span class="hour"></span>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<div class="container container-top">
+    {% set hasVideo = false %}
+    {% if movie.videoMain is not null %}
+        {% set hasVideo = true %}
+    {% endif %}
+
+        <div class="poster video">	
+            {% if hasVideo == true %}
+                <a href="#" class="picto"><i class="icon icon_video"></i></a>
+            {% endif %}
+            {% include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
+                film: movie,
+                film_format: '588x784',
+                film_attrs: {
+                    alt: movie|trans_fallback('title')?:movie.titleVO,
+                    'data-object-fit': 'cover'
+                },
+                film_image_default: 'bundles/fdcevent/img/palmares/film_w293.jpg',
+            }) %}
+        </div>
+    <div class="info-film">
+        <div class="categories">
+            <span>{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}</span>
+            {% if movie.directorFirst %}
+                <span>{{ 'movie.director_first'|trans }}</span>
+            {% endif %}
+            {% if 'Ouverture' in movie.galaName %}
+                <span>{{ 'movie.fdc_open'|trans }}</span>
+            {% elseif 'Fermeture' in movie.galaName or 'Clôture' in movie.galaName %}
+                <span>{{ 'movie.fdc_close'|trans }}</span>
+            {% endif %}
+        </div>
+        {% set secondTitle = null %}
+        {% if movie|trans_fallback('title') is not empty %}
+            {% set mainTitle = movie.titleVO %}
+			{% set secondTitle = movie|trans_fallback('title') %}
+        {% else %}
+            {% set mainTitle = movie.titleVO %}
+        {% endif %}
+        <h2>{{ mainTitle }}</h2>
+        {% if secondTitle and mainTitle != secondTitle %}
+            <div class="title-original">({{ secondTitle }})</div>
+        {% else %}
+            <div class="title-original"></div>
+        {% endif %}
+        <p>
+            {{ 'movie.label.realisepar'|trans }} :
+            {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+            {% for director in directors %}
+                {% include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
+                {% if loop.index != directors|length %}, {% endif %}
+            {% endfor %}
+        </p>
+        <p class="information-movie">
+            {% if movie.productionYear is not null and movie.productionYear != 0 %}
+                {{ 'movie.label.anneedeproduction'|trans }} : <span>{{ movie.productionYear }}</span>
+            {% endif %}
+            {% if movie.countries|length > 0 %}
+                {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{% if loop.index != movie.countries|length %}<span id="TetiereMovieCountry">{{ country.country|trans_fallback('name')|replace({' ': ""}) }}, </span>{% else %}<span>{{ country.country|trans_fallback('name')|replace({' ': ""}) }}</span>{% endif %}
+            {% endfor %}
+            {% endif  %}
+            {% if movie.duration is not null and movie.duration > 0 %}
+                {% set duration = movie.duration|split('.') %}
+                {{ 'movie.label.duree'|trans }} : {% if duration|length >= 1 %}<span>{{ duration[0] }} {{ 'movie.duration.minutes'|trans }}</span>{% endif %}
+            {% endif %}
+            {%  if movie.publishedAt is not null %}
+                {{ 'movie.label.datedesortie'|trans }} : <span>{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</span>
+            {% endif %}
+        </p>
+    </div>
+	{% if movie.awards|length > 0 %}
+    <div class="palmares">
+        {% set awardsUnique = [] %}
+        {% for movieAward in movie.awards %}
+            {% if movieAward.award and movieAward.award.prize %}
+                {% if movieAward.award.id not in awardsUnique %}
+                    {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
+                    <div class="palmares-item"><i class="icon icon_palme"></i><p>{{ movieAward.award.prize|trans_fallback('title') }}, {{  movieAward.award.festival.year }}</p></div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+	{% endif %}
+    <div class="info-film">
+        <div  class="synopsis">
+            <h3 class="title-section">{{ 'movie.title.synopsis'|trans }}</h3>
+            <p>{{ movie|trans_fallback('synopsis')|nl2br|raw }}</p>
+        </div>
+    </div>
+</div>

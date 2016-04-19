@@ -214,11 +214,21 @@ function lockEvents()
         var url = $(this).attr('href').split('/');
         var id = url[url.length - 2];
         var entity = url[url.length - 3];
-        var locale = getQueryParams($(this).attr('href').split('?')[1], 'locale');
-        var isLocked = ($(this).hasClass('fdc-is-locked'));
         var redirect = $(this).attr('href');
+        var target = false;
 
-        hasLockList(entity, id, locale, isLocked, redirect);
+        if ($(this).attr('href').split('?').length >= 2) {
+            var locale = getQueryParams($(this).attr('href').split('?')[1], 'locale');
+        } else {
+            var locale = 'fr';
+        }
+
+        var isLocked = ($(this).hasClass('fdc-is-locked'));
+        if ($(this).attr('data-target') && $(this).attr('data-target') == '_blank') {
+            var target = '_blank';
+        }
+
+        hasLockList(entity, id, locale, isLocked, redirect, target);
     });
 
     // verify locks on submit
@@ -271,11 +281,13 @@ function lockEvents()
 function getQueryParams(url, param) {
     var found = '';
 
-    url.split("&").forEach(function(item) {
-        if (param ==  item.split("=")[0]) {
-            found = item.split("=")[1];
-        }
-    });
+    if (url.split("&") !== 'undefined') {
+        url.split("&").forEach(function (item) {
+            if (param == item.split("=")[0]) {
+                found = item.split("=")[1];
+            }
+        });
+    }
 
     return found;
 };
@@ -343,8 +355,10 @@ function hasLockEntity(entity, id, locale, button)
     });
 }
 
-function hasLockList(entity, id, locale, isLocked, redirect)
+function hasLockList(entity, id, locale, isLocked, redirect, target)
 {
+    target = typeof target !== 'undefined' ? target : false;
+
     var request = $.ajax({
         url: Routing.generate('base_admin_lock_check', { id: id }),
         dataType: 'json',
@@ -357,31 +371,46 @@ function hasLockList(entity, id, locale, isLocked, redirect)
 
     request.success(function (xhr) {
         if (isLocked != xhr.locked) {
-            var html = "Entre temps, un nouvel utilisateur a édité cet article.<br/>\
+            if (target === false) {
+                var html = "Entre temps, un nouvel utilisateur a édité cet article.<br/>\
                 <br/>\
-                Rafraichissez la page pour voir le nouveau statut des articles.\
-            ";
-            $('#fdc-dialog-text').html(html);
-            $('#fdc-dialog').dialog({
-                width: 400,
-                modal: true,
-                title: 'Modifications en cours',
-                autoOpen: true,
-                buttons: {
+                Rafraichissez la page pour voir le nouveau statut des articles.";
+                var buttons = {
                     'Recharger la page': function() {
                         window.location.reload(true);
                     },
                     'Annuler': function() {
                         $(this).dialog('close');
                     }
-                }
+                };
+            } else {
+                var html = "Cet élément est en cours d'édition par " + xhr.lockedBy + ".<br/>\
+                <br/>";
+                var buttons = {
+                    'Fermer': function() {
+                        $(this).dialog('close');
+                    }
+                };
+            }
+
+            $('#fdc-dialog-text').html(html);
+            $('#fdc-dialog').dialog({
+                width: 400,
+                modal: true,
+                title: 'Modifications en cours',
+                autoOpen: true,
+                buttons: buttons
             });
 
             $('.fdc-dialog-button.close').click(function() {
 
             });
         } else {
-            window.location.href = redirect;
+            if (target === false) {
+                window.location.href = redirect;
+            } else {
+                window.open(redirect, target);
+            }
         }
     });
 

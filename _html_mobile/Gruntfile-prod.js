@@ -166,8 +166,6 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build:js', [
-    'tags:app',
-    'tags:vendor',
     'useminPrepare',
     'concat:generated',
     'uglify:generated',
