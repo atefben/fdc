@@ -981,7 +981,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @return string
      */
     public function getFeedItemDescription(){
-        return array('description' => 'description');
+        return null;
     }
 
     /**
@@ -992,7 +992,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @return string
      */
     public function getFeedItemRouteName(){
-        return 'fdc_event_news_getaudios';
+        return 'fdc_event_news_get';
     }
 
     /**
@@ -1003,7 +1003,21 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @return array
      */
     public function getFeedItemRouteParameters(){
-        return null;
+
+        $format = 'articles';
+        if($this->getNewsType() == 'NewsArticle') {
+            $format = 'articles';
+        } elseif ($this->getNewsType() == 'NewsAudio') {
+            $format = 'audios';
+        } elseif ($this->getNewsType() == 'NewsImage') {
+            $format = 'videos';
+        } elseif ($this->getNewsType() == 'NewsVideo') {
+            $format = 'videos';
+        }
+        return array(
+            'format' => $format,
+            'slug' => $this->findTranslationByLocale('fr')->getSlug(),
+        );
     }
 
     /**
@@ -1014,7 +1028,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @return string The anchor, without the "#"
      */
     public function getFeedItemUrlAnchor() {
-        return 'aid='.$this->id;
+        return null;
     }
 
     /**

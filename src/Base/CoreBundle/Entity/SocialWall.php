@@ -65,7 +65,7 @@ class SocialWall implements SocialWallInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      * @Groups({"social_wall_list"})
      */
     protected $content;

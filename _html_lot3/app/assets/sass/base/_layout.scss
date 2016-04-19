@@ -198,6 +198,19 @@ body .icon{
   width: 977px;
 }
 
+.block-01-s{
+  margin: 40px auto;
+  max-width: 100%;
+  width: 790px;
+  margin-bottom: 20px;
+}
+
+.block-01-xs{
+  margin: 0 auto;
+  max-width: 100%;
+  width: 633px;
+}
+
 .block-02{
   background-color: #f6f6f6;
   width: 100%;
@@ -344,14 +357,12 @@ body .icon{
   display:block;
   position:relative;
 
-  .txts {
-    text-align:center;
+  .vFlexAlign{
+    height: calc( 100% - 42px );
   }
 
-  .title-4 {
-    font-size: .75rem;
-    color:#fff;
-    display:block;
+  .txts {
+    text-align:center;
   }
 
   .title-2 {
@@ -359,7 +370,22 @@ body .icon{
     font-family: $CamphorHeavy;
     color:#fff;
     display:block;
-    letter-spacing: 10px;
+    letter-spacing: .1rem;
+  }
+
+  .title-3 {
+    font-size: 1.75rem;
+    font-family: $CamphorHeavy;
+    color:#fff;
+    display:block;
+    letter-spacing: .5rem;
+  }
+
+  .title-4 {
+    font-size: .75rem;
+    color:#fff;
+    display:block;
+    letter-spacing: .1rem;
   }
 
   .date-back, .date-next{
@@ -524,11 +550,11 @@ body .icon{
   }
 
   .icon-palme {
-    padding-top: 20px;
-    font-size: 3rem;
+    padding-top: 22px;
+    font-size: 2.5rem;
     color: $gold;
     max-height: 39px;
-    margin-bottom:8px;
+    margin-bottom:10px;
   }
 }
 
@@ -546,6 +572,11 @@ body .icon{
 
     &:hover {
       background-color:rgba(0, 0, 0, .7);
+
+      .infos p, figcaption{
+        color:#fff;
+        transition: .5s;
+      }
     }
   }
 
@@ -553,6 +584,22 @@ body .icon{
     width: 708px;
     display:flex;
     margin: 0 auto;
+  }
+
+  .wrapper-item-big {
+    width: 989px;
+    display:flex;
+    margin: 0 auto;
+
+    .description {
+      width: auto;
+    }
+  }
+
+  figcaption {
+    font-size:.75rem;
+    font-family: $CamphorMedium;
+    color: #666666;
   }
 
   .poster {
@@ -565,9 +612,19 @@ body .icon{
     align-items: center;
     justify-content: center;
     margin-left: 80px;
+    width: 100%;
   }
 
-  .description{
+  .big-date {
+    color: $gold;
+    font-size: 1.125rem;
+    font-family: $CamphorBold;
+    line-height: 24px;
+    letter-spacing: .2rem;
+    margin-bottom: 38px;
+  }
+
+  .description {
     color:#666666;
     font-family: $CamphorItalic;
     font-size : 1rem;
@@ -577,19 +634,64 @@ body .icon{
     margin-bottom: 40px;
   }
 
-  .name-f{
+  .name-f {
     color:#fff;
     font-size: .875rem;//14px
     text-transform: uppercase;
     line-height: 18px;
     font-family: $CamphorBold;
+    width: 183px;
+    text-align: center;
   }
 
-  .names-a{
+  .name-fb {
+    color:#fff;
+    font-size: .625rem;//10px
+    text-transform: uppercase;
+    line-height: 18px;
+    font-family: $CamphorBold;
+    width: 183px;
+    text-align: center;
+  }
+
+  .names-a {
     color:$gold;
     font-size: .8125rem;
     line-height: 18px;
     font-family: $CamphorItalic;
+  }
+
+  .name-award {
+    color:#fff;
+    font-size:1.125rem;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    font-family: $CamphorBold;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  .portrait{
+    max-width: 52px;
+    max-height: 70px;
+    margin-bottom: 8px;
+  }
+
+  .line:after{
+    content:'';
+    height: 20px;
+    width: 1px;
+    background-color: #434343;
+    display:block;
+    margin: 10px auto;
+  }
+
+  .icon-palme{
+    color: #fff;
+    font-size: 2.5rem;
+    max-height: 40px;
+    margin-bottom: 10px;
+    margin-top: -9px;
   }
 }
 

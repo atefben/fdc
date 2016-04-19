@@ -13,6 +13,17 @@
   font-family: $CamphorItalic;
 }
 
+sub{
+  vertical-align: super;
+  font-size:.59rem;
+}
+
+.dark{
+  figcaption{
+    color:#666666;
+  }
+}
+
 .title {
   font-family: $CamphorRegular;
   font-weight: 700;
@@ -112,6 +123,26 @@
   padding-top: 60px;
 }
 
+.title-10{
+  font-family: $CamphorBold;
+  font-size: 1rem; //16px
+  line-height: 24px;
+  color:#fff;
+}
+
+.texte-01{
+   color: #666666;
+   font-size: 1rem;
+   line-height: 26px;
+   font-size: $CamphorRegular;
+   margin-top: 32px;
+   margin-bottom: 66px;
+
+   a, strong, span{
+     color:$gold;
+   }
+}
+
 .subtitle {
   font-family: $Playfair;
   font-style: italic;
@@ -149,6 +180,20 @@
     font-family: $CamphorRegular;
     text-transform: uppercase;
     letter-spacing: .5rem;
+  }
+
+  .title-02 {
+    font-size: 1.125rem;
+    font-family: $CamphorBold;
+    color: #fff;
+    display:block;
+    letter-spacing: .1rem;
+    text-align: center;
+    line-height: 36px;
+
+    strong{
+      color:$gold;
+    }
   }
 }
 
@@ -214,6 +259,12 @@ a {
   font-size: 0;
   text-align: center;
 
+  .icon{
+    margin-right: 12px;
+    font-size: .85rem;
+    vertical-align: sub;
+  }
+
   &.square .button {
     height: 73px;
     // line-height: 73px;
@@ -224,6 +275,24 @@ a {
 
     &:hover {
       border-color: #dfdfdf;
+    }
+  }
+}
+
+.buttons-01 {
+  margin-bottom: 94px;
+
+  .button {
+    border-color:#292929;
+    color:$gold;
+
+    &:hover {
+      border-color:$gold;
+      background-color: rgba(255, 255, 255, 0);
+    }
+
+    &:hover + a {
+      border-left-color: $gold;
     }
   }
 }
