@@ -9932,7 +9932,7 @@ header #searchContainer {
   position: absolute;
   min-width: 100%;
   min-height: 100%;
-  width: 100%;
+  width: auto;
   height: auto;
   -moz-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -10564,7 +10564,7 @@ article .read-later.rAlign span:after {
 }
 .single-article .half-photo img {
   display: block;
-  max-width: 100%;
+  max-width: 330px;
 }
 .single-article .half-photo .caption {
   color: #666;
