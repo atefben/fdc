@@ -26,4 +26,8 @@ $(document).ready(function() {
     owInitSlider('slider-02');
   }
 
+  if($('.retrospective.poster').length){
+    owInitNavSticky();
+  }
+
 });

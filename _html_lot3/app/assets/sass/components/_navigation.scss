@@ -39,4 +39,10 @@
        }
      }
   }
+
+  &.sticky{
+    position:fixed;
+    top: 91px;
+    width: 100%;
+  }
 }
