@@ -107,18 +107,20 @@ $(document).ready(function() {
     first.parents('.slideshow').find('.title-video').html(first.find('.category').html());
     first.parents('.slideshow').find('.caption').html(first.find('.titleLink').html());
 
-    var playerInstance = jwplayer("player");
-    playerInstance.setup({
-      file: first.data('video'),
-      image: first.data('poster'),
-      width: "100%",
-      aspectratio: "16:9",
-      displaytitle: false,
-      mediaid: '123456',
-      skin: {
-        name: "five"
-      }
-    });
+    if($("#player").length !== 0) {
+      var playerInstance = jwplayer("player");
+      playerInstance.setup({
+        file: first.data('video'),
+        image: first.data('poster'),
+        width: "100%",
+        aspectratio: "16:9",
+        displaytitle: false,
+        mediaid: '123456',
+        skin: {
+          name: "five"
+        }
+      });
+    }
 
     var sliderThumb = $(".thumbnails").owlCarousel({ 
       nav          : false,

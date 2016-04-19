@@ -7,18 +7,20 @@ $(document).ready(function() {
       $('body').addClass('allow-landscape');
     }, 200);
     
-    var playerInstance = jwplayer("player1");
-    playerInstance.setup({
-      file         : $(this).data('video'),
-      image        : $(this).data('poster'),
-      width        : "100%",
-      aspectratio  : "16:9",
-      displaytitle : false,
-      mediaid      : '123456',
-      skin         : {
-        name : "five"
-      }
-    });
+    if($("#player1").length !== 0) {
+      var playerInstance = jwplayer("player1");
+      playerInstance.setup({
+        file         : $(this).data('video'),
+        image        : $(this).data('poster'),
+        width        : "100%",
+        aspectratio  : "16:9",
+        displaytitle : false,
+        mediaid      : '123456',
+        skin         : {
+          name : "five"
+        }
+      });
+    }
 
     $('.fullscreenplayer').find('.category').html($(this).find('.category').html());
     $('.fullscreenplayer').find('.title-video').html($(this).find('.titleLink').html());
