@@ -86,8 +86,12 @@ class MobileNotificationListener
                         }
                         $conn = $this->getApnsConnection();
                         $conn->add($this->setNewMessage(trim($uuid), $translation->getDescription(), 1));
-                        $this->sendPushAndroid($conn);
-                        $this->sendPushIos($conn);
+						if(strlen($uuid) == '32') {
+							$this->sendPushIos($conn);
+						} else {
+							 $this->sendPushAndroid($conn);
+						}
+                        
                     }
                 } elseif ($object->getSendToAll()) {
 
@@ -128,13 +132,19 @@ class MobileNotificationListener
 
     private function getApnsConnection()
     {
-        $env = \ApnsPHP_Abstract::ENVIRONMENT_PRODUCTION;
-        if ($this->container->getParameter('instancemobile') == 'preprod') {
+        
+        if ($this->container->getParameter('instancemobile') == 'preprod')
+		{
             $env = \ApnsPHP_Abstract::ENVIRONMENT_SANDBOX;
+        }
+		else
+		{
+        	$env = \ApnsPHP_Abstract::ENVIRONMENT_PRODUCTION;
         }
 
         $conn = new \ApnsPHP_Push($env, $this->container->getParameter('apns'));
         $conn->setRootCertificationAuthority($this->container->getParameter('app'));
+		$conn->setProviderCertificatePassphrase('FestivaLDeCanneS2016');
         $conn->connect();
 
         return $conn;

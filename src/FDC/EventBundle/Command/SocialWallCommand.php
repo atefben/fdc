@@ -180,11 +180,10 @@ class SocialWallCommand extends ContainerAwareCommand {
             $tag = trim($tag);
 
             while (true) {
-
                 if ($maxIdInstagram == null) {
                     $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100');
                 } else {
-                    $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100&min_tag_id=' . $maxIdInstagram);
+                    $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100&next_min_tag_id=' . $maxIdInstagram);
                 }
 
                 $instagramResults = json_decode($instagramResponse);
