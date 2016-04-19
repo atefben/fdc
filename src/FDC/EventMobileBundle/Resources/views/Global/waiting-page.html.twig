@@ -1,0 +1,17 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+{% block body %}
+
+<div id="main" class="list-article landing-page">
+    <div class="bandeau-list">
+        <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url({% path waitingPage.banner|trans_fallback('file'), 'reference' %})">
+            <div class="vCenterKid">
+                <h2 class="title title-list-header">{{ waitingPage|trans_fallback('title')|raw }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        {{ waitingPage|trans_fallback('text')|raw }}
+    </div>
+</div>
+{% endblock body %}

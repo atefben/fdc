@@ -1,0 +1,40 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventMobileBundle::layout.html.twig' %}
+
+{% block body %}
+<div id="main" class="list-article palmares-list loading ">
+    <div class="bandeau-list">
+        <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url({{ section.banner }})">
+            <div class="vCenterKid">
+                <h2 class="title title-list-header ">{{ 'palmares.title.palmares'|trans }}</h2>
+            </div>
+        </div>
+        {% include 'FDCEventMobileBundle:Palmares:components/nav.html.twig' %}
+    </div>
+    <div class="container container-list">
+        <section class="categorie-items">
+            <div class="title-list-cat">
+                <h2 class="title">{{ 'palmares.title.longsmetrages'|trans }}</h2>
+            </div>
+            {% for movie in movies %}
+                {% if movie.type == 0 %}
+                    {% include 'FDCEventMobileBundle:Palmares:widgets/movie.html.twig' %}
+                {% endif %}
+            {% endfor %}
+        </section>
+        <section class="categorie-items">
+            <div class="title-list-cat">
+                <h2 class="title">{{ 'palmares.title.courtsmetrages'|trans }}</h2>
+            </div>
+            {% for movie in movies %}
+                {% if movie.type == 1 %}
+                    {% include 'FDCEventMobileBundle:Palmares:widgets/movie.html.twig' %}
+                {% endif %}
+            {% endfor %}
+        </section>
+    </div>
+
+    {% include 'FDCEventMobileBundle:Palmares:components/bandeau.html.twig' %}
+
+</div>
+{% endblock body %}
