@@ -134,13 +134,25 @@ function loadInstagram(callback) {
     data     : instagramRequest,
     dataType : instagramDatatype,
     success: function(data) {
-      var count = 10; 
-      for (var i = 0; i < count; i++) {
-        if (typeof data.data[i] !== 'undefined' ) {
-          posts.push({'type': 'instagram', 'img': data.data[i].images.standard_resolution.url, 'date' : data.data[i].created_time, 'text': '<div class="vCenter text-container"><div class="vCenterKid content"><p class="text">' + data.data[i].caption.text.substr(0, 140).parseURL().parseUsername().parseHashtag() + '</p></div></div>', 'user': data.data[i].user.username});
+      if (GLOBALS.env == "html") {
+        var count = 10; 
+        for (var i = 0; i < count; i++) {
+          if (typeof data.data[i] !== 'undefined' ) {
+            posts.push({'type': 'instagram', 'img': data.data[i].images.standard_resolution.url, 'date' : data.data[i].created_time, 'text': '<div class="vCenter text-container"><div class="vCenterKid content"><p class="text">' + data.data[i].caption.text.substr(0, 140).parseURL().parseUsername().parseHashtag() + '</p></div></div>', 'user': data.data[i].user.username});
+          }
+         
+          if(i == count - 1) {
+            callback();
+          }
         }
-        if( i == count - 1) {
-          callback();
+      } else {
+        var count = Math.min(data.length, 10);
+        for (var i = 0; i < count; i++) {
+          posts.push({'type': 'instagram', 'text': '<div class="vCenter text-container"><div class="vCenterKid content"><p class="text">' + data[i].message.substr(0, 140).parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div>', 'img': data[i].content});
+          
+          if(i == count - 1) {
+            callback();
+          }
         }
       }
     }
@@ -171,28 +183,52 @@ function loadTweets(callback) {
     type : twitterType,
     data : twitterRequest,
     success: function(data, textStatus, xhr) {
-      data = JSON.parse(data);
-      data = data.statuses;
-      var img = '';
-
-      for (var i = 0; i < data.length; i++) {
-        img = '',
-        url = 'http://twitter.com/' + data[i].user.screen_name + '/status/' + data[i].id_str;
-        try {
-          if (data[i].entities['media']) {
-            img = data[i].entities['media'][0].media_url;
-          }
-        } catch (e) {
-          // no media
+      if (GLOBALS.env == "html") {
+        data = JSON.parse(data);
+        if (typeof data.statuses !== 'undefined') {
+          data = data.statuses;
         }
-        var textTweet = data[i].text.parseURL().parseUsername(true).parseHashtag(true);
-        if (textTweet.length>180) {
-          textTweet = (textTweet.substr(0, 180) + "...");
-      }
-        posts.push({'type': 'twitter', 'text': '<div class="vCenter text-container"><div class=" content vCenterKid"><p class="text">' + textTweet + '</p></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})
 
-        if(i==data.length - 1) {
-          callback();
+        var img = '';
+
+        for (var i = 0; i < data.length; i++) {
+          img = '',
+          url = 'http://twitter.com/' + data[i].user.screen_name + '/status/' + data[i].id_str;
+          try {
+            if (data[i].entities['media']) {
+              img = data[i].entities['media'][0].media_url;
+            }
+          } catch (e) {
+            // no media
+          }
+          var textTweet = data[i].text.parseURL().parseUsername(true).parseHashtag(true);
+          if (textTweet.length>180) {
+            textTweet = (textTweet.substr(0, 180) + "...");
+        }
+          posts.push({'type': 'twitter', 'text': '<div class="vCenter text-container"><div class=" content vCenterKid"><p class="text">' + textTweet + '</p></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})
+
+          if(i==data.length - 1) {
+            callback();
+          }
+        }
+      } else {
+        var img = '';
+
+        for (var i = 0; i < data.length; i++) {
+          img = '';
+          try {
+            if (data[i].content) {
+              img = data[i].content;
+            }
+          } catch (e) {
+            // no media
+          }
+        
+          posts.push({'type': 'twitter', 'text': '<div class="vCenter text-container"><div class=" content vCenterKid"><p class="text">' + data[i].message.parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div>', 'img': img})
+
+          if(i == data.length - 1) {
+            callback();
+          }
         }
       }
     }
