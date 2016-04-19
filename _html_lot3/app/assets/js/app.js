@@ -38,4 +38,9 @@ $(document).ready(function() {
     owInitNavSticky(1);
   }
 
+  if($('.retrospective.selection').length) {
+    owInitNavSticky(2);
+    owInitGrid('isotope-01');
+  }
+
 });

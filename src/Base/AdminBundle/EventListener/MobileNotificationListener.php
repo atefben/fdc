@@ -86,7 +86,7 @@ class MobileNotificationListener
                         }
                         $conn = $this->getApnsConnection();
                         $conn->add($this->setNewMessage(trim($uuid), $translation->getDescription(), 1));
-						if(strlen($uuid) == '32') {
+						if(strlen($uuid) == '65') {
 							$this->sendPushIos($conn);
 						} else {
 							 $this->sendPushAndroid($conn);

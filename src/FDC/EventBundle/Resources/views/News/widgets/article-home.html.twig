@@ -51,9 +51,9 @@ article is news_image %}
                         {% set trans = img.findTranslationByLocale(app.request.locale) %}
                         {% if trans is null or trans.file is null %}
                             {% set trans = img.findTranslationByLocale('fr') %}
+                            {% set file = trans.file %}
                         {% endif %}
                     {% endif %}
-                    {% set file = trans.file %}
                 {% endif %}
 				{% if file is defined and file is not null %}
                 {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
