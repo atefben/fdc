@@ -1,0 +1,124 @@
+{% trans_default_domain 'FDCEventBundle' %}
+<nav>
+    <ul class="main">
+        {% for menu in menus %}
+            {% if menu.id < 7 %}
+                <li>
+                    {% if menu.route == 'fdc_event_television_trailers' and menu.enabled == true %}
+                        <a href="{{ path(menu.route, { 'slug': 'competition' }) }}"
+                           class="{% if route =='fdc_event_television_trailers' %}active{% endif %}">
+                            {{ menu.transName|trans }}
+                        </a>
+                    {% elseif menu.route == 'fdc_event_movie_selection' and menu.enabled == true %}
+                        <a href="{{ path(menu.route) }}"
+                           class="{% if route =='fdc_event_movie_selection' %}active{% endif %}">
+                            {{ menu.transName|trans }}
+                        </a>
+                    {% elseif menu.route == 'fdc_event_jury_get' and menu.enabled == true %}
+                        <a href="{{ path(menu.route, { 'type': '1' }) }}"
+                           class="{% if route == 'fdc_event_jury_get' %}active{% endif %}">
+                            {{ menu.transName|trans }}
+                        </a>
+                    {% elseif menu.route == 'fdc_event_palmares_get' and menu.enabled == true %}
+                        <a href="{{ path(menu.route) }}"
+                           class="{% if route == 'fdc_event_palmares_get' %}active{% endif %}">
+                            {{ menu.transName|trans }}
+                        </a>
+                    {% elseif menu.route == 'fdc_event_news_index' and menu.enabled == true %}
+                        <a href="{{ path(menu.route) }}"
+                           class="{% if route in routesArticles %}active{% endif %}">
+                            {{ menu.transName|trans }}
+                        </a>
+                    {% elseif menu.route == 'fdc_event_television_live' and menu.enabled == true  %}
+                        <a href="{{ path(menu.route) }}"
+                           class="{% if route in routesWebTv %}active{% endif %}">
+                            {{ menu.transName|trans }}
+                        </a>
+                    {% elseif menu.route == 'fdc_event_event_getevents' and menu.enabled == true  %}
+                        <a href="{{ path(menu.route) }}"
+                           class="{% if route == 'fdc_event_event_getevents' %}active{% endif %}">
+                            {{ menu.transName|trans }}
+                        </a>
+                    {% endif %}
+                    {% if menu['__children'] is defined %}
+                    <ul class="tcenter">
+                        {% for child in menu['__children'] %}
+                            {% if child.enabled %}
+                                <li>
+                                    <a href="{{ path(child.route) }}"
+                                       class="{% if route == child.route %}active{% endif %}">
+                                        {{ child.transName|trans }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <ul class="user">
+        {% for menu in menus %}
+            {% if menu.id > 6 %}
+                {% if menu.route == 'fdc_event_agenda_scheduling' and menu.enabled == true %}
+                    <li class="programmation-wrapper">
+                        <a href="{{ path(menu.route) }}" class="programmation">
+                            <i class="icon icon_programmation"></i>{{ menu.transName|trans }}
+                        </a>
+                        <ul>
+                        {% if menu['__children'] is defined %}
+                            {% for child in menu['__children'] %}
+                                {% if child.enabled %}
+                                    <li>
+                                        <a href="{{ path(child.route) }}">
+                                            {{ child.transName|trans }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        </ul>
+                    </li>
+                {% elseif menu.route == 'fdc_event_participate_prepare' %}
+                    {% if menu.enabled == true %}
+                        <li class="participate-wrapper">
+                            <a href="{{ path(menu.route) }}" class="participate">
+                                <i class="icon icon_participer"></i>{{ menu.transName|trans }}
+                            </a>
+                            {% if menu['__children'] is defined %}
+                                <ul>
+                                    {% for k,child in participateMenu %}
+                                        {% if k == 0 %}
+                                            <li><a href="{{ path('fdc_event_participate_prepare') }}"> {{ child.title|trans }}</a></li>
+                                        {% else %}
+                                            <li><a href="{{ path('fdc_event_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"> {{ child|trans_fallback('title') }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endif %}
+                {% elseif menu.route == 'fdc_press_news_home' %}
+                    {% if menu.enabled == true %}
+                        <li>
+                            <a href="{{ path(menu.route) }}" class="press">
+                                <i class="icon icon_espace-presse"></i>{{ menu.transName|trans }}
+                            </a>
+                            {% if menu['__children'] is defined %}
+                                <ul>
+                                    {% for child in menu['__children'] %}
+                                        {% if child.enabled %}
+                                            <li><a href="{{ path(child.route) }}"> {{ child.transName|trans }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+</nav>

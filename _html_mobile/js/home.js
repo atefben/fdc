@@ -47,7 +47,7 @@ function moveTimeline(element, day,url){
       url:url,
       success: function(data) {
         $('.articles-container').html(data);
-        $.initAddToSelection();
+        initAddToSelection();
         initSlideshows();
         $('.articles-container').animate({
           opacity: 1
@@ -115,24 +115,44 @@ function initSlideshows() {
 
   
 var posts = [];
-var url = "https://api.instagram.com/v1/tags/"+GLOBALS.api.instagram.hashtag+"/media/recent/?access_token="+GLOBALS.api.instagram.token;
 
 // load Instagram pictures and build array
-function loadInstagram(url, callback){
+function loadInstagram(callback) {
+  if (GLOBALS.env == "html") {
+    instagramDatatype = "jsonp";
+    instagramRequest  = {};
+  } else {
+    instagramDatatype = "json";
+    instagramRequest  = {
+      offset : 40
+    }
+  }
   
   $.ajax({
+    url      : GLOBALS.api.instagramUrl,
     type     : "GET",
-    dataType : "jsonp",
-    cache    : false,
-    url      : url ,
+    data     : instagramRequest,
+    dataType : instagramDatatype,
     success: function(data) {
-      var count = 10; 
-      for (var i = 0; i < count; i++) {
-        if (typeof data.data[i] !== 'undefined' ) {
-          posts.push({'type': 'instagram', 'img': data.data[i].images.standard_resolution.url, 'date' : data.data[i].created_time, 'text': '<div class="vCenter text-container"><div class="vCenterKid content"><p class="text">' + data.data[i].caption.text.substr(0, 140).parseURL().parseUsername().parseHashtag() + '</p></div></div>', 'user': data.data[i].user.username});
+      if (GLOBALS.env == "html") {
+        var count = 10; 
+        for (var i = 0; i < count; i++) {
+          if (typeof data.data[i] !== 'undefined' ) {
+            posts.push({'type': 'instagram', 'img': data.data[i].images.standard_resolution.url, 'date' : data.data[i].created_time, 'text': '<div class="vCenter text-container"><div class="vCenterKid content"><p class="text">' + data.data[i].caption.text.substr(0, 140).parseURL().parseUsername().parseHashtag() + '</p></div></div>', 'user': data.data[i].user.username});
+          }
+         
+          if(i == count - 1) {
+            callback();
+          }
         }
-        if( i == count - 1) {
-          callback();
+      } else {
+        var count = Math.min(data.length, 10);
+        for (var i = 0; i < count; i++) {
+          posts.push({'type': 'instagram', 'text': '<div class="vCenter text-container"><div class="vCenterKid content"><p class="text">' + data[i].message.substr(0, 140).parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div>', 'img': data[i].content});
+          
+          if(i == count - 1) {
+            callback();
+          }
         }
       }
     }
@@ -142,40 +162,73 @@ function loadInstagram(url, callback){
 // TWITTER
 // load Twitter posts and pictures and build array
 function loadTweets(callback) {
-  var request = {
-    q: GLOBALS.api.twitter.hashtag,
-    count:  GLOBALS.api.twitter.count,
-    api:  GLOBALS.api.twitter.uri
-  };
+  if (GLOBALS.env == "html") {
+    twitterUrl     = "twitter.php";
+    twitterType    = "POST";
+    twitterRequest = {
+      q     : "%23Cannes2016",
+      count :  15,
+      api   :  "search_tweets"
+    };
+  } else {
+    twitterUrl     = GLOBALS.api.twitterUrl;
+    twitterType    = "GET";
+    twitterRequest = {
+      offset : 40
+    };
+  }
 
   $.ajax({
-    url      : GLOBALS.api.twitter.url,
-    type     : 'POST',
-    datatype : 'json',
-    data     : request,
+    url  : twitterUrl,
+    type : twitterType,
+    data : twitterRequest,
     success: function(data, textStatus, xhr) {
-      data = JSON.parse(data);
-      data = data.statuses;
-      var img = '';
-
-      for (var i = 0; i < data.length; i++) {
-        img = '',
-        url = 'http://twitter.com/' + data[i].user.screen_name + '/status/' + data[i].id_str;
-        try {
-          if (data[i].entities['media']) {
-            img = data[i].entities['media'][0].media_url;
-          }
-        } catch (e) {
-          // no media
+      if (GLOBALS.env == "html") {
+        data = JSON.parse(data);
+        if (typeof data.statuses !== 'undefined') {
+          data = data.statuses;
         }
-        var textTweet = data[i].text.parseURL().parseUsername(true).parseHashtag(true);
-        if (textTweet.length>180) {
-          textTweet = (textTweet.substr(0, 180) + "...");
-      }
-        posts.push({'type': 'twitter', 'text': '<div class="vCenter text-container"><div class=" content vCenterKid"><p class="text">' + textTweet + '</p></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})
 
-        if(i==data.length - 1) {
-          callback();
+        var img = '';
+
+        for (var i = 0; i < data.length; i++) {
+          img = '',
+          url = 'http://twitter.com/' + data[i].user.screen_name + '/status/' + data[i].id_str;
+          try {
+            if (data[i].entities['media']) {
+              img = data[i].entities['media'][0].media_url;
+            }
+          } catch (e) {
+            // no media
+          }
+          var textTweet = data[i].text.parseURL().parseUsername(true).parseHashtag(true);
+          if (textTweet.length>180) {
+            textTweet = (textTweet.substr(0, 180) + "...");
+        }
+          posts.push({'type': 'twitter', 'text': '<div class="vCenter text-container"><div class=" content vCenterKid"><p class="text">' + textTweet + '</p></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})
+
+          if(i==data.length - 1) {
+            callback();
+          }
+        }
+      } else {
+        var img = '';
+
+        for (var i = 0; i < data.length; i++) {
+          img = '';
+          try {
+            if (data[i].content) {
+              img = data[i].content;
+            }
+          } catch (e) {
+            // no media
+          }
+        
+          posts.push({'type': 'twitter', 'text': '<div class="vCenter text-container"><div class=" content vCenterKid"><p class="text">' + data[i].message.parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div>', 'img': img})
+
+          if(i == data.length - 1) {
+            callback();
+          }
         }
       }
     }
@@ -217,7 +270,7 @@ $(document).ready(function() {
         success: function(data) {
             $('.articles-container').append(data);
             $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
-            $.initAddToSelection();
+            initAddToSelection();
 
         }
       });
@@ -265,7 +318,7 @@ $(document).ready(function() {
   });
   
 
-  loadInstagram(url, function() {
+  loadInstagram(function() {
     loadTweets(function() {
       shuffle(posts);
       // once all data is loaded, build html and display the grid

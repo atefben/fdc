@@ -1,0 +1,51 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+{% for article in articles %}
+    <div class="article">
+        <article class="article" data-format="{{ article.newsType|get_news_type }}" data-theme="{{ article.theme|trans_fallback('slug')  }}">
+            <div class="image">
+                <div class="image-wrapper">
+                    {% if article.header is defined and article.header is not null %}
+                        {% set img = article.header %}
+                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = img.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% set file = trans.file %}
+                        {% thumbnail file, '424x266' with {'alt': img|trans_fallback('alt') } %}
+                    {% elseif article.video.image is defined and article.video.image is not null %}
+                        {% set img = article.video.image %}
+                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = img.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% set file = trans.file %}
+                        {% thumbnail file, '424x266' with {'alt': img|trans_fallback('alt') } %}
+                    {% elseif article.audio.image is defined and article.audio.image is not null %}
+                        {% set img = article.audio.image %}
+                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = img.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% set file = trans.file %}
+                        {% thumbnail file, '424x266' with {'alt': img|trans_fallback('alt') } %}
+                    {% elseif article.gallery.medias[0].media  is defined and article.gallery.medias[0].media  is not null %}
+                        {% set img = article.gallery.medias[0].media  %}
+                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = img.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% set file = trans.file %}
+                        {% thumbnail file, '424x266' with {'alt': img|trans_fallback('alt') } %}
+                    {% endif %}
+                </div>
+                <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}" class="linkImage"></a>
+                <span class="picto"><i class="icon icon_{{ article.newsType|get_news_type  }}"></i></span>
+            </div>
+            <div class="info">
+                <a href="#" class="category">{{ article.theme|trans_fallback('name')  }}</a><span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
+                <h2><a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">{{ article|trans_fallback('title') }}</a></h2>
+            </div>
+        </article>
+    </div>
+{% endfor %}

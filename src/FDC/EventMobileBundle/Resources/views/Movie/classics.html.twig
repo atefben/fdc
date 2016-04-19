@@ -1,0 +1,95 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventMobileBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="list-article films-list loading honneur-invit canne-classic selection-officielle">
+        <div class="bandeau-list">
+            <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('{% path classic.image|trans_fallback('file'), '2560x1103' %}')">
+                <div class="vCenterKid">
+                    <h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>
+                </div>
+            </div>
+                {% include 'FDCEventMobileBundle:Movie:components/filters.html.twig' %}
+        </div>
+        <div class="selection-container container-list single-article">
+            <div class="honneur-invit">
+                <div class="bandeau-list">
+                    <div id="horizontal-menu2" class="owl-carousel sliderDrag videosSlider sub-nav-list nav-movie">
+                        {% for filter in filters %}
+                            {% set trans = filter.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is not ndivl %}
+                                <div>
+                                    <p><a href="{{ path('fdc_event_movie_classics', {'slug': trans.slug }) }}">
+                                        {{ trans.titleNav }}
+                                    </a></p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% set transClassic = classic.findTranslationByLocale(app.request.locale) %}
+                <section class="categorie-items honneur-invit">
+                    <div class="title-list-cat">
+                        <h2 class="">{{ transClassic.title }}</h2>
+                    </div>
+                    <div class="contain-article-invit">
+                        {% for widget in classic.widgets %}
+                            {% if widget is fdc_page_la_selection_cannes_classics_widget_text %}
+                                {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
+                                <div class="small-pres">
+                                    {{ transWidget.content|raw }}
+                                </div>
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_quote %}
+                                {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
+                                <div class="quote">
+                                    <blockquote>
+                                        “ {{ transWidget.content }} ”
+                                    </blockquote>
+                                </div>
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_audio %}
+                                {% include 'FDCEventMobileBundle:News:widgets/audio.html.twig' %}
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video_youtube %}
+                                {% include 'FDCEventMobileBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video %}
+                                {% include 'FDCEventMobileBundle:News:widgets/video.html.twig' with {'widget': widget} %}
+                            {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
+                                <div class="contain-img-honneur">
+                                    {% set photo = widget.gallery.medias[0].media %}
+                                    {% include 'FDCEventMobileBundle:News:widgets/single-photo.html.twig' with {'photo' : photo, 'hideCopyright': true } %}
+                                    {% set copyright = photo|trans_fallback('copyright') %}
+                                    <span class="copy">{% if copyright is not empty %} © {{ copyright }}{% endif %}</span>
+                                </div>
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
+                                <div class="small-pres container">
+                                    {% include 'FDCEventMobileBundle:News:widgets/slideshow.html.twig' %}
+                                </div>
+                            {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image_dual_align %}
+                                <div class="small-pres container">
+                                    {% include 'FDCEventMobileBundle:News:widgets/dual-photo.html.twig' with {'hideHalfDiv': true} %}
+                                </div>
+                            {#% elseif widget is fdc_page_la_selection_cannes_classics_widget_movie %}
+                                {% if widget.widgetMovie is not null and widget.widgetMovie.films|length > 0 %}
+                                    {% for film in widget.widgetMovie.films %}
+                                        {% include 'FDCEventMobileBundle:Movie:widgets/movie.html.twig' with {'film': film.film} %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_intro %}
+                                {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
+                                <div class="pres-honneur">
+                                    {{ transWidget.introduction|raw }}
+                                </div>
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_subtitle %}
+                                {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
+                                <div class="title-list-cat title-film-detail">
+                                    <h2 class="title">{{ transWidget.subtitle }}</h2>
+                                    <p class="title-item">{{ transWidget.paragraph }}</p>
+                                </div>
+                            {% endif %#}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

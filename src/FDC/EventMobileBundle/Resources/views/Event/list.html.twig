@@ -1,0 +1,81 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventMobileBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="all-articles grid evenement loading">
+        <h2 class="title">{{ 'event.title.lesevenements'|trans }}</h2>
+
+        <div class="filters">
+            <div id="date" class="filter">
+                <span class="label">{{ 'event.filter.label.date'|trans }} :</span>
+                {% spaceless %}
+                <span class="select">
+                    <span class="active" data-filter="all">[ {{ 'search.result.filter.toutes'|trans }} ]</span>
+                    {% for key, date in filters.dates %}
+                        <span data-filter="{{ key }}">
+                            {% if app.request.locale != 'cn' %}
+                                {{ date|localizeddate('full', 'none')  }}
+                            {% else %}
+                                {{ date|localizeddate('none', 'none', 'zh', null, 'MM月dd日, eee') }}
+                            {% endif %}
+                        </span>
+                    {% endfor %}
+                    <i class="icon icon_fleche-down"></i>
+                </span>
+                {% endspaceless %}
+            </div>
+            <div id="theme" class="filter">
+                <span class="label">{{ 'event.filter.label.theme'|trans }} :</span>
+                <span class="select">
+                    <span class="active" data-filter="all">[ {{ 'search.result.filter.tous'|trans }} ]</span>
+                    {% for theme in filters.themes %}
+                        <span data-filter="{{ theme|trans_fallback('slug') }}">{{ theme|trans_fallback('name') }}</span>
+                    {% endfor %}
+                    <i class="icon icon_fleche-down"></i>
+                </span>
+            </div>
+        </div>
+
+
+        <div id="gridEvent" class="grid-wrapper" data-type="evenement">
+            <div class="grid-sizer"></div>
+
+            {% for event in events %}
+                <div class="item {{ event.theme|trans_fallback('slug') }} {{ event.publishedAt|date('Y-m-d') }} article evenement">
+                    <article class="article evenement">
+                        <div class="img">
+                            <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug') }) }}">
+                                <img src='{% path event.header|trans_fallback('file'), '976x615' %}' alt="{{ event.header|trans_fallback('alt') }}"/>
+                            </a>
+                        </div>
+                        <div class="info">
+                            <span class="category">{{ event.theme|trans_fallback('name') }}</span>
+                            <span class="date">{{ event.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ event.publishedAt|date('H:i') }}</span>
+                            <h3>
+                                <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug') }) }}">
+                                    {{ event|trans_fallback('title') }}
+                                </a>
+                            </h3>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
+
+
+        </div>
+        <a href="http://www.festival-cannes.com/fr/archivesPage.html" class="read-more">
+            {{ 'event.btn.afficherplusdevenement'|trans|raw }}
+        </a>
+        <div class="list-article">
+            <div class="bandeau-list vCenter push-footer">
+                <div class="bandeau-list-img vCenterKid" style="background-image:url({{ asset('bundles/fdcevent/img/jurys/push.jpg') }});">
+                    <h2 class="title title-list-header">{{ 'event.title.retrospective'|trans }}</h2>
+                    <a href="#" class="bandeau-lien">
+                        <i class="icon icon_fleche-right"></i>
+                        {{ 'event.btn.decouvrirlarubrique'|trans }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

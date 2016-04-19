@@ -1,0 +1,26 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+{% set channel = channel.association %}
+<div class="image-wrapper">
+
+{% set transImage = channel.image.findTranslationByLocale(app.request.locale) %}
+{% if transImage is null or transImage.file is null %}
+    {% set transImage = channel.image.findTranslationByLocale('fr') %}
+{% endif %}
+    <img src="{% path transImage.file, '586x370'%}" alt="" />
+</div>
+<a class="linkVid" href="#"></a>
+<div class="info">
+    <div class="picto">
+        <i class="icon icon_playlist"></i>
+    </div>
+    <div class="info-container">
+        <div class="vCenter">
+            <div class="vCenterKid">
+                <a href="{{ path('fdc_event_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}" class="category">{{ channel|trans_fallback('name') }}</a>
+                <span>{{ channel.mediaVideos|length }} {{ 'webtv.direct.text.videos'|trans }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+

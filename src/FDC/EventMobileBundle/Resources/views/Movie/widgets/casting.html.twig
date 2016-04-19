@@ -1,0 +1,73 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+{% if movie.persons|length > 0 %}
+    <div class="casting" data-section="casting">
+        {% set medias = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'), true) %}
+        {% if medias|length > 0 %}
+        <div class="gallery">
+            <div class="img shadow-bottom">
+                {% for media in medias %}
+                    {% if loop.index0 == 0 %}
+                        {% media media.file, media.file.context ~ '_small' with {'class': 'active', title: '', width: '', height: ''} %}
+                    {% else %}
+                        {% media media.file, media.file.context ~ '_small' with {title: '', width: '', height: ''} %}
+                    {% endif %}
+
+                    {% if loop.index0 == 0 %}
+                        <span class="caption">
+                            {% if media.copyright %}
+                                © {{ media.copyright }}
+                            {% endif %}
+                            {% if app.request.locale == 'fr' and media.titleVf %}
+                                {% if media.copyright %} / {% endif %}
+                                {{ media.titleVf }}
+                            {% elseif app.request.locale != 'fr' and media.titleVa %}
+                                {% if media.copyright %} / {% endif %}
+                                {{ media.titleVa }}
+                            {% endif %}
+                        </span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+			{% if medias|length > 1 %}
+            <div class="thumbs">
+                {% for media in medias %}
+                    <a href="#" data-caption="">
+                        <img src="{% path media.file, media.file.context ~ '_38x46'  %}">
+                    </a>
+                {% endfor %}
+            </div>
+			 {% endif %}
+        </div>
+        {% endif %}
+        <div class="content">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    {% if movie.getCredits()|length > 0 %}
+                        <h3 class="title-section">{{ 'movie.title.credits'|trans }}</h3>
+                        {% for filmPerson in movie.getCredits() %}
+                            <p> {% include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': filmPerson.person} %}
+                               {% if filmPerson.functions  %} - {% endif %}
+                                {% for personFunction in filmPerson.functions %}
+                                    {{ filmPerson.person|person_function_gender(personFunction.function, 'name') }}
+                                {% endfor %}
+                            </p>
+                        {% endfor %}
+                    {% endif %}
+                    {% if movie.getActors()|length > 0 %}
+                    <div class="actors">
+                        <h3 class="title-section">{{ 'movie.title.casting'|trans }}</h3>
+                        {% for filmPerson in movie.getActors() %}
+                            <p>{% include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': filmPerson.person} %}
+                                {% if filmPerson|trans_fallback('role') is not null and filmPerson|trans_fallback('role') != '' %}
+                                    - {{ filmPerson|trans_fallback('role') }}
+                                {% endif %}
+                            </p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
