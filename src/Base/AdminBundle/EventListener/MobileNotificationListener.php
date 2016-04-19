@@ -144,6 +144,7 @@ class MobileNotificationListener
 
         $conn = new \ApnsPHP_Push($env, $this->container->getParameter('apns'));
         $conn->setRootCertificationAuthority($this->container->getParameter('app'));
+		$conn->setProviderCertificatePassphrase('FestivaLDeCanneS2016');
         $conn->connect();
 
         return $conn;
