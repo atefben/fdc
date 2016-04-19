@@ -198,6 +198,17 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         }
     }
 
+    playerInstance.stopMute = function(mute) {
+        mute = !mute || false;
+        playerInstance.setMute(false);
+        if(mute) {
+            $sound.find('.sound-seek').css('width','0%');
+        } else {
+            $sound.find('.sound-seek').css('width','100%');
+        }
+            
+    }
+
     playerInstance.removeFullscreen = function() {
         $container.find('.channels-video').removeClass('active');
         $container.find('.jwplayer').removeClass('overlay-channels');

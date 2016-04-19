@@ -38,16 +38,16 @@
                 </div>
                 <div class="time">
                     <label for="end">{{ 'agenda.popin.label.fin'|trans }}</label>
-                    <input type="text"  value="{{ festival_date.festivalEndsAt|date('d/m/Y') }}" id="datepickerEnd">
+                    <input type="text"  value="{{ festival_date.festivalEndsAt|date('d/m/Y') }}" name="dateend" id="datepickerEnd">
                     <span class="pictodate">
                         <i class="icon icon_programmation"></i>
                     </span>
-                    <input type="text" value="15h30" class="hours">
+                    <input type="text" value="15h30" class="hours" name="hoursend">
                 </div>
                 <label for="place">{{ 'agenda.popin.label.lieu'|trans }}</label>
-                <input type="text">
+                <input type="text" name="place">
                 <label for="description" class='description'>{{ 'agenda.popin.label.description'|trans }}</label>
-                <input type="text">
+                <input type="text" name="description">
                 <input type="submit" value="{{ 'agenda.btn.creerunevenement'|trans }}" class="button">
             </form>
         </div>

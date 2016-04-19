@@ -342,6 +342,7 @@ body .icon{
 .block-push-top {
   height: 300px;
   display:block;
+  position:relative;
 
   .txts {
     text-align:center;
@@ -360,6 +361,44 @@ body .icon{
     display:block;
     letter-spacing: 10px;
   }
+
+  .date-back, .date-next{
+    position: absolute;
+
+    a{
+      color:#fff;
+      font-size: .75rem;
+      font-family: $CamphorHeavy;
+    }
+
+    i{
+      display:block;
+      color:#383738;
+    }
+  }
+
+  .date-back{
+    left:28px;
+    top: 50%;
+    transform: rotate(-90deg);
+
+    i{
+      transform: rotate(-180deg);
+      font-size: 1.4rem;
+    }
+  }
+
+  .date-next{
+    right:28px;
+    top: 50%;
+    transform: rotate(90deg);
+
+    i{
+      transform: rotate(180deg);
+      font-size: 1.4rem;
+    }
+  }
+
 }
 
 .block-legend {

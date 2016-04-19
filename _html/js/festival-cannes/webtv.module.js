@@ -32,7 +32,7 @@ $(document).ready(function() {
           videoWebtv.resize('100%','100%');
           if(videoWebtv.getState() == "paused" || videoWebtv.getState() == "idle") {
             videoWebtv.play();
-            videoWebtv.updateMute();
+            videoWebtv.stopMute();
           }
           $('#live .trailer').addClass('on');
         }, 500);
