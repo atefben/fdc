@@ -487,7 +487,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         var currentBuffer = e.bufferPercent;
         $progressBar.find('.buffer-bar').css('width', currentBuffer+'%');
     }).on('time', function(e) {
-        if (_duration == 0) {
+        if (typeof _duration === "undefined" || _duration == 0) {
             duration_mins = Math.floor(e.duration / 60);
             duration_secs = Math.floor(e.duration - duration_mins * 60);
             $durationTime.html(duration_mins + ":" + duration_secs);
