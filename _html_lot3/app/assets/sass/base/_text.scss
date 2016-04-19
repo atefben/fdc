@@ -140,6 +140,29 @@ sub {
   color:#fff;
 }
 
+.title-11 {
+  font-family: $CamphorBold;
+  color:#fff;
+  font-size: .875rem; //14px
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.title-12 {
+  font-family: $CamphorItalic;
+  color:$gold;
+  font-size: .8125rem; //13px
+  line-height: 18px;
+}
+
+.title-13 {
+  font-family: $CamphorBold;
+  color:#fff;
+  font-size: .625rem; //10px
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
 .texte-01 {
    color: #666666;
    font-size: 1rem;

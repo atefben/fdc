@@ -54,11 +54,12 @@
   background-color: #141414;
   height: 45px;
   line-height: 45px;
+  z-index: 2;
 
   a {
     color: #fff;
     transition:.5s;
-    letter-spacing: .1rem;
+    letter-spacing: 1.1px;
   }
 
   ul {
@@ -72,7 +73,7 @@
     font-size: .625rem;
     text-transform: uppercase;
     font-family: $CamphorHeavy;
-    padding: 0px 7.5px;
+    padding: 0px 7px;
 
      &.active {
        a {

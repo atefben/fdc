@@ -1,3 +1,16 @@
+var owInitGrid = function(id){
+
+  if(id == 'isotope-01'){
+
+    var $grid = $('.isotope-01').imagesLoaded(function () {
+      $grid.isotope({
+        layoutMode: 'packery',
+        itemSelector: '.item'
+      });
+    });
+  }
+}
+
 var initHeaderSticky = function() {
 
   $(window).on('scroll', function() {
@@ -169,6 +182,11 @@ $(document).ready(function() {
 
   if($('.edition-69.palm-gold').length) {
     owInitNavSticky(1);
+  }
+
+  if($('.retrospective.selection').length) {
+    owInitNavSticky(2);
+    owInitGrid('isotope-01');
   }
 
 });
