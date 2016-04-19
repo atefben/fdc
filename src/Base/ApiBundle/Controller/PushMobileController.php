@@ -44,18 +44,18 @@ class PushMobileController extends FOSRestController
 
         $uuid = $paramFetcher->get('uuid');
         $os = $paramFetcher->get('os');
+        $lang = $paramFetcher->get('lang');
 
         if ($uuid && $os) {
-            $this->createPushMobile($uuid, $os);
+            $this->createPushMobile($uuid, $os, $lang);
             $view->setStatusCode(200)->setData(true);
-        }
-        else {
+        } else {
             $view->setStatusCode(422)->setData(false);
         }
         return $view;
     }
 
-    protected function createPushMobile($uuid, $os)
+    protected function createPushMobile($uuid, $os, $lang)
     {
         $pushMobile = $this
             ->get('doctrine')
@@ -64,6 +64,7 @@ class PushMobileController extends FOSRestController
             ->findOneBy(array(
                 'uuid' => $uuid,
                 'os'   => $os,
+                'lang' => $lang,
             ))
         ;
 

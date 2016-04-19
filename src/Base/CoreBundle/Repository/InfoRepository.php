@@ -129,7 +129,6 @@ class InfoRepository extends EntityRepository
             ->createQueryBuilder('n')
             ->select('n,
                 RAND() as HIDDEN rand')
-            ->join('n.sites', 's')
             ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na1', 'WITH', 'na1.id = n.id')
             ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'na2', 'WITH', 'na2.id = n.id')
             ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'na3', 'WITH', 'na3.id = n.id')

@@ -131,7 +131,6 @@ class StatementRepository extends EntityRepository
             ->createQueryBuilder('n')
             ->select('n,
                 RAND() as HIDDEN rand')
-            ->join('n.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na1', 'WITH', 'na1.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'na2', 'WITH', 'na2.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementImage', 'na3', 'WITH', 'na3.id = n.id')
@@ -144,7 +143,6 @@ class StatementRepository extends EntityRepository
             ->andWhere('n.displayedMobile = :displayed_mobile')
             ->setParameter('displayed_mobile', true)
         ;
-
         if ($festival->getFestivalStartsAt() >= $dateTime) {
             $this->addMasterQueries($qb, 'n', $festival, true);
             $qb
