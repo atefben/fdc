@@ -617,7 +617,6 @@ class StatementRepository extends EntityRepository
     public function getApiLastStatements($festival, $dateTime, $locale, $count)
     {
         $qb = $this->createQueryBuilder('n')
-            ->join('n.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'nv', 'WITH', 'nv.id = n.id')
