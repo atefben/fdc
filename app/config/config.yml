@@ -20,7 +20,7 @@ imports:
     - { resource: bundles/sonata_seo.yml }
     - { resource: bundles/stof_doctrine_extensions.yml }
     - { resource: twig.yml }
-    - { resource: bundles/fos_elastica.yml }
+    # - { resource: bundles/fos_elastica.yml }
     # old roles
     - { resource: roles/security_all.yml }
     - { resource: roles/security_fdc.yml }
