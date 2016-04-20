@@ -39,8 +39,18 @@ class MediaImageRepository extends TranslationRepository
             ->setParameter('festival', $festival)
         ;
 
-        if ($festival->getFestivalStartsAt() > $dateTime || $festival->getFestivalEndsAt() < $dateTime) {
+        if ($festival->getFestivalStartsAt() >= $dateTime) {
             $this->addMasterQueries($qb, 'mi', $festival, true);
+            $qb
+                ->andWhere(':festivalStartAt  >= mi.publishedAt')
+                ->setParameter('festivalStartAt', $festival->getFestivalStartsAt())
+            ;
+        } else if ($festival->getFestivalEndsAt() <= $dateTime) {
+            $this->addMasterQueries($qb, 'mi', $festival, true);
+            $qb
+                ->andWhere(':festivalEndAt < mi.publishedAt')
+                ->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
+            ;
         } else {
             $morning = clone $dateTime;
             $morning->setTime(0, 0, 0);
@@ -49,9 +59,6 @@ class MediaImageRepository extends TranslationRepository
 
             $qb
                 ->andWhere('mi.publishedAt BETWEEN :morning AND :midnight')
-                ->andWhere('mi.publishedAt <= :datetime')
-                ->andWhere('(mi.publishEndedAt IS NULL OR mi.publishEndedAt >= :datetime)')
-                ->setParameter('datetime', $dateTime)
                 ->setParameter('morning', $morning)
                 ->setParameter('midnight', $midnight)
             ;

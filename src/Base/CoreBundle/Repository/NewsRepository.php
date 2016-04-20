@@ -71,7 +71,6 @@ class NewsRepository extends EntityRepository
         $qb = $this
             ->createQueryBuilder('n')
             ->select('n')
-            ->join('n.sites', 's')
             ->leftJoin('Base\CoreBundle\Entity\NewsArticle', 'na1', 'WITH', 'na1.id = n.id')
             ->leftJoin('Base\CoreBundle\Entity\NewsAudio', 'na2', 'WITH', 'na2.id = n.id')
             ->leftJoin('Base\CoreBundle\Entity\NewsImage', 'na3', 'WITH', 'na3.id = n.id')

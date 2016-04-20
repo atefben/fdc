@@ -89,7 +89,7 @@ class WebTvController extends FOSRestController
         // set context view
         $groups = array('live');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+//        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
         // create view
@@ -149,7 +149,7 @@ class WebTvController extends FOSRestController
         // set context view
         $groups = array('web_tv_show');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
         // create view

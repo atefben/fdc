@@ -35,6 +35,13 @@ class PushMobile
      */
     private $os;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lang", type="string", length=255)
+     */
+    private $lang;
+
 
     /**
      * Get id
@@ -90,5 +97,28 @@ class PushMobile
     public function getOs()
     {
         return $this->os;
+    }
+
+    /**
+     * Set lang
+     *
+     * @param string $lang
+     * @return PushMobile
+     */
+    public function setLang($lang)
+    {
+        $this->lang = $lang;
+
+        return $this;
+    }
+
+    /**
+     * Get lang
+     *
+     * @return string 
+     */
+    public function getLang()
+    {
+        return $this->lang;
     }
 }

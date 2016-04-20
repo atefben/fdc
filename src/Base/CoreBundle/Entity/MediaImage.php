@@ -11,8 +11,11 @@ use Base\CoreBundle\Util\TranslationByLocale;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use JMS\Serializer\Annotation as Serializer;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
+use Symfony\Component\Validator\Constraints as Assert;
+use Zend\Stdlib\ArrayObject;
 
 /**
  * MediaImage
@@ -24,6 +27,40 @@ use JMS\Serializer\Annotation\Since;
 class MediaImage extends Media
 {
     use Translatable;
+
+    /**
+     * @var ArrayCollection
+     * @Groups({
+     *     "news_show",
+     *     "news_list",
+     *     "trailer_show",
+     *     "live",
+     *     "web_tv_show",
+     *     "live",
+     *     "film_list",
+     *     "film_show",
+     *     "event_list",
+     *     "event_show",
+     *     "home",
+     *     "today_images",
+     *     "live",
+     *     "home"
+     * })
+     *
+     * @Assert\Valid()
+     * @Serializer\Accessor(getter="getApiTranslations")
+     */
+    protected $translations;
+
+    public function getApiTranslations()
+    {
+        $en = $this->findTranslationByLocale('en');
+        $fr = $this->findTranslationByLocale('fr');
+        if ((!$en || !$en->getFile() || $en->getStatus() !== MediaImageTranslation::STATUS_TRANSLATED) && $fr) {
+            $this->translations->set('en', $fr);
+        }
+        return $this->translations;
+    }
 
 
     public function getExportLegend()
@@ -94,4 +131,7 @@ class MediaImage extends Media
     {
         return Export::yesOrNo($this->getDisplayedAll());
     }
+
+
+
 }

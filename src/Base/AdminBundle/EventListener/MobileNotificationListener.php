@@ -75,9 +75,10 @@ class MobileNotificationListener
     {
         foreach ($object->getTranslations() as $translation) {
             $published = $translation->getStatus() === MobileNotificationTranslation::STATUS_PUBLISHED;
-            $published = $published || $translation->getStatus() === MobileNotificationTranslation::STATUS_TRANSLATION_VALIDATING;
+            $published = $published || $translation->getStatus() === MobileNotificationTranslation::STATUS_TRANSLATED;
 
             if ($published) {
+
                 if ($object->getToken() && !$object->getSendToAll()) {
                     $uuids = explode(',', $object->getToken());
                     foreach ($uuids as $uuid) {
@@ -86,7 +87,7 @@ class MobileNotificationListener
                         }
                         $conn = $this->getApnsConnection();
                         $conn->add($this->setNewMessage(trim($uuid), $translation->getDescription(), 1));
-						if(strlen($uuid) == '32') {
+						if(strlen($uuid) == '65') {
 							$this->sendPushIos($conn);
 						} else {
 							 $this->sendPushAndroid($conn);
@@ -95,14 +96,14 @@ class MobileNotificationListener
                     }
                 } elseif ($object->getSendToAll()) {
 
-                    $androidDevices = $this->getDevices('android');
+                    $androidDevices = $this->getDevices('android', $translation->getLocale());
                     foreach ($androidDevices as $device) {
                         $conn = $this->getApnsConnection();
                         $conn->add($this->setNewMessage(trim($device->getUuid()), $translation->getDescription(), 1));
                         $this->sendPushAndroid($conn);
                     }
 
-                    $iosDevices = $this->getDevices('ios');
+                    $iosDevices = $this->getDevices('ios', $translation->getLocale());
                     foreach ($iosDevices as $device) {
                         $conn = $this->getApnsConnection();
                         $conn->add($this->setNewMessage(trim($device->getUuid()), $translation->getDescription(), 1));
@@ -118,14 +119,15 @@ class MobileNotificationListener
 
     /**
      * @param string $os
+     * @param string $locale
      * @return mixed
      */
-    private function getDevices($os = 'android')
+    private function getDevices($os = 'android', $locale = 'fr')
     {
         return $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:PushMobile')
-            ->findBy(array('os' => $os))
+            ->findBy(array('os' => $os, 'lang' => $locale))
             ;
     }
 

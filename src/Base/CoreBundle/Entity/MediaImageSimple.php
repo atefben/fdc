@@ -12,6 +12,7 @@ use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use JMS\Serializer\Annotation as Serializer;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
@@ -108,6 +109,7 @@ class MediaImageSimple implements TranslateMainInterface
      *     "orange_video_on_demand",
      *     "orange_studio"
      * })
+     * @Serializer\Accessor(getter="getApiTranslations")
      */
     protected $translations;
 
@@ -287,6 +289,17 @@ class MediaImageSimple implements TranslateMainInterface
     {
         $status = $this->findTranslationByLocale('zh')->getStatus();
         return Export::formatTranslationStatus($status);
+    }
+
+    public function getApiTranslations()
+    {
+        $en = $this->findTranslationByLocale('en');
+        $fr = $this->findTranslationByLocale('fr');
+        if ((!$en || !$en->getFile() || $en->getStatus() !== MediaImageSimpleTranslation::STATUS_TRANSLATED) && $fr) {
+            $this->translations->set('en', $fr);
+        }
+
+        return $this->translations;
     }
 
 }

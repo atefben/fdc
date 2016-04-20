@@ -18,7 +18,13 @@ module.exports = {
 
   scripts: {
     src: [appSrc + 'assets/js/files/*.js', appSrc + 'assets/js/app.js'],
-    vendorSrc: [appSrc + 'assets/js/vendors/jquery-2.1.4.min.js', appSrc + 'assets/js/vendors/*.js'],
+    vendorSrc: ['bower_components/jquery/dist/jquery.js',
+    'bower_components/isotope/dist/isotope.pkgd.js',
+    'bower_components/packery/dist/packery.pkgd.js',
+    'bower_components/isotope-packery/packery-mode.js',
+    'bower_components/ev-emitter/ev-emitter.js',
+    'bower_components/imagesloaded/imagesloaded.js',
+    appSrc + 'assets/js/vendors/*.js'],
     dest: appDest + '/js/'
   },
 

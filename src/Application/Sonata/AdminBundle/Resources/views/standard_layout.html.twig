@@ -111,7 +111,7 @@ file that was distributed with this source code.
         {% endblock %}
         </title>
     </head>
-    <body {% block body_attributes %}class="sonata-bc skin-black fixed{% if app.request.get('_route') in admin_routes_translation_lock %} fdc-lock{% endif %}"{% endblock %}>
+    <body {% block body_attributes %}class="sonata-bc skin-black fixed{% if app.request.get('_route') in admin_routes_translation_lock %} fdc-lock{% endif %}{% if is_granted('ROLE_TRANSLATOR') %} role_translator{% endif %}"{% endblock %}>
         {% include 'BaseAdminBundle:Site:modal.html.twig' %}
         {# custom dialog #}
         <div id="fdc-dialog">
