@@ -37,5 +37,5 @@ interface ApnsPHP_Log_Interface
 	 *
 	 * @param  $sMessage @type string The message.
 	 */
-	public function log($sMessage);
+	/*public function log($sMessage);*/
 }

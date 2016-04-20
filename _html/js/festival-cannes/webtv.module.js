@@ -30,9 +30,9 @@ $(document).ready(function() {
 
         setTimeout(function() {
           videoWebtv.resize('100%','100%');
+          videoWebtv.stopMute();
           if(videoWebtv.getState() == "paused" || videoWebtv.getState() == "idle") {
             videoWebtv.play();
-            videoWebtv.stopMute();
           }
           $('#live .trailer').addClass('on');
         }, 500);

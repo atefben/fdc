@@ -85,12 +85,12 @@ class NewsController extends FOSRestController
         }
 
         $startsAt = new DateTime();
-//        $startsAt->setDate(2016, 5, 11);
-        $startsAt->setDate(2016, 4, 18);
+        $startsAt->setDate(2016, 5, 11);
+//        $startsAt->setDate(2016, 4, 18);
         $startsAt->setTime(0, 0, 0);
         $endsAt = new DateTime();
-//        $endsAt->setDate(2016, 5, 22);
-        $endsAt->setDate(2016, 4, 22);
+        $endsAt->setDate(2016, 5, 22);
+//        $endsAt->setDate(2016, 4, 22);
         $endsAt->setTime(23, 59, 59);
 
         $festival->setFestivalStartsAt($startsAt);
