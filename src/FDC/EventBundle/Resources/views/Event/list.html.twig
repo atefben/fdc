@@ -6,24 +6,24 @@
         <h2 class="title">{{ 'event.title.lesevenements'|trans }}</h2>
 
         <div class="filters">
-            <div id="date" class="filter">
-                <span class="label">{{ 'event.filter.label.date'|trans }} :</span>
-                {% spaceless %}
-                <span class="select">
-                    <span class="active" data-filter="all">[ {{ 'search.result.filter.toutes'|trans }} ]</span>
-                    {% for key, date in filters.dates %}
-                        <span data-filter="{{ key }}">
-                            {% if app.request.locale != 'cn' %}
-                                {{ date|localizeddate('full', 'none')  }}
-                            {% else %}
-                                {{ date|localizeddate('none', 'none', 'zh', null, 'MM月dd日, eee') }}
-                            {% endif %}
-                        </span>
-                    {% endfor %}
-                    <i class="icon icon_fleche-down"></i>
-                </span>
-                {% endspaceless %}
-            </div>
+            {#<div id="date" class="filter">#}
+                {#<span class="label">{{ 'event.filter.label.date'|trans }} :</span>#}
+                {#{% spaceless %}#}
+                {#<span class="select">#}
+                    {#<span class="active" data-filter="all">[ {{ 'search.result.filter.toutes'|trans }} ]</span>#}
+                    {#{% for key, date in filters.dates %}#}
+                        {#<span data-filter="{{ key }}">#}
+                            {#{% if app.request.locale != 'cn' %}#}
+                                {#{{ date|localizeddate('full', 'none')  }}#}
+                            {#{% else %}#}
+                                {#{{ date|localizeddate('none', 'none', 'zh', null, 'MM月dd日, eee') }}#}
+                            {#{% endif %}#}
+                        {#</span>#}
+                    {#{% endfor %}#}
+                    {#<i class="icon icon_fleche-down"></i>#}
+                {#</span>#}
+                {#{% endspaceless %}#}
+            {#</div>#}
             <div id="theme" class="filter">
                 <span class="label">{{ 'event.filter.label.theme'|trans }} :</span>
                 <span class="select">
@@ -50,7 +50,6 @@
                         </div>
                         <div class="info">
                             <span class="category">{{ event.theme|trans_fallback('name') }}</span>
-                            <span class="date">{{ event.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ event.publishedAt|date('H:i') }}</span>
                             <h3>
                                 <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug') }) }}">
                                     {{ event|trans_fallback('title') }}
