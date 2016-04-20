@@ -69,7 +69,7 @@ class StatementController extends FOSRestController
         // set context view
         $groups = array('statement_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
         // create view
@@ -128,7 +128,7 @@ class StatementController extends FOSRestController
         // set context view
         $groups = array('statement_show');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
         // create view

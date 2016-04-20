@@ -64,7 +64,7 @@ class FilmTrailerController extends FOSRestController
         // set context view
         $groups = array('trailer_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
         // create view
@@ -123,7 +123,7 @@ class FilmTrailerController extends FOSRestController
 
         $groups = array('trailer_show');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
         // create view

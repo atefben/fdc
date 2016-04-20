@@ -1,12 +1,15 @@
 <?php
 namespace Base\ApiBundle\EventListener;
 
+use Base\CoreBundle\Entity\MediaImage;
+use Base\CoreBundle\Entity\MediaImageSimple;
 use JMS\DiExtraBundle\Annotation\Service;
 use JMS\DiExtraBundle\Annotation\Tag;
 use JMS\DiExtraBundle\Annotation\Inject;
 use JMS\DiExtraBundle\Annotation\InjectParams;
 use JMS\Serializer\EventDispatcher\EventSubscriberInterface;
 use JMS\Serializer\EventDispatcher\ObjectEvent;
+use JMS\Serializer\EventDispatcher\PreSerializeEvent;
 use JMS\Serializer\GraphNavigator;
 
 /**
@@ -22,11 +25,10 @@ class SerializationListener implements EventSubscriberInterface
     {
         return array(
             array(
-                'event' => 'serializer.post_serialize',
-                'class' => 'Application\Sonata\MediaBundle\Entity\Media',
+                'event'  => 'serializer.post_serialize',
+                'class'  => 'Application\Sonata\MediaBundle\Entity\Media',
                 'method' => 'onPostSerializeMedia'
             ),
-
         );
     }
 
@@ -37,11 +39,9 @@ class SerializationListener implements EventSubscriberInterface
 
         if ($event->getObject()->getContext() == 'pdf') {
             $event->getVisitor()->addData('url', $imageProvider->generatePublicUrl($event->getObject(), 'reference'));
+        } else {
+            $event->getVisitor()->addData('url', $imageProvider->generatePublicUrl($event->getObject(), $event->getObject()->getContext() . '_mobile'));
         }
-        else {
-            $event->getVisitor()->addData('url', $imageProvider->generatePublicUrl($event->getObject(), $event->getObject()->getContext().'_mobile'));
-        }
-
     }
 
     public function onPostSerializeNews(ObjectEvent $event)
