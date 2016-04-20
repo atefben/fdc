@@ -86,11 +86,9 @@ class NewsController extends FOSRestController
 
         $startsAt = new DateTime();
         $startsAt->setDate(2016, 5, 11);
-//        $startsAt->setDate(2016, 4, 18);
         $startsAt->setTime(0, 0, 0);
         $endsAt = new DateTime();
         $endsAt->setDate(2016, 5, 22);
-//        $endsAt->setDate(2016, 4, 22);
         $endsAt->setTime(23, 59, 59);
 
         $festival->setFestivalStartsAt($startsAt);
@@ -122,7 +120,7 @@ class NewsController extends FOSRestController
         // set context view
         $groups = array('news_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
         // create view
@@ -284,7 +282,7 @@ class NewsController extends FOSRestController
         // set context view
         $groups = array('news_show');
         $context = $coreManager->setContext($groups, $paramFetcher);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
 
         $view = $this->view($output, $output ? 200 : 204);

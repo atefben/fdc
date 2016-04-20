@@ -75,7 +75,7 @@ class PalmaresController extends FOSRestController
         $groups = array('award_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
 
         // create view
         $view = $this->view($items, 200);

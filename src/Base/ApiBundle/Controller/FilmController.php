@@ -77,7 +77,7 @@ class FilmController extends FOSRestController
         $groups = array('film_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
 
         // create view
         $view = $this->view($items, 200);
@@ -139,7 +139,7 @@ class FilmController extends FOSRestController
         $context = SerializationContext::create();
         $context->setGroups(array('film_show'));
         $context->setVersion($version);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
 
         // create view
         $view = $this->view($film, 200);

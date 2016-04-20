@@ -73,7 +73,7 @@ class FilmJuryController extends FOSRestController
         $groups = array('jury_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
 
         // create view
         $view = $this->view($items, 200);
@@ -135,7 +135,7 @@ class FilmJuryController extends FOSRestController
         $groups = array('jury_show');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
-        $context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
 
         // create view
         $view = $this->view($projection, 200);
