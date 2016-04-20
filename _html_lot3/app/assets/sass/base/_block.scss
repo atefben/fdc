@@ -44,7 +44,7 @@
 .block-01-s {
   margin: 40px auto;
   max-width: 100%;
-  width: 790px;
+  width: 830px;
   margin-bottom: 20px;
 
   img {
@@ -105,7 +105,8 @@
 
     .icon {
       font-size: .5rem;
-      vertical-align: middle;
+      vertical-align: top;
+      margin-right: 4px;
     }
   }
 
@@ -211,7 +212,7 @@
   position:relative;
 
   .vFlexAlign {
-    height: calc( 100% - 42px );
+    height: 100%;
   }
 
   .txts {
@@ -231,7 +232,7 @@
     font-family: $CamphorHeavy;
     color:#fff;
     display:block;
-    letter-spacing: .5rem;
+    letter-spacing: 0.85rem;
   }
 
   .title-4 {
@@ -673,6 +674,26 @@
     width: 76px;
     border-color: #222222;
 
+    .bright & {
+      border-color: #e7e7e7;
+
+      &:first-child {
+        border-left: 1px solid #e7e7e7;
+      }
+
+      &:last-child {
+        border-color: #e7e7e7;
+      }
+
+      &:hover {
+        border-color: $gold;
+
+        &+a {
+          border-left-color: $gold;
+        }
+      }
+    }
+
     &:first-child {
       border-left: 1px solid #222222;
     }
@@ -702,5 +723,28 @@
     flex-direction: column;
     justify-content: initial;
     text-align: center;
+  }
+}
+
+.block-poster-01{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+
+  .item{
+    margin: 0 28px;
+  }
+
+  .contain-txt{
+    height: 117px;
+  }
+
+  strong{
+    display: block;
+    text-align: center;
+  }
+
+  img{
+    margin-bottom: 20px;
   }
 }
