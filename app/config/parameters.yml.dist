@@ -266,3 +266,6 @@ parameters:
     admin_fdc_footer_credits_id: 3
     fos_elastica_host: localhost
     fos_elastica_port: 9200
+    app: '../src/Base/AdminBundle/Resources/certificats/entrust_root_certification_authority.pem'
+    apns: '../src/Base/AdminBundle/Resources/certificats/server_certificates_bundle_prod.pem'
+    instancemobile: 'prod'
