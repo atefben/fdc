@@ -184,7 +184,7 @@ class SocialWallCommand extends ContainerAwareCommand {
                 if ($maxIdInstagram == null) {
                     $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100');
                 } else {
-                    //// we should use MIN_TAG_ID but used deprecated NEXT_MIN_TAG_ID 
+                    //// we should use MIN_TAG_ID but used deprecated NEXT_MIN_TAG_ID
                     $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100&next_min_tag_id=' . $maxIdInstagram);
                 }
 
