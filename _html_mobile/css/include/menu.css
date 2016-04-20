@@ -246,22 +246,21 @@ font-weight: bolder;
 #menu .socials li a{
   color: #fff;
   display: inline-block;
-    width: 49px;
-    /* text-align: center; */
-    font-size: 2.1rem;
-    margin-right: 4px;
-    
+  width: 47px;
+  /* text-align: center; */
+  font-size: 2.1rem;
+  margin-right: 4px;
 }
 #menu #partners{
   padding: 25px 60px;
 }
 #menu #partners a{
   width: 132px;
-    display: inline-block;
-    margin-right: 34px;
-    margin-top:24px;
-    margin-bottom: 24px;
-    text-align: center;
+  display: inline-block;
+  margin-right: 34px;
+  margin-top:24px;
+  margin-bottom: 24px;
+  text-align: center;
 }
 #menu #partners a:nth-child(3n+3){
   margin-right: 0;
