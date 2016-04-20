@@ -682,6 +682,26 @@ class FooterController extends Controller
     }
 
     /**
+     * @Route("/page/{slug}", options={"expose"=true})
+     * @Template("FDCEventBundle:Footer:footer_page.html.twig")
+     * @return array
+     */
+    public function pageLibresAction(Request $request, $slug) {
+
+        $locale   = $request->getLocale();
+        $em = $this->get('doctrine')->getManager();
+
+        $content = $em->getRepository('BaseCoreBundle:FDCPageFooter')->getPageBySlug($slug, $locale);
+
+        // SEO
+        $this->get('base.manager.seo')->setFDCPageFooterSeo($content, $locale);
+
+        return array(
+            'page' => $content,
+        );
+    }
+
+    /**
      * @Route("/faq")
      * @Template("FDCEventBundle:Footer:faq.html.twig")
      * @return array
