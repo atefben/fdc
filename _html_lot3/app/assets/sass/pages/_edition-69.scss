@@ -5,7 +5,7 @@
   }
 }
 
-.poster, .palmares, .article{
+.poster, .palmares, .article-single, .articles-list{
 
   .block-push-top {
 
@@ -20,5 +20,14 @@
 
   .buttons-01{
     margin-bottom: 70px;
+  }
+}
+
+.jury{
+  .block-poster{
+    .contain-txts {
+      padding-top: 18px;
+      height: 100px;
+    }
   }
 }

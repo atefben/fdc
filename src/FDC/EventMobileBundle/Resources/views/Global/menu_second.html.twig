@@ -1,0 +1,66 @@
+<ul class="second-nav">
+    {% for menu in menus %}
+        {% if menu.id > 6 %}
+            {% if menu.route == 'fdc_event_agenda_scheduling' and menu.enabled == true %}
+                <li class="programmation-wrapper">
+                    <a href="#" class="programmation has-subsection">
+                        <i class="icon icon_programmation"></i>{{ menu.transName|trans }}
+                    </a>
+                    <div class="section-contain subsection-2">
+                        <ul class="section-menu">
+                            {% if menu['__children'] is defined %}
+                                {% for child in menu['__children'] %}
+                                    {% if child.enabled %}
+                                        <li>
+                                            <a href="{{ path(child.route) }}">
+                                                {{ child.transName|trans }}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </li>
+            {% elseif menu.route == 'fdc_event_participate_prepare' %}
+                {% if menu.enabled == true %}
+                    <li class="participate-wrapper">
+                        <a href="#" class="participate has-subsection">
+                            <i class="icon icon_participer"></i>{{ menu.transName|trans }}
+                        </a>
+                        {% if menu['__children'] is defined %}
+                            <div class="section-contain subsection-3">
+                                <ul class="section-menu">
+                                    {% for k,child in participateMenu %}
+                                        {% if k == 0 %}
+                                            <li><a href="{{ path('fdc_event_participate_prepare') }}"> {{ child.title|trans }}</a></li>
+                                        {% else %}
+                                            <li><a href="{{ path('fdc_event_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"> {{ child|trans_fallback('title') }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </li>
+                {% endif %}
+            {% elseif menu.route == 'fdc_press_news_home' %}
+                {% if menu.enabled == true %}
+                    <li>
+                        <a href="{{ path(menu.route) }}" class="press">
+                            <i class="icon icon_espace-presse"></i>{{ menu.transName|trans }}
+                        </a>
+                        {% if menu['__children'] is defined %}
+                            <ul>
+                                {% for child in menu['__children'] %}
+                                    {% if child.enabled %}
+                                        <li><a href="{{ path(child.route) }}"> {{ child.transName|trans }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</ul>

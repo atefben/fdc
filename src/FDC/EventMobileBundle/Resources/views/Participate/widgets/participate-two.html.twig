@@ -1,0 +1,37 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
+<div class="item-partners">
+    <div class="contain-img">
+        {% if widget.image is not null %}
+            {% set trans = widget.image.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = widget.image.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set image = trans.file %}
+            <img src="{% path image, '220x85' %}" alt="{{ widget.image|trans_fallback('alt') }}" />
+        {% endif %}
+    </div>
+    <div class="text-partners">
+        {% if widget|trans_fallback('sponsorLastName') is not null %}
+            <div class="content-text-with-portrait">
+                <h4 class="title-partners">{{widget|trans_fallback('title')}}</h4>
+                {{ widget|trans_fallback('content')|raw }}
+            </div>
+            <div class="portrait">
+                {% if widget.sponsorImage is not null %}
+                    {% set trans = widget.sponsorImage.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = widget.sponsorImage.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set image = trans.file %}
+                    <img src="{% path image, '60x81' %}" alt="{{ widget.sponsorImage|trans_fallback('alt') }}" />
+                {% endif %}
+                <strong class="name">{{ widget|trans_fallback('sponsorLastName') }} {{ widget|trans_fallback('sponsorFirstName') }}</strong>
+                <span class="rank">{{ widget|trans_fallback('sponsorRole') }}</span>
+            </div>
+        {% else %}
+        <h4 class="title-partners">{{widget|trans_fallback('title')}}</h4>
+        {{ widget|trans_fallback('content')|raw }}
+        {% endif %}
+    </div>
+</div>

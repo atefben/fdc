@@ -30,7 +30,12 @@ $(document).ready(function() {
     owInitNavSticky(1);
   }
 
-  if($('.article').length) {
+  if($('.jury').length) {
+    owInitNavSticky(2);
+    owInitGrid('isotope-01');
+  }
+
+  if($('.article-single').length) {
     owInitNavSticky(1);
     owArrowDisplay();
   }

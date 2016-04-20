@@ -1,0 +1,18 @@
+<div class="item-manual">
+    <div class="contain-img">
+        {% if widget.image is not null %}
+            {% set trans = widget.image.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = widget.image.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set image = trans.file %}
+            <img src="{% path image, '363x260' %}" alt="{{ widget.image|trans_fallback('alt') }}" />
+        {% endif %}
+    </div>
+    <div class="text-manual">
+        {% if widget|trans_fallback('title') is not null %}
+            <h4 class="title-manual">{{ widget|trans_fallback('title') }}</h4>
+        {% endif %}
+        {{ widget|trans_fallback('content')|raw }}
+    </div>
+</div>

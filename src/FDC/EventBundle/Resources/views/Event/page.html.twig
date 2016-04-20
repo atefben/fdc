@@ -7,11 +7,6 @@
             <div class="container small-container">
                 <div class="info">
                     <span class="category">{{ event.theme|trans_fallback('name') }}</span>
-                    <span class="date">{{ event.publishedAt|date('d.m.y') }}</span> . <span
-                            class="hour">{{ event.publishedAt|date('H:i') }}</span>
-                    <span class="update">{{ 'event.single.label.miseajour'|trans }}</span>
-                    <span class="date">{{ event.updatedAt|date('d.m.y') }}</span> . <span
-                            class="hour">{{ event.updatedAt|date('H:i') }}</span>
                 </div>
                 <h2 class="title-article">{{ event|trans_fallback('title') }}</h2>
                 <div class="buttons">
