@@ -228,8 +228,6 @@ sonata_media:
                 220x85: { width: 220 , height: 85, quality: 100 }
                 # Partners portrait
                 60x81: { width: 60, height: 81, quality: 100 }
-                # Search artist
-                170x231: { width: 170, height: 231, quality: 100}
 
         media_audio:
             providers:
