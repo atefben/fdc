@@ -47,6 +47,14 @@
                             {% else %}
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Identifiant
+                                            </label>
+                                            <div>
+                                                {{ form.parent.children.id.vars.value }}
+                                            </div>
+                                        </div>
                                         {{ form_row(translationsFields.title) }}
                                         <div class="form-group">
                                             <label class="control-label">
