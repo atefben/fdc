@@ -1,0 +1,6 @@
+{% trans_default_domain 'FDCPressBundle' %}
+<div class="item-infos">
+    <i class="icon {{ widget|trans_fallback('icon') }}"></i>
+    <strong class="title-infos">{{ widget|trans_fallback('title') }}</strong>
+    <p class="descrip">{{ widget|trans_fallback('content')|raw }}</p>
+</div>

@@ -1,0 +1,96 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventMobileBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="list-article participate loading">
+        <div class="bandeau-list vCenter">
+            {% set mainTrans = content.mainImage.findTranslationByLocale(app.request.locale) %}
+            {% if mainTrans is null or mainTrans.file is null %}
+                {% set mainTrans = content.mainImage.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set mainImage = mainTrans.file %}
+            <div class="bandeau-list-img vCenterKid"
+                 style="background-image:url({% path mainImage, '1280x808' %})">
+                <h2 class="title title-list-header">
+                    <i class="icon {{ content.mainIcon }}"></i>
+                    <br> {{ content|trans_fallback('title') }}
+                </h2>
+            </div>
+        </div>
+
+        <div class="contain-participate">
+            <div class="contain-descript">
+                <div class="descrip">{{ content|trans_fallback('mainDescription')|raw }}</div>
+            </div>
+
+            {# SECTION - SE RENDRE A CANNES #}
+            <section>
+                <div class="contain-section participate-active">
+                    <h3 class="title-participate">
+                        <i class="icon {{ content.arriveIcon }}"></i>
+                        {{ content|trans_fallback('arriveTitle') }}
+                    </h3>
+                    <i class="icon accordion icon_moins"></i>
+                    {% for widget in content.arriveWidgets %}
+                        {% if class(widget) == "FDCPagePrepareWidgetPicto" %}
+                            {% include 'FDCEventMobileBundle:Participate:widgets/picto.html.twig' %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </section>
+
+            {# SECTION - PLANS #}
+            <section>
+                <div class="contain-section">
+                    <h3 class="title-participate">
+                        <i class="icon {{ content.informationIcon }}"></i>
+                        {{ content|trans_fallback('informationTitle') }}
+                    </h3>
+                    <i class="icon accordion icon_case-plus"></i>
+                    <h4 class="descrip-participate">{{ content|trans_fallback('informationDescription')|raw }}</h4>
+                    {% for widget in content.informationWidgets %}
+                        {% if class(widget) == "FDCPagePrepareWidgetColumn" %}
+                            {% include 'FDCEventMobileBundle:Participate:widgets/column.html.twig' %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </section>
+
+            {# SECTION - HEBERGEMENT #}
+            <section>
+                <div class="contain-section">
+                    <h3 class="title-participate">
+                        <i class="icon {{ content.meetingIcon }}"></i>
+                        {{ content|trans_fallback('meetingTitle') }}
+                    </h3>
+                    <i class="icon accordion icon_case-plus"></i>
+                    <div class="descrip-section">
+                        <p class="ask">{{ content|trans_fallback('meetingDescription')|raw }}</p>
+                        {% if content.meetingFile is not null %}
+                            <a href="{% path content.meetingFile, 'reference' %}">
+                                {{ content|trans_fallback('meetingLabel') }}
+                            </a>
+                        {% endif %}
+                        <div id="google-map"></div>
+                    </div>
+                </div>
+            </section>
+
+            {# SECTION - INFORMATIONS #}
+            {% if content|trans_fallback('serviceTitle') != "" or content|trans_fallback('serviceDescription')|raw != "" %}
+                <section>
+                    <div class="contain-section">
+                        <h3 class="title-participate">
+                            <i class="icon {{ content.serviceIcon }}"></i>
+                            {{ content|trans_fallback('serviceTitle') }}
+                        </h3>
+                        <i class="icon accordion icon_case-plus"></i>
+                        <div class="descrip-section">
+                            {{ content|trans_fallback('serviceDescription')|raw }}
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+        </div>
+    </div>
+{% endblock body %}
