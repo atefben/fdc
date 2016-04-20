@@ -234,6 +234,13 @@ function lockEvents()
     // verify locks on submit
     $('.fdc-lock button[type="submit"].btn-success').click(function(e) {
         e.preventDefault();
+
+        // add a get parameter when clicking on submit button btn_create_and_list / btn_update_and_list
+        if ($(this).attr('name') == 'btn_create_and_list' ||
+            $(this).attr('name') == 'btn_update_and_list') {
+            var action = $(this).closest('form').attr('action') + '&list=true';
+            $(this).closest('form').attr('action', action)
+        }
         // set vars
         var url = window.location.href.split('/');
         var id = url[url.length - 2];
