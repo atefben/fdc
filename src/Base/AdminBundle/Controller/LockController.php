@@ -25,44 +25,78 @@ class LockController extends Controller
 {
 
     private static $entityMapper = array(
-        'webtv'                            => 'WebTv',
+        // General
+        'homepage'                         => 'Homepage',
+        'fdcpagewebtvlive'                 => 'FDCPageWebTvLive',
         'tag'                              => 'Tag',
-        'theme'                            => 'Theme',
+        'webtv'                            => 'WebTv',
         'contacttheme'                     => 'ContactTheme',
-        'event'                            => 'Event',
-        'mediaimage'                       => 'MediaImage',
-        'mediaimagesimple'                 => 'MediaImageSimple',
-        'mediaaudio'                       => 'MediaAudio',
-        'mediavideo'                       => 'MediaVideo',
+        'theme'                            => 'Theme',
+        'fdcpagewaiting'                   => 'FDCPageWaiting',
+        'mobilenotification'               => 'MobileNotification',
+        // Actualites
         'newsimage'                        => 'NewsImage',
         'newsaudio'                        => 'NewsAudio',
         'newsvideo'                        => 'NewsVideo',
         'newsarticle'                      => 'NewsArticle',
+        // Evenements
+        'event'                            => 'Event',
+        // Communiques
         'statementimage'                   => 'StatementImage',
         'statementaudio'                   => 'StatementAudio',
         'statementarticle'                 => 'StatementArticle',
         'statementvideo'                   => 'StatementVideo',
+        // Infos
         'infoimage'                        => 'InfoImage',
         'infoaudio'                        => 'InfoAudio',
         'infoarticle'                      => 'InfoArticle',
         'infovideo'                        => 'InfoVideo',
-        'pressdownloadsection'             => 'PressDownloadSection',
-        'pressaccreditprocedure'           => 'PressAccreditProcedure',
-        'presscinemaroom'                  => 'PressCinemaRoom',
-        'fdcpagewaiting'                   => 'FDCPageWaiting',
+        // Cannes classics
         'fdcpagelaselectioncannesclassics' => 'FDCPageLaSelectionCannesClassics',
-        'fdcpagelaselectioncinemaplage'    => 'FDCPageLaSelectionCinemaPlage',
+        // Medias
+        'mediaimage'                       => 'MediaImage',
+        'mediaimagesimple'                 => 'MediaImageSimple',
+        'mediaaudio'                       => 'MediaAudio',
+        'mediavideo'                       => 'MediaVideo',
+        // Participer
         'fdcpageprepare'                   => 'FDCPagePrepare',
         'fdcpageparticipate'               => 'FDCPageParticipate',
         'fdcpageparticipatesection'        => 'FDCPageParticipateSection',
+        // Espace presse
+        'presshomepage'                    => 'PressHomepage',
+        'pressstatementinfo'               => 'PressStatementInfo',
+        'pressaccredit'                    => 'PressAccredit',
+        'pressaccreditprocedure'           => 'PressAccreditProcedure',
+        'pressguide'                       => 'PressGuide',
+        'pressmedialibrary'                => 'PressMediaLibrary',
+        'pressdownload'                    => 'PressDownload',
+        'pressdownloadsection'             => 'PressDownloadSection',
+        'pressprojection'                  => 'PressProjection',
+        'presscinemamap'                   => 'PressCinemaMap',
+        'contactpage'                      => 'ContactPage',
+        // Pages
+        'fdcpagefooter'                    => 'FDCPageFooter',
+        'faqtheme'                         => 'FAQTheme',
+        'faqpage'                          => 'FAQPage',
+        // SEO + tetieres
+        'fdcpageevent'                     => 'FDCPageEvent',
+        'fdcpagewebtvchannels'             => 'FDCPageWebTvChannels',
+        'fdcpagewebtvtrailers'             => 'FDCPageWebTvTrailers',
+        'fdcpagenewsarticles'              => 'FDCPageNewsArticles',
+        'fdcpagenewsaudios'                => 'FDCPageNewsAudios',
+        'fdcpagenewsimages'                => 'FDCPageNewsImages',
+        'fdcpagenewsvideos'                => 'FDCPageNewsVideos',
+        'fdcpagelaselection'               => 'FDCPageLaSelection',
+        'fdcpagelaselectioncinemaplage'    => 'FDCPageLaSelectionCinemaPlage',
+        'fdcpagejury'                      => 'FDCPageJury',
+        'fdcpageaward'                     => 'FDCPageAward',
+        // Orange
         'orangeseriesandcie'               => 'OrangeSeriesAndCie',
         'orangeprogrammationocs'           => 'OrangeProgrammationOCS',
         'orangevideoondemand'              => 'OrangeVideoOnDemand',
         'orangestudio'                     => 'OrangeStudio',
-        'mobilenotification'               => 'MobileNotification',
-        'faqpage'                          => 'FAQPage',
-        'faqtheme'                         => 'FAQTheme',
-        'fdcpagefooter'                    => 'FDCPageFooter',
+        // deprecrated ??
+        'presscinemaroom'                  => 'PressCinemaRoom'
     );
 
     /**

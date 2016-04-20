@@ -179,6 +179,7 @@ class EventAdmin extends Admin
             ->add('signature', 'text', array(
                 'label' => 'form.event.label_signature',
                 'help' => 'form.event.helper_signature',
+                'required' => false,
             ))
             ->add('tags', 'sonata_type_collection', array(
                 'label' => 'form.label_article_tags',

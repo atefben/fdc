@@ -10066,7 +10066,7 @@ header #searchContainer {
   margin: 0 auto;
   height: auto;
   max-height: 100%;
-  width: 100%;
+  width: auto;
   bottom: -10%;
   left: 0;
   right: 0;
@@ -10421,18 +10421,19 @@ article .read-later.rAlign span:after {
 .single-article .small-container {
   width: 730px;
 }
-.single-article.single-actualite .small-container {
+
+.single-article.single-evenement .small-container {
   width: 977px;
 }
-.single-article.single-actualite .small-container > div {
+.single-article.single-evenement .small-container > div {
   width: 630px;
   margin-left: auto;
   margin-right: auto;
 }
-.single-article.single-actualite .small-container > div.single-photo, .single-article.single-actualite .small-container > div.single-video, .single-article.single-actualite .small-container > div.single-gallery, .single-article.single-actualite .small-container > div.chapeau {
+.single-article.single-evenement .small-container > div.single-photo, .single-article.single-evenement .small-container > div.single-video, .single-article.single-evenement .small-container > div.single-gallery, .single-article.single-evenement .small-container > div.chapeau {
   width: 100%;
 }
-.single-article.single-actualite .small-container > div.half-div, .single-article.single-actualite .small-container > div.single-photo.large-photo, .single-article.single-actualite .small-container > div.slideshow {
+.single-article.single-evenement .small-container > div.half-div, .single-article.single-evenement .small-container > div.single-photo.large-photo, .single-article.single-evenement .small-container > div.slideshow {
   width: 730px;
 }
 .single-article .print {
@@ -10560,7 +10561,10 @@ article .read-later.rAlign span:after {
   display: inline-block;
   margin: 0 0 50px;
   vertical-align: top;
-  width: 50%;
+  width: 47%;
+}
+.single-article .half-photo:nth-child(odd){
+  margin-right:6%;
 }
 .single-article .half-photo img {
   display: block;
@@ -10571,7 +10575,7 @@ article .read-later.rAlign span:after {
   font-size: 0.750rem;
   margin: 10px 0 0;
 }
-.single-article .half-photo + .half-photo {
+.single-article .half-photo:nth-child(even) {
   margin: 0 0 0 -8px;
 }
 .single-article .half-photo + .half-photo .photo-container {
@@ -11368,18 +11372,10 @@ article .read-later.rAlign span:after {
   .single-movie .palmares {
     margin-top: 34px;
   }
-
-  #prefooter .bottom img {
-    width:100%;
-  }
 }
 @media screen and (max-width: 1024px) {
   .single-movie .palmares {
     margin-top: 34px;
-  }
-
-  #prefooter .bottom img {
-    width:100%;
   }
 }
 .single-movie .nav {
