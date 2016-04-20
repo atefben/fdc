@@ -102,33 +102,77 @@ parameters:
         - admin_base_core_fdcpageparticipate_list
         - admin_base_core_fdcpageparticipatesection_list
     admin_routes_translation_lock:
-        - admin_base_core_webtv_edit
+        # General
+        - admin_base_core_homepage_edit
+        - admin_base_core_fdcpagewebtvlive_edit
         - admin_base_core_tag_edit
-        - admin_base_core_theme_edit
+        - admin_base_core_webtv_edit
         - admin_base_core_contacttheme_edit
-        - admin_base_core_event_edit
-        - admin_base_core_mediaimage_edit
-        - admin_base_core_mediaaudio_edit
-        - admin_base_core_mediavideo_edit
+        - admin_base_core_theme_edit
+        - admin_base_core_fdcpagewaiting_edit
+        - admin_base_core_mobilenotification_edit
+        # Actualites
         - admin_base_core_newsarticle_edit
         - admin_base_core_newsimage_edit
         - admin_base_core_newsaudio_edit
         - admin_base_core_newsvideo_edit
+        # Evenements
+        - admin_base_core_event_edit
+        # Communiques
         - admin_base_core_statementarticle_edit
         - admin_base_core_statementimage_edit
         - admin_base_core_statementaudio_edit
         - admin_base_core_statementvideo_edit
+        # Infos
         - admin_base_core_infoarticle_edit
         - admin_base_core_infoimage_edit
         - admin_base_core_infoaudio_edit
         - admin_base_core_infovideo_edit
-        - admin_base_core_pressaccreditprocedure_edit
-        - admin_base_core_pressdownloadsection_edit
-        - admin_base_core_presscinemaroom_edit
+        # Cannes classics
         - admin_base_core_fdcpagelaselectioncannesclassics_edit
-        - admin_base_core_fdcpagelaselectioncinemaplage_edit
+        # Medias
+        - admin_base_core_mediaimagesimple_edit
+        - admin_base_core_mediaimage_edit
+        - admin_base_core_mediaaudio_edit
+        - admin_base_core_mediavideo_edit
+        # Participer
+        - admin_base_core_fdcpageprepare_edit
         - admin_base_core_fdcpageparticipate_edit
         - admin_base_core_fdcpageparticipatesection_edit
+        # Espace presse
+        - admin_base_core_presshomepage_edit
+        - admin_base_core_pressstatementinfo_edit
+        - admin_base_core_pressaccredit_edit
+        - admin_base_core_pressaccreditprocedure_edit
+        - admin_base_core_pressguide_edit
+        - admin_base_core_pressmedia_library_edit
+        - admin_base_core_pressdownload_edit
+        - admin_base_core_pressdownloadsection_edit
+        - admin_base_core_pressprojection_edit
+        - admin_base_core_presscinemamap_edit
+        - admin_base_core_contactpage_edit
+        # Pages
+        - admin_base_core_fdcpagefooter_edit
+        - admin_base_core_faqtheme_edit
+        - admin_base_core_faqpage_edit
+        # SEO + tetieres
+        - admin_base_core_fdcpageevent_edit
+        - admin_base_core_fdcpagewebtvchannels_edit
+        - admin_base_core_fdcpagewebtvtrailers_edit
+        - admin_base_core_fdcpagenewsarticles_edit
+        - admin_base_core_fdcpagenewsaudios_edit
+        - admin_base_core_fdcpagenewsvideos_edit
+        - admin_base_core_fdcpagelaselection_edit
+        - admin_base_core_fdcpagelaselectioncinemaplage_edit
+        - admin_base_core_fdcpagejury_edit
+        - admin_base_core_fdcpageaward_edit
+        # Orange
+        - admin_base_core_orangeseriesandcie
+        - admin_base_core_orangeprogrammationocs
+        - admin_base_core_orangevideoondemand
+        - admin_base_core_orangestudio
+        # Deprecated ?
+        - admin_base_core_presscinemaroom_edit
     # soif
     soif_preprod_url: ~
     soif_prod_url: ~
