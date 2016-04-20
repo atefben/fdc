@@ -104,8 +104,7 @@ base_soif:
 #    host:     "%fdc_corporate_domain%"
 
 fdc_event:
-    resource: "@FDCEventBundle/Controller"
-    type:     annotation
+    resource: "@FDCEventBundle/Resources/config/routing.yml"
     prefix:   /
 
 fdc_event_mobile:
