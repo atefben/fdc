@@ -7,13 +7,14 @@
 
         <div class="wrapper">
             {% set nbResult =
-            searchResult.category.artist|length +
-            searchResult.category.film|length +
-            searchResult.category.actualite|length +
-            searchResult.category.info|length +
-            searchResult.category.media|length +
-            searchResult.category.event|length +
-            searchResult.category.participate|length
+            searchResult.count.artist +
+            searchResult.count.film +
+            searchResult.count.actualite +
+            searchResult.count.info +
+            searchResult.count.statement +
+            searchResult.count.media +
+            searchResult.count.event +
+            searchResult.count.participate
             %}
 
             {% include 'FDCEventBundle:Global:components/search.categories.html.twig' %}
@@ -35,7 +36,8 @@
                             <div id="filteredContent"></div>
                         </div>
                         <div id="wide" class="resultWrapper">
-
+                            
+                            {% if searchResult.category.actualite|length %}
                             <div class="resultsContainer">
                                 <h2 class="titleSection">{{ 'search.result.title.actualites'|trans }}</h2>
                                 <a href="#" data-class="news" data-ajax="searchNews.html" class="view-all ajax">
@@ -43,106 +45,106 @@
                                 </a>
 
                                 <div id="newsResults">
-                                    {% for article in searchResult.category.actualite %}
-                                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
-                                    {% endfor %}
+                                    {% include 'FDCEventBundle:Search:statement.html.twig' with { 'items': searchResult.category.actualite } %}
                                 </div>
                             </div>
-
+                            {% elseif searchResult.category.artist|length %}
+                                <div class="resultsContainer">
+                                    <h2 class="titleSection">{{ 'search.result.title.artistes'|trans }}</h2>
+                                    <a href="#" class="view-all ajax" data-ajax="ajax/artist/{{ searchTerm }}" data-class="artists">
+                                        {{ 'search.result.btn.toutvoir'|trans }}
+                                    </a>
+                                    <div id="artistsResults">
+                                        {% include 'FDCEventBundle:Search:artist.html.twig' with { 'items': searchResult.category.artist } %}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="resultsContainer">
+                                    <h2 class="titleSection">{{ 'search.result.title.artistes'|trans }}</h2>
+                                    <a href="#" class="view-all ajax" data-ajax="ajax/artist/{{ searchTerm }}" data-class="artists">
+                                        {{ 'search.result.btn.toutvoir'|trans }}
+                                    </a>
+                                    <div id="artistsResults">
+                                        {% include 'FDCEventBundle:Search:artist.html.twig' with { 'items': searchResult.category.artist } %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            
+                            {% if searchResult.category.info|length %}
                             <div class="resultsContainer">
-                                <h2 class="titleSection">{{ 'search.result.title.communiqueinfos'|trans }}</h2>
+                                <h2 class="titleSection">{{ 'search.result.title.infos'|trans }}</h2>
                                 <a href="#" class="view-all ajax" data-ajax="searchCommuniques.html" data-class="communiques">
                                     {{ 'search.result.btn.toutvoir'|trans }}
                                 </a>
 
                                 <div id="communiquesResults">
-                                    {% for article in searchResult.category.actualite %}
-                                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
-                                    {% endfor %}
+                                    {% include 'FDCEventBundle:Search:info.html.twig' with { 'items': searchResult.category.info } %}
                                 </div>
                             </div>
+                            {% endif %}
+                            {% if searchResult.category.statement|length %}
+                            <div class="resultsContainer">
+                                <h2 class="titleSection">{{ 'search.result.title.communiques'|trans }}</h2>
+                                <a href="#" class="view-all ajax" data-ajax="searchCommuniques.html" data-class="communiques">
+                                    {{ 'search.result.btn.toutvoir'|trans }}
+                                </a>
 
+                                <div id="communiquesResults">
+                                    {% include 'FDCEventBundle:Search:statement.html.twig' with { 'items': searchResult.category.statement } %}
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if searchResult.category.media|length %}
                             <div class="resultsContainer">
                                 <h2 class="titleSection">{{ 'search.result.title.medias'|trans }}</h2>
                                 <a href="#" class="view-all ajax" data-ajax="searchMedias.html" data-class="medias">
                                     {{ 'search.result.btn.toutvoir'|trans }}
                                 </a>
-
                                 <div id="mediasResults">
-                                    {% for article in searchResult.category.media %}
-                                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
-                                    {% endfor %}
+                                    {% include 'FDCEventBundle:Search:media.html.twig' with { 'items': searchResult.category.media } %}
                                 </div>
                             </div>
-
+                            {% endif %}
+                            {% if searchResult.category.event|length %}
                             <div class="resultsContainer">
                                 <h2 class="titleSection">{{ 'search.result.title.evenement'|trans }}</h2>
                                 <a href="#" class="view-all ajax" data-ajax="searchEvents.html" data-class="events">
                                     {{ 'search.result.btn.toutvoir'|trans }}
                                 </a>
-
                                 <div id="eventsResults">
-                                    {% for article in searchResult.category.event %}
-                                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
-                                    {% endfor %}
+                                    {% include 'FDCEventBundle:Search:event.html.twig' with { 'items': searchResult.category.event } %}
                                 </div>
                             </div>
-
-                            <div class="resultsContainer">
-                                <h2 class="titleSection">{{ 'search.result.title.artistes'|trans }}</h2>
-                                <a href="#" class="view-all ajax" data-ajax="searchArtists.html" data-class="artists">
-                                    {{ 'search.result.btn.toutvoir'|trans }}
-                                </a>
-
-                                <div id="artistsResults">
-
-                                    {% for artist in searchResult.category.artist %}
-                                        <div class="person big">
-                                            <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
-                                                <img src="{{ artist.image.path }}"/>
-                                            </a>
-                                            <div class="info">
-                                                <div class="vCenter">
-                                                    <div class="vCenterKid">
-                                                        <h2>
-                                                            {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': artist} %}
-                                                        </h2>
-                                                        <span class="category">{{ artist.role }}</span>
-                                                        <span class="country">{{ artist.from }}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-
-                                </div>
-                            </div>
+                            {% endif %}
+                            
+                            {% if searchResult.category.participate|length %}
                             <div class="resultsContainer noBorder">
                                 <h2 class="titleSection">{{ 'search.result.title.participer'|trans }}</h2>
-                                <a href="#" class="view-all ajax" data-ajax="searchParticipate.html" data-class="participate">
+                                <a href="#" class="view-all ajax" data-ajax="ajax/participate/{{ searchTerm }}" data-class="participate">
                                     {{ 'search.result.btn.toutvoir'|trans }}
                                 </a>
-
                                 <div id="participateResults">
-                                    {% for article in searchResult.category.participate %}
-                                        {% include 'FDCEventBundle:News:widgets/article.html.twig' %}
-                                    {% endfor %}
+                                    {% include 'FDCEventBundle:Search:participate.html.twig' with { 'items': searchResult.category.participate } %}
                                 </div>
                             </div>
+                            {% endif %}
                         </div>
 
                         <div id="short" class="resultWrapper">
+                            
+                            {% if searchResult.category.actualite|length and searchResult.category.artist|length %}
                             <div class="resultsContainer">
                                 <h2 class="titleSection">{{ 'search.result.title.artistes'|trans }}</h2>
                                 <a href="#" data-class="artists" data-ajax="searchArtists.html" class="view-all ajax">
                                     {{ 'search.result.btn.toutvoir'|trans }}
                                 </a>
-
                                 <div id="artistsResults">
                                     {% for artist in searchResult.category.artist %}
                                         <div class="person small">
                                             <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
+                                                {% if artist.image.path is defined %}
                                                 <img src="{{ artist.image.min }}"/>
+                                                {% endif %}
                                             </a>
                                             <div class="info">
                                                 <div class="vCenter">
@@ -161,6 +163,8 @@
                                     {% endfor %}
                                 </div>
                             </div>
+                            {% endif %}
+                            {% if (searchResult.category.actualite|length or searchResult.category.artist|length ) and searchResult.category.film|length%}
                             <div class="resultsContainer noBorder">
                                 <h2 class="titleSection">{{ 'search.result.title.films'|trans }}</h2>
                                 <a href="#" data-class="films" data-ajax="searchFilms.html" class="view-all ajax">
@@ -171,21 +175,31 @@
                                     {% for film in searchResult.category.film %}
                                         <div class="film small">
                                             <a href="{{ path('fdc_event_movie_get', {'slug': film.slug }) }}">
-                                                <img src="{{ film.image.min }}"/>
+                                                <img src=""/>
                                             </a>
                                             <div class="info">
                                                 <div class="vCenter">
                                                     <div class="vCenterKid">
                                                         <h2>
                                                             <a href="{{ path('fdc_event_movie_get', {'slug': film.slug }) }}">
-                                                                {{ film.title }}
+                                                                {{ film|trans_fallback('title') }}
                                                             </a>
                                                         </h2>
                                                         <span class="category">
                                                             {{ 'search.result.film.text.de'|trans }}
-                                                            {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': film.author} %}
+                                                            
+                                                            {% if film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                            {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                            {%- for key,director in directors -%}
+                                                                {%- if director -%}
+                                                                    {{ loop.first == true ? '' : ',' }}
+                                                                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
+                                                                {%- endif -%}
+                                                            {%- endfor -%}
+                                                            {% endif %}
+                                                            
                                                         </span>
-                                                        <span class="country">{{ film.author.from }}</span>
+                                                        <span class="country">{{ film.author }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -193,6 +207,7 @@
                                     {% endfor %}
                                 </div>
                             </div>
+                            {% endif %}
                         </div>
                         <div id="noResult">
                             <h3>{{ 'search.result.title.aucunresultat'|trans }}</h3>

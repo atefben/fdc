@@ -26,7 +26,8 @@ class BaseCoreExtension extends Extension
         $configFiles = array(
             'manager.yml',
             'twig.yml',
-            'validator.yml'
+            'validator.yml',
+            'transformer.yml'
         );
         
         foreach ($configFiles as $configFile) {
