@@ -50,7 +50,7 @@ class PushMobileController extends FOSRestController
         $enable = $paramFetcher->get('enable');
 
         if ($uuid && $os && $lang) {
-            if ($enable) {
+            if ($enable == 'true') {
                 $this->createPushMobile($uuid, $os, $lang);
             }
             else {
