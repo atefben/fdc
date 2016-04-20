@@ -10575,7 +10575,7 @@ article .read-later.rAlign span:after {
   font-size: 0.750rem;
   margin: 10px 0 0;
 }
-.single-article .half-photo + .half-photo {
+.single-article .half-photo:nth-child(even) {
   margin: 0 0 0 -8px;
 }
 .single-article .half-photo + .half-photo .photo-container {
