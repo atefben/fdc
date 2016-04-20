@@ -60,6 +60,7 @@ function initPopinMail(cls){
 
   // on submit : check if there are errors in the form
   $(cls+' form').on('submit', function(e) {
+    e.preventDefault();
     var $that = $(this);
     var empty = false;
 
