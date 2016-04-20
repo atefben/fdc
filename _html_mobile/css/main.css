@@ -1191,6 +1191,7 @@ from desktop
 #networks ul{
     margin:40px auto;
     width: 100%;
+    text-align: center;
 }
 #networks ul li {
     display: inline-block;
