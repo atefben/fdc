@@ -1,0 +1,14 @@
+services:
+    base.search.repository:
+        class: Base\CoreBundle\Component\Repository\SearchRepository
+        arguments: ['@fos_elastica.finder.fdc']
+    base.transformers.model.media:
+        class: Base\CoreBundle\Transformer\MediaToElasticaTransformer
+        arguments: [{}, '@event_dispatcher']
+        calls:
+            - [setPropertyAccessor, ['@fos_elastica.property_accessor']]
+    base.transformers.model.film:
+        class: Base\CoreBundle\Transformer\FilmFilmToElasticaTransformer
+        arguments: [{}, '@event_dispatcher']
+        calls:
+            - [setPropertyAccessor, ['@fos_elastica.property_accessor']]

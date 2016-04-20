@@ -3128,7 +3128,7 @@ Copyright (c) 2015 Daniel Eden
 
 sub {
   vertical-align: super;
-  font-size: .59rem;
+  font-size: .5rem;
 }
 
 .italic {
@@ -3152,6 +3152,9 @@ sub {
   text-align: center;
   text-transform: uppercase;
   color: #141414;
+}
+.dark .title {
+  color: #fff;
 }
 
 .title-2 {
@@ -3285,6 +3288,10 @@ sub {
   margin-top: 70px;
   margin-bottom: 39px;
 }
+.title-14 .date {
+  color: #666666;
+  margin-left: 3px;
+}
 
 .title-15 {
   color: #0c0c0c;
@@ -3294,6 +3301,7 @@ sub {
   display: block;
   text-align: center;
   margin-bottom: 44px;
+  padding: 0px 155px;
 }
 
 .title-16 {
@@ -3321,9 +3329,15 @@ sub {
   font-size: 1.5rem;
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
-  margin-top: 115px;
+  margin-top: 69px;
   margin-bottom: 69px;
   line-height: 32px;
+}
+
+.quote-02 {
+  color: #666666;
+  font-size: 1rem;
+  line-height: 26px;
 }
 
 .by-author {
@@ -3398,6 +3412,9 @@ sub {
 }
 .contain-title .title-02 strong {
   color: #c8a461;
+}
+.bright .contain-title .title-02 {
+  color: #141414;
 }
 
 figcaption, .caption {
@@ -3495,6 +3512,13 @@ a {
   border-left-color: #c8a461;
 }
 
+.arrows {
+  opacity: 0;
+  transition: .3s;
+}
+.arrows.visible {
+  opacity: 1;
+}
 .arrows .next, .arrows .prev {
   font-size: .55rem;
   color: #030303;
@@ -3799,6 +3823,10 @@ video {
 .padding-bottom {
   padding-bottom: 70px;
   display: block;
+}
+
+.small-padding {
+  padding-bottom: 25px;
 }
 
 .info {
@@ -7639,6 +7667,10 @@ header #searchContainer {
   padding-bottom: 56px;
 }
 
-.poster .block-push-top .vFlexAlign, .palmares .block-push-top .vFlexAlign {
+.poster .block-push-top .vFlexAlign, .palmares .block-push-top .vFlexAlign, .article .block-push-top .vFlexAlign {
   height: calc( 100% - 42px );
+}
+
+.article .buttons-01 {
+  margin-bottom: 70px;
 }
