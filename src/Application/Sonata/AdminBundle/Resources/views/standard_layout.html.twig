@@ -261,7 +261,7 @@ file that was distributed with this source code.
                                                             {%  if group.label == 'dashboard.group.general' %}
                                                                 {% if is_granted('ROLE_BASE_ADMIN_HOMEPAGE_ADMIN') %}
                                                                 <li>
-                                                                    <a href="{{ path('admin_base_core_homepage_edit', {id: admin_homepage_id}) }}">
+                                                                    <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_homepage_edit', {id: admin_homepage_id}) }}">
                                                                         <i class="fa fa-angle-double-right"></i>
                                                                         {{ 'dashboard.link.homepage'|trans({}, 'BaseAdminBundle') }}
                                                                     </a>
@@ -269,7 +269,7 @@ file that was distributed with this source code.
                                                                 {% endif %}
                                                                 {% if is_granted('ROLE_BASE_ADMIN_WEB_TV_ADMIN') %}
                                                                 <li>
-                                                                    <a href="{{ path('admin_base_core_fdcpagewebtvlive_edit', {id: admin_fdc_page_web_tv_live_id}) }}">
+                                                                    <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_fdcpagewebtvlive_edit', {id: admin_fdc_page_web_tv_live_id}) }}">
                                                                         <i class="fa fa-angle-double-right"></i>
                                                                         {{ 'dashboard.link.fdc_page_web_tv_live'|trans({}, 'BaseAdminBundle') }}
                                                                     </a>
@@ -285,7 +285,7 @@ file that was distributed with this source code.
                                                                 {% endif %}
                                                                 {% if app.security.token and is_granted('ROLE_JMS_TRANSLATION') %}
                                                                     <li>
-                                                                        <a href="{{ path('jms_translation_index') }}">
+                                                                        <a data-edit="true" href="{{ path('jms_translation_index') }}">
                                                                             <i class="fa fa-angle-double-right"></i>
                                                                             {{ 'dashboard.link.bo_translation'|trans({}, 'BaseAdminBundle') }}
                                                                         </a>
@@ -335,7 +335,7 @@ file that was distributed with this source code.
                                                 </a>
                                                 <ul class="treeview-menu {% if active %} active{% endif %}">
                                                     <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_fdcpageprepare_edit' ? 'active' }}">
-                                                        <a href="{{ path('admin_base_core_fdcpageprepare_edit', {id: admin_fdc_page_prepare_id}) }}">
+                                                        <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_fdcpageprepare_edit', {id: admin_fdc_page_prepare_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.fdc_page_prepare'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
@@ -380,13 +380,13 @@ file that was distributed with this source code.
                                                 </a>
                                                 <ul class="treeview-menu {% if active %} active{% endif %}">
                                                     <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_presshomepage_edit' ? 'active' }}">
-                                                        <a href="{{ path('admin_base_core_presshomepage_edit', {id: admin_press_homepage_id}) }}">
+                                                        <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_presshomepage_edit', {id: admin_press_homepage_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_homepage'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
                                                     <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_pressstatementinfo_edit' ? 'active' }}">
-                                                        <a href="{{ path('admin_base_core_pressstatementinfo_edit', {id: admin_press_statementinfo_id}) }}">
+                                                        <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_pressstatementinfo_edit', {id: admin_press_statementinfo_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_statement_info'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
@@ -404,19 +404,19 @@ file that was distributed with this source code.
                                                         </a>
                                                     </li>
                                                     <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_pressguide_edit' ? 'active' }}">
-                                                        <a href="{{ path('admin_base_core_pressguide_edit', {id: admin_press_guide_id}) }}">
+                                                        <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_pressguide_edit', {id: admin_press_guide_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_guide'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
                                                     <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_pressmedialibrary_edit' ? 'active' }}">
-                                                        <a href="{{ path('admin_base_core_pressmedialibrary_edit', {id: admin_press_medialibrary_id}) }}">
+                                                        <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_pressmedialibrary_edit', {id: admin_press_medialibrary_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_medialibrary'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
                                                     <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_pressdownload_edit' ? 'active' }}">
-                                                        <a href="{{ path('admin_base_core_pressdownload_edit', {id: admin_press_download_id}) }}">
+                                                        <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_pressdownload_edit', {id: admin_press_download_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_download'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
@@ -427,20 +427,20 @@ file that was distributed with this source code.
                                                             {{ 'dashboard.link.press_download_section'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
-                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_pressprojection_edit' ? 'active' }}">
-                                                        <a href="{{ path('admin_base_core_pressprojection_edit', {id: admin_press_projection_id}) }}">
+                                                    <li class="{ app.request.attributes.get('_route') == 'admin_base_core_pressprojection_edit' ? 'active' }}">
+                                                        <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_pressprojection_edit', {id: admin_press_projection_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_projection'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
                                                     <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_presscinemamap_edit' ? 'active' }}">
-                                                        <a href="{{ path('admin_base_core_presscinemamap_edit', {id: admin_press_cinemamap_id}) }}">
+                                                        <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_presscinemamap_edit', {id: admin_press_cinemamap_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_cinemamap'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
                                                     <li class="{{ app.request.attributes.get('_route') == 'admin_base_core_contactpage_edit' ? 'active' }}">
-                                                        <a href="{{ path('admin_base_core_contactpage_edit', {id: admin_press_contact_id}) }}">
+                                                        <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_contactpage_edit', {id: admin_press_contact_id}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'dashboard.link.press_contact'|trans({}, 'BaseAdminBundle') }}
                                                         </a>

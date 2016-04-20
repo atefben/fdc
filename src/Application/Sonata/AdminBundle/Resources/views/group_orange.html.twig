@@ -7,25 +7,25 @@
     </a>
     <ul class="treeview-menu">
         <li>
-            <a href="{{ path('admin_base_core_orangeseriesandcie_edit', {id: admin_fdc_orange_series_id}) }}">
+            <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_orangeseriesandcie_edit', {id: admin_fdc_orange_series_id}) }}">
                 <i class="fa fa-angle-double-right"></i>
                 {{ 'dashboard.link.orange_series'|trans({}, 'BaseAdminBundle') }}
             </a>
         </li>
         <li>
-            <a href="{{ path('admin_base_core_orangeprogrammationocs_list') }}">
+            <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_orangeprogrammationocs_list') }}">
                 <i class="fa fa-angle-double-right"></i>
                 {{ 'dashboard.link.orange_ocs'|trans({}, 'BaseAdminBundle') }}
             </a>
         </li>
         <li>
-            <a href="{{ path('admin_base_core_orangevideoondemand_edit', {id: admin_fdc_orange_vod_id}) }}">
+            <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_orangevideoondemand_edit', {id: admin_fdc_orange_vod_id}) }}">
                 <i class="fa fa-angle-double-right"></i>
                 {{ 'dashboard.link.orange_vod'|trans({}, 'BaseAdminBundle') }}
             </a>
         </li>
         <li>
-            <a href="{{ path('admin_base_core_orangestudio_edit', {id: admin_fdc_orange_studio_id}) }}">
+            <a data-edit="true" class="fdc-check-lock-list" href="{{ path('admin_base_core_orangestudio_edit', {id: admin_fdc_orange_studio_id}) }}">
                 <i class="fa fa-angle-double-right"></i>
                 {{ 'dashboard.link.orange_studio'|trans({}, 'BaseAdminBundle') }}
             </a>
