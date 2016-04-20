@@ -30,6 +30,10 @@ $(document).ready(function() {
     owInitNavSticky(1);
   }
 
+  if($('.article').length) {
+    owInitNavSticky(1);
+  }
+
   if($('.retrospective.palmares').length) {
     owInitNavSticky(2);
   }

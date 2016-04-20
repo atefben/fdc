@@ -12,7 +12,7 @@
 
 sub {
   vertical-align: super;
-  font-size:.59rem;
+  font-size:.5rem;
 }
 
 .italic {
@@ -40,6 +40,10 @@ sub {
   text-align: center;
   text-transform: uppercase;
   color:#141414;
+
+  .dark & {
+    color:#fff;
+  }
 }
 
 .title-2 {
@@ -173,6 +177,11 @@ sub {
   text-align: center;
   margin-top: 70px;
   margin-bottom: 39px;
+
+  .date{
+    color:#666666;
+    margin-left: 3px;
+  }
 }
 
 .title-15{
@@ -183,6 +192,7 @@ sub {
   display: block;
   text-align: center;
   margin-bottom: 44px;
+  padding: 0px 155px;
 }
 
 
@@ -212,9 +222,15 @@ sub {
   font-size: 1.5rem;
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
-  margin-top: 115px;
+  margin-top: 69px;
   margin-bottom: 69px;
   line-height: 32px;
+}
+
+.quote-02{
+  color:#666666;
+  font-size:1rem;
+  line-height: 26px;
 }
 
 .by-author{
@@ -295,6 +311,10 @@ sub {
 
     strong{
       color:$gold;
+    }
+
+    .bright &{
+      color: #141414;
     }
   }
 }
