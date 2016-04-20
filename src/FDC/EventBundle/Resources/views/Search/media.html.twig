@@ -1,0 +1,29 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% for media in items %}
+    {% if class(media) == "MediaImage" %}
+        {% set title = media|trans_fallback('legend') %}
+        {% set format = 'photo' %}
+    {% elseif class(media) == "MediaVideo" %}
+        {% set title = media|trans_fallback('title') %}
+        {% set format = 'video' %}
+    {% elseif class(media) == "MediaAudio" %}
+        {% set title = media|trans_fallback('title') %}
+        {% set format = 'audio' %}
+    {% endif %}
+    
+    
+    <article data-theme="competition" data-format="{{ format }}" class="audio">
+        <div class="image">
+            <div class="image-wrapper">
+                <img alt="" src="img/articles/03.jpg">
+            </div>
+            <a class="linkImage" href="article.php"></a>
+            <span class="picto"><i class="icon icon_{{ format }}"></i></span>
+        </div>
+        <div class="info">
+            <a class="category" href="#">{{ media.theme|trans_fallback('name') }}</a>
+            <span class="date">{{ media.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ media.publishedAt|date('H:i') }}</span>
+            <h2><a href="article.php">{{ title }}</a></h2>
+        </div>
+    </article>
+{% endfor %}
