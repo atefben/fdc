@@ -3854,6 +3854,10 @@ video {
   display: block;
 }
 
+.padding-small-top {
+  padding-top: 40px;
+}
+
 .small-padding {
   padding-bottom: 25px;
 }
@@ -7739,7 +7743,7 @@ header #searchContainer {
   padding-bottom: 56px;
 }
 
-.poster .block-push-top .vFlexAlign, .palmares .block-push-top .vFlexAlign, .article .block-push-top .vFlexAlign {
+.poster .block-push-top .vFlexAlign, .palmares .block-push-top .vFlexAlign, .article-single .block-push-top .vFlexAlign, .articles-list .block-push-top .vFlexAlign {
   height: calc( 100% - 42px );
 }
 
