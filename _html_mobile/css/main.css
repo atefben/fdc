@@ -1196,7 +1196,9 @@ from desktop
 #networks ul li {
     display: inline-block;
     margin-right: 30px;
-    
+}
+#networks ul li:last-child {
+    margin-right: 0;
 }
 #networks ul li a {
     color: #999;
