@@ -51,7 +51,11 @@
                                                 Identifiant
                                             </label>
                                             <div>
-                                                {{ form.parent.children.id.vars.value }}
+                                                {% if translationsFields.vars.value is not empty and
+                                                    translationsFields.vars.value.translatable is not empty
+                                                %}
+                                                    {{ translationsFields.vars.value.translatable.id }}
+                                                {% endif %}
                                             </div>
                                         </div>
                                         {{ form_row(translationsFields.title) }}

@@ -58,7 +58,6 @@ class NewsImageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id', 'hidden')
             ->add('translations', 'a2lix_translations', array(
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
