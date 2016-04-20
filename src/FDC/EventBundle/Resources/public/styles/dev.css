@@ -27,6 +27,21 @@
     margin-bottom: 5px;
 }
 
+.single-article.single-evenement .small-container {
+    width: 977px;
+}
+.single-article.single-evenement .small-container > div {
+    width: 630px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.single-article.single-evenement .small-container > div.single-photo, .single-article.single-evenement .small-container > div.single-video, .single-article.single-evenement .small-container > div.single-gallery, .single-article.single-evenement .small-container > div.chapeau {
+    width: 100%;
+}
+.single-article.single-evenement .small-container > div.half-div, .single-article.single-evenement .small-container > div.single-photo.large-photo, .single-article.single-evenement .small-container > div.slideshow {
+    width: 730px;
+}
+
 .legal-notice .text em,
 .faq .text em,
 .single-article .text em {
