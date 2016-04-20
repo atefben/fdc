@@ -1,0 +1,273 @@
+fos_elastica:
+    clients:
+        default: { host: localhost, port: 9200 }
+    indexes:
+        fdc:
+            client: default
+            finder: ~
+            settings:
+                index:
+                    analysis:
+                        analyzer:
+                            custom_index_analyzer:
+                                type:      custom
+                                tokenizer: nGram
+                                filter:    [lowercase, asciifolding, stopwords_fr, elision, snowball_fr, word_delimiter]
+                            custom_search_analyzer:
+                                type:      custom
+                                tokenizer: standard
+                                filter:    [lowercase, asciifolding, stopwords_fr, elision, snowball_fr, word_delimiter]
+                            artist_index_analyzer:
+                                type:      custom
+                                tokenizer: nGram
+                                filter:    [lowercase, asciifolding, word_delimiter]
+                            artist_search_analyzer:
+                                type:      custom
+                                tokenizer: standard
+                                filter:    [lowercase, asciifolding, word_delimiter]
+                        tokenizer:
+                            nGram:
+                              type:     nGram
+                              min_gram: 3
+                              max_gram: 20
+                        filter:
+                            snowball_fr:
+                                type:     snowball
+                                language: French
+                            elision:
+                                type:     elision
+                                articles: [l, m, t, qu, n, s, j, d]
+                            stopwords_fr:
+                                type:        stop
+                                stopwords:   [_french_]
+                                ignore_case: true
+            types:
+                media:
+                    persistence:
+                        # the driver can be orm, mongodb, phpcr or propel
+                        # listener and finder are not supported by
+                        # propel and should be removed
+                        model_to_elastica_transformer:
+                            service: base.transformers.model.media
+                        driver: orm
+                        model: Base\CoreBundle\Entity\Media
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        repository: Base\CoreBundle\SearchRepository\MediaRepository
+                    mappings:
+                        publishedAt: { type: date }
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        webTv.translations:
+                            type: nested
+                            properties :
+                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        theme.translations:
+                            type: nested
+                            properties :
+                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        tags:
+                            type: nested
+                            properties :
+                                tag.translations:
+                                    type: nested
+                                    properties :
+                                        name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                                
+                event:
+                    persistence:
+                        driver: orm
+                        model: Base\CoreBundle\Entity\Event
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        repository: Base\CoreBundle\SearchRepository\EventRepository
+                    mappings:
+                        publishedAt: { type: date }
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 120, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                                introduction: { boost: 100, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                        theme.translations:
+                            type: nested
+                            properties :
+                                name: { boost: 110, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        tags:
+                            type: nested
+                            properties :
+                                tag.translations:
+                                    type: nested
+                                    properties :
+                                        name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+  
+                info:
+                    persistence:
+                        # the driver can be orm, mongodb, phpcr or propel
+                        # listener and finder are not supported by
+                        # propel and should be removed
+                        driver: orm
+                        model: Base\CoreBundle\Entity\Info
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        repository: Base\CoreBundle\SearchRepository\InfoRepository
+                    mappings:
+                        publishedAt: { type: date }
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                introduction: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        theme.translations:
+                            type: nested
+                            properties :
+                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        tags:
+                            type: nested
+                            properties :
+                                tag.translations:
+                                    type: nested
+                                    properties :
+                                        name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                statement:
+                    persistence:
+                        # the driver can be orm, mongodb, phpcr or propel
+                        # listener and finder are not supported by
+                        # propel and should be removed
+                        driver: orm
+                        model: Base\CoreBundle\Entity\Statement
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        repository: Base\CoreBundle\SearchRepository\StatementRepository
+                    mappings:
+                        publishedAt: { type: date }
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                introduction: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        theme.translations:
+                            type: nested
+                            properties :
+                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        tags:
+                            type: nested
+                            properties :
+                                tag.translations:
+                                    type: nested
+                                    properties :
+                                        name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                                
+                participate:
+                    persistence:
+                        driver: orm
+                        model: Base\CoreBundle\Entity\FDCPageParticipate
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        repository: Base\CoreBundle\SearchRepository\FDCPageParticipateRepository
+                    mappings:
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                content: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                film:
+                    persistence:
+                        model_to_elastica_transformer:
+                            service: base.transformers.model.film
+                        driver: orm
+                        model: Base\CoreBundle\Entity\FilmFilm
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        repository: Base\CoreBundle\SearchRepository\FilmFilmRepository
+                    mappings:
+                        selectionSection: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                        countries:
+                            type: nested
+                            properties :
+                                country.translations:
+                                    type: nested
+                                    properties :
+                                        name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 60, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                news:
+                    persistence:
+                        driver: orm
+                        model: Base\CoreBundle\Entity\News
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        repository: Base\CoreBundle\SearchRepository\NewsRepository
+                    mappings:
+                        publishedAt: { type: date }
+                        translations:
+                            type: nested
+                            properties :
+                                title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                introduction: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        theme.translations:
+                            type: nested
+                            properties :
+                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                locale: ~
+                        tags:
+                            type: nested
+                            properties :
+                                tag.translations:
+                                    type: nested
+                                    properties :
+                                        name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
+                                
+                artist:
+                    persistence:
+                        driver: orm
+                        model: Base\CoreBundle\Entity\FilmPerson
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        repository: Base\CoreBundle\SearchRepository\FilmPersonRepository
+                    mappings:
+                        firstname: { boost: 20, search_analyzer: artist_search_analyzer, index_analyzer: artist_index_analyzer, type: string }
+                        lastname: { boost: 20, search_analyzer: artist_search_analyzer, index_analyzer: artist_index_analyzer, type: string }
+                        nationality: { boost: 0, search_analyzer: artist_search_analyzer, index_analyzer: artist_index_analyzer, type: string }
+                        translations:
+                            type: nested
+                            properties :
+                                profession: { boost: 5, search_analyzer: artist_search_analyzer, index_analyzer: artist_search_analyzer, type: string }
+                                locale: ~

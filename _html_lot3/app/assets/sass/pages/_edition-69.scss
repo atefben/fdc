@@ -4,3 +4,14 @@
     padding-bottom: 56px;
   }
 }
+
+.poster, .palmares{
+
+  .block-push-top {
+
+    .vFlexAlign {
+      height: calc( 100% - 42px );
+    }
+  }
+
+}

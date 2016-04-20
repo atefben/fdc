@@ -9,45 +9,51 @@
             </a>
         </li>
         <li>
-            <a href="#" data-ajax="searchArtists.html" class="artists ajax">
+            <a href="#" data-ajax="ajax/artist/{{ searchTerm }}" class="artists ajax">
                 {{ 'search.result.category.artistes'|trans }}
-                <span>{{ searchResult.category.artist|length }}</span>
+                <span>{{ searchResult.count.artist }}</span>
             </a>
         </li>
         <li>
-            <a href="#" data-ajax="searchFilms.html" class="films ajax">
+            <a href="#" data-ajax="ajax/film/{{ searchTerm }}" class="films ajax">
                 {{ 'search.result.category.films'|trans }}
-                <span>{{ searchResult.category.film|length }}</span>
+                <span>{{ searchResult.count.film }}</span>
             </a>
         </li>
         <li>
-            <a href="#" data-ajax="searchNews.html" class="news ajax">
+            <a href="#" data-ajax="ajax/news/{{ searchTerm }}" class="news ajax">
                 {{ 'search.result.category.actualites'|trans }}
-                <span>{{ searchResult.category.actualite|length }}</span>
+                <span>{{ searchResult.count.actualite }}</span>
             </a>
         </li>
         <li>
-            <a href="#" data-ajax="searchCommuniques.html" class="communiques ajax">
+            <a href="#" data-ajax="ajax/info/{{ searchTerm }}" class="infos ajax">
+                {{ 'search.result.category.infos'|trans }}
+                <span>{{ searchResult.count.info }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" data-ajax="ajax/statement/{{ searchTerm }}" class="communiques ajax">
                 {{ 'search.result.category.communiques'|trans }}
-                <span>{{ searchResult.category.info|length }}</span>
+                <span>{{ searchResult.count.statement }}</span>
             </a>
         </li>
         <li>
-            <a href="#" data-ajax="searchMedias.html" class="medias ajax">
+            <a href="#" data-ajax="ajax/media/{{ searchTerm }}" class="medias ajax">
                 {{ 'search.result.category.medias'|trans }}
-                <span>{{ searchResult.category.media|length }}</span>
+                <span>{{ searchResult.count.media }}</span>
             </a>
         </li>
         <li>
-            <a href="#" data-ajax="searchEvents.html" class="events ajax">
+            <a href="#" data-ajax="ajax/event/{{ searchTerm }}" class="events ajax">
                 {{ 'search.result.category.evenements'|trans }}
-                <span>{{ searchResult.category.event|length }}</span>
+                <span>{{ searchResult.count.event }}</span>
             </a>
         </li>
         <li>
-            <a href="#" data-ajax="searchParticipate.html" class="participate ajax">
+            <a href="#" data-ajax="ajax/participate/{{ searchTerm }}" class="participate ajax">
                 {{ 'search.result.category.participer'|trans }}
-                <span>{{ searchResult.category.participate|length }}</span>
+                <span>{{ searchResult.count.participate }}</span>
             </a>
         </li>
     </ul>

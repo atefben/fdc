@@ -1,0 +1,22 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% for article in items %}
+<article class="article" data-format="article" data-theme="competition">
+  <div class="image">
+    <div class="image-wrapper">
+        <img src='{% path article.header|trans_fallback('file'), '976x615' %}' alt="{{ article.header|trans_fallback('alt') }}"/>
+    </div>
+    <a href="article.php" class="linkImage"></a>
+    <span class="picto"><i class="icon icon_article"></i>
+</span>
+  </div>
+  <div class="info">
+    <a href="#" class="category">{{ article.theme|trans_fallback('name') }}</a>
+    <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
+    <h2>
+        <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': 'communique' }) }}">
+            {{ article|trans_fallback('title')|truncate(40) }}
+        </a>
+    </h2>
+  </div>
+</article>
+{% endfor %}
