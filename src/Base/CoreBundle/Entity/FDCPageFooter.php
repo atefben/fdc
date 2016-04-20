@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * FDCPageFooter
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCPageFooterRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FDCPageFooter implements TranslateMainInterface
@@ -57,7 +57,12 @@ class FDCPageFooter implements TranslateMainInterface
             'Mentions légales',
             'Crédits',
         );
-        return $names[$this->getId() - 1];
+
+        if($this->getId() < 3) {
+            return $names[$this->getId() - 1];
+        } else {
+            return $this->findTranslationByLocale('fr')->getTitle();
+        }
     }
 
     /**

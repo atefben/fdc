@@ -19,6 +19,9 @@
             <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 <div class="row">
                     {% if form.vars.default_locale == locale %}
+                        {% if translationsFields.vars.value.slug is defined %}
+                            <div id="btn-preview" data-preview="{{ translationsFields.vars.value.slug }}"></div>
+                        {% endif %}
                         <div class="col-md-12">
                             <div class="box box-success">
                                 <div class="box-header">

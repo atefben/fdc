@@ -3126,17 +3126,13 @@ Copyright (c) 2015 Daniel Eden
   animation-name: slideOutUp;
 }
 
-.quote.italic {
-  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-}
-
 sub {
   vertical-align: super;
-  font-size: .59rem;
+  font-size: .5rem;
 }
 
 .italic {
-  font-size: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
 }
 
 .dark figcaption {
@@ -3156,6 +3152,9 @@ sub {
   text-align: center;
   text-transform: uppercase;
   color: #141414;
+}
+.dark .title {
+  color: #fff;
 }
 
 .title-2 {
@@ -3245,6 +3244,9 @@ sub {
   margin-bottom: 19px;
   padding-top: 60px;
 }
+.bright .title-9 {
+  color: #4f4f4f;
+}
 
 .title-10 {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -3274,6 +3276,82 @@ sub {
   font-size: .625rem;
   line-height: 14px;
   text-transform: uppercase;
+}
+
+.title-14 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #c8a461;
+  font-size: .625rem;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 39px;
+}
+.title-14 .date {
+  color: #666666;
+  margin-left: 3px;
+}
+
+.title-15 {
+  color: #0c0c0c;
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  line-height: 60px;
+  display: block;
+  text-align: center;
+  margin-bottom: 44px;
+  padding: 0px 155px;
+}
+
+.title-16 {
+  color: #0c0c0c;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 1.375rem;
+  line-height: 36px;
+  display: block;
+  text-align: center;
+  margin-bottom: 54px;
+  margin-top: 70px;
+}
+
+.title-17 {
+  color: #999999;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: .6875rem;
+  line-height: 18px;
+}
+
+.quote {
+  padding: 30px 90px;
+  color: #141414;
+  text-align: center;
+  font-size: 1.5rem;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  margin-top: 69px;
+  margin-bottom: 69px;
+  line-height: 32px;
+}
+
+.quote-02 {
+  color: #666666;
+  font-size: 1rem;
+  line-height: 26px;
+}
+
+.by-author {
+  font-size: .75rem;
+  color: #666666;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  line-height: 24px;
+  margin-top: 59px;
+  padding-top: 11px;
+  border-top: 1px solid #e5e5e5;
+  display: block;
+}
+.by-author strong {
+  color: #141414;
 }
 
 .texte-01 {
@@ -3329,12 +3407,14 @@ sub {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #fff;
   display: block;
-  letter-spacing: .1rem;
   text-align: center;
   line-height: 36px;
 }
 .contain-title .title-02 strong {
   color: #c8a461;
+}
+.bright .contain-title .title-02 {
+  color: #141414;
 }
 
 figcaption, .caption {
@@ -3421,12 +3501,47 @@ a {
   border-color: #292929;
   color: #c8a461;
 }
+.bright .buttons-01 .button {
+  border-color: #e8e8e8;
+}
 .buttons-01 .button:hover {
   border-color: #c8a461;
   background-color: rgba(255, 255, 255, 0);
 }
 .buttons-01 .button:hover + a {
   border-left-color: #c8a461;
+}
+
+.arrows {
+  opacity: 0;
+  transition: .3s;
+}
+.arrows.visible {
+  opacity: 1;
+}
+.arrows .next, .arrows .prev {
+  font-size: .55rem;
+  color: #030303;
+  height: 80px;
+  width: 80px;
+  line-height: 80px;
+  text-align: center;
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid #e5e5e5;
+  position: fixed;
+  transition: .5s;
+}
+.arrows .next:hover, .arrows .prev:hover {
+  border-color: #030303;
+}
+.arrows .next {
+  top: 42%;
+  right: 1%;
+}
+.arrows .prev {
+  left: 1%;
+  top: 42%;
 }
 
 .single-button {
@@ -3694,14 +3809,24 @@ video {
 .border-bottom {
   border-bottom: 1px solid #2C2C2C;
 }
+.bright .border-bottom {
+  border-color: #e5e5e5;
+}
 
 .border-top {
   border-top: 1px solid #2C2C2C;
+}
+.bright .border-top {
+  border-color: #e5e5e5;
 }
 
 .padding-bottom {
   padding-bottom: 70px;
   display: block;
+}
+
+.small-padding {
+  padding-bottom: 25px;
 }
 
 .info {
@@ -3730,7 +3855,7 @@ video {
   display: inline-block;
   font-size: 0.625rem;
 }
-.info h2 {
+.info strong {
   color: #333;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   font-size: 1.125rem;
@@ -3739,9 +3864,11 @@ video {
   line-height: 1.3em;
   margin: 15px auto 0;
   text-align: center;
+  display: block;
+  box-sizing: border-box;
 }
-.info h2 a {
-  color: #333;
+.info strong a {
+  color: #141414;
 }
 .info h3 {
   color: #333;
@@ -3807,7 +3934,7 @@ video {
 .block-01-s {
   margin: 40px auto;
   max-width: 100%;
-  width: 790px;
+  width: 830px;
   margin-bottom: 20px;
 }
 .block-01-s img {
@@ -3860,7 +3987,8 @@ video {
 }
 .block-push .link .icon {
   font-size: .5rem;
-  vertical-align: middle;
+  vertical-align: top;
+  margin-right: 4px;
 }
 .block-push p {
   color: #f6f6f6;
@@ -3961,7 +4089,7 @@ video {
   position: relative;
 }
 .block-push-top .vFlexAlign {
-  height: calc( 100% - 42px );
+  height: 100%;
 }
 .block-push-top .txts {
   text-align: center;
@@ -3978,7 +4106,7 @@ video {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   color: #fff;
   display: block;
-  letter-spacing: .5rem;
+  letter-spacing: 0.85rem;
 }
 .block-push-top .title-4 {
   font-size: .75rem;
@@ -4347,6 +4475,21 @@ video {
   width: 76px;
   border-color: #222222;
 }
+.bright .block-social-network-all a {
+  border-color: #e7e7e7;
+}
+.bright .block-social-network-all a:first-child {
+  border-left: 1px solid #e7e7e7;
+}
+.bright .block-social-network-all a:last-child {
+  border-color: #e7e7e7;
+}
+.bright .block-social-network-all a:hover {
+  border-color: #c8a461;
+}
+.bright .block-social-network-all a:hover + a {
+  border-left-color: #c8a461;
+}
 .block-social-network-all a:first-child {
   border-left: 1px solid #222222;
 }
@@ -4371,6 +4514,25 @@ video {
   flex-direction: column;
   justify-content: initial;
   text-align: center;
+}
+
+.block-poster-01 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.block-poster-01 .item {
+  margin: 0 28px;
+}
+.block-poster-01 .contain-txt {
+  height: 117px;
+}
+.block-poster-01 strong {
+  display: block;
+  text-align: center;
+}
+.block-poster-01 img {
+  margin-bottom: 20px;
 }
 
 @font-face {
@@ -7039,7 +7201,7 @@ header #searchContainer {
   display: inline-block;
   font-size: 0.625rem;
 }
-.card .info h2 {
+.card .info strong {
   max-width: 75%;
 }
 .card.double {
@@ -7047,7 +7209,7 @@ header #searchContainer {
   padding-left: 0;
   width: 68%;
 }
-.card.double h2 {
+.card.double strong {
   font-size: 1.875rem;
   line-height: 1.3em;
   margin-top: 20px;
@@ -7503,4 +7665,12 @@ header #searchContainer {
 
 .edition-69 figure.padding-bottom {
   padding-bottom: 56px;
+}
+
+.poster .block-push-top .vFlexAlign, .palmares .block-push-top .vFlexAlign, .article .block-push-top .vFlexAlign {
+  height: calc( 100% - 42px );
+}
+
+.article .buttons-01 {
+  margin-bottom: 70px;
 }

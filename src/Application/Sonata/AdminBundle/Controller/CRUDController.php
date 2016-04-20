@@ -19,10 +19,7 @@ class CRUDController extends BaseController
     {
         $url = false;
 
-        if (null !== $this->get('request')->get('btn_update_and_list')) {
-            $url = $this->admin->generateUrl('list');
-        }
-        if (null !== $this->get('request')->get('btn_create_and_list')) {
+        if (isset($_GET['list']) && $_GET['list'] == true) {
             $url = $this->admin->generateUrl('list');
         }
 
@@ -33,6 +30,7 @@ class CRUDController extends BaseController
             }
             $url = $this->admin->generateUrl('create', $params);
         }
+
 
         if ($this->getRestMethod() == 'DELETE') {
             $url = $this->admin->generateUrl('list');

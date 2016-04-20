@@ -1,0 +1,15 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% for event in items %}
+    <article data-theme="competition" data-format="article" class="article">
+      <div class="image">
+        <div class="image-wrapper">
+          <img src='{% path event.header|trans_fallback('file'), '976x615' %}' alt="{{ event.header|trans_fallback('alt') }}"/>
+        </div>
+        <a class="linkImage" href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug') }) }}"></a>
+      </div>
+      <div class="info">
+        <a class="category" href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug') }) }}">{{ event.theme|trans_fallback('name') }}</a>
+        <h2><a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug') }) }}">{{ event|trans_fallback('title') }}</a></h2>
+      </div>
+    </article>
+{% endfor %}

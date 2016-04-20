@@ -220,3 +220,5 @@ parameters:
     admin_fdc_footer_confidentialite_id: 1
     admin_fdc_footer_mentions_legales_id: 2
     admin_fdc_footer_credits_id: 3
+    fos_elastica_host: localhost
+    fos_elastica_port: 9200

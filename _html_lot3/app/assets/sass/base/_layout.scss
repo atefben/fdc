@@ -18,7 +18,7 @@ body {
   background-color: $black;
   font-family: $CamphorRegular;
   font-size: 16px;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 ::-moz-selection {
@@ -254,15 +254,27 @@ video{
 
 .border-bottom{
   border-bottom:  1px solid #2C2C2C;
+
+  .bright & {
+    border-color: #e5e5e5;
+  }
 }
 
 .border-top{
   border-top:  1px solid #2C2C2C;
+
+  .bright & {
+    border-color: #e5e5e5;
+  }
 }
 
 .padding-bottom{
   padding-bottom: 70px;
   display: block;
+}
+
+.small-padding{
+  padding-bottom: 25px;
 }
 
 .info {
@@ -294,7 +306,7 @@ video{
     font-size: 0.625rem;
   }
 
-  h2 {
+  strong {
     color: #333;
     font-family: $CamphorMedium;
     font-size: 1.125rem;
@@ -303,9 +315,12 @@ video{
     line-height: 1.3em;
     margin: 15px auto 0;
     text-align: center;
+    display: block;
+    // padding: 0px 20px;
+    box-sizing: border-box;
 
     a {
-      color: #333;
+      color: #141414;
     }
   }
 

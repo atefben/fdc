@@ -9,17 +9,14 @@
 // =========================
 
 
-.quote.italic {
-  font-family: $CamphorItalic;
-}
 
 sub {
   vertical-align: super;
-  font-size:.59rem;
+  font-size:.5rem;
 }
 
 .italic {
-  font-size: $CamphorItalic;
+  font-family: $CamphorItalic;
 }
 
 .dark {
@@ -43,6 +40,10 @@ sub {
   text-align: center;
   text-transform: uppercase;
   color:#141414;
+
+  .dark & {
+    color:#fff;
+  }
 }
 
 .title-2 {
@@ -131,6 +132,10 @@ sub {
   text-align: center;
   margin-bottom: 19px;
   padding-top: 60px;
+
+  .bright &{
+    color: #4f4f4f;
+  }
 }
 
 .title-10 {
@@ -161,6 +166,86 @@ sub {
   font-size: .625rem; //10px
   line-height: 14px;
   text-transform: uppercase;
+}
+
+.title-14{
+  font-family: $CamphorBold;
+  color:$gold;
+  font-size: .625rem;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 39px;
+
+  .date{
+    color:#666666;
+    margin-left: 3px;
+  }
+}
+
+.title-15{
+  color:#0c0c0c;
+  font-family: $CamphorThin;
+  font-size: 3rem;
+  line-height: 60px;
+  display: block;
+  text-align: center;
+  margin-bottom: 44px;
+  padding: 0px 155px;
+}
+
+
+.title-16{
+  color:#0c0c0c;
+  font-family: $CamphorRegular;
+  font-size: 1.375rem;
+  line-height: 36px;
+  display: block;
+  text-align: center;
+  margin-bottom: 54px;
+  margin-top: 70px;
+}
+
+.title-17{
+  color:#999999;
+  font-family: $CamphorRegular;
+  font-size: .6875rem;
+  line-height: 18px;
+}
+
+
+.quote{
+  padding: 30px 90px;
+  color:#141414;
+  text-align: center;
+  font-size: 1.5rem;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  margin-top: 69px;
+  margin-bottom: 69px;
+  line-height: 32px;
+}
+
+.quote-02{
+  color:#666666;
+  font-size:1rem;
+  line-height: 26px;
+}
+
+.by-author{
+  font-size: .75rem;
+  color:#666666;
+  font-family: $CamphorMedium;
+  line-height: 24px;
+  margin-top: 59px;
+  padding-top: 11px;
+  border-top: 1px solid #e5e5e5;
+  display: block;
+
+  strong{
+    color:#141414;
+  }
 }
 
 .texte-01 {
@@ -220,12 +305,16 @@ sub {
     font-family: $CamphorBold;
     color: #fff;
     display:block;
-    letter-spacing: .1rem;
+    // letter-spacing: .1rem;
     text-align: center;
     line-height: 36px;
 
     strong{
       color:$gold;
+    }
+
+    .bright &{
+      color: #141414;
     }
   }
 }
@@ -319,6 +408,10 @@ a {
     border-color:#292929;
     color:$gold;
 
+    .bright & {
+      border-color: #e8e8e8;
+    }
+
     &:hover {
       border-color:$gold;
       background-color: rgba(255, 255, 255, 0);
@@ -327,6 +420,43 @@ a {
     &:hover + a {
       border-left-color: $gold;
     }
+  }
+}
+
+.arrows {
+  opacity: 0;
+  transition: .3s;
+
+  &.visible{
+    opacity: 1;
+  }
+
+  .next, .prev {
+    font-size: .55rem;
+    color:#030303;
+    height: 80px;
+    width: 80px;
+    line-height: 80px;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+    border:1px solid #e5e5e5;
+    position: fixed;
+    transition: .5s;
+
+    &:hover {
+      border-color:#030303;
+    }
+  }
+
+  .next {
+    top:42%;
+    right: 1%;
+  }
+
+  .prev {
+    left:1%;
+    top:42%;
   }
 }
 

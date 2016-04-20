@@ -10066,7 +10066,7 @@ header #searchContainer {
   margin: 0 auto;
   height: auto;
   max-height: 100%;
-  width: auto;
+  width: 100%;
   bottom: -10%;
   left: 0;
   right: 0;
@@ -11368,10 +11368,18 @@ article .read-later.rAlign span:after {
   .single-movie .palmares {
     margin-top: 34px;
   }
+
+  #prefooter .bottom img {
+    width:100%;
+  }
 }
 @media screen and (max-width: 1024px) {
   .single-movie .palmares {
     margin-top: 34px;
+  }
+
+  #prefooter .bottom img {
+    width:100%;
   }
 }
 .single-movie .nav {
