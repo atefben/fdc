@@ -32,6 +32,7 @@ $(document).ready(function() {
 
   if($('.article').length) {
     owInitNavSticky(1);
+    owArrowDisplay();
   }
 
   if($('.retrospective.palmares').length) {

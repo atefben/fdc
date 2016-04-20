@@ -3512,6 +3512,13 @@ a {
   border-left-color: #c8a461;
 }
 
+.arrows {
+  opacity: 0;
+  transition: .3s;
+}
+.arrows.visible {
+  opacity: 1;
+}
 .arrows .next, .arrows .prev {
   font-size: .55rem;
   color: #030303;

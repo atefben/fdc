@@ -424,6 +424,13 @@ a {
 }
 
 .arrows {
+  opacity: 0;
+  transition: .3s;
+
+  &.visible{
+    opacity: 1;
+  }
+
   .next, .prev {
     font-size: .55rem;
     color:#030303;
