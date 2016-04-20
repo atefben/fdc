@@ -40,7 +40,7 @@
                             {{ menu.transName|trans }}
                         </a>
                     {% endif %}
-                    {% if menu['__children'] is defined %}
+                    {% if menu['__children'] is defined and menu['__children']|length > 0  %}
                     <ul class="tcenter">
                         {% for child in menu['__children'] %}
                             {% if child.enabled %}

@@ -37,6 +37,7 @@
                                 {% endif %}
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(form.parent.children.id) }}
                                         {{ form_row(translationsFields.title) }}
                                         {{ form_row(form.parent.children.theme) }}
                                         {{ form_row(form.parent.children.header) }}
@@ -48,6 +49,18 @@
                             {% else %}
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Identifiant
+                                            </label>
+                                            <div>
+                                                {% if translationsFields.vars.value is not empty and
+                                                translationsFields.vars.value.translatable is not empty
+                                                %}
+                                                    {{ translationsFields.vars.value.translatable.id }}
+                                                {% endif %}
+                                            </div>
+                                        </div>
                                         {{ form_row(translationsFields.title) }}
                                         <div class="form-group">
                                             <label class="control-label">
@@ -593,7 +606,7 @@
                                                             {{ 'form.label_header_gallery'|trans }}
                                                         </label>
                                                         <div>
-                                                            {% if widget.children.gallery.vars.data %}
+                                                            {% if widget.children.gallery.vars.data is not empty %}
                                                                 {% for media in widget.children.gallery.vars.data.medias %}
                                                                     <div class="form-group">
                                                                         <label>Media {{ loop.index }}</label>

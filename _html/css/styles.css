@@ -9932,7 +9932,7 @@ header #searchContainer {
   position: absolute;
   min-width: 100%;
   min-height: 100%;
-  width: 100%;
+  width: auto;
   height: auto;
   -moz-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -10432,7 +10432,7 @@ article .read-later.rAlign span:after {
 .single-article.single-actualite .small-container > div.single-photo, .single-article.single-actualite .small-container > div.single-video, .single-article.single-actualite .small-container > div.single-gallery, .single-article.single-actualite .small-container > div.chapeau {
   width: 100%;
 }
-.single-article.single-actualite .small-container > div.half-div, .single-article.single-actualite .small-container > div.slideshow {
+.single-article.single-actualite .small-container > div.half-div, .single-article.single-actualite .small-container > div.single-photo.large-photo, .single-article.single-actualite .small-container > div.slideshow {
   width: 730px;
 }
 .single-article .print {
@@ -10564,7 +10564,7 @@ article .read-later.rAlign span:after {
 }
 .single-article .half-photo img {
   display: block;
-  max-width: 100%;
+  max-width: 330px;
 }
 .single-article .half-photo .caption {
   color: #666;
