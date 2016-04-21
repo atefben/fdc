@@ -3,27 +3,56 @@
     {% if class(media) == "MediaImage" %}
         {% set title = media|trans_fallback('legend') %}
         {% set format = 'photo' %}
+        {% set link = path('fdc_event_news_getphotos') %}
     {% elseif class(media) == "MediaVideo" %}
         {% set title = media|trans_fallback('title') %}
         {% set format = 'video' %}
+        {% set link = path('fdc_event_news_getvideos') %}
     {% elseif class(media) == "MediaAudio" %}
         {% set title = media|trans_fallback('title') %}
         {% set format = 'audio' %}
+        {% set link = path('fdc_event_news_getaudios') %}
     {% endif %}
     
     
     <article data-theme="competition" data-format="{{ format }}" class="audio">
         <div class="image">
             <div class="image-wrapper">
-                <img alt="" src="img/articles/03.jpg">
+                
+                {% set trans = media.findTranslationByLocale(app.request.locale) %}
+                {% set transImage = null %}
+                {% set amazonImage = null %}
+                
+                {% if trans is null or trans.file is null %}
+                    {% set trans = media.findTranslationByLocale('fr') %}
+                {% endif %}
+                
+                {% if media.header is not null %}
+                    {% set transImage = media.header.findTranslationByLocale(app.request.locale) %}
+                    {% if transImage is null %}
+                        {% set transImage = media.header.findTranslationByLocale('fr') %}
+                    {% endif %}
+                {% elseif media.image %}
+                    {% set transImage = media.image.findTranslationByLocale(app.request.locale) %}
+                    {% if transImage is null %}
+                        {% set transImage = media.image.findTranslationByLocale('fr') %}
+                    {% endif %}
+                {% elseif class(media) == 'MediaVideo' and  media|trans_fallback('imageAmazonUrl') %}
+                    {% set amazonImage = s3_server_video ~ media|trans_fallback('imageAmazonUrl') %}
+                {% endif %}
+                
+                {% if transImage is defined or amazonImage is defined %}
+                    
+                {% endif %}
+                <img src="{% if transImage is not null %}{% path transImage.file , '976x615' %}" alt="{{ transImage|trans_fallback('alt') }}{% elseif amazonImage is not null %}{{ amazonImage }}" alt="{% endif %}">
             </div>
-            <a class="linkImage" href="article.php"></a>
+            <a class="linkImage" href="{{ link }}"></a>
             <span class="picto"><i class="icon icon_{{ format }}"></i></span>
         </div>
         <div class="info">
             <a class="category" href="#">{{ media.theme|trans_fallback('name') }}</a>
             <span class="date">{{ media.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ media.publishedAt|date('H:i') }}</span>
-            <h2><a href="article.php">{{ title }}</a></h2>
+            <h2><a href="{{ link }}">{{ title }}</a></h2>
         </div>
     </article>
 {% endfor %}
