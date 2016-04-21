@@ -31,17 +31,17 @@ class SearchController extends Controller
     /**
      *
      * @Route("/search/ajax/{searchFilter}/{searchTerm}")
-     * @Template("FDCEventBundle:Global:search.html.twig")
      * @param Request $request
      * @param $searchTerm
      * @return array
      */
     public function searchAjaxAction($_locale, $searchFilter, $searchTerm = null) 
     {
-        $eventResults = $this->getSearchResults($_locale, $searchFilter, $searchTerm);
+        $searchResults = $this->getSearchResults($_locale, $searchFilter, $searchTerm);
         
         return $this->render("FDCEventBundle:Search:{$searchFilter}.html.twig", array(
-          'items' => $eventResults['items'],
+          'items' => $searchResults['items'],
+          'searchFilters' => $this->getSearchFilters($searchFilter, $searchResults['items']),
         ));
     }
     
@@ -57,7 +57,7 @@ class SearchController extends Controller
       $this->searchAutocompleteAction($_locale, $searchTerm);
       
       $newsResults = $this->getSearchResults($_locale, 'news', $searchTerm, 4);
-      $infoResults = $this->getSearchResults($_locale, 'info', $searchTerm, 50);
+      $infoResults = $this->getSearchResults($_locale, 'info', $searchTerm, 4);
       $statementResults = $this->getSearchResults($_locale, 'statement', $searchTerm, 2);
       $eventResults = $this->getSearchResults($_locale, 'event', $searchTerm, 2);
       $mediaResults = $this->getSearchResults($_locale, 'media', $searchTerm, 2);
@@ -93,55 +93,15 @@ class SearchController extends Controller
         } else {
             $searchResult = $result[$resultFilter];
         }
-        
-
-        $searchFilters = array(
-            'date' => array(
-                array(
-                    'createdAt' => new \DateTime(),
-                    'publishedAt' => new \DateTime()
-                )
-            ),
-            'format' => array(
-                array(
-                    'name' => 'Photo',
-                    'slug' => 'photo'
-                ),
-                array(
-                    'name' => 'Vidéo',
-                    'slug' => 'video'
-                ),
-                array(
-                    'name' => 'Audio',
-                    'slug' => 'audio'
-                ),
-                array(
-                    'name' => 'Article',
-                    'slug' => 'article'
-                )
-            ),
-            'theme' => array(
-                array(
-                    'name' => 'Conférence de presse',
-                    'slug' => 'press'
-                ),
-                array(
-                    'name' => 'Montée des marches',
-                    'slug' => 'steps'
-                )
-            )
-        );
 
         return array(
             'searchResult' => $searchResult,
-            'searchFilters' => $searchFilters,
             'searchTerm' => $searchTerm
         );
     }
     
     /**
      * @Route("/searchautocomplete/{searchTerm}", options={"expose"=true})
-     * @Template("FDCEventBundle:Global:search.page.html.twig")
      * @param $searchTerm
      * @return JsonResponse
      */
@@ -239,6 +199,9 @@ class SearchController extends Controller
     
     private function getSearchFilters($type, $items) 
     {
+        if (!count($items)) {
+            return FALSE;
+        }
       
         switch ($type) {
           case 'info':
@@ -258,7 +221,10 @@ class SearchController extends Controller
               'article' => 'article',
             );
             break;
+          default:
+            return FALSE;
         }
+        
         
         $filters = array();
 
@@ -275,12 +241,12 @@ class SearchController extends Controller
         foreach ($items as $item) {
 
             if (!in_array($item->getPublishedAt()->format('Y'), $years)) {
-                $filters['dates'][]['publishedAt'] = $item->getPublishedAt()->format('Y');
+                $filters['date'][]['publishedAt'] = $item->getPublishedAt()->format('Y');
 
                 $years[] = $item->getPublishedAt()->format('Y');
             }
             if (!in_array($item->getTheme()->getSlug(), $themes)) {
-                $filters['themes'][] = array(
+                $filters['theme'][] = array(
                   'slug' => $item->getTheme()->getSlug(),
                   'name' => $item->getTheme()->getName(),
                 );

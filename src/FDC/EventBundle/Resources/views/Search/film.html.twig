@@ -1,40 +1,43 @@
 {% trans_default_domain 'FDCEventBundle' %}
-{% for film in items %}
-<div class="film big">
-    <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}">
-        {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-            film: film,
-            film_format: 'search',
-            film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
-        }) %}
-    </a>
-    <div class="info">
-        <div class="vCenter">
-            <div class="vCenterKid">
-                <h2>
-                    <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}">
-                        {% if film|trans_fallback('title') != null and film.titleVo != null and film|trans_fallback('title')|lower != film.titleVo|lower %}
-                            <span class="name">{{ film.titleVo }}</span>
-                            <span class="sub-name">({{ film|trans_fallback('title') }})</span>
-                        {% else %}
-                            <span class="name">{{ film|trans_fallback('title')?:film.titleVo }}</span>
-                        {% endif %}
-                    </a>
-                </h2>
-                <span class="category">{{ film.selectionSection|trans_fallback('name') }}</span>
-                {% if film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                    {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                    {%- for key,director in directors -%}
-                        {%- if director -%}
+{% extends 'FDCEventBundle:Search:base.html.twig' %}
+{% block content %}
+    {% for film in items %}
+        <div class="film big">
+            <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}">
+                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                film: film,
+                film_format: 'search',
+                film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
+            }) %}
+            </a>
+            <div class="info">
+                <div class="vCenter">
+                    <div class="vCenterKid">
+                        <h2>
+                            <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}">
+                                {% if film|trans_fallback('title') != null and film.titleVo != null and film|trans_fallback('title')|lower != film.titleVo|lower %}
+                                    <span class="name">{{ film.titleVo }}</span>
+                                    <span class="sub-name">({{ film|trans_fallback('title') }})</span>
+                                {% else %}
+                                    <span class="name">{{ film|trans_fallback('title')?:film.titleVo }}</span>
+                                {% endif %}
+                            </a>
+                        </h2>
+                        <span class="category">{{ film.selectionSection|trans_fallback('name') }}</span>
+                        {% if film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                            {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                            {%- for key,director in directors -%}
+                            {%- if director -%}
                             {{ loop.first == true ? '' : ',' }}
                             <a class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">
-                            {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}
+                                {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}
                             </a>
-                        {%- endif -%}
-                    {%- endfor -%}
-                {% endif %}
+                            {%- endif -%}
+                            {%- endfor -%}
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-{% endfor %}
+    {% endfor %}
+{% endblock %}

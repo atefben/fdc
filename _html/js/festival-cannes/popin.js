@@ -100,7 +100,7 @@ function initPopinMail(cls){
             // TODO envoie du mail //
             $(cls).find('#form').remove();
             $(cls).find('.info-popin').remove();
-            $(cls).find('.contain-popin').append('<div class="valid">' + GLOBALS.texts.popin.valid + '</div>');
+            $(cls).find('#msg').append('<div class="valid">' + GLOBALS.texts.popin.valid + '</div>');
             $(cls).css('height', '31%');
             return false;
           }

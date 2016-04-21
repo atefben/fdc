@@ -1,4 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle:Search:base.html.twig' %}
+{% block content %}
 {% for article in items %}
 <article class="article" data-format="article" data-theme="competition">
   <div class="image">
@@ -107,3 +109,4 @@
   </div>
 </article>
 {% endfor %}
+{% endblock %}

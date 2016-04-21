@@ -1,119 +1,122 @@
 {% trans_default_domain 'FDCEventBundle' %}
-{% for article in items %}
-    <article class="article {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-theme="{{ article.theme|trans_fallback('slug') }}">
-        <div class="image{% if type is defined and type == 'same-day' %} image-sameday-wrapper{% endif %}">
-            <div class="image-wrapper">
-            {% if type is defined %}
-                {% if type == 'focus' %}
-                    {% set gabarit = '918x580' %}
-                {% elseif type == 'same-day' %}
-                    {% set gabarit = '590x370' %}
-                {% endif %}
-            {% else %}
-                {% set gabarit = '1144x724' %}
-            {% endif %}
-            {% if article is news_article %}
-                {% set img = article.header %}
-                {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                {% if trans is null or trans.file is null %}
-                    {% set trans = img.findTranslationByLocale('fr') %}
-                {% endif %}
-                {% set file = trans.file %}
-                {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
-            {% elseif article is news_video %}
-                {% set header = article.header %}
-                {% if header is not null %}
-                    {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
-                    {% if imageTrans is null or imageTrans.file is null %}
-                        {% set imageTrans = article.header.findTranslationByLocale('fr') %}
-                    {% endif %}
-                {% endif %}
-                {% if imageTrans is defined %}
-                    {% set file = imageTrans.file %}
-                    {% set img = article.header %}
-                            {% elseif article.video|trans_fallback('imageAmazonUrl') is not null %}
-                                    {% set imgamazon = s3_server_video ~ article.video|trans_fallback('imageAmazonUrl') %}
-                {% else %}
-                    {% set tmp = article.video %}
-                    {% if tmp is not null %}
-                        {% set trans = tmp.findTranslationByLocale(app.request.locale) %}
-                        {% if trans is null or trans.file is null %}
-                            {% set trans = tmp.findTranslationByLocale('fr') %}
+{% extends 'FDCEventBundle:Search:base.html.twig' %}
+{% block content %}
+    {% for article in items %}
+        <article class="article {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-theme="{{ article.theme|trans_fallback('slug') }}">
+            <div class="image{% if type is defined and type == 'same-day' %} image-sameday-wrapper{% endif %}">
+                <div class="image-wrapper">
+                    {% if type is defined %}
+                        {% if type == 'focus' %}
+                            {% set gabarit = '918x580' %}
+                        {% elseif type == 'same-day' %}
+                            {% set gabarit = '590x370' %}
                         {% endif %}
-                        {% set img = article.video.image %}
-                        {% set file = trans.file %}
+                    {% else %}
+                        {% set gabarit = '1144x724' %}
                     {% endif %}
-                {% endif %}
-                {% if file is defined and imageTrans is defined and imageTrans.file is not null %}
-                    {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
-                            {% elseif imgamazon is defined and imgamazon is not null %}
-                                    <img src="{{ imgamazon }}" alt="" />
-                            {% endif %}
-            {% elseif article is news_audio %}
-                {% set header = article.header %}
-                {% if header is not null %}
-                    {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
-                    {% if imageTrans is null or imageTrans.file is null %}
-                        {% set imageTrans = article.header.findTranslationByLocale('fr') %}
-                    {% endif %}
-                {% endif %}
-                {% if imageTrans is defined and imageTrans.file is not null %}
-                    {% set file = imageTrans.file %}
-                    {% set img = imageTrans %}
-                {% else %}
-                    {% set tmp = article.audio %}
-                    {% if tmp %}
-                        {% set trans = tmp.image.findTranslationByLocale(app.request.locale) %}
-                        {% if trans is null or trans.file is null %}
-                            {% set trans = tmp.image.findTranslationByLocale('fr') %}
-                        {% endif %}
-                        {% set img = trans %}
-                        {% set file = trans.file %}
-                    {% endif %}
-                {% endif %}
-                {% if file is defined %}
-                    {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
-                {% endif %}
-            {% elseif article is news_image %}
-                {% set header = article.header %}
-                {% if header is not null %}
-                    {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
-                    {% if imageTrans is null or imageTrans.file is null %}
-                        {% set imageTrans = article.header.findTranslationByLocale('fr') %}
-                    {% endif %}
-                {% endif %}
-                {% if imageTrans is defined and imageTrans.file is not null %}
-                    {% set img = article.header %}
-                    {% set file = imageTrans.file %}
-                {% else %}
-                    {% if article.gallery and article.gallery.medias|length > 0 %}
-                        {% set img = article.gallery.medias[0].media %}
+                    {% if article is news_article %}
+                        {% set img = article.header %}
                         {% set trans = img.findTranslationByLocale(app.request.locale) %}
                         {% if trans is null or trans.file is null %}
                             {% set trans = img.findTranslationByLocale('fr') %}
                         {% endif %}
                         {% set file = trans.file %}
+                        {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
+                    {% elseif article is news_video %}
+                        {% set header = article.header %}
+                        {% if header is not null %}
+                            {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
+                            {% if imageTrans is null or imageTrans.file is null %}
+                                {% set imageTrans = article.header.findTranslationByLocale('fr') %}
+                            {% endif %}
+                        {% endif %}
+                        {% if imageTrans is defined %}
+                            {% set file = imageTrans.file %}
+                            {% set img = article.header %}
+                        {% elseif article.video|trans_fallback('imageAmazonUrl') is not null %}
+                            {% set imgamazon = s3_server_video ~ article.video|trans_fallback('imageAmazonUrl') %}
+                        {% else %}
+                            {% set tmp = article.video %}
+                            {% if tmp is not null %}
+                                {% set trans = tmp.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = tmp.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set img = article.video.image %}
+                                {% set file = trans.file %}
+                            {% endif %}
+                        {% endif %}
+                        {% if file is defined and imageTrans is defined and imageTrans.file is not null %}
+                            {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
+                        {% elseif imgamazon is defined and imgamazon is not null %}
+                            <img src="{{ imgamazon }}" alt="" />
+                        {% endif %}
+                    {% elseif article is news_audio %}
+                        {% set header = article.header %}
+                        {% if header is not null %}
+                            {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
+                            {% if imageTrans is null or imageTrans.file is null %}
+                                {% set imageTrans = article.header.findTranslationByLocale('fr') %}
+                            {% endif %}
+                        {% endif %}
+                        {% if imageTrans is defined and imageTrans.file is not null %}
+                            {% set file = imageTrans.file %}
+                            {% set img = imageTrans %}
+                        {% else %}
+                            {% set tmp = article.audio %}
+                            {% if tmp %}
+                                {% set trans = tmp.image.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = tmp.image.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set img = trans %}
+                                {% set file = trans.file %}
+                            {% endif %}
+                        {% endif %}
+                        {% if file is defined %}
+                            {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
+                        {% endif %}
+                    {% elseif article is news_image %}
+                        {% set header = article.header %}
+                        {% if header is not null %}
+                            {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
+                            {% if imageTrans is null or imageTrans.file is null %}
+                                {% set imageTrans = article.header.findTranslationByLocale('fr') %}
+                            {% endif %}
+                        {% endif %}
+                        {% if imageTrans is defined and imageTrans.file is not null %}
+                            {% set img = article.header %}
+                            {% set file = imageTrans.file %}
+                        {% else %}
+                            {% if article.gallery and article.gallery.medias|length > 0 %}
+                                {% set img = article.gallery.medias[0].media %}
+                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = img.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set file = trans.file %}
+                            {% endif %}
+                        {% endif %}
+                        {% if file is defined %}
+                            {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-                {% if file is defined %}
-                    {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
-                {% endif %}
-            {% endif %}
-            </div>
-            <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
-            <a href="#" class="read-later">
-                <i class="icon icon_lire-plus-tard"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
-            </a>
-            <span class="picto"><i class="icon icon_{{ article.newsType|get_news_type }}"></i></span>
-        </div>
-        <div class="info">
-            <span class="category">{{ article.theme|trans_fallback('name') }}</span>
-            <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
-            <h2>
-                <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">
-                    {{ article|trans_fallback('title')|truncate(40) }}
+                </div>
+                <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
+                <a href="#" class="read-later">
+                    <i class="icon icon_lire-plus-tard"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
                 </a>
-            </h2>
-        </div>
-    </article>
-{% endfor %}
+                <span class="picto"><i class="icon icon_{{ article.newsType|get_news_type }}"></i></span>
+            </div>
+            <div class="info">
+                <span class="category">{{ article.theme|trans_fallback('name') }}</span>
+                <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
+                <h2>
+                    <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">
+                        {{ article|trans_fallback('title')|truncate(40) }}
+                    </a>
+                </h2>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock %}
