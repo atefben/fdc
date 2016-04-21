@@ -19,10 +19,14 @@ $(document).ready(function() {
 
   $('body').on('click', '#suggest li', function(e) {
     var link = $(this).data('link');
-    window.location = link;
+    if (typeof link !== "undefined" && link != "") {
+      window.location = link;
+    } else {
+      e.preventDefault();
+    }
   });
 
-  $('.suggestSearch').on('input', function(e) {
+  $('#inputSearch').on('input', function(e) {
     var value = $(this).val();
     var $suggest = $(this).parent().next();
     var noWhitespaceValue = value.replace(/\s+/g, '');
@@ -39,20 +43,24 @@ $(document).ready(function() {
 
       $.ajax({
         type: "GET",
-        url: GLOBALS.urls.searchUrl,
-        data: {
-          "searchTerm": value 
-        },
+        url: GLOBALS.urls.searchUrl+'/'+encodeURIComponent(value),
         success: function(data) {
-          for (var i=0; i<data.length; i++) {
-            var type = data[i].type,
-                name = data[i].name,
-                link = data[i].link;
+          if(data.length > 0) {
+            for (var i=0; i<data.length; i++) {
+              var type = data[i].type,
+                  name = data[i].name,
+                  link = data[i].link;
 
-            var txt = name.toLowerCase();
-            txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
-            $suggest.append('<li data-link="' + link + '"><span>' + type + '</span>' + txt + '</li>');
+              var txt = name.toLowerCase();
+              txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
+              $suggest.append('<li data-link="' + link + '"><span>' + type + '</span>' + txt + '</li>');
+            }
+          } else {
+            $suggest.append('<li>' + GLOBALS.texts.search.noresult + '</li>')
           }
+        },
+        error: function() {
+          $suggest.append('<li>' + GLOBALS.texts.search.noresult + '</li>')
         }
       });
     }
@@ -155,9 +163,8 @@ $(document).ready(function() {
 
     $.ajax({
       type: "GET",
-      url: 'results.json', //TODO  a revoir//
+      url: GLOBALS.urls.searchUrl+'/'+encodeURIComponent($('.searchpage #inputSearch').val()),
       success: function(data) {
-
         if(data.all.count == 0) {
           $('#noResult').show();
           return false;

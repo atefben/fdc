@@ -34,7 +34,7 @@ class MediaImageRepository extends TranslationRepository
     {
         $qb = $this
             ->createQueryBuilder('mi')
-            ->join('mi.translations', 't')
+            ->join('mi.translations', 'mit')
             ->andWhere('mi.festival = :festival')
             ->setParameter('festival', $festival)
         ;
@@ -64,7 +64,7 @@ class MediaImageRepository extends TranslationRepository
             ;
         }
 
-        $this->addTranslationQueries($qb, 't', $locale, null, true);
+        $this->addTranslationQueries($qb, 'mit', $locale, null, true);
         return $qb->getQuery()->getResult();
     }
 }

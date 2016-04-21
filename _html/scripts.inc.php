@@ -26,6 +26,9 @@ var GLOBALS = {
     "url" : {
       "title" : "titre test"
     },
+    "search" : {
+      "noresult" : "Aucun résultat"
+    },
     "popin" : {
       "error" : "valide",
       "empty" : "renseignée",

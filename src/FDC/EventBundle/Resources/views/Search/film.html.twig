@@ -4,7 +4,7 @@
     <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}">
         {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
             film: film,
-            film_format: 'small',
+            film_format: 'search',
             film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
         }) %}
     </a>

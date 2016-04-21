@@ -4182,6 +4182,31 @@ video {
   transform: rotate(180deg);
   font-size: 1.4rem;
 }
+@media screen and (min-width: 1920px) {
+  .block-push-top {
+    height: 448px !important;
+  }
+}
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .block-push-top {
+    height: 373px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+  .block-push-top {
+    height: 297px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .block-push-top {
+    height: 296px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .block-push-top {
+    height: 296px !important;
+  }
+}
 
 .block-legend {
   padding: 25px 0;
@@ -4332,6 +4357,7 @@ video {
 }
 .block-movie-preview .poster {
   display: inline-block;
+  width: 100%;
 }
 .block-movie-preview .infos {
   display: flex;
@@ -4481,7 +4507,7 @@ video {
 }
 .block-social-network a {
   line-height: 76px;
-  height: 100%;
+  height: 76px;
   color: #c8a461;
   width: 25%;
   display: inline-block;
@@ -4509,9 +4535,12 @@ video {
   width: 380px;
   margin: 0 auto;
   padding-bottom: 60px;
+  height: 76px;
+  box-sizing: inherit;
 }
 .block-social-network-all a {
   width: 76px;
+  height: 76px;
   border-color: #222222;
 }
 .bright .block-social-network-all a {
@@ -7278,6 +7307,7 @@ header #searchContainer {
 .card .info {
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
+  height: 44px;
 }
 .card .info .category {
   color: #c8a461;
@@ -7427,6 +7457,61 @@ header #searchContainer {
   height: 329px;
 }
 
+.card-01 {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  height: 201px;
+  position: relative;
+}
+.card-01.double .image {
+  margin-bottom: 0px;
+  height: 100%;
+}
+.card-01.double.w2 {
+  height: 402px;
+  padding-left: 0px;
+}
+.card-01.double.w2 .image {
+  height: 100%;
+}
+.card-01 .image {
+  margin-bottom: 0px;
+  height: 100%;
+}
+.card-01 .info {
+  position: absolute;
+  text-align: left;
+  bottom: 20px;
+  left: 20px;
+  z-index: 3;
+}
+.card-01 .info strong {
+  font-size: .875rem;
+  margin: 0px 0px;
+  max-width: 100%;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  text-align: left;
+  margin-left: 55px;
+}
+.card-01 .info strong a {
+  color: #fff;
+}
+.card-01 .info .category {
+  margin-left: 55px;
+}
+.card-01 .info span {
+  color: #9c9c9b;
+}
+.card-01 .info .picto {
+  color: #c8a461;
+  left: 0px;
+  bottom: 0px;
+}
+.card-01.portrait {
+  height: 402px;
+}
+
 .mob .read-later {
   opacity: 1 !important;
   visibility: visible !important;
@@ -7522,6 +7607,10 @@ header #searchContainer {
   .isotope-01 .item.w2 {
     width: calc(200%/8);
   }
+}
+
+.grid-01 {
+  margin-top: 15px;
 }
 
 .slider-home {
