@@ -56,4 +56,19 @@ class SearchRepository extends Repository
         
         return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
     }
+    
+    public function getStatusFilterQuery($_locale)
+    {
+        $localeFilter = new \Elastica\Filter\Term(array('translations.locale' => $_locale));
+        $statusQuery = new \Elastica\Query\Term(array('translations.status' => 1));
+        
+        $filtered = new \Elastica\Query\Filtered($statusQuery, $localeFilter);
+        
+        $nested = new \Elastica\Query\Nested();
+        $nested
+            ->setQuery($filtered)
+            ->setPath('translations')
+        ;
+        return $nested;
+    }
 }
