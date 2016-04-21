@@ -34,10 +34,20 @@
   height: 305px;
   box-sizing: border-box;
   float: left;
-  padding-left: 45px;
+  padding-left: 21px;
+  padding-right: 21px;
   position: relative;
   width: 32%;
   padding-top: 24px;
+
+  &.w2.double {
+    height: 613px;
+    padding-left: 21px;
+
+    .image {
+      height: 363px;
+    }
+  }
 
   .info {
     font-family: $CamphorMedium;
@@ -59,7 +69,7 @@
     }
 
     strong{
-      max-width: 75%;
+      max-width: 92%;
     }
   }
 
@@ -108,6 +118,7 @@
         width: auto;
         height: auto;
         @include transition(all 3s $linear);
+        object-fit: cover;
       }
     }
 

@@ -30,7 +30,7 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="img/favicon//ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-<body class="retrospective selection dark">
+<body class="articles-list bright">
   <header>
   <div id="top-bar">
     <ul class="main-nav">
@@ -187,7 +187,9 @@
     </div>
   </div>
 </header>
-  <section class="padding-bottom border-bottom">
+
+  <section id="main" class="padding-bottom">
+
     <div class="block-push block-push-top" style="background-image: url('media/images/retrospective-poster-push-01.jpg')">
       <div>
         <a href="" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour à la rétrospective</a>
@@ -205,218 +207,278 @@
     <nav class="navigation-sticky">
       <ul>
         <li><a href="#">L'affiche</a></li>
-        <li class="active"><a href="#">La sélection</a></li>
+        <li><a href="#">La sélection</a></li>
         <li><a href="#">Les jurys</a></li>
         <li><a href="#">Le palmarès</a></li>
-        <li><a href="#">Les évènements</a></li>
+        <li class="active"><a href="#">Les évènements</a></li>
         <li><a href="#">Les médias</a></li>
         <li><a href="#">L'actualité</a></li>
       </ul>
     </nav>
-    <nav class="navigation-sticky-02">
-      <ul>
-        <li class="active"><a href="#">En Compétition</a></li>
-        <li><a href="#">Un certain regard</a></li>
-        <li><a href="#">Hors compétition</a></li>
-        <li><a href="#">Séances spéciales</a></li>
-        <li><a href="#">Cinéfondation</a></li>
-        <li><a href="#">courts métrages</a></li>
-        <li><a href="#">cannes classics</a></li>
-        <li><a href="#">cinéma de la plage</a></li>
-      </ul>
-    </nav>
 
-    <div class="all-contain">
-      <div class="isotope-01">
-        
-        <div class="grid-sizer"></div>
+    <div class="filters padding-small-top">
 
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="media/images/selection-01.jpg" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">A HISTORY OF VIOLENCE</span>
-              <span class="title-12">David CRONENBERG</span>
-            </div>
-          </a>
+      <div id="date" class="filter">
+        <span class="label">Dates :</span>
+        <span class="select">
+          <span data-filter="date-18-05-5" class="active">18.05.5 </span>
+          <span data-filter="date-19-05-5">19.05.5</span>
+          <span data-filter="date-20-05-5">20.05.5</span>
+          <i class="icon icon-arrow-down"></i>
+        </span>
+      </div>
+
+      <div id="theme" class="filter">
+        <span class="label">Thèmes :</span>
+        <span class="select">
+          <span data-filter="all" class="active">Tous </span>
+          <span data-filter="competition">Compétition</span>
+          <span data-filter="photocall">photocall</span>
+          <i class="icon icon-arrow-down"></i>
+        </span>
+      </div>
+
+      <div id="format" class="filter">
+        <span class="label">Formats :</span>
+        <span class="select">
+          <span data-filter="all" class="active">Tous </span>
+          <span data-filter="photo">Photo</span>
+          <span data-filter="video">Vidéo</span>
+          <span data-filter="audio">Audio</span>
+          <span data-filter="article">Article</span>
+          <i class="icon  icon-arrow-down"></i>
+        </span>
+      </div>
+    </div> <!-- end filters -->
+
+    <div class="grid-01 isotope-01">
+      <div class="grid-sizer"></div>
+
+      <article class="card item photo" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/evenements-01.jpg" alt="" />
+          </div>
+          <a href="article.php" class="linkImage"></a>
         </div>
-
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="http://dummyimage.com/256x348/eee/eee" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">A HISTORY OF VIOLENCE</span>
-              <span class="title-13">(HARCèLEMENT)</span>
-              <span class="title-12">David CRONENBERG</span>
-            </div>
-          </a>
+        <div class="info">
+          <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Enragés, polar hybride d’Éric Hannezo</a></strong>
         </div>
+      </article>
 
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="http://dummyimage.com/256x348/aaa/aaa" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">A HISTORY OF VIOLENCE</span>
-              <span class="title-12">David CRONENBERG</span>
-            </div>
-          </a>
+      <article class="card item photo" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/articles-02.jpg" alt="" />
+          </div>
+          <a href="article.php" class="linkImage"></a>
         </div>
-
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="http://dummyimage.com/256x348/bbb/bbb" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">QUANDO SEI NATO NON PUOI PIU NASCONDERTI</span>
-              <span class="title-13">(UNE FOIS QUE TU ES NÉ...)</span>
-              <span class="title-12">Marco Tullio GIORDANA</span>
-            </div>
-          </a>
+        <div class="info">
+          <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Enragés, polar hybride d’Éric Hannezo</a></strong>
         </div>
+      </article>
 
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="http://dummyimage.com/256x348/ebebeb/eee" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">A HISTORY OF VIOLENCE</span>
-              <span class="title-12">David CRONENBERG</span>
-            </div>
-          </a>
+      <article class="card item photo" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/articles-02.jpg" alt="" />
+          </div>
+          <a href="article.php" class="linkImage"></a>
         </div>
-
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="media/images/selection-01.jpg" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">A HISTORY OF VIOLENCE</span>
-              <span class="title-12">David CRONENBERG</span>
-            </div>
-          </a>
+        <div class="info">
+          <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Enragés, polar hybride d’Éric Hannezo</a></strong>
         </div>
+      </article>
 
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="http://dummyimage.com/256x348/eee/eee" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">A HISTORY OF VIOLENCE</span>
-              <span class="title-12">David CRONENBERG</span>
-            </div>
-          </a>
+
+      <article class="card item photo" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/articles-02.jpg" alt="" />
+          </div>
+          <a href="article.php" class="linkImage"></a>
         </div>
-
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="http://dummyimage.com/256x348/aaa/aaa" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">A HISTORY OF VIOLENCE</span>
-              <span class="title-12">David CRONENBERG</span>
-            </div>
-          </a>
+        <div class="info">
+          <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Enragés, polar hybride d’Éric Hannezo</a></strong>
         </div>
+      </article>
 
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="http://dummyimage.com/256x348/bbb/bbb" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">A HISTORY OF VIOLENCE</span>
-              <span class="title-12">David CRONENBERG</span>
-            </div>
-          </a>
+      <article class="card item photo" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/articles-02.jpg" alt="" />
+          </div>
+          <a href="article.php" class="linkImage"></a>
         </div>
-
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="http://dummyimage.com/256x348/ebebeb/eee" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">A HISTORY OF VIOLENCE</span>
-              <span class="title-12">David CRONENBERG</span>
-            </div>
-          </a>
+        <div class="info">
+          <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Enragés, polar hybride d’Éric Hannezo</a></strong>
         </div>
+      </article>
 
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="media/images/selection-01.jpg" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">A HISTORY OF VIOLENCE</span>
-              <span class="title-12">David CRONENBERG</span>
-            </div>
-          </a>
+      <article class="card item article" data-format="article" data-theme="competition" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/evenements-01.jpg" alt="" data-object-fit="cover" />
+          </div>
+          <a href="article.php" class="linkImage"></a>
         </div>
-
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="http://dummyimage.com/256x348/eee/eee" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">A HISTORY OF VIOLENCE</span>
-              <span class="title-12">David CRONENBERG</span>
-            </div>
-          </a>
+        <div class="info">
+          <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
         </div>
+      </article>
 
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="http://dummyimage.com/256x348/aaa/aaa" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">A HISTORY OF VIOLENCE</span>
-              <span class="title-12">David CRONENBERG</span>
-            </div>
-          </a>
+      <article class="card item video" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/home-image3.jpg" alt="" data-object-fit="cover" />
+          </div>
+          <a href="article.php" class="linkImage"></a>
         </div>
-
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="http://dummyimage.com/256x348/bbb/bbb" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">A HISTORY OF VIOLENCE</span>
-              <span class="title-12">David CRONENBERG</span>
-            </div>
-          </a>
+        <div class="info">
+          <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Z de Costa-Gravas</a></strong>
         </div>
+      </article>
 
-        <div class="item block-poster">
-          <a href="#">
-            <div class="contain-img">
-              <img src="http://dummyimage.com/256x348/ebebeb/eee" alt="" data-object-fit="cover">
-            </div>
-            <div class="contain-txts vFlexAlign">
-              <span class="title-11">A HISTORY OF VIOLENCE</span>
-              <span class="title-12">David CRONENBERG</span>
-            </div>
-          </a>
+      <article class="card item photo" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/articles-02.jpg" alt="" data-object-fit="cover"/>
+          </div>
+          <a href="article.php" class="linkImage"></a>
         </div>
+        <div class="info">
+          <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Enragés, polar hybride d’Éric Hannezo</a></strong>
+        </div>
+      </article>
 
+      <article class="card item article" data-format="article" data-theme="competition" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/evenements-01.jpg" alt="" data-object-fit="cover"/>
+          </div>
+          <a href="article.php" class="linkImage"></a>
+        </div>
+        <div class="info">
+          <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
+        </div>
+      </article>
 
-      </div> <!-- end isotope 01 -->
-    </div> <!-- end all contain -->
+      <article class="card item video" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/home-image3.jpg" alt="" data-object-fit="cover"/>
+          </div>
+          <a href="article.php" class="linkImage"></a>
+        </div>
+        <div class="info">
+          <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Z de Costa-Gravas</a></strong>
+        </div>
+      </article>
 
+      <article class="card item photo" data-format="photo" data-theme="press" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/articles-02.jpg" alt="" data-object-fit="cover"/>
+          </div>
+          <a href="article.php" class="linkImage"></a>
+        </div>
+        <div class="info">
+          <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Enragés, polar hybride d’Éric Hannezo</a></strong>
+        </div>
+      </article>
+
+      <article class="card item article" data-format="article" data-theme="competition" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/evenements-01.jpg" alt="" data-object-fit="cover"/>
+          </div>
+          <a href="article.php" class="linkImage"></a>
+        </div>
+        <div class="info">
+          <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
+        </div>
+      </article>
+
+      <article class="card item video" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/home-image3.jpg" alt="" data-object-fit="cover"/>
+          </div>
+          <a href="article.php" class="linkImage"></a>
+        </div>
+        <div class="info">
+          <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Z de Costa-Gravas</a></strong>
+        </div>
+      </article>
+
+      <article class="card item video" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/home-image3.jpg" alt="" data-object-fit="cover"/>
+          </div>
+          <a href="article.php" class="linkImage"></a>
+        </div>
+        <div class="info">
+          <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Z de Costa-Gravas</a></strong>
+        </div>
+      </article>
+
+      <article class="card item video" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/home-image3.jpg" alt="" data-object-fit="cover"/>
+          </div>
+          <a href="article.php" class="linkImage"></a>
+        </div>
+        <div class="info">
+          <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Z de Costa-Gravas</a></strong>
+        </div>
+      </article>
+
+      <article class="card item video" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/home-image3.jpg" alt="" data-object-fit="cover"/>
+          </div>
+          <a href="article.php" class="linkImage"></a>
+        </div>
+        <div class="info">
+          <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Z de Costa-Gravas</a></strong>
+        </div>
+      </article>
+
+      <article class="card item video" data-format="video" data-theme="steps" data-time="1455909420" data-end="false">
+        <div class="image">
+          <div class="image-wrapper">
+            <img src="media/images/home-image3.jpg" alt="" data-object-fit="cover"/>
+          </div>
+          <a href="article.php" class="linkImage"></a>
+        </div>
+        <div class="info">
+          <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <strong><a href="article.php">Z de Costa-Gravas</a></strong>
+        </div>
+      </article>
+
+    </div>
+
+    <a href="#" class="read-more block-01">Afficher <strong>plus d'infos</strong></a>
 
   </section>
 
