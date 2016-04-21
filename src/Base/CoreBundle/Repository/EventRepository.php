@@ -21,11 +21,11 @@ class EventRepository extends TranslationRepository
     {
         $qb = $this
             ->createQueryBuilder('e')
-            ->join('e.translations', 't')
+            ->join('e.translations', 'et')
         ;
 
         $this->addMasterQueries($qb, 'e', $festival, true);
-        $this->addTranslationQueries($qb, 't', $locale);
+        $this->addTranslationQueries($qb, 'et', $locale);
 
         return $qb;
     }
@@ -40,13 +40,13 @@ class EventRepository extends TranslationRepository
     {
         $qb = $this
             ->createQueryBuilder('e')
-            ->join('e.translations', 't')
+            ->join('e.translations', 'et')
             ->andWhere('e.id = :id')
             ->setParameter('id', $id)
         ;
 
         $this->addMasterQueries($qb, 'e', $festival, true);
-        $this->addTranslationQueries($qb, 't', $locale);
+        $this->addTranslationQueries($qb, 'et', $locale);
 
         return $qb->getQuery()->getOneOrNullResult();
     }
@@ -60,11 +60,11 @@ class EventRepository extends TranslationRepository
     {
         $qb = $this
             ->createQueryBuilder('e')
-            ->join('e.translations', 't')
+            ->join('e.translations', 'et')
         ;
 
         $this->addMasterQueries($qb, 'e', $festival, true);
-        $this->addTranslationQueries($qb, 't', $locale);
+        $this->addTranslationQueries($qb, 'et', $locale);
 
         $qb
             ->addOrderBy('e.publishedAt', 'desc');
@@ -85,11 +85,11 @@ class EventRepository extends TranslationRepository
     {
         $qb = $this
             ->createQueryBuilder('e')
-            ->join('e.translations', 't')
+            ->join('e.translations', 'et')
         ;
 
         $this->addMasterQueries($qb, 'e', $festival, true);
-        $this->addTranslationQueries($qb, 't', $locale, $slug);
+        $this->addTranslationQueries($qb, 'et', $locale, $slug);
 
         return $qb->getQuery()->getOneOrNullResult();
     }
