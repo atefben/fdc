@@ -103,15 +103,16 @@ base_soif:
 #    prefix:   /
 #    host:     "%fdc_corporate_domain%"
 
-fdc_event_mobile:
-    resource: "@FDCEventMobileBundle/Resources/config/routing.yml"
-    prefix:   /
-    host:     "%fdc_event_mobile_domain%"
 
 fdc_event:
     resource: "@FDCEventBundle/Controller"
     type:     annotation
     prefix:   /
+    
+fdc_event_mobile:
+    resource: "@FDCEventMobileBundle/Resources/config/routing.yml"
+    prefix:   /
+    host:     "%fdc_event_mobile_domain%"
 
 fdc_press:
     resource: "@FDCPressBundle/Resources/config/routing.yml"
