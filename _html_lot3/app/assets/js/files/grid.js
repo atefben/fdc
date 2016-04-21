@@ -1,6 +1,6 @@
 var owInitGrid = function(id){
 
-  if(id == 'isotope-01'){
+  if(id == 'isotope-01') {
 
     var $grid = $('.isotope-01').imagesLoaded(function () {
       $grid.isotope({
@@ -101,13 +101,13 @@ var owsetGridBigImg  = function(grid, dom, init) {
       i++;
     }
 
-    $(dom).find('article.card:not(.double w2)').each(function() {
+    $(dom).find('article.card:not(.double.w2)').each(function() {
       if(typeof $(this).find('.info p').data('title') != 'undefined') {
         $(this).find('.info p').text($(this).find('.info p').data('title').trunc(35,true));
       }
     });
 
-    $(dom).find('article.card.double w2').each(function() {
+    $(dom).find('article.card.double.w2').each(function() {
       if(typeof $(this).find('.info p').data('title') != 'undefined') {
         $(this).find('.info p').text($(this).find('.info p').data('title').trunc(65,true));
       }
@@ -128,16 +128,54 @@ var owsetGridBigImg  = function(grid, dom, init) {
       i++;
     }
 
-    $(dom).find('article.card:not(.double w2)').each(function() {
+    $(dom).find('article.card:not(.double.w2)').each(function() {
       if(typeof $(this).find('.info p').data('title') != 'undefined') {
         $(this).find('.info p').text($(this).find('.info p').data('title').trunc(35,true));
       }
     });
-    
-    $(dom).find('article.card.double w2').each(function() {
+
+    $(dom).find('article.card.double.w2').each(function() {
       if(typeof $(this).find('.info p').data('title') != 'undefined') {
         $(this).find('.info p').text($(this).find('.info p').data('title').trunc(80,true));
       }
     });
   }
+}
+
+var owInitAleaGrid = function(grid, dom, init) {
+  var $img            = $(dom).find('.item:not(.portrait) img'),
+      pourcentage     = 0.50,
+      nbImgAAgrandir  = $img.length * pourcentage,
+      i               = 0,
+      nbRamdom        = [],
+      x               = 1,
+      max             = 0,
+      min             = 0,
+      nbImage         = $img.length;
+
+  while(x < nbImgAAgrandir) {
+    while(nbImgAAgrandir > nbRamdom.length) {
+      max = nbImage * pourcentage * x;
+      min = nbImage * pourcentage * (x - 1);
+      nbAlea = Math.floor(Math.random() * (max - min) + min);
+      nbRamdom[i] = nbAlea;
+      $($img[nbRamdom[i]]).closest('article.item').addClass('double w2');
+      i++;
+      x++;
+    }
+  }
+
+  $('.item').addClass('visible');
+
+  grid.isotope({
+    itemSelector    : '.item',
+    percentPosition : true,
+    sortBy          : 'original-order',
+    layoutMode      : 'packery',
+    packery         : {
+      columnWidth : '.grid-sizer'
+    }
+  });
+
+  grid.isotope('layout');
 }

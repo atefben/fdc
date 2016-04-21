@@ -50,6 +50,15 @@ $(document).ready(function() {
     });
   }
 
+  if($('.articles-list-medias').length) {
+
+    var grid = owInitGrid('isotope-01');
+
+    owInitAleaGrid(grid, $('.grid-01'), true);
+  }
+
+
+
   if($('.retrospective.palmares').length) {
     owInitNavSticky(2);
   }

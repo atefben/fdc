@@ -463,6 +463,7 @@
 
   .poster {
     display:inline-block;
+    width: 100%
   }
 
   .infos {
@@ -642,7 +643,7 @@
 
   a {
     line-height: 76px;
-    height: 100%;
+    height:76px;
     color: $gold;
     width: 25%;
     display: inline-block;
@@ -675,9 +676,12 @@
   width: 380px;
   margin: 0 auto;
   padding-bottom: 60px;
+  height:76px;
+  box-sizing: inherit;
 
   a {
     width: 76px;
+    height:76px;
     border-color: #222222;
 
     .bright & {
