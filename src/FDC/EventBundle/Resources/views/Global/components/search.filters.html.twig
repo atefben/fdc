@@ -1,43 +1,44 @@
 {% trans_default_domain 'FDCEventBundle' %}
-
-<div class="filters">
-    <div id="date" class="filter">
-        <span class="label">{{ 'search.result.label.date'|trans }} :</span>
-        <span class="select">
-            <span class="active" data-filter="all">
-                [ {{ 'search.result.filter.toutes'|trans }} ]
-            </span>
-            {% for date in searchFilters.date %}
-                <span data-filter="{{ date.publishedAt|date('dmY') }}">
-                    {{ date.publishedAt|localizeddate('long', 'none', app.request.locale) }}
+{% if searchFilters is defined and searchFilters %}
+    <div class="filters">
+        <div id="date" class="filter">
+            <span class="label">{{ 'search.result.label.date'|trans }} :</span>
+            <span class="select">
+                <span class="active" data-filter="all">
+                    [ {{ 'search.result.filter.toutes'|trans }} ]
                 </span>
-            {% endfor %}
-        </span>
-    </div>
-    <div id="format" class="filter">
-    <span class="label">{{ 'search.result.label.format'|trans }} :</span>
-        <span class="select">
-            <span class="active" data-filter="all">
-                  [ {{ 'search.result.filter.tous'|trans }} ]
+                {% for date in searchFilters.date %}
+                    <span data-filter="{{ date.publishedAt|date('dmY') }}">
+                        {{ date.publishedAt|localizeddate('long', 'none', app.request.locale) }}
+                    </span>
+                {% endfor %}
             </span>
-            {% for format in searchFilters.format %}
-                <span data-filter="{{ format.slug }}">
-                    {{ format.name }}
+        </div>
+        <div id="format" class="filter">
+            <span class="label">{{ 'search.result.label.format'|trans }} :</span>
+            <span class="select">
+                <span class="active" data-filter="all">
+                    [ {{ 'search.result.filter.tous'|trans }} ]
                 </span>
-            {% endfor %}
-        </span>
-    </div>
-    <div id="theme" class="filter">
-    <span class="label">{{ 'search.result.label.theme'|trans }} :</span>
-        <span class="select">
-            <span class="active" data-filter="all">
-                [ {{ 'search.result.filter.tous'|trans }} ]
+                {% for format in searchFilters.format %}
+                    <span data-filter="{{ format.slug }}">
+                        {{ format.name }}
+                    </span>
+                {% endfor %}
             </span>
+        </div>
+        <div id="theme" class="filter">
+            <span class="label">{{ 'search.result.label.theme'|trans }} :</span>
+            <span class="select">
+                <span class="active" data-filter="all">
+                    [ {{ 'search.result.filter.tous'|trans }} ]
+                </span>
                 {% for theme in searchFilters.theme %}
                     <span data-filter="{{ theme.slug }}">
                         {{ theme.name }}
                     </span>
                 {% endfor %}
-        </span>
+            </span>
+        </div>
     </div>
-</div>
+{% endif %}
