@@ -273,6 +273,14 @@ fos_elastica:
                         firstname: { boost: 20, search_analyzer: artist_search_analyzer, index_analyzer: artist_index_analyzer, type: string }
                         lastname: { boost: 20, search_analyzer: artist_search_analyzer, index_analyzer: artist_index_analyzer, type: string }
                         nationality: { boost: 0, search_analyzer: artist_search_analyzer, index_analyzer: artist_index_analyzer, type: string }
+                        films:
+                            type: nested
+                            properties:
+                                film.translations:
+                                    type: nested
+                                    properties:
+                                        title: { search_analyzer: artist_search_analyzer, index_analyzer: artist_index_analyzer, type: string }
+                                        locale: ~
                         translations:
                             type: nested
                             properties :

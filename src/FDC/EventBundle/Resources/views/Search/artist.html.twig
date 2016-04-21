@@ -4,7 +4,7 @@
     <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
         <div class="image">
             {% if artist.portraitImage and artist.portraitImage|trans_fallback('file') %}
-                <img src="{% path artist.portraitImage|trans_fallback('file'), 'small' %}"
+                <img src="{% path artist.portraitImage|trans_fallback('file'), 'search' %}"
                      alt="{{ artist.firstname }} {{ artist.lastname }}">
             {% else %}
                 {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
@@ -16,7 +16,7 @@
                 {% endif %}
 
                 {% if media is not empty %}
-                    <img src="{% path media, 'small' %}"
+                    <img src="{% path media, 'search' %}"
                          alt="{{ artist.firstname }} {{ artist.lastname }}">
                 {% else %}
                     <img width="170" height="231" src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}"
