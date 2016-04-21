@@ -219,7 +219,7 @@ class SearchController extends Controller
     }
     
     
-    private function getSearchResults($_locale, $type, $searchTerm, $range = 12, $page = 1)
+    private function getSearchResults($_locale, $type, $searchTerm, $range = 50, $page = 1)
     {
         /** var FOS\ElasticaBundle\Manager\RepositoryManager */
         $repositoryManager = $this->container->get('fos_elastica.manager');
