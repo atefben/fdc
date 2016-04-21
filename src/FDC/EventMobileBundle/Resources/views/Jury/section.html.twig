@@ -2,11 +2,11 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
+    <div id="main" class="list-article jurys-list loading">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
 
-    <div id="main" class="list-article jurys-list loading">
         <div class="bandeau-list">
             <div class="bandeau-list-img bandeau-head vCenter"
                  style="background-image:url('{% path page.image|trans_fallback('file'), '2560x1103' %}')">

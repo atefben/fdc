@@ -6,8 +6,8 @@
 
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
-
-        <!-- <div class="fullscreenplayer">
+    
+        <div class="fullscreenplayer">
             <div class="close-button"><i class="icon icon_close"></i></div>
             <div class="vCenter">
                 <div class="vCenterKid">
@@ -16,7 +16,7 @@
                     <p class="title-video">Rencontre avec l'équipe de Carol</p>
                 </div>
             </div>
-        </div> -->
+        </div>
         
         <div id="sliderWrapper" class="dark-container">
             <div id="slider" class="owl-carousel">
@@ -118,7 +118,7 @@
                             <div class="img-container">
                                 {% set trans = article.findTranslationByLocale('fr') %}
                                 {% if type == 'news' %}
-                                <a href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                                <a href="{{ url('fdc_eventmobile_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">
                                 {% else %}
                                 <a href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
                                 {% endif %}
@@ -130,7 +130,7 @@
                                 <h2>{{ article|trans_fallback('title') }}</h2>
                             </div>
                             {% if type == 'news' %}
-                                <a class="linkArticle" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                                <a class="linkArticle" href="{{ url('fdc_eventmobile_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
                             {% else %}
                                 <a class="linkArticle" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
                             {% endif %}
@@ -245,7 +245,7 @@
         <div class="dark-container" id="today">
             
             <h2 class="title one-line">Focus du jour</h2>
-            <!-- <h2 class="title one-line">{#{ 'home.title.focus'|trans }#}</h2> -->
+            {#<h2 class="title one-line">{{ 'home.title.focus'|trans }}</h2>#}
             
             <div class="special-event">
 

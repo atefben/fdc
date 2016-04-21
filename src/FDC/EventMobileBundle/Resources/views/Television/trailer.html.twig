@@ -2,11 +2,11 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
+    <div id="main" class=" webtv webtv-ba-video loading">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
     
-    <div id="main" class=" webtv webtv-ba-video loading">
         <div class="container-webtv-ba-video">
             <div class="title-container">
                 <a href="{{ path('fdc_event_television_trailers') }}" class="bandeannone">

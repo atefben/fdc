@@ -116,7 +116,7 @@ article is news_image %}
         {% set trans = article.findTranslationByLocale('fr') %}
 
         {% if type == 'news' %}
-            <a class="linkImage" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+            <a class="linkImage" href="{{ url('fdc_eventmobile_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
         {% else %}
             <a class="linkImage" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
         {% endif %}
@@ -132,7 +132,7 @@ article is news_image %}
             <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
             <h2>
                 {% if type == 'news' %}
-                    <a class="linkImage" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a>
+                    <a class="linkImage" href="{{ url('fdc_eventmobile_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a>
                 {% else %}
                     <a class="linkImage" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a>
                 {% endif %}

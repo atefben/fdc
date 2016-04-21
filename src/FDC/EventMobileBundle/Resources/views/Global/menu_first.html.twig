@@ -21,7 +21,7 @@
                     <!-- trailers -->
                     {% elseif menu.route == 'fdc_event_television_trailers' and menu.enabled == true %}
                         <h3 class="title-menu">
-                            <a href="{{ path(menu.route, { 'slug': 'competition' }) }}"
+                            <a href="{{ path('fdc_eventmobile_television_trailers', { 'slug': 'competition' }) }}"
                            class="{% if route =='fdc_event_television_trailers' %}active{% endif %}">
                             {{ menu.transName|trans }}
                             </a>
@@ -37,7 +37,7 @@
                     <!-- jury -->
                     {% elseif menu.route == 'fdc_event_jury_get' and menu.enabled == true %}
                         <h3 class="title-menu">
-                            <a href="{{ path(menu.route, { 'type': '1' }) }}"
+                            <a href="{{ path('fdc_eventmobile_jury_get', { 'type': '1' }) }}"
                            class="{% if route == 'fdc_event_jury_get' %}active{% endif %}">
                             {{ menu.transName|trans }}
                             </a>
@@ -45,7 +45,7 @@
                     <!-- palmares -->
                     {% elseif menu.route == 'fdc_event_palmares_get' and menu.enabled == true %}
                         <h3 class="title-menu">
-                            <a href="{{ path(menu.route) }}"
+                            <a href="{{ path('fdc_eventmobile_palmares_get') }}"
                            class="{% if route == 'fdc_event_palmares_get' %}active{% endif %}">
                             {{ menu.transName|trans }}
                             </a>
@@ -53,7 +53,7 @@
                     <!-- événements -->
                     {% elseif menu.route == 'fdc_event_event_getevents' and menu.enabled == true  %}
                         <h3 class="title-menu">
-                            <a href="{{ path(menu.route) }}"
+                            <a href="{{ path('fdc_eventmobile_event_getevents') }}"
                            class="{% if route == 'fdc_event_event_getevents' %}active{% endif %}">
                             {{ menu.transName|trans }}
                             </a>
