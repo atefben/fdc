@@ -284,6 +284,27 @@
     }
   }
 
+  //MEDIA BANDEAU
+  @media screen and (min-width: 1920px) {
+      height: 448px !important;
+  }
+
+  @media screen and (min-width: 1600px) and (max-width:1919px) {
+      height: 373px !important;
+  }
+
+  @media screen and (min-width: 1280px) and (max-width:1599px) {
+      height: 297px !important;
+  }
+
+  @media screen and (min-width: 1024px) and (max-width:1279px) {
+      height: 296px !important;
+  }
+
+  @media screen and (max-width:1023px) {
+      height: 296px !important;
+  }
+
 }
 
 .block-legend {
@@ -463,6 +484,7 @@
 
   .poster {
     display:inline-block;
+    width: 100%
   }
 
   .infos {
@@ -642,7 +664,7 @@
 
   a {
     line-height: 76px;
-    height: 100%;
+    height:76px;
     color: $gold;
     width: 25%;
     display: inline-block;
@@ -675,9 +697,12 @@
   width: 380px;
   margin: 0 auto;
   padding-bottom: 60px;
+  height:76px;
+  box-sizing: inherit;
 
   a {
     width: 76px;
+    height:76px;
     border-color: #222222;
 
     .bright & {

@@ -60,12 +60,12 @@
                                 </div>
                             {% else %}
                                 <div class="resultsContainer">
-                                    <h2 class="titleSection">{{ 'search.result.title.artistes'|trans }}</h2>
-                                    <a href="#" class="view-all ajax" data-ajax="ajax/artist/{{ searchTerm }}" data-class="artists">
+                                    <h2 class="titleSection">{{ 'search.result.title.films'|trans }}</h2>
+                                    <a href="#" class="view-all ajax" data-ajax="ajax/film/{{ searchTerm }}" data-class="artists">
                                         {{ 'search.result.btn.toutvoir'|trans }}
                                     </a>
                                     <div id="artistsResults">
-                                        {% include 'FDCEventBundle:Search:artist.html.twig' with { 'items': searchResult.category.artist } %}
+                                        {% include 'FDCEventBundle:Search:film.html.twig' with { 'items': searchResult.category.film } %}
                                     </div>
                                 </div>
                             {% endif %}
@@ -143,7 +143,7 @@
                                         <div class="person small">
                                             <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
                                                 {% if artist.portraitImage and artist.portraitImage|trans_fallback('file') %}
-                                                    <img src="{% path artist.portraitImage|trans_fallback('file'), 'tiny' %}"
+                                                    <img src="{% path artist.portraitImage|trans_fallback('file'), 'searchtiny' %}"
                                                          alt="{{ artist.firstname }} {{ artist.lastname }}">
                                                 {% else %}
                                                     {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
@@ -155,7 +155,7 @@
                                                     {% endif %}
 
                                                     {% if media is not empty %}
-                                                        <img src="{% path media, 'tiny' %}"
+                                                        <img src="{% path media, 'searchtiny' %}"
                                                              alt="{{ artist.firstname }} {{ artist.lastname }}">
                                                     {% else %}
                                                         <img width="170" height="231" src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}"
@@ -195,7 +195,7 @@
                                             <a href="{{ path('fdc_event_movie_get', {'slug': film.slug }) }}">
                                                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                                     film: film,
-                                                    film_format: 'tiny',
+                                                    film_format: 'searchtiny',
                                                     film_image_default: 'bundles/fdcevent/img/palmares/film_w66.jpg'
                                                 }) %}
                                             </a>

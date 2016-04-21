@@ -52,6 +52,7 @@
   .info {
     font-family: $CamphorMedium;
     text-align: center;
+    height: 44px;
 
     .category {
       color: $gold;
@@ -194,15 +195,83 @@
     left: 132px;
   }
 
-  &.small-left{
+  &.small-left {
    padding-left: 0px;
    padding-right: 45px;
   }
 
-  &.double-right{
+  &.double-right {
    height: 329px;
   }
 
+}
+
+.card-01 {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  height: 201px;
+  position: relative;
+
+  &.double {
+      .image{
+        margin-bottom: 0px;
+        height: 100%;
+      }
+  }
+
+  &.double.w2 {
+    height: 402px;
+    padding-left: 0px;
+
+    .image{
+      height: 100%;
+    }
+  }
+
+  .image {
+    margin-bottom: 0px;
+    height: 100%;
+  }
+
+  .info{
+    position: absolute;
+    text-align: left;
+    bottom: 20px;
+    left: 20px;
+    z-index: 3;
+
+    strong{
+      font-size: .875rem;
+      margin: 0px 0px;
+      max-width: 100%;
+      font-family: $CamphorMedium;
+      text-align: left;
+      margin-left: 55px;
+
+      a{
+        color:#fff;
+      }
+    }
+
+    .category{
+      margin-left: 55px;
+    }
+
+    span{
+      color: #9c9c9b;
+    }
+
+    .picto{
+      color:$gold;
+      left:0px;
+      bottom:0px;
+    }
+  }
+
+  &.portrait{
+    height: 402px;
+  }
 }
 
 .mob .read-later {
