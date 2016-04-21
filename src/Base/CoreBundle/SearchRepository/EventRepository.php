@@ -14,7 +14,6 @@ class EventRepository extends SearchRepository implements SearchRepositoryInterf
 {
     public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
-        
         // Fields (title, introduction) OR Theme
         $finalQuery = new \Elastica\Query\BoolQuery();
         $finalQuery
@@ -23,9 +22,15 @@ class EventRepository extends SearchRepository implements SearchRepositoryInterf
             ->addShould($this->getTagsQuery($_locale, $searchTerm))
         ;
         
+        $statusQuery = new \Elastica\Query\BoolQuery();
+        $statusQuery
+            ->addMust($this->getStatusFilterQuery($_locale))
+            ->addMust($finalQuery)
+        ;
+        
         $sortedQuery = new \Elastica\Query();
         $sortedQuery
-            ->setQuery($finalQuery)
+            ->setQuery($statusQuery)
             ->addSort('_score')
             ->addSort(array('publishedAt' => array('order' => 'desc')))
         ;

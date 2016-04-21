@@ -63,6 +63,7 @@ fos_elastica:
                             properties :
                                 title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
+                                status: ~
                         webTv.translations:
                             type: nested
                             properties :
@@ -99,6 +100,7 @@ fos_elastica:
                                 title: { boost: 120, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
                                 introduction: { boost: 100, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                status: ~
                         theme.translations:
                             type: nested
                             properties :
@@ -133,6 +135,7 @@ fos_elastica:
                                 title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 introduction: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
+                                status: ~
                         theme.translations:
                             type: nested
                             properties :
@@ -166,6 +169,7 @@ fos_elastica:
                                 title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 introduction: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
+                                status: ~
                         theme.translations:
                             type: nested
                             properties :
@@ -196,6 +200,7 @@ fos_elastica:
                                 title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 content: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
+                                status: ~
                 film:
                     persistence:
                         model_to_elastica_transformer:
@@ -222,6 +227,7 @@ fos_elastica:
                             properties :
                                 title: { boost: 60, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
+                                status: ~
                 news:
                     persistence:
                         driver: orm
@@ -239,6 +245,7 @@ fos_elastica:
                                 title: { boost: 20, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 introduction: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
+                                status: ~
                         theme.translations:
                             type: nested
                             properties :
@@ -271,3 +278,4 @@ fos_elastica:
                             properties :
                                 profession: { boost: 5, search_analyzer: artist_search_analyzer, index_analyzer: artist_search_analyzer, type: string }
                                 locale: ~
+                                status: ~
