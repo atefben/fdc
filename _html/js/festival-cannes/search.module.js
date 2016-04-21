@@ -22,7 +22,7 @@ $(document).ready(function() {
     window.location = link;
   });
 
-  $('.suggestSearch').on('input', function(e) {
+  $('#inputSearch').on('input', function(e) {
     var value = $(this).val();
     var $suggest = $(this).parent().next();
     var noWhitespaceValue = value.replace(/\s+/g, '');
