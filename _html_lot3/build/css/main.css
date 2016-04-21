@@ -3854,6 +3854,10 @@ video {
   display: block;
 }
 
+.padding-small-top {
+  padding-top: 40px;
+}
+
 .small-padding {
   padding-bottom: 25px;
 }
@@ -3948,6 +3952,7 @@ video {
 }
 .block-01 img {
   max-width: 100%;
+  object-fit: cover;
 }
 
 .block-01-m {
@@ -3958,6 +3963,7 @@ video {
 }
 .block-01-m img {
   max-width: 100%;
+  object-fit: cover;
 }
 
 .block-01-s {
@@ -3968,6 +3974,7 @@ video {
 }
 .block-01-s img {
   max-width: 100%;
+  object-fit: cover;
 }
 
 .block-01-xs {
@@ -3977,6 +3984,7 @@ video {
 }
 .block-01-xs img {
   max-width: 100%;
+  object-fit: cover;
 }
 
 .block-02 {
@@ -4101,6 +4109,7 @@ video {
   max-width: 100%;
   width: auto;
   height: auto;
+  object-fit: cover;
   -moz-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -4429,6 +4438,7 @@ video {
 }
 .block-list-img .item img {
   transition: .5s;
+  object-fit: cover;
 }
 .block-list-img .item:first-child {
   margin-left: 0px;
@@ -4568,6 +4578,7 @@ video {
 }
 .block-poster-01 img {
   margin-bottom: 20px;
+  object-fit: cover;
 }
 
 .block-jury {
@@ -7251,10 +7262,18 @@ header #searchContainer {
   height: 305px;
   box-sizing: border-box;
   float: left;
-  padding-left: 45px;
+  padding-left: 21px;
+  padding-right: 21px;
   position: relative;
   width: 32%;
   padding-top: 24px;
+}
+.card.w2.double {
+  height: 613px;
+  padding-left: 21px;
+}
+.card.w2.double .image {
+  height: 363px;
 }
 .card .info {
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
@@ -7274,7 +7293,7 @@ header #searchContainer {
   font-size: 0.625rem;
 }
 .card .info strong {
-  max-width: 75%;
+  max-width: 92%;
 }
 .card.double {
   height: 575px;
@@ -7329,6 +7348,7 @@ header #searchContainer {
   -o-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  object-fit: cover;
 }
 .card .image .read-later {
   content: '';
@@ -7414,6 +7434,7 @@ header #searchContainer {
 
 .isotope-01 .item img {
   width: 100%;
+  object-fit: cover;
 }
 .isotope-01 .item .contain-img {
   overflow: hidden;
@@ -7739,7 +7760,7 @@ header #searchContainer {
   padding-bottom: 56px;
 }
 
-.poster .block-push-top .vFlexAlign, .palmares .block-push-top .vFlexAlign, .article .block-push-top .vFlexAlign {
+.poster .block-push-top .vFlexAlign, .palmares .block-push-top .vFlexAlign, .article-single .block-push-top .vFlexAlign, .articles-list .block-push-top .vFlexAlign {
   height: calc( 100% - 42px );
 }
 

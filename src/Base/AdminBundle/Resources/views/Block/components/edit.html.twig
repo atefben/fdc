@@ -30,11 +30,15 @@
                     {% set isTranslator = true %}
                 {% endif %}
 
-                {% if trans.lockedBy is not null and isTranslator == false %}
-                    {% set tooltip = 'list.tooltip.modified_by'|trans ~ '<b>' ~ trans.lockedBy.fullName ~ ' </b>(' ~ trans.lockedBy.groups|join(', ') ~ ') ' ~ 'list.tooltip.since'|trans ~ ' ' ~ trans.lockedAt|date('d/m/Y H:i') ~ '<div><i class="fdc-tooltip-lock-icon fa fa-lock"></i><a href="' ~ admin.generateObjectUrl('edit', object) ~ '?locale=' ~ locale  ~ '" class="fdc-translation-unlock" data-id="' ~ object.id ~ '">' ~ 'list.tooltip.unlock'|trans ~'</a></div>' %}
+                {% if trans.lockedBy is not null %}
+                    {% if isTranslator == false %}
+                        {% set tooltip = 'list.tooltip.modified_by'|trans ~ '<b>' ~ trans.lockedBy.fullName ~ ' </b>(' ~ trans.lockedBy.groups|join(', ') ~ ') ' ~ 'list.tooltip.since'|trans ~ ' ' ~ trans.lockedAt|date('d/m/Y H:i') ~ '<div><i class="fdc-tooltip-lock-icon fa fa-lock"></i><a href="' ~ admin.generateObjectUrl('edit', object) ~ '?locale=' ~ locale  ~ '" class="fdc-translation-unlock" data-id="' ~ object.id ~ '">' ~ 'list.tooltip.unlock'|trans ~'</a></div>' %}
+                    {% else %}
+                        {% set tooltip = 'Ce contenu est bloqué par un autre utilisateur, vous n\'avez pas les droits pour le débloquer.' %}
+                    {% endif %}
                 {% endif %}
                 <a class="fdc-check-lock-list{% if trans.lockedBy is not null %} fdc-is-locked{% endif %}" href="{% if trans.lockedBy is not null %}#{% else %}{{ admin.generateObjectUrl('edit', object) }}?locale={{ locale }}{% endif %}">
-                    <div {% if trans is not null %}{% if trans.lockedBy is not null and isTranslator == false %}fdc-tooltip="{{ tooltip }}"{% endif %}{% endif %} class="fdc-list-translation-type-square{% if trans is not null %} {{ trans.status|translate_status_to_admin_class }}{% if trans.lockedBy is not null %} fdc-status-locked-bg-color{% endif %}{% endif %}">
+                    <div {% if trans is not null %}{% if trans.lockedBy is not null %}fdc-tooltip="{{ tooltip }}"{% endif %}{% endif %} class="fdc-list-translation-type-square{% if trans is not null %} {{ trans.status|translate_status_to_admin_class }}{% if trans.lockedBy is not null %} fdc-status-locked-bg-color{% endif %}{% endif %}">
                         {{ locale }}
                     </div>
                 </a>

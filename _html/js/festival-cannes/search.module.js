@@ -8,10 +8,6 @@ function closeSearch() {
 }
 
 $(document).ready(function() {
-
-  // Search
-  // =========================
-
   function openSearch() {
     $('#main, footer').addClass('overlay');
     $('#searchContainer').css({
@@ -23,7 +19,6 @@ $(document).ready(function() {
 
   $('body').on('click', '#suggest li', function(e) {
     var link = $(this).data('link');
-
     window.location = link;
   });
 
@@ -40,30 +35,27 @@ $(document).ready(function() {
       return false;
     }
     if (noWhitespaceCount % 3 === 0) {
-
       $suggest.empty();
 
       $.ajax({
         type: "GET",
-        url: 'searchsuggest.json', //TODO a revoir//
+        url: GLOBALS.urls.searchUrl,
+        data: {
+          "searchTerm": value 
+        },
         success: function(data) {
-
           for (var i=0; i<data.length; i++) {
             var type = data[i].type,
                 name = data[i].name,
                 link = data[i].link;
 
             var txt = name.toLowerCase();
-
             txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
-
             $suggest.append('<li data-link="' + link + '"><span>' + type + '</span>' + txt + '</li>');
           }
         }
       });
     }
-
-    
   });
 
   $('.search').on('click', function(e) {
@@ -83,8 +75,7 @@ $(document).ready(function() {
   });
 
   if($('.searchpage').length) {
-
-      $('#colSearch').css('left', ($(window).width() - 977) / 2);
+    $('#colSearch').css('left', ($(window).width() - 977) / 2);
     
     $( window ).resize( function(){
       $('#colSearch').css('left', ($(window).width() - 977) / 2);
@@ -94,7 +85,6 @@ $(document).ready(function() {
       e.preventDefault();
 
       var $this = $(this);
-
       $('#colSearch a').removeClass('active');
       
       if($this.parents('#colSearch').length != 0) {
@@ -113,9 +103,7 @@ $(document).ready(function() {
       }, 500);
 
       $('.resultWrapper, #filtered').fadeOut(500, function() {
-
         setTimeout(function() {
-
           if($this.hasClass('all')) {
             $('.resultWrapper').fadeIn();
             return false;
@@ -154,7 +142,6 @@ $(document).ready(function() {
               });
             }
           });
-
         }, 700);
       });
     });
@@ -209,5 +196,4 @@ $(document).ready(function() {
       }
     });
   }
-
 });

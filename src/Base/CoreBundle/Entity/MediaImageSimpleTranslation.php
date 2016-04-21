@@ -38,7 +38,6 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      *     "news_show",
      *     "live",
      *     "web_tv_show", "live",
-     *     "film_show",
      *     "person_list",
      *     "person_show",
      *     "film_list",

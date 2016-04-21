@@ -100,6 +100,7 @@ class MediaImageSimple implements TranslateMainInterface
      *     "news_show",
      *     "live",
      *     "web_tv_show", "live",
+     *     "film_list",
      *     "film_show",
      *     "event_show",
      *     "jury_list",

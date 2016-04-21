@@ -110,7 +110,7 @@
                     {% endfor %}
                     {% if awardsCount > 0 %}
                         <h2 class="title title-art-artist">{{ 'juries.artiste.title.palmares'|trans }}</h2>
-                        <div class="contain-films-list">
+                        <div class="owl-carousel film-slider contain-films-list">
                             {% for filmPerson in artist.films %}
                                 {% for awardAssociation in filmPerson.film.awards %}
                                     {% if awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') or
@@ -181,26 +181,6 @@
                             {% endfor %}
                         </div>
                     {% endif %}
-                </div>
-            </div>
-            <div class="share">
-                <p>{{ 'juries.artiste.title.share'|trans }}</p>
-                {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
-                <div class="buttons square">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ currentUrl }}
-
-"
-                       rel="nofollow" class="button facebook">
-                        <i class="icon icon_facebook"></i>
-                    </a>
-                    <a href="https://twitter.com/intent/tweet?url={{ currentUrl }}" rel="nofollow"
-                       class="button twitter">
-                        <i class="icon icon_twitter"></i>
-                    </a>
-                    <a href="#" rel="nofollow" class="button link self"><i class="icon icon_link"></i></a>
-                    <a href="#" rel="nofollow" class="button email self"><i class="icon icon_lettre"></i></a>
-                    <a href="#" rel="nofollow" onclick="javascript:window.print()" class="button print"><i
-                                class="icon icon_print"></i></a>
                 </div>
             </div>
             <div class="realisateurs">

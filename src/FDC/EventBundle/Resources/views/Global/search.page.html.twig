@@ -45,7 +45,7 @@
                                 </a>
 
                                 <div id="newsResults">
-                                    {% include 'FDCEventBundle:Search:statement.html.twig' with { 'items': searchResult.category.actualite } %}
+                                    {% include 'FDCEventBundle:Search:news.html.twig' with { 'items': searchResult.category.actualite } %}
                                 </div>
                             </div>
                             {% elseif searchResult.category.artist|length %}
@@ -142,8 +142,25 @@
                                     {% for artist in searchResult.category.artist %}
                                         <div class="person small">
                                             <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
-                                                {% if artist.image.path is defined %}
-                                                <img src="{{ artist.image.min }}"/>
+                                                {% if artist.portraitImage and artist.portraitImage|trans_fallback('file') %}
+                                                    <img src="{% path artist.portraitImage|trans_fallback('file'), 'tiny' %}"
+                                                         alt="{{ artist.firstname }} {{ artist.lastname }}">
+                                                {% else %}
+                                                    {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
+                                                    {% if media is empty %}
+                                                        {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
+                                                    {% endif %}
+                                                    {% if media is empty %}
+                                                        {% set photo = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                                                    {% endif %}
+
+                                                    {% if media is not empty %}
+                                                        <img src="{% path media, 'tiny' %}"
+                                                             alt="{{ artist.firstname }} {{ artist.lastname }}">
+                                                    {% else %}
+                                                        <img width="170" height="231" src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}"
+                                                            alt="{{ artist.firstname }} {{ artist.lastname }}">
+                                                    {% endif %}
                                                 {% endif %}
                                             </a>
                                             <div class="info">
@@ -164,6 +181,7 @@
                                 </div>
                             </div>
                             {% endif %}
+                            
                             {% if (searchResult.category.actualite|length or searchResult.category.artist|length ) and searchResult.category.film|length%}
                             <div class="resultsContainer noBorder">
                                 <h2 class="titleSection">{{ 'search.result.title.films'|trans }}</h2>
@@ -175,7 +193,11 @@
                                     {% for film in searchResult.category.film %}
                                         <div class="film small">
                                             <a href="{{ path('fdc_event_movie_get', {'slug': film.slug }) }}">
-                                                <img src=""/>
+                                                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                                    film: film,
+                                                    film_format: 'tiny',
+                                                    film_image_default: 'bundles/fdcevent/img/palmares/film_w66.jpg'
+                                                }) %}
                                             </a>
                                             <div class="info">
                                                 <div class="vCenter">

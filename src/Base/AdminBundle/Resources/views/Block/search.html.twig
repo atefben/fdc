@@ -79,6 +79,14 @@
             </div>
         </form>
 
+        <div class="dashboard-search-results" id="fdc-list-translation-container" style="width:auto">
+            {% if is_granted('ROLE_TRANSLATOR_MASTER') %}
+                {% include 'BaseAdminBundle:CRUD:list_translation_legend.html.twig' %}
+            {% elseif is_granted('ROLE_TRANSLATOR') %}
+                {% include 'BaseAdminBundle:CRUD:list_translation_legend_without_master.html.twig' %}
+            {% endif %}
+        </div>
+
         {% if entitiesAll|length > 0 %}
             {% for type, entities in entitiesAll %}
                 {% if entities|length > 0 %}

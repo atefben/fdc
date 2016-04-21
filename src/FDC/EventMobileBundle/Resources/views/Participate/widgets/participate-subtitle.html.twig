@@ -1,0 +1,5 @@
+{% trans_default_domain 'FDCPressBundle' %}
+<div class="sub-title">
+    <h4 class="title-cinema">{{ widget|trans_fallback('title') }}</h4>
+    {{ widget|trans_fallback('description')|raw }}
+</div>

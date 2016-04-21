@@ -15,25 +15,25 @@
             <i class="fa pull-right fa-angle-left"></i>
         </a>
         <ul class="treeview-menu {% if active %}active{% endif %}">
-            <li {% if app.request.get('_route') == 'admin_base_core_fdcpagefooter_edit' or
+            <li class="{% if app.request.get('_route') == 'admin_base_core_fdcpagefooter_edit' or
                 app.request.get('_route') == 'admin_base_core_fdcpagefooter_list' or
-                app.request.get('_route') == 'admin_base_core_fdcpagefooter_create' %}class="active"{% endif %}>
+                app.request.get('_route') == 'admin_base_core_fdcpagefooter_create' %} active{% endif %}">
                 <a href="{{ path('admin_base_core_fdcpagefooter_list') }}">
                     <i class="fa fa-angle-double-right"></i>
                     {{ 'dashboard.link.pages_libre'|trans({}, 'BaseAdminBundle') }}
                 </a>
             </li>
-            <li {% if app.request.get('_route') == 'admin_base_core_faqtheme_create' or
+            <li class="{% if app.request.get('_route') == 'admin_base_core_faqtheme_create' or
                 app.request.get('_route') == 'admin_base_core_faqtheme_list' or
-                app.request.get('_route') == 'admin_base_core_faqtheme_edit' %}class="active"{% endif %}>
+                app.request.get('_route') == 'admin_base_core_faqtheme_edit' %} active{% endif %}">
                 <a href="{{ path('admin_base_core_faqtheme_list') }}">
                     <i class="fa fa-angle-double-right"></i>
                     {{ 'dashboard.link.FAQTheme'|trans({}, 'BaseAdminBundle') }}
                 </a>
             </li>
-            <li {% if app.request.get('_route') == 'admin_base_core_faqpage_create' or
+            <li class="{% if app.request.get('_route') == 'admin_base_core_faqpage_create' or
                 app.request.get('_route') == 'admin_base_core_faqpage_list' or
-                app.request.get('_route') == 'admin_base_core_faqpage_edit' %}class="active"{% endif %}>
+                app.request.get('_route') == 'admin_base_core_faqpage_edit' %} active{% endif %}">
                 <a href="{{ path('admin_base_core_faqpage_list') }}">
                     <i class="fa fa-angle-double-right"></i>
                     {{ 'dashboard.link.FAQ'|trans({}, 'BaseAdminBundle') }}
