@@ -19,6 +19,7 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
         $finalQuery = new \Elastica\Query\BoolQuery();
         $finalQuery
             ->addShould($this->getFieldsQuery($searchTerm))
+            ->addShould($this->getFilmsQuery($_locale, $searchTerm))
             ->addShould($this->getLocalizedFieldsQuery($_locale, $searchTerm))
         ;
         
@@ -64,6 +65,15 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
  
         return $this->getFieldsKeywordQuery($fields, $searchTerm, false);
      
+    }
+    
+    private function getFilmsQuery($_locale, $searchTerm)
+    {
+        $path = 'films.film.translations';
+        $fields = array('films.film.translations.title');
+        $keywordMatchQuery = $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
+        
+        return $keywordMatchQuery;
     }
     
 }
