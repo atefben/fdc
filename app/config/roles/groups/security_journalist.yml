@@ -5,6 +5,7 @@ security:
         - ROLE_FDC_TRANSLATOR_MASTER
         - ROLE_THEME
         - ROLE_BASE_ADMIN_TAG_ADMIN
+        - ROLE_BASE_ADMIN_MEDIA_TAG_ADMIN
         - ROLE_NEWS
         - ROLE_STATEMENTS
         - ROLE_INFOS
