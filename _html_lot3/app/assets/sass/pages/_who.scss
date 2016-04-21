@@ -27,8 +27,27 @@
   }
 }
 
-.who-village-international{
-  .contain-title{
-    margin-bottom: 33px;
+.who-staff {
+
+  .title-11 {
+    padding: 0 30px;
+  }
+
+
+  .title-12 {
+    padding: 0 30px;
+  }
+
+  .block-poster .contain-txts{
+    padding-top: 0px;
+    height: 121px;
+    justify-content: center;
+  }
+
+  .item{
+    img, .contain-img{
+      width: 163px;
+      object-fit: cover;
+    }
   }
 }

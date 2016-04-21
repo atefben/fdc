@@ -16,6 +16,24 @@ var owInitGrid = function(id){
 
     return $grid;
   }
+
+  if(id == 'isotope-02') {
+
+
+    var $grid = $('.isotope-02').imagesLoaded(function () {
+      $grid.isotope({
+        itemSelector    : '.item',
+        percentPosition : true,
+        sortBy          : 'original-order',
+        layoutMode      : 'packery',
+        packery         : {
+           gutter: 43
+        }
+      });
+    });
+
+    return $grid;
+  }
 }
 
 
@@ -325,7 +343,7 @@ var owInitSlider = function(sliderName) {
       smartSpeed          : 700,
       center              : true,
       margin              : 27.5
-    }); 
+    });
 
     // Custom Navigation Events
     $(document).on('click', '.slider-02 .owl-item', function(){
@@ -336,6 +354,7 @@ var owInitSlider = function(sliderName) {
       slide01.trigger('to.owl.carousel', number);
     });
   }
+
 };
 
 /*------------------------------------------------------------------------------
@@ -412,6 +431,10 @@ $(document).ready(function() {
 
   if($('.who').length){
     owInitNavSticky(1);
+  }
+
+  if($('.who-staff').length){
+    owInitGrid('isotope-02');
   }
 
 });
