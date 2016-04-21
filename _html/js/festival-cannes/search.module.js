@@ -19,7 +19,11 @@ $(document).ready(function() {
 
   $('body').on('click', '#suggest li', function(e) {
     var link = $(this).data('link');
-    window.location = link;
+    if (typeof link !== "undefined" && link != "") {
+      window.location = link;
+    } else {
+      e.preventDefault();
+    }
   });
 
   $('#inputSearch').on('input', function(e) {
@@ -41,15 +45,22 @@ $(document).ready(function() {
         type: "GET",
         url: GLOBALS.urls.searchUrl+'/'+encodeURIComponent(value),
         success: function(data) {
-          for (var i=0; i<data.length; i++) {
-            var type = data[i].type,
-                name = data[i].name,
-                link = data[i].link;
+          if(data.length > 0) {
+            for (var i=0; i<data.length; i++) {
+              var type = data[i].type,
+                  name = data[i].name,
+                  link = data[i].link;
 
-            var txt = name.toLowerCase();
-            txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
-            $suggest.append('<li data-link="' + link + '"><span>' + type + '</span>' + txt + '</li>');
+              var txt = name.toLowerCase();
+              txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
+              $suggest.append('<li data-link="' + link + '"><span>' + type + '</span>' + txt + '</li>');
+            }
+          } else {
+            $suggest.append('<li>' + GLOBALS.texts.search.noresult + '</li>')
           }
+        },
+        error: function() {
+          $suggest.append('<li>' + GLOBALS.texts.search.noresult + '</li>')
         }
       });
     }
