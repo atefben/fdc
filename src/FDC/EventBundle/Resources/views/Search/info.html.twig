@@ -1,6 +1,15 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% for article in items %}
-<article class="article" data-format="article" data-theme="competition">
+{% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
+    {% set articleFormat = "article" %}
+{% elseif class(article) == "StatementVideo" or class(article) == "InfoVideo" %}
+    {% set articleFormat = "video" %}
+{% elseif class(article) == "StatementAudio" or class(article) == "InfoAudio" %}
+    {% set articleFormat = "audio" %}
+{% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
+    {% set articleFormat = "image" %}
+{% endif %}
+<article class="article" data-format="{{ articleFormat }}" data-theme="competition">
   <div class="image">
     <div class="image-wrapper">
         {% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
@@ -93,7 +102,7 @@
         {% endif %}
     </div>
     <a href="article.php" class="linkImage"></a>
-    <span class="picto"><i class="icon icon_article"></i>
+    <span class="picto"><i class="icon icon_{{ articleFormat }}"></i>
 </span>
   </div>
   <div class="info">

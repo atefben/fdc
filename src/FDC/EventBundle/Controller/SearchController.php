@@ -57,7 +57,7 @@ class SearchController extends Controller
       $this->searchAutocompleteAction($_locale, $searchTerm);
       
       $newsResults = $this->getSearchResults($_locale, 'news', $searchTerm, 4);
-      $infoResults = $this->getSearchResults($_locale, 'info', $searchTerm, 2);
+      $infoResults = $this->getSearchResults($_locale, 'info', $searchTerm, 50);
       $statementResults = $this->getSearchResults($_locale, 'statement', $searchTerm, 2);
       $eventResults = $this->getSearchResults($_locale, 'event', $searchTerm, 2);
       $mediaResults = $this->getSearchResults($_locale, 'media', $searchTerm, 2);
@@ -93,6 +93,7 @@ class SearchController extends Controller
         } else {
             $searchResult = $result[$resultFilter];
         }
+        
 
         $searchFilters = array(
             'date' => array(
@@ -230,6 +231,61 @@ class SearchController extends Controller
 
         /** var array of Acme\UserBundle\Entity\User */
         return $repository->findWithCustomQuery($_locale, $searchTerm, $range, $page);
+    }
+    
+    private function getSearchFilters($type, $items) 
+    {
+      
+        switch ($type) {
+          case 'info':
+            $objectTypes = \Base\CoreBundle\Entity\Info::getTypes();
+            break;
+          case 'statement':
+            $objectTypes = \Base\CoreBundle\Entity\Statement::getTypes();
+            break;
+          case 'news':
+            $objectTypes = \Base\CoreBundle\Entity\News::getTypes();
+            break;
+          case 'media':
+            $objectTypes = array(
+              'audio' => 'audio',
+              'video' => 'video',
+              'photo' => 'photo',
+              'article' => 'article',
+            );
+            break;
+        }
+        
+        $filters = array();
+
+        foreach ($objectTypes as $objectType) {
+            $filters['format'][] = array(
+              'name' => $objectType,
+              'slug' => $objectType,
+            );
+        }
+
+        $years = array();
+        $themes = array();
+
+        foreach ($items as $item) {
+
+            if (!in_array($item->getPublishedAt()->format('Y'), $years)) {
+                $filters['dates'][]['publishedAt'] = $item->getPublishedAt()->format('Y');
+
+                $years[] = $item->getPublishedAt()->format('Y');
+            }
+            if (!in_array($item->getTheme()->getSlug(), $themes)) {
+                $filters['themes'][] = array(
+                  'slug' => $item->getTheme()->getSlug(),
+                  'name' => $item->getTheme()->getName(),
+                );
+
+                $themes[] = $item->getTheme()->getSlug();
+            }
+        }
+        
+        return $filters;
     }
 
 }
