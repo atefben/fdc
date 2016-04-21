@@ -185,6 +185,8 @@ function editEvents() {
             status = ['0', '4'];
             if(locale != 'fr') {
                 status = ['0', '2', '3', '5'];
+            } else {
+                $("select").val("0").trigger("change");
             }
         }
 

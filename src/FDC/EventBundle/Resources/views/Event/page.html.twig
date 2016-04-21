@@ -34,7 +34,7 @@
                     {% elseif widget.widgetType == 'EventWidgetImage' and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
                         {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
                     {% elseif widget.widgetType == 'EventWidgetText' %}
-                        {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
+                        {% include 'FDCEventBundle:News:widgets/text.html.twig' with {'widget': widget} %}
                     {% elseif widget.widgetType == 'EventWidgetVideo' %}
                         {% include 'FDCEventBundle:News:widgets/video.html.twig' with {'widget': widget} %}
                     {% elseif widget.widgetType == 'EventWidgetVideoYoutube' %}
