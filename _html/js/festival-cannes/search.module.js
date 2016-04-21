@@ -38,13 +38,13 @@ $(document).ready(function() {
       $suggest.empty();
       return false;
     }
-    if (noWhitespaceCount % 3 === 0) {
-      $suggest.empty();
-
+    if (noWhitespaceCount >= 3) {
       $.ajax({
         type: "GET",
         url: GLOBALS.urls.searchUrl+'/'+encodeURIComponent(value),
         success: function(data) {
+          $suggest.empty();
+
           if(data.length > 0) {
             for (var i=0; i<data.length; i++) {
               var type = data[i].type,
@@ -60,6 +60,7 @@ $(document).ready(function() {
           }
         },
         error: function() {
+          $suggest.empty();
           $suggest.append('<li>' + GLOBALS.texts.search.noresult + '</li>')
         }
       });

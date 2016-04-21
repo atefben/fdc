@@ -4,6 +4,18 @@
     img {
       margin-bottom: 55px;
     }
+
+    figure {
+      margin-bottom: 55px;
+
+      img {
+        margin-bottom: 0px;
+      }
+
+      figcaption {
+        font-size: .75rem;
+      }
+    }
   }
 
   .buttons-01 {
@@ -12,5 +24,11 @@
 
   .texte-01{
     margin-bottom: 51px;
+  }
+}
+
+.who-village-international{
+  .contain-title{
+    margin-bottom: 33px;
   }
 }
