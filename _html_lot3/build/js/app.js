@@ -397,8 +397,6 @@ $(document).ready(function() {
     owInitAleaGrid(grid, $('.grid-01'), true);
   }
 
-
-
   if($('.retrospective.palmares').length) {
     owInitNavSticky(2);
   }
@@ -410,6 +408,10 @@ $(document).ready(function() {
   if($('.retrospective.selection').length) {
     owInitNavSticky(2);
     owInitGrid('isotope-01');
+  }
+
+  if($('.who').length){
+    owInitNavSticky(1);
   }
 
 });

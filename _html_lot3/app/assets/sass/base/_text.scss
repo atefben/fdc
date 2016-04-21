@@ -133,7 +133,7 @@ sub {
   margin-bottom: 19px;
   padding-top: 60px;
 
-  .bright &{
+  .bright & {
     color: #4f4f4f;
   }
 }
@@ -168,7 +168,7 @@ sub {
   text-transform: uppercase;
 }
 
-.title-14{
+.title-14 {
   font-family: $CamphorBold;
   color:$gold;
   font-size: .625rem;
@@ -178,13 +178,13 @@ sub {
   margin-top: 70px;
   margin-bottom: 39px;
 
-  .date{
+  .date {
     color:#666666;
     margin-left: 3px;
   }
 }
 
-.title-15{
+.title-15 {
   color:#0c0c0c;
   font-family: $CamphorThin;
   font-size: 3rem;
@@ -196,7 +196,7 @@ sub {
 }
 
 
-.title-16{
+.title-16 {
   color:#0c0c0c;
   font-family: $CamphorRegular;
   font-size: 1.375rem;
@@ -207,14 +207,14 @@ sub {
   margin-top: 70px;
 }
 
-.title-17{
+.title-17 {
   color:#999999;
   font-family: $CamphorRegular;
   font-size: .6875rem;
   line-height: 18px;
 }
 
-.title-18{
+.title-18 {
   color:#141414;
   font-family: $CamphorHeavy;
   font-size: .625rem;
@@ -224,7 +224,7 @@ sub {
   letter-spacing: 2px;
 }
 
-.title-19{
+.title-19 {
   color:#141414;
   font-family: $CamphorHeavy;
   font-size: 2.25rem;
@@ -234,7 +234,7 @@ sub {
   letter-spacing: 3px;
 }
 
-.title-20{
+.title-20 {
   color:$gold;
   font-family: $CamphorItalic;
   font-size: .75rem;
@@ -243,8 +243,14 @@ sub {
   letter-spacing: .1rem;
 }
 
+.title-21 {
+  font-family: $CamphorBold;
+  font-size: 1rem;
+  color:#141414;
+  line-height: 24px;
+}
 
-.quote{
+.quote {
   padding: 30px 90px;
   color:#141414;
   text-align: center;
@@ -256,13 +262,13 @@ sub {
   line-height: 32px;
 }
 
-.quote-02{
+.quote-02 {
   color:#666666;
   font-size:1rem;
   line-height: 26px;
 }
 
-.by-author{
+.by-author {
   font-size: .75rem;
   color:#666666;
   font-family: $CamphorMedium;
@@ -272,7 +278,7 @@ sub {
   border-top: 1px solid #e5e5e5;
   display: block;
 
-  strong{
+  strong {
     color:#141414;
   }
 }
@@ -298,7 +304,7 @@ sub {
   text-align: center;
 }
 
-.return-back{
+.return-back {
   color:#fff;
   font-family: $CamphorHeavy;
   font-size:.625rem;
@@ -308,20 +314,20 @@ sub {
   display:block;
   transition: .5s;
 
-  .icon{
+  .icon {
     font-size: .4rem;
     margin-right: 10px;
   }
 
-  &:hover{
+  &:hover {
     opacity: .75;
   }
 }
 
-.contain-title{
+.contain-title {
   min-height: 152px;
 
-  .title-01{
+  .title-01 {
     font-size: 1.125rem;
     color:#fff;
     font-family: $CamphorRegular;
@@ -338,17 +344,17 @@ sub {
     text-align: center;
     line-height: 36px;
 
-    strong{
+    strong {
       color:$gold;
     }
 
-    .bright &{
+    .bright & {
       color: #141414;
     }
   }
 }
 
-figcaption, .caption{
+figcaption, .caption {
   color:#868686;
   font-size:.625rem;
   font-family:$CamphorMedium;
@@ -410,7 +416,7 @@ a {
   font-size: 0;
   text-align: center;
 
-  .icon{
+  .icon {
     margin-right: 12px;
     font-size: .85rem;
     vertical-align: sub;
@@ -489,7 +495,7 @@ a {
   }
 }
 
-.single-button{
+.single-button {
   border-right: 1px solid $gold !important;
   border-color: $gold;
 }
