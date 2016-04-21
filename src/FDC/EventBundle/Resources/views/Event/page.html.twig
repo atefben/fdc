@@ -22,10 +22,8 @@
 
                 {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with({'photo':event.header}) only %}
 
-                <div class="quote">
-                    <blockquote>
+                <div class="chapeau">
                         {{ event|trans_fallback('introduction')|raw }}
-                    </blockquote>
                 </div>
 
                 {% for widget in event.widgets %}
