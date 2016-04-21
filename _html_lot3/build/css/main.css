@@ -3585,6 +3585,30 @@ a {
   border-color: #c8a461;
 }
 
+.button-02 {
+  border: 1px solid #ebebeb;
+  height: 39px;
+  color: #c8a461;
+  display: inline-block;
+  padding: 0 20px;
+  line-height: 41px;
+  text-align: center;
+  font-size: .625rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+  transition: .5s;
+  letter-spacing: .1px;
+}
+.button-02 .icon {
+  vertical-align: middle;
+  margin-right: 10px;
+  font-size: .8rem;
+}
+.button-02:hover {
+  border-color: #c8a461;
+}
+
 .read-more {
   border: 1px solid #e5e5e5;
   clear: both;
@@ -7872,9 +7896,22 @@ header #searchContainer {
 .who .block-01-xs img {
   margin-bottom: 55px;
 }
+.who .block-01-xs figure {
+  margin-bottom: 55px;
+}
+.who .block-01-xs figure img {
+  margin-bottom: 0px;
+}
+.who .block-01-xs figure figcaption {
+  font-size: .75rem;
+}
 .who .buttons-01 {
   margin-bottom: 65px;
 }
 .who .texte-01 {
   margin-bottom: 51px;
+}
+
+.who-village-international .contain-title {
+  margin-bottom: 33px;
 }

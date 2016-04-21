@@ -500,6 +500,32 @@ a {
   border-color: $gold;
 }
 
+.button-02 {
+  border: 1px solid #ebebeb;
+  height: 39px;
+  color: $gold;
+  display: inline-block;
+  padding: 0 20px;
+  line-height: 41px;
+  text-align: center;
+  font-size: .625rem;
+  text-transform: uppercase;
+  font-family: $CamphorHeavy;
+  margin: 0 auto;
+  transition: .5s;
+  letter-spacing: .1px;
+
+  .icon {
+    vertical-align: middle;
+    margin-right: 10px;
+    font-size: .8rem;
+  }
+
+  &:hover {
+    border-color: $gold;
+  }
+}
+
 .read-more {
   border: 1px solid #e5e5e5;
   clear: both;
