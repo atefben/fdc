@@ -24,9 +24,15 @@ class MediaRepository extends SearchRepository implements SearchRepositoryInterf
             ->addShould($this->getTagsQuery($_locale, $searchTerm))
         ;
         
+        $statusQuery = new \Elastica\Query\BoolQuery();
+        $statusQuery
+            ->addMust($this->getStatusFilterQuery($_locale))
+            ->addMust($finalQuery)
+        ;
+        
         $sortedQuery = new \Elastica\Query();
         $sortedQuery
-            ->setQuery($finalQuery)
+            ->setQuery($statusQuery)
             ->addSort('_score')
             ->addSort(array('publishedAt' => array('order' => 'desc')))
         ;

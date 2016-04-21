@@ -15,7 +15,7 @@
         </div>
         <div class="item">
             <a href="{{ header_mdf }}" target="_blank" > {{ 'header.topbar.nav.marche'|trans }} </a>
-        </div> 
+        </div>
     </div>
    
     <div id="logo">
@@ -38,137 +38,17 @@
 
     <div id="main-nav" class="menu-section">
 
-        <ul id="main-nav-list" class="">
-            {% for menu in menus %}
-                {% if menu.id < 7 %}
-                    <li class=" {% if menu.route == 'fdc_event_news_index' %} actu {% elseif menu.route == 'fdc_event_television_live' %} webtv {% elseif menu.route == 'fdc_event_movie_selection' %} selection {% elseif menu.route == 'fdc_event_jury_get' %} jury {% elseif menu.route == 'fdc_event_palmares_get' %} palmares {% elseif menu.route == 'fdc_event_event_getevents' %} events {% endif %}">
-                        <div class="section-title has-subsection">
-                            <!-- trailers -->
-                            {% if menu.route == 'fdc_event_television_trailers' and menu.enabled == true %}
-                                <a href="{{ path(menu.route, { 'slug': 'competition' }) }}"
-                                   class="{% if route =='fdc_event_television_trailers' %}active{% endif %}">
-                                    {{ menu.transName|trans }}
-                                </a>
-                            <!-- selection -->
-                            {% elseif menu.route == 'fdc_event_movie_selection' and menu.enabled == true %}
-                                <a href="{{ path(menu.route) }}"
-                                   class="{% if route =='fdc_event_movie_selection' %}active{% endif %}">
-                                    {{ menu.transName|trans }}
-                                </a>
-                            <!-- jury -->
-                            {% elseif menu.route == 'fdc_event_jury_get' and menu.enabled == true %}
-                                <a href="{{ path(menu.route, { 'type': '1' }) }}"
-                                   class="{% if route == 'fdc_event_jury_get' %}active{% endif %}">
-                                    {{ menu.transName|trans }}
-                                </a>
-                            <!-- palmares -->
-                            {% elseif menu.route == 'fdc_event_palmares_get' and menu.enabled == true %}
-                                <a href="{{ path(menu.route) }}"
-                                   class="{% if route == 'fdc_event_palmares_get' %}active{% endif %}">
-                                    {{ menu.transName|trans }}
-                                </a>
-                            <!-- actualités -->
-                            {% elseif menu.route == 'fdc_event_news_index' and menu.enabled == true %}
-                                <a href="{{ path(menu.route) }}"
-                                   class="{% if route in routesArticles %}active{% endif %}">
-                                    {{ menu.transName|trans }}
-                                </a>
-                            <!-- webtv -->
-                            {% elseif menu.route == 'fdc_event_television_live' and menu.enabled == true  %}
-                                <a href="{{ path(menu.route) }}"
-                                   class="{% if route in routesWebTv %}active{% endif %}">
-                                    {{ menu.transName|trans }}
-                                </a>
-                            <!-- événements -->
-                            {% elseif menu.route == 'fdc_event_event_getevents' and menu.enabled == true  %}
-                                <a href="{{ path(menu.route) }}"
-                                   class="{% if route == 'fdc_event_event_getevents' %}active{% endif %}">
-                                    {{ menu.transName|trans }}
-                                </a>
-                            {% endif %}
-                        </div>
-                        <div class="section-contain subsection-1">
-                            <ul class="section-menu">
-                                {% if menu['__children'] is defined %}
-                                    {% for child in menu['__children'] %}
-                                        {% if child.enabled %}
-                                            <li>
-                                                <a href="{{ path(child.route) }}"
-                                                   class="{% if route == child.route %}active{% endif %}">
-                                                    {{ child.transName|trans }}
-                                                </a>
-                                            </li>
-                                        {% endif %}
-                                    {% endfor %}
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </li>
-                {% endif %}
-            {% endfor %}
-        </ul>
+        {{ render(controller('FDCEventMobileBundle:Global:menuFirst', {route : app.request.get('_route')})) }}
 
         <div class="small-separator"></div>
-
-        <ul class="second-nav">
-            {% for menu in menus %}
-                {% if menu.id > 6 %}
-                    {% if menu.route == 'fdc_event_agenda_scheduling' and menu.enabled == true %}
-                        <li class="prog">
-                            <div class="section-title has-subsection">
-                                <h3 class="title-menu"><i class="icon icon_programmation"></i>{{ menu.transName|trans }}<span class="more-minus">+</span></h3>
-                            </div>
-                            {% if menu['__children'] is defined %}
-                                <div class="section-contain subsection-4">
-                                    <ul class="section-menu">
-                                        {% for child in menu['__children'] %}
-                                            {% if child.enabled %}
-                                                <li>
-                                                    <a href="{{ path(child.route) }}">{{ child.transName|trans }}</a>
-                                                </li>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            {% endif %}
-                        </li>
-                    {% elseif menu.route == 'fdc_event_participate_prepare' %}
-                        {% if menu.enabled == true %}
-                            <li class="participate">
-                                <div class="section-title has-subsection">
-                                    <h3 class="title-menu"><i class="icon-mobile-participer"></i>{{ menu.transName|trans }} <span class="more-minus">+</span></h3>
-                                </div>
-                                {% if menu['__children'] is defined %}
-                                    <div class="section-contain subsection-3">
-                                        <ul class="section-menu">
-                                            {% for child in menu['__children'] %}
-                                                {% if child.enabled %}
-                                                    <li><a href="{{ path(child.route) }}">{{ child.transName|trans }}</a></li>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                {% endif %}
-                            </li>
-                        {% endif %}
-                    {% elseif menu.route == 'fdc_press_news_home' %}
-                        {% if menu.enabled == true %}
-                            <li class="press">
-                                <div class="section-title">
-                                    <h3 class="title-menu"><a href="{{ path(menu.route) }}" class="press"><i class="icon icon_espace-presse"></i>{{ menu.transName|trans }} </a></h3>
-                                </div>
-                            </li>
-                        {% endif %}
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
-        </ul>
+        
+        {{ render(controller('FDCEventMobileBundle:Global:menuSecond', {route : app.request.get('_route')})) }}
 
         <div class="small-separator"></div>
 
         <ul class="third-nav">
             <li class="search-nav">
-                <a href="search.html">
+                <a href="">
                     <i class="icon icon_recherche"></i>
                     {{ 'header.usernav.nav.rechercher'|trans }}
                 </a>
@@ -202,8 +82,8 @@
 
     <div class="menu-section socials">
         <h3 class="menu-section-title">
-            {% image '@FDCEventMobileBundle/Resources/public/img/logo-white.svg'  %}
-            <img width="302" src="{{ header_ccm }}" alt="Festival de Cannes">
+            {% image '@FDCEventBundle/Resources/public/img/svg/logo-white.svg' %}
+            <img width="302" src="{{ asset(asset_url) }}" alt="{{ 'footer.social.logo.festival'|trans }}" />
             {% endimage %}
         </h3>
         <ul>
@@ -253,63 +133,7 @@
             </a>
         </div>
 
-        <div class="footer-menu">
-            <p>{{ 'footer.nav.copyright'|trans }} {{ 'now'|date('Y') }}</p>
-            <ul>
-                {% for element in footer %}
-                    {% if element.route == 'fdc_event_footer_contact' and element.enabled == true %}
-                        <li class="contact">
-                            <a href="{{ path('fdc_event_footer_contact') }}">
-                                {{ 'footer.nav.contact'|trans }}
-                            </a>
-                        </li>
-                    {% elseif element.transName == 'footer.nav.faq' and element.enabled == true %}
-                        <li class="faq">
-                            <a href="{{ path('fdc_event_footer_static', {'page': 'faq'}) }}">
-                                {{ 'footer.nav.faq'|trans }}
-                            </a>
-                        </li>
-                    {% elseif element.transName == 'footer.nav.credit' and element.enabled == true %}
-                        <li class="credits">
-                            <a href="{{ path('fdc_event_footer_static', {'page': 'credits'}) }}">
-                                {{ 'footer.nav.credit'|trans }}
-                            </a>
-                        </li>
-                    {% elseif element.transName == 'footer.nav.mentionslegales' and element.enabled == true %}
-                        <li class="legals">
-                            <a href="{{ path('fdc_event_footer_static', {'page': 'mentions-legales'}) }}">
-                                {{ 'footer.nav.mentionslegales'|trans }}
-                            </a>
-                        </li>
-                    {% elseif element.transName == 'footer.nav.nousrejoindre' and element.enabled == true %}
-                        <li class="">
-                            <a href="{{ path('fdc_event_footer_static', {'page': 'nous-rejoindre'}) }}">
-                                {{ 'footer.nav.nousrejoindre'|trans }}
-                            </a>
-                        </li>
-                    {% elseif element.transName == 'footer.nav.plandusite' and element.enabled == true %}
-                        <li class="">
-                            <a href="{{ path('fdc_event_footer_static', {'page': 'plan-du-site'}) }}">
-                                {{ 'footer.nav.plandusite'|trans }}
-                            </a>
-                        </li>
-                    {% elseif element.transName == 'footer.nav.politiqueconfidentialite' and element.enabled == true %}
-                        <li class="sitemap">
-                            <a href="{{ path('fdc_event_footer_static', {'page': 'politique-confidentialite'}) }}">
-                                {{ 'footer.nav.politiqueconfidentialite'|trans }}
-                            </a>
-                        </li>
-                    {% elseif element.transName == 'footer.nav.boutique' and element.enabled == true  %}
-                        <li class="privacy_policy">
-                            <a href="{{ footer_boutique }}">
-                                {{ 'footer.nav.boutique'|trans }}
-                            </a>
-                        </li>
-                    {% endif %}
+        {{ render(controller('FDCEventMobileBundle:Global:footer', {route : app.request.get('_route')})) }}
 
-                {% endfor %}
-            </ul>
-            <div class="clear"></div>
-        </div>
     </div>
 </nav>

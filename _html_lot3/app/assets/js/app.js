@@ -40,6 +40,16 @@ $(document).ready(function() {
     owArrowDisplay();
   }
 
+  if($('.articles-list').length) {
+
+    var grid = owInitGrid('isotope-01');
+    owsetGridBigImg(grid, $('.grid-01'), true);
+
+    $( window ).resize(function() {
+        owsetGridBigImg(grid, $('.grid-01'), false);
+    });
+  }
+
   if($('.retrospective.palmares').length) {
     owInitNavSticky(2);
   }

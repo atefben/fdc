@@ -1,0 +1,14 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
+<div class="contain-map">
+    <strong class="name">{{ widget|trans_fallback('title') }}</strong>
+    {% if widget.image is not null %}
+        {% set trans = widget.image.findTranslationByLocale(app.request.locale) %}
+        {% if trans is null or trans.file is null %}
+            {% set trans = widget.image.findTranslationByLocale('fr') %}
+        {% endif %}
+        {% set image = trans.file %}
+        <img src="{% path image, '228x181' %}" alt="{{ widget.image|trans_fallback('alt') }}" class="map" />
+    {% endif %}
+    {{ widget|trans_fallback('content')|raw }}
+</div>

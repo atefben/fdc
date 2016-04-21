@@ -226,6 +226,8 @@ function lockEvents()
         var isLocked = ($(this).hasClass('fdc-is-locked'));
         if ($(this).attr('data-target') && $(this).attr('data-target') == '_blank') {
             var target = '_blank';
+        } else if ($(this).attr('data-edit') && $(this).attr('data-edit') == 'true') {
+            var target = 'edit';
         }
 
         hasLockList(entity, id, locale, isLocked, redirect, target);
@@ -390,6 +392,30 @@ function hasLockList(entity, id, locale, isLocked, redirect, target)
                         $(this).dialog('close');
                     }
                 };
+            } else if (target == 'edit') {
+                if ($('body').hasClass('role_translator')) {
+                    var html = "En cours de modification par " + xhr.lockedBy;
+                    var buttons = {
+                        'Fermer': function () {
+                            $(this).dialog('close');
+                        }
+                    };
+                } else {
+                    var html = "Vous êtes sur le point de débloquer l'article.<br/>\
+                    <br/>\
+                    Le contributeur " + xhr.lockedBy + " est en cours d'édition de l'article et perdra l'ensemble de ses modifications.<br/>\
+                    <br/>\
+                    La page sera rechargée après confirmation.\
+                    ";
+                    var buttons = {
+                        'Confirmer': function () {
+                            deleteLock(entity, id, locale, true);
+                        },
+                        'Annuler': function () {
+                            $(this).dialog('close');
+                        }
+                    };
+                }
             } else {
                 var html = "Cet élément est en cours d'édition par " + xhr.lockedBy + ".<br/>\
                 <br/>";
@@ -413,7 +439,7 @@ function hasLockList(entity, id, locale, isLocked, redirect, target)
 
             });
         } else {
-            if (target === false) {
+            if (target === false || target === 'edit') {
                 window.location.href = redirect;
             } else {
                 window.open(redirect, target);

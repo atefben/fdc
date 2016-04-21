@@ -23,9 +23,15 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
             ->addShould($this->getCountryQuery($_locale, $searchTerm))
         ;
         
+        $statusQuery = new \Elastica\Query\BoolQuery();
+        $statusQuery
+            ->addMust($this->getStatusFilterQuery($_locale))
+            ->addMust($finalQuery)
+        ;
+        
         $sortedQuery = new \Elastica\Query();
         $sortedQuery
-            ->setQuery($finalQuery)
+            ->setQuery($statusQuery)
             ->addSort('_score')
             ->addSort(array('title' => array('order' => 'asc')))
         ;

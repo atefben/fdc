@@ -14,10 +14,7 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
 {
     public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
-        if ($_locale == 'zh') {
-          $_locale = 'cn';
-        }
-        
+
         // Fields (title, introduction) OR Theme
         $finalQuery = new \Elastica\Query\BoolQuery();
         $finalQuery
@@ -25,9 +22,15 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
             ->addShould($this->getLocalizedFieldsQuery($_locale, $searchTerm))
         ;
         
+        $statusQuery = new \Elastica\Query\BoolQuery();
+        $statusQuery
+            ->addMust($this->getStatusFilterQuery($_locale))
+            ->addMust($finalQuery)
+        ;
+        
         $sortedQuery = new \Elastica\Query();
         $sortedQuery
-            ->setQuery($finalQuery)
+            ->setQuery($statusQuery)
             ->addSort('_score')
             ->addSort(array('firstname' => array('order' => 'asc')))
         ;

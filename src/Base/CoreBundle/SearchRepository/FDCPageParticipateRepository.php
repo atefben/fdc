@@ -14,10 +14,19 @@ class FDCPageParticipateRepository extends SearchRepository implements SearchRep
 {
     public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
     {
+        $finalQuery = new \Elastica\Query\BoolQuery();
+        $finalQuery
+            ->addShould($this->getFieldsQuery($_locale, $searchTerm))
+        ;
         
-        $finalQuery = $this->getFieldsQuery($_locale, $searchTerm);
+        $statusQuery = new \Elastica\Query\BoolQuery();
+        $statusQuery
+            ->addMust($this->getStatusFilterQuery($_locale))
+            ->addMust($finalQuery)
+        ;
         
-        $paginatedResults = $this->getPaginatedResults($finalQuery, $range, $page);
+        
+        $paginatedResults = $this->getPaginatedResults($statusQuery, $range, $page);
         
         return array(
           'items' => $paginatedResults->getCurrentPageResults(),
