@@ -85,8 +85,6 @@ class StatementRepository extends EntityRepository
             ->where('n.festival = :festival')
             ->andWhere('n.id = :id')
             ->andWhere('n.displayedMobile = :displayed_mobile')
-            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
-            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;
 
         $qb = $qb
@@ -118,7 +116,6 @@ class StatementRepository extends EntityRepository
         return $qb
             ->setParameter('id', $id)
             ->setParameter('festival', $festival)
-            ->setParameter('datetime', $dateTime)
             ->setParameter('displayed_mobile', true)
             ->getQuery()
             ->getOneOrNullResult()
