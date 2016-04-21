@@ -2,6 +2,10 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
+
+    {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+    {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+    
     <div id="main" class="all-articles grid evenement loading">
         <h2 class="title">{{ 'event.title.lesevenements'|trans }}</h2>
 

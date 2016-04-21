@@ -332,7 +332,7 @@ class TelevisionController extends Controller
                     $slug = $sectionTrans->getSlug();
                 }
 
-                return $this->redirectToRoute('fdc_event_television_trailers', array(
+                return $this->redirectToRoute('fdc_eventmobile_television_trailers', array(
                     'slug' => $slug,
                 ));
             }

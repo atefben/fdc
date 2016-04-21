@@ -23,7 +23,9 @@
 
         <div class="container">
             <div class="my-selection-container"></div>
-            <div class="suggestion"></div>
+            <div class="suggestion">
+                {{ render(controller('FDCEventMobileBundle:Global:suggestion', {route : app.request.get('_route')})) }}
+            </div>
         </div>
     </div>
 </div>

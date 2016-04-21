@@ -2,6 +2,10 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
+
+    {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+    {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+    
     <div id="main" class="webtv single-channel loading">
     <div class="container">
         <a href="{{ path('fdc_event_television_channels') }}" class="back">

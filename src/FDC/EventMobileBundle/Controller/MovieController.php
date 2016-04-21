@@ -120,7 +120,7 @@ class MovieController extends Controller
                         $page->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
                     }
                     if ($slug) {
-                        return $this->redirectToRoute('fdc_event_movie_selection', array('slug' => $slug));
+                        return $this->redirectToRoute('fdc_eventmobile_movie_selection', array('slug' => $slug));
                     }
                 }
             }
