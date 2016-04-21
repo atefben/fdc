@@ -4182,6 +4182,31 @@ video {
   transform: rotate(180deg);
   font-size: 1.4rem;
 }
+@media screen and (min-width: 1920px) {
+  .block-push-top {
+    height: 448px !important;
+  }
+}
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .block-push-top {
+    height: 373px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+  .block-push-top {
+    height: 297px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .block-push-top {
+    height: 296px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .block-push-top {
+    height: 296px !important;
+  }
+}
 
 .block-legend {
   padding: 25px 0;
@@ -7582,6 +7607,10 @@ header #searchContainer {
   .isotope-01 .item.w2 {
     width: calc(200%/8);
   }
+}
+
+.grid-01 {
+  margin-top: 15px;
 }
 
 .slider-home {

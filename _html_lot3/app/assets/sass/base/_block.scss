@@ -284,6 +284,27 @@
     }
   }
 
+  //MEDIA BANDEAU
+  @media screen and (min-width: 1920px) {
+      height: 448px !important;
+  }
+
+  @media screen and (min-width: 1600px) and (max-width:1919px) {
+      height: 373px !important;
+  }
+
+  @media screen and (min-width: 1280px) and (max-width:1599px) {
+      height: 297px !important;
+  }
+
+  @media screen and (min-width: 1024px) and (max-width:1279px) {
+      height: 296px !important;
+  }
+
+  @media screen and (max-width:1023px) {
+      height: 296px !important;
+  }
+
 }
 
 .block-legend {
