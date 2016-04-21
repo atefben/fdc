@@ -7,7 +7,7 @@ function initParallaxElements() {
   if($('.home').length) {
     // home prefooter
     if ($('#prefooter .owl-item.center .imgSlide img').length) {
-      parallaxElements.push({
+      parallaxElements['prefooter'] = ({
         'el1': '#prefooter .owl-item.center .imgSlide img',
         'positionTop': $('#slider-prefooter').offset().top,
         'division': 2,
@@ -17,7 +17,7 @@ function initParallaxElements() {
 
     // slider movies home
     if ($('#slider-movies .owl-item.active .video').length) {
-      parallaxElements.push({
+      parallaxElements['movies'] = ({
         'el1': '#slider-movies .owl-item.active .video',
         'positionTop': $('#slider-movies').offset().top,
         'division': 8,
@@ -28,7 +28,7 @@ function initParallaxElements() {
     // slider home
     if(!isIE() && !isiPad()) {
       if ($('#slider .owl-item .img-container').length) {
-        parallaxElements.push({
+        parallaxElements['slider'] = ({
           'el1': '#slider .owl-item .img-container',
           'positionTop': $('#slider').offset().top - $header.height(),
           'division': 2,
@@ -40,7 +40,7 @@ function initParallaxElements() {
 
   // header webtv
   if ($('.webtv-live').length) {
-    parallaxElements.push({
+    parallaxElements['webtv'] = ({
       'el1': '#live .img',
       'positionTop': $('#live').offset().top - $header.height(),
       'division': 0.3,
@@ -51,7 +51,7 @@ function initParallaxElements() {
 
   // header single movie page
   if($('.single-movie').length) {
-    parallaxElements.push({
+    parallaxElements['movie'] = ({
       'el1': '.main-image .img',
       'positionTop': $('.main-image').offset().top - $header.height(),
       'division': 6,
@@ -327,41 +327,31 @@ $(document).ready(function() {
     lastScrollTop = s;
   });
 
-
   // ---------- PARALLAX ------------
   // on resize, update positionTop
   $(window).resize(function() {
     if($('.home').length) {
       // home prefooter
       if ($("#slider-prefooter").length) {
-        parallaxElements[0].positionTop = $('#slider-prefooter').offset().top;
+        parallaxElements['prefooter'].positionTop = $('#slider-prefooter').offset().top;
       }
       if ($('#slider-movies').length > 0) {
-        parallaxElements[1].positionTop = $('#slider-movies').offset().top;
+        parallaxElements['movies'].positionTop = $('#slider-movies').offset().top;
       }
       if ($('#slider').length) {
-        parallaxElements[2].positionTop = $('#slider').offset().top - $header.height();
+        parallaxElements['slider'].positionTop = $('#slider').offset().top - $header.height();
       }
     }
 
     if($('.webtv-live').length) {
-      parallaxElements[0].positionTop = $('#live').offset().top - $header.height();
+      parallaxElements['webtv'].positionTop = $('#live').offset().top - $header.height();
     }
 
     hW = $(window).height();
   });
 
-  // setTimeout(function() {
-  //   scrollTarget = 0;
-  //   initParallaxElements();
-
-  //   if(parallaxElements.length != 0) {
-  //     update();
-  //   }
-  // }, 3500);
 
 //========== Scroll footer breadcrumb ==========/
-
   if($('#breadcrumb').length){
     $('#breadcrumb .goTop').on('click',function(){
       $('html, body').animate({
