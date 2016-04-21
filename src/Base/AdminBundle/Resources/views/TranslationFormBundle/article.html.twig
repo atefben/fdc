@@ -426,7 +426,9 @@
                                                     {% for media in widget.children.gallery.vars.data.medias %}
                                                     <div class="form-group">
                                                         <label>Media {{ loop.index }}</label>
+                                                        {% if media.media != null %}
                                                         {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
+                                                        {% endif %}
                                                         <div>
                                                             <b>{{ 'form.label_legend_img'|trans }}:</b>
                                                             {% if mediaTranslations.get(locale) is not null %}
@@ -445,9 +447,11 @@
                                                                 {{ mediaTranslations.get(locale).copyright }}
                                                             {% endif %}
                                                         </div>
+                                                        {% if media.media != null %}
                                                         <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': media.media.id }) }}">
                                                             modifier les traductions
                                                         </a>
+                                                        {% endif %}
                                                     </div>
                                                     {% endfor %}
                                                 {% endif %}
@@ -571,6 +575,7 @@
                                                 <div>
                                                     {% if widget.children.gallery.vars.data.medias is defined and widget.children.gallery.vars.data.medias is not null %}
                                                         {% for media in widget.children.gallery.vars.data.medias %}
+                                                            {% if media.media != null %}
                                                             <div class="form-group">
                                                                 <label>Media {{ loop.index }}</label>
                                                                 {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
@@ -593,6 +598,7 @@
                                                                     {% endif %}
                                                                 </div>
                                                             </div>
+                                                            {% endif %}
                                                         {% endfor %}
                                                     {% endif %}
                                                 </div>
