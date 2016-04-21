@@ -19,7 +19,8 @@ var GLOBALS = {
     "selectionUrl" : "selection.html",
     "audiosUrl": "audios.php",
     "photosUrl": "photos.php",
-    "videosUrl": "videos.php"
+    "videosUrl": "videos.php",
+    "searchUrl": "searchsuggest.json",
   },
   "texts" : {
     "url" : {
