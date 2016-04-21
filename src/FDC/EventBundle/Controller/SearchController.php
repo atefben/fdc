@@ -145,8 +145,12 @@ class SearchController extends Controller
      * @param $searchTerm
      * @return JsonResponse
      */
-    public function searchAutocompleteAction($_locale, $searchTerm)
+    public function searchAutocompleteAction($_locale, $searchTerm = null)
     {
+        if ($searchTerm === null) {
+            throw $this->createNotFoundException();
+        }
+
         $repository = $this->get('base.search.repository');
         
         // Get theme query.
