@@ -468,7 +468,9 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_list",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "projection_list",
+     *     "projection_show",
      * })
      */
     private $imageMain;
@@ -482,7 +484,9 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "news_list",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "projection_list",
+     *     "projection_show",
      * })
      */
     private $imageCover;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-04-19T19:27:08Z" source-language="en" target-language="zh" datatype="plaintext" original="not.available">
+  <file date="2016-04-21T18:43:34Z" source-language="en" target-language="zh" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -151,59 +151,59 @@
       <trans-unit id="846ff76073050bee0a02a332795b9514e5fd364b" resname="header.mainnav.nav.accrediter">
         <source>header.mainnav.nav.accrediter</source>
         <target>验证</target>
-        <jms:reference-file line="24">views/Global/nav.html.twig</jms:reference-file>
         <jms:reference-file line="4">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
+        <jms:reference-file line="24">views/Global/nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="fc2a380268a2544d00cd9488a2f28dc95a635175" resname="header.mainnav.nav.accueil">
         <source>header.mainnav.nav.accueil</source>
         <target>首页</target>
-        <jms:reference-file line="9">views/Global/nav.html.twig</jms:reference-file>
         <jms:reference-file line="2">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
+        <jms:reference-file line="9">views/Global/nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9f405640c3fcf9c27d8a911afe03fb3d952d1823" resname="header.mainnav.nav.agenda">
         <source>header.mainnav.nav.agenda</source>
         <target>日历</target>
-        <jms:reference-file line="52">views/Global/nav.html.twig</jms:reference-file>
         <jms:reference-file line="8">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
+        <jms:reference-file line="52">views/Global/nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d8c93f7c4bcae57d07a72e43ed515f81bbeab078" resname="header.mainnav.nav.communiques">
         <source>header.mainnav.nav.communiques</source>
         <target>新闻公告</target>
-        <jms:reference-file line="17">views/Global/nav.html.twig</jms:reference-file>
-        <jms:reference-file line="3">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
         <jms:reference-file line="219">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="3">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
+        <jms:reference-file line="17">views/Global/nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d69a58deaf81d7b6dd122dc5e07e1d0cc36ef5bb" resname="header.mainnav.nav.guide">
         <source>header.mainnav.nav.guide</source>
         <target>实用指南</target>
-        <jms:reference-file line="31">views/Global/nav.html.twig</jms:reference-file>
         <jms:reference-file line="5">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
+        <jms:reference-file line="31">views/Global/nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="73628d81dc7ccd64717dab8afb717c7c086e49d0" resname="header.mainnav.nav.mediatheque">
         <source>header.mainnav.nav.mediatheque</source>
         <target>多媒体资料库</target>
-        <jms:reference-file line="67">views/Global/nav.html.twig</jms:reference-file>
         <jms:reference-file line="10">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
+        <jms:reference-file line="67">views/Global/nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c836f56593f5d89a4be26ba23bd50f73bfe6b567" resname="header.mainnav.nav.plandessalles">
         <source>header.mainnav.nav.plandessalles</source>
         <target>放映厅位置</target>
-        <jms:reference-file line="58">views/Global/nav.html.twig</jms:reference-file>
         <jms:reference-file line="9">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
+        <jms:reference-file line="58">views/Global/nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6edbcf83a35e6510289e87ab0433f83c8a24d1b7" resname="header.mainnav.nav.programmation">
         <source>header.mainnav.nav.programmation</source>
         <target>放映安排</target>
-        <jms:reference-file line="40">views/Global/nav.html.twig</jms:reference-file>
-        <jms:reference-file line="46">views/Global/nav.html.twig</jms:reference-file>
         <jms:reference-file line="6">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
         <jms:reference-file line="7">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
+        <jms:reference-file line="40">views/Global/nav.html.twig</jms:reference-file>
+        <jms:reference-file line="46">views/Global/nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6b5701e0dadc5a4f2242931395d645c44313ff3f" resname="header.mainnav.nav.telecharger">
         <source>header.mainnav.nav.telecharger</source>
         <target>下载</target>
-        <jms:reference-file line="80">views/Global/nav.html.twig</jms:reference-file>
         <jms:reference-file line="11">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
+        <jms:reference-file line="80">views/Global/nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c616e5edd80955ef7a6f8cf3ba26e9479985af73" resname="header.partners.img.chopard">
         <source>header.partners.img.chopard</source>
@@ -279,8 +279,8 @@
       <trans-unit id="b86d744d13ed71f256ea14a9ae234e5977e3a740" resname="home.article.btn.ajouteramaselection">
         <source>home.article.btn.ajouteramaselection</source>
         <target state="new">home.article.btn.ajouteramaselection</target>
-        <jms:reference-file line="48">News/widgets/inner.article.html.twig</jms:reference-file>
         <jms:reference-file line="104">News/widgets/widget-article.html.twig</jms:reference-file>
+        <jms:reference-file line="48">News/widgets/inner.article.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bccc76a262881732f90f9ad48758f21f0707e408" resname="mediatheque.btn.touttelecharger">
         <source>mediatheque.btn.touttelecharger</source>
@@ -424,15 +424,15 @@
       <trans-unit id="ab53172e7b907fc337196faf1e7323c39541ceb5" resname="press.header.label.espacepresse">
         <source>press.header.label.espacepresse</source>
         <target>媒体专区</target>
-        <jms:reference-file line="9">views/Accredit/main.html.twig</jms:reference-file>
         <jms:reference-file line="8">views/Agenda/agenda.html.twig</jms:reference-file>
-        <jms:reference-file line="8">views/Agenda/room.html.twig</jms:reference-file>
         <jms:reference-file line="9">views/Agenda/scheduling.html.twig</jms:reference-file>
+        <jms:reference-file line="8">views/Agenda/room.html.twig</jms:reference-file>
+        <jms:reference-file line="9">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="8">views/News/list.html.twig</jms:reference-file>
         <jms:reference-file line="10">views/Guide/main.html.twig</jms:reference-file>
         <jms:reference-file line="10">views/Media/download.html.twig</jms:reference-file>
         <jms:reference-file line="10">views/Media/main.html.twig</jms:reference-file>
-        <jms:reference-file line="9">views/News/home.html.twig</jms:reference-file>
-        <jms:reference-file line="8">views/News/list.html.twig</jms:reference-file>
+        <jms:reference-file line="9">views/Accredit/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1c634e14b934e8ae584d93217e15998f3c89be32" resname="press.header.placeholder.motdepasse">
         <source>press.header.placeholder.motdepasse</source>
