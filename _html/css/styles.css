@@ -10534,6 +10534,7 @@ article .read-later.rAlign span:after {
 .single-article .single-photo .photo-container {
   display: inline-block;
   width: auto;
+  max-width: 100%;
 }
 .single-article .single-photo img {
   display: block;
@@ -10580,6 +10581,7 @@ article .read-later.rAlign span:after {
 }
 .single-article .half-photo + .half-photo .photo-container {
   float: right;
+  max-width: 100%;
 }
 .single-article .chapeau {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
