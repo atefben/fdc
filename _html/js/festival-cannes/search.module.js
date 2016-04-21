@@ -39,10 +39,7 @@ $(document).ready(function() {
 
       $.ajax({
         type: "GET",
-        url: GLOBALS.urls.searchUrl,
-        data: {
-          "searchTerm": value 
-        },
+        url: GLOBALS.urls.searchUrl+'/'+encodeURIComponent(value),
         success: function(data) {
           for (var i=0; i<data.length; i++) {
             var type = data[i].type,
@@ -155,9 +152,8 @@ $(document).ready(function() {
 
     $.ajax({
       type: "GET",
-      url: 'results.json', //TODO  a revoir//
+      url: GLOBALS.urls.searchUrl+'/'+encodeURIComponent($('.searchpage #inputSearch').val()),
       success: function(data) {
-
         if(data.all.count == 0) {
           $('#noResult').show();
           return false;
