@@ -1,0 +1,23 @@
+#main.faq-page {
+	#horizontal-menu{
+		margin-top: 20px;
+		background: #fff;
+		border-bottom: 1px solid #dfdfdf; 
+		border-top: 1px solid #dfdfdf; 
+		 -webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	#horizontal-menu .vid p{
+		text-align: left;
+		line-height: 110px;
+		font-size: 22px;
+		letter-spacing: -0.5px;
+	}
+	#horizontal-menu .vid{
+		box-sizing:border-box;
+		padding: 0;
+		 -webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	#horizontal-menu .owl-stage {
+	    padding-left: 40px;
+	}
+}
