@@ -29,8 +29,12 @@
             <div class="infos-item-list">
                 {% if award_association is defined and award_association %}
                     <div class="logo-palme-dor-container">
-                        <i class="icon icon_palme palme-dor-img"></i>
-                        <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
+                        {% if hidePalme is defined and hidePalme %}
+                            <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
+                        {% else %}
+                            <i class="icon icon_palme palme-dor-img"></i>
+                            <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
+                        {% endif %}
                         {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
                             {% set person = award_association.person %}
                             <h3 class="title-item verticalline">
