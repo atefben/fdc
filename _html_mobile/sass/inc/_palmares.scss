@@ -1,202 +1,203 @@
-.banner-img .title{
-	font-size: 28px;
-}
-.palmares-container{
-	
-	background-color:#141414;
-	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-}
-.prize-description, .contain-winner{
+#main.palmares {
+	.banner-img .title{
+		font-size: 28px;
+	}
+	.palmares-container{
+		
+		background-color:#141414;
+		font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+	}
+	.prize-description, .contain-winner{
 
-	padding: 55px 0;
-	max-height: 1000px;
-	
-} 
-.prize-description{
-	
-	border-bottom: 1px solid #2c2c2c;
-}  
-.prize-description h2{
+		padding: 55px 0;
+		max-height: 1000px;
+		
+	} 
+	.prize-description{
+		
+		border-bottom: 1px solid #2c2c2c;
+	}  
+	.prize-description h2{
 
-	width: 520px;
-	margin: 0 auto;
-	text-align: center;
-	color:#999999;
-	font-size: 22px;
-	line-height: 36px;
-	letter-spacing: -0.5px;
+		width: 520px;
+		margin: 0 auto;
+		text-align: center;
+		color:#999999;
+		font-size: 22px;
+		line-height: 36px;
+		letter-spacing: -0.5px;
 
-}
-.prize-description h2 strong{
+	}
+	.prize-description h2 strong{
 
-	color:#fff;
-}
-.img {
-	width: 280px;
-	height: 390px;
-	background-position: center top;
-	background-size: cover;
-	margin:0 auto;
-}
-.contain-winner{
+		color:#fff;
+	}
+	.img {
+		width: 280px;
+		height: 390px;
+		background-position: center top;
+		background-size: cover;
+		margin:0 auto;
+	}
+	.contain-winner{
 
-	text-align: center;
-	color:#fff;
-}
+		text-align: center;
+		color:#fff;
+	}
 
-.palme-dor-img{
+	.palme-dor-img{
 
-	font-size: 92px;
-	margin: 16px 0;
-}
-.title-prize, .prize-category, .movie-title, .people-name{
-	text-transform: uppercase;
-	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-	font-size: 28px;
-	letter-spacing: 4px;
-	font-weight: 700;
-	max-width: 500px;
-	margin: 0 auto;
+		font-size: 92px;
+		margin: 16px 0;
+	}
+	.title-prize, .prize-category, .movie-title, .people-name{
+		text-transform: uppercase;
+		font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+		font-size: 28px;
+		letter-spacing: 4px;
+		font-weight: 700;
+		max-width: 500px;
+		margin: 0 auto;
 
-}
-.title-prize{
-	line-height: 35px;
-}
-.contain-winner .subtitle{
-	text-transform: uppercase;
-	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-	font-size: 17px;
-	font-style: normal;
-	margin-bottom: 5px;
-}
-img.portrait{
-	display: inline-block;
-	margin-bottom: 30px;
-	max-width: 80px;
+	}
+	.title-prize{
+		line-height: 35px;
+	}
+	.contain-winner .subtitle{
+		text-transform: uppercase;
+		font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+		font-size: 17px;
+		font-style: normal;
+		margin-bottom: 5px;
+	}
+	img.portrait{
+		display: inline-block;
+		margin-bottom: 30px;
+		max-width: 80px;
 
-}
-.movie-title, .people-name{
-	font-size: 25px;
-}
-.prize-category{
+	}
+	.movie-title, .people-name{
+		font-size: 25px;
+	}
+	.prize-category{
 
-	font-size: 15px;
-	letter-spacing: 2px;
-	margin: 15px auto 25px auto;
+		font-size: 15px;
+		letter-spacing: 2px;
+		margin: 15px auto 25px auto;
 
-}
-.movie-title{
-	letter-spacing: 0;
-	margin-bottom: 15px;
+	}
+	.movie-title{
+		letter-spacing: 0;
+		margin-bottom: 15px;
 
-}
-.verticalline:after{
+	}
+	.verticalline:after{
 
-	content: "";
-    display: block;
-    height: 20px;
-    width: 2px;
-    padding: 0px;
-    margin: 20px auto ;
-    background-color: #434343;
-}
-.movie-real{
-	color:#c8a461;
-	font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-	font-style: italic;
-	font-size: 20px;
-}
-.title-list-cat{
-	border-bottom: 1px solid #2c2c2c;
-	border-top:1px solid #2c2c2c;
-}
-.title-list-cat .title{
-	color: #fff;
-	width: 470px;
-	margin: 60px auto;
-}
+		content: "";
+	    display: block;
+	    height: 20px;
+	    width: 2px;
+	    padding: 0px;
+	    margin: 20px auto ;
+	    background-color: #434343;
+	}
+	.movie-real{
+		color:#c8a461;
+		font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+		font-style: italic;
+		font-size: 20px;
+	}
+	.title-list-cat{
+		border-bottom: 1px solid #2c2c2c;
+		border-top:1px solid #2c2c2c;
+	}
+	.title-list-cat .title{
+		color: #fff;
+		width: 470px;
+		margin: 60px auto;
+	}
 
-section h3:not(.movie-title):not(.people-name){
+	section h3:not(.movie-title):not(.people-name){
 
-	background-color: #202020;
-	text-align: center;
-	color: #fff;
-	text-transform: uppercase;
-	font-size: 20px;
-	letter-spacing: 2px;
-	padding: 40px 0;
-	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-	font-weight: 700;
-}
+		background-color: #202020;
+		text-align: center;
+		color: #fff;
+		text-transform: uppercase;
+		font-size: 20px;
+		letter-spacing: 2px;
+		padding: 40px 0;
+		font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+		font-weight: 700;
+	}
 
-/*SLIDERS*/
-.film-slider, .all-slider{
-	margin: 60px 0;
-}
-.all-slider .contain-winner{
+	/*SLIDERS*/
+	.film-slider, .all-slider{
+		margin: 60px 0;
+	}
+	.all-slider .contain-winner{
 
-	width: 450px;
-	height: 780px;
-}
-.all-slider .owl-item img.portrait {
+		width: 450px;
+		height: 780px;
+	}
+	.all-slider .owl-item img.portrait {
 
-    margin: 0 auto 15px;
-}
-.film-slider .owl-item{
+	    margin: 0 auto 15px;
+	}
+	.film-slider .owl-item{
 
-	width: 280px;
-	height: 530px;
-}
-.film-slider .img-container{
+		width: 280px;
+		height: 530px;
+	}
+	.film-slider .img-container{
 
-	width: 280px;
-	height: 380px;
-	background-position: center center;
-  	background-size: cover;
-}
-.film-slider .info{
-	margin-top: 35px;
-	text-align: center;
-}
-.film-slider .info p{
-	text-transform: uppercase;
-	color: #fff;
-	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-	font-weight: 700;
-	font-size: 25px;
-	margin-bottom: 8px;
-	font-style: normal;
-}
-.film-slider .info p.subtitle{
-	font-size: 18px;
+		width: 280px;
+		height: 380px;
+		background-position: center center;
+	  	background-size: cover;
+	}
+	.film-slider .info{
+		margin-top: 35px;
+		text-align: center;
+	}
+	.film-slider .info p{
+		text-transform: uppercase;
+		color: #fff;
+		font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+		font-weight: 700;
+		font-size: 25px;
+		margin-bottom: 8px;
+		font-style: normal;
+	}
+	.film-slider .info p.subtitle{
+		font-size: 18px;
 
-}
-.film-slider .info p.duration{
-	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-	color:#999999;
-	font-size: 18px;
-	margin-top: 8px;
-}
-.film-slider .info a{
+	}
+	.film-slider .info p.duration{
+		font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+		color:#999999;
+		font-size: 18px;
+		margin-top: 8px;
+	}
+	.film-slider .info a{
 
-	font-size: 22px;
-	font-style: italic;
-	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-	color:#c8a461;
+		font-size: 22px;
+		font-style: italic;
+		font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+		color:#c8a461;
+	}
+	.film-slider .owl-stage-outer, .all-slider .owl-stage-outer{
+		margin-left: 0;
+	}
+
+
+	/*SECTION ITEM COLUMN*/
+	.item-column{
+
+		text-align: center;
+		margin-top:60px;
+	}
+	.item-column img{
+
+		margin-bottom: 70px;
+	}
 }
-.film-slider .owl-stage-outer, .all-slider .owl-stage-outer{
-	margin-left: 0;
-}
-
-
-/*SECTION ITEM COLUMN*/
-.item-column{
-
-	text-align: center;
-	margin-top:60px;
-}
-.item-column img{
-
-	margin-bottom: 70px;
-}
-

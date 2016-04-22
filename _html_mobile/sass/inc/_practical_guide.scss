@@ -1,23 +1,31 @@
-.header-press .container {
-    padding: 60px 0 30px 0;
-}
-.guid-container{
-	border-top: 1px solid #e0e0e0;
-}
-.italic{
-	font-style: italic;
-	display: block;
-	line-height: 10px;
-	margin-bottom: 20px;
+#main.articles {
+  .header-press .container {
+      padding: 60px 0 30px 0;
+  }
 
-}
-.title-contain{
-	line-height: 30px;
-}
-.contact-infos strong, .contact-infos a{
-	display: block;
-	margin-bottom: 10px;
-}
-section.contact{
-	padding: 0;
+  .guid-container {
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .italic {
+    font-style: italic;
+    display: block;
+    line-height: 10px;
+    margin-bottom: 20px;
+
+  }
+
+  .title-contain {
+    line-height: 30px;
+  }
+
+  .contact-infos strong,
+  .contact-infos a {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  section.contact {
+    padding: 0;
+  }
 }

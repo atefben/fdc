@@ -1670,27 +1670,57 @@ a {
 }
 
 /* ************** */
-a {
+#main.artist {
+  /*PICTOS NAV*/
+  /*.pictos-nav{
+
+  	position: fixed;
+  	width: 560px;
+  	left:40px;
+  	bottom: 160px;
+  	z-index: 99;
+  }
+  .pictos-nav div{
+
+  	background-color: #fff;
+  	width: 120px;
+  	height: 120px;
+  	border: 1px solid #dfdfdf;
+  	text-align: center;
+  	line-height: 120px;
+  	font-size: 45px;
+  	position: absolute;
+  }
+  .pictos-nav div.back{
+  	left:0;
+  }
+  .pictos-nav div.calendar{
+  	right:0;
+  }*/
+  /*SECTION*/
+  /*SLIDER*/
+  /*PHOTO */
+  /*JURY PRESENCE*/
+  /*SECTION director*/
+  /*SLIDERS*/
+}
+#main.artist a {
   color: #c8a461;
 }
-
-.slideshow {
+#main.artist .slideshow {
   border: none;
 }
-
-.container {
+#main.artist .container {
   padding-top: 50px;
   font-size: 0;
 }
-
-.artist-name {
+#main.artist .artist-name {
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
   max-height: 200px;
   margin-bottom: 40px;
 }
-
-.artist-name .category {
+#main.artist .artist-name .category {
   color: #c8a461;
   display: inline-block;
   font-size: 20px;
@@ -1699,14 +1729,12 @@ a {
   margin-right: 12px;
   text-transform: uppercase;
 }
-
-.artist-name span {
+#main.artist .artist-name span {
   color: #666;
   display: inline-block;
   font-size: 20px;
 }
-
-.artist-name h2 {
+#main.artist .artist-name h2 {
   color: #333;
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 35px;
@@ -1717,16 +1745,14 @@ a {
   margin: 15px auto 0 auto;
   text-align: center;
 }
-
-.text-content {
+#main.artist .text-content {
   font-size: 24px;
   color: #666666;
   max-height: 1000px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   line-height: 30px;
 }
-
-h3 {
+#main.artist h3 {
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -1734,40 +1760,11 @@ h3 {
   text-align: center;
   margin-bottom: 60px;
 }
-
-/*PICTOS NAV*/
-/*.pictos-nav{
-
-	position: fixed;
-	width: 560px;
-	left:40px;
-	bottom: 160px;
-	z-index: 99;
-}
-.pictos-nav div{
-
-	background-color: #fff;
-	width: 120px;
-	height: 120px;
-	border: 1px solid #dfdfdf;
-	text-align: center;
-	line-height: 120px;
-	font-size: 45px;
-	position: absolute;
-}
-.pictos-nav div.back{
-	left:0;
-}
-.pictos-nav div.calendar{
-	right:0;
-}*/
-/*SECTION*/
-.section {
+#main.artist .section {
   border-bottom: 1px solid #dfdfdf;
   padding: 40px 0;
 }
-
-.title-section {
+#main.artist .title-section {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #000;
   text-transform: uppercase;
@@ -1777,78 +1774,62 @@ h3 {
   /*font-size: 1.5rem;*/
   font-size: 22px;
 }
-
-.section p {
+#main.artist .section p {
   color: #666666;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   /*font-size: 1.5rem;*/
   line-height: 30px;
   font-size: 24px;
 }
-
-/*SLIDER*/
-.owl-stage-outer {
+#main.artist .owl-stage-outer {
   width: 640px;
   margin-left: -32px;
 }
-
-.slideshow {
+#main.artist .slideshow {
   padding: 0;
   margin: 0;
 }
-
-/*PHOTO */
-.photo-container {
+#main.artist .photo-container {
   display: inline-block;
   margin-bottom: 60px;
   font-size: 0;
 }
-
-.photo-container img {
+#main.artist .photo-container img {
   max-width: 100%;
 }
-
-.photo-container .caption {
+#main.artist .photo-container .caption {
   color: #969696;
   font-size: .750rem;
   margin: 10px 0 0 0;
   text-align: left;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
-
-/*JURY PRESENCE*/
-.jury {
+#main.artist .jury {
   text-align: center;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   max-height: 80px;
   font-size: 20px;
 }
-
-.jury .rank {
+#main.artist .jury .rank {
   color: #c8a461;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 25px;
 }
-
-.jury .item-separate {
+#main.artist .jury .item-separate {
   color: #c8a461;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding: 0 7px;
 }
-
-.jury .role, .jury .date {
+#main.artist .jury .role, #main.artist .jury .date {
   text-transform: uppercase;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 }
-
-/*SECTION director*/
-.director {
+#main.artist .director {
   padding: 0;
   background-color: #f6f6f6;
 }
-
-.director a, .thumb a {
+#main.artist .director a, #main.artist .thumb a {
   display: block;
   position: absolute;
   top: 0;
@@ -1857,8 +1838,7 @@ h3 {
   width: 100%;
   z-index: 5;
 }
-
-.director h3 {
+#main.artist .director h3 {
   font-family: "Playfair Display Bold", Times New Roman, Times, serif;
   font-size: 24px;
   letter-spacing: 5px;
@@ -1866,25 +1846,21 @@ h3 {
   padding: 55px 0;
   margin: 0;
 }
-
-.director .owl-item {
+#main.artist .director .owl-item {
   width: 280px;
   height: 530px;
 }
-
-.director .img-container {
+#main.artist .director .img-container {
   width: 280px;
   height: 380px;
   background-position: center center;
   background-size: cover;
 }
-
-.director .info {
+#main.artist .director .info {
   margin-top: 35px;
   text-align: center;
 }
-
-.director .info p {
+#main.artist .director .info p {
   text-transform: uppercase;
   color: #000;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -1892,42 +1868,34 @@ h3 {
   font-size: 25px;
   margin-bottom: 5px;
 }
-
-.director .info span {
+#main.artist .director .info span {
   font-size: 22px;
   font-style: italic;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #c8a461;
 }
-
-.director .owl-stage-outer {
+#main.artist .director .owl-stage-outer {
   margin-left: 0;
 }
-
-/*SLIDERS*/
-.film-slider .owl-item {
+#main.artist .film-slider .owl-item {
   width: 280px;
   height: 540px;
 }
-
-.film-slider .img-container {
+#main.artist .film-slider .img-container {
   width: 280px;
   height: 380px;
   background-position: center center;
   background-size: cover;
 }
-
-.content-text {
+#main.artist .content-text {
   max-height: 200px;
   max-width: 280px;
   text-align: center;
 }
-
-.content-text span {
+#main.artist .content-text span {
   margin: 8px 0;
 }
-
-.content-text .item-title {
+#main.artist .content-text .item-title {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   color: #c8a461;
@@ -1936,38 +1904,33 @@ h3 {
   padding-top: 13px;
   font-weight: 700;
 }
-
-.content-text .item-sub-title {
+#main.artist .content-text .item-sub-title {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 17px;
   text-transform: uppercase;
   color: #c8a461;
   display: block;
 }
-
-.content-text .item-date {
+#main.artist .content-text .item-date {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #999999;
   font-size: 18px;
   padding-right: 8px;
 }
-
-.content-text .item-categ {
+#main.artist .content-text .item-categ {
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   font-size: 17px;
   color: #333333;
   line-height: 20px;
 }
-
-.content-text .item-details {
+#main.artist .content-text .item-details {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 17px;
   color: #666666;
   display: block;
 }
-
-.film-slider .owl-stage-outer {
+#main.artist .film-slider .owl-stage-outer {
   margin-left: 0;
 }
 
@@ -2111,12 +2074,12 @@ h3 {
   font-size: 20px;
 }
 
-input[type=text],
-input[type=email],
-input[type=tel],
-input[type=url],
-input[type=search],
-input[type=submit], textarea {
+#main.contact input[type=text],
+#main.contact input[type=email],
+#main.contact input[type=tel],
+#main.contact input[type=url],
+#main.contact input[type=search],
+#main.contact input[type=submit], #main.contact textarea {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -2125,29 +2088,25 @@ input[type=submit], textarea {
   -webkit-border-radius: 0;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
-
-.contact h2.title {
+#main.contact h2.title {
   color: #333;
   font-family: "Playfair Display", Times New Roman, Times, serif;
   font-weight: 700;
   margin-bottom: 60px;
   height: 24px;
 }
-
-.contact .coords, .contact .success {
+#main.contact .coords, #main.contact .success {
   background-color: #f4f4f4;
   border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
   text-align: center;
   padding: 35px 0;
 }
-
-.contact .coords a {
+#main.contact .coords a {
   color: #c8a461;
   font-weight: 700;
 }
-
-.contact .coords h3, .contact .success h3 {
+#main.contact .coords h3, #main.contact .success h3 {
   color: #c8a461;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 20px;
@@ -2157,19 +2116,16 @@ input[type=submit], textarea {
   text-transform: uppercase;
   max-height: 200px;
 }
-
-.contact .coords p, .contact .success p {
+#main.contact .coords p, #main.contact .success p {
   color: #666;
   line-height: 30px;
   max-height: 500px;
   font-size: 20px;
 }
-
-.contact .success {
+#main.contact .success {
   display: none;
 }
-
-.contact .container p {
+#main.contact .container p {
   color: #666;
   font-size: 20px;
   line-height: 30px;
@@ -2178,27 +2134,23 @@ input[type=submit], textarea {
   padding: 0 25px;
   text-align: center;
 }
-
-.contact #form {
+#main.contact #form {
   margin: 0 auto;
   overflow: hidden;
   padding-bottom: 70px;
   width: 525px;
 }
-
-.contact #form ::-webkit-input-placeholder {
+#main.contact #form ::-webkit-input-placeholder {
   color: #999;
   font-size: 20px;
 }
-
-.contact #form .required {
+#main.contact #form .required {
   color: #999;
   float: right;
   font-size: 20px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
-
-.contact #form input, .contact #form textarea {
+#main.contact #form input, #main.contact #form textarea {
   background: #fff;
   border: 1px solid #c1c1c1;
   box-sizing: border-box;
@@ -2216,36 +2168,29 @@ input[type=submit], textarea {
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-
-.contact #form input:focus, .contact #form textarea:focus {
+#main.contact #form input:focus, #main.contact #form textarea:focus {
   border-color: #141414;
 }
-
-.contact #form textarea {
+#main.contact #form textarea {
   height: 190px;
   padding-top: 20px;
   resize: none;
 }
-
-.contact #form textarea.invalid {
+#main.contact #form textarea.invalid {
   border-color: #e93939;
   color: #e93939;
 }
-
-.contact #form input {
+#main.contact #form input {
   height: 70px;
 }
-
-.contact #form input.invalid {
+#main.contact #form input.invalid {
   border-color: #e93939;
   color: #e93939;
 }
-
-.contact #form input.valid {
+#main.contact #form input.valid {
   border-color: green;
 }
-
-.contact #form input[type="submit"] {
+#main.contact #form input[type="submit"] {
   border-color: #c8a461;
   color: #c8a461;
   cursor: pointer;
@@ -2261,8 +2206,7 @@ input[type=submit], textarea {
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-
-.contact #form .select {
+#main.contact #form .select {
   border: 1px solid #c1c1c1;
   box-sizing: border-box;
   color: #999;
@@ -2280,13 +2224,11 @@ input[type=submit], textarea {
   font-size: 1rem;
   font-weight: 700;
 }
-
-.contact #form .select.invalid {
+#main.contact #form .select.invalid {
   border-color: #e93939;
   color: #e93939;
 }
-
-.contact #form .select #triggerSelect {
+#main.contact #form .select #triggerSelect {
   position: absolute;
   display: block;
   height: 70px;
@@ -2296,15 +2238,13 @@ input[type=submit], textarea {
   z-index: 2;
   cursor: pointer;
 }
-
-.contact #form .select label {
+#main.contact #form .select label {
   color: #333;
   display: inline-block;
   margin-right: 5px;
   vertical-align: middle;
 }
-
-.contact #form .select select {
+#main.contact #form .select select {
   background: none;
   height: 70px;
   line-height: 70px;
@@ -2323,8 +2263,7 @@ input[type=submit], textarea {
   background: url("../img/svg/arrow-down-gold.svg") no-repeat right center;
   background-size: 6px;
 }
-
-.contact #form .errors {
+#main.contact #form .errors {
   border: 1px solid #e93939;
   color: #e93939;
   clear: both;
@@ -2337,52 +2276,45 @@ input[type=submit], textarea {
   -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-
-.contact #form .errors.show {
+#main.contact #form .errors.show {
   opacity: 1;
   visibility: visible;
 }
-
-.contact #form .errors ul {
+#main.contact #form .errors ul {
   list-style-type: disc;
   padding-left: 20px;
 }
-
-.contact #form .errors ul li {
+#main.contact #form .errors ul li {
   margin-bottom: 5px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 20px;
   max-height: 30px;
   display: block;
 }
-
-.container-list {
+#main.contact .container-list {
   width: 100%;
   clear: both;
 }
 
-.faq-page #horizontal-menu {
+#main.faq-page #horizontal-menu {
   margin-top: 20px;
   background: #fff;
   border-bottom: 1px solid #dfdfdf;
   border-top: 1px solid #dfdfdf;
   -webkit-transform: translate3d(0px, 0px, 0px);
 }
-
-.faq-page #horizontal-menu .vid p {
+#main.faq-page #horizontal-menu .vid p {
   text-align: left;
   line-height: 110px;
   font-size: 22px;
   letter-spacing: -0.5px;
 }
-
-.faq-page #horizontal-menu .vid {
+#main.faq-page #horizontal-menu .vid {
   box-sizing: border-box;
   padding: 0;
   -webkit-transform: translate3d(0px, 0px, 0px);
 }
-
-.faq-page #horizontal-menu .owl-stage {
+#main.faq-page #horizontal-menu .owl-stage {
   padding-left: 40px;
 }
 
@@ -5449,28 +5381,33 @@ body.overlay::after {
   transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
-.banner-img {
-  height: 370px;
-}
-
-.banner-img .title .icon {
-  font-size: 75px;
-}
-
 #main.movie-page {
   overflow: visible;
+  /*INFOS FILMS*/
+  /*PRIZE*/
+  /*PICTOS NAV*/
+  /*SECTION*/
+  /*SLIDER*/
+  /*CREDITS AND CASTING*/
+  /*PHOTOS*/
+  /*ARTICLES*/
+  /*SECTION PRESS*/
+  /*SECTION CONTACT*/
+  /*SECTION COMPETITION*/
 }
-
-a {
+#main.movie-page .banner-img {
+  height: 370px;
+}
+#main.movie-page .banner-img .title .icon {
+  font-size: 75px;
+}
+#main.movie-page a {
   color: #c8a461;
 }
-
-.slideshow {
+#main.movie-page .slideshow {
   border: none;
 }
-
-/*INFOS FILMS*/
-.info-film {
+#main.movie-page .info-film {
   background-color: #141414;
   padding: 60px 40px 65px 40px;
   color: #ffffff;
@@ -5478,8 +5415,7 @@ a {
   text-align: center;
   position: relative;
 }
-
-.info-film .categories {
+#main.movie-page .info-film .categories {
   text-transform: uppercase;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   letter-spacing: 2px;
@@ -5488,18 +5424,15 @@ a {
   font-weight: 600;
   max-height: 30px;
 }
-
-.info-film .categories span {
+#main.movie-page .info-film .categories span {
   position: relative;
   margin-right: 20px;
   font-size: 20px;
 }
-
-.info-film .categories span:last-child:after {
+#main.movie-page .info-film .categories span:last-child:after {
   display: none;
 }
-
-.info-film .categories span:after {
+#main.movie-page .info-film .categories span:after {
   color: #fff;
   content: '-';
   display: block;
@@ -5507,64 +5440,53 @@ a {
   top: -5px;
   right: -14px;
 }
-
-.info-film h2 {
+#main.movie-page .info-film h2 {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
-  /*	font-size: 4rem;*/
+  /*  font-size: 4rem;*/
   font-size: 46px;
   letter-spacing: 4px;
   font-weight: 700;
   margin-bottom: 15px;
 }
-
-.info-film .title-original {
+#main.movie-page .info-film .title-original {
   text-transform: uppercase;
   /*font-size: 2rem;*/
   font-size: 22px;
   margin-bottom: 55px;
   max-height: 25px;
 }
-
-.info-film p {
+#main.movie-page .info-film p {
   font-size: 20px;
   max-height: 30px;
   margin-bottom: 20px;
 }
-
-.info-film p span {
+#main.movie-page .info-film p span {
   color: #cccccc;
 }
-
-/*PRIZE*/
-.prize {
+#main.movie-page .prize {
   padding: 60px 0;
   border-bottom: 1px solid #f1f1f1;
   max-height: 170px;
 }
-
-.prize .icon {
+#main.movie-page .prize .icon {
   color: #c8a461;
   font-size: 110px;
   margin-left: 10px;
 }
-
-.prize .prize-name {
+#main.movie-page .prize .prize-name {
   display: inline-block;
   vertical-align: middle;
   margin-left: 20px;
 }
-
-.prize p {
+#main.movie-page .prize p {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   color: #a4a4a4;
   font-style: italic;
   font-size: 20px;
   line-height: 30px;
 }
-
-/*PICTOS NAV*/
-.pictos-nav {
+#main.movie-page .pictos-nav {
   /*position: fixed;*/
   position: fixed;
   width: 560px;
@@ -5572,8 +5494,7 @@ a {
   bottom: 160px;
   z-index: 99;
 }
-
-.pictos-nav div {
+#main.movie-page .pictos-nav div {
   background-color: #fff;
   width: 120px;
   height: 120px;
@@ -5584,23 +5505,18 @@ a {
   font-size: 45px;
   position: absolute;
 }
-
-.pictos-nav div.back {
+#main.movie-page .pictos-nav div.back {
   left: 0;
 }
-
-.pictos-nav div.calendar {
+#main.movie-page .pictos-nav div.calendar {
   right: 0;
 }
-
-/*SECTION*/
-.section {
+#main.movie-page .section {
   border-bottom: 1px solid #dfdfdf;
   padding: 60px 0;
   max-height: 1000px;
 }
-
-.title-section {
+#main.movie-page .title-section {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #000;
   text-transform: uppercase;
@@ -5610,101 +5526,80 @@ a {
   /*font-size: 1.5rem;*/
   font-size: 22px;
 }
-
-.section p {
+#main.movie-page .section p {
   color: #666666;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   line-height: 30px;
   font-size: 24px;
 }
-
-/*SLIDER*/
-.owl-stage-outer {
+#main.movie-page .owl-stage-outer {
   width: 640px;
   margin-left: -32px;
 }
-
-.video {
+#main.movie-page .video {
   position: relative;
 }
-
-.video .infos {
+#main.movie-page .video .infos {
   position: absolute;
 }
-
-.slideshow .video .info .titleLink {
+#main.movie-page .slideshow .video .info .titleLink {
   font-size: 23px;
   max-width: 445px;
 }
-
-.slideshow {
+#main.movie-page .slideshow {
   padding: 0;
   margin: 0;
 }
-
-/*CREDITS AND CASTING*/
-.credits p, .casting p {
+#main.movie-page .credits p, #main.movie-page .casting p {
   /*font-size: 0.8rem;*/
   font-size: 22px;
   line-height: 30px;
 }
-
-.credits p.middle, .casting p.middle {
+#main.movie-page .credits p.middle, #main.movie-page .casting p.middle {
   margin-bottom: 30px;
 }
-
-/*PHOTOS*/
-.photos .slideshow .thumbnails .thumb {
+#main.movie-page .photos .slideshow .thumbnails .thumb {
   width: 160px;
   height: 110px;
 }
-
-.photos .slideshow .thumbnails .thumb.active:before {
+#main.movie-page .photos .slideshow .thumbnails .thumb.active:before {
   width: 144px;
   height: 94px;
 }
-
-/*ARTICLES*/
-.articles .owl-item {
+#main.movie-page .articles .owl-item {
   width: 516px;
   height: 490px;
 }
-
-.articles .img-container {
+#main.movie-page .articles .img-container {
   position: relative;
   width: 515px;
   height: 325px;
 }
-
-.articles .thumb img {
+#main.movie-page .articles .thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-.articles .thumb .picto {
+#main.movie-page .articles .thumb .picto {
   position: absolute;
   width: 70px;
   height: 70px;
   line-height: 70px;
   text-align: center;
 }
-
-.articles .thumb .picto .icon {
+#main.movie-page .articles .thumb .picto .icon {
   color: #c8a461;
   /*font-size: 1.5rem;*/
   font-size: 30px;
 }
-
-.articles .info {
+#main.movie-page .articles .info {
   width: 355px;
   margin: 30px auto 0 auto;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   font-size: 15px;
   color: #666666;
 }
-
-.articles .info .category {
+#main.movie-page .articles .info .category {
   color: #c8a461;
   letter-spacing: 0.1em;
   margin-right: 12px;
@@ -5713,8 +5608,7 @@ a {
   font-weight: 700;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
-
-.articles .info h2 {
+#main.movie-page .articles .info h2 {
   color: #000;
   text-align: center;
   margin-top: 15px;
@@ -5722,13 +5616,11 @@ a {
   font-size: 25px;
   line-height: 30px;
 }
-
-.articles .top-info {
+#main.movie-page .articles .top-info {
   margin: 0 auto;
   display: table;
 }
-
-.container .owl-item a:not(.director):not(.titleLink):not(.category), .film .owl-item a:not(.director):not(.titleLink):not(.category) {
+#main.movie-page .container .owl-item a:not(.director):not(.titleLink):not(.category), #main.movie-page .film .owl-item a:not(.director):not(.titleLink):not(.category) {
   display: block;
   position: absolute;
   top: 0;
@@ -5737,21 +5629,17 @@ a {
   width: 100%;
   z-index: 5;
 }
-
-/*SECTION PRESS*/
-.title-section i {
+#main.movie-page .title-section i {
   right: 115px;
   position: absolute;
   font-size: 22px;
 }
-
-.press {
+#main.movie-page .press {
   background-color: #141414;
   padding: 0;
   border: none;
 }
-
-.press .title-section, .contact .title-section {
+#main.movie-page .press .title-section, #main.movie-page .contact .title-section {
   color: #c8a461;
   text-align: center;
   padding: 60px 0;
@@ -5759,8 +5647,7 @@ a {
   margin-bottom: 0;
   letter-spacing: 0.25rem;
 }
-
-.press-content {
+#main.movie-page .press-content {
   max-height: 0;
   overflow: hidden;
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -5768,42 +5655,35 @@ a {
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-
-.open .press-content {
+#main.movie-page .open .press-content {
   max-height: 723px;
 }
-
-.press-folder, .links, .buttons {
+#main.movie-page .press-folder, #main.movie-page .links, #main.movie-page .buttons {
   width: 90%;
   margin: 0 auto;
   border-top: 1px solid #252525;
 }
-
-.press .vCenter {
+#main.movie-page .press .vCenter {
   width: 326px;
   vertical-align: middle;
   display: table-cell;
   height: 305px;
 }
-
-.press .press-folder {
+#main.movie-page .press .press-folder {
   height: 305px;
 }
-
-.press .press-folder .img-container {
+#main.movie-page .press .press-folder .img-container {
   width: 250px;
   height: 100%;
   float: left;
 }
-
-.press .press-folder .img-container .img {
+#main.movie-page .press .press-folder .img-container .img {
   width: 100%;
   height: 100%;
   background-position: center top;
   background-size: cover;
 }
-
-.press .folder-links {
+#main.movie-page .press .folder-links {
   text-align: center;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   line-height: 24px;
@@ -5813,40 +5693,33 @@ a {
   font-weight: 600;
   float: left;
 }
-
-.press .folder-links h3 {
+#main.movie-page .press .folder-links h3 {
   color: #fff;
   letter-spacing: 2px;
   padding: 30px 0 15px 0;
 }
-
-.press .folder-links a {
+#main.movie-page .press .folder-links a {
   line-height: 57px;
   display: block;
 }
-
-.press .links, .press .buttons {
+#main.movie-page .press .links, #main.movie-page .press .buttons {
   padding: 35px 0;
 }
-
-.press .sub, .contact .sub {
+#main.movie-page .press .sub, #main.movie-page .contact .sub {
   color: #fff;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 22px;
   text-align: center;
   font-weight: 600;
 }
-
-.press .links {
+#main.movie-page .press .links {
   text-align: center;
 }
-
-.press .links div {
+#main.movie-page .press .links div {
   display: inline-block;
   margin-top: 45px;
 }
-
-.press .links a {
+#main.movie-page .press .links a {
   text-transform: uppercase;
   color: #999999;
   font-size: 22px;
@@ -5856,8 +5729,7 @@ a {
   width: 170px;
   text-align: center;
 }
-
-.press .button {
+#main.movie-page .press .button {
   margin-top: 50px;
   margin-bottom: 0;
   border: 1px solid #c8a461;
@@ -5869,24 +5741,19 @@ a {
   margin-right: 25px;
   font-weight: 600;
 }
-
-.press .button:last-child {
+#main.movie-page .press .button:last-child {
   margin-right: 0;
 }
-
-/*SECTION CONTACT*/
-.contact {
+#main.movie-page .contact {
   background-color: #292929;
   padding: 0;
   text-align: center;
   border: none;
 }
-
-.contact .title-section {
+#main.movie-page .contact .title-section {
   color: #fff;
 }
-
-.contact-content {
+#main.movie-page .contact-content {
   max-height: 0;
   overflow: hidden;
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -5897,35 +5764,28 @@ a {
   width: 556px;
   margin: 0 auto;
 }
-
-.open .contact-content {
+#main.movie-page .open .contact-content {
   max-height: 917px;
 }
-
-.contact p:not(.sub) {
+#main.movie-page .contact p:not(.sub) {
   font-size: 22px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #999999;
   letter-spacing: -1px;
 }
-
-.contact div:not(.contact-content) {
+#main.movie-page .contact div:not(.contact-content) {
   width: 556px;
   margin: 0 auto 35px auto;
 }
-
-.contact .prod {
+#main.movie-page .contact .prod {
   border-bottom: 1px solid #383838;
   padding-bottom: 35px;
 }
-
-/*SECTION COMPETITION*/
-.competition {
+#main.movie-page .competition {
   padding: 0;
   background-color: #f6f6f6;
 }
-
-.competition h3 {
+#main.movie-page .competition h3 {
   font-family: "Playfair Display Bold", Times New Roman, Times, serif;
   font-size: 24px;
   letter-spacing: 5px;
@@ -5933,25 +5793,21 @@ a {
   padding: 55px 0;
   margin: 0;
 }
-
-.competition .owl-item {
+#main.movie-page .competition .owl-item {
   width: 280px;
   height: 530px;
 }
-
-.competition .img-container {
+#main.movie-page .competition .img-container {
   width: 280px;
   height: 380px;
   background-position: center center;
   background-size: cover;
 }
-
-.competition .info {
+#main.movie-page .competition .info {
   margin-top: 35px;
   text-align: center;
 }
-
-.competition .info p {
+#main.movie-page .competition .info p {
   text-transform: uppercase;
   color: #000;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -5959,14 +5815,12 @@ a {
   font-size: 25px;
   margin-bottom: 5px;
 }
-
-.competition .info a {
+#main.movie-page .competition .info a {
   font-size: 22px;
   font-style: italic;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
-
-.competition .owl-stage-outer {
+#main.movie-page .competition .owl-stage-outer {
   margin-left: 0;
 }
 
@@ -6079,25 +5933,25 @@ a {
   line-height: 80px;
 }
 
-.banner-img .title {
+#main.palmares {
+  /*SLIDERS*/
+  /*SECTION ITEM COLUMN*/
+}
+#main.palmares .banner-img .title {
   font-size: 28px;
 }
-
-.palmares-container {
+#main.palmares .palmares-container {
   background-color: #141414;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
-
-.prize-description, .contain-winner {
+#main.palmares .prize-description, #main.palmares .contain-winner {
   padding: 55px 0;
   max-height: 1000px;
 }
-
-.prize-description {
+#main.palmares .prize-description {
   border-bottom: 1px solid #2c2c2c;
 }
-
-.prize-description h2 {
+#main.palmares .prize-description h2 {
   width: 520px;
   margin: 0 auto;
   text-align: center;
@@ -6106,30 +5960,25 @@ a {
   line-height: 36px;
   letter-spacing: -0.5px;
 }
-
-.prize-description h2 strong {
+#main.palmares .prize-description h2 strong {
   color: #fff;
 }
-
-.img {
+#main.palmares .img {
   width: 280px;
   height: 390px;
   background-position: center top;
   background-size: cover;
   margin: 0 auto;
 }
-
-.contain-winner {
+#main.palmares .contain-winner {
   text-align: center;
   color: #fff;
 }
-
-.palme-dor-img {
+#main.palmares .palme-dor-img {
   font-size: 92px;
   margin: 16px 0;
 }
-
-.title-prize, .prize-category, .movie-title, .people-name {
+#main.palmares .title-prize, #main.palmares .prize-category, #main.palmares .movie-title, #main.palmares .people-name {
   text-transform: uppercase;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 28px;
@@ -6138,41 +5987,34 @@ a {
   max-width: 500px;
   margin: 0 auto;
 }
-
-.title-prize {
+#main.palmares .title-prize {
   line-height: 35px;
 }
-
-.contain-winner .subtitle {
+#main.palmares .contain-winner .subtitle {
   text-transform: uppercase;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 17px;
   font-style: normal;
   margin-bottom: 5px;
 }
-
-img.portrait {
+#main.palmares img.portrait {
   display: inline-block;
   margin-bottom: 30px;
   max-width: 80px;
 }
-
-.movie-title, .people-name {
+#main.palmares .movie-title, #main.palmares .people-name {
   font-size: 25px;
 }
-
-.prize-category {
+#main.palmares .prize-category {
   font-size: 15px;
   letter-spacing: 2px;
   margin: 15px auto 25px auto;
 }
-
-.movie-title {
+#main.palmares .movie-title {
   letter-spacing: 0;
   margin-bottom: 15px;
 }
-
-.verticalline:after {
+#main.palmares .verticalline:after {
   content: "";
   display: block;
   height: 20px;
@@ -6181,26 +6023,22 @@ img.portrait {
   margin: 20px auto;
   background-color: #434343;
 }
-
-.movie-real {
+#main.palmares .movie-real {
   color: #c8a461;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-style: italic;
   font-size: 20px;
 }
-
-.title-list-cat {
+#main.palmares .title-list-cat {
   border-bottom: 1px solid #2c2c2c;
   border-top: 1px solid #2c2c2c;
 }
-
-.title-list-cat .title {
+#main.palmares .title-list-cat .title {
   color: #fff;
   width: 470px;
   margin: 60px auto;
 }
-
-section h3:not(.movie-title):not(.people-name) {
+#main.palmares section h3:not(.movie-title):not(.people-name) {
   background-color: #202020;
   text-align: center;
   color: #fff;
@@ -6211,39 +6049,31 @@ section h3:not(.movie-title):not(.people-name) {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-weight: 700;
 }
-
-/*SLIDERS*/
-.film-slider, .all-slider {
+#main.palmares .film-slider, #main.palmares .all-slider {
   margin: 60px 0;
 }
-
-.all-slider .contain-winner {
+#main.palmares .all-slider .contain-winner {
   width: 450px;
   height: 780px;
 }
-
-.all-slider .owl-item img.portrait {
+#main.palmares .all-slider .owl-item img.portrait {
   margin: 0 auto 15px;
 }
-
-.film-slider .owl-item {
+#main.palmares .film-slider .owl-item {
   width: 280px;
   height: 530px;
 }
-
-.film-slider .img-container {
+#main.palmares .film-slider .img-container {
   width: 280px;
   height: 380px;
   background-position: center center;
   background-size: cover;
 }
-
-.film-slider .info {
+#main.palmares .film-slider .info {
   margin-top: 35px;
   text-align: center;
 }
-
-.film-slider .info p {
+#main.palmares .film-slider .info p {
   text-transform: uppercase;
   color: #fff;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -6252,36 +6082,29 @@ section h3:not(.movie-title):not(.people-name) {
   margin-bottom: 8px;
   font-style: normal;
 }
-
-.film-slider .info p.subtitle {
+#main.palmares .film-slider .info p.subtitle {
   font-size: 18px;
 }
-
-.film-slider .info p.duration {
+#main.palmares .film-slider .info p.duration {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #999999;
   font-size: 18px;
   margin-top: 8px;
 }
-
-.film-slider .info a {
+#main.palmares .film-slider .info a {
   font-size: 22px;
   font-style: italic;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #c8a461;
 }
-
-.film-slider .owl-stage-outer, .all-slider .owl-stage-outer {
+#main.palmares .film-slider .owl-stage-outer, #main.palmares .all-slider .owl-stage-outer {
   margin-left: 0;
 }
-
-/*SECTION ITEM COLUMN*/
-.item-column {
+#main.palmares .item-column {
   text-align: center;
   margin-top: 60px;
 }
-
-.item-column img {
+#main.palmares .item-column img {
   margin-bottom: 70px;
 }
 
@@ -6510,31 +6333,27 @@ a.partners-link {
   line-height: 20px;
 }
 
-.header-press .container {
+#main.articles .header-press .container {
   padding: 60px 0 30px 0;
 }
-
-.guid-container {
+#main.articles .guid-container {
   border-top: 1px solid #e0e0e0;
 }
-
-.italic {
+#main.articles .italic {
   font-style: italic;
   display: block;
   line-height: 10px;
   margin-bottom: 20px;
 }
-
-.title-contain {
+#main.articles .title-contain {
   line-height: 30px;
 }
-
-.contact-infos strong, .contact-infos a {
+#main.articles .contact-infos strong,
+#main.articles .contact-infos a {
   display: block;
   margin-bottom: 10px;
 }
-
-section.contact {
+#main.articles section.contact {
   padding: 0;
 }
 
@@ -8951,24 +8770,25 @@ p {
   margin-left: -10px;
 }
 
-#filteredContent {
+#main.searchpage {
+  /*SLIDERS*/
+  /*ARTICLES*/
+}
+#main.searchpage #filteredContent {
   min-height: 530px;
 }
-
-.searchpage #horizontal-menu {
+#main.searchpage #horizontal-menu {
   background: #fff;
   border-bottom: 1px solid #dfdfdf;
   margin-bottom: 60px;
 }
-
-.searchpage ::-webkit-input-placeholder {
+#main.searchpage ::-webkit-input-placeholder {
   color: #e6e6e6;
   font-size: 2.250rem;
   letter-spacing: 0.1em;
   line-height: 1.4em;
 }
-
-.searchpage form {
+#main.searchpage form {
   display: block;
   margin-top: 40px;
   position: relative;
@@ -8976,8 +8796,7 @@ p {
   width: 560px;
   margin: 30px auto 0;
 }
-
-.searchpage #inputSearch {
+#main.searchpage #inputSearch {
   border: none;
   border-bottom: 1px solid #dfdfdf;
   color: #333;
@@ -8989,39 +8808,32 @@ p {
   outline: none;
   width: 100%;
 }
-
-.searchpage #suggest {
+#main.searchpage #suggest {
   z-index: 51;
 }
-
-#filtered {
+#main.searchpage #filtered {
   display: none;
 }
-
-#filtered.show {
+#main.searchpage #filtered.show {
   display: block;
 }
-
-.resultsContainer {
+#main.searchpage .resultsContainer {
   width: 560px;
   margin: 0 auto 60px;
   border-bottom: 1px solid #dfdfdf;
   position: relative;
 }
-
-.resultsContainer:last-child {
+#main.searchpage .resultsContainer:last-child {
   border-bottom: none;
 }
-
-.resultsContainer h2.titleSection {
+#main.searchpage .resultsContainer h2.titleSection {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 60px;
   text-transform: uppercase;
 }
-
-.resultsContainer .view-all {
+#main.searchpage .resultsContainer .view-all {
   color: #c8a461;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 20px;
@@ -9035,45 +8847,36 @@ p {
   -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-
-.searchpage #horizontal-menu .vid p {
+#main.searchpage #horizontal-menu .vid p {
   text-align: left;
 }
-
-.searchpage #horizontal-menu .vid {
+#main.searchpage #horizontal-menu .vid {
   box-sizing: border-box;
 }
-
-.searchpage #horizontal-menu .owl-stage {
+#main.searchpage #horizontal-menu .owl-stage {
   padding-left: 40px;
 }
-
-/*SLIDERS*/
-.portrait-slider {
+#main.searchpage .portrait-slider {
   margin: 60px 0;
   width: 640px;
   height: 530px;
   margin-left: -40px;
 }
-
-.portrait-slider .owl-item {
+#main.searchpage .portrait-slider .owl-item {
   width: 280px;
   height: 530px;
 }
-
-.portrait-slider .img-container {
+#main.searchpage .portrait-slider .img-container {
   width: 280px;
   height: 380px;
   background-position: center center;
   background-size: cover;
 }
-
-.portrait-slider .info {
+#main.searchpage .portrait-slider .info {
   margin-top: 35px;
   text-align: center;
 }
-
-.portrait-slider .info p {
+#main.searchpage .portrait-slider .info p {
   text-transform: uppercase;
   color: #2c2c2c;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -9081,12 +8884,10 @@ p {
   font-size: 22px;
   margin-bottom: 8px;
 }
-
-.portrait-slider .info p.subtitle {
+#main.searchpage .portrait-slider .info p.subtitle {
   font-size: 18px;
 }
-
-.portrait-slider .info p.countrie, .portrait-slider .info p.year {
+#main.searchpage .portrait-slider .info p.countrie, #main.searchpage .portrait-slider .info p.year {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #999999;
   font-size: 20px;
@@ -9094,78 +8895,65 @@ p {
   text-transform: uppercase;
   font-weight: 100;
 }
-
-.portrait-slider .info p.director {
+#main.searchpage .portrait-slider .info p.director {
   color: #2c2c2c;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-weight: 100;
   text-transform: none;
   font-size: 20px;
 }
-
-.portrait-slider .info p.job, .portrait-slider .info p.director strong {
+#main.searchpage .portrait-slider .info p.job, #main.searchpage .portrait-slider .info p.director strong {
   font-size: 20px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   color: #c8a461;
 }
-
-.portrait-slider .owl-stage-outer {
+#main.searchpage .portrait-slider .owl-stage-outer {
   margin-left: 0;
 }
-
-/*ARTICLES*/
-.landscape-carousel {
+#main.searchpage .landscape-carousel {
   width: 640px;
   height: 490px;
   margin-left: -40px;
   position: relative;
   margin-bottom: 30px;
 }
-
-.landscape-carousel .owl-stage {
+#main.searchpage .landscape-carousel .owl-stage {
   margin-left: 40px;
 }
-
-.landscape-carousel .owl-item {
+#main.searchpage .landscape-carousel .owl-item {
   width: 516px;
   height: 490px;
 }
-
-.landscape-carousel .img-container {
+#main.searchpage .landscape-carousel .img-container {
   position: relative;
   width: 515px;
   height: 325px;
 }
-
-.landscape-carousel .thumb img {
+#main.searchpage .landscape-carousel .thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-.landscape-carousel .thumb .picto {
+#main.searchpage .landscape-carousel .thumb .picto {
   position: absolute;
   width: 70px;
   height: 70px;
   line-height: 70px;
   text-align: center;
 }
-
-.landscape-carousel .thumb .picto .icon {
+#main.searchpage .landscape-carousel .thumb .picto .icon {
   color: #c8a461;
   /*font-size: 1.5rem;*/
   font-size: 30px;
 }
-
-.landscape-carousel .info {
+#main.searchpage .landscape-carousel .info {
   width: 355px;
   margin: 30px auto 0 auto;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   font-size: 15px;
   color: #666666;
 }
-
-.landscape-carousel .info .category {
+#main.searchpage .landscape-carousel .info .category {
   color: #c8a461;
   letter-spacing: 0.1em;
   margin-right: 12px;
@@ -9174,8 +8962,7 @@ p {
   font-weight: 700;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
-
-.landscape-carousel .info h2 {
+#main.searchpage .landscape-carousel .info h2 {
   color: #000;
   text-align: center;
   margin-top: 15px;
@@ -9183,25 +8970,21 @@ p {
   font-size: 25px;
   line-height: 30px;
 }
-
-.landscape-carousel .top-info {
+#main.searchpage .landscape-carousel .top-info {
   margin: 0 auto;
   display: table;
 }
-
-.searchpage .banner-img {
+#main.searchpage .banner-img {
   margin-bottom: 0;
   padding-bottom: 0;
   height: 301px;
   overflow: hidden;
 }
-
-.searchpage .banner-img .title {
+#main.searchpage .banner-img .title {
   font-size: 24px;
   margin-top: 35px;
 }
-
-.searchpage .banner-img p {
+#main.searchpage .banner-img p {
   text-transform: uppercase;
   color: #fff;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -9213,28 +8996,23 @@ p {
   position: relative;
   letter-spacing: 0.3rem;
 }
-
-.searchpage #filtered {
+#main.searchpage #filtered {
   -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   /*opacity: 0;*/
   display: none;
 }
-
-#filtered .filters-slider {
+#main.searchpage #filtered .filters-slider {
   width: 640px;
 }
-
-#filtered .filters-slider .owl-stage {
+#main.searchpage #filtered .filters-slider .owl-stage {
   padding-left: 40px;
 }
-
-#horizontal-menu .vid {
+#main.searchpage #horizontal-menu .vid {
   /*width: 285px;*/
   padding: 0;
 }
-
-.searchpage #horizontal-menu .vid p {
+#main.searchpage #horizontal-menu .vid p {
   text-align: center;
 }
 
@@ -10035,22 +9813,19 @@ section:last-child {
   max-width: 380px;
 }
 
-.sitemap {
+#main.sitemap {
   margin-bottom: 50px;
 }
-
-.sitemap h2 {
+#main.sitemap h2 {
   margin-bottom: 0;
   font-size: 1.7rem;
 }
-
-.sitemap section {
+#main.sitemap section {
   background-color: #fff;
   margin: 0 auto;
   text-align: center;
 }
-
-.sitemap section article {
+#main.sitemap section article {
   height: auto;
   box-sizing: border-box;
   padding-left: 0px;
@@ -10059,8 +9834,7 @@ section:last-child {
   vertical-align: top;
   text-align: center;
 }
-
-.sitemap section article .title {
+#main.sitemap section article .title {
   text-align: center;
   padding-bottom: 30px;
   border-bottom: 1px solid #e5e5e5;
@@ -10069,8 +9843,7 @@ section:last-child {
   margin-bottom: 27px;
   margin-top: 40px;
 }
-
-.sitemap section article a {
+#main.sitemap section article a {
   color: #c8a461;
   text-transform: uppercase;
   font-size: 18px;
@@ -10083,8 +9856,7 @@ section:last-child {
   -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-
-.sitemap section article li {
+#main.sitemap section article li {
   padding-bottom: 20px;
   letter-spacing: 3px;
 }

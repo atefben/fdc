@@ -1,48 +1,53 @@
-.sitemap {
+#main.sitemap {
   margin-bottom:50px; 
-}
-.sitemap h2 {
-  margin-bottom: 0;
-  font-size: 1.7rem;
-}
-.sitemap section {
-  background-color: #fff;
-  margin: 0 auto;
-  text-align: center;
-}
-.sitemap section article {
-  height: auto;
-  box-sizing: border-box;
-  padding-left: 0px;
-  position: relative;
-  padding: 13px;
-  vertical-align: top;
-  text-align: center;
-}
-.sitemap section article .title {
-  text-align: center;
-  padding-bottom: 30px;
-  border-bottom: 1px solid #e5e5e5;
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 27px;
-  margin-top:40px;
-}
-.sitemap section article a {
-  color: #c8a461;
-  text-transform: uppercase;
-  font-size: 18px;
-  line-height: 18px;
-  display: inline-block;
-  font-weight: 700;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
 
-.sitemap section article li { 
-  padding-bottom: 20px;
-  letter-spacing: 3px;
+  h2 {
+    margin-bottom: 0;
+    font-size: 1.7rem;
+  }
+
+  section {
+    background-color: #fff;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  section article {
+    height: auto;
+    box-sizing: border-box;
+    padding-left: 0px;
+    position: relative;
+    padding: 13px;
+    vertical-align: top;
+    text-align: center;
+  }
+
+  section article .title {
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 27px;
+    margin-top:40px;
+  }
+
+  section article a {
+    color: #c8a461;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 18px;
+    display: inline-block;
+    font-weight: 700;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  section article li { 
+    padding-bottom: 20px;
+    letter-spacing: 3px;
+  }
 }
