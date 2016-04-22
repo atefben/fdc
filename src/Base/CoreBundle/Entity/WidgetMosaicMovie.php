@@ -55,11 +55,7 @@ class WidgetMosaicMovie
 
     public function __toString()
     {
-        if ($this->getId()) {
-            return strval($this->getId());
-        }
-
-        return '';
+        return $this->getTitle();
     }
 
     /**
