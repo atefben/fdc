@@ -1,0 +1,301 @@
+#main.artist {
+  a{
+
+  	color:#c8a461;
+  }
+  .slideshow{
+
+  	border: none;
+  }
+  .container{
+  	padding-top: 50px;
+  	font-size: 0;
+  }
+
+  .artist-name{
+    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+    text-align: center;
+    max-height: 200px;
+    margin-bottom: 40px;
+  }
+  .artist-name .category {
+    color: #c8a461;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-right: 12px;
+    text-transform: uppercase;
+  }
+  .artist-name span {
+    color: #666;
+    display: inline-block;
+    font-size: 20px;
+  }
+  .artist-name h2 {
+    color: #333;
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-size: 35px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 46px;
+    width: 420px;
+    margin: 15px auto 0 auto;
+    text-align: center;
+  }
+  .text-content{
+      font-size: 24px;
+      color:#666666;
+      max-height: 1000px;
+      font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+      line-height: 30px;
+  }
+  h3{
+      font-family: "Playfair Display", Times New Roman, Times, serif;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 60px;
+  }
+
+  /*PICTOS NAV*/
+
+  /*.pictos-nav{
+
+  	position: fixed;
+  	width: 560px;
+  	left:40px;
+  	bottom: 160px;
+  	z-index: 99;
+  }
+  .pictos-nav div{
+
+  	background-color: #fff;
+  	width: 120px;
+  	height: 120px;
+  	border: 1px solid #dfdfdf;
+  	text-align: center;
+  	line-height: 120px;
+  	font-size: 45px;
+  	position: absolute;
+  }
+  .pictos-nav div.back{
+  	left:0;
+  }
+  .pictos-nav div.calendar{
+  	right:0;
+  }*/
+
+  /*SECTION*/
+
+  .section{
+
+      border-bottom: 1px solid #dfdfdf;
+  	padding: 40px 0;
+
+  }
+  .title-section{
+  	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  	color:#000;
+  	text-transform: uppercase;
+  	font-weight: 600;
+  	letter-spacing: 2px;
+  	margin-bottom: 30px;
+  	/*font-size: 1.5rem;*/
+  	font-size: 22px;
+
+  }
+
+  .section p{
+
+  	color:#666666;
+  	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  	/*font-size: 1.5rem;*/
+  	line-height: 30px;
+  	font-size: 24px;
+  }
+
+  /*SLIDER*/
+
+  .owl-stage-outer{
+
+  	width: 640px;
+  	margin-left: -32px;
+  }
+
+  .slideshow{
+
+  	padding: 0;
+  	margin: 0;
+  }
+
+
+  /*PHOTO */
+  .photo-container{
+  	display: inline-block;
+  	margin-bottom: 60px;
+  	font-size: 0;
+  }
+  .photo-container img{
+
+  	max-width: 100%;
+  }
+  .photo-container .caption {
+      color: #969696;
+      font-size: .750rem;
+      margin: 10px 0 0 0;
+      text-align: left;
+      font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  }
+
+  /*JURY PRESENCE*/
+
+  .jury{
+
+      text-align: center;
+      font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+      max-height: 80px;
+      font-size: 20px;
+  }
+  .jury .rank{
+      color:#c8a461;
+      font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      font-size: 25px;
+
+  }
+  .jury .item-separate {
+      color: #c8a461;
+      font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+      padding: 0 7px;
+  }
+  .jury .role , .jury .date{
+      text-transform: uppercase;
+      font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  }
+  /*SECTION director*/
+  .director{
+  	padding: 0;
+      background-color: #f6f6f6;
+  }
+  .director a, .thumb a{
+    
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+
+  }
+  .director h3{
+  	font-family: "Playfair Display Bold", Times New Roman, Times, serif;
+  	font-size: 24px;
+  	letter-spacing: 5px;
+  	text-align: center;
+  	padding: 55px 0;
+  	margin: 0;
+  }
+  .director .owl-item{
+
+  	width: 280px;
+  	height: 530px;
+  }
+  .director .img-container{
+
+  	width: 280px;
+  	height: 380px;
+  	background-position: center center;
+    	background-size: cover;
+  }
+  .director .info{
+  	margin-top: 35px;
+  	text-align: center;
+  }
+  .director .info p{
+  	text-transform: uppercase;
+  	color: #000;
+  	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  	font-weight: 700;
+  	font-size: 25px;
+  	margin-bottom: 5px;
+  }
+  .director .info span{
+
+  	font-size: 22px;
+  	font-style: italic;
+  	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+      color:#c8a461;
+  }
+  .director .owl-stage-outer{
+  	margin-left: 0;
+  }
+
+
+
+  /*SLIDERS*/
+
+  .film-slider .owl-item{
+
+      width: 280px;
+      height: 540px;
+  }
+  .film-slider .img-container{
+
+      width: 280px;
+      height: 380px;
+      background-position: center center;
+      background-size: cover;
+  }
+  .content-text{
+      max-height: 200px;
+      max-width: 280px;
+      text-align: center;
+  }
+  .content-text span{
+
+      margin:8px 0;
+  }
+  .content-text .item-title {
+      font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      color: #c8a461;
+      font-size: 25px;
+      display: block;
+      padding-top: 13px;
+      font-weight: 700;
+  }
+  .content-text .item-sub-title {
+      font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      text-transform: uppercase;
+      color: #c8a461;
+      display: block;
+
+  }
+  .content-text .item-date {
+      font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+      color: #999999;
+      font-size: 18px;
+      padding-right: 8px;
+  }
+  .content-text .item-categ {
+      font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      font-size: 17px;
+      color: #333333;
+      line-height: 20px;
+
+  }
+  .content-text .item-details {
+      font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      color: #666666;
+      display: block;
+  }
+  .film-slider .owl-stage-outer{
+      margin-left: 0;
+  }
+}

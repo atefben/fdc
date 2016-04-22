@@ -37,8 +37,9 @@ module.exports = function(grunt) {
             closeTag: '<!-- fdc-app tags end -->'
         },
         src: [
-          './css/*.css',
-          './css/include/*.css',
+          './scss/*.css',
+          // './css/*.css',
+          // './css/include/*.css',
         ],
         dest: './head.inc.php'
       },
@@ -148,7 +149,19 @@ module.exports = function(grunt) {
           },
         ]
       }
-    }
+    },
+    // COMPASS
+    compass : {
+      dev : {
+        options : {
+          config    : 'config.rb',
+          // imagesDir : 'img',
+          // fontDir   : 'fonts',
+          cssDir    : 'scss',
+          sassDir   : 'sass'
+        }
+      }
+    },
   });
 
 

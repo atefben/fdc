@@ -74,7 +74,7 @@
             {% if 'Ouverture' in movie.galaName %}
                 <span>{{ 'movie.fdc_open'|trans }}</span>
             {% elseif 'Fermeture' in movie.galaName or 'Clôture' in movie.galaName %}
-                <span>{{ 'movie.fdc_close'|trans }}</span>
+                <span>{{ 'movie.fdc_closing'|trans }}</span>
             {% endif %}
         </div>
         {% set secondTitle = null %}

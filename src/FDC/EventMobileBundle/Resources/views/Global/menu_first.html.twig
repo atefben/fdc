@@ -3,63 +3,66 @@
     {% for menu in menus %}
         {% if menu.id < 7 %}
             <li class=" {% if menu.route == 'fdc_event_news_index' %} actu {% elseif menu.route == 'fdc_event_television_live' %} webtv {% elseif menu.route == 'fdc_event_movie_selection' %} selection {% elseif menu.route == 'fdc_event_jury_get' %} jury {% elseif menu.route == 'fdc_event_palmares_get' %} palmares {% elseif menu.route == 'fdc_event_event_getevents' %} events {% endif %}">
-                <div class="section-title has-subsection">
-                    <!-- actualités -->
-                    {% if menu.route == 'fdc_event_news_index' and menu.enabled == true %}
-                        <h3 class="title-menu">
-                            <a href="#" class="{% if route in routesArticles %}active{% endif %}">
+                <!-- actualités -->
+                {% if menu.route == 'fdc_event_news_index' and menu.enabled == true %}
+                    <div class="section-title has-subsection">
+                        <h3 class="title-menu{% if route in routesArticles %} active{% endif %}">
                             {{ menu.transName|trans }} <span class="more-minus">+</span>
-                            </a>
                         </h3>
-                    <!-- webtv -->
-                    {% elseif menu.route == 'fdc_event_television_live' and menu.enabled == true  %}
-                        <h3 class="title-menu">
-                            <a href="#" class="{% if route in routesWebTv %}active{% endif %}">
+                    </div>
+                <!-- webtv -->
+                {% elseif menu.route == 'fdc_event_television_live' and menu.enabled == true %}
+                    <div class="section-title has-subsection">
+                        <h3 class="title-menu{% if route in routesWebTv %} active{% endif %}">
                             {{ menu.transName|trans }} <span class="more-minus">+</span>
-                            </a>
                         </h3>
-                    <!-- trailers -->
-                    {% elseif menu.route == 'fdc_event_television_trailers' and menu.enabled == true %}
-                        <h3 class="title-menu">
-                            <a href="{{ path('fdc_eventmobile_television_trailers', { 'slug': 'competition' }) }}"
-                           class="{% if route =='fdc_event_television_trailers' %}active{% endif %}">
+                    </div>
+                <!-- trailers -->
+                {% elseif menu.route == 'fdc_event_television_trailers' and menu.enabled == true %}
+                    <a href="{{ path('fdc_eventmobile_television_trailers', { 'slug': 'competition' }) }}">
+                        <div class="section-title">
+                            <h3 class="title-menu{% if route =='fdc_event_television_trailers' %} active{% endif %}">
+                                {{ menu.transName|trans }}
+                            </h3>
+                        </div>
+                    </a>
+                <!-- selection -->
+                {% elseif menu.route == 'fdc_event_movie_selection' and menu.enabled == true %}
+                    <a href="{{ path('fdc_eventmobile_movie_selection') }}">
+                        <div class="section-title">
+                            <h3 class="title-menu{% if route =='fdc_event_movie_selection' %} active{% endif %}">
+                                {{ menu.transName|trans }}
+                            </h3>
+                        </div>
+                    </a>
+                <!-- jury -->
+                {% elseif menu.route == 'fdc_event_jury_get' and menu.enabled == true %}
+                    <a href="{{ path('fdc_eventmobile_jury_get', { 'type': '1' }) }}">
+                        <div class="section-title">
+                            <h3 class="title-menu{% if route == 'fdc_event_jury_get' %} active{% endif %}">
+                                {{ menu.transName|trans }}
+                            </h3>
+                        </div>
+                    </a>
+                <!-- palmares -->
+                {% elseif menu.route == 'fdc_event_palmares_get' and menu.enabled == true %}
+                    <a href="{{ path('fdc_eventmobile_palmares_get') }}">
+                        <div class="section-title">
+                            <h3 class="title-menu{% if route == 'fdc_event_palmares_get' %} active{% endif %}">
                             {{ menu.transName|trans }}
-                            </a>
-                        </h3>
-                    <!-- selection -->
-                    {% elseif menu.route == 'fdc_event_movie_selection' and menu.enabled == true %}
-                        <h3 class="title-menu">
-                            <a href="{{ path('fdc_eventmobile_movie_selection') }}"
-                           class="{% if route =='fdc_event_movie_selection' %}active{% endif %}">
-                            {{ menu.transName|trans }}
-                            </a>
-                        </h3>
-                    <!-- jury -->
-                    {% elseif menu.route == 'fdc_event_jury_get' and menu.enabled == true %}
-                        <h3 class="title-menu">
-                            <a href="{{ path('fdc_eventmobile_jury_get', { 'type': '1' }) }}"
-                           class="{% if route == 'fdc_event_jury_get' %}active{% endif %}">
-                            {{ menu.transName|trans }}
-                            </a>
-                        </h3>
-                    <!-- palmares -->
-                    {% elseif menu.route == 'fdc_event_palmares_get' and menu.enabled == true %}
-                        <h3 class="title-menu">
-                            <a href="{{ path('fdc_eventmobile_palmares_get') }}"
-                           class="{% if route == 'fdc_event_palmares_get' %}active{% endif %}">
-                            {{ menu.transName|trans }}
-                            </a>
-                        </h3>
-                    <!-- événements -->
-                    {% elseif menu.route == 'fdc_event_event_getevents' and menu.enabled == true  %}
-                        <h3 class="title-menu">
-                            <a href="{{ path('fdc_eventmobile_event_getevents') }}"
-                           class="{% if route == 'fdc_event_event_getevents' %}active{% endif %}">
-                            {{ menu.transName|trans }}
-                            </a>
-                        </h3>
-                    {% endif %}
-                </div>
+                            </h3>
+                        </div>
+                    </a>
+                <!-- événements -->
+                {% elseif menu.route == 'fdc_event_event_getevents' and menu.enabled == true  %}
+                    <a href="{{ path('fdc_eventmobile_event_getevents') }}">
+                        <div class="section-title">
+                            <h3 class="title-menu{% if route == 'fdc_event_event_getevents' %} active{% endif %}">
+                                {{ menu.transName|trans }}
+                            </h3>
+                        </div>
+                    </a>
+                {% endif %}
                 <div class="section-contain subsection-{% if menu.route == 'fdc_event_news_index' %}1{% elseif menu.route == 'fdc_event_television_live' %}2{% endif %}">
                     <ul class="section-menu">
                         {% if menu['__children'] is defined %}

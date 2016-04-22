@@ -44,7 +44,7 @@ function moveTimeline(element, day,url){
       type: "GET",
       dataType: "html",
       cache: false,
-      url:url,
+      url: GLOBALS.urls.newsUrl,
       success: function(data) {
         $('.articles-container').html(data);
         initAddToSelection();

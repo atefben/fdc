@@ -21,7 +21,7 @@
                             {%- if 'Ouverture' in film.galaName -%}
                                 <span>{{ 'movie.fdc_open'|trans }}</span>
                             {%- elseif 'Fermeture' in film.galaName or 'Clôture' in film.galaName -%}
-                                <span>{{ 'movie.fdc_close'|trans }}</span>
+                                <span>{{ 'movie.fdc_closing'|trans }}</span>
                             {%- endif -%}
                             {%- if film.directorFirst -%}
                                 <span>{{ 'movie.first_film'|trans }}</span>

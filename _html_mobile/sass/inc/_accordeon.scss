@@ -1,0 +1,92 @@
+.title-participate{
+	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    color: #999999;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    width: 365px;
+    display: inline-block;
+    line-height: 35px;
+    vertical-align: middle;
+    padding: 60px 30px 60px 40px;
+    font-weight: 600;
+    -moz-transition: all 0.6s ;
+    -o-transition: all 0.6s ;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s ;
+}
+.open .title-participate{
+	color:#c29f5f;
+}
+.faq-container .title-participate{
+    padding: 30px 20px 30px 0;
+    width: 470px;
+    font-size: 20px;
+    letter-spacing: 0.02rem;
+    line-height: 30px;
+}
+.faq-container .section-title{
+    max-height: 200px;
+    max-height: 500px;
+}
+
+.banner-img .title .icon_palme{
+    font-size: 80px;
+    padding-bottom: 5px;
+}
+section{
+	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0 40px;
+    max-height: 5000px;
+}
+.section-contain{
+	overflow: hidden;	
+    max-height: 0;
+	-moz-transition: all 0.6s ;
+    -o-transition: all 0.6s ;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s ;
+	/*display: none;*/
+}
+.open .section-contain{
+    max-height: 6000px;
+    height: auto;
+
+}
+.section-title .icon, .section-title .icon-mobile-participer{
+    font-size: 3rem;
+    color: #999999;
+}
+.open .section-title .icon, .open .section-title .icon-mobile-participer{
+    color:#c29f5f
+}
+.section-title .icon_case-plus{
+    font-size: 4rem;
+}
+.section-title .icon_moins{
+    font-size: 1.5rem;
+    position: relative;
+    left: 20px;
+}
+.description{
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    margin-bottom: 50px;
+    font-size: 24px;
+    line-height: 36px; 
+
+}
+#main{
+    background-color: #fff;
+}
+.faq-section-container{
+    display: none;
+
+}
+.faq-section-container.active{
+    display: block;
+
+}
+.faq .title{
+    font-size: 28px;
+}

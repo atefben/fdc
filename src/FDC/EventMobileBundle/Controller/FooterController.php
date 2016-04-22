@@ -648,7 +648,7 @@ class FooterController extends Controller
 
                 $this->get('mailer')->send($message);
 
-                return $this->redirect($this->generateUrl('fdc_event_contact'));
+                return $this->redirect($this->generateUrl('fdc_eventmobile_contact'));
             } else {
                 $hasErrors = true;
             }

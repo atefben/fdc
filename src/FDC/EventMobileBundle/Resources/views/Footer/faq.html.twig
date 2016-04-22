@@ -2,9 +2,12 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
-<div id="main" class="loading">
-    <div class="faq">
-        <h2 class="title">{{ 'faq.title.faq'|trans }}</h2>
+    <div id="main" class="faq-page" data-menu="faq">
+
+        {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+        {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+        
+        <h2 class="title one-line">{{ 'faq.title.faq'|trans }}</h2>
         <div id="horizontal-menu" class="owl-carousel sliderDrag videosSlider">
             {% for key, section in content %}
                 <div class="vid selected">
@@ -12,18 +15,22 @@
                 </div>
             {% endfor %}
         </div>
-        {% for section in content %}
-            <section class="faq-container{% if loop.first %} faq-active{% endif %}" data-name="{{ section.slug }}">
-            {% for article in section.articles %}
-                <div class="faq-question">
-                    <div class="faq-question">
-                        <h3 class="faq-title">{{ article.title }}</h3><i class="fa fa-plus"></i>
-                    </div>
-                    <p class="faq-description">{{ article.content }}</p>
-                </div>
-            {% endfor %}
-            </section>
-        {% endfor %}
+        <div class="faq-container">
+            <div class="faq-section-container active infos-generales">
+                {% for section in content %}
+                    <section>
+                            {% for article in section.articles %}
+                                <div class="section-title">
+                                    <h3 class="title-participate">{{ article.title }}</h3>
+                                    <i class="icon accordion icon_case-plus"></i>
+                                    <div class="section-content">
+                                        <p class="description">{{ article.content }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                    </section>
+                {% endfor %}
+            </div>
+        </div>
     </div>
-</div>
 {% endblock %}
