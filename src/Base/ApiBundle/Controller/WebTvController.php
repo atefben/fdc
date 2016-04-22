@@ -3,6 +3,8 @@
 namespace Base\ApiBundle\Controller;
 
 use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
+use Base\CoreBundle\Entity\MediaVideo;
+use Base\CoreBundle\Entity\MediaVideoTranslation;
 use \DateTime;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -64,6 +66,35 @@ class WebTvController extends FOSRestController
             ->getRepository('BaseCoreBundle:FDCPageWebTvLive')
             ->find($this->getParameter('admin_fdc_page_web_tv_live_id'))
         ;
+        foreach ($live->getAssociatedMediaVideos() as $associatedMediaVideo) {
+            $mediaVideo = $associatedMediaVideo->getAssociation();
+            if ($mediaVideo instanceof MediaVideo) {
+                $translation = $mediaVideo->findTranslationByLocale($lang);
+                if ($translation instanceof MediaVideoTranslation) {
+                    if ($lang != 'fr' && $translation->getStatus() !== MediaVideoTranslation::STATUS_TRANSLATED) {
+                        $live->getAssociatedMediaVideos()->removeElement($associatedMediaVideo);
+                        continue;
+                    }
+                    if ($translation->getJobMp4State() !== MediaVideoTranslation::ENCODING_STATE_READY) {
+                        $live->getAssociatedMediaVideos()->removeElement($associatedMediaVideo);
+                        continue;
+                    }
+                    if ($translation->getJobWebmState() !== MediaVideoTranslation::ENCODING_STATE_READY) {
+                        $live->getAssociatedMediaVideos()->removeElement($associatedMediaVideo);
+                        continue;
+                    }
+                    if (!$translation->getWebmUrl() || !$translation->getMp4Url()) {
+                        $live->getAssociatedMediaVideos()->removeElement($associatedMediaVideo);
+                        continue;
+                    }
+                } else {
+                    $live->getAssociatedMediaVideos()->removeElement($associatedMediaVideo);
+                    continue;
+                }
+            }
+
+        }
+        $live->setAssociatedMediaVideos(array_values($live->getAssociatedMediaVideos()->toArray()));
 
         $webTvs = $this
             ->getDoctrine()
@@ -71,6 +102,37 @@ class WebTvController extends FOSRestController
             ->getRepository('BaseCoreBundle:WebTv')
             ->getWebTvByLocale($lang, $festival)
         ;
+
+        foreach ($webTvs as $key => &$webTv) {
+            foreach ($webTv->getMediaVideos() as $mediaVideo) {
+                if ($mediaVideo->getTranslations()) {
+                    $translation = $mediaVideo->findTranslationByLocale($lang);
+                    if ($translation instanceof MediaVideoTranslation) {
+                        if ($lang != 'fr' && $translation->getStatus() !== MediaVideoTranslation::STATUS_TRANSLATED) {
+                            $webTv->getMediaVideos()->removeElement($mediaVideo);
+                            continue;
+                        }
+                        if ($translation->getJobMp4State() !== MediaVideoTranslation::ENCODING_STATE_READY) {
+                            $webTv->getMediaVideos()->removeElement($mediaVideo);
+                            continue;
+                        }
+                        if ($translation->getJobWebmState() !== MediaVideoTranslation::ENCODING_STATE_READY) {
+                            $webTv->getMediaVideos()->removeElement($mediaVideo);
+                            continue;
+                        }
+                        if (!$translation->getWebmUrl() || !$translation->getMp4Url()) {
+                            $webTv->getMediaVideos()->removeElement($mediaVideo);
+                            continue;
+                        }
+                        $webTv->setMediaVideos(array_values($webTv->getMediaVideos()->toArray()));
+                    }
+                }
+            }
+            if (!$webTv->getMediaVideos()->count()) {
+                unset($webTvs[$key]);
+            }
+        }
+        $webTvs = array_values($webTvs);
 
 
         $videos = $this
@@ -81,9 +143,9 @@ class WebTvController extends FOSRestController
         ;
 
         $item = array(
-            'live' => $live,
+            'live'    => $live,
             'web_tvs' => $webTvs,
-            'videos' => $videos,
+            'videos'  => $videos,
         );
 
         // set context view
