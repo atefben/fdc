@@ -25,6 +25,9 @@
                 <div class="chapeau">
                         {{ event|trans_fallback('introduction')|raw }}
                 </div>
+                {% if event.signature  is defined and event.signature != null %}
+                    <div class="author">{{ event.signature  }}</div>
+                {% endif %}
 
                 {% for widget in event.widgets %}
                     {% if widget.widgetType == 'EventWidgetImage' and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
@@ -49,6 +52,9 @@
                     {% elseif widget.widgetType == 'EventWidgetSubtitle' %}
                         <h2 class="title">{{ widget.content }}</h2>
                     {% elseif widget.widgetType == 'EventWidgetMosaicMovie' %}
+                        {% if widget.widgetMosaicMovie.title is defined %}
+                            <h2 class="title">{{ widget.widgetMosaicMovie.title }}</h2>
+                        {% endif %}
                         {% include 'FDCEventBundle:Event:widgets/mosaic-movie.html.twig' with {'films': widget.widgetMosaicMovie.films } %}
                     {% endif %}
                 {% endfor %}
