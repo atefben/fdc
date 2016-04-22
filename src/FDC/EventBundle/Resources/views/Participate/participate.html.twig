@@ -20,13 +20,18 @@
                 </h2>
             </div>
         </div>
+        <div class="title-bandeau">
+            <p>
+                {{ participatePage|trans_fallback('content')|raw }}
+            </p>
+        </div>
 
         {#                  #}
         {#     SECTIONS     #}
         {#                  #}
         <div class="contain-participate">
             {% for s in participatePage.downloadSection %}
-                <section class="content-manual content-partners item-manual">
+                <section class="content-manual content-partners item-manual" style="border-top: 1px solid #e0e0e0;">
                     <div class="contain-section contain-cinema contain-infos">
                         <h3 class="title-participate">
                             <i class="icon {{ s.section|trans_fallback('icon') }}"></i>
