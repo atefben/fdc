@@ -67,7 +67,7 @@
         </div>
     <div class="info-film">
         <div class="categories">
-            <span>{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}</span>
+            <span>{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}</span>
             {% if movie.directorFirst %}
                 <span>{{ 'movie.director_first'|trans }}</span>
             {% endif %}
