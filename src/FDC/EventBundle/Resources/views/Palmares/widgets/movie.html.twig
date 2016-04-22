@@ -15,7 +15,7 @@
     <div class="bck-hover">
         <div class="contain_item">
             <a class="palmares-color-white"
-               href="{{ path('fdc_event_movie_get', {'slug': movie|trans_fallback('slug')}) }}">
+               href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                 film: movie,
                 film_format: '259x352',
@@ -44,7 +44,7 @@
                 {% endif %}
                 <h3 class="title-item">
                     <a class="palmares-color-white"
-                       href="{{ path('fdc_event_movie_get', {'slug': movie|trans_fallback('slug')}) }}">
+                       href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
                         {{ movie.titleVO }}
                     </a>
                 </h3>
@@ -53,7 +53,7 @@
                         {% if movie.findTranslationByLocale(app.request.get('_locale')).title != movie.titleVO %}
                             <h4 class="sub-title-item">
                                 <a class="palmares-color-white"
-                                   href="{{ path('fdc_event_movie_get', {'slug': movie|trans_fallback('slug')}) }}">
+                                   href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
                                     ({{ movie.findTranslationByLocale(app.request.get('_locale')).title }})
                                 </a>
                             </h4>
