@@ -8,16 +8,16 @@
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
     
         <div class="container">
-            <span id="addtext">{{ 'article.list.text.ajouterselection'|trans }}</span>
             <h2 class="title one-line">{{ 'article.list.title.touslesarticles'|trans }}</h2>
-
             {% include 'FDCEventMobileBundle:News:components/filters.html.twig' %}
 
             <div class="list" id="list-articles">
                 {% for article in articles %}
                     <div class="item {{ article.theme|trans_fallback('slug') }} {{ article.publishedAt|date('d-m-y') }}">
                         <div class="img-container">
-                            <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">
+                            <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
+                            <div class="picto"><i class="icon icon_{{ article.newsType|get_news_type  }}"></i></div>
+                            <a href="{{ path('fdc_eventmobile_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">
                                 {% if article is news_article %}
                                     {% set img = article.header %}
                                     {% set trans = img.findTranslationByLocale(app.request.locale) %}
@@ -25,7 +25,8 @@
                                         {% set trans = img.findTranslationByLocale('fr') %}
                                     {% endif %}
                                     {% set file = trans.file %}
-                                    {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
+
+                                    {% thumbnail file, '640x404' with {'alt': img|trans_fallback('alt') } %}
                                 {% elseif article is news_video %}
                                     {% set header = article.header %}
                                     {% if header is not null %}
@@ -44,14 +45,18 @@
                                         {% set img = article.header %}
                                     {% else %}
                                         {% set img = article.video.image %}
-                                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                        {% if trans is null or trans.file is null %}
-                                            {% set trans = img.findTranslationByLocale('fr') %}
+                                        {% if img is not null %}
+                                            {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                            {% if trans is null or trans.file is null %}
+                                                {% set trans = img.findTranslationByLocale('fr') %}
+                                            {% endif %}
+                                            {% set file = trans.file %}
                                         {% endif %}
-                                        {% set file = trans.file %}
                                     {% endif %}
 
-                                    {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
+                                    {% if img is not null %}
+                                        {% thumbnail file, '640x404' with {'alt': img|trans_fallback('alt') } %}
+                                    {% endif %}
                                 {% elseif article is news_audio %}
                                     {% set header = article.header %}
                                     {% if header is not null %}
@@ -77,7 +82,7 @@
                                         {% set file = trans.file %}
                                     {% endif %}
 
-                                    {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
+                                    {% thumbnail file, '640x404' with {'alt': img|trans_fallback('alt') } %}
                                 {% elseif article is news_image %}
                                     {% set header = article.header %}
                                     {% if header is not null %}
@@ -103,11 +108,9 @@
                                         {% set file = trans.file %}
                                     {% endif %}
 
-                                    {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
+                                    {% thumbnail file, '640x404' with {'alt': img|trans_fallback('alt') } %}
                                 {% endif %}
                             </a>
-                            <div class="picto"><i class="icon icon_{{ article.newsType|get_news_type  }}"></i></div>
-                            <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
                         </div>
                         <div class="info">
                             <div class="top-info">

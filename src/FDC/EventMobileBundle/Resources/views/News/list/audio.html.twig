@@ -2,15 +2,17 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="all-audios grid loading st-container">
+    <div id="main" class="audios" data-menu="actu">
 
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
-    
-        <h2 class="title">{{ 'article.photos.title.touslesaudios'|trans }}</h2>
-        {% include 'FDCEventMobileBundle:News:components/filters.html.twig' %}
-        <div id="gridAudios" class="grid-wrapper" data-type="audios">
-            <div class="grid-sizer"></div>
+
+        <div class="container">
+            <h2 class="title">{{ 'article.photos.title.touslesaudios'|trans }}</h2>
+            {% include 'FDCEventMobileBundle:News:components/filters.html.twig' %} 
+        </div>
+
+        <div class="list" id="list-audios">
             {% for audio in audios %}
                 {% set trans = audio.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null %}
@@ -30,23 +32,23 @@
                 {% if transImage is defined %}
                     <div class="item {{ audio.theme|trans_fallback('slug') }} {{ audio.publishedAt|date('d-m-y') }} shadow-bottom audio"
                          data-sound="{{ s3_server_audio ~ trans.mp3Url }}">
-                        {#<img src="{% path transImage.file , '1144x724' %}"
-                             srcset="{% path transImage.file , '640x404' %} 1x, {% path transImage.file , '2560x1620' %} 2x"
-                             alt="">#}
-                        <div class="picto"><i class="icon icon_audio"></i></div>
-                        <div class="info">
-                            <div class="vCenter">
-                                <div class="vCenterKid">
-                                    <span class="category">{{ audio.theme|trans_fallback('name') }}</span>
-                                    <p data-title="{{ audio|trans_fallback('title') }}">{{ audio|trans_fallback('title') }}</p>
+                        <div class="img-container">
+                            <div class="infos">
+                                <div class="picto"><i class="icon icon_audio"></i></div>
+                                <div class="vCenter">
+                                    <div class="vCenterKid">
+                                        <span class="category">{{ audio.theme|trans_fallback('name') }}</span>
+                                        <p data-title="{{ audio|trans_fallback('title') }}">{{ audio|trans_fallback('title') }}</p>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="img" style="background-image:url({% path transImage.file , '640x404' %})"></div>
                         </div>
                     </div>
                 {% endif %}
             {% endfor %}
         </div>
-        <div class="popin-audio audio loading" data-sound="">
+        <!-- <div class="popin-audio audio loading" data-sound="">
             <div class="image-container">
                 <div class="image"></div>
             </div>
@@ -69,7 +71,7 @@
                 <span class="category"></span><span class="date"></span> . <span class="hour"></span>
                 <p></p>
             </div>
-        </div>
+        </div> -->
     </div>
 {% endblock %}
 

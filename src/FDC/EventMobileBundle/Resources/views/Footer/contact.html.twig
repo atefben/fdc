@@ -12,74 +12,79 @@
 {% endblock form_errors %}
 
 {% block body %}
-<div id="main" class="contact loading"> |!| JS |!|
-    <h2 class="title">{{ 'contact.title.contact'|trans }}</h2>
-    <div class="coords">
-        <h3>{{ 'contact.title.festival'|trans }}</h3>
-        <p>{{ 'contact.text.adresse'|trans }}</p>
-        <p>{{ 'contact.text.contact'|trans }}</p>
-    </div>
+    <div id="main" class="contact st-container" data-menu="contact">
 
-    {% for label, flashes in app.session.flashbag.all %}
-        {% if label == "success" %}
-            {#<div class="{{ label }}"> |!| JS |!|#}
-            <div class="">
-                {% for flash in flashes %}
-                    <h3>{{ 'contact.sucess.title.votremessage'|trans }}</h3>
-                    <p>{{ 'contact.sucess.text.lequipeconcerne'|trans }}</p>
-                {% endfor %}
+        {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+        {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+
+        <div class="contact-container">
+            <h2 class="title one-line">{{ 'contact.title.contact'|trans }}</h2>
+            <div class="coords">
+                <h3>{{ 'contact.title.festival'|trans }}</h3>
+                <p>{{ 'contact.text.adresse'|trans }}</p>
+                <p>{{ 'contact.text.contact'|trans }}</p>
             </div>
-        {% endif %}
-    {% endfor %}
 
-    <div class="container">
-        <p>{{ 'contact.form.text.precisezvotredemande'|trans|raw }}</p>
-        <div id="form">
-            {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+            {% for label, flashes in app.session.flashbag.all %}
+                {% if label == "success" %}
+                    <div class="success">
+                        {% for flash in flashes %}
+                            <h3>{{ 'contact.sucess.title.votremessage'|trans }}</h3>
+                            <p>{{ 'contact.sucess.text.lequipeconcerne'|trans }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
 
-            <div class="select{% if form_errors(form.select) %} invalid{% endif %}">
-                {{ form_label(form.select) }}
-                {{ form_widget(form.select) }}
-                <span id="triggerSelect"></span>
-            </div>
-            {% if form_errors(form.name) %}
-                {{ form_widget(form.name, {'attr': {'class': 'invalid'}}) }}
-            {% else %}
-                {{ form_widget(form.name) }}
-            {% endif %}
-            {% if form_errors(form.email) %}
-                {{ form_widget(form.email, {'attr': {'class': 'invalid'}}) }}
-            {% else %}
-                {{ form_widget(form.email) }}
-            {% endif %}
-            {% if form_errors(form.subject) %}
-                {{ form_widget(form.subject, {'attr': {'class': 'invalid'}}) }}
-            {% else %}
-                {{ form_widget(form.subject) }}
-            {% endif %}
-            {% if form_errors(form.message) %}
-                {{ form_widget(form.message, {'attr': {'class': 'invalid'}}) }}
-            {% else %}
-                {{ form_widget(form.message) }}
-            {% endif %}
+            <div class="container">
+                <p>{{ 'contact.form.text.precisezvotredemande'|trans|raw }}</p>
+                <div id="form">
+                    {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
 
-            <span class="required">{{ 'contact.form.text.champsobligatoires'|trans }}</span>
-            <input type="submit" value="{{ 'contact.form.btn.envoyer'|trans }}">
+                    <div class="select{% if form_errors(form.select) %} invalid{% endif %}">
+                        {{ form_label(form.select) }}
+                        {{ form_widget(form.select) }}
+                        <span id="triggerSelect"></span>
+                    </div>
+                    {% if form_errors(form.name) %}
+                        {{ form_widget(form.name, {'attr': {'class': 'invalid'}}) }}
+                    {% else %}
+                        {{ form_widget(form.name) }}
+                    {% endif %}
+                    {% if form_errors(form.email) %}
+                        {{ form_widget(form.email, {'attr': {'class': 'invalid'}}) }}
+                    {% else %}
+                        {{ form_widget(form.email) }}
+                    {% endif %}
+                    {% if form_errors(form.subject) %}
+                        {{ form_widget(form.subject, {'attr': {'class': 'invalid'}}) }}
+                    {% else %}
+                        {{ form_widget(form.subject) }}
+                    {% endif %}
+                    {% if form_errors(form.message) %}
+                        {{ form_widget(form.message, {'attr': {'class': 'invalid'}}) }}
+                    {% else %}
+                        {{ form_widget(form.message) }}
+                    {% endif %}
 
-            {{ form_end(form) }}
+                    <span class="required">{{ 'contact.form.text.champsobligatoires'|trans }}</span>
+                    <input type="submit" value="{{ 'contact.form.btn.envoyer'|trans }}">
 
-            {% if hasErrors %}
-                <div class="errors show">
-                    <ul>
-                        {{ form_errors(form.select) }}
-                        {{ form_errors(form.name) }}
-                        {{ form_errors(form.email) }}
-                        {{ form_errors(form.subject) }}
-                        {{ form_errors(form.message) }}
-                    </ul>
+                    {{ form_end(form) }}
+
+                    {% if hasErrors %}
+                        <div class="errors">
+                            <ul>
+                                {{ form_errors(form.select) }}
+                                {{ form_errors(form.name) }}
+                                {{ form_errors(form.email) }}
+                                {{ form_errors(form.subject) }}
+                                {{ form_errors(form.message) }}
+                            </ul>
+                        </div>
+                    {% endif %}
                 </div>
-            {% endif %}
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}

@@ -74,28 +74,6 @@ class NewsController extends Controller
         }
 
         ////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////      SOCIAL GRAPH          ///////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////
-
-        $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array(
-            'festival' => $this->getFestival()
-        ), array(
-            'date' => 'ASC'
-        ), 12, null);
-
-        $socialGraphTimeline      = array();
-        $socialGraphTimelineCount = array();
-        $socialGraph              = array();
-
-        foreach ($timeline as $key => $timelineDate) {
-            $socialGraphTimeline[]['date'] = $timelineDate->getDate();
-            $socialGraphTimelineCount[]    = $timelineDate->getCount();
-        }
-
-        $socialGraph['timeline']      = $socialGraphTimeline;
-        $socialGraph['timelineCount'] = json_encode($socialGraphTimelineCount);
-
-        ////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////       ARTICLE HOME         ///////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////
 
@@ -202,7 +180,6 @@ class NewsController extends Controller
 
         return array(
             'homepage' => $homepage,
-            'socialGraph' => $socialGraph,
             'homeArticles' => $homeArticles,
             'homeArticlesBottom' => $homeArticlesBottom,
             'homeArticlesSlider' => $homeArticlesSlider,
@@ -778,6 +755,6 @@ class NewsController extends Controller
                 array_push($aryRange, date('Y-m-d', $iDateFrom));
             }
         }
-        return array_reverse($aryRange);
+        return $aryRange;
     }
 }
