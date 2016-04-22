@@ -214,6 +214,7 @@ fos_elastica:
                         repository: Base\CoreBundle\SearchRepository\FilmFilmRepository
                     mappings:
                         selectionSection: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                        productionYear: ~
                         countries:
                             type: nested
                             properties :

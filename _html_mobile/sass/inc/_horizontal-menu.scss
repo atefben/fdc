@@ -1,0 +1,57 @@
+#horizontal-menu{
+  height: 110px;
+  background-color: #202020;
+  z-index: 50;
+}
+
+#horizontal-menu .vid {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: auto;
+  line-height: 110px;
+  padding: 0 20px 0 20px;
+
+}
+
+#horizontal-menu .vid p{
+  
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 3px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+}
+#horizontal-menu .vid p a{
+  color:  #999999;
+}
+#horizontal-menu .vid p a.active{
+  color: #c8a461;
+}
+#horizontal-menu .owl-stage{
+
+  height: 100%;
+}
+.content-selection, .content-selection2{
+    opacity: 0;
+    -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95),;
+    -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+
+}
+.content-selection.show, .content-selection2.show{
+
+  opacity: 1;
+}
+#main:not(.searchpage, .faq-page, .press-downloads){
+  background-color: #141414;
+}
+#banner-top, #banner-bottom{
+    background-size: 0 0;
+}
+#banner-top.show, #banner-bottom.show{
+  background-size: cover;
+}

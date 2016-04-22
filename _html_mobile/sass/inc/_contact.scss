@@ -1,0 +1,228 @@
+#main.contact{
+  input[type=text],
+  input[type=email],
+  input[type=tel],
+  input[type=url],
+  input[type=search],
+  input[type=submit], textarea {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  }
+
+  h2.title {
+    color: #333;
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+
+    font-weight: 700;
+    margin-bottom: 60px;
+    height: 24px;
+  }
+  .coords, .success {
+    background-color: #f4f4f4;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+    padding: 35px 0;
+  }
+  .coords a{
+    color: #c8a461;
+    font-weight: 700;
+  }
+  .coords h3, .success h3 {
+    color: #c8a461;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    max-height: 200px;
+  }
+  .coords p, .success p {
+      color: #666;
+      line-height: 30px;
+      max-height: 500px;
+      font-size: 20px;
+  }
+  .success {
+    display: none;
+  }
+  .container p {
+    color: #666;
+    font-size: 20px;
+    line-height: 30px;
+    max-height: 600px;
+    margin: 50px 0px 50px;
+    padding: 0 25px;
+    text-align: center;
+  }
+  #form {
+    margin: 0 auto;
+    overflow: hidden;
+    padding-bottom: 70px;
+    width: 525px;
+  }
+  #form ::-webkit-input-placeholder {
+    color: #999;
+    font-size: 20px;
+  }
+
+  #form .required {
+    color: #999;
+    float: right;
+    font-size: 20px;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  }
+  #form input, #form textarea {
+    background: #fff;
+    border: 1px solid #c1c1c1;
+    box-sizing: border-box;
+    color: #999;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    display: block;
+    margin-bottom: 15px;
+    outline: none;
+    padding: 0 25px;
+    width: 100%;
+     -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  }
+  #form input:focus, #form textarea:focus {
+    border-color: #141414;
+  }
+  #form textarea {
+    height: 190px;
+    padding-top: 20px;
+    resize: none;
+  }
+  #form textarea.invalid {
+    border-color: #e93939;
+    color: #e93939;
+  }
+  #form input {
+    height: 70px;
+  }
+  #form input.invalid {
+    border-color: #e93939;
+    color: #e93939;
+  }
+  #form input.valid {
+    border-color: green;
+  }
+  #form input[type="submit"] {
+    border-color: #c8a461;
+    color: #c8a461;
+    cursor: pointer;
+    float: left;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    height: 70px;
+    line-height: 70px;
+    text-transform: uppercase;
+    width: 180px;
+    -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  }
+
+  #form .select {
+    border: 1px solid #c1c1c1;
+    box-sizing: border-box;
+    color: #999;
+    line-height: 70px;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+    display: block;
+    height: 70px;
+    margin-bottom: 15px;
+    outline: none;
+    padding: 0 0px;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  #form .select.invalid {
+    border-color: #e93939;
+    color: #e93939;
+  }
+  #form .select #triggerSelect {
+    position: absolute;
+    display: block;
+    height: 70px;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 2;
+    cursor: pointer;
+  }
+  #form .select label {
+    color: #333;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  #form .select select {
+    background: none;
+    height: 70px;
+    line-height: 70px;
+    margin-top: 0px;
+    border: none;
+    color: #c8a461;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    outline: none;
+    -webkit-appearance: none;
+    text-transform: uppercase;
+    padding-right: 10px;
+    background: url("../img/svg/arrow-down-gold.svg") no-repeat right center;
+    background-size: 6px;
+  }
+  #form .errors {
+    border: 1px solid #e93939;
+    color: #e93939;
+    clear: both;
+    font-size: 1rem;
+    opacity: 0;
+    padding: 20px;
+    visibility: hidden;
+    -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  }
+  #form .errors.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  #form .errors ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  #form .errors ul li {
+    margin-bottom: 5px;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    max-height: 30px;
+    display: block;
+  }
+
+  .container-list {
+    width: 100%;
+    clear: both;
+  }
+}
