@@ -30,7 +30,6 @@
                 {% if award_association is defined and award_association %}
                     <div class="logo-palme-dor-container">
                         {% if hidePalme is not defined or hidePalme == false %}
-                            <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
                             <i class="icon icon_palme palme-dor-img"></i>
                             <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
                         {% endif %}
