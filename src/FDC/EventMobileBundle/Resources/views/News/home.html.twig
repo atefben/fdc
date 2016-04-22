@@ -5,9 +5,9 @@
     <div id="main" class="home st-container" data-menu="actu">
 
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
-        {#% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %#}
-
-        <!-- <div class="fullscreenplayer">
+        {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+    
+        <div class="fullscreenplayer">
             <div class="close-button"><i class="icon icon_close"></i></div>
             <div class="vCenter">
                 <div class="vCenterKid">
@@ -16,7 +16,7 @@
                     <p class="title-video">Rencontre avec l'équipe de Carol</p>
                 </div>
             </div>
-        </div> -->
+        </div>
         
         <div id="sliderWrapper" class="dark-container">
             <div id="slider" class="owl-carousel">
@@ -118,7 +118,7 @@
                             <div class="img-container">
                                 {% set trans = article.findTranslationByLocale('fr') %}
                                 {% if type == 'news' %}
-                                <a href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                                <a href="{{ url('fdc_eventmobile_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">
                                 {% else %}
                                 <a href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
                                 {% endif %}
@@ -130,7 +130,7 @@
                                 <h2>{{ article|trans_fallback('title') }}</h2>
                             </div>
                             {% if type == 'news' %}
-                                <a class="linkArticle" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                                <a class="linkArticle" href="{{ url('fdc_eventmobile_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
                             {% else %}
                                 <a class="linkArticle" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
                             {% endif %}
@@ -188,18 +188,6 @@
                         {% for article in homeArticlesBottom %}
                             {% include 'FDCEventMobileBundle:News:widgets/article-home.html.twig' %}
                         {% endfor %}
-                        
-                        {% if homeArticlesNext %}
-                            <div class="articles right nextDay">
-                                {% for article in homeArticlesNext %}
-                                    {% if loop.first %}
-                                    {% include 'FDCEventMobileBundle:News:widgets/article-home.html.twig' with {'isDouble': 'double'} %}
-                                    {% else %}
-                                    {% include 'FDCEventMobileBundle:News:widgets/article-home.html.twig' %}
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
                     </div>
                 </div>
 
@@ -225,7 +213,6 @@
             <div class="featured-videos">
                 {% if videos[0].id is not null %}
                     <h2 class="title">{{ 'home.title.lesvideosalaune'|trans }}</h2>
-
                     <div id="slider-videos" class="owl-carousel sliderDrag videosSlider">
                         {% for video in videos %}
                             {% if video.association is defined and video.association != null %}
@@ -257,9 +244,23 @@
 
         <div class="dark-container" id="today">
             
-           <h2 class="title one-line">Focus du jour</h2>
+            <h2 class="title one-line">Focus du jour</h2>
+            {#<h2 class="title one-line">{{ 'home.title.focus'|trans }}</h2>#}
             
             <div class="special-event">
+
+                {#% if homepage.displayedFilms == false %}
+                    <div id="featured-movies">
+                        <div id="slider-movies" class="owl-carousel">
+                        {% for film in films %}
+                            {% if film is defined and film != null %}
+                                {% include 'FDCEventBundle:News:widgets/videos.html.twig' %}
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+                {% endif %#}
+
                 <div class="img-container">
                     <div class="img" style="background-image:url(img/slider/slider01.jpg)"></div>
                 </div>
@@ -293,15 +294,6 @@
         <div class="" id="more">
             <div id="slider-more" class="owl-carousel sliderDrag">
                 {% include 'FDCEventMobileBundle:News:widgets/push-main.html.twig' %}
-                <div class="item">
-                    <div class="image-wrapper">
-                        <div class="img" style="background-image:url(img/slider/slider01.jpg)"></div>
-                    </div>
-                    <a class="linkVid" href="#"></a>
-                    <div class="info">
-                        <h3 class="category">Le jury</h3>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

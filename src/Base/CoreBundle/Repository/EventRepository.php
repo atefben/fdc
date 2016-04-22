@@ -54,7 +54,7 @@ class EventRepository extends TranslationRepository
     /**
      * @param $festival
      * @param $locale
-     * @return arrays
+     * @return array
      */
     public function getEvents($festival, $locale)
     {

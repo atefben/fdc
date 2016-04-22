@@ -2,7 +2,11 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="webtv list-channels loading">
+    <div id="main" class="webtv list-channels loading st-container">
+
+    {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+    {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+    
         <div id="live">
             <div class="banner-img vCenter">
                 <div class="vCenterKid">

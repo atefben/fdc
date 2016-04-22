@@ -3585,6 +3585,30 @@ a {
   border-color: #c8a461;
 }
 
+.button-02 {
+  border: 1px solid #ebebeb;
+  height: 39px;
+  color: #c8a461;
+  display: inline-block;
+  padding: 0 20px;
+  line-height: 41px;
+  text-align: center;
+  font-size: .625rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+  transition: .5s;
+  letter-spacing: .1px;
+}
+.button-02 .icon {
+  vertical-align: middle;
+  margin-right: 10px;
+  font-size: .8rem;
+}
+.button-02:hover {
+  border-color: #c8a461;
+}
+
 .read-more {
   border: 1px solid #e5e5e5;
   clear: both;
@@ -7524,94 +7548,94 @@ header #searchContainer {
   visibility: visible !important;
 }
 
-.isotope-01 .item img {
+.isotope-01 .item img, .isotope-02 .item img {
   width: 100%;
   object-fit: cover;
 }
-.isotope-01 .item .contain-img {
+.isotope-01 .item .contain-img, .isotope-02 .item .contain-img {
   overflow: hidden;
 }
 @media screen and (min-width: 320px) {
-  .isotope-01 {
+  .isotope-01, .isotope-02 {
     /* 5 columns for larger screens */
   }
-  .isotope-01 .grid-sizer {
+  .isotope-01 .grid-sizer, .isotope-02 .grid-sizer {
     width: calc(100%/2);
   }
-  .isotope-01 .item {
+  .isotope-01 .item, .isotope-02 .item {
     width: calc(100%/2);
   }
-  .isotope-01 .item.w2 {
+  .isotope-01 .item.w2, .isotope-02 .item.w2 {
     width: calc(200%/2);
   }
 }
 @media screen and (min-width: 768px) {
-  .isotope-01 {
+  .isotope-01, .isotope-02 {
     /* 5 columns for larger screens */
   }
-  .isotope-01 .grid-sizer {
+  .isotope-01 .grid-sizer, .isotope-02 .grid-sizer {
     width: calc(100%/3);
   }
-  .isotope-01 .item {
+  .isotope-01 .item, .isotope-02 .item {
     width: calc(100%/3);
   }
-  .isotope-01 .item.w2 {
+  .isotope-01 .item.w2, .isotope-02 .item.w2 {
     width: calc(200%/3);
   }
 }
 @media screen and (min-width: 1024px) {
-  .isotope-01 {
+  .isotope-01, .isotope-02 {
     /* 5 columns for larger screens */
   }
-  .isotope-01 .grid-sizer {
+  .isotope-01 .grid-sizer, .isotope-02 .grid-sizer {
     width: calc(100%/4);
   }
-  .isotope-01 .item {
+  .isotope-01 .item, .isotope-02 .item {
     width: calc(100%/4);
   }
-  .isotope-01 .item.w2 {
+  .isotope-01 .item.w2, .isotope-02 .item.w2 {
     width: calc(200%/4);
   }
 }
 @media screen and (min-width: 1280px) {
-  .isotope-01 {
+  .isotope-01, .isotope-02 {
     /* 5 columns for larger screens */
   }
-  .isotope-01 .grid-sizer {
+  .isotope-01 .grid-sizer, .isotope-02 .grid-sizer {
     width: calc(100%/5);
   }
-  .isotope-01 .item {
+  .isotope-01 .item, .isotope-02 .item {
     width: calc(100%/5);
   }
-  .isotope-01 .item.w2 {
+  .isotope-01 .item.w2, .isotope-02 .item.w2 {
     width: calc(200%/5);
   }
 }
 @media screen and (min-width: 1600px) {
-  .isotope-01 {
+  .isotope-01, .isotope-02 {
     /* 5 columns for larger screens */
   }
-  .isotope-01 .grid-sizer {
+  .isotope-01 .grid-sizer, .isotope-02 .grid-sizer {
     width: calc(100%/6);
   }
-  .isotope-01 .item {
+  .isotope-01 .item, .isotope-02 .item {
     width: calc(100%/6);
   }
-  .isotope-01 .item.w2 {
+  .isotope-01 .item.w2, .isotope-02 .item.w2 {
     width: calc(200%/6);
   }
 }
 @media screen and (min-width: 1920px) {
-  .isotope-01 {
+  .isotope-01, .isotope-02 {
     /* 5 columns for larger screens */
   }
-  .isotope-01 .grid-sizer {
+  .isotope-01 .grid-sizer, .isotope-02 .grid-sizer {
     width: calc(100%/8);
   }
-  .isotope-01 .item {
+  .isotope-01 .item, .isotope-02 .item {
     width: calc(100%/8);
   }
-  .isotope-01 .item.w2 {
+  .isotope-01 .item.w2, .isotope-02 .item.w2 {
     width: calc(200%/8);
   }
 }
@@ -7872,9 +7896,34 @@ header #searchContainer {
 .who .block-01-xs img {
   margin-bottom: 55px;
 }
+.who .block-01-xs figure {
+  margin-bottom: 55px;
+}
+.who .block-01-xs figure img {
+  margin-bottom: 0px;
+}
+.who .block-01-xs figure figcaption {
+  font-size: .75rem;
+}
 .who .buttons-01 {
   margin-bottom: 65px;
 }
 .who .texte-01 {
   margin-bottom: 51px;
+}
+
+.who-staff .title-11 {
+  padding: 0 30px;
+}
+.who-staff .title-12 {
+  padding: 0 30px;
+}
+.who-staff .block-poster .contain-txts {
+  padding-top: 0px;
+  height: 121px;
+  justify-content: center;
+}
+.who-staff .item img, .who-staff .item .contain-img {
+  width: 163px;
+  object-fit: cover;
 }

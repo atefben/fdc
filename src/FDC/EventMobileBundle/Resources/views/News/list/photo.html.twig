@@ -3,6 +3,10 @@
 
 {% block body %}
     <div id="main" class="all-photos grid loading">
+
+        {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+        {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+    
         <h2 class="title">{{ 'article.photos.title.touteslesphotos'|trans }}</h2>
         {% include 'FDCEventMobileBundle:News:components/filters.html.twig' %}
         <div id="gridPhotos" class="grid-wrapper">

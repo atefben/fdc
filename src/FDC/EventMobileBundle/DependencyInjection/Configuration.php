@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('fdc_event_mobile');
+        $rootNode = $treeBuilder->root('fdc_eventmobile');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

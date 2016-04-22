@@ -74,4 +74,8 @@ $(document).ready(function() {
     owInitNavSticky(1);
   }
 
+  if($('.who-staff').length){
+    owInitGrid('isotope-02');
+  }
+
 });

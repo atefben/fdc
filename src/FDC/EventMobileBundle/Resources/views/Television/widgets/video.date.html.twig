@@ -12,17 +12,17 @@
 {% endif %}
 <div class="image-wrapper">
     <img src="{% path transImage.file, '640x404' %}" alt="{{ video.image|trans_fallback('alt') }}" />
-</div>
-<a class="linkVid" href="#"></a>
-<div class="info">
-    <div class="picto vCenter">
-        <div class="vCenterKid"><i class="icon icon_video"></i></div>
-    </div>
-    <div class="info-container">
-        <div class="vCenter">
-            <div class="vCenterKid">
-                <a class="category">{{ video.theme|trans_fallback('name') }}</a>
-                <a class="titleLink" data-title="{{ video|trans_fallback('title') }}">{{ video|trans_fallback('title') }}</a>
+    <a class="linkVid" href="#"></a>
+    <div class="info">
+        <div class="picto">
+            <i class="icon icon_video"></i>
+        </div>
+        <div class="info-container">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <span class="category">{{ video.theme|trans_fallback('name') }}</span>
+                    <p class="titleLink" data-title="{{ video|trans_fallback('title') }}">{{ video|trans_fallback('title') }}</p>
+                </div>
             </div>
         </div>
     </div>

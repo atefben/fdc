@@ -190,7 +190,7 @@ class GlobalController extends Controller {
 
     /**
      * @Route("/menu")
-     * @Template("FDCEventBundle:Global:footer.html.twig")
+     * @Template("FDCEventMobileBundle:Global:footer.html.twig")
      * @return array
      */
     public function footerAction(Request $request, $route) {

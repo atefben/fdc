@@ -2,99 +2,103 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
-<div id="main" class="single-movie loading">
-    <span id="addtext">{{ 'movie.btn.ajouteramaselection'|trans }}</span>
-    <div id="canvasloader" class="canvasloader"></div>
-    <div class="content-movie">
-        {% include 'FDCEventMobileBundle:Movie:components/pagination.html.twig' %}
+    <div id="main" class="single-movie loading">
 
-        <span id="plx"></span>
+    {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+    {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+    
+        <span id="addtext">{{ 'movie.btn.ajouteramaselection'|trans }}</span>
+        <div id="canvasloader" class="canvasloader"></div>
+        <div class="content-movie">
+            {% include 'FDCEventMobileBundle:Movie:components/pagination.html.twig' %}
 
-        {% include 'FDCEventMobileBundle:Movie:components/banner.html.twig' %}
+            <span id="plx"></span>
 
-        <div id="nav-movie">
-            <div class="container">
-                <ul>
-                    {% if movie.associatedMediaVideos|length > 0 %}
-                        <li><a href="#videos">{{ 'movie.middlenav.videos'|trans }}</a></li>
-                    {% endif %}
-                    {% if movie.getActors()|length > 0 or movie.getCredits()|length > 0 %}
-                        <li><a href="#casting">{{ 'movie.middlenav.creditcasting'|trans }}</a></li>
-                    {% endif %}
-                    {% if movie.getMedias()|length > 0 %}
-                        <li><a href="#photos">{{ 'movie.middlenav.photos'|trans }}</a></li>
-                    {% endif %}
-                    {% if movie.associatedNews|length > 0 %}
-                        <li><a href="#news">{{ 'movie.middlenav.actualites'|trans }}</a></li>
-                    {% endif %}
-                    {% if movie.associatedMediaAudios|length > 0 %}
-                        <li><a href="#audios">{{ 'movie.middlenav.audios'|trans }}</a></li>
-                    {% endif %}
-                    <li><a href="#press">{{ 'movie.middlenav.infospresse'|trans }}</a></li>
-                </ul>
-                <div class="buttons square">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" rel="nofollow" class="button facebook">
-						<i class="icon icon_facebook"></i>
-					</a>
-					<a href="https://twitter.com/intent/tweet?url={{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" rel="nofollow" class="button twitter">
-						<i class="icon icon_twitter"></i>
-					</a>
-                    <a href="#" rel="nofollow" class="button link self"><i class="icon icon_link"></i></a>
-                    <a href="#" rel="nofollow" class="button email self"><i class="icon icon_lettre"></i></a>
-                    <a href="#" rel="nofollow" onclick="javascript:window.print()" class="button print"><i class="icon icon_print"></i></a>
+            {% include 'FDCEventMobileBundle:Movie:components/banner.html.twig' %}
+
+            <div id="nav-movie">
+                <div class="container">
+                    <ul>
+                        {% if movie.associatedMediaVideos|length > 0 %}
+                            <li><a href="#videos">{{ 'movie.middlenav.videos'|trans }}</a></li>
+                        {% endif %}
+                        {% if movie.getActors()|length > 0 or movie.getCredits()|length > 0 %}
+                            <li><a href="#casting">{{ 'movie.middlenav.creditcasting'|trans }}</a></li>
+                        {% endif %}
+                        {% if movie.getMedias()|length > 0 %}
+                            <li><a href="#photos">{{ 'movie.middlenav.photos'|trans }}</a></li>
+                        {% endif %}
+                        {% if movie.associatedNews|length > 0 %}
+                            <li><a href="#news">{{ 'movie.middlenav.actualites'|trans }}</a></li>
+                        {% endif %}
+                        {% if movie.associatedMediaAudios|length > 0 %}
+                            <li><a href="#audios">{{ 'movie.middlenav.audios'|trans }}</a></li>
+                        {% endif %}
+                        <li><a href="#press">{{ 'movie.middlenav.infospresse'|trans }}</a></li>
+                    </ul>
+                    <div class="buttons square">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" rel="nofollow" class="button facebook">
+    						<i class="icon icon_facebook"></i>
+    					</a>
+    					<a href="https://twitter.com/intent/tweet?url={{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" rel="nofollow" class="button twitter">
+    						<i class="icon icon_twitter"></i>
+    					</a>
+                        <a href="#" rel="nofollow" class="button link self"><i class="icon icon_link"></i></a>
+                        <a href="#" rel="nofollow" class="button email self"><i class="icon icon_lettre"></i></a>
+                        <a href="#" rel="nofollow" onclick="javascript:window.print()" class="button print"><i class="icon icon_print"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        {% include 'FDCEventMobileBundle:Movie:widgets/video.html.twig' with { videos: movie.associatedMediaVideos } %}
+            {% include 'FDCEventMobileBundle:Movie:widgets/video.html.twig' with { videos: movie.associatedMediaVideos } %}
 
-        <div class="container">
+            <div class="container">
 
-            {% include 'FDCEventMobileBundle:Movie:widgets/casting.html.twig' %}
+                {% include 'FDCEventMobileBundle:Movie:widgets/casting.html.twig' %}
 
-            {% include 'FDCEventMobileBundle:Movie:widgets/image.html.twig' with {'photos': movie.medias} %}
+                {% include 'FDCEventMobileBundle:Movie:widgets/image.html.twig' with {'photos': movie.medias} %}
 
-			{% if movie.associatedNews|length > 0 %}
-            <div class="news" data-section="news">
-                <div class="articles center">
-                {% for NewsFilmFilmAssociated in movie.associatedNews %}
-					{% include 'FDCEventMobileBundle:News:widgets/article.html.twig' with { 'article': NewsFilmFilmAssociated.news } %}
+    			{% if movie.associatedNews|length > 0 %}
+                <div class="news" data-section="news">
+                    <div class="articles center">
+                    {% for NewsFilmFilmAssociated in movie.associatedNews %}
+    					{% include 'FDCEventMobileBundle:News:widgets/article.html.twig' with { 'article': NewsFilmFilmAssociated.news } %}
+                    {% endfor %}
+                    </div>
+                </div>
+    			{% endif %}
+    			
+    			{% if movie.associatedMediaAudios|length > 0 %}
+                <div class="audios" data-section="audios">
+                {% for associatedMediaAudio in movie.associatedMediaAudios %}
+                    {% include 'FDCEventMobileBundle:Movie:widgets/audio.html.twig' with { 'mediaAudio': associatedMediaAudio.mediaAudio } %}
                 {% endfor %}
                 </div>
+    			{% endif %}
+
             </div>
-			{% endif %}
-			
-			{% if movie.associatedMediaAudios|length > 0 %}
-            <div class="audios" data-section="audios">
-            {% for associatedMediaAudio in movie.associatedMediaAudios %}
-                {% include 'FDCEventMobileBundle:Movie:widgets/audio.html.twig' with { 'mediaAudio': associatedMediaAudio.mediaAudio } %}
-            {% endfor %}
-            </div>
-			{% endif %}
+
+            {% include 'FDCEventMobileBundle:Movie:components/contact.html.twig' %}
+
+            {% include 'FDCEventMobileBundle:Movie:widgets/competition.html.twig' %}
 
         </div>
-
-        {% include 'FDCEventMobileBundle:Movie:components/contact.html.twig' %}
-
-        {% include 'FDCEventMobileBundle:Movie:widgets/competition.html.twig' %}
-
+        <span class="anim"></span>
     </div>
-    <span class="anim"></span>
-</div>
-{{ render(controller('FDCEventMobileBundle:Global:shareEmail',
-    {'section': '',
-        'detail' : '',
-        'title'  : '',
-        'description': ''
-    }))
-}}
-{{ render(controller('FDCEventMobileBundle:Global:shareEmailMedia',
-    {'section': '',
-     'detail' : '',
-     'title'  : '',
-     'description': ''
-    }))
-}}
+    {{ render(controller('FDCEventMobileBundle:Global:shareEmail',
+        {'section': '',
+            'detail' : '',
+            'title'  : '',
+            'description': ''
+        }))
+    }}
+    {{ render(controller('FDCEventMobileBundle:Global:shareEmailMedia',
+        {'section': '',
+         'detail' : '',
+         'title'  : '',
+         'description': ''
+        }))
+    }}
     {% if movie|trans_fallback('title') is not empty %}
         {% set mainTitle = movie|trans_fallback('title') %}
     {% else %}

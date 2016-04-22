@@ -3,6 +3,10 @@
 
 {% block body %}
     <div id="main" class="webtv webtv-ba loading">
+
+    {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+    {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+    
         <div class="bandeau">
 
             <div id="live"{% if page.image and page.image|trans_fallback('file') %} style="background-image:url('{% path page.image|trans_fallback('file'), '976x535' %}')"{% endif %}>

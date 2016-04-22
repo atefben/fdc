@@ -1,4 +1,4 @@
-fdc_event_mobile:
+fdc_eventmobile:
     resource: "@FDCEventMobileBundle/Controller/"
     type:     annotation
     prefix:   /
