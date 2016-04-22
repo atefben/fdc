@@ -40,7 +40,7 @@
                             {% if searchResult.category.actualite|length %}
                             <div class="resultsContainer">
                                 <h2 class="titleSection">{{ 'search.result.title.actualites'|trans }}</h2>
-                                <a href="#" data-class="news" data-ajax="searchNews.html" class="view-all ajax">
+                                <a href="#" data-class="news" data-ajax="ajax/news/{{ searchTerm }}" class="view-all ajax">
                                     {{ 'search.result.btn.toutvoir'|trans }}
                                 </a>
 
@@ -73,7 +73,7 @@
                             {% if searchResult.category.info|length %}
                             <div class="resultsContainer">
                                 <h2 class="titleSection">{{ 'search.result.title.infos'|trans }}</h2>
-                                <a href="#" class="view-all ajax" data-ajax="searchCommuniques.html" data-class="communiques">
+                                <a href="#" class="view-all ajax" data-ajax="ajax/info/{{ searchTerm }}" data-class="communiques">
                                     {{ 'search.result.btn.toutvoir'|trans }}
                                 </a>
 
@@ -85,7 +85,7 @@
                             {% if searchResult.category.statement|length %}
                             <div class="resultsContainer">
                                 <h2 class="titleSection">{{ 'search.result.title.communiques'|trans }}</h2>
-                                <a href="#" class="view-all ajax" data-ajax="searchCommuniques.html" data-class="communiques">
+                                <a href="#" class="view-all ajax" data-ajax="ajax/statement/{{ searchTerm }}" data-class="communiques">
                                     {{ 'search.result.btn.toutvoir'|trans }}
                                 </a>
 
@@ -97,7 +97,7 @@
                             {% if searchResult.category.media|length %}
                             <div class="resultsContainer">
                                 <h2 class="titleSection">{{ 'search.result.title.medias'|trans }}</h2>
-                                <a href="#" class="view-all ajax" data-ajax="searchMedias.html" data-class="medias">
+                                <a href="#" class="view-all ajax" data-ajax="ajax/media/{{ searchTerm }}" data-class="medias">
                                     {{ 'search.result.btn.toutvoir'|trans }}
                                 </a>
                                 <div id="mediasResults">
@@ -108,7 +108,7 @@
                             {% if searchResult.category.event|length %}
                             <div class="resultsContainer">
                                 <h2 class="titleSection">{{ 'search.result.title.evenement'|trans }}</h2>
-                                <a href="#" class="view-all ajax" data-ajax="searchEvents.html" data-class="events">
+                                <a href="#" class="view-all ajax" data-ajax="ajax/event/{{ searchTerm }}" data-class="events">
                                     {{ 'search.result.btn.toutvoir'|trans }}
                                 </a>
                                 <div id="eventsResults">
@@ -135,7 +135,7 @@
                             {% if searchResult.category.actualite|length and searchResult.category.artist|length %}
                             <div class="resultsContainer">
                                 <h2 class="titleSection">{{ 'search.result.title.artistes'|trans }}</h2>
-                                <a href="#" data-class="artists" data-ajax="searchArtists.html" class="view-all ajax">
+                                <a href="#" data-class="artists" data-ajax="ajax/artist/{{ searchTerm }}" class="view-all ajax">
                                     {{ 'search.result.btn.toutvoir'|trans }}
                                 </a>
                                 <div id="artistsResults">
@@ -158,7 +158,7 @@
                                                         <img src="{% path media, 'searchtiny' %}"
                                                              alt="{{ artist.firstname }} {{ artist.lastname }}">
                                                     {% else %}
-                                                        <img width="170" height="231" src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}"
+                                                        <img width="52" height="66" src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}"
                                                             alt="{{ artist.firstname }} {{ artist.lastname }}">
                                                     {% endif %}
                                                 {% endif %}
@@ -171,8 +171,13 @@
                                                                 {{ artist.fullName }}
                                                             </a>
                                                         </h2>
-                                                        <span class="category">{{ artist.role }}</span>
-                                                        <span class="country">{{ artist.from }}</span>
+                                                        {% set profession = artist|trans_fallback('profession') %}
+                                                        {% if profession %}
+                                                            <span class="category">
+                                                                {{ profession }}
+                                                            </span>
+                                                        {% endif %}
+                                                        <span class="country">{{ artist.nationality }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -185,7 +190,7 @@
                             {% if (searchResult.category.actualite|length or searchResult.category.artist|length ) and searchResult.category.film|length%}
                             <div class="resultsContainer noBorder">
                                 <h2 class="titleSection">{{ 'search.result.title.films'|trans }}</h2>
-                                <a href="#" data-class="films" data-ajax="searchFilms.html" class="view-all ajax">
+                                <a href="#" data-class="films" data-ajax="ajax/film/{{ searchTerm }}" class="view-all ajax">
                                     {{ 'search.result.btn.toutvoir'|trans }}
                                 </a>
 
@@ -221,7 +226,7 @@
                                                             {% endif %}
                                                             
                                                         </span>
-                                                        <span class="country">{{ film.author }}</span>
+                                                        <span class="country">{{ film.countries|first.country.name }}</span>
                                                     </div>
                                                 </div>
                                             </div>
