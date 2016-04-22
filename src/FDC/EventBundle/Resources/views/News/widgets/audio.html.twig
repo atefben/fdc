@@ -22,8 +22,7 @@
         {% set image_s3 = s3_server_video ~ trans.imageAmazonUrl %}
     {% endif %}
 {% endif %}
-
-{% if  imageTrans is defined and trans.jobMp3State == 3 and trans.mp3Url %}
+{% if imageTrans is defined and trans.jobMp3State == 3 and trans.mp3Url %}
     <div class="audio-player audio" data-sound="{{ s3_server_audio ~ trans.mp3Url }}">
         <div class="image"{% if image is defined %} style="background-image: url({% path image, '1950x1232' %});"{% elseif image_s3 is defined %} style="background-image: url({{ image_s3 }});"{% endif %}></div>
         <a href="#" class="playpause"><i class="icon icon_video"></i></a>
