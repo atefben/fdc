@@ -735,6 +735,7 @@
 
     &:hover {
       border-color: $gold;
+      cursor: pointer;
 
       &+a {
         border-left-color: $gold;

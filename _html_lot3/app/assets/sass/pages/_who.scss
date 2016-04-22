@@ -30,18 +30,18 @@
 .who-staff {
 
   .title-11 {
-    padding: 0 30px;
+    padding: 0 24px;
   }
 
 
   .title-12 {
-    padding: 0 30px;
+    padding: 0 0px;
   }
 
   .block-poster .contain-txts{
-    padding-top: 0px;
+    padding-top: 25px;
     height: 121px;
-    justify-content: center;
+    // justify-content: center;
   }
 
   .item{
@@ -49,5 +49,9 @@
       width: 163px;
       object-fit: cover;
     }
+  }
+
+  .block-01 {
+    margin-bottom: 68px;
   }
 }
