@@ -466,6 +466,13 @@ a {
   }
 }
 
+.buttons-02 {
+
+  .button {
+    border-color: $gold;
+  }
+}
+
 .arrows {
   opacity: 0;
   transition: .3s;

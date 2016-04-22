@@ -3556,6 +3556,10 @@ a {
   border-left-color: #c8a461;
 }
 
+.buttons-02 .button {
+  border-color: #c8a461;
+}
+
 .arrows {
   opacity: 0;
   transition: .3s;
@@ -4687,6 +4691,132 @@ video {
   margin-top: 8px;
 }
 
+.block-accordion .a-left {
+  text-align: left;
+}
+.block-accordion .s-margin-top {
+  margin-top: 26px;
+}
+.block-accordion .title-contain {
+  padding: 38px 0;
+}
+.block-accordion p {
+  color: #666666;
+  line-height: 26px;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: .875rem;
+}
+.block-accordion .icon {
+  float: right;
+  font-size: .6rem;
+}
+.block-accordion .title-img {
+  color: #141414;
+  text-transform: uppercase;
+  font-size: .75rem;
+  letter-spacing: 2px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  padding-top: 29px;
+  display: block;
+}
+.block-accordion .icon.icon-download {
+  float: left;
+  font-size: .8rem;
+}
+.block-accordion .btn-center {
+  width: 180px;
+  margin: 0 auto;
+}
+.block-accordion .title-22 {
+  letter-spacing: 2px;
+}
+.block-accordion .single-image {
+  border: 1px solid #e7e7e7;
+  width: 100%;
+  text-align: center;
+  height: 296px;
+}
+.block-accordion .caption {
+  font-size: .875rem;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  color: #666666;
+  line-height: 24px;
+  margin-top: 19px;
+}
+.block-accordion .item {
+  padding-bottom: 42px;
+}
+.block-accordion .active strong, .block-accordion .active i, .block-accordion .active .title-22 {
+  color: #c8a461;
+}
+.block-accordion .link {
+  color: #666666;
+  text-decoration: underline;
+  padding-top: 15px;
+  transition: .5s;
+  font-size: .75rem;
+  display: block;
+}
+.block-accordion .link:hover {
+  opacity: .8;
+}
+.block-accordion .title-dowload {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: .75rem;
+  text-transform: uppercase;
+  color: #a6a6a6;
+  letter-spacing: 2px;
+}
+.block-accordion .three-images .item-img {
+  width: 295px;
+  margin: 0px 21px;
+  margin-bottom: 25px;
+}
+.block-accordion .three-images .title-img {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: .75rem;
+  text-transform: uppercase;
+  display: block;
+  vertical-align: top;
+}
+.block-accordion .three-images .contain-img {
+  width: 295px;
+  height: 295px;
+  box-sizing: border-box;
+  border: 1px solid #e7e7e7;
+  margin-top: 22px;
+}
+.block-accordion .two-images {
+  display: flex;
+}
+.block-accordion .two-images .small {
+  width: 295px;
+}
+.block-accordion .two-images .small .contain-img {
+  width: 295px;
+  height: 295px;
+  box-sizing: border-box;
+  border: 1px solid #e7e7e7;
+  margin-top: 22px;
+}
+.block-accordion .two-images .big {
+  width: 636px;
+  padding-left: 46px;
+}
+.block-accordion .two-images .big .contain-img {
+  width: 636px;
+  height: 295px;
+  box-sizing: border-box;
+  border: 1px solid #e7e7e7;
+  margin-top: 22px;
+}
+.block-accordion .two-images .download {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 19px;
+  justify-content: space-between;
+}
+
 @font-face {
   font-family: "icon";
   src: url("../fonts/icon.eot");
@@ -4844,7 +4974,7 @@ video {
   content: "\E023";
 }
 
-.icon-downling:before {
+.icon-download:before {
   content: "\E024";
 }
 
@@ -4948,7 +5078,7 @@ video {
   content: "\E03D";
 }
 
-.icon-moins:before {
+.icon-minus:before {
   content: "\E03E";
 }
 
