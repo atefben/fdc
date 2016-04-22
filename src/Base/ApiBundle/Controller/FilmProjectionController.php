@@ -79,7 +79,10 @@ class FilmProjectionController extends FOSRestController
             $ac = new ArrayCollection();
             if ($room instanceof FilmProjectionRoom) {
                 foreach ($room->getProjections() as $projection) {
-                    if ($projection->getProgrammationFilms()->count()) {
+                    /**
+                     * @todo : replace getApiProgrammationFilms with getProgrammationFilms
+                     */
+                    if ($projection->getApiProgrammationFilms()->count()) {
                         $ac->add($projection);
                     }
 //                    if ($projection instanceof FilmProjection) {
@@ -130,9 +133,10 @@ class FilmProjectionController extends FOSRestController
      *
      * @Rest\QueryParam(name="version", description="Api Version number")
      *
+     * @param ParamFetcher $paramFetcher
      * @return View
      */
-    public function getProjectionAction(Paramfetcher $paramFetcher, $id)
+    public function getProjectionAction(ParamFetcher $paramFetcher, $id)
     {
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
 
