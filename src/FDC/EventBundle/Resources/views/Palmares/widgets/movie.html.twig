@@ -29,9 +29,8 @@
             <div class="infos-item-list">
                 {% if award_association is defined and award_association %}
                     <div class="logo-palme-dor-container">
-                        {% if hidePalme is defined and hidePalme %}
+                        {% if hidePalme is not defined or hidePalme == false %}
                             <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
-                        {% else %}
                             <i class="icon icon_palme palme-dor-img"></i>
                             <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
                         {% endif %}
@@ -85,7 +84,7 @@
                         {% if duration|length > 0 and duration[0] > 0 %}
                             {% set hours = (duration[0] / 60)|round(0, 'floor') %}
                             {% set minutes = duration[0] % 60 %}
-                            {% if hours > 0 %}{{ hours }}:{% endif %}{{ (minutes|length) == 1 ? '0' ~ minutes : minutes }}
+                            - {{ "%02d"|format(hours) }}:{{ "%02d"|format(minutes) }}
                         {% endif %}
                     {% endspaceless %}</span>
                 {% endif %}
