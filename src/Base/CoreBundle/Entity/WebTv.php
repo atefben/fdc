@@ -13,6 +13,7 @@ use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use JMS\Serializer\Annotation as Serializer;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
@@ -153,6 +154,17 @@ class WebTv implements TranslateMainInterface
     public function getMediaVideos()
     {
         return $this->mediaVideos;
+    }
+
+    /**
+     * @param $array
+     * @return $this
+     */
+    public function setMediaVideos($array)
+    {
+        $collection = new ArrayCollection($array);
+        $this->mediaVideos = $collection;
+        return $this;
     }
 
     /**

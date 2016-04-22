@@ -17,10 +17,14 @@
             </div>
             
             <div class="article-title">
-                <span class="category">{{ news.theme|trans_fallback('name') }}</span>
-                <span class="date">{{ news.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.publishedAt|date('H:i') }}</span>
-                <span class="update">{{ 'article.text.miseajour'|trans }} :</span><span class="date">{{ news.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.updatedAt|date('H:i') }}</span>
-                <h2 class="title-article">{{ news|trans_fallback('title') }}</h2>
+                <div>
+                    <span class="category">{{ news.theme|trans_fallback('name') }}</span>
+                    <span class="date">{{ news.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.publishedAt|date('H:i') }}</span>
+                </div>
+                <div>
+                    <span class="update">{{ 'article.text.miseajour'|trans }} :</span><span class="date">{{ news.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.updatedAt|date('H:i') }}</span>
+                </div>
+                <h2>{{ news|trans_fallback('title') }}</h2>
             </div>
 
             {% if news is news_article %}
@@ -84,23 +88,21 @@
                                             film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                         }) %}
                                     </div>
-                                    <div class="text-container" id="filmPoster">
+                                    <div class="text-container">
                                         {% if associatedFilm.selectionSection is not null %}
                                             <span class="category">
                                                 {{ associatedFilm.selectionSection|trans_fallback('name') }}
                                             </span>
                                         {% endif %}
                                         <h3>
-                                            <a href="#">
-                                                {% set title = associatedFilm|trans_fallback('title') %}
-                                                {% if title == '' %}
-                                                    {% set title = associatedFilm.titleVO %}
-                                                {% endif %}
-                                                {{ title }}
-                                            </a>
+                                            {% set title = associatedFilm|trans_fallback('title') %}
+                                            {% if title == '' %}
+                                                {% set title = associatedFilm.titleVO %}
+                                            {% endif %}
+                                            {{ title }}
                                         </h3>
                                         {%if director is defined and director|length > 1 %}
-                                            <p class="director"><a href="{{ path('fdc_eventmobile_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a><p>
+                                            <p class="director"><a href="{{ path('fdc_eventmobile_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a></p>
                                         {% else %}
                                             <p class="director">
                                             {% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
@@ -129,6 +131,7 @@
                         </div>
                     </div>
                 {% endif %}
+
                 {% if programmations is not empty %}
                     <div class="programmation-film">
                         <div class="wrapper">
@@ -145,7 +148,7 @@
                                             </li>
                                         {% endfor %}
                                     </ul>
-                                    <a href="#" class="button">{{ 'article.film.btn.toutelaprojection'|trans }}</a>
+                                    <a href="{{ path('fdc_eventmobile_agenda_scheduling') }}" class="button">{{ 'article.film.btn.toutelaprojection'|trans }}</a>
                                 </div>
                             </div>
                         </div>
@@ -153,6 +156,7 @@
                 {% endif %}
             </div>
             {% endif %}
+            
             <div class="container">
                 <div class="section articles">
                     {% if focusArticles is not empty %}

@@ -125,7 +125,7 @@ class WebTvRepository extends TranslationRepository
         $this->addMasterQueries($qb, 'wt', $festival, false);
         $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addTranslationQueries($qb, 'wtt', $locale);
-        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addTranslationQueries($qb, 'mvt', $locale, null, true);
         $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         if ($notIn) {

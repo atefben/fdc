@@ -10,6 +10,7 @@ use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use JMS\Serializer\Annotation as Serializer;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
@@ -93,6 +94,7 @@ class FDCPageWebTvLive implements TranslateMainInterface
      * @ORM\OneToMany(targetEntity="FDCPageWebTvLiveMediaVideoAssociated", mappedBy="FDCPageWebTvLive", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      * @Groups({"live"})
+     * @Serializer\Accessor(getter="getApiAssociatedMediaVideos")
      */
     private $associatedMediaVideos;
 
@@ -358,5 +360,30 @@ class FDCPageWebTvLive implements TranslateMainInterface
             }
         }
         return $this->associatedMediaVideos;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getApiAssociatedMediaVideos()
+    {
+        $associatedMediaVideos = new ArrayCollection();
+        foreach ($this->associatedMediaVideos as $associatedMediaVideo) {
+            if ($associatedMediaVideo->getId()) {
+                $associatedMediaVideos->add($associatedMediaVideo);
+            }
+        }
+        return $associatedMediaVideos;
+    }
+
+    /**
+     * @param $array
+     * @return $this
+     */
+    public function setAssociatedMediaVideos($array)
+    {
+        $collection = new ArrayCollection($array);
+        $this->associatedMediaVideos = $collection;
+        return $this;
     }
 }
