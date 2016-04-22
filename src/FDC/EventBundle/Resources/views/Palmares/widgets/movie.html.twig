@@ -14,33 +14,53 @@
 {% endspaceless %}')">
     <div class="bck-hover">
         <div class="contain_item">
-            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-            film: movie,
-            film_format: '259x352',
-            film_attrs: {
-            alt: movie|trans_fallback('title')?:movie.titleVO,
-            'data-object-fit': 'cover'
-            },
-            film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg',
-            }) %}
+            <a class="palmares-color-white"
+               href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
+                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                film: movie,
+                film_format: '259x352',
+                film_attrs: {
+                alt: movie|trans_fallback('title')?:movie.titleVO,
+                'data-object-fit': 'cover'
+                },
+                film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg',
+                }) %}
+            </a>
             <div class="infos-item-list">
                 {% if award_association is defined and award_association %}
                     <div class="logo-palme-dor-container">
-                        <i class="icon icon_palme palme-dor-img"></i>
-                        <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
+                        {% if hidePalme is defined and hidePalme %}
+                            <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
+                        {% else %}
+                            <i class="icon icon_palme palme-dor-img"></i>
+                            <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
+                        {% endif %}
                         {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
                             {% set person = award_association.person %}
-                            <h3 class="title-item verticalline">{{ person.fullName }}</h3>
+                            <h3 class="title-item verticalline">
+                                <a class="palmares-color-white"
+                                   href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}">
+                                    {{ person.fullName }}
+                                </a>
+                            </h3>
                         {% endif %}
                     </div>
                 {% endif %}
-                <h3 class="title-item">{{ movie.titleVO }}</h3>
+                <h3 class="title-item">
+                    <a class="palmares-color-white"
+                       href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
+                        {{ movie.titleVO }}
+                    </a>
+                </h3>
                 {% if movie.findTranslationByLocale(app.request.get('_locale')) %}
                     {% if movie.findTranslationByLocale(app.request.get('_locale')).title %}
                         {% if movie.findTranslationByLocale(app.request.get('_locale')).title != movie.titleVO %}
                             <h4 class="sub-title-item">
-                                ({{ movie.findTranslationByLocale(app.request.get('_locale')).title }}
-                                )</h4>
+                                <a class="palmares-color-white"
+                                   href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
+                                    ({{ movie.findTranslationByLocale(app.request.get('_locale')).title }})
+                                </a>
+                            </h4>
                         {% endif %}
                     {% endif %}
                 {% endif %}

@@ -2,7 +2,11 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="all-audios grid loading">
+    <div id="main" class="all-audios grid loading st-container">
+
+        {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+        {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+    
         <h2 class="title">{{ 'article.photos.title.touslesaudios'|trans }}</h2>
         {% include 'FDCEventMobileBundle:News:components/filters.html.twig' %}
         <div id="gridAudios" class="grid-wrapper" data-type="audios">
@@ -26,15 +30,14 @@
                 {% if transImage is defined %}
                     <div class="item {{ audio.theme|trans_fallback('slug') }} {{ audio.publishedAt|date('d-m-y') }} shadow-bottom audio"
                          data-sound="{{ s3_server_audio ~ trans.mp3Url }}">
-                        <img src="{% path transImage.file , '1144x724' %}"
+                        {#<img src="{% path transImage.file , '1144x724' %}"
                              srcset="{% path transImage.file , '640x404' %} 1x, {% path transImage.file , '2560x1620' %} 2x"
-                             alt="">
+                             alt="">#}
                         <div class="picto"><i class="icon icon_audio"></i></div>
                         <div class="info">
                             <div class="vCenter">
                                 <div class="vCenterKid">
                                     <span class="category">{{ audio.theme|trans_fallback('name') }}</span>
-                                    <span class="date">{{ audio.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ audio.publishedAt|date('H:i') }}</span>
                                     <p data-title="{{ audio|trans_fallback('title') }}">{{ audio|trans_fallback('title') }}</p>
                                 </div>
                             </div>
@@ -65,12 +68,6 @@
             <div class="info">
                 <span class="category"></span><span class="date"></span> . <span class="hour"></span>
                 <p></p>
-            </div>
-            <div class="buttons square">
-                <a href="#" rel="nofollow" class="button facebook"><i class="icon icon_facebook"></i></a>
-                <a href="#" rel="nofollow" class="button twitter"><i class="icon icon_twitter"></i></a>
-                <a href="#" rel="nofollow" class="button link"><i class="icon icon_link"></i></a>
-                <a href="#" rel="nofollow" class="button email"><i class="icon icon_lettre"></i></a>
             </div>
         </div>
     </div>

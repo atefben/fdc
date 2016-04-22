@@ -75,7 +75,9 @@
 .faq .button:hover a,
 .faq .button a:hover,
 .single-article .button:hover a,
-.single-article .button a:hover {
+.single-article .button a:hover,
+.palmares-color-white
+{
     color: #FFFFFF;
 }
 

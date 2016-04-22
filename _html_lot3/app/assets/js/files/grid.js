@@ -27,7 +27,7 @@ var owInitGrid = function(id){
         sortBy          : 'original-order',
         layoutMode      : 'packery',
         packery         : {
-           gutter: 43
+           gutter: 39
         }
       });
     });
