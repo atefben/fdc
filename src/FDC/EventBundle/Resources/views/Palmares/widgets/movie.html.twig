@@ -15,7 +15,7 @@
     <div class="bck-hover">
         <div class="contain_item">
             <a class="palmares-color-white"
-               href="{{ path('fdc_event_movie_get', {'slug': movie|trans_fallback('slug')}) }}">
+               href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                 film: movie,
                 film_format: '259x352',
@@ -29,13 +29,15 @@
             <div class="infos-item-list">
                 {% if award_association is defined and award_association %}
                     <div class="logo-palme-dor-container">
-                        <i class="icon icon_palme palme-dor-img"></i>
-                        <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
+                        {% if hidePalme is not defined or hidePalme == false %}
+                            <i class="icon icon_palme palme-dor-img"></i>
+                            <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}</strong>
+                        {% endif %}
                         {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
                             {% set person = award_association.person %}
                             <h3 class="title-item verticalline">
                                 <a class="palmares-color-white"
-                                   href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}'">
+                                   href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}">
                                     {{ person.fullName }}
                                 </a>
                             </h3>
@@ -44,7 +46,7 @@
                 {% endif %}
                 <h3 class="title-item">
                     <a class="palmares-color-white"
-                       href="{{ path('fdc_event_movie_get', {'slug': movie|trans_fallback('slug')}) }}">
+                       href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
                         {{ movie.titleVO }}
                     </a>
                 </h3>
@@ -53,7 +55,7 @@
                         {% if movie.findTranslationByLocale(app.request.get('_locale')).title != movie.titleVO %}
                             <h4 class="sub-title-item">
                                 <a class="palmares-color-white"
-                                   href="{{ path('fdc_event_movie_get', {'slug': movie|trans_fallback('slug')}) }}">
+                                   href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
                                     ({{ movie.findTranslationByLocale(app.request.get('_locale')).title }})
                                 </a>
                             </h4>
@@ -81,7 +83,7 @@
                         {% if duration|length > 0 and duration[0] > 0 %}
                             {% set hours = (duration[0] / 60)|round(0, 'floor') %}
                             {% set minutes = duration[0] % 60 %}
-                            {% if hours > 0 %}{{ hours }}:{% endif %}{{ (minutes|length) == 1 ? '0' ~ minutes : minutes }}
+                            - {{ "%02d"|format(hours) }}:{{ "%02d"|format(minutes) }}
                         {% endif %}
                     {% endspaceless %}</span>
                 {% endif %}

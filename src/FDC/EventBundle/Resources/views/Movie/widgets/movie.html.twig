@@ -24,7 +24,7 @@
             <div class="infos-item-list">
                 {% if projection is defined and projection is not empty %}
                     {% set substr = projection.startsAt|localizeddate('full', 'none', app.request.locale)|split(' ') %}
-                <span class="date-pres-item">{% for i in 0..2 %}{{ substr[i] }}{% endfor %} </span>
+                <span class="date-pres-item">{% for i in 0..2 %}{{ substr[i] }} {% endfor %} </span>
                 <span class="heure-pres-item">{{ projection.startsAt|date('H:i') }}</span>
                 {% endif %}
                 {% if film|trans_fallback('title') is not empty %}
@@ -48,7 +48,7 @@
                         {% if duration|length > 0 and duration[0] > 0 %}
                             {% set hours = (duration[0] / 60)|round(0, 'floor') %}
                             {% set minutes = duration[0] % 60 %}
-                            {% if hours > 0 %}{{ "%02d"|format(hours) }}:{% endif %}{{ "%02d"|format(minutes) }}
+                            {{ "%02d"|format(hours) }}:{{ "%02d"|format(minutes) }}
                         {% endif %}
                     </span>
                 <p class="description-item">

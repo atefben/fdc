@@ -1577,8 +1577,19 @@ a {
   margin-left: 0;
 }
 
-/*  LIST ARTICLES */
-.list .picto {
+#main.articles,
+#main.press,
+#main.events {
+  /*.img-container .img{
+    background-position: center top;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }*/
+}
+#main.articles .list .picto,
+#main.press .list .picto,
+#main.events .list .picto {
   width: 60px;
   height: 60px;
   bottom: 10px;
@@ -1586,50 +1597,51 @@ a {
   text-align: center;
   line-height: 60px;
 }
-
-.list .picto i {
+#main.articles .list .picto i,
+#main.press .list .picto i,
+#main.events .list .picto i {
   color: #c8a461;
   font-size: 1.5rem;
 }
-
-.img-container {
+#main.articles .img-container,
+#main.press .img-container,
+#main.events .img-container {
   width: 250px;
   height: 160px;
   position: relative;
   float: left;
   margin-right: 35px;
 }
-
-.img-container img {
+#main.articles .img-container img,
+#main.press .img-container img,
+#main.events .img-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-/*.img-container .img{
-  background-position: center top;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-}*/
-.list {
+#main.articles .list,
+#main.press .list,
+#main.events .list {
   width: 100%;
 }
-
-.item {
+#main.articles .item,
+#main.press .item,
+#main.events .item {
   clear: both;
   height: 160px;
   margin-bottom: 40px;
   position: relative;
 }
-
-.item .info {
+#main.articles .item .info,
+#main.press .item .info,
+#main.events .item .info {
   width: 270px;
   height: 160px;
   float: left;
 }
-
-.item .info .category {
+#main.articles .item .info .category,
+#main.press .item .info .category,
+#main.events .item .info .category {
   color: #c8a461;
   font-size: 18px;
   letter-spacing: 1.5px;
@@ -1640,22 +1652,29 @@ a {
   padding-bottom: 5px;
   font-weight: 600;
 }
-
-.item .info .date, .item .info .hour {
+#main.articles .item .info .date, #main.articles .item .info .hour,
+#main.press .item .info .date,
+#main.press .item .info .hour,
+#main.events .item .info .date,
+#main.events .item .info .hour {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 15px;
   color: #666666;
 }
-
-.item .info h2 {
+#main.articles .item .info h2,
+#main.press .item .info h2,
+#main.events .item .info h2 {
   margin-top: 25px;
   line-height: 36px;
   color: #333;
   font-size: 26px;
   font-family: "Playfair Display", Times New Roman, Times, serif;
 }
-
-#list-articles .item a, #list-events .item a {
+#main.articles #list-articles .item a, #main.articles #list-events .item a,
+#main.press #list-articles .item a,
+#main.press #list-events .item a,
+#main.events #list-articles .item a,
+#main.events #list-events .item a {
   display: block;
   position: absolute;
   top: 0;
@@ -1664,12 +1683,12 @@ a {
   width: 100%;
   z-index: 5;
 }
-
-.container .title {
+#main.articles .container .title,
+#main.press .container .title,
+#main.events .container .title {
   margin: 70px 0 40px 0;
 }
 
-/* ************** */
 #main.artist {
   /*PICTOS NAV*/
   /*.pictos-nav{

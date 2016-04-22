@@ -1,4 +1,4 @@
-.isotope-01, .isotope-02 {
+.isotope-01 {
 
   .item {
 
@@ -99,6 +99,25 @@
 
     .item.w2 {
         width: calc(200%/8);
+    }
+  }
+}
+
+
+.isotope-02 {  //with gutter
+
+  margin-top: 39px;
+
+  .item {
+    width: 163px;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .contain-img {
+      overflow:hidden;
     }
   }
 }

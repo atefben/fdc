@@ -310,6 +310,7 @@
                                                         <div>
                                                             {% if widget.children.gallery.vars.data.medias is defined and widget.children.gallery.vars.data.medias is not null %}
                                                                 {% for media in widget.children.gallery.vars.data.medias %}
+                                                                    {% if media.media != null %}
                                                                     <div class="form-group">
                                                                         <label>Media {{ loop.index }}</label>
                                                                         {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
@@ -335,6 +336,7 @@
                                                                             modifier les traductions
                                                                         </a>
                                                                     </div>
+                                                                    {% endif %}
                                                                 {% endfor %}
                                                             {% endif %}
                                                         </div>
@@ -529,6 +531,7 @@
                                                             {% for media in widget.children.gallery.vars.data.medias %}
                                                                 <div class="form-group">
                                                                     <label>Media {{ loop.index }}</label>
+                                                                    {% if media.media != null %}
                                                                     {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
                                                                     <div>
                                                                         <b>{{ 'form.label_legend_img'|trans }}:</b>
@@ -549,6 +552,7 @@
                                                                         {% endif %}
                                                                     </div>
                                                                 </div>
+                                                                {% endif %}
                                                             {% endfor %}
                                                             {% endif %}
                                                         </div>
