@@ -356,3 +356,8 @@
 .list-article h3.jury-president-color {
     color :black;
 }
+
+#captionCopyright {
+    margin-top: -20px;
+    margin-left: 5px;
+}

@@ -50,21 +50,25 @@ class PersonMediaExtension extends Twig_Extension
 
     /**
      * @param FilmPerson $person
+     * @param $parentMedia
+     * @return mixed
      */
-    public function getPersonImage(FilmPerson $person)
+    public function getPersonImage(FilmPerson $person, $parentMedia = false)
     {
         if ($person->getDisplayedImage()) {
-            return $this->getPersonImageLandscape($person);
+            return $this->getPersonImageLandscape($person, $parentMedia);
         }
         else {
-            return $this->getPersonImagePortrait($person);
+            return $this->getPersonImagePortrait($person, $parentMedia);
         }
     }
 
     /**
      * @param FilmPerson $person
+     * @param bool $parentMedia
+     * @return mixed
      */
-    public function getPersonImagePortrait(FilmPerson $person)
+    public function getPersonImagePortrait(FilmPerson $person, $parentMedia = false)
     {
         $locale = $this
             ->requestStack
@@ -78,13 +82,15 @@ class PersonMediaExtension extends Twig_Extension
             return $person->getPortraitImage()->findTranslationByLocale($locale)->getFile();
         }
 
-        return $this->getDefaultMedia($person);
+        return $this->getDefaultMedia($person, $parentMedia);
     }
 
     /**
      * @param FilmPerson $person
+     * @param bool $parentMedia
+     * @return mixed
      */
-    public function getPersonImageLandscape(FilmPerson $person)
+    public function getPersonImageLandscape(FilmPerson $person, $parentMedia = false)
     {
         $locale = $this
             ->requestStack
@@ -98,14 +104,20 @@ class PersonMediaExtension extends Twig_Extension
             return $person->getLandscapeImage()->findTranslationByLocale($locale)->getFile();
         }
 
-        return $this->getDefaultMedia($person);
+        return $this->getDefaultMedia($person, $parentMedia);
     }
 
-    protected function getDefaultMedia(FilmPerson $person)
+    protected function getDefaultMedia(FilmPerson $person, $parentMedia = false)
     {
         foreach ($person->getMedias() as $media) {
             if ($media->getMedia() && $media->getMedia()->getFile()) {
-                return $media->getMedia()->getFile();
+                if ($parentMedia) {
+                    return $media->getMedia();
+                }
+                else {
+                    return $media->getMedia()->getFile();
+                }
+
             }
         }
     }

@@ -33,21 +33,29 @@
                 </div>
                 <div class="single-photo">
                     <div class="photo-container">
-                        {% set artistImage = artist|person_image %}
+                        {% set artistImage = artist|person_image(true) %}
+                        {% set legend = null %}
+                        {% set copyright = null %}
                         {% if artistImage %}
-                            <img src="{% path artistImage, '976x535' %}" alt="{{ artist.fullName }}"/>
+                            {% if class(artistImage) == 'FilmMedia' %}
+                                <img src="{% path artistImage.file, '976x535' %}" alt="{{ artist.fullName }}"/>
+                                {% set legend = artistImage.credits %}
+                                {% set copyright = artistImage.copyright %}
+                                <p class="caption" id="captionCopyright" >{{ legend }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
+                            {% else %}
+                                <img src="{% path artistImage, '976x535' %}" alt="{{ artist.fullName }}"/>
+                            {% endif %}
                         {% else %}
                             {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
                             {% if media is empty %}
                                 {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
                             {% endif %}
                             {% if media is empty %}
-                                {% set photo = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                                {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
                             {% endif %}
                             {% if media is not empty %}
                                 <img src="{% path media, '976x535' %}" alt="{{ artist.fullName }}"/>
                             {% endif %}
-
                         {% endif %}
                     </div>
                 </div>
