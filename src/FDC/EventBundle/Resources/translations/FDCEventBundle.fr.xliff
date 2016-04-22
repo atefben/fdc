@@ -875,7 +875,7 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
       </trans-unit>
       <trans-unit id="1f3acc3435e047ddce7d35af1a07dba05be6f1e6" resname="movie.fdc_close">
         <source>movie.fdc_close</source>
-        <target>Film de fermeture</target>
+        <target>Film de clôture</target>
         <jms:reference-file line="77">Movie/components/banner.html.twig</jms:reference-file>
         <jms:reference-file line="24">views/Global/projection-single.html.twig</jms:reference-file>
       </trans-unit>
