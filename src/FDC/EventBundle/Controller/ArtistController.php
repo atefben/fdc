@@ -38,7 +38,7 @@ class ArtistController extends Controller
      */
     public function getAction($slug)
     {
-        $count = 8;
+        $count = 10;
         $festival = $this->getFestival()->getId();
 
         $artist = $this

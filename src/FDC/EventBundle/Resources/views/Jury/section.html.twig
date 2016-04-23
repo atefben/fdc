@@ -79,6 +79,7 @@
                             <div class="jury-box item">
                                 <a href="{{ path('fdc_event_artist_get', {'slug': member['jury'].person.slug}) }}">
                                     <div class="image">
+                                        {% set artistImage = member['jury'].person|person_image %}
                                         {% if member['jury'].person.portraitImage and member['jury'].person.portraitImage|trans_fallback('file') %}
                                             <img src="{% path member['jury'].person.portraitImage|trans_fallback('file'), '384x485' %}"
                                                  alt="{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}">

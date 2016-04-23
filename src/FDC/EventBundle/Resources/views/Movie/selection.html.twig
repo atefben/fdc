@@ -42,8 +42,9 @@
                                         </a>
                                         {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                                             <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">
-                                                <span class="author">{{ director.fullName }}</span>
+                                                <span class="author">{{ director.fullName }}{{ loop.last == true ? '':', '}}</span>
                                             </a>{% if loop.last == false %}<br>{% endif %}
+                                            {{ dump(loop.last) }}
                                         {% endfor %}
                                     </figcaption>
                                 </figure>
