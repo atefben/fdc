@@ -20,7 +20,7 @@
                             {% set trans = filter.findTranslationByLocale(app.request.locale) %}
                             {% if trans is not null %}
                                 <li>
-                                    <a href="{{ path('fdc_event_movie_classics', {'slug': trans.slug }) }}">
+                                    <a class="{{ classic.id == filter.id ? ' active':''}}" href="{{ path('fdc_event_movie_classics', {'slug': trans.slug }) }}">
                                         {{ trans.titleNav }}
                                     </a>
                                 </li>

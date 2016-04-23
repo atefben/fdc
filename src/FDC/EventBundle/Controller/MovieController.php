@@ -2,15 +2,10 @@
 
 namespace FDC\EventBundle\Controller;
 
-use \DateTime;
-
 use Base\CoreBundle\Entity\FDCPageLaSelection;
-
 use FDC\EventBundle\Component\Controller\Controller;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -196,6 +191,18 @@ class MovieController extends Controller
                 $next = true;
             }
         }
+
+        if ($next === true) {
+            $filters = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale)
+            ;
+            if ($filters) {
+                $next = $filters[0];
+                $nextClassics = true;
+            }
+
+        }
         if ($pages && (!$next || $next === true)) {
             $next = reset($pages);
         }
@@ -216,6 +223,7 @@ class MovieController extends Controller
             'page'           => $page,
             'movies'         => $movies,
             'next'           => is_object($next) ? $next : false,
+            'next_classics'  => !empty($nextClassics),
         ));
     }
 
