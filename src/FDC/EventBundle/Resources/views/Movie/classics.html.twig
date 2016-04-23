@@ -31,15 +31,17 @@
                 </div>
                 {% set transClassic = classic.findTranslationByLocale(app.request.locale) %}
                 <section class="categorie-items honneur-invit">
-                    <div class="title-list-cat">
-                        <h2 class="title-big">{{ transClassic.title }}</h2>
-                        <div class="buttons">
-                            <a id="share-article" href="#" class="button"><i
-                                        class="icon icon_share"></i>{{ 'cannesclassics.btn.partager'|trans }}</a>
-                            <a href="#" onclick="javascript:window.print()" class="button print"><i
-                                        class="icon icon_print"></i>{{ 'cannesclassics.btn.imprimer'|trans }}</a>
+                    {% if transClassic.hideTitle == false %}
+                        <div class="title-list-cat">
+                            <h2 class="title-big">{{ transClassic.title }}</h2>
+                            <div class="buttons">
+                                <a id="share-article" href="#" class="button"><i
+                                            class="icon icon_share"></i>{{ 'cannesclassics.btn.partager'|trans }}</a>
+                                <a href="#" onclick="javascript:window.print()" class="button print"><i
+                                            class="icon icon_print"></i>{{ 'cannesclassics.btn.imprimer'|trans }}</a>
+                            </div>
                         </div>
-                    </div>
+                    {% endif %}
                     <div class="contain-article-invit">
                         {% for widget in classic.widgets %}
                             {% if widget is fdc_page_la_selection_cannes_classics_widget_text %}

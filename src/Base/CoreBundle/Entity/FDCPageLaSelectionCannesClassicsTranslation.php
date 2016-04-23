@@ -53,6 +53,15 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
     /**
      * @var string
      *
+     * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"classics"})
+     *
+     */
+    private $hideTitle = false;
+
+    /**
+     * @var string
+     *
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      * @Groups({"classics"})
@@ -127,4 +136,25 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
     {
         return $this->slug;
     }
+
+    /**
+     * @return string
+     */
+    public function getHideTitle()
+    {
+        return $this->hideTitle;
+    }
+
+    /**
+     * @param string $hideTitle
+     * @return $this
+     */
+    public function setHideTitle($hideTitle)
+    {
+        $this->hideTitle = $hideTitle;
+        return $this;
+    }
+
+
+
 }

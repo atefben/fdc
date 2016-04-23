@@ -534,8 +534,9 @@ form:
         page_title: Titre de la page
         title_nav: Titre dans la navigation
         title: Titre
-        helper_title: Si le titre est renseigné les boutons de fpartage sont affichés en haut et bas de page.
+        hide_title: Cacher le titre
         helper_titleNav: 255 caractères max.
+        helper_hide_title: Si non coché renseigné les boutons de fpartage sont affichés en haut et bas de page.
     seo:
         helper_file: Dimensions attendues : 1200x627. Format attendu : .jpg, .png, .gif
     tag:

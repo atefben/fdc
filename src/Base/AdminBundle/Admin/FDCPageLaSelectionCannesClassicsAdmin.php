@@ -124,7 +124,12 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                         'label'              => 'form.fdc_page_la_selection_cannes_classics.title',
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => false,
-                        'sonata_help'        => 'form.fdc_page_la_selection_cannes_classics.helper_title'
+                    ),
+                    'hideTitle'       => array(
+                        'label'              => 'form.fdc_page_la_selection_cannes_classics.hide_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false,
+                        'sonata_help'        => 'form.fdc_page_la_selection_cannes_classics.helper_hide_title'
                     ),
                     'seoTitle'       => array(
                         'attr'               => array(
