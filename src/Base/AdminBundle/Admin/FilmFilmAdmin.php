@@ -2,14 +2,20 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\FilmFestival;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 class FilmFilmAdmin extends SoifAdmin
 {
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+        $collection->remove('create');
+    }
 
     public function getFormTheme()
     {
@@ -29,7 +35,7 @@ class FilmFilmAdmin extends SoifAdmin
 
         $datagridMapper
             ->add('title', 'doctrine_orm_callback', array(
-                'callback' => function ($queryBuilder, $alias, $field, $value) {
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
@@ -47,7 +53,7 @@ class FilmFilmAdmin extends SoifAdmin
                 'field_type' => 'text'
             ))
             ->add('realisator', 'doctrine_orm_callback', array(
-                'callback' => function ($queryBuilder, $alias, $field, $value) {
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
                     if ($value['value'] === null) {
                         return;
                     }
@@ -64,7 +70,7 @@ class FilmFilmAdmin extends SoifAdmin
                 'field_type' => 'text'
             ))
             ->add('selection', 'doctrine_orm_callback', array(
-                'callback' => function ($queryBuilder, $alias, $field, $value) {
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
                     if ($value['value'] === null) {
                         return;
                     }
@@ -80,7 +86,7 @@ class FilmFilmAdmin extends SoifAdmin
             ))
             ->add('festival')
             ->add('have_trailer', 'doctrine_orm_callback', array(
-                'callback' => function ($queryBuilder, $alias, $field, $value) {
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
                     if ($value['value'] === null) {
                         return;
                     }
@@ -93,8 +99,9 @@ class FilmFilmAdmin extends SoifAdmin
                     return true;
                 },
                 'field_type' => 'checkbox',
-                'label' => 'filter.label_have_trailer',
-            ));
+                'label'      => 'filter.label_have_trailer',
+            ))
+        ;
     }
 
     /**
@@ -118,7 +125,7 @@ class FilmFilmAdmin extends SoifAdmin
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'edit' => array(),
+                    'edit'         => array(),
                     'soif_refresh' => array('template' => 'BaseAdminBundle:CRUD:list__action_soif_refresh.html.twig'),
                 )
             ))
@@ -135,86 +142,86 @@ class FilmFilmAdmin extends SoifAdmin
     {
         $formMapper
             ->with('Informations Générales')
-                ->add('director', 'text', array(
-                    'label' => false,
-                    'mapped' => false
-                ))
-                ->add('imageMain', 'sonata_type_model_list', array(
-                    'help' => 'Dimensions attendues : 588x784 - ratio portrait.',
-                ), array(
-                    'link_parameters' => array('context' => 'film_poster')
-                ))
-                ->add('imageCover', 'sonata_type_model_list', array(
-                    'help' => 'Dimensions attendues : 2560x1103 - ratio paysage.'
+            ->add('director', 'text', array(
+                'label'  => false,
+                'mapped' => false
+            ))
+            ->add('imageMain', 'sonata_type_model_list', array(
+                'help' => 'Dimensions attendues : 588x784 - ratio portrait.',
+            ), array(
+                'link_parameters' => array('context' => 'film_poster')
+            ))
+            ->add('imageCover', 'sonata_type_model_list', array(
+                'help' => 'Dimensions attendues : 2560x1103 - ratio paysage.'
 
-                ), array(
-                    'link_parameters' => array('context' => 'film_image_cover')
-                ))
-                ->add('videoMain', 'sonata_type_model_list', array(
-                ))
+            ), array(
+                'link_parameters' => array('context' => 'film_image_cover')
+            ))
+            ->add('videoMain', 'sonata_type_model_list', array())
             ->end()
             ->with('Associations')
-                ->add('associatedMediaVideos', 'sonata_type_collection', array(
-                    'label' => 'form.label_film_film_media_video',
-                    'help' => 'form.film.helper_film_film_media_video',
-                    'by_reference' => false,
-                    'required' => false,
-                    ), array(
-                        'edit' => 'inline',
-                        'inline' => 'table'
-                    )
+            ->add('associatedMediaVideos', 'sonata_type_collection', array(
+                'label'        => 'form.label_film_film_media_video',
+                'help'         => 'form.film.helper_film_film_media_video',
+                'by_reference' => false,
+                'required'     => false,
+            ), array(
+                    'edit'   => 'inline',
+                    'inline' => 'table'
                 )
-                ->add('associatedMediaAudios', 'sonata_type_collection', array(
-                    'label' => 'form.label_film_film_media_audio',
-                    'help' => 'form.film.helper_film_film_media_audio',
-                    'by_reference' => false,
-                    'required' => false,
-                ), array(
-                        'edit' => 'inline',
-                        'inline' => 'table'
-                    )
+            )
+            ->add('associatedMediaAudios', 'sonata_type_collection', array(
+                'label'        => 'form.label_film_film_media_audio',
+                'help'         => 'form.film.helper_film_film_media_audio',
+                'by_reference' => false,
+                'required'     => false,
+            ), array(
+                    'edit'   => 'inline',
+                    'inline' => 'table'
                 )
-                ->add('associatedInfo', 'sonata_type_collection', array(
-                    'label' => 'form.label_film_film_associated_info',
-                    'help' => 'form.film.helper_film_film_associated_info',
-                    'by_reference' => false,
-                    'required' => false,
-                    ), array(
-                        'edit' => 'inline',
-                        'inline' => 'table'
-                    )
+            )
+            ->add('associatedInfo', 'sonata_type_collection', array(
+                'label'        => 'form.label_film_film_associated_info',
+                'help'         => 'form.film.helper_film_film_associated_info',
+                'by_reference' => false,
+                'required'     => false,
+            ), array(
+                    'edit'   => 'inline',
+                    'inline' => 'table'
                 )
-                ->add('associatedStatement', 'sonata_type_collection', array(
-                    'label' => 'form.label_film_film_associated_statement',
-                    'help' => 'form.film.helper_film_film_associated_statement',
-                    'by_reference' => false,
-                    'required' => false,
-                    ), array(
-                        'edit' => 'inline',
-                        'inline' => 'table'
-                    )
+            )
+            ->add('associatedStatement', 'sonata_type_collection', array(
+                'label'        => 'form.label_film_film_associated_statement',
+                'help'         => 'form.film.helper_film_film_associated_statement',
+                'by_reference' => false,
+                'required'     => false,
+            ), array(
+                    'edit'   => 'inline',
+                    'inline' => 'table'
                 )
-                ->add('associatedNews', 'sonata_type_collection', array(
-                    'label' => 'form.label_film_film_associated_news',
-                    'help' => 'form.film.helper_film_film_associated_news',
-                    'by_reference' => false,
-                    'required' => false,
-                ), array(
-                        'edit' => 'inline',
-                        'inline' => 'table'
-                    )
+            )
+            ->add('associatedNews', 'sonata_type_collection', array(
+                'label'        => 'form.label_film_film_associated_news',
+                'help'         => 'form.film.helper_film_film_associated_news',
+                'by_reference' => false,
+                'required'     => false,
+            ), array(
+                    'edit'   => 'inline',
+                    'inline' => 'table'
                 )
-                ->add('tags', 'sonata_type_collection', array(
-                    'label' => 'form.label_article_tags',
-                    'help' => 'form.news.helper_tags',
-                    'by_reference' => false,
-                    'required' => false,
-                ), array(
-                        'edit' => 'inline',
-                        'inline' => 'table'
-                    )
+            )
+            ->add('tags', 'sonata_type_collection', array(
+                'label'        => 'form.label_article_tags',
+                'help'         => 'form.news.helper_tags',
+                'by_reference' => false,
+                'required'     => false,
+            ), array(
+                    'edit'   => 'inline',
+                    'inline' => 'table'
                 )
-            ->end();
+            )
+            ->end()
+        ;
 
     }
 
@@ -239,6 +246,7 @@ class FilmFilmAdmin extends SoifAdmin
             ->add('persons')
             ->add('medias', null, array(
                 'template' => 'BaseAdminBundle:FilmFilm:medias.html.twig'
-            ));
+            ))
+        ;
     }
 }
