@@ -147,7 +147,7 @@
                             {% for contact in movie.contacts %}
                                 {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_SCHOOL') %}
                                     <div>
-                                        <p class="sub">{{ 'movie.contact.label.school'|trans }}</p>
+                                        <p class="sub">{{ 'movie.contact.label.ecole'|trans }}</p>
                                         <p>
                                             {% set contactInfos = [] %}
                                             {% if contact.companyName %}
