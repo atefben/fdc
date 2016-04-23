@@ -31,6 +31,13 @@ class WidgetMovie
     private $id;
 
     /**
+     * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    private $title;
+
+
+    /**
      * @var Media
      *
      * @ORM\OneToMany(targetEntity="WidgetMovieFilmFilm", mappedBy="widgetMovie", cascade={"persist"})
@@ -46,13 +53,20 @@ class WidgetMovie
         $this->films = new ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
-        if ($this->getId()) {
-            return strval($this->getId());
+        if ($this->title) {
+            return $this->title;
         }
 
-        return '';
+        if ($this->getId()) {
+            return 'Module liste de films #' . strval($this->getId());
+        }
+
+        return 'Module liste de films';
     }
 
     /**
@@ -97,5 +111,23 @@ class WidgetMovie
     public function getFilms()
     {
         return $this->films;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     * @return $this
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        return $this;
     }
 }

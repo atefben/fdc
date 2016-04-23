@@ -29,6 +29,7 @@ class WidgetMovieAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('title')
             ->add('createdAt')
             ->add('updatedAt')
             ->add('_action', 'actions', array(
@@ -47,6 +48,7 @@ class WidgetMovieAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('title')
             ->add('films', 'sonata_type_collection', array(
                 'by_reference' => false,
             ), array(
