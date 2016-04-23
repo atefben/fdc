@@ -39,7 +39,7 @@
         </span>
         <div class="info">
             {%- if event.medias|length > 0 -%}
-                {%- media event.medias[0].file, '90x120' with { width: '45', height: '60'} -%}
+                {%- media event.medias[0].file, '90x120' with { width: '45', height: 'auto'} -%}
             {%- else -%}
                 {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                     film: film,
@@ -47,7 +47,7 @@
                     film_attrs: {
                         alt: film|trans_fallback('title')?:film.titleVO,
                         width: 45,
-                        height: 60
+                        height: 'auto',
                     },
                     film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
                     film_image_default_attrs: 'width="45"'
