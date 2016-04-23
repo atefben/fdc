@@ -1,100 +1,121 @@
 {% trans_default_domain 'FDCEventBundle' %}
-{% if movie is not defined %}
-    {% set movie = award_association.film %}
-{% endif %}
+
+{% if award_association.award.id not in palmares_award_mutual_get() %}
+    {% if award_association.award.filmMutual %}
+        {{ palmares_award_mutual_set(award_association.award) }}
+    {% endif %}
+
+    {% if movie is not defined %}
+        {% set movie = award_association.film %}
+    {% endif %}
+
     {% set author = '' %}
 
-<article style="background-image:url('{% spaceless %}
-    {% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
-    film: movie,
-    film_format: '2560x1103',
-    display_film_path: true,
-    film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg'
-    }) %}
-{% endspaceless %}')">
-    <div class="bck-hover">
-        <div class="contain_item">
-            <a class="palmares-color-white"
-               href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
-                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                film: movie,
-                film_format: '259x352',
-                film_attrs: {
-                alt: movie|trans_fallback('title')?:movie.titleVO,
-                'data-object-fit': 'cover'
-                },
-                film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg',
-                }) %}
-            </a>
-            <div class="infos-item-list">
-                {% if award_association is defined and award_association %}
-                    <div class="logo-palme-dor-container">
-                        {% if hidePalme is not defined or hidePalme == false %}
-                            <i class="icon icon_palme palme-dor-img"></i>
-                            <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}
-                                {% if award_association.award.exAequo %}
-                                    ({{ 'award.ex_aequo'|trans }})
+    <article style="background-image:url('{% spaceless %}
+        {% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+        film: movie,
+        film_format: '2560x1103',
+        display_film_path: true,
+        film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg'
+        }) %}
+    {% endspaceless %}')">
+        <div class="bck-hover">
+            <div class="contain_item">
+                <a class="palmares-color-white"
+                   href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
+                    {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                    film: movie,
+                    film_format: '259x352',
+                    film_attrs: {
+                    alt: movie|trans_fallback('title')?:movie.titleVO,
+                    'data-object-fit': 'cover'
+                    },
+                    film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg',
+                    }) %}
+                </a>
+                <div class="infos-item-list">
+                    {% if award_association is defined and award_association %}
+                        <div class="logo-palme-dor-container">
+                            {% if hidePalme is not defined or hidePalme == false %}
+                                <i class="icon icon_palme palme-dor-img"></i>
+                                <strong class="palme-dor-text verticalline">{{ award_association.award.prize|trans_fallback('title') }}
+                                    {% if award_association.award.exAequo %}
+                                        ({{ 'award.ex_aequo'|trans }})
+                                    {% endif %}
+                                    {% if award_association.award.unanimity %}
+                                        ({{ 'award.unanimity'|trans }})
+                                    {% endif %}
+                                </strong>
+                            {% endif %}
+                            {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
+                                {% if award_association.award.filmMutual %}
+                                    <h3 class="title-item verticalline">
+                                        {% for assocationMutual in award_association.award.associations %}
+                                            {% set person = assocationMutual.person %}
+                                            <a class="palmares-color-white"
+                                               href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}">
+                                                {{ person.fullName }}{{ loop.last == true ? '' : ',' }}
+                                            </a>
+                                        {% endfor %}
+                                    </h3>
+                                {% else %}
+                                    {% set person = award_association.person %}
+                                    <h3 class="title-item verticalline">
+                                        <a class="palmares-color-white"
+                                           href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}">
+                                            {{ person.fullName }}
+                                        </a>
+                                    </h3>
                                 {% endif %}
-                                {% if award_association.award.unanimity %}
-                                    ({{ 'award.unanimity'|trans }})
-                                {% endif %}
-                            </strong>
-                        {% endif %}
-                        {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
-                            {% set person = award_association.person %}
-                            <h3 class="title-item verticalline">
-                                <a class="palmares-color-white"
-                                   href="{{ path('fdc_event_artist_get', {slug: person.slug }) }}">
-                                    {{ person.fullName }}
-                                </a>
-                            </h3>
-                        {% endif %}
-                    </div>
-                {% endif %}
-                <h3 class="title-item">
-                    <a class="palmares-color-white"
-                       href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
-                        {{ movie.titleVO }}
-                    </a>
-                </h3>
-                {% if movie.findTranslationByLocale(app.request.get('_locale')) %}
-                    {% if movie.findTranslationByLocale(app.request.get('_locale')).title %}
-                        {% if movie.findTranslationByLocale(app.request.get('_locale')).title != movie.titleVO %}
-                            <h4 class="sub-title-item">
-                                <a class="palmares-color-white"
-                                   href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
-                                    ({{ movie.findTranslationByLocale(app.request.get('_locale')).title }})
-                                </a>
-                            </h4>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    <h3 class="title-item">
+                        <a class="palmares-color-white"
+                           href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
+                            {{ movie.titleVO }}
+                        </a>
+                    </h3>
+                    {% if movie.findTranslationByLocale(app.request.get('_locale')) %}
+                        {% if movie.findTranslationByLocale(app.request.get('_locale')).title %}
+                            {% if movie.findTranslationByLocale(app.request.get('_locale')).title != movie.titleVO %}
+                                <h4 class="sub-title-item">
+                                    <a class="palmares-color-white"
+                                       href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
+                                        ({{ movie.findTranslationByLocale(app.request.get('_locale')).title }})
+                                    </a>
+                                </h4>
+                            {% endif %}
                         {% endif %}
                     {% endif %}
-                {% endif %}
-                <span class="nom-item">{% spaceless %}
+                    <span class="nom-item">{% spaceless %}
                         {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                        {% if loop.first == false %}
-                            {% set author = author ~ ', ' %}
-                        {% endif %}
+                            {% if loop.first == false %}
+                                {% set author = author ~ ', ' %}
+                            {% endif %}
 
-                        {% set author = author ~ '<a href="' ~ path('fdc_event_artist_get', {slug: director.slug }) ~ '">' %}
-                        {% set author = author ~ director.fullName %}
-                        {% set author = author ~ '</a>' %}
-                    {% endfor %}
+                            {% set author = author ~ '<a href="' ~ path('fdc_event_artist_get', {slug: director.slug }) ~ '">' %}
+                            {% set author = author ~ director.fullName %}
+                            {% set author = author ~ '</a>' %}
+                        {% endfor %}
                         {{ author|raw }}
                     {% endspaceless %}</span>
-                {% if displayDuration is defined %}
-                    <span class="time-item">{% spaceless %}
+                    {% if displayDuration is defined %}
+                        <span class="time-item">{% spaceless %}
                         {% set duration = [] %}
                         {% if movie.duration is not empty %}
-                            {% set duration = movie.duration|split('.') %}
-                        {% endif %}
+                                {% set duration = movie.duration|split('.') %}
+                            {% endif %}
                         {% if duration|length > 0 and duration[0] > 0 %}
-                            {% set hours = (duration[0] / 60)|round(0, 'floor') %}
-                            {% set minutes = duration[0] % 60 %}
-                            - {{ "%02d"|format(hours) }}:{{ "%02d"|format(minutes) }}
-                        {% endif %}
+                                {% set hours = (duration[0] / 60)|round(0, 'floor') %}
+                                {% set minutes = duration[0] % 60 %}
+                                - {{ "%02d"|format(hours) }}:{{ "%02d"|format(minutes) }}
+                            {% endif %}
                     {% endspaceless %}</span>
-                {% endif %}
+                    {% endif %}
+                </div>
             </div>
         </div>
-    </div>
-</article>
+    </article>
+
+{% endif %}
