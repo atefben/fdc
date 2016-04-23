@@ -2,11 +2,9 @@
 
 namespace Base\CoreBundle\Twig\Extension;
 
-use Base\CoreBundle\Entity\FilmFilm;
-use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 use Base\CoreBundle\Entity\FilmPerson;
 use Symfony\Component\HttpFoundation\RequestStack;
-use \Twig_Extension;
+use Twig_Extension;
 
 /**
  * FilmMediaExtension class.
@@ -50,25 +48,26 @@ class PersonMediaExtension extends Twig_Extension
 
     /**
      * @param FilmPerson $person
-     * @param $parentMedia
+     * @param bool $parentMedia
+     * @param null $type
      * @return mixed
      */
-    public function getPersonImage(FilmPerson $person, $parentMedia = false)
+    public function getPersonImage(FilmPerson $person, $parentMedia = false, $type = null)
     {
         if ($person->getDisplayedImage()) {
-            return $this->getPersonImageLandscape($person, $parentMedia);
-        }
-        else {
-            return $this->getPersonImagePortrait($person, $parentMedia);
+            return $this->getPersonImageLandscape($person, $parentMedia, $type);
+        } else {
+            return $this->getPersonImagePortrait($person, $parentMedia, $type);
         }
     }
 
     /**
      * @param FilmPerson $person
      * @param bool $parentMedia
+     * @param null $type
      * @return mixed
      */
-    public function getPersonImagePortrait(FilmPerson $person, $parentMedia = false)
+    public function getPersonImagePortrait(FilmPerson $person, $parentMedia = false, $type = null)
     {
         $locale = $this
             ->requestStack
@@ -82,15 +81,16 @@ class PersonMediaExtension extends Twig_Extension
             return $person->getPortraitImage()->findTranslationByLocale($locale)->getFile();
         }
 
-        return $this->getDefaultMedia($person, $parentMedia);
+        return $this->getDefaultMedia($person, $parentMedia, $type);
     }
 
     /**
      * @param FilmPerson $person
      * @param bool $parentMedia
+     * @param null $type
      * @return mixed
      */
-    public function getPersonImageLandscape(FilmPerson $person, $parentMedia = false)
+    public function getPersonImageLandscape(FilmPerson $person, $parentMedia = false, $type = null)
     {
         $locale = $this
             ->requestStack
@@ -104,20 +104,29 @@ class PersonMediaExtension extends Twig_Extension
             return $person->getLandscapeImage()->findTranslationByLocale($locale)->getFile();
         }
 
-        return $this->getDefaultMedia($person, $parentMedia);
+        return $this->getDefaultMedia($person, $parentMedia, $type);
     }
 
-    protected function getDefaultMedia(FilmPerson $person, $parentMedia = false)
+    protected function getDefaultMedia(FilmPerson $person, $parentMedia = false, $type = null)
     {
+        foreach ($person->getMedias() as $media) {
+            if ($media->getMedia() && $media->getMedia()->getFile()) {
+                if ($type === null || $media->getType() === $type) {
+                    if ($parentMedia) {
+                        return $media->getMedia();
+                    } else {
+                        return $media->getMedia()->getFile();
+                    }
+                }
+            }
+        }
         foreach ($person->getMedias() as $media) {
             if ($media->getMedia() && $media->getMedia()->getFile()) {
                 if ($parentMedia) {
                     return $media->getMedia();
-                }
-                else {
+                } else {
                     return $media->getMedia()->getFile();
                 }
-
             }
         }
     }

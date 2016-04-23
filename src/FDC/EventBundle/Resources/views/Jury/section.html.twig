@@ -79,27 +79,29 @@
                             <div class="jury-box item">
                                 <a href="{{ path('fdc_event_artist_get', {'slug': member['jury'].person.slug}) }}">
                                     <div class="image">
-                                        {% set artistImage = member['jury'].person|person_image %}
-                                        {% if member['jury'].person.portraitImage and member['jury'].person.portraitImage|trans_fallback('file') %}
-                                            <img src="{% path member['jury'].person.portraitImage|trans_fallback('file'), '384x485' %}"
-                                                 alt="{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}">
-                                        {% else %}
-                                            {% set media = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
-                                            {% if media is empty %}
-                                                {% set media = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
-                                            {% endif %}
-                                            {% if media is empty %}
-                                                {% set photo = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
-                                            {% endif %}
+                                        {% set artistImage = member['jury'].person|person_image(false, constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY')) %}
+                                        <img src="{% path artistImage, '384x485' %}" alt="{{ member['jury'].person.fullName }}"/>
 
-                                            {% if media is not empty %}
-                                                <img src="{% path media, '384x485' %}"
-                                                     alt="{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}">
-                                            {% else %}
-                                                <img src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}"
-                                                    alt="{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}">
-                                            {% endif %}
-                                        {% endif %}
+                                        {#{% if member['jury'].person.portraitImage and member['jury'].person.portraitImage|trans_fallback('file') %}#}
+                                            {#<img src="{% path member['jury'].person.portraitImage|trans_fallback('file'), '384x485' %}"#}
+                                                 {#alt="{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}">#}
+                                        {#{% else %}#}
+                                            {#{% set media = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}#}
+                                            {#{% if media is empty %}#}
+                                                {#{% set media = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}#}
+                                            {#{% endif %}#}
+                                            {#{% if media is empty %}#}
+                                                {#{% set photo = member['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}#}
+                                            {#{% endif %}#}
+
+                                            {#{% if media is not empty %}#}
+                                                {#<img src="{% path media, '384x485' %}"#}
+                                                     {#alt="{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}">#}
+                                            {#{% else %}#}
+                                                {#<img src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}"#}
+                                                    {#alt="{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}">#}
+                                            {#{% endif %}#}
+                                        {#{% endif %}#}
                                     </div>
                                     <div class="legend">
                                         <span class="name">{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}</span>
