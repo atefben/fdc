@@ -8,47 +8,52 @@
                     <h3 class="gold">{{ 'movie.presse.title.infospresse'|trans }}</h3>
                     {% set medias = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF'), true) %}
                     {% if medias|length > 0 %}
-                    <div class="folder">
-                        <div class="vCenter">
-                            <div class="vCenterKid">
-                                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with
+                        <div class="folder">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with
                                     ({
-                                        film: movie,
-                                        film_format: '300x400',
-                                        film_attrs: {
-                                            alt: movie|trans_fallback('title')?:movie.titleVO,
-                                            id: 'infosPressImageFilmPoster'
-                                        },
-                                        film_image_default: 'bundles/fdcevent/img/palmares/film420x560.jpg',
-                                        film_image_default_attrs: ''
-                                    })
-                                %}
-                                <h3>{{ 'movie.presse.title.dossierdepresse'|trans }}</h3>
-                                {% for media in medias %}
-                                    <a download href="{% path media.file, 'reference' %}">{% if app.request.locale == 'fr' %}{{ media.titleVf }}{% else %}{{ media.titleVa }}{% endif %}</a>
-                                {% endfor %}
+                                    film: movie,
+                                    film_format: '300x400',
+                                    film_attrs: {
+                                    alt: movie|trans_fallback('title')?:movie.titleVO,
+                                    id: 'infosPressImageFilmPoster'
+                                    },
+                                    film_image_default: 'bundles/fdcevent/img/palmares/film420x560.jpg',
+                                    film_image_default_attrs: ''
+                                    }) %}
+                                    <h3>{{ 'movie.presse.title.dossierdepresse'|trans }}</h3>
+                                    {% for media in medias %}
+                                        <a download
+                                           href="{% path media.file, 'reference' %}">{% if app.request.locale == 'fr' %}{{ media.titleVf }}{% else %}{{ media.titleVa }}{% endif %}</a>
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
-                    </div>
                     {% endif %}
                     {% if movie.website or movie.facebook or movie.twitter %}
-                    <div class="links">
-                        <p class="sub">{{ 'movie.presse.label.liens'|trans }}</p>
-                        {% if movie.website %}
-                            <a href="http://{{ movie.website }}" target="_blank">{{ 'movie.presse.liens.website'|trans }}</a>
-                        {% endif %}
-                        {% if movie.facebook %}
-                            <a href="{{ movie.facebook }}" target="_blank">{{ 'movie.presse.liens.facebook'|trans }}</a>
-                        {% endif %}
-                        {% if movie.twitter %}
-                            <a href="{{ movie.twitter }}" target="_blank">{{ 'movie.presse.liens.twitter'|trans }}</a>
-                        {% endif %}
-                    </div>
+                        <div class="links">
+                            <p class="sub">{{ 'movie.presse.label.liens'|trans }}</p>
+                            {% if movie.website %}
+                                <a href="http://{{ movie.website }}"
+                                   target="_blank">{{ 'movie.presse.liens.website'|trans }}</a>
+                            {% endif %}
+                            {% if movie.facebook %}
+                                <a href="{{ movie.facebook }}"
+                                   target="_blank">{{ 'movie.presse.liens.facebook'|trans }}</a>
+                            {% endif %}
+                            {% if movie.twitter %}
+                                <a href="{{ movie.twitter }}"
+                                   target="_blank">{{ 'movie.presse.liens.twitter'|trans }}</a>
+                            {% endif %}
+                        </div>
                     {% endif %}
                     <div class="buttons">
                         <p class="sub">{{ 'movie.presse.label.plusdinformations'|trans }}</p>
-                        <a href="{{ path('fdc_press_news_home') }}" class="button">{{ 'movie.presse.btn.espacepresse'|trans }}</a>
-                        <a href="{{ path('fdc_press_agenda_scheduling') }}" class="button">{{ 'movie.presse.btn.voirlaprogrammation'|trans }}</a>
+                        <a href="{{ path('fdc_press_news_home') }}"
+                           class="button">{{ 'movie.presse.btn.espacepresse'|trans }}</a>
+                        <a href="{{ path('fdc_press_agenda_scheduling') }}"
+                           class="button">{{ 'movie.presse.btn.voirlaprogrammation'|trans }}</a>
                     </div>
                 </div>
             </div>
@@ -65,9 +70,8 @@
                             {% set hasProd = false %}
                             {% for contact in movie.contacts %}
                                 {% if
-                                    contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') or
-                                    contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_FRENCH_DISTRIBUTION')
-                                %}
+                                contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') or
+                                contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_FRENCH_DISTRIBUTION') %}
                                     {% set hasProd = true %}
                                 {% endif %}
                             {% endfor %}
@@ -78,26 +82,32 @@
                                             <div>
                                                 <p class="sub">{{ 'movie.contact.label.production'|trans }}</p>
                                                 <p>
-                                                    {% if contact.companyName %}{{ contact.companyName }}{% endif %}
+                                                    {% set displayContact = [] %}
+                                                    {% set displayContact = displayContact|merge([contact.companyName]) %}
                                                     {% if contact.address %}
-                                                        {% if contact.companyName %} - {% endif %}
-                                                        {{ contact.address.street }} {{ contact.address.postalCode }} {{ contact.address.city }}
+                                                        {% set displayAddress = contact.address.street ~ ' ' ~ contact.address.postalCode  ~ ' ' ~ contact.address.city %}
                                                         {% if contact.address.country %}
-                                                            {{ contact.address.country|trans_fallback('name') }}
+                                                            {% set displayAddress = displayAddress ~ ' ' ~ (contact.address.country|trans_fallback('name')) %}
                                                         {% endif %}
+                                                        {% set displayContact = displayContact|merge([displayAddress]) %}
                                                     {% endif %}
                                                     {% if contact.address and (contact.address.phone or contact.address.mobilePhone) %}
-                                                        {% if contact.address %} - {% endif %}
-                                                        T: {{ contact.address.phone?:contact.address.mobilePhone }}{% if (contact.address.phone or contact.address.mobilePhone) and contact.address.fax %} - F: {{ contact.address.fax }} {% endif %}
+                                                        {% set displayContact = displayContact|merge(['T: ' ~ contact.address.phone?:contact.address.mobilePhone]) %}
+                                                        {% if (contact.address.phone or contact.address.mobilePhone) and contact.address.fax %}
+                                                            {% set displayContact = displayContact|merge(['F: ' ~ contact.address.fax]) %}
+                                                        {% endif %}
                                                     {% endif %}
                                                     {% if contact.address.email %}
-                                                        {% if contact.address and contact.address.fax %} - {% endif %}
-                                                        <a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
+                                                        {% set displayEmail = '<a href="mailto:' ~ contact.address.email ~ '">' %}
+                                                        {% set displayEmail = displayEmail ~ contact.address.email ~ '</a>' %}
+                                                        {% set displayContact = displayContact|merge([displayEmail]) %}
                                                     {% endif %}
                                                     {% if contact.address and contact.address.website %}
-                                                        {% if contact.address and contact.address.email %} - {% endif %}
-                                                        <a href="http://{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>
+                                                        {% set displayWebsite = '<a href="http://' ~ contact.address.website ~ '" target="_blank">' %}
+                                                        {% set displayWebsite = displayWebsite ~ contact.address.email ~ '</a>' %}
+                                                        {% set displayContact = displayContact|merge(displayWebsite) %}
                                                     {% endif %}
+                                                    {{ displayContact|join(' - ')|raw }}
                                                 </p>
                                             </div>
                                         {% endif %}
@@ -125,7 +135,8 @@
                                                     {% endif %}
                                                     {% if contact.address and contact.address.website %}
                                                         {% if contact.address and contact.address.email %} - {% endif %}
-                                                        <a href="http://{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>
+                                                        <a href="http://{{ contact.address.website }}"
+                                                           target="_blank">{{ contact.address.website }}</a>
                                                     {% endif %}
                                                 </p>
                                             </div>
@@ -190,9 +201,8 @@
                             {% set hasProd = false %}
                             {% for contact in movie.contacts %}
                                 {% if
-                                    contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') or
-                                    contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_MINOR_PRODUCTION_COMPANY')
-                                %}
+                                contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') or
+                                contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_MINOR_PRODUCTION_COMPANY') %}
                                     {% set hasProd = true %}
                                 {% endif %}
                             {% endfor %}
@@ -221,7 +231,8 @@
                                                     {% endif %}
                                                     {% if contact.address and contact.address.website %}
                                                         {% if contact.address and contact.address.email %} - {% endif %}
-                                                        <a href="http://{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>
+                                                        <a href="http://{{ contact.address.website }}"
+                                                           target="_blank">{{ contact.address.website }}</a>
                                                     {% endif %}
                                                 </p>
                                             </div>
@@ -233,7 +244,7 @@
                                                 <p>
                                                     {% if contact.companyName %}{{ contact.companyName }}{% endif %}
                                                     {% if contact.address and contact.address.country %}
-                                                        {% if contact.companyName  %} - {% endif %}
+                                                        {% if contact.companyName %} - {% endif %}
                                                         {{ contact.address.country|trans_fallback('name') }}
                                                     {% endif %}
                                                 </p>
@@ -259,7 +270,8 @@
                                                 {% endif %}
                                                 {% if contact.address and contact.address.website %}
                                                     {% if contact.address and contact.address.email %} - {% endif %}
-                                                    <a href="http://{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>
+                                                    <a href="http://{{ contact.address.website }}"
+                                                       target="_blank">{{ contact.address.website }}</a>
                                                 {% endif %}
                                             {% endif %}
                                         </p>
@@ -320,7 +332,8 @@
                                                 {% endif %}
                                                 {% if contact.address and contact.address.website %}
                                                     {% if (contact.address.phone or contact.address.mobilePhone) %} - {% endif %}
-                                                    <a href="http://{{ contact.address.website }}" target="_blank">{{ contact.address.website }}</a>
+                                                    <a href="http://{{ contact.address.website }}"
+                                                       target="_blank">{{ contact.address.website }}</a>
                                                 {% endif %}
                                                 {% if contact.address.email %}
                                                     {% if contact.address and contact.address.website %} - {% endif %}
