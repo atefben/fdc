@@ -23,10 +23,11 @@
                     {% set rand = random(5) %}
                 {% endif %}
                 <div class="grid-item {% if rand == 3 %}grid-item--width2{% endif %} item {{ photo.theme|trans_fallback('slug') }} {{ format }}">
+                    {% set copyright = photo|trans_fallback('copyright') %}
                     <a id="photo{{ photo.id }}"
                        class="ajachocolat-image ajax"
                        href="{% path trans.file , 'reference' %}"
-                       title='<span class="category">{{ photo.theme|trans_fallback('name') }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }} . {{ photo.publishedAt|date('H:i') }}</span><h2>{{ trans.legend }}</h2><span class="credit">{{ photo.credit }}</span>'></a>
+                       title='<span class="category">{{ photo.theme|trans_fallback('name') }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }} . {{ photo.publishedAt|date('H:i') }}</span><h2>{{ trans.legend }}</h2><span class="credit">{{ photo.credit_image|trans }} / {% if copyright is not empty %} © {{ copyright }}{% endif %}</span>'></a>
                     {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
                     <div class="img-container">
                         <div class="infos">

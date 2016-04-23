@@ -26,38 +26,23 @@
         {% set image = imageTrans.file %}
     {% endif %}
 
-    <div class="audio-player audio actu-article-audio" data-sound="{{ s3_server_audio ~ trans.mp3Url }}">
-        <div class="image"
-             style="background-image: url({% if image is defined and image is not null %}{% path image, '1950x1232' %}{% endif %});"></div>
-        <a href="#" class="playpause"><i class="icon icon_video"></i></a>
-        <div class="off">
-            <div class="vCenter">
-                <div class="vCenterKid">
-                    <div class="picto">
-                        <i class="icon icon_audio"></i>
-                    </div>
-                    <div class="info">
-                        <span class="category">{{ news.audio.theme|trans_fallback('name') }}</span>
-                        <span class="date">{{ news.audio.publishedAt|date('d.m.y') }}</span> . <span
-                                class="hour">{{ news.audio.publishedAt|date('H:i') }}</span>
-                        <p>{{ trans.title }}</p>
-                    </div>
-                </div>
+    <div class="main-audio-player" style="background-image:url({% if image is defined and image is not null %}{% path image, '1950x1232' %}{% endif %})">
+        <div class="audio-player" data-sound="{{ s3_server_audio ~ trans.mp3Url }}">
+            <div class="picto playpause">
+                <i class="icon icon_audio"></i>
             </div>
-        </div>
-        <div class="on">
-            <div class="vCenter">
-                <div class="vCenterKid">
-                    <div class="duration">
-                        <span class="curr">0:00</span>/<span class="total">0:00</span>
-                    </div>
-                    <div class="wave-container"></div>
-                    <div class="volume">
-                        <span></span>
-                        <i class="icon icon_son"></i>
-                    </div>
-                    <a href="#" class="fullscreen"><i class="icon icon_fullscreen"></i></a>
+            <div class="player-off">
+                <a href="#" class="category">{{ news.audio.theme|trans_fallback('name') }}</a>
+                <span class="date">{{ news.audio.publishedAt|date('d.m.y') }}</span> . <span
+                        class="hour">{{ news.audio.publishedAt|date('H:i') }}</span>
+                <p>{{ trans.title }}</p>
+            </div>
+
+            <div class="player-on">
+                <div class="duration">
+                    <span class="curr">0:00</span>/<span class="total">0:00</span>
                 </div>
+                <div class="wave-container" id="wave-0"></div>
             </div>
         </div>
     </div>

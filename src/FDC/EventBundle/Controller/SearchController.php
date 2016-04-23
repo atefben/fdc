@@ -170,7 +170,16 @@ class SearchController extends Controller
             ->addShould($webTvQuery)
         ;
         
-        $paginatedResults = $repository->getPaginatedResults($finalQuery, 10, 1);
+        // Add published query.
+        $publishedQuery = $repository->getStatusFilterQuery($_locale);
+        
+        $filteredQuery = new \Elastica\Query\BoolQuery();
+        $filteredQuery
+            ->addMust($publishedQuery)
+            ->addMust($finalQuery)
+        ;
+        
+        $paginatedResults = $repository->getPaginatedResults($filteredQuery, 10, 1);
         
         foreach ($paginatedResults as $result) {
           $response[] = (object) array(
