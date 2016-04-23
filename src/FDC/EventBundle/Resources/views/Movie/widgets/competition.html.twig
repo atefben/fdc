@@ -1,32 +1,36 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-<div class="competition">
-    <h2 class="title">{{ movie.selectionSection|trans_fallback('name') }} {{ "now"|date('Y') }}</h2>
-    <div id="slider-competition" class="owl-carousel sliderDrag">
-        {% for movie in movies %}
-            <div class="slide">
-                {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+{% if movies|length %}
+    <div class="competition">
+
+        <h2 class="title">{{ movie.selectionSection|trans_fallback('name') }} {{ "now"|date('Y') }}</h2>
+        <div id="slider-competition" class="owl-carousel sliderDrag">
+            {% for movie in movies %}
+                <div class="slide">
+                    {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                     film: movie,
                     film_format: 'mobile',
                     film_image_default: 'bundles/fdcevent/img/palmares/film_w210.jpg'
-                }) %}
-                <a class="linkVid" href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}"></a>
-                <div class="info-movie">
-                    <p>
-                        <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
-                            {% if movie|trans_fallback('title') is not empty %}
-                                {{ movie|trans_fallback('title') }}
-                            {% else %}
-                                {{ movie.titleVO }}
-                            {% endif %}
-                        </a>
-                    </p>
-                    {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                    {% for director in directors %}
-                        <a class="director" href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">{{ director.fullName }}{% if loop.last == false %},{% endif %}</a>
-                    {% endfor %}
+                    }) %}
+                    <a class="linkVid" href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}"></a>
+                    <div class="info-movie">
+                        <p>
+                            <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
+                                {{ movie.titleVO }}<br/>
+                                {% set transTitle = movie|trans_fallback('title') %}
+                                {% if transTitle|trim and transTitle|trim != movie.titleVo|trim %}
+                                    ({{ transTitle }})
+                                {% endif %}
+                            </a>
+                        </p>
+                        {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                        {% for director in directors %}
+                            <a class="director"
+                               href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">{{ director.fullName }}{% if loop.last == false %},{% endif %}</a>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-</div>
+{% endif %}
