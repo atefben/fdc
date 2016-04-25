@@ -31,9 +31,16 @@
                 </a>
                 <ul class="sub-languages">
                     {% for locale in locales %}
-                        {% if locale == app.request.locale %}
-                        {% else %}
-                            <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">{{ locale|upper }}</a></li>
+                        {% if locale != app.request.locale %}
+                            <li>
+                                {% set params = {'_locale' : locale} %}
+                                {% if localeSlugs is defined and localeSlugs[app.request.locale] %}
+                                    {% set params = params|merge({'slug': localeSlugs[locale]}) %}
+                                {% endif %}
+                                <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge(params)) }}">
+                                    {{ locales[loop.index0]|upper }}
+                                </a>
+                            </li>
                         {% endif %}
                     {% endfor %}
                 </ul>
