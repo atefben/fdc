@@ -167,10 +167,10 @@ parameters:
         - admin_base_core_fdcpagejury_edit
         - admin_base_core_fdcpageaward_edit
         # Orange
-        - admin_base_core_orangeseriesandcie
-        - admin_base_core_orangeprogrammationocs
-        - admin_base_core_orangevideoondemand
-        - admin_base_core_orangestudio
+        - admin_base_core_orangeseriesandcie_edit
+        - admin_base_core_orangeprogrammationocs_edit
+        - admin_base_core_orangevideoondemand_edit
+        - admin_base_core_orangestudio_edit
         # Deprecated ?
         - admin_base_core_presscinemaroom_edit
     # soif

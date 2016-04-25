@@ -9932,7 +9932,7 @@ header #searchContainer {
   position: absolute;
   min-width: 100%;
   min-height: 100%;
-  width: auto;
+  width: 100%;
   height: auto;
   -moz-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -10421,19 +10421,18 @@ article .read-later.rAlign span:after {
 .single-article .small-container {
   width: 730px;
 }
-
-.single-article.single-evenement .small-container {
+.single-article.single-actualite .small-container {
   width: 977px;
 }
-.single-article.single-evenement .small-container > div {
+.single-article.single-actualite .small-container > div {
   width: 630px;
   margin-left: auto;
   margin-right: auto;
 }
-.single-article.single-evenement .small-container > div.single-photo, .single-article.single-evenement .small-container > div.single-video, .single-article.single-evenement .small-container > div.single-gallery, .single-article.single-evenement .small-container > div.chapeau {
+.single-article.single-actualite .small-container > div.single-photo, .single-article.single-actualite .small-container > div.single-video, .single-article.single-actualite .small-container > div.single-gallery, .single-article.single-actualite .small-container > div.chapeau {
   width: 100%;
 }
-.single-article.single-evenement .small-container > div.half-div, .single-article.single-evenement .small-container > div.single-photo.large-photo, .single-article.single-evenement .small-container > div.slideshow {
+.single-article.single-actualite .small-container > div.half-div, .single-article.single-actualite .small-container > div.single-photo.large-photo, .single-article.single-actualite .small-container > div.slideshow {
   width: 730px;
 }
 .single-article .print {
@@ -10534,7 +10533,6 @@ article .read-later.rAlign span:after {
 .single-article .single-photo .photo-container {
   display: inline-block;
   width: auto;
-  max-width: 100%;
 }
 .single-article .single-photo img {
   display: block;
@@ -10562,10 +10560,7 @@ article .read-later.rAlign span:after {
   display: inline-block;
   margin: 0 0 50px;
   vertical-align: top;
-  width: 47%;
-}
-.single-article .half-photo:nth-child(odd){
-  margin-right:6%;
+  width: 50%;
 }
 .single-article .half-photo img {
   display: block;
@@ -10576,12 +10571,11 @@ article .read-later.rAlign span:after {
   font-size: 0.750rem;
   margin: 10px 0 0;
 }
-.single-article .half-photo:nth-child(even) {
+.single-article .half-photo + .half-photo {
   margin: 0 0 0 -8px;
 }
 .single-article .half-photo + .half-photo .photo-container {
   float: right;
-  max-width: 100%;
 }
 .single-article .chapeau {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
