@@ -50,7 +50,8 @@
 
 .legal-notice .text sup,
 .faq .text sup,
-.single-article .text sup {
+.single-article .text sup,
+.chapeau sup {
     vertical-align: super;
     font-size: 11px;
 }
@@ -61,7 +62,8 @@
 
 .legal-notice .text sub,
 .faq .text sub,
-.single-article .text sub {
+.single-article .text sub,
+.chapeau sub {
     vertical-align: sub;
     font-size: 11px;
 }
@@ -364,4 +366,12 @@
 
 #slider-competition .translated-title {
     font-size: 10px;
+}
+
+.single-movie .press .contacts .wrapper .contact-reduce-line-height p {
+    /*line-height: 1.2em;*/
+}
+
+.single-movie .press .contacts .wrapper .contact-increase-padding-bottom p {
+    padding-bottom: 25px;
 }

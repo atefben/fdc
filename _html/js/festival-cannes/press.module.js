@@ -1157,7 +1157,7 @@ $(document).ready(function () {
 
         //vérification des données reçues//
         $('#create-event-pop input[type=text]').each(function(index,value) {
-          if($(this).val() == "") {
+          if($(this).val() == "" && $(this).attr("name") != 'description' && $(this).attr("name") != 'place') {
             $(this).addClass('error');
           } else {
             if($(this).hasClass('error')) {
@@ -1209,11 +1209,10 @@ $(document).ready(function () {
           }
 
           id = guid();
-          // url= "eventPopin.html?id="+id;
-
+          var titleEvent = (data.title.length > 17) ? jQuery.trim(data.title).substring(0, 15).split(" ").slice(0, -1).join(" ") + "..." : data.title;
            //Création de l'évènement et affichage sur le calendrier
           var myEvent = {
-               "title": data.title,
+               "title": titleEvent,
                "eventColor": "#fff",
                "start": dateBegin,
                "end": dateEnd,

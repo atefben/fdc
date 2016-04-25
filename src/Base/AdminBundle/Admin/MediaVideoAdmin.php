@@ -7,6 +7,7 @@ use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\NewsNewsAssociated;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -126,6 +127,14 @@ class MediaVideoAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $requiredFile = ($this->subject && $this->subject->getId()) ? false : true;
+        $securityContext = $this->getConfigurationPool()->getContainer()->get('security.context');
+        $isTranslatorEnEsCh = (
+            $securityContext->isGranted('ROLE_TRANSLATOR_EN') ||
+            $securityContext->isGranted('ROLE_TRANSLATOR_ES') ||
+            $securityContext->isGranted('ROLE_TRANSLATOR_ZH')
+        ) ? true : false;
+
+        $amazonRemoteFileAttrs = ($isTranslatorEnEsCh) ? array('disabled' => 'disabled') : array();
 
         $formMapper
             ->add('translations', 'a2lix_translations', array(
@@ -133,47 +142,54 @@ class MediaVideoAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales'   => array('fr'),
                 'fields'             => array(
-                    'createdAt'      => array(
+                    'createdAt'        => array(
                         'display' => false
                     ),
-                    'updatedAt'      => array(
+                    'updatedAt'        => array(
                         'display' => false
                     ),
-                    'imageAmazonUrl' => array(
+                    'imageAmazonUrl'   => array(
                         'display' => false
                     ),
-                    'jobWebmState'   => array(
+                    'jobWebmState'     => array(
                         'display' => false
                     ),
-                    'jobMp4State'    => array(
+                    'jobMp4State'      => array(
                         'display' => false
                     ),
-                    'jobMp4Id'       => array(
+                    'jobMp4Id'         => array(
                         'display' => false
                     ),
-                    'jobWebmId'      => array(
+                    'jobWebmId'        => array(
                         'display' => false
                     ),
-                    'mp4Url'         => array(
+                    'mp4Url'           => array(
                         'display' => false
                     ),
-                    'webmUrl'        => array(
+                    'webmUrl'          => array(
                         'display' => false
                     ),
-                    'file'           => array(
+                    'file'             => array(
                         'required'           => false,
                         'field_type'         => 'sonata_media_type',
                         'translation_domain' => 'BaseAdminBundle',
                         'provider'           => 'sonata.media.provider.video',
                         'context'            => 'media_video',
                     ),
-                    'amazonRemoteFile'           => array(
-                        'required'           => false,
-                        'field_type'         => 'entity',
-                        'class'				 => 'BaseCoreBundle:AmazonRemoteFile',
-                        'label'              => 'Fichiers Amazon'
+                    'amazonRemoteFile' => array(
+                        'required'      => false,
+                        'field_type'    => 'entity',
+                        'class'         => 'BaseCoreBundle:AmazonRemoteFile',
+                        'label'         => 'Fichiers Amazon',
+                        'query_builder' => function (EntityRepository $er) {
+                            return $er->createQueryBuilder('arf')
+                                ->andWhere('arf.type = :type')
+                                ->setParameter('type', 'video')
+                                ;
+                        },
+                        'attr' => $amazonRemoteFileAttrs
                     ),
-                    'title'          => array(
+                    'title'            => array(
                         'label'              => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help'        => 'form.media_video.helper_title',
@@ -182,11 +198,11 @@ class MediaVideoAdmin extends Admin
                                 'required' => true,
                             )
                         ),
-                        'attr' => array(
+                        'attr'               => array(
                             'maxlength' => 200
                         )
                     ),
-                    'status'         => array(
+                    'status'           => array(
                         'label'                     => 'form.label_status',
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
@@ -196,7 +212,7 @@ class MediaVideoAdmin extends Admin
                             new NotBlank()
                         )
                     ),
-                    'seoTitle'       => array(
+                    'seoTitle'         => array(
                         'attr'               => array(
                             'placeholder' => 'form.placeholder_seo_title'
                         ),
@@ -205,7 +221,7 @@ class MediaVideoAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => false
                     ),
-                    'seoDescription' => array(
+                    'seoDescription'   => array(
                         'attr'               => array(
                             'placeholder' => 'form.placeholder_seo_description'
                         ),
@@ -219,7 +235,7 @@ class MediaVideoAdmin extends Admin
             ->add('webTv', 'sonata_type_model_list', array(
                 'label'    => 'form.label_webTv_required',
                 'required' => false,
-                'attr' => array(
+                'attr'     => array(
                     'class' => 'webTvField'
                 )
             ))
@@ -244,8 +260,8 @@ class MediaVideoAdmin extends Admin
                 )
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.label_media_video_image',
-                'help'  => 'form.media_image.helper_file',
+                'label'    => 'form.label_media_video_image',
+                'help'     => 'form.media_image.helper_file',
                 'required' => false
             ))
             ->add('theme', 'sonata_type_model_list', array(
@@ -280,22 +296,22 @@ class MediaVideoAdmin extends Admin
                 'label' => 'form.media_video.displayed_home'
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
-                'help' => 'form.news.helper_film_film_associated',
+                'help'     => 'form.news.helper_film_film_associated',
                 'required' => false,
-                'btn_add' => false
+                'btn_add'  => false
             ))
             ->add('associatedEvent', 'sonata_type_model_list', array(
-                'help' => 'form.news.helper_event_associated',
+                'help'     => 'form.news.helper_event_associated',
                 'required' => false,
-                'btn_add' => false
+                'btn_add'  => false
             ))
             ->add('associatedProjections', 'sonata_type_collection', array(
-                'label' => 'form.label_news_film_projection_associated',
-                'help' => 'form.news.helper_news_film_projection_associated',
+                'label'        => 'form.label_news_film_projection_associated',
+                'help'         => 'form.news.helper_news_film_projection_associated',
                 'by_reference' => false,
-                'required' => false,
+                'required'     => false,
             ), array(
-                    'edit' => 'inline',
+                    'edit'   => 'inline',
                     'inline' => 'table'
                 )
             )

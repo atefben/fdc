@@ -16,6 +16,7 @@ imports:
     - { resource: bundles/sonata_doctrine_orm_admin.yml }
     - { resource: bundles/sonata_intl.yml }
     - { resource: bundles/sonata_media.yml }
+    - { resource: bundles/sonata_media_provider.yml }
     - { resource: bundles/sonata_media_services.yml }
     - { resource: bundles/sonata_seo.yml }
     - { resource: bundles/stof_doctrine_extensions.yml }
@@ -63,7 +64,7 @@ framework:
     trusted_proxies: ~
     session:
         handler_id: session.handler.pdo
-        cookie_lifetime: 3600
+        cookie_lifetime: 72000
     fragments:       ~
     http_method_override: true
 

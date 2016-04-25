@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-{% if hideHalfDiv is defined and hideHalfDiv == true %}
+{% if hideHalfDiv is defined and hideHalfDiv == true and  widget.gallery is not empty %}
     {% for gallery in widget.gallery.medias %}
         {% if gallery.media != null %}
             {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
@@ -18,20 +18,22 @@
     {% endfor %}
 {% else %}
     <div class="half-div">
-    {% for gallery in widget.gallery.medias %}
-        {% if gallery.media != null %}
-            {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
-            {% if trans is null or trans.file is null %}
-                {% set trans = gallery.media.findTranslationByLocale('fr') %}
-            {% endif %}
-            {% set file = trans.file %}
-            <div class="half-photo">
-                <div class="photo-container">
-                    <img src="{% path file, 'reference' %}" alt="{{ trans.alt }}" title="{{ trans.legend }}">
-                    <p class="caption">{{ trans.copyright }}</p>
+    {% if widget.gallery is not empty %}
+        {% for gallery in widget.gallery.medias %}
+            {% if gallery.media != null %}
+                {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = gallery.media.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% set file = trans.file %}
+                <div class="half-photo">
+                    <div class="photo-container">
+                        <img src="{% path file, 'reference' %}" alt="{{ trans.alt }}" title="{{ trans.legend }}">
+                        <p class="caption">{{ trans.copyright }}</p>
+                    </div>
                 </div>
-            </div>
-        {% endif %}
-    {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
     </div>
 {% endif %}
