@@ -134,7 +134,7 @@ class MediaVideoAdmin extends Admin
             $securityContext->isGranted('ROLE_TRANSLATOR_ZH')
         ) ? true : false;
 
-        $amazonRemoteFileAttrs = ($isTranslatorEnEsCh) ? array('readonly' => 'readonly') : array();
+        $amazonRemoteFileAttrs = ($isTranslatorEnEsCh) ? array('disabled' => 'disabled') : array();
 
         $formMapper
             ->add('translations', 'a2lix_translations', array(
