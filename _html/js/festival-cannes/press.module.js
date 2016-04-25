@@ -1213,7 +1213,7 @@ $(document).ready(function () {
 
            //Création de l'évènement et affichage sur le calendrier
           var myEvent = {
-               "title": data.title,
+               "title": jQuery.trim(data.title).substring(0, 15).split(" ").slice(0, -1).join(" ") + "...",
                "eventColor": "#fff",
                "start": dateBegin,
                "end": dateEnd,
