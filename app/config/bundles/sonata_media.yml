@@ -135,59 +135,59 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
-                mobile: { width: 584 , height: 794 , quality: 100, crop: true }
+                mobile: { width: 584 , height: 794 , quality: 100, constraint: false}
                 # Slider Home(TEMPORAIRE CAR NON DEFINI), audio fullscreen (TEMPORAIRE CAR NON DEFINI)
-                2560x1620: { width: 2560 , height: 1620 , quality: 100, crop: true }
+                2560x1620: { width: 2560 , height: 1620 , quality: 100, constraint: false}
                 # Diaporama photo
-                1760x1108: { width: 1760 , height: 1108 , quality: 100, crop: true }
+                1760x1108: { width: 1760 , height: 1108 , quality: 100, constraint: false}
                 # Miniatures diaporama photo
-                194x128: { width: 194 , height: 128 , quality: 100, crop: true }
+                194x128: { width: 194 , height: 128 , quality: 100, constraint: false}
                 # Les chaînes, autre chaînes (webtv)
-                586x370: { width: 586 , height: 370 , quality: 100, crop: true }
+                586x370: { width: 586 , height: 370 , quality: 100, constraint: false}
                 # Actualités à la une, Tous les articles
-                1144x724: { width: 1144 , height: 724 , quality: 100, crop: true }
+                1144x724: { width: 1144 , height: 724 , quality: 100, constraint: false}
                 # pre-footer homepage
-                1954x1200: { width: 1954 , height: 1200 , quality: 100, crop: true }
+                1954x1200: { width: 1954 , height: 1200 , quality: 100, constraint: false}
                 # Vidéo à la une, Toutes les photos, Toutes les vidéos, Chaînes festival
-                640x404: { width: 640 , height: 404 , quality: 100, crop: true }
+                640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
                 # Vidéo à la une, Toutes les photos, Toutes les vidéos, Chaînes festival portrait
-                320x404: { width: 320 , height: 404 , quality: 100, crop: true }
+                320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
                 # Pushs
-                650x410: { width: 650 , height: 410 , quality: 100, crop: true }
+                650x410: { width: 650 , height: 410 , quality: 100, constraint: false}
                 # Ma Selection
-                424x266: { width: 424 , height: 266 , quality: 100, crop: true }
+                424x266: { width: 424 , height: 266 , quality: 100, constraint: false}
                 # Image principale Actu
-                1950x1232: { width: 1950 , height: 1232 , quality: 100, crop: true }
+                1950x1232: { width: 1950 , height: 1232 , quality: 100, constraint: false}
                 # Diaporama photo
-                1266x798: { width: 1266 , height: 798 , quality: 100, crop: true }
+                1266x798: { width: 1266 , height: 798 , quality: 100, constraint: false}
                 # WebTv Tetiere, Channels Tetiere
-                1920x450: { width: 1920 , height: 450 , quality: 100, crop: true }
+                1920x450: { width: 1920 , height: 450 , quality: 100, constraint: false}
                 # Dernières vidéos (webtv)
-                463x292: { width: 463 , height: 292 , quality: 100, crop: true }
+                463x292: { width: 463 , height: 292 , quality: 100, constraint: false}
                 # srcset
-                1280x808: { width: 1280 , height: 808 , quality: 100, crop: true }
+                1280x808: { width: 1280 , height: 808 , quality: 100, constraint: false}
                 # Last videos channels
-                926x584: { width: 926 , height: 584 , quality: 100, crop: true }
+                926x584: { width: 926 , height: 584 , quality: 100, constraint: false}
                 # Articles focus
-                918x580: { width: 918 , height: 580 , quality: 100, crop: true }
+                918x580: { width: 918 , height: 580 , quality: 100, constraint: false}
                 # Articles le même jour
-                590x370: { width: 590 , height: 370 , quality: 100, crop: true }
+                590x370: { width: 590 , height: 370 , quality: 100, constraint: false}
                 # Articles Press Homepage
-                265x165: { width: 265 , height: 165 , quality: 100, crop: true }
+                265x165: { width: 265 , height: 165 , quality: 100, constraint: false}
                 # Détail
-                97x61: { width: 97 , height: 61 , quality: 100, crop: true }
+                97x61: { width: 97 , height: 61 , quality: 100, constraint: false}
                 # WebTv trailer navigation
-                293x185: { width: 293 , height: 185 , quality: 100, crop: true }
+                293x185: { width: 293 , height: 185 , quality: 100, constraint: false}
                 # WebTv trailer film poster
-                135x185: { width: 135 , height: 185 , quality: 100, crop: true }
+                135x185: { width: 135 , height: 185 , quality: 100, constraint: false}
                 # Grid Press Download #
-                146x146: { width: 146 , height: 146 , quality: 100, crop: true }
+                146x146: { width: 146 , height: 146 , quality: 100, constraint: false}
                 # Event list #
-                976x615: { width: 976 , height: 615 , quality: 100, crop: true }
+                976x615: { width: 976 , height: 615 , quality: 100, constraint: false}
                 ##### OLDS #####
-                1980x300: { width: 1980 , height: 300 , quality: 100, crop: true }
+                1980x300: { width: 1980 , height: 300 , quality: 100, constraint: false}
                 #Widget Mosaic Movie Widget
-                368x500: { width: 368, height: 500, quality: 100, crop: true }
+                368x500: { width: 368, height: 500, quality: 100, constraint: false}
 
         media_image_simple:
             providers:
