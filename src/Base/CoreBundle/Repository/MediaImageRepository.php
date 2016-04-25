@@ -59,6 +59,8 @@ class MediaImageRepository extends TranslationRepository
 
             $qb
                 ->andWhere('mi.publishedAt BETWEEN :morning AND :midnight')
+                ->andWhere('mi.displayedMobile = :displayedMobile')
+                ->setParameter('displayedMobile', true)
                 ->setParameter('morning', $morning)
                 ->setParameter('midnight', $midnight)
             ;
