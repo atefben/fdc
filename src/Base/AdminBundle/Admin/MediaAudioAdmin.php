@@ -7,6 +7,7 @@ use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\Media;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -117,8 +118,6 @@ class MediaAudioAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $requiredFile = ($this->subject && $this->subject->getId()) ? false : true;
-
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label'              => false,
@@ -126,29 +125,41 @@ class MediaAudioAdmin extends Admin
                 'required_locales'   => array('fr'),
                 'fields'             => array(
                     // add fields not set by user
-                    'createdAt'      => array(
+                    'createdAt'        => array(
                         'display' => false
                     ),
-                    'updatedAt'      => array(
+                    'updatedAt'        => array(
                         'display' => false
                     ),
-                    'jobMp3State'    => array(
+                    'jobMp3State'      => array(
                         'display' => false
                     ),
-                    'jobMp3Id'       => array(
+                    'jobMp3Id'         => array(
                         'display' => false
                     ),
-                    'mp3Url'         => array(
+                    'mp3Url'           => array(
                         'display' => false
                     ),
-                    'file'           => array(
-                        'required'           => $requiredFile,
+                    'file'             => array(
+                        'required'           => false,
                         'field_type'         => 'sonata_media_type',
                         'translation_domain' => 'BaseAdminBundle',
                         'provider'           => 'sonata.media.provider.audio',
                         'context'            => 'media_audio',
                     ),
-                    'title'          => array(
+                    'amazonRemoteFile' => array(
+                        'required'   => false,
+                        'field_type' => 'entity',
+                        'class'      => 'BaseCoreBundle:AmazonRemoteFile',
+                        'label'      => 'Fichiers Amazon',
+                        'query_builder' => function (EntityRepository $er) {
+                            return $er->createQueryBuilder('arf')
+                                ->andWhere('arf.type = :type')
+                                ->setParameter('type', 'audio')
+                                ;
+                        },
+                    ),
+                    'title'            => array(
                         'label'              => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help'        => 'form.media_audio.helper_title',
@@ -157,18 +168,18 @@ class MediaAudioAdmin extends Admin
                                 'required' => true
                             )
                         ),
-                        'attr' => array(
+                        'attr'               => array(
                             'maxlength' => 200
                         )
                     ),
-                    'status'         => array(
+                    'status'           => array(
                         'label'                     => 'form.label_status',
                         'translation_domain'        => 'BaseAdminBundle',
                         'field_type'                => 'choice',
                         'choices'                   => MediaAudioTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
-                    'seoTitle'       => array(
+                    'seoTitle'         => array(
                         'attr'               => array(
                             'placeholder' => 'form.placeholder_seo_title'
                         ),
@@ -177,7 +188,7 @@ class MediaAudioAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'required'           => false
                     ),
-                    'seoDescription' => array(
+                    'seoDescription'   => array(
                         'attr'               => array(
                             'placeholder' => 'form.placeholder_seo_description'
                         ),
@@ -199,12 +210,12 @@ class MediaAudioAdmin extends Admin
                 ),
             ))
             ->add('tags', 'sonata_type_collection', array(
-                'label' => 'form.label_article_tags',
-                'help' => 'form.news.helper_tags',
+                'label'        => 'form.label_article_tags',
+                'help'         => 'form.news.helper_tags',
                 'by_reference' => false,
-                'required' => false,
+                'required'     => false,
             ), array(
-                    'edit' => 'inline',
+                    'edit'   => 'inline',
                     'inline' => 'table'
                 )
             )
@@ -256,22 +267,22 @@ class MediaAudioAdmin extends Admin
                 'label' => 'form.media_audio.displayed_home'
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
-                'help' => 'form.news.helper_film_film_associated',
+                'help'     => 'form.news.helper_film_film_associated',
                 'required' => false,
-                'btn_add' => false
+                'btn_add'  => false
             ))
             ->add('associatedEvent', 'sonata_type_model_list', array(
-                'help' => 'form.news.helper_event_associated',
+                'help'     => 'form.news.helper_event_associated',
                 'required' => false,
-                'btn_add' => false
+                'btn_add'  => false
             ))
             ->add('associatedProjections', 'sonata_type_collection', array(
-                'label' => 'form.label_news_film_projection_associated',
-                'help' => 'form.news.helper_news_film_projection_associated',
+                'label'        => 'form.label_news_film_projection_associated',
+                'help'         => 'form.news.helper_news_film_projection_associated',
                 'by_reference' => false,
-                'required' => false,
+                'required'     => false,
             ), array(
-                    'edit' => 'inline',
+                    'edit'   => 'inline',
                     'inline' => 'table'
                 )
             )
@@ -284,7 +295,7 @@ class MediaAudioAdmin extends Admin
             ->add('priorityStatus', 'choice', array(
                 'choices'                   => MediaAudio::getPriorityStatuses(),
                 'choice_translation_domain' => 'BaseAdminBundle',
-                'multiple'           => false
+                'multiple'                  => false
             ))
             ->end()
         ;

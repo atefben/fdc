@@ -70,6 +70,13 @@ class MediaAudioTranslation implements TranslateChildInterface
     private $file;
 
     /**
+     * @var AmazonRemoteFile
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\AmazonRemoteFile")
+     * @ORM\JoinColumn(name="amazon_remote_file_id", referencedColumnName="id")
+     */
+    private $amazonRemoteFile;
+
+    /**
      * Set title
      *
      * @param string $title
@@ -183,5 +190,28 @@ class MediaAudioTranslation implements TranslateChildInterface
     public function getMp3Url()
     {
         return $this->mp3Url;
+    }
+
+    /**
+     * Set amazonRemoteFile
+     *
+     * @param \Base\CoreBundle\Entity\AmazonRemoteFile $amazonRemoteFile
+     * @return MediaAudioTranslation
+     */
+    public function setAmazonRemoteFile(\Base\CoreBundle\Entity\AmazonRemoteFile $amazonRemoteFile = null)
+    {
+        $this->amazonRemoteFile = $amazonRemoteFile;
+
+        return $this;
+    }
+
+    /**
+     * Get amazonRemoteFile
+     *
+     * @return \Base\CoreBundle\Entity\AmazonRemoteFile 
+     */
+    public function getAmazonRemoteFile()
+    {
+        return $this->amazonRemoteFile;
     }
 }
