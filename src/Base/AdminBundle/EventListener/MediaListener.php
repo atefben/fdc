@@ -237,9 +237,9 @@ class MediaListener
         $em = $args->getEntityManager();
         $medias_audio_exist = $em->getRepository('BaseCoreBundle:MediaAudioTranslation')->findOneBy(array('mp3Url' => $path_audio_output . $file_name));
 		if ($medias_audio_exist) {
-			$mediaVideo->setMp3Url($path_audio_output . $file_name);
-		    $mediaVideo->setJobMp3Id($medias_audio_exist->getJobMp3Id());
-		    $mediaVideo->setJobMp3State($medias_audio_exist->getJobMp3State());
+			$mediaAudio->setMp3Url($path_audio_output . $file_name);
+		    $mediaAudio->setJobMp3Id($medias_audio_exist->getJobMp3Id());
+		    $mediaAudio->setJobMp3State($medias_audio_exist->getJobMp3State());
         } else {
 	        $elasticTranscoder = ElasticTranscoderClient::factory(array(
 	            'credentials' => array(
