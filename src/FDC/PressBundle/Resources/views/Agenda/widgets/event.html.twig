@@ -1,6 +1,8 @@
 {%- spaceless -%}
     {%- trans_default_domain 'FDCEventBundle' -%}
-
+		
+	{% if event is defined %}
+		
     {%- set isConferencePress = (event.type == 'Conférence de presse') ? true : false -%}
     {%- set isSeancePress = (event.type == 'Séance de presse') ? true : false -%}
     {%- set isSeanceDuJour = (event.type == 'Séance du jour') ? true : false -%}
@@ -112,4 +114,5 @@
             </div>
         </div>
     {%- endif -%}
+	{%- endif -%}
 {%- endspaceless -%}
