@@ -26,23 +26,24 @@
             <h3>{{ 'agenda.title.creerunevenement'|trans }}</h3>
             <p>{{ 'agenda.text.completezvotreagendainteractif'|trans }}</p>
             <form action="#" id="form_data">
-                <label for="title">{{ 'agenda.popin.label.titre'|trans }}</label>
+                <label for="title">{{ 'agenda.popin.label.titre'|trans }} *</label>
                 <input type="text" name="title">
                 <div class="time first">
-                    <label for="begin">{{ 'agenda.popin.label.debut'|trans }}</label>
+                    <label for="begin">{{ 'agenda.popin.label.debut'|trans }} *</label>
                     <input type="text" value="{{ festival_date.festivalStartsAt|date('d/m/Y') }}" name="datebegin" id="datepickerBegin">
                     <span class="pictodate">
                         <i class="icon icon_programmation"></i>
                     </span>
-                    <input type="text" class="hours" name="hoursbegin" value="15h30">
+                    {% set dateFirst = ('now'|date('i')>30)?'30':'00' %}
+                    <input type="text" class="hours" name="hoursbegin" value="{{ 'now'|date('H') }}h{{ dateFirst }}">
                 </div>
                 <div class="time">
-                    <label for="end">{{ 'agenda.popin.label.fin'|trans }}</label>
-                    <input type="text"  value="{{ festival_date.festivalEndsAt|date('d/m/Y') }}" name="dateend" id="datepickerEnd">
+                    <label for="end">{{ 'agenda.popin.label.fin'|trans }} *</label>
+                    <input type="text"  value="{{ festival_date.festivalStartsAt|date('d/m/Y') }} *" name="dateend" id="datepickerEnd">
                     <span class="pictodate">
                         <i class="icon icon_programmation"></i>
                     </span>
-                    <input type="text" value="15h30" class="hours" name="hoursend">
+                    <input type="text" value="{{ 'now'|date_modify("+1 hour")|date('H') }}h{{ dateFirst }}" class="hours" name="hoursend">
                 </div>
                 <label for="place">{{ 'agenda.popin.label.lieu'|trans }}</label>
                 <input type="text" name="place">

@@ -127,6 +127,14 @@ class MediaVideoAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $requiredFile = ($this->subject && $this->subject->getId()) ? false : true;
+        $securityContext = $this->getConfigurationPool()->getContainer()->get('security.context');
+        $isTranslatorEnEsCh = (
+            $securityContext->isGranted('ROLE_TRANSLATOR_EN') ||
+            $securityContext->isGranted('ROLE_TRANSLATOR_ES') ||
+            $securityContext->isGranted('ROLE_TRANSLATOR_ZH')
+        ) ? true : false;
+
+        $amazonRemoteFileAttrs = ($isTranslatorEnEsCh) ? array('disabled' => 'disabled') : array();
 
         $formMapper
             ->add('translations', 'a2lix_translations', array(
@@ -179,6 +187,7 @@ class MediaVideoAdmin extends Admin
                                 ->setParameter('type', 'video')
                                 ;
                         },
+                        'attr' => $amazonRemoteFileAttrs
                     ),
                     'title'            => array(
                         'label'              => 'form.label_title',
