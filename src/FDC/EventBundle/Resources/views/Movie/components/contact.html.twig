@@ -213,27 +213,36 @@
                                             <div>
                                                 <p class="sub">{{ 'movie.contact.label.production'|trans }}</p>
                                                 <p>
-                                                    {% if contact.companyName %}{{ contact.companyName }}{% endif %}
+                                                    {% set displayContact = [] %}
+                                                    {% if contact.companyName %}
+                                                        {% set displayContact = displayContact|merge([contact.companyName]) %}
+                                                    {% endif %}
                                                     {% if contact.address %}
-                                                        {% if contact.companyName %} - {% endif %}
-                                                        {{ contact.address.street }} {{ contact.address.postalCode }} {{ contact.address.city }}
+                                                        {% set displayAddress = contact.address.street ~ ' ' ~ contact.address.postalCode ~ ' ' ~ contact.address.city %}
                                                         {% if contact.address.country %}
-                                                            {{ contact.address.country|trans_fallback('name') }}
+                                                            {% set displayAddress = displayAddress ~ ' ' ~ contact.address.country|trans_fallback('name') %}
+                                                        {% endif %}
+                                                        {% set displayContact = displayContact|merge([displayAddress]) %}
+                                                        {% if (contact.address.phone or contact.address.mobilePhone) %}
+                                                            {% if contact.address.phone?:contact.address.mobilePhone %}
+                                                                {% set displayContact = displayContact|merge(['T: ' ~ (contact.address.phone?:contact.address.mobilePhone)]) %}
+                                                            {% endif %}
+                                                            {% if contact.address.fax %}
+                                                                {% set displayContact = displayContact|merge(['F: ' ~ contact.address.fax]) %}
+                                                            {% endif %}
+                                                        {% endif %}
+                                                        {% if contact.address.email %}
+                                                            {% set displayEmail = '<a href="mailto:' ~ contact.address.email ~ '">' %}
+                                                            {% set displayEmail =  displayEmail ~ contact.address.email ~ '</a>' %}
+                                                            {% set displayContact = displayContact|merge([displayEmail]) %}
+                                                        {% endif %}
+                                                        {% if contact.address.website %}
+                                                            {% set displayWebsite = '<a href="http://' ~ contact.address.website ~ '" target="_blank">' %}
+                                                            {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
+                                                            {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                         {% endif %}
                                                     {% endif %}
-                                                    {% if contact.address and (contact.address.phone or contact.address.mobilePhone) %}
-                                                        {% if contact.address %} - {% endif %}
-                                                        T: {{ contact.address.phone?:contact.address.mobilePhone }}{% if (contact.address.phone or contact.address.mobilePhone) and contact.address.fax %} - F: {{ contact.address.fax }} {% endif %}
-                                                    {% endif %}
-                                                    {% if contact.address.email %}
-                                                        {% if contact.address and contact.address.fax %} - {% endif %}
-                                                        <a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
-                                                    {% endif %}
-                                                    {% if contact.address and contact.address.website %}
-                                                        {% if contact.address and contact.address.email %} - {% endif %}
-                                                        <a href="http://{{ contact.address.website }}"
-                                                           target="_blank">{{ contact.address.website }}</a>
-                                                    {% endif %}
+                                                    {{ displayContact|join(' - ')|raw }}
                                                 </p>
                                             </div>
                                         {% endif %}

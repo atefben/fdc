@@ -49,7 +49,9 @@
                         {% endif %}
                         {% set file = trans.file %}
                         {% thumbnail file, '265x165' with {'alt': img|trans_fallback('alt') } %}
-
+					{% elseif article.video|trans_fallback('imageAmazonUrl') is not null %}
+						{% set img = s3_server_video ~ article.video|trans_fallback('imageAmazonUrl') %}
+						<img src="{{ img }}" alt="" />
                     {% endif %}
 
                 {% elseif class(article) == "StatementAudio" or class(article) == "InfoAudio" %}

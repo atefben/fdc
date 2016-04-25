@@ -135,7 +135,7 @@ class MediaListener
                 }
 
                 $createNews->setDisplayedHome(true);
-                $createNews->setDisplayedMobile(true);
+                $createNews->setDisplayedMobile($entity->getDisplayedMobile());
                 $createNews->setTheme($entity->getTheme());
                 $createNews->setHidden(true);
                 $createNews->setHeader($entity->getImage());
