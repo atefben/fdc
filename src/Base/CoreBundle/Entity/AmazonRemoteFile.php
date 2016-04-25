@@ -34,6 +34,12 @@ class AmazonRemoteFile
      */
     private $name;
 
+    /**
+     * @var string
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
+     */
+    private $type = 'video';
+
 
     /**
      * Get id
@@ -109,5 +115,28 @@ class AmazonRemoteFile
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return AmazonRemoteFile
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

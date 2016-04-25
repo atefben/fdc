@@ -269,3 +269,5 @@ parameters:
     app: '../src/Base/AdminBundle/Resources/certificats/entrust_root_certification_authority.pem'
     apns: '../src/Base/AdminBundle/Resources/certificats/server_certificates_bundle_prod.pem'
     instancemobile: 'prod'
+    amazon_remote_file_video: 'media_video_direct_upload'
+    amazon_remote_file_audio: 'media_audio_direct_upload'
