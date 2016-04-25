@@ -367,3 +367,11 @@
 #slider-competition .translated-title {
     font-size: 10px;
 }
+
+.single-movie .press .contacts .wrapper .contact-reduce-line-height p {
+    /*line-height: 1.2em;*/
+}
+
+.single-movie .press .contacts .wrapper .contact-increase-padding-bottom p {
+    padding-bottom: 25px;
+}
