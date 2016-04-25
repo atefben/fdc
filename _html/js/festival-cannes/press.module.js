@@ -1157,7 +1157,7 @@ $(document).ready(function () {
 
         //vérification des données reçues//
         $('#create-event-pop input[type=text]').each(function(index,value) {
-          if($(this).val() == "") {
+          if($(this).val() == "" && $(this).attr("name") != 'description' && $(this).attr("name") != 'place') {
             $(this).addClass('error');
           } else {
             if($(this).hasClass('error')) {
