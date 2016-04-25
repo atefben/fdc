@@ -1536,11 +1536,7 @@ $(document).ready(function () {
       }
   });
 
-  var time = $('.hours').first().timepicker({
-    timeFormat: typeof GLOBALS.calendar.i18n.labelFormat[GLOBALS.locale] !== "undefined" ? GLOBALS.calendar.i18n.labelFormat[GLOBALS.locale] : GLOBALS.calendar.i18n.labelFormat.default
-  });
-
-  var time2 = $('.hours').last().timepicker({
+  var time = $('.hours').timepicker({
     timeFormat: typeof GLOBALS.calendar.i18n.labelFormat[GLOBALS.locale] !== "undefined" ? GLOBALS.calendar.i18n.labelFormat[GLOBALS.locale] : GLOBALS.calendar.i18n.labelFormat.default
   });
 
