@@ -59,7 +59,8 @@ class FixedDimensionsResizer implements ResizerInterface
             throw new \RuntimeException(sprintf('Width/Height parameter is missing in context "%s" for provider "%s". Please add at least one parameter.', $media->getContext(), $media->getProviderName()));
         }
 
-        if ($settings['crop'] === true) {
+        // CROP
+        if ($settings['constraint'] === false) {
             return new Box($settings['width'], $settings['height']);
         }
 
