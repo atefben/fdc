@@ -3,14 +3,14 @@ jms_translation:
         fdc_event:
             dirs: [%kernel.root_dir%/../src/FDC/EventBundle]
             output_dir: %kernel.root_dir%/../src/FDC/EventBundle/Resources/translations
-            ignored_domains: []
+            ignored_domains: [FDCPressBundle]
             excluded_names: ["*TestCase.php", "*Test.php"]
             excluded_dirs: []
             extractors: []
         fdc_press:
             dirs: [%kernel.root_dir%/../src/FDC/PressBundle]
             output_dir: %kernel.root_dir%/../src/FDC/PressBundle/Resources/translations
-            ignored_domains: []
+            ignored_domains: [FDCEventBundle]
             excluded_names: ["*TestCase.php", "*Test.php"]
             excluded_dirs: []
             extractors: []
