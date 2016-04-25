@@ -1209,11 +1209,10 @@ $(document).ready(function () {
           }
 
           id = guid();
-          // url= "eventPopin.html?id="+id;
-
+          var titleEvent = (data.title.length > 17) ? jQuery.trim(data.title).substring(0, 15).split(" ").slice(0, -1).join(" ") + "..." : data.title;
            //Création de l'évènement et affichage sur le calendrier
           var myEvent = {
-               "title": jQuery.trim(data.title).substring(0, 15).split(" ").slice(0, -1).join(" ") + "...",
+               "title": titleEvent,
                "eventColor": "#fff",
                "start": dateBegin,
                "end": dateEnd,
