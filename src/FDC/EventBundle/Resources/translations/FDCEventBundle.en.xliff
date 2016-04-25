@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-04-25T14:54:21Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2016-04-25T16:48:58Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -1211,12 +1211,12 @@
       </trans-unit>
       <trans-unit id="e0908faf3e5445a4b5c695f2e47a132d52cbc5e9" resname="search.result.category.infos">
         <source>search.result.category.infos</source>
-        <target state="new">search.result.category.infos</target>
+        <target>search.result.category.infos</target>
         <jms:reference-file line="31">Global/components/search.categories.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f447addd05551402124249b4b5d58f3395213d0f" resname="search.result.category.medias">
         <source>search.result.category.medias</source>
-        <target state="new">search.result.category.medias</target>
+        <target>search.result.category.medias</target>
         <jms:reference-file line="43">Global/components/search.categories.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5e2e38dda2f2906d414168f97237347ee96a3a4e" resname="search.result.category.participer">
