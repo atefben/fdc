@@ -39,6 +39,15 @@
 
     .list {
       width: 100%;
+      .picto {
+        z-index: 10;
+        position: absolute;
+        bottom: 10px;
+        &.picto-my-selection {
+          position: absolute;
+          left: 180px;
+        }
+      }
     }
 
     .item {
@@ -46,12 +55,20 @@
       height: 160px;
       margin-bottom: 40px;
       position: relative;
+      width: 100%;
+      &:before {
+        background: none;
+      }
+      .top-info {
+        margin: 0;
+      }
     }
 
     .item .info {
       width: 270px;
       height: 160px;
       float: left;
+      margin: 0;
     }
 
     .item .info .category {
@@ -62,8 +79,10 @@
       text-transform: uppercase;
       font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
       margin-top: 15px;
+      padding: 0;
       padding-bottom: 5px;
       font-weight: 600;
+      margin-bottom: 0;
     }
 
     .item .info .date, .item .info .hour {
@@ -73,6 +92,8 @@
     }
 
     .item .info h2 {
+      text-align: left;
+      margin-left: 0;
       margin-top: 25px;
       line-height: 36px;
       color:#333;

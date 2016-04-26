@@ -84,7 +84,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * @var MediaImageSimple
-     * @ORM\Column(name="credits", type="string", length=255)
+     * @ORM\Column(name="credits", type="string", length=255, nullable=true)
      * @Groups({
      *     "person_list",
      *     "person_show",
@@ -106,7 +106,7 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * @var MediaImageSimple
-     * @ORM\Column(name="presidentJuryCredits", type="string", length=255)
+     * @ORM\Column(name="presidentJuryCredits", type="string", length=255, nullable=true)
      * @Groups({
      *     "person_list",
      *     "person_show",
