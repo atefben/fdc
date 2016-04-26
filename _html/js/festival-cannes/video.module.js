@@ -573,6 +573,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
             }
         }, true);
+    } else {
+        console.log('test');
     }
 
     callback(playerInstance);
