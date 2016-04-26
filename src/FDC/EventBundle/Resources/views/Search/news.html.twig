@@ -2,7 +2,7 @@
 {% extends 'FDCEventBundle:Search:base.html.twig' %}
 {% block content %}
     {% for article in items %}
-        <article class="article {% if article.double is defined and article.double %}double{% endif %}" data-format="{{ article.newsType|get_news_type }}" data-theme="{{ article.theme|trans_fallback('slug') }}">
+        <article class="article {% if article.double is defined and article.double %}double{% endif %}" data-date="{{ article.publishedAt|date('dmY') }}" data-format="{{ article.newsType|get_news_type }}" data-theme="{{ article.theme|trans_fallback('slug') }}">
             <div class="image{% if type is defined and type == 'same-day' %} image-sameday-wrapper{% endif %}">
                 <div class="image-wrapper">
                     {% if type is defined %}

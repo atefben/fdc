@@ -244,25 +244,25 @@ class SearchController extends Controller
             );
         }
 
-        $years = array();
+        $dates = array();
         $themes = array();
 
         foreach ($items as $item) {
 
-            if (!in_array($item->getPublishedAt()->format('Y'), $years)) {
-                $filters['date'][]['publishedAt'] = $item->getPublishedAt()->format('Y');
+            if (!in_array($item->getPublishedAt()->format('dmY'), $dates)) {
+                $sortedDates[] = $item->getPublishedAt();
 
-                $years[] = $item->getPublishedAt()->format('Y');
+                $dates[] = $item->getPublishedAt()->format('dmY');
             }
             if (!in_array($item->getTheme()->getSlug(), $themes)) {
-                $filters['theme'][] = array(
-                  'slug' => $item->getTheme()->getSlug(),
-                  'name' => $item->getTheme()->getName(),
-                );
+                $filters['theme'][] = $item->getTheme();
 
                 $themes[] = $item->getTheme()->getSlug();
             }
         }
+        
+        rsort($sortedDates);
+        $filters['date'] = $sortedDates;
         
         return $filters;
     }
