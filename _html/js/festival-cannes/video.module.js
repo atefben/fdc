@@ -576,26 +576,29 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             }
         }, true);
     } else {
-        if (isiPad(true)) {
-            console.log('test');
-            $fullscreen[0].addEventListener('touchstart', function() {
-                console.log('in');
-                time = window.setInterval(function() {
-                    try {
-                        console.log('in 2');
-                        $container[0].webkitEnterFullscreen();
-                    }
-                    catch(e) {}
-                }, 250);
-            });
+        // if (isiPad(true)) {
+        //     console.log('test');
+        //     $fullscreen[0].addEventListener('touchstart', function() {
+        //         console.log('in');
+        //         time = window.setInterval(function() {
+        //             console.log('in 2');
+        //             try {
+        //                 $container[0].webkitEnterFullscreen();
+        //             }
+        //             catch(e) {
+        //                 console.erro(e)
+        //             }
+        //         }, 250);
+        //     });
 
-            $container[0].addEventListener('webkitbeginfullscreen', function() {
-                window.clearInterval(time);
-            });
-            $container[0].addEventListener('webkitendfullscreen', function() {
-                // playerInstance.pause();
-            });
-        }
+        //     $container[0].addEventListener('webkitbeginfullscreen', function() {
+        //         window.clearInterval(time);
+        //     });
+        //     $container[0].addEventListener('webkitendfullscreen', function() {
+        //         window.clearInterval(time);
+        //         // playerInstance.pause();
+        //     });
+        // }
     }
 
     callback(playerInstance);
