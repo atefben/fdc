@@ -144,9 +144,7 @@ class MediaImageAdmin extends Admin
                         'label'              => 'form.label_alt_img',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help'        => 'form.media.helper_alt',
-                        'constraints'        => array(
-                            new NotBlank()
-                        )
+                        'required'           => false
                     ),
                     'copyright'      => array(
                         'sonata_help'        => 'form.media.helper_copyright',
