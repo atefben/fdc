@@ -36,7 +36,7 @@ class FDCPageParticipateSectionTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=122)
+     * @ORM\Column(type="string", length=122, nullable=true)
      */
     protected $icon;
 

@@ -131,6 +131,7 @@ class FDCPageParticipateSectionAdmin extends Admin
                             'icon_les-bonnes-pratiques' => 'Check'
 
                         ),
+                        'required' => false,
                         'label' => 'form.label_information_icon',
                         'translation_domain' => 'BaseAdminBundle',
                         'choice_translation_domain' => 'BaseAdminBundle'
