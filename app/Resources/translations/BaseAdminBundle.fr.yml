@@ -293,6 +293,7 @@ list:
     label_section_title: Nom de la section
     label_page: Titre de la page d'attente
     label_film_jury_type_name:  Type de jury
+    displayed_mobile: Visible sur mobile
     tooltip:
         unlock: DÉBLOQUER
         modified_by: En cours de modification par </br>

@@ -2,14 +2,9 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\News;
-use Base\CoreBundle\Entity\NewsArticle;
-use Base\CoreBundle\Entity\NewsArticleTranslation;
-use Base\CoreBundle\Entity\NewsNewsAssociated;
-
 use Base\AdminBundle\Component\Admin\NewsCommonAdmin as Admin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Datagrid\ListMapper;
+use Base\CoreBundle\Entity\News;
+use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;

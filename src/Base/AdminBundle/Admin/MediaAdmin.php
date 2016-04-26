@@ -39,6 +39,9 @@ class MediaAdmin extends Admin
             ->add('id')
             ->add('createdAt')
             ->add('updatedAt')
+            ->add('displayedMobile', null, array(
+                'label' => 'list.displayed_mobile',
+            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),

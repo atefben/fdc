@@ -70,6 +70,9 @@ class EventAdmin extends Admin
             ->add('title', null, array('template' => 'BaseAdminBundle:News:list_title.html.twig'))
             ->add('createdAt')
             ->add('updatedAt')
+            ->add('displayedMobile', null, array(
+                'label' => 'list.displayed_mobile',
+            ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
             ))

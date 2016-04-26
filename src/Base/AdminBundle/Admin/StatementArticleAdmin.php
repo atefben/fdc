@@ -2,14 +2,9 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\Statement;
-use Base\CoreBundle\Entity\StatementArticle;
-use Base\CoreBundle\Entity\StatementArticleTranslation;
-use Base\CoreBundle\Entity\StatementStatementAssociated;
-
 use Base\AdminBundle\Component\Admin\StatementCommonAdmin as Admin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Datagrid\ListMapper;
+use Base\CoreBundle\Entity\Statement;
+use Base\CoreBundle\Entity\StatementArticleTranslation;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
