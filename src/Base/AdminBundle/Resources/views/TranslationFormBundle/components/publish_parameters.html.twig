@@ -109,12 +109,11 @@
                     {% endif %}
                     {% if form.parent.children.translateOptions is defined %}
                         {% for translateOption in form.parent.children.translateOptions.vars.choices %}
-                            {% if translateOption.value == 1 %}
-                                <div>
-                                    {{ translateOption.label|trans }}
-                                </div>
-                            {% endif %}
+                            <div>
+                                {{ translateOption.label|trans }}
+                            </div>
                         {% endfor %}
+                        <br>
                         <div class="hidden">
                             {{ form_row(form.parent.children.translateOptions) }}
                         </div>

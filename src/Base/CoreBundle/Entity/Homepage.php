@@ -141,6 +141,13 @@ class Homepage implements TranslateMainInterface
     private $prefooterImage4;
 
     /**
+     * @var MediaImageSimple
+     *
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $prefooterImage5;
+
+    /**
      * @var HomepageSlide
      *
      * @ORM\OneToMany(targetEntity="HomepageSlide", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
@@ -1254,4 +1261,27 @@ class Homepage implements TranslateMainInterface
         return $this->filmsAssociated;
     }
 
+
+    /**
+     * Set prefooterImage5
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $prefooterImage5
+     * @return Homepage
+     */
+    public function setPrefooterImage5(\Base\CoreBundle\Entity\MediaImageSimple $prefooterImage5 = null)
+    {
+        $this->prefooterImage5 = $prefooterImage5;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterImage5
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getPrefooterImage5()
+    {
+        return $this->prefooterImage5;
+    }
 }

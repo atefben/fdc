@@ -286,6 +286,7 @@ class MediaListener
         $medias_2 = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('webmUrl' => $nameWebm));
         if ($medias_1 || $medias_2) {
             if ($medias_1) {
+				$mediaVideo->setImageAmazonUrl($path_video_output . '00002/' . str_replace(array('.mov', '.mp4'), '.png', $file_name));
                 $mediaVideo->setMp4Url($nameMp4);
                 $mediaVideo->setJobMp4Id($medias_1->getJobMp4Id());
                 $mediaVideo->setJobMp4State($medias_1->getJobMp4State());
