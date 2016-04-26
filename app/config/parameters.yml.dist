@@ -251,11 +251,11 @@ parameters:
     admin_fdc_page_news_audios_id: ~
     admin_fdc_page_news_images_id: ~
     admin_fdc_page_news_videos_id: ~
-    s3_elastic_mp4_pipeline_id: '1454076999739-uy533t'
-    s3_elastic_mp4_preset_id: '1456133456345-3dts1g'
-    s3_elastic_webm_pipeline_id: '1454076999739-uy533t'
-    s3_elastic_webm_preset_id: '1456133404879-sv127j'
-    s3_elastic_mp3_pipeline_id: '1455903590532-u7lwud'
+    s3_elastic_mp4_pipeline_id: '1460999541198-cadbhi'
+    s3_elastic_mp4_preset_id: '1461677504822-mp1ivs'
+    s3_elastic_webm_pipeline_id: '1460999541198-cadbhi'
+    s3_elastic_webm_preset_id: '1461677560453-jgxlmi'
+    s3_elastic_mp3_pipeline_id: '1460999541198-cadbhi'
     s3_elastic_mp3_preset_id: '1351620000001-300040'
     admin_event_fdc_page_prepare_id: 1
     admin_fdc_orange_series_id: 1
