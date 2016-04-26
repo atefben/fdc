@@ -242,7 +242,7 @@ class NewsRepository extends EntityRepository
         }
 
         $this->addFDCEventQueries($qb, 's');
-
+error_log(print_r(\Doctrine\Common\Util\Debug::export($qb, 2),1));
         return $qb
             ->getQuery()
             ->getOneOrNullResult()
