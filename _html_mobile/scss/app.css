@@ -1222,11 +1222,11 @@ section {
   line-height: 30px;
   font-size: 24px;
 }
-#main.article .section.articles .owl-stage-outer,
-#main.artist .section.articles .owl-stage-outer,
-#main.detail-event .section.articles .owl-stage-outer {
+#main.article .owl-stage-outer,
+#main.artist .owl-stage-outer,
+#main.detail-event .owl-stage-outer {
   width: 640px;
-  margin-left: 0;
+  margin-left: -32px;
 }
 #main.article .video,
 #main.artist .video,
