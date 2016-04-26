@@ -39,7 +39,7 @@ sonata_media:
             providers:
                 - sonata.media.provider.image
             formats:
-                2560x1103: { width: 2560, height: 1103, quality: 100 }
+                2560x1103: { width: 2560, height: 1103, quality: 100, constraint: false }
 
         film_poster:
             providers:
@@ -259,8 +259,8 @@ sonata_media:
             providers:
                 - sonata.media.provider.image
             formats:
-                mobile: { width: 584 , height: 794 , quality: 100 }
-                small: { width: 400 , quality: 100 }
+                mobile: { width: 584 , height: 794 , quality: 100, constraint: false }
+                small: { width: 400 , quality: 100, constraint: false }
 
         media_archive:
             providers:
