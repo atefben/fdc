@@ -317,9 +317,8 @@ class TelevisionController extends Controller
             $translation = current($pages)->findTranslationByLocale($locale);
             if ($translation) {
                 if (current($pages)->getSelectionSection()) {
-                    $sectionTrans =  current($pages)->getSelectionSection()->findTranslationByLocale($locale);
-                }
-                else {
+                    $sectionTrans = current($pages)->getSelectionSection()->findTranslationByLocale($locale);
+                } else {
                     $sectionTrans = null;
                 }
                 if (!$translation->getSlug() && (!$sectionTrans || ($sectionTrans && !$sectionTrans->getSlug()))) {
@@ -327,8 +326,7 @@ class TelevisionController extends Controller
                 }
                 if ($translation->getSlug()) {
                     $slug = $translation->getSlug();
-                }
-                else {
+                } else {
                     $slug = $sectionTrans->getSlug();
                 }
 
@@ -428,7 +426,11 @@ class TelevisionController extends Controller
         $videos = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:MediaVideo')
-            ->getFilmTrailersMediaVideos($festivalId, $locale, $film->getId());
+            ->getFilmTrailersMediaVideos($festivalId, $locale, $film->getId())
+        ;
+        if (!$videos) {
+            throw $this->createNotFoundException();
+        }
         if ($video) {
             $temp = array();
             $firstVideo = null;
@@ -461,7 +463,8 @@ class TelevisionController extends Controller
         $films = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmFilm')
-            ->getFilmsByIds(array_keys($groups));
+            ->getFilmsByIds(array_keys($groups))
+        ;
 
         foreach ($films as $item) {
             $groups[$item->getId()]['film'] = $item;
