@@ -1,5 +1,6 @@
 var timeout = 1000,
     thread,
+    time,
     controlBar =
         '<div class="control-bar">\
             <div class="playstate">\
@@ -574,7 +575,24 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             }
         }, true);
     } else {
-        console.log('test');
+        if (isiPad(true)) {
+            console.log('test');
+            $fullscreen[0].addEventListener('touchstart', function() {
+                time = window.setInterval(function() {
+                    try {
+                        $container[0].webkitEnterFullscreen();
+                    }
+                    catch(e) {}
+                }, 250);
+            }
+
+            $container[0].addEventListener('webkitbeginfullscreen', function() {
+                window.clearInterval(time);
+            });
+            $container[0].addEventListener('webkitendfullscreen', function() {
+                playerInstance.pause();
+            });
+        }
     }
 
     callback(playerInstance);
