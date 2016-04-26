@@ -108,6 +108,14 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * @var string
      *
+     * @ORM\Column(type="string", nullable=true)
+     *
+     */
+    private $typeClone;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="boolean", options={"default":0})
      */
     private $hidden = 0;
@@ -1040,5 +1048,28 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      */
     public function getFeedItemPubDate() {
         return array('date' => $this->findTranslationByLocale('fr')->getUpdatedAt());
+    }
+
+    /**
+     * Set typeClone
+     *
+     * @param string $typeClone
+     * @return News
+     */
+    public function setTypeClone($typeClone)
+    {
+        $this->typeClone = $typeClone;
+
+        return $this;
+    }
+
+    /**
+     * Get typeClone
+     *
+     * @return string 
+     */
+    public function getTypeClone()
+    {
+        return $this->typeClone;
     }
 }

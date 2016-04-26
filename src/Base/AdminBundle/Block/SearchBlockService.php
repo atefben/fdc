@@ -422,7 +422,6 @@ class SearchBlockService extends BaseBlockService
             }
         }
 
-
         // SEARCH
         $params['status'] = $status;
         $priorityStatuses = News::getPriorityStatuses();

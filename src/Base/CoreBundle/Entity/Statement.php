@@ -95,6 +95,14 @@ abstract class Statement implements TranslateMainInterface
     private $signature;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     *
+     */
+    private $typeClone;
+
+    /**
      * @var StatementTag
      *
      * @ORM\OneToMany(targetEntity="StatementTag", mappedBy="statement", cascade={"persist"})
@@ -875,5 +883,28 @@ abstract class Statement implements TranslateMainInterface
     public function getHidden()
     {
         return $this->hidden;
+    }
+
+    /**
+     * Set typeClone
+     *
+     * @param string $typeClone
+     * @return Statement
+     */
+    public function setTypeClone($typeClone)
+    {
+        $this->typeClone = $typeClone;
+
+        return $this;
+    }
+
+    /**
+     * Get typeClone
+     *
+     * @return string 
+     */
+    public function getTypeClone()
+    {
+        return $this->typeClone;
     }
 }

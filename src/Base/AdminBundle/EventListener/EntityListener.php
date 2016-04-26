@@ -90,6 +90,18 @@ class EntityListener
             $this->setPublishedAt($entity, false);
         }
 
+        if (method_exists($entity, 'setTypeClone')) {
+            $mapper = array(
+                'NewsArticle' => 'article', 'NewsAudio' => 'audio', 'NewsImage' => 'image', 'NewsVideo' => 'video',
+                'StatementArticle' => 'article', 'StatementAudio' => 'audio', 'StatementImage' => 'image', 'StatementVideo' => 'video',
+                'InfoArticle' => 'article', 'InfoAudio' => 'audio', 'InfoImage' => 'image', 'InfoVideo' => 'video',
+            );
+
+            if (isset($mapper[$entityName])) {
+                $entity->setTypeClone($mapper[$entityName]);
+            }
+        }
+
         if (method_exists($entity, 'getTranslate')) {
             $languages = array('en', 'zh', 'es');
             if ($entity->getTranslate()) {

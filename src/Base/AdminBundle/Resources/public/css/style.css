@@ -313,3 +313,8 @@ form[action*="widgetmosaicmovie"] div[id$="translations"] > .form-group > label.
 #dashboard-search-container #dashboard_search_type_id {
     width: 100px;
 }
+
+.dashboard-search-filter {
+    color: #3c8dbc;
+    cursor: pointer;
+}
