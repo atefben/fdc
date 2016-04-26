@@ -5422,6 +5422,42 @@ article .picto .icon {
 }
 
 /*ADD TO MY SELECTION PICTO*/
+#main.articles .list .picto.picto-my-selection {
+  position: absolute;
+  left: 180px;
+}
+
+#main.articles .list .picto {
+  z-index: 10;
+  position: absolute;
+  bottom: 10px;
+}
+
+#main.articles .item {
+  width: 100%;
+}
+#main.articles .item .info {
+  margin: 0;
+}
+
+#main.articles .item .info .category {
+  padding: 0;
+  margin-bottom: 0;
+}
+
+#main.articles .item:before {
+  background: none;
+}
+
+#main.articles .item .info h2 {
+  text-align: left;
+  margin-left: 0;
+}
+
+#main.articles .item .top-info {
+  margin: 0;
+}
+
 .picto.picto-my-selection, .list .picto.picto-my-selection, .owl-carousel .picto.picto-my-selection {
   top: 10px;
   right: 10px;

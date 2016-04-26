@@ -24,6 +24,15 @@ String.prototype.parseHashtag = function(twitter) {
   });
 };
 
+// Get the size of an object
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
+
 window.requestAnimFrame = (function(){
   return  window.requestAnimationFrame       ||
           window.webkitRequestAnimationFrame ||
