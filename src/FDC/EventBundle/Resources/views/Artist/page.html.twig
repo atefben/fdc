@@ -249,7 +249,7 @@
                                         {% endif %}
                                     </div>
                                     <figcaption>
-                                        <span class="name">{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}</span>
+                                        <span class="name">{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}</span>
                                         <span class="rank" {{ director|content_lang('profession') }}>{{ director|trans_fallback('profession') }}</span>
                                     </figcaption>
                                 </a>
