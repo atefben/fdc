@@ -9,9 +9,9 @@
         {% elseif class(article) == "StatementAudio" or class(article) == "InfoAudio" %}
             {% set articleFormat = "audio" %}
         {% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
-            {% set articleFormat = "image" %}
+            {% set articleFormat = "photo" %}
         {% endif %}
-        <article class="article" data-format="{{ articleFormat }}" data-theme="competition">
+        <article class="article" data-date="{{ article.publishedAt|date('dmY') }}" data-format="{{ articleFormat }}" data-theme="{{ article.theme|trans_fallback('slug') }}">
             <div class="image">
                 <div class="image-wrapper">
                     {% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
