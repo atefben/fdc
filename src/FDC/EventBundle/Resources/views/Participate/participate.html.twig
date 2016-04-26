@@ -31,39 +31,43 @@
         {#                  #}
         <div class="contain-participate">
             {% for s in participatePage.downloadSection %}
-                <section class="content-manual content-partners item-manual" style="border-top: 1px solid #e0e0e0;">
-                    <div class="contain-section contain-cinema contain-infos">
-                        <h3 class="title-participate">
-                            <i class="icon {{ s.section|trans_fallback('icon') }}"></i>
-                            {{ s.section|trans_fallback('title') }}
-                        </h3>
-                        <i class="icon accordion icon_plus"></i>
-                        {% if s.section|trans_fallback('description') %}
-                            <div class="descrip-section">
-                                {{ s.section|trans_fallback('description')|raw }}
-                            </div>
-                        {% endif %}
+				{% if ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or 
+					  ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED'))
+				%}
+	                <section class="content-manual content-partners item-manual" style="border-top: 1px solid #e0e0e0;">
+	                    <div class="contain-section contain-cinema contain-infos">
+	                        <h3 class="title-participate">
+	                            <i class="icon {{ s.section|trans_fallback('icon') }}"></i>
+	                            {{ s.section|trans_fallback('title') }}
+	                        </h3>
+	                        <i class="icon accordion icon_plus"></i>
+	                        {% if s.section|trans_fallback('description') %}
+	                            <div class="descrip-section">
+	                                {{ s.section|trans_fallback('description')|raw }}
+	                            </div>
+	                        {% endif %}
 
-                        {#                  #}
-                        {#     WIDGETS      #}
-                        {#                  #}
-                        {% for widget in s.section.widgets %}
-                            {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
-                                {% include 'FDCEventBundle:Participate:widgets/participate-one.html.twig' %}
-                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
-                                {% include 'FDCEventBundle:Participate:widgets/participate-two.html.twig' %}
-                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypethree" %}
-                                {% include 'FDCEventBundle:Participate:widgets/participate-three.html.twig' %}
-                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefour" %}
-                                {% include 'FDCEventBundle:Participate:widgets/participate-four.html.twig' %}
-                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefive" %}
-                                {% include 'FDCEventBundle:Participate:widgets/participate-five.html.twig' %}
-                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetSubTitle" %}
-                                {% include 'FDCEventBundle:Participate:widgets/participate-subtitle.html.twig' %}
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </section>
+	                        {#                  #}
+	                        {#     WIDGETS      #}
+	                        {#                  #}
+	                        {% for widget in s.section.widgets %}
+	                            {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
+	                                {% include 'FDCEventBundle:Participate:widgets/participate-one.html.twig' %}
+	                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypetwo" %}
+	                                {% include 'FDCEventBundle:Participate:widgets/participate-two.html.twig' %}
+	                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypethree" %}
+	                                {% include 'FDCEventBundle:Participate:widgets/participate-three.html.twig' %}
+	                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefour" %}
+	                                {% include 'FDCEventBundle:Participate:widgets/participate-four.html.twig' %}
+	                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetTypefive" %}
+	                                {% include 'FDCEventBundle:Participate:widgets/participate-five.html.twig' %}
+	                            {% elseif class(widget) == "FDCPageParticipateSectionWidgetSubTitle" %}
+	                                {% include 'FDCEventBundle:Participate:widgets/participate-subtitle.html.twig' %}
+	                            {% endif %}
+	                        {% endfor %}
+	                    </div>
+	                </section>
+				{% endif %}
             {% endfor %}
         </div>
 
