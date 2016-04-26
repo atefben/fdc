@@ -232,6 +232,39 @@ class MediaListener
     {
         $file_name = $mediaAudio->getAmazonRemoteFile()->getName();
         $file_path = explode('/', $mediaAudio->getAmazonRemoteFile()->getUrl());
+		$path_audio_input = $file_path['0'] . '/';
+        $path_audio_output = 'media_audio_encoded' . '/direct_encoded/';
+        $em = $args->getEntityManager();
+        $medias_audio_exist = $em->getRepository('BaseCoreBundle:MediaAudioTranslation')->findOneBy(array('mp3Url' => $path_audio_output . $file_name));
+		if ($medias_audio_exist) {
+			$mediaAudio->setMp3Url($path_audio_output . $file_name);
+		    $mediaAudio->setJobMp3Id($medias_audio_exist->getJobMp3Id());
+		    $mediaAudio->setJobMp3State($medias_audio_exist->getJobMp3State());
+        } else {
+	        $elasticTranscoder = ElasticTranscoderClient::factory(array(
+	            'credentials' => array(
+	                'key'    => $this->getParameter('s3_access_key'),
+	                'secret' => $this->getParameter('s3_secret_key'),
+	            ),
+	            'region'      => $this->getParameter('s3_video_region'),
+	        ));
+	        $job = $elasticTranscoder->createJob(array(
+	            'PipelineId'      => $this->getParameter('s3_elastic_mp3_pipeline_id'),
+	            'OutputKeyPrefix' => $path_audio_output,
+	            'Input'           => array(
+	                'Key' => $path_audio_input . $file_name,
+	            ),
+	            'Outputs'         => array(
+	                array(
+	                    'Key'      => $file_name,
+	                    'PresetId' => $this->getParameter('s3_elastic_mp3_preset_id'),
+	                ),
+	            ),
+	        ));
+	        $mediaAudio->setJobMp3Id($job->get('Job')['Id']);
+	        $mediaAudio->setMp3Url($path_audio_output . $file_name);
+	        $mediaAudio->setJobMp3State(1);
+		}
     }
 
     protected function createAmazonVideoJob(MediaVideoTranslation $mediaVideo, $args)
@@ -423,8 +456,6 @@ class MediaListener
             $path_audio_input = $file_path['3'] . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
             $path_audio_output = 'media_audio_encoded' . '/' . $file_path['4'] . '/' . $file_path['5'] . '/';
 
-            error_log($path_audio_input);
-            error_log($file_name);
             $job = $elasticTranscoder->createJob(array(
                 'PipelineId'      => $this->getParameter('s3_elastic_mp3_pipeline_id'),
                 'OutputKeyPrefix' => $path_audio_output,

@@ -127,6 +127,9 @@ class InfoCommonAdmin extends BaseAdmin
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',
             ))
+            ->add('displayedMobile', null, array(
+                'label' => 'list.displayed_mobile',
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => InfoArticle::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'

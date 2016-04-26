@@ -37,18 +37,7 @@
                                 {% endif %}
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
-                                        {#{{ form_row(form.parent.children.id) }}#}
-                                        {{ form_row(translationsFields.title) }}
-                                        {{ form_row(form.parent.children.theme) }}
-                                        {{ form_row(form.parent.children.header) }}
-                                        {{ form_row(form.parent.children.audio) }}
-                                        {{ form_row(translationsFields.introduction) }}
-                                        {{ form_row(form.parent.children.signature) }}
-                                    </div>
-                                </div>
-                            {% else %}
-                                <div class="box-body">
-                                    <div class="sonata-ba-collapsed-fields">
+                                        {% if is_granted('ROLE_TRANSLATOR') or is_granted('ROLE_TRANSLATOR_MASTER') %}
                                         <div class="form-group">
                                             <label class="control-label">
                                                 Identifiant
@@ -61,6 +50,32 @@
                                                 {% endif %}
                                             </div>
                                         </div>
+                                        {% endif %}
+                                        {{ form_row(translationsFields.title) }}
+                                        {{ form_row(form.parent.children.theme) }}
+                                        {{ form_row(form.parent.children.header) }}
+                                        {{ form_row(form.parent.children.audio) }}
+                                        {{ form_row(translationsFields.introduction) }}
+                                        {{ form_row(form.parent.children.signature) }}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        {% if is_granted('ROLE_TRANSLATOR') or is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Identifiant
+                                                </label>
+                                                <div>
+                                                    {% if translationsFields.vars.value is not empty and
+                                                    translationsFields.vars.value.translatable is not empty
+                                                    %}
+                                                        {{ translationsFields.vars.value.translatable.id }}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        {% endif %}
                                         {{ form_row(translationsFields.title) }}
                                         <div class="form-group">
                                             <label class="control-label">

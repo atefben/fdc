@@ -7686,7 +7686,6 @@ header #searchContainer {
   display: none;
 }
 #searchContainer #results #filtered .filters {
-  display: none;
   height: 48px;
   border-bottom: 1px solid #dfdfdf;
   line-height: 42px;
@@ -12169,6 +12168,9 @@ article .read-later.rAlign span:after {
   clear: both;
 }
 
+#gridPhotos {
+  background: #000;
+}
 #gridPhotos:after {
   content: '';
   display: block;

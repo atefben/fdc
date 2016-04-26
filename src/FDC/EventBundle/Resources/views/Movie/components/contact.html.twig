@@ -372,7 +372,7 @@
                                             {% if contact.person and contact.person.subordinates|length %}
                                                 <br/>
                                                 {% for subordinate in contact.person.subordinates %}
-                                                    {{ subordinate.person.firstname }} {{ subordinate.person.lastname }}{% if loop.last == false %} - {% endif %}
+                                                    {{ subordinate.firstname }} {{ subordinate.lastname }}{% if loop.last == false %} - {% endif %}
                                                 {% endfor %}
                                             {% endif %}
                                         </p>
@@ -414,7 +414,7 @@
                                             {% if contact.person and contact.person.subordinates|length %}
                                                 <br/>
                                                 {% for subordinate in contact.person.subordinates %}
-                                                    {{ subordinate.person.firstname }} {{ subordinate.person.lastname }}{% if loop.last == false %} - {% endif %}
+                                                    {{ subordinate.firstname }} {{ subordinate.lastname }}{% if loop.last == false %} - {% endif %}
                                                 {% endfor %}
                                             {% endif %}
                                         </p>

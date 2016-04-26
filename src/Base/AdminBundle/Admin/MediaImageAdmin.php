@@ -1,16 +1,14 @@
 <?php
 namespace Base\AdminBundle\Admin;
 
+use Base\AdminBundle\Component\Admin\Admin;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageTranslation;
-use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\NotNull;
-use Symfony\Component\Validator\Constraints\Valid;
 
 /**
  * MediaImageAdmin class.
@@ -95,6 +93,9 @@ class MediaImageAdmin extends Admin
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',
             ))
+            ->add('displayedMobile', null, array(
+                'label' => 'list.displayed_mobile',
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => MediaImage::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'
@@ -144,9 +145,7 @@ class MediaImageAdmin extends Admin
                         'label'              => 'form.label_alt_img',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help'        => 'form.media.helper_alt',
-                        'constraints'        => array(
-                            new NotBlank()
-                        )
+                        'required'           => false
                     ),
                     'copyright'      => array(
                         'sonata_help'        => 'form.media.helper_copyright',

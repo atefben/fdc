@@ -21,6 +21,7 @@ var GLOBALS = {
     "photosUrl": "photos.php",
     "videosUrl": "videos.php",
     "searchUrl": "searchsuggest.json",
+    "resultUrl": "results.json",
   },
   "texts" : {
     "url" : {
