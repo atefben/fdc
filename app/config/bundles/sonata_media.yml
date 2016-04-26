@@ -10,30 +10,30 @@ sonata_media:
             providers:
                - sonata.media.provider.image
             formats:
-                mobile: { width: 584 , height: 794 , quality: 100 }
-                tiny:  { width: 76, height: 92, quality: 100 }
-                small: { width: 256 , height: 348 , quality: 100 }
-                300x400: { width: 300 , height: 400 , quality: 100 }
-                420x560: { width: 420 , height: 560 , quality: 100 }
-                searchtiny: { width: 52 , height: 66 , quality: 100 }
-                search: { width: 170 , height: 231 , quality: 100 }
+                mobile: { width: 584 , height: 794 , quality: 100, constraint: false }
+                tiny:  { width: 76, height: 92, quality: 100, constraint: false }
+                small: { width: 256 , height: 348 , quality: 100, constraint: false }
+                300x400: { width: 300 , height: 400 , quality: 100, constraint: false }
+                420x560: { width: 420 , height: 560 , quality: 100, constraint: false }
+                searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
+                search: { width: 170 , height: 231 , quality: 100, constraint: false }
         # SOIF
         film_director:
             providers:
                - sonata.media.provider.image
             formats:
-                mobile:  { width: 584 , height: 794 , quality: 100 }
-                tiny:    { width: 76, height: 92, quality: 100 }
-                small:   { width: 584 , height: 794 , quality: 100 }
-                38x46:   { width: 38 , height: 46 , quality: 100 }
-                212x134: { width: 212 , height: 134 , quality: 100 }
-                210x284: { width: 210 , height: 284 , quality: 100 }
-                976x535: { width: 976 , height: 535 , quality: 100 }
-                384x485: { width: 384 , height: 485 , quality: 100 }
-                640x603: { width: 384 , height: 485 , quality: 100 }
-                976x535: { width: 976 , height: 535 , quality: 100 }
-                searchtiny: { width: 52 , height: 66 , quality: 100 }
-                search: { width: 170 , height: 231 , quality: 100 }
+                mobile:  { width: 584 , height: 794 , quality: 100, constraint: false }
+                tiny:    { width: 76, height: 92, quality: 100, constraint: false }
+                small:   { width: 584 , height: 794 , quality: 100, constraint: false }
+                38x46:   { width: 38 , height: 46 , quality: 100, constraint: false }
+                212x134: { width: 212 , height: 134 , quality: 100, constraint: false }
+                210x284: { width: 210 , height: 284 , quality: 100, constraint: false }
+                976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
+                384x485: { width: 384 , height: 485 , quality: 100, constraint: false }
+                640x603: { width: 384 , height: 485 , quality: 100, constraint: false }
+                976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
+                searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
+                search: { width: 170 , height: 231 , quality: 100, constraint: false }
 
         film_image_cover:
             providers:
@@ -45,27 +45,27 @@ sonata_media:
             providers:
                 - sonata.media.provider.image
             formats:
-                mobile: { width: 584 , height: 794 , quality: 100 }
-                tiny:     { width: 46 , height: 64 , quality: 100 }
-                small:    { width: 187 , height: 255 , quality: 100 }
-                big:      { width: 1000 , quality: 100 }
-                319x434:  { width: 319 , height: 434 , quality: 100 }
-                420x560: { width: 420, height: 560, quality: 100 }
-                300x400: { width: 300 , height: 400 , quality: 100 }
-                976x535: { width: 976 , height: 535 , quality: 100 }
-                210x284: { width: 210 , height: 284 , quality: 100 }
-                293x397: { width: 293, height: 397, quality: 100 }
-                588x784: { width: 588, height: 784, quality: 100 }
-                259x352: { width: 259, height: 352, quality: 100 }
-                976x535: { width: 976 , height: 535 , quality: 100 }
-                366x488: { width: 366 , height: 488 , quality: 100 }
-                2560x1103: { width: 2560, height: 1103 , quality: 100 }
-                516x688: { width: 516, height: 688 , quality: 100 }
-                55x75: { width: 55 , height: 75 , quality: 100 }
-                90x120: { width: 90 , height: 120 , quality: 100 }
-                444x600: { width: 444, height: 600, quality: 100 }
-                searchtiny: { width: 52 , height: 66 , quality: 100 }
-                search: { width: 170 , height: 231 , quality: 100 }
+                mobile: { width: 584 , height: 794 , quality: 100, constraint: false }
+                tiny:     { width: 46 , height: 64 , quality: 100, constraint: false }
+                small:    { width: 187 , height: 255 , quality: 100, constraint: false }
+                big:      { width: 1000 , quality: 100, constraint: false }
+                319x434:  { width: 319 , height: 434 , quality: 100, constraint: false }
+                420x560: { width: 420, height: 560, quality: 100, constraint: false }
+                300x400: { width: 300 , height: 400 , quality: 100, constraint: false }
+                976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
+                210x284: { width: 210 , height: 284 , quality: 100, constraint: false }
+                293x397: { width: 293, height: 397, quality: 100, constraint: false }
+                588x784: { width: 588, height: 784, quality: 100, constraint: false }
+                259x352: { width: 259, height: 352, quality: 100, constraint: false }
+                976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
+                366x488: { width: 366 , height: 488 , quality: 100, constraint: false }
+                2560x1103: { width: 2560, height: 1103 , quality: 100, constraint: false }
+                516x688: { width: 516, height: 688 , quality: 100, constraint: false }
+                55x75: { width: 55 , height: 75 , quality: 100, constraint: false }
+                90x120: { width: 90 , height: 120 , quality: 100, constraint: false }
+                444x600: { width: 444, height: 600, quality: 100, constraint: false }
+                searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
+                search: { width: 170 , height: 231 , quality: 100, constraint: false }
 
         film_main:
             providers:
@@ -194,53 +194,53 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
-                mobile: { width: 584 , height: 794 , quality: 100 }
-                small:   { width: 187, height: 255, quality: 100 }
-                212x134: { width: 212 , height: 134 , quality: 100 }
-                293x185: { width: 293 , height: 185 , quality: 100 }
+                mobile: { width: 584 , height: 794 , quality: 100, constraint: false }
+                small:   { width: 187, height: 255, quality: 100, constraint: false }
+                212x134: { width: 212 , height: 134 , quality: 100, constraint: false }
+                293x185: { width: 293 , height: 185 , quality: 100, constraint: false }
                 #event mosaic movie widget
-                180x240: { width: 180 , height: 240 , quality: 100 }
+                180x240: { width: 180 , height: 240 , quality: 100, constraint: false }
                 #film
-                366x488: { width: 366 , height: 488 , quality: 100 }
-                55x75: { width: 55 , height: 75 , quality: 100 }
-                90x120: { width: 90 , height: 120 , quality: 100 }
-                444x600: { width: 444, height: 600, quality: 100 }
+                366x488: { width: 366 , height: 488 , quality: 100, constraint: false }
+                55x75: { width: 55 , height: 75 , quality: 100, constraint: false }
+                90x120: { width: 90 , height: 120 , quality: 100, constraint: false }
+                444x600: { width: 444, height: 600, quality: 100, constraint: false }
                 #Photo Jury
-                640x603: { width: 640 , height: 603 , quality: 100 }
+                640x603: { width: 640 , height: 603 , quality: 100, constraint: false }
                 # Movie VideoMain
-                588x784: { width: 588 , height: 784 , quality: 100 }
+                588x784: { width: 588 , height: 784 , quality: 100, constraint: false }
                 # PressDownload
-                240x326: { width: 240 , height: 326 , quality: 100 }
-                543x326: { width: 543 , height: 326 , quality: 100 }
+                240x326: { width: 240 , height: 326 , quality: 100, constraint: false }
+                543x326: { width: 543 , height: 326 , quality: 100, constraint: false }
                 # PressDownload Video image
-                976x535: { width: 976 , height: 535 , quality: 100 }
+                976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
                 # PressDownload Signature image
-                233x233: { width: 233 , height: 233 , quality: 100 }
+                233x233: { width: 233 , height: 233 , quality: 100, constraint: false }
                 # PressCinemaMap || PressCinemaZone
-                646x567: { width: 646 , height: 567 , quality: 100 }
+                646x567: { width: 646 , height: 567 , quality: 100, constraint: false }
 
-                586x370: { width: 586 , height: 370 , quality: 100 }
-                1280x808: { width: 1280 , height: 808 , quality: 100 }
-                2560x1103: { width: 2560, height: 1103 , quality: 100 }
-                640x404: { width: 640 , height: 404 , quality: 100 }
+                586x370: { width: 586 , height: 370 , quality: 100, constraint: false }
+                1280x808: { width: 1280 , height: 808 , quality: 100, constraint: false }
+                2560x1103: { width: 2560, height: 1103 , quality: 100, constraint: false }
+                640x404: { width: 640 , height: 404 , quality: 100, constraint: false }
                 # Pushs
-                650x410: { width: 650 , height: 410 , quality: 100 }
+                650x410: { width: 650 , height: 410 , quality: 100, constraint: false }
                 # PressGuide
-                363x229: { width: 363 , height: 229 , quality: 100 }
+                363x229: { width: 363 , height: 229 , quality: 100, constraint: false }
                 #palmares film
-                256x348: { width: 256 , height: 348 , quality: 100 }
-                384x485: { width: 384 , height: 485 , quality: 100 }
-                1954x1200: { width: 1954 , height: 1200 , quality: 100 }
+                256x348: { width: 256 , height: 348 , quality: 100, constraint: false }
+                384x485: { width: 384 , height: 485 , quality: 100, constraint: false }
+                1954x1200: { width: 1954 , height: 1200 , quality: 100, constraint: false}
                 # Participate
-                363x260: { width: 363 , height: 260 , quality: 100 }
-                228x181: { width: 228 , height: 181 , quality: 100 }
+                363x260: { width: 363 , height: 260 , quality: 100, constraint: false }
+                228x181: { width: 228 , height: 181 , quality: 100, constraint: false }
                 # Partners logo
-                220x85: { width: 220 , height: 85, quality: 100 }
+                220x85: { width: 220 , height: 85, quality: 100, constraint: false }
                 # Partners portrait
-                60x81: { width: 60, height: 81, quality: 100 }
+                60x81: { width: 60, height: 81, quality: 100, constraint: false }
                 # Search
-                searchtiny: { width: 52 , height: 66 , quality: 100 }
-                search: { width: 170 , height: 231 , quality: 100 }
+                searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
+                search: { width: 170 , height: 231 , quality: 100, constraint: false }
 
         media_audio:
             providers:
