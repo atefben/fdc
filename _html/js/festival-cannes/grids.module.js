@@ -14,7 +14,6 @@ Isotope.Item.prototype.hide = function () {
 };
 
 function resizeGrid() {
-  var result = document.getElementById('result');
   if ("matchMedia" in window) {
     if($('#gridAudios').length) {
       setGrid(false, $('#gridAudios'), true);
