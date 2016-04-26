@@ -85,7 +85,10 @@ class DashboardSearchType extends BaseType
                 'required' => false,
                 'label' => 'Priorité',
                 'empty_value' => false
-            ));
+            ))
+            ->add('sortField', 'hidden')
+            ->add('sortValue', 'hidden')
+        ;
 
 
         if ($this->securityContext->isGranted('ROLE_TRANSLATOR')) {
