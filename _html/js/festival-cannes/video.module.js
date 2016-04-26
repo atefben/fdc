@@ -104,6 +104,7 @@ function playerInit(id, cls, havePlaylist, live) {
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     var $container    = $("#"+vid.id).closest('.video-container');
+    
     if($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
     }
@@ -584,13 +585,13 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                     }
                     catch(e) {}
                 }, 250);
-            }
+            });
 
             $container[0].addEventListener('webkitbeginfullscreen', function() {
                 window.clearInterval(time);
             });
             $container[0].addEventListener('webkitendfullscreen', function() {
-                playerInstance.pause();
+                // playerInstance.pause();
             });
         }
     }
