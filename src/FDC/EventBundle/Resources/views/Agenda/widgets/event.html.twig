@@ -55,7 +55,7 @@
             {%- endif -%}
             <div class="txt">
                 {%- if event.programmationFilms|length == 1 -%}
-                    <span>{{ film.titleVO }}</span>
+                    <span>{{ film.titleVO|truncate(38) }}</span>
                     {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                     <strong>
                     {%- for director in directors -%}
