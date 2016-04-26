@@ -573,7 +573,7 @@ class SeoManager
         }
     }
 
-    public function setFDCEventPageFDCPageWebTvTrailerSeo($route, $title, $description, DateTime $updatedAt, $image)
+    public function setFDCEventPageFDCPageWebTvTrailerSeo($route, $title, $description, DateTime $updatedAt = null, $image = null)
     {
         // title
         $this->sonataSeoPage->setTitle($title);
@@ -588,7 +588,9 @@ class SeoManager
         $this->sonataSeoPage->addMeta('property', 'og:site_name', "Festival de Cannes {$this->fdcYear}");
         $this->sonataSeoPage->addMeta('property', 'og:type', 'website');
         $this->sonataSeoPage->addMeta('property', 'og:url', $route);
-        $this->sonataSeoPage->addMeta('property', 'og:updated_time', $updatedAt->format(DateTime::ISO8601));
+        if ($updatedAt) {
+            $this->sonataSeoPage->addMeta('property', 'og:updated_time', $updatedAt->format(DateTime::ISO8601));
+        }
 
         // TWITTER
         $this->sonataSeoPage->addMeta('property', 'twitter:card', 'summary_large_image');
