@@ -102,6 +102,9 @@ class MediaVideoAdmin extends Admin
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',
             ))
+            ->add('displayedMobile', null, array(
+                'label' => 'list.displayed_mobile',
+            ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => MediaVideo::getPriorityStatusesList(),
                 'catalogue' => 'BaseAdminBundle'

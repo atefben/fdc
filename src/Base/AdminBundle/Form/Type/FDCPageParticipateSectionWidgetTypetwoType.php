@@ -127,7 +127,8 @@ class FDCPageParticipateSectionWidgetTypetwoType extends FDCPageParticipateSecti
                 'sonata_field_description' =>  $this->FDCPageParticipateSectionWidgetTypetwoDummyAdmin->getFormFieldDescriptions()['sponsorImage'],
                 'model_manager' => $this->FDCPageParticipateSectionWidgetTypetwoDummyAdmin->getModelManager(),
                 'class' => $this->FDCPageParticipateSectionWidgetTypetwoDummyAdmin->getFormFieldDescriptions()['sponsorImage']->getAssociationAdmin()->getClass(),
-                'label' => 'form.label_sponsor_image'
+                'label' => 'form.label_sponsor_image',
+                'required' => false
             ))
             ;
 

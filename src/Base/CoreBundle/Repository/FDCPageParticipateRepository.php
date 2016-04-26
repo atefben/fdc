@@ -25,10 +25,10 @@ class FDCPageParticipateRepository extends TranslationRepository
 
         $qb = $this
             ->createQueryBuilder('e')
-            ->join('e.translations', 't')
+            ->join('e.translations', 'et')
         ;
 
-        $this->addTranslationQueries($qb, 't', $locale, $slug);
+        $this->addTranslationQueries($qb, 'et', $locale, $slug);
 
         return $qb->getQuery()->getOneOrNullResult();
     }

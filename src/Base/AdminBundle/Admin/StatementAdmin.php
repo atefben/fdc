@@ -2,16 +2,14 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\Statement;
+use Base\AdminBundle\Component\Admin\Admin;
 use Base\CoreBundle\Entity\StatementArticle;
 use Base\CoreBundle\Entity\StatementArticleTranslation;
-
-use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
  * StatementAdmin class.
@@ -171,6 +169,9 @@ class StatementAdmin extends Admin
             ->add('publishedInterval', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',
+            ))
+            ->add('displayedMobile', null, array(
+                'label' => 'list.displayed_mobile',
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => StatementArticle::getPriorityStatusesList(),

@@ -2,11 +2,9 @@
 
 namespace Base\AdminBundle\Admin;
 
-use Base\CoreBundle\Entity\News;
+use Base\AdminBundle\Component\Admin\Admin;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
-
-use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -153,6 +151,9 @@ class NewsAdmin extends Admin
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',
                 'label'    => 'form.label_published_at'
+            ))
+            ->add('displayedMobile', null, array(
+                'label' => 'list.displayed_mobile',
             ))
             ->add('priorityStatus', 'choice', array(
                 'choices'   => NewsArticle::getPriorityStatusesList(),
