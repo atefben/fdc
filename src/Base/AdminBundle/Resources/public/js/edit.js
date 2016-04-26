@@ -36,6 +36,8 @@ jQuery(document).ready(function($) {
         });
     }
 
+
+
     // preview
     var url = window.location.href;
     var newsUrl = url.split("/");
@@ -228,7 +230,23 @@ function editEvents() {
         var locale = $('.a2lix_translationsLocales li.nav-tab-active').attr('data-locale');
 
         $('.sonata-ba-form > form').attr('action', action.slice(0, -2) + locale);
+
+        //set height of widgets sidebar
+        setTimeout(function() {
+            if (!$('.a2lix_translationsFields .tab-pane.active').hasClass('a2lix_translationsFields-fr')) {
+                $('.a2lix_translationsFields .tab-pane.active .row').eq(1).find('.col-md-8 .base-widget').each(function (key, widget) {
+                    $('.a2lix_translationsFields .tab-pane.active .row').eq(1).find('.col-md-4 .base-widget').eq(key).height($(widget).height());
+                });
+            }
+        }, 2000);
     });
+
+    //set height of widgets sidebar on load
+    if ($('.a2lix_translationsLocales li.active').attr('data-locale') != 'fr') {
+        $('.a2lix_translationsFields .tab-pane.active .row').eq(1).find('.col-md-8 .base-widget').each(function (key, widget) {
+            $('.a2lix_translationsFields .tab-pane.active .row').eq(1).find('.col-md-4 .base-widget').eq(key).height($(widget).height());
+        });
+    }
 
     // set locale in form action on load
     var action = $('.sonata-ba-form > form').attr('action');
