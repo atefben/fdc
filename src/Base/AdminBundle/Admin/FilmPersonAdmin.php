@@ -70,41 +70,49 @@ class FilmPersonAdmin extends SoifAdmin
             ->with('form.film_person.general', array(
                 'translation_domain' => 'BaseAdminBundle',
             ))
-            ->add('portraitImage', 'sonata_type_model_list', array(
-                'label'    => 'form.film_person.label_portrait_image',
-                'help'     => 'form.film_person.helper_portrait_image',
-                'required' => false,
-            ), array(
-                'link_parameters' => array('context' => 'film_poster'),
-            ))
-            ->add('landscapeImage', 'sonata_type_model_list', array(
-                'label'    => 'form.film_person.label_landscape_image',
-                'help'     => 'form.film_person.helper_landscape_image',
-                'required' => false,
-            ))
-            ->add('displayedImage', new ChoiceType(), array(
-                'choices'                   => array(
-                    false => 'form.film_person.label_chose_portrait_image',
-                    true  => 'form.film_person.label_chose_landscape_image',
-                ),
-                'label'                     => 'form.film_person.label_displayed_image',
-                'help'                      => 'form.film_person.help_displayed_image',
-                'translation_domain'        => 'BaseAdminBundle',
-                'choice_translation_domain' => 'BaseAdminBundle',
-                'required'                  => true,
-                'expanded'                  => true,
-            ))
+                ->add('portraitImage', 'sonata_type_model_list', array(
+                    'label'    => 'form.film_person.label_portrait_image',
+                    'help'     => 'form.film_person.helper_portrait_image',
+                    'required' => false,
+                ), array(
+                    'link_parameters' => array('context' => 'film_poster'),
+                ))
+                ->add('landscapeImage', 'sonata_type_model_list', array(
+                    'label'    => 'form.film_person.label_landscape_image',
+                    'help'     => 'form.film_person.helper_landscape_image',
+                    'required' => false,
+                ))
+                ->add('displayedImage', new ChoiceType(), array(
+                    'choices'                   => array(
+                        false => 'form.film_person.label_chose_portrait_image',
+                        true  => 'form.film_person.label_chose_landscape_image',
+                    ),
+                    'label'                     => 'form.film_person.label_displayed_image',
+                    'help'                      => 'form.film_person.help_displayed_image',
+                    'translation_domain'        => 'BaseAdminBundle',
+                    'choice_translation_domain' => 'BaseAdminBundle',
+                    'required'                  => true,
+                    'expanded'                  => true,
+                ))
+                ->add('credits','text', array(
+                    'label' =>'dashboard.link.credits',
+                    'required' => false
+                ))
             ->end()
             ->with('form.film_person.president_jury', array(
                 'translation_domain' => 'BaseAdminBundle',
             ))
-            ->add('presidentJuryImage', 'sonata_type_model_list', array(
-                'label'    => 'form.film_person.label_president_jury_image',
-                'help'     => 'form.film_person.help_president_jury_image',
-                'required' => true,
-            ), array(
-                'link_parameters' => array('context' => 'film_poster'),
-            ))
+                ->add('presidentJuryImage', 'sonata_type_model_list', array(
+                    'label'    => 'form.film_person.label_president_jury_image',
+                    'help'     => 'form.film_person.help_president_jury_image',
+                    'required' => true,
+                ), array(
+                    'link_parameters' => array('context' => 'film_poster'),
+                ))
+                ->add('presidentJuryCredits','text', array(
+                    'label' =>'dashboard.link.credits',
+                    'required' => false
+                ))
             ->end()
         ;
 
