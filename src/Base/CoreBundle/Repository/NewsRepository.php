@@ -57,9 +57,7 @@ class NewsRepository extends EntityRepository
         }
 
         if (!empty($params['sortField']) && !empty($params['sortValue'])) {
-            if ($params['sortField'] != 'type') {
-                $qb->orderBy('n.'. $params['sortField'], $params['sortValue']);
-            }
+            $qb->orderBy('n.'. $params['sortField'], $params['sortValue']);
         }
 
 
