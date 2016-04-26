@@ -1,6 +1,5 @@
 // Prehome
 // =========================
-
 $(document).ready(function() {
   if($('.home').length) {
     if (!isiPad()) {
@@ -16,7 +15,7 @@ $(document).ready(function() {
           scrollTarget = 0;
           initParallaxElements();
 
-          if(parallaxElements.length != 0) {
+          if(Object.size(parallaxElements) != 0) {
             update();
           }
         },200);
@@ -42,12 +41,12 @@ $(window).load(function() {
             scrollTarget = 0;
             initParallaxElements();
 
-            if(parallaxElements.length != 0) {
+            if(Object.size(parallaxElements) != 0) {
               update();
             }
           },200);
         });
-      }, 3000);
+      }, 2500);
       $.cookie('prehome', '1', { expires: 7 });
     }
   } else {

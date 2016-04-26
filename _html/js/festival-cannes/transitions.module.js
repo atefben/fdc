@@ -35,14 +35,13 @@ $(document).ready(function() {
 
   $('body').on('click', "a[target!='_blank']:not(.ajax, .link)", function(e) {
     var href = $(this).attr('href');
-    var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
-    if(!isiPad) {
+    if(!isiPad()) {
       e.preventDefault();
     }
 
     if(href.indexOf('#') == -1 || $(this).hasClass('ajaxi')) {
-      if(!isiPad) {
+      if(!isiPad()) {
         if(!$(this).hasClass('ajaxi')) {
            $('#main, footer, #breadcrumb, .sub-nav-list').addClass('loading');
         }  
@@ -67,9 +66,8 @@ $(document).ready(function() {
       }
     }
 
-    if(!isiPad) {
+    if(!isiPad()) {
       return false;
     }
   });
-
 });

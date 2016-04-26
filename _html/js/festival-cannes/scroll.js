@@ -1,5 +1,5 @@
 // init parallax elements and push them into an array
-var parallaxElements = [];
+var parallaxElements = {};
 
 function initParallaxElements() {
   var $header = $('header');
@@ -61,14 +61,17 @@ function initParallaxElements() {
 }
 
 // update
-function update(){
+function update() {
   var hW = $(window).height();
-  for(var i=0; i<parallaxElements.length; i++) {
-    if(scrollTarget > (parallaxElements[i].positionTop - hW) && scrollTarget < parallaxElements[i].positionTop + hW) {
-      $(parallaxElements[i].el1).css('position', 'fixed');
-      render(parallaxElements[i].el1, parallaxElements[i].positionTop, parallaxElements[i].division, parallaxElements[i].mov, parallaxElements[i].direction);
-    } else {
-      $(parallaxElements[i].el1).css('position', '');
+  var el = ['prefooter', 'movies', 'slider', 'webtv', 'movie'];
+  for(var i=0; i<el.length; i++) {
+    if(typeof parallaxElements[el[i]] !== 'undefined') { 
+      if(scrollTarget > (parallaxElements[el[i]].positionTop - hW) && scrollTarget < parallaxElements[el[i]].positionTop + hW) {
+        $(parallaxElements[el[i]].el1).css('position', 'fixed');
+        render(parallaxElements[el[i]].el1, parallaxElements[el[i]].positionTop, parallaxElements[el[i]].division, parallaxElements[el[i]].mov, parallaxElements[el[i]].direction);
+      } else {
+        $(parallaxElements[el[i]].el1).css('position', '');
+      }
     }
   }
   window.requestAnimFrame(update);
