@@ -19,6 +19,7 @@ class MovieController extends Controller
      * @Route("/films/{slug}")
      * @Template("FDCEventBundle:Movie:main.html.twig")
      * @param $slug
+     * @param Request $request
      * @return array
      */
     public function getAction(Request $request, $slug)

@@ -84,6 +84,50 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * @var MediaImageSimple
+     * @ORM\Column(name="credits", type="string", length=255, nullable=true)
+     * @Groups({
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show",
+     *     "film_selection_section_show",
+     *     "award_list",
+     *     "jury_list",
+     *     "jury_show"
+     * })
+     */
+    private $credits;
+
+    /**
+     * @var MediaImageSimple
+     * @ORM\Column(name="presidentJuryCredits", type="string", length=255, nullable=true)
+     * @Groups({
+     *     "person_list",
+     *     "person_show",
+     *     "film_list",
+     *     "film_show",
+     *     "award_list",
+     *     "award_show",
+     *     "projection_list",
+     *     "projection_show",
+     *     "news_list",
+     *     "news_show",
+     *     "film_selection_section_show",
+     *     "award_list",
+     *     "jury_list",
+     *     "jury_show"
+     * })
+     */
+    private $presidentJuryCredits;
+
+    /**
+     * @var MediaImageSimple
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
      *
      * @Groups({
@@ -880,5 +924,51 @@ class FilmPerson implements TranslateMainInterface
     public function getPresidentJuryImage()
     {
         return $this->presidentJuryImage;
+    }
+
+    /**
+     * Set credits
+     *
+     * @param string $credits
+     * @return FilmPerson
+     */
+    public function setCredits($credits)
+    {
+        $this->credits = $credits;
+
+        return $this;
+    }
+
+    /**
+     * Get credits
+     *
+     * @return string 
+     */
+    public function getCredits()
+    {
+        return $this->credits;
+    }
+
+    /**
+     * Set presidentJuryCredits
+     *
+     * @param string $presidentJuryCredits
+     * @return FilmPerson
+     */
+    public function setPresidentJuryCredits($presidentJuryCredits)
+    {
+        $this->presidentJuryCredits = $presidentJuryCredits;
+
+        return $this;
+    }
+
+    /**
+     * Get presidentJuryCredits
+     *
+     * @return string 
+     */
+    public function getPresidentJuryCredits()
+    {
+        return $this->presidentJuryCredits;
     }
 }

@@ -145,7 +145,12 @@ class LockController extends Controller
             ));
         }
 
-        $translations = $entity->getTranslations();
+        $translations = array();
+        if ($authChecker->isGranted('ROLE_FDC_TRANSLATOR_MASTER') === false) {
+            $translations[] = $entity->findTranslationByLocale($locale);
+        } else {
+            $translations = $entity->getTranslations();
+        }
 
         foreach ($translations as $trans) {
             if ($trans === null) {
@@ -285,7 +290,12 @@ class LockController extends Controller
             ));
         }
 
-        $translations = $entity->getTranslations();
+        $translations = array();
+        if ($authChecker->isGranted('ROLE_FDC_TRANSLATOR_MASTER') === false) {
+            $translations[] = $entity->findTranslationByLocale($locale);
+        } else {
+            $translations = $entity->getTranslations();
+        }
 
         foreach ($translations as $trans) {
             if ($trans === null) {
@@ -361,7 +371,12 @@ class LockController extends Controller
             ));
         }
 
-        $translations = $entity->getTranslations();
+        $translations = array();
+        if ($authChecker->isGranted('ROLE_FDC_TRANSLATOR_MASTER') === false) {
+            $translations[] = $entity->findTranslationByLocale($locale);
+        } else {
+            $translations = $entity->getTranslations();
+        }
 
         foreach ($translations as $trans) {
             if ($trans === null) {

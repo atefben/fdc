@@ -59,6 +59,10 @@ class StatementRepository extends EntityRepository
             ;
         }
 
+        if (!empty($params['sortField']) && !empty($params['sortValue'])) {
+            $qb->orderBy('n.'. $params['sortField'], $params['sortValue']);
+        }
+
         return $qb->getQuery()->getResult();
     }
 

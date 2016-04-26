@@ -120,13 +120,16 @@ class HomepageAdmin extends Admin
                     ),
 
                     'primaryPushUrl1' => array(
-                        'label' => 'form.label_primary_push_url'
+                        'label' => 'form.label_primary_push_url',
+                        'field_type' => 'url'
                     ),
                     'primaryPushUrl2' => array(
-                        'label' => 'form.label_primary_push_url'
+                        'label' => 'form.label_primary_push_url',
+                        'field_type' => 'url'
                     ),
                     'primaryPushUrl3' => array(
-                        'label' => 'form.label_primary_push_url'
+                        'label' => 'form.label_primary_push_url',
+                        'field_type' => 'url'
                     ),
 
                     'secondaryPushTitle1' => array(
@@ -155,28 +158,36 @@ class HomepageAdmin extends Admin
                     ),
 
                     'secondaryPushUrl1' => array(
-                        'label' => 'form.label_secondary_push_url'
+                        'label' => 'form.label_secondary_push_url',
+                        'field_type' => 'url'
                     ),
                     'secondaryPushUrl2' => array(
-                        'label' => 'form.label_secondary_push_url'
+                        'label' => 'form.label_secondary_push_url',
+                        'field_type' => 'url'
                     ),
                     'secondaryPushUrl3' => array(
-                        'label' => 'form.label_secondary_push_url'
+                        'label' => 'form.label_secondary_push_url',
+                        'field_type' => 'url'
                     ),
                     'secondaryPushUrl4' => array(
-                        'label' => 'form.label_secondary_push_url'
+                        'label' => 'form.label_secondary_push_url',
+                        'field_type' => 'url'
                     ),
                     'secondaryPushUrl5' => array(
-                        'label' => 'form.label_secondary_push_url'
+                        'label' => 'form.label_secondary_push_url',
+                        'field_type' => 'url'
                     ),
                     'secondaryPushUrl6' => array(
-                        'label' => 'form.label_secondary_push_url'
+                        'label' => 'form.label_secondary_push_url',
+                        'field_type' => 'url'
                     ),
                     'secondaryPushUrl7' => array(
-                        'label' => 'form.label_secondary_push_url'
+                        'label' => 'form.label_secondary_push_url',
+                        'field_type' => 'url'
                     ),
                     'secondaryPushUrl8' => array(
-                        'label' => 'form.label_secondary_push_url'
+                        'label' => 'form.label_secondary_push_url',
+                        'field_type' => 'url'
                     ),
 
                     'prefooterTitle1' => array(
@@ -191,18 +202,29 @@ class HomepageAdmin extends Admin
                     'prefooterTitle4' => array(
                         'label' => 'form.label_prefooter_title'
                     ),
+                    'prefooterTitle5' => array(
+                        'label' => 'form.label_prefooter_title'
+                    ),
 
                     'prefooterUrl1' => array(
-                        'label' => 'form.label_prefooter_url'
+                        'label' => 'form.label_prefooter_url',
+                        'field_type' => 'url'
                     ),
                     'prefooterUrl2' => array(
-                        'label' => 'form.label_prefooter_url'
+                        'label' => 'form.label_prefooter_url',
+                        'field_type' => 'url'
                     ),
                     'prefooterUrl3' => array(
-                        'label' => 'form.label_prefooter_url'
+                        'label' => 'form.label_prefooter_url',
+                        'field_type' => 'url'
                     ),
                     'prefooterUrl4' => array(
-                        'label' => 'form.label_prefooter_url'
+                        'label' => 'form.label_prefooter_url',
+                        'field_type' => 'url'
+                    ),
+                    'prefooterUrl5' => array(
+                        'label' => 'form.label_prefooter_url',
+                        'field_type' => 'url'
                     ),
 
                 )
@@ -367,6 +389,11 @@ class HomepageAdmin extends Admin
                 'required' => false,
             ))
             ->add('prefooterImage4', 'sonata_type_model_list', array(
+                'label' => 'form.label_image_prefooter',
+                'help' => 'form.homepage.helper_prefooter',
+                'required' => false,
+            ))
+            ->add('prefooterImage5', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_prefooter',
                 'help' => 'form.homepage.helper_prefooter',
                 'required' => false,

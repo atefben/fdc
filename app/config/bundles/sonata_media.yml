@@ -46,6 +46,8 @@ sonata_media:
                 - sonata.media.provider.image
             formats:
                 mobile: { width: 584 , height: 794 , quality: 100 }
+                #programmation cropped picture
+                45x60:  { width: 45 , height: 60 , quality: 100, constraint: false }
                 tiny:     { width: 46 , height: 64 , quality: 100 }
                 135x185:    { width: 135 , height: 185 , quality: 100 }
                 small:    { width: 187 , height: 255 , quality: 100 }
@@ -73,6 +75,8 @@ sonata_media:
                 - sonata.media.provider.image
             formats:
                   mobile: { width: 584 , height: 794 , quality: 100 }
+                  #programmation cropped picture
+                  45x60:  { width: 45 , height: 60 , quality: 100, constraint: false }
                   tiny:  { width: 46 , height: 64 , quality: 100 }
                   small: { width: 187 , height: 255 , quality: 100 }
                   135x185:    { width: 135 , height: 185 , quality: 100 }
@@ -99,6 +103,8 @@ sonata_media:
                 - sonata.media.provider.image
             formats:
                 mobile:  { width: 584 , height: 794 , quality: 100 }
+                #programmation cropped picture
+                45x60:   { width: 45 , height: 60 , quality: 100, constraint: false }
                 tiny:    { width: 146 , quality: 100 }
                 square:  { width: 146, height: 146, quality: 100 }
                 small:   { width: 187, height: 255, quality: 100 }
@@ -155,7 +161,7 @@ sonata_media:
                 640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
                 # Vidéo à la une, Toutes les photos, Toutes les vidéos, Chaînes festival portrait
                 320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
-                # Pushs
+                640x808: { width: 640 , height: 808 , quality: 100, constraint: false}
                 650x410: { width: 650 , height: 410 , quality: 100, constraint: false}
                 # Ma Selection
                 424x266: { width: 424 , height: 266 , quality: 100, constraint: false}
@@ -197,6 +203,7 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
+                45x60: { width: 45, height: 60, quality: 100, constraint: false }
                 mobile: { width: 584 , height: 794 , quality: 100, constraint: false }
                 small:   { width: 187, height: 255, quality: 100, constraint: false }
                 212x134: { width: 212 , height: 134 , quality: 100, constraint: false }

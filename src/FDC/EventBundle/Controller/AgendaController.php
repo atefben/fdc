@@ -178,37 +178,42 @@ class AgendaController extends Controller
             }
         }
 
-        // seance de presse
-        $seances  = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FilmProjection')
-            ->findByType('Séance de presse')
-        ;
+        $seances = array();
+        $conferences = array();
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_FDC_PRESS_REPORTER')) {
+            // seance de presse
+            $seances = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmProjection')
+                ->findByType('Séance de presse')
+            ;
 
-        // remove seances not matching current films
-        foreach($seances as $key => $seance) {
-            foreach ($seance->getProgrammationFilms() as $programmationFilm) {
-                if (!in_array($programmationFilm->getFilm()->getId(), $filmIds)) {
-                    unset($seances[$key]);
+            // remove seances not matching current films
+            foreach($seances as $key => $seance) {
+                foreach ($seance->getProgrammationFilms() as $programmationFilm) {
+                    if (!in_array($programmationFilm->getFilm()->getId(), $filmIds)) {
+                        unset($seances[$key]);
+                    }
+                }
+            }
+
+            // conférence de presse
+            $conferences = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmProjection')
+                ->findByType('Conférence de presse')
+            ;
+
+            // remove conference not matching current films
+            foreach($conferences as $key => $conference) {
+                foreach ($conference->getProgrammationFilms() as $programmationFilm) {
+                    if (!in_array($programmationFilm->getFilm()->getId(), $filmIds)) {
+                        unset($conferences[$key]);
+                    }
                 }
             }
         }
 
-        // conférence de presse
-        $conferences  = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FilmProjection')
-            ->findByType('Conférence de presse')
-        ;
-
-        // remove conference not matching current films
-        foreach($conferences as $key => $conference) {
-            foreach ($conference->getProgrammationFilms() as $programmationFilm) {
-                if (!in_array($programmationFilm->getFilm()->getId(), $filmIds)) {
-                    unset($conferences[$key]);
-                }
-            }
-        }
 
         // projections (everything except the 2 two other type)
        $relatedProjections = $this

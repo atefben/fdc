@@ -15,31 +15,31 @@
         {% else %}
             <table class="table table-bordered table-striped">
                 <thead>
+                    {% set queryParams = app.request.get('dashboard_search_type') %}
                     <tr class="sonata-ba-list-field-header">
-
-                        <th class="sonata-ba-list-field-header-integer  sonata-ba-list-field-header-order-asc sonata-ba-list-field-order-active">
+                        <th data-field="id" data-val="{% if queryParams is not empty and queryParams.sortField == 'id' %}{% if queryParams is not empty and queryParams.sortValue == 'asc' %}desc{% else %}asc{% endif %}{% else %}asc{% endif %}" class="dashboard-search-filter sonata-ba-list-field-header-integer  sonata-ba-list-field-header-order-asc sonata-ba-list-field-order-active">
                                 Id
                         </th>
                         <th class="sonata-ba-list-field-header-text ">
                             Titre de l'actualité
                         </th>
-                        <th class="sonata-ba-list-field-header-text ">
+                        <th data-field="typeClone" data-val="{% if queryParams is not empty and queryParams.sortField == 'typeClone' %}{% if queryParams is not empty and queryParams.sortValue == 'asc' %}desc{% else %}asc{% endif %}{% else %}asc{% endif %}" class="dashboard-search-filter sonata-ba-list-field-header-text ">
                             Type
                         </th>
                         <th class="sonata-ba-list-field-header-orm_many_to_one ">
                             Theme
                         </th>
-                        <th class="sonata-ba-list-field-header-choice  sonata-ba-list-field-header-order-asc ">
-                                Priorité
+                        <th data-field="priorityStatus" data-val="{% if queryParams is not empty and queryParams.sortField == 'priorityStatus' %}{% if queryParams is not empty and queryParams.sortValue == 'asc' %}desc{% else %}asc{% endif %}{% else %}asc{% endif %}" class="dashboard-search-filter sonata-ba-list-field-header-choice  sonata-ba-list-field-header-order-asc ">
+                            Priorité
                         </th>
                         <th>
                             Statut du master
                         </th>
-                        <th>
-                                Date de création
+                        <th data-field="createdAt" data-val="{% if queryParams is not empty and queryParams.sortField == 'createdAt' %}{% if queryParams is not empty and queryParams.sortValue == 'asc' %}desc{% else %}asc{% endif %}{% else %}asc{% endif %}" class="dashboard-search-filter">
+                            Date de création
                         </th>
-                        <th>
-                                Date de publication
+                        <th data-field="publishedAt" ddata-val="{% if queryParams is not empty and queryParams.sortField == 'publishedAt' %}{% if queryParams is not empty and queryParams.sortValue == 'asc' %}desc{% else %}asc{% endif %}{% else %}asc{% endif %}" class="dashboard-search-filter">
+                            Date de publication
                         </th>
                         <th class="sonata-ba-list-field-header-text ">
                             Libellés

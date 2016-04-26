@@ -518,4 +518,9 @@ function dashboardTranslator()
     });
 
     // submit form on select filter of search
+    $('.dashboard-search-filter').click(function() {
+        $('input[name$="[sortField]"]').val($(this).attr('data-field'));
+        $('input[name$="[sortValue]"]').val($(this).attr('data-val'));
+        $('form[action="/admin/dashboard"]').submit();
+    });
 }
