@@ -75,7 +75,7 @@
         data-link="//www.example.com"
         data-email="//www.gmail.com"
         data-name="test"
-        data-file='[{"file":"./files/mov_bbb.webm"}]'
+        data-file='[{"file":"https://www.youtube.com/watch?v=_eaIurlPB7w?t=1m2s"}]'
         data-img="//dummyimage.com/960x540/000/c8a461.png">
         <div id="v_<?php echo 1+time();?>" class="video-player">
         </div>
