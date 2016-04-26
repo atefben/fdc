@@ -155,7 +155,7 @@ sonata_media:
                 640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
                 # Vidéo à la une, Toutes les photos, Toutes les vidéos, Chaînes festival portrait
                 320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
-                # Pushs
+                640x808: { width: 640 , height: 808 , quality: 100, constraint: false}
                 650x410: { width: 650 , height: 410 , quality: 100, constraint: false}
                 # Ma Selection
                 424x266: { width: 424 , height: 266 , quality: 100, constraint: false}

@@ -2,7 +2,7 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="press press-programmation loading calendar-open events-site">
+    <div id="main" class="press press-programmation loading calendar-open events-site {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }} ">
         <div class="header-press">
             <div class="container">
                 <h2>{{ 'programmation.title.programmation'|trans }}</h2>
