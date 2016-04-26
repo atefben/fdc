@@ -335,7 +335,7 @@ $(document).ready(function() {
       if ($("#slider-prefooter").length) {
         parallaxElements['prefooter'].positionTop = $('#slider-prefooter').offset().top;
       }
-      if ($('#slider-movies').length > 0) {
+      if ($('#slider-movies .owl-item.active .video').length) {
         parallaxElements['movies'].positionTop = $('#slider-movies').offset().top;
       }
       if ($('#slider').length) {

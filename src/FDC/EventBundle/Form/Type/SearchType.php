@@ -12,9 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
  * @package FDC\EventBundle\Form\Type
  *
  */
-
-class SearchType extends AbstractType
-{
+class SearchType extends AbstractType {
     private $translator;
     private $searchTerm;
 
@@ -22,8 +20,7 @@ class SearchType extends AbstractType
      * @param $translator
      * @param $searchTerm
      */
-    public function __construct($translator, $searchTerm)
-    {
+    public function __construct($translator, $searchTerm) {
         $this->translator = $translator;
         $this->searchTerm = $searchTerm;
     }
@@ -33,18 +30,17 @@ class SearchType extends AbstractType
      * @param array $options
      *
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         if ($this->searchTerm !== null) {
             $builder
                 ->add('search',  new TextType() , array(
                     'attr' => array(
-                        'placeholder' => $this->searchTerm
+                        'value'       => $this->searchTerm,
+                        'placeholder' => $this->translator->trans('header.search.input.entrezrecherche')
                     ),
                     'label' => false
                 ));
-        }
-        else {
+        } else {
             $builder
                 ->add('search',  new TextType() , array(
                     'attr' => array(
@@ -53,16 +49,12 @@ class SearchType extends AbstractType
                     'label' => false
                 ));
         }
-
     }
-
 
     /**
      * @return string
      */
-
-    public function getName()
-    {
+    public function getName() {
         return 'search';
     }
 }

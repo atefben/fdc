@@ -26,11 +26,12 @@ $(document).ready(function() {
     }
   });
 
-  $('#inputSearch').on('input', function(e) {
+  $('.suggestSearch').on('input', function(e) {
     var value = $(this).val();
     var $suggest = $(this).parent().next();
     var noWhitespaceValue = value.replace(/\s+/g, '');
     var noWhitespaceCount = noWhitespaceValue.length;
+
     if($('.searchpage').length) {
       $suggest = $('#main #suggest');
     }
@@ -38,10 +39,17 @@ $(document).ready(function() {
       $suggest.empty();
       return false;
     }
+
+    if (GLOBALS.env == "html") {
+      searchUrl = GLOBALS.urls.searchUrl;
+    } else {
+      searchUrl = GLOBALS.urls.searchUrl+'/'+encodeURIComponent(value);
+    }
+
     if (noWhitespaceCount >= 3) {
       $.ajax({
         type: "GET",
-        url: GLOBALS.urls.searchUrl+'/'+encodeURIComponent(value),
+        url: searchUrl,
         success: function(data) {
           $suggest.empty();
 
@@ -118,23 +126,27 @@ $(document).ready(function() {
             return false;
           }
 
-          var $activeEl = $('#colSearch a.active');
-
-          if($activeEl.hasClass('artists') || $activeEl.hasClass('events') || $activeEl.hasClass('films') || $activeEl.hasClass('participate')) {
-            $('.filters').hide();
-          } else {
-            $('.filters').show();
-          }
-
-          $('#filteredContent').empty();
           var url = $this.data('ajax');
 
           $.ajax({
             type: "GET",
             url: url,
             success: function(data) {
-              $('#filteredContent').html(data);
-              $('#filtered').fadeIn();
+              $('#filtered').empty();
+              $('#filtered').html(data);
+              
+              // if($('#colSearch a.active').hasClass('artists') || 
+              //    $('#colSearch a.active').hasClass('events')  || 
+              //    $('#colSearch a.active').hasClass('films')   || 
+              //    $('#colSearch a.active').hasClass('participate')) {
+              //   $('.filters').hide();
+              // } else {
+              //   $('.filters').show();
+              // }
+
+              setTimeout(function() {
+                $('#filtered').fadeIn(500);
+              }, 200)
 
               $('#filteredContent').infinitescroll({
                 navSelector: ".next:last",
@@ -151,57 +163,20 @@ $(document).ready(function() {
               });
             }
           });
-        }, 700);
+        }, 1000);
       });
     });
 
-    // test : remove once on server
-    if($('.searchpage #inputSearch').val() == 'Léonardo Di Caprio') { //TODO a revoir//
-      $('#noResult').show();
-      $('#count span').text('0');
-      return false;
+    if (GLOBALS.env == "html") {
+      resultUrl = GLOBALS.urls.resultUrl;
+    } else {
+      resultUrl = GLOBALS.urls.resultUrl+'/'+encodeURIComponent($('.searchpage #inputSearch').val());
     }
 
-    $.ajax({
-      type: "GET",
-      url: GLOBALS.urls.searchUrl+'/'+encodeURIComponent($('.searchpage #inputSearch').val()),
-      success: function(data) {
-        if(data.all.count == 0) {
-          $('#noResult').show();
-          return false;
-        } else {
-          $('.resultWrapper').show();
-          $('#count span, #colSearch .all span').text(data.all.count);
-
-          // ARTISTS
-          var artists = data.persons;
-          $('#colSearch .artists span').text(artists.count);
-
-          // FILMS
-          var films = data.films;
-          $('#colSearch .films span').text(films.count);
-
-          // FILMS
-          var medias = data.medias;
-          $('#colSearch .medias span').text(medias.count);
-
-          // NEWS
-          var news = data.news;
-          $('#colSearch .news span').text(news.count);
-
-          // COMMUNIQUES
-          var communiques = data.communiques;
-          $('#colSearch .communiques span').text(communiques.count);
-
-          // EVENTS
-          var events = data.events;
-          $('#colSearch .events span').text(events.count);
-
-          // PARTICIPATE
-          var participate = data.participate;
-          $('#colSearch .participate span').text(participate.count);
-        }
-      }
-    });
+    if (parseInt($('#colSearch .all span').text()) > 0) {
+      $('.resultWrapper').show();
+    } else {
+      $('#noResult').show();
+    }
   }
 });

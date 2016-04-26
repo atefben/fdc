@@ -13,7 +13,7 @@
       <div class="wrapper">
         <div id="colSearch">
           <ul>
-            <li><a href="#" class="active all">Tout<span>0</span></a></li>
+            <li><a href="#" class="active all">Tout<span>1</span></a></li>
             <li><a href="#" data-ajax="searchArtists.html" class="artists ajax">Artistes<span>0</span></a></li>
             <li><a href="#" data-ajax="searchFilms.html" class="films ajax">Films<span>0</span></a></li>
             <li><a href="#" data-ajax="searchNews.html" class="news ajax">Actualités<span>0</span></a></li>
