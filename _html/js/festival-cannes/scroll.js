@@ -6,9 +6,9 @@ function initParallaxElements() {
 
   if($('.home').length) {
     // home prefooter
-    if ($('#prefooter .owl-item.center .imgSlide img').length) {
+    if ($('#slider-prefooter .owl-item.center .imgSlide img').length) {
       parallaxElements['prefooter'] = ({
-        'el1': '#prefooter .owl-item.center .imgSlide img',
+        'el1': '#slider-prefooter .owl-item.center .imgSlide img',
         'positionTop': $('#slider-prefooter').offset().top,
         'division': 2,
         'mov': 1
@@ -332,7 +332,7 @@ $(document).ready(function() {
   $(window).resize(function() {
     if($('.home').length) {
       // home prefooter
-      if ($("#slider-prefooter").length) {
+      if ($("#slider-prefooter .owl-item.center .imgSlide img").length) {
         parallaxElements['prefooter'].positionTop = $('#slider-prefooter').offset().top;
       }
       if ($('#slider-movies .owl-item.active .video').length) {
