@@ -47,6 +47,7 @@ sonata_media:
             formats:
                 mobile: { width: 584 , height: 794 , quality: 100 }
                 tiny:     { width: 46 , height: 64 , quality: 100 }
+                135x185:    { width: 135 , height: 185 , quality: 100 }
                 small:    { width: 187 , height: 255 , quality: 100 }
                 big:      { width: 1000 , quality: 100 }
                 319x434:  { width: 319 , height: 434 , quality: 100 }
@@ -74,6 +75,7 @@ sonata_media:
                   mobile: { width: 584 , height: 794 , quality: 100 }
                   tiny:  { width: 46 , height: 64 , quality: 100 }
                   small: { width: 187 , height: 255 , quality: 100 }
+                  135x185:    { width: 135 , height: 185 , quality: 100 }
                   300x400: { width: 300, height: 400, quality 100 }
                   319x434:  { width: 319 , height: 434 , quality: 100 }
                   420x560: { width: 420, height: 560, quality: 100 }
@@ -100,6 +102,7 @@ sonata_media:
                 tiny:    { width: 146 , quality: 100 }
                 square:  { width: 146, height: 146, quality: 100 }
                 small:   { width: 187, height: 255, quality: 100 }
+                135x185:    { width: 135 , height: 185 , quality: 100 }
                 300x400: { width: 300, height: 400, quality: 100 }
                 293x397: { width: 293, height: 397, quality: 100 }
                 319x434: { width: 319, height: 434, quality: 100 }
@@ -241,6 +244,8 @@ sonata_media:
                 # Search
                 searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
                 search: { width: 170 , height: 231 , quality: 100, constraint: false }
+                # trailer
+                135x185:    { width: 135 , height: 185 , quality: 100 }
 
         media_audio:
             providers:
