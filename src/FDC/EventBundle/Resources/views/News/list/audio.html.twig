@@ -13,12 +13,12 @@
                 {% endif %}
                 {% if audio.header is not null %}
                     {% set transImage = audio.header.findTranslationByLocale(app.request.locale) %}
-                    {% if transImage.file is null %}
+                   {% if transImage is null or transImage.file is null %}
                         {% set transImage = audio.header.findTranslationByLocale('fr') %}
                     {% endif %}
                 {% elseif audio.image %}
                     {% set transImage = audio.image.findTranslationByLocale(app.request.locale) %}
-                    {% if transImage.file is null %}
+                    {% if transImage is null or transImage.file is null %}
                         {% set transImage = audio.image.findTranslationByLocale('fr') %}
                     {% endif %}
                 {% endif %}
