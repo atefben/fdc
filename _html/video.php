@@ -12,7 +12,7 @@
     <?php include('header.html'); ?>
 
     <div id="main">
-      <div class="video-container state-init video"
+      <!--<div class="video-container state-init video"
         data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
         data-twitter="//www.twitter.com"
         data-link="//www.example.com"
@@ -68,7 +68,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
       <div class="video-container state-init video"
         data-facebook="//www.facebook.com"
         data-twitter="//www.twitter.com"
@@ -92,7 +92,7 @@
           </div>
         </div>
       </div>
-      <div class="video-container state-init video"
+      <!--<div class="video-container state-init video"
         data-video="https://www.youtube.com/watch?v=p7t_GWXmgFk"
         data-facebook="//www.facebook.com"
         data-twitter="//www.twitter.com"
@@ -112,7 +112,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
     <?php include('footer.html'); ?>
 
