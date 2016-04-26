@@ -7,19 +7,23 @@
             <h3 class="subtitle">{{ 'home.prefooter.subtitle.suivezlamanifestation'|trans }}</h3>
             <ul>
                 {% if homepage|trans_fallback('prefooterTitle1') != null %}
-                <li><a href="{{ homepage|trans_fallback('prefooterUrl1') }}" class="active" target="_blank">{{ homepage|trans_fallback('prefooterTitle1') }}</a></li>
+                <li><a href="{{ homepage|trans_fallback('prefooterUrl1') }}" class="active" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl1') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle1') }}</a></li>
                 {% endif %}
 
                 {% if homepage|trans_fallback('prefooterTitle2') != null %}
-                <li><a href="{{ homepage|trans_fallback('prefooterUrl2') }}">{{ homepage|trans_fallback('prefooterTitle2') }}</a></li>
+                <li><a href="{{ homepage|trans_fallback('prefooterUrl2') }}" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl2') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle2') }}</a></li>
                 {% endif %}
 
                 {% if homepage|trans_fallback('prefooterTitle3') != null %}
-                <li><a href="{{ homepage|trans_fallback('prefooterUrl3') }}" target="_blank">{{ homepage|trans_fallback('prefooterTitle3') }}</a></li>
+                <li><a href="{{ homepage|trans_fallback('prefooterUrl3') }}" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl3') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle3') }}</a></li>
                 {% endif %}
 
                 {% if homepage|trans_fallback('prefooterTitle4') != null %}
-                <li><a href="{{ homepage|trans_fallback('prefooterUrl4') }}">{{ homepage|trans_fallback('prefooterTitle4') }}</a></li>
+                <li><a href="{{ homepage|trans_fallback('prefooterUrl4') }}" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl4') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle4') }}</a></li>
+                {% endif %}
+
+                {% if homepage|trans_fallback('prefooterTitle5') != null %}
+                <li><a href="{{ homepage|trans_fallback('prefooterUrl5') }}" {% if fdc_event_domain in homepage|trans_fallback('prefooterUrl5') %}{% else %}target="_blank"{% endif %}>{{ homepage|trans_fallback('prefooterTitle5') }}</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -32,7 +36,7 @@
             <div class="imgSlide active bottom">
                 <div class="vCenter">
                     <div class="vCenterKidBottom">
-                        <a href='{{ homepage|trans_fallback('prefooterUrl1') }}' target="_blank"><img src="{% path trans.file, '1954x1200' %}" alt="{{ trans.alt }}" /></a>
+                        <a href='{{ homepage|trans_fallback('prefooterUrl1') }}'><img src="{% path trans.file, '1954x1200' %}" alt="{{ trans.alt }}" /></a>
                     </div>
                 </div>
             </div>
@@ -66,12 +70,25 @@
             {% if homepage.prefooterImage4 is not null %}
                 {% set trans = homepage.prefooterImage4.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null or trans.file is not null %}
-                    {% set trans = homepage.prefooterImage4 .findTranslationByLocale('fr') %}
+                    {% set trans = homepage.prefooterImage4.findTranslationByLocale('fr') %}
                 {% endif %}
             <div class="imgSlide top">
                 <div class="vCenter">
                     <div class="vCenterKidBottom">
                         <a href='{{ homepage|trans_fallback('prefooterUrl4') }}'><img src="{% path trans.file, '1954x1200' %}" alt="{{ trans.alt }}" /></a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if homepage.prefooterImage5 is not null %}
+                {% set trans = homepage.prefooterImage5.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is not null %}
+                    {% set trans = homepage.prefooterImage5.findTranslationByLocale('fr') %}
+                {% endif %}
+            <div class="imgSlide top">
+                <div class="vCenter">
+                    <div class="vCenterKidBottom">
+                        <a href='{{ homepage|trans_fallback('prefooterUrl5') }}'><img src="{% path trans.file, '1954x1200' %}" alt="{{ trans.alt }}" /></a>
                     </div>
                 </div>
             </div>

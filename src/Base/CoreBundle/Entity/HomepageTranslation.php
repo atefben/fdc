@@ -213,6 +213,13 @@ class HomepageTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      **/
+    private $prefooterTitle5;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
     private $prefooterUrl1;
 
     /**
@@ -235,6 +242,13 @@ class HomepageTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", nullable=true)
      **/
     private $prefooterUrl4;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     **/
+    private $prefooterUrl5;
 
     /**
      * @var Prefooter
@@ -973,5 +987,51 @@ class HomepageTranslation implements TranslateChildInterface
     public function getPrefooterUrl4()
     {
         return $this->prefooterUrl4;
+    }
+
+    /**
+     * Set prefooterTitle5
+     *
+     * @param string $prefooterTitle5
+     * @return HomepageTranslation
+     */
+    public function setPrefooterTitle5($prefooterTitle5)
+    {
+        $this->prefooterTitle5 = $prefooterTitle5;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterTitle5
+     *
+     * @return string 
+     */
+    public function getPrefooterTitle5()
+    {
+        return $this->prefooterTitle5;
+    }
+
+    /**
+     * Set prefooterUrl5
+     *
+     * @param string $prefooterUrl5
+     * @return HomepageTranslation
+     */
+    public function setPrefooterUrl5($prefooterUrl5)
+    {
+        $this->prefooterUrl5 = $prefooterUrl5;
+
+        return $this;
+    }
+
+    /**
+     * Get prefooterUrl5
+     *
+     * @return string 
+     */
+    public function getPrefooterUrl5()
+    {
+        return $this->prefooterUrl5;
     }
 }
