@@ -31,6 +31,12 @@
     margin-bottom: 10px;
 }
 
+.a2lix_translationsFields-en .col-md-4 .base-widget,
+.a2lix_translationsFields-es .col-md-4 .base-widget,
+.a2lix_translationsFields-zh .col-md-4 .base-widget {
+    overflow: auto;
+}
+
 .btn-add-base-widget {
     margin: 10px;
 }
