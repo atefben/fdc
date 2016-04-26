@@ -9,9 +9,6 @@ $(document).ready(function() {
     }
     if($('.grid').length) {
       resizeGrid();
-      // setTimeout(function() {
-      //   resizeGrid();
-      // }, 300);
     }
     // if($('#prehome-container').length) {
     //   $('#prehome-container').height($(window).height());
@@ -19,6 +16,16 @@ $(document).ready(function() {
     var pxT = parseInt(($('#selection .owl-stage-outer').width() / 2) - 131) + "px";
     $('#selection .owl-stage').css('transform', 'translate3d(' + pxT + ',0, 0)');
   });
+
+  function doOnOrientationChange() {
+    if($('.grid').length) {
+      if($('#gridPhotos').length > 0) {
+        $('#gridPhotos').isotope('layout');
+      }
+      // resizeGrid();
+    }
+  }
+  window.addEventListener('orientationchange', doOnOrientationChange);
 
   var dragging = false;
 

@@ -17,7 +17,7 @@
         {% endif %}
 
 
-        <article data-theme="competition" data-format="{{ format }}" class="audio">
+        <article data-date="{{ media.publishedAt|date('dmY') }}" data-theme="{{ media.theme|trans_fallback('slug') }}" data-format="{{ format }}" class="audio">
             <div class="image">
                 <div class="image-wrapper">
 

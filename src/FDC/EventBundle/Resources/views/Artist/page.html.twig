@@ -43,7 +43,12 @@
                                 {% set copyright = artistImage.copyright %}
                                 <p class="caption" id="captionCopyright" >{{ legend }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
                             {% else %}
-                                <img src="{% path artistImage, '976x535' %}" alt="{{ artist.fullName }}"/>
+                                {% if artist.credits != null %}
+                                    <img src="{% path artistImage, '976x535' %}" alt="{{ artist.fullName }}"/>
+                                    <p class="caption" id="captionCopyright" >{{ '© ' ~  artist.credits }}</p>
+                                {% else %}
+                                    <img src="{% path artistImage, '976x535' %}" alt="{{ artist.fullName }}"/>
+                                {% endif %}
                             {% endif %}
                         {% else %}
                             {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
@@ -249,7 +254,7 @@
                                         {% endif %}
                                     </div>
                                     <figcaption>
-                                        <span class="name">{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}</span>
+                                        <span class="name">{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}</span>
                                         <span class="rank" {{ director|content_lang('profession') }}>{{ director|trans_fallback('profession') }}</span>
                                     </figcaption>
                                 </a>
