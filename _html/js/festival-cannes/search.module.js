@@ -94,7 +94,7 @@ $(document).ready(function() {
   if($('.searchpage').length) {
     $('#colSearch').css('left', ($(window).width() - 977) / 2);
     
-    $( window ).resize( function(){
+    $(window).resize(function() {
       $('#colSearch').css('left', ($(window).width() - 977) / 2);
     });
 
