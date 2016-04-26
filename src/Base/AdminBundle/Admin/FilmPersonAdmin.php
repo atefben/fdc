@@ -95,7 +95,7 @@ class FilmPersonAdmin extends SoifAdmin
                     'expanded'                  => true,
                 ))
                 ->add('credits','text', array(
-                    'label' =>'dashboard.link.credits',
+                    'label' =>'form.label_copyright',
                     'required' => false
                 ))
             ->end()
@@ -110,7 +110,7 @@ class FilmPersonAdmin extends SoifAdmin
                     'link_parameters' => array('context' => 'film_poster'),
                 ))
                 ->add('presidentJuryCredits','text', array(
-                    'label' =>'dashboard.link.credits',
+                    'label' =>'form.label_copyright',
                     'required' => false
                 ))
             ->end()
