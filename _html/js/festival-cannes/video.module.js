@@ -579,8 +579,10 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         if (isiPad(true)) {
             console.log('test');
             $fullscreen[0].addEventListener('touchstart', function() {
+                console.log('in');
                 time = window.setInterval(function() {
                     try {
+                        console.log('in 2');
                         $container[0].webkitEnterFullscreen();
                     }
                     catch(e) {}
