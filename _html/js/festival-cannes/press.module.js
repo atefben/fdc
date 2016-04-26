@@ -1225,7 +1225,6 @@ $(document).ready(function () {
                "url": "eventPopin.html"
           };
           $('#mycalendar').fullCalendar( 'renderEvent', myEvent );
-
           $(this)[0].reset();
 
           //Stockage de l'évènement dans le storage
