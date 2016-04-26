@@ -105,6 +105,8 @@
 // 2. Photos
 // =========================
 #gridPhotos {
+  background: #000;
+
   &:after {
     content: '';
     display: block;

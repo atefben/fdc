@@ -12168,6 +12168,9 @@ article .read-later.rAlign span:after {
   clear: both;
 }
 
+#gridPhotos {
+  background: #000;
+}
 #gridPhotos:after {
   content: '';
   display: block;
