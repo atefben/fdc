@@ -17308,6 +17308,8 @@ input[type=submit] {
 }
 .press .communiques {
   overflow: hidden;
+  clear: both;
+  border-bottom: 1px solid #e3e3e3;
 }
 .press .communiques .grid-container {
   overflow: hidden;
@@ -17783,6 +17785,7 @@ input[type=submit] {
   width: 100%;
   background-color: #000;
   position: relative;
+  clear: both;
 }
 .press .section .img {
   position: absolute;
@@ -18305,12 +18308,8 @@ input[type=submit] {
 .popin-event .events-container .events-wrapper .event {
   display: inline-block;
   margin-right: 20px;
+  margin-bottom: 20px;
   width: 225px;
-}
-@media screen and (max-width: 1024px) {
-  .popin-event .events-container .events-wrapper .event {
-    margin-bottom: 22px;
-  }
 }
 .popin-event .events-container .events-wrapper .event p {
   margin-bottom: 5px;

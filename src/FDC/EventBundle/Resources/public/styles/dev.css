@@ -268,11 +268,6 @@
     font-size: 0.625rem;
 }
 
-.single-article .half-photo img {
-    display: block;
-    max-width: 100%;
-}
-
 #half-photo {
     display: inline-block;
     margin: 0 0 50px;
