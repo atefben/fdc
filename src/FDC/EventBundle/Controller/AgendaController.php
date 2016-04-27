@@ -31,6 +31,7 @@ class AgendaController extends Controller
         $festival = $this->getFestival()->getId();
         $festivalStart    = $this->getFestival()->getFestivalStartsAt();
         $festivalEnd      = $this->getFestival()->getFestivalEndsAt();
+        $locale = $this->getRequest()->getLocale();
         $isPress = false;
 
         if ($request->get('date')) {
@@ -71,26 +72,20 @@ class AgendaController extends Controller
             ;
         }
 
-        // get all projections for filter selection, filter type
-        $projectionsAll = $this
+        // get all selections
+        $selectionsIds = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmProjection')
-            ->getProjectionsByFestivalAndDateAndRoom($festival, false, false, $isPress);
-        $selections = array();
-        $types = array();
-
-        foreach ($projectionsAll as $projection) {
-            if (array_search($projection->getType(), $types) === false) {
-                $types[] = $projection->getType();
-            }
-
-            foreach ($projection->getProgrammationFilms() as $projectionProgrammationFilm) {
-                $film = $projectionProgrammationFilm->getFilm();
-                if ($film != null && $film->getSelectionSection() != null) {
-                    $selections[$film->getSelectionSection()->getId()] = $film->getSelectionSection();
-                }
-            }
-        }
+            ->getAllSelectionsIds($festival, $locale);
+        $selections = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmSelectionSection')
+            ->findBy(array('id' => $selectionsIds));
+        // get all types
+        $types = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmProjection')
+            ->getAllTypes($festival);
 
         $schedulingDays = $this->createDateRangeArrayEvent($festivalStart->format('Y-m-d'), $festivalEnd->format('Y-m-d'), false);
 

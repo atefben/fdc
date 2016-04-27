@@ -78,16 +78,16 @@
                                 film_image_default_attrs: 'width="135"'
                             }) %}
                             <h4 class="rubric-film">{{ film.selectionSection|trans_fallback('name') }}</h4>
-                            <strong class="name-video">
+                            <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}" class="name-video">
                                 {{ film.titleVo }}
                                 {% set transTitle = film|trans_fallback('title') %}
                                 {% if transTitle|trim and transTitle|trim != film.titleVo|trim %}
                                     <br/><span class="translated-title">({{ transTitle }})</span>
                                 {% endif %}
-                            </strong>
+                            </a>
                             <span class="name-person">
                                 {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                                    {{ loop.index0 ? ', ': '' }}{{ director.fullName }}
+                                    {{ loop.index0 ? ', ': '' }}<a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">{{ director.fullName }}</a>
                                 {%- endfor -%}
                             </span>
                         </div>

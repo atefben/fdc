@@ -8,5 +8,5 @@
     {% set file = trans.file %}
     {% set copyright = photo|trans_fallback('copyright') %}
     <img src="{% path file, '2560x1620' %}" alt="{{ trans.alt }}">
-    <p class="caption">{{ photo|trans_fallback('legend') }}{% if copyright is not empty %} © {{ copyrihgt }}{% endif %}</p>
+    <p class="caption">{{ photo|trans_fallback('legend') }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
 </div>

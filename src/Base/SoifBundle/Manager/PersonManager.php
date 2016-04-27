@@ -32,6 +32,20 @@ class PersonManager extends CoreManager
     private $mediaManager;
 
     /**
+     * @var array
+     */
+    private $filmsNotImported = array();
+
+    /**
+     * @return array
+     */
+    public function getFilmsNotImported()
+    {
+        return $this->filmsNotImported;
+    }
+
+
+    /**
      * __construct function.
      * 
      * @access public
@@ -74,7 +88,7 @@ class PersonManager extends CoreManager
             )
         );
     }
-    
+
     /**
      * getById function.
      * 
@@ -260,6 +274,7 @@ class PersonManager extends CoreManager
                 
                 $film = $this->em->getRepository('BaseCoreBundle:FilmFilm')->findOneById(array('id' => $obj->IdFilm));
                 if ($film === null) {
+                    $this->filmsNotImported[] = $obj->IdFilm;
                     $msg = __METHOD__. " Film {$obj->IdFilm} not found, call php app/console base:soif:get_film {$obj->IdFilm} to import it";
                     $this->logger->warn($msg);
                     continue;
