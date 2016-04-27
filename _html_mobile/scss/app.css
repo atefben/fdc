@@ -1119,14 +1119,30 @@ section {
 #main.detail-event .article-title {
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
-  max-height: 200px;
+  max-height: 100%;
   margin-bottom: 40px;
   font-size: 20px;
   color: #666;
 }
+#main.article .article-title h2,
+#main.artist .article-title h2,
+#main.detail-event .article-title h2 {
+  color: #333;
+  font-size: 35px;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 46px;
+  width: 420px;
+  margin: 15px auto 0 auto;
+  text-align: center;
+}
 #main.article .article-title .category,
+#main.article .article-title .update,
 #main.artist .article-title .category,
-#main.detail-event .article-title .category {
+#main.artist .article-title .update,
+#main.detail-event .article-title .category,
+#main.detail-event .article-title .update {
   color: #c8a461;
   display: inline-block;
   font-size: 20px;
@@ -1157,7 +1173,7 @@ section {
   font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 46px;
-  width: 420px;
+  width: 100%;
   margin: 15px auto 0 auto;
   text-align: center;
 }
@@ -1276,7 +1292,8 @@ section {
 #main.detail-event .half-photo {
   vertical-align: top;
   width: 47%;
-  height: 410px;
+  height: 100%;
+  float: left;
 }
 #main.article .half-photo + .half-photo,
 #main.artist .half-photo + .half-photo,
@@ -1287,6 +1304,7 @@ section {
 #main.artist .half-photo img,
 #main.detail-event .half-photo img {
   height: 100%;
+  width: 100%;
   object-fit: cover;
 }
 #main.article .quote,
@@ -1518,6 +1536,11 @@ section {
   width: 516px;
   height: 490px;
 }
+#main.article .articles .owl-item .item:before,
+#main.artist .articles .owl-item .item:before,
+#main.detail-event .articles .owl-item .item:before {
+  background: inherit;
+}
 #main.article .articles .img-container,
 #main.artist .articles .img-container,
 #main.detail-event .articles .img-container {
@@ -1583,6 +1606,7 @@ section {
 #main.detail-event .articles .top-info {
   margin: 0 auto;
   display: table;
+  text-align: center;
 }
 #main.article .articles .owl-item a,
 #main.artist .articles .owl-item a,
@@ -1710,6 +1734,19 @@ section {
 #main.events .list {
   width: 100%;
 }
+#main.articles .list .picto,
+#main.press .list .picto,
+#main.events .list .picto {
+  z-index: 10;
+  position: absolute;
+  bottom: 10px;
+}
+#main.articles .list .picto.picto-my-selection,
+#main.press .list .picto.picto-my-selection,
+#main.events .list .picto.picto-my-selection {
+  position: absolute;
+  left: 180px;
+}
 #main.articles .item,
 #main.press .item,
 #main.events .item {
@@ -1717,13 +1754,25 @@ section {
   height: 160px;
   margin-bottom: 40px;
   position: relative;
+  width: 100%;
+}
+#main.articles .item:before,
+#main.press .item:before,
+#main.events .item:before {
+  background: none;
+}
+#main.articles .item .top-info,
+#main.press .item .top-info,
+#main.events .item .top-info {
+  margin: 0;
 }
 #main.articles .item .info,
 #main.press .item .info,
 #main.events .item .info {
-  width: 270px;
+  width: 280px;
   height: 160px;
   float: left;
+  margin: 0;
 }
 #main.articles .item .info .category,
 #main.press .item .info .category,
@@ -1735,8 +1784,10 @@ section {
   text-transform: uppercase;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   margin-top: 15px;
+  padding: 0;
   padding-bottom: 5px;
   font-weight: 600;
+  margin-bottom: 0;
 }
 #main.articles .item .info .date, #main.articles .item .info .hour,
 #main.press .item .info .date,
@@ -1750,6 +1801,8 @@ section {
 #main.articles .item .info h2,
 #main.press .item .info h2,
 #main.events .item .info h2 {
+  text-align: left;
+  margin-left: 0;
   margin-top: 25px;
   line-height: 36px;
   color: #333;
@@ -1772,7 +1825,40 @@ section {
 #main.articles .container .title,
 #main.press .container .title,
 #main.events .container .title {
-  margin: 70px 0 40px 0;
+  margin: 30px auto 60px;
+  padding: 0;
+}
+
+#main.audios .container h2.title,
+#main.all-photos .container h2.title,
+#main.all-videos .container h2.title {
+  margin: 60px auto;
+  padding: 0;
+}
+#main.audios .list .item .img-container,
+#main.all-photos .list .item .img-container,
+#main.all-videos .list .item .img-container {
+  height: 100%;
+  width: 100%;
+  text-align: left;
+}
+#main.audios .list .item .infos .picto,
+#main.all-photos .list .item .infos .picto,
+#main.all-videos .list .item .infos .picto {
+  margin-right: 10px;
+}
+#main.audios .list .item .infos .vCenter,
+#main.all-photos .list .item .infos .vCenter,
+#main.all-videos .list .item .infos .vCenter {
+  padding-top: 15px;
+  text-align: left;
+  float: left;
+  width: auto;
+}
+#main.audios .list .item .infos .right,
+#main.all-photos .list .item .infos .right,
+#main.all-videos .list .item .infos .right {
+  text-align: left;
 }
 
 #main.artist {
@@ -2147,6 +2233,7 @@ section {
 
 .audio-player.on .player-off {
   margin-top: -85px;
+  margin-left: 90px;
 }
 
 .audio-player.on .player-on {
@@ -5418,46 +5505,12 @@ article .picto .icon {
 }
 
 .all-photos .container .title, .all-videos .container .title, .audios .container .title {
-  margin: 70px 0 40px 0;
+  margin: 20px auto;
+  padding: 0;
+  max-width: inherit;
 }
 
 /*ADD TO MY SELECTION PICTO*/
-#main.articles .list .picto.picto-my-selection {
-  position: absolute;
-  left: 180px;
-}
-
-#main.articles .list .picto {
-  z-index: 10;
-  position: absolute;
-  bottom: 10px;
-}
-
-#main.articles .item {
-  width: 100%;
-}
-#main.articles .item .info {
-  margin: 0;
-}
-
-#main.articles .item .info .category {
-  padding: 0;
-  margin-bottom: 0;
-}
-
-#main.articles .item:before {
-  background: none;
-}
-
-#main.articles .item .info h2 {
-  text-align: left;
-  margin-left: 0;
-}
-
-#main.articles .item .top-info {
-  margin: 0;
-}
-
 .picto.picto-my-selection, .list .picto.picto-my-selection, .owl-carousel .picto.picto-my-selection {
   top: 10px;
   right: 10px;
