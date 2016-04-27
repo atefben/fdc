@@ -196,10 +196,10 @@ $(document).ready(function() {
 
     // STICKY Timeline on homepage on scroll
     if($('#news').length) {
-      if(s > $('#news').offset().top + 70 && s < ($('.read-more').offset().top - $('.read-more').height() - $timeline.height() - 3)) {
+      if(s > $('#news').offset().top + 70 && s < ($('.read-more').offset().top + $('.read-more').height() - $timeline.height() - 123)) {
         $timeline.removeClass('bottom').addClass('stick').css('left', $('.content-news').offset().left + $('.content-news').width() + 57);
       } else {
-        if(s >= ($('.read-more').offset().top - $('.read-more').height() - $timeline.height() - 3)) {
+        if(s >= ($('.read-more').offset().top + $('.read-more').height() - $timeline.height() - 123)) {
           $timeline.addClass('bottom');
         } else {
           $timeline.removeClass('stick').css('left', 'auto');
