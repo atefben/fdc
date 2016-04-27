@@ -17308,6 +17308,8 @@ input[type=submit] {
 }
 .press .communiques {
   overflow: hidden;
+  clear: both;
+  border-bottom: 1px solid #e3e3e3;
 }
 .press .communiques .grid-container {
   overflow: hidden;

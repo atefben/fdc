@@ -719,6 +719,8 @@
 
   .communiques {
     overflow: hidden;
+    clear: both;
+    border-bottom: 1px solid #e3e3e3;
 
     .grid-container {
       overflow: hidden;
