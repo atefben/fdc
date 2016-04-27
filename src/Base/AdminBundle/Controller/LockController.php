@@ -146,7 +146,7 @@ class LockController extends Controller
         }
 
         $translations = array();
-        if ($authChecker->isGranted('ROLE_FDC_TRANSLATOR_MASTER') === false) {
+        if ($authChecker->isGranted('ROLE_TRANSLATOR') === true) {
             $translations[] = $entity->findTranslationByLocale($locale);
         } else {
             $translations = $entity->getTranslations();
@@ -291,7 +291,7 @@ class LockController extends Controller
         }
 
         $translations = array();
-        if ($authChecker->isGranted('ROLE_FDC_TRANSLATOR_MASTER') === false) {
+        if ($authChecker->isGranted('ROLE_TRANSLATOR') === true) {
             $translations[] = $entity->findTranslationByLocale($locale);
         } else {
             $translations = $entity->getTranslations();
@@ -372,7 +372,7 @@ class LockController extends Controller
         }
 
         $translations = array();
-        if ($authChecker->isGranted('ROLE_FDC_TRANSLATOR_MASTER') === false) {
+        if ($authChecker->isGranted('ROLE_TRANSLATOR') === true) {
             $translations[] = $entity->findTranslationByLocale($locale);
         } else {
             $translations = $entity->getTranslations();
