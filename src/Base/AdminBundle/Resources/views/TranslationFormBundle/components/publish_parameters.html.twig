@@ -108,9 +108,9 @@
                         </div>
                     {% endif %}
                     {% if form.parent.children.translateOptions is defined %}
-                        {% for translateOption in form.parent.children.translateOptions.vars.choices %}
+                        {% for translateOption in form.parent.children.translateOptions.vars.data %}
                             <div>
-                                {{ translateOption.label|trans }}
+                                {{ form.parent.children.translateOptions.vars.choices[translateOption].label|trans }}
                             </div>
                         {% endfor %}
                         <br>

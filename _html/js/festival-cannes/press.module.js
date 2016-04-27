@@ -1535,7 +1535,9 @@ $(document).ready(function () {
   });
 
   var time = $('.hours').timepicker({
-    timeFormat: typeof GLOBALS.calendar.i18n.labelFormat[GLOBALS.locale] !== "undefined" ? GLOBALS.calendar.i18n.labelFormat[GLOBALS.locale] : GLOBALS.calendar.i18n.labelFormat.default
+    timeFormat: typeof GLOBALS.calendar.i18n.labelFormat[GLOBALS.locale] !== "undefined" ? GLOBALS.calendar.i18n.labelFormat[GLOBALS.locale] : GLOBALS.calendar.i18n.labelFormat.default,
+    minTime: '8:00am',
+    maxTime: '3:00am',
   });
 
   // DEV OVERRIDE

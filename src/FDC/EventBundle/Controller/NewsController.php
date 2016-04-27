@@ -61,7 +61,6 @@ class NewsController extends Controller
         $slides = $em->getRepository('BaseCoreBundle:HomepageSlide')->getAllSlide($locale,$dateTime);
 
         $displayHomeSlider = $homepage->getDisplayedSlider();
-
         $homeSlider = array();
         foreach ($slides as $slide) {
             if ($slide->getNews() != null) {
@@ -72,7 +71,6 @@ class NewsController extends Controller
                 $homeSlider[] = $slide->getStatement();
             }
         }
-
         ////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////      SOCIAL GRAPH          ///////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////

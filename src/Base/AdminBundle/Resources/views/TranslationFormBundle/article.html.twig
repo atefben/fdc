@@ -440,35 +440,35 @@
                                             <div>
                                                 {% if widget.children.gallery.vars.data.medias is defined and widget.children.gallery.vars.data.medias is not null %}
                                                     {% for media in widget.children.gallery.vars.data.medias %}
-                                                    <div class="form-group">
-                                                        <label>Media {{ loop.index }}</label>
-                                                        {% if media.media != null %}
-                                                        {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
+                                                        {% if media and media.media %}
+                                                            <div class="form-group">
+                                                                <label>Media {{ loop.index }}</label>
+                                                                    {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
+                                                                <div>
+                                                                    <b>{{ 'form.label_legend_img'|trans }}:</b>
+                                                                    {% if mediaTranslations.get(locale) is not null %}
+                                                                        {{ mediaTranslations.get(locale).legend }}
+                                                                    {% endif %}
+                                                                </div>
+                                                                <div>
+                                                                    <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                                    {% if mediaTranslations.get(locale) is not null %}
+                                                                        {{ mediaTranslations.get(locale).alt }}
+                                                                    {% endif %}
+                                                                </div>
+                                                                <div>
+                                                                    <b>{{ 'form.label_copyright'|trans }}:</b>
+                                                                    {% if mediaTranslations.get(locale) is not null %}
+                                                                        {{ mediaTranslations.get(locale).copyright }}
+                                                                    {% endif %}
+                                                                </div>
+                                                                {% if media.media != null %}
+                                                                <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': media.media.id }) }}">
+                                                                    modifier les traductions
+                                                                </a>
+                                                                {% endif %}
+                                                            </div>
                                                         {% endif %}
-                                                        <div>
-                                                            <b>{{ 'form.label_legend_img'|trans }}:</b>
-                                                            {% if mediaTranslations.get(locale) is not null %}
-                                                                {{ mediaTranslations.get(locale).legend }}
-                                                            {% endif %}
-                                                        </div>
-                                                        <div>
-                                                            <b>{{ 'form.label_alt_img'|trans }}:</b>
-                                                            {% if mediaTranslations.get(locale) is not null %}
-                                                                {{ mediaTranslations.get(locale).alt }}
-                                                            {% endif %}
-                                                        </div>
-                                                        <div>
-                                                            <b>{{ 'form.label_copyright'|trans }}:</b>
-                                                            {% if mediaTranslations.get(locale) is not null %}
-                                                                {{ mediaTranslations.get(locale).copyright }}
-                                                            {% endif %}
-                                                        </div>
-                                                        {% if media.media != null %}
-                                                        <a target="_blank" href="{{ path('admin_base_core_mediaimage_edit', {'id': media.media.id }) }}">
-                                                            modifier les traductions
-                                                        </a>
-                                                        {% endif %}
-                                                    </div>
                                                     {% endfor %}
                                                 {% endif %}
                                             </div>
@@ -591,29 +591,31 @@
                                                 <div>
                                                     {% if widget.children.gallery.vars.data.medias is defined and widget.children.gallery.vars.data.medias is not null %}
                                                         {% for media in widget.children.gallery.vars.data.medias %}
-                                                            {% if media.media != null %}
-                                                            <div class="form-group">
-                                                                <label>Media {{ loop.index }}</label>
-                                                                {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
-                                                                <div>
-                                                                    <b>{{ 'form.label_legend_img'|trans }}:</b>
-                                                                    {% if mediaTranslations.get('fr') is not null %}
-                                                                        {{ mediaTranslations.get('fr').legend }}
+                                                            {% if media and media.media %}
+                                                                <div class="form-group">
+                                                                    <label>Media {{ loop.index }}</label>
+                                                                    {% if media.media != null %}
+                                                                        {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
                                                                     {% endif %}
+                                                                        <div>
+                                                                        <b>{{ 'form.label_legend_img'|trans }}:</b>
+                                                                        {% if mediaTranslations.get('fr') is not null %}
+                                                                            {{ mediaTranslations.get('fr').legend }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div>
+                                                                        <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                                        {% if mediaTranslations.get('fr') is not null %}
+                                                                            {{ mediaTranslations.get('fr').alt }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div>
+                                                                        <b>{{ 'form.label_copyright'|trans }}:</b>
+                                                                        {% if mediaTranslations.get('fr') is not null %}
+                                                                            {{ mediaTranslations.get('fr').copyright }}
+                                                                        {% endif %}
+                                                                    </div>
                                                                 </div>
-                                                                <div>
-                                                                    <b>{{ 'form.label_alt_img'|trans }}:</b>
-                                                                    {% if mediaTranslations.get('fr') is not null %}
-                                                                        {{ mediaTranslations.get('fr').alt }}
-                                                                    {% endif %}
-                                                                </div>
-                                                                <div>
-                                                                    <b>{{ 'form.label_copyright'|trans }}:</b>
-                                                                    {% if mediaTranslations.get('fr') is not null %}
-                                                                        {{ mediaTranslations.get('fr').copyright }}
-                                                                    {% endif %}
-                                                                </div>
-                                                            </div>
                                                             {% endif %}
                                                         {% endfor %}
                                                     {% endif %}
@@ -628,28 +630,30 @@
                                                 <div>
                                                     {% if widget.children.gallery.vars.data is not empty %}
                                                         {% for media in widget.children.gallery.vars.data.medias %}
-                                                            <div class="form-group">
-                                                                <label>Media {{ loop.index }}</label>
-                                                                {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
-                                                                <div>
-                                                                    <b>{{ 'form.label_legend_img'|trans }}:</b>
-                                                                    {% if mediaTranslations.get('fr') is not null %}
-                                                                        {{ mediaTranslations.get('fr').legend }}
-                                                                    {% endif %}
+                                                            {% if media and media.media %}
+                                                                <div class="form-group">
+                                                                    <label>Media {{ loop.index }}</label>
+                                                                    {% set mediaTranslations = (media.media.translations is not null) ? media.media.translations : null %}
+                                                                    <div>
+                                                                        <b>{{ 'form.label_legend_img'|trans }}:</b>
+                                                                        {% if mediaTranslations.get('fr') is not null %}
+                                                                            {{ mediaTranslations.get('fr').legend }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div>
+                                                                        <b>{{ 'form.label_alt_img'|trans }}:</b>
+                                                                        {% if mediaTranslations.get('fr') is not null %}
+                                                                            {{ mediaTranslations.get('fr').alt }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div>
+                                                                        <b>{{ 'form.label_copyright'|trans }}:</b>
+                                                                        {% if mediaTranslations.get('fr') is not null %}
+                                                                            {{ mediaTranslations.get('fr').copyright }}
+                                                                        {% endif %}
+                                                                    </div>
                                                                 </div>
-                                                                <div>
-                                                                    <b>{{ 'form.label_alt_img'|trans }}:</b>
-                                                                    {% if mediaTranslations.get('fr') is not null %}
-                                                                        {{ mediaTranslations.get('fr').alt }}
-                                                                    {% endif %}
-                                                                </div>
-                                                                <div>
-                                                                    <b>{{ 'form.label_copyright'|trans }}:</b>
-                                                                    {% if mediaTranslations.get('fr') is not null %}
-                                                                        {{ mediaTranslations.get('fr').copyright }}
-                                                                    {% endif %}
-                                                                </div>
-                                                            </div>
+                                                            {% endif %}
                                                         {% endfor %}
                                                     {% endif %}
                                                 </div>
