@@ -14,7 +14,6 @@
             <div id="sliderWrapper">
                 <div id="slider" class="owl-carousel">
                     {% for article in homeSlider %}
-
                         {% if article is news_article or
                             article is news_video or
                             article is news_audio or
@@ -27,7 +26,6 @@
                                     {% set type = 'info' %}
                                 {% endif %}
                             {% endif %}
-
                         {% if article is news_article or article is statement_article or article is info_article %}
                             {% set img = article.header %}
                             {% set trans = img.findTranslationByLocale(app.request.locale) %}
