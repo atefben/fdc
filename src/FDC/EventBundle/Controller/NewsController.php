@@ -358,7 +358,12 @@ class NewsController extends Controller
         $this->isPageEnabled($request->get('_route'));
         $em      = $this->getDoctrine()->getManager();
         $locale  = $this->getRequest()->getLocale();
-        $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
+
+        try {
+            $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
+        } catch (\Exception $e) {
+            $isAdmin = false;
+        }
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');

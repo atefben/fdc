@@ -52,10 +52,17 @@ function isIE() {
 }
 
 // is iPad
-function isiPad() {
-  return navigator.userAgent.indexOf("iPad") > -1 ||
-         navigator.userAgent.indexOf("iPhone") > -1 ||
-         navigator.userAgent.indexOf("Android") > -1
+function isiPad(only) {
+  var only = only || false;
+  if (only) {
+    return navigator.userAgent.indexOf("iPad") > -1 ||
+           navigator.userAgent.indexOf("iPhone") > -1 ||
+           navigator.userAgent.indexOf("Android") > -1 ;
+  } else {
+    return navigator.userAgent.indexOf("iPad") > -1 ||
+           navigator.userAgent.indexOf("iPhone") > -1 ||
+           navigator.userAgent.indexOf("Android") > -1 ;
+  }
 }
 
 //
