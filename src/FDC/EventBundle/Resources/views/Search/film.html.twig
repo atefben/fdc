@@ -28,9 +28,7 @@
                             {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                             {% for key,director in directors if director %}
                                 {{ loop.first == true ? '' : ',' }}
-                                <a class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">
-                                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}
-                                </a>
+                                <a class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}</a>
                             {% endfor %}
                         {% endif %}
                     </div>

@@ -17,7 +17,7 @@
     {% elseif class(object) starts with 'News' %}
         {{ path('fdc_event_news_get', {'format': object.newsFormat, 'slug': object|trans_fallback('slug')}) }}
     {% elseif class(object) == 'FilmFilm' %}
-        {{ path('fdc_event_movie_get', {'slug': object|trans_fallback('slug') }) }}
+        {{ path('fdc_event_movie_get', {'slug': object.slug}) }}
     {% elseif class(object) == 'FilmPerson' %}
         {{ path('fdc_event_artist_get', {'slug': object.slug }) }}
     {% endif %}

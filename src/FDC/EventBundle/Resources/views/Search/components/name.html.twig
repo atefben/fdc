@@ -17,7 +17,7 @@
         {{ object|trans_fallback('title')|truncate(40) }}
     {% elseif class(object) == 'FilmFilm' %}
         {% if object|trans_fallback('title') != null and object.titleVo != null and object|trans_fallback('title')|lower != object.titleVo|lower %}
-            {{ object.titleVo }}({{ object|trans_fallback('title') }})
+            {{ object.titleVo }} ({{ object|trans_fallback('title') }})
         {% else %}
             {{ object|trans_fallback('title')?:object.titleVo }}
         {% endif %}

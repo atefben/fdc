@@ -53,7 +53,7 @@ $(document).ready(function() {
   
     setTimeout(function() {
       $('.fullscreenplayer').removeClass('show');
-      if(('.audios').length !==0){
+      if($('.audios').length !==0) {
         $('.playpause').find(".icon").removeClass("icon_play");
         $.stopSound();
       }

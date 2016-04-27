@@ -14,7 +14,7 @@
     {% endif %}
 {% endfor %}
 
-{% if hasPublishedMedias == true %}
+{% if hasPublishedMedias == true and news.gallery.medias is defined %}
     <div class="section photos">
         <div class="slideshow">
             <div class="slideshow-img">

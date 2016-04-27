@@ -645,6 +645,7 @@ $(document).ready(function () {
           e.preventDefault();
           var $ev = $(this).parent().find('.fc-event');
 
+          $('#calendar-wrapper').removeClass('drag');
           $.cookie('drag', '1', {
             expires: 365
           });
