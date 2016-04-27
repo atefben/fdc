@@ -76,7 +76,7 @@
 
         </div>
 
-        {% if associatedFilm is not null or programmations is not empty  %}
+        {% if associatedFilm is not null or (programmations is not empty and programmations.0 ) %}
             <div class="film">
                 {% if associatedFilm is not null %}
                     <div class="info-film {% if programmations is empty %} single{% endif %}">
@@ -134,13 +134,17 @@
                     </div>
                 {% endif %}
 
-                {% if programmations is not empty %}
+                {% if programmations is not empty and programmations.0 %}
                     <div class="programmation-film">
                         <div class="wrapper">
                             <div class="vCenter">
                                 <div class="vCenterKid">
                                     <span class="category">{{ 'article.film.label.programmation'|trans }}</span>
                                     <ul>
+
+
+                                        {#{{ dump(programmations) }}#}
+
                                         {% for programmation in programmations|slice(-4) %}
                                             <li>
                                                 <span class="type">{{ 'article.film.text.projection'|trans }}</span>
