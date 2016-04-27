@@ -65,7 +65,7 @@
     }
 
     .item .info {
-      width: 270px;
+      width: 280px;
       height: 160px;
       float: left;
       margin: 0;
@@ -119,16 +119,16 @@
 }
 
 #main.audios,
+#main.all-photos,
 #main.all-videos {
   .container{
     h2.title{
-      margin: 30px auto 60px;
+      margin: 60px auto;
       padding: 0;
     }
   }
 
   .list {
-
     .item {
       .img-container {
         height: 100%;
@@ -144,6 +144,9 @@
           text-align: left;
           float: left;
           width: auto;
+        }
+        .right {
+          text-align: left;
         }
       }
     }
