@@ -77,6 +77,7 @@ class FilmContact implements FilmContactInterface
     /**
      * @ORM\ManyToMany(targetEntity="FilmContact")
      * @Groups({"film_show"})
+     * @ORM\OrderBy({"position"="asc"})
      */
     private $subordinates;
 

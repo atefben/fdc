@@ -215,6 +215,7 @@ sonata_media:
                 55x75: { width: 55 , height: 75 , quality: 100, constraint: false }
                 90x120: { width: 90 , height: 120 , quality: 100, constraint: false }
                 444x600: { width: 444, height: 600, quality: 100, constraint: false }
+                420x560: { width: 420, height: 560, quality: 100 }
                 #Photo Jury
                 640x603: { width: 640 , height: 603 , quality: 100, constraint: false }
                 # Movie VideoMain
