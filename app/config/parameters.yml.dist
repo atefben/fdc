@@ -252,7 +252,7 @@ parameters:
     admin_fdc_page_news_images_id: ~
     admin_fdc_page_news_videos_id: ~
     s3_elastic_mp4_pipeline_id: '1460999541198-cadbhi'
-    s3_elastic_mp4_preset_id: '1461677504822-mp1ivs'
+    s3_elastic_mp4_preset_id: '1461746855954-ojnlk1'
     s3_elastic_webm_pipeline_id: '1460999541198-cadbhi'
     s3_elastic_webm_preset_id: '1461677560453-jgxlmi'
     s3_elastic_mp3_pipeline_id: '1460999541198-cadbhi'

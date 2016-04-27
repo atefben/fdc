@@ -52,6 +52,10 @@
 
   .jwplayer {
     z-index: 2;
+
+    &.jw-state-idle .jw-preview {
+      background-size: cover;
+    }
   }
 
   .top-bar {
