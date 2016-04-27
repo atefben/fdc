@@ -3,7 +3,7 @@
 
 {% block body %}
     {% include 'FDCEventMobileBundle:News:widgets/social-share.html.twig' %}
-    <div id="main" data-menu="selection">{# |!| communique |!| #}
+    <div id="main" class="article" data-menu="selection">{# |!| communique |!| #}
 
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
@@ -74,7 +74,9 @@
                 <div class="author">{{ 'article.text.redigepar'|trans }} {{ news.signature }}</div>
             {% endif %}
 
-            {% if associatedFilm is not null or programmations is not empty  %}
+        </div>
+
+        {% if associatedFilm is not null or programmations is not empty  %}
             <div class="film">
                 {% if associatedFilm is not null %}
                     <div class="info-film {% if programmations is empty %} single{% endif %}">
@@ -155,41 +157,40 @@
                     </div>
                 {% endif %}
             </div>
-            {% endif %}
+        {% endif %}
             
-            <div class="container">
-                <div class="section articles">
-                    {% if focusArticles is not empty %}
-                        <div class="focus">
-                            <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
+        <div class="container">
+            <div class="section articles">
+                {% if focusArticles is not empty %}
+                    <div class="focus">
+                        <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
+                        <div class="owl-carousel articles-carousel">
+                            {#<div class="articles">#}
+                                {% for article in focusArticles %}
+                                    {% if article is not null %}
+                                        {% include 'FDCEventMobileBundle:News:widgets/article-focus.html.twig' with {type : 'focus', 'index': loop.index} %}
+                                    {% endif %}
+                                {% endfor %}
+                            {#</div>#}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="section articles">
+                {% if sameDayArticles is not empty and news.hideSameDay == false %}
+                    <div class="same-day">
+                        <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
+                        <div class="articles center">
                             <div class="owl-carousel articles-carousel">
-                                <div class="articles">
-                                    {% for article in focusArticles %}
-                                        {% if article is not null %}
-                                            {% include 'FDCEventMobileBundle:News:widgets/article.html.twig' with {type : 'focus'} %}
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
+                                {% for article in sameDayArticles %}
+                                    {% if article is not null %}
+                                        {% include 'FDCEventMobileBundle:News:widgets/article-focus.html.twig' with {type : 'same-day', 'index': loop.index} %}
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
-                    {% endif %}
-                </div>
-                <div class="section articles">
-                    {% if sameDayArticles is not empty and news.hideSameDay == false %}
-                        <div class="same-day">
-                            <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
-                            <div class="articles center">
-                                <div class="owl-carousel articles-carousel">
-                                    {% for article in sameDayArticles %}
-                                        {% if article is not null %}
-                                            {% include 'FDCEventMobileBundle:News:widgets/article.html.twig' with {type : 'same-day'} %}
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
-                </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
         <span class="anim"></span>

@@ -8,7 +8,7 @@
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
 
         <div class="container">
-            <h2 class="title">{{ 'article.photos.title.touteslesvideos'|trans }}</h2>
+            <h2 class="title one-line">{{ 'article.photos.title.touteslesvideos'|trans }}</h2>
             {% include 'FDCEventBundle:News:components/filters.html.twig' %}
         </div>
 
@@ -44,7 +44,7 @@
                             <div class="infos">
                                 <div class="picto"><i class="icon icon_video"></i></div>
                                 <div class="right">
-                                    <span class="category">{{ video.theme|trans_fallback('name') }}</span>
+                                    <span class="category">{{ video.theme|trans_fallback('name')|truncate(22, false, '...') }}</span>
                                     <p class="titlelink">{{ video|trans_fallback('title') }}</p>
                                 </div>
                             </div>
