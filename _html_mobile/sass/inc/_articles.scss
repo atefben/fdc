@@ -115,3 +115,28 @@
       margin: 70px 0 40px 0;
     }
 }
+
+#main.audios {
+  .container{
+    h2.title{
+      margin: 20px auto 20px;
+      padding: 0;
+    }
+  }
+
+  .list {
+    .item {
+      .img-container {
+        height: 100%;
+        width: 100%;
+      }
+      .infos{
+        .vCenter {
+          text-align: left;
+          float: left;
+          width: auto;
+        }
+      }
+    }
+  }
+}
