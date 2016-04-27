@@ -389,3 +389,8 @@
     display: block;
     padding-top: 4px;
 }
+
+.manual .content-manual .contain-section .item-manual .text-manual p {
+    font-size: .81rem;
+    line-height: 24px;
+}
