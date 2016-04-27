@@ -416,7 +416,6 @@ class NewsRepository extends EntityRepository
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('n.festival = :festival')
         ;
 
         $qb = $qb
@@ -449,9 +448,10 @@ class NewsRepository extends EntityRepository
 
         $qb = $qb
             ->orderBy('n.publishedAt', 'DESC')
-            ->setParameter('festival', $festival)
             ->setParameter('site_slug', 'site-evenementiel')
         ;
+
+        $this->addMasterQueries($qb, 'n', $festival, true);
 
         $qb = $qb
             ->getQuery()
