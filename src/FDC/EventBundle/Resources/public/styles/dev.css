@@ -42,6 +42,10 @@
     width: 730px;
 }
 
+.single-article .small-pres p {
+    color: #999;
+}
+
 .legal-notice .text em,
 .faq .text em,
 .single-article .text em {

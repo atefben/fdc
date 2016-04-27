@@ -236,7 +236,6 @@ class NewsRepository extends EntityRepository
         }
 
         if ($isAdmin === true) {
-			error_log(print_r(\Doctrine\Common\Util\Debug::export($isAdmin, 2),1));
             $qb
                 ->andWhere('(na1t.locale = :locale AND na1t.slug = :slug)')
                 ->setParameter('locale', $locale)
