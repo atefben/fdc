@@ -1,5 +1,6 @@
 var timeout = 1000,
     thread,
+    time,
     controlBar =
         '<div class="control-bar">\
             <div class="playstate">\
@@ -103,6 +104,7 @@ function playerInit(id, cls, havePlaylist, live) {
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     var $container    = $("#"+vid.id).closest('.video-container');
+    
     if($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
     }
@@ -573,6 +575,30 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
             }
         }, true);
+    } else {
+        // if (isiPad(true)) {
+        //     console.log('test');
+        //     $fullscreen[0].addEventListener('touchstart', function() {
+        //         console.log('in');
+        //         time = window.setInterval(function() {
+        //             console.log('in 2');
+        //             try {
+        //                 $container[0].webkitEnterFullscreen();
+        //             }
+        //             catch(e) {
+        //                 console.erro(e)
+        //             }
+        //         }, 250);
+        //     });
+
+        //     $container[0].addEventListener('webkitbeginfullscreen', function() {
+        //         window.clearInterval(time);
+        //     });
+        //     $container[0].addEventListener('webkitendfullscreen', function() {
+        //         window.clearInterval(time);
+        //         // playerInstance.pause();
+        //     });
+        // }
     }
 
     callback(playerInstance);
