@@ -230,7 +230,7 @@
 
             </div>
 
-            <a href="#" class="read-more">Afficher <strong>plus d'actualités</strong></a>
+            <a href="#" class="read-more hidden">Afficher <strong>plus d'actualités</strong></a>
           </div>
 
           <div id="timeline">

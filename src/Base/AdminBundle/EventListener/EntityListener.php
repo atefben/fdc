@@ -120,7 +120,8 @@ class EntityListener
 
     private function setPublishedOn($entity, $args)
     {
-        if (method_exists($entity, 'isPublishedOnFDCEvent')) {
+        if (method_exists($entity, 'getIsPublishedOnFDCEvent')) {
+            
             $em = $args->getEntityManager();
             $fdcEventSite = $em->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-evenementiel');
             $master = $entity->getTranslatable();
@@ -153,14 +154,13 @@ class EntityListener
                 if ($entityFr === $entity) {
                     $hasLocale = true;
                 } else {
-                    if (method_exists($entityFr, 'getStatus') &&
-                        $entityFr->getStatus() == TranslateChildInterface::STATUS_TRANSLATED
+                    if (method_exists($entity, 'getStatus') &&
+                        $entity->getStatus() == TranslateChildInterface::STATUS_TRANSLATED
                     ) {
                         $hasLocale = true;
                     }
                 }
             }
-
             if ($hasSite == true && $hasFrench == true && $hasLocale == true) {
                 $entity->setIsPublishedOnFDCEvent(true);
             } else {

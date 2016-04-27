@@ -31,6 +31,13 @@
     width: 977px;
 }
 
+#captionJuryCopyright {
+    left: 10px;
+    position: absolute;
+    bottom: 10px;
+    color: #969696;
+}
+
 .single-article.single-evenement .small-container > div {
     width: 630px;
     margin-left: auto;
@@ -268,11 +275,6 @@
     font-size: 0.625rem;
 }
 
-.single-article .half-photo img {
-    display: block;
-    max-width: 100%;
-}
-
 #half-photo {
     display: inline-block;
     margin: 0 0 50px;
@@ -395,6 +397,12 @@
     display: block;
     padding-top: 4px;
 }
+
 .webtv-ba-video .informations-video .infos-film .name-person a {
     color: #c8a461;
+}
+
+.manual .content-manual .contain-section .item-manual .text-manual p {
+    font-size: .81rem;
+    line-height: 24px;
 }

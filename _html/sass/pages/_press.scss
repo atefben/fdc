@@ -719,6 +719,8 @@
 
   .communiques {
     overflow: hidden;
+    clear: both;
+    border-bottom: 1px solid #e3e3e3;
 
     .grid-container {
       overflow: hidden;
@@ -1273,6 +1275,7 @@
     width: 100%;
     background-color: #000;
     position: relative;
+    clear: both;
 
     .img {
       position: absolute;
@@ -1908,11 +1911,8 @@
       .event {
         display: inline-block;
         margin-right: 20px;
+        margin-bottom: 20px;
         width: 225px;
-
-        @include breakpoint(1024px) {
-          margin-bottom: 22px;
-        }
 
         p {
           margin-bottom: 5px;
