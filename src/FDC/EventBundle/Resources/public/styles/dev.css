@@ -31,6 +31,13 @@
     width: 977px;
 }
 
+#captionJuryCopyright {
+    left: 10px;
+    position: absolute;
+    bottom: 10px;
+    color: #969696;
+}
+
 .single-article.single-evenement .small-container > div {
     width: 630px;
     margin-left: auto;

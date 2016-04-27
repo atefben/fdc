@@ -30,6 +30,7 @@
                             {% if president['jury'].person.presidentJuryImage and president['jury'].person.presidentJuryImage|trans_fallback('file') %}
                                 <div class="photo-jury"
                                      style="background-image:url({% path president['jury'].person.presidentJuryImage|trans_fallback('file'), '640x603' %})">
+                                    <p class="caption" id="captionJuryCopyright" >{{ '© ' ~  president['jury'].person.presidentJuryCredits }}</p>
                                 </div>
                             {% else %}
                                 {% set media = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}

@@ -15336,6 +15336,7 @@ input[type=submit] {
   max-height: 603px;
   min-height: 603px;
   max-width: 635px;
+  position: relative;
 }
 .contain-jury .photo-jury img {
   width: 100%;
