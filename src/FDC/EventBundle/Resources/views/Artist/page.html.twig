@@ -211,11 +211,11 @@
                 <p>{{ 'juries.artiste.title.share'|trans }}</p>
                 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                 <div class="buttons square">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url(currentUrl) }}"
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ currentUrl }}"
                        rel="nofollow" class="button facebook">
                         <i class="icon icon_facebook"></i>
                     </a>
-                    <a href="https://twitter.com/intent/tweet?url={{ url(currentUrl) }}" rel="nofollow"
+                    <a href="https://twitter.com/intent/tweet?url={{ currentUrl }}" rel="nofollow"
                        class="button twitter">
                         <i class="icon icon_twitter"></i>
                     </a>

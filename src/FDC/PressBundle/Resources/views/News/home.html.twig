@@ -2,7 +2,7 @@
 {% extends 'FDCPressBundle::layout.html.twig' %}
 
 {% block body %}
-<div id="main" class="press press-home calendar-open {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
+<div id="main" class="press press-home calendar-open downloading-press {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
 
     <div class="header-press">
         <div class="head">
@@ -177,13 +177,29 @@
                         </div>
                     </div>
                     {% for section in pressHome.homeDownload %}
-                        <div class="affiche">
+						{% set isSignature = 0  %}
+						{% if section.download.widgets is defined %}
+							{% for widget in section.download.widgets %}
+								 {% if class(widget) == "PressDownloadSectionWidgetArchive" %}
+									 {% set isSignature = 1  %}
+								 {% else %}
+								 	{% set isSignature = 0  %}
+								 {% endif %}
+							{% endfor %}
+							{% if isSignature is defined and isSignature == 1 %}
+	                        	<div class="signature block">
+							{% else %}
+								 <div class="affiche">
+							{% endif %}
+						{% endif %}
                             <div class="container">
                                 <h3 class="title-press">{{ section.download|trans_fallback('title') }}</h3>
                                 {% if section.download.widgets is defined %}
-                                {% for widget in section.download.widgets %}
+                                {% for key,widget in section.download.widgets %}
                                     {% if class(widget) == "PressDownloadSectionWidgetDocument" %}
                                         {% include 'FDCPressBundle:Media:widgets/document.html.twig' %}
+		                            {% elseif class(widget) == "PressDownloadSectionWidgetArchive" %}
+		                                {% include 'FDCPressBundle:Media:widgets/archive.html.twig' %}
                                     {% elseif class(widget) == "PressDownloadSectionWidgetFile" %}
                                         {% include 'FDCPressBundle:Media:widgets/file.html.twig' %}
                                     {% elseif class(widget) == "PressDownloadSectionWidgetPhoto" %}

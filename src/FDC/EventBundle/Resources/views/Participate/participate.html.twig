@@ -4,13 +4,15 @@
 {% block body %}
     <div id="main" class="list-article participate prepare partners manual loading">
         <div class="bandeau-list vCenter">
-            {% set mainTrans = participatePage.image.findTranslationByLocale(app.request.locale) %}
-            {% if mainTrans is null or mainTrans.file is null %}
-                {% set mainTrans = participatePage.image.findTranslationByLocale('fr') %}
-            {% endif %}
+			{% if participatePage.image is not empty %}
+				{% set mainTrans = participatePage.image.findTranslationByLocale(app.request.locale) %}
+				{% if mainTrans is null or mainTrans.file is null %}
+					{% set mainTrans = participatePage.image.findTranslationByLocale('fr') %}
+				{% endif %}
             {% set mainImage = mainTrans.file %}
+			{% endif %}
             <div class="bandeau-list-img vCenterKid"
-                 style="background-image:url({% path mainImage, '1280x808' %})">
+                 style="background-image:url({% if mainImage is defined %}{% path mainImage, '1280x808' %}{% endif %})">
                 <h2 class="title title-list-header">
                     {% if participatePage|trans_fallback('icon') is not null %}
                         <i class="icon {{ participatePage|trans_fallback('icon') }}"></i>
