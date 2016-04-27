@@ -20,13 +20,25 @@
   .article-title{
     font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
     text-align: center;
-    max-height: 200px;
+    max-height: 100%;
     margin-bottom: 40px;
     font-size: 20px;
     color: #666;
+    h2 {
+      color: #333;
+      font-size: 35px;
+      font-family: "Playfair Display", Times New Roman, Times, serif;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      line-height: 46px;
+      width: 420px;
+      margin: 15px auto 0 auto;
+      text-align: center;
+    }
   }
 
-  .article-title .category {
+  .article-title .category,
+  .article-title .update {
     color: #c8a461;
     display: inline-block;
     font-size: 20px;
@@ -54,7 +66,7 @@
     font-weight: 400;
     letter-spacing: 0.02em;
     line-height: 46px;
-    width: 420px;
+    width: 100%;
     margin: 15px auto 0 auto;
     text-align: center;
   }
@@ -189,7 +201,8 @@
   .half-photo {
     vertical-align: top;
     width: 47%;
-    height: 410px;
+    height: 100%;
+    float: left;
   }
 
   .half-photo + .half-photo {
@@ -198,6 +211,7 @@
 
   .half-photo img {
     height: 100%;
+    width: 100%;
     object-fit:cover;
   }
 
@@ -399,6 +413,9 @@
   .articles .owl-item {
     width: 516px;
     height: 490px;
+    .item:before {
+      background: inherit;
+    }
   }
 
   .articles .img-container {
@@ -457,6 +474,8 @@
   .articles .top-info {
     margin: 0 auto;
     display: table;
+    text-align: center;
+
   }
 
   .articles .owl-item a {
