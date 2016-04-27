@@ -6598,6 +6598,9 @@ div.chocolat-wrapper .zoomCursor .icon {
 .video-container .jwplayer {
   z-index: 2;
 }
+.video-container .jwplayer.jw-state-idle .jw-preview {
+  background-size: cover;
+}
 .video-container .top-bar {
   background: url("../img/shadow-reverse.png") repeat-x;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -10607,7 +10610,7 @@ article .read-later.rAlign span:after {
 }
 .single-article .quote {
   width: 630px;
-  margin: 30px auto;
+  margin: 30px auto 70px;
 }
 .single-article .quote blockquote {
   border-bottom: 1px solid #e5e5e5;
@@ -10744,6 +10747,7 @@ article .read-later.rAlign span:after {
 }
 .single-article .share {
   border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
   padding: 70px 0;
 }
 .single-article .share p {

@@ -1,11 +1,11 @@
 <!-- build:js dist/js/vendor.min.js -->
 <!-- fdc-vendor tags start -->
+<script src="js/vendors/jquery-1.12.0.min.js"></script>
+<script src="js/vendors/jquery-ui.custom.min.js"></script>
 <script src="js/vendors/classie.js"></script>
 <script src="js/vendors/codebird.js"></script>
 <script src="js/vendors/hammer.min.js"></script>
 <script src="js/vendors/isotope.pkgd.min.js"></script>
-<script src="js/vendors/jquery-1.12.0.min.js"></script>
-<script src="js/vendors/jquery-ui.custom.min.js"></script>
 <script src="js/vendors/jquery.chocolat.js"></script>
 <script src="js/vendors/jquery.cookie.js"></script>
 <script src="js/vendors/jwplayer.js"></script>
