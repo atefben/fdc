@@ -6598,6 +6598,9 @@ div.chocolat-wrapper .zoomCursor .icon {
 .video-container .jwplayer {
   z-index: 2;
 }
+.video-container .jwplayer.jw-state-idle .jw-preview {
+  background-size: cover;
+}
 .video-container .top-bar {
   background: url("../img/shadow-reverse.png") repeat-x;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
