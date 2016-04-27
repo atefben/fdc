@@ -395,6 +395,12 @@
     display: block;
     padding-top: 4px;
 }
+
 .webtv-ba-video .informations-video .infos-film .name-person a {
     color: #c8a461;
+}
+
+.manual .content-manual .contain-section .item-manual .text-manual p {
+    font-size: .81rem;
+    line-height: 24px;
 }
