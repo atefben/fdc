@@ -64,6 +64,7 @@ class AgendaController extends Controller
         }
 
         // get projections by room
+        $projections = array();
         foreach ($rooms as $room) {
             $projections[$room->getId()] = $this
                 ->getDoctrineManager()
