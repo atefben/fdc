@@ -10747,6 +10747,7 @@ article .read-later.rAlign span:after {
 }
 .single-article .share {
   border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
   padding: 70px 0;
 }
 .single-article .share p {
