@@ -373,6 +373,10 @@
     margin-left: 5px;
 }
 
+.clearfix {
+    overflow: auto;
+    zoom: 1;
+}
 #slider-competition .translated-title {
     font-size: 10px;
 }
@@ -405,4 +409,17 @@
 .manual .content-manual .contain-section .item-manual .text-manual p {
     font-size: .81rem;
     line-height: 24px;
+}
+
+.press .fc-event .info-dynamic-prog {
+    color: black;
+    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+    font-size: .813rem;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+.press .fc-event {
+    height: auto !important;
+    min-height: 150px;
 }

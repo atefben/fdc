@@ -40,6 +40,11 @@
             {{- event.type -}}
         </span>
             <div class="info">
+                {%- if event.programmationDynamics|length > 0 and event.programmationDynamics[0].type is not empty -%}
+                    <div class="info-dynamic-prog">
+                        {{- event.programmationDynamics[0].type.name|upper -}}
+                    </div>
+                {%- endif -%}
                 {%- if event.medias|length > 0 -%}
                     {%- media event.medias[0].file, '90x120' with { width: '45', height: '60'} -%}
                 {%- else -%}
@@ -97,6 +102,11 @@
             {{- event.type -}}
         </span>
             <div class="info">
+                {%- if event.programmationDynamics|length > 0 and event.programmationDynamics[0].type is not empty -%}
+                    <div class="info-dynamic-prog">
+                        {{- event.programmationDynamics[0].type.name|upper -}}
+                    </div>
+                {%- endif -%}
                 <div class="txt">
                     <span> {{ event.name }}</span>
                 </div>
@@ -108,7 +118,7 @@
             </span> -{{- ' ' -}}
                 <span class="ven">
                 {%- if event.room -%}
-                    {{ event.room.name }}
+                    {{ event.room.name|upper }}
                 {%- endif -%}
             </span>
             </div>
