@@ -17785,6 +17785,7 @@ input[type=submit] {
   width: 100%;
   background-color: #000;
   position: relative;
+  clear: both;
 }
 .press .section .img {
   position: absolute;
