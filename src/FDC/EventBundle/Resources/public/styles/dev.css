@@ -30,14 +30,17 @@
 .single-article.single-evenement .small-container {
     width: 977px;
 }
+
 .single-article.single-evenement .small-container > div {
     width: 630px;
     margin-left: auto;
     margin-right: auto;
 }
+
 .single-article.single-evenement .small-container > div.single-photo, .single-article.single-evenement .small-container > div.single-video, .single-article.single-evenement .small-container > div.single-gallery, .single-article.single-evenement .small-container > div.chapeau {
     width: 100%;
 }
+
 .single-article.single-evenement .small-container > div.half-div, .single-article.single-evenement .small-container > div.single-photo.large-photo, .single-article.single-evenement .small-container > div.slideshow {
     width: 730px;
 }
@@ -82,8 +85,7 @@
 .faq .button a:hover,
 .single-article .button:hover a,
 .single-article .button a:hover,
-.palmares-color-white
-{
+.palmares-color-white {
     color: #FFFFFF;
 }
 
@@ -221,8 +223,8 @@
 }
 
 .same-day .image.image-sameday-wrapper {
-    width:293px;
-    height:185px;
+    width: 293px;
+    height: 185px;
 }
 
 .legal-notice .slideshow.article_photo .slideshow-img .thumbnails .thumb img,
@@ -243,9 +245,9 @@
 .textLive p {
     text-transform: uppercase;
     color: #fff;
-    font-family:"Camphor W01 Regular",Arial,Helvetica,sans-serif;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
     font-size: 14px;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .textLive p span {
@@ -259,6 +261,7 @@
 .webtv-ba-video #content-trailers #slider-trailer .info a.category {
     display: inline-block;
 }
+
 .webtv-ba-video #content-trailers #slider-trailer .info span.date {
     color: #666;
     display: inline-block;
@@ -304,13 +307,13 @@
 }
 
 #notposter {
-    height:100%;
+    height: 100%;
     margin-top: 47px;
     display: block;
     width: 100%;
 }
 
-#TetiereMovieCountry{
+#TetiereMovieCountry {
     margin-right: 0px;
 }
 
@@ -344,7 +347,7 @@
     margin-left: 20%;
 }
 
-.contact .boxvalid p{
+.contact .boxvalid p {
     color: #25a20c;
     margin-top: 21px;
 }
@@ -360,7 +363,7 @@
 }
 
 .list-article h3.jury-president-color {
-    color :black;
+    color: black;
 }
 
 #captionCopyright {
@@ -380,12 +383,18 @@
     padding-bottom: 25px;
 }
 
+.webtv-ba-video .informations-video .infos-film a.name-video {
+    color: #fff;
+}
 
 .webtv-ba-video .informations-video .infos-film span.translated-title {
     font-style: normal;
-    font-family: "Camphor W01 Regular",Arial,Helvetica,sans-serif;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
     font-size: .71rem;
     color: #fff;
     display: block;
     padding-top: 4px;
+}
+.webtv-ba-video .informations-video .infos-film .name-person a {
+    color: #c8a461;
 }
