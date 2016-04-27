@@ -18308,12 +18308,8 @@ input[type=submit] {
 .popin-event .events-container .events-wrapper .event {
   display: inline-block;
   margin-right: 20px;
+  margin-bottom: 20px;
   width: 225px;
-}
-@media screen and (max-width: 1024px) {
-  .popin-event .events-container .events-wrapper .event {
-    margin-bottom: 22px;
-  }
 }
 .popin-event .events-container .events-wrapper .event p {
   margin-bottom: 5px;

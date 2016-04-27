@@ -1911,11 +1911,8 @@
       .event {
         display: inline-block;
         margin-right: 20px;
+        margin-bottom: 20px;
         width: 225px;
-
-        @include breakpoint(1024px) {
-          margin-bottom: 22px;
-        }
 
         p {
           margin-bottom: 5px;
