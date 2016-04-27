@@ -67,8 +67,8 @@ sonata_media:
                 55x75: { width: 55 , height: 75 , quality: 100 }
                 90x120: { width: 90 , height: 120 , quality: 100 }
                 444x600: { width: 444, height: 600, quality: 100 }
-                searchtiny: { width: 52 , height: 66 , quality: 100 }
-                search: { width: 170 , height: 231 , quality: 100 }
+                searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
+                search: { width: 170 , height: 231 , quality: 100, constraint: false }
 
         film_main:
             providers:
@@ -95,8 +95,8 @@ sonata_media:
                   55x75: { width: 55 , height: 75 , quality: 100 }
                   90x120: { width: 90 , height: 120 , quality: 100 }
                   444x600: { width: 444, height: 600, quality: 100 }
-                  searchtiny: { width: 52 , height: 66 , quality: 100 }
-                  search: { width: 170 , height: 231 , quality: 100 }
+                  searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
+                  search: { width: 170 , height: 231 , quality: 100, constraint: false }
 
         film_film:
             providers:
@@ -129,8 +129,8 @@ sonata_media:
                 55x75: { width: 55 , height: 75 , quality: 100 }
                 90x120: { width: 90 , height: 120 , quality: 100 }
                 444x600: { width: 444, height: 600, quality: 100 }
-                searchtiny: { width: 52 , height: 66 , quality: 100 }
-                search: { width: 170 , height: 231 , quality: 100 }
+                searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
+                search: { width: 170 , height: 231 , quality: 100, constraint: false }
 
         pdf:
             providers:
