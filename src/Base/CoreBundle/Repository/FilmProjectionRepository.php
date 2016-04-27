@@ -29,6 +29,43 @@ class FilmProjectionRepository extends EntityRepository
         return $qb;
     }
 
+    public function getAllTypes($festival)
+    {
+        $qb = $this
+            ->createQueryBuilder('p')
+            ->select('p.type')
+            ->where('p.festival = :festival')
+            ->setParameter('festival', $festival)
+            ->groupBy('p.type')
+            ->getQuery()
+            ->getArrayResult()
+        ;
+
+        $qb = array_column($qb, 'type');
+
+        return $qb;
+    }
+
+    public function getAllSelectionsIds($festival, $locale)
+    {
+        $qb = $this
+            ->createQueryBuilder('p')
+            ->select('ss.id')
+            ->join('p.programmationFilms', 'pf')
+            ->join('pf.film', 'f')
+            ->join('f.selectionSection', 'ss')
+            ->where('p.festival = :festival')
+            ->setParameter('festival', $festival)
+            ->groupBy('ss.id')
+            ->getQuery()
+            ->getArrayResult()
+        ;
+
+        $qb = array_column($qb, 'id');
+
+        return $qb;
+    }
+
     public function getProjectionsByFestivalAndDateAndRoom($festival, $date, $room, $isPress)
     {
         $qb = $this

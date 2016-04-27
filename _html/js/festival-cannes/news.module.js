@@ -67,14 +67,14 @@ $(document).ready(function() {
               initSlideshows();
 
               if($('#articles-wrapper .nextDay').length > 0) {
-                $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay').show();
+                $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay').removeClass('hidden');
                 
                 setTimeout(function() {
                   $('#shd').addClass('show');
                   $(window).trigger('resize');
                 }, 500);
               } else if ($('#news .articles').length == 0 || $('#news .articles:not(.nextDay) article:last').data('end')) {
-                $('.read-more').hide();
+                $('.read-more').addClass('hidden');
               }
             }
           });
@@ -83,11 +83,11 @@ $(document).ready(function() {
       });
 
       if($('#news .articles').length == 0 || $('#news .articles:not(.nextDay) article:last').data('end')) {
-        $('.read-more').hide();
+        $('.read-more').addClass('hidden');
       }
       
       if($('#articles-wrapper .nextDay').length > 0) {
-        $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay').show();
+        $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay').removeClass('hidden');
         $('#shd').addClass('show');
       }
 
@@ -149,10 +149,10 @@ $(document).ready(function() {
                 filter();
 
                 if($('#articles-wrapper .nextDay').length > 0) {
-                  $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay').show();
+                  $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay').removeClass('hidden');
                   $('#shd').addClass('show');
                 } else if ($('#news .articles').length == 0 || $('#news .articles:not(.nextDay) article:last').data('end')) {
-                  $('.read-more').hide();
+                  $('.read-more').addClass('hidden');
                 }
 
                 initSlideshows();
@@ -193,7 +193,7 @@ $(document).ready(function() {
               filter();
 
               if($('#articles-wrapper .nextDay').length > 0) {
-                $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay').show();
+                $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay').removeClass('hidden');
                 
                 setTimeout(function() {
                   $('#shd').addClass('show');
@@ -201,7 +201,7 @@ $(document).ready(function() {
                 }, 500);
 
               } else if ($('#news .articles').length == 0 || $('#news .articles:not(.nextDay) article:last').data('end')) {
-                  $('.read-more').hide();
+                  $('.read-more').addClass('hidden');
               }
 
               // if($(".articles.center").length > 0) {

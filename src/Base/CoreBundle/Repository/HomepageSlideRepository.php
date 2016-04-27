@@ -50,7 +50,8 @@ class HomepageSlideRepository extends EntityRepository
             ->leftjoin('i2.translations', 'i2t')
             ->leftjoin('i3.translations', 'i3t')
             ->leftjoin('i4.translations', 'i4t')
-
+            ;
+        $qb
             ->andWhere(
                 '(na1t.locale = :locale AND na1t.isPublishedOnFDCEvent = 1) OR
                  (na2t.locale = :locale AND na2t.isPublishedOnFDCEvent = 1) OR
@@ -65,12 +66,13 @@ class HomepageSlideRepository extends EntityRepository
                  (i3t.locale = :locale AND i3t.isPublishedOnFDCEvent = 1) OR
                  (i4t.locale = :locale AND i4t.isPublishedOnFDCEvent = 1)'
             )
+        ;
+        $qb
             ->andWhere(
                 '(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime) OR
                  (s.publishedAt IS NULL OR s.publishedAt <= :datetime) AND (s.publishEndedAt IS NULL OR s.publishEndedAt >= :datetime) OR
                  (i.publishedAt IS NULL OR i.publishedAt <= :datetime) AND (i.publishEndedAt IS NULL OR i.publishEndedAt >= :datetime)'
             )
-
 
             ->setParameter('locale', $locale)
             ->setParameter('datetime', $dateTime)
@@ -80,7 +82,6 @@ class HomepageSlideRepository extends EntityRepository
             ->getQuery()
             ->getResult()
         ;
-
         return $qb;
     }
 
