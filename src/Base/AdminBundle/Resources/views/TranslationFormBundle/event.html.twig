@@ -50,7 +50,7 @@
                                                     {{ themeTranslations.get(locale).name }}
                                                 {% endif %}
                                                 {% if form.parent.children.theme.vars.value is not null %}
-                                                    <a target="_blank" href="">
+                                                    <a target="_blank" href="{{ path('admin_base_core_theme_edit', {'id': themeTranslations.get(locale).translatable.id}) }}?locale={{ locale }}">
                                                         modifier la traduction
                                                     </a>
                                                 {% endif %}
