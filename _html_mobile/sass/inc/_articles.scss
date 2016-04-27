@@ -112,26 +112,35 @@
     }
 
     .container .title {
-      margin: 70px 0 40px 0;
+      //margin: 70px 0 40px 0;
+      margin: 30px auto 60px;
+      padding: 0;
     }
 }
 
-#main.audios {
+#main.audios,
+#main.all-videos {
   .container{
     h2.title{
-      margin: 20px auto 20px;
+      margin: 30px auto 60px;
       padding: 0;
     }
   }
 
   .list {
+
     .item {
       .img-container {
         height: 100%;
         width: 100%;
+        text-align: left;
       }
       .infos{
+        .picto {
+          margin-right: 10px;
+        }
         .vCenter {
+          padding-top: 15px;
           text-align: left;
           float: left;
           width: auto;
@@ -139,4 +148,8 @@
       }
     }
   }
+}
+
+#main.all-videos {
+
 }
