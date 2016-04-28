@@ -132,10 +132,10 @@ $(document).ready(function() {
             type: "GET",
             url: url,
             success: function(data) {
-              if(typeof data !== 'undefined' && data ) {
+              $('#filtered').empty();
+              $('#filtered').html(data);
+              if($('#filteredContent').children().length !== 0) {
                 $('#noResult').hide();
-                $('#filtered').empty();
-                $('#filtered').html(data);
                 
                 // if($('#colSearch a.active').hasClass('artists') || 
                 //    $('#colSearch a.active').hasClass('events')  || 
@@ -151,11 +151,11 @@ $(document).ready(function() {
                 }, 200)
 
                 $('#filteredContent').infinitescroll({
-                  navSelector: ".next:last",
-                  nextSelector: ".next:last",
-                  itemSelector: ".infinite",
-                  debug: false,
-                  dataType: 'html',
+                  navSelector  : ".next:last",
+                  nextSelector : ".next:last",
+                  itemSelector : ".infinite",
+                  dataType     : 'html',
+                  debug        : false,
                   path: function(index) {
                     if($('.next:last').attr('href') == '#') {
                       return false;
