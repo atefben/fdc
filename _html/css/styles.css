@@ -7734,6 +7734,9 @@ header #searchContainer {
 #searchContainer #results .big img {
   display: block;
   margin-bottom: 17px;
+  width: 170px;
+  height: 231px;
+  object-fit: cover;
 }
 #searchContainer #results .big .info {
   text-align: center;
