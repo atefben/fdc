@@ -132,35 +132,40 @@ $(document).ready(function() {
             type: "GET",
             url: url,
             success: function(data) {
-              $('#filtered').empty();
-              $('#filtered').html(data);
-              
-              // if($('#colSearch a.active').hasClass('artists') || 
-              //    $('#colSearch a.active').hasClass('events')  || 
-              //    $('#colSearch a.active').hasClass('films')   || 
-              //    $('#colSearch a.active').hasClass('participate')) {
-              //   $('.filters').hide();
-              // } else {
-              //   $('.filters').show();
-              // }
+              if(typeof data !== 'undefined' && data ) {
+                $('#noResult').hide();
+                $('#filtered').empty();
+                $('#filtered').html(data);
+                
+                // if($('#colSearch a.active').hasClass('artists') || 
+                //    $('#colSearch a.active').hasClass('events')  || 
+                //    $('#colSearch a.active').hasClass('films')   || 
+                //    $('#colSearch a.active').hasClass('participate')) {
+                //   $('.filters').hide();
+                // } else {
+                //   $('.filters').show();
+                // }
 
-              setTimeout(function() {
-                $('#filtered').fadeIn(500);
-              }, 200)
+                setTimeout(function() {
+                  $('#filtered').fadeIn(500);
+                }, 200)
 
-              $('#filteredContent').infinitescroll({
-                navSelector: ".next:last",
-                nextSelector: ".next:last",
-                itemSelector: ".infinite",
-                debug: false,
-                dataType: 'html',
-                path: function(index) {
-                  if($('.next:last').attr('href') == '#') {
-                    return false;
+                $('#filteredContent').infinitescroll({
+                  navSelector: ".next:last",
+                  nextSelector: ".next:last",
+                  itemSelector: ".infinite",
+                  debug: false,
+                  dataType: 'html',
+                  path: function(index) {
+                    if($('.next:last').attr('href') == '#') {
+                      return false;
+                    }
+                    return $('.next:last').attr('href');
                   }
-                  return $('.next:last').attr('href');
-                }
-              });
+                });
+              } else {
+                $('#noResult').show();
+              }
             }
           });
         }, 1000);
@@ -176,7 +181,6 @@ $(document).ready(function() {
     if (parseInt($('#colSearch .all span').text()) > 0) {
       $('.resultWrapper').show();
     } else {
-      $('#noResult').show();
     }
   }
 });
