@@ -25,7 +25,7 @@
                     {% endfor %}
                     {% if film.selectionSection.id == section.id %}
                         <div class="line">
-                            <div class="container {{ k == 0 ? 'active' : '' }}">
+                            <div class="container">
                                 <div class="info">
                                     {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                         film: film,
@@ -73,7 +73,7 @@
                                     </div>
                                 {% endif %}
                                 <span class="plus">
-                                <i class="icon icon_{{ k == 0 ? 'moins' : 'case-plus' }}"></i>
+                                <i class="icon icon_case-plus"></i>
                             </span>
                                 <div class="contain">
                                     {% if countFolder > 0 %}
