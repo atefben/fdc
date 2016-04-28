@@ -268,7 +268,7 @@
                                 data-img="{% path video.association.image|trans_fallback('file', 'fr'), '463x292' %}"
                                 {% endif %}
                             >
-                                {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' %}
+                                {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' with {"video" : video} %}
                             </div>
                         {% endif %}
                     {% endfor %}

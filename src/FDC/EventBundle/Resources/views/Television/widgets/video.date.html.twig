@@ -1,17 +1,14 @@
 {% trans_default_domain 'FDCEventBundle' %}
-
-{% set video = video.association %}
-{% set transImage = video.image.findTranslationByLocale(app.request.locale) %}
-{% if transImage is null %}
-    {% set transImage = video.image.findTranslationByLocale('fr') %}
-{% endif %}
-
-{% set transVideo = video.findTranslationByLocale(app.request.locale) %}
-{% if transVideo is null %}
-    {% set transVideo = video.findTranslationByLocale('fr') %}
-{% endif %}
+  {% set img = null %}
+  {% if video.association.image|trans_fallback('file')  %}
+      {% set img =  video.association.image|trans_fallback('file') %}
+  {% elseif video.association|trans_fallback('imageAmazonUrl') %}
+      {% set img =  s3_server_video ~ video.association|trans_fallback('imageAmazonUrl') %}
+  {% else %}
+      {% set img =  video.association.image|trans_fallback('file', 'fr')%}
+  {% endif %}
 <div class="image-wrapper">
-    <img src="{% path transImage.file, '640x404' %}" alt="{{ video.image|trans_fallback('alt') }}" />
+    <img src="{% path img, '640x404' %}" alt="" />
 </div>
 <a class="linkVid" href="#"></a>
 <div class="info">
@@ -21,9 +18,9 @@
     <div class="info-container">
         <div class="vCenter">
             <div class="vCenterKid">
-                <span class="category">{{ video.theme|trans_fallback('name') }}</span>
-                <span class="date">{{ video.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ video.publishedAt|date('H.i') }}</span>
-                <p class="titleLink" data-title="{{ video|trans_fallback('title') }}">{{ video|trans_fallback('title') }}</p>
+                <span class="category">{{ video.association.theme|trans_fallback('name') }}</span>
+                <span class="date">{{ video.association.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ video.association.publishedAt|date('H.i') }}</span>
+                <p class="titleLink" data-title="{{ video.association|trans_fallback('title') }}">{{ video.association|trans_fallback('title') }}</p>
             </div>
         </div>
     </div>
