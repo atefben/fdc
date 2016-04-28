@@ -22,11 +22,13 @@
                 </h2>
             </div>
         </div>
+		{% if participatePage|trans_fallback('content') is not null and participatePage|trans_fallback('content') != '' %}
         <div class="title-bandeau">
             <p>
                 {{ participatePage|trans_fallback('content')|raw }}
             </p>
         </div>
+		{% endif %}
 
         {#                  #}
         {#     SECTIONS     #}
