@@ -19,9 +19,12 @@
         </div>
 
         <div class="contain-participate">
+            {% if content|trans_fallback('mainDescription') is not null and content|trans_fallback('mainDescription') != '' %}
+                {{ dump(content|trans_fallback('mainDescription')) }}
             <div class="contain-descript">
                 <div class="descrip">{{ content|trans_fallback('mainDescription')|raw }}</div>
             </div>
+            {% endif %}
 
             {# SECTION - SE RENDRE A CANNES #}
             <section>
