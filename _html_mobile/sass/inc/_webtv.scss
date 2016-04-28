@@ -1,7 +1,35 @@
 
 #main.webtv {
   background: #141414;
+  .grid-item {
+    .infos{
+      text-align: left;
+      .nbVideo {
+        line-height: 1.5rem;
+        color: #fff;
+        font-size: 20px;
+        font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        max-width: 185px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  //.grid {
+  //  .item {
+  //    .info {
+  //      position: absolute;
+  //    }
+  //    img {
+  //      height: 100%;
+  //      width: 100%;
+  //    }
+  //  }
+  //}
 }
+
 .webtv #banner-top .banner-img .title{
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   max-width: 640px;
@@ -70,7 +98,7 @@
     color: #fff;
 }
 .webtv .featured-videos .title{
-	padding: 60px 0 0px;
+	padding: 0 0 60px;
 }
 .webtv .link {
   margin-top: 38px;
@@ -101,6 +129,9 @@
   width: 70px;
   height: 70px;
   text-align: center;
+  //position: absolute;
+  //bottom: 15px;
+  //left: 15px;
 }
 .webtv .featured-videos .videosSlider .vid .picto .icon{
    font-size: 1.8rem;

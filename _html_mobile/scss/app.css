@@ -10662,6 +10662,20 @@ div.chocolat-wrapper .share .icon, div.chocolat-wrapper .download .icon {
 #main.webtv {
   background: #141414;
 }
+#main.webtv .grid-item .infos {
+  text-align: left;
+}
+#main.webtv .grid-item .infos .nbVideo {
+  line-height: 1.5rem;
+  color: #fff;
+  font-size: 20px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  max-width: 185px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .webtv #banner-top .banner-img .title {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
@@ -10744,7 +10758,7 @@ div.chocolat-wrapper .share .icon, div.chocolat-wrapper .download .icon {
 }
 
 .webtv .featured-videos .title {
-  padding: 60px 0 0px;
+  padding: 0 0 60px;
 }
 
 .webtv .link {
