@@ -1,50 +1,59 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 <article style="background-image:url('{% spaceless %}
-{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+    {% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
     film: film,
     film_format: '2560x1103',
     film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
     display_film_path: true
-}) %}
+    }) %}
 {% endspaceless %}')">
     <div class="bck-hover">
         <div class="contain_item">
             <div class="image">
                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                    film: film,
-                    film_format: '259x352',
-                    film_attrs: {
-                        alt: film|trans_fallback('title')?:film.titleVO,
-                        'data-object-fit': 'cover'
-                    },
-                    film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg'
+                film: film,
+                film_format: '259x352',
+                film_attrs: {
+                alt: film|trans_fallback('title')?:film.titleVO,
+                'data-object-fit': 'cover'
+                },
+                film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg'
                 }) %}
             </div>
             <div class="infos-item-list">
                 {% if projection is defined and projection is not empty %}
                     {% set substr = projection.startsAt|localizeddate('full', 'none', app.request.locale)|split(' ') %}
-                <span class="date-pres-item">{% for i in 0..2 %}{{ substr[i] }} {% endfor %} </span>
-                <span class="heure-pres-item">{{ projection.startsAt|date('H:i') }}</span>
+                    <span class="date-pres-item">{% for i in 0..2 %}{{ substr[i] }} {% endfor %} </span>
+                    <span class="heure-pres-item">{{ projection.startsAt|date('H:i') }}</span>
                 {% endif %}
-                {% if film|trans_fallback('title') is not empty and film|trans_fallback('title') != film.titleVO  %}
+                {% if film|trans_fallback('title') is not empty and film|trans_fallback('title') != film.titleVO %}
                     {% set titleTranslated = film|trans_fallback('title') %}
                 {% endif %}
-                <h3 class="title-item">{{ film.titleVO }}</h3>
+                <h3 class="title-item">
+                    <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}">
+                        {{ film.titleVO }}
+                    </a>
+                </h3>
                 {% if titleTranslated is defined %}
-                    <p id="dateTranslationCannes">( {{ titleTranslated }} )</p>
+                    <p id="dateTranslationCannes" class="film-title-translations">
+                        <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}">
+                            ( {{ titleTranslated }} )
+                        </a>
+                    </p>
                 {% endif %}
                 {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                 {% for director in directors %}
-                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}{% if loop.index != directors|length %}<span class="nom-item">, </span>{% endif %}
+                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}{% if loop.index != directors|length %}
+                    <span class="nom-item">, </span>{% endif %}
                 {% endfor %}
-                <br />
+                <br/>
                     <span class="date-item">
                         {% set duration = [] %}
                         {% if film.duration is not empty %}
                             {% set duration = film.duration|split('.') %}
                         {% endif %}
-                        {% if film.productionYear is not null and  film.productionYear != 0 %}{{  film.productionYear }}
+                        {% if film.productionYear is not null and  film.productionYear != 0 %}{{ film.productionYear }}
                             {% if duration|length > 0 and duration[0] > 0 %}
                                 -
                             {% endif %}

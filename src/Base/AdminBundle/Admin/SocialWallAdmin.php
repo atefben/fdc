@@ -11,6 +11,12 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class SocialWallAdmin extends Admin
 {
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC', // sort direction
+        '_sort_by' => 'createdAt' // field name
+    );
+
     /**
      * @param DatagridMapper $datagridMapper
      */

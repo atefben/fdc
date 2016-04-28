@@ -45,12 +45,12 @@ sonata_media:
             providers:
                 - sonata.media.provider.image
             formats:
-                mobile: { width: 584 , height: 794 , quality: 100 }
+                mobile: { width: 584 , height: 794 , quality: 100, constraint: false }
                 #programmation cropped picture
                 45x60:  { width: 45 , height: 60 , quality: 100, constraint: false }
-                tiny:     { width: 46 , height: 64 , quality: 100 }
-                135x185:    { width: 135 , height: 185 , quality: 100 }
-                small:    { width: 187 , height: 255 , quality: 100 }
+                tiny:     { width: 46 , height: 64 , quality: 100, constraint: false }
+                135x185:    { width: 135 , height: 185 , quality: 100, constraint: false }
+                small:    { width: 187 , height: 255 , quality: 100, constraint: false }
                 big:      { width: 1000 , quality: 100 }
                 319x434:  { width: 319 , height: 434 , quality: 100 }
                 420x560: { width: 420, height: 560, quality: 100 }

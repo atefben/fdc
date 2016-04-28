@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-{% if award_association.award.id not in palmares_award_mutual_get() %}
+{% if award_association.award is defined and award_association.award.id not in palmares_award_mutual_get() %}
     {% if award_association.award.filmMutual %}
         {{ palmares_award_mutual_set(award_association.award) }}
     {% endif %}

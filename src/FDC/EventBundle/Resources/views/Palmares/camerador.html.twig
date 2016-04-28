@@ -61,9 +61,15 @@
             <ul>
                 <li>
                     <a href="http://www.quinzaine-realisateurs.com/" target="_blank">
-                        {% image '@FDCEventBundle/Resources/public/img/palmares/quinzaine.jpg' %}
-                        <img src="{{ asset(asset_url) }}" alt="{{ 'palmares.camerador.alt.quinzaine'|trans }}"/>
-                        {% endimage %}
+                        {% if app.request.locale == 'fr' %}
+                            {% image '@FDCEventBundle/Resources/public/img/palmares/quinzaine.jpg' %}
+                            <img src="{{ asset(asset_url) }}" alt="{{ 'palmares.camerador.alt.quinzaine'|trans }}"/>
+                            {% endimage %}
+                        {% else %}
+                            {% image '@FDCEventBundle/Resources/public/img/palmares/quinzaine-international.jpg' %}
+                            <img src="{{ asset(asset_url) }}" alt="{{ 'palmares.camerador.alt.quinzaine'|trans }}"/>
+                            {% endimage %}
+                        {% endif %}
                     </a>
                 </li>
                 <li>

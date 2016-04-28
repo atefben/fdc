@@ -25,7 +25,7 @@ class SocialWallRepository extends EntityRepository
             ->where('f.festival = :festival')
             ->andWhere('f.enabledDesktop = 1')
             ->andWhere('f.network = :network')
-            ->orderBy('f.updatedAt', 'ASC')
+            ->orderBy('f.updatedAt', 'DESC')
             ->setParameter('network', constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER'))
             ->setParameter('festival', $festival)
         ;
@@ -39,7 +39,7 @@ class SocialWallRepository extends EntityRepository
             ->where('f.festival = :festival')
             ->andWhere('f.enabledDesktop = 1')
             ->andWhere('f.network = :network')
-            ->orderBy('f.updatedAt', 'ASC')
+            ->orderBy('f.updatedAt', 'DESC')
             ->setParameter('network', constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_INSTAGRAM'))
             ->setParameter('festival', $festival)
         ;
@@ -61,7 +61,7 @@ class SocialWallRepository extends EntityRepository
         $qb = $this->createQueryBuilder('s')
             ->where('s.festival = :festival')
             ->andWhere('s.enabledMobile = :enabledMobile')
-            ->orderBy('s.updatedAt', 'ASC')
+            ->orderBy('s.updatedAt', 'DESC')
             ->setParameter('festival', $festival)
             ->setParameter('enabledMobile', $mobile)
             ->setMaxResults($maxResults)
