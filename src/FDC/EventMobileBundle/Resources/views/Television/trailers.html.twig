@@ -7,14 +7,15 @@
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
     
-        <div class="bandeau">
+        <div class="banner-top">
 
-            <div id="live"{% if page.image and page.image|trans_fallback('file') %} style="background-image:url('{% path page.image|trans_fallback('file'), '976x535' %}')"{% endif %}>
-                <div class="banner-img vCenter">
+            <div id="live" class="banner-img vCenter" {% if page.image and page.image|trans_fallback('file') %} style="background-image:url('{% path page.image|trans_fallback('file'), '976x535' %}')"{% endif %} >
+                {#<div class="banner-img vCenter">#}
                     <div class="vCenterKid">
-                        <h2 class="title tall tallIcon"><i class="icon icon_player"></i><br>{{ 'bandeannonce.title.lesbandesannoncesetextraits'|trans|raw }}</h2>
+                        <a href="#" class="play-live"><i class="icon icon_bandes-annonces-extraits"></i></a>
+                        <h2 class="title one-line">{{ 'bandeannonce.title.lesbandesannoncesetextraits'|trans|raw }}</h2>
                     </div>
-                </div>
+                {#</div>#}
             </div>
 
             <div class="owl-carousel sliderDrag videosSlider sub-nav-list">
@@ -39,6 +40,7 @@
                     {% endif %}
                 {% endfor %}
             </div>
+            {#{% include 'FDCEventMobileBundle:Movie:components/filters.html.twig' %}#}
         </div>
 
         <div class="content-webtv">
@@ -52,31 +54,35 @@
 		                    {% set videoImage = s3_server_video ~ group.video|trans_fallback('imageAmazonUrl') %}
 		                {% endif %}
                         <div class="item {{ group.video.publishedAt|date('d-m-Y') }} {{ group.video.theme }} shadow-bottom video">
-                            <img src="{{videoImage}}"
-			                {% if group.video.image|trans_fallback('file') %}
-								srcset="{% path group.video.image|trans_fallback('file'), '640x404' %} 1x, {% path group.video.image|trans_fallback('file'), '1760x1108' %} 2x"
-			                {% elseif group.video|trans_fallback('imageAmazonUrl') %}
-								srcset="{{videoImage}} 1x, {{videoImage}} 2x"
-			                {% endif %}
-                                 
-                                 alt="{{ group.video.image|trans_fallback('alt') }}">
-                            <div class="info">
-                                <div class="picto">
-                                    <i class="icon icon_playlist"></i>
-                                </div>
-                                <div class="info-container">
-                                    <div class="vCenter">
-                                        <div class="vCenterKid">
-                                            <a href="{{ path('fdc_event_television_gettrailer', {'slug': group.film.slug}) }}"
-                                               class="category">{{ (group.film.findTranslationByLocale(app.request.locale).title ?: group.film.titleVO)|truncate(16) }}</a>
-                                            {% spaceless %}
-                                                <span>
-                                                    {% for director in group.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                        {{ loop.first == false ? ', ': '' }}{{ director.fullName }}
-                                                    {% endfor %}
-                                                </span>
-                                            {% endspaceless %}
-                                        </div>
+                            <div class="img-container">
+
+                                <img src="{{videoImage}}"
+                                    {% if group.video.image|trans_fallback('file') %}
+                                        srcset="{% path group.video.image|trans_fallback('file'), '640x404' %} 1x, {% path group.video.image|trans_fallback('file'), '1760x1108' %} 2x"
+                                    {% elseif group.video|trans_fallback('imageAmazonUrl') %}
+                                        srcset="{{videoImage}} 1x, {{videoImage}} 2x"
+                                    {% endif %}
+
+                                     alt="{{ group.video.image|trans_fallback('alt') }}">
+
+                                <a href="{{ path('fdc_event_television_gettrailer', {'slug': group.film.slug}) }}"></a>
+                                <div class="info">
+                                    <div class="picto vCenter">
+                                        <div class="vCenterKid"><i class="icon icon_playlist"></i></div>
+                                    </div>
+                                    <div class="right">
+                                        {#<div class="vCenter">#}
+                                            {#<div class="vCenterKid">#}
+                                                <span class="category">{{ (group.film.findTranslationByLocale(app.request.locale).title ?: group.film.titleVO)|truncate(16) }}</span>
+                                                {% spaceless %}
+                                                    <span class="titleLink">
+                                                        {% for director in group.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                            {{ loop.first == false ? ', ': '' }}{{ director.fullName }}
+                                                        {% endfor %}
+                                                    </span>
+                                                {% endspaceless %}
+                                            {#</div>#}
+                                        {#</div>#}
                                     </div>
                                 </div>
                             </div>
