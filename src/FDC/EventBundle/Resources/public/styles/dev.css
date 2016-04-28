@@ -423,3 +423,7 @@
     height: auto !important;
     min-height: 150px;
 }
+
+.press .fc-event .info .txt-padding {
+    padding-left: 10px;
+}

@@ -34,7 +34,11 @@
                 {% if titleTranslated is defined %}
                     <p id="dateTranslationCannes">( {{ titleTranslated }} )</p>
                 {% endif %}
-                {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}{% if loop.index != director|length %}, {% endif %}{% endfor %}<br />
+                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                {% for director in directors %}
+                    {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}{% if loop.index != directors|length %}<span class="nom-item">, </span>{% endif %}
+                {% endfor %}
+                <br />
                     <span class="date-item">
                         {% set duration = [] %}
                         {% if film.duration is not empty %}

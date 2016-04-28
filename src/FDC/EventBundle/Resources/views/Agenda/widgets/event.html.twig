@@ -58,7 +58,7 @@
                     film_image_default_attrs: 'width="45"'
                 }) -%}
             {%- endif -%}
-            <div class="txt">
+            <div class="txt{%- if event.medias|length == 0 and event.programmationFilms[0].film == null -%} txt-padding{%- endif -%}">
                 {%- if event.programmationFilms|length == 1 -%}
                     <span>{{ film.titleVO|truncate(38) }}</span>
                     {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
@@ -105,7 +105,7 @@
                     {{- event.programmationDynamics[0].type.name|upper -}}
                 </div>
             {%- endif -%}
-            <div class="txt">
+            <div class="txt txt-padding">
                 <span> {{ event.name }}</span>
             </div>
         </div>
