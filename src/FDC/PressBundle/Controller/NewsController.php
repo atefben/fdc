@@ -94,12 +94,12 @@ class NewsController extends Controller
         // Event have to be in 5h max
         $hourRange = array();
         $newDate = new \DateTime;
-        $endHour = $newDate->modify('+ 5 hour')->format('H');
+        $endHour = $newDate->modify('+5 hours');
 
-        while ($date->format('H') <= $endHour) {
+        while ($date <= $endHour) {
             array_push($hourRange, $date->format('H'));
-            $date->modify('+ 1 hour')->format('H');
-            error_log('PressBundle :'.$date->format('H').'NewsController ligne 102');
+            $date->modify('+1 hour');
+//            error_log('PressBundle : '.$date->format('H')  . 'NewsController ligne 102');
         }
 
         foreach ( $dayProjection as $key => $projection ) {
