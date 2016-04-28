@@ -96,13 +96,8 @@ header #searchContainer {
 
   }
   .icon_recherche{
-    position: absolute;
-    bottom: 5px;
-    right: 0;
     color: $gold;
     font-size: 1.5rem;
-    margin-bottom: 13px;
-    margin-right: 11px;
     @include transition(all 0.9s $linear);
 
   }
@@ -113,13 +108,15 @@ header #searchContainer {
   }
 
   #submitSearch {
+    background: none;
     border: none;
     cursor: pointer;
     outline: none;
     position: absolute;
-    bottom: 5px;
+    bottom: 0;
     right: 0;
     height: 50px;
+    line-height: 50px;
     width: 50px;
     @include transition(all 0.9s $linear);
 
