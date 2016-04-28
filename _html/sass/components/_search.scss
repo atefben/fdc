@@ -451,6 +451,10 @@ header #searchContainer {
           margin-left: 0;
         }
       }
+
+      article:nth-child(2n+1) {
+        clear: both;
+      }
     }
 
     #short {
