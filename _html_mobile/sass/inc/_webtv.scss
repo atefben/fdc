@@ -120,7 +120,7 @@
   font-size: 15px;
 }
 .webtv .videosSlider{
-    padding: 75px 0;
+    //padding: 75px 0;
 }
 .webtv .featured-videos{
   border-bottom: 1px solid #2c2c2c;
@@ -140,6 +140,39 @@
 .webtv .sliderDrag .info .info-container{
   height: 70px;
 }
+
+.webtv .sliderDrag .info .picto .icon{
+  margin-left: 0;
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.webtv .sliderDrag .info .category{
+
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.webtv .sliderDrag .info .titleLink{
+
+  color: #fff;
+  display: block;
+  font-size: 1.3rem;
+  margin-top: 8px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+
+
  .informations-video {
 
   color: #fff;
@@ -305,4 +338,14 @@
 .program-film ::-webkit-scrollbar-thumb {
   height: 10px;
   background-color: #c8a461;
+}
+
+
+#main.single-channel {
+  .title{
+    color: #FFFFFF;
+  }
+  .item {
+    height: 100%;
+  }
 }
