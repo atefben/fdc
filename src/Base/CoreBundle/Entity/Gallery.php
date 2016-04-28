@@ -43,7 +43,7 @@ class Gallery
     /**
      * @var GalleryMedia
      *
-     * @ORM\OneToMany(targetEntity="GalleryMedia", mappedBy="gallery", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="GalleryMedia", mappedBy="gallery", cascade={"persist", "remove"}, orphanRemoval=true)
      * @Groups({"news_list", "news_show", "event_show", "home"})
      */
     private $medias;
