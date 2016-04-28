@@ -60,7 +60,7 @@ class SearchRepository extends Repository
     public function getStatusFilterQuery($_locale)
     {
         $localeFilter = new \Elastica\Filter\Term(array('translations.locale' => $_locale));
-        $statusQuery = new \Elastica\Query\Term(array('translations.status' => 1));
+        $statusQuery = new \Elastica\Query\Terms('translations.status', array(1,5));
         
         $filtered = new \Elastica\Query\Filtered($statusQuery, $localeFilter);
         

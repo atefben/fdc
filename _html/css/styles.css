@@ -7599,13 +7599,8 @@ header #searchContainer {
   width: 100%;
 }
 #searchContainer .icon_recherche {
-  position: absolute;
-  bottom: 5px;
-  right: 0;
   color: #c8a461;
   font-size: 1.5rem;
-  margin-bottom: 13px;
-  margin-right: 11px;
   -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -7616,15 +7611,15 @@ header #searchContainer {
   cursor: pointer;
 }
 #searchContainer #submitSearch {
-  opacity: 0;
-  visibility: hidden;
+  background: none;
   border: none;
   cursor: pointer;
   outline: none;
   position: absolute;
-  bottom: 5px;
+  bottom: 0;
   right: 0;
   height: 50px;
+  line-height: 50px;
   width: 50px;
   -moz-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);

@@ -3,7 +3,7 @@
     <div id="top-bar">
         <ul class="main-nav">
             <li>
-                <a href="/" class="active" > {{ 'header.topbar.nav.festival'|trans }} </a>
+                <a href="/{{app.request.locale}}/" class="active" > {{ 'header.topbar.nav.festival'|trans }} </a>
             </li>
             <li>
                 <a href="{{ header_fdc }}" target="_blank" > {{ 'header.topbar.nav.festivalcannes'|trans }} </a>
@@ -65,7 +65,7 @@
                     {% endimage %}
                 </a>
                 <h1>
-                    <a href="/">
+                    <a href="/{{app.request.locale}}/">
                         {% image '@FDCEventBundle/Resources/public/img/svg/logo.svg' %}
                         <img width="200" src="{{ asset(asset_url) }}" alt="{{ 'header.logo.img.cannes'|trans }}" />
                         {% endimage %}
@@ -75,7 +75,7 @@
                     {{ render(controller('FDCEventBundle:Header:date')) }}
                 </h2>
                 <p class="stick">
-                    <a href="/">
+                    <a href="/{{app.request.locale}}/">
                         {% image '@FDCEventBundle/Resources/public/img/svg/logo.svg' %}
                         <img width="178" src="{{ asset(asset_url) }}" alt="{{ 'header.logo.img.cannes'|trans }}" />
                         {% endimage %}
