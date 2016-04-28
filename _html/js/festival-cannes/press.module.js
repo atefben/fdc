@@ -718,6 +718,7 @@ $(document).ready(function () {
 
             var mT = $(this).data('time') - base;
             $(this).css('margin-top', (mT * 80) + ((timeStart.getMinutes() / 60) * 80) + 5);
+            $(this).css('height', dur < 1 ? '80px' : ($(this).data('duration')/60)*80 + 'px');
 
             // init all the data of the event
             var eventObject = {
