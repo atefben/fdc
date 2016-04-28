@@ -7713,6 +7713,12 @@ header #searchContainer {
 #searchContainer #results #filtered #filteredContent .film.big .info .date {
   padding-top: 5px;
 }
+#searchContainer #results #filtered #filteredContent.artist article:nth-child(4n+1), #searchContainer #results #filtered #filteredContent.film article:nth-child(4n+1) {
+  clear: both;
+}
+#searchContainer #results #filtered #filteredContent.news article:nth-child(3n+1), #searchContainer #results #filtered #filteredContent.info article:nth-child(3n+1), #searchContainer #results #filtered #filteredContent.statement article:nth-child(3n+1), #searchContainer #results #filtered #filteredContent.event article:nth-child(3n+1), #searchContainer #results #filtered #filteredContent.media article:nth-child(3n+1), #searchContainer #results #filtered #filteredContent.participate article:nth-child(3n+1) {
+  clear: both;
+}
 #searchContainer #results .big {
   float: left;
   margin-bottom: 50px;

@@ -222,6 +222,24 @@ header #searchContainer {
         .film.big .info .date {
           padding-top: 5px;
         }
+
+        &.artist,
+        &.film {
+          article:nth-child(4n+1) {
+            clear: both;
+          }
+        }
+
+        &.news,
+        &.info,
+        &.statement,
+        &.event,
+        &.media,
+        &.participate {
+          article:nth-child(3n+1) {
+            clear: both;
+          }
+        }
       }
     }
 
