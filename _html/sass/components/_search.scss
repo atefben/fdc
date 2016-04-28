@@ -223,10 +223,15 @@ header #searchContainer {
           padding-top: 5px;
         }
 
-        &.artist,
-        &.film {
-          article:nth-child(4n+1) {
+        &.artist {
+          .person.big:nth-child(4n+1) {
             clear: both;
+          }
+        }
+
+        &.film {
+          .film.big:nth-child(4n+1) {
+
           }
         }
 
