@@ -146,13 +146,19 @@
                                             {% endif %}
                                         {% endfor %}
                                         <div class="media folder">
-                                            <span>{{ 'press.home.label.dossiersdepresse'|trans }}</span> ({{ folderCount }})
+                                            {% if folderCount != 0 %}
+                                                <span>{{ 'press.home.label.dossiersdepresse'|trans }}</span> ({{ folderCount }})
+                                            {% endif %}
                                         </div>
                                         <div class="media trailer">
-                                            <span>{{ 'press.home.label.bandeannonces'|trans }}</span> ({{ trailerCount }})
+                                            {% if trailerCount != 0 %}
+                                                <span>{{ 'press.home.label.bandeannonces'|trans }}</span> ({{ trailerCount }})
+                                            {% endif %}
                                         </div>
                                         <div class="media photo">
-                                            <span>{{ 'press.home.label.photos'|trans }}</span> ({{ photoCount }})
+                                            {% if photoCount != 0 %}
+                                                <span>{{ 'press.home.label.photos'|trans }}</span> ({{ photoCount }})
+                                            {% endif %}
                                         </div>
                                         <a class="button" href="{{ path('fdc_press_media_main', {'sectionId': media.film.selectionSection.id } ) }}">
                                             {{ 'press.home.btn.decouvrir'|trans }}
