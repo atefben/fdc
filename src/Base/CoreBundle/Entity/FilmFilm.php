@@ -362,7 +362,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $minorProductions;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film", cascade={"persist","merge"})
      * @Groups({
      *     "film_list",
      *     "film_show",
@@ -379,7 +379,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $countries;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="film", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="FilmAwardAssociation", mappedBy="film", cascade={"persist", "merge"})
      *
      * @Groups({
      *  "film_list", "film_show",
