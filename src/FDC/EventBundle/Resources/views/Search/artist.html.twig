@@ -8,7 +8,8 @@
                 <div class="image">
                     {% if artist.portraitImage and artist.portraitImage|trans_fallback('file') %}
                         <img src="{% path artist.portraitImage|trans_fallback('file'), 'search' %}"
-                             alt="{{ artist.firstname }} {{ artist.lastname }}">
+                             alt="{{ artist.firstname }} {{ artist.lastname }}"
+                             data-object-fit="cover">
                     {% else %}
                         {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
                         {% if media is empty %}
@@ -20,10 +21,12 @@
 
                         {% if media is not empty %}
                             <img src="{% path media, 'search' %}"
-                                 alt="{{ artist.firstname }} {{ artist.lastname }}">
+                                 alt="{{ artist.firstname }} {{ artist.lastname }}"
+                                 data-object-fit="cover">
                         {% else %}
                             <img width="170" height="231" src="{{ asset('bundles/fdcevent/img/jurys/member.jpg') }}"
-                                 alt="{{ artist.firstname }} {{ artist.lastname }}">
+                                 alt="{{ artist.firstname }} {{ artist.lastname }}"
+                                 data-object-fit="cover">
                         {% endif %}
                     {% endif %}
                 </div>
