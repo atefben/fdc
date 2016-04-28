@@ -7713,6 +7713,12 @@ header #searchContainer {
 #searchContainer #results #filtered #filteredContent .film.big .info .date {
   padding-top: 5px;
 }
+#searchContainer #results #filtered #filteredContent.artist .person.big:nth-child(4n+1) {
+  clear: both;
+}
+#searchContainer #results #filtered #filteredContent.news article:nth-child(3n+1), #searchContainer #results #filtered #filteredContent.info article:nth-child(3n+1), #searchContainer #results #filtered #filteredContent.statement article:nth-child(3n+1), #searchContainer #results #filtered #filteredContent.event article:nth-child(3n+1), #searchContainer #results #filtered #filteredContent.media article:nth-child(3n+1), #searchContainer #results #filtered #filteredContent.participate article:nth-child(3n+1) {
+  clear: both;
+}
 #searchContainer #results .big {
   float: left;
   margin-bottom: 50px;
@@ -7728,6 +7734,9 @@ header #searchContainer {
 #searchContainer #results .big img {
   display: block;
   margin-bottom: 17px;
+  width: 170px;
+  height: 231px;
+  object-fit: cover;
 }
 #searchContainer #results .big .info {
   text-align: center;
@@ -7907,6 +7916,9 @@ header #searchContainer {
 }
 #searchContainer #results #wide .big:nth-child(3n+1) {
   margin-left: 0;
+}
+#searchContainer #results #wide article:nth-child(2n+1) {
+  clear: both;
 }
 #searchContainer #results #short {
   float: left;

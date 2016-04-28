@@ -2,7 +2,7 @@
 {% extends 'FDCPressBundle::layout.html.twig' %}
 
 {% block body %}
-<div id="main" class="press press-home calendar-open downloading-press {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
+<div id="main" class="press press-home calendar-open {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
 
     <div class="header-press">
         <div class="head">
