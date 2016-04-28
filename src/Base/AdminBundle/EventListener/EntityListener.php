@@ -487,37 +487,39 @@ class EntityListener
     {
         if (in_array($entityName, $entities)) {
             $parent = $entity->getTranslatable();
-            foreach ($parent->getWidgets() as $parentWidget) {
-                $parentWidgetEntityName = substr(strrchr(get_class($parentWidget), '\\'), 1);
-                foreach ($widgets as $widget) {
-                    if ($parentWidgetEntityName == $widget['widgetName']) {
-                        // no easy way to get the fr translations
-                        $translations = $parentWidget->getTranslations();
-                        $frenchVersion = null;
-                        foreach ($translations as $translation) {
-                            if ($translation->getLocale() == 'fr') {
-                                $frenchVersion = $translation;
+            if (count($parent->getWidgets()) > 0) {
+                foreach ($parent->getWidgets() as $parentWidget) {
+                    $parentWidgetEntityName = substr(strrchr(get_class($parentWidget), '\\'), 1);
+                    foreach ($widgets as $widget) {
+                        if ($parentWidgetEntityName == $widget['widgetName']) {
+                            // no easy way to get the fr translations
+                            $translations = $parentWidget->getTranslations();
+                            $frenchVersion = null;
+                            foreach ($translations as $translation) {
+                                if ($translation->getLocale() == 'fr') {
+                                    $frenchVersion = $translation;
+                                }
                             }
-                        }
-                        if ($frenchVersion !== null) {
-                            foreach ($this->locales as $locale) {
-                                $trans = null;
-                                foreach ($translations as $translation) {
-                                    if ($translation->getLocale() == $locale) {
-                                        $trans = $translation;
+                            if ($frenchVersion !== null) {
+                                foreach ($this->locales as $locale) {
+                                    $trans = null;
+                                    foreach ($translations as $translation) {
+                                        if ($translation->getLocale() == $locale) {
+                                            $trans = $translation;
+                                        }
                                     }
-                                }
-                                if ($trans == null) {
-                                    $trans = clone $widget['widgetEntity'];
-                                    $trans->setLocale($locale);
-                                    $parentWidget->addTranslation($trans);
-                                }
+                                    if ($trans == null) {
+                                        $trans = clone $widget['widgetEntity'];
+                                        $trans->setLocale($locale);
+                                        $parentWidget->addTranslation($trans);
+                                    }
 
-                                foreach ($widget['setters'] as $setter) {
-                                    $setter = ucfirst($setter);
-                                    if ($trans->{'get' . $setter}() == '') {
-                                        $trans->{'set' . $setter}($frenchVersion->{'get' . $setter}());
-                                        $this->flush = true;
+                                    foreach ($widget['setters'] as $setter) {
+                                        $setter = ucfirst($setter);
+                                        if ($trans->{'get' . $setter}() == '') {
+                                            $trans->{'set' . $setter}($frenchVersion->{'get' . $setter}());
+                                            $this->flush = true;
+                                        }
                                     }
                                 }
                             }

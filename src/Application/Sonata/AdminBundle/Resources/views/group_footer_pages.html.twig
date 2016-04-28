@@ -1,4 +1,4 @@
-{% if app.security.token and is_granted('ROLE_BASE_ADMIN_FDC_PAGE_FOOTER_ADMIN') %}
+{% if app.security.token and (is_granted('ROLE_BASE_ADMIN_FDC_PAGE_FOOTER_ADMIN') or is_granted('ROLE_BASE_ADMIN_FDC_PAGE_FOOTER_LIST_EDIT'))  %}
     {% set active = false %}
     {% set pages = ['admin_base_core_fdcpagefooter_edit','admin_base_core_fdcpagefooter_list','admin_base_core_fdcpagefooter_create',
     'admin_base_core_faqtheme_list','admin_base_core_faqtheme_edit','admin_base_core_faqtheme_create','admin_base_core_faqpage_list',

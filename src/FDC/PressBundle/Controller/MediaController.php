@@ -21,7 +21,7 @@ class MediaController extends Controller
      * @return array
      */
     /* TODO ! add press_media_section_id to parameters.yml  */
-    public function mainAction($sectionId = 7)
+    public function mainAction($sectionId = 3)
     {
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
@@ -33,7 +33,8 @@ class MediaController extends Controller
         }
 
         $sectionFilms = $em->getRepository('BaseCoreBundle:FilmFilm')
-            ->findBy(array('festival' => $settings->getFestival()->getId()), array('selectionSection' => 'DESC'));
+            ->findBy(array('festival' => $settings->getFestival()->getId()), array('selectionSection' => 'DESC'))
+        ;
         $i = 0;
 
         $filmSection = array();
@@ -73,9 +74,10 @@ class MediaController extends Controller
 
         $films = $em->getRepository('BaseCoreBundle:FilmFilm')
             ->findBy(array(
-                'festival' => $settings->getFestival()->getId(),
+                'festival'         => $settings->getFestival()->getId(),
                 'selectionSection' => $sectionId,
-            ));
+            ), array('titleVO' => 'asc'))
+        ;
 
         $i = 0;
         foreach ($films as $film) {
@@ -106,7 +108,7 @@ class MediaController extends Controller
 
         return array(
             'filmSection' => $filmSection,
-            'films' => $films
+            'films'       => $films
         );
     }
 
@@ -133,9 +135,10 @@ class MediaController extends Controller
             $mainSectionId = $request->get('id');
             $films = $em->getRepository('BaseCoreBundle:FilmFilm')
                 ->findBy(array(
-                    'festival' => $settings->getFestival()->getId(),
+                    'festival'         => $settings->getFestival()->getId(),
                     'selectionSection' => $mainSectionId,
-                ));
+                ))
+            ;
             $i = 0;
 
             $filmSection = array();
@@ -170,7 +173,7 @@ class MediaController extends Controller
         }
 
         return array(
-            'films' => $films,
+            'films'   => $films,
             'section' => $section
         );
     }
@@ -188,7 +191,8 @@ class MediaController extends Controller
         $translator = $this->get('translator');
 
         $film = $em->getRepository('BaseCoreBundle:FilmFilm')
-            ->findOneById($id);
+            ->findOneById($id)
+        ;
 
         $filmPhotos = array();
 
@@ -247,10 +251,12 @@ class MediaController extends Controller
 
 
         $gallery = $em->getRepository('BaseCoreBundle:Gallery')
-            ->findOneById($id);
+            ->findOneById($id)
+        ;
 
         $galleryImage = $em->getRepository('BaseCoreBundle:MediaImageTranslation')
-            ->getGalleryImage($id, $locale);
+            ->getGalleryImage($id, $locale)
+        ;
 
         $galleryPhotos = array();
 
@@ -338,7 +344,8 @@ class MediaController extends Controller
 
             $id = $request->get('id');
             $film = $em->getRepository('BaseCoreBundle:FilmFilm')
-                ->findOneById($id);
+                ->findOneById($id)
+            ;
 
         }
 
