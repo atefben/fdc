@@ -158,11 +158,11 @@ $(document).ready(function () {
           autoWidth: true,
           mouseDrag: false,
           onInitialized: function () {
-			  if($('.films .owl-item').length > 1) {
-			  	$('<span class="pagination"><strong>1</strong>/' + $('.films .owl-item').length + '</span>').insertAfter($('.films .owl-prev'));
-			  } else {
-				$('.owl-controls').hide();
-			  }
+        if($('.films .owl-item').length > 1) {
+          $('<span class="pagination"><strong>1</strong>/' + $('.films .owl-item').length + '</span>').insertAfter($('.films .owl-prev'));
+        } else {
+        $('.owl-controls').hide();
+        }
           },
           onTranslated: function () {
             var i = parseInt($('.films .center').index()) + 1;
@@ -271,8 +271,9 @@ $(document).ready(function () {
           }
           var dur = event.duration / 60 + 'H';
           var c = event.eventColor;
-          $(element).css('width', 'auto');
-          $(element).css('height','auto');
+          console.error(event);
+          // $(element).css('width', 'auto');
+          $(element).css('height', event.duration/60 < 1 ? '80px' : (event.duration/60)*80 + 'px' );
           $(element).empty();
           $(element).addClass(event.eventPictogram);
           $(element).attr('data-id', event.id);
@@ -378,19 +379,19 @@ $(document).ready(function () {
 
         //recuperation des données
         var eventObject = {
-          title: $ev.find('.txt span').text(),
-          eventColor: $ev.data('color'),
-          start: $ev.data('start'),
-          end: $ev.data('end'),
-          type: $ev.find('.category').text(),
-          author: $ev.find('.txt strong').text(),
-          picture: $ev.find('img').attr('src'),
-          duration: parseInt($ev.find('.bottom .duration').text().substr(0, 2)) * 60,
-          room: $ev.find('.bottom .ven').text(),
-          selection: $ev.find('.bottom .competition').text(),
-          eventPictogram: $ev.data('picto').substr(1),
-          id: $ev.data('id'),
-          url: $ev.data('url')
+          title          : $ev.find('.txt span').text(),
+          eventColor     : $ev.data('color'),
+          start          : $ev.data('start'),
+          end            : $ev.data('end'),
+          type           : $ev.find('.category').text(),
+          author         : $ev.find('.txt strong').text(),
+          picture        : $ev.find('img').attr('src'),
+          duration       : parseInt($ev.find('.bottom .duration').text().substr(0, 2)) * 60,
+          room           : $ev.find('.bottom .ven').text(),
+          selection      : $ev.find('.bottom .competition').text(),
+          eventPictogram : $ev.data('picto').substr(1),
+          id             : $ev.data('id'),
+          url            : $ev.data('url')
         };
 
         $ev.parent().addClass('delete');
@@ -413,7 +414,7 @@ $(document).ready(function () {
           localStorage.setItem('agenda_press', JSON.stringify(events));
         }
 
-        eventObject= {};
+        eventObject = {};
       });
 
       // test if events are already store in local storage
@@ -474,6 +475,7 @@ $(document).ready(function () {
           }
           var dur = event.duration / 60 + 'H';
           var c = event.eventColor;
+          $(element).css('height', event.duration/60 < 1 ? '80px' : (event.duration/60)*80 + 'px' );
           $(element).empty();
           $(element).addClass(event.eventPictogram).addClass('ajax');
           $(element).attr('data-id', event.id);
@@ -696,9 +698,11 @@ $(document).ready(function () {
         function initDraggable() {
           $('#calendar-programmation .fc-event').each(function () {
             // based on time start and duration, calculate positions of event
-            var timeStart = $(this).data('time'),
-              dur = Math.floor($(this).data('duration') / 60),
-              minutes = $(this).data('duration') % 60;
+            // var timeStart = $(this).data('time'),
+            var timeStart = new Date($(this).data('start')),
+                minutes   = $(this).data('duration') % 60,
+                dur       = Math.floor($(this).data('duration') / 60),
+                base      = 8;
 
             if (minutes == 0) {
               minutes = '';
@@ -709,12 +713,11 @@ $(document).ready(function () {
               $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
             }
 
-            var base = 8;
             $(this).find('.category').css('background-color', $(this).data('color'));
             $(this).addClass($(this).data('picto').substr(1));
 
-            var mT = timeStart - base;
-            $(this).css('margin-top', (mT * 80) + 5);
+            var mT = $(this).data('time') - base;
+            $(this).css('margin-top', (mT * 80) + ((timeStart.getMinutes() / 60) * 80) + 5);
 
             // init all the data of the event
             var eventObject = {
@@ -781,34 +784,34 @@ $(document).ready(function () {
             }
           });
           var date = $.fullCalendar.moment($(this).data('date'));
-		  
-		  jQuery('#type .select span').each (function() {
-			var filterselect = jQuery(this).attr('data-filter');
-			if(filterselect == 'all') {
-				jQuery(this).addClass('active');
-			} else {
-				jQuery(this).removeClass('active');
-			}
-		 	if(jQuery('.v-container [data-type="' + filterselect + '"]').length > 0 || filterselect == 'all') {
-		  		jQuery(this).attr('style', '');
-		  	} else {
-				jQuery(this).attr('style', 'display:none;');
-		 	}
-		  });
-		  
-		  jQuery('#category .select span').each (function() {
-			var filterselect = jQuery(this).attr('data-filter');
-			if(filterselect == 'all') {
-				jQuery(this).addClass('active');
-			} else {
-				jQuery(this).removeClass('active');
-			}
-		 	if(jQuery('.v-container [data-category="' + filterselect + '"]').length > 0 || filterselect == 'all') {
-		  		jQuery(this).attr('style', '');
-		  	} else {
-				jQuery(this).attr('style', 'display:none;');
-		 	}
-		  });
+      
+          jQuery('#type .select span').each (function() {
+          var filterselect = jQuery(this).attr('data-filter');
+          if(filterselect == 'all') {
+            jQuery(this).addClass('active');
+          } else {
+            jQuery(this).removeClass('active');
+          }
+           if(jQuery('.v-container [data-type="' + filterselect + '"]').length > 0 || filterselect == 'all') {
+              jQuery(this).attr('style', '');
+            } else {
+            jQuery(this).attr('style', 'display:none;');
+           }
+          });
+          
+          jQuery('#category .select span').each (function() {
+          var filterselect = jQuery(this).attr('data-filter');
+          if(filterselect == 'all') {
+            jQuery(this).addClass('active');
+          } else {
+            jQuery(this).removeClass('active');
+          }
+           if(jQuery('.v-container [data-category="' + filterselect + '"]').length > 0 || filterselect == 'all') {
+              jQuery(this).attr('style', '');
+            } else {
+            jQuery(this).attr('style', 'display:none;');
+           }
+          });
 
           $('#dateProgram').text(date.format('DD MMMM YYYY'));
           $('#mycalendar').fullCalendar('gotoDate', date);

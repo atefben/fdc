@@ -99,7 +99,6 @@ class NewsController extends Controller
         while ($date <= $endHour) {
             array_push($hourRange, $date->format('H'));
             $date->modify('+1 hour');
-//            error_log('PressBundle : '.$date->format('H')  . 'NewsController ligne 102');
         }
 
         foreach ( $dayProjection as $key => $projection ) {
