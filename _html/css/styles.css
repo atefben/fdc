@@ -7616,8 +7616,6 @@ header #searchContainer {
   cursor: pointer;
 }
 #searchContainer #submitSearch {
-  opacity: 0;
-  visibility: hidden;
   border: none;
   cursor: pointer;
   outline: none;
