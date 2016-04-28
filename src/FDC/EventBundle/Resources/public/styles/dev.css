@@ -427,3 +427,8 @@
 .press .fc-event .info .txt-padding {
     padding-left: 10px;
 }
+
+.list-article .categorie-items article .infos-item-list h3.title-item a,
+.list-article .categorie-items article .infos-item-list p.film-title-translations a {
+    color: #fff;
+}
