@@ -11,6 +11,7 @@ var GLOBALS = {
   },
   "baseUrl" : "http://html.festival-cannes-2016.com.ohwee.fr",
   "urls" : {
+    "programmationUrl" : "programmation.php",
     "calendarProgrammationUrl" : "calendarprogrammation.html",
     "eventUrl" : "load-evenements.php",
     "newsUrl" : "news.html",
