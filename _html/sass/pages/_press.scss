@@ -8,29 +8,30 @@
 
 // 1. Global
 // =========================
-
 .press {
   overflow: hidden;
   padding-top: 0!important;
 
-  .download{
-    .icon.icon_telecharger{
+  .download {
+    .icon.icon_telecharger {
       margin-right: 10px !important;
       vertical-align: middle !important;
       margin-bottom: 3px;
     }
   }
 
-  .button{
+  .button {
     font-size: 0.63rem;
     height: 37px;
-    .icon_telecharger{
+
+    .icon_telecharger {
       margin-right: 10px;
       font-size: .8rem;
       vertical-align: middle !important;
       margin-bottom: 2px;
     }
-    .icon_cadenas{
+
+    .icon_cadenas {
       margin-right: 10px;
       font-size: .8rem;
       vertical-align: middle !important;
@@ -38,11 +39,11 @@
     }
   }
 
-  a.bold{
+  a.bold {
     font-family: $CamphorBold; 
   }
 
-  .title-center{
+  .title-center {
     width: 607px;
     font-size: 1.25rem;
     text-align: center;
@@ -53,12 +54,12 @@
     margin-bottom: 20px;
   }
 
-  .descrip-title{
+  .descrip-title {
     text-align: center;
     line-height: 26px;
     font-size: 0.81rem;
 
-    strong{
+    strong {
       color: #c8a461;
       font-family: $CamphorBold;
       font-size: 0.81rem;
@@ -71,7 +72,7 @@
     margin-top: 51px;
   }
 
-  .googlemap-descrip{
+  .googlemap-descrip {
     font-size: .75rem;
     color: #333333;
     font-family: $CamphorMedium;
@@ -122,14 +123,14 @@
       text-transform: uppercase;
       width: 100%;
 
-      .icon{
+      .icon {
         font-size: 1rem;
         margin: 0 13px;
         vertical-align: middle !important;
         margin-bottom: 2px;
       }
 
-      .icon_close{
+      .icon_close {
         margin: 0px;
         color: #fff;
         vertical-align: baseline !important;
@@ -139,7 +140,7 @@
         right: -5px;
       }
 
-      .icon_espace-presse{
+      .icon_espace-presse {
         font-size: .8rem;
       }
 
@@ -359,7 +360,8 @@
         line-height: 40px;
         margin-bottom: 0;
 
-        .fc-left, .fc-right {
+        .fc-left,
+        .fc-right {
           height: 100%;
           @include transition(all 0.3s $smoothTransition);
         }
@@ -411,12 +413,20 @@
           height: 468px!important;
         }
 
-        .fc-head, .fc-day-grid, .fc-widget-header {
+        .fc-head,
+        .fc-day-grid,
+        .fc-widget-header {
           display: none;
         }
       }
 
-      &.fc-unthemed .fc-divider, &.fc-unthemed .fc-popover, &.fc-unthemed .fc-row, &.fc-unthemed tbody, &.fc-unthemed td, &.fc-unthemed th, &.fc-unthemed thead {
+      &.fc-unthemed .fc-divider,
+      &.fc-unthemed .fc-popover,
+      &.fc-unthemed .fc-row,
+      &.fc-unthemed tbody,
+      &.fc-unthemed td,
+      &.fc-unthemed th,
+      &.fc-unthemed thead {
         border-color: #3a3a3a;
       }
 
@@ -1606,25 +1616,26 @@
 }
 
 
-
 .fullcalendar {
   .header-press {
     border: none;
 
-    .container{
+    .container {
       position: relative;
 
-      .buttons{
+      .buttons {
         right: 0px;
         position: absolute;
         float: right;
-        .button{
-          &:hover{
+
+        .button {
+          &:hover {
             color:#fff;
             background-color: $gold;
           }
         }
-        .export{
+
+        .export {
           &:hover{
             background-color: #fff;
             color: $gold;
@@ -1632,11 +1643,10 @@
           }
         }
       }
-
     }
   }
 
-  .popin{
+  .popin {
     position: relative;
     top: 0px;
   }
@@ -1704,36 +1714,41 @@
       }
     }
   }
-  .container{
-    .buttons{
-    .button:first-child{
-      border-right: 0px solid #fff;
-    }
-      .create{
-          color:$gold;
-          .icon{
-            margin-right: 10px;
-            font-size: 0.8rem;
-            vertical-align: middle !important;
-          }
-      }
-      .create:hover{
-        background-color: #c8a461;
-        border-color: #c8a461;
-        color: #fff;
-      }
-      .export{
-        color:$gold;
-        .icon{
+
+  .container {
+    .buttons {
+      .create {
+        color: $gold;
+        
+        &:hover {
+          background-color: #c8a461;
+          border-color: #c8a461;
+          color: #fff;
+        }
+
+        .icon {
           margin-right: 10px;
           font-size: 0.8rem;
           vertical-align: middle !important;
         }
       }
-      .export:hover{
-        background-color: #c8a461;
-        border-color: #c8a461;
-        color: #fff;
+      
+      
+      .export {
+        color:$gold;
+        border-left: 0px solid #fff;
+        
+        &:hover {
+          background-color: #c8a461;
+          border-color: #c8a461;
+          color: #fff;
+        }
+
+        .icon {
+          margin-right: 10px;
+          font-size: 0.8rem;
+          vertical-align: middle !important;
+        }
       }
     }
   }
@@ -1742,7 +1757,6 @@
 
 // 2. Popin Event
 // =========================
-
 .popin-event {
   background-color: #fff;
   border-bottom: 1px solid #ebebeb;
@@ -1763,15 +1777,15 @@
     width: 70px;
     color: $gold;
 
-    .icon{
+    .icon {
       line-height: 72px;
      @include transition(all 0.6s $smoothTransition);
     }
 
-    &:hover{
+    &:hover {
       border-color: #000;
 
-      .icon{
+      .icon {
         color: #000;
       }
     }
@@ -1818,7 +1832,7 @@
       }
 
       //attention if add icon font need too change this number !
-      &:after{
+      &:after {
         content: "\f12e";
         font-family: "icons";
         font-size: 1rem;
@@ -1838,7 +1852,7 @@
       }
 
       //attention if add icon font need too change this number !
-      &:after{
+      &:after {
         content: "\f12c";
         font-family: "icons";
         font-size: 1rem;
@@ -2036,9 +2050,6 @@
 }
 
 
-
-
-
 #mycalendar {
   .fc-event[style*="right: 50%"],
   .fc-event[style*="left: 50%"] {
@@ -2089,9 +2100,7 @@
 
 // 3. POPIN LOCK ELEMENT //
 //_______________________//
-
-
-#popin-press{
+#popin-press {
   visibility: hidden;
   opacity: 0;
   transform: translateY(30px);
@@ -2110,23 +2119,22 @@
   overflow-y: hidden;
   box-sizing: border-box;
 
-  .container-popin{
-
-    strong{
+  .container-popin {
+    strong {
       text-transform: uppercase;
       font-size: 0.88rem;
       letter-spacing: .2em;
       font-family: $CamphorBold;
       line-height: 24px;
 
-      .icon{
+      .icon {
         font-size: 1rem;
         vertical-align: middle !important;
         margin-bottom: 5px;
       }
     }
 
-    p{
+    p {
       padding-top: 10px;
       font-size: 0.81rem;
       line-height: 18px;
@@ -2134,9 +2142,9 @@
       width: 284px;
     }
 
-    form{
-          height: 50px;
-          margin-top: 19px;
+    form {
+      height: 50px;
+      margin-top: 19px;
 
       input {
         background: none;
@@ -2175,7 +2183,6 @@
       &.error input[type="password"] {
         border-color: red;
       }
-
     }
   }
 }
@@ -2183,9 +2190,7 @@
 
 // 4. POPIN DOWNLOAD //
 //==================//
-
-
-#popin-download-press{
+#popin-download-press {
   visibility: hidden;
   opacity: 0;
   transform: translateY(30px);
@@ -2205,34 +2210,40 @@
   box-sizing: border-box;
   padding-top: 62px;
   padding-bottom: 50px;
-  .contain-info-item{
+
+  .contain-info-item {
     padding-bottom: 17px;
     border-bottom: 1px solid #c1c1c1;
     margin-bottom: 20px;
-    img{
+
+    img {
       width: 55px;
       height: 75px;
       display: inline-block;
       margin-right: 12px;
     }
-    .contain-text{
+
+    .contain-text {
       width: 30%;
       height: 75px;
       vertical-align: top;
-      h3{
+
+      h3 {
         font-size: 0.88rem;
         font-family: $CamphorBold;
         line-height: 18px;
         text-transform: uppercase;
       }
-      span{
+
+      span {
         color:#c8a461;
         font-family: $CamphorItalic;
         font-size: 0.81rem;
       }
     }
   }
-  h4{
+
+  h4 {
     font-family: $CamphorBold;
     font-size: 0.88rem;
     letter-spacing: .2em;
@@ -2241,21 +2252,23 @@
     margin-top: 17px;
     margin-bottom: 7px;
   }
-  p{
+
+  p {
     color:#666666;
     line-height: 24px;
     font-size: 0.81rem;
     margin-bottom: 32px;
   }
-  strong{
+
+  strong {
     line-height: 24px;
     font-size: 0.81rem;
     display: block;
     margin-bottom: 12px;
   }
-  table{
 
-    td{
+  table {
+    td {
       width: 238px;
       border: 1px solid #dfdfdf;
       box-sizing: border-box;
@@ -2264,7 +2277,8 @@
       font-family: $CamphorHeavy;
       color:#999999;
       padding-left: 19px;
-      a{
+
+      a {
         text-align: center;
         width: 97px;
         border: 0px;
@@ -2274,19 +2288,19 @@
           margin-right: 10px;
         }
       }
-
     }
-    td:last-child{
+
+    td:last-child {
       width: 97px;
       padding-left: 0px;
     }
-
   }
 }
+
+
 // 4. POPIN Create event //
 //==================//
-
-#create-event-pop{
+#create-event-pop {
   background-color: #fff;
   width: 100%;
   height: auto;
@@ -2300,8 +2314,8 @@
   transform: translateY(30px);
   transition: .4s all $linear;
 
-  .contain-btn{
-    .btn-close{
+  .contain-btn {
+    .btn-close {
       height: 68px;
       width: 68px;
       position: absolute;
@@ -2312,30 +2326,35 @@
       transition: .4s all $linear;
       cursor: pointer;
 
-      .icon{
+      .icon {
         margin-top: 27px;
         margin-left: 26px;
       }
-      &:hover{
+
+      &:hover {
         color: #000;
         border-color: #000;
       }
     }
   }
-  .container{
+
+  .container {
     width: 561px;
     margin: 0 auto;
-    .button{
+
+    .button {
       background-color: #fff;
       border-color: $gold;
       padding: 0px 33px;
       text-align: center;
+      
+      &:hover {
+        background-color: $gold;
+        color:#fff;
+      }
     }
-    .button:hover{
-      background-color: $gold;
-      color:#fff;
-    }
-    h3{
+
+    h3 {
       font-family: $CamphorBold;
       color:#c8a461;
       text-transform: uppercase;
@@ -2344,16 +2363,18 @@
       font-size: 0.88rem;
       padding-bottom: 4px;
     }
-    p{
+
+    p {
       color:#666666;
       font-size:0.88rem;
       line-height: 26px;
-
     }
-    form{
+
+    form {
       padding-top: 23px;
       width: 561px;
-      label{
+
+      label {
         text-transform: uppercase;
         font-family: $CamphorBold;
         font-size: 0.75rem;
@@ -2361,41 +2382,47 @@
         display: block;
         margin-top: 15px;
       }
-      input{
+
+      input {
         margin: 12px 0px;
         font-size: 0.88rem;
       }
-      input[type="submit"]{
+
+      input[type="submit"] {
         margin-bottom: 41px;
 
-        &:hover{
+        &:hover {
           cursor: pointer;
         }
       }
-      input[type="text"]{
-//        padding-top: 5px;
-//        padding-bottom: 5px;
+
+      input[type="text"] {
+        // padding-top: 5px;
+        // padding-bottom: 5px;
         padding-left: 10px;
         padding-right: 10px;
         width: 537px;
         height: 46px;
-//        font-size: 1rem;
+        // font-size: 1rem;
         color:#666;
         border: 1px solid #CCC;
 
-        &.error{
+        &.error {
           border-color: red;
         }
       }
-      .time{
+
+      .time {
         display: inline-block;
         width: 268px;
-        input[type='text']{
+
+        input[type='text'] {
           width: 96px;
           height: 46px;
           text-align: center;
         }
-        .pictodate{
+
+        .pictodate {
           width: 51px;
           height: 48px;
           border: 1px solid #ccc;
@@ -2404,19 +2431,22 @@
           vertical-align: bottom;
           border-left: 0px solid #fff;
           color:$grey;
-          .icon{
+
+          .icon {
             margin-top: 16px;
             margin-left: 18px;
           }
         }
-        .hours{
+
+        .hours {
           width: 64px !important;
           height: 46px;
           text-align: center;
           margin-left: 8px;
         }
       }
-      .first{
+
+      .first {
         margin-right: 21px;
       }
     }
@@ -2424,35 +2454,40 @@
 }
 
 // Press programmation //
-.press-programmation{
-  .header-press{
-    .container{
+.press-programmation {
+  .header-press {
+    .container {
       position: relative;
     }
-    .buttons{
+
+    .buttons {
       position: absolute;
       right: 1px;
     }
-    .button.list:hover{
+
+    .button.list:hover {
       color: $gold;
     }
   }
 }
 
-.press{
-  #calendar.fullwidth{
-    #mycalendar{
-      .fc-day{
+.press {
+  #calendar.fullwidth {
+    #mycalendar {
+      .fc-day {
           width:234px;
       }
-      .fc-day-header{
+
+      .fc-day-header {
           width:234px;
       }
-      .fc-content-skeleton{
-        .fc-event-container{
+
+      .fc-content-skeleton {
+        .fc-event-container {
           width:234px;
         }
-        td{
+
+        td {
          width:234px;
         }
       }
@@ -2462,14 +2497,15 @@
 
 
 //3- EVENT PAGE PRESS
-
-.events-site{
-  .contact-press{
+.events-site {
+  .contact-press {
     padding: 0px;
   }
-  .header-press .buttons{
+
+  .header-press .buttons {
     margin: 56px 0 0 0;
   }
+
   .locked p {
     color: #666;
     font-size: 0.813rem;
