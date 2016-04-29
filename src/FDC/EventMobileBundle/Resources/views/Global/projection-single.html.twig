@@ -76,6 +76,13 @@
     </div>
     <div class="events-container">
         {%- if seances|length > 0 -%}
+            {% set display = false %}
+            {%- for conference in conferences -%}
+                {%- if conference.programmationFilms|length > 0 -%}
+                    {% set display = true %}
+                {%- endif -%}
+            {%- endfor -%}
+            {%- if display == true -%}
             <h2>Séances de presse</h2>
             <div class="events-wrapper">
                 {%- for seance in seances -%}
@@ -100,7 +107,7 @@
                     {%- if seance.programmationFilms|length > 0 -%}
                         {%- set film = seance.programmationFilms[0].film -%}
                         {%- set difference = date(seance.endsAt).diff(date(seance.startsAt)) -%}
-                        {%- set minutes = difference.i -%}
+                        {%- set minutes = difference.i + (difference.h * 60) -%}
                         <div class="event">
                             <p class="date">
                                 {{ seance.startsAt|localizeddate('full', 'none') }} -
@@ -161,6 +168,7 @@
                     {%- endif -%}
                 {%- endfor -%}
             </div>
+            {%- endif -%}
         {%- endif -%}
 
         {%- if conferences|length > 0 -%}
@@ -188,7 +196,7 @@
                     {%- if conference.programmationFilms|length > 0 -%}
                         {%- set film = conference.programmationFilms[0].film -%}
                         {%- set difference = date(conference.endsAt).diff(date(conference.startsAt)) -%}
-                        {%- set minutes = difference.i -%}
+                        {%- set minutes = difference.i + (difference.h * 60) -%}
                         <div class="event">
                             <p class="date">
                                 {{ conference.startsAt|localizeddate('full', 'none') }} -
@@ -276,7 +284,7 @@
                     {%- if relatedProjection.programmationFilms|length > 0 -%}
                         {%- set film = relatedProjection.programmationFilms[0].film -%}
                         {%- set difference = date(relatedProjection.endsAt).diff(date(relatedProjection.startsAt)) -%}
-                        {%- set minutes = difference.i -%}
+                        {%- set minutes = difference.i + (difference.h * 60) -%}
                         <div class="event">
                             <p class="date">
                                 {{ relatedProjection.startsAt|localizeddate('full', 'none') }} -
