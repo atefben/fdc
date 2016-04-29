@@ -148,7 +148,7 @@ $(document).ready(function () {
         }
 
         // init the events
-        initDraggable();
+        // initDraggable();
 
         // init the slider of movies
         var sliderFilms = $(".films").owlCarousel({
@@ -308,7 +308,8 @@ $(document).ready(function () {
             $(element).addClass('one-hour');
           }
 
-          var minutes = event.duration % 60,
+
+          var minutes = (event.duration % 60) < 10 ? '0'+(event.duration % 60) : (event.duration % 60),
               heures  = Math.floor(event.duration / 60);
 
           var dur = heures + 'H' + minutes;
@@ -515,7 +516,7 @@ $(document).ready(function () {
             $(element).addClass('one-hour');
           }
 
-          var minutes = event.duration % 60,
+          var minutes = (event.duration % 60) < 10 ? '0'+(event.duration % 60) : (event.duration % 60),
               heures  = Math.floor(event.duration / 60);
 
           var dur = heures + 'H' + minutes;
