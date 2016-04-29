@@ -25,7 +25,9 @@ file that was distributed with this source code.
                     {% endif %}
                 </a>
             {% else %}
-                {% thumbnail object, 'admin' with {'height': 90} %}
+                {% if object.context != 'pdf' %}
+                    {% thumbnail object, 'admin' with {'height': 90} %}
+                {% endif %}
             {% endif %}
         </div>
         <span class="badge pull-right">{{ object.providerName|trans({}, 'SonataMediaBundle') }}</span>
