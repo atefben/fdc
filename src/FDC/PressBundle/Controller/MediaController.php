@@ -137,7 +137,7 @@ class MediaController extends Controller
                 ->findBy(array(
                     'festival'         => $settings->getFestival()->getId(),
                     'selectionSection' => $mainSectionId,
-                ))
+                ), array('titleVO' => 'asc'))
             ;
             $i = 0;
 
