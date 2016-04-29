@@ -75,7 +75,6 @@ class PersonFunctionGenderExtension extends Twig_Extension
         );
         $gender = strtoupper($gender);
         if ($gender == 'MONSIEUR') {
-            dump(str_replace($default, $male, $profession));
             return str_replace($default, $male, $profession);
         } elseif ($gender == 'MADAME') {
             return str_replace($default, $female, $profession);
