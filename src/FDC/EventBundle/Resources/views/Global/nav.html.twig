@@ -41,18 +41,18 @@
                         </a>
                     {% endif %}
                     {% if menu['__children'] is defined and menu['__children']|length > 0  %}
-                    <ul class="tcenter">
-                        {% for child in menu['__children'] %}
-                            {% if child.enabled %}
-                                <li>
-                                    <a href="{{ path(child.route) }}"
-                                       class="{% if route == child.route %}active{% endif %}">
-                                        {{ child.transName|trans }}
-                                    </a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
+                        <ul class="tcenter">
+                            {% for child in menu['__children'] %}
+                                {% if child.enabled %}
+                                    <li>
+                                        <a href="{{ path(child.route) }}"
+                                           class="{% if route == child.route %}active{% endif %}">
+                                            {{ child.transName|trans }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
                     {% endif %}
                 </li>
             {% endif %}
@@ -67,8 +67,8 @@
                         <a href="{{ path(menu.route) }}" class="programmation">
                             <i class="icon icon_programmation"></i>{{ menu.transName|trans }}
                         </a>
+                        {% if menu['__children'] is defined and menu['__children']|length > 0  %}
                         <ul>
-                        {% if menu['__children'] is defined %}
                             {% for child in menu['__children'] %}
                                 {% if child.enabled %}
                                     <li>
@@ -78,8 +78,8 @@
                                     </li>
                                 {% endif %}
                             {% endfor %}
-                        {% endif %}
                         </ul>
+                        {% endif %}
                     </li>
                 {% elseif menu.route == 'fdc_event_participate_prepare' %}
                     {% if menu.enabled == true %}
@@ -87,16 +87,16 @@
                             <a href="{{ path(menu.route) }}" class="participate">
                                 <i class="icon icon_participer"></i>{{ menu.transName|trans }}
                             </a>
-                            {% if menu['__children'] is defined %}
-                                <ul>
-                                    {% for k,child in participateMenu %}
-                                        {% if k == 0 %}
-                                            <li><a href="{{ path('fdc_event_participate_prepare') }}"> {{ child.title|trans }}</a></li>
-                                        {% else %}
-                                            <li><a href="{{ path('fdc_event_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"> {{ child|trans_fallback('title') }}</a></li>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
+                            {% if menu['__children'] is defined and menu['__children']|length > 0  %}
+                            <ul>
+                                {% for k,child in participateMenu %}
+                                    {% if k == 0 %}
+                                        <li><a href="{{ path('fdc_event_participate_prepare') }}"> {{ child.title|trans }}</a></li>
+                                    {% else %}
+                                        <li><a href="{{ path('fdc_event_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"> {{ child|trans_fallback('title') }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
                             {% endif %}
                         </li>
                     {% endif %}
@@ -106,14 +106,14 @@
                             <a href="{{ path(menu.route) }}" class="press">
                                 <i class="icon icon_espace-presse"></i>{{ menu.transName|trans }}
                             </a>
-                            {% if menu['__children'] is defined %}
-                                <ul>
-                                    {% for child in menu['__children'] %}
-                                        {% if child.enabled %}
-                                            <li><a href="{{ path(child.route) }}"> {{ child.transName|trans }}</a></li>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
+                            {% if menu['__children'] is defined and menu['__children']|length > 0  %}
+                            <ul>
+                                {% for child in menu['__children'] %}
+                                    {% if child.enabled %}
+                                        <li><a href="{{ path(child.route) }}"> {{ child.transName|trans }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
                             {% endif %}
                         </li>
                     {% endif %}
