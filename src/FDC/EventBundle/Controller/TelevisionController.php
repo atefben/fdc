@@ -113,10 +113,15 @@ class TelevisionController extends Controller
                 if ($associatedMediaVideo->getAssociation()) {
                     $mediaVideo = $associatedMediaVideo->getAssociation();
                     if ($mediaVideo instanceof MediaVideo) {
-                        $isPublished = $mediaVideo->findTranslationByLocale('fr')->getStatus() == MediaVideoTranslation::STATUS_PUBLISHED;
-                        if ($locale !== 'fr') {
-                            $isPublished = $isPublished && $mediaVideo->findTranslationByLocale($locale)->getStatus() == MediaVideoTranslation::STATUS_TRANSLATED;
+                        $fr = $mediaVideo->findTranslationByLocale('fr');
+                        $translation  = $mediaVideo->findTranslationByLocale($locale);
+                        $isPublished = $fr && $fr->getStatus() == MediaVideoTranslation::STATUS_PUBLISHED;
+                        if ($isPublished && $locale !== 'fr') {
+                            $isPublished = $isPublished && $translation && $translation->getStatus() == MediaVideoTranslation::STATUS_TRANSLATED;
                         }
+                        $ready = MediaVideoTranslation::ENCODING_STATE_READY;
+                        $isPublished = $isPublished && $translation->getJobWebmState() === $ready && $translation->getJobMp4State() === $ready;
+                        
                         $isTrailer = $isPublished && $mediaVideo->getDisplayedTrailer();
                         $hasFilms = $isTrailer && $mediaVideo->getAssociatedFilms()->count();
                         $associatedFilms = $mediaVideo->getAssociatedFilms();

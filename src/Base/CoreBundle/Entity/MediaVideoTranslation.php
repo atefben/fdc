@@ -443,7 +443,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @return integer
      */
-    public function getJobMp4State()
+        public function getJobMp4State()
     {
         return $this->jobMp4State;
     }
