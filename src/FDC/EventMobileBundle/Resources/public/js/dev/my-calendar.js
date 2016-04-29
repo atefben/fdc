@@ -67,7 +67,8 @@ $(document).ready(function() {
 		    if (minutes == 0) {
 		      minutes = '';
 		    }
-		    if (dur < 2) {
+
+		    if (dur < 2 ) {
 		      $(this).addClass('one-hour');
 		      $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
 		    }

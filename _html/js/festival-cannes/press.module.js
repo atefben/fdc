@@ -139,16 +139,16 @@ $(document).ready(function () {
         $('.popin-event').remove();
         
         // display the html
-        if($('#calendar-programmation').length){
+        if($('#calendar-programmation').length) {
           $('#calendar-programmation').append(data);
         }
 
-        if($('#mycalendar').length){
+        if($('#mycalendar').length) {
           $('.popin').append(data);
         }
 
         // init the events
-        initDraggable();
+        // initDraggable();
 
         // init the slider of movies
         var sliderFilms = $(".films").owlCarousel({
@@ -189,9 +189,13 @@ $(document).ready(function () {
           });
         }
 
-        if($(".press .programmation").length > 0) {
+        if($('.press .programmation').length > 0) {
           $('html, body').animate({
-            scrollTop: $(".press .programmation").offset().top - 91
+            scrollTop: $('.press .programmation').offset().top - 91
+          }, 500);
+        } else if($('#mycalendar').length) {
+          $('html, body').animate({
+            scrollTop: $('#mycalendar').offset().top - 91
           }, 500);
         }
 
@@ -203,21 +207,55 @@ $(document).ready(function () {
     });
   }
 
-  $('.subnav, .subnav icon').hover(function () {
-    $('.button.list').addClass('show');
-  });
+  if(isiPad()) {
+    $('.export.subnav, .button.list.pdf, .button.list.ics').remove();
+  } else {
+    $('.button.list.pdf').remove();
+    $('.subnav, .subnav icon').hover(function () {
+      $('.button.list').addClass('show');
+    });
 
-  $('.buttons').mouseout(function () {
-    $('.button.list').removeClass('show');
-  });
+    $('.buttons').mouseout(function () {
+      $('.button.list').removeClass('show');
+    });
 
-  $('.button.list').mouseover(function () {
-    $('.button.list').addClass('show');
-  });
+    $('.button.list').mouseover(function () {
+      $('.button.list').addClass('show');
+    });
 
-  $('.subnav').on('click', function (e) {
-    e.preventDefault();
-  });
+    $('.subnav').on('click', function (e) {
+      e.preventDefault();
+    });
+
+    $('.button.list').on('click', function(e) {
+      if($(this).hasClass('ics')) {
+        var agenda_data = localStorage.getItem('agenda_press');
+
+        if (agenda == null) {
+          e.preventDefault();
+        } else {
+          agenda_data = JSON.parse(agenda_data);
+
+          var cal = ics();
+          for (var i = 0; i < agenda_data.length; i++) {
+            var d = new Date(agenda_data[i].start);
+            var m = (d.getUTCMonth() + 1) < 10 ? '0'+(d.getUTCMonth()+1) : (d.getUTCMonth()+1);
+            cal.addEvent(
+              agenda_data[i].title,
+              GLOBALS.urls.programmationUrl+'?data='+d.getUTCFullYear()+'-'+m+'-'+d.getUTCDate(),
+              agenda_data[i].room+' – Palais des festivals / Cannes',
+              agenda_data[i].start,
+              agenda_data[i].end
+            );
+          }
+          cal.download();
+
+
+        }
+      }
+    });
+  }
+
 
   if ($('#mycalendar').length) {
     var minDate = typeof GLOBALS.dateStart !== "undefined" ? GLOBALS.dateStart.slice(-2) : '11';
@@ -273,9 +311,13 @@ $(document).ready(function () {
           if (event.duration / 60 < 2) {
             $(element).addClass('one-hour');
           }
-          var dur = event.duration / 60 + 'H';
+
+
+          var minutes = (event.duration % 60) < 10 ? '0'+(event.duration % 60) : (event.duration % 60),
+              heures  = Math.floor(event.duration / 60);
+
+          var dur = heures + 'H' + minutes;
           var c = event.eventColor;
-          console.error(event);
           // $(element).css('width', 'auto');
           $(element).css('height', event.duration/60 < 1 ? '80px' : (event.duration/60)*80 + 'px' );
           $(element).empty();
@@ -390,7 +432,7 @@ $(document).ready(function () {
           type           : $ev.find('.category').text(),
           author         : $ev.find('.txt strong').text(),
           picture        : $ev.find('img').attr('src'),
-          duration       : parseInt($ev.find('.bottom .duration').text().substr(0, 2)) * 60,
+          duration       : $ev.data('duration'),
           room           : $ev.find('.bottom .ven').text(),
           selection      : $ev.find('.bottom .competition').text(),
           eventPictogram : $ev.data('picto').substr(1),
@@ -477,7 +519,11 @@ $(document).ready(function () {
           if (event.duration / 60 < 2) {
             $(element).addClass('one-hour');
           }
-          var dur = event.duration / 60 + 'H';
+
+          var minutes = (event.duration % 60) < 10 ? '0'+(event.duration % 60) : (event.duration % 60),
+              heures  = Math.floor(event.duration / 60);
+
+          var dur = heures + 'H' + minutes;
           var c = event.eventColor;
           $(element).css('height', event.duration/60 < 1 ? '80px' : (event.duration/60)*80 + 'px' );
           $(element).empty();
@@ -712,7 +758,7 @@ $(document).ready(function () {
               minutes = '';
             }
 
-            if (dur < 2) {
+            if (dur < 2 && $(this).data('popin') != true) {
               $(this).addClass('one-hour');
               $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
             }
@@ -733,7 +779,7 @@ $(document).ready(function () {
               type           : $(this).find('.category').text(),
               author         : $(this).find('.txt strong').text(),
               picture        : $(this).find('img').attr('src'),
-              duration       : parseInt($(this).find('.bottom .duration').text().substr(0, 2)) * 60,
+              duration       : $(this).data('duration'),
               room           : $(this).find('.bottom .ven').text(),
               selection      : $(this).find('.bottom .competition').text(),
               eventPictogram : $(this).data('picto').substr(1),
