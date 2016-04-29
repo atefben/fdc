@@ -3,6 +3,9 @@
 namespace FDC\EventBundle\Controller;
 
 use Base\CoreBundle\Entity\FDCPageLaSelection;
+use Base\CoreBundle\Entity\NewsArticle;
+use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Base\CoreBundle\Entity\NewsFilmFilmAssociated;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -59,6 +62,37 @@ class MovieController extends Controller
             ->getFilmsBySelectionSection($movie->getFestival()->getId(), $locale, $movie->getSelectionSection()->getId())
         ;
 
+        $articles = array();
+        foreach ($movie->getAssociatedNews() as $associatedNews) {
+            if ($associatedNews->getNews()) {
+                $article = $associatedNews->getNews();
+                if ($article->getPublishedAt() && $this->isPublished($article, $locale)) {
+                    $key = $article->getPublishedAt()->getTimestamp();
+                    $articles[$key] = $article;
+                }
+            }
+        }
+        foreach ($movie->getAssociatedInfo() as $associatedInfo) {
+            if ($associatedInfo->getInfo()) {
+                $article = $associatedInfo->getInfo();
+                if ($article->getPublishedAt() && $this->isPublished($article, $locale)) {
+                    $key = $article->getPublishedAt()->getTimestamp();
+                    $articles[$key] = $article;
+                }
+            }
+        }
+        foreach ($movie->getAssociatedStatement() as $associatedStatement) {
+            if ($associatedStatement->getStatement()) {
+                $article = $associatedStatement->getStatement();
+                if ($article->getPublishedAt() && $this->isPublished($article, $locale)) {
+                    $key = $article->getPublishedAt()->getTimestamp();
+                    $articles[$key] = $article;
+                }
+            }
+        }
+
+        krsort($articles);
+
         $prev = null;
         $next = null;
         foreach ($moviesAll as $key => $tmp) {
@@ -82,11 +116,29 @@ class MovieController extends Controller
         }
 
         return array(
-            'movies' => $movies,
-            'movie'  => $movie,
-            'prev'   => $prev,
-            'next'   => $next
+            'movies'   => $movies,
+            'movie'    => $movie,
+            'articles' => $articles,
+            'prev'     => $prev,
+            'next'     => $next
         );
+    }
+
+    protected function isPublished($article, $locale)
+    {
+        $translation = $article->findTranslationByLocale($locale);
+        if ($locale == 'fr') {
+            if ($translation->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED) {
+                return true;
+            }
+        } else {
+            $fr = $article->findTranslationByLocale($locale);
+            $published = NewsArticleTranslation::STATUS_PUBLISHED;
+            $translated = NewsArticleTranslation::STATUS_TRANSLATED;
+            if ($fr->getStatus() === $published && $translation->getStatus() === $translated) {
+                return true;
+            }
+        }
     }
 
     /**
