@@ -431,3 +431,7 @@
 .list-article .categorie-items article .infos-item-list p.film-title-translations a {
     color: #fff;
 }
+
+.cursor-default {
+    cursor: default !important;
+}
