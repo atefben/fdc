@@ -106,7 +106,7 @@
                                     </div>
                                     <div class="legend">
                                         <span class="name">{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}</span>
-                                        {% set profession =  member['jury'].person|trans_fallback('profession') %}
+                                        {% set profession =  member['jury'].person|profession_gender('profession') %}
                                         {% if profession %}
                                             <span class="rank" {{ member['jury'].person|content_lang('profession') }}>
                                                 {{ profession }}
