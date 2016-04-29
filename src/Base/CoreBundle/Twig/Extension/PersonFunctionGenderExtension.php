@@ -88,7 +88,10 @@ class PersonFunctionGenderExtension extends Twig_Extension
     {
         $translated = $this->transFallbackFilter($person, 'profession');
         $fr = $person->findTranslationByLocale('fr');
-        return $this->professionReplace($translated, $fr->getGender());
+        if ($fr) {
+            return $this->professionReplace($translated, $fr->getGender());
+        }
+        return $translated;
     }
 
     public function transFallbackFilter($object, $property)
