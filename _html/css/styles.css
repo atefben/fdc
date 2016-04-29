@@ -16059,6 +16059,7 @@ input[type=submit] {
   display: inline-block;
   text-align: center;
   margin-top: 59px;
+  vertical-align: top;
 }
 .participate .contain-participate section .contain-map .map {
   margin-bottom: 40px;
