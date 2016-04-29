@@ -163,8 +163,14 @@
                 {%- endfor -%}
             </div>
         {%- endif -%}
-
-        {%- if conferences|length > 0 -%}
+        {%- if conferences|length > 0  -%}
+            {% set display = false %}
+            {%- for conference in conferences -%}
+                {%- if conference.programmationFilms|length > 0 -%}
+                    {% set display = true %}
+                {%- endif -%}
+            {%- endfor -%}
+            {%- if display == true -%}
             <h2>Conférences de presse</h2>
             <div class="events-wrapper">
                 {%- for conference in conferences -%}
@@ -250,6 +256,7 @@
                     {%- endif -%}
                 {%- endfor -%}
             </div>
+            {%- endif -%}
         {%- endif -%}
 
         {%- if relatedProjections|length > 0 -%}
