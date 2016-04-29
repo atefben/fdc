@@ -13286,6 +13286,9 @@ input[type=submit] {
   text-decoration: underline;
   color: #c8a461;
 }
+.categorie-items .contain-article-invit .pres-honneur strong {
+  font-weight: bold;
+}
 .categorie-items .contain-article-invit .small-pres {
   width: 632px;
   margin: 0 auto;
@@ -13294,10 +13297,12 @@ input[type=submit] {
   line-height: 26px;
 }
 .categorie-items .contain-article-invit .small-pres p {
+  color: #999;
   padding: 16px 0px;
 }
 .categorie-items .contain-article-invit .small-pres p strong {
-  color: #c8a461;
+  color: #999;
+  font-weight: bold;
 }
 .categorie-items .contain-article-invit .small-pres h3 {
   color: #cccccc;
