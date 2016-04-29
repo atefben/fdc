@@ -89,7 +89,7 @@
         </div>
     </div>
 {%- elseif event.programmationDynamics|length > 0 -%}
-    <div class="fc-event" data-category=""{{- ' ' -}}
+    <div class="fc-event cursor-default" data-category=""{{- ' ' -}}
          data-type="{{ event.type|lower|replace(' ', '-') }}"{{- ' ' -}}
          data-id="{{ event.id }}" data-picto=".pen" data-color="{{ dataColor }}"{{- ' ' -}}
          data-start="{{ event.startsAt|date('Y-m-d') }}T{{ event.startsAt|date('H:i:s') }}"{{- ' ' -}}

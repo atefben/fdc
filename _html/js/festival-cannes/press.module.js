@@ -619,8 +619,11 @@ $(document).ready(function () {
       if ($('#calendar-programmation').length) {
         $('#calendar-programmation .calendar').on('click', '.fc-event', function (e) {
           var url = $(this).data('url');
-          // load the url of the event via ajax
-          openPopinEvent(url);
+
+          if (typeof url !== 'undefined') {
+            // load the url of the event via ajax
+            openPopinEvent(url);
+          }
         });
 
         // delete event

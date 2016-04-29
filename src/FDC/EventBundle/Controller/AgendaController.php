@@ -181,7 +181,10 @@ class AgendaController extends Controller
             $seances = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FilmProjection')
-                ->findByType('Séance de presse')
+                ->findBy(
+                    array('type' => 'Séance de presse'),
+                    array('startsAt' => 'ASC')
+                )
             ;
 
             // remove seances not matching current films
@@ -197,7 +200,10 @@ class AgendaController extends Controller
             $conferences = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FilmProjection')
-                ->findByType('Conférence de presse')
+                ->findBy(
+                    array('type' => 'Séance de presse'),
+                    array('startsAt' => 'ASC')
+                )
             ;
 
             // remove conference not matching current films
