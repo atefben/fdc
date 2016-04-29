@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <?php include('head.html'); ?>
   </head>
-
   <body>
     <?php include('header-press.html'); ?>
-
     <div id="main" class="press loading fullcalendar">
       <div class="header-press">
         <div class="head">
@@ -18,10 +15,8 @@
           <div class="buttons">
             <a href="#" class="button create"><i class="icon icon_creer"></i>Créer un évènement</a>
             <a href="#" class="button export subnav"><i class="icon icon_telecharger"></i>Exporter mon agenda</a>
-            <a href="#" class="button list"><i class="icon icon_telecharger"></i>
-Télécharger au format .pdf</a>
-            <a href="#" class="button list"><i class="icon icon_telecharger"></i>
-Télécharger au format .ics</a>
+            <a href="#" class="button list pdf"><i class="icon icon_telecharger"></i>Télécharger au format .pdf</a>
+            <a href="#" class="button list ics"><i class="icon icon_telecharger"></i>Télécharger au format .ics</a>
           </div>
         </div>
       </div>
