@@ -52,7 +52,7 @@
                         <p class="sub">{{ 'movie.presse.label.plusdinformations'|trans }}</p>
                         <a href="{{ path('fdc_press_news_home') }}"
                            class="button">{{ 'movie.presse.btn.espacepresse'|trans }}</a>
-                        <a href="{{ path('fdc_press_agenda_scheduling') }}"
+                        <a href="{{ path('fdc_press_agenda_scheduling') }}{{ nextProjectionDate ? '?date=' ~ nextProjectionDate : '' }}"
                            class="button">{{ 'movie.presse.btn.voirlaprogrammation'|trans }}</a>
                     </div>
                 </div>
