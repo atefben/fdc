@@ -658,6 +658,9 @@ abstract class CoreManager
     {
         // loop 3 times because results are returned that way
         foreach ($objects as $types) {
+            if (is_int($types)) {
+                $types = $this->mixedToArray($types);
+            }
             foreach ($types as $ids) {
                 // make sure we have an array even when one single result is returned
                 $ids = $this->mixedToArray($ids);
