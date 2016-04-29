@@ -139,11 +139,11 @@ $(document).ready(function () {
         $('.popin-event').remove();
         
         // display the html
-        if($('#calendar-programmation').length){
+        if($('#calendar-programmation').length) {
           $('#calendar-programmation').append(data);
         }
 
-        if($('#mycalendar').length){
+        if($('#mycalendar').length) {
           $('.popin').append(data);
         }
 
@@ -189,9 +189,13 @@ $(document).ready(function () {
           });
         }
 
-        if($(".press .programmation").length > 0) {
+        if($('.press .programmation').length > 0) {
           $('html, body').animate({
-            scrollTop: $(".press .programmation").offset().top - 91
+            scrollTop: $('.press .programmation').offset().top - 91
+          }, 500);
+        } else if($('#mycalendar').length) {
+          $('html, body').animate({
+            scrollTop: $('#mycalendar').offset().top - 91
           }, 500);
         }
 
