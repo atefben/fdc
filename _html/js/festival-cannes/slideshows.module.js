@@ -326,10 +326,11 @@ $('body').on('mousemove', '.chocolat-content', function(e) {
 
 
 function updatePhotoShare(pid, title) {
+  console.log(title);
   var pid      = pid || 0,
       title    = title || "",
       t0       = title.split('<h2>') || "",
-      t1       = t0[1].split('</h2>') || "",
+      t1       = typeof t0[1] !== 'undefined' ? t0[1].split('</h2>') : "",
       shareUrl = GLOBALS.urls.photosUrl+'#pid='+pid;
 
   $('.chocolat-bottom .img-slideshow-share .button.facebook').off('click');

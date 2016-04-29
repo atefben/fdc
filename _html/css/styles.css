@@ -16308,8 +16308,6 @@ input[type=submit] {
 }
 .partners .content-partners .contain-section .item-partners .contain-img img {
   padding: 65px;
-  margin: 0 auto;
-  display: block;
 }
 .partners .content-partners .contain-section .item-partners .text-partners {
   width: 571px;
@@ -18402,7 +18400,7 @@ input[type=submit] {
   color: #c8a461;
 }
 .popin-event .film p span {
-  color: #ccc;
+  color: #adadad;
   margin-right: 10px;
 }
 .popin-event .film p .nom-item {
