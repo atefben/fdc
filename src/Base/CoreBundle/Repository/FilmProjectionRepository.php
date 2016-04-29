@@ -20,6 +20,7 @@ class FilmProjectionRepository extends EntityRepository
             ->join('p.programmationFilms', 'pf')
             ->where('p.festival = :festival')
             ->andWhere('p.type NOT IN (:types)')
+            ->orderBy('p.startsAt', 'ASC')
             ->setParameter('festival', $festival)
             ->setParameter('types', $types)
             ->getQuery()
