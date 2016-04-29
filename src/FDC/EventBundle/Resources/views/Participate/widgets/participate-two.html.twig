@@ -8,7 +8,7 @@
                 {% set trans = widget.image.findTranslationByLocale('fr') %}
             {% endif %}
             {% set image = trans.file %}
-            <img src="{% path image, '270x165' %}" width="270" alt="{{ widget.image|trans_fallback('alt') }}" />
+            <img src="{% path image, '270x165' %}" {% if image.width > image.height %}width="200"{% elseif image.width == image.height %}width="135" height="135"{% else %}height="135"{% endif %} alt="{{ widget.image|trans_fallback('alt') }}" />
         {% endif %}
     </div>
     <div class="text-partners">

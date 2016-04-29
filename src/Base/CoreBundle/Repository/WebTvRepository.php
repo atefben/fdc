@@ -187,6 +187,7 @@ class WebTvRepository extends TranslationRepository
 
         $this->addTranslationQueries($qb, 'wtt', $locale);
         $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
             ->setMaxResults((int)$limit)
