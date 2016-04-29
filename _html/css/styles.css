@@ -18265,7 +18265,9 @@ input[type=submit] {
 }
 .popin-event .films .owl-item img {
   margin: 0 auto;
-  width: auto;
+  width: 222px;
+  height: 300px;
+  object-fit: cover;
 }
 .popin-event .films .owl-item .film .content {
   opacity: 0;

@@ -158,7 +158,6 @@
     }
 
     .info {
-		
       img {
         float: left;
         margin: 10px;
@@ -1855,11 +1854,13 @@
     box-sizing: border-box;
     float: left;
     width: 325px;
-	
-	.owl-item img {
-		margin: 0 auto;
-		width: auto;
-	}
+  
+    .owl-item img {
+      margin: 0 auto;
+      width: 222px;
+      height: 300px;
+      object-fit: cover;
+    }
 
     .owl-item .film .content {
       opacity: 0;
@@ -2012,7 +2013,7 @@
         color: #ccc;
         margin-right: 10px;
       }
-	  
+    
       .nom-item {
         color: $gold;
       }
