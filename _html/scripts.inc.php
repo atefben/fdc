@@ -11,6 +11,7 @@ var GLOBALS = {
   },
   "baseUrl" : "http://html.festival-cannes-2016.com.ohwee.fr",
   "urls" : {
+    "programmationUrl" : "programmation.php",
     "calendarProgrammationUrl" : "calendarprogrammation.html",
     "eventUrl" : "load-evenements.php",
     "newsUrl" : "news.html",
@@ -96,6 +97,8 @@ var GLOBALS = {
 <script src="js/bower_components/infinite-scroll/jquery.infinitescroll.min.js"></script>
 <script src="js/bower_components/canvasloader/js/heartcode-canvasloader-min.js"></script>
 <script src="js/components/snap.svg.easing.js"></script>
+<script src="js/components/FileSaver.min.js"></script>
+<script src="js/components/ics.min.js"></script>
 <script src="js/components/fullscreenjs.js"></script>
 <script src="js/components/object-fit-polyfill.js"></script>
 <script src="js/components/jwplayer.js"></script>

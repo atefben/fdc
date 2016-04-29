@@ -3,6 +3,7 @@
 namespace FDC\EventBundle\Controller;
 
 use Base\CoreBundle\Entity\FDCPageLaSelection;
+use Base\CoreBundle\Entity\FilmProjectionProgrammationFilm;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsFilmFilmAssociated;
@@ -115,12 +116,31 @@ class MovieController extends Controller
             }
         }
 
+        $now = new \DateTime();
+        $projections = array();
+        foreach ($movie->getProjectionProgrammationFilms() as $projectionProgrammationFilm) {
+            if ($projectionProgrammationFilm instanceof FilmProjectionProgrammationFilm && $projectionProgrammationFilm->getProjection()) {
+                $projection = $projectionProgrammationFilm->getProjection();
+                if ($projection->getStartsAt() && $projection->getStartsAt() > $now) {
+                    $projections[$projection->getStartsAt()->getTimestamp()] = $projection->getStartsAt()->format('Y-m-d');
+                }
+            }
+        }
+        ksort($projections);
+        $nextProjectionDate = '';
+        if ($projections) {
+            $projections = array_values($projections);
+            $nextProjectionDate = $projections[0];
+        }
+
+
         return array(
             'movies'   => $movies,
             'movie'    => $movie,
             'articles' => $articles,
             'prev'     => $prev,
-            'next'     => $next
+            'next'     => $next,
+            'nextProjectionDate' => $nextProjectionDate,
         );
     }
 

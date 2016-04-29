@@ -28,38 +28,67 @@ class PersonFunctionGenderExtension extends Twig_Extension
     {
         return array(
             new \Twig_SimpleFilter('person_function_gender', array($this, 'getPersonFunctionGender')),
+            new \Twig_SimpleFilter('profession_gender', array($this, 'getProfessionGender')),
         );
     }
 
     /**
      * @param FilmPerson $person
+     * @param $function
+     * @param $property
+     * @return string
      */
     public function getPersonFunctionGender(FilmPerson $person, $function, $property)
     {
-        $functionName = $this->transFallbackFilter($function, $property);
+        $translated = $this->transFallbackFilter($function, $property);
         $transFr = $person->findTranslationByLocale('fr');
 
         if ($transFr) {
-            // find a (
-            if (strpos($functionName,'(') !== false) {
-                $explode = explode('/', $this->transFallbackFilter($function, $property));
-                // try to explode the function name
-                if (count($explode) == 2) {
-                    // explode on (
-                    $explodeGender = explode('(', $explode[0]);
-                    // if explode works
-                    if (count($explodeGender) == 2) {
-                        if ($transFr->getGender() == 'Monsieur') {
-                            return $explodeGender[0] . $explodeGender[1];
-                        } else if ($transFr->getGender() == 'Madame') {
-                            return $explodeGender[0] . substr($explode[1], 0, -1);
-                        }
-                    }
-                }
-            }
+            return $this->professionReplace($translated, $transFr->getGender());
         }
 
-        return $functionName;
+        return $translated;
+    }
+
+    protected function professionReplace($profession, $gender)
+    {
+        $default = array(
+            '(e)',
+            '(ne)',
+            '(teur/trice)',
+            '(eur/euse)',
+            '(er/ière)',
+        );
+        $male = array(
+            '',
+            '',
+            'teur',
+            'eur',
+            'er',
+        );
+        $female = array(
+            '',
+            'ne',
+            'trice',
+            'euse',
+            'ière',
+        );
+        $gender = strtoupper($gender);
+        if ($gender == 'MONSIEUR') {
+            dump(str_replace($default, $male, $profession));
+            return str_replace($default, $male, $profession);
+        } elseif ($gender == 'MADAME') {
+            return str_replace($default, $female, $profession);
+        } else {
+            return $profession;
+        }
+    }
+
+    public function getProfessionGender(FilmPerson $person, $locale)
+    {
+        $translated = $this->transFallbackFilter($person, 'profession');
+        $fr = $person->findTranslationByLocale('fr');
+        return $this->professionReplace($translated, $fr->getGender());
     }
 
     public function transFallbackFilter($object, $property)

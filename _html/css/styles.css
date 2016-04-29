@@ -16993,7 +16993,8 @@ input[type=submit] {
   line-height: 40px;
   margin-bottom: 0;
 }
-.press #calendar #mycalendar .fc-toolbar .fc-left, .press #calendar #mycalendar .fc-toolbar .fc-right {
+.press #calendar #mycalendar .fc-toolbar .fc-left,
+.press #calendar #mycalendar .fc-toolbar .fc-right {
   height: 100%;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -17036,7 +17037,9 @@ input[type=submit] {
 .press #calendar #mycalendar.side .fc-time-grid-container {
   height: 468px !important;
 }
-.press #calendar #mycalendar.side .fc-head, .press #calendar #mycalendar.side .fc-day-grid, .press #calendar #mycalendar.side .fc-widget-header {
+.press #calendar #mycalendar.side .fc-head,
+.press #calendar #mycalendar.side .fc-day-grid,
+.press #calendar #mycalendar.side .fc-widget-header {
   display: none;
 }
 .press #calendar #mycalendar.fc-unthemed .fc-divider, .press #calendar #mycalendar.fc-unthemed .fc-popover, .press #calendar #mycalendar.fc-unthemed .fc-row, .press #calendar #mycalendar.fc-unthemed tbody, .press #calendar #mycalendar.fc-unthemed td, .press #calendar #mycalendar.fc-unthemed th, .press #calendar #mycalendar.fc-unthemed thead {
@@ -18129,34 +18132,32 @@ input[type=submit] {
 .fullcalendar #calendar #mycalendar .fc-slats tr {
   height: 40px;
 }
-.fullcalendar .container .buttons .button:first-child {
-  border-right: 0px solid #fff;
-}
 .fullcalendar .container .buttons .create {
   color: #c8a461;
-}
-.fullcalendar .container .buttons .create .icon {
-  margin-right: 10px;
-  font-size: 0.8rem;
-  vertical-align: middle !important;
 }
 .fullcalendar .container .buttons .create:hover {
   background-color: #c8a461;
   border-color: #c8a461;
   color: #fff;
 }
-.fullcalendar .container .buttons .export {
-  color: #c8a461;
-}
-.fullcalendar .container .buttons .export .icon {
+.fullcalendar .container .buttons .create .icon {
   margin-right: 10px;
   font-size: 0.8rem;
   vertical-align: middle !important;
+}
+.fullcalendar .container .buttons .export {
+  color: #c8a461;
+  border-left: 0px solid #fff;
 }
 .fullcalendar .container .buttons .export:hover {
   background-color: #c8a461;
   border-color: #c8a461;
   color: #fff;
+}
+.fullcalendar .container .buttons .export .icon {
+  margin-right: 10px;
+  font-size: 0.8rem;
+  vertical-align: middle !important;
 }
 
 .popin-event {
@@ -18399,7 +18400,7 @@ input[type=submit] {
   color: #c8a461;
 }
 .popin-event .film p span {
-  color: #ccc;
+  color: #adadad;
   margin-right: 10px;
 }
 .popin-event .film p .nom-item {
