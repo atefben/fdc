@@ -206,6 +206,7 @@ $(document).ready(function () {
   if(isiPad()) {
     $('.export.subnav, .button.list.pdf, .button.list.ics').remove();
   } else {
+    $('.button.list.pdf').remove();
     $('.subnav, .subnav icon').hover(function () {
       $('.button.list').addClass('show');
     });
