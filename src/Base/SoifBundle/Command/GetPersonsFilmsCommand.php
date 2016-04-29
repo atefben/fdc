@@ -28,6 +28,7 @@ class GetPersonsFilmsCommand extends ContainerAwareCommand
         $this
             ->setName('base:soif:get_persons_films')
             ->setDescription('Get the person using the soif id')
+            ->addOption('id', null, InputOption::VALUE_OPTIONAL)
             ->addOption('all', null, InputOption::VALUE_NONE)
         ;
     }
@@ -46,22 +47,33 @@ class GetPersonsFilmsCommand extends ContainerAwareCommand
         $personManager = $this->getContainer()->get('base.soif.person_manager');
 
         $all = $input->getOption('all');
+        $id = $input->getOption('id');
 
-        $qb = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FilmPerson')
-            ->createQueryBuilder('s')
-        ;
-        if (!$all) {
-            $dateTime = new DateTime();
-            $dateTime->setTime(0, 0, 0);
-            $qb
-                ->andWhere('s.soifUpdatedAt > :dateTime')
-                ->setParameter('dateTime', $dateTime)
+        if ($id) {
+            $persons = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmPerson')
+                ->findBy(array('id' => $id))
             ;
-
         }
-        $persons = $qb->getQuery()->getResult();
+        else {
+            $qb = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmPerson')
+                ->createQueryBuilder('s')
+            ;
+            if (!$all) {
+                $dateTime = new DateTime();
+                $dateTime->setTime(0, 0, 0);
+                $qb
+                    ->andWhere('s.soifUpdatedAt > :dateTime')
+                    ->setParameter('dateTime', $dateTime)
+                ;
+
+            }
+            $persons = $qb->getQuery()->getResult();
+        }
+
         $films = array();
         foreach ($persons as $person) {
             $personManager->getById($person->getId());
