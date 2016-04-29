@@ -712,7 +712,7 @@ $(document).ready(function () {
               minutes = '';
             }
 
-            if (dur < 2) {
+            if (dur < 2 && $(this).data('popin') != true) {
               $(this).addClass('one-hour');
               $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
             }

@@ -31,6 +31,10 @@
     width: 977px;
 }
 
+.popin-event .fc-event{
+    height: 160px !important;
+}
+
 #captionJuryCopyright {
     left: 10px;
     position: absolute;
@@ -415,8 +419,8 @@
     color: black;
     font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
     font-size: .813rem;
-    padding: 5px 0 5px 10px;
-    border-bottom: 1px solid #e5e5e5;
+    padding-top: 5px;
+    padding-left: 10px;
 }
 
 .press .fc-event .info .txt-padding {
