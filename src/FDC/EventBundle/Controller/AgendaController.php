@@ -90,7 +90,10 @@ class AgendaController extends Controller
 
         $schedulingDays = $this->createDateRangeArrayEvent($festivalStart->format('Y-m-d'), $festivalEnd->format('Y-m-d'), false);
 
+        $pressProjection = $this->getDoctrineManager()->getRepository('BaseCoreBundle:PressProjection')->findOneById($this->getParameter('admin_press_projection_id'));
+
         return array(
+            'pressProjection' => $pressProjection,
             'schedulingDays' => $schedulingDays,
             'rooms' => $rooms,
             'projections' => $projections,
