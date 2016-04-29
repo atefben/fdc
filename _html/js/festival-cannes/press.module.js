@@ -64,6 +64,10 @@ $(document).ready(function () {
 
   var count = 0;
 
+  if(('#timeline').length > 0) {
+    updateFilterCalendar();
+  }
+
   $('#timeline .arrow').on('click', function (e) {
     e.preventDefault();
     $('#timeline .arrow').removeClass('hide');
@@ -158,11 +162,11 @@ $(document).ready(function () {
           autoWidth: true,
           mouseDrag: false,
           onInitialized: function () {
-        if($('.films .owl-item').length > 1) {
-          $('<span class="pagination"><strong>1</strong>/' + $('.films .owl-item').length + '</span>').insertAfter($('.films .owl-prev'));
-        } else {
-        $('.owl-controls').hide();
-        }
+            if($('.films .owl-item').length > 1) {
+              $('<span class="pagination"><strong>1</strong>/' + $('.films .owl-item').length + '</span>').insertAfter($('.films .owl-prev'));
+            } else {
+              $('.owl-controls').hide();
+            }
           },
           onTranslated: function () {
             var i = parseInt($('.films .center').index()) + 1;
@@ -173,8 +177,8 @@ $(document).ready(function () {
         // test if events are already store in local storage
         if (events.length != 0) {
           $('.events-container .fc-event').each(function () {
-            var id = $(this).data('id'),
-              $this = $(this);
+            var id    = $(this).data('id'),
+                $this = $(this);
 
             for (var i = 0; i < events.length; i++) {
               if (id == events[i].id) {
@@ -782,37 +786,10 @@ $(document).ready(function () {
             success: function (data) {
               $('.v-wrapper').html(data);
               initDraggable();
+              updateFilterCalendar();
             }
           });
           var date = $.fullCalendar.moment($(this).data('date'));
-      
-          jQuery('#type .select span').each (function() {
-          var filterselect = jQuery(this).attr('data-filter');
-          if(filterselect == 'all') {
-            jQuery(this).addClass('active');
-          } else {
-            jQuery(this).removeClass('active');
-          }
-           if(jQuery('.v-container [data-type="' + filterselect + '"]').length > 0 || filterselect == 'all') {
-              jQuery(this).attr('style', '');
-            } else {
-            jQuery(this).attr('style', 'display:none;');
-           }
-          });
-          
-          jQuery('#category .select span').each (function() {
-          var filterselect = jQuery(this).attr('data-filter');
-          if(filterselect == 'all') {
-            jQuery(this).addClass('active');
-          } else {
-            jQuery(this).removeClass('active');
-          }
-           if(jQuery('.v-container [data-category="' + filterselect + '"]').length > 0 || filterselect == 'all') {
-              jQuery(this).attr('style', '');
-            } else {
-            jQuery(this).attr('style', 'display:none;');
-           }
-          });
 
           $('#dateProgram').text(date.format('DD MMMM YYYY'));
           $('#mycalendar').fullCalendar('gotoDate', date);
@@ -1307,12 +1284,12 @@ $(document).ready(function () {
   }
 
   //Mediatheque nav
-  if ($('.press-media').length) {
+  if($('.press-media').length) {
     menuMedia();
     initSlideshows();
   }
 
-  if ($('.downloading-press').length) {
+  if($('.downloading-press').length) {
     initSlideshows();
   }
 
@@ -1563,6 +1540,36 @@ $(document).ready(function () {
     });
   }
 
+  function updateFilterCalendar() {
+    $('#type .select span').each (function() {
+      var filterselect = $(this).attr('data-filter');
+      if(filterselect == 'all') {
+        $(this).addClass('active');
+      } else {
+        $(this).removeClass('active');
+      }
+      if($('.v-container [data-type="' + filterselect + '"]').length > 0 || filterselect == 'all') {
+        $(this).attr('style', '');
+      } else {
+        $(this).attr('style', 'display:none;');
+      }
+    });
+    
+    $('#category .select span').each (function() {
+      var filterselect = $(this).attr('data-filter');
+      if(filterselect == 'all') {
+        $(this).addClass('active');
+      } else {
+        $(this).removeClass('active');
+      }
+      if($('.v-container [data-category="' + filterselect + '"]').length > 0 || filterselect == 'all') {
+        $(this).attr('style', '');
+      } else {
+        $(this).attr('style', 'display:none;');
+      }
+    });
+  }
+
   $(document).on('click','.section-cat', function(event){
     var sectionCat = $(this).data('cat');
     $.ajax({
@@ -1577,5 +1584,4 @@ $(document).ready(function () {
       }
     });
   });
-
 });
