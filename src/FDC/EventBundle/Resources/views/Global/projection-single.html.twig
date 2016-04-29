@@ -1,11 +1,12 @@
 {%- spaceless -%}
-{%- trans_default_domain 'FDCEventBundle' -%}
+{#{%- trans_default_domain 'FDCEventBundle' -%}#}
 
 <div class="popin-event">
     <div class="films">
         {%- if projection.programmationFilms|length > 0 -%}
             {%- for programmationFilm in projection.programmationFilms -%}
                 {%- set film = programmationFilm.film -%}
+                {#{%- set room = programmationFilm.room -%}#}
                 <div class="film">
                     {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                         film: film,
@@ -101,7 +102,7 @@
                     {%- if seance.programmationFilms|length > 0 -%}
                         {%- set film = seance.programmationFilms[0].film -%}
                         {%- set difference = date(seance.endsAt).diff(date(seance.startsAt)) -%}
-                        {%- set minutes = difference.i -%}
+                        {%- set minutes = difference.i + (difference.h * 60) -%}
                         <div class="event">
                             <p class="date">
                                 {{ seance.startsAt|localizeddate('full', 'none') }} -
@@ -163,8 +164,14 @@
                 {%- endfor -%}
             </div>
         {%- endif -%}
-
-        {%- if conferences|length > 0 -%}
+        {%- if conferences|length > 0  -%}
+            {% set display = false %}
+            {%- for conference in conferences -%}
+                {%- if conference.programmationFilms|length > 0 -%}
+                    {% set display = true %}
+                {%- endif -%}
+            {%- endfor -%}
+            {%- if display == true -%}
             <h2>Conférences de presse</h2>
             <div class="events-wrapper">
                 {%- for conference in conferences -%}
@@ -189,7 +196,7 @@
                     {%- if conference.programmationFilms|length > 0 -%}
                         {%- set film = conference.programmationFilms[0].film -%}
                         {%- set difference = date(conference.endsAt).diff(date(conference.startsAt)) -%}
-                        {%- set minutes = difference.i -%}
+                        {%- set minutes = difference.i + (difference.h * 60) -%}
                         <div class="event">
                             <p class="date">
                                 {{ conference.startsAt|localizeddate('full', 'none') }} -
@@ -250,6 +257,7 @@
                     {%- endif -%}
                 {%- endfor -%}
             </div>
+            {%- endif -%}
         {%- endif -%}
 
         {%- if relatedProjections|length > 0 -%}
@@ -277,7 +285,7 @@
                     {%- if relatedProjection.programmationFilms|length > 0 -%}
                         {%- set film = relatedProjection.programmationFilms[0].film -%}
                         {%- set difference = date(relatedProjection.endsAt).diff(date(relatedProjection.startsAt)) -%}
-                        {%- set minutes = difference.i -%}
+                        {%- set minutes = difference.i + (difference.h * 60) -%}
                         <div class="event">
                             <p class="date">
                                 {{ relatedProjection.startsAt|localizeddate('full', 'none') }} -

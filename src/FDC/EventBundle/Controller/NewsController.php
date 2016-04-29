@@ -425,6 +425,21 @@ class NewsController extends Controller
 
             }
         }
+        $tempProjections = array();
+        $now = new DateTime();
+        if ($programmations) {
+            foreach ($programmations as $item) {
+                if ($item->getStartsAt() && $item->getStartsAt() > $now) {
+                    $tempProjections[$item->getStartsAt()->getTimestamp()] = $item->getStartsAt()->format('Y-m-d');
+                }
+            }
+        }
+        $nextProjectionDate = '';
+        if ($tempProjections) {
+            ksort($tempProjections);
+            $tempProjections = array_values($tempProjections);
+            $nextProjectionDate = $tempProjections[0];
+        }
 
         //get focus articles
         $associatedNews = $news->getAssociatedNews();
@@ -462,7 +477,8 @@ class NewsController extends Controller
             'prev' => $prevArticlesURL,
             'next' => $nextArticlesURL,
             'associatedFilm' => $associatedFilm,
-            'sameDayArticles' => $sameDayArticles
+            'sameDayArticles' => $sameDayArticles,
+            'nextProjectionDate' => $nextProjectionDate,
         );
     }
 

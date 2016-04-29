@@ -27,198 +27,204 @@
         {% include 'FDCPressBundle:Agenda:components/calendar.html.twig' %}
 
         {% for section in pressHome.section %}
-            {% if section.class == "communique" %}
-                {% if pressHome.sectionStatementInfoDisplay == false %}
-                    <div class="communiques">
-                        <div class="chap">
-                            <h3 class="title-press">{{ 'press.agenda.title.communiqueetinfos'|trans }}</h3>
-                            <p class="link">
-                                <a href="{{ path('fdc_press_news_list') }}">
-                                    <i class="icon icon_fleche-right"></i>
-                                    {{ 'press.home.btn.touslescommuniquesetinfos'|trans }}
-                                </a>
-                            </p>
-                        </div>
-                        <div class="grid-container">
-                            <div class="grid-wrapper">
-                                {% for article in homeNews %}
-                                    {% include 'FDCPressBundle:News:widgets/article.html.twig' %}
-                                {% endfor %}
-                            </div>
-                        </div>
+        {% if section.class == "communique" %}
+        {% if pressHome.sectionStatementInfoDisplay == false %}
+            <div class="communiques">
+                <div class="chap">
+                    <h3 class="title-press">{{ 'press.agenda.title.communiqueetinfos'|trans }}</h3>
+                    <p class="link">
+                        <a href="{{ path('fdc_press_news_list') }}">
+                            <i class="icon icon_fleche-right"></i>
+                            {{ 'press.home.btn.touslescommuniquesetinfos'|trans }}
+                        </a>
+                    </p>
+                </div>
+                <div class="grid-container">
+                    <div class="grid-wrapper">
+                        {% for article in homeNews %}
+                            {% include 'FDCPressBundle:News:widgets/article.html.twig' %}
+                        {% endfor %}
                     </div>
-                {% endif %}
-            {% elseif section.class == "programmation" %}
-                {% if pressHome.sectionSchedulingDisplay == false %}
-                    <div class="programmation">
-                        <div class="chap">
-                            <h3 class="title-press">
-                                {{ 'press.home.title.programmedu'|trans }}
-                                <span id="dateProgram">{{ schedulingDays[0]|localizeddate('long', 'none', app.request.locale)  }}</span>
-                            </h3>
-                            <p class="link">
-                                <a href="{{ path('fdc_press_agenda_scheduling') }}">
-                                    <i class="icon icon_fleche-right"></i>
-                                    {{ 'press.home.btn.toutelaprogrammation'|trans }}
-                                </a>
-                            </p>
-                        </div>
-                        <div id="calendar-programmation">
-                            <div id="timeline">
-                                {% set festivalStarted = 0 %}
-                                {% for key, day in schedulingDays %}
-                                    <a href="#" class="{% if day|date('Ymd') == "now"|date('Ymd') %}{% set festivalStarted = 1 %}active
-                                {% elseif festivalStarted == 0 and key == 0 %}active{% endif %}" data-date="{{ day|date('Ymd') }}">
-                                        {{ day|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
-                                        <span class="day">{{ day|date('d') }}</span>
-                                    </a>
-                                {% endfor %}
-                            </div>
-                            <div class="calendar">
-                                <div class="timeCol">
-                                    <div class="empty"></div>
-                                    {% for hour in hourRange %}
-                                    <div class="time">{{ hour }}H</div>
-                                    {% endfor %}
-                                </div>
-                                <div class="venues">
-                                    <a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
-                                    <a href="#" class="nav next"><i class="icon icon_fleche-right"></i></a>
-                                    <div class="v-wrapper">
-                                        {% include 'FDCPressBundle:Agenda:components/grid.html.twig' %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+        {% endif %}
+    {% elseif section.class == "programmation" %}
+        {% if pressHome.sectionSchedulingDisplay == false %}
+            <div class="programmation">
+                <div class="chap">
+                    <h3 class="title-press">
+                        {{ 'press.home.title.programmedu'|trans }}
+                        <span id="dateProgram">{{ schedulingDays[0]|localizeddate('long', 'none', app.request.locale) }}</span>
+                    </h3>
+                    <p class="link">
+                        <a href="{{ path('fdc_press_agenda_scheduling') }}">
+                            <i class="icon icon_fleche-right"></i>
+                            {{ 'press.home.btn.toutelaprogrammation'|trans }}
+                        </a>
+                    </p>
+                </div>
+                <div id="calendar-programmation">
+                    <div id="timeline">
+                        {% set festivalStarted = 0 %}
+                        {% for key, day in schedulingDays %}
+                            <a href="#"
+                               class="{% if day|date('Ymd') == "now"|date('Ymd') %}{% set festivalStarted = 1 %}active
+                                {% elseif festivalStarted == 0 and key == 0 %}active{% endif %}"
+                               data-date="{{ day|date('Ymd') }}">
+                                {{ day|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                                <span class="day">{{ day|date('d') }}</span>
+                            </a>
+                        {% endfor %}
                     </div>
-                {% endif %}
-            {% elseif section.class == "media" %}
-                {% if pressHome.sectionMediaDisplay == false %}
-                    <div class="mediatheque">
-                        <div class="chap">
-                            <h3 class="title-press">{{ 'press.home.title.mediatheque'|trans }}</h3>
-                            <p class="link">
-                                <a href="{{ path('fdc_press_media_main') }}">
-                                    <i class="icon icon_fleche-right"></i>
-                                    {{ 'press.home.btn.toutelamediatheque'|trans }}
-                                </a>
-                            </p>
-                        </div>
-                        <div class="table">
-                            {% for media in pressHome.homeMedia %}
-                                <div class="line">
-                                    <div class="container">
-                                        <div class="info">
-                                            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                                                film: media.film,
-                                                film_format: 'tiny',
-                                                film_attrs: {
-                                                    'class': "film_image",
-                                                    'data-object-fit': "cover",
-                                                    'alt': ((media.film|trans_fallback('title'))?:media.film.titleVO)
-                                                },
-                                                film_image_default: 'bundles/fdcevent/img/palmares/film_w46.jpg',
-                                                film_image_default_attrs: 'class="default_image" data-object-fit="cover"'
-                                            }) %}
-                                            <div class="txt">
-                                                <div class="vCenter">
-                                                    <div class="vCenterKid">
-                                                        <p>
-                                                            {{ media.film|trans_fallback('title') }}
-                                                            {% for director in media.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                                <a class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
-                                                            {% endfor %}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {% set folderCount = 0 %}
-                                        {% set trailerCount = 0 %}
-                                        {% set photoCount = 0 %}
-                                        {% for filmMedia in media.film.medias %}
-                                            {% if filmMedia.media.contentType == "image/jpeg" %}
-                                                {% set photoCount = photoCount + 1 %}
-                                            {% elseif filmMedia.media.contentType == "application/pdf" %}
-                                                {% set folderCount = folderCount + 1 %}
-                                            {% elseif filmMedia.media.contentType == "video/mp4" %}
-                                                {% set photoCount = trailerCount + 1 %}
-                                            {% endif %}
-                                        {% endfor %}
-                                        <div class="media folder">
-                                            {% if folderCount != 0 %}
-                                                <span>{{ 'press.home.label.dossiersdepresse'|trans }}</span> ({{ folderCount }})
-                                            {% endif %}
-                                        </div>
-                                        <div class="media trailer">
-                                            {% if trailerCount != 0 %}
-                                                <span>{{ 'press.home.label.bandeannonces'|trans }}</span> ({{ trailerCount }})
-                                            {% endif %}
-                                        </div>
-                                        <div class="media photo">
-                                            {% if photoCount != 0 %}
-                                                <span>{{ 'press.home.label.photos'|trans }}</span> ({{ photoCount }})
-                                            {% endif %}
-                                        </div>
-                                        <a class="button" href="{{ path('fdc_press_media_main', {'sectionId': media.film.selectionSection.id } ) }}">
-                                            {{ 'press.home.btn.decouvrir'|trans }}
-                                        </a>
-                                    </div>
-                                </div>
+                    <div class="calendar">
+                        <div class="timeCol">
+                            <div class="empty"></div>
+                            {% for hour in hourRange %}
+                                <div class="time">{{ hour }}H</div>
                             {% endfor %}
                         </div>
-                    </div>
-                {% endif %}
-            {% elseif section.class == "download" %}
-                {% if pressHome.sectionDownloadDisplay == false %}
-                    <div class="download">
-                        <div class="chap">
-                            <h3 class="title-press">{{ 'press.home.title.atelecharger'|trans }}</h3>
-                            <p class="link">
-                                <a href="{{ path('fdc_press_media_download') }}">
-                                    <i class="icon icon_fleche-right"></i>
-                                    {{ 'press.home.btn.touslestelechargements'|trans }}
-                                </a>
-                            </p>
+                        <div class="venues">
+                            <a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
+                            <a href="#" class="nav next"><i class="icon icon_fleche-right"></i></a>
+                            <div class="v-wrapper">
+                                {% include 'FDCPressBundle:Agenda:components/grid.html.twig' %}
+                            </div>
                         </div>
                     </div>
-                    {% for section in pressHome.homeDownload %}
-						{% set isSignature = 0  %}
-						{% if section.download.widgets is defined %}
-							{% for widget in section.download.widgets %}
-								 {% if class(widget) == "PressDownloadSectionWidgetArchive" %}
-									 {% set isSignature = 1  %}
-								 {% else %}
-								 	{% set isSignature = 0  %}
-								 {% endif %}
-							{% endfor %}
-							{% if isSignature is defined and isSignature == 1 %}
-	                        	<div class="signature block">
-							{% else %}
-								 <div class="affiche">
-							{% endif %}
-						{% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% elseif section.class == "media" %}
+        {% if pressHome.sectionMediaDisplay == false %}
+            <div class="mediatheque">
+                <div class="chap">
+                    <h3 class="title-press">{{ 'press.home.title.mediatheque'|trans }}</h3>
+                    <p class="link">
+                        <a href="{{ path('fdc_press_media_main') }}">
+                            <i class="icon icon_fleche-right"></i>
+                            {{ 'press.home.btn.toutelamediatheque'|trans }}
+                        </a>
+                    </p>
+                </div>
+                <div class="table">
+                    {% for media in pressHome.homeMedia %}
+                        <div class="line">
                             <div class="container">
-                                <h3 class="title-press">{{ section.download|trans_fallback('title') }}</h3>
-                                {% if section.download.widgets is defined %}
-                                {% for key,widget in section.download.widgets %}
-                                    {% if class(widget) == "PressDownloadSectionWidgetDocument" %}
-                                        {% include 'FDCPressBundle:Media:widgets/document.html.twig' %}
-		                            {% elseif class(widget) == "PressDownloadSectionWidgetArchive" %}
-		                                {% include 'FDCPressBundle:Media:widgets/archive.html.twig' %}
-                                    {% elseif class(widget) == "PressDownloadSectionWidgetFile" %}
-                                        {% include 'FDCPressBundle:Media:widgets/file.html.twig' %}
-                                    {% elseif class(widget) == "PressDownloadSectionWidgetPhoto" %}
-                                        {% include 'FDCPressBundle:Media:widgets/photo.html.twig' %}
-                                    {% elseif class(widget) == "PressDownloadSectionWidgetVideo" %}
-                                        {% include 'FDCPressBundle:Media:widgets/video.html.twig' %}
+                                <div class="info">
+                                    {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                    film: media.film,
+                                    film_format: 'tiny',
+                                    film_attrs: {
+                                    'class': "film_image",
+                                    'data-object-fit': "cover",
+                                    'alt': ((media.film|trans_fallback('title'))?:media.film.titleVO)
+                                    },
+                                    film_image_default: 'bundles/fdcevent/img/palmares/film_w46.jpg',
+                                    film_image_default_attrs: 'class="default_image" data-object-fit="cover"'
+                                    }) %}
+                                    <div class="txt">
+                                        <div class="vCenter">
+                                            <div class="vCenterKid">
+                                                <p>
+                                                    {{ media.film|trans_fallback('title') }}
+                                                    {% for director in media.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                        <a class="director"
+                                                           href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
+                                                    {% endfor %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% set folderCount = 0 %}
+                                {% set trailerCount = 0 %}
+                                {% set photoCount = 0 %}
+                                {% for filmMedia in media.film.medias %}
+                                    {% if filmMedia.media.contentType == "image/jpeg" %}
+                                        {% if filmMedia.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM') %}
+                                            {% set photoCount = photoCount + 1 %}
+                                        {% endif %}
+                                    {% elseif filmMedia.media.contentType == "application/pdf" %}
+                                        {% set folderCount = folderCount + 1 %}
+                                    {% elseif filmMedia.media.contentType == "video/mp4" and filmMedia.media.jobWebmState == 3 and filmMedia.media.jobMp4State == 3 %}
+                                        {% set photoCount = trailerCount + 1 %}
                                     {% endif %}
                                 {% endfor %}
-                                {% endif %}
+                                <div class="media folder">
+                                    {% if folderCount != 0 %}
+                                        <span>{{ 'press.home.label.dossiersdepresse'|trans }}</span> ({{ folderCount }})
+                                    {% endif %}
+                                </div>
+                                <div class="media trailer">
+                                    {% if trailerCount != 0 %}
+                                        <span>{{ 'press.home.label.bandeannonces'|trans }}</span> ({{ trailerCount }})
+                                    {% endif %}
+                                </div>
+                                <div class="media photo">
+                                    {% if photoCount != 0 %}
+                                        <span>{{ 'press.home.label.photos'|trans }}</span> ({{ photoCount }})
+                                    {% endif %}
+                                </div>
+                                <a class="button"
+                                   href="{{ path('fdc_press_media_main', {'sectionId': media.film.selectionSection.id } ) }}">
+                                    {{ 'press.home.btn.decouvrir'|trans }}
+                                </a>
                             </div>
                         </div>
                     {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% elseif section.class == "download" %}
+        {% if pressHome.sectionDownloadDisplay == false %}
+        <div class="download">
+            <div class="chap">
+                <h3 class="title-press">{{ 'press.home.title.atelecharger'|trans }}</h3>
+                <p class="link">
+                    <a href="{{ path('fdc_press_media_download') }}">
+                        <i class="icon icon_fleche-right"></i>
+                        {{ 'press.home.btn.touslestelechargements'|trans }}
+                    </a>
+                </p>
+            </div>
+        </div>
+        {% for section in pressHome.homeDownload %}
+        {% set isSignature = 0 %}
+        {% if section.download.widgets is defined %}
+        {% for widget in section.download.widgets %}
+            {% if class(widget) == "PressDownloadSectionWidgetArchive" %}
+                {% set isSignature = 1 %}
+            {% else %}
+                {% set isSignature = 0 %}
+            {% endif %}
+        {% endfor %}
+        {% if isSignature is defined and isSignature == 1 %}
+        <div class="signature block">
+            {% else %}
+            <div class="affiche">
                 {% endif %}
+                {% endif %}
+                <div class="container">
+                    <h3 class="title-press">{{ section.download|trans_fallback('title') }}</h3>
+                    {% if section.download.widgets is defined %}
+                        {% for key,widget in section.download.widgets %}
+                            {% if class(widget) == "PressDownloadSectionWidgetDocument" %}
+                                {% include 'FDCPressBundle:Media:widgets/document.html.twig' %}
+                            {% elseif class(widget) == "PressDownloadSectionWidgetArchive" %}
+                                {% include 'FDCPressBundle:Media:widgets/archive.html.twig' %}
+                            {% elseif class(widget) == "PressDownloadSectionWidgetFile" %}
+                                {% include 'FDCPressBundle:Media:widgets/file.html.twig' %}
+                            {% elseif class(widget) == "PressDownloadSectionWidgetPhoto" %}
+                                {% include 'FDCPressBundle:Media:widgets/photo.html.twig' %}
+                            {% elseif class(widget) == "PressDownloadSectionWidgetVideo" %}
+                                {% include 'FDCPressBundle:Media:widgets/video.html.twig' %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
             {% elseif section.class == "push1" %}
                 {% if pressHome.pushMainImage is not null %}
                     {% set trans = pressHome.pushMainImage.findTranslationByLocale(app.request.locale) %}
@@ -241,7 +247,7 @@
                     </div>
                 {% endif %}
             {% elseif section.class == "push2" %}
-                {% if pressHome.pushSecondaryImage is not null%}
+                {% if pressHome.pushSecondaryImage is not null %}
                     {% set trans = pressHome.pushSecondaryImage.findTranslationByLocale(app.request.locale) %}
                     {% if trans is null or trans.file is null %}
                         {% set trans = push.findTranslationByLocale('fr') %}
@@ -298,14 +304,14 @@
                     </div>
                 {% endif %}
             {% endif %}
-        {% endfor %}
+            {% endfor %}
+
+        </div>
+
+        {{ render(controller('FDCPressBundle:Global:contact')) }}
 
     </div>
 
-    {{ render(controller('FDCPressBundle:Global:contact')) }}
-
-</div>
-
-{% include 'FDCPressBundle:Global:components/popinPress.html.twig' %}
+    {% include 'FDCPressBundle:Global:components/popinPress.html.twig' %}
 
 {% endblock %}

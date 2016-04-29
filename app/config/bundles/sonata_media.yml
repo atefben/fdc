@@ -222,6 +222,7 @@ sonata_media:
                 588x784: { width: 588 , height: 784 , quality: 100, constraint: false }
                 # PressDownload
                 240x326: { width: 240 , height: 326 , quality: 100, constraint: false }
+                270x165: { width: 270 , height: 165 , quality: 100 }
                 543x326: { width: 543 , height: 326 , quality: 100, constraint: false }
                 # PressDownload Video image
                 976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
@@ -229,7 +230,6 @@ sonata_media:
                 233x233: { width: 233 , height: 233 , quality: 100, constraint: false }
                 # PressCinemaMap || PressCinemaZone
                 646x567: { width: 646 , height: 567 , quality: 100, constraint: false }
-
                 586x370: { width: 586 , height: 370 , quality: 100, constraint: false }
                 1280x808: { width: 1280 , height: 808 , quality: 100, constraint: false }
                 2560x1103: { width: 2560, height: 1103 , quality: 100, constraint: false }
