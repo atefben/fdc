@@ -222,7 +222,7 @@ sonata_media:
                 588x784: { width: 588 , height: 784 , quality: 100, constraint: false }
                 # PressDownload
                 240x326: { width: 240 , height: 326 , quality: 100, constraint: false }
-				270x165: { width: 240 , height: 326 , quality: 100 }
+                270x165: { width: 240 , height: 326 , quality: 100 }
                 543x326: { width: 543 , height: 326 , quality: 100, constraint: false }
                 # PressDownload Video image
                 976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
