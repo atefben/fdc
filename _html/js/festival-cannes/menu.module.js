@@ -5,7 +5,7 @@ var displayed     = false,
 
 $(document).ready(function() {
   // overlay on main menu : show submenu and overlay
-  if(!$('body').hasClass('mob')) {
+  if(!$('body').hasClass('mob') &&  !isiPad()) {
     $('.main>li, .user>li').hover(function() {
       $('#main, footer').addClass('overlay');
       $('.main>li').not($(this)).addClass('fade');
@@ -18,7 +18,7 @@ $(document).ready(function() {
   }
 
   $('.main>li>a, .user>li>a').on('click touchstart', function(e) {
-    if($('body').hasClass('mob')) {
+    if($('body').hasClass('mob') &&  !isiPad()) {
       if($(this).parent().find('ul').length != 0) {
         e.preventDefault();
         $('#main, footer').addClass('overlay');

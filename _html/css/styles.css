@@ -12334,6 +12334,14 @@ article .read-later.rAlign span:after {
   z-index: 5;
 }
 
+#gridAudios, #gridVideos {
+  background-color: #000;
+}
+
+.all-articles #gridAudios {
+  background-color: #fff;
+}
+
 @media screen and (min-width: 1600px) {
   #gridAudios,
   #gridVideos {
