@@ -981,11 +981,10 @@ $(document).ready(function () {
 
   // POPIN LOCK //
   function popinInit() {
-    if ($('.press.lock').length && !$('.connected').length) {
-      if ($('#popin-press').length) {
+    if($('.press.lock').length && !$('.connected').length) {
+      if($('#popin-press').length) {
         $('.buttons:not(".active-btn")').on('click', function () {
-
-          if ($('#popin-press').hasClass('visible-popin')) {
+          if($('#popin-press').hasClass('visible-popin')) {
             $('#popin-press').removeClass('visible-popin');
             $("#main").removeClass('overlay-popin');
             $('footer').removeClass('overlay');

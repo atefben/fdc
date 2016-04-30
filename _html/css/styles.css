@@ -18425,25 +18425,55 @@ input[type=submit] {
   text-transform: uppercase;
 }
 
+#mycalendar .fc-event[style*="right: 0%"] img,
+#mycalendar .fc-event[style*="left: 0%"] img,
 #mycalendar .fc-event[style*="right: 50%"] img,
-#mycalendar .fc-event[style*="left: 50%"] img {
+#mycalendar .fc-event[style*="left: 50%"] img,
+#mycalendar .fc-event[style*="right: 33.3333%"] img,
+#mycalendar .fc-event[style*="left: 33.3333%"] img,
+#mycalendar .fc-event[style*="right: 66.6667%"] img,
+#mycalendar .fc-event[style*="left: 66.6667%"] img {
   display: none;
 }
+#mycalendar .fc-event[style*="right: 0%"] .category,
+#mycalendar .fc-event[style*="left: 0%"] .category,
 #mycalendar .fc-event[style*="right: 50%"] .category,
-#mycalendar .fc-event[style*="left: 50%"] .category {
+#mycalendar .fc-event[style*="left: 50%"] .category,
+#mycalendar .fc-event[style*="right: 33.3333%"] .category,
+#mycalendar .fc-event[style*="left: 33.3333%"] .category,
+#mycalendar .fc-event[style*="right: 66.6667%"] .category,
+#mycalendar .fc-event[style*="left: 66.6667%"] .category {
   font-size: 0;
 }
+#mycalendar .fc-event[style*="right: 0%"] .duration,
+#mycalendar .fc-event[style*="left: 0%"] .duration,
 #mycalendar .fc-event[style*="right: 50%"] .duration,
-#mycalendar .fc-event[style*="left: 50%"] .duration {
+#mycalendar .fc-event[style*="left: 50%"] .duration,
+#mycalendar .fc-event[style*="right: 33.3333%"] .duration,
+#mycalendar .fc-event[style*="left: 33.3333%"] .duration,
+#mycalendar .fc-event[style*="right: 66.6667%"] .duration,
+#mycalendar .fc-event[style*="left: 66.6667%"] .duration {
   display: inline-block;
 }
+#mycalendar .fc-event[style*="right: 0%"] .txt,
+#mycalendar .fc-event[style*="left: 0%"] .txt,
 #mycalendar .fc-event[style*="right: 50%"] .txt,
-#mycalendar .fc-event[style*="left: 50%"] .txt {
+#mycalendar .fc-event[style*="left: 50%"] .txt,
+#mycalendar .fc-event[style*="right: 33.3333%"] .txt,
+#mycalendar .fc-event[style*="left: 33.3333%"] .txt,
+#mycalendar .fc-event[style*="right: 66.6667%"] .txt,
+#mycalendar .fc-event[style*="left: 66.6667%"] .txt {
   width: 80px;
   padding: 0 10px;
 }
+#mycalendar .fc-event[style*="right: 0%"] .txt span,
+#mycalendar .fc-event[style*="left: 0%"] .txt span,
 #mycalendar .fc-event[style*="right: 50%"] .txt span,
-#mycalendar .fc-event[style*="left: 50%"] .txt span {
+#mycalendar .fc-event[style*="left: 50%"] .txt span,
+#mycalendar .fc-event[style*="right: 33.3333%"] .txt span,
+#mycalendar .fc-event[style*="left: 33.3333%"] .txt span,
+#mycalendar .fc-event[style*="right: 66.6667%"] .txt span,
+#mycalendar .fc-event[style*="left: 66.6667%"] .txt span {
   display: block;
   /* Fallback for non-webkit */
   display: -webkit-box;
@@ -18456,12 +18486,24 @@ input[type=submit] {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+#mycalendar .fc-event[style*="right: 0%"] .txt strong,
+#mycalendar .fc-event[style*="left: 0%"] .txt strong,
 #mycalendar .fc-event[style*="right: 50%"] .txt strong,
-#mycalendar .fc-event[style*="left: 50%"] .txt strong {
+#mycalendar .fc-event[style*="left: 50%"] .txt strong,
+#mycalendar .fc-event[style*="right: 33.3333%"] .txt strong,
+#mycalendar .fc-event[style*="left: 33.3333%"] .txt strong,
+#mycalendar .fc-event[style*="right: 66.6667%"] .txt strong,
+#mycalendar .fc-event[style*="left: 66.6667%"] .txt strong {
   margin-bottom: 5px;
 }
+#mycalendar .fc-event[style*="right: 0%"] .ven,
+#mycalendar .fc-event[style*="left: 0%"] .ven,
 #mycalendar .fc-event[style*="right: 50%"] .ven,
-#mycalendar .fc-event[style*="left: 50%"] .ven {
+#mycalendar .fc-event[style*="left: 50%"] .ven,
+#mycalendar .fc-event[style*="right: 33.3333%"] .ven,
+#mycalendar .fc-event[style*="left: 33.3333%"] .ven,
+#mycalendar .fc-event[style*="right: 66.6667%"] .ven,
+#mycalendar .fc-event[style*="left: 66.6667%"] .ven {
   width: 61px;
   overflow: hidden;
   display: inline-block;
