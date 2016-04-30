@@ -263,6 +263,10 @@
   }
 }
 
+#gridAudios, #gridVideos {
+  background-color: #000;
+}
+
 #gridAudios,
 #gridVideos {
   @media screen and (min-width: 1600px) {
