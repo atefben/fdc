@@ -124,6 +124,8 @@
                         <div class="image-wrapper">
                             {% if video.image|trans_fallback('file') %}
                                 <img src="{% path video.image|trans_fallback('file'), '463x292' %}" alt="">
+                            {% elseif video.imageAmazonUrl is defined and video.imageAmazonUrl is not null %}
+                                <img src="{{ s3_server_video ~ trans.imageAmazonUrl }}" alt="">
                             {% endif %}
                         </div>
                         <a class="linkVid" href="#"></a>
