@@ -12338,6 +12338,10 @@ article .read-later.rAlign span:after {
   background-color: #000;
 }
 
+.all-articles #gridAudios {
+  background-color: #fff;
+}
+
 @media screen and (min-width: 1600px) {
   #gridAudios,
   #gridVideos {
