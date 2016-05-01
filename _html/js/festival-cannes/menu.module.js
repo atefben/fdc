@@ -18,7 +18,7 @@ $(document).ready(function() {
   }
 
   $('.main>li>a, .user>li>a').on('click touchstart', function(e) {
-    if($('body').hasClass('mob') &&  !isiPad()) {
+    if($('body').hasClass('mob')) {
       if($(this).parent().find('ul').length != 0) {
         e.preventDefault();
         $('#main, footer').addClass('overlay');
