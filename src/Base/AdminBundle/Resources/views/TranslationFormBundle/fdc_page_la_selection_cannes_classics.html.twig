@@ -617,7 +617,7 @@
                                             </label>
                                             {% if form.parent.children.translations.children.fr is not null %}
                                                 <div>
-                                                    {{ form.parent.children.translations.children.fr.children.seoDescription.vars.value }}
+                                                    {{ form.parent.children.translations.children.fr.children.seoDescription.vars.value|raw }}
                                                 </div>
                                             {% endif %}
                                         </div>
