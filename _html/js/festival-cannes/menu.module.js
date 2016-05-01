@@ -5,7 +5,7 @@ var displayed     = false,
 
 $(document).ready(function() {
   // overlay on main menu : show submenu and overlay
-  if(!$('body').hasClass('mob')) {
+  if(!$('body').hasClass('mob') &&  !isiPad()) {
     $('.main>li, .user>li').hover(function() {
       $('#main, footer').addClass('overlay');
       $('.main>li').not($(this)).addClass('fade');

@@ -26,7 +26,7 @@
                     <div class="item {{ audio.theme|trans_fallback('slug') }} {{ audio.publishedAt|date('d-m-y') }} shadow-bottom audio"
                          data-sound="{{ s3_server_audio ~ trans.mp3Url }}">
                         <img src="{% path transImage.file , '1144x724' %}"
-                             srcset="{% path transImage.file , '640x404' %} 1x, {% path transImage.file , '2560x1620' %} 2x"
+                             srcset="{% path transImage.file , '640x404' %} 1x, {% path transImage.file , '1144x724' %} 2x"
                              alt="">
                         <div class="picto"><i class="icon icon_audio"></i></div>
                         <div class="info">

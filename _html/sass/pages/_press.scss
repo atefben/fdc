@@ -2051,8 +2051,14 @@
 
 
 #mycalendar {
+  .fc-event[style*="right: 0%"],
+  .fc-event[style*="left: 0%"],
   .fc-event[style*="right: 50%"],
-  .fc-event[style*="left: 50%"] {
+  .fc-event[style*="left: 50%"],
+  .fc-event[style*="right: 33.3333%"],
+  .fc-event[style*="left: 33.3333%"],
+  .fc-event[style*="right: 66.6667%"],
+  .fc-event[style*="left: 66.6667%"] {
     img {
       display: none;
     }
