@@ -132,8 +132,13 @@ function dataTranslation() {
     setTimeout(function () {
         $('div[data-translation]').each(function () {
             var translation = '#' + $(this).attr('data-translation');
-            console.log(translation + ' : ' + $(translation).height());
-            $(this).height($(translation).height());
+            if ($(translation).height()) {
+                $(this).height($(translation).height());
+                $(this).css('overflow', 'scroll')
+            }
+            else {
+                $(this).height('auto');
+            }
         });
     }, 2000);
 }

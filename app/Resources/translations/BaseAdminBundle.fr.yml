@@ -1005,6 +1005,23 @@ form:
         column_widget_first_column: Bloc 1 Colonne widget
         column_widget_second_column: Bloc 2 Colonne widget
         column_widget_third_column: Bloc 3 Colonne widget
+    fdc_page_preprare:
+        general: À votre arrivée
+        arrivee: Se rendre à Cannes
+        plans: Plans
+        housing: Hébergement
+        more: Pour plus d'informations
+        title: Titre
+        general_title: Titre - Général
+        general_content: Contenu - Général
+        picto_plans_title: Titre - Plans
+        picto_plans_btn_label: URL du bouton - Plans
+        housing_title: Titre - Hébergement
+        housing_description: Description - Hébergement
+        housing_label: Libéllé lien PDF - Hébergement
+        housing_url: URL Googlemaps - Hébergement
+        more_title: Titre - Pour plus d'informations
+        more_description: Contenu - Pour plus d'informations
 nav:
     site_modal: Ouvrir la sélection des sites
 

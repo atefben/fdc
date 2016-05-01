@@ -17,15 +17,16 @@
                 {% set currentLocale = 'zh' %}
             {% endif %}
             <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
-                <div class="row">
-                    {% if form.vars.default_locale == locale %}
+
+                {% if form.vars.default_locale == locale %}
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="box box-success">
                                 <div class="box-body">
                                     <div class="box box-success">
                                         <div class="box-header">
                                             <h4 class="box-title">
-                                                Général
+                                                {{ 'form.fdc_page_preprare.general'|trans }}
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
@@ -42,7 +43,7 @@
                                     <div class="box box-success">
                                         <div class="box-header">
                                             <h4 class="box-title">
-                                                Se rendre à Cannes
+                                                {{ 'form.fdc_page_preprare.arrivee'|trans }}
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
@@ -76,7 +77,7 @@
                                     <div class="box box-success">
                                         <div class="box-header">
                                             <h4 class="box-title">
-                                                Plans
+                                                {{ 'form.fdc_page_preprare.plans'|trans }}
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
@@ -111,7 +112,7 @@
                                     <div class="box box-success">
                                         <div class="box-header">
                                             <h4 class="box-title">
-                                                Hebergement
+                                                {{ 'form.fdc_page_preprare.housing'|trans }}
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
@@ -140,38 +141,86 @@
                                 </div>
                             </div>
                         </div>
-                    {% else %}
+                    </div>
+                {% else %}
+                    <div class="row">
                         <div class="col-md-8">
                             <div class="box box-success">
                                 <div class="box-body">
                                     <div class="box box-success">
                                         <div class="box-header">
                                             <h4 class="box-title">
-                                                Général
+                                                {{ 'form.fdc_page_preprare.general'|trans }}
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
-                                            {{ form_row(translationsFields.title) }}
-                                            {{ form_row(translationsFields.mainDescription) }}
+                                            <div id="{{ locale }}-translation-general-title">
+                                                {{ form_row(translationsFields.title) }}
+                                            </div>
+                                            <div id="{{ locale }}-translation-general-main-description">
+                                                {{ form_row(translationsFields.mainDescription) }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
-
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body widgets-translations">
+                                    {% if form.parent.children.translations.children.fr.vars.value %}
+                                        <div class="sonata-ba-collapsed-fields">
+                                            <div data-translation="{{ locale }}-translation-general-title">
+                                                <div class="form-group">
+                                                    <label>
+                                                        {{ 'form.fdc_page_preprare.general_title'|trans }}
+                                                    </label>
+                                                    <div>
+                                                        {{ form.parent.children.translations.children.fr.vars.value.title|raw }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="{{ locale }}-translation-general-main-description">
+                                                <div class="form-group">
+                                                    <label>
+                                                        {{ 'form.fdc_page_preprare.general_content'|trans }}
+                                                    </label>
+                                                    <div>
+                                                        {{ form.parent.children.translations.children.fr.vars.value.mainDescription|raw }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="box box-success">
                                 <div class="box-body">
                                     <div class="box box-success">
                                         <div class="box-header">
                                             <h4 class="box-title">
-                                                Se rendre à Cannes
+                                                {{ 'form.fdc_page_preprare.arrivee'|trans }}
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
-                                            {{ form_row(translationsFields.arriveTitle) }}
+                                            <div id="{{ locale }}-translation-arrivee-title">
+                                                {{ form_row(translationsFields.arriveTitle) }}
+                                            </div>
                                             {{ form_row(form.parent.children.arriveIcon) }}
                                             <div id="fdc-arrive-widget" class="fdc-widgets"
                                                  data-form-widget="collection">
                                                 {% for widget in form.parent.children.arriveWidgets.children %}
-                                                    <div class="item base-widget">
+                                                    <div class="item base-widget"
+                                                         id="{{ locale }}-translation-arrivee-widget-{{ loop.index }}">
                                                         {% if widget.children._type.vars.value == 'fdc_page_prepare_widget_picto_type' %}
                                                             <h4><strong>Picto widget</strong></h4>
                                                             {{ form_row(widget.picto) }}
@@ -193,21 +242,78 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body widgets-translations">
+                                    {% if form.parent.children.translations.children.fr.vars.value %}
+                                        <div class="sonata-ba-collapsed-fields">
+                                            <div class="form-group"
+                                                 data-translation="{{ locale }}-translation-arrivee-title">
+                                                <label>
+                                                    {{ 'form.press_guide.title'|trans }}
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.arriveTitle }}
+                                                </div>
+                                            </div>
+                                            {% for widget in form.parent.children.arriveWidgets.children %}
+                                                <div class="item base-widget"
+                                                     data-translation="{{ locale }}-translation-arrivee-widget-{{ loop.index }}">
+                                                    {% if widget.children._type.vars.value == 'fdc_page_prepare_widget_picto_type' %}
+                                                        <div class="form-group">
+                                                            <h4>{{ 'form.press_guide.picto_widget'|trans }}</h4>
+                                                            <label>
+                                                                {{ 'form.press_guide.picto_widget_title'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                            </div>
+                                                            <label>
+                                                                {{ 'form.press_guide.picto_widget_content'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.content|raw }}
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="box box-success">
                                 <div class="box-body">
                                     <div class="box box-success">
                                         <div class="box-header">
                                             <h4 class="box-title">
-                                                Plans
+                                                {{ 'form.fdc_page_preprare.plans'|trans }}
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
-                                            {{ form_row(translationsFields.informationTitle) }}
-                                            {{ form_row(translationsFields.informationDescription) }}
+                                            <div id="{{ locale }}-translation-information-title">
+                                                {{ form_row(translationsFields.informationTitle) }}
+                                            </div>
+                                            <div id="{{ locale }}-translation-information-description">
+                                                {{ form_row(translationsFields.informationDescription) }}
+                                            </div>
                                             {{ form_row(form.parent.children.informationIcon) }}
                                             <div id="fdc-information-widget" class="fdc-widgets"
                                                  data-form-widget="collection">
                                                 {% for widget in form.parent.children.informationWidgets.children %}
-                                                    <div class="item base-widget">
+                                                    <div class="item base-widget"
+                                                         id="{{ locale }}-translation-information-widget-{{ loop.index }}">
                                                         {% if widget.children._type.vars.value == 'fdc_page_prepare_widget_column_type' %}
                                                             <h4><strong>Colonne widget</strong></h4>
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
@@ -229,33 +335,163 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body widgets-translations">
+                                    {% if form.parent.children.translations.children.fr.vars.value %}
+                                        <div class="sonata-ba-collapsed-fields">
+                                            <div class="form-group"
+                                                 data-translation="{{ locale }}-translation-information-title">
+                                                <label>
+                                                    {{ 'form.press_guide.title'|trans }}
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.informationTitle|raw }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group"
+                                                 data-translation="{{ locale }}-translation-information-description">
+                                                <label>
+                                                    {{ 'form.press_guide.title'|trans }}
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.informationDescription|raw }}
+                                                </div>
+                                            </div>
+                                            {% for widget in form.parent.children.informationWidgets.children %}
+                                                <div class="item base-widget"
+                                                     data-translation="{{ locale }}-translation-information-widget-{{ loop.index }}">
+                                                    {% if widget.children._type.vars.value == 'fdc_page_prepare_widget_column_type' %}
+                                                        <div class="form-group">
+                                                            <h4>{{ 'form.press_guide.column_widget'|trans }}</h4>
+                                                            <label>
+                                                                {{ 'form.fdc_page_prepare.picto_plans_title'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                            </div>
+                                                            <label>
+                                                                {{ 'form.fdc_page_prepare.picto_plans_btn_label'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.btnLabel|raw }}
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="box box-success">
                                 <div class="box-body">
                                     <div class="box box-success">
                                         <div class="box-header">
                                             <h4 class="box-title">
-                                                Hebergement
+                                                {{ 'form.fdc_page_preprare.housing'|trans }}
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
-                                            {{ form_row(translationsFields.meetingTitle) }}
-                                            {{ form_row(translationsFields.meetingDescription) }}
-                                            {{ form_row(translationsFields.meetingLabel) }}
-                                            {{ form_row(translationsFields.meetingUrl) }}
+                                            <div id="{{ locale }}-translation-housing-title">
+                                                {{ form_row(translationsFields.meetingTitle) }}
+                                            </div>
+                                            <div id="{{ locale }}-translation-housing-description">
+                                                {{ form_row(translationsFields.meetingDescription) }}
+                                            </div>
+                                            <div id="{{ locale }}-translation-housing-label">
+                                                {{ form_row(translationsFields.meetingLabel) }}
+                                            </div>
+                                            <div id="{{ locale }}-translation-housing-url">
+                                                {{ form_row(translationsFields.meetingUrl) }}
+                                            </div>
                                             {{ form_row(form.parent.children.meetingIcon) }}
                                             {{ form_row(form.parent.children.meetingFile) }}
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body widgets-translations">
+                                    {% if form.parent.children.translations.children.fr.vars.value %}
+                                        <div class="sonata-ba-collapsed-fields">
+                                            <div class="form-group"
+                                                 data-translation="{{ locale }}-translation-housing-title">
+                                                <label>
+                                                    {{ 'form.fdc_page_preprare.housing_title'|trans }}
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.meetingTitle|raw }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group"
+                                                 data-translation="{{ locale }}-translation-housing-description">
+                                                <label>
+                                                    {{ 'form.fdc_page_preprare.housing_description'|trans }}
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.meetingDescription|raw }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group"
+                                                 data-translation="{{ locale }}-translation-housing-label">
+                                                <label>
+                                                    {{ 'form.fdc_page_preprare.housing_label'|trans }}
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.meetingLabel|raw }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group"
+                                                 data-translation="{{ locale }}-translation-housing-url">
+                                                <label>
+                                                    {{ 'form.fdc_page_preprare.housing_url'|trans }}
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.meetingUrl|raw }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="box box-success">
                                 <div class="box-body">
                                     <div class="box box-success">
                                         <div class="box-header">
                                             <h4 class="box-title">
-                                                Pour plus d'informations
+                                                {{ 'form.fdc_page_preprare.more'|trans }}
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
+                                            <div id="{{ locale }}-translation-more-title">
                                             {{ form_row(translationsFields.serviceTitle) }}
+                                                </div>
+                                            <div id="{{ locale }}-translation-more-description">
                                             {{ form_row(translationsFields.serviceDescription) }}
+                                                </div>
                                             {{ form_row(form.parent.children.serviceIcon) }}
                                         </div>
                                     </div>
@@ -269,39 +505,25 @@
                                         {{ 'group.french_version'|trans|nl2br }}
                                     </h4>
                                 </div>
-                                <div class="box-body">
+                                <div class="box-body widgets-translations">
                                     {% if form.parent.children.translations.children.fr.vars.value %}
                                         <div class="sonata-ba-collapsed-fields">
-                                            <div class="form-group">
+                                            <div class="form-group"
+                                                 data-translation="{{ locale }}-translation-more-title">
                                                 <label>
-                                                    Se rendre à Cannes - Titre
+                                                    {{ 'form.fdc_page_preprare.more_title'|trans }}
                                                 </label>
                                                 <div>
-                                                    {{ form.parent.children.translations.children.fr.vars.value.arriveTitle }}
+                                                    {{ form.parent.children.translations.children.fr.vars.value.serviceTitle|raw }}
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group"
+                                                 data-translation="{{ locale }}-translation-more-description">
                                                 <label>
-                                                    Plans - Titre
+                                                    {{ 'form.fdc_page_preprare.more_description'|trans }}
                                                 </label>
                                                 <div>
-                                                    {{ form.parent.children.translations.children.fr.vars.value.informationTitle }}
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>
-                                                    Hebergement - Titre
-                                                </label>
-                                                <div>
-                                                    {{ form.parent.children.translations.children.fr.vars.value.meetingTitle }}
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>
-                                                    Pour plus d'informations - Titre
-                                                </label>
-                                                <div>
-                                                    {{ form.parent.children.translations.children.fr.vars.value.serviceTitle }}
+                                                    {{ form.parent.children.translations.children.fr.vars.value.serviceDescription|raw }}
                                                 </div>
                                             </div>
                                         </div>
@@ -309,8 +531,8 @@
                                 </div>
                             </div>
                         </div>
-                    {% endif %}
-                </div>
+                    </div>
+                {% endif %}
                 <div class="row">
                     {% if form.vars.default_locale == locale %}
                         <div class="col-md-8">
