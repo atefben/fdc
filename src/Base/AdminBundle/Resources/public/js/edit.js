@@ -132,9 +132,10 @@ function dataTranslation() {
     setTimeout(function () {
         $('div[data-translation]').each(function () {
             var translation = '#' + $(this).attr('data-translation');
+            console.log(translation + ' : ' + $(translation).height());
             $(this).height($(translation).height());
         });
-    }, 1500);
+    }, 2000);
 }
 
 function editEvents() {

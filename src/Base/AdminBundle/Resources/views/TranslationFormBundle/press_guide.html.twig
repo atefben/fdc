@@ -236,7 +236,7 @@
                                             <div id="fdc-arrive-widget" class="fdc-widgets"
                                                  data-form-widget="collection">
                                                 {% for widget in form.parent.children.arriveWidgets.children %}
-                                                    <div id="{{ locale}}^translation-arrivee-widget-{{ loop.index }}"
+                                                    <div id="{{ locale}}-translation-arrivee-widget-{{ loop.index }}"
                                                          class="item base-widget">
                                                         {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
                                                             <h4><strong>Image widget</strong></h4>
