@@ -1005,7 +1005,7 @@ form:
         column_widget_first_column: Bloc 1 Colonne widget
         column_widget_second_column: Bloc 2 Colonne widget
         column_widget_third_column: Bloc 3 Colonne widget
-    fdc_page_preprare:
+    fdc_page_prepare:
         general: À votre arrivée
         arrivee: Se rendre à Cannes
         plans: Plans
@@ -1014,6 +1014,8 @@ form:
         title: Titre
         general_title: Titre - Général
         general_content: Contenu - Général
+        plans_title: Titre - Plans
+        plans_description: Contenu - Plans
         picto_plans_title: Titre - Plans
         picto_plans_btn_label: URL du bouton - Plans
         housing_title: Titre - Hébergement
