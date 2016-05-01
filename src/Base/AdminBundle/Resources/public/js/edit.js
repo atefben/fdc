@@ -1,51 +1,51 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
     editEvents();
+    dataTranslation();
     //change link to original edit
-    if( $('#associatedNews').length > 0) {
-        $('#associatedNews table').on('change', function() {
+    if ($('#associatedNews').length > 0) {
+        $('#associatedNews table').on('change', function () {
             var timesRun = 0;
-            var interval = window.setInterval(function(){
-                $('#associatedNews div .field-short-description span a').each(function(index){
-                    var old = $( this ).attr('href');
+            var interval = window.setInterval(function () {
+                $('#associatedNews div .field-short-description span a').each(function (index) {
+                    var old = $(this).attr('href');
                     old = old.split('/');
 
-                    var text = $( this ).text();
+                    var text = $(this).text();
                     text = text.split(' ')[0].toLowerCase();
 
                     old[4] = text;
 
-                    $( this ).attr('href', old.join('/'));
+                    $(this).attr('href', old.join('/'));
                 });
                 timesRun += 1;
-                if(timesRun == 10){
+                if (timesRun == 10) {
                     clearInterval(interval);
                 }
-            },500);
+            }, 500);
         });
-        $('#associatedNews div .field-short-description span a').each(function(index){
-            var old = $( this ).attr('href');
+        $('#associatedNews div .field-short-description span a').each(function (index) {
+            var old = $(this).attr('href');
             old = old.split('/');
 
-            var text = $( this ).text();
+            var text = $(this).text();
             text = text.split(' ')[0].toLowerCase();
 
             old[4] = text;
 
-            $( this ).attr('href', old.join('/'));
+            $(this).attr('href', old.join('/'));
 
         });
     }
-
 
 
     // preview
     var url = window.location.href;
     var newsUrl = url.split("/");
 
-    if (newsUrl[6]== 'newsarticle' || newsUrl[6]== 'newsvideo' || newsUrl[6]== 'newsimage' || newsUrl[6]== 'newsaudio') {
+    if (newsUrl[6] == 'newsarticle' || newsUrl[6] == 'newsvideo' || newsUrl[6] == 'newsimage' || newsUrl[6] == 'newsaudio') {
         var slug = $('.a2lix_translationsFields-fr #btn-preview').data('preview')
 
-        switch(newsUrl[6]) {
+        switch (newsUrl[6]) {
             case 'newsarticle':
                 var format = 'articles';
                 break;
@@ -60,16 +60,16 @@ jQuery(document).ready(function($) {
                 break;
         }
 
-        var route = Routing.generate('fdc_event_news_get', { _locale: 'fr', format: format, slug: slug });
-        $('.well.well-small.form-actions').append('<a target="_blank" href="'+route+'" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
+        var route = Routing.generate('fdc_event_news_get', {_locale: 'fr', format: format, slug: slug});
+        $('.well.well-small.form-actions').append('<a target="_blank" href="' + route + '" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
     }
-    else if (newsUrl[6]== 'statementarticle' || newsUrl[6]== 'statementvideo' ||
-        newsUrl[6]== 'statementimage' || newsUrl[6]== 'statementaudio' ||
-        newsUrl[6]== 'infoarticle' || newsUrl[6]== 'infovideo' ||
-        newsUrl[6]== 'infoimage' || newsUrl[6]== 'infoaudio') {
+    else if (newsUrl[6] == 'statementarticle' || newsUrl[6] == 'statementvideo' ||
+        newsUrl[6] == 'statementimage' || newsUrl[6] == 'statementaudio' ||
+        newsUrl[6] == 'infoarticle' || newsUrl[6] == 'infovideo' ||
+        newsUrl[6] == 'infoimage' || newsUrl[6] == 'infoaudio') {
         var slug = $('.a2lix_translationsFields-fr #btn-preview').data('preview')
 
-        switch(newsUrl[6]) {
+        switch (newsUrl[6]) {
             case 'statementarticle':
                 var format = 'articles';
                 var type = 'communique';
@@ -103,31 +103,39 @@ jQuery(document).ready(function($) {
                 var type = 'info';
                 break;
         }
-        var route = Routing.generate('fdc_press_news_get', { _locale: 'fr', format: format, slug: slug, type: type });
-        $('.well.well-small.form-actions').append('<a target="_blank" href="'+route+'" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
+        var route = Routing.generate('fdc_press_news_get', {_locale: 'fr', format: format, slug: slug, type: type});
+        $('.well.well-small.form-actions').append('<a target="_blank" href="' + route + '" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
     }
     // on modal add, reload function
-    $(window).on('shown.bs.modal', function() {
+    $(window).on('shown.bs.modal', function () {
         if ($('.modal[aria-hidden="false"]').find('form[action*="create"]').length) {
             editEvents();
+            dataTranslation();
         }
+    });
+    $('a[data-toggle=tab]').on('click', function () {
+        dataTranslation();
     });
 
     //preview footer
     var url = window.location.href;
     var footerUrl = url.split("/");
-    if(footerUrl[6] == 'fdcpagefooter') {
+    if (footerUrl[6] == 'fdcpagefooter') {
         var slug = $('.a2lix_translationsFields-fr #btn-preview').data('preview')
-        var route = Routing.generate('fdc_event_footer_pagelibres', { slug: slug});
-        $('.well.well-small.form-actions').append('<a target="_blank" href="'+route+'" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
+        var route = Routing.generate('fdc_event_footer_pagelibres', {slug: slug});
+        $('.well.well-small.form-actions').append('<a target="_blank" href="' + route + '" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
     }
 
-    $('div[data-translation]').each(function(){
-        var translation = '#' + $(this).attr('data-translation');
-        $(this).height($(translation).height());
-        $(this).offset().top = $(translation).offset.top;
-    });
 });
+
+function dataTranslation() {
+    setTimeout(function () {
+        $('div[data-translation]').each(function () {
+            var translation = '#' + $(this).attr('data-translation');
+            $(this).height($(translation).height());
+        });
+    }, 1500);
+}
 
 function editEvents() {
 
@@ -140,7 +148,7 @@ function editEvents() {
         $('ul[id$="translateOptions"]').hide();
     }
 
-    $('input[name$="[translate]"]').closest('.icheckbox_minimal').on('ifChanged', function(e) {
+    $('input[name$="[translate]"]').closest('.icheckbox_minimal').on('ifChanged', function (e) {
         if (!$(e.target).is(':checked')) {
             $('.form-group[id$="priorityStatus"]').hide();
             $('ul[id$="translateOptions"]').hide();
@@ -158,7 +166,7 @@ function editEvents() {
     }
 
     // displayed home on click
-    $('input[name$="[displayedHome]"]').on('ifChanged', function() {
+    $('input[name$="[displayedHome]"]').on('ifChanged', function () {
         if (!$(this).is(':checked')) {
             $('.displayed-home').hide();
         } else {
@@ -167,42 +175,42 @@ function editEvents() {
     });
 
     // remove select2 status option for each language
-    $('select[name*="status"]').each(function(i, e) {
+    $('select[name*="status"]').each(function (i, e) {
         var idArray = $(e).attr('id').split('_');
         var locale = idArray[idArray.length - 2];
         var status = ['0', '1', '4', '6'];
 
         if (locale != 'fr') {
-             status = ['0', '2', '3', '5'];
+            status = ['0', '2', '3', '5'];
         }
 
         if ($('select[name*="status"]').hasClass('translator')) {
-             status = ['3'];
+            status = ['3'];
         }
 
         if ($('select[name*="status"]').hasClass('master_translator')) {
             status = ['0', '1', '4'];
-            if(locale != 'fr') {
+            if (locale != 'fr') {
                 status = ['0', '2', '3', '5'];
             }
         }
 
         if ($('select[name*="status"]').hasClass('journalist')) {
             status = ['0', '4'];
-            if(locale != 'fr') {
+            if (locale != 'fr') {
                 status = ['0', '2', '3', '5'];
             } else {
                 $("select").val("0").trigger("change");
             }
             var url = window.location.href;
             url = url.split("/");
-            if(url[6] == 'mediaimage' ||
-               url[6] == 'mediaaudio' ||
-               url[6] == 'mediaimagesimple' ||
-               url[6] == 'mediavideo' ||
-               url[6] == 'gallery') {
-                 status = ['0', '1', '4', '6'];
-                if(locale != 'fr') {
+            if (url[6] == 'mediaimage' ||
+                url[6] == 'mediaaudio' ||
+                url[6] == 'mediaimagesimple' ||
+                url[6] == 'mediavideo' ||
+                url[6] == 'gallery') {
+                status = ['0', '1', '4', '6'];
+                if (locale != 'fr') {
                     status = ['0', '2', '3', '5'];
                 } else {
                     $("select").val("0").trigger("change");
@@ -212,12 +220,12 @@ function editEvents() {
 
         if ($('select[name*="status"]').hasClass('orange')) {
             status = ['0', '1', '4', '6'];
-            if(locale != 'fr') {
+            if (locale != 'fr') {
                 status = ['5'];
             }
         }
 
-        $(e).find('option').each(function(i, e) {
+        $(e).find('option').each(function (i, e) {
             if ($.inArray($(e).val(), status) == -1) {
                 $(e).remove();
             }
@@ -226,7 +234,7 @@ function editEvents() {
     });
 
     // add border and set locale in form action on tab change
-    $('body').on('click', '.a2lix_translationsLocales li', function() {
+    $('body').on('click', '.a2lix_translationsLocales li', function () {
         $(this).closest('.a2lix_translationsLocales').find('li').removeClass('nav-tab-active');
         $(this).addClass('nav-tab-active');
 
@@ -236,7 +244,7 @@ function editEvents() {
         $('.sonata-ba-form > form').attr('action', action.slice(0, -2) + locale);
 
         //set height of widgets sidebar
-        setTimeout(function() {
+        setTimeout(function () {
             if (!$('.a2lix_translationsFields .tab-pane.active').hasClass('a2lix_translationsFields-fr')) {
                 $('.a2lix_translationsFields .tab-pane.active .row').eq(1).find('.col-md-8 .base-widget').each(function (key, widget) {
                     $('.a2lix_translationsFields .tab-pane.active .row').eq(1).find('.col-md-4 .base-widget').eq(key).height($(widget).height());
@@ -256,7 +264,6 @@ function editEvents() {
     var action = $('.sonata-ba-form > form').attr('action');
     var locale = $('.a2lix_translationsLocales li.active').attr('data-locale');
     $('.sonata-ba-form > form').attr('action', action + '&locale=' + locale);
-
 
 
     // Hide the status for french translation

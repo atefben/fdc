@@ -229,14 +229,14 @@
                                             </h4>
                                         </div>
                                         <div class="sonata-ba-collapsed-fields">
-                                            <div id="translation-arrivee-title">
+                                            <div id="{{ locale}}-translation-arrivee-title">
                                                 {{ form_row(translationsFields.arriveTitle) }}
                                             </div>
                                             {{ form_row(form.parent.children.arriveIcon) }}
                                             <div id="fdc-arrive-widget" class="fdc-widgets"
                                                  data-form-widget="collection">
                                                 {% for widget in form.parent.children.arriveWidgets.children %}
-                                                    <div id="translation-arrivee-widget-{{ loop.index }}"
+                                                    <div id="{{ locale}}^translation-arrivee-widget-{{ loop.index }}"
                                                          class="item base-widget">
                                                         {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
                                                             <h4><strong>Image widget</strong></h4>
@@ -285,7 +285,7 @@
                                 <div class="box-body widgets-translations">
                                     {% if form.parent.children.translations.children.fr.vars.value %}
                                         <div class="sonata-ba-collapsed-fields">
-                                            <div class="form-group" data-translation="translation-arrivee-title">
+                                            <div class="form-group" data-translation="{{ locale }}-translation-arrivee-title">
                                                 <label>
                                                     {{ 'form.press_guide.title'|trans }}
                                                 </label>
@@ -295,7 +295,7 @@
                                             </div>
                                             {% for widget in form.parent.children.arriveWidgets.children %}
                                                 <div class="item base-widget"
-                                                     data-translation="translation-arrivee-widget-{{ loop.index }}">
+                                                     data-translation="{{ locale }}-translation-arrivee-widget-{{ loop.index }}">
                                                     {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
                                                         <div class="form-group">
                                                             <h4>{{ 'form.press_guide.image_widget'|trans }}</h4>
@@ -369,14 +369,14 @@
                                         </h4>
                                     </div>
                                     <div class="sonata-ba-collapsed-fields">
-                                        <div id="translation-informations-title">
+                                        <div id="{{ locale}}-translation-informations-title">
                                             {{ form_row(translationsFields.informationTitle) }}
                                         </div>
                                         {{ form_row(form.parent.children.informationIcon) }}
                                         <div id="fdc-information-widget" class="fdc-widgets"
                                              data-form-widget="collection">
                                             {% for widget in form.parent.children.informationWidgets.children %}
-                                                <div id="translation-informations-widget-{{ loop.index }}"
+                                                <div id="{{ locale}}-translation-informations-widget-{{ loop.index }}"
                                                      class="item base-widget">
                                                     {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
                                                         <h4><strong>Image widget</strong></h4>
@@ -425,7 +425,7 @@
                                         {% if form.parent.children.translations.children.fr.vars.value %}
                                             <div class="sonata-ba-collapsed-fields">
                                                 <div class="form-group"
-                                                     data-translation="translation-informations-title">
+                                                     data-translation="{{ locale }}-translation-informations-title">
                                                     <label>
                                                         {{ 'form.press_guide.title'|trans }}
                                                     </label>
@@ -435,7 +435,7 @@
                                                 </div>
                                                 {% for widget in form.parent.children.informationWidgets.children %}
                                                     <div class="item base-widget"
-                                                         data-translation="translation-informations-widget-{{ loop.index }}">
+                                                         data-translation="{{ locale }}-translation-informations-widget-{{ loop.index }}">
                                                         {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
                                                             <div class="form-group">
                                                                 <h4>{{ 'form.press_guide.image_widget'|trans }}</h4>
@@ -510,7 +510,7 @@
                                         </h4>
                                     </div>
                                     <div class="sonata-ba-collapsed-fields">
-                                        <div id="translation-medias-title">
+                                        <div id="{{ locale}}-translation-medias-title">
                                             {{ form_row(translationsFields.meetingTitle) }}
                                         </div>
                                         {{ form_row(form.parent.children.meetingIcon) }}
@@ -565,7 +565,7 @@
                                         {% if form.parent.children.translations.children.fr.vars.value %}
                                             <div class="sonata-ba-collapsed-fields">
                                                 <div class="form-group"
-                                                     data-translation="translation-medias-title">
+                                                     data-translation="{{ locale }}-translation-medias-title">
                                                     <label>
                                                         {{ 'form.press_guide.title'|trans }}
                                                     </label>
@@ -575,7 +575,7 @@
                                                 </div>
                                                 {% for widget in form.parent.children.meetingWidgets.children %}
                                                     <div class="item base-widget"
-                                                         data-translation="translation-medias-widget-{{ loop.index }}">
+                                                         data-translation="{{ locale }}-translation-medias-widget-{{ loop.index }}">
                                                         {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
                                                             <div class="form-group">
                                                                 <h4>{{ 'form.press_guide.image_widget'|trans }}</h4>
@@ -650,7 +650,7 @@
                                         </h4>
                                     </div>
                                     <div class="sonata-ba-collapsed-fields">
-                                        <div id="translation-services-title">
+                                        <div id="{{ locale}}-translation-services-title">
                                             {{ form_row(translationsFields.serviceTitle) }}
                                         </div>
                                         {{ form_row(form.parent.children.serviceIcon) }}
@@ -705,7 +705,7 @@
                                         {% if form.parent.children.translations.children.fr.vars.value %}
                                             <div class="sonata-ba-collapsed-fields">
                                                 <div class="form-group"
-                                                     data-translation="translation-services-title">
+                                                     data-translation="{{ locale }}-translation-services-title">
                                                     <label>
                                                         {{ 'form.press_guide.title'|trans }}
                                                     </label>
@@ -715,7 +715,7 @@
                                                 </div>
                                                 {% for widget in form.parent.children.serviceWidgets.children %}
                                                     <div class="item base-widget"
-                                                         data-translation="translation-services-widget-{{ loop.index }}">
+                                                         data-translation="{{ locale }}-translation-services-widget-{{ loop.index }}">
                                                         {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
                                                             <div class="form-group">
                                                                 <h4>{{ 'form.press_guide.image_widget'|trans }}</h4>
