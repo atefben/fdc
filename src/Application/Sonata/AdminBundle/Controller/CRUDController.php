@@ -19,6 +19,13 @@ class CRUDController extends BaseController
     {
         $url = false;
 
+        if ($this->get('request')->get('btn_update_and_list') !== null) {
+            $url = $this->admin->generateUrl('list');
+        }
+        if ($this->get('request')->get('btn_create_and_list') !== null) {
+            $url = $this->admin->generateUrl('list');
+        }
+
         if (isset($_GET['list']) && $_GET['list'] == true) {
             $url = $this->admin->generateUrl('list');
         }
