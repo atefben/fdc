@@ -209,8 +209,8 @@ class LockController extends Controller
             ));
         }
 
-        $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
-        if ($entity === null) {
+        $master = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
+        if ($master === null) {
             $logger->error(__CLASS__ . " - Couldnt verify the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', id not found");
             $response->setStatusCode(400);
             return $response->setData(array(
@@ -218,7 +218,7 @@ class LockController extends Controller
             ));
         }
 
-        $trans = $entity->findTranslationByLocale($locale);
+        $trans = $master->findTranslationByLocale($locale);
         if ($trans === null) {
             $logger->error(__CLASS__ . " - Couldnt verify the lock for entity " . self::$entityMapper[$entity] . " id '{$id}' locale '{$locale}', translation not found");
             $response->setStatusCode(400);

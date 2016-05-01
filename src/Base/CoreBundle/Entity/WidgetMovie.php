@@ -59,7 +59,7 @@ class WidgetMovie
     public function __toString()
     {
         if ($this->title) {
-            return $this->title;
+            return 'Module liste de films "' . $this->title . '"';
         }
 
         if ($this->getId()) {

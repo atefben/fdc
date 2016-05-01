@@ -49,10 +49,10 @@ class GalleryDualAlign
     public function __toString()
     {
         if ($this->getId()) {
-            return strval($this->getId());
+            return 'Module 2 photos /ligne #' . strval($this->getId());
         }
 
-        return 'New Gallery';
+        return 'Module 2 photos /ligne';
     }
 
     /**
