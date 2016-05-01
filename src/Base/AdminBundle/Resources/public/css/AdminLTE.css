@@ -1857,3 +1857,8 @@
     border-left: 1px solid #d2d6de;
   }
 }
+
+.box-body.widgets-translations {
+  padding-top: 0;
+  padding-bottom: 0;
+}

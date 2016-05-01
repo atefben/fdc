@@ -122,7 +122,11 @@ jQuery(document).ready(function($) {
         $('.well.well-small.form-actions').append('<a target="_blank" href="'+route+'" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
     }
 
-
+    $('div[data-translation]').each(function(){
+        var translation = '#' + $(this).attr('data-translation');
+        $(this).height($(translation).height());
+        $(this).offset().top = $(translation).offset.top;
+    });
 });
 
 function editEvents() {

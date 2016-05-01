@@ -17,65 +17,367 @@
                 {% set currentLocale = 'zh' %}
             {% endif %}
             <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
-                <div class="row">
-                    {% if form.vars.default_locale == locale %}
-                    <div class="col-md-12">
-                        <div class="box box-success">
-                            <div class="box-body">
-                                <div class="box box-success">
-                                    <div class="box-header">
-                                        <h4 class="box-title">
-                                            A votre arrivée
-                                        </h4>
+                {% if form.vars.default_locale == locale %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-success">
+                                <div class="box-body">
+                                    <div class="box box-success">
+                                        <div class="box-header">
+                                            <h4 class="box-title">
+                                                {{ 'form.press_guide.your_arrival'|trans }}
+                                            </h4>
+                                        </div>
+                                        <div class="sonata-ba-collapsed-fields">
+                                            {{ form_row(translationsFields.arriveTitle) }}
+                                            {{ form_row(form.parent.children.arriveIcon) }}
+                                            <div id="fdc-arrive-widget" class="fdc-widgets"
+                                                 data-form-widget="collection">
+                                                {% for widget in form.parent.children.arriveWidgets.children %}
+                                                    <div class="item base-widget">
+                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                            <h4><strong>Image widget</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                            {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                            <h4><strong>Colonne widget</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                            {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                            <h4><strong>Picto widget</strong></h4>
+                                                            {{ form_row(widget.picto) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                        {% endif %}
+                                                        {{ form_row(widget._type) }}
+
+                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module image / texte</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module colonne</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module picto / texte</a>
+
+                                        </div>
                                     </div>
-                                    <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.arriveTitle) }}
-                                        {{ form_row(form.parent.children.arriveIcon) }}
-                                        <div id="fdc-arrive-widget" class="fdc-widgets" data-form-widget="collection">
+                                </div>
+                                <div class="box-body">
+                                    <div class="box box-success">
+                                        <div class="box-header">
+                                            <h4 class="box-title">
+                                                {{ 'form.press_guide.information'|trans }}
+                                            </h4>
+                                        </div>
+                                        <div class="sonata-ba-collapsed-fields">
+                                            {{ form_row(translationsFields.informationTitle) }}
+                                            {{ form_row(form.parent.children.informationIcon) }}
+                                            <div id="fdc-information-widget" class="fdc-widgets"
+                                                 data-form-widget="collection">
+                                                {% for widget in form.parent.children.informationWidgets.children %}
+                                                    <div class="item base-widget">
+                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                            <h4><strong>Image widget</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                            {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                            <h4><strong>Colonne widget</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                            {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                            <h4><strong>Picto widget</strong></h4>
+                                                            {{ form_row(widget.picto) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                        {% endif %}
+                                                        {{ form_row(widget._type) }}
+
+                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module image / texte</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module colonne</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module picto</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div class="box box-success">
+                                        <div class="box-header">
+                                            <h4 class="box-title">
+                                                {{ 'form.press_guide.medias'|trans }}
+                                            </h4>
+                                        </div>
+                                        <div class="sonata-ba-collapsed-fields">
+                                            {{ form_row(translationsFields.meetingTitle) }}
+                                            {{ form_row(form.parent.children.meetingIcon) }}
+                                            <div id="fdc-meeting-widget" data-form-widget="collection">
+                                                {% for widget in form.parent.children.meetingWidgets.children %}
+                                                    <div class="item base-widget">
+                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                            <h4><strong>Image widget</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                            {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                            <h4><strong>Colonne widget</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                            {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                            <h4><strong>Picto widget</strong></h4>
+                                                            {{ form_row(widget.picto) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                        {% endif %}
+                                                        {{ form_row(widget._type) }}
+
+                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module image / texte</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module colonne</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module picto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div class="box box-success">
+                                        <div class="box-header">
+                                            <h4 class="box-title">
+                                                {{ 'form.press_guide.services'|trans }}
+                                            </h4>
+                                        </div>
+                                        <div class="sonata-ba-collapsed-fields">
+                                            {{ form_row(translationsFields.serviceTitle) }}
+                                            {{ form_row(form.parent.children.serviceIcon) }}
+                                            <div id="fdc-service-widget" class="fdc-widgets"
+                                                 data-form-widget="collection">
+                                                {% for widget in form.parent.children.serviceWidgets.children %}
+                                                    <div class="item base-widget">
+                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                            <h4><strong>Image widget</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                            {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                            <h4><strong>Colonne widget</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                            {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                            <h4><strong>Picto widget</strong></h4>
+                                                            {{ form_row(widget.picto) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                        {% endif %}
+                                                        {{ form_row(widget._type) }}
+
+                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module image / texte</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module colonne</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module picto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="box box-success">
+                                <div class="box-body">
+                                    <div class="box box-success">
+                                        <div class="box-header">
+                                            <h4 class="box-title">
+                                                {{ 'form.press_guide.your_arrival'|trans }}
+                                            </h4>
+                                        </div>
+                                        <div class="sonata-ba-collapsed-fields">
+                                            <div id="translation-arrivee-title">
+                                                {{ form_row(translationsFields.arriveTitle) }}
+                                            </div>
+                                            {{ form_row(form.parent.children.arriveIcon) }}
+                                            <div id="fdc-arrive-widget" class="fdc-widgets"
+                                                 data-form-widget="collection">
+                                                {% for widget in form.parent.children.arriveWidgets.children %}
+                                                    <div id="translation-arrivee-widget-{{ loop.index }}"
+                                                         class="item base-widget">
+                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                            <h4><strong>Image widget</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                            {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                            <h4><strong>Colonne widget</strong></h4>
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                            {{ form_row(widget.gallery) }}
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                            <h4><strong>Picto widget</strong></h4>
+                                                            {{ form_row(widget.picto) }}
+                                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                                        {% endif %}
+                                                        {{ form_row(widget._type) }}
+
+                                                        <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                            <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module image / texte</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module colonne</a>
+                                            <a class="btn btn-primary btn-add-base-widget"
+                                               data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i
+                                                        class="icon-plus"></i>Module picto / texte</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body widgets-translations">
+                                    {% if form.parent.children.translations.children.fr.vars.value %}
+                                        <div class="sonata-ba-collapsed-fields">
+                                            <div class="form-group" data-translation="translation-arrivee-title">
+                                                <label>
+                                                    {{ 'form.press_guide.title'|trans }}
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.arriveTitle }}
+                                                </div>
+                                            </div>
                                             {% for widget in form.parent.children.arriveWidgets.children %}
-                                                <div class="item base-widget">
+                                                <div class="item base-widget"
+                                                     data-translation="translation-arrivee-widget-{{ loop.index }}">
                                                     {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
-                                                        <h4><strong>Image widget</strong></h4>
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                        {{ form_row(widget.gallery) }}
-                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
-                                                        <h4><strong>Colonne widget</strong></h4>
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                        {{ form_row(widget.gallery) }}
+                                                        <div class="form-group">
+                                                            <h4>{{ 'form.press_guide.image_widget'|trans }}</h4>
+                                                            <label>
+                                                                {{ 'form.press_guide.image_widget_title'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                            </div>
+                                                            <label>
+                                                                {{ 'form.press_guide.image_widget_content'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.content|raw }}
+                                                            </div>
+                                                        </div>
                                                     {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
-                                                        <h4><strong>Picto widget</strong></h4>
-                                                        {{ form_row(widget.picto) }}
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-
+                                                        <div class="form-group">
+                                                            <h4>{{ 'form.press_guide.picto_widget'|trans }}</h4>
+                                                            <label>
+                                                                {{ 'form.press_guide.picto_widget_title'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                            </div>
+                                                            <label>
+                                                                {{ 'form.press_guide.picto_widget_content'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.content|raw }}
+                                                            </div>
+                                                        </div>
+                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                        <div class="form-group">
+                                                            <h4>{{ 'form.press_guide.column_widget'|trans }}</h4>
+                                                            <label>
+                                                                {{ 'form.press_guide.column_widget_first_column'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.firstColumn|raw }}
+                                                            </div>
+                                                            <label>
+                                                                {{ 'form.press_guide.column_widget_second_column'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.secondColumn|raw }}
+                                                            </div>
+                                                            <label>
+                                                                {{ 'form.press_guide.column_widget_third_column'|trans }}
+                                                            </label>
+                                                            <div>
+                                                                {{ widget.children.translations.fr.vars.value.thirdColumn|raw }}
+                                                            </div>
+                                                        </div>
                                                     {% endif %}
-                                                    {{ form_row(widget._type) }}
-
-                                                    <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                        <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                                    </a>
                                                 </div>
                                             {% endfor %}
                                         </div>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image / texte</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto / texte</a>
-
-                                    </div>
+                                    {% endif %}
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
                             <div class="box-body">
                                 <div class="box box-success">
                                     <div class="box-header">
                                         <h4 class="box-title">
-                                            Information
+                                            {{ 'form.press_guide.information'|trans }}
                                         </h4>
                                     </div>
                                     <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.informationTitle) }}
+                                        <div id="translation-informations-title">
+                                            {{ form_row(translationsFields.informationTitle) }}
+                                        </div>
                                         {{ form_row(form.parent.children.informationIcon) }}
-                                        <div id="fdc-information-widget" class="fdc-widgets" data-form-widget="collection">
+                                        <div id="fdc-information-widget" class="fdc-widgets"
+                                             data-form-widget="collection">
                                             {% for widget in form.parent.children.informationWidgets.children %}
-                                                <div class="item base-widget">
+                                                <div id="translation-informations-widget-{{ loop.index }}"
+                                                     class="item base-widget">
                                                     {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
                                                         <h4><strong>Image widget</strong></h4>
                                                         {{ form_widget(attribute(widget.children.translations, locale)) }}
@@ -98,26 +400,124 @@
                                                 </div>
                                             {% endfor %}
                                         </div>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image / texte</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
-
+                                        <a class="btn btn-primary btn-add-base-widget"
+                                           data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i
+                                                    class="icon-plus"></i>Module image / texte</a>
+                                        <a class="btn btn-primary btn-add-base-widget"
+                                           data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i
+                                                    class="icon-plus"></i>Module colonne</a>
+                                        <a class="btn btn-primary btn-add-base-widget"
+                                           data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i
+                                                    class="icon-plus"></i>Module picto</a>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="box-body">
                                 <div class="box box-success">
                                     <div class="box-header">
                                         <h4 class="box-title">
-                                            Rendez vous des médias
+                                            {{ 'group.french_version'|trans|nl2br }}
+                                        </h4>
+                                    </div>
+                                    <div class="box-body widgets-translations">
+                                        {% if form.parent.children.translations.children.fr.vars.value %}
+                                            <div class="sonata-ba-collapsed-fields">
+                                                <div class="form-group"
+                                                     data-translation="translation-informations-title">
+                                                    <label>
+                                                        {{ 'form.press_guide.title'|trans }}
+                                                    </label>
+                                                    <div>
+                                                        {{ form.parent.children.translations.children.fr.vars.value.informationTitle }}
+                                                    </div>
+                                                </div>
+                                                {% for widget in form.parent.children.informationWidgets.children %}
+                                                    <div class="item base-widget"
+                                                         data-translation="translation-informations-widget-{{ loop.index }}">
+                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                            <div class="form-group">
+                                                                <h4>{{ 'form.press_guide.image_widget'|trans }}</h4>
+                                                                <label>
+                                                                    {{ 'form.press_guide.image_widget_title'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                                </div>
+                                                                <label>
+                                                                    {{ 'form.press_guide.image_widget_content'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.content|raw }}
+                                                                </div>
+                                                            </div>
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                            <div class="form-group">
+                                                                <h4>{{ 'form.press_guide.picto_widget'|trans }}</h4>
+                                                                <label>
+                                                                    {{ 'form.press_guide.picto_widget_title'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                                </div>
+                                                                <label>
+                                                                    {{ 'form.press_guide.picto_widget_content'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.content|raw }}
+                                                                </div>
+                                                            </div>
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                            <div class="form-group">
+                                                                <h4>{{ 'form.press_guide.column_widget'|trans }}</h4>
+                                                                <label>
+                                                                    {{ 'form.press_guide.column_widget_first_column'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.firstColumn|raw }}
+                                                                </div>
+                                                                <label>
+                                                                    {{ 'form.press_guide.column_widget_second_column'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.secondColumn|raw }}
+                                                                </div>
+                                                                <label>
+                                                                    {{ 'form.press_guide.column_widget_third_column'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.thirdColumn|raw }}
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="box-body">
+                                <div class="box box-success">
+                                    <div class="box-header">
+                                        <h4 class="box-title">
+                                            {{ 'form.press_guide.medias'|trans }}
                                         </h4>
                                     </div>
                                     <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.meetingTitle) }}
+                                        <div id="translation-medias-title">
+                                            {{ form_row(translationsFields.meetingTitle) }}
+                                        </div>
                                         {{ form_row(form.parent.children.meetingIcon) }}
-                                        <div id="fdc-meeting-widget" data-form-widget="collection">
+                                        <div id="fdc-meeting-widget" class="fdc-widgets"
+                                             data-form-widget="collection">
                                             {% for widget in form.parent.children.meetingWidgets.children %}
-                                                <div class="item base-widget">
+                                                <div class="item base-widget" id="translation-medias-widget-{{ loop.index }}">
                                                     {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
                                                         <h4><strong>Image widget</strong></h4>
                                                         {{ form_widget(attribute(widget.children.translations, locale)) }}
@@ -140,25 +540,124 @@
                                                 </div>
                                             {% endfor %}
                                         </div>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image / texte</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
+                                        <a class="btn btn-primary btn-add-base-widget"
+                                           data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i
+                                                    class="icon-plus"></i>Module image / texte</a>
+                                        <a class="btn btn-primary btn-add-base-widget"
+                                           data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i
+                                                    class="icon-plus"></i>Module colonne</a>
+                                        <a class="btn btn-primary btn-add-base-widget"
+                                           data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i
+                                                    class="icon-plus"></i>Module picto</a>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="box-body">
                                 <div class="box box-success">
                                     <div class="box-header">
                                         <h4 class="box-title">
-                                            Services
+                                            {{ 'group.french_version'|trans|nl2br }}
+                                        </h4>
+                                    </div>
+                                    <div class="box-body widgets-translations">
+                                        {% if form.parent.children.translations.children.fr.vars.value %}
+                                            <div class="sonata-ba-collapsed-fields">
+                                                <div class="form-group"
+                                                     data-translation="translation-medias-title">
+                                                    <label>
+                                                        {{ 'form.press_guide.title'|trans }}
+                                                    </label>
+                                                    <div>
+                                                        {{ form.parent.children.translations.children.fr.vars.value.meetingTitle }}
+                                                    </div>
+                                                </div>
+                                                {% for widget in form.parent.children.meetingWidgets.children %}
+                                                    <div class="item base-widget"
+                                                         data-translation="translation-medias-widget-{{ loop.index }}">
+                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                            <div class="form-group">
+                                                                <h4>{{ 'form.press_guide.image_widget'|trans }}</h4>
+                                                                <label>
+                                                                    {{ 'form.press_guide.image_widget_title'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                                </div>
+                                                                <label>
+                                                                    {{ 'form.press_guide.image_widget_content'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.content|raw }}
+                                                                </div>
+                                                            </div>
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                            <div class="form-group">
+                                                                <h4>{{ 'form.press_guide.picto_widget'|trans }}</h4>
+                                                                <label>
+                                                                    {{ 'form.press_guide.picto_widget_title'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                                </div>
+                                                                <label>
+                                                                    {{ 'form.press_guide.picto_widget_content'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.content|raw }}
+                                                                </div>
+                                                            </div>
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                            <div class="form-group">
+                                                                <h4>{{ 'form.press_guide.column_widget'|trans }}</h4>
+                                                                <label>
+                                                                    {{ 'form.press_guide.column_widget_first_column'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.firstColumn|raw }}
+                                                                </div>
+                                                                <label>
+                                                                    {{ 'form.press_guide.column_widget_second_column'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.secondColumn|raw }}
+                                                                </div>
+                                                                <label>
+                                                                    {{ 'form.press_guide.column_widget_third_column'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.thirdColumn|raw }}
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="box-body">
+                                <div class="box box-success">
+                                    <div class="box-header">
+                                        <h4 class="box-title">
+                                            {{ 'form.press_guide.services'|trans }}
                                         </h4>
                                     </div>
                                     <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.serviceTitle) }}
+                                        <div id="translation-services-title">
+                                            {{ form_row(translationsFields.serviceTitle) }}
+                                        </div>
                                         {{ form_row(form.parent.children.serviceIcon) }}
-                                        <div id="fdc-service-widget" class="fdc-widgets" data-form-widget="collection">
+                                        <div id="fdc-service-widget" class="fdc-widgets"
+                                             data-form-widget="collection">
                                             {% for widget in form.parent.children.serviceWidgets.children %}
-                                                <div class="item base-widget">
+                                                <div class="item base-widget" id="translation-services-widget-{{ loop.index }}">
                                                     {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
                                                         <h4><strong>Image widget</strong></h4>
                                                         {{ form_widget(attribute(widget.children.translations, locale)) }}
@@ -181,234 +680,107 @@
                                                 </div>
                                             {% endfor %}
                                         </div>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image / texte</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
+                                        <a class="btn btn-primary btn-add-base-widget"
+                                           data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i
+                                                    class="icon-plus"></i>Module image / texte</a>
+                                        <a class="btn btn-primary btn-add-base-widget"
+                                           data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i
+                                                    class="icon-plus"></i>Module colonne</a>
+                                        <a class="btn btn-primary btn-add-base-widget"
+                                           data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i
+                                                    class="icon-plus"></i>Module picto</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box-body">
+                                <div class="box box-success">
+                                    <div class="box-header">
+                                        <h4 class="box-title">
+                                            {{ 'group.french_version'|trans|nl2br }}
+                                        </h4>
+                                    </div>
+                                    <div class="box-body widgets-translations">
+                                        {% if form.parent.children.translations.children.fr.vars.value %}
+                                            <div class="sonata-ba-collapsed-fields">
+                                                <div class="form-group"
+                                                     data-translation="translation-services-title">
+                                                    <label>
+                                                        {{ 'form.press_guide.title'|trans }}
+                                                    </label>
+                                                    <div>
+                                                        {{ form.parent.children.translations.children.fr.vars.value.serviceTitle }}
+                                                    </div>
+                                                </div>
+                                                {% for widget in form.parent.children.serviceWidgets.children %}
+                                                    <div class="item base-widget"
+                                                         data-translation="translation-services-widget-{{ loop.index }}">
+                                                        {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
+                                                            <div class="form-group">
+                                                                <h4>{{ 'form.press_guide.image_widget'|trans }}</h4>
+                                                                <label>
+                                                                    {{ 'form.press_guide.image_widget_title'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                                </div>
+                                                                <label>
+                                                                    {{ 'form.press_guide.image_widget_content'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.content|raw }}
+                                                                </div>
+                                                            </div>
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
+                                                            <div class="form-group">
+                                                                <h4>{{ 'form.press_guide.picto_widget'|trans }}</h4>
+                                                                <label>
+                                                                    {{ 'form.press_guide.picto_widget_title'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.title|raw }}
+                                                                </div>
+                                                                <label>
+                                                                    {{ 'form.press_guide.picto_widget_content'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.content|raw }}
+                                                                </div>
+                                                            </div>
+                                                        {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
+                                                            <div class="form-group">
+                                                                <h4>{{ 'form.press_guide.column_widget'|trans }}</h4>
+                                                                <label>
+                                                                    {{ 'form.press_guide.column_widget_first_column'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.firstColumn|raw }}
+                                                                </div>
+                                                                <label>
+                                                                    {{ 'form.press_guide.column_widget_second_column'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.secondColumn|raw }}
+                                                                </div>
+                                                                <label>
+                                                                    {{ 'form.press_guide.column_widget_third_column'|trans }}
+                                                                </label>
+                                                                <div>
+                                                                    {{ widget.children.translations.fr.vars.value.thirdColumn|raw }}
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {% else %}
-                    <div class="col-md-8">
-                        <div class="box box-success">
-                            <div class="box-body">
-                                <div class="box box-success">
-                                    <div class="box-header">
-                                        <h4 class="box-title">
-                                            A votre arrivée
-                                        </h4>
-                                    </div>
-                                    <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.arriveTitle) }}
-                                        {{ form_row(form.parent.children.arriveIcon) }}
-                                        <div id="fdc-arrive-widget" class="fdc-widgets" data-form-widget="collection">
-                                            {% for widget in form.parent.children.arriveWidgets.children %}
-                                                <div class="item base-widget">
-                                                    {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
-                                                        <h4><strong>Image widget</strong></h4>
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                        {{ form_row(widget.gallery) }}
-                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
-                                                        <h4><strong>Colonne widget</strong></h4>
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                        {{ form_row(widget.gallery) }}
-                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
-                                                        <h4><strong>Picto widget</strong></h4>
-                                                        {{ form_row(widget.picto) }}
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-
-                                                    {% endif %}
-                                                    {{ form_row(widget._type) }}
-
-                                                    <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                        <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                                    </a>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image / texte</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.arriveWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto / texte</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-body">
-                                <div class="box box-success">
-                                    <div class="box-header">
-                                        <h4 class="box-title">
-                                            Information
-                                        </h4>
-                                    </div>
-                                    <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.informationTitle) }}
-                                        {{ form_row(form.parent.children.informationIcon) }}
-                                        <div id="fdc-information-widget" class="fdc-widgets" data-form-widget="collection">
-                                            {% for widget in form.parent.children.informationWidgets.children %}
-                                                <div class="item base-widget">
-                                                    {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
-                                                        <h4><strong>Image widget</strong></h4>
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                        {{ form_row(widget.gallery) }}
-                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
-                                                        <h4><strong>Colonne widget</strong></h4>
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                        {{ form_row(widget.gallery) }}
-                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
-                                                        <h4><strong>Picto widget</strong></h4>
-                                                        {{ form_row(widget.picto) }}
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-
-                                                    {% endif %}
-                                                    {{ form_row(widget._type) }}
-
-                                                    <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                        <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                                    </a>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image / texte</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.informationWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-body">
-                                <div class="box box-success">
-                                    <div class="box-header">
-                                        <h4 class="box-title">
-                                            Rendez vous des médias
-                                        </h4>
-                                    </div>
-                                    <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.meetingTitle) }}
-                                        {{ form_row(form.parent.children.meetingIcon) }}
-                                        <div id="fdc-meeting-widget" class="fdc-widgets" data-form-widget="collection">
-                                            {% for widget in form.parent.children.meetingWidgets.children %}
-                                                <div class="item base-widget">
-                                                    {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
-                                                        <h4><strong>Image widget</strong></h4>
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                        {{ form_row(widget.gallery) }}
-                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
-                                                        <h4><strong>Colonne widget</strong></h4>
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                        {{ form_row(widget.gallery) }}
-                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
-                                                        <h4><strong>Picto widget</strong></h4>
-                                                        {{ form_row(widget.picto) }}
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-
-                                                    {% endif %}
-                                                    {{ form_row(widget._type) }}
-
-                                                    <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                        <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                                    </a>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image / texte</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.meetingWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-body">
-                                <div class="box box-success">
-                                    <div class="box-header">
-                                        <h4 class="box-title">
-                                            Services
-                                        </h4>
-                                    </div>
-                                    <div class="sonata-ba-collapsed-fields">
-                                        {{ form_row(translationsFields.serviceTitle) }}
-                                        {{ form_row(form.parent.children.serviceIcon) }}
-                                        <div id="fdc-service-widget" class="fdc-widgets" data-form-widget="collection">
-                                            {% for widget in form.parent.children.serviceWidgets.children %}
-                                                <div class="item base-widget">
-                                                    {% if widget.children._type.vars.value == 'press_guide_widget_image_type' %}
-                                                        <h4><strong>Image widget</strong></h4>
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                        {{ form_row(widget.gallery) }}
-                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_column_type' %}
-                                                        <h4><strong>Colonne widget</strong></h4>
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-                                                        {{ form_row(widget.gallery) }}
-                                                    {% elseif widget.children._type.vars.value == 'press_guide_widget_picto_type' %}
-                                                        <h4><strong>Picto widget</strong></h4>
-                                                        {{ form_row(widget.picto) }}
-                                                        {{ form_widget(attribute(widget.children.translations, locale)) }}
-
-                                                    {% endif %}
-                                                    {{ form_row(widget._type) }}
-
-                                                    <a class="btn btn-danger btn-sm btn-outline remove_item">
-                                                        <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
-                                                    </a>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_image_type)| escape }}"><i class="icon-plus"></i>Module image / texte</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_column_type)| escape }}"><i class="icon-plus"></i>Module colonne</a>
-                                        <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.serviceWidgets.vars.prototypes.press_guide_widget_picto_type)| escape }}"><i class="icon-plus"></i>Module picto</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    {{ 'group.french_version'|trans|nl2br }}
-                                </h4>
-                            </div>
-                            <div class="box-body">
-                                {% if form.parent.children.translations.children.fr.vars.value %}
-                                <div class="sonata-ba-collapsed-fields">
-                                    <div class="form-group">
-                                        <label>
-                                            A votre arrivée - Titre
-                                        </label>
-                                        <div>
-                                            {{ form.parent.children.translations.children.fr.vars.value.arriveTitle }}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>
-                                            Information - Titre
-                                        </label>
-                                        <div>
-                                            {{ form.parent.children.translations.children.fr.vars.value.informationTitle }}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>
-                                            Rendez vous des médias - Titre
-                                        </label>
-                                        <div>
-                                            {{ form.parent.children.translations.children.fr.vars.value.meetingTitle }}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>
-                                            Services - Titre
-                                        </label>
-                                        <div>
-                                            {{ form.parent.children.translations.children.fr.vars.value.serviceTitle }}
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-                </div>
+                {% endif %}
                 <div class="row">
                     {% if form.vars.default_locale == locale %}
                         <div class="col-md-8">
