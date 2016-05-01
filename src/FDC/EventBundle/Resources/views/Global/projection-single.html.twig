@@ -315,7 +315,7 @@
                                     }) -%}
                                     {%- if relatedProjection.programmationFilms|length == 1 -%}
                                         <div class="txt">
-                                            <span>{{ film|trans_fallback('title')?:film.titleVO }}</span>
+                                            <span>{{ film.titleVO }}</span>
                                             {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                                             <strong>
                                                 {%- for director in directors -%}
