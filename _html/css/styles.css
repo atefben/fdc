@@ -18056,6 +18056,7 @@ input[type=submit] {
   }
   .press.press-home.calendar-open .communiques .grid-container article:nth-child(3), .press.press-home.calendar-open .communiques .grid-container article:nth-child(6), .press.press-programmation .communiques .grid-container article:nth-child(3), .press.press-programmation .communiques .grid-container article:nth-child(6) {
     border-right: 1px solid #e3e3e3;
+    clear: none;
   }
 }
 @media screen and (max-width: 1279px) {
