@@ -70,12 +70,16 @@ $(document).ready(function() {
     owInitGrid('isotope-01');
   }
 
-  if($('.who').length){
+  if($('.who').length) {
     owInitNavSticky(1);
   }
 
-  if($('.who-staff').length){
+  if($('.who-staff').length ){
     owInitGrid('isotope-02');
+  }
+
+  if($('.who-identity-guidelines').length) {
+    owInitAccordion("block-accordion");
   }
 
 });

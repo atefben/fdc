@@ -10,6 +10,7 @@ use \SoapFault;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
+use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 
 /**
  * Abstract CoreManager class.
@@ -43,7 +44,17 @@ abstract class CoreManager
      * @access protected
      */
     protected $logger;
-    
+
+    /**
+     * @var AdminSecurityHandler
+     */
+    protected $adminSecurityHandler;
+
+    /**
+     * @var AdminPool
+     */
+    protected $adminPool;
+
     /**
      * timer
      * 
@@ -134,6 +145,38 @@ abstract class CoreManager
     public function setEntityManager($em)
     {
         $this->em = $em;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdminSecurityHandler()
+    {
+        return $this->adminSecurityHandler;
+    }
+
+    /**
+     * @param mixed $adminSecurityHandler
+     */
+    public function setAdminSecurityHandler($adminSecurityHandler)
+    {
+        $this->adminSecurityHandler = $adminSecurityHandler;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdminPool()
+    {
+        return $this->adminPool;
+    }
+
+    /**
+     * @param mixed $adminPool
+     */
+    public function setAdminPool($adminPool)
+    {
+        $this->adminPool = $adminPool;
     }
     
     /**
@@ -528,6 +571,21 @@ abstract class CoreManager
             $this->em->persist($entity);
         }
         $this->em->flush();
+        //update ACL
+
+        $adminSecurityHandler = $this->adminSecurityHandler;
+
+        $objectIdentity = ObjectIdentity::fromDomainObject($entity);
+        $acl = $adminSecurityHandler->getObjectAcl($objectIdentity);
+        if (is_null($acl)) {
+            $acl = $adminSecurityHandler->createAcl($objectIdentity);
+        }
+
+        if ($this->adminPool->hasAdminByClass(get_class($entity))) {
+            $adminSecurityHandler->addObjectClassAces($acl, $adminSecurityHandler->buildSecurityInformation($this->adminPool->getAdminByClass(get_class($entity))));
+            $adminSecurityHandler->updateAcl($acl);
+            $this->logger->info(get_class($entity) ." #".$entity->getId()." - ACL regenerated");
+        }
     }
     
 
