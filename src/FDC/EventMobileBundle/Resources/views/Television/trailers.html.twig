@@ -27,8 +27,8 @@
                     {% endif %}
                     {% if slug is defined %}
                         <div class="vid">
-                            <p><a href="{{ path('fdc_event_television_trailers', {'slug': slug}) }}"
-                               data-url="{{ path('fdc_event_television_trailers', {'slug': slug}) }}"
+                            <p><a href="{{ path('fdc_eventmobile_television_trailers', {'slug': slug}) }}"
+                               data-url="{{ path('fdc_eventmobile_television_trailers', {'slug': slug}) }}"
                                class="{% if app.request.attributes.get('slug') == slug %}active{% endif %} ajax">
                                 {% if item|trans_fallback('overrideName') %}
                                     {{ item|trans_fallback('overrideName') }}
@@ -65,7 +65,7 @@
 
                                      alt="{{ group.video.image|trans_fallback('alt') }}">
 
-                                <a href="{{ path('fdc_event_television_gettrailer', {'slug': group.film.slug}) }}"></a>
+                                <a href="{{ path('fdc_eventmobile_television_gettrailer', {'slug': group.film.slug}) }}"></a>
                                 <div class="info">
                                     <div class="picto vCenter">
                                         <div class="vCenterKid"><i class="icon icon_playlist"></i></div>
@@ -73,7 +73,7 @@
                                     <div class="right">
                                         {#<div class="vCenter">#}
                                             {#<div class="vCenterKid">#}
-                                                <span class="category">{{ (group.film.findTranslationByLocale(app.request.locale).title ?: group.film.titleVO)|truncate(16) }}</span>
+                                                <span class="category">{{ (group.film.findTranslationByLocale(app.request.locale).title ?: group.film.titleVO)|truncate(15) }}</span>
                                                 {% spaceless %}
                                                     <span class="titleLink">
                                                         {% for director in group.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}

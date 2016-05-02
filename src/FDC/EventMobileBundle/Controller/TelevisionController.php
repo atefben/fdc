@@ -514,10 +514,10 @@ class TelevisionController extends Controller
             'film'             => $film,
             'videos'           => array_values($videos),
             'filmShowings'     => $filmShowings,
-            'poster'           => $poster,
+//            'poster'           => $poster,
             'next'             => $next instanceof FilmFilm ? $next : null,
-            'posterNext'       => $posterNext,
-            'posterNextFormat' => $posterNextFormat,
+//            'posterNext'       => $posterNext,
+//            'posterNextFormat' => $posterNextFormat,
         );
     }
 }

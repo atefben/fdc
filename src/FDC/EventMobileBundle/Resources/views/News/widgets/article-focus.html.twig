@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 <div data-id="article{{ index }}" class="thumb {% if index == 1 %}active{% endif %} item">
-    <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
+    <a href="{{ path('fdc_eventmobile_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
     <div class="image{% if type is defined and type == 'same-day' %} image-sameday-wrapper{% endif %}">
         <div class="img-container">
             {% if type is defined %}
@@ -105,7 +105,7 @@
             <span class="category">{{ article.theme|trans_fallback('name') }}</span>
             <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
             <h2>
-                {#<a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">#}
+                {#<a href="{{ path('fdc_eventmobile_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">#}
                     {{ article|trans_fallback('title') }}
                 {#</a>#}
             </h2>
