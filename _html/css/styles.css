@@ -17402,6 +17402,7 @@ input[type=submit] {
     display: none;
   }
   .press .communiques .grid-container article:nth-child(5) {
+    border-right: none;
     clear: none;
   }
   .press .communiques .grid-container article:nth-child(4) {
@@ -18045,6 +18046,7 @@ input[type=submit] {
     display: none;
   }
   .press.press-home.calendar-open .communiques .grid-container article:nth-child(5), .press.press-programmation .communiques .grid-container article:nth-child(5) {
+    border-right: none;
     clear: none;
   }
   .press.press-home.calendar-open .communiques .grid-container article:nth-child(4), .press.press-programmation .communiques .grid-container article:nth-child(4) {
