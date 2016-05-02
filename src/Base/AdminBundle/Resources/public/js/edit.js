@@ -233,7 +233,7 @@ function editEvents() {
         }
 
         $(e).find('option').each(function (i, e) {
-            if ($.inArray($(e).val(), status) == -1) {
+            if ($.inArray($(e).val(), status) == -1 && !$(e).is(':selected')) {
                 $(e).remove();
             }
         });
