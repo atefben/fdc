@@ -137,13 +137,14 @@ class MediaVideoAdmin extends Admin
             $securityContext->isGranted('ROLE_TRANSLATOR_ZH')
         ) ? true : false;
 
+        $requiredLocales = ($isTranslatorEnEsCh) ? array() : array('fr');
         $amazonRemoteFileAttrs = ($isTranslatorEnEsCh) ? array('disabled' => 'disabled') : array();
 
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label'              => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales'   => array('fr'),
+                'required_locales'   => $requiredLocales,
                 'fields'             => array(
                     'createdAt'        => array(
                         'display' => false

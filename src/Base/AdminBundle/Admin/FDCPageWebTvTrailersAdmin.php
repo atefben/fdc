@@ -48,7 +48,6 @@ class FDCPageWebTvTrailersAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label'              => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales'   => array('fr'),
                 'fields'             => array(
                     'status'         => array(
                         'label'                     => 'form.label_status',
@@ -105,11 +104,19 @@ class FDCPageWebTvTrailersAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $securityContext = $this->getConfigurationPool()->getContainer()->get('security.context');
+        $isTranslatorEnEsCh = (
+            $securityContext->isGranted('ROLE_TRANSLATOR_EN') ||
+            $securityContext->isGranted('ROLE_TRANSLATOR_ES') ||
+            $securityContext->isGranted('ROLE_TRANSLATOR_ZH')
+        ) ? true : false;
+        $requiredLocales = ($isTranslatorEnEsCh) ? array() : array('fr');
+
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label'              => false,
                 'translation_domain' => 'BaseAdminBundle',
-                'required_locales'   => array('fr'),
+                'required_locales'   => $requiredLocales,
                 'fields'             => array(
                     'status'         => array(
                         'label'                     => 'form.label_status',
