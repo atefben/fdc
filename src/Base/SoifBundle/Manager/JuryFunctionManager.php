@@ -65,7 +65,9 @@ class JuryFunctionManager extends CoreManager
 
         // create file for sonata media
         $filename = $this->soifUploadDirectory. md5($id). '.'. $extension;
-        $this->createFileFromString($base64, $filename, $extension);
+        if ($this->createFileFromString($base64, $filename, $extension) === false) {
+            return;
+        }
 
         // update entity / generate thumbnails
         $media = $entity->getFile();

@@ -138,6 +138,7 @@ class MediaStreamManager extends CoreManager
             $msg = __METHOD__. " - Impossible to create image from base 64 of {$this->wsParameterKey} : {$filename}";
             $exception = new Exception($msg);
             $this->throwException($msg, $exception);
+            return false;
         }
 
         switch ($extension) {
@@ -156,7 +157,7 @@ class MediaStreamManager extends CoreManager
                 $msg = __METHOD__. " - The extension handler {$extension} is not found.";
                 $exception = new Exception($msg);
                 $this->throwException($msg, $exception);
-                break;
+                return false;
         }
         
         if ($file === false) {
