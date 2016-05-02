@@ -521,3 +521,27 @@
     margin-left: 0;
   }
 }
+
+
+#main.selection-officielle {
+  #horizontal-menu {
+    .vid {
+      p{
+        display: block;
+        font-size: 1.5rem;
+        margin-top: 0;
+        font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 600;
+        padding-top: 40px;
+      }
+    }
+
+  }
+  .content-selection{
+    .selection-item{
+      float: left;
+    }
+  }
+}
