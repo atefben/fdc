@@ -30,7 +30,12 @@ class MovieController extends Controller
     {
         $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
-        $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
+
+        try {
+            $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
+        } catch (\Exception $e) {
+            $isAdmin = false;
+        }
 
         // GET MOVIE
         if ($isAdmin) {
