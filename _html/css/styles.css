@@ -19267,6 +19267,11 @@ input[type=submit] {
 .accreditation #accreditation .wrapper .container-small ul li a:hover {
   color: #8e6d30;
 }
+.accreditation #accreditation .wrapper .container-small ol {
+  list-style: decimal;
+  margin-bottom: 5px;
+  padding-left: 20px;
+}
 .accreditation #accreditation .wrapper .container-small h5 {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.75rem;
