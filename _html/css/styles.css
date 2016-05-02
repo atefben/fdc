@@ -11171,6 +11171,7 @@ article .read-later.rAlign span:after {
   overflow: hidden;
   position: relative;
   z-index: 1;
+  clear: both;
 }
 .single-movie .container.container-top {
   overflow: initial;
