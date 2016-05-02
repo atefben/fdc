@@ -175,19 +175,18 @@ $(document).ready(function () {
         });
 
         // test if events are already store in local storage
-        if (events.length != 0) {
-          $('.events-container .fc-event').each(function () {
-            var id    = $(this).data('id'),
-                $this = $(this);
+        $('.events-container .fc-event').each(function () {
+          $(this).find('.category').css('background-color', $(this).data('color'));
 
+          if (events.length != 0) {
             for (var i = 0; i < events.length; i++) {
-              if (id == events[i].id) {
-                $this.parent().addClass('delete');
-                $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
+              if ($(this).data('id') == events[i].id) {
+                $(this).parent().addClass('delete');
+                $(this).parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
               }
             }
-          });
-        }
+          }
+        });
 
         if($('.press .programmation').length > 0) {
           $('html, body').animate({
