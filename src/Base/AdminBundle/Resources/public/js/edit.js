@@ -206,7 +206,7 @@ function editEvents() {
             if (locale != 'fr') {
                 status = ['0', '2', '3', '5'];
             } else {
-                $("select").val("0").trigger("change");
+                $(this).val("0").trigger("change");
             }
             var url = window.location.href;
             url = url.split("/");
@@ -215,11 +215,12 @@ function editEvents() {
                 url[6] == 'mediaimagesimple' ||
                 url[6] == 'mediavideo' ||
                 url[6] == 'gallery') {
+                console.log('test');
                 status = ['0', '1', '4', '6'];
                 if (locale != 'fr') {
                     status = ['0', '2', '3', '5'];
                 } else {
-                    $("select").val("0").trigger("change");
+                    $(this).val("0").trigger("change");
                 }
             }
         }
