@@ -1,3 +1,29 @@
+var owInitAccordion = function(id) {
+
+  if(id == "block-accordion") {
+
+    var $accordion = $('.block-accordion');
+    var $title = $('.block-accordion .title-contain');
+
+    $title.on('click', function() {
+      $parent = $(this).parent();
+      $this = $(this);
+      $icon = $(this).find('.icon');
+
+      if($parent.hasClass('active')) {
+
+        $parent.removeClass('active');
+        $icon.removeClass('icon-minus').addClass('icon-create');
+
+      }else{
+        $parent.addClass('active');
+        $icon.removeClass('icon-create').addClass('icon-minus');
+
+      }
+    });
+  }
+}
+
 var owInitGrid = function(id){
 
   if(id == 'isotope-01') {
@@ -429,12 +455,16 @@ $(document).ready(function() {
     owInitGrid('isotope-01');
   }
 
-  if($('.who').length){
+  if($('.who').length) {
     owInitNavSticky(1);
   }
 
-  if($('.who-staff').length){
+  if($('.who-staff').length ){
     owInitGrid('isotope-02');
+  }
+
+  if($('.who-identity-guidelines').length) {
+    owInitAccordion("block-accordion");
   }
 
 });
