@@ -9,7 +9,7 @@
                     {% set countFolder = 0 %}
                     {% set countImage = 0 %}
                     {% for video in film.associatedMediaVideos %}
-                        {% if video.mediaVideo.displayedTrailer == 1 %}
+                        {% if video.mediaVideo.displayedTrailer == 1  and video.mediaVideo.jobWebmState == 3 and video.mediaVideo.jobMp4State == 3 %}
                             {% set countVideo = countVideo + 1 %}
                         {% endif %}
                     {% endfor %}
