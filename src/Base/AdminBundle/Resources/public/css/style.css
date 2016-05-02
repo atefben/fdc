@@ -318,3 +318,8 @@ form[action*="widgetmosaicmovie"] div[id$="translations"] > .form-group > label.
     color: #3c8dbc;
     cursor: pointer;
 }
+
+.translation-boxes {
+    overflow: auto;
+    height: 174px;
+}

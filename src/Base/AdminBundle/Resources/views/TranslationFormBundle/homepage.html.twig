@@ -304,7 +304,7 @@
                     </div>
                 {% else %}
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4 class="box-title">
@@ -373,9 +373,43 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'homepage.group.prefooter'|trans }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.prefooterTitle1) }}
+                                        {{  form_row(translationsFields.prefooterUrl1) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.prefooterTitle2) }}
+                                        {{  form_row(translationsFields.prefooterUrl2) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.prefooterTitle3) }}
+                                        {{  form_row(translationsFields.prefooterUrl3) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.prefooterTitle4) }}
+                                        {{  form_row(translationsFields.prefooterUrl4) }}
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{  form_row(translationsFields.prefooterTitle5) }}
+                                        {{  form_row(translationsFields.prefooterUrl5) }}
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         {% if form.parent.children.translations.children.fr.vars.value is defined and form.parent.children.translations.children.fr.vars.value is not null  %}
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4 class="box-title">
@@ -384,53 +418,59 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
-                                        <div class="form-group">
-                                            <label>
-                                                {{ 'form.label_primary_push_title'|trans }}1
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.primaryPushTitle1 }}
-                                            </div>
-                                            <label>
-                                                {{ 'form.label_primary_push_url'|trans }}1
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.primaryPushUrl1 }}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>
-                                                {{ 'form.label_primary_push_title'|trans }}2
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.primaryPushTitle2 }}
-                                            </div>
-                                            <label>
-                                                {{ 'form.label_primary_push_url'|trans }}2
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.primaryPushUrl2 }}
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_primary_push_title'|trans }}1
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.primaryPushTitle1 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_primary_push_url'|trans }}1
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.primaryPushUrl1 }}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>
-                                                {{ 'form.label_primary_push_title'|trans }}3
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.primaryPushTitle3 }}
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_primary_push_title'|trans }}2
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.primaryPushTitle2 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_primary_push_url'|trans }}2
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.primaryPushUrl2 }}
+                                                </div>
                                             </div>
-                                            <label>
-                                                {{ 'form.label_primary_push_url'|trans }}3
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.primaryPushUrl3 }}
+                                        </div>
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_primary_push_title'|trans }}3
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.primaryPushTitle3 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_primary_push_url'|trans }}3
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.primaryPushUrl3 }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4 class="box-title">
@@ -439,117 +479,225 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
-
-                                        <div class="form-group">
-                                            <label>
-                                                {{ 'form.label_secondary_push_title'|trans }}1
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle1 }}
-                                            </div>
-                                            <label>
-                                                {{ 'form.label_secondary_push_url'|trans }}1
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl1 }}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>
-                                                {{ 'form.label_secondary_push_title'|trans }}2
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle2 }}
-                                            </div>
-                                            <label>
-                                                {{ 'form.label_secondary_push_url'|trans }}2
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl2 }}
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_footer_title'|trans }}1
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle1 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_footer_push'|trans }}1
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl1 }}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>
-                                                {{ 'form.label_secondary_push_title'|trans }}3
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle3 }}
-                                            </div>
-                                            <label>
-                                                {{ 'form.label_secondary_push_url'|trans }}3
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl3 }}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>
-                                                {{ 'form.label_secondary_push_title'|trans }}
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle4 }}
-                                            </div>
-                                            <label>
-                                                {{ 'form.label_secondary_push_url'|trans }}4
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl4 }}
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_secondary_push_title'|trans }}2
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle2 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_secondary_push_url'|trans }}2
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl2 }}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>
-                                                {{ 'form.label_secondary_push_title'|trans }}5
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle5 }}
-                                            </div>
-                                            <label>
-                                                {{ 'form.label_secondary_push_url'|trans }}5
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl5 }}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>
-                                                {{ 'form.label_secondary_push_title'|trans }}6
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle6 }}
-                                            </div>
-                                            <label>
-                                                {{ 'form.label_secondary_push_url'|trans }}6
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl6 }}
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_secondary_push_title'|trans }}3
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle3 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_secondary_push_url'|trans }}3
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl3 }}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>
-                                                {{ 'form.label_secondary_push_title'|trans }}7
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle7 }}
-                                            </div>
-                                            <label>
-                                                {{ 'form.label_secondary_push_url'|trans }}7
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl7 }}
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_secondary_push_title'|trans }}
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle4 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_secondary_push_url'|trans }}4
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl4 }}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>
-                                                {{ 'form.label_secondary_push_title'|trans }}8
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle8 }}
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_secondary_push_title'|trans }}5
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle5 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_secondary_push_url'|trans }}5
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl5 }}
+                                                </div>
                                             </div>
-                                            <label>
-                                                {{ 'form.label_secondary_push_url'|trans }}8
-                                            </label>
-                                            <div>
-                                                {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl8 }}
+                                        </div>
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_secondary_push_title'|trans }}6
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle6 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_secondary_push_url'|trans }}6
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl6 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_secondary_push_title'|trans }}7
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle7 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_secondary_push_url'|trans }}7
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl7 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_secondary_push_title'|trans }}8
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushTitle8 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_secondary_push_url'|trans }}8
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.secondaryPushUrl8 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        {{ 'group.french_version'|trans|nl2br }}
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields">
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_prefooter_title'|trans }}1
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.prefooterTitle1 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_prefooter_url'|trans }}1
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.prefooterUrl1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_prefooter_title'|trans }}2
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.prefooterTitle2 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_prefooter_url'|trans }}2
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.prefooterUrl2 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_prefooter_title'|trans }}3
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.prefooterTitle3 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_prefooter_url'|trans }}3
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.prefooterUrl3 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_prefooter_title'|trans }}4
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.prefooterTitle4 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_prefooter_url'|trans }}4
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.prefooterUrl4 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 translation-boxes">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ 'form.label_prefooter_title'|trans }}5
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.prefooterTitle5 }}
+                                                </div>
+                                                <label>
+                                                    {{ 'form.label_prefooter_url'|trans }}5
+                                                </label>
+                                                <div>
+                                                    {{ form.parent.children.translations.children.fr.vars.value.prefooterUrl5 }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
