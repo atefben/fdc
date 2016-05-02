@@ -16324,6 +16324,8 @@ input[type=submit] {
 }
 .partners .content-partners .contain-section .item-partners .contain-img img {
   padding: 65px;
+  margin: 0 auto;
+  display: block;
 }
 .partners .content-partners .contain-section .item-partners .text-partners {
   width: 571px;
