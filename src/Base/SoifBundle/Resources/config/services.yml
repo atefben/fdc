@@ -15,6 +15,8 @@ services:
             - ['setSoifLogger', ['@base.soif.logger_manager']]
             - ['setWebserviceUrl', ['%soif_url%']]
             - ['setValidator', ['@validator']]
+            - ['setAdminSecurityHandler', ['@sonata.admin.security.handler']]
+            - ['setAdminPool', ['@sonata.admin.pool']]
 
     #soif children
     base.soif.award_manager:
