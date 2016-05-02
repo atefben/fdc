@@ -705,38 +705,41 @@ $(document).ready(function () {
             expires: 365
           });
 
-          // retrieve the dropped element's stored Event Object
-          var originalEventObject = $ev.data('eventObject');
+          var eventObject = {
+            title          : $ev.find('.txt span').text(),
+            eventColor     : $ev.data('color'),
+            start          : $ev.data('start'),
+            end            : $ev.data('end'),
+            type           : $ev.find('.category').text(),
+            author         : $ev.find('.txt strong').text(),
+            picture        : $ev.find('img').attr('src'),
+            duration       : $ev.data('duration'),
+            room           : $ev.find('.bottom .ven').text(),
+            selection      : $ev.find('.bottom .competition').text(),
+            eventPictogram : $ev.data('picto').substr(1),
+            id             : $ev.data('id'),
+            url            : $ev.data('url')
+          };
 
-          // we need to copy it, so that multiple events don't have a reference to the same object
-          var copiedEventObject = $.extend({}, originalEventObject);
-
-          // assign it the date that was reported
-          copiedEventObject.start = copiedEventObject.start;
-
-          if (events.filter(function (e) {
-              return e.id == copiedEventObject.id;
-            }).length > 0) {
-            return false;
-          }
+          $ev.parent().addClass('delete');
+          $ev.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
 
           // render the event on the calendar
-          $('#mycalendar').fullCalendar('renderEvent', copiedEventObject, true);
+          $('#mycalendar').fullCalendar('renderEvent', eventObject);
 
           // get local storage
           var agenda = localStorage.getItem('agenda_press');
 
           if (agenda == null) {
-            events.push(copiedEventObject);
+            events.push(eventObject);
             localStorage.setItem('agenda_press', JSON.stringify(events));
           } else {
             events = JSON.parse(agenda);
-            events.push(copiedEventObject);
+            events.push(eventObject);
             localStorage.setItem('agenda_press', JSON.stringify(events));
           }
 
-          $(this).parent().addClass('delete');
-          $(this).removeClass('add').text(GLOBALS.texts.agenda.delete);
+          eventObject = {};
         });
 
         // close popin
