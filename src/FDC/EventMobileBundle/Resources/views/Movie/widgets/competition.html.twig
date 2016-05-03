@@ -6,17 +6,6 @@
     <div id="slider-competition" class="owl-carousel competition-carousel">
         {% for movie in movies %}
 
-
-            {#<div data-id="film1" class="thumb active">#}
-                {#<a href="movie.html"></a>#}
-                {#<div class="img-container" style="background-image:url(./img/movie/001.jpg)"></div>#}
-                {#<div class="info">#}
-                    {#<p>Carol</p>#}
-                    {#<a class="director" href="#">Todd HAYNES</a>#}
-                {#</div>#}
-            {#</div>#}
-
-
             <div data-id="film{{ loop.index }}" class="thumb active">
                 <div class="img-container" style="background-image:url(
                 {% include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
@@ -25,7 +14,7 @@
                     film_format: 'mobile',
                     film_image_default: 'bundles/fdcevent/img/palmares/film_w210.jpg'
                 }) %})"></div>
-                <a class="linkVid" href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}"></a>
+                <a class="linkVid" href="{{ path('fdc_eventmobile_movie_get', {'slug': movie.slug}) }}"></a>
                 <div class="info">
                     <p>
                         {% if movie|trans_fallback('title') is not empty %}
@@ -46,54 +35,3 @@
         {% endfor %}
     </div>
 </div>
-
-
-{#<div class="section competition">#}
-    {#<h3 class="title-section">en compétition</h3>#}
-
-    {#<div class="owl-carousel competition-carousel">#}
-
-        {#<div data-id="film1" class="thumb active">#}
-            {#<a href="movie.html"></a>#}
-            {#<div class="img-container" style="background-image:url(./img/movie/001.jpg)"></div>#}
-            {#<div class="info">#}
-                {#<p>Carol</p>#}
-                {#<a class="director" href="#">Todd HAYNES</a>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div data-id="film2" class="thumb">#}
-            {#<a href="movie.html"></a>#}
-            {#<div class="img-container" style="background-image:url(./img/movie/003.jpg)"></div>#}
-            {#<div class="info">#}
-                {#<p>Carol</p>#}
-                {#<a class="director" href="#">Todd HAYNES</a>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div data-id="film3" class="thumb">#}
-            {#<a href="movie.html"></a>#}
-            {#<div class="img-container" style="background-image:url(./img/movie/movie.jpg)"></div>#}
-            {#<div class="info">#}
-                {#<p>Carol</p>#}
-                {#<a class="director" href="#">Todd HAYNES</a>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div data-id="film4" class="thumb">#}
-            {#<a href="movie.html"></a>#}
-            {#<div class="img-container" style="background-image:url(./img/movie/movie1.jpg)"></div>#}
-            {#<div class="info">#}
-                {#<p>Carol</p>#}
-                {#<a class="director" href="#">Todd HAYNES</a>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div data-id="film5" class="thumb">#}
-            {#<a href="movie.html"></a>#}
-            {#<div class="img-container" style="background-image:url(./img/movie/001.jpg)"></div>#}
-            {#<div class="info">#}
-                {#<p>Carol</p>#}
-                {#<a class="director" href="#">Todd HAYNES</a>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
-
-
-{#</div>#}
