@@ -8,6 +8,9 @@
 
 namespace Base\CoreBundle\Twig\Extension;
 
+use Base\CoreBundle\Entity\Info;
+use Base\CoreBundle\Entity\News;
+use Base\CoreBundle\Entity\Statement;
 use \Twig_Extension;
 
 class NewsTypeExtension extends Twig_Extension
@@ -27,21 +30,36 @@ class NewsTypeExtension extends Twig_Extension
         );
     }
 
-    public function getNewsType($newsType)
+    public function getNewsType($object)
     {
         $type = null;
+        if ($object instanceof News) {
+            $type = $object->getNewsType();
+        } elseif ($object instanceof Statement) {
+            $type = $object->getStatementType();
+        } elseif ($object instanceof Info) {
+            $type = $object->getInfoType();
+        }
 
-        switch ($newsType) {
-            case "NewsArticle":
+        switch ($type) {
+            case 'NewsArticle':
+            case 'InfoArticle':
+            case 'StatementArticle':
                 $type = 'article';
                 break;
-            case "NewsAudio":
+            case 'NewsAudio':
+            case 'InfoAudio':
+            case 'StatementAudio':
                 $type = 'audio';
                 break;
-            case "NewsImage":
+            case 'NewsImage':
+            case 'InfoImage':
+            case 'StatementImage':
                 $type = 'photo';
                 break;
-            case "NewsVideo":
+            case 'NewsVideo':
+            case 'InfoVideo':
+            case 'StatementVideo':
                 $type = 'video';
                 break;
         }

@@ -22,15 +22,18 @@ class FDCPageWaitingRepository extends TranslationRepository
     {
         $qb = $this->createQueryBuilder('p');
 
-        $qb
-            ->join('p.page', 'pp')
-            ->andWhere('p.enabled = :enabled')
-            ->andWhere('pp.route = :route')
-            ->setParameter('enabled', true)
-            ->setParameter('route', $route)
-        ;
+        try {
+            $qb
+                ->join('p.page', 'pp')
+                ->andWhere('p.enabled = :enabled')
+                ->andWhere('pp.route = :route')
+                ->setParameter('enabled', true)
+                ->setParameter('route', $route);
 
-        return $qb->getQuery()->getOneOrNullResult();
+            return $qb->getQuery()->getOneOrNullResult();
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 
 }
