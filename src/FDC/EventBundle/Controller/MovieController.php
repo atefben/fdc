@@ -113,8 +113,8 @@ class MovieController extends Controller
                     if (isset($movies[$key - 1])) {
                         $prev = $movies[$key - 1];
                     }
-                    if (isset($movies[$key + 1])) {
-                        $next = $movies[$key + 1];
+                    if (isset($movies[$key])) {
+                        $next = $movies[$key];
                     }
                 }
                 break;
