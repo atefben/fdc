@@ -188,6 +188,7 @@ sonata_media:
                 97x61: { width: 97 , height: 61 , quality: 100, constraint: false}
                 # WebTv trailer navigation
                 293x185: { width: 293 , height: 185 , quality: 100, constraint: false}
+                259x352: { width: 259 , height: 352 , quality: 100, constraint: false }
                 # WebTv trailer film poster
                 135x185: { width: 135 , height: 185 , quality: 100, constraint: false}
                 # Grid Press Download #
