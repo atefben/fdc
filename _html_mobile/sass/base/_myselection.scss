@@ -84,7 +84,7 @@
 	height: 70px;
 	line-height: 70px;
 	text-align: center;
-	z-index: 2;
+	z-index: 100;
 }
 .my-selection .thumb .picto .icon{
 
@@ -145,7 +145,7 @@
     height: 55px;
     position: absolute;
     right: 0;
-    top: -22px;
+    top: 0;
     width: 55px;
     z-index: 5;
     text-align: center;
