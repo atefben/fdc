@@ -139,7 +139,8 @@ class SearchController extends Controller
         
         // Get untranslated fields query.
         $fields = array(
-          'selectionSection'
+          'selectionSection',
+          'titleVO'
         );
  
         $fieldsQuery = $repository->getFieldsKeywordQuery($fields, $searchTerm, false);
