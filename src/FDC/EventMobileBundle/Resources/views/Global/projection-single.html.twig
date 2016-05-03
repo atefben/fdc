@@ -62,7 +62,7 @@
                                 {%- set duration = film.duration|split('.') -%}
                                 {{ 'movie.label.duree'|trans }} :
                                 {%- if duration|length >= 1 -%}
-                                    {% set hours = duration[0]|round  %}
+                                    {% set hours = (duration[0]/60)|round  %}
                                     {% set minutes = duration[0] % 60  %}
                                     <span>{{ hours }}H{{ minutes }}</span>
                                 {%- endif -%}
