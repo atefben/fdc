@@ -54,12 +54,11 @@ class PalmaresController extends Controller
             ->getRepository('BaseCoreBundle:FDCPageAward')
             ->getPageBySlug($locale, $slug)
         ;
-
         $parameters = array(
             'pages'    => $pages,
             'page'     => $page,
             'category' => $page->getCategory(),
-            'festival' => $festival,
+            'festival' => $festival
         );
 
         //SEO
