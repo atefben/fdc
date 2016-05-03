@@ -308,6 +308,10 @@
       color: #999999;
       font-size: 1rem;
       line-height: 26px;
+
+      &.half-div {
+        width: 730px;
+      }
     
       p {
         color: #999;
@@ -316,6 +320,14 @@
         strong {
           color: #999;
           font-weight: bold;
+        }
+
+        a {
+          color: $gold;
+
+          strong, em {
+            color: $gold;
+          }
         }
       }
     
@@ -668,11 +680,7 @@
     }
   }
 
-  .half-photo {
-    margin: 0px 29px 50px 0;
-    margin-bottom: 60px;
-    width: 48%;
-  
+  .half-photo {  
     .caption {
       padding: 0px 0px !important;
     }

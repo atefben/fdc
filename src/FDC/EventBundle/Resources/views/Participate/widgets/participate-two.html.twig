@@ -1,5 +1,4 @@
 {% trans_default_domain 'FDCPressBundle' %}
-
 <div class="item-partners">
     <div class="contain-img">
         {% if widget.image is not null %}
@@ -8,7 +7,7 @@
                 {% set trans = widget.image.findTranslationByLocale('fr') %}
             {% endif %}
             {% set image = trans.file %}
-            <img src="{% path image, '270x165' %}" {% if image.width > image.height %}width="200"{% elseif image.width == image.height %}width="135" height="135"{% else %}height="135"{% endif %} alt="{{ widget.image|trans_fallback('alt') }}" />
+            <img src="{% path image, '270x165' %}" {% if image.width > image.height %}width="200"{% elseif image.width == image.height %}width="105" height="105"{% else %}height="105"{% endif %} alt="{{ widget.image|trans_fallback('alt') }}" />
         {% endif %}
     </div>
     <div class="text-partners">
@@ -24,7 +23,7 @@
                         {% set trans = widget.sponsorImage.findTranslationByLocale('fr') %}
                     {% endif %}
                     {% set image = trans.file %}
-                    <img src="{% path image, '60x81' %}" alt="{{ widget.sponsorImage|trans_fallback('alt') }}" />
+                    <img src="{% path image, '60x81' %}" {% if image.width > image.height %}width="60"{% else %}height="81"{% endif %}  alt="{{ widget.sponsorImage|trans_fallback('alt') }}" />
                 {% endif %}
                 <strong class="name">{{ widget|trans_fallback('sponsorLastName') }} {{ widget|trans_fallback('sponsorFirstName') }}</strong>
                 <span class="rank">{{ widget|trans_fallback('sponsorRole') }}</span>

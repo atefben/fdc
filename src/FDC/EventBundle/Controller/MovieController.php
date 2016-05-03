@@ -188,6 +188,8 @@ class MovieController extends Controller
                 throw new NotFoundHttpException('Cinema de la plage not found');
             }
 
+            $localeSlugs = $page->getLocaleSlugs();
+
             // ALL SELECTION
             $selectionTabs = $this
                 ->getDoctrineManager()
@@ -217,7 +219,8 @@ class MovieController extends Controller
                 'projections'    => $projections,
                 'cannesClassics' => $cannesClassics,
                 'selectionTabs'  => $selectionTabs,
-                'next'           => $next
+                'next'           => $next,
+                'localeSlugs'    => $localeSlugs
             ));
         }
 
@@ -258,6 +261,8 @@ class MovieController extends Controller
         if (!$page || !$page->getSelectionSection()) {
             throw  $this->createNotFoundException('Page Selection not found');
         }
+
+        $localeSlugs = $page->getLocaleSlugs();
 
         $next = false;
         foreach ($pages as $item) {
@@ -302,6 +307,7 @@ class MovieController extends Controller
             'movies'         => $movies,
             'next'           => is_object($next) ? $next : false,
             'next_classics'  => !empty($nextClassics),
+            'localeSlugs'    => $localeSlugs,
         ));
     }
 

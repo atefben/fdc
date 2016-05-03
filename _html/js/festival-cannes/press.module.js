@@ -307,7 +307,7 @@ $(document).ready(function () {
         slotEventOverlap: false,
         slotLabelFormat: typeof GLOBALS.calendar.labelFormat[GLOBALS.locale] !== "undefined" ? GLOBALS.calendar.labelFormat[GLOBALS.locale] : GLOBALS.calendar.labelFormat.default,
         eventAfterRender: function (event, element, view) {
-          if (event.duration / 60 < 2) {
+          if (event.duration / 60 < 2 && event.duration % 60 >= 45) {
             $(element).addClass('one-hour');
           }
 
@@ -515,7 +515,7 @@ $(document).ready(function () {
         slotEventOverlap: false,
         eventAfterRender: function (event, element, view) {
           // atfer render of each event : change html with all the info
-          if (event.duration / 60 < 2) {
+          if (event.duration / 60 < 2 && event.duration % 60 >= 45) {
             $(element).addClass('one-hour');
           }
 
@@ -672,7 +672,8 @@ $(document).ready(function () {
         });
 
         // delete event
-        $('#calendar-programmation, .press.fullcalendar, .popin').on('click', '.event.delete .button', function (e) {
+        $('#calendar-programmation, .press.fullcalendar, .popin').on('touchstart click', '.event.delete .button', function(e) {
+          e.stopPropagation();
           e.preventDefault();
 
           var id = parseInt($(this).parent().find('.fc-event').data('id'));
@@ -692,11 +693,10 @@ $(document).ready(function () {
 
           $(this).parent().removeClass('delete');
           $(this).text('Ajouter').addClass('add');
-        });
-
-        // add event
-        $('#calendar-programmation, .popin').on('click', '.event .add', function (e) {
+        }).on('touchstart click', '.event .add', function(e) {
+          e.stopPropagation();
           e.preventDefault();
+          
           var $ev = $(this).parent().find('.fc-event');
 
           $('#calendar-wrapper').removeClass('drag');
@@ -763,7 +763,7 @@ $(document).ready(function () {
               minutes = '';
             }
 
-            if (dur < 2 && $(this).data('popin') != true) {
+            if (dur < 2 && minutes >= 45 && $(this).data('popin') != true) {
               $(this).addClass('one-hour');
               $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
             }
@@ -1007,7 +1007,7 @@ $(document).ready(function () {
         });
       }
 
-      $(document).on('click',function (e) {
+      $(document).on('touchstart click',function (e) {
         var $element = $(e.target);
         if (!$element.hasClass('visible-popin')) {
           var $isPopin = $element.closest('.visible-popin');
@@ -1021,25 +1021,6 @@ $(document).ready(function () {
           }
         }
       });
-
-      var isiPad = navigator.userAgent.match(/iPad/i) != null;
-
-      if(isiPad) {
-        $(document).on('touchstart',function (e) {
-          var $element = $(e.target);
-          if (!$element.hasClass('visible-popin')) {
-            var $isPopin = $element.closest('.visible-popin');
-            var isButton = $element.hasClass('buttons');
-
-            if ($isPopin.length || isButton) {
-            } else {
-              $('#popin-press').removeClass('visible-popin');
-              $("#main").removeClass('overlay-popin');
-              $('footer').removeClass('overlay');
-            }
-          }
-        });
-      }
     }
 
     // POPIN DOWNLOAD //
@@ -1069,7 +1050,7 @@ $(document).ready(function () {
           }
         });
 
-        $(document).on('click', function (e) {
+        $(document).on('touchstart click', function (e) {
           var $element = $(e.target);
           if (!$element.hasClass('visible-popin')) {
             var $isPopin = $element.closest('.visible-popin');
@@ -1083,25 +1064,6 @@ $(document).ready(function () {
             }
           }
         });
-
-        var isiPad = navigator.userAgent.match(/iPad/i) != null;
-
-        if(isiPad){
-          $(document).on('touchstart', function (e) {
-            var $element = $(e.target);
-            if (!$element.hasClass('visible-popin')) {
-              var $isPopin = $element.closest('.visible-popin');
-              var isButton = $element.hasClass('buttons');
-
-              if ($isPopin.length || isButton) {
-              } else {
-                $('#popin-download-press').removeClass('visible-popin');
-                $("#main").removeClass('overlay-popin');
-                $('footer').removeClass('overlay');
-              }
-            }
-          });
-        }
       }
     }
 
@@ -1130,7 +1092,7 @@ $(document).ready(function () {
           }
         });
 
-        $(document).on('click', function (e) {
+        $(document).on('touchstart click', function (e) {
           var $element = $(e.target);
           if (!$element.hasClass('visible-popin')) {
             var $isPopin = $element.closest('.visible-popin');
@@ -1145,25 +1107,6 @@ $(document).ready(function () {
             }
           }
         });
-        var isiPad = navigator.userAgent.match(/iPad/i) != null;
-
-        if(isiPad){
-          $(document).on('touchstart', function (e) {
-            var $element = $(e.target);
-            if (!$element.hasClass('visible-popin')) {
-              var $isPopin = $element.closest('.visible-popin');
-              var isButton = $element.hasClass('buttons');
-
-              if ($isPopin.length || isButton) {
-                //do nothing
-              } else {
-                $('#popin-download-press').removeClass('visible-popin');
-                $("#main").removeClass('overlay-popin');
-                $('footer').removeClass('overlay');
-              }
-            }
-          });
-        }
       }
     }
   }
@@ -1599,9 +1542,9 @@ $(document).ready(function () {
         $(this).removeClass('active');
       }
       if($('.v-container [data-type="' + filterselect + '"]').length > 0 || filterselect == 'all') {
-        $(this).attr('style', '');
+        $(this).removeClass('disabled');
       } else {
-        $(this).attr('style', 'display:none;');
+        $(this).addClass('disabled');
       }
     });
     
@@ -1613,9 +1556,9 @@ $(document).ready(function () {
         $(this).removeClass('active');
       }
       if($('.v-container [data-category="' + filterselect + '"]').length > 0 || filterselect == 'all') {
-        $(this).attr('style', '');
+        $(this).removeClass('disabled');
       } else {
-        $(this).attr('style', 'display:none;');
+        $(this).addClass('disabled');
       }
     });
   }

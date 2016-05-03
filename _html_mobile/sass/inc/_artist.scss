@@ -50,13 +50,14 @@
       font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
       line-height: 30px;
   }
-  h3{
+  .section h3{
       font-family: "Playfair Display", Times New Roman, Times, serif;
       font-weight: 400;
       letter-spacing: 0.02em;
       font-size: 28px;
       text-align: center;
       margin-bottom: 60px;
+      text-transform: inherit;
   }
 
   /*PICTOS NAV*/
@@ -182,7 +183,7 @@
   .director a, .thumb a{
     
     display: block;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     height: 100%;
@@ -197,6 +198,10 @@
   	text-align: center;
   	padding: 55px 0;
   	margin: 0;
+    &.title-section {
+      border-bottom: none;
+      text-transform: uppercase;
+    }
   }
   .director .owl-item{
 
@@ -221,6 +226,14 @@
   	font-weight: 700;
   	font-size: 25px;
   	margin-bottom: 5px;
+  }
+  .director .info .name a .nom-item {
+    text-transform: uppercase;
+    color: #000;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    margin-bottom: 5px;
   }
   .director .info span{
 

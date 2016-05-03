@@ -127,4 +127,14 @@ class MobileNotificationAdmin extends Admin
             ->add('priorityStatus')
         ;
     }
+
+    public function prePersist($object)
+    {
+        session_write_close();
+    }
+
+    public function preUpdate($object)
+    {
+        session_write_close();
+    }
 }

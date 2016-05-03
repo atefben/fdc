@@ -1,25 +1,27 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-<div class="competition">
-    <h2 class="title">{{ movie.selectionSection|trans_fallback('name') }} {{ "now"|date('Y') }}</h2>
-    <div id="slider-competition" class="owl-carousel sliderDrag">
+        {#{{ dump(movies) }}#}
+<div class="section competition">
+    <h3 class="title-section">{{ movie.selectionSection|trans_fallback('name') }} {{ "now"|date('Y') }}</h3>
+    <div id="slider-competition" class="owl-carousel competition-carousel">
         {% for movie in movies %}
-            <div class="slide">
+
+            <div data-id="film{{ loop.index }}" class="thumb active">
+                <div class="img-container" style="background-image:url(
                 {% include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
                     film: movie,
+                    display_film_path: true,
                     film_format: 'mobile',
                     film_image_default: 'bundles/fdcevent/img/palmares/film_w210.jpg'
-                }) %}
-                <a class="linkVid" href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}"></a>
-                <div class="info-movie">
+                }) %})"></div>
+                <a class="linkVid" href="{{ path('fdc_eventmobile_movie_get', {'slug': movie.slug}) }}"></a>
+                <div class="info">
                     <p>
-                        <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
-                            {% if movie|trans_fallback('title') is not empty %}
-                                {{ movie|trans_fallback('title') }}
-                            {% else %}
-                                {{ movie.titleVO }}
-                            {% endif %}
-                        </a>
+                        {% if movie|trans_fallback('title') is not empty %}
+                            {{ movie|trans_fallback('title')|truncate(20) }}
+                        {% else %}
+                            {{ movie.titleVO|truncate(20) }}
+                        {% endif %}
                     </p>
                     {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                     {% for director in directors %}

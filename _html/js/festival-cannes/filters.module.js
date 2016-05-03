@@ -70,6 +70,25 @@ function filter() {
         });
       });
     }
+
+    if($('#calendar-programmation').length > 0) {
+      $('.filter .select').each(function() {
+        $that = $(this);
+        $id   = $(this).closest('.filter').attr('id');
+
+        $that.find("span:not(.active):not([data-filter='all'])").each(function() {
+          $this = $(this);
+
+          var getVal = $this.data('filter');
+          var numItems = $('#calendar-programmation .fc-event[data-'+$id+'="'+getVal+'"]').length;
+          if (numItems === 0) {
+              $this.addClass('disabled');
+          } else {
+              $this.removeClass('disabled');
+          }
+        });
+      });
+    }
   } else {
     $('*[data-' + id + ']').show();
     

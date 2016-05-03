@@ -174,4 +174,14 @@ class MediaImageSimpleAdmin extends Admin
             'Statut traduction zh' => 'exportStatusZh',
         );
     }
+
+    public function prePersist($object)
+    {
+        session_write_close();
+    }
+
+    public function preUpdate($object)
+    {
+        session_write_close();
+    }
 }

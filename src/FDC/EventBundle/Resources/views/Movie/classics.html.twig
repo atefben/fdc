@@ -53,7 +53,7 @@
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                                 <div class="quote">
                                     <blockquote>
-                                        “ {{ transWidget.content }} ”
+                                        {{ transWidget.content }}
                                     </blockquote>
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_audio %}
@@ -74,7 +74,7 @@
                                     {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
                                 </div>
                             {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image_dual_align %}
-                                <div class="small-pres container">
+                                <div class="small-pres half-div container">
                                     {% include 'FDCEventBundle:News:widgets/dual-photo.html.twig' with {'hideHalfDiv': true} %}
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_movie %}

@@ -96,16 +96,16 @@
         {% endif %}
         </div>
         <a href="{{ path('fdc_eventmobile_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
-        <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span></div>
+        <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
         <span class="picto"><i class="icon icon_{{ article.newsType|get_news_type }}"></i></span>
     </div>
     <div class="info">
         <span class="category">{{ article.theme|trans_fallback('name') }}</span>
         <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
         <h2>
-            <a href="{{ path('fdc_eventmobile_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">
-                {{ article|trans_fallback('title')|truncate(40) }}
-            </a>
+            {#<a href="{{ path('fdc_eventmobile_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">#}
+                {{ article|trans_fallback('title') }}
+            {#</a>#}
         </h2>
     </div>
 </article>
