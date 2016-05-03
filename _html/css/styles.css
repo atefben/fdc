@@ -14146,7 +14146,6 @@ input[type=submit] {
 }
 .list-channels #live .img {
   background-position: center;
-  opacity: 0.25;
 }
 .list-channels .grid {
   padding-top: 0;
