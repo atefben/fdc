@@ -40,6 +40,12 @@
                             {% if artist.presidentJuryImage and artist.presidentJuryImage|trans_fallback('file') %}
                                 <img src="{% path artist.presidentJuryImage|trans_fallback('file'), '640x603' %}" alt="{{ artist.fullName }}"/>
                                 <p class="caption" id="captionCopyright" >{{ '© ' ~  artist.presidentJuryCredits }}</p>
+                            {% elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
+                                <img src="{% path artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first, '640x603' %}" alt="{{ artist.fullName }}"/>
+                                <p class="caption" id="captionCopyright" >{{ '© ' ~  artist.presidentJuryCredits }}</p>
+                            {% elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                                <img src="{% path artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first, '640x603' %}" alt="{{ artist.fullName }}"/>
+                                <p class="caption" id="captionCopyright" >{{ '© ' ~  artist.presidentJuryCredits }}</p>
                             {% elseif class(artistImage) == 'FilmMedia' %}
                                 <img src="{% path artistImage.file, '640x603' %}" alt="{{ artist.fullName }}"/>
                                 {% set legend = artistImage.credits %}
