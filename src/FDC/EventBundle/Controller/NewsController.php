@@ -164,19 +164,18 @@ class NewsController extends Controller
             $filters['format'] = array_merge($filters['format'], array_values($format));
         }
 
+        $homeArticlesTop    = array();
+        $homeArticlesBottom = array();
         //split articles in two array
-        if (count($homeArticles) > 3) {
-            $homeArticles       = $this->partition($homeArticles, 2);
-            $homeArticlesBottom = $homeArticles[1];
-
-            foreach ($homeArticlesBottom as $bottom) {
-                $bottom->double = false;
+        foreach ($homeArticles as $key => $homeArticle) {
+            if($key < 3){
+                $homeArticlesTop[$key] = $homeArticle;
             }
-
-            $homeArticles = $homeArticles[0];
-
-        } else {
-            $homeArticlesBottom = null;
+            if ($key >= 3) {
+                $homeArticlesBottom[$key] = $homeArticle;
+                $homeArticlesBottom[$key]->double = false;
+                ;
+            }
         }
 
         //get images for slider articles
@@ -210,7 +209,7 @@ class NewsController extends Controller
         return array(
             'homepage' => $homepage,
             'socialGraph' => $socialGraph,
-            'homeArticles' => $homeArticles,
+            'homeArticles' => $homeArticlesTop,
             'homeArticlesBottom' => $homeArticlesBottom,
             'homeArticlesSlider' => $homeArticlesSlider,
             'homeArticlesNext' => $homeArticlesNext,

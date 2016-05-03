@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2016-05-03T16:16:35Z" source-language="en" target-language="zh" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="887ef199fe477f879773eca2ead67c66a9e9633a" resname="home.title.focus">
+        <source>home.title.focus</source>
+        <target state="new">home.title.focus</target>
+        <jms:reference-file line="247">views/News/home.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="60bcc98fd33f02ea907e8443574a6255b1649e89" resname="seo.trailer.description">
+        <source>seo.trailer.description</source>
+        <target state="new">seo.trailer.description</target>
+        <jms:reference-file line="500">EventMobileBundle/Controller/TelevisionController.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="70660bc3cfc26ba0e238be2b01433cadafc3b05b" resname="seo.trailer.title">
+        <source>seo.trailer.title</source>
+        <target state="new">seo.trailer.title</target>
+        <jms:reference-file line="495">EventMobileBundle/Controller/TelevisionController.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

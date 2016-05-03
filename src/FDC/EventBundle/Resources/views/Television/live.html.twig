@@ -90,8 +90,8 @@
                 {% for trailer in trailers %}
                     <div class="vid shadow-bottom">
                         <div class="image-wrapper">
-                            <img src="{% path trailer.image|trans_fallback('file'), '1950x1232' %}"
-                                 srcset="{% path trailer.image|trans_fallback('file'), '1950x1232' %} 1x, {% path trailer.image|trans_fallback('file'), '1950x1232' %} 2x"
+                            <img src="{% path trailer.image|trans_fallback('file'), '640x404' %}"
+                                 srcset="{% path trailer.image|trans_fallback('file'), '640x404' %} 1x, {% path trailer.image|trans_fallback('file'), '1280x808' %} 2x"
                                  alt="">
                         </div>
                         <a class="linkVid"

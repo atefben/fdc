@@ -11070,9 +11070,7 @@ article .read-later.rAlign span:after {
   width: 150px;
 }
 .single-movie .prevmovie .img img, .single-movie .nextmovie .img img {
-  height: 203px;
   display: block;
-  width: 100%;
 }
 .single-movie .prevmovie .info, .single-movie .nextmovie .info {
   height: 203px;
