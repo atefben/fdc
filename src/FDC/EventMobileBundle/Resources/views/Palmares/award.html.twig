@@ -2,28 +2,32 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="list-article palmares-list loading ">
-        <div class="bandeau-list">
-            <div class="bandeau-list-img bandeau-head vCenter"
-                 style="background-image:url('{% path page.image|trans_fallback('file'), '2560x1103' %}')">
+    <div id="main" class="list-article palmares-list palmares loading ">
+        {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+        {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+        <div id="banner-top">
+            <div class="banner-img vCenter" style="background-image:url('{% path page.image|trans_fallback('file'), '2560x1103' %}')">
                 <div class="vCenterKid">
-                    <h2 class="title title-list-header ">{{ 'palmares.title.palmares'|trans }}</h2>
+                    <h2 class="title one-line">{{ 'palmares.title.palmares'|trans }}</h2>
                 </div>
             </div>
-            {% include 'FDCEventMobileBundle:Palmares:components/nav.html.twig' %}
         </div>
-        <div class="container container-list">
-            <section class="categorie-items">
+
+        <div class="palmares-container">
+            {% include 'FDCEventMobileBundle:Palmares:components/nav.html.twig' %}
+
+            <div class="content-selection">
                 {% if page.id == 1 %}
                     {% include 'FDCEventMobileBundle:Palmares:competition.html.twig' %}
                 {% elseif page.id == 4 %}
                     {% include 'FDCEventMobileBundle:Palmares:camerador.html.twig' %}
                 {% elseif page.id == 5 %}
-                        {% include 'FDCEventMobileBundle:Palmares:all.html.twig' %}
+                    {% include 'FDCEventMobileBundle:Palmares:all.html.twig' %}
                 {% else %}
-                        {% include 'FDCEventMobileBundle:Palmares:simple.html.twig' %}
+                    {% include 'FDCEventMobileBundle:Palmares:simple.html.twig' %}
                 {% endif %}
-            </section>
+            </div>
+
             {% if next %}
                 {% include 'FDCEventMobileBundle:Palmares:components/bandeau.html.twig' %}
             {% endif %}

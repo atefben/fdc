@@ -38,20 +38,21 @@
                 {% endfor %}
             </section>
         {% endif %}
-
-        {% for key,item in award_associations['others'] %}
-            <section class="categorie-items">
-                <h3 class="sub-cat-title">
-                    {{ item['selection']|trans_fallback('name') }}
-                </h3>
-                {% for movie in item['movies'] %}
-                    {% if movie.awards %}
-                        {% set award_association = movie.awards|first %}
-                    {% endif %}
-                    {% include 'FDCEventMobileBundle:Palmares:widgets/movie.html.twig' with({'displayDuration': true}) %}
-                {% endfor %}
-            </section>
-        {% endfor %}
+        {% if award_associations is defined and  award_associations['others'] is defined %}
+            {% for key,item in award_associations['others'] %}
+                <section class="categorie-items">
+                    <h3 class="sub-cat-title">
+                        {{ item['selection']|trans_fallback('name') }}
+                    </h3>
+                    {% for movie in item['movies'] %}
+                        {% if movie.awards %}
+                            {% set award_association = movie.awards|first %}
+                        {% endif %}
+                        {% include 'FDCEventMobileBundle:Palmares:widgets/movie.html.twig' with({'displayDuration': true}) %}
+                    {% endfor %}
+                </section>
+            {% endfor %}
+        {% endif %}
 
         <div class="title-list-cat">
             <h2 class="title">{{ 'palmares.camerador.title.lesautresfilmsenlice'|trans|raw }}</h2>
