@@ -50,7 +50,7 @@
       font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
       line-height: 30px;
   }
-  h3{
+  .section h3{
       font-family: "Playfair Display", Times New Roman, Times, serif;
       font-weight: 400;
       letter-spacing: 0.02em;
@@ -200,6 +200,7 @@
   	margin: 0;
     &.title-section {
       border-bottom: none;
+      text-transform: uppercase;
     }
   }
   .director .owl-item{

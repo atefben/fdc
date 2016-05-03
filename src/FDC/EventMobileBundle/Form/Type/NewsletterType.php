@@ -41,6 +41,15 @@ class NewsletterType extends AbstractType
             ));
     }
 
+    /**
+     * @param OptionsResolver $resolver
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'translation_domain' => 'FDCEventBundle'
+        ));
+    }
 
     /**
      * @return string

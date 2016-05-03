@@ -30,8 +30,8 @@
                     <div class="item {{ video.theme|trans_fallback('slug') }} {{ video.publishedAt|date('d-m-y') }} date theme shadow-bottom video"
                          data-vid="{{ video.id }}"
                          data-file='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
-                         data-img="{% if transImage is not null %}{% path transImage.file, '1144x724' %}{% endif %}">
-                        <img src="{% if transImage is not null %}{% path transImage.file , '1144x724' %}" alt="{{ transImage|trans_fallback('alt') }}{% elseif amazonImage is not null %}{{ amazonImage }}" alt="{% endif %}">
+                         data-img="{% if transImage is not null %}{% path transImage.file, '640x404' %}{% endif %}">
+                        <img src="{% if transImage is not null %}{% path transImage.file , '640x404' %}" alt="{{ transImage|trans_fallback('alt') }}{% elseif amazonImage is not null %}{{ amazonImage }}" alt="{% endif %}">
                         <div class="picto"><i class="icon icon_video"></i></div>
                         <div class="info">
                             <div class="vCenter">

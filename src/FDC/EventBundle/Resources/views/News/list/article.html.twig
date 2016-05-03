@@ -27,7 +27,7 @@
                                     {% set trans = img.findTranslationByLocale('fr') %}
                                 {% endif %}
                                 {% set file = trans.file %}
-                                {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
+                                <img src="{% path file , '572x362' %}" srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x" alt="{{ img|trans_fallback('alt') }} ">
                             {% elseif article is news_video %}
                                 {% set header = article.header %}
                                 {% if header is not null %}
@@ -57,7 +57,7 @@
                                     {% set file = trans.file %}
                                 {% endif %}
 								{% if file is defined and file is not null %}
-                                {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
+                                    <img src="{% path file , '572x362' %}" srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x" alt="{{ img|trans_fallback('alt') }} ">
 								{% elseif imgamazon is defined and imgamazon is not null %}
 									<img src="{{ imgamazon }}" alt="" />
 								{% endif %}
@@ -86,7 +86,7 @@
                                     {% set file = trans.file %}
                                 {% endif %}
 
-                                {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
+                                <img src="{% path file , '572x362' %}" srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x" alt="{{ img|trans_fallback('alt') }} ">
                             {% elseif article is news_image %}
                                 {% set header = article.header %}
                                 {% if header is not null %}
@@ -112,7 +112,7 @@
                                     {% set file = trans.file %}
                                 {% endif %}
 
-                                {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
+                                <img src="{% path file , '572x362' %}" srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x" alt="{{ img|trans_fallback('alt') }} ">
                             {% endif %}
                         </a>
                         <a href="#" class="read-later">

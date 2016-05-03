@@ -206,53 +206,55 @@ $(document).ready(function () {
     });
   }
 
-  if(isiPad()) {
-    $('.export.subnav, .button.list.pdf, .button.list.ics').remove();
-  } else {
-    $('.button.list.pdf').remove();
-    $('.subnav, .subnav icon').hover(function () {
-      $('.button.list').addClass('show');
-    });
+  if($('#calendar').length > 0 && $('#calendar').hasClass('fullwidth')) {
+    if(isiPad()) {
+      $('.export.subnav, .button.list.pdf, .button.list.ics').remove();
+    } else {
+      $('.button.list.pdf').remove();
+      $('.subnav, .subnav icon').hover(function () {
+        $('.button.list').addClass('show');
+      });
 
-    $('.buttons').mouseout(function () {
-      $('.button.list').removeClass('show');
-    });
+      $('.buttons').mouseout(function () {
+        $('.button.list').removeClass('show');
+      });
 
-    $('.button.list').mouseover(function () {
-      $('.button.list').addClass('show');
-    });
+      $('.button.list').mouseover(function () {
+        $('.button.list').addClass('show');
+      });
 
-    $('.subnav').on('click', function (e) {
-      e.preventDefault();
-    });
+      $('.subnav').on('click', function (e) {
+        e.preventDefault();
+      });
 
-    $('.button.list').on('click', function(e) {
-      if($(this).hasClass('ics')) {
-        var agenda_data = localStorage.getItem('agenda_press');
+      $('.button.list').on('click', function(e) {
+        if($(this).hasClass('ics')) {
+          var agenda_data = localStorage.getItem('agenda_press');
 
-        if (agenda == null) {
-          e.preventDefault();
-        } else {
-          agenda_data = JSON.parse(agenda_data);
+          if (agenda == null) {
+            e.preventDefault();
+          } else {
+            agenda_data = JSON.parse(agenda_data);
 
-          var cal = ics();
-          for (var i = 0; i < agenda_data.length; i++) {
-            var d = new Date(agenda_data[i].start);
-            var m = (d.getUTCMonth() + 1) < 10 ? '0'+(d.getUTCMonth()+1) : (d.getUTCMonth()+1);
-            cal.addEvent(
-              agenda_data[i].title,
-              GLOBALS.urls.programmationUrl+'?data='+d.getUTCFullYear()+'-'+m+'-'+d.getUTCDate(),
-              agenda_data[i].room+' – Palais des festivals / Cannes',
-              agenda_data[i].start,
-              agenda_data[i].end
-            );
+            var cal = ics();
+            for (var i = 0; i < agenda_data.length; i++) {
+              var d = new Date(agenda_data[i].start);
+              var m = (d.getUTCMonth() + 1) < 10 ? '0'+(d.getUTCMonth()+1) : (d.getUTCMonth()+1);
+              cal.addEvent(
+                agenda_data[i].title,
+                GLOBALS.urls.programmationUrl+'?data='+d.getUTCFullYear()+'-'+m+'-'+d.getUTCDate(),
+                agenda_data[i].room+' – Palais des festivals / Cannes',
+                agenda_data[i].start,
+                agenda_data[i].end
+              );
+            }
+            cal.download();
+
+
           }
-          cal.download();
-
-
         }
-      }
-    });
+      });
+    }
   }
 
 
@@ -307,7 +309,7 @@ $(document).ready(function () {
         slotEventOverlap: false,
         slotLabelFormat: typeof GLOBALS.calendar.labelFormat[GLOBALS.locale] !== "undefined" ? GLOBALS.calendar.labelFormat[GLOBALS.locale] : GLOBALS.calendar.labelFormat.default,
         eventAfterRender: function (event, element, view) {
-          if (event.duration / 60 < 2) {
+          if (event.duration / 60 < 1 || (event.duration / 60 < 2 && event.duration % 60 < 45)) {
             $(element).addClass('one-hour');
           }
 
@@ -515,7 +517,7 @@ $(document).ready(function () {
         slotEventOverlap: false,
         eventAfterRender: function (event, element, view) {
           // atfer render of each event : change html with all the info
-          if (event.duration / 60 < 2) {
+          if (event.duration / 60 < 1 || (event.duration / 60 < 2 && event.duration % 60 < 45)) {
             $(element).addClass('one-hour');
           }
 
@@ -763,7 +765,7 @@ $(document).ready(function () {
               minutes = '';
             }
 
-            if (dur < 2 && $(this).data('popin') != true) {
+            if ((dur < 1 || (dur < 2 && minutes < 45)) && $(this).data('popin') != true) {
               $(this).addClass('one-hour');
               $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
             }
@@ -1542,9 +1544,9 @@ $(document).ready(function () {
         $(this).removeClass('active');
       }
       if($('.v-container [data-type="' + filterselect + '"]').length > 0 || filterselect == 'all') {
-        $(this).attr('style', '');
+        $(this).removeClass('disabled');
       } else {
-        $(this).attr('style', 'display:none;');
+        $(this).addClass('disabled');
       }
     });
     
@@ -1556,9 +1558,9 @@ $(document).ready(function () {
         $(this).removeClass('active');
       }
       if($('.v-container [data-category="' + filterselect + '"]').length > 0 || filterselect == 'all') {
-        $(this).attr('style', '');
+        $(this).removeClass('disabled');
       } else {
-        $(this).attr('style', 'display:none;');
+        $(this).addClass('disabled');
       }
     });
   }
