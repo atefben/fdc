@@ -40,7 +40,7 @@ class WidgetMovie
     /**
      * @var Media
      *
-     * @ORM\OneToMany(targetEntity="WidgetMovieFilmFilm", mappedBy="widgetMovie", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="WidgetMovieFilmFilm", mappedBy="widgetMovie", cascade={"persist"}, orphanRemoval=true)
      * @Groups({"classics"})
      */
     private $films;
