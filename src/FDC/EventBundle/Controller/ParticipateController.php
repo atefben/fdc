@@ -58,15 +58,17 @@ class ParticipateController extends Controller
         // GET PARTICIPATE PAGE
         $page = $em
             ->getRepository('BaseCoreBundle:FDCPageParticipate')
-            ->getFDCPageParticipateBySlug($slug,$locale);
+            ->getFDCPageParticipateBySlug($slug, $locale);
 
         if ($page === null) {
             throw new NotFoundHttpException();
         }
 
+        $localeSlugs = $page->getLocaleSlugs();
 
         return array(
-            'participatePage' => $page
+            'participatePage' => $page,
+            'localeSlugs' => $localeSlugs
         );
     }
 

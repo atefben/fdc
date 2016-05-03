@@ -328,13 +328,15 @@ class MovieController extends Controller
             throw new NotFoundHttpException('Cannes Classic not found');
         }
 
+        $localeSlugs = $classic->getLocaleSlugs();
+
         $pages = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FDCPageLaSelection')
             ->getPagesOrdoredBySelectionSectionOrder($locale)
         ;
 
-        $filters = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale);
+        $filters = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale,true);
 
         //SEO
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($classic, $locale);
@@ -354,13 +356,15 @@ class MovieController extends Controller
         if ($filters && (!$next || $next === true)) {
             $next = reset($filters);
         }
-
+        
         return array(
             'cannesClassics' => $filters,
             'classic'        => $classic,
             'filters'        => $filters,
             'selectionTabs'  => $pages,
             'next'           => is_object($next) ? $next : false,
+            'localesSlugs'   => $localeSlugs,
         );
     }
+
 }

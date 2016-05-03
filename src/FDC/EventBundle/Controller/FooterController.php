@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 use FDC\EventBundle\Form\Type\ContactType;
 use FDC\EventBundle\Form\Type\NewsletterType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 
@@ -692,12 +693,17 @@ class FooterController extends Controller
         $em = $this->get('doctrine')->getManager();
 
         $content = $em->getRepository('BaseCoreBundle:FDCPageFooter')->getPageBySlug($slug, $locale);
+        if ($content == null) {
+            throw new NotFoundHttpException();
+        }
+        $localeSlugs = $content->getLocaleSlugs();
 
         // SEO
         $this->get('base.manager.seo')->setFDCPageFooterSeo($content, $locale);
 
         return array(
             'page' => $content,
+            'localeSlugs' => $localeSlugs,
         );
     }
 

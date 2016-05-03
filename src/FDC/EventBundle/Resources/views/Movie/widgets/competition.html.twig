@@ -9,7 +9,7 @@
                 <div class="slide">
                     {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                     film: movie,
-                    film_format: '420x560',
+                    film_format: '210x284',
                     film_image_default: asset(app.request.schemeAndHttpHost ~ '/bundles/fdcevent/img/palmares/film_w210.jpg')
                     }) %}
                     <a class="linkVid" href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}"></a>

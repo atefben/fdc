@@ -5,6 +5,7 @@
 // - BLOCK 01
 // - BLOCK 01 medium
 // - BLOCK 01 small
+// - BLOCK 01 m small
 // - BLOCK 01 x small
 // - BLOCK 02
 // - BLOCK 03
@@ -24,8 +25,11 @@
 // - BLOCK ACCORDION
 // - BLOCK RULES
 // - BLOCK CONTACT
+// - BLOCK P REGISTER
+// - BLOCK TAB SWITCH
 // =========================
 
+// - HALF DIV
 .half-div {
   height: 100%;
   width: 50%;
@@ -33,6 +37,7 @@
   vertical-align: top;
 }
 
+// - THREE QUARTS DIV
 .three-quarts-div {
   height: 100%;
   width: 75%;
@@ -40,10 +45,12 @@
   vertical-align: top;
 }
 
+// - CARDS
 .cards {
   display: inline-block;
 }
 
+// - BLOCK 01
 .block-01 {
   margin: 0 auto;
   max-width: 100%;
@@ -55,6 +62,7 @@
   }
 }
 
+// - BLOCK 01 medium
 .block-01-m {
   margin: 40px auto;
   max-width: 100%;
@@ -68,6 +76,7 @@
 
 }
 
+// - BLOCK 01 small
 .block-01-s {
   margin: 40px auto;
   max-width: 100%;
@@ -81,10 +90,11 @@
 
 }
 
+// - BLOCK 01 m small
 .block-01-ms {
   margin: 0 auto;
   max-width: 100%;
-  width: 664px;
+  width: 663px;
 
   img {
     max-width: 100%;
@@ -93,6 +103,7 @@
 
 }
 
+// - BLOCK 01 x small
 .block-01-xs {
   margin: 0 auto;
   max-width: 100%;
@@ -105,16 +116,19 @@
 
 }
 
+// - BLOCK 02
 .block-02 {
   background-color: #f6f6f6;
   width: 100%;
   padding: 70px 0;
 }
 
+// - BLOCK 03
 .block-03 {
   height: 600px;
 }
 
+// - BLOCK 05
 .block-05 {
   color: #fff;
   background-color: $black;
@@ -124,6 +138,7 @@
   }
 }
 
+// - BLOCK PUSH
 .block-push {
   // background: center 0 no-repeat fixed;
   background-size: cover;
@@ -200,6 +215,7 @@
 
 }
 
+// - BLOCK PUSH 02
 .block-push-02 {
   padding: 70px 0;
 
@@ -247,6 +263,7 @@
   }
 }
 
+// - BLOCK PUSH TOP
 .block-push-top {
   height: 300px;
   display:block;
@@ -343,6 +360,8 @@
 
 }
 
+
+// - BLOCK LEGEND
 .block-legend {
   padding: 25px 0;
   padding-bottom:33px;
@@ -380,6 +399,8 @@
   }
 }
 
+
+// - BLOCK FILMS
 .block-films {
   padding-top: 15px;
   height: 382px;
@@ -474,6 +495,8 @@
   }
 }
 
+
+// - BLOCK MOVIE PREVIEW
 .block-movie-preview {
   background: center no-repeat fixed;
   background-size: cover;
@@ -612,6 +635,8 @@
   }
 }
 
+
+// - BLOCK LIST IMG
 .block-list-img {
   margin-top: 30px;
 
@@ -694,6 +719,8 @@
   }
 }
 
+
+// - BLOCK SOCIAL NETWORK
 .block-social-network {
   height:76px;
   box-sizing: padding-box;
@@ -729,6 +756,8 @@
   }
 }
 
+
+// - BLOCK SOCIAL NETWORK ALL
 .block-social-network-all {
   width: 380px;
   margin: 0 auto;
@@ -780,6 +809,7 @@
   }
 }
 
+// - BLOCK POSTER
 .block-poster {
   width: 256px;
   overflow: hidden;
@@ -802,6 +832,8 @@
   }
 }
 
+
+// - BLOCK POSTER 01
 .block-poster-01 {
   display: flex;
   flex-wrap: wrap;
@@ -826,6 +858,8 @@
   }
 }
 
+
+// - BLOCK JURY
 .block-jury {
   height: 606px;
 
@@ -867,6 +901,8 @@
   }
 }
 
+
+// - BLOCK ACCORDION
 .block-accordion {
 
   .a-left {
@@ -1118,6 +1154,8 @@
   }
 }
 
+
+// - BLOCK RULES
 .block-rules {
   margin-top: 68px;
 
@@ -1145,6 +1183,8 @@
   }
 }
 
+
+// - BLOCK CONTACT
 .block-contact {
   padding-top: 55px;
 
@@ -1158,14 +1198,24 @@
     color: $gold;
   }
 
+  a.button {
+    height: 50px;
+    line-height: 50px;
+    width: 237px;
+    text-align: center;
+    padding: 0px;
+  }
+
   ul,p {
     color: #666666;
     margin-bottom: 42px;
     font-size: .875rem;
+    line-height: 20px;
   }
 
   .bold-1 {
-    font-size: .875rem;
+    line-height: 20px;
+    font-size: .875rem
   }
 
   .item {
@@ -1175,6 +1225,113 @@
   }
 
   .i-1 {
-    margin-right: 166px;
+    margin-right: 165px;
+  }
+}
+
+// - BLOCK TAB SWITCH
+.block-tab-switch {
+  .title-tab-swich {
+    font-size:.75rem;
+    text-transform: uppercase;
+    line-height: 24px;
+    letter-spacing: 2px;
+    font-family: $CamphorBold;
+    display: block;
+    text-align: center;
+  }
+
+  table {
+    margin-top: 27px;
+    margin-bottom: 55px;
+    border-collapse: collapse;
+
+    td {
+      color: #0c0c0c;
+      border:1px solid #e6e6e6;
+      border-color: #e6e6e6;
+      text-transform: uppercase;
+      text-align: center;
+      font-size:.75rem;
+      font-family: $CamphorBold;
+      width: 326px;
+      height: 66px;
+      transition: .5s;
+      cursor: pointer;
+      line-height: 18px;
+
+      &:hover {
+        cursor: pointer;
+        color: #fff;
+        background: rgba(200, 164, 97, 0.8);
+        border-color: rgba(200, 164, 97, 0.8);
+      }
+
+      &.active {
+        cursor: pointer;
+        color: #fff;
+        background-color: $gold;
+        border-color: $gold;
+      }
+    }
+  }
+}
+
+.block-s-info {
+  flex-direction: column;
+  height: 255px;
+
+  .title-25 {
+    margin-bottom: 4px;
+  }
+
+  p {
+    color: #666666;
+    line-height: 30px;
+    margin-bottom: 35px;
+  }
+
+  a.button {
+    height: 50px;
+    line-height: 50px;
+    width: 178px;
+    text-align: center;
+    padding: 0px;
+  }
+}
+
+.block-s-info-02 {
+  flex-direction: column;
+  height: 362px;
+  color: #fff;
+  background-size: cover;
+  text-align: center;
+
+  a {
+    color:$gold;
+    transition: .5s;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+
+  a.button {
+    height: 50px;
+    line-height: 50px;
+    width: 178px;
+    text-align: center;
+    padding: 0px;
+  }
+
+  .title-25 {
+    margin-bottom: 18px;
+    color: #fff;
+  }
+
+  p {
+    line-height: 30px;
+    margin-bottom: 30px;
+    color: #fff;
   }
 }

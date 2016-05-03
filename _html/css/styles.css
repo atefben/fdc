@@ -11801,10 +11801,6 @@ article .read-later.rAlign span:after {
   margin: 0 -100%;
   display: inline-block;
 }
-.single-movie .casting .gallery .img img.active.landscape {
-  height: 100%;
-  width: auto;
-}
 .single-movie .casting .gallery .thumbs a {
   display: inline-block;
   margin-right: 5px;
@@ -17875,7 +17871,7 @@ input[type=submit] {
 }
 .press .affiche .portrait {
   float: left;
-  width: 260px;
+  width: 309px;
 }
 .press .affiche .landscape {
   float: left;

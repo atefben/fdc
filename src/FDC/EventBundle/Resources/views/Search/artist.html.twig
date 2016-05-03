@@ -6,8 +6,13 @@
         <div class="person big">
             <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
                 <div class="image">
+                    {% set artistImage = artist|person_image(true) %}
                     {% if artist.portraitImage and artist.portraitImage|trans_fallback('file') %}
                         <img src="{% path artist.portraitImage|trans_fallback('file'), 'search' %}"
+                             alt="{{ artist.firstname }} {{ artist.lastname }}"
+                             data-object-fit="cover">
+                    {% elseif artistImage %}
+                        <img src="{% path artistImage.file, 'search' %}"
                              alt="{{ artist.firstname }} {{ artist.lastname }}"
                              data-object-fit="cover">
                     {% else %}
@@ -45,7 +50,7 @@
                                 {{ profession }}
                             </span>
                         {% endif %}
-                        <span class="country">{{ artist.nationality }}</span>
+                        <span class="country">{{ artist.nationality|trans_fallback('name') }}</span>
                     </div>
                 </div>
             </div>
