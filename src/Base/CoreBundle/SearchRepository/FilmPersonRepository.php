@@ -23,15 +23,9 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
             ->addShould($this->getLocalizedFieldsQuery($_locale, $searchTerm))
         ;
         
-        $statusQuery = new \Elastica\Query\BoolQuery();
-        $statusQuery
-            ->addMust($this->getStatusFilterQuery($_locale))
-            ->addMust($finalQuery)
-        ;
-        
         $sortedQuery = new \Elastica\Query();
         $sortedQuery
-            ->setQuery($statusQuery)
+            ->setQuery($finalQuery)
             ->addSort('_score')
             ->addSort(array('firstname' => array('order' => 'asc')))
         ;
