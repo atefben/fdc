@@ -139,9 +139,6 @@ class SearchController extends Controller
         
         // Get untranslated fields query.
         $fields = array(
-          'firstname',
-          'lastname',
-          'nationality',
           'selectionSection'
         );
  
@@ -159,8 +156,8 @@ class SearchController extends Controller
         $filmCountryQuery = $repository->getFieldsKeywordNestedQuery($filmCountryFields, $searchTerm, $filmCountryPath, $_locale);
           
         // Get final query.
-        $finalQuery = new \Elastica\Query\BoolQuery();
-        $finalQuery
+        $allQuery = new \Elastica\Query\BoolQuery();
+        $allQuery
             ->addShould($themeQuery)
             ->addShould($translationsQuery)
             ->addShould($fieldsQuery)
@@ -176,10 +173,25 @@ class SearchController extends Controller
         $filteredQuery = new \Elastica\Query\BoolQuery();
         $filteredQuery
             ->addMust($publishedQuery)
-            ->addMust($finalQuery)
+            ->addMust($allQuery)
         ;
         
-        $paginatedResults = $repository->getPaginatedResults($filteredQuery, 10, 1);
+        // Get untranslated fields query.
+        $artistFields = array(
+          'firstname',
+          'lastname',
+          'nationality',
+        );
+ 
+        $artistQuery = $repository->getFieldsKeywordQuery($artistFields, $searchTerm, false);
+        
+        $finalQuery = new \Elastica\Query\BoolQuery();
+        $finalQuery
+            ->addShould($filteredQuery)
+            ->addShould($artistQuery)
+        ;
+        
+        $paginatedResults = $repository->getPaginatedResults($finalQuery, 10, 1);
         
         foreach ($paginatedResults as $result) {
           $response[] = (object) array(
