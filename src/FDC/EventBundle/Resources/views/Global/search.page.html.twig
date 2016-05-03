@@ -231,7 +231,9 @@
                                                             {% endif %}
                                                             
                                                         </span>
+                                                        {% if film.countries|first %}
                                                         <span class="country">{{ film.countries|first.country.name }}</span>
+                                                        {% endif %}
                                                     </div>
                                                 </div>
                                             </div>
