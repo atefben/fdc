@@ -39,8 +39,8 @@
                         {% if artistImage %}
                             {% if artist.presidentJuryImage and artist.presidentJuryImage|trans_fallback('file') %}
                                 <img src="{% path artist.presidentJuryImage|trans_fallback('file'), '640x603' %}" alt="{{ artist.fullName }}"/>
-                                <p class="caption" id="captionCopyright" >{{ '© ' ~  artist.presidentJuryCredits }}{% endif %}</p>
-                            {% else if class(artistImage) == 'FilmMedia' %}
+                                <p class="caption" id="captionCopyright" >{{ '© ' ~  artist.presidentJuryCredits }}</p>
+                            {% elseif class(artistImage) == 'FilmMedia' %}
                                 <img src="{% path artistImage.file, '640x603' %}" alt="{{ artist.fullName }}"/>
                                 {% set legend = artistImage.credits %}
                                 {% set copyright = artistImage.copyright %}
