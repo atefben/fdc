@@ -64,7 +64,9 @@
                                 {%- set duration = film.duration|split('.') -%}
                                 {{ 'movie.label.duree'|trans }} :
                                 {%- if duration|length >= 1 -%}
-                                    <span>{{ duration[0] }} {{ 'movie.duration.minutes'|trans }}</span>
+                                    {% set hours = duration[0]|round  %}
+                                    {% set minutes = duration[0] % 60  %}
+                                    <span>{{ hours }}H{{ minutes }}</span>
                                 {%- endif -%}
                             {%- endif -%}
                         </p>
@@ -331,7 +333,7 @@
                                 <div class="bottom">
                                     <span class="duration">
                                         {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
-                                        {{ difference.i }}
+                                        {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> - {{- ' ' -}}
                                     <span class="ven">
                                         {%- if relatedProjection.room -%}{{ relatedProjection.room.name|upper }}{%- endif -%}
