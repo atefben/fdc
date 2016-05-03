@@ -62,7 +62,8 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "film_list",
      *     "film_show",
      *     "event_show",
-     *     "home"
+     *     "home",
+     *     "orange_video_on_demand"
      * })
      */
     private $title;
@@ -80,7 +81,8 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "web_tv_show",
      *     "live",
      *     "event_show",
-     *     "home"
+     *     "home",
+     *     "orange_video_on_demand"
      * })
      */
     private $imageAmazonUrl;
@@ -126,7 +128,8 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "web_tv_show",
      *     "live",
      *     "event_show",
-     *     "home"
+     *     "home",
+     *     "orange_video_on_demand"
      * })
      */
     private $mp4Url;
@@ -144,7 +147,8 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "web_tv_show",
      *     "live",
      *     "event_show",
-     *     "home"
+     *     "home",
+     *     "orange_video_on_demand"
      * })
      */
     private $webmUrl;

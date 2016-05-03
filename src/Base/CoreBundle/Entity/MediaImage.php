@@ -44,7 +44,8 @@ class MediaImage extends Media
      *     "home",
      *     "today_images",
      *     "live",
-     *     "home"
+     *     "home",
+     *     "orange_video_on_demand"
      * })
      *
      * @Assert\Valid()

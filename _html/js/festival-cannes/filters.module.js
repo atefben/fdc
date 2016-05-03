@@ -35,6 +35,7 @@ function filter() {
     $('*' + exp1).hide();
     $('*' + exp2).show();
 
+
     if($('.articles').length > 0) {
       $('#articles-wrapper').prepend('<div class="articles center" id="filteredArticles"></div>');
 
@@ -62,6 +63,26 @@ function filter() {
 
           var getVal = $this.data('filter');
           var numItems = $('#filteredArticles article[data-'+$id+'="'+getVal+'"]').length;
+          if (numItems === 0) {
+              $this.addClass('disabled');
+          } else {
+              $this.removeClass('disabled');
+          }
+        });
+      });
+    }
+
+    if($('#calendar-programmation').length > 0) {
+      $('.filter .select').each(function() {
+        $that = $(this);
+        $id   = $(this).closest('.filter').attr('id');
+
+        $that.find("span:not(.active):not([data-filter='all'])").each(function() {
+          $this = $(this);
+
+          var getVal = $this.data('filter');
+          var numItems = $('#calendar-programmation .fc-event[data-'+$id+'="'+getVal+'"]:not([style*="display: none"]').length;
+
           if (numItems === 0) {
               $this.addClass('disabled');
           } else {

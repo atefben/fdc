@@ -73,7 +73,8 @@ abstract class Media implements TranslateMainInterface
      *     "news_list",
      *     "news_show",
      *     "event_show",
-     *     "home"
+     *     "home",
+     *     "orange_video_on_demand"
      * })
      */
     private $publishedAt;
@@ -90,7 +91,8 @@ abstract class Media implements TranslateMainInterface
      *     "news_list",
      *     "news_show",
      *     "event_show",
-     *     "home"
+     *     "home",
+     *     "orange_video_on_demand"
      * })
      *
      */
@@ -147,7 +149,8 @@ abstract class Media implements TranslateMainInterface
      *     "home",
      *     "today_images",
      *     "live",
-     *     "home"
+     *     "home",
+     *     "orange_video_on_demand"
      * })
      *
      * @Assert\Valid()

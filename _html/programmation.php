@@ -16,12 +16,9 @@
         <div class="container">
           <h2>Programmation</h2>
           <div class="buttons">
-            <a href="#" class="button subnav"><i class="icon icon_telecharger"></i>
-Télécharger l'horaire des projections presse</a>
-            <a href="#" class="button list"><i class="icon icon_telecharger"></i>
-Télécharger au format .pdf</a>
-            <a href="#" class="button list"><i class="icon icon_telecharger"></i>
-Télécharger au format .ics</a>
+            <a href="#" class="button subnav"><i class="icon icon_telecharger"></i> Télécharger l'horaire des projections presse</a>
+            <a href="#" class="button list"><i class="icon icon_telecharger"></i> Télécharger au format .pdf</a>
+            <a href="#" class="button list"><i class="icon icon_telecharger"></i> Télécharger au format .ics</a>
           </div>
         </div>
       </div>
@@ -57,7 +54,7 @@ Télécharger au format .ics</a>
             <div id="category" class="filter">
               <span class="label">Sélections :</span>
               <span class="select">
-                <span class="active" data-filter="all">Toutes</span><i class="icon icon_fleche-down"></i>
+                <span class="active" data-filter="all">Toutes</span>
                 <span data-filter="competition">Compétition</span>
                 <span data-filter="hors_competition">Hors Compétition</span>
                 <span data-filter="regard">Un Certain Regard</span>
@@ -65,14 +62,18 @@ Télécharger au format .ics</a>
                 <span data-filter="cannes">Cannes Classics</span>
                 <span data-filter="cinema">Cinéma de la plage</span>
                 <span data-filter="cinefondation">Cinéfondation</span>
+                <i class="icon icon_fleche-down"></i>
               </span>
             </div>
             <div id="type" class="filter">
               <span class="label">Types :</span>
               <span class="select">
-                <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
+                <span class="active" data-filter="all">Tous</span>
                 <span data-filter="seances">Séances</span>
+                <span data-filter="reprise">Séance de reprise</span>
                 <span data-filter="events">Evènements</span>
+                <span data-filter="press">Conférence de prese</span>
+                <i class="icon icon_fleche-down"></i>
               </span>
             </div>
           </div>
@@ -125,13 +126,21 @@ Télécharger au format .ics</a>
                   <div class="venue">
                     <div class="v-head">Grand Théâtre Lumière</div>
                     <div class="v-container">
-                      <div class="fc-event" data-category="reprise" data-type="reprise" data-url="eventPopin.html" data-id="3" data-picto='.pen' data-color='#000' data-start="2016-05-12T09:00:00" data-end="2016-05-12T11:35:00" data-time="9" data-duration="155">
+                      <div class="fc-event" data-category="hors_competition" data-type="reprise" data-url="eventPopin.html" data-id="3" data-picto='.pen' data-color='#000' data-start="2016-05-12T09:00:00" data-end="2016-05-12T11:35:00" data-time="9" data-duration="155">
                         <span class="category"><i class="icon icon_espace-presse"></i>séance de reprise</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff" />
                           <div class="txt"><span>orson welles, autopsie d’une légende</span><strong>Elisabet KAPNIST</strong></div>
                         </div>
                         <div class="bottom"><span class="duration">2H35</span> - <span class="ven">GRAND THÉÂTRE LUMIÈRE</span><span class="competition">Hors compétition</span></div>
+                      </div>
+                      <div class="fc-event" data-category="regard" data-type="reprise" data-url="eventPopin.html" data-id="31" data-picto='.pen' data-color='#000' data-start="2016-05-12T14:00:00" data-end="2016-05-12T16:00:00" data-time="10" data-duration="120">
+                        <span class="category"><i class="icon icon_espace-presse"></i>séance de reprise</span>
+                        <div class="info">
+                          <img src="http://dummyimage.com/46x64/000/fff" />
+                          <div class="txt"><span>test légende</span><strong>Elisabet KAPNIST 2</strong></div>
+                        </div>
+                        <div class="bottom"><span class="duration">2H35</span> - <span class="ven">GRAND THÉÂTRE LUMIÈRE</span><span class="competition">Un Certain Regard</span></div>
                       </div>
                     </div>
                   </div>
@@ -146,7 +155,7 @@ Télécharger au format .ics</a>
                   <div class="venue">
                     <div class="v-head">Salle Buñuel</div>
                     <div class="v-container">
-                      <div class="fc-event" data-category="press" data-type="press" data-url="eventPopin.html" data-id="5" data-picto='.pen' data-color='#000' data-start="2016-05-12T15:00:00" data-end="2016-05-12T16:00:00" data-time="15" data-duration="60">
+                      <div class="fc-event" data-category="hors_competition" data-type="press" data-url="eventPopin.html" data-id="5" data-picto='.pen' data-color='#000' data-start="2016-05-12T15:00:00" data-end="2016-05-12T16:00:00" data-time="15" data-duration="60">
                         <span class="category"><i class="icon icon_espace-presse"></i>conférence de presse</span>
                         <div class="info">
                           <img src="http://dummyimage.com/46x64/000/fff" />

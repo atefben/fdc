@@ -69,8 +69,11 @@ sonata_media:
                 55x75: { width: 55 , height: 75 , quality: 100 }
                 90x120: { width: 90 , height: 120 , quality: 100 }
                 444x600: { width: 444, height: 600, quality: 100 }
+                240x320: { width: 240, height: 320, quality: 100, constraint: false }
+                480x640: { width: 480, height: 640, quality: 100, constraint: false }
                 searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
                 search: { width: 170 , height: 231 , quality: 100, constraint: false }
+
 
         film_main:
             providers:
@@ -97,8 +100,11 @@ sonata_media:
                   55x75: { width: 55 , height: 75 , quality: 100 }
                   90x120: { width: 90 , height: 120 , quality: 100 }
                   444x600: { width: 444, height: 600, quality: 100 }
+                  240x320: { width: 240, height: 320, quality: 100, constraint: false }
+                  480x640: { width: 480, height: 640, quality: 100, constraint: false }
                   searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
                   search: { width: 170 , height: 231 , quality: 100, constraint: false }
+                  156x206: { width: 156 , height: 206 , quality: 100, constraint: false }
 
         film_film:
             providers:
@@ -131,8 +137,11 @@ sonata_media:
                 55x75: { width: 55 , height: 75 , quality: 100 }
                 90x120: { width: 90 , height: 120 , quality: 100 }
                 444x600: { width: 444, height: 600, quality: 100 }
+                240x320: { width: 240, height: 320, quality: 100, constraint: false }
+                480x640: { width: 480, height: 640, quality: 100, constraint: false }
                 searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
                 search: { width: 170 , height: 231 , quality: 100, constraint: false }
+                156x206: { width: 156 , height: 206 , quality: 100, constraint: false }
 
         pdf:
             providers:
@@ -151,16 +160,20 @@ sonata_media:
                 2560x1620: { width: 2560 , height: 1620 , quality: 100, constraint: false}
                 # Diaporama photo
                 1760x1108: { width: 1760 , height: 1108 , quality: 100, constraint: false}
+                880x554: { width: 880, height: 554, quality: 100, constraint: false }
                 # Miniatures diaporama photo
                 194x128: { width: 194 , height: 128 , quality: 100, constraint: false}
+                97x64: { width: 97 , height: 64 , quality: 100, constraint: false}
                 # Les chaînes, autre chaînes (webtv)
                 586x370: { width: 586 , height: 370 , quality: 100, constraint: false}
                 # Actualités à la une, Tous les articles
                 1144x724: { width: 1144 , height: 724 , quality: 100, constraint: false}
+                572x362: { width: 572, height: 362, quality: 100, constraint: false }
                 # pre-footer homepage
                 1954x1200: { width: 1954 , height: 1200 , quality: 100, constraint: false}
                 # Vidéo à la une, Toutes les photos, Toutes les vidéos, Chaînes festival
                 640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                1280x808: { width: 1280 , height: 808 , quality: 100, constraint: false}
                 # Vidéo à la une, Toutes les photos, Toutes les vidéos, Chaînes festival portrait
                 320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
                 640x808: { width: 640 , height: 808 , quality: 100, constraint: false}
@@ -169,14 +182,13 @@ sonata_media:
                 424x266: { width: 424 , height: 266 , quality: 100, constraint: false}
                 # Image principale Actu
                 1950x1232: { width: 1950 , height: 1232 , quality: 100, constraint: false}
+                975x616: { width: 975 , height: 616 , quality: 100, constraint: false}
                 # Diaporama photo
                 1266x798: { width: 1266 , height: 798 , quality: 100, constraint: false}
                 # WebTv Tetiere, Channels Tetiere
                 1920x450: { width: 1920 , height: 450 , quality: 100, constraint: false}
                 # Dernières vidéos (webtv)
                 463x292: { width: 463 , height: 292 , quality: 100, constraint: false}
-                # srcset
-                1280x808: { width: 1280 , height: 808 , quality: 100, constraint: false}
                 # Last videos channels
                 926x584: { width: 926 , height: 584 , quality: 100, constraint: false}
                 # Articles focus
@@ -196,10 +208,13 @@ sonata_media:
                 146x146: { width: 146 , height: 146 , quality: 100, constraint: false}
                 # Event list #
                 976x615: { width: 976 , height: 615 , quality: 100, constraint: false}
+                1150x728: { width: 1150 , height: 728 , quality: 100, constraint: false}
+                575x364: { width: 575 , height: 364 , quality: 100, constraint: false}
                 ##### OLDS #####
                 1980x300: { width: 1980 , height: 300 , quality: 100, constraint: false}
                 #Widget Mosaic Movie Widget
                 368x500: { width: 368, height: 500, quality: 100, constraint: false}
+
 
         media_image_simple:
             providers:
@@ -224,7 +239,6 @@ sonata_media:
                 # Movie VideoMain
                 588x784: { width: 588 , height: 784 , quality: 100, constraint: false }
                 # PressDownload
-                240x326: { width: 240 , height: 326 , quality: 100, constraint: false }
                 270x165: { width: 270 , height: 165 , quality: 100 }
                 543x326: { width: 543 , height: 326 , quality: 100, constraint: false }
                 # PressDownload Video image
@@ -240,6 +254,7 @@ sonata_media:
                 640x404: { width: 640 , height: 404 , quality: 100, constraint: false }
                 # Pushs
                 650x410: { width: 650 , height: 410 , quality: 100, constraint: false }
+                325x205: { width: 325 , height: 205 , quality: 100, constraint: false}
                 # PressGuide
                 363x229: { width: 363 , height: 229 , quality: 100, constraint: false }
                 #palmares film
@@ -252,13 +267,16 @@ sonata_media:
                 # Partners logo
                 220x85: { width: 220 , height: 85, quality: 100, constraint: false }
                 # Partners portrait
-                60x81: { width: 60, height: 81, quality: 100, constraint: false }
+                60x81: { width: 60, height: 81, quality: 100 }
                 # Search
                 searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
                 search: { width: 170 , height: 231 , quality: 100, constraint: false }
                 # trailer
-                135x185:    { width: 135 , height: 185 , quality: 100 }
-
+                135x185: { width: 135 , height: 185 , quality: 100 }
+                240x320: { width: 240, height: 320, quality: 100, constraint: false }
+                480x640: { width: 480, height: 640, quality: 100, constraint: false }
+                #previmg/nextimg films
+                156x206: { width: 156 , height: 206 , quality: 100, constraint: false }
         media_audio:
             providers:
                - sonata.media.provider.audio

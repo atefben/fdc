@@ -8,7 +8,7 @@
                     {% if trans is null or trans.file is null %}
                         {% set trans = homepage.pushsMainImage1.findTranslationByLocale('fr') %}
                     {% endif %}
-                    <img src="{% path trans.file, '650x410' %}" alt="{{ trans.alt }}" />
+                    <img src="{% path trans.file , '325x205' %}" srcset="{% path trans.file , '325x205' %} 1x, {% path trans.file , '650x410' %} 2x" alt="{{ trans.alt }} ">
                 {% endif %}
             </div>
             <div class="vCenter">
@@ -26,7 +26,7 @@
                     {% if trans is null or trans.file is null %}
                         {% set trans = homepage.pushsMainImage2.findTranslationByLocale('fr') %}
                     {% endif %}
-                    <img src="{% path trans.file, '650x410' %}" alt="{{ trans.alt }}" />
+                    <img src="{% path trans.file , '325x205' %}" srcset="{% path trans.file , '325x205' %} 1x, {% path trans.file , '650x410' %} 2x" alt="{{ trans.alt }} ">
                 {% endif %}
             </div>
             <div class="vCenter">
@@ -44,7 +44,7 @@
                     {% if trans is null or trans.file is null %}
                         {% set trans = homepage.pushsMainImage3.findTranslationByLocale('fr') %}
                     {% endif %}
-                        <img src="{% path trans.file, '650x410' %}" alt="{{ trans.alt }}" />
+                    <img src="{% path trans.file , '325x205' %}" srcset="{% path trans.file , '325x205' %} 1x, {% path trans.file , '650x410' %} 2x" alt="{{ trans.alt }} ">
                 {% endif %}
             </div>
             <div class="vCenter">
