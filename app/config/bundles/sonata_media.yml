@@ -229,6 +229,7 @@ sonata_media:
                 976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
                 # PressDownload Signature image
                 233x233: { width: 233 , height: 233 , quality: 100, constraint: false }
+                259x352: { width: 259 , height: 352 , quality: 100, constraint: false }
                 # PressCinemaMap || PressCinemaZone
                 646x567: { width: 646 , height: 567 , quality: 100, constraint: false }
                 586x370: { width: 586 , height: 370 , quality: 100, constraint: false }
