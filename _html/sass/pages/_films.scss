@@ -317,6 +317,14 @@
           color: #999;
           font-weight: bold;
         }
+
+        a {
+          color: $gold;
+
+          strong, em {
+            color: $gold;
+          }
+        }
       }
     
       h3 {
