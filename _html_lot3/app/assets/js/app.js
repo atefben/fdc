@@ -82,4 +82,8 @@ $(document).ready(function() {
     owInitAccordion("block-accordion");
   }
 
+  if($('.p-register').length) {
+    owInitTab('tab1');
+  }
+
 });
