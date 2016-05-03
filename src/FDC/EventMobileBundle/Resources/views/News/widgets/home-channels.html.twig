@@ -13,9 +13,7 @@
         <img src="{{ s3_server_global ~ channel.availableChannels|last|trans_fallback('imageAmazonUrl') }}" alt="">
     {% endif %}
 </div>
-
 <a class="linkVid" href="{{ path('fdc_eventmobile_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}"></a>
-
 <div class="info">
     <div class="picto">
         <i class="icon icon_playlist"></i>
@@ -24,9 +22,9 @@
         <div class="vCenter">
             <div class="vCenterKid">
                 <a href="{{ path('fdc_eventmobile_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}" class="category">{{ channel|trans_fallback('name') }}</a>
-                <span>
-                    {#{ 'webtv.direct.nb_videos'|transchoice(channel.availableChannels|length) }#}
-                </span>
+                {#<span>#}
+                    {#{{ 'webtv.direct.nb_videos'|transchoice(channel.availableChannels|length) }}#}
+                {#</span>#}
             </div>
         </div>
     </div>
