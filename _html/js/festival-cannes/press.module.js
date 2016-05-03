@@ -1542,9 +1542,9 @@ $(document).ready(function () {
         $(this).removeClass('active');
       }
       if($('.v-container [data-type="' + filterselect + '"]').length > 0 || filterselect == 'all') {
-        $(this).attr('style', '');
+        $(this).removeClass('disabled');
       } else {
-        $(this).attr('style', 'display:none;');
+        $(this).addClass('disabled');
       }
     });
     
@@ -1556,9 +1556,9 @@ $(document).ready(function () {
         $(this).removeClass('active');
       }
       if($('.v-container [data-category="' + filterselect + '"]').length > 0 || filterselect == 'all') {
-        $(this).attr('style', '');
+        $(this).removeClass('disabled');
       } else {
-        $(this).attr('style', 'display:none;');
+        $(this).addClass('disabled');
       }
     });
   }
