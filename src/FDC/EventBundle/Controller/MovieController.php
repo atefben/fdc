@@ -336,7 +336,7 @@ class MovieController extends Controller
             ->getPagesOrdoredBySelectionSectionOrder($locale)
         ;
 
-        $filters = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale);
+        $filters = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale,true);
 
         //SEO
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($classic, $locale);
@@ -357,6 +357,8 @@ class MovieController extends Controller
             $next = reset($filters);
         }
 
+        dump($filters);exit;
+
         return array(
             'cannesClassics' => $filters,
             'classic'        => $classic,
@@ -366,4 +368,5 @@ class MovieController extends Controller
             'localesSlugs'   => $localeSlugs,
         );
     }
+
 }

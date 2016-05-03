@@ -139,6 +139,12 @@
                                 {% set folderCount = 0 %}
                                 {% set trailerCount = 0 %}
                                 {% set photoCount = 0 %}
+
+                                {% for video in media.film.associatedMediaVideos %}
+                                    {% if video.mediaVideo.displayedTrailer == 1 %}
+                                        {% set trailerCount = trailerCount + 1 %}
+                                    {% endif %}
+                                {% endfor %}
                                 {% for filmMedia in media.film.medias %}
                                     {% if filmMedia.media.contentType == "image/jpeg" %}
                                         {% if filmMedia.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM') %}
@@ -146,8 +152,6 @@
                                         {% endif %}
                                     {% elseif filmMedia.media.contentType == "application/pdf" %}
                                         {% set folderCount = folderCount + 1 %}
-                                    {% elseif filmMedia.media.contentType == "video/mp4" and filmMedia.media.jobWebmState == 3 and filmMedia.media.jobMp4State == 3 %}
-                                        {% set photoCount = trailerCount + 1 %}
                                     {% endif %}
                                 {% endfor %}
 								{% if folderCount != 0 %}
