@@ -39,7 +39,7 @@ trait TranslateMain
         $slugs = array();
 
         foreach ($translations as $trans) {
-            $slugs[$trans->getLocale()] = ($trans->getTitle() != null) ? $trans->getSlug() : '404';
+            $slugs[$trans->getLocale()] = ($trans->getSlug() != null) ? $trans->getSlug() : '404';
         }
 
         return $slugs;
