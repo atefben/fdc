@@ -33,6 +33,11 @@ class AgendaController extends Controller
         $isPress = false;
         $locale = $this->getRequest()->getLocale();
 
+        $waitingPage = $this->isWaitingPage($request);
+        if ($waitingPage) {
+            return $waitingPage;
+        }
+
         if ($this->get('security.authorization_checker')->isGranted('ROLE_FDC_PRESS_REPORTER') &&
             strpos($request->headers->get('refer'), 'press') !== false) {
             $isPress = true;

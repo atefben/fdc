@@ -151,6 +151,17 @@ class FDCEventRoutes implements FDCEventRoutesInterface
     public function __toString()
     {
         if ($this->getId()) {
+
+            if (isset($_SERVER) && isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], 'fdcpagewaiting')) {
+                if ($this->getSite() == 1) {
+                    $name = 'Evènementiel';
+                }  else if ($this->getSite() == 2) {
+                    $name = 'Presse';
+                }
+
+                return $name. ' - '. $this->getName();
+            }
+
             return $this->getName();
         }
 
