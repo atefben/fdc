@@ -1365,14 +1365,14 @@ from desktop
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 5;
 }
 .sliderDrag .info {
   bottom: 20px;
   left: 0;
   position: absolute;
   width: 100%;
-  z-index: 3;
+  z-index: 2;
 }
 .sliderDrag .info .info-container {
   color: #666;
@@ -2188,6 +2188,7 @@ article .picto .icon{
 /*BODY OVERLAY*/
 body{
   position: relative;
+  background: rgba(0,0,0,0.8);
 }
 body::after {
   width: 0;
