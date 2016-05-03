@@ -206,53 +206,55 @@ $(document).ready(function () {
     });
   }
 
-  if(isiPad()) {
-    $('.export.subnav, .button.list.pdf, .button.list.ics').remove();
-  } else {
-    $('.button.list.pdf').remove();
-    $('.subnav, .subnav icon').hover(function () {
-      $('.button.list').addClass('show');
-    });
+  if($('#calendar').length > 0 && $('#calendar').hasClass('fullwidth')) {
+    if(isiPad()) {
+      $('.export.subnav, .button.list.pdf, .button.list.ics').remove();
+    } else {
+      $('.button.list.pdf').remove();
+      $('.subnav, .subnav icon').hover(function () {
+        $('.button.list').addClass('show');
+      });
 
-    $('.buttons').mouseout(function () {
-      $('.button.list').removeClass('show');
-    });
+      $('.buttons').mouseout(function () {
+        $('.button.list').removeClass('show');
+      });
 
-    $('.button.list').mouseover(function () {
-      $('.button.list').addClass('show');
-    });
+      $('.button.list').mouseover(function () {
+        $('.button.list').addClass('show');
+      });
 
-    $('.subnav').on('click', function (e) {
-      e.preventDefault();
-    });
+      $('.subnav').on('click', function (e) {
+        e.preventDefault();
+      });
 
-    $('.button.list').on('click', function(e) {
-      if($(this).hasClass('ics')) {
-        var agenda_data = localStorage.getItem('agenda_press');
+      $('.button.list').on('click', function(e) {
+        if($(this).hasClass('ics')) {
+          var agenda_data = localStorage.getItem('agenda_press');
 
-        if (agenda == null) {
-          e.preventDefault();
-        } else {
-          agenda_data = JSON.parse(agenda_data);
+          if (agenda == null) {
+            e.preventDefault();
+          } else {
+            agenda_data = JSON.parse(agenda_data);
 
-          var cal = ics();
-          for (var i = 0; i < agenda_data.length; i++) {
-            var d = new Date(agenda_data[i].start);
-            var m = (d.getUTCMonth() + 1) < 10 ? '0'+(d.getUTCMonth()+1) : (d.getUTCMonth()+1);
-            cal.addEvent(
-              agenda_data[i].title,
-              GLOBALS.urls.programmationUrl+'?data='+d.getUTCFullYear()+'-'+m+'-'+d.getUTCDate(),
-              agenda_data[i].room+' – Palais des festivals / Cannes',
-              agenda_data[i].start,
-              agenda_data[i].end
-            );
+            var cal = ics();
+            for (var i = 0; i < agenda_data.length; i++) {
+              var d = new Date(agenda_data[i].start);
+              var m = (d.getUTCMonth() + 1) < 10 ? '0'+(d.getUTCMonth()+1) : (d.getUTCMonth()+1);
+              cal.addEvent(
+                agenda_data[i].title,
+                GLOBALS.urls.programmationUrl+'?data='+d.getUTCFullYear()+'-'+m+'-'+d.getUTCDate(),
+                agenda_data[i].room+' – Palais des festivals / Cannes',
+                agenda_data[i].start,
+                agenda_data[i].end
+              );
+            }
+            cal.download();
+
+
           }
-          cal.download();
-
-
         }
-      }
-    });
+      });
+    }
   }
 
 
