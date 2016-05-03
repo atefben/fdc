@@ -252,7 +252,7 @@ sonata_media:
                 # Partners logo
                 220x85: { width: 220 , height: 85, quality: 100, constraint: false }
                 # Partners portrait
-                60x81: { width: 60, height: 81, quality: 100, constraint: false }
+                60x81: { width: 60, height: 81, quality: 100 }
                 # Search
                 searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
                 search: { width: 170 , height: 231 , quality: 100, constraint: false }

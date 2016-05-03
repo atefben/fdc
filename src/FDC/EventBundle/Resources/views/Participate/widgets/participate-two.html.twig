@@ -23,7 +23,7 @@
                         {% set trans = widget.sponsorImage.findTranslationByLocale('fr') %}
                     {% endif %}
                     {% set image = trans.file %}
-                    <img src="{% path image, '60x81' %}" alt="{{ widget.sponsorImage|trans_fallback('alt') }}" />
+                    <img src="{% path image, '60x81' %}" {% if image.width > image.height %}width="60"{% else %}height="81"{% endif %}  alt="{{ widget.sponsorImage|trans_fallback('alt') }}" />
                 {% endif %}
                 <strong class="name">{{ widget|trans_fallback('sponsorLastName') }} {{ widget|trans_fallback('sponsorFirstName') }}</strong>
                 <span class="rank">{{ widget|trans_fallback('sponsorRole') }}</span>
