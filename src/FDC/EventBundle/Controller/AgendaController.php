@@ -34,6 +34,11 @@ class AgendaController extends Controller
         $locale = $this->getRequest()->getLocale();
         $isPress = false;
 
+        $waitingPage = $this->isWaitingPage($request);
+        if ($waitingPage) {
+            return $waitingPage;
+        }
+
         if ($request->get('date')) {
            $date = $request->get('date');
         } else {
