@@ -307,7 +307,7 @@ $(document).ready(function () {
         slotEventOverlap: false,
         slotLabelFormat: typeof GLOBALS.calendar.labelFormat[GLOBALS.locale] !== "undefined" ? GLOBALS.calendar.labelFormat[GLOBALS.locale] : GLOBALS.calendar.labelFormat.default,
         eventAfterRender: function (event, element, view) {
-          if (event.duration / 60 < 2 && event.duration % 60 >= 45) {
+          if (event.duration / 60 < 2 && event.duration % 60 < 45) {
             $(element).addClass('one-hour');
           }
 
@@ -515,7 +515,7 @@ $(document).ready(function () {
         slotEventOverlap: false,
         eventAfterRender: function (event, element, view) {
           // atfer render of each event : change html with all the info
-          if (event.duration / 60 < 2 && event.duration % 60 >= 45) {
+          if (event.duration / 60 < 2 && event.duration % 60 < 45) {
             $(element).addClass('one-hour');
           }
 
@@ -763,7 +763,7 @@ $(document).ready(function () {
               minutes = '';
             }
 
-            if (dur < 2 && minutes >= 45 && $(this).data('popin') != true) {
+            if (dur < 2 && minutes < 45 && $(this).data('popin') != true) {
               $(this).addClass('one-hour');
               $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
             }

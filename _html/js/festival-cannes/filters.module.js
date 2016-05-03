@@ -19,6 +19,8 @@ function filter() {
     filters.push(obj);
   });
 
+  console.error(filters);
+
   var exp1 = '',
       exp2 = '';
 
@@ -34,6 +36,7 @@ function filter() {
   if(filters.length != 0) {
     $('*' + exp1).hide();
     $('*' + exp2).show();
+
 
     if($('.articles').length > 0) {
       $('#articles-wrapper').prepend('<div class="articles center" id="filteredArticles"></div>');
@@ -79,8 +82,15 @@ function filter() {
         $that.find("span:not(.active):not([data-filter='all'])").each(function() {
           $this = $(this);
 
+          console.log($this);
+          console.log($this.text());
+
           var getVal = $this.data('filter');
           var numItems = $('#calendar-programmation .fc-event[data-'+$id+'="'+getVal+'"]').length;
+          
+
+          console.log('#calendar-programmation .fc-event[data-'+$id+'="'+getVal+'"]');
+
           if (numItems === 0) {
               $this.addClass('disabled');
           } else {
