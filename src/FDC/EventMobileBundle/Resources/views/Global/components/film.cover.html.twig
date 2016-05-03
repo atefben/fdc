@@ -14,7 +14,7 @@
     {% endif %}
 
     {% if film_attrs is not defined %}
-        {% set film_attrs = {'alt': (film|trans_fallback('title')?:movie.titleVO)} %}
+        {% set film_attrs = {'alt': (film|trans_fallback('title')?:film.titleVO)} %}
     {% endif %}
 
     {% if film_format is not defined %}
