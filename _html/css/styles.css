@@ -13306,6 +13306,9 @@ input[type=submit] {
   font-size: 1rem;
   line-height: 26px;
 }
+.categorie-items .contain-article-invit .small-pres.half-div {
+  width: 730px;
+}
 .categorie-items .contain-article-invit .small-pres p {
   color: #999;
   padding: 16px 0px;
@@ -13612,11 +13615,6 @@ input[type=submit] {
 .honneur-invit .slideshow .slideshow-img .thumbnails .thumb {
   width: 80px;
   height: 52px;
-}
-.honneur-invit .half-photo {
-  margin: 0px 29px 50px 0;
-  margin-bottom: 60px;
-  width: 48%;
 }
 .honneur-invit .half-photo .caption {
   padding: 0px 0px !important;
