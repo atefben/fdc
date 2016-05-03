@@ -238,7 +238,7 @@ class NewsController extends Controller
     public function getArticlesFromAction(Request $request)
     {
 
-        $timestamp = $request->query->get('timestamp');
+        $timestamp = $request->query->get('timestamp') - 1;
         $nextDay   = $request->query->get('end');
         $type      = $request->query->get('type');
 
