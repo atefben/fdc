@@ -423,4 +423,13 @@ class MediaVideoAdmin extends Admin
         );
     }
 
+    public function prePersist($object)
+    {
+        session_write_close();
+    }
+
+    public function preUpdate($object)
+    {
+        session_write_close();
+    }
 }
