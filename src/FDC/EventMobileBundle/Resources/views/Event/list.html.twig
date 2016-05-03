@@ -2,19 +2,19 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="all-articles grid evenement loading">
+    <div id="main" class="events loading">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
     
-        <h2 class="title">{{ 'event.title.lesevenements'|trans }}</h2>
+        <h2 class="title one-line">{{ 'event.title.lesevenements'|trans }}</h2>
 
         <div class="filters">
             <div id="date" class="filter">
-                <span class="label">{{ 'event.filter.label.date'|trans }} :</span>
+                <span class="label">{{ 'article.filter.label.date'|trans }} :</span>
                 {% spaceless %}
                 <span class="select">
-                    <span class="active" data-filter="all">[ {{ 'search.result.filter.toutes'|trans }} ]</span>
+                    <span class="active" data-filter="all">{{ 'search.result.filter.toutes'|trans }}</span>
                     {% for key, date in filters.dates %}
                         <span data-filter="{{ key }}">
                             {% if app.request.locale != 'cn' %}
@@ -29,9 +29,9 @@
                 {% endspaceless %}
             </div>
             <div id="theme" class="filter">
-                <span class="label">{{ 'event.filter.label.theme'|trans }} :</span>
+                <span class="label">{{ 'article.filter.label.theme'|trans }} :</span>
                 <span class="select">
-                    <span class="active" data-filter="all">[ {{ 'search.result.filter.tous'|trans }} ]</span>
+                    <span class="active" data-filter="all">{{ 'search.result.filter.tous'|trans }}</span>
                     {% for theme in filters.themes %}
                         <span data-filter="{{ theme|trans_fallback('slug') }}">{{ theme|trans_fallback('name') }}</span>
                     {% endfor %}
@@ -40,46 +40,37 @@
             </div>
         </div>
 
-
-        <div id="gridEvent" class="grid-wrapper" data-type="evenement">
+        <div id="list-events" class="list" data-type="evenement">
             <div class="grid-sizer"></div>
-
             {% for event in events %}
-                <div class="item {{ event.theme|trans_fallback('slug') }} {{ event.publishedAt|date('Y-m-d') }} article evenement">
-                    <article class="article evenement">
-                        <div class="img">
-                            <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug') }) }}">
-                                <img src='{% path event.header|trans_fallback('file'), '976x615' %}' alt="{{ event.header|trans_fallback('alt') }}"/>
-                            </a>
+                <div class="item {{ event.theme|trans_fallback('slug') }} {{ event.publishedAt|date('Y-m-d') }} evenement">
+                    <a href="{{ path('fdc_eventmobile_event_get', {'slug': event|trans_fallback('slug') }) }}"></a>
+                    <div class="img-container">
+                        <img src="{% path event.header|trans_fallback('file'), '976x615' %}" alt="{{ event.header|trans_fallback('alt') }}">
+                    </div>
+                    <div class="info">
+                        <div class="top-info">
+                            <p class="category">{{ event.theme|trans_fallback('name') }}</p>
                         </div>
-                        <div class="info">
-                            <span class="category">{{ event.theme|trans_fallback('name') }}</span>
-                            <span class="date">{{ event.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ event.publishedAt|date('H:i') }}</span>
-                            <h3>
-                                <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug') }) }}">
-                                    {{ event|trans_fallback('title') }}
-                                </a>
-                            </h3>
-                        </div>
-                    </article>
+                        <h2>{{ event|trans_fallback('title') }}</h2>
+                    </div>
+
                 </div>
             {% endfor %}
-
-
         </div>
-        <a href="http://www.festival-cannes.com/fr/archivesPage.html" class="read-more">
-            {{ 'event.btn.afficherplusdevenement'|trans|raw }}
-        </a>
-        <div class="list-article">
-            <div class="bandeau-list vCenter push-footer">
-                <div class="bandeau-list-img vCenterKid" style="background-image:url({{ asset('bundles/fdcevent/img/jurys/push.jpg') }});">
-                    <h2 class="title title-list-header">{{ 'event.title.retrospective'|trans }}</h2>
-                    <a href="#" class="bandeau-lien">
-                        <i class="icon icon_fleche-right"></i>
-                        {{ 'event.btn.decouvrirlarubrique'|trans }}
-                    </a>
-                </div>
-            </div>
-        </div>
+        {#<a href="http://www.festival-cannes.com/fr/archivesPage.html" class="read-more">#}
+            {#{{ 'event.btn.afficherplusdevenement'|trans|raw }}#}
+        {#</a>#}
+        {#<div class="list-article">#}
+            {#<div class="bandeau-list vCenter push-footer">#}
+                {#<div class="bandeau-list-img vCenterKid" style="background-image:url({{ asset('bundles/fdcevent/img/jurys/push.jpg') }});">#}
+                    {#<h2 class="title title-list-header">{{ 'event.title.retrospective'|trans }}</h2>#}
+                    {#<a href="#" class="bandeau-lien">#}
+                        {#<i class="icon icon_fleche-right"></i>#}
+                        {#{{ 'event.btn.decouvrirlarubrique'|trans }}#}
+                    {#</a>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
     </div>
 {% endblock body %}

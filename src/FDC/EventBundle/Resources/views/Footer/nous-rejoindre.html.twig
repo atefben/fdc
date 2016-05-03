@@ -2,13 +2,13 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-<div id="main" class="legal-notice loading">
+<div id="main" class="legal-notice single-article loading">
     <h2 class="title">{{ 'nousrejoindre.title.nousrejoindre'|trans }}</h2>
     <section class="legal-notice-container">
         <h3 class="legal-notice-description">{{ 'nousrejoindre.text.cesite'|trans }}</h3>
 
         {% for article in content %}
-            <article class="legal-notice-art">
+            <article class="legal-notice-art text">
                 <h4 class="legal-notice-art-title">{{ article.title }}</h4>
                 <p>{{ article.content }}</p>
             </article>

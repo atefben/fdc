@@ -2,9 +2,9 @@
 {% extends 'FDCEventBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="legal-notice">
+    <div id="main" class="legal-notice single-article">
         <h2 class="title">{{ page|trans_fallback('title') }}</h2>
-        <section class="legal-notice-container">
+        <section class="legal-notice-container text">
             {{ page|trans_fallback('content')|raw }}
         </section>
     </div>

@@ -288,6 +288,15 @@ sub {
   text-transform: uppercase;
 }
 
+.title-26 {
+  font-family: $CamphorBold;
+  font-size: 1rem;
+  color:#0c0c0c;
+  line-height: 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 .text-list {
   font-size: 1rem;
   color: #666666;
@@ -315,6 +324,30 @@ sub {
   }
 }
 
+.text-list-02 {
+  font-size: .75rem;
+  color: #0c0c0c;
+  font-family: $CamphorRegular;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 30px;
+  margin-top: 50px;
+  margin-bottom: 46px;
+
+  li {
+    list-style-position: inside;
+    list-style: decimal;
+  }
+
+  .gold {
+    font-family: $CamphorHeavy;
+  }
+}
+
+.gold {
+  color: $gold;
+}
+
 .bold {
   font-family: $CamphorBold;
 }
@@ -336,6 +369,36 @@ sub {
   margin-top: 69px;
   margin-bottom: 69px;
   line-height: 32px;
+}
+
+.quote-important {
+  padding: 25px 40px;
+  border:1px solid $gold;
+  margin:50px 0px;
+  margin-left: -40px;
+
+  font-size: 1rem;
+  color: #666666;
+  line-height: 30px;
+
+  a {
+    color: $gold;
+    transition: .5s; 
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+
+  strong {
+    font-size: .75rem;
+    color: #0c0c0c;
+    font-family: $CamphorBold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    display: block;
+  }
 }
 
 .quote-02 {

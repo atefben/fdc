@@ -46,7 +46,7 @@ security:
                  provider:       fos_userbundle
                  login_path:     /%locale%/press/login
                  check_path:     /%locale%/press/login_check
-                 failure_path:   _target_path
+                 failure_path:   /%locale%/press
              logout:
                  path:           /logout
              anonymous:          true

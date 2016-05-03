@@ -336,9 +336,6 @@ class NewsRepository extends EntityRepository
 
     public function getNewsByDate($locale, $festival, $dateTime, $count)
     {
-        $dateTime1 = $dateTime->format('Y-m-d') . ' 00:00:00';
-        $dateTime2 = $dateTime->format('Y-m-d') . ' 23:59:59';
-
         $qb = $this
             ->createQueryBuilder('n')
             ->select('n')
@@ -354,7 +351,8 @@ class NewsRepository extends EntityRepository
             ->where('s.slug = :site_slug')
             ->andWhere('n.displayedHome = 1')
             ->andWhere('n.festival = :festival')
-            ->andWhere('(n.publishedAt >= :datetime) AND (n.publishedAt <= :datetime2)')
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;
 
         $qb = $qb
@@ -388,8 +386,7 @@ class NewsRepository extends EntityRepository
         $qb = $qb
             ->orderBy('n.publishedAt', 'DESC')
             ->setParameter('festival', $festival)
-            ->setParameter('datetime', $dateTime1)
-            ->setParameter('datetime2', $dateTime2)
+            ->setParameter('datetime', $dateTime)
             ->setParameter('site_slug', 'site-evenementiel')
         ;
 

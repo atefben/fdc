@@ -64,7 +64,9 @@
                                 {%- set duration = film.duration|split('.') -%}
                                 {{ 'movie.label.duree'|trans }} :
                                 {%- if duration|length >= 1 -%}
-                                    <span>{{ duration[0] }} {{ 'movie.duration.minutes'|trans }}</span>
+                                    {% set hours = (duration[0]/60)|round  %}
+                                    {% set minutes = duration[0] % 60  %}
+                                    <span>{{ hours }}H{% if minutes|length == 1 %}0{% endif %}{{ minutes }}</span>
                                 {%- endif -%}
                             {%- endif -%}
                         </p>
@@ -151,7 +153,7 @@
                                         {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> -
                                     <span class="ven">
-                                        {%- if seance.room -%}{{ seance.room.name }}{%- endif -%}
+                                        {%- if seance.room -%}{{ seance.room.name|upper }}{%- endif -%}
                                     </span>
                                     <span class="competition">
                                         {{ film.selectionSection|trans_fallback('name') }}
@@ -245,7 +247,7 @@
                                         {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> -
                                     <span class="ven">
-                                        {%- if conference.room -%}{{ conference.room.name }}{%- endif -%}
+                                        {%- if conference.room -%}{{ conference.room.name|upper }}{%- endif -%}
                                     </span>
                                     <span class="competition">
                                         {{ film.selectionSection|trans_fallback('name') }}
@@ -331,10 +333,10 @@
                                 <div class="bottom">
                                     <span class="duration">
                                         {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
-                                        {{ difference.i }}
+                                        {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> - {{- ' ' -}}
                                     <span class="ven">
-                                        {%- if relatedProjection.room -%}{{ relatedProjection.room.name }}{%- endif -%}
+                                        {%- if relatedProjection.room -%}{{ relatedProjection.room.name|upper }}{%- endif -%}
                                     </span>
                                     <span class="competition">
                                         {{ film.selectionSection|trans_fallback('name') }}

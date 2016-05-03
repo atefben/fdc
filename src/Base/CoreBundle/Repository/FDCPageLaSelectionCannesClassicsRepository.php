@@ -52,7 +52,7 @@ class FDCPageLaSelectionCannesClassicsRepository extends TranslationRepository
         ;
     }
 
-    public function getAll($locale)
+    public function getAll($locale, $position = false)
     {
         $qb = $this
             ->createQueryBuilder('cc')
@@ -66,6 +66,10 @@ class FDCPageLaSelectionCannesClassicsRepository extends TranslationRepository
                 ->andWhere('t2.status = :status_translated AND t2.locale = :locale')
                 ->setParameter('status_translated', FDCPageLaSelectionCannesClassicsTranslation::STATUS_TRANSLATED)
                 ->setParameter('locale', $locale);
+        }
+
+        if($position){
+            $qb ->orderBy('cc.weight','asc');
         }
 
         return $qb

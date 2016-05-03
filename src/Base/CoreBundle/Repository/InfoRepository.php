@@ -261,7 +261,8 @@ class InfoRepository extends EntityRepository
             ->where('s.slug = :site_slug')
             ->andWhere('n.festival = :festival')
             ->andWhere('n.displayedHome = 1')
-            ->andWhere('(n.publishedAt < :datetime)')
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;
 
         $qb = $qb

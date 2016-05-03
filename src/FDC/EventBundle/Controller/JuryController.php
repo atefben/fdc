@@ -59,6 +59,8 @@ class JuryController extends Controller
             throw new NotFoundHttpException("Page Jury {$slug} not found");
         }
 
+        $localeSlugs = $page->getLocaleSlugs();
+
         //SEO
         $this->get('base.manager.seo')->setFDCEventPageJurySeo($page, $locale);
 
@@ -124,6 +126,7 @@ class JuryController extends Controller
             'next'      => is_object($next) ? $next : false,
             'members'   => $members,
             'president' => $president,
+            'localeSlugs' => $localeSlugs
         );
 
     }

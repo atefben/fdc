@@ -55,7 +55,7 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
     
     private function getFieldsQuery($searchTerm)
     {
-        $fields = array('selectionSection');
+        $fields = array('selectionSection', 'titleVO');
  
         return $this->getFieldsKeywordQuery($fields, $searchTerm);
     }

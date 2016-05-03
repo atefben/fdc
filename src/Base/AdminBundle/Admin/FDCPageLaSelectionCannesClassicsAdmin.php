@@ -78,6 +78,7 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('title', null, array('template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig'))
+            ->add('weight',null,array('label' => 'Position'))
       	  	->add('createdAt', null, array(
             'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
             'sortable' => 'createdAt',
@@ -169,6 +170,9 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                 'label'    => 'form.fdc_page_web_tv_trailers.image',
                 'help'     => 'form.fdc_page_web_tv_trailers.helper_image',
                 'required' => false,
+            ))
+            ->add('weight', null, array(
+                'label' => 'Position',
             ))
             ->add('widgets', 'infinite_form_polycollection', array(
                 'label' => false,

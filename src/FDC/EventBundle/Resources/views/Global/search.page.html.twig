@@ -142,9 +142,14 @@
                                     {% for artist in searchResult.category.artist %}
                                         <div class="person small">
                                             <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
+                                                {% set artistImage = artist|person_image(true) %}
                                                 {% if artist.portraitImage and artist.portraitImage|trans_fallback('file') %}
                                                     <img src="{% path artist.portraitImage|trans_fallback('file'), 'searchtiny' %}"
                                                          alt="{{ artist.firstname }} {{ artist.lastname }}">
+                                                {% elseif artistImage %}
+                                                    <img src="{% path artistImage.file, 'searchtiny' %}"
+                                                         alt="{{ artist.firstname }} {{ artist.lastname }}"
+                                                         data-object-fit="cover">
                                                 {% else %}
                                                     {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
                                                     {% if media is empty %}
@@ -174,10 +179,10 @@
                                                         {% set profession = artist|trans_fallback('profession') %}
                                                         {% if profession %}
                                                             <span class="category">
-                                                                {{ profession }}
+                                                                {{ artist|profession_gender('profession') }}
                                                             </span>
                                                         {% endif %}
-                                                        <span class="country">{{ artist.nationality }}</span>
+                                                        <span class="country">{{ artist.nationality|trans_fallback('name') }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -226,7 +231,9 @@
                                                             {% endif %}
                                                             
                                                         </span>
+                                                        {% if film.countries|first %}
                                                         <span class="country">{{ film.countries|first.country.name }}</span>
+                                                        {% endif %}
                                                     </div>
                                                 </div>
                                             </div>
@@ -258,7 +265,7 @@
                             <h2 class="title">{{ 'search.result.title.lencyclopediedufestival'|trans }}</h2>
 
                             <p class="link">
-                                <a href="http://www.festival-cannes.fr/fr/archivesPage.html">
+                                <a href="http://www.festival-cannes.fr/fr/archivesPage.html" target="_blank">
                                     <i class="icon icon_fleche-right"></i>
                                     {{ 'search.result.btn.rechercher'|trans }}
                                 </a>

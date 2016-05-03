@@ -10,7 +10,7 @@
                     {% set profession = artist|trans_fallback('profession') %}
                     {% if profession %}
                         <span href="#" class="category" {{ artist|content_lang('profession') }}>
-                            {{ profession }}
+                            {{ artist|profession_gender('profession') }}
                         </span>
                     {% endif %}
                     {% if artist.nationality %}
@@ -37,17 +37,26 @@
                         {% set legend = null %}
                         {% set copyright = null %}
                         {% if artistImage %}
-                            {% if class(artistImage) == 'FilmMedia' %}
-                                <img src="{% path artistImage.file, '976x535' %}" alt="{{ artist.fullName }}"/>
+                            {% if artist.presidentJuryImage and artist.presidentJuryImage|trans_fallback('file') %}
+                                <img src="{% path artist.presidentJuryImage|trans_fallback('file'), '640x603' %}" alt="{{ artist.fullName }}"/>
+                                <p class="caption" id="captionCopyright" >{{ '© ' ~  artist.presidentJuryCredits }}</p>
+                            {% elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
+                                <img src="{% path artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first, '640x603' %}" alt="{{ artist.fullName }}"/>
+                                <p class="caption" id="captionCopyright" >{{ '© ' ~  artist.presidentJuryCredits }}</p>
+                            {% elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                                <img src="{% path artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first, '640x603' %}" alt="{{ artist.fullName }}"/>
+                                <p class="caption" id="captionCopyright" >{{ '© ' ~  artist.presidentJuryCredits }}</p>
+                            {% elseif class(artistImage) == 'FilmMedia' %}
+                                <img src="{% path artistImage.file, '640x603' %}" alt="{{ artist.fullName }}"/>
                                 {% set legend = artistImage.credits %}
                                 {% set copyright = artistImage.copyright %}
                                 <p class="caption" id="captionCopyright" >{{ legend }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
                             {% else %}
                                 {% if artist.credits != null %}
-                                    <img src="{% path artistImage, '976x535' %}" alt="{{ artist.fullName }}"/>
+                                    <img src="{% path artistImage, '640x603' %}" alt="{{ artist.fullName }}"/>
                                     <p class="caption" id="captionCopyright" >{{ '© ' ~  artist.credits }}</p>
                                 {% else %}
-                                    <img src="{% path artistImage, '976x535' %}" alt="{{ artist.fullName }}"/>
+                                    <img src="{% path artistImage, '640x603 ' %}" alt="{{ artist.fullName }}"/>
                                 {% endif %}
                             {% endif %}
                         {% else %}

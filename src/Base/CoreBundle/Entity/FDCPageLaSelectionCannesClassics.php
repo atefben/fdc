@@ -55,6 +55,14 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     private $widgets;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=false)
+     *
+     */
+    private $weight;
+
+    /**
      * @var \Application\Sonata\UserBundle\Entity\User
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
@@ -231,5 +239,51 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return FDCPageLaSelectionCannesClassics
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set weight
+     *
+     * @param integer $weight
+     * @return FDCPageLaSelectionCannesClassics
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return integer 
+     */
+    public function getWeight()
+    {
+        return $this->weight;
     }
 }

@@ -63,7 +63,7 @@ class SearchController extends Controller
       $mediaResults = $this->getSearchResults($_locale, 'media', $searchTerm, 2);
       $participateResults = $this->getSearchResults($_locale, 'participate', $searchTerm, 2);
       $filmResults = $this->getSearchResults($_locale, 'film', $searchTerm, 4);
-      $artistResults = $this->getSearchResults($_locale, 'artist', $searchTerm, 4);
+      $artistResults = $this->getSearchResults($_locale, 'artist', $searchTerm, 6);
       
       $result = array(
           'category' => array(
@@ -139,10 +139,8 @@ class SearchController extends Controller
         
         // Get untranslated fields query.
         $fields = array(
-          'firstname',
-          'lastname',
-          'nationality',
-          'selectionSection'
+          'selectionSection',
+          'titleVO'
         );
  
         $fieldsQuery = $repository->getFieldsKeywordQuery($fields, $searchTerm, false);
@@ -159,8 +157,8 @@ class SearchController extends Controller
         $filmCountryQuery = $repository->getFieldsKeywordNestedQuery($filmCountryFields, $searchTerm, $filmCountryPath, $_locale);
           
         // Get final query.
-        $finalQuery = new \Elastica\Query\BoolQuery();
-        $finalQuery
+        $allQuery = new \Elastica\Query\BoolQuery();
+        $allQuery
             ->addShould($themeQuery)
             ->addShould($translationsQuery)
             ->addShould($fieldsQuery)
@@ -176,10 +174,25 @@ class SearchController extends Controller
         $filteredQuery = new \Elastica\Query\BoolQuery();
         $filteredQuery
             ->addMust($publishedQuery)
-            ->addMust($finalQuery)
+            ->addMust($allQuery)
         ;
         
-        $paginatedResults = $repository->getPaginatedResults($filteredQuery, 10, 1);
+        // Get untranslated fields query.
+        $artistFields = array(
+          'firstname',
+          'lastname',
+          'nationality',
+        );
+ 
+        $artistQuery = $repository->getFieldsKeywordQuery($artistFields, $searchTerm, false);
+        
+        $finalQuery = new \Elastica\Query\BoolQuery();
+        $finalQuery
+            ->addShould($filteredQuery)
+            ->addShould($artistQuery)
+        ;
+        
+        $paginatedResults = $repository->getPaginatedResults($finalQuery, 10, 1);
         
         foreach ($paginatedResults as $result) {
           $response[] = (object) array(

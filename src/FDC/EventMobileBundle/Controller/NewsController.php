@@ -2,6 +2,7 @@
 
 namespace FDC\EventMobileBundle\Controller;
 
+use Base\CoreBundle\Entity\Homepage;
 use \DateTime;
 
 use Base\CoreBundle\Entity\News;
@@ -43,6 +44,7 @@ class NewsController extends Controller
         }
 
         // GET HOMEPAGE SETTINGS
+        /** @var Homepage $homepage */
         $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array(
             'festival' => $this->getFestival()
         ));
