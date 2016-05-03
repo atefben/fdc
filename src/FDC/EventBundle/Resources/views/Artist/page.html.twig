@@ -10,7 +10,7 @@
                     {% set profession = artist|trans_fallback('profession') %}
                     {% if profession %}
                         <span href="#" class="category" {{ artist|content_lang('profession') }}>
-                            {{ profession }}
+                            {{ artist|profession_gender('profession') }}
                         </span>
                     {% endif %}
                     {% if artist.nationality %}
