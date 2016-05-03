@@ -13314,6 +13314,12 @@ input[type=submit] {
   color: #999;
   font-weight: bold;
 }
+.categorie-items .contain-article-invit .small-pres p a {
+  color: #c8a461;
+}
+.categorie-items .contain-article-invit .small-pres p a strong, .categorie-items .contain-article-invit .small-pres p a em {
+  color: #c8a461;
+}
 .categorie-items .contain-article-invit .small-pres h3 {
   color: #cccccc;
 }
