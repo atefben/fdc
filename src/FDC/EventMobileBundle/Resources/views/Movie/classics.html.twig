@@ -8,16 +8,6 @@
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
-    
-        {#<div class="bandeau-list">#}
-            {#<div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('{% path classic.image|trans_fallback('file'), '2560x1103' %}')">#}
-                {#<div class="vCenterKid">#}
-                    {#<h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>#}
-                {#</div>#}
-            {#</div>#}
-                {#{% include 'FDCEventMobileBundle:Movie:components/filters.html.twig' %}#}
-        {#</div>#}
-
         <div id="banner-top">
             <div class="banner-img vCenter" style="background-image:url('{% path classic.image|trans_fallback('file'), '2560x1103' %}')">
                 <div class="vCenterKid">
@@ -26,8 +16,6 @@
             </div>
         </div>
 
-
-
         <div class="selection-container container-list single-article">
             {% include 'FDCEventMobileBundle:Movie:components/filters.html.twig' %}
             <div id="horizontal-menu2" class="owl-carousel sliderDrag videosSlider">
@@ -35,64 +23,17 @@
                     {% set trans = filter.findTranslationByLocale(app.request.locale) %}
                     {% if trans is not null %}
                         <div class="vid">
-                            <p><a href="{{ path('fdc_eventmobile_movie_classics', {'slug': trans.slug }) }}"
+                            <p>
+                                <a target="_blank"
+                                        href="{{ path('fdc_eventmobile_movie_classics', {'slug': trans.slug }) }}"
                                   class="{% if app.request.attributes.get('_route') == 'fdc_eventmobile_movie_classics' and app.request.attributes.get('slug') == trans.slug %}active{% endif %}">
                                 {{ trans.titleNav }}
-                            </a></p>
+                                </a>
+                            </p>
                         </div>
                     {% endif %}
                 {% endfor %}
             </div>
-
-            {#{% set transClassic = classic.findTranslationByLocale(app.request.locale) %}#}
-
-            {#<div class="article-title">#}
-                {#<h2 class="">#}
-                    {#{{ transClassic.title }}#}
-                {#</h2>#}
-            {#</div>#}
-            {##}
-            {#<section>#}
-                {#<div class="owl-carousel film-slider">#}
-                    {#<div data-id="film1" class="thumb active">#}
-                        {#<div class="img-container" style="background-image:url(./img/palmares/cover-film-cinefondation1.jpg)"></div>#}
-                        {#<div class="info">#}
-                            {#<p>saul fia</p>#}
-                            {#<a class="director" href="#">Neeraj GHAYWAN</a>#}
-                            {#<p class="duration">1h47</p>#}
-                        {#</div>#}
-                        {#<div class="text">#}
-                            {#<p>Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros. Motion Picture Imagery par l'étalonneuse Janet Wilson, sous la supervision de Ned Price. Le négatif original n'existant plus, image reconstituée d'après trois interpositifs noirs et blancs à grain fin support nitrate.</p>#}
-                            {#<p>Son optique "RCA squeeze duplex format."</p>#}
-
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div data-id="film2" class="thumb">#}
-                        {#<div class="img-container" style="background-image:url(./img/palmares/cover-film-cinefondation2.jpg)"></div>#}
-                        {#<div class="info">#}
-                            {#<p>Carol</p>#}
-                            {#<a class="director" href="#">Todd HAYNES</a>#}
-                            {#<p class="duration">1h43</p>#}
-                        {#</div>#}
-                        {#<div class="text">#}
-                            {#<p>Une présentation de Studiocanal. Marron élément nitrate de 2ème génération (négatif original inexistant), numérisé en 4K et restauré image par image en 4K par Deluxe en Angleterre.</p>#}
-                            {#<p>Restauration supervisée par Studiocanal.</p>#}
-
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</section>#}
-
-
-
-
-
-
-
-
-
-
-
             <div class="honneur-invit">
                 <div class="bandeau-list">
                 </div>
