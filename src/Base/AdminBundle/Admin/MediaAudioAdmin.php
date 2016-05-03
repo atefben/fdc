@@ -344,4 +344,14 @@ class MediaAudioAdmin extends Admin
             'Remonté en tant qu\'actualité sur la homepage' => 'exportDisplayedHome',
         );
     }
+
+    public function prePersist($object)
+    {
+        session_write_close();
+    }
+
+    public function preUpdate($object)
+    {
+        session_write_close();
+    }
 }

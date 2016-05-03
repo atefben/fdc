@@ -274,4 +274,14 @@ class MediaImageAdmin extends Admin
             'Remontée dans le diaporama du quotidien en homepage' => 'exportDisplayedHome',
         );
     }
+
+    public function prePersist($object)
+    {
+        session_write_close();
+    }
+
+    public function preUpdate($object)
+    {
+        session_write_close();
+    }
 }

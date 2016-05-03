@@ -176,6 +176,7 @@ class MovieController extends Controller
         $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
         $festival = $this->getFestival()->getId();
+        $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale);
 
         $this->isPageEnabled($request->get('_route'));
 
@@ -205,7 +206,6 @@ class MovieController extends Controller
                 $next = $selectionTabs[0];
             }
 
-            $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale);
 
             //SEO
             $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
@@ -283,6 +283,7 @@ class MovieController extends Controller
             'selectionTabs' => $pages,
             'page'          => $page,
             'movies'        => $movies,
+            'cannesClassics' => $cannesClassics,
             'next'          => is_object($next) ? $next : false,
         );
     }
