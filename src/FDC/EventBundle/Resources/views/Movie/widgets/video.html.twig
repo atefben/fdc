@@ -20,7 +20,7 @@
                     data-playlist='[
                     {% set videoImage = null %}
                     {% set amazonImage = null %}
-                    {% if firstVideo.image %}
+                    {% if firstVideo.image and firstVideo.image|trans_fallback('file') %}
                         {% set videoImage = media_public_url(firstVideo.image|trans_fallback('file'), '586x370') %}
                     {% elseif firstVideo|trans_fallback('imageAmazonUrl') %}
                         {% set amazonImage = s3_server_video ~ firstVideo|trans_fallback('imageAmazonUrl') %}
@@ -55,13 +55,13 @@
                     {% set video = video.mediaVideo %}
                     {% set trans = video.findTranslationByLocale(app.request.locale) %}
                     {% if trans is null or trans.file is null or trans.jobWebmState != 3 or trans.jobMp4State != 3 or trans.mp4Url is null or trans.webmUrl is null %}
-                        {% set trans = file.findTranslationByLocale('fr') %}
+                        {% set trans = video.findTranslationByLocale('fr') %}
                     {% endif %}
 
                     {% if trans is not null and trans.jobWebmState == 3 and trans.jobMp4State == 3 and
                         trans.mp4Url is not null and trans.webmUrl is not null
                     %}
-                        {% if video.image %}
+                        {% if video.image and video.image|trans_fallback('file') %}
                             {% set videoImage = media_public_url(video.image|trans_fallback('file'), '586x370') %}
                         {% elseif video|trans_fallback('imageAmazonUrl') %}
                             {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}

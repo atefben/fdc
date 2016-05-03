@@ -27,6 +27,7 @@ class TransFallbackExtension extends Twig_Extension
     {
         return array(
             new \Twig_SimpleFilter('trans_fallback', array($this, 'transFallbackFilter')),
+            new \Twig_SimpleFilter('trans_fallback_country', array($this, 'transFallbackCountryFilter')),
         );
     }
 
@@ -53,6 +54,33 @@ class TransFallbackExtension extends Twig_Extension
 
         return '';
     }
+
+
+    public function transFallbackCountryFilter($object, $property)
+    {
+        if ($object) {
+            $locale = $this->requestStack->getCurrentRequest()->getLocale();
+
+            if (method_exists($object, 'findTranslationByLocale')) {
+                $trans = $object->findTranslationByLocale($locale);
+                $property = ucfirst($property);
+
+                if ($trans && $trans->{'get' . $property}()) {
+                    return $trans->{'get' . $property}();
+                }
+
+                $transEn = $object->findTranslationByLocale('en');
+
+                if ($transEn && $transEn->{'get' . $property}()) {
+                    return $transEn->{'get' . $property}();
+                }
+            }
+        }
+
+        return '';
+    }
+
+
 
     /**
      * getName function.
