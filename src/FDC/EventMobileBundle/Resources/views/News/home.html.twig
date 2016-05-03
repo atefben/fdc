@@ -275,10 +275,13 @@
                 </div>
 
                 <div class="links">
-                    <a href="#" class="seances"><i class="icon icon_programmation"></i>{{ 'home.video.btn.voirlesseances'|trans }}</a>
+                    <a href="{{ path('fdc_eventmobile_agenda_scheduling') }}">
+                        <i class="icon icon_programmation"></i>{{ 'home.video.btn.voirlesseances'|trans }}
+                    </a>
                 </div>
             </div>
 
+            {#<a href="{{ path('fdc_eventmobile_television_trailers', { 'slug': 'competition' }) }}">#}
             {#<div class="trailer">#}
                 {#<div class="img-container">#}
                     {#<div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>#}
