@@ -3,7 +3,8 @@
 
 {% block body %}
     <div id="main" class="list-article palmares-list palmares loading ">
-
+        {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+        {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
         <div id="banner-top">
             <div class="banner-img vCenter" style="background-image:url('{% path page.image|trans_fallback('file'), '2560x1103' %}')">
                 <div class="vCenterKid">
