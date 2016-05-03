@@ -5,7 +5,10 @@
     {% for article in items %}
         <article class="article" data-format="article" data-theme="competition">
             <div class="image">
-                <img src='{% path article.image|trans_fallback('file'), '265x165' %}' alt="{{ article.header|trans_fallback('alt') }}"/>
+                {% dump(article.image) %}
+                <div class="image-wrapper">
+                    <img src='{% path article.image|trans_fallback('file'), '1280x808' %}' alt="{{ article.header|trans_fallback('alt') }}"/>
+                </div>
                 <a href="{{ path('fdc_event_participate_getpage', {'slug': article|trans_fallback('slug') }) }}" class="linkImage"></a>
                 <span class="picto"><i class="icon icon_article"></i>
                 </span>
