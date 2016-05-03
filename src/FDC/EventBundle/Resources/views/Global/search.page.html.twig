@@ -179,7 +179,7 @@
                                                         {% set profession = artist|trans_fallback('profession') %}
                                                         {% if profession %}
                                                             <span class="category">
-                                                                {{ profession }}
+                                                                {{ artist|profession_gender('profession') }}
                                                             </span>
                                                         {% endif %}
                                                         <span class="country">{{ artist.nationality|trans_fallback('name') }}</span>
@@ -231,7 +231,9 @@
                                                             {% endif %}
                                                             
                                                         </span>
+                                                        {% if film.countries|first %}
                                                         <span class="country">{{ film.countries|first.country.name }}</span>
+                                                        {% endif %}
                                                     </div>
                                                 </div>
                                             </div>

@@ -10,11 +10,11 @@
         {% elseif class(media) == "MediaVideo" %}
             {% set title = media|trans_fallback('title') %}
             {% set format = 'video' %}
-            {% set link = path('fdc_event_news_getvideos') %}
+            {% set link = path('fdc_event_news_getvideos') ~ '#vid=' ~ media.id %}
         {% elseif class(media) == "MediaAudio" %}
             {% set title = media|trans_fallback('title') %}
             {% set format = 'audio' %}
-            {% set link = path('fdc_event_news_getaudios') %}
+            {% set link = path('fdc_event_news_getaudios') ~ '#aid=' ~ media.id %}
         {% endif %}
 
 

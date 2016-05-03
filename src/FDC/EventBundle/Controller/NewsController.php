@@ -104,7 +104,9 @@ class NewsController extends Controller
         } else {
             $homeInfos     = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
             $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
-            $homeArticles  = array_merge($homeInfos, $homeStatement);
+            $homeArticles  = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
+
+            $homeArticles  = array_merge($homeInfos, $homeStatement, $homeArticles);
         }
 
         $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
@@ -130,7 +132,9 @@ class NewsController extends Controller
                 $dateTimeNext     = $homeArticles[count($homeArticles)-1]->getPublishedAt();
                 $homeInfos        = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
                 $homeStatement    = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
-                $homeArticlesNext = array_merge($homeInfos, $homeStatement);
+                $homeArticles     = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
+
+                $homeArticlesNext = array_merge($homeInfos, $homeStatement, $homeArticles);
             }
             $homeArticlesNext = $this->removeUnpublishedNewsAudioVideo($homeArticlesNext, $locale, $count);
         }
@@ -262,7 +266,9 @@ class NewsController extends Controller
             } else {
                 $homeInfos     = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
                 $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
-                $homeArticles  = array_merge($homeInfos, $homeStatement);
+                $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
+
+                $homeArticles  = array_merge($homeInfos, $homeStatement, $homeArticles);
                 $homeArticles  = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
             }
             $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
@@ -274,7 +280,9 @@ class NewsController extends Controller
             } else {
                 $homeInfos     = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
                 $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
-                $homeArticles  = array_merge($homeInfos, $homeStatement);
+                $homeArticles  = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
+
+                $homeArticles  = array_merge($homeInfos, $homeStatement, $homeArticles);
                 $homeArticles  = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
             }
         }
@@ -289,7 +297,9 @@ class NewsController extends Controller
                     $dateTimeNext     = $homeArticles[count($homeArticles)-1]->getPublishedAt();
                     $homeInfos        = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
                     $homeStatement    = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
-                    $homeArticlesNext = array_merge($homeInfos, $homeStatement);
+                    $homeArticles  = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
+
+                    $homeArticlesNext = array_merge($homeInfos, $homeStatement, $homeArticles);
                 } else {
                     $homeArticlesNext = null;
                 }
