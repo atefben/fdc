@@ -1,6 +1,5 @@
 // All Photos
 // =========================
-
 var itemReveal = Isotope.Item.prototype.reveal;
 Isotope.Item.prototype.reveal = function () {
   itemReveal.apply(this, arguments);
@@ -20,6 +19,9 @@ function resizeGrid() {
     }
     if($('#gridVideos').length) {
       setGrid(false, $('#gridVideos'), true);
+    }
+    if($('#gridPhotos').length) {
+      setImages(false, $('#gridPhotos'), true);
     }
     if($('#gridFilmSelection').length) {
       var w = $('#gridFilmSelection .image').first().width();
@@ -223,45 +225,44 @@ function setGrid(grid, dom, init){
   buildGrid();
 }
 
-$(document).ready(function () {
-  function setImages(grid, dom, init) {
-    var $img            = $(dom).find('.item:not(.portrait) img'),
-        pourcentage     = 0.50,
-        nbImgAAgrandir  = $img.length * pourcentage,
-        i               = 0,
-        nbRamdom        = [],
-        x               = 1,
-        max             = 0,
-        min             = 0,
-        nbImage         = $img.length;
+function setImages(grid, dom, init) {
+  var $img            = $(dom).find('.item:not(.portrait) img'),
+      pourcentage     = 0.50,
+      nbImgAAgrandir  = $img.length * pourcentage,
+      i               = 0,
+      nbRamdom        = [],
+      x               = 1,
+      max             = 0,
+      min             = 0,
+      nbImage         = $img.length;
 
-    while(x < nbImgAAgrandir) {
-      while(nbImgAAgrandir > nbRamdom.length) {
-        max = nbImage * pourcentage * x;
-        min = nbImage * pourcentage * (x - 1);
-        nbAlea = Math.floor(Math.random() * (max - min) + min);
-        nbRamdom[i] = nbAlea;
-        $($img[nbRamdom[i]]).closest('div.item').addClass('w2');
-        i++;
-        x++;
-      }
+  $('.item').addClass('visible');
+
+  while(x < nbImgAAgrandir) {
+    while(nbImgAAgrandir > nbRamdom.length) {
+      max = nbImage * pourcentage * x;
+      min = nbImage * pourcentage * (x - 1);
+      nbAlea = Math.floor(Math.random() * (max - min) + min);
+      nbRamdom[i] = nbAlea;
+      $($img[nbRamdom[i]]).closest('div.item').addClass('w2');
+      i++;
+      x++;
     }
-
-    $('.item').addClass('visible');
-
-    grid.isotope({
-      itemSelector    : '.item',
-      percentPosition : true,
-      sortBy          : 'original-order',
-      layoutMode      : 'packery',
-      packery         : {
-        columnWidth : '.grid-sizer'
-      }
-    });
-
-    grid.isotope('layout');
   }
 
+  $(dom).find('div.item:not(.w2)').each(function() {
+    if(typeof $(this).find('.info p').data('title') != 'undefined') {
+      $(this).find('.info p').text($(this).find('.info p').data('title').trunc(30,true));
+    }
+  });
+  $(dom).find('div.item.w2').each(function() {
+    if(typeof $(this).find('.info p').data('title') != 'undefined') {
+      $(this).find('.info p').text($(this).find('.info p').data('title').trunc(60,true));
+    }
+  });
+}
+
+$(document).ready(function () {
   function closePopinAudio() {
     $('.popin-audio, .ov').removeClass('show');
 
@@ -294,17 +295,17 @@ $(document).ready(function () {
 
       $grid = $('#gridPhotos').imagesLoaded(function() {
         setImages($grid, $('#gridPhotos'), true);
+        $grid.isotope({
+          itemSelector    : '.item',
+          percentPosition : true,
+          // sortBy          : 'original-order',
+          layoutMode      : 'packery',
+          packery         : {
+            columnWidth : '.grid-sizer'
+          }
+        });
 
-        $('#gridPhotos div.item:not(.w2)').each(function() {
-          if(typeof $(this).find('.info p').data('title') != 'undefined') {
-            $(this).find('.info p').text($(this).find('.info p').data('title').trunc(30,true));
-          }
-        });
-        $('#gridPhotos div.item.w2').each(function() {
-          if(typeof $(this).find('.info p').data('title') != 'undefined') {
-            $(this).find('.info p').text($(this).find('.info p').data('title').trunc(60,true));
-          }
-        });
+        $grid.isotope('layout');
       });
     }
 
@@ -554,22 +555,36 @@ $(document).ready(function () {
         }
       });
 
-      $container.isotope({
-        filter: function() {
-          var obj = $(this),
-              filterArray = filterValues.split('.'),
-              f = "";
-
-          for(i=1; i<filterArray.length; i++) {
-            f += "(?=.*"+filterArray[i]+")";
-          }
-          f +=".*";
-
-          return obj.attr('class').match(new RegExp(f));
+      if($('#gridPhotos').length > 0 && $('.all-photos').length > 0) {
+        for(var i=0; i<slideshows.length; i++) {
+          console.log('destroy');
+          slideshows[i].api().destroy();
         }
-      });
+        $('.chocolat-wrapper').remove();
+        slideshows = [];
+      }
 
-      if($('#gridAudios') || $('#gridVideos')) {
+      if (filterValues.length > 0) {
+        $grid.isotope({
+          filter: function() {
+            var obj = $(this),
+                filterArray = filterValues.split('.'),
+                f = "";
+
+            for(i=1; i<filterArray.length; i++) {
+              f += "(?=.*"+filterArray[i]+")";
+            }
+            f +=".*";
+
+            return obj.attr('class').match(new RegExp(f));
+          }
+        });
+      } else {
+        console.log('here');
+        $grid.isotope({filter: '*'});
+      }
+
+      if($('#gridAudios') || $('#gridVideos') || $('#gridPhotos')) {
         $('.filter .select').each(function() {
           var d = new Date();
           var n = d.getFullYear();
@@ -581,9 +596,13 @@ $(document).ready(function () {
             var getVal = '.'+$this.data('filter');
             var numItems = $('.item'+getVal+':not(.isotope-hidden)').length;
             
+            console.log(numItems);
+            console.log('.item'+getVal+':not(.isotope-hidden)');
+
             if (numItems === 0) {
               $this.addClass('disabled');
             } else {
+              console.log('test disabled');
               $this.removeClass('disabled');
             }
           });
@@ -591,8 +610,6 @@ $(document).ready(function () {
       }
 
       if($('#gridPhotos').length > 0 && $('.all-photos').length > 0) {
-        slideshows = [];
-        $('.chocolat-wrapper').remove();
         initSlideshows();
       }
     });

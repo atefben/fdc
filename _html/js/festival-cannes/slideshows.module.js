@@ -59,7 +59,7 @@ function initSlideshows() {
   }
 
   if($('.all-photos').length) {
-    var slideshow = $('#gridPhotos').Chocolat({
+    var slideshow = $('#gridPhotos .images').Chocolat({
       imageSize     : 'contain',
       fullScreen    : false,
       imageSelector : '.item:not(.isotope-hidden) .chocolat-image'
@@ -95,9 +95,9 @@ $('body').on('click', '.chocolat-close', function(e) {
 
     setTimeout(function() {
       for(var i=0; i<slideshows.length; i++) {
-          slideshows[i].api().close();
-          slideshows[i].api().destroy();
-          history.pushState("", document.title, window.location.pathname);
+        // slideshows[i].api().close();
+        slideshows[i].api().destroy();
+        history.pushState("", document.title, window.location.pathname);
       }
     }, 1000);
 
@@ -326,7 +326,6 @@ $('body').on('mousemove', '.chocolat-content', function(e) {
 
 
 function updatePhotoShare(pid, title) {
-  console.log(title);
   var pid      = pid || 0,
       title    = title || "",
       t0       = title.split('<h2>') || "",
