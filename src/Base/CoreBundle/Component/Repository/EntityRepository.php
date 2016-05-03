@@ -135,9 +135,16 @@ class EntityRepository extends BaseRepository
      */
     public function addTranslationQueries($qb, $alias, $locale, $slug = null, $media = false)
     {
+        $slugCondition = '';
+
         if ($slug !== null) {
+            if ($locale == 'fr') {
+               $slugCondition .= " AND {$alias}.slug = :slug";
+            }
+            $slugCondition .= ')';
+
             $qb
-                ->andWhere("({$alias}.locale = 'fr' AND {$alias}.status = :status_published AND {$alias}.slug = :slug)")
+                ->andWhere("({$alias}.locale = 'fr' AND {$alias}.status = :status_published". $slugCondition)
                 ->setParameter('status_published', NewsArticleTranslation::STATUS_PUBLISHED)
                 ->setParameter('slug', $slug)
             ;

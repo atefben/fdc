@@ -11801,10 +11801,6 @@ article .read-later.rAlign span:after {
   margin: 0 -100%;
   display: inline-block;
 }
-.single-movie .casting .gallery .img img.active.landscape {
-  height: 100%;
-  width: auto;
-}
 .single-movie .casting .gallery .thumbs a {
   display: inline-block;
   margin-right: 5px;
