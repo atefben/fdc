@@ -60,7 +60,7 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
      * @ORM\Column(type="integer", nullable=false)
      *
      */
-    private $position;
+    private $weight;
 
     /**
      * @var \Application\Sonata\UserBundle\Entity\User
@@ -262,5 +262,28 @@ class FDCPageLaSelectionCannesClassics implements TranslateMainInterface
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * Set weight
+     *
+     * @param integer $weight
+     * @return FDCPageLaSelectionCannesClassics
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return integer 
+     */
+    public function getWeight()
+    {
+        return $this->weight;
     }
 }

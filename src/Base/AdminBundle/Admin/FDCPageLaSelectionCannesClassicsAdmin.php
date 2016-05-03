@@ -171,7 +171,9 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
                 'help'     => 'form.fdc_page_web_tv_trailers.helper_image',
                 'required' => false,
             ))
-            ->add('position')
+            ->add('weight', null, array(
+                'label' => 'Position',
+            ))
             ->add('widgets', 'infinite_form_polycollection', array(
                 'label' => false,
                 'types' => array(
