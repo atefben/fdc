@@ -38,7 +38,7 @@
                 <div class="bandeau-list">
                 </div>
                 {% set transClassic = classic.findTranslationByLocale(app.request.locale) %}
-                <section class="categorie-items honneur-invit">
+                <div class="categorie-items honneur-invit">
                     <div class="article-title">
                         <h2 class="">
                             {{ transClassic.title }}
@@ -81,12 +81,63 @@
                                 <div class="section photos">
                                     {% include 'FDCEventMobileBundle:News:widgets/dual-photo.html.twig' with { 'hideHalfDiv': true } %}
                                 </div>
-                            {#{% elseif widget is fdc_page_la_selection_cannes_classics_widget_movie %}#}
-                                {#{% if widget.widgetMovie is not null and widget.widgetMovie.films|length > 0 %}#}
-                                    {#{% for film in widget.widgetMovie.films %}#}
-                                        {#{% include 'FDCEventMobileBundle:Movie:widgets/movie.html.twig' with {'film': film.film} %}#}
-                                    {#{% endfor %}#}
-                                {#{% endif %}#}
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_movie %}
+                                {% if widget.widgetMovie is not null and widget.widgetMovie.films|length > 0 %}
+                                    <div class="section">
+
+                                        <div class="owl-carousel film-slider">
+                                            {% for film in widget.widgetMovie.films %}
+                                                {% set film = film.film %}
+
+                                                <div data-id="film{{ loop.index }}" class="thumb {% if loop.first%}active{% endif %}">
+                                                    <div class="img-container" style="background-image:url(
+                                                        {% include 'FDCEventMobileBundle:Global:components/film.cover.html.twig' with ({
+                                                            film: film,
+                                                            display_film_path: true,
+                                                            film_format: '259x352',
+                                                            film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
+                                                            display_film_path: true
+                                                        }) %}
+                                                    )"></div>
+                                                    <div class="info">
+                                                        <p>{{ film.titleVO }}</p>
+                                                        {#<a class="director" href="#">Neeraj GHAYWAN</a>#}
+                                                        {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                            {% include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
+                                                            {% if loop.index != director|length %}, {% endif %}
+                                                        {% endfor %}<br />
+                                                        {#<p class="duration">1949 - 1h47</p>#}
+                                                        <p class="duration">
+                                                            {% set duration = [] %}
+                                                            {% if film.duration is not empty %}
+                                                                {% set duration = film.duration|split('.') %}
+                                                            {% endif %}
+                                                            {% if film.productionYear is not null and  film.productionYear != 0 %}{{  film.productionYear }}
+                                                                {% if duration|length > 0 and duration[0] > 0 %}
+                                                                    -
+                                                                {% endif %}
+                                                            {% endif %}
+                                                            {% if duration|length > 0 and duration[0] > 0 %}
+                                                                {% set hours = (duration[0] / 60)|round(0, 'floor') %}
+                                                                {% set minutes = duration[0] % 60 %}
+                                                                {% if hours > 0 %}{{ hours }}:{% endif %}{{ minutes }}
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="text">
+                                                        {% if restauration is defined and restauration == true and film|trans_fallback('infoRestauration')|trim %}
+                                                            {{ film|trans_fallback('infoRestauration')|nl2br|truncate(220) }}
+                                                        {% else %}
+                                                            {{ film|trans_fallback('synopsis')|nl2br|truncate(220) }}
+                                                        {% endif %}
+
+                                                    </div>
+                                                </div>
+                                                {#{% include 'FDCEventMobileBundle:Movie:widgets/movie.html.twig' with {'film': film.film, 'index': loop.index} %}#}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endif %}
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_intro %}
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                                 <div class="summary pres-honneur">
@@ -95,13 +146,13 @@
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_subtitle %}
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                                 <div class="title-list-cat title-film-detail">
-                                    <h2 class="title one-line">{{ transWidget.subtitle }}</h2>
-                                    {#<p class="title-item">{{ transWidget.paragraph }}</p>#}
+                                    <h2 class="title tall">{{ transWidget.subtitle }}</h2>
+                                    <p class="subtitle">{{ transWidget.paragraph }}</p>
                                 </div>
                             {% endif %}
                         {% endfor %}
                     </div>
-                </section>
+                </div>
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@
 <article style="background-image:url('{% spaceless %}
 {% include 'FDCEventMobileBundle:Global:components/film.cover.html.twig' with ({
     film: film,
+    display_film_path: true,
     film_format: '2560x1103',
     film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
     display_film_path: true
@@ -24,8 +25,8 @@
             <div class="infos-item-list">
                 {% if projection is defined and projection is not empty %}
                     {% set substr = projection.startsAt|localizeddate('full', 'none', app.request.locale)|split(' ') %}
-                <span class="date-pres-item">{% for i in 0..2 %}{{ substr[i] }}{% endfor %} </span>
-                <span class="heure-pres-item">{{ projection.startsAt|date('H:i') }}</span>
+                    <span class="date-pres-item">{% for i in 0..2 %}{{ substr[i] }} {% endfor %} </span>
+                    <span class="heure-pres-item">{{ projection.startsAt|date('H:i') }}</span>
                 {% endif %}
                 <h3 class="title-item">{{ film.titleVO }}</h3>
                 {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}{% include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}{% if loop.index != director|length %}, {% endif %}{% endfor %}<br />
@@ -46,7 +47,7 @@
                         {% endif %}
                     </span>
                 <p class="description-item">
-                    {% if restauration is defined and restauration == true %}
+                    {% if restauration is defined and restauration == true and film|trans_fallback('infoRestauration')|trim %}
                         {{ film|trans_fallback('infoRestauration')|nl2br|raw }}
                     {% else %}
                         {{ film|trans_fallback('synopsis')|nl2br|raw }}
