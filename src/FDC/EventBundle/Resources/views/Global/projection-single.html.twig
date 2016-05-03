@@ -151,7 +151,7 @@
                                         {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> -
                                     <span class="ven">
-                                        {%- if seance.room -%}{{ seance.room.name }}{%- endif -%}
+                                        {%- if seance.room -%}{{ seance.room.name|upper }}{%- endif -%}
                                     </span>
                                     <span class="competition">
                                         {{ film.selectionSection|trans_fallback('name') }}
@@ -245,7 +245,7 @@
                                         {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> -
                                     <span class="ven">
-                                        {%- if conference.room -%}{{ conference.room.name }}{%- endif -%}
+                                        {%- if conference.room -%}{{ conference.room.name|upper }}{%- endif -%}
                                     </span>
                                     <span class="competition">
                                         {{ film.selectionSection|trans_fallback('name') }}
@@ -334,7 +334,7 @@
                                         {{ difference.i }}
                                     </span> - {{- ' ' -}}
                                     <span class="ven">
-                                        {%- if relatedProjection.room -%}{{ relatedProjection.room.name }}{%- endif -%}
+                                        {%- if relatedProjection.room -%}{{ relatedProjection.room.name|upper }}{%- endif -%}
                                     </span>
                                     <span class="competition">
                                         {{ film.selectionSection|trans_fallback('name') }}
