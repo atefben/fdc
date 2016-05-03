@@ -2,33 +2,61 @@
 
 namespace Base\AdminBundle\EventListener;
 
+use Base\CoreBundle\Entity\PressDownloadSectionWidgetDocument;
+use Base\CoreBundle\Entity\PressDownloadSectionWidgetVideoTranslation;
+use \DateTime;
+
 use Application\Sonata\MediaBundle\Entity\Media;
+
+use Base\CoreBundle\Entity\EventWidgetQuoteTranslation;
+use Base\CoreBundle\Entity\EventWidgetSubtitleTranslation;
 use Base\CoreBundle\Entity\EventWidgetTextTranslation;
+use Base\CoreBundle\Entity\EventWidgetVideoYoutubeTranslation;
+
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetIntroTranslation;
+use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetQuoteTranslation;
+use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetSubtitleTranslation;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTextTranslation;
+use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetVideoYoutubeTranslation;
+
 use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetSubTitleTranslation;
 use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypefiveTranslation;
 use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypefourTranslation;
 use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypeoneTranslation;
 use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypethreeTranslation;
 use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypetwoTranslation;
+
+use Base\CoreBundle\Entity\FDCPagePrepareWidgetColumnTranslation;
 use Base\CoreBundle\Entity\FDCPagePrepareWidgetImageTranslation;
 use Base\CoreBundle\Entity\FDCPagePrepareWidgetPictoTranslation;
+
 use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
+use Base\CoreBundle\Entity\InfoWidgetQuoteTranslation;
+use Base\CoreBundle\Entity\InfoWidgetVideoYoutubeTranslation;
+
+use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Base\CoreBundle\Entity\NewsWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
+use Base\CoreBundle\Entity\NewsWidgetVideoYoutubeTranslation;
+
+use Base\CoreBundle\Entity\OrangeWidgetFilmOCSTranslation;
+use Base\CoreBundle\Entity\OrangeWidgetFilmStudioTranslation;
+use Base\CoreBundle\Entity\OrangeWidgetMovieYoutubeTranslation;
+
 use Base\CoreBundle\Entity\PressDownloadSectionWidgetArchiveTranslation;
 use Base\CoreBundle\Entity\PressDownloadSectionWidgetDocumentTranslation;
+
 use Base\CoreBundle\Entity\PressGuideWidgetColumnTranslation;
 use Base\CoreBundle\Entity\PressGuideWidgetImageTranslation;
 use Base\CoreBundle\Entity\PressGuideWidgetPictoTranslation;
-use Base\CoreBundle\Entity\StatementWidgetTextTranslation;
-use Base\CoreBundle\Interfaces\TranslateChildInterface;
-use \DateTime;
 
-use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Base\CoreBundle\Entity\StatementWidgetTextTranslation;
+use Base\CoreBundle\Entity\StatementWidgetQuoteTranslation;
+use Base\CoreBundle\Entity\StatementWidgetVideoYoutubeTranslation;
+
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
-
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 
@@ -271,62 +299,39 @@ class EntityListener
             }
 
             $this->setWidgetsFrenchVersion(
-                array('NewsArticleTranslation', 'NewsImageTranslation', 'NewsVideoTranslation', 'NewsAudioTranslation'),
-                $entity,
-                $entityName,
-                array(
-                    array(
-                        'widgetEntity' => new NewsWidgetTextTranslation(),
-                        'widgetName' => 'NewsWidgetText',
-                        'setters' => array(
-                            'content'
-                        )
-                    )
-                )
-            );
-
-            $this->setWidgetsFrenchVersion(
-                array('StatementArticleTranslation', 'StatementImageTranslation', 'StatementVideoTranslation', 'StatementAudioTranslation'),
-                $entity,
-                $entityName,
-                array(
-                    array(
-                        'widgetEntity' => new StatementWidgetTextTranslation(),
-                        'widgetName' => 'StatementWidgetText',
-                        'setters' => array(
-                            'content'
-                        )
-                    )
-                )
-            );
-
-            $this->setWidgetsFrenchVersion(
-                array('InfoArticleTranslation', 'InfoImageTranslation', 'InfoVideoTranslation', 'InfoAudioTranslation'),
-                $entity,
-                $entityName,
-                array(
-                    array(
-                        'widgetEntity' => new InfoWidgetTextTranslation(),
-                        'widgetName' => 'InfoWidgetText',
-                        'setters' => array(
-                            'content'
-                        )
-                    )
-                )
-            );
-
-            $this->setWidgetsFrenchVersion(
                 array('EventTranslation'),
                 $entity,
                 $entityName,
                 array(
+                    array(
+                        'widgetEntity' => new EventWidgetQuoteTranslation(),
+                        'widgetName' => 'EventWidgetQuote',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new EventWidgetSubtitleTranslation(),
+                        'widgetName' => 'EventWidgetQuote',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
                     array(
                         'widgetEntity' => new EventWidgetTextTranslation(),
                         'widgetName' => 'EventWidgetText',
                         'setters' => array(
                             'content'
                         )
-                    )
+                    ),
+                    array(
+                        'widgetEntity' => new EventWidgetVideoYoutubeTranslation(),
+                        'widgetName' => 'EventWidgetVideoYoutube',
+                        'setters' => array(
+                            'title',
+                            'url'
+                        )
+                    ),
                 )
             );
 
@@ -343,10 +348,33 @@ class EntityListener
                         )
                     ),
                     array(
+                        'widgetEntity' => new FDCPageLaSelectionCannesClassicsWidgetQuoteTranslation(),
+                        'widgetName' => 'FDCPageLaSelectionCannesClassicsWidgetQuote',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new FDCPageLaSelectionCannesClassicsWidgetSubtitleTranslation(),
+                        'widgetName' => 'FDCPageLaSelectionCannesClassicsWidgetSubtitle',
+                        'setters' => array(
+                            'subtitle',
+                            'paragraph'
+                        )
+                    ),
+                    array(
                         'widgetEntity' => new FDCPageLaSelectionCannesClassicsWidgetTextTranslation(),
                         'widgetName' => 'FDCPageLaSelectionCannesClassicsWidgetText',
                         'setters' => array(
                             'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new FDCPageLaSelectionCannesClassicsWidgetVideoYoutubeTranslation(),
+                        'widgetName' => 'FDCPageLaSelectionCannesClassicsWidgetVideoYoutube',
+                        'setters' => array(
+                            'url',
+                            'title'
                         )
                     )
                 )
@@ -361,7 +389,8 @@ class EntityListener
                         'widgetEntity' => new FDCPageParticipateSectionWidgetSubTitleTranslation(),
                         'widgetName' => 'FDCPageParticipateSectionWidgetSubTitle',
                         'setters' => array(
-                            'description'
+                            'description',
+                            'title'
                         )
                     ),
                     array(
@@ -378,28 +407,35 @@ class EntityListener
                         'widgetEntity' => new FDCPageParticipateSectionWidgetTypefourTranslation(),
                         'widgetName' => 'FDCPageParticipateSectionWidgetTypefour',
                         'setters' => array(
-                            'content'
+                            'content',
+                            'title'
                         )
                     ),
                     array(
                         'widgetEntity' => new FDCPageParticipateSectionWidgetTypeoneTranslation(),
                         'widgetName' => 'FDCPageParticipateSectionWidgetTypeone',
                         'setters' => array(
-                            'content'
+                            'content',
+                            'title'
                         )
                     ),
                     array(
                         'widgetEntity' => new FDCPageParticipateSectionWidgetTypethreeTranslation(),
                         'widgetName' => 'FDCPageParticipateSectionWidgetTypethree',
                         'setters' => array(
-                            'content'
+                            'content',
+                            'title'
                         )
                     ),
                     array(
                         'widgetEntity' => new FDCPageParticipateSectionWidgetTypetwoTranslation(),
                         'widgetName' => 'FDCPageParticipateSectionWidgetTypetwo',
                         'setters' => array(
-                            'content'
+                            'content',
+                            'title',
+                            'sponsorFirstName',
+                            'sponsorFirstName',
+                            'sponsorRole'
                         )
                     )
                 )
@@ -411,17 +447,156 @@ class EntityListener
                 $entityName,
                 array(
                     array(
+                        'widgetEntity' => new FDCPagePrepareWidgetColumnTranslation(),
+                        'widgetName' => 'FDCPagePrepareWidgetColumn',
+                        'setters' => array(
+                            'btnLabel',
+                            'title'
+                        )
+                    ),
+                    array(
                         'widgetEntity' => new FDCPagePrepareWidgetImageTranslation(),
                         'widgetName' => 'FDCPagePrepareWidgetImage',
                         'setters' => array(
-                            'content'
+                            'content',
+                            'title'
                         )
                     ),
                     array(
                         'widgetEntity' => new FDCPagePrepareWidgetPictoTranslation(),
                         'widgetName' => 'FDCPagePrepareWidgetPicto',
                         'setters' => array(
+                            'content',
+                            'title',
+                            'btnLabel'
+                        )
+                    )
+                )
+            );
+
+            $this->setWidgetsFrenchVersion(
+                array('InfoArticleTranslation', 'InfoImageTranslation', 'InfoVideoTranslation', 'InfoAudioTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new InfoWidgetTextTranslation(),
+                        'widgetName' => 'InfoWidgetText',
+                        'setters' => array(
                             'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new InfoWidgetQuoteTranslation(),
+                        'widgetName' => 'InfoWidgetQuote',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new InfoWidgetVideoYoutubeTranslation(),
+                        'widgetName' => 'InfoWidgetVideoYoutube',
+                        'setters' => array(
+                            'url',
+                            'title'
+                        )
+                    ),
+
+                )
+            );
+
+            $this->setWidgetsFrenchVersion(
+                array('NewsArticleTranslation', 'NewsImageTranslation', 'NewsVideoTranslation', 'NewsAudioTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new NewsWidgetQuoteTranslation(),
+                        'widgetName' => 'NewsWidgetQuote',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new NewsWidgetTextTranslation(),
+                        'widgetName' => 'NewsWidgetText',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new NewsWidgetVideoYoutubeTranslation(),
+                        'widgetName' => 'NewsWidgetYoutube',
+                        'setters' => array(
+                            'title',
+                            'url'
+                        )
+                    )
+                )
+            );
+
+
+            $this->setWidgetsFrenchVersion(
+                array('OrangeAndCieTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new OrangeWidgetMovieYoutubeTranslation(),
+                        'widgetName' => 'OrangeWidgetMovieYoutube',
+                        'setters' => array(
+                            'title',
+                            'subtitle'
+                        )
+                    )
+                )
+            );
+
+            $this->setWidgetsFrenchVersion(
+                array('OrangeProgrammationOCSTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new OrangeWidgetFilmOCSTranslation(),
+                        'widgetName' => 'OrangeWidgetFilmOCS',
+                        'setters' => array(
+                            'legend',
+                            'title',
+                            'description'
+                        )
+                    )
+                )
+            );
+
+            $this->setWidgetsFrenchVersion(
+                array('OrangeSeriesAndCieTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new OrangeWidgetFilmOCSTranslation(),
+                        'widgetName' => 'OrangeWidgetFilmOCS',
+                        'setters' => array(
+                            'legend',
+                            'title',
+                            'description'
+                        )
+                    )
+                )
+            );
+
+            $this->setWidgetsFrenchVersion(
+                array('OrangeStudioTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new OrangeWidgetFilmStudioTranslation(),
+                        'widgetName' => 'OrangeWidgetFilmStudio',
+                        'setters' => array(
+                            'title',
+                            'description'
                         )
                     )
                 )
@@ -436,6 +611,9 @@ class EntityListener
                         'widgetEntity' => new PressDownloadSectionWidgetArchiveTranslation(),
                         'widgetName' => 'PressDownloadSectionWidgetArchive',
                         'setters' => array(
+                            'label',
+                            'copyright',
+                            'btnLabel',
                             'content'
                         )
                     ),
@@ -443,7 +621,22 @@ class EntityListener
                         'widgetEntity' => new PressDownloadSectionWidgetDocumentTranslation(),
                         'widgetName' => 'PressDownloadSectionWidgetDocument',
                         'setters' => array(
+                            'label',
+                            'copyright',
+                            'btnLabel',
+                            'secondBtnLabel',
+                            'thirdBtnLabel',
                             'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new PressDownloadSectionWidgetVideoTranslation(),
+                        'widgetName' => 'PressDownloadSectionWidgetVideo',
+                        'setters' => array(
+                            'label',
+                            'copyright',
+                            'btnLabel',
+                            'secondBtnLabel'
                         )
                     )
                 )
@@ -467,6 +660,7 @@ class EntityListener
                         'widgetEntity' => new PressGuideWidgetImageTranslation(),
                         'widgetName' => 'PressGuideWidgetImage',
                         'setters' => array(
+                            'title',
                             'content'
                         )
                     ),
@@ -474,7 +668,38 @@ class EntityListener
                         'widgetEntity' => new PressGuideWidgetPictoTranslation(),
                         'widgetName' => 'PressGuideWidgetPicto',
                         'setters' => array(
+                            'title',
                             'content'
+                        )
+                    )
+                )
+            );
+
+            $this->setWidgetsFrenchVersion(
+                array('StatementArticleTranslation', 'StatementImageTranslation', 'StatementVideoTranslation', 'StatementAudioTranslation'),
+                $entity,
+                $entityName,
+                array(
+                    array(
+                        'widgetEntity' => new StatementWidgetTextTranslation(),
+                        'widgetName' => 'StatementWidgetText',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new StatementWidgetQuoteTranslation(),
+                        'widgetName' => 'StatementWidgetQuote',
+                        'setters' => array(
+                            'content'
+                        )
+                    ),
+                    array(
+                        'widgetEntity' => new StatementWidgetVideoYoutubeTranslation(),
+                        'widgetName' => 'StatementWidgetVideoYoutube',
+                        'setters' => array(
+                            'url',
+                            'title'
                         )
                     )
                 )
