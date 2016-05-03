@@ -69,7 +69,7 @@ class FDCPageLaSelectionCannesClassicsRepository extends TranslationRepository
         }
 
         if($position){
-            $qb ->orderBy('cc.position','asc');
+            $qb ->orderBy('cc.weight','asc');
         }
 
         return $qb

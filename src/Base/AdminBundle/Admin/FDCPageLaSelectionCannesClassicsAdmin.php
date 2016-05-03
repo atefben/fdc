@@ -78,7 +78,7 @@ class FDCPageLaSelectionCannesClassicsAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('title', null, array('template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig'))
-            ->add('position')
+            ->add('weight',null,array('label' => 'Position'))
       	  	->add('createdAt', null, array(
             'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
             'sortable' => 'createdAt',
