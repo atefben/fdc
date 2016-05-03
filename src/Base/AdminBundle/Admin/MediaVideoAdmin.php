@@ -302,7 +302,7 @@ class MediaVideoAdmin extends Admin
             ->add('associatedFilm', 'sonata_type_model_list', array(
                 'help'     => 'form.news.helper_film_film_associated',
                 'required' => false,
-                'btn_add'  => false
+                'btn_add'  => true
             ))
             ->add('associatedEvent', 'sonata_type_model_list', array(
                 'help'     => 'form.news.helper_event_associated',
