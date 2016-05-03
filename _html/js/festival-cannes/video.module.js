@@ -474,7 +474,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $stateBtn.removeClass('icon_pause').addClass('icon_play');
         mouseMoving(false);
     }).on('buffer', function() {
-        // console.log("i'm here");
+        // console.log("");
     }).on('complete', function () {
         this.stop();
         $stateBtn.removeClass('icon_pause').addClass('icon_play');
@@ -577,11 +577,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         }, true);
     } else {
         // if (isiPad(true)) {
-        //     console.log('test');
         //     $fullscreen[0].addEventListener('touchstart', function() {
-        //         console.log('in');
         //         time = window.setInterval(function() {
-        //             console.log('in 2');
         //             try {
         //                 $container[0].webkitEnterFullscreen();
         //             }

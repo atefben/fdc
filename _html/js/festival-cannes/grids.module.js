@@ -557,7 +557,6 @@ $(document).ready(function () {
 
       if($('#gridPhotos').length > 0 && $('.all-photos').length > 0) {
         for(var i=0; i<slideshows.length; i++) {
-          console.log('destroy');
           slideshows[i].api().destroy();
         }
         $('.chocolat-wrapper').remove();
@@ -580,7 +579,6 @@ $(document).ready(function () {
           }
         });
       } else {
-        console.log('here');
         $grid.isotope({filter: '*'});
       }
 
@@ -595,14 +593,10 @@ $(document).ready(function () {
 
             var getVal = '.'+$this.data('filter');
             var numItems = $('.item'+getVal+':not(.isotope-hidden)').length;
-            
-            console.log(numItems);
-            console.log('.item'+getVal+':not(.isotope-hidden)');
 
             if (numItems === 0) {
               $this.addClass('disabled');
             } else {
-              console.log('test disabled');
               $this.removeClass('disabled');
             }
           });

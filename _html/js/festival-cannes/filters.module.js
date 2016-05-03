@@ -19,8 +19,6 @@ function filter() {
     filters.push(obj);
   });
 
-  console.error(filters);
-
   var exp1 = '',
       exp2 = '';
 
@@ -94,7 +92,6 @@ function filter() {
       });
     }
   } else {
-    console.log(id);
     $('*[data-' + id + ']').show();
     
     if($('.articles').length != 0) {
