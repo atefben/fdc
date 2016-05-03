@@ -142,9 +142,14 @@
                                     {% for artist in searchResult.category.artist %}
                                         <div class="person small">
                                             <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
+                                                {% set artistImage = artist|person_image(true) %}
                                                 {% if artist.portraitImage and artist.portraitImage|trans_fallback('file') %}
                                                     <img src="{% path artist.portraitImage|trans_fallback('file'), 'searchtiny' %}"
                                                          alt="{{ artist.firstname }} {{ artist.lastname }}">
+                                                {% elseif artistImage %}
+                                                    <img src="{% path artistImage.file, 'searchtiny' %}"
+                                                         alt="{{ artist.firstname }} {{ artist.lastname }}"
+                                                         data-object-fit="cover">
                                                 {% else %}
                                                     {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
                                                     {% if media is empty %}
@@ -177,7 +182,7 @@
                                                                 {{ profession }}
                                                             </span>
                                                         {% endif %}
-                                                        <span class="country">{{ artist.nationality }}</span>
+                                                        <span class="country">{{ artist.nationality|trans_fallback('name') }}</span>
                                                     </div>
                                                 </div>
                                             </div>
