@@ -356,9 +356,7 @@ class MovieController extends Controller
         if ($filters && (!$next || $next === true)) {
             $next = reset($filters);
         }
-
-        dump($filters);exit;
-
+        
         return array(
             'cannesClassics' => $filters,
             'classic'        => $classic,
