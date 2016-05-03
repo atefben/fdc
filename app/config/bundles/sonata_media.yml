@@ -62,7 +62,6 @@ sonata_media:
                 293x397: { width: 293, height: 397, quality: 100, constraint: false }
                 588x784: { width: 588, height: 784, quality: 100 }
                 259x352: { width: 259, height: 352, quality: 100 }
-                976x535: { width: 976 , height: 535 , quality: 100 }
                 366x488: { width: 366 , height: 488 , quality: 100 }
                 2560x1103: { width: 2560, height: 1103 , quality: 100 }
                 516x688: { width: 516, height: 688 , quality: 100 }
