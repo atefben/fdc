@@ -568,7 +568,6 @@ $(document).ready(function () {
           return obj.attr('class').match(new RegExp(f));
         }
       });
-      
 
       if($('#gridAudios') || $('#gridVideos')) {
         $('.filter .select').each(function() {
@@ -583,16 +582,18 @@ $(document).ready(function () {
             var numItems = $('.item'+getVal+':not(.isotope-hidden)').length;
             
             if (numItems === 0) {
-              // console.log(1,$('.item'+getVal+':not(.isotope-hidden)'));
               $this.addClass('disabled');
-              // $this.hide();
             } else {
-              // console.log(1,$('.item'+getVal+':not(.isotope-hidden)'));
               $this.removeClass('disabled');
-              // $this.show();
             }
           });
         });
+      }
+
+      if($('#gridPhotos').length > 0 && $('.all-photos').length > 0) {
+        slideshows = [];
+        $('.chocolat-wrapper').remove();
+        initSlideshows();
       }
     });
   }
