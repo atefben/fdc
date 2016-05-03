@@ -63,7 +63,7 @@ class SearchController extends Controller
       $mediaResults = $this->getSearchResults($_locale, 'media', $searchTerm, 2);
       $participateResults = $this->getSearchResults($_locale, 'participate', $searchTerm, 2);
       $filmResults = $this->getSearchResults($_locale, 'film', $searchTerm, 4);
-      $artistResults = $this->getSearchResults($_locale, 'artist', $searchTerm, 4);
+      $artistResults = $this->getSearchResults($_locale, 'artist', $searchTerm, 6);
       
       $result = array(
           'category' => array(
