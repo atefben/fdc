@@ -2,45 +2,114 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
+
+
     <div id="main" class="list-article films-list loading honneur-invit canne-classic selection-officielle">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
     
-        <div class="bandeau-list">
-            <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('{% path classic.image|trans_fallback('file'), '2560x1103' %}')">
+        {#<div class="bandeau-list">#}
+            {#<div class="bandeau-list-img bandeau-head vCenter" style="background-image:url('{% path classic.image|trans_fallback('file'), '2560x1103' %}')">#}
+                {#<div class="vCenterKid">#}
+                    {#<h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>#}
+                {#</div>#}
+            {#</div>#}
+                {#{% include 'FDCEventMobileBundle:Movie:components/filters.html.twig' %}#}
+        {#</div>#}
+
+        <div id="banner-top">
+            <div class="banner-img vCenter" style="background-image:url('{% path classic.image|trans_fallback('file'), '2560x1103' %}')">
                 <div class="vCenterKid">
-                    <h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>
+                    <h2 class="title">{{ 'selection.title.selectionofficielle'|trans }}</h2>
                 </div>
             </div>
-                {% include 'FDCEventMobileBundle:Movie:components/filters.html.twig' %}
         </div>
+
+
+
         <div class="selection-container container-list single-article">
+            {% include 'FDCEventMobileBundle:Movie:components/filters.html.twig' %}
+            <div id="horizontal-menu2" class="owl-carousel sliderDrag videosSlider">
+                {% for filter in filters %}
+                    {% set trans = filter.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is not null %}
+                        <div class="vid">
+                            <p><a href="{{ path('fdc_eventmobile_movie_classics', {'slug': trans.slug }) }}"
+                                  class="{% if app.request.attributes.get('_route') == 'fdc_eventmobile_movie_classics' and app.request.attributes.get('slug') == trans.slug %}active{% endif %}">
+                                {{ trans.titleNav }}
+                            </a></p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            {#{% set transClassic = classic.findTranslationByLocale(app.request.locale) %}#}
+
+            {#<div class="article-title">#}
+                {#<h2 class="">#}
+                    {#{{ transClassic.title }}#}
+                {#</h2>#}
+            {#</div>#}
+            {##}
+            {#<section>#}
+                {#<div class="owl-carousel film-slider">#}
+                    {#<div data-id="film1" class="thumb active">#}
+                        {#<div class="img-container" style="background-image:url(./img/palmares/cover-film-cinefondation1.jpg)"></div>#}
+                        {#<div class="info">#}
+                            {#<p>saul fia</p>#}
+                            {#<a class="director" href="#">Neeraj GHAYWAN</a>#}
+                            {#<p class="duration">1h47</p>#}
+                        {#</div>#}
+                        {#<div class="text">#}
+                            {#<p>Une présentation de Warner Bros. Restauration 4k réalisé chez Warner Bros. Motion Picture Imagery par l'étalonneuse Janet Wilson, sous la supervision de Ned Price. Le négatif original n'existant plus, image reconstituée d'après trois interpositifs noirs et blancs à grain fin support nitrate.</p>#}
+                            {#<p>Son optique "RCA squeeze duplex format."</p>#}
+
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div data-id="film2" class="thumb">#}
+                        {#<div class="img-container" style="background-image:url(./img/palmares/cover-film-cinefondation2.jpg)"></div>#}
+                        {#<div class="info">#}
+                            {#<p>Carol</p>#}
+                            {#<a class="director" href="#">Todd HAYNES</a>#}
+                            {#<p class="duration">1h43</p>#}
+                        {#</div>#}
+                        {#<div class="text">#}
+                            {#<p>Une présentation de Studiocanal. Marron élément nitrate de 2ème génération (négatif original inexistant), numérisé en 4K et restauré image par image en 4K par Deluxe en Angleterre.</p>#}
+                            {#<p>Restauration supervisée par Studiocanal.</p>#}
+
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</section>#}
+
+
+
+
+
+
+
+
+
+
+
             <div class="honneur-invit">
                 <div class="bandeau-list">
-                    <div id="horizontal-menu2" class="owl-carousel sliderDrag videosSlider sub-nav-list nav-movie">
-                        {% for filter in filters %}
-                            {% set trans = filter.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is not null %}
-                                <div>
-                                    <p><a href="{{ path('fdc_event_movie_classics', {'slug': trans.slug }) }}">
-                                        {{ trans.titleNav }}
-                                    </a></p>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
                 </div>
                 {% set transClassic = classic.findTranslationByLocale(app.request.locale) %}
                 <section class="categorie-items honneur-invit">
-                    <div class="title-list-cat">
-                        <h2 class="">{{ transClassic.title }}</h2>
+                    <div class="article-title">
+                        <h2 class="">
+                            {{ transClassic.title }}
+                        </h2>
                     </div>
-                    <div class="contain-article-invit">
+
+                    <div class="container contain-article-invit">
                         {% for widget in classic.widgets %}
+
                             {% if widget is fdc_page_la_selection_cannes_classics_widget_text %}
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
-                                <div class="small-pres">
+                                <div class="text-content small-pres">
                                     {{ transWidget.content|raw }}
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_quote %}
@@ -57,38 +126,37 @@
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video %}
                                 {% include 'FDCEventMobileBundle:News:widgets/video.html.twig' with {'widget': widget} %}
                             {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
-                                <div class="contain-img-honneur">
+                                <div class=" contain-img-honneur">
                                     {% set photo = widget.gallery.medias[0].media %}
                                     {% include 'FDCEventMobileBundle:News:widgets/single-photo.html.twig' with {'photo' : photo, 'hideCopyright': true } %}
                                     {% set copyright = photo|trans_fallback('copyright') %}
                                     <span class="copy">{% if copyright is not empty %} © {{ copyright }}{% endif %}</span>
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
-                                <div class="small-pres container">
+                                <div class="small-pres ">
                                     {% include 'FDCEventMobileBundle:News:widgets/slideshow.html.twig' %}
                                 </div>
                             {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image_dual_align %}
-                                <div class="small-pres container">
-                                    {% include 'FDCEventMobileBundle:News:widgets/dual-photo.html.twig' with {'hideHalfDiv': true} %}
+                                <div class="section photos">
+                                    {% include 'FDCEventMobileBundle:News:widgets/dual-photo.html.twig' with { 'hideHalfDiv': true } %}
                                 </div>
-                            {#% elseif widget is fdc_page_la_selection_cannes_classics_widget_movie %}
-                                {% if widget.widgetMovie is not null and widget.widgetMovie.films|length > 0 %}
-                                    {% for film in widget.widgetMovie.films %}
-                                        {% include 'FDCEventMobileBundle:Movie:widgets/movie.html.twig' with {'film': film.film} %}
-                                    {% endfor %}
-                                {% endif %}
+                            {#{% elseif widget is fdc_page_la_selection_cannes_classics_widget_movie %}#}
+                                {#{% if widget.widgetMovie is not null and widget.widgetMovie.films|length > 0 %}#}
+                                    {#{% for film in widget.widgetMovie.films %}#}
+                                        {#{% include 'FDCEventMobileBundle:Movie:widgets/movie.html.twig' with {'film': film.film} %}#}
+                                    {#{% endfor %}#}
+                                {#{% endif %}#}
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_intro %}
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
-                                <div class="pres-honneur">
+                                <div class="summary pres-honneur">
                                     {{ transWidget.introduction|raw }}
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_subtitle %}
                                 {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                                 <div class="title-list-cat title-film-detail">
-                                    <h2 class="title">{{ transWidget.subtitle }}</h2>
-                                    <p class="title-item">{{ transWidget.paragraph }}</p>
+                                    <h2 class="title one-line">{{ transWidget.subtitle }}</h2>
+                                    {#<p class="title-item">{{ transWidget.paragraph }}</p>#}
                                 </div>
-                            {% endif %#}
                             {% endif %}
                         {% endfor %}
                     </div>
