@@ -1353,13 +1353,13 @@ $(document).ready(function () {
     //Scroll
     $(window).on('scroll', function () {
 
-      var s = $(window).scrollTop(),
-        h = $("#main").height() - 180,
-        affiche = $('#affiche-officielle').length ? $('#affiche-officielle').offset().top - 180 : 0,
-        signature = $('#signature').length ? $('#signature').offset().top - 180 : 0,
-        animation = $('#animation').length ? $('#animation').offset().top - 180 : 0,
-        photosInst = $('#photos-institutionnelles').length ? $('#photos-institutionnelles').offset().top - 180 : 0,
-        dossierPress = $('#dossier-presse').length ? $('#dossier-presse').offset().top - 180 : 0;
+      var s            = $(window).scrollTop(),
+          h            = $("#main").height() - 180,
+          affiche      = $('#affiche-officielle').length ? $('#affiche-officielle').offset().top - 180 : 0,
+          signature    = $('#signature').length ? $('#signature').offset().top - 180 : 0,
+          animation    = $('#animation').length ? $('#animation').offset().top - 180 : 0,
+          photosInst   = $('#photos-institutionnelles').length ? $('#photos-institutionnelles').offset().top - 180 : 0,
+          dossierPress = $('#dossier-presse').length ? $('#dossier-presse').offset().top - 180 : 0;
 
       if (s > 180) {
         $('.downloading-nav').addClass('sticky');
