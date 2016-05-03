@@ -3396,6 +3396,15 @@ sub {
   text-transform: uppercase;
 }
 
+.title-26 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #0c0c0c;
+  line-height: 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 .text-list {
   font-size: 1rem;
   color: #666666;
@@ -3420,6 +3429,28 @@ sub {
   list-style-position: inside;
 }
 
+.text-list-02 {
+  font-size: .75rem;
+  color: #0c0c0c;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 30px;
+  margin-top: 50px;
+  margin-bottom: 46px;
+}
+.text-list-02 li {
+  list-style-position: inside;
+  list-style: decimal;
+}
+.text-list-02 .gold {
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+}
+
+.gold {
+  color: #c8a461;
+}
+
 .bold {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
@@ -3441,6 +3472,32 @@ sub {
   margin-top: 69px;
   margin-bottom: 69px;
   line-height: 32px;
+}
+
+.quote-important {
+  padding: 25px 40px;
+  border: 1px solid #c8a461;
+  margin: 50px 0px;
+  margin-left: -40px;
+  font-size: 1rem;
+  color: #666666;
+  line-height: 30px;
+}
+.quote-important a {
+  color: #c8a461;
+  transition: .5s;
+}
+.quote-important a:hover {
+  opacity: .8;
+}
+.quote-important strong {
+  font-size: .75rem;
+  color: #0c0c0c;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  display: block;
 }
 
 .quote-02 {
@@ -4118,7 +4175,7 @@ video {
 .block-01-ms {
   margin: 0 auto;
   max-width: 100%;
-  width: 664px;
+  width: 663px;
 }
 .block-01-ms img {
   max-width: 100%;
@@ -5032,13 +5089,22 @@ video {
 .block-contact a {
   color: #c8a461;
 }
+.block-contact a.button {
+  height: 50px;
+  line-height: 50px;
+  width: 237px;
+  text-align: center;
+  padding: 0px;
+}
 .block-contact ul, .block-contact p {
   color: #666666;
   margin-bottom: 42px;
   font-size: .875rem;
+  line-height: 20px;
 }
 .block-contact .bold-1 {
-  font-size: .875rem;
+  line-height: 20px;
+  font-size: 0.875rem;
 }
 .block-contact .item {
   display: inline-block;
@@ -5046,7 +5112,226 @@ video {
   vertical-align: top;
 }
 .block-contact .i-1 {
-  margin-right: 166px;
+  margin-right: 165px;
+}
+
+.block-tab-switch .title-tab-swich {
+  font-size: .75rem;
+  text-transform: uppercase;
+  line-height: 24px;
+  letter-spacing: 2px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  display: block;
+  text-align: center;
+}
+.block-tab-switch table {
+  margin-top: 27px;
+  margin-bottom: 55px;
+  border-collapse: collapse;
+}
+.block-tab-switch table td {
+  color: #0c0c0c;
+  border: 1px solid #e6e6e6;
+  border-color: #e6e6e6;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: .75rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  width: 326px;
+  height: 66px;
+  transition: .5s;
+  cursor: pointer;
+  line-height: 18px;
+}
+.block-tab-switch table td:hover {
+  cursor: pointer;
+  color: #fff;
+  background: rgba(200, 164, 97, 0.8);
+  border-color: rgba(200, 164, 97, 0.8);
+}
+.block-tab-switch table td.active {
+  cursor: pointer;
+  color: #fff;
+  background-color: #c8a461;
+  border-color: #c8a461;
+}
+
+.block-s-info {
+  flex-direction: column;
+  height: 255px;
+}
+.block-s-info .title-25 {
+  margin-bottom: 4px;
+}
+.block-s-info p {
+  color: #666666;
+  line-height: 30px;
+  margin-bottom: 35px;
+}
+.block-s-info a.button {
+  height: 50px;
+  line-height: 50px;
+  width: 178px;
+  text-align: center;
+  padding: 0px;
+}
+
+.block-s-info-02 {
+  flex-direction: column;
+  height: 362px;
+  color: #fff;
+  background-size: cover;
+  text-align: center;
+}
+.block-s-info-02 a {
+  color: #c8a461;
+  transition: .5s;
+}
+.block-s-info-02 a:hover {
+  opacity: .8;
+}
+.block-s-info-02 a.button {
+  height: 50px;
+  line-height: 50px;
+  width: 178px;
+  text-align: center;
+  padding: 0px;
+}
+.block-s-info-02 .title-25 {
+  margin-bottom: 18px;
+  color: #fff;
+}
+.block-s-info-02 p {
+  line-height: 30px;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.block-p-register {
+  margin-top: 70px;
+}
+.block-p-register h2 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #0c0c0c;
+  line-height: 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.block-p-register p {
+  color: #666666;
+  font-size: 1rem;
+  line-height: 30px;
+  font-size: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  margin-top: 32px;
+  margin-bottom: 66px;
+}
+.block-p-register p a, .block-p-register p strong, .block-p-register p span {
+  color: #c8a461;
+}
+.block-p-register ol {
+  font-size: .75rem;
+  color: #0c0c0c;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 30px;
+  width: 94%;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 26px;
+  list-style: none;
+  counter-reset: section;
+  list-style-type: none;
+}
+.block-p-register ol li {
+  list-style-position: outside;
+  position: relative;
+}
+.block-p-register ol li:before {
+  counter-increment: section;
+  content: counters(section,".") ". ";
+  color: #c8a461;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  position: absolute;
+  left: -21px;
+}
+
+.block-contain-txt-register-movie.active {
+  display: block;
+}
+
+.block-contain-txt-register-movie {
+  padding-top: 55px;
+  display: none;
+}
+.block-contain-txt-register-movie p {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 30px;
+  margin-bottom: 25px;
+}
+.block-contain-txt-register-movie a {
+  color: #c8a461;
+}
+.block-contain-txt-register-movie ul {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 30px;
+  list-style-type: disc;
+  list-style-position: inside;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.block-contain-txt-register-movie h4 {
+  color: #c8a461;
+  font-size: .875rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+  line-height: 26px;
+  padding-bottom: 27px;
+}
+.block-contain-txt-register-movie h5 {
+  color: #0c0c0c;
+  font-size: .75rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+  line-height: 24px;
+}
+.block-contain-txt-register-movie h6 {
+  font-size: .75rem;
+  color: #0c0c0c;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  margin-top: 5px;
+  display: block;
+}
+.block-contain-txt-register-movie strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.block-contain-txt-register-movie u {
+  margin-bottom: 24px;
+  display: block;
+}
+.block-contain-txt-register-movie .block-contact ul, .block-contain-txt-register-movie .block-contact p {
+  color: #666666;
+  margin-bottom: 42px;
+  margin-left: 0px;
+  margin-top: 0px;
+  font-size: .875rem;
+  line-height: 20px;
+  list-style: none;
+  list-style-type: none;
+}
+.block-contain-txt-register-movie .block-s-info-02 p {
+  line-height: 30px;
+  margin-bottom: 30px;
+  color: #fff;
 }
 
 @font-face {
