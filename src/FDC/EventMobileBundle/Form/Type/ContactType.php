@@ -126,7 +126,7 @@ class ContactType extends AbstractType
 
         $resolver->setDefaults(array(
             'constraints' => $collectionConstraint,
-            'translation_domain' => 'FDCEventMobileBundle'
+            'translation_domain' => 'FDCEventBundle'
         ));
     }
 

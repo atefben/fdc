@@ -113,8 +113,8 @@ class MovieController extends Controller
                     if (isset($movies[$key - 1])) {
                         $prev = $movies[$key - 1];
                     }
-                    if (isset($movies[$key + 1])) {
-                        $next = $movies[$key + 1];
+                    if (isset($movies[$key])) {
+                        $next = $movies[$key];
                     }
                 }
                 break;
@@ -328,6 +328,8 @@ class MovieController extends Controller
             throw new NotFoundHttpException('Cannes Classic not found');
         }
 
+        $localeSlugs = $classic->getLocaleSlugs();
+
         $pages = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FDCPageLaSelection')
@@ -361,6 +363,7 @@ class MovieController extends Controller
             'filters'        => $filters,
             'selectionTabs'  => $pages,
             'next'           => is_object($next) ? $next : false,
+            'localesSlugs'   => $localeSlugs,
         );
     }
 }
