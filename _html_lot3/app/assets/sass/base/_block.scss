@@ -1,4 +1,29 @@
 // 2. Block
+// - HALF DIV
+// - THREE QUARTS DIV
+// - CARDS
+// - BLOCK 01
+// - BLOCK 01 medium
+// - BLOCK 01 small
+// - BLOCK 01 x small
+// - BLOCK 02
+// - BLOCK 03
+// - BLOCK 05
+// - BLOCK PUSH
+// - BLOCK PUSH 02
+// - BLOCK PUSH TOP
+// - BLOCK LEGEND
+// - BLOCK FILMS
+// - BLOCK MOVIE PREVIEW
+// - BLOCK LIST IMG
+// - BLOCK SOCIAL NETWORK
+// - BLOCK LIST NETWORK ALL
+// - BLOCK POSTER
+// - BLOCK POSTER 01
+// - BLOCK JURY
+// - BLOCK ACCORDION
+// - BLOCK RULES
+// - BLOCK CONTACT
 // =========================
 
 .half-div {
@@ -56,6 +81,18 @@
 
 }
 
+.block-01-ms {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 664px;
+
+  img {
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+}
+
 .block-01-xs {
   margin: 0 auto;
   max-width: 100%;
@@ -77,7 +114,6 @@
 .block-03 {
   height: 600px;
 }
-
 
 .block-05 {
   color: #fff;
@@ -831,7 +867,6 @@
   }
 }
 
-
 .block-accordion {
 
   .a-left {
@@ -1081,5 +1116,65 @@
       }
     }
   }
+}
 
+.block-rules {
+  margin-top: 68px;
+
+  .title-23 {
+    padding-bottom: 21px;
+  }
+
+  .title-24.title-rules {
+    padding-bottom: 29px;
+  }
+
+  .title-24 {
+    padding-bottom: 9px;
+  }
+
+  .texte-01 {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 23px !important;
+    line-height: 30px;
+
+    strong {
+      color: #666666;
+    }
+  }
+}
+
+.block-contact {
+  padding-top: 55px;
+
+  .title-25 {
+    text-align: center;
+    display: block;
+    margin-bottom: 42px;
+  }
+
+  a {
+    color: $gold;
+  }
+
+  ul,p {
+    color: #666666;
+    margin-bottom: 42px;
+    font-size: .875rem;
+  }
+
+  .bold-1 {
+    font-size: .875rem;
+  }
+
+  .item {
+    display: inline-block;
+    width:247px;
+    vertical-align: top;
+  }
+
+  .i-1 {
+    margin-right: 166px;
+  }
 }
