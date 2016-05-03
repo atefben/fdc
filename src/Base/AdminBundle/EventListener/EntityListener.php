@@ -2,60 +2,46 @@
 
 namespace Base\AdminBundle\EventListener;
 
-use Base\CoreBundle\Entity\PressDownloadSectionWidgetDocument;
-use Base\CoreBundle\Entity\PressDownloadSectionWidgetVideoTranslation;
-use \DateTime;
-
 use Application\Sonata\MediaBundle\Entity\Media;
-
 use Base\CoreBundle\Entity\EventWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\EventWidgetSubtitleTranslation;
 use Base\CoreBundle\Entity\EventWidgetTextTranslation;
 use Base\CoreBundle\Entity\EventWidgetVideoYoutubeTranslation;
-
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetIntroTranslation;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetSubtitleTranslation;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTextTranslation;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetVideoYoutubeTranslation;
-
 use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetSubTitleTranslation;
 use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypefiveTranslation;
 use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypefourTranslation;
 use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypeoneTranslation;
 use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypethreeTranslation;
 use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypetwoTranslation;
-
 use Base\CoreBundle\Entity\FDCPagePrepareWidgetColumnTranslation;
 use Base\CoreBundle\Entity\FDCPagePrepareWidgetImageTranslation;
 use Base\CoreBundle\Entity\FDCPagePrepareWidgetPictoTranslation;
-
-use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
 use Base\CoreBundle\Entity\InfoWidgetQuoteTranslation;
+use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
 use Base\CoreBundle\Entity\InfoWidgetVideoYoutubeTranslation;
-
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
 use Base\CoreBundle\Entity\NewsWidgetVideoYoutubeTranslation;
-
 use Base\CoreBundle\Entity\OrangeWidgetFilmOCSTranslation;
 use Base\CoreBundle\Entity\OrangeWidgetFilmStudioTranslation;
 use Base\CoreBundle\Entity\OrangeWidgetMovieYoutubeTranslation;
-
 use Base\CoreBundle\Entity\PressDownloadSectionWidgetArchiveTranslation;
 use Base\CoreBundle\Entity\PressDownloadSectionWidgetDocumentTranslation;
-
+use Base\CoreBundle\Entity\PressDownloadSectionWidgetVideoTranslation;
 use Base\CoreBundle\Entity\PressGuideWidgetColumnTranslation;
 use Base\CoreBundle\Entity\PressGuideWidgetImageTranslation;
 use Base\CoreBundle\Entity\PressGuideWidgetPictoTranslation;
-
-use Base\CoreBundle\Entity\StatementWidgetTextTranslation;
 use Base\CoreBundle\Entity\StatementWidgetQuoteTranslation;
+use Base\CoreBundle\Entity\StatementWidgetTextTranslation;
 use Base\CoreBundle\Entity\StatementWidgetVideoYoutubeTranslation;
-
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
-
+use DateTime;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
