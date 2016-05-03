@@ -188,7 +188,7 @@ $(document).ready(function() {
   });
 
   // delete an article
-  $('body').on('click', '.delete', function(e) {
+  $('body').on('click', '#selection .delete', function(e) {
     e.preventDefault();
     var $that = $(this);
 

@@ -258,6 +258,74 @@ sub {
   text-transform: uppercase;
 }
 
+.title-23 {
+  font-family: $CamphorBold;
+  font-size: .875rem;
+  color: $gold;
+  letter-spacing: 2px;
+  line-height: 26px;
+  text-transform: uppercase;
+  width: 500px;
+  display: block;
+}
+
+.title-24 {
+  font-family: $CamphorBold;
+  font-size: .75rem;
+  color : #141414;
+  letter-spacing: 2px;
+  line-height: 24px;
+  text-transform: uppercase;
+  display: block;
+}
+
+.title-25 {
+  font-family: $CamphorBold;
+  font-size: 1rem;
+  color:#0c0c0c;
+  line-height: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.text-list {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 30px;
+  padding-left: 28px;
+  margin-bottom: 23px;
+
+  li {
+    list-style:disc;
+    list-style-position: inside;
+  }
+}
+
+.text-list-01 {
+  font-size: 1rem;
+  font-family: $CamphorBold;
+  color: #141414;
+  line-height: 30px;
+  padding-left: 28px;
+  margin-bottom: 23px;
+
+  li {
+    // list-style:disc;
+    list-style-position: inside;
+  }
+}
+
+.bold {
+  font-family: $CamphorBold;
+}
+
+.bold-1 {
+  font-family: $CamphorBold;
+  color: #0c0c0c;
+  margin-bottom: 16px;
+  display: block;
+}
+
 .quote {
   padding: 30px 90px;
   color:#141414;
@@ -471,6 +539,33 @@ a {
   .button {
     border-color: $gold;
   }
+}
+
+.button-long {
+  display: block;
+  text-align: center;
+  border-right: 1px solid #dfdfdf;
+
+  .icon {
+    margin-right: 5px;
+  }
+}
+
+.align-flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.button-half {
+  width: 42%;
+  text-align: center;
+  border-right: 1px solid #dfdfdf;
+  margin-top: 25px;
+}
+
+.block-button-bottom {
+  padding: 58px 0px;
 }
 
 .arrows {
