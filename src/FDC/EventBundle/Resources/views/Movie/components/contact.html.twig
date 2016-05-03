@@ -88,7 +88,7 @@
                                                     {% if contact.address %}
                                                         {% set displayAddress = contact.address.street ~ ' ' ~ contact.address.postalCode ~ ' ' ~ contact.address.city %}
                                                         {% if contact.address.country %}
-                                                            {% set displayAddress = displayAddress ~ ' ' ~ contact.address.country|trans_fallback('name') %}
+                                                            {% set displayAddress = displayAddress ~ ' ' ~ contact.address.country|trans_fallback_country('name') %}
                                                         {% endif %}
                                                         {% if displayAddress|trim %}
                                                             {% set displayContact = displayContact|merge([displayAddress]) %}
@@ -134,7 +134,7 @@
                                                 {% if contact.address %}
                                                     {% set displayAddress = contact.address.street ~ ' ' ~ contact.address.postalCode ~ ' ' ~ contact.address.city %}
                                                     {% if contact.address.country %}
-                                                        {% set displayAddress = displayAddress ~ ' ' ~ contact.address.country|trans_fallback('name') %}
+                                                        {% set displayAddress = displayAddress ~ ' ' ~ contact.address.country|trans_fallback_country('name') %}
                                                     {% endif %}
                                                     {% if displayAddress|trim %}
                                                         {% set displayContact = displayContact|merge([displayAddress]) %}
@@ -181,7 +181,7 @@
                                             {% if contact.address %}
                                                 {% set displayAddress = contact.address.street ~ ' ' ~ contact.address.postalCode ~ ' ' ~ contact.address.city %}
                                                 {% if contact.address.country %}
-                                                    {% set displayAddress = displayAddress ~ ' ' ~ contact.address.country|trans_fallback('name') %}
+                                                    {% set displayAddress = displayAddress ~ ' ' ~ contact.address.country|trans_fallback_country('name') %}
                                                 {% endif %}
                                                 {% if displayAddress|trim %}
                                                     {% set contactInfos = contactInfos|merge([displayAddress]) %}
@@ -253,7 +253,7 @@
                                                     {% if contact.address %}
                                                         {% set displayAddress = contact.address.street ~ ' ' ~ contact.address.postalCode ~ ' ' ~ contact.address.city %}
                                                         {% if contact.address.country %}
-                                                            {% set displayAddress = displayAddress ~ ' ' ~ contact.address.country|trans_fallback('name') %}
+                                                            {% set displayAddress = displayAddress ~ ' ' ~ contact.address.country|trans_fallback_country('name') %}
                                                         {% endif %}
                                                         {% set displayContact = displayContact|merge([displayAddress]) %}
                                                         {% if (contact.address.phone or contact.address.mobilePhone) %}
@@ -296,7 +296,7 @@
                                                         {% set displayContact = displayContact|merge([contact.companyName]) %}
                                                     {% endif %}
                                                     {% if contact.address and contact.address.country %}
-                                                        {% set displayContact = displayContact|merge([contact.address.country|trans_fallback('name')]) %}
+                                                        {% set displayContact = displayContact|merge([contact.address.country|trans_fallback_country('name')]) %}
                                                     {% endif %}
                                                     {{ displayContact|join(' - ')|raw }}
                                                 </p>

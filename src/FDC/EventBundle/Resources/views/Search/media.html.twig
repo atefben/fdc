@@ -6,7 +6,7 @@
         {% if class(media) == "MediaImage" %}
             {% set title = media|trans_fallback('legend') %}
             {% set format = 'photo' %}
-            {% set link = path('fdc_event_news_getphotos') %}
+            {% set link = path('fdc_event_news_getphotos') ~ '#pid=' ~ media.id %}
         {% elseif class(media) == "MediaVideo" %}
             {% set title = media|trans_fallback('title') %}
             {% set format = 'video' %}
@@ -44,10 +44,11 @@
                         {% set amazonImage = s3_server_video ~ media|trans_fallback('imageAmazonUrl') %}
                     {% endif %}
 
-                    {% if transImage is defined or amazonImage is defined %}
-
+                    {% if transImage or amazonImage %}
+                        <img src="{% if transImage is not null %}{% path transImage.file , '976x615' %}" alt="{{ transImage|trans_fallback('alt') }}{% elseif amazonImage is not null %}{{ amazonImage }}" alt="{% endif %}">
+                    {% else %}
+                        <img src="{% path trans.file , '976x615' %}" alt="{{ trans|trans_fallback('alt') }}">
                     {% endif %}
-                    <img src="{% if transImage is not null %}{% path transImage.file , '976x615' %}" alt="{{ transImage|trans_fallback('alt') }}{% elseif amazonImage is not null %}{{ amazonImage }}" alt="{% endif %}">
                 </div>
                 <a class="linkImage" href="{{ link }}"></a>
                 <span class="picto"><i class="icon icon_{{ format }}"></i></span>
