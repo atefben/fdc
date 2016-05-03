@@ -7,8 +7,8 @@
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
 
-        <div class="bandeau-list">
-            <div class="bandeau-list-img bandeau-head vCenter"
+        <div id="banner-top" class="show">
+            <div class="banner-img vCenter"
                  style="background-image:url('{% path page.image|trans_fallback('file'), '2560x1103' %}')">
                 <div class="vCenterKid">
                     <h2 class="title title-list-header">{{ 'selection.title.selectionofficielle'|trans }}</h2>
@@ -17,62 +17,53 @@
 
             {% include 'FDCEventMobileBundle:Movie:components/filters.html.twig' %}
         </div>
-        <div class="container container-list ">
-            <section class="categorie-items">
-                <div class="grid">
-                    <div id="gridFilmSelection" class="grid-wrapper">
-                        <div class="grid-sizer"></div>
 
-                        {% for movie in movies %}
-                            <div class="item">
-                                <figure>
-                                    <div class="image">
-                                        <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
-                                            {% include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
-                                                film: movie,
-                                                film_format: 'mobile',
-                                                film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg'
-                                            }) %}
-                                        </a>
-                                    </div>
-                                    <figcaption>
-                                        <a href="{{ path('fdc_event_movie_get', {'slug': movie.slug}) }}">
-                                            {% if movie|trans_fallback('title') != null and movie.titleVo != null and movie|trans_fallback('title')|lower != movie.titleVo|lower %}
-                                                <span class="name">{{ movie.titleVo }}</span>
-                                                <span class="sub-name">({{ movie|trans_fallback('title') }})</span>
-                                            {% else %}
-                                                <span class="name">{{ movie|trans_fallback('title')?:movie.titleVo }}</span>
-                                            {% endif %}
-                                        </a>
-                                        {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                            <a href="{{ path('fdc_event_artist_get', {'slug': director.slug}) }}">
-                                                <span class="author">{{ loop.first == false ? ', ': '' }}{{ director.fullName }}</span>
-                                            </a>
-                                        {% endfor %}
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        {% endfor %}
+        <div class="dark-container content-selection show">
+            {% for movie in movies %}
+                {% if movie.imageCover and movie.imageCover|trans_fallback('file') %}
+                    {% set videoImage = media_public_url(movie.imageCover|trans_fallback('file'), '293x185') %}
+                    {% set alt = movie.imageCover|trans_fallback('alt') %}
+                {% elseif movie.imageCover|trans_fallback('imageAmazonUrl') %}
+                    {% set videoImage = s3_server_video ~ movie.imageCover|trans_fallback('imageAmazonUrl') %}
+                    {% if movie.imageCover %}
+                        {% set alt = movie.imageCover|trans_fallback('alt') %}
+                    {% else %}
+                        {% set alt = '' %}
+                    {% endif %}
+                {% else %}
+                    {% set videoImage = asset('bundles/fdcevent/img/palmares/film_w256.jpg') %}
+                {% endif %}
 
-                    </div>
+                <div class="selection-item">
+                    <a href="{{ path('fdc_eventmobile_movie_get', {'slug': movie.slug}) }}"></a>
+                    <div class="img" style="background-image:url('{{ videoImage }}')"></div>
+
+                    {% if movie|trans_fallback('title') != null and movie.titleVo != null and movie|trans_fallback('title')|lower != movie.titleVo|lower %}
+                        <p class="name">{{ movie.titleVo }}</p>
+                        <p class="sub-name">({{ movie|trans_fallback('title') }})</p>
+                    {% else %}
+                        <p class="name">{{ movie|trans_fallback('title')?:movie.titleVo }}</p>
+                    {% endif %}
+                    {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                        {#<a href="{{ path('fdc_eventmobile_artist_get', {'slug': director.slug}) }}">#}
+                            <p class="author">{{ loop.first == false ? ', ': '' }}{{ director.fullName }}</p>
+                        {#</a>#}
+                    {% endfor %}
                 </div>
-            </section>
+            {% endfor %}
         </div>
 
         {% if next %}
-            <div class="bandeau-list  bandeau-list-footer push-footer vCenter">
-                <div class="bandeau-list-img vCenterKid"
-                     style="background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}')">
-                    <h2 class="title title-list-header">{{ next|trans_fallback('overrideName')?:next.selectionSection|trans_fallback('name') }}</h2>
-                    <a href="{{ path('fdc_event_movie_selection', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}" class="bandeau-lien">
-                        {% image '@FDCEventBundle/Resources/public/img/svg/arrow-right-gold.svg' %}
-                        <img src="{{ asset(asset_url) }}" alt="{{ 'selection.btn.decouvrirrubrique'|trans }}"
-                             class="svg-arrow">
-                        {% endimage %}
-                        {{ 'selection.btn.decouvrirrubrique'|trans }}
-                    </a>
+            <div id="banner-bottom" class="show">
+                <div class="banner-img vCenter" style="background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}');">
+                    <div class="vCenterKid">
+                        <h2 class="title">{{ next|trans_fallback('overrideName')?:next.selectionSection|trans_fallback('name') }}</h2>
+                        <a href="{{ path('fdc_eventmobile_movie_selection', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}"><i class="icon icon_fleche-right"></i> {{ 'selection.btn.decouvrirrubrique'|trans }}</a>
+                    </div>
                 </div>
             </div>
+
+
         {% endif %}
     </div>
 {% endblock body %}
