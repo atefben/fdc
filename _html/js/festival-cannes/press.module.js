@@ -1522,7 +1522,7 @@ $(document).ready(function () {
   }
 
   function updateFilterCalendar() {
-    $('#type .select span').each (function() {
+    $('#type .select span').each(function() {
       var filterselect = $(this).attr('data-filter');
       if(filterselect == 'all') {
         $(this).addClass('active');
@@ -1536,7 +1536,7 @@ $(document).ready(function () {
       }
     });
     
-    $('#category .select span').each (function() {
+    $('#category .select span').each(function() {
       var filterselect = $(this).attr('data-filter');
       if(filterselect == 'all') {
         $(this).addClass('active');

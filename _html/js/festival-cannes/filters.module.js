@@ -1,6 +1,5 @@
 // Filters
 // =========================
-
 function filter() {
   var id = $('#filters').data('id');
   var filters = [];
@@ -79,9 +78,13 @@ function filter() {
 
         $that.find("span:not(.active):not([data-filter='all'])").each(function() {
           $this = $(this);
+          console.log($this);
 
           var getVal = $this.data('filter');
           var numItems = $('#calendar-programmation .fc-event[data-'+$id+'="'+getVal+'"]:not([style*="display: none"]').length;
+
+          console.log('#calendar-programmation .fc-event[data-'+$id+'="'+getVal+'"]:not([style*="display: none"]');
+          console.log(numItems);
 
           if (numItems === 0) {
               $this.addClass('disabled');
@@ -96,6 +99,27 @@ function filter() {
     
     if($('.articles').length != 0) {
       $('.filter .select span').removeClass('disabled');
+    }
+
+    if($('#calendar-programmation').length > 0) {
+      $('.filter .select').each(function() {
+        $that = $(this);
+        $id   = $(this).closest('.filter').attr('id');
+
+        $('#'+id+' span').each(function() {
+          var filterselect = $(this).attr('data-filter');
+          if(filterselect == 'all') {
+            $(this).addClass('active');
+          } else {
+            $(this).removeClass('active');
+          }
+          if($('.v-container [data-'+$id+'="' + filterselect + '"]').length > 0 || filterselect == 'all') {
+            $(this).removeClass('disabled');
+          } else {
+            $(this).addClass('disabled');
+          }
+        });
+      });
     }
   }
 }
