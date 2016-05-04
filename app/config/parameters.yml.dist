@@ -220,12 +220,30 @@ parameters:
     header_ccm: 'http://www.cannescourtmetrage.com/fr/'
     header_mdf: 'http://www.marchedufilm.com/fr/'
     header_account: 'http://sub.festival-cannes.fr/'
-    partner_chopard: '//www.chopard.fr/'
-    partner_loreal: '//www.loreal-paris.fr/index.aspx'
-    partner_hp: '//www8.hp.com/fr/fr/home.html'
-    partner_kering: '//www.kering.com/fr'
-    partner_renault: '//group.renault.com'
-    partner_mastercard: '//www.mastercard.com/fr/particuliers/index.html'
+    partner_chopard_fr: //www.chopard.fr/
+    partner_loreal_fr: //www.loreal-paris.fr/index.aspx
+    partner_hp_fr: //www8.hp.com/fr/fr/home.html
+    partner_kering_fr: //www.kering.com/fr
+    partner_renault_fr: //group.renault.com
+    partner_mastercard_fr: //www.mastercard.com/fr/particuliers/index.html
+    partner_chopard_en: //www.chopard.co.uk/
+    partner_loreal_en: //www.loreal-paris.fr/index.aspx
+    partner_hp_en: //www8.hp.com/uk/en/home.html
+    partner_kering_en: //www.kering.com/en/home
+    partner_renault_en: //group.renault.com
+    partner_mastercard_en: //www.mastercard.com/fr/particuliers/index.html
+    partner_chopard_es: //www.chopard.es/
+    partner_loreal_es: //www.loreal-paris.fr/index.aspx
+    partner_hp_es: //www8.hp.com/uk/en/home.html
+    partner_kering_es: //www.kering.com/
+    partner_renault_es: //group.renault.com
+    partner_mastercard_es: //www.mastercard.com/fr/particuliers/index.html
+    partner_chopard_zh: //www.chopard.cn/
+    partner_loreal_zh: //www.loreal-paris.fr/index.aspx
+    partner_hp_zh: //www8.hp.com/uk/en/home.html
+    partner_kering_zh: //www.kering.com/csn
+    partner_renault_zh: //group.renault.com
+    partner_mastercard_zh: //www.mastercard.com/fr/particuliers/index.html
     footer_boutique: '//www.boutiqueofficielle.festival-cannes.com/'
     social_appli: 'application-mobile'
     social_facebook: 'http://www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937'
