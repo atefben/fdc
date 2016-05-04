@@ -442,3 +442,7 @@
 .content-movie .tetiere-movie {
     height:290px;
 }
+
+.single-movie .videos #slider-movie-videos .slide-video:after {
+    border:none !important;
+}
