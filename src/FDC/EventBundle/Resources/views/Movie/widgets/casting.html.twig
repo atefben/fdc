@@ -7,25 +7,26 @@
         <div class="gallery">
             <div class="img shadow-bottom">
                 {% for media in medias %}
-                    {% if loop.index0 == 0 %}
-                        {% media media.file, media.file.context ~ '_292x397' with {'class': 'active', title: '', width: '', height: ''} %}
-                    {% else %}
-                        {% media media.file, media.file.context ~ '_292x397' with {title: '', width: '', height: ''} %}
-                    {% endif %}
-
-                    {% if loop.index0 == 0 %}
-                        <span class="caption">
-                            {% if media.copyright %}
-                                © {{ media.copyright }}
-                            {% endif %}
-                            {% if app.request.locale == 'fr' and media.titleVf %}
-                                {% if media.copyright %} / {% endif %}
-                                {{ media.titleVf }}
-                            {% elseif app.request.locale != 'fr' and media.titleVa %}
-                                {% if media.copyright %} / {% endif %}
-                                {{ media.titleVa }}
-                            {% endif %}
-                        </span>
+                    {% if media.file is not empty %}
+                        {% if loop.index0 == 0 %}
+                            {% media media.file, media.file.context ~ '_292x397' with {'class': 'active', title: '', width: '', height: ''} %}
+                        {% else %}
+                            {% media media.file, media.file.context ~ '_292x397' with {title: '', width: '', height: ''} %}
+                        {% endif %}
+                        {% if loop.index0 == 0 %}
+                            <span class="caption">
+                                {% if media.copyright %}
+                                    © {{ media.copyright }}
+                                {% endif %}
+                                {% if app.request.locale == 'fr' and media.titleVf %}
+                                    {% if media.copyright %} / {% endif %}
+                                    {{ media.titleVf }}
+                                {% elseif app.request.locale != 'fr' and media.titleVa %}
+                                    {% if media.copyright %} / {% endif %}
+                                    {{ media.titleVa }}
+                                {% endif %}
+                            </span>
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
             </div>
