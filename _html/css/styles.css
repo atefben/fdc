@@ -15854,14 +15854,16 @@ input[type=submit] {
 .participate .title-list-header .icon_mains {
   font-size: 4rem;
 }
-.participate .icon_case-plus, .participate .icon_moins {
+.participate .icon_case-plus,
+.participate .icon_moins {
   margin-bottom: 40px;
   color: #c1c1c1;
   position: absolute;
   right: 1px;
   top: 22px;
 }
-.participate .icon_case-plus:hover, .participate .icon_moins:hover {
+.participate .icon_case-plus:hover,
+.participate .icon_moins:hover {
   cursor: pointer;
 }
 .participate .icon_case-plus {
@@ -16333,6 +16335,7 @@ input[type=submit] {
   padding-bottom: 29px;
   letter-spacing: 2px;
 }
+.partners .content-partners .contain-section .item-partners .text-partners p,
 .partners .content-partners .contain-section .item-partners .text-partners .descrip-partners {
   font-size: 0.81rem;
   line-height: 24px;
