@@ -19,4 +19,4 @@ var owInitTab = function(id) {
     });
 
   }
-}
+};
