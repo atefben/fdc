@@ -917,6 +917,9 @@
     min-height: 286px;
     overflow: hidden;
     background-color: #141414;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
 
     h3 {
       color: #fff;
@@ -943,7 +946,8 @@
       background-color: #141414;
       float: left;
       color: #fff;
-      height: 100%;
+      flex-grow: 1;
+      flex-basis: 50%;
       overflow: hidden;
       width: 50%;
 
@@ -1034,7 +1038,8 @@
     .contacts {
       background-color: #292929;
       float: left;
-      height: 100%;
+      flex-grow: 1;
+      flex-basis: 50%;
       overflow: hidden;
       width: 50%;
       padding-bottom: 100px;

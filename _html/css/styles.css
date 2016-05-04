@@ -11899,6 +11899,9 @@ article .read-later.rAlign span:after {
   min-height: 286px;
   overflow: hidden;
   background-color: #141414;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
 }
 .single-movie .press h3 {
   color: #fff;
@@ -11922,7 +11925,8 @@ article .read-later.rAlign span:after {
   background-color: #141414;
   float: left;
   color: #fff;
-  height: 100%;
+  flex-grow: 1;
+  flex-basis: 50%;
   overflow: hidden;
   width: 50%;
 }
@@ -12004,7 +12008,8 @@ article .read-later.rAlign span:after {
 .single-movie .press .contacts {
   background-color: #292929;
   float: left;
-  height: 100%;
+  flex-grow: 1;
+  flex-basis: 50%;
   overflow: hidden;
   width: 50%;
   padding-bottom: 100px;
