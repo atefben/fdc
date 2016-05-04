@@ -6,7 +6,7 @@
         <div class="owl-carousel competition-carousel">
             {% for film in films %}
                 <div class="film{{ loop.index }}" class="thumb {% if loop.first %}active{% endif %}">
-                    {{ dump(film) }}
+                    {#{{ dump(film) }}#}
                     {#<a href="{{ path('fdc_eventmobile_movie_get', {'slug': film.slug}) }}"></a>#}
                     {% if film.image %}
                         {% set media = film.image.findTranslationByLocale(app.request.locale) %}

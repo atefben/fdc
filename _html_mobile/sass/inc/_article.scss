@@ -561,3 +561,11 @@
     text-transform: uppercase;
   }
 }
+#main.detail-event {
+  .film {
+    height: 100%;
+    .programmation-film {
+      padding: 40px 0;
+    }
+  }
+}
