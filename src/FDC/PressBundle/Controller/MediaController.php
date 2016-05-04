@@ -198,6 +198,20 @@ class MediaController extends Controller
 
         $zipName = $film->getId() . '-' . $film->getUpdatedAt()->format('YmdHis') . ".zip";
         $zipPath = $this->get('kernel')->getRootDir() . "/../web/uploads/archive/film/" . $zipName;
+
+        $rootDirectory = $this->get('kernel')->getRootDir() . '/../web/uploads';
+        $folders = array(
+            $rootDirectory,
+            $rootDirectory . '/archive',
+            $rootDirectory . '/archive/film',
+        );
+
+        foreach ($folders as $folder) {
+            if (!is_dir($folder)) {
+                $this->get('filesystem')->mkdir($folder);
+            }
+        }
+
         $zip = new \ZipArchive();
 
         if (!file_exists($zipPath)) {
@@ -261,7 +275,22 @@ class MediaController extends Controller
         $galleryPhotos = array();
 
         $zipName = $gallery->getId() . '-' . $gallery->getUpdatedAt()->format('YmdHis') . ".zip";
+
         $zipPath = $this->get('kernel')->getRootDir() . "/../web/uploads/archive/gallery/" . $zipName;
+
+        $rootDirectory = $this->get('kernel')->getRootDir() . '/../web/uploads';
+        $folders = array(
+            $rootDirectory,
+            $rootDirectory . '/archive',
+            $rootDirectory . '/archive/gallery',
+        );
+
+        foreach ($folders as $folder) {
+            if (!is_dir($folder)) {
+                $this->get('filesystem')->mkdir($folder);
+            }
+        }
+
         $zip = new \ZipArchive();
 
         if (!file_exists($zipPath)) {
