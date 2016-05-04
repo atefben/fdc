@@ -7,7 +7,7 @@
         <div id="gridVideos" class="grid-wrapper">
             <div class="grid-sizer"></div>
             {% for video in videos %}
-                {% set trans = video.findTranslationByLocale(app.request.locale) %}
+                {% set trans = get_available_video(video) %}
                 {% set transImage = null %}
 				{% set amazonImage = null %}
                 {% if trans is null or trans.file is null %}

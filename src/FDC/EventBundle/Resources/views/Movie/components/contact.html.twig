@@ -105,7 +105,7 @@
                                                             {% set displayContact = displayContact|merge([displayEmail]) %}
                                                         {% endif %}
                                                         {% if contact.address.website %}
-                                                            {% set displayWebsite = '<a href="http://' ~ contact.address.website ~ '" target="_blank">' %}
+                                                            {% set displayWebsite = '<a href="' ~ contact.address.website ~ '" target="_blank">' %}
                                                             {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                             {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                         {% endif %}
@@ -151,7 +151,7 @@
                                                         {% set displayContact = displayContact|merge([displayEmail]) %}
                                                     {% endif %}
                                                     {% if contact.address.website %}
-                                                        {% set displayWebsite = '<a href="http://' ~ contact.address.website ~ '" target="_blank">' %}
+                                                        {% set displayWebsite = '<a href="' ~ contact.address.website ~ '" target="_blank">' %}
                                                         {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                         {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                     {% endif %}
@@ -196,7 +196,7 @@
                                                 {% set contactInfos = contactInfos|merge(['<a href="mailto:' ~ contact.address.email ~ '">' ~ contact.address.email ~ '</a>']) %}
                                             {% endif %}
                                             {% if contact.address and contact.address.website %}
-                                                {% set contactInfos =  contactInfos|merge(['<a href="http://' ~ contact.address.website ~ '" target="_blank">' ~ contact.address.website ~ '</a>']) %}
+                                                {% set contactInfos =  contactInfos|merge(['<a href="'~ contact.address.website ~ '" target="_blank">' ~ contact.address.website ~ '</a>']) %}
                                             {% endif %}
 
                                             {% if contact.person %}
@@ -268,7 +268,7 @@
                                                             {% set displayContact = displayContact|merge([displayEmail]) %}
                                                         {% endif %}
                                                         {% if contact.address.website %}
-                                                            {% set displayWebsite = '<a href="http://' ~ contact.address.website ~ '" target="_blank">' %}
+                                                            {% set displayWebsite = '<a href="' ~ contact.address.website ~ '" target="_blank">' %}
                                                             {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                             {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                         {% endif %}
@@ -321,7 +321,7 @@
                                                     {% set displayContact = displayContact|merge(['T: ' ~ contact.address.phone?:contact.address.mobilePhone]) %}
                                                 {% endif %}
                                                 {% if contact.address.website %}
-                                                    {% set displayWebsite = '<a href="http://' ~ contact.address.website ~ '" target="_blank">' %}
+                                                    {% set displayWebsite = '<a href="' ~ contact.address.website ~ '" target="_blank">' %}
                                                     {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                 {% endif %}
@@ -354,7 +354,7 @@
                                                     {% set displayContact = displayContact|merge(['T: ' ~ contact.address.phone?:contact.address.mobilePhone]) %}
                                                 {% endif %}
                                                 {% if contact.address.website %}
-                                                    {% set displayWebsite = '<a href="http://' ~ contact.address.website ~ '" target="_blank">' %}
+                                                    {% set displayWebsite = '<a href="' ~ contact.address.website ~ '" target="_blank">' %}
                                                     {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                 {% endif %}
@@ -396,7 +396,7 @@
                                                     {% set displayContact = displayContact|merge(['T: ' ~ contact.address.phone?:contact.address.mobilePhone]) %}
                                                 {% endif %}
                                                 {% if contact.address.website %}
-                                                    {% set displayWebsite = '<a href="http://' ~ contact.address.website ~ '" target="_blank">' %}
+                                                    {% set displayWebsite = '<a href="' ~ contact.address.website ~ '" target="_blank">' %}
                                                     {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                 {% endif %}
@@ -438,7 +438,7 @@
                                                     {% set displayContact = displayContact|merge(['T: ' ~ contact.address.phone?:contact.address.mobilePhone]) %}
                                                 {% endif %}
                                                 {% if contact.address.website %}
-                                                    {% set displayWebsite = '<a href="http://' ~ contact.address.website ~ '" target="_blank">' %}
+                                                    {% set displayWebsite = '<a href="' ~ contact.address.website ~ '" target="_blank">' %}
                                                     {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                 {% endif %}

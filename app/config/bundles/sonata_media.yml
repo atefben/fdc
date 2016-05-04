@@ -72,6 +72,7 @@ sonata_media:
                 480x640: { width: 480, height: 640, quality: 100, constraint: false }
                 searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
                 search: { width: 170 , height: 231 , quality: 100, constraint: false }
+                156x206: { width: 156 , height: 206 , quality: 100, constraint: false }
 
 
         film_main:

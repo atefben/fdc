@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% set file = widget.file %}
-{% set trans = file.findTranslationByLocale(app.request.locale) %}
+{% set trans = get_available_video(file) %}
 
 {% if trans is null or trans.file is null or trans.jobWebmState != 3 or trans.jobMp4State != 3 or trans.mp4Url is null or trans.webmUrl is null %}
     {% set trans = file.findTranslationByLocale('fr') %}
