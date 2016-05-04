@@ -150,7 +150,7 @@ class SearchController extends Controller
     
     private function getSearchFilters($type, $items) 
     {
-        if (!count($items)) {
+        if (!count($items) || !in_array($type, array('info', 'statement', 'news', 'media'))) {
             return FALSE;
         }
         
