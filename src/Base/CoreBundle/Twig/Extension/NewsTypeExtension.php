@@ -40,7 +40,9 @@ class NewsTypeExtension extends Twig_Extension
         } elseif ($object instanceof Info) {
             $type = $object->getInfoType();
         }
-
+        elseif (is_string($object)) {
+            $type = $object;
+        }
         switch ($type) {
             case 'NewsArticle':
             case 'InfoArticle':

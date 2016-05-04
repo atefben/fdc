@@ -31,7 +31,7 @@
     width: 977px;
 }
 
-.popin-event .fc-event{
+.popin-event .fc-event {
     height: 160px !important;
 }
 
@@ -378,6 +378,7 @@
     overflow: auto;
     zoom: 1;
 }
+
 #slider-competition .translated-title {
     font-size: 10px;
 }
@@ -431,4 +432,9 @@
 
 .cursor-default {
     cursor: default !important;
+}
+
+.picto.picto-communique {
+    background: #c8a461;
+    color: #000;
 }
