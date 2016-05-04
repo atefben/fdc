@@ -33,13 +33,13 @@
                         <div class="links">
                             <p class="sub">{{ 'movie.presse.label.liens'|trans }}</p>
                             {% if movie.website %}
-                                <a href="{{ movie.website }}" target="_blank">{{ 'movie.presse.liens.website'|trans }}</a>
+                                <a href="{{ ((movie.website in 'http') ? '' : 'http://') ~ movie.website }}" target="_blank">{{ 'movie.presse.liens.website'|trans }}</a>
                             {% endif %}
                             {% if movie.facebook %}
-                                <a href="{{ movie.facebook }}" target="_blank">{{ 'movie.presse.liens.facebook'|trans }}</a>
+                                <a href="{{ ((movie.facebook in 'http') ? '' : 'http://') ~ movie.facebook }}" target="_blank">{{ 'movie.presse.liens.facebook'|trans }}</a>
                             {% endif %}
                             {% if movie.twitter %}
-                                <a href="{{ movie.twitter }}" target="_blank">{{ 'movie.presse.liens.twitter'|trans }}</a>
+                                <a href="{{ ((movie.twitter in 'http') ? '' : 'http://') ~  movie.twitter }}" target="_blank">{{ 'movie.presse.liens.twitter'|trans }}</a>
                             {% endif %}
                         </div>
                     {% endif %}
@@ -105,7 +105,7 @@
                                                             {% set displayContact = displayContact|merge([displayEmail]) %}
                                                         {% endif %}
                                                         {% if contact.address.website %}
-                                                            {% set displayWebsite = '<a href="' ~ contact.address.website ~ '" target="_blank">' %}
+                                                            {% set displayWebsite = '<a href="' ~ ((contact.address.website in 'http') ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
                                                             {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                             {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                         {% endif %}
@@ -151,7 +151,7 @@
                                                         {% set displayContact = displayContact|merge([displayEmail]) %}
                                                     {% endif %}
                                                     {% if contact.address.website %}
-                                                        {% set displayWebsite = '<a href="' ~ contact.address.website ~ '" target="_blank">' %}
+                                                        {% set displayWebsite = '<a href="' ~ ((contact.address.website in 'http') ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
                                                         {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                         {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                     {% endif %}
@@ -268,7 +268,7 @@
                                                             {% set displayContact = displayContact|merge([displayEmail]) %}
                                                         {% endif %}
                                                         {% if contact.address.website %}
-                                                            {% set displayWebsite = '<a href="' ~ contact.address.website ~ '" target="_blank">' %}
+                                                            {% set displayWebsite = '<a href="' ~ ((contact.address.website in 'http') ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
                                                             {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                             {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                         {% endif %}
@@ -321,7 +321,7 @@
                                                     {% set displayContact = displayContact|merge(['T: ' ~ contact.address.phone?:contact.address.mobilePhone]) %}
                                                 {% endif %}
                                                 {% if contact.address.website %}
-                                                    {% set displayWebsite = '<a href="' ~ contact.address.website ~ '" target="_blank">' %}
+                                                    {% set displayWebsite = '<a href="' ~ ((contact.address.website in 'http') ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
                                                     {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                 {% endif %}
@@ -354,7 +354,7 @@
                                                     {% set displayContact = displayContact|merge(['T: ' ~ contact.address.phone?:contact.address.mobilePhone]) %}
                                                 {% endif %}
                                                 {% if contact.address.website %}
-                                                    {% set displayWebsite = '<a href="' ~ contact.address.website ~ '" target="_blank">' %}
+                                                    {% set displayWebsite = '<a href="' ~ ((contact.address.website in 'http') ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
                                                     {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                 {% endif %}
@@ -396,7 +396,7 @@
                                                     {% set displayContact = displayContact|merge(['T: ' ~ contact.address.phone?:contact.address.mobilePhone]) %}
                                                 {% endif %}
                                                 {% if contact.address.website %}
-                                                    {% set displayWebsite = '<a href="' ~ contact.address.website ~ '" target="_blank">' %}
+                                                    {% set displayWebsite = '<a href="' ~ ((contact.address.website in 'http') ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
                                                     {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                 {% endif %}
@@ -438,7 +438,7 @@
                                                     {% set displayContact = displayContact|merge(['T: ' ~ contact.address.phone?:contact.address.mobilePhone]) %}
                                                 {% endif %}
                                                 {% if contact.address.website %}
-                                                    {% set displayWebsite = '<a href="' ~ contact.address.website ~ '" target="_blank">' %}
+                                                    {% set displayWebsite = '<a href="' ~ ((contact.address.website in 'http') ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
                                                     {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                 {% endif %}

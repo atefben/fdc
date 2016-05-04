@@ -214,7 +214,7 @@ class SearchController extends Controller
     {
       // Get theme query.
       $themePath = 'theme.translations';
-      $themeFields = array('name');
+      $themeFields = array('theme.translations.name');
 
       $themeQuery = $repository->getFieldsKeywordNestedQuery($themeFields, $searchTerm, $themePath, $_locale);
       
@@ -236,6 +236,14 @@ class SearchController extends Controller
 
       $webTvQuery = $repository->getFieldsKeywordNestedQuery($webTvFields, $searchTerm, $webTvPath, $_locale);
       
+      // Participate sections query.
+      $participateSectionsPath = 'downloadSection.section.translations';
+      $participateSectionsFields = array(
+          'downloadSection.section.translations.title', 
+          'downloadSection.section.translations.description'
+      );
+      $participateSectionsQuery = $repository->getFieldsKeywordNestedQuery($participateSectionsFields, $searchTerm, $participateSectionsPath, $_locale);
+
       // Get final query.
       $allQuery = new \Elastica\Query\BoolQuery();
       $allQuery
@@ -243,6 +251,7 @@ class SearchController extends Controller
           ->addShould($translationsQuery)
           ->addShould($repository->getTagsQuery($_locale, $searchTerm))
           ->addShould($webTvQuery)
+          ->addShould($participateSectionsQuery)
       ;
       
       // Filter out film and person.
