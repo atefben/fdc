@@ -2203,6 +2203,37 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     }
 
     /**
+     * Get associatedMediaVideos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPublishedAssociatedMediaVideos($locale)
+    {
+        $collection = new ArrayCollection();
+        foreach ($this->associatedMediaVideos as $associatedMediaVideo) {
+            if ($associatedMediaVideo) {
+                $mediaVideo = $associatedMediaVideo->getMediaVideo();
+                $fr = $mediaVideo->findTranslationByLocale('fr');
+                $trans = $mediaVideo->findTranslationByLocale($locale);
+
+                if ($trans && $fr) {
+                    $status = $fr->getStatus() === MediaVideoTranslation::STATUS_PUBLISHED;
+                    if ($trans->getLocale() != $fr->getLocale()) {
+                        $status = $status && $trans->getStatus() === MediaVideoTranslation::STATUS_TRANSLATED;
+                    }
+                    $encoded = $trans->getJobWebmState() == MediaVideoTranslation::ENCODING_STATE_READY;
+                    $encoded = $encoded  && $trans->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
+                    $hasURL = $trans->getWebmUrl() && $trans->getMp4Url();
+                    if ($status && $encoded && $hasURL) {
+                        $collection->add($associatedMediaVideo);
+                    }
+                }
+            }
+        }
+        return $collection;
+    }
+
+    /**
      * Add associatedMediaAudios
      *
      * @param \Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated $associatedMediaAudios
