@@ -12,14 +12,14 @@ use Base\CoreBundle\Interfaces\SearchRepositoryInterface;
 
 class FilmPersonRepository extends SearchRepository implements SearchRepositoryInterface
 {
-    public function findWithCustomQuery($_locale, $searchTerm, $range, $page)
+    public function findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear)
     {
 
         // Fields (title, introduction) OR Theme
         $finalQuery = new \Elastica\Query\BoolQuery();
         $finalQuery
             ->addShould($this->getFieldsQuery($searchTerm))
-            ->addShould($this->getFilmsQuery($_locale, $searchTerm))
+            ->addShould($this->getFilmsQuery($_locale, $searchTerm, $fdcYear))
             ->addShould($this->getLocalizedFieldsQuery($_locale, $searchTerm))
         ;
         
@@ -61,13 +61,28 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
      
     }
     
-    private function getFilmsQuery($_locale, $searchTerm)
+    private function getFilmsQuery($_locale, $searchTerm, $fdcYear)
     {
         $path = 'films.film.translations';
         $fields = array('films.film.translations.title');
         $keywordMatchQuery = $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
         
-        return $keywordMatchQuery;
+        // Get only movies from FDC current year.
+        $yearQuery = $this->getFieldsKeywordQuery('films.film.productionYear', $fdcYear);
+        
+        $keywordNestedQuery = new \Elastica\Query\Nested();
+        $keywordNestedQuery
+            ->setQuery($yearQuery)
+            ->setPath('films')
+        ;
+        
+        $finalQuery = new \Elastica\Query\BoolQuery();
+        $finalQuery
+            ->addMust($keywordNestedQuery)
+            ->addMust($keywordMatchQuery)
+        ;
+        
+        return $finalQuery;
     }
     
 }
