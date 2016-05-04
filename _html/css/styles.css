@@ -11929,6 +11929,7 @@ article .read-later.rAlign span:after {
   flex-basis: 50%;
   overflow: hidden;
   width: 50%;
+  padding-bottom: 100px;
 }
 .single-movie .press .info-press .wrapper {
   float: right;
