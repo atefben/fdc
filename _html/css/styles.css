@@ -12090,6 +12090,7 @@ article .read-later.rAlign span:after {
 .single-movie .competition #slider-competition .info-movie {
   padding-top: 30px;
   text-align: center;
+  width: 210px;
 }
 .single-movie .competition #slider-competition .info-movie p {
   color: #2c2c2c;
