@@ -101,7 +101,6 @@ function filter() {
 }
 
 $(document).ready(function() {
-
   // on click on a filter
   $('body').on('click', '.filters .select span', function() {
     var h = $(this).parent().html();
@@ -132,14 +131,12 @@ $(document).ready(function() {
 
   // filter data on page
   $('body').on('click', '#filters span', function() {
+    var id = $('#filters').data('id'),
+        f  = $(this).data('filter');
 
-      var id = $('#filters').data('id'),
-          f  = $(this).data('filter');
+    $('#' + id + ' .select span').removeClass('active');
+    $('#' + id + ' .select span[data-filter="'+f+'"]').addClass('active');
 
-      $('#' + id + ' .select span').removeClass('active');
-      $('#' + id + ' .select span[data-filter="'+f+'"]').addClass('active');
-
-      filter();
+    filter();
   });
-
 });

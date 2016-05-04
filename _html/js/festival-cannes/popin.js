@@ -5,11 +5,9 @@ function initPopinMail(cls){
     var is_name = input.val();
 
     if(typeof $(this).attr('required') != undefined && $(this).attr('required') && is_name.length > 0) {
-      console.log($(this));
       input.removeClass("invalid").addClass("valid");
       $('.errors .' + input.attr('name')).remove();
     } else {
-      console.log($(this));
       input.removeClass("valid").addClass("invalid");
       $('.errors .' + input.attr('name')).remove();
       $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + '</li>');

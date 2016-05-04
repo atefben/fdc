@@ -1147,7 +1147,6 @@ $(document).ready(function () {
           //récupération des données sous forme de JSON//
           var $form = $(this);
           var data = getFormData($form);
-          console.log(data);
 
           date1 = data.datebegin;
           date1 = date1.replace(/\//g,'-');
@@ -1163,14 +1162,9 @@ $(document).ready(function () {
           var dateBegin = new Date(date1);
           var dateEnd = new Date(date2);
 
-          console.log("date1   : "+date1);
-          console.log("hours :"+dateBegin.getHours());
-          console.log("dateBegin :"+dateBegin);
-          console.log(dateEnd);
+          if(dateEnd < dateBegin) {
 
-          if(dateEnd<dateBegin){
-
-          }else{
+          } else {
             $('#create-event-pop').removeClass("visible-popin");
           }
 
@@ -1207,7 +1201,6 @@ $(document).ready(function () {
           //Stockage de l'évènement dans le storage
           //ici
 
-
           // get local storage
           var agenda = localStorage.getItem('agenda_press');
 
@@ -1222,7 +1215,6 @@ $(document).ready(function () {
             events.push(myEvent);
             localStorage.setItem('agenda_press', JSON.stringify(events));
           }
-
         }
         return false;
       });
@@ -1245,8 +1237,6 @@ $(document).ready(function () {
   //
   //     // load the url of the event via ajax
   //     openPopinEvent(url);
-  //     console.log('D');
-  //
   //   });
   // }
 
@@ -1330,7 +1320,6 @@ $(document).ready(function () {
         $parent.find('.icon_moins').removeClass('icon_moins').addClass('icon_case-plus');
       }
     });
-
   }
 
   ajaxEvent();
@@ -1352,7 +1341,6 @@ $(document).ready(function () {
   if ($('.downloading-press').length) {
     //Scroll
     $(window).on('scroll', function () {
-
       var s            = $(window).scrollTop(),
           h            = $("#main").height() - 180,
           affiche      = $('#affiche-officielle').length ? $('#affiche-officielle').offset().top - 180 : 0,
@@ -1396,7 +1384,6 @@ $(document).ready(function () {
         $('.downloading-nav').find('.active').removeClass('active');
         $('a[href="#dossier-presse"]').addClass('active');
       }
-
     });
 
     $('a[href^="#"]').click(function () {
@@ -1461,7 +1448,6 @@ $(document).ready(function () {
       $('#mycalendar').fullCalendar('changeView', 'agendaThree');
     }
   }
-
 
   //Pikaday init//
   var dateStart = typeof GLOBALS.dateStart !== "undefined" ? GLOBALS.dateStart : '2016-05-11';
