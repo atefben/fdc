@@ -300,7 +300,7 @@ class MediaController extends Controller
             foreach ($galleryImage as $media) {
                 array_push($galleryPhotos, $media->getFile());
                 $provider = $this->container->get($media->getFile()->getProviderName());
-                $fUrl = $provider->getCdn()->getPath($provider->getReferenceImage($media->getMedia()->getFile(), true), $provider);
+                $fUrl = $provider->getCdn()->getPath($provider->getReferenceImage($media->getFile(), true), $provider);
                 if (@file_get_contents($fUrl) !== false) {
                     $zip->addFromString(basename($media->getFile()), file_get_contents($fUrl));
                 }
