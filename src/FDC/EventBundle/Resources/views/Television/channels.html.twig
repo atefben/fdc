@@ -36,7 +36,7 @@
                     <div class="info">
                         <div class="vCenter">
                             <div class="vCenterKid">
-                                <a href="{{ path('fdc_event_television_getchannel', {'slug': group.channel|trans_fallback('slug') }) }}"
+                                <a href="{{ path('fdc_event_television_getchannel', { _locale: app.request.locale, 'slug': group.channel|trans_fallback('slug') }) }}"
                                    class="category" data-category="{{ group.channel|trans_fallback('name') }}">{{ group.channel|trans_fallback('name') }}</a>
                                 <p>{{ 'webtv.direct.nb_videos'|transchoice(group.nbVideos) }}</p>
                             </div>
