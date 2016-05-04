@@ -37,7 +37,9 @@
                         <div id="timeline" class="" >
                             <div class="timeline-container">
                                 {% for day in schedulingDays %}
-                                    <a href="#" class="{% if day == date %}active{% endif %}" data-date="{{ day|date('d') }}">
+                                    <a href="#" class="{% if day == date %}active{% endif %}"
+                                       data-date="{{ day|date('Y-m-d') }}"
+                                       data-day="{{ day|date('d') }}">
                                         {{ day|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                                         <span class="day">{{ day|date('d') }}</span>
                                     </a>
