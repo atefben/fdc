@@ -43,7 +43,6 @@ class SearchRepository extends Repository
             ->setQuery($searchTerm)
             ->setFields($fields)
             ->setUseDisMax($useDisMax)
-            //->setPrefixLength(3)
         ;
         
         return $keywordMatchQuery;

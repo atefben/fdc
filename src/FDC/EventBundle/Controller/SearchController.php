@@ -37,7 +37,7 @@ class SearchController extends Controller
      */
     public function searchAjaxAction($_locale, $searchFilter, $searchTerm = null) 
     {
-        $searchResults = $this->getSearchResults($_locale, $searchFilter, $searchTerm);
+        $searchResults = $this->getSearchResults($_locale, $searchFilter, $searchTerm, 50, 1, $this->container->getParameter('fdc_year'));
         
         return $this->render("FDCEventBundle:Search:{$searchFilter}.html.twig", array(
           'items' => $searchResults['items'],
@@ -62,8 +62,8 @@ class SearchController extends Controller
       $eventResults = $this->getSearchResults($_locale, 'event', $searchTerm, 2);
       $mediaResults = $this->getSearchResults($_locale, 'media', $searchTerm, 2);
       $participateResults = $this->getSearchResults($_locale, 'participate', $searchTerm, 2);
-      $filmResults = $this->getSearchResults($_locale, 'film', $searchTerm, 4);
-      $artistResults = $this->getSearchResults($_locale, 'artist', $searchTerm, 6);
+      $filmResults = $this->getSearchResults($_locale, 'film', $searchTerm, 4, 1, $this->container->getParameter('fdc_year'));
+      $artistResults = $this->getSearchResults($_locale, 'artist', $searchTerm, 6, 1, $this->container->getParameter('fdc_year'));
       
       $result = array(
           'category' => array(
@@ -113,87 +113,16 @@ class SearchController extends Controller
 
         $repository = $this->get('base.search.repository');
         
-        // Get theme query.
-        $themePath = 'theme.translations';
-        $themeFields = array('name');
-        
-        $themeQuery = $repository->getFieldsKeywordNestedQuery($themeFields, $searchTerm, $themePath, $_locale);
-        
-        // Get webtv query.
-        $webTvPath = 'webTv.translations';
-        $webTvFields = array('name');
-        
-        $webTvQuery = $repository->getFieldsKeywordNestedQuery($webTvFields, $searchTerm, $webTvPath, $_locale);
-        
-        // Get translations query.
-        $translationsPath = 'translations';
-        $translationsFields = array(
-          'title',
-          'legend',
-          'introduction',
-          'content',
-          'profession',
-        );
-        
-        $translationsQuery = $repository->getFieldsKeywordNestedQuery($translationsFields, $searchTerm, $translationsPath, $_locale);
-        
-        // Get untranslated fields query.
-        $fields = array(
-          'selectionSection',
-          'titleVO'
-        );
- 
-        $fieldsQuery = $repository->getFieldsKeywordQuery($fields, $searchTerm, false);
-        
-        // Film Presons Query
-        $filmPersonsFields = array('persons.name');
-        $filmPersonsQuery = $repository->getFieldsKeywordQuery($filmPersonsFields, $searchTerm);
-        
-        
-        // Get film country Query
-        $filmCountryPath = 'countries.country.translations';
-        $filmCountryFields = array('name');
-        
-        $filmCountryQuery = $repository->getFieldsKeywordNestedQuery($filmCountryFields, $searchTerm, $filmCountryPath, $_locale);
-          
-        // Get final query.
-        $allQuery = new \Elastica\Query\BoolQuery();
-        $allQuery
-            ->addShould($themeQuery)
-            ->addShould($translationsQuery)
-            ->addShould($fieldsQuery)
-            ->addShould($filmCountryQuery)
-            ->addShould($filmPersonsQuery)
-            ->addShould($repository->getTagsQuery($_locale, $searchTerm))
-            ->addShould($webTvQuery)
-        ;
-        
-        // Add published query.
-        $publishedQuery = $repository->getStatusFilterQuery($_locale);
-        
-        $filteredQuery = new \Elastica\Query\BoolQuery();
-        $filteredQuery
-            ->addMust($publishedQuery)
-            ->addMust($allQuery)
-        ;
-        
-        // Get untranslated fields query.
-        $artistFields = array(
-          'firstname',
-          'lastname',
-          'nationality',
-        );
- 
-        $artistQuery = $repository->getFieldsKeywordQuery($artistFields, $searchTerm, false);
-        
         $finalQuery = new \Elastica\Query\BoolQuery();
         $finalQuery
-            ->addShould($filteredQuery)
-            ->addShould($artistQuery)
+            ->addShould($this->getFilmQuery($repository, $searchTerm, $_locale))
+            ->addShould($this->getContentQuery($repository, $searchTerm, $_locale))
+            ->addShould($this->getArtistQuery($repository, $searchTerm, $_locale))
         ;
         
         $paginatedResults = $repository->getPaginatedResults($finalQuery, 10, 1);
         
+        $response = array();
         foreach ($paginatedResults as $result) {
           $response[] = (object) array(
             'type' => $this->renderView("FDCEventBundle:Search:components/type.html.twig", array('object' => $result)),
@@ -206,7 +135,7 @@ class SearchController extends Controller
     }
     
     
-    private function getSearchResults($_locale, $type, $searchTerm, $range = 50, $page = 1)
+    private function getSearchResults($_locale, $type, $searchTerm, $range = 50, $page = 1, $fdcYear = 2016)
     {
         /** var FOS\ElasticaBundle\Manager\RepositoryManager */
         $repositoryManager = $this->container->get('fos_elastica.manager');
@@ -216,7 +145,7 @@ class SearchController extends Controller
         $repository = $repositoryManager->getRepository('BaseCoreBundle:' . self::$entityMapper[$type]);
 
         /** var array of Acme\UserBundle\Entity\User */
-        return $repository->findWithCustomQuery($_locale, $searchTerm, $range, $page);
+        return $repository->findWithCustomQuery($_locale, $searchTerm, $range, $page, $fdcYear);
     }
     
     private function getSearchFilters($type, $items) 
@@ -280,4 +209,160 @@ class SearchController extends Controller
         return $filters;
     }
 
+    
+    private function getContentQuery($repository, $searchTerm, $_locale)
+    {
+      // Get theme query.
+      $themePath = 'theme.translations';
+      $themeFields = array('name');
+
+      $themeQuery = $repository->getFieldsKeywordNestedQuery($themeFields, $searchTerm, $themePath, $_locale);
+      
+      // Get translations query.
+      $translationsPath = 'translations';
+      $translationsFields = array(
+        'title',
+        'legend',
+        'introduction',
+        'content',
+        'profession',
+      );
+
+      $translationsQuery = $repository->getFieldsKeywordNestedQuery($translationsFields, $searchTerm, $translationsPath, $_locale);
+      
+      // Web TV query (for media)
+      $webTvPath = 'webTv.translations';
+      $webTvFields = array('name');
+
+      $webTvQuery = $repository->getFieldsKeywordNestedQuery($webTvFields, $searchTerm, $webTvPath, $_locale);
+      
+      // Get final query.
+      $allQuery = new \Elastica\Query\BoolQuery();
+      $allQuery
+          ->addShould($themeQuery)
+          ->addShould($translationsQuery)
+          ->addShould($repository->getTagsQuery($_locale, $searchTerm))
+          ->addShould($webTvQuery)
+      ;
+      
+      // Filter out film and person.
+      $typeFilmFilter = new \Elastica\Filter\Type('film');
+      $typeArtistFilter = new \Elastica\Filter\Type('artist');
+      
+      $filterOutFilm = new \Elastica\Filter\BoolNot($typeFilmFilter);
+      $filterOutArtist = new \Elastica\Filter\BoolNot($typeArtistFilter);
+      
+      $typeFilterOut = new \Elastica\Filter\BoolFilter();
+      $typeFilterOut
+          ->addMust($filterOutFilm)
+          ->addMust($filterOutArtist)
+      ;
+        
+      $filtered = new \Elastica\Query\Filtered($allQuery, $typeFilterOut);
+      
+      // Add published query.
+      $publishedQuery = $repository->getStatusFilterQuery($_locale);
+
+      $filteredQuery = new \Elastica\Query\BoolQuery();
+      $filteredQuery
+          ->addMust($publishedQuery)
+          ->addMust($filtered)
+      ;
+      
+      return $filteredQuery;
+    }
+    
+    private function getArtistQuery($repository, $searchTerm, $_locale)
+    {
+      // Get untranslated fields query.
+        $artistFields = array(
+          'firstname',
+          'lastname',
+          'nationality',
+        );
+ 
+        $artistQuery = $repository->getFieldsKeywordQuery($artistFields, $searchTerm, false);
+        
+        // Search for movie.
+        $path = 'films.film.translations';
+        $fields = array('films.film.translations.title');
+        $keywordMatchQuery = $repository->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
+        
+        // Get only movies from FDC current year.
+        $yearQuery = $repository->getFieldsKeywordQuery('films.film.productionYear', $this->container->getParameter('fdc_year'));
+        
+        $keywordNestedQuery = new \Elastica\Query\Nested();
+        $keywordNestedQuery
+            ->setQuery($yearQuery)
+            ->setPath('films')
+        ;
+        
+        $filmQuery = new \Elastica\Query\BoolQuery();
+        $filmQuery
+            ->addMust($keywordNestedQuery)
+            ->addMust($keywordMatchQuery)
+        ;
+        
+        $finalQuery = new \Elastica\Query\BoolQuery();
+        $finalQuery
+            ->addShould($filmQuery)
+            ->addShould($artistQuery)
+        ;
+        
+        return $finalQuery;
+    }
+    
+    private function getFilmQuery($repository, $searchTerm, $_locale)
+    {
+        // Get translations query.
+        $translationsPath = 'translations';
+        $translationsFields = array(
+          'title',
+        );
+        
+        $translationsQuery = $repository->getFieldsKeywordNestedQuery($translationsFields, $searchTerm, $translationsPath, $_locale);
+        
+        // Get untranslated fields query.
+        $fields = array(
+          'selectionSection',
+          'titleVO'
+        );
+ 
+        $fieldsQuery = $repository->getFieldsKeywordQuery($fields, $searchTerm, false);
+        
+        // Film Presons Query
+        $filmPersonsFields = array('persons.name');
+        $filmPersonsQuery = $repository->getFieldsKeywordQuery($filmPersonsFields, $searchTerm);
+        
+        
+        // Get film country Query
+        $filmCountryPath = 'countries.country.translations';
+        $filmCountryFields = array('name');
+        
+        $filmCountryQuery = $repository->getFieldsKeywordNestedQuery($filmCountryFields, $searchTerm, $filmCountryPath, $_locale);
+          
+        // Get film Query with year.
+        $productionYearQuery = $repository->getFieldsKeywordQuery(array('productionYear'), $this->container->getParameter('fdc_year'));
+        
+        
+        // Artist query.
+        $artistQuery = $repository->getFieldsKeywordQuery(array('persons.name'), $searchTerm);
+        
+        $filmQuery = new \Elastica\Query\BoolQuery();
+        $filmQuery
+            ->addShould($translationsQuery)
+            ->addShould($fieldsQuery)
+            ->addShould($filmPersonsQuery)
+            ->addShould($filmCountryQuery)
+            ->addShould($artistQuery)
+        ;
+        
+        $filmFinalQuery = new \Elastica\Query\BoolQuery();
+        $filmFinalQuery
+            ->addMust($filmQuery)
+            ->addMust($productionYearQuery)
+        ;
+      
+        return $filmFinalQuery;
+    }
 }
