@@ -7,6 +7,8 @@
         <form action="{{ path("fdc_press_security_check") }}" method="post" id="lockedForm">
             <input type="hidden" id="username" name="_username" value="press" required="required" />
 
+            <input type="hidden" name="_target_path" value="{{ url(app.request.get('_route'), app.request.get('_route_params')) }}" required="required" />
+
             <input type="password" id="password" name="_password" required="required" placeholder="{{ 'press.header.placeholder.motdepasse'|trans }}"/>
 
             <input type="submit" id="_submit" name="_submit" value="{{ 'press.header.btn.valider'|trans }}" />

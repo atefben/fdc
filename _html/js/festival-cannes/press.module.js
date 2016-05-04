@@ -1028,24 +1028,29 @@ $(document).ready(function () {
     // POPIN DOWNLOAD //
     //ONLY FOR MEDIA//
     if ($('.press.lock').length && !$('.connected').length && $('.press-media').length ) {
-      if ($('#popin-download-press').length) {
-        $('.buttons.active-btn').on('click', function () {
+      if ($('.popin-download-press').length) {
+        $('.buttons.active-btn button').on('touchstart click', function (e) {
+          e.stopPropagation();
+          e.preventDefault();
 
-          if ($('#popin-download-press').hasClass('visible-popin')) {
-            $('#popin-download-press').removeClass('visible-popin');
-            $("#main").removeClass('overlay-popin');
-            $('footer').removeClass('overlay');
-          } else {
-            $('#popin-download-press').addClass("visible-popin");
-            $("#main").addClass('overlay-popin');
+          var target = $(this).data('target');
+
+          if(typeof target != 'undefined' && target != "" && $('.popin-download-press[data-popin="' + target + '"]').length) {
+            if ($('.popin-download-press[data-popin="'+target+'"').hasClass('visible-popin')) {
+              $('.popin-download-press[data-popin="'+target+'"').removeClass('visible-popin');
+              $("#main").removeClass('overlay-popin');
+              $('footer').removeClass('overlay');
+            } else {
+              $('.popin-download-press[data-popin="'+target+'"').addClass("visible-popin");
+              $("#main").addClass('overlay-popin');
+            }
           }
-          return false;
         });
 
         $(document).keyup(function (e) {
           // if (e.keyCode == 13) $('.save').click();
           if (e.keyCode == 27) {
-            $('#popin-download-press').removeClass('visible-popin');
+            $('.popin-download-press').removeClass('visible-popin');
             $("#main").removeClass('overlay-popin');
             $('footer').removeClass('overlay');
             $('.overlay-div').remove();
@@ -1060,7 +1065,7 @@ $(document).ready(function () {
 
             if ($isPopin.length || isButton) {
             } else {
-              $('#popin-download-press').removeClass('visible-popin');
+              $('.popin-download-press').removeClass('visible-popin');
               $("#main").removeClass('overlay-popin');
               $('footer').removeClass('overlay');
             }
