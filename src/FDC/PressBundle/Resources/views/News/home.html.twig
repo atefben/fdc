@@ -237,7 +237,7 @@
                 {% if pressHome.pushMainImage is not null %}
                     {% set trans = pressHome.pushMainImage.findTranslationByLocale(app.request.locale) %}
                     {% if trans is null or trans.file is null %}
-                        {% set trans = push.findTranslationByLocale('fr') %}
+                        {% set trans = pressHome.pushMainImage.findTranslationByLocale('fr') %}
                     {% endif %}
                     <div class="section participate">
                         <div class="img" style="background-image: url({% path trans.file, '1280x808' %})"></div>

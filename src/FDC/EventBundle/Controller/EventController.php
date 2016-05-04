@@ -42,6 +42,7 @@ class EventController extends Controller
         return array(
             'event'   => $event,
             'programmations'   => $programmations,
+            'localeSlugs' => $event->getLocaleSlugs(),
         );
     }
 
