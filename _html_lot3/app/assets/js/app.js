@@ -20,6 +20,10 @@ $(document).ready(function() {
 
  initHeaderSticky();
 
+ //gestion des cookie a faire ici
+
+ owInitPopin('popin-landing-e');
+
   if($('.home').length) {
     owInitSlider('home');
     owInitSlider('slider-01');

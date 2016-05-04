@@ -19,7 +19,7 @@ var gulp          = require('gulp'),
 // });
 
 gulp.task('jshint', function(){
-  return gulp.src(config.src)
+  return gulp.src(config.destSrc)
     .pipe(jshint('.jshintrc'))
     .pipe(notify(function(file){
       if(file.jshint.success){

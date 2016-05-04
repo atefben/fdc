@@ -19,7 +19,7 @@ var initHeaderSticky = function() {
       }
     }
   });
-}
+};
 
 var owInitNavSticky = function(number) {
 
@@ -40,7 +40,7 @@ var owInitNavSticky = function(number) {
       $header.removeClass('sticky');
     }
   });
-}
+};
 
 var owArrowDisplay = function() {
 
@@ -66,4 +66,4 @@ var owArrowDisplay = function() {
       $btnsArrow.removeClass('visible')
     }
   });
-}
+};
