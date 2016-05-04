@@ -383,7 +383,7 @@ sub {
 
   a {
     color: $gold;
-    transition: .5s; 
+    transition: .5s;
 
     &:hover {
       opacity: .8;
@@ -604,6 +604,30 @@ a {
   }
 }
 
+.button-submit {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  height: 55px;
+  margin-top: 46px;
+  outline: none;
+
+  .dark & {
+    border: 1px solid #181818;
+  }
+
+  .icon {
+    margin-right: 24px;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: $gold;
+    color: $gold;
+    cursor: pointer;
+  }
+}
+
 .button-long {
   display: block;
   text-align: center;
@@ -722,5 +746,14 @@ a {
 
   &:hover {
     opacity: 0.5;
+  }
+
+  .dark & {
+    border: 1px solid #252525;
+
+    strong {
+      color: #fff;
+      font-weight: normal;
+    }
   }
 }

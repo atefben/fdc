@@ -34,6 +34,24 @@ var owInitGrid = function(id){
 
     return $grid;
   }
+
+  if(id == 'isotope-03') {
+
+    var $grid = $('.isotope-03').imagesLoaded(function () {
+      $grid.isotope({
+        itemSelector    : '.item',
+        percentPosition : true,
+        sortBy          : 'original-order',
+        layoutMode      : 'packery',
+        packery         : {
+          columnWidth : '.grid-sizer'
+        }
+      });
+    });
+
+    return $grid;
+  }
+
 };
 
 
