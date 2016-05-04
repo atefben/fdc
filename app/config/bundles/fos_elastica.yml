@@ -278,6 +278,7 @@ fos_elastica:
                         films:
                             type: nested
                             properties:
+                                film.productionYear: ~
                                 film.translations:
                                     type: nested
                                     properties:
