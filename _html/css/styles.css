@@ -18222,6 +18222,7 @@ input[type=submit] {
 .popin-event.show {
   opacity: 1;
   visibility: visible;
+  overflow-y: auto;
 }
 .popin-event .owl-nav {
   width: 273px;
