@@ -30,7 +30,7 @@ $(document).ready(function() {
         url = GLOBALS.urls.calendarDay1;
       }
     } else {
-      url = GLOBALS.url.calendarProgrammationUrl;
+      url = GLOBALS.urls.calendarProgrammationUrl;
     }
 
     $.ajax({
