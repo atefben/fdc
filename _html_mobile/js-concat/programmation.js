@@ -54,6 +54,7 @@ $(document).ready(function() {
   });
 });
 var GLOBALS = {
+  "env" : "html",
   "locale" : "fr",
   "defaultDate" : "2016-05-12",
   "api" : {
@@ -408,16 +409,21 @@ $(document).ready(function() {
 
 		// TODO : à enlever lors de la dynamisation. C'est juste un test pour afficher 2 jours différents
 		var url;
-		if(day%2 == 0){
-			url = GLOBALS.urls.calendarDay2;
-		}else{
-			url = GLOBALS.urls.calendarDay1;
-		}
+		if (GLOBALS.env == "html") {
+          if(day%2 == 0) {
+            url = GLOBALS.urls.calendarDay2;
+          } else {
+            url = GLOBALS.urls.calendarDay1;
+          }
+        } else {
+          url = GLOBALS.urls.calendarProgrammationUrl;
+        }
 		//
 
 		$.ajax({
 	        type: "GET",
 	        dataType: "html",
+            data: {'date':day},
 	        cache: false,
 	        url: url,
 	        success: function (data) {
