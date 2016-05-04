@@ -11244,7 +11244,8 @@ article .read-later.rAlign span:after {
 .single-movie .info-film {
   color: #fff;
   float: left;
-  padding-top: 15px;
+  padding-top: 0px;
+  margin-top: -20px;
   width: 639px;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -11257,17 +11258,13 @@ article .read-later.rAlign span:after {
   -webkit-transform: translateY(550px);
   transform: translateY(550px);
 }
-@media screen and (max-width: 1600px) {
-  .single-movie .info-film {
-    padding-top: 0;
-  }
-}
 .single-movie .info-film .information-movie {
   min-height: 28px;
 }
 .single-movie .info-film h2 {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 2.250rem;
+  font-size: 2.25rem;
+  line-height: 2.15rem;
   font-weight: normal;
   letter-spacing: 0.1em;
   margin: 12px 0 12px 0;
