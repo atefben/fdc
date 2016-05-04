@@ -201,6 +201,8 @@ class FilmProjection
             $this->getProgrammationFilms()->get(0)->getFilm() !== null
         ) {
             return $this->getProgrammationFilms()->get(0)->getFilm()->getTitleVo();
+        } else {
+            return (string)$this->getId();
         }
 
         return '';

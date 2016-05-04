@@ -107,8 +107,7 @@ class Event implements TranslateMainInterface
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="EventTag", mappedBy="event", cascade={"persist"})
-     *
+     * @ORM\OneToMany(targetEntity="EventTag", mappedBy="event", cascade={"all"}, orphanRemoval=true)
      */
     private $tags;
 
