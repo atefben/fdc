@@ -8417,7 +8417,14 @@ header #searchContainer {
   width: 100%;
 }
 
+.popin-landing-e {
+  display: none;
+}
+
 .popin-landing-e.visible {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
