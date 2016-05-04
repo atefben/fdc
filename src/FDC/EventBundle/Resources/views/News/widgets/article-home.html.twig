@@ -1,9 +1,6 @@
 {% set type = 'news' %}
 {% set picto = null %}
-{% if article is news_article or
-article is news_video or
-article is news_audio or
-article is news_image %}
+{% if article is news_object %}
     {% set type = 'news' %}
     {% set picto = article|get_news_type %}
 {% else %}
