@@ -14,10 +14,7 @@
             <div id="sliderWrapper">
                 <div id="slider" class="owl-carousel">
                     {% for article in homeSlider %}
-                        {% if article is news_article or
-                            article is news_video or
-                            article is news_audio or
-                            article is news_image %}
+                        {% if article is news_object %}
                                 {% set type = 'news' %}
                             {% else %}
                                 {% if class(article) starts with 'S' %}
@@ -108,11 +105,14 @@
                         {% endif %}
                             <div>
                                 <div class="img-container">
-                                    {% set trans = article.findTranslationByLocale('fr') %}
+                                    {% set trans = article.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans == null %}
+                                        {% set trans = article.findTranslationByLocale('fr') %}
+                                    {% endif %}
                                     {% if type == 'news' %}
-                                    <a href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                                    <a href="{{ url('fdc_event_news_get', { _locale: app.request.locale, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
                                     {% else %}
-                                    <a href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                                    <a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
                                     {% endif %}
                                         <div class="img" style="background-image:url({% path file , '1280x808' %})"></div>
                                     </a>
@@ -122,9 +122,9 @@
                                     <h2>{{ article|trans_fallback('title') }}</h2>
                                 </div>
                                 {% if type == 'news' %}
-                                    <a class="linkArticle" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                                    <a class="linkArticle" href="{{ url('fdc_event_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
                                 {% else %}
-                                    <a class="linkArticle" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                                    <a class="linkArticle" href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
                                 {% endif %}
                             </div>
                     {% endfor %}

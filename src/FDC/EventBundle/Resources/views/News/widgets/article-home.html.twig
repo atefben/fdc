@@ -132,6 +132,7 @@
                 <a class="linkImage" href="{{ url('fdc_event_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a>
             {% else %}
                 <a class="linkImage" href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a>
-            {% endif %}  </h2>
+            {% endif %}
+        </h2>
     </div>
 </article>
