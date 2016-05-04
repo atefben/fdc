@@ -30,7 +30,7 @@
         <div id="slider-prefooter" class="owl-carousel">
             {% if homepage.prefooterImage1 is not null %}
                 {% set trans = homepage.prefooterImage1.findTranslationByLocale(app.request.locale) %}
-                {% if trans is null %}
+                {% if trans.file is null %}
                     {% set trans = homepage.prefooterImage1.findTranslationByLocale('fr') %}
                 {% endif %}
             <div class="imgSlide active">
@@ -43,7 +43,7 @@
             {% endif %}
             {% if homepage.prefooterImage2 is not null %}
                 {% set trans = homepage.prefooterImage2.findTranslationByLocale(app.request.locale) %}
-                {% if trans is null or trans.file is not null %}
+                {% if trans.file is null %}
                     {% set trans = homepage.prefooterImage2.findTranslationByLocale('fr') %}
                 {% endif %}
             <div class="imgSlide">
@@ -56,7 +56,7 @@
             {% endif %}
             {% if homepage.prefooterImage3 is not null %}
                 {% set trans = homepage.prefooterImage3.findTranslationByLocale(app.request.locale) %}
-                {% if trans is null or trans.file is not null %}
+                {% if trans.file is null %}
                     {% set trans = homepage.prefooterImage3.findTranslationByLocale('fr') %}
                 {% endif %}
             <div class="imgSlide">
@@ -69,7 +69,7 @@
             {% endif %}
             {% if homepage.prefooterImage4 is not null %}
                 {% set trans = homepage.prefooterImage4.findTranslationByLocale(app.request.locale) %}
-                {% if trans is null or trans.file is not null %}
+                {% if trans.file is null %}
                     {% set trans = homepage.prefooterImage4.findTranslationByLocale('fr') %}
                 {% endif %}
             <div class="imgSlide">
@@ -82,7 +82,7 @@
             {% endif %}
             {% if homepage.prefooterImage5 is not null %}
                 {% set trans = homepage.prefooterImage5.findTranslationByLocale(app.request.locale) %}
-                {% if trans is null or trans.file is not null %}
+                {% if trans.file is null %}
                     {% set trans = homepage.prefooterImage5.findTranslationByLocale('fr') %}
                 {% endif %}
             <div class="imgSlide">
