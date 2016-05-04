@@ -8,7 +8,7 @@
 
 <div class="imgs-container {% if key == 0 %}first{% elseif key == 2 %}last{% endif %}">
     <div class="container-img">
-        <img src="{% path image, '233x233nocrop' %}" {% if image.width > image.height %}width="280"{% else %}height="280"{% endif %}alt="{{ widget.image|trans_fallback('alt') }}" />
+        <img src="{% path image, '233x233nocrop' %}" {% if image.width > image.height %}width="240"{% else %}height="240"{% endif %}alt="{{ widget.image|trans_fallback('alt') }}" />
     </div>
     <span class="caption">© {{ widget|trans_fallback('copyright') }}</span>
     <div class="infos">
