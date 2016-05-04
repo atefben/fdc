@@ -22,7 +22,7 @@
                                     }) %}
                                     <h3>{{ 'movie.presse.title.dossierdepresse'|trans }}</h3>
                                     {% for media in medias %}
-                                        <a download
+                                        <a download target="_blank"
                                            href="{% path media.file, 'reference' %}">{% if app.request.locale == 'fr' %}{{ media.titleVf }}{% else %}{{ media.titleVa }}{% endif %}</a>
                                     {% endfor %}
                                 </div>
