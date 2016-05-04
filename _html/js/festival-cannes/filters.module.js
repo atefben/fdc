@@ -78,13 +78,9 @@ function filter() {
 
         $that.find("span:not(.active):not([data-filter='all'])").each(function() {
           $this = $(this);
-          console.log($this);
 
           var getVal = $this.data('filter');
           var numItems = $('#calendar-programmation .fc-event[data-'+$id+'="'+getVal+'"]:not([style*="display: none"]').length;
-
-          console.log('#calendar-programmation .fc-event[data-'+$id+'="'+getVal+'"]:not([style*="display: none"]');
-          console.log(numItems);
 
           if (numItems === 0) {
               $this.addClass('disabled');
@@ -106,7 +102,7 @@ function filter() {
         $that = $(this);
         $id   = $(this).closest('.filter').attr('id');
 
-        $('#'+id+' span').each(function() {
+        $('#'+$id+' .select span').each(function() {
           var filterselect = $(this).attr('data-filter');
           if(filterselect == 'all') {
             $(this).addClass('active');
