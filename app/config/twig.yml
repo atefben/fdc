@@ -21,6 +21,7 @@ twig:
         partner_hp_en: "%partner_hp_en%"
         partner_kering_en: "%partner_kering_en%"
         partner_renault_en: "%partner_renault_en%"
+        partner_mastercard_en: "%partner_mastercard_en%"
         partner_mastercard_es: "%partner_mastercard_es%"
         partner_chopard_es: "%partner_chopard_es%"
         partner_loreal_es: "%partner_loreal_es%"

@@ -67,11 +67,12 @@ class HomepageSlideRepository extends EntityRepository
                  (i4t.locale = :locale AND i4t.isPublishedOnFDCEvent = 1)'
             )
         ;
+
         $qb
             ->andWhere(
-                '(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime) OR
-                 (s.publishedAt IS NULL OR s.publishedAt <= :datetime) AND (s.publishEndedAt IS NULL OR s.publishEndedAt >= :datetime) OR
-                 (i.publishedAt IS NULL OR i.publishedAt <= :datetime) AND (i.publishEndedAt IS NULL OR i.publishEndedAt >= :datetime)'
+                '(n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime) OR
+                 (s.publishedAt <= :datetime) AND (s.publishEndedAt IS NULL OR s.publishEndedAt >= :datetime) OR
+                 (i.publishedAt <= :datetime) AND (i.publishEndedAt IS NULL OR i.publishEndedAt >= :datetime)'
             )
 
             ->setParameter('locale', $locale)
