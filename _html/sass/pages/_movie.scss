@@ -161,10 +161,6 @@
       @include transform(translateY(570px));
     }
 
-    @include breakpoint(1600px) {
-      margin-top: -20px;
-    }
-
     img {
       display: block;
       width: 293px;
@@ -205,7 +201,6 @@
     color: #fff;
     float: left;
     padding-top: 0px;
-    margin-top: -20px;
     width: 639px;
     @include transition(all 0.3s $smoothTransition);
 
