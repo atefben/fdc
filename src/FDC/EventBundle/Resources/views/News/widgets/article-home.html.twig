@@ -110,6 +110,9 @@
             {% endif %}
         </div>
         {% set trans = article.findTranslationByLocale(app.request.locale) %}
+        {% if trans == null %}
+            {% set trans = article.findTranslationByLocale('fr') %}
+        {% endif %}
 
         {% if type == 'news' %}
             <a class="linkImage" href="{{ url('fdc_event_news_get', { _locale: app.request.locale, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
