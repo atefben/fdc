@@ -201,12 +201,13 @@
   .half-photo {
     vertical-align: top;
     width: 47%;
-    height: 100%;
+    height: 410px;
     float: left;
   }
 
   .half-photo + .half-photo {
     float: right;
+    //width: 50%;
   }
 
   .half-photo img {
@@ -546,5 +547,17 @@
 
   .competition .owl-stage-outer {
     margin-left: 0;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: .5em;
+    margin: 0 auto;
+    max-width: 400px;
+    padding: 0;
+    height: 100%;
+    text-transform: uppercase;
   }
 }

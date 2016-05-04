@@ -1,0 +1,68 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+
+{% block body %}
+{% if 'now'|date('d/m/Y') <  festival_date.festivalStartsAt|date('d/m/Y') %}
+    {% set date = festival_date.festivalStartsAt|date('d/m/Y') %}
+{% elseif 'now'|date('d/m/Y') >  festival_date.festivalEndsAt|date('d/m/Y') %}
+    {% set date = festival_date.festivalEndsAt|date('d/m/Y') %}
+{% else %}
+    {% set date = 'now'|date('d/m/Y') %}
+{% endif %}
+    <div id="main" class="press loading fullcalendar">
+    <div class="header-press">
+        <div class="container">
+            <h2>{{ 'agenda.title.monagenda'|trans }}</h2>
+            <div class="buttons">
+                <a href="#" class="button create"><i class="icon icon_creer"></i>{{ 'agenda.btn.creerunevenement'|trans }}</a>
+                <a href="#" class="button export subnav"><i class="icon icon_telecharger"></i>{{ 'agenda.btn.exportermonagenda'|trans }}</a>
+                <a href="#" class="button list pdf"><i class="icon icon_telecharger"></i>{{ 'agenda.btn.telechargerformatpdf'|trans }}</a>
+                <a href="#" class="button list ics"><i class="icon icon_telecharger"></i>{{ 'agenda.btn.telechargerformatics'|trans }}</a>
+            </div>
+        </div>
+    </div>
+    <div class="popin"></div>
+    <div id='calendar' class="fullwidth">
+        <div id="mycalendar">
+        </div>
+    </div>
+    <div id="create-event-pop">
+        <div class="contain-btn">
+            <span class="btn-close">
+                <i class="icon icon_close"></i>
+            </span>
+        </div>
+        <div class="container">
+            <h3>{{ 'agenda.title.creerunevenement'|trans }}</h3>
+            <p>{{ 'agenda.text.completezvotreagendainteractif'|trans }}</p>
+            <form action="#" id="form_data">
+                <label for="title">{{ 'agenda.popin.label.titre'|trans }} *</label>
+                <input type="text" name="title">
+                <div class="time first">
+                    <label for="begin">{{ 'agenda.popin.label.debut'|trans }} *</label>
+                    <input type="text" value="{{ date }}" name="datebegin" id="datepickerBegin">
+                    <span class="pictodate">
+                        <i class="icon icon_programmation"></i>
+                    </span>
+                    {% set dateFirst = ('now'|date('i')>30)?'30':'00' %}
+                    <input type="text" class="hours" name="hoursbegin" value="{{ 'now'|date('H') }}h{{ dateFirst }}">
+                </div>
+                <div class="time">
+                    <label for="end">{{ 'agenda.popin.label.fin'|trans }} *</label>
+                    <input type="text"  value="{{ date }}" name="dateend" id="datepickerEnd">
+                    <span class="pictodate">
+                        <i class="icon icon_programmation"></i>
+                    </span>
+                    <input type="text" value="{{ 'now'|date_modify("+1 hour")|date('H') }}h{{ dateFirst }}" class="hours" name="hoursend">
+                </div>
+                <label for="place">{{ 'agenda.popin.label.lieu'|trans }}</label>
+                <input type="text" name="place">
+                <label for="description" class='description'>{{ 'agenda.popin.label.description'|trans }}</label>
+                <input type="text" name="description">
+                <input type="submit" value="{{ 'agenda.btn.creerunevenement'|trans }}" class="button">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
