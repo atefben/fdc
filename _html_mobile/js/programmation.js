@@ -36,6 +36,7 @@ $(document).ready(function() {
     $.ajax({
       type     : "GET",
       dataType : "html",
+      data     : {'date':day},
       cache    : false,
       url      : url,
       success: function (data) {
