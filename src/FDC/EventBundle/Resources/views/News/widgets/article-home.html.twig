@@ -5,14 +5,14 @@ article is news_video or
 article is news_audio or
 article is news_image %}
     {% set type = 'news' %}
-    {% set picto = article.newsType|get_news_type %}
+    {% set picto = article|get_news_type %}
 {% else %}
     {% if class(article) starts with 'S' %}
         {% set type = 'communique' %}
-        {% set picto = article.statementType|get_statement_type %}
+        {% set picto = article|get_news_type %}
     {% else %}
         {% set type = 'info' %}
-        {% set picto = article.infoType|get_info_type %}
+        {% set picto = article|get_news_type %}
     {% endif %}
 {% endif %}
 
