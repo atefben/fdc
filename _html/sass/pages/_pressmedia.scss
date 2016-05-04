@@ -1,11 +1,4 @@
-//       SUMMARY TABLE
-// =========================
-// 1. Global
-// =========================
-
-
 .press-media.lock {
-
   .mediatheque {
     .table {
       .line {
@@ -14,9 +7,11 @@
           border-color: #b0b0b0;
           color: #b0b0b0;
         }
+
         .button {
           border-color: #b0b0b0;
           color: #b0b0b0;
+
           &:hover:after {
             opacity: 0;
             visibility: hidden;
@@ -49,65 +44,80 @@
   .slideshow {
     border: 0px solid #fff;
   }
+
   .contact-press {
     .button:hover {
-      background-color: #c29f5f;
-      border-color: #c29f5f !important;
+      background-color: $gold;
+      border-color: $gold !important;
       color: #fff;
     }
   }
+
   .mediatheque {
     .container {
       width: 977px;
     }
+
     .table {
       .line:last-child {
         border-bottom: 0px solid #fff;
       }
+
       .line {
         .info {
           float: left;
           width: 338px;
+
           .txt {
             width: 225px;
           }
         }
+
         .button,
         .active-btn .button {
           border-color: $gold;
           position: relative;
+
           &:hover {
             background-color: $gold;
             border-color: $gold;
             color: #fff;
           }
         }
+
         .active-btn {
           .button {
-            color: #c29f5f ;
-            border-color: #c29f5f ;
-          }
-          .button:hover {
-            color: #fff;
-            background-color: #c29f5f;
+            color: $gold ;
+            border-color: $gold ;
+            background-color: #fff;
+
+            &:hover {
+              color: #fff;
+              background-color: $gold;
+              cursor: pointer;
+            }
           }
         }
       }
     }
   }
+
   .header-press {
     p {
       width: 442px;
     }
   }
+
   .nav-mediapress {
     border-bottom: 1px solid #e3e3e3;
     border-top: 1px solid #e3e3e3;
     padding: 43px 0;
     padding-bottom: 51px;
+
     .wrapper {
       width: 980px;
       margin: 0 auto;
+
       h2 {
         line-height: 24px;
         font-size: 0.88rem;
@@ -119,6 +129,7 @@
         text-align: center;
         padding-bottom: 18px;
       }
+
       table {
         td {
           width: 324px;
@@ -133,16 +144,19 @@
           @include transition(all 0.5s $linear);
           cursor: pointer;
         }
+
         .active {
           background-color: #c8a461;
           border: 1px solid #c8a461;
           color: #fff;
         }
+
         .active:hover{
             background-color: #c8a461;
             border: 1px solid #c8a461;
             color: #fff;
         }
+
         td:hover {
           background-color: rgba(200, 164, 97, 0.51);
           color: #fff;
@@ -152,17 +166,22 @@
       }
     }
   }
+
   .nav-container {
     .table {
       .line {
+        position: relative;
+
         .media,
         .info {
           cursor: pointer;
         }
+
         .item {
           display: inline-block;
           margin: 8px;
         }
+
         .item.last{
           margin-right: 0px;
         }
@@ -172,30 +191,35 @@
           height: auto;
           margin-left: -7px;
         }
-        position: relative;
+
         .container {
           position: relative;
+
           .contain {
             display: none;
             float: left;
             width: 100%;
             padding-top: 63px;
             padding-bottom: 11px;
-            .icon_telecharger{
+
+            .icon_telecharger {
               margin-right: 10px;
               font-size: .8rem;
               vertical-align: middle !important;
               margin-bottom: 2px;
             }
-            .icon_cadenas{
+
+            .icon_cadenas {
               margin-right: 10px;
               font-size: .8rem;
               vertical-align: middle !important;
               margin-bottom: 3px;
             }
+
             .contain-buttons {
               display: inline-block;
               vertical-align: top;
+
               strong {
                 display: block;
                 margin-bottom: 17px;
@@ -203,33 +227,41 @@
                 font-size: 0.88rem;
                 font-family: $CamphorBold;
                 letter-spacing: .2em;
+
                 span {
-                  color: #c29f5f;
+                  color: $gold;
                 }
               }
+
               .buttons {
                 display: inline-block;
+
                 .button {
                   margin: 0px;
                   float: none;
                 }
               }
+
               .buttons:nth-child(3) {
                 margin-left: 68px;
               }
             }
+
             .contain-buttons:first-child {
               margin-right: 78px;
             }
           }
+
           .info .txt p {
             line-height: 18px;
           }
         }
+
         .container.active {
           .contain {
             display: block;
           }
+
           .plus {
             position: absolute;
             top: 30px;
@@ -238,13 +270,16 @@
             font-size: .8rem;
             color: #c8a461;
           }
+
           .media {
             color: #000;
           }
+
           .info .txt p {
             color: #000;
           }
         }
+
         .plus {
             width: 57px;
             height: 57px;
@@ -258,25 +293,31 @@
       }
     }
   }
-  .block{
-    .container{
+
+  .block {
+    .container {
       margin-bottom: 41px;
       margin-top: 60px;
       padding-top: 60px;
       border-top: 1px solid #dfdfdf;
+
       & .item{
         overflow: hidden;
       }
+
       & .item a img{
         @include transition(all 4s $linear);
       }
+
       & .item:hover a img {
         @include transform(scale(1.08) translateZ(0));
       }
     }
-    .container-title{
+
+    .container-title {
       position: relative;
-      .right-btn{
+
+      .right-btn {
         position: absolute;
         top: -32px;
         right: 0px;
@@ -286,17 +327,19 @@
         float: left;
         letter-spacing: .01em;
       }
-      .number{
-        color: #c29f5f;
+
+      .number {
+        color: $gold;
         font-size: 0.88rem;
         letter-spacing: .2em;
       }
     }
-    .title-press{
+    .title-press {
       margin-bottom: 30px;
       color:#000;
     }
   }
+
   .grid-wrapper {
     margin: 0px;
   }
