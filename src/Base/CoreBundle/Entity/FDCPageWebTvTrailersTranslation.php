@@ -99,6 +99,5 @@ class FDCPageWebTvTrailersTranslation implements TranslateChildInterface
     public function preUpdate()
     {
         $this->updatedAt = new DateTime();
-        $this->slug = Urlizer::urlize($this->overrideName);
     }
 }

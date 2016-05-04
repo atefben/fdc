@@ -123,6 +123,7 @@ $(document).ready(function() {
   displayProgrammationDay($('.timeline-container .active').data('date'));
 
   function moveTimeline(element, day) {
+    //console.log(element, day)
     var numDay = 0; 
     if(day == 11){
       numDay = 0;
@@ -145,36 +146,38 @@ $(document).ready(function() {
     
     $('#timeline a').removeClass('active');
     $(this).addClass('active');
-    moveTimeline($(this), $(this).data('date'));
+    moveTimeline($(this), $(this).data('day'));
     displayProgrammationDay($('.timeline-container .active').data('date'));
   });
 
   $('#timeline-calendar .prev').on('click',function(e) {
     e.preventDefault();
-    var day = $('.timeline-container').find('.active').data('date');
+    console.log( $('.timeline-container').find('.active'));
 
+    var day = $('.timeline-container').find('.active').data('day');
+  console.log('click', day);
     if(day == 11) {
       return false;
     } else {
-      moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1);
+      moveTimeline($('.timeline-container').find("[data-day='" + (day - 1) + "']"),day-1);
       displayProgrammationDay($('.timeline-container .active').data('date'));
     }
   });
 
   $('#timeline-calendar .next').on('click',function(e) {
     e.preventDefault();
-    var day = $('.timeline-container').find('.active').data('date'), numDay = 0;
+    var day = $('.timeline-container').find('.active').data('day'), numDay = 0;
 
-    if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')) {
+    if(day == 22 || $('.timeline-container').find("[data-day='" + (day + 1) + "']").hasClass('disabled')) {
       return false;
     } else {
-      moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1);
+      moveTimeline($('.timeline-container').find("[data-day='" + (day + 1) + "']"),day+1);
       displayProgrammationDay($('.timeline-container .active').data('date'));
     }
   });
 
   // init timeline
-  moveTimeline($('.timeline-container').find('.active'),$('.timeline-container').find('.active').data('date'));
+  moveTimeline($('.timeline-container').find('.active'),$('.timeline-container').find('.active').data('day'));
 
   function openPopinEvent(url) {
     $.ajax({

@@ -5,7 +5,7 @@
     <div id="main" class="press press-programmation loading calendar-open events-site programmation-press {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
-
+        
         <div class="header-press">
             <div class="head">
                 <span><i class="icon icon_espace-presse"></i>Espace presse</span>
@@ -32,10 +32,11 @@
                     <div id="timeline-calendar">
                         <a href="#" class="prev"><i class="icon icon_flecheGauche"></i></a>
                         <div id="timeline" class="" >
-
                             <div class="timeline-container">
                                 {% for day in schedulingDays %}
-                                    <a href="#" class="ajaxi {% if day == date %}active{% endif %}" data-date="{{ day|date('Y-m-d') }}">
+                                    <a href="#" class="{% if day == date %}active{% endif %}"
+                                       data-date="{{ day|date('Y-m-d') }}"
+                                       data-day="{{ day|date('d') }}">
                                         {{ day|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                                         <span class="day">{{ day|date('d') }}</span>
                                     </a>
@@ -68,19 +69,19 @@
                         <div class="time">02H</div>
                         <div class="time">03H</div>
                     </div>
-
                     <div class="venues">
-                        <div class="v-wrapper">
-                            {#{% for room in rooms %}#}
-                                {#<div class="venue">#}
-                                    {#<div class="v-head">{{ room.name }}</div>#}
-                                    {#<div class="v-container">#}
-                                        {#{% for event in projections[room.id] %}#}
-                                            {#{% include 'FDCEventMobileBundle:Agenda:widgets/event.html.twig' %}#}
-                                        {#{% endfor %}#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#{% endfor %}#}
+                        <div class="v-wrapper v-wrapper-content list">
+                            {% for room in rooms %}
+                                <div class="venue item-list item">
+                                    <div class="v-head">{{ room.name }}</div>
+                                    <div class="v-container">
+                                        {% for event in projections[room.id] %}
+                                            {#{{ dump(event) }}#}
+                                            {% include 'FDCEventMobileBundle:Agenda:widgets/event.html.twig' %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
