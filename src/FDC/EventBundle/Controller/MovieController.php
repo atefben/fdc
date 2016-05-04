@@ -188,8 +188,6 @@ class MovieController extends Controller
                 throw new NotFoundHttpException('Cinema de la plage not found');
             }
 
-            $localeSlugs = $page->getLocaleSlugs();
-
             // ALL SELECTION
             $selectionTabs = $this
                 ->getDoctrineManager()
@@ -220,7 +218,6 @@ class MovieController extends Controller
                 'cannesClassics' => $cannesClassics,
                 'selectionTabs'  => $selectionTabs,
                 'next'           => $next,
-                'localeSlugs'    => $localeSlugs
             ));
         }
 
