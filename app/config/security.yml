@@ -51,6 +51,18 @@ security:
              logout:
                  path:           /logout
              anonymous:          true
+        press_mobile:
+            host: ^%fdc_event_mobile_domain%$
+            context:            user
+            pattern:            /
+            form_login:
+                 provider:       fos_userbundle
+                 login_path:     /%locale%/press/login
+                 check_path:     /%locale%/press/login_check
+                 failure_path:   /%locale%/press
+            logout:
+                 path:           /logout
+            anonymous:          true
 
         #main:
         #    pattern:             .*

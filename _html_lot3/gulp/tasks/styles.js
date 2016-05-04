@@ -22,7 +22,7 @@ gulp.task('styles', function(){
       css: config.dest,
       sass: config.srcFolder
     }))
-    // .pipe(autoprefixer(config.autoprefixerOpts))
+    .pipe(autoprefixer(config.autoprefixerOpts))
     .pipe(options.production ? gutil.noop() : sourcemaps.write())
     .pipe(options.production ? gmq() : gutil.noop())
     // .pipe(options.production ? csso() : gutil.noop())

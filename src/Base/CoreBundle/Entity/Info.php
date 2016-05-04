@@ -104,7 +104,7 @@ abstract class Info implements TranslateMainInterface
     /**
      * @var InfoTag
      *
-     * @ORM\OneToMany(targetEntity="InfoTag", mappedBy="info", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="InfoTag", mappedBy="info", cascade={"all"}, orphanRemoval=true)
      *
      */
     private $tags;

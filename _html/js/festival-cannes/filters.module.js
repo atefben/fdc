@@ -1,6 +1,5 @@
 // Filters
 // =========================
-
 function filter() {
   var id = $('#filters').data('id');
   var filters = [];
@@ -96,6 +95,27 @@ function filter() {
     
     if($('.articles').length != 0) {
       $('.filter .select span').removeClass('disabled');
+    }
+
+    if($('#calendar-programmation').length > 0) {
+      $('.filter .select').each(function() {
+        $that = $(this);
+        $id   = $(this).closest('.filter').attr('id');
+
+        $('#'+$id+' .select span').each(function() {
+          var filterselect = $(this).attr('data-filter');
+          if(filterselect == 'all') {
+            $(this).addClass('active');
+          } else {
+            $(this).removeClass('active');
+          }
+          if($('.v-container [data-'+$id+'="' + filterselect + '"]').length > 0 || filterselect == 'all') {
+            $(this).removeClass('disabled');
+          } else {
+            $(this).addClass('disabled');
+          }
+        });
+      });
     }
   }
 }

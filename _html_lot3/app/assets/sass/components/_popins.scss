@@ -1,0 +1,76 @@
+.popin-landing-e.visible{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color:rgba(0, 0, 0, 0.8);
+  z-index: 100000;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .vFlexAlign {
+    height: 515px;
+    width: 800px;
+    background-color: #000;
+    flex-direction: column;
+  }
+
+  strong, span {
+    color: #fff;
+  }
+
+  .logo {
+    text-align: center;
+
+    h1{
+      font-family: $CamphorBold;
+      font-size: .6rem;
+      font-weight: normal;
+
+      a {
+        color: $gold;
+        text-transform: uppercase;
+      }
+    }
+
+    h2 {
+      font-family: $CamphorRegular;
+      font-size: 0.6875rem;
+      font-weight: normal;
+      margin-top: 5px;
+
+      a {
+        color: $gold;
+        text-transform: uppercase;
+      }
+    }
+
+    img.palm {
+      display: block;
+      margin: 0 auto;
+      width: 117px;
+    }
+  }
+
+  .compteur {
+    font-family: $CamphorHeavy;
+    font-size: 5rem;
+    line-height: 52px;
+    letter-spacing: 1px;
+    padding-top: 76px;
+    padding-bottom: 28px;
+  }
+
+  .description {
+    font-size: .6875rem;
+    font-family: $CamphorHeavy;
+    text-transform: uppercase;
+
+    span {
+      color: $gold;
+    }
+  }
+}

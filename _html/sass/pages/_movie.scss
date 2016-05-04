@@ -204,16 +204,13 @@
   .info-film {
     color: #fff;
     float: left;
-    padding-top: 15px;
+    padding-top: 0px;
+    margin-top: -20px;
     width: 639px;
     @include transition(all 0.3s $smoothTransition);
 
     &.trailer {
       @include transform(translateY(550px));
-    }
-
-    @include breakpoint(1600px) {
-      padding-top: 0;
     }
 
     .information-movie {
@@ -222,7 +219,8 @@
 
     h2 {
       font-family: $CamphorHeavy;
-      font-size: 2.250rem;
+      font-size: 2.25rem;
+      line-height: 2.15rem;
       font-weight: normal;
       letter-spacing: 0.1em;
       margin: 12px 0 12px 0;
@@ -964,7 +962,7 @@
         .folder {
           border-top: 1px solid #252525;
           border-bottom: 1px solid #252525;
-          height: 181px;
+          height: 184px;
           padding-left: 190px;
           position: relative;
 

@@ -1,5 +1,4 @@
 {% trans_default_domain 'FDCEventBundle' %}
-
 <div class="press" data-section="press">
     <div class="info-press">
         <div class="wrapper">
@@ -14,10 +13,9 @@
                                     {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with
                                     ({
                                     film: movie,
-                                    film_format: '300x400',
+                                    film_format: '135x145',
                                     film_attrs: {
                                     alt: movie|trans_fallback('title')?:movie.titleVO,
-                                    id: 'infosPressImageFilmPoster'
                                     },
                                     film_image_default: 'bundles/fdcevent/img/palmares/film420x560.jpg',
                                     film_image_default_attrs: ''

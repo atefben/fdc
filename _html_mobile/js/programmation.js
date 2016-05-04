@@ -22,17 +22,21 @@ $(document).ready(function() {
   });
 
   function displayProgrammationDay(day) {
-    // TODO : à enlever lors de la dynamisation. C'est juste un test pour afficher 2 jours différents
     var url;
-    if(day%2 == 0) {
-      url = GLOBALS.urls.calendarDay2;
+    if (GLOBALS.env == "html") {
+      if(day%2 == 0) {
+        url = GLOBALS.urls.calendarDay2;
+      } else {
+        url = GLOBALS.urls.calendarDay1;
+      }
     } else {
-      url = GLOBALS.urls.calendarDay1;
+      url = GLOBALS.urls.calendarProgrammationUrl;
     }
 
     $.ajax({
       type     : "GET",
       dataType : "html",
+      data     : {'date':day},
       cache    : false,
       url      : url,
       success: function (data) {

@@ -22,4 +22,4 @@ var owInitAccordion = function(id) {
       }
     });
   }
-}
+};

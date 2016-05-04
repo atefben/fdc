@@ -11244,7 +11244,8 @@ article .read-later.rAlign span:after {
 .single-movie .info-film {
   color: #fff;
   float: left;
-  padding-top: 15px;
+  padding-top: 0px;
+  margin-top: -20px;
   width: 639px;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -11257,17 +11258,13 @@ article .read-later.rAlign span:after {
   -webkit-transform: translateY(550px);
   transform: translateY(550px);
 }
-@media screen and (max-width: 1600px) {
-  .single-movie .info-film {
-    padding-top: 0;
-  }
-}
 .single-movie .info-film .information-movie {
   min-height: 28px;
 }
 .single-movie .info-film h2 {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 2.250rem;
+  font-size: 2.25rem;
+  line-height: 2.15rem;
   font-weight: normal;
   letter-spacing: 0.1em;
   margin: 12px 0 12px 0;
@@ -11940,7 +11937,7 @@ article .read-later.rAlign span:after {
 .single-movie .press .info-press .wrapper .folder {
   border-top: 1px solid #252525;
   border-bottom: 1px solid #252525;
-  height: 181px;
+  height: 184px;
   padding-left: 190px;
   position: relative;
 }
@@ -13888,12 +13885,12 @@ input[type=submit] {
   width: 293px;
 }
 .webtv .channel.shadow-bottom:before {
-  background: -moz-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(40%, transparent), color-stop(80%, rgba(0, 0, 0, 0.8)), color-stop(100%, rgba(20, 20, 20, 0.9)));
-  background: -webkit-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
-  background: -o-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
-  background: -ms-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
+  background: -moz-linear-gradient(top, transparent 50%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(50%, transparent), color-stop(80%, rgba(0, 0, 0, 0.8)), color-stop(100%, rgba(20, 20, 20, 0.9)));
+  background: -webkit-linear-gradient(top, transparent 50%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
+  background: -o-linear-gradient(top, transparent 50%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
+  background: -ms-linear-gradient(top, transparent 50%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
 }
 .webtv .vid {
   height: 400px;
@@ -15857,14 +15854,16 @@ input[type=submit] {
 .participate .title-list-header .icon_mains {
   font-size: 4rem;
 }
-.participate .icon_case-plus, .participate .icon_moins {
+.participate .icon_case-plus,
+.participate .icon_moins {
   margin-bottom: 40px;
   color: #c1c1c1;
   position: absolute;
   right: 1px;
   top: 22px;
 }
-.participate .icon_case-plus:hover, .participate .icon_moins:hover {
+.participate .icon_case-plus:hover,
+.participate .icon_moins:hover {
   cursor: pointer;
 }
 .participate .icon_case-plus {
@@ -16336,6 +16335,7 @@ input[type=submit] {
   padding-bottom: 29px;
   letter-spacing: 2px;
 }
+.partners .content-partners .contain-section .item-partners .text-partners p,
 .partners .content-partners .contain-section .item-partners .text-partners .descrip-partners {
   font-size: 0.81rem;
   line-height: 24px;

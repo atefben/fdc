@@ -105,7 +105,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * @var StatementTag
      *
-     * @ORM\OneToMany(targetEntity="StatementTag", mappedBy="statement", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="StatementTag", mappedBy="statement", cascade={"all"}, orphanRemoval=true)
      *
      */
     private $tags;
