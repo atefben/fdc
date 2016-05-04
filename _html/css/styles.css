@@ -12090,6 +12090,7 @@ article .read-later.rAlign span:after {
 .single-movie .competition #slider-competition .info-movie {
   padding-top: 30px;
   text-align: center;
+  width: 210px;
 }
 .single-movie .competition #slider-competition .info-movie p {
   color: #2c2c2c;
@@ -17875,7 +17876,7 @@ input[type=submit] {
 }
 .press .affiche .portrait {
   float: left;
-  width: 309px;
+  width: 260px;
 }
 .press .affiche .landscape {
   float: left;
@@ -19548,6 +19549,9 @@ input[type=submit] {
 }
 .downloading-press .affiche .caption {
   margin-top: 12px;
+}
+.downloading-press .affiche .portrait {
+  width: 309px;
 }
 .downloading-press .affiche p {
   margin-top: 45px;
