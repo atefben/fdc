@@ -191,7 +191,7 @@
                         {% endif %}
                     </div>
 
-                    {% if type == 'news' %}
+                    {% if homepage.topNewsType == 0 %}
                         <div id="timeline">
                             {% for key,date in festivalInterval %}
                                 {%  set timestamp = date ~ ' 23:59:59' %}

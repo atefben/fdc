@@ -1,4 +1,9 @@
+.popin-landing-e {
+  display: none;
+}
+
 .popin-landing-e.visible{
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
