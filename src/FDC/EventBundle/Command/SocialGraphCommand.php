@@ -132,8 +132,6 @@ class SocialGraphCommand extends ContainerAwareCommand
             }
 
         }
-
-
     }
 
     private function writeError($output, $logger, $msg)

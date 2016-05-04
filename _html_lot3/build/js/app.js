@@ -60,6 +60,24 @@ var owInitGrid = function(id){
 
     return $grid;
   }
+
+  if(id == 'isotope-03') {
+
+    var $grid = $('.isotope-03').imagesLoaded(function () {
+      $grid.isotope({
+        itemSelector    : '.item',
+        percentPosition : true,
+        sortBy          : 'original-order',
+        layoutMode      : 'packery',
+        packery         : {
+          columnWidth : '.grid-sizer'
+        }
+      });
+    });
+
+    return $grid;
+  }
+
 };
 
 
@@ -388,6 +406,32 @@ var owArrowDisplay = function() {
   });
 };
 
+var owInitSliderSelect = function(id) {
+
+  if(id == "timelapse"){
+    var slider = document.getElementById('timelapse');
+    var snapValues = [
+    	document.getElementById('slider-snap-value-lower'),
+    	document.getElementById('slider-snap-value-upper')
+    ];
+
+
+    noUiSlider.create(slider, {
+    	start: [1960, 2000],//todo script
+    	connect: true,
+    	range: {
+    		'min': 1946,
+    		'max': 2016
+    	}
+     });
+
+    slider.noUiSlider.on('update', function( values, handle ) {
+
+    	snapValues[handle].innerHTML = parseInt(values[handle]);
+    });
+  }
+}
+
 /*------------------------------------------------------------------------------
     JS Document (https://developer.mozilla.org/en/JavaScript)
 
@@ -590,6 +634,15 @@ $(document).ready(function() {
 
   if($('.p-register').length) {
     owInitTab('tab1');
+  }
+
+  if($('.media-library').length) {
+    owInitSliderSelect('timelapse');
+
+    var grid = owInitGrid('isotope-03');
+
+    owInitAleaGrid(grid, $('.grid-01'), true);
+
   }
 
 });
