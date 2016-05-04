@@ -91,12 +91,9 @@ class WebTvRepository extends TranslationRepository
     public function getWebTvBySlug($slug, $locale, $festival)
     {
         $qb = $this->createQueryBuilder('wt');
-        $qb = $qb->join('wt.translations', 'wtt')
-            ->where('wtt.slug = :slug')
-            ->setParameter('slug', $slug)
-        ;
+        $qb = $qb->join('wt.translations', 'wtt');
 
-        $qb = $this->addTranslationQueries($qb, 'wtt', $locale);
+        $qb = $this->addTranslationQueries($qb, 'wtt', $locale, $slug);
         $qb = $qb
             ->andWhere('wt.festival = :festival')
             ->setParameter('festival', $festival)
