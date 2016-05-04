@@ -338,7 +338,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $contacts;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="film", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="FilmFilmMedia", mappedBy="film", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position"="ASC"})
      *
      * @Groups({
