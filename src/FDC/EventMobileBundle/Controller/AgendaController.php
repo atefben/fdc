@@ -206,7 +206,7 @@ class AgendaController extends Controller
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FilmProjection')
                 ->findBy(
-                    array('type' => 'Séance de presse'),
+                    array('type' => 'Conférence de presse'),
                     array('startsAt' => 'ASC')
                 )
             ;
