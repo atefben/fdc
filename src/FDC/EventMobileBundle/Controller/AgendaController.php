@@ -2,11 +2,15 @@
 
 namespace FDC\EventMobileBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
+use \DateTime;
+
 use FDC\EventMobileBundle\Component\Controller\Controller;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\Validator\Constraints\DateTime;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @Route("/programmation")
@@ -24,130 +28,86 @@ class AgendaController extends Controller
     public function schedulingAction(Request $request)
     {
         $this->isPageEnabled($request->get('_route'));
-        $schedulingDays = array(
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            ),
-            array(
-                'date' => new \DateTime(),
-            )
-        );
+        $festival = $this->getFestival()->getId();
+        $festivalStart    = $this->getFestival()->getFestivalStartsAt();
+        $festivalEnd      = $this->getFestival()->getFestivalEndsAt();
+        $locale = $this->getRequest()->getLocale();
+        $isPress = false;
 
-        $selectionFilters = array(
-            array(
-                'name' => 'Toutes',
-                'slug' => 'all'
-            ),
-            array(
-                'name' => 'Compétitions',
-                'slug' => 'competition'
-            ),
-            array(
-                'name' => 'Hors compétitions',
-                'slug' => 'hors-competition'
-            ),
-            array(
-                'name' => 'Un certain regard',
-                'slug' => 'certain-regard'
-            )
-        );
+        if ($request->get('date')) {
+           $date = $request->get('date');
+        } else {
+            $date = new DateTime();
 
-        $typeFilters = array(
-            array(
-                'name' => 'Tout',
-                'slug' => 'all'
-            ),
-            array(
-                'name' => 'Séances',
-                'slug' => 'seances'
-            ),
-            array(
-                'name' => 'Evenements',
-                'slug' => 'evenements'
-            ),
-        );
+            if ($date < $festivalStart) {
+                $date = $festivalStart->format('Y-m-d');
+            } else if ($date > $festivalEnd) {
+                $date = $festivalEnd->format('Y-m-d');
+            } else {
+                $date = $date->format('Y-m-d');
+            }
+        }
 
-        $events = array(
-            'place' => array(
-                'grandTheatre' => array(
-                    'events' => array(
-                        array(
-                            'id' => 3,
-                            'title' => 'Orson welles, autopsie d’une légende',
-                            'author' => array(
-                                'fullName' => 'Elisabet KAPNIST'
-                            ),
-                            'category' => array(
-                                'name' => 'Séance de reprise',
-                                'slug' => 'reprise'
-                            ),
-                            'startAt' => new \DateTime(),
-                            'endAt' => new \DateTime(),
-                            'duration' => 120,
-                            'image' => array(
-                                'path' => '//dummyimage.com/46x64/000/fff'
-                            ),
-                            'place' => 'Grand Théatre Lumière',
-                            'competition' => 'Hors compétition'
-                        ),
-                    )
-                ),
-                'salleBunuel' => array(
-                    'events' => array(
-                        array(
-                            'id' => 5,
-                            'title' => 'Mad max, fury road',
-                            'author' => array(
-                                'fullName' => 'Elisabet KAPNIST'
-                            ),
-                            'category' => array(
-                                'name' => 'conférence de presse',
-                                'slug' => 'presse'
-                            ),
-                            'startAt' => new \DateTime(),
-                            'endAt' => new \DateTime(),
-                            'duration' => 60,
-                            'image' => array(
-                                'path' => '//dummyimage.com/46x64/000/fff'
-                            ),
-                            'place' => 'Grand Théatre Lumière',
-                            'competition' => 'Hors compétition'
-                        ),
-                    )
-                ),
-            )
-        );
+        // get all rooms
+        $rooms = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmProjectionRoom')
+            ->findAll()
+        ;
+
+        if (!$isPress) {
+            foreach ($rooms as $key => $room) {
+                if ($room->getName() == 'Salle de Conférence de Presse') {
+                    unset($rooms[$key]);
+                }
+            }
+        }
+
+        // get projections by room
+        $projections = array();
+        foreach ($rooms as $room) {
+            $projections[$room->getId()] = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmProjection')
+                ->getProjectionsByFestivalAndDateAndRoom($festival, $date, $room->getId(), $isPress)
+            ;
+        }
+
+        // get all selections
+        $selectionsIds = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmProjection')
+            ->getAllSelectionsIds($festival, $locale);
+        $selections = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmSelectionSection')
+            ->findBy(array('id' => $selectionsIds));
+        // get all types
+        $types = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmProjection')
+            ->getAllTypes($festival);
+
+        $schedulingDays = $this->createDateRangeArrayEvent($festivalStart->format('Y-m-d'), $festivalEnd->format('Y-m-d'), false);
+
+        $pressProjection = $this->getDoctrineManager()->getRepository('BaseCoreBundle:PressProjection')->findOneById($this->getParameter('admin_press_projection_id'));
 
         return array(
+            'pressProjection' => $pressProjection,
             'schedulingDays' => $schedulingDays,
-            'schedulingEvents' => $events,
-            'typeFilters' => $typeFilters,
-            'selectionFilters' => $selectionFilters,
+            'rooms' => $rooms,
+            'projections' => $projections,
+            'types' => $types,
+            'selections' => $selections,
+            'festival' => $festival,
+            'date' => $date
         );
 
     }
 
     /**
      * @Route("/day", options={"expose"=true})
-     * @Template("FDCEventBundle:Global:projection.html.twig")
+     * @Template("FDCEventMobileBundle:Global:projection.html.twig")
      * @param Request $request
      * @return array
      */
@@ -195,7 +155,7 @@ class AgendaController extends Controller
 
     /**
      * @Route("/projection/{id}", options={"expose"=true})
-     * @Template("FDCEventBundle:Global:projection-single.html.twig")
+     * @Template("FDCEventMobileBundle:Global:projection-single.html.twig")
      * @param Request $request
      * @return array
      */
@@ -224,7 +184,10 @@ class AgendaController extends Controller
             $seances = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FilmProjection')
-                ->findByType('Séance de presse')
+                ->findBy(
+                    array('type' => 'Séance de presse'),
+                    array('startsAt' => 'ASC')
+                )
             ;
 
             // remove seances not matching current films
@@ -240,7 +203,10 @@ class AgendaController extends Controller
             $conferences = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FilmProjection')
-                ->findByType('Conférence de presse')
+                ->findBy(
+                    array('type' => 'Séance de presse'),
+                    array('startsAt' => 'ASC')
+                )
             ;
 
             // remove conference not matching current films
@@ -302,56 +268,24 @@ class AgendaController extends Controller
     public function roomAction(Request $request)
     {
         $this->isPageEnabled($request->get('_route'));
-        $rooms = array(
-            array(
-                'name' => 'Grand Théatre Lumière',
-                'slug' => 'grand-theatre',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle Debussy',
-                'slug' => 'salle-debussy',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle du 60e',
-                'slug' => 'salle-60e',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle Bunuel',
-                'slug' => 'salle-bunuel',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle bazin',
-                'slug' => 'salle-bazin',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-            array(
-                'name' => 'Salle de presse',
-                'slug' => 'salle-presse',
-                'image' => array(
-                    'zone' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/festival-map.png',
-                    'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/press/seating-chart/theatre-lumiere.jpg',
-                )
-            ),
-        );
+
+        $translator = $this->get('translator');
+
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+        $dateTime = new DateTime();
+
+        // GET FDC SETTINGS
+        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+        if ($settings === null || $settings->getFestival() === null) {
+            throw new NotFoundHttpException();
+        }
+
+        //GET PressCinemaMap PAGE
+        $rooms = $em->getRepository('BaseCoreBundle:PressCinemaMap')->findOneById($this->getParameter('admin_press_cinemamap_id'));
+        if ($rooms === null) {
+            throw new NotFoundHttpException();
+        }
 
         return array(
             'rooms' => $rooms
