@@ -5,7 +5,7 @@
         <div class="v-head">{{ room.name }}</div>
         <div class="v-container">
             {%- for event in projections[room.id] -%}
-                {%- include 'FDCEventBundle:Agenda:widgets/event.html.twig' -%}
+                {%- include 'FDCEventMobileBundle:Agenda:widgets/event.html.twig' -%}
             {%- endfor -%}
         </div>
     </div>

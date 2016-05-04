@@ -71,6 +71,7 @@ class AgendaController extends Controller
                 ->getRepository('BaseCoreBundle:FilmProjection')
                 ->getProjectionsByFestivalAndDateAndRoom($festival, $date, $room->getId(), $isPress)
             ;
+
         }
 
         // get all selections
@@ -92,6 +93,7 @@ class AgendaController extends Controller
 
         $pressProjection = $this->getDoctrineManager()->getRepository('BaseCoreBundle:PressProjection')->findOneById($this->getParameter('admin_press_projection_id'));
 
+//        var_dump($projections);
         return array(
             'pressProjection' => $pressProjection,
             'schedulingDays' => $schedulingDays,
