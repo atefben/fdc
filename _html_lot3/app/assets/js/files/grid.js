@@ -34,7 +34,7 @@ var owInitGrid = function(id){
 
     return $grid;
   }
-}
+};
 
 
 var owsetGridBigImg  = function(grid, dom, init) {
@@ -158,7 +158,7 @@ var owsetGridBigImg  = function(grid, dom, init) {
       }
     });
   }
-}
+};
 
 var owInitAleaGrid = function(grid, dom, init) {
   var $img            = $(dom).find('.item:not(.portrait) img'),
@@ -196,4 +196,4 @@ var owInitAleaGrid = function(grid, dom, init) {
   });
 
   grid.isotope('layout');
-}
+};
