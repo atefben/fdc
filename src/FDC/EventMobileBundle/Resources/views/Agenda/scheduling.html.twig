@@ -5,10 +5,7 @@
     <div id="main" class="press press-programmation loading calendar-open events-site programmation-press {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
-
-
-        {{ dump(projections) }}
-
+        
         <div class="header-press">
             <div class="head">
                 <span><i class="icon icon_espace-presse"></i>Espace presse</span>
