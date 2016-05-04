@@ -75,6 +75,12 @@
     z-index: 2;
   }
 
+  #timeline-calendar .next, #timeline-calendar .prev,
+  #timeline-calendar .next, #timeline-calendar .next{
+    background: none;
+    border: none;
+  }
+
   #timeline-calendar .prev, #timeline-calendar .next{
     width: 121px;
     height: 128px;

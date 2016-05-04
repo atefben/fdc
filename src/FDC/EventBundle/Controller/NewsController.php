@@ -233,6 +233,7 @@ class NewsController extends Controller
     /**
      * @Route("/homepage-articles")
      * @Template("FDCEventBundle:News:widgets/article-home-ajax.html.twig")
+     * @param Request $request
      * @return array
      */
     public function getArticlesFromAction(Request $request)
@@ -243,7 +244,7 @@ class NewsController extends Controller
         $type      = $request->query->get('type');
 
         $em     = $this->get('doctrine')->getManager();
-        $locale = $this->getRequest()->getLocale();
+        $locale = $request->getLocale();
 
         // GET HOMEPAGE SETTINGS
         $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array(

@@ -66,8 +66,10 @@ var owInitPopin = function(id) {
     var fClosePopin = function() {
 
       $('.popin-landing-e').on('click', function(){
-        $popin.addClass('animated fadeOut').removeClass('visible');
+        $popin.addClass('animated fadeOut');
         Cookies.set('popin-landing-e','1', { expires: 365 });
+
+        setTimeout(function(){   $popin.removeClass('visible'); }, 500);
       });
     }
 

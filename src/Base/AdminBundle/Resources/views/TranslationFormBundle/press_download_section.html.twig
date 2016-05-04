@@ -182,7 +182,7 @@
                                 <div class="sonata-ba-collapsed-fields">
                                     <div class="form-group">
                                         <label>
-                                            Informatiosn générales
+                                            Information générales
                                         </label>
                                         <div>
                                             {{ form.parent.children.translations.children.fr.children.title.vars.value }}
@@ -385,6 +385,26 @@
                                             {% endif %}
                                         </div>
                                     {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'group.news.publish_parameters'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                    {% elseif is_granted('ROLE_JOURNALIST') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                    {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                    {% else %}
+                                        {{ form_row(translationsFields.status) }}
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
