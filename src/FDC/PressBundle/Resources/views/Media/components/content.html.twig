@@ -42,7 +42,7 @@
                                         <div class="vCenter">
                                             <div class="vCenterKid">
                                                 <p>
-                                                    {{ film|trans_fallback('title') }}
+                                                    {{ film.titleVO }}
                                                 </p>
                                                 <p>
                                                     {% for k,director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}

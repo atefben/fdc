@@ -10679,6 +10679,11 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-weight: normal;
 }
+.single-article .text a strong {
+  color: #c8a461;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+}
 .single-article .big-txt {
   width: 630px;
   margin: 0 auto 70px;
@@ -11191,11 +11196,6 @@ article .read-later.rAlign span:after {
   -webkit-transform: translateY(570px);
   transform: translateY(570px);
 }
-@media screen and (max-width: 1600px) {
-  .single-movie .poster {
-    margin-top: -20px;
-  }
-}
 .single-movie .poster img {
   display: block;
   width: 293px;
@@ -11245,7 +11245,6 @@ article .read-later.rAlign span:after {
   color: #fff;
   float: left;
   padding-top: 0px;
-  margin-top: -20px;
   width: 639px;
   -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -11900,6 +11899,9 @@ article .read-later.rAlign span:after {
   min-height: 286px;
   overflow: hidden;
   background-color: #141414;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
 }
 .single-movie .press h3 {
   color: #fff;
@@ -11923,9 +11925,11 @@ article .read-later.rAlign span:after {
   background-color: #141414;
   float: left;
   color: #fff;
-  height: 100%;
+  flex-grow: 1;
+  flex-basis: 50%;
   overflow: hidden;
   width: 50%;
+  padding-bottom: 100px;
 }
 .single-movie .press .info-press .wrapper {
   float: right;
@@ -11937,7 +11941,7 @@ article .read-later.rAlign span:after {
 .single-movie .press .info-press .wrapper .folder {
   border-top: 1px solid #252525;
   border-bottom: 1px solid #252525;
-  height: 144px;
+  height: 184px;
   padding-left: 190px;
   position: relative;
 }
@@ -12005,7 +12009,8 @@ article .read-later.rAlign span:after {
 .single-movie .press .contacts {
   background-color: #292929;
   float: left;
-  height: 100%;
+  flex-grow: 1;
+  flex-basis: 50%;
   overflow: hidden;
   width: 50%;
   padding-bottom: 100px;
@@ -18217,6 +18222,7 @@ input[type=submit] {
 .popin-event.show {
   opacity: 1;
   visibility: visible;
+  overflow-y: auto;
 }
 .popin-event .owl-nav {
   width: 273px;
@@ -20240,4 +20246,7 @@ input[type=submit] {
   .landing-page .bandeau-list-img {
     height: 296px !important;
   }
+}
+html[lang="es"] header #navigation ul.main li a {
+  padding-right: 15px;
 }

@@ -90,4 +90,13 @@ $(document).ready(function() {
     owInitTab('tab1');
   }
 
+  if($('.media-library').length) {
+    owInitSliderSelect('timelapse');
+
+    var grid = owInitGrid('isotope-03');
+
+    owInitAleaGrid(grid, $('.grid-01'), true);
+
+  }
+
 });

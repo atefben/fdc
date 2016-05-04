@@ -1,5 +1,9 @@
-<a href="/">
+<a href="/{{app.request.locale}}/">
     {% if settings.festivalStartsAt and settings.festivalEndsAt %}
-        {{ settings.festivalStartsAt|date('d') }}-{{ settings.festivalEndsAt|localizeddate('medium', 'none', app.request.locale) }}
+        {% if app.request.locale == 'zh' %}
+            {{ settings.festivalEndsAt|localizeddate('medium', 'none', app.request.locale) }}-{{ settings.festivalStartsAt|date('d') }}
+        {% else  %}
+            {{ settings.festivalStartsAt|date('d') }}-{{ settings.festivalEndsAt|localizeddate('medium', 'none', app.request.locale) }}
+        {% endif  %}
     {% endif %}
 </a>

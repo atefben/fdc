@@ -27,6 +27,7 @@
 // - BLOCK CONTACT
 // - BLOCK P REGISTER
 // - BLOCK TAB SWITCH
+// - BLOCK SEARCH
 // =========================
 
 // - HALF DIV
@@ -1333,5 +1334,185 @@
     line-height: 30px;
     margin-bottom: 30px;
     color: #fff;
+  }
+}
+
+.block-search {
+  margin-top: 50px;
+  margin-bottom: 80px;
+
+  .search-txt {
+    position: relative;
+    background-color: #fff;
+    color: #0c0c0c;
+    width: 489px;
+    height: 63px;
+    line-height: 63px;
+    padding-left: 24px;
+    box-sizing: padding-box;
+    display: block;
+
+    input {
+      border: 0px solid #fff;
+      outline: none;
+      width: 90%;
+      font-size: .875rem;
+      color: #141414;
+      font-family: $CamphorMedium;
+      letter-spacing: 1px;
+      font-style: italic;
+    }
+
+    .icon {
+      margin-right: 15px;
+      font-size: .8rem;
+    }
+
+    ::-webkit-input-placeholder {
+       font-size: .875rem;
+       color: #141414;
+       font-family: $CamphorMedium;
+       letter-spacing: 1px;
+       font-style: italic;
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+      font-size: .875rem;
+      color: #141414;
+      font-family: $CamphorMedium;
+      letter-spacing: 1px;
+      font-style: italic;
+    }
+
+    ::-moz-placeholder {  /* Firefox 19+ */
+      font-size: .875rem;
+      color: #141414;
+      font-family: $CamphorMedium;
+      letter-spacing: 1px;
+      font-style: italic;
+    }
+
+    :-ms-input-placeholder {
+      font-size: .875rem;
+      color: #141414;
+      font-family: $CamphorMedium;
+      letter-spacing: 1px;
+      font-style: italic;
+    }
+  }
+
+  .icon-s {
+    height: 63px;
+    width: 165px;
+    color: #fff;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid #181818;
+    flex-direction:row;
+    transition: .5s;
+
+    .text {
+      font-family: $CamphorHeavy;
+      font-size: .5rem;
+      line-height: 18px;
+      text-transform: uppercase;
+    }
+
+    .icon {
+      font-size: 1rem;
+      vertical-align: sub;
+      margin-right: 10px;
+    }
+
+    input {
+      opacity: 0;
+    }
+
+    &.active, &:hover {
+      color : $gold;
+      cursor: pointer;
+    }
+  }
+}
+
+.slider-selection {
+  color:#fff;
+  font-size: 1rem;
+  font-family: $CamphorBold;
+  padding: 30px;
+  border: 1px solid #181818;
+  border-top: 0px solid #fff;
+
+  .number {
+    opacity: .5;
+    display: inline-block;
+  }
+
+  .container-timelapse{
+    width: 810px;
+    display: inline-block;
+    vertical-align: super;
+    margin: 0px 10px;
+    // margin-right: 0px;
+  }
+
+  .noUi-target {
+    border-radius: 0px;
+    border: 0px solid #D3D3D3;
+    box-shadow: none;
+  }
+
+  .noUi-base {
+    width: 99%;
+  }
+
+  .noUi-horizontal {
+    height: 1px;
+  }
+
+  .noUi-background {
+    background: #252525;
+    box-shadow: none;
+  }
+
+  .noUi-connect {
+    background-color: $gold;
+  }
+
+  .noUi-handle {
+    border: 2px solid $gold;
+    border-radius: 0px;
+    background: #0c0c0c;
+    cursor: default;
+    box-shadow: none;
+  }
+
+  .noUi-horizontal .noUi-handle {
+    width: 10px;
+    height: 10px;
+    left: 0px;
+    top: -5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.noUi-handle-lower {
+      width: 10px;
+      height: 10px;
+      left: 0px;
+      top: -5px;
+    }
+  }
+
+  .noUi-handle:before, .noUi-handle:after {
+    content: "";
+    display: none;
+    position: absolute;
+    height: 14px;
+    width: 1px;
+    background: #E8E7E6;
+    left: 14px;
+    top: 6px;
   }
 }
