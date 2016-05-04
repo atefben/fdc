@@ -6,7 +6,7 @@
     {% set selectionName = selectionTab|trans_fallback('overrideName')?:selectionTab.selectionSection|trans_fallback('name') %}
     <li>
         <a href="{{ path('fdc_event_movie_selection', {'slug': selectionSlug}) }}"
-               class="{% if app.request.attributes.get('slug') == selectionSlug %}active{% endif %} ajax">
+               class="{% if app.request.attributes.get('slug') == selectionSlug %}active{% endif %}">
             {{ selectionName }}
         </a>
     </li>
@@ -26,7 +26,7 @@
     {% endif %}
     <li>
         <a href="{{ path('fdc_event_movie_selection', {'slug': 'cinema-de-la-plage'}) }}"
-           class="{% if app.request.attributes.get('slug') == 'cinema-de-la-plage' %}active{% endif %} ajax">
+           class="{% if app.request.attributes.get('slug') == 'cinema-de-la-plage' %}active{% endif %}">
             {{ 'selection.nav.cinema-la-plage'|trans }}
         </a>
     </li>

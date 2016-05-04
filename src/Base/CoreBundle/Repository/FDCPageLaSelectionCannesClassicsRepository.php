@@ -32,7 +32,8 @@ class FDCPageLaSelectionCannesClassicsRepository extends TranslationRepository
         $qb = $this
             ->createQueryBuilder('cc')
             ->join('cc.translations', 't')
-            ->where('t.slug = :slug')
+            ->join('cc.translations', 't3')
+            ->where('t3.slug = :slug')
             ->andWhere('t.status = :status_published AND t.locale = :locale_fr')
             ->setParameter('locale_fr', 'fr')
             ->setParameter('slug', $slug)

@@ -360,7 +360,7 @@ class MovieController extends Controller
             'filters'        => $filters,
             'selectionTabs'  => $pages,
             'next'           => is_object($next) ? $next : false,
-            'localesSlugs'   => $localeSlugs,
+            'localeSlugs'   => $localeSlugs,
         );
     }
 

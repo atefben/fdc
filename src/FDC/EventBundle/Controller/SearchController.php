@@ -153,44 +153,14 @@ class SearchController extends Controller
         if (!count($items)) {
             return FALSE;
         }
-      
-        switch ($type) {
-          case 'info':
-            $objectTypes = \Base\CoreBundle\Entity\Info::getTypes();
-            break;
-          case 'statement':
-            $objectTypes = \Base\CoreBundle\Entity\Statement::getTypes();
-            break;
-          case 'news':
-            $objectTypes = \Base\CoreBundle\Entity\News::getTypes();
-            break;
-          case 'media':
-            $objectTypes = array(
-              'audio' => 'audio',
-              'video' => 'video',
-              'photo' => 'photo',
-              'article' => 'article',
-            );
-            break;
-          default:
-            return FALSE;
-        }
-        
         
         $filters = array();
 
-        foreach ($objectTypes as $objectType) {
-            $filters['format'][] = array(
-              'name' => $objectType,
-              'slug' => $objectType,
-            );
-        }
-
         $dates = array();
         $themes = array();
-
+        $formats = array();
+        
         foreach ($items as $item) {
-
             if (!in_array($item->getPublishedAt()->format('dmY'), $dates)) {
                 $sortedDates[] = $item->getPublishedAt();
 
@@ -201,6 +171,13 @@ class SearchController extends Controller
 
                 $themes[] = $item->getTheme()->getSlug();
             }
+            
+            $format = $this->getItemFormat($item);
+            if (!in_array($format, $formats)) {
+                $filters['format'][] = array('name' => $format, 'slug' => $format);
+
+                $formats[] = $format;
+            }
         }
         
         rsort($sortedDates);
@@ -209,6 +186,13 @@ class SearchController extends Controller
         return $filters;
     }
 
+    private function getItemFormat($item)
+    {
+      $reflect = new \ReflectionClass(get_class($item));
+      $class = $reflect->getShortName();
+      
+      return strtolower(strtr($class, array('Image' => 'Photo','Info' => '', 'Media' => '', 'Statement' => '', 'News' => '')));
+    }
     
     private function getContentQuery($repository, $searchTerm, $_locale)
     {
