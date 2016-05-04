@@ -11937,7 +11937,7 @@ article .read-later.rAlign span:after {
 .single-movie .press .info-press .wrapper .folder {
   border-top: 1px solid #252525;
   border-bottom: 1px solid #252525;
-  height: 144px;
+  height: 184px;
   padding-left: 190px;
   position: relative;
 }
@@ -20240,4 +20240,7 @@ input[type=submit] {
   .landing-page .bandeau-list-img {
     height: 296px !important;
   }
+}
+html[lang="es"] header #navigation ul.main li a {
+  padding-right: 15px;
 }
