@@ -126,3 +126,9 @@ services:
         class: Base\CoreBundle\Twig\Extension\PalmaresAwardMutualExtension
         tags:
             - { name: twig.extension }
+
+    base.twig.media_video_extension:
+        class: Base\CoreBundle\Twig\Extension\MediaVideoExtension
+        tags:
+            - { name: twig.extension }
+        arguments: ["%locale_fallback%"]

@@ -193,21 +193,21 @@
             </div>
         </div>
         {% for section in pressHome.homeDownload %}
-        {% set isSignature = 0 %}
-        {% if section.download.widgets is defined %}
-        {% for widget in section.download.widgets %}
-            {% if class(widget) == "PressDownloadSectionWidgetArchive" %}
-                {% set isSignature = 1 %}
-            {% else %}
-                {% set isSignature = 0 %}
+            {% set isSignature = 0 %}
+            {% if section.download.widgets is defined %}
+                {% for widget in section.download.widgets %}
+                    {% if class(widget) == "PressDownloadSectionWidgetArchive" %}
+                        {% set isSignature = 1 %}
+                    {% else %}
+                        {% set isSignature = 0 %}
+                    {% endif %}
+                {% endfor %}
+                {% if isSignature is defined and isSignature == 1 %}
+                <div class="downloading-press"><div class="signature block">
+                {% else %}
+                <div class="affiche">
+                {% endif %}
             {% endif %}
-        {% endfor %}
-        {% if isSignature is defined and isSignature == 1 %}
-            <div class="signature block">
-            {% else %}
-            <div class="affiche">
-                {% endif %}
-                {% endif %}
                 <div class="container">
                     <h3 class="title-press">{{ section.download|trans_fallback('title') }}</h3>
                     {% if section.download.widgets is defined %}
@@ -226,10 +226,14 @@
                         {% endfor %}
                     {% endif %}
                 </div>
+            {% if isSignature is defined and isSignature == 1 %}
+            </div></div>
+            {% else %}
             </div>
-            {% endfor %}
             {% endif %}
-            {% elseif section.class == "push1" %}
+        {% endfor %}
+        {% endif %}
+    {% elseif section.class == "push1" %}
                 {% if pressHome.pushMainImage is not null %}
                     {% set trans = pressHome.pushMainImage.findTranslationByLocale(app.request.locale) %}
                     {% if trans is null or trans.file is null %}
@@ -309,13 +313,9 @@
                 {% endif %}
             {% endif %}
             {% endfor %}
-
         </div>
-
         {{ render(controller('FDCPressBundle:Global:contact')) }}
-
     </div>
 
     {% include 'FDCPressBundle:Global:components/popinPress.html.twig' %}
-
 {% endblock %}
