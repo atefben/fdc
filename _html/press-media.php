@@ -71,8 +71,8 @@
                       <div class="contain-buttons">
                         <strong>Dossier de presse <span>(2)</span></strong>
                         <div class="buttons active-btn">
-                          <a href="" class="button"><i class="icon icon_telecharger"></i>En français</a>
-                          <a href="" class="button"><i class="icon icon_telecharger"></i>En anglais</a>
+                          <button data-target="1-fr" class="button"><i class="icon icon_telecharger"></i>En français</button>
+                          <button data-target="1-en" class="button"><i class="icon icon_telecharger"></i>En anglais</button>
                         </div>
                       </div>
                       <div class="contain-buttons">
@@ -745,11 +745,10 @@
     </div>
 
     <?php include('popin-lock-press.html'); ?>
-      <?php include('popin-download-press.html'); ?>
-        <?php include('footer.html'); ?>
+    <?php include('popin-download-press.html'); ?>
+    <?php include('footer.html'); ?>
 
-          <!-- //// SCRIPTS \\\\ -->
-          <?php include('scripts.inc.php'); ?>
+    <?php include('scripts.inc.php'); ?>
 </body>
 
 </html>

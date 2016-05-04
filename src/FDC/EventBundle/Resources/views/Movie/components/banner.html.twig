@@ -85,10 +85,8 @@
             {% set mainTitle = movie.titleVO %}
         {% endif %}
         <h2>{{ mainTitle }}</h2>
-        {% if secondTitle and mainTitle != secondTitle %}
+        {% if secondTitle != '' and secondTitle != null and mainTitle != secondTitle %}
             <div class="title-original">({{ secondTitle }})</div>
-        {% else %}
-            <div class="title-original"></div>
         {% endif %}
         <p>
             {{ 'movie.label.realisepar'|trans }} :

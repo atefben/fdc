@@ -21,7 +21,7 @@ class MediaController extends Controller
      * @return array
      */
     /* TODO ! add press_media_section_id to parameters.yml  */
-    public function mainAction($sectionId = 3)
+    public function mainAction($sectionId)
     {
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
@@ -108,7 +108,8 @@ class MediaController extends Controller
 
         return array(
             'filmSection' => $filmSection,
-            'films'       => $films
+            'films'       => $films,
+            'sectionId'   => $sectionId
         );
     }
 

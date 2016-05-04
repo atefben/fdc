@@ -11937,7 +11937,7 @@ article .read-later.rAlign span:after {
 .single-movie .press .info-press .wrapper .folder {
   border-top: 1px solid #252525;
   border-bottom: 1px solid #252525;
-  height: 184px;
+  height: 144px;
   padding-left: 190px;
   position: relative;
 }
@@ -18590,7 +18590,7 @@ input[type=submit] {
   border-color: red;
 }
 
-#popin-download-press {
+.popin-download-press {
   visibility: hidden;
   opacity: 0;
   transform: translateY(30px);
@@ -18611,34 +18611,34 @@ input[type=submit] {
   padding-top: 62px;
   padding-bottom: 50px;
 }
-#popin-download-press .contain-info-item {
+.popin-download-press .contain-info-item {
   padding-bottom: 17px;
   border-bottom: 1px solid #c1c1c1;
   margin-bottom: 20px;
 }
-#popin-download-press .contain-info-item img {
+.popin-download-press .contain-info-item img {
   width: 55px;
   height: 75px;
   display: inline-block;
   margin-right: 12px;
 }
-#popin-download-press .contain-info-item .contain-text {
+.popin-download-press .contain-info-item .contain-text {
   width: 30%;
   height: 75px;
   vertical-align: top;
 }
-#popin-download-press .contain-info-item .contain-text h3 {
+.popin-download-press .contain-info-item .contain-text h3 {
   font-size: 0.88rem;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   line-height: 18px;
   text-transform: uppercase;
 }
-#popin-download-press .contain-info-item .contain-text span {
+.popin-download-press .contain-info-item .contain-text span {
   color: #c8a461;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 0.81rem;
 }
-#popin-download-press h4 {
+.popin-download-press h4 {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 0.88rem;
   letter-spacing: .2em;
@@ -18647,19 +18647,19 @@ input[type=submit] {
   margin-top: 17px;
   margin-bottom: 7px;
 }
-#popin-download-press p {
+.popin-download-press p {
   color: #666666;
   line-height: 24px;
   font-size: 0.81rem;
   margin-bottom: 32px;
 }
-#popin-download-press strong {
+.popin-download-press strong {
   line-height: 24px;
   font-size: 0.81rem;
   display: block;
   margin-bottom: 12px;
 }
-#popin-download-press table td {
+.popin-download-press table td {
   width: 238px;
   border: 1px solid #dfdfdf;
   box-sizing: border-box;
@@ -18669,16 +18669,16 @@ input[type=submit] {
   color: #999999;
   padding-left: 19px;
 }
-#popin-download-press table td a {
+.popin-download-press table td a {
   text-align: center;
   width: 97px;
   border: 0px;
   padding-left: 12px;
 }
-#popin-download-press table td a .icon {
+.popin-download-press table td a .icon {
   margin-right: 10px;
 }
-#popin-download-press table td:last-child {
+.popin-download-press table td:last-child {
   width: 97px;
   padding-left: 0px;
 }
@@ -19739,8 +19739,8 @@ input[type=submit] {
   border: 0px solid #fff;
 }
 .press-media .contact-press .button:hover {
-  background-color: #c29f5f;
-  border-color: #c29f5f !important;
+  background-color: #c8a461;
+  border-color: #c8a461 !important;
   color: #fff;
 }
 .press-media .mediatheque .container {
@@ -19768,12 +19768,14 @@ input[type=submit] {
   color: #fff;
 }
 .press-media .mediatheque .table .line .active-btn .button {
-  color: #c29f5f;
-  border-color: #c29f5f;
+  color: #c8a461;
+  border-color: #c8a461;
+  background-color: #fff;
 }
 .press-media .mediatheque .table .line .active-btn .button:hover {
   color: #fff;
-  background-color: #c29f5f;
+  background-color: #c8a461;
+  cursor: pointer;
 }
 .press-media .header-press p {
   width: 442px;
@@ -19884,7 +19886,7 @@ input[type=submit] {
   letter-spacing: .2em;
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons strong span {
-  color: #c29f5f;
+  color: #c8a461;
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons .buttons {
   display: inline-block;
@@ -19964,7 +19966,7 @@ input[type=submit] {
   letter-spacing: .01em;
 }
 .press-media .block .container-title .number {
-  color: #c29f5f;
+  color: #c8a461;
   font-size: 0.88rem;
   letter-spacing: .2em;
 }

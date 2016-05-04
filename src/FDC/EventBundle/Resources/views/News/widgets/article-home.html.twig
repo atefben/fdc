@@ -109,12 +109,15 @@
                 <img src="{% path file , '572x362' %}" srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x" alt="{{ img|trans_fallback('alt') }} ">
             {% endif %}
         </div>
-        {% set trans = article.findTranslationByLocale('fr') %}
+        {% set trans = article.findTranslationByLocale(app.request.locale) %}
+        {% if trans == null %}
+            {% set trans = article.findTranslationByLocale('fr') %}
+        {% endif %}
 
         {% if type == 'news' %}
-            <a class="linkImage" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+            <a class="linkImage" href="{{ url('fdc_event_news_get', { _locale: app.request.locale, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
         {% else %}
-            <a class="linkImage" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+            <a class="linkImage" href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
         {% endif %}
         <a href="#" class="read-later">
             <i class="icon icon_lire-plus-tard"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
@@ -126,9 +129,9 @@
         <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
         <h2>
             {% if type == 'news' %}
-                <a class="linkImage" href="{{ url('fdc_event_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a>
+                <a class="linkImage" href="{{ url('fdc_event_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a>
             {% else %}
-                <a class="linkImage" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a>
+                <a class="linkImage" href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a>
             {% endif %}  </h2>
     </div>
 </article>
