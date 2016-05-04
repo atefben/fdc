@@ -47,6 +47,7 @@ security:
                  login_path:     /%locale%/press/login
                  check_path:     /%locale%/press/login_check
                  failure_path:   /%locale%/press
+                 use_referer:    true
              logout:
                  path:           /logout
              anonymous:          true
