@@ -61,7 +61,7 @@
             </div>
         </div>
 
-        {% include 'FDCEventBundle:Movie:widgets/video.html.twig' with { videos: movie.associatedMediaVideos } %}
+        {% include 'FDCEventBundle:Movie:widgets/video.html.twig' with { videos: movie.getPublishedAssociatedMediaVideos(app.request.get('_locale')) } %}
 
         <div class="container">
 
