@@ -4,7 +4,6 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
-use Application\Sonata\MediaBundle\Entity\Media;
 use Base\CoreBundle\Interfaces\FilmFunctionInterface;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\TranslateMain;
