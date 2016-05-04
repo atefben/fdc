@@ -17875,7 +17875,7 @@ input[type=submit] {
 }
 .press .affiche .portrait {
   float: left;
-  width: 309px;
+  width: 260px;
 }
 .press .affiche .landscape {
   float: left;
@@ -19548,6 +19548,9 @@ input[type=submit] {
 }
 .downloading-press .affiche .caption {
   margin-top: 12px;
+}
+.downloading-press .affiche .portrait {
+  width: 309px;
 }
 .downloading-press .affiche p {
   margin-top: 45px;
