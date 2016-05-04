@@ -84,32 +84,32 @@
             </div>
 
             <div id="partners">
-                <a href="{{ "partner_chopard_" ~ app.request.locale }}" target="_blank">
+                <a href="{{ attribute(_context, 'partner_chopard_'~ app.request.locale) }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/Logo_Chopard.svg' %}
                     <img width="84" src="{{ asset(asset_url) }}" class="chopard" alt="{{ 'header.partners.img.chopard'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="{{ "partner_loreal_" ~ app.request.locale }}" target="_blank">
+                <a href="{{ attribute(_context, 'partner_loreal_'~ app.request.locale) }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/loreal.svg' %}
                     <img width="75" src="{{ asset(asset_url) }}" class="oreal" alt="{{ 'header.partners.img.loreal'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="{{ "partner_hp_" ~ app.request.locale }}" target="_blank">
+                <a href="{{ attribute(_context, 'partner_hp_'~ app.request.locale) }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/hp.svg' %}
                     <img width="28" src="{{ asset(asset_url) }}" class="hp" alt="{{ 'header.partners.img.hp'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="{{ "partner_kering_" ~ app.request.locale }}" target="_blank">
+                <a href="{{ attribute(_context, 'partner_kering_'~ app.request.locale) }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/Kering-logo.svg' %}
                     <img width="82" src="{{ asset(asset_url) }}" class="kering" alt="{{ 'header.partners.img.kering'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="{{ "partner_renault_" ~ app.request.locale }}" target="_blank">
+                <a href="{{ attribute(_context, 'partner_renault_'~ app.request.locale) }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/renault.svg' %}
                     <img width="95" src="{{ asset(asset_url) }}" class="renault" alt="{{ 'header.partners.img.renault'|trans }}" />
                     {% endimage %}
                 </a>
-                <a href="{{ "partner_mastercard_" ~ app.request.locale }}" target="_blank">
+                <a href="{{ attribute(_context, 'partner_mastercard_'~ app.request.locale) }}" target="_blank">
                     {% image '@FDCEventBundle/Resources/public/img/header/mastercard.png' %}
                     <img width="57" src="{{ asset(asset_url) }}" class="mastercard" alt="{{ 'header.partners.img.mastercard'|trans }}" />
                     {% endimage %}
