@@ -115,7 +115,7 @@
                                 </li>
                             {% elseif menu.route == 'fdc_press_media_main' and menu.enabled == true %}
                                 <li>
-                                    <a href="{{ path('fdc_press_media_main') }}">
+                                    <a href="{{ path('fdc_press_media_main', { 'sectionId': 3 }) }}">
                                         {{ 'header.mainnav.nav.mediatheque'|trans({}, 'FDCPressBundle') }}
                                     </a>
                                 </li>
