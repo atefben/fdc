@@ -33,7 +33,7 @@
                 {% if trans.file is null %}
                     {% set trans = homepage.prefooterImage1.findTranslationByLocale('fr') %}
                 {% endif %}
-            <div class="imgSlide active bottom">
+            <div class="imgSlide active">
                 <div class="vCenter">
                     <div class="vCenterKidBottom">
                         <a href='{{ homepage|trans_fallback('prefooterUrl1') }}'><img src="{% path trans.file, '1280x808' %}" alt="{{ trans.alt }}" /></a>
@@ -46,7 +46,7 @@
                 {% if trans.file is null %}
                     {% set trans = homepage.prefooterImage2.findTranslationByLocale('fr') %}
                 {% endif %}
-            <div class="imgSlide bottom">
+            <div class="imgSlide">
                 <div class="vCenter">
                     <div class="vCenterKidBottom">
                         <a href='{{ homepage|trans_fallback('prefooterUrl2') }}'><img src="{% path trans.file, '1280x808' %}" alt="{{ trans.alt }}" /></a>
@@ -72,7 +72,7 @@
                 {% if trans.file is null %}
                     {% set trans = homepage.prefooterImage4.findTranslationByLocale('fr') %}
                 {% endif %}
-            <div class="imgSlide top">
+            <div class="imgSlide">
                 <div class="vCenter">
                     <div class="vCenterKidBottom">
                         <a href='{{ homepage|trans_fallback('prefooterUrl4') }}'><img src="{% path trans.file, '1280x808' %}" alt="{{ trans.alt }}" /></a>
@@ -85,7 +85,7 @@
                 {% if trans.file is null %}
                     {% set trans = homepage.prefooterImage5.findTranslationByLocale('fr') %}
                 {% endif %}
-            <div class="imgSlide top">
+            <div class="imgSlide">
                 <div class="vCenter">
                     <div class="vCenterKidBottom">
                         <a href='{{ homepage|trans_fallback('prefooterUrl5') }}'><img src="{% path trans.file, '1280x808' %}" alt="{{ trans.alt }}" /></a>

@@ -17,6 +17,7 @@ class FDCPageParticipateRepository extends SearchRepository implements SearchRep
         $finalQuery = new \Elastica\Query\BoolQuery();
         $finalQuery
             ->addShould($this->getFieldsQuery($_locale, $searchTerm))
+            ->addShould($this->getSectionsQuery($_locale, $searchTerm))
         ;
         
         $statusQuery = new \Elastica\Query\BoolQuery();
@@ -25,8 +26,7 @@ class FDCPageParticipateRepository extends SearchRepository implements SearchRep
             ->addMust($finalQuery)
         ;
         
-        
-        $paginatedResults = $this->getPaginatedResults($statusQuery, $range, $page);
+        $paginatedResults = $this->getPaginatedResults($finalQuery, $range, $page);
         
         return array(
           'items' => $paginatedResults->getCurrentPageResults(),
@@ -42,6 +42,14 @@ class FDCPageParticipateRepository extends SearchRepository implements SearchRep
           'content',
         );
  
+        return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
+    }
+    
+    private function getSectionsQuery($_locale, $searchTerm)
+    {
+        $path = 'downloadSection.section.translations';
+        $fields = array('title', 'description');
+        
         return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
      
     }
