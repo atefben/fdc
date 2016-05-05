@@ -918,11 +918,7 @@
 
   .press {
     min-height: 286px;
-    overflow: hidden;
     background-color: #141414;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
 
     h3 {
       color: #fff;
@@ -949,9 +945,6 @@
       background-color: #141414;
       float: left;
       color: #fff;
-      flex-grow: 1;
-      flex-basis: 50%;
-      overflow: hidden;
       width: 50%;
       padding-bottom: 100px;
 
@@ -1042,11 +1035,9 @@
     .contacts {
       background-color: #292929;
       float: left;
-      flex-grow: 1;
-      flex-basis: 50%;
-      overflow: hidden;
       width: 50%;
-      padding-bottom: 60px;
+      padding-bottom: 30px;
+      min-height: 318px;
 
       h3 {
         margin-bottom: 15px;

@@ -3604,6 +3604,10 @@ body.fix {
   content: "\f144";
 }
 
+.icon_n-urgence:before {
+  content: "\f144";
+}
+
 .icon_objets-trouves:before {
   content: "\f145";
 }
@@ -11897,11 +11901,7 @@ article .read-later.rAlign span:after {
 }
 .single-movie .press {
   min-height: 286px;
-  overflow: hidden;
   background-color: #141414;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
 }
 .single-movie .press h3 {
   color: #fff;
@@ -11925,9 +11925,6 @@ article .read-later.rAlign span:after {
   background-color: #141414;
   float: left;
   color: #fff;
-  flex-grow: 1;
-  flex-basis: 50%;
-  overflow: hidden;
   width: 50%;
   padding-bottom: 100px;
 }
@@ -12009,11 +12006,9 @@ article .read-later.rAlign span:after {
 .single-movie .press .contacts {
   background-color: #292929;
   float: left;
-  flex-grow: 1;
-  flex-basis: 50%;
-  overflow: hidden;
   width: 50%;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
+  min-height: 318px;
 }
 .single-movie .press .contacts h3 {
   margin-bottom: 15px;

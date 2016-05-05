@@ -33,13 +33,13 @@
                         <div class="links">
                             <p class="sub">{{ 'movie.presse.label.liens'|trans }}</p>
                             {% if movie.website %}
-                                <a href="{{ ((movie.website in 'http') ? '' : 'http://') ~ movie.website }}" target="_blank">{{ 'movie.presse.liens.website'|trans }}</a>
+                                <a href="{{ (('http' in movie.website  or 'https' in  movie.website ) ? '' : 'http://') ~ movie.website }}" target="_blank">{{ 'movie.presse.liens.website'|trans }}</a>
                             {% endif %}
                             {% if movie.facebook %}
-                                <a href="{{ ((movie.facebook in 'http') ? '' : 'http://') ~ movie.facebook }}" target="_blank">{{ 'movie.presse.liens.facebook'|trans }}</a>
+                                <a href="{{ (('http' in movie.facebook or 'https' in movie.facebook ) ? '' : 'http://') ~ movie.facebook }}" target="_blank">{{ 'movie.presse.liens.facebook'|trans }}</a>
                             {% endif %}
                             {% if movie.twitter %}
-                                <a href="{{ ((movie.twitter in 'http') ? '' : 'http://') ~  movie.twitter }}" target="_blank">{{ 'movie.presse.liens.twitter'|trans }}</a>
+                                <a href="{{ (('http' in movie.twitter or 'https' in movie.twitter ) ? '' : 'http://') ~  movie.twitter }}" target="_blank">{{ 'movie.presse.liens.twitter'|trans }}</a>
                             {% endif %}
                         </div>
                     {% endif %}
@@ -100,12 +100,12 @@
                                                             {% endif %}
                                                         {% endif %}
                                                         {% if contact.address.email %}
-                                                            {% set displayEmail = '<a href="mailto:' ~ contact.address.email ~ '">' %}
+                                                            {% set displayEmail = '<a class="ajaxi" href="mailto:' ~ contact.address.email ~ '">' %}
                                                             {% set displayEmail =  displayEmail ~ contact.address.email ~ '</a>' %}
                                                             {% set displayContact = displayContact|merge([displayEmail]) %}
                                                         {% endif %}
                                                         {% if contact.address.website %}
-                                                            {% set displayWebsite = '<a href="' ~ ((contact.address.website in 'http') ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
+                                                            {% set displayWebsite = '<a href="' ~ (('http' in contact.address.website or 'https' in contact.address.website) ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
                                                             {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                             {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                         {% endif %}
@@ -146,12 +146,12 @@
                                                         {% endif %}
                                                     {% endif %}
                                                     {% if contact.person and contact.person.email %}
-                                                        {% set displayEmail = '<a href="mailto:' ~ contact.person.email ~ '">' %}
+                                                        {% set displayEmail = '<a class="ajaxi" href="mailto:' ~ contact.person.email ~ '">' %}
                                                         {% set displayEmail =  displayEmail ~ contact.person.email ~ '</a>' %}
                                                         {% set displayContact = displayContact|merge([displayEmail]) %}
                                                     {% endif %}
                                                     {% if contact.address.website %}
-                                                        {% set displayWebsite = '<a href="' ~ ((contact.address.website in 'http') ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
+                                                        {% set displayWebsite = '<a href="' ~ (('http' in contact.address.website or 'https' in contact.address.website) ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
                                                         {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                         {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                     {% endif %}
@@ -193,10 +193,10 @@
                                                 {% endif %}
                                             {% endif %}
                                             {% if contact.address.email %}
-                                                {% set contactInfos = contactInfos|merge(['<a href="mailto:' ~ contact.address.email ~ '">' ~ contact.address.email ~ '</a>']) %}
+                                                {% set contactInfos = contactInfos|merge(['<a class="ajaxi" href="mailto:' ~ contact.address.email ~ '">' ~ contact.address.email ~ '</a>']) %}
                                             {% endif %}
                                             {% if contact.address and contact.address.website %}
-                                                {% set contactInfos =  contactInfos|merge(['<a href="'~ contact.address.website ~ '" target="_blank">' ~ contact.address.website ~ '</a>']) %}
+                                                {% set contactInfos =  contactInfos|merge(['<a href="' ~ (('http' in contact.address.website or 'https' in contact.address.website) ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' ~ contact.address.website ~ '</a>']) %}
                                             {% endif %}
 
                                             {% if contact.person %}
@@ -205,7 +205,7 @@
                                             {% endif %}
 
                                             {% if contact.person and contact.person.email %}
-                                                {% set contactInfos = contactInfos|merge(['<a href="mailto:' ~ contact.person.email ~ '">' ~ contact.person.email ~ '</a>']) %}
+                                                {% set contactInfos = contactInfos|merge(['<a class="ajaxi" href="mailto:' ~ contact.person.email ~ '">' ~ contact.person.email ~ '</a>']) %}
                                             {% endif %}
                                             {% if contactInfos|length > 0 %}
                                                 {% for contactInfo in contactInfos %}
@@ -263,12 +263,12 @@
                                                             {% endif %}
                                                         {% endif %}
                                                         {% if contact.address.email %}
-                                                            {% set displayEmail = '<a href="mailto:' ~ contact.address.email ~ '">' %}
+                                                            {% set displayEmail = '<a class="ajaxi" href="mailto:' ~ contact.address.email ~ '">' %}
                                                             {% set displayEmail =  displayEmail ~ contact.address.email ~ '</a>' %}
                                                             {% set displayContact = displayContact|merge([displayEmail]) %}
                                                         {% endif %}
                                                         {% if contact.address.website %}
-                                                            {% set displayWebsite = '<a href="' ~ ((contact.address.website in 'http') ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
+                                                            {% set displayWebsite = '<a href="' ~ (('http' in contact.address.website or 'https' in contact.address.website) ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
                                                             {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                             {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                         {% endif %}
@@ -321,12 +321,12 @@
                                                     {% set displayContact = displayContact|merge(['T: ' ~ contact.address.phone?:contact.address.mobilePhone]) %}
                                                 {% endif %}
                                                 {% if contact.address.website %}
-                                                    {% set displayWebsite = '<a href="' ~ ((contact.address.website in 'http') ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
+                                                    {% set displayWebsite = '<a href="' ~ (('http' in contact.address.website or 'https' in contact.address.website) ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
                                                     {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                 {% endif %}
                                                 {% if contact.person and contact.person.email %}
-                                                    {% set displayEmail = '<a href="mailto:' ~ contact.person.email ~ '">' %}
+                                                    {% set displayEmail = '<a class="ajaxi" href="mailto:' ~ contact.person.email ~ '">' %}
                                                     {% set displayEmail =  displayEmail ~ contact.person.email ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayEmail]) %}
                                                 {% endif %}
@@ -354,7 +354,7 @@
                                                     {% set displayContact = displayContact|merge(['T: ' ~ contact.address.phone?:contact.address.mobilePhone]) %}
                                                 {% endif %}
                                                 {% if contact.address.website %}
-                                                    {% set displayWebsite = '<a href="' ~ ((contact.address.website in 'http') ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
+                                                    {% set displayWebsite = '<a href="' ~ (('http' in contact.address.website or 'https' in contact.address.website) ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
                                                     {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                 {% endif %}
@@ -362,7 +362,7 @@
                                                     {% set displayContact = displayContact|merge([contact.person.firstname ~ ' ' ~ contact.person.lastname]) %}
                                                 {% endif %}
                                                 {% if contact.person and contact.person.email %}
-                                                    {% set displayEmail = '<a href="mailto:' ~ contact.person.email ~ '">' %}
+                                                    {% set displayEmail = '<a class="ajaxi" href="mailto:' ~ contact.person.email ~ '">' %}
                                                     {% set displayEmail =  displayEmail ~ contact.person.email ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayEmail]) %}
                                                 {% endif %}
@@ -396,7 +396,7 @@
                                                     {% set displayContact = displayContact|merge(['T: ' ~ contact.address.phone?:contact.address.mobilePhone]) %}
                                                 {% endif %}
                                                 {% if contact.address.website %}
-                                                    {% set displayWebsite = '<a href="' ~ ((contact.address.website in 'http') ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
+                                                    {% set displayWebsite = '<a href="' ~ (('http' in contact.address.website or 'https' in contact.address.website) ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
                                                     {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                 {% endif %}
@@ -404,7 +404,7 @@
                                                     {% set displayContact = displayContact|merge([contact.person.firstname ~ ' ' ~ contact.person.lastname]) %}
                                                 {% endif %}
                                                 {% if contact.person and contact.person.email %}
-                                                    {% set displayEmail = '<a href="mailto:' ~ contact.person.email ~ '">' %}
+                                                    {% set displayEmail = '<a class="ajaxi" href="mailto:' ~ contact.person.email ~ '">' %}
                                                     {% set displayEmail =  displayEmail ~ contact.person.email ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayEmail]) %}
                                                 {% endif %}
@@ -438,12 +438,12 @@
                                                     {% set displayContact = displayContact|merge(['T: ' ~ contact.address.phone?:contact.address.mobilePhone]) %}
                                                 {% endif %}
                                                 {% if contact.address.website %}
-                                                    {% set displayWebsite = '<a href="' ~ ((contact.address.website in 'http') ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
+                                                    {% set displayWebsite = '<a href="' ~ (('http' in contact.address.website or 'https' in contact.address.website) ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
                                                     {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                 {% endif %}
                                                 {% if contact.person and contact.person.email %}
-                                                    {% set displayEmail = '<a href="mailto:' ~ contact.person.email ~ '">' %}
+                                                    {% set displayEmail = '<a class="ajaxi" href="mailto:' ~ contact.person.email ~ '">' %}
                                                     {% set displayEmail =  displayEmail ~ contact.person.email ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayEmail]) %}
                                                 {% endif %}

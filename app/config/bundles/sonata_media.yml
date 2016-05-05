@@ -42,6 +42,7 @@ sonata_media:
                 - sonata.media.provider.image
             formats:
                 2560x1103: { width: 2560, height: 1103, quality: 100, constraint: false }
+                976x535: { width: 976, height: 535, quality: 100, constraint: false }
 
         film_poster:
             providers:
@@ -235,7 +236,9 @@ sonata_media:
                 55x75: { width: 55 , height: 75 , quality: 100, constraint: false }
                 90x120: { width: 90 , height: 120 , quality: 100, constraint: false }
                 444x600: { width: 444, height: 600, quality: 100, constraint: false }
+                293x397: { width: 293, height: 397, quality: 100, constraint: false }
                 420x560: { width: 420, height: 560, quality: 100 }
+                135x145:    { width: 135 , height: 145 , quality: 100, constraint: false }
                 #Photo Jury
                 640x603: { width: 640 , height: 603 , quality: 100, constraint: false }
                 # Movie VideoMain
