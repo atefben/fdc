@@ -8,7 +8,7 @@
         {% endif %}
         {% set file = trans.file %}
         {% set copyright = photo|trans_fallback('copyright') %}
-        {% thumbnail file, '1950x1232' with {'alt': photo|trans_fallback('alt'), 'title': photo|trans_fallback('legend') } %}
+        {% thumbnail file, '926x584' with {'alt': photo|trans_fallback('alt'), 'title': photo|trans_fallback('legend') } %}
         {% if hideCopyright is not defined %}
             <p class="caption">{{ photo|trans_fallback('legend') }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
         {% endif %}
