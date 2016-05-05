@@ -37,6 +37,7 @@ class MediaController extends Controller
         ;
         $i = 0;
 
+
         $filmSection = array();
         $sections = array();
 
@@ -60,7 +61,13 @@ class MediaController extends Controller
             if ($empty == false && $film->getSelectionSection() !== null && !in_array($film->getSelectionSection()->getId(), $sections)) {
 
                 $filmSection[$i]['id'] = $film->getSelectionSection()->getId();
-                $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
+                if ($film->getSelectionSection()->findTranslationByLocale($locale)) {
+                    $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
+                }
+                else {
+                    $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale('en')->getName();
+                }
+
                 $filmSection[$i]['position'] = $film->getSelectionSection()->getPosition();
 
                 $sections[] = $film->getSelectionSection()->getId();
