@@ -285,6 +285,8 @@ sonata_media:
                 #previmg/nextimg films
                 156x206: { width: 156 , height: 206 , quality: 100, constraint: false }
                 293x397: { width: 293, height: 397, quality: 100, constraint: false }
+                575x364: { width: 575 , height: 364 , quality: 100, constraint: false}
+                976x535: { width: 976 , height: 535 , quality: 100, constraint: false}
 
         media_audio:
             providers:
