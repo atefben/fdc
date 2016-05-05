@@ -54,9 +54,7 @@ class SearchController extends Controller
      */
     public function searchSubmitAction($_locale, $searchTerm, $resultFilter = null) 
     {
-      if (function_exists('dump')) {
-        dump($this->container->getParameter('fdc_year'));
-      }
+      var_dump($this->container->getParameter('fdc_year'));die;
       
       $this->searchAutocompleteAction($_locale, $searchTerm);
       
