@@ -258,7 +258,7 @@
                 {% if pressHome.pushSecondaryImage is not null %}
                     {% set trans = pressHome.pushSecondaryImage.findTranslationByLocale(app.request.locale) %}
                     {% if trans is null or trans.file is null %}
-                        {% set trans = push.findTranslationByLocale('fr') %}
+                        {% set trans = pressHome.pushSecondaryImage.findTranslationByLocale('fr') %}
                     {% endif %}
                     <div class="section accrediter">
                         <div class="img" style="background-image: url({% path trans.file, '1280x808' %})"></div>
