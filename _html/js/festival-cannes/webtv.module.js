@@ -107,6 +107,7 @@ $(document).ready(function() {
         });
 
         $('#content-latest').on('click', '.video', function(e) {
+
           var $popinVideo = $('.popin-video'),
               vid         = $(e.target).closest('.video').data('vid'),
               source      = $(e.target).closest('.video').data('file'),
@@ -114,7 +115,7 @@ $(document).ready(function() {
               category    = $(e.target).closest('.video').find('.category').text(),
               date        = $(e.target).closest('.video').find('.date').text(),
               hour        = $(e.target).closest('.video').find('.hour').text(),
-              name        = $(e.target).closest('.video').find('p').data('title');
+              name        = $(e.target).closest('.video').data('title');
 
           if (typeof videoPopin.getConfig().file === "undefined" || videoPopin.getConfig().file === "") {
             videoPopin.remove();

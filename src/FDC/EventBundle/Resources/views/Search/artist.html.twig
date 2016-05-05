@@ -6,15 +6,24 @@
         <div class="person big">
             <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
                 <div class="image">
+                    
                     {% set artistImage = artist|person_image(true) %}
                     {% if artist.portraitImage and artist.portraitImage|trans_fallback('file') %}
                         <img src="{% path artist.portraitImage|trans_fallback('file'), 'search' %}"
                              alt="{{ artist.firstname }} {{ artist.lastname }}"
                              data-object-fit="cover">
                     {% elseif artistImage %}
-                        <img src="{% path artistImage.file, 'search' %}"
-                             alt="{{ artist.firstname }} {{ artist.lastname }}"
-                             data-object-fit="cover">
+                        {% if artist.presidentJuryImage and artist.presidentJuryImage|trans_fallback('file') %}
+                            <img src="{% path artist.presidentJuryImage|trans_fallback('file'), 'search' %}" alt="{{ artist.fullName }}"/>
+                        {% elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
+                            <img src="{% path artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first, 'search' %}" alt="{{ artist.fullName }}"/>
+                        {% elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                            <img src="{% path artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first, 'search' %}" alt="{{ artist.fullName }}"/>
+                        {% elseif class(artistImage) == 'FilmMedia' %}
+                            <img src="{% path artistImage.file, 'search' %}" alt="{{ artist.fullName }}"/>
+                        {% else %}
+                            <img src="{% path artistImage, 'search' %}" alt="{{ artist.fullName }}"/>
+                        {% endif %}
                     {% else %}
                         {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
                         {% if media is empty %}
