@@ -284,6 +284,8 @@ sonata_media:
                 480x640: { width: 480, height: 640, quality: 100, constraint: false }
                 #previmg/nextimg films
                 156x206: { width: 156 , height: 206 , quality: 100, constraint: false }
+                293x397: { width: 293, height: 397, quality: 100, constraint: false }
+
         media_audio:
             providers:
                - sonata.media.provider.audio
