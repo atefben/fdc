@@ -42,6 +42,7 @@ sonata_media:
                 - sonata.media.provider.image
             formats:
                 2560x1103: { width: 2560, height: 1103, quality: 100, constraint: false }
+                976x535: { width: 976, height: 535, quality: 100, constraint: false }
 
         film_poster:
             providers:
