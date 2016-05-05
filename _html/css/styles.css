@@ -12007,7 +12007,7 @@ article .read-later.rAlign span:after {
   background-color: #292929;
   float: left;
   width: 50%;
-  padding-bottom: 60px;
+  min-height: 318px;
 }
 .single-movie .press .contacts h3 {
   margin-bottom: 15px;
