@@ -8,7 +8,7 @@
                 <a href="{{ path('fdc_event_television_trailers') }}" class="bandeannone">
                     <i class="icon icon_flecheGauche"></i>{{ 'trailer.btn.retourbandeannonces'|trans }}
                 </a>
-                <h1 class="title">{{ film|trans_fallback('title')?:film.titleVo }}</h1>
+                <h1 class="title">{{ film.titleVo }}</h1>
             </div>
             <section>
                 <article class="video">
@@ -19,7 +19,7 @@
                             {%- for video in videos %}
                             {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
                             {%- if video.image -%}
-								{% set videoImage = media_public_url(video.image|trans_fallback('file'), '1950x1232') %}
+								{% set videoImage = media_public_url(video.image|trans_fallback('file'), '975x616') %}
                             {%- elseif video|trans_fallback('imageAmazonUrl') -%}
                                 {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                             {%- endif -%}
@@ -31,7 +31,7 @@
                             {%- endfor -%}]'
                          data-file=""
                          {%- if videos[0].image -%}
-                         data-img="{%- path videos[0].image|trans_fallback('file'), '1950x1232' -%}"
+                         data-img="{%- path videos[0].image|trans_fallback('file'), '975x616' -%}"
                          {%- elseif videos[0].image|trans_fallback('imageAmazonUrl') -%}
                          data-img="{{ s3_server_video ~ videos[0].image|trans_fallback('imageAmazonUrl') }}"
                          {%- endif -%}>
@@ -163,7 +163,7 @@
                 <div class="bandeau-list-img vCenterKid" style="background-image:url('{% spaceless %}
                         {% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
                             film: next,
-                            film_format: '2560x1103',
+                            film_format: '976x535',
                             display_film_path: true,
                             film_attrs: {
                                 alt: next|trans_fallback('title')?:movie.titleVO
