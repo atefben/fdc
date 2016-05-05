@@ -33,13 +33,13 @@
                         <div class="links">
                             <p class="sub">{{ 'movie.presse.label.liens'|trans }}</p>
                             {% if movie.website %}
-                                <a href="{{ ((movie.website in 'http' or movie.website in 'https') ? '' : 'http://') ~ movie.website }}" target="_blank">{{ 'movie.presse.liens.website'|trans }}</a>
+                                <a href="{{ (('http' in movie.website  or 'https' in  movie.website ) ? '' : 'http://') ~ movie.website }}" target="_blank">{{ 'movie.presse.liens.website'|trans }}</a>
                             {% endif %}
                             {% if movie.facebook %}
-                                <a href="{{ ((movie.facebook in 'http' or movie.facebook in 'https') ? '' : 'http://') ~ movie.facebook }}" target="_blank">{{ 'movie.presse.liens.facebook'|trans }}</a>
+                                <a href="{{ (('http' in movie.facebook or 'https' in movie.facebook ) ? '' : 'http://') ~ movie.facebook }}" target="_blank">{{ 'movie.presse.liens.facebook'|trans }}</a>
                             {% endif %}
                             {% if movie.twitter %}
-                                <a href="{{ ((movie.twitter in 'http' or movie.twitter in 'https') ? '' : 'http://') ~  movie.twitter }}" target="_blank">{{ 'movie.presse.liens.twitter'|trans }}</a>
+                                <a href="{{ (('http' in movie.twitter or 'https' in movie.twitter ) ? '' : 'http://') ~  movie.twitter }}" target="_blank">{{ 'movie.presse.liens.twitter'|trans }}</a>
                             {% endif %}
                         </div>
                     {% endif %}
