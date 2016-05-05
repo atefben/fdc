@@ -13,8 +13,8 @@
         <form action="{{ path("fdc_press_login") }}" method="post" {% if popinPressError %}class="error"{% endif %}    id="lockedForm">
             <input type="hidden" id="username" name="_username" value="press" required="required" />
 
-            <input type="hidden" name="_target_path" value="{{ app.request.get('_route') }}" />
-            <input type="hidden" name="_failure_path" value="{{ app.request.get('_route') }}" />
+            <input type="hidden" name="_target_path" value="{{ url(app.request.get('_route'), app.request.get('_route_params')) }}" />
+            <input type="hidden" name="_failure_path" value="{{ url(app.request.get('_route'), app.request.get('_route_params')) }}" />
 
             <input type="password" id="password" name="_password" required="required" placeholder="{{ 'press.header.placeholder.motdepasse'|trans }}"/>
 

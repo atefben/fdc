@@ -35,11 +35,11 @@ class LoginController extends Controller
             $request->getSession()->set('_security_secured_area', serialize($token));
 
             $this->addFlash('loginSuccess', 'my success message');
-            return $this->redirect($this->generateUrl($targetPath));
+            return $this->redirect($targetPath);
         }
 
         $request->getSession()->set('login_error', true);
 
-        return $this->redirect($this->generateUrl($failurePath));
+        return $this->redirect($failurePath);
     }
 }

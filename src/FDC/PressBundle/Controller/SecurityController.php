@@ -71,7 +71,7 @@ class SecurityController extends BaseController
             'error'         => $this->error,
             'csrf_token'    => $csrfToken,
             'current_route' => $this->getCurrentRoute(),
-            'current_route_params' => $this->getCurrentRouteParams(),
+            'current_route_params' => $this->getCurrentRouteParams() ? $this->getCurrentRouteParams() : array(),
         ));
     }
 
