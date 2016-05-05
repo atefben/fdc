@@ -2219,7 +2219,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                 if ($trans && $fr) {
                     $status = $fr->getStatus() === MediaVideoTranslation::STATUS_PUBLISHED;
                     if ($trans->getLocale() != $fr->getLocale()) {
-                        $status = $status && $trans->getStatus() === MediaVideoTranslation::STATUS_TRANSLATED;
+                        $status = $status;
                     }
                     $encoded = $trans->getJobWebmState() == MediaVideoTranslation::ENCODING_STATE_READY;
                     $encoded = $encoded  && $trans->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
