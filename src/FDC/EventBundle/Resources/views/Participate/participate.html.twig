@@ -45,6 +45,8 @@
 	                            {{ s.section|trans_fallback('title') }}
 	                        </h3>
 	                        <i class="icon accordion icon_plus"></i>
+							<div class="item-manual">
+								<div class="contain-infos">
 	                        {% if s.section|trans_fallback('description') %}
 	                            <div class="descrip-section">
 	                                {{ s.section|trans_fallback('description')|raw }}
@@ -69,6 +71,7 @@
 	                                {% include 'FDCEventBundle:Participate:widgets/participate-subtitle.html.twig' %}
 	                            {% endif %}
 	                        {% endfor %}
+							</div></div>
 	                    </div>
 	                </section>
 				{% endif %}
