@@ -260,7 +260,7 @@ abstract class CoreManager
     {
         $localesMapper = array(
             'ARE' => 'ar',
-            'CHI' => 'cn',
+            'CHI' => 'zh',
             'ESP' => 'es',
             'FRA' => 'fr',
             'GBR' => 'en',
