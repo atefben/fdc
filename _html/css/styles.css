@@ -3604,6 +3604,10 @@ body.fix {
   content: "\f144";
 }
 
+.icon_n-urgence:before {
+  content: "\f144";
+}
+
 .icon_objets-trouves:before {
   content: "\f145";
 }
