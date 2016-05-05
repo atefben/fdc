@@ -1326,6 +1326,8 @@ $(document).ready(function() {
     sliderMovieVideos.owlCarousel();
 
     $('body').on('click', '#slider-movie-videos .owl-item', function(e) {
+      $('#slider-movie-videos .owl-item').removeClass('active');
+      $(this).addClass('active');
       sliderMovieVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
     });
 

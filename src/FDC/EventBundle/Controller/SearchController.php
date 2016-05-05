@@ -54,6 +54,7 @@ class SearchController extends Controller
      */
     public function searchSubmitAction($_locale, $searchTerm, $resultFilter = null) 
     {
+      
       $this->searchAutocompleteAction($_locale, $searchTerm);
       
       $newsResults = $this->getSearchResults($_locale, 'news', $searchTerm, 4);
