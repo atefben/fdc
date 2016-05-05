@@ -37,7 +37,7 @@ class FDCPageParticipateSectionWidgetTypethreeTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=122)
+     * @ORM\Column(type="string", length=122, nullable=true)
      */
     protected $icon;
 
