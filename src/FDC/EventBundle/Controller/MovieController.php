@@ -207,7 +207,7 @@ class MovieController extends Controller
                 $next = $selectionTabs[0];
             }
 
-            $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale);
+            $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true);
 
             //SEO
             $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
@@ -275,7 +275,7 @@ class MovieController extends Controller
         if ($next === true) {
             $filters = $this
                 ->getDoctrineManager()
-                ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale)
+                ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true)
             ;
             if ($filters) {
                 $next = $filters[0];
@@ -295,7 +295,7 @@ class MovieController extends Controller
 
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
-        $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale);
+        $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true);
 
         return $this->render('FDCEventBundle:Movie:selection.html.twig', array(
             'cannesClassics' => $cannesClassics,
