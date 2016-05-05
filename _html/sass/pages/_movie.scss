@@ -699,27 +699,30 @@
           visibility: visible;
         }
       }
+      .active {
+        .slide-video {
+          &:after {
+            border: 4px solid $gold;
+            box-sizing: border-box;
+            content: '';
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 2;
+            @include transition(all 0.6s $smoothTransition);
+          }
+        }
 
+      }
       .slide-video {
         height: 185px;
         position: relative;
         width: 293px;
-
-        &:after {
-          border: 4px solid $gold;
-          box-sizing: border-box;
-          content: '';
-          display: block;
-          opacity: 0;
-          visibility: hidden;
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 100%;
-          z-index: 2;
-          @include transition(all 0.6s $smoothTransition);
-        }
 
         .info {
 

@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% if videos|length > 0 %}
     {% set firstVideo = null %}
-    {% for video in videos %}
+    {% for video in videos|reverse %}
         {% set video = video.mediaVideo %}
         {% set trans = video.findTranslationByLocale(app.request.locale) %}
         {% if trans is not null and trans.jobWebmState == 3 and trans.jobMp4State == 3 %}
@@ -18,15 +18,16 @@
             <div class="container">
                 <div class="video-container state-init video"
                     data-playlist='[
-                    {% set videoImage = null %}
-                    {% set amazonImage = null %}
-                    {% if firstVideo.image and firstVideo.image|trans_fallback('file') %}
-                        {% set videoImage = media_public_url(firstVideo.image|trans_fallback('file'), '586x370') %}
-                    {% elseif firstVideo|trans_fallback('imageAmazonUrl') %}
-                        {% set amazonImage = s3_server_video ~ firstVideo|trans_fallback('imageAmazonUrl') %}
-                    {% endif %}
+
                     {% for video in videos %}
                         {% set video = video.mediaVideo %}
+                        {% set videoImage = null %}
+                        {% set amazonImage = null %}
+                        {% if video.image and video.image|trans_fallback('file') %}
+                            {% set videoImage = media_public_url(video.image|trans_fallback('file'), '586x370') %}
+                        {% elseif video|trans_fallback('imageAmazonUrl') %}
+                            {% set amazonImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
+                        {% endif %}
                         {% set trans = video.findTranslationByLocale(app.request.locale) %}
                         {% if trans is not null and trans.jobWebmState == 3 and trans.jobMp4State == 3 %}
                             {% set firstVideo = video %}
@@ -46,19 +47,23 @@
                           "hour":"{{ firstVideo.publishedAt()|date('H:i') }}"
                         }{% if loop.last %}{% else %},{% endif %}{% endfor %}
                     ]'>
-                    <div id="video-player-ba"></div>
-                    <div class="video-overlay"></div>
-                    <div class="infos-bar">
-                        <div class="picto"><i class="icon icon_video"></i></div>
-                        <div class="info">
-                            <div class="vCenter">
-                                <div class="vCenterKid">
-                                    <a href="#" class="category">{{ firstVideo.theme|trans_fallback('name') }}</a><span class="date">{{ firstVideo.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ firstVideo.publishedAt|date('H:i') }}</span>
-                                    <p>{{ firstVideo|trans_fallback('title') }}</p>
+                    {% set break = 0 %}
+                    {% for video in videos if break == 0 %}
+                        <div id="video-player-ba"></div>
+                        <div class="video-overlay"></div>
+                        <div class="infos-bar">
+                            <div class="picto"><i class="icon icon_video"></i></div>
+                            <div class="info">
+                                <div class="vCenter">
+                                    <div class="vCenterKid">
+                                        <a href="#" class="category">{{ video.mediaVideo.theme|trans_fallback('name') }}</a><span class="date">{{ video.mediaVideo.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ video.mediaVideo.publishedAt|date('H:i') }}</span>
+                                        <p>I{{ video.mediaVideo|trans_fallback('title') }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        {% set break = 1 %}
+                    {% endfor %}
                 </div>
             </div>
             <div id="slider-movie-videos" class="owl-carousel sliderDrag">

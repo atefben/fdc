@@ -104,7 +104,7 @@ function playerInit(id, cls, havePlaylist, live) {
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     var $container    = $("#"+vid.id).closest('.video-container');
-    
+
     if($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
     }
@@ -372,10 +372,10 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 $topBar.find('.info .date').text(infos.date);
                 $topBar.find('.info .hour').text(infos.hour);
                 $topBar.find('.info p').text(infos.name);
-
+                $container.find('.owl-stage .owl-item').removeClass('active');
                 $container.find('.channels-video').removeClass('active');
+                $(this).addClass('active');
                 $container.find('.jwplayer').removeClass('overlay-channels');
-
                 sliderChannelsVideo.trigger('to.owl.carousel',[index,1000,true]);
             });
         }
