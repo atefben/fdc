@@ -11901,11 +11901,7 @@ article .read-later.rAlign span:after {
 }
 .single-movie .press {
   min-height: 286px;
-  overflow: hidden;
   background-color: #141414;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
 }
 .single-movie .press h3 {
   color: #fff;
