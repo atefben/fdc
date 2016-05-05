@@ -15,6 +15,8 @@ class SecurityController extends BaseController
 {
 
     protected $currentRoute;
+    protected $currentRouteParams;
+    protected $error = false;
 
     /**
      * @param Request $originalRequest
@@ -22,8 +24,14 @@ class SecurityController extends BaseController
      */
     public function setCurrentRouteAction(Request $originalRequest)
     {
-
         $this->setCurrentRoute($originalRequest->get('_route'));
+        $this->setCurrentRouteParams($originalRequest->get('_route_params'));
+
+        $error = $originalRequest->getSession()->has('login_error') ? $originalRequest->getSession()->get('login_error') : false;
+//        if ($error) {
+//            $originalRequest->getSession()->remove('login_error');
+//        }
+        $this->setError($error);
         return $this->loginAction();
 
     }
@@ -60,9 +68,10 @@ class SecurityController extends BaseController
 
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
-            'error'         => $error,
+            'error'         => $this->error,
             'csrf_token'    => $csrfToken,
-            'current_route' => $this->getCurrentRoute()
+            'current_route' => $this->getCurrentRoute(),
+            'current_route_params' => $this->getCurrentRouteParams(),
         ));
     }
 
@@ -81,6 +90,44 @@ class SecurityController extends BaseController
     {
         $this->currentRoute = $currentRoute;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrentRouteParams()
+    {
+        return $this->currentRouteParams;
+    }
+
+    /**
+     * @param mixed $currentRouteParams
+     * @return SecurityController
+     */
+    public function setCurrentRouteParams($currentRouteParams)
+    {
+        $this->currentRouteParams = $currentRouteParams;
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isError()
+    {
+        return $this->error;
+    }
+
+    /**
+     * @param boolean $error
+     * @return SecurityController
+     */
+    public function setError($error)
+    {
+        $this->error = $error;
+        return $this;
+    }
+
+
 
     protected function renderLogin(array $data)
     {
