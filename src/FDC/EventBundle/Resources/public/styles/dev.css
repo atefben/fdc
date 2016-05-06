@@ -451,3 +451,7 @@
     background: #fff;
     outline: none;
 }
+
+.webtv #gridChannels {
+    background-color: #000;
+}
