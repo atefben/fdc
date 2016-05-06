@@ -48,7 +48,7 @@
                 <td>{{ 'press.mediatheque.download_film_and_authors'|trans({'%film%': film, '%authors%': authors}) }}</td>
                 <td>MP4</td>
                 <td>
-                    <a href="{{ path('fdc_press_media_forcedownload', {'format': 'mp4', 'id': video.findTranslationByLocale(lang).id}) }}" class="button">
+                    <a href="{{ path('fdc_press_media_forcedownload', {'format': 'mp4', 'id': video.findTranslationByLocale(lang).id}) }}" class="button" target="_blank">
                         <i class="icon icon_telecharger"></i>{{ 'press.mediatheque.download'|trans }}
                     </a>
                 </td>
@@ -57,7 +57,7 @@
                 <td>{{ 'press.mediatheque.download_film_and_authors'|trans({'%film%': film, '%authors%': authors}) }}</td>
                 <td>WEBM</td>
                 <td>
-                    <a href="{{ path('fdc_press_media_forcedownload', {'format': 'webm', 'id': video.findTranslationByLocale(lang).id}) }}" class="button">
+                    <a href="{{ path('fdc_press_media_forcedownload', {'format': 'webm', 'id': video.findTranslationByLocale(lang).id}) }}" class="button" target="_blank">
                         <i class="icon icon_telecharger"></i>{{ 'press.mediatheque.download'|trans }}
                     </a>
                 </td>
@@ -66,7 +66,7 @@
                 <td>{{ 'press.mediatheque.download_film_and_authors'|trans({'%film%': film, '%authors%': authors}) }}</td>
                 <td>{{ 'pres.mediathe.download_format_source'|trans }}</td>
                 <td>
-                    <a href="{{ path('fdc_press_media_forcedownload', {'format': 'source', 'id': video.findTranslationByLocale(lang).id}) }}" class="button">
+                    <a href="{{ path('fdc_press_media_forcedownload', {'format': 'source', 'id': video.findTranslationByLocale(lang).id}) }}" class="button" target="_blank">
                         <i class="icon icon_telecharger"></i>{{ 'press.mediatheque.download'|trans }}
                     </a>
                 </td>
