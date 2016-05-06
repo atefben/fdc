@@ -57,7 +57,7 @@
                 <td>{{ 'press.mediatheque.download_film_and_authors'|trans({'%film%': film, '%authors%': authors}) }}</td>
                 <td>WEBM</td>
                 <td>
-                    <a href="{{ path('fdc_press_media_forcedownload', {'format': 'mp4', 'id': video.findTranslationByLocale(lang).id}) }}" class="button">
+                    <a href="{{ path('fdc_press_media_forcedownload', {'format': 'webm', 'id': video.findTranslationByLocale(lang).id}) }}" class="button">
                         <i class="icon icon_telecharger"></i>{{ 'press.mediatheque.download'|trans }}
                     </a>
                 </td>
