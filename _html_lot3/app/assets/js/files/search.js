@@ -22,7 +22,29 @@ var owInitSliderSelect = function(id) {
     	snapValues[handle].innerHTML = parseInt(values[handle]);
     });
   }
+
+  if(id == 'tab-selection') {
+    var $tab = $('.icon-s');
+
+    $tab.on('click', function(){
+      var input = $('input');
+      var input = $(this).find(input);
+
+      console.log(input.checked);
+
+      if(input.checked){
+        input.checked = false;
+        $(this).removeClass('active');
+      }else{
+        input.checked = true;
+        $(this).addClass('active');
+      }
+
+    });
+  }
 }
+
+
 
 
 //

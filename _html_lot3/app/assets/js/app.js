@@ -102,6 +102,7 @@ $(document).ready(function() {
 
   if($('.search-page').length) {
     owInitSliderSelect('timelapse');
+    owInitSliderSelect('tab-selection');
     owInitAccordion('more-search');
   }
 
