@@ -4,19 +4,19 @@
     <div id="top-bar">
         <ul class="main-nav">
             <li>
-                <a href="/{{app.request.locale}}/"> {{ 'header.topbar.nav.festival'|trans }} </a>
+                <a href="/{{app.request.locale}}/" class="active" > {{ 'header.topbar.nav.festival'|trans }} </a>
             </li>
             <li>
-                <a href="{{ header_fdc }}" target="_blank" > {{ 'header.topbar.nav.festivalcannes'|trans }} </a>
+                <a href="{{ attribute(_context, 'header_fdc_'~ app.request.locale) }}" target="_blank" > {{ 'header.topbar.nav.festivalcannes'|trans }} </a>
             </li>
             <li>
-                <a href="{{ header_cine }}" target="_blank" > {{ 'header.topbar.nav.cinefondation'|trans }} </a>
+                <a href="{{ attribute(_context, 'header_cine_'~ app.request.locale) }}" target="_blank" > {{ 'header.topbar.nav.cinefondation'|trans }} </a>
             </li>
             <li>
-                <a href="{{ header_ccm }}" target="_blank" > {{ 'header.topbar.nav.courtmetrage'|trans }} </a>
+                <a href="{{ attribute(_context, 'header_ccm_'~ app.request.locale) }}" target="_blank" > {{ 'header.topbar.nav.courtmetrage'|trans }} </a>
             </li>
             <li>
-                <a href="{{ header_mdf }}" target="_blank" > {{ 'header.topbar.nav.marche'|trans }} </a>
+                <a href="{{ attribute(_context, 'header_mdf_'~ app.request.locale) }}" target="_blank" > {{ 'header.topbar.nav.marche'|trans }} </a>
             </li>
         </ul>
         <ul class="user-nav">
