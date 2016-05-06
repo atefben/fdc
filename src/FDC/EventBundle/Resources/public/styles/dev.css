@@ -455,3 +455,27 @@
 .webtv #gridChannels {
     background-color: #000;
 }
+.participate .contain-cinema .contain-map p {
+    padding-bottom: 5px;
+}
+
+.contain-participate .contain-infos .text-manual p strong {
+    color: #c29f5f;
+    font-size: 0.88rem;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+
+.contain-participate .contain-infos .text-manual ul {
+    margin: 10px 0 10px 0;
+}
+
+.displaynotcmn {
+    display:none;
+}
+
+.participate .item-manual .text-manual h5 {
+    font-size: .75rem;
+    text-transform: uppercase;
+    font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+    padding-bottom: 29px;
+}
