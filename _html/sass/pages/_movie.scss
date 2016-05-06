@@ -1099,7 +1099,8 @@
 
       .owl-item {
         opacity: 1;
-
+        min-height: 380px;
+      
         .slide {
           &.compat-object-fit {
             background-size: cover;
@@ -1117,7 +1118,6 @@
         img {
           height: 284px;
           width: 210px;
-          object-fit: cover;
         }
 
         .linkVid {

@@ -12061,6 +12061,7 @@ article .read-later.rAlign span:after {
 }
 .single-movie .competition #slider-competition .owl-item {
   opacity: 1;
+  min-height: 380px;
 }
 .single-movie .competition #slider-competition .owl-item .slide.compat-object-fit {
   background-size: cover;
@@ -12075,7 +12076,6 @@ article .read-later.rAlign span:after {
 .single-movie .competition #slider-competition .owl-item img {
   height: 284px;
   width: 210px;
-  object-fit: cover;
 }
 .single-movie .competition #slider-competition .owl-item .linkVid {
   height: 284px;
