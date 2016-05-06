@@ -3674,6 +3674,46 @@ a {
   cursor: pointer;
 }
 
+.button-submit-02 {
+  width: 712px;
+  background-color: transparent;
+  height: 55px;
+  margin-top: 46px;
+  outline: none;
+}
+.dark .button-submit-02 {
+  border: 1px solid #181818;
+}
+.button-submit-02 .icon {
+  margin-right: 24px;
+  vertical-align: middle;
+}
+.button-submit-02:hover {
+  background-color: transparent;
+  border-color: #c8a461;
+  color: #c8a461;
+  cursor: pointer;
+}
+
+.buttons-two .b-grey {
+  background-color: #fff;
+  border: 1px solid #f2f2f2;
+  color: rgba(20, 20, 20, 0.5);
+  height: 55px;
+  width: 265px;
+  outline: none;
+}
+.buttons-two .b-grey:hover {
+  color: #c8a461;
+  cursor: pointer;
+  border-color: #c8a461;
+  border-right: 0px solid #fff;
+}
+.buttons-two .b-grey .icon {
+  font-size: .5rem;
+  margin-right: 5px;
+}
+
 .button-long {
   display: block;
   text-align: center;
@@ -5271,6 +5311,11 @@ video {
   padding-left: 24px;
   box-sizing: padding-box;
   display: block;
+  border-right: 0px solid #fff !important;
+}
+.brigth .block-search .search-txt {
+  color: #141414;
+  border: 1px solid #f4f4f4;
 }
 .block-search .search-txt input {
   border: 0px solid #fff;
@@ -5281,6 +5326,9 @@ video {
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
   font-style: italic;
+}
+.brigth .block-search .search-txt input {
+  color: #141414;
 }
 .block-search .search-txt .icon {
   margin-right: 15px;
@@ -5318,7 +5366,7 @@ video {
 }
 .block-search .icon-s {
   height: 63px;
-  width: 165px;
+  width: 166px;
   color: #fff;
   text-align: center;
   border-collapse: collapse;
@@ -5327,6 +5375,17 @@ video {
       -ms-flex-direction: row;
           flex-direction: row;
   transition: .5s;
+  border-right: 0px solid #fff !important;
+}
+.block-search .icon-s.last {
+  border-right: 1px solid #181818 !important;
+}
+.brigth .block-search .icon-s.last {
+  border-right: 1px solid #f4f4f4 !important;
+}
+.brigth .block-search .icon-s {
+  color: #141414;
+  border: 1px solid #f4f4f4;
 }
 .block-search .icon-s .text {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
@@ -5346,6 +5405,132 @@ video {
   color: #c8a461;
   cursor: pointer;
 }
+.block-search .tabs-two label {
+  width: 50%;
+  border-top: 0px solid #fff !important;
+}
+.block-search .tabs-two label:hover i, .block-search .tabs-two label:hover span, .block-search .tabs-two label:hover strong, .block-search .tabs-two label.active i, .block-search .tabs-two label.active span, .block-search .tabs-two label.active strong {
+  color: #c8a461;
+}
+.block-search .tabs-two label i, .block-search .tabs-two label span, .block-search .tabs-two label strong {
+  color: rgba(20, 20, 20, 0.5);
+  transition: .5s;
+}
+.block-search .more-search {
+  border: 1px solid #f4f4f4;
+  border-top: 0px solid #000;
+  border-right: 0px solid #000;
+  width: 100%;
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
+}
+.block-search .more-search td {
+  width: 50%;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding: 60px;
+  height: 100%;
+  border-right: 1px solid #f4f4f4;
+}
+.block-search .more-search .title-cont {
+  font-size: .625rem;
+  color: rgba(20, 20, 20, 0.5);
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 18px;
+  padding-bottom: 30px;
+  transition: .5s;
+}
+.block-search .more-search .title-cont .icon {
+  float: right;
+  font-size: .5rem;
+}
+.block-search .more-search .title-cont:hover {
+  color: #c8a461;
+  cursor: pointer;
+}
+.block-search .more-search .selection {
+  border-bottom: 1px solid #f4f4f4;
+  padding-bottom: 5px;
+}
+.block-search .more-search .selection .icon-arrow-down {
+  float: right;
+  font-size: .4rem;
+  margin-right: 2px;
+  margin-top: 3px;
+}
+.block-search .more-search label {
+  display: block;
+  color: rgba(20, 20, 20, 0.5);
+  font-size: .625rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.block-search .more-search .sub-tab, .block-search .more-search .tab-selection {
+  margin-bottom: 30px;
+  max-height: 20px;
+  overflow: hidden;
+}
+.block-search .more-search .sub-tab.active, .block-search .more-search .tab-selection.active {
+  max-height: 10000px;
+}
+.block-search .more-search .sub-tab.active .title-cont, .block-search .more-search .tab-selection.active .title-cont {
+  color: #c8a461;
+}
+.block-search .more-search [type="checkbox"]:not(:checked),
+.block-search .more-search [type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+.block-search .more-search [type="checkbox"]:not(:checked) + label,
+.block-search .more-search [type="checkbox"]:checked + label {
+  position: relative;
+  /* permet de positionner les pseudo-éléments */
+  padding-left: 17px;
+  /* fait un peu d'espace pour notre case à venir */
+  cursor: pointer;
+  /* affiche un curseur adapté */
+}
+.block-search .more-search [type="checkbox"]:not(:checked) + label:before,
+.block-search .more-search [type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0px;
+  width: 7px;
+  height: 7px;
+  /* dim. de la case */
+  border: 1px solid #e5e5e5;
+  background: #ffffff;
+}
+.block-search .more-search [type="checkbox"]:not(:checked) + label:after,
+.block-search .more-search [type="checkbox"]:checked + label:after {
+  content: '\2713';
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  font-size: 7px;
+  color: #c8a461;
+  transition: all .2s;
+  /* on prévoit une animation */
+}
+.block-search .more-search [type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  /* coche invisible */
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  /* mise à l'échelle à 0 */
+}
+.block-search .more-search [type="checkbox"]:checked + label:after {
+  opacity: 1;
+  /* coche opaque */
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  /* mise à l'échelle 1:1 */
+}
 
 .slider-selection {
   color: #fff;
@@ -5355,9 +5540,19 @@ video {
   border: 1px solid #181818;
   border-top: 0px solid #fff;
 }
+.brigth .slider-selection {
+  color: #141414;
+  border: 1px solid #f4f4f4;
+  border-top: 0px;
+}
 .slider-selection .number {
   opacity: .5;
   display: inline-block;
+  color: #fff;
+}
+.brigth .slider-selection .number {
+  opacity: .5;
+  color: #141414;
 }
 .slider-selection .container-timelapse {
   width: 810px;
@@ -5380,14 +5575,25 @@ video {
   background: #252525;
   box-shadow: none;
 }
-.slider-selection .noUi-connect {
-  background-color: #c8a461;
+.brigth .slider-selection .noUi-background {
+  background: #e5e5e5;
 }
 .slider-selection .noUi-handle {
   border: 2px solid #c8a461;
   border-radius: 0px;
   background: #0c0c0c;
   cursor: default;
+  box-shadow: none;
+}
+.brigth .slider-selection .noUi-handle {
+  background: #fff;
+}
+.slider-selection .noUi-connect {
+  background: #c8a461;
+  box-shadow: none;
+  transition: background 450ms;
+}
+.brigth .slider-selection .noUi-connect {
   box-shadow: none;
 }
 .slider-selection .noUi-horizontal .noUi-handle {
@@ -5716,280 +5922,288 @@ video {
   content: "\E027";
 }
 
-.icon-facebook:before {
+.icon-event:before {
   content: "\E028";
 }
 
-.icon-finder:before {
+.icon-facebook:before {
   content: "\E029";
 }
 
-.icon-firefox:before {
+.icon-finder:before {
   content: "\E02A";
 }
 
-.icon-fullscreen:before {
+.icon-firefox:before {
   content: "\E02B";
 }
 
-.icon-hand-drag:before {
+.icon-fullscreen:before {
   content: "\E02C";
 }
 
-.icon-hands:before {
+.icon-hand-drag:before {
   content: "\E02D";
 }
 
-.icon-hours-black:before {
+.icon-hands:before {
   content: "\E02E";
 }
 
-.icon-hours:before {
+.icon-hours-black:before {
   content: "\E02F";
 }
 
-.icon-information:before {
+.icon-hours:before {
   content: "\E030";
 }
 
-.icon-instagram:before {
+.icon-information:before {
   content: "\E031";
 }
 
-.icon-internet-explorer:before {
+.icon-instagram:before {
   content: "\E032";
 }
 
-.icon-language:before {
+.icon-internet-explorer:before {
   content: "\E033";
 }
 
-.icon-letter-open:before {
+.icon-language:before {
   content: "\E034";
 }
 
-.icon-letter:before {
+.icon-letter-open:before {
   content: "\E035";
 }
 
-.icon-link:before {
+.icon-letter:before {
   content: "\E036";
 }
 
-.icon-lodging:before {
+.icon-link:before {
   content: "\E037";
 }
 
-.icon-map:before {
+.icon-lodging:before {
   content: "\E038";
 }
 
-.icon-marker-black:before {
+.icon-map:before {
   content: "\E039";
 }
 
-.icon-media:before {
+.icon-marker-black:before {
   content: "\E03A";
 }
 
-.icon-mike-fill:before {
+.icon-media:before {
   content: "\E03B";
 }
 
-.icon-mike-white:before {
+.icon-mike-fill:before {
   content: "\E03C";
 }
 
-.icon-mike:before {
+.icon-mike-white:before {
   content: "\E03D";
 }
 
-.icon-minus:before {
+.icon-mike:before {
   content: "\E03E";
 }
 
-.icon-more-square:before {
+.icon-minus:before {
   content: "\E03F";
 }
 
-.icon-padlock:before {
+.icon-more-square:before {
   content: "\E040";
 }
 
-.icon-palme-bg:before {
+.icon-movie-clap:before {
   content: "\E041";
 }
 
-.icon-palme:before {
+.icon-padlock:before {
   content: "\E042";
 }
 
-.icon-pause:before {
+.icon-palme-bg:before {
   content: "\E043";
 }
 
-.icon-pdf:before {
+.icon-palme:before {
   content: "\E044";
 }
 
-.icon-pencil:before {
+.icon-pause:before {
   content: "\E045";
 }
 
-.icon-personal-calendar:before {
+.icon-pdf:before {
   content: "\E046";
 }
 
-.icon-persons:before {
+.icon-pencil:before {
   content: "\E047";
 }
 
-.icon-phone-fill:before {
+.icon-personal-calendar:before {
   content: "\E048";
 }
 
-.icon-photo-support:before {
+.icon-persons:before {
   content: "\E049";
 }
 
-.icon-photo:before {
+.icon-phone-fill:before {
   content: "\E04A";
 }
 
-.icon-plane:before {
+.icon-photo-support:before {
   content: "\E04B";
 }
 
-.icon-play:before {
+.icon-photo:before {
   content: "\E04C";
 }
 
-.icon-player:before {
+.icon-plane:before {
   content: "\E04D";
 }
 
-.icon-playlist:before {
+.icon-play:before {
   content: "\E04E";
 }
 
-.icon-podcast:before {
+.icon-player:before {
   content: "\E04F";
 }
 
-.icon-print:before {
+.icon-playlist:before {
   content: "\E050";
 }
 
-.icon-read-latter:before {
+.icon-podcast:before {
   content: "\E051";
 }
 
-.icon-release-press:before {
+.icon-print:before {
   content: "\E052";
 }
 
-.icon-reverse-full-screen:before {
+.icon-read-latter:before {
   content: "\E053";
 }
 
-.icon-rss:before {
+.icon-release-press:before {
   content: "\E054";
 }
 
-.icon-safari:before {
+.icon-reverse-full-screen:before {
   content: "\E055";
 }
 
-.icon-search:before {
+.icon-rss:before {
   content: "\E056";
 }
 
-.icon-selfie:before {
+.icon-safari:before {
   content: "\E057";
 }
 
-.icon-share:before {
+.icon-search:before {
   content: "\E058";
 }
 
-.icon-slideshow:before {
+.icon-selfie:before {
   content: "\E059";
 }
 
-.icon-sound:before {
+.icon-share:before {
   content: "\E05A";
 }
 
-.icon-stool:before {
+.icon-slideshow:before {
   content: "\E05B";
 }
 
-.icon-taxi-fill:before {
+.icon-sound:before {
   content: "\E05C";
 }
 
-.icon-tools:before {
+.icon-stool:before {
   content: "\E05D";
 }
 
-.icon-trailer-player:before {
+.icon-taxi-fill:before {
   content: "\E05E";
 }
 
-.icon-trailer:before {
+.icon-tools:before {
   content: "\E05F";
 }
 
-.icon-train:before {
+.icon-trailer-player:before {
   content: "\E060";
 }
 
-.icon-truck:before {
+.icon-trailer:before {
   content: "\E061";
 }
 
-.icon-tumblr:before {
+.icon-train:before {
   content: "\E062";
 }
 
-.icon-tv:before {
+.icon-truck:before {
   content: "\E063";
 }
 
-.icon-twitter:before {
+.icon-tumblr:before {
   content: "\E064";
 }
 
-.icon-user-fill:before {
+.icon-tv:before {
   content: "\E065";
 }
 
-.icon-user-round:before {
+.icon-twitter:before {
   content: "\E066";
 }
 
-.icon-video:before {
+.icon-user-fill:before {
   content: "\E067";
 }
 
-.icon-wen-fill:before {
+.icon-user-round:before {
   content: "\E068";
 }
 
-.icon-wen-minus:before {
+.icon-video:before {
   content: "\E069";
 }
 
-.icon-wen-more:before {
+.icon-wen-fill:before {
   content: "\E06A";
 }
 
-.icon-wifi:before {
+.icon-wen-minus:before {
   content: "\E06B";
 }
 
-.icon-youtube:before {
+.icon-wen-more:before {
   content: "\E06C";
+}
+
+.icon-wifi:before {
+  content: "\E06D";
+}
+
+.icon-youtube:before {
+  content: "\E06E";
 }
 
 /*!

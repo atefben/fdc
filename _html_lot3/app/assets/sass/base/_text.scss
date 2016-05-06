@@ -628,6 +628,54 @@ a {
   }
 }
 
+.button-submit-02 {
+  width: 712px;
+  background-color: rgba(0, 0, 0, 0);
+  height: 55px;
+  margin-top: 46px;
+  outline: none;
+
+  .dark & {
+    border: 1px solid #181818;
+  }
+
+  .icon {
+    margin-right: 24px;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: $gold;
+    color: $gold;
+    cursor: pointer;
+  }
+}
+
+.buttons-two {
+  .b-grey {
+    background-color: #fff;
+    border: 1px solid #f2f2f2;
+    color: rgba(20,20,20,.5);
+    height: 55px;
+    width: 265px;
+    outline: none;
+
+    &:hover {
+      color:$gold;
+      cursor: pointer;
+      border-color: $gold;
+      border-right: 0px solid #fff;
+    }
+
+    .icon {
+      font-size: .5rem;
+      margin-right: 5px;
+    }
+  }
+}
+
+
 .button-long {
   display: block;
   text-align: center;
