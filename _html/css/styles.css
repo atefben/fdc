@@ -19902,7 +19902,7 @@ input[type=submit] {
 .press-media .nav-container .table .line .container .contain .contain-buttons .buttons .button {
   margin: 2px;
   float: none;
-  border-right: 1px solid #dfdfdf;
+  border-right: 2px solid #dfdfdf;
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons:first-child {
   margin-right: 78px;
