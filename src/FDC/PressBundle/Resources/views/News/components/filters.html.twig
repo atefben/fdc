@@ -44,7 +44,7 @@
         <span class="label">{{ 'press.actu.filter.label.format'|trans }} :</span>
         <span class="select">
             {% for key, format in filters.format %}
-                <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ format.slug }}">{% if key == 0 %}{{ 'header.maselection.nav.tous'|trans({},'FDCEventBundle' }}{% else %}{{ ('filter.type.'~format.content)|trans({},'FDCEventBundle')  }}{% endif %}</span>
+                <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ format.slug }}">{% if key == 0 %}{{ 'header.maselection.nav.tous'|trans({},'FDCEventBundle') }}{% else %}{{ ('filter.type.'~format.content)|trans({},'FDCEventBundle')  }}{% endif %}</span>
             {% endfor %}
             <i class="icon icon_fleche-down"></i>
         </span>
