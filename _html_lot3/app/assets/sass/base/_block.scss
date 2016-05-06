@@ -12,6 +12,7 @@
 // - BLOCK 05
 // - BLOCK PUSH
 // - BLOCK PUSH 02
+// - BLOCK PUSH 03 (with margin)
 // - BLOCK PUSH TOP
 // - BLOCK LEGEND
 // - BLOCK FILMS
@@ -237,6 +238,35 @@
   .left {
     width: 100%;
   }
+
+  .image-wrapper {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+
+    img {
+      position: absolute;
+      min-width: 100%;
+      min-height: 100%;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      object-fit: cover;
+      @include transition(all 3s $linear);
+    }
+  }
+
+  strong {
+    z-index: 0;
+    width: 221px;
+    text-align: center;
+  }
+}
+
+// - BLOCK PUSH 03
+.block-push-03 {
 
   .image-wrapper {
     overflow: hidden;
