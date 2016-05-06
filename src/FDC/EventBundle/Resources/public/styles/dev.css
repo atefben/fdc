@@ -470,7 +470,7 @@
 }
 
 .displaynotcmn {
-    display:none;
+    display:none !important;
 }
 
 .participate .item-manual .text-manual h5 {
