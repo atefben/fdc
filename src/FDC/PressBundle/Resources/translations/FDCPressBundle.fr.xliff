@@ -342,7 +342,7 @@
       </trans-unit>
       <trans-unit id="f0f71a91e06daa8f76da8b267fd9808c33813c56" resname="pres.mediathe.download_format_source">
         <source>pres.mediathe.download_format_source</source>
-        <target>Format source HD</target>
+        <target>HD</target>
         <jms:reference-file line="67">Media/widgets/trailer.popin.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f57c547da56b47fad34c904ed520e10ebed15893" resname="press.accrediter.btn.enregistrer">
