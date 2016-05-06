@@ -19767,13 +19767,13 @@ input[type=submit] {
 }
 .press-media .mediatheque .table .line .button,
 .press-media .mediatheque .table .line .active-btn .button {
-  border-color: #c8a461 !important;
+  border-color: #c8a461;
   position: relative;
 }
 .press-media .mediatheque .table .line .button:hover,
 .press-media .mediatheque .table .line .active-btn .button:hover {
   background-color: #c8a461;
-  border-color: #c8a461 !important;
+  border-color: #c8a461;
   color: #fff;
 }
 .press-media .mediatheque .table .line .active-btn .button {
@@ -19904,7 +19904,7 @@ input[type=submit] {
 .press-media .nav-container .table .line .container .contain .contain-buttons .buttons .button {
   margin: 2px;
   float: none;
-  border-right: 2px solid #dfdfdf;
+  border-right: 1px solid;
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons:first-child {
   margin-right: 78px;

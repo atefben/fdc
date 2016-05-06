@@ -75,12 +75,12 @@
 
         .button,
         .active-btn .button {
-          border-color: $gold !important;
+          border-color: $gold;
           position: relative;
 
           &:hover {
             background-color: $gold;
-            border-color: $gold !important;
+            border-color: $gold;
             color: #fff;
           }
         }
@@ -240,7 +240,7 @@
                 .button {
                   margin: 2px;
                   float: none;
-                  border-right: 2px solid #dfdfdf;
+                  border-right: 1px solid;
                 }
               }
 
