@@ -1076,15 +1076,22 @@ $(document).ready(function () {
 
     //FOR ALL PRESS PAGE//
     if (!$('.lock').length) {
-      if ($('.popin-download-press').length) {
-        $('.buttons button[data-target]').on('click', function () {
-          if ($('.popin-download-press').hasClass('visible-popin')) {
-            $('.popin-download-press').removeClass('visible-popin');
-            $("#main").removeClass('overlay-popin');
-            $('footer').removeClass('overlay');
-          } else {
-            $('.popin-download-press').addClass("visible-popin");
-            $("#main").addClass('overlay-popin');
+      if ($('.popin-download-press').length) {        
+        $('.buttons button[data-target]').on('touchstart click', function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+
+          var target = $(this).data('target');
+
+          if(typeof target != 'undefined' && target != "" && $('.popin-download-press[data-popin="' + target + '"]').length) {
+            if ($('.popin-download-press[data-popin="'+target+'"').hasClass('visible-popin')) {
+              $('.popin-download-press[data-popin="'+target+'"').removeClass('visible-popin');
+              $("#main").removeClass('overlay-popin');
+              $('footer').removeClass('overlay');
+            } else {
+              $('.popin-download-press[data-popin="'+target+'"').addClass("visible-popin");
+              $("#main").addClass('overlay-popin');
+            }
           }
           return false;
         });
