@@ -5,7 +5,7 @@
         <div class="contain-info-item">
             {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
             film: film,
-            film_format: '55x75',
+            film_format: 'tiny',
             film_attrs: {
             class: "film_image",
             'data-object-fit': "cover",
@@ -14,11 +14,17 @@
             film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
             film_image_default_attrs: 'class="default_image" data-object-fit="cover" width="55"'
             }) %}
+
+            {% set title = film.titleVO %}
+            {% set authors = '' %}
+            {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                {%- set authors = authors ~ director.fullName %}{% if loop.last == false %}{% set authors = authors ~ ', ' %}{% endif -%}
+            {% endfor %}
             <div class="contain-text vCenter">
                 <div class="vCenterKid">
-                    <h3>{{ film.titleVO }}</h3>
+                    <h3>{{ title }}</h3>
                     <span class="name">
-
+                        {{ authors }}
                     </span>
                 </div>
             </div>
@@ -42,7 +48,7 @@
                 <td>{{ 'press.mediatheque.download_film_and_authors'|trans({'%film%': film, '%authors%': authors}) }}</td>
                 <td>MP4</td>
                 <td>
-                    <a href="{{ s3_server_video ~ (video.findTranslationByLocale(lang).mp4Url) }}" class="button">
+                    <a href="{{ path('fdc_press_media_forcedownload', {'format': 'mp4', 'id': video.findTranslationByLocale(lang).id}) }}" class="button" target="_blank">
                         <i class="icon icon_telecharger"></i>{{ 'press.mediatheque.download'|trans }}
                     </a>
                 </td>
@@ -51,7 +57,16 @@
                 <td>{{ 'press.mediatheque.download_film_and_authors'|trans({'%film%': film, '%authors%': authors}) }}</td>
                 <td>WEBM</td>
                 <td>
-                    <a href="{{ s3_server_video ~ (video.findTranslationByLocale(lang).webmUrl) }}" class="button">
+                    <a href="{{ path('fdc_press_media_forcedownload', {'format': 'webm', 'id': video.findTranslationByLocale(lang).id}) }}" class="button" target="_blank">
+                        <i class="icon icon_telecharger"></i>{{ 'press.mediatheque.download'|trans }}
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>{{ 'press.mediatheque.download_film_and_authors'|trans({'%film%': film, '%authors%': authors}) }}</td>
+                <td>{{ 'pres.mediathe.download_format_source'|trans }}</td>
+                <td>
+                    <a href="{{ path('fdc_press_media_forcedownload', {'format': 'source', 'id': video.findTranslationByLocale(lang).id}) }}" class="button" target="_blank">
                         <i class="icon icon_telecharger"></i>{{ 'press.mediatheque.download'|trans }}
                     </a>
                 </td>

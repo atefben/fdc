@@ -2,6 +2,7 @@
 
 namespace FDC\PressBundle\Controller;
 
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -63,8 +64,7 @@ class MediaController extends Controller
                 $filmSection[$i]['id'] = $film->getSelectionSection()->getId();
                 if ($film->getSelectionSection()->findTranslationByLocale($locale)) {
                     $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
-                }
-                else {
+                } else {
                     $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale('en')->getName();
                 }
 
@@ -390,5 +390,57 @@ class MediaController extends Controller
             'film' => $film
         );
     }
+
+
+    /**
+     * @Route("/force-trailer-download/{id}/{format}")
+     * @param Request $request
+     * @param $id
+     * @param string $format
+     * @return Response
+     */
+    public function forceDownloadAction(Request $request, $id, $format)
+    {
+        $response = new Response();
+
+        $trans = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaVideoTranslation')
+            ->find($id)
+        ;
+
+        if (!$trans || !in_array($format, array('mp4', 'webm', 'source'))) {
+            return $response;
+        }
+
+
+        $bucket = $this->getParameter('s3_video_bucket_name');
+        $region = $this->getParameter('s3_video_region');
+        $url = "http://$bucket.s3-website-$region.amazonaws.com/";
+
+        if ($format == 'mp4') {
+            $url .= $trans->getMp4Url();
+        } elseif ($format == 'webm') {
+            $url .= $trans->getMp4Url();
+        } elseif ($format == 'source') {
+            if ($trans->getAmazonRemoteFile()) {
+                $url .= $trans->getAmazonRemoteFile()->getUrl();
+            } elseif ($trans->getFile()) {
+                $provider = $this->container->get($trans->getFile()->getProviderName());
+                $format = $provider->getFormatName($trans->getFile(), 'reference');
+                $url = $provider->generatePublicUrl($trans->getFile(), $format);
+            }
+        }
+
+        $response->headers->set('Content-Type', 'application/octet-stream');
+        $response->headers->set('Content-Transfer-Encoding:', 'Binary');
+        $response->headers->set('Content-disposition', 'attachment; filename="' . basename($url) . '"');
+        $response->sendHeaders();
+        readfile($url);
+
+        return $response;
+    }
+
 
 }

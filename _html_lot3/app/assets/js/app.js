@@ -24,6 +24,8 @@ $(document).ready(function() {
 
  owInitPopin('popin-landing-e');
 
+ // owInitSearch();
+
   if($('.home').length) {
     owInitSlider('home');
     owInitSlider('slider-01');
@@ -96,7 +98,11 @@ $(document).ready(function() {
     var grid = owInitGrid('isotope-03');
 
     owInitAleaGrid(grid, $('.grid-01'), true);
+  }
 
+  if($('.search-page').length) {
+    owInitSliderSelect('timelapse');
+    owInitAccordion('more-search');
   }
 
 });
