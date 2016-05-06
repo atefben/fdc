@@ -420,14 +420,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     protected $projectionProgrammationFilmsList;
 
     /**
-     * @ORM\OneToMany(targetEntity="NewsFilmFilmAssociated", mappedBy="association", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="NewsFilmFilmAssociated", mappedBy="association", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"film_show"})
      */
     private $associatedNews;
 
     /**
-     * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="association", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="association", cascade={"all"}, orphanRemoval=true)
      * @Groups({
      *     "trailer_show",
      *     "film_show"
@@ -436,7 +436,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $associatedMediaVideos;
 
     /**
-     * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="association", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="MediaAudioFilmFilmAssociated", mappedBy="association", cascade={"all"}, orphanRemoval=true)
      * @Groups({
      *  "trailer_show",
      *  "film_show"
@@ -445,14 +445,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $associatedMediaAudios;
 
     /**
-     * @ORM\OneToMany(targetEntity="StatementFilmFilmAssociated", mappedBy="association", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="StatementFilmFilmAssociated", mappedBy="association", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"statement_list", "statement_show"})
      */
     private $associatedStatement;
 
     /**
-     * @ORM\OneToMany(targetEntity="InfoFilmFilmAssociated", mappedBy="association", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="InfoFilmFilmAssociated", mappedBy="association", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"info_list", "info_show"})
      */
@@ -2143,6 +2143,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function addAssociatedNew(\Base\CoreBundle\Entity\NewsFilmFilmAssociated $associatedNews)
     {
+        $associatedNews->setAssociation($this);
         $this->associatedNews[] = $associatedNews;
 
         return $this;
