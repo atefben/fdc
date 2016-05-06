@@ -23,6 +23,16 @@
                             {% set countImage = countImage + 1 %}
                         {% endif %}
                     {% endfor %}
+
+
+                    {% set countVideo  = 0 %}
+                    {% for m in film.associatedMediaVideos %}
+                        {% if m.mediaVideo and m.mediaVideo.displayedTrailer == 1 %}
+                            {% if m.mediaVideo|is_available_video(true, 'fr') or m.mediaVideo|is_available_video(true, 'en') %}
+                                {% set countVideo = countVideo  + 1 %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                     {% if film.selectionSection.id == section.id %}
                         <div class="line">
                             <div class="container">
@@ -116,15 +126,6 @@
 
                                         </div>
                                     {% endif %}
-
-                                    {% set countVideo  = 0 %}
-                                    {% for m in film.associatedMediaVideos %}
-                                        {% if m.mediaVideo and m.mediaVideo.displayedTrailer == 1 %}
-                                            {% if m.mediaVideo|is_available_video(true, 'fr') or m.mediaVideo|is_available_video(true, 'en') %}
-                                                {% set countVideo = countVideo  + 1 %}
-                                            {% endif %}
-                                        {% endif %}
-                                    {% endfor %}
                                     {% if countVideo > 0 %}
                                         <div class="contain-buttons">
                                             <strong>{{ 'mediatheque.label.bandesannoncesetextraits'|trans }}
