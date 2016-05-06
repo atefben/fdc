@@ -19883,6 +19883,7 @@ input[type=submit] {
 .press-media .nav-container .table .line .container .contain .contain-buttons {
   display: inline-block;
   vertical-align: top;
+  margin: 20px 0 0 0;
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons strong {
   display: block;
@@ -19897,13 +19898,11 @@ input[type=submit] {
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons .buttons {
   display: inline-block;
+  margin: 2px 0 2px;
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons .buttons .button {
   margin: 0px;
   float: none;
-}
-.press-media .nav-container .table .line .container .contain .contain-buttons .buttons:nth-child(3) {
-  margin-left: 68px;
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons:first-child {
   margin-right: 78px;
