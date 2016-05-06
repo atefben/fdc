@@ -28,15 +28,15 @@
                             <div class="container">
                                 <div class="info">
                                     {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                                        film: film,
-                                        film_format: '55x75',
-                                        film_attrs: {
-                                            class: "film_image",
-                                            'data-object-fit': "cover",
-                                            alt: film|trans_fallback('title')?:film.titleVO
-                                        },
-                                        film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
-                                        film_image_default_attrs: 'class="default_image" data-object-fit="cover" width="55"'
+                                    film: film,
+                                    film_format: '55x75',
+                                    film_attrs: {
+                                    class: "film_image",
+                                    'data-object-fit': "cover",
+                                    alt: film|trans_fallback('title')?:film.titleVO
+                                    },
+                                    film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
+                                    film_image_default_attrs: 'class="default_image" data-object-fit="cover" width="55"'
                                     }) %}
                                     <div class="txt">
                                         <div class="vCenter">
@@ -116,27 +116,45 @@
 
                                         </div>
                                     {% endif %}
+
+                                    {% set countVideo  = 0 %}
+                                    {% for m in film.associatedMediaVideos %}
+                                        {% if m.mediaVideo and m.mediaVideo.displayedTrailer == 1 %}
+                                            {% if m.mediaVideo|is_available_video(true, 'fr') or m.mediaVideo|is_available_video(true, 'en') %}
+                                                {% set countVideo = countVideo  + 1 %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
                                     {% if countVideo > 0 %}
                                         <div class="contain-buttons">
                                             <strong>{{ 'mediatheque.label.bandesannoncesetextraits'|trans }}
                                                 <span>({{ countVideo }})</span></strong>
 
-                                            <div class="buttons">
-                                                {% for m in film.associatedMediaVideos %}
-                                                    {% if m.mediaVideo.displayedTrailer == 1 %}
+
+                                            {% for m in film.associatedMediaVideos %}
+                                                <div class="buttons{{ is_granted("ROLE_FDC_PRESS_REPORTER") ? ' active-btn' : '' }}">
+                                                    {% if m.mediaVideo and m.mediaVideo.displayedTrailer == 1 %}
                                                         {% set trans = m.mediaVideo.findTranslationByLocale(app.request.locale) %}
                                                         {% if trans is null or trans.file is null %}
                                                             {% set trans = m.mediaVideo.findTranslationByLocale('fr') %}
                                                         {% endif %}
-                                                        <a href="#"
-                                                           class="trailer-btn button {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'active-btn' : '' }}"
-                                                           data-film="{{ m.association.id }}">
-                                                            {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
-                                                            {{ trans.title }}
-                                                        </a>
+                                                        {% if m.mediaVideo|is_available_video(true, 'fr') %}
+                                                            <button data-target="fr-{{ film.id }}-{{ m.mediaVideo.id }}"
+                                                                    class="button">
+                                                                {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
+                                                                {{ trans.title }} (FR)
+                                                            </button>
+                                                        {% endif %}
+                                                        {% if m.mediaVideo|is_available_video(true, 'en') %}
+                                                            <button data-target="en-{{ film.id }}-{{ m.mediaVideo.id }}"
+                                                                    class="button">
+                                                                {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
+                                                                {{ trans.title }} (EN)
+                                                            </button>
+                                                        {% endif %}
                                                     {% endif %}
-                                                {% endfor %}
-                                            </div>
+                                                </div>
+                                            {% endfor %}
 
                                         </div>
                                     {% endif %}
