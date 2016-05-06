@@ -41,6 +41,15 @@
 
         <div class="wrapper">
             {% for k,s in pressDownloads %}
+                {% set slugSplit = s.section|trans_fallback('slug')|split('-', 2) %}
+                {% set slugSection = "" %}
+                {% if attribute(slugSplit, 0) == "dossier" %}
+                    {% set slugSection = "dossier-presse" %}
+                {% elseif attribute(slugSplit, 0) == "signatures" %}
+                    {% set slugSection = "signature" %}
+                {% else %}
+                    {% set slugSection = s.section|trans_fallback('slug') %}
+                {% endif %}
                 {% set sectionClass = "default" %}
                 {% set sectionId = "default" %}
                 {% if 'affiche' in s.section.findTranslationByLocale('fr').title|lower %}
@@ -59,7 +68,7 @@
                     {% set sectionClass = "dossier block" %}
                     {% set sectionId = "dossier-presse" %}
                 {% endif %}
-                <div class="{{ sectionClass }}" id="{{ sectionId }}">
+                <div class="{{ sectionClass }}" id="{{ slugSection }}">
                     <div class="container">
                         {% if sectionId != "photos-institutionnelles" %}
                             <h3 class="title-press">{{ s.section|trans_fallback('title') }}</h3>
