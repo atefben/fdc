@@ -465,3 +465,7 @@
 .contain-participate .contain-infos .text-manual ul {
     margin: 10px 0 10px 0;
 }
+
+.displaynotcmn {
+    display:none;
+}
