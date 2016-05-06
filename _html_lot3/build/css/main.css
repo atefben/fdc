@@ -5417,6 +5417,7 @@ video {
   transition: .5s;
 }
 .block-search .more-search {
+  display: none;
   border: 1px solid #f4f4f4;
   border-top: 0px solid #000;
   border-right: 0px solid #000;
@@ -5424,6 +5425,9 @@ video {
   /* Aspect général de la coche */
   /* Aspect si "pas cochée" */
   /* Aspect si "cochée" */
+}
+.block-search .more-search.active {
+  display: table;
 }
 .block-search .more-search td {
   width: 50%;

@@ -94,6 +94,7 @@ $(document).ready(function() {
 
   if($('.media-library').length) {
     owInitSliderSelect('timelapse');
+    owInitSliderSelect('tab-selection'); 
 
     var grid = owInitGrid('isotope-03');
 

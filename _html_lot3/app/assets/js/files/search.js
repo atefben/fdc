@@ -27,17 +27,19 @@ var owInitSliderSelect = function(id) {
     var $tab = $('.icon-s');
 
     $tab.on('click', function(){
-      var input = $('input');
-      var input = $(this).find(input);
+      var input = $(this).find('input');
 
-      console.log(input.checked);
-
-      if(input.checked){
-        input.checked = false;
+      if(input[0].checked){
+        input[0].checked = false;
         $(this).removeClass('active');
       }else{
-        input.checked = true;
+        $('.more-search').addClass('active');
+        input[0].checked = true;
         $(this).addClass('active');
+      }
+
+      if(!$('.tabs-two .icon-s').hasClass('active')){
+        $('.more-search').removeClass('active');
       }
 
     });

@@ -1480,10 +1480,15 @@
   }
 
   .more-search {
+    display: none;
     border:1px solid #f4f4f4;
     border-top: 0px solid #000;
     border-right: 0px solid #000;
     width: 100%;
+
+    &.active {
+      display: table;
+    }
 
     td {
       width: 50%;
