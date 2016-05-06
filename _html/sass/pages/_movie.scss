@@ -1099,7 +1099,8 @@
 
       .owl-item {
         opacity: 1;
-
+        min-height: 380px;
+      
         .slide {
           &.compat-object-fit {
             background-size: cover;
