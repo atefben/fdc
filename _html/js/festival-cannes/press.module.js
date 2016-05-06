@@ -1079,8 +1079,6 @@ $(document).ready(function () {
     if (!$('.lock').length) {
       if ($('.popin-download-press').length) {
 
-      alert('test');
-
         $('.buttons button[data-target]').on('touchstart click', function (e) {
           e.stopPropagation();
           e.preventDefault();
