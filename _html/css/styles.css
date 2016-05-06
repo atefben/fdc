@@ -17860,6 +17860,7 @@ input[type=submit] {
 }
 .press .affiche .buttons .button {
   border-color: #c8a461;
+  border-right: 2px solid #c8a461;
   position: relative;
 }
 .press .affiche .caption {
@@ -17970,6 +17971,7 @@ input[type=submit] {
   border-color: #b0b0b0;
   color: #b0b0b0;
   pointer-events: none;
+  border-right: 2px solid #b0b0b0;
 }
 .press.lock .fc-event.private {
   display: none;
@@ -19902,7 +19904,7 @@ input[type=submit] {
 .press-media .nav-container .table .line .container .contain .contain-buttons .buttons .button {
   margin: 2px;
   float: none;
-  border-right: 2px solid #dfdfdf;
+  border-right: 1px solid;
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons:first-child {
   margin-right: 78px;

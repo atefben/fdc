@@ -217,7 +217,7 @@ $(document).ready(function() {
     });
 
     // previous and next
-    $('body').on('click', '.single-movie .nav', function(e) {
+    /*$('body').on('click', '.single-movie .nav', function(e) {
       e.preventDefault();
 
       var $that = $(this);
@@ -238,7 +238,7 @@ $(document).ready(function() {
 
       // remove timeout once on server. only for animation.
 
-      setTimeout(function() {
+      /*setTimeout(function() {
         $('html, body').animate({
           scrollTop: 0
         }, 0);
@@ -266,7 +266,7 @@ $(document).ready(function() {
           }, 800);
         });
       }, 2000);
-    });
+    });*/
 
   }
 

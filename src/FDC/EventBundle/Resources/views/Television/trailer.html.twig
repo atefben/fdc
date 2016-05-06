@@ -80,7 +80,7 @@
                             <h4 class="rubric-film">{{ film.selectionSection|trans_fallback('name') }}</h4>
                             <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}" class="name-video">
                                 {{ film.titleVo }}
-                                {% set transTitle = film|trans_fallback('title') %}
+                                {% set transTitle = film|trans_fallback_movie('title') %}
                                 {% if transTitle|trim and transTitle|trim != film.titleVo|trim %}
                                     <br/><span class="translated-title">({{ transTitle }})</span>
                                 {% endif %}

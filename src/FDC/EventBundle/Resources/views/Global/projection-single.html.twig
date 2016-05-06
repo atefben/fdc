@@ -30,9 +30,9 @@
                             {%- endif -%}
                         </div>
                         {%- set secondTitle = null -%}
-                        {%- if film|trans_fallback('title') is not empty -%}
+                        {%- if film|trans_fallback_movie('title') is not empty and film|trans_fallback_movie('tile') != film.titleVO -%}
                             {%- set mainTitle = film.titleVO -%}
-                            {%- set secondTitle = film|trans_fallback('title') -%}
+                            {%- set secondTitle = film|trans_fallback_movie('title') -%}
                         {%- else -%}
                             {%- set mainTitle = film.titleVO -%}
                         {%- endif -%}
