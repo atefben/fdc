@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="trailer">
-        {% if movie.videoMain is not null %}
+        {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
         <div class="video-container state-init video"
              data-file='[{"file":"{{ s3_server_video ~ movie.videoMain|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ movie.videoMain|trans_fallback('mp4Url') }}"}]'
              data-vid="{{ movie.videoMain.id }}"
@@ -47,7 +47,7 @@
 </div>
 <div class="container container-top">
     {% set hasVideo = false %}
-    {% if movie.videoMain is not null %}
+    {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
         {% set hasVideo = true %}
     {% endif %}
 

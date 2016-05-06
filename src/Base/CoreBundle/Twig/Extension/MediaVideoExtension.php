@@ -60,6 +60,21 @@ class MediaVideoExtension extends Twig_Extension
         if ($video instanceof MediaVideo) {
             $trans = $video->findTranslationByLocale($locale);
             $fr = $video->findTranslationByLocale('fr');
+
+            if (!$fr || $fr->getStatus() !== MediaVideoTranslation::STATUS_PUBLISHED) {
+                return false;
+            }
+
+            if ($fr && !$force) {
+                $status = $fr->getStatus() === MediaVideoTranslation::STATUS_PUBLISHED;
+                $encoded = $fr->getJobWebmState() == MediaVideoTranslation::ENCODING_STATE_READY;
+                $encoded = $encoded  && $fr->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
+                $hasURL = $fr->getWebmUrl() && $fr->getMp4Url();
+                if ($status && $encoded && $hasURL) {
+                    return true;
+                }
+            }
+
             if ($trans) {
                 if ($locale == 'fr') {
                     $status = $trans->getStatus() === MediaVideoTranslation::STATUS_PUBLISHED;
@@ -75,15 +90,6 @@ class MediaVideoExtension extends Twig_Extension
                 }
             }
 
-            if ($fr && !$force) {
-                $status = $fr->getStatus() === MediaVideoTranslation::STATUS_PUBLISHED;
-                $encoded = $fr->getJobWebmState() == MediaVideoTranslation::ENCODING_STATE_READY;
-                $encoded = $encoded  && $fr->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
-                $hasURL = $fr->getWebmUrl() && $fr->getMp4Url();
-                if ($status && $encoded && $hasURL) {
-                    return true;
-                }
-            }
         }
     }
 
