@@ -106,7 +106,7 @@ $(document).ready(function () {
       } else {
         $('#timeline a.active').removeClass('hideB');
       }
-      
+
       if (!$('#timeline').hasClass('max')) {
         count++;
       }
@@ -137,7 +137,7 @@ $(document).ready(function () {
       url: url,
       success: function (data) {
         $('.popin-event').remove();
-        
+
         // display the html
         if($('#calendar-programmation').length) {
           $('#calendar-programmation').append(data);
@@ -698,7 +698,7 @@ $(document).ready(function () {
         }).on('touchstart click', '.event .add', function(e) {
           e.stopPropagation();
           e.preventDefault();
-          
+
           var $ev = $(this).parent().find('.fc-event');
 
           $('#calendar-wrapper').removeClass('drag');
@@ -1077,7 +1077,7 @@ $(document).ready(function () {
     //FOR ALL PRESS PAGE//
     if (!$('.lock').length) {
       if ($('.popin-download-press').length) {
-        $('.buttons').on('click', function () {
+        $('.buttons button[data-target]').on('click', function () {
           if ($('.popin-download-press').hasClass('visible-popin')) {
             $('.popin-download-press').removeClass('visible-popin');
             $("#main").removeClass('overlay-popin');
@@ -1287,7 +1287,7 @@ $(document).ready(function () {
   function ajaxEvent() {
     $('.press-media .nav-mediapress td').on('click', function (e) {
       e.preventDefault();
-      
+
       if ($(this).is(':not(.active)')) {
         var urlPath = $(this).data('cat');
 
@@ -1303,7 +1303,7 @@ $(document).ready(function () {
           initSlideshows();
           popinInit();
         });
-        
+
         $('.press-media .nav-mediapress').find('td.active').removeClass('active');
         $(this).addClass('active');
       }
@@ -1540,7 +1540,7 @@ $(document).ready(function () {
         $(this).addClass('disabled');
       }
     });
-    
+
     $('#category .select span').each(function() {
       var filterselect = $(this).attr('data-filter');
       if(filterselect == 'all') {
