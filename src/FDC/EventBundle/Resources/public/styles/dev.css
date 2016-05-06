@@ -469,3 +469,10 @@
 .displaynotcmn {
     display:none;
 }
+
+.participate .item-manual .text-manual h5 {
+    font-size: .75rem;
+    text-transform: uppercase;
+    font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+    padding-bottom: 29px;
+}
