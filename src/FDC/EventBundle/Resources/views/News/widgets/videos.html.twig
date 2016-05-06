@@ -11,18 +11,23 @@
     {% set transImage = film.video.image.findTranslationByLocale(app.request.locale) %}
     {% if transImage is null %}
         {% set transImage = film.video.image.findTranslationByLocale('fr') %}
+        {% set video_image = path transImage.file, '1280x808' %}
     {% endif %}
+{% endif %}
+{% if film.video.image is null and film.video.imageAmazonUrl is not null %}
+    {% set video_image = s3_server_video ~ trans.imageAmazonUrl %}
 {% endif %}
 {% if transVideo is defined and transVideo is not null and transVideo.jobWebmState == 3 and transVideo.jobMp4State == 3 %}
 <div>
     <div class="video">
         <video preload muted>
             {% if transVideo is defined and transVideo is not null %}
-                <source src="{% path transVideo.file , 'reference' %}" type="video/webm">
+                <source src="{{ s3_server_video ~ transVideo.mp4Url }}" type="video/mp4">
+                <source src="{{ s3_server_video ~ transVideo.webmUrl }}" type="video/webm">
             {% endif %}
         </video>
         {% if transImage is defined and transImage is not null %}
-            <div class="img" style="background-image:url({% path transImage.file, '1280x808' %})"></div>
+            <div class="img" style="background-image:url({{ video_image }})"></div>
         {% endif %}
     </div>
     <div class="textVideo">
