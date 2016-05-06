@@ -1076,7 +1076,7 @@ $(document).ready(function () {
 
     //FOR ALL PRESS PAGE//
     if (!$('.lock').length) {
-      if ($('.popin-download-press').length) {        
+      if ($('.popin-download-press').length) {
         $('.buttons button[data-target]').on('touchstart click', function (e) {
           e.stopPropagation();
           e.preventDefault();
@@ -1308,7 +1308,8 @@ $(document).ready(function () {
           ajaxEvent();
           menuMedia();
           initSlideshows();
-          popinInit();
+
+          setTimeout(function(){ popinInit(); }, 500);
         });
 
         $('.press-media .nav-mediapress').find('td.active').removeClass('active');
