@@ -87,7 +87,7 @@ class MediaVideoRepository extends TranslationRepository
 
         $qb
             ->orderBy('f.titleVO', 'desc')
-            ->orderBy('mv.publishedAt', 'desc')
+            ->addOrderBy('mv.publishedAt', 'desc')
             ->groupBy('film_id')
         ;
 

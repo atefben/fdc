@@ -126,6 +126,7 @@ class FilmFilmRepository extends EntityRepository
         $qb
             ->where('f.id  IN (:ids)')
             ->setParameter(':ids', $ids)
+            ->orderBy('f.titleVO', 'asc')
         ;
 
         return $qb->getQuery()->getResult();

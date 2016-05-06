@@ -371,9 +371,10 @@ class TelevisionController extends Controller
             ->getLastMediaVideoTrailerOfEachFilmFilm($festival, $locale, null, $sectionSection)
         ;
 
-        $groups = array();
+
+        $temp = array();
         foreach ($filmsTrailers as $filmTrailer) {
-            $groups[$filmTrailer['film_id']] = array(
+            $temp[$filmTrailer['film_id']] = array(
                 'video' => $filmTrailer['lastVideo'],
             );
         }
@@ -381,11 +382,13 @@ class TelevisionController extends Controller
         $films = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmFilm')
-            ->getFilmsByIds(array_keys($groups))
+            ->getFilmsByIds(array_keys($temp))
         ;
 
-        foreach ($films as $film) {
-            $groups[$film->getId()]['film'] = $film;
+        $groups = array();
+        foreach ($films as $key => $film) {
+            $groups[$key]['film'] = $film;
+            $groups[$key]['video'] = $temp[$film->getId()]['video'];
         }
 
         return array(
