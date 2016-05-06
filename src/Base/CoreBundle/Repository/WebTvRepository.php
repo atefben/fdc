@@ -36,7 +36,7 @@ class WebTvRepository extends TranslationRepository
         ;
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival);
-        $qb = $this->addTranslationQueries($qb, 'mvt', 'fr');
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
 
         $qb = $qb->andWhere('mv.displayedMobile = :displayed_mobile')
             ->setParameter('displayedWebTv', true)
@@ -66,7 +66,7 @@ class WebTvRepository extends TranslationRepository
         ;
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival);
-        $qb = $this->addTranslationQueries($qb, 'mvt', 'fr');
+        $qb = $this->addTranslationQueries($qb, 'mvt', $locale);
 
         $qb = $qb->andWhere('mv.displayedMobile = :displayed_mobile')
             ->andWhere('mv.id = :id')
@@ -121,8 +121,8 @@ class WebTvRepository extends TranslationRepository
 
         $this->addMasterQueries($qb, 'wt', $festival, false);
         $this->addMasterQueries($qb, 'mv', $festival, true);
-        $this->addTranslationQueries($qb, 'wtt', 'fr');
-        $this->addTranslationQueries($qb, 'mvt', 'fr', null, true);
+        $this->addTranslationQueries($qb, 'wtt', $locale);
+        $this->addTranslationQueries($qb, 'mvt', $locale, null, true);
         $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         if ($notIn) {
@@ -182,8 +182,8 @@ class WebTvRepository extends TranslationRepository
             ;
         }
 
-        $this->addTranslationQueries($qb, 'wtt', 'fr');
-        $this->addTranslationQueries($qb, 'mvt', 'fr');
+        $this->addTranslationQueries($qb, 'wtt', $locale);
+        $this->addTranslationQueries($qb, 'mvt', $locale);
         $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb

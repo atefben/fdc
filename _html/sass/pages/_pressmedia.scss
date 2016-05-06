@@ -75,12 +75,12 @@
 
         .button,
         .active-btn .button {
-          border-color: $gold;
+          border-color: $gold !important;
           position: relative;
 
           &:hover {
             background-color: $gold;
-            border-color: $gold;
+            border-color: $gold !important;
             color: #fff;
           }
         }

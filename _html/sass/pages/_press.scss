@@ -1339,6 +1339,7 @@
 
       .button {
         border-color: $gold;
+        border-right: 2px solid $gold;
         position: relative;
       }
     }
@@ -1469,6 +1470,7 @@
       border-color: #b0b0b0;
       color: #b0b0b0;
       pointer-events: none;
+      border-right: 2px solid #b0b0b0;
     }
 
     .fc-event.private {
