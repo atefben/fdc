@@ -14,14 +14,14 @@
     {% endif %}
 {% endif %}
 {% if film.video.image is null and film.video.imageAmazonUrl is not null %}
-    {% set videoAmazon = s3_server_video ~ trans.imageAmazonUrl %}
+    {% set videoAmazon = s3_server_video ~ film.video.imageAmazonUrl %}
 {% endif %}
 {% if transVideo is defined and transVideo is not null and transVideo.jobWebmState == 3 and transVideo.jobMp4State == 3 %}
 <div>
     <div class="video">
         <video preload muted>
             {% if transVideo is defined and transVideo is not null %}
-                <source src="{{ s3_server_video ~ transVideo.mp4Url }}" type="video/mp4">
+                <source src="{{ s3_server_video ~ transVideo.mp4Url }}">
                 <source src="{{ s3_server_video ~ transVideo.webmUrl }}" type="video/webm">
             {% endif %}
         </video>
