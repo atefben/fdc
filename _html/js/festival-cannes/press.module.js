@@ -1108,7 +1108,7 @@ $(document).ready(function () {
             if ($isPopin.length || isButton) {
               //do nothing
             } else {
-              $('#popin-download-press').removeClass('visible-popin');
+              $('.popin-download-press').removeClass('visible-popin');
               $("#main").removeClass('overlay-popin');
               $('footer').removeClass('overlay');
             }
