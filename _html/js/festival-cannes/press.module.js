@@ -1029,6 +1029,9 @@ $(document).ready(function () {
     //ONLY FOR MEDIA//
     if ($('.press.lock').length && !$('.connected').length && $('.press-media').length ) {
       if ($('.popin-download-press').length) {
+
+        alert('test');
+        
         $('.buttons.active-btn button').on('touchstart click', function (e) {
           e.stopPropagation();
           e.preventDefault();
@@ -1308,8 +1311,7 @@ $(document).ready(function () {
           ajaxEvent();
           menuMedia();
           initSlideshows();
-
-          setTimeout(function(){ popinInit(); }, 500);
+          popinInit();
         });
 
         $('.press-media .nav-mediapress').find('td.active').removeClass('active');
