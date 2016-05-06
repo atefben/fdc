@@ -705,7 +705,7 @@
   }
 
   article {
-    height: 450px;
+    min-height: 500px;
     box-sizing: border-box;
     float: none;
     padding-left: 0px;
@@ -715,7 +715,7 @@
     float: left;
 
     &.video {
-      max-width: 630px;
+      max-width: 628px;
     }
   }
 
