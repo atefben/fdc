@@ -370,9 +370,9 @@ class NewsController extends Controller
             }
             if (!in_array($statement->getTheme()->getSlug(), $themes)) {
                 $filters['themes'][$i]['id'] = $statement->getTheme()->getId();
-                $filters['themes'][$i]['content'] = $statement->getTheme()->getName();
+                $filters['themes'][$i]['content'] = ($statement->getTheme()->findTranslationByLocale($locale)->getName()) ? $statement->getTheme()->findTranslationByLocale($locale)->getName() : $statement->getTheme()->findTranslationByLocale('fr')->getName() ;
 
-                $themes[] = $statement->getTheme()->getSlug();
+                $themes[] = ($statement->getTheme()->findTranslationByLocale($locale)->getSlug()) ? $statement->getTheme()->findTranslationByLocale($locale)->getSlug() : $statement->getTheme()->findTranslationByLocale('fr')->getSlug();
             }
             $i++;
             $ii++;

@@ -34,7 +34,7 @@
         <span class="label">{{ 'press.actu.filter.label.themes'|trans }} :</span>
         <span class="select">
             {% for key, theme in filters.themes %}
-                <span class="{% if key == 0 %}active{% endif %}" data-filter="{% if key != 0 %}theme-{% endif %}{{ theme.id }}">{{ theme|trans_fallback('content') }}</span>
+                <span class="{% if key == 0 %}active{% endif %}" data-filter="{% if key != 0 %}theme-{% endif %}{{ theme.id }}">{{ theme.content }}</span>
             {% endfor %}
             <i class="icon icon_fleche-down"></i>
         </span>
@@ -44,7 +44,7 @@
         <span class="label">{{ 'press.actu.filter.label.format'|trans }} :</span>
         <span class="select">
             {% for key, format in filters.format %}
-                <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ format.slug }}">{{ format|trans_fallback('content') }}</span>
+                <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ format.slug }}">{{ format.content }}</span>
             {% endfor %}
             <i class="icon icon_fleche-down"></i>
         </span>
