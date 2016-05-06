@@ -18625,6 +18625,7 @@ input[type=submit] {
   height: 75px;
   display: inline-block;
   margin-right: 12px;
+  object-fit: cover;
 }
 .popin-download-press .contain-info-item .contain-text {
   width: 30%;

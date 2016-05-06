@@ -3,7 +3,16 @@ var videoMovie;
 // Single Movie
 // =========================
 $(document).ready(function() {
+  
+  //fix tatiana
   if($('.single-movie').length) {
+    var h = $('.press[data-section]').height();
+    $('.contacts').css('min-height',h);
+  }
+
+  if($('.single-movie').length) {
+
+
 
     var cl = new CanvasLoader('canvasloader');
         cl.setColor('#ceb06e');
