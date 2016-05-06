@@ -18,11 +18,18 @@
 			<div class="dark-container" id="header">
 				<div class="header-container">
 					<div id="logo">
-				        <a href="/"><img src="{% image '@FDCEventBundle/Resources/public/img/palme.svg' %}" alt="Festival de Cannes" class="palm"></a>
-				        <h1><a href="/"><img width="225" src="{% image '@FDCEventBundle/Resources/public/img/logo.svg' %}" alt="Festival de Cannes"></a></h1>
+				        <a href="/">
+							{% image '@FDCEventMobileBundle/Resources/public/img/palme.svg' %}
+								<img src="{{ asset_url }}" alt="Festival de Cannes" class="palm">
+							{% endimage %}
+						</a>
+				        <h1><a href="/">
+							{% image '@FDCEventMobileBundle/Resources/public/img/logo.svg' %}
+								<img width="225" src="{{ asset_url }}" alt="Festival de Cannes"></a>
+							{% endimage %}
+						</h1>
 				        <h2> {% include 'FDCEventMobileBundle:Base:javascript_head.html.twig' %}</h2>
 				    </div>
-
 				</div>
 			</div>
 		    <div class="container">
@@ -51,7 +58,9 @@
 		    <div id="landscape">
 		      <div class="content vCenter">
 		        <div class="vCenterKid">
-		          <img src="img/MobileTurn.svg" alt="">
+					{% image '@FDCEventMobileBundle/Resources/public/img/MobileTurn.svg' %}
+		          <img src="" alt="">
+					{% endimage %}
 		          <p>Tournez votre smartphone pour accéder au site</p>
 		        </div>
 		      </div>

@@ -179,7 +179,120 @@
     </div>
   </div>
 </header>
-  <p>festival de cannes</p>
+<section class="brigth search-page" id="main">
+  <div class="block-search block-01">
+    <form action="">
+      <div class="vFlexAlign">
+        <label for="s-text" class="search-txt vFlexAlign"><i class="icon icon-search"></i><input type="text" placeholder="Entrez votre recherche" name="search" id='s-text'></label>
+        <label for="s-article" class="icon-s vFlexAlign active"><i class="icon icon-article"></i><span class="text">Articles</span><input type="checkbox" name="article" id='s-article' chekced=></label>
+        <label for="s-photo" class="icon-s vFlexAlign"><i class="icon icon-photo"></i><span class="text">Photos</span><input type="checkbox" name="photo" id='s-photo' chekced=></label>
+        <label for="s-video" class="icon-s vFlexAlign"><i class="icon icon-video"></i><span class="text">Vidéos</span><input type="checkbox" name="photo" id='s-video'></label>
+        <label for="s-audio" class="icon-s vFlexAlign"><i class="icon icon-audio"></i><span class="text">Audios</span><input type="checkbox" name="photo" id='s-audio'></label>
+        <label for="s-event" class="icon-s vFlexAlign last"><i class="icon icon-event"></i><span class="text">Évènements</span><input type="checkbox" name="event" id='s-event'></label>
+      </div>
+      <div class="slider-selection">
+        <span id="slider-snap-value-lower" class="number"></span>
+        <div class="container-timelapse">
+          <div class="timelapse" id="timelapse"></div>
+        </div>
+        <span id="slider-snap-value-upper" class="number"></span>
+      </div>
+
+      <div class="tabs-two vFlexAlign">
+        <label for="s-artist" class="icon-s vFlexAlign"><i class="icon icon-user-round"></i><span class="text">Artistes</span><input type="checkbox" name="artist" id='s-artist' chekced=></label>
+        <label for="s-movie" class="icon-s vFlexAlign active last"><i class="icon icon-movie-clap"></i><span class="text">Films</span><input type="checkbox" name="movie" id='s-movie'></label>
+      </div>
+
+      <table class="more-search">
+        <tr>
+          <td>
+            <div class="tab-1 tab">
+
+              <div class="tab-selection">
+                <label for="select-country-1" class="selection">Pays <i class="icon icon-arrow-down"></i></label>
+                <!-- <select name="select-country-1" id="select-country-1">
+                  <option value="fr">France</option>
+                  <option value="eng">Angleterre</option>
+                </select> -->
+              </div>
+
+              <div class="sub-tab">
+                <div class="jobs">
+                  <div class="title-cont">Profession <i class="icon icon-create"></i></div>
+                  <input type="checkbox" name='jobs-1' id="jobs-1"> <label for="jobs-1">job 1</label>
+                  <input type="checkbox" name='jobs-2' id="jobs-2"> <label for="jobs-2">job 2</label>
+                  <input type="checkbox" name='jobs-3' id="jobs-3"> <label for="jobs-3">job 3</label>
+                </div>
+              </div>
+
+              <div class="sub-tab">
+                <div class="type">
+                  <div class="title-cont">Genre <i class="icon icon-create"></i></div>
+                  <input type="checkbox" name='type-1' id="type-1"> <label for="type-1">type 1</label>
+                  <input type="checkbox" name='type-2' id="type-2"> <label for="type-2">type 2</label>
+                  <input type="checkbox" name='type-3' id="type-3"> <label for="type-3">jype 3</label>
+                </div>
+              </div>
+
+            </div>
+          </td>
+          <td>
+            <div class="tab-2 tab">
+
+              <div class="tab-selection">
+                <label for="select-country-2" class="selection">Pays <i class="icon icon-arrow-down"></i></label>
+                <!-- <select name="select-country-2" id="select-country-2">
+                  <option value="fr">France</option>
+                  <option value="eng">Angleterre</option>
+                </select> -->
+              </div>
+
+              <div class="sub-tab">
+                <div class="price">
+                  <div class="title-cont">prix <i class="icon icon-create"></i></div>
+                  <input type="checkbox" name='price-1' id="price-1"> <label for="price-1">Type 1</label>
+                  <input type="checkbox" name='price-2' id="price-2"> <label for="price-2">Type 2</label>
+                  <input type="checkbox" name='price-3' id="price-3"> <label for="price-3">Type 3</label>
+                </div>
+              </div>
+
+              <div class="sub-tab active">
+                <div class="format">
+                  <div class="title-cont">Format <i class="icon icon-minus"></i></div>
+                  <input type="checkbox" name='format-1' id="format-1"> <label for="format-1">Long métrage</label>
+                  <input type="checkbox" name='format-2' id="format-2"> <label for="format-2">Court métrage</label>
+                </div>
+              </div>
+
+              <div class="sub-tab active">
+                <div class="selection">
+                  <div class="title-cont">Sélection <i class="icon icon-minus"></i></div>
+                  <input type="checkbox" name='selection-1' id='selection-1' ><label for="selection-1">Compétition</label>
+                  <input type="checkbox" name='selection-2' id='selection-2' ><label for="selection-2">Un certain regard</label>
+                  <input type="checkbox" name='selection-3' id='selection-3' ><label for="selection-3">Hors Compétition</label>
+                  <input type="checkbox" name='selection-4' id='selection-4' ><label for="selection-4">Scéances spéciales</label>
+                  <input type="checkbox" name='selection-5' id='selection-5' ><label for="selection-5">court métrage</label>
+                  <input type="checkbox" name='selection-6' id='selection-6' ><label for="selection-6">court métrage</label>
+                  <input type="checkbox" name='selection-7' id='selection-7' ><label for="selection-7">Invité d'honneur</label>
+                  <input type="checkbox" name='selection-8' id='selection-8' ><label for="selection-8">Hommages</label>
+                  <input type="checkbox" name='selection-9' id='selection-9' ><label for="selection-9">Copies restaurées</label>
+                  <input type="checkbox" name='selection-10' id='selection-10'><label for="selection-10">World cinema project</label>
+                  <input type="checkbox" name='selection-11' id='selection-11'><label for="selection-11">Documentaires</label>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <div class="buttons-02 buttons-two">
+        <button class="button b-grey"><i class="icon icon-create"></i>recherche orientée</button><!--
+        --><button type="submit" name="submit" class="button button-submit-02"><i class="icon icon-search"></i>lancer la recherche</button>
+      </div>
+
+    </form>
+  </div>
+</section>
 
     <div id="breadcrumb">
     <div class="container block-01">

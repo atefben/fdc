@@ -22,4 +22,21 @@ var owInitAccordion = function(id) {
       }
     });
   }
+
+  if(id = "more-search") {
+    var $title = $('.more-search .sub-tab');
+
+    $title.on('click',function(){
+     var $this = $(this);
+
+      if($this.hasClass('active')){
+        $this.find('.icon').removeClass('icon-minus').addClass('icon-create');
+      }else{
+        $this.find('.icon').addClass('icon-minus').removeClass('icon-create');
+      }
+
+      $this.toggleClass('active');
+
+    });
+  }
 };

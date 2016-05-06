@@ -7,13 +7,13 @@ $(document).ready(function() {
   // overlay on main menu : show submenu and overlay
   if(!$('body').hasClass('mob') &&  !isiPad()) {
     $('.main>li, .user>li').hover(function() {
-      $('#main, footer').addClass('overlay');
-      $('.main>li').not($(this)).addClass('fade');
+      //$('#main, footer').addClass('overlay');
+      //$('.main>li').not($(this)).addClass('fade');
     }, function() {
       if(!$('#selection').hasClass('open') && !$('#searchContainer').hasClass('open')) {
-        $('#main, footer').removeClass('overlay');
+        //$('#main, footer').removeClass('overlay');
       }
-      $('.main li').removeClass('fade');
+      //$('.main li').removeClass('fade');
     });
   }
 
@@ -22,8 +22,8 @@ $(document).ready(function() {
       if($(this).parent().find('ul').length != 0) {
         e.preventDefault();
         if(!isiPad()) {
-          $('#main, footer').addClass('overlay');
-          $('.main>li').not($(this).parent()).addClass('fade');
+          //$('#main, footer').addClass('overlay');
+          //$('.main>li').not($(this).parent()).addClass('fade');
         }
         return false;
       }
