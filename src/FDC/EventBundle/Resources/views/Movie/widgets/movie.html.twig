@@ -29,8 +29,8 @@
                     <span class="date-pres-item">{% for i in 0..2 %}{{ substr[i] }} {% endfor %} </span>
                     <span class="heure-pres-item">{{ projection.startsAt|date('H:i') }}</span>
                 {% endif %}
-                {% if film|trans_fallback('title') is not empty and film|trans_fallback('title') != film.titleVO %}
-                    {% set titleTranslated = film|trans_fallback('title') %}
+                {% if film|trans_fallback_movie('title') is not empty and film|trans_fallback_movie('title') != film.titleVO %}
+                    {% set titleTranslated = film|trans_fallback_movie('title') %}
                 {% endif %}
                 <h3 class="title-item">
                     <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}">
