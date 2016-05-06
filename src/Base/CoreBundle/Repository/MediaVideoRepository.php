@@ -83,6 +83,7 @@ class MediaVideoRepository extends TranslationRepository
         $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addMasterQueries($qb, 'f', $festival, false);
         $this->addTranslationQueries($qb, 'mvt', $locale);
+        //$this->addTranslationQueries($qb, 'mvtfr', 'fr');
         $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb

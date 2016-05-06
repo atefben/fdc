@@ -42,6 +42,7 @@
             <div class="listtrailer grid all-videos">
                 <div id="gridWebtv" class="grid-wrapper">
                     <div class="grid-sizer"></div>
+                    {{ dump(groups) }}
                     {% for group in groups %}
 		                {% if group.video.image|trans_fallback('file') %}
 		                    {% set videoImage = media_public_url(group.video.image|trans_fallback('file'), '640x404') %}
