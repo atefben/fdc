@@ -1030,8 +1030,6 @@ $(document).ready(function () {
     if ($('.press.lock').length && !$('.connected').length && $('.press-media').length ) {
       if ($('.popin-download-press').length) {
 
-        alert('test');
-        
         $('.buttons.active-btn button').on('touchstart click', function (e) {
           e.stopPropagation();
           e.preventDefault();
@@ -1080,6 +1078,9 @@ $(document).ready(function () {
     //FOR ALL PRESS PAGE//
     if (!$('.lock').length) {
       if ($('.popin-download-press').length) {
+
+      alert('test');
+
         $('.buttons button[data-target]').on('touchstart click', function (e) {
           e.stopPropagation();
           e.preventDefault();
