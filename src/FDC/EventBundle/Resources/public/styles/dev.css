@@ -455,6 +455,9 @@
 .webtv #gridChannels {
     background-color: #000;
 }
+.participate .contain-cinema .contain-map p {
+    padding-bottom: 5px;
+}
 
 .contain-participate .contain-infos .text-manual p strong {
     color: #c29f5f;
