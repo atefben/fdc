@@ -42,11 +42,10 @@
                                     film_format: '55x75',
                                     film_attrs: {
                                     class: "film_image",
-                                    'data-object-fit': "cover",
                                     alt: film|trans_fallback('title')?:film.titleVO
                                     },
                                     film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
-                                    film_image_default_attrs: 'class="default_image" data-object-fit="cover" width="55"'
+                                    film_image_default_attrs: 'class="default_image" width="55"'
                                     }) %}
                                     <div class="txt">
                                         <div class="vCenter">
@@ -237,3 +236,18 @@
         </div>
     </div>
 </div>
+
+
+
+{% for k,film in films %}
+    {% for m in film.associatedMediaVideos %}
+        {% if m.mediaVideo and m.mediaVideo.displayedTrailer == 1 %}
+            {% if m.mediaVideo|is_available_video(true, 'fr')  %}
+                {% include 'FDCPressBundle:Media/widgets:trailer.popin.html.twig' with({'film': film, 'video': m.mediaVideo, 'lang': 'fr'}) only %}
+            {% endif %}
+            {% if m.mediaVideo|is_available_video(true, 'en')  %}
+                {% include 'FDCPressBundle:Media/widgets:trailer.popin.html.twig' with({'film': film, 'video': m.mediaVideo, 'lang': 'en'}) only %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}

@@ -31,7 +31,7 @@ class FDCPageWebTvTrailersRepository extends TranslationRepository
         $this->addImageQueries($qb, 'mv', 'mvt');
         $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addMasterQueries($qb, 'f', $festival, false);
-        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addTranslationQueries($qb, 'mvt', 'fr');
         $this->addFDCEventQueries($qb, 'si');
         $this->addAWSVideoEncodersQueries($qb, 'mvt');
 

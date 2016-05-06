@@ -40,7 +40,7 @@
   }
 
   a.bold {
-    font-family: $CamphorBold; 
+    font-family: $CamphorBold;
   }
 
   .title-center {
@@ -389,7 +389,6 @@
 
         .fc-right {
           button {
-            border-right: none;
             border-left: 1px solid #3a3a3a;
           }
         }
@@ -1722,7 +1721,7 @@
     .buttons {
       .create {
         color: $gold;
-        
+
         &:hover {
           background-color: #c8a461;
           border-color: #c8a461;
@@ -1735,12 +1734,12 @@
           vertical-align: middle !important;
         }
       }
-      
-      
+
+
       .export {
         color:$gold;
         border-left: 0px solid #fff;
-        
+
         &:hover {
           background-color: #c8a461;
           border-color: #c8a461;
@@ -1872,7 +1871,7 @@
     box-sizing: border-box;
     float: left;
     width: 325px;
-  
+
     .owl-item img {
       margin: 0 auto;
       width: 222px;
@@ -2031,7 +2030,7 @@
         color: #adadad;
         margin-right: 10px;
       }
-    
+
       .nom-item {
         color: $gold;
       }
@@ -2229,6 +2228,7 @@
       height: 75px;
       display: inline-block;
       margin-right: 12px;
+      object-fit: cover;
     }
 
     .contain-text {
@@ -2355,7 +2355,7 @@
       border-color: $gold;
       padding: 0px 33px;
       text-align: center;
-      
+
       &:hover {
         background-color: $gold;
         color:#fff;

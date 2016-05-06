@@ -138,7 +138,8 @@ class MediaVideoAdmin extends Admin
         ) ? true : false;
 
         $requiredLocales = ($isTranslatorEnEsCh) ? array() : array('fr');
-        $amazonRemoteFileAttrs = ($isTranslatorEnEsCh) ? array('disabled' => 'disabled') : array();
+        $amazonRemoteFileAttrs = array();
+//            $amazonRemoteFileAttrs = ($isTranslatorEnEsCh) ? array('readonly' => 'readonly') : array();
 
         $formMapper
             ->add('translations', 'a2lix_translations', array(
@@ -191,7 +192,8 @@ class MediaVideoAdmin extends Admin
                                 ->setParameter('type', 'video')
                                 ;
                         },
-                        'attr' => $amazonRemoteFileAttrs
+                        'read_only' => true,
+                        'attr' => $amazonRemoteFileAttrs,
                     ),
                     'title'            => array(
                         'label'              => 'form.label_title',

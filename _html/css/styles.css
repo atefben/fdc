@@ -4477,7 +4477,7 @@ header #navigation ul li ul {
   padding-left: 100px;
   position: absolute;
   visibility: hidden;
-  width: 1028px;
+  width: 977px;
   z-index: 15;
   -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -17038,7 +17038,6 @@ input[type=submit] {
   font-size: 0.6em;
 }
 .press #calendar #mycalendar .fc-toolbar .fc-right button {
-  border-right: none;
   border-left: 1px solid #3a3a3a;
 }
 .press #calendar #mycalendar .fc-toolbar h2 {
@@ -18625,6 +18624,7 @@ input[type=submit] {
   height: 75px;
   display: inline-block;
   margin-right: 12px;
+  object-fit: cover;
 }
 .popin-download-press .contain-info-item .contain-text {
   width: 30%;
@@ -19898,11 +19898,11 @@ input[type=submit] {
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons .buttons {
   display: inline-block;
-  margin: 2px 0 2px;
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons .buttons .button {
-  margin: 0px;
+  margin: 2px;
   float: none;
+  border-right: 2px solid #dfdfdf;
 }
 .press-media .nav-container .table .line .container .contain .contain-buttons:first-child {
   margin-right: 78px;

@@ -225,7 +225,7 @@ sonata_media:
 
             formats:
                 45x60: { width: 45, height: 60, quality: 100, constraint: false }
-                mobile: { width: 584 , height: 794 , quality: 100, constraint: false }
+                mobile: { width: 584 , height: 794 , quality: 100 }
                 small:   { width: 187, height: 255, quality: 100, constraint: false }
                 212x134: { width: 212 , height: 134 , quality: 100, constraint: false }
                 293x185: { width: 293 , height: 185 , quality: 100, constraint: false }

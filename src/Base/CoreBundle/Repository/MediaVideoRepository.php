@@ -17,7 +17,7 @@ class MediaVideoRepository extends TranslationRepository
 
         $this->addImageQueries($qb, 'mv', 'mvt');
         $this->addMasterQueries($qb, 'mv', $festival);
-        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addTranslationQueries($qb, 'mvt', 'fr');
         $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         if ($excludeWebTv) {
@@ -49,7 +49,7 @@ class MediaVideoRepository extends TranslationRepository
 
         $this->addImageQueries($qb, 'mv', 'mvt');
         $this->addMasterQueries($qb, 'mv', $festival, true);
-        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addTranslationQueries($qb, 'mvt', 'fr');
         $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
@@ -82,7 +82,7 @@ class MediaVideoRepository extends TranslationRepository
         $this->addImageQueries($qb, 'mv', 'mvt');
         $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addMasterQueries($qb, 'f', $festival, false);
-        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addTranslationQueries($qb, 'mvt', 'fr');
         $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
@@ -118,8 +118,8 @@ class MediaVideoRepository extends TranslationRepository
         $this->addImageQueries($qb, 'mv', 'mvt');
         $this->addMasterQueries($qb, 'mv', $festival, false);
         $this->addMasterQueries($qb, 'wtv', $festival, false);
-        $this->addTranslationQueries($qb, 'mvt', $locale);
-        $this->addTranslationQueries($qb, 'wtvt', $locale);
+        $this->addTranslationQueries($qb, 'mvt', 'fr');
+        $this->addTranslationQueries($qb, 'wtvt', 'fr');
         $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
@@ -148,8 +148,8 @@ class MediaVideoRepository extends TranslationRepository
 
         $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addMasterQueries($qb, 'wtv', $festival, false);
-        $this->addTranslationQueries($qb, 'mvt', $locale);
-        $this->addTranslationQueries($qb, 'wtvt', $locale);
+        $this->addTranslationQueries($qb, 'mvt', 'fr');
+        $this->addTranslationQueries($qb, 'wtvt', 'fr');
         $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
@@ -182,7 +182,7 @@ class MediaVideoRepository extends TranslationRepository
         $this->addImageQueries($qb, 'mv', 'mvt');
         $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addMasterQueries($qb, 'f', $festival, false);
-        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addTranslationQueries($qb, 'mvt', 'fr');
         $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
@@ -210,8 +210,8 @@ class MediaVideoRepository extends TranslationRepository
 
         $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addMasterQueries($qb, 'wtv', $festival, false);
-        $this->addTranslationQueries($qb, 'mvt', $locale, null, true);
-        $this->addTranslationQueries($qb, 'wtvt', $locale);
+        $this->addTranslationQueries($qb, 'mvt', 'fr', null, true);
+        $this->addTranslationQueries($qb, 'wtvt', 'fr');
         $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
