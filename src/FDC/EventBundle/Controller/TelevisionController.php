@@ -116,7 +116,7 @@ class TelevisionController extends Controller
                         $fr = $mediaVideo->findTranslationByLocale('fr');
                         $translation  = $mediaVideo->findTranslationByLocale($locale);
                         $isPublished = $fr && $fr->getStatus() == MediaVideoTranslation::STATUS_PUBLISHED;
-                        if ($isPublished && $locale !== 'fr') {
+                        if ($isPublished) {
                             $isPublished = $isPublished;
                         }
                         $ready = MediaVideoTranslation::ENCODING_STATE_READY;
