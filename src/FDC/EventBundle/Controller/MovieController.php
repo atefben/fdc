@@ -72,7 +72,7 @@ class MovieController extends Controller
         foreach ($movie->getAssociatedNews() as $associatedNews) {
             if ($associatedNews->getNews()) {
                 $article = $associatedNews->getNews();
-                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->getIsPublishedOnFDCEvent()) {
+                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
                     $key = $article->getPublishedAt()->getTimestamp();
                     $articles[$key] = $article;
                 }
@@ -81,7 +81,7 @@ class MovieController extends Controller
         foreach ($movie->getAssociatedInfo() as $associatedInfo) {
             if ($associatedInfo->getInfo()) {
                 $article = $associatedInfo->getInfo();
-                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->getIsPublishedOnFDCEvent()) {
+                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
                     $key = $article->getPublishedAt()->getTimestamp();
                     $articles[$key] = $article;
                 }
@@ -90,7 +90,7 @@ class MovieController extends Controller
         foreach ($movie->getAssociatedStatement() as $associatedStatement) {
             if ($associatedStatement->getStatement()) {
                 $article = $associatedStatement->getStatement();
-                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->getIsPublishedOnFDCEvent()) {
+                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
                     $key = $article->getPublishedAt()->getTimestamp();
                     $articles[$key] = $article;
                 }
