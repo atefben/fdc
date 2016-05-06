@@ -6834,6 +6834,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   font-size: 0.850rem;
   text-align: left;
   width: auto;
+  margin: 5px 0 0 0;
 }
 .video-container .control-bar {
   position: absolute;
@@ -13012,6 +13013,7 @@ input[type=submit] {
   -webkit-appearance: none;
   text-transform: uppercase;
   padding-right: 10px;
+  width: 302px;
 }
 .contact #form .errors {
   border: 1px solid #e93939;
@@ -14452,7 +14454,7 @@ input[type=submit] {
   margin: 10px 0 0 0;
 }
 .webtv-ba-video article {
-  min-height: 500px;
+  min-height: 490px;
   box-sizing: border-box;
   float: none;
   padding-left: 0px;
@@ -14462,7 +14464,7 @@ input[type=submit] {
   float: left;
 }
 .webtv-ba-video article.video {
-  max-width: 628px;
+  max-width: 630px;
 }
 .webtv-ba-video .container-webtv-ba-video {
   width: 977px;
@@ -14487,7 +14489,7 @@ input[type=submit] {
 }
 .webtv-ba-video .video .infos-videos .infos p {
   color: #fff;
-  font-size: 1.125rem;
+  font-size: 0.9rem;
   padding-top: 10px;
   display: block;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
@@ -14660,7 +14662,7 @@ input[type=submit] {
 .webtv-ba-video #content-trailers #slider-trailer .info span {
   color: #ffffff;
   display: block;
-  font-size: 0.88rem;
+  font-size: 0.78rem;
 }
 .webtv-ba-video #content-trailers #slider-trailer .info .category {
   font-size: 0.56rem;
