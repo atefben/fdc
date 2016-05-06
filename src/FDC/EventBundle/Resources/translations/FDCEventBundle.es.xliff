@@ -388,22 +388,22 @@ principalmente con fines promocionales y/o publicitarios, en el marco de nuestra
       </trans-unit>
       <trans-unit id="b8e2e2c8973353b93ac8fcba191233ab7a74813f" resname="filter.type.article">
         <source>filter.type.article</source>
-        <target state="new">filter.type.article</target>
+        <target>Artículos</target>
         <jms:reference-file line="25">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="55cad87b1ef4d997ed6beb08d04386fcf422a6e4" resname="filter.type.audio">
         <source>filter.type.audio</source>
-        <target state="new">filter.type.audio</target>
+        <target>Audio</target>
         <jms:reference-file line="26">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6899c7dd10bcf1934feed138fb86f0bf4d07db91" resname="filter.type.photo">
         <source>filter.type.photo</source>
-        <target state="new">filter.type.photo</target>
+        <target>Fotos</target>
         <jms:reference-file line="28">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3db1f3fa6431613abaf6fbd0d1e5ced5c2a83730" resname="filter.type.video">
         <source>filter.type.video</source>
-        <target state="new">filter.type.video</target>
+        <target>Vídeos</target>
         <jms:reference-file line="27">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="8cafb740b250f3f28bdfd4e95d40f9fbb49d204c" resname="footer.nav.boutique">
