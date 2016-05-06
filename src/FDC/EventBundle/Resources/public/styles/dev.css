@@ -446,3 +446,8 @@
 .single-movie .videos #slider-movie-videos .slide-video:after {
     border:none !important;
 }
+
+.press-media .nav-container .table .line .container .contain .contain-buttons .buttons .button {
+    background: #fff;
+    outline: none;
+}
