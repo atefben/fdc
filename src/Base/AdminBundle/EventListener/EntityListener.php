@@ -21,6 +21,7 @@ use Base\CoreBundle\Entity\FDCPageParticipateSectionWidgetTypetwoTranslation;
 use Base\CoreBundle\Entity\FDCPagePrepareWidgetColumnTranslation;
 use Base\CoreBundle\Entity\FDCPagePrepareWidgetImageTranslation;
 use Base\CoreBundle\Entity\FDCPagePrepareWidgetPictoTranslation;
+use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\FilmFilmTranslation;
 use Base\CoreBundle\Entity\InfoWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
@@ -753,7 +754,8 @@ class EntityListener
         if (method_exists($entity->getTranslatable(), 'setPublishedAt') &&
             method_exists($entity, 'getStatus') && $entity->getStatus() == NewsArticleTranslation::STATUS_PUBLISHED &&
             ($entity->getTranslatable()->getPublishedAt() === null) &&
-            !($entity instanceof FilmFilmTranslation)
+            !($entity instanceof FilmFilmTranslation) &&
+            !($entity instanceof FilmFilm)
         ) {
             $entity->getTranslatable()->setPublishedAt(new DateTime());
             if ($update == true) {
