@@ -116,7 +116,7 @@
                                     film_format: 'tiny',
                                     film_attrs: {
                                     'class': "film_image",
-                                    'alt': ((media.film|trans_fallback('title'))?:media.film.titleVO)
+                                    'alt': media.film.titleVO
                                     },
                                     film_image_default: 'bundles/fdcevent/img/palmares/film_w46.jpg',
                                     film_image_default_attrs: 'class="default_image"'
@@ -125,7 +125,7 @@
                                         <div class="vCenter">
                                             <div class="vCenterKid">
                                                 <p>
-                                                    {{- (media.film|trans_fallback('title'))?:media.film.titleVO -}}
+                                                    {{- media.film.titleVO -}}
                                                     {%- for director in media.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                                                         <a class="director"
                                                            href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{- director.fullName -}}</a>
