@@ -1,10 +1,5 @@
 $(document).ready(function() {
-
   if($('.home').length) {
-
-  // Prefooter
-  // =========================
-
     // show image on mouseover
     $('#prefooter ul a').on('mouseover', function(e) {
       e.preventDefault();
@@ -14,7 +9,6 @@ $(document).ready(function() {
 
       $(this).addClass('active');
       sliderPrefooter.trigger('to.owl.carousel', [i, 900, true]);
-      
     });
 
     if ($("#slider-prefooter").length > 0) {
@@ -29,9 +23,7 @@ $(document).ready(function() {
         touchDrag: false,
         mouseDrag: false
       });
-
       sliderPrefooter.owlCarousel();
     }
   }
-
 });

@@ -1,12 +1,7 @@
 $(document).ready(function() {
-
   if($('.home').length) {
-
-    // Slider Home
-    // =========================
-    var time = 7;
-
-    var $progressBar,
+    var time = 7,
+        $progressBar,
         $bar,
         sliderHome,
         isPause,
@@ -46,11 +41,12 @@ $(document).ready(function() {
       });
     }
 
-    function progressBar(){
+    function progressBar() {
       // build progress bar elements
       buildProgressBar();
-
-      positionElements();
+      if(!isIE() && !isFF()) {
+        positionElements();
+      }
 
       // start counting
       start();
@@ -72,12 +68,12 @@ $(document).ready(function() {
       });
     }
 
-    function buildProgressBar(){
-      $progressBar = $("<div>",{
+    function buildProgressBar() {
+      $progressBar = $("<div>", {
           id:"progressBar"
       });
 
-      $bar = $("<div>",{
+      $bar = $("<div>", {
           id:"bar"
       });
 
@@ -94,7 +90,7 @@ $(document).ready(function() {
     };
 
     function interval() {
-      if(isPause === false){
+      if(isPause === false) {
         percentTime += 1 / time;
 
         $bar.css({
@@ -102,10 +98,10 @@ $(document).ready(function() {
         });
 
         // if percentTime is equal or greater than 100
-        if(percentTime >= 100){
+        if(percentTime >= 100) {
           // slide to next item
-
           clearTimeout(tick);
+
           $bar.css({
             float: 'right',
             width: 0,
@@ -120,13 +116,13 @@ $(document).ready(function() {
     }
 
     // pause while dragging
-    function pauseOnDragging(){
+    function pauseOnDragging() {
       isPause = true;
     }
 
     $('body').on('click', '.owl-nav div', function(e) {
       var current = $('#slider .owl-dot.active').index(),
-          newP = 0;
+          newP    = 0;
 
       if($(this).hasClass('owl-next')) {
         newP = parseInt(current) + 1;
@@ -147,61 +143,58 @@ $(document).ready(function() {
     });
 
     function move() {
-      var p = ($('#slider .owl-item').width() / 2) - 200;
+      if(!isIE() && !isFF()) {
+        var p = ($('#slider .owl-item').width() / 2) - 200;
+        $('#slider .img-container').addClass('relative');
 
-      $('#slider .img-container').addClass('relative');
-
-      if(deltaTooBig) {
-
-        $('#slider .owl-item').each(function() {
-          $(this).find('.img').css({
-            '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-            '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-            '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-            '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
-            'transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-            'transition': 'all 0 ease'
+        if(deltaTooBig) {
+          $('#slider .owl-item').each(function() {
+            $(this).find('.img').css({
+              '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+              '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+              '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+              '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
+              'transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+              'transition': 'all 0 ease'
+            });
           });
-        });
+        } else {
+          setTimeout(function() {
+            $('#slider .center').prev().find('.img').css({
+              '-webkit-transform': 'translate3d(' + p + 'px, 0px, 0px)',
+              '-moz-transform': 'translate3d(' + p + 'px, 0px, 0px)',
+              '-o-transform': 'translate3d(' + p + 'px, 0px, 0px)',
+              '-ms-transform': 'translateX(' + p+ 'px) translateY(0px)',
+              'transform': 'translate3d(' + p + 'px, 0px, 0px)',
+              'transition': 'all 0.5s ease'
+            });
 
-      } else {
+            $('#slider .center .img').css({
+              '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+              '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+              '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+              '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
+              'transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
+              'transition': 'all 0.7s ease'
+            });
 
-        setTimeout(function() {
-          $('#slider .center').prev().find('.img').css({
-            '-webkit-transform': 'translate3d(' + p + 'px, 0px, 0px)',
-            '-moz-transform': 'translate3d(' + p + 'px, 0px, 0px)',
-            '-o-transform': 'translate3d(' + p + 'px, 0px, 0px)',
-            '-ms-transform': 'translateX(' + p+ 'px) translateY(0px)',
-            'transform': 'translate3d(' + p + 'px, 0px, 0px)',
-            'transition': 'all 0.5s ease'
-          });
-
-          $('#slider .center .img').css({
-            '-webkit-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-            '-moz-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-            '-o-transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-            '-ms-transform': 'translateX(' + 0+ 'px) translateY(0px)',
-            'transform': 'translate3d(' + 0 + 'px, 0px, 0px)',
-            'transition': 'all 0.7s ease'
-          });
-
-          $('#slider .center').next().find('.img').css({
-            '-webkit-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
-            '-moz-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
-            '-o-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
-            '-ms-transform': 'translateX(-' + p+ 'px) translateY(0px)',
-            'transform': 'translate3d(-' + p + 'px, 0px, 0px)',
-            'transition': 'all 0.5s ease'
-          });
-        }, 50);
+            $('#slider .center').next().find('.img').css({
+              '-webkit-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
+              '-moz-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
+              '-o-transform': 'translate3d(-' + p + 'px, 0px, 0px)',
+              '-ms-transform': 'translateX(-' + p+ 'px) translateY(0px)',
+              'transform': 'translate3d(-' + p + 'px, 0px, 0px)',
+              'transition': 'all 0.5s ease'
+            });
+          }, 50);
+        }
       }
     }
 
     // moved callback
-    function moved(){
+    function moved() {
       // clear interval
       clearTimeout(tick);
-
       deltaTooBig = false;
 
       // start again
@@ -217,22 +210,21 @@ $(document).ready(function() {
     }
 
     sliderHome = $("#slider").owlCarousel({
-      items: 2,
-      loop: true,
-      center: true,
-      nav: true,
-      dots: true,
-      onTranslate: move,
-      onInitialized: progressBar,
-      onTranslated: moved,
-      mouseDrag: false,
-      onDrag: pauseOnDragging,
-      navSpeed: 800,
-      dotsSpeed: 800,
-      smartSpeed: 800,
-      autoWidth: true
+      items         : 2,
+      loop          : true,
+      center        : true,
+      nav           : true,
+      dots          : true,
+      onTranslate   : move,
+      onTranslated  : moved,
+      onInitialized : progressBar,
+      mouseDrag     : false,
+      onDrag        : pauseOnDragging,
+      navSpeed      : 800,
+      dotsSpeed     : 800,
+      smartSpeed    : 800,
+      autoWidth     : true
     });
-
     sliderHome.owlCarousel();
 
     if($('.mob').length) {
@@ -241,8 +233,5 @@ $(document).ready(function() {
         sliderHome.trigger('to.owl.carousel', [0, 100, true]);
       }, 100);
     }
-
-
   }
-
 });
