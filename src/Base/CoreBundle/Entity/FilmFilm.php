@@ -362,7 +362,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $minorProductions;
 
     /**
-     * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film", cascade={"persist","merge"})
+     * @ORM\OneToMany(targetEntity="FilmFilmCountry", mappedBy="film", cascade={"all"})
      * @Groups({
      *     "film_list",
      *     "film_show",
