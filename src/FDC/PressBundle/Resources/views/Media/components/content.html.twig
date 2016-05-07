@@ -19,7 +19,10 @@
                         {% endif %}
                     {% endfor %}
                     {% for media in film.medias %}
-                        {% if media.type == 14 %}
+                        {% if media.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER') or
+                            media.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN') or
+                            media.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM')
+                        %}
                             {% set countImage = countImage + 1 %}
                         {% endif %}
                     {% endfor %}
@@ -185,7 +188,47 @@
                                                     <div class="grid-sizer"></div>
 
                                                     {% for key,m in film.medias %}
-                                                        {% if m.type == 14 and m.media is not null %}
+                                                        {% if m.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER') and m.media is not null %}
+                                                            {% set imageTitle = '' %}
+                                                            {% if app.request.locale == 'fr' %}
+                                                                {% set imageTitle = m.media.titleVf %}
+                                                            {% else %}
+                                                                {% set imageTitle = m.media.titleVa %}
+                                                            {% endif %}
+                                                            <div class="item">
+                                                                <a id='photo{{ key }}'
+                                                                   href="{% path m.media.file, 'reference' %}"
+                                                                   class="chocolat-image ajax"
+                                                                   title='<h2>{{ imageTitle }}</h2>'
+                                                                   data-credit="{{ m.media.credits }}">
+                                                                    <img src="{% path m.media.file, '135x145' %}"/>
+                                                                </a>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+
+                                                    {% for key,m in film.medias %}
+                                                        {% if m.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN') and m.media is not null %}
+                                                            {% set imageTitle = '' %}
+                                                            {% if app.request.locale == 'fr' %}
+                                                                {% set imageTitle = m.media.titleVf %}
+                                                            {% else %}
+                                                                {% set imageTitle = m.media.titleVa %}
+                                                            {% endif %}
+                                                            <div class="item">
+                                                                <a id='photo{{ key }}'
+                                                                   href="{% path m.media.file, 'reference' %}"
+                                                                   class="chocolat-image ajax"
+                                                                   title='<h2>{{ imageTitle }}</h2>'
+                                                                   data-credit="{{ m.media.credits }}">
+                                                                    <img src="{% path m.media.file, '135x145' %}"/>
+                                                                </a>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+
+                                                    {% for key,m in film.medias %}
+                                                        {% if m.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM') and m.media is not null %}
                                                             {% set imageTitle = '' %}
                                                             {% if app.request.locale == 'fr' %}
                                                                 {% set imageTitle = m.media.titleVf %}
@@ -207,17 +250,61 @@
                                                     <div class="owl-carousel thumbnails">
 
                                                         {% for key,m in film.medias %}
-                                                            {% if m.type == 14 and m.media is not null %}
+                                                            {% if m.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER') and m.media is not null %}
                                                                 {% set imageTitle = '' %}
                                                                 {% if app.request.locale == 'fr' %}
                                                                     {% set imageTitle = m.media.titleVf %}
                                                                 {% else %}
                                                                     {% set imageTitle = m.media.titleVa %}
                                                                 {% endif %}
-                                                                <div data-id="photo{{ key }}"
-                                                                     class="thumb {% if key == 0 %}active{% endif %}"
-                                                                     data-caption="{{ imageTitle }}">
-                                                                    {% thumbnail m.media.file, 'tiny' %}
+                                                                <div class="item">
+                                                                    <a id='photo{{ key }}'
+                                                                       href="{% path m.media.file, 'reference' %}"
+                                                                       class="chocolat-image ajax"
+                                                                       title='<h2>{{ imageTitle }}</h2>'
+                                                                       data-credit="{{ m.media.credits }}">
+                                                                        <img src="{% path m.media.file, 'tiny' %}"/>
+                                                                    </a>
+                                                                </div>
+                                                            {% endif %}
+                                                        {% endfor %}
+
+                                                        {% for key,m in film.medias %}
+                                                            {% if m.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN') and m.media is not null %}
+                                                                {% set imageTitle = '' %}
+                                                                {% if app.request.locale == 'fr' %}
+                                                                    {% set imageTitle = m.media.titleVf %}
+                                                                {% else %}
+                                                                    {% set imageTitle = m.media.titleVa %}
+                                                                {% endif %}
+                                                                <div class="item">
+                                                                    <a id='photo{{ key }}'
+                                                                       href="{% path m.media.file, 'reference' %}"
+                                                                       class="chocolat-image ajax"
+                                                                       title='<h2>{{ imageTitle }}</h2>'
+                                                                       data-credit="{{ m.media.credits }}">
+                                                                        <img src="{% path m.media.file, 'tiny' %}"/>
+                                                                    </a>
+                                                                </div>
+                                                            {% endif %}
+                                                        {% endfor %}
+
+                                                        {% for key,m in film.medias %}
+                                                            {% if m.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM') and m.media is not null %}
+                                                                {% set imageTitle = '' %}
+                                                                {% if app.request.locale == 'fr' %}
+                                                                    {% set imageTitle = m.media.titleVf %}
+                                                                {% else %}
+                                                                    {% set imageTitle = m.media.titleVa %}
+                                                                {% endif %}
+                                                                <div class="item">
+                                                                    <a id='photo{{ key }}'
+                                                                       href="{% path m.media.file, 'reference' %}"
+                                                                       class="chocolat-image ajax"
+                                                                       title='<h2>{{ imageTitle }}</h2>'
+                                                                       data-credit="{{ m.media.credits }}">
+                                                                        <img src="{% path m.media.file, 'tiny' %}"/>
+                                                                    </a>
                                                                 </div>
                                                             {% endif %}
                                                         {% endfor %}
