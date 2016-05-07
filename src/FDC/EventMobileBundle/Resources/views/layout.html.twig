@@ -36,8 +36,8 @@
 		        <h2 class="title tall">Festival de Cannes 2016</h2>
 		    <section class="legal-notice-container">
 		       <div class="legal-notice-responsable" style="text-align:center">
-				   <h3 class="legal-notice-description">Le site Internet en version mobile sera bientôt disponible.</h3>
-				   <p>En attendant, téléchargez l'application officielle :</p>
+				   <p class="legal-notice-description">{{ 'Le site Internet en version mobile sera bientôt disponible.'|trans }}</p>
+				   <p>{{ 'En attendant, téléchargez l\'application officielle :'|trans }}</p>
 				   <p>&nbsp;</p>
 		           <p> <a href="{{ fdc_app_ios_download_url }}">
                 {% image '@FDCEventBundle/Resources/public/img/appstore.png' %}
@@ -58,10 +58,10 @@
 		    <div id="landscape">
 		      <div class="content vCenter">
 		        <div class="vCenterKid">
-					{% image '@FDCEventMobileBundle/Resources/public/img/MobileTurn.svg' %}
-		          <img src="" alt="">
+					{% image '@FDCEventBundle/Resources/public/img/MobileTurn.svg' %}
+		         	<img src="{{ asset_url }}" alt="">
 					{% endimage %}
-		          <p>Tournez votre smartphone pour accéder au site</p>
+		          <p>{{ 'Tournez votre smartphone pour accéder au site'|trans }}</p>
 		        </div>
 		      </div>
 		    </div>
