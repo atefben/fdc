@@ -201,6 +201,8 @@ class PressHomepage implements TranslateMainInterface
     /**
      * @param $homeMedia
      * @return $this
+     *
+     * @deprecated ?
      */
     public function setHomeMedia($homeMedia)
     {

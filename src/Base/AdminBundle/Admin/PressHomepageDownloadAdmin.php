@@ -45,6 +45,7 @@ class PressHomepageDownloadAdmin extends Admin
                 'help' => 'form.news.helper_download_section',
                 'required' => false,
                 'btn_add' => false,
+                'btn_delete' => false,
                 'label' => 'form.label_download_section'
             ))
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
@@ -63,15 +64,4 @@ class PressHomepageDownloadAdmin extends Admin
             ->add('updatedAt')
         ;
     }
-
-    public function prePersist($homepage)
-    {
-        $this->preUpdate($homepage);
-    }
-
-    public function preUpdate($homepage)
-    {
-        $homepage->setHomeDownload($homepage->getHomeDownload());
-    }
-
 }

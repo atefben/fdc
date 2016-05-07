@@ -47,6 +47,7 @@ class PressHomepageMediaAdmin extends Admin
                 'help' => 'form.news.helper_film_film_associated',
                 'required' => false,
                 'btn_add' => false,
+                'btn_delete' => false,
                 'label' => 'form.label_film'
             ))
             ->add('position','hidden',array('attr'=>array("hidden" => true)))
@@ -64,16 +65,6 @@ class PressHomepageMediaAdmin extends Admin
             ->add('createdAt')
             ->add('updatedAt')
         ;
-    }
-
-    public function prePersist($homepage)
-    {
-        $this->preUpdate($homepage);
-    }
-
-    public function preUpdate($homepage)
-    {
-        $homepage->setHomeMedia($homepage->getHomeMedia());
     }
 
 }

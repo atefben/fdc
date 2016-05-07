@@ -209,10 +209,10 @@ class PressHomepageAdmin extends Admin
                     'sortable'  => 'position'
                 )
             )
+            // cant use by reference => false on this, it doesnt work...
             ->add('homeMedia', 'sonata_type_collection',
                 array(
                     'cascade_validation' => true,
-                    'by_reference' => false,
                     'help' => 'form.press_homepage.helper_media',
                     'label' => 'form.press_homepage.media_film'
                 ),
@@ -276,4 +276,5 @@ class PressHomepageAdmin extends Admin
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
     }
+
 }
