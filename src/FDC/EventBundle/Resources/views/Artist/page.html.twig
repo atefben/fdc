@@ -58,7 +58,7 @@
                             {% else %}
                                 {% if artist.credits != null %}
                                     <img src="{% path artistImage, '640x603' %}" alt="{{ artist.fullName }}"/>
-                                    <p class="caption" id="captionCopyright">{{ '© ' ~  artist.credits }}</p>
+                                    <p class="caption" id="captionCopyright">{{ '© ' ~  copyright }}</p>
                                 {% else %}
                                     <img src="{% path artistImage, '640x603 ' %}" alt="{{ artist.fullName }}"/>
                                 {% endif %}
