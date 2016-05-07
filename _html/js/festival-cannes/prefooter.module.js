@@ -14,6 +14,13 @@ $(document).ready(function() {
 
       $(this).addClass('active');
       sliderPrefooter.trigger('to.owl.carousel', [i, 900, true]);
+      var ua = window.navigator.userAgent;
+      var msie = ua.indexOf("MSIE ");
+      if (msie > 0)
+      {
+        $('#slider-prefooter .imgSlide img').hide();
+        $('#slider-prefooter .active .imgSlide img').show();
+      }
     });
 
     if ($("#slider-prefooter").length > 0) {
