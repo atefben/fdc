@@ -14,11 +14,6 @@ $(document).ready(function() {
 
       $(this).addClass('active');
       sliderPrefooter.trigger('to.owl.carousel', [i, 900, true]);
-      var isIE = (navigator.userAgent.indexOf("MSIE") != -1);
-      if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
-        $('#slider-prefooter .imgSlide img').hide();
-        $('#slider-prefooter .active .imgSlide img').show();
-      }
       
     });
 
