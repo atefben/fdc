@@ -1564,19 +1564,4 @@ $(document).ready(function () {
       }
     });
   }
-
-  $(document).on('click','.section-cat', function(event){
-    var sectionCat = $(this).data('cat');
-    $.ajax({
-      type  : "POST",
-      cache : false,
-      url   : GLOBALS.urls.pressMediaSection,
-      data  : {'id': sectionCat},
-      success: function(data) {
-        $('.nav-container').remove();
-        $('.nav-mediapress').after(data);
-        menuMedia();
-      }
-    });
-  });
 });
