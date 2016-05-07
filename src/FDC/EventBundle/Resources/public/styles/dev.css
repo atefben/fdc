@@ -479,3 +479,8 @@
     font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
     padding-bottom: 29px;
 }
+
+.single-actualite .single-button {
+    text-align: center;
+    display: block;
+}
