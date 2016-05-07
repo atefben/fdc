@@ -27,7 +27,7 @@ class ParticipateController extends Controller
         $locale = $this->getRequest()->getLocale();
 
         // GET PARTICIPATE PAGE
-        $content = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findOneById($this->getParameter('admin_event_fdc_page_prepare_id'));
+        $content = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findOneById($this->getParameter('admin_fdc_page_prepare_id'));
         if ($content === null) {
             throw new NotFoundHttpException();
         }
@@ -41,152 +41,35 @@ class ParticipateController extends Controller
     }
 
     /**
-     * @Route("/festival")
-     * @Template("FDCEventMobileBundle:Participate:festival.html.twig")
+     * @Route("/prepare/{slug}")
+     * @Template("FDCEventMobileBundle:Participate:participate.html.twig")
      * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @param Request $request
+     * @param $slug
+     * @return array
      */
-    public function festivalAction(Request $request)
+    public function getPageAction(Request $request, $slug)
     {
         $this->isPageEnabled($request->get('_route'));
-        $pageContent = "Contenu de la page";
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
+        // GET PARTICIPATE PAGE
+        $page = $em
+            ->getRepository('BaseCoreBundle:FDCPageParticipate')
+            ->getFDCPageParticipateBySlug($slug, $locale);
+
+        if ($page === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $localeSlugs = $page->getLocaleSlugs();
 
         return array(
-            'content' => $pageContent
+            'participatePage' => $page,
+            'localeSlugs' => $localeSlugs
         );
-    }
-
-    /**
-     * @Route("/acces-projection")
-     * @Template("FDCEventMobileBundle:Participate:access.html.twig")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function accessAction(Request $request)
-    {
-        $this->isPageEnabled($request->get('_route'));
-        $pageContent = "Contenu de la page";
-
-        return array(
-            'content' => $pageContent
-        );
-
-    }
-
-    /**
-     * @Route("/partenaires")
-     * @Template("FDCEventMobileBundle:Participate:partners.html.twig")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function partnersAction(Request $request)
-    {
-        $this->isPageEnabled($request->get('_route'));
-        $partners = array(
-            array(
-                'type' => 0,
-                'img' => 'img.jpg',
-                'alt' => 'alt',
-                'title' => 'title',
-                'description' => 'lorem ipsum',
-                'website' => 'http://google.fr',
-                'contact' => 'a.mineau@ohwee.fr',
-                'person_img' => 'img.jpg',
-                'person_name' => 'Lorem Ipsum',
-                'person_title' => 'President'
-            ),
-            array(
-                'type' => 0,
-                'img' => 'img.jpg',
-                'alt' => 'alt',
-                'title' => 'title',
-                'description' => 'lorem ipsum',
-                'website' => 'http://google.fr',
-                'contact' => 'a.mineau@ohwee.fr',
-                'person_img' => 'img.jpg',
-                'person_name' => 'Lorem Ipsum',
-                'person_title' => 'President'
-            ),
-            array(
-                'type' => 0,
-                'img' => 'img.jpg',
-                'alt' => 'alt',
-                'title' => 'title',
-                'description' => 'lorem ipsum',
-                'website' => 'http://google.fr',
-                'contact' => 'a.mineau@ohwee.fr',
-                'person_img' => '',
-                'person_name' => '',
-                'person_title' => ''
-            ),
-            array(
-                'type' => 1,
-                'img' => 'img.jpg',
-                'alt' => 'alt',
-                'title' => 'title',
-                'description' => 'lorem ipsum',
-                'website' => 'http://google.fr',
-                'contact' => 'a.mineau@ohwee.fr',
-                'person_img' => 'img.jpg',
-                'person_name' => 'Lorem Ipsum',
-                'person_title' => ''
-            ),
-            array(
-                'type' => 1,
-                'img' => 'img.jpg',
-                'alt' => 'alt',
-                'title' => 'title',
-                'description' => 'lorem ipsum',
-                'website' => 'http://google.fr',
-                'contact' => 'a.mineau@ohwee.fr',
-                'person_img' => 'img.jpg',
-                'person_name' => 'Lorem Ipsum',
-                'person_title' => 'President'
-            )
-        );
-
-        return array(
-            'partners' => $partners
-        );
-
-    }
-
-    /**
-     * @Route("/fournisseurs")
-     * @Template("FDCEventMobileBundle:Participate:suppliers.html.twig")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function suppliersAction(Request $request)
-    {
-        $this->isPageEnabled($request->get('_route'));
-        $suppliers = array(
-            array(
-                'img' => 'img.jpg',
-                'alt' => 'alt',
-                'title' => 'title',
-                'description' => 'lorem ipsum',
-                'website' => 'http://google.fr',
-                'contact' => 'a.mineau@ohwee.fr'
-            ),
-            array(
-                'img' => 'img.jpg',
-                'alt' => 'alt',
-                'title' => 'title',
-                'description' => 'lorem ipsum',
-                'website' => 'http://google.fr',
-                'contact' => 'a.mineau@ohwee.fr'
-            ),
-            array(
-                'img' => 'img.jpg',
-                'alt' => 'alt',
-                'title' => 'title',
-                'description' => 'lorem ipsum',
-                'website' => '',
-                'contact' => ''
-            ),
-        );
-
-        return array(
-            'suppliers' => $suppliers
-        );
-
     }
 
 }

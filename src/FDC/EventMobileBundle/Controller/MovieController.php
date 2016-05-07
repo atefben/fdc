@@ -2,8 +2,6 @@
 
 namespace FDC\EventMobileBundle\Controller;
 
-use \DateTime;
-
 use Base\CoreBundle\Entity\FDCPageLaSelection;
 use Base\CoreBundle\Entity\FilmProjectionProgrammationFilm;
 use Base\CoreBundle\Entity\NewsArticle;
@@ -12,7 +10,6 @@ use Base\CoreBundle\Entity\NewsFilmFilmAssociated;
 use FDC\EventMobileBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -26,27 +23,32 @@ class MovieController extends Controller
      * @Route("/films/{slug}")
      * @Template("FDCEventMobileBundle:Movie:main.html.twig")
      * @param $slug
+     * @param Request $request
      * @return array
      */
     public function getAction(Request $request, $slug)
     {
         $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
+
         try {
             $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
         } catch (\Exception $e) {
             $isAdmin = false;
         }
+
         // GET MOVIE
         if ($isAdmin) {
             $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
                 'slug' => $slug
-            ));
+            ))
+            ;
         } else {
             $movie = $em->getRepository('BaseCoreBundle:FilmFilm')->findOneBy(array(
-                'slug' => $slug,
+                'slug'     => $slug,
                 'festival' => $this->getFestival()
-            ));
+            ))
+            ;
 
         }
 
@@ -70,7 +72,7 @@ class MovieController extends Controller
         foreach ($movie->getAssociatedNews() as $associatedNews) {
             if ($associatedNews->getNews()) {
                 $article = $associatedNews->getNews();
-                if ($article->getPublishedAt() && $this->isPublished($article, $locale)) {
+                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
                     $key = $article->getPublishedAt()->getTimestamp();
                     $articles[$key] = $article;
                 }
@@ -79,7 +81,7 @@ class MovieController extends Controller
         foreach ($movie->getAssociatedInfo() as $associatedInfo) {
             if ($associatedInfo->getInfo()) {
                 $article = $associatedInfo->getInfo();
-                if ($article->getPublishedAt() && $this->isPublished($article, $locale)) {
+                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
                     $key = $article->getPublishedAt()->getTimestamp();
                     $articles[$key] = $article;
                 }
@@ -88,7 +90,7 @@ class MovieController extends Controller
         foreach ($movie->getAssociatedStatement() as $associatedStatement) {
             if ($associatedStatement->getStatement()) {
                 $article = $associatedStatement->getStatement();
-                if ($article->getPublishedAt() && $this->isPublished($article, $locale)) {
+                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
                     $key = $article->getPublishedAt()->getTimestamp();
                     $articles[$key] = $article;
                 }
@@ -111,8 +113,8 @@ class MovieController extends Controller
                     if (isset($movies[$key - 1])) {
                         $prev = $movies[$key - 1];
                     }
-                    if (isset($movies[$key + 1])) {
-                        $next = $movies[$key + 1];
+                    if (isset($movies[$key])) {
+                        $next = $movies[$key];
                     }
                 }
                 break;
@@ -136,6 +138,7 @@ class MovieController extends Controller
             $nextProjectionDate = $projections[0];
         }
 
+
         return array(
             'movies'   => $movies,
             'movie'    => $movie,
@@ -157,7 +160,7 @@ class MovieController extends Controller
             $fr = $article->findTranslationByLocale($locale);
             $published = NewsArticleTranslation::STATUS_PUBLISHED;
             $translated = NewsArticleTranslation::STATUS_TRANSLATED;
-            if ($fr->getStatus() === $published && $translation->getStatus() === $translated) {
+            if ($fr->getStatus() === $published) {
                 return true;
             }
         }
@@ -165,18 +168,16 @@ class MovieController extends Controller
 
     /**
      * @Route("/selection/{slug}")
-     * @Template("FDCEventMobileBundle:Movie:selection.html.twig")
+     *
      * @param Request $request
      * @param $slug
      * @return array
      */
     public function selectionAction(Request $request, $slug = null)
     {
-        $this->isPageEnabled($request->get('_route'));
         $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
         $festival = $this->getFestival()->getId();
-        $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale);
 
         $this->isPageEnabled($request->get('_route'));
 
@@ -206,16 +207,17 @@ class MovieController extends Controller
                 $next = $selectionTabs[0];
             }
 
+            $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true);
 
             //SEO
             $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
-            return $this->render('FDCEventBundle:Movie:cinema_plage.html.twig', array(
+            return $this->render('FDCEventMobileBundle:Movie:cinema_plage.html.twig', array(
                 'page'           => $page,
                 'projections'    => $projections,
                 'cannesClassics' => $cannesClassics,
                 'selectionTabs'  => $selectionTabs,
-                'next'           => $next
+                'next'           => $next,
             ));
         }
 
@@ -240,7 +242,7 @@ class MovieController extends Controller
                         $page->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
                     }
                     if ($slug) {
-                        return $this->redirectToRoute('fdc_eventmobile_movie_selection', array('slug' => $slug));
+                        return $this->redirectToRoute('fdc_event_movie_selection', array('slug' => $slug));
                     }
                 }
             }
@@ -257,6 +259,8 @@ class MovieController extends Controller
             throw  $this->createNotFoundException('Page Selection not found');
         }
 
+        $localeSlugs = $page->getLocaleSlugs();
+
         $next = false;
         foreach ($pages as $item) {
             if ($next) {
@@ -267,7 +271,19 @@ class MovieController extends Controller
                 $next = true;
             }
         }
-        if (!$next) {
+
+        if ($next === true) {
+            $filters = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true)
+            ;
+            if ($filters) {
+                $next = $filters[0];
+                $nextClassics = true;
+            }
+
+        }
+        if ($pages && (!$next || $next === true)) {
             $next = reset($pages);
         }
 
@@ -279,17 +295,21 @@ class MovieController extends Controller
 
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
-        return array(
-            'selectionTabs' => $pages,
-            'page'          => $page,
-            'movies'        => $movies,
+        $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true);
+
+        return $this->render('FDCEventMobileBundle:Movie:selection.html.twig', array(
             'cannesClassics' => $cannesClassics,
-            'next'          => is_object($next) ? $next : false,
-        );
+            'selectionTabs'  => $pages,
+            'page'           => $page,
+            'movies'         => $movies,
+            'next'           => is_object($next) ? $next : false,
+            'next_classics'  => !empty($nextClassics),
+            'localeSlugs'    => $localeSlugs,
+        ));
     }
 
     /**
-     * @Route("/films/cannes-classics/{slug}")
+     * @Route("/selection/cannes-classics/{slug}")
      * @Template("FDCEventMobileBundle:Movie:classics.html.twig")
      * @param $slug
      * @return array
@@ -305,13 +325,15 @@ class MovieController extends Controller
             throw new NotFoundHttpException('Cannes Classic not found');
         }
 
+        $localeSlugs = $classic->getLocaleSlugs();
+
         $pages = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FDCPageLaSelection')
             ->getPagesOrdoredBySelectionSectionOrder($locale)
         ;
 
-        $filters = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale);
+        $filters = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale,true);
 
         //SEO
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($classic, $locale);
@@ -338,66 +360,8 @@ class MovieController extends Controller
             'filters'        => $filters,
             'selectionTabs'  => $pages,
             'next'           => is_object($next) ? $next : false,
+            'localeSlugs'   => $localeSlugs,
         );
     }
 
-    /**
-     * @Route("/cinema-de-la-plage")
-     * @Template("FDCEventMobileBundle:Movie:cinema_plage.html.twig")
-     * @return array
-     */
-    public function cinemaAction()
-    {
-        $content = array(
-            'description' => 'Les projections du Cinéma de la Plage, qui se jouent chaque soir sous les étoiles, sont ouvertes au public',
-            'film'        => array(
-                array(
-                    'title'          => 'Le grand blond avec une chaussure noire',
-                    'author'         => array(
-                        'fullName' => 'Yves ROBERT'
-                    ),
-                    'releaseDate'    => new \DateTime(),
-                    'projectionDate' => new \DateTime(),
-                    'duration'       => '1h30',
-                    'description'    => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
-                                      son restauré par Diapason en partenariat avec Eclair.',
-                    'image'          => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film_cdp1.jpg'
-                    )
-                ),
-                array(
-                    'title'          => 'Le grand blond avec une chaussure noire',
-                    'author'         => array(
-                        'fullName' => 'Yves ROBERT'
-                    ),
-                    'releaseDate'    => new \DateTime(),
-                    'projectionDate' => new \DateTime(),
-                    'duration'       => '1h30',
-                    'description'    => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
-                                      son restauré par Diapason en partenariat avec Eclair.',
-                    'image'          => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film_cdp1.jpg'
-                    )
-                ),
-                array(
-                    'title'          => 'Le grand blond avec une chaussure noire',
-                    'author'         => array(
-                        'fullName' => 'Yves ROBERT'
-                    ),
-                    'releaseDate'    => new \DateTime(),
-                    'projectionDate' => new \DateTime(),
-                    'duration'       => '1h30',
-                    'description'    => 'Restauration 2K présentée par Gaumont. Travaux image effectués par Eclair,
-                                      son restauré par Diapason en partenariat avec Eclair.',
-                    'image'          => array(
-                        'path' => '//html.festival-cannes-2016.com.ohwee.fr/img/films/cover-film_cdp1.jpg'
-                    )
-                )
-            )
-        );
-
-        return array(
-            'cinemaContent' => $content
-        );
-    }
 }

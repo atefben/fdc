@@ -34,6 +34,11 @@ class AgendaController extends Controller
         $locale = $this->getRequest()->getLocale();
         $isPress = false;
 
+        $waitingPage = $this->isWaitingPage($request);
+        if ($waitingPage) {
+            return $waitingPage;
+        }
+
         if ($request->get('date')) {
            $date = $request->get('date');
         } else {
@@ -71,7 +76,6 @@ class AgendaController extends Controller
                 ->getRepository('BaseCoreBundle:FilmProjection')
                 ->getProjectionsByFestivalAndDateAndRoom($festival, $date, $room->getId(), $isPress)
             ;
-
         }
 
         // get all selections
@@ -93,7 +97,6 @@ class AgendaController extends Controller
 
         $pressProjection = $this->getDoctrineManager()->getRepository('BaseCoreBundle:PressProjection')->findOneById($this->getParameter('admin_press_projection_id'));
 
-//        var_dump($projections);
         return array(
             'pressProjection' => $pressProjection,
             'schedulingDays' => $schedulingDays,
@@ -292,6 +295,5 @@ class AgendaController extends Controller
         return array(
             'rooms' => $rooms
         );
-
     }
 }

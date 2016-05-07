@@ -2,7 +2,6 @@
 
 namespace FDC\EventMobileBundle\Controller;
 
-use Base\CoreBundle\Entity\Homepage;
 use \DateTime;
 
 use Base\CoreBundle\Entity\News;
@@ -33,9 +32,9 @@ class NewsController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $em       = $this->get('doctrine')->getManager();
+        $em = $this->get('doctrine')->getManager();
         $dateTime = new DateTime();
-        $locale   = $request->getLocale();
+        $locale = $request->getLocale();
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -44,26 +43,25 @@ class NewsController extends Controller
         }
 
         // GET HOMEPAGE SETTINGS
-        /** @var Homepage $homepage */
         $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array(
             'festival' => $this->getFestival()
-        ));
+        ))
+        ;
         if ($homepage === null) {
             throw new NotFoundHttpException();
         }
 
-        $festivalStart    = $this->getFestival()->getFestivalStartsAt();
-        $festivalEnd      = $this->getFestival()->getFestivalEndsAt();
-        $festivalInterval = $this->createDateRangeArray($festivalStart->format('Y-m-d'), $festivalEnd->format('Y-m-d'));
+        $festivalStart = $this->getFestival()->getFestivalStartsAt();
+        $festivalEnd = $this->getFestival()->getFestivalEndsAt();
+        $festivalInterval = $this->createDateRangeArrayEvent($festivalStart->format('Y-m-d'), $festivalEnd->format('Y-m-d'));
 
         /////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////      SLIDER      //////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////
 
-        $slides = $em->getRepository('BaseCoreBundle:HomepageSlide')->getAllSlide($locale,$dateTime);
+        $slides = $em->getRepository('BaseCoreBundle:HomepageSlide')->getAllSlide($locale, $dateTime);
 
         $displayHomeSlider = $homepage->getDisplayedSlider();
-
         $homeSlider = array();
         foreach ($slides as $slide) {
             if ($slide->getNews() != null) {
@@ -74,19 +72,43 @@ class NewsController extends Controller
                 $homeSlider[] = $slide->getStatement();
             }
         }
+        ////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////      SOCIAL GRAPH          ///////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+
+        $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array(
+            'festival' => $this->getFestival()
+        ), array(
+            'date' => 'ASC'
+        ), 12, null)
+        ;
+
+        $socialGraphTimeline = array();
+        $socialGraphTimelineCount = array();
+        $socialGraph = array();
+
+        foreach ($timeline as $key => $timelineDate) {
+            $socialGraphTimeline[]['date'] = $timelineDate->getDate();
+            $socialGraphTimelineCount[] = $timelineDate->getCount();
+        }
+
+        $socialGraph['timeline'] = $socialGraphTimeline;
+        $socialGraph['timelineCount'] = json_encode($socialGraphTimelineCount);
 
         ////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////       ARTICLE HOME         ///////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////
 
-        $count        = 7;
+        $count = 7;
         $homeArticles = array();
         if ($homepage->getTopNewsType() == false) {
             $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
         } else {
-            $homeInfos     = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
+            $homeInfos = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
             $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
-            $homeArticles  = array_merge($homeInfos, $homeStatement);
+            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
+
+            $homeArticles = array_merge($homeInfos, $homeStatement, $homeArticles);
         }
 
         $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
@@ -98,21 +120,23 @@ class NewsController extends Controller
             $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
         }
 
-        $countNext        = 2;
-        $endOfArticles    = false;
+        $countNext = 2;
+        $endOfArticles = false;
         $homeArticlesNext = false;
 
         if (sizeof($homeArticles) < $count || $homeArticles == null) {
             $endOfArticles = true;
-            $tmp           = clone $dateTime;
+            $tmp = clone $dateTime;
             if ($homepage->getTopNewsType() == false) {
-                $dateTimeNext     = $tmp->modify('-1 day');
+                $dateTimeNext = $tmp->modify('-1 day');
                 $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
             } else {
-                $dateTimeNext     = $homeArticles[count($homeArticles)-1]->getPublishedAt();
-                $homeInfos        = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
-                $homeStatement    = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
-                $homeArticlesNext = array_merge($homeInfos, $homeStatement);
+                $dateTimeNext = $homeArticles[count($homeArticles) - 1]->getPublishedAt();
+                $homeInfos = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
+                $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
+                $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
+
+                $homeArticlesNext = array_merge($homeInfos, $homeStatement, $homeArticles);
             }
             $homeArticlesNext = $this->removeUnpublishedNewsAudioVideo($homeArticlesNext, $locale, $count);
         }
@@ -122,10 +146,10 @@ class NewsController extends Controller
         }
 
         //set default filters
-        $filters                         = array();
-        $filters['format'][0]            = 'all';
+        $filters = array();
+        $filters['format'][0] = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['id'][0]      = 'all';
+        $filters['themes']['id'][0] = 'all';
 
         foreach ($homeArticles as $key => $homeArticle) {
             $homeArticle->theme = $homeArticle->getTheme();
@@ -136,29 +160,27 @@ class NewsController extends Controller
 
             //check if filters don't already exist
             if (!in_array($homeArticle->getTheme()->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][]      = $homeArticle->getTheme()->getId();
+                $filters['themes']['id'][] = $homeArticle->getTheme()->getId();
                 $filters['themes']['content'][] = $homeArticle->getTheme();
             }
         }
 
         if (!empty($homeArticles)) {
-            $format            = $homeArticles[0]->getTypes();
+            $format = $homeArticles[0]->getTypes();
             $filters['format'] = array_merge($filters['format'], array_values($format));
         }
 
+        $homeArticlesTop = array();
+        $homeArticlesBottom = array();
         //split articles in two array
-        if (count($homeArticles) > 3) {
-            $homeArticles       = $this->partition($homeArticles, 2);
-            $homeArticlesBottom = $homeArticles[1];
-
-            foreach ($homeArticlesBottom as $bottom) {
-                $bottom->double = false;
+        foreach ($homeArticles as $key => $homeArticle) {
+            if ($key < 3) {
+                $homeArticlesTop[$key] = $homeArticle;
             }
-
-            $homeArticles = $homeArticles[0];
-
-        } else {
-            $homeArticlesBottom = null;
+            if ($key >= 3) {
+                $homeArticlesBottom[$key] = $homeArticle;
+                $homeArticlesBottom[$key]->double = false;;
+            }
         }
 
         //get images for slider articles
@@ -168,8 +190,18 @@ class NewsController extends Controller
         /////////////////////////       WEBTV        ///////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////
 
-        $videos   = $homepage->getTopVideosAssociated();
+        $videos = $homepage->getTopVideosAssociated();
         $channels = $homepage->getTopWebTvsAssociated();
+
+        foreach ($channels as $channel) {
+            if ($channel->getAssociation() != null) {
+                $channel->getAssociation()->availableChannels = $this
+                    ->getDoctrineManager()
+                    ->getRepository('BaseCoreBundle:MediaVideo')
+                    ->getAvailableMediaVideosByWebTv($this->getFestival(), $locale, $channel->getAssociation()->getId())
+                ;
+            }
+        }
 
         ////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////       FILMS        ///////////////////////////////////////
@@ -181,62 +213,67 @@ class NewsController extends Controller
         $this->get('base.manager.seo')->setFDCEventPageHomepageSeo($homepage, $locale);
 
         return array(
-            'homepage' => $homepage,
-            'homeArticles' => $homeArticles,
+            'homepage'           => $homepage,
+            'socialGraph'        => $socialGraph,
+            'homeArticles'       => $homeArticlesTop,
             'homeArticlesBottom' => $homeArticlesBottom,
             'homeArticlesSlider' => $homeArticlesSlider,
-            'homeArticlesNext' => $homeArticlesNext,
-            'displayHomeSlider' => $displayHomeSlider,
-            'homeSlider' => $homeSlider,
-            'festivalStart' => strtotime($festivalStart->format('Y-m-d')),
-            'festivalEnd' => strtotime($festivalEnd->format('Y-m-d')),
-            'festivalInterval' => $festivalInterval,
-            'filters' => $filters,
-            'videos' => $videos,
-            'channels' => $channels,
-            'films' => $films,
-            'endOfArticles' => $endOfArticles
+            'homeArticlesNext'   => $homeArticlesNext,
+            'displayHomeSlider'  => $displayHomeSlider,
+            'homeSlider'         => $homeSlider,
+            'festivalStart'      => strtotime($festivalStart->format('Y-m-d')),
+            'festivalEnd'        => strtotime($festivalEnd->format('Y-m-d')),
+            'festivalInterval'   => $festivalInterval,
+            'filters'            => $filters,
+            'videos'             => $videos,
+            'channels'           => $channels,
+            'films'              => $films,
+            'endOfArticles'      => $endOfArticles
         );
     }
 
     /**
      * @Route("/homepage-articles")
      * @Template("FDCEventMobileBundle:News:widgets/article-home-ajax.html.twig")
+     * @param Request $request
      * @return array
      */
     public function getArticlesFromAction(Request $request)
     {
 
-        $timestamp = $request->query->get('timestamp');
-        $nextDay   = $request->query->get('end');
-        $type      = $request->query->get('type');
+        $timestamp = $request->query->get('timestamp') - 1;
+        $nextDay = $request->query->get('end');
+        $type = $request->query->get('type');
 
-        $em     = $this->get('doctrine')->getManager();
-        $locale = $this->getRequest()->getLocale();
+        $em = $this->get('doctrine')->getManager();
+        $locale = $request->getLocale();
 
         // GET HOMEPAGE SETTINGS
         $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array(
             'festival' => $this->getFestival()
-        ));
+        ))
+        ;
 
-        $date      = new DateTime();
-        $dateTime  = $date->setTimestamp($timestamp);
-        $count     = 7;
+        $date = new DateTime();
+        $dateTime = $date->setTimestamp($timestamp);
+        $count = 7;
         $countNext = 2;
 
-        $endOfArticles    = false;
+        $endOfArticles = false;
         $homeArticlesNext = false;
 
         if ($nextDay == 1) {
-            $dateTime     = $dateTime->modify('-1 day');
+            $dateTime = $dateTime->modify('-1 day');
             if ($homepage->getTopNewsType() == false) {
                 $homeArticles = $em->getRepository('BaseCoreBundle:News')->getOlderNewsButSameDay($locale, $this->getFestival()->getId(), $dateTime, $count);
                 $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
             } else {
-                $homeInfos     = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
+                $homeInfos = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
                 $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
-                $homeArticles  = array_merge($homeInfos, $homeStatement);
-                $homeArticles  = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
+                $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
+
+                $homeArticles = array_merge($homeInfos, $homeStatement, $homeArticles);
+                $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
             }
             $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
 
@@ -245,29 +282,25 @@ class NewsController extends Controller
                 $homeArticles = $em->getRepository('BaseCoreBundle:News')->getOlderNewsButSameDay($locale, $this->getFestival()->getId(), $dateTime, $count);
                 $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
             } else {
-                $homeInfos     = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
+                $homeInfos = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
                 $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
-                $homeArticles  = array_merge($homeInfos, $homeStatement);
-                $homeArticles  = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
+                $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
+
+
+                $homeArticles = array_merge($homeInfos, $homeStatement, $homeArticles);
+                $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
             }
         }
 
         if (sizeof($homeArticles) < $count || $homeArticles == null) {
-            $endOfArticles    = true;
+            $endOfArticles = true;
             if ($homepage->getTopNewsType() == false) {
-                $dateTimeNext     = $dateTime->modify('-1 day');
+                $dateTimeNext = $dateTime->modify('-1 day');
                 $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
             } else {
-                if(count($homeArticles) > 0){
-                    $dateTimeNext     = $homeArticles[count($homeArticles)-1]->getPublishedAt();
-                    $homeInfos        = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
-                    $homeStatement    = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
-                    $homeArticlesNext = array_merge($homeInfos, $homeStatement);
-                } else {
-                    $homeArticlesNext = null;
-                }
+                $homeArticlesNext = array();
             }
-            if($homeArticles != null){
+            if ($homeArticles != null) {
                 $homeArticlesNext = $this->removeUnpublishedNewsAudioVideo($homeArticlesNext, $locale, $countNext);
             }
         }
@@ -280,10 +313,10 @@ class NewsController extends Controller
         }
 
         //set default filters
-        $filters                         = array();
-        $filters['format'][0]            = 'all';
+        $filters = array();
+        $filters['format'][0] = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['id'][0]      = 'all';
+        $filters['themes']['id'][0] = 'all';
 
         foreach ($homeArticles as $key => $homeArticle) {
             $homeArticle->theme = $homeArticle->getTheme();
@@ -293,26 +326,26 @@ class NewsController extends Controller
             }
 
             if (!in_array($homeArticle->getTheme()->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][]      = $homeArticle->getTheme()->getId();
+                $filters['themes']['id'][] = $homeArticle->getTheme()->getId();
                 $filters['themes']['content'][] = $homeArticle->getTheme();
             }
         }
 
         if (!empty($homeArticles)) {
-            $format            = $homeArticles[0]->getTypes();
+            $format = $homeArticles[0]->getTypes();
             $filters['format'] = array_merge($filters['format'], array_values($format));
         }
 
-        if(count($homeArticles) > 6){
+        if (count($homeArticles) > 6) {
             unset($homeArticles[6]);
         }
 
         return array(
             'homeArticlesSlider' => $homeArticlesSlider,
-            'endOfArticles' => $endOfArticles,
-            'homeArticles' => $homeArticles,
-            'homeArticlesNext' => $homeArticlesNext,
-            'filters' => $filters
+            'endOfArticles'      => $endOfArticles,
+            'homeArticles'       => $homeArticles,
+            'homeArticlesNext'   => $homeArticlesNext,
+            'filters'            => $filters
         );
     }
 
@@ -326,14 +359,14 @@ class NewsController extends Controller
     {
 
         $this->isPageEnabled($request->get('_route'));
-        $em      = $this->getDoctrine()->getManager();
-        $locale  = $this->getRequest()->getLocale();
+        $em = $this->getDoctrine()->getManager();
+        $locale = $this->getRequest()->getLocale();
+
         try {
             $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
         } catch (\Exception $e) {
             $isAdmin = false;
         }
-
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -366,23 +399,23 @@ class NewsController extends Controller
         $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);
 
         //get associated film to the news
-        $associatedFilm          = null;
+        $associatedFilm = null;
         $associatedProgrammation = null;
-        $associatedFilmDuration  = null;
-        $type                    = null;
+        $associatedFilmDuration = null;
+        $type = null;
         if ($news->getAssociatedFilm() != null) {
-            $associatedFilm          = $news->getAssociatedFilm();
-            $associatedFilmDuration  = date('H:i', mktime(0, $associatedFilm->getDuration()));
+            $associatedFilm = $news->getAssociatedFilm();
+            $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
             $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
-            $type                    = 'film';
+            $type = 'film';
         } elseif ($news->getAssociatedEvent() != null) {
-            $associatedFilm          = $news->getAssociatedEvent()->getAssociatedFilm();
-            $associatedFilmDuration  = date('H:i', mktime(0, $associatedFilm->getDuration()));
+            $associatedFilm = $news->getAssociatedEvent()->getAssociatedFilm();
+            $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
             $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
-            $type                    = 'film';
+            $type = 'film';
         } elseif ($news->getAssociatedProjections() != null) {
             $associatedProgrammation = $news->getAssociatedProjections();
-            $type                    = 'event';
+            $type = 'event';
         }
 
         //get film projection
@@ -397,10 +430,25 @@ class NewsController extends Controller
 
             }
         }
+        $tempProjections = array();
+        $now = new DateTime();
+        if ($programmations) {
+            foreach ($programmations as $item) {
+                if ($item->getStartsAt() && $item->getStartsAt() > $now) {
+                    $tempProjections[$item->getStartsAt()->getTimestamp()] = $item->getStartsAt()->format('Y-m-d');
+                }
+            }
+        }
+        $nextProjectionDate = '';
+        if ($tempProjections) {
+            ksort($tempProjections);
+            $tempProjections = array_values($tempProjections);
+            $nextProjectionDate = $tempProjections[0];
+        }
 
         //get focus articles
         $associatedNews = $news->getAssociatedNews();
-        $focusArticles  = array();
+        $focusArticles = array();
         foreach ($associatedNews as $associatedNew) {
             if ($associatedNew->getAssociation() != null) {
                 $focusArticles[] = $associatedNew->getAssociation();
@@ -408,28 +456,34 @@ class NewsController extends Controller
         }
 
         //get day articles
-        $count    = 3;
-        $newsDate = $news->getPublishedAt();
+        $count = 3;
+        if ($news->getPublishedAt()) {
+            $newsDate = $news->getPublishedAt();
+        } else {
+            $newsDate = new DateTime();
+        }
+
 
         $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
         $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
 
-        $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getOlderNews($locale, $this->getFestival()->getId(), $news->getPublishedAt());
+        $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getOlderNews($locale, $this->getFestival()->getId(), $newsDate);
         $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
 
-        $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getNextNews($locale, $this->getFestival()->getId(), $news->getPublishedAt());
+        $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getNextNews($locale, $this->getFestival()->getId(), $newsDate);
         $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
 
         return array(
-            'localeSlugs' => $localeSlugs,
-            'focusArticles' => $focusArticles,
-            'programmations' => $programmations,
+            'localeSlugs'            => $localeSlugs,
+            'focusArticles'          => $focusArticles,
+            'programmations'         => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,
-            'news' => $news,
-            'prev' => $prevArticlesURL,
-            'next' => $nextArticlesURL,
-            'associatedFilm' => $associatedFilm,
-            'sameDayArticles' => $sameDayArticles
+            'news'                   => $news,
+            'prev'                   => $prevArticlesURL,
+            'next'                   => $nextArticlesURL,
+            'associatedFilm'         => $associatedFilm,
+            'sameDayArticles'        => $sameDayArticles,
+            'nextProjectionDate'     => $nextProjectionDate,
         );
     }
 
@@ -445,7 +499,7 @@ class NewsController extends Controller
 
         $dateTime = new DateTime();
 
-        $em     = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         $locale = $request->getLocale();
 
         // GET FDC SETTINGS
@@ -476,11 +530,11 @@ class NewsController extends Controller
         }
 
         //set default filters
-        $filters                         = array();
-        $filters['dates'][0]             = 'all';
-        $filters['dateFormated'][0]      = 'all';
+        $filters = array();
+        $filters['dates'][0] = 'all';
+        $filters['dateFormated'][0] = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['id'][0]      = 'all';
+        $filters['themes']['id'][0] = 'all';
 
 
         foreach ($newsArticles as $key => $newsArticle) {
@@ -498,7 +552,7 @@ class NewsController extends Controller
                 }
 
                 if (!in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
-                    $filters['themes']['id'][]      = $newsArticle->getTheme()->getId();
+                    $filters['themes']['id'][] = $newsArticle->getTheme()->getId();
                     $filters['themes']['content'][] = $newsArticle->getTheme();
                 }
             } else {
@@ -508,7 +562,7 @@ class NewsController extends Controller
 
         return array(
             'articles' => $newsArticles,
-            'filters' => $filters
+            'filters'  => $filters
         );
     }
 
@@ -524,9 +578,9 @@ class NewsController extends Controller
 
         $this->isPageEnabled($request->get('_route'));
 
-        $em       = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         $dateTime = new DateTime();
-        $locale   = $request->getLocale();
+        $locale = $request->getLocale();
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -552,11 +606,11 @@ class NewsController extends Controller
         $photos = $em->getRepository('BaseCoreBundle:Media')->getImageMedia($locale, $settings->getFestival()->getId(), $dateTime);
 
         //set default filters
-        $filters                         = array();
-        $filters['dates'][0]             = 'all';
-        $filters['dateFormated'][0]      = 'all';
+        $filters = array();
+        $filters['dates'][0] = 'all';
+        $filters['dateFormated'][0] = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['id'][0]      = 'all';
+        $filters['themes']['id'][0] = 'all';
 
         foreach ($photos as $key => $photo) {
             $photo->theme = $photo->getTheme();
@@ -572,13 +626,13 @@ class NewsController extends Controller
             }
 
             if (!in_array($photo->getTheme()->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][]      = $photo->getTheme()->getId();
+                $filters['themes']['id'][] = $photo->getTheme()->getId();
                 $filters['themes']['content'][] = $photo->getTheme();
             }
         }
 
         return array(
-            'photos' => $photos,
+            'photos'  => $photos,
             'filters' => $filters
         );
     }
@@ -592,9 +646,9 @@ class NewsController extends Controller
 
         $this->isPageEnabled($request->get('_route'));
 
-        $em       = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         $dateTime = new DateTime();
-        $locale   = $this->getRequest()->getLocale();
+        $locale = $this->getRequest()->getLocale();
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -614,16 +668,16 @@ class NewsController extends Controller
             $this->createNotFoundException('Page not found');
         }
 
-        // $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
+        $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
 
         //GET ALL MEDIA AUDIOS
         $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $settings->getFestival()->getId(), $dateTime);
 
         //set default filters
-        $filters                         = array();
-        $filters['dates'][0]             = 'all';
+        $filters = array();
+        $filters['dates'][0] = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['slug'][0]    = 'all';
+        $filters['themes']['slug'][0] = 'all';
 
         foreach ($videos as $key => $video) {
             $video->theme = $video->getTheme();
@@ -639,13 +693,13 @@ class NewsController extends Controller
             }
 
             if (!in_array($video->getTheme()->getName(), $filters['themes']['content'])) {
-                $filters['themes']['slug'][]    = $video->getTheme()->getName();
+                $filters['themes']['slug'][] = $video->getTheme()->getName();
                 $filters['themes']['content'][] = $video->getTheme();
             }
         }
 
         return array(
-            'videos' => $videos,
+            'videos'  => $videos,
             'filters' => $filters
         );
 
@@ -660,9 +714,9 @@ class NewsController extends Controller
 
         $this->isPageEnabled($request->get('_route'));
 
-        $em       = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         $dateTime = new DateTime();
-        $locale   = $this->getRequest()->getLocale();
+        $locale = $this->getRequest()->getLocale();
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -682,16 +736,16 @@ class NewsController extends Controller
             $this->createNotFoundException('Page not found');
         }
 
-        // $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
+        $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
 
         //GET ALL MEDIA AUDIOS
         $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $settings->getFestival()->getId(), $dateTime);
 
         //set default filters
-        $filters                         = array();
-        $filters['dates'][0]             = 'all';
+        $filters = array();
+        $filters['dates'][0] = 'all';
         $filters['themes']['content'][0] = 'all';
-        $filters['themes']['slug'][0]    = 'all';
+        $filters['themes']['slug'][0] = 'all';
 
         foreach ($audios as $key => $audio) {
             $audio->theme = $audio->getTheme();
@@ -707,14 +761,14 @@ class NewsController extends Controller
             }
 
             if (!in_array($audio->getTheme()->getName(), $filters['themes']['content'])) {
-                $filters['themes']['slug'][]    = $audio->getTheme()->getName();
+                $filters['themes']['slug'][] = $audio->getTheme()->getName();
                 $filters['themes']['content'][] = $audio->getTheme();
             }
 
         }
 
         return array(
-            'audios' => $audios,
+            'audios'  => $audios,
             'filters' => $filters
         );
     }
@@ -729,39 +783,17 @@ class NewsController extends Controller
      */
     private function partition($list, $p)
     {
-        $listlen   = count($list);
-        $partlen   = floor($listlen / $p);
-        $partrem   = $listlen % $p;
+        $listlen = count($list);
+        $partlen = floor($listlen / $p);
+        $partrem = $listlen % $p;
         $partition = array();
-        $mark      = 0;
+        $mark = 0;
         for ($px = 0; $px < $p; $px++) {
-            $incr           = ($px < $partrem) ? $partlen + 1 : $partlen;
+            $incr = ($px < $partrem) ? $partlen + 1 : $partlen;
             $partition[$px] = array_slice($list, $mark, $incr);
             $mark += $incr;
         }
         return $partition;
     }
 
-
-    /**
-     * retur an array of days
-     *
-     * @param  date $strDateFrom
-     * @param  date $strDateTo
-     * @return array
-     */
-    private function createDateRangeArray($strDateFrom, $strDateTo)
-    {
-        $aryRange  = array();
-        $iDateFrom = mktime(1, 0, 0, substr($strDateFrom, 5, 2), substr($strDateFrom, 8, 2), substr($strDateFrom, 0, 4));
-        $iDateTo   = mktime(1, 0, 0, substr($strDateTo, 5, 2), substr($strDateTo, 8, 2), substr($strDateTo, 0, 4));
-        if ($iDateTo >= $iDateFrom) {
-            array_push($aryRange, date('Y-m-d', $iDateFrom));
-            while ($iDateFrom < $iDateTo) {
-                $iDateFrom += 86400;
-                array_push($aryRange, date('Y-m-d', $iDateFrom));
-            }
-        }
-        return $aryRange;
-    }
 }
