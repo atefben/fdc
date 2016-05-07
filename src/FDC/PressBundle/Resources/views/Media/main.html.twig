@@ -43,8 +43,6 @@
             {% endfor %}
             {{ render(controller('FDCPressBundle:Global:contact')) }}
         </div>
-        <div class="nav-popin">
-            {% include 'FDCPressBundle:Global:components/popinPress.html.twig' %}
-        </div>
+        {% include 'FDCPressBundle:Global:components/popinPress.html.twig' %}
     </div>
 {% endblock body %}
