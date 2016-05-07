@@ -6,13 +6,15 @@ function initParallaxElements() {
 
   if($('.home').length) {
     // home prefooter
-    if ($('#prefooter .owl-item.center .imgSlide img').length) {
-      parallaxElements['prefooter'] = ({
-        'el1': '#prefooter .owl-item.center .imgSlide img',
-        'positionTop': $('#slider-prefooter').offset().top,
-        'division': 2,
-        'mov': 1
-      });
+    if(!isIE() && !isiPad()) {
+      if ($('#prefooter .owl-item.center .imgSlide img').length) {
+        parallaxElements['prefooter'] = ({
+          'el1': '#prefooter .owl-item.center .imgSlide img',
+          'positionTop': $('#slider-prefooter').offset().top,
+          'division': 2,
+          'mov': 1
+        });
+      }
     }
 
     // slider movies home
