@@ -14,8 +14,8 @@ $(document).ready(function() {
 
       $(this).addClass('active');
       sliderPrefooter.trigger('to.owl.carousel', [i, 900, true]);
-      if ( $.browser.msie ) {
-        console.log('test cache');
+      var isIE = (navigator.userAgent.indexOf("MSIE") != -1);
+      if ( isIE) {
         alert('test cache !');
         $('#slider-prefooter .imgSlide img').hide();
         $('#slider-prefooter .active .imgSlide img').show();
