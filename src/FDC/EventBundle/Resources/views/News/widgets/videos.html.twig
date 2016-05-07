@@ -56,8 +56,8 @@
             </div>
         </div>
         <div class="links">
-            <a href="" class="seances"><i class="icon icon_programmation"></i>{{ 'home.video.btn.voirlesseances'|trans }}</a>
-            <a href="/programmation/" class="all"><i class="icon icon_fleche-right"></i>{{ 'home.video.btn.touslesfilms'|trans }}</a>
+            <a href="/{{ app.request.locale }}/programmation/" class="seances"><i class="icon icon_programmation"></i>{{ 'home.video.btn.voirlesseances'|trans }}</a>
+            <a href="{{ path('fdc_event_movie_selection') }}" class="all"><i class="icon icon_fleche-right"></i>{{ 'home.video.btn.touslesfilms'|trans }}</a>
         </div>
     </div>
 </div>
