@@ -45,7 +45,9 @@
 
 
             {% for section in filmSection %}
-                {% include 'FDCPressBundle:Media:components/content.html.twig' %}
+                {% if section.id == app.request.get('sectionId') %}
+                    {% include 'FDCPressBundle:Media:components/content.html.twig' %}
+                {% endif %}
             {% endfor %}
 
             {{ render(controller('FDCPressBundle:Global:contact')) }}
