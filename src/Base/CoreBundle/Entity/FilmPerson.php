@@ -341,7 +341,7 @@ class FilmPerson implements TranslateMainInterface
     /**
      * @var FilmFilmPerson
      *
-     * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="person", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="person", cascade={"all"})
      *
      * @Groups({"person_list", "person_show"})
      */
