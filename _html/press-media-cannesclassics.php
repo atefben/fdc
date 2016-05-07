@@ -47,7 +47,7 @@
           </div>
         </div>
         <!--Contenu 1-->
-        <div class="nav-container active mediatheque" data-cat="comlongmetrage">
+        <div class="nav-container active mediatheque" data-cat="cannesclassics">
           <div class="wrapper">
             <div class="container-small">
               <div class="table">
@@ -58,7 +58,7 @@
                       <div class="txt">
                         <div class="vCenter">
                           <div class="vCenterKid">
-                            <p>CAROL<a href="#" class="director">Todd HAYNES</a></p>
+                            <p>CAROL CC<a href="#" class="director">Todd HAYNES</a></p>
                           </div>
                         </div>
                       </div>
