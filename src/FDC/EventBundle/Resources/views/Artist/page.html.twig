@@ -132,9 +132,9 @@
                                     </div>
                                     <div class="content-text">
                                         <span class="item-title">{{ filmPerson.film.titleVO }}</span>
-                                        {% if filmPerson.film|trans_fallback_movie('title') and filmPerson.film|trans_fallback_movie('title') != filmPerson.film.titleVO %}
-                                            <span class="item-sub-title">{{ filmPerson.film|trans_fallback_movie('title') }}</span>
-                                        {% endif %}
+                                        {#{% if filmPerson.film|trans_fallback_movie('title') and filmPerson.film|trans_fallback_movie('title') != filmPerson.film.titleVO %}#}
+                                        {#<span class="item-sub-title">{{ filmPerson.film|trans_fallback_movie('title') }}</span>#}
+                                        {#{% endif %}#}
                                         {% if filmPerson.film.festival %}
                                             <span class="item-date">{{ filmPerson.film.festival.year }}</span>
                                         {% endif %}
