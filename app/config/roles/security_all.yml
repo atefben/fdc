@@ -1,6 +1,7 @@
 security:
     role_hierarchy:
         ROLE_ALL_ADMIN:
+            - ROLE_SOIF
             - ROLE_ADMIN
             - ROLE_JMS_TRANSLATION
             - ROLE_FDC_SETTINGS

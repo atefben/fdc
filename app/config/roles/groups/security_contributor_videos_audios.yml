@@ -36,6 +36,7 @@ security:
         - ROLE_TRANSLATE_ZH
         # SOIF
         - ROLE_BASE_ADMIN_FILM_FILM_ADMIN
+        - ROLE_SOIF_UPDATE
 
 
 
