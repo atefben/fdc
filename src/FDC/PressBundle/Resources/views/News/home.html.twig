@@ -108,72 +108,74 @@
                 </div>
                 <div class="table">
                     {% for media in pressHome.homeMedia %}
-                        <div class="line">
-                            <div class="container">
-                                <div class="info">
-                                    {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                                    film: media.film,
-                                    film_format: 'tiny',
-                                    film_attrs: {
-                                    'class': "film_image",
-                                    'alt': media.film.titleVO
-                                    },
-                                    film_image_default: 'bundles/fdcevent/img/palmares/film_w46.jpg',
-                                    film_image_default_attrs: 'class="default_image"'
-                                    }) %}
-                                    <div class="txt">
-                                        <div class="vCenter">
-                                            <div class="vCenterKid">
-                                                <p>
-                                                    {{- media.film.titleVO -}}
-                                                    {%- for director in media.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                                                        <a class="director"
-                                                           href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{- director.fullName -}}</a>
-                                                    {%- endfor -%}
-                                                </p>
+                        {% if media.film is not empty %}
+                            <div class="line">
+                                <div class="container">
+                                    <div class="info">
+                                        {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                        film: media.film,
+                                        film_format: 'tiny',
+                                        film_attrs: {
+                                        'class': "film_image",
+                                        'alt': media.film.titleVO
+                                        },
+                                        film_image_default: 'bundles/fdcevent/img/palmares/film_w46.jpg',
+                                        film_image_default_attrs: 'class="default_image"'
+                                        }) %}
+                                        <div class="txt">
+                                            <div class="vCenter">
+                                                <div class="vCenterKid">
+                                                    <p>
+                                                        {{- media.film.titleVO -}}
+                                                        {%- for director in media.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                                                            <a class="director"
+                                                               href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{- director.fullName -}}</a>
+                                                        {%- endfor -%}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                {% set folderCount = 0 %}
-                                {% set trailerCount = 0 %}
-                                {% set photoCount = 0 %}
+                                    {% set folderCount = 0 %}
+                                    {% set trailerCount = 0 %}
+                                    {% set photoCount = 0 %}
 
-                                {% for video in media.film.associatedMediaVideos %}
-                                    {% if video.mediaVideo.displayedTrailer == 1 %}
-                                        {% set trailerCount = trailerCount + 1 %}
-                                    {% endif %}
-                                {% endfor %}
-                                {% for filmMedia in media.film.medias %}
-                                    {% if filmMedia.media.contentType == "image/jpeg" %}
-                                        {% if filmMedia.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM') %}
-                                            {% set photoCount = photoCount + 1 %}
+                                    {% for video in media.film.associatedMediaVideos %}
+                                        {% if video.mediaVideo.displayedTrailer == 1 %}
+                                            {% set trailerCount = trailerCount + 1 %}
                                         {% endif %}
-                                    {% elseif filmMedia.media.contentType == "application/pdf" %}
-                                        {% set folderCount = folderCount + 1 %}
+                                    {% endfor %}
+                                    {% for filmMedia in media.film.medias %}
+                                        {% if filmMedia.media.contentType == "image/jpeg" %}
+                                            {% if filmMedia.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM') %}
+                                                {% set photoCount = photoCount + 1 %}
+                                            {% endif %}
+                                        {% elseif filmMedia.media.contentType == "application/pdf" %}
+                                            {% set folderCount = folderCount + 1 %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if folderCount != 0 %}
+                                    <div class="media folder">
+                                            <span>{{ 'press.home.label.dossiersdepresse'|trans }}</span> ({{ folderCount }})
+                                    </div>
                                     {% endif %}
-                                {% endfor %}
-								{% if folderCount != 0 %}
-                                <div class="media folder">
-                                        <span>{{ 'press.home.label.dossiersdepresse'|trans }}</span> ({{ folderCount }})
+                                    {% if trailerCount != 0 %}
+                                    <div class="media trailer">
+                                            <span>{{ 'press.home.label.bandeannonces'|trans }}</span> ({{ trailerCount }})
+                                    </div>
+                                    {% endif %}
+                                    {% if photoCount != 0 %}
+                                    <div class="media photo">
+                                            <span>{{ 'press.home.label.photos'|trans }}</span> ({{ photoCount }})
+                                    </div>
+                                     {% endif %}
+                                    <a class="button"
+                                       href="{{ path('fdc_press_media_main', {'sectionId': media.film.selectionSection.id } ) }}">
+                                        {{ 'press.home.btn.decouvrir'|trans }}
+                                    </a>
                                 </div>
-								{% endif %}
-								{% if trailerCount != 0 %}
-                                <div class="media trailer">
-                                        <span>{{ 'press.home.label.bandeannonces'|trans }}</span> ({{ trailerCount }})
-                                </div>
-								{% endif %}
-								{% if photoCount != 0 %}
-                                <div class="media photo">
-                                        <span>{{ 'press.home.label.photos'|trans }}</span> ({{ photoCount }})
-                                </div>
-								 {% endif %}
-                                <a class="button"
-                                   href="{{ path('fdc_press_media_main', {'sectionId': media.film.selectionSection.id } ) }}">
-                                    {{ 'press.home.btn.decouvrir'|trans }}
-                                </a>
                             </div>
-                        </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
