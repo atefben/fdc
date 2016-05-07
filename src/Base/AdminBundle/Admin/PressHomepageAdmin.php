@@ -209,9 +209,10 @@ class PressHomepageAdmin extends Admin
                     'sortable'  => 'position'
                 )
             )
-            // cant use by reference => false on this, it doesnt work...
+            // cant use by reference => false on delete, it doesnt work...
             ->add('homeMedia', 'sonata_type_collection',
                 array(
+                    'by_reference' => false,
                     'cascade_validation' => true,
                     'help' => 'form.press_homepage.helper_media',
                     'label' => 'form.press_homepage.media_film'
