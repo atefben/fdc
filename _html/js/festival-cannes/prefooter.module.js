@@ -15,7 +15,6 @@ $(document).ready(function() {
       $(this).addClass('active');
       sliderPrefooter.trigger('to.owl.carousel', [i, 900, true]);
       if ( $.browser.msie ) {
-        console.log('ici');
         $('#slider-prefooter .imgSlide img').hide();
         $('#slider-prefooter .active .imgSlide img').show();
       }
