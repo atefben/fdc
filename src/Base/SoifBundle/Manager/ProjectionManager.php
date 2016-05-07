@@ -249,6 +249,8 @@ class ProjectionManager extends CoreManager
                     if ($entityTranslation->getId() === null) {
                         $entity->addTranslation($entityTranslation);
                     }
+
+                    $this->update($entity);
                 }
             }
         }
