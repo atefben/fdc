@@ -2,7 +2,7 @@
 
 {% if film.video is not null %}
     {% set transVideo = film.video.findTranslationByLocale(app.request.locale) %}
-    {% if transVideo is null %}
+    {% if transVideo is null or transVideo.jobWebmState != 3 or transVideo.jobMp4State != 3 %}
         {% set transVideo = film.video.findTranslationByLocale('fr') %}
     {% endif %}
 {% endif %}
