@@ -308,7 +308,6 @@
                                                                 </div>
                                                             {% endif %}
                                                         {% endfor %}
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -323,9 +322,7 @@
         </div>
     </div>
 </div>
-
-
-
+<div class="nav-popin">
 {% for k,film in films %}
     {% for m in film.associatedMediaVideos %}
         {% if m.mediaVideo and m.mediaVideo.displayedTrailer == 1 %}
@@ -338,3 +335,4 @@
         {% endif %}
     {% endfor %}
 {% endfor %}
+</div>
