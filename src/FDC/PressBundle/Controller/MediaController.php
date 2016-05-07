@@ -2,6 +2,7 @@
 
 namespace FDC\PressBundle\Controller;
 
+use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,13 +50,17 @@ class MediaController extends Controller
             //Construct sections
             $empty = true;
             foreach ($film->getMedias() as $media) {
-                if ($media->getType() == '14' || $media->getType() == '18') {
+                if ($media->getType() == FilmFilmMediaInterface::TYPE_POSTER ||
+                    $media->getType() == FilmFilmMediaInterface::TYPE_MAIN ||
+                    $media->getType() == FilmFilmMediaInterface::TYPE_FILM) {
                     $empty = false;
+                    break;
                 }
             }
             foreach ($film->getAssociatedMediaVideos() as $mediaVideo) {
                 if (isset($mediaVideo)) {
                     $empty = false;
+                    break;
                 }
             }
 
@@ -90,13 +95,17 @@ class MediaController extends Controller
         foreach ($films as $film) {
             $empty = true;
             foreach ($film->getMedias() as $media) {
-                if ($media->getType() == '14' || $media->getType() == '18') {
+                if ($media->getType() == FilmFilmMediaInterface::TYPE_POSTER ||
+                    $media->getType() == FilmFilmMediaInterface::TYPE_MAIN ||
+                    $media->getType() == FilmFilmMediaInterface::TYPE_FILM) {
                     $empty = false;
+                    break;
                 }
             }
             foreach ($film->getAssociatedMediaVideos() as $mediaVideo) {
                 if (isset($mediaVideo)) {
                     $empty = false;
+                    break;
                 }
             }
             if ($empty == true) {
