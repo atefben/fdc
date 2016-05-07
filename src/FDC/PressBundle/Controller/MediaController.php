@@ -442,9 +442,15 @@ class MediaController extends Controller
             }
         }
 
-        $response->headers->set('Content-Type', 'application/octet-stream');
-        $response->headers->set('Content-Transfer-Encoding:', 'Binary');
-        $response->headers->set('Content-disposition', 'attachment; filename="' . basename($url) . '"');
+        $filename = substr(strrchr($url, "/"), 1);
+        $url = substr($url, 0, strlen($url) - strlen($filename)). rawurlencode($filename);
+
+        $response->headers->set('Content-Type', 'video/mp4');
+        $response->headers->set('Content-Transfer-Encoding', 'Binary');
+        $response->headers->set('Content-disposition', 'attachment; filename="' . $filename . '"');
+        $response->headers->set('Expires', '0');
+        $response->headers->set('Cache-Control', 'must-revalidate');
+        $response->headers->set('Pragma', 'public');
         $response->sendHeaders();
         readfile($url);
 
