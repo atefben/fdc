@@ -1303,10 +1303,13 @@ $(document).ready(function () {
         $.get(urlPath, function (data) {
           var matches = data.match(/<title>(.*?)<\/title>/);
           var spUrlTitle = matches[1];
-
           document.title = spUrlTitle;
-          $('.nav-container').remove();   
- -        $('.nav-mediapress').after($(data).find('.nav-container'));
+
+          $('.nav-container').remove();
+          $('.nav-popin').remove();
+          $('.nav-mediapress').after($(data).find('.nav-container'));
+          $('.nav-container').after($(data).find('.nav-popin'));
+
           history.pushState('', GLOBALS.texts.url.title, urlPath);
           ajaxEvent();
           menuMedia();

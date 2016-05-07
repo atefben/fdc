@@ -2,9 +2,7 @@
 {% extends 'FDCPressBundle::layout.html.twig' %}
 
 {% block body %}
-
     <div id="main" class="press loading press-media {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
-
         <div class="header-press">
             <div class="head">
                 <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>
@@ -20,13 +18,10 @@
                 </p>
             </div>
         </div>
-
         <div class="container-mediapress">
             <div class="nav-mediapress">
-
                 <div class="wrapper">
                     <h2>{{ 'mediatheque.title.choixdelaselection'|trans }}</h2>
-
                     <table>
                         <tr>
                             {% for key,filter in filmSection %}
@@ -39,22 +34,17 @@
                             {% endfor %}
                         </tr>
                     </table>
-
                 </div>
             </div>
-
-
             {% for section in filmSection %}
                 {% if section.id == app.request.get('sectionId') %}
                     {% include 'FDCPressBundle:Media:components/content.html.twig' %}
                 {% endif %}
             {% endfor %}
-
             {{ render(controller('FDCPressBundle:Global:contact')) }}
         </div>
-
-        {% include 'FDCPressBundle:Global:components/popinPress.html.twig' %}
-
+        <div class="nav-popin">
+            {% include 'FDCPressBundle:Global:components/popinPress.html.twig' %}
+        </div>
     </div>
-
 {% endblock body %}
