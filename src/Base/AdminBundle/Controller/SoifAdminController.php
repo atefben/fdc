@@ -60,7 +60,7 @@ class SoifAdminController extends CRUDController
             throw new NotFoundHttpException(sprintf('unable to find the object with id : %s', $id));
         }
 
-        if ($this->get('security.authorization_checker')->isGranted('ROLE_SOIF') === false) {
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_SOIF_UPDATE') === false) {
             throw new AccessDeniedHttpException();
         }
 
