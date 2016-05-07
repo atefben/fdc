@@ -489,6 +489,6 @@
     display:none;
 }
 
-#slider-prefooter .imgSlide .active img {
+#slider-prefooter .active .imgSlide img {
     display:block;
 }
