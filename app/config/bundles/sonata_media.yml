@@ -25,6 +25,7 @@ sonata_media:
             formats:
                 mobile:  { width: 584 , height: 794 , quality: 100, constraint: false }
                 tiny:    { width: 76, height: 92, quality: 100, constraint: false }
+                big:   { width: 1000 , quality: 100 }
                 small:   { width: 584 , height: 794 , quality: 100, constraint: false }
                 38x46:   { width: 38 , height: 46 , quality: 100, constraint: false }
                 212x134: { width: 212 , height: 134 , quality: 100, constraint: false }
