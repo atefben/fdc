@@ -125,11 +125,11 @@
                                         <div class="vCenter">
                                             <div class="vCenterKid">
                                                 <p>
-                                                    {{ media.film|trans_fallback('title') }}
-                                                    {% for director in media.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                    {{- (media.film|trans_fallback('title'))?:media.film.titleVO -}}
+                                                    {%- for director in media.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                                                         <a class="director"
-                                                           href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
-                                                    {% endfor %}
+                                                           href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{- director.fullName -}}</a>
+                                                    {%- endfor -%}
                                                 </p>
                                             </div>
                                         </div>
@@ -179,58 +179,58 @@
             </div>
         {% endif %}
     {% elseif section.class == "download" %}
-        {% if pressHome.sectionDownloadDisplay == false %}
-        <div class="download">
-            <div class="chap">
-                <h3 class="title-press">{{ 'press.home.title.atelecharger'|trans }}</h3>
-                <p class="link">
-                    <a href="{{ path('fdc_press_media_download') }}">
-                        <i class="icon icon_fleche-right"></i>
-                        {{ 'press.home.btn.touslestelechargements'|trans }}
-                    </a>
-                </p>
-            </div>
-        </div>
-        {% for section in pressHome.homeDownload %}
-            {% set isSignature = 0 %}
-            {% if section.download.widgets is defined %}
-                {% for widget in section.download.widgets %}
-                    {% if class(widget) == "PressDownloadSectionWidgetArchive" %}
-                        {% set isSignature = 1 %}
-                    {% else %}
-                        {% set isSignature = 0 %}
-                    {% endif %}
-                {% endfor %}
-                {% if isSignature is defined and isSignature == 1 %}
-                <div class="downloading-press"><div class="signature block">
-                {% else %}
-                <div class="affiche">
-                {% endif %}
-            {% endif %}
-                <div class="container">
-                    <h3 class="title-press">{{ section.download|trans_fallback('title') }}</h3>
-                    {% if section.download.widgets is defined %}
-                        {% for key,widget in section.download.widgets %}
-                            {% if class(widget) == "PressDownloadSectionWidgetDocument" %}
-                                {% include 'FDCPressBundle:Media:widgets/document.html.twig' %}
-                            {% elseif class(widget) == "PressDownloadSectionWidgetArchive" %}
-                                {% include 'FDCPressBundle:Media:widgets/archive.html.twig' %}
-                            {% elseif class(widget) == "PressDownloadSectionWidgetFile" %}
-                                {% include 'FDCPressBundle:Media:widgets/file.html.twig' %}
-                            {% elseif class(widget) == "PressDownloadSectionWidgetPhoto" %}
-                                {% include 'FDCPressBundle:Media:widgets/photo.html.twig' %}
-                            {% elseif class(widget) == "PressDownloadSectionWidgetVideo" %}
-                                {% include 'FDCPressBundle:Media:widgets/video.html.twig' %}
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
+        {%- if pressHome.sectionDownloadDisplay == false -%}
+            <div class="download">
+                <div class="chap">
+                    <h3 class="title-press">{{ 'press.home.title.atelecharger'|trans }}</h3>
+                    <p class="link">
+                        <a href="{{ path('fdc_press_media_download') }}">
+                            <i class="icon icon_fleche-right"></i>
+                            {{ 'press.home.btn.touslestelechargements'|trans }}
+                        </a>
+                    </p>
                 </div>
-            {% if isSignature is defined and isSignature == 1 %}
-            </div></div>
-            {% else %}
             </div>
-            {% endif %}
-        {% endfor %}
+            {%- for section in pressHome.homeDownload -%}
+                {% if section.download.widgets is defined %}
+                    {% set isSignature = 0 %}
+                    {% for widget in section.download.widgets %}
+                        {% if class(widget) == "PressDownloadSectionWidgetArchive" %}
+                            {% set isSignature = 1 %}
+                        {% else %}
+                            {% set isSignature = 0 %}
+                        {% endif %}
+                    {% endfor %}
+                    {%- if isSignature is defined and isSignature == 1 -%}
+                        <div class="downloading-press"><div class="signature block">
+                    {%- else -%}
+                        <div class="affiche">
+                    {%- endif -%}
+                    <div class="container">
+                        <h3 class="title-press">{{ section.download|trans_fallback('title') }}</h3>
+                        {% if section.download.widgets is defined %}
+                            {% for key,widget in section.download.widgets %}
+                                {% if class(widget) == "PressDownloadSectionWidgetDocument" %}
+                                    {% include 'FDCPressBundle:Media:widgets/document.html.twig' %}
+                                {% elseif class(widget) == "PressDownloadSectionWidgetArchive" %}
+                                    {% include 'FDCPressBundle:Media:widgets/archive.html.twig' %}
+                                {% elseif class(widget) == "PressDownloadSectionWidgetFile" %}
+                                    {% include 'FDCPressBundle:Media:widgets/file.html.twig' %}
+                                {% elseif class(widget) == "PressDownloadSectionWidgetPhoto" %}
+                                    {% include 'FDCPressBundle:Media:widgets/photo.html.twig' %}
+                                {% elseif class(widget) == "PressDownloadSectionWidgetVideo" %}
+                                    {% include 'FDCPressBundle:Media:widgets/video.html.twig' %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    {%- if isSignature is defined and isSignature == 1 -%}
+                        </div></div>
+                    {%- else -%}
+                        </div>
+                    {%- endif -%}
+                {% endif %}
+            {% endfor %}
         {% endif %}
     {% elseif section.class == "push1" %}
                 {% if pressHome.pushMainImage is not null %}

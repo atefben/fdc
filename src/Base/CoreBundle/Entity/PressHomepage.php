@@ -213,16 +213,6 @@ class PressHomepage implements TranslateMainInterface
     }
 
     /**
-     * Remove homeMedia
-     *
-     * @param \Base\CoreBundle\Entity\PressHomepageMedia $homeMedia
-     */
-    public function removeHomeMedia(\Base\CoreBundle\Entity\PressHomepageMedia $homeMedia)
-    {
-        $this->homeMedia->removeElement($homeMedia);
-    }
-
-    /**
      * Get homeMedia
      *
      * @return \Doctrine\Common\Collections\Collection 
@@ -519,5 +509,15 @@ class PressHomepage implements TranslateMainInterface
     public function getFestival()
     {
         return $this->festival;
+    }
+
+    /**
+     * Remove homeMedia
+     *
+     * @param \Base\CoreBundle\Entity\PressHomepageMedia $homeMedia
+     */
+    public function removeHomeMedia(\Base\CoreBundle\Entity\PressHomepageMedia $homeMedia)
+    {
+        $this->homeMedia->removeElement($homeMedia);
     }
 }
