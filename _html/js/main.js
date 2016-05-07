@@ -61,6 +61,7 @@ String.prototype.parseHashtag = function(twitter) {
 };
 
 $(document).ready(function() {
+
   // 1. Prehome
   // =========================
 
