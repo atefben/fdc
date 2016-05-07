@@ -58,7 +58,7 @@
                       <div class="txt">
                         <div class="vCenter">
                           <div class="vCenterKid">
-                            <p>CAROL<a href="#" class="director">Todd HAYNES</a></p>
+                            <p>CAROL CDLP<a href="#" class="director">Todd HAYNES</a></p>
                           </div>
                         </div>
                       </div>

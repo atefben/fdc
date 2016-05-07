@@ -1305,7 +1305,8 @@ $(document).ready(function () {
           var spUrlTitle = matches[1];
 
           document.title = spUrlTitle;
-          $(".nav-container").html($(data).find('.nav-container'));
+          $('.nav-container').remove();   
+ -        $('.nav-mediapress').after($(data).find('.nav-container'));
           history.pushState('', GLOBALS.texts.url.title, urlPath);
           ajaxEvent();
           menuMedia();
