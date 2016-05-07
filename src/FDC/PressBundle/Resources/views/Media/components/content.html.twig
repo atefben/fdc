@@ -13,12 +13,12 @@
                             {% set countVideo = countVideo + 1 %}
                         {% endif %}
                     {% endfor %}
+
                     {% for media in film.medias %}
-                        {% if media.type == 18 %}
+                        {% if media.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') %}
                             {% set countFolder = countFolder + 1 %}
                         {% endif %}
-                    {% endfor %}
-                    {% for media in film.medias %}
+
                         {% if media.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER') or
                             media.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN') or
                             media.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM')

@@ -145,15 +145,20 @@
                                             {% set trailerCount = trailerCount + 1 %}
                                         {% endif %}
                                     {% endfor %}
-                                    {% for filmMedia in media.film.medias %}
-                                        {% if filmMedia.media.contentType == "image/jpeg" %}
-                                            {% if filmMedia.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM') %}
-                                                {% set photoCount = photoCount + 1 %}
-                                            {% endif %}
-                                        {% elseif filmMedia.media.contentType == "application/pdf" %}
+
+                                    {% for media in media.film.medias %}
+                                        {% if media.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') %}
                                             {% set folderCount = folderCount + 1 %}
                                         {% endif %}
+
+                                        {% if media.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER') or
+                                        media.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN') or
+                                        media.type == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM')
+                                        %}
+                                            {% set photoCount = photoCount + 1 %}
+                                        {% endif %}
                                     {% endfor %}
+
                                     {% if folderCount != 0 %}
                                     <div class="media folder">
                                             <span>{{ 'press.home.label.dossiersdepresse'|trans }}</span> ({{ folderCount }})
