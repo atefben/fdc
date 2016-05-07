@@ -15,20 +15,18 @@ function initParallaxElements() {
           'mov': 1
         });
       }
-    }
+  
+      // slider movies home
+      if ($('#slider-movies .owl-item.active .video').length) {
+        parallaxElements['movies'] = ({
+          'el1': '#slider-movies .owl-item.active .video',
+          'positionTop': $('#slider-movies').offset().top,
+          'division': 8,
+          'mov': 4
+        });
+      }
 
-    // slider movies home
-    if ($('#slider-movies .owl-item.active .video').length) {
-      parallaxElements['movies'] = ({
-        'el1': '#slider-movies .owl-item.active .video',
-        'positionTop': $('#slider-movies').offset().top,
-        'division': 8,
-        'mov': 4
-      });
-    }
-
-    // slider home
-    if(!isIE() && !isiPad()) {
+      // slider home
       if ($('#slider .owl-item .img-container').length) {
         parallaxElements['slider'] = ({
           'el1': '#slider .owl-item .img-container',
