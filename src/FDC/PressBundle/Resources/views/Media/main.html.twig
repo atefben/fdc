@@ -2,7 +2,7 @@
 {% extends 'FDCPressBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="press loading press-media {{ (app.user is not null and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'conected' : 'lock' }}">
+    <div id="main" class="press loading press-media {{ (app.security.token is not null and app.security.token.user == 'press' and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'conected' : 'lock' }}">
         <div class="header-press">
             <div class="head">
                 <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>

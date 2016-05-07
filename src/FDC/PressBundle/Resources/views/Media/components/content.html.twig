@@ -135,7 +135,7 @@
 
 
                                             {% for m in film.associatedMediaVideos %}
-                                                <div class="buttons{{ (app.user is not null and is_granted("ROLE_FDC_PRESS_REPORTER")) ? ' active-btn' : '' }}">
+                                                <div class="buttons{{ (app.security.token is not null and app.security.token.user == 'press' and is_granted("ROLE_FDC_PRESS_REPORTER")) ? ' active-btn' : '' }}">
                                                     {% if m.mediaVideo and m.mediaVideo.displayedTrailer == 1 %}
                                                         {% set trans = m.mediaVideo.findTranslationByLocale(app.request.locale) %}
                                                         {% if trans is null or trans.file is null %}
@@ -144,14 +144,14 @@
                                                         {% if m.mediaVideo|is_available_video(true, 'fr') %}
                                                             <button data-target="fr-{{ film.id }}-{{ m.mediaVideo.id }}"
                                                                     class="button">
-                                                                {{ (app.user is not null and is_granted("ROLE_FDC_PRESS_REPORTER")) ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
+                                                                {{ (app.security.token is not null and app.security.token.user == 'press' and is_granted("ROLE_FDC_PRESS_REPORTER")) ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
                                                                 {{ trans.title }} (FR)
                                                             </button>
                                                         {% endif %}
                                                         {% if m.mediaVideo|is_available_video(true, 'en') %}
                                                             <button data-target="en-{{ film.id }}-{{ m.mediaVideo.id }}"
                                                                     class="button">
-                                                                {{ (app.user is not null and is_granted("ROLE_FDC_PRESS_REPORTER")) ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
+                                                                {{ (app.security.token is not null and app.security.token.user == 'press' and is_granted("ROLE_FDC_PRESS_REPORTER")) ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
                                                                 {{ trans.title }} (EN)
                                                             </button>
                                                         {% endif %}
@@ -169,10 +169,10 @@
                                                         {{ 'mediatheque.title.photoshd'|trans }}
                                                         <span class="number">({{ countImage }})</span>
                                                     </h3>
-                                                    <div class="download-btns right-btn buttons {{ (app.user is not null and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'active-btn' : '' }} ">
+                                                    <div class="download-btns right-btn buttons {{ (app.security.token is not null and app.security.token.user == 'press' and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'active-btn' : '' }} ">
                                                         <a href="{{ path('fdc_press_media_filmarchive', {'id': film.id }) }}"
                                                            class="button" download target="_blank">
-                                                            {{ (app.user is not null and is_granted("ROLE_FDC_PRESS_REPORTER")) ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
+                                                            {{ (app.security.token is not null and app.security.token.user == 'press' and is_granted("ROLE_FDC_PRESS_REPORTER")) ? '<i class="icon icon_telecharger"></i>' : '<i class="icon icon_cadenas"></i>' }}
                                                             {{ 'mediatheque.btn.touttelecharger'|trans }}
                                                         </a>
                                                     </div>
