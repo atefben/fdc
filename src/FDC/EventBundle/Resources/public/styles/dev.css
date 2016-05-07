@@ -483,3 +483,7 @@
     text-align: center;
     display: block;
 }
+
+.user-nav .account {
+    display:none;
+}
