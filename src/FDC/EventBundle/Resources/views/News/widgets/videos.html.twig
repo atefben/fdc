@@ -26,7 +26,7 @@
             {% endif %}
         </video>
         {% if transImage is defined and transImage is not null %}
-            <div class="img" style="background-image:url({% if film.transImage.file is defined and film.transImage.file is not null %}{% path transImage.file, '1280x808'  %}{% else %}{{ transVideo.imageAmazonUrl }}{% endif %})"></div>
+            <div class="img" style="background-image:url({% if film.transImage.file is defined and film.transImage.file is not null %}{% path transImage.file, '1280x808'  %}{% else %}{{ s3_server_video ~ transVideo.imageAmazonUrl }}{% endif %})"></div>
         {% endif %}
     </div>
     <div class="textVideo">
