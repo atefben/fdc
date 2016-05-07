@@ -1,10 +1,5 @@
 $(document).ready(function() {
-
   if($('.home').length) {
-
-  // Prefooter
-  // =========================
-
     // show image on mouseover
     $('#prefooter ul a').on('mouseover', function(e) {
       e.preventDefault();
@@ -14,14 +9,6 @@ $(document).ready(function() {
 
       $(this).addClass('active');
       sliderPrefooter.trigger('to.owl.carousel', [i, 900, true]);
-      var isIE = (navigator.userAgent.indexOf("MSIE") != -1);
-      alert('test cache 1');
-      if ( isIE) {
-        alert('test cache !');
-        $('#slider-prefooter .imgSlide img').hide();
-        $('#slider-prefooter .active .imgSlide img').show();
-      }
-      
     });
 
     if ($("#slider-prefooter").length > 0) {
@@ -36,9 +23,7 @@ $(document).ready(function() {
         touchDrag: false,
         mouseDrag: false
       });
-
       sliderPrefooter.owlCarousel();
     }
   }
-
 });

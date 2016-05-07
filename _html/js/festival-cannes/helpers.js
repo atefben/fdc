@@ -51,13 +51,15 @@ function isIE() {
          navigator.userAgent.indexOf("Trident") > -1
 }
 
+function isFF() {
+  return navigator.userAgent.toLowerCase().indexOf('firefox') > -1
+}
+
 // is iPad
 function isiPad(only) {
   var only = only || false;
   if (only) {
-    return navigator.userAgent.indexOf("iPad") > -1 ||
-           navigator.userAgent.indexOf("iPhone") > -1 ||
-           navigator.userAgent.indexOf("Android") > -1 ;
+    return navigator.userAgent.indexOf("iPad");
   } else {
     return navigator.userAgent.indexOf("iPad") > -1 ||
            navigator.userAgent.indexOf("iPhone") > -1 ||
