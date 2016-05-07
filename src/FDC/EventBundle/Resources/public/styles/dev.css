@@ -484,3 +484,11 @@
     text-align: center;
     display: block;
 }
+
+#slider-prefooter .imgSlide img {
+    display:none;
+}
+
+#slider-prefooter .imgSlide .active img {
+    display:block;
+}
