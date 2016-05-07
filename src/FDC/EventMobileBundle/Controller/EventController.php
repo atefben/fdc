@@ -290,9 +290,9 @@ class EventController extends Controller
         $themes = array();
         foreach ($events as $event) {
             if ($event instanceof Event) {
-                $key = $event->getPublishedAt()->format('Y-m-d');
+                //$key = $event->getPublishedAt()->format('Y-m-d');
                 if (!array_key_exists($key, $dates)) {
-                    $dates[$key] = $event->getPublishedAt();
+                    //$dates[$key] = $event->getPublishedAt();
                 }
                 $key = $event->getTheme()->getId();
                 if (!array_key_exists($key, $themes)) {
