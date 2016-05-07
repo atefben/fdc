@@ -605,6 +605,14 @@ abstract class CoreManager
             $this->logger->info("{$this->repository} #{$id} can't be removed because it doesn't exist");
         }
     }
+
+    /**
+     * flush action
+     */
+    public function flush()
+    {
+        $this->em->flush();
+    }
     
     /**
      * updateMultiple function.
