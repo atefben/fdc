@@ -40,7 +40,7 @@ $(document).ready(function() {
       e.preventDefault();
     }
 
-    if(href.indexOf('#') == -1 || $(this).hasClass('ajaxi')) {
+    if((href.indexOf('#') == -1 || (href.indexOf('#') > -1 && href.length > 1)) || $(this).hasClass('ajaxi')) {
       if(!isiPad()) {
         if(!$(this).hasClass('ajaxi')) {
            $('#main, footer, #breadcrumb, .sub-nav-list').addClass('loading');
