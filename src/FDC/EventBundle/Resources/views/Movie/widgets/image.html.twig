@@ -21,10 +21,10 @@
                         <div class="img {% if firstPicture == true %}active{% endif %}">
                             <a id="photo{{ photo.id }}"
                                class="chocolat-image ajax"
-                               href="{% path photo.media.file, photo.media.file.context ~ '_big' %}"
+                               href="{% if photo.media.file is not empty %}{% path photo.media.file, photo.media.file.context ~ '_big' %}{% endif %}"
                                title='<span>{{ title }}</span>'
                                data-credit="{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
-                                <img src="{% path photo.media.file, photo.media.file.context ~ '_big' %}" alt="" />
+                                <img src="{% if photo.media.file is not empty %}{% path photo.media.file, photo.media.file.context ~ '_big' %}{% endif %}" alt="" />
                             </a>
                         </div>
                         {% set firstPicture = false %}
@@ -46,7 +46,7 @@
                         {% endif %}
 
                         <div class="thumb {% if firstPicture == true %}active{% endif %}" data-caption="{{ title }}{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
-                            <img src="{% path photo.media.file, photo.media.file.context ~ '_small' %}" />
+                            <img src="{% if photo.media.file is not empty %}{% path photo.media.file, photo.media.file.context ~ '_small' %}{% endif %}" />
                         </div>
                         {% set firstPicture = false %}
                     {% endif %}
