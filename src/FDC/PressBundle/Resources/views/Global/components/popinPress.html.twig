@@ -10,7 +10,6 @@
         {% else %}
             {% set popinPressError = false %}
         {% endif %}
-        {{ dump(app.request.session.has('login_error')) }}
         <form action="{{ path("fdc_press_security_check") }}" method="post" {% if popinPressError %}class="error"{% endif %}    id="lockedForm">
             <input type="hidden" id="username" name="_username" value="press" required="required" />
 
