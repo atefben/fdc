@@ -3,7 +3,7 @@
 
 {% block body %}
 
-<div id="main" class="press loading practicalguide {{ (app.user is defined and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'conected' : 'lock' }}">
+<div id="main" class="press loading practicalguide {{ (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'conected' : 'lock' }}">
 
     <div class="header-press">
         <div class="head">

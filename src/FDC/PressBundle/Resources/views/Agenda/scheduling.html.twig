@@ -3,7 +3,7 @@
 
 {% block body %}
     <div id="main"
-         class="press press-programmation loading calendar-open {{ (app.user is defined and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'conected' : 'lock' }}">
+         class="press press-programmation loading calendar-open {{ (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'conected' : 'lock' }}">
         <div class="header-press">
             <div class="head">
                 <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>
@@ -11,7 +11,7 @@
             <div class="container">
                 <h2>{{ 'programmation.title.programmation'|trans }}</h2>
                 <div class="buttons">
-                    {% if app.user is defined and is_granted("ROLE_FDC_PRESS_REPORTER") and pressProjection.pressScheduling is not null %}
+                    {% if app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER") and pressProjection.pressScheduling is not null %}
                         <a href="#" class="button subnav"><i
                                     class="icon icon_telecharger"></i>{{ pressProjection|trans_fallback('pressSchedulingLabel') }}
                         </a>

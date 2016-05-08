@@ -1,19 +1,13 @@
 {% trans_default_domain 'FDCPressBundle' %}
 
-{% if app.user is not defined or (app.user is defined and is_granted("ROLE_FDC_PRESS_REPORTER") == false) %}
-
+{% if app.user is empty or (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER") == false) %}
     {{ render(controller('FDCPressBundle:Security:setCurrentRoute', {'originalRequest': app.request})) }}
-
 {% else %}
-    {% for k,flash_message in app.session.flashbag.get('loginSuccess') %}
-        {% if loop.first %}
-            <div class="locked">
-                <div class="vCenter">
-                    <div class="vCenterKid">
-                        <p class="access">{{ 'press.header.success.contenusdebloques'|trans|raw }}</p>
-                    </div>
-                </div>
+    <div class="locked">
+        <div class="vCenter">
+            <div class="vCenterKid">
+                <p class="access">{{ 'press.header.success.contenusdebloques'|trans|raw }}</p>
             </div>
-        {% endif %}
-    {% endfor %}
+        </div>
+    </div>
 {% endif %}

@@ -50,13 +50,16 @@ class SecurityController extends BaseController
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
             $request->getSession()->set('login_error', true);
+            error_log('1');
         } elseif (null !== $session && $session->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
             $session->remove(SecurityContext::AUTHENTICATION_ERROR);
             $request->getSession()->set('login_error', true);
+            error_log('2');
         } else {
             $error = '';
         }
+        error_log('lol');
 
         if ($error) {
             // TODO: this is a potential security risk (see http://trac.symfony-project.org/ticket/9523)
@@ -143,6 +146,7 @@ class SecurityController extends BaseController
      */
     public function checkAction()
     {
+        error_log('3');
         throw new \RuntimeException('You must configure the check path to be handled by the firewall using form_login in your security firewall configuration.');
     }
 
