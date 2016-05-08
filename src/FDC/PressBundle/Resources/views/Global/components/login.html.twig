@@ -1,7 +1,18 @@
 {% trans_default_domain 'FDCPressBundle' %}
 
 {% if app.user is empty or (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER") == false) %}
-    {{ render(controller('FDCPressBundle:Security:setCurrentRoute', {'originalRequest': app.request})) }}
+    <div class="locked">
+        <div class="vCenter">
+            <div class="vCenterKid">
+                <h3 class="title-press">
+                    <i class="icon icon_cadenas"></i>
+                    {{ 'press.header.title.contenusverouilles'|trans }}
+                </h3>
+                <p>{{ 'press.header.text.journalistesveuillezsaisirvotremotdepasse'|trans }}</p>
+            </div>
+        </div>
+        {{ render(controller('FDCPressBundle:Security:setCurrentRoute', {'originalRequest': app.request})) }}
+    </div>
 {% else %}
     <div class="locked">
         <div class="vCenter">
