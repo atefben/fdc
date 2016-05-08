@@ -14,7 +14,7 @@
         {% include 'FDCEventMobileBundle:Base:javascript_head.html.twig' %}
     </head>
     <body>
-		<div id="main" class="legals" data-menu="privacy_policy">
+		<div id="main" class="legals" data-menu="privacy_policy" style="background-color:#fff">
 			<div class="dark-container" id="header">
 				<div class="header-container">
 					<div id="logo">
@@ -32,29 +32,21 @@
 				    </div>
 				</div>
 			</div>
-		    <div class="container">
-		        <h2 class="title tall">Festival de Cannes 2016</h2>
+		    <div class="container" style="background-color:#fff">
+		        <h2 class="title">Festival de Cannes<br />2016</h2>
+				<p>&nbsp;</p>
 		    <section class="legal-notice-container">
 		       <div class="legal-notice-responsable" style="text-align:center">
 				   <p class="legal-notice-description">{{ 'Le site Internet en version mobile sera bientôt disponible.'|trans }}</p>
-				   <p>{{ 'En attendant, téléchargez l\'application officielle :'|trans }}</p>
 				   <p>&nbsp;</p>
-		           <p> <a href="{{ fdc_app_ios_download_url }}">
-                {% image '@FDCEventBundle/Resources/public/img/appstore.png' %}
-                <img src="{{ asset_url }}" alt="apple" />
-                {% endimage %}
-            </a>
-            <a href="{{ fdc_app_android_download_url }}">
-                {% image '@FDCEventBundle/Resources/public/img/appgoogle.png' %}
-                <img src="{{ asset_url }}" alt="android" />
-                {% endimage %}
-            </a></p>
+				   <p>&nbsp;</p>
+				   <p>&nbsp;</p>
+				   <p>&nbsp;</p>
+
 		       </div>
 		    </section>
 		    </div>
 		</div>
-		<footer class="dark-container">
-		   </footer>
 		    <div id="landscape">
 		      <div class="content vCenter">
 		        <div class="vCenterKid">

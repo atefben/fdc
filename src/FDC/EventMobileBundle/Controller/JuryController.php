@@ -42,7 +42,7 @@ class JuryController extends Controller
                     $slug = $page->findTranslationByLocale($locale)->getSlug();
                 }
                 if ($slug) {
-                    return $this->redirectToRoute('fdc_eventmobile_jury_get', array('slug' => $slug));
+                    return $this->redirectToRoute('fdc_event_jury_get', array('slug' => $slug));
                 }
 
             }
@@ -58,6 +58,8 @@ class JuryController extends Controller
         if ($page == null) {
             throw new NotFoundHttpException("Page Jury {$slug} not found");
         }
+
+        $localeSlugs = $page->getLocaleSlugs();
 
         //SEO
         $this->get('base.manager.seo')->setFDCEventPageJurySeo($page, $locale);
@@ -124,6 +126,7 @@ class JuryController extends Controller
             'next'      => is_object($next) ? $next : false,
             'members'   => $members,
             'president' => $president,
+            'localeSlugs' => $localeSlugs
         );
 
     }

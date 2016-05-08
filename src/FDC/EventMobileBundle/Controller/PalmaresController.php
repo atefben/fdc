@@ -42,7 +42,7 @@ class PalmaresController extends Controller
                     $slug = $page->findTranslationByLocale($locale)->getSlug();
                 }
                 if ($slug) {
-                    return $this->redirectToRoute('fdc_eventmobile_palmares_get', array('slug' => $slug));
+                    return $this->redirectToRoute('fdc_event_palmares_get', array('slug' => $slug));
                 }
 
             }
@@ -54,16 +54,18 @@ class PalmaresController extends Controller
             ->getRepository('BaseCoreBundle:FDCPageAward')
             ->getPageBySlug($locale, $slug)
         ;
-
-        //SEO
-        $this->get('base.manager.seo')->setFDCEventPageAwardSeo($page, $locale);
+        $localeSlugs = $page->getLocaleSlugs();
 
         $parameters = array(
             'pages'    => $pages,
             'page'     => $page,
             'category' => $page->getCategory(),
             'festival' => $festival,
+            'localeSlugs' => $localeSlugs
         );
+
+        //SEO
+        $this->get('base.manager.seo')->setFDCEventPageAwardSeo($page, $locale);
 
         if ($page->getId() == 1) {
             $this->competitionParameters($parameters);
@@ -72,6 +74,7 @@ class PalmaresController extends Controller
         } elseif ($page->getId() == 5) {
             $parameters['subpages'] = array();
             foreach ($pages as $subPage) {
+
                 if ($subPage->getId() == 1) { // competition
                     $subParameters = array(
                         'festival' => $festival,
@@ -175,7 +178,7 @@ class PalmaresController extends Controller
         $parameters['award_associations']['camerador'] = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmAwardAssociation')
-            ->getByCategoryWithAward($parameters['festival'], $parameters['category'])
+            ->getCameraDorWithAward($parameters['festival'])
         ;
         $competitionIds = array(
             $parameters['page']->getSelectionLongsMetrages()->getId(),
@@ -183,21 +186,27 @@ class PalmaresController extends Controller
         );
         $parameters['award_associations']['competition'] = $this
             ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FilmAwardAssociation')
-            ->getCameraDOr($parameters['festival'], $competitionIds)
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->getPalmaresCameraDOr($parameters['festival'], $competitionIds, $parameters['award_associations']['camerador'])
         ;
 
-        $othersId = array();
+        $parameters['award_associations']['others'] = array();
         foreach ($parameters['page']->getOtherSelectionSectionsAssociated() as $associated) {
             if (!$associated->getAssociation()) {
                 continue;
             }
             $selectionSectionId = $associated->getAssociation()->getId();
-            $parameters['award_associations'][$selectionSectionId] = $this
+            $movies = $this
                 ->getDoctrineManager()
-                ->getRepository('BaseCoreBundle:FilmAwardAssociation')
-                ->getCameraDOr($parameters['festival'], array($selectionSectionId))
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->getPalmaresCameraDOr($parameters['festival'], array($selectionSectionId), $parameters['award_associations']['camerador'])
             ;
+            if ($movies) {
+                $parameters['award_associations']['others'][] = array(
+                    'selection' => $associated->getAssociation(),
+                    'movies' => $movies,
+                );
+            }
         }
     }
 }
