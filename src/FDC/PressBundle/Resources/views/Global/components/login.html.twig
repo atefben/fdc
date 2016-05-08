@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCPressBundle' %}
 
-{% if app.security.token is null or (app.security.token is not null and app.security.token.user != 'press') %}
+{% if app.user is not defined or (app.user is defined and is_granted("ROLE_FDC_PRESS_REPORTER") == false) %}
 
     {{ render(controller('FDCPressBundle:Security:setCurrentRoute', {'originalRequest': app.request})) }}
 

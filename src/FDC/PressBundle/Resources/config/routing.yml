@@ -3,7 +3,3 @@ fdc_event:
     type:     annotation
     prefix:   /
     host:     "%fdc_press_domain%"
-
-fdc_press_login:
-    path: /{_locale}/press/connect
-    defaults: { _controller: FDCPressBundle:Login:login }

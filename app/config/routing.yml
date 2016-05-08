@@ -23,7 +23,7 @@ media:
 #Sonata User
 sonata_user_security:
     resource: "@SonataUserBundle/Resources/config/routing/sonata_security_1.xml"
-    prefix: /press
+    prefix: /
 
 sonata_user_resetting:
     resource: "@SonataUserBundle/Resources/config/routing/sonata_resetting_1.xml"

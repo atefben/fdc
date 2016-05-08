@@ -2,9 +2,9 @@
 <div class="container-title">
     <h3 class="title-press">{{ s.section|trans_fallback('title') }}
         <span class="number">({{ widget.gallery.medias|length }})</span></h3>
-    <div class="right-btn buttons {% if widget.lockedContent == 0 or (app.security.token is not null and app.security.token.user == 'press' and is_granted("ROLE_FDC_PRESS_REPORTER")) %}active-btn{% endif %}">
-        <a href="{% if widget.lockedContent == 0 or (app.security.token is not null and app.security.token.user == 'press' and is_granted("ROLE_FDC_PRESS_REPORTER")) %}{{ path('fdc_press_media_galleryarchive', {'id': widget.gallery.id }) }}{% endif %}" class="alldl button" download target="_blank" >
-            <i class="icon icon_{{ widget.lockedContent == 0 or (app.security.token is not null and app.security.token.user == 'press' and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'telecharger' : 'cadenas' }}"></i>
+    <div class="right-btn buttons {% if widget.lockedContent == 0 or (app.user is defined and is_granted("ROLE_FDC_PRESS_REPORTER")) %}active-btn{% endif %}">
+        <a href="{% if widget.lockedContent == 0 or (app.user is defined and is_granted("ROLE_FDC_PRESS_REPORTER")) %}{{ path('fdc_press_media_galleryarchive', {'id': widget.gallery.id }) }}{% endif %}" class="alldl button" download target="_blank" >
+            <i class="icon icon_{{ widget.lockedContent == 0 or (app.user is defined and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'telecharger' : 'cadenas' }}"></i>
             {{ 'press.home.btn.touttelecharger'|trans }}
         </a>
     </div>

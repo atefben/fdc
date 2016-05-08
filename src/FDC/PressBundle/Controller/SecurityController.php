@@ -28,9 +28,7 @@ class SecurityController extends BaseController
         $this->setCurrentRouteParams($originalRequest->get('_route_params'));
 
         $error = $originalRequest->getSession()->has('login_error') ? $originalRequest->getSession()->get('login_error') : false;
-//        if ($error) {
-//            $originalRequest->getSession()->remove('login_error');
-//        }
+
         $this->setError($error);
         return $this->loginAction();
 
@@ -43,7 +41,6 @@ class SecurityController extends BaseController
      */
     public function loginAction()
     {
-
         $request = $this->container->get('request');
         /* @var $request \Symfony\Component\HttpFoundation\Request */
         $session = $request->getSession();
@@ -52,14 +49,19 @@ class SecurityController extends BaseController
         // get the error if any (works with forward and redirect -- see below)
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+            $request->getSession()->set('login_error', true);
         } elseif (null !== $session && $session->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
             $session->remove(SecurityContext::AUTHENTICATION_ERROR);
+            $request->getSession()->set('login_error', true);
         } else {
             $error = '';
         }
 
-        $session->getFlashBag()->add('loginSuccess', 'my success message');
+        if ($error) {
+            // TODO: this is a potential security risk (see http://trac.symfony-project.org/ticket/9523)
+            $error = $error->getMessage();
+        }
 
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get(SecurityContext::LAST_USERNAME);
@@ -68,7 +70,7 @@ class SecurityController extends BaseController
 
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
-            'error'         => $this->error,
+            'error'         => $error,
             'csrf_token'    => $csrfToken,
             'current_route' => $this->getCurrentRoute(),
             'current_route_params' => $this->getCurrentRouteParams() ? $this->getCurrentRouteParams() : array(),
@@ -144,6 +146,9 @@ class SecurityController extends BaseController
         throw new \RuntimeException('You must configure the check path to be handled by the firewall using form_login in your security firewall configuration.');
     }
 
+    /**
+     * @Route("/logout")
+     */
     public function logoutAction()
     {
         throw new \RuntimeException('You must activate the logout in your security firewall configuration.');

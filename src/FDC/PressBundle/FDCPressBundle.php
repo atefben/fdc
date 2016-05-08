@@ -8,6 +8,5 @@ class FDCPressBundle extends Bundle
 {
     public function getParent()
     {
-        return 'ApplicationSonataUserBundle';
     }
 }

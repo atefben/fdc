@@ -1,6 +1,6 @@
 fos_user:
     db_driver: orm
-    firewall_name: main
+    firewall_name: press
     user_class: Application\Sonata\UserBundle\Entity\User
     group:
         group_class: Application\Sonata\UserBundle\Entity\Group
