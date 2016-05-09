@@ -1982,7 +1982,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function getProjections()
     {
-
         $now = time();
 
         $days = array();
@@ -1995,7 +1994,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                 if ($key > $now) {
                     $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
                     if (!array_key_exists($dayKey, $days)) {
-                        $newTime = $projection->getProjection()->getStartsAt();
+                        $newTime = clone $projection->getProjection()->getStartsAt();
                         $newTime->setTime(3, 0, 0);
                         $days[$dayKey]['date'] = $newTime->getTimestamp();
                         $days[$dayKey]['projections'] = array();
