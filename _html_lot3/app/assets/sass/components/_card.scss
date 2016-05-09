@@ -128,59 +128,6 @@
     position: relative;
     width: 100%;
 
-    .read-later {
-      content: '';
-      display: block;
-      height: 40px;
-      opacity: 0;
-      visibility: hidden;
-      width: 40px;
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      @include transition(all 0.5s $smoothTransition);
-      color: #000;
-      background-color: #fff;
-      text-align: center;
-
-      .icon {
-        line-height: 46px;
-      }
-
-      span {
-        background-color: $black;
-        position: fixed;
-        display: block;
-        font-family: $CamphorBold;
-        font-size: 0.625rem;
-        opacity: 0;
-        visibility: hidden;
-        height: 48px;
-        line-height: 48px;
-        width: 200px;
-        color: #fff;
-        letter-spacing: 0.1em;
-        top: -59px;
-        left: -80px;
-        z-index: 5;
-        text-align: center;
-        text-transform: uppercase;
-        @include transform(translateY(6px) translateZ(0));
-        @include transition(opacity 0.5s $smoothTransition, visibility .5s $smoothTransition, transform 0.5s $smoothTransition);
-
-        &:after {
-          content: ' ';
-          height: 0;
-          position: absolute;
-          width: 0;
-          border: 7px solid transparent;
-          border-top-color: $black;
-          top: 100%;
-          left: 92px;
-        }
-      }
-    }
-
     .linkImage {
       display: block;
       height: 100%;
