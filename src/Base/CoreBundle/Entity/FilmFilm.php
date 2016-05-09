@@ -1992,7 +1992,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
             if ($projection instanceof FilmProjectionProgrammationFilm) {
                 $key = $projection->getProjection()->getStartsAt()->getTimestamp();
                 if ($key > $now) {
-                    $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
+                    if ($projection->getProjection()->getStartsAt()->format('H:i:s') === '00:00:00') {
+                        $yesterday = clone $projection->getProjection()->getStartsAt();
+                        $yesterday->sub(date_interval_create_from_date_string('1 day'));
+                        $dayKey = $yesterday->format('Y-m-d');
+                    }
+                    else {
+                        $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
+                    }
                     if (!array_key_exists($dayKey, $days)) {
                         $newTime = clone $projection->getProjection()->getStartsAt();
                         $newTime->setTime(3, 0, 0);
