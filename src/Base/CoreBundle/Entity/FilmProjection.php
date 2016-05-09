@@ -143,8 +143,6 @@ class FilmProjection
      * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilm", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
      *
      * @Groups({"projection_list", "projection_show", "home", "news_list"})
-     * @todo: remove the accessor annotation !!!
-     * @Serializer\Accessor(getter="getApiProgrammationFilms")
      */
     private $programmationFilms;
 
@@ -456,22 +454,6 @@ class FilmProjection
      */
     public function getProgrammationFilms()
     {
-        return $this->programmationFilms;
-    }
-
-    /**
-     * Get programmationFilms
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     * @todo: remove this !!!
-     */
-    public function getApiProgrammationFilms()
-    {
-        foreach ($this->programmationFilms as $programmationFilm) {
-            if (!$programmationFilm->getFilm() || $programmationFilm->getFilm()->getFestival()->getId() !== 70) {
-                $this->programmationFilms->removeElement($programmationFilm);
-            }
-        }
         return $this->programmationFilms;
     }
 
