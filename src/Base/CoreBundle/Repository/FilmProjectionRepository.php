@@ -218,7 +218,7 @@ class FilmProjectionRepository extends EntityRepository
         $this->addMasterQueries($qb, 'fp', $festival, false);
 
         $qb
-            ->addOrderBy('fp.startsAt', 'desc')
+            ->addOrderBy('fp.startsAt', 'asc')
             ->setMaxResults($count)
         ;
 
