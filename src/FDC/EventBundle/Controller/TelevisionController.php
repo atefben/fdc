@@ -512,13 +512,13 @@ class TelevisionController extends Controller
         }
 
         /************* Projections **************/
-        $projections = $this->getBaseCoreFilmProjectionRepository()->getNextProjectionByFilm($film);
+        $projections = $this->getBaseCoreFilmProjectionRepository()->getNextProjectionByFilm($film, array('Séance du jour', 'Séance du lendemain', 'Séance de reprise'));
 
         $filmShowings = array();
         foreach ($projections as $projection) {
             $filmShowings[] = array(
                 'type'  => $projection->getType(),
-                'date'  => $projection->getStartAt(),
+                'date'  => $projection->getStartsAt(),
                 'place' => $projection->getRoom()->getName(),
             );
         }
