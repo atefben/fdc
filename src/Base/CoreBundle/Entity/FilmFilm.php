@@ -1979,7 +1979,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * })
      *
      * @return \Doctrine\Common\Collections\Collection
-     * @todo: uncomment condition
      */
     public function getProjections()
     {
@@ -1987,28 +1986,34 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $now = time();
 
         $days = array();
+        $exclude = array('Séance de presse', 'Conférence de presse');
         $projections = array();
         foreach ($this->projectionProgrammationFilms as $projection) {
             if ($projection instanceof FilmProjectionProgrammationFilm) {
                 $key = $projection->getProjection()->getStartsAt()->getTimestamp();
-//                if ($key > $now) { // to be uncommented
-                $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
-                if (!array_key_exists($dayKey, $days)) {
-                    $newTime = $projection->getProjection()->getStartsAt();
-                    $newTime->setTime(3, 0, 0);
-                    $days[$dayKey]['date'] = $newTime->getTimestamp();
-                    $days[$dayKey]['projections'] = array();
+                if ($key > $now) { // to be uncommented
+                    $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
+                    if (!array_key_exists($dayKey, $days)) {
+                        $newTime = $projection->getProjection()->getStartsAt();
+                        $newTime->setTime(3, 0, 0);
+                        $days[$dayKey]['date'] = $newTime->getTimestamp();
+                        $days[$dayKey]['projections'] = array();
+                    }
+                    /**
+                     * @todo : remove this condition
+                     */
+                    if (!in_array($projection->getType(), $exclude)) {
+                        $days[$dayKey]['projections'][$key] = $projection->getProjection();
+                    }
                 }
-                $days[$dayKey]['projections'][$key] = $projection->getProjection();
-//                } // to be uncommented
             }
+            foreach ($days as $key => $projection) {
+                ksort($days[$key]['projections']);
+                $days[$key]['projections'] = array_values($days[$key]['projections']);
+                $days[$key]['projections'] = array_values($days[$key]['projections']);
+            }
+            return array_values($days);
         }
-        foreach ($days as $key => $projection) {
-            ksort($days[$key]['projections']);
-            $days[$key]['projections'] = array_values($days[$key]['projections']);
-            $days[$key]['projections'] = array_values($days[$key]['projections']);
-        }
-        return array_values($days);
     }
 
     /**
@@ -2223,7 +2228,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                         $status = $status;
                     }
                     $encoded = $trans->getJobWebmState() == MediaVideoTranslation::ENCODING_STATE_READY;
-                    $encoded = $encoded  && $trans->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
+                    $encoded = $encoded && $trans->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
                     $hasURL = $trans->getWebmUrl() && $trans->getMp4Url();
                     if ($status && $encoded && $hasURL) {
                         $collection->add($associatedMediaVideo);
