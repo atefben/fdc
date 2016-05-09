@@ -1996,13 +1996,15 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                         $yesterday = clone $projection->getProjection()->getStartsAt();
                         $yesterday->sub(date_interval_create_from_date_string('1 day'));
                         $dayKey = $yesterday->format('Y-m-d');
+                        $newTime = clone $yesterday;
+                        $newTime->setTime(3, 0, 0);
                     }
                     else {
                         $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
-                    }
-                    if (!array_key_exists($dayKey, $days)) {
                         $newTime = clone $projection->getProjection()->getStartsAt();
                         $newTime->setTime(3, 0, 0);
+                    }
+                    if (!array_key_exists($dayKey, $days)) {
                         $days[$dayKey]['date'] = $newTime->getTimestamp();
                         $days[$dayKey]['projections'] = array();
                     }
