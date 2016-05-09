@@ -25,10 +25,12 @@ class PalmaresController extends Controller
         $festival = $this->getFestival()->getId();
         $locale = $request->getLocale();
 
-        $waitingPage = $this->isWaitingPage($request);
-        if ($waitingPage) {
-            return $waitingPage;
-        }
+        $waitingPage = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageWaiting')
+            ->getSingleWaitingPageByRoute($request->get('_route'))
+        ;
+
 
         $pages = $this
             ->getDoctrineManager()
@@ -61,7 +63,8 @@ class PalmaresController extends Controller
             'page'     => $page,
             'category' => $page->getCategory(),
             'festival' => $festival,
-            'localeSlugs' => $localeSlugs
+            'localeSlugs' => $localeSlugs,
+            'waitingPage' => $waitingPage
         );
 
         //SEO
