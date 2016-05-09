@@ -1037,12 +1037,12 @@ $(document).ready(function () {
           var target = $(this).data('target');
 
           if(typeof target != 'undefined' && target != "" && $('.popin-download-press[data-popin="' + target + '"]').length) {
-            if ($('.popin-download-press[data-popin="'+target+'"').hasClass('visible-popin')) {
-              $('.popin-download-press[data-popin="'+target+'"').removeClass('visible-popin');
+            if ($('.popin-download-press[data-popin="'+target+'"]').hasClass('visible-popin')) {
+              $('.popin-download-press[data-popin="'+target+'"]').removeClass('visible-popin');
               $("#main").removeClass('overlay-popin');
               $('footer').removeClass('overlay');
             } else {
-              $('.popin-download-press[data-popin="'+target+'"').addClass("visible-popin");
+              $('.popin-download-press[data-popin="'+target+'"]').addClass("visible-popin");
               $("#main").addClass('overlay-popin');
             }
           }
@@ -1086,12 +1086,12 @@ $(document).ready(function () {
           var target = $(this).data('target');
 
           if(typeof target != 'undefined' && target != "" && $('.popin-download-press[data-popin="' + target + '"]').length) {
-            if ($('.popin-download-press[data-popin="'+target+'"').hasClass('visible-popin')) {
-              $('.popin-download-press[data-popin="'+target+'"').removeClass('visible-popin');
+            if ($('.popin-download-press[data-popin="'+target+'"]').hasClass('visible-popin')) {
+              $('.popin-download-press[data-popin="'+target+'"]').removeClass('visible-popin');
               $("#main").removeClass('overlay-popin');
               $('footer').removeClass('overlay');
             } else {
-              $('.popin-download-press[data-popin="'+target+'"').addClass("visible-popin");
+              $('.popin-download-press[data-popin="'+target+'"]').addClass("visible-popin");
               $("#main").addClass('overlay-popin');
             }
           }

@@ -180,3 +180,53 @@
     line-height: 85px;
   }
 }
+
+.filters-02 {
+  border-bottom: 1px solid #eaeaea;
+  position: relative;
+
+  ul{
+    padding: 30px 0;
+    display: inline-block;
+  }
+
+  li {
+    color: $gold;
+    text-transform: uppercase;
+    font-family: $CamphorHeavy;
+    font-size: .625rem;
+    display: inline-block;
+    margin-right: 45px;
+    letter-spacing: 1px;
+    transition: .4s;
+
+    &:hover{
+      opacity: .8;
+      cursor: pointer;
+    }
+  }
+
+  .submit {
+    display: inline-block;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: $CamphorHeavy;
+    font-size: .625rem;
+    display: inline-block;
+    letter-spacing: 1px;
+    position: absolute;
+    top: 0px;
+    right:0px;
+    background-color: $gold;
+    height: 100%;
+    line-height: 80px; 
+    width: 199px;
+    text-align: center;
+  }
+
+  .icon-close {
+    font-size: .4rem;
+    vertical-align: super;
+    margin: 5px;
+  }
+}

@@ -56,6 +56,36 @@ function initPopinMail(cls){
     }
   });
 
+  // check valid email address
+  $('#contact_email').on('input', function() {
+    var input=$(this);
+    var re = /^([\w+-.%]+@[\w-.]+\.[A-Za-z]{2,4},?)+$/i;
+    var is_email=re.test(input.val());
+    var is_email_name=input.val();
+
+    if(!is_email_name) {
+      input.removeClass("valid").addClass("invalid");
+      $('.errors .' + input.attr('name')).remove();
+      $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + GLOBALS.texts.popin.empty + '</li>');
+
+    } else if(is_email) {
+      input.removeClass("invalid").addClass("valid");
+      $('.errors .' + input.attr('name')).remove();
+
+    } else{
+      input.removeClass("valid").addClass("invalid");
+      $('.errors .' + input.attr('name')).remove();
+      $('.errors ul').append('<li class="popin ' + input.attr('name') + '">' + input.data('error') + GLOBALS.texts.popin.error +'</li>');
+      // TODO remove string //
+    }
+
+    if($('.invalid').length) {
+      $('.errors').addClass('show');
+    } else {
+      $('.errors').removeClass('show');
+    }
+  });
+
   // on submit : check if there are errors in the form
   $(cls+' form').on('submit', function(e) {
     e.preventDefault();

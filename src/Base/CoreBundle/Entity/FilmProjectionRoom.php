@@ -7,6 +7,7 @@ use Base\CoreBundle\Util\Time;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use JMS\Serializer\Annotation as Serializer;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
@@ -48,6 +49,7 @@ class FilmProjectionRoom
      *     "home",
      *     "news_list"
      * })
+     * @Serializer\Accessor(getter="getApiName")
      */
     private $name;
 
@@ -113,6 +115,16 @@ class FilmProjectionRoom
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getApiName()
+    {
+        return str_replace('Salle de Conférence de Presse', 'Salle de presse', $this->name);
     }
 
     /**

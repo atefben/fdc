@@ -213,12 +213,14 @@ class FilmProjectionRepository extends EntityRepository
             ->setParameter('datetime', new \DateTime())
             ->join('fp.programmationFilms', 'pf')
             ->andWhere('pf.film IS NOT NULL')
+            ->andWhere('fp.type NOT IN (:types)')
+            ->setParameter('types', array('Séance de presse', 'Conférence de presse'))
         ;
 
         $this->addMasterQueries($qb, 'fp', $festival, false);
 
         $qb
-            ->addOrderBy('fp.startsAt', 'desc')
+            ->addOrderBy('fp.startsAt', 'asc')
             ->setMaxResults($count)
         ;
 
@@ -227,6 +229,7 @@ class FilmProjectionRepository extends EntityRepository
 
     /**
      * @param FilmFilm $film
+     * @param null $types
      * @return array
      */
     public function getNextProjectionByFilm(FilmFilm $film, $types = null)
@@ -235,10 +238,10 @@ class FilmProjectionRepository extends EntityRepository
 
         $qb
             ->join('p.programmationFilms', 'pf')
-            ->where('pf.film = :film_id')
+            ->andWhere('pf.film = :film_id')
             ->setParameter(':film_id', $film->getId())
             ->andWhere('p.startsAt > :start_at')
-        ->addOrderBy('p.startsAt', 'asc');
+            ->addOrderBy('p.startsAt', 'asc');
 
         if ($types !== null) {
             $qb

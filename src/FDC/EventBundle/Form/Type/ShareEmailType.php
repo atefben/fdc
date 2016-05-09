@@ -41,12 +41,13 @@ class ShareEmailType extends AbstractType
     {
         $builder
             ->add('email', 'text', array(
+                'pattern' => '^([\w+-.%]+@[\w-.]+\.[A-Za-z]{2,4},?)+$',
                 'attr' => array(
-                    'placeholder' => 'sharemail.form.placeholder.email'
+                    'placeholder' => 'sharemail.form.placeholder.email',
                 ),
                 'label' => false
             ))
-            ->add('user', 'text', array(
+            ->add('user', 'email', array(
                 'attr' => array(
                     'placeholder' => 'sharemail.form.placeholder.votreemail',
                     'class'       => 'popin'
