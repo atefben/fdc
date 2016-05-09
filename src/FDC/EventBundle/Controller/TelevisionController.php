@@ -114,14 +114,14 @@ class TelevisionController extends Controller
                     $mediaVideo = $associatedMediaVideo->getAssociation();
                     if ($mediaVideo instanceof MediaVideo) {
                         $fr = $mediaVideo->findTranslationByLocale('fr');
-                        $translation  = $mediaVideo->findTranslationByLocale($locale);
+                        $translation = $mediaVideo->findTranslationByLocale($locale);
                         $isPublished = $fr && $fr->getStatus() == MediaVideoTranslation::STATUS_PUBLISHED;
                         if ($isPublished) {
                             $isPublished = $isPublished;
                         }
                         $ready = MediaVideoTranslation::ENCODING_STATE_READY;
                         $isPublished = $isPublished && $translation->getJobWebmState() === $ready && $translation->getJobMp4State() === $ready;
-                        
+
                         $isTrailer = $isPublished && $mediaVideo->getDisplayedTrailer();
                         $hasFilms = $isTrailer && $mediaVideo->getAssociatedFilms()->count();
                         $associatedFilms = $mediaVideo->getAssociatedFilms();
@@ -208,6 +208,7 @@ class TelevisionController extends Controller
             'channel'     => $webTv,
             'webTvVideos' => $webTvVideos,
             'otherVideos' => $otherVideos,
+            'localeSlugs' => $webTv->getLocaleSlugs(),
         );
     }
 
@@ -547,6 +548,17 @@ class TelevisionController extends Controller
             ->setFDCEventPageFDCPageWebTvTrailerSeo($path, $title, $description, $updatedAt, $image)
         ;
 
+        $programmationPage = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCEventRoutes')->findOneBy(array(
+                'route' => 'fdc_event_agenda_scheduling',
+            ))
+        ;
+        $isAgendaEnabled = true;
+        if ($programmationPage) {
+            $isAgendaEnabled =  $programmationPage->getEnabled();
+        }
+
         return array(
             'film'             => $film,
             'videos'           => array_values($videos),
@@ -555,6 +567,7 @@ class TelevisionController extends Controller
             'next'             => $next instanceof FilmFilm ? $next : null,
             'posterNext'       => $posterNext,
             'posterNextFormat' => $posterNextFormat,
+            'isAgendaEnabled' => $isAgendaEnabled,
         );
     }
 }

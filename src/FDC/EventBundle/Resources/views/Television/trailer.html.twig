@@ -92,11 +92,11 @@
                             </span>
                         </div>
                         <div class="program-film block">
+                            {% if isAgendaEnabled %}
                             <div class="contain-info">
                                 {% for showing in filmShowings %}
                                     <div class="infos">
-                                        <p>{{ showing.type }} <span class="date">{{ showing.date|date('d.m.y') }} {{ showing.date|date('H:i') }}</span>
-                                        </p>
+                                        <p>{{ showing.type }} <span class="date">{{ showing.date|date('d.m.y') }} {{ showing.date|date('H:i') }}</span></p>
                                         <span class="where">{{ showing.place }}</span>
                                         {% if loop.last == false %}
                                             <hr>
@@ -104,7 +104,8 @@
                                     </div>
                                 {% endfor %}
                             </div>
-                            <a href="{{ path('fdc_event_news_index') }}"
+                                {% endif %}
+                            <a href="{{ path('fdc_event_agenda_scheduling') }}"
                                class="btn">{{ 'trailer.btn.toutelaprogrammation'|trans }}</a>
                         </div>
                     </div>
