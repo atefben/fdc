@@ -1875,7 +1875,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         if ($translation && mb_strtoupper($translation->getName()) == 'CINÉFONDATION') {
             $order = array(
                 FilmContactInterface::TYPE_PRODUCTION_COMPANY,
-                FilmContactInterface::TYPE_MINOR_PRODUCTION_COMPANY,
                 FilmContactInterface::TYPE_FRENCH_DISTRIBUTION,
                 FilmContactInterface::TYPE_SCHOOL,
             );
