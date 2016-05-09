@@ -156,6 +156,7 @@ class MediaImageTranslation implements TranslateChildInterface
      */
     public function getApiCopyright()
     {
+        
         return $this->copyright === null ? ' ' : $this->copyright;
     }
 
