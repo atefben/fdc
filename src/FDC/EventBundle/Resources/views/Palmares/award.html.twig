@@ -4,27 +4,42 @@
 {% block body %}
     <div id="main" class="list-article palmares-list loading ">
         <div class="bandeau-list">
+            {% if waitingPage == null or page.id == 4 %}
             <div class="bandeau-list-img bandeau-head vCenter"
                  style="background-image:url('{% path page.image|trans_fallback('file'), '976x535' %}')">
                 <div class="vCenterKid">
                     <h2 class="title title-list-header ">{{ 'palmares.title.palmares'|trans }}</h2>
                 </div>
             </div>
+            {% else %}
+            <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url({% path waitingPage.banner|trans_fallback('file'), 'reference' %})">
+                <div class="vCenterKid">
+                    <h2 class="title title-list-header">{{ waitingPage|trans_fallback('title')|raw }}</h2>
+                </div>
+            </div>
+            {% endif %}
             {% include 'FDCEventBundle:Palmares:components/nav.html.twig' %}
         </div>
         <div class="container container-list">
             <section class="categorie-items">
-                {% if page.id == 1 %}
+                {% if page.id == 1 and waitingPage == null %}
                     {% include 'FDCEventBundle:Palmares:competition.html.twig' %}
                 {% elseif page.id == 4 %}
                     {% include 'FDCEventBundle:Palmares:camerador.html.twig' %}
-                {% elseif page.id == 5 %}
+                {% elseif page.id == 5 and waitingPage == null %}
                         {% include 'FDCEventBundle:Palmares:all.html.twig' %}
-                {% else %}
+                {% elseif waitingPage == null %}
                         {% include 'FDCEventBundle:Palmares:simple.html.twig' %}
                 {% endif %}
             </section>
-            {% if next %}
+            {% if waitingPage != null and page.id != 4 %}
+                <div id="main" class="list-article landing-page">
+                    <div class="container" style="margin-top:0px;padding-top: 67px">
+                        {{ waitingPage|trans_fallback('text')|raw }}
+                    </div>
+                </div>
+            {% endif %}
+            {% if next and waitingPage == null %}
                 {% include 'FDCEventBundle:Palmares:components/bandeau.html.twig' %}
             {% endif %}
         </div>
