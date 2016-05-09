@@ -1989,9 +1989,10 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $exclude = array('Séance de presse', 'Conférence de presse');
         $projections = array();
         foreach ($this->projectionProgrammationFilms as $projection) {
+
             if ($projection instanceof FilmProjectionProgrammationFilm) {
                 $key = $projection->getProjection()->getStartsAt()->getTimestamp();
-                if ($key > $now) { // to be uncommented
+                if ($key > $now) {
                     $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
                     if (!array_key_exists($dayKey, $days)) {
                         $newTime = $projection->getProjection()->getStartsAt();
@@ -1999,7 +2000,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                         $days[$dayKey]['date'] = $newTime->getTimestamp();
                         $days[$dayKey]['projections'] = array();
                     }
-                    
                     /**
                      * @todo : remove this condition
                      */
@@ -2013,8 +2013,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                 $days[$key]['projections'] = array_values($days[$key]['projections']);
                 $days[$key]['projections'] = array_values($days[$key]['projections']);
             }
-            return array_values($days);
         }
+        return array_values($days);
     }
 
     /**
