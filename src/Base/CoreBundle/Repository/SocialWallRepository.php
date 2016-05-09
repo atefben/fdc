@@ -75,17 +75,14 @@ class SocialWallRepository extends EntityRepository
             $morning->setTime(0, 0, 0);
             $midnight = clone $dateTime;
             $midnight->setTime(23, 59, 59);
-            $now = new \DateTime();
 
             $qb
-                ->andWhere('s.publishedAt BETWEEN :morning AND :midnight')
-                ->andWhere('s.publishedAt <= :now')
-                ->andWhere('(s.publishEndedAt IS NULL OR s.publishEndedAt >= :now)')
-                ->setParameter('now', $now)
+                ->andWhere('s.date BETWEEN :morning AND :midnight')
                 ->setParameter('morning', $morning)
                 ->setParameter('midnight', $midnight)
             ;
         }
+
 
         return $qb;
     }

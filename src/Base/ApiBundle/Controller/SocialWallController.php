@@ -86,7 +86,7 @@ class SocialWallController extends FOSRestController
         $context->setVersion($version);
 
         // create view
-        $view = $this->view($this->buildDays($items), $items ? 200 : 204);
+        $view = $this->view($this->buildDays($items), 200);
         $view->setSerializationContext($context);
 
         return $view;

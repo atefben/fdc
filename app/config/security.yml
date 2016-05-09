@@ -41,7 +41,7 @@ security:
 
         press:
             host: ^%fdc_press_domain_regexp%$
-            context:            press
+            context:            user
             pattern:            ^/
             form_login:
                 provider:       fos_userbundle
@@ -56,7 +56,7 @@ security:
 
         press_mobile:
             host: ^%fdc_event_mobile_domain%$
-            context:            press
+            context:            user
             pattern:            /
             form_login:
                 provider:       fos_userbundle

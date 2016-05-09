@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-05-06T16:57:31Z" source-language="en" target-language="zh" datatype="plaintext" original="not.available">
+  <file date="2016-05-09T18:54:52Z" source-language="en" target-language="zh" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -209,7 +209,7 @@
       <trans-unit id="77c16cd8e690306c13bf64bb0f30bec19db2b182" resname="breadcrumb.jury.home">
         <source>breadcrumb.jury.home</source>
         <target>评审团</target>
-        <jms:reference-file line="145">views/Jury/section.html.twig</jms:reference-file>
+        <jms:reference-file line="129">views/Jury/section.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="97d1b538fec680ba03d108f3448fbb8be5ff107c" resname="breadcrumb.la_selection">
         <source>breadcrumb.la_selection</source>
@@ -231,10 +231,10 @@
       <trans-unit id="7daad9dcfe98302143b7b1dfaed3890e479cb31b" resname="breadcrumb.webtv.home">
         <source>breadcrumb.webtv.home</source>
         <target>首页</target>
-        <jms:reference-file line="290">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="306">views/Artist/page.html.twig</jms:reference-file>
         <jms:reference-file line="83">views/Event/list.html.twig</jms:reference-file>
         <jms:reference-file line="128">views/Event/page.html.twig</jms:reference-file>
-        <jms:reference-file line="141">views/Jury/section.html.twig</jms:reference-file>
+        <jms:reference-file line="125">views/Jury/section.html.twig</jms:reference-file>
         <jms:reference-file line="127">views/Movie/classics.html.twig</jms:reference-file>
         <jms:reference-file line="123">views/Movie/main.html.twig</jms:reference-file>
         <jms:reference-file line="96">views/Movie/selection.html.twig</jms:reference-file>
@@ -242,7 +242,7 @@
         <jms:reference-file line="195">views/Television/channel.html.twig</jms:reference-file>
         <jms:reference-file line="55">views/Television/channels.html.twig</jms:reference-file>
         <jms:reference-file line="204">views/Television/live.html.twig</jms:reference-file>
-        <jms:reference-file line="201">views/Television/trailer.html.twig</jms:reference-file>
+        <jms:reference-file line="202">views/Television/trailer.html.twig</jms:reference-file>
         <jms:reference-file line="91">views/Television/trailers.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="515e1fa9ba45d551a50d16cd9e630aa535378340" resname="breadcrumb.webtv.live">
@@ -251,13 +251,13 @@
         <jms:reference-file line="199">views/Television/channel.html.twig</jms:reference-file>
         <jms:reference-file line="59">views/Television/channels.html.twig</jms:reference-file>
         <jms:reference-file line="208">views/Television/live.html.twig</jms:reference-file>
-        <jms:reference-file line="205">views/Television/trailer.html.twig</jms:reference-file>
+        <jms:reference-file line="206">views/Television/trailer.html.twig</jms:reference-file>
         <jms:reference-file line="95">views/Television/trailers.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4d17577963615d0f37d12df7c1ad1f8b7a683685" resname="breadcrumb.webtv.trailers">
         <source>breadcrumb.webtv.trailers</source>
         <target>预告片</target>
-        <jms:reference-file line="209">views/Television/trailer.html.twig</jms:reference-file>
+        <jms:reference-file line="210">views/Television/trailer.html.twig</jms:reference-file>
         <jms:reference-file line="99">views/Television/trailers.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b9c85e46c0554cdbdf5644527e47dc5a034169a1" resname="cannesclassics.btn.imprimer">
@@ -806,37 +806,37 @@
       <trans-unit id="cfcf345996ce9bff11d9859918af9f0637e33b62" resname="juries.artiste.title.biographie">
         <source>juries.artiste.title.biographie</source>
         <target>生平简介</target>
-        <jms:reference-file line="84">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="100">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ca2f5059452f0717daf356ac0a9e5d2613556fac" resname="juries.artiste.title.filmspresentes">
         <source>juries.artiste.title.filmspresentes</source>
         <target>参与戛纳电影节的影片</target>
-        <jms:reference-file line="91">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="107">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="84ee77c30f04e53fe7f970d55b337ac69a8b85cc" resname="juries.artiste.title.palmares">
         <source>juries.artiste.title.palmares</source>
         <target>获奖</target>
-        <jms:reference-file line="156">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="172">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b5d533d7400ab24da13f0d6f3294538ecce201eb" resname="juries.artiste.title.presences">
         <source>juries.artiste.title.presences</source>
         <target>担任评审</target>
-        <jms:reference-file line="206">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="222">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="33b26f2872f664925accafb74841d6604162fab9" resname="juries.artiste.title.realisateurs">
         <source>juries.artiste.title.realisateurs</source>
         <target>导演</target>
-        <jms:reference-file line="249">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="265">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a9d8fce1f7777b3177ea072e204a26acda0256db" resname="juries.artiste.title.share">
         <source>juries.artiste.title.share</source>
         <target>分享文章</target>
-        <jms:reference-file line="231">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="247">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7a17713a51882265ca5d66304e2657cbc0109143" resname="juries.btn.decouvrirrubrique">
         <source>juries.btn.decouvrirrubrique</source>
         <target>探索本栏</target>
-        <jms:reference-file line="129">views/Jury/section.html.twig</jms:reference-file>
+        <jms:reference-file line="113">views/Jury/section.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4f8eaba3916aadad44237fb71c20049e0b721b9b" resname="juries.role.title.membresdujury.camera">
         <source>juries.role.title.membresdujury.camera</source>
@@ -924,16 +924,24 @@
       <trans-unit id="d9a55ed9926ca551c1997c65136b364e38af298d" resname="movie.fdc_closing">
         <source>movie.fdc_closing</source>
         <target>闭幕电影</target>
+        <jms:reference-file line="26">views/Global/projection-single.html.twig</jms:reference-file>
         <jms:reference-file line="77">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ecd0fbeec916c78e3b20588955e8f2113f9f212b" resname="movie.fdc_open">
         <source>movie.fdc_open</source>
         <target>开幕电影</target>
+        <jms:reference-file line="24">views/Global/projection-single.html.twig</jms:reference-file>
         <jms:reference-file line="75">Movie/components/banner.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="08ec6d52a44841b6cf8757d06ce67de4225df54e" resname="movie.first_film">
+        <source>movie.first_film</source>
+        <target state="new">movie.first_film</target>
+        <jms:reference-file line="29">views/Global/projection-single.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="71ac86142f6bef01ec59b256c446c8bb3b9204ad" resname="movie.label.anneedeproduction">
         <source>movie.label.anneedeproduction</source>
         <target>制作年份</target>
+        <jms:reference-file line="53">views/Global/projection-single.html.twig</jms:reference-file>
         <jms:reference-file line="101">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c4bbe4a662c1b0424af563808843b6e5180746c5" resname="movie.label.datedesortie">
@@ -944,11 +952,13 @@
       <trans-unit id="d51bc9cff188bfbbd32fb729f9be68fb89d304b2" resname="movie.label.duree">
         <source>movie.label.duree</source>
         <target>时长</target>
+        <jms:reference-file line="63">views/Global/projection-single.html.twig</jms:reference-file>
         <jms:reference-file line="109">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1525808c7fd3b7a87fce37051a2459a1232354fd" resname="movie.label.pays">
         <source>movie.label.pays</source>
         <target>国家</target>
+        <jms:reference-file line="56">views/Global/projection-single.html.twig</jms:reference-file>
         <jms:reference-file line="104">Movie/components/banner.html.twig</jms:reference-file>
         <jms:reference-file line="23">Movie/components/pagination.html.twig</jms:reference-file>
         <jms:reference-file line="51">Movie/components/pagination.html.twig</jms:reference-file>
@@ -956,6 +966,7 @@
       <trans-unit id="39074b5c3654fca1ac756f17cce941c9f3aef72d" resname="movie.label.realisepar">
         <source>movie.label.realisepar</source>
         <target>导演</target>
+        <jms:reference-file line="44">views/Global/projection-single.html.twig</jms:reference-file>
         <jms:reference-file line="92">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b34aa56315d7001f2cebb6d9e1c81b61bd1c729c" resname="movie.middlenav.actualites">
@@ -1049,6 +1060,12 @@
         <target>媒体信息</target>
         <jms:reference-file line="7">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="6bdc951b882b500db6a5e673e91db138437a2859" resname="movie.see_movie_page">
+        <source>movie.see_movie_page</source>
+        <target state="new">movie.see_movie_page</target>
+        <jms:reference-file line="72">views/Global/projection-single.html.twig</jms:reference-file>
+        <jms:reference-file line="29">Global/translation-nav/translation-nav.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="352792e10f97c4bd6f01e594cf1de1b69421679f" resname="movie.title.casting">
         <source>movie.title.casting</source>
         <target>演员阵容</target>
@@ -1115,7 +1132,7 @@
       <trans-unit id="e736c9b1bd5609589e8465ec1a9b6489f4a500b2" resname="palmares.title.palmares">
         <source>palmares.title.palmares</source>
         <target>获奖名单</target>
-        <jms:reference-file line="10">views/Palmares/award.html.twig</jms:reference-file>
+        <jms:reference-file line="11">views/Palmares/award.html.twig</jms:reference-file>
         <jms:reference-file line="9">views/Palmares/classic.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b91c038f804f412fba6f4d7bd9a65b7454400400" resname="plandessalles.label.lazonedufestival">
@@ -1392,12 +1409,12 @@
       <trans-unit id="60bcc98fd33f02ea907e8443574a6255b1649e89" resname="seo.trailer.description">
         <source>seo.trailer.description</source>
         <target>探索%film_title%在2016年戛纳电影节的全部预告片和片花</target>
-        <jms:reference-file line="537">EventBundle/Controller/TelevisionController.php</jms:reference-file>
+        <jms:reference-file line="538">EventBundle/Controller/TelevisionController.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="70660bc3cfc26ba0e238be2b01433cadafc3b05b" resname="seo.trailer.title">
         <source>seo.trailer.title</source>
         <target>网络电视 - %film_title% - 预告片和片花- 2016年戛纳电影节</target>
-        <jms:reference-file line="532">EventBundle/Controller/TelevisionController.php</jms:reference-file>
+        <jms:reference-file line="533">EventBundle/Controller/TelevisionController.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="3ffd014ad53d0bde886d3dcdcdd04384b967a580" resname="share.email.send">
         <source>share.email.send</source>
@@ -1413,17 +1430,17 @@
       <trans-unit id="36278b911584399981f85e88a9bacb72061055cf" resname="sharemail.form.placeholder.email">
         <source>sharemail.form.placeholder.email</source>
         <target>收件人电子邮箱*</target>
-        <jms:reference-file line="45">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="46">Form/Type/ShareEmailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="7b1dafe6f88c7fb35125e5fb7424125f7f05a776" resname="sharemail.form.placeholder.message">
         <source>sharemail.form.placeholder.message</source>
         <target>您的信息内容</target>
-        <jms:reference-file line="66">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="67">Form/Type/ShareEmailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="4a242351d5fd2d0511a44d02e793a9924a5f32bf" resname="sharemail.form.placeholder.votreemail">
         <source>sharemail.form.placeholder.votreemail</source>
         <target>您的电子邮箱*</target>
-        <jms:reference-file line="51">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="52">Form/Type/ShareEmailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="f7ecf29682a9807357bafebff334b16a022fa5ee" resname="sharemail.label.copiemail">
         <source>sharemail.label.copiemail</source>
@@ -1517,12 +1534,12 @@
       <trans-unit id="87ab0ef0acaf775dfea2ecc60bd222c8d024fe1f" resname="trailer.btn.toutelaprogrammation">
         <source>trailer.btn.toutelaprogrammation</source>
         <target>全部放映</target>
-        <jms:reference-file line="108">views/Television/trailer.html.twig</jms:reference-file>
+        <jms:reference-file line="109">views/Television/trailer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="2f0a77f804a8b85f4d7b3b42754661ea9b22d5ca" resname="trailer.btn.voirlabandeannonce">
         <source>trailer.btn.voirlabandeannonce</source>
         <target>查看预告片</target>
-        <jms:reference-file line="178">views/Television/trailer.html.twig</jms:reference-file>
+        <jms:reference-file line="179">views/Television/trailer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="df557fd929f8d589affcc8ce89bd79389cdf036e" resname="trailer.nav.film">
         <source>trailer.nav.film</source>
