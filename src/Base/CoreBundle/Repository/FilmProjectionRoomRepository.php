@@ -41,6 +41,7 @@ class FilmProjectionRoomRepository extends EntityRepository
         }
 
 //        $this->addMasterQueries($qb, 'p', $festival, false);
+        $qb->addOrderBy('p.startsAt', 'asc');
 
         return $qb;
     }
