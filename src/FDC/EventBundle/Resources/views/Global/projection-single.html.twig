@@ -313,7 +313,7 @@
                                     film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
                                     film_image_default_attrs: 'width="45"'
                                     }) -%}
-                                    {%- if relatedProjection.programmationFilms|length == 1 -%}
+                                    {%- if relatedProjection.programmationFilms|length > 0 -%}
                                         <div class="txt">
                                             <span>{{ film.titleVO }}</span>
                                             {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
