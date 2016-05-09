@@ -241,7 +241,7 @@ class ProjectionManager extends CoreManager
             $entity->setProgrammationSection($resultObject->SectionProgrammation->Libelle);
             if (property_exists($resultObject->SectionProgrammation->Traductions, 'SectionProgrammationTraductionDto')) {
                 foreach ($resultObject->SectionProgrammation->Traductions->SectionProgrammationTraductionDto as $translation) {
-                    $entityTranslation = $entity->findTranslationByLocale($translation->CodeLangue);
+                    $entityTranslation = $entity->findTranslationByLocale($localesMapper[$translation->CodeLangue]);
                     $entityTranslation = ($entityTranslation !== null) ? $entityTranslation : new FilmProjectionTranslation();
                     $entityTranslation->setProgramSection($translation->Libelle);
                     $entityTranslation->setLocale($localesMapper[$translation->CodeLangue]);
@@ -249,8 +249,6 @@ class ProjectionManager extends CoreManager
                     if ($entityTranslation->getId() === null) {
                         $entity->addTranslation($entityTranslation);
                     }
-
-                    $this->update($entity);
                 }
             }
         }

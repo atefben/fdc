@@ -206,6 +206,16 @@ class FilmProjection
         return '';
     }
 
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
+    }
 
     /**
      * Get id
