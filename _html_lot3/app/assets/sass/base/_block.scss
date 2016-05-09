@@ -267,6 +267,25 @@
 
 // - BLOCK PUSH 03
 .block-push-03 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 70px;
+  margin-bottom: 25px;
+
+  .block-push-item{
+    width: 477px;
+    height: 303px;
+
+    .title {
+      color:#fff;
+      font-family: $CamphorBold;
+      font-size: .875rem;
+      letter-spacing: 2px;
+      display: block;
+      width: 300px;
+      line-height: 24px;
+    }
+  }
 
   .image-wrapper {
     overflow: hidden;
@@ -291,6 +310,20 @@
     z-index: 0;
     width: 221px;
     text-align: center;
+  }
+}
+
+.block-push-03-alone {
+  height: 303px;
+
+  .title-2 {
+    color:#fff;
+    font-family: $CamphorBold;
+    font-size: .875rem;
+    letter-spacing: 2px;
+    display: block;
+    width: 300px;
+    line-height: 24px;
   }
 }
 
@@ -1366,6 +1399,8 @@
     color: #fff;
   }
 }
+
+//BLOCK SEARCH
 
 .block-search {
   margin-top: 50px;
