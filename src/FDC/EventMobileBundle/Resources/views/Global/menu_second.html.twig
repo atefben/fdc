@@ -12,9 +12,16 @@
                             {% if menu['__children'] is defined %}
                                 {% for child in menu['__children'] %}
                                     {% if child.enabled %}
-                                        <li>
+                                        <!-- <li>
                                             <a href="{{ path(child.route) }}">
                                                 {{ child.transName|trans }}
+                                            </a>
+                                        </li> -->
+                                        {% set path = child.route|split('_') %}
+                                        <li>
+                                            <a href="{{ path(path[0]~'_'~'eventmobile'~'_'~path[2]~'_'~path[3]) }}"
+                                               class="{% if route == child.route %}active{% endif %}">
+                                            {{ child.transName|trans }}
                                             </a>
                                         </li>
                                     {% endif %}
@@ -34,9 +41,9 @@
                                 <ul class="section-menu">
                                     {% for k,child in participateMenu %}
                                         {% if k == 0 %}
-                                            <li><a href="{{ path('fdc_event_participate_prepare') }}"> {{ child.title|trans }}</a></li>
+                                            <li><a href="{{ path('fdc_eventmobile_participate_prepare') }}"> {{ child.title|trans }}</a></li>
                                         {% else %}
-                                            <li><a href="{{ path('fdc_event_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"> {{ child|trans_fallback('title') }}</a></li>
+                                            <li><a href="{{ path('fdc_eventmobile_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"> {{ child|trans_fallback('title') }}</a></li>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
