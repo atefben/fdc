@@ -32,7 +32,7 @@
                         {% include 'FDCEventBundle:Palmares:simple.html.twig' %}
                 {% endif %}
             </section>
-            {% if waitingPage %}
+            {% if waitingPage != null and page.id != 4 %}
                 <div id="main" class="list-article landing-page">
                     <div class="container" style="margin-top:0px;padding-top: 67px">
                         {{ waitingPage|trans_fallback('text')|raw }}
