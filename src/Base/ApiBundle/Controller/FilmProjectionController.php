@@ -21,12 +21,13 @@ use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * FilmProjectionController class.
- * 
+ *
  * \@extends FOSRestController
  */
 class FilmProjectionController extends FOSRestController
 {
     private $repository = 'BaseCoreBundle:FilmProjection';
+
     /**
      * Return an array of projections, can be filtered with page / offset parameters
      *
@@ -79,17 +80,11 @@ class FilmProjectionController extends FOSRestController
             $ac = new ArrayCollection();
             if ($room instanceof FilmProjectionRoom) {
                 foreach ($room->getProjections() as $projection) {
-                    /**
-                     * @todo : replace getApiProgrammationFilms with getProgrammationFilms
-                     */
-                    if ($projection->getApiProgrammationFilms()->count()) {
-                        $ac->add($projection);
+                    if ($projection->getProgrammationFilms()->count()) {
+                        if ($projection->getStartsAt()->format('d-m-y') === $date->format('d-m-y')) {
+                            $ac->add($projection);
+                        }
                     }
-//                    if ($projection instanceof FilmProjection) {
-//                        if ($projection->getStartsAt()->format('d-m-y') === $date->format('d-m-y')) {
-//                            $ac->add($projection);
-//                        }
-//                    }
                 }
             }
             $rooms[$key]->setProjections($ac);
@@ -104,7 +99,7 @@ class FilmProjectionController extends FOSRestController
         return $view;
     }
 
-    
+
     /**
      * Return a single projection by $id
      *
@@ -150,7 +145,7 @@ class FilmProjectionController extends FOSRestController
         $context->setVersion($version);
         $view = $this->view($projection, 200);
         $view->setSerializationContext($context);
-         
+
         return $view;
     }
 

@@ -84,16 +84,6 @@ class NewsController extends FOSRestController
             throw $this->createNotFoundException();
         }
 
-        $startsAt = new DateTime();
-        $startsAt->setDate(2016, 5, 11);
-        $startsAt->setTime(0, 0, 0);
-        $endsAt = new DateTime();
-        $endsAt->setDate(2016, 5, 22);
-        $endsAt->setTime(23, 59, 59);
-
-        $festival->setFestivalStartsAt($startsAt);
-        $festival->setFestivalEndsAt($endsAt);
-
         // news
         $news = $this->getApiSameDayNews($festival, $lang, $dateTime);
         $infos = $this->getApiSameDayInfos($festival, $lang, $dateTime);
@@ -214,7 +204,7 @@ class NewsController extends FOSRestController
             krsort($days[$key]['items']);
             $days[$key]['items'] = array_values($days[$key]['items']);
         }
-        ksort($days);
+        krsort($days);
         return array_values($days);
     }
 

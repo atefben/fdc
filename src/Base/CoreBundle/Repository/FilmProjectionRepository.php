@@ -182,20 +182,17 @@ class FilmProjectionRepository extends EntityRepository
 
 
         // To be uncommented.
-//        $begin = clone $dateTime;
-//        $begin->setTime(0, 0, 0);
-//
-//        $end = clone $dateTime;
-//        $end->setTimestamp($dateTime->getTimestamp() + 3600);
-//
-//        $qb
-//            ->andWhere('fp.startsAt BETWEEN :begin AND :end')
-//            ->setParameter('begin', $begin)
-//            ->setParameter('end', $end)
-//        ;
+        $begin = clone $dateTime;
+        $begin->setTime(0, 0, 0);
 
-        // To be removed
-        $qb->setMaxResults(20);
+        $end = clone $dateTime;
+        $end->setTimestamp($dateTime->getTimestamp() + 3600);
+
+        $qb
+            ->andWhere('fp.startsAt BETWEEN :begin AND :end')
+            ->setParameter('begin', $begin)
+            ->setParameter('end', $end)
+        ;
 
         $this->addMasterQueries($qb, 'fp', $festival, false);
 
@@ -212,8 +209,8 @@ class FilmProjectionRepository extends EntityRepository
     {
         $qb = $this
             ->createQueryBuilder('fp')
-            //->andWhere('fp.startsAt > :datetime')
-            //->setParameter('datetime', new \DateTime())
+            ->andWhere('fp.startsAt > :datetime')
+            ->setParameter('datetime', new \DateTime())
             ->join('fp.programmationFilms', 'pf')
             ->andWhere('pf.film IS NOT NULL')
         ;
