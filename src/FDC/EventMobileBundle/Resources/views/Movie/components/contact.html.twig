@@ -96,7 +96,7 @@
                                         {% endif %}
                                         {% if contact.address.email %}
                                             {% if contact.address and contact.address.fax %} - {% endif %}
-                                            <a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
+                                            <a class="ajax" href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
                                         {% endif %}
                                         {% if contact.address and contact.address.website %}
                                             {% if contact.address and contact.address.email %} - {% endif %}
@@ -125,7 +125,7 @@
                                         {% endif %}
                                         {% if contact.address.email %}
                                             {% if contact.address and contact.address.fax %} - {% endif %}
-                                            <a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
+                                            <a class="ajax" href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
                                         {% endif %}
                                         {% if contact.address and contact.address.website %}
                                             {% if contact.address and contact.address.email %} - {% endif %}
@@ -161,7 +161,7 @@
                                     {% endif %}
                                 {% endif %}
                                 {% if contact.address.email %}
-                                    {% set contactInfos = contactInfos|merge(['<a href="mailto:' ~ contact.address.email ~ '">' ~ contact.address.email ~ '</a>']) %}
+                                    {% set contactInfos = contactInfos|merge(['<a class="ajax" href="mailto:' ~ contact.address.email ~ '">' ~ contact.address.email ~ '</a>']) %}
                                 {% endif %}
                                 {% if contact.address and contact.address.website %}
                                     {% set contactInfos =  contactInfos|merge(['<a href="http://' ~ contact.address.website ~ '" target="_blank">' ~ contact.address.website ~ '</a>']) %}
@@ -172,7 +172,7 @@
                                 {% endif %}
 
                                 {% if contact.person and contact.person.email %}
-                                    {% set contactInfos = contactInfos|merge(['<a href="mailto:' ~ contact.person.email ~ '">' ~ contact.person.email ~ '</a>']) %}
+                                    {% set contactInfos = contactInfos|merge(['<a class="ajax" href="mailto:' ~ contact.person.email ~ '">' ~ contact.person.email ~ '</a>']) %}
                                 {% endif %}
                                 {% if contactInfos|length > 0 %}
                                     {% for contactInfo in contactInfos %}
@@ -221,7 +221,7 @@
                                         {% endif %}
                                         {% if contact.address.email %}
                                             {% if contact.address and contact.address.fax %} - {% endif %}
-                                            <a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
+                                            <a class="ajax" href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
                                         {% endif %}
                                         {% if contact.address and contact.address.website %}
                                             {% if contact.address and contact.address.email %} - {% endif %}
@@ -259,7 +259,7 @@
                                     {% endif %}
                                     {% if contact.address.email %}
                                         {% if (contact.address.phone or contact.address.mobilePhone) %} - {% endif %}
-                                        <a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
+                                        <a class="ajax" href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
                                     {% endif %}
                                     {% if contact.address and contact.address.website %}
                                         {% if contact.address and contact.address.email %} - {% endif %}
@@ -295,7 +295,7 @@
 
                                     {% if contact.address and contact.address.email %}
                                         {% if contact.person %} - {% endif %}
-                                        <a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
+                                        <a class="ajax" href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
                                     {% endif %}
                                     {% if contact.address and contact.person %}
                                         <br/>
@@ -328,7 +328,7 @@
                                     {% endif %}
                                     {% if contact.address.email %}
                                         {% if contact.address and contact.address.website %} - {% endif %}
-                                        <a href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
+                                        <a class="ajax" href="mailto:{{ contact.address.email }}">{{ contact.address.email }}</a>
                                     {% endif %}
                                 {% endif %}
                             </p>
