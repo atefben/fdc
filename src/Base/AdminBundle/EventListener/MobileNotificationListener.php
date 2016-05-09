@@ -85,31 +85,37 @@ class MobileNotificationListener
                         if (!trim($uuid)) {
                             continue;
                         }
-                        $conn = $this->getApnsConnection();
-                        $conn->add($this->setNewMessage(trim($uuid), $translation->getDescription(), 1));
-						if(strlen($uuid) == '65') {
+
+						if(strlen($uuid) == '64') {
+                            $conn = $this->getApnsConnection();
+                            $conn->add($this->setNewMessage(trim($uuid), $translation->getDescription(), 1));
 							$this->sendPushIos($conn);
-						} else {
-							 $this->sendPushAndroid($conn);
+						} else if(strlen($uuid) == '162') {
+                            $payload = $this->setAndroidNewMessagePayload($translation->getDescription());
+                            $this->sendPushAndroid(trim($uuid), $payload);
 						}
                         
                     }
                 } elseif ($object->getSendToAll()) {
 
+                    $tokenandroids = array();
                     $androidDevices = $this->getDevices('android', $translation->getLocale());
-                    foreach ($androidDevices as $device) {
-                        $conn = $this->getApnsConnection();
-                        $conn->add($this->setNewMessage(trim($device->getUuid()), $translation->getDescription(), 1));
-                        $this->sendPushAndroid($conn);
+                    if(count($androidDevices) > 0) {
+                        foreach ($androidDevices as $device) {
+                            $tokenandroids[] = trim($device->getUuid());
+                        }
+                        $payload = $this->setAndroidNewMessagePayload($translation->getDescription());
+                        $this->sendPushAndroid($tokenandroids, $payload);
                     }
 
                     $iosDevices = $this->getDevices('ios', $translation->getLocale());
-                    foreach ($iosDevices as $device) {
+                    if(count($iosDevices) > 0) {
                         $conn = $this->getApnsConnection();
-                        $conn->add($this->setNewMessage(trim($device->getUuid()), $translation->getDescription(), 1));
+                        foreach ($iosDevices as $device) {
+                            $conn->add($this->setNewMessage(trim($device->getUuid()), $translation->getDescription(), 1));
+                        }
                         $this->sendPushIos($conn);
                     }
-
                 }
 
 
@@ -131,6 +137,14 @@ class MobileNotificationListener
             ;
     }
 
+
+    private function setAndroidNewMessagePayload($message) {
+
+        $payload = array('type'    => 'MESSAGE',
+            'message' => $message);
+
+        return $payload;
+    }
 
     private function getApnsConnection()
     {
@@ -158,10 +172,31 @@ class MobileNotificationListener
         $conn->disconnect();
     }
 
-    private function sendPushAndroid($conn)
+    private function sendPushAndroid($tokens, $payload)
     {
-        $conn->send();
-        $conn->disconnect();
+        $fields = array(
+            'registration_ids' => $tokens,
+            'data' => $payload
+        );
+
+        $headers = array(
+            'Authorization: key=AIzaSyCaNXVnhrbVeATqMAgyeOSDOK5iT8G0tcY',
+            'Content-Type: application/json'
+        );
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://android.googleapis.com/gcm/send');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+        $result = curl_exec($ch);
+        if ($result === FALSE) {
+            error_log('ERROR - Curl failed : ' . curl_error($ch));
+        }
+
+        curl_close($ch);
     }
 
     private function setNewMessage($token, $text, $badges)
