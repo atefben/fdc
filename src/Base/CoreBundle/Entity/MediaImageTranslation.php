@@ -12,6 +12,7 @@ use Base\CoreBundle\Util\TranslateChild;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use JMS\Serializer\Annotation as Serializer;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
@@ -60,6 +61,7 @@ class MediaImageTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"home", "news_list", "news_show", "film_show", "event_list", "event_show", "home", "today_images", "live"})
+     * @Serializer\Accessor(getter="getApiCopyright")
      */
     private $copyright;
 
@@ -145,6 +147,16 @@ class MediaImageTranslation implements TranslateChildInterface
     public function getCopyright()
     {
         return $this->copyright;
+    }
+
+    /**
+     * Get copyright
+     *
+     * @return string
+     */
+    public function getApiCopyright()
+    {
+        return $this->copyright === null ? $this->copyright : ' ';
     }
 
     /**
