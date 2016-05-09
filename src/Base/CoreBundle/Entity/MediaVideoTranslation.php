@@ -12,6 +12,7 @@ use Base\CoreBundle\Util\TranslateChild;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use JMS\Serializer\Annotation as Serializer;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
@@ -84,6 +85,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "home",
      *     "orange_video_on_demand"
      * })
+     * @Serializer\Accessor(getter="getEncodeImageAmazonUrl")
      */
     private $imageAmazonUrl;
 
@@ -357,6 +359,16 @@ class MediaVideoTranslation implements TranslateChildInterface
     public function getImageAmazonUrl()
     {
         return $this->imageAmazonUrl;
+    }
+
+    /**
+     * Get imageAmazonUrl
+     *
+     * @return string
+     */
+    public function getEncodeImageAmazonUrl()
+    {
+        return str_replace(' ', '%20', $this->imageAmazonUrl);
     }
 
 

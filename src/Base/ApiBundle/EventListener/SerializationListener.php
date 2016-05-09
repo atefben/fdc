@@ -38,9 +38,9 @@ class SerializationListener implements EventSubscriberInterface
         $imageProvider = $kernel->getContainer()->get('sonata.media.provider.image');
 
         if ($event->getObject()->getContext() == 'pdf') {
-            $event->getVisitor()->addData('url', $imageProvider->generatePublicUrl($event->getObject(), 'reference'));
+            $event->getVisitor()->addData('url', str_replace(' ', '%20', $imageProvider->generatePublicUrl($event->getObject(), 'reference')));
         } else {
-            $event->getVisitor()->addData('url', $imageProvider->generatePublicUrl($event->getObject(), $event->getObject()->getContext() . '_mobile'));
+            $event->getVisitor()->addData('url', str_replace(' ', '%20', $imageProvider->generatePublicUrl($event->getObject(), $event->getObject()->getContext() . '_mobile')));
         }
     }
 
