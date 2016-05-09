@@ -72,7 +72,9 @@ class FilmProjectionRepository extends EntityRepository
         $qb = $this
             ->createQueryBuilder('p')
             ->join('p.room', 'r')
-            ->where('p.festival = :festival');
+            ->where('p.festival = :festival')
+            ->andWhere('p.type != :projection_type')
+            ->setParameter('projection_type', 'Divers');
 
         if ($room != false) {
             $qb = $qb
