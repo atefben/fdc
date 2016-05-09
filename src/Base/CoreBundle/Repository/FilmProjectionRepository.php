@@ -213,6 +213,8 @@ class FilmProjectionRepository extends EntityRepository
             ->setParameter('datetime', new \DateTime())
             ->join('fp.programmationFilms', 'pf')
             ->andWhere('pf.film IS NOT NULL')
+            ->andWhere('fp.type NOT IN (:types)')
+            ->setParameter('types', array('Séance de presse', 'Conférence de presse'))
         ;
 
         $this->addMasterQueries($qb, 'fp', $festival, false);
