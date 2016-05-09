@@ -1999,6 +1999,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                         $days[$dayKey]['date'] = $newTime->getTimestamp();
                         $days[$dayKey]['projections'] = array();
                     }
+                    
                     /**
                      * @todo : remove this condition
                      */
