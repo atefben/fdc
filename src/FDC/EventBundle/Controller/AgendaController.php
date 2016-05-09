@@ -229,7 +229,7 @@ class AgendaController extends Controller
        $relatedProjections = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmProjection')
-            ->getAllExceptTypes($festival, array('Séance de presse', 'Conférence de presse'))
+            ->getAllExceptTypes($festival, array('Séance de presse', 'Conférence de presse', 'Divers'))
         ;
 
         // remove conference not matching current films
