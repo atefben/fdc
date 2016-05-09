@@ -2003,7 +2003,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                     /**
                      * @todo : remove this condition
                      */
-                    if (!in_array($projection->getType(), $exclude)) {
+                    if (!in_array($projection->getProjection()->getType(), $exclude)) {
                         $days[$dayKey]['projections'][$key] = $projection->getProjection();
                     }
                 }
