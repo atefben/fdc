@@ -227,18 +227,21 @@ class FilmProjectionRepository extends EntityRepository
 
     /**
      * @param FilmFilm $film
+     * @param bool $publicOnly
      * @return array
      */
-    public function getNextProjectionByFilm(FilmFilm $film)
+    public function getNextProjectionByFilm(FilmFilm $film, $publicOnly = false)
     {
         $qb = $this->createQueryBuilder('p');
 
         $qb
             ->join('p.programmationFilms', 'pf')
-            ->where('pf.film = :film_id')
+            ->andWhere('pf.film = :film_id')
             ->setParameter(':film_id', $film->getId())
             ->andWhere('p.startsAt > :start_at')
             ->setParameter('start_at', new \DateTime())
+            ->andWhere('p.type NOT IN (:types)')
+            ->setParameter('types', array('Séance de presse', 'Conférence de presse'))
         ;
 
         return $qb->getQuery()->getResult();
