@@ -1992,7 +1992,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
             if ($projection instanceof FilmProjectionProgrammationFilm) {
                 error_log(print_r($projection->getProjection(), true));
-                if($projection->getProjection()->getType() == 'Un Certain Regard') {
+                if($projection->getProjection() == 'Un Certain Regard') {
                     $typeUCR = true;
                 }
                 if ($projection->getProjection()->getStartsAt()->format('H') < 4) {
