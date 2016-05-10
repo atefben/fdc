@@ -82,7 +82,7 @@ class FilmProjectionController extends FOSRestController
             $temp = array();
             foreach ($room->getProjections() as $projection) {
                 if ($projection->getProgrammationFilms()->count()) {
-                    if($projection->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_CINEFONDATION || $projection->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_COURTMETRAGE) {
+                    //if($projection->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_CINEFONDATION || $projection->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_COURTMETRAGE) {
                         if ($projection->isProjectionOfTheDay($date)) {
                             if ((int)$projection->getStartsAt()->format('H') < 4) {
                                 $tomorrow = clone $projection->getStartsAt();
@@ -93,7 +93,7 @@ class FilmProjectionController extends FOSRestController
                             }
                             $temp[$keyDay] = $projection;
                         }
-                    }
+                    //}
                 }
             }
             ksort($temp);
