@@ -16,7 +16,7 @@
                                         <li>
                                             <a href="{{ path(path[0]~'_'~'eventmobile'~'_'~path[2]~'_'~path[3]) }}"
                                                class="{% if route == child.route %}active{% endif %}">
-                                            {{ child.transName|trans }}
+                                                {{ child.transName|trans }}
                                             </a>
                                         </li>
                                     {% endif %}
@@ -38,7 +38,12 @@
                                         {% if k == 0 %}
                                             <li><a href="{{ path('fdc_eventmobile_participate_prepare') }}"> {{ child.title|trans }}</a></li>
                                         {% else %}
-                                            <li><a href="{{ path('fdc_eventmobile_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"> {{ child|trans_fallback('title') }}</a></li>
+                                            <li>
+                                                <a href="{{ path('fdc_eventmobile_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"
+                                                   class="{% if route == child.route %}active{% endif %}">
+                                                    {{ child|trans_fallback('title') }}
+                                                </a>
+                                            </li>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
@@ -49,7 +54,7 @@
             {% elseif menu.route == 'fdc_press_news_home' %}
                 {% if menu.enabled == true %}
                     <li class="press">
-                        <div class="section-title has-subsection">
+                        <div class="section-title">
                             <h3 class="title-menu">
                                 <i class="icon icon_espace-presse"></i>
                                 <a href="{{ path('fdc_press_news_home') }}"> {{ menu.transName|trans }}</a>
