@@ -7,15 +7,15 @@
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
     
-        {% if participatePage.image is defined and participatePage.image is not null %}{# test à supprimer quand image dans BO #}
+        {% if participatePage.image is defined and participatePage.image is not null %}
             {% set mainTrans = participatePage.image.findTranslationByLocale(app.request.locale) %}
             {% if mainTrans is null or mainTrans.file is null %}
                 {% set mainTrans = participatePage.image.findTranslationByLocale('fr') %}
             {% endif %}
             {% set mainImage = mainTrans.file %}
         {% endif %}
-        <div class="bandeau-img vCenter"
-             style="background-image:url({% if mainImage is defined and mainImage is not null %}{% path mainImage, '1280x808' %}{% endif %}{# test à supprimer quand image dans BO #})">
+        <div class="banner-img vCenter"
+             style="background-image:url({% if mainImage is defined and mainImage is not null %}{% path mainImage, '1280x808' %}{% endif %})">
             <div class="vCenterKid">
                 <h2 class="title tall tallIcon">
                     {% if participatePage|trans_fallback('icon') is not null %}
@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        {# p a dynamiser ? #}
+        {# p à dynamiser ? #}
         {% if localeSlugs.fr == 'festival-mode-d-emploi' %}
             <section>
                 <p class="description center">Votre badge professionnel (Festival, Marché ou Presse) vous permet d’accéder à la zone Festival et aux projections (Sélection Officielle, sections parallèles, Marché, selon votre catégorie d’accréditation). Les badges sont nominatifs, incessibles et doivent être portés de façon visible pour en faciliter le contrôle. En cas de perte ou de vol, merci de vous adresser au bureau des accréditations tardives.</p>
@@ -42,7 +42,7 @@
                 {% if ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or 
                     ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED'))
                 %}
-                    <section class="">
+                    <section class="accordeon">
                         <div class="section-title">
                             <i class="icon {{ s.section|trans_fallback('icon') }}"></i>
                             <h3 class="title-participate">{{ s.section|trans_fallback('title') }}</h3>
