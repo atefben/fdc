@@ -90,7 +90,7 @@
                                 {%- for room in rooms -%}
                                     <div class="venue">
                                         <div class="v-head">
-                                            {%- set trans_slug = 'programmation.salle.' ~ room.name|sonata_slugify -%}
+                                            {%- set trans_slug = 'programmation.salle.' ~ room.name|remove_accents|sonata_slugify -%}
                                             {%- set trans = trans_slug|trans -%}
                                             {%- if trans_slug != trans -%}
                                                 {{- trans -}}
