@@ -37,7 +37,7 @@ jQuery(document).ready(function ($) {
         });
     }
 
-
+    $('.sonata-ba-collapsed-fields .form-group .item a').each(function(){  $(this).attr('title',$(this).attr('href')); })
     // preview
     var url = window.location.href;
     var newsUrl = url.split("/");

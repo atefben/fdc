@@ -1991,10 +1991,12 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         foreach ($this->projectionProgrammationFilms as $projection) {
 
             if ($projection instanceof FilmProjectionProgrammationFilm) {
-                dump($projection->getProjection()->getType());
-                if($projection->getProjection()->getType() == 'Un Certain Regard') {
+
+                $typeUCR = false;
+                if($this->getSelectionSection()->getId() == FilmSelectionSectionInterface::FILM_SELECTION_SECTION_UNCERTAINREGARD) {
                     $typeUCR = true;
                 }
+                //$typeUCR = true;
                 if ($projection->getProjection()->getStartsAt()->format('H') < 4) {
                     $tomorrow = clone $projection->getProjection()->getStartsAt();
                     $tomorrow->add(date_interval_create_from_date_string('1 day'));
@@ -2027,9 +2029,9 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
             $days[$key]['projections'] = array_values($tempDayProjections);
         }
         if($typeUCR) {
-            //return array_values(array_reverse($days));
+            return array_values(array_reverse($days));
         } else {
-            //return array_values($days);
+            return array_values($days);
         }
     }
 
@@ -2047,7 +2049,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     {
         foreach ($this->projectionProgrammationFilms as $projection) {
             if ($projection instanceof FilmProjectionProgrammationFilm) {
-                if ($projection->getType()->getId() == 3) {
+                if ($projection->getType()->getId() == 3 || $this->getGalaName() != '') {
                     return true;
                 }
             }
@@ -2069,7 +2071,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     {
         foreach ($this->projectionProgrammationFilms as $projection) {
             if ($projection instanceof FilmProjectionProgrammationFilm) {
-                if ($projection->getType()->getId() == 4 || $this->getGalaName() != '') {
+                if ($projection->getType()->getId() == 4) {
                     return true;
                 }
             }

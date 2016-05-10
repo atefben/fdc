@@ -491,3 +491,7 @@
 #titleFilmOnHomepage > a{
     color: #fff;
 }
+
+.chapeau em {
+    font-style: italic;
+}
