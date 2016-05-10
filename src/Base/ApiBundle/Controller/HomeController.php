@@ -131,17 +131,16 @@ class HomeController extends FOSRestController
     public function getNextProjections($festival)
     {
         $now = new \DateTime();
+        //$now->setTimestamp(1463652000);
         $results = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:FilmProjection')
             ->getNewsApiProjections($festival)
         ;
-        
 
         $projections = array();
 
-        $exclude = array('Séance de presse', 'Conférence de presse');
         foreach ($results as $projection) {
             if ($projection instanceof FilmProjection and (int)$projection->getStartsAt()->format('H') < 4) {
                 $tomorrow = clone $projection->getStartsAt();
@@ -150,10 +149,8 @@ class HomeController extends FOSRestController
             } else {
                 $key = $projection->getStartsAt()->getTimestamp();
             }
-            if (!in_array($projection->getType(), $exclude)) {
-                if ($key > $now->getTimestamp()) {
-                    $projections[$key . '-' . $projection->getId()] = $projection;
-                }
+            if ($key > $now->getTimestamp()) {
+                $projections[$key . '-' . $projection->getId()] = $projection;
             }
         }
         ksort($projections);
