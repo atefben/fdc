@@ -3,6 +3,7 @@
 namespace Base\ApiBundle\Controller;
 
 use Base\CoreBundle\Entity\FilmProjection;
+use Base\CoreBundle\Entity\FilmSelectionSectionInterface;
 use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\Statement;
@@ -142,16 +143,18 @@ class HomeController extends FOSRestController
 
         $exclude = array('Séance de presse', 'Conférence de presse');
         foreach ($results as $projection) {
-            if ($projection instanceof FilmProjection and (int)$projection->getStartsAt()->format('H') < 4) {
-                $tomorrow = clone $projection->getStartsAt();
-                $tomorrow->add(date_interval_create_from_date_string('1 day'));
-                $key = $tomorrow->getTimestamp();
-            } else {
-                $key = $projection->getStartsAt()->getTimestamp();
-            }
-            if (!in_array($projection->getType(), $exclude)) {
-                if ($key > $now->getTimestamp()) {
-                    $projections[$key . '-' . $projection->getId()] = $projection;
+            if($projection->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_CINEFONDATION || $projection->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_COURTMETRAGE) {
+                if ($projection instanceof FilmProjection and (int)$projection->getStartsAt()->format('H') < 4) {
+                    $tomorrow = clone $projection->getStartsAt();
+                    $tomorrow->add(date_interval_create_from_date_string('1 day'));
+                    $key = $tomorrow->getTimestamp();
+                } else {
+                    $key = $projection->getStartsAt()->getTimestamp();
+                }
+                if (!in_array($projection->getType(), $exclude)) {
+                    if ($key > $now->getTimestamp()) {
+                        $projections[$key . '-' . $projection->getId()] = $projection;
+                    }
                 }
             }
         }
