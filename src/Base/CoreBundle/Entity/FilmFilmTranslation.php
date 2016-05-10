@@ -11,6 +11,7 @@ use Base\CoreBundle\Util\TranslateChild;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 
+use JMS\Serializer\Annotation as Serializer;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Exclude;
 use JMS\Serializer\Annotation\Expose;
@@ -48,6 +49,7 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "classics",
      *     "orange_studio"
      * })
+     * @Serializer\Accessor(getter="getApiTitle")
      */
     private $title;
     
@@ -147,6 +149,19 @@ class FilmFilmTranslation implements TranslateChildInterface
      */
     public function getTitle()
     {
+        return $this->title;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getApiTitle()
+    {
+        if ($this->locale == 'fr' && !$this->title) {
+            return $this->translatable->getTitleVO();
+        }
         return $this->title;
     }
 

@@ -828,7 +828,7 @@ class FooterController extends Controller
             if ($form->isValid()) {
                 $message = \Swift_Message::newInstance()
                     ->setSubject($form->get('subject')->getData())
-                    ->setFrom('no-reply@festival-cannes.com')
+                    ->setFrom($form->get('email')->getData())
                     ->setTo($theme->getEmail())
                     ->setContentType('text/html')
                     ->setBody(
