@@ -238,6 +238,9 @@ $(document).ready(function () {
 
             var cal = ics();
             for (var i = 0; i < agenda_data.length; i++) {
+              console.log(agenda_data[i].start);
+              console.log(agenda_data[i].end);
+
               var d = new Date(agenda_data[i].start);
               var m = (d.getUTCMonth() + 1) < 10 ? '0'+(d.getUTCMonth()+1) : (d.getUTCMonth()+1);
               cal.addEvent(
@@ -249,8 +252,6 @@ $(document).ready(function () {
               );
             }
             cal.download();
-
-
           }
         }
       });

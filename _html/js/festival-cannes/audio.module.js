@@ -31,15 +31,14 @@ function initAudioPlayers() {
 
     $(this).addClass('loading').find('.wave-container').attr('id', 'wave-' + i);
     var h = $(this).hasClass('bigger') ? 55 : 55;
-    var wave = Object.create(WaveSurfer);
-
-    // initialize wave sound
-    wave.init({
-      container: document.querySelector('#' + 'wave-' + i),
-      waveColor: 'rgba(90, 90, 90, 0.5)',
-      progressColor: '#c8a461',
-      cursorWidth: 0,
-      height: h
+    var wave = WaveSurfer.create({
+      container     : document.querySelector('#' + 'wave-' + i),
+      backend       : 'MediaElement',
+      waveColor     : 'rgba(90, 90, 90, 0.5)',
+      progressColor : '#c8a461',
+      cursorWidth   : 0,
+      // cursorColor   : 'rgba(255,255,255,0.5)',
+      height        : h
     });
 
     // load the url of the sound
@@ -47,10 +46,18 @@ function initAudioPlayers() {
 
     // once it's ready
     wave.on('ready', function() {
-      $(wave.container).parents('.audio-player').removeClass('loading');
+      // $(wave.container).parents('.audio-player').removeClass('loading');
       if($(wave.container).parents('.audio-player').hasClass('popin-audio')) {
         $('.popin-audio .playpause').trigger('click');
       }
+    });
+
+    wave.on('loading', function() {
+      $(wave.container).parents('audio-player').addClass('loading');
+    })
+
+    wave.on('decoded', function(e) {
+      $(wave.container).parents('.audio-player').removeClass('loading');
     });
 
     wave.on('finish', function() {
@@ -74,9 +81,9 @@ function initAudioPlayers() {
       e.preventDefault();
 
       $('.playpause').not($(this)).html('<i class="icon icon_video"></i>');
-      if($(this).find('i').hasClass('icon_video')){
+      if($(this).find('i').hasClass('icon_video')) {
         $(this).html('<i class="icon icon_pause"></i>');
-      }else{
+      } else {
         $(this).html('<i class="icon icon_video"></i>');
       }
 
@@ -113,7 +120,6 @@ function initAudioPlayers() {
 
         $audioplayer.find('.duration .curr').text(minutes + ':' + seconds);
       }, 1000);
-
 
       if(!$audioplayer.hasClass('pause')) {
         for(var i = 0; i<waves.length; i++) {
@@ -176,11 +182,11 @@ function initAudioPlayers() {
 // Player Audio
 // =========================
 $(document).ready(function() {
-
   function FShandler() {
     setTimeout(function() {
       redraw();
     }, 200);
+
     if (document.fullscreenEnabled && document.fullscreenElement == null) {
       $('.audio-player').removeClass("full overlay-channels");
       $('.audio-player .bottom').remove();
