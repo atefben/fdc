@@ -1986,7 +1986,12 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
         $days = array();
         $typeUCR = false;
-        $exclude = array('Séance de presse', 'Conférence de presse');
+        if(!isset($_GET['v']) || empty($_GET['v'])) {
+            $exclude = array('Séance de presse', 'Conférence de presse');
+        } else {
+            $exclude = array();
+        }
+
         $projections = array();
         foreach ($this->projectionProgrammationFilms as $projection) {
             if ($projection instanceof FilmProjectionProgrammationFilm) {

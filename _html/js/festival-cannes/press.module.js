@@ -241,9 +241,6 @@ $(document).ready(function () {
 
             var cal = ics();
             for (var i = 0; i < agenda_data.length; i++) {
-              console.log(agenda_data[i].start);
-              console.log(agenda_data[i].end);
-
               var d = new Date(agenda_data[i].start);
               var m = (d.getUTCMonth() + 1) < 10 ? '0'+(d.getUTCMonth()+1) : (d.getUTCMonth()+1);
               cal.addEvent(
@@ -260,7 +257,6 @@ $(document).ready(function () {
       });
     }
   }
-
 
   if ($('#mycalendar').length) {
     var minDate = typeof GLOBALS.dateStart !== "undefined" ? GLOBALS.dateStart.slice(-2) : '11';
@@ -317,12 +313,11 @@ $(document).ready(function () {
             $(element).addClass('one-hour');
           }
 
-
           var minutes = (event.duration % 60) < 10 ? '0'+(event.duration % 60) : (event.duration % 60),
               heures  = Math.floor(event.duration / 60);
-
-          var dur = heures + 'H' + minutes;
-          var c = event.eventColor;
+          var dur     = heures + 'H' + minutes;
+          var c       = event.eventColor;
+          
           // $(element).css('width', 'auto');
           $(element).css('height', event.duration/60 < 1 ? '80px' : (event.duration/60)*80 + 'px' );
           $(element).empty();
@@ -527,9 +522,9 @@ $(document).ready(function () {
 
           var minutes = (event.duration % 60) < 10 ? '0'+(event.duration % 60) : (event.duration % 60),
               heures  = Math.floor(event.duration / 60);
-
-          var dur = heures + 'H' + minutes;
-          var c = event.eventColor;
+          var dur     = heures + 'H' + minutes;
+          var c       = event.eventColor;
+          
           $(element).css('height', event.duration/60 < 1 ? '80px' : (event.duration/60)*80 + 'px' );
           $(element).empty();
           $(element).addClass(event.eventPictogram).addClass('ajax');
@@ -564,7 +559,6 @@ $(document).ready(function () {
             return;
           } else {
             openPopinEvent(event.url);
-
             return false;
           }
         },
@@ -1166,6 +1160,7 @@ $(document).ready(function () {
           var $form = $(this);
           var data = getFormData($form);
 
+
           date1 = data.datebegin;
           date1 = date1.replace(/\//g,'-');
           hour1 = data.hoursbegin;
@@ -1181,57 +1176,48 @@ $(document).ready(function () {
           var dateEnd = new Date(date2);
 
           if(dateEnd < dateBegin) {
-
+            $('#create-event-pop input[name="datebegin"], \
+               #create-event-pop input[name="hoursbegin"], \
+               #create-event-pop input[name="dateend"], \
+               #create-event-pop input[name="hoursend"]').addClass('error');
+            return false;
           } else {
+            $('#create-event-pop input[name="datebegin"], \
+               #create-event-pop input[name="hoursbegin"], \
+               #create-event-pop input[name="dateend"], \
+               #create-event-pop input[name="hoursend"]').removeClass('error');
             $('#create-event-pop').removeClass("visible-popin");
-          }
 
-          /**
-          * Renvoie un UID unique
-          **/
+            id = guid();
+            var titleEvent = (data.title.length > 17) ? jQuery.trim(data.title).substring(0, 15).split(" ").slice(0, -1).join(" ") + "..." : data.title;
+             //Création de l'évènement et affichage sur le calendrier
+            var myEvent = {
+                 "title": titleEvent,
+                 "eventColor": "#fff",
+                 "start": dateBegin,
+                 "end": dateEnd,
+                 "type": data.title,
+                 "description" : data.description,
+                 "duration": (dateEnd-dateBegin)/60000,
+                 "room": data.place,
+                 "eventPictogram": "pen",
+                 "id": id,
+                 "url": "eventPopin.html"
+            };
+            $('#mycalendar').fullCalendar( 'renderEvent', myEvent );
+            $(this)[0].reset();
 
-          function guid() {
-            return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-            function s4() {
-              return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+            var agenda = localStorage.getItem('agenda_press');
+
+            if (agenda == null) {
+              events.push(myEvent);
+              localStorage.setItem('agenda_press', JSON.stringify(events));
+            } else {
+              // get events, add the event and store
+              events = JSON.parse(agenda);
+              events.push(myEvent);
+              localStorage.setItem('agenda_press', JSON.stringify(events));
             }
-          }
-
-          id = guid();
-          var titleEvent = (data.title.length > 17) ? jQuery.trim(data.title).substring(0, 15).split(" ").slice(0, -1).join(" ") + "..." : data.title;
-           //Création de l'évènement et affichage sur le calendrier
-          var myEvent = {
-               "title": titleEvent,
-               "eventColor": "#fff",
-               "start": dateBegin,
-               "end": dateEnd,
-               "type": data.title,
-               "description" : data.description,
-               "duration": (dateEnd-dateBegin)/60000,
-               "room": data.place,
-               "eventPictogram": "pen",
-               "id": id,
-               "url": "eventPopin.html"
-          };
-          $('#mycalendar').fullCalendar( 'renderEvent', myEvent );
-          $(this)[0].reset();
-
-          //Stockage de l'évènement dans le storage
-          //ici
-
-          // get local storage
-          var agenda = localStorage.getItem('agenda_press');
-
-          if (agenda == null) {
-            // add the event and store
-            events.push(myEvent);
-
-            localStorage.setItem('agenda_press', JSON.stringify(events));
-          } else {
-            // get events, add the event and store
-            events = JSON.parse(agenda);
-            events.push(myEvent);
-            localStorage.setItem('agenda_press', JSON.stringify(events));
           }
         }
         return false;
