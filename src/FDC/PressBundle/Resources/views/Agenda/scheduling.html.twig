@@ -15,11 +15,11 @@
                         <a href="#" class="button subnav"><i
                                     class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatpdf'|trans }}
                         </a>
-                        <a href="{% path pressProjection.pressScheduling, 'reference' %}" class="button pdf" download
+                        <a href="{% path pressProjection.pressScheduling, 'reference' %}" class="button list pdf" download
                            target="_blank"><i
                                     class="icon icon_telecharger"></i>{{ pressProjection|trans_fallback('pressSchedulingLabel') }}
                         </a>
-                        <a href="{% path pressProjection.scheduling, 'reference' %}" class="button pdf" download
+                        <a href="{% path pressProjection.scheduling, 'reference' %}" class="button list pdf" download
                            target="_blank"><i
                                     class="icon icon_telecharger"></i>{{ pressProjection|trans_fallback('schedulingLabel') }}
                         </a>
