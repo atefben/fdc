@@ -571,4 +571,16 @@ class FilmProjection
     {
         return $this->name;
     }
+
+    public function isProjectionOfTheDay(\DateTime $dateTime)
+    {
+        if ($this->startsAt->format('Y-m-d') === $dateTime->format('Y-m-d') && $this->startsAt->format('H:i:s') !== '00:00:00') {
+            return true;
+        }
+        $yesterday = clone $dateTime;
+        $yesterday->add(date_interval_create_from_date_string('1 day'));
+        if ($this->startsAt->format('H:i:s') === '00:00:00' && $this->startsAt->format('Y-m-d') === $yesterday->format('Y-m-d')){
+            return false;
+        }
+    }
 }

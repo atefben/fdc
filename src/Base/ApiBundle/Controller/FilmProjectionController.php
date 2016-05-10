@@ -81,8 +81,8 @@ class FilmProjectionController extends FOSRestController
             $temp = array();
             foreach ($room->getProjections() as $projection) {
                 if ($projection->getProgrammationFilms()->count()) {
-                    if ($projection->getStartsAt()->format('d-m-y') === $date->format('d-m-y')) {
-                        $temp[$projection->getStartsAt()->getTimestamp() . '-'.$projection->getId()] = $projection;
+                    if ($projection->isProjectionOfTheDay($date)) {
+                        $temp[$projection->getStartsAt()->getTimestamp() . '-' . $projection->getId()] = $projection;
                     }
                 }
             }
@@ -92,6 +92,8 @@ class FilmProjectionController extends FOSRestController
             }
             $rooms[$key]->setProjections($ac);
         }
+        
+        
         $groups = array('projection_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
 

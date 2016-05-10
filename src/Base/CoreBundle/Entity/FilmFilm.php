@@ -1982,7 +1982,6 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function getProjections()
     {
-
         $now = time();
 
         $days = array();
@@ -1993,17 +1992,26 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
             if ($projection instanceof FilmProjectionProgrammationFilm) {
                 $key = $projection->getProjection()->getStartsAt()->getTimestamp();
                 if ($key > $now) {
-                    $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
-                    if (!array_key_exists($dayKey, $days)) {
-                        $newTime = $projection->getProjection()->getStartsAt();
+                    if ($projection->getProjection()->getStartsAt()->format('H:i:s') === '00:00:00') {
+                        $yesterday = clone $projection->getProjection()->getStartsAt();
+                        $yesterday->sub(date_interval_create_from_date_string('1 day'));
+                        $dayKey = $yesterday->format('Y-m-d');
+                        $newTime = clone $yesterday;
                         $newTime->setTime(3, 0, 0);
+                    }
+                    else {
+                        $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
+                        $newTime = clone $projection->getProjection()->getStartsAt();
+                        $newTime->setTime(3, 0, 0);
+                    }
+                    if (!array_key_exists($dayKey, $days)) {
                         $days[$dayKey]['date'] = $newTime->getTimestamp();
                         $days[$dayKey]['projections'] = array();
                     }
                     /**
                      * @todo : remove this condition
                      */
-                    if (!in_array($projection->getType(), $exclude)) {
+                    if (!in_array($projection->getProjection()->getType(), $exclude)) {
                         $days[$dayKey]['projections'][$key] = $projection->getProjection();
                     }
                 }
