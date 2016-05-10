@@ -36,6 +36,10 @@ $(document).ready(function() {
     owInitNavSticky(1);
   }
 
+  if($('.retrospective-home').length) {
+    owInitSliderSelect('timelapse-01');
+  }
+
   if($('.jury').length) {
     owInitNavSticky(2);
     owInitGrid('isotope-01');
@@ -94,7 +98,7 @@ $(document).ready(function() {
 
   if($('.media-library').length) {
     owInitSliderSelect('timelapse');
-    owInitSliderSelect('tab-selection'); 
+    owInitSliderSelect('tab-selection');
 
     var grid = owInitGrid('isotope-03');
 
