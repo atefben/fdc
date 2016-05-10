@@ -49,8 +49,12 @@
 						    <a href="https://itunes.apple.com/app/festival-de-cannes-officiel/id431842884">
 						{%  endif %}
 						   {% image '@FDCEventBundle/Resources/public/img/appstore.png' %}
-						   <img src="{{ asset_url }}" alt="apple" /></a>
+						   <img src="{{ asset_url }}" alt="Apple" /></a>
 						   {% endimage %}
+							<a href=https://play.google.com/store/apps/details?id=fr.festivaldecannes&hl={{ app.request.locale }}">
+							{% image '@FDCEventBundle/Resources/public/img/appgoogle.png' %}
+							<img src="{{ asset_url }}" alt="Google" /></a>
+							{% endimage %}
 					</p>
 		       </div>
 		    </section>
