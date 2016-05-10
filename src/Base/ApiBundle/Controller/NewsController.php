@@ -90,12 +90,26 @@ class NewsController extends FOSRestController
         $statements = $this->getApiSameDayStatements($festival, $lang, $dateTime);
 
         // projections
-        $projections = $this
+        $tempProjections = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:FilmProjection')
             ->getNewsApiProjections($festival, $dateTime)
         ;
+        $projections = array();
+        foreach ($tempProjections as $projection) {
+            $end = $dateTime->getTimestamp() + 3600;
+            if ($projection->getStartsAt() && (int)$projection->getStartsAt()->format('H') < 4) {
+                $tomorrow = clone $projection->getStartsAt();
+                $tomorrow->add(date_interval_create_from_date_string('1 day'));
+                $begin = $tomorrow->getTimestamp();
+            } else {
+                $begin = $projection->getStartsAt()->getTimestamp();
+            }
+            if ($end >= $begin) {
+                $projections[] = $projection;
+            }
+        }
 
         $images = $this
             ->getDoctrine()
@@ -196,13 +210,20 @@ class NewsController extends FOSRestController
                     'items' => array(),
                 );
             }
-            $itemKey = $item->{$timeMethod}()->format('Y-m-d-H-i-s-') . $item->getId() . '-' . strtolower(get_class($item));
+            if ($item instanceof FilmProjection && (int)$item->getStartsAt()->format('H') < 4) {
+                $tomorrow = clone $item->getStartsAt();
+                $tomorrow->add(date_interval_create_from_date_string('1 day'));
+                $itemKey = $tomorrow->getTimestamp() . '-' . $item->getId() . '-' . strtolower(get_class($item));
+            } else {
+                $itemKey = $item->{$timeMethod}()->getTimestamp() . '-' . $item->getId() . '-' . strtolower(get_class($item));
+            }
             $days[$dayKey]['items'][$itemKey] = $item;
         }
 
         foreach ($days as $key => $value) {
-            krsort($days[$key]['items']);
-            $days[$key]['items'] = array_values($days[$key]['items']);
+            $tempItems = $days[$key]['items'];
+            ksort($tempItems);
+            $days[$key]['items'] = array_values($tempItems);
         }
         krsort($days);
         return array_values($days);
