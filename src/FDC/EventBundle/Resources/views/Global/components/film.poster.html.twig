@@ -30,7 +30,7 @@
         {% endif %}
     {% else %}
         {% if media is not empty and film_format is not empty and film_attrs is not empty %}
-            <img src="{% path media, film_format  %}" {% for key, val in film_attrs %} {{ key }}={{ val }} {% endfor %}>
+            <img src="{% path media, film_format  %}"{% for key, val in film_attrs %} {{ key }}="{{ val }}"{% endfor %}>
         {% else %}
             <img src="{{ asset(film_image_default) }}" alt="{{ 'movie.poster'|trans() }}"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs|raw }}{% endif %} data-object-fit="cover">
         {% endif %}

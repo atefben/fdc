@@ -10853,6 +10853,11 @@ article .read-later.rAlign span:after {
   margin-right: 65px;
   vertical-align: middle;
 }
+.single-article .film .info-film .wrapper .poster img {
+  width: 187px;
+  height: 255px;
+  object-fit: cover;
+}
 .single-article .film .info-film .wrapper .text-container {
   display: inline-block;
   vertical-align: middle;
