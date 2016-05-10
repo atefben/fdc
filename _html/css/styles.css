@@ -6035,7 +6035,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   filter: blur(7px);
 }
 .audio-player:after {
-  background: url("../img/svg/loading.svg");
+  background: url("../img/loading.svg");
   content: '';
   display: block;
   height: 32px;

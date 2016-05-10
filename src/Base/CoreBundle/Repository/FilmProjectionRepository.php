@@ -170,8 +170,6 @@ class FilmProjectionRepository extends EntityRepository
      * @param $festival
      * @param \DateTime $dateTime
      * @return array
-     * @todo Uncomment condition
-     * @todo remove limit
      */
     public function getNewsApiProjections($festival, \DateTime $dateTime)
     {
@@ -182,13 +180,12 @@ class FilmProjectionRepository extends EntityRepository
             ->andWhere('pf.film IS NOT NULL')
         ;
 
-
         // To be uncommented.
         $begin = clone $dateTime;
         $begin->setTime(0, 0, 0);
 
         $end = clone $dateTime;
-        $end->setTimestamp($dateTime->getTimestamp() + 3600);
+        $end->setTime(23, 59, 59);
 
         $qb
             ->andWhere('fp.startsAt BETWEEN :begin AND :end')

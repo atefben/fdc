@@ -448,6 +448,22 @@ var owInitSliderSelect = function(id) {
     });
   }
 
+  if(id == "timelapse-01") {
+    var slider = document.getElementById('timelapse-01');
+
+    noUiSlider.create(slider, {
+      start: [1946],//todo script
+      range: {
+        'min': 1946,
+        'max': 2015
+      }
+     });
+
+     slider.noUiSlider.on('update', function( values, handle ) {
+          //drag
+     });
+  }
+
   if(id == 'tab-selection') {
     var $tab = $('.icon-s');
 
@@ -814,6 +830,10 @@ $(document).ready(function() {
     owInitNavSticky(1);
   }
 
+  if($('.retrospective-home').length) {
+    owInitSliderSelect('timelapse-01');
+  }
+
   if($('.jury').length) {
     owInitNavSticky(2);
     owInitGrid('isotope-01');
@@ -872,7 +892,7 @@ $(document).ready(function() {
 
   if($('.media-library').length) {
     owInitSliderSelect('timelapse');
-    owInitSliderSelect('tab-selection'); 
+    owInitSliderSelect('tab-selection');
 
     var grid = owInitGrid('isotope-03');
 

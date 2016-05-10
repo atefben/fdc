@@ -7,18 +7,18 @@
         <link href="data:image/gif;" rel="icon" type="image/x-icon" />
 
         <!-- Bootstrap -->
-        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 
         <link rel="stylesheet" href="../css/style.css" />
         <link rel="stylesheet" href="../css/ribbon.css" />
 
-        <link rel="screenshot" itemprop="screenshot" href="http://katspaugh.github.io/wavesurfer.js/example/screenshot.png" />
+        <link rel="screenshot" itemprop="screenshot" href="//katspaugh.github.io/wavesurfer.js/example/screenshot.png" />
 
         <!-- wavesurfer.js -->
         <script src="../../dist/wavesurfer.min.js"></script>
 
         <!-- timeline format renderer -->
-        <script src="../../plugin/wavesurfer.timeline.js"></script>
+        <script src="../../dist/plugin/wavesurfer.timeline.min.js"></script>
 
         <!-- App -->
         <script src="app.js"></script>
@@ -35,7 +35,7 @@
                 </ul>
                 </noindex>
 
-                <h1 itemprop="name"><a href="http://wavesurfer.fm">wavesurfer.js</a><noindex> + Timeline</noindex></h1>
+                <h1 itemprop="name"><a href="http://wavesurfer-js.org">wavesurfer.js</a><noindex> + Timeline</noindex></h1>
             </div>
 
             <div id="demo">
@@ -76,7 +76,7 @@
                       </ol>
                     </p>
                     <p>
-                        <a class="btn btn-large btn-success" href="/plugin/wavesurfer.timeline.js" itemprop="downloadUrl">Download <strong>the plugin</strong> (5 KB)</a>
+                        <a class="btn btn-large btn-success" href="../../plugin/wavesurfer.timeline.js" itemprop="downloadUrl">Download <strong>the plugin</strong> (5 KB)</a>
                     </p>
                 </div>
 
@@ -115,19 +115,21 @@ wavesurfer.load('example/media/demo.mp3');</code></pre>
                       <li><code>secondaryColor</code> - the color of the non-modulo-ten notch lines. The default is '#c0c0c0'.</li>
                       <li><code>primaryFontColor</code> - the color of the non-modulo-ten time labels (e.g. 10sec, 20sec). The default is '#000'.</li>
                       <li><code>primaryFontColor</code> - the color of the non-modulo-ten time labels (e.g. 5sec, 15sec). The default is '#c0c0c0'.</li>
-                      <li><code>fontFamily</code> - the font family for the time labels. The default is 'Arial'.</li>
-                      <li><code>fontSize</code> - the font size for the time labels. The default is 10.</li>
+                      <li><code>timeInterval</code> - number of intervals that records consists of. Usually it is equal to the duration in minutes.</li>
+                      <li><code>primaryLabelInterval</code> - number of primary time labels.</li>
+                      <li><code>secondaryLabelInterval</code> - number of secondary time labels (Time labels between primary labels).</li>
+                      <li><code>formatTimeCallback</code> - custom time format callback.</li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer row">
                 <div class="col-sm-12">
-                    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+                    <a rel="license" href="https://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
                 </div>
 
                 <div class="col-sm-12">
-                    <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">wavesurfer.js</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/katspaugh/wavesurfer.js" property="cc:attributionName" rel="cc:attributionURL">katspaugh</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.
+                    <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">wavesurfer.js</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/katspaugh/wavesurfer.js" property="cc:attributionName" rel="cc:attributionURL">katspaugh</a> is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.
                 </div>
             </div>
         </div>

@@ -46,19 +46,21 @@
                                 </p>
                                 {%- endif -%}
                             {%- elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
-                                <img src="{% path artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first, '640x603' %}"
+                                {% set artistMedia = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'),true)|first %}
+                                <img src="{% path artistMedia.file, '640x603' %}"
                                      alt="{{ artist.fullName }}"/>
-                                {%- if artist.presidentJuryCredits is not empty or artistImage.copyright is not empty -%}
+                                {%- if artistMedia.copyright is not empty -%}
                                     <p class="caption" id="captionCopyright">
-                                        {{- '© ' ~  ((artist.presidentJuryCredits)?:artistImage.copyright) -}}
+                                        {{- '© ' ~ artistMedia.copyright  -}}
                                     </p>
                                 {% endif %}
                             {%- elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
-                                <img src="{% path artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first, '640x603' %}"
+                                {% set artistMedia = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'),true)|first %}
+                                <img src="{% path artistMedia.file, '640x603' %}"
                                      alt="{{ artist.fullName }}"/>
-                                {%- if artist.presidentJuryCredits is not empty or artistImage.copyright is not empty -%}
+                                {%- if artistMedia.copyright is not empty -%}
                                     <p class="caption" id="captionCopyright">
-                                        {{- '© ' ~  ((artist.presidentJuryCredits)?:artistImage.copyright) -}}
+                                        {{- '© ' ~ artistMedia.copyright  -}}
                                     </p>
                                 {%- endif -%}
                             {%- elseif class(artistImage) == 'FilmMedia' -%}

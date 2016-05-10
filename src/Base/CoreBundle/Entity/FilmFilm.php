@@ -1990,20 +1990,18 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         foreach ($this->projectionProgrammationFilms as $projection) {
 
             if ($projection instanceof FilmProjectionProgrammationFilm) {
-                $key = $projection->getProjection()->getStartsAt()->getTimestamp();
+                if ($projection->getProjection()->getStartsAt()->format('H') < 4) {
+                    $tomorrow = clone $projection->getProjection()->getStartsAt();
+                    $tomorrow->add(date_interval_create_from_date_string('1 day'));
+                    $key = $tomorrow->getTimestamp();
+                }
+                else {
+                    $key = $projection->getProjection()->getStartsAt()->getTimestamp();
+                }
                 if ($key > $now) {
-                    if ($projection->getProjection()->getStartsAt()->format('H:i:s') === '00:00:00') {
-                        $yesterday = clone $projection->getProjection()->getStartsAt();
-                        $yesterday->sub(date_interval_create_from_date_string('1 day'));
-                        $dayKey = $yesterday->format('Y-m-d');
-                        $newTime = clone $yesterday;
-                        $newTime->setTime(3, 0, 0);
-                    }
-                    else {
-                        $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
-                        $newTime = clone $projection->getProjection()->getStartsAt();
-                        $newTime->setTime(3, 0, 0);
-                    }
+                    $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
+                    $newTime = clone $projection->getProjection()->getStartsAt();
+                    $newTime->setTime(3, 0, 0);
                     if (!array_key_exists($dayKey, $days)) {
                         $days[$dayKey]['date'] = $newTime->getTimestamp();
                         $days[$dayKey]['projections'] = array();
@@ -2016,11 +2014,12 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                     }
                 }
             }
-            foreach ($days as $key => $projection) {
-                ksort($days[$key]['projections']);
-                $days[$key]['projections'] = array_values($days[$key]['projections']);
-                $days[$key]['projections'] = array_values($days[$key]['projections']);
-            }
+        }
+
+        foreach ($days as $key => $projection) {
+            $tempDayProjections = $days[$key]['projections'];
+            ksort($tempDayProjections);
+            $days[$key]['projections'] = array_values($tempDayProjections);
         }
         return array_values($days);
     }
@@ -2061,7 +2060,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     {
         foreach ($this->projectionProgrammationFilms as $projection) {
             if ($projection instanceof FilmProjectionProgrammationFilm) {
-                if ($projection->getType()->getId() == 4) {
+                if ($projection->getType()->getId() == 4 || $this->getGalaName() != '') {
                     return true;
                 }
             }

@@ -82,7 +82,14 @@ class FilmProjectionController extends FOSRestController
             foreach ($room->getProjections() as $projection) {
                 if ($projection->getProgrammationFilms()->count()) {
                     if ($projection->isProjectionOfTheDay($date)) {
-                        $temp[$projection->getStartsAt()->getTimestamp() . '-' . $projection->getId()] = $projection;
+                        if ((int)$projection->getStartsAt()->format('H') < 4) {
+                            $tomorrow = clone $projection->getStartsAt();
+                            $tomorrow->add(date_interval_create_from_date_string('1 day'));
+                            $keyDay = $tomorrow->getTimestamp() . '-' . $projection->getId();
+                        } else {
+                            $keyDay = $projection->getStartsAt()->getTimestamp() . '-' . $projection->getId();
+                        }
+                        $temp[$keyDay] = $projection;
                     }
                 }
             }
@@ -92,8 +99,8 @@ class FilmProjectionController extends FOSRestController
             }
             $rooms[$key]->setProjections($ac);
         }
-        
-        
+
+
         $groups = array('projection_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
 

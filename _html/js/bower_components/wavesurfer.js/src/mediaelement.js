@@ -18,16 +18,18 @@ WaveSurfer.util.extend(WaveSurfer.MediaElement, {
 
         this.mediaType = params.mediaType.toLowerCase();
         this.elementPosition = params.elementPosition;
+        this.setPlaybackRate(this.params.audioRate);
     },
 
     load: function (url, container, peaks) {
         var my = this;
 
         var media = document.createElement(this.mediaType);
-        media.controls = false;
-        media.autoplay = false;
+        media.controls = this.params.mediaControls;
+        media.autoplay = this.params.autoplay || false;
         media.preload = 'auto';
         media.src = url;
+        media.style.width = '100%';
 
         media.addEventListener('error', function () {
             my.fireEvent('error', 'Error loading media element');
