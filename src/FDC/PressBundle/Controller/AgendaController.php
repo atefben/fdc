@@ -38,8 +38,7 @@ class AgendaController extends Controller
             return $waitingPage;
         }
 
-        if ($this->get('security.authorization_checker')->isGranted('ROLE_FDC_PRESS_REPORTER') &&
-            strpos($request->headers->get('refer'), 'press') !== false) {
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_FDC_PRESS_REPORTER')) {
             $isPress = true;
         }
 

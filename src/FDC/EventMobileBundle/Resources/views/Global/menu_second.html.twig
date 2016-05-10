@@ -12,11 +12,6 @@
                             {% if menu['__children'] is defined %}
                                 {% for child in menu['__children'] %}
                                     {% if child.enabled %}
-                                        <!-- <li>
-                                            <a href="{{ path(child.route) }}">
-                                                {{ child.transName|trans }}
-                                            </a>
-                                        </li> -->
                                         {% set path = child.route|split('_') %}
                                         <li>
                                             <a href="{{ path(path[0]~'_'~'eventmobile'~'_'~path[2]~'_'~path[3]) }}"
@@ -55,17 +50,11 @@
                 {% if menu.enabled == true %}
                     <li class="press">
                         <div class="section-title has-subsection">
-                            <h3 class="title-menu"><i class="icon icon_espace-presse"></i>{{ menu.transName|trans }}</h3>
+                            <h3 class="title-menu">
+                                <i class="icon icon_espace-presse"></i>
+                                <a href="{{ path('fdc_press_news_home') }}"> {{ menu.transName|trans }}</a>
+                            </h3>
                         </div>
-                        {% if menu['__children'] is defined %}
-                            <ul>
-                                {% for child in menu['__children'] %}
-                                    {% if child.enabled %}
-                                        <li><a href="{{ path(child.route) }}"> {{ child.transName|trans }}</a></li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
                     </li>
                 {% endif %}
             {% endif %}

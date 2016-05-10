@@ -176,12 +176,14 @@
                                         <span class="category">{{ 'article.film.label.programmation'|trans }}</span>
                                         <ul>
                                             {% for programmation in programmations|slice(-4) %}
-                                                <li>
-                                                    <span class="type">{{ 'article.film.text.projection'|trans }}</span>
-                                                    <span>{{ programmation.startsAt|date('d-m-Y') }}</span>
-                                                    <span>{{ programmation.startsAt|date('H') }}h</span>
-                                                    <span class="location">{{ programmation.room.name }}</span>
-                                                </li>
+                                                {% if programmation.type not in ['Séance de presse', 'Conférence de presse', 'Divers'] %}
+                                                    <li>
+                                                        <span class="type">{{ 'article.film.text.projection'|trans }}</span>
+                                                        <span>{{ programmation.startsAt|date('d-m-Y') }}</span>
+                                                        <span>{{ programmation.startsAt|date('H') }}h</span>
+                                                        <span class="location">{{ programmation.room.name }}</span>
+                                                    </li>
+                                                {% endif %}
                                             {% endfor %}
                                         </ul>
                                         <a href="#" class="button">{{ 'article.film.btn.toutelaprojection'|trans }}</a>
