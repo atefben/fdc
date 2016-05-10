@@ -37,11 +37,11 @@
                         <span class="category">{{ film.association.selectionSection|trans_fallback('name') }}</span>
                         <h2 id="titleFilmOnHomepage">
                         {% if film.association|trans_fallback('title') is not null and film.association and film.association.titleVOAlphabet != '' %}
-                            <a href="{{ path('fdc_event_movie_get', {'slug':film.association|trans_fallback('slug')}) }}">{{ film.association|trans_fallback('title') }}</a>
+                            <a href="{{ path('fdc_event_movie_get', {'slug':film.association.slug}) }}">{{ film.association|trans_fallback('title') }}</a>
                         {% elseif film.association.titleVOAlphabet is not null and film.association and film.association.titleVOAlphabet != '' %}
-                            <a href="{{ path('fdc_event_movie_get', {'slug':film.association|trans_fallback('slug')}) }}">{{ film.association.titleVOAlphabet }}</a>
+                            <a href="{{ path('fdc_event_movie_get', {'slug':film.association.slug}) }}">{{ film.association.titleVOAlphabet }}</a>
                         {% else %}
-                            <a href="{{ path('fdc_event_movie_get', {'slug':film.association|trans_fallback('slug')}) }}">{{ film.association.titleVO }}</a>
+                            <a href="{{ path('fdc_event_movie_get', {'slug':film.association.slug}) }}">{{ film.association.titleVO }}</a>
                         {% endif %}
                         </h2>
                         <p class="director">
