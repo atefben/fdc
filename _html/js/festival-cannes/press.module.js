@@ -1196,7 +1196,7 @@ $(document).ready(function () {
                  "eventColor": "#fff",
                  "start": dateBegin,
                  "end": dateEnd,
-                 "type": data.title,
+                 "type": 'custom',
                  "description" : data.description,
                  "duration": (dateEnd-dateBegin)/60000,
                  "room": data.place,
