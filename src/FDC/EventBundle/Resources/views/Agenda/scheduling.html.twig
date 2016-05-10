@@ -9,12 +9,11 @@
                 <div class="buttons">
                     <a href="#" class="button subnav"><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerhoraireprojectionpresse'|trans }}</a>
                     {% if pressProjection is not empty and pressProjection.scheduling is not null %}
-                        <a href="{% path pressProjection.scheduling, 'reference' %}" class="button list" download
+                        <a href="{% path pressProjection.scheduling, 'reference' %}" class="button list pdf" download
                            target="_blank">
                             <i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatpdf'|trans }}
                         </a>
                     {% endif %}
-
                     <a href="#" class="button list ics"><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatics'|trans }}</a>
                 </div>
             </div>
