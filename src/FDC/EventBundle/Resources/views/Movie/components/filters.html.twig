@@ -23,7 +23,7 @@
             </li>
         {% endif %}
     {% endif %}
-    <li class="displaynotcmn">
+    <li>
         <a href="{{ path('fdc_event_movie_selection', {'slug': 'cinema-de-la-plage'}) }}"
            class="{% if app.request.attributes.get('slug') == 'cinema-de-la-plage' %}active{% endif %}">
             {{ 'selection.nav.cinema-la-plage'|trans }}
