@@ -140,11 +140,10 @@ class HomeController extends FOSRestController
         ;
 
         $projections = array();
-
         $exclude = array('Séance de presse', 'Conférence de presse');
         foreach ($results as $projection) {
 
-            if($projection->getProgrammationSection() != 'Cinéfondation' || $projection->getProgrammationSection() != 'En Compétition - Courts métrages') {
+            if($projection->getProgrammationSection() != 'Cinéfondation' && $projection->getProgrammationSection() != 'En Compétition - Courts métrages') {
                 if ($projection instanceof FilmProjection and (int)$projection->getStartsAt()->format('H') < 4) {
                     $tomorrow = clone $projection->getStartsAt();
                     $tomorrow->add(date_interval_create_from_date_string('1 day'));
