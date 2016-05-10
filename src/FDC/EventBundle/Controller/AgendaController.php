@@ -184,7 +184,9 @@ class AgendaController extends Controller
 
         $seances = array();
         $conferences = array();
-        if ($this->get('security.authorization_checker')->isGranted('ROLE_FDC_PRESS_REPORTER')) {
+
+        if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'press') !== false &&
+        $this->get('security.authorization_checker')->isGranted('ROLE_FDC_PRESS_REPORTER')) {
             // seance de presse
             $seances = $this
                 ->getDoctrineManager()
