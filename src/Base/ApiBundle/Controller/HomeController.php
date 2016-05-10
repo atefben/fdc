@@ -3,6 +3,7 @@
 namespace Base\ApiBundle\Controller;
 
 use Base\CoreBundle\Entity\FilmProjection;
+use Base\CoreBundle\Entity\FilmSelectionSectionInterface;
 use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\Statement;
@@ -131,7 +132,6 @@ class HomeController extends FOSRestController
     public function getNextProjections($festival)
     {
         $now = new \DateTime();
-        //$now->setTimestamp(1463652000);
         $results = $this
             ->getDoctrine()
             ->getManager()
@@ -141,16 +141,21 @@ class HomeController extends FOSRestController
 
         $projections = array();
 
+        $exclude = array('Séance de presse', 'Conférence de presse');
         foreach ($results as $projection) {
-            if ($projection instanceof FilmProjection and (int)$projection->getStartsAt()->format('H') < 4) {
-                $tomorrow = clone $projection->getStartsAt();
-                $tomorrow->add(date_interval_create_from_date_string('1 day'));
-                $key = $tomorrow->getTimestamp();
-            } else {
-                $key = $projection->getStartsAt()->getTimestamp();
-            }
-            if ($key > $now->getTimestamp()) {
-                $projections[$key . '-' . $projection->getId()] = $projection;
+            if($projection->getProgrammationSection() != ' Cinéfondation' || $projection->getProgrammationSection() != ' En Compétition - Courts métrages') {
+                if ($projection instanceof FilmProjection and (int)$projection->getStartsAt()->format('H') < 4) {
+                    $tomorrow = clone $projection->getStartsAt();
+                    $tomorrow->add(date_interval_create_from_date_string('1 day'));
+                    $key = $tomorrow->getTimestamp();
+                } else {
+                    $key = $projection->getStartsAt()->getTimestamp();
+                }
+                if (!in_array($projection->getType(), $exclude)) {
+                    if ($key > $now->getTimestamp()) {
+                        $projections[$key . '-' . $projection->getId()] = $projection;
+                    }
+                }
             }
         }
         ksort($projections);
