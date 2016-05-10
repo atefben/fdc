@@ -18442,6 +18442,7 @@ input[type=submit] {
 .popin-event .film p span {
   color: #adadad;
   margin-right: 10px;
+  display: inline-block;
 }
 .popin-event .film p .nom-item {
   color: #c8a461;
