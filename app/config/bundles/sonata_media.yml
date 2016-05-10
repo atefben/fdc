@@ -159,6 +159,9 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
+                633x399: {width: 633, height: 399, quality: 100, constraint: false}
+                194x122: {width: 194, height: 122, quality: 100, constraint: false}
+                97x61:   {width: 97, height: 61, quality: 100, constraint: false}
                 mobile: { width: 584 , height: 794 , quality: 100 }
                 # Slider Home(TEMPORAIRE CAR NON DEFINI), audio fullscreen (TEMPORAIRE CAR NON DEFINI)
                 2560x1620: { width: 2560 , height: 1620 , quality: 100, constraint: false}
