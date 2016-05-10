@@ -17203,6 +17203,9 @@ input[type=submit] {
   color: #c8a461;
   cursor: default;
 }
+.press .header-press .buttons.full .button {
+  width: calc(100% - 40px);
+}
 .press .locked {
   background-color: #f4f4f4;
   border-top: 1px solid #d6d6d6;
