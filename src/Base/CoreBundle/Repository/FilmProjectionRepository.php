@@ -74,7 +74,8 @@ class FilmProjectionRepository extends EntityRepository
             ->join('p.room', 'r')
             ->where('p.festival = :festival')
             ->andWhere('p.type != :projection_type')
-            ->setParameter('projection_type', 'Divers');
+            ->setParameter('projection_type', 'Divers')
+        ;
 
         if ($room != false) {
             $qb = $qb
@@ -84,13 +85,15 @@ class FilmProjectionRepository extends EntityRepository
             $qb
                 ->andWhere('(p.startsAt >= :startDate AND p.startsAt <= :endDate)')
                 ->setParameter('startDate', $date . ' 00:00:00')
-                ->setParameter('endDate', $date. ' 23:59:59');
+                ->setParameter('endDate', $date . ' 23:59:59')
+            ;
         }
 
         if ($isPress == false) {
             $qb = $qb
                 ->andWhere('p.type NOT IN (:types)')
-                ->setParameter('types', array('Séance de presse', 'Conférence de presse'));
+                ->setParameter('types', array('Séance de presse', 'Conférence de presse'))
+            ;
         }
 
         $qb = $qb->setParameter('festival', $festival);
@@ -98,7 +101,6 @@ class FilmProjectionRepository extends EntityRepository
             $qb = $qb->setParameter('room', $room);
         }
         $qb = $qb
-
             ->getQuery()
             ->getResult()
         ;
@@ -122,6 +124,7 @@ class FilmProjectionRepository extends EntityRepository
 
         return $qb;
     }
+
     /**
      * @param $festival
      * @param null $time
@@ -171,7 +174,7 @@ class FilmProjectionRepository extends EntityRepository
      * @param \DateTime $dateTime
      * @return array
      */
-    public function getNewsApiProjections($festival, \DateTime $dateTime)
+    public function getNewsApiProjections($festival, \DateTime $dateTime = null)
     {
         $qb = $this
             ->createQueryBuilder('fp')
@@ -180,18 +183,20 @@ class FilmProjectionRepository extends EntityRepository
             ->andWhere('pf.film IS NOT NULL')
         ;
 
-        // To be uncommented.
-        $begin = clone $dateTime;
-        $begin->setTime(0, 0, 0);
+        if ($dateTime) {
+            // To be uncommented.
+            $begin = clone $dateTime;
+            $begin->setTime(0, 0, 0);
 
-        $end = clone $dateTime;
-        $end->setTime(23, 59, 59);
+            $end = clone $dateTime;
+            $end->setTime(23, 59, 59);
 
-        $qb
-            ->andWhere('fp.startsAt BETWEEN :begin AND :end')
-            ->setParameter('begin', $begin)
-            ->setParameter('end', $end)
-        ;
+            $qb
+                ->andWhere('fp.startsAt BETWEEN :begin AND :end')
+                ->setParameter('begin', $begin)
+                ->setParameter('end', $end)
+            ;
+        }
 
         $this->addMasterQueries($qb, 'fp', $festival, false);
 
@@ -240,12 +245,14 @@ class FilmProjectionRepository extends EntityRepository
             ->andWhere('pf.film = :film_id')
             ->setParameter(':film_id', $film->getId())
             ->andWhere('p.startsAt > :start_at')
-            ->addOrderBy('p.startsAt', 'asc');
+            ->addOrderBy('p.startsAt', 'asc')
+        ;
 
         if ($types !== null) {
             $qb
                 ->andWhere('p.type IN (:types)')
-                ->setParameter('types', $types);
+                ->setParameter('types', $types)
+            ;
         }
 
         $qb->setParameter('start_at', new \DateTime());
