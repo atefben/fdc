@@ -37,12 +37,10 @@ $(document).ready(function() {
   $('body').on('click', "a[target!='_blank']:not(.ajax, .link)", function(e) {
     var href = $(this).attr('href');
 
-    if(!isiPad()) {
-      e.preventDefault();
-    }
-
     if((href.indexOf('#') == -1 || (href.indexOf('#') > -1 && href.length > 1)) || $(this).hasClass('ajaxi')) {
-      if(!isiPad()) {
+      if(!isiPad() && href.indexOf('mailto') == -1) {
+        e.preventDefault();
+        
         if(!$(this).hasClass('ajaxi')) {
            $('#main, footer, #breadcrumb, .sub-nav-list').addClass('loading');
         }  
@@ -67,7 +65,7 @@ $(document).ready(function() {
       }
     }
 
-    if(!isiPad()) {
+    if(!isiPad() && href.indexOf('mailto') == -1) {
       return false;
     }
   });
