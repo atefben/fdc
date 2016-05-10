@@ -1989,35 +1989,33 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $exclude = array('Séance de presse', 'Conférence de presse');
         $projections = array();
         foreach ($this->projectionProgrammationFilms as $projection) {
-
             if ($projection instanceof FilmProjectionProgrammationFilm) {
-
-                $typeUCR = false;
-                if($this->getSelectionSection()->getId() == FilmSelectionSectionInterface::FILM_SELECTION_SECTION_UNCERTAINREGARD) {
-                    $typeUCR = true;
-                }
-                //$typeUCR = true;
-                if ($projection->getProjection()->getStartsAt()->format('H') < 4) {
-                    $tomorrow = clone $projection->getProjection()->getStartsAt();
-                    $tomorrow->add(date_interval_create_from_date_string('1 day'));
-                    $key = $tomorrow->getTimestamp();
-                }
-                else {
-                    $key = $projection->getProjection()->getStartsAt()->getTimestamp();
-                }
-                if ($key > $now) {
-                    $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
-                    $newTime = clone $projection->getProjection()->getStartsAt();
-                    $newTime->setTime(3, 0, 0);
-                    if (!array_key_exists($dayKey, $days)) {
-                        $days[$dayKey]['date'] = $newTime->getTimestamp();
-                        $days[$dayKey]['projections'] = array();
+                if($this->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_CINEFONDATION || $this->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_COURTMETRAGE) {
+                    $typeUCR = false;
+                    if ($this->getSelectionSection()->getId() == FilmSelectionSectionInterface::FILM_SELECTION_SECTION_UNCERTAINREGARD) {
+                        $typeUCR = true;
                     }
-                    /**
-                     * @todo : remove this condition
-                     */
-                    if (!in_array($projection->getProjection()->getType(), $exclude)) {
-                        $days[$dayKey]['projections'][$key] = $projection->getProjection();
+                    if ($projection->getProjection()->getStartsAt()->format('H') < 4) {
+                        $tomorrow = clone $projection->getProjection()->getStartsAt();
+                        $tomorrow->add(date_interval_create_from_date_string('1 day'));
+                        $key = $tomorrow->getTimestamp();
+                    } else {
+                        $key = $projection->getProjection()->getStartsAt()->getTimestamp();
+                    }
+                    if ($key > $now) {
+                        $dayKey = $projection->getProjection()->getStartsAt()->format('Y-m-d');
+                        $newTime = clone $projection->getProjection()->getStartsAt();
+                        $newTime->setTime(3, 0, 0);
+                        if (!array_key_exists($dayKey, $days)) {
+                            $days[$dayKey]['date'] = $newTime->getTimestamp();
+                            $days[$dayKey]['projections'] = array();
+                        }
+                        /**
+                         * @todo : remove this condition
+                         */
+                        if (!in_array($projection->getProjection()->getType(), $exclude)) {
+                            $days[$dayKey]['projections'][$key] = $projection->getProjection();
+                        }
                     }
                 }
             }
