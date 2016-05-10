@@ -2018,10 +2018,10 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
         foreach ($days as $key => $projection) {
             $tempDayProjections = $days[$key]['projections'];
-            asort($tempDayProjections);
+            ksort($tempDayProjections);
             $days[$key]['projections'] = array_values($tempDayProjections);
         }
-        return array_values($days);
+        return array_values(array_reverse($days));
     }
 
     /**
