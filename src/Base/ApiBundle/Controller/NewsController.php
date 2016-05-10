@@ -3,6 +3,7 @@
 namespace Base\ApiBundle\Controller;
 
 use Base\CoreBundle\Entity\FilmProjection;
+use Base\CoreBundle\Entity\FilmSelectionSectionInterface;
 use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\News;
@@ -98,16 +99,18 @@ class NewsController extends FOSRestController
         ;
         $projections = array();
         foreach ($tempProjections as $projection) {
-            $end = $dateTime->getTimestamp() + 3600;
-            if ($projection->getStartsAt() && (int)$projection->getStartsAt()->format('H') < 4) {
-                $tomorrow = clone $projection->getStartsAt();
-                $tomorrow->add(date_interval_create_from_date_string('1 day'));
-                $begin = $tomorrow->getTimestamp();
-            } else {
-                $begin = $projection->getStartsAt()->getTimestamp();
-            }
-            if ($end >= $begin) {
-                $projections[] = $projection;
+            if($projection->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_CINEFONDATION || $projection->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_COURTMETRAGE) {
+                $end = $dateTime->getTimestamp() + 3600;
+                if ($projection->getStartsAt() && (int)$projection->getStartsAt()->format('H') < 4) {
+                    $tomorrow = clone $projection->getStartsAt();
+                    $tomorrow->add(date_interval_create_from_date_string('1 day'));
+                    $begin = $tomorrow->getTimestamp();
+                } else {
+                    $begin = $projection->getStartsAt()->getTimestamp();
+                }
+                if ($end >= $begin) {
+                    $projections[] = $projection;
+                }
             }
         }
 
