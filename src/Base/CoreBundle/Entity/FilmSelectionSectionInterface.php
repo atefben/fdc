@@ -11,4 +11,5 @@ namespace Base\CoreBundle\Entity;
 interface FilmSelectionSectionInterface
 {
     const FILM_SELECTION_SECTION_CINEFONDATION = 2;
+    const FILM_SELECTION_SECTION_UNCERTAINREGARD = 6;
 }

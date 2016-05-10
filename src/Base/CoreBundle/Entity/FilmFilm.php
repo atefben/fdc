@@ -1991,10 +1991,12 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         foreach ($this->projectionProgrammationFilms as $projection) {
 
             if ($projection instanceof FilmProjectionProgrammationFilm) {
-                error_log(print_r($projection->getProjection(), true));
-                if($projection->getProjection() == 'Un Certain Regard') {
+
+                $typeUCR = false;
+                if($this->getSelectionSection()->getId() == FilmSelectionSectionInterface::FILM_SELECTION_SECTION_UNCERTAINREGARD) {
                     $typeUCR = true;
                 }
+                //$typeUCR = true;
                 if ($projection->getProjection()->getStartsAt()->format('H') < 4) {
                     $tomorrow = clone $projection->getProjection()->getStartsAt();
                     $tomorrow->add(date_interval_create_from_date_string('1 day'));
