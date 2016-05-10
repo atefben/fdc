@@ -83,7 +83,7 @@ class FilmProjectionController extends FOSRestController
 
             foreach ($room->getProjections() as $projection) {
                 if ($projection->getProgrammationFilms()->count()) {
-                    if($projection->getProgrammationSection() != 'Cinéfondation' || $projection->getProgrammationSection() != 'En Compétition - Courts métrages') {
+                    if($projection->getProgrammationSection() != 'Cinéfondation' && $projection->getProgrammationSection() != 'En Compétition - Courts métrages') {
                         if ($projection->isProjectionOfTheDay($date)) {
                             if ((int)$projection->getStartsAt()->format('H') < 4) {
                                 $tomorrow = clone $projection->getStartsAt();
