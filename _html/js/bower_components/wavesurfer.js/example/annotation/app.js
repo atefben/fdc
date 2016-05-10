@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         scrollParent: true,
         normalize: true,
         minimap: true,
-        backend: 'AudioElement'
+        backend: 'MediaElement'
     });
 
     wavesurfer.util.ajax({
@@ -113,6 +113,7 @@ function saveRegions() {
             return {
                 start: region.start,
                 end: region.end,
+                attributes: region.attributes,
                 data: region.data
             };
         })
@@ -146,7 +147,7 @@ function extractRegions(peaks, duration) {
     // Gather silence indeces
     var silences = [];
     Array.prototype.forEach.call(peaks, function (val, index) {
-        if (val < minValue) {
+        if (Math.abs(val) <= minValue) {
             silences.push(index);
         }
     });
