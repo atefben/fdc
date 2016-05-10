@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-05-10T19:41:15Z" source-language="en" target-language="zh" datatype="plaintext" original="not.available">
+  <file date="2016-05-10T22:17:04Z" source-language="en" target-language="zh" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -28,7 +28,7 @@
       </trans-unit>
       <trans-unit id="a356a86a37c7c440cfa8a2efa17fa033a5b682c7" resname="fdc_event_artist_get">
         <source>/artist/{slug}</source>
-        <target>/yi-zhu-jia/{slug}</target>
+        <target>/yi-shu-jia/{slug}</target>
       </trans-unit>
       <trans-unit id="ce96010f74f89aefd55fdffc77d5b49d8c34e2c3" resname="fdc_event_event_get">
         <source>/event/{slug}</source>
@@ -240,7 +240,7 @@
       </trans-unit>
       <trans-unit id="a26ee7125079151da8e3c80d1403be7b91fe2bc4" resname="fdc_eventmobile_artist_get">
         <source>/artist/{slug}</source>
-        <target>/yi-zhu-jia/{slug}</target>
+        <target>/yi-shu-jia/{slug}</target>
       </trans-unit>
       <trans-unit id="bfe0c25196ab7c173a76e10a2d598fd67c115551" resname="fdc_eventmobile_event_get">
         <source>/event/{slug}</source>

@@ -92,7 +92,7 @@
             </span> - {{- ' ' -}}
             <span class="ven">
                 {%- if event.room -%}
-                    {% set trans_slug = 'programmation.salle.' ~ event.room.name|sonata_slugify %}
+                    {% set trans_slug = 'programmation.salle.' ~ event.room.name|remove_accents|sonata_slugify %}
                     {% set trans = trans_slug|trans %}
                     {% if trans_slug != trans %}
                         {{- trans -}}
@@ -146,7 +146,7 @@
             </span> -{{- ' ' -}}
             <span class="ven">
                 {%- if event.room -%}
-                    {% set trans_slug = 'programmation.salle.' ~ event.room.name|sonata_slugify %}
+                    {% set trans_slug = 'programmation.salle.' ~ event.room.name|remove_accents|sonata_slugify %}
                     {% set trans = trans_slug|trans %}
                     {% if trans_slug != trans %}
                         {{- trans -}}
