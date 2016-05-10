@@ -1,14 +1,13 @@
 {% trans_default_domain 'FDCPressBundle' %}
-<div class="item {% if loop.index <= 2 %}large {% endif %}visible">
+<div class="item-info {% if loop.index <= 2 %}large {% endif %}visible">
     {% if widget.picto is not null %}
         <i class="icon {{ widget.picto }}"></i>
     {% endif %}
-    <strong class="transport">{{ widget|trans_fallback('title') }}</strong>
-    <span class="time">{{ widget|trans_fallback('content')|raw }}</span>
+    <h4 class="title-contain">{{ widget|trans_fallback('title') }}</h4>
+    <p>{{ widget|trans_fallback('content')|raw }}</p>
     {% if widget.btnLabel is not null %}
-        <a href="{{ widget|trans_fallback('btnLabel') }}" class="btn" target="_blank">
-            <i class="icon icon_creer"></i>
-            {{ 'En savoir plus' | trans }}
+        <a href="{{ widget|trans_fallback('btnLabel') }}" class="button" target="_blank">
+            + {{ 'En savoir plus' | trans }}
         </a>
     {% endif %}
 </div>
