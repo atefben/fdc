@@ -140,8 +140,11 @@ class HomeController extends FOSRestController
         ;
 
         $projections = array();
-
-        $exclude = array('Séance de presse', 'Conférence de presse');
+        if(!isset($_GET['v']) || empty($_GET['v'])) {
+            $exclude = array('Séance de presse', 'Conférence de presse');
+        } else {
+            $exclude = array();
+        }
         foreach ($results as $projection) {
 
             if($projection->getProgrammationSection() != 'Cinéfondation' || $projection->getProgrammationSection() != 'En Compétition - Courts métrages') {
