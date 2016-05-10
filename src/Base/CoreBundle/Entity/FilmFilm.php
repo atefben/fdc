@@ -1991,6 +1991,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         foreach ($this->projectionProgrammationFilms as $projection) {
 
             if ($projection instanceof FilmProjectionProgrammationFilm) {
+                dump($projection->getProjection()->getType());
                 if($projection->getProjection()->getType() == 'Un Certain Regard') {
                     $typeUCR = true;
                 }
@@ -2026,9 +2027,9 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
             $days[$key]['projections'] = array_values($tempDayProjections);
         }
         if($typeUCR) {
-            return array_values(array_reverse($days));
+            //return array_values(array_reverse($days));
         } else {
-            return array_values($days);
+            //return array_values($days);
         }
     }
 
