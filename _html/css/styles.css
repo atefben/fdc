@@ -16837,6 +16837,9 @@ input[type=submit] {
   cursor: -webkit-grab;
   cursor: grab;
 }
+.press .fc-event .info {
+  overflow-x: hidden;
+}
 .press .fc-event .info img {
   float: left;
   margin: 10px;
