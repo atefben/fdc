@@ -62,7 +62,7 @@
                                 {%- set duration = film.duration|split('.') -%}
                                 {{ 'movie.label.duree'|trans }} :{{ ' ' }}
                                 {%- if duration|length >= 1 -%}
-                                    {% set hours = (duration[0]/60)|round  %}
+                                    {% set hours = (duration[0]/60)|round(0, 'floor')  %}
                                     {% set minutes = duration[0] % 60  %}
                                     <span>{{ hours }}H{% if minutes|length == 1 %}0{% endif %}{{ minutes }}</span>
                                 {%- endif -%}
@@ -116,7 +116,13 @@
                             >
                                 <span class="category">
                                     <i class="icon icon_evt-seance-presse"></i>
-                                    {{ seance.type }}
+                                    {% set trans_slug = 'programmation.type.' ~ seance.type|sonata_slugify %}
+                                    {% set trans = trans_slug|trans %}
+                                    {% if trans_slug != trans %}
+                                        {{- trans -}}
+                                    {% else %}
+                                        {{- seance.type -}}
+                                    {% endif %}
                                 </span>
                                 <div class="info">
                                     {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
@@ -151,7 +157,15 @@
                                         {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> -
                                     <span class="ven">
-                                        {%- if seance.room -%}{{ seance.room.name|upper }}{%- endif -%}
+                                        {%- if seance.room -%}
+                                            {%- set trans_slug = 'programmation.salle.' ~ seance.room.name|sonata_slugify -%}
+                                            {%- set trans = trans_slug|trans -%}
+                                            {%- if trans_slug != trans -%}
+                                                {{- trans -}}
+                                            {%- else -%}
+                                                {{- seance.room.name|upper -}}
+                                            {%- endif -%}
+                                        {%- endif -%}
                                     </span>
                                     <span class="competition">
                                         {{ film.selectionSection|trans_fallback('name') }}
@@ -210,16 +224,22 @@
                             >
                                     <span class="category">
                                         <i class="icon icon_evt-seance-conference"></i>
-                                        {{ conference.type }}
+                                        {% set trans_slug = 'programmation.type.' ~ conference.type|sonata_slugify %}
+                                        {% set trans = trans_slug|trans %}
+                                        {% if trans_slug != trans %}
+                                            {{- trans -}}
+                                        {% else %}
+                                            {{- conference.type -}}
+                                        {% endif %}
                                     </span>
                                 <div class="info">
                                     {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                                    film: film,
-                                    film_format: '90x120',
-                                    film_attrs: {
-                                        alt: film|trans_fallback('title')?:film.titleVO,
-                                        width: 45,
-                                        height: 60
+                                        film: film,
+                                        film_format: '90x120',
+                                        film_attrs: {
+                                            alt: film|trans_fallback('title')?:film.titleVO,
+                                            width: 45,
+                                            height: 60
                                     },
                                     film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
                                     film_image_default_attrs: 'width="45"'
@@ -245,7 +265,15 @@
                                         {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> -
                                     <span class="ven">
-                                        {%- if conference.room -%}{{ conference.room.name|upper }}{%- endif -%}
+                                        {%- if conference.room -%}
+                                            {%- set trans_slug = 'programmation.salle.' ~ conference.room.name|sonata_slugify -%}
+                                            {%- set trans = trans_slug|trans -%}
+                                            {%- if trans_slug != trans -%}
+                                                {{- trans -}}
+                                            {%- else -%}
+                                                {{- conference.room.name|upper -}}
+                                            {%- endif -%}
+                                        {%- endif -%}
                                     </span>
                                     <span class="competition">
                                         {{ film.selectionSection|trans_fallback('name') }}
@@ -299,7 +327,13 @@
                                     >
                                     <span class="category">
                                         <i class="icon icon_evt-seance"></i>
-                                        {{ relatedProjection.type }}
+                                        {% set trans_slug = 'programmation.type.' ~ relatedProjection.type|sonata_slugify %}
+                                        {% set trans = trans_slug|trans %}
+                                        {% if trans_slug != trans %}
+                                            {{- trans -}}
+                                        {% else %}
+                                            {{- relatedProjection.type -}}
+                                        {% endif %}
                                     </span>
                                 <div class="info">
                                     {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
@@ -334,7 +368,15 @@
                                         {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> - {{- ' ' -}}
                                     <span class="ven">
-                                        {%- if relatedProjection.room -%}{{ relatedProjection.room.name|upper }}{%- endif -%}
+                                        {%- if relatedProjection.room -%}
+                                            {%- set trans_slug = 'programmation.salle.' ~ relatedProjection.room.name|sonata_slugify -%}
+                                            {%- set trans = trans_slug|trans -%}
+                                            {%- if trans_slug != trans -%}
+                                                {{- trans -}}
+                                            {%- else -%}
+                                                {{- relatedProjection.room.name|upper -}}
+                                            {%- endif -%}
+                                        {%- endif -%}
                                     </span>
                                     <span class="competition">
                                         {{ film.selectionSection|trans_fallback('name') }}

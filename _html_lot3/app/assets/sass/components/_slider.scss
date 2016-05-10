@@ -4,6 +4,7 @@
 // 2. Slider 01
 // 3. Slider 02
 // 4. Slider select (search)
+// 5. slider-restropective
 // =========================
 
 
@@ -215,5 +216,85 @@
   }
 }
 
-// 4. Slider 02 (search)
+// 4. Slider retrospective
 // =========================
+
+.slider-restropective {
+  height: calc(100vh - 230px);
+  background-size: cover;
+  text-align: center;
+
+  .container {
+    position: relative;
+  }
+
+  .vFlexAlign {
+    flex-direction: column;
+  }
+
+  .title-big {
+    color: #ffffff;
+    font-family: $CamphorHeavy;
+    font-size: 2.25rem;
+    line-height: 40px;
+    letter-spacing: 19px;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  p {
+    color:#fff;
+    font-size: .8125rem;
+    font-family: $CamphorRegular;
+    line-height: 20px;
+    width: 380px;
+    margin-top: 17px;
+  }
+
+  .block-drag {
+    position: relative;
+    height: 20px;
+    margin-top: 45px;
+
+    .avance {
+      width: 171px;
+      height: 1px;
+      background-color: #1f1f1f;
+      margin-top: 6px;
+
+      &:before {
+        content:'';
+        width: 35%;
+        height: 1px;
+        background-color: $gold;
+        display: block;
+      }
+    }
+
+    .square {
+      position: absolute;
+      top: 0px;
+      display: block;
+      width: 10px;
+      height: 10px;
+      border: 2px solid $gold;
+      background-color: #040404;
+      transform: translate(54px);
+    }
+
+    .icon {
+      color:$gold;
+      font-size: 2rem;
+      transform: translate(-25px);
+      display: block;
+      margin-top: 6px;
+    }
+  }
+
+  .timelapse {
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+  }
+}
