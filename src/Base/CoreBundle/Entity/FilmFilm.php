@@ -2060,7 +2060,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     {
         foreach ($this->projectionProgrammationFilms as $projection) {
             if ($projection instanceof FilmProjectionProgrammationFilm) {
-                if ($projection->getType()->getId() == 4) {
+                if ($projection->getType()->getId() == 4 || $this->getGalaName() != '') {
                     return true;
                 }
             }
