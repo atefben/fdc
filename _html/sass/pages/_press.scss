@@ -581,6 +581,12 @@
           cursor: default;
         }
       }
+
+      &.full {
+        .button {
+          width: calc(100% - 40px);
+        }
+      }
     }
   }
 
