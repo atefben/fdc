@@ -22,7 +22,7 @@
           <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i>
 Imprimer</a>
         </div>
-        <div class="audio-player audio actu-article-audio" data-sound="img/article/sound.mp3">
+        <div class="audio-player audio actu-article-audio" data-sound="files/test.mp3">
           <div class="image" style="background-image: url(img/slide001.jpg);"></div>
           <a href="#" class="playpause"></a>
           <div class="off">

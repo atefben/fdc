@@ -73,9 +73,21 @@ WaveSurfer.util.extend(WaveSurfer.Drawer.Canvas, {
                 this.setHeight(channels.length * this.params.height * this.params.pixelRatio);
                 channels.forEach(this.drawBars, this);
                 return;
+            } else if (this.params.channel > -1) { // Channel specified
+                if (this.params.channel >= channels.length) {
+                    throw new Error('Channel doesn\'t exist');
+                }
+                peaks = channels[this.params.channel];
             } else {
                 peaks = channels[0];
             }
+        }
+
+        // Bar wave draws the bottom only as a reflection of the top,
+        // so we don't need negative values
+        var hasMinVals = [].some.call(peaks, function (val) { return val < 0; });
+        if (hasMinVals) {
+            peaks = [].filter.call(peaks, function (_, index) { return index % 2 == 0; });
         }
 
         // A half-pixel offset makes lines crisp
@@ -84,20 +96,14 @@ WaveSurfer.util.extend(WaveSurfer.Drawer.Canvas, {
         var height = this.params.height * this.params.pixelRatio;
         var offsetY = height * channelIndex || 0;
         var halfH = height / 2;
-        var length = ~~(peaks.length / 2);
+        var length = peaks.length;
         var bar = this.params.barWidth * this.params.pixelRatio;
         var gap = Math.max(this.params.pixelRatio, ~~(bar / 2));
         var step = bar + gap;
 
         var absmax = 1;
         if (this.params.normalize) {
-            var min, max;
-            max = Math.max.apply(Math, peaks);
-            min = Math.min.apply(Math, peaks);
-            absmax = max;
-            if (-min > absmax) {
-                absmax = -min;
-            }
+            absmax = Math.max.apply(Math, peaks);
         }
 
         var scale = length / width;
@@ -110,21 +116,9 @@ WaveSurfer.util.extend(WaveSurfer.Drawer.Canvas, {
         [ this.waveCc, this.progressCc ].forEach(function (cc) {
             if (!cc) { return; }
 
-            if (this.params.reflection) {
-                for (var i = 0; i < width; i += step) {
-                    var h = Math.round(peaks[Math.floor(2 * i * scale)] / absmax * halfH);
-                    cc.fillRect(i + $, halfH - h + offsetY, bar + $, h * 2);
-                }
-            } else {
-                for (var i = 0; i < width; i += step) {
-                    var h = Math.round(peaks[Math.floor(2 * i * scale)] / absmax * halfH);
-                    cc.fillRect(i + $, halfH - h + offsetY, bar + $, h);
-                }
-
-                for (var i = 0; i < width; i += step) {
-                    var h = Math.round(peaks[2 * i * scale + 1] / absmax * halfH);
-                    cc.fillRect(i + $, halfH - h + offsetY, bar + $, h);
-                }
+            for (var i = 0; i < width; i += step) {
+                var h = Math.round(peaks[Math.floor(i * scale)] / absmax * halfH);
+                cc.fillRect(i + $, halfH - h + offsetY, bar + $, h * 2);
             }
         }, this);
     },
@@ -137,9 +131,25 @@ WaveSurfer.util.extend(WaveSurfer.Drawer.Canvas, {
                 this.setHeight(channels.length * this.params.height * this.params.pixelRatio);
                 channels.forEach(this.drawWave, this);
                 return;
+            } else if (this.params.channel > -1) { // Channel specified
+                if (this.params.channel >= channels.length) {
+                    throw new Error('Channel doesn\'t exist');
+                }
+                peaks = channels[this.params.channel];
             } else {
                 peaks = channels[0];
             }
+        }
+
+        // Support arrays without negative peaks
+        var hasMinValues = [].some.call(peaks, function (val) { return val < 0; });
+        if (!hasMinValues) {
+            var reflectedPeaks = [];
+            for (var i = 0, len = peaks.length; i < len; i++) {
+                reflectedPeaks[2 * i] = peaks[i];
+                reflectedPeaks[2 * i + 1] = -peaks[i];
+            }
+            peaks = reflectedPeaks;
         }
 
         // A half-pixel offset makes lines crisp
@@ -156,13 +166,9 @@ WaveSurfer.util.extend(WaveSurfer.Drawer.Canvas, {
 
         var absmax = 1;
         if (this.params.normalize) {
-            var min, max;
-            max = Math.max.apply(Math, peaks);
-            min = Math.min.apply(Math, peaks);
-            absmax = max;
-            if (-min > absmax) {
-                absmax = -min;
-            }
+            var max = Math.max.apply(Math, peaks);
+            var min = Math.min.apply(Math, peaks);
+            absmax = -min > max ? -min : max;
         }
 
         this.waveCc.fillStyle = this.params.waveColor;
