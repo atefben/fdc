@@ -181,7 +181,7 @@
                 “J’ai découvert que Lambert avait une passion pour le film de genre”
               </blockquote>
             </div>
-            <div class="small-pres container">
+            <div class="small-pres container half-div">
               <div class="slideshow">
                 <div class="slideshow-img">
                   <div class="images">

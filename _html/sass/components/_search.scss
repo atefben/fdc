@@ -469,12 +469,19 @@ header #searchContainer {
       .big {
         width: 136px;
 
+        img {
+          width: 136px;
+          height: 185px;
+          object-fit: cover;
+        }
+
         &:nth-child(4n+1) {
           margin-left: 40px;
         }
 
         &:nth-child(3n+1) {
           margin-left: 0;
+          clear: left;
         }
       }
 
