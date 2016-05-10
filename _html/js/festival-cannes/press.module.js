@@ -245,8 +245,8 @@ $(document).ready(function () {
               var m = (d.getUTCMonth() + 1) < 10 ? '0'+(d.getUTCMonth()+1) : (d.getUTCMonth()+1);
               cal.addEvent(
                 agenda_data[i].title,
-                GLOBALS.urls.programmationUrl+'?data='+d.getUTCFullYear()+'-'+m+'-'+d.getUTCDate(),
-                agenda_data[i].room+' – Palais des festivals / Cannes',
+                (agenda_data[i].type === 'custom' ? agenda_data[i].description : GLOBALS.urls.programmationUrl+'?data='+d.getUTCFullYear()+'-'+m+'-'+d.getUTCDate()),
+                (agenda_data[i].type === 'custom' ? agenda_data[i].room : agenda_data[i].room+' – Palais des festivals / Cannes'),
                 agenda_data[i].start,
                 agenda_data[i].end
               );
