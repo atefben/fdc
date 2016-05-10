@@ -137,6 +137,7 @@ class HomeController extends FOSRestController
             ->getRepository('BaseCoreBundle:FilmProjection')
             ->getNewsApiProjections($festival)
         ;
+        
 
         $projections = array();
 
