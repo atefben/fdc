@@ -219,17 +219,158 @@
 // 4. Slider retrospective
 // =========================
 
+.s-slider-retrospective {
+  position: relative;
+  overflow: hidden;
+
+  .slides {
+    position: relative;
+    width: 100000px;
+    transition: 1s;
+  }
+
+  .timelapse {
+    height: 20px;
+    width: 977px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    position: absolute;
+    bottom: 1px;
+    z-index: 1;
+
+    .avance{
+      width: calc(100% - 94px);
+      position: absolute;
+      bottom: 12px;
+      left: 47px;
+      background-color: $gold;
+
+      &:before {
+        display: none;
+      }
+    }
+
+    .square {
+      display: none;
+    }
+
+    .date {
+      color:#fff;
+      font-size: 1rem;
+      font-family: $CamphorBold;
+    }
+
+    .date-first {
+      float: left;
+    }
+
+    .date-last {
+      float: right;
+    }
+
+    .noUi-target {
+      border-radius: 0px;
+      border: 0px solid #D3D3D3;
+      box-shadow: none;
+    }
+
+    .noUi-origin {
+      background-color: #222121;
+    }
+
+    .noUi-base {
+      width: 99%;
+      background-color: $gold;
+    }
+
+    .noUi-horizontal {
+      height: 1px;
+    }
+
+    .noUi-background {
+      background: #222121;
+      box-shadow: none;
+
+      .brigth & {
+        background: #e5e5e5;
+      }
+    }
+
+    .noUi-handle {
+      border: 2px solid $gold;
+      border-radius: 0px;
+      background: #0c0c0c;
+      cursor: default;
+      box-shadow: none;
+
+      .brigth & {
+        background: #fff;
+      }
+    }
+
+    .noUi-connect {
+      background: $gold;
+      box-shadow: none;
+      transition: background 450ms;
+
+      .brigth & {
+        box-shadow: none;
+      }
+    }
+
+    .noUi-horizontal .noUi-handle {
+      width: 10px;
+      height: 10px;
+      left: 0px;
+      top: -5px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.noUi-handle-lower {
+        width: 10px;
+        height: 10px;
+        left: 0px;
+        top: -5px;
+      }
+    }
+
+    .noUi-handle:before, .noUi-handle:after {
+      content: "";
+      display: none;
+      position: absolute;
+      height: 14px;
+      width: 1px;
+      background: #E8E7E6;
+      left: 14px;
+      top: 6px;
+    }
+  }
+
+}
+
 .slider-restropective {
   height: calc(100vh - 230px);
   background-size: cover;
   text-align: center;
+  width: 100vw;
+  display: inline-block;
+  vertical-align: top;
 
   .container {
     position: relative;
   }
 
   .vFlexAlign {
+    transition: width $smoothTransition 1s;
     flex-direction: column;
+
+    img{
+      transition: opacity width $smoothTransition 1s;
+      width: 100%;
+      object-fit: cover;
+    }
   }
 
   .title-big {
@@ -241,6 +382,30 @@
     display: block;
     text-align: center;
     text-transform: uppercase;
+  }
+
+  .title-big-date {
+    font-size: 9.375rem;
+    font-family: $CamphorHeavy;
+    color: #fff;
+    letter-spacing: 24px;
+  }
+
+  .title-edition {
+    font-size: .75rem;
+    font-family: $CamphorBold;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+
+  .button {
+    border-color: $gold;
+    width: 150px;
+    height: 55px;
+    line-height: 55px;
+    padding: 0px 0px;
+    margin-top: 25px;
   }
 
   p {
@@ -296,5 +461,32 @@
     position: absolute;
     bottom: 1px;
     left: 1px;
+  }
+
+  &.small {
+    .vFlexAlign {
+      width: 549px;
+
+      .texts {
+        display: none;
+      }
+    }
+  }
+
+  &.big {
+    .vFlexAlign {
+      width: 100vw;
+
+      img {
+        position: absolute;
+        top: 0px;
+        opacity: .3;
+      }
+
+      .texts {
+        display: block;
+        z-index: 1;
+      }
+    }
   }
 }
