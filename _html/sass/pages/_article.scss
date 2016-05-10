@@ -782,6 +782,12 @@ article {
           display: inline-block;
           margin-right: 65px;
           vertical-align: middle;
+
+          img {
+            width: 187px;
+            height: 255px;
+            object-fit: cover;
+          }
         }
 
         .text-container {

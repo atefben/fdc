@@ -104,7 +104,7 @@
                                         <div class="poster">
                                             {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                             film: associatedFilm,
-                                            film_format: 'small',
+                                            film_format: '293x397',
                                             film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                             }) %}
                                         </div>
@@ -115,7 +115,7 @@
                                     </span>
                                             {% endif %}
                                             <h3>
-                                                <a href="#">
+                                                <a href="{{ path('fdc_event_movie_get',{'slug': associatedFilm|trans_fallback('slug')}) }}">
                                                     {% set title = associatedFilm|trans_fallback('title') %}
                                                     {% if title == '' %}
                                                         {% set title = associatedFilm.titleVO %}
