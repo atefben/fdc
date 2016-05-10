@@ -81,15 +81,10 @@ class FilmProjectionRepository extends EntityRepository
                 ->andWhere('p.room = :room');
         }
         if ($date != false) {
-            $split = explode('-', $date);
-            $endDate = new \DateTime();
-            $endDate->setDate($split[0], $split[1], $split[2]);
-            $endDate->add(date_interval_create_from_date_string('1 day'));
-            $endDate->setTime(3, 0, 0);
             $qb
                 ->andWhere('(p.startsAt >= :startDate AND p.startsAt <= :endDate)')
-                ->setParameter('startDate', $date . ' 07:00:00')
-                ->setParameter('endDate', $endDate->format('Y-m-d H:i:s'));
+                ->setParameter('startDate', $date . ' 00:00:00')
+                ->setParameter('endDate', $date. ' 23:59:59');
         }
 
         if ($isPress == false) {
