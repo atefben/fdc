@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCPressBundle' %}
 
-<div class="contain-map">
-    <strong class="name">{{ widget|trans_fallback('title') }}</strong>
+<p class="description center">
+    <strong class="center">{{ widget|trans_fallback('title') }}</strong>
     {% if widget.image is not null %}
         {% set trans = widget.image.findTranslationByLocale(app.request.locale) %}
         {% if trans is null or trans.file is null %}
@@ -20,7 +20,7 @@
 
     {% if widget.file is not null %}
         <a href="{% path widget.file, 'reference' %}"
-           class="btn telecharger" target="_blank" download>
+           class="button" target="_blank" download>
             <i class="icon icon_telecharger"></i>
             {{ 'Télécharger'|trans }}
         </a>

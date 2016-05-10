@@ -1,16 +1,6 @@
 {% trans_default_domain 'FDCPressBundle' %}
 
 <div class="item-partners">
-    <div class="contain-img">
-        {% if widget.image is not null %}
-            {% set trans = widget.image.findTranslationByLocale(app.request.locale) %}
-            {% if trans is null or trans.file is null %}
-                {% set trans = widget.image.findTranslationByLocale('fr') %}
-            {% endif %}
-            {% set image = trans.file %}
-            <img src="{% path image, '220x85' %}" alt="{{ widget.image|trans_fallback('alt') }}" />
-        {% endif %}
-    </div>
     <div class="text-partners">
         {% if widget|trans_fallback('sponsorLastName') is not null %}
             <div class="content-text-with-portrait">
