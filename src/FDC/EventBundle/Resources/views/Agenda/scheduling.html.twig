@@ -8,10 +8,10 @@
                 <h2>{{ 'programmation.title.programmation'|trans }}</h2>
                 {% if pressProjection is not empty and pressProjection.scheduling is not null %}
                 <div class="buttons">
-                    <a href="#" class="button subnav"><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerhoraireprojectionpresse'|trans }}</a>
+                    <a href="#" class="button subnav"><i class="icon icon_telecharger"></i>{{ pressProjection|trans_fallback('schedulingLabel') }}</a>
                     <a href="{% path pressProjection.scheduling, 'reference' %}" class="button list pdf" download
                        target="_blank">
-                        <i class="icon icon_telecharger"></i>{{ pressProjection|trans_fallback('schedulingLabel') }}
+                        <i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatpdf'|trans }}
                     </a>
                 </div>
                 {% endif %}
