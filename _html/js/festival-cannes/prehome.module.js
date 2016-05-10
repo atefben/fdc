@@ -46,7 +46,7 @@ $(window).load(function() {
             }
           },200);
         });
-      }, 2500);
+      }, 1000);
       $.cookie('prehome', '1', { expires: 7 });
     }
   } else {
