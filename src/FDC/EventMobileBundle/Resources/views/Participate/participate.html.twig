@@ -7,7 +7,7 @@
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
     
-        {% if participatePage.image is defined and participatePage.image is not null %}{# test à supprimer quand image dans BO #}
+        {% if participatePage.image is defined and participatePage.image is not null %}
             {% set mainTrans = participatePage.image.findTranslationByLocale(app.request.locale) %}
             {% if mainTrans is null or mainTrans.file is null %}
                 {% set mainTrans = participatePage.image.findTranslationByLocale('fr') %}
@@ -15,7 +15,7 @@
             {% set mainImage = mainTrans.file %}
         {% endif %}
         <div class="banner-img vCenter"
-             style="background-image:url({% if mainImage is defined and mainImage is not null %}{% path mainImage, '1280x808' %}{% endif %}{# test à supprimer quand image dans BO #})">
+             style="background-image:url({% if mainImage is defined and mainImage is not null %}{% path mainImage, '1280x808' %}{% endif %})">
             <div class="vCenterKid">
                 <h2 class="title tall tallIcon">
                     {% if participatePage|trans_fallback('icon') is not null %}

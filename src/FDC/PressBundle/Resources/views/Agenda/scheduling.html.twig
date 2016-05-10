@@ -15,20 +15,19 @@
                         <a href="#" class="button subnav"><i
                                     class="icon icon_telecharger"></i>{{ pressProjection|trans_fallback('pressSchedulingLabel') }}
                         </a>
-                        <a href="{% path pressProjection.pressScheduling, 'reference' %}" class="button list" download
+                        <a href="{% path pressProjection.pressScheduling, 'reference' %}" class="button list pdf" download
                            target="_blank"><i
                                     class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatpdf'|trans }}
                         </a>
                         {#<a href="#" class="button list" download><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatics'|trans }}</a>#}
-                    {% elseif pressProjection.scheduling is not null %}
+                    {% endif %}
                         <a href="#" class="button subnav"><i
                                     class="icon icon_telecharger"></i>{{ pressProjection|trans_fallback('schedulingLabel') }}
                         </a>
-                        <a href="{% path pressProjection.scheduling, 'reference' %}" class="button list" download
+                        <a href="{% path pressProjection.scheduling, 'reference' %}" class="button list pdf" download
                            target="_blank"><i
                                     class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatpdf'|trans }}
                         </a>
-                    {% endif %}
                 </div>
             </div>
         </div>
