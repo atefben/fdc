@@ -38,6 +38,7 @@ class UpdateCommand extends ContainerAwareCommand
             ->addOption('end', null, InputOption::VALUE_REQUIRED, 'the end timestamp', time())
             ->addOption('entity', null, InputOption::VALUE_REQUIRED, 'If defined, will update the only entity selected')
             ->addOption('save', null, InputOption::VALUE_NONE, 'If defined, will save the end timestamp in database')
+            ->addOption('remove', null, InputOption::VALUE_NONE, 'If defined, will only call the removed webservices')
         ;
     }
     
@@ -51,10 +52,13 @@ class UpdateCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+        // args
         $end = $input->getOption('end');
         $entity = $input->getOption('entity');
         $save = $input->getOption('save');
+        $remove = $input->getOption('remove');
+        // services
+        $em = $this->getContainer()->get('doctrine.orm.entity_manager');
         $logger = $this->getContainer()->get('logger');
         
         // start
@@ -101,7 +105,9 @@ class UpdateCommand extends ContainerAwareCommand
         
         // call the managers
         foreach ($managers as $manager) {
-            $manager->getModified($start, $end);
+            if (!$remove) {
+                $manager->getModified($start, $end);
+            }
             // verify if method exists before call because prize manager doenst have a getRemoved method
             if (method_exists($manager, 'getRemoved')) {
                 $manager->getRemoved($start, $end);
