@@ -1991,7 +1991,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         foreach ($this->projectionProgrammationFilms as $projection) {
 
             if ($projection instanceof FilmProjectionProgrammationFilm) {
-                error_log($projection->getProjection()->getType());
+                error_log(print_r($this->projectionProgrammationFilms, true));
                 if($projection->getProjection()->getType() == 'Un Certain Regard') {
                     $typeUCR = true;
                 }
