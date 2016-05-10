@@ -7926,6 +7926,7 @@ header #searchContainer {
 }
 #searchContainer #results #wide .big:nth-child(3n+1) {
   margin-left: 0;
+  clear: left;
 }
 #searchContainer #results #wide article:nth-child(2n+1) {
   clear: both;
