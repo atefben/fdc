@@ -37,7 +37,13 @@
              data-time="{{ event.startsAt|date('H') }}" data-duration="{{ minutes }}">
         <span class="category">
             <i class="icon {% if isSeancePress -%}icon_espace-presse{%- elseif isConferencePress -%}icon_evt-conference{%- else -%}icon_evt-seance{%- endif -%}"></i>
-            {{- event.type -}}
+            {% set trans_slug = 'programmation.type.' ~ event.type|sonata_slugify %}
+            {% set trans = trans_slug|trans %}
+            {% if trans_slug != trans %}
+                {{- trans -}}
+            {% else %}
+                {{- event.type -}}
+            {% endif %}
         </span>
             <div class="info">
                 {%- if event.programmationDynamics|length > 0 and event.programmationDynamics[0].type is not empty -%}
@@ -82,7 +88,13 @@
             </span> - {{- ' ' -}}
                 <span class="ven">
                 {%- if event.room -%}
-                    {{- event.room.name|upper -}}
+                    {% set trans_slug = 'programmation.salle.' ~ event.room.name|sonata_slugify %}
+                    {% set trans = trans_slug|trans %}
+                    {% if trans_slug != trans %}
+                        {{- trans -}}
+                    {% else %}
+                        {{- event.room.name|upper -}}
+                    {% endif %}
                 {%- endif -%}
             </span>
             <span class="competition">
@@ -99,7 +111,13 @@
              data-time="{{ event.startsAt|date('H') }}" data-duration="{{ minutes }}">
         <span class="category">
             <i class="icon {% if isSeancePress -%}icon_espace-presse{%- elseif isConferencePress -%}icon_evt-conference{%- else -%}icon_evt-seance{%- endif -%}"></i>
-            {{- event.type -}}
+            {% set trans_slug = 'programmation.type.' ~ event.type|sonata_slugify %}
+            {% set trans = trans_slug|trans %}
+            {% if trans_slug != trans %}
+                {{- trans -}}
+            {% else %}
+                {{- event.type -}}
+            {% endif %}
         </span>
             <div class="info">
                 {%- if event.programmationDynamics|length > 0 and event.programmationDynamics[0].type is not empty -%}
@@ -118,7 +136,13 @@
             </span> -{{- ' ' -}}
                 <span class="ven">
                 {%- if event.room -%}
-                    {{ event.room.name|upper }}
+                    {% set trans_slug = 'programmation.salle.' ~ event.room.name|sonata_slugify %}
+                    {% set trans = trans_slug|trans %}
+                    {% if trans_slug != trans %}
+                        {{- trans -}}
+                    {% else %}
+                        {{- event.room.name|upper -}}
+                    {% endif %}
                 {%- endif -%}
             </span>
             </div>

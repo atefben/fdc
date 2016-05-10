@@ -39,10 +39,19 @@
 		       <div class="legal-notice-responsable" style="text-align:center">
 				   <p class="legal-notice-description">{{ 'Le site Internet en version mobile sera bientôt disponible.'|trans }}</p>
 				   <p>&nbsp;</p>
-				   <p>&nbsp;</p>
-				   <p>&nbsp;</p>
+				   <p>{{ 'En attendant, téléchargez l\'application officielle :'|trans }}</p>
 				   <p>&nbsp;</p>
 
+				   <p>
+					   {%  if app.request.locale == 'fr' %}
+					   		<a href="https://itunes.apple.com/fr/app/festival-de-cannes-officiel/id431842884">
+						{% else %}
+						    <a href="https://itunes.apple.com/app/festival-de-cannes-officiel/id431842884">
+						{%  endif %}
+						   {% image '@FDCEventBundle/Resources/public/img/appstore.png' %}
+						   <img src="{{ asset_url }}" alt="apple" /></a>
+						   {% endimage %}
+					</p>
 		       </div>
 		    </section>
 		    </div>

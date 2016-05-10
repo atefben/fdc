@@ -23,6 +23,22 @@ var owInitSliderSelect = function(id) {
     });
   }
 
+  if(id == "timelapse-01") {
+    var slider = document.getElementById('timelapse-01');
+
+    noUiSlider.create(slider, {
+      start: [1946],//todo script
+      range: {
+        'min': 1946,
+        'max': 2015
+      }
+     });
+
+     slider.noUiSlider.on('update', function( values, handle ) {
+          //drag
+     });
+  }
+
   if(id == 'tab-selection') {
     var $tab = $('.icon-s');
 
