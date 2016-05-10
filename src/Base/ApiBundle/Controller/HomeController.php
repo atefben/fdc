@@ -131,7 +131,7 @@ class HomeController extends FOSRestController
     public function getNextProjections($festival)
     {
         $now = new \DateTime();
-        $now->setTimestamp(1463652000);
+        //$now->setTimestamp(1463652000);
         $results = $this
             ->getDoctrine()
             ->getManager()
