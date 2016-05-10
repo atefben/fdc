@@ -210,7 +210,7 @@ $(document).ready(function () {
     if(isiPad()) {
       $('.export.subnav, .button.list.pdf, .button.list.ics').remove();
     } else {
-      if ($('.button.list.pdf').attr('href').indexOf('#') == -1) {
+      if ($('.button.list.pdf').attr('href').indexOf('#') != -1) {
         $('.button.list.pdf').remove();
       }
 
