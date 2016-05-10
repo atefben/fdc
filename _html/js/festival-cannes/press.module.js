@@ -206,13 +206,14 @@ $(document).ready(function () {
     });
   }
 
-  if($('#calendar').length > 0 &&) {
+  if($('#calendar').length > 0) {
     if(isiPad()) {
       $('.export.subnav, .button.list.pdf, .button.list.ics').remove();
     } else {
       if ($('.button.list.pdf').attr('href').indexOf('#') == -1) {
         $('.button.list.pdf').remove();
       }
+
       $('.subnav, .subnav icon').hover(function () {
         $('.button.list').addClass('show');
       });
