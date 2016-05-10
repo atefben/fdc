@@ -6,7 +6,6 @@
             {% set trans = widget.image.findTranslationByLocale('fr') %}
         {% endif %}
         {% set image = trans.file %}
-        {{ dump(widget) }}
     {% if widget.file is not null %}<a href="{% path widget.file, 'reference' %}" target="_blank">{% endif %}<img src="{% path image, '228x181' %}" alt="{{ widget.image|trans_fallback('alt') }}" class="map" />{% if widget.file is not null %}</a>{% endif %}
     {% endif %}
     {{ widget|trans_fallback('content')|raw }}
