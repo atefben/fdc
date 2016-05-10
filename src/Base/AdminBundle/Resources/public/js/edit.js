@@ -273,8 +273,8 @@ function editEvents() {
     $('.sonata-ba-form > form').attr('action', action + '&locale=' + locale);
 
 
-    // Hide the status for french translation
-    if ($('.status-hidden').length) {
+    // Hide the status for french translation and select publish only when no status where selected before
+    if ($('.status-hidden').length && $.isNumeric($('.status-hidden select option:selected').val()) == false) {
         $('.status-hidden select').val(1).change();
         $('.status-hidden').hide();
     }
