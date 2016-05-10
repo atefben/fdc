@@ -487,3 +487,7 @@
 .user-nav .account {
     display:none;
 }
+
+#titleFilmOnHomepage > a{
+    color: #fff;
+}
