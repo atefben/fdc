@@ -80,11 +80,7 @@ class FilmProjectionController extends FOSRestController
         foreach ($rooms as $key => $room) {
             $ac = new ArrayCollection();
             $temp = array();
-            if(!isset($_GET['v']) || empty($_GET['v'])) {
-                $exclude = array('Séance de presse', 'Conférence de presse');
-            } else {
-                $exclude = array();
-            }
+
             foreach ($room->getProjections() as $projection) {
                 if ($projection->getProgrammationFilms()->count()) {
                     if($projection->getProgrammationSection() != 'Cinéfondation' || $projection->getProgrammationSection() != 'En Compétition - Courts métrages') {
