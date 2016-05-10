@@ -1985,11 +1985,15 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $now = time();
 
         $days = array();
+        $typeUCR = false;
         $exclude = array('Séance de presse', 'Conférence de presse');
         $projections = array();
         foreach ($this->projectionProgrammationFilms as $projection) {
 
             if ($projection instanceof FilmProjectionProgrammationFilm) {
+                if($projection->getProjection()->getType() == 'Un Certain Regard') {
+                    $typeUCR = true;
+                }
                 if ($projection->getProjection()->getStartsAt()->format('H') < 4) {
                     $tomorrow = clone $projection->getProjection()->getStartsAt();
                     $tomorrow->add(date_interval_create_from_date_string('1 day'));
@@ -2021,7 +2025,11 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
             ksort($tempDayProjections);
             $days[$key]['projections'] = array_values($tempDayProjections);
         }
-        return array_values(array_reverse($days));
+        if($typeUCR) {
+            return array_values(array_reverse($days));
+        } else {
+            return array_values($days);
+        }
     }
 
     /**
