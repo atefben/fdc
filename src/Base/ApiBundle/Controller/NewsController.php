@@ -110,7 +110,7 @@ class NewsController extends FOSRestController
                 } else {
                     $begin = $projection->getStartsAt()->getTimestamp();
                 }
-                if ($end >= $begin && !in_array($projection->getProjection()->getType(), $exclude)) {
+                if ($end >= $begin && !in_array($projection->getType(), $exclude)) {
                     $projections[] = $projection;
                 }
 
