@@ -10199,7 +10199,7 @@ header #searchContainer {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #fff;
   text-transform: uppercase;
-  padding-bottom: 18px;
+  padding-bottom: 14px;
   display: block;
   transition: .5s;
 }
@@ -10207,8 +10207,8 @@ header #searchContainer {
   opacity: .7;
 }
 .prehome-01 .link ul {
-  padding-bottom: 22px;
-  padding-left: 45px;
+  padding-bottom: 26px;
+  padding-left: 40px;
 }
 .prehome-01 #logo {
   text-align: center;
@@ -10221,7 +10221,7 @@ header #searchContainer {
 .prehome-01 #logo img {
   width: 141px;
 }
-.prehome-01 #logo h1 a, .prehome-01 #logo h2 a {
+.prehome-01 #logo h1, .prehome-01 #logo h2 {
   color: #f2e5b7;
   font-size: .875rem;
   font-size: "Camphor W01 Medium", Arial, Helvetica, sans-serif;

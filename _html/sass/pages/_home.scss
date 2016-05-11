@@ -1707,7 +1707,7 @@
         font-family: $CamphorBold;
         color: #fff;
         text-transform: uppercase;
-        padding-bottom: 18px;
+        padding-bottom: 14px;
         display: block;
         transition: .5s;
 
@@ -1717,8 +1717,8 @@
     }
 
     ul {
-      padding-bottom: 22px;
-      padding-left: 45px;
+      padding-bottom: 26px;
+      padding-left: 40px;
     }
   }
 
@@ -1734,7 +1734,7 @@
       width: 141px;
     }
 
-    h1 a, h2 a {
+    h1, h2{
       color: #f2e5b7;
       font-size: .875rem;
       font-size: $CamphorMedium;
