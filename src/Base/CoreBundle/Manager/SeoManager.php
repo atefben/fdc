@@ -146,7 +146,7 @@ class SeoManager
                 }
 
                 // OG PICTURE
-                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'news_header_image_big');
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'media_image_572x362');
                 $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
             }
 
@@ -159,7 +159,7 @@ class SeoManager
 
             // TWITTER PICTURE
             if ($header !== null) {
-                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'news_header_image_big');
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'media_image_572x362');
                 $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
             }
 

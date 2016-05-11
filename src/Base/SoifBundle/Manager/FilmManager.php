@@ -252,7 +252,7 @@ class FilmManager extends CoreManager
         $this->setSoifUpdatedAt($result, $entity);
 
         // set entity properties
-        $this->setEntityProperties($resultObject, $entity);
+        /*$this->setEntityProperties($resultObject, $entity);
 
         // set related entity
         $this->setEntityRelated($resultObject, $entity);
@@ -483,6 +483,8 @@ class FilmManager extends CoreManager
             }
         }
 
+        $oldPersons = clone $entity->getPersons();
+
         // set persons (credits)
         if (property_exists($resultObject, 'FilmCredits') && property_exists($resultObject->FilmCredits, 'FilmCreditDto')) {
             $objects = $resultObject->FilmCredits->FilmCreditDto;
@@ -549,12 +551,18 @@ class FilmManager extends CoreManager
                     $persons[$id]->addFunction($filmFilmPersonFunction);
                     // save in array all the entities
                     $collectionFunctions->add($filmFilmPersonFunction);
-                    // remove old relations
-                    $this->removeOldRelations($persons[$id]->getFunctions(), $collectionFunctions, $persons[$id], 'removeFunction');
                 }
 
                 if ($persons[$id]->getId() === null) {
                     $entity->addPerson($persons[$id]);
+                }
+            }
+        }
+
+        foreach ($persons as $person) {
+            foreach ($oldPersons as $oldPerson) {
+                if ($oldPerson->getId() == $person->getId()) {
+                    $this->removeOldRelations($oldPerson->getFunctions(), $person->getFunctions(), $person, 'removeFunction');
                 }
             }
         }
@@ -631,8 +639,7 @@ class FilmManager extends CoreManager
         foreach ($persons as $person) {
             $collectionPerson->add($person);
         }
-
-        $this->removeOldRelations($entity->getPersons(), $collectionPerson, $entity, 'removePerson');
+        $this->removeOldRelations($entity->getPersons(), $collectionPerson, $entity, 'removePerson');*/
 
         // set contacts
         if (property_exists($resultObject, 'FilmContacts') && property_exists($resultObject->FilmContacts, 'ContactDto')) {
@@ -707,6 +714,7 @@ class FilmManager extends CoreManager
                 }
 
                 // set person
+                $filmContactPerson = null;
                 if (property_exists($object, 'PersonneContact')) {
                     $person = $object->PersonneContact;
                     // this api returns sometimes a link on a contact with ID -1 and empty values, dont use it...
@@ -725,6 +733,7 @@ class FilmManager extends CoreManager
                 }
 
                 // set subordinates
+                $collectionSubordinates = new ArrayCollection();
                 if (property_exists($object, 'ContactSecondaires') && property_exists($object->ContactSecondaires, 'PersonneContactSecondaireDto')) {
                     $subordinates = $object->ContactSecondaires->PersonneContactSecondaireDto;
 
@@ -750,6 +759,8 @@ class FilmManager extends CoreManager
                             $subordinateIds[$subordinate->Id] = $filmContactPersonSubordinate;
                         }
                     }
+                }
+                if ($filmContactPerson != null) {
                     $this->removeOldRelations($filmContactPerson->getSubordinates(), $collectionSubordinates, $filmContactPerson, 'removeSubordinate');
                 }
             }
