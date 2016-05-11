@@ -1179,6 +1179,7 @@ $(document).ready(function () {
 
           var dateBegin = new Date(date1);
           var dateEnd = new Date(date2);
+          var _userOffset = dateBegin.getTimezoneOffset()*60000;
 
           if(dateEnd < dateBegin) {
             $('#create-event-pop input[name="datebegin"], \
@@ -1199,8 +1200,8 @@ $(document).ready(function () {
             var myEvent = {
                  "title": titleEvent,
                  "eventColor": "#fff",
-                 "start": dateBegin,
-                 "end": dateEnd,
+                 "start": new Date(dateBegin.getTime()+_userOffset),
+                 "end": new Date(dateEnd.getTime()+_userOffset),
                  "type": 'custom',
                  "description" : data.description,
                  "duration": (dateEnd-dateBegin)/60000,
@@ -1213,6 +1214,9 @@ $(document).ready(function () {
             $(this)[0].reset();
 
             var agenda = localStorage.getItem('agenda_press');
+
+            myEvent['start'] = dateBegin;
+            myEvent['end']   = dateEnd;
 
             if (agenda == null) {
               events.push(myEvent);
