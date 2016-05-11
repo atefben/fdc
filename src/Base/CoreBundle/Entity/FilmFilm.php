@@ -1995,6 +1995,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $projections = array();
         foreach ($this->projectionProgrammationFilms as $projection) {
             if ($projection instanceof FilmProjectionProgrammationFilm) {
+                
                 if($projection->getProjection()->getProgrammationSection() != 'Cinéfondation' && $projection->getProjection()->getProgrammationSection() != 'En Compétition - Courts métrages') {
                     $typeUCR = false;
                     if ($this->getSelectionSection()->getId() == FilmSelectionSectionInterface::FILM_SELECTION_SECTION_UNCERTAINREGARD) {
