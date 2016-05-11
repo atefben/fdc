@@ -317,7 +317,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @var FilmFilmPerson
      *
-     * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="film", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="film", cascade={"all"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */

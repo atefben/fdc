@@ -276,7 +276,7 @@
       bottom: 20px;
       left: 20px;
       cursor: pointer;
-      pointer-events: all;
+      pointer-events: auto;
 
       &.hide {
         opacity: 0;
@@ -717,7 +717,7 @@
   &.show {
     opacity: 1;
     visibility: visible;
-    pointer-events: all;
+    pointer-events: auto;
     @include transform(translateY(0));
   }
 

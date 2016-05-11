@@ -627,6 +627,13 @@ class FilmManager extends CoreManager
             }
         }
 
+        $collectionPerson = new ArrayCollection();
+        foreach ($persons as $person) {
+            $collectionPerson->add($person);
+        }
+
+        $this->removeOldRelations($entity->getPersons(), $collectionPerson, $entity, 'removePerson');
+
         // set contacts
         if (property_exists($resultObject, 'FilmContacts') && property_exists($resultObject->FilmContacts, 'ContactDto')) {
             $objects = $resultObject->FilmContacts->ContactDto;
