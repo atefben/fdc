@@ -8894,6 +8894,23 @@ header #searchContainer {
   position: relative;
   overflow: hidden;
 }
+.s-slider-retrospective:after {
+  content: '';
+  width: 100%;
+  position: absolute;
+  border-top: 2px dashed rgba(255, 255, 255, 0.16);
+  top: 50%;
+}
+.s-slider-retrospective .date-point {
+  position: absolute;
+  top: 48.8%;
+  left: 21%;
+  width: 10px;
+  height: 10px;
+  display: block;
+  border-radius: 50%;
+  border: 3px solid white;
+}
 .s-slider-retrospective .slides {
   position: relative;
   width: 100000px;
@@ -9005,20 +9022,25 @@ header #searchContainer {
   width: 100vw;
   display: inline-block;
   vertical-align: top;
+  position: relative;
 }
 .slider-restropective .container {
   position: relative;
 }
 .slider-restropective .vFlexAlign {
-  transition: width 1s;
+  transition: width cubic-bezier(0.15, 0.9, 0.34, 0.95) 2s;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
 }
 .slider-restropective .vFlexAlign img {
-  transition: opacity width cubic-bezier(0.15, 0.9, 0.34, 0.95) 1s;
+  transition: opacity width cubic-bezier(0.15, 0.9, 0.34, 0.95) 2s;
   width: 100%;
   object-fit: cover;
+}
+.slider-restropective .vFlexAlign .texts {
+  transition: opacity .2s;
+  opacity: 0;
 }
 .slider-restropective .title-big {
   color: #ffffff;
@@ -9106,6 +9128,7 @@ header #searchContainer {
 }
 .slider-restropective.small .vFlexAlign .texts {
   display: none;
+  opacity: 0;
 }
 .slider-restropective.big .vFlexAlign {
   width: 100vw;
@@ -9115,9 +9138,10 @@ header #searchContainer {
   top: 0px;
   opacity: .3;
 }
-.slider-restropective.big .vFlexAlign .texts {
+.slider-restropective.big .vFlexAlign .texts.visible {
   display: block;
   z-index: 1;
+  opacity: 1;
 }
 
 .navigation-sticky {

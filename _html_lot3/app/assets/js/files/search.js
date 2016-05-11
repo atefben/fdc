@@ -27,6 +27,15 @@ var owInitSliderSelect = function(id) {
     var slider = document.getElementById('timelapse-01');
     var $slide = $('.slides');
 
+    var numberSlide = $('.slider-restropective').size();
+    var sizeSlide = $('.slider-restropective').width();
+    var finalSizeSlider = numberSlide * sizeSlide + 100;
+
+
+    $slide.css('width',finalSizeSlider); // change size slider
+
+    //init width of slide
+
     noUiSlider.create(slider, {
       start: [1946],//todo script
       range: {
@@ -59,10 +68,14 @@ var owInitSliderSelect = function(id) {
           }
 
           var val = - w * (valuesFloat - 1946); //todo script ?
+          var valPos = - w * (valuesFloat - 1946) * .2; //todo script ?
+
           $slide.css('transform','translate('+val+'px)');
+          $('.date-point').css('transform','translate('+valPos+'px)');
 
           $('.slider-restropective').removeClass('big').addClass('small');
           $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
+          $('.slider-restropective .texts').removeClass('zoomIn fadeIn pulse visible');
 
      });
 
@@ -77,8 +90,16 @@ var owInitSliderSelect = function(id) {
        $slide.css('transform','translate('+val+'px)');
 
        var slideElement = $('.slider-restropective[data-slide='+number+']');
+       var slideElementText = $('.slider-restropective[data-slide='+number+'] .texts');
 
        slideElement.removeClass('small').addClass('big');
+
+       setTimeout(function(){
+         slideElementText.addClass('animated zoomIn fadeIn visible');
+         setTimeout(function(){
+           slideElementText.removeClass('zoomIn fadeIn').addClass('pulse');
+         }, 600);
+       }, 900);
 
        $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
 

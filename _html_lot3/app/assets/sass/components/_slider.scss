@@ -223,6 +223,25 @@
   position: relative;
   overflow: hidden;
 
+  &:after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    border-top: 2px dashed rgba(255, 255, 255, 0.16);
+    top: 50%;
+  }
+
+  .date-point{
+    position: absolute;
+    top: 48.8%;
+    left: 21%;
+    width: 10px;
+    height: 10px;
+    display: block;
+    border-radius: 50%;
+    border: 3px solid white;
+  }
+
   .slides {
     position: relative;
     width: 100000px;
@@ -357,19 +376,25 @@
   width: 100vw;
   display: inline-block;
   vertical-align: top;
+  position: relative;
 
   .container {
     position: relative;
   }
 
   .vFlexAlign {
-    transition: width $smoothTransition 1s;
+    transition: width $smoothTransition 2s;
     flex-direction: column;
 
     img{
-      transition: opacity width $smoothTransition 1s;
+      transition: opacity width $smoothTransition 2s;
       width: 100%;
       object-fit: cover;
+    }
+
+    .texts {
+      transition: opacity .2s;
+      opacity: 0;
     }
   }
 
@@ -469,6 +494,7 @@
 
       .texts {
         display: none;
+        opacity: 0;
       }
     }
   }
@@ -483,9 +509,10 @@
         opacity: .3;
       }
 
-      .texts {
+      .texts.visible {
         display: block;
         z-index: 1;
+        opacity: 1;
       }
     }
   }
