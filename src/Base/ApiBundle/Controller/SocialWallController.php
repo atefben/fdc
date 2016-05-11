@@ -61,7 +61,7 @@ class SocialWallController extends FOSRestController
         // get festival year / version
         $festival = $coreManager->getApiFestivalYear();
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
-        $page = $paramFetcher->get('time');
+        $page = $paramFetcher->get('page');
         $offset = $paramFetcher->get('offset');
 
         $dateTime = new \DateTime();
@@ -77,8 +77,7 @@ class SocialWallController extends FOSRestController
             ->getApiSocialWall($festival, $dateTime, true, $offset, $page)
         ;
 
-        // get items
-        $items = $coreManager->getPaginationItems($queryBuilder, $paramFetcher);
+        $items = $queryBuilder->getQuery()->getResult();
 
         // set context view
         $groups = array('social_wall_list');

@@ -168,6 +168,7 @@ class StatementRepository extends EntityRepository
                 ->setParameter('morning', $morning)
                 ->setParameter('midnight', $midnight)
             ;
+            $this->addMasterQueries($qb, 'n', $festival, true);
         }
 
 
@@ -201,7 +202,6 @@ class StatementRepository extends EntityRepository
 
         $qb = $qb
             ->addOrderBy('n.publishedAt', 'desc')
-            ->setParameter('festival', $festival)
             ->getQuery()
             ->getResult()
         ;

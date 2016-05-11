@@ -25,6 +25,14 @@ use Symfony\Component\Validator\Constraints\Date;
  */
 class NewsController extends Controller
 {
+    /**
+     * @Route("/", options={"i18n": "false"})
+     * @Template("FDCEventBundle:News:prehome.html.twig")
+     */
+    public function preHomeAction()
+    {
+        return array();
+    }
 
     /**
      * @Route("/")
