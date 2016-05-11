@@ -319,6 +319,17 @@
                                                 {% endfor %}
                                             </div>
                                             {% endif %}
+                                            <div>
+                                                <label>
+                                                    Chapeau
+                                                </label>
+
+                                                <div>
+                                                    {% if form.children.fr.vars.value is not null %}
+                                                        {{ form.children.fr.vars.value.introduction|raw }}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

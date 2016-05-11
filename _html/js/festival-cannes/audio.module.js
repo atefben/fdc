@@ -29,6 +29,11 @@ function initAudioPlayers() {
   $('.audio-player').each(function(i) {
     var $that = $(this);
 
+    if(typeof wave !== "undefined") {
+      wave.destroy();
+      wave = {};
+    }
+
     $(this).addClass('loading').find('.wave-container').attr('id', 'wave-' + i);
     var h = $(this).hasClass('bigger') ? 55 : 55;
     var wave = WaveSurfer.create({
