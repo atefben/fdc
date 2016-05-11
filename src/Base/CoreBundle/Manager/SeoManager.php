@@ -144,7 +144,19 @@ class SeoManager
                 if ($transImage->getFile() !== null) {
                     $header = $transImage->getFile();
                 }
+            } else if (method_exists($news, 'getGallery') && count($news->getGallery()->getMedias()) >= 1) {
+                $media = $news->getGallery()->getMedias()->get(0);
+                if ($media !== null) {
+                    $media = $media->getMedia();
+                    $header = $media->findTranslationByLocale($this->localeDefaultTranslation)->getFile();
+                    $transImage = $media->findTranslationByLocale($locale);
+                    if ($transImage->getFile() !== null) {
+                        $header = $transImage->getFile();
+                    }
+                }
+            }
 
+            if ($header !== null) {
                 // OG PICTURE
                 $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'media_image_572x362');
                 $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
