@@ -113,9 +113,9 @@ class UpdateCommand extends ContainerAwareCommand
                 $manager->getRemoved($start, $end);
             }
         }
-        
+
         // save in database the end timestamp
-        if ($save !== null) {
+        if ($save == true) {
             $soifTask = $em->getRepository('BaseCoreBundle:SoifTask')->findOneBy(array('taskName' => $this->taskName));
             $soifTask = ($soifTask !== null) ? $soifTask : new SoifTask();
             
