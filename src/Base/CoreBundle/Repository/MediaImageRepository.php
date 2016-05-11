@@ -62,6 +62,7 @@ class MediaImageRepository extends TranslationRepository
                 ->setParameter('morning', $morning)
                 ->setParameter('midnight', $midnight)
             ;
+            $this->addMasterQueries($qb, 'mi', $festival, true);
         }
 
         $qb

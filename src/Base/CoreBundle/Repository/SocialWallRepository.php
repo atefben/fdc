@@ -64,25 +64,33 @@ class SocialWallRepository extends EntityRepository
             ->orderBy('s.updatedAt', 'DESC')
             ->setParameter('festival', $festival)
             ->setParameter('enabledMobile', $mobile)
-            ->setMaxResults($maxResults)
-            ->setFirstResult(($page - 1) * $maxResults)
         ;
 
-        if ($festival->getFestivalStartsAt() > $dateTime || $festival->getFestivalEndsAt() < $dateTime) {
-            $this->addMasterQueries($qb, 's', $festival, false);
+        if ($festival->getFestivalStartsAt() >= $dateTime) {
+            $qb
+                ->andWhere(':festivalStartAt > s.date')
+                ->setParameter('festivalStartAt', $festival->getFestivalStartsAt()->format('Y-m-d'))
+            ;
+        } else if ($festival->getFestivalEndsAt() <= $dateTime) {
+            $qb
+                ->andWhere(':festivalEndAt < s.date')
+                ->setParameter('festivalEndAt', $festival->getFestivalEndsAt()->format('Y-m-d'))
+            ;
         } else {
             $morning = clone $dateTime;
             $morning->setTime(0, 0, 0);
             $midnight = clone $dateTime;
             $midnight->setTime(23, 59, 59);
-
             $qb
                 ->andWhere('s.date BETWEEN :morning AND :midnight')
-                ->setParameter('morning', $morning)
-                ->setParameter('midnight', $midnight)
+                ->setParameter('morning', $morning->format('Y-m-d'))
+                ->setParameter('midnight', $midnight->format('Y-m-d'))
             ;
         }
-
+        $qb
+            ->setMaxResults($maxResults)
+            ->setFirstResult(($page - 1) * $maxResults)
+        ;
 
         return $qb;
     }

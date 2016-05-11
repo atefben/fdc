@@ -111,6 +111,7 @@ class NewsRepository extends EntityRepository
                 ->setParameter('morning', $morning)
                 ->setParameter('midnight', $midnight)
             ;
+            $this->addMasterQueries($qb, 'n', $festival, true);
         }
 
         $qb = $qb
