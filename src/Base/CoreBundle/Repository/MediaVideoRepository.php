@@ -8,10 +8,8 @@ class MediaVideoRepository extends TranslationRepository
     public function get2VideosFromTheLast10($festival, $locale, $excludeWebTv = null)
     {
         $qb = $this->createQueryBuilder('mv');
-
         $qb
-            ->select('mv,
-            RAND() as hidden rand')
+            ->select('mv')
             ->join('mv.translations', 'mvt')
         ;
 
@@ -28,11 +26,23 @@ class MediaVideoRepository extends TranslationRepository
         }
 
         $qb
-            ->orderBy('rand')
-            ->setMaxResults(2)
+            ->orderBy('mv.publishedAt', 'desc')
+            ->setMaxResults(10)
         ;
 
-        return $qb->getQuery()->getResult();
+        $results = $qb->getQuery()->getResult();
+
+        //random key but different from 1st result
+        $rand1 = array_rand($results);
+        $rand2  = array_rand($results);
+        while($rand1 == $rand2) {
+            $rand2 = array_rand($results);
+        }
+
+        $result[0] = $results[$rand1];
+        $result[1] = $results[$rand2];
+
+        return $result;
     }
 
     public function getFilmTrailersMediaVideos($festival, $locale, $film)

@@ -118,4 +118,17 @@ class NewsVideo extends News
     {
         return $this->image;
     }
+
+    /**
+     * Set header
+     *
+     * @param MediaImage $header
+     * @return NewsArticle
+     */
+    public function setHeader(MediaImage $header = null)
+    {
+        $this->image = $header;
+
+        return $this;
+    }
 }
