@@ -1685,7 +1685,66 @@
   }
 }
 
+.prehome-01 {
+  background-image: url('../img/prehome01.jpg');
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
 
+  .content {
+    height: 213px;
+    display: block;
+    padding-left: 67px;
+    padding-top: 32px;
+  }
+
+  .link {
+    display: inline-block;
+    vertical-align: bottom;
+
+    li a {
+        font-size: .9rem;
+        font-family: $CamphorBold;
+        color: #fff;
+        text-transform: uppercase;
+        padding-bottom: 17px;
+        display: block;
+        transition: .5s;
+
+        &:hover {
+          opacity: .7;
+        }
+    }
+
+    ul {
+      padding-bottom: 21px;
+      padding-left: 40px;
+    }
+  }
+
+  #logo {
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.29);
+    display: inline-block;
+    padding-right: 45px;
+    padding-bottom: 21px;
+    padding-top: 11px;
+
+    img {
+      width: 141px;
+    }
+
+    h1, h2{
+      color: #f2e5b7;
+      font-size: .875rem;
+      font-size: $CamphorMedium;
+    }
+
+    h1 img {
+      width: 209px;
+    }
+  }
+}
 
 
 .mob #sliderWrapper .owl-item.center .img-container {
