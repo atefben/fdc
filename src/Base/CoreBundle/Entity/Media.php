@@ -12,6 +12,7 @@ use Base\CoreBundle\Util\TruncatePro;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use JMS\Serializer\Annotation as Serializer;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\Since;
 
@@ -76,6 +77,7 @@ abstract class Media implements TranslateMainInterface
      *     "home",
      *     "orange_video_on_demand"
      * })
+     * @Serializer\Accessor(getter="getApiPublishedAt")
      */
     private $publishedAt;
 
@@ -300,6 +302,16 @@ abstract class Media implements TranslateMainInterface
     public function getPublishedAt()
     {
         return $this->publishedAt;
+    }
+
+    /**
+     * Get publishedAt
+     *
+     * @return \DateTime
+     */
+    public function getApiPublishedAt()
+    {
+        return $this->publishedAt ? $this->publishedAt : new \DateTime();
     }
 
     /**
