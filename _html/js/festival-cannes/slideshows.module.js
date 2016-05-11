@@ -11,7 +11,8 @@ function initSlideshows() {
     nav          : false,
     dots         : false,
     smartSpeed   : 500,
-    margin       : 11,
+    autoWidth    : true,
+    margin       : 10,
     dragEndSpeed : 900,
     items        : nbItems
   });

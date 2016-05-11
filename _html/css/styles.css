@@ -17096,6 +17096,9 @@ input[type=submit] {
 .press #calendar #mycalendar .fc-bg .fc-axis, .press #calendar #mycalendar .fc-content-skeleton .fc-axis {
   width: 60px !important;
 }
+.press #calendar #mycalendar .fc-today {
+  background-color: #242424;
+}
 .press #calendar p.link {
   border-bottom: 1px solid #3d3d3d;
   height: 70px;
