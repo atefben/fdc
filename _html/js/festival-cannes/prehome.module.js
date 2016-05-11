@@ -24,9 +24,7 @@ $(document).ready(function() {
       $('#prehome-container').remove();
     }
   }
-});
 
-$(window).load(function() {
   if(!isiPad()) {
     if(!$.cookie('prehome')) {
       setTimeout(function() {
@@ -46,7 +44,7 @@ $(window).load(function() {
             }
           },200);
         });
-      }, 1000);
+      }, 3000);
       $.cookie('prehome', '1', { expires: 7 });
     }
   } else {
