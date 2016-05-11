@@ -7735,6 +7735,7 @@ header #searchContainer {
 }
 #searchContainer #results .big:nth-child(4n+1) {
   margin-left: 0;
+  clear: left;
 }
 #searchContainer #results .big img {
   display: block;
