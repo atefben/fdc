@@ -74,7 +74,7 @@ class HomepageSlideRepository extends EntityRepository
                  (s.publishedAt <= :datetime) AND (s.publishEndedAt IS NULL OR s.publishEndedAt >= :datetime) OR
                  (i.publishedAt <= :datetime) AND (i.publishEndedAt IS NULL OR i.publishEndedAt >= :datetime)'
             )
-
+            ->orderBy('hs.position')
             ->setParameter('locale', $locale)
             ->setParameter('datetime', $dateTime)
         ;
