@@ -495,3 +495,7 @@
 .chapeau em {
     font-style: italic;
 }
+
+.acces-container .section-contain .contain-map {
+    text-align:center;
+}
