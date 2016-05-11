@@ -1986,7 +1986,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
         $days = array();
         $typeUCR = false;
-        if(!isset($_GET['v']) || empty($_GET['v'])) {
+        if(!isset($_GET['v'])) {
             $exclude = array('Séance de presse', 'Conférence de presse');
         } else {
             $exclude = array();
@@ -1995,7 +1995,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $projections = array();
         foreach ($this->projectionProgrammationFilms as $projection) {
             if ($projection instanceof FilmProjectionProgrammationFilm) {
-                if($this->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_CINEFONDATION || $this->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_COURTMETRAGE) {
+                if($projection->getProgrammationSection() != 'Cinéfondation' && $projection->getProgrammationSection() != 'En Compétition - Courts métrages') {
                     $typeUCR = false;
                     if ($this->getSelectionSection()->getId() == FilmSelectionSectionInterface::FILM_SELECTION_SECTION_UNCERTAINREGARD) {
                         $typeUCR = true;
