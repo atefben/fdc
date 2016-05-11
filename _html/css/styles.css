@@ -10221,7 +10221,7 @@ header #searchContainer {
 .prehome-01 #logo img {
   width: 141px;
 }
-.prehome-01 #logo h1 a, .prehome-01 #logo h2 a {
+.prehome-01 #logo h1, .prehome-01 #logo h2 {
   color: #f2e5b7;
   font-size: .875rem;
   font-size: "Camphor W01 Medium", Arial, Helvetica, sans-serif;

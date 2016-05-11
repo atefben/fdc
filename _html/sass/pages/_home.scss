@@ -1712,7 +1712,7 @@
         transition: .5s;
 
         &:hover {
-          opacity: .7;    
+          opacity: .7;
         }
     }
 
@@ -1734,7 +1734,7 @@
       width: 141px;
     }
 
-    h1 a, h2 a {
+    h1, h2{
       color: #f2e5b7;
       font-size: .875rem;
       font-size: $CamphorMedium;
