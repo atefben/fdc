@@ -100,8 +100,8 @@ class NewsController extends FOSRestController
         $projections = array();
         $exclude = array('Séance de presse', 'Conférence de presse');
         foreach ($tempProjections as $projection) {
-            
-            if($projection->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_CINEFONDATION && $projection->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_COURTMETRAGE) {
+
+            if($projection->getProgrammationSection() != 'Cinéfondation' && $projection->getProgrammationSection() != 'En Compétition - Courts métrages') {
                 $end = $dateTime->getTimestamp() + 3600;
                 if ($projection->getStartsAt() && (int)$projection->getStartsAt()->format('H') < 4) {
                     $tomorrow = clone $projection->getStartsAt();
