@@ -1,13 +1,26 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% set festival_date = festival_date() %}
 <!DOCTYPE html>
-<html {{ sonata_seo_html_attributes() }} lang="{{ app.request.locale }}">
-    <head {{ sonata_seo_head_attributes() }}>
-        {{ sonata_seo_title() }}
+<html>
+    <head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {{ sonata_seo_metadatas() }}
-        {{ sonata_seo_link_canonical() }}
-        {{ sonata_seo_lang_alternates() }}
+        <!-- TWITTER -->
+        <meta property='twitter:card' content='summary' />
+        <meta property='twitter:url' content='http://www.festival-cannes.com' />
+        <meta property='twitter:title' content='Festival de Cannes 2016: from 11th to 22th May 2016' />
+        <meta property='twitter:domain' content='http://www.festival-cannes.com/'/>
+        <meta property='twitter:site:id' content='Festival_Cannes' />
+        <meta property='twitter:creator:id' content='@Festival_Cannes' />
+        <meta property='twitter:description' content='Festival de Cannes 2016: from 11th to 22th May 2016.  All the latest from the Festival de Cannes on the official website' />
+        <meta property='twitter:image:src' content='http://affif-sitepublic-vendor-prod.s3-website-eu-west-1.amazonaws.com/bundles/fdcevent/img/prehome01.jpg' />
+
+        <!-- FACEBOOK -->
+        <meta property='og:title' content='Festival de Cannes 2016: from 11th to 22th May 2016' />
+        <meta property='og:type' content='article' />
+        <meta property='og:image' content='http://affif-sitepublic-vendor-prod.s3-website-eu-west-1.amazonaws.com/bundles/fdcevent/img/prehome01.jpg' />
+        <meta property='og:url' content='http://www.festival-cannes.com' />
+        <meta property='og:site_name' content='Festival de Cannes' />
+        <meta property='og:description' content='Festival de Cannes 2016: from 11th to 22th May 2016.  All the latest from the Festival de Cannes on the official website' />
         {% include 'FDCEventBundle:Base:stylesheet.html.twig' %}
         {% include 'FDCEventBundle:Base:javascript_head.html.twig' %}
     </head>
