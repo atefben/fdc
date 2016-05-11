@@ -201,7 +201,7 @@ class EntityListener
                 foreach ($args->getNewValue('translateOptions') as $newOption) {
                     if (!in_array($newOption, $args->getOldValue('translateOptions'))) {
                         $translation = $entity->findTranslationByLocale($languages[$newOption]);
-                        if (!$translation->getStatus()) {
+                        if ($translation->getStatus() == null) {
                             $this->toTranslate[] = $translation; // go to the post flush function to see the next operations
                         }
                     }
