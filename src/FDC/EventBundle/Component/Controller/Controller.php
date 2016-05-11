@@ -88,8 +88,7 @@ class Controller extends BaseController
         }
 
         if (strpos(get_class($trans), 'MediaAudioTranslation')) {
-            if ($trans->getFile() === null ||
-                $trans->getJobMp3State() != MediaAudioTranslation::ENCODING_STATE_READY ||
+            if ($trans->getJobMp3State() != MediaAudioTranslation::ENCODING_STATE_READY ||
                 $trans->getMp3Url() === null
             ) {
                 return false;
