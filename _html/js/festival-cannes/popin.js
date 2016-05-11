@@ -170,25 +170,6 @@ $(document).ready(function() {
   linkPopinInit();
 });
 
-function getCookie(name) {
-  var value = "; " + document.cookie;
-  var parts = value.split("; " + name + "=");
-  if (parts.length == 2) return parts.pop().split(";").shift();
-}
-
-if(getCookie('comply_cookie') == 'comply_yes'){
-  $("#cookies-banner").hide();
-}
-
-// cookie banner
-$('.cookie-accept').click(function () {
-  days = 365; //number of days to keep the cookie
-  myDate = new Date();
-  myDate.setTime(myDate.getTime()+(days*24*60*60*1000));
-  document.cookie = "comply_cookie = comply_yes; expires = " + myDate.toGMTString(); //creates the cookie: name|value|expiry
-  $("#cookies-banner").slideUp("slow"); //jquery to slide it up
-});
-
 //LINK POPIN//
 function linkPopinInit(link, cls) {
   var link = link || document.location.href;

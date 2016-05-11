@@ -1,3 +1,6 @@
+{% extends 'FDCEventBundle::layout_prehome.html.twig' %}
+
+{% block body %}
 <body class="prehome-01">
 
     <div class="content">
@@ -19,12 +22,13 @@
 
         <div class="link">
             <ul>
-                <li><a href="#">Entrer</a></li>
-                <li><a href="#">Enter</a></li>
-                <li><a href="#">Entrar</a></li>
-                <li><a href="#">进入</a></li>
+                <li><a href="{{ path('fdc_event_news_index',{_locale:'fr'}) }}">Entrer</a></li>
+                <li><a href="{{ path('fdc_event_news_index',{_locale:'en'}) }}">Enter</a></li>
+                <li><a href="{{ path('fdc_event_news_index',{_locale:'es'}) }}">Entrar</a></li>
+                <li><a href="{{ path('fdc_event_news_index',{_locale:'zh'}) }}">进入</a></li>
             </ul>
 
         </div>
     </div>
 </body>
+{% endblock body %}
