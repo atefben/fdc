@@ -41,24 +41,28 @@
                             <div class="title-original">({{ secondTitle }})</div>
                         {%- endif -%}
                         <p>
-                            {{- 'movie.label.realisepar'|trans }} : {{ ' ' }}
+                            {{- 'movie.label.realisepar'|trans }} :{{ ' ' }}
                             {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                             {%- for director in directors -%}
                                 {%- include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} -%}
                                 {%- if loop.index != directors|length -%}, {%- endif -%}
                             {%- endfor -%}
                         </p>
-                        <p>
-                            {%- if film.productionYear is not null and film.productionYear != 0 -%}
+                        {%- if film.productionYear is not null and film.productionYear != 0 -%}
+                            <p>
                                 {{ 'movie.label.anneedeproduction'|trans }} : {{ ' ' }} <span>{{ film.productionYear }}</span>
-                            {%- endif -%}
-                            {%- if film.countries|length > 0 -%}
+                            </p>
+                        {%- endif -%}
+                        {%- if film.countries|length > 0 -%}
+                            <p>
                                 {{ 'movie.label.pays'|trans }} :{{ ' ' }}
                                 {%- for country in film.countries -%}
                                     <span>{{ country.country|trans_fallback('name')|replace({' ': ""}) }}</span>
                                 {%- endfor -%}
-                            {%- endif -%}
-                            {%- if film.duration is not null and film.duration > 0 -%}
+                            </p>
+                        {%- endif -%}
+                        {%- if film.duration is not null and film.duration > 0 -%}
+                            <p>
                                 {%- set duration = film.duration|split('.') -%}
                                 {{ 'movie.label.duree'|trans }} :{{ ' ' }}
                                 {%- if duration|length >= 1 -%}
@@ -66,7 +70,8 @@
                                     {% set minutes = duration[0] % 60  %}
                                     <span>{{ hours }}H{% if minutes|length == 1 %}0{% endif %}{{ minutes }}</span>
                                 {%- endif -%}
-                            {%- endif -%}
+                            <p>
+                        {%- endif -%}
                         </p>
                         <a href="{{ path('fdc_event_movie_get', {slug: film.slug}) }}" class="button">
                             {{ 'movie.see_movie_page'|trans }}
@@ -157,7 +162,7 @@
                                     </span> -
                                     <span class="ven">
                                         {%- if seance.room -%}
-                                            {%- set trans_slug = 'programmation.salle.' ~ seance.room.name|sonata_slugify -%}
+                                            {%- set trans_slug = 'programmation.salle.' ~ seance.room.name|remove_accents|sonata_slugify -%}
                                             {%- set trans = trans_slug|trans -%}
                                             {%- if trans_slug != trans -%}
                                                 {{- trans -}}
@@ -265,7 +270,7 @@
                                     </span> -
                                     <span class="ven">
                                         {%- if conference.room -%}
-                                            {%- set trans_slug = 'programmation.salle.' ~ conference.room.name|sonata_slugify -%}
+                                            {%- set trans_slug = 'programmation.salle.' ~ conference.room.name|remove_accents|sonata_slugify -%}
                                             {%- set trans = trans_slug|trans -%}
                                             {%- if trans_slug != trans -%}
                                                 {{- trans -}}
@@ -368,7 +373,7 @@
                                     </span> - {{- ' ' -}}
                                     <span class="ven">
                                         {%- if relatedProjection.room -%}
-                                            {%- set trans_slug = 'programmation.salle.' ~ relatedProjection.room.name|sonata_slugify -%}
+                                            {%- set trans_slug = 'programmation.salle.' ~ relatedProjection.room.name|remove_accents|sonata_slugify -%}
                                             {%- set trans = trans_slug|trans -%}
                                             {%- if trans_slug != trans -%}
                                                 {{- trans -}}

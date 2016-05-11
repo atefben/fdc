@@ -133,9 +133,14 @@ services:
             - { name: twig.extension }
         arguments: ["%locale_fallback%"]
 
-
     base.twig.legacy_film_image_extension:
         class: Base\CoreBundle\Twig\Extension\LegacyFilmImageExtension
         arguments: ['@database_connection']
+        tags:
+            - { name: twig.extension }
+
+    base.twig.remove_accents_extension:
+        class: Base\CoreBundle\Twig\Extension\RemoveAccentsExtension
+        arguments: []
         tags:
             - { name: twig.extension }

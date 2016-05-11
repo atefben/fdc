@@ -51,6 +51,7 @@ function isIE() {
          navigator.userAgent.indexOf("Trident") > -1
 }
 
+// is FF Browser
 function isFF() {
   return navigator.userAgent.toLowerCase().indexOf('firefox') > -1
 }
@@ -67,7 +68,14 @@ function isiPad(only) {
   }
 }
 
-//
+// Renvoie un UID unique
+function guid() {
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  }
+}
+
 String.prototype.trunc = function( n, useWordBoundary ){
   var isTooLong = this.length > n,
       s_ = isTooLong ? this.substr(0,n-1) : this;

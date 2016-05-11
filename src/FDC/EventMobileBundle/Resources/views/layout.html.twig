@@ -5,8 +5,9 @@
     <head {{ sonata_seo_head_attributes() }}>
         {{ sonata_seo_title() }}
 		<meta name="viewport" content="user-scalable=no, width=640">
-		<meta name="apple-itunes-app" content="app-id=431842884" />
+		<meta name="apple-itunes-app" content="app-id=431842884">
 		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="google-play-app" content="app-id=fr.festivaldecannes">
         {{ sonata_seo_metadatas() }}
         {{ sonata_seo_link_canonical() }}
         {{ sonata_seo_lang_alternates() }}
@@ -49,8 +50,12 @@
 						    <a href="https://itunes.apple.com/app/festival-de-cannes-officiel/id431842884">
 						{%  endif %}
 						   {% image '@FDCEventBundle/Resources/public/img/appstore.png' %}
-						   <img src="{{ asset_url }}" alt="apple" /></a>
+						   <img src="{{ asset_url }}" alt="Apple" /></a>
 						   {% endimage %}
+							<a href="https://play.google.com/store/apps/details?id=fr.festivaldecannes&hl={{ app.request.locale }}">
+							{% image '@FDCEventBundle/Resources/public/img/appgoogle.png' %}
+							<img src="{{ asset_url }}" alt="Google" /></a>
+							{% endimage %}
 					</p>
 		       </div>
 		    </section>

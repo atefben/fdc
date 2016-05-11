@@ -4,6 +4,7 @@ namespace Base\ApiBundle\Controller;
 
 use Base\CoreBundle\Entity\FilmProjection;
 use Base\CoreBundle\Entity\FilmProjectionRoom;
+use Base\CoreBundle\Entity\FilmSelectionSectionInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -79,17 +80,20 @@ class FilmProjectionController extends FOSRestController
         foreach ($rooms as $key => $room) {
             $ac = new ArrayCollection();
             $temp = array();
+
             foreach ($room->getProjections() as $projection) {
                 if ($projection->getProgrammationFilms()->count()) {
-                    if ($projection->isProjectionOfTheDay($date)) {
-                        if ((int)$projection->getStartsAt()->format('H') < 4) {
-                            $tomorrow = clone $projection->getStartsAt();
-                            $tomorrow->add(date_interval_create_from_date_string('1 day'));
-                            $keyDay = $tomorrow->getTimestamp() . '-' . $projection->getId();
-                        } else {
-                            $keyDay = $projection->getStartsAt()->getTimestamp() . '-' . $projection->getId();
+                    if($projection->getProgrammationSection() != 'Cinéfondation' && $projection->getProgrammationSection() != 'En Compétition - Courts métrages') {
+                        if ($projection->isProjectionOfTheDay($date)) {
+                            if ((int)$projection->getStartsAt()->format('H') < 4) {
+                                $tomorrow = clone $projection->getStartsAt();
+                                $tomorrow->add(date_interval_create_from_date_string('1 day'));
+                                $keyDay = $tomorrow->getTimestamp() . '-' . $projection->getId();
+                            } else {
+                                $keyDay = $projection->getStartsAt()->getTimestamp() . '-' . $projection->getId();
+                            }
+                            $temp[$keyDay] = $projection;
                         }
-                        $temp[$keyDay] = $projection;
                     }
                 }
             }

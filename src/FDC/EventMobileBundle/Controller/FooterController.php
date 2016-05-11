@@ -85,96 +85,208 @@ class FooterController extends Controller
                         'path' => '#'
                     ),
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Articles',
                         'path' => '#'
                     ),
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Photos',
                         'path' => '#'
                     ),
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Vidéos',
                         'path' => '#'
                     ),
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Audios',
                         'path' => '#'
-                    ),
+                    )
                 )
             ),
             array(
-                'title'=>'L\'actualité',
+                'title'=>'Web TV',
                 'links'=>array(
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'En Direct',
                         'path' => '#'
                     ),
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Chaînes',
                         'path' => '#'
                     ),
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Bandes Annonces',
                         'path' => '#'
-                    ),
-                    array(
-                        'name' => 'Jour Après Jour',
-                        'path' => '#'
-                    ),
-                    array(
-                        'name' => 'Jour Après Jour',
-                        'path' => '#'
-                    ),
+                    )
                 )
             ),
             array(
-                'title'=>'L\'actualité',
+                'title'=>'La Selection',
                 'links'=>array(
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'En Compétition',
                         'path' => '#'
                     ),
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Un Certain Regard',
                         'path' => '#'
                     ),
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Hors Compétition',
                         'path' => '#'
                     ),
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Scéances Spéciales',
                         'path' => '#'
                     ),
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Cinéfondation',
                         'path' => '#'
                     ),
+                    array(
+                        'name' => 'Courts Métrages',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Cannes Classics',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Cinéma de la Plage',
+                        'path' => '#'
+                    )
                 )
             ),
             array(
-                'title'=>'L\'actualité',
+                'title'=>'Les Jurys',
                 'links'=>array(
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Longs Métrages',
                         'path' => '#'
                     ),
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Cinéfondation & Courts Métrages',
                         'path' => '#'
                     ),
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Un Certain Regard',
                         'path' => '#'
                     ),
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Caméra d\'or',
+                        'path' => '#'
+                    )
+                )
+            ),
+            array(
+                'title'=>'Le Palmarès',
+                'links'=>array(
+                    array(
+                        'name' => 'Compétition',
                         'path' => '#'
                     ),
                     array(
-                        'name' => 'Jour Après Jour',
+                        'name' => 'Un Certain Regard',
                         'path' => '#'
                     ),
+                    array(
+                        'name' => 'Cinéfondation',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Caméra d\'or',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Tous le palmares',
+                        'path' => '#'
+                    )
+                )
+            ),
+            array(
+                'title'=>'Les évènements',
+                'links'=>array(
+                    array(
+                        'name' => 'Leçons',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Expositions',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Rendez-vous européen',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Leçons de musique',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Leçons de cinéma',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Leçons d\'acteur',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Hommages',
+                        'path' => '#'
+                    )
+                )
+            ),
+            array(
+                'title'=>'Participer',
+                'links'=>array(
+                    array(
+                        'name' => 'Préparer son séjour',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Festival mode d\'emploi',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Accès aux projections',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Partenaires',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Fournisseurs',
+                        'path' => '#'
+                    )
+                )
+            ),
+            array(
+                'title'=>'Espace Presse',
+                'links'=>array(
+                    array(
+                        'name' => 'Accueil',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Communiqués / Infos',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'S\'accréditer',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Guide Pratique',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Programmation',
+                        'path' => '#'
+                    ),
+                    array(
+                        'name' => 'Médiathèque',
+                        'path' => '#'
+                    )
                 )
             )
         );
@@ -609,8 +721,6 @@ class FooterController extends Controller
             "FDCEventMobileBundle:Footer:$page.html.twig",
             array('content' => $pageContent)
         );
-
-
     }
 
     /**

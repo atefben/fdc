@@ -10,25 +10,29 @@
             </div>
             <div class="container">
                 <h2>{{ 'programmation.title.programmation'|trans }}</h2>
-                <div class="buttons">
-                    {% if app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER") and pressProjection.pressScheduling is not null %}
-                        <a href="#" class="button subnav"><i
-                                    class="icon icon_telecharger"></i>{{ pressProjection|trans_fallback('pressSchedulingLabel') }}
+                {% if app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER") and pressProjection.pressScheduling is not null %}
+                    <div class="buttons full">
+                        <a href="#" class="button subnav">
+                            <i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatpdf'|trans }}
                         </a>
-                        <a href="{% path pressProjection.pressScheduling, 'reference' %}" class="button list pdf" download
-                           target="_blank"><i
-                                    class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatpdf'|trans }}
+                        <a href="{% path pressProjection.pressScheduling, 'reference' %}" class="button list pdf" download target="_blank">
+                           <i class="icon icon_telecharger"></i>{{ pressProjection|trans_fallback('pressSchedulingLabel') }}
+                        </a>
+                        <a href="{% path pressProjection.scheduling, 'reference' %}" class="button list pdf" download target="_blank">
+                            <i class="icon icon_telecharger"></i>{{ pressProjection|trans_fallback('schedulingLabel') }}
                         </a>
                         {#<a href="#" class="button list" download><i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatics'|trans }}</a>#}
+                    </div>
+                    {% else %}
+                    <div class="buttons">
+                        <a href="#" class="button subnav">
+                            <i class="icon icon_telecharger"></i>{{ pressProjection|trans_fallback('schedulingLabel') }}
+                        </a>
+                        <a href="{% path pressProjection.scheduling, 'reference' %}" class="button list pdf" download target="_blank">
+                           <i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatpdf'|trans }}
+                        </a>
+                    </div>
                     {% endif %}
-                        <a href="#" class="button subnav"><i
-                                    class="icon icon_telecharger"></i>{{ pressProjection|trans_fallback('schedulingLabel') }}
-                        </a>
-                        <a href="{% path pressProjection.scheduling, 'reference' %}" class="button list pdf" download
-                           target="_blank"><i
-                                    class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatpdf'|trans }}
-                        </a>
-                </div>
             </div>
         </div>
 
@@ -85,7 +89,15 @@
                             <div class="v-wrapper">
                                 {%- for room in rooms -%}
                                     <div class="venue">
-                                        <div class="v-head">{{  room.name }}</div>
+                                        <div class="v-head">
+                                            {%- set trans_slug = 'programmation.salle.' ~ room.name|remove_accents|sonata_slugify -%}
+                                            {%- set trans = trans_slug|trans -%}
+                                            {%- if trans_slug != trans -%}
+                                                {{- trans -}}
+                                            {%- else -%}
+                                                {{- room.name|upper -}}
+                                            {%- endif -%}
+                                        </div>
                                         <div class="v-container">
                                             {%- for event in projections[room.id] -%}
                                                 {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}

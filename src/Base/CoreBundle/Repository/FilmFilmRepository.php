@@ -235,6 +235,7 @@ class FilmFilmRepository extends EntityRepository
             ->andWhere('f.selectionSection IN (:selectionsSections)')
             ->setParameter('selectionsSections', $selectionSectionIds)
             ->addOrderBy('ss.position', 'asc')
+            ->addOrderBy('f.titleVO', 'asc')
         ;
         if ($exclude) {
             $qb

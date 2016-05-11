@@ -159,6 +159,8 @@
     }
 
     .info {
+      overflow-x: hidden;
+      
       img {
         float: left;
         margin: 10px;
@@ -577,6 +579,12 @@
           background-color: #fff;
           color: $gold;
           cursor: default;
+        }
+      }
+
+      &.full {
+        .button {
+          width: calc(100% - 40px);
         }
       }
     }
@@ -2031,6 +2039,7 @@
       span {
         color: #adadad;
         margin-right: 10px;
+        display: inline-block;
       }
 
       .nom-item {

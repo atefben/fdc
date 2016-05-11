@@ -3,7 +3,7 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-
+use Base\CoreBundle\Entity\FilmSelectionSectionInterface;
 use Base\CoreBundle\Interfaces\FilmFunctionInterface;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\TranslateMain;
@@ -1986,11 +1986,17 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
         $days = array();
         $typeUCR = false;
-        $exclude = array('Séance de presse', 'Conférence de presse');
+        if(!isset($_GET['v'])) {
+            $exclude = array('Séance de presse', 'Conférence de presse');
+        } else {
+            $exclude = array();
+        }
+
         $projections = array();
         foreach ($this->projectionProgrammationFilms as $projection) {
             if ($projection instanceof FilmProjectionProgrammationFilm) {
-                if($this->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_CINEFONDATION || $this->getSelectionSection()->getId() != FilmSelectionSectionInterface::FILM_SELECTION_SECTION_COURTMETRAGE) {
+                
+                if($projection->getProjection()->getProgrammationSection() != 'Cinéfondation' && $projection->getProjection()->getProgrammationSection() != 'En Compétition - Courts métrages') {
                     $typeUCR = false;
                     if ($this->getSelectionSection()->getId() == FilmSelectionSectionInterface::FILM_SELECTION_SECTION_UNCERTAINREGARD) {
                         $typeUCR = true;

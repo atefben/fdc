@@ -159,9 +159,12 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
+                633x399: {width: 633, height: 399, quality: 100}
+                194x122: {width: 194, height: 122, quality: 100, constraint: false}
+                97x61:   {width: 97, height: 61, quality: 100, constraint: false}
                 mobile: { width: 584 , height: 794 , quality: 100 }
                 # Slider Home(TEMPORAIRE CAR NON DEFINI), audio fullscreen (TEMPORAIRE CAR NON DEFINI)
-                2560x1620: { width: 2560 , height: 1620 , quality: 100, constraint: false}
+                2560x1620: { width: 2560 , height: 1620 , quality: 100}
                 # Diaporama photo
                 1760x1108: { width: 1760 , height: 1108 , quality: 100, constraint: false}
                 880x554: { width: 880, height: 554, quality: 100, constraint: false }
@@ -188,7 +191,7 @@ sonata_media:
                 1950x1232: { width: 1950 , height: 1232 , quality: 100, constraint: false}
                 975x616: { width: 975 , height: 616 , quality: 100, constraint: false}
                 # Diaporama photo
-                1266x798: { width: 1266 , height: 798 , quality: 100, constraint: false}
+                1266x798: { width: 1266 , height: 798 , quality: 100}
                 # WebTv Tetiere, Channels Tetiere
                 1920x450: { width: 1920 , height: 450 , quality: 100, constraint: false}
                 # Dernières vidéos (webtv)

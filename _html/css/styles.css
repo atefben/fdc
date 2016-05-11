@@ -7916,11 +7916,17 @@ header #searchContainer {
 #searchContainer #results #wide .big {
   width: 136px;
 }
+#searchContainer #results #wide .big img {
+  width: 136px;
+  height: 185px;
+  object-fit: cover;
+}
 #searchContainer #results #wide .big:nth-child(4n+1) {
   margin-left: 40px;
 }
 #searchContainer #results #wide .big:nth-child(3n+1) {
   margin-left: 0;
+  clear: left;
 }
 #searchContainer #results #wide article:nth-child(2n+1) {
   clear: both;
@@ -16837,6 +16843,9 @@ input[type=submit] {
   cursor: -webkit-grab;
   cursor: grab;
 }
+.press .fc-event .info {
+  overflow-x: hidden;
+}
 .press .fc-event .info img {
   float: left;
   margin: 10px;
@@ -17199,6 +17208,9 @@ input[type=submit] {
   background-color: #fff;
   color: #c8a461;
   cursor: default;
+}
+.press .header-press .buttons.full .button {
+  width: calc(100% - 40px);
 }
 .press .locked {
   background-color: #f4f4f4;
@@ -18430,6 +18442,7 @@ input[type=submit] {
 .popin-event .film p span {
   color: #adadad;
   margin-right: 10px;
+  display: inline-block;
 }
 .popin-event .film p .nom-item {
   color: #c8a461;
