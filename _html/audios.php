@@ -42,7 +42,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
+        <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/lol.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
           <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
@@ -54,7 +54,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
+        <div class="item theme2 date2 date theme shadow-bottom audio" data-sound="img/article/test.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/ddd/000.png 1x, http://dummyimage.com/1280x808/ddd/000.png 2x" alt="">
           <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
@@ -66,7 +66,7 @@
             </div>
           </div>
         </div>
-        <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/sound.mp3">
+        <div class="item theme2 date1 date theme shadow-bottom audio" data-sound="img/article/here.mp3">
           <img src="http://dummyimage.com/640x404/000/fff.png" srcset="http://dummyimage.com/640x404/000/fff.png 1x, http://dummyimage.com/1280x808/000/fff.png 2x" alt="">
           <div class="picto"><i class="icon icon_audio"></i></div>
           <div class="info">
