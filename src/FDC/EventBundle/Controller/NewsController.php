@@ -79,7 +79,7 @@ class NewsController extends Controller
         $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array(
             'festival' => $this->getFestival()
         ), array(
-            'date' => 'ASC'
+            'date' => 'DESC'
         ), 12, null)
         ;
 
@@ -91,6 +91,7 @@ class NewsController extends Controller
             $socialGraphTimeline[]['date'] = $timelineDate->getDate();
             $socialGraphTimelineCount[] = $timelineDate->getCount();
         }
+        $socialGraphTimeline = array_reverse($socialGraphTimeline);
 
         $socialGraph['timeline'] = $socialGraphTimeline;
         $socialGraph['timelineCount'] = json_encode($socialGraphTimelineCount);
