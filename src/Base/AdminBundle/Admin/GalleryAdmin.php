@@ -36,6 +36,11 @@ class GalleryAdmin extends Admin
         $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
     }
 
+    public function configure()
+    {
+        $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
+    }
+
     /**
      * @param ListMapper $listMapper
      */
