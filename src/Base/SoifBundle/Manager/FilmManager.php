@@ -252,7 +252,7 @@ class FilmManager extends CoreManager
         $this->setSoifUpdatedAt($result, $entity);
 
         // set entity properties
-        /*$this->setEntityProperties($resultObject, $entity);
+        $this->setEntityProperties($resultObject, $entity);
 
         // set related entity
         $this->setEntityRelated($resultObject, $entity);
@@ -639,7 +639,7 @@ class FilmManager extends CoreManager
         foreach ($persons as $person) {
             $collectionPerson->add($person);
         }
-        $this->removeOldRelations($entity->getPersons(), $collectionPerson, $entity, 'removePerson');*/
+        $this->removeOldRelations($entity->getPersons(), $collectionPerson, $entity, 'removePerson');
 
         // set contacts
         if (property_exists($resultObject, 'FilmContacts') && property_exists($resultObject->FilmContacts, 'ContactDto')) {
