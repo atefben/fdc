@@ -74,7 +74,8 @@ class FilmFilmPersonFunction
      * @var FilmFilmPerson
      *
      * @ORM\ManyToOne(targetEntity="FilmFilmPerson", inversedBy="functions", cascade={"persist"})
-     * @ORM\JoinColumn(name="film_person_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="film_person_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
+     *
      */
     private $filmPerson;
 

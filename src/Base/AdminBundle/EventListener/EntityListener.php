@@ -201,7 +201,7 @@ class EntityListener
                 foreach ($args->getNewValue('translateOptions') as $newOption) {
                     if (!in_array($newOption, $args->getOldValue('translateOptions'))) {
                         $translation = $entity->findTranslationByLocale($languages[$newOption]);
-                        if (!$translation->getStatus()) {
+                        if ($translation->getStatus() == null) {
                             $this->toTranslate[] = $translation; // go to the post flush function to see the next operations
                         }
                     }
@@ -778,7 +778,7 @@ class EntityListener
         if ($this->toTranslate) {
             $mustPersist = false;
             foreach ($this->toTranslate as $translation) {
-                if (!$translation->getStatus()) {
+                if ($translation->getStatus() == null) {
                     $translation->setStatus(TranslateChildInterface::STATUS_TRANSLATION_PENDING);
                     $eventArgs->getEntityManager()->persist($translation);
                     $mustPersist = true;
