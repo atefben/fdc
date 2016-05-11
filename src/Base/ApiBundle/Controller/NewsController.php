@@ -97,8 +97,12 @@ class NewsController extends FOSRestController
             ->getNewsApiProjections($festival, $dateTime)
         ;
         $projections = array();
+        $now = new DateTime();
+        $endDateTime = new DateTime();
+        $endDateTime->setDate($dateTime->format('Y'), $dateTime->format('m'), $dateTime->format('d'));
+        $endDateTime->setDate($now->format('H'), $now->format('i'), $now->format('s'));
+        $end = $endDateTime->getTimestamp() + 3600;
         foreach ($tempProjections as $projection) {
-            $end = $dateTime->getTimestamp() + 3600;
             if ($projection->getStartsAt() && (int)$projection->getStartsAt()->format('H') < 4) {
                 $tomorrow = clone $projection->getStartsAt();
                 $tomorrow->add(date_interval_create_from_date_string('1 day'));
@@ -222,7 +226,7 @@ class NewsController extends FOSRestController
 
         foreach ($days as $key => $value) {
             $tempItems = $days[$key]['items'];
-            ksort($tempItems);
+            krsort($tempItems);
             $days[$key]['items'] = array_values($tempItems);
         }
         krsort($days);
