@@ -2,22 +2,26 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="legal-notice">
-        <h2 class="title">{{ 'mentionslegales.title.mentions'|trans }}</h2>
-        <section class="legal-notice-container">
-            <h3 class="legal-notice-description">{{ 'mentionslegales.text.cesite'|trans }}</h3>
-            <div class="legal-notice-responsable">
-                <p><strong>{{ 'mentionslegales.libelle.responsable'|trans }}</strong>{{ 'mentionslegales.responsable.vincavaneecke'|trans }}</p>
-                <p><strong>{{ 'mentionslegales.libelle.hebergement'|trans }}</strong>{{ 'mentionslegales.hebergement.amazon'|trans }}</p>
-            </div>
+    <div id="main" class="legals" data-menu="legals">
 
-            {% for article in content %}
-                <article class="legal-notice-art">
-                    <h4 class="legal-notice-art-title">{{ article.title }}</h4>
-                    <p>{{ article.content }}</p>
-                </article>
-            {% endfor %}
-
-        </section>
+        {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+        {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+        
+        <div class="container">
+            <h2 class="title one-line">{{ 'mentionslegales.title.mentions'|trans }}</h2>
+            <section class="legal-notice-container">
+                <h3 class="legal-notice-description">{{ 'mentionslegales.text.cesite'|trans }}</h3>
+                <div class="legal-notice-responsable">
+                    <p><strong>{{ 'mentionslegales.libelle.responsable'|trans }} :</strong>{{ 'mentionslegales.responsable.vincavaneecke'|trans }}</p>
+                    <p><strong>{{ 'mentionslegales.libelle.hebergement'|trans }} :</strong>{{ 'mentionslegales.hebergement.amazon'|trans }}</p>
+                </div>
+                {% for article in content %}
+                    <article class="legal-notice-art">
+                        <h4 class="legal-notice-art-title">{{ article.title }}</h4>
+                        <p>{{ article.content }}</p>
+                    </article>
+                {% endfor %}
+            </section>
+        </div>
     </div>
 {% endblock %}

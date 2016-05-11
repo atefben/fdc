@@ -18,17 +18,17 @@
         <div class="faq-container">
             <div class="faq-section-container active infos-generales">
                 {% for section in content %}
-                    <section>
                             {% for article in section.articles %}
-                                <div class="section-title">
-                                    <h3 class="title-participate">{{ article.title }}</h3>
-                                    <i class="icon accordion icon_case-plus"></i>
-                                    <div class="section-content">
-                                        <p class="description">{{ article.content }}</p>
+                                <section class="accordeon">
+                                    <div class="section-title">
+                                        <h3 class="title-participate">{{ article.title }}</h3>
+                                        <i class="icon accordion icon_case-plus"></i>
+                                        <div class="section-contain">
+                                            <p class="description">{{ article.content }}</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </section>
                             {% endfor %}
-                    </section>
                 {% endfor %}
             </div>
         </div>
