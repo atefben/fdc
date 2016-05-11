@@ -778,7 +778,7 @@ class EntityListener
         if ($this->toTranslate) {
             $mustPersist = false;
             foreach ($this->toTranslate as $translation) {
-                if (!$translation->getStatus()) {
+                if ($translation->getStatus() == null) {
                     $translation->setStatus(TranslateChildInterface::STATUS_TRANSLATION_PENDING);
                     $eventArgs->getEntityManager()->persist($translation);
                     $mustPersist = true;
