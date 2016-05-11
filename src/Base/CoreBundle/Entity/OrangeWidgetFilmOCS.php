@@ -144,7 +144,10 @@ class OrangeWidgetFilmOCS extends OrangeWidget
         3 => 'OCS CHOC',
         4 => 'OCS GÉANTS',
         5 => 'OCS GO',
-        6 => 'Préachats OCS'
+        6 => 'Préachats OCS',
+        7 => 'Thriller',
+        8 => 'Drama',
+        9 => 'Documentary',
       );
     }
     
