@@ -10178,6 +10178,58 @@ header #searchContainer {
   opacity: 1;
 }
 
+.prehome-01 {
+  background-image: url("../img/prehome01.jpg");
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+}
+.prehome-01 .content {
+  height: 213px;
+  display: block;
+  padding-left: 67px;
+  padding-top: 32px;
+}
+.prehome-01 .link {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.prehome-01 .link li a {
+  font-size: .75rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  padding-bottom: 18px;
+  display: block;
+  transition: .5s;
+}
+.prehome-01 .link li a:hover {
+  opacity: .7;
+}
+.prehome-01 .link ul {
+  padding-bottom: 22px;
+  padding-left: 45px;
+}
+.prehome-01 #logo {
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.29);
+  display: inline-block;
+  padding-right: 45px;
+  padding-bottom: 21px;
+  padding-top: 11px;
+}
+.prehome-01 #logo img {
+  width: 141px;
+}
+.prehome-01 #logo h1 a, .prehome-01 #logo h2 a {
+  color: #f2e5b7;
+  font-size: .875rem;
+  font-size: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+}
+.prehome-01 #logo h1 img {
+  width: 209px;
+}
+
 .mob #sliderWrapper .owl-item.center .img-container {
   zoom: 1;
   display: block;
