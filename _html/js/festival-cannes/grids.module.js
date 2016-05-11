@@ -386,7 +386,7 @@ $(document).ready(function () {
                 hour        = $(e.target).find('.hour').text(),
                 text        = $(e.target).find('p').data('title');
 
-            $popinAudio.attr('data-sound', s);
+            $popinAudio.data('sound', s);
             $popinAudio.find('.image').css('background-image', 'url(' + img + ')');
             $popinAudio.find('.category').text(category);
             $popinAudio.find('.date').text(date);

@@ -241,6 +241,11 @@ $(document).ready(function () {
 
             var cal = ics();
             for (var i = 0; i < agenda_data.length; i++) {
+              var s = agenda_data[i].start;
+                  s = s.replace('.000Z', '');
+              var e = agenda_data[i].e;
+                  e = e.replace('.000Z', '');
+
               var d = new Date(agenda_data[i].start);
               var m = (d.getUTCMonth() + 1) < 10 ? '0'+(d.getUTCMonth()+1) : (d.getUTCMonth()+1);
               cal.addEvent(
