@@ -398,7 +398,7 @@ $(document).ready(function () {
                 hour        = $(e.target).find('.hour').text(),
                 name        = $(e.target).find('p').data('title');
 
-            audioPopin.playlistItem(0);
+            audioPopin.playlistItem($(this).index()-1);
 
             var newURL = window.location.href.split('#')[0] + '#aid=' + aid;
             history.replaceState('', document.title, newURL);
