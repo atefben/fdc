@@ -241,12 +241,15 @@
             <div class="calendar">
               <div class="timeCol">
                 <div class="empty"></div>
+                <div class="time">07H</div>
                 <div class="time">08H</div>
                 <div class="time">09H</div>
                 <div class="time">10H</div>
                 <div class="time">11H</div>
                 <div class="time">12H</div>
                 <div class="time">13H</div>
+                <div class="time">14H</div>
+                <div class="time">15H</div>
               </div>
               <div class="venues">
                 <a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
