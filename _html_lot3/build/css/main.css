@@ -9016,6 +9016,10 @@ header #searchContainer {
   display: inline-block;
   vertical-align: top;
   position: relative;
+  overflow: hidden;
+}
+.slider-restropective.isOpen {
+  height: 100%;
 }
 .slider-restropective .container {
   position: relative;

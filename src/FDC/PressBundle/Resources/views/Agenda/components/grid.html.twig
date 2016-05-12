@@ -1,85 +1,19 @@
 {% trans_default_domain 'FDCPressBundle' %}
-<div class="venue">
-    <div class="v-head">{{ 'press.home.salle.grandtheatrelumière'|trans }}</div>
-    <div class="v-container">
-        {% if dayProjection is defined %}
-            {% for p in dayProjection %}
-                {% if p.room.name == "Grand Théatre Lumière" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
-                {% endif %}
+{% for room in rooms %}
+    <div class="venue">
+        <div class="v-head">
+            {%- set trans_slug = 'programmation.salle.' ~ room.name|remove_accents|sonata_slugify -%}
+            {%- set trans = trans_slug|trans -%}
+            {%- if trans_slug != trans -%}
+                {{- trans -}}
+            {%- else -%}
+                {{- room.name|upper -}}
+            {%- endif -%}
+        </div>
+        <div class="v-container">
+            {% for event in projections[room.id] %}
+                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
             {% endfor %}
-        {% endif %}
+        </div>
     </div>
-</div>
-<div class="venue">
-    <div class="v-head">{{ 'press.home.salle.salledebussy'|trans }}</div>
-    <div class="v-container">
-        {% if dayProjection is defined %}
-            {% for p in dayProjection %}
-                {% if p.room.name == "Salle Debussy" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    </div>
-</div>
-<div class="venue">
-    <div class="v-head">{{ 'press.home.salle.salledu60e'|trans }}</div>
-    <div class="v-container">
-        {% if dayProjection is defined %}
-            {% for p in dayProjection %}
-                {% if p.room.name == "Salle du Soixantième" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    </div>
-</div>
-<div class="venue">
-    <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
-    <div class="v-container">
-        {% if dayProjection is defined %}
-            {% for p in dayProjection %}
-                {% if p.room.name == "Salle Buñuel" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    </div>
-</div>
-<div class="venue">
-    <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
-    <div class="v-container">
-        {% if dayProjection is defined %}
-            {% for p in dayProjection %}
-                {% if p.room.name == "Salle Buñuel" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    </div>
-</div>
-<div class="venue">
-    <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
-    <div class="v-container">
-        {% if dayProjection is defined %}
-            {% for p in dayProjection %}
-                {% if p.room.name == "Salle Buñuel" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    </div>
-</div>
-<div class="venue">
-    <div class="v-head">{{ 'press.home.salle.sallebunuel'|trans }}</div>
-    <div class="v-container">
-        {% if dayProjection is defined %}
-            {% for p in dayProjection %}
-                {% if p.room.name == "Salle Buñuel" %}
-                    {% include 'FDCPressBundle:Agenda:widgets/event.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    </div>
-</div>
+{% endfor %}
