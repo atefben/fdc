@@ -3,564 +3,303 @@
 // 1. Global
 // =========================
 
-.audio-player {
-  box-sizing: border-box;
-  height: 87px;
-  overflow: hidden;
-  position: relative;
-
-  &.bigger {
-    height: 116px;
-
-    .wave-container {
-      width: 520px;
-    }
-
-    .fullscreen {
-      bottom: 49px;
-    }
-
-    .off {
-      margin-left: 116px;
-    }
-
-    .playpause {
-      left: 50px;
-    }
-  }
-
-  .on {
-    opacity: 0;
-    visibility: hidden;
-    float: left;
-    position: relative;
-    height: 100%;
-    z-index: 3;
-    @include transition(all 0.3s $smoothTransition);
-
-    .duration {
-      position: absolute;
-      font-size: 0.625rem;
-      font-family: $CamphorBold;
-      color: rgba(255, 255, 255, .3);
-      margin-top: -3px;
-      left: 25px;
-      z-index: 3;
-
-      .curr {
-        color: #fff;
-        display: inline-block;
-        margin-right: 2px;
-        vertical-align: middle;
-      }
-
-      .total {
-        display: inline-block;
-        margin-left: 2px;
-        vertical-align: middle;
-      }
-    }
-  }
-
-  .off {
-    border-left: 1px solid rgba(255, 255, 255, .1);
-    position: relative;
-    float: left;
-    margin-left: 87px;
-    height: 100%;
-    z-index: 3;
-    @include transition(all 0.3s $smoothTransition);
-
-    .info {
-      text-align: left;
-      width: 218px;
-    }
-
-    .info p {
-      font-size: 0.750rem;
-    }
-  }
-
-  &.on {
-    .on, .wave-container {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .off {
-      .picto {
-        display: none;
-      }
-    }
-  }
-
-  .top {
-    height: 0px;
+.audio-container {
+  .audio-player {
+    box-sizing: border-box;
+    height: 87px;
     overflow: hidden;
-  }
-
-  #channels-audio {
-    height: 0px;
-    visibility: hidden;
-  }
-
-  .playpause {
-    display: block;
-    height: 20px;
-    left: 35px;
-    position: absolute;
-    width: 20px;
-    top: 50%;
-    margin-top: -10px;
-    z-index: 2;
-    .icon{
-      left: 50px;
-      color: #fff;
-      font-size: 1rem;
-      margin-top: 2px;
-    }
-  }
-
-  .volume {
-    background-color: rgba(255, 255, 255, .2);
-    border-radius: 5px;
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: middle;
     position: relative;
-    width: 0;
-    margin-right: 27px;
-    margin-left: 18px;
 
-    span {
-      background-color: #fff;
-      border-radius: 5px;
+    &:before {
+      background: #000;
+      content: '';
       display: block;
+      height: 100%;
       position: absolute;
-      pointer-events: none;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      @include transition(all 0.3s $smoothTransition);
-    }
-
-    .icon{
-      color:#fff;
-    }
-  }
-
-  .image {
-    background-size: cover;
-    background-position: center;
-    left: 0;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 0;
-    @include transform(scale(1.1));
-    @include filter(blur(7px));
-  }
-
-  &:after {
-    background: url('../img/loading.svg');
-    content: '';
-    display: block;
-    height: 32px;
-    position: absolute;
-    top: 50%;
-    right: 30%;
-    opacity: 0;
-    margin-top: -16px;
-    visibility: hidden;
-    width: 32px;
-    @include transition(all 0.3s $smoothTransition);
-  }
-
-  &:before {
-    background: #000;
-    content: '';
-    display: block;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0.5;
-    visibility: visible;
-    width: 100%;
-    z-index: 2;
-    @include transition(all 0.5s $smoothTransition);
-  }
-
-  &.overlay-channels:before {
-    opacity: 0.8;
-    visibility: visible;
-  }
-
-  &.on.loading {
-    &:after {
-      opacity: 1;
+      opacity: 0.5;
       visibility: visible;
-    }
-  }
-
-  .wave-container {
-    border-left: 1px solid rgba(255, 255, 255, .1);
-    border-right: 1px solid rgba(255, 255, 255, .1);
-    display: inline-block;
-    margin: 0 0 0 13px;
-    vertical-align: middle;
-    opacity: 0;
-    height: 55px;
-    position: relative;
-    visibility: hidden;
-    width: 200px;
-    @include transition(opacity 0.3s $smoothTransition, visibility 0.3s $smoothTransition);
-
-    wave {
-      overflow: hidden!important;
-    }
-  }
-
-  .picto {
-    bottom: auto;
-    left: auto;
-    display: inline-block;
-    margin-left: 20px;
-    position: relative;
-    pointer-events: auto;
-    vertical-align: middle;
-  }
-
-  .info {
-    color: #969696;
-    font-family: $CamphorMedium;
-    text-align: center;
-    display: inline-block;
-    position: relative;
-    margin-left: 13px;
-    vertical-align: middle;
-    margin-top: -3px;
-
-    .category {
-      color: $gold;
-      display: inline-block;
-      font-size: 0.625rem;
-      letter-spacing: 0.1em;
-      margin-right: 12px;
-      text-transform: uppercase;
-    }
-
-    span {
-      color: #969696;
-      display: inline-block;
-      font-size: 0.625rem;
-      letter-spacing: -0.05em;
-    }
-
-    p {
-      color: #fff;
-      font-family: $CamphorRegular;
-      font-size: 0.850rem;
-      text-align: left;
-      margin-top: 5px;
-      width: auto;
-    }
-  }
-
-  .fullscreen {
-    bottom: 36px;
-    display: block;
-    height: 15px;
-    position: absolute;
-    right: -30px;
-    width: 20px;
-    .icon{
-      color: #fff;
-    }
-  }
-
-  @media only screen and (max-device-width: 1024px) {
-    .fullscreen {
-      display: none;
-    }
-  }
-
-  &.full {
-    height: 100%;
-    margin-bottom: 0!important;
-    width: 100%!important;
-    position: relative;
-    top: auto;
-    left: auto;
-    margin: 0;
-    padding: 0;
-
-    .volume {
-      margin-left: 55px;
-      width: 100px;
-
-      .icon{
-        margin-left: -28px;
-        position: relative;
-        top: 1px;
-
-      }
-    }
-
-    .playpause {
-      bottom: 41px;
-      top: auto;
-    }
-
-    .off {
-      display: none;
-    }
-
-    .duration {
-      position: relative;
-      display: inline-block;
-      font-size: 0.875rem;
-      left: auto;
-      margin-left: 10px;
-      margin-right: 25px;
-      font-family: $CamphorBold;
-
-      .curr {
-        margin-right: 8px;
-      }
-
-      .total {
-        margin-left: 8px;
-      }
-    }
-
-    .on {
-      height: 100px;
-      bottom: 0;
-      top: auto;
-      z-index: 3;
-      position: absolute;
-      left: 87px;
-      width: calc(100% - 87px);
-    }
-
-    .info, .picto {
-      display: none;
-    }
-
-    .fullscreen {
-      bottom: 43px !important;
-      right: 40px !important;
-    }
-
-    #channels-audio {
-      height: 185px;
       width: 100%;
-      opacity: 0;
-      visibility: hidden;
-      position: absolute;
-      top: 50%;
-      left: 0;
-      margin-top: -92px;
-      z-index: 3;
-      @include transform(translate3d(0, 30px, 0));
-      @include transition(all .8s $smoothTransition);
+      z-index: 2;
+      @include transition(all 0.5s $smoothTransition);
+    }
 
-      .info, .picto {
-        display: block;
-      }
-
-      .info-container {
-        text-align: left;
-      }
-
-      .owl-item.center + .owl-item, .owl-item.center + .owl-item + .owl-item {
-        opacity: 1;
-
-        .linkVid {
-          display: block;
-        }
-      }
-
-      .info {
-        bottom: 15px;
-        height: auto;
-
-        p {
-          font-size: 0.850rem;
-        }
-      }
-
-      .picto {
-        // background-image: url('../img/svg/audio.svg');
-        background-size: 25px;
-        margin-left: 0;
-        .icon{
-          margin-left: 0px;
-          margin-top: 15px;
-        }
-      }
-
-      &.active {
-        @include transform(translate3d(0, 0, 0));
+    &.on {
+      .on {
         opacity: 1;
         visibility: visible;
       }
     }
 
-    .top {
-      background: url('../img/shadow-reverse.png') repeat-x;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-      height: 80px;
+    .image {
+      background-size: cover;
+      background-position: center;
       left: 0;
-      margin: 0;
-      overflow: visible;
+      height: 100%;
       position: absolute;
       top: 0;
       width: 100%;
-      z-index: 3;
+      z-index: 0;
+      @include transform(scale(1.1));
+      @include filter(blur(7px));
+    }
 
-      #share-box {
-        top: 87px;
-      }
-
-      &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background-color: $black;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 0;
-        @include transform(translateZ(0));
-        @include transition(all 0.5s $smoothTransition);
-      }
+    .play-btn {
+      display: block;
+      position: absolute;
+      height: 87px;
+      width: 87px;
+      line-height: 87px;
+      left: 0;
+      top: 0;
+      z-index: 2;
+      background: none;
+      outline: none;
+      border: none;
 
       &:hover {
-        &:after {
-          opacity: 1;
-          visibility: visible;
-        }
+        cursor: pointer;
       }
+    
+      .icon {
+        color: #fff;
+        font-size: 1rem;
+      }
+    }
 
-      .channels {
+    .off {
+      border-left: 1px solid rgba(255, 255, 255, .1);
+      position: relative;
+      float: left;
+      margin-left: 87px;
+      height: 100%;
+      z-index: 3;
+      @include transition(all 0.3s $smoothTransition);
 
-        border-right: 1px solid rgba(255, 255, 255, 0.3);
-        display: block;
-        float: left;
-        height: 100%;
-        width: 80px;
+      .picto {
+        bottom: auto;
+        left: auto;
+        display: inline-block;
+        margin-left: 20px;
         position: relative;
-        z-index: 1;
-        @include transition(all .5s $smoothTransition);
+        pointer-events: auto;
+        vertical-align: middle;
 
-        &:hover, &.active {
-          background-color: $gold;
-        }
-
-        .icon{
-          margin-top: 30px;
-          font-size: 1.3rem;
-          color:#fff;
-          margin-left: 30px;
+        &.hide {
+          display: none;
         }
       }
 
       .info {
-        display: block;
-        height: 100%;
-        float: left;
-        margin-top: 0;
-        margin-left: 25px;
-        position: relative;
+        color: #969696;
+        font-family: $CamphorMedium;
         text-align: left;
-        z-index: 1;
+        width: 218px;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        margin-left: 13px;
+        margin-top: -3px;
 
         .category {
-          margin-left: 0;
+          color: $gold;
+          display: inline-block;
+          font-size: 0.625rem;
+          letter-spacing: 0.1em;
+          margin-right: 12px;
+          text-transform: uppercase;
+        }
+
+        span {
+          color: #969696;
+          display: inline-block;
+          font-size: 0.625rem;
+          letter-spacing: -0.05em;
         }
 
         p {
-          font-size: 1.125rem;
-        }
-      }
-
-      .buttons {
-        float: right;
-        position: relative;
-        z-index: 1;
-
-        .button {
-          border-color: rgba(255, 255, 255, 0.3);
-          border-top: none;
-          border-bottom: none;
-          height: 80px;
-          width: 80px;
-        }
-
-        a:hover {
-          background-color: #fff;
-          border-color: rgba(255, 255, 255, 0.3)!important;
-        }
-
-        a{
-          .icon{
-            font-size: .8rem;
-            position: absolute;
-            top: 35px;
-            left: 30px;
-          }
-
-          &:hover{
-            background-color: rgb(20, 20, 20);
-            color:$gold;
-          }
+          color: #fff;
+          font-family: $CamphorRegular;
+          font-size: 0.750rem;
+          text-align: left;
+          margin-top: 5px;
+          width: auto;
         }
       }
     }
 
-    .wave-container {
-      width: calc(100% - 380px);
-    }
-
-    .image-container {
-      top: 0;
-      left: 0;
+    .on {
+      opacity: 0;
+      visibility: hidden;
+      float: left;
+      position: relative;
       height: 100%;
-      width: 100%;
+      z-index: 3;
+      @include transition(all 0.3s $smoothTransition);
+
+      &.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .duration {
+        position: absolute;
+        font-size: 0.625rem;
+        font-family: $CamphorBold;
+        color: rgba(255, 255, 255, .3);
+        margin-top: -3px;
+        left: 25px;
+        z-index: 3;
+
+        .curr {
+          color: #fff;
+          display: inline-block;
+          margin-right: 2px;
+          vertical-align: middle;
+        }
+
+        .total {
+          display: inline-block;
+          margin-left: 2px;
+          vertical-align: middle;
+        }
+      }
+
+      .progress {
+        border-left: 1px solid rgba(255, 255, 255, .1);
+        border-right: 1px solid rgba(255, 255, 255, .1);
+        display: inline-block;
+        margin: 0 0 0 13px;
+        vertical-align: middle;
+        height: 55px;
+        position: relative;
+        width: 200px;
+        @include transition(opacity 0.3s $smoothTransition, visibility 0.3s $smoothTransition);
+
+        &.hide {
+          opacity: 0;
+          visibility: hidden;
+        }
+        
+        .progress-bar {
+          position: absolute;
+          cursor: pointer;
+          width: calc(100% - 20px);
+          margin-left: 10px;
+          height: 3px;
+          background-color: rgba(255,255,255,.2);
+          border-radius: 1px;
+          bottom: 27px;
+          
+          .buffer-bar {
+            background-color: rgba(255,255,255,.4);
+            border-radius:1px;
+            height: 3px;
+            width:0%;
+            position: absolute;
+            z-index: 1
+          }
+
+          .current-bar {
+            background-color: #fff;
+            border-radius:1px;
+            height: 3px;
+            width:0%;
+            position: absolute;
+            z-index: 2;
+          }
+        }
+      }
+
+      .sound {
+        position: relative;
+        display: inline-block;
+        width: 85px;
+        height: 14px;
+        
+        .icon {
+          position: absolute;
+          font-size: 1rem;
+          height: 16px;
+          width: 10px;
+          margin: auto;
+          color: #fff;
+          background: none;
+          outline: none;
+          border: none;
+        }
+        
+        .sound-bar {
+          position: absolute;
+          cursor: pointer;
+          width: 55px;
+          height: 3px;
+          bottom: 3px;
+          margin: auto;
+          margin-left: 25px;
+          background-color: rgba(0,0,0,0.5);
+          
+          .sound-seek {
+            display: block;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            right: auto;
+            background-color: #fff;
+            z-index: 10;
+          }
+        }
+      }
     }
+  }
 
-    &.popin-audio>.buttons {
-      display: none;
-    }
+  .jwplayer {
+    height: 0 !important;
+    width: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    cursor: none !important;
+    overflow: hidden !important;
+  }
 
-    &.popin-audio .buttons {
-      top: auto;
-      right: auto;
-      bottom: auto;
-    }
+  .single-article & {
+    margin: 0 auto 70px;
+    width: 630px;
+  }
 
-    &.popin-audio .on {
-      position: absolute;
-    }
+  &.actu-article-audio {
+    margin-top: 50px !important;
+    height: 600px;
+    width: 980px !important;
+    
+    .audio-player {
+      height: 600px;
 
-    &.popin-audio .info {
-      bottom: auto;
-      margin-left: 13px;
+      .play-btn {
+        top: auto;
+        bottom: 0;
+      }
 
-      p {
-        color: #fff;
+      .off {
+        height: 87px;
+        margin-top: 513px;
+      }
+
+      .on {
+        height: 87px;
+        margin-top: 513px;
+      }
+
+      .progress {
+        width: 550px;
       }
     }
   }
 }
 
+/*
 .popin-audio {
   background-color: #fff;
   position: fixed;
@@ -692,6 +431,7 @@
     }
   }
 }
+*/
 
 .ov {
   background-color: $black;
@@ -712,29 +452,4 @@
     opacity: 0.8;
     visibility: visible;
   }
-}
-
-
-// 2. Actualité Article audio
-// =========================
-
-.actu-article-audio{
-    margin-top: 50px !important;
-    height: 600px;
-    width: 980px !important;
-    .playpause {
-      top: auto;
-      bottom: 35px;
-    }
-    .on {
-      height: 87px;
-      margin-top: 513px;
-    }
-    .off {
-      height: 87px;
-      margin-top: 513px;
-    }
-    .wave-container {
-      width: 550px;
-    }
 }

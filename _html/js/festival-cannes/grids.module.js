@@ -264,20 +264,25 @@ function setImages(grid, dom, init) {
 
 $(document).ready(function () {
   function closePopinAudio() {
-    $('.popin-audio, .ov').removeClass('show');
-
     $('.popin-audio').find('.wave-container').empty().removeAttr('id');
     for(var i = 0; i < waves.length; i++) {
       if(waves[i].isPlaying()) {
         waves[i].stop();
       }
+      waves[i].destroy();
     }
+
+    $('.popin-audio #channels-audio').remove();
+    $('.popin-audio .top').remove();
+
     $('.popin-audio').removeClass('pause audio-player');
-    waves = [];
+    // waves = [];
 
     if(inter) {
       clearInterval(inter);
     }
+
+    $('.popin-audio, .ov').removeClass('show');
   }
 
   function closePopinVideo() {
