@@ -369,6 +369,11 @@
   display: inline-block;
   vertical-align: top;
   position: relative;
+  overflow: hidden;
+
+  &.isOpen {
+    height: 100%;
+  }
 
   .container {
     position: relative;
@@ -518,8 +523,7 @@
   z-index: 2;
   transition: 1s;
   opacity: 0;
-  display: none;
-  
+display: none;
   &:after {
     content: '';
     width: 100%;
