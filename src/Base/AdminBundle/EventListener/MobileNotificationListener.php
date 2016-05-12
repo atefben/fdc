@@ -97,14 +97,11 @@ class MobileNotificationListener
                         
                     }
                 } elseif ($object->getSendToAll()) {
-                    error_log('11');
                     $tokenandroids = array();
                     $androidDevices = $this->getDevices('android', $translation->getLocale());
                     $payload = $this->setAndroidNewMessagePayload($translation->getDescription());
                     if(count($androidDevices) > 0) {
-                        error_log('22');
                         foreach ($androidDevices as $device) {
-                            error_log($device->getUuid());
                             $tokenandroids[] = trim($device->getUuid());
                         }
 
@@ -181,8 +178,7 @@ class MobileNotificationListener
             'registration_ids' => $tokens,
             'data' => $payload
         );
-    error_log(print_r($tokens), true);
-        error_log(print_r($payload), true);
+
         $headers = array(
             'Authorization: key=AIzaSyCaNXVnhrbVeATqMAgyeOSDOK5iT8G0tcY',
             'Content-Type: application/json'
@@ -196,7 +192,7 @@ class MobileNotificationListener
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
         $result = curl_exec($ch);
-        error_log(print_r($result), true);
+
         if ($result === FALSE) {
             error_log('ERROR - Curl failed : ' . curl_error($ch));
         }
