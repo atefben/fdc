@@ -2,6 +2,6 @@
 
 <div class="quote">
     <blockquote>
-        {{ widget.content }}
+        {{ widget|trans_fallback('content') }}
     </blockquote>
 </div>
