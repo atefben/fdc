@@ -562,6 +562,7 @@ var owInitSlider = function(sliderName) {
     var slider = document.getElementById('timelapse-01');
     var $slide = $('.slides');
     var $slideCalc1 = $('.slides-calc1');
+    var $slideCalc1Slide = $('.slides-calc1 .slide');
 
     var numberSlide = $('.slider-restropective').size();
     var sizeSlide = $('.slider-restropective').width();
@@ -574,9 +575,9 @@ var owInitSlider = function(sliderName) {
     //init width of slide
 
     noUiSlider.create(slider, {
-      start: [1946],//todo script
+      start: [1945],//todo script
       range: {
-        'min': 1946,
+        'min': 1945,
         'max': 2015
       }
      });
@@ -585,6 +586,7 @@ var owInitSlider = function(sliderName) {
 
      slider.noUiSlider.on('update', function( values, handle ) {
 
+
           //drag
           var w = $('body').width();
           var number = 0;
@@ -592,25 +594,39 @@ var owInitSlider = function(sliderName) {
           valuesFloat = parseFloat(values[handle]);
           valuesInt = parseInt(values[handle]);
           values = Math.round(valuesFloat);
-          number = values - 1946;
+          number = values - 1945;
+
+          $('.slides-calc1 .date').html(valuesInt);
+
 
           if(initDrag) {
             initDrag = 0;
           }
 
-          if(number > 0.7 && initDrag == 0){
-            $('.slider-restropective[data-slide="0"]').removeClass('animated fadeIn').addClass('animated fadeOut');
-          }else if(number < 0.9){
-            $('.slider-restropective[data-slide="0"]').removeClass('animated fadeOut').addClass('animated fadeIn');
+          if(valuesInt > 1945){
+            $('.slides-calc1').css('display','block');
+          }else {
+            $('.slides-calc1').css('display','none');
+
           }
 
-          var val = - w * (valuesFloat - 1946); //todo script ?
+
+          if(number > 0.7 && initDrag == 0){
+            $('.slider-restropective[data-slide="0"]').removeClass('animated fadeIn').addClass('animated fadeOut');
+            $('.slides-calc1').removeClass('animated fadeOut').addClass('animated fadeIn');
+
+          }else if(number < 0.9){
+
+            $('.slider-restropective[data-slide="0"]').removeClass('animated fadeOut').addClass('animated fadeIn');
+            $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
+          }
+
+          var val = - w * (valuesFloat - 1945) * .8 ; //todo script ?
           // var valCalc1 = - w * (valuesFloat - 1946) * .4; //todo script ?
-          var valPos = - w * (valuesFloat - 1946) * .8; //todo script ?
+          var valPos = w * (valuesFloat - 1945) * .8; //todo script ?
 
           $slide.css('transform','translate('+val+'px)');
-          $slideCalc1.css('transform','translate('+valPos+'px)');
-
+          // $slideCalc1Slide.css('left',valPos+'px');
 
           $('.slider-restropective').removeClass('big').addClass('small');
           $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
@@ -624,8 +640,8 @@ var owInitSlider = function(sliderName) {
        valuesFloat = parseFloat(values[handle]);
 
        values = Math.round(valuesFloat);
-       number = values - 1946;
-       var val = - w * (values - 1946); //todo script ?
+       number = values - 1945;
+       var val = - w * (values - 1945); //todo script ?
        $slide.css('transform','translate('+val+'px)');
 
        var slideElement = $('.slider-restropective[data-slide='+number+']');
@@ -635,8 +651,10 @@ var owInitSlider = function(sliderName) {
 
        setTimeout(function(){
          slideElementText.addClass('animated zoomIn fadeIn visible');
+         $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
          setTimeout(function(){
            slideElementText.removeClass('zoomIn fadeIn').addClass('pulse');
+           $('.slides-calc1').css('display','none');
          }, 600);
        }, 900);
 
