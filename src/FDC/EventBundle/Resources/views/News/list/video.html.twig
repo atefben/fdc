@@ -11,6 +11,7 @@
                 {% set transImage = null %}
 				{% set amazonImage = null %}
                 {% if trans is null %}
+                    <!-- FALLBACK -->
                     {% set trans = video.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% if video.header is not null %}
