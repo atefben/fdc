@@ -23,13 +23,13 @@
     {% endif %}
 {% endif %}
 {% if (image is defined or image_s3 is defined) and trans.jobMp3State == 3 and trans.mp3Url %}
-    <div class="audio-player audio"
+    <div class="audio-container"
          data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
-         data-img="{% if image is defined %}{% path image, '1950x1232' %}){% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
+         data-img="{% if image is defined %}{% path image, '1950x1232' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
          data-aid="{{ trans.id }}">
         <div class="audio-player">
             <div id="audio-player-{{ trans.id }}" class="audio-player-container"></div>
-            <div class="image" style="background-image: url({% if image is defined %}{% path image, '1950x1232' %}){% elseif image_s3 is defined %}{{ image_s3 }}{% endif %});"></div>
+            <div class="image" style="background-image: url({% if image is defined %}{% path image, '1950x1232' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %});"></div>
             <button class="play-btn play"><i class="icon icon_play"></i></button>
             <div class="off">
                 <div class="vCenter">
