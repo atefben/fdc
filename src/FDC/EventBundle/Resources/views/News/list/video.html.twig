@@ -7,8 +7,7 @@
         <div id="gridVideos" class="grid-wrapper">
             <div class="grid-sizer"></div>
             {% for video in videos %}
-                {% set trans = get_available_video(video) %}
-            {{ trans.locale }} LOCALE : {{ app.request.locale }}
+                {% set trans = get_available_video(video, false, app.request.locale) %}
                 {% set transImage = null %}
 				{% set amazonImage = null %}
                 {% if trans is null %}
