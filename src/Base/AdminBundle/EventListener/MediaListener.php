@@ -102,17 +102,15 @@ class MediaListener
         if ($entity instanceof MediaVideo || $entity instanceof MediaAudio) {
 
             if ($entity instanceof MediaVideo && $entity->getDisplayedHome() == true) {
-                if ($entity->getHomepageNews() == null) {
+                $createNews = $em->getRepository('BaseCoreBundle:News')->findOneByHomepageMediaVideo($entity->getId());
+                if ($createNews == null) {
                     $createNews = new NewsVideo();
-                } else {
-                    $createNews = $entity->getHomepageNews();
                 }
                 $createNewsTranslation = new NewsVideoTranslation();
             } else if ($entity instanceof MediaAudio && $entity->getDisplayedHome() == true) {
-                if ($entity->getHomepageNews() == null) {
+                $createNews = $em->getRepository('BaseCoreBundle:News')->findOneByHomepageMediaAudio($entity->getId());
+                if ($createNews == null) {
                     $createNews = new NewsAudio();
-                } else {
-                    $createNews = $entity->getHomepageNews();
                 }
                 $createNewsTranslation = new NewsAudioTranslation();
             }

@@ -8,7 +8,7 @@
     {% endif %}
     {% set file = trans.file %}
 
-    {% set header = widget.image %}
+    {% set header = widget.file.image %}
     {% if header is not null %}
         {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
         {% if imageTrans is null or imageTrans.file is null %}

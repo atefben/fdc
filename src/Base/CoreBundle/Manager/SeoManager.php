@@ -144,10 +144,40 @@ class SeoManager
                 if ($transImage->getFile() !== null) {
                     $header = $transImage->getFile();
                 }
+            } else if (method_exists($news, 'getGallery') && count($news->getGallery()->getMedias()) >= 1) {
+                $media = $news->getGallery()->getMedias()->get(0);
+                if ($media !== null) {
+                    $media = $media->getMedia();
+                    $header = $media->findTranslationByLocale($this->localeDefaultTranslation)->getFile();
+                    $transImage = $media->findTranslationByLocale($locale);
+                    if ($transImage->getFile() !== null) {
+                        $header = $transImage->getFile();
+                    }
+                }
+            } else if (method_exists($news, 'getGallery') && count($news->getGallery()->getMedias()) >= 1) {
+                $media = $news->getGallery()->getMedias()->get(0);
+                if ($media !== null) {
+                    $media = $media->getMedia();
+                    $header = $media->findTranslationByLocale($this->localeDefaultTranslation)->getFile();
+                    $transImage = $media->findTranslationByLocale($locale);
+                    if ($transImage->getFile() !== null) {
+                        $header = $transImage->getFile();
+                    }
+                }
+            }
 
+            if (strpos(get_class($news), 'Video') !== false) {
+                if ($news->getVideo() !== null && $news->getVideo()->findTranslationByLocale($this->localeDefaultTranslation) != null) {
+                    $imageAmazonUrl = 'http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/'. $news->getVideo()->findTranslationByLocale($this->localeDefaultTranslation)->getImageAmazonUrl();
+                }
+            }
+
+            if ($header !== null) {
                 // OG PICTURE
-                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'news_header_image_big');
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'media_image_572x362');
                 $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+            } else if (isset($imageAmazonUrl)) {
+                $this->sonataSeoPage->addMeta('property', 'og:image', $imageAmazonUrl);
             }
 
             // TWITTER
@@ -159,8 +189,10 @@ class SeoManager
 
             // TWITTER PICTURE
             if ($header !== null) {
-                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'news_header_image_big');
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'media_image_572x362');
                 $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            } else if (isset($imageAmazonUrl)) {
+                $this->sonataSeoPage->addMeta('property', 'twitter:image', $imageAmazonUrl);
             }
 
             // ARTICLE
@@ -280,15 +312,48 @@ class SeoManager
             $this->sonataSeoPage->addMeta('property', 'og:updated_time', $statement->getUpdatedAt()->format(DateTime::ISO8601));
 
             // PICTURE
-            $header = $statement->getHeader()->findTranslationByLocale($this->localeDefaultTranslation)->getFile();
-            $transImage = $statement->getHeader()->findTranslationByLocale($locale);
-            if ($transImage->getFile() !== null) {
-                $header = $transImage->getFile();
+            $news = $statement;
+            $header = null;
+            if ($news->getHeader() !== null) {
+                $header = $news->getHeader()->findTranslationByLocale($this->localeDefaultTranslation)->getFile();
+                $transImage = $news->getHeader()->findTranslationByLocale($locale);
+                if ($transImage->getFile() !== null) {
+                    $header = $transImage->getFile();
+                }
+            } else if (method_exists($news, 'getGallery') && count($news->getGallery()->getMedias()) >= 1) {
+                $media = $news->getGallery()->getMedias()->get(0);
+                if ($media !== null) {
+                    $media = $media->getMedia();
+                    $header = $media->findTranslationByLocale($this->localeDefaultTranslation)->getFile();
+                    $transImage = $media->findTranslationByLocale($locale);
+                    if ($transImage->getFile() !== null) {
+                        $header = $transImage->getFile();
+                    }
+                }
+            } else if (method_exists($news, 'getGallery') && count($news->getGallery()->getMedias()) >= 1) {
+                $media = $news->getGallery()->getMedias()->get(0);
+                if ($media !== null) {
+                    $media = $media->getMedia();
+                    $header = $media->findTranslationByLocale($this->localeDefaultTranslation)->getFile();
+                    $transImage = $media->findTranslationByLocale($locale);
+                    if ($transImage->getFile() !== null) {
+                        $header = $transImage->getFile();
+                    }
+                } else if (strpos(get_class($news), 'Video') !== false) {
+                    if ($news->getVideo() !== null && $news->getVideo()->findTranslationByLocale($this->localeDefaultTranslation) != null) {
+                        $imageAmazonUrl = 'http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/'. $news->getVideo()->findTranslationByLocale($this->localeDefaultTranslation)->getImageAmazonUrl();
+                    }
+                }
             }
 
-            // OG PICTURE
-            $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'statement_header_image_big');
-            $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+            if ($header !== null) {
+                // OG PICTURE
+                $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'media_image_572x362');
+                $this->sonataSeoPage->addMeta('property', 'og:image', $mediaPath);
+            } else if (isset($imageAmazonUrl)) {
+                $mediaPath = $imageAmazonUrl;
+                $this->sonataSeoPage->addMeta('property', 'og:image', $imageAmazonUrl);
+            }
 
             // TWITTER
             $this->sonataSeoPage->addMeta('property', 'twitter:card', 'summary_large_image');
@@ -299,7 +364,9 @@ class SeoManager
 
             // TWITTER PICTURE
             $mediaPath = $this->sonataProviderImage->generatePublicUrl($header, 'statement_header_image_big');
-            $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            if (isset($mediaPath)) {
+                $this->sonataSeoPage->addMeta('property', 'twitter:image', $mediaPath);
+            }
 
             // ARTICLE
             $this->sonataSeoPage->addMeta('property', 'article:author', ($statement->getSignature() !== null) ? $statement->getSignature() : '');

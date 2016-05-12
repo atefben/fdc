@@ -443,3 +443,7 @@ section .button .icon{
     width: 120%;
     margin-left: -5%;
 }
+
+.acces-container .contain-map {
+    text-align:center;
+}

@@ -1,7 +1,5 @@
-// Prehome
-// =========================
 $(document).ready(function() {
-  if($('.home').length) {
+  if($('.home').length > 0 && $('#prehome-container').length > 0) {
     if (!isiPad()) {
       if(!$.cookie('prehome')) {
         $('body').addClass('fix');
@@ -21,35 +19,52 @@ $(document).ready(function() {
         },200);
       }
     } else {
-      $('#prehome-container').remove();
+      if($('#prehome-container').length > 0) {
+        $('#prehome-container').remove();
+      }
+    }
+
+    if(!isiPad()) {
+      if(!$.cookie('prehome')) {
+        setTimeout(function() {
+          $('html, body').animate({
+            scrollTop: $("header").offset().top
+          }, 800, function() {
+            $('body,html').scrollTop(0);
+            $('body').removeClass('fix');
+            $('#prehome-container').remove();
+            
+            setTimeout(function() {
+              scrollTarget = 0;
+              initParallaxElements();
+
+              if(Object.size(parallaxElements) != 0) {
+                update();
+              }
+            },200);
+          });
+        }, 3000);
+        $.cookie('prehome', '1', { expires: 7 });
+      }
     }
   }
 
-  if(!isiPad()) {
-    if(!$.cookie('prehome')) {
-      setTimeout(function() {
-        $('html, body').animate({
-          scrollTop: $("header").offset().top
-        }, 800, function() {
-          $('body,html').scrollTop(0);
-          $('body').removeClass('fix');
-          $('#prehome-container').remove();
-          
-          setTimeout(function() {
-            scrollTarget = 0;
-            initParallaxElements();
+  if(getCookie('comply_cookie=comply_yes') != 1) {
+    if($("#cookies-banner").length > 0) {
+      $("#cookies-banner").hide();
+    }
+  }
 
-            if(Object.size(parallaxElements) != 0) {
-              update();
-            }
-          },200);
-        });
-      }, 3000);
-      $.cookie('prehome', '1', { expires: 7 });
-    }
-  } else {
-    if($('#prehome-container').length > 0) {
-      $('#prehome-container').remove();
-    }
+  // cookie banner
+  if($('.cookie-accept').length > 0) {
+    $('.cookie-accept').on('click', function () {
+      days = 365; //number of days to keep the cookie
+      myDate = new Date();
+      myDate.setTime(myDate.getTime()+(days*24*60*60*1000));
+      document.cookie = "comply_cookie = comply_yes; expires = " + myDate.toGMTString(); //creates the cookie: name|value|expiry
+      if($("#cookies-banner").length > 0) {
+        $("#cookies-banner").slideUp("slow"); //jquery to slide it up
+      }
+    });
   }
 });

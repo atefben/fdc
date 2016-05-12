@@ -229,7 +229,7 @@
     display: inline-block;
     margin-left: 20px;
     position: relative;
-    pointer-events: initial;
+    pointer-events: auto;
     vertical-align: middle;
   }
 
@@ -619,7 +619,7 @@
 
   &.show {
     opacity: 1;
-    pointer-events: initial;
+    pointer-events: auto;
     visibility: visible;
     @include transform(translateY(0));
   }

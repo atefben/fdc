@@ -4114,7 +4114,7 @@ header.sticky #sticky-user {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   float: right;
-  pointer-events: initial;
+  pointer-events: auto;
   margin-top: 18px;
   transition-delay: 0.5s;
 }
@@ -6101,7 +6101,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   display: inline-block;
   margin-left: 20px;
   position: relative;
-  pointer-events: initial;
+  pointer-events: auto;
   vertical-align: middle;
 }
 .audio-player .info {
@@ -6452,7 +6452,7 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 .popin-audio.show {
   opacity: 1;
-  pointer-events: initial;
+  pointer-events: auto;
   visibility: visible;
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
@@ -6796,7 +6796,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   bottom: 20px;
   left: 20px;
   cursor: pointer;
-  pointer-events: all;
+  pointer-events: auto;
 }
 .video-container .infos-bar .picto.hide {
   opacity: 0;
@@ -7209,7 +7209,7 @@ div.chocolat-wrapper .zoomCursor .icon {
 .popin-video.show {
   opacity: 1;
   visibility: visible;
-  pointer-events: all;
+  pointer-events: auto;
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
@@ -7436,7 +7436,7 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 #selection #slider-suggestion.show {
   opacity: 1;
-  pointer-events: initial;
+  pointer-events: auto;
   visibility: visible;
 }
 #selection .filters-selection {
@@ -7735,6 +7735,7 @@ header #searchContainer {
 }
 #searchContainer #results .big:nth-child(4n+1) {
   margin-left: 0;
+  clear: left;
 }
 #searchContainer #results .big img {
   display: block;
@@ -8400,7 +8401,7 @@ header #searchContainer {
   visibility: visible !important;
   opacity: 1 !important;
   transform: translateY(-30px) !important;
-  pointer-events: initial;
+  pointer-events: auto;
 }
 
 #cookies-banner {
@@ -10177,6 +10178,58 @@ header #searchContainer {
   opacity: 1;
 }
 
+.prehome-01 {
+  background-image: url("../img/prehome01.jpg");
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+}
+.prehome-01 .content {
+  height: 213px;
+  display: block;
+  padding-left: 67px;
+  padding-top: 32px;
+}
+.prehome-01 .link {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.prehome-01 .link li a {
+  font-size: .9rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  padding-bottom: 17px;
+  display: block;
+  transition: .5s;
+}
+.prehome-01 .link li a:hover {
+  opacity: .7;
+}
+.prehome-01 .link ul {
+  padding-bottom: 21px;
+  padding-left: 40px;
+}
+.prehome-01 #logo {
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.29);
+  display: inline-block;
+  padding-right: 45px;
+  padding-bottom: 21px;
+  padding-top: 11px;
+}
+.prehome-01 #logo img {
+  width: 141px;
+}
+.prehome-01 #logo h1, .prehome-01 #logo h2 {
+  color: #f2e5b7;
+  font-size: .875rem;
+  font-size: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+}
+.prehome-01 #logo h1 img {
+  width: 209px;
+}
+
 .mob #sliderWrapper .owl-item.center .img-container {
   zoom: 1;
   display: block;
@@ -11231,7 +11284,7 @@ article .read-later.rAlign span:after {
   top: 50%;
   left: 50%;
   margin: -40px 0 0 -40px;
-  pointer-events: initial;
+  pointer-events: auto;
   width: 80px;
   z-index: 1;
   -moz-transition: background-color 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -17096,6 +17149,9 @@ input[type=submit] {
 .press #calendar #mycalendar .fc-bg .fc-axis, .press #calendar #mycalendar .fc-content-skeleton .fc-axis {
   width: 60px !important;
 }
+.press #calendar #mycalendar .fc-today {
+  background-color: #242424;
+}
 .press #calendar p.link {
   border-bottom: 1px solid #3d3d3d;
   height: 70px;
@@ -19447,7 +19503,7 @@ input[type=submit] {
   color: #fff;
 }
 .downloading-press.lock .affiche .active-btn .button {
-  pointer-events: all;
+  pointer-events: auto;
   color: #c29f5f !important;
   border-color: #c29f5f !important;
 }
@@ -19465,7 +19521,7 @@ input[type=submit] {
   color: #fff;
 }
 .downloading-press.lock .active-btn .button {
-  pointer-events: all;
+  pointer-events: auto;
   color: #c29f5f !important;
   border-color: #c29f5f !important;
 }

@@ -317,7 +317,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * @var FilmFilmPerson
      *
-     * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="film", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="FilmFilmPerson", mappedBy="film", cascade={"all"}, orphanRemoval=true)
      *
      * @ORM\OrderBy({"position" = "ASC"})
      */
@@ -1810,6 +1810,18 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getPersons()
     {
         return $this->persons;
+    }
+
+    public function getPerson($id)
+    {
+        foreach ($this->persons as $person) {
+            if ($person->getId() == $id) {
+                return $person;
+            }
+        }
+
+        return null;
+
     }
 
     /**

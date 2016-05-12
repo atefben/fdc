@@ -75,7 +75,7 @@ header {
       visibility: visible;
       @include transform(translate3d(0, 0, 0));
       float: right;
-      pointer-events: initial;
+      pointer-events: auto;
       margin-top: 18px;
       transition-delay: 0.5s;
 

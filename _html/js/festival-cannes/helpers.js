@@ -1,5 +1,3 @@
-// HELPERS ================ //
-
 // parse URL in string
 String.prototype.parseURL = function() {
   return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g, function(url) {
@@ -76,6 +74,12 @@ function guid() {
   }
 }
 
+function getCookie(name) {
+  var cookieValue = document.cookie;
+  var cookieArray = cookieValue.split("; ");
+  return cookieArray.indexOf(name);
+}
+
 String.prototype.trunc = function( n, useWordBoundary ){
   var isTooLong = this.length > n,
       s_ = isTooLong ? this.substr(0,n-1) : this;
@@ -86,9 +90,9 @@ String.prototype.trunc = function( n, useWordBoundary ){
 
 // Disable window.console
 if (GLOBALS.env == "prod") {
-    console.log =
-    console.info =
-    console.error =
-    console.warn =
-    console.trace = function() {}
+  console.log =
+  console.info =
+  console.error =
+  console.warn =
+  console.trace = function() {}
 }
