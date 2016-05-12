@@ -297,34 +297,86 @@
       }
     }
   }
+
+  &.popin-audio {
+    background-color: #fff;
+    position: fixed;
+    opacity: 0;
+    visibility: hidden;
+    top: 50%;
+    left: 50%;
+    width: 750px;
+    height: 580px;
+    margin: -290px 0 0 -375px;
+    padding: 20px;
+    box-sizing: border-box;
+    pointer-events: none;
+    z-index: 100;
+    @include transform(translateY(30px));
+    @include transition(all 1.2s $smoothTransition);
+
+    &:after {
+      right: 50%;
+    }
+
+    &:before {
+      visibility: hidden;
+    }
+
+    &.show {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+      @include transform(translateY(0));
+    }
+
+    .audio-player {
+      height: 440px;
+
+      .image-container {
+        left: 20px;
+        height: 440px;
+        overflow: hidden;
+        top: 20px;
+        position: absolute;
+        width: 710px;
+      }
+
+      .play-btn {
+        top: auto;
+        bottom: 0;
+      }
+
+      .on {
+        height: 87px;
+        margin-top: 513px;
+      }
+
+      .progress {
+        width: 550px;
+      }
+    }
+
+    .info {
+      position: absolute;
+      bottom: 20px;
+      height: 80px;
+      left: 20px;
+      margin: 0;
+      text-align: left;
+      width: 710px;
+
+      p {
+        color: #333;
+        font-size: 1rem;
+        margin-top: 5px;
+      }
+    }
+  }
 }
 
 /*
 .popin-audio {
-  background-color: #fff;
-  position: fixed;
-  opacity: 0;
-  visibility: hidden;
-  top: 50%;
-  left: 50%;
-  width: 750px;
-  height: 580px;
-  margin: -290px 0 0 -375px;
-  padding: 20px;
-  box-sizing: border-box;
-  pointer-events: none;
-  z-index: 100;
-  @include transform(translateY(30px));
-  @include transition(all 1.2s $smoothTransition);
-
-  &:after {
-    right: 50%;
-  }
-
-  &:before {
-    visibility: hidden;
-  }
-
   .playpause {
     left: 57px;
     top: 398px;
@@ -354,13 +406,6 @@
     .duration {
       margin-top: -9px;
     }
-  }
-
-  &.show {
-    opacity: 1;
-    pointer-events: auto;
-    visibility: visible;
-    @include transform(translateY(0));
   }
 
   .image-container {
@@ -417,17 +462,6 @@
       color: #333;
       font-size: 1rem;
       margin-top: 5px;
-    }
-  }
-
-  #slider-channels-audio{
-    .info{
-      .picto{
-        .icon_playlist{
-          margin-left: 14px;
-          margin-top: 14px;
-        }
-      }
     }
   }
 }

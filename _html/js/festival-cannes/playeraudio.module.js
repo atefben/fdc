@@ -133,13 +133,31 @@ function audioLoad(aid, playerInstance, havePlaylist, live, callback) {
         playerInstance.play();
     });
 
-
     $progressBar.on('click', function(e) {
         var ratio = e.offsetX / $progressBar.outerWidth(),
             duration = playerInstance.getDuration(),
             current = duration * ratio;
         playerInstance.seek(current);
     });
+
+    if(havePlaylist && havePlaylist === "grid") {
+        var playlist = [];
+
+        $.each($('#gridAudios .item'), function(i,p) {
+            var tempList = {
+                "sources"  : $(p).data('sound'),
+                "image"    : $(p).find('img').attr('src'),
+                "date"     : $(p).find('.info .date').text(),
+                "hour"     : $(p).find('.info .hour').text(),
+                "category" : $(p).find('.info .category').text(),
+                "name"     : $(p).find('.info p').text()
+            }
+            playlist.push(tempList);
+        });
+
+        $playlist = playlist;
+        playerInstance.load(playlist);
+    }
 
     function updateVolume(x, vol) {
         var volume = $sound.find('.sound-bar'),

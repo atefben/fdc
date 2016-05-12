@@ -394,11 +394,11 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         controls: false
     });
 
-    if (havePlaylist) {
+    if(havePlaylist) {
         var tempSlider = $(slider),
             playlist   = [];
 
-        if (havePlaylist === "grid") {
+        if(havePlaylist === "grid") {
             $.each($('#gridVideos .item'), function(i,p) {
                 var tempList = {
                     "sources"  : $(p).data('file'),

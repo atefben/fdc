@@ -332,38 +332,9 @@
         </div>
       </div>
       <a id="next" href="audios2.html"></a>
-      <div class="popin-audio audio loading" data-sound="">
-        <div class="image-container"><div class="image"></div></div>
-        <a href="#" class="playpause"></a>
-        <div class="on">
-          <div class="vCenter">
-            <div class="vCenterKid">
-              <div class="duration">
-                <span class="curr">0:00</span>/<span class="total">0:00</span>
-              </div>
-              <div class="wave-container"></div>
-              <div class="volume">
-                <span></span>
-              </div>
-              <a href="#" class="fullscreen"></a>
-            </div>
-          </div>
-        </div>
-        <div class="info">
-          <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
-          <p></p>
-        </div>
-        <div class="buttons square">
-          <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"   rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-          <a  href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i></a>
-          <a href="#" class="button link"><i class="icon icon_link"></i></a>
-          <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
-        </div>
-      </div>
-      <div class="audio-container popin-audio"
-          data-file='[{"file":"./img/article/test.mp3"}]'
-          data-img="./img/slide001.jpg"
-          data-aid="2142">
+      <div class="audio-container state-init popin-audio"
+          data-file=''
+          data-img="">
           <div class="audio-player">
             <div id="audio-player-popin" class="audio-player-container"></div>
             <div class="image" style="background-image: url(img/slide001.jpg);"></div>

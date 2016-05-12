@@ -360,13 +360,31 @@ $(document).ready(function () {
     }
 
     if($('#gridAudios').length) {
+      if(window.location.hash) {
+        var type = window.location.hash.substring(1).split('=')[0]
+            vid  = window.location.hash.substring(1).split('=')[1];
+        if(type === "vid" && $(".item[data-vid="+vid+"]").length) {
+          setTimeout(function() {
+            $(".item[data-vid="+vid+"]").trigger('click');
+          },1000);
+        }
+      }
+
       $('.ov').on('click', function (e) {
         e.preventDefault();
         closePopinAudio();
       });
 
       var $container = $('#gridAudios'),
-          $grid;
+          $grid,
+          audioPopin;
+
+      audioPopin = audioInit('audio-player-popin', false, 'grid');
+      linkPopinInit(0, '.popin-audio .buttons .link');
+      $('.popin-audio .buttons .email').on('click', function(e) {
+        e.preventDefault();
+        launchPopinMedia({}, audioPopin);
+      });
 
       $grid = $('#gridAudios').imagesLoaded(function() {
         setGrid($grid, $('#gridAudios'), true);
@@ -384,23 +402,46 @@ $(document).ready(function () {
         if ($('#gridAudios').data('type') == 'audios') {
           $('body').on('click', '#gridAudios .item', function(e) {
             var $popinAudio = $('.popin-audio'),
-                s           = $(e.target).data('sound'),
+                aid         = $(e.target).data('aid'),
+                source      = $(e.target).data('sound'),
                 img         = $(e.target).find('img').attr('src'),
                 category    = $(e.target).find('.category').text(),
                 date        = $(e.target).find('.date').text(),
                 hour        = $(e.target).find('.hour').text(),
-                text        = $(e.target).find('p').data('title');
+                name        = $(e.target).find('p').data('title');
 
-            $popinAudio.data('sound', s);
-            $popinAudio.find('.image').css('background-image', 'url(' + img + ')');
-            $popinAudio.find('.category').text(category);
-            $popinAudio.find('.date').text(date);
-            $popinAudio.find('.hour').text(hour);
-            $popinAudio.find('p').text(text);
+            audioPopin.playlistItem($(this).index()-1);
+
+            var newURL = window.location.href.split('#')[0] + '#aid=' + aid;
+            history.replaceState('', document.title, newURL);
+
+            // CUSTOM LINK FACEBOOK
+            var shareUrl = GLOBALS.urls.videosUrl+'#aid='+aid;
+            var fbHref   = facebookLink;
+            fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
+            // CUSTOM LINK TWITTER
+            var twHref   = twitterLink;
+            twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name+" "+shareUrl));
+
+            $('.popin-audio').find('.popin-buttons.buttons .facebook').attr('data-href', fbHref);
+            $('.popin-audio').find('.popin-buttons.buttons .facebook').attr('href', fbHref);
+            $('.popin-audio').find('.popin-buttons.buttons .twitter').attr('href', twHref);
+            $('.popin-audio').find('.popin-buttons.buttons .link').attr('href', shareUrl);
+            $('.popin-audio').find('.popin-buttons.buttons .link').attr('data-clipboard-text', shareUrl);
+
+            updatePopinMedia({
+              'type'     : "audio",
+              'category' : category,
+              'date'     : date,
+              'title'    : name,
+              'url'      : shareUrl
+            });
+
+            $popinAudio.find('.info .category').text(category);
+            $popinAudio.find('.info .date').text(date);
+            $popinAudio.find('.info .hour').text(hour);
+            $popinAudio.find('.info p').text(name);
             $popinAudio.addClass('audio-player show loading');
-            waves = [];
-            $('.audio-player .playpause').off('click');
-            initAudioPlayers();
             $('.ov').addClass('show');
           });
         }
