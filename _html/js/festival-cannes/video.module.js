@@ -188,7 +188,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         force = force || false;
         if (force) {
             playerInstance.setMute(true);
-            // playerInstance.setVolume(0);
+            playerInstance.setVolume(0);
             $sound.find('.sound-seek').css('width','0%');
         } else {
             if (playerInstance.getMute()) {
@@ -203,7 +203,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     playerInstance.stopMute = function() {
         playerInstance.setMute(false);
-        // playerInstance.setVolume(100);
+        playerInstance.setVolume(100);
         $sound.find('.sound-seek').css('width','100%');
     }
 
