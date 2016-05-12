@@ -70,7 +70,7 @@
                 {% for video in videos %}
                     {% set video = video.mediaVideo %}
                     {% set trans = video.findTranslationByLocale(app.request.locale) %}
-                    {% if trans is null or trans.file is null or trans.jobMp4State != 3 or trans.mp4Url is null or trans.webmUrl is null %}
+                    {% if trans is null or trans.jobMp4State != 3 or trans.mp4Url is null or trans.webmUrl is null %}
                         {% set trans = video.findTranslationByLocale('fr') %}
                     {% endif %}
 
