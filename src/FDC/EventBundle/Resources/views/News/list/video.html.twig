@@ -8,6 +8,7 @@
             <div class="grid-sizer"></div>
             {% for video in videos %}
                 {% set trans = get_available_video(video) %}
+                {{ trans.locale }}
                 {% set transImage = null %}
 				{% set amazonImage = null %}
                 {% if trans is null %}
