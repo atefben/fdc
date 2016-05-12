@@ -584,53 +584,54 @@ var owInitSlider = function(sliderName) {
 
     var initDrag = 1;
 
-     slider.noUiSlider.on('update', function( values, handle ) {
+   slider.noUiSlider.on('update', function( values, handle ) {
 
 
-          //drag
-          var w = $('body').width();
-          var number = 0;
+      //drag
+      var w = $('body').width();
+      var number = 0;
 
-          valuesFloat = parseFloat(values[handle]);
-          valuesInt = parseInt(values[handle]);
-          values = Math.round(valuesFloat);
-          number = values - 1945;
+      valuesFloat = parseFloat(values[handle]);
+      valuesInt = parseInt(values[handle]);
+      values = Math.round(valuesFloat);
+      number = values - 1945;
 
-          $('.slides-calc1 .date').html(valuesInt);
-
-
-          if(initDrag) {
-            initDrag = 0;
-          }
-
-          if(valuesInt > 1945){
-            $('.slides-calc1').css('display','block');
-          }else {
-            $('.slides-calc1').css('display','none');
-          }
+      $('.slides-calc1 .date').html(valuesInt);
 
 
-          if(number > 0.7 && initDrag == 0){
-            $('.slider-restropective[data-slide="0"]').removeClass('animated fadeIn').addClass('animated fadeOut');
-            $('.slides-calc1').removeClass('animated fadeOut').addClass('animated fadeIn');
+      if(initDrag) {
+        initDrag = 0;
+      }
 
-          }else if(number < 0.9){
+      if(valuesInt > 1945){
+        $('.slides-calc1').css('display','block');
+        $('.slides-calc2 .navigation').removeClass('begin');
+      }else {
+        $('.slides-calc1').css('display','none');
+        $('.slides-calc2 .navigation').addClass('begin');
+      }
 
-            $('.slider-restropective[data-slide="0"]').removeClass('animated fadeOut').addClass('animated fadeIn');
-            $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
-          }
 
-          var val = - w * (valuesFloat - 1945) * .8 ; //todo script ?
-          // var valCalc1 = - w * (valuesFloat - 1946) * .4; //todo script ?
-          var valPos = w * (valuesFloat - 1945) * .8; //todo script ?
+      if(number > 0.7 && initDrag == 0){
+        $('.slider-restropective[data-slide="0"]').removeClass('animated fadeIn').addClass('animated fadeOut');
+        $('.slides-calc1').removeClass('animated fadeOut').addClass('animated fadeIn');
 
-          $slide.css('transform','translate('+val+'px)');
-          // $slideCalc1Slide.css('left',valPos+'px');
+      }else if(number < 0.9){
 
-          $('.slider-restropective').removeClass('big').addClass('small');
-          $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
-          $('.slider-restropective .texts').removeClass('zoomIn fadeIn pulse visible');
+        $('.slider-restropective[data-slide="0"]').removeClass('animated fadeOut').addClass('animated fadeIn');
+        $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
+      }
 
+      var val = - w * (valuesFloat - 1945) * .8 ; //todo script ?
+      // var valCalc1 = - w * (valuesFloat - 1946) * .4; //todo script ?
+      var valPos = w * (valuesFloat - 1945) * .8; //todo script ?
+
+      $slide.css('transform','translate('+val+'px)');
+      // $slideCalc1Slide.css('left',valPos+'px');
+
+      $('.slider-restropective').removeClass('big').addClass('small');
+      $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
+      $('.slider-restropective .texts').removeClass('zoomIn fadeIn pulse visible');
      });
 
      slider.noUiSlider.on('end', function(values, handle){ //end drag
@@ -672,6 +673,7 @@ var owInitSlider = function(sliderName) {
          $('.big').addClass('block-push block-push-top');
          $('.timelapse').css('display','none');
          $('.discover').css('display','none');
+         $('.slides-calc2').css('display','none');
          $('.title-big-date').addClass('title-2').removeClass('title-big-date');
          $('.title-edition').addClass('title-4').removeClass('title-edition');
 
@@ -682,6 +684,16 @@ var owInitSlider = function(sliderName) {
 
         });
         return false;
+     });
+
+     $('.slides-calc2').on('click', function(){
+
+       var date = $('.slides-calc1 .date').html();
+       date = parseInt(date);
+
+      //changer la date courante dans le slider par la suivante et donc
+      // faire bouger le slider +1
+
      });
 
   }

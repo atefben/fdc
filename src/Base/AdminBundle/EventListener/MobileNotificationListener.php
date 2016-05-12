@@ -90,21 +90,21 @@ class MobileNotificationListener
                             $conn = $this->getApnsConnection();
                             $conn->add($this->setNewMessage(trim($uuid), $translation->getDescription(), 1));
 							$this->sendPushIos($conn);
-						} else if(strlen($uuid) == '162') {
+						} else {
                             $payload = $this->setAndroidNewMessagePayload($translation->getDescription());
                             $this->sendPushAndroid(trim($uuid), $payload);
 						}
                         
                     }
                 } elseif ($object->getSendToAll()) {
-
                     $tokenandroids = array();
                     $androidDevices = $this->getDevices('android', $translation->getLocale());
+                    $payload = $this->setAndroidNewMessagePayload($translation->getDescription());
                     if(count($androidDevices) > 0) {
                         foreach ($androidDevices as $device) {
                             $tokenandroids[] = trim($device->getUuid());
                         }
-                        $payload = $this->setAndroidNewMessagePayload($translation->getDescription());
+
                         $this->sendPushAndroid($tokenandroids, $payload);
                     }
 
@@ -192,6 +192,7 @@ class MobileNotificationListener
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
         $result = curl_exec($ch);
+
         if ($result === FALSE) {
             error_log('ERROR - Curl failed : ' . curl_error($ch));
         }
