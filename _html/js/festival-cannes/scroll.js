@@ -264,11 +264,11 @@ $(document).ready(function() {
       var hght = $header.hasClass('sticky') ? 91 : 230;
       $('#live .textLive').css('top', hght + ($('#live').height() - $('#live .textLive').height()) / 2);
       $('.webtv #live .img').css('top', '');
+      $('#main').css('padding-top', $header.hasClass('sticky') ? 91 :0);
 
       if(!isIE() && s > 50 && $('#live').hasClass('on')) {
         $('#live').removeClass('on');
         $('#live').height($('#live').data('height'));
-        $('#main').css('padding-top', 0);
         setTimeout(function() {
           if(videoWebtv.getState() != "paused" && videoWebtv.getState() != "idle") {
             $('#live .trailer').removeClass('on');
