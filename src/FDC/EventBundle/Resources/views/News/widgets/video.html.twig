@@ -2,7 +2,7 @@
 {% set file = widget.file %}
 {% set trans = get_available_video(file) %}
 
-{% if trans is null or trans.file is null or trans.jobWebmState != 3 or trans.jobMp4State != 3 or trans.mp4Url is null or trans.webmUrl is null %}
+{% if trans is null or trans.file is null or trans.jobMp4State != 3 or trans.mp4Url is null or trans.webmUrl is null %}
     {% set trans = file.findTranslationByLocale('fr') %}
 {% endif %}
 
@@ -26,7 +26,7 @@
     {% if playlist is defined %}
     data-playlist='{{ playlist }}'
     {% else %}
-    data-file='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
+    data-file='[{% if(trans.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
     {% endif %}
     data-img="{% if image is defined %}{% path image, 'reference' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
     data-name="{{ trans.title }}">

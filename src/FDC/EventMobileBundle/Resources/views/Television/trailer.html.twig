@@ -28,7 +28,7 @@
                     <!-- replace by player video -->
                     <div id="player"
                          {#data-video='http://affif-sitepublic-media-test.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/Victor-XX-VOSTEN.webm'#}
-                         data-video="{{ s3_server_video ~ trans.webmUrl }}"
+                            {% if(trans.jobWebmState == 3) %}data-video="{{ s3_server_video ~ trans.webmUrl }}"{% else %}}data-video="{{ s3_server_video ~ trans.mp4Url }}"{% endif %}
                          data-poster="{{ videoImage }}"></div>
 
                     <div id="slider-trailer" class="container owl-carousel sliderDrag videosSlider">

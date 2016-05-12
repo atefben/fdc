@@ -66,9 +66,9 @@ class NewsAdmin extends Admin
                     if ($value['value'] === null) {
                         return;
                     }
+                    /* todo replace this and add it to statement and info */
                     $url = $_SERVER['REQUEST_URI'];
                     $url = explode("/", $url);
-                    /* todo replace this and add it to statement and info */
                     if ($url[4] != 'news') {
                         $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
                         $queryBuilder->andWhere('t.title LIKE :title');

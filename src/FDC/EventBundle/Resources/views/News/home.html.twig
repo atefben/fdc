@@ -257,7 +257,7 @@
                 <div id="slider-videos" class="owl-carousel sliderDrag">
                     {% for video in videos %}
                         {% if video.association is defined and video.association != null %}
-                            {% if video.association is not null and video.association.jobWebmState == 3 and video.association.jobMp4State == 3 %}
+                            {% if video.association is not null and video.association.jobMp4State == 3 %}
                                 <div class="vid video"
                                     data-vid="{{ video.association.id }}"
                                     data-file='[{"file":"{{ s3_server_video ~ video.association|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video.association|trans_fallback('mp4Url') }}"}]'

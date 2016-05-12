@@ -37,7 +37,7 @@
              data-time="{{ event.startsAt|date('H') }}" data-duration="{{ minutes }}">
         <span class="category">
             <i class="icon {% if isSeancePress -%}icon_espace-presse{%- elseif isConferencePress -%}icon_evt-conference{%- else -%}icon_evt-seance{%- endif -%}"></i>
-            {% set trans_slug = 'programmation.type.' ~ event.type|sonata_slugify %}
+            {% set trans_slug = 'programmation.type.' ~ event.type|remove_accents|sonata_slugify %}
             {% set trans = trans_slug|trans %}
             {% if trans_slug != trans %}
                 {{- trans -}}
@@ -111,7 +111,7 @@
              data-time="{{ event.startsAt|date('H') }}" data-duration="{{ minutes }}">
         <span class="category">
             <i class="icon {% if isSeancePress -%}icon_espace-presse{%- elseif isConferencePress -%}icon_evt-conference{%- else -%}icon_evt-seance{%- endif -%}"></i>
-            {% set trans_slug = 'programmation.type.' ~ event.type|sonata_slugify %}
+            {% set trans_slug = 'programmation.type.' ~ event.type|remove_accents|sonata_slugify %}
             {% set trans = trans_slug|trans %}
             {% if trans_slug != trans %}
                 {{- trans -}}
