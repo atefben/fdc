@@ -156,11 +156,6 @@
       width: 100%;
       height: 100%;
       transition: none;
-
-      iframe {
-        opacity: 0;
-        visibility: hidden;
-      }
     }
 
     &.on {
@@ -172,11 +167,6 @@
       .trailer.on {
         opacity: 1;
         @include transition(opacity 0.5s $smoothTransition .25s);
-
-        iframe {
-          opacity: 1;
-          visibility: visible;
-        }
       }
     }
   }
