@@ -46,7 +46,7 @@
         <div class="info clearfix">
             {%- if event.programmationDynamics|length > 0 and event.programmationDynamics[0].type is not empty -%}
                 <div class="info-dynamic-prog">
-                    {%- set trans_slug = 'programmation.objet.' ~ event.programmationDynamics[0].type.name|sonata_slugify|lower -%}
+                    {%- set trans_slug = 'programmation.objet.' ~ event.programmationDynamics[0].type.name|remove_accents|sonata_slugify|lower -%}
                     {%- set trans = trans_slug|trans -%}
                     {%- if trans_slug != trans -%}
                         {{- trans|upper -}}
