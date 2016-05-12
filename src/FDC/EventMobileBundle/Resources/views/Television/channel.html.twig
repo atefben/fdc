@@ -31,7 +31,7 @@
                 {% set firstVideo = video %}
                 <!-- replace by player video -->
                 <div id="player"
-                     data-video="{{ s3_server_video ~ firstVideo.webmUrl }}"
+                     {% if(firstVideo.jobWebmState == 3) %}data-video="{{ s3_server_video ~ firstVideo.webmUrl }}"{% else %}}data-video="{{ s3_server_video ~ firstVideo.mp4Url }}"{% endif %}
                      data-poster="{{ videoImage }}"></div>
 
                 <div id="slider-trailer" class="owl-carousel sliderDrag videosSlider">

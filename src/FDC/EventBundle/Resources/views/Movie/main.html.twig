@@ -20,11 +20,11 @@
                         {% for video in movie.associatedMediaVideos if firstVideo is null %}
                             {% set video = video.mediaVideo %}
                             {% set trans = video.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is not null and trans.jobWebmState == 3 and trans.jobMp4State == 3 %}
+                            {% if trans is not null and trans.jobMp4State == 3 %}
                                 {% set firstVideo = video %}
                             {% else %}
                                 {% set trans = video.findTranslationByLocale('fr') %}
-                                {% if trans is not null and trans.jobWebmState == 3 and trans.jobMp4State == 3 %}
+                                {% if trans is not null and trans.jobMp4State == 3 %}
                                     {% set firstVideo = video %}
                                 {% endif %}
                             {% endif %}
