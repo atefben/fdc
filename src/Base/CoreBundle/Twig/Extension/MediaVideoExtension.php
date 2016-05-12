@@ -100,6 +100,7 @@ class MediaVideoExtension extends Twig_Extension
      */
     public function getAvailableVideo($video, $force = false, $locale = null)
     {
+        error_log($locale);
         if ($locale === null) {
             $locale = $this->localeFallback;
         }
