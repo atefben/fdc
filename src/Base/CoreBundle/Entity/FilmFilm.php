@@ -1812,6 +1812,18 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         return $this->persons;
     }
 
+    public function getPerson($id)
+    {
+        foreach ($this->persons as $person) {
+            if ($person->getId() == $id) {
+                return $person;
+            }
+        }
+
+        return null;
+
+    }
+
     /**
      * Add contacts
      *
