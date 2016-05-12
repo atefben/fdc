@@ -6131,10 +6131,6 @@ div.chocolat-wrapper .zoomCursor .icon {
   cursor: none !important;
   overflow: hidden !important;
 }
-.single-article .audio-container {
-  margin: 0 auto 70px;
-  width: 630px;
-}
 .audio-container.actu-article-audio {
   margin-top: 50px !important;
   height: 600px;
@@ -6267,98 +6263,11 @@ div.chocolat-wrapper .zoomCursor .icon {
 .audio-container.popin-audio .buttons a:hover {
   color: #c8a461;
 }
-
-/*
-.popin-audio {
-  .playpause {
-    left: 57px;
-    top: 398px;
-    margin-top: 0;
-  }
-
-  .wave-container {
-    width: 520px;
-  }
-
-  .on {
-    height: 100px;
-    opacity: 1;
-    visibility: visible;
-    top: 360px;
-    left: 100px;
-    position: absolute;
-
-    .fullscreen {
-      background-size: contain;
-      bottom: 44px;
-      z-index: 1;
-      position: absolute;
-      right: -30px;
-    }
-
-    .duration {
-      margin-top: -9px;
-    }
-  }
-
-  .image-container {
-    left: 20px;
-    height: 440px;
-    overflow: hidden;
-    top: 20px;
-    position: absolute;
-    width: 710px;
-  }
-
-  .buttons {
-    position: absolute;
-    bottom: 25px;
-    right: 20px;
-
-    a:hover {
-      background-color: #fff;
-      border-color: $gold!important;
-
-      + .button {
-        border-left-color: $gold;
-      }
-    }
-
-    a {
-      .icon{
-        font-size: .8rem;
-        position: absolute;
-        top: 30px;
-        left: 30px;
-      }
-
-      &:hover{
-        color: $gold;
-      }
-    }
-  }
-
-  .picto {
-    display: none;
-  }
-
-  .info {
-    position: absolute;
-    bottom: 20px;
-    height: 80px;
-    left: 20px;
-    margin: 0;
-    text-align: left;
-    width: 710px;
-
-    p {
-      color: #333;
-      font-size: 1rem;
-      margin-top: 5px;
-    }
-  }
+.single-article .audio-container {
+  margin: 0 auto 70px;
+  width: 630px;
 }
-*/
+
 .ov {
   background-color: #141414;
   content: '';
