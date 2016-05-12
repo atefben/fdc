@@ -24,7 +24,7 @@
                 {% endif %}
                 {% if transImage is defined %}
                     <div class="item {{ audio.theme|trans_fallback('slug') }} {{ audio.publishedAt|date('d-m-y') }} shadow-bottom audio"
-                         data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
+                         data-sound='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
                          data-aid="{{ audio.id }}">
                         <img src="{% path transImage.file , '1144x724' %}"
                              srcset="{% path transImage.file , '572x362' %} 1x, {% path transImage.file , '1144x724' %} 2x"
