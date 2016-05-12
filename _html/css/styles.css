@@ -14071,6 +14071,9 @@ input[type=submit] {
   height: 100%;
   transition: none;
 }
+.webtv #live .trailer iframe {
+  display: none !important;
+}
 .webtv #live.on .img,
 .webtv #live.on > .vCenter {
   opacity: 0;
@@ -14082,6 +14085,9 @@ input[type=submit] {
   -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition-delay: 0.25s;
   transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.25s;
+}
+.webtv #live.on .trailer.on iframe {
+  display: block !important;
 }
 .webtv .title {
   color: #fff;
