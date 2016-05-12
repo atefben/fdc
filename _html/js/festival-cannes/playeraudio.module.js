@@ -21,16 +21,15 @@ var audioControlBar =
             </div>\
         </div>';
 
-function audioInit(id, cls, havePlaylist, live) {
+function audioInit(id, cls, havePlaylist) {
     cls          = cls || 'audio-player-container';
     havePlaylist = havePlaylist || false;
-    live         = live || false;
     var tmp;
 
     if (id) {
         var audioPlayer = jwplayer(id);
         if(!$(audioPlayer).data('loaded')) {
-            audioLoad($("#"+id)[0], audioPlayer, havePlaylist, live, function(aid) {
+            audioLoad($("#"+id)[0], audioPlayer, havePlaylist, function(aid) {
                 $(aid).data('loaded', true);
                 tmp = aid;
             });
@@ -46,7 +45,7 @@ function audioInit(id, cls, havePlaylist, live) {
             // console.log("",this.id);
             var audioPlayer  = jwplayer(this.id);
             if(!$(audioPlayer).data('loaded')) {
-                audioLoad(this, audioPlayer, havePlaylist, live, function(aid) {
+                audioLoad(this, audioPlayer, havePlaylist, function(aid) {
                     $(aid).data('loaded', true);
                     tmp[i] = aid;
                 });
@@ -58,7 +57,7 @@ function audioInit(id, cls, havePlaylist, live) {
     }
 };
 
-function audioLoad(aid, playerInstance, havePlaylist, live, callback) {
+function audioLoad(aid, playerInstance, havePlaylist, callback) {
     var $container    = $("#"+aid.id).closest('.audio-container');
 
     if($container.find('.control-bar').length <= 0) {
@@ -71,8 +70,7 @@ function audioLoad(aid, playerInstance, havePlaylist, live, callback) {
         $durationTime = $container.find('.total'),
         $current      = $container.find('.curr'),
         $progressBar  = $container.find('.progress-bar'),
-        $sound        = $container.find('.sound'),
-        $playlist     = [];
+        $sound        = $container.find('.sound');
 
      playerInstance.setup({
         // file: $container.data('file'),
@@ -104,7 +102,7 @@ function audioLoad(aid, playerInstance, havePlaylist, live, callback) {
         _duration = playerInstance.getDuration();
         duration_mins = Math.floor(_duration / 60);
         duration_secs = Math.floor(_duration - duration_mins * 60);
-        $durationTime.html(duration_mins + ":" + duration_secs);
+        $durationTime.html(duration_mins + ":" + (duration_secs < 10 ? '0'+ duration_secs : duration_secs));
     }).on('bufferChange', function(e) {
         var currentBuffer = e.bufferPercent;
         $progressBar.find('.buffer-bar').css('width', currentBuffer+'%');
@@ -112,7 +110,7 @@ function audioLoad(aid, playerInstance, havePlaylist, live, callback) {
         if (typeof _duration === "undefined" || _duration == 0) {
             duration_mins = Math.floor(e.duration / 60);
             duration_secs = Math.floor(e.duration - duration_mins * 60);
-            $durationTime.html(duration_mins + ":" + duration_secs);
+            $durationTime.html(duration_mins + ":" + (duration_secs < 10 ? '0'+ duration_secs : duration_secs));
             _duration = e.duration;
          }
 
@@ -141,22 +139,22 @@ function audioLoad(aid, playerInstance, havePlaylist, live, callback) {
     });
 
     if(havePlaylist && havePlaylist === "grid") {
+        console.log('lol');
         var playlist = [];
 
         $.each($('#gridAudios .item'), function(i,p) {
-            var tempList = {
+            playlist.push({
                 "sources"  : $(p).data('sound'),
                 "image"    : $(p).find('img').attr('src'),
                 "date"     : $(p).find('.info .date').text(),
                 "hour"     : $(p).find('.info .hour').text(),
                 "category" : $(p).find('.info .category').text(),
                 "name"     : $(p).find('.info p').text()
-            }
-            playlist.push(tempList);
+            });
         });
 
-        $playlist = playlist;
         playerInstance.load(playlist);
+        console.log(playlist);
     }
 
     function updateVolume(x, vol) {

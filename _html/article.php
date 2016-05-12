@@ -131,7 +131,7 @@
             data-img="./img/slide001.jpg"
             data-aid="2142">
             <div class="audio-player">
-              <div id="audio-player<?php echo time().'1'; ?>" class="audio-player-container"></div>
+              <div id="audio-player<?php echo time().'1'; ?>" class=""></div>
               <div class="image" style="background-image: url(img/slide001.jpg);"></div>
               <button class="play-btn play"><i class="icon icon_play"></i></button>
               <div class="off">

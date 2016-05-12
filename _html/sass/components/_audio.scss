@@ -333,15 +333,6 @@
     .audio-player {
       height: 440px;
 
-      .image-container {
-        left: 20px;
-        height: 440px;
-        overflow: hidden;
-        top: 20px;
-        position: absolute;
-        width: 710px;
-      }
-
       .play-btn {
         top: auto;
         bottom: 0;
@@ -349,15 +340,20 @@
 
       .on {
         height: 87px;
-        margin-top: 513px;
+        margin-top: 353px;
+        margin-left: 70px;
       }
 
       .progress {
-        width: 550px;
+        width: 520px;
       }
     }
 
     .info {
+      color: #969696;
+      font-family: $CamphorMedium;
+      display: inline-block;
+      vertical-align: middle;
       position: absolute;
       bottom: 20px;
       height: 80px;
@@ -366,10 +362,57 @@
       text-align: left;
       width: 710px;
 
+      .category {
+        color: $gold;
+        display: inline-block;
+        font-size: 0.625rem;
+        letter-spacing: 0.1em;
+        margin-right: 12px;
+        text-transform: uppercase;
+      }
+
+      span {
+        color: #969696;
+        display: inline-block;
+        font-size: 0.625rem;
+        letter-spacing: -0.05em;
+      }
+
       p {
         color: #333;
         font-size: 1rem;
+        font-family: $CamphorRegular;
+        text-align: left;
         margin-top: 5px;
+        width: auto;
+      }
+    }
+
+    .buttons {
+      position: absolute;
+      bottom: 25px;
+      right: 20px;
+
+      a:hover {
+        background-color: #fff;
+        border-color: $gold!important;
+
+        + .button {
+          border-left-color: $gold;
+        }
+      }
+
+      a {
+        .icon{
+          font-size: .8rem;
+          position: absolute;
+          top: 30px;
+          left: 30px;
+        }
+
+        &:hover{
+          color: $gold;
+        }
       }
     }
   }

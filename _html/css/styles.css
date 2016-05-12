@@ -6199,26 +6199,23 @@ div.chocolat-wrapper .zoomCursor .icon {
 .audio-container.popin-audio .audio-player {
   height: 440px;
 }
-.audio-container.popin-audio .audio-player .image-container {
-  left: 20px;
-  height: 440px;
-  overflow: hidden;
-  top: 20px;
-  position: absolute;
-  width: 710px;
-}
 .audio-container.popin-audio .audio-player .play-btn {
   top: auto;
   bottom: 0;
 }
 .audio-container.popin-audio .audio-player .on {
   height: 87px;
-  margin-top: 513px;
+  margin-top: 353px;
+  margin-left: 70px;
 }
 .audio-container.popin-audio .audio-player .progress {
-  width: 550px;
+  width: 520px;
 }
 .audio-container.popin-audio .info {
+  color: #969696;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  display: inline-block;
+  vertical-align: middle;
   position: absolute;
   bottom: 20px;
   height: 80px;
@@ -6227,10 +6224,48 @@ div.chocolat-wrapper .zoomCursor .icon {
   text-align: left;
   width: 710px;
 }
+.audio-container.popin-audio .info .category {
+  color: #c8a461;
+  display: inline-block;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  margin-right: 12px;
+  text-transform: uppercase;
+}
+.audio-container.popin-audio .info span {
+  color: #969696;
+  display: inline-block;
+  font-size: 0.625rem;
+  letter-spacing: -0.05em;
+}
 .audio-container.popin-audio .info p {
   color: #333;
   font-size: 1rem;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  text-align: left;
   margin-top: 5px;
+  width: auto;
+}
+.audio-container.popin-audio .buttons {
+  position: absolute;
+  bottom: 25px;
+  right: 20px;
+}
+.audio-container.popin-audio .buttons a:hover {
+  background-color: #fff;
+  border-color: #c8a461 !important;
+}
+.audio-container.popin-audio .buttons a:hover + .button {
+  border-left-color: #c8a461;
+}
+.audio-container.popin-audio .buttons a .icon {
+  font-size: .8rem;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+.audio-container.popin-audio .buttons a:hover {
+  color: #c8a461;
 }
 
 /*
