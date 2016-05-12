@@ -120,7 +120,7 @@ class TelevisionController extends Controller
                             $isPublished = $isPublished;
                         }
                         $ready = MediaVideoTranslation::ENCODING_STATE_READY;
-                        $isPublished = $isPublished && $translation->getJobWebmState() === $ready && $translation->getJobMp4State() === $ready;
+                        $isPublished = $isPublished && $translation->getJobMp4State() === $ready;
 
                         $isTrailer = $isPublished && $mediaVideo->getDisplayedTrailer();
                         $hasFilms = $isTrailer && $mediaVideo->getAssociatedFilms()->count();
