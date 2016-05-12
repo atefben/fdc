@@ -681,7 +681,7 @@ class NewsController extends Controller
 
         //GET ALL MEDIA AUDIOS
         $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $settings->getFestival()->getId(), $dateTime);
-
+error_log($locale);
         //set default filters
         $filters = array();
         $filters['dates'][0] = 'all';
