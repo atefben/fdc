@@ -9,24 +9,22 @@ use Base\CoreBundle\Entity\FilmAwardAssociation;
 
 /**
  * AwardManager class.
- * 
  * @extends CoreManager
  * @author Antoine Mineau <a.mineau@ohwee.fr>
  * @company Ohwee
  */
 class AwardManager extends CoreManager
 {
+
     /**
      * festivalManager
-     * 
      * @var mixed
      * @access private
      */
     private $festivalManager;
-    
+
     /**
      * prizeManager
-     * 
      * @var mixed
      * @access private
      */
@@ -34,7 +32,6 @@ class AwardManager extends CoreManager
 
     /**
      * filmManager
-     * 
      * @var mixed
      * @access private
      */
@@ -42,15 +39,15 @@ class AwardManager extends CoreManager
 
     /**
      * personManager
-     * 
      * @var mixed
      * @access private
      */
     private $personManager;
-    
+
+    private $ids = array();
+
     /**
      * __construct function.
-     * 
      * @access public
      * @return void
      */
@@ -65,33 +62,32 @@ class AwardManager extends CoreManager
         $this->wsParameterKey = 'idAward';
         $this->entityIdKey = 'Id';
         $this->mapper = array(
-            'setId' => $this->entityIdKey,
-            'setComment' => 'Commentaire',
-            'setExAequo' => 'ExAequo',
-            'setFilmMutual' => 'CommunFilm',
+            'setId'           => $this->entityIdKey,
+            'setComment'      => 'Commentaire',
+            'setExAequo'      => 'ExAequo',
+            'setFilmMutual'   => 'CommunFilm',
             'setPersonMutual' => 'CommunPersonne',
-            'setPosition' => 'OrdreAffichage',
-            'setUnanimity' => 'Unanimite'
+            'setPosition'     => 'OrdreAffichage',
+            'setUnanimity'    => 'Unanimite',
         );
         $this->mapperEntity = array(
             array(
                 'repository' => 'BaseCoreBundle:FilmFestival',
-                'soapKey' => 'IdFestival',
-                'setter' => 'setFestival',
-                'manager' => $this->festivalManager
+                'soapKey'    => 'IdFestival',
+                'setter'     => 'setFestival',
+                'manager'    => $this->festivalManager,
             ),
             array(
                 'repository' => 'BaseCoreBundle:FilmPrize',
-                'soapKey' => 'IdPrix',
-                'setter' => 'setPrize',
-                'manager' => $this->prizeManager
-            )
+                'soapKey'    => 'IdPrix',
+                'setter'     => 'setPrize',
+                'manager'    => $this->prizeManager,
+            ),
         );
     }
-    
+
     /**
      * getById function.
-     * 
      * @access public
      * @param mixed $id
      * @return void
@@ -113,20 +109,22 @@ class AwardManager extends CoreManager
         }
 
         $resultObject = $result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey};
-        
+
         // set entity
         $entity = $this->set($resultObject, $result);
-        
+
         // save entity
-        $this->update($entity);
-        
+        if (!in_array($entity->getId(), $this->ids)) {
+            $this->update($entity);
+            $this->ids[] = $entity->getId();
+        }
+
         // end timer
         $this->end(__METHOD__);
     }
-    
+
     /**
      * getModified function.
-     * 
      * @access public
      * @param mixed $from
      * @param mixed $to
@@ -136,7 +134,7 @@ class AwardManager extends CoreManager
     {
         $this->wsMethod = 'GetModifiedAwards';
         $this->wsResultKey = 'GetModifiedAwardsResult';
-         
+
         // start timer
         $this->start(__METHOD__);
 
@@ -154,14 +152,13 @@ class AwardManager extends CoreManager
             $entity = $this->set($resultObject, $result);
             $this->update($entity);
         }
-        
+
         // end timer
         $this->end(__METHOD__);
     }
-    
+
     /**
      * getRemoved function.
-     * 
      * @access public
      * @param mixed $from
      * @param mixed $to
@@ -171,27 +168,26 @@ class AwardManager extends CoreManager
     {
         $this->wsMethod = 'GetRemovedAwards';
         $this->wsResultKey = 'GetRemovedAwardsResult';
-         
+
         // start timer
         $this->start(__METHOD__);
 
         // call the ws
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
         $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats);
-        
+
         // delete objects
         $this->deleteMultiple($resultObjects);
-        
+
         // save entities
         $this->em->flush();
-        
+
         // end timer
         $this->end(__METHOD__);
     }
 
     /**
      * set function.
-     * 
      * @access private
      * @param mixed $object
      * @param mixed $result
@@ -201,13 +197,13 @@ class AwardManager extends CoreManager
     {
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmAward();
-        
+
         // set soif last update time
         $this->setSoifUpdatedAt($result, $entity);
 
         // set entity properties
         $this->setEntityProperties($resultObject, $entity);
-        
+
         // set related entity
         $this->setEntityRelated($resultObject, $entity);
 
@@ -217,10 +213,11 @@ class AwardManager extends CoreManager
             $resultObject->ListeFilmPersonne->RecompenseFilmPersonneDto = $this->mixedToArray($resultObject->ListeFilmPersonne->RecompenseFilmPersonneDto);
             foreach ($resultObject->ListeFilmPersonne->RecompenseFilmPersonneDto as $obj) {
                 $entityRelated = $this->em->getRepository('BaseCoreBundle:FilmAwardAssociation')->findOneBy(array(
-                    'film' => $obj->Film,
-                    'person' => $obj->Persons,
-                    'position' => $obj->Ordre
-                ));
+                    'film'     => $obj->Film,
+                    'person'   => $obj->Persons,
+                    'position' => $obj->Ordre,
+                ))
+                ;
                 $entityRelated = ($entityRelated !== null) ? $entityRelated : new FilmAwardAssociation();
                 $entityRelated->setPosition($obj->Ordre);
                 if ($obj->Film !== null) {
@@ -240,7 +237,7 @@ class AwardManager extends CoreManager
                 // save in array all the entities
                 $collectionNew->add($entityRelated);
             }
-            
+
             // remove old relations
             $this->removeOldRelations($entity->getAssociations(), $collectionNew, $entity, 'removeAssociation');
         }
