@@ -66,10 +66,33 @@ class NewsAdmin extends Admin
                     if ($value['value'] === null) {
                         return;
                     }
-                    $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
-                    $queryBuilder->andWhere('t.title LIKE :title');
-                    $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
-                    return true;
+                    $url = $_SERVER['REQUEST_URI'];
+                    $url = explode("/", $url);
+                    /* todo replace this and add it to statement and info */
+                    if ($url[4] != 'news') {
+                        $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
+                        $queryBuilder->andWhere('t.title LIKE :title');
+                        $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
+                        return true;
+                    } else {
+                        $queryBuilder
+                            ->leftjoin('Base\CoreBundle\Entity\NewsArticle', 'na1', 'WITH', "na1.id = {$alias}.id")
+                            ->leftjoin('Base\CoreBundle\Entity\NewsAudio', 'na2', 'WITH', "na2.id = {$alias}.id")
+                            ->leftjoin('Base\CoreBundle\Entity\NewsImage', 'na3', 'WITH', "na3.id = {$alias}.id")
+                            ->leftjoin('Base\CoreBundle\Entity\NewsVideo', 'na4', 'WITH', "na4.id = {$alias}.id")
+                            ->leftjoin('na1.translations', 'na1t')
+                            ->leftjoin('na2.translations', 'na2t')
+                            ->leftjoin('na3.translations', 'na3t')
+                            ->leftjoin('na4.translations', 'na4t')
+                            ->andWhere('
+                                na1t.title LIKE :title OR
+                                na2t.title LIKE :title OR
+                                na3t.title LIKE :title OR
+                                na4t.title LIKE :title
+                            ');
+                        $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
+                        return true;
+                    }
                 },
                 'field_type' => 'text',
                 'label'      => 'list.news_common.label_title',
