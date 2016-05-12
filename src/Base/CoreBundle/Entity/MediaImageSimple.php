@@ -108,7 +108,9 @@ class MediaImageSimple implements TranslateMainInterface
      *     "classics",
      *     "orange_programmation_ocs",
      *     "orange_video_on_demand",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "projection_list",
+     *     "projection_show"
      * })
      * @Serializer\Accessor(getter="getApiTranslations")
      */
