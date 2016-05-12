@@ -8907,7 +8907,7 @@ header #searchContainer {
 .s-slider-retrospective .slides {
   position: relative;
   width: 100000px;
-  transition: 1s;
+  transition: .9s;
 }
 .s-slider-retrospective .timelapse {
   height: 20px;
@@ -9145,7 +9145,7 @@ header #searchContainer {
   position: absolute;
   overflow: hidden;
   width: 100%;
-  height: 79vh;
+  height: calc(100vh - 230px);
   z-index: 2;
   transition: 1s;
   opacity: 0;
@@ -9177,6 +9177,54 @@ header #searchContainer {
   position: absolute;
   left: 12%;
   top: 46.3%;
+}
+
+.slides-calc2 {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 230px);
+  z-index: 3;
+}
+.slides-calc2 .navigation {
+  height: calc(100vh - 230px);
+  display: inline-block;
+  width: 30%;
+  color: #040404;
+  font-size: 2.2rem;
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 50%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  position: relative;
+  opacity: 0;
+  transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s;
+}
+.slides-calc2 .navigation:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.slides-calc2 .navigation.begin.prev:hover {
+  opacity: 0;
+}
+.slides-calc2 .navigation.end.next:hover {
+  opacity: 0;
+}
+.slides-calc2 .next {
+  float: right;
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 50%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.slides-calc2 .next .icon {
+  right: 4%;
+}
+.slides-calc2 .icon {
+  top: 45%;
+  position: absolute;
+}
+.slides-calc2 .prev .icon {
+  left: 4%;
 }
 
 .navigation-sticky {
