@@ -74,10 +74,10 @@
                                             {% set imageTrans = trans %}
                                         {% endif %}
                                     {% endif %}
-                                {% endif %}
-                                {% if imageTrans is defined and imageTrans is not null %}
-                                    {% set file = imageTrans.file %}
-                                    {% set img = article.header %}
+                                    {% if imageTrans is defined and imageTrans is not null %}
+                                        {% set file = imageTrans.file %}
+                                        {% set img = article.header %}
+                                    {% endif %}
                                 {% else %}
                                     {% set img = article.audio.image %}
                                     {% set trans = img.findTranslationByLocale(app.request.locale) %}
@@ -100,10 +100,10 @@
                                             {% set imageTrans = trans %}
                                         {% endif %}
                                     {% endif %}
-                                {% endif %}
-                                {% if imageTrans is defined and imageTrans is not null %}
-                                    {% set img = article.header %}
-                                    {% set file = imageTrans.file %}
+                                    {% if imageTrans is defined and imageTrans is not null %}
+                                        {% set img = article.header %}
+                                        {% set file = imageTrans.file %}
+                                    {% endif %}
                                 {% else %}
                                     {% set img = article.gallery.medias[0].media %}
                                     {% set trans = img.findTranslationByLocale(app.request.locale) %}
