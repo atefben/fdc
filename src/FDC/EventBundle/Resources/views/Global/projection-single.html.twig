@@ -120,7 +120,7 @@
                             >
                                 <span class="category">
                                     <i class="icon icon_evt-seance-presse"></i>
-                                    {% set trans_slug = 'programmation.type.' ~ seance.type|sonata_slugify %}
+                                    {% set trans_slug = 'programmation.type.' ~ seance.type|remove_accents|sonata_slugify %}
                                     {% set trans = trans_slug|trans %}
                                     {% if trans_slug != trans %}
                                         {{- trans -}}
@@ -228,7 +228,7 @@
                             >
                                     <span class="category">
                                         <i class="icon icon_evt-seance-conference"></i>
-                                        {% set trans_slug = 'programmation.type.' ~ conference.type|sonata_slugify %}
+                                        {% set trans_slug = 'programmation.type.' ~ conference.type|remove_accents|sonata_slugify %}
                                         {% set trans = trans_slug|trans %}
                                         {% if trans_slug != trans %}
                                             {{- trans -}}
@@ -331,7 +331,7 @@
                                     >
                                     <span class="category">
                                         <i class="icon icon_evt-seance"></i>
-                                        {% set trans_slug = 'programmation.type.' ~ relatedProjection.type|sonata_slugify %}
+                                        {% set trans_slug = 'programmation.type.' ~ relatedProjection.type|remove_accents|sonata_slugify %}
                                         {% set trans = trans_slug|trans %}
                                         {% if trans_slug != trans %}
                                             {{- trans -}}
