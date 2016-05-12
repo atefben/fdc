@@ -8,6 +8,7 @@
             <div class="grid-sizer"></div>
             {% for video in videos %}
                 {% set trans = get_available_video(video) %}
+                {{ trans.locale }}
                 {% set transImage = null %}
 				{% set amazonImage = null %}
                 {% if trans is null %}
@@ -27,6 +28,7 @@
                     {% set amazonImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                 {%- endif -%}
                 {% if transImage is defined or amazonImage is defined %}
+                    {{ trans.webmUrl }}
                     <div class="item {{ video.theme|trans_fallback('slug') }} {{ video.publishedAt|date('d-m-y') }} date theme shadow-bottom video"
                          data-vid="{{ video.id }}"
                          data-file='[{% if(trans.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
