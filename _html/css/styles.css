@@ -5969,9 +5969,14 @@ div.chocolat-wrapper .zoomCursor .icon {
   position: relative;
   pointer-events: auto;
   vertical-align: middle;
+  text-align: center;
+  line-height: 44px;
 }
 .audio-container .audio-player .off .picto.hide {
   display: none;
+}
+.audio-container .audio-player .off .picto .icon {
+  color: #c8a461;
 }
 .audio-container .audio-player .off .info {
   color: #969696;

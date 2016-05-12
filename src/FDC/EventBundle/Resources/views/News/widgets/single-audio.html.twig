@@ -28,7 +28,7 @@
 
     <div class="audio-container actu-article-audio"
          data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
-         date-img="{% if image is defined %}{% path image, '1950x1232' %}){% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
+         data-img="{% if image is defined %}{% path image, '1950x1232' %}){% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
          data-aid="{{ trans.id }}">
         <div class="audio-player">
             <div id="audio-player-{{ trans.id }}" class="audio-player-container"></div>
