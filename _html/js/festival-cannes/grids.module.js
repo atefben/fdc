@@ -346,7 +346,7 @@ $(document).ready(function () {
     }
 
     if($('#gridAudios').length) {
-      if($('.audio-player-popin').length > 0 && window.location.hash) {
+      if($('#audio-player-popin').length > 0 && window.location.hash) {
         var type = window.location.hash.substring(1).split('=')[0]
             aid  = window.location.hash.substring(1).split('=')[1];
         if(type === "aid" && $(".item[data-aid="+aid+"]").length) {
@@ -365,7 +365,7 @@ $(document).ready(function () {
           $grid,
           audioPopin;
 
-      if($('.audio-player-popin').length > 0) {
+      if($('#audio-player-popin').length > 0) {
         audioPopin = audioInit('audio-player-popin', false, 'grid');
         linkPopinInit(0, '.popin-audio .buttons .link');
         $('.popin-audio .buttons .email').on('click', function(e) {
@@ -387,7 +387,7 @@ $(document).ready(function () {
 
         $grid.isotope('layout');
 
-        if($('.audio-player-popin').length > 0) {
+        if($('#audio-player-popin').length > 0) {
           $('body').on('click', '#gridAudios .item', function(e) {
             var $popinAudio = $('.popin-audio'),
                 aid         = $(e.target).data('aid'),
