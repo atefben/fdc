@@ -2,7 +2,7 @@
 
 {% if film.video is not null %}
     {% set transVideo = film.video.findTranslationByLocale(app.request.locale) %}
-    {% if transVideo is null or transVideo.jobWebmState != 3 or transVideo.jobMp4State != 3 %}
+    {% if transVideo is null or transVideo.jobMp4State != 3 %}
         {% set transVideo = film.video.findTranslationByLocale('fr') %}
     {% endif %}
 {% endif %}
@@ -22,7 +22,7 @@
         <video preload muted>
             {% if transVideo is defined and transVideo is not null %}
                 <source src="{{ s3_server_video ~ transVideo.mp4Url }}">
-                <source src="{{ s3_server_video ~ transVideo.webmUrl }}" type="video/webm">
+                {% if(transVideo.jobWebmState == 3) %} <source src="{{ s3_server_video ~ transVideo.webmUrl }}" type="video/webm">{% endif %}
             {% endif %}
         </video>
         {% if transImage is defined and transImage is not null %}
