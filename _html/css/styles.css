@@ -6091,6 +6091,10 @@ div.chocolat-wrapper .zoomCursor .icon {
   position: absolute;
   z-index: 2;
 }
+.mob .audio-container .audio-player .on .progress {
+  width: 285px;
+  border-right: none;
+}
 .audio-container .audio-player .on .sound {
   position: relative;
   display: inline-block;
@@ -6128,6 +6132,9 @@ div.chocolat-wrapper .zoomCursor .icon {
   background-color: #fff;
   z-index: 10;
 }
+.mob .audio-container .audio-player .on .sound {
+  display: none !important;
+}
 .audio-container .jwplayer {
   height: 0 !important;
   width: 0 !important;
@@ -6158,6 +6165,9 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 .audio-container.actu-article-audio .audio-player .progress {
   width: 550px;
+}
+.mob .audio-container.actu-article-audio .audio-player .progress {
+  width: 635px;
 }
 .audio-container.popin-audio {
   background-color: #fff;
@@ -6211,6 +6221,9 @@ div.chocolat-wrapper .zoomCursor .icon {
 }
 .audio-container.popin-audio .audio-player .progress {
   width: 520px;
+}
+.mob .audio-container.popin-audio .audio-player .progress {
+  width: 605px;
 }
 .audio-container.popin-audio .info {
   color: #969696;

@@ -216,6 +216,11 @@
             z-index: 2;
           }
         }
+
+        .mob & {
+          width: 285px;
+          border-right: none;
+        }
       }
 
       .sound {
@@ -257,6 +262,10 @@
             z-index: 10;
           }
         }
+
+        .mob & {
+          display: none !important;
+        }
       }
     }
   }
@@ -295,6 +304,10 @@
 
       .progress {
         width: 550px;
+
+        .mob & {
+          width: 635px;
+        }
       }
     }
   }
@@ -347,6 +360,10 @@
 
       .progress {
         width: 520px;
+
+        .mob & {
+          width: 605px;
+        }
       }
     }
 

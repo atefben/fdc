@@ -39,10 +39,7 @@ function audioInit(id, cls, havePlaylist) {
         return tmp;
     } else {
         tmp = [];
-        $("."+cls+" .audio-player-container").each(function(i,v) {
-            // console.log("",this);
-            // console.log("",this.className);
-            // console.log("",this.id);
+        $("."+cls).each(function(i,v) {
             var audioPlayer  = jwplayer(this.id);
             if(!$(audioPlayer).data('loaded')) {
                 audioLoad(this, audioPlayer, havePlaylist, function(aid) {
@@ -224,7 +221,7 @@ function audioLoad(aid, playerInstance, havePlaylist, callback) {
 }
 
 $(document).ready(function() {
-    if($('.audio-player').length > 0) {
-        audioPlayer = audioInit(false, 'audio-player', false);
+    if($('.audio-player-container').length > 0) {
+        audioPlayer = audioInit(false, 'audio-player-container', false);
     }
 });
