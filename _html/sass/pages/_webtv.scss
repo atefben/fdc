@@ -158,7 +158,8 @@
       transition: none;
 
       iframe {
-        display: none !important;
+        opacity: 0;
+        visibility: hidden;
       }
     }
 
@@ -173,7 +174,8 @@
         @include transition(opacity 0.5s $smoothTransition .25s);
 
         iframe {
-          display: block !important;
+          opacity: 1;
+          visibility: visible;
         }
       }
     }

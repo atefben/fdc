@@ -14072,7 +14072,8 @@ input[type=submit] {
   transition: none;
 }
 .webtv #live .trailer iframe {
-  display: none !important;
+  opacity: 0;
+  visibility: hidden;
 }
 .webtv #live.on .img,
 .webtv #live.on > .vCenter {
@@ -14087,7 +14088,8 @@ input[type=submit] {
   transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.25s;
 }
 .webtv #live.on .trailer.on iframe {
-  display: block !important;
+  opacity: 1;
+  visibility: visible;
 }
 .webtv .title {
   color: #fff;
