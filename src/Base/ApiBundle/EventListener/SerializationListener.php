@@ -29,6 +29,10 @@ class SerializationListener implements EventSubscriberInterface
                 'class'  => 'Application\Sonata\MediaBundle\Entity\Media',
                 'method' => 'onPostSerializeMedia'
             ),
+            array(
+                'event'  => 'serializer.post_serialize',
+                'method' => 'onPostSerializeAll'
+            ),
         );
     }
 
@@ -41,6 +45,16 @@ class SerializationListener implements EventSubscriberInterface
             $event->getVisitor()->addData('url', str_replace(' ', '%20', $imageProvider->generatePublicUrl($event->getObject(), 'reference')));
         } else {
             $event->getVisitor()->addData('url', str_replace(' ', '%20', $imageProvider->generatePublicUrl($event->getObject(), $event->getObject()->getContext() . '_mobile')));
+        }
+    }
+
+    public function onPostSerializeAll(ObjectEvent $event)
+    {
+        $object = $event->getObject();
+        if (method_exists($object, 'getPublishedAt') && method_exists($object, 'setPublishedAt')) {
+            if (!$object->getPublishedAt()) {
+                $object->setPublishedAt(new \DateTime());
+            }
         }
     }
 
