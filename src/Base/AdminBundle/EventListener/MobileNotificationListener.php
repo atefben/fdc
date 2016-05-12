@@ -97,12 +97,14 @@ class MobileNotificationListener
                         
                     }
                 } elseif ($object->getSendToAll()) {
-
+                    error_log('11');
                     $tokenandroids = array();
                     $androidDevices = $this->getDevices('android', $translation->getLocale());
                     $payload = $this->setAndroidNewMessagePayload($translation->getDescription());
                     if(count($androidDevices) > 0) {
+                        error_log('22');
                         foreach ($androidDevices as $device) {
+                            error_log($device->getUuid());
                             $tokenandroids[] = trim($device->getUuid());
                         }
 
