@@ -10,7 +10,9 @@
                 {% set trans = get_available_video(video) %}
                 {% set transImage = null %}
 				{% set amazonImage = null %}
-               
+                {% if trans is null %}
+                    {% set trans = video.findTranslationByLocale('fr') %}
+                {% endif %}
                 {% if video.header is not null %}
                     {% set transImage = video.header.findTranslationByLocale(app.request.locale) %}
                     {% if transImage is null %}
