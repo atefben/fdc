@@ -17498,6 +17498,8 @@ input[type=submit] {
 }
 .press .programmation #calendar-programmation .calendar {
   width: 3000px;
+  max-height: 528px;
+  overflow-y: scroll;
 }
 .press .programmation #calendar-programmation .calendar .timeCol {
   background-color: #f4f4f4;
@@ -17523,7 +17525,7 @@ input[type=submit] {
 }
 .press .programmation #calendar-programmation .calendar .venues {
   float: left;
-  height: 528px;
+  height: 1662px;
 }
 .press .programmation #calendar-programmation .calendar .venues .nav {
   background: #e5e5e5;
@@ -18060,6 +18062,9 @@ input[type=submit] {
 }
 .press.press-home #calendar, .press.press-programmation #calendar {
   display: none;
+}
+.press.press-programmation #calendar-programmation .calendar {
+  max-height: 1662px;
 }
 .press.press-programmation #calendar-programmation .calendar .venues {
   height: 1662px;

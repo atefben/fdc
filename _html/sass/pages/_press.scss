@@ -848,6 +848,8 @@
 
       .calendar {
         width: 3000px;
+        max-height: 528px;
+        overflow-y: scroll;
 
         .timeCol {
           background-color: #f4f4f4;
@@ -876,7 +878,7 @@
 
         .venues {
           float: left;
-          height: 528px;
+          height: 1662px;
 
           .nav {
             background: #e5e5e5;
@@ -1509,6 +1511,10 @@
   }
 
   &.press-programmation {
+    #calendar-programmation .calendar {
+      max-height: 1662px;
+    }
+
     #calendar-programmation .calendar .venues {
       height: 1662px;
     }
