@@ -29,7 +29,7 @@
          date-img="{% if image is defined %}{% path image, '1950x1232' %}){% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
          data-aid="{{ trans.id }}">
         <div class="audio-player">
-            <div id="audio-player{{ trans.id }}" class=""></div>
+            <div id="audio-player{{ trans.id }}" class="audio-player-container"></div>
             <div class="image" style="background-image: url({% if image is defined %}{% path image, '1950x1232' %}){% elseif image_s3 is defined %}{{ image_s3 }}{% endif %});"></div>
             <button class="play-btn play"><i class="icon icon_play"></i></button>
             <div class="off">
