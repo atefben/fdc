@@ -100,7 +100,6 @@ class MediaVideoExtension extends Twig_Extension
      */
     public function getAvailableVideo($video, $force = false, $locale = null)
     {
-        error_log($locale);
         if ($locale === null) {
             $locale = $this->localeFallback;
         }
@@ -121,7 +120,6 @@ class MediaVideoExtension extends Twig_Extension
                     if ($status && $encoded && $hasURL) {
                         return $trans;
                     }
-                    error_log('OK');
                 }
 
                 if ($fr and !$force) {
@@ -130,7 +128,6 @@ class MediaVideoExtension extends Twig_Extension
                     $hasURL = $fr->getWebmUrl() && $fr->getMp4Url();
                     if ($status && $encoded && $hasURL) {
                         return $fr;
-                        error_log('NOK');
                     }
                 }
             }
