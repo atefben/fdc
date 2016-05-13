@@ -324,7 +324,7 @@ class SocialWall implements SocialWallInterface
      */
     public function setMessage($message)
     {
-        $this->message = wordwrap($message, 40, "<br />\n");
+        $this->message = $message;
 
         return $this;
     }
@@ -336,7 +336,7 @@ class SocialWall implements SocialWallInterface
      */
     public function getMessage()
     {
-        return $this->message;
+        return wordwrap($this->message, 40, "\n");
     }
 
     /**
