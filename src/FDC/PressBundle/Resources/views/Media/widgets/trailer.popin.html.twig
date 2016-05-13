@@ -43,6 +43,7 @@
             {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                 {%- set authors = authors ~ director.fullName %}{% if loop.last == false %}{% set authors = authors ~ ', ' %}{% endif -%}
             {% endfor %}
+            {% if(video|trans_fallback('jobMp4State') == 3) %}
             <tr>
                 <td>{{ 'press.mediatheque.download_film_and_authors'|trans({'%film%': film, '%authors%': authors}) }}</td>
                 <td>MP4</td>
@@ -52,6 +53,8 @@
                     </a>
                 </td>
             </tr>
+            {% endif %}
+            {% if(video|trans_fallback('jobWebmState') == 3) %}
             <tr>
                 <td>{{ 'press.mediatheque.download_film_and_authors'|trans({'%film%': film, '%authors%': authors}) }}</td>
                 <td>WEBM</td>
@@ -61,6 +64,7 @@
                     </a>
                 </td>
             </tr>
+            {% endif %}
             <tr>
                 <td>{{ 'press.mediatheque.download_film_and_authors'|trans({'%film%': film, '%authors%': authors}) }}</td>
                 <td>{{ 'pres.mediathe.download_format_source'|trans }}</td>

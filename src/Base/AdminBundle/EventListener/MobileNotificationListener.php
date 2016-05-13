@@ -100,12 +100,18 @@ class MobileNotificationListener
                     $tokenandroids = array();
                     $androidDevices = $this->getDevices('android', $translation->getLocale());
                     $payload = $this->setAndroidNewMessagePayload($translation->getDescription());
+					$i = 0;
                     if(count($androidDevices) > 0) {
                         foreach ($androidDevices as $device) {
+							$i++;
                             $tokenandroids[] = trim($device->getUuid());
+							if($i > 900) {
+								$this->sendPushAndroid($tokenandroids, $payload);
+								$tokenandroids = array();
+								$i = 0;
+							}
                         }
-
-                        $this->sendPushAndroid($tokenandroids, $payload);
+						$this->sendPushAndroid($tokenandroids, $payload);            
                     }
 
                     $iosDevices = $this->getDevices('ios', $translation->getLocale());
