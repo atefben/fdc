@@ -114,14 +114,14 @@ class MobileNotificationListener
 						$this->sendPushAndroid($tokenandroids, $payload);            
                     }
 
-                    /*$iosDevices = $this->getDevices('ios', $translation->getLocale());
+                    $iosDevices = $this->getDevices('ios', $translation->getLocale());
                     if(count($iosDevices) > 0) {
                         $conn = $this->getApnsConnection();
                         foreach ($iosDevices as $device) {
                             $conn->add($this->setNewMessage(trim($device->getUuid()), $translation->getDescription(), 1));
                         }
                         $this->sendPushIos($conn);
-                    }*/
+                    }
                 }
 
 
