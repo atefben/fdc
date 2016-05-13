@@ -109,7 +109,7 @@ class EventTranslation implements TranslateChildInterface
      */
     public function getIntroduction()
     {
-        return $this->introduction;
+        return html_entity_decode($this->introduction);
     }
 
     /**

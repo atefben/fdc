@@ -62,7 +62,6 @@ class FOSRestController extends BaseFOSRestController
         if (strpos(get_class($trans), 'MediaVideoTranslation')) {
             if ($trans->getFile() === null  ||
                 $trans->getJobMp4State() != MediaVideoTranslation::ENCODING_STATE_READY ||
-                $trans->getJobWebmState() != MediaVideoTranslation::ENCODING_STATE_READY ||
                 $trans->getMp4Url() === null || $trans->getWebmUrl() === null) {
                 return false;
             }
