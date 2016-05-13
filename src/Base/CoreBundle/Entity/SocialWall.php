@@ -336,6 +336,7 @@ class SocialWall implements SocialWallInterface
      */
     public function getMessage()
     {
+        
         return wordwrap($this->message, 30, "\n");
     }
 
