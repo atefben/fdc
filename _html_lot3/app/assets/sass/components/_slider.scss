@@ -379,7 +379,18 @@
     &-back, &-next {
       display: none;
       z-index: 3;
+      transition: $smoothTransition .6s;
     }
+
+    // &-back:hover {
+    //   transform: translate(-20px);
+    //   cursor: pointer;
+    // }
+    //
+    // &-next:hover {
+    //   transform: translate(20px);
+    //   cursor: pointer;
+    // }
   }
 
   &.background-effet {
@@ -419,12 +430,10 @@
   }
 
   .vFlexAlign {
-    // transition: width $smoothTransition 2s;
     transition: $smoothTransition .8s;
     flex-direction: column;
 
     img{
-      // transition: opacity width $smoothTransition 2s;
       transition: $smoothTransition .8s;
       width: 100%;
       object-fit: cover;
