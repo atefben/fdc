@@ -65,14 +65,6 @@ class SocialWall implements SocialWallInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=true)
-     * @Groups({"social_wall_list"})
-     */
-    protected $content;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(type="string")
      * @Groups({"social_wall_list"})
      */
@@ -100,6 +92,14 @@ class SocialWall implements SocialWallInterface
      * @Groups({"social_wall_list"})
      */
     protected $tags;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     * @Groups({"social_wall_list"})
+     */
+    protected $content;
 
     /**
      * @var FilmFestival
