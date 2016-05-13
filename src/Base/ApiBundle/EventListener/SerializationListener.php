@@ -48,7 +48,7 @@ class SerializationListener implements EventSubscriberInterface
         }
     }
 
-    /*public function onPostSerializeAll(ObjectEvent $event)
+    public function onPostSerializeAll(ObjectEvent $event)
     {
         $object = $event->getObject();
         if (method_exists($object, 'getPublishedAt') && method_exists($object, 'setPublishedAt')) {
@@ -56,7 +56,7 @@ class SerializationListener implements EventSubscriberInterface
                 $object->setPublishedAt(new \DateTime());
             }
         }
-    }*/
+    }
 
     public function onPostSerializeNews(ObjectEvent $event)
     {
