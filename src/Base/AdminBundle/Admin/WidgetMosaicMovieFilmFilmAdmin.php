@@ -57,6 +57,12 @@ class WidgetMosaicMovieFilmFilmAdmin extends Admin
                     'label' => 'form.widget_mosaic_movie_film_film_translation.label_title',
                     'required' => false,
                     'fields' => array(
+                        'applyChanges' => array(
+                            'field_type' => 'hidden',
+                            'attr' => array (
+                                'class' => 'hidden'
+                            )
+                        ),
                         'title' => array(
                             'required' => false,
                             'label' => false,
@@ -82,6 +88,12 @@ class WidgetMosaicMovieFilmFilmAdmin extends Admin
                     'label' => 'form.widget_mosaic_movie_film_film_translation.label_title',
                     'required' => false,
                     'fields' => array(
+                        'applyChanges' => array(
+                            'field_type' => 'hidden',
+                            'attr' => array (
+                                'class' => 'hidden'
+                            )
+                        ),
                         'title' => array(
                             'required' => false,
                             'label' => false,

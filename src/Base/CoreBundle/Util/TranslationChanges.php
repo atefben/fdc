@@ -13,7 +13,7 @@ trait TranslationChanges
     /**
      * @return boolean
      */
-    public function isApplyChanges()
+    public function getApplyChanges()
     {
         return $this->applyChanges;
     }

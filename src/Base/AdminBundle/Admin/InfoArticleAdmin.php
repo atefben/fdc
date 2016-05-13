@@ -60,6 +60,12 @@ class InfoArticleAdmin extends Admin
                 'label'              => false,
                 'translation_domain' => 'BaseAdminBundle',
                 'fields'             => array(
+                    'applyChanges' => array(
+                        'field_type' => 'hidden',
+                        'attr' => array (
+                            'class' => 'hidden'
+                        )
+                    ),
                     'title'          => array(
                         'label'              => 'form.label_title',
                         'translation_domain' => 'BaseAdminBundle',

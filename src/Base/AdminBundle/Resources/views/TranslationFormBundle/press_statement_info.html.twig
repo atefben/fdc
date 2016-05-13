@@ -6,6 +6,7 @@
 
     <div class="a2lix_translationsFields tab-content">
         {% for translationsFields in form %}
+            {{ form_row(translationsFields.applyChanges) }}
             {% set locale = translationsFields.vars.name %}
             {% if is_granted('ROLE_TRANSLATOR_FR') %}
                 {% set currentLocale = 'fr' %}
