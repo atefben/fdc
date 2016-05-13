@@ -17848,6 +17848,16 @@ input[type=submit] {
 .press.press-home.calendar-open #calendar, .press.press-programmation #calendar {
   display: block;
 }
+.press.press-home.calendar-open #calendar-programmation .calendar, .press.press-programmation #calendar-programmation .calendar {
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+.press.press-home.calendar-open #calendar-programmation .calendar .venues .venue .v-head, .press.press-programmation #calendar-programmation .calendar .venues .venue .v-head {
+  border-top: none;
+}
+.press.press-home.calendar-open #calendar-programmation .calendar .venues .venue .v-container:after, .press.press-programmation #calendar-programmation .calendar .venues .venue .v-container:after {
+  content: none;
+}
 .press.press-home.calendar-open .wrapper, .press.press-programmation .wrapper {
   width: calc(100% - 310px);
 }
