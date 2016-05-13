@@ -104,7 +104,6 @@ class SocialWallCommand extends ContainerAwareCommand {
 
                 $request->getQuery()->set('q', $tag);
                 $request->getQuery()->set('count', $offset);
-                $request->getQuery()->set('since', $datetime->format('Y-m-d'));
                 if ($maxId !== null) {
                     $request->getQuery()->set('since_id', $maxId);
                 }
@@ -169,64 +168,64 @@ class SocialWallCommand extends ContainerAwareCommand {
         ///////////////////////////   INSTAGRAM   ////////////////////////////
         //////////////////////////////////////////////////////////////////////
 
-        $lastIdInstagram = $em->getRepository('BaseCoreBundle:SocialWall')->findBy(
-            array('network' => constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_INSTAGRAM')),
-            array('id' => 'DESC'),
-            1,
-            null
-        );
-
-        $nextUrl = null;
-        $instagramPosts = array();
-        $socialWalls = array();
-
-        foreach ($tags as $tag) {
-            $tag = substr($tag, 1);
-            $tag = trim($tag);
-            $break = false;
-            while (true) {
-                if ($nextUrl == null) {
-                    $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100');
-                } else {
-                    $instagramResponse = file_get_contents($nextUrl);
-                }
-
-                $instagramResults = json_decode($instagramResponse);
-                $nextUrl = $instagramResults->pagination->next_url;
-
-                foreach ($instagramResults->data as $instagramPost) {
-                    if($em->getRepository('BaseCoreBundle:SocialWall')->findOneBy(array('maxIdInstagram' => $instagramPost->id)) != null){
-                        $break = true;
-                        break;
-                    }
-                    $instagramPosts[] = $instagramPost;
-                }
-
-                $output->writeln('INSTAGRAMS POSTS DONE: '. sizeof($instagramPosts));
-
-                if($input->getArgument('first') || $break == true) {
-                    break;
-                }
-
-            }
-
-        }
-
-        krsort($instagramPosts);
-        foreach ($instagramPosts as $instagramPost) {
-            $socialWall = new SocialWall();
-            $socialWall->setMessage($instagramPost->caption->text);
-            $socialWall->setContent($instagramPost->images->standard_resolution->url);
-            $socialWall->setUrl($instagramPost->link);
-            $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_INSTAGRAM'));
-            $socialWall->setMaxIdInstagram($instagramPost->id);
-            $socialWall->setEnabledMobile(0);
-            $socialWall->setEnabledDesktop(0);
-            $socialWall->setDate($datetime);
-            $socialWall->setTags($tagSettings->getSocialWallHashtags());
-            $em->persist($socialWall);
-            $socialWalls[] = $socialWall;
-        }
+//        $lastIdInstagram = $em->getRepository('BaseCoreBundle:SocialWall')->findBy(
+//            array('network' => constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_INSTAGRAM')),
+//            array('id' => 'DESC'),
+//            1,
+//            null
+//        );
+//
+//        $nextUrl = null;
+//        $instagramPosts = array();
+//        $socialWalls = array();
+//
+//        foreach ($tags as $tag) {
+//            $tag = substr($tag, 1);
+//            $tag = trim($tag);
+//            $break = false;
+//            while (true) {
+//                if ($nextUrl == null) {
+//                    $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100');
+//                } else {
+//                    $instagramResponse = file_get_contents($nextUrl);
+//                }
+//
+//                $instagramResults = json_decode($instagramResponse);
+//                $nextUrl = $instagramResults->pagination->next_url;
+//
+//                foreach ($instagramResults->data as $instagramPost) {
+//                    if($em->getRepository('BaseCoreBundle:SocialWall')->findOneBy(array('maxIdInstagram' => $instagramPost->id)) != null){
+//                        $break = true;
+//                        break;
+//                    }
+//                    $instagramPosts[] = $instagramPost;
+//                }
+//
+//                $output->writeln('INSTAGRAMS POSTS DONE: '. sizeof($instagramPosts));
+//
+//                if($input->getArgument('first') || $break == true) {
+//                    break;
+//                }
+//
+//            }
+//
+//        }
+//
+//        krsort($instagramPosts);
+//        foreach ($instagramPosts as $instagramPost) {
+//            $socialWall = new SocialWall();
+//            $socialWall->setMessage($instagramPost->caption->text);
+//            $socialWall->setContent($instagramPost->images->standard_resolution->url);
+//            $socialWall->setUrl($instagramPost->link);
+//            $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_INSTAGRAM'));
+//            $socialWall->setMaxIdInstagram($instagramPost->id);
+//            $socialWall->setEnabledMobile(0);
+//            $socialWall->setEnabledDesktop(0);
+//            $socialWall->setDate($datetime);
+//            $socialWall->setTags($tagSettings->getSocialWallHashtags());
+//            $em->persist($socialWall);
+//            $socialWalls[] = $socialWall;
+//        }
 
         $em->flush();
 
