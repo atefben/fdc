@@ -679,7 +679,7 @@ class NewsController extends Controller
 
         $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
 
-        //GET ALL MEDIA AUDIOS
+        //GET ALL MEDIA VIDEOS
         $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $settings->getFestival()->getId(), $dateTime);
 
         //set default filters

@@ -112,6 +112,7 @@ class MediaVideoExtension extends Twig_Extension
                     else {
                         $status = $trans->getStatus() === MediaVideoTranslation::STATUS_TRANSLATED;
                     }
+
                     $encoded = $trans->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
                     $hasURL = $trans->getWebmUrl() && $trans->getMp4Url();
                     if ($status && $encoded && $hasURL) {
