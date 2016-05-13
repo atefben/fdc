@@ -341,7 +341,7 @@ var owInitSlider = function(sliderName) {
        var $this = $(this);
 
        var url = $this.data('url');
-       
+
        console.log(url);
 
        $.get(url, function(data) {
@@ -371,9 +371,23 @@ var owInitSlider = function(sliderName) {
        });
 
        animation('prev-open');
-
-
      });
+
+     if($('.restrospective-init').length) {
+
+
+       var w = $('body').width();
+       values = $('.slides-calc1 .date').data('date');
+
+       slider.noUiSlider.set([values]);
+
+       number = values - 1945;
+       var val = - w * (values - 1945) - 10; //todo script
+
+       $slide.css('transform','translate('+val+'px)');
+
+       animationOpen();
+      }
   }
 };
 
