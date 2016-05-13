@@ -12,7 +12,7 @@
                     {% elseif  translationLocale.jobMp4State == 1  %}
                         {{ 'form.encoding_state.in_progress'|trans }}
                     {% elseif  translationLocale.jobMp4State == 3 %}
-                        {{ 'form.encoding_state.ready'|trans }}
+                        {{ 'form.encoding_state.ready'|trans }}{% if translationLocale.jobWebmState != 3 %} (WEBM en cours){% endif %}
                     {% else %}
                         n/a
                     {% endif %}
