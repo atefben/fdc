@@ -22,6 +22,7 @@ use JMS\Serializer\Annotation\Since;
 class NewsWidgetQuoteTranslation
 {
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use Time;
 
     /**

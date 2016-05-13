@@ -24,6 +24,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class InfoWidgetVideoYoutubeTranslation
 {
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use Time;
 
     /**

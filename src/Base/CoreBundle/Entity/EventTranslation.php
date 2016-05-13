@@ -28,6 +28,7 @@ class EventTranslation implements TranslateChildInterface
     use Seo;
     use Time;
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use TranslateChild;
 
     /**
