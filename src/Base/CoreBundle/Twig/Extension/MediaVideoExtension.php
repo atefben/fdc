@@ -67,7 +67,7 @@ class MediaVideoExtension extends Twig_Extension
 
             if ($fr && !$force) {
                 $status = $fr->getStatus() === MediaVideoTranslation::STATUS_PUBLISHED;
-                $encoded = $fr->getJobWebmState() == MediaVideoTranslation::ENCODING_STATE_READY;
+                //$encoded = $fr->getJobWebmState() == MediaVideoTranslation::ENCODING_STATE_READY;
                 $encoded = $fr->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
                 $hasURL = $fr->getWebmUrl() && $fr->getMp4Url();
                 if ($status && $encoded && $hasURL) {
@@ -83,7 +83,7 @@ class MediaVideoExtension extends Twig_Extension
                     $status = $trans->getStatus() === MediaVideoTranslation::STATUS_TRANSLATED;
                 }
                 $encoded = $trans->getJobWebmState() == MediaVideoTranslation::ENCODING_STATE_READY;
-                $encoded = $trans->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
+                //$encoded = $trans->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
                 $hasURL = $trans->getWebmUrl() && $trans->getMp4Url();
                 if ($status && $encoded && $hasURL) {
                     return true;
