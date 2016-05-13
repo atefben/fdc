@@ -48,7 +48,6 @@ class RevertMediaVideoTranslationCommand extends ContainerAwareCommand
             ->createQueryBuilder('mv')
             ->andWhere('mv.amazonRemoteFile is null')
             ->andWhere('mv.file is null')
-            ->andWhere('mv.jobWebmState = 3')
             ->andWhere('mv.jobMp4State = 3')
             ->getQuery()
             ->getResult()
