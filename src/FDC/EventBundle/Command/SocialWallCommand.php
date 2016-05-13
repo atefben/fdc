@@ -27,6 +27,9 @@ class SocialWallCommand extends ContainerAwareCommand {
      */
     protected function configure() {
         $this->setName('fdc:social_wall:update')->setDescription('Update social wall');
+        $this->addArgument(
+            'first'
+        );
     }
 
     /**
@@ -173,28 +176,35 @@ class SocialWallCommand extends ContainerAwareCommand {
             null
         );
 
-        $maxIdInstagram = (isset($lastIdInstagram[0])) ? $lastIdInstagram[0]->getMaxIdInstagram() : null;
+        $nextUrl = null;
         $instagramPosts = array();
+        $socialWalls = array();
 
         foreach ($tags as $tag) {
             $tag = substr($tag, 1);
             $tag = trim($tag);
-
+            $break = false;
             while (true) {
-                if ($maxIdInstagram == null) {
+                if ($nextUrl == null) {
                     $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100');
                 } else {
-                    //// we should use MIN_TAG_ID but used deprecated NEXT_MIN_TAG_ID
-                    $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100&next_min_tag_id=' . $maxIdInstagram);
+                    $instagramResponse = file_get_contents($nextUrl);
                 }
 
                 $instagramResults = json_decode($instagramResponse);
-                $instagramPosts   = array_merge($instagramPosts, $instagramResults->data);
+                $nextUrl = $instagramResults->pagination->next_url;
+
+                foreach ($instagramResults->data as $instagramPost) {
+                    if($em->getRepository('BaseCoreBundle:SocialWall')->findOneBy(array('maxIdInstagram' => $instagramPost->id)) != null){
+                        $break = true;
+                        break;
+                    }
+                    $instagramPosts[] = $instagramPost;
+                }
 
                 $output->writeln('INSTAGRAMS POSTS DONE: '. sizeof($instagramPosts));
-                // Exit when no more tweets are returned
-                if (sizeof($instagramPosts) !== $offset) {
-                    $maxIdInstagram = (isset($instagramResults->pagination->next_min_id)) ? $instagramResults->pagination->next_min_id : $maxIdInstagram;
+
+                if($input->getArgument('first') || $break == true) {
                     break;
                 }
 
@@ -203,21 +213,19 @@ class SocialWallCommand extends ContainerAwareCommand {
         }
 
         krsort($instagramPosts);
-        $socialWalls = array();
         foreach ($instagramPosts as $instagramPost) {
             $socialWall = new SocialWall();
             $socialWall->setMessage($instagramPost->caption->text);
             $socialWall->setContent($instagramPost->images->standard_resolution->url);
             $socialWall->setUrl($instagramPost->link);
             $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_INSTAGRAM'));
-            $socialWall->setMaxIdInstagram($maxIdInstagram);
+            $socialWall->setMaxIdInstagram($instagramPost->id);
             $socialWall->setEnabledMobile(0);
             $socialWall->setEnabledDesktop(0);
             $socialWall->setDate($datetime);
             $socialWall->setTags($tagSettings->getSocialWallHashtags());
             $em->persist($socialWall);
             $socialWalls[] = $socialWall;
-
         }
 
         $em->flush();
@@ -232,8 +240,6 @@ class SocialWallCommand extends ContainerAwareCommand {
             $adminSecurityHandler->addObjectClassAces($acl, $adminSecurityHandler->buildSecurityInformation($modelAdmin));
             $adminSecurityHandler->updateAcl($acl);
         }
-
-        $output->writeln('Instagram added: '. count($instagramPosts));
 
     }
 
