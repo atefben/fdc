@@ -24,6 +24,7 @@ class MediaAudioTranslation implements TranslateChildInterface
     use Seo;
     use Time;
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use TranslateChild;
 
     const ENCODING_STATE_IN_PROGRESS = 1;

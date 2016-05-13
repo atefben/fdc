@@ -42,6 +42,12 @@ class NewsWidgetQuoteType extends NewsWidgetType
             'translation_domain' => 'BaseAdminBundle',
             'required_locales' => array('fr'),
             'fields' => array(
+                 'applyChanges' => array(
+                     'field_type' => 'hidden',
+                     'attr' => array (
+                         'class' => 'hidden'
+                     )
+                 ),
                 'content' => array(
                     'label' => false,
                     'attr' => array(

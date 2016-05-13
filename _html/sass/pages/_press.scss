@@ -1553,6 +1553,23 @@
       display: block;
     }
 
+    #calendar-programmation {
+      .calendar {
+        border-top: 1px solid #e5e5e5;
+        border-bottom: 1px solid #e5e5e5;
+
+        .venues .venue  {
+          .v-head {
+            border-top: none;
+          }
+
+          .v-container:after {
+            content:none;
+          }
+        }
+      }
+    }
+
     .wrapper {
       width: calc(100% - 310px);
     }

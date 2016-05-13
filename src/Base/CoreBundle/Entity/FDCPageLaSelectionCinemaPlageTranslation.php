@@ -26,6 +26,7 @@ class FDCPageLaSelectionCinemaPlageTranslation implements TranslateChildInterfac
 {
     use Time;
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use TranslateChild;
     use Seo;
     /**

@@ -28,6 +28,7 @@ class EventTranslation implements TranslateChildInterface
     use Seo;
     use Time;
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use TranslateChild;
 
     /**
@@ -109,7 +110,7 @@ class EventTranslation implements TranslateChildInterface
      */
     public function getIntroduction()
     {
-        return $this->introduction;
+        return html_entity_decode($this->introduction);
     }
 
     /**

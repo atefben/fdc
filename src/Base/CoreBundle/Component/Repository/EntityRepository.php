@@ -192,8 +192,7 @@ class EntityRepository extends BaseRepository
      */
     public function addAWSVideoEncodersQueries(QueryBuilder $qb, $alias)
     {
-        $qb->andWhere("$alias.jobWebmState = :job_state")
-            ->andWhere("$alias.jobMp4State = :job_state")
+        $qb->andWhere("$alias.jobMp4State = :job_state")
             ->setParameter('job_state', MediaVideoTranslation::ENCODING_STATE_READY)
             ->andWhere("$alias.webmUrl IS NOT NULL")
             ->andWhere("$alias.mp4Url IS NOT NULL")

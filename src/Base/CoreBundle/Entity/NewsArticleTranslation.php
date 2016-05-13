@@ -29,6 +29,7 @@ class NewsArticleTranslation implements TranslateChildInterface
     use TranslateChild;
     use Time;
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
 
     /**
      * @var string

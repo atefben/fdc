@@ -17,6 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 class MobileNotificationTranslation implements TranslateChildInterface
 {
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use TranslateChild;
 
     /**

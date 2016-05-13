@@ -192,6 +192,8 @@ class EntityListener
     public function preUpdate(PreUpdateEventArgs $args)
     {
 
+        $this->applyChanges($args);
+
         $entity = $args->getEntity();
         $entityName = substr(strrchr(get_class($entity), '\\'), 1);
 
@@ -214,6 +216,18 @@ class EntityListener
         }
 
         $this->setPublishedOn($entity, $args);
+    }
+
+    protected function applyChanges(PreUpdateEventArgs $args)
+    {
+        $object = $args->getObject();
+        if (method_exists($object, 'getApplyChanges') && method_exists($object, 'setApplyChanges')) {
+            if (!$object->getApplyChanges()) {
+                foreach (array_keys($args->getEntityChangeSet()) as $field) {
+                    $args->setNewValue($field, $args->getOldValue($field));
+                }
+            }
+        }
     }
 
     private function setFrenchVersion($entities, $entity, $entityName, $properties)

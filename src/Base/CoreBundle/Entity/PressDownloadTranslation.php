@@ -22,6 +22,7 @@ class PressDownloadTranslation implements TranslateChildInterface
     use Time;
     use TranslateChild;
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use Seo;
 
 }

@@ -7,6 +7,7 @@
 
     <div class="a2lix_translationsFields tab-content">
         {% for translationsFields in form %}
+            {{ form_row(translationsFields.applyChanges) }}
             {% set locale = translationsFields.vars.name %}
             <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 <div class="row">

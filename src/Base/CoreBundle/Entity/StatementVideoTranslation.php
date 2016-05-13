@@ -29,6 +29,7 @@ class StatementVideoTranslation implements TranslateChildInterface
     use TranslateChild;
     use Time;
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
 
 
     /**

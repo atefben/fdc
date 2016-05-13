@@ -29,6 +29,7 @@ class FDCPageLaSelectionCannesClassicsTranslation implements TranslateChildInter
 {
     use Time;
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use TranslateChild;
     use Seo;
 

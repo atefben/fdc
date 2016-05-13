@@ -20,6 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
 class FilmAtelierProductionCompanyAddressTranslation implements TranslateChildInterface
 {
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use Time;
     use TranslateChild;
 

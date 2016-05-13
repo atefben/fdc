@@ -2262,8 +2262,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                     if ($trans->getLocale() != $fr->getLocale()) {
                         $status = $status;
                     }
-                    $encoded = $trans->getJobWebmState() == MediaVideoTranslation::ENCODING_STATE_READY;
-                    $encoded = $encoded && $trans->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
+                    $encoded =  $trans->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
                     $hasURL = $trans->getWebmUrl() && $trans->getMp4Url();
                     if ($status && $encoded && $hasURL) {
                         $collection->add($associatedMediaVideo);

@@ -39,6 +39,12 @@ class FDCPageLaSelectionCannesClassicsWidgetSubtitleType extends FDCPageLaSelect
             'translation_domain' => 'BaseAdminBundle',
             'required_locales' => array('fr'),
             'fields' => array(
+                 'applyChanges' => array(
+                     'field_type' => 'hidden',
+                     'attr' => array (
+                         'class' => 'hidden'
+                     )
+                 ),
                 'subtitle' => array(
                     'field_type' => 'text',
                     'label' => 'Sous-titre',
