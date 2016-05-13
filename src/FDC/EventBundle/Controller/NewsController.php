@@ -102,7 +102,7 @@ class NewsController extends Controller
         $socialGraphTimeline = array_reverse($socialGraphTimeline);
 
         $socialGraph['timeline'] = $socialGraphTimeline;
-        $socialGraph['timelineCount'] = json_encode($socialGraphTimelineCount);
+        $socialGraph['timelineCount'] = json_encode(array_reverse($socialGraphTimelineCount));
 
         ////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////       ARTICLE HOME         ///////////////////////////////
