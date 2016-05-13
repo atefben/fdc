@@ -28,6 +28,23 @@ class SocialWall implements SocialWallInterface
     use Time;
     use SocialWallNetworks;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"social_wall_list"})
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     * @Groups({"social_wall_list"})
+     */
+    protected $url;
 
     /**
      * @var string
@@ -90,24 +107,6 @@ class SocialWall implements SocialWallInterface
      * @ORM\ManyToOne(targetEntity="FilmFestival")
      */
     private $festival;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     * @Groups({"social_wall_list"})
-     */
-    protected $url;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups({"social_wall_list"})
-     */
-    protected $id;
 
     /**
      * @var boolean
@@ -337,7 +336,7 @@ class SocialWall implements SocialWallInterface
      */
     public function getMessage()
     {
-        return wordwrap($this->message, 40, "\n");
+        return wordwrap($this->message, 30, "\n");
     }
 
     /**
