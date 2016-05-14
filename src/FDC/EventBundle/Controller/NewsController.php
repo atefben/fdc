@@ -317,7 +317,7 @@ class NewsController extends Controller
 
         //get images for slider articles
         if ($homepage->getTopNewsType() == false) {
-            $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $date->setTimestamp($timestamp));
+            //$homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $date->setTimestamp($timestamp));
         } else {
             $homeArticlesSlider = null;
         }
