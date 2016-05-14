@@ -144,7 +144,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     private $associatedNews;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmFilm")
+     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="news")
      */
     private $associatedFilm;
 

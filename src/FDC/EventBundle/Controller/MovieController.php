@@ -4,9 +4,7 @@ namespace FDC\EventBundle\Controller;
 
 use Base\CoreBundle\Entity\FDCPageLaSelection;
 use Base\CoreBundle\Entity\FilmProjectionProgrammationFilm;
-use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
-use Base\CoreBundle\Entity\NewsFilmFilmAssociated;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -69,15 +67,26 @@ class MovieController extends Controller
         ;
 
         $articles = array();
+        $articlesIds = array();
         foreach ($movie->getAssociatedNews() as $associatedNews) {
             if ($associatedNews->getNews()) {
                 $article = $associatedNews->getNews();
                 if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
                     $key = $article->getPublishedAt()->getTimestamp();
                     $articles[$key] = $article;
+                    $articlesIds[] = $article->getId();
                 }
             }
         }
+
+        foreach ($movie->getNews() as $news) {
+            if (!in_array($news->getId(), $articlesIds)) {
+                $key = $news->getPublishedAt()->getTimestamp();
+                $articles[$key] = $news;
+                $articlesIds[] = $news->getId();
+            }
+        }
+
         foreach ($movie->getAssociatedInfo() as $associatedInfo) {
             if ($associatedInfo->getInfo()) {
                 $article = $associatedInfo->getInfo();
@@ -140,11 +149,11 @@ class MovieController extends Controller
 
 
         return array(
-            'movies'   => $movies,
-            'movie'    => $movie,
-            'articles' => $articles,
-            'prev'     => $prev,
-            'next'     => $next,
+            'movies'             => $movies,
+            'movie'              => $movie,
+            'articles'           => $articles,
+            'prev'               => $prev,
+            'next'               => $next,
             'nextProjectionDate' => $nextProjectionDate,
         );
     }
@@ -333,7 +342,7 @@ class MovieController extends Controller
             ->getPagesOrdoredBySelectionSectionOrder($locale)
         ;
 
-        $filters = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale,true);
+        $filters = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true);
 
         //SEO
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($classic, $locale);
@@ -360,7 +369,7 @@ class MovieController extends Controller
             'filters'        => $filters,
             'selectionTabs'  => $pages,
             'next'           => is_object($next) ? $next : false,
-            'localeSlugs'   => $localeSlugs,
+            'localeSlugs'    => $localeSlugs,
         );
     }
 
