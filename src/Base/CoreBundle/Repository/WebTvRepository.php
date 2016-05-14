@@ -148,12 +148,11 @@ class WebTvRepository extends TranslationRepository
     {
         $qb = $this->createQueryBuilder('wt');
 
-        $qb->select('wt,
-                RAND() as HIDDEN rand')
+        $qb
             ->join('wt.translations', 'wtt')
             ->join('wt.mediaVideos', 'mv')
             ->join('mv.translations', 'mvt')
-            ->where('wt.festival = :festival')
+            ->andWhere('wt.festival = :festival')
             ->setParameter('festival', $festival)
             ->andWhere('SIZE(wt.mediaVideos) >= 1')
         ;
@@ -186,11 +185,8 @@ class WebTvRepository extends TranslationRepository
         $this->addTranslationQueries($qb, 'mvt', $locale);
         $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
-        $qb
-            ->setMaxResults((int)$limit)
-        ;
+        $results = $qb->getQuery()->getResult();
 
-
-        return $qb->getQuery()->getResult();
+        return array_slice($results, 0, $limit > count($results) ?count($results) : $limit );
     }
 }

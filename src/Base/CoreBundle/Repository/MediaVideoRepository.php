@@ -178,7 +178,7 @@ class MediaVideoRepository extends TranslationRepository
             ->join('mv.webTv', 'wtv')
             ->join('wtv.translations', 'wtvt')
             ->where('wtv.id IN (:in)')
-            ->andWhere('(mv.image IS NOT NULL OR mvt.imageAmazonUrl IS NOT NULL)')
+//            ->andWhere('(mv.image IS NOT NULL OR mvt.imageAmazonUrl IS NOT NULL)')
             ->setParameter('in', $in)
             ->andWhere('mv.displayedWebTv = :displayedWebTv')
             ->setParameter('displayedWebTv', true)
@@ -186,9 +186,9 @@ class MediaVideoRepository extends TranslationRepository
 
         $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addMasterQueries($qb, 'wtv', $festival, false);
-        $this->addTranslationQueries($qb, 'mvt', $locale);
-        $this->addTranslationQueries($qb, 'wtvt', $locale);
-        $this->addAWSVideoEncodersQueries($qb, 'mvt');
+//        $this->addTranslationQueries($qb, 'mvt', $locale);
+//        $this->addTranslationQueries($qb, 'wtvt', $locale);
+//        $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
             ->orderBy('mv.publishedAt', 'desc')
