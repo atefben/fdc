@@ -274,11 +274,10 @@
                 <p>{{ 'juries.artiste.title.share'|trans }}</p>
                 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                 <div class="buttons square">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ currentUrl }}"
-                       rel="nofollow" class="button facebook">
+                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&picture={% path artistImage, '640x603 ' %}&name={{ artist.fullName|url_encode(true) }}%20-%20Festival%20de%20Cannes&caption=&description={{ biography|raw|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" rel="nofollow" class="button facebook">
                         <i class="icon icon_facebook"></i>
                     </a>
-                    <a href="https://twitter.com/intent/tweet?url={{ currentUrl }}" rel="nofollow"
+                    <a href="https://twitter.com/intent/tweet?text={{ artist.fullName|url_encode(true) }} {{ currentUrl }}" rel="nofollow"
                        class="button twitter">
                         <i class="icon icon_twitter"></i>
                     </a>
