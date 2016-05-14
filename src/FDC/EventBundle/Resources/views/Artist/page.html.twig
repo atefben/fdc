@@ -133,10 +133,18 @@
 
                                     </div>
                                     <div class="content-text">
-                                        <span class="item-title">{{ filmPerson.film.titleVO }}</span>
-                                        {#{% if filmPerson.film|trans_fallback_movie('title') and filmPerson.film|trans_fallback_movie('title') != filmPerson.film.titleVO %}#}
-                                        {#<span class="item-sub-title">{{ filmPerson.film|trans_fallback_movie('title') }}</span>#}
-                                        {#{% endif %}#}
+                                        </ul>
+                                        {% set secondTitle = null %}
+                                        {% if filmPerson.film|trans_fallback_movie('title') is not empty and filmPerson.film|trans_fallback_movie('title') != filmPerson.film.titleVO %}
+                                            {% set mainTitle = filmPerson.film.titleVO %}
+                                            {% set secondTitle = filmPerson.film|trans_fallback_movie('title') %}
+                                        {% else %}
+                                            {% set mainTitle = filmPerson.film.titleVO %}
+                                        {% endif %}
+                                        <span class="item-title">{{ mainTitle }}</span>
+                                        {% if secondTitle is not null %}
+                                        <span class="item-sub-title">{{ secondTitle }}</span>
+                                        {% endif %}
                                         {% if filmPerson.film.festival %}
                                             <span class="item-date">{{ filmPerson.film.festival.year }}</span>
                                         {% endif %}
@@ -201,7 +209,17 @@
                                                 </div>
 
                                                 <div class="content-text">
-                                                    <span class="item-title">{{ filmPerson.film.titleVO }}</span>
+                                                    {% set secondTitle = null %}
+                                                    {% if filmPerson.film|trans_fallback_movie('title') is not empty and filmPerson.film|trans_fallback_movie('title') != filmPerson.film.titleVO %}
+                                                        {% set mainTitle = filmPerson.film.titleVO %}
+                                                        {% set secondTitle = filmPerson.film|trans_fallback_movie('title') %}
+                                                    {% else %}
+                                                        {% set mainTitle = filmPerson.film.titleVO %}
+                                                    {% endif %}
+                                                    <span class="item-title">{{ mainTitle }}</span>
+                                                    {% if secondTitle is not null %}
+                                                        <span class="item-sub-title">{{ secondTitle }}</span>
+                                                    {% endif %}
                                                     {% if awardAssociation.award.festival %}
                                                         <span class="item-date">{{ awardAssociation.award.festival.year }}</span>
                                                     {% endif %}
