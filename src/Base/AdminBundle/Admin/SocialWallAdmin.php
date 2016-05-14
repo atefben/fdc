@@ -115,7 +115,7 @@ class SocialWallAdmin extends Admin
             ->add('network', null, array('template' => 'BaseAdminBundle:SocialWall:network_display_social.html.twig'))
             ->add('content', null, array('template' => 'BaseAdminBundle:SocialWall:content_display_social.html.twig'))
             ->add('tags')
-            ->add('message')
+            ->add('message', null, array('template' => 'BaseAdminBundle:SocialWall:message.html.twig'))
             ->add('enabledMobile', null, array('editable' => true))
             ->add('enabledDesktop', null, array('editable' => true))
             ->add('createdAt', null, array(
