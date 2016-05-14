@@ -88,7 +88,7 @@ class NewsController extends Controller
             'festival' => $this->getFestival()
         ), array(
             'date' => 'DESC'
-        ), 11, null)
+        ), 12, null)
         ;
 
         $socialGraphTimeline = array();
@@ -99,8 +99,9 @@ class NewsController extends Controller
             $socialGraphTimeline[]['date'] = $timelineDate->getDate();
             $socialGraphTimelineCount[] = $timelineDate->getCount();
         }
-        $socialGraphTimeline = array_reverse($socialGraphTimeline);
 
+        $socialGraphTimeline = array_reverse($socialGraphTimeline);
+        $pop = array_pop($socialGraphTimeline);
         $socialGraph['timeline'] = $socialGraphTimeline;
         $socialGraph['timelineCount'] = json_encode(array_reverse($socialGraphTimelineCount));
 
