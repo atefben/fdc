@@ -201,7 +201,7 @@ class ExcludeFromSearchCommand extends ContainerAwareCommand
             if ($flush) {
                 $this->getDoctrineManager()->flush();
                 $this->getDoctrineManager()->clear();
-                $output->writeln(count($ids) . ' images and its have been published on FDC Event and Mobile.');
+                $output->writeln(count($ids) . ' images and its translations have been published on FDC Event and Mobile.');
             }
         }
     }
