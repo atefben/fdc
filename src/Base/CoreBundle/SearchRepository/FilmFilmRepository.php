@@ -28,6 +28,9 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
             ->addMust($this->getStatusFilterQuery($_locale))
             ->addMust($finalQuery)
             ->addShould($this->getFieldsKeywordQuery('selectionSection', 'Cannes Classics'))
+            ->addShould($this->getFieldsKeywordQuery('selectionSection', 'Cinéma de la plage'))
+            ->addShould($this->getFieldsKeywordQuery('selectionSection', 'Un Certain Regard'))
+            ->addShould($this->getFieldsKeywordQuery('selectionSection', 'Hors Compétition'))
             ->addShould($this->getCountryQuery('productionYear', $fdcYear))
             ->setMinimumNumberShouldMatch(1)
         ;
