@@ -228,6 +228,7 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
+                tiny:  { width: 76, height: 92, quality: 100, constraint: false }
                 45x60: { width: 45, height: 60, quality: 100, constraint: false }
                 mobile: { width: 584 , height: 794 , quality: 100 }
                 small:   { width: 187, height: 255, quality: 100, constraint: false }
