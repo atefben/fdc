@@ -32,7 +32,7 @@
                 {% endif %}
                     {%- if first == false -%},{%- endif -%}
                     {
-                      "sources":[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}],
+                      "sources":[{% if(video|trans_fallback('jobWebmState') == 3) %}{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{% endif %}{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}],
                       "vid":"{{ video.id }}",
                       "name":"{{ video|trans_fallback('title') }}",
                       "image":"{{ videoImage }}",
@@ -115,7 +115,7 @@
                 {% for video in otherVideos %}
                     <div class="video shadow-bottom"
                          data-vid="{{ video.id }}"
-                         data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
+                         data-file='[{% if(video|trans_fallback('jobWebmState') == 3) %}{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{% endif %}{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
                             {% if video.image|trans_fallback('file') %}
                          data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
                          {% elseif video.image|trans_fallback('imageAmazonUrl') %}
