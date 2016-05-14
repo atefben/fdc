@@ -89,7 +89,7 @@
                 <span class="ven">
                 {%- if event.room -%}
                     {% set trans_slug = 'programmation.salle.' ~ event.room.name|remove_accents|sonata_slugify %}
-                    {% set trans = trans_slug|trans %}
+                    {% set trans = trans_slug|trans({}, 'FDCEventBundle') %}
                     {% if trans_slug != trans %}
                         {{- trans -}}
                     {% else %}
@@ -137,7 +137,7 @@
                 <span class="ven">
                 {%- if event.room -%}
                     {% set trans_slug = 'programmation.salle.' ~ event.room.name|remove_accents|sonata_slugify %}
-                    {% set trans = trans_slug|trans %}
+                    {% set trans = trans_slug|trans({}, 'FDCEventBundle') %}
                     {% if trans_slug != trans %}
                         {{- trans -}}
                     {% else %}
