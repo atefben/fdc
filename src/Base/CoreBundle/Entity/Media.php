@@ -139,7 +139,7 @@ abstract class Media implements TranslateMainInterface
     /**
      * @var boolean
      *
-     * @ORM\Column(type="boolean", options={"default":0})
+     * @ORM\Column(type="boolean", options={"default":0}, nullable=true)
      */
     private $excludeFromSearch;
 

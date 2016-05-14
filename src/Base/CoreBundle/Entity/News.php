@@ -100,7 +100,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * @var boolean
      *
-     * @ORM\Column(type="boolean", options={"default":0})
+     * @ORM\Column(type="boolean", options={"default":0}, nullable=true)
      */
     private $excludeFromSearch;
 
