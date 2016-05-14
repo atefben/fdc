@@ -73,5 +73,10 @@ class MediaRepository extends SearchRepository implements SearchRepositoryInterf
         return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
      
     }
+
+    public function getElementsToIndex()
+    {
+        
+    }
     
 }

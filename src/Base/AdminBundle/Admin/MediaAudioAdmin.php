@@ -278,6 +278,9 @@ class MediaAudioAdmin extends Admin
             ))
             ->add('translate')
             ->add('displayedMobile')
+            ->add('excludeFromSearch', null, array(
+                'label' => 'form.label_exclude_from_search',
+            ))
             ->add('displayedAll', null, array(
                 'label' => 'form.media_audio.displayed_all'
             ))

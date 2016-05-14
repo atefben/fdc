@@ -160,6 +160,7 @@ class MediaListener
                 $createNews->setHeader($entity->getImage());
                 $createNews->setAssociatedEvent($entity->getAssociatedEvent());
                 $createNews->setAssociatedFilm($entity->getAssociatedFilm());
+                $createNews->setExcludeFromSearch($entity->getExcludeFromSearch());
 
                 if (count($createNews->getAssociatedProjections()) > 0) {
                     foreach ($createNews->getAssociatedProjections() as $proj) {

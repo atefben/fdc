@@ -91,7 +91,7 @@
                                     <div class="venue">
                                         <div class="v-head">
                                             {%- set trans_slug = 'programmation.salle.' ~ room.name|remove_accents|sonata_slugify -%}
-                                            {%- set trans = trans_slug|trans -%}
+                                            {%- set trans = trans_slug|trans({}, 'FDCEventBundle') -%}
                                             {%- if trans_slug != trans -%}
                                                 {{- trans -}}
                                             {%- else -%}

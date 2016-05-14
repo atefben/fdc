@@ -337,7 +337,8 @@ class SearchController extends Controller
           
         // Get film Query with year.
         $productionYearQuery = $repository->getFieldsKeywordQuery(array('productionYear'), $this->container->getParameter('fdc_year'));
-        
+        $selectionSectionQuery = $repository->getFieldsKeywordQuery(array('selectionSection'), 'Cannes Classics', false);
+
         
         // Artist query.
         $artistQuery = $repository->getFieldsKeywordQuery(array('persons.name'), $searchTerm);
@@ -354,7 +355,9 @@ class SearchController extends Controller
         $filmFinalQuery = new \Elastica\Query\BoolQuery();
         $filmFinalQuery
             ->addMust($filmQuery)
-            ->addMust($productionYearQuery)
+            ->addShould($selectionSectionQuery)
+            ->addShould($productionYearQuery)
+            ->setMinimumNumberShouldMatch(1)
         ;
       
         return $filmFinalQuery;
