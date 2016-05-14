@@ -27,9 +27,12 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
         $statusQuery
             ->addMust($this->getStatusFilterQuery($_locale))
             ->addMust($finalQuery)
-            ->addMust($this->getYearQuery($fdcYear))
+            ->addShould($this->getFieldsKeywordQuery('selectionSection', 'Cannes Classics'))
+            ->addShould($this->getCountryQuery('productionYear', $fdcYear))
+            ->setMinimumNumberShouldMatch(1)
         ;
-        
+
+
         $sortedQuery = new \Elastica\Query();
         $sortedQuery
             ->setQuery($statusQuery)
@@ -57,7 +60,7 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
     private function getFieldsQuery($searchTerm)
     {
         $fields = array('selectionSection', 'titleVO');
- 
+
         return $this->getFieldsKeywordQuery($fields, $searchTerm);
     }
     
