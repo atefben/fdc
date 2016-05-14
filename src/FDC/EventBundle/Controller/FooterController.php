@@ -897,4 +897,13 @@ class FooterController extends Controller
 
         return new Response($feed->render('rss')); // ou 'atom'
     }
+
+    /**
+     * @Route("/sharing")
+     * @Template("FDCEventBundle:Footer:sharing.html.twig")
+     */
+    public function sharingAction(Request $request)
+    {
+
+    }
 }

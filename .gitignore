@@ -84,3 +84,25 @@ config.codekit
 .codekit-cache
 
 /nbproject/private/
+
+app/config/bundles/fos_elastica.yml
+
+app/config/bundles/fos_elastica.yml
+
+app/config/bundles/sonata_media_provider.yml
+
+app/Resources/translations/routes.en.xliff
+
+app/Resources/translations/routes.es.xliff
+
+app/Resources/translations/routes.fr.xliff
+
+*.xliff
+
+app/config/bundles/fos_elastica.yml
+
+app/Resources/translations/routes.en.xliff
+
+app/config/bundles/fos_elastica.yml
+
+app/config/bundles/fos_elastica.yml
