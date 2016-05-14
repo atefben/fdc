@@ -112,9 +112,9 @@ class SocialWallCommand extends ContainerAwareCommand {
                     // Process each tweet returned
                     $results = json_decode($response->getBody());
                     $tweets  = array_merge($tweets, $results->statuses);
-                    $output->writeln('TWEETS DONE: '. sizeof($tweets));
+                    $output->writeln('TWEETS DONE: '. sizeof($results->statuses));
                     // Exit when no more tweets are returned
-                    if (sizeof($tweets) !== $offset) {
+                    if (sizeof($results->statuses) !== $offset) {
                         $maxId = (sizeof($tweets) > 0) ? $tweets[0]->id : $maxId;
                         break;
                     }

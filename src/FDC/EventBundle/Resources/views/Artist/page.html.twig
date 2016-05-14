@@ -183,6 +183,11 @@
                                             <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
                                                 {% endif %}
                                                 <div class="image">
+                                                    {% set legacy = get_legacy_film_image(filmPerson.film) %}
+                                                    {% if legacy %}
+                                                        <img src="http://www.festival-cannes.fr/thumb.php?sourceDirectory=/assets/Image/Direct/&sourceFile={{ legacy['FICHIER'] }}&predefinedSize=fiche_film_header"
+                                                             alt="{{ legacy['TITRE']?:'Affiche du film' }}" data-object-fit="cover">
+                                                    {% else %}
                                                     {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                                     film: filmPerson.film,
                                                     film_format: '366x488',
@@ -192,7 +197,9 @@
                                                     },
                                                     film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                                     }) %}
+                                                    {% endif %}
                                                 </div>
+
                                                 <div class="content-text">
                                                     <span class="item-title">{{ filmPerson.film.titleVO }}</span>
                                                     {% if awardAssociation.award.festival %}

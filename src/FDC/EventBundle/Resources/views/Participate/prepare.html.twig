@@ -69,7 +69,7 @@
                     <div class="descrip-section">
                         <p class="ask">{{ content|trans_fallback('meetingDescription')|raw }}</p>
                         {% if content.meetingFile is not null %}
-                            <a href="{% path content.meetingFile, 'reference' %}">
+                            <a href="{% path content.meetingFile, 'reference' %}" target="_blank" download>
                                 {{ content|trans_fallback('meetingLabel') }}
                             </a>
                         {% endif %}

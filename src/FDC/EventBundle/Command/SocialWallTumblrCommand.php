@@ -77,7 +77,6 @@ class SocialWallTumblrCommand extends ContainerAwareCommand
 
         foreach ($tags as $tag) {
             $tag = substr($tag, 1);
-
             $tumblrResponse = file_get_contents('https://api.tumblr.com/v2/tagged?tag='.$tag.'&api_key='. $this->getContainer()->getParameter('tumblr_consumer_key'));
             $tumblrPosts = json_decode($tumblrResponse)->response;
 
@@ -90,7 +89,7 @@ class SocialWallTumblrCommand extends ContainerAwareCommand
             $canInsert = true;
             //check if the post is'nt already inserted in the 40 last insert
             foreach($lastInsertionsTumblr as $lastInsert) {
-                if($lastInsert->getTumblrId() == $tumblrPost->id) {
+                if($em->getRepository('BaseCoreBundle:SocialWall')->findOneBy(array('tumblrId' => $lastInsert->getTumblrId())) != null) {
                     $canInsert = false;
                 }
             }
