@@ -173,6 +173,7 @@ class ExcludeFromSearchCommand extends ContainerAwareCommand
                 $image = $imageTranslation->getTranslatable();
                 if ($image instanceof MediaImage && !in_array($image->getId(), $ids)) {
                     $ids[] = $image->getId();
+                    $flush = true;
                     if (!$image->getSites()->contains($siteFdcEvent)) {
                         $image->addSite($siteFdcEvent);
                     }
