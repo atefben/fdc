@@ -19523,6 +19523,7 @@ input[type=submit] {
   display: inline-block;
   width: 33%;
   vertical-align: top;
+  min-height: 120px;
 }
 .downloading-press .block .container .contain-dp .btns .button:first-child {
   border-bottom: 0px solid #fff;
