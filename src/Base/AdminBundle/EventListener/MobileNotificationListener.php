@@ -97,7 +97,7 @@ class MobileNotificationListener
                         
                     }
                 } elseif ($object->getSendToAll()) {
-                    /*$tokenandroids = array();
+                    $tokenandroids = array();
                     $androidDevices = $this->getDevices('android', $translation->getLocale());
                     $payload = $this->setAndroidNewMessagePayload($translation->getDescription());
 					$i = 0;
@@ -112,7 +112,7 @@ class MobileNotificationListener
 							}
                         }
 						$this->sendPushAndroid($tokenandroids, $payload);            
-                    }*/
+                    }
 
                     $iosDevices = $this->getDevices('ios', $translation->getLocale());
                     if(count($iosDevices) > 0) {
