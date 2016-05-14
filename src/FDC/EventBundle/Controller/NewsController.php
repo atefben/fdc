@@ -316,7 +316,7 @@ class NewsController extends Controller
         }
 
         //get images for slider articles
-        if ($nextDay == 1) {
+        if (!isset($nextDay)) {
             $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $date->setTimestamp($timestamp));
         } else {
             $homeArticlesSlider = null;
