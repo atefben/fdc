@@ -475,6 +475,7 @@ header {
             height: 100%;
             left: -150%;
             position: absolute;
+            width: 450%;
             z-index: 0;
           }
 
@@ -598,12 +599,24 @@ header {
   }
 }
 
-@include breakpoint(1024px) {
-  .mob header #navigation ul.main {
-    font-size: 0.8rem;
-  }
+.mob {
+  #navigation {
+    ul {
+      ul {
+        &:before {
+          width: 100% !important;
+        }
+      }
+    }
+}
 
-  .mob header #navigation ul.user {
-    font-size: 0.7rem;
+  @include breakpoint(1024px) {
+    .mob header #navigation ul.main {
+      font-size: 0.8rem;
+    }
+
+    .mob header #navigation ul.user {
+      font-size: 0.7rem;
+    }
   }
 }
