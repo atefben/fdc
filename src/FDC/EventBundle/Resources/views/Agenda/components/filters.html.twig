@@ -17,7 +17,7 @@
             <span class="active" data-filter="all">[ {{ 'search.result.filter.tous'|trans }} ]</span>
             {% for type in types %}
                 <span data-filter="{{ type|lower|replace(' ', '-') }}">
-                    {{ type }}
+                    {{ 'programmation.type.' ~ type|lower|remove_accents|replace(' ', '-')|trans }}
                 </span>
             {% endfor %}
             <i class="icon icon_fleche-down"></i>
