@@ -252,12 +252,11 @@
 
 body.chocolat-open {
   overflow: initial;
-  position: fixed;
-  overflow-y: scroll;
 }
 
 body.fixed {
-
+  position: fixed;
+  overflow-y: scroll;
 }
 
 div.chocolat-wrapper {
