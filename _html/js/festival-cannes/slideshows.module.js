@@ -71,7 +71,7 @@ function initSlideshows() {
 }
 
 // close slideshow on click
-$('body').on('click', '.chocolat-close', function(e) {
+$('body').on('click', '.chocolat-close, .chocolat-overlay', function(e) {
   $('.chocolat-img').css('transition', 'all 0.9s ease').addClass('close');
   $('.chocolat-bottom').css('opacity', 0);
   $('.chocolat-bottom .img-slideshow-share .button.email').off('click');
