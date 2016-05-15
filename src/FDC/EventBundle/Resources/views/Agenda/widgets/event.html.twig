@@ -72,20 +72,7 @@
             {%- endif -%}
             <div class="txt{%- if event.medias|length == 0 and event.programmationFilms[0].film == null -%} txt-padding{%- endif -%}">
                 {%- if event.programmationFilms|length == 1 -%}
-                    {% set secondTitle = null %}
-                    {% if film|trans_fallback_movie('title') is not empty and film|trans_fallback_movie('title') != film.titleVO %}
-                        {% set mainTitle = film.titleVO %}
-                        {% set secondTitle = film|trans_fallback_movie('title') %}
-                    {% else %}
-                        {% set mainTitle = film.titleVO %}
-                    {% endif %}
-
-                    {% if secondTitle != '' and secondTitle != null and mainTitle != secondTitle %}
-                     <span>{{ secondTitle|truncate(38) }}</span>
-                        {% else %}
-                            <span>{{ mainTitle|truncate(38) }}</span>
-                    {% endif %}
-
+                    <span>{{ film.titleVO|truncate(38) }}</span>
                     {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                     <strong>
                     {%- for director in directors -%}
