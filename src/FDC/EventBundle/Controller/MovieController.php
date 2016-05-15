@@ -4,9 +4,11 @@ namespace FDC\EventBundle\Controller;
 
 use Base\CoreBundle\Entity\FDCPageLaSelection;
 use Base\CoreBundle\Entity\FilmProjectionProgrammationFilm;
+use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsAudio;
 use Base\CoreBundle\Entity\NewsVideo;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -84,7 +86,7 @@ class MovieController extends Controller
                             continue;
                         }
                     }
-                    if ($article && $article->getPublishedAt() && $article->getPublishedAt()->getTimestamp()) {
+                    if ($this->isNewsPublished($article, $locale)) {
                         $key = $article->getPublishedAt()->getTimestamp();
                         $articles[$key] = $article;
                         $articlesIds[] = $article->getId();
@@ -105,7 +107,7 @@ class MovieController extends Controller
                         continue;
                     }
                 }
-                if ($news && $news->getPublishedAt() && $news->getPublishedAt()->getTimestamp()) {
+                if ($this->isNewsPublished($news, $locale)) {
                     $key = $news->getPublishedAt()->getTimestamp();
                     $articles[$key] = $news;
                     $articlesIds[] = $news->getId();
@@ -182,6 +184,28 @@ class MovieController extends Controller
             'next'               => $next,
             'nextProjectionDate' => $nextProjectionDate,
         );
+    }
+
+    protected function isNewsPublished(News $news = null, $locale)
+    {
+        if ($news) {
+            $now = new \DateTime();
+            $isPublished = $news->getPublishedAt() && $news->getPublishedAt() <= $now;
+            $isPublished = $isPublished && ($news->getPublishEndedAt() === null || $news->getPublishEndedAt() >= $now);
+            if ($isPublished) {
+                $fr = $news->findTranslationByLocale('fr');
+                if ($fr && $fr->getStatus() === TranslateChildInterface::STATUS_PUBLISHED) {
+                    if ($locale != 'fr') {
+                        $trans = $news->findTranslationByLocale($locale);
+                        if ($trans && $trans->getStatus() === TranslateChildInterface::STATUS_TRANSLATED) {
+                            return true;
+                        }
+                    } else {
+                        return true;
+                    }
+                }
+            }
+        }
     }
 
     protected function isPublished($article, $locale)
