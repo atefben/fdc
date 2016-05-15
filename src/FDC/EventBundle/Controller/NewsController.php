@@ -550,7 +550,7 @@ class NewsController extends Controller
 
         //GET ALL NEWS ARTICLES
         $newsArticles = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $settings->getFestival()->getId());
-        $newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale);
+        $newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale, null, true);
         if ($newsArticles === null || count($newsArticles) == 0) {
             throw new NotFoundHttpException();
         }
