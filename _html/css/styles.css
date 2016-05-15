@@ -4048,6 +4048,10 @@ img {
   content: none !important;
 }
 
+.mob header #navigation {
+  max-width: 1024px;
+}
+
 header {
   background-color: #080808;
   position: relative;

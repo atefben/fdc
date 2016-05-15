@@ -9,6 +9,14 @@
 img {
   content: none!important;
 }
+.mob {
+  header {
+    #navigation {
+      max-width:1024px;
+    }
+  }
+
+}
 header {
   background-color: $dark;
   position: relative;
@@ -259,7 +267,7 @@ header {
     .icon_ma-selection, .icon_mon-compte {
       min-width: 9.5px;
     }
-    
+
     .icon_langue {
       min-width: 20.5px;
     }
