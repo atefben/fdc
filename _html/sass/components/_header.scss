@@ -9,14 +9,6 @@
 img {
   content: none!important;
 }
-.mob {
-  header {
-    #navigation {
-
-    }
-  }
-
-}
 header {
   background-color: $dark;
   position: relative;
@@ -607,6 +599,13 @@ header {
           width: 91% !important;
         }
       }
+    }
+    ul.user .programmation-wrapper ul {
+      left: auto;
+      margin-left: -662px;
+    }
+    ul li ul {
+      width: 1024px;
     }
 }
 
