@@ -4603,7 +4603,7 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
 }
 
 .mob #navigation ul ul:before {
-  width: 100% !important;
+  width: 90% !important;
 }
 @media screen and (max-width: 1024px) {
   .mob .mob header #navigation ul.main {
