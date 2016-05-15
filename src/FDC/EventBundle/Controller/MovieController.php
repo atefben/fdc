@@ -84,9 +84,11 @@ class MovieController extends Controller
                             continue;
                         }
                     }
-                    $key = $article->getPublishedAt()->getTimestamp();
-                    $articles[$key] = $article;
-                    $articlesIds[] = $article->getId();
+                    if ($article && $article->getPublishedAt() && $article->getPublishedAt()->getTimestamp()) {
+                        $key = $article->getPublishedAt()->getTimestamp();
+                        $articles[$key] = $article;
+                        $articlesIds[] = $article->getId();
+                    }
                 }
             }
         }
@@ -103,9 +105,11 @@ class MovieController extends Controller
                         continue;
                     }
                 }
-                $key = $news->getPublishedAt()->getTimestamp();
-                $articles[$key] = $news;
-                $articlesIds[] = $news->getId();
+                if ($news && $news->getPublishedAt() && $news->getPublishedAt()->getTimestamp()) {
+                    $key = $news->getPublishedAt()->getTimestamp();
+                    $articles[$key] = $news;
+                    $articlesIds[] = $news->getId();
+                }
             }
         }
 
