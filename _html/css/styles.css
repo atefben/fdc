@@ -16916,6 +16916,7 @@ input[type=submit] {
   text-align: center;
   width: 100%;
   left: 0;
+  text-transform: uppercase;
 }
 .press #calendar #mycalendar .fc-bg .fc-axis, .press #calendar #mycalendar .fc-content-skeleton .fc-axis {
   width: 60px !important;
@@ -18009,6 +18010,7 @@ input[type=submit] {
 }
 .fullcalendar #calendar #mycalendar .fc-slats .fc-time span {
   z-index: 2;
+  text-transform: uppercase;
 }
 .fullcalendar #calendar #mycalendar .fc-slats tr {
   height: 40px;
