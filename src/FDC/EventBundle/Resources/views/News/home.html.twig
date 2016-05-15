@@ -122,7 +122,7 @@
                                 <span class="category">{{ article.theme|trans_fallback('name') }}</span>
 
                             {% if type == 'news' %}
-                                    <h2><a href="href="{{ url('fdc_event_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}"">{{ article|trans_fallback('title') }}</a></h2>
+                                    <h2><a href="{{ url('fdc_event_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title') }}</a></h2>
                                 </div>
                                 <a class="linkArticle"
                                    href="{{ url('fdc_event_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
