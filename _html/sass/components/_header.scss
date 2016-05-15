@@ -594,6 +594,9 @@ header {
 .mob {
   #navigation {
     ul {
+      li {
+        margin-left: -5px;
+      }
       ul {
         &:before {
           width: 91% !important;
@@ -601,11 +604,16 @@ header {
       }
     }
     ul.user .programmation-wrapper ul {
-      left: auto;
       margin-left: -662px;
+    }
+    ul.user .participate-wrapper ul {
+      margin-left: -793px;
     }
     ul li ul {
       width: 1024px;
+    }
+     ul li a {
+       padding-right: 10px;
     }
 }
 
