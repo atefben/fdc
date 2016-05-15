@@ -19,8 +19,8 @@
 
             {% for group in channelsVideos %}
                 <div class="item {{ group.channel.publishedAt|date('d-m-Y') }} {{ group.channel.theme }} shadow-bottom playlist">
-                    {% if get_available_webtv_image_file(group.channel.image) %}
-                        {% set webTvImageFile = get_available_webtv_image_file(group.channel.image) %}
+                    {% if group.channel.image|trans_fallback('file') %}
+                        {% set webTvImageFile = group.channel.image|trans_fallback('file') %}
                         <img src="{% path webTvImageFile, '640x404' %}"
                              srcset="{% path webTvImageFile, '640x404' %} 1x, {% path webTvImageFile, '1280x808' %} 2x"
                              alt="">

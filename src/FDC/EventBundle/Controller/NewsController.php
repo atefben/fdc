@@ -2,21 +2,14 @@
 
 namespace FDC\EventBundle\Controller;
 
-use \DateTime;
-
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
-
-use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
-
+use DateTime;
 use FDC\EventBundle\Component\Controller\Controller;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @Route("")
@@ -203,14 +196,36 @@ class NewsController extends Controller
         $videos = $homepage->getTopVideosAssociated();
         $channels = $homepage->getTopWebTvsAssociated();
 
+        $channelsIds = array();
         foreach ($channels as $channel) {
-            if ($channel->getAssociation() != null) {
-                $channel->getAssociation()->availableChannels = $this
-                    ->getDoctrineManager()
-                    ->getRepository('BaseCoreBundle:MediaVideo')
-                    ->getAvailableMediaVideosByWebTv($this->getFestival(), $locale, $channel->getAssociation()->getId())
-                ;
+            if ($channel->getAssociation()) {
+                $channelsIds[$channel->getAssociation()->getId()] = $channel->getAssociation();
             }
+        }
+
+        $groups = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
+            ->getLastMediaVideoOfEachWebTv($this->getFestival()->getId(), $locale, array_keys($channelsIds))
+        ;
+
+        $channelsVideos = array();
+        foreach ($groups as $key => $group) {
+            $lastVideo = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:MediaVideo')
+                ->getLastMediaVideoByWebTv($this->getFestival()->getId(), $channelsIds[$group['channel']])
+            ;
+            $nbVideos = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:MediaVideo')
+                ->getAvailableMediaVideosByWebTv($this->getFestival()->getId(), $locale, $group['channel'])
+            ;
+            $channelsVideos[] = array(
+                'channel'  => $channelsIds[$group['channel']],
+                'video'    => $lastVideo,
+                'nbVideos' => count($nbVideos),
+            );
         }
 
         ////////////////////////////////////////////////////////////////////////////////////
@@ -237,6 +252,7 @@ class NewsController extends Controller
             'filters'            => $filters,
             'videos'             => $videos,
             'channels'           => $channels,
+            'channelsVideos'     => $channelsVideos,
             'films'              => $films,
             'endOfArticles'      => $endOfArticles
         );
