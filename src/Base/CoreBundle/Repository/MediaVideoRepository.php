@@ -145,20 +145,17 @@ class MediaVideoRepository extends TranslationRepository
 
         $qb = $this->createQueryBuilder('mv');
 
-        $now = new \DateTime();
         $qb
             ->join('mv.translations', 'mvt')
             ->join('mv.webTv', 'wtv')
             ->leftJoin('mv.image', 'img')
             ->join('wtv.translations', 'wtvt')
             ->andWhere('wtv.id IN (:in)')
-            ->andWhere('(mv.image IS NOT NULL AND img.publishedAt > :now) OR mvt.imageAmazonUrl IS NOT NULL')
             ->setParameter('in', $webtv->getId())
-            ->setParameter('now', $now)
         ;
 
-//        $this->addImageQueries($qb, 'mv', 'mvt');
-        $this->addMasterQueries($qb, 'mv', $festival, false);
+        $this->addImageQueries($qb, 'mv', 'mvt', 'img');
+        $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addMasterQueries($qb, 'wtv', $festival, false);
         $this->addTranslationQueries($qb, 'mvt', 'fr');
         $this->addTranslationQueries($qb, 'wtvt', 'fr');
