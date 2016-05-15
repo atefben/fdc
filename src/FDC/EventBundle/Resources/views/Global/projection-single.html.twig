@@ -114,7 +114,7 @@
                             </p>
                             <div class="fc-event" data-url="{{ path('fdc_event_agenda_getprojection', {id: seance.id}) }}"
                                  data-id="{{ seance.id }}" data-picto='.seance' data-color='{{ dataColor }}'
-                                 data-start="{{ seance.startsAt|date('Y-m-d') }}T{{ seance.startsAt|date('H:i:s') }}"
+                                 data-start="{{ seance.startsAt|date('Y-m-d') }}T{{ seance.startsAt|date('H') < 4 ? '23:59:59' : seance.startsAt|date('H:i:s') }}"
                                  data-end="{{ seance.endsAt|date('Y-m-d') }}T{{ seance.endsAt|date('H:i:s') }}"
                                  data-time="{{ seance.startsAt|date('H') }}" data-duration="{{ minutes }}" data-popin="true"
                             >
@@ -325,7 +325,7 @@
                             </p>
                             <div class="fc-event" data-url="{{ path('fdc_event_agenda_getprojection', {id: relatedProjection.id}) }}"
                                  data-id="{{ relatedProjection.id }}" data-picto='.seance' data-color='{{ dataColor }}'
-                                 data-start="{{ relatedProjection.startsAt|date('Y-m-d') }}T{{ relatedProjection.startsAt|date('H:i:s') }}"
+                                 data-start="{{ relatedProjection.startsAt|date('Y-m-d') }}T{{ relatedProjection.startsAt|date('H') < 4 ? '23:59:59' : relatedProjection.startsAt|date('H:i:s') }}"
                                  data-end="{{ relatedProjection.endsAt|date('Y-m-d') }}T{{ relatedProjection.endsAt|date('H:i:s') }}"
                                  data-time="{{ relatedProjection.startsAt|date('H') }}" data-duration="{{ minutes }}" data-popin="true"
                                     >
