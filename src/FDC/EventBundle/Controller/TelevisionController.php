@@ -258,7 +258,6 @@ class TelevisionController extends Controller
             ->getLastMediaVideoOfEachWebTv($festival, $locale, array_keys($channelsIds))
         ;
 
-
         $channelsVideos = array();
         foreach ($groups as $key => $group) {
             $lastVideo = $this

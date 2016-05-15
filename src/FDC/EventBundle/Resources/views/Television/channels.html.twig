@@ -19,13 +19,15 @@
 
             {% for group in channelsVideos %}
                 <div class="item {{ group.channel.publishedAt|date('d-m-Y') }} {{ group.channel.theme }} shadow-bottom playlist">
-                    {% if group.channel.image and group.channel.image|trans_fallback('file') %}
-                        <img src="{% path group.channel.image|trans_fallback('file'), '640x404' %}"
-                             srcset="{% path group.channel.image|trans_fallback('file'), '640x404' %} 1x, {% path group.channel.image|trans_fallback('file'), '1280x808' %} 2x"
+                    {% if get_available_webtv_image_file(group.channel.image) %}
+                        {% set webTvImageFile = get_available_webtv_image_file(group.channel.image) %}
+                        <img src="{% path webTvImageFile, '640x404' %}"
+                             srcset="{% path webTvImageFile, '640x404' %} 1x, {% path webTvImageFile, '1280x808' %} 2x"
                              alt="">
-                    {% elseif group.video.image  and group.video.image|trans_fallback('file') %}
-                        <img src="{% path group.video.image|trans_fallback('file'), '640x404' %}"
-                             srcset="{% path group.video.image|trans_fallback('file'), '640x404' %} 1x, {% path group.video.image|trans_fallback('file'), '1280x808' %} 2x"
+                    {% elseif get_available_webtv_image_file(group.video.image) %}
+                        {% set webTvImageFile = get_available_webtv_image_file(group.video.image) %}
+                        <img src="{% path webTvImageFile, '640x404' %}"
+                             srcset="{% path webTvImageFile, '640x404' %} 1x, {% path webTvImageFile, '1280x808' %} 2x"
                              alt="">
                     {% elseif group.video|trans_fallback('imageAmazonUrl') %}
                         <img src="{{ s3_server_video ~ group.video|trans_fallback('imageAmazonUrl') }}"

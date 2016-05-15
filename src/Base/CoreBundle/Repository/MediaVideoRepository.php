@@ -145,15 +145,19 @@ class MediaVideoRepository extends TranslationRepository
 
         $qb = $this->createQueryBuilder('mv');
 
+        $now = new \DateTime();
         $qb
             ->join('mv.translations', 'mvt')
             ->join('mv.webTv', 'wtv')
+            ->leftJoin('mv.image', 'img')
             ->join('wtv.translations', 'wtvt')
-            ->where('wtv.id IN (:in)')
+            ->andWhere('wtv.id IN (:in)')
+            ->andWhere('(mv.image IS NOT NULL AND img.publishedAt > :now) OR mvt.imageAmazonUrl IS NOT NULL')
             ->setParameter('in', $webtv->getId())
+            ->setParameter('now', $now)
         ;
 
-        $this->addImageQueries($qb, 'mv', 'mvt');
+//        $this->addImageQueries($qb, 'mv', 'mvt');
         $this->addMasterQueries($qb, 'mv', $festival, false);
         $this->addMasterQueries($qb, 'wtv', $festival, false);
         $this->addTranslationQueries($qb, 'mvt', 'fr');
@@ -178,7 +182,7 @@ class MediaVideoRepository extends TranslationRepository
             ->join('mv.webTv', 'wtv')
             ->join('wtv.translations', 'wtvt')
             ->where('wtv.id IN (:in)')
-//            ->andWhere('(mv.image IS NOT NULL OR mvt.imageAmazonUrl IS NOT NULL)')
+            ->andWhere('(mv.image IS NOT NULL OR mvt.imageAmazonUrl IS NOT NULL)')
             ->setParameter('in', $in)
             ->andWhere('mv.displayedWebTv = :displayedWebTv')
             ->setParameter('displayedWebTv', true)
@@ -186,9 +190,9 @@ class MediaVideoRepository extends TranslationRepository
 
         $this->addMasterQueries($qb, 'mv', $festival, true);
         $this->addMasterQueries($qb, 'wtv', $festival, false);
-//        $this->addTranslationQueries($qb, 'mvt', $locale);
-//        $this->addTranslationQueries($qb, 'wtvt', $locale);
-//        $this->addAWSVideoEncodersQueries($qb, 'mvt');
+        $this->addTranslationQueries($qb, 'mvt', $locale);
+        $this->addTranslationQueries($qb, 'wtvt', $locale);
+        $this->addAWSVideoEncodersQueries($qb, 'mvt');
 
         $qb
             ->orderBy('mv.publishedAt', 'desc')

@@ -218,13 +218,22 @@ class EntityRepository extends BaseRepository
      * @param QueryBuilder $qb
      * @param $aliasMain
      * @param $aliasTranslation
+     * @param null $aliasImage
      * @return QueryBuilder
      */
-    public function addImageQueries(QueryBuilder $qb, $aliasMain, $aliasTranslation)
+    public function addImageQueries(QueryBuilder $qb, $aliasMain, $aliasTranslation, $aliasImage = null)
     {
-        $qb
-            ->andWhere("($aliasMain.image IS NOT NULL OR $aliasTranslation.imageAmazonUrl IS NOT NULL)")
-        ;
+        if ($aliasImage) {
+            $qb
+                ->andWhere("(($aliasMain.image IS NOT NULL AND $aliasImage.publishedAt >= :now AND ($aliasImage.publishEndedAt IS NULL OR $aliasImage.publishEndedAt <= :now)) OR $aliasTranslation.imageAmazonUrl IS NOT NULL)")
+            ;
+        }
+        else {
+            $qb
+                ->andWhere("($aliasMain.image IS NOT NULL OR $aliasTranslation.imageAmazonUrl IS NOT NULL)")
+            ;
+        }
+
         return $qb;
     }
 
