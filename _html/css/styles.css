@@ -4618,7 +4618,10 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   width: 1024px;
 }
 .mob #navigation ul li a {
-  padding-right: 10px;
+  padding-right: 12px;
+}
+.mob #navigation ul li ul li {
+  margin-left: 5px;
 }
 @media screen and (max-width: 1024px) {
   .mob .mob header #navigation ul.main {
