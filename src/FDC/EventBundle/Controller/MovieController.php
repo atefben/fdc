@@ -5,6 +5,8 @@ namespace FDC\EventBundle\Controller;
 use Base\CoreBundle\Entity\FDCPageLaSelection;
 use Base\CoreBundle\Entity\FilmProjectionProgrammationFilm;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Base\CoreBundle\Entity\NewsAudio;
+use Base\CoreBundle\Entity\NewsVideo;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -72,6 +74,16 @@ class MovieController extends Controller
             if ($associatedNews->getNews()) {
                 $article = $associatedNews->getNews();
                 if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
+                    if ($article instanceof NewsAudio) {
+                        if ($article->getAudio()->getDisplayedHome()) {
+                            continue;
+                        }
+                    }
+                    if ($article instanceof NewsVideo) {
+                        if ($article->getVideo()->getDisplayedHome()) {
+                            continue;
+                        }
+                    }
                     $key = $article->getPublishedAt()->getTimestamp();
                     $articles[$key] = $article;
                     $articlesIds[] = $article->getId();
@@ -81,6 +93,16 @@ class MovieController extends Controller
 
         foreach ($movie->getNews() as $news) {
             if (!in_array($news->getId(), $articlesIds)) {
+                if ($news instanceof NewsAudio) {
+                    if ($news->getAudio()->getDisplayedHome()) {
+                        continue;
+                    }
+                }
+                if ($news instanceof NewsVideo) {
+                    if ($news->getVideo()->getDisplayedHome()) {
+                        continue;
+                    }
+                }
                 $key = $news->getPublishedAt()->getTimestamp();
                 $articles[$key] = $news;
                 $articlesIds[] = $news->getId();
