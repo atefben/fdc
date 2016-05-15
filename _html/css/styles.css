@@ -5161,9 +5161,6 @@ footer .footer-menu ul li a:hover {
 
 body.chocolat-open {
   overflow: initial;
-}
-
-body.fixed {
   position: fixed;
   overflow-y: scroll;
 }
