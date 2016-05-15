@@ -87,7 +87,7 @@
         </div>
         <div class="bottom">
             <span class="duration">
-                {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
+                {%- if difference.h > 0 -%}{{ difference.h }}{{ app.request.locale == 'zh' ? '点' : 'H' }}{%- endif -%}
                 {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i -}}
             </span> - {{- ' ' -}}
             <span class="ven">
@@ -141,7 +141,7 @@
         </div>
         <div class="bottom">
             <span class="duration">
-                {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
+                {%- if difference.h > 0 -%}{{ difference.h }}{{ app.request.locale == 'zh' ? '点' : 'H' }}{%- endif -%}
                 {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
             </span> -{{- ' ' -}}
             <span class="ven">
