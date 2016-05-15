@@ -9,6 +9,14 @@
 img {
   content: none!important;
 }
+.mob {
+  header {
+    #navigation {
+
+    }
+  }
+
+}
 header {
   background-color: $dark;
   position: relative;
@@ -259,7 +267,7 @@ header {
     .icon_ma-selection, .icon_mon-compte {
       min-width: 9.5px;
     }
-    
+
     .icon_langue {
       min-width: 20.5px;
     }
@@ -591,12 +599,24 @@ header {
   }
 }
 
-@include breakpoint(1024px) {
-  .mob header #navigation ul.main {
-    font-size: 0.8rem;
-  }
+.mob {
+  #navigation {
+    ul {
+      ul {
+        &:before {
+          width: 90% !important;
+        }
+      }
+    }
+}
 
-  .mob header #navigation ul.user {
-    font-size: 0.7rem;
+  @include breakpoint(1024px) {
+    .mob header #navigation ul.main {
+      font-size: 0.8rem;
+    }
+
+    .mob header #navigation ul.user {
+      font-size: 0.7rem;
+    }
   }
 }

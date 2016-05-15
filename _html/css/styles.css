@@ -4602,15 +4602,18 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   min-width: 9.5px;
 }
 
+.mob #navigation ul ul:before {
+  width: 90% !important;
+}
 @media screen and (max-width: 1024px) {
-  .mob header #navigation ul.main {
+  .mob .mob header #navigation ul.main {
     font-size: 0.8rem;
   }
-
-  .mob header #navigation ul.user {
+  .mob .mob header #navigation ul.user {
     font-size: 0.7rem;
   }
 }
+
 footer * {
   box-sizing: border-box;
 }
