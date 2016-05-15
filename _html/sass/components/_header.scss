@@ -6,7 +6,9 @@
 
 // 1. Global
 // =========================
-
+img {
+  content: none!important;
+}
 header {
   background-color: $dark;
   position: relative;

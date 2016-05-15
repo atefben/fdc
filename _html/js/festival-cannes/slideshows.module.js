@@ -120,7 +120,7 @@ $('body').on('mouseover', '.chocolat-img', function() {
 // mouseover img : hide attribute title
 $('body').on('mouseover', '.chocolat-image', function() {
   $(this).attr('data-title', $(this).attr('title'));
-  // $(this).removeAttr('title');
+   $(this).removeAttr('title');
 });
 
 // mouseout img : reset attribute title
