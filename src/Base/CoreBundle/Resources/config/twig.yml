@@ -144,3 +144,9 @@ services:
         arguments: []
         tags:
             - { name: twig.extension }
+
+    base.twig.agenda_date_translation_extension:
+        class: Base\CoreBundle\Twig\Extension\AgendaDateTranslationExtension
+        tags:
+            - { name: twig.extension }
+        arguments: ["%locale_fallback%", "@request_stack"]
