@@ -284,17 +284,6 @@ class NewsRepository extends EntityRepository
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
         ;
 
-        $qb
-            ->andWhere(
-                '(na1t.locale = :locale_fr AND na1t.status = :status) OR
-                    (na2t.locale = :locale_fr AND na2t.status = :status) OR
-                    (na3t.locale = :locale_fr AND na3t.status = :status) OR
-                    (na4t.locale = :locale_fr AND na4t.status = :status)'
-            )
-            ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
-        ;
-
         if ($locale != 'fr') {
             $qb
                 ->andWhere(
@@ -305,6 +294,17 @@ class NewsRepository extends EntityRepository
                 )
                 ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
                 ->setParameter('locale', $locale)
+            ;
+        } else {
+            $qb
+                ->andWhere(
+                    '(na1t.locale = :locale_fr AND na1t.status = :status) OR
+                    (na2t.locale = :locale_fr AND na2t.status = :status) OR
+                    (na3t.locale = :locale_fr AND na3t.status = :status) OR
+                    (na4t.locale = :locale_fr AND na4t.status = :status)'
+                )
+                ->setParameter('locale_fr', 'fr')
+                ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
             ;
         }
 
