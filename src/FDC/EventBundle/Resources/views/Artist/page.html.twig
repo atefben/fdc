@@ -184,9 +184,8 @@
                     {% set awardsCount = 0 %}
                     {% for filmPerson in artist.films %}
                         {% for awardAssociation in filmPerson.film.awards %}
-                            {% if awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') or
-                            (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and
-                            awardAssociation.person.id == artist.id) %}
+                            {% if (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') and awardAssociation.person.id == artist.id) or
+                                  (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and awardAssociation.person.id == artist.id) %}
                                 {% set awardsCount = awardsCount + 1 %}
                             {% endif %}
                         {% endfor %}
@@ -195,9 +194,8 @@
                        {% set counter = 0 %}
                             {% for filmPerson in artist.getFilmPersonOrderedByFilmFestivalYearAsc() %}
                                 {% for awardAssociation in filmPerson.film.awards %}
-                                    {% if awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') or
-                                    (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and
-                                    awardAssociation.person.id == artist.id) %}
+                                    {% if (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') and awardAssociation.person.id == artist.id) or
+                                          (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and awardAssociation.person.id == artist.id) %}
                                         {% if counter == 0 %}
                                             <h2 class="title title-art-artist">{{ 'juries.artiste.title.palmares'|trans }}</h2>
                                             <div class="contain-films-list">
