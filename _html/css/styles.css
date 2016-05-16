@@ -5077,6 +5077,9 @@ footer .footer-menu ul li a:hover {
   opacity: 1;
   visibility: visible;
 }
+.slideshow .slideshow-img .images .img.active div {
+  visibility: visible;
+}
 .slideshow .slideshow-img .images .img:before {
   background-color: #000;
   content: '';
