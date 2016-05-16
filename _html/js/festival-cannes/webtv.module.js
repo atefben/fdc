@@ -135,7 +135,11 @@ $(document).ready(function() {
           }
 
           // CUSTOM LINK FACEBOOK
-          var shareUrl = GLOBALS.urls.videosUrl+'#vid='+vid;
+          if($('.container-webtv-ba-video').length() > 0) {
+            var shareUrl = $('.video .video-container').attr('data-link');
+          } else {
+            var shareUrl = GLOBALS.urls.videosUrl+'#vid='+vid;
+          }
           var fbHref   = facebookLink;
           fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
           fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
@@ -335,7 +339,12 @@ $(document).ready(function() {
           }
 
           // CUSTOM LINK FACEBOOK
-          var shareUrl = GLOBALS.urls.videosUrl+'#vid='+vid;
+          if($('.container-webtv-ba-video').length() > 0) {
+            var shareUrl = $('.video .video-container').attr('data-link');
+          } else {
+            var shareUrl = GLOBALS.urls.videosUrl+'#vid='+vid;
+          }
+
           var fbHref   = facebookLink;
           fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
           fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));

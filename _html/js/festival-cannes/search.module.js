@@ -82,7 +82,9 @@ $(document).ready(function() {
     }
 
     if($(this).hasClass('opened')) {
-      closeSearch();
+      if(!isIpad()){
+        closeSearch();
+      }
       return false;
     } else {
       openSearch();
