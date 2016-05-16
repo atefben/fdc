@@ -45,7 +45,7 @@ class NewsController extends Controller
 
         // GET HOMEPAGE SETTINGS
         $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array(
-            'festival' => $this->getFestival()
+            'festival' => $this->getFestival(),
         ))
         ;
         if ($homepage === null) {
@@ -78,9 +78,9 @@ class NewsController extends Controller
         ////////////////////////////////////////////////////////////////////////////////////
 
         $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array(
-            'festival' => $this->getFestival()
+            'festival' => $this->getFestival(),
         ), array(
-            'date' => 'DESC'
+            'date' => 'DESC',
         ), 13, null)
         ;
 
@@ -221,11 +221,13 @@ class NewsController extends Controller
                 ->getRepository('BaseCoreBundle:MediaVideo')
                 ->getAvailableMediaVideosByWebTv($this->getFestival()->getId(), $locale, $group['channel'])
             ;
-            $channelsVideos[] = array(
-                'channel'  => $channelsIds[$group['channel']],
-                'video'    => $lastVideo,
-                'nbVideos' => count($nbVideos),
-            );
+            if ($nbVideos) {
+                $channelsVideos[] = array(
+                    'channel'  => $channelsIds[$group['channel']],
+                    'video'    => $lastVideo,
+                    'nbVideos' => count($nbVideos),
+                );
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////////////////
@@ -254,7 +256,7 @@ class NewsController extends Controller
             'channels'           => $channels,
             'channelsVideos'     => $channelsVideos,
             'films'              => $films,
-            'endOfArticles'      => $endOfArticles
+            'endOfArticles'      => $endOfArticles,
         );
     }
 
@@ -276,7 +278,7 @@ class NewsController extends Controller
 
         // GET HOMEPAGE SETTINGS
         $homepage = $em->getRepository('BaseCoreBundle:Homepage')->findOneBy(array(
-            'festival' => $this->getFestival()
+            'festival' => $this->getFestival(),
         ))
         ;
 
@@ -371,12 +373,13 @@ class NewsController extends Controller
             'endOfArticles'      => $endOfArticles,
             'homeArticles'       => $homeArticles,
             'homeArticlesNext'   => $homeArticlesNext,
-            'filters'            => $filters
+            'filters'            => $filters,
         );
     }
 
     /**
-     * @Route("/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"}, options={"expose"=true})
+     * @Route("/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},
+     *     options={"expose"=true})
      * @Template("FDCEventBundle:News:main.html.twig")
      * @param $slug
      * @return array
@@ -515,7 +518,6 @@ class NewsController extends Controller
 
     /**
      * @Route("/articles")
-     *
      * @Template("FDCEventBundle:News/list:article.html.twig")
      */
     public function getArticlesAction(Request $request)
@@ -588,14 +590,13 @@ class NewsController extends Controller
 
         return array(
             'articles' => $newsArticles,
-            'filters'  => $filters
+            'filters'  => $filters,
         );
     }
 
     /**
      * @param Request $request
      * @return array
-     *
      * @Route("/photos")
      * @Template("FDCEventBundle:News/list:photo.html.twig")
      */
@@ -659,7 +660,7 @@ class NewsController extends Controller
 
         return array(
             'photos'  => $photos,
-            'filters' => $filters
+            'filters' => $filters,
         );
     }
 
@@ -726,7 +727,7 @@ class NewsController extends Controller
 
         return array(
             'videos'  => $videos,
-            'filters' => $filters
+            'filters' => $filters,
         );
 
     }
@@ -795,14 +796,13 @@ class NewsController extends Controller
 
         return array(
             'audios'  => $audios,
-            'filters' => $filters
+            'filters' => $filters,
         );
     }
 
 
     /**
      * split array
-     *
      * @param $list
      * @param $p
      * @return array

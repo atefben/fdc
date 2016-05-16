@@ -145,13 +145,9 @@ class MediaVideoExtension extends Twig_Extension
                 } elseif ($trans instanceof MediaImageTranslation && $trans->getFile() && $trans->getStatus() === TranslateChildInterface::STATUS_TRANSLATED) {
                     return $trans->getFile();
                 }
-                if ($fallback && $this->localeFallback !== $locale) {
-                    $master = $mediaImage->findTranslationByLocale($this->localeFallback);
-                    if ($master instanceof MediaImageTranslation && $master->getFile() && $locale == 'fr') {
-                        return $master->getFile();
-                    } elseif ($master instanceof MediaImageTranslation && $master->getFile() && $master->getStatus() === TranslateChildInterface::STATUS_TRANSLATED) {
-                        return $master->getFile();
-                    }
+                if ($fallback && 'fr' !== $locale) {
+                    $master = $mediaImage->findTranslationByLocale('fr');
+                    return $master->getFile();
                 }
             }
         }

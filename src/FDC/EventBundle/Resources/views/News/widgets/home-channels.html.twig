@@ -6,7 +6,7 @@
         {% if group.channel.image and group.channel.image|trans_fallback('file') %}
             {% set webTvImageFile = group.channel.image|trans_fallback('file') %}
             {% thumbnail webTvImageFile, '586x370' %}
-        {% elseif get_available_webtv_image_file(group.video.image) %}
+        {% elseif get_available_webtv_image_file(group.video.image, true) %}
             {% set webTvImageFile = get_available_webtv_image_file(group.video.image) %}
             <img src="{{ media_public_url(webTvImageFile, '293x185') }}"
                  alt="">

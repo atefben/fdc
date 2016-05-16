@@ -24,8 +24,8 @@
                         <img src="{% path webTvImageFile, '640x404' %}"
                              srcset="{% path webTvImageFile, '640x404' %} 1x, {% path webTvImageFile, '1280x808' %} 2x"
                              alt="">
-                    {% elseif get_available_webtv_image_file(group.video.image) %}
-                        {% set webTvImageFile = get_available_webtv_image_file(group.video.image) %}
+                    {% elseif get_available_webtv_image_file(group.video.image, true) %}
+                        {% set webTvImageFile = get_available_webtv_image_file(group.video.image, true) %}
                         <img src="{% path webTvImageFile, '640x404' %}"
                              srcset="{% path webTvImageFile, '640x404' %} 1x, {% path webTvImageFile, '1280x808' %} 2x"
                              alt="">
