@@ -231,11 +231,12 @@ class MediaController extends Controller
 
         $zip = new \ZipArchive();
 
-        if (!file_exists($zipPath)) {
+        // @TODO : mettre en cache
+        //if (!file_exists($zipPath)) {
             $zip->open($zipPath, \ZipArchive::CREATE);
 
             foreach ($film->getMedias() as $media) {
-                if ($media->getType() == 14) {
+                if ($media->getType() == 14 || $media->getType() == 17 || $media->getType() == 51) {
                     array_push($filmPhotos, $media->getMedia()->getFile());
                     $provider = $this->container->get($media->getMedia()->getFile()->getProviderName());
                     $fUrl = $provider->getCdn()->getPath($provider->getReferenceImage($media->getMedia()->getFile(), true), $provider);
@@ -246,7 +247,7 @@ class MediaController extends Controller
             }
             $zip->close();
 
-        }
+        //}
 
         // Generate response
         $response = new Response();
@@ -309,8 +310,8 @@ class MediaController extends Controller
         }
 
         $zip = new \ZipArchive();
-
-        if (!file_exists($zipPath)) {
+        // @TODO : mettre en cache
+        //if (!file_exists($zipPath)) {
             $zip->open($zipPath, \ZipArchive::CREATE);
 
             foreach ($galleryImage as $media) {
@@ -323,7 +324,7 @@ class MediaController extends Controller
             }
             $zip->close();
 
-        }
+        //}
 
         $response = new Response();
 

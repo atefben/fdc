@@ -189,9 +189,7 @@
                         <div class="contain-films-list">
                             {% for filmPerson in artist.getFilmPersonOrderedByFilmProductionYearAsc() %}
                                 {% for awardAssociation in filmPerson.film.awards %}
-                                    {% if awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') or
-                                    (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and
-                                    awardAssociation.person.id == artist.id) %}
+                                    {% if (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and awardAssociation.person.id == artist.id) %}
                                         <div class="item">
                                             {% if filmPerson.film.festival.id == festival %}
                                             <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">

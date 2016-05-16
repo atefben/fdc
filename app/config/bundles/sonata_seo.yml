@@ -10,7 +10,7 @@ sonata_seo:
 
                 'title':              Festival de Cannes %fdc_year%
                 'og:site_name':       Festival de Cannes %fdc_year%
-                'og:description':     ''
+                'og:description':     Festival de Cannes %fdc_year%
 
             charset:
                 UTF-8:    ''
