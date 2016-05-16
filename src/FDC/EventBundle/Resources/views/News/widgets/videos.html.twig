@@ -7,12 +7,8 @@
     {% endif %}
 {% endif %}
 
-{% if film.tabletImage is not null %}
-    {% set transImage = film.tabletImage.findTranslationByLocale(app.request.locale) %}
-    {% if transImage is null %}
-        {% set transImage = film.tabletImage.findTranslationByLocale('fr') %}
-    {% endif %}
-{% endif %}
+{% set transImage = films[0].tabletImage|trans_fallback('file') %}
+
 {% if film.video.image is null and film.video.imageAmazonUrl is not null %}
     {% set videoAmazon = s3_server_video ~ film.video.imageAmazonUrl %}
 {% endif %}
@@ -26,7 +22,11 @@
             {% endif %}
         </video>
         {% if transImage is defined and transImage is not null %}
+<<<<<<< HEAD
             <div class="img bgelement" style="background-image:url({% if transImage.file is defined and transImage.file is not null %}{% path transImage.file, '1280x808'  %}{% else %}{{ s3_server_video ~ transVideo.imageAmazonUrl }}{% endif %})"></div>
+=======
+            <div class="img" style="background-image:url({% if transImage %}{% path transImage, '1280x808'  %}{% else %}{{ s3_server_video ~ transVideo.imageAmazonUrl }}{% endif %})"></div>
+>>>>>>> origin/master
         {% endif %}
     </div>
     <div class="textVideo">
