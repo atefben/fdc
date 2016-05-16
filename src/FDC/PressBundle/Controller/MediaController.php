@@ -236,7 +236,7 @@ class MediaController extends Controller
             $zip->open($zipPath, \ZipArchive::CREATE);
 
             foreach ($film->getMedias() as $media) {
-                if ($media->getType() == 14) {
+                if ($media->getType() == 14 || $media->getType() == 17 || $media->getType() == 51) {
                     array_push($filmPhotos, $media->getMedia()->getFile());
                     $provider = $this->container->get($media->getMedia()->getFile()->getProviderName());
                     $fUrl = $provider->getCdn()->getPath($provider->getReferenceImage($media->getMedia()->getFile(), true), $provider);
