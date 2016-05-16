@@ -335,8 +335,12 @@ div.chocolat-wrapper {
 
       &.active, &:hover {
         img {
-          opacity: 1!important;
+          opacity: 1 !important;
         }
+      }
+
+      &.compat-object-fit {
+        background: #000 !important;
       }
     }
 
