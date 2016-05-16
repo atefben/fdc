@@ -51,7 +51,7 @@ class AgendaDateTranslationExtension extends Twig_Extension
      * @param $hour
      * @return mixed
      */
-    public function leftBarTranslateHour($hour)
+    public function leftBarTranslateHour($hour,$space = false)
     {
         $locale = $this->requestStack->getCurrentRequest()->getLocale();
 
@@ -64,6 +64,14 @@ class AgendaDateTranslationExtension extends Twig_Extension
                 $output =  $hour . 'AM';
             } else {
                 $output =  (string)((int)$hour - 12) . 'PM';
+            }
+
+            if($space) {
+                if ($hour < 12) {
+                    $output =  $hour . ' AM';
+                } else {
+                    $output =  (string)((int)$hour - 12) . ' PM';
+                }
             }
         }
         return $output;

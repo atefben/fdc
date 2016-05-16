@@ -321,7 +321,7 @@
                         <div class="event">
                             <p class="date">
                                 {{ relatedProjection.startsAt|localizeddate('full', 'none') }} -
-                                {% set timeProjection = (app.request.locale == 'en') ? agenda_leftbar_translate_hour(relatedProjection.startsAt|date('H:i')) : relatedProjection.startsAt|date('H:i') %}
+                                {% set timeProjection = (app.request.locale == 'en') ? agenda_leftbar_translate_hour(relatedProjection.startsAt|date('H:i'),true) : relatedProjection.startsAt|date('H:i') %}
                                 <span>{{ timeProjection }}</span>
                             </p>
                             <div class="fc-event" data-url="{{ path('fdc_event_agenda_getprojection', {id: relatedProjection.id}) }}"
