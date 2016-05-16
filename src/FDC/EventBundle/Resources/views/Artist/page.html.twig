@@ -186,7 +186,7 @@
                     {% endfor %}
                     {% if awardsCount > 0 %}
                         <h2 class="title title-art-artist">{{ 'juries.artiste.title.palmares'|trans }}</h2>
-                        <div class="contain-films-list">
+                        <div class="contain-films-list" style="display:none;">
                             {% for filmPerson in artist.getFilmPersonOrderedByFilmProductionYearAsc() %}
                                 {% for awardAssociation in filmPerson.film.awards %}
                                     {% if awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') or
