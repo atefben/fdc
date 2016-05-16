@@ -116,11 +116,7 @@
                                             {% endif %}
                                             <h3>
                                                 <a href="{{ path('fdc_event_movie_get',{'slug': associatedFilm.slug}) }}">
-                                                    {% set title = associatedFilm|trans_fallback('title') %}
-                                                    {% if title == '' %}
-                                                        {% set title = associatedFilm.titleVO %}
-                                                    {% endif %}
-                                                    {{ title }}
+                                                    {{ associatedFilm.titleVO }}
                                                 </a>
                                             </h3>
                                             {% if director is defined and director|length > 1 %}
