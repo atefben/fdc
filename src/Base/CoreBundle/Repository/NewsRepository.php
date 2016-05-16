@@ -255,7 +255,7 @@ class NewsRepository extends EntityRepository
             ;
     }
 
-    public function getSameDayNews($festival, $locale, $dateTime, $count, $id, $mobile = null)
+    public function getSameDayNews($festival, $locale, $dateTime, $count, $id, $mobile = null, $focusArticles = null)
     {
         $dateTime1 = $dateTime->format('Y-m-d') . ' 00:00:00';
         $dateTime2 = $dateTime->format('Y-m-d') . ' 23:59:59';
@@ -323,6 +323,24 @@ class NewsRepository extends EntityRepository
                 ->andWhere('n.displayedMobile = :displayedMobile')
                 ->setParameter('displayedMobile', $mobile)
             ;
+        }
+
+        if($focusArticles !== null) {
+            $id1 = (isset($focusArticles[0])) ? $focusArticles[0] : null;
+            $id2 = (isset($focusArticles[1])) ? $focusArticles[1] : null;;
+
+            if($id1) {
+                $qb
+                    ->andWhere('n.id <> :id1')
+                    ->setParameter('id1', $id1->getId())
+                ;
+            }
+            if($id2) {
+                $qb
+                    ->andWhere('n.id <> :id2')
+                    ->setParameter('id2', $id2->getId())
+                ;
+            }
         }
 
         if ($count) {
