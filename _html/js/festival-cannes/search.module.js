@@ -82,12 +82,16 @@ $(document).ready(function() {
     }
 
     if($(this).hasClass('opened')) {
-      if(!isIpad()){
-        closeSearch();
-      }
+      closeSearch();
       return false;
     } else {
-      openSearch();
+      if(isIpad()){
+        setTimeout(function() {
+          openSearch();
+        }, 100);
+      } else {
+        openSearch();
+      }
     }
 
     $('.search').toggleClass('opened');
