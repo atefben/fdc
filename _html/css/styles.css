@@ -5103,7 +5103,7 @@ footer .footer-menu ul li a:hover {
   visibility: visible;
 }
 .slideshow .slideshow-img .images .img.active div {
-  visibility: visible;
+  visibility: visible !important;
 }
 .slideshow .slideshow-img .images .img:before {
   background-color: #000;
