@@ -85,16 +85,16 @@ $(document).ready(function() {
       closeSearch();
       return false;
     } else {
-      if(isIpad()){
-        setTimeout(function() {
-          openSearch();
-        }, 100);
-      } else {
-        openSearch();
-      }
+      openSearch();
+    }
+    if(isIpad()){
+      setTimeout(function() {
+        $('.search').toggleClass('opened');
+      }, 200)
+    } else {
+      $('.search').toggleClass('opened');
     }
 
-    $('.search').toggleClass('opened');
   });
 
   if($('.searchpage').length) {
