@@ -33,6 +33,20 @@ class SocialWallRepository extends EntityRepository
         return $query;
     }
 
+    public function countTweets($festival,$date) {
+        $query = $this->createQueryBuilder('f')
+            ->select('COUNT(f.id)')
+            ->where('f.festival = :festival')
+            ->andWhere('f.date = :date')
+            ->andWhere('f.network = :network')
+            ->setParameter('network', constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER'))
+            ->setParameter('festival', $festival)
+            ->setParameter('date', $date)
+        ;
+
+        return $query->getQuery()->getResult();;
+    }
+
     public function getApiSocialWallInstagram($festival)
     {
         $query = $this->createQueryBuilder('f')
