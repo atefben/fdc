@@ -465,6 +465,18 @@ div.chocolat-wrapper {
         opacity: 0;
       }
 
+      @include breakpoint(1920px) {
+        width: 1230px;
+      }
+
+      @include breakpoint(1600px) {
+        width: 830px;
+      }
+
+      @include breakpoint(1280px) {
+        width: 530px;
+      }
+
       @include breakpoint(1024px) {
         width: 430px;
         padding-top: 17px;
