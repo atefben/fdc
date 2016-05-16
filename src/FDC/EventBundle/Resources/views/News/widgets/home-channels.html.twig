@@ -1,34 +1,36 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-<div class="image-wrapper">
-    {% set channel = group.channel %}
-    {% if group.channel.image and group.channel.image|trans_fallback('file') %}
-        {% set webTvImageFile = group.channel.image|trans_fallback('file') %}
-        {% thumbnail webTvImageFile, '586x370' %}
-    {% elseif get_available_webtv_image_file(group.video.image) %}
-        {% set webTvImageFile = get_available_webtv_image_file(group.video.image) %}
-        <img src="{{ media_public_url(webTvImageFile, '293x185') }}"
-             alt="">
-    {% elseif group.video|trans_fallback('imageAmazonUrl') %}
-        <img src="{{ s3_server_video ~ group.video|trans_fallback('imageAmazonUrl') }}" alt="">
-    {% endif %}
+{% if group.nbVideos %}
+    <div class="image-wrapper">
+        {% set channel = group.channel %}
+        {% if group.channel.image and group.channel.image|trans_fallback('file') %}
+            {% set webTvImageFile = group.channel.image|trans_fallback('file') %}
+            {% thumbnail webTvImageFile, '586x370' %}
+        {% elseif get_available_webtv_image_file(group.video.image) %}
+            {% set webTvImageFile = get_available_webtv_image_file(group.video.image) %}
+            <img src="{{ media_public_url(webTvImageFile, '293x185') }}"
+                 alt="">
+        {% elseif group.video|trans_fallback('imageAmazonUrl') %}
+            <img src="{{ s3_server_video ~ group.video|trans_fallback('imageAmazonUrl') }}" alt="">
+        {% endif %}
 
-</div>
-<a class="linkVid" href="{{ path('fdc_event_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}"></a>
-<div class="info">
-    <div class="picto">
-        <i class="icon icon_playlist"></i>
     </div>
-    <div class="info-container">
-        <div class="vCenter">
-            <div class="vCenterKid">
-                <a href="{{ path('fdc_event_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}"
-                   class="category">{{ channel|trans_fallback('name') }}</a>
+    <a class="linkVid"
+       href="{{ path('fdc_event_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}"></a>
+    <div class="info">
+        <div class="picto">
+            <i class="icon icon_playlist"></i>
+        </div>
+        <div class="info-container">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <a href="{{ path('fdc_event_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}"
+                       class="category">{{ channel|trans_fallback('name') }}</a>
                 <span>
                     {{ 'webtv.direct.nb_videos'|transchoice(group.nbVideos) }}
                 </span>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
+{% endif %}
