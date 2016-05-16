@@ -60,20 +60,17 @@ class AgendaDateTranslationExtension extends Twig_Extension
         } elseif ($locale == 'zh') {
             $output =  str_pad($hour, 2, '0', STR_PAD_LEFT) . '点';
         } elseif ($locale == 'en') {
-            if ($hour < 12) {
-                $output =  $hour . 'AM';
-            } else {
-                $output =  (string)((int)$hour - 12) . 'PM';
+            if ($hour > 12) {
+                $display = (string)((int)$hour - 12);
+            } elseif (!$hour) {
+                $display = '12';
             }
-
-            if($space) {
-                if ($hour < 12) {
-                    $output =  $hour . ' AM';
-                } else {
-                    $output =  (string)((int)$hour - 12) . ' PM';
-                }
+            else {
+                $display = $hour;
             }
+            $output = $display . ($space ? ' ' : '') . ((int)$hour < 12 ? 'AM' : 'PM');
         }
+
         return $output;
     }
 
