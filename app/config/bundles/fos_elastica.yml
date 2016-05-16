@@ -225,7 +225,7 @@ fos_elastica:
                         repository: Base\CoreBundle\SearchRepository\FilmFilmRepository
                     mappings:
                         selectionSection: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                        productionYear: ~
+                        festival.year: ~
                         titleVO: { boost: 60, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                         countries:
                             type: nested
@@ -290,7 +290,7 @@ fos_elastica:
                         films:
                             type: nested
                             properties:
-                                film.productionYear: ~
+                                film.festival.year: ~
                                 film.translations:
                                     type: nested
                                     properties:

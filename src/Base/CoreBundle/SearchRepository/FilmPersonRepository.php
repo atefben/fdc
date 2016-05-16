@@ -68,7 +68,7 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
         $keywordMatchQuery = $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
         
         // Get only movies from FDC current year.
-        $yearQuery = $this->getFieldsKeywordQuery('films.film.productionYear', $fdcYear);
+        $yearQuery = $this->getFieldsKeywordQuery('films.film.festival.year', $fdcYear);
         
         $keywordNestedQuery = new \Elastica\Query\Nested();
         $keywordNestedQuery
