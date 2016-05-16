@@ -87,8 +87,14 @@ $(document).ready(function() {
     } else {
       openSearch();
     }
+    if(isIpad()){
+      setTimeout(function() {
+        $('.search').toggleClass('opened');
+      }, 200)
+    } else {
+      $('.search').toggleClass('opened');
+    }
 
-    $('.search').toggleClass('opened');
   });
 
   if($('.searchpage').length) {
