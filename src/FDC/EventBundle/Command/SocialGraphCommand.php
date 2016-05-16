@@ -132,6 +132,48 @@ class SocialGraphCommand extends ContainerAwareCommand
             }
 
         }
+
+        /* use if twitter api problems */
+//        $em = $this->getContainer()->get('doctrine')->getManager();
+//        $logger = $this->getContainer()->get('logger');
+//        $datetime = new DateTime();
+//
+//        // get current festival
+//        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
+//        $festival = $settings->getFestival();
+//        if ($festival === null) {
+//            $msg = 'Can\'t find current festival';
+//            $this->writeError($output, $logger, $msg);
+//        }
+//
+//        // get current social graph twitter hashtag
+//        $socialGraphSettings = $em->getRepository('BaseCoreBundle:Homepage')->findOneByFestival($festival->getId());
+//        if ($socialGraphSettings === null) {
+//            $msg = 'Can\'t find social graph settings';
+//            $this->writeError($output, $logger, $msg);
+//        }
+//
+//        // get social graph by date
+//        $socialGraph = $em->getRepository('BaseCoreBundle:SocialGraph')->findOneBy(array(
+//            'date' => $datetime,
+//            'festival' => $festival->getId()
+//        ));
+//
+//        if (!$socialGraph) {
+//            $socialGraph = new SocialGraph();
+//            $socialGraph->setFestival($festival);
+//            $socialGraph->setDate($datetime);
+//        }
+//
+//        $datetime = $datetime->format('Y-m-d');
+//
+//        $countTweets = $em->getRepository('BaseCoreBundle:SocialWall')->countTweets($festival,$datetime);
+//        $countTweets = $countTweets[0][1];
+//
+//        // Set tweets id & count
+//        $socialGraph->setCount($countTweets);
+//
+//        $em->persist($socialGraph);
     }
 
     private function writeError($output, $logger, $msg)
