@@ -35,7 +35,7 @@ Imprimer</a>
                 <a class="chocolat-image ajax" href="http://cdn-parismatch.ladmedia.fr/var/news/storage/images/paris-match/culture/cinema/festival-de-cannes-2013-audrey-tautou-maitresse-de-ceremonie-508580/4577783-1-fre-FR/Festival-de-Cannes-2013-Audrey-Tautou-maitresse-de-ceremonie.jpg"><img src="img/slide002.jpg" alt="" /></a>
               </div>
               <div class="img">
-                <a class="chocolat-image ajax" href="http://dummyimage.com/2400x1500/eee/333" title='<h2>Sur le tournage de "Deephan" de Jacques Audiard</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
+                <a class="chocolat-image ajax" href="http://dummyimage.com/2400x1500/eee/333" title='<h2>Portrait de Mohamed Diab, cest la première image de la série et quasiment la meilleure. On remarque la main de mon assistant qui tient le fond en haut de limage.</h2><p>Crédit Image : VALERY HACHE / AFP</p>'>
                   <img src="http://dummyimage.com/980x500/000/fff" alt="" />
                 </a>
               </div>
