@@ -625,7 +625,7 @@ abstract class Media implements TranslateMainInterface
     {
         $isElasticable = true;
         $fr = $this->findTranslationByLocale('fr');
-        if ($fr->getStatus() !== TranslateChildInterface::STATUS_PUBLISHED) {
+        if (!$fr || $fr->getStatus() !== TranslateChildInterface::STATUS_PUBLISHED) {
             $isElasticable = false;
         }
         if ($this->getExcludeFromSearch()) {
