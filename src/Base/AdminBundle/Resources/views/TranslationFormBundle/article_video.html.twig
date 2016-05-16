@@ -171,6 +171,7 @@
                                                 <a target="_blank" href="{{ path('admin_base_core_mediavideo_edit', {'id': form.parent.children.video.vars.value}) }}">modifier les traductions</a>
                                             {% endif %}
                                         </div>
+                                        {{ form_row(translationsFields.introduction) }}
                                     </div>
                                 </div>
                             {% endif %}
@@ -279,6 +280,17 @@
                                                         {{ videoTranslations.get('fr').title }}
                                                     {% endif %}
                                                 </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label>
+                                                Chapeau
+                                            </label>
+
+                                            <div>
+                                                {% if form.children.fr.vars.value is not null %}
+                                                    {{ form.children.fr.vars.value.introduction|raw }}
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>
