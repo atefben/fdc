@@ -231,7 +231,8 @@ class MediaController extends Controller
 
         $zip = new \ZipArchive();
 
-        if (!file_exists($zipPath)) {
+        // TODO : mettre en cache
+        //if (!file_exists($zipPath)) {
             $zip->open($zipPath, \ZipArchive::CREATE);
 
             foreach ($film->getMedias() as $media) {
@@ -246,7 +247,7 @@ class MediaController extends Controller
             }
             $zip->close();
 
-        }
+        //}
 
         // Generate response
         $response = new Response();
