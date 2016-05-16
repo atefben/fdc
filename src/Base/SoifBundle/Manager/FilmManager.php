@@ -753,10 +753,12 @@ class FilmManager extends CoreManager
                             $filmContactPersonSubordinate->setLastname($subordinate->Nom);
                             $filmContactPersonSubordinate->setFirstname($subordinate->Prenom);
                             $filmContactPersonSubordinate->setMobilePhone($subordinate->TelephonePortable);
-
-                            $filmContactPerson->addSubordinate($filmContactPersonSubordinate);
-                            $collectionSubordinates->add($filmContactPersonSubordinate);
-                            $subordinateIds[$subordinate->Id] = $filmContactPersonSubordinate;
+                            error_log(print_r($filmContactPersonSubordinate, true));
+                            if($filmContactPersonSubordinate) {
+                                $filmContactPerson->addSubordinate($filmContactPersonSubordinate);
+                                $collectionSubordinates->add($filmContactPersonSubordinate);
+                                $subordinateIds[$subordinate->Id] = $filmContactPersonSubordinate;
+                            }
                         }
                     }
                 }
