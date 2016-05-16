@@ -113,9 +113,13 @@
                         </div>
                     {% endif %}
                     {% if artist.films|length > 0 %}
-                    <h2 class="title title-art-artist">{{ 'juries.artiste.title.filmspresentes'|trans }}</h2>
-                    <div class="contain-films-list">
+                        {% set countera = 0 %}
                         {% for filmPerson in artist.getFilmPersonOrderedByFilmFestivalYearAsc() %}
+                            {% if countera == 0 %}
+                                <h2 class="title title-art-artist">{{ 'juries.artiste.title.filmspresentes'|trans }}</h2>
+                                <div class="contain-films-list">
+                            {% set countera = countera+1 %}
+                            {% endif %}
                             <div class="item">
                                 {% if filmPerson.film.festival.id == festival %}
                                 <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
@@ -172,8 +176,11 @@
                                 {% endif %}
                             </div>
                         {% endfor %}
+                        {% if countera == 1 %}
+                            </div>
                         {% endif %}
-                    </div>
+                        {% endif %}
+
                     {% set awardsCount = 0 %}
                     {% for filmPerson in artist.films %}
                         {% for awardAssociation in filmPerson.film.awards %}
@@ -284,7 +291,7 @@
                 <p>{{ 'juries.artiste.title.share'|trans }}</p>
                 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                 <div class="buttons square">
-                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&picture={% spaceless -%}{% path shareMedia, '640x603' -%}{% endspaceless -%}&name={{ artist.fullName|url_encode(true) }}&caption={{ artist|profession_gender('profession') }}&description={% if biography is not null %}{{ biography|raw|url_encode(true) }}{% else %}%20{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" rel="nofollow" class="button facebook">
+                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&picture={% spaceless -%}{% path shareMedia, '640x603' -%}{% endspaceless -%}&name={{ artist.fullName|url_encode(true) }}&caption={{ artist|profession_gender('profession') }}&description={% if biography is not null %}{{ biography|raw|url_encode(true) }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" rel="nofollow" class="button facebook">
                         <i class="icon icon_facebook"></i>
                     </a>
                     <a href="https://twitter.com/intent/tweet?text={{ artist.fullName|url_encode(true) }} {{ currentUrl }}" rel="nofollow"
