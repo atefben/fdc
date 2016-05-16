@@ -131,7 +131,12 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     $topBar.find('.info').append($infoBar.find('.info').html());
 
-    var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$container.data('vid');
+    if($('.container-webtv-ba-video').length() > 0) {
+        var shareUrl = $('.video .video-container').attr('data-link');
+    } else {
+        var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$container.data('vid');
+    }
+
     // CUSTOM LINK FACEBOOK
     var fbHref = $topBar.find('.buttons .facebook').attr('href');
     fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
@@ -251,7 +256,12 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         sc    = secondaryContainer || 0;
 
         // CUSTOM LINK FACEBOOK
-        var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$playlist[index].vid;
+        if($('.container-webtv-ba-video').length() > 0) {
+            var shareUrl = $('.video .video-container').attr('data-link');
+        } else {
+            var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$playlist[index].vid;
+        }
+
         var fbHref   = facebookLink;
         fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
         fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
