@@ -31,7 +31,7 @@
                     {% set copyright = gallery.media|trans_fallback('copyright') %}
 
                     <div class="img {% if key == 0 %}active{% endif %}">
-                        <a id="photo{{ gallery.media.id }}" class="chocolat-image ajax" href="{% path file, '2560x1620' %}" title="<span class='category'>{{ gallery.media.theme|trans_fallback('name') }}</span><span class='date'>{{ gallery.media.createdAt|date('d.m.y H:i') }}</span><h2>{{ trans.legend }}</h2>" data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}">
+                        <a id="photo{{ gallery.media.id }}" data-pid="{{ gallery.media.id }}" class="chocolat-image ajax" href="{% path file, '2560x1620' %}" title="<span class='category'>{{ gallery.media.theme|trans_fallback('name') }}</span><span class='date'>{{ gallery.media.createdAt|date('d.m.y H:i') }}</span><h2>{{ trans.legend }}</h2>" data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}">
                             <img src="{% path file, '633x399' %}" srcset="{% path file, '633x399' %} 1x, {% path file, '1266x798' %} 2x" alt="{{ trans.alt }}" title="{{ trans.legend }}" data-object-fit="contain">
                         </a>
                     </div>

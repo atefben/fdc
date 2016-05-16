@@ -71,7 +71,7 @@ function initSlideshows() {
 }
 
 // close slideshow on click
-$('body').on('click', '.chocolat-close', function(e) {
+$('body').on('click', '.chocolat-close, .chocolat-overlay', function(e) {
   $('.chocolat-img').css('transition', 'all 0.9s ease').addClass('close');
   $('.chocolat-bottom').css('opacity', 0);
   $('.chocolat-bottom .img-slideshow-share .button.email').off('click');
@@ -120,7 +120,7 @@ $('body').on('mouseover', '.chocolat-img', function() {
 // mouseover img : hide attribute title
 $('body').on('mouseover', '.chocolat-image', function() {
   $(this).attr('data-title', $(this).attr('title'));
-  // $(this).removeAttr('title');
+   $(this).removeAttr('title');
 });
 
 // mouseout img : reset attribute title
@@ -337,8 +337,18 @@ function updatePhotoShare(pid, title) {
   $('.chocolat-bottom .img-slideshow-share .button.twitter').off('click');
 
   // CUSTOM LINK FACEBOOK
-  var fbHref = "//www.facebook.com/sharer.php?u=CUSTOM_URL";
+  var fbHref = 'http://www.facebook.com/dialog/feed?app_id=1198653673492784' +
+      '&link=CUSTOM_URL' +
+      '&picture=CUSTOM_IMAGE' +
+      '&name=CUSTOM_NAME' +
+      '&caption=' +
+      '&description=CUSTOM_DESC' +
+      '&redirect_uri=http://www.festival-cannes.com/fr/sharing' +
+      '&display=popup';
   fbHref     = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
+  fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($('[data-pid='+pid+']').attr('href')));
+  fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent(t1.slice(0, -1)));
+  fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent('© ' + $('[data-pid='+pid+']').attr('data-credit')));
   $('.chocolat-bottom .img-slideshow-share .facebook').attr('href', fbHref);
   // CUSTOM LINK TWITTER
   var twHref = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";

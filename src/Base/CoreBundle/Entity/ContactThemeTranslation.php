@@ -25,6 +25,7 @@ class ContactThemeTranslation implements TranslateChildInterface
     use Time;
     use TranslateChild;
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
 
     /**
      * @var string

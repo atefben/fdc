@@ -56,13 +56,20 @@ var timeout = 1000,
                             <div class="vCenterKid">\
                             <a href="#" class="category"></a>\
                             <span></span>\
-                            <p>Sils Maria</p>\
+                            <p></p>\
                         </div>\
                     </div>\
                 </div>\
             </div>\
         </div>',
-    facebookLink = "//www.facebook.com/sharer.php?u=CUSTOM_URL",
+    facebookLink = 'http://www.facebook.com/dialog/feed?app_id=1198653673492784' +
+        '&link=CUSTOM_URL' +
+        '&picture=CUSTOM_IMAGE' +
+        '&name=CUSTOM_NAME' +
+        '&caption=' +
+        '&description=CUSTOM_DESC' +
+        '&redirect_uri=http://www.festival-cannes.com/fr/sharing' +
+    '&display=popup',
     twitterLink  = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
 function playerInit(id, cls, havePlaylist, live) {
@@ -163,7 +170,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             'url'      : shareUrl
         }, playerInstance);
     });
-    
+
     function updateVolume(x, vol) {
         var volume = $sound.find('.sound-bar'),
             percentage;
@@ -247,6 +254,9 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$playlist[index].vid;
         var fbHref   = facebookLink;
         fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
+        fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
+        fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
+        fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent($playlist[index].name));
         $topBar.find('.buttons .facebook').attr('href', fbHref);
         // CUSTOM LINK TWITTER
         var twHref   = twitterLink;
@@ -275,13 +285,13 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     function initChannel() {
         sliderChannelsVideo = $container.find(".slider-channels-video").owlCarousel({
-          nav: false,
-          dots: false,
-          smartSpeed: 500,
-          center: true,
-          loop: false,
-          margin: 81,
-          autoWidth: true,
+            nav: false,
+            dots: false,
+            smartSpeed: 500,
+            center: true,
+            loop: false,
+            margin: 81,
+            autoWidth: true,
         });
 
         sliderChannelsVideo.owlCarousel();
@@ -496,7 +506,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             duration_secs = Math.floor(e.duration - duration_mins * 60);
             $durationTime.html(duration_mins + ":" + duration_secs);
             _duration = e.duration;
-         }
+        }
 
         var currentTime = e.position,
             currentMins = Math.floor(currentTime / 60),

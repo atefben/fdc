@@ -163,6 +163,10 @@
         visibility: hidden;
         @include transform(translate3d(0, 10px, 0));
         @include transition(all 0.8s $smoothTransition .2s);
+
+        a {
+          color: #fff;
+        }
       }
     }
 
@@ -234,6 +238,9 @@
         h2 {
           @include transition(all 0.8s $smoothTransition 0.9s);
           -moz-transition: opacity 0.8s $smoothTransition 0.7s, visibility 0.8s $smoothTransition 0.7s;
+          a {
+            color: #fff;
+          }
         }
 
         .category, h2 {
@@ -1355,6 +1362,9 @@
       visibility: hidden;
       @include transition(all 0.9s $smoothTransition);
       @include transform(translateY(30px) translateZ(0));
+      a {
+        color: #fff;
+      }
     }
 
     .director {

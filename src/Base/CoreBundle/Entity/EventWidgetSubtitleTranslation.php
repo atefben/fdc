@@ -23,6 +23,7 @@ use JMS\Serializer\Annotation\Since;
 class EventWidgetSubtitleTranslation
 {
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use Time;
 
     /**

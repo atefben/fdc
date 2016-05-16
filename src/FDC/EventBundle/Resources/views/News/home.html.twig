@@ -15,14 +15,14 @@
                 <div id="slider" class="owl-carousel">
                     {% for article in homeSlider %}
                         {% if article is news_object %}
-                                {% set type = 'news' %}
+                            {% set type = 'news' %}
+                        {% else %}
+                            {% if class(article) starts with 'S' %}
+                                {% set type = 'communique' %}
                             {% else %}
-                                {% if class(article) starts with 'S' %}
-                                    {% set type = 'communique' %}
-                                {% else %}
-                                    {% set type = 'info' %}
-                                {% endif %}
+                                {% set type = 'info' %}
                             {% endif %}
+                        {% endif %}
                         {% if article is news_article or article is statement_article or article is info_article %}
                             {% set img = article.header %}
                             {% set trans = img.findTranslationByLocale(app.request.locale) %}
@@ -30,7 +30,7 @@
                                 {% set trans = img.findTranslationByLocale('fr') %}
                             {% endif %}
                             {% set file = trans.file %}
-                        {% elseif article is news_video or article is statement_video or article is info_video%}
+                        {% elseif article is news_video or article is statement_video or article is info_video %}
                             {% set header = article.header %}
                             {% if header is not null %}
                                 {% set trans = header.findTranslationByLocale(app.request.locale) %}
@@ -103,30 +103,36 @@
                                 {% set file = trans.file %}
                             {% endif %}
                         {% endif %}
-                            <div>
-                                <div class="img-container">
-                                    {% set trans = article.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans == null %}
-                                        {% set trans = article.findTranslationByLocale('fr') %}
-                                    {% endif %}
-                                    {% if type == 'news' %}
-                                    <a href="{{ url('fdc_event_news_get', { _locale: app.request.locale, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
+                        <div>
+                            <div class="img-container">
+                                {% set trans = article.findTranslationByLocale(app.request.locale) %}
+                                {% if trans == null %}
+                                    {% set trans = article.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% if type == 'news' %}
+                                <a href="{{ url('fdc_event_news_get', { _locale: app.request.locale, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
                                     {% else %}
                                     <a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
-                                    {% endif %}
-                                        <div class="img" style="background-image:url({% path file , '926x584' %})"></div>
+                                        {% endif %}
+                                        <div class="img"
+                                             style="background-image:url({% path file , '926x584' %})"></div>
                                     </a>
-                                </div>
-                                <div class="info">
-                                    <span class="category">{{ article.theme|trans_fallback('name') }}</span>
-                                    <h2>{{ article|trans_fallback('title') }}</h2>
-                                </div>
-                                {% if type == 'news' %}
-                                    <a class="linkArticle" href="{{ url('fdc_event_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
-                                {% else %}
-                                    <a class="linkArticle" href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
-                                {% endif %}
                             </div>
+                            <div class="info">
+                                <span class="category">{{ article.theme|trans_fallback('name') }}</span>
+
+                            {% if type == 'news' %}
+                                    <h2><a href="{{ url('fdc_event_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title') }}</a></h2>
+                                </div>
+                                <a class="linkArticle"
+                                   href="{{ url('fdc_event_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                            {% else %}
+                                    <h2><a href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title') }}</a></h2>
+                                </div>
+                                <a class="linkArticle"
+                                   href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                            {% endif %}
+                        </div>
                     {% endfor %}
                 </div>
             </div>
@@ -160,11 +166,11 @@
                                     {% endif %}
                                 {% endfor %}
 
-                             </div>
+                            </div>
 
-                             {% if homeArticlesSlider is not empty %}
-                                 {% include 'FDCEventBundle:News:widgets/slideshow-actu-home.html.twig' %}
-                             {% endif %}
+                            {% if homeArticlesSlider is not empty %}
+                                {% include 'FDCEventBundle:News:widgets/slideshow-actu-home.html.twig' %}
+                            {% endif %}
 
 
                             <div class="articles center">
@@ -176,9 +182,9 @@
                                 <div class="articles right nextDay">
                                     {% for article in homeArticlesNext %}
                                         {% if loop.first %}
-                                        {% include 'FDCEventBundle:News:widgets/article-home.html.twig' with {'isDouble': 'double'} %}
+                                            {% include 'FDCEventBundle:News:widgets/article-home.html.twig' with {'isDouble': 'double'} %}
                                         {% else %}
-                                        {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
+                                            {% include 'FDCEventBundle:News:widgets/article-home.html.twig' %}
                                         {% endif %}
                                     {% endfor %}
                                 </div>
@@ -194,8 +200,9 @@
                     {% if homepage.topNewsType == 0 %}
                         <div id="timeline">
                             {% for key,date in festivalInterval %}
-                                {%  set timestamp = date ~ ' 23:59:59' %}
-                                <a href="#" data-timestamp="{{ timestamp|date('U') }}" data-date="{{ date|date('d') }}" class="{% if homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') == date|date('Y-m-d') %}active{% elseif homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') < date|date('Y-m-d') %}disabled{% endif %}">
+                                {% set timestamp = date ~ ' 23:59:59' %}
+                                <a href="#" data-timestamp="{{ timestamp|date('U') }}" data-date="{{ date|date('d') }}"
+                                   class="{% if homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') == date|date('Y-m-d') %}active{% elseif homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') < date|date('Y-m-d') %}disabled{% endif %}">
                                     {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                                     <span class="day">{{ date|date('d') }}</span>
                                 </a>
@@ -245,64 +252,59 @@
 
         {% if homepage.displayedTopWebTv == false %}
             {% if videos[0].id is not null %}
-            <div id="featured-videos">
-                <h2 class="title">{{ 'home.title.lesvideosalaune'|trans }}</h2>
-                <p class="link">
-                    <a href="{{ path('fdc_event_television_live') }}">
-                        <i class="icon icon_fleche-right"></i>
-                        {{ 'home.btn.accederalawebtv'|trans }}
-                    </a>
-                </p>
+                <div id="featured-videos">
+                    <h2 class="title">{{ 'home.title.lesvideosalaune'|trans }}</h2>
+                    <p class="link">
+                        <a href="{{ path('fdc_event_television_live') }}">
+                            <i class="icon icon_fleche-right"></i>
+                            {{ 'home.btn.accederalawebtv'|trans }}
+                        </a>
+                    </p>
 
-                <div id="slider-videos" class="owl-carousel sliderDrag">
-                    {% for video in videos %}
-                        {% if video.association is defined and video.association != null %}
-                            {% if video.association is not null and video.association.jobMp4State == 3 %}
-                                <div class="vid video"
-                                    data-vid="{{ video.association.id }}"
-                                    data-file='[{"file":"{{ s3_server_video ~ video.association|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video.association|trans_fallback('mp4Url') }}"}]'
-                                    {% if video.association.image|trans_fallback('file') %}
-                                    data-img="{% path video.association.image|trans_fallback('file'), '463x292' %}"
+                    <div id="slider-videos" class="owl-carousel sliderDrag">
+                        {% for video in videos %}
+                            {% if video.association is defined and video.association != null %}
+                                {% if video.association is not null and video.association.jobMp4State == 3 %}
+                                    <div class="vid video"
+                                         data-vid="{{ video.association.id }}"
+                                         data-file='[{"file":"{{ s3_server_video ~ video.association|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video.association|trans_fallback('mp4Url') }}"}]'
+                                            {% if video.association.image|trans_fallback('file') %}
+                                        data-img="{% path video.association.image|trans_fallback('file'), '463x292' %}"
                                     {% elseif video.association|trans_fallback('imageAmazonUrl') %}
-                                    data-img="{{ s3_server_video ~ video.association|trans_fallback('imageAmazonUrl') }}"
+                                        data-img="{{ s3_server_video ~ video.association|trans_fallback('imageAmazonUrl') }}"
                                     {% else %}
-                                    data-img="{% path video.association.image|trans_fallback('file', 'fr'), '463x292' %}"
-                                    {% endif %}>
-                                    {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' with {"video" : video} %}
-                                </div>
+                                        data-img="{% path video.association.image|trans_fallback('file', 'fr'), '463x292' %}"
+                                            {% endif %}>
+                                        {% include 'FDCEventBundle:Television:widgets/video.date.html.twig' with {"video" : video} %}
+                                    </div>
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
             {% endif %}
             {% if channels[0].id is not null %}
-            <div id="channels">
-                <h2 class="title">{{ 'home.title.leschaines'|trans }}</h2>
-                <div id="slider-channels" class="owl-carousel sliderDrag">
-                    {% for channel in channels %}
-                        {% if channel is defined and channel.association != null %}
-                            {% set channel = channel.association %}
-                            {% if channel.mediaVideos is defined and channel.mediaVideos != null and channel.mediaVideos|length > 0 and channel.availableChannels is not empty and channel.availableChannels|length > 0 %}
-                                <div class="channel">
-                                    {% include 'FDCEventBundle:News:widgets/home-channels.html.twig' %}
-                                </div>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
+                <div id="channels">
+                    <h2 class="title">{{ 'home.title.leschaines'|trans }}</h2>
+                    <div id="slider-channels" class="owl-carousel sliderDrag">
+                        {% for group in channelsVideos %}
+                            <div class="channel">
+                                {% include 'FDCEventBundle:News:widgets/home-channels.html.twig' %}
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
             {% endif %}
         {% endif %}
 
         {% if homepage.displayedFilms == false %}
             <div id="featured-movies">
                 <div id="slider-movies" class="owl-carousel">
-                {% for film in films %}
-                    {% if film is defined and film != null %}
-                        {% include 'FDCEventBundle:News:widgets/videos.html.twig' %}
-                    {% endif %}
-                {% endfor %}
+                    {% for film in films %}
+                        {% if film is defined and film != null %}
+                            {% include 'FDCEventBundle:News:widgets/videos.html.twig' %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         {% endif %}
@@ -323,7 +325,7 @@
 
     <div class="popin-video video loading">
         <div class="video-container state-init video"
-            data-email="//www.gmail.com">
+             data-email="//www.gmail.com">
             <div id="video-player-popin" class="">
             </div>
             <div class="video-overlay"></div>
@@ -353,17 +355,16 @@
     <div class="ov"></div>
 
     {{ render(controller('FDCEventBundle:Global:shareEmailMedia',
-        {'section': '',
-         'detail': '',
-         'title': '',
-         'description': ''
-        }))
-    }}
+    {'section': '',
+        'detail': '',
+        'title': '',
+        'description': ''
+    })) }}
     {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
-        {
-            "name" : 'header.mainnav.nav.jourapresjour'|trans,
-            "url"  : path('fdc_event_news_index')
-        }
+    {
+    "name" : 'header.mainnav.nav.jourapresjour'|trans,
+    "url"  : path('fdc_event_news_index')
+    }
     ]} %}
 
 {% endblock body %}

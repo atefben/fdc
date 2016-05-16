@@ -4044,6 +4044,10 @@ li.ui-timepicker-selected .ui-timepicker-duration,
   background: #f2f2f2;
 }
 
+img {
+  content: none !important;
+}
+
 header {
   background-color: #080808;
   position: relative;
@@ -4598,15 +4602,36 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   min-width: 9.5px;
 }
 
+.mob #navigation ul li {
+  margin-left: -5px;
+}
+.mob #navigation ul ul:before {
+  width: 91% !important;
+}
+.mob #navigation ul.user .programmation-wrapper ul {
+  margin-left: -662px;
+}
+.mob #navigation ul.user .participate-wrapper ul {
+  margin-left: -793px;
+}
+.mob #navigation ul li ul {
+  width: 1024px;
+}
+.mob #navigation ul li a {
+  padding-right: 12px;
+}
+.mob #navigation ul li ul li {
+  margin-left: 5px;
+}
 @media screen and (max-width: 1024px) {
-  .mob header #navigation ul.main {
+  .mob .mob header #navigation ul.main {
     font-size: 0.8rem;
   }
-
-  .mob header #navigation ul.user {
+  .mob .mob header #navigation ul.user {
     font-size: 0.7rem;
   }
 }
+
 footer * {
   box-sizing: border-box;
 }
@@ -8516,6 +8541,9 @@ header #searchContainer {
   -webkit-transition-delay: 0.2s;
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.2s;
 }
+#sliderWrapper .owl-item .info h2 a {
+  color: #fff;
+}
 #sliderWrapper .owl-item .img-container {
   background-color: #141414;
   height: 100%;
@@ -8585,6 +8613,9 @@ header #searchContainer {
   -webkit-transition-delay: 0.9s;
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.9s;
   -moz-transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s, visibility 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
+}
+#sliderWrapper .owl-item.center .info h2 a {
+  color: #fff;
 }
 #sliderWrapper .owl-item.center .info .category, #sliderWrapper .owl-item.center .info h2 {
   opacity: 1;
@@ -9618,6 +9649,9 @@ header #searchContainer {
   -ms-transform: translateY(30px) translateZ(0);
   -webkit-transform: translateY(30px) translateZ(0);
   transform: translateY(30px) translateZ(0);
+}
+#featured-movies .info h2 a {
+  color: #fff;
 }
 #featured-movies .info .director {
   color: #fff;
@@ -16903,6 +16937,7 @@ input[type=submit] {
   text-align: center;
   width: 100%;
   left: 0;
+  text-transform: uppercase;
 }
 .press #calendar #mycalendar .fc-bg .fc-axis, .press #calendar #mycalendar .fc-content-skeleton .fc-axis {
   width: 60px !important;
@@ -17996,6 +18031,7 @@ input[type=submit] {
 }
 .fullcalendar #calendar #mycalendar .fc-slats .fc-time span {
   z-index: 2;
+  text-transform: uppercase;
 }
 .fullcalendar #calendar #mycalendar .fc-slats tr {
   height: 40px;
@@ -19526,6 +19562,7 @@ input[type=submit] {
   display: inline-block;
   width: 33%;
   vertical-align: top;
+  min-height: 120px;
 }
 .downloading-press .block .container .contain-dp .btns .button:first-child {
   border-bottom: 0px solid #fff;

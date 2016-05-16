@@ -78,6 +78,12 @@ class FDCPageLaSelectionAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales'   => $requiredLocales,
                 'fields'             => array(
+                    'applyChanges' => array(
+                        'field_type' => 'hidden',
+                        'attr' => array (
+                            'class' => 'hidden'
+                        )
+                    ),
                     'status'         => array(
                         'label'                     => 'form.label_status',
                         'translation_domain'        => 'BaseAdminBundle',

@@ -116,6 +116,12 @@ class MediaImageAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label'  => false,
                 'fields' => array(
+                    'applyChanges' => array(
+                        'field_type' => 'hidden',
+                        'attr' => array (
+                            'class' => 'hidden'
+                        )
+                    ),
                     'createdAt'      => array(
                         'display' => false
                     ),
@@ -223,6 +229,9 @@ class MediaImageAdmin extends Admin
             ))
             ->add('translate')
             ->add('displayedMobile')
+            ->add('excludeFromSearch', null, array(
+                'label' => 'form.label_exclude_from_search',
+            ))
             ->add('displayedAll', null, array(
                 'label' => 'form.media_image.displayed_all'
             ))

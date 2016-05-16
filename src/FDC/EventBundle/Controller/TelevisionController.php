@@ -233,7 +233,7 @@ class TelevisionController extends Controller
         ;
 
         if (!($page instanceof FDCPageWebTvChannels)) {
-            throw $this->createNotFoundException('Page channeles not found');
+            throw $this->createNotFoundException('Page channels not found');
         }
 
         $stickyId = false;
@@ -258,9 +258,13 @@ class TelevisionController extends Controller
             ->getLastMediaVideoOfEachWebTv($festival, $locale, array_keys($channelsIds))
         ;
 
-
         $channelsVideos = array();
         foreach ($groups as $key => $group) {
+            $lastVideo = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:MediaVideo')
+                ->getLastMediaVideoByWebTv($festival, $channelsIds[$group['channel']])
+            ;
             if ($stickyId == $group['channel']) {
                 $nbVideos = $this
                     ->getDoctrineManager()
@@ -269,7 +273,7 @@ class TelevisionController extends Controller
                 ;
                 $stickyChannelVideo = array(
                     'channel'  => $channelsIds[$group['channel']],
-                    'video'    => $group['lastVideo'],
+                    'video'    => $lastVideo,
                     'nbVideos' => count($nbVideos),
 
                 );
@@ -281,7 +285,7 @@ class TelevisionController extends Controller
                 ;
                 $channelsVideos[] = array(
                     'channel'  => $channelsIds[$group['channel']],
-                    'video'    => $group['lastVideo'],
+                    'video'    => $lastVideo,
                     'nbVideos' => count($nbVideos),
                 );
             }

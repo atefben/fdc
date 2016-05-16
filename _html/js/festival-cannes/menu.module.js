@@ -5,6 +5,9 @@ var displayed     = false,
 
 $(document).ready(function() {
   // overlay on main menu : show submenu and overlay
+  if(isiPad()) {
+    $('body').addClass('tablet');
+  }
   if(!$('body').hasClass('mob') &&  !isiPad()) {
     $('.main>li, .user>li').hover(function() {
       //$('#main, footer').addClass('overlay');

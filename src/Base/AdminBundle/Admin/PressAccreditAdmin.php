@@ -72,6 +72,12 @@ class PressAccreditAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => $requiredLocales,
                 'fields' => array(
+                    'applyChanges' => array(
+                        'field_type' => 'hidden',
+                        'attr' => array (
+                            'class' => 'hidden'
+                        )
+                    ),
                     'createdAt' => array(
                         'display' => false
                     ),

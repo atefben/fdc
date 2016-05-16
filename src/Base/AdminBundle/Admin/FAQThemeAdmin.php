@@ -82,6 +82,12 @@ class FAQThemeAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                 'label'  => false,
                 'fields' => array(
+                    'applyChanges' => array(
+                        'field_type' => 'hidden',
+                        'attr' => array (
+                            'class' => 'hidden'
+                        )
+                    ),
                     'name'      => array(
                         'label'              => 'form.label_theme_name',
                         'translation_domain' => 'BaseAdminBundle',

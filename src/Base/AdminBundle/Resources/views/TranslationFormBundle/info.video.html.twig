@@ -11,6 +11,7 @@
         {% set infoInfoTag = (form.parent.children.tags.vars.data|length > 0) ? form.parent.children.tags.vars.data : null %}
 
         {% for translationsFields in form %}
+            {{ form_row(translationsFields.applyChanges) }}
             {% set locale = translationsFields.vars.name %}
             {% if is_granted('ROLE_TRANSLATOR_FR') %}
                 {% set currentLocale = 'fr' %}

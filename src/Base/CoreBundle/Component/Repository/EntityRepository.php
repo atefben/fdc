@@ -192,8 +192,7 @@ class EntityRepository extends BaseRepository
      */
     public function addAWSVideoEncodersQueries(QueryBuilder $qb, $alias)
     {
-        $qb->andWhere("$alias.jobWebmState = :job_state")
-            ->andWhere("$alias.jobMp4State = :job_state")
+        $qb->andWhere("$alias.jobMp4State = :job_state")
             ->setParameter('job_state', MediaVideoTranslation::ENCODING_STATE_READY)
             ->andWhere("$alias.webmUrl IS NOT NULL")
             ->andWhere("$alias.mp4Url IS NOT NULL")
@@ -219,13 +218,23 @@ class EntityRepository extends BaseRepository
      * @param QueryBuilder $qb
      * @param $aliasMain
      * @param $aliasTranslation
+     * @param null $aliasImage
      * @return QueryBuilder
      */
-    public function addImageQueries(QueryBuilder $qb, $aliasMain, $aliasTranslation)
+    public function addImageQueries(QueryBuilder $qb, $aliasMain, $aliasTranslation, $aliasImage = null)
     {
-        $qb
-            ->andWhere("($aliasMain.image IS NOT NULL OR $aliasTranslation.imageAmazonUrl IS NOT NULL)")
-        ;
+        if ($aliasImage) {
+//            $qb
+//                ->andWhere("(($aliasMain.image IS NOT NULL AND $aliasImage.publishedAt >= :imageNow AND ($aliasImage.publishEndedAt IS NULL OR $aliasImage.publishEndedAt <= :imageNow)) OR $aliasTranslation.imageAmazonUrl IS NOT NULL)")
+//                ->setParameter('imageNow', new DateTime())
+//            ;
+        }
+        else {
+            $qb
+                ->andWhere("($aliasMain.image IS NOT NULL OR $aliasTranslation.imageAmazonUrl IS NOT NULL)")
+            ;
+        }
+
         return $qb;
     }
 

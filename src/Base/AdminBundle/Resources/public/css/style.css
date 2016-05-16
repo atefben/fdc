@@ -323,3 +323,7 @@ form[action*="widgetmosaicmovie"] div[id$="translations"] > .form-group > label.
     overflow: auto;
     height: 174px;
 }
+
+.socialwall-message {
+    width: 300px;
+}

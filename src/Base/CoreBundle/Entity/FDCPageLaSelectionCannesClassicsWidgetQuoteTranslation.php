@@ -22,6 +22,7 @@ use JMS\Serializer\Annotation\Since;
 class FDCPageLaSelectionCannesClassicsWidgetQuoteTranslation
 {
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use Time;
 
     /**

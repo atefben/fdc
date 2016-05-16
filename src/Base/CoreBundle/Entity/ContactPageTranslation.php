@@ -21,6 +21,7 @@ class ContactPageTranslation implements TranslateChildInterface
     use Time;
     use TranslateChild;
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
 
     /**
      * @var integer
@@ -69,7 +70,7 @@ class ContactPageTranslation implements TranslateChildInterface
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -92,7 +93,7 @@ class ContactPageTranslation implements TranslateChildInterface
     /**
      * Get firstColumn
      *
-     * @return string 
+     * @return string
      */
     public function getFirstColumn()
     {
@@ -115,7 +116,7 @@ class ContactPageTranslation implements TranslateChildInterface
     /**
      * Get secondColumn
      *
-     * @return string 
+     * @return string
      */
     public function getSecondColumn()
     {
@@ -138,7 +139,7 @@ class ContactPageTranslation implements TranslateChildInterface
     /**
      * Get thirdColumn
      *
-     * @return string 
+     * @return string
      */
     public function getThirdColumn()
     {

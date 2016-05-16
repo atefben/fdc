@@ -2,11 +2,14 @@
 
 namespace Base\CoreBundle\Twig\Extension;
 
+use Base\CoreBundle\Entity\MediaImage;
+use Base\CoreBundle\Entity\MediaImageTranslation;
 use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Twig_Extension;
-use Twig_SimpleFunction;
 use Twig_SimpleFilter;
+use Twig_SimpleFunction;
 
 /**
  * Class MediaAvailableExtension
@@ -14,20 +17,14 @@ use Twig_SimpleFilter;
  */
 class MediaVideoExtension extends Twig_Extension
 {
-
-
-    /**
-     * @var string
-     */
     private $localeFallback;
 
-    /**
-     * FilmMediaExtension constructor.
-     * @param string $localeFallback
-     s*/
-    public function __construct($localeFallback)
+    private $requestStack;
+
+    public function __construct($localeFallback, $requestStack)
     {
         $this->localeFallback = $localeFallback;
+        $this->requestStack = $requestStack;
     }
 
     public function getFunctions()
@@ -35,6 +32,7 @@ class MediaVideoExtension extends Twig_Extension
         return array(
             new Twig_SimpleFunction('is_available_video', array($this, 'isAvailableVideo')),
             new Twig_SimpleFunction('get_available_video', array($this, 'getAvailableVideo')),
+            new Twig_SimpleFunction('get_available_webtv_image_file', array($this, 'getAvailableWebTvImageFile')),
         );
     }
 
@@ -43,6 +41,7 @@ class MediaVideoExtension extends Twig_Extension
         return array(
             new Twig_SimpleFilter('is_available_video', array($this, 'isAvailableVideo')),
             new Twig_SimpleFilter('get_available_video', array($this, 'getAvailableVideo')),
+            new Twig_SimpleFilter('get_available_webtv_image_file', array($this, 'getAvailableWebTvImageFile')),
         );
     }
 
@@ -77,8 +76,7 @@ class MediaVideoExtension extends Twig_Extension
             if ($trans) {
                 if ($locale == 'fr') {
                     $status = $trans->getStatus() === MediaVideoTranslation::STATUS_PUBLISHED;
-                }
-                else {
+                } else {
                     $status = $trans->getStatus() === MediaVideoTranslation::STATUS_TRANSLATED;
                 }
                 $encoded = $trans->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
@@ -108,10 +106,10 @@ class MediaVideoExtension extends Twig_Extension
                 if ($trans) {
                     if ($locale == 'fr') {
                         $status = $trans->getStatus() === MediaVideoTranslation::STATUS_PUBLISHED;
-                    }
-                    else {
+                    } else {
                         $status = $trans->getStatus() === MediaVideoTranslation::STATUS_TRANSLATED;
                     }
+
                     $encoded = $trans->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
                     $hasURL = $trans->getWebmUrl() && $trans->getMp4Url();
                     if ($status && $encoded && $hasURL) {
@@ -125,6 +123,34 @@ class MediaVideoExtension extends Twig_Extension
                     $hasURL = $fr->getWebmUrl() && $fr->getMp4Url();
                     if ($status && $encoded && $hasURL) {
                         return $fr;
+                    }
+                }
+            }
+        }
+    }
+
+    public function getAvailableWebTvImageFile($mediaImage, $fallback = true)
+    {
+        if ($mediaImage instanceof MediaImage) {
+            $locale = $this->requestStack->getCurrentRequest()->getLocale();
+            $now = new \DateTime();
+            $fr = $trans = $mediaImage->findTranslationByLocale('fr');
+            $isPublished = $fr->getStatus() === TranslateChildInterface::STATUS_PUBLISHED;
+            $isPublished = $isPublished && $mediaImage->getPublishedAt() <= $now;
+            $isPublished = $isPublished && ($mediaImage->getPublishEndedAt() === null || $mediaImage->getPublishEndedAt() >= $now);
+            if ($isPublished) {
+                $trans = $mediaImage->findTranslationByLocale($locale);
+                if ($trans instanceof MediaImageTranslation && $trans->getFile() && $locale == 'fr') {
+                    return $trans->getFile();
+                } elseif ($trans instanceof MediaImageTranslation && $trans->getFile() && $trans->getStatus() === TranslateChildInterface::STATUS_TRANSLATED) {
+                    return $trans->getFile();
+                }
+                if ($fallback && $this->localeFallback !== $locale) {
+                    $master = $mediaImage->findTranslationByLocale($this->localeFallback);
+                    if ($master instanceof MediaImageTranslation && $master->getFile() && $locale == 'fr') {
+                        return $master->getFile();
+                    } elseif ($master instanceof MediaImageTranslation && $master->getFile() && $master->getStatus() === TranslateChildInterface::STATUS_TRANSLATED) {
+                        return $master->getFile();
                     }
                 }
             }

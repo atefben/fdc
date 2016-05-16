@@ -132,14 +132,12 @@ class CoreManager
         
         return $pagination->getItems();
     }
-    
+
     /**
-     * setContext function.
-     * 
-     * @access public
-     * @param mixed $groups
-     * @param mixed $paramFetcher
-     * @return void
+     * Set context function
+     * @param $groups
+     * @param $paramFetcher
+     * @return SerializationContext
      */
     public function setContext($groups, $paramFetcher)
     {

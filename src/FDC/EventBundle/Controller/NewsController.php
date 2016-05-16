@@ -2,21 +2,14 @@
 
 namespace FDC\EventBundle\Controller;
 
-use \DateTime;
-
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
-
-use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
-
+use DateTime;
 use FDC\EventBundle\Component\Controller\Controller;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @Route("")
@@ -88,7 +81,7 @@ class NewsController extends Controller
             'festival' => $this->getFestival()
         ), array(
             'date' => 'DESC'
-        ), 12, null)
+        ), 13, null)
         ;
 
         $socialGraphTimeline = array();
@@ -99,10 +92,11 @@ class NewsController extends Controller
             $socialGraphTimeline[]['date'] = $timelineDate->getDate();
             $socialGraphTimelineCount[] = $timelineDate->getCount();
         }
-        $socialGraphTimeline = array_reverse($socialGraphTimeline);
 
+        $socialGraphTimeline = array_reverse($socialGraphTimeline);
+        $pop = array_pop($socialGraphTimeline);
         $socialGraph['timeline'] = $socialGraphTimeline;
-        $socialGraph['timelineCount'] = json_encode($socialGraphTimelineCount);
+        $socialGraph['timelineCount'] = json_encode(array_reverse($socialGraphTimelineCount));
 
         ////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////       ARTICLE HOME         ///////////////////////////////
@@ -202,14 +196,36 @@ class NewsController extends Controller
         $videos = $homepage->getTopVideosAssociated();
         $channels = $homepage->getTopWebTvsAssociated();
 
+        $channelsIds = array();
         foreach ($channels as $channel) {
-            if ($channel->getAssociation() != null) {
-                $channel->getAssociation()->availableChannels = $this
-                    ->getDoctrineManager()
-                    ->getRepository('BaseCoreBundle:MediaVideo')
-                    ->getAvailableMediaVideosByWebTv($this->getFestival(), $locale, $channel->getAssociation()->getId())
-                ;
+            if ($channel->getAssociation()) {
+                $channelsIds[$channel->getAssociation()->getId()] = $channel->getAssociation();
             }
+        }
+
+        $groups = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
+            ->getLastMediaVideoOfEachWebTv($this->getFestival()->getId(), $locale, array_keys($channelsIds))
+        ;
+
+        $channelsVideos = array();
+        foreach ($groups as $key => $group) {
+            $lastVideo = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:MediaVideo')
+                ->getLastMediaVideoByWebTv($this->getFestival()->getId(), $channelsIds[$group['channel']])
+            ;
+            $nbVideos = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:MediaVideo')
+                ->getAvailableMediaVideosByWebTv($this->getFestival()->getId(), $locale, $group['channel'])
+            ;
+            $channelsVideos[] = array(
+                'channel'  => $channelsIds[$group['channel']],
+                'video'    => $lastVideo,
+                'nbVideos' => count($nbVideos),
+            );
         }
 
         ////////////////////////////////////////////////////////////////////////////////////
@@ -236,6 +252,7 @@ class NewsController extends Controller
             'filters'            => $filters,
             'videos'             => $videos,
             'channels'           => $channels,
+            'channelsVideos'     => $channelsVideos,
             'films'              => $films,
             'endOfArticles'      => $endOfArticles
         );
@@ -315,7 +332,7 @@ class NewsController extends Controller
         }
 
         //get images for slider articles
-        if ($homepage->getTopNewsType() == false) {
+        if (!isset($nextDay)) {
             $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $date->setTimestamp($timestamp));
         } else {
             $homeArticlesSlider = null;
@@ -533,7 +550,7 @@ class NewsController extends Controller
 
         //GET ALL NEWS ARTICLES
         $newsArticles = $em->getRepository('BaseCoreBundle:News')->getAllNews($locale, $settings->getFestival()->getId());
-        $newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale);
+        $newsArticles = $this->removeUnpublishedNewsAudioVideo($newsArticles, $locale, null, true);
         if ($newsArticles === null || count($newsArticles) == 0) {
             throw new NotFoundHttpException();
         }
@@ -679,7 +696,7 @@ class NewsController extends Controller
 
         $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
 
-        //GET ALL MEDIA AUDIOS
+        //GET ALL MEDIA VIDEOS
         $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $settings->getFestival()->getId(), $dateTime);
 
         //set default filters

@@ -1,18 +1,17 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 <div class="image-wrapper">
-
-{%  if channel.image is defined and channel.image is not null  %}
-    {% set transImage = channel.image.findTranslationByLocale(app.request.locale) %}
-    {% if transImage is null or transImage.file is null %}
-        {% set transImage = channel.image.findTranslationByLocale('fr') %}
+    {% set channel = group.channel %}
+    {% if group.channel.image and group.channel.image|trans_fallback('file') %}
+        {% set webTvImageFile = group.channel.image|trans_fallback('file') %}
+        {% thumbnail webTvImageFile, '586x370' %}
+    {% elseif get_available_webtv_image_file(group.video.image) %}
+        {% set webTvImageFile = get_available_webtv_image_file(group.video.image) %}
+        <img src="{{ media_public_url(webTvImageFile, '293x185') }}"
+             alt="">
+    {% elseif group.video|trans_fallback('imageAmazonUrl') %}
+        <img src="{{ s3_server_video ~ group.video|trans_fallback('imageAmazonUrl') }}" alt="">
     {% endif %}
-    {% thumbnail transImage.file, '586x370' %}
-{% elseif channel.availableChannels|last.image is defined and channel.availableChannels|last.image != null %}
-    <img src="{{ media_public_url(channel.availableChannels|last.image|trans_fallback('file'), '293x185') }}" alt="">
-{% else %}
-    <img src="{{ s3_server_video ~ channel.availableChannels|last|trans_fallback('imageAmazonUrl') }}" alt="">
-{% endif %}
 
 </div>
 <a class="linkVid" href="{{ path('fdc_event_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}"></a>
@@ -23,9 +22,10 @@
     <div class="info-container">
         <div class="vCenter">
             <div class="vCenterKid">
-                <a href="{{ path('fdc_event_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}" class="category">{{ channel|trans_fallback('name') }}</a>
+                <a href="{{ path('fdc_event_television_getchannel', { 'slug': channel|trans_fallback('slug') }) }}"
+                   class="category">{{ channel|trans_fallback('name') }}</a>
                 <span>
-                    {{ 'webtv.direct.nb_videos'|transchoice(channel.availableChannels|length) }}
+                    {{ 'webtv.direct.nb_videos'|transchoice(group.nbVideos) }}
                 </span>
             </div>
         </div>

@@ -25,6 +25,7 @@ class OrangeSeriesAndCieTranslation implements TranslateChildInterface
 {
     use TranslateChild;
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use Time;
     
     /**

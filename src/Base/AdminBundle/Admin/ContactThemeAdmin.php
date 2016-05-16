@@ -71,6 +71,12 @@ class ContactThemeAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => $requiredLocales,
                 'fields' => array(
+                    'applyChanges' => array(
+                        'field_type' => 'hidden',
+                        'attr' => array (
+                            'class' => 'hidden'
+                        )
+                    ),
                     'theme' => array(
                         'label' => 'form.label_theme',
                         'translation_domain' => 'BaseAdminBundle',
