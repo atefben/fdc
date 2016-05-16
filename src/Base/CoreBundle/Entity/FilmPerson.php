@@ -972,14 +972,14 @@ class FilmPerson implements TranslateMainInterface
         return $this->presidentJuryCredits;
     }
 
-    public function getFilmPersonOrderedByFilmProductionYearAsc()
+    public function getFilmPersonOrderedByFilmFestivalYearAsc()
     {
         $output = array();
 
         foreach ($this->films as $filmPerson) {
             if ($filmPerson instanceof FilmFilmPerson) {
                 if ($filmPerson->getFilm()) {
-                    $output[$filmPerson->getFilm()->getProductionYear() . ' ' . $filmPerson->getId()] = $filmPerson;
+                    $output[$filmPerson->getFilm()->getFestival()->getYear() . ' ' . $filmPerson->getId()] = $filmPerson;
                 }
             }
 
