@@ -131,7 +131,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     $topBar.find('.info').append($infoBar.find('.info').html());
 
-    if($('.container-webtv-ba-video').length() > 0) {
+    if($('.container-webtv-ba-video').length > 0) {
         var shareUrl = $('.video .video-container').attr('data-link');
     } else {
         var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$container.data('vid');
@@ -256,7 +256,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         sc    = secondaryContainer || 0;
 
         // CUSTOM LINK FACEBOOK
-        if($('.container-webtv-ba-video').length() > 0) {
+        if($('.container-webtv-ba-video').length > 0) {
             var shareUrl = $('.video .video-container').attr('data-link');
         } else {
             var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$playlist[index].vid;
