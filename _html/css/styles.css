@@ -5287,6 +5287,9 @@ div.chocolat-wrapper .thumbnails .thumb img {
 div.chocolat-wrapper .thumbnails .thumb.active img, div.chocolat-wrapper .thumbnails .thumb:hover img {
   opacity: 1 !important;
 }
+div.chocolat-wrapper .thumbnails .thumb.compat-object-fit {
+  background: #000 !important;
+}
 div.chocolat-wrapper .chocolat-bottom {
   background: url("../img/shadow-slideshow.png") repeat-x;
   border-top: 1px solid rgba(255, 255, 255, 0.4);

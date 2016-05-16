@@ -43,6 +43,7 @@ fos_elastica:
                                 ignore_case: true
             types:
                 media:
+                    indexable_callback: 'isElasticable'
                     persistence:
                         # the driver can be orm, mongodb, phpcr or propel
                         # listener and finder are not supported by
@@ -53,8 +54,7 @@ fos_elastica:
                         model: Base\CoreBundle\Entity\Media
                         provider: ~
                         listener:
-#                            immediate: ~
-                            is_indexable_callback: 'isElasticable'
+                            immediate: ~
                         finder: ~
                         repository: Base\CoreBundle\SearchRepository\MediaRepository
                     mappings:
@@ -242,13 +242,13 @@ fos_elastica:
                                 locale: ~
                                 status: ~
                 news:
+                    indexable_callback: 'isElasticable'
                     persistence:
                         driver: orm
                         model: Base\CoreBundle\Entity\News
                         provider: ~
                         listener:
-#                            immediate: ~
-                            is_indexable_callback: 'isElasticable'
+                            immediate: ~
                         finder: ~
                         repository: Base\CoreBundle\SearchRepository\NewsRepository
                     mappings:
