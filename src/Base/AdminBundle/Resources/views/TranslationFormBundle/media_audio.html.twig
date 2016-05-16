@@ -38,6 +38,10 @@
                                     {{ form_row(form.parent.children.tags) }}
                                     {{ form_row(form.parent.children.associatedFilms) }}
                                     <div class="form-group">
+                                        {{ form_widget(form.parent.children.excludeFromSearch) }}
+                                        {{ form_label(form.parent.children.excludeFromSearch) }}
+                                    </div>
+                                    <div class="form-group">
                                         {{ form_widget(form.parent.children.displayedAll) }}
                                         {{ form_label(form.parent.children.displayedAll) }}
                                     </div>

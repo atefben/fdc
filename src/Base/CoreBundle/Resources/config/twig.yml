@@ -131,7 +131,7 @@ services:
         class: Base\CoreBundle\Twig\Extension\MediaVideoExtension
         tags:
             - { name: twig.extension }
-        arguments: ["%locale_fallback%"]
+        arguments: ["%locale_fallback%", "@request_stack"]
 
     base.twig.legacy_film_image_extension:
         class: Base\CoreBundle\Twig\Extension\LegacyFilmImageExtension
@@ -144,3 +144,9 @@ services:
         arguments: []
         tags:
             - { name: twig.extension }
+
+    base.twig.agenda_date_translation_extension:
+        class: Base\CoreBundle\Twig\Extension\AgendaDateTranslationExtension
+        tags:
+            - { name: twig.extension }
+        arguments: ["%locale_fallback%", "@request_stack"]

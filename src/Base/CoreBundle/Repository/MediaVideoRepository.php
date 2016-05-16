@@ -140,6 +140,35 @@ class MediaVideoRepository extends TranslationRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function getLastMediaVideoByWebTv($festival, $webtv)
+    {
+
+        $qb = $this->createQueryBuilder('mv');
+
+        $qb
+            ->join('mv.translations', 'mvt')
+            ->join('mv.webTv', 'wtv')
+            ->leftJoin('mv.image', 'img')
+            ->join('wtv.translations', 'wtvt')
+            ->andWhere('wtv.id IN (:in)')
+            ->setParameter('in', $webtv->getId())
+        ;
+
+        $this->addImageQueries($qb, 'mv', 'mvt', 'img');
+        $this->addMasterQueries($qb, 'mv', $festival, true);
+        $this->addMasterQueries($qb, 'wtv', $festival, false);
+        $this->addTranslationQueries($qb, 'mvt', 'fr');
+        $this->addTranslationQueries($qb, 'wtvt', 'fr');
+        $this->addAWSVideoEncodersQueries($qb, 'mvt');
+
+        $qb
+            ->orderBy('mv.publishedAt', 'desc')
+            ->setMaxResults(1)
+        ;
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
     public function getAvailableMediaVideosByWebTv($festival, $locale, $in)
     {
         $qb = $this->createQueryBuilder('mv');

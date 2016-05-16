@@ -19,7 +19,7 @@
                         {% endif %}
 
                         <div class="img {% if firstPicture == true %}active{% endif %}">
-                            <a id="photo{{ photo.id }}"
+                            <a id="photo{{ photo.id }}" data-pid="{{ photo.id }}"
                                class="chocolat-image ajax"
                                href="{% if photo.media.file is not empty %}{% path photo.media.file, photo.media.file.context ~ '_big' %}{% endif %}"
                                title='<span>{{ title }}</span>'

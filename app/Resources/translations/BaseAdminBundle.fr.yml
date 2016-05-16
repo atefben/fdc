@@ -958,6 +958,7 @@ form:
             twitter:title : Tous les événéments - Festival de Cannes 2016
             twitter:description : Retrouvez tous les événements de l'édition 2016 du Festival de Cannes
             twitter:image : [preset dernier article remonté]
+    label_exclude_from_search: Exclure de la recherche
     event:
         label_title: Titre
         helper_title: 255 caractères max

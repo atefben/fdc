@@ -49,7 +49,7 @@ class ArtistController extends Controller
         if ($artist === null) {
             throw $this->createNotFoundException();
         }
-
+        
         // find directors randomly, order them after by firstname
         // (cant use mysql, doesnt work)
         $directors = $this

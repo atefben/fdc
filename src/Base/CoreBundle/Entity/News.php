@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use Application\Sonata\UserBundle\Entity\User;
 use Base\AdminBundle\Component\Admin\Export;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use \DateTime;
 
 use Base\CoreBundle\Util\SeoMain;
@@ -97,6 +98,13 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     private $displayedMobile;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0}, nullable=true)
+     */
+    private $excludeFromSearch;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
@@ -136,7 +144,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     private $associatedNews;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FilmFilm")
+     * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="news")
      */
     private $associatedFilm;
 
@@ -1071,5 +1079,41 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     public function getTypeClone()
     {
         return $this->typeClone;
+    }
+
+    public function isElasticable()
+    {
+        $isElasticable = true;
+        $fr = $this->findTranslationByLocale('fr');
+        if ($fr->getStatus() !== TranslateChildInterface::STATUS_PUBLISHED) {
+            $isElasticable = false;
+        }
+        if ($this->getExcludeFromSearch()) {
+            $isElasticable = false;
+        }
+        return $isElasticable;
+    }
+
+    /**
+     * Set excludeFromSearch
+     *
+     * @param boolean $excludeFromSearch
+     * @return Media
+     */
+    public function setExcludeFromSearch($excludeFromSearch)
+    {
+        $this->excludeFromSearch = $excludeFromSearch;
+
+        return $this;
+    }
+
+    /**
+     * Get excludeFromSearch
+     *
+     * @return boolean
+     */
+    public function getExcludeFromSearch()
+    {
+        return $this->excludeFromSearch;
     }
 }

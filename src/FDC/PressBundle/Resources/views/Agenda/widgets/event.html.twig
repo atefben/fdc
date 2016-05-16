@@ -48,7 +48,13 @@
             <div class="info">
                 {%- if event.programmationDynamics|length > 0 and event.programmationDynamics[0].type is not empty -%}
                     <div class="info-dynamic-prog">
-                        {{- event.programmationDynamics[0].type.name|upper -}}
+                        {%- set trans_slug = 'programmation.objet.' ~ event.programmationDynamics[0].type.name|remove_accents|sonata_slugify|lower -%}
+                        {%- set trans = trans_slug|trans({}, 'FDCEventBundle') -%}
+                        {%- if trans_slug != trans -%}
+                            {{- trans|upper -}}
+                        {%- else -%}
+                            {{- event.programmationDynamics[0].type.name|upper -}}
+                        {%- endif -%}
                     </div>
                 {%- endif -%}
                 {%- if event.medias|length > 0 -%}
@@ -83,13 +89,13 @@
             </div>
             <div class="bottom">
             <span class="duration">
-                {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
+                {%- if difference.h > 0 -%}{{ difference.h }}{{ app.request.locale == 'zh' ? '点' : 'H' }}{%- endif -%}
                 {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i -}}
             </span> - {{- ' ' -}}
                 <span class="ven">
                 {%- if event.room -%}
                     {% set trans_slug = 'programmation.salle.' ~ event.room.name|remove_accents|sonata_slugify %}
-                    {% set trans = trans_slug|trans %}
+                    {% set trans = trans_slug|trans({}, 'FDCEventBundle') %}
                     {% if trans_slug != trans %}
                         {{- trans -}}
                     {% else %}
@@ -122,7 +128,13 @@
             <div class="info">
                 {%- if event.programmationDynamics|length > 0 and event.programmationDynamics[0].type is not empty -%}
                     <div class="info-dynamic-prog">
-                        {{- event.programmationDynamics[0].type.name|upper -}}
+                        {%- set trans_slug = 'programmation.objet.' ~ event.programmationDynamics[0].type.name|remove_accents|sonata_slugify|lower -%}
+                        {%- set trans = trans_slug|trans({}, 'FDCEventBundle') -%}
+                        {%- if trans_slug != trans -%}
+                            {{- trans|upper -}}
+                        {%- else -%}
+                            {{- event.programmationDynamics[0].type.name|upper -}}
+                        {%- endif -%}
                     </div>
                 {%- endif -%}
                 <div class="txt">
@@ -131,13 +143,13 @@
             </div>
             <div class="bottom">
             <span class="duration">
-                {%- if difference.h > 0 -%}{{ difference.h }}H{%- endif -%}
+                {%- if difference.h > 0 -%}{{ difference.h }}{{ app.request.locale == 'zh' ? '点' : 'H' }}{%- endif -%}
                 {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
             </span> -{{- ' ' -}}
                 <span class="ven">
                 {%- if event.room -%}
                     {% set trans_slug = 'programmation.salle.' ~ event.room.name|remove_accents|sonata_slugify %}
-                    {% set trans = trans_slug|trans %}
+                    {% set trans = trans_slug|trans({}, 'FDCEventBundle') %}
                     {% if trans_slug != trans %}
                         {{- trans -}}
                     {% else %}

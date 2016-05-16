@@ -47,11 +47,18 @@
                     {% endif %}
                     <li><a href="#press" class="link">{{ 'movie.middlenav.infospresse'|trans }}</a></li>
                 </ul>
+                {% set secondTitle = null %}
+                {% if movie|trans_fallback_movie('title') is not empty and movie|trans_fallback_movie('title') != movie.titleVO %}
+                    {% set mainTitle = movie.titleVO %}
+                    {% set secondTitle = movie|trans_fallback_movie('title') %}
+                {% else %}
+                    {% set mainTitle = movie.titleVO %}
+                {% endif %}
                 <div class="buttons square">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" rel="nofollow" class="button facebook">
+                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}&picture={% include 'FDCEventBundle:Global:components/film.poster.share.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20Festival%20de%20Cannes&caption=&description={{ movie|trans_fallback('synopsis')|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" rel="nofollow" class="button facebook">
 						<i class="icon icon_facebook"></i>
 					</a>
-					<a href="https://twitter.com/intent/tweet?url={{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" rel="nofollow" class="button twitter">
+					<a href="https://twitter.com/intent/tweet?text={{ mainTitle|url_encode(true) }} {{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" rel="nofollow" class="button twitter">
 						<i class="icon icon_twitter"></i>
 					</a>
                     <a href="#" rel="nofollow" class="button link self"><i class="icon icon_link"></i></a>

@@ -87,7 +87,7 @@ sonata_media:
                   45x60:  { width: 45 , height: 60 , quality: 100, constraint: false }
                   tiny:  { width: 46 , height: 64 , quality: 100 }
                   small: { width: 187 , height: 255 , quality: 100 }
-                  135x185:    { width: 135 , height: 185 , quality: 100 }
+                  135x185:    { width: 135 , height: 185 , quality: 100, constraint: false }
                   135x145:    { width: 135 , height: 145 , quality: 100, constraint: false }
                   300x400: { width: 300, height: 400, quality 100 }
                   319x434:  { width: 319 , height: 434 , quality: 100 }
@@ -163,6 +163,7 @@ sonata_media:
                 194x122: {width: 194, height: 122, quality: 100, constraint: false}
                 97x61:   {width: 97, height: 61, quality: 100, constraint: false}
                 mobile: { width: 584 , height: 794 , quality: 100 }
+                tiny:    { width: 76, height: 92, quality: 100, constraint: false }
                 # Slider Home(TEMPORAIRE CAR NON DEFINI), audio fullscreen (TEMPORAIRE CAR NON DEFINI)
                 2560x1620: { width: 2560 , height: 1620 , quality: 100}
                 # Diaporama photo
@@ -228,8 +229,10 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
+                tiny:  { width: 76, height: 92, quality: 100, constraint: false }
                 45x60: { width: 45, height: 60, quality: 100, constraint: false }
                 mobile: { width: 584 , height: 794 , quality: 100 }
+                tiny:    { width: 76, height: 92, quality: 100, constraint: false }
                 small:   { width: 187, height: 255, quality: 100, constraint: false }
                 212x134: { width: 212 , height: 134 , quality: 100, constraint: false }
                 293x185: { width: 293 , height: 185 , quality: 100, constraint: false }

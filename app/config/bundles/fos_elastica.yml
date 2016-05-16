@@ -53,7 +53,8 @@ fos_elastica:
                         model: Base\CoreBundle\Entity\Media
                         provider: ~
                         listener:
-                            immediate: ~
+#                            immediate: ~
+                            is_indexable_callback: 'isElasticable'
                         finder: ~
                         repository: Base\CoreBundle\SearchRepository\MediaRepository
                     mappings:
@@ -246,7 +247,8 @@ fos_elastica:
                         model: Base\CoreBundle\Entity\News
                         provider: ~
                         listener:
-                            immediate: ~
+#                            immediate: ~
+                            is_indexable_callback: 'isElasticable'
                         finder: ~
                         repository: Base\CoreBundle\SearchRepository\NewsRepository
                     mappings:

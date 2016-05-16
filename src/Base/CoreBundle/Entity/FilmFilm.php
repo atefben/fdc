@@ -427,6 +427,13 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     private $associatedNews;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="News", mappedBy="associatedFilm")
+     */
+    private $news;
+
+
+    /**
      * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="association", cascade={"all"}, orphanRemoval=true)
      * @Groups({
      *     "trailer_show",
@@ -2569,5 +2576,38 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getSelectionSubsection()
     {
         return $this->selectionSubsection;
+    }
+
+    /**
+     * Add news
+     *
+     * @param \Base\CoreBundle\Entity\News $news
+     * @return FilmFilm
+     */
+    public function addNews(\Base\CoreBundle\Entity\News $news)
+    {
+        $this->news[] = $news;
+
+        return $this;
+    }
+
+    /**
+     * Remove news
+     *
+     * @param \Base\CoreBundle\Entity\News $news
+     */
+    public function removeNews(\Base\CoreBundle\Entity\News $news)
+    {
+        $this->news->removeElement($news);
+    }
+
+    /**
+     * Get news
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNews()
+    {
+        return $this->news;
     }
 }
