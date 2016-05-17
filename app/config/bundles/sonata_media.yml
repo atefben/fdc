@@ -313,7 +313,7 @@ sonata_media:
                 - sonata.media.provider.image
             formats:
                 mobile: { width: 584 , height: 794 , quality: 100 }
-                small: { width: 400 , quality: 100, constraint: false }
+                small: { width: 400 , height: 300, quality: 100, constraint: false }
 
         media_archive:
             providers:
