@@ -35,7 +35,8 @@ class TranslationRepository extends EntityRepository
             ;
         }
 
-        if (!empty($params['sortField']) && !empty($params['sortValue'])) {
+        if (!empty($params['sortField']) && !in_array($params['sortField'], array('typeClone', 'publishedAt')) &&
+            !empty($params['sortValue'])) {
             $qb->orderBy('n.'. $params['sortField'], $params['sortValue']);
         }
 
