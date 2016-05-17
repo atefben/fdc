@@ -25,11 +25,20 @@ class PalmaresController extends Controller
         $festival = $this->getFestival()->getId();
         $locale = $request->getLocale();
 
-        $waitingPage = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FDCPageWaiting')
-            ->getSingleWaitingPageByRoute($request->get('_route'))
-        ;
+        try {
+            $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
+        } catch (\Exception $e) {
+            $isAdmin = false;
+        }
+
+        if ($isAdmin == true) {
+            $waitingPage = null;
+        } else {
+            $waitingPage = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FDCPageWaiting')
+                ->getSingleWaitingPageByRoute($request->get('_route'));
+        }
 
 
         $pages = $this
