@@ -34,7 +34,7 @@
                                 <a id="photo{{ gallery.media.id }}"
                                    class="chocolat-image ajax"
                                    href="{% path file, '2560x1620' %}"
-                                   title="<span class='category'>{{ gallery.media.theme|trans_fallback('name') }}</span><span class='date'>{{ gallery.media.createdAt|date('d.m.y H:i') }}</span><h2>{{ trans.legend }}</h2><span>{{ 'slider.credit_image'|trans }} / {{ copyright }}</span">
+                                   title="<span class='category'>{{ gallery.media.theme|trans_fallback('name') }}</span><span class='date'>{{ gallery.media.createdAt|date('d.m.y H:i') }}</span><h2>{{ gallery.media|trans_fallback('legend')  }}</h2><span>{{ 'slider.credit_image'|trans }} / {{ copyright }}</span">
                                     <img src="{% path file, '2560x1620' %}" alt="{{ trans.alt }}">
                                 </a>
                             </div>

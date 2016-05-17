@@ -61,7 +61,8 @@ class AgendaDateTranslationExtension extends Twig_Extension
             $output =  str_pad($hour, 2, '0', STR_PAD_LEFT) . '点';
         } elseif ($locale == 'en') {
             if ($hour > 12) {
-                $display = (string)((int)$hour - 12);
+                $display =  explode(':',$hour);
+                $display = (isset($display[1])) ? ($display[0] - 12 . ':' . $display[1]) : $display[0];
             } elseif (!$hour) {
                 $display = '12';
             }

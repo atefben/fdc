@@ -33,8 +33,8 @@
                         {% set file = trans.file %}
                         {% set copyright = gallery.media|trans_fallback('copyright') %}
                         <div class="img {% if key == 0 %}active{% endif %}">
-                            <a id="photo{{ gallery.media.id }}" data-pid="{{ gallery.media.id }}" class="chocolat-image ajax" href="{% path file, '2560x1620' %}" title="<span class='category'>{{ gallery.media.theme|trans_fallback('name') }}</span><span class='date'>{{ gallery.media.createdAt|date('d.m.y H:i') }}</span><h2>{{ trans.legend }}</h2>" data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}">
-                                <img src="{% path file, '1266x798' %}" alt="{{ trans.alt }}" title="{{ trans.legend }}">
+                            <a id="photo{{ gallery.media.id }}" data-pid="{{ gallery.media.id }}" class="chocolat-image ajax" href="{% path file, '2560x1620' %}" title="<span class='category'>{{ gallery.media.theme|trans_fallback('name') }}</span><span class='date'>{{ gallery.media.createdAt|date('d.m.y H:i') }}</span><h2>{{ gallery.media|trans_fallback('legend')}}</h2>" data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}">
+                                <img src="{% path file, '1266x798' %}" alt="{{ gallery.media|trans_fallback('alt') }}" title="{{ gallery.media|trans_fallback('legend')  }}">
                             </a>
                         </div>
                     {% endif %}
