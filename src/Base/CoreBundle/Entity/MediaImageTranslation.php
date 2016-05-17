@@ -37,7 +37,8 @@ class MediaImageTranslation implements TranslateChildInterface
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      * @Assert\Valid()
      *
-     * @Groups({"home", "news_list", "news_show", "film_show", "event_list", "event_show", "home", "today_images", "live"})
+     * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
+     *     "search"})
      */
     private $file;
 
@@ -45,7 +46,8 @@ class MediaImageTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"home", "news_list", "news_show", "film_show", "event_list", "event_show", "home", "today_images", "live"})
+     * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
+     *     "search"})
      */
     private $legend;
 
@@ -53,7 +55,8 @@ class MediaImageTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"home", "news_list", "news_show", "film_show", "event_list", "event_show", "home", "today_images", "live"})
+     * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
+     *     "search"})
      */
     private $alt;
 
@@ -61,7 +64,8 @@ class MediaImageTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"home", "news_list", "news_show", "film_show", "event_list", "event_show", "home", "today_images", "live"})
+     * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
+     *     "search"})
      * @Serializer\Accessor(getter="getApiCopyright")
      */
     private $copyright;

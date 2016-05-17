@@ -178,7 +178,7 @@ class GlobalController extends Controller {
                         'message' => $data['message'],
                         'section' => $data['section'],
                         'title' => $data['title'],
-                        'description' => $data['description'],
+                        'description' => strip_tags($data['description'], '<p><em>'),
                         'detail' => $data['detail'],
                         'url' => $data['url']
                     )), 'text/html');
@@ -193,7 +193,7 @@ class GlobalController extends Controller {
                             'message' => $data['message'],
                             'section' => $data['section'],
                             'title' => $data['title'],
-                            'description' => $data['description'],
+                            'description' => strip_tags($data['description'], '<p><em>'),
                             'detail' => $data['detail'],
                             'url' => $data['url']
                         )), 'text/html');
@@ -294,7 +294,7 @@ class GlobalController extends Controller {
                         'message' => $data['message'],
                         'section' => $data['section'],
                         'title' => $data['title'],
-                        'description' => $data['description'],
+                        'description' => strip_tags($data['description'], '<p><em>'),
                         'detail' => $data['detail'],
                         'url' => $data['url']
                     )), 'text/html');
@@ -309,7 +309,7 @@ class GlobalController extends Controller {
                             'message' => $data['message'],
                             'section' => $data['section'],
                             'title' => $data['title'],
-                            'description' => $data['description'],
+                            'description' => strip_tags($data['description'], '<p><em>'),
                             'detail' => $data['detail'],
                             'url' => $data['url']
                         )), 'text/html');

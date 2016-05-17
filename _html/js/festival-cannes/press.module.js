@@ -320,7 +320,7 @@ $(document).ready(function () {
 
           var minutes = (event.duration % 60) < 10 ? '0'+(event.duration % 60) : (event.duration % 60),
               heures  = Math.floor(event.duration / 60);
-          switch(GLOBALS.calendar.labelFormat[GLOBALS.locale]) {
+          switch(GLOBALS.locale) {
             case 'fr': var dur     = heures + 'H' + minutes; break
             case 'en': var dur     = heures + ':' + minutes; break
             case 'es': var dur     = heures + 'H' + minutes; break
@@ -533,7 +533,7 @@ $(document).ready(function () {
 
           var minutes = (event.duration % 60) < 10 ? '0'+(event.duration % 60) : (event.duration % 60),
               heures  = Math.floor(event.duration / 60);
-          switch(GLOBALS.calendar.labelFormat[GLOBALS.locale]) {
+          switch(GLOBALS.locale) {
             case 'fr': var dur     = heures + 'H' + minutes; break
             case 'en': var dur     = heures + ':' + minutes; break
             case 'es': var dur     = heures + 'H' + minutes; break
@@ -782,7 +782,7 @@ $(document).ready(function () {
 
             if ((dur < 1 || (dur < 2 && minutes < 45)) && $(this).data('popin') != true) {
               $(this).addClass('one-hour');
-              switch(GLOBALS.calendar.labelFormat[GLOBALS.locale]) {
+              switch(GLOBALS.locale) {
                 case 'fr': $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - '); break
                 case 'en': $(this).find('.txt span').prepend(dur + ':' + minutes + ' - '); break
                 case 'es': $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - '); break

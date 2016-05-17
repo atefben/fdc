@@ -46,7 +46,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @Groups({"news_list", "news_show", "home", "film_show"})
+     * @Groups({"news_list", "search", "news_show", "home", "film_show"})
      */
     private $id;
 
@@ -55,7 +55,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
       *
       * @ORM\ManyToOne(targetEntity="Theme")
       *
-      * @Groups({"news_list", "news_show", "home", "film_show"})
+      * @Groups({"news_list", "search", "news_show", "home", "film_show"})
       * @Assert\NotNull()
       */
     private $theme;
@@ -139,7 +139,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
     /**
      * @ORM\OneToMany(targetEntity="NewsNewsAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "search", "news_show"})
      */
     private $associatedNews;
 
@@ -189,7 +189,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"news_list", "news_show", "live", "web_tv_show", "live", "home", "film_show"})
+     * @Groups({"news_list", "search", "news_show", "live", "web_tv_show", "live", "home", "film_show"})
      */
     private $publishedAt;
 
@@ -197,14 +197,14 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({"news_list", "news_show", "live", "web_tv_show", "live", "home", "film_show"})
+     * @Groups({"news_list", "search", "news_show", "live", "web_tv_show", "live", "home", "film_show"})
      */
     private $publishEndedAt;
 
     /**
      * ArrayCollection
      *
-     * @Groups({"news_list", "news_show", "film_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "film_show", "home"})
      */
     protected $translations;
 
@@ -276,7 +276,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"news_list", "news_show", "film_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "film_show", "home"})
      */
     public function getNewsType()
     {

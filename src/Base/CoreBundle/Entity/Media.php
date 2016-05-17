@@ -42,7 +42,7 @@ abstract class Media implements TranslateMainInterface
      * @ORM\Column(type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @Groups("news_list")
+     * @Groups({"news_list", "search"})
      */
     protected $id;
 
@@ -51,7 +51,7 @@ abstract class Media implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Theme")
      *
-     * @Groups({"news_list", "news_show", "film_show", "live", "event_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "film_show", "live", "event_show", "home", "search"})
      * @Assert\NotNull()
      */
     private $theme;
@@ -72,11 +72,12 @@ abstract class Media implements TranslateMainInterface
      *     "web_tv_show",
      *     "film_list",
      *     "film_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "event_show",
      *     "home",
-     *     "orange_video_on_demand"
+     *     "orange_video_on_demand",
+     *     "search"
      * })
      * @Serializer\Accessor(getter="getApiPublishedAt")
      */
@@ -91,11 +92,12 @@ abstract class Media implements TranslateMainInterface
      *     "web_tv_show",
      *     "film_list",
      *     "film_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "event_show",
      *     "home",
-     *     "orange_video_on_demand"
+     *     "orange_video_on_demand",
+     *     "search"
      * })
      *
      */
@@ -147,20 +149,21 @@ abstract class Media implements TranslateMainInterface
      * @var ArrayCollection
      * @Groups({
      *     "news_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "trailer_show",
      *     "live",
      *     "web_tv_show",
      *     "live",
      *     "film_list",
      *     "film_show",
-     *     "event_list",
+     *     "event_list", "search",
      *     "event_show",
      *     "home",
      *     "today_images",
      *     "live",
      *     "home",
-     *     "orange_video_on_demand"
+     *     "orange_video_on_demand",
+     *     "search"
      * })
      *
      * @Assert\Valid()
@@ -229,7 +232,7 @@ abstract class Media implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"home", "news_list", "news_show"})
+     * @Groups({"home", "news_list", "search", "news_show", "search"})
      */
     public function getMediaType()
     {

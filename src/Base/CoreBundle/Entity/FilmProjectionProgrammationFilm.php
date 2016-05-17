@@ -43,7 +43,7 @@ class FilmProjectionProgrammationFilm
      *
      * @ORM\ManyToOne(targetEntity="FilmFilm", cascade={"persist"}, inversedBy="projectionProgrammationFilms")
      *
-     * @Groups({"projection_list", "projection_show", "home", "news_list"})
+     * @Groups({"projection_list", "projection_show", "home", "news_list", "search"})
      */
     private $film;
 

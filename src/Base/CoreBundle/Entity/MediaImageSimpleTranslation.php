@@ -35,7 +35,7 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      * @Assert\Valid()
      *
      * @Groups({
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "live",
      *     "web_tv_show",
@@ -54,7 +54,8 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      *     "classics",
      *     "orange_programmation_ocs",
      *     "orange_video_on_demand",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $file;
@@ -65,7 +66,7 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Groups({
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "live",
      *     "web_tv_show",
@@ -85,7 +86,8 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      *     "classics",
      *     "orange_programmation_ocs",
      *     "orange_video_on_demand",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $alt;

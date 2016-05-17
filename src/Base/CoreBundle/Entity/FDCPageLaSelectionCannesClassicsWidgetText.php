@@ -24,7 +24,7 @@ class FDCPageLaSelectionCannesClassicsWidgetText extends FDCPageLaSelectionCanne
     /**
      * @var ArrayCollection
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "search", "news_show"})
      */
     protected $translations;
     

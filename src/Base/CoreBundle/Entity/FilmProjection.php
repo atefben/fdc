@@ -36,7 +36,7 @@ class FilmProjection
      *     "film_show",
      *     "event_show",
      *     "home",
-     *     "news_list"
+     *     "news_list", "search"
      * })
      */
     private $id;
@@ -53,7 +53,7 @@ class FilmProjection
      *     "film_show",
      *     "event_show",
      *     "home",
-     *     "news_list"
+     *     "news_list", "search"
      * })
      */
     private $startsAt;
@@ -69,7 +69,7 @@ class FilmProjection
      *     "film_list",
      *     "film_show",
      *     "event_show",
-     *     "news_list"
+     *     "news_list", "search"
      * })
      */
     private $endsAt;
@@ -86,7 +86,7 @@ class FilmProjection
      *     "film_show",
      *     "event_show",
      *     "home",
-     *     "news_list"
+     *     "news_list", "search"
      * })
      */
     private $type;
@@ -132,7 +132,7 @@ class FilmProjection
      *     "film_list",
      *     "film_show",
      *     "home",
-     *     "news_list"
+     *     "news_list", "search"
      * })
      */
     private $room;
@@ -142,7 +142,7 @@ class FilmProjection
      *
      * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilm", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"projection_list", "projection_show", "home", "news_list"})
+     * @Groups({"projection_list", "projection_show", "home", "news_list", "search"})
      */
     private $programmationFilms;
 
@@ -167,7 +167,7 @@ class FilmProjection
      *
      * @ORM\OneToMany(targetEntity="FilmProjectionMedia", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"projection_list", "projection_show", "news_list"})
+     * @Groups({"projection_list", "projection_show", "news_list", "search"})
      */
     private $medias;
 

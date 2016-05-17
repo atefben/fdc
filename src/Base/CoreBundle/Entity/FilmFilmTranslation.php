@@ -41,14 +41,15 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "trailer_show",
      *     "film_list",
      *     "film_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "projection_list",
      *     "film_selection_section_show",
      *     "home",
-     *     "news_list",
+     *     "news_list", "search",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      * @Serializer\Accessor(getter="getApiTitle")
      */
@@ -81,7 +82,8 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "film_list",
      *     "film_show",
      *     "projection_list",
-     *     "film_selection_section_show"
+     *     "film_selection_section_show",
+     *     "search"
      * })
      */
     private $synopsis;

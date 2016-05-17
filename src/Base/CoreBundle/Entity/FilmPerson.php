@@ -48,14 +48,15 @@ class FilmPerson implements TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
      *     "award_list",
      *     "jury_list",
      *     "jury_show",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $id;
@@ -72,7 +73,7 @@ class FilmPerson implements TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
      *     "award_list",
@@ -94,7 +95,7 @@ class FilmPerson implements TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
      *     "award_list",
@@ -116,7 +117,7 @@ class FilmPerson implements TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
      *     "award_list",
@@ -139,7 +140,7 @@ class FilmPerson implements TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
      *     "award_list",
@@ -163,7 +164,7 @@ class FilmPerson implements TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
      *     "award_list",
@@ -186,7 +187,7 @@ class FilmPerson implements TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
      *     "award_list",
@@ -220,13 +221,14 @@ class FilmPerson implements TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "home",
      *     "film_selection_section_show",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $lastname;
@@ -247,13 +249,14 @@ class FilmPerson implements TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "home",
      *     "film_selection_section_show",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $firstname;
@@ -274,13 +277,14 @@ class FilmPerson implements TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "home",
      *     "film_selection_section_show",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $asianName;
@@ -297,10 +301,10 @@ class FilmPerson implements TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
-     *     "award_list"
+     *     "award_list",
      * })
      */
     private $nationality;
@@ -317,7 +321,7 @@ class FilmPerson implements TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
      *     "award_list"

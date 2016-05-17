@@ -30,7 +30,7 @@ class InfoWidgetQuoteTranslation
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "search", "news_show"})
      */
     private $content;
 

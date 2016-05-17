@@ -55,7 +55,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "trailer_show",
      *     "live",
@@ -65,7 +65,8 @@ class MediaVideoTranslation implements TranslateChildInterface
      *     "film_show",
      *     "event_show",
      *     "home",
-     *     "orange_video_on_demand"
+     *     "orange_video_on_demand",
+     *     "search"
      * })
      */
     private $title;
@@ -77,14 +78,15 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "live",
      *     "web_tv_show",
      *     "live",
      *     "event_show",
      *     "home",
-     *     "orange_video_on_demand"
+     *     "orange_video_on_demand",
+     *     "search"
      * })
      * @Serializer\Accessor(getter="getEncodeImageAmazonUrl")
      */
@@ -125,14 +127,15 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "live",
      *     "web_tv_show",
      *     "live",
      *     "event_show",
      *     "home",
-     *     "orange_video_on_demand"
+     *     "orange_video_on_demand",
+     *     "search"
      * })
      */
     private $mp4Url;
@@ -144,14 +147,15 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "live",
      *     "web_tv_show",
      *     "live",
      *     "event_show",
      *     "home",
-     *     "orange_video_on_demand"
+     *     "orange_video_on_demand",
+     *     "search"
      * })
      */
     private $webmUrl;

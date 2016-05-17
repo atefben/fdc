@@ -35,7 +35,7 @@ class FilmSelectionSubsectionTranslation implements TranslateChildInterface
      *     "film_selection_list",
      *     "film_selection_section_list",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "home"
      * })

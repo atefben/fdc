@@ -65,13 +65,14 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "film_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "home",
      *     "film_selection_section_show",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $person;
@@ -86,11 +87,12 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "film_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $position;
