@@ -275,6 +275,7 @@ fos_elastica:
                                         locale: ~
                                 
                 artist:
+                    indexable_callback: 'isElasticable'
                     persistence:
                         driver: orm
                         model: Base\CoreBundle\Entity\FilmPerson

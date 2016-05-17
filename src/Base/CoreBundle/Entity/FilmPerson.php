@@ -991,4 +991,14 @@ class FilmPerson implements TranslateMainInterface
         krsort($output);
         return new ArrayCollection(array_values($output));
     }
+    
+    public function isElasticable()
+    {
+        $isElasticable = false;
+        if (count($this->getFilms()) || count($this->getAwards()) || count($this->getJuries())) {
+            $isElasticable = true;
+        }
+
+        return $isElasticable;
+    }
 }
