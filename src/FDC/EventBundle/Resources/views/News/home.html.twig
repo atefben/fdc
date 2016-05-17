@@ -302,10 +302,12 @@
         {% if homepage.displayedFilms == false %}
             <div id="featured-movies">
                 <div id="slider-movies" class="owl-carousel">
+                    {% set count = 0 %}
                     {% for film in films %}
                         {% if film is defined and film != null %}
-                            {% include 'FDCEventBundle:News:widgets/videos.html.twig' %}
+                            {% include 'FDCEventBundle:News:widgets/videos.html.twig' with {"count" : count} %}
                         {% endif %}
+                        {% set count = count+1 %}
                     {% endfor %}
                 </div>
             </div>

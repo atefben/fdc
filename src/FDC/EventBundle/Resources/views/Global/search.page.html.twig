@@ -240,7 +240,7 @@
                                                             
                                                         </span>
                                                         {% if film.countries|first %}
-                                                        <span class="country">{{ film.countries|first.country.name }}</span>
+                                                        <span class="country">{{ film.countries|first.country|trans_fallback('name') }}</span>
                                                         {% endif %}
                                                     </div>
                                                 </div>

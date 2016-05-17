@@ -7,7 +7,7 @@
     {% endif %}
 {% endif %}
 
-{% set transImage = films[0].tabletImage|trans_fallback('file') %}
+{% set transImage = films[count].tabletImage|trans_fallback('file') %}
 
 {% if film.video.image is null and film.video.imageAmazonUrl is not null %}
     {% set videoAmazon = s3_server_video ~ film.video.imageAmazonUrl %}
