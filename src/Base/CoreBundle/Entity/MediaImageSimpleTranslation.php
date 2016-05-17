@@ -25,6 +25,7 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use TranslateChild;
 
     /**
@@ -37,7 +38,7 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      *     "news_list",
      *     "news_show",
      *     "live",
-     *     "web_tv_show", "live",
+     *     "web_tv_show",
      *     "person_list",
      *     "person_show",
      *     "film_list",
@@ -67,7 +68,7 @@ class MediaImageSimpleTranslation implements TranslateChildInterface
      *     "news_list",
      *     "news_show",
      *     "live",
-     *     "web_tv_show", "live",
+     *     "web_tv_show",
      *     "film_show",
      *     "person_list",
      *     "person_show",

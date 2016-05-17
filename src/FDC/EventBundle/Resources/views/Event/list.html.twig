@@ -45,7 +45,7 @@
                     <article class="article evenement">
                         <div class="img">
                             <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug') }) }}">
-                                <img src="{% path event.header|trans_fallback('file') , '575x364' %}" srcset="{% path event.header|trans_fallback('file') , '575x364' %} 1x, {% path event.header|trans_fallback('file') , '976x535' %} 2x" alt="{{ event.header|trans_fallback('alt') }} ">
+                                <img src="{% path event.header|trans_fallback('file') , '575x364' %}" srcset="{% path event.header|trans_fallback('file') , '575x364' %} 1x, {% path event.header|trans_fallback('file') , '575x364' %} 2x" alt="{{ event.header|trans_fallback('alt') }} ">
                             </a>
                         </div>
                         <div class="info">
@@ -69,7 +69,7 @@
             <div class="bandeau-list vCenter push-footer">
                 <div class="bandeau-list-img vCenterKid" style="background-image:url({{ asset('bundles/fdcevent/img/jurys/push.jpg') }});">
                     <h2 class="title title-list-header">{{ 'event.title.retrospective'|trans }}</h2>
-                    <a href="#" class="bandeau-lien">
+                    <a href="http://www.festival-cannes.fr/{{ app.request.locale == 'zh' ? 'cn' : app.request.locale }}/archivesPage.html" class="bandeau-lien">
                         <i class="icon icon_fleche-right"></i>
                         {{ 'event.btn.decouvrirlarubrique'|trans }}
                     </a>

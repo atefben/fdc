@@ -51,7 +51,7 @@ class MediaListener
     {
         $entity = $args->getEntity();
 
-        $this->createHomepageNews($entity, $args, false);
+        $this->flush = true;
 
         if ($entity instanceof MediaAudioTranslation && $entity->getAmazonRemoteFile()) {
             $this->createAmazonAudioJob($entity, $args);
@@ -64,6 +64,18 @@ class MediaListener
         if (($entity instanceof MediaVideoTranslation || $entity instanceof MediaAudioTranslation) && $entity->getFile()) {
             $this->generateThumbnails($entity->getFile());
         }
+    }
+
+    /**
+     * @param LifecycleEventArgs $args
+     */
+    public function postPersist(LifecycleEventArgs $args)
+    {
+        $entity = $args->getEntity();
+
+        $this->createHomepageNews($entity, $args, false);
+        
+        $this->flush = false;
     }
 
     /**
@@ -100,6 +112,7 @@ class MediaListener
         }
 
         if ($entity instanceof MediaVideo || $entity instanceof MediaAudio) {
+
 
             if ($entity instanceof MediaVideo && $entity->getDisplayedHome() == true) {
                 $createNews = $em->getRepository('BaseCoreBundle:News')->findOneByHomepageMediaVideo($entity->getId());
@@ -147,6 +160,7 @@ class MediaListener
                 $createNews->setHeader($entity->getImage());
                 $createNews->setAssociatedEvent($entity->getAssociatedEvent());
                 $createNews->setAssociatedFilm($entity->getAssociatedFilm());
+                $createNews->setExcludeFromSearch($entity->getExcludeFromSearch());
 
                 if (count($createNews->getAssociatedProjections()) > 0) {
                     foreach ($createNews->getAssociatedProjections() as $proj) {
@@ -230,39 +244,39 @@ class MediaListener
     {
         $file_name = $mediaAudio->getAmazonRemoteFile()->getName();
         $file_path = explode('/', $mediaAudio->getAmazonRemoteFile()->getUrl());
-		$path_audio_input = $file_path['0'] . '/';
+        $path_audio_input = $file_path['0'] . '/';
         $path_audio_output = 'media_audio_encoded' . '/direct_encoded/';
         $em = $args->getEntityManager();
         $medias_audio_exist = $em->getRepository('BaseCoreBundle:MediaAudioTranslation')->findOneBy(array('mp3Url' => $path_audio_output . $file_name));
-		if ($medias_audio_exist) {
-			$mediaAudio->setMp3Url($path_audio_output . $file_name);
-		    $mediaAudio->setJobMp3Id($medias_audio_exist->getJobMp3Id());
-		    $mediaAudio->setJobMp3State($medias_audio_exist->getJobMp3State());
+        if ($medias_audio_exist) {
+            $mediaAudio->setMp3Url($path_audio_output . $file_name);
+            $mediaAudio->setJobMp3Id($medias_audio_exist->getJobMp3Id());
+            $mediaAudio->setJobMp3State($medias_audio_exist->getJobMp3State());
         } else {
-	        $elasticTranscoder = ElasticTranscoderClient::factory(array(
-	            'credentials' => array(
-	                'key'    => $this->getParameter('s3_access_key'),
-	                'secret' => $this->getParameter('s3_secret_key'),
-	            ),
-	            'region'      => $this->getParameter('s3_video_region'),
-	        ));
-	        $job = $elasticTranscoder->createJob(array(
-	            'PipelineId'      => $this->getParameter('s3_elastic_mp3_pipeline_id'),
-	            'OutputKeyPrefix' => $path_audio_output,
-	            'Input'           => array(
-	                'Key' => $path_audio_input . $file_name,
-	            ),
-	            'Outputs'         => array(
-	                array(
-	                    'Key'      => $file_name,
-	                    'PresetId' => $this->getParameter('s3_elastic_mp3_preset_id'),
-	                ),
-	            ),
-	        ));
-	        $mediaAudio->setJobMp3Id($job->get('Job')['Id']);
-	        $mediaAudio->setMp3Url($path_audio_output . $file_name);
-	        $mediaAudio->setJobMp3State(1);
-		}
+            $elasticTranscoder = ElasticTranscoderClient::factory(array(
+                'credentials' => array(
+                    'key'    => $this->getParameter('s3_access_key'),
+                    'secret' => $this->getParameter('s3_secret_key'),
+                ),
+                'region'      => $this->getParameter('s3_video_region'),
+            ));
+            $job = $elasticTranscoder->createJob(array(
+                'PipelineId'      => $this->getParameter('s3_elastic_mp3_pipeline_id'),
+                'OutputKeyPrefix' => $path_audio_output,
+                'Input'           => array(
+                    'Key' => $path_audio_input . $file_name,
+                ),
+                'Outputs'         => array(
+                    array(
+                        'Key'      => $file_name,
+                        'PresetId' => $this->getParameter('s3_elastic_mp3_preset_id'),
+                    ),
+                ),
+            ));
+            $mediaAudio->setJobMp3Id($job->get('Job')['Id']);
+            $mediaAudio->setMp3Url($path_audio_output . $file_name);
+            $mediaAudio->setJobMp3State(1);
+        }
     }
 
     protected function createAmazonVideoJob(MediaVideoTranslation $mediaVideo, $args)
@@ -284,7 +298,7 @@ class MediaListener
         $medias_2 = $em->getRepository('BaseCoreBundle:MediaVideoTranslation')->findOneBy(array('webmUrl' => $nameWebm));
         if ($medias_1 || $medias_2) {
             if ($medias_1) {
-				$mediaVideo->setImageAmazonUrl($path_video_output . '00002/' . str_replace(array('.mov', '.mp4'), '.png', $file_name));
+                $mediaVideo->setImageAmazonUrl($path_video_output . '00002/' . str_replace(array('.mov', '.mp4'), '.png', $file_name));
                 $mediaVideo->setMp4Url($nameMp4);
                 $mediaVideo->setJobMp4Id($medias_1->getJobMp4Id());
                 $mediaVideo->setJobMp4State($medias_1->getJobMp4State());

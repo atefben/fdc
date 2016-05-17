@@ -210,7 +210,7 @@ $(document).ready(function () {
     if(isiPad()) {
       $('.export.subnav, .button.list.pdf, .button.list.ics').remove();
     } else {
-      if ($('.button.list.pdf').attr('href').indexOf('#') != -1) {
+      if ($('.button.list.pdf').length > 0 && $('.button.list.pdf').attr('href').indexOf('#') != -1) {
         $('.button.list.pdf').remove();
       }
 
@@ -320,7 +320,13 @@ $(document).ready(function () {
 
           var minutes = (event.duration % 60) < 10 ? '0'+(event.duration % 60) : (event.duration % 60),
               heures  = Math.floor(event.duration / 60);
-          var dur     = heures + 'H' + minutes;
+          switch(GLOBALS.calendar.labelFormat[GLOBALS.locale]) {
+            case 'fr': var dur     = heures + 'H' + minutes; break
+            case 'en': var dur     = heures + ':' + minutes; break
+            case 'es': var dur     = heures + 'H' + minutes; break
+            case 'zh': var dur     = heures + '点' + minutes; break
+          }
+
           var c       = event.eventColor;
           
           // $(element).css('width', 'auto');
@@ -527,7 +533,13 @@ $(document).ready(function () {
 
           var minutes = (event.duration % 60) < 10 ? '0'+(event.duration % 60) : (event.duration % 60),
               heures  = Math.floor(event.duration / 60);
-          var dur     = heures + 'H' + minutes;
+          switch(GLOBALS.calendar.labelFormat[GLOBALS.locale]) {
+            case 'fr': var dur     = heures + 'H' + minutes; break
+            case 'en': var dur     = heures + ':' + minutes; break
+            case 'es': var dur     = heures + 'H' + minutes; break
+            case 'zh': var dur     = heures + '点' + minutes; break
+          }
+
           var c       = event.eventColor;
           
           $(element).css('height', event.duration/60 < 1 ? '80px' : (event.duration/60)*80 + 'px' );
@@ -770,7 +782,13 @@ $(document).ready(function () {
 
             if ((dur < 1 || (dur < 2 && minutes < 45)) && $(this).data('popin') != true) {
               $(this).addClass('one-hour');
-              $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
+              switch(GLOBALS.calendar.labelFormat[GLOBALS.locale]) {
+                case 'fr': $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - '); break
+                case 'en': $(this).find('.txt span').prepend(dur + ':' + minutes + ' - '); break
+                case 'es': $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - '); break
+                case 'zh': $(this).find('.txt span').prepend(dur + '点' + minutes + ' - '); break
+              }
+
             }
 
             $(this).find('.category').css('background-color', $(this).data('color'));

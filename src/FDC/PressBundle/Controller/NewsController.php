@@ -33,6 +33,9 @@ class NewsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
         $dateTime = new DateTime();
+        $isPress = false;
+        $festival = $this->getFestival()->getId();
+
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -75,43 +78,62 @@ class NewsController extends Controller
             $value = $schedulingYear ."-". $schedulingMonth ."-". $value;
         });
 
-        // If festival in started
-        $date = new \DateTime;
-
-        if (in_array($date->format('Ymd'), $schedulingDays)) {
-
-            $dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
-                ->getProjectionByDate($date->format('Ymd'));
-
-        }
-        // Else first festival day
-        else {
-
-            $dayProjection = $em->getRepository('BaseCoreBundle:FilmProjection')
-                ->getProjectionByDate($festivalStartsAt->format('Ymd'));
-
-        }
-        // Event have to be in 5h max
-        $hourRange = array();
-        $newDate = new \DateTime;
-        $endHour = $newDate->modify('+5 hours');
-
-        while ($date <= $endHour) {
-            array_push($hourRange, $date->format('H'));
-            $date->modify('+1 hour');
-        }
-
-        foreach ( $dayProjection as $key => $projection ) {
-            if (!in_array($projection->getStartsAt()->format('H'), $hourRange)) {
-                unset($dayProjection[$key]);
-            }
-        }
-
 
         //GET PRESS HOMEPAGE
         $homepage = $em->getRepository('BaseCoreBundle:PressHomepage')->findOneById($this->getParameter('admin_press_homepage_id'));
 
         if ($homepage === null) {
+            throw new NotFoundHttpException();
+        }
+
+
+        $festivalStart    = $this->getFestival()->getFestivalStartsAt();
+        $festivalEnd      = $this->getFestival()->getFestivalEndsAt();
+
+        if ($request->get('date')) {
+            $date = $request->get('date');
+        } else {
+            $date = new DateTime();
+
+            if ($date < $festivalStart) {
+                $date = $festivalStart->format('Y-m-d');
+            } else if ($date > $festivalEnd) {
+                $date = $festivalEnd->format('Y-m-d');
+            } else {
+                $date = $date->format('Y-m-d');
+            }
+        }
+
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_FDC_PRESS_REPORTER')) {
+            $isPress = true;
+        }
+
+        // get all rooms
+        $rooms = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmProjectionRoom')
+            ->findAll()
+        ;
+
+        if (!$isPress) {
+            foreach ($rooms as $key => $room) {
+                if ($room->getName() == 'Salle de Conférence de Presse') {
+                    unset($rooms[$key]);
+                }
+            }
+        }
+
+        // get projections by room
+        foreach ($rooms as $room) {
+            $projections[$room->getId()] = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmProjection')
+                ->getProjectionsByFestivalAndDateAndRoom($festival, $date, $room->getId(), $isPress)
+            ;
+        }
+
+        $pressProjection = $this->getDoctrineManager()->getRepository('BaseCoreBundle:PressProjection')->findOneById($this->getParameter('admin_press_projection_id'));
+        if ($pressProjection === null) {
             throw new NotFoundHttpException();
         }
 
@@ -121,9 +143,10 @@ class NewsController extends Controller
         return array(
             'homeNews' => $homeNews,
             'schedulingDays' => $this->createDateRangeArray($festivalStartsAt->format('Y-m-d'),$festivalEndsAt->format('Y-m-d')),
-            'hourRange' => $hourRange,
-            'dayProjection' => $dayProjection,
-            'pressHome' => $homepage
+            'pressHome' => $homepage,
+            'date' => $date,
+            'rooms' => $rooms,
+            'projections' => $projections,
         );
     }
 

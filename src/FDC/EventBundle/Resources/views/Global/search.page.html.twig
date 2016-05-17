@@ -240,7 +240,7 @@
                                                             
                                                         </span>
                                                         {% if film.countries|first %}
-                                                        <span class="country">{{ film.countries|first.country.name }}</span>
+                                                        <span class="country">{{ film.countries|first.country|trans_fallback('name') }}</span>
                                                         {% endif %}
                                                     </div>
                                                 </div>
@@ -254,7 +254,7 @@
                         <div id="noResult">
                             <h3>{{ 'search.result.title.aucunresultat'|trans }}</h3>
                             <p class="link">
-                                <a href="//www.festival-cannes.com/fr/archivesPage.html" target="_blank">
+                                <a href="//www.festival-cannes.com/{{ app.request.locale }}/archivesPage.html" target="_blank">
                                     <i class="icon icon_fleche-right"></i>
                                     {{ 'search.result.btn.decouvrez68ansdarchives'|trans }}
                                 </a>
@@ -271,7 +271,7 @@
                             <h2 class="title">{{ 'search.result.title.lencyclopediedufestival'|trans }}</h2>
 
                             <p class="link">
-                                <a href="http://www.festival-cannes.fr/fr/archivesPage.html" target="_blank">
+                                <a href="http://www.festival-cannes.fr/{{ app.request.locale }}/archivesPage.html" target="_blank">
                                     <i class="icon icon_fleche-right"></i>
                                     {{ 'search.result.btn.rechercher'|trans }}
                                 </a>

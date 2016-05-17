@@ -16,6 +16,7 @@ use Base\CoreBundle\Util\Time;
 class PressGuideWidgetImageTranslation
 {
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use Time;
 
     /**

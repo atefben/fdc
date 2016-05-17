@@ -24,7 +24,8 @@
                 {% endif %}
                 {% if transImage is defined %}
                     <div class="item {{ audio.theme|trans_fallback('slug') }} {{ audio.publishedAt|date('d-m-y') }} shadow-bottom audio"
-                         data-sound="{{ s3_server_audio ~ trans.mp3Url }}">
+                         data-sound='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
+                         data-aid="{{ audio.id }}">
                         <img src="{% path transImage.file , '1144x724' %}"
                              srcset="{% path transImage.file , '572x362' %} 1x, {% path transImage.file , '1144x724' %} 2x"
                              alt="">
@@ -42,24 +43,14 @@
                 {% endif %}
             {% endfor %}
         </div>
-        <div class="popin-audio audio loading" data-sound="">
-            <div class="image-container">
+        <div class="audio-container state-init popin-audio" 
+             data-file=''
+             data-img="">
+            <div class="audio-player">
+                <div id="audio-player-popin" class="audio-player-container"></div>
                 <div class="image"></div>
-            </div>
-            <a href="#" class="playpause"></a>
-            <div class="on">
-                <div class="vCenter">
-                    <div class="vCenterKid">
-                        <div class="duration">
-                            <span class="curr">0:00</span>/<span class="total">0:00</span>
-                        </div>
-                        <div class="wave-container"></div>
-                        <div class="volume">
-                            <span></span>
-                        </div>
-                        <a href="#" class="fullscreen"></a>
-                    </div>
-                </div>
+                <button class="play-btn play"><i class="icon icon_play"></i></button>
+                <div class="on"></div>
             </div>
             <div class="info">
                 <span class="category"></span><span class="date"></span> . <span class="hour"></span>

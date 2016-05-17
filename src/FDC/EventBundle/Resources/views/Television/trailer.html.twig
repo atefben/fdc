@@ -13,8 +13,8 @@
             <section>
                 <article class="video">
                     <div class="video-container state-init video"
-                         data-link="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"
-                         data-email="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"
+                         data-link="{{ url(app.request.get('_route'), app.request.get('_route_params')) }}"
+                         data-email="{{ url(app.request.get('_route'), app.request.get('_route_params')) }}"
                          data-playlist='[{%- set first = true -%}
                             {%- for video in videos %}
                             {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
@@ -23,11 +23,11 @@
                             {%- elseif video|trans_fallback('imageAmazonUrl') -%}
                                 {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                             {%- endif -%}
-                            {%- if trans is null or trans.file is null -%}
+                            {%- if trans is null -%}
                                 {%- set trans = video.file.findTranslationByLocale('fr') -%}
                             {%- endif -%}
                             {%- if videoImage is defined -%}
-                                {%- if first == false -%},{%- endif -%}{"sources":[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}],"vid":"{{ video.id }}","name":"{{ video|trans_fallback('title') }}","image":"{{ videoImage }}","category":"{{ video.theme }}","date":"{{ video.publishedAt|date('d.m.Y') }}","hour":"{{ video.publishedAt|date('H:i') }}"}{% set first = false %}{%- endif -%}
+                                {%- if first == false -%},{%- endif -%}{"sources":[{% if(video|trans_fallback('jobWebmState') == 3) %}{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{% endif %}{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}],"vid":"{{ video.id }}","name":"{{ video|trans_fallback('title') }}","image":"{{ videoImage }}","category":"{{ video.theme }}","date":"{{ video.publishedAt|date('d.m.Y') }}","hour":"{{ video.publishedAt|date('H:i') }}"}{% set first = false %}{%- endif -%}
                             {%- endfor -%}]'
                          data-file=""
                          {%- if videos[0].image -%}

@@ -37,7 +37,7 @@ $(document).ready(function() {
   }
 
   if($('.retrospective-home').length) {
-    owInitSliderSelect('timelapse-01');
+    owInitSlider('timelapse-01');
   }
 
   if($('.jury').length) {

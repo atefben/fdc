@@ -3,7 +3,7 @@
 {% set file = news.audio %}
 {% set trans = file.findTranslationByLocale(app.request.locale) %}
 
-    {% if trans is null or trans.file is null or trans.mp3Url is null or trans.jobMp3State != 3 %}
+    {% if trans is null or trans.mp3Url is null or trans.jobMp3State != 3 %}
         {% set trans = file.findTranslationByLocale('fr') %}
     {% endif %}
 
@@ -26,38 +26,26 @@
         {% set image = imageTrans.file %}
     {% endif %}
 
-    <div class="audio-player audio actu-article-audio" data-sound="{{ s3_server_audio ~ trans.mp3Url }}">
-        <div class="image"
-             style="background-image: url({% if image is defined and image is not null %}{% path image, '1950x1232' %}{% endif %});"></div>
-        <a href="#" class="playpause"><i class="icon icon_video"></i></a>
-        <div class="off">
-            <div class="vCenter">
-                <div class="vCenterKid">
-                    <div class="picto">
-                        <i class="icon icon_audio"></i>
-                    </div>
-                    <div class="info">
-                        <span class="category">{{ news.audio.theme|trans_fallback('name') }}</span>
-                        <span class="date">{{ news.audio.publishedAt|date('d.m.y') }}</span> . <span
-                                class="hour">{{ news.audio.publishedAt|date('H:i') }}</span>
-                        <p>{{ trans.title }}</p>
-                    </div>
+    <div class="audio-container actu-article-audio"
+         data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
+         data-img="{% if image is defined %}{% path image, '1950x1232' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
+         data-aid="{{ trans.id }}">
+        <div class="audio-player">
+            <div id="audio-player-{{ trans.id }}" class="audio-player-container"></div>
+            <div class="image" style="background-image: url({% if image is defined %}{% path image, '1950x1232' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %});"></div>
+            <button class="play-btn play"><i class="icon icon_play"></i></button>
+            <div class="off">
+                <div class="vCenter">
+                    <div class="vCenterKid">
+                        <div class="picto"><i class="icon icon_audio"></i></div>
+                        <div class="info">
+                            <span class="category">{{ news.audio.theme|trans_fallback('name') }}</span>
+                            <span class="date">{{ news.audio.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ news.audio.publishedAt|date('H:i') }}</span>
+                            <p>{{ trans.title }}</p>
+                        </div>
+                      </div>
                 </div>
             </div>
-        </div>
-        <div class="on">
-            <div class="vCenter">
-                <div class="vCenterKid">
-                    <div class="duration">
-                        <span class="curr">0:00</span>/<span class="total">0:00</span>
-                    </div>
-                    <div class="wave-container"></div>
-                    <div class="volume">
-                        <span></span>
-                        <i class="icon icon_son"></i>
-                    </div>
-                    <a href="#" class="fullscreen"><i class="icon icon_fullscreen"></i></a>
-                </div>
-            </div>
+            <div class="on"></div>
         </div>
     </div>

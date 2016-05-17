@@ -19,7 +19,7 @@
     <div class="trailer">
         {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
         <div class="video-container state-init video"
-             data-file='[{"file":"{{ s3_server_video ~ movie.videoMain|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ movie.videoMain|trans_fallback('mp4Url') }}"}]'
+             data-file='[{%  if movie.videoMain.jobWebmState == 3 %}{"file":"{{ s3_server_video ~ movie.videoMain.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ movie.videoMain.mp4Url }}"}]'
              data-vid="{{ movie.videoMain.id }}"
              data-img="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
                  film: movie,

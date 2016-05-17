@@ -95,6 +95,12 @@ class PressDownloadSectionAdmin extends Admin
                 'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
                 'fields' => array(
+                    'applyChanges' => array(
+                        'field_type' => 'hidden',
+                        'attr' => array (
+                            'class' => 'hidden'
+                        )
+                    ),
                     'createdAt' => array(
                         'display' => false
                     ),

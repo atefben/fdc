@@ -65,6 +65,12 @@ class PressDownloadSectionWidgetVideoType extends PressDownloadSectionWidgetType
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array(),
                 'fields' => array(
+                 'applyChanges' => array(
+                     'field_type' => 'hidden',
+                     'attr' => array (
+                         'class' => 'hidden'
+                     )
+                 ),
                     'createdAt' => array(
                         'display' => false
                     ),

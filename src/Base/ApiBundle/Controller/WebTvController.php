@@ -79,10 +79,6 @@ class WebTvController extends FOSRestController
                         $live->getAssociatedMediaVideos()->removeElement($associatedMediaVideo);
                         continue;
                     }
-                    if ($translation->getJobWebmState() !== MediaVideoTranslation::ENCODING_STATE_READY) {
-                        $live->getAssociatedMediaVideos()->removeElement($associatedMediaVideo);
-                        continue;
-                    }
                     if (!$translation->getWebmUrl() || !$translation->getMp4Url()) {
                         $live->getAssociatedMediaVideos()->removeElement($associatedMediaVideo);
                         continue;
@@ -113,10 +109,6 @@ class WebTvController extends FOSRestController
                             continue;
                         }
                         if ($translation->getJobMp4State() !== MediaVideoTranslation::ENCODING_STATE_READY) {
-                            $webTv->getMediaVideos()->removeElement($mediaVideo);
-                            continue;
-                        }
-                        if ($translation->getJobWebmState() !== MediaVideoTranslation::ENCODING_STATE_READY) {
                             $webTv->getMediaVideos()->removeElement($mediaVideo);
                             continue;
                         }

@@ -2,6 +2,10 @@
 
 <div class="quote">
     <blockquote>
-        {{ widget.content }}
+        {% for translation in widget.translations %}
+            {% if app.request.get('_locale') == translation.locale and translation.content|trim %}
+                {{ translation.content|raw }}
+            {% endif %}
+        {% endfor %}
     </blockquote>
 </div>

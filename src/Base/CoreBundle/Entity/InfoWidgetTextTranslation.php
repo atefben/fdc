@@ -22,6 +22,7 @@ use JMS\Serializer\Annotation\Groups;
 class InfoWidgetTextTranslation
 {
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use Time;
 
     /**

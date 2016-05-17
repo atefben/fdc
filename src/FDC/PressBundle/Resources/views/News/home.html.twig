@@ -66,11 +66,8 @@
                 <div id="calendar-programmation">
                     <div id="timeline">
                         {% set festivalStarted = 0 %}
-                        {% for key, day in schedulingDays %}
-                            <a href="#"
-                               class="{% if day|date('Ymd') == "now"|date('Ymd') %}{% set festivalStarted = 1 %}active
-                                {% elseif festivalStarted == 0 and key == 0 %}active{% endif %}"
-                               data-date="{{ day|date('Ymd') }}">
+                        {% for day in schedulingDays %}
+                            <a href="#" class="ajaxi {% if day == date %}active{% endif %}" data-date="{{ day|date('Y-m-d') }}">
                                 {{ day|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                                 <span class="day">{{ day|date('d') }}</span>
                             </a>
@@ -79,15 +76,49 @@
                     <div class="calendar">
                         <div class="timeCol">
                             <div class="empty"></div>
-                            {% for hour in hourRange %}
-                                <div class="time">{{ hour }}H</div>
-                            {% endfor %}
+                            <div class="time">{{ agenda_leftbar_translate_hour(8) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(9) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(10) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(11) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(12) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(13) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(14) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(15) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(16) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(17) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(18) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(19) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(20) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(21) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(22) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(23) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(0) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(1) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(2) }}</div>
+                            <div class="time">{{ agenda_leftbar_translate_hour(3) }}</div>
                         </div>
                         <div class="venues">
                             <a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
                             <a href="#" class="nav next"><i class="icon icon_fleche-right"></i></a>
                             <div class="v-wrapper">
-                                {% include 'FDCPressBundle:Agenda:components/grid.html.twig' %}
+                                {%- for room in rooms -%}
+                                    <div class="venue">
+                                        <div class="v-head">
+                                            {%- set trans_slug = 'programmation.salle.' ~ room.name|remove_accents|sonata_slugify -%}
+                                            {%- set trans = trans_slug|trans -%}
+                                            {%- if trans_slug != trans -%}
+                                                {{- trans -}}
+                                            {%- else -%}
+                                                {{- room.name|upper -}}
+                                            {%- endif -%}
+                                        </div>
+                                        <div class="v-container">
+                                            {%- for event in projections[room.id] -%}
+                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
+                                            {%- endfor -%}
+                                        </div>
+                                    </div>
+                                {%- endfor -%}
                             </div>
                         </div>
                     </div>

@@ -35,7 +35,7 @@
                 {%- endif -%}
                 {% if transImage is defined or amazonImage is defined %}
                     <div class="item item-video"
-                         data-video='[{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
+                         data-video='[{% if(trans.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
                          data-poster="{% if transImage is not null %}{% path transImage.file, '1144x724' %}{% endif %}">
                         {% if transImage is not null %}
                             {% set resolution =  transImage.file.width > transImage.file.height ? '640x404' : '320x404' %}

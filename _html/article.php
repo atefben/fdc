@@ -126,6 +126,28 @@
             <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
             <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>
           </div>
+          <div class="audio-container"
+            data-file='[{"file":"./img/article/test.mp3"}]'
+            data-img="./img/slide001.jpg"
+            data-aid="2142">
+            <div class="audio-player">
+              <div id="audio-player-<?php echo time().'1'; ?>" class="audio-player-container"></div>
+              <div class="image" style="background-image: url(img/slide001.jpg);"></div>
+              <button class="play-btn play"><i class="icon icon_play"></i></button>
+              <div class="off">
+                <div class="vCenter">
+                  <div class="vCenterKid">
+                    <div class="picto"><i class="icon icon_audio"></i></div>
+                    <div class="info">
+                      <a href="#" class="category">Conférence de test</a><span class="date">11.03.15</span> . <span class="hour">09:00</span>
+                      <p>The Lobster de Yoros Lanthinos</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="on"></div>
+            </div>
+          </div>
           <div class="audio-player audio" data-aid="11" data-sound="files/test.mp3">
             <div class="image" style="background-image: url(img/slide001.jpg);"></div>
             <a href="#" class="playpause"></a>

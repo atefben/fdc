@@ -164,6 +164,10 @@
       &.active {
         opacity: 1;
         visibility: visible;
+
+        div {
+          visibility: visible !important;
+        }
       }
 
       &:before {
@@ -331,8 +335,12 @@ div.chocolat-wrapper {
 
       &.active, &:hover {
         img {
-          opacity: 1!important;
+          opacity: 1 !important;
         }
+      }
+
+      &.compat-object-fit {
+        background: #000 !important;
       }
     }
 
@@ -455,6 +463,18 @@ div.chocolat-wrapper {
 
       &.hide {
         opacity: 0;
+      }
+
+      @include breakpoint(1920px) {
+        width: 1230px;
+      }
+
+      @include breakpoint(1600px) {
+        width: 830px;
+      }
+
+      @include breakpoint(1280px) {
+        width: 530px;
       }
 
       @include breakpoint(1024px) {

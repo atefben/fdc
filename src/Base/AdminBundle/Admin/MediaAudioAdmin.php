@@ -136,6 +136,12 @@ class MediaAudioAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales'   => $requiredLocales,
                 'fields'             => array(
+                    'applyChanges' => array(
+                        'field_type' => 'hidden',
+                        'attr' => array (
+                            'class' => 'hidden'
+                        )
+                    ),
                     // add fields not set by user
                     'createdAt'        => array(
                         'display' => false
@@ -272,6 +278,9 @@ class MediaAudioAdmin extends Admin
             ))
             ->add('translate')
             ->add('displayedMobile')
+            ->add('excludeFromSearch', null, array(
+                'label' => 'form.label_exclude_from_search',
+            ))
             ->add('displayedAll', null, array(
                 'label' => 'form.media_audio.displayed_all'
             ))

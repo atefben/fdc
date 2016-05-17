@@ -6,6 +6,7 @@
 
     <div class="a2lix_translationsFields tab-content">
         {% for translationsFields in form %}
+            {{ form_row(translationsFields.applyChanges) }}
             {% set locale = translationsFields.vars.name %}
             {% if is_granted('ROLE_TRANSLATOR_FR') %}
                 {% set currentLocale = 'fr' %}
@@ -36,28 +37,32 @@
                                     {{ form_row(form.parent.children.associatedFilms) }}
 
                                     {% if form.vars.default_locale == locale %}
-                                    <div class="form-group">
-                                        {{ form_widget(form.parent.children.displayedAll) }}
-                                        {{ form_label(form.parent.children.displayedAll) }}
-                                    </div>
-                                    <div class="form-group">
-                                        {{ form_widget(form.parent.children.displayedHome) }}
-                                        {{ form_label(form.parent.children.displayedHome) }}
-                                    </div>
-                                    <div class="displayed-home form-group">
-                                        {{ form_row(form.parent.children.associatedFilm) }}
-                                        {{ form_row(form.parent.children.associatedEvent) }}
-                                        {{ form_row(form.parent.children.associatedProjections) }}
-                                    </div>
-                                    <div class="form-group">
-                                        {{ form_widget(form.parent.children.displayedWebTv) }}
-                                        {{ form_label(form.parent.children.displayedWebTv) }}
-                                    </div>
-                                    {{ form_row(form.parent.children.webTv) }}
-                                    <div class="form-group">
-                                        {{ form_widget(form.parent.children.displayedTrailer) }}
-                                        {{ form_label(form.parent.children.displayedTrailer) }}
-                                    </div>
+                                        <div class="form-group">
+                                            {{ form_widget(form.parent.children.excludeFromSearch) }}
+                                            {{ form_label(form.parent.children.excludeFromSearch) }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_widget(form.parent.children.displayedAll) }}
+                                            {{ form_label(form.parent.children.displayedAll) }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_widget(form.parent.children.displayedHome) }}
+                                            {{ form_label(form.parent.children.displayedHome) }}
+                                        </div>
+                                        <div class="displayed-home form-group">
+                                            {{ form_row(form.parent.children.associatedFilm) }}
+                                            {{ form_row(form.parent.children.associatedEvent) }}
+                                            {{ form_row(form.parent.children.associatedProjections) }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_widget(form.parent.children.displayedWebTv) }}
+                                            {{ form_label(form.parent.children.displayedWebTv) }}
+                                        </div>
+                                        {{ form_row(form.parent.children.webTv) }}
+                                        <div class="form-group">
+                                            {{ form_widget(form.parent.children.displayedTrailer) }}
+                                            {{ form_label(form.parent.children.displayedTrailer) }}
+                                        </div>
                                     {% endif %}
                                 </div>
                             </div>

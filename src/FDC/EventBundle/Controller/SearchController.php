@@ -283,7 +283,7 @@ class SearchController extends Controller
         $keywordMatchQuery = $repository->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
         
         // Get only movies from FDC current year.
-        $yearQuery = $repository->getFieldsKeywordQuery('films.film.productionYear', $this->container->getParameter('fdc_year'));
+        $yearQuery = $repository->getFieldsKeywordQuery('films.film.festival.year', $this->container->getParameter('fdc_year'));
         
         $keywordNestedQuery = new \Elastica\Query\Nested();
         $keywordNestedQuery
@@ -336,8 +336,12 @@ class SearchController extends Controller
         $filmCountryQuery = $repository->getFieldsKeywordNestedQuery($filmCountryFields, $searchTerm, $filmCountryPath, $_locale);
           
         // Get film Query with year.
-        $productionYearQuery = $repository->getFieldsKeywordQuery(array('productionYear'), $this->container->getParameter('fdc_year'));
-        
+        $productionYearQuery = $repository->getFieldsKeywordQuery(array('festival.year'), $this->container->getParameter('fdc_year'));
+        $classicsQuery = $repository->getFieldsKeywordQuery(array('selectionSection'), 'Cannes Classics', false);
+        $plageQuery = $repository->getFieldsKeywordQuery(array('selectionSection'), 'Cinéma de la plage', false);
+        $certainQuery = $repository->getFieldsKeywordQuery(array('selectionSection'), 'Un Certain Regard', false);
+        $horsQuery = $repository->getFieldsKeywordQuery(array('selectionSection'), 'Hors Compétition', false);
+
         
         // Artist query.
         $artistQuery = $repository->getFieldsKeywordQuery(array('persons.name'), $searchTerm);
@@ -355,6 +359,11 @@ class SearchController extends Controller
         $filmFinalQuery
             ->addMust($filmQuery)
             ->addMust($productionYearQuery)
+            ->addShould($classicsQuery)
+            ->addShould($plageQuery)
+            ->addShould($certainQuery)
+            ->addShould($horsQuery)
+            ->setMinimumNumberShouldMatch(1)
         ;
       
         return $filmFinalQuery;

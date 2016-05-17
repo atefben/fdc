@@ -18,6 +18,7 @@ class PressDownloadSectionWidgetVideoTranslation
 {
 
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use Time;
 
     /**

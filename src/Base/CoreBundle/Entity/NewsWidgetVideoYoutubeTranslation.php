@@ -24,12 +24,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 class NewsWidgetVideoYoutubeTranslation
 {
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use Time;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=false)
+     * @ORM\Column(type="text", nullable=true)
      *
      * @Groups({"news_list", "news_show"})
      */
@@ -38,7 +39,7 @@ class NewsWidgetVideoYoutubeTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=false)
+     * @ORM\Column(type="text", nullable=true)
      *
      * @Groups({"news_list", "news_show"})
      */

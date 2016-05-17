@@ -68,7 +68,7 @@
                                 {%- if duration|length >= 1 -%}
                                     {% set hours = (duration[0]/60)|round(0, 'floor')  %}
                                     {% set minutes = duration[0] % 60  %}
-                                    <span>{{ hours }}H{% if minutes|length == 1 %}0{% endif %}{{ minutes }}</span>
+                                    <span>{{ hours }}{{ app.request.locale == 'zh' ? '点': 'H' }}{% if minutes|length == 1 %}0{% endif %}{{ minutes }}</span>
                                 {%- endif -%}
                             <p>
                         {%- endif -%}
@@ -114,13 +114,13 @@
                             </p>
                             <div class="fc-event" data-url="{{ path('fdc_event_agenda_getprojection', {id: seance.id}) }}"
                                  data-id="{{ seance.id }}" data-picto='.seance' data-color='{{ dataColor }}'
-                                 data-start="{{ seance.startsAt|date('Y-m-d') }}T{{ seance.startsAt|date('H:i:s') }}"
+                                 data-start="{{ seance.startsAt|date('Y-m-d') }}T{{ seance.startsAt|date('H') < 4 ? '23:59:59' : seance.startsAt|date('H:i:s') }}"
                                  data-end="{{ seance.endsAt|date('Y-m-d') }}T{{ seance.endsAt|date('H:i:s') }}"
                                  data-time="{{ seance.startsAt|date('H') }}" data-duration="{{ minutes }}" data-popin="true"
                             >
                                 <span class="category">
                                     <i class="icon icon_evt-seance-presse"></i>
-                                    {% set trans_slug = 'programmation.type.' ~ seance.type|sonata_slugify %}
+                                    {% set trans_slug = 'programmation.type.' ~ seance.type|remove_accents|sonata_slugify %}
                                     {% set trans = trans_slug|trans %}
                                     {% if trans_slug != trans %}
                                         {{- trans -}}
@@ -157,7 +157,7 @@
                                 </div>
                                 <div class="bottom">
                                     <span class="duration">
-                                        {{ difference.h }}H
+                                        {{ difference.h }}{{ app.request.locale == 'zh' ? '点': 'H' }}
                                         {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> -
                                     <span class="ven">
@@ -228,7 +228,7 @@
                             >
                                     <span class="category">
                                         <i class="icon icon_evt-seance-conference"></i>
-                                        {% set trans_slug = 'programmation.type.' ~ conference.type|sonata_slugify %}
+                                        {% set trans_slug = 'programmation.type.' ~ conference.type|remove_accents|sonata_slugify %}
                                         {% set trans = trans_slug|trans %}
                                         {% if trans_slug != trans %}
                                             {{- trans -}}
@@ -265,7 +265,7 @@
                                 </div>
                                 <div class="bottom">
                                     <span class="duration">
-                                        {{ difference.h }}H
+                                        {{ difference.h }}{{ app.request.locale == 'zh' ? '点': 'H' }}
                                         {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> -
                                     <span class="ven">
@@ -321,17 +321,18 @@
                         <div class="event">
                             <p class="date">
                                 {{ relatedProjection.startsAt|localizeddate('full', 'none') }} -
-                                <span>{{ relatedProjection.startsAt|date('H:i') }}</span>
+                                {% set timeProjection = (app.request.locale == 'en') ? agenda_leftbar_translate_hour(relatedProjection.startsAt|date('H:i'),true) : relatedProjection.startsAt|date('H:i') %}
+                                <span>{{ timeProjection }}</span>
                             </p>
                             <div class="fc-event" data-url="{{ path('fdc_event_agenda_getprojection', {id: relatedProjection.id}) }}"
                                  data-id="{{ relatedProjection.id }}" data-picto='.seance' data-color='{{ dataColor }}'
-                                 data-start="{{ relatedProjection.startsAt|date('Y-m-d') }}T{{ relatedProjection.startsAt|date('H:i:s') }}"
+                                 data-start="{{ relatedProjection.startsAt|date('Y-m-d') }}T{{ relatedProjection.startsAt|date('H') < 4 ? '23:59:59' : relatedProjection.startsAt|date('H:i:s') }}"
                                  data-end="{{ relatedProjection.endsAt|date('Y-m-d') }}T{{ relatedProjection.endsAt|date('H:i:s') }}"
                                  data-time="{{ relatedProjection.startsAt|date('H') }}" data-duration="{{ minutes }}" data-popin="true"
                                     >
                                     <span class="category">
                                         <i class="icon icon_evt-seance"></i>
-                                        {% set trans_slug = 'programmation.type.' ~ relatedProjection.type|sonata_slugify %}
+                                        {% set trans_slug = 'programmation.type.' ~ relatedProjection.type|remove_accents|sonata_slugify %}
                                         {% set trans = trans_slug|trans %}
                                         {% if trans_slug != trans %}
                                             {{- trans -}}
@@ -368,7 +369,7 @@
                                 </div>
                                 <div class="bottom">
                                     <span class="duration">
-                                        {{ difference.h }}H
+                                        {{ difference.h }}{{ app.request.locale == 'zh' ? '点': 'H' }}
                                         {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> - {{- ' ' -}}
                                     <span class="ven">

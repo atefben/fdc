@@ -147,6 +147,12 @@ class MediaVideoAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales'   => $requiredLocales,
                 'fields'             => array(
+                    'applyChanges' => array(
+                        'field_type' => 'hidden',
+                        'attr' => array (
+                            'class' => 'hidden'
+                        )
+                    ),
                     'createdAt'        => array(
                         'display' => false
                     ),
@@ -342,6 +348,9 @@ class MediaVideoAdmin extends Admin
             ))
             ->add('displayedMobile', null, array(
                 'label' => 'form.media_video.displayed_mobile'
+            ))
+            ->add('excludeFromSearch', null, array(
+                'label' => 'form.label_exclude_from_search',
             ))
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',

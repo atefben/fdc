@@ -33,6 +33,7 @@ $(document).ready(function() {
           videoWebtv.stopMute();
           if(videoWebtv.getState() == "paused" || videoWebtv.getState() == "idle") {
             videoWebtv.play();
+            videoWebtv.stopMute();
           }
           $('#live .trailer').addClass('on');
         }, 500);
@@ -134,9 +135,16 @@ $(document).ready(function() {
           }
 
           // CUSTOM LINK FACEBOOK
-          var shareUrl = GLOBALS.urls.videosUrl+'#vid='+vid;
+          if($('.container-webtv-ba-video').length > 0) {
+            var shareUrl = $('.video .video-container').attr('data-link');
+          } else {
+            var shareUrl = GLOBALS.urls.videosUrl+'#vid='+vid;
+          }
           var fbHref   = facebookLink;
           fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
+          fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
+          fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent(category));
+          fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent(name));
           $('#video-player-popin + .top-bar').find('.buttons .facebook').attr('href', fbHref);
           // CUSTOM LINK TWITTER
           var twHref   = twitterLink;
@@ -185,8 +193,8 @@ $(document).ready(function() {
       margin: 50,
       autoWidth: true,
       dragEndSpeed: 600,
-      responsive:{
-        0:{
+      responsive: {
+        0: {
           items: 3
         },
         1675: {
@@ -207,18 +215,13 @@ $(document).ready(function() {
       },
     });
 
-    $('#slider-trailer .owl-item ').on('click', function(e){
+    $('#slider-trailer .owl-item').on('click', function(e){
         var $this = $(this);
         $('.center').removeClass('center');
         $this.addClass('center');
     });
 
-
     sliderTrailer.owlCarousel();
-    // $('body').on('click', '#slider-trailer .owl-item', function(e) {
-    //   k.log('', 'click slider 3');
-    //   sliderTrailer.trigger('to.owl.carousel', [$(this).index(), 400, true]);
-    // });
 
     if($('.webtv-ba-video').length){
       $('.nav li').click(function(){
@@ -336,9 +339,17 @@ $(document).ready(function() {
           }
 
           // CUSTOM LINK FACEBOOK
-          var shareUrl = GLOBALS.urls.videosUrl+'#vid='+vid;
+          if($('.container-webtv-ba-video').length > 0) {
+            var shareUrl = $('.video .video-container').attr('data-link');
+          } else {
+            var shareUrl = GLOBALS.urls.videosUrl+'#vid='+vid;
+          }
+
           var fbHref   = facebookLink;
           fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
+          fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
+          fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent(category));
+          fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent(name));
           $('#video-player-popin + .top-bar').find('.buttons .facebook').attr('href', fbHref);
           // CUSTOM LINK TWITTER
           var twHref   = twitterLink;

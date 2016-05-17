@@ -109,6 +109,12 @@ class WebTvAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales'   => $requiredLocales,
                 'fields'             => array(
+                    'applyChanges' => array(
+                        'field_type' => 'hidden',
+                        'attr' => array (
+                            'class' => 'hidden'
+                        )
+                    ),
                     'name'           => array(
                         'label'              => 'form.label_web_tv_name',
                         'sonata_help'        => 'form.web_tv.helper_name',

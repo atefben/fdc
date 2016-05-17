@@ -18,6 +18,7 @@ use JMS\Serializer\Annotation\Groups;
 class OrangeWidgetFilmStudioTranslation
 {
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use Time;
 
     /**

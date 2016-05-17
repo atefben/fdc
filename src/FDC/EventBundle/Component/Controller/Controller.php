@@ -4,7 +4,6 @@ namespace FDC\EventBundle\Component\Controller;
 
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
-
 use Base\CoreBundle\Entity\Settings;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
@@ -41,7 +40,7 @@ class Controller extends BaseController
         return $this->getDoctrine()->getManager();
     }
 
-    public function removeUnpublishedNewsAudioVideo($array, $locale, $count = null)
+    public function removeUnpublishedNewsAudioVideo($array, $locale, $count = null, $hideDisplayedHome = false)
     {
         $newsTypes = array('NewsAudio', 'NewsVideo', 'InfoAudio', 'StatementAudio', 'InfoVideo', 'StatementVideo');
 
@@ -58,6 +57,8 @@ class Controller extends BaseController
             foreach ($array as $key => $news) {
                 if (strpos(get_class($news), $newsType) !== false) {
                     if ($news->{$mediaTypes[$newsType]}() == null) {
+                        unset($array[$key]);
+                    } elseif ($hideDisplayedHome && $news->{$mediaTypes[$newsType]}()->getDisplayedHome()) {
                         unset($array[$key]);
                     } else {
                         $trans = $news->{$mediaTypes[$newsType]}()->findTranslationByLocale($locale);
@@ -97,7 +98,6 @@ class Controller extends BaseController
 
         if (strpos(get_class($trans), 'MediaVideoTranslation')) {
             if ($trans->getJobMp4State() != MediaVideoTranslation::ENCODING_STATE_READY ||
-                $trans->getJobWebmState() != MediaVideoTranslation::ENCODING_STATE_READY ||
                 $trans->getMp4Url() === null || $trans->getWebmUrl() === null
             ) {
                 return false;

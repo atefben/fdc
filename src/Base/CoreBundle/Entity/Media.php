@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Entity;
 
 use Application\Sonata\UserBundle\Entity\User;
+use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\TranslateMain;
@@ -134,6 +135,13 @@ abstract class Media implements TranslateMainInterface
      * @ORM\Column(type="boolean", options={"default":0})
      */
     private $displayedMobile;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0}, nullable=true)
+     */
+    private $excludeFromSearch;
 
     /**
      * @var ArrayCollection
@@ -611,5 +619,41 @@ abstract class Media implements TranslateMainInterface
     public function getAssociatedProjections()
     {
         return $this->associatedProjections;
+    }
+
+    public function isElasticable()
+    {
+        $isElasticable = true;
+        $fr = $this->findTranslationByLocale('fr');
+        if (!$fr || $fr->getStatus() !== TranslateChildInterface::STATUS_PUBLISHED) {
+            $isElasticable = false;
+        }
+        if ($this->getExcludeFromSearch()) {
+            $isElasticable = false;
+        }
+        return $isElasticable;
+    }
+
+    /**
+     * Set excludeFromSearch
+     *
+     * @param boolean $excludeFromSearch
+     * @return Media
+     */
+    public function setExcludeFromSearch($excludeFromSearch)
+    {
+        $this->excludeFromSearch = $excludeFromSearch;
+
+        return $this;
+    }
+
+    /**
+     * Get excludeFromSearch
+     *
+     * @return boolean 
+     */
+    public function getExcludeFromSearch()
+    {
+        return $this->excludeFromSearch;
     }
 }

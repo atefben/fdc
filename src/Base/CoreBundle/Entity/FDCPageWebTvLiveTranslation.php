@@ -26,6 +26,7 @@ class FDCPageWebTvLiveTranslation implements TranslateChildInterface
 {
     use Time;
     use Translation;
+    use \Base\CoreBundle\Util\TranslationChanges;
     use TranslateChild;
     use Seo;
 

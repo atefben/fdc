@@ -6,7 +6,9 @@
 
 // 1. Global
 // =========================
-
+img {
+  content: none!important;
+}
 header {
   background-color: $dark;
   position: relative;
@@ -257,7 +259,7 @@ header {
     .icon_ma-selection, .icon_mon-compte {
       min-width: 9.5px;
     }
-    
+
     .icon_langue {
       min-width: 20.5px;
     }
@@ -589,12 +591,42 @@ header {
   }
 }
 
-@include breakpoint(1024px) {
-  .mob header #navigation ul.main {
-    font-size: 0.8rem;
-  }
+.mob {
+  #navigation {
+    ul {
+      li {
+        margin-left: -5px;
+      }
+      ul {
+        &:before {
+          width: 91% !important;
+        }
+      }
+    }
+    ul.user .programmation-wrapper ul {
+      margin-left: -662px;
+    }
+    ul.user .participate-wrapper ul {
+      margin-left: -793px;
+    }
+    ul li ul {
+      width: 1024px;
+    }
+     ul li a {
+       padding-right: 12px;
+    }
+    ul li ul li {
+      margin-left:5px;
+    }
+}
 
-  .mob header #navigation ul.user {
-    font-size: 0.7rem;
+  @include breakpoint(1024px) {
+    .mob header #navigation ul.main {
+      font-size: 0.8rem;
+    }
+
+    .mob header #navigation ul.user {
+      font-size: 0.7rem;
+    }
   }
 }
