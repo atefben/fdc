@@ -188,6 +188,7 @@ class Homepage implements TranslateMainInterface
     /**
      * @var HomepageFilmsAssociated
      * @ORM\OneToMany(targetEntity="HomepageFilmsAssociated", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $filmsAssociated;
 
