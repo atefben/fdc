@@ -10,8 +10,8 @@
             {% set file = trans.file %}
             <div class="half-photo">
                 <div class="photo-container">
-                    <img src="{% path file, 'reference' %}" alt="{{ trans.alt }}" title="{{ trans.legend }}">
-                    <p class="caption">{{ trans.copyright }}</p>
+                    <img src="{% path file, 'reference' %}" alt="{{ gallery.media|trans_fallback('alt')  }}" title="{{ gallery.media|trans_fallback('legend')  }}">
+                    <p class="caption">{{ gallery.media|trans_fallback('copyright')  }}</p>
                 </div>
             </div>
         {% endif %}
@@ -28,8 +28,8 @@
                 {% set file = trans.file %}
                 <div class="half-photo">
                     <div class="photo-container">
-                        <img src="{% path file, 'reference' %}" alt="{{ trans.alt }}" title="{{ trans.legend }}">
-                        <p class="caption">{{ trans.copyright }}</p>
+                        <img src="{% path file, 'reference' %}" alt="{{ gallery.media|trans_fallback('alt')  }}" title="{{ gallery.media|trans_fallback('legend')  }}">
+                        <p class="caption">{{ gallery.media|trans_fallback('copyright') }}</p>
                     </div>
                 </div>
             {% endif %}
