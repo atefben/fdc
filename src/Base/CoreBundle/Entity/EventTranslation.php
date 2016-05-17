@@ -36,7 +36,7 @@ class EventTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"event_list", "event_show"})
+     * @Groups({"event_list", "search", "event_show"})
      */
     private $title;
 

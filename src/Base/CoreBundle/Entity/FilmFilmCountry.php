@@ -42,7 +42,8 @@ class FilmFilmCountry
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_show"
+     *     "news_show",
+     *     "search"
      * })
      */
     private $position;
@@ -60,7 +61,8 @@ class FilmFilmCountry
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_show"
+     *     "news_show",
+     *     "search"
      * })
      */
     private $country;

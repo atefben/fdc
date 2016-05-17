@@ -40,7 +40,7 @@ abstract class Statement implements TranslateMainInterface
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups({"news_list", "news_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "home"})
      *
      */
     private $id;
@@ -50,7 +50,7 @@ abstract class Statement implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Theme")
      *
-     * @Groups({"news_list", "news_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "home"})
      *
      * @Assert\NotNull()
      */
@@ -163,7 +163,7 @@ abstract class Statement implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"news_list", "news_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "home"})
      */
     private $publishedAt;
 
@@ -171,13 +171,13 @@ abstract class Statement implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({"news_list", "news_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "home"})
      */
     private $publishEndedAt;
 
     /**
      * ArrayCollection
-     * @Groups({"news_list", "news_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "home"})
      *
      */
     protected $translations;
@@ -247,7 +247,7 @@ abstract class Statement implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"home", "news_list", "news_show"})
+     * @Groups({"home", "news_list", "search", "news_show"})
      */
     public function getStatementType()
     {

@@ -30,7 +30,8 @@ class ThemeTranslation implements TranslateChildInterface
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      *
-     * @Groups({"news_list", "news_show", "event_list", "event_show", "film_show", "home", "live"})
+     * @Groups({"news_list", "search", "news_show", "event_list", "search", "event_show", "film_show", "home", "live",
+     *     "search"})
      */
     protected $name;
 

@@ -63,7 +63,8 @@ class MediaVideo extends Media
      *
      * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"persist"})
      *
-     * @Groups({"trailer_list", "trailer_show", "live", "web_tv_show", "live", "film_show", "news_list", "news_show", "event_show", "home", "orange_video_on_demand"})
+     * @Groups({"trailer_list", "trailer_show", "live", "web_tv_show", "live", "film_show", "news_list", "search", "news_show", "event_show", "home", "orange_video_on_demand",
+     *     "search"})
      */
     private $image;
 

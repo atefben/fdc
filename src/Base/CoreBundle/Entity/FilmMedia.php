@@ -42,11 +42,12 @@ class FilmMedia
       *     "projection_list",
       *     "projection_show",
       *     "film_selection_section_show",
-      *     "news_list",
+      *     "news_list", "search",
       *     "news_show",
       *     "award_list",
       *     "classics",
-      *     "orange_studio"
+      *     "orange_studio",
+      *     "search"
       * })
       */
     private $contentType;
@@ -63,11 +64,12 @@ class FilmMedia
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $noteVf;
@@ -84,11 +86,12 @@ class FilmMedia
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $noteVa;
@@ -105,11 +108,12 @@ class FilmMedia
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $copyright;
@@ -126,11 +130,12 @@ class FilmMedia
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $credits;
@@ -147,11 +152,12 @@ class FilmMedia
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $type;
@@ -170,8 +176,9 @@ class FilmMedia
      *     "film_selection_section_show",
      *     "classics",
      *     "orange_studio",
-     *     "news_list",
-     *     "news_show"
+     *     "news_list", "search",
+     *     "news_show",
+     *     "search"
      * })
      */
     private $internet;
@@ -190,7 +197,8 @@ class FilmMedia
      *     "film_selection_section_show",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $titleVf;
@@ -209,7 +217,8 @@ class FilmMedia
      *     "film_selection_section_show",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $titleVa;
@@ -229,11 +238,12 @@ class FilmMedia
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $file;

@@ -39,10 +39,11 @@ class FilmSelectionSection implements TranslateMainInterface, FilmSelectionSecti
      *     "film_selection_list",
      *     "film_selection_section_list",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "home",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $id;
@@ -58,10 +59,11 @@ class FilmSelectionSection implements TranslateMainInterface, FilmSelectionSecti
      *     "film_selection_list",
      *     "film_selection_section_list",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "home",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $position;
@@ -99,10 +101,11 @@ class FilmSelectionSection implements TranslateMainInterface, FilmSelectionSecti
      *     "film_selection_list",
      *     "film_selection_section_list",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "home",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     protected $translations;

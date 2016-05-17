@@ -36,7 +36,7 @@ class InfoImageTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"news_list", "news_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "home"})
      */
     protected $title;
 

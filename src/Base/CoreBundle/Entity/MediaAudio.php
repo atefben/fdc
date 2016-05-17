@@ -28,7 +28,7 @@ class MediaAudio extends Media implements RoutedItemInterface
      *
      * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"all"})
      *
-     * @Groups({"news_show", "news_list", "trailer_list", "trailer_show", "web_tv_show", "live", "film_show", "event_show", "home"})
+     * @Groups({"news_show", "news_list", "search", "trailer_list", "trailer_show", "web_tv_show", "live", "film_show", "event_show", "home"})
      */
     private $image;
 

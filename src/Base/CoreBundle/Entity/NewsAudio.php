@@ -32,7 +32,7 @@ class NewsAudio extends News
      *
      * @ORM\ManyToOne(targetEntity="MediaImage")
      *
-     * @Groups({"news_list", "news_show", "film_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "film_show", "home"})
      */
     private $header;
 
@@ -41,7 +41,7 @@ class NewsAudio extends News
      *
      * @ORM\ManyToOne(targetEntity="MediaAudio")
      *
-     * @Groups({"news_list", "news_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "home"})
      * @Assert\NotNull()
      */
     private $audio;

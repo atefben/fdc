@@ -28,7 +28,7 @@ class InfoWidgetVideo extends InfoWidget
      * @var MediaVideo
      *
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaVideo")
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "search", "news_show"})
      */
     private $file;
 
