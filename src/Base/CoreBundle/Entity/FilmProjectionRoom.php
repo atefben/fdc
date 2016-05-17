@@ -32,7 +32,7 @@ class FilmProjectionRoom
      *     "projection_list",
      *     "projection_show",
      *     "home",
-     *     "news_list"})
+     *     "news_list", "search"})
      */
     private $id;
 
@@ -47,7 +47,7 @@ class FilmProjectionRoom
      *     "film_list",
      *     "film_show",
      *     "home",
-     *     "news_list"
+     *     "news_list", "search"
      * })
      * @Serializer\Accessor(getter="getApiName")
      */

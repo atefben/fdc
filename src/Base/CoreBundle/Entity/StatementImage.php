@@ -34,13 +34,13 @@ class StatementImage extends Statement
      *
      * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"persist"})
      *
-     * @Groups({"news_list", "news_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "home"})
      */
     private $header;
 
     /**
      * @ORM\ManyToOne(targetEntity="Gallery", cascade={"persist"})
-     * @Groups({"news_list", "news_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "home"})
      *
      * @Assert\NotNull()
      */

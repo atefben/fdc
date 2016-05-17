@@ -20,7 +20,7 @@ class FDCPageLaSelectionCannesClassicsWidgetImage extends FDCPageLaSelectionCann
 {
     /**
      * @ORM\ManyToOne(targetEntity="Gallery")
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "search", "news_show"})
      */
     private $gallery;
 

@@ -50,13 +50,14 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
      *     "home",
-     *     "news_list",
+     *     "news_list", "search",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      *
      */
@@ -133,11 +134,12 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      *
      */
@@ -159,7 +161,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_show",
      *     "film_selection_section_show",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      *
      */
@@ -291,7 +294,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="FilmSelectionSection", inversedBy="films", cascade={"persist"})
      *
-     * @Groups({"film_list", "film_show", "news_list", "news_show", "home", "orange_studio"})
+     * @Groups({"film_list", "film_show", "news_list", "search", "news_show", "home", "orange_studio", "search"})
      *
      */
     private $selectionSection;
@@ -301,7 +304,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="FilmSelectionSubsection", inversedBy="films", cascade={"persist"})
      *
-     * @Groups({"film_list", "film_show", "news_list", "news_show", "home"})
+     * @Groups({"film_list", "film_show", "news_list", "search", "news_show", "home"})
      *
      */
     private $selectionSubsection;
@@ -347,11 +350,12 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_list",
      *     "projection_show",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     private $medias;
@@ -372,7 +376,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_show"
+     *     "news_show",
+     *     "search"
      *
      * })
      */
@@ -401,9 +406,10 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_list",
      *     "film_selection_section_show",
      *     "home",
-     *     "news_list",
+     *     "news_list", "search",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      *
      */
@@ -472,12 +478,13 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "award_list",
      *     "classics",
      *     "orange_studio",
      *     "projection_list",
      *     "projection_show",
+     *     "search"
      * })
      */
     private $imageMain;
@@ -488,7 +495,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "award_list",
      *     "classics",
      *     "orange_studio",
@@ -582,14 +589,15 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show",
      *     "projection_list",
      *     "projection_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
      *     "home",
-     *     "news_list",
+     *     "news_list", "search",
      *     "award_list",
      *     "classics",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      * @return array|ArrayCollection
      */

@@ -41,7 +41,7 @@ abstract class Info implements TranslateMainInterface
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups({"home", "news_list", "news_show"})
+     * @Groups({"home", "news_list", "search", "news_show"})
      *
      */
     private $id;
@@ -50,7 +50,7 @@ abstract class Info implements TranslateMainInterface
      * @var Theme
      *
      * @ORM\ManyToOne(targetEntity="Theme")
-     * @Groups({"home", "news_list", "news_show"})
+     * @Groups({"home", "news_list", "search", "news_show"})
      *
      * @Assert\NotNull()
      */
@@ -161,7 +161,7 @@ abstract class Info implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({"news_list", "news_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "home"})
      */
     private $publishedAt;
 
@@ -169,13 +169,13 @@ abstract class Info implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({"news_list", "news_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "home"})
      */
     private $publishEndedAt;
 
     /**
      * ArrayCollection
-     * @Groups({"home", "news_list", "news_show"})
+     * @Groups({"home", "news_list", "search", "news_show"})
      *
      */
     protected $translations;
@@ -246,7 +246,7 @@ abstract class Info implements TranslateMainInterface
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"home", "news_list", "news_show"})
+     * @Groups({"home", "news_list", "search", "news_show"})
      */
     public function getInfoType()
     {

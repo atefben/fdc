@@ -48,7 +48,7 @@ class MediaImageSimple implements TranslateMainInterface
      * @ORM\Column(name="name", type="string", length=255)
      *
      * @Groups({
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "live",
      *     "web_tv_show", "live",
@@ -68,7 +68,8 @@ class MediaImageSimple implements TranslateMainInterface
      *     "classics",
      *     "orange_programmation_ocs",
      *     "orange_video_on_demand",
-     *     "orange_studio"
+     *     "orange_studio",
+     *     "search"
      * })
      */
     protected $name;
@@ -96,7 +97,7 @@ class MediaImageSimple implements TranslateMainInterface
      *
      * @Assert\Valid()
      * @Groups({
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "live",
      *     "web_tv_show", "live",
@@ -110,7 +111,8 @@ class MediaImageSimple implements TranslateMainInterface
      *     "orange_video_on_demand",
      *     "orange_studio",
      *     "projection_list",
-     *     "projection_show"
+     *     "projection_show",
+     *     "search"
      * })
      * @Serializer\Accessor(getter="getApiTranslations")
      */

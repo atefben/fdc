@@ -50,7 +50,7 @@ class NewsFilmFilmAssociated
      * @ORM\ManyToOne(targetEntity="FilmFilm", inversedBy="associatedNews")
      * * @Groups({
      *     "film_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show"
      * })
      */

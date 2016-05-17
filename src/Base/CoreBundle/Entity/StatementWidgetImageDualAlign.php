@@ -21,7 +21,7 @@ class StatementWidgetImageDualAlign extends StatementWidget
 {
     /**
      * @ORM\ManyToOne(targetEntity="GalleryDualAlign")
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "search", "news_show"})
      */
     private $gallery;
 

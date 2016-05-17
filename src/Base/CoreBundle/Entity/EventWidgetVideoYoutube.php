@@ -28,7 +28,7 @@ class EventWidgetVideoYoutube extends EventWidget implements TranslateMainInterf
     /**
      * @var ArrayCollection
      *
-     * @Groups({"event_list", "event_show"})
+     * @Groups({"event_list", "search", "event_show"})
      */
     protected $translations;
 
@@ -36,7 +36,7 @@ class EventWidgetVideoYoutube extends EventWidget implements TranslateMainInterf
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="MediaImageSimple")
-     * @Groups({"event_list", "event_show"})
+     * @Groups({"event_list", "search", "event_show"})
      */
     protected $image;
 

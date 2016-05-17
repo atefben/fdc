@@ -49,7 +49,7 @@ abstract class FDCPageLaSelectionCannesClassicsWidget
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=false)
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "search", "news_show"})
      */
     protected $position;
 
@@ -64,7 +64,7 @@ abstract class FDCPageLaSelectionCannesClassicsWidget
      * Get the class type in the Api
      *
      * @VirtualProperty
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "search", "news_show"})
      */
     public function getWidgetType()
     {

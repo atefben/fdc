@@ -32,20 +32,21 @@ class MediaImage extends Media
      * @var ArrayCollection
      * @Groups({
      *     "news_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "trailer_show",
      *     "live",
      *     "web_tv_show",
      *     "live",
      *     "film_list",
      *     "film_show",
-     *     "event_list",
+     *     "event_list", "search",
      *     "event_show",
      *     "home",
      *     "today_images",
      *     "live",
      *     "home",
-     *     "orange_video_on_demand"
+     *     "orange_video_on_demand",
+     *     "search"
      * })
      *
      * @Assert\Valid()

@@ -36,7 +36,7 @@ class NewsArticleTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"news_list", "news_show", "film_show", "home"})
+     * @Groups({"news_list", "search", "news_show", "film_show", "home"})
      */
     private $title;
     
@@ -54,7 +54,7 @@ class NewsArticleTranslation implements TranslateChildInterface
      *
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "search", "news_show"})
      */
     private $slug;
 

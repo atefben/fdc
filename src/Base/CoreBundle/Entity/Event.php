@@ -40,7 +40,7 @@ class Event implements TranslateMainInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @Groups({"event_list", "event_list"})
+     * @Groups({"event_list", "search", "event_list", "search"})
      */
     private $id;
 
@@ -49,7 +49,7 @@ class Event implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="Theme")
      *
-     * @Groups({"event_list", "event_show"})
+     * @Groups({"event_list", "search", "event_show"})
      */
     private $theme;
 
@@ -73,7 +73,7 @@ class Event implements TranslateMainInterface
      *
      * @ORM\ManyToOne(targetEntity="MediaImage")
      *
-     * @Groups({"event_list", "event_show"})
+     * @Groups({"event_list", "search", "event_show"})
      * @Assert\NotNull()
      */
     private $header;
@@ -91,7 +91,7 @@ class Event implements TranslateMainInterface
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
      *
-     * @Groups({"event_list", "event_show"})
+     * @Groups({"event_list", "search", "event_show"})
      */
     private $publishedAt;
 
@@ -100,7 +100,7 @@ class Event implements TranslateMainInterface
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
      *
-     * @Groups({"event_list", "event_show"})
+     * @Groups({"event_list", "search", "event_show"})
      */
     private $publishEndedAt;
 
@@ -155,7 +155,7 @@ class Event implements TranslateMainInterface
     /**
      * ArrayCollection
      *
-     * @Groups({"event_list", "event_show"})
+     * @Groups({"event_list", "search", "event_show"})
      */
     protected $translations;
 

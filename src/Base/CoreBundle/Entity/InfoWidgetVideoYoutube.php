@@ -28,7 +28,7 @@ class InfoWidgetVideoYoutube extends InfoWidget
     /**
      * @var ArrayCollection
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "search", "news_show"})
      */
     protected $translations;
 
@@ -36,7 +36,7 @@ class InfoWidgetVideoYoutube extends InfoWidget
      * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "search", "news_show"})
      */
     protected $image;
 

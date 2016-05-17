@@ -30,7 +30,7 @@ class FDCPageLaSelectionCannesClassicsWidgetIntroTranslation
      *
      * @ORM\Column(type="text", nullable=false)
      *
-     * @Groups({"news_list", "news_show"})
+     * @Groups({"news_list", "search", "news_show"})
      */
     private $introduction;
 

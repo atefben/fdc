@@ -41,7 +41,7 @@ class FilmSelectionSubsection implements TranslateMainInterface
      *     "film_selection_list",
      *     "film_selection_section_list",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "home"
      * })
@@ -58,7 +58,7 @@ class FilmSelectionSubsection implements TranslateMainInterface
      *     "film_selection_list",
      *     "film_selection_section_list",
      *     "film_selection_section_show",
-     *     "news_list",
+     *     "news_list", "search",
      *     "news_show",
      *     "home"
      * })
