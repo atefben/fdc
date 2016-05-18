@@ -64,7 +64,10 @@
                             <h3>{{ 'movie.contact.title.contacts'|trans }}</h3>
                             {% set hasProd = false %}
                             {% for contact in movie.contacts %}
-                                {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') %}
+                                {% if
+                                    contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_PRODUCTION_COMPANY') or
+                                    contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_MINOR_PRODUCTION_COMPANY')
+                                %}
                                     {% set hasProd = true %}
                                 {% endif %}
                             {% endfor %}
@@ -109,6 +112,30 @@
                                                             {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
                                                             {% set displayContact = displayContact|merge([displayWebsite]) %}
                                                         {% endif %}
+                                                    {% endif %}
+                                                    {{ displayContact|join(' - ')|raw }}
+                                                </p>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% set first = true %}
+                                    {% for contact in movie.contacts %}
+                                        {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_MINOR_PRODUCTION_COMPANY') %}
+                                            {% if increasePaddingBottom is defined and increasePaddingBottom %}
+                                                <div class="contact-increase-padding-bottom"></div>
+                                            {% endif %}
+                                            {% if first %}
+                                                {% set first = false %}
+                                                <p class="sub">{{ 'movie.contact.label.minor_production_company'|trans }}</p>
+                                            {% endif %}
+                                            <div class="contact-reduce-line-height">
+                                                <p>
+                                                    {% set displayContact = [] %}
+                                                    {% if contact.companyName %}
+                                                        {% set displayContact = displayContact|merge([contact.companyName]) %}
+                                                    {% endif %}
+                                                    {% if contact.address and contact.address.country %}
+                                                        {% set displayContact = displayContact|merge([contact.address.country|trans_fallback_country('name')]) %}
                                                     {% endif %}
                                                     {{ displayContact|join(' - ')|raw }}
                                                 </p>
