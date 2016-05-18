@@ -502,7 +502,7 @@ class GlobalController extends Controller {
      */
     public function wishlistAction(Request $request) {
         $locale = $request->getLocale();
-        $ids  = explode('|',  $ids  = $request->query->get('ids'));
+        $ids  = explode('|',  $request->query->get('ids'));
         if(is_array($ids)) {
             $movies = $this
                 ->getDoctrineManager()
@@ -523,6 +523,7 @@ class GlobalController extends Controller {
     public function generateBitlyAction(Request $request) {
         $locale = $request->getLocale();
         $ids  = $request->query->get('id');
+        // TODO Shorter URL
         $reponse = array('url' => 'http://www.festival-cannes.com/' . $locale . '/wishlist/?ids=' . $ids);
         return new JsonResponse($reponse);
     }
