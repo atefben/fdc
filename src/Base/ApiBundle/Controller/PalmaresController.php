@@ -70,7 +70,7 @@ class PalmaresController extends FOSRestController
             ->getPageBySlug('fr', 'tout-le-palmares')
         ;
 
-        if (!$page->getWaitingPage() || ($page->getWaitingPage() && !$page->getWaitingPage()->getEnabled())) {
+        if (!$page || !$page->getWaitingPage() || ($page->getWaitingPage() && !$page->getWaitingPage()->getEnabled())) {
             $competition = $this->getCompetitionAwards($festival, $lang);
             $certainRegard = $this->getUnCertainRegard($festival, $lang);
             $cinefondation = $this->getCinefondationRegard($festival, $lang);
