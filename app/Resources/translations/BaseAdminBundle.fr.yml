@@ -528,6 +528,8 @@ dashboard:
         confidentialite: Politique de confidentialité
 
 form:
+    fdc_page_participate_section:
+        image_big: Grande image
     label_mobile: Utiliser cette strate sur mobile
     fdc_page_la_selection_cinema_plage:
         header: Têtière

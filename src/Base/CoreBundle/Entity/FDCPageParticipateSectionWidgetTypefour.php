@@ -27,6 +27,11 @@ class FDCPageParticipateSectionWidgetTypefour extends FDCPageParticipateSectionW
     private $image;
 
     /**
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     */
+    private $imageBig;
+
+    /**
      * ArrayCollection
      */
     protected $translations;
@@ -61,5 +66,28 @@ class FDCPageParticipateSectionWidgetTypefour extends FDCPageParticipateSectionW
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set imageBig
+     *
+     * @param \Base\CoreBundle\Entity\MediaImageSimple $imageBig
+     * @return FDCPageParticipateSectionWidgetTypefour
+     */
+    public function setImageBig(\Base\CoreBundle\Entity\MediaImageSimple $imageBig = null)
+    {
+        $this->imageBig = $imageBig;
+
+        return $this;
+    }
+
+    /**
+     * Get imageBig
+     *
+     * @return \Base\CoreBundle\Entity\MediaImageSimple 
+     */
+    public function getImageBig()
+    {
+        return $this->imageBig;
     }
 }
