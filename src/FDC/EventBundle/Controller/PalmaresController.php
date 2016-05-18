@@ -61,22 +61,15 @@ class PalmaresController extends Controller
             throw $this->createNotFoundException('Page palmares not found');
         }
 
-        // Old system (remove this)
-        $waitingPage = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FDCPageWaiting')
-            ->getSingleWaitingPageByRoute($request->get('_route'));
+        // waiting page for everyone except bo domain and admin roles
+        if ($page->getWaitingPage() !== null && $page->getWaitingPage()->getEnabled() === true) {
+            $waitingPage = $page->getWaitingPage();
+        }
 
-        // Old system (remove this)
         if ($isAdmin == true && isset($_SERVER) &&
             isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] == 'bo.festival-cannes.com') {
             $waitingPage = null;
         }
-
-        // New system (uncomment this)
-        /*if ($isAdmin == false && $page->getWaitingPage() !== null && $page->getWaitingPage()->getEnabled() === true) {
-            $waitingPage = $page->getWaitingPage();
-        }*/
 
         $localeSlugs = $page->getLocaleSlugs();
 
