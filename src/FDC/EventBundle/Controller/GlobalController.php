@@ -500,10 +500,9 @@ class GlobalController extends Controller {
      * @Template("FDCEventBundle:Global:whichlist.html.twig")
      * @return array
      */
-    public function wishlistAction() {
-        $articles = array();
-        $ids  = explode('|', $_GET['id']);
-
+    public function wishlistAction(Request $request) {
+        $locale = $request->getLocale();
+        $ids  = explode('|',  $ids  = $request->query->get('ids'));
         if(is_array($ids)) {
             $movies = $this
                 ->getDoctrineManager()
@@ -521,9 +520,10 @@ class GlobalController extends Controller {
     /**
      * @Route("/generateBitly")
      */
-    public function generateBitlyAction() {
-
-        $reponse = array('url' => 'http://www.festival-cannes.com/test');
+    public function generateBitlyAction(Request $request) {
+        $locale = $request->getLocale();
+        $ids  = $request->query->get('id');
+        $reponse = array('url' => 'http://www.festival-cannes.com/' . $locale . '/wishlist/?ids=' . $ids);
         return new JsonResponse($reponse);
     }
 }
