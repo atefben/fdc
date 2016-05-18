@@ -42,9 +42,9 @@
         <span class="label">{{ 'article.filter.label.format'|trans }} :</span>
         <span class="select">
             {% for key, format in filters.format %}
-            <span class="{% if key == 0 %}active{% endif %}" data-filter="{% if key != 0 %}{{ format }}{% else %}all{% endif %}">
+            <span class="{% if key == 0 %}active{% endif %}" data-filter="{% if key != 0 %}{{ format|get_news_type }}{% else %}all{% endif %}">
                 {% if key != 0 %}
-                    {{ format }}
+                    {{ format|get_news_type }}
                 {% else  %}
                     [ {{ 'search.result.filter.tous'|trans }} ]
                 {% endif %}
