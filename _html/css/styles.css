@@ -13375,6 +13375,30 @@ input[type=submit] {
 .selection-officielle .single-article {
   padding: 0px !important;
 }
+.selection-officielle .whishlist .share {
+  margin: 9px 0 0 0;
+}
+.selection-officielle .whishlist .share .button {
+  border-color: #2c2c2c;
+  -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.selection-officielle .whishlist .share .button:hover {
+  border-color: #c8a461;
+  background-color: #141414;
+  color: #c8a461;
+}
+.selection-officielle .whishlist .share .button:hover + .button {
+  border-left: 1px solid #c8a461;
+}
+.selection-officielle .whishlist .share .icon {
+  font-size: .8rem;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
 .selection-officielle figure {
   overflow: hidden;
 }

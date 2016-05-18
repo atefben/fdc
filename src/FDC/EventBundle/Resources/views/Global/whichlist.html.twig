@@ -3,7 +3,7 @@
 
 {% block body %}
     <div id="main" class="list-article films-list selection-officielle">
-        <div class="container container-list ">
+        <div class="container container-list whishlist">
             <section class="categorie-items">
                 <div class="title-list-cat">
                     <h2 class="titre-document">{{ 'header.whishlist.label'|trans }}</h2>
@@ -42,6 +42,15 @@
                             </div>
                         {% endfor %}
 
+                    </div>
+                </div>
+                <div class="share">
+                    <p>{{ 'article.text.partagerarticle'|trans }}</p>
+                    <div class="buttons square">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlshare }}"
+                           class="button facebook"><i class="icon icon_facebook"></i></a>
+                        <a href="https://twitter.com/intent/tweet?url={{ urlshare }}&text={{ 'header.whishlist.label'|trans }}"
+                           class="button twitter"><i class="icon icon_twitter"></i></a>
                     </div>
                 </div>
             </section>
