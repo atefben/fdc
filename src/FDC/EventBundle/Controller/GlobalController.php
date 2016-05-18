@@ -494,4 +494,36 @@ class GlobalController extends Controller {
             'searchForm' => $searchForm->createView()
         );
     }
+
+    /**
+     * @Route("/wishlist")
+     * @Template("FDCEventBundle:Global:whichlist.html.twig")
+     * @return array
+     */
+    public function wishlistAction() {
+        $articles = array();
+        $ids  = explode('|', $_GET['id']);
+
+        if(is_array($ids)) {
+            $movies = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->getFilmsByIds($ids)
+            ;
+        }
+
+        return array(
+            'movies' => $movies
+        );
+
+    }
+
+    /**
+     * @Route("/generateBitly")
+     * @return array
+     */
+    public function generateBitlyAction() {
+
+        echo 'http://www.festival-cannes.com/test';
+    }
 }

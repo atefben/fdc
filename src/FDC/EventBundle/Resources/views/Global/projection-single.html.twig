@@ -19,7 +19,7 @@
                     }) -%}
                     <div class="content">
                         <div class="categories">
-                            <span>{{ film.selectionSection|trans_fallback('name') }}{%- if film.selectionSubsection -%}{{ film.selectionSubsection|trans_fallback('name') }}{%- endif -%}</span>
+                            <span>{{ film.selectionSection|trans_fallback('name') }}{%- if film.selectionSubsection -%}{{ ' - ' ~ film.selectionSubsection|trans_fallback('name') }}{%- endif -%}</span>
                             {%- if 'Ouverture' in film.galaName -%}
                                 <span>{{ 'movie.fdc_open'|trans }}</span>
                             {%- elseif 'Fermeture' in film.galaName or 'Clôture' in film.galaName -%}
@@ -68,7 +68,11 @@
                                 {%- if duration|length >= 1 -%}
                                     {% set hours = (duration[0]/60)|round(0, 'floor')  %}
                                     {% set minutes = duration[0] % 60  %}
-                                    <span>{{ hours }}{{ app.request.locale == 'zh' ? '点': 'H' }}{% if minutes|length == 1 %}0{% endif %}{{ minutes }}</span>
+                                    <span>
+                                        {{- hours -}}
+                                        {%- if app.request.locale == 'en' -%}:{%- elseif app.request.locale == 'zh' -%}点{% else %}H{%- endif -%}
+                                        {%- if minutes|length == 1 -%}0{%- endif -%}{{- minutes -}}
+                                    </span>
                                 {%- endif -%}
                             <p>
                         {%- endif -%}
@@ -110,7 +114,8 @@
                         <div class="event">
                             <p class="date">
                                 {{ seance.startsAt|localizeddate('full', 'none') }} -
-                                <span>{{ seance.startsAt|date('H:i') }}</span>
+                                {% set timeProjection = (app.request.locale == 'en') ? agenda_leftbar_translate_hour(seance.startsAt|date('H:i'),true) : seance.startsAt|date('H:i') %}
+                                <span>{{ timeProjection }}</span>
                             </p>
                             <div class="fc-event" data-url="{{ path('fdc_event_agenda_getprojection', {id: seance.id}) }}"
                                  data-id="{{ seance.id }}" data-picto='.seance' data-color='{{ dataColor }}'
@@ -157,7 +162,8 @@
                                 </div>
                                 <div class="bottom">
                                     <span class="duration">
-                                        {{ difference.h }}{{ app.request.locale == 'zh' ? '点': 'H' }}
+                                        {{- difference.h -}}
+                                        {%- if app.request.locale == 'en' -%}:{%- elseif app.request.locale == 'zh' -%}点{% else %}H{%- endif -%}
                                         {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> -
                                     <span class="ven">
@@ -218,7 +224,8 @@
                         <div class="event">
                             <p class="date">
                                 {{ conference.startsAt|localizeddate('full', 'none') }} -
-                                <span>{{ conference.startsAt|date('H:i') }}</span>
+                                {% set timeProjection = (app.request.locale == 'en') ? agenda_leftbar_translate_hour(conference.startsAt|date('H:i'),true) : conference.startsAt|date('H:i') %}
+                                <span>{{ timeProjection }}</span>
                             </p>
                             <div class="fc-event" data-url="{{ path('fdc_event_agenda_getprojection', {id: conference.id}) }}"
                                  data-id="{{ conference.id }}" data-picto='.seance' data-color='{{ dataColor }}'
@@ -265,7 +272,8 @@
                                 </div>
                                 <div class="bottom">
                                     <span class="duration">
-                                        {{ difference.h }}{{ app.request.locale == 'zh' ? '点': 'H' }}
+                                        {{- difference.h -}}
+                                        {%- if app.request.locale == 'en' -%}:{%- elseif app.request.locale == 'zh' -%}点{% else %}H{%- endif -%}
                                         {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> -
                                     <span class="ven">
@@ -369,7 +377,8 @@
                                 </div>
                                 <div class="bottom">
                                     <span class="duration">
-                                        {{ difference.h }}{{ app.request.locale == 'zh' ? '点': 'H' }}
+                                        {{- difference.h -}}
+                                        {%- if app.request.locale == 'en' -%}:{%- elseif app.request.locale == 'zh' -%}点{% else %}H{%- endif -%}
                                         {%- if difference.i|length == 1 -%}0{%- endif -%}{{ difference.i }}
                                     </span> - {{- ' ' -}}
                                     <span class="ven">

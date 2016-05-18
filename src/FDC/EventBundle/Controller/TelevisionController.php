@@ -170,9 +170,10 @@ class TelevisionController extends Controller
      * @throws NotFoundHttpException
      *
      * @Route("/channel/{slug}")
+     * @Route("/channel/{slug}/{videoId}")
      * @Template("FDCEventBundle:Television:channel.html.twig")
      */
-    public function getChannelAction(Request $request, $slug)
+    public function getChannelAction(Request $request, $slug, $videoId = null)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -180,7 +181,6 @@ class TelevisionController extends Controller
         $locale = $request->getLocale();
 
         $webTv = $em->getRepository('BaseCoreBundle:WebTv')->getWebTvBySlug($slug, $locale, $festival);
-
 
         if (!$webTv || !$webTv->getMediaVideos()->count()) {
             throw $this->createNotFoundException('Web TV not found');
@@ -194,6 +194,20 @@ class TelevisionController extends Controller
 
         if (!$webTvVideos) {
             throw $this->createNotFoundException('There is no videos for this channel');
+        }
+
+        if ($videoId !== null) {
+            $firstVideo = null;
+            foreach ($webTvVideos as $key => $tmp) {
+                if ($tmp->getId() == $videoId) {
+                    $firstVideo = $webTvVideos[$key];
+                    unset($webTvVideos[$key]);
+                }
+            }
+
+            if ($firstVideo !== null) {
+                $webTvVideos = array_merge(array($firstVideo), array_values($webTvVideos));
+            }
         }
 
         $otherVideos = $this

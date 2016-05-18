@@ -4378,6 +4378,11 @@ header #logo-wrapper #logo img.palm {
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
+header #logo-wrapper #logo.wichlist {
+  margin: 0 auto;
+  display: block;
+  padding: 5px 0 0 0;
+}
 header #logo-wrapper #partners {
   position: absolute;
   top: 60px;
