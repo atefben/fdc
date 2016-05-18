@@ -67,7 +67,7 @@ class AgendaDateTranslationExtension extends Twig_Extension
         } elseif ($locale == 'en') {
             if ($hour > 12) {
                 $display = explode(':', $hour);
-                if (is_array($display)) {
+                if (is_array($display) && count($display) == 2) {
                     $display = (isset($display[1])) ? ($display[0] - 12 . ':' . $display[1]) : $display[0];
                 } else {
                     $display = ($hour > 12) ? $hour - 12 : $hour;
