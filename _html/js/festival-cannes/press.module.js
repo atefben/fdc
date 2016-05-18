@@ -1425,7 +1425,7 @@ $(document).ready(function () {
       var is_sticky = $('.press').hasClass('sticky');
       var the_id = $(this).attr("href");
       if (!is_sticky) {
-        if($(the_id).offset().top.length > 0) {
+        if($(the_id).length > 0) {
           $('html, body').animate({
             scrollTop: $(the_id).offset().top - 300
           }, 'slow');
