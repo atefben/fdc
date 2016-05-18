@@ -13383,6 +13383,9 @@ input[type=submit] {
   color: #FFF;
   width: 100%;
 }
+.mob .selection-whislist .share {
+  display: none;
+}
 
 .selection-officielle .single-article {
   padding: 0px !important;
