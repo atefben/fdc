@@ -123,7 +123,7 @@
                     </div>
                     <div class="info">
                         <span class="category">{{ article.theme|trans_fallback('name') }}</span>
-                        <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
+                        <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
                         <h3>
                             <a href="{{ path('fdc_event_news_get', {'format': article.translatable.newsFormat, 'slug': article|trans_fallback('slug') }) }}">
                                 {{ article|trans_fallback('title')|truncate(40) }}

@@ -129,7 +129,7 @@ article is news_image %}
         <div class="top-info">
             <p class="category">{{ article.theme|trans_fallback('name') }}</p>
             <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . 
-            <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
+            <span class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
             <h2>
                 {% if type == 'news' %}
                     <a class="linkImage" href="{{ url('fdc_event_news_get', { _locale: app.request.locale , format: trans.translatable.newsFormat, slug: trans.slug }) }}">{{ article|trans_fallback('title')|truncate(40) }}</a>

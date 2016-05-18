@@ -51,18 +51,23 @@ class AgendaDateTranslationExtension extends Twig_Extension
      * @param $hour
      * @return mixed
      */
-    public function leftBarTranslateHour($hour,$space = false)
+    public function leftBarTranslateHour($hour,$space = false, $disabledLangs = false)
     {
         $locale = $this->requestStack->getCurrentRequest()->getLocale();
+
+        // avoid to use the hour translation on specific locales
+        if ($disabledLangs === true && in_array($locale, array('fr', 'es', 'zh'))) {
+            return $hour;
+        }
 
         if (in_array($locale, array('fr', 'es'))) {
             $output =  str_pad($hour, 2, '0', STR_PAD_LEFT) . 'H';
         } elseif ($locale == 'zh') {
-            $output =  str_pad($hour, 2, '0', STR_PAD_LEFT) . '点';
+            $output = str_pad($hour, 2, '0', STR_PAD_LEFT) . '点';
         } elseif ($locale == 'en') {
             if ($hour > 12) {
-                if (is_array($hour)) {
-                    $display = explode(':', $hour);
+                $display = explode(':', $hour);
+                if (is_array($display)) {
                     $display = (isset($display[1])) ? ($display[0] - 12 . ':' . $display[1]) : $display[0];
                 } else {
                     $display = ($hour > 12) ? $hour - 12 : $hour;

@@ -104,7 +104,7 @@
                                     <div class="vCenterKid">
                                         <a href="" class="category">{{ trailer.theme }}</a>
                                         <span class="date">{{ trailer.publishedAt|date('d.m.Y') }}</span> .
-                                        <span class="hour">{{ trailer.publishedAt|date('H.i') }}</span>
+                                        <span class="hour">{{ agenda_leftbar_translate_hour(trailer.publishedAt|date('H:i'), true, true) }}</span>
                                         <a href="#"
                                            class="titleLink">{{ trailer|trans_fallback('title')|truncate(85) }}</a>
                                     </div>
@@ -147,7 +147,7 @@
                                     <div class="vCenterKid">
                                         <a class="category">{{ video.theme|trans_fallback('name') }}</a>
                                         <span class="date">{{ video.publishedAt|date('d.m.Y') }}</span> .
-                                        <span class="hour">{{ video.publishedAt|date('H:i') }}</span>
+                                        <span class="hour">{{ agenda_leftbar_translate_hour(video.publishedAt|date('H:i'), true, true) }}</span>
                                         <a href="#"
                                            class="titleLink">{{ video|trans_fallback('title')|truncate(50) }}</a>
                                     </div>

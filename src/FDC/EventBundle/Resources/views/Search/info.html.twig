@@ -110,7 +110,7 @@
             </div>
             <div class="info">
                 <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': 'info' }) }}" class="category">{{ article.theme|trans_fallback('name') }}</a>
-                <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
+                <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
                 <h2>
                     <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': 'info' }) }}">
                         {{ article|trans_fallback('title')|truncate(40) }}

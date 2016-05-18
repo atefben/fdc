@@ -28,7 +28,7 @@
                                 <div class="vCenterKid">
                                     <span class="category">{{ photo.theme|trans_fallback('name')|truncate(22) }}</span>
                                     <span class="date">{{ photo.publishedAt|date('d.m.y') }}</span> . <span
-                                            class="hour">{{ photo.publishedAt|date('H:i') }}</span>
+                                            class="hour">{{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}</span>
                                     <p data-title="{{ photo|trans_fallback('legend') }}">{{ photo|trans_fallback('legend') }}</p>
                                 </div>
                             </div>

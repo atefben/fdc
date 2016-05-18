@@ -56,7 +56,7 @@
                             <div class="info">
                                 <div class="vCenter">
                                     <div class="vCenterKid">
-                                        <a href="#" class="category">{{ video.mediaVideo.theme|trans_fallback('name') }}</a><span class="date">{{ video.mediaVideo.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ video.mediaVideo.publishedAt|date('H:i') }}</span>
+                                        <a href="#" class="category">{{ video.mediaVideo.theme|trans_fallback('name') }}</a><span class="date">{{ video.mediaVideo.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(video.mediaVideo.publishedAt|date('H:i'), true, true) }}</span>
                                         <p>{{ video.mediaVideo|trans_fallback('title') }}</p>
                                     </div>
                                 </div>

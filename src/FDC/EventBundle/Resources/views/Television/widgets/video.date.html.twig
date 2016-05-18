@@ -19,7 +19,7 @@
         <div class="vCenter">
             <div class="vCenterKid">
                 <span class="category">{{ video.association.theme|trans_fallback('name') }}</span>
-                <span class="date">{{ video.association.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ video.association.publishedAt|date('H.i') }}</span>
+                <span class="date">{{ video.association.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(video.association.publishedAt|date('H:i'), true, true) }}</span>
                 <p class="titleLink" data-title="{{ video.association|trans_fallback('title') }}">{{ video.association|trans_fallback('title') }}</p>
             </div>
         </div>

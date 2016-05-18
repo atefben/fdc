@@ -26,7 +26,7 @@
                                     <span class="category mainCategory">{{ videos[0].mediaVideo.theme|trans_fallback('name') }}</span>
                                     <span class="date">{{ videos[0].mediaVideo.publishedAt()|date('d/m/Y') }}</span>
                                     .
-                                    <span class="hour">{{ videos[0].mediaVideo.publishedAt()|date('H:i') }}</span>
+                                    <span class="hour">{{ agenda_leftbar_translate_hour(videos[0].mediaVideo.publishedAt()|date('H:i'), true, true) }}</span>
                                     <a href="#" class="titleLink">{{ videos[0].mediaVideo|trans_fallback('title') }}</a>
                                 </div>
                             </div>
