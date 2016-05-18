@@ -496,11 +496,11 @@ class GlobalController extends Controller {
     }
 
     /**
-     * @Route("/whichlist")
+     * @Route("/wishlist")
      * @Template("FDCEventBundle:Global:whichlist.html.twig")
      * @return array
      */
-    public function whichlistAction() {
+    public function wishlistAction() {
         $articles = array();
         $ids  = explode('|', $_GET['id']);
 
