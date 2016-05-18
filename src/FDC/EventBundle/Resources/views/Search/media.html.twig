@@ -39,12 +39,12 @@
 
                     {% if media.header is not null %}
                         {% set transImage = media.header.findTranslationByLocale(app.request.locale) %}
-                        {% if transImage is null %}
+                        {% if transImage is null or transImage.file is null  %}
                             {% set transImage = media.header.findTranslationByLocale('fr') %}
                         {% endif %}
                     {% elseif media.image %}
                         {% set transImage = media.image.findTranslationByLocale(app.request.locale) %}
-                        {% if transImage is null %}
+                        {% if transImage is null or transImage.file is null %}
                             {% set transImage = media.image.findTranslationByLocale('fr') %}
                         {% endif %}
                     {% elseif class(media) == 'MediaVideo' and  media|trans_fallback('imageAmazonUrl') %}
