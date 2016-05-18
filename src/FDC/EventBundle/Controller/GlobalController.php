@@ -502,7 +502,7 @@ class GlobalController extends Controller {
      */
     public function whichlistAction() {
         $articles = array();
-        $ids  = explode('|', $this->get('id'));
+        $ids  = explode('|', $_GET['id']);
 
         if(is_array($ids)) {
             $movies = $this
@@ -510,11 +510,10 @@ class GlobalController extends Controller {
                 ->getRepository('BaseCoreBundle:FilmFilm')
                 ->getFilmsByIds($ids)
             ;
-            $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
         }
 
         return array(
-            'movie' => $movie
+            'movies' => $movies
         );
 
     }
