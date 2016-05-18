@@ -496,7 +496,7 @@ class GlobalController extends Controller {
     }
 
     /**
-     * @Route("/whichlist"
+     * @Route("/whichlist")
      * @Template("FDCEventBundle:Global:whichlist.html.twig")
      * @return array
      */
