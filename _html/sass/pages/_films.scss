@@ -548,6 +548,33 @@
   .single-article {
     padding: 0px !important;
   }
+  .whishlist {
+    .share {
+      margin: 9px 0 0 0;
+
+      .button {
+        border-color: #2c2c2c;
+        @include transition(all .5s $smoothTransition);
+      }
+
+      .button:hover {
+        border-color: $gold;
+        background-color: #141414;
+        color: $gold;
+      }
+
+      .button:hover + .button {
+        border-left: 1px solid $gold;
+      }
+
+      .icon {
+        font-size: .8rem;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+      }
+    }
+  }
 
   figure {
     overflow: hidden;

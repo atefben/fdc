@@ -1424,7 +1424,7 @@ $(document).ready(function () {
     $('a[href^="#"]').click(function () {
       var is_sticky = $('.press').hasClass('sticky');
       var the_id = $(this).attr("href");
-
+  console.log(the_id);
       if (!is_sticky) {
         $('html, body').animate({
           scrollTop: $(the_id).offset().top - 300
