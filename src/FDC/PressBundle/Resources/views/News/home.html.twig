@@ -173,7 +173,9 @@
 
                                     {% for video in media.film.associatedMediaVideos %}
                                         {% if video.mediaVideo.displayedTrailer == 1 %}
-                                            {% set trailerCount = trailerCount + 1 %}
+                                            {% if video.mediaVideo|is_available_video(true, 'fr') or video.mediaVideo|is_available_video(true, 'en') %}
+                                                {% set trailerCount = trailerCount + 1 %}
+                                            {% endif %}
                                         {% endif %}
                                     {% endfor %}
 
