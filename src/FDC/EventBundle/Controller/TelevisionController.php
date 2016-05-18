@@ -512,6 +512,7 @@ class TelevisionController extends Controller
         }
 
         $posterNext = null;
+        $posterNextFormat = 'small';
         if ($next instanceof FilmFilm) {
             foreach ($next->getMedias() as $media) {
                 if ($media->getType() === FilmFilmMediaInterface::TYPE_POSTER && $media->getMedia() && $media->getMedia()->getFile()) {

@@ -46,7 +46,7 @@
                                         <a href="#"
                                            class="category">{{ videos[0].theme|trans_fallback('name') }}</a><span
                                                 class="date">{{ videos[0].publishedAt|date('d.m.y') }}</span> . <span
-                                                class="hour">{{ videos[0].publishedAt|date('H:i') }}</span>
+                                                class="hour">{{ agenda_leftbar_translate_hour(videos[0].publishedAt|date('H:i'), true, true) }}</span>
                                         <p>{{ videos[0]|trans_fallback('title') }}</p>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                     <div class="infos-videos">
                         <div class="infos">
                             <strong>{{ videos[0].theme }}</strong>
-                                <span class="time">{{ videos[0].publishedAt|date('d.m.y . H:i') }}</span>
+                                <span class="time">{{ videos[0].publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(videos[0].publishedAt|date('H:i'), true, true) }}</span>
                             <p>{{ videos[0]|trans_fallback('title') }}</p>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                             <div class="contain-info">
                                 {% for showing in filmShowings %}
                                     <div class="infos">
-                                        <p>{{ showing.type }} <span class="date">{{ showing.date|date('d.m.y') }} {{ showing.date|date('H:i') }}</span></p>
+                                        <p>{{ showing.type }} <span class="date">{{ showing.date|date('d.m.y') }} {{ agenda_leftbar_translate_hour(showing.date|date('H:i'), true, true) }}</span></p>
                                         <span class="where">{{ showing.place }}</span>
                                         {% if loop.last == false %}
                                             <hr>
@@ -148,7 +148,7 @@
                                     <div class="vCenter">
                                         <div class="vCenterKid">
                                             <a class="category">{{ video.theme|truncate(12) }}</a>
-                                            <span class="date">{{ video.publishedAt|date('d.m.y H:i') }}</span>
+                                            <span class="date">{{ video.publishedAt|date('d.m.y') }} {{ agenda_leftbar_translate_hour(video.publishedAt|date('H:i'), true, true) }}</span>
                                             <span>{{ video|trans_fallback('title')|truncate(25) }}</span>
                                         </div>
                                     </div>
