@@ -102,6 +102,7 @@ class FDCPageParticipateSectionWidgetTypefourType extends FDCPageParticipateSect
             ))
 
             ->add('imageBig', 'sonata_type_model_list', array(
+                'required' => false,
                 'label' => 'form.fdc_page_participate_section.image_big',
                 'sonata_field_description' =>  $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->FDCPageParticipateSectionWidgetTypefourDummyAdmin->getModelManager(),
