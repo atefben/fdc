@@ -502,7 +502,7 @@ class GlobalController extends Controller {
      */
     public function wishlistAction(Request $request) {
         $locale = $request->getLocale();
-        $ids  = explode('|',  $request->query->get('ids'));
+        $ids  = explode('|',  $request->query->get('el'));
         if(is_array($ids)) {
             $movies = $this
                 ->getDoctrineManager()
@@ -523,8 +523,11 @@ class GlobalController extends Controller {
     public function generateBitlyAction(Request $request) {
         $locale = $request->getLocale();
         $ids  = $request->query->get('id');
-        // TODO Shorter URL
-        $reponse = array('url' => 'http://www.festival-cannes.com/' . $locale . '/wishlist/?ids=' . $ids);
+        $bitlyManager = $this->get('base.manager.bitly');
+        $params['access_token'] = '1471b10911b48ad79ad042b02a15711ea71fc6c0';
+        $params['longUrl'] = 'http://www.festival-cannes.com/' . $locale . '/wishlist?el=' . $ids;
+        $results = $bitlyManager->bitly_get('shorten', $params);
+        $reponse = array('url' => $results['data']['url']);
         return new JsonResponse($reponse);
     }
 }
