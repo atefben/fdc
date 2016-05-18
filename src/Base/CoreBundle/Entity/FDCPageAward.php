@@ -64,6 +64,12 @@ class FDCPageAward implements TranslateMainInterface
      */
     private $otherSelectionSectionsAssociated;
 
+    /**
+     * @var FDCPageWaiting
+     * @ORM\ManyToOne(targetEntity="FDCPageWaiting")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $waitingPage;
 
     protected $translations;
 
@@ -225,5 +231,28 @@ class FDCPageAward implements TranslateMainInterface
             }
         }
         return $this->otherSelectionSectionsAssociated;
+    }
+
+    /**
+     * Set waitingPage
+     *
+     * @param \Base\CoreBundle\Entity\FDCPageWaiting $waitingPage
+     * @return FDCPageAward
+     */
+    public function setWaitingPage(\Base\CoreBundle\Entity\FDCPageWaiting $waitingPage = null)
+    {
+        $this->waitingPage = $waitingPage;
+
+        return $this;
+    }
+
+    /**
+     * Get waitingPage
+     *
+     * @return \Base\CoreBundle\Entity\FDCPageWaiting 
+     */
+    public function getWaitingPage()
+    {
+        return $this->waitingPage;
     }
 }

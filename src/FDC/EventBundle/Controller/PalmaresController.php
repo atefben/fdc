@@ -24,22 +24,13 @@ class PalmaresController extends Controller
 
         $festival = $this->getFestival()->getId();
         $locale = $request->getLocale();
+        $waitingPage = null;
 
         try {
             $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
         } catch (\Exception $e) {
             $isAdmin = false;
         }
-
-        if ($isAdmin == true) {
-            $waitingPage = null;
-        } else {
-            $waitingPage = $this
-                ->getDoctrineManager()
-                ->getRepository('BaseCoreBundle:FDCPageWaiting')
-                ->getSingleWaitingPageByRoute($request->get('_route'));
-        }
-
 
         $pages = $this
             ->getDoctrineManager()
@@ -65,6 +56,27 @@ class PalmaresController extends Controller
             ->getRepository('BaseCoreBundle:FDCPageAward')
             ->getPageBySlug($locale, $slug)
         ;
+
+        if ($page === null) {
+            throw $this->createNotFoundException('Page palmares not found');
+        }
+
+        // Old system (remove this)
+        $waitingPage = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageWaiting')
+            ->getSingleWaitingPageByRoute($request->get('_route'));
+
+        // Old system (remove this)
+        if ($isAdmin == true) {
+            $waitingPage = null;
+        }
+
+        // New system (uncomment this)
+        /*if ($isAdmin == false && $page->getWaitingPage() !== null && $page->getWaitingPage()->getEnabled() === true) {
+            $waitingPage = $page->getWaitingPage();
+        }*/
+
         $localeSlugs = $page->getLocaleSlugs();
 
         $parameters = array(

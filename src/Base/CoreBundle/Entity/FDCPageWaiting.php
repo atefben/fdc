@@ -66,7 +66,11 @@ class FDCPageWaiting implements TranslateMainInterface
 
     public function __toString()
     {
-        $string = strval($this->getId());
+        if ($this->findTranslationByLocale('fr')) {
+            $string = $this->findTranslationByLocale('fr')->getTitle();
+        } else {
+            $string = strval($this->getId());
+        }
 
         return $string;
     }

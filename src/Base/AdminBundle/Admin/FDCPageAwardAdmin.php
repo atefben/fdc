@@ -124,6 +124,10 @@ class FDCPageAwardAdmin extends Admin
 
         $formMapper
             ->add('translations', 'a2lix_translations', $translationsFields)
+            ->add('waitingPage', 'sonata_type_model_list', array(
+                'label'    => 'form.fdc_page_award.waiting_page',
+                'required' => false,
+            ))
             ->add('image', 'sonata_type_model_list', array(
                 'label'    => 'form.fdc_page_award.image',
                 'help'     => 'form.fdc_page_award.helper_image',

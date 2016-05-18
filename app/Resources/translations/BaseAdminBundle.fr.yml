@@ -822,6 +822,7 @@ form:
         error: Erreur
         ready: Prêt
     fdc_page_award:
+        waiting_page: Page d'attente
         content_page: Contenu de la page
         label_name: Nom
         image: Image cover

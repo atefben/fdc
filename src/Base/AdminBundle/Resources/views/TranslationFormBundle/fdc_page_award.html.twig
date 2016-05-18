@@ -29,6 +29,7 @@
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
                                     {% if form.vars.default_locale == locale %}
+                                        {{ form_row(form.parent.children.waitingPage) }}
                                         {{ form_row(form.parent.children.image) }}
                                     {% endif %}
                                     {{ form_row(translationsFields.name) }}
