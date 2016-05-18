@@ -494,4 +494,28 @@ class GlobalController extends Controller {
             'searchForm' => $searchForm->createView()
         );
     }
+
+    /**
+     * @Route("/whichlist"
+     * @Template("FDCEventBundle:Global:whichlist.html.twig")
+     * @return array
+     */
+    public function whichlistAction() {
+        $articles = array();
+        $ids  = explode('|', $this->get('id'));
+
+        if(is_array($ids)) {
+            $movies = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->getFilmsByIds($ids)
+            ;
+            $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
+        }
+
+        return array(
+            'movie' => $movie
+        );
+
+    }
 }
