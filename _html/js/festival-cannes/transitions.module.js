@@ -70,3 +70,12 @@ $(document).ready(function() {
     }
   });
 });
+
+$(window).load(function() {
+  var isIE11 = !!(navigator.userAgent.match(/Trident/) && navigator.userAgent.match(/rv[ :]11/));
+  if(isIE11) {
+    $('#main, footer, #breadcrumb, .sub-nav-list').removeClass('loading');
+    cl.hide();
+    $loader.removeClass('show');
+  }
+})
