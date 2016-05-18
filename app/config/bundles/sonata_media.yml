@@ -168,7 +168,9 @@ sonata_media:
                 2560x1620: { width: 2560 , height: 1620 , quality: 100}
                 # Diaporama photo
                 1760x1108: { width: 1760 , height: 1108 , quality: 100, constraint: false}
+                1108x1760: { width: 1760 , height: 1108 , quality: 100, constraint: false}
                 880x554: { width: 880, height: 554, quality: 100, constraint: false }
+                554x880: { width: 880, height: 554, quality: 100, constraint: false }
                 # Miniatures diaporama photo
                 194x128: { width: 194 , height: 128 , quality: 100, constraint: false}
                 97x64: { width: 97 , height: 64 , quality: 100, constraint: false}
