@@ -68,7 +68,8 @@ class PalmaresController extends Controller
             ->getSingleWaitingPageByRoute($request->get('_route'));
 
         // Old system (remove this)
-        if ($isAdmin == true) {
+        if ($isAdmin == true && isset($_SERVER) &&
+            isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] == 'bo.festival-cannes.com') {
             $waitingPage = null;
         }
 
