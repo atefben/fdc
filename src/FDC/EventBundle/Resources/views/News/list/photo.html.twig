@@ -16,7 +16,7 @@
                     <div class="item {{ photo.theme|trans_fallback('slug') }} {{ photo.publishedAt|date('d-m-y') }} shadow-bottom photo {{ format }}">
                         <a id="photo{{ photo.id }}" class="ajax chocolat-image" data-pid="{{ photo.id }}"
                            href="{% path trans.file , 'reference' %}"
-                           title='<span class="category">{{ photo.theme|trans_fallback('name') }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }} . {{ photo.publishedAt|date('H:i') }}</span><h2>{{ photo|trans_fallback('legend') }}</h2>'
+                           title='<span class="category">{{ photo.theme|trans_fallback('name') }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}</span><h2>{{ photo|trans_fallback('legend') }}</h2>'
                            data-credit="{{ photo|trans_fallback('copyright') }}"></a>
 
                         {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
