@@ -60,24 +60,33 @@ class PalmaresController extends FOSRestController
         // get festival
         $festival = $coreManager->getApiFestivalYear();
 
-        // parameters
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
         $lang = $paramFetcher->get('lang');
 
+        $page = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:FDCPageAward')
+            ->getPageById('fr', $this->getParameter('admin_fdc_page_award_all_awards_id'))
+        ;
 
-        $competition = $this->getCompetitionAwards($festival, $lang);
-        $certainRegard = $this->getUnCertainRegard($festival, $lang);
-        $cinefondation = $this->getCinefondationRegard($festival, $lang);
-        $cameraDOr = $this->getCameraDOrRegard($festival, $lang);
-        $items = array_merge($competition, $certainRegard, $cinefondation, $cameraDOr);
 
+        if (!$page || !$page->getWaitingPage() || ($page->getWaitingPage() && !$page->getWaitingPage()->getEnabled())) {
+            $competition = $this->getCompetitionAwards($festival, $lang);
+            $certainRegard = $this->getUnCertainRegard($festival, $lang);
+            $cinefondation = $this->getCinefondationRegard($festival, $lang);
+            $cameraDOr = $this->getCameraDOrRegard($festival, $lang);
+            $items = array_merge($competition, $certainRegard, $cinefondation, $cameraDOr);
+
+        }
+        else {
+            $items = array();
+        }
+        // create view
         // set context view
         $groups = array('award_list');
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
-        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
-
-        // create view
         $view = $this->view($items, 200);
         $view->setSerializationContext($context);
 

@@ -544,6 +544,20 @@
 
 // 3. Selection officielle
 //==========================
+.mob {
+  .selection-whislist {
+    width:375px !important;
+    zoom:1 !important;
+    figure .image.compat-object-fit {
+      height:252px !important;
+    }
+    .categorie-items .titre-document {
+      color:#FFF;
+      width:100%;
+    }
+  }
+
+}
 .selection-officielle {
   .single-article {
     padding: 0px !important;
@@ -613,7 +627,7 @@
         border-top: 0px solid #fff;
       }
     }
-     
+
     &:hover a .image img,
     &:hover a .image.compat-object-fit {
       @include transition(all 4s $linear);
@@ -636,7 +650,7 @@
       }
     }
   }
-  
+
   .container:after {
     content: ".";
     display: block;
@@ -644,10 +658,10 @@
     clear: both;
     visibility: hidden;
   }
-  
+
   .grid {
     padding-top: 0px;
-  
+
     .grid-wrapper {
       margin-top: 0px;
     }
@@ -660,7 +674,7 @@
   .buttons {
     margin-bottom: 14px;
   }
-  
+
   .buttons.square {
       margin-bottom: 0px;
     .button {
@@ -675,7 +689,7 @@
   .container {
     padding: 0px 0px;
   }
-  
+
   .quote {
     margin-bottom: 60px;
 
@@ -685,7 +699,7 @@
       border-bottom: 1px solid #2C2C2C;
     }
   }
-  
+
   .slideshow {
     margin-bottom: 60px;
     .slideshow-img {
@@ -698,7 +712,7 @@
     .slideshow-img {
       .thumbnails {
         bottom: -3px;
-    
+
         .thumb {
           width: 80px;
           height: 52px;
@@ -707,17 +721,17 @@
     }
   }
 
-  .half-photo {  
+  .half-photo {
     .caption {
       padding: 0px 0px !important;
     }
-  
+
     img {
       max-width: auto;
       width: 100%;
     }
   }
-  
+
   .title-film-detail {
     margin-bottom: 0px !important;
   }

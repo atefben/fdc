@@ -25,14 +25,13 @@
             {% set trans = image.media.findTranslationByLocale('fr') %}
         {% endif %}
         {% set file = trans.file %}
-
+        {% set copyright = image|trans_fallback('copyright') %}
         <div class="item">
-
             <a href="{% path file, 'reference' %}" class="chocolat-image ajax"
-               title='<h2>{{image.media|trans_fallback('legend')}}</h2>'
-               data-credit="{{ image.media|trans_fallback('copyright')}}"
-               data-title="<h2>{{ image.media|trans_fallback('legend') }}</h2>">
-                <img src="{% path file, '146x146' %}" data-credit="{{ image.media|trans_fallback('copyright') }}" alt="{{ image.media|trans_fallback('alt') }}"  data-title="<h2>{{ image.media|trans_fallback('legend') }}</h2>" title="<h2>{{ image.media|trans_fallback('legend') }}</h2>">
+               title="<span class='category'>{{ image.media.theme|trans_fallback('name') }}</span><span class='date'>{{ image.media.createdAt|date('d.m.y H:i') }}</span><h2>{{ image.media|trans_fallback('legend')  }}</h2>"
+               data-credit="{{ 'slider.credit_image'|trans }} : {{ image.media|trans_fallback('copyright')}}"
+               >
+                <img src="{% path file, '146x146' %}" data-credit="{{ image.media|trans_fallback('copyright') }}" alt="{{ image.media|trans_fallback('alt') }}"  data-title="<h2>{{ image.media|trans_fallback('legend') }}</h2>" title="<h2>{{ image.media|trans_fallback('legend') }}</h2>"/>
             </a>
         </div>
     {% endfor %}

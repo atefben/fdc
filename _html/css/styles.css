@@ -13372,6 +13372,18 @@ input[type=submit] {
   border-top: #202020 1px solid !important;
 }
 
+.mob .selection-whislist {
+  width: 375px !important;
+  zoom: 1 !important;
+}
+.mob .selection-whislist figure .image.compat-object-fit {
+  height: 252px !important;
+}
+.mob .selection-whislist .categorie-items .titre-document {
+  color: #FFF;
+  width: 100%;
+}
+
 .selection-officielle .single-article {
   padding: 0px !important;
 }

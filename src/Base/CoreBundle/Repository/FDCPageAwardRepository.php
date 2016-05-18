@@ -35,6 +35,28 @@ class FDCPageAwardRepository extends TranslationRepository
         return $qb->getQuery()->getOneOrNullResult();
     }
 
+    /**
+     * @param $locale
+     * @param $id
+     * @return FDCPageAward|null
+     * @throws NonUniqueResultException
+     */
+    public function getPageById($locale, $id)
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        $qb
+            ->join('p.translations', 't')
+            ->andWhere('t.locale = :locale')
+            ->andWhere('p.id = :id')
+            ->andWhere('p.image IS NOT NULL')
+            ->setParameter('locale', $locale)
+            ->setParameter('id', $id)
+        ;
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
     public function getPages($locale)
     {
         $qb = $this->createQueryBuilder('p');
