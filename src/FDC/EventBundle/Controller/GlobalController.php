@@ -501,6 +501,7 @@ class GlobalController extends Controller {
      * @return array
      */
     public function wishlistAction(Request $request) {
+        $bitlyManager = $this->get('base.manager.bitly');
         $locale = $request->getLocale();
         $ids  = explode('|',  $request->query->get('el'));
         if(is_array($ids)) {
@@ -510,9 +511,12 @@ class GlobalController extends Controller {
                 ->getFilmsByIds($ids)
             ;
         }
-
+        $params['access_token'] = '1471b10911b48ad79ad042b02a15711ea71fc6c0';
+        $params['longUrl'] = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $locale . '/wishlist?el=' . $request->query->get('el');
+        $results = $bitlyManager->bitly_get('shorten', $params);
         return array(
-            'movies' => $movies
+            'movies' => $movies,
+            'urlshare' => $results['data']['url']
         );
 
     }
@@ -525,7 +529,7 @@ class GlobalController extends Controller {
         $ids  = $request->query->get('id');
         $bitlyManager = $this->get('base.manager.bitly');
         $params['access_token'] = '1471b10911b48ad79ad042b02a15711ea71fc6c0';
-        $params['longUrl'] = 'http://www.festival-cannes.com/' . $locale . '/wishlist?el=' . $ids;
+        $params['longUrl'] = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $locale . '/wishlist?el=' . $ids;
         $results = $bitlyManager->bitly_get('shorten', $params);
         $reponse = array('url' => $results['data']['url']);
         return new JsonResponse($reponse);

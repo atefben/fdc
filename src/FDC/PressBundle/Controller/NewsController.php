@@ -391,11 +391,12 @@ class NewsController extends Controller
 
                 $years[] = $statement->getPublishedAt()->format('Y');
             }
-            if (!in_array($statement->getTheme()->getSlug(), $themes)) {
+
+            $theme = ($statement->getTheme()->findTranslationByLocale($locale)->getSlug()) ? $statement->getTheme()->findTranslationByLocale($locale)->getSlug() : $statement->getTheme()->findTranslationByLocale('fr')->getSlug();
+            if (!in_array($theme, $themes)) {
                 $filters['themes'][$i]['id'] = $statement->getTheme()->getId();
                 $filters['themes'][$i]['content'] = ($statement->getTheme()->findTranslationByLocale($locale)->getName()) ? $statement->getTheme()->findTranslationByLocale($locale)->getName() : $statement->getTheme()->findTranslationByLocale('fr')->getName() ;
-
-                $themes[] = ($statement->getTheme()->findTranslationByLocale($locale)->getSlug()) ? $statement->getTheme()->findTranslationByLocale($locale)->getSlug() : $statement->getTheme()->findTranslationByLocale('fr')->getSlug();
+                $themes[] = $theme;
             }
             $i++;
             $ii++;
