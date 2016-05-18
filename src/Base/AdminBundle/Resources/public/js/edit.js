@@ -213,9 +213,8 @@ function editEvents() {
             status = ['0', '4'];
             if (locale != 'fr') {
                 status = ['0', '2', '3', '5'];
-            } else {
-                $(this).val("0").trigger("change");
             }
+
             var url = window.location.href;
             url = url.split("/");
             if (url[6] == 'mediaimage' ||
@@ -227,8 +226,6 @@ function editEvents() {
                 status = ['0', '1', '4', '6'];
                 if (locale != 'fr') {
                     status = ['0', '2', '3', '5'];
-                } else {
-                    $(this).val("0").trigger("change");
                 }
             }
         }
