@@ -517,4 +517,13 @@ class GlobalController extends Controller {
         );
 
     }
+
+    /**
+     * @Route("/generateBitly")
+     * @return array
+     */
+    public function generateBitlyAction() {
+
+        echo 'http://www.festival-cannes.com/test';
+    }
 }
