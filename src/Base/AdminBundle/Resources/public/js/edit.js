@@ -211,6 +211,9 @@ function editEvents() {
 
         if ($('select[name*="status"]').hasClass('journalist')) {
             status = ['0', '4'];
+            if ($('select[name*="status"]').val() === "1") {
+                status = [];
+            }
             if (locale != 'fr') {
                 status = ['0', '2', '3', '5'];
             }
