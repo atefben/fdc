@@ -544,6 +544,9 @@
 
 // 3. Selection officielle
 //==========================
+.landscape {
+  visibility: hidden;
+}
 .mob {
   .selection-whislist {
     width:375px !important;
@@ -568,6 +571,9 @@
       color: #fff;
       font-size: 1.75rem;
     }
+  }
+  .landscape {
+    visibility: visible;
   }
 }
 .selection-whislist {
