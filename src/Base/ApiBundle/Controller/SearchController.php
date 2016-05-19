@@ -107,6 +107,9 @@ class SearchController extends FOSRestController
             if ($media instanceof MediaAudio) {
                 unset($medias[$key]);
             }
+            if (!$media->getDisplayedMobile()) {
+                unset($medias[$key]);
+            }
         }
         $medias = array_values($medias);
     }
