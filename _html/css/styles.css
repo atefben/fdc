@@ -13407,6 +13407,11 @@ input[type=submit] {
   color: #fff;
   font-size: 1.75rem;
 }
+.selection-whislist .categorie-items .title-list-cat {
+  padding: 42px 0 42px 0;
+  margin: 0 auto;
+  display: block;
+}
 
 .selection-officielle .single-article {
   padding: 0px !important;
@@ -13595,7 +13600,7 @@ input[type=submit] {
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .films-list .bandeau-list-img {
-    height: 296px !important;
+    height: 120px !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -13781,7 +13786,7 @@ input[type=submit] {
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .palmares-list .bandeau-list-img {
-    height: 298px !important;
+    height: 120px !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -14350,7 +14355,7 @@ input[type=submit] {
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .webtv-ba #live {
-    height: 296px !important;
+    height: 120px !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -14712,7 +14717,7 @@ input[type=submit] {
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .webtv-ba-video .bandeau-list-img {
-    height: 296px !important;
+    height: 120px !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -15230,7 +15235,7 @@ input[type=submit] {
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .evenement .bandeau-list-img {
-    height: 294px !important;
+    height: 120px !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -16628,7 +16633,7 @@ input[type=submit] {
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .participate .bandeau-list,
   .participate .bandeau-list-img {
-    height: 296px !important;
+    height: 120px !important;
   }
 }
 @media screen and (max-width: 1023px) {
