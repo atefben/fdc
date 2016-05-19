@@ -13372,6 +13372,10 @@ input[type=submit] {
   border-top: #202020 1px solid !important;
 }
 
+.landscape {
+  visibility: hidden;
+}
+
 .mob .selection-whislist {
   width: 375px !important;
   zoom: 1 !important;
@@ -13395,6 +13399,9 @@ input[type=submit] {
   text-align: center;
   color: #fff;
   font-size: 1.75rem;
+}
+.mob .landscape {
+  visibility: visible;
 }
 
 .selection-whislist h2.titre-document {
