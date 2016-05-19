@@ -13407,6 +13407,9 @@ input[type=submit] {
   color: #fff;
   font-size: 1.75rem;
 }
+.selection-whislist .categorie-items .title-list-cat {
+  padding: 42px 0 42px 0;
+}
 
 .selection-officielle .single-article {
   padding: 0px !important;
