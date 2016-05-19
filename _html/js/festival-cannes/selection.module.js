@@ -162,7 +162,10 @@ $(document).ready(function() {
     }
 
     if(f == 'suggestion') {
+      $('#selection .owl-stage').width(272 * $('#slider-suggestion .owl-item').length).css('transform', 'translate3d(' + tr + 'px, 0, 0)');
       setTimeout(function() {
+        $('#selection .owl-item').removeClass('fade');
+        $('#slider-selection').removeClass('fade');
         $('#slider-suggestion').addClass('show');
       }, 1200);
 

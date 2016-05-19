@@ -136,7 +136,6 @@ function audioLoad(aid, playerInstance, havePlaylist, callback) {
     });
 
     if(havePlaylist && havePlaylist === "grid") {
-        console.log('lol');
         var playlist = [];
 
         $.each($('#gridAudios .item'), function(i,p) {
@@ -151,7 +150,6 @@ function audioLoad(aid, playerInstance, havePlaylist, callback) {
         });
 
         playerInstance.load(playlist);
-        console.log(playlist);
     }
 
     function updateVolume(x, vol) {

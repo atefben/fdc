@@ -87,7 +87,7 @@ $(document).ready(function() {
     } else {
       openSearch();
     }
-    if(isIpad()){
+    if(isiPad()){
       setTimeout(function() {
         $('.search').toggleClass('opened');
       }, 200)

@@ -67,8 +67,9 @@ class PalmaresController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:FDCPageAward')
-            ->getPageBySlug('fr', 'tout-le-palmares')
+            ->getPageById('fr', $this->getParameter('admin_fdc_page_award_all_awards_id'))
         ;
+
 
         if (!$page || !$page->getWaitingPage() || ($page->getWaitingPage() && !$page->getWaitingPage()->getEnabled())) {
             $competition = $this->getCompetitionAwards($festival, $lang);
