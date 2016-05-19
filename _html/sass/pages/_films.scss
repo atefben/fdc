@@ -569,7 +569,18 @@
       font-size: 1.75rem;
     }
   }
-
+}
+.selection-whislist {
+  h2.titre-document {
+    font-weight: 700;
+    letter-spacing: .5em;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-family: "Playfair Display",Times New Roman,Times,serif;
+    text-align: center;
+    color: #fff;
+    font-size: 1.75rem;
+  }
 }
 .selection-officielle {
   .single-article {
