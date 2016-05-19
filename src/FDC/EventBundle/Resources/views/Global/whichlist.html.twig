@@ -2,7 +2,7 @@
 {% extends 'FDCEventBundle::layout_whichlist.html.twig' %}
 
 {% block body %}
-    <div id="main" class="list-article films-list selection-officielle">
+    <div id="main" class="list-article films-list selection-officielle selection-whislist">
         <div class="container container-list whishlist">
             <section class="categorie-items">
                 <div class="title-list-cat">
@@ -45,7 +45,6 @@
                     </div>
                 </div>
                 <div class="share">
-                    <p>{{ 'article.text.partagerarticle'|trans }}</p>
                     <div class="buttons square">
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlshare }}"
                            class="button facebook"><i class="icon icon_facebook"></i></a>
