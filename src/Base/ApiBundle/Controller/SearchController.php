@@ -56,12 +56,12 @@ class SearchController extends FOSRestController
 
         if ($searchTerm) {
 
-            $newsResults = $this->getSearchResults($locale, 'news', $searchTerm, 4);
-            $infoResults = $this->getSearchResults($locale, 'info', $searchTerm, 4);
-            $statementResults = $this->getSearchResults($locale, 'statement', $searchTerm, 2);
-            $eventResults = $this->getSearchResults($locale, 'event', $searchTerm, 2);
-            $mediaResults = $this->getSearchResults($locale, 'media', $searchTerm, 2);
-            $filmResults = $this->getSearchResults($locale, 'film', $searchTerm, 4, 1, $festival->getYear());
+            $newsResults = $this->getSearchResults($locale, 'news', $searchTerm, 50);
+            $infoResults = $this->getSearchResults($locale, 'info', $searchTerm, 50);
+            $statementResults = $this->getSearchResults($locale, 'statement', $searchTerm, 50);
+            $eventResults = $this->getSearchResults($locale, 'event', $searchTerm, 50);
+            $mediaResults = $this->getSearchResults($locale, 'media', $searchTerm, 50);
+            $filmResults = $this->getSearchResults($locale, 'film', $searchTerm, 50, 1, $festival->getYear());
 
             $mediaResults = $mediaResults['items'];
             $this->filterMedias($mediaResults);
