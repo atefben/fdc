@@ -33,7 +33,18 @@
 			{% if medias|length > 1 %}
             <div class="thumbs">
                 {% for media in medias %}
-                    <a href="#" data-caption="">
+                    <a href="#" data-caption="
+                    {% if media.copyright %}
+                        © {{ media.copyright }}
+                    {% endif %}
+                    {% if app.request.locale == 'fr' and media.titleVf %}
+                        {% if media.copyright %} / {% endif %}
+                        {{ media.titleVf }}
+                    {% elseif app.request.locale != 'fr' and media.titleVa %}
+                        {% if media.copyright %} / {% endif %}
+                        {{ media.titleVa }}
+                    {% endif %}
+                    ">
                         <img src="{% path media.file, media.file.context ~ '_38x46'  %}">
                     </a>
                 {% endfor %}
