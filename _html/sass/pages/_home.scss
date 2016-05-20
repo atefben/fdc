@@ -998,11 +998,8 @@
           height: auto;
           @include transition(all 4s $linear);
         }
-
       }
     }
-
-
   }
 }
 
@@ -1036,6 +1033,10 @@
     left: 0;
     width: 100%;
     z-index: 2;
+
+    .webtv & {
+      z-index: 3;
+    }
   }
 
   .info {
@@ -1044,6 +1045,10 @@
     position: absolute;
     width: 100%;
     z-index: 3;
+
+    .webtv & {
+      z-index: 2;
+    }
 
     .info-container {
       color: #666;

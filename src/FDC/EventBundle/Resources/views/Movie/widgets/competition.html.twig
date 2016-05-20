@@ -2,7 +2,6 @@
 
 {% if movies|length %}
     <div class="competition">
-
         <h2 class="title">{{ movie.selectionSection|trans_fallback('name') }} {{ "now"|date('Y') }}</h2>
         <div id="slider-competition" class="owl-carousel sliderDrag">
             {% for movie in movies %}

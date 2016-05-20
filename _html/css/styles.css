@@ -9377,12 +9377,18 @@ header #searchContainer {
   width: 100%;
   z-index: 2;
 }
+.webtv .sliderDrag .linkVid {
+  z-index: 3;
+}
 .sliderDrag .info {
   bottom: 20px;
   left: 0;
   position: absolute;
   width: 100%;
   z-index: 3;
+}
+.webtv .sliderDrag .info {
+  z-index: 2;
 }
 .sliderDrag .info .info-container {
   color: #666;
@@ -14039,6 +14045,9 @@ input[type=submit] {
   color: #666;
   display: inline-block;
   font-size: 0.625rem;
+}
+.webtv #content-trailers .info span.category {
+  color: #c8a461;
 }
 .webtv #content-latest {
   background-color: #141414;
