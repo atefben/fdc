@@ -89,28 +89,27 @@
             <div id="slider-trailers" class="owl-carousel sliderDrag">
                 {% for trailer in trailers %}
                     <div class="vid shadow-bottom">
-                        <div class="image-wrapper">
-                            <img src="{% path trailer.image|trans_fallback('file'), '640x404' %}"
-                                 srcset="{% path trailer.image|trans_fallback('file'), '640x404' %} 1x, {% path trailer.image|trans_fallback('file'), '1280x808' %} 2x"
-                                 alt="">
-                        </div>
-                        <a class="linkVid"
-                           href="{{ path('fdc_event_television_gettrailer', {'slug': trailer.associatedFilms|first.association.slug, 'video': trailer.id}) }}"></a>
-                        <div class="info">
-                            <div class="picto"><i class="icon icon_video"></i>
+                        <a class="linkVid" href="{{ path('fdc_event_television_gettrailer', {'slug': trailer.associatedFilms|first.association.slug, 'video': trailer.id}) }}">
+                            <div class="image-wrapper">
+                                <img src="{% path trailer.image|trans_fallback('file'), '640x404' %}"
+                                     srcset="{% path trailer.image|trans_fallback('file'), '640x404' %} 1x, {% path trailer.image|trans_fallback('file'), '1280x808' %} 2x"
+                                     alt="">
                             </div>
-                            <div class="info-container">
-                                <div class="vCenter">
-                                    <div class="vCenterKid">
-                                        <a href="" class="category">{{ trailer.theme }}</a>
-                                        <span class="date">{{ trailer.publishedAt|date('d.m.Y') }}</span> .
-                                        <span class="hour">{{ agenda_leftbar_translate_hour(trailer.publishedAt|date('H:i'), true, true) }}</span>
-                                        <a href="#"
-                                           class="titleLink">{{ trailer|trans_fallback('title')|truncate(85) }}</a>
+                            <div class="info">
+                                <div class="picto"><i class="icon icon_video"></i>
+                                </div>
+                                <div class="info-container">
+                                    <div class="vCenter">
+                                        <div class="vCenterKid">
+                                            <span class="category">{{ trailer.theme }}</span>
+                                            <span class="date">{{ trailer.publishedAt|date('d.m.Y') }}</span> .
+                                            <span class="hour">{{ agenda_leftbar_translate_hour(trailer.publishedAt|date('H:i'), true, true) }}</span>
+                                            <span class="titleLink">{{ trailer|trans_fallback('title')|truncate(85) }}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 {% endfor %}
             </div>
