@@ -120,7 +120,7 @@
             {% if movieAward.award and movieAward.award.prize %}
                 {% if movieAward.award.id not in awardsUnique %}
                     {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
-                    <div class="palmares-item"><i class="icon icon_palme"></i><p>{{ movieAward.award.prize|trans_fallback('title') }}, {{  movieAward.award.festival.year }}</p></div>
+                    <div class="palmares-item"><i class="icon icon_palme"></i><p>{{ movieAward.award.prize|trans_fallback('title') }}{%- if movieAward.award.exAequo == 1 -%}{{ ' ' }}Ex-aequo{% endif %}, {{  movieAward.award.festival.year }}</p></div>
                 {% endif %}
             {% endif %}
         {% endfor %}
