@@ -66,9 +66,12 @@ class SearchController extends FOSRestController
             $mediaResults = $mediaResults['items'];
             $this->filterMedias($mediaResults);
 
+            $eventResults = $eventResults['items'];
+            $this->filterEvents($eventResults);
+
             $items = array(
                 'news'       => $this->mergeNews($newsResults['items'], $infoResults['items'], $statementResults['items']),
-                'events'     => $eventResults['items'],
+                'events'     => $eventResults,
                 'medias'     => $mediaResults,
                 'films'      => $filmResults['items'],
             );
@@ -114,26 +117,36 @@ class SearchController extends FOSRestController
         $medias = array_values($medias);
     }
 
+    private function filterEvents(&$events)
+    {
+        foreach ($events as $key => $event) {
+            if (!$event->getDisplayedMobile()) {
+                unset($events[$key]);
+            }
+        }
+        $events = array_values($events);
+    }
+
     private function mergeNews($news, $infos, $statements)
     {
         $output = array();
 
         foreach ($news as $item) {
-            if ($item->getPublishedAt()) {
+            if ($item->getPublishedAt() && $item->getDisplayedMobile()) {
                 $key = $item->getPublishedAt()->getTimestamp() . '-news-' . $item->getId();
                 $output[$key] = $item;
             }
         }
 
         foreach ($infos as $item) {
-            if ($item->getPublishedAt()) {
+            if ($item->getPublishedAt() && $item->getDisplayedMobile()) {
                 $key = $item->getPublishedAt()->getTimestamp() . '-infos-' . $item->getId();
                 $output[$key] = $item;
             }
         }
 
         foreach ($statements as $item) {
-            if ($item->getPublishedAt()) {
+            if ($item->getPublishedAt() && $item->getDisplayedMobile()) {
                 $key = $item->getPublishedAt()->getTimestamp() . '-statements-' . $item->getId();
                 $output[$key] = $item;
             }

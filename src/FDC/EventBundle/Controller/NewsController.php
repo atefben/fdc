@@ -439,7 +439,7 @@ class NewsController extends Controller
             $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
             $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
             $type = 'film';
-        } elseif ($news->getAssociatedEvent() != null) {
+        } elseif ($news->getAssociatedEvent() != null && $news->getAssociatedEvent()->getAssociatedFilm()) {
             $associatedFilm = $news->getAssociatedEvent()->getAssociatedFilm();
             $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
             $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
