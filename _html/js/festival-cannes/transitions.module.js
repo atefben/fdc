@@ -36,7 +36,9 @@ $(document).ready(function() {
 
   setTimeout(function() {
     $('#main, footer, #breadcrumb, .sub-nav-list').removeClass('loading');
-    cl.hide();
+    if(typeof cl !== "undefined") {
+      cl.hide();
+    }
     $loader.removeClass('show');
 
     $('#logo-wrapper, #logo img, #sticky-user, header #search, a.search').css('transition', '');
@@ -79,12 +81,14 @@ $(document).ready(function() {
     }
   });
 });
-
+/*
 $(window).load(function() {
   var isIE11 = !!(navigator.userAgent.match(/Trident/) && navigator.userAgent.match(/rv[ :]11/));
   if(isIE11) {
     $('#main, footer, #breadcrumb, .sub-nav-list').removeClass('loading');
-    cl.hide();
+    if(typeof cl !== "undefined") {
+      cl.hide();
+    }
     $loader.removeClass('show');
   }
-})
+})*/

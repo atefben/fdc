@@ -53,6 +53,7 @@ class GalleryMediaAdmin extends Admin
         $formMapper
          //   ->add('id')
             ->add('media', 'sonata_type_model_list')
+            ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
     }
 

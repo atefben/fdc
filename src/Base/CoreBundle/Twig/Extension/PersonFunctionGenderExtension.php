@@ -58,6 +58,10 @@ class PersonFunctionGenderExtension extends Twig_Extension
             '(teur/trice)',
             '(eur/euse)',
             '(er/ière)',
+            '(a)',
+            '(or/riz)',
+            '(o/a)',
+            '(os/as)'
         );
         $male = array(
             '',
@@ -65,6 +69,10 @@ class PersonFunctionGenderExtension extends Twig_Extension
             'teur',
             'eur',
             'er',
+            '',
+            'or',
+            'o',
+            'os'
         );
         $female = array(
             '',
@@ -72,6 +80,10 @@ class PersonFunctionGenderExtension extends Twig_Extension
             'trice',
             'euse',
             'ière',
+            'a',
+            'riz',
+            'a',
+            'as'
         );
         $gender = strtoupper($gender);
         if ($gender == 'MONSIEUR') {

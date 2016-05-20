@@ -22,14 +22,14 @@
         <a href="{% path widget.file, 'reference' %}"
            class="btn telecharger" target="_blank" download>
             <i class="icon icon_telecharger"></i>
-            {{ 'Télécharger'|trans }}
+            {{ 'mediatheque.label.btn.telecharger'|trans }}
         </a>
     {% endif %}
     {% if widget.btnLabel is not null %}
         <div class="link">
             <i class="icon icon_a-votre-service"></i>
             <a href="{{ widget.btnLabel }}" target="_blank">
-                {{ 'Se repérer sur Google Maps'|trans }}
+                {{ 'participate.link.sereperer'|trans }}
             </a>
         </div>
     {% endif %}

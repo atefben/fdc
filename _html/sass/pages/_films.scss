@@ -544,6 +544,9 @@
 
 // 3. Selection officielle
 //==========================
+.landscape {
+  visibility: hidden;
+}
 .mob {
   .selection-whislist {
     width:375px !important;
@@ -569,6 +572,9 @@
       font-size: 1.75rem;
     }
   }
+  .landscape {
+    visibility: visible;
+  }
 }
 .selection-whislist {
   h2.titre-document {
@@ -580,6 +586,11 @@
     text-align: center;
     color: #fff;
     font-size: 1.75rem;
+  }
+  .categorie-items .title-list-cat {
+    padding: 42px 0 42px 0;
+    margin: 0 auto;
+    display: block;
   }
 }
 .selection-officielle {
@@ -817,7 +828,7 @@
 
 @media screen and (min-width: 1024px) and (max-width:1279px) {
   .films-list .bandeau-list-img {
-    height: 296px !important;
+    height: 294px !important;
   }
 }
 
