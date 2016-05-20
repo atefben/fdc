@@ -9377,12 +9377,18 @@ header #searchContainer {
   width: 100%;
   z-index: 2;
 }
+.webtv .sliderDrag .linkVid {
+  z-index: 3;
+}
 .sliderDrag .info {
   bottom: 20px;
   left: 0;
   position: absolute;
   width: 100%;
   z-index: 3;
+}
+.webtv .sliderDrag .info {
+  z-index: 2;
 }
 .sliderDrag .info .info-container {
   color: #666;

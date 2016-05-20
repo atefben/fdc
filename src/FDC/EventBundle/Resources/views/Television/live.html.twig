@@ -89,27 +89,26 @@
             <div id="slider-trailers" class="owl-carousel sliderDrag">
                 {% for trailer in trailers %}
                     <div class="vid shadow-bottom">
-                        <a class="linkVid" href="{{ path('fdc_event_television_gettrailer', {'slug': trailer.associatedFilms|first.association.slug, 'video': trailer.id}) }}">
-                            <div class="image-wrapper">
-                                <img src="{% path trailer.image|trans_fallback('file'), '640x404' %}"
-                                     srcset="{% path trailer.image|trans_fallback('file'), '640x404' %} 1x, {% path trailer.image|trans_fallback('file'), '1280x808' %} 2x"
-                                     alt="">
+                        <div class="image-wrapper">
+                            <img src="{% path trailer.image|trans_fallback('file'), '640x404' %}"
+                                 srcset="{% path trailer.image|trans_fallback('file'), '640x404' %} 1x, {% path trailer.image|trans_fallback('file'), '1280x808' %} 2x"
+                                 alt="{{ trailer.image|trans_fallback('alt') }}">
+                        </div>
+                        <div class="info">
+                            <div class="picto"><i class="icon icon_video"></i>
                             </div>
-                            <div class="info">
-                                <div class="picto"><i class="icon icon_video"></i>
-                                </div>
-                                <div class="info-container">
-                                    <div class="vCenter">
-                                        <div class="vCenterKid">
-                                            <span class="category">{{ trailer.theme }}</span>
-                                            <span class="date">{{ trailer.publishedAt|date('d.m.Y') }}</span> .
-                                            <span class="hour">{{ agenda_leftbar_translate_hour(trailer.publishedAt|date('H:i'), true, true) }}</span>
-                                            <span class="titleLink">{{ trailer|trans_fallback('title')|truncate(85) }}</span>
-                                        </div>
+                            <div class="info-container">
+                                <div class="vCenter">
+                                    <div class="vCenterKid">
+                                        <span class="category">{{ trailer.theme }}</span>
+                                        <span class="date">{{ trailer.publishedAt|date('d.m.Y') }}</span> .
+                                        <span class="hour">{{ agenda_leftbar_translate_hour(trailer.publishedAt|date('H:i'), true, true) }}</span>
+                                        <span class="titleLink">{{ trailer|trans_fallback('title')|truncate(85) }}</span>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
+                        <a class="linkVid" href="{{ path('fdc_event_television_gettrailer', {'slug': trailer.associatedFilms|first.association.slug, 'video': trailer.id}) }}"></a>
                     </div>
                 {% endfor %}
             </div>
@@ -123,19 +122,19 @@
                     <div class="video shadow-bottom"
                          data-vid="{{ video.id }}"
                          data-title="{{ video|trans_fallback('title')|truncate(50) }}"
-                        data-file='[{% if(video|trans_fallback('jobWebmState') == 3) %}{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{% endif %}{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
-                        {% if video.image|trans_fallback('file') %}
-                       	    data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
-	                    {% elseif video|trans_fallback('imageAmazonUrl') %}
-	                        data-img="{{ s3_server_video ~ video|trans_fallback('imageAmazonUrl') }}"
-                    	{% else %}
-                        	data-img="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
-                        {% endif %}>
+                         data-file='[{% if(video|trans_fallback('jobWebmState') == 3) %}{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{% endif %}{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
+                         {% if video.image|trans_fallback('file') %}
+                         data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
+                         {% elseif video|trans_fallback('imageAmazonUrl') %}
+                         data-img="{{ s3_server_video ~ video|trans_fallback('imageAmazonUrl') }}"
+                         {% else %}
+                         data-img="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
+                         {% endif %}>
                         <div class="image-wrapper">
                             {% if video.image|trans_fallback('file') %}
-                                <img src="{% path video.image|trans_fallback('file'), '463x292' %}" alt="">
+                                <img src="{% path video.image|trans_fallback('file'), '463x292' %}" alt="{{ video.image|trans_fallback('alt') }}">
                             {% elseif video.imageAmazonUrl is defined and video.imageAmazonUrl is not null %}
-                                <img src="{{ s3_server_video ~ video.imageAmazonUrl }}" alt="">
+                                <img src="{{ s3_server_video ~ video.imageAmazonUrl }}" alt="{{ video.image|trans_fallback('alt') }}">
                             {% endif %}
                         </div>
                         <a class="linkVid" href="#"></a>
@@ -225,8 +224,6 @@
              alt="{{ channelVideos|first.image|trans_fallback('alt') }}">
     {% endif %}
 </div>
-<a class="linkVid"
-   href="{{ path('fdc_event_television_getchannel', {'slug': channel|trans_fallback('slug')}) }}"></a>
 <div class="info">
     <div class="picto"><i class="icon icon_playlist"></i></div>
     <div class="info-container">
@@ -245,4 +242,5 @@
         </div>
     </div>
 </div>
+<a class="linkVid" href="{{ path('fdc_event_television_getchannel', {'slug': channel|trans_fallback('slug')}) }}"></a>
 {% endblock WebTvLiveChannel %}
