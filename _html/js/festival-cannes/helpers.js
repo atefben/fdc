@@ -22,6 +22,22 @@ String.prototype.parseHashtag = function(twitter) {
   });
 };
 
+Storage.prototype.getItemSecure = function(item) {
+  try {
+    return localStorage.getItem(item);
+  } catch(e) {
+    return {};
+  }
+};
+
+Storage.prototype.setItemSecure = function(item, value) {
+  try {
+    return localStorage.setItem(item, value);
+  } catch(e) {
+    return {};
+  }
+};
+
 // Get the size of an object
 Object.size = function(obj) {
     var size = 0, key;

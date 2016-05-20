@@ -6,8 +6,8 @@ $(document).ready(function() {
       tr               = 0,
       selectionCookie  = [];
 
-  if(localStorage.getItem('selection')) {
-    selectionCookie = JSON.parse(localStorage.getItem('selection'));
+  if(localStorage.getItemSecure('selection')) {
+    selectionCookie = JSON.parse(localStorage.getItemSecure('selection'));
 
     for(var i=0; i<selectionCookie.length; i++) {
       var $art = $('#toClone').clone();
@@ -203,7 +203,7 @@ $(document).ready(function() {
 
     $('#selection .title span').text(selectionCookie.length);
 
-    localStorage.setItem('selection', JSON.stringify(selectionCookie), { expires: 14 });
+    localStorage.setItemSecure('selection', JSON.stringify(selectionCookie), { expires: 14 });
 
     setTimeout(function() {
       sliderSelection.trigger('del.owl.carousel', i);
@@ -259,7 +259,7 @@ $(document).ready(function() {
       'title': $articleEl.find('h2 a, h3 a').text(),
     });
 
-    localStorage.setItem('selection', JSON.stringify(selectionCookie), { expires: 14 });
+    localStorage.setItemSecure('selection', JSON.stringify(selectionCookie), { expires: 14 });
 
     $('#selection .title span').text(selectionCookie.length);
 
