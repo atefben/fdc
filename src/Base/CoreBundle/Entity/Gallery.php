@@ -45,6 +45,7 @@ class Gallery
      *
      * @ORM\OneToMany(targetEntity="GalleryMedia", mappedBy="gallery", cascade={"persist", "remove"}, orphanRemoval=true)
      * @Groups({"news_list", "search", "news_show", "event_show", "home"})
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $medias;
 

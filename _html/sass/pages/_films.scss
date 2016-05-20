@@ -544,6 +544,9 @@
 
 // 3. Selection officielle
 //==========================
+.landscape {
+  visibility: hidden;
+}
 .mob {
   .selection-whislist {
     width:375px !important;
@@ -555,8 +558,40 @@
       color:#FFF;
       width:100%;
     }
+    .share {
+      display:none;
+    }
+    h2.titre-document {
+      font-weight: 700;
+      letter-spacing: .5em;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-family: "Playfair Display",Times New Roman,Times,serif;
+      text-align: center;
+      color: #fff;
+      font-size: 1.75rem;
+    }
   }
-
+  .landscape {
+    visibility: visible;
+  }
+}
+.selection-whislist {
+  h2.titre-document {
+    font-weight: 700;
+    letter-spacing: .5em;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-family: "Playfair Display",Times New Roman,Times,serif;
+    text-align: center;
+    color: #fff;
+    font-size: 1.75rem;
+  }
+  .categorie-items .title-list-cat {
+    padding: 42px 0 42px 0;
+    margin: 0 auto;
+    display: block;
+  }
 }
 .selection-officielle {
   .single-article {
@@ -793,7 +828,7 @@
 
 @media screen and (min-width: 1024px) and (max-width:1279px) {
   .films-list .bandeau-list-img {
-    height: 296px !important;
+    height: 294px !important;
   }
 }
 

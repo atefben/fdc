@@ -39,6 +39,14 @@ class GalleryMedia
     private $gallery;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $position;
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -92,5 +100,28 @@ class GalleryMedia
     public function getGallery()
     {
         return $this->gallery;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return GalleryMedia
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

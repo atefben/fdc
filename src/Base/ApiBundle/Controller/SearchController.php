@@ -56,19 +56,22 @@ class SearchController extends FOSRestController
 
         if ($searchTerm) {
 
-            $newsResults = $this->getSearchResults($locale, 'news', $searchTerm, 4);
-            $infoResults = $this->getSearchResults($locale, 'info', $searchTerm, 4);
-            $statementResults = $this->getSearchResults($locale, 'statement', $searchTerm, 2);
-            $eventResults = $this->getSearchResults($locale, 'event', $searchTerm, 2);
-            $mediaResults = $this->getSearchResults($locale, 'media', $searchTerm, 2);
-            $filmResults = $this->getSearchResults($locale, 'film', $searchTerm, 4, 1, $festival->getYear());
+            $newsResults = $this->getSearchResults($locale, 'news', $searchTerm, 50);
+            $infoResults = $this->getSearchResults($locale, 'info', $searchTerm, 50);
+            $statementResults = $this->getSearchResults($locale, 'statement', $searchTerm, 50);
+            $eventResults = $this->getSearchResults($locale, 'event', $searchTerm, 50);
+            $mediaResults = $this->getSearchResults($locale, 'media', $searchTerm, 50);
+            $filmResults = $this->getSearchResults($locale, 'film', $searchTerm, 50, 1, $festival->getYear());
 
             $mediaResults = $mediaResults['items'];
             $this->filterMedias($mediaResults);
 
+            $eventResults = $eventResults['items'];
+            $this->filterEvents($eventResults);
+
             $items = array(
                 'news'       => $this->mergeNews($newsResults['items'], $infoResults['items'], $statementResults['items']),
-                'events'     => $eventResults['items'],
+                'events'     => $eventResults,
                 'medias'     => $mediaResults,
                 'films'      => $filmResults['items'],
             );
@@ -107,8 +110,21 @@ class SearchController extends FOSRestController
             if ($media instanceof MediaAudio) {
                 unset($medias[$key]);
             }
+            if (!$media->getDisplayedMobile()) {
+                unset($medias[$key]);
+            }
         }
         $medias = array_values($medias);
+    }
+
+    private function filterEvents(&$events)
+    {
+        foreach ($events as $key => $event) {
+            if (!$event->getDisplayedMobile()) {
+                unset($events[$key]);
+            }
+        }
+        $events = array_values($events);
     }
 
     private function mergeNews($news, $infos, $statements)
@@ -116,21 +132,21 @@ class SearchController extends FOSRestController
         $output = array();
 
         foreach ($news as $item) {
-            if ($item->getPublishedAt()) {
+            if ($item->getPublishedAt() && $item->getDisplayedMobile()) {
                 $key = $item->getPublishedAt()->getTimestamp() . '-news-' . $item->getId();
                 $output[$key] = $item;
             }
         }
 
         foreach ($infos as $item) {
-            if ($item->getPublishedAt()) {
+            if ($item->getPublishedAt() && $item->getDisplayedMobile()) {
                 $key = $item->getPublishedAt()->getTimestamp() . '-infos-' . $item->getId();
                 $output[$key] = $item;
             }
         }
 
         foreach ($statements as $item) {
-            if ($item->getPublishedAt()) {
+            if ($item->getPublishedAt() && $item->getDisplayedMobile()) {
                 $key = $item->getPublishedAt()->getTimestamp() . '-statements-' . $item->getId();
                 $output[$key] = $item;
             }

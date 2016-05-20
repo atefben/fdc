@@ -101,7 +101,7 @@
                 {{ 'movie.label.anneedeproduction'|trans }} : <span>{{ movie.productionYear }}</span>
             {% endif %}
             {% if movie.countries|length > 0 %}
-                {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{% if loop.index != movie.countries|length %}<span id="TetiereMovieCountry">{{ country.country|trans_fallback('name')|replace({' ': ""}) }}, </span>{% else %}<span>{{ country.country|trans_fallback('name')|replace({' ': ""}) }}</span>{% endif %}
+                {{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{% if loop.index != movie.countries|length %}<span id="TetiereMovieCountry">{{ country.country|trans_fallback('name') ~ ',' }} </span>{% else %}<span>{{ country.country|trans_fallback('name') }}</span>{% endif %}
             {% endfor %}
             {% endif  %}
             {% if movie.duration is not null and movie.duration > 0 %}

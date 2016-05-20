@@ -3,7 +3,7 @@ $(document).ready(function () {
   var events = [];
 
   // get local storage
-  var agenda = localStorage.getItem('agenda_press');
+  var agenda = localStorage.getItemSecure('agenda_press');
 
   // if local storage, get the events
   if (agenda != null) {
@@ -232,7 +232,7 @@ $(document).ready(function () {
 
       $('.button.list').on('click', function(e) {
         if($(this).hasClass('ics')) {
-          var agenda_data = localStorage.getItem('agenda_press');
+          var agenda_data = localStorage.getItemSecure('agenda_press');
 
           if (agenda == null) {
             e.preventDefault();
@@ -415,7 +415,7 @@ $(document).ready(function () {
 
         $('#mycalendar').fullCalendar('removeEvents', id);
 
-        var agenda = localStorage.getItem('agenda_press');
+        var agenda = localStorage.getItemSecure('agenda_press');
         events = JSON.parse(agenda);
 
         for (var i = 0; i < events.length; i++) {
@@ -424,7 +424,7 @@ $(document).ready(function () {
           }
         }
 
-        localStorage.setItem('agenda_press', JSON.stringify(events));
+        localStorage.setItemSecure('agenda_press', JSON.stringify(events));
         $(this).parent().removeClass('delete');
         $(this).text('Ajouter').addClass('add');
       });
@@ -458,17 +458,17 @@ $(document).ready(function () {
 
         //Stockage de l'évènement dans le storage
         // get local storage
-        var agenda = localStorage.getItem('agenda_press');
+        var agenda = localStorage.getItemSecure('agenda_press');
 
         if (agenda == null) {
           // add the event and store
           events.push(eventObject);
-          localStorage.setItem('agenda_press', JSON.stringify(events));
+          localStorage.setItemSecure('agenda_press', JSON.stringify(events));
         } else {
           // get events, add the event and store
           events = JSON.parse(agenda);
           events.push(eventObject);
-          localStorage.setItem('agenda_press', JSON.stringify(events));
+          localStorage.setItemSecure('agenda_press', JSON.stringify(events));
         }
 
         eventObject = {};
@@ -630,17 +630,17 @@ $(document).ready(function () {
           $('#mycalendar').fullCalendar('renderEvent', copiedEventObject, true);
 
           // get local storage
-          var agenda = localStorage.getItem('agenda_press');
+          var agenda = localStorage.getItemSecure('agenda_press');
 
           if (agenda == null) {
             // add the event and store
             events.push(copiedEventObject);
-            localStorage.setItem('agenda_press', JSON.stringify(events));
+            localStorage.setItemSecure('agenda_press', JSON.stringify(events));
           } else {
             // get events, add the event and store
             events = JSON.parse(agenda);
             events.push(copiedEventObject);
-            localStorage.setItem('agenda_press', JSON.stringify(events));
+            localStorage.setItemSecure('agenda_press', JSON.stringify(events));
           }
 
           // update popin-event if needed
@@ -697,7 +697,7 @@ $(document).ready(function () {
 
           $('#mycalendar').fullCalendar('removeEvents', id);
 
-          var agenda = localStorage.getItem('agenda_press');
+          var agenda = localStorage.getItemSecure('agenda_press');
           events = JSON.parse(agenda);
 
           for (var i = 0; i < events.length; i++) {
@@ -706,7 +706,7 @@ $(document).ready(function () {
             }
           }
 
-          localStorage.setItem('agenda_press', JSON.stringify(events));
+          localStorage.setItemSecure('agenda_press', JSON.stringify(events));
 
           $(this).parent().removeClass('delete');
           $(this).text('Ajouter').addClass('add');
@@ -744,15 +744,15 @@ $(document).ready(function () {
           $('#mycalendar').fullCalendar('renderEvent', eventObject);
 
           // get local storage
-          var agenda = localStorage.getItem('agenda_press');
+          var agenda = localStorage.getItemSecure('agenda_press');
 
           if (agenda == null) {
             events.push(eventObject);
-            localStorage.setItem('agenda_press', JSON.stringify(events));
+            localStorage.setItemSecure('agenda_press', JSON.stringify(events));
           } else {
             events = JSON.parse(agenda);
             events.push(eventObject);
-            localStorage.setItem('agenda_press', JSON.stringify(events));
+            localStorage.setItemSecure('agenda_press', JSON.stringify(events));
           }
 
           eventObject = {};
@@ -934,7 +934,7 @@ $(document).ready(function () {
     var id = $(this).parents('.fc-event').data('id');
     $('#mycalendar').fullCalendar('removeEvents', id);
 
-    var agenda = localStorage.getItem('agenda_press');
+    var agenda = localStorage.getItemSecure('agenda_press');
     events = JSON.parse(agenda);
 
     for (var i = 0; i < events.length; i++) {
@@ -943,7 +943,7 @@ $(document).ready(function () {
       }
     }
 
-    localStorage.setItem('agenda_press', JSON.stringify(events));
+    localStorage.setItemSecure('agenda_press', JSON.stringify(events));
 
     if ($('.events-container').length) {
       $('.events-container .event').removeClass('delete');
@@ -1231,19 +1231,19 @@ $(document).ready(function () {
             $('#mycalendar').fullCalendar( 'renderEvent', myEvent );
             $(this)[0].reset();
 
-            var agenda = localStorage.getItem('agenda_press');
+            var agenda = localStorage.getItemSecure('agenda_press');
 
             myEvent['start'] = dateBegin;
             myEvent['end']   = dateEnd;
 
             if (agenda == null) {
               events.push(myEvent);
-              localStorage.setItem('agenda_press', JSON.stringify(events));
+              localStorage.setItemSecure('agenda_press', JSON.stringify(events));
             } else {
               // get events, add the event and store
               events = JSON.parse(agenda);
               events.push(myEvent);
-              localStorage.setItem('agenda_press', JSON.stringify(events));
+              localStorage.setItemSecure('agenda_press', JSON.stringify(events));
             }
           }
         }
@@ -1424,11 +1424,13 @@ $(document).ready(function () {
     $('a[href^="#"]').click(function () {
       var is_sticky = $('.press').hasClass('sticky');
       var the_id = $(this).attr("href");
-  console.log(the_id);
       if (!is_sticky) {
-        $('html, body').animate({
-          scrollTop: $(the_id).offset().top - 300
-        }, 'slow');
+        if($(the_id).length > 0) {
+          $('html, body').animate({
+            scrollTop: $(the_id).offset().top - 300
+          }, 'slow');
+        }
+
         return false;
       } else {
         $('html, body').animate({

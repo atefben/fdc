@@ -64,7 +64,7 @@ class MediaVideoRepository extends TranslationRepository
 
         $qb
             ->andWhere('mv.displayedTrailer = 1')
-            ->orderBy('mv.publishedAt', 'desc')
+            ->orderBy('mvt.title', 'asc')
         ;
 
         return $qb->getQuery()->getResult();

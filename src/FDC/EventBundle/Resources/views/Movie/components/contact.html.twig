@@ -124,10 +124,6 @@
                                             {% if increasePaddingBottom is defined and increasePaddingBottom %}
                                                 <div class="contact-increase-padding-bottom"></div>
                                             {% endif %}
-                                            {% if first %}
-                                                {% set first = false %}
-                                                <p class="sub">{{ 'movie.contact.label.minor_production_company'|trans }}</p>
-                                            {% endif %}
                                             <div class="contact-reduce-line-height">
                                                 <p>
                                                     {% set displayContact = [] %}
@@ -309,10 +305,6 @@
                                         {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_MINOR_PRODUCTION_COMPANY') %}
                                             {% if increasePaddingBottom is defined and increasePaddingBottom %}
                                                 <div class="contact-increase-padding-bottom"></div>
-                                            {% endif %}
-                                            {% if first %}
-                                                {% set first = false %}
-                                                <p class="sub">{{ 'movie.contact.label.minor_production_company'|trans }}</p>
                                             {% endif %}
                                             <div class="contact-reduce-line-height">
                                                 <p>

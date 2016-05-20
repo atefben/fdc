@@ -5784,7 +5784,7 @@ div.chocolat-wrapper .zoomCursor .icon {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   letter-spacing: 0.4em;
   opacity: 0;
-  margin: 30px auto;
+  margin: 15px auto;
   text-align: center;
   text-transform: uppercase;
   visibility: hidden;
@@ -9377,12 +9377,18 @@ header #searchContainer {
   width: 100%;
   z-index: 2;
 }
+.webtv .sliderDrag .linkVid {
+  z-index: 3;
+}
 .sliderDrag .info {
   bottom: 20px;
   left: 0;
   position: absolute;
   width: 100%;
   z-index: 3;
+}
+.webtv .sliderDrag .info {
+  z-index: 2;
 }
 .sliderDrag .info .info-container {
   color: #666;
@@ -11201,7 +11207,7 @@ article .read-later.rAlign span:after {
   float: left;
   width: 63%;
   padding-bottom: 5px;
-  margin-top: 35px;
+  margin-top: -66px;
   margin-bottom: -38px;
 }
 .single-movie .palmares.trailer {
@@ -11234,7 +11240,7 @@ article .read-later.rAlign span:after {
   position: relative;
   left: -7.3%;
   border-bottom: 1px solid #f1f1f1;
-  padding-top: 10px;
+  padding-top: 6px;
 }
 @media screen and (max-width: 1600px) {
   .single-movie .palmares:after {
@@ -12045,6 +12051,7 @@ article .read-later.rAlign span:after {
 }
 .grid .item.w2 {
   width: calc(200%/4);
+  cursor: pointer;
 }
 .grid .filter-actived .item.w2 {
   width: calc(100%/6);
@@ -13372,6 +13379,10 @@ input[type=submit] {
   border-top: #202020 1px solid !important;
 }
 
+.landscape {
+  visibility: hidden;
+}
+
 .mob .selection-whislist {
   width: 375px !important;
   zoom: 1 !important;
@@ -13382,6 +13393,38 @@ input[type=submit] {
 .mob .selection-whislist .categorie-items .titre-document {
   color: #FFF;
   width: 100%;
+}
+.mob .selection-whislist .share {
+  display: none;
+}
+.mob .selection-whislist h2.titre-document {
+  font-weight: 700;
+  letter-spacing: .5em;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+  text-align: center;
+  color: #fff;
+  font-size: 1.75rem;
+}
+.mob .landscape {
+  visibility: visible;
+}
+
+.selection-whislist h2.titre-document {
+  font-weight: 700;
+  letter-spacing: .5em;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+  text-align: center;
+  color: #fff;
+  font-size: 1.75rem;
+}
+.selection-whislist .categorie-items .title-list-cat {
+  padding: 42px 0 42px 0;
+  margin: 0 auto;
+  display: block;
 }
 
 .selection-officielle .single-article {
@@ -13571,7 +13614,7 @@ input[type=submit] {
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .films-list .bandeau-list-img {
-    height: 296px !important;
+    height: 294px !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -13757,7 +13800,7 @@ input[type=submit] {
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .palmares-list .bandeau-list-img {
-    height: 298px !important;
+    height: 294px !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -14003,6 +14046,9 @@ input[type=submit] {
   color: #666;
   display: inline-block;
   font-size: 0.625rem;
+}
+.webtv #content-trailers .info span.category {
+  color: #c8a461;
 }
 .webtv #content-latest {
   background-color: #141414;
@@ -14326,7 +14372,7 @@ input[type=submit] {
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .webtv-ba #live {
-    height: 296px !important;
+    height: 294px !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -14688,7 +14734,7 @@ input[type=submit] {
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .webtv-ba-video .bandeau-list-img {
-    height: 296px !important;
+    height: 294px !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -16604,7 +16650,7 @@ input[type=submit] {
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .participate .bandeau-list,
   .participate .bandeau-list-img {
-    height: 296px !important;
+    height: 294px !important;
   }
 }
 @media screen and (max-width: 1023px) {
