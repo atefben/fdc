@@ -14040,7 +14040,7 @@ input[type=submit] {
   display: inline-block;
   font-size: 0.625rem;
 }
-.webtv #content-trailers .info span .category {
+.webtv #content-trailers .info span.category {
   color: #c8a461;
 }
 .webtv #content-latest {
