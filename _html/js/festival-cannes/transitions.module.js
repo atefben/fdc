@@ -70,7 +70,7 @@ $(document).ready(function() {
           if((v == 0 && $header.hasClass('sticky')) || (v == 10 && $header.hasClass('sticky'))) {
             v = 11;
           }
-          sessionStorage.getItemSecure('setItemSecure')('scrolltop',v);
+          sessionStorage.getItemSecure('scrolltop', v);
           window.location = href;
         }, 0);
       }
