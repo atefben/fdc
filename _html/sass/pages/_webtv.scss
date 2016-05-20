@@ -259,7 +259,7 @@
         display: inline-block;
         font-size: 0.625rem;
 
-        .category {
+        & .category {
           color: $gold;
         }
       }
