@@ -11259,17 +11259,17 @@ article .read-later.rAlign span:after {
 }
 @media screen and (max-width: 1600px) {
   .single-movie .palmares {
-    margin-top: 34px;
+    /*margin-top: 34px;*/
   }
 }
 @media screen and (max-width: 1280px) {
   .single-movie .palmares {
-    margin-top: 34px;
+    /*margin-top: 34px;*/
   }
 }
 @media screen and (max-width: 1024px) {
   .single-movie .palmares {
-    margin-top: 34px;
+    /*margin-top: 34px;*/
   }
 }
 .single-movie .nav {
