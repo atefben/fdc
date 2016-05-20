@@ -2013,7 +2013,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
         $days = array();
         $typeUCR = false;
-        if(!isset($_GET['v'])) {
+        if (!isset($_GET['v'])) {
             $exclude = array('Séance de presse', 'Conférence de presse');
         } else {
             $exclude = array();
@@ -2022,8 +2022,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $projections = array();
         foreach ($this->projectionProgrammationFilms as $projection) {
             if ($projection instanceof FilmProjectionProgrammationFilm) {
-                
-                if($projection->getProjection()->getProgrammationSection() != 'Cinéfondation' && $projection->getProjection()->getProgrammationSection() != 'En Compétition - Courts métrages') {
+
+                if ($projection->getProjection()->getProgrammationSection() != 'Cinéfondation' && $projection->getProjection()->getProgrammationSection() != 'En Compétition - Courts métrages') {
                     $typeUCR = false;
                     if ($this->getSelectionSection()->getId() == FilmSelectionSectionInterface::FILM_SELECTION_SECTION_UNCERTAINREGARD) {
                         $typeUCR = true;
@@ -2059,7 +2059,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
             ksort($tempDayProjections);
             $days[$key]['projections'] = array_values($tempDayProjections);
         }
-        if($typeUCR) {
+        if ($typeUCR) {
             return array_values(array_reverse($days));
         } else {
             return array_values($days);
@@ -2265,27 +2265,34 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function getPublishedAssociatedMediaVideos($locale)
     {
-        $collection = new ArrayCollection();
+        $collection = array();
         foreach ($this->associatedMediaVideos as $associatedMediaVideo) {
             if ($associatedMediaVideo) {
                 $mediaVideo = $associatedMediaVideo->getMediaVideo();
-                $fr = $mediaVideo->findTranslationByLocale('fr');
-                $trans = $mediaVideo->findTranslationByLocale($locale);
+                if ($mediaVideo) {
+                    $fr = $mediaVideo->findTranslationByLocale('fr');
+                    $trans = $mediaVideo->findTranslationByLocale($locale);
 
-                if ($trans && $fr) {
-                    $status = $fr->getStatus() === MediaVideoTranslation::STATUS_PUBLISHED;
-                    if ($trans->getLocale() != $fr->getLocale()) {
-                        $status = $status;
-                    }
-                    $encoded =  $trans->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
-                    $hasURL = $trans->getWebmUrl() && $trans->getMp4Url();
-                    if ($status && $encoded && $hasURL) {
-                        $collection->add($associatedMediaVideo);
+                    if ($trans && $fr) {
+                        $status = $fr->getStatus() === MediaVideoTranslation::STATUS_PUBLISHED;
+                        if ($trans->getLocale() != $fr->getLocale()) {
+                            $status = $status;
+                        }
+                        $encoded = $trans->getJobMp4State() == MediaVideoTranslation::ENCODING_STATE_READY;
+                        $hasURL = $trans->getWebmUrl() && $trans->getMp4Url();
+                        if ($status && $encoded && $hasURL) {
+                            if ($mediaVideo->getPublishedAt()) {
+
+                                $key = $mediaVideo->getPublishedAt()->getTimestamp() . '-' . $associatedMediaVideo->getId();
+                                $collection[$key] = $associatedMediaVideo;
+                            }
+                        }
                     }
                 }
             }
         }
-        return $collection;
+        ksort($collection);
+        return new ArrayCollection(array_values($collection));
     }
 
     /**
@@ -2612,7 +2619,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get news
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getNews()
     {
