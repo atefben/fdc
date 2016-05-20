@@ -12051,6 +12051,7 @@ article .read-later.rAlign span:after {
 }
 .grid .item.w2 {
   width: calc(200%/4);
+  cursor: pointer;
 }
 .grid .filter-actived .item.w2 {
   width: calc(100%/6);
