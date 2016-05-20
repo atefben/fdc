@@ -241,7 +241,7 @@
                                                     <span class="item-categ" {{ awardAssociation.award.prize|content_lang('title') }}>
                                                         {{- awardAssociation.award.prize|trans_fallback('title') -}}
                                                         {%- if awardAssociation.award.exAequo == 1 -%}
-                                                            {{ ' ' }}(Ex-aequo)
+                                                            {{ ' ' }}({{ 'award.ex_aequo'|trans }})
                                                         {%- endif -%}
                                                     </span>
                                                     {% if filmPerson.functions|length > 0 %}
