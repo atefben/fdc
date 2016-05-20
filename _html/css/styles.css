@@ -13372,6 +13372,10 @@ input[type=submit] {
   border-top: #202020 1px solid !important;
 }
 
+.landscape {
+  visibility: hidden;
+}
+
 .mob .selection-whislist {
   width: 375px !important;
   zoom: 1 !important;
@@ -13395,6 +13399,9 @@ input[type=submit] {
   text-align: center;
   color: #fff;
   font-size: 1.75rem;
+}
+.mob .landscape {
+  visibility: visible;
 }
 
 .selection-whislist h2.titre-document {
@@ -13600,7 +13607,7 @@ input[type=submit] {
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .films-list .bandeau-list-img {
-    height: 120px !important;
+    height: 294px !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -13786,7 +13793,7 @@ input[type=submit] {
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .palmares-list .bandeau-list-img {
-    height: 120px !important;
+    height: 294px !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -14355,7 +14362,7 @@ input[type=submit] {
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .webtv-ba #live {
-    height: 120px !important;
+    height: 294px !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -14717,7 +14724,7 @@ input[type=submit] {
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .webtv-ba-video .bandeau-list-img {
-    height: 120px !important;
+    height: 294px !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -15235,7 +15242,7 @@ input[type=submit] {
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .evenement .bandeau-list-img {
-    height: 120px !important;
+    height: 294px !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -16633,7 +16640,7 @@ input[type=submit] {
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .participate .bandeau-list,
   .participate .bandeau-list-img {
-    height: 120px !important;
+    height: 294px !important;
   }
 }
 @media screen and (max-width: 1023px) {
