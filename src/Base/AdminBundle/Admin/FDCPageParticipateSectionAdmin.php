@@ -13,7 +13,6 @@ use Base\CoreBundle\Entity\FDCPageParticipateSection;
 
 class FDCPageParticipateSectionAdmin extends Admin
 {
-
     protected $formOptions = array(
         'cascade_validation' => true
     );

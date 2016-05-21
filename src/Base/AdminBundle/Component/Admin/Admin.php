@@ -9,6 +9,11 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
 class Admin extends BaseAdmin
 {
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id'
+    );
 
     protected $translationDomain = 'BaseAdminBundle';
 

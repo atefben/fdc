@@ -11,6 +11,11 @@ use Sonata\AdminBundle\Tests\DependencyInjection\News;
 
 class NewsCommonAdmin extends BaseAdmin
 {
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id'
+    );
 
     public function filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value)
     {

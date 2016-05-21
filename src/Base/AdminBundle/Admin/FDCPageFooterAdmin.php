@@ -15,6 +15,12 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class FDCPageFooterAdmin extends Admin
 {
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id'
+    );
+
     public function configure()
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_form.html.twig');
