@@ -115,7 +115,7 @@
             </span>
         </div>
     </div>
-{%- elseif event.programmationDynamics|length > 0 -%}
+{%- else -%}
     <div class="fc-event" data-category=""{{- ' ' -}}
          data-type="{{ event.type|lower|replace(' ', '-') }}"{{- ' ' -}}data-url="{{ path('fdc_event_agenda_getprojection', {id: event.id}) }}"{{- ' ' -}}
          data-id="{{ event.id }}" data-picto=".pen" data-color="{{ dataColor }}"{{- ' ' -}}

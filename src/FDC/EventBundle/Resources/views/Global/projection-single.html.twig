@@ -86,7 +86,13 @@
         {%- endif -%}
     </div>
     <div class="events-container">
-        {%- if seances|length > 0 -%}
+        {% set hasSeances = false %}
+        {%- for seance in seances -%}
+            {%- if seance.programmationFilms|length > 0 -%}
+                {% set hasSeances = true %}
+           {% endif %}
+        {% endfor %}
+        {%- if hasSeances == true -%}
             <h2>Séances de presse</h2>
             <div class="events-wrapper">
                 {%- for seance in seances -%}
