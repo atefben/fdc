@@ -31,9 +31,7 @@
                 {% if imageTrans is defined %}
                     {% set file = imageTrans.file %}
                     {% set img = article.header %}
-                {% elseif article.video|trans_fallback('imageAmazonUrl') is not null %}
-                    {% set imgamazon = s3_server_video ~ article.video|trans_fallback('imageAmazonUrl') %}
-                {% else %}
+                {% elseif imageTrans is not defined %}
                     {% set tmp = article.video %}
                     {% if tmp is not null %}
                         {% set trans = tmp.findTranslationByLocale(app.request.locale) %}
@@ -43,8 +41,12 @@
                         {% set img = article.video.image %}
                         {% set file = trans.file %}
                     {% endif %}
+                {% elseif article.video|trans_fallback('imageAmazonUrl') is not null %}
+                    {% set imgamazon = s3_server_video ~ article.video|trans_fallback('imageAmazonUrl') %}
                 {% endif %}
                 {% if file is defined and imageTrans is defined and imageTrans.file is not null %}
+                    {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
+                {% elseif tmp is defined and img is not null %}
                     {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
                 {% elseif imgamazon is defined and imgamazon is not null %}
                     <img src="{{ imgamazon }}" alt=""/>
