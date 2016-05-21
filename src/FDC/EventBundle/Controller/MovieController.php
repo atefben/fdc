@@ -217,9 +217,8 @@ class MovieController extends Controller
             }
         } else {
             $fr = $article->findTranslationByLocale($locale);
-            $published = NewsArticleTranslation::STATUS_PUBLISHED;
             $translated = NewsArticleTranslation::STATUS_TRANSLATED;
-            if ($fr->getStatus() === $published) {
+            if ($fr->getStatus() === $translated) {
                 return true;
             }
         }
