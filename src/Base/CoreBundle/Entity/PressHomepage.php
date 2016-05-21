@@ -43,7 +43,7 @@ class PressHomepage implements TranslateMainInterface
 
     /**
      * @var PressHomepageMedia
-     * @ORM\OneToMany(targetEntity="PressHomepageMedia", mappedBy="homepage", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="PressHomepageMedia", mappedBy="homepage", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $homeMedia;

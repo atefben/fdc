@@ -41,14 +41,17 @@ class RegenerateAclCommand extends ContainerAwareCommand {
 
         $adminSecurityHandler = $this->getContainer()->get('sonata.admin.security.handler');
         $modelAdmin = $this->getContainer()->get('base.admin.social_wall');
+        $securityInformation = $adminSecurityHandler->buildSecurityInformation($modelAdmin);
 
         $em     = $this->getContainer()->get('doctrine')->getManager();
         $entity = $input->getArgument('entity');
 
         $ids = $em->getRepository($entity)->getIdsByNetwork(SocialWallInterface::NETWORK_TWITTER);
+        $countIds =  count($ids);
 
         $output->writeln('Updating: '. $entity);
-        $output->writeln('Entities count: '. count($ids));
+        $output->writeln('Entities count: '.  $countIds);
+
 
         //update ACL
         foreach ($ids as $key => $id) {
@@ -58,12 +61,15 @@ class RegenerateAclCommand extends ContainerAwareCommand {
             if (is_null($acl)) {
                 $acl = $adminSecurityHandler->createAcl($objectIdentity);
             }
-            $adminSecurityHandler->addObjectClassAces($acl, $adminSecurityHandler->buildSecurityInformation($modelAdmin));
+            $adminSecurityHandler->addObjectClassAces($acl, $securityInformation);
             $adminSecurityHandler->updateAcl($acl);
-            $output->writeln('Updated:'. ($key + 1). '/'. count($ids));
+            unset($object);
+            if ($key % 10000 == 0) {
+                $output->writeln('Updated:' . ($key + 1) . '/' . $countIds);
+            }
         }
 
-        $output->writeln('Entities updated: '. count($ids));
+        $output->writeln('Entities updated: '. $countIds);
 
     }
 
