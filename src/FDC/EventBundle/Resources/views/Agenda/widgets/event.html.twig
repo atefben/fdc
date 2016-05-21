@@ -55,8 +55,16 @@
                     {%- endif -%}
                 </div>
             {%- endif -%}
-            {%- if event.medias|length > 0 and event.medias[0].file is not empty -%}
-                {%- media event.medias[0].file, '45x60' with { width: '45', height: 'auto'} -%}
+            {%- if event.medias|length > 0 -%}
+                {% set picture = null %}
+                {% for media in event.medias %}
+                    {% if media.file is not empty and media.file.context != 'pdf' %}
+                        {% set picture = media.file %}
+                    {% endif %}
+                {% endfor %}
+                {% if picture is not empty %}
+                    <img src="{% path picture, '45x60' %}" width="45" height="auto" />
+                {% endif %}
             {%- else -%}
                 {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                     film: film,
