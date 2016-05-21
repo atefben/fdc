@@ -19,6 +19,20 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class SocialWallRepository extends EntityRepository
 {
+    public function getIdsByNetwork($network)
+    {
+        $results = $this->createQueryBuilder('f')
+            ->select('f.id')
+            ->where('f.network = :network')
+            ->setParameter('network', $network)
+            ->getQuery()
+            ->getScalarResult();
+        ;
+        $results = array_map('current', $results);
+
+        return $results;
+    }
+
     public function getApiSocialWallTwitter($festival)
     {
         $query = $this->createQueryBuilder('f')
