@@ -46,7 +46,7 @@
                 {% endif %}
                 {% if file is defined and imageTrans is defined and imageTrans.file is not null %}
                     {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
-                {% elseif tmp is defined and img is not null %}
+                {% elseif tmp is defined and img is not null and file is not null %}
                     {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
                 {% elseif imgamazon is defined and imgamazon is not null %}
                     <img src="{{ imgamazon }}" alt=""/>
