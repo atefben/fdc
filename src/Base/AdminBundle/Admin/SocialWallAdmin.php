@@ -30,8 +30,8 @@ class SocialWallAdmin extends Admin
                 'choice_translation_domain' => 'BaseAdminBundle'
                 ))
             ->add('festival')
-            ->add('enabledMobile', null, array('editable' => true))
-            ->add('enabledDesktop', null, array('editable' => true))
+            ->add('enabledMobile')
+            ->add('enabledDesktop')
             ->add('tags')
             ->add('createdBefore', 'doctrine_orm_callback', array(
                 'callback'      => function ($queryBuilder, $alias, $field, $value) {
@@ -133,8 +133,8 @@ class SocialWallAdmin extends Admin
         $formMapper
             ->add('url')
             ->add('network')
-            ->add('enabledMobile', null, array('editable' => true))
-            ->add('enabledDesktop', null, array('editable' => true))
+            ->add('enabledMobile')
+            ->add('enabledDesktop')
             ->add('tags')
             ->add('createdAt')
             ->add('updatedAt')
@@ -150,8 +150,8 @@ class SocialWallAdmin extends Admin
             ->add('id')
             ->add('url')
             ->add('network')
-            ->add('enabledMobile', null, array('editable' => true))
-            ->add('enabledDesktop', null, array('editable' => true))
+            ->add('enabledMobile')
+            ->add('enabledDesktop')
             ->add('tags')
             ->add('createdAt')
             ->add('updatedAt')
