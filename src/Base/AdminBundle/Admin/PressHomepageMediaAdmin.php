@@ -50,7 +50,7 @@ class PressHomepageMediaAdmin extends Admin
                 'btn_delete' => false,
                 'label' => 'form.label_film'
             ))
-           // ->add('position','hidden',array('attr'=>array("hidden" => true)))
+            ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
 
     }
