@@ -81,7 +81,7 @@ class NewsController extends Controller
             'festival' => $this->getFestival(),
         ), array(
             'date' => 'DESC',
-        ), 12, null)
+        ), 11, null)
         ;
 
         $socialGraphTimeline = array();
