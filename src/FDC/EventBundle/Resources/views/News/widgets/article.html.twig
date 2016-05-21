@@ -31,7 +31,7 @@
                 {% if imageTrans is defined %}
                     {% set file = imageTrans.file %}
                     {% set img = article.header %}
-                {% else if imageTrans is not defined %}
+                {% elseif imageTrans is not defined %}
                     {% set tmp = article.video %}
                     {% if tmp is not null %}
                         {% set trans = tmp.findTranslationByLocale(app.request.locale) %}
@@ -41,7 +41,7 @@
                         {% set img = article.video.image %}
                         {% set file = trans.file %}
                     {% endif %}
-                {% else article.video|trans_fallback('imageAmazonUrl') is not null %}
+                {% elseif article.video|trans_fallback('imageAmazonUrl') is not null %}
                     {% set imgamazon = s3_server_video ~ article.video|trans_fallback('imageAmazonUrl') %}
                 {% endif %}
                 {% if file is defined and imageTrans is defined and imageTrans.file is not null %}
