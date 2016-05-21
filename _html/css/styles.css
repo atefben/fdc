@@ -5751,6 +5751,10 @@ div.chocolat-wrapper .zoomCursor .icon {
 .filters div .select:hover {
   opacity: 0.5;
 }
+.filters div .select span {
+  display: none;
+  padding-right: 13px;
+}
 .filters div .select span.active {
   display: inline-block;
 }

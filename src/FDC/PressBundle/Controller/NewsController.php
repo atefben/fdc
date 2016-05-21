@@ -316,6 +316,7 @@ class NewsController extends Controller
      */
     public function listAction()
     {
+
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
         $dateTime = new DateTime();
