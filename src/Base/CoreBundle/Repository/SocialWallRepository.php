@@ -25,6 +25,7 @@ class SocialWallRepository extends EntityRepository
             ->select('f.id')
             ->where('f.network = :network')
             ->setParameter('network', $network)
+            ->orderBy('f.date', 'DESC')
             ->getQuery()
             ->getScalarResult();
         ;
