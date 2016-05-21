@@ -55,7 +55,7 @@
                     {%- endif -%}
                 </div>
             {%- endif -%}
-            {%- if event.medias|length > 0 -%}
+            {%- if event.medias|length > 0 and event.medias[0].file is not empty -%}
                 {%- media event.medias[0].file, '45x60' with { width: '45', height: 'auto'} -%}
             {%- else -%}
                 {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
