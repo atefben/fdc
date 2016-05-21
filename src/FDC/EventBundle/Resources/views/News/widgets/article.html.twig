@@ -31,7 +31,7 @@
                 {% if imageTrans is defined %}
                     {% set file = imageTrans.file %}
                     {% set img = article.header %}
-                {% else %}
+                {% else if imageTrans is not defined %}
                     {% set tmp = article.video %}
                     {% if tmp is not null %}
                         {% set trans = tmp.findTranslationByLocale(app.request.locale) %}
