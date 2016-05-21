@@ -1,7 +1,11 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
 <section class="categorie-items">
+    {% set awardIds = [] %}
     {% for award_association in award_associations %}
-        {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
+        {% if award_association.award not in awardIds %}
+            {% set awardIds = awardIds|merge([award_association.award])  %}
+            {% include 'FDCEventBundle:Palmares:widgets/movie.html.twig' %}
+        {% endif %}
     {% endfor %}
 </section>
