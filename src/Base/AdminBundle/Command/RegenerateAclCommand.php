@@ -67,6 +67,7 @@ class RegenerateAclCommand extends ContainerAwareCommand {
             if ($key % 10000 == 0) {
                 $output->writeln('Updated:' . ($key + 1) . '/' . $countIds);
             }
+            $output->writeln('Id #'. $id);
         }
 
         $output->writeln('Entities updated: '. $countIds);
