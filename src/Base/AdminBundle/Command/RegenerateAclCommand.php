@@ -47,7 +47,7 @@ class RegenerateAclCommand extends ContainerAwareCommand {
         $entity = $input->getArgument('entity');
 
         $ids = $em->getRepository($entity)->getIdsByNetwork(SocialWallInterface::NETWORK_TWITTER);
-        $countIds =  count($ids);
+        $countIds = count($ids);
 
         $output->writeln('Updating: '. $entity);
         $output->writeln('Entities count: '.  $countIds);
