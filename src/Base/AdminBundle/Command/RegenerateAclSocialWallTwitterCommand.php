@@ -45,6 +45,10 @@ class RegenerateAclSocialWallTwitterCommand extends ContainerAwareCommand {
         $count = $input->getArgument('count');
         $divisor = $count / 10;
 
+        if ($count > 2000) {
+            $count = 2000;
+        }
+
         $ids = $em->getRepository('BaseCoreBundle:SocialWall')->getIdsByNetwork(SocialWallInterface::NETWORK_TWITTER, $count);
 
         //update ACL
