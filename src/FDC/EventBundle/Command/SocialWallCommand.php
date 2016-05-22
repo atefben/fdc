@@ -153,7 +153,6 @@ class SocialWallCommand extends ContainerAwareCommand {
 
             //update ACL
             foreach ($socialWalls as $socialWall) {
-                $logger->info('Social wall Twitter ID #'. $socialWall->getId(). ' - updated ACL');
                 $objectIdentity = ObjectIdentity::fromDomainObject($socialWall);
                 $acl = $adminSecurityHandler->getObjectAcl($objectIdentity);
                 if (is_null($acl)) {
