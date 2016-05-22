@@ -163,7 +163,15 @@ class SocialWallCommand extends ContainerAwareCommand {
             }
         }
 
-        $output->writeln('Tweet added: '. count($socialWalls));
+        // regenerating acl
+        $tweetsCount = count($socialWalls);
+        $lines = array();
+        exec("php app/console base:admin:regenerate_acl_social_wall_twitter {$tweetsCount}", $lines);
+        foreach ($lines as $line) {
+            $output->writeln($line);
+        }
+
+        $output->writeln('Tweet added: '. $tweetsCount);
 
         ////////////////////////////////////////////////////////////////////
         /////////////////////////   INSTAGRAM   ////////////////////////////

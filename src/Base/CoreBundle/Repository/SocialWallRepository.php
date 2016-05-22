@@ -19,14 +19,14 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class SocialWallRepository extends EntityRepository
 {
-    public function getIdsByNetwork($network)
+    public function getIdsByNetwork($network, $count)
     {
         $results = $this->createQueryBuilder('f')
             ->select('f.id')
             ->where('f.network = :network')
             ->setParameter('network', $network)
             ->orderBy('f.createdAt', 'DESC')
-            ->setMaxResults(1000)
+            ->setMaxResults($count)
             ->getQuery()
             ->getScalarResult();
         ;

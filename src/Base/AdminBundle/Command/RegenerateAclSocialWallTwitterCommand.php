@@ -10,10 +10,10 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class RegenerateAclCommand
+ * Class RegenerateAclSocialWallTwitterCommand
  * @package FDC\EventBundle\Command
  */
-class RegenerateAclCommand extends ContainerAwareCommand {
+class RegenerateAclSocialWallTwitterCommand extends ContainerAwareCommand {
     /**
      * configure function.
      *
@@ -21,11 +21,9 @@ class RegenerateAclCommand extends ContainerAwareCommand {
      * @return void
      */
     protected function configure() {
-        $this->setName('base:admin:regenerate_acl');
-        $this->setDescription('Regenerate acl for specific entity');
-        $this->addArgument(
-            'entity'
-        );
+        $this->setName('base:admin:regenerate_acl_social_wall_twitter');
+        $this->setDescription('Regenerate acl for Social Wall Twitter');
+        $this->addArgument('count');
 
     }
 
@@ -43,19 +41,15 @@ class RegenerateAclCommand extends ContainerAwareCommand {
         $modelAdmin = $this->getContainer()->get('base.admin.social_wall');
         $securityInformation = $adminSecurityHandler->buildSecurityInformation($modelAdmin);
 
-        $em     = $this->getContainer()->get('doctrine')->getManager();
-        $entity = $input->getArgument('entity');
+        $em  = $this->getContainer()->get('doctrine')->getManager();
+        $count = $input->getArgument('count');
+        $divisor = $count / 10;
 
-        $ids = $em->getRepository($entity)->getIdsByNetwork(SocialWallInterface::NETWORK_TWITTER);
-        $countIds = count($ids);
-
-        $output->writeln('Updating: '. $entity);
-        $output->writeln('Entities count: '.  $countIds);
-
+        $ids = $em->getRepository('BaseCoreBundle:SocialWall')->getIdsByNetwork(SocialWallInterface::NETWORK_TWITTER, $count);
 
         //update ACL
         foreach ($ids as $key => $id) {
-            $object = $em->getRepository($entity)->findOneById($id);
+            $object = $em->getRepository('BaseCoreBundle:SocialWall')->findOneById($id);
             $objectIdentity = ObjectIdentity::fromDomainObject($object);
             $acl = $adminSecurityHandler->getObjectAcl($objectIdentity);
             if (is_null($acl)) {
@@ -64,13 +58,12 @@ class RegenerateAclCommand extends ContainerAwareCommand {
             $adminSecurityHandler->addObjectClassAces($acl, $securityInformation);
             $adminSecurityHandler->updateAcl($acl);
             unset($object);
-            if ($key % 10000 == 0) {
-                $output->writeln('Updated:' . ($key + 1) . '/' . $countIds);
+            if ($key % $divisor == 0) {
+                $output->writeln('Updated:' . $key . '/' . $count);
             }
-            $output->writeln('Id #'. $id);
         }
 
-        $output->writeln('Entities updated: '. $countIds);
+        $output->writeln('Entities updated: '. $count);
 
     }
 
