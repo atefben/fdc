@@ -44,6 +44,7 @@ class SocialWallCommand extends ContainerAwareCommand {
 
         $adminSecurityHandler = $this->getContainer()->get('sonata.admin.security.handler');
         $modelAdmin = $this->getContainer()->get('base.admin.social_wall');
+        $securityInformation = $adminSecurityHandler->buildSecurityInformation($modelAdmin);
 
         $em       = $this->getContainer()->get('doctrine')->getManager();
         $logger   = $this->getContainer()->get('logger');
@@ -152,12 +153,13 @@ class SocialWallCommand extends ContainerAwareCommand {
 
             //update ACL
             foreach ($socialWalls as $socialWall) {
+                $logger->info('Social wall Twitter ID #'. $socialWall->getId(). ' - updated ACL');
                 $objectIdentity = ObjectIdentity::fromDomainObject($socialWall);
                 $acl = $adminSecurityHandler->getObjectAcl($objectIdentity);
                 if (is_null($acl)) {
                     $acl = $adminSecurityHandler->createAcl($objectIdentity);
                 }
-                $adminSecurityHandler->addObjectClassAces($acl, $adminSecurityHandler->buildSecurityInformation($modelAdmin));
+                $adminSecurityHandler->addObjectClassAces($acl, $securityInformation);
                 $adminSecurityHandler->updateAcl($acl);
             }
         }
