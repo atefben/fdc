@@ -104,7 +104,7 @@
                     {% set trans_slug = 'programmation.salle.' ~ event.room.name|remove_accents|sonata_slugify|lower %}
                     {% set trans = trans_slug|trans %}
                     {% if trans_slug != trans %}
-                        {{- trans -}}
+                        {{- trans|upper -}}
                     {% else %}
                         {{- event.room.name|upper -}}
                     {% endif %}
@@ -159,7 +159,7 @@
                     {% set trans_slug = 'programmation.salle.' ~ event.room.name|remove_accents|sonata_slugify|lower %}
                     {% set trans = trans_slug|trans %}
                     {% if trans_slug != trans %}
-                        {{- trans -}}
+                        {{- trans|upper -}}
                     {% else %}
                         {{- event.room.name|upper -}}
                     {% endif %}
