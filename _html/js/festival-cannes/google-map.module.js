@@ -3,7 +3,8 @@
 //page participate 
 
 function initialize() {
-    var myLatLng = new google.maps.LatLng(43.5477427, 7.0300728);
+    var myLatLng = new google.maps.LatLng(43.550404, 7.017419);
+    console.log(myLatLng);
             var mapOptions = {
                 center: myLatLng,
                 zoom: 16,
