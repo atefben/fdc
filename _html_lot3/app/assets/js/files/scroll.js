@@ -67,3 +67,12 @@ var owArrowDisplay = function() {
     }
   });
 };
+
+var onInitParallax = function() {
+
+  $(window).on('scroll', function() {
+    var s = $(this).scrollTop() - 100;
+    $('.block-push').css('background-position-y',s+'px');
+  });
+
+}

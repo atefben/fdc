@@ -21,6 +21,10 @@ footer {
     padding-right: 7px;
   }
 
+  .title {
+    font-family: $Playfair;
+  }
+
   &:after {
     background-color: $black;
     content: '';

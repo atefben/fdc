@@ -61,7 +61,8 @@
     .item {
       width: 80%;
       height: 100%;
-      background-size: cover;
+      background: center 0 no-repeat fixed;
+      background-size: 100%;
       display: none;
     }
 
@@ -369,7 +370,13 @@
   display: inline-block;
   vertical-align: top;
   position: relative;
-  overflow: hidden;
+  z-index: 0;
+
+  &[data-slide="0"]{
+    overflow: hidden;
+    z-index: 1;
+  }
+
 
   .link-return-c {
     display: none;
@@ -378,7 +385,7 @@
   .date{
     &-back, &-next {
       display: none;
-      z-index: 3;
+      z-index: 5;
       transition: $smoothTransition .6s;
     }
 
@@ -391,6 +398,72 @@
     //   transform: translate(20px);
     //   cursor: pointer;
     // }
+  }
+
+  .calc3 {
+    position: absolute;
+    top: 1px;
+    z-index:3;
+    opacity: 0.6;
+    width: 100vw;
+    height: 100vh;
+    transition: $smoothTransition .6s;
+
+    img {
+      max-width:380px;
+      object-fit: cover;
+
+      &.i1 {
+        position: relative;
+        top: -2%;
+        left: -5%;
+      }
+
+      &.i2 {
+        top: 50%;
+        position: relative;
+        right: 5%;
+      }
+
+      &.i3 {
+        position: relative;
+        top: 2%;
+        left: 26%;
+      }
+    }
+  }
+
+  .calc4 {
+    position: absolute;
+    top: 1px;
+    z-index:2;
+    opacity: 0.3;
+    width: 100vw;
+    height: 100vh;
+    transition: $smoothTransition .6s;
+
+    img {
+      max-width:380px;
+      object-fit: cover;
+
+      &.i1 {
+        position: relative;
+        top: -9%;
+        left: 13%;
+      }
+
+      &.i2 {
+        top: 41%;
+        position: relative;
+        right: -21%;
+      }
+
+      &.i3 {
+        position: relative;
+        top: 31%;
+        left: -53%;
+      }
+    }
   }
 
   &.background-effet {
@@ -426,6 +499,7 @@
   }
 
   .container {
+    z-index: 4;
     position: relative;
   }
 
