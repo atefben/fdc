@@ -61,7 +61,8 @@
     .item {
       width: 80%;
       height: 100%;
-      background-size: cover;
+      background: center 0 no-repeat fixed;
+      background-size: 100%;
       display: none;
     }
 

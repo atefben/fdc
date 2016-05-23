@@ -423,6 +423,15 @@ var owArrowDisplay = function() {
   });
 };
 
+var onInitParallax = function() {
+
+  $(window).on('scroll', function() {
+    var s = $(this).scrollTop() - 100;
+    $('.block-push').css('background-position-y',s+'px');
+  });
+
+}
+
 var owInitSliderSelect = function(id) {
 
   if(id == "timelapse"){
@@ -966,6 +975,11 @@ $(document).ready(function() {
 
   if($('.retrospective-home').length) {
     owInitSlider('timelapse-01');
+    onInitParallax();
+  }
+
+  if($('.block-push-top').length) {
+    onInitParallax();
   }
 
   if($('.jury').length) {

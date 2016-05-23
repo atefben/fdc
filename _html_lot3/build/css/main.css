@@ -4229,6 +4229,27 @@ video {
   width: 50%;
   display: inline-block;
   vertical-align: top;
+  position: relative;
+  overflow: hidden;
+}
+.half-div .vFlexAlign {
+  z-index: 3;
+  position: relative;
+}
+.half-div img {
+  width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+.half-div:hover img {
+  transition: all 6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transform: scale(1.08) translateZ(0);
+  transform: scale(1.08) translateZ(0);
+  cursor: pointer;
 }
 
 .three-quarts-div {
@@ -4313,8 +4334,9 @@ video {
 }
 
 .block-push {
-  background-size: cover;
-  transition: height .5s;
+  background: center 0 no-repeat fixed;
+  background-size: 147%;
+  transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
 }
 .block-push .link {
   margin-top: 20px;
@@ -4468,6 +4490,12 @@ video {
 
 .block-push-03-alone {
   height: 303px;
+  position: relative;
+  overflow: hidden;
+}
+.block-push-03-alone .vFlexAlign {
+  z-index: 2;
+  position: relative;
 }
 .block-push-03-alone .title-2 {
   color: #fff;
@@ -4478,11 +4506,27 @@ video {
   width: 300px;
   line-height: 24px;
 }
+.block-push-03-alone img {
+  width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+.block-push-03-alone:hover img {
+  transition: all 6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transform: scale(1.08) translateZ(0);
+  transform: scale(1.08) translateZ(0);
+  cursor: pointer;
+}
 
 .block-push-top {
   height: 300px;
   display: block;
   position: relative;
+  background-attachment: inherit;
 }
 .block-push-top .vFlexAlign {
   height: 100%;
@@ -5046,6 +5090,9 @@ video {
   margin-top: 8px;
 }
 
+.block-accordion .download .item {
+  min-width: 160px;
+}
 .block-accordion .a-left {
   text-align: left;
 }
@@ -5149,7 +5196,7 @@ video {
 .block-accordion .active {
   max-height: 10000px;
 }
-.block-accordion .active strong, .block-accordion .active i, .block-accordion .active .title-22 {
+.block-accordion .active .title-contain strong, .block-accordion .active .title-contain i, .block-accordion .active .title-contain .title-22 {
   color: #c8a461;
 }
 .block-accordion .link {
@@ -5390,8 +5437,9 @@ video {
           flex-direction: column;
   height: 362px;
   color: #fff;
-  background-size: cover;
   text-align: center;
+  background: center 0 no-repeat fixed;
+  background-size: cover;
 }
 .block-s-info-02 a {
   color: #c8a461;
@@ -8770,7 +8818,8 @@ header #searchContainer {
 .slider-home .container-images .item {
   width: 80%;
   height: 100%;
-  background-size: cover;
+  background: center 0 no-repeat fixed;
+  background-size: 100%;
   display: none;
 }
 .slider-home .container-images .item.active {
