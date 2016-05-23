@@ -1,6 +1,7 @@
 {%- spaceless -%}
 {%- trans_default_domain 'FDCEventBundle' -%}
-{%- for room in rooms -%}
+<div class="v-wrapper-content list">
+    {%- for room in rooms -%}
     <div class="venue">
         <div class="v-head">{{ room.name }}</div>
         <div class="v-container">
@@ -9,5 +10,6 @@
             {%- endfor -%}
         </div>
     </div>
-{%- endfor -%}
+    {%- endfor -%}
+</div>
 {%- endspaceless -%}

@@ -1,0 +1,5 @@
+fdc_event_mobile:
+    resource: "@FDCPressMobileBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    host:     "%fdc_press_domain%"

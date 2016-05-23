@@ -1,77 +1,26 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% set festival_date = festival_date() %}
 <!DOCTYPE html>
-<html {{ sonata_seo_html_attributes() }}>
-    <head {{ sonata_seo_head_attributes() }}>
-        {{ sonata_seo_title() }}
-		<meta name="viewport" content="user-scalable=no, width=640">
-		<meta name="apple-itunes-app" content="app-id=431842884">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="google-play-app" content="app-id=fr.festivaldecannes">
-        {{ sonata_seo_metadatas() }}
-        {{ sonata_seo_link_canonical() }}
-        {{ sonata_seo_lang_alternates() }}
-        {% include 'FDCEventMobileBundle:Base:stylesheet.html.twig' %}
-        {% include 'FDCEventMobileBundle:Base:javascript_head.html.twig' %}
-    </head>
-    <body>
-		<div id="main" class="legals" data-menu="privacy_policy" style="background-color:#fff">
-			<div class="dark-container" id="header">
-				<div class="header-container">
-					<div id="logo">
-				        <a href="/">
-							{% image '@FDCEventMobileBundle/Resources/public/img/palme.svg' %}
-								<img src="{{ asset_url }}" alt="Festival de Cannes" class="palm">
-							{% endimage %}
-						</a>
-				        <h1><a href="/">
-							{% image '@FDCEventMobileBundle/Resources/public/img/logo.svg' %}
-								<img width="225" src="{{ asset_url }}" alt="Festival de Cannes"></a>
-							{% endimage %}
-						</h1>
-				        <h2> {% include 'FDCEventMobileBundle:Header:date.html.twig' %}</h2>
-				    </div>
-				</div>
-			</div>
-		    <div class="container" style="background-color:#fff">
-		        <h2 class="title">Festival de Cannes<br />2016</h2>
-				<p>&nbsp;</p>
-		    <section class="legal-notice-container">
-		       <div class="legal-notice-responsable" style="text-align:center">
-				   <p class="legal-notice-description">{{ 'Le site Internet en version mobile sera bientôt disponible.'|trans }}</p>
-				   <p>&nbsp;</p>
-				   <p>{{ "En attendant, téléchargez l\'application officielle :"|trans }}</p>
-				   <p>&nbsp;</p>
-
-				   <p>
-					   {%  if app.request.locale == 'fr' %}
-					   		<a href="https://itunes.apple.com/fr/app/festival-de-cannes-officiel/id431842884">
-						{% else %}
-						    <a href="https://itunes.apple.com/app/festival-de-cannes-officiel/id431842884">
-						{%  endif %}
-						   {% image '@FDCEventBundle/Resources/public/img/appstore.png' %}
-						   <img src="{{ asset_url }}" alt="Apple" /></a>
-						   {% endimage %}
-							<a href="https://play.google.com/store/apps/details?id=fr.festivaldecannes&hl={{ app.request.locale }}">
-							{% image '@FDCEventBundle/Resources/public/img/appgoogle.png' %}
-							<img src="{{ asset_url }}" alt="Google" /></a>
-							{% endimage %}
-					</p>
-		       </div>
-		    </section>
-		    </div>
-		</div>
-		    <div id="landscape">
-		      <div class="content vCenter">
-		        <div class="vCenterKid">
-					{% image '@FDCEventBundle/Resources/public/img/MobileTurn.svg' %}
-		         	<img src="{{ asset_url }}" alt="">
-					{% endimage %}
-		          <p>{{ 'Tournez votre smartphone pour accéder au site'|trans }}</p>
-		        </div>
-		      </div>
-		    </div>
-        {% include 'FDCEventMobileBundle:Base:javascript_footer.html.twig' %}
-        {% include 'FDCEventMobileBundle:Base:javascript.html.twig' %}
-    </body>
+	<html {{ sonata_seo_html_attributes() }}>
+		<head {{ sonata_seo_head_attributes() }}>
+			{{ sonata_seo_title() }}
+			<meta name="viewport" content="user-scalable=no, width=640">
+			<meta name="apple-itunes-app" content="app-id=431842884" />
+			<meta name="apple-mobile-web-app-capable" content="yes">
+			{{ sonata_seo_metadatas() }}
+			{{ sonata_seo_link_canonical() }}
+			{{ sonata_seo_lang_alternates() }}
+			{% include 'FDCEventMobileBundle:Base:stylesheet.html.twig' %}
+			{% include 'FDCEventMobileBundle:Base:javascript_head.html.twig' %}
+		</head>
+		<body>
+			{% block pre_home %}
+			{% endblock %}
+			{% include 'FDCEventMobileBundle::header.html.twig' %}
+			{% block body %}
+			{% endblock %}
+			{% include 'FDCEventMobileBundle::footer.html.twig' %}
+			{% include 'FDCEventMobileBundle:Base:javascript_footer.html.twig' %}
+			{% include 'FDCEventMobileBundle:Base:javascript.html.twig' %}
+		</body>
 </html>

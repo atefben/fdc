@@ -1,0 +1,31 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
+<footer class="loading">
+    <div class="container">
+        <h2 class="title">{{ 'footer.newsletter.title.newsletter'|trans }}</h2>
+        <h3 class="subtitle">{{ 'footer.newsletter.title.toutelactualite'|trans }}</h3>
+
+        {{ render(controller('FDCEventBundle:Global:newsletter')) }}
+
+        <div class="social">
+            <p>
+                {% image '@FDCEventBundle/Resources/public/img/svg/logo-white.svg' %}
+                <img width="230" src="{{ asset_url }}" alt="{{ 'footer.social.logo.festival'|trans }}" />
+                {% endimage %}
+            </p>
+            <ul>
+                <li><a class="appli" href="{{ path('fdc_event_footer_static', {'page': social_appli}) }}" target="_blank"></a></li>
+                <li><a class="facebook" href="{{ social_facebook }}" target="_blank"></a></li>
+                <li><a class="twitter" href="{{ social_twitter }}" target="_blank"></a></li>
+                <li><a class="instagram" href="{{ social_instagram }}" target="_blank"></a></li>
+                <li><a class="tumblr" href="{{ social_tumblr }}" target="_blank"></a></li>
+                <li><a class="rss" href="{{ social_rss }}" target="_blank"></a></li>
+                <li><a class="youtube" href="{{ social_youtube }}" target="_blank"></a></li>
+                <li><a class="dailymotion" href="{{ social_dailymotion }}" target="_blank"></a></li>
+                <li><a class="podcast" href="{{ social_podcast }}" target="_blank"></a></li>
+            </ul>
+        </div>
+        {{ render(controller('FDCEventBundle:Global:footer', {route : app.request.get('_route')})) }}
+    </div>
+</footer>
+<div id="siteLoader" class="canvasloader"></div>

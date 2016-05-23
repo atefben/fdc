@@ -71,6 +71,7 @@ class AppKernel extends Kernel
             new Eko\FeedBundle\EkoFeedBundle(),
           
             new FOS\ElasticaBundle\FOSElasticaBundle(),
+            new FDC\PressMobileBundle\FDCPressMobileBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

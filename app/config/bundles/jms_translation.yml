@@ -21,6 +21,14 @@ jms_translation:
             excluded_names: ["*TestCase.php", "*Test.php"]
             excluded_dirs: [Form]
             extractors: []
+        fdc_press_mobile:
+            dirs: [%kernel.root_dir%/../src/FDC/EventMobileBundle, %kernel.root_dir%/../src/FDC/PressMobileBundle]
+            output_dir: %kernel.root_dir%/../src/FDC/PressMobileBundle/Resources/translations
+            ignored_domains: [FDCEventBundle, FDCPressBundle, FDCEventMobileBundle]
+            domains: [FDCPressMobileBundle]
+            excluded_names: ["*TestCase.php", "*Test.php"]
+            excluded_dirs: [Form]
+            extractors: []
         app:
             dirs: [%kernel.root_dir%/../src/FDC/EventBundle, %kernel.root_dir%/../src/FDC/PressBundle, %kernel.root_dir%/../src/FDC/EventMobileBundle]
             output_dir: %kernel.root_dir%/../app/Resources/translations

@@ -1,0 +1,30 @@
+{% trans_default_domain 'FDCPressBundle' %}
+{% set trans = widget.image.findTranslationByLocale(app.request.locale) %}
+{% if trans is null or trans.file is null %}
+    {% set trans = widget.image.findTranslationByLocale('fr') %}
+{% endif %}
+{% set image = trans.file %}
+{% set sizeClass = 'portrait' %}
+
+<div class="imgs-container {% if key == 0 %}first{% elseif key == 2 %}last{% endif %}">
+    <div class="container-img">
+        <img src="{% path image, '233x233nocrop' %}" {% if image.width > image.height %}width="240"{% else %}height="240"{% endif %}alt="{{ widget.image|trans_fallback('alt') }}" />
+    </div>
+    <span class="caption">© {{ widget|trans_fallback('copyright') }}</span>
+    <div class="infos">
+        <h4>{{ widget|trans_fallback('label') }}</h4>
+        {{ widget|trans_fallback('content')|raw }}
+    </div>
+    <div class="buttons {% if widget.lockedContent == 0 or (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) %}active-btn{% endif %}">
+        <a href="{% if widget.lockedContent == 0 or (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) %}{% path widget.file, 'reference' %}{% endif %}" class=" button" target="_blank" download>
+            <i class="icon icon_{{ widget.lockedContent == 0 or (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'telecharger' : 'cadenas' }}"></i>
+            {{ widget|trans_fallback('btnLabel')|raw }}
+        </a>
+        {% if widget.secondFile is not null %}
+            <a href="{% if widget.lockedContent == 0 or (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) %}{% path widget.secondFile, 'reference' %}{% endif %}" class=" button" target="_blank" download>
+                <i class="icon icon_{{ widget.lockedContent == 0 or (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'telecharger' : 'cadenas' }}"></i>
+                {{ widget|trans_fallback('secondBtnLabel')|raw }}
+            </a>
+        {% endif %}
+    </div>
+</div>

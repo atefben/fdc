@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 <a href="/{{app.request.locale}}/">
-    {% if settings.festivalStartsAt and settings.festivalEndsAt %}
+    {% if settings is not empty and settings.festivalStartsAt and settings.festivalEndsAt %}
         {% if app.request.locale == 'zh' %}
           {{ settings.festivalEndsAt|localizeddate('medium', 'none', app.request.locale, null, 'Y') }}年5月{{ settings.festivalStartsAt|date('d') }}至{{ settings.festivalEndsAt|date('d') }}日
         {% else  %}

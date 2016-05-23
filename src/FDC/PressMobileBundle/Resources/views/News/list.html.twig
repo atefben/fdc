@@ -1,0 +1,47 @@
+{% trans_default_domain 'FDCPressBundle' %}
+{% extends 'FDCPressBundle::layout.html.twig' %}
+{% block body %}
+<div id="main" class="press loading press-actu {{ (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'conected' : 'lock' }} all-articles grid">
+
+    <div class="header-press">
+        <div class="head">
+            <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>
+        </div>
+        <div class="container">
+            <h2>{{ 'press.header.title.communiqueetinfos'|trans }}</h2>
+            <p>
+            <span class="vCenter">
+              <span class="vCenterKid">
+                  {{ 'press.header.subtitle.communiqueactualiteretrouveztoute'|trans }}
+              </span>
+            </span>
+            </p>
+        </div>
+    </div>
+
+    <div class="container-pressactu">
+
+        {% include 'FDCPressBundle:News:components/filters.html.twig' %}
+
+        {% include 'FDCPressBundle:News:list/article-list.html.twig' %}
+
+        <div class="section" style="background-image:url({{ asset('bundles/fdcevent/img/press/pushactu.jpg') }})">
+            <div class="img"></div>
+            <div class="txt vCenter">
+                <div class="vCenterKid">
+                    <h2 class="title">{{ 'press.actu.title.lactualitealaune'|trans }}</h2>
+                    <p class="link">
+                        <a href="/{{ app.request.locale }}/">
+                            <i class="icon icon_fleche-right"></i>
+                            {{ 'press.actu.btn.suivezlamanifestation'|trans }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ render(controller('FDCPressBundle:Global:contact')) }}
+
+</div>
+{% endblock %}

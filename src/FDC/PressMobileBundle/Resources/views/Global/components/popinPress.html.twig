@@ -1,0 +1,15 @@
+{% trans_default_domain 'FDCPressBundle' %}
+
+<div id="popin-press" class='popin'>
+    <div class="container-popin">
+        <strong><i class="icon icon_cadenas"></i>{{ 'press.popin.title.contenuverouille'|trans }}</strong>
+        <p>{{ 'press.popin.text.cecontenuestexclusivementreservealapresse'|trans }}</p>
+        {% if app.request.session.has('login_error') and app.request.session.get('login_error') %}
+            {% set temp = app.request.session.remove('login_error') %}
+            {% set popinPressError = true %}
+        {% else %}
+            {% set popinPressError = false %}
+        {% endif %}
+        {{ render(controller('FDCPressBundle:Security:setCurrentRoute', {'originalRequest': app.request})) }}
+    </div>
+</div>

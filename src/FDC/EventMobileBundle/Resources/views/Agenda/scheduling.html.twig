@@ -2,29 +2,50 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="press press-programmation loading calendar-open events-site programmation-press {{ is_granted("ROLE_FDC_PRESS_REPORTER") ? 'conected' : 'lock' }}">
+    <div id="main" class="programmation-press{% if app.request.get('_route') == 'fdc_pressmobile_agenda_scheduling' and is_granted("ROLE_FDC_PRESS_REPORTER") == false %} press-locked{% endif %}" data-menu="prog">
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
-        
-        <div class="header-press">
-            <div class="head">
-                <span><i class="icon icon_espace-presse"></i>Espace presse</span>
-            </div>
-            <div class="container">
-                <h2>{{ 'programmation.title.programmation'|trans }}</h2>
-                <div class="buttons">
-                    {% if pressProjection is not empty and pressProjection.scheduling is not null %}
-                        <a href="{% path pressProjection.scheduling, 'reference' %}" class="button list" download
-                           target="_blank">
-                            <i class="icon icon_telecharger"></i>{{ 'programmation.btn.telechargerformatpdf'|trans }}
-                        </a>
-                    {% endif %}
+        {%- if (app.request.get('_route') == 'fdc_pressmobile_agenda_scheduling') -%}
+            <div class="header-press">
+                <div class="head">
+                    <span><i class="icon icon_espace-presse"></i>Espace presse</span>
+                </div>
+                <div class="container">
+                    <h2>{{ 'programmation.title.programmation'|trans }}</h2>
+                    <div class="buttons">
+                        {%- if app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER") and pressProjection.pressScheduling is not null -%}
+                            <a href="{% path pressProjection.pressScheduling, 'reference' %}" class="button" download target="_blank">
+                                <i class="icon icon_telecharger"></i>{{ 'programmation.btn.press_pdf'|trans({}, 'FDCPressMobileBundle')|upper }}
+                            </a>
+                            <a href="{% path pressProjection.scheduling, 'reference' %}" class="button" download target="_blank">
+                                <i class="icon icon_telecharger"></i>{{ 'programmation.btn.pdf'|trans({}, 'FDCPressMobileBundle')|upper }}
+                            </a>
+                        {%- else -%}
+                            <a href="{% path pressProjection.scheduling, 'reference' %}" class="button" download target="_blank">
+                                <i class="icon icon_telecharger"></i>{{ 'programmation.btn.pdf'|trans({}, 'FDCPressMobileBundle')|upper }}
+                            </a>
+                        {%- endif -%}
+                    </div>
                 </div>
             </div>
-        </div>
-        {#{% include 'FDCPressBundle:Global:components/login.html.twig' %}#}
-        {#TODO change href#}
-        <a class="agenda-access" href="agenda.html"><i class="icon icon_agenda-personnel"></i></a>
+            {% include 'FDCPressMobileBundle:Global:components/login.html.twig' %}
+        {% else %}
+            <div class="header-press">
+                <div class="container">
+                    <h2>{{ 'programmation.title.programmation'|trans }}</h2>
+                    <div class="buttons">
+                        <a href="{% path pressProjection.scheduling, 'reference' %}" class="button" download target="_blank">
+                            <i class="icon icon_telecharger"></i>{{ 'programmation.btn.pdf'|trans({}, 'FDCPressMobileBundle')|upper }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% include 'FDCPressMobileBundle:Global:components/login_public.html.twig' %}
+        {%- endif -%}
+
+        <a class="agenda-access" href="{{ path('fdc_eventmobile_agenda_get') }}">
+            <i class="icon icon_agenda-personnel"></i>
+        </a>
 
         <section>
             <div class="contain-section">
@@ -70,111 +91,11 @@
                         <div class="time">03H</div>
                     </div>
                     <div class="venues">
-                        <div class="v-wrapper v-wrapper-content list">
-                            {% for room in rooms %}
-                                <div class="venue item-list item">
-                                    <div class="v-head">{{ room.name }}</div>
-                                    <div class="v-container">
-                                        {% for event in projections[room.id] %}
-                                            {#{{ dump(event) }}#}
-                                            {% include 'FDCEventMobileBundle:Agenda:widgets/event.html.twig' %}
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            {% endfor %}
+                        <div class="v-wrapper">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        {##}
-        {#<div class="wrapper">#}
-            {#<div id='calendar'>#}
-                {#<div id="calendar-wrapper">#}
-                    {#<h2 class="title-calendar">{{ 'programmation.title.monagenda'|trans }}</h2>#}
-                    {#<div id="mycalendar" class="side"></div>#}
-                    {#<p class="link">#}
-                        {#<a href="{{ path('fdc_event_agenda_get') }}">#}
-                            {#<i class="icon icon_fleche-right"></i>#}
-                            {#{{ 'programmation.btn.toutmonagenda'|trans }}#}
-                        {#</a>#}
-                    {#</p>#}
-                    {#<div class="drag">#}
-                        {#<h2>{{ 'programmation.title.preparezvotresejour'|trans }}</h2>#}
-                        {#{% image '@FDCEventMobileBundle/Resources/public/img/svg/main-drag.svg' %}#}
-                        {#<img src="{{ asset(asset_url) }}" width="43">#}
-                        {#{% endimage %}#}
-                        {#<p>#}
-                            {#{{ 'programmation.text.cliquezdeposezlesevenementsdansvotragenda'|trans|raw }}#}
-                        {#</p>#}
-                        {#<a href="#" id="okDrag">OK</a>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-            {#<div class="programmation">#}
-                {#<div id="calendar-programmation">#}
-
-                    {#{% include 'FDCEventMobileBundle:Agenda:components/filters.html.twig' %}#}
-
-                    {#<div id="timeline">#}
-                        {#<span class="arrow left"><i class="icon icon_flecheGauche"></i></span>#}
-                        {#<div class="timeline-container">#}
-                            {#{% for day in schedulingDays %}#}
-                                {#<a href="#" class="ajaxi {% if day == date %}active{% endif %}" data-date="{{ day|date('Y-m-d') }}">#}
-                                    {#{{ day|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}#}
-                                    {#<span class="day">{{ day|date('d') }}</span>#}
-                                {#</a>#}
-                            {#{% endfor %}#}
-                        {#</div>#}
-                        {#<span class="arrow right"><i class="icon icon_fleche-right"></i></span>#}
-                    {#</div>#}
-
-                    {#<div class="calendar">#}
-                        {#<div class="timeCol">#}
-                            {#<div class="empty"></div>#}
-                            {#<div class="time">08H</div>#}
-                            {#<div class="time">09H</div>#}
-                            {#<div class="time">10H</div>#}
-                            {#<div class="time">11H</div>#}
-                            {#<div class="time">12H</div>#}
-                            {#<div class="time">13H</div>#}
-                            {#<div class="time">14H</div>#}
-                            {#<div class="time">15H</div>#}
-                            {#<div class="time">16H</div>#}
-                            {#<div class="time">17H</div>#}
-                            {#<div class="time">18H</div>#}
-                            {#<div class="time">19H</div>#}
-                            {#<div class="time">20H</div>#}
-                            {#<div class="time">21H</div>#}
-                            {#<div class="time">22H</div>#}
-                            {#<div class="time">23H</div>#}
-                            {#<div class="time">00H</div>#}
-                            {#<div class="time">01H</div>#}
-                            {#<div class="time">02H</div>#}
-                            {#<div class="time">03H</div>#}
-                        {#</div>#}
-                        {#<div class="venues">#}
-                            {#<a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>#}
-                            {#<a href="#" class="nav next"><i class="icon icon_fleche-right"></i></a>#}
-							{#<div class="v-wrapper">#}
-                                {#{% for room in rooms %}#}
-                                    {#<div class="venue">#}
-                                        {#<div class="v-head">{{ room.name }}</div>#}
-                                        {#<div class="v-container">#}
-                                            {#{% for event in projections[room.id] %}#}
-                                                {#{% include 'FDCEventMobileBundle:Agenda:widgets/event.html.twig' %}#}
-                                            {#{% endfor %}#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#{% endfor %}#}
-							{#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div class="contact-press">#}
-        {#</div>#}
     </div>
 {% endblock body %}
