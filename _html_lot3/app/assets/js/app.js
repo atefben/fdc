@@ -41,6 +41,10 @@ $(document).ready(function() {
     onInitParallax();
   }
 
+  if($('.ajax-section').length) {
+    owInitAjax();
+  }
+
   if($('.block-push-top').length) {
     onInitParallax();
   }

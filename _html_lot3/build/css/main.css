@@ -3828,6 +3828,12 @@ a {
 .read-more:hover {
   opacity: 0.5;
 }
+.bright .read-more {
+  border: 1px solid #e5e5e5 !important;
+}
+.bright .read-more strong {
+  color: #141414 !important;
+}
 .dark .read-more {
   border: 1px solid #252525;
 }

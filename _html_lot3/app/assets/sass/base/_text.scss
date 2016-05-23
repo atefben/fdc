@@ -796,6 +796,14 @@ a {
     opacity: 0.5;
   }
 
+  .bright & {
+    border: 1px solid #e5e5e5 !important;
+
+    strong{
+      color: #141414 !important;
+    }
+  }
+
   .dark & {
     border: 1px solid #252525;
 
