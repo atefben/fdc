@@ -632,6 +632,8 @@ var owInitSlider = function(sliderName) {
       $('.slides-calc1 .date').html(valuesInt);
 
       $('.big img').removeClass('open');
+      $('.slider-restropective .calc3').css('display','block');
+      $('.slider-restropective .calc4').css('display','block');
 
       if(initDrag) {
         initDrag = 0;
@@ -645,23 +647,28 @@ var owInitSlider = function(sliderName) {
         $('.slides-calc2.navigation').addClass('begin');
       }
 
-
       if(number > 0.7 && initDrag == 0){
         $('.slider-restropective[data-slide="0"]').removeClass('animated fadeIn').addClass('animated fadeOut');
         $('.slides-calc1').removeClass('animated fadeOut').addClass('animated fadeIn');
-
       }else if(number < 0.9){
-
         $('.slider-restropective[data-slide="0"]').removeClass('animated fadeOut').addClass('animated fadeIn');
         $('.slides-calc1').removeClass('animated fadeIn').addClass('animated fadeOut');
       }
 
+      //paralax calc 3
+
+      var val2 = - (valuesFloat - 1945 - number) * 380; //todo script ?
+      $('.slider-restropective[data-slide='+number+'] .calc3').css('transform','translate('+val2+'px)');
+
+      //paralax cal 4
+
+      var val3 = - (valuesFloat - 1945 - number) * 80; //todo script ?
+      $('.slider-restropective[data-slide='+number+'] .calc4').css('transform','translate('+val3+'px)');
+
       var val = - w * (valuesFloat - 1945) * .8; //todo script ?
-      // var valCalc1 = - w * (valuesFloat - 1946) * .4; //todo script ?
       var valPos = w * (valuesFloat - 1945) * .8; //todo script ?
 
       $slide.css('transform','translate('+val+'px)');
-      // $slideCalc1Slide.css('left',valPos+'px');
 
       $('.slider-restropective').removeClass('big').addClass('small');
       $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
@@ -678,6 +685,9 @@ var owInitSlider = function(sliderName) {
        var val = - w * (values - 1945); //todo script ?
 
        $slide.css('transform','translate('+val+'px)');
+
+       $('.slider-restropective .calc3').css('display','none');
+       $('.slider-restropective .calc4').css('display','none');
 
        var slideElement = $('.slider-restropective[data-slide='+number+']');
        var slideElementText = $('.slider-restropective[data-slide='+number+'] .texts');
@@ -744,6 +754,9 @@ var owInitSlider = function(sliderName) {
 
        $slide.css('transform','translate('+val+'px)');
 
+       $('.slider-restropective .calc3').css('display','none');
+       $('.slider-restropective .calc4').css('display','none');
+
        var slideElement = $('.slider-restropective[data-slide='+number+']');
        var slideElementText = $('.slider-restropective[data-slide='+number+'] .texts');
 
@@ -774,6 +787,9 @@ var owInitSlider = function(sliderName) {
         var val = - w * (values - 1945) - 10; //todo script ?
         var slideElement = $('.slider-restropective[data-slide='+number+']');
         var slideElementText = $('.slider-restropective[data-slide='+number+'] .texts');
+
+        $('.slider-restropective .calc3').css('display','none');
+        $('.slider-restropective .calc4').css('display','none');
 
         $slide.css('transform','translate('+val+'px)');
         $('.slides-calc1').css('display','none');
