@@ -30,7 +30,7 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="img/favicon//ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-<body class="articles-list-medias bright">
+<body class="articles-list-medias dark retrospective retrospective-home restrospective-init">
   <header>
   <div id="top-bar">
     <ul class="main-nav">
@@ -180,71 +180,385 @@
   </div> -->
 </header>
 
-  <section id="main">
+  <section class="s-slider-retrospective">
 
-    <div class="block-push block-push-top" style="background-image: url('media/images/retrospective-poster-push-01.jpg')">
-      <div>
-        <a href="" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour à la rétrospective</a>
+    <div class="slides-calc2 navigation prev" style="display: none;"><i class="icon icon-arrow-left"></i></div>
+    <div class="slides-calc2 navigation next" style="display: none;"><i class="icon icon-arrow-right"></i></div>
+
+    <div class="slides-calc1 animated fadeOut" style="display: none;">
+      <div class="slide">
+        <div class="date" data-date="1948">1946</div>
       </div>
-      <div class="vFlexAlign">
-        <div class="txts">
-          <h3 class="title-4">58<sub>E</sub> édition</h3>
-          <h2 class="title-2">2005</h2>
-          <div class="date-back"><a href="#">2004</a><i class="icon icon-arrow-fill"></i></div>
-          <div class="date-next"><a href="#">2006</a><i class="icon icon-arrow-fill"></i></div>
+    </div>
+
+    <div class="slides">
+
+      <div data-slide="0" class="first-slide slider-restropective animated fadeOut isOpen block-push block-push-top background-effet" style="background-image: url('media/images/retrospective-home-01.jpg')">
+        <div class="container block-01 vFlexAlign">
+          <div class="vFlexAlign">
+            <h1 class="title-big">69 ans de festival</h1>
+            <p>Revivez tous les moments forts de l'histoire du Festival de Cannes à travers cette timeline interactive</p>
+            <div class="block-drag">
+              <div class="avance"><span class="square"></span></div>
+              <i class="icon icon-drag-hand"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div data-slide="1" class="slider-restropective big isOpen block-push block-push-top background-effet" style="background-image: url(&quot;media/images/retrospective-slider01.jpg&quot;);">
+        <div class="container block-01 vFlexAlign">
+
+          <div class="link-return-c">
+            <a href="/retrospective-home.html" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour à la rétrospective</a>
+          </div>
+
+          <!-- <div class="date-back"><a href="#"></a><i class="icon icon-arrow-fill"></i></div> -->
+          <div class="date-next" data-url="retrospective-poster2.html"><a href="#">1947</a><i class="icon icon-arrow-fill"></i></div>
+
+        <div class="vFlexAlign">
+            <img src="media/images/retrospective-slider01.jpg" alt="" class="open" style="display: none;">
+            <div class="texts animated visible pulse">
+              <span class="title-4">1<sub>E</sub> édition</span>
+              <h2 class="title-2">1946</h2>
+              <a href="#" data-url="retrospective-poster.html" class="button discover" style="display: none;">découvrir</a>
+            </div>
+          </div>
         </div>
       </div>
-    </div> <!-- end block push -->
 
-    <nav class="navigation-sticky">
-      <ul>
-        <li><a href="#">L'affiche</a></li>
-        <li><a href="#">La sélection</a></li>
-        <li><a href="#">Les jurys</a></li>
-        <li><a href="#">Le palmarès</a></li>
-        <li ><a href="#">Les évènements</a></li>
-        <li><a href="#">Les médias</a></li>
-        <li class="active"><a href="#">L'actualité</a></li>
-      </ul>
-    </nav>
+      <div data-slide="2" class="slider-restropective small isOpen block-push block-push-top background-effet">
+        <div class="container block-01 vFlexAlign">
+          <div class="link-return-c">
+            <a href="/retrospective-home.html" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour à la rétrospective</a>
+          </div>
 
-    <div class="filters padding-small-top">
+          <div class="date-back" data-url="retrospective-poster2.html"><a href="#">1946</a><i class="icon icon-arrow-fill"></i></div>
+          <div class="date-next" data-url="retrospective-poster2.html"><a href="#">1948</a><i class="icon icon-arrow-fill"></i></div>
 
-      <div id="date" class="filter">
-        <span class="label">Dates :</span>
-        <span class="select">
-          <span data-filter="date-18-05-5" class="active">18.05.5 </span>
-          <span data-filter="date-19-05-5">19.05.5</span>
-          <span data-filter="date-20-05-5">20.05.5</span>
-          <i class="icon icon-arrow-down"></i>
-        </span>
+          <div class="vFlexAlign">
+            <img src="media/images/retrospective-slider01.jpg" alt="">
+            <div class="texts">
+              <span class="title-4">2<sub>E</sub> édition</span>
+              <h2 class="title-2">1947</h2>
+              <a href="#" data-url="retrospective-poster.html" class="button discover" style="display: none;">découvrir</a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div id="theme" class="filter">
-        <span class="label">Thèmes :</span>
-        <span class="select">
-          <span data-filter="all" class="active">Tous </span>
-          <span data-filter="competition">Compétition</span>
-          <span data-filter="photocall">photocall</span>
-          <i class="icon icon-arrow-down"></i>
-        </span>
+      <div data-slide="3" class="slider-restropective small isOpen block-push block-push-top background-effet">
+        <div class="container block-01 vFlexAlign">
+          <div class="link-return-c">
+            <a href="/retrospective-home.html" class="return-back block-01"><i class="icon icon-arrow-left"></i>retour à la rétrospective</a>
+          </div>
+
+          <div class="date-back" data-url="retrospective-poster2.html"><a href="#">1947</a><i class="icon icon-arrow-fill"></i></div>
+          <div class="date-next" data-url="retrospective-poster2.html"><a href="#">1949</a><i class="icon icon-arrow-fill"></i></div>
+
+          <div class="vFlexAlign">
+            <img src="media/images/retrospective-slider01.jpg" alt="">
+            <div class="texts">
+              <span class="title-4">3<sub>E</sub> édition</span>
+              <h2 class="title-2">1948</h2>
+
+              <a href="#" data-url="retrospective-poster.html" class="button discover" style="display: none;">découvrir</a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div id="format" class="filter">
-        <span class="label">Formats :</span>
-        <span class="select">
-          <span data-filter="all" class="active">Tous </span>
-          <span data-filter="photo">Photo</span>
-          <span data-filter="video">Vidéo</span>
-          <span data-filter="audio">Audio</span>
-          <span data-filter="article">Article</span>
-          <i class="icon  icon-arrow-down"></i>
-        </span>
-      </div>
-    </div> <!-- end filters -->
+    </div>
 
-    <div class="grid-01 isotope-01">
-      <div class="grid-sizer"></div>
+    <div class="block-01">
+      <div class="timelapse block-drag" style="display: none;">
+        <span class="date date-first" data-firstdate="1946">1946</span>
+        <div class="avance noUi-target noUi-ltr noUi-horizontal noUi-background" id="timelapse-01"><span class="square"></span><div class="noUi-base"><div class="noUi-origin" style="left: 1.42857%;"><div class="noUi-handle noUi-handle-lower"></div></div></div></div>
+        <span class="date date-last" data-lastdate="2015">2015</span>
+      </div>
+    </div>
+
+
+    <div class="ajax-section"><div class="contain-ajax" id="main">
+      <nav class="navigation-sticky">
+        <ul>
+          <li><a href="retrospective-poster.html">L'affiche</a></li>
+          <li><a href="selection.html">La sélection</a></li>
+          <li><a href="jury.html">Les jurys</a></li>
+          <li><a href="retrospective-palmares.html">Le palmarès</a></li>
+          <li ><a href="evenements.html">Les évènements</a></li>
+          <li class="active"><a href="medias.html">Les médias</a></li>
+          <li><a href="articles.html">L'actualité</a></li>
+        </ul>
+      </nav>
+
+      <div class="filters padding-small-top">
+
+        <div id="date" class="filter">
+          <span class="label">Dates :</span>
+          <span class="select">
+            <span data-filter="date-18-05-5" class="active">18.05.5 </span>
+            <span data-filter="date-19-05-5">19.05.5</span>
+            <span data-filter="date-20-05-5">20.05.5</span>
+            <i class="icon icon-arrow-down"></i>
+          </span>
+        </div>
+
+        <div id="theme" class="filter">
+          <span class="label">Thèmes :</span>
+          <span class="select">
+            <span data-filter="all" class="active">Tous </span>
+            <span data-filter="competition">Compétition</span>
+            <span data-filter="photocall">photocall</span>
+            <i class="icon icon-arrow-down"></i>
+          </span>
+        </div>
+
+        <div id="format" class="filter">
+          <span class="label">Formats :</span>
+          <span class="select">
+            <span data-filter="all" class="active">Tous </span>
+            <span data-filter="photo">Photo</span>
+            <span data-filter="video">Vidéo</span>
+            <span data-filter="audio">Audio</span>
+            <span data-filter="article">Article</span>
+            <i class="icon  icon-arrow-down"></i>
+          </span>
+        </div>
+      </div> <!-- end filters -->
+
+      <div class="grid-01 isotope-01">
+        <div class="grid-sizer"></div>
+
+        <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="media/images/articles-01.jpg" alt="" />
+            </div>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+          </div>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-photo"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">Stéphane Brizé répond aux questions</a></strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
+            </div>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+          </div>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-video"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">Photocall de Vincent Lindon</a></strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
+            </div>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+          </div>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-audio"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">O PISEU  de HONG Won-Chan</a></strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-01 item audio portrait shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="http://dummyimage.com/600x400/cccc/cccc" alt="" />
+            </div>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+          </div>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-audio"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">Un accueil mitigé pour La Loi du Marché</a></strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
+            </div>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+          </div>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-audio"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">O PISEU  de HONG Won-Chan</a></strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="media/images/articles-01.jpg" alt="" />
+            </div>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+          </div>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-photo"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">Stéphane Brizé répond aux questions</a></strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
+            </div>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+          </div>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-video"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">Photocall de Vincent Lindon</a></strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
+            </div>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+          </div>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-audio"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">O PISEU  de HONG Won-Chan</a></strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-01 item audio portrait shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="http://dummyimage.com/600x400/cccc/cccc" alt="" />
+            </div>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+          </div>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-audio"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">Un accueil mitigé pour La Loi du Marché</a></strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
+            </div>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+          </div>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-audio"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">O PISEU  de HONG Won-Chan</a></strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="media/images/articles-01.jpg" alt="" />
+            </div>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+          </div>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-photo"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">Stéphane Brizé répond aux questions</a></strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
+            </div>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+          </div>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-video"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">Photocall de Vincent Lindon</a></strong>
+            </div>
+          </div>
+        </article>
+
 
       <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
         <div class="image">
@@ -265,25 +579,6 @@
         </div>
       </article>
 
-      <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-video"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            </div>
-            <strong><a href="article.html">Photocall de Vincent Lindon</a></strong>
-          </div>
-        </div>
-      </article>
-
       <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
         <div class="image">
           <div class="image-wrapper">
@@ -303,275 +598,66 @@
         </div>
       </article>
 
-      <article class="card card-01 item audio portrait shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="http://dummyimage.com/600x400/cccc/cccc" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-audio"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+
+        <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="media/images/articles-01.jpg" alt="" />
             </div>
-            <strong><a href="article.html">Un accueil mitigé pour La Loi du Marché</a></strong>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
           </div>
-        </div>
-      </article>
-
-      <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-audio"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-photo"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">Stéphane Brizé répond aux questions</a></strong>
             </div>
-            <strong><a href="article.html">O PISEU  de HONG Won-Chan</a></strong>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="media/images/articles-01.jpg" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-photo"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+        <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
             </div>
-            <strong><a href="article.html">Stéphane Brizé répond aux questions</a></strong>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
           </div>
-        </div>
-      </article>
-
-      <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-video"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-video"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">Photocall de Vincent Lindon</a></strong>
             </div>
-            <strong><a href="article.html">Photocall de Vincent Lindon</a></strong>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-audio"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+        <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
+          <div class="image">
+            <div class="image-wrapper">
+              <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
             </div>
-            <strong><a href="article.html">O PISEU  de HONG Won-Chan</a></strong>
+            <a href="article.html" class="linkImage"></a>
+            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
           </div>
-        </div>
-      </article>
-
-      <article class="card card-01 item audio portrait shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="http://dummyimage.com/600x400/cccc/cccc" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-audio"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+          <div class="info vFlexAlign">
+            <span class="picto"><i class="icon icon-audio"></i></span>
+            <div class="contain-txt">
+              <div>
+                <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
+              </div>
+              <strong><a href="article.html">O PISEU  de HONG Won-Chan</a></strong>
             </div>
-            <strong><a href="article.html">Un accueil mitigé pour La Loi du Marché</a></strong>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-audio"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            </div>
-            <strong><a href="article.html">O PISEU  de HONG Won-Chan</a></strong>
-          </div>
-        </div>
-      </article>
-
-      <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="media/images/articles-01.jpg" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-photo"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            </div>
-            <strong><a href="article.html">Stéphane Brizé répond aux questions</a></strong>
-          </div>
-        </div>
-      </article>
-
-      <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-video"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            </div>
-            <strong><a href="article.html">Photocall de Vincent Lindon</a></strong>
-          </div>
-        </div>
-      </article>
-
-
-    <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
-      <div class="image">
-        <div class="image-wrapper">
-          <img src="media/images/articles-01.jpg" alt="" />
-        </div>
-        <a href="article.html" class="linkImage"></a>
-        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-      </div>
-      <div class="info vFlexAlign">
-        <span class="picto"><i class="icon icon-photo"></i></span>
-        <div class="contain-txt">
-          <div>
-            <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-          </div>
-          <strong><a href="article.html">Stéphane Brizé répond aux questions</a></strong>
-        </div>
-      </div>
-    </article>
-
-    <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
-      <div class="image">
-        <div class="image-wrapper">
-          <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
-        </div>
-        <a href="article.html" class="linkImage"></a>
-        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-      </div>
-      <div class="info vFlexAlign">
-        <span class="picto"><i class="icon icon-audio"></i></span>
-        <div class="contain-txt">
-          <div>
-            <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-          </div>
-          <strong><a href="article.html">O PISEU  de HONG Won-Chan</a></strong>
-        </div>
-      </div>
-    </article>
-
-
-      <article class="card card-01 item photo shadow-bottom" data-format="photo" data-theme="all competition" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="media/images/articles-01.jpg" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-photo"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            </div>
-            <strong><a href="article.html">Stéphane Brizé répond aux questions</a></strong>
-          </div>
-        </div>
-      </article>
-
-      <article class="card card-01 item video shadow-bottom" data-format="video" data-theme="all photocall" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="http://dummyimage.com/600x400/d58946/d58946" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-video"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            </div>
-            <strong><a href="article.html">Photocall de Vincent Lindon</a></strong>
-          </div>
-        </div>
-      </article>
-
-      <article class="card card-01 item audio shadow-bottom" data-format="audio" data-theme="all photocall" data-time="1455909420" data-end="false">
-        <div class="image">
-          <div class="image-wrapper">
-            <img src="http://dummyimage.com/600x400/32bdb8/32bdb8" alt="" />
-          </div>
-          <a href="article.html" class="linkImage"></a>
-          <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-        </div>
-        <div class="info vFlexAlign">
-          <span class="picto"><i class="icon icon-audio"></i></span>
-          <div class="contain-txt">
-            <div>
-              <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
-            </div>
-            <strong><a href="article.html">O PISEU  de HONG Won-Chan</a></strong>
-          </div>
-        </div>
-      </article>
-
-    </div> <!-- fin de grid-01 -->
+      </div> <!-- fin de grid-01 -->
+    </div></div>
   </section>
 
     <div id="breadcrumb">
