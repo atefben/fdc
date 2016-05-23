@@ -9,7 +9,7 @@
     {% else %}
         {% set date = 'now'|date('d/m/Y') %}
     {% endif %}
-    <div id="main" class="press loading fullcalendar">
+    <div id="main" class="calendar-press" data-menu="programmation">
 
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
@@ -17,56 +17,79 @@
         <div class="header-press">
             <div class="container">
                 <h2>{{ 'agenda.title.monagenda'|trans }}</h2>
-                <div class="buttons">
-                    <a href="#" class="button create"><i class="icon icon_creer"></i>{{ 'agenda.btn.creerunevenement'|trans }}</a>
-                    <a href="#" class="button export subnav"><i class="icon icon_telecharger"></i>{{ 'agenda.btn.exportermonagenda'|trans }}</a>
-                    <a href="#" class="button list pdf"><i class="icon icon_telecharger"></i>{{ 'agenda.btn.telechargerformatpdf'|trans }}</a>
-                    <a href="#" class="button list ics"><i class="icon icon_telecharger"></i>{{ 'agenda.btn.telechargerformatics'|trans }}</a>
+                <a href="#" class="button"><i class="icon icon_telecharger"></i>{{ 'agenda.btn.telechargerformatics'|trans }}</a>
+            </div>
+        </div>
+
+        <section class="section-calendar">
+
+            <div class="contain-section">
+
+                <div class="calendar">
+
+                    <div id="timeline-calendar">
+                        <a href="#" class="prev"><i class="icon icon_flecheGauche"></i></a>
+                        <div id="timeline" class="" >
+                            <div class="timeline-container">
+                                <a href="#" data-date="11" class="">mer<span class="day">11</span></a>
+                                <a href="#" data-date="12" class="">jeu<span class="day">12</span></a>
+                                <a href="#" data-date="13" class="">ven<span class="day">13</span></a>
+                                <a href="#" data-date="14" class="">sam<span class="day">14</span></a>
+                                <a href="#" data-date="15" class="">dim<span class="day">15</span></a>
+                                <a href="#" data-date="16" class="">lun<span class="day">16</span></a>
+                                <a href="#" data-date="17" class="">mar<span class="day">17</span></a>
+                                <a href="#" data-date="18" class="">mer<span class="day">18</span></a>
+                                <a href="#" data-date="19" class="">jeu<span class="day">19</span></a>
+                                <a href="#" data-date="20" class="active">ven<span class="day">20</span></a>
+                                <a href="#" data-date="21" class="">sam<span class="day">21</span></a>
+                                <a href="#" data-date="22" class="">dim<span class="day">22</span></a>
+                            </div>
+
+                        </div>
+                        <a href="#" class="next"><i class="icon icon_fleche-right"></i></a>
+                    </div>
+
+
+                    <div class="timeCol">
+                        <div class="time">08H</div>
+                        <div class="time">09H</div>
+                        <div class="time">10H</div>
+                        <div class="time">11H</div>
+                        <div class="time">12H</div>
+                        <div class="time">13H</div>
+                        <div class="time">14H</div>
+                        <div class="time">15H</div>
+                        <div class="time">16H</div>
+                        <div class="time">17H</div>
+                        <div class="time">18H</div>
+                        <div class="time">19H</div>
+                        <div class="time">20H</div>
+                        <div class="time">21H</div>
+                        <div class="time">22H</div>
+                        <div class="time">23H</div>
+                        <div class="time">00H</div>
+                        <div class="time">01H</div>
+                        <div class="time">02H</div>
+                        <div class="time">03H</div>
+                    </div>
+                    <div class="venues">
+
+                        <div class="v-wrapper">
+                            <div class="v-wrapper-content list">
+                                <div class="venue">
+
+                                    <div class="v-container">
+
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="popin"></div>
-        <div id='calendar' class="fullwidth">
-            <div id="mycalendar">
-            </div>
-        </div>
-        <div id="create-event-pop">
-            <div class="contain-btn">
-                <span class="btn-close">
-                    <i class="icon icon_close"></i>
-                </span>
-            </div>
-            <div class="container">
-                <h3>{{ 'agenda.title.creerunevenement'|trans }}</h3>
-                <p>{{ 'agenda.text.completezvotreagendainteractif'|trans }}</p>
-                <form action="#" id="form_data">
-                    <label for="title">{{ 'agenda.popin.label.titre'|trans }} *</label>
-                    <input type="text" name="title">
-                    <div class="time first">
-                        <label for="begin">{{ 'agenda.popin.label.debut'|trans }} *</label>
-                        <input type="text" value="{{ date }}" name="datebegin" id="datepickerBegin">
-                        <span class="pictodate">
-                            <i class="icon icon_programmation"></i>
-                        </span>
-                        {% set dateFirst = ('now'|date('i')>30)?'30':'00' %}
-                        <input type="text" class="hours" name="hoursbegin" value="{{ 'now'|date('H') }}h{{ dateFirst }}">
-                    </div>
-                    <div class="time">
-                        <label for="end">{{ 'agenda.popin.label.fin'|trans }} *</label>
-                        <input type="text"  value="{{ date }}" name="dateend" id="datepickerEnd">
-                        <span class="pictodate">
-                            <i class="icon icon_programmation"></i>
-                        </span>
-                        <input type="text" value="{{ 'now'|date_modify("+1 hour")|date('H') }}h{{ dateFirst }}" class="hours" name="hoursend">
-                    </div>
-                    <label for="place">{{ 'agenda.popin.label.lieu'|trans }}</label>
-                    <input type="text" name="place">
-                    <label for="description" class='description'>{{ 'agenda.popin.label.description'|trans }}</label>
-                    <input type="text" name="description">
-                    <input type="submit" value="{{ 'agenda.btn.creerunevenement'|trans }}" class="button">
-                </form>
-            </div>
-        </div>
+        </section>
     </div>
 
 {% endblock body %}

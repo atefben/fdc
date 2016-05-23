@@ -2,17 +2,55 @@
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="press loading seatingchart lock">
+    <div id="main" class="press press_maps" data-menu="prog">
+        {%- include 'FDCEventMobileBundle:Global:menu.html.twig' -%}
+        {%- include 'FDCEventMobileBundle:Global:my_selection.html.twig' -%}
         <div class="header-press">
             <div class="container">
                 <h2>{{ 'plandessalles.title.plandessalles'|trans }}</h2>
             </div>
         </div>
-        <div id="seatingchart">
+        <div id="horizontal-menu" class="owl-carousel sliderDrag videosSlider">
+            {%- for r in rooms.mapRoom -%}
+            <div class="vid">
+                <p>
+                    <a href="#" data-map="{{ r.room|trans_fallback('title')|remove_accents|sonata_slugify }}"{% if loop.index == 1 %} class="active"{% endif %}>
+                        {{- r.room|trans_fallback('title') -}}
+                    </a>
+                </p>
+            </div>
+            {%- endfor -%}
+        </div>
+        <div class="maps">
+            {%- for key,r in rooms.mapRoom -%}
+            <div id="{{ r.room|trans_fallback('title')|remove_accents|sonata_slugify }}"{% if loop.index == 1 %} class="active"{% endif %}>
+                {% set img = r.room.image %}
+                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = img.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% set file = trans.file %}
+                {%- thumbnail file, '646x567' with {'alt': img|trans_fallback('alt'), 'class': 'map' } -%}
+                <h3>{{ 'plandessalles.label.lazonedufestival'|trans }}</h3>
+                {% set roomActive = "room"~r.room.id %}
+                {% set active = "" %}
+                {% set img = r.room.zoneImage %}
+                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = img.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% set file = trans.file %}
+                {%- thumbnail file, '197x142' with {'alt': img|trans_fallback('alt'), 'data-image': roomActive, 'class': 'zone' } -%}
+            </div>
+            {%- endfor -%}
+        </div>
+
+
+        {#<div id="seatingchart">
             <div class="nav-map">
                 <ul>
                     {% for r in rooms.mapRoom %}
-                        <li data-maps="room{{ r.room.id }}">
+                        <li data-maps="room{{ r.room.id }}"{% if loop.index == 0 %} class="active"{% endif %}>
                             {{ r.room|trans_fallback('title') }}</li>
                     {% endfor %}
 
@@ -44,30 +82,6 @@
                     </li>
                 </ul>
             </div>
-            <div class="maps">
-                {% for key,r in rooms.mapRoom %}
-                    {% if key == 0 %}
-                        <span id="default" class="first active">
-                        {% set defaultImg = rooms.defaultRoomImage %}
-                            {% set trans = defaultImg.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is null or trans.file is null %}
-                                {% set trans = defaultImg.findTranslationByLocale('fr') %}
-                            {% endif %}
-                            {% set defaultImg = trans.file %}
-                            {% thumbnail defaultImg, '646x567' with {'alt': defaultImg|trans_fallback('alt') } %}
-                        </span>
-                    {% endif %}
-                    <span id="room{{ r.room.id }}">
-                    {% set img = r.room.image %}
-                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                        {% if trans is null or trans.file is null %}
-                            {% set trans = img.findTranslationByLocale('fr') %}
-                        {% endif %}
-                        {% set file = trans.file %}
-                        {% thumbnail file, '646x567' with {'alt': img|trans_fallback('alt') } %}
-                    </span>
-                {% endfor %}
-            </div>
-        </div>
+        </div>#}
     </div>
 {% endblock body %}
