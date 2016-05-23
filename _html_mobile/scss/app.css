@@ -6403,7 +6403,7 @@ body.overlay::after {
   margin-bottom: 70px;
 }
 
-.section-contain h3 {
+#main.participage-page .section-contain h3 {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 23px;
   text-transform: uppercase;
@@ -6413,8 +6413,7 @@ body.overlay::after {
   font-weight: 600;
   color: #000;
 }
-
-.title-contain {
+#main.participage-page .title-contain {
   text-transform: uppercase;
   letter-spacing: 3px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -6422,61 +6421,54 @@ body.overlay::after {
   padding-bottom: 30px;
   font-weight: 600;
 }
-
-.title-contain .icon, .title-contain .icon-mobile-participer {
+#main.participage-page .title-contain .icon,
+#main.participage-page .title-contain .icon-mobile-participer {
   color: #999999;
   font-size: 1.8rem;
   padding-right: 10px;
   position: relative;
   top: -4px;
 }
-
-.description.half {
+#main.participage-page .description.half {
   width: 50%;
   float: left;
 }
-
-.description.center {
+#main.participage-page .description.center {
   text-align: center;
 }
-
-.description.center .title-contain {
+#main.participage-page .description.center .title-contain {
   text-align: center;
 }
-
-.description.center {
+#main.participage-page .description.center {
   max-height: 3000px;
   padding-top: 40px;
 }
-
-img {
+#main.participage-page img {
   display: inline-block;
   margin-bottom: 15px;
 }
-
-#logo img {
+#main.participage-page #logo img {
   margin-bottom: 0;
 }
-
-strong {
+#main.participage-page strong {
   font-weight: 700;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
-
-strong.color, span.number, .item-info a, .link .icon, .link .icon-mobile-participer {
+#main.participage-page strong.color,
+#main.participage-page span.number,
+#main.participage-page .item-info a,
+#main.participage-page .link .icon,
+#main.participage-page .link .icon-mobile-participer {
   color: #c29f5f;
 }
-
-.link .icon, .link .icon-mobile-participer {
+#main.participage-page .link .icon, #main.participage-page .link .icon-mobile-participer {
   padding-right: 10px;
   margin-top: -3px;
 }
-
-.item-info a:not(.button) {
+#main.participage-page .item-info a:not(.button) {
   text-decoration: underline;
 }
-
-.description strong.center {
+#main.participage-page .description strong.center {
   color: #000;
   text-align: center;
   text-transform: uppercase;
@@ -6486,54 +6478,48 @@ strong.color, span.number, .item-info a, .link .icon, .link .icon-mobile-partici
   padding: 60px 0 10px 0;
   letter-spacing: 1px;
 }
-
-.description a {
+#main.participage-page .description a {
   color: #c29f5f;
   text-decoration: underline;
 }
-
-.description li {
+#main.participage-page .description li {
   list-style: disc;
   list-style-position: inside;
 }
-
-.loc {
+#main.participage-page .loc {
   display: block;
 }
-
-.contain-good-practice, .contain-infos {
+#main.participage-page .contain-good-practice,
+#main.participage-page .contain-infos {
   width: 525px;
   margin: 0 auto;
 }
-
-.item-good-practice {
+#main.participage-page .item-good-practice {
   width: 49%;
   display: inline-block;
   text-align: center;
   height: 235px;
   vertical-align: top;
 }
-
-.item-info {
+#main.participage-page .item-info {
   height: auto;
   max-height: 1000px;
   margin-bottom: 40px;
   text-align: center;
 }
-
-.item-good-practice .icon, .item-info .icon, .item-good-practice .icon-mobile-participer {
+#main.participage-page .item-good-practice .icon,
+#main.participage-page .item-info .icon,
+#main.participage-page .item-good-practice .icon-mobile-participer {
   font-size: 3rem;
   color: #999999;
   display: block;
   margin-bottom: 25px;
 }
-
-.item-info .icon {
+#main.participage-page .item-info .icon {
   font-size: 80px;
   line-height: 90px;
 }
-
-.item-good-practice p {
+#main.participage-page .item-good-practice p {
   width: 240px;
   height: 115px;
   display: block;
@@ -6543,14 +6529,12 @@ strong.color, span.number, .item-info a, .link .icon, .link .icon-mobile-partici
   font-weight: 700;
   margin: 0 auto;
 }
-
-.contain-transport .item-info .icon {
+#main.participage-page .contain-transport .item-info .icon {
   color: #c8a461;
   font-size: 180px;
   margin-bottom: 30px;
 }
-
-section .button {
+#main.participage-page section .button {
   border: 1px solid #c8a461;
   font-size: 18px;
   height: 50px;
@@ -6559,43 +6543,35 @@ section .button {
   margin: 20px 0;
   text-decoration: none;
 }
-
-section .button:last-child {
+#main.participage-page section .button:last-child {
   border: 1px solid #c8a461;
 }
-
-section .button .icon {
+#main.participage-page section .button .icon {
   padding-right: 20px;
 }
-
-.item-info p {
+#main.participage-page .item-info p {
   font-size: 24px;
   line-height: 36px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
-
-.instructions-container .item-info {
+#main.participage-page .instructions-container .item-info {
   width: 490px;
   margin: 0 auto 80px auto;
 }
-
-#google-map {
+#main.participage-page #google-map {
   width: 100%;
   height: 300px;
   margin-bottom: 40px;
 }
-
-.img-container {
+#main.participage-page .img-container {
   text-align: center;
   margin-bottom: 40px;
 }
-
-.partners-container .title-participate {
+#main.participage-page .partners-container .title-participate {
   padding: 60px 0;
   width: 450px;
 }
-
-a.partners-link {
+#main.participage-page a.partners-link {
   text-transform: uppercase;
   color: #c8a461;
   font-size: 20px;
@@ -6603,19 +6579,16 @@ a.partners-link {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-weight: 700;
 }
-
-.partner {
+#main.participage-page .partner {
   border-bottom: 1px solid #e0e0e0;
   padding: 40px 0;
   text-align: center;
 }
-
-.portrait img {
+#main.participage-page .portrait img {
   float: left;
   padding-right: 20px;
 }
-
-.portrait {
+#main.participage-page .portrait {
   min-height: 85px;
   margin-top: 40px;
   font-size: 20px;
@@ -6623,8 +6596,7 @@ a.partners-link {
   display: inline-block;
   text-align: left;
 }
-
-.portrait .rank {
+#main.participage-page .portrait .rank {
   line-height: 20px;
 }
 
