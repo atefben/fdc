@@ -16,6 +16,7 @@
             {% set format = '543x326' %}
         {% endif %}
         <img src="{% path image, format %}" alt="{{ widget.image|trans_fallback('alt') }}" class="map" />
+        <br>
     {% endif %}
 
     {% if widget.file is not null %}
@@ -24,13 +25,14 @@
             <i class="icon icon_telecharger"></i>
             {{ 'Télécharger'|trans }}
         </a>
+        <br>
     {% endif %}
     {% if widget.btnLabel is not null %}
-        <div class="link">
+        <span class="link">
             <i class="icon icon_a-votre-service"></i>
             <a href="{{ widget.btnLabel }}" target="_blank">
                 {{ 'Se repérer sur Google Maps'|trans }}
             </a>
-        </div>
+        </span>
     {% endif %}
 </p>

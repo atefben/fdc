@@ -6,7 +6,7 @@
 
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
-    
+
         {% set mainTrans = content.mainImage.findTranslationByLocale(app.request.locale) %}
         {% if mainTrans is null or mainTrans.file is null %}
             {% set mainTrans = content.mainImage.findTranslationByLocale('fr') %}
@@ -23,7 +23,7 @@
         </div>
 
         <div class="instructions-container">
-            <section>
+            <section class="accordeon">
                 {{ content|trans_fallback('mainDescription')|raw }}
             </section>
 
@@ -68,12 +68,14 @@
                     <i class="icon accordion icon_case-plus"></i>
                 </div>
                 <div class="section-contain">
+                    <div class="description">
                     {{ content|trans_fallback('meetingDescription')|raw }}
                     {% if content.meetingFile is not null %}
                         <a href="{% path content.meetingFile, 'reference' %}">
                             {{ content|trans_fallback('meetingLabel') }}
                         </a>
                     {% endif %}
+                    </div>
                     <div id="google-map"></div>
                 </div>
             </section>

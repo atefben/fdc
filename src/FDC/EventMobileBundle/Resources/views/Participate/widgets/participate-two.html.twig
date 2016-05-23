@@ -4,10 +4,10 @@
     <div class="text-partners">
         {% if widget|trans_fallback('sponsorLastName') is not null %}
             <div class="content-text-with-portrait">
-                <h4 class="title-partners">{{widget|trans_fallback('title')}}</h4>
+                <h4 class="title-contain">{{widget|trans_fallback('title')}}</h4>
                 {{ widget|trans_fallback('content')|raw }}
             </div>
-            <div class="portrait">
+            <div class="partner">
                 {% if widget.sponsorImage is not null %}
                     {% set trans = widget.sponsorImage.findTranslationByLocale(app.request.locale) %}
                     {% if trans is null or trans.file is null %}
