@@ -29,6 +29,8 @@ var owInitAjax = function() {
         });
       }
 
+      window.history.pushState('','',url);
+
       owInitAjax();
     });
 
