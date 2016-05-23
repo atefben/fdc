@@ -7124,6 +7124,9 @@ footer {
 footer .subtitle {
   padding-right: 7px;
 }
+footer .title {
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+}
 footer:after {
   background-color: #141414;
   content: '';
