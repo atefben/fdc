@@ -19,6 +19,40 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class SocialWallRepository extends EntityRepository
 {
+    public function getIdsByNetwork($network, $count)
+    {
+        $results = $this->createQueryBuilder('f')
+            ->select('f.id')
+            ->where('f.network = :network')
+            ->setParameter('network', $network)
+            ->orderBy('f.createdAt', 'DESC')
+            ->setMaxResults($count)
+            ->getQuery()
+            ->getScalarResult();
+        ;
+        $results = array_map('current', $results);
+
+        return $results;
+    }
+
+    public function getUnpublishedIdsOlderThan($dateTime)
+    {
+        $results = $this->createQueryBuilder('f')
+            ->select('f.id')
+            ->where('f.enabledDesktop = :enabled AND f.enabledMobile = :enabled')
+            ->andWhere('f.createdAt < :date')
+            ->setParameter('enabled', 0)
+            ->setParameter('date', $dateTime)
+            ->orderBy('f.createdAt', 'desc')
+            ->getQuery()
+            ->getScalarResult();
+        ;
+        $results = array_map('current', $results);
+
+        return $results;
+    }
+
+
     public function getApiSocialWallTwitter($festival)
     {
         $query = $this->createQueryBuilder('f')

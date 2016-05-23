@@ -109,6 +109,7 @@ class ShareEmailType extends AbstractType
         ));
 
         $resolver->setDefaults(array(
+            'csrf_protection' => false,
             'constraints' => $collectionConstraint,
             'translation_domain' => 'FDCEventBundle'
         ));

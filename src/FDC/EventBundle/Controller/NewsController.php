@@ -77,11 +77,12 @@ class NewsController extends Controller
         /////////////////////////      SOCIAL GRAPH          ///////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////
 
-        $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(array(
+        $timeline = $em->getRepository('BaseCoreBundle:SocialGraph')->findBy(
+            array(
             'festival' => $this->getFestival(),
-        ), array(
-            'date' => 'DESC',
-        ), 13, null)
+            ), array(
+                'date' => 'DESC',
+            ), 12, null)
         ;
 
         $socialGraphTimeline = array();
@@ -94,7 +95,7 @@ class NewsController extends Controller
         }
 
         $socialGraphTimeline = array_reverse($socialGraphTimeline);
-        $pop = array_pop($socialGraphTimeline);
+
         $socialGraph['timeline'] = $socialGraphTimeline;
         $socialGraph['timelineCount'] = json_encode(array_reverse($socialGraphTimelineCount));
 
@@ -186,8 +187,15 @@ class NewsController extends Controller
             }
         }
 
-        //get images for slider articles
-        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $dateTime);
+        //get images for slider articles / if current date inferior than festivalStart or superior than festivalEnd use thoses values
+        if ($dateTime < $festivalStart) {
+            $currentFestivalDate = $festivalStart;
+        } else if ($dateTime > $festivalEnd) {
+            $currentFestivalDate = $festivalEnd;
+        } else {
+            $currentFestivalDate = $dateTime;
+        }
+        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $currentFestivalDate);
 
         ////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////       WEBTV        ///////////////////////////////////////

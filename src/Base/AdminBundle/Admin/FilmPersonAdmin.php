@@ -10,6 +10,11 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class FilmPersonAdmin extends SoifAdmin
 {
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id'
+    );
 
     public function getFormTheme()
     {

@@ -12,6 +12,11 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 class InfoCommonAdmin extends BaseAdmin
 {
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id'
+    );
 
     protected function configureRoutes(RouteCollection $collection)
     {

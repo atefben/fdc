@@ -56,7 +56,15 @@
                 </div>
             {%- endif -%}
             {%- if event.medias|length > 0 -%}
-                {%- media event.medias[0].file, '45x60' with { width: '45', height: 'auto'} -%}
+                {% set picture = null %}
+                {% for media in event.medias %}
+                    {% if media.file is not empty and media.file.context != 'pdf' %}
+                        {% set picture = media.file %}
+                    {% endif %}
+                {% endfor %}
+                {% if picture is not empty %}
+                    <img src="{% path picture, '45x60' %}" width="45" height="auto" />
+                {% endif %}
             {%- else -%}
                 {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                     film: film,
@@ -96,7 +104,7 @@
                     {% set trans_slug = 'programmation.salle.' ~ event.room.name|remove_accents|sonata_slugify|lower %}
                     {% set trans = trans_slug|trans %}
                     {% if trans_slug != trans %}
-                        {{- trans -}}
+                        {{- trans|upper -}}
                     {% else %}
                         {{- event.room.name|upper -}}
                     {% endif %}
@@ -107,9 +115,9 @@
             </span>
         </div>
     </div>
-{%- elseif event.programmationDynamics|length > 0 -%}
-    <div class="fc-event" data-category=""{{- ' ' -}}
-         data-type="{{ event.type|lower|replace(' ', '-') }}"{{- ' ' -}}data-url="{{ path('fdc_event_agenda_getprojection', {id: event.id}) }}"{{- ' ' -}}
+{%- else -%}
+    <div class="fc-event cursor-default" data-category=""{{- ' ' -}}
+         data-type="{{ event.type|lower|replace(' ', '-') }}"
          data-id="{{ event.id }}" data-picto=".pen" data-color="{{ dataColor }}"{{- ' ' -}}
          data-start="{{ (event.startsAt|date('H') < 4 ? event.startsAt.timestamp - 86400 : event.startsAt)|date('Y-m-d') }}T{{ event.startsAt|date('H') < 4 ? '23:59:59' : event.startsAt|date('H:i:s') }}"{{- ' ' -}}
          data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"{{- ' ' -}}
@@ -151,7 +159,7 @@
                     {% set trans_slug = 'programmation.salle.' ~ event.room.name|remove_accents|sonata_slugify|lower %}
                     {% set trans = trans_slug|trans %}
                     {% if trans_slug != trans %}
-                        {{- trans -}}
+                        {{- trans|upper -}}
                     {% else %}
                         {{- event.room.name|upper -}}
                     {% endif %}

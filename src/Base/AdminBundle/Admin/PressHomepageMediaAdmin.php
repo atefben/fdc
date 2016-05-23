@@ -42,6 +42,10 @@ class PressHomepageMediaAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $container = $this->getConfigurationPool()->getContainer();
+        $pressHomepageId = $container->getParameter('admin_press_homepage_id');
+        $pressHomepage = $container->get('doctrine')->getRepository('BaseCoreBundle:PressHomepage')->findOneById($pressHomepageId);
+
         $formMapper
             ->add('film', 'sonata_type_model_list', array(
                 'help' => 'form.news.helper_film_film_associated',
@@ -50,7 +54,12 @@ class PressHomepageMediaAdmin extends Admin
                 'btn_delete' => false,
                 'label' => 'form.label_film'
             ))
-            ->add('position','hidden',array('attr'=>array("hidden" => true)))
+            ->add('homepage', 'entity', array(
+                'class' => 'BaseCoreBundle:PressHomepage',
+                'data' => $pressHomepage,
+                'attr' => array('hidden' => true)
+            ))
+            ->add('position', 'hidden', array('attr'=>array('hidden' => true)))
         ;
 
     }

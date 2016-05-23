@@ -11,6 +11,12 @@ use Sonata\AdminBundle\Show\ShowMapper;
 class FilmProjectionAdmin extends Admin
 {
 
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id'
+    );
+
     public function getBatchActions()
     {
         $actions = parent::getBatchActions();

@@ -44,6 +44,29 @@
   width: 50%;
   display: inline-block;
   vertical-align: top;
+  position: relative;
+  overflow: hidden;
+
+  .vFlexAlign {
+    z-index: 3;
+    position: relative;
+  }
+
+  img {
+    width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+
+  &:hover img{
+    @include transition(all 6s $linear);
+    @include transform(scale(1.08) translateZ(0));
+    cursor: pointer;
+  }
 }
 
 // - THREE QUARTS DIV
@@ -149,9 +172,9 @@
 
 // - BLOCK PUSH
 .block-push {
-  // background: center 0 no-repeat fixed;
-  background-size: cover;
-  transition: height .5s;
+  background: center 0 no-repeat fixed;
+  background-size: 147%;
+  transition: $smoothTransition .7s;
 
   .link {
     margin-top: 20px;
@@ -322,6 +345,13 @@
 
 .block-push-03-alone {
   height: 303px;
+  position: relative;
+  overflow: hidden;
+
+  .vFlexAlign{
+    z-index: 2;
+    position: relative;
+  }
 
   .title-2 {
     color:#fff;
@@ -332,13 +362,32 @@
     width: 300px;
     line-height: 24px;
   }
+
+  img {
+    width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+
+  &:hover img{
+    @include transition(all 6s $linear);
+    @include transform(scale(1.08) translateZ(0));
+    cursor: pointer;
+  }
 }
 
 // - BLOCK PUSH TOP
+
+
 .block-push-top {
   height: 300px;
   display:block;
   position:relative;
+  background-attachment: inherit;
 
   .vFlexAlign {
     height: 100%;
@@ -976,6 +1025,12 @@
 // - BLOCK ACCORDION
 .block-accordion {
 
+  .download {
+    .item {
+      min-width: 160px;
+    }
+  }
+
   .a-left {
     text-align: left;
   }
@@ -1098,14 +1153,14 @@
     transition: .5s;
   }
 
-
   .active {
     max-height : 10000px;
 
-    strong, i, .title-22{
+    .title-contain strong, .title-contain i, .title-contain .title-22{
       color: $gold;
     }
   }
+
 
   .link {
     color: #666666;
@@ -1375,8 +1430,10 @@
   flex-direction: column;
   height: 362px;
   color: #fff;
-  background-size: cover;
+  // background-size: cover;
   text-align: center;
+  background: center 0 no-repeat fixed;
+  background-size: cover;
 
   a {
     color:$gold;

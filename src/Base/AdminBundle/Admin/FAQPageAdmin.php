@@ -13,6 +13,11 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class FAQPageAdmin extends Admin
 {
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id'
+    );
 
     public function configure()
     {

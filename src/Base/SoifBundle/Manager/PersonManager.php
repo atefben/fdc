@@ -332,7 +332,14 @@ class PersonManager extends CoreManager
             // remove old relations
             $this->removeOldRelations($entity->getFilms(), $collection, $entity, 'removeFilm');
         }
-        
+
+        /*if (count($this->getFilmsNotImported()) > 0) {
+            foreach ($this->getFilmsNotImported() as $filmId) {
+                $this->logger->info("Importing film {$filmId}");
+                exec("php app/console base:soif:get_film {$filmId}");
+            }
+        }*/
+
         return $entity;
     }
 }

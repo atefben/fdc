@@ -184,7 +184,14 @@ class NewsController extends Controller
         }
 
         //get images for slider articles
-        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $dateTime);
+        if ($dateTime < $festivalStart) {
+            $currentFestivalDate = $festivalStart;
+        } else if ($dateTime > $festivalEnd) {
+            $currentFestivalDate = $festivalEnd;
+        } else {
+            $currentFestivalDate = $dateTime;
+        }
+        $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $currentFestivalDate);
 
         ////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////       WEBTV        ///////////////////////////////////////

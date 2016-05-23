@@ -288,7 +288,7 @@
     float: left;
     width: 63%;
     padding-bottom: 5px;
-    margin-top: 35px;
+    margin-top: -66px;
     margin-bottom: -38px;
 
     &.trailer {
@@ -322,7 +322,7 @@
       position: relative;
       left: -7.3%;
       border-bottom: 1px solid #f1f1f1;
-      padding-top: 10px;
+      padding-top: 6px;
 
       @include breakpoint(1600px) {
         padding-top: 11px;
@@ -339,15 +339,15 @@
       }
     }
     @include breakpoint(1600px) {
-      margin-top: 34px;
+      /*margin-top: 34px;*/
     }
 
     @include breakpoint(1280px) {
-      margin-top: 34px;
+      /*margin-top: 34px;*/
     }
 
     @include breakpoint(1024px) {
-      margin-top: 34px;
+      /*margin-top: 34px;*/
     }
 
   }

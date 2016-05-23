@@ -38,6 +38,11 @@ $(document).ready(function() {
 
   if($('.retrospective-home').length) {
     owInitSlider('timelapse-01');
+    onInitParallax();
+  }
+
+  if($('.block-push-top').length) {
+    onInitParallax();
   }
 
   if($('.jury').length) {

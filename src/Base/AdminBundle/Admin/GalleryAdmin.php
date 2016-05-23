@@ -18,6 +18,11 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 class GalleryAdmin extends Admin
 {
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id'
+    );
 
     protected $translationDomain = 'BaseAdminBundle';
 

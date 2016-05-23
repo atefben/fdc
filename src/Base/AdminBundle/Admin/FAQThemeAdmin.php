@@ -13,6 +13,12 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class FAQThemeAdmin extends Admin
 {
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id'
+    );
+
     protected $formOptions = array(
         'cascade_validation' => true
     );

@@ -11207,7 +11207,7 @@ article .read-later.rAlign span:after {
   float: left;
   width: 63%;
   padding-bottom: 5px;
-  margin-top: 35px;
+  margin-top: -66px;
   margin-bottom: -38px;
 }
 .single-movie .palmares.trailer {
@@ -11240,7 +11240,7 @@ article .read-later.rAlign span:after {
   position: relative;
   left: -7.3%;
   border-bottom: 1px solid #f1f1f1;
-  padding-top: 10px;
+  padding-top: 6px;
 }
 @media screen and (max-width: 1600px) {
   .single-movie .palmares:after {
@@ -11259,17 +11259,17 @@ article .read-later.rAlign span:after {
 }
 @media screen and (max-width: 1600px) {
   .single-movie .palmares {
-    margin-top: 34px;
+    /*margin-top: 34px;*/
   }
 }
 @media screen and (max-width: 1280px) {
   .single-movie .palmares {
-    margin-top: 34px;
+    /*margin-top: 34px;*/
   }
 }
 @media screen and (max-width: 1024px) {
   .single-movie .palmares {
-    margin-top: 34px;
+    /*margin-top: 34px;*/
   }
 }
 .single-movie .nav {

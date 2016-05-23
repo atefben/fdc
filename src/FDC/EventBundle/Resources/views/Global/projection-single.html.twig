@@ -57,7 +57,12 @@
                             <p>
                                 {{ 'movie.label.pays'|trans }} :{{ ' ' }}
                                 {%- for country in film.countries -%}
-                                    <span>{{ country.country|trans_fallback('name')|replace({' ': ""}) }}</span>
+                                    <span>
+                                        {{- country.country|trans_fallback('name')|replace({' ': ""}) -}}
+                                        {%- if loop.index != film.countries|length -%}
+                                            {{- ', ' -}}
+                                        {%- endif -%}
+                                    </span>
                                 {%- endfor -%}
                             </p>
                         {%- endif -%}
@@ -86,7 +91,13 @@
         {%- endif -%}
     </div>
     <div class="events-container">
-        {%- if seances|length > 0 -%}
+        {% set hasSeances = false %}
+        {%- for seance in seances -%}
+            {%- if seance.programmationFilms|length > 0 -%}
+                {% set hasSeances = true %}
+           {% endif %}
+        {% endfor %}
+        {%- if hasSeances == true -%}
             <h2>Séances de presse</h2>
             <div class="events-wrapper">
                 {%- for seance in seances -%}
@@ -171,7 +182,7 @@
                                             {%- set trans_slug = 'programmation.salle.' ~ seance.room.name|remove_accents|sonata_slugify -%}
                                             {%- set trans = trans_slug|trans -%}
                                             {%- if trans_slug != trans -%}
-                                                {{- trans -}}
+                                                {{- trans|upper -}}
                                             {%- else -%}
                                                 {{- seance.room.name|upper -}}
                                             {%- endif -%}
@@ -196,7 +207,7 @@
                 {%- endif -%}
             {%- endfor -%}
             {%- if display == true -%}
-            <h2>Conférences de presse</h2>
+            <h2>Conférence de presse</h2>
             <div class="events-wrapper">
                 {%- for conference in conferences -%}
 
@@ -281,7 +292,7 @@
                                             {%- set trans_slug = 'programmation.salle.' ~ conference.room.name|remove_accents|sonata_slugify -%}
                                             {%- set trans = trans_slug|trans -%}
                                             {%- if trans_slug != trans -%}
-                                                {{- trans -}}
+                                                {{- trans|upper -}}
                                             {%- else -%}
                                                 {{- conference.room.name|upper -}}
                                             {%- endif -%}
@@ -386,7 +397,7 @@
                                             {%- set trans_slug = 'programmation.salle.' ~ relatedProjection.room.name|remove_accents|sonata_slugify -%}
                                             {%- set trans = trans_slug|trans -%}
                                             {%- if trans_slug != trans -%}
-                                                {{- trans -}}
+                                                {{- trans|upper -}}
                                             {%- else -%}
                                                 {{- relatedProjection.room.name|upper -}}
                                             {%- endif -%}

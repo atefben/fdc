@@ -239,7 +239,10 @@
                                                         <span class="item-date">{{ awardAssociation.award.festival.year }}</span>
                                                     {% endif %}
                                                     <span class="item-categ" {{ awardAssociation.award.prize|content_lang('title') }}>
-                                                    {{ awardAssociation.award.prize|trans_fallback('title') }}
+                                                        {{- awardAssociation.award.prize|trans_fallback('title') -}}
+                                                        {%- if awardAssociation.award.exAequo == 1 -%}
+                                                            {{ ' ' }}({{ 'award.ex_aequo'|trans }})
+                                                        {%- endif -%}
                                                     </span>
                                                     {% if filmPerson.functions|length > 0 %}
                                                         {% spaceless -%}

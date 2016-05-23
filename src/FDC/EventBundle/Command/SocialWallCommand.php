@@ -44,6 +44,7 @@ class SocialWallCommand extends ContainerAwareCommand {
 
         $adminSecurityHandler = $this->getContainer()->get('sonata.admin.security.handler');
         $modelAdmin = $this->getContainer()->get('base.admin.social_wall');
+        $securityInformation = $adminSecurityHandler->buildSecurityInformation($modelAdmin);
 
         $em       = $this->getContainer()->get('doctrine')->getManager();
         $logger   = $this->getContainer()->get('logger');
@@ -157,12 +158,20 @@ class SocialWallCommand extends ContainerAwareCommand {
                 if (is_null($acl)) {
                     $acl = $adminSecurityHandler->createAcl($objectIdentity);
                 }
-                $adminSecurityHandler->addObjectClassAces($acl, $adminSecurityHandler->buildSecurityInformation($modelAdmin));
+                $adminSecurityHandler->addObjectClassAces($acl, $securityInformation);
                 $adminSecurityHandler->updateAcl($acl);
             }
         }
 
-        $output->writeln('Tweet added: '. count($socialWalls));
+        // regenerating acl
+        $tweetsCount = count($socialWalls);
+        $lines = array();
+        exec("php app/console base:admin:regenerate_acl_social_wall_twitter {$tweetsCount}", $lines);
+        foreach ($lines as $line) {
+            $output->writeln($line);
+        }
+
+        $output->writeln('Tweet added: '. $tweetsCount);
 
         ////////////////////////////////////////////////////////////////////
         /////////////////////////   INSTAGRAM   ////////////////////////////

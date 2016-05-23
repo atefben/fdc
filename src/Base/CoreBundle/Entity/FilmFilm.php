@@ -486,6 +486,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "projection_show",
      *     "search"
      * })
+     * @Serializer\Accessor(getter="getApiImageMain")
      */
     private $imageMain;
 
@@ -2465,6 +2466,11 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getImageMain()
     {
         return $this->imageMain;
+    }
+
+    public function getApiImageMain()
+    {
+        return null;
     }
 
     /**
