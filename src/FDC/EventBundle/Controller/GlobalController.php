@@ -2,15 +2,20 @@
 
 namespace FDC\EventBundle\Controller;
 
+use Aws\CloudFront\Exception\Exception;
 use Base\CoreBundle\Entity\Newsletter;
 use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
 use FDC\EventBundle\Component\Controller\Controller;
+use Guzzle\Http\Message\RequestFactory;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use \DateTime;
+
+use Guzzle\Plugin\Oauth\OauthPlugin;
+use Guzzle\Service\Client;
 
 use FDC\EventBundle\Form\Type\ShareEmailType;
 use FDC\EventBundle\Form\Type\NewsletterType;
@@ -344,7 +349,7 @@ class GlobalController extends Controller {
 
                             if (count($errors) > 0) {
                                 $response['success'] = false;
-                                $response['object']  = $translator->trans('newsletter.form.error.ladresseemailnestpasvalide');
+                                $response['object']  = $translator->trans('newsletter.form.error.emaildejaenregistre',array(),'FDCEventBundle');
                             } else {
                                 // Form is valid
                                 $em = $this->getDoctrine()->getManager();
@@ -374,61 +379,75 @@ class GlobalController extends Controller {
      * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newsletterAction(Request $request) {
+
         $translator = $this->get('translator');
+        $newsForm   = $this->createForm(new NewsletterType($translator));
 
-        $newsForm     = $this->createForm(new NewsletterType($translator));
-        $registration = new Newsletter();
+        $locale = ($request->getLocale() == 'fr') ? 'fr' : 'en';
+        $date = new DateTime('2000-01-01');
 
-        if ($request->isXmlHttpRequest() && $request->isMethod('POST')) {
+        if ($request->isMethod('POST')) {
 
-            $newsForm->submit($request);
+            $newsForm->handleRequest($request);
 
             if ($newsForm->isValid()) {
-
                 $data = $newsForm->getData();
 
-                //Check if entry already exist
-                $exist = $this->getDoctrine()->getRepository('BaseCoreBundle:Newsletter')->findOneBy(array(
-                    'email' => $data['email']
-                ));
+                $universe = 'site_internet';
+                $pass = 'acbbca593b74355da0f8e47b88535d30074edae8';
+                $resource = 'affif' ;
+                $email = $data['email'];
+                $service_url = "https://s3s.fr/api/rest/2";
 
-                if ($exist == null) {
+                $client = new \Guzzle\Http\Client($service_url);
+                $request = $client->get("contact/" . $email);
+                $request->setAuth($universe, $pass);
+                try {
+                    $request->send();
+                } catch (\Guzzle\Http\Exception\BadResponseException $e) {
 
-                    $response['success'] = true;
-
-                    //Find site by slug
-                    $siteSlug = $this->container->getParameter('fdc_event_slug');
-                    $site     = $this->getDoctrine()->getRepository('BaseCoreBundle:Site')->findOneBy(array(
-                        'slug' => $siteSlug
-                    ));
-
-                    //Save Email & Enable
-                    $registration->setEmail($data['email']);
-                    $registration->setEnabled(true);
-                    $registration->setSite($site);
-
-                    //Check errors
-                    $validator = $this->get('validator');
-                    $errors    = $validator->validate($registration);
-
-                    if (count($errors) > 0) {
-                        $response['success'] = false;
-                        $response['object']  = $translator->trans('newsletter.form.error.ladresseemailnestpasvalide');
-                    } else {
-                        // Form is valid
-                        $em = $this->getDoctrine()->getManager();
-                        $em->persist($registration);
-                        $em->flush();
-                    }
                 }
 
-                else {
+                $exist = ($request->getResponse()->getStatusCode() === 200) ? true : false;
+                //Check if entry already exist
+
+                if ($exist == false) {
+
+                    $query = array (
+                        'email' => $data['email'],
+                        'lang' => $locale,
+                        'date' => $date->format('Y-m-d H:i:s'),
+                        'firstname' => '',
+                        'lastname' => '',
+                        'fields' => array (
+                            array(
+                                'id'  => '0',
+                                'name'  => 'societe',
+                                'value'  => '',
+                            ),
+                            array(
+                                'id'  => '1',
+                                'name'  => 'LANGUE',
+                                'value'  => 'fr',
+                            )
+                        ),
+                        'lists' => array (
+                            'id'    => '0',
+                            'name'  => 'Festival de Cannes',
+                        )
+                    );
+
+                    $client2 = new \Guzzle\Http\Client($service_url);
+                    $request2 = $client2->post("contact/",null,$query);
+                    $request2->setAuth($universe, $pass);
+                    $request2->send();
+                    $response['success'] = true;
+                } else {
                     $response['success'] = false;
-                    $response['object']  = $translator->trans('newsletter.form.error.emaildejaenregistre');
+                    $response['object']  = $translator->trans('newsletter.form.error.emaildejaenregistre',array(),'FDCEventBundle');
                 }
 
                 return new JsonResponse($response);
-
             }
 
         }

@@ -34,7 +34,27 @@ $(document).ready(function() {
     if($('.newsletter .error').length || empty) {
       return false;
     } else {
-      window.open('http://www.online-festival.com/subscribtion/subscribe.aspx?email=' + $('#email').val(), '_blank');
+      event.preventDefault();
+      event.stopPropagation();
+
+      $.ajax({
+        type     : "POST",
+        dataType : "json",
+        cache    : false,
+        url      : GLOBALS.urls.newsletterUrl,
+        data     : $('form#newsletter').serialize(),
+        success: function(data) {
+          console.log(data);
+          if (data.success == false) {
+            input.addClass("error").val(data.object);
+          }
+          else {
+            $('.newsletter form').addClass('hide');
+            $('#confirmation span').html($('#email').val());
+            $('#confirmation').addClass('show');
+          }
+        }
+      });
 
       return false;
     }
