@@ -22,10 +22,19 @@
     border:none;
     background-color: rgb(42,42,42);
   }
+
   .calendar .time {
     background-color: rgb(42,42,42);
     color:#fff;
     border-color: #3a3a3a;
+    height: 170px;
+    width: 100%;
+    text-align: center;
+    line-height: 170px;
+    border-bottom: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    font-size: 24px;
+    box-sizing: border-box;
   }
 
   #timeline-calendar .next, #timeline-calendar .prev, #timeline-calendar .next, #timeline-calendar .next {
@@ -222,5 +231,20 @@
     font-size: 2.5rem;
     margin-top: 5px;
   }
-  
+
+  /*CALENDAR*/
+  .calendar .timeCol{
+    border: none;
+    background-color: rgb(42,42,42);
+    float: left;
+    position: relative;
+    width: 100px;
+    z-index: 2;
+   }
+
+   .calendar .venues {
+      position: relative;
+      float: left;
+      width: 540px;
+    }
 }
