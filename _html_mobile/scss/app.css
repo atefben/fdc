@@ -6165,14 +6165,14 @@ body.overlay::after {
   width: 100%;
   text-align: center;
   line-height: 170px;
-  border-bottom: 1px solid #e5e5e5;
-  border-right: 1px solid #e5e5e5;
+  border-bottom: 1px solid #3A3A42;
+  border-right: 1px solid #3A3A42;
   font-size: 24px;
   box-sizing: border-box;
 }
 #main.calendar-press #timeline-calendar .next, #main.calendar-press #timeline-calendar .prev, #main.calendar-press #timeline-calendar .next, #main.calendar-press #timeline-calendar .next {
   background-color: #2a2a2a;
-  border-color: #3a3a3a;
+  border-color: #3A3A42;
 }
 #main.calendar-press .calendar .venues .venue {
   background-color: #1b1b1b;
@@ -6257,10 +6257,10 @@ body.overlay::after {
   vertical-align: top;
 }
 #main.calendar-press #timeline-calendar .prev {
-  border-right: 4px dotted #e5e5e5;
+  border-right: 4px dotted #3A3A42;
 }
 #main.calendar-press #timeline-calendar .next {
-  border-left: 4px dotted #e5e5e5;
+  border-left: 4px dotted #3A3A42;
 }
 #main.calendar-press #timeline {
   height: 150px;
@@ -6289,7 +6289,7 @@ body.overlay::after {
   width: 130px;
   height: 128px;
   padding-top: 30px;
-  /*border: 2px solid #e5e5e5;*/
+  border: 2px solid #3A3A42;
   color: #adadad;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 1.8rem;
