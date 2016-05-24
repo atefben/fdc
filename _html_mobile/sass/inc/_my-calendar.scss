@@ -222,5 +222,25 @@
     font-size: 2.5rem;
     margin-top: 5px;
   }
-  
+
+  /*CALENDAR*/
+  .contain-section .calendar .timeCol, .contain-section .calendar .venues{
+  	height: 1150px;
+    overflow-y: hidden;
+  }
+
+  .calendar .timeCol{
+  	border:none;
+  	background-color: rgb(42,42,42);
+  }
+
+  .calendar .timeCol{
+    background-color: #f4f4f4;
+    float: left;
+    position: relative;
+    width: 100px;
+    border-top: 1px solid #e5e5e5;
+    z-index: 2;
+   }
+
 }

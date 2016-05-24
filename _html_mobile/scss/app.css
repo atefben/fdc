@@ -6135,6 +6135,9 @@ body.overlay::after {
   position: relative;
 }
 
+#main.calendar-press {
+  /*CALENDAR*/
+}
 #main.calendar-press #timeline a {
   color: #fff;
 }
@@ -6336,6 +6339,22 @@ body.overlay::after {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 2.5rem;
   margin-top: 5px;
+}
+#main.calendar-press .contain-section .calendar .timeCol, #main.calendar-press .contain-section .calendar .venues {
+  height: 1150px;
+  overflow-y: hidden;
+}
+#main.calendar-press .calendar .timeCol {
+  border: none;
+  background-color: #2a2a2a;
+}
+#main.calendar-press .calendar .timeCol {
+  background-color: #f4f4f4;
+  float: left;
+  position: relative;
+  width: 100px;
+  border-top: 1px solid #e5e5e5;
+  z-index: 2;
 }
 
 #main.palmares {
