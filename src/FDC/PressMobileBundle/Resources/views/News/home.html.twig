@@ -2,7 +2,7 @@
 {% extends 'FDCPressMobileBundle::layout.html.twig' %}
 
 {% block body %}
-<div id="main" class="press{{ (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? '' : ' press-locked' }}" data-menu="press">
+<div id="main" class="press" data-menu="press">
 
     <div class="header-press">
         <div class="head">
@@ -37,80 +37,63 @@
                 </div>
             </section>
         {% elseif section.class == "programmation" and pressHome.sectionSchedulingDisplay == false %}
-            <div class="programmation">
-                <div class="chap">
-                    <h3 class="title-press">
-                        {{ 'press.home.title.programmedu'|trans }}
-                        <span id="dateProgram">{{ schedulingDays[0]|localizeddate('long', 'none', app.request.locale) }}</span>
-                    </h3>
-                    <p class="link">
-                        <a href="{{ path('fdc_press_agenda_scheduling') }}">
-                            <i class="icon icon_fleche-right"></i>
-                            {{ 'press.home.btn.toutelaprogrammation'|trans }}
-                        </a>
-                    </p>
+            <section>
+                <div class="title-section">
+                    <h3>{{ 'press.home.title.programmedujour'|trans({}, 'FDCPressMobileBundle') }}</h3>
+                    <a href="{{ path('fdc_pressmobile_agenda_scheduling') }}">
+                        <i class="icon icon_fleche-right"></i>
+                        {{ 'press.home.btn.see_all'|trans({}, 'FDCPressMobileBundle') }}
+                    </a>
                 </div>
-                <div id="calendar-programmation">
-                    <div id="timeline">
-                        {% set festivalStarted = 0 %}
-                        {% for day in schedulingDays %}
-                            <a href="#" class="ajaxi {% if day == date %}active{% endif %}" data-date="{{ day|date('Y-m-d') }}">
-                                {{ day|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
-                                <span class="day">{{ day|date('d') }}</span>
-                            </a>
-                        {% endfor %}
-                    </div>
+                <div class="contain-section">
                     <div class="calendar">
+                        <div id="timeline-calendar">
+                            <a href="#" class="prev"><i class="icon icon_flecheGauche"></i></a>
+                            <div id="timeline" class="" >
+                                <div class="timeline-container">
+                                    {% for day in schedulingDays %}
+                                        <a href="#" class="{% if day == date %}active{% endif %}"
+                                           data-date="{{ day|date('Y-m-d') }}"
+                                           data-day="{{ day|date('d') }}">
+                                            {{ day|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                                            <span class="day">{{ day|date('d') }}</span>
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <a href="#" class="next"><i class="icon icon_fleche-right"></i></a>
+                        </div>
                         <div class="timeCol">
                             <div class="empty"></div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(8) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(9) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(10) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(11) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(12) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(13) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(14) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(15) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(16) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(17) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(18) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(19) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(20) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(21) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(22) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(23) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(0) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(1) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(2) }}</div>
-                            <div class="time">{{ agenda_leftbar_translate_hour(3) }}</div>
+                            <div class="time">08H</div>
+                            <div class="time">09H</div>
+                            <div class="time">10H</div>
+                            <div class="time">11H</div>
+                            <div class="time">12H</div>
+                            <div class="time">13H</div>
+                            <div class="time">14H</div>
+                            <div class="time">15H</div>
+                            <div class="time">16H</div>
+                            <div class="time">17H</div>
+                            <div class="time">18H</div>
+                            <div class="time">19H</div>
+                            <div class="time">20H</div>
+                            <div class="time">21H</div>
+                            <div class="time">22H</div>
+                            <div class="time">23H</div>
+                            <div class="time">00H</div>
+                            <div class="time">01H</div>
+                            <div class="time">02H</div>
+                            <div class="time">03H</div>
                         </div>
                         <div class="venues">
-                            <a href="#" class="nav prev"><i class="icon icon_flecheGauche"></i></a>
-                            <a href="#" class="nav next"><i class="icon icon_fleche-right"></i></a>
+                            <a class="agenda-access no-fixed" href="{{ path('fdc_pressmobile_agenda_get') }}"><i class="icon icon_agenda-personnel"></i></a>
                             <div class="v-wrapper">
-                                {%- for room in rooms -%}
-                                    <div class="venue">
-                                        <div class="v-head">
-                                            {%- set trans_slug = 'programmation.salle.' ~ room.name|remove_accents|sonata_slugify -%}
-                                            {%- set trans = trans_slug|trans -%}
-                                            {%- if trans_slug != trans -%}
-                                                {{- trans -}}
-                                            {%- else -%}
-                                                {{- room.name|upper -}}
-                                            {%- endif -%}
-                                        </div>
-                                        <div class="v-container">
-                                            {%- for event in projections[room.id] -%}
-                                                {% include 'FDCEventBundle:Agenda:widgets/event.html.twig' %}
-                                            {%- endfor -%}
-                                        </div>
-                                    </div>
-                                {%- endfor -%}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         {% elseif section.class == "media" and pressHome.sectionMediaDisplay == false %}
             <section>
                 <div class="title-section">
@@ -134,8 +117,7 @@
                                 <div class="info">
                                     <p>{{- media.film.titleVO -}}</p>
                                     {%- for director in media.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                                        <a class="director"
-                                           href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{- director.fullName -}}</a>
+                                        <a class="director" href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{- director.fullName -}}</a>
                                     {%- endfor -%}
                                 </div>
                                 {% set folderCount = 0 %}
@@ -177,42 +159,25 @@
                 </div>
             </section>
         {% elseif section.class == "download" and pressHome.sectionDownloadDisplay == false %}
-            <section>
+            <section class="downloads">
                 <div class="title-section">
-                    <h3>{{ 'press.home.title.mediatheque'|trans }}</h3>
-                    <a href="{{ path('fdc_press_media_main', { 'sectionId': 3 }) }}">
+                    <h3>{{ 'press.home.title.atelecharger'|trans }}</h3>
+                    <a href="{{ path('fdc_pressmobile_media_download') }}">
                         <i class="icon icon_fleche-right"></i>
                         {{ 'press.home.btn.see_all'|trans({}, 'FDCPressMobileBundle') }}
                     </a>
                 </div>
-
-            <div class="download">
-                <div class="chap">
-                    <h3 class="title-press">{{ 'press.home.title.atelecharger'|trans }}</h3>
-                    <p class="link">
-                        <a href="{{ path('fdc_press_media_download') }}">
-                            <i class="icon icon_fleche-right"></i>
-                            {{ 'press.home.btn.touslestelechargements'|trans }}
-                        </a>
-                    </p>
-                </div>
-            </div>
-            {%- for section in pressHome.homeDownload -%}
-                {% if section.download.widgets is defined %}
-                    {% set isSignature = 0 %}
-                    {% for widget in section.download.widgets %}
-                        {% if class(widget) == "PressDownloadSectionWidgetArchive" %}
-                            {% set isSignature = 1 %}
-                        {% else %}
-                            {% set isSignature = 0 %}
-                        {% endif %}
-                    {% endfor %}
-                    {%- if isSignature is defined and isSignature == 1 -%}
-                        <div class="downloading-press"><div class="signature block">
-                    {%- else -%}
-                        <div class="affiche">
-                    {%- endif -%}
-                    <div class="container">
+                {%- for section in pressHome.homeDownload -%}
+                <div class="contain-section container">
+                    {% if section.download.widgets is defined %}
+                        {% set isSignature = 0 %}
+                        {% for widget in section.download.widgets %}
+                            {% if class(widget) == "PressDownloadSectionWidgetArchive" %}
+                                {% set isSignature = 1 %}
+                            {% else %}
+                                {% set isSignature = 0 %}
+                            {% endif %}
+                        {% endfor %}
                         <h3 class="title-press">{{ section.download|trans_fallback('title') }}</h3>
                         {% if section.download.widgets is defined %}
                             {% for key,widget in section.download.widgets %}
@@ -229,31 +194,24 @@
                                 {% endif %}
                             {% endfor %}
                         {% endif %}
-                    </div>
-                    {%- if isSignature is defined and isSignature == 1 -%}
-                        </div></div>
-                    {%- else -%}
-                        </div>
-                    {%- endif -%}
-                {% endif %}
-            {% endfor %}
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </section>
         {% elseif section.class == "push1" and pressHome.pushMainImage is not null %}
             {% set trans = pressHome.pushMainImage.findTranslationByLocale(app.request.locale) %}
             {% if trans is null or trans.file is null %}
                 {% set trans = pressHome.pushMainImage.findTranslationByLocale('fr') %}
             {% endif %}
-            <div class="section participate">
-                <div class="img" style="background-image: url({% path trans.file, '1280x808' %})"></div>
-                <div class="txt vCenter">
-                    <div class="vCenterKid">
-                        <h2 class="title">{{ pressHome|trans_fallback('pushMainTitle') }}</h2>
-                        <p class="link">
-                            <a href="{{ pressHome|trans_fallback('pushMainLink') }}">
-                                <i class="icon icon_fleche-right"></i>
-                                {{ 'press.home.btn.acceder'|trans }}
-                            </a>
-                        </p>
-                    </div>
+            <div class="banner-img vCenter" style="background-image: url({% path trans.file, '1280x808' %})">
+                <div class="vCenterKid">
+                    <h2 class="title">{{ pressHome|trans_fallback('pushMainTitle') }}</h2>
+                    <p class="link">
+                        <a href="{{ pressHome|trans_fallback('pushMainLink') }}">
+                            <i class="icon icon_fleche-right"></i>
+                            {{ 'press.home.btn.acceder'|trans }}
+                        </a>
+                    </p>
                 </div>
             </div>
         {% elseif section.class == "push2" and pressHome.pushSecondaryImage is not null %}
@@ -261,54 +219,47 @@
             {% if trans is null or trans.file is null %}
                 {% set trans = pressHome.pushSecondaryImage.findTranslationByLocale('fr') %}
             {% endif %}
-            <div class="section accrediter">
-                <div class="img" style="background-image: url({% path trans.file, '1280x808' %})"></div>
-                <div class="txt vCenter">
-                    <div class="vCenterKid">
-                        <h2 class="title">{{ pressHome|trans_fallback('pushSecondaryTitle') }}</h2>
-                        <p class="link">
-                            <a href="{{ pressHome|trans_fallback('pushSecondaryLink') }}">
-                                <i class="icon icon_fleche-right"></i>
-                                {{ 'press.home.btn.acceder'|trans }}
-                            </a>
-                        </p>
-                    </div>
+            <div class="banner-img vCenter" style="background-image: url({% path trans.file, '1280x808' %})">
+                <div class="vCenterKid">
+                    <h2 class="title">{{ pressHome|trans_fallback('pushSecondaryTitle') }}</h2>
+                    <p class="link">
+                        <a href="{{ pressHome|trans_fallback('pushSecondaryLink') }}">
+                            <i class="icon icon_fleche-right"></i>
+                            {{ 'press.home.btn.acceder'|trans }}
+                        </a>
+                    </p>
                 </div>
             </div>
         {% elseif section.class == "statistics" and pressHome.sectionStatisticDisplay == false %}
-            <div class="stats">
-                <div class="chap">
-                    <h3 class="title-press">{{ pressHome|trans_fallback('sectionStatisticTitle') }}</h3>
+            <section class="statistics">
+                <div class="title-section">
+                    <h3>{{ pressHome|trans_fallback('sectionStatisticTitle') }}</h3>
                 </div>
-                <div class="container">
+                <div class="contain-section container">
                     <h3>{{ pressHome|trans_fallback('sectionStatisticSubTitle') }}</h3>
                     <p>
                         {{ pressHome|trans_fallback('sectionStatisticDescription')|raw }}
                     </p>
-                    <p>
-                        {% if pressHome.statImage %}
-                            {% set img = pressHome.statImage %}
-                            {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is null or trans.file is null %}
-                                {% set trans = img.findTranslationByLocale('fr') %}
-                            {% endif %}
-                            {% set file = trans.file %}
-                            {% thumbnail file, '976x535' with {'alt': img|trans_fallback('alt'), 'height': 'auto' } %}
+                    {% if pressHome.statImage %}
+                        {% set img = pressHome.statImage %}
+                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = img.findTranslationByLocale('fr') %}
                         {% endif %}
-                    </p>
-                    <p>
-                        {% if pressHome.statImage2 %}
-                            {% set img = pressHome.statImage2 %}
-                            {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is null or trans.file is null %}
-                                {% set trans = img.findTranslationByLocale('fr') %}
-                            {% endif %}
-                            {% set file = trans.file %}
-                            {% thumbnail file, '976x535' with {'alt': img|trans_fallback('alt'), 'height': 'auto' } %}
+                        {% set file = trans.file %}
+                        {% thumbnail file, '976x535' with {'alt': img|trans_fallback('alt'), 'height': 'auto' } %}
+                    {% endif %}
+                    {% if pressHome.statImage2 %}
+                        {% set img = pressHome.statImage2 %}
+                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = img.findTranslationByLocale('fr') %}
                         {% endif %}
-                    </p>
+                        {% set file = trans.file %}
+                        {% thumbnail file, '976x535' with {'alt': img|trans_fallback('alt'), 'height': 'auto' } %}
+                    {% endif %}
                 </div>
-            </div>
+            </section>
         {% endif %}
     {% endfor %}
     {{ render(controller('FDCPressMobileBundle:Global:contact')) }}
