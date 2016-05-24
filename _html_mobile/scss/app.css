@@ -6289,7 +6289,7 @@ body.overlay::after {
   width: 130px;
   height: 128px;
   padding-top: 30px;
-  border: 2px solid #3A3A42;
+  border: 0px solid #3A3A42;
   color: #adadad;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 1.8rem;
