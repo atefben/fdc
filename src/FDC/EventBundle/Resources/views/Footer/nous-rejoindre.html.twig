@@ -5,15 +5,13 @@
 <div id="main" class="legal-notice single-article loading">
     <h2 class="title">{{ 'nousrejoindre.title.nousrejoindre'|trans }}</h2>
     <section class="legal-notice-container">
-        <h3 class="legal-notice-description">{{ 'nousrejoindre.text.cesite'|trans }}</h3>
-
-        {% for article in content %}
             <article class="legal-notice-art text">
-                <h4 class="legal-notice-art-title">{{ article.title }}</h4>
-                <p>{{ article.content }}</p>
+                <div style="background-color: #f4f4f4;border-top: 1px solid #e0e0e0;border-bottom: 1px solid #e0e0e0;text-align: center;padding: 35px 0;">
+                    <h3>Festival de Cannes</h3>
+                    <p>3, rue Amélie 75007 Paris - France</p>
+                    <p>Tel: +33 (0) 1 53 59 61 00 - Fax : +33 (0)1 53 59 61 10</p>
+                </div>
             </article>
-        {% endfor %}
-
     </section>
 </div>
 {% endblock %}
