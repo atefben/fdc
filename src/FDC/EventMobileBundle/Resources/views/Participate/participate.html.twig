@@ -27,21 +27,33 @@
             </div>
         </div>
 
-        {# p à dynamiser ? #}
-        {% if localeSlugs.fr == 'festival-mode-d-emploi' %}
-            <section class="accordeon">
-                <p class="description center">Votre badge professionnel (Festival, Marché ou Presse) vous permet d’accéder à la zone Festival et aux projections (Sélection Officielle, sections parallèles, Marché, selon votre catégorie d’accréditation). Les badges sont nominatifs, incessibles et doivent être portés de façon visible pour en faciliter le contrôle. En cas de perte ou de vol, merci de vous adresser au bureau des accréditations tardives.</p>
-            </section>
-        {% endif %}
-
         {#                  #}
         {#     SECTIONS     #}
         {#                  #}
         <div class="{% if localeSlugs.fr == 'festival-mode-d-emploi' %}instructions{% elseif localeSlugs.fr == 'acces-aux-proj' %}access{% elseif localeSlugs.fr == 'partenaires' or localeSlugs.fr == 'fournisseurs' %}partners{% endif %}-container">
+
+            {% if localeSlugs.fr == 'festival-mode-d-emploi' %}
+                <section class="accordeon">
+                    {{ participatePage|trans_fallback('content')|raw }}
+                </section>
+            {% endif %}
+
             {% for s in participatePage.downloadSection %}
                 {% if ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or 
                     ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED'))
                 %}
+
+                    {% if localeSlugs.fr == 'fournisseurs' %}
+                    <section class="accordeon open">
+
+                        <h3 class="title-participate">{{ s.section|trans_fallback('title') }}</h3>
+                        <div class="section-contain" >
+                            {% for widget in s.section.widgets %}
+                                {% include 'FDCEventMobileBundle:Participate:widgets/participate-two.html.twig' %}
+                            {% endfor %}
+                        </div>
+                    </section>
+                    {% else %}
                     <section class="accordeon">
                         <div class="section-title">
                             <i class="icon {{ s.section|trans_fallback('icon') }}"></i>
@@ -74,6 +86,7 @@
                             {% endfor %}
                         </div>
                     </section>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
         </div>
