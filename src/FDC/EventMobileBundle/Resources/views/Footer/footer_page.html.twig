@@ -1,0 +1,13 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventMobileBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="main" class="legals active-page" data-menu="legals">
+        <div class="container">
+            <h2 class="title one-line">{{ page|trans_fallback('title') }}</h2>
+            <div class="legal-notice-container">
+                {{ page|trans_fallback('content')|raw }}
+            </div>
+        </div>
+    </div>
+{% endblock body %}
