@@ -358,468 +358,390 @@ $(document).ready(function() {
 	}
 
 });
+var selectionOpen = false,
+    filters;
+
+function openSelection() {
+  $('#main').addClass('st-effect st-selection-open');  
+  selectionOpen = true;
+
+  $('.selection-main-container .thumb').remove();
+
+  filters = $("#myselection-filters").owlCarousel({
+    nav: false,
+    dots: false,
+    smartSpeed: 500,
+    margin: 0,
+    autoWidth: false,
+    loop: false,
+    items:3,
+    stagePadding:40,
+    onInitialized: function() {
+      var m = ($(window).width() - $('.container').width()) / 2;
+      $('#horizontal-filters .owl-stage').css({ 'margin-left': m });
+    },
+    onResized: function() {
+      var m = ($(window).width() - $('.container').width()) / 2;
+      $('#horizontal-filters .owl-stage').css({ 'margin-left': m });
+    }
+  });
+  filters.owlCarousel();
+
+  $("#myselection-filters a").on('click',function(e) {
+    e.preventDefault();
+    $("#myselection-filters a").removeClass('active');
+    $(this).addClass('active');
+
+    var filter = $(this).data('filter')
+
+    if($(this).data('filter') == 'suggestion') {
+      $('.suggestion').css('display','block');
+      $('.my-selection-container').css('display','none');
+      $('.thumb').css('display','block');
+    } else {
+      $('.my-selection-container').css('display','block');
+      $('.suggestion').css('display','none');
+
+      if($(this).data('filter') == 'all') {
+        $('.thumb').css('display','block');
+      } else{
+        $( ".thumb" ).each(function() {
+          if ($(this).find('.icon_'+filter+'').length == 0) {
+            $(this).css('display','none');
+          } else {
+            $(this).css('display','block');
+          }
+        });
+      }
+    }
+  });
+
+  $.ajax({
+    type     : "GET",
+    dataType : "html",
+    cache    : false,
+    url      : GLOBALS.urls.selectionUrl ,
+    success: function(data) {
+      $('.suggestion').append(data);
+    }
+  });
+
+  if (JSON.parse(localStorage.getItem('mySelection')) && JSON.parse(localStorage.getItem('mySelection')).length > 0) {
+    displaySelection();
+  } else {
+    $('.count span').html(0);
+    displaySuggestions();
+  }
+}
+
+function displaySelection() {
+  $('.count span').html(JSON.parse(localStorage.getItem('mySelection')).length);
+
+  for(var i = 0 ; i < JSON.parse(localStorage.getItem('mySelection')).length ; i++) {
+    var thumb = $("<div class='thumb'></div>")
+    thumb.html(JSON.parse(localStorage.getItem('mySelection'))[i])
+    thumb.find('.picto-my-selection').remove();
+    thumb.append('<span class="delete"><i class="icon icon_close"></i></span>');
+    $('.my-selection-container').prepend(thumb);
+  }
+
+  $('.delete').on('click',function() {
+    var index = $(this).parent().index();
+    var items = JSON.parse(localStorage.getItem('mySelection'));
+    items.splice(index,1);
+    localStorage.setItem('mySelection', JSON.stringify(items));
+    $(this).parent().remove();
+    $('.count span').html(JSON.parse(localStorage.getItem('mySelection')).length);
+  });
+
+  $("#myselection-filters a[data-filter='all']").trigger("click");
+  filters.trigger("to.owl.carousel", [0, 2, true]);
+}
+
+function displaySuggestions() {
+  filters.trigger("to.owl.carousel", [3, 2, true]);
+  $("#myselection-filters a[data-filter='suggestion']").trigger("click");
+}
+
 $(document).ready(function() {
-
-	var selectionOpen = false;
-	var filters ;
-	 $('#selection-btn').on('click', function() {
-	      $.openSelection();
-	  });
-	 $('#main').on('click', function(e) {
-
-	   if(!$(e.target).parents('.selection-main-container').length && !$(e.target).parents('#selection-btn').length && !$(e.target).hasClass('delete') && !$(e.target).hasClass('icon_close'))
-	   {
-	       if(selectionOpen){
-	          $('#main').removeClass('st-effect st-selection-open');  
-	          selectionOpen = false;
-	        }                
-	   }
-
-	    
-	  });
-
-	var displaySelection = function(){
-
-		$('.count span').html(JSON.parse(localStorage.getItem('mySelection')).length);
-
-		for(var i = 0 ; i < JSON.parse(localStorage.getItem('mySelection')).length ; i++){
-		
-			var thumb = $("<div class='thumb'></div>")
-			thumb.html(JSON.parse(localStorage.getItem('mySelection'))[i])
-			thumb.find('.picto-my-selection').remove();
-			thumb.append('<span class="delete"><i class="icon icon_close"></i></span>');
-			$('.my-selection-container').prepend(thumb);
-
-		}
-
-
-		$('.delete').on('click',function(){
-
-			var index = $(this).parent().index();
-			var items = JSON.parse(localStorage.getItem('mySelection'));
-			items.splice(index,1);
-			localStorage.setItem('mySelection', JSON.stringify(items));
-			$(this).parent().remove();
-			$('.count span').html(JSON.parse(localStorage.getItem('mySelection')).length);
-		});
-
-		$("#myselection-filters a[data-filter='all']").trigger("click");
-		filters.trigger("to.owl.carousel", [0, 2, true]);
-	}
-
-	var displaySuggestions = function(){
-
-		filters.trigger("to.owl.carousel", [3, 2, true]);
-		$("#myselection-filters a[data-filter='suggestion']").trigger("click");
-
-	}
-
-	$.openSelection = function(){
-
-		$('#main').addClass('st-effect st-selection-open');  
-	    selectionOpen = true;
-
-	    $('.selection-main-container .thumb').remove();
-
-
-		filters = $("#myselection-filters").owlCarousel({
-		  nav: false,
-		  dots: false,
-		  smartSpeed: 500,
-		  margin: 0,
-		  autoWidth: false,
-		  loop: false,
-		  items:3,
-		  stagePadding:40,
-		  onInitialized: function() {
-		    var m = ($(window).width() - $('.container').width()) / 2;
-		    $('#horizontal-filters .owl-stage').css({ 'margin-left': m });
-		  },
-		  onResized: function() {
-		    var m = ($(window).width() - $('.container').width()) / 2;
-		    $('#horizontal-filters .owl-stage').css({ 'margin-left': m });
-		  }
-		});
-		filters.owlCarousel();
-
-
-		$("#myselection-filters a").on('click',function(e){
-
-			e.preventDefault();
-			$("#myselection-filters a").removeClass('active');
-			$(this).addClass('active');
-
-			var filter = $(this).data('filter')
-
-			if($(this).data('filter') == 'suggestion'){
-
-				$('.suggestion').css('display','block');
-				$('.my-selection-container').css('display','none');
-				$('.thumb').css('display','block');
-
-			}else{
-
-				$('.my-selection-container').css('display','block');
-				$('.suggestion').css('display','none');
-
-				if($(this).data('filter') == 'all'){
-					$('.thumb').css('display','block');
-				}	
-
-				else{
-
-					$( ".thumb" ).each(function() {
-
-					  if ($(this).find('.icon_'+filter+'').length == 0){
-					  	$(this).css('display','none');
-					  }else{
-					  	$(this).css('display','block');
-					  }
-					});
-	 
-				}
-			}
-			
-		});
-
-
-	 	$.ajax({
-		    type: "GET",
-		    dataType: "html",
-		    cache: false,
-		    url: GLOBALS.urls.selectionUrl ,
-		    success: function(data) {
-
-		    	$('.suggestion').append(data);
-		    }
-
-		});
-
-	    if (JSON.parse(localStorage.getItem('mySelection')) && JSON.parse(localStorage.getItem('mySelection')).length > 0){
-	    	displaySelection();
-	    }else{
-	    	$('.count span').html(0);
-	    	displaySuggestions();
-	    }
-
-		
-
-
-		
-
-	};
-	
+  $('#selection-btn').on('click', function() {
+    openSelection();
+  });
+  
+  $('#main').on('click', function(e) {
+    if(
+      !$(e.target).parents('.selection-main-container').length && 
+      !$(e.target).parents('#selection-btn').length && 
+      !$(e.target).hasClass('delete') && 
+      !$(e.target).hasClass('icon_close')
+    ) {
+      if(selectionOpen) {
+        $('#main').removeClass('st-effect st-selection-open');  
+        selectionOpen = false;
+      }
+    }
+  });
 });
 $(document).ready(function() {
+  // init array of events
+  var events = [];
+  // get local storage
+  var agenda = localStorage.getItem('agenda_press');
+  // if local storage, get the events
+  if (agenda != null) {
+     events = JSON.parse(agenda);
+  }
 
-	// init array of events
-	 var events = [];
+  addEventsInCalendar();
 
-	// get local storage
-	var agenda = localStorage.getItem('agenda_press');
+  function displayProgrammationDay(day) {
+    var startDayDate = new Date("2016-05-"+day+"T08:00:00").getTime();
+    var endDayDate = new Date("2016-05-"+(day+1)+"T03:00:00").getTime();
+    
+    $(".fc-event").each(function () {
+      var startDate = new Date($(this).data('start')).getTime();
+      if(startDate >= startDayDate && startDate <= endDayDate) {
+        $(this).css('display','block');
+      } else {
+        $(this).css('display','none');
+      }
+    });
+  }
 
-	// if local storage, get the events
-	if (agenda != null) {
-	   events = JSON.parse(agenda);
-	}
+  function addEventsInCalendar() {
+    events.sort(function(a, b) {
+      if (new Date(a.start) > new Date(b.start)) return 1;
+      if (new Date(a.start) < new Date(b.start)) return -1;
+      return 0;
+    });
 
-	addEventsInCalendar();
+    $.each(events, function(index, evt){
+      $('.v-container').append('<div class="fc-event" data-category="reprise" data-type="reprise" data-url="'+evt.url+'" data-id="'+evt.id+'" data-color="'+evt.eventColor+'" data-start="'+evt.start+'" data-end="'+evt.end+'" data-time="'+evt.time+'" data-duration="'+evt.duration+'"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon '+evt.eventPictogram+'"></i><span class="cat-title">'+evt.type+'</span></span><div class="info"><img src="'+evt.picture+'"><div class="txt"><span>'+evt.title+'</span><strong>'+evt.author+'</strong></div></div><div class="bottom"><span class="duration">'+evt.duration/60+'H</span> <span class="dash">-</span> <span class="ven">'+evt.room+'</span><span class="competition">'+evt.selection+'</span></div></div>');
+    });
 
-	function displayProgrammationDay(day){
+    var endDate = new Date("1900-01-01T00:00:00").getTime();
 
-		var startDayDate = new Date("2016-05-"+day+"T08:00:00").getTime();
-		var endDayDate = new Date("2016-05-"+(day+1)+"T03:00:00").getTime();
-		$(".fc-event").each(function () {
-			var startDate = new Date($(this).data('start')).getTime();
-			if(startDate >= startDayDate && startDate <= endDayDate){
-				$(this).css('display','block');
-			}else{
-				$(this).css('display','none');
-			}
+    $(".fc-event").each(function () {
+      // allows to display two events at same hour (or overlap) in the same column 
+      // it works only if element (fc-event) are added in chronologic order
+      var startDate = new Date($(this).data('start')).getTime();
+      
+      if(startDate < endDate) {
+        $(this).addClass('half');
+        if(!$(this).prev('.fc-event').hasClass('half')) {
+          $(this).prev('.fc-event').addClass('half');
+        }
+      }
 
-		});
-	}
-	function addEventsInCalendar(){
+      endDate = new Date($(this).data('end')).getTime();
+      // short event (less than 2 hours) 
+      // based on time start and duration, calculate positions of event
+      var timeStart = $(this).data('time'),
+          dur = Math.floor($(this).data('duration') / 60),
+          minutes = $(this).data('duration') % 60,
+          base = 8;
+      var mT = timeStart - base;
 
+      if (minutes == 0) {
+        minutes = '';
+      }
+      if (dur < 2) {
+        $(this).addClass('one-hour');
+        $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
+      }
 
-		events.sort(function(a, b) {
-          if (new Date(a.start) > new Date(b.start) )return 1;
-          if (new Date(a.start) < new Date(b.start) )return -1;
-          return 0;
-    	});
+      //add color
+      $(this).find('.category').css('background-color', $(this).data('color'));
+      $(this).css('margin-top', mT*170+10);
+    });
+    
+    // delete event from localStorage
+    $('.fc-event').on('click', '.remove-evt', function (e) {
+      e.preventDefault();
 
-		$.each(events, function(index, evt){
+      var id = parseInt($(this).parent().data('id'));
+      var agenda = localStorage.getItem('agenda_press');
+      events = JSON.parse(agenda);
 
-			$('.v-container').append('<div class="fc-event" data-category="reprise" data-type="reprise" data-url="'+evt.url+'" data-id="'+evt.id+'" data-color="'+evt.eventColor+'" data-start="'+evt.start+'" data-end="'+evt.end+'" data-time="'+evt.time+'" data-duration="'+evt.duration+'"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon '+evt.eventPictogram+'"></i><span class="cat-title">'+evt.type+'</span></span><div class="info"><img src="'+evt.picture+'"><div class="txt"><span>'+evt.title+'</span><strong>'+evt.author+'</strong></div></div><div class="bottom"><span class="duration">'+evt.duration/60+'H</span> <span class="dash">-</span> <span class="ven">'+evt.room+'</span><span class="competition">'+evt.selection+'</span></div></div>');
-		});
+      for (var i = 0; i < events.length; i++) {
+        if (events[i].id == id) {
+          events.splice(i, 1);
+        }
+      }
 
-		var endDate = new Date("1900-01-01T00:00:00").getTime();
+      localStorage.setItem('agenda_press', JSON.stringify(events));
+      $(this).parent().remove();
+    });
 
-		$(".fc-event").each(function () {
+    displayProgrammationDay($('.timeline-container .active').data('date'));
+  };
 
-			
-			// allows to display two events at same hour (or overlap) in the same column 
-			// it works only if element (fc-event) are added in chronologic order
-			var startDate = new Date($(this).data('start')).getTime();
-			if(startDate < endDate){
-				$(this).addClass('half');
-				if(!$(this).prev('.fc-event').hasClass('half')){
-					$(this).prev('.fc-event').addClass('half');
-				}
-				
-			}
-			endDate = new Date($(this).data('end')).getTime();
-			// short event (less than 2 hours) 
-
-		    // based on time start and duration, calculate positions of event
-		    var timeStart = $(this).data('time'),
-		      dur = Math.floor($(this).data('duration') / 60),
-		      minutes = $(this).data('duration') % 60;
-
-		    if (minutes == 0) {
-		      minutes = '';
-		    }
-		    if (dur < 2) {
-		      $(this).addClass('one-hour');
-		      $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
-		    }
-
-
-		    var base = 8;
-
-		    //add color
-		    $(this).find('.category').css('background-color', $(this).data('color'));
-
-
-		    var mT = timeStart - base;
-		    $(this).css('margin-top', mT*170+10);
-
-
-		});
-		
-		// delete event from localStorage
- 		$('.fc-event').on('click', '.remove-evt', function (e) {
-          e.preventDefault();
-
-          var id = parseInt($(this).parent().data('id'));
-
-          var agenda = localStorage.getItem('agenda_press');
-          events = JSON.parse(agenda);
-
-          for (var i = 0; i < events.length; i++) {
-            if (events[i].id == id) {
-              events.splice(i, 1);
-            }
-          }
-
-          localStorage.setItem('agenda_press', JSON.stringify(events));
-          $(this).parent().remove();
-
-
-        });
-
-        displayProgrammationDay($('.timeline-container .active').data('date'));
-
-
-	};
-
-	function moveTimeline(element, day){
-		var numDay = 0; 
-	    if(day == 11){
-	    	numDay = 0;
-	    }else if(day == 22){
-	    	numDay = 9
-	    }else{
-	    	numDay = day - 12;
-	    }
-	    $('#timeline .timeline-container').css('left', - numDay * 130 + 'px');
-    	$('#timeline a').removeClass('active');
-    	element.addClass('active');
-    	
+  function moveTimeline(element, day) {
+    var numDay = 0; 
+    if(day == 11) {
+      numDay = 0;
+    } else if(day == 22) {
+      numDay = 9
+    } else {
+      numDay = day - 12;
     }
 
-    $('#timeline a').on('click', function(e) {
-    	e.preventDefault();
+    $('#timeline .timeline-container').css('left', - numDay * 130 + 'px');
+    $('#timeline a').removeClass('active');
+    element.addClass('active');
+  }
 
-	    if($(this).hasClass('active') || $(this).hasClass('disabled')) {
-	      return false;
-	    }
-	    
-	    $('#timeline a').removeClass('active');
-      	$(this).addClass('active');
+  $('#timeline a').on('click', function(e) {
+    e.preventDefault();
 
-      	
+    if($(this).hasClass('active') || $(this).hasClass('disabled')) {
+      return false;
+    }
 
-	    moveTimeline($(this), $(this).data('date'));
-	    displayProgrammationDay($('.timeline-container .active').data('date'));
-  	});
+    $('#timeline a').removeClass('active');
+    $(this).addClass('active');
 
-  	$('#timeline-calendar .prev').on('click',function(e){
-  		e.preventDefault();
+    moveTimeline($(this), $(this).data('date'));
+    displayProgrammationDay($('.timeline-container .active').data('date'));
+  });
 
-  		var day = $('.timeline-container').find('.active').data('date');
+  $('#timeline-calendar .prev').on('click',function(e) {
+    e.preventDefault();
+    var day = $('.timeline-container').find('.active').data('date');
 
-  		if(day == 11){
-	    	return false;
-	    }else{
+    if(day == 11) {
+      return false;
+    } else {
+      moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1);
+      displayProgrammationDay($('.timeline-container .active').data('date'));
+    }
+  });
 
-	    	moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1);
-	    	displayProgrammationDay($('.timeline-container .active').data('date'));
-	    }
-	    
-  	});
+  $('#timeline-calendar .next').on('click',function(e) {
+    e.preventDefault();
+    var day = $('.timeline-container').find('.active').data('date'), numDay = 0;
 
-  	$('#timeline-calendar  .next').on('click',function(e){
-  		e.preventDefault();
+    if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')) {
+      return false;
+    } else {
+      moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1);
+      displayProgrammationDay($('.timeline-container .active').data('date'));
+    }
+  });
 
-  		var day = $('.timeline-container').find('.active').data('date'), numDay = 0;
-
-  		if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')){
-	    	return false;
-	    }else{
-	    	moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1);
-	    	displayProgrammationDay($('.timeline-container .active').data('date'));
-	    }
-  	});
-
-  	// init timeline
-	moveTimeline($('.timeline-container').find('.active'),$('.timeline-container').find('.active').data('date'));
-
-
-
+  // init timeline
+  moveTimeline($('.timeline-container').find('.active'),$('.timeline-container').find('.active').data('date'));
 });
-
 $(document).ready(function() {
- 
+  var sliderCommuniques = $(".communiques-carousel").owlCarousel({ 
+    nav          : false,
+    dots         : false,
+    smartSpeed   : 500,
+    fluidSpeed   : 500,
+    loop         : false,
+    margin       : 0,
+    autoWidth    : true,
+    dragEndSpeed : 600,
+    items        : 1,
+    onInitialized: function() {
+      var m = ($(window).width() - $('.container').width()) / 2;
+      $('.communiques-carousel .owl-stage').css({ 'margin-left': m });
+    },
+    onResized: function() {
+      var m = ($(window).width() - $('.container').width()) / 2;
+      $('.communiques-carousel .owl-stage').css({ 'margin-left': m });
+    }
+  });
+  sliderCommuniques.owlCarousel();
 
-	var sliderCommuniques = $(".communiques-carousel").owlCarousel({ 
-	      nav: false,
-	      dots: false,
-	      smartSpeed: 500,
-	      fluidSpeed: 500,
-	      loop: false,
-	      margin: 0,
-	      autoWidth: true,
-	      dragEndSpeed: 600,
-	      items:1,
-	      onInitialized: function() {
-	        var m = ($(window).width() - $('.container').width()) / 2;
-	        $('.communiques-carousel .owl-stage').css({ 'margin-left': m });
-	      },
-	      onResized: function() {
-	        var m = ($(window).width() - $('.container').width()) / 2;
-	        $('.communiques-carousel .owl-stage').css({ 'margin-left': m });
-	      }
-	    });
+  var sliderMediatheque = $(".film-slider").owlCarousel({ 
+    nav          : false,
+    dots         : false,
+    smartSpeed   : 500,
+    fluidSpeed   : 500,
+    loop         : false,
+    margin       : 70,
+    autoWidth    : true,
+    dragEndSpeed : 600,
+    items        : 1,
+    center       : true
+  });
+  sliderMediatheque.owlCarousel();
 
-	    sliderCommuniques.owlCarousel();
+  $('.contact .sub-section .title-section').click(function() {
+    $(this).parent().toggleClass('open');
+    $(this).find('.icon').toggleClass('icon_fleche-top');
+  });  
 
+  var listener = function (event) {
+     event.preventDefault();
+  };
 
-	var sliderMediatheque = $(".film-slider").owlCarousel({ 
-	      nav: false,
-	      dots: false,
-	      smartSpeed: 500,
-	      fluidSpeed: 500,
-	      loop: false,
-	      margin: 70,
-	      autoWidth: true,
-	      dragEndSpeed: 600,
-	      items:1,
-	      center:true
-	    });
+  $('.button-locked').click(function(e) {
+    e.preventDefault();
+    var scrollTop = $(document).scrollTop();
 
-	    sliderMediatheque.owlCarousel();
+    $('body').append('<div id="overlay"><div class="close-button"><i class="icon icon_close"></i></div></div>');
+    $("#popin-press").addClass('visible');
+    $("#popin-press").css('top', scrollTop+$('.header-container').height()+$(window).height()/4);
+    $("#overlay").css('top', scrollTop);
+    $('#password').focus();
+    
+    document.body.addEventListener('touchmove', listener,false);
 
+    $('#overlay').click(function(e) {
+      document.body.removeEventListener('touchmove', listener,false);
+      $(this).remove();
+      $("#popin-press").removeClass('visible');
+    });
 
+    $('#popin-press #password').on('blur', function(e) {
+      window.scrollTo(0,scrollTop);
+    });
 
-	$('.contact .sub-section .title-section').click(function(){
+    $('#popin-press form').on('submit', function(e) {
+      $('#popin-press #password').blur();
+      e.preventDefault();
 
-		$(this).parent().toggleClass('open');
-		$(this).find('.icon').toggleClass('icon_fleche-top');
-	});	
+      var v = $(this).find('input[type="password"]').val();
+      // todo on server : security check password.
 
-	var listener = function (event) {
- 		event.preventDefault();
-	};
+      if(v == "test") {
+        localStorage.setItem('press-pwd', v);
+        document.body.removeEventListener('touchmove', listener,false);
+        // $.cookie('press', '1', { expires: 365 });
+        $('.press').removeClass('press-locked');
+        $('.press').addClass('press-unlocked');
+        $('.locked').remove();
+        $('#overlay').remove();
+        $("#popin-press").removeClass('visible');
+      } else {
+        $(this).addClass('error');
+      }
+    });
+  });
 
-	$('.button-locked').click(function(e){
-		e.preventDefault();
-		$('body').append('<div id="overlay"><div class="close-button"><i class="icon icon_close"></i></div></div>');
-		$("#popin-press").addClass('visible');
-		var scrollTop = $(document).scrollTop();
-		$("#popin-press").css('top', scrollTop+$('.header-container').height()+$(window).height()/4);
-		$("#overlay").css('top', scrollTop);
-		$('#password').focus();
-		document.body.addEventListener('touchmove', listener,false);
+  // if password is in localstorage
+  if(localStorage.getItem('press-pwd')) {
+    $('.press').removeClass('press-locked');
+    $('.press').addClass('press-unlocked');
+    $('.locked').remove();
+  }
 
-		$('#overlay').click(function(e){
-			document.body.removeEventListener('touchmove', listener,false);
-			$(this).remove();
-			$("#popin-press").removeClass('visible');
-		});
+  $('.locked form').on('submit', function(e) {
+    e.preventDefault();
 
-		$('#popin-press #password').on('blur', function(e) {
+    var v = $(this).find('input[type="password"]').val();
+    // todo on server : security check password.
 
-			window.scrollTo(0,scrollTop);
-		});
-
-
-		$('#popin-press form').on('submit', function(e) {
-
-			$('#popin-press #password').blur();
-		    e.preventDefault();
-
-		    var v = $(this).find('input[type="password"]').val();
-		    // todo on server : security check password.
-
-		    if(v == "test") {
-		      localStorage.setItem('press-pwd', v);
-		      // $.cookie('press', '1', { expires: 365 });
-		      $('.press').removeClass('press-locked');
-		      $('.press').addClass('press-unlocked');
-		      $('.locked').remove();
-		   	  document.body.removeEventListener('touchmove', listener,false);
-			  $('#overlay').remove();
-			  $("#popin-press").removeClass('visible');
-		    } else {
-		      $(this).addClass('error');
-		      
-		    }
-		    
-
-		});
-
-	});
-
-
-
-	// if password is in localstorage
-	if(localStorage.getItem('press-pwd')) {
-	    $('.press').removeClass('press-locked');
-	    $('.press').addClass('press-unlocked');
-	    $('.locked').remove();
-	}
-
-
-	$('.locked form').on('submit', function(e) {
-
-	    e.preventDefault();
-
-	    var v = $(this).find('input[type="password"]').val();
-	    // todo on server : security check password.
-
-	    if(v == "test") {
-	      localStorage.setItem('press-pwd', v);
-	      $('.press').removeClass('press-locked');
-	      $('.press').addClass('press-unlocked');
-	      $('.locked').addClass('valid');
-	      $('.locked').html('<p class="press_confirmation">les contenus qui vous sont réservés sont à présents accessibles.</p>');
-	    } else {
-	      $(this).addClass('error');
-	    }
-
-	});
-
-
-
+    if(v == "test") {
+      localStorage.setItem('press-pwd', v);
+      $('.press').removeClass('press-locked');
+      $('.press').addClass('press-unlocked');
+      $('.locked').addClass('valid');
+      $('.locked').html('<p class="press_confirmation">les contenus qui vous sont réservés sont à présents accessibles.</p>');
+    } else {
+      $(this).addClass('error');
+    }
+  });
 });

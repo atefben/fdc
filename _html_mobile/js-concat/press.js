@@ -365,427 +365,359 @@ $(document).ready(function() {
 	}
 
 });
+var selectionOpen = false,
+    filters;
+
+function openSelection() {
+  $('#main').addClass('st-effect st-selection-open');  
+  selectionOpen = true;
+
+  $('.selection-main-container .thumb').remove();
+
+  filters = $("#myselection-filters").owlCarousel({
+    nav: false,
+    dots: false,
+    smartSpeed: 500,
+    margin: 0,
+    autoWidth: false,
+    loop: false,
+    items:3,
+    stagePadding:40,
+    onInitialized: function() {
+      var m = ($(window).width() - $('.container').width()) / 2;
+      $('#horizontal-filters .owl-stage').css({ 'margin-left': m });
+    },
+    onResized: function() {
+      var m = ($(window).width() - $('.container').width()) / 2;
+      $('#horizontal-filters .owl-stage').css({ 'margin-left': m });
+    }
+  });
+  filters.owlCarousel();
+
+  $("#myselection-filters a").on('click',function(e) {
+    e.preventDefault();
+    $("#myselection-filters a").removeClass('active');
+    $(this).addClass('active');
+
+    var filter = $(this).data('filter')
+
+    if($(this).data('filter') == 'suggestion') {
+      $('.suggestion').css('display','block');
+      $('.my-selection-container').css('display','none');
+      $('.thumb').css('display','block');
+    } else {
+      $('.my-selection-container').css('display','block');
+      $('.suggestion').css('display','none');
+
+      if($(this).data('filter') == 'all') {
+        $('.thumb').css('display','block');
+      } else{
+        $( ".thumb" ).each(function() {
+          if ($(this).find('.icon_'+filter+'').length == 0) {
+            $(this).css('display','none');
+          } else {
+            $(this).css('display','block');
+          }
+        });
+      }
+    }
+  });
+
+  $.ajax({
+    type     : "GET",
+    dataType : "html",
+    cache    : false,
+    url      : GLOBALS.urls.selectionUrl ,
+    success: function(data) {
+      $('.suggestion').append(data);
+    }
+  });
+
+  if (JSON.parse(localStorage.getItem('mySelection')) && JSON.parse(localStorage.getItem('mySelection')).length > 0) {
+    displaySelection();
+  } else {
+    $('.count span').html(0);
+    displaySuggestions();
+  }
+}
+
+function displaySelection() {
+  $('.count span').html(JSON.parse(localStorage.getItem('mySelection')).length);
+
+  for(var i = 0 ; i < JSON.parse(localStorage.getItem('mySelection')).length ; i++) {
+    var thumb = $("<div class='thumb'></div>")
+    thumb.html(JSON.parse(localStorage.getItem('mySelection'))[i])
+    thumb.find('.picto-my-selection').remove();
+    thumb.append('<span class="delete"><i class="icon icon_close"></i></span>');
+    $('.my-selection-container').prepend(thumb);
+  }
+
+  $('.delete').on('click',function() {
+    var index = $(this).parent().index();
+    var items = JSON.parse(localStorage.getItem('mySelection'));
+    items.splice(index,1);
+    localStorage.setItem('mySelection', JSON.stringify(items));
+    $(this).parent().remove();
+    $('.count span').html(JSON.parse(localStorage.getItem('mySelection')).length);
+  });
+
+  $("#myselection-filters a[data-filter='all']").trigger("click");
+  filters.trigger("to.owl.carousel", [0, 2, true]);
+}
+
+function displaySuggestions() {
+  filters.trigger("to.owl.carousel", [3, 2, true]);
+  $("#myselection-filters a[data-filter='suggestion']").trigger("click");
+}
+
 $(document).ready(function() {
-
-	var selectionOpen = false;
-	var filters ;
-	 $('#selection-btn').on('click', function() {
-	      $.openSelection();
-	  });
-	 $('#main').on('click', function(e) {
-
-	   if(!$(e.target).parents('.selection-main-container').length && !$(e.target).parents('#selection-btn').length && !$(e.target).hasClass('delete') && !$(e.target).hasClass('icon_close'))
-	   {
-	       if(selectionOpen){
-	          $('#main').removeClass('st-effect st-selection-open');  
-	          selectionOpen = false;
-	        }                
-	   }
-
-	    
-	  });
-
-	var displaySelection = function(){
-
-		$('.count span').html(JSON.parse(localStorage.getItem('mySelection')).length);
-
-		for(var i = 0 ; i < JSON.parse(localStorage.getItem('mySelection')).length ; i++){
-		
-			var thumb = $("<div class='thumb'></div>")
-			thumb.html(JSON.parse(localStorage.getItem('mySelection'))[i])
-			thumb.find('.picto-my-selection').remove();
-			thumb.append('<span class="delete"><i class="icon icon_close"></i></span>');
-			$('.my-selection-container').prepend(thumb);
-
-		}
-
-
-		$('.delete').on('click',function(){
-
-			var index = $(this).parent().index();
-			var items = JSON.parse(localStorage.getItem('mySelection'));
-			items.splice(index,1);
-			localStorage.setItem('mySelection', JSON.stringify(items));
-			$(this).parent().remove();
-			$('.count span').html(JSON.parse(localStorage.getItem('mySelection')).length);
-		});
-
-		$("#myselection-filters a[data-filter='all']").trigger("click");
-		filters.trigger("to.owl.carousel", [0, 2, true]);
-	}
-
-	var displaySuggestions = function(){
-
-		filters.trigger("to.owl.carousel", [3, 2, true]);
-		$("#myselection-filters a[data-filter='suggestion']").trigger("click");
-
-	}
-
-	$.openSelection = function(){
-
-		$('#main').addClass('st-effect st-selection-open');  
-	    selectionOpen = true;
-
-	    $('.selection-main-container .thumb').remove();
-
-
-		filters = $("#myselection-filters").owlCarousel({
-		  nav: false,
-		  dots: false,
-		  smartSpeed: 500,
-		  margin: 0,
-		  autoWidth: false,
-		  loop: false,
-		  items:3,
-		  stagePadding:40,
-		  onInitialized: function() {
-		    var m = ($(window).width() - $('.container').width()) / 2;
-		    $('#horizontal-filters .owl-stage').css({ 'margin-left': m });
-		  },
-		  onResized: function() {
-		    var m = ($(window).width() - $('.container').width()) / 2;
-		    $('#horizontal-filters .owl-stage').css({ 'margin-left': m });
-		  }
-		});
-		filters.owlCarousel();
-
-
-		$("#myselection-filters a").on('click',function(e){
-
-			e.preventDefault();
-			$("#myselection-filters a").removeClass('active');
-			$(this).addClass('active');
-
-			var filter = $(this).data('filter')
-
-			if($(this).data('filter') == 'suggestion'){
-
-				$('.suggestion').css('display','block');
-				$('.my-selection-container').css('display','none');
-				$('.thumb').css('display','block');
-
-			}else{
-
-				$('.my-selection-container').css('display','block');
-				$('.suggestion').css('display','none');
-
-				if($(this).data('filter') == 'all'){
-					$('.thumb').css('display','block');
-				}	
-
-				else{
-
-					$( ".thumb" ).each(function() {
-
-					  if ($(this).find('.icon_'+filter+'').length == 0){
-					  	$(this).css('display','none');
-					  }else{
-					  	$(this).css('display','block');
-					  }
-					});
-	 
-				}
-			}
-			
-		});
-
-
-	 	$.ajax({
-		    type: "GET",
-		    dataType: "html",
-		    cache: false,
-		    url: GLOBALS.urls.selectionUrl ,
-		    success: function(data) {
-
-		    	$('.suggestion').append(data);
-		    }
-
-		});
-
-	    if (JSON.parse(localStorage.getItem('mySelection')) && JSON.parse(localStorage.getItem('mySelection')).length > 0){
-	    	displaySelection();
-	    }else{
-	    	$('.count span').html(0);
-	    	displaySuggestions();
-	    }
-
-		
-
-
-		
-
-	};
-	
+  $('#selection-btn').on('click', function() {
+    openSelection();
+  });
+  
+  $('#main').on('click', function(e) {
+    if(
+      !$(e.target).parents('.selection-main-container').length && 
+      !$(e.target).parents('#selection-btn').length && 
+      !$(e.target).hasClass('delete') && 
+      !$(e.target).hasClass('icon_close')
+    ) {
+      if(selectionOpen) {
+        $('#main').removeClass('st-effect st-selection-open');  
+        selectionOpen = false;
+      }
+    }
+  });
 });
 $(document).ready(function() {
+  // init array of events
+  var events = [];
+  // get local storage
+  var agenda = localStorage.getItem('agenda_press');
+  // if local storage, get the events
+  if (agenda != null) {
+    events = JSON.parse(agenda);
+  }
 
-	// init array of events
-	 var events = [];
+  // STOP AGENDA PICTOS FIXED BEFORE NEWSLETTER BLOCK
+  $(window).on('scroll', function() {
+    var s = $(this).scrollTop();
+    
+    if( s + document.documentElement.clientHeight > $('#main').height() + 173) {
+      $('.agenda-access:not(.no-fixed)').css('position','absolute');
+      $('.agenda-access:not(.no-fixed)').css('bottom','50px');
+    } else {
+      $('.agenda-access:not(.no-fixed)').css('position','fixed');
+      $('.agenda-access:not(.no-fixed)').css('bottom','40px');
+    }
+  });
 
-	// get local storage
-	var agenda = localStorage.getItem('agenda_press');
-
-	// if local storage, get the events
-	if (agenda != null) {
-	   events = JSON.parse(agenda);
-	}
-
-	// STOP AGENDA PICTOS FIXED BEFORE NEWSLETTER BLOCK
-	$(window).on('scroll', function() {
-	    var s = $(this).scrollTop();
-	    if( s + document.documentElement.clientHeight > $('#main').height() + 173) {
-
-	    	$('.agenda-access:not(.no-fixed)').css('position','absolute');
-	    	$('.agenda-access:not(.no-fixed)').css('bottom','50px');
-	    }
-	    else{
-
-	    	$('.agenda-access:not(.no-fixed)').css('position','fixed');
-	    	$('.agenda-access:not(.no-fixed)').css('bottom','40px');
-	    }
-	 });
-
-	function displayProgrammationDay(day){
-
-		// TODO : à enlever lors de la dynamisation. C'est juste un test pour afficher 2 jours différents
-		var url;
-		if(day%2 == 0){
-			url = GLOBALS.urls.calendarDay2;
-		}else{
-			url = GLOBALS.urls.calendarDay1;
-		}
-		//
-
-		$.ajax({
-	        type: "GET",
-	        dataType: "html",
-	        cache: false,
-	        url: url,
-	        success: function (data) {
-	            $('.v-wrapper').html(data);
-
-	            var venues = $(".v-wrapper-content").owlCarousel({
-				  nav: false,
-				  dots: false,
-				  smartSpeed: 500,
-				  margin: 0,
-				  autoWidth: true,
-				  loop: true,
-				  items:2
-
-				});
-				venues.owlCarousel();
-
-				$('.calendar .v-container').each(function () {
-				
-					var endDate = new Date("1900-01-01T00:00:00").getTime();
-			
-		
-					$(this).find(".fc-event").each(function () {
-
-
-						// allows to display two events at same hour (or overlap) in the same column 
-						// it works only if element (fc-event) are added in chronologic order
-						var startDate = new Date($(this).data('start')).getTime();
-						if(startDate < endDate){
-							$(this).addClass('half');
-							if(!$(this).prev('.fc-event').hasClass('half')){
-								$(this).prev('.fc-event').addClass('half');
-							}
-							
-						}
-						endDate = new Date($(this).data('end')).getTime();
-
-						//
-						
-
-
-					    // based on time start and duration, calculate positions of event
-					    var timeStart = $(this).data('time'),
-					      dur = Math.floor($(this).data('duration') / 60),
-					      minutes = $(this).data('duration') % 60;
-
-					    if (minutes == 0) {
-					      minutes = '';
-					    }
-
-					    // short event (less than 2 hours)
-					    if (dur < 2) {
-					      $(this).addClass('one-hour');
-					      $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
-					    }
-
-					    var base = 8;
-
-					    //add color
-					    $(this).find('.category').css('background-color', $(this).data('color'));
-					    $(this).addClass($(this).data('picto').substr(1));
-
-					    var mT = timeStart - base;
-					    $(this).css('margin-top', mT*170+10);
-
-					    // init all the data of the event
-					    var eventObject = {
-					      title: $(this).find('.txt span').text(),
-					      eventColor: $(this).data('color'),
-					      start: $(this).data('start'),
-					      end: $(this).data('end'),
-					      time:$(this).data('time'),
-					      type: $(this).find('.category').text(),
-					      author: $(this).find('.txt strong').text(),
-					      picture: $(this).find('img').attr('src'),
-					      duration: $(this).data('duration'),
-					      room: $(this).find('.bottom .ven').text(),
-					      selection: $(this).find('.bottom .competition').text(),
-					      eventPictogram: $(this).find('.category .icon').attr('class').split(' ')[1],
-					      id: $(this).data('id'),
-					      url: $(this).data('url')
-					    };
-
-					    // store the Event Object in the DOM element so we can get to it later
-					    $(this).data('eventObject', eventObject);
-
-					});
-				});
-
-
-
-			    $('.calendar').on('click', '.fc-event', function (e) {
-			      var url = $(this).data('url');
-			      openPopinEvent(url);
-			    });
-	        }
-      	});
-
-
-
-	}
-
-
-
-	displayProgrammationDay($('.timeline-container .active').data('date'));
-
-
-
-	
-
-	function moveTimeline(element, day){
-		var numDay = 0; 
-	    if(day == 11){
-	    	numDay = 0;
-	    }else if(day == 22){
-	    	numDay = 9
-	    }else{
-	    	numDay = day - 12;
-	    }
-	    $('#timeline .timeline-container').css('left', - numDay * 130 + 'px');
-    	$('#timeline a').removeClass('active');
-    	element.addClass('active');
-    	
+  function displayProgrammationDay(day) {
+    var url;
+    if (GLOBALS.env == "html") {
+      if(day%2 == 0) {
+        url = GLOBALS.urls.calendarDay2;
+      } else {
+        url = GLOBALS.urls.calendarDay1;
+      }
+    } else {
+      url = GLOBALS.urls.calendarProgrammationUrl;
     }
 
-
-	$('#timeline a').on('click', function(e) {
-    	e.preventDefault();
-
-	    if($(this).hasClass('active') || $(this).hasClass('disabled')) {
-	      return false;
-	    }
-	    
-	    $('#timeline a').removeClass('active');
-      	$(this).addClass('active');
-	    moveTimeline($(this), $(this).data('date'));
-	    displayProgrammationDay($('.timeline-container .active').data('date'));
-  	});
-
-  	$('#timeline-calendar .prev').on('click',function(e){
-  		e.preventDefault();
-
-  		var day = $('.timeline-container').find('.active').data('date');
-
-  		if(day == 11){
-	    	return false;
-	    }else{
-
-	    	moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1);
-	    	displayProgrammationDay($('.timeline-container .active').data('date'));
-	    }
-	    
-  	});
-
-  	$('#timeline-calendar  .next').on('click',function(e){
-  		e.preventDefault();
-
-  		var day = $('.timeline-container').find('.active').data('date'), numDay = 0;
-
-  		if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')){
-	    	return false;
-	    }else{
-	    	
-	    	moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1);
-	    	displayProgrammationDay($('.timeline-container .active').data('date'));
-	    }
-  	});
-
-  	// init timeline
-	moveTimeline($('.timeline-container').find('.active'),$('.timeline-container').find('.active').data('date'));
-
-
-
-	function openPopinEvent(url) {
     $.ajax({
-      type: "GET",
-      dataType: "html",
-      cache: false,
-      url: url,
+      type     : "GET",
+      dataType : "html",
+      data     : {'date':day},
+      cache    : false,
+      url      : url,
+      success: function (data) {
+        $('.v-wrapper').html(data);
+
+        var venues = $(".v-wrapper-content").owlCarousel({
+          nav        : false,
+          dots       : false,
+          smartSpeed : 500,
+          margin     : 0,
+          autoWidth  : true,
+          loop       : true,
+          items      : 2
+        });
+        venues.owlCarousel();
+
+        $('.calendar .v-container').each(function () {
+          var endDate = new Date("1900-01-01T00:00:00").getTime();
+    
+          $(this).find(".fc-event").each(function () {
+            // allows to display two events at same hour (or overlap) in the same column 
+            // it works only if element (fc-event) are added in chronologic order
+            var startDate = new Date($(this).data('start')).getTime();
+            if(startDate < endDate) {
+              $(this).addClass('half');
+              if(!$(this).prev('.fc-event').hasClass('half')) {
+                $(this).prev('.fc-event').addClass('half');
+              }
+            }
+            endDate = new Date($(this).data('end')).getTime();
+
+            // based on time start and duration, calculate positions of event
+            var timeStart = $(this).data('time'),
+                dur = Math.floor($(this).data('duration') / 60),
+                minutes = $(this).data('duration') % 60,
+                base = 8;
+            var mT = timeStart - base;
+
+            if (minutes == 0) {
+              minutes = '';
+            }
+
+            // short event (less than 2 hours)
+            if (dur < 2) {
+              $(this).addClass('one-hour');
+              $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
+            }
+            //add color
+            $(this).find('.category').css('background-color', $(this).data('color'));
+            $(this).addClass($(this).data('picto').substr(1));
+            $(this).css('margin-top', mT*170+10);
+
+            // init all the data of the event
+            var eventObject = {
+              title          : $(this).find('.txt span').text(),
+              eventColor     : $(this).data('color'),
+              start          : $(this).data('start'),
+              end            : $(this).data('end'),
+              time           : $(this).data('time'),
+              type           : $(this).find('.category').text(),
+              author         : $(this).find('.txt strong').text(),
+              picture        : $(this).find('img').attr('src'),
+              duration       : $(this).data('duration'),
+              room           : $(this).find('.bottom .ven').text(),
+              selection      : $(this).find('.bottom .competition').text(),
+              eventPictogram : $(this).find('.category .icon').attr('class').split(' ')[1],
+              id             : $(this).data('id'),
+              url            : $(this).data('url')
+            };
+
+            // store the Event Object in the DOM element so we can get to it later
+            $(this).data('eventObject', eventObject);
+          });
+        });
+
+        $('.calendar').on('click', '.fc-event', function (e) {
+          var url = $(this).data('url');
+          openPopinEvent(url);
+        });
+      }
+    });
+  }
+
+  displayProgrammationDay($('.timeline-container .active').data('date'));
+
+  function moveTimeline(element, day) {
+    //console.log(element, day)
+    var numDay = 0; 
+    if(day == 11){
+      numDay = 0;
+    } else if(day == 22) {
+      numDay = 9
+    } else {
+      numDay = day - 12;
+    }
+    $('#timeline .timeline-container').css('left', - numDay * 130 + 'px');
+    $('#timeline a').removeClass('active');
+    element.addClass('active');
+  }
+
+  $('#timeline a').on('click', function(e) {
+    e.preventDefault();
+
+    if($(this).hasClass('active') || $(this).hasClass('disabled')) {
+      return false;
+    }
+    
+    $('#timeline a').removeClass('active');
+    $(this).addClass('active');
+    moveTimeline($(this), $(this).data('day'));
+    displayProgrammationDay($('.timeline-container .active').data('date'));
+  });
+
+  $('#timeline-calendar .prev').on('click',function(e) {
+    e.preventDefault();
+    console.log( $('.timeline-container').find('.active'));
+
+    var day = $('.timeline-container').find('.active').data('day');
+  console.log('click', day);
+    if(day == 11) {
+      return false;
+    } else {
+      moveTimeline($('.timeline-container').find("[data-day='" + (day - 1) + "']"),day-1);
+      displayProgrammationDay($('.timeline-container .active').data('date'));
+    }
+  });
+
+  $('#timeline-calendar .next').on('click',function(e) {
+    e.preventDefault();
+    var day = $('.timeline-container').find('.active').data('day'), numDay = 0;
+
+    if(day == 22 || $('.timeline-container').find("[data-day='" + (day + 1) + "']").hasClass('disabled')) {
+      return false;
+    } else {
+      moveTimeline($('.timeline-container').find("[data-day='" + (day + 1) + "']"),day+1);
+      displayProgrammationDay($('.timeline-container .active').data('date'));
+    }
+  });
+
+  // init timeline
+  moveTimeline($('.timeline-container').find('.active'),$('.timeline-container').find('.active').data('day'));
+
+  function openPopinEvent(url) {
+    $.ajax({
+      type     : "GET",
+      dataType : "html",
+      cache    : false,
+      url      : url,
       success: function (data) {
         $('.popin-event').remove();
         // display the html
         $('.calendar').append(data);
         // $('.popin-event').css('top', $(document).scrollTop());
         $('.popin-event .fc-event').each(function () {
+          $(this).find('.category').css('background-color', $(this).data('color'));
+          $(this).addClass($(this).data('picto').substr(1));
+        });
 
-	
-	    	$(this).find('.category').css('background-color', $(this).data('color'));
-	    	$(this).addClass($(this).data('picto').substr(1));
+        $('.events-container .fc-event').each(function () {
+          var $this = $(this),
+              id    = $(this).data('id');
 
-		});
-
-
-        
-      $('.events-container .fc-event').each(function () {
-        var id = $(this).data('id'),
-          $this = $(this);
-
-        for (var i = 0; i < events.length; i++) {
-          if (id == events[i].id) {
-            $this.parent().addClass('agenda');
-            $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
+          for (var i = 0; i < events.length; i++) {
+            if (id == events[i].id) {
+              $this.parent().addClass('agenda');
+              $this.parent().find('.button').removeClass('add').text(GLOBALS.texts.agenda.delete);
+            }
           }
-        }
 
-        // init all the data of the event
-	    var eventObject = {
-	      title: $(this).find('.txt span').text(),
-	      eventColor: $(this).data('color'),
-	      start: $(this).data('start'),
-	      end: $(this).data('end'),
-	      time:$(this).data('time'),
-	      type: $(this).find('.category').text(),
-	      author: $(this).find('.txt strong').text(),
-	      picture: $(this).find('img').attr('src'),
-	      duration: $(this).data('duration'),
-	      room: $(this).find('.bottom .ven').text(),
-	      selection: $(this).find('.bottom .competition').text(),
-	      eventPictogram: $(this).find('.category .icon').attr('class').split(' ')[1],
-	      id: $(this).data('id'),
-	      url: $(this).data('url')
-	    };
+          // init all the data of the event
+          var eventObject = {
+            title          : $(this).find('.txt span').text(),
+            eventColor     : $(this).data('color'),
+            start          : $(this).data('start'),
+            end            : $(this).data('end'),
+            time           : $(this).data('time'),
+            type           : $(this).find('.category').text(),
+            author         : $(this).find('.txt strong').text(),
+            picture        : $(this).find('img').attr('src'),
+            duration       : $(this).data('duration'),
+            room           : $(this).find('.bottom .ven').text(),
+            selection      : $(this).find('.bottom .competition').text(),
+            eventPictogram : $(this).find('.category .icon').attr('class').split(' ')[1],
+            id             : $(this).data('id'),
+            url            : $(this).data('url')
+          };
 
-	    // store the Event Object in the DOM element so we can get to it later
-	    $(this).data('eventObject', eventObject);
-      });
-        
+          // store the Event Object in the DOM element so we can get to it later
+          $(this).data('eventObject', eventObject);
+        });
 
         // show popin
         setTimeout(function () {
@@ -794,9 +726,7 @@ $(document).ready(function() {
           $('body').addClass('overlay');
         }, 100);
 
-
-
-         // close popin
+        // close popin
         $('.calendar').on('click', '.close-button', function (e) {
           e.preventDefault();
 
@@ -810,16 +740,17 @@ $(document).ready(function() {
         // add event
         $('.calendar').on('click', '.event .add', function (e) {
           e.preventDefault();
-          var $ev = $(this).parent().find('.fc-event');
 
+          var $ev                 = $(this).parent().find('.fc-event');
           var originalEventObject = $ev.data('eventObject');
-          var copiedEventObject = $.extend({}, originalEventObject);
+          var copiedEventObject   = $.extend({}, originalEventObject);
         
-         if (events.filter(function (e) {
-              return e.id == copiedEventObject.id;
+          if (events.filter(function (e) {
+            return e.id == copiedEventObject.id;
             }).length > 0) {
             return false;
           }
+          
           // get local storage
           var agenda = localStorage.getItem('agenda_press');
 
@@ -836,14 +767,13 @@ $(document).ready(function() {
           $(this).removeClass('add').text(GLOBALS.texts.agenda.delete);
         });
 
-		// delete event
+        // delete event
         $('.calendar').on('click', '.event.agenda .button', function (e) {
           e.preventDefault();
 
-          var id = parseInt($(this).parent().find('.fc-event').data('id'));
-
+          var id     = parseInt($(this).parent().find('.fc-event').data('id'));
           var agenda = localStorage.getItem('agenda_press');
-          events = JSON.parse(agenda);
+          events     = JSON.parse(agenda);
 
           for (var i = 0; i < events.length; i++) {
             if (events[i].id == id) {
@@ -856,214 +786,176 @@ $(document).ready(function() {
           $(this).parent().removeClass('agenda');
           $(this).text('Ajouter').addClass('add');
         });
-
       }
     });
   }
-
-
-
 });
-
 $(document).ready(function() {
- 
+  var sliderCommuniques = $(".communiques-carousel").owlCarousel({ 
+    nav          : false,
+    dots         : false,
+    smartSpeed   : 500,
+    fluidSpeed   : 500,
+    loop         : false,
+    margin       : 0,
+    autoWidth    : true,
+    dragEndSpeed : 600,
+    items        : 1,
+    onInitialized: function() {
+      var m = ($(window).width() - $('.container').width()) / 2;
+      $('.communiques-carousel .owl-stage').css({ 'margin-left': m });
+    },
+    onResized: function() {
+      var m = ($(window).width() - $('.container').width()) / 2;
+      $('.communiques-carousel .owl-stage').css({ 'margin-left': m });
+    }
+  });
+  sliderCommuniques.owlCarousel();
 
-	var sliderCommuniques = $(".communiques-carousel").owlCarousel({ 
-	      nav: false,
-	      dots: false,
-	      smartSpeed: 500,
-	      fluidSpeed: 500,
-	      loop: false,
-	      margin: 0,
-	      autoWidth: true,
-	      dragEndSpeed: 600,
-	      items:1,
-	      onInitialized: function() {
-	        var m = ($(window).width() - $('.container').width()) / 2;
-	        $('.communiques-carousel .owl-stage').css({ 'margin-left': m });
-	      },
-	      onResized: function() {
-	        var m = ($(window).width() - $('.container').width()) / 2;
-	        $('.communiques-carousel .owl-stage').css({ 'margin-left': m });
-	      }
-	    });
+  var sliderMediatheque = $(".film-slider").owlCarousel({ 
+    nav          : false,
+    dots         : false,
+    smartSpeed   : 500,
+    fluidSpeed   : 500,
+    loop         : false,
+    margin       : 70,
+    autoWidth    : true,
+    dragEndSpeed : 600,
+    items        : 1,
+    center       : true
+  });
+  sliderMediatheque.owlCarousel();
 
-	    sliderCommuniques.owlCarousel();
+  $('.contact .sub-section .title-section').click(function() {
+    $(this).parent().toggleClass('open');
+    $(this).find('.icon').toggleClass('icon_fleche-top');
+  });  
 
+  var listener = function (event) {
+     event.preventDefault();
+  };
 
-	var sliderMediatheque = $(".film-slider").owlCarousel({ 
-	      nav: false,
-	      dots: false,
-	      smartSpeed: 500,
-	      fluidSpeed: 500,
-	      loop: false,
-	      margin: 70,
-	      autoWidth: true,
-	      dragEndSpeed: 600,
-	      items:1,
-	      center:true
-	    });
+  $('.button-locked').click(function(e) {
+    e.preventDefault();
+    var scrollTop = $(document).scrollTop();
 
-	    sliderMediatheque.owlCarousel();
+    $('body').append('<div id="overlay"><div class="close-button"><i class="icon icon_close"></i></div></div>');
+    $("#popin-press").addClass('visible');
+    $("#popin-press").css('top', scrollTop+$('.header-container').height()+$(window).height()/4);
+    $("#overlay").css('top', scrollTop);
+    $('#password').focus();
+    
+    document.body.addEventListener('touchmove', listener,false);
 
-
-
-	$('.contact .sub-section .title-section').click(function(){
-
-		$(this).parent().toggleClass('open');
-		$(this).find('.icon').toggleClass('icon_fleche-top');
-	});	
-
-	var listener = function (event) {
- 		event.preventDefault();
-	};
-
-	$('.button-locked').click(function(e){
-		e.preventDefault();
-		$('body').append('<div id="overlay"><div class="close-button"><i class="icon icon_close"></i></div></div>');
-		$("#popin-press").addClass('visible');
-		var scrollTop = $(document).scrollTop();
-		$("#popin-press").css('top', scrollTop+$('.header-container').height()+$(window).height()/4);
-		$("#overlay").css('top', scrollTop);
-		$('#password').focus();
-		document.body.addEventListener('touchmove', listener,false);
-
-		$('#overlay').click(function(e){
-			document.body.removeEventListener('touchmove', listener,false);
-			$(this).remove();
-			$("#popin-press").removeClass('visible');
-		});
-
-		$('#popin-press #password').on('blur', function(e) {
-
-			window.scrollTo(0,scrollTop);
-		});
-
-
-		$('#popin-press form').on('submit', function(e) {
-
-			$('#popin-press #password').blur();
-		    e.preventDefault();
-
-		    var v = $(this).find('input[type="password"]').val();
-		    // todo on server : security check password.
-
-		    if(v == "test") {
-		      localStorage.setItem('press-pwd', v);
-		      // $.cookie('press', '1', { expires: 365 });
-		      $('.press').removeClass('press-locked');
-		      $('.press').addClass('press-unlocked');
-		      $('.locked').remove();
-		   	  document.body.removeEventListener('touchmove', listener,false);
-			  $('#overlay').remove();
-			  $("#popin-press").removeClass('visible');
-		    } else {
-		      $(this).addClass('error');
-		      
-		    }
-		    
-
-		});
-
-	});
-
-
-
-	// if password is in localstorage
-	if(localStorage.getItem('press-pwd')) {
-	    $('.press').removeClass('press-locked');
-	    $('.press').addClass('press-unlocked');
-	    $('.locked').remove();
-	}
-
-
-	$('.locked form').on('submit', function(e) {
-
-	    e.preventDefault();
-
-	    var v = $(this).find('input[type="password"]').val();
-	    // todo on server : security check password.
-
-	    if(v == "test") {
-	      localStorage.setItem('press-pwd', v);
-	      $('.press').removeClass('press-locked');
-	      $('.press').addClass('press-unlocked');
-	      $('.locked').addClass('valid');
-	      $('.locked').html('<p class="press_confirmation">les contenus qui vous sont réservés sont à présents accessibles.</p>');
-	    } else {
-	      $(this).addClass('error');
-	    }
-
-	});
-
-
-
-});
-// Filters
-// =========================
-
-function filter() {
-
-  // var filters = [];
-  
-    $('.filter').each(function() {
-      var $that = $(this);
-      var a = $that.find('.select span.active').data('filter');
-
-      if(a !== 'all'){
-        $(".list .item:not(."+a+")").css('display','none');
-      }
-       
+    $('#overlay').click(function(e) {
+      document.body.removeEventListener('touchmove', listener,false);
+      $(this).remove();
+      $("#popin-press").removeClass('visible');
     });
 
-    if($('.grid').length !== 0){
-      $('.grid').isotope();
-    }
-    
-      
-  
-  
+    $('#popin-press #password').on('blur', function(e) {
+      window.scrollTo(0,scrollTop);
+    });
 
+    $('#popin-press form').on('submit', function(e) {
+      $('#popin-press #password').blur();
+      e.preventDefault();
+
+      var v = $(this).find('input[type="password"]').val();
+      // todo on server : security check password.
+
+      if(v == "test") {
+        localStorage.setItem('press-pwd', v);
+        document.body.removeEventListener('touchmove', listener,false);
+        // $.cookie('press', '1', { expires: 365 });
+        $('.press').removeClass('press-locked');
+        $('.press').addClass('press-unlocked');
+        $('.locked').remove();
+        $('#overlay').remove();
+        $("#popin-press").removeClass('visible');
+      } else {
+        $(this).addClass('error');
+      }
+    });
+  });
+
+  // if password is in localstorage
+  if(localStorage.getItem('press-pwd')) {
+    $('.press').removeClass('press-locked');
+    $('.press').addClass('press-unlocked');
+    $('.locked').remove();
+  }
+
+  $('.locked form').on('submit', function(e) {
+    e.preventDefault();
+
+    var v = $(this).find('input[type="password"]').val();
+    // todo on server : security check password.
+
+    if(v == "test") {
+      localStorage.setItem('press-pwd', v);
+      $('.press').removeClass('press-locked');
+      $('.press').addClass('press-unlocked');
+      $('.locked').addClass('valid');
+      $('.locked').html('<p class="press_confirmation">les contenus qui vous sont réservés sont à présents accessibles.</p>');
+    } else {
+      $(this).addClass('error');
+    }
+  });
+});
+function filter() {
+  $('.filter').each(function() {
+    var $that = $(this);
+    var a = $that.find('.select span.active').data('filter');
+
+    if(a !== 'all') {
+      $(".list .item:not(."+a+")").css('display','none');
+    }
+  });
+
+  if($('.grid').length !== 0) {
+    $('.grid').isotope();
+  }
 }
 
 $(document).ready(function() {
-
   // on click on a filter
   if ($('.filters').length) {
-  $('.filters .select span').on('click', function() {
-    var h = $(this).parent().html();
+    $('.filters .select span').on('click', function() {
+      var h = $(this).parent().html();
 
-    $('#filters').remove();
-    $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon_close"></i></div></div>');
-    $('#filters .vCenterKid').html(h);
-    $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
+      $('#filters').remove();
+      $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon_close"></i></div></div>');
+      $('#filters .vCenterKid').html(h);
+      $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
 
-    setTimeout(function() {
-      $('#filters').addClass('show');
-    }, 100);
+      setTimeout(function() {
+        $('#filters').addClass('show');
+      }, 100);
 
-    setTimeout(function() {
-      $('#filters span').addClass('show');
-    }, 400);
-  });
-}
+      setTimeout(function() {
+        $('#filters span').addClass('show');
+      }, 400);
+    });
+  }
+
   if ($('.filters-slider').length) {
     $('.filters-slider .select span').on('click', function() {
-    var h = $(this).parent().html();
+      var h = $(this).parent().html();
 
-    $('#filters').remove();
-    $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon_close"></i></div></div>');
-    $('#filters .vCenterKid').html(h);
-    $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
+      $('#filters').remove();
+      $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon_close"></i></div></div>');
+      $('#filters .vCenterKid').html(h);
+      $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
 
-    setTimeout(function() {
-      $('#filters').addClass('show');
-    }, 100);
+      setTimeout(function() {
+        $('#filters').addClass('show');
+      }, 100);
 
-    setTimeout(function() {
-      $('#filters span').addClass('show');
-    }, 400);
-  });
+      setTimeout(function() {
+        $('#filters span').addClass('show');
+      }, 400);
+    });
   }
 
   // close filters
@@ -1076,9 +968,8 @@ $(document).ready(function() {
 
   // filter data on page
   $('body').on('click', '#filters span', function() {
-
       var id = $('#filters').data('id'),
-          i = $(this).index();
+          i  = $(this).index();
 
       $('#' + id + ' .select span').removeClass('active');
       $('#' + id + ' .select span').eq(i).addClass('active');
@@ -1086,5 +977,4 @@ $(document).ready(function() {
       $(".list .item").css("display","block");
       filter();
   });
-
 });

@@ -1,0 +1,10 @@
+/*.programmation-press .film {
+  height: auto;
+}
+.programmation-press .film, .quote {
+  margin-top: 0px;
+}
+.programmation-press .film, .info-film {
+     background-color: #fff;
+     overflow: visible;
+}*/
