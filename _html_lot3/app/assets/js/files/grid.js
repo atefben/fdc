@@ -52,6 +52,34 @@ var owInitGrid = function(id){
     return $grid;
   }
 
+  if(id == 'filter'){
+
+    if($('.isotope-01').length){
+
+      var filterDate = $('.filters #date .select span.active').data('filter');
+      filterDate = "."+filterDate;
+
+      var filterTheme = $('.filters #theme .select span.active').data('filter');
+      filterTheme = "."+filterTheme;
+
+      var filterFormat = $('.filters #format .select span.active').data('filter');
+      filterFormat = "."+filterFormat;
+
+      var filters = filterDate+filterTheme+filterFormat;
+
+      var $grid = $('.isotope-01').isotope({filter: filters});
+    }
+
+    if($('.isotope-02').length){
+
+      var filterStaff = $('.filters #staff .select span.active').data('filter');
+      filterStaff = "."+filterStaff;
+
+
+      var $grid = $('.isotope-02').isotope({filter: filterStaff});
+    }
+  }
+
 };
 
 

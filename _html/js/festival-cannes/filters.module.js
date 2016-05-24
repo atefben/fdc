@@ -92,7 +92,6 @@ function filter() {
     }
   } else {
     $('*[data-' + id + ']').show();
-    
     if($('.articles').length != 0) {
       $('.filter .select span').removeClass('disabled');
     }

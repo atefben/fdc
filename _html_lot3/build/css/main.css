@@ -8158,6 +8158,13 @@ header #searchContainer {
   border-bottom: 1px solid #eaeaea;
   position: relative;
 }
+.filters-02.sticky {
+  position: fixed;
+  top: 91px;
+  background-color: #fff;
+  width: 100vw;
+  z-index: 4;
+}
 .filters-02 ul {
   padding: 30px 0;
   display: inline-block;
@@ -9821,6 +9828,15 @@ header #searchContainer {
   -webkit-transform: scale(1);
           transform: scale(1);
   /* mise à l'échelle 1:1 */
+}
+.block-search .content-result.result-more section {
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.block-search .content-result.result-more article {
+  margin-right: 40px;
+  margin-bottom: 26px;
 }
 .block-search .content-result .top-texts {
   margin-bottom: 25px;

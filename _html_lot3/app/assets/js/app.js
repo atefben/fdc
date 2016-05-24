@@ -120,4 +120,12 @@ $(document).ready(function() {
     owInitAccordion('more-search');
   }
 
+  if($('.filters').length) {
+    owInitFilter();
+  }
+
+  if($('.filters-02').length) {
+    owInitNavSticky(3);
+  }
+
 });

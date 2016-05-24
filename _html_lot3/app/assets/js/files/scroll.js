@@ -27,6 +27,8 @@ var owInitNavSticky = function(number) {
     var $header    = $('.navigation-sticky');
   }else if(number == 2) {
     var $header    = $('.navigation-sticky-02');
+  }else if(number == 3){
+    var $header = $('.filters-02');
   }
 
   $(window).on('scroll', function() {
@@ -38,6 +40,10 @@ var owInitNavSticky = function(number) {
       $header.addClass('sticky');
     }else{
       $header.removeClass('sticky');
+    }
+
+    if($('header').hasClass('sticky') && number == 3){
+      $header.addClass('sticky');
     }
   });
 };
