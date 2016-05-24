@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </section>
-        {% elseif section.class == "programmation" and pressHome.sectionSchedulingDisplay == false %}
+        {% elseif section.class == "programmation" %} {#and pressHome.sectionSchedulingDisplay == false #}
             <section>
                 <div class="title-section">
                     <h3>{{ 'press.home.title.programmedujour'|trans({}, 'FDCPressMobileBundle') }}</h3>

@@ -1,7 +1,9 @@
 {% trans_default_domain 'FDCPressBundle' %}
 <section class="contact">
     <div class="title-section">
-        {{ pressContact|trans_fallback('title') }}
+        <h3>
+            {{ pressContact|trans_fallback('title') }}
+        </h3>
     </div>
     {% if pressContact.firstColumn is not null %}
     <div class="sub-section">
