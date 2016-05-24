@@ -80,7 +80,7 @@ twig:
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle, FDCEventMobileBundle, FDCPressBundle ]
+    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle, FDCEventMobileBundle, FDCPressBundle, FDCPressMobileBundle ]
     use_controller: true
     filters:
         cssrewrite:

@@ -4,15 +4,13 @@
     <div class="locked">
         <h3>
             <i class="icon icon_cadenas"></i>
-            {{ 'press.header.title.contenusverouilles'|trans }}
+            {{- 'press.header.title.contenusverouilles'|trans -}}
         </h3>
         <p>{{ 'press.header.text.journalistesveuillezsaisirvotremotdepasse'|trans }}</p>
         {{ render(controller('FDCPressBundle:Security:setCurrentRoute', {'originalRequest': app.request})) }}
     </div>
 {% else %}
     <div class="locked">
-        <h3>
-            <p class="access">{{ 'press.header.success.contenusdebloques'|trans|raw }}</p>
-        </h3>
+        <p class="access">{{ 'press.header.success.contenusdebloques'|trans|raw }}</p>
     </div>
 {% endif %}

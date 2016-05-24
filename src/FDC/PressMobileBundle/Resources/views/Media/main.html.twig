@@ -1,5 +1,5 @@
 {% trans_default_domain 'FDCPressBundle' %}
-{% extends 'FDCPressBundle::layout.html.twig' %}
+{% extends 'FDCPressMobileBundle::layout.html.twig' %}
 
 {% block body %}
     <div id="main" class="press loading press-media {{ (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'conected' : 'lock' }}">
