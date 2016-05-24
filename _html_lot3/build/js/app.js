@@ -59,8 +59,12 @@ var owInitAjax = function() {
         owInitNavSticky(1);
       }
 
-      if($('.isotope-01').length){
+      if($('.isotope-01').length) {
         owInitGrid('isotope-01');
+      }
+
+      if($('.isotope-02').length) {
+          owInitGrid('isotope-02');
       }
 
       if($('.grid-01').length) {
@@ -70,6 +74,10 @@ var owInitAjax = function() {
         $( window ).resize(function() {
             owsetGridBigImg(grid, $('.grid-01'), false);
         });
+      }
+
+      if($('.filters').length) {
+        owInitFilter();
       }
 
       window.history.pushState('','',url);
@@ -181,17 +189,30 @@ var owInitGrid = function(id){
 
   if(id == 'filter'){
 
-    var filterDate = $('.filters #date .select span.active').data('filter');
-    filterDate = "."+filterDate;
+    if($('.isotope-01').length){
 
-    var filterTheme = $('.filters #theme .select span.active').data('filter');
-    filterTheme = "."+filterTheme;
+      var filterDate = $('.filters #date .select span.active').data('filter');
+      filterDate = "."+filterDate;
 
-    var filterFormat = $('.filters #format .select span.active').data('filter');
-    filterFormat = "."+filterFormat;
+      var filterTheme = $('.filters #theme .select span.active').data('filter');
+      filterTheme = "."+filterTheme;
 
-    var filters = filterDate+filterTheme+filterFormat;
-    var $grid = $('.isotope-01').isotope({filter: filters});
+      var filterFormat = $('.filters #format .select span.active').data('filter');
+      filterFormat = "."+filterFormat;
+
+      var filters = filterDate+filterTheme+filterFormat;
+
+      var $grid = $('.isotope-01').isotope({filter: filters});
+    }
+
+    if($('.isotope-02').length){
+
+      var filterStaff = $('.filters #staff .select span.active').data('filter');
+      filterStaff = "."+filterStaff;
+
+
+      var $grid = $('.isotope-02').isotope({filter: filterStaff});
+    }
   }
 
 };

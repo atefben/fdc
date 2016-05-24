@@ -16,8 +16,12 @@ var owInitAjax = function() {
         owInitNavSticky(1);
       }
 
-      if($('.isotope-01').length){
+      if($('.isotope-01').length) {
         owInitGrid('isotope-01');
+      }
+
+      if($('.isotope-02').length) {
+          owInitGrid('isotope-02');
       }
 
       if($('.grid-01').length) {
@@ -27,6 +31,10 @@ var owInitAjax = function() {
         $( window ).resize(function() {
             owsetGridBigImg(grid, $('.grid-01'), false);
         });
+      }
+
+      if($('.filters').length) {
+        owInitFilter();
       }
 
       window.history.pushState('','',url);
