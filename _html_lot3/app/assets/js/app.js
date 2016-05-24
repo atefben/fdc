@@ -124,4 +124,8 @@ $(document).ready(function() {
     owInitFilter();
   }
 
+  if($('.filters-02').length) {
+    owInitNavSticky(3);
+  }
+
 });

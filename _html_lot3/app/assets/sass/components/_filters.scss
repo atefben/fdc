@@ -185,6 +185,14 @@
   border-bottom: 1px solid #eaeaea;
   position: relative;
 
+  &.sticky {
+    position: fixed;
+    top: 91px;
+    background-color: #fff;
+    width: 100vw;
+    z-index: 4;
+  }
+
   ul{
     padding: 30px 0;
     display: inline-block;
@@ -219,7 +227,7 @@
     right:0px;
     background-color: $gold;
     height: 100%;
-    line-height: 80px; 
+    line-height: 80px;
     width: 199px;
     text-align: center;
   }
