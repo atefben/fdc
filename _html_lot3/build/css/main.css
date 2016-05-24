@@ -4341,7 +4341,7 @@ video {
 
 .block-push {
   background: center 0 no-repeat fixed;
-  background-size: 147%;
+  background-size: cover;
   transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
 }
 .block-push .link {
@@ -8835,7 +8835,7 @@ header #searchContainer {
   width: 80%;
   height: 100%;
   background: center 0 no-repeat fixed;
-  background-size: 100%;
+  background-size: cover;
   display: none;
 }
 .slider-home .container-images .item.active {
