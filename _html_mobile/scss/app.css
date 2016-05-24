@@ -6226,6 +6226,117 @@ body.overlay::after {
   text-align: center;
   line-height: 80px;
 }
+#main.calendar-press #timeline-calendar {
+  width: 100%;
+  text-align: center;
+  height: 130px;
+  font-size: 0;
+  border-top: 2px solid #e5e5e5;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+#main.calendar-press #timeline-calendar .prev, #main.calendar-press #timeline-calendar .next {
+  width: 121px;
+  height: 128px;
+  line-height: 130px;
+  display: inline-block;
+  font-size: 2rem;
+  color: #cbcbcb;
+  vertical-align: top;
+}
+#main.calendar-press #timeline-calendar .prev {
+  border-right: 4px dotted #e5e5e5;
+}
+#main.calendar-press #timeline-calendar .next {
+  border-left: 4px dotted #e5e5e5;
+}
+#main.calendar-press #timeline {
+  height: 150px;
+  width: 390px;
+  margin: 0;
+  font-size: 0;
+  display: inline-block;
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+#main.calendar-press #timeline.stick {
+  position: fixed;
+  top: 120px;
+  z-index: 4;
+}
+#main.calendar-press #timeline.bottom {
+  position: absolute;
+  top: auto;
+  bottom: 0px;
+  left: auto !important;
+}
+#main.calendar-press #timeline a {
+  display: inline-block;
+  width: 130px;
+  height: 128px;
+  padding-top: 30px;
+  /*border: 2px solid #e5e5e5;*/
+  color: #adadad;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  text-align: center;
+  -moz-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  box-sizing: border-box;
+}
+#main.calendar-press #timeline .timeline-container {
+  width: 1560px;
+  height: 130px;
+  position: absolute;
+  box-sizing: border-box;
+  top: 0;
+  left: -260px;
+  -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#main.calendar-press #timeline a.disabled {
+  background-color: #f2f2f2;
+  cursor: default;
+}
+#main.calendar-press #timeline a.disabled:hover {
+  background-color: #f2f2f2;
+  color: #adadad;
+}
+#main.calendar-press #timeline a:hover {
+  color: #c8a461;
+}
+#main.calendar-press #timeline a.active {
+  background-color: #c8a461;
+  border-color: #c8a461;
+  border-style: solid;
+  color: #fff;
+  position: relative;
+  border-left: none;
+}
+#main.calendar-press #timeline a.active:after {
+  content: '';
+  display: block;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #c8a461;
+  margin-left: -10px;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 0;
+}
+#main.calendar-press #timeline a span {
+  display: block;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  font-size: 2.5rem;
+  margin-top: 5px;
+}
 
 #main.palmares {
   /*SLIDERS*/
