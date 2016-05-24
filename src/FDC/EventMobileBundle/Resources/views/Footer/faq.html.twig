@@ -6,31 +6,31 @@
 
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
-        
+
         <h2 class="title one-line">{{ 'faq.title.faq'|trans }}</h2>
         <div id="horizontal-menu" class="owl-carousel sliderDrag videosSlider">
-            {% for key, section in content %}
+            {% for data in faq %}
                 <div class="vid selected">
-                  <p><a href="#" {% if key == 0 %}class="active"{% endif %} data-section="{{ section.slug }}">{{ section.name }}</a></p>
+                  <p><a href="#" {% if loop.index == 0 %}class="active"{% endif %} data-section="{{ data['theme']|trans_fallback('slug') }}">{{ data['theme']|trans_fallback('name') }}</a></p>
                 </div>
             {% endfor %}
         </div>
         <div class="faq-container">
-            <div class="faq-section-container active infos-generales">
-                {% for section in content %}
-                            {% for article in section.articles %}
-                                <section class="accordeon">
-                                    <div class="section-title">
-                                        <h3 class="title-participate">{{ article.title }}</h3>
-                                        <i class="icon accordion icon_case-plus"></i>
-                                        <div class="section-contain">
-                                            <p class="description">{{ article.content }}</p>
-                                        </div>
-                                    </div>
-                                </section>
-                            {% endfor %}
-                {% endfor %}
-            </div>
+            {% for data in faq %}
+                <div class="faq-section-container {% if loop.index == 1 %}active {% endif %} {{ data['theme']|trans_fallback('slug') }}">
+                    {% for faqData in data['faq'] %}
+                        <section class="accordeon">
+                            <div class="section-title">
+                                <h3 class="title-participate">{{ faqData|trans_fallback('title') }}</h3>
+                                <i class="icon accordion icon_case-plus"></i>
+                                <div class="section-contain">
+                                    {{ faqData|trans_fallback('content')|raw }}
+                                </div>
+                            </div>
+                        </section>
+                    {% endfor %}
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

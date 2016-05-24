@@ -4,49 +4,49 @@
     <ul>
         {% for element in footer %}
             {% if element.route == 'fdc_event_footer_contact' and element.enabled == true %}
-                <li class="contact">
+                <li>
                     <a href="{{ path('fdc_eventmobile_footer_contact') }}">
                         {{ 'footer.nav.contact'|trans }}
                     </a>
                 </li>
             {% elseif element.transName == 'footer.nav.faq' and element.enabled == true %}
-                <li class="faq">
-                    <a href="{{ path('fdc_eventmobile_footer_static', {'page': 'faq'}) }}">
+                <li>
+                    <a href="{{ path('fdc_eventmobile_footer_faq') }}">
                         {{ 'footer.nav.faq'|trans }}
                     </a>
                 </li>
             {% elseif element.transName == 'footer.nav.credit' and element.enabled == true %}
-                <li class="credits">
-                    <a href="{{ path('fdc_eventmobile_footer_static', {'page': 'credits'}) }}">
+                <li>
+                    <a href="{{ path('fdc_eventmobile_footer_credits') }}">
                         {{ 'footer.nav.credit'|trans }}
                     </a>
                 </li>
             {% elseif element.transName == 'footer.nav.mentionslegales' and element.enabled == true %}
-                <li class="legals">
-                    <a href="{{ path('fdc_eventmobile_footer_static', {'page': 'mentions-legales'}) }}">
+                <li>
+                    <a href="{{ path('fdc_eventmobile_footer_mentionslegales') }}">
                         {{ 'footer.nav.mentionslegales'|trans }}
                     </a>
                 </li>
             {% elseif element.transName == 'footer.nav.nousrejoindre' and element.enabled == true %}
-                <li class="">
+                <li>
                     <a href="{{ path('fdc_eventmobile_footer_static', {'page': 'nous-rejoindre'}) }}">
                         {{ 'footer.nav.nousrejoindre'|trans }}
                     </a>
                 </li>
             {% elseif element.transName == 'footer.nav.plandusite' and element.enabled == true %}
-                <li class="">
-                    <a href="{{ path('fdc_eventmobile_footer_static', {'page': 'plan-du-site'}) }}">
+                <li>
+                    <a href="{{ path('fdc_eventmobile_footer_sitemap') }}">
                         {{ 'footer.nav.plandusite'|trans }}
                     </a>
                 </li>
             {% elseif element.transName == 'footer.nav.politiqueconfidentialite' and element.enabled == true %}
-                <li class="sitemap">
-                    <a href="{{ path('fdc_eventmobile_footer_static', {'page': 'politique-confidentialite'}) }}">
+                <li>
+                    <a href="{{ path('fdc_eventmobile_footer_privacy') }}">
                         {{ 'footer.nav.politiqueconfidentialite'|trans }}
                     </a>
                 </li>
             {% elseif element.transName == 'footer.nav.boutique' and element.enabled == true  %}
-                <li class="privacy_policy">
+                <li>
                     <a href="{{ footer_boutique }}">
                         {{ 'footer.nav.boutique'|trans }}
                     </a>
