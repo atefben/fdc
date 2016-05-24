@@ -173,7 +173,7 @@
 // - BLOCK PUSH
 .block-push {
   background: center 0 no-repeat fixed;
-  background-size: 147%;
+  background-size: cover;
   transition: $smoothTransition .7s;
 
   .link {
