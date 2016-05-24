@@ -52,6 +52,21 @@ var owInitGrid = function(id){
     return $grid;
   }
 
+  if(id == 'filter'){
+
+    var filterDate = $('.filters #date .select span.active').data('filter');
+    filterDate = "."+filterDate;
+
+    var filterTheme = $('.filters #theme .select span.active').data('filter');
+    filterTheme = "."+filterTheme;
+
+    var filterFormat = $('.filters #format .select span.active').data('filter');
+    filterFormat = "."+filterFormat;
+
+    var filters = filterDate+filterTheme+filterFormat;
+    var $grid = $('.isotope-01').isotope({filter: filters});
+  }
+
 };
 
 

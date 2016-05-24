@@ -120,4 +120,8 @@ $(document).ready(function() {
     owInitAccordion('more-search');
   }
 
+  if($('.filters').length) {
+    owInitFilter();
+  }
+
 });
