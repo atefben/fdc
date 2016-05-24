@@ -1,4 +1,18 @@
 #main.programmation-press {
+
+  .film {
+    height: auto;
+  }
+
+  .film, .quote {
+    margin-top: 0px;
+  }
+
+  .film, .info-film {
+    background-color: #fff;
+    overflow: visible;
+}
+
   .calendar .timeCol{
 
       background-color: #f4f4f4;
