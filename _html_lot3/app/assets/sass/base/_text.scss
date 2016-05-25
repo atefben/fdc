@@ -359,7 +359,8 @@ sub {
   display: block;
 }
 
-.quote {
+
+blockquote, .quote {
   padding: 30px 90px;
   color:#141414;
   text-align: center;

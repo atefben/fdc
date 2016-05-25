@@ -19,6 +19,7 @@
 $(document).ready(function() {
 
  initHeaderSticky();
+ // owInitLinkChangeEffect(); add ?? 
 
  //gestion des cookie a faire ici
 
