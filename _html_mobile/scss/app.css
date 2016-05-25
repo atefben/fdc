@@ -7060,6 +7060,25 @@ p {
   margin-bottom: 8px;
 }
 
+#main.press .film-slider .info p {
+  text-transform: uppercase;
+  color: #999999;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+#main.press .film-slider .img-container {
+  width: 280px;
+  height: 380px;
+  background-position: center center;
+  background-size: cover;
+}
+#main.press .film-slider .info {
+  margin-top: 35px;
+  text-align: center;
+}
+
 .film-slider .info p.subtitle {
   font-size: 18px;
 }
