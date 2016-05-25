@@ -3252,6 +3252,43 @@ footer .newsletter #submit {
   font-size: 20px;
   color: #c8a461;
 }
+#main.legals .legal-notice-container .table-article {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  width: 644px;
+  padding-bottom: 50px;
+}
+#main.legals .legal-notice-container .table-article th {
+  color: #000;
+  font-weight: 400;
+  vertical-align: middle;
+  border: 1px solid #dfdfdf;
+  padding: 15px 0;
+  width: 320px;
+  font-size: .74rem;
+  text-align: center;
+  font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+  text-transform: uppercase;
+}
+#main.legals .legal-notice-container .table-article td {
+  font-weight: 400;
+  vertical-align: middle;
+  border: 1px solid #dfdfdf;
+  padding: 15px 0;
+  width: 320px;
+  color: #666;
+  font-size: .74rem;
+  font-family: "Camphor W01 Medium",Arial,Helvetica,sans-serif;
+  text-align: center;
+}
+#main.legals .legal-notice-container ol {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.7em;
+  margin-bottom: 5px;
+  padding-left: 30px;
+}
 
 #main.legal-notice .legal-notice-container {
   color: #666666;
