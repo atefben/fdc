@@ -35,7 +35,7 @@ $(document).ready(function() {
 
       $('#horizontal-menu a').removeClass('active');
       $this.addClass('active');
-      //$('.maps div').removeClass('active');
+      $('.maps div').removeClass('active');
 
       $('.maps').find('.active').animate({'opacity':0},400,function(){
         $('.maps div').removeClass('active');
@@ -43,7 +43,7 @@ $(document).ready(function() {
         $('.maps').find('#'+$this.data('map')).animate({'opacity':1},400);
       });
 
-      //$('.maps').find('#'+$this.data('map')).addClass('active');
+      $('.maps').find('#'+$this.data('map')).addClass('active');
     });
   }
 });
