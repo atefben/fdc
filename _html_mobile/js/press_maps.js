@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  if($('.press_maps').lenth > 0) {
+  if($('.press_maps').length > 0) {
     var menu = $("#horizontal-menu").owlCarousel({
       nav: false,
       dots: false,
@@ -22,9 +22,9 @@ $(document).ready(function() {
       }
     });
     menu.owlCarousel();
-    
+
     $('.maps').find('.active').animate({'opacity':1},400);
-    
+
     $('#horizontal-menu a').on('click', function(e) {
       e.preventDefault();
 
@@ -35,15 +35,15 @@ $(document).ready(function() {
 
       $('#horizontal-menu a').removeClass('active');
       $this.addClass('active');
-      //$('.maps div').removeClass('active');
+      $('.maps div').removeClass('active');
 
       $('.maps').find('.active').animate({'opacity':0},400,function(){
         $('.maps div').removeClass('active');
         $('.maps').find('#'+$this.data('map')).addClass('active');
         $('.maps').find('#'+$this.data('map')).animate({'opacity':1},400);
       });
-      
-      //$('.maps').find('#'+$this.data('map')).addClass('active');
+
+      $('.maps').find('#'+$this.data('map')).addClass('active');
     });
   }
 });

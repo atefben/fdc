@@ -12,9 +12,8 @@
   line-height: 30px;
 }
 .legals section .legal-notice-description {
-font-size: 20px;
+  font-size: 20px;
   line-height: 30px;
-  
   max-height: 5000px;
 }
 
@@ -41,4 +40,137 @@ font-size: 20px;
   max-height: 5000px;
   font-size: 20px;
   line-height: 30px;
+}
+
+#main.legals {
+
+  .legal-notice-container {
+    color: #666666;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 30px;
+  }
+
+  .legal-notice-container h4 {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 20px;
+    color: #c8a461;
+  }
+
+  .legal-notice-container .table-article {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 644px;
+    padding-bottom: 50px;
+  }
+
+
+  .legal-notice-container .table-article th {
+      color: #000;
+      font-weight: 400;
+      vertical-align: middle;
+      border: 1px solid #dfdfdf;
+      padding: 15px 0;
+      width: 320px;
+      font-size: .74rem;
+      text-align: center;
+      font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+      text-transform: uppercase;
+  }
+
+  .legal-notice-container .table-article td {
+    font-weight: 400;
+    vertical-align: middle;
+    border: 1px solid #dfdfdf;
+    padding: 15px 0;
+    width: 320px;
+    color: #666;
+    font-size: .74rem;
+    font-family: "Camphor W01 Medium",Arial,Helvetica,sans-serif;
+    text-align: center;
+  }
+
+  .legal-notice-container ol {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+    padding-left: 30px;
+  }
+  
+
+}
+
+
+#main.legal-notice {
+
+  .legal-notice-container {
+    color: #666666;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 30px;
+  }
+
+  .legal-notice-container h4 {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 20px;
+    color: #c8a461;
+  }
+
+  .legal-notice-container .sub-title {
+    font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+    font-size: .875rem;
+    margin: 50px 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .legal-notice-container .table-article {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 644px;
+    padding-bottom: 50px;
+  }
+
+
+  .legal-notice-container .table-article th {
+      color: #000;
+      font-weight: 400;
+      vertical-align: middle;
+      border: 1px solid #dfdfdf;
+      padding: 15px 0;
+      width: 320px;
+      font-size: .74rem;
+      text-align: center;
+      font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+      text-transform: uppercase;
+  }
+
+  .legal-notice-container .table-article td {
+    font-weight: 400;
+    vertical-align: middle;
+    border: 1px solid #dfdfdf;
+    padding: 15px 0;
+    width: 320px;
+    color: #666;
+    font-size: .74rem;
+    font-family: "Camphor W01 Medium",Arial,Helvetica,sans-serif;
+    text-align: center;
+  }
+
+  .legal-notice-container ol {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+    padding-left: 30px;
+  }
 }

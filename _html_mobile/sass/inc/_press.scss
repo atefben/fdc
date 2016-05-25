@@ -77,7 +77,7 @@ p{
     border-right: 1px solid #c8a461;
     letter-spacing: 0;
     font-family: "Camphor W01 Bold Bold", Arial, Helvetica, sans-serif;
-} 
+}
 .header-press .container .button .icon{
 	margin-right: 10px;
 }
@@ -188,7 +188,7 @@ p{
 
 }
 .communiques-carousel .img-container img{
-	
+
 	width: 100%;
 	height: 100%;
 	object-fit:cover;
@@ -225,7 +225,7 @@ p{
 }
 .communiques-carousel  .info .category{
 
-	color: #c8a461;   
+	color: #c8a461;
     letter-spacing: 0.1em;
     margin-right: 12px;
     margin-bottom: 10px;
@@ -256,16 +256,14 @@ p{
 	text-align: center;
 }
 .film-slider .owl-item{
-
 	width: 280px;
 	height: 685px;
 }
 .film-slider .img-container{
-
 	width: 280px;
 	height: 380px;
 	background-position: center center;
-  	background-size: cover;
+  background-size: cover;
 }
 .film-slider .info{
 	margin-top: 35px;
@@ -279,6 +277,32 @@ p{
 	font-size: 25px;
 	margin-bottom: 8px;
 }
+
+#main.press {
+	.film-slider .info p{
+		text-transform: uppercase;
+		color: #999999;
+		font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+		font-weight: 700;
+		font-size: 25px;
+		margin-bottom: 8px;
+	}
+
+	.film-slider .img-container {
+    width: 280px;
+    height: 380px;
+    background-position: center center;
+    background-size: cover;
+		float: none;
+		margin: 0 auto;
+	}
+
+	.film-slider .info {
+    margin-top: 35px;
+    text-align: center;
+	}
+}
+
 .film-slider .info p.subtitle{
 	font-size: 18px;
 
@@ -349,7 +373,7 @@ p{
 }
 .downloads .portrait img{
 	width: 280px;
-	
+
 }
 .downloads .caption{
 	font-size: 15px;
@@ -479,7 +503,7 @@ p{
 
 }
 .sub-section .contact-content{
-	
+
 	max-height: 0;
 	overflow: hidden;
     -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -544,8 +568,8 @@ p{
 }
 
 #popin-press {
-    visibility: hidden; 
-    opacity: 0; 
+    visibility: hidden;
+    opacity: 0;
     transform: translateY(30px);
     transition: 0.6s all cubic-bezier(0.25, 0.46, 0.45, 0.94);
     background-color: #fff;
@@ -562,7 +586,7 @@ p{
     box-sizing: border-box;
 }
 #popin-press.visible{
-	
+
 	visibility: visible;
     opacity: 1;
     transform: translateY(-30px);
@@ -623,7 +647,7 @@ p{
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 	    color: #c8a461;
     font-size: 25px;
-    font-weight: 700;    
+    font-weight: 700;
     line-height: 35px;
     box-sizing: border-box;
     padding: 0 30px;

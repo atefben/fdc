@@ -13,7 +13,7 @@ $(document).ready(function() {
   function displayProgrammationDay(day) {
     var startDayDate = new Date("2016-05-"+day+"T08:00:00").getTime();
     var endDayDate = new Date("2016-05-"+(day+1)+"T03:00:00").getTime();
-    
+
     $(".fc-event").each(function () {
       var startDate = new Date($(this).data('start')).getTime();
       if(startDate >= startDayDate && startDate <= endDayDate) {
@@ -38,10 +38,10 @@ $(document).ready(function() {
     var endDate = new Date("1900-01-01T00:00:00").getTime();
 
     $(".fc-event").each(function () {
-      // allows to display two events at same hour (or overlap) in the same column 
+      // allows to display two events at same hour (or overlap) in the same column
       // it works only if element (fc-event) are added in chronologic order
       var startDate = new Date($(this).data('start')).getTime();
-      
+
       if(startDate < endDate) {
         $(this).addClass('half');
         if(!$(this).prev('.fc-event').hasClass('half')) {
@@ -50,7 +50,7 @@ $(document).ready(function() {
       }
 
       endDate = new Date($(this).data('end')).getTime();
-      // short event (less than 2 hours) 
+      // short event (less than 2 hours)
       // based on time start and duration, calculate positions of event
       var timeStart = $(this).data('time'),
           dur = Math.floor($(this).data('duration') / 60),
@@ -70,7 +70,7 @@ $(document).ready(function() {
       $(this).find('.category').css('background-color', $(this).data('color'));
       $(this).css('margin-top', mT*170+10);
     });
-    
+
     // delete event from localStorage
     $('.fc-event').on('click', '.remove-evt', function (e) {
       e.preventDefault();
@@ -93,7 +93,7 @@ $(document).ready(function() {
   };
 
   function moveTimeline(element, day) {
-    var numDay = 0; 
+    var numDay = 0;
     if(day == 11) {
       numDay = 0;
     } else if(day == 22) {

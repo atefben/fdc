@@ -77,8 +77,13 @@ var owArrowDisplay = function() {
 var onInitParallax = function() {
 
   $(window).on('scroll', function() {
-    var s = $(this).scrollTop() - 100;
-    $('.block-push').css('background-position-y',s+'px');
+
+    if($('header.sticky').length){
+      var s = $(this).scrollTop() - 90;
+      $('.block-push').css('background-position-y',s+'px');
+    }else{
+      $('.block-push').css('background-position-y','0px');
+    }
   });
 
 }

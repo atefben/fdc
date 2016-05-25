@@ -3238,6 +3238,117 @@ footer .newsletter #submit {
   line-height: 30px;
 }
 
+#main.legals .legal-notice-container {
+  color: #666666;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 30px;
+}
+#main.legals .legal-notice-container h4 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 20px;
+  color: #c8a461;
+}
+#main.legals .legal-notice-container .table-article {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  width: 644px;
+  padding-bottom: 50px;
+}
+#main.legals .legal-notice-container .table-article th {
+  color: #000;
+  font-weight: 400;
+  vertical-align: middle;
+  border: 1px solid #dfdfdf;
+  padding: 15px 0;
+  width: 320px;
+  font-size: .74rem;
+  text-align: center;
+  font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+  text-transform: uppercase;
+}
+#main.legals .legal-notice-container .table-article td {
+  font-weight: 400;
+  vertical-align: middle;
+  border: 1px solid #dfdfdf;
+  padding: 15px 0;
+  width: 320px;
+  color: #666;
+  font-size: .74rem;
+  font-family: "Camphor W01 Medium",Arial,Helvetica,sans-serif;
+  text-align: center;
+}
+#main.legals .legal-notice-container ol {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.7em;
+  margin-bottom: 5px;
+  padding-left: 30px;
+}
+
+#main.legal-notice .legal-notice-container {
+  color: #666666;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 30px;
+}
+#main.legal-notice .legal-notice-container h4 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 20px;
+  color: #c8a461;
+}
+#main.legal-notice .legal-notice-container .sub-title {
+  font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+  font-size: .875rem;
+  margin: 50px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+#main.legal-notice .legal-notice-container .table-article {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  width: 644px;
+  padding-bottom: 50px;
+}
+#main.legal-notice .legal-notice-container .table-article th {
+  color: #000;
+  font-weight: 400;
+  vertical-align: middle;
+  border: 1px solid #dfdfdf;
+  padding: 15px 0;
+  width: 320px;
+  font-size: .74rem;
+  text-align: center;
+  font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+  text-transform: uppercase;
+}
+#main.legal-notice .legal-notice-container .table-article td {
+  font-weight: 400;
+  vertical-align: middle;
+  border: 1px solid #dfdfdf;
+  padding: 15px 0;
+  width: 320px;
+  color: #666;
+  font-size: .74rem;
+  font-family: "Camphor W01 Medium",Arial,Helvetica,sans-serif;
+  text-align: center;
+}
+#main.legal-notice .legal-notice-container ol {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.7em;
+  margin-bottom: 5px;
+  padding-left: 30px;
+}
+
 /* CSS RESET */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -6144,6 +6255,7 @@ body.overlay::after {
 #main.calendar-press .section-calendar {
   height: 3531px;
   background-color: #3a3a3a;
+  padding-bottom: 0px;
 }
 #main.calendar-press .header-press .container {
   padding: 60px 0 30px 0;
@@ -6165,21 +6277,29 @@ body.overlay::after {
   width: 100%;
   text-align: center;
   line-height: 170px;
-  border-bottom: 1px solid #e5e5e5;
-  border-right: 1px solid #e5e5e5;
+  border-bottom: 1px solid #3A3A42;
+  border-right: 1px solid #3A3A42;
   font-size: 24px;
   box-sizing: border-box;
 }
 #main.calendar-press #timeline-calendar .next, #main.calendar-press #timeline-calendar .prev, #main.calendar-press #timeline-calendar .next, #main.calendar-press #timeline-calendar .next {
   background-color: #2a2a2a;
-  border-color: #3a3a3a;
+  border-color: #3A3A42;
+}
+#main.calendar-press .calendar .venues {
+  position: relative;
+  float: left;
+  width: 540px;
 }
 #main.calendar-press .calendar .venues .venue {
   background-color: #1b1b1b;
   width: 100%;
   border-top: 1px solid #3a3a3a;
+  height: 3400px;
 }
 #main.calendar-press .calendar .venues .venue .v-container {
+  height: calc(100% - 130px);
+  position: relative;
   background: url("../img/press/bg3.png") repeat;
   border: none;
 }
@@ -6249,7 +6369,7 @@ body.overlay::after {
 }
 #main.calendar-press #timeline-calendar .prev, #main.calendar-press #timeline-calendar .next {
   width: 121px;
-  height: 128px;
+  height: 125px;
   line-height: 130px;
   display: inline-block;
   font-size: 2rem;
@@ -6257,10 +6377,10 @@ body.overlay::after {
   vertical-align: top;
 }
 #main.calendar-press #timeline-calendar .prev {
-  border-right: 4px dotted #e5e5e5;
+  border-right: 4px dotted #3A3A42;
 }
 #main.calendar-press #timeline-calendar .next {
-  border-left: 4px dotted #e5e5e5;
+  border-left: 4px dotted #3A3A42;
 }
 #main.calendar-press #timeline {
   height: 150px;
@@ -6289,7 +6409,7 @@ body.overlay::after {
   width: 130px;
   height: 128px;
   padding-top: 30px;
-  /*border: 2px solid #e5e5e5;*/
+  border: 0px solid #3A3A42;
   color: #adadad;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 1.8rem;
@@ -6538,6 +6658,42 @@ body.overlay::after {
   margin-bottom: 70px;
 }
 
+#main.participage-page .instructions-container  {
+  background-color: #fff;
+}
+#main.participage-page .accordeon p {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  margin-bottom: 50px;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+  max-height: 3000px;
+  padding-top: 40px;
+}
+#main.participage-page .accordeon.open p {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  margin-bottom: 50px;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+  max-height: 3000px;
+  padding-top: 40px;
+}
+#main.participage-page .accordeon.open .icon_wifi {
+  color: #999999;
+  font-size: 1.8rem;
+  padding-right: 10px;
+  position: relative;
+  top: -4px;
+}
+#main.participage-page .accordeon.open h4 {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 19px;
+  padding-bottom: 30px;
+  font-weight: 600;
+}
 #main.participage-page .section-contain h3 {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 23px;
@@ -7049,6 +7205,27 @@ p {
   font-weight: 700;
   font-size: 25px;
   margin-bottom: 8px;
+}
+
+#main.press .film-slider .info p {
+  text-transform: uppercase;
+  color: #999999;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+#main.press .film-slider .img-container {
+  width: 280px;
+  height: 380px;
+  background-position: center center;
+  background-size: cover;
+  float: none;
+  margin: 0 auto;
+}
+#main.press .film-slider .info {
+  margin-top: 35px;
+  text-align: center;
 }
 
 .film-slider .info p.subtitle {
