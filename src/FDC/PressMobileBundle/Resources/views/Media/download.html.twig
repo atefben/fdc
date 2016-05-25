@@ -5,6 +5,8 @@
 
     <div id="main" class="press loading downloading-press {{ (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'conected' : 'lock' }} ">
 
+        {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
+
         <div class="header-press">
             <div class="head">
                 <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>

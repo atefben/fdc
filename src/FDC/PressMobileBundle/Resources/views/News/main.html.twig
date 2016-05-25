@@ -3,6 +3,8 @@
 
 {% block body %}
 
+    {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
+
     {% include 'FDCEventBundle:News:widgets/social-share.html.twig' %}
     <div id="main" class="single-article single-actualite loading">
         <span id="addtext">{{ 'article.text.ajouteramaselection'|trans }}</span>

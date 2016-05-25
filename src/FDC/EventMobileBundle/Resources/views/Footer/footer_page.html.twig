@@ -3,6 +3,8 @@
 
 {% block body %}
     <div id="main" class="legals active-page" data-menu="legals">
+        {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+        {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
         <div class="container">
             <h2 class="title one-line">{{ page|trans_fallback('title') }}</h2>
             <div class="legal-notice-container">
