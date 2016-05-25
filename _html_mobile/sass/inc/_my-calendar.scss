@@ -42,13 +42,22 @@
     border-color: #3A3A42;
   }
 
+  .calendar .venues {
+    position: relative;
+    float: left;
+    width: 540px;
+  }
+
   .calendar .venues .venue {
     background-color: rgb(27,27,27);
     width: 100%;
     border-top: 1px solid #3a3a3a;
+    height: 3400px;
   }
 
   .calendar .venues .venue .v-container {
+    height: calc(100% - 130px);
+    position: relative;
     background: url("../img/press/bg3.png") repeat;
     border: none;
   }
@@ -131,7 +140,7 @@
 
   #timeline-calendar .prev, #timeline-calendar .next{
     width: 121px;
-    height: 128px;
+    height: 125px;
     line-height: 130px;
     display: inline-block;
     font-size: 2rem;
