@@ -12,9 +12,8 @@
   line-height: 30px;
 }
 .legals section .legal-notice-description {
-font-size: 20px;
+  font-size: 20px;
   line-height: 30px;
-  
   max-height: 5000px;
 }
 
@@ -41,4 +40,24 @@ font-size: 20px;
   max-height: 5000px;
   font-size: 20px;
   line-height: 30px;
+}
+
+#main.legals {
+
+  .legal-notice-container {
+    color: #666666;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .legal-notice-container h4 {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 20px;
+    color: #c8a461;
+  }
+  
 }

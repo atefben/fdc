@@ -3238,6 +3238,21 @@ footer .newsletter #submit {
   line-height: 30px;
 }
 
+#main.legals .legal-notice-container {
+  color: #666666;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+}
+#main.legals .legal-notice-container h4 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 20px;
+  color: #c8a461;
+}
+
 /* CSS RESET */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
