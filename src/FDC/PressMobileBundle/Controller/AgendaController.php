@@ -22,7 +22,7 @@ class AgendaController extends Controller
 
     /**
      * @Route("/")
-     * @Template("FDCEventMobileBundle:Agenda:scheduling.html.twig")
+     * @Template("FDCPressMobileBundle:Agenda:scheduling.html.twig")
      *
      */
     public function schedulingAction(Request $request)

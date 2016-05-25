@@ -1,4 +1,4 @@
-{% trans_default_domain 'FDCEventBundle' %}
+{% trans_default_domain 'FDCPressBundle' %}
 <nav class="st-menu st-effect" id="menu">
     <div id="top-menu" class="owl-carousel sliderDrag">
         <div class="item">
@@ -17,7 +17,7 @@
             <a href="{{ attribute(_context, 'header_mdf_'~ app.request.locale) }}" target="_blank" > {{ 'header.topbar.nav.marche'|trans }} </a>
         </div>
     </div>
-   
+
     <div id="logo">
         <a href="/">
             {% image '@FDCEventMobileBundle/Resources/public/img/palme.svg'  %}
@@ -37,15 +37,7 @@
     </div>
 
     <div id="main-nav" class="menu-section">
-
-        {{ render(controller('FDCEventMobileBundle:Global:menuFirst', {route : app.request.get('_route')})) }}
-
-        <div class="small-separator"></div>
-        
-        {{ render(controller('FDCEventMobileBundle:Global:menuSecond', {route : app.request.get('_route')})) }}
-
-        <div class="small-separator"></div>
-
+        {{ render(controller('FDCPressMobileBundle:Global:menu', {route : app.request.get('_route')})) }}
         <ul class="third-nav">
             <li class="search-nav">
                 <a href="">
@@ -62,23 +54,23 @@
             <li class="language">
                 <i class="icon icon_langue"></i>
                 <ul class="hide">
-                    {% for locale in locales %}
-                        {% if locale == app.request.locale %}
-                            <li class="active-language">
-                                {{- locales[loop.index0]|upper -}}
-                            </li>
-                        {% else %}
-                            <li>
-                                {% set params = {'_locale' : locale} %}
-                                {% if localeSlugs is defined and localeSlugs[app.request.locale] %}
-                                    {% set params = params|merge({'slug': localeSlugs[locale]}) %}
-                                {% endif %}
-                                <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge(params)) }}">
-                                    {{- locales[loop.index0]|upper -}}
-                                </a>
-                            </li>
+                {% for locale in locales %}
+                    {% if locale == app.request.locale %}
+                     <li class="active-language">
+                         {{- locales[loop.index0]|upper -}}
+                     </li>
+                    {% else %}
+                    <li>
+                        {% set params = {'_locale' : locale} %}
+                        {% if localeSlugs is defined and localeSlugs[app.request.locale] %}
+                            {% set params = params|merge({'slug': localeSlugs[locale]}) %}
                         {% endif %}
-                    {% endfor %}
+                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge(params)) }}">
+                            {{- locales[loop.index0]|upper -}}
+                        </a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
                 </ul>
             </li>
         </ul>

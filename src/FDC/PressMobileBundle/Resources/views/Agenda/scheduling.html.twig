@@ -1,22 +1,32 @@
-{% trans_default_domain 'FDCEventBundle' %}
-{% extends 'FDCEventMobileBundle::layout.html.twig' %}
+{% trans_default_domain 'FDCPressBundle' %}
+{% extends 'FDCPressMobileBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="programmation-press press-locked" data-menu="prog">
-        {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
-        {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+    <div id="main" class="programmation-press{% if is_granted("ROLE_FDC_PRESS_REPORTER") == false %} press-locked{% endif %}" data-menu="prog">
+        {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
         <div class="header-press">
+            <div class="head">
+                <span><i class="icon icon_espace-presse"></i>Espace presse</span>
+            </div>
             <div class="container">
                 <h2>{{ 'programmation.title.programmation'|trans }}</h2>
                 <div class="buttons">
-                    <a href="{% path pressProjection.scheduling, 'reference' %}" class="button" download target="_blank">
-                        <i class="icon icon_telecharger"></i>{{ 'programmation.btn.pdf'|trans({}, 'FDCPressMobileBundle')|upper }}
-                    </a>
+                    {%- if app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER") and pressProjection.pressScheduling is not null -%}
+                        <a href="{% path pressProjection.pressScheduling, 'reference' %}" class="button" download target="_blank">
+                            <i class="icon icon_telecharger"></i>{{ 'programmation.btn.press_pdf'|trans({}, 'FDCPressMobileBundle')|upper }}
+                        </a>
+                        <a href="{% path pressProjection.scheduling, 'reference' %}" class="button" download target="_blank">
+                            <i class="icon icon_telecharger"></i>{{ 'programmation.btn.pdf'|trans({}, 'FDCPressMobileBundle')|upper }}
+                        </a>
+                    {%- else -%}
+                        <a href="{% path pressProjection.scheduling, 'reference' %}" class="button" download target="_blank">
+                            <i class="icon icon_telecharger"></i>{{ 'programmation.btn.pdf'|trans({}, 'FDCPressMobileBundle')|upper }}
+                        </a>
+                    {%- endif -%}
                 </div>
             </div>
         </div>
-        {% include 'FDCPressMobileBundle:Global:components/login_public.html.twig' %}
-
+        {% include 'FDCPressMobileBundle:Global:components/login.html.twig' %}
         <a class="agenda-access" href="{{ path('fdc_eventmobile_agenda_get') }}">
             <i class="icon icon_agenda-personnel"></i>
         </a>

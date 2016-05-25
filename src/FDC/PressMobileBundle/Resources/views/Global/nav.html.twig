@@ -1,78 +1,110 @@
 {% trans_default_domain 'FDCPressBundle' %}
-<nav>
-    <ul class="main">
-        {% for menu in menus %}
-            {% if menu.route == 'fdc_press_news_home' and menu.enabled == true %}
-                <li>
-                    <a href="{{ path('fdc_press_news_home') }}"
-                       class="{% if app.request.attributes.get('_route') == 'fdc_press_news_home' %}active{% endif %}">
-                        {{ 'header.mainnav.nav.accueil'|trans }}
-                    </a>
-                </li>
-            {% elseif menu.route == 'fdc_press_news_list' and menu.enabled == true %}
-                <li>
-                    <a href="{{ path('fdc_press_news_list') }}"
-                       class="{% if app.request.attributes.get('_route') == 'fdc_press_news_list'
-                       or app.request.attributes.get('_route') == 'fdc_press_news_get' %}active{% endif %}">
-                        {{ 'header.mainnav.nav.communiques'|trans }}
-                    </a>
-                </li>
-            {% elseif menu.route == 'fdc_press_accredit_main' and menu.enabled == true %}
-                <li>
-                    <a href="{{ path('fdc_press_accredit_main') }}"
-                       class="{% if app.request.attributes.get('_route') == 'fdc_press_accredit_main' %}active{% endif %}">
-                        {{ 'header.mainnav.nav.accrediter'|trans }}
-                    </a>
-                </li>
-            {% elseif menu.route == 'fdc_press_guide_main' and menu.enabled == true %}
-                <li>
-                    <a href="{{ path('fdc_press_guide_main') }}"
-                       class="{% if app.request.attributes.get('_route') == 'fdc_press_guide_main' %}active{% endif %}">
-                        {{ 'header.mainnav.nav.guide'|trans }}
-                    </a>
-                </li>
-            {% elseif menu.route == 'fdc_press_agenda_scheduling' and menu.enabled == true %}
-                <li>
-                    <a href="{{ path('fdc_press_agenda_scheduling') }}"
-                       class="{% if app.request.attributes.get('_route') == 'fdc_press_agenda_scheduling'
-                       or app.request.attributes.get('_route') == 'fdc_press_agenda_get'
-                       or app.request.attributes.get('_route') == 'fdc_press_agenda_room' %}active{% endif %}">
-                        {{ 'header.mainnav.nav.programmation'|trans }}
-                    </a>
-                    <ul class="tcenter">
+<ul id="main-nav-list" class="">
+    {% for menu in menus %}
+        {% if menu.route == 'fdc_press_news_home' and menu.enabled == true %}
+            <li class="press
+                {%- if app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER") %} press-unlocked{% endif -%}
+                {%- if app.request.attributes.get('_route') == 'fdc_pressmobile_news_home' %} active-page{% endif -%}
+                ">
+                <a href="{{ path('fdc_pressmobile_news_home') }}">
+                    <div class="section-title">
+                        <h3 class="title-menu">
+                            {{ 'header.mainnav.nav.accueil'|trans }}
+                        </h3>
+                    </div>
+                </a>
+            </li>
+        {% elseif menu.route == 'fdc_press_news_list' and menu.enabled == true %}
+            <li class="communique
+                {%- if app.request.attributes.get('_route') == 'fdc_pressmobile_news_list'
+                    or app.request.attributes.get('_route') == 'fdc_pressmobile_news_get' %} active-page{% endif -%}
+            ">
+                <a href="{{ path('fdc_pressmobile_news_list') }}">
+                    <div class="section-title">
+                        <h3 class="title-menu">
+                            {{ 'header.mainnav.nav.communiques'|trans }}
+                        </h3>
+                    </div>
+                </a>
+            </li>
+        {% elseif menu.route == 'fdc_press_accredit_main' and menu.enabled == true %}
+            <li class="accreditation
+                {%- if app.request.attributes.get('_route') == 'fdc_pressmobile_accredit_main' %} active-page{% endif %}
+             ">
+                <a href="{{ path('fdc_pressmobile_accredit_main') }}">
+                    <div class="section-title">
+                        <h3 class="title-menu">
+                            {{ 'header.mainnav.nav.accrediter'|trans }}
+                        </h3>
+                    </div>
+                </a>
+            </li>
+        {% elseif menu.route == 'fdc_press_guide_main' and menu.enabled == true %}
+            <li class="practical
+                {%- if app.request.attributes.get('_route') == 'fdc_pressmobile_guide_main' %} active-page{% endif %}
+            ">
+                <a href="{{ path('fdc_pressmobile_guide_main') }}">
+                    <div class="section-title">
+                        <h3 class="title-menu">
+                            {{ 'header.mainnav.nav.guide'|trans }}
+                        </h3>
+                    </div>
+                </a>
+            </li>
+        {% elseif menu.route == 'fdc_press_agenda_scheduling' and menu.enabled == true %}
+            {% set isActive = false %}
+            {% for child in menu['__children'] %}
+                {% if route == child.route|replace({'fdc_press': 'fdc_pressmobile'}) and child.enabled %}
+                    {% set isActive = true %}
+                {% endif %}
+            {% endfor %}
+            <li class="programmation{% if isActive %} active-page{% endif %}">
+                <div class="section-title has-subsection">
+                    <h3 class="title-menu">{{ 'header.mainnav.nav.programmation'|trans }} <span class="more-minus">+</span></h3>
+                </div>
+                <div class="section-contain subsection-2">
+                    <ul class="section-menu">
                         {% for child in menu['__children'] %}
                             {% if child.enabled %}
                                 <li>
-                                    <a href="{{ path(child.route) }}"
-                                       class="{% if route == child.route %}active{% endif %}">
+                                    <a href="{{ path(child.route|replace({'fdc_press': 'fdc_pressmobile'})) }}">
                                         {{ child.transName|trans }}
                                     </a>
                                 </li>
                             {% endif %}
                         {% endfor %}
                     </ul>
-                </li>
-            {% elseif menu.route == 'fdc_press_media_main' and menu.enabled == true %}
-                <li>
-                    <a href="{{ path('fdc_press_media_main', { 'sectionId': 3 }) }}"
-                       class="{% if app.request.attributes.get('_route') == 'fdc_press_media_main' %}active{% endif %}">
-                        {{ 'header.mainnav.nav.mediatheque'|trans }}
-                    </a>
-                </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-    <ul class="user">
-        <li>
-            {% for menu in menus %}
-                {% if menu.route == 'fdc_press_media_download' and menu.enabled == true %}
-                <a href="{{ path('fdc_press_media_download') }}"
-                   class="download {% if app.request.attributes.get('_route') == 'fdc_press_media_download' %}active{% endif %}">
+                </div>
+            </li>
+        {% elseif menu.route == 'fdc_press_media_main' and menu.enabled == true %}
+            <li class="medias{% if app.request.attributes.get('_route') == 'fdc_pressmobile_media_main' %} active-page{% endif %}">
+                <a href="{{ path('fdc_pressmobile_media_main', { 'sectionId': 3 }) }}">
+                    <div class="section-title">
+                        <h3 class="title-menu">
+                            {{ 'header.mainnav.nav.mediatheque'|trans }}
+                        </h3>
+                    </div>
+                </a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+<div class="small-separator"></div>
+<ul class="second-nav">
+    WTFWTF
+    <li class="prog">
+    {% for menu in menus %}
+        {% if menu.route == 'fdc_press_media_download' and menu.enabled == true %}
+        <a href="{{ path('fdc_pressmobile_media_download') }}" class="download">
+            <div class="section-title">
+                <h3 class="title-menu">
                     <i class="icon icon_telecharger"></i>
                     {{ 'header.mainnav.nav.telecharger'|trans }}
-                </a>
-                {% endif %}
-            {% endfor %}
-        </li>
-    </ul>
-</nav>
+                </h3>
+            </div>
+        </a>
+        {% endif %}
+    {% endfor %}
+    </li>
+</ul>
+<div class="small-separator"></div>
