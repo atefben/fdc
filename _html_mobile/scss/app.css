@@ -7073,6 +7073,8 @@ p {
   height: 380px;
   background-position: center center;
   background-size: cover;
+  float: none;
+  margin: 0 auto;
 }
 #main.press .film-slider .info {
   margin-top: 35px;
