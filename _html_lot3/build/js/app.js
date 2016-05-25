@@ -80,6 +80,10 @@ var owInitAjax = function() {
         owInitFilter();
       }
 
+      if($('.block-accordion').length) {
+          owInitAccordion("block-accordion");
+      }
+
       window.history.pushState('','',url);
 
       owInitAjax();
@@ -378,6 +382,26 @@ var owInitAleaGrid = function(grid, dom, init) {
 
   grid.isotope('layout');
 };
+
+var owInitLinkChangeEffect = function() {
+
+  $('header a, footer a, .cards a, .block-push a, .block-infos a, .small-push a, .texte-01 a, .item a, .link').on('click', function(e) {
+
+    e.preventDefault();
+
+    var url = $(this).attr('href');
+
+    $('.overlay').addClass('animated fadeIn visible');
+
+    setTimeout(function(){
+        window.history.pushState('','',url);
+        window.location.reload();
+
+    }, 1000);
+
+    return false;
+  });
+}
 
 var owInitPopin = function(id) {
 
@@ -1020,28 +1044,29 @@ var owInitSlider = function(sliderName) {
   }
 };
 
-  $(window).resize(function() {
+$(window).resize(function() {
 
-    if($('.retrospective').length) {
+  if($('.retrospective').length) {
 
-      var $slide = $('.slides');
-      var $slideCalc1 = $('.slides-calc1');
+     var $slide = $('.slides');
+     var $slideCalc1 = $('.slides-calc1');
 
-      var w = $('body').width();
-      var numberSlide = $('.slider-restropective').size();
-      var sizeSlide = $('.slider-restropective').width();
-      var finalSizeSlider = numberSlide * sizeSlide + 100;
+     var w = $('body').width();
+     var numberSlide = $('.slider-restropective').size();
+     var sizeSlide = $('.slider-restropective').width();
+     var finalSizeSlider = numberSlide * sizeSlide + 100;
 
-      $slide.css('width',finalSizeSlider); // change size slider
-      $slideCalc1.css('width',finalSizeSlider); // change size slider
+     $slide.css('width',finalSizeSlider); // change size slider
+     $slideCalc1.css('width',finalSizeSlider); // change size slider
 
-      values = $('.slides-calc1 .date').html();
-      number = values - 1945;
-      var val = - w * (values - 1945); //todo script ?
+     values = $('.slides-calc1 .date').html();
+     number = values - 1945;
+     var val = - w * (values - 1945); //todo script ?
 
-      $slide.css('transform','translate('+val+'px)');
-    }
-  });
+     $slide.css('transform','translate('+val+'px)');
+
+  }
+});
 
 var owInitTab = function(id) {
 
@@ -1087,6 +1112,7 @@ var owInitTab = function(id) {
 $(document).ready(function() {
 
  initHeaderSticky();
+ // owInitLinkChangeEffect(); add ?? 
 
  //gestion des cookie a faire ici
 

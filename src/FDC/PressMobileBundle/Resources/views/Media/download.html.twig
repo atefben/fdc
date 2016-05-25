@@ -3,7 +3,7 @@
 
 {% block body %}
 
-    <div id="main" class="press loading downloading-press {{ (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'conected' : 'lock' }} ">
+    <div id="main" class="press {{ (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? '' : 'press-locked ' }} press-downloads" data-menu="press">
 
         {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
 
@@ -13,93 +13,83 @@
             </div>
             <div class="container">
                 <h2>{{ 'press.header.title.atelecharger'|trans }}</h2>
-                <p>
-            <span class="vCenter">
-              <span class="vCenterKid">
-                  {{ 'press.header.subtitle.ceselementsvisuelssontausageexclusif'|trans }}
-              </span>
-            </span>
-                </p>
+                <p>{{ 'press.header.subtitle.ceselementsvisuelssontausageexclusif'|trans }}</p>
             </div>
         </div>
 
-        <div class="downloading-nav">
-            <ul>
-                {% for key,s in pressDownloads %}
-                    {% set slugSplit = s.section|trans_fallback('slug')|split('-', 2) %}
-                    {% set slugSection = "" %}
-                    {% if attribute(slugSplit, 0) == "dossier" %}
-                        {% set slugSection = "dossier-presse" %}
-                    {% elseif attribute(slugSplit, 0) == "signatures" %}
-                        {% set slugSection = "signature" %}
-                    {% else %}
-                        {% set slugSection = s.section|trans_fallback('slug') %}
-                    {% endif %}
-                    <!-- Don't change ID value -->
-                    <li><a href="#{{ slugSection }}" class="ajax {% if key == 0 %}active{% endif %}">{{ s.section|trans_fallback('title') }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
 
-        <div class="wrapper">
-            {% for k,s in pressDownloads %}
-                {% set slugSplit = s.section|trans_fallback('slug')|split('-', 2) %}
-                {% set slugSection = "" %}
-                {% if attribute(slugSplit, 0) == "dossier" %}
-                    {% set slugSection = "dossier-presse" %}
-                {% elseif attribute(slugSplit, 0) == "signatures" %}
-                    {% set slugSection = "signature" %}
-                {% else %}
-                    {% set slugSection = s.section|trans_fallback('slug') %}
-                {% endif %}
-                {% set sectionClass = "default" %}
-                {% set sectionId = "default" %}
-                {% if 'affiche' in s.section.findTranslationByLocale('fr').title|lower %}
-                    {% set sectionClass = "affiche" %}
-                    {% set sectionId = "affiche-officielle" %}
-                {% elseif 'signature' in s.section.findTranslationByLocale('fr').title|lower %}
-                    {% set sectionClass = "signature block" %}
-                    {% set sectionId = "signature" %}
-                {% elseif 'animation' in s.section.findTranslationByLocale('fr').title|lower %}
-                    {% set sectionClass = "animation block" %}
-                    {% set sectionId = "animation" %}
-                {% elseif 'photo' in s.section.findTranslationByLocale('fr').title|lower %}
-                    {% set sectionClass = "photos block slideshow" %}
-                    {% set sectionId = "photos-institutionnelles" %}
-                {% elseif 'dossier' in s.section.findTranslationByLocale('fr').title|lower %}
-                    {% set sectionClass = "dossier block" %}
-                    {% set sectionId = "dossier-presse" %}
-                {% endif %}
-                <div class="{{ sectionClass }}" id="{{ slugSection }}">
-                    <div class="container">
-                        {% if sectionId != "photos-institutionnelles" %}
-                            <h3 class="title-press">{{ s.section|trans_fallback('title') }}</h3>
-                        {% endif %}
+        <div id="horizontal-menu" class="owl-carousel sliderDrag ">
+            {% for key,s in pressDownloads %}
 
-                        {% for key,widget in s.section.widgets %}
-                            {% if class(widget) == "PressDownloadSectionWidgetDocument" %}
-                                {% include 'FDCPressBundle:Media:widgets/document.html.twig' %}
-                            {% elseif class(widget) == "PressDownloadSectionWidgetArchive" %}
-                                {% include 'FDCPressBundle:Media:widgets/archive.html.twig' %}
-                            {% elseif class(widget) == "PressDownloadSectionWidgetFile" %}
-                                {% include 'FDCPressBundle:Media:widgets/file.html.twig' %}
-                            {% elseif class(widget) == "PressDownloadSectionWidgetPhoto" %}
-                                {% include 'FDCPressBundle:Media:widgets/photo.html.twig' %}
-                            {% elseif class(widget) == "PressDownloadSectionWidgetVideo" %}
-                                {% include 'FDCPressBundle:Media:widgets/video.html.twig' %}
-                            {% endif %}
-                        {% endfor %}
-
-
-                    </div>
-                </div>
-
+            {% set slugSplit = s.section|trans_fallback('slug')|split('-', 2) %}
+            {% set slugSection = "" %}
+            {% if attribute(slugSplit, 0) == "dossier" %}
+                {% set slugSection = "dossier-presse" %}
+            {% elseif attribute(slugSplit, 0) == "signatures" %}
+                {% set slugSection = "signature" %}
+            {% else %}
+                {% set slugSection = s.section|trans_fallback('slug') %}
+            {% endif %}
+            <!-- Don't change ID value -->
+            <div class="vid">
+                <p><a class="{% if key == 0 %}active{% endif %}" href="#" data-filter="{{ slugSection }}">{{ s.section|trans_fallback('title') }}</a></p>
+            </div>
             {% endfor %}
+        </div>
+    <div class="downloads">
+        {% for k,s in pressDownloads %}
+            {% set slugSplit = s.section|trans_fallback('slug')|split('-', 2) %}
+            {% set slugSection = "" %}
+            {% if attribute(slugSplit, 0) == "dossier" %}
+                {% set slugSection = "dossier-presse" %}
+            {% elseif attribute(slugSplit, 0) == "signatures" %}
+                {% set slugSection = "signature" %}
+            {% else %}
+                {% set slugSection = s.section|trans_fallback('slug') %}
+            {% endif %}
+            {% set sectionClass = "default" %}
+            {% set sectionId = "default" %}
+            {% if 'affiche' in s.section.findTranslationByLocale('fr').title|lower %}
+                {% set sectionClass = "affiche" %}
+                {% set sectionId = "affiche-officielle" %}
+            {% elseif 'signature' in s.section.findTranslationByLocale('fr').title|lower %}
+                {% set sectionClass = "signature block" %}
+                {% set sectionId = "signature" %}
+            {% elseif 'animation' in s.section.findTranslationByLocale('fr').title|lower %}
+                {% set sectionClass = "animation block" %}
+                {% set sectionId = "animation" %}
+            {% elseif 'photo' in s.section.findTranslationByLocale('fr').title|lower %}
+                {% set sectionClass = "photos block slideshow" %}
+                {% set sectionId = "photos-institutionnelles" %}
+            {% elseif 'dossier' in s.section.findTranslationByLocale('fr').title|lower %}
+                {% set sectionClass = "dossier block" %}
+                {% set sectionId = "dossier-presse" %}
+            {% endif %}
+            <section class="{{ sectionClass }} {% if k == 0 %}section-active{% endif %}">
+                <div class="contain-section container">
+                    {% for key,widget in s.section.widgets %}
+                        {% if class(widget) == "PressDownloadSectionWidgetDocument" %}
+                            {% include 'FDCPressMobileBundle:Media:widgets/document.html.twig' %}
+                        {% elseif class(widget) == "PressDownloadSectionWidgetArchive" %}
+                            {% include 'FDCPressMobileBundle:Media:widgets/archive.html.twig' %}
+                        {% elseif class(widget) == "PressDownloadSectionWidgetFile" %}
+                            {% include 'FDCPressMobileBundle:Media:widgets/file.html.twig' %}
+                        {% elseif class(widget) == "PressDownloadSectionWidgetPhoto" %}
+                            {% include 'FDCPressMobileBundle:Media:widgets/photo.html.twig' %}
+                        {% elseif class(widget) == "PressDownloadSectionWidgetVideo" %}
+                            {% include 'FDCPressMobileBundle:Media:widgets/video.html.twig' %}
+                        {% endif %}
+                    {% endfor %}
 
-           {{ render(controller('FDCPressBundle:Global:contact')) }}
+                </div>
+            </section>
+
+        {% endfor %}
+
+        {{ render(controller('FDCPressMobileBundle:Global:contact')) }}
     </div>
 
-    {% include 'FDCPressBundle:Global:components/popinPress.html.twig' %}
+    {% include 'FDCPressMobileBundle:Global:components/popinPress.html.twig' %}
 
     </div>
 

@@ -407,25 +407,26 @@ var owInitSlider = function(sliderName) {
   }
 };
 
-  $(window).resize(function() {
+$(window).resize(function() {
 
-    if($('.retrospective').length) {
+  if($('.retrospective').length) {
 
-      var $slide = $('.slides');
-      var $slideCalc1 = $('.slides-calc1');
+     var $slide = $('.slides');
+     var $slideCalc1 = $('.slides-calc1');
 
-      var w = $('body').width();
-      var numberSlide = $('.slider-restropective').size();
-      var sizeSlide = $('.slider-restropective').width();
-      var finalSizeSlider = numberSlide * sizeSlide + 100;
+     var w = $('body').width();
+     var numberSlide = $('.slider-restropective').size();
+     var sizeSlide = $('.slider-restropective').width();
+     var finalSizeSlider = numberSlide * sizeSlide + 100;
 
-      $slide.css('width',finalSizeSlider); // change size slider
-      $slideCalc1.css('width',finalSizeSlider); // change size slider
+     $slide.css('width',finalSizeSlider); // change size slider
+     $slideCalc1.css('width',finalSizeSlider); // change size slider
 
-      values = $('.slides-calc1 .date').html();
-      number = values - 1945;
-      var val = - w * (values - 1945); //todo script ?
+     values = $('.slides-calc1 .date').html();
+     number = values - 1945;
+     var val = - w * (values - 1945); //todo script ?
 
-      $slide.css('transform','translate('+val+'px)');
-    }
-  });
+     $slide.css('transform','translate('+val+'px)');
+
+  }
+});

@@ -37,6 +37,10 @@ var owInitAjax = function() {
         owInitFilter();
       }
 
+      if($('.block-accordion').length) {
+          owInitAccordion("block-accordion");
+      }
+
       window.history.pushState('','',url);
 
       owInitAjax();

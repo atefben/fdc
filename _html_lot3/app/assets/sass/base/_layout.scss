@@ -274,7 +274,7 @@ video{
 }
 
 .padding-big-bottom {
-  padding-bottom: 100px; 
+  padding-bottom: 100px;
   display: block;
 }
 
@@ -358,6 +358,22 @@ video{
   margin-top: 0px !important;
 }
 
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  display: none;
+  transition: .3s;
+
+  &.visible {
+    display: block;
+  }
+}
 
 // 3. Responsive 768
 // =========================
