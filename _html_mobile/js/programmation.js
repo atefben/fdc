@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  if($('.programmation-press').length || $('.press').length ) {
+  if($('.programmation-press').length || $('.press').length && !$('.calendar-press').length ){
     // init array of events
     var events = [];
     // get local storage
