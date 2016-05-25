@@ -1,10 +1,10 @@
 {% trans_default_domain 'FDCPressBundle' %}
 
-<div class="filters">
+<div class="filters" id="horizontal-filters">
 
     <div id="date" class="filter">
         <span class="label">{{ 'press.actu.filter.label.annees'|trans }} :</span>
-        <span class="select">
+        <div class="select">
             {% for key,date in filters.dates %}
                 {% if key == 0 %}
                     <span class="active" data-filter="d{{ date.content }}">
@@ -17,38 +17,37 @@
                 {% endif %}
             {% endfor %}
             <i class="icon icon_fleche-down"></i>
-        </span>
+        </div>
     </div>
 
     <div id="type" class="filter">
         <span class="label">{{ 'press.actu.filter.label.types'|trans }} :</span>
-        <span class="select">
+        <div class="select">
             <span class="active" data-filter="all">{{ 'press.actu.filter.type.tous'|trans }}</span>
             <span data-filter="communique">{{ 'press.actu.filter.type.communiques'|trans }}</span>
             <span data-filter="info">{{ 'press.actu.filter.type.infos'|trans }}</span>
             <i class="icon icon_fleche-down"></i>
-        </span>
+        </div>
     </div>
 
     <div id="theme" class="filter">
         <span class="label">{{ 'press.actu.filter.label.themes'|trans }} :</span>
-        <span class="select">
+        <div class="select">
             {% for key, theme in filters.themes %}
                 <span class="{% if key == 0 %}active{% endif %}" data-filter="{% if key != 0 %}theme-{% endif %}{{ theme.id }}">{% if key == 0 %}{{ 'header.maselection.nav.tous'|trans({},'FDCEventBundle') }}{% else %}{{ theme.content }}{% endif %}</span>
             {% endfor %}
             <i class="icon icon_fleche-down"></i>
-        </span>
+        </div>
     </div>
 
     <div id="format" class="filter">
         <span class="label">{{ 'press.actu.filter.label.format'|trans }} :</span>
-        <span class="select">
+        <div class="select">
             {% for key, format in filters.format %}
                 <span class="{% if key == 0 %}active{% endif %}" data-filter="{{ format.slug }}">{% if key == 0 %}{{ 'header.maselection.nav.tous'|trans({},'FDCEventBundle') }}{% else %}{{ ('filter.type.'~format.content)|trans({},'FDCEventBundle')  }}{% endif %}</span>
             {% endfor %}
             <i class="icon icon_fleche-down"></i>
-        </span>
+        </div>
     </div>
-
 
 </div>
