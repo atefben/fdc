@@ -2,7 +2,7 @@
 {% extends 'FDCPressMobileBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="press loading accreditation">
+    <div id="main" class="press press_accreditation" data-menu="accreditation">
         {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
         <div class="header-press">
             <div class="head">
@@ -11,65 +11,46 @@
             <div class="container">
                 <h2>{{ 'press.header.title.saccrediter'|trans }}</h2>
                 <p>
-            <span class="vCenter">
-              <span class="vCenterKid">
                   {{ 'press.header.subtitle.lefestivaldecannesestreserve'|trans }}
-              </span>
-            </span>
                 </p>
             </div>
         </div>
 
-        <div id="accreditation">
-        <div class="wrapper">
-            <div class="container-small">
-                {{ accredit|trans_fallback('commonContent')|raw }}
-            </div>
+        <div id="container">
+            {{ accredit|trans_fallback('commonContent')|raw }}
         </div>
         {% if accredit.procedure|length > 0 %}
-        <div class="nav-accre">
-            <div class="wrapper">
-                <h2>{{ 'press.accrediter.title.consultezlaprocedure'|trans }}</h2>
-                <table>
-                    <tr>
+            <div class="section-title-selection">
+                <h2 class="tall">{{ 'press.accrediter.title.consultezlaprocedure'|trans }}</h2>
+                <div id="horizontal-menu" class="owl-carousel sliderDrag videosSlider">
                     {% for key,sectionFilter in accredit.procedure %}
-                        <td data-cat="{{ sectionFilter.procedure|trans_fallback('title')|replace({' ':'-'})|lower }}" class="{% if key == 0 %}active{% endif %}">
-                            {{ sectionFilter.procedure|trans_fallback('title') }}
-                        </td>
-                        {% if  loop.index % 3 == 0 %}
-                        </tr>
-                        <tr>
-                        {% endif %}
+                        <div class="vid">
+                            <p><a href="#" data-media="{{ sectionFilter.procedure|trans_fallback('title')|replace({' ':'-'})|lower }}"  class="{% if key == 0 %}active{% endif %}">{{ sectionFilter.procedure|trans_fallback('title') }}</a></p>
+                        </div>
                     {% endfor %}
-                    </tr>
-                </table>
+                </div>
             </div>
-        </div>
         {% endif %}
         {% for key, section in accredit.procedure %}
-            <div class="nav-container {% if key == 0 %}active{% endif %}" data-cat="{{ section.procedure|trans_fallback('title')|replace({' ':'-'})|lower }}">
-                <div class="wrapper">
-                    <div class="container-small">
-                        <div class="buttons">
-                            <a id="share-article" href="#" class="button  print" onclick="window.print()">
-                                <i class="icon icon_print"></i>
-                                {{ 'press.accrediter.btn.imprimer'|trans }}
+            <div class="medias content">
+                <div class="media {% if key == 0 %}active{% endif %}" id="{{ section.procedure|trans_fallback('title')|replace({' ':'-'})|lower }}">
+                    <div class="buttons">
+                        <a id="share-article" href="#" class="button  print" onclick="window.print()">
+                            <i class="icon icon_print"></i>{{ 'press.accrediter.btn.imprimer'|trans }}</a>
+                        {% if app.request.locale == "fr" and section.procedure.procedureFile is not null %}
+                            <a href="{% path section.procedure.procedureFile, 'reference' %}" class="button save" target="_blank" download>
+                                <i class="icon icon_pdf"></i>
+                                {{ 'press.accrediter.btn.enregistrer'|trans }}
                             </a>
-                            {% if app.request.locale == "fr" and section.procedure.procedureFile is not null %}
-                                <a href="{% path section.procedure.procedureFile, 'reference' %}" class="button save" target="_blank" download>
-                                    <i class="icon icon_pdf"></i>
-                                    {{ 'press.accrediter.btn.enregistrer'|trans }}
-                                </a>
-                            {% elseif section.procedure.procedureSecondFile is not null  %}
-                                <a href="{% path section.procedure.procedureSecondFile, 'reference' %}" class="button save" target="_blank" download>
-                                    <i class="icon icon_pdf"></i>
-                                    {{ 'press.accrediter.btn.enregistrer'|trans }}
-                                </a>
-                            {% endif %}
-                        </div>
-                        <h4>{{ section.procedure|trans_fallback('title') }}</h4>
-                        {{ section.procedure|trans_fallback('procedureContent')|raw }}
+                        {% elseif section.procedure.procedureSecondFile is not null  %}
+                            <a href="{% path section.procedure.procedureSecondFile, 'reference' %}" class="button save" target="_blank" download>
+                                <i class="icon icon_pdf"></i>
+                                {{ 'press.accrediter.btn.enregistrer'|trans }}
+                            </a>
+                        {% endif %}
                     </div>
+                    <h4>{{ section.procedure|trans_fallback('title') }}</h4>
+                    {{ section.procedure|trans_fallback('procedureContent')|raw }}
                 </div>
             </div>
         {% endfor %}
@@ -87,9 +68,7 @@
             </div>
         </div>
     {% endif %}
-    </div>
 
-    {{ render(controller('FDCPressBundle:Global:contact')) }}
-
+    {{ render(controller('FDCPressMobileBundle:Global:contact')) }}
 </div>
 {% endblock %}

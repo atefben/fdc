@@ -13,7 +13,7 @@
     {% set articleFormat = "image" %}
 {% endif %}
 <div class="item all {{ articleType }} theme-{{ article.theme.id }} d{{ article.publishedAt|date('Y') }} article">
-    <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': articleType }) }}"></a>
+    <a href="{{ path('fdc_pressmobile_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': articleType }) }}"></a>
     <div class="img-container">
         <div class="picto">
             <i class="icon icon_{{ articleType == "communique" ? 'communique-presse' : 'article' }}"></i>
