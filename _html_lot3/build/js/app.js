@@ -137,6 +137,13 @@ var owInitFilter = function(){
   });
 };
 
+
+var owRemoveElementListe = function() {
+  $('.filters-02 li .icon-close').on('click', function(){
+    $(this).parent().remove();
+  });
+}
+
 var owInitGrid = function(id){
 
   if(id == 'isotope-01') {
@@ -1113,7 +1120,7 @@ var owInitTab = function(id) {
 $(document).ready(function() {
 
  initHeaderSticky();
- // owInitLinkChangeEffect(); add ?? 
+ // owInitLinkChangeEffect(); add ??
 
  //gestion des cookie a faire ici
 
@@ -1221,6 +1228,7 @@ $(document).ready(function() {
 
   if($('.filters-02').length) {
     owInitNavSticky(3);
+    owRemoveElementListe();
   }
 
 });

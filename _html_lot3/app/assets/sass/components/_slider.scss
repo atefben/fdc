@@ -508,7 +508,7 @@
     flex-direction: column;
 
     img{
-      // transition: $smoothTransition .8s;
+      transition: $smoothTransition .8s;
       width: 100%;
       object-fit: cover;
     }

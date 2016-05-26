@@ -19,7 +19,7 @@
 $(document).ready(function() {
 
  initHeaderSticky();
- // owInitLinkChangeEffect(); add ?? 
+ // owInitLinkChangeEffect(); add ??
 
  //gestion des cookie a faire ici
 
@@ -127,6 +127,7 @@ $(document).ready(function() {
 
   if($('.filters-02').length) {
     owInitNavSticky(3);
+    owRemoveElementListe();
   }
 
 });

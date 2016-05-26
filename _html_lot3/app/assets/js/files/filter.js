@@ -41,3 +41,10 @@ var owInitFilter = function(){
     owInitGrid('filter');
   });
 };
+
+
+var owRemoveElementListe = function() {
+  $('.filters-02 li .icon-close').on('click', function(){
+    $(this).parent().remove();
+  });
+}
