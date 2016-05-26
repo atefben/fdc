@@ -2,7 +2,7 @@
 {% extends 'FDCPressMobileBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="main" class="press loading press-media {{ (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? 'conected' : 'lock' }}">
+    <div id="main" class="press press-media {{ (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? '' : 'press-locked' }}" data-menu="medias">
         {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
         <div class="header-press">
             <div class="head">
@@ -10,40 +10,28 @@
             </div>
             <div class="container">
                 <h2>{{ 'press.header.title.mediathequefilms'|trans }}</h2>
-                <p>
-            <span class="vCenter">
-              <span class="vCenterKid">
-                  {{ 'press.header.subtitle.voustrouverezcidessouslesdossiers'|trans }}
-              </span>
-            </span>
-                </p>
+                <p>{{ 'press.header.subtitle.voustrouverezcidessouslesdossiers'|trans }}</p>
             </div>
         </div>
-        <div class="container-mediapress">
-            <div class="nav-mediapress">
-                <div class="wrapper">
-                    <h2>{{ 'mediatheque.title.choixdelaselection'|trans }}</h2>
-                    <table>
-                        <tr>
-                            {% for key,filter in filmSection %}
-                            <td data-cat="{{ filter.id }}"
-                                class="section-cat {{ (filter.id == sectionId) ? 'active' : '' }}">{{ filter.name }}</td>
-                            {% if  loop.index % 3 == 0 %}
-                        </tr>
-                        <tr>
-                            {% endif %}
-                            {% endfor %}
-                        </tr>
-                    </table>
-                </div>
+
+        <div class="section-title-selection">
+            <h2 class="tall">{{ 'mediatheque.title.choixdelaselection'|trans }}</h2>
+            <div id="horizontal-menu" class="owl-carousel sliderDrag videosSlider">
+                {% for key,filter in filmSection %}
+                    <div class="vid">
+                        <p><a href="#" data-url="{{ path('fdc_pressmobile_media_main', {'sectionId' : filter.id}) }}" class="{{ (filter.id == sectionId) ? 'active' : '' }}">{{ filter.name }}</a></p>
+                    </div>
+                {% endfor %}
             </div>
+        </div>
+        <div class="selections show">
             {% for section in filmSection %}
                 {% if section.id == app.request.get('sectionId') %}
-                    {% include 'FDCPressBundle:Media:components/content.html.twig' %}
+                    {% include 'FDCPressMobileBundle:Media:components/content.html.twig' %}
                 {% endif %}
             {% endfor %}
-            {{ render(controller('FDCPressBundle:Global:contact')) }}
+            {{ render(controller('FDCPressMobileBundle:Global:contact')) }}
         </div>
-        {% include 'FDCPressBundle:Global:components/popinPress.html.twig' %}
+        {% include 'FDCPressMobileBundle:Global:components/popinPress.html.twig' %}
     </div>
 {% endblock body %}

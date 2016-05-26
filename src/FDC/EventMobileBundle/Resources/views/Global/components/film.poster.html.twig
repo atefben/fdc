@@ -15,7 +15,7 @@
     {% endif %}
 
     {% if film_attrs is not defined %}
-        {% set film_attrs = {'alt': (film|trans_fallback('title')?:movie.titleVO)} %}
+        {% set film_attrs = {'alt': (film|trans_fallback('title')?:film.titleVO)} %}
     {% endif %}
 
     {% if film_format is not defined %}
@@ -32,7 +32,7 @@
         {% if media is not empty %}
             {% media media, film_format with film_attrs %}
         {% else %}
-            <img src="{{ asset(film_image_default) }}" alt="{{ 'movie.poster'|trans() }}"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %} data-object-fit="cover">
+            <div class="img-container" style="background-image:url({{ asset(film_image_default) }})"></div>
         {% endif %}
     {% endif %}
 {% endspaceless %}
