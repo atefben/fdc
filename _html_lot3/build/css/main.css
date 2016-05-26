@@ -9209,7 +9209,6 @@ header #searchContainer {
           flex-direction: column;
 }
 .slider-restropective .vFlexAlign img {
-  transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.8s;
   width: 100%;
   object-fit: cover;
 }

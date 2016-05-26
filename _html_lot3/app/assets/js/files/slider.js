@@ -417,7 +417,7 @@ $(window).resize(function() {
      var w = $('body').width();
      var numberSlide = $('.slider-restropective').size();
      var sizeSlide = $('.slider-restropective').width();
-     var finalSizeSlider = numberSlide * sizeSlide + 100;
+     var finalSizeSlider = numberSlide * sizeSlide + 1800;
 
      $slide.css('width',finalSizeSlider); // change size slider
      $slideCalc1.css('width',finalSizeSlider); // change size slider
@@ -425,6 +425,7 @@ $(window).resize(function() {
      values = $('.slides-calc1 .date').html();
      number = values - 1945;
      var val = - w * (values - 1945); //todo script ?
+
 
      $slide.css('transform','translate('+val+'px)');
 
