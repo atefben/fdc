@@ -382,7 +382,7 @@
     display: none;
   }
 
-  .date{
+  .date {
     &-back, &-next {
       display: none;
       z-index: 5;
@@ -628,6 +628,7 @@
         position: absolute;
         top: 0px;
         opacity: .3;
+        left: 0px;
 
         &.open {
           transition: $smoothTransition .8s;

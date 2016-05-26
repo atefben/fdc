@@ -9312,6 +9312,7 @@ header #searchContainer {
   position: absolute;
   top: 0px;
   opacity: .3;
+  left: 0px;
 }
 .slider-restropective.big .vFlexAlign img.open {
   transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.8s;
