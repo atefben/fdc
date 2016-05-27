@@ -1,8 +1,11 @@
 {% trans_default_domain 'FDCPressBundle' %}
-<div class="contain-service">
+
+<div class="item-info" >
     {% if widget.picto is not null %}
         <i class="icon {{ widget.picto }}"></i>
     {% endif %}
-    <strong class="title-service">{{ widget|trans_fallback('title') }}</strong>
+    <h4 class="title-contain">
+        {{ widget|trans_fallback('title') }}
+    </h4>
     {{ widget|trans_fallback('content')|raw }}
 </div>

@@ -7,14 +7,12 @@
     {% endif %}
     {% set file = trans.file %}
 {% endif %}
-<div class="contain-article">
+<div class="section-contain" >
     {% if widget.gallery is not null %}
-        <div class="aside">
-            <img src="{% path file, '363x229' %}" alt="{{ img|trans_fallback('alt') }}" />
-        </div>
+        <img src="{% path file, '363x229' %}" alt="{{ img|trans_fallback('alt') }}" />
     {% endif %}
-    <div class="texts">
-        <strong>{{ widget|trans_fallback('title') }}</strong>
-        {{ widget|trans_fallback('content')|raw }}
-    </div>
+    <h4 class="title-contain">
+        {{ widget|trans_fallback('title') }}
+    </h4>
+    {{ widget|trans_fallback('content')|raw }}
 </div>
