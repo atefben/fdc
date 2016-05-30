@@ -5680,6 +5680,35 @@ video {
   display: block;
 }
 
+.wysiwyg-article-02 h2 {
+  font-size: 1.125rem;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: block;
+  text-align: center;
+  line-height: 36px;
+}
+.wysiwyg-article-02 h4 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 24px;
+  color: #fff;
+}
+.wysiwyg-article-02 p {
+  color: #666666;
+  font-size: 1rem;
+  line-height: 26px;
+  font-size: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  margin-top: 32px;
+  margin-bottom: 66px;
+}
+.wysiwyg-article-02 p a {
+  color: #c8a461;
+}
+.wysiwyg-article-02 p strong {
+  color: #c8a461;
+}
+
 @font-face {
   font-family: "icon";
   src: url("../fonts/icon.eot");
