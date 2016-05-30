@@ -1,6 +1,13 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdceventmobile/css/privacy_policy.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
     <div id="main" class="legals" data-menu="privacy_policy">
 
@@ -24,4 +31,11 @@
             </section>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts '@FDCEventMobileBundle/Resources/public/js/privacy_policy.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
 {% endblock %}

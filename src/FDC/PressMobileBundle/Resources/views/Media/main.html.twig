@@ -1,6 +1,13 @@
 {% trans_default_domain 'FDCPressBundle' %}
 {% extends 'FDCPressMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdcpressmobile/css/press_medias.css" %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
     <div id="main" class="press press-media {{ (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? '' : 'press-locked' }}" data-menu="medias">
         {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
@@ -35,3 +42,10 @@
         {% include 'FDCPressMobileBundle:Global:components/popinPress.html.twig' %}
     </div>
 {% endblock body %}
+
+{% block javascripts %}
+    {% javascripts '@FDCPressMobileBundle/Resources/public/js/press_medias.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
+{% endblock %}

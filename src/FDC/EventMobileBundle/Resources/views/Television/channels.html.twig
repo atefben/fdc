@@ -1,6 +1,14 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdceventmobile/css/channels.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
+
 {% block body %}
     <div id="main" class="webtv list-channels loading st-container">
 
@@ -55,3 +63,11 @@
         </div>
     </div>
 {% endblock body %}
+
+
+{% block javascripts %}
+    {% javascripts '@FDCEventMobileBundle/Resources/public/js/channels.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
+{% endblock %}

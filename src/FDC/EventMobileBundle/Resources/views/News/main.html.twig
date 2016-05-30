@@ -1,6 +1,13 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdceventmobile/css/article.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
     {% include 'FDCEventMobileBundle:News:widgets/social-share.html.twig' %}
     <div id="main" class="article" data-menu="selection">{# |!| communique |!| #}
@@ -199,4 +206,11 @@
         </div>
         <span class="anim"></span>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts '@FDCEventMobileBundle/Resources/public/js/article.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
 {% endblock %}

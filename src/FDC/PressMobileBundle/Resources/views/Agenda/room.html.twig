@@ -1,6 +1,13 @@
 {% trans_default_domain 'FDCPressBundle' %}
 {% extends 'FDCPressMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdcpressmobile/css/press_maps.css" %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
     <div id="main" class="press press_maps" data-menu="prog">
         {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
@@ -84,3 +91,10 @@
         </div>#}
     </div>
 {% endblock body %}
+
+{% block javascripts %}
+    {% javascripts '@FDCPressMobileBundle/Resources/public/js/press_maps.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
+{% endblock %}

@@ -1,6 +1,13 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdceventmobile/css/artist.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
     <div id="main" class="single-article artist loading">
 
@@ -273,3 +280,10 @@
         <span class="anim"></span>
     </div>
 {% endblock body %}
+
+{% block javascripts %}
+    {% javascripts '@FDCEventMobileBundle/Resources/public/js/artist.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
+{% endblock %}

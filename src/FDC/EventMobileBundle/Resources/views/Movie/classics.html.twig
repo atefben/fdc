@@ -1,9 +1,14 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdceventmobile/css/selection.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
-
-
     <div id="main" class="list-article films-list loading honneur-invit canne-classic selection-officielle">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
@@ -157,3 +162,10 @@
         </div>
     </div>
 {% endblock body %}
+
+{% block javascripts %}
+    {% javascripts '@FDCEventMobileBundle/Resources/public/js/selection.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
+{% endblock %}s

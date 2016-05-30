@@ -1,0 +1,112 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% block javascripts_footer %}
+    {% spaceless %}
+        {% set defaultDate = 'now'|date('Ymd') %}
+        {%- if defaultDate < festival_date.festivalStartsAt|date('Ymd') -%}
+            {%- set defaultDate = festival_date.festivalStartsAt|date('Y-m-d') -%}
+        {%- elseif defaultDate > festival_date.festivalEndsAt|date('Ymd') -%}
+            {%- set defaultDate = festival_date.festivalEndsAt|date('Y-m-d') -%}
+        {% else %}
+            {% set defaultDate = 'now'|date('Y-m-d') %}
+        {%- endif -%}
+        <script>
+            var GLOBALS = {
+                "env" : "{{ app.environment }}",
+                "locale" : "{{ app.request.locale }}",
+                "defaultDate" : "{{ defaultDate }}",
+                "dateStart": "{{ festival_date.festivalStartsAt|date('Y-m-d') }}",
+                "dateEnd": "{{ festival_date.festivalEndsAt|date('Y-m-d') }}",
+                "api" : {
+                    "instagram" : {
+                        "token" : "18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
+                        "hashtag" : "Cannes2016",
+                    },
+                    "twitter" : {
+                        "hashtag" : "%23Cannes2016",
+                        "count" : 15,
+                        "uri" : "search_tweets",
+                        "url" : "twitter.php"
+                    },
+                    "instagramUrl" : "{{ path('get_social_wall_instagram') }}",
+                    "twitterUrl" : "{{ path('get_social_wall_twitter') }}"
+                },
+                "baseUrl" : "{{ url('fdc_eventmobile_news_index') }}",
+                "urls" : {
+                    "calendarProgrammationUrl" : "{{ url('fdc_eventmobile_agenda_getdayprojections') }}",
+                    "eventUrl" : "load-evenements.php",
+                    "newsUrl" : "{{ url('fdc_eventmobile_news_getarticlesfrom') }}",
+                    "loadPressReleaseUrl" : "{{ url('fdc_press_news_listajax') }}",
+                    "selectionUrl" : "{{ url('fdc_eventmobile_global_suggestion') }}",
+                    "newsletterUrl": "{{ url('fdc_eventmobile_global_newsletter') }}",
+                    "shareEmailUrl": "{{ url('fdc_eventmobile_global_shareemail') }}",
+                    "shareEmailMediaUrl": "{{ url('fdc_eventmobile_global_shareemailmedia') }}",
+                    "pressDownloadTrailerUrl": "{{ url('fdc_press_media_trailerdownload') }}",
+                    "pressMediaSection": "{{ url('fdc_press_media_mediasection') }}",
+                    "audiosUrl": "{{ url('fdc_eventmobile_news_getaudios') }}",
+                    "photosUrl": "{{ url('fdc_eventmobile_news_getphotos') }}",
+                    "videosUrl": "{{ url('fdc_eventmobile_news_getvideos') }}",
+                    "searchUrl": "{{ url('fdc_event_search_searchautocomplete') }}"
+                },
+                "news" : {
+                    "count" : 5
+                },
+                "texts" : {
+                    "url" : {
+                        "title" : "{{ url('fdc_press_media_mediasection') }}"
+                    },
+                    "search" : {
+                        "noresult" : "Aucun résultat"
+                    },
+                    "popin" : {
+                        "error" : "valide",
+                        "empty" : "renseignée",
+                        "copy"  : "Lien copié !",
+                        "valid" : "{{ 'share.email.send'|trans }}"
+                    },
+                    "googleMap" : {
+                        "title" : "Festival de Cannes"
+                    },
+                    "readMore" : {
+                        "more" : "Afficher <strong>plus d'actualités</strong>",
+                        "nextDay" : "Passer au <strong>jour précédent</strong>"
+                    },
+                    "newsletter" : {
+                        "errorsNotValide" : "L'adresse e-mail n'est pas valide",
+                        "errorsMailEmpty" : "Veuillez saisir une adresse e-mail valide"
+                    },
+                    'agenda' : {
+                        'delete' : "Supprimer de votre agenda"
+                    }
+                },
+                "player": {
+                    "file" : "./files/mov_bbb.mp4",
+                    "image" : "//dummyimage.com/960x540/c8a461/000.png",
+                    "title" : "Video 1"
+                },
+                "calendar": {
+                    "labelFormat": {
+                        "fr" : "H [H]",
+                        "default" : "h A"
+                    },
+                    "i18n": {
+                        "months": ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
+                        "weekdays" : ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+                        "weekdaysShort" : ["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"],
+                        "labelFormat": {
+                            "fr" : "H\\hi",
+                            "default" : "g:ia"
+                        }
+                    }
+                },
+                "socialWall": {
+                    {% if socialGraph is defined %}
+                    "points": {{ socialGraph.timelineCount }},
+                    {% else %}
+                    "points": [],
+                    {% endif %}
+                    "heightGraph" : 200
+                }
+            }
+        </script>
+    {% endspaceless %}
+{% endblock %}

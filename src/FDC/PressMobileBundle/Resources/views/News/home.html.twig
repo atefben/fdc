@@ -1,6 +1,14 @@
 {% trans_default_domain 'FDCPressBundle' %}
 {% extends 'FDCPressMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdceventmobile/css/press.css" %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
+
 {% block body %}
 <div id="main" class="press" data-menu="press">
 
@@ -267,4 +275,11 @@
     {{ render(controller('FDCPressMobileBundle:Global:contact')) }}
     {% include 'FDCPressMobileBundle:Global:components/popinPress.html.twig' %}
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts '@FDCPressMobileBundle/Resources/public/js/press.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
 {% endblock %}

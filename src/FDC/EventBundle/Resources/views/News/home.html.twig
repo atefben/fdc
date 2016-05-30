@@ -191,10 +191,11 @@
 
                     {% if homepage.topNewsType == 0 %}
                         <div id="timeline">
+                            {% set hasActive = false %}
                             {% for key,date in festivalInterval %}
                                 {% set timestamp = date ~ ' 23:59:59' %}
                                 <a href="#" data-timestamp="{{ timestamp|date('U') }}" data-date="{{ date|date('d') }}"
-                                   class="{% if homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') == date|date('Y-m-d') %}active{% elseif homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') < date|date('Y-m-d') %}disabled{% endif %}">
+                                   class="{% if hasActive == false and homeArticles|length > 0 and (homeArticles[0].publishedAt|date('Y-m-d') == date|date('Y-m-d') or homeArticles[0].publishedAt|date('Y-m-d') > date|date('Y-m-d')) %}{% set hasActive = true %}active{% elseif homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') < date|date('Y-m-d') %}disabled{% endif %}">
                                     {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                                     <span class="day">{{ date|date('d') }}</span>
                                 </a>

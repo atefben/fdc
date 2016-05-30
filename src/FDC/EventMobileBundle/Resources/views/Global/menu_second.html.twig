@@ -56,8 +56,11 @@
                     <li class="press">
                         <div class="section-title">
                             <h3 class="title-menu">
-                                <i class="icon icon_espace-presse"></i>
-                                <a href="{{ path('fdc_pressmobile_news_home') }}" target="_blank"> {{ menu.transName|trans }}</a>
+                                <a href="{{ path('fdc_pressmobile_news_home') }}" target="_blank">
+                                    <div class="section-title">
+                                        <h3 class="title-menu"><i class="icon icon_espace-presse"></i>{{ menu.transName|trans }}</h3>
+                                    </div>
+                                </a>
                             </h3>
                         </div>
                     </li>

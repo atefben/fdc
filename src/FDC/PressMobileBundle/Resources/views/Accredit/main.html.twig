@@ -1,6 +1,14 @@
 {% trans_default_domain 'FDCPressBundle' %}
 {% extends 'FDCPressMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdcpressmobile/css/press_accreditation.css" %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
+
 {% block body %}
     <div id="main" class="press press_accreditation" data-menu="accreditation">
         {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
@@ -71,4 +79,11 @@
 
     {{ render(controller('FDCPressMobileBundle:Global:contact')) }}
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts '@FDCPressMobileBundle/Resources/public/js/press_accreditation.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
 {% endblock %}

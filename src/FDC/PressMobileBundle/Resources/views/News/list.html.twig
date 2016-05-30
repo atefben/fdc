@@ -1,5 +1,13 @@
 {% trans_default_domain 'FDCPressBundle' %}
 {% extends 'FDCPressMobileBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdcpressmobile/css/communiques.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
 <div id="main" class="press" data-menu="communique">
     {%- include 'FDCPressMobileBundle:Global:menu.html.twig' -%}
@@ -34,4 +42,11 @@
     {{ render(controller('FDCPressMobileBundle:Global:contact')) }}
 
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts '@FDCPressMobileBundle/Resources/public/js/communiques.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
 {% endblock %}

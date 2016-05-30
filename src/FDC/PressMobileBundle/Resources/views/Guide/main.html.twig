@@ -1,82 +1,35 @@
 {% trans_default_domain 'FDCPressBundle' %}
 {% extends 'FDCPressMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdcpressmobile/css/practical_guide.css" %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
 
     <div id="main" class="articles" data-menu="practical">
-    {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
-    <div class="header-press">
-        <div class="head">
-            <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>
+        {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
+        <div class="header-press">
+            <div class="head">
+                <span><i class="icon icon_espace-presse"></i>{{ 'press.header.label.espacepresse'|trans }}</span>
+            </div>
+            <div class="container">
+                <h2>{{ 'press.header.title.guidepratique'|trans }}</h2>
+            </div>
         </div>
-        <div class="container">
-            <h2>{{ 'press.header.title.guidepratique'|trans }}</h2>
-        </div>
-    </div>
 
-    <div class="guid-container">
-        <section>
-            <div class="section-title">
-                <i class="{{ guideContent.arriveIcon }}"></i>
-                <h3 class="title-participate">{{ guideContent|trans_fallback('arriveTitle')}}</h3>
-                <i class="icon accordion icon_case-plus"></i>
-            </div>
+        <div class="guid-container">
+            <section>
+                <div class="section-title">
+                    <i class="{{ guideContent.arriveIcon }}"></i>
+                    <h3 class="title-participate">{{ guideContent|trans_fallback('arriveTitle')}}</h3>
+                    <i class="icon accordion icon_case-plus"></i>
+                </div>
 
-            {% for widget in guideContent.arriveWidgets %}
-                {% if class(widget) == "PressGuideWidgetImage" %}
-                    {% include 'FDCPressMobileBundle:Guide:widgets/image.html.twig' %}
-                {% elseif class(widget) == "PressGuideWidgetPicto" %}
-                    {% include 'FDCPressMobileBundle:Guide:widgets/picto.html.twig' %}
-                {% elseif class(widget) == "PressGuideWidgetColumn" %}
-                    {% include 'FDCPressMobileBundle:Guide:widgets/column.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        </section>
-
-        <section>
-            <div class="section-title">
-                <i class="{{ guideContent.informationIcon }}"></i>
-                <h3 class="title-participate">{{ guideContent|trans_fallback('informationTitle')}}</h3>
-                <i class="icon accordion icon_case-plus"></i>
-            </div>
-
-            {% for widget in guideContent.informationWidgets %}
-                {% if class(widget) == "PressGuideWidgetImage" %}
-                    {% include 'FDCPressMobileBundle:Guide:widgets/image.html.twig' %}
-                {% elseif class(widget) == "PressGuideWidgetPicto" %}
-                    {% include 'FDCPressMobileBundle:Guide:widgets/picto.html.twig' %}
-                {% elseif class(widget) == "PressGuideWidgetColumn" %}
-                    {% include 'FDCPressMobileBundle:Guide:widgets/column.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        </section>
-
-        <section>
-            <div class="section-title">
-                <i class="{{ guideContent.meetingIcon }}"></i>
-                <h3 class="title-participate">{{ guideContent|trans_fallback('meetingTitle')}}</h3>
-                <i class="icon accordion icon_case-plus"></i>
-            </div>
-            {% for widget in guideContent.meetingWidgets %}
-                {% if class(widget) == "PressGuideWidgetImage" %}
-                    {% include 'FDCPressMobileBundle:Guide:widgets/image.html.twig' %}
-                {% elseif class(widget) == "PressGuideWidgetPicto" %}
-                    {% include 'FDCPressMobileBundle:Guide:widgets/picto.html.twig' %}
-                {% elseif class(widget) == "PressGuideWidgetColumn" %}
-                    {% include 'FDCPressMobileBundle:Guide:widgets/column.html.twig' %}
-                {% endif %}
-            {% endfor %}
-        </section>
-
-        <section>
-            <div class="section-title">
-                <i class="{{ guideContent.serviceIcon }}"></i>
-                <h3 class="title-participate">{{ guideContent|trans_fallback('serviceTitle')}}</h3>
-                <i class="icon accordion icon_case-plus"></i>
-            </div>
-            <div class="section-contain">
-                <div class="contain-infos description">
-                {% for widget in guideContent.serviceWidgets %}
+                {% for widget in guideContent.arriveWidgets %}
                     {% if class(widget) == "PressGuideWidgetImage" %}
                         {% include 'FDCPressMobileBundle:Guide:widgets/image.html.twig' %}
                     {% elseif class(widget) == "PressGuideWidgetPicto" %}
@@ -85,13 +38,72 @@
                         {% include 'FDCPressMobileBundle:Guide:widgets/column.html.twig' %}
                     {% endif %}
                 {% endfor %}
+            </section>
+
+            <section>
+                <div class="section-title">
+                    <i class="{{ guideContent.informationIcon }}"></i>
+                    <h3 class="title-participate">{{ guideContent|trans_fallback('informationTitle')}}</h3>
+                    <i class="icon accordion icon_case-plus"></i>
                 </div>
-            </div>
-        </section>
 
+                {% for widget in guideContent.informationWidgets %}
+                    {% if class(widget) == "PressGuideWidgetImage" %}
+                        {% include 'FDCPressMobileBundle:Guide:widgets/image.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetPicto" %}
+                        {% include 'FDCPressMobileBundle:Guide:widgets/picto.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetColumn" %}
+                        {% include 'FDCPressMobileBundle:Guide:widgets/column.html.twig' %}
+                    {% endif %}
+                {% endfor %}
+            </section>
+
+            <section>
+                <div class="section-title">
+                    <i class="{{ guideContent.meetingIcon }}"></i>
+                    <h3 class="title-participate">{{ guideContent|trans_fallback('meetingTitle')}}</h3>
+                    <i class="icon accordion icon_case-plus"></i>
+                </div>
+                {% for widget in guideContent.meetingWidgets %}
+                    {% if class(widget) == "PressGuideWidgetImage" %}
+                        {% include 'FDCPressMobileBundle:Guide:widgets/image.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetPicto" %}
+                        {% include 'FDCPressMobileBundle:Guide:widgets/picto.html.twig' %}
+                    {% elseif class(widget) == "PressGuideWidgetColumn" %}
+                        {% include 'FDCPressMobileBundle:Guide:widgets/column.html.twig' %}
+                    {% endif %}
+                {% endfor %}
+            </section>
+
+            <section>
+                <div class="section-title">
+                    <i class="{{ guideContent.serviceIcon }}"></i>
+                    <h3 class="title-participate">{{ guideContent|trans_fallback('serviceTitle')}}</h3>
+                    <i class="icon accordion icon_case-plus"></i>
+                </div>
+                <div class="section-contain">
+                    <div class="contain-infos description">
+                    {% for widget in guideContent.serviceWidgets %}
+                        {% if class(widget) == "PressGuideWidgetImage" %}
+                            {% include 'FDCPressMobileBundle:Guide:widgets/image.html.twig' %}
+                        {% elseif class(widget) == "PressGuideWidgetPicto" %}
+                            {% include 'FDCPressMobileBundle:Guide:widgets/picto.html.twig' %}
+                        {% elseif class(widget) == "PressGuideWidgetColumn" %}
+                            {% include 'FDCPressMobileBundle:Guide:widgets/column.html.twig' %}
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        {{ render(controller('FDCPressMobileBundle:Global:contact')) }}
     </div>
+{% endblock %}
 
-    {{ render(controller('FDCPressMobileBundle:Global:contact')) }}
-
-</div>
+{% block javascripts %}
+    {% javascripts '@FDCPressMobileBundle/Resources/public/js/practical_guide.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
 {% endblock %}

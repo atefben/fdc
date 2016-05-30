@@ -1,6 +1,13 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "@FDCEventMobileBundle/Resources/public/css/calendar.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
     {% if 'now'|date('d/m/Y') <  festival_date.festivalStartsAt|date('d/m/Y') %}
         {% set date = festival_date.festivalStartsAt|date('d/m/Y') %}
@@ -89,7 +96,14 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
     </div>
-
 {% endblock body %}
+
+{% block javascripts %}
+    {% javascripts '@FDCEventMobileBundle/Resources/public/js/calendar.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
+{% endblock %}

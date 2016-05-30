@@ -1,6 +1,13 @@
 {% trans_default_domain 'FDCPressBundle' %}
 {% extends 'FDCPressMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdcpressmobile/css/programmation-press.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
     <div id="main" class="programmation-press{% if is_granted("ROLE_FDC_PRESS_REPORTER") == false %} press-locked{% endif %}" data-menu="prog">
         {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
@@ -83,3 +90,10 @@
         </section>
     </div>
 {% endblock body %}
+
+{% block javascripts %}
+    {% javascripts '@FDCPressMobileBundle/Resources/public/js/programmation-press.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
+{% endblock %}

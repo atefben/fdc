@@ -1,12 +1,17 @@
 {% trans_default_domain 'FDCPressBundle' %}
 {% extends 'FDCPressMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdcpressmobile/css/article.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
-
-    {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
-
     <div id="main" class="article" data-menu="communique">
 
+        {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
         <div class="container">
             <div class="article-title">
                 <div><span class="category">{{ news.theme|trans_fallback('name') }}</span><span class="date">{{ news.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(news.publishedAt|date('H:i'), true, true) }}</span></div>
@@ -58,22 +63,6 @@
                     <div class="author">{{ 'article.text.redigepar'|trans }} {{ news.signature }}</div>
                 {% endif %}
             </div>
-            <div class="share">
-                <p>{{ 'article.text.partagerarticle'|trans }}</p>
-                <div class="buttons square">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"
-                       class="button facebook">
-                        <i class="icon icon_facebook"></i>
-                    </a>
-                    <a href="https://twitter.com/intent/tweet?url={{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"
-                       class="button twitter">
-                        <i class="icon icon_twitter"></i>
-                    </a>
-                    <a href="#" class="button link self"><i class="icon icon_link"></i></a>
-                    <a href="#" class="button email"><i class="icon icon_lettre"></i></a>
-                    <a href="#" onclick="javascript:window.print()" class="button print"><i class="icon icon_print"></i></a>
-                </div>
-            </div>
 
             {% if associatedFilm is not null or programmations is not empty %}
                 <div class="film">
@@ -89,24 +78,22 @@
                                             film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
                                             }) %}
                                         </div>
-                                        <div class="text-container" id="filmPoster">
+                                        <div class="text-container">
                                             {% if associatedFilm.selectionSection is not null %}
                                                 <span class="category">
-                                            {{ associatedFilm.selectionSection|trans_fallback('name') }}
-                                        </span>
+                                                    {{- associatedFilm.selectionSection|trans_fallback('name') -}}
+                                                </span>
                                             {% endif %}
                                             <h3>
-                                                <a href="#">
-                                                    {% set title = associatedFilm|trans_fallback('title') %}
-                                                    {% if title == '' %}
-                                                        {% set title = associatedFilm.titleVO %}
-                                                    {% endif %}
-                                                    {{ title }}
-                                                </a>
+                                                {% set title = associatedFilm|trans_fallback('title') %}
+                                                {% if title == '' %}
+                                                    {% set title = associatedFilm.titleVO %}
+                                                {% endif %}
+                                                {{- title -}}
                                             </h3>
                                             {% if director is defined and director|length > 1 %}
-                                                <p class="director"><a
-                                                            href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
+                                                <p class="director">
+                                                    <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
                                                 <p>
                                             {% else %}
                                                 <p class="director">
@@ -163,51 +150,48 @@
                 </div>
             {% endif %}
             <div class="container">
+                <div class="section articles">
                 {% if focusArticles is not empty %}
-                    <div class="focus">
-                        <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
-                        <div class="articles">
-                            {% for article in focusArticles %}
-                                {% if article is not null %}
-                                    {% include 'FDCEventMobileBundle:News:widgets/widget-article.html.twig' with {type : 'focus'} %}
-                                {% endif %}
-                            {% endfor %}
-                        </div>
+                    <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
+                    <div class="owl-carousel articles-carousel">
+                        {% for article in focusArticles %}
+                            {% if article is not null %}
+                                {% include 'FDCPressMobileBundle:News:widgets/widget-article.html.twig' with {type : 'focus'} %}
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 {% endif %}
                 {% if sameDayArticles is not empty and news.hideSameDay == false %}
-                    <div class="same-day">
-                        <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
-                        <div class="articles center">
-                            {% for article in sameDayArticles %}
-                                {% if article is not null %}
-                                    {% include 'FDCEventMobileBundle:News:widgets/widget-article.html.twig' with {type : 'same-day'} %}
-                                {% endif %}
-                            {% endfor %}
-                        </div>
+                    <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
+                    <div class="owl-carousel articles-carousel">
+                        {% for article in sameDayArticles %}
+                            {% if article is not null %}
+                                {% include 'FDCPressMobileBundle:News:widgets/widget-article.html.twig' with {type : 'same-day'} %}
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 {% endif %}
+                </div>
             </div>
         </div>
         <span class="anim"></span>
     </div>
 
-    {{ render(controller('FDCEventMobileBundle:Global:shareEmail',
-    {'section': news.theme|trans_fallback('name'),
-        'detail': news.publishedAt|date('d.m.y'),
-        'title': news|trans_fallback('title'),
-        'description': news|trans_fallback('introduction')|raw,
-        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-    })) }}
-
-    {% include "FDCEventMobileBun:Global:breadcrumb.html.twig" with {"breadcrumb": [
-    {
-    "name" : 'header.mainnav.nav.communiques'|trans,
-    "url"  : path('fdc_press_news_list')
-    },
-    {
-    "name" : news|trans_fallback('title') ,
-    "url"  : ''
-    }
+    {% include "FDCEventMobileBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+        {
+            "name" : 'header.mainnav.nav.communiques'|trans,
+            "url"  : path('fdc_press_news_list')
+        },
+        {
+            "name" : news|trans_fallback('title') ,
+            "url"  : ''
+        }
     ]} %}
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts '@FDCPressMobileBundle/Resources/public/js/article.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
 {% endblock %}

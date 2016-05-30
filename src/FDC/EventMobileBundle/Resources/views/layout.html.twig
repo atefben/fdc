@@ -10,7 +10,9 @@
 			{{ sonata_seo_metadatas() }}
 			{{ sonata_seo_link_canonical() }}
 			{{ sonata_seo_lang_alternates() }}
-			{% include 'FDCEventMobileBundle:Base:stylesheet.html.twig' %}
+			{% block stylesheets %}
+				{% include 'FDCEventMobileBundle:Base:stylesheet.html.twig' %}
+			{% endblock %}
 			{% include 'FDCEventMobileBundle:Base:javascript_head.html.twig' %}
 		</head>
 		<body>
@@ -21,6 +23,8 @@
 			{% endblock %}
 			{% include 'FDCEventMobileBundle::footer.html.twig' %}
 			{% include 'FDCEventMobileBundle:Base:javascript_footer.html.twig' %}
-			{% include 'FDCEventMobileBundle:Base:javascript.html.twig' %}
+			{% block javascripts %}
+				{% include 'FDCEventMobileBundle:Base:javascript.html.twig' %}
+			{% endblock %}
 		</body>
 </html>

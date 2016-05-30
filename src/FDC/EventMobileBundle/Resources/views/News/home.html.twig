@@ -1,6 +1,13 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdceventmobile/css/home.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
     <div id="main" class="home st-container" data-menu="actu">
 
@@ -146,12 +153,13 @@
                 <a href="#" class="prev"><i class="icon icon_flecheGauche"></i></a>
                 <div id="timeline" class="" >
                 <div class="timeline-container">
+                    {% set hasActive = false %}
                     {% for key,date in festivalInterval %}
                         {%  set timestamp = date ~ ' 23:59:59' %}
                         <a href="#"
                            data-timestamp="{{ timestamp|date('U') }}"
                            data-date="{{ date|date('d') }}"
-                           class="{% if homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') == date|date('Y-m-d') %}active{% elseif homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') < date|date('Y-m-d') %}disabled{% endif %}">
+                           class="{% if hasActive == false and homeArticles|length > 0 and (homeArticles[0].publishedAt|date('Y-m-d') == date|date('Y-m-d') or (homeArticles[0].publishedAt|date('Y-m-d') > date|date('Y-m-d') and date|date('Y-m-d') == festival_date.festivalEndsAt|date('Y-m-d'))) %}{% set hasActive = true %}active{% elseif homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') < date|date('Y-m-d') %}disabled{% endif %}">
                             {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
                             <span class="day">{{ date|date('d') }}</span>
                         </a>
@@ -307,3 +315,10 @@
         </div>
     </div>
 {% endblock body %}
+
+{% block javascripts %}
+    {% javascripts '@FDCEventMobileBundle/Resources/public/js/home.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
+{% endblock %}

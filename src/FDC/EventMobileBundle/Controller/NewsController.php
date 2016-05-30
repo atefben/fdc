@@ -53,7 +53,7 @@ class NewsController extends Controller
 
         $festivalStart = $this->getFestival()->getFestivalStartsAt();
         $festivalEnd = $this->getFestival()->getFestivalEndsAt();
-        $festivalInterval = $this->createDateRangeArrayEvent($festivalStart->format('Y-m-d'), $festivalEnd->format('Y-m-d'));
+        $festivalInterval = $this->createDateRangeArrayEvent($festivalStart->format('Y-m-d'), $festivalEnd->format('Y-m-d'), false);
 
         /////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////      SLIDER      //////////////////////////////////////////

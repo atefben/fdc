@@ -1,6 +1,13 @@
 {% trans_default_domain 'FDCPressBundle' %}
 {% extends 'FDCPressMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdcpressmobile/css/press_download.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
 
     <div id="main" class="press {{ (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? '' : 'press-locked ' }} press-downloads" data-menu="press">
@@ -94,3 +101,10 @@
     </div>
 
 {% endblock body %}
+
+{% block javascripts %}
+    {% javascripts '@FDCPressMobileBundle/Resources/public/js/press_download.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
+{% endblock %}
