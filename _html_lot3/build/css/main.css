@@ -3120,6 +3120,11 @@ sub {
   color: #666666;
 }
 
+.bright .quote .italic {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  color: #141414 !important;
+}
+
 .title {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -5614,6 +5619,16 @@ video {
   color: #fff;
 }
 
+.wysiwyg-article h1 {
+  color: #0c0c0c;
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  line-height: 60px;
+  display: block;
+  text-align: center;
+  margin-bottom: 44px;
+  padding: 0px 155px;
+}
 .wysiwyg-article h4 {
   color: #141414;
   font-size: 1.125rem;
@@ -5621,6 +5636,77 @@ video {
   display: block;
   text-align: center;
   line-height: 36px;
+}
+.wysiwyg-article h4 strong {
+  color: #c8a461;
+}
+.wysiwyg-article p {
+  color: #666666;
+  font-size: 1rem;
+  line-height: 26px;
+}
+.wysiwyg-article em {
+  font-style: italic;
+}
+.wysiwyg-article blockquote {
+  padding: 30px 90px;
+  color: #141414;
+  text-align: center;
+  font-size: 1.5rem;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  margin-top: 69px;
+  margin-bottom: 69px;
+  line-height: 32px;
+}
+.wysiwyg-article blockquote p {
+  color: #141414;
+  font-size: 1.5rem;
+  line-height: 32px;
+}
+.wysiwyg-article blockquote em {
+  color: #141414;
+  font-size: 1.5rem;
+  line-height: 32px;
+}
+.wysiwyg-article .by-author {
+  font-size: .75rem;
+  color: #666666;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  line-height: 24px;
+  margin-top: 59px;
+  padding-top: 11px;
+  border-top: 1px solid #e5e5e5;
+  display: block;
+}
+
+.wysiwyg-article-02 h2 {
+  font-size: 1.125rem;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: block;
+  text-align: center;
+  line-height: 36px;
+}
+.wysiwyg-article-02 h4 {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 24px;
+  color: #fff;
+}
+.wysiwyg-article-02 p {
+  color: #666666;
+  font-size: 1rem;
+  line-height: 26px;
+  font-size: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  margin-top: 32px;
+  margin-bottom: 66px;
+}
+.wysiwyg-article-02 p a {
+  color: #c8a461;
+}
+.wysiwyg-article-02 p strong {
+  color: #c8a461;
 }
 
 @font-face {

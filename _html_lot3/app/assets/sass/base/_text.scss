@@ -29,6 +29,15 @@ sub {
     font-family: $CamphorItalic;
     color:#666666;
   }
+
+}
+
+.bright {
+
+  .quote .italic {
+    font-family: $CamphorItalic;
+    color: #141414 !important;
+  }
 }
 
 .title {
