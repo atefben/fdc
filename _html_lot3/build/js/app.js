@@ -8,7 +8,7 @@ var owInitAccordion = function(id) {
     $title.on('click', function() {
       $parent = $(this).parent();
       $this = $(this);
-      $icon = $(this).find('.icon');
+      $icon = $(this).find('.icon-nav-accordion');
 
       if($parent.hasClass('active')) {
 
@@ -142,6 +142,22 @@ var owRemoveElementListe = function() {
   $('.filters-02 li .icon-close').on('click', function(){
     $(this).parent().remove();
   });
+}
+
+var owFixMobile = function() {
+
+  $('header .hasSubNav').on('click', function(){
+    var element = $(this).find('ul');
+    element.toggleClass('visible');
+  });
+
+    $('#logo-wrapper, section').on('click', function(){
+      if($('header .hasSubNav ul').hasClass('visible')){
+        var element = $('header').find('ul.visible');
+        element.removeClass('visible');
+      }
+    });
+
 }
 
 var owInitGrid = function(id){
@@ -582,15 +598,19 @@ var owArrowDisplay = function() {
 
 var onInitParallax = function() {
 
-  $(window).on('scroll', function() {
+  if(!$('body').hasClass('mobile')){
 
-    if($('header.sticky').length){
-      var s = $(this).scrollTop() - 90;
-      $('.block-push').css('background-position', '0px '+s+'px');
-    }else{
-      $('.block-push').css('background-position','0px '+'0px');
-    }
-  });
+    $(window).on('scroll', function() {
+
+      if($('header.sticky').length ){
+        var s = $(this).scrollTop() - 0;
+        $('.block-push').css('background-position', '0px '+s+'px');
+      }else{
+        $('.block-push').css('background-position','0px '+'0px');
+      }
+
+    });
+  }
 
 };
 
@@ -1126,6 +1146,29 @@ $(document).ready(function() {
 
  owInitPopin('popin-landing-e');
 
+ if('ontouchstart' in window) {
+   if (navigator.userAgent.indexOf("iPad") > -1 ||
+       navigator.userAgent.indexOf("iPhone") > -1 ||
+       navigator.userAgent.indexOf("Android") > -1) {
+         $('body').addClass('mobile');
+   } else {
+     $('body').addClass('mobile');
+   }
+ }else {
+   $('body').addClass('not-mobile');
+ }
+
+
+ //fix link header
+ $('header .hasSubNav .noLink').on("click", function(e){
+   e.preventDefault();
+  //  return false;
+ });
+
+if($('body').hasClass('mobile')){
+  owFixMobile();
+}
+
  // owInitSearch();
 
   if($('.home').length) {
@@ -1200,6 +1243,10 @@ $(document).ready(function() {
   }
 
   if($('.who-identity-guidelines').length) {
+    owInitAccordion("block-accordion");
+  }
+
+  if($('.participate-accordion').length) {
     owInitAccordion("block-accordion");
   }
 

@@ -1,0 +1,11 @@
+
+//tablette landscape//
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+
+
+  // fix parralax
+
+  #home .slider-home .container-images .item, .block-s-info-02,   body .block-push  {
+    background-attachment: initial;
+  }
+}

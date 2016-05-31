@@ -8,7 +8,7 @@ var owInitAccordion = function(id) {
     $title.on('click', function() {
       $parent = $(this).parent();
       $this = $(this);
-      $icon = $(this).find('.icon');
+      $icon = $(this).find('.icon-nav-accordion');
 
       if($parent.hasClass('active')) {
 
