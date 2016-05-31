@@ -239,6 +239,18 @@
     display: block;
     text-align: center;
     line-height: 36px;
+
+    a {
+      color:$gold;
+    }
+
+    strong {
+      color:$gold;
+    }
+
+    span {
+      color:$gold;
+    }
   }
 
   h4 {
@@ -246,6 +258,18 @@
     font-size: 1rem;
     line-height: 24px;
     color: #fff;
+
+    a {
+      color:$gold;
+    }
+
+    strong {
+      color:$gold;
+    }
+
+    span {
+      color:$gold;
+    }
   }
 
   p {
@@ -256,12 +280,16 @@
     margin-top: 32px;
     margin-bottom: 66px;
 
-    // a {
-    //   color:$gold;
-    // }
-    //
-    // strong {
-    //   color:$gold;
-    // }
+    a {
+      color:$gold;
+    }
+
+    strong {
+      color:$gold;
+    }
+
+    span {
+      color:$gold;
+    }
   }
 }
