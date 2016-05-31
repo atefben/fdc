@@ -5180,7 +5180,7 @@ video {
   font-size: .8rem;
 }
 .block-accordion .btn-center {
-  width: 180px;
+  width: 168px;
   margin: 0 auto;
 }
 .block-accordion .title-22 {
@@ -5233,6 +5233,7 @@ video {
   transition: .5s;
   font-size: .75rem;
   display: block;
+  width: 280px;
 }
 .block-accordion .link:hover {
   opacity: .8;
@@ -5316,6 +5317,7 @@ video {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  overflow: visible;
 }
 .block-accordion .download.two-column {
   -webkit-justify-content: initial;
@@ -5392,7 +5394,7 @@ video {
   vertical-align: top;
 }
 .block-contact .i-1 {
-  margin-right: 165px;
+  margin-right: 160px;
 }
 
 .block-tab-switch .title-tab-swich {
@@ -6732,6 +6734,11 @@ li.ui-timepicker-selected .ui-timepicker-duration,
   right: 120%;
 }
 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  #home .slider-home .container-images .item, .block-s-info-02, body .block-push {
+    background-attachment: initial;
+  }
+}
 header {
   background-color: #080808;
   position: relative;
@@ -7146,7 +7153,11 @@ header #navigation ul li ul.tcenter {
 header #navigation ul li ul.tcenter li:last-child a {
   padding-right: 0;
 }
-header #navigation ul li:hover ul {
+.not-mobile header #navigation ul li:hover ul {
+  opacity: 1;
+  visibility: visible;
+}
+.mobile header #navigation ul li ul.visible {
   opacity: 1;
   visibility: visible;
 }
@@ -7362,6 +7373,7 @@ footer .newsletter #submit {
   text-transform: uppercase;
   width: 135px;
   transition: all 1.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-appearance: none;
 }
 footer .newsletter #submit:hover {
   border-color: #fff;
@@ -9004,6 +9016,9 @@ header #searchContainer {
   line-height: 24px;
   font-size: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 }
+.slider-home .texts p a {
+  color: #838383;
+}
 @media screen and (min-width: 1280px) and (max-width: 1599px) {
   .slider-home {
     height: 577px;
@@ -9477,7 +9492,7 @@ header #searchContainer {
   font-size: 2.2rem;
   /* FF3.6-15 */
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, #040404 0%, rgba(255, 255, 255, 0) 50%);
+  background: linear-gradient(to right, #040404 0%, rgba(0, 0, 0, 0) 50%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   position: absolute;
   opacity: 0;
@@ -9501,7 +9516,7 @@ header #searchContainer {
   right: 0px;
   /* FF3.6-15 */
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to left, #040404 0%, rgba(255, 255, 255, 0) 50%);
+  background: linear-gradient(to left, #040404 0%, rgba(0, 0, 0, 0) 50%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 .slides-calc2.next .icon {
@@ -9747,7 +9762,7 @@ header #searchContainer {
 .block-search .search-txt input {
   border: 0px solid #fff;
   outline: none;
-  width: 90%;
+  width: 80%;
   font-size: .875rem;
   color: #141414;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;

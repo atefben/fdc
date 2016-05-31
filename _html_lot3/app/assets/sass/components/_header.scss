@@ -487,9 +487,14 @@ header {
               padding-right: 0;
             }
           }
+      }
+
+        .not-mobile &:hover ul {
+          opacity: 1;
+          visibility: visible;
         }
 
-        &:hover ul {
+        .mobile & ul.visible {
           opacity: 1;
           visibility: visible;
         }

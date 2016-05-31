@@ -144,6 +144,22 @@ var owRemoveElementListe = function() {
   });
 }
 
+var owFixMobile = function() {
+
+  $('header .hasSubNav').on('click', function(){
+    var element = $(this).find('ul');
+    element.toggleClass('visible');
+  });
+
+    $('#logo-wrapper, section').on('click', function(){
+      if($('header .hasSubNav ul').hasClass('visible')){
+        var element = $('header').find('ul.visible');
+        element.removeClass('visible');
+      }
+    });
+
+}
+
 var owInitGrid = function(id){
 
   if(id == 'isotope-01') {
@@ -582,15 +598,19 @@ var owArrowDisplay = function() {
 
 var onInitParallax = function() {
 
-  $(window).on('scroll', function() {
+  if(!$('body').hasClass('mobile')){
 
-    if($('header.sticky').length){
-      var s = $(this).scrollTop() - 90;
-      $('.block-push').css('background-position', '0px '+s+'px');
-    }else{
-      $('.block-push').css('background-position','0px '+'0px');
-    }
-  });
+    $(window).on('scroll', function() {
+
+      if($('header.sticky').length ){
+        var s = $(this).scrollTop() - 120;
+        $('.block-push').css('background-position', '0px '+s+'px');
+      }else{
+        $('.block-push').css('background-position','0px '+'0px');
+      }
+
+    });
+  }
 
 };
 
@@ -1125,6 +1145,29 @@ $(document).ready(function() {
  //gestion des cookie a faire ici
 
  owInitPopin('popin-landing-e');
+
+ if('ontouchstart' in window) {
+   if (navigator.userAgent.indexOf("iPad") > -1 ||
+       navigator.userAgent.indexOf("iPhone") > -1 ||
+       navigator.userAgent.indexOf("Android") > -1) {
+         $('body').addClass('mobile');
+   } else {
+     $('body').addClass('mobile');
+   }
+ }else {
+   $('body').addClass('not-mobile');
+ }
+
+
+ //fix link header
+ $('header .hasSubNav .noLink').on("click", function(e){
+   e.preventDefault();
+  //  return false;
+ });
+
+if($('body').hasClass('mobile')){
+  owFixMobile();
+}
 
  // owInitSearch();
 

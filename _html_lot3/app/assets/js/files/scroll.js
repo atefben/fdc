@@ -76,14 +76,18 @@ var owArrowDisplay = function() {
 
 var onInitParallax = function() {
 
-  $(window).on('scroll', function() {
+  if(!$('body').hasClass('mobile')){
 
-    if($('header.sticky').length){
-      var s = $(this).scrollTop() - 90;
-      $('.block-push').css('background-position', '0px '+s+'px');
-    }else{
-      $('.block-push').css('background-position','0px '+'0px');
-    }
-  });
+    $(window).on('scroll', function() {
+
+      if($('header.sticky').length ){
+        var s = $(this).scrollTop() - 120;
+        $('.block-push').css('background-position', '0px '+s+'px');
+      }else{
+        $('.block-push').css('background-position','0px '+'0px');
+      }
+
+    });
+  }
 
 };

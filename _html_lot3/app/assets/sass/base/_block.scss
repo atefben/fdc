@@ -1104,7 +1104,7 @@
   }
 
   .btn-center {
-    width: 180px;
+    width: 168px;
     margin: 0 auto;
   }
 
@@ -1169,6 +1169,7 @@
     transition: .5s;
     font-size: .75rem;
     display: block;
+    width: 280px;
 
     &:hover {
       opacity: .8;
@@ -1255,6 +1256,7 @@
     flex-wrap: wrap;
     margin-top: 19px;
     justify-content: space-between;
+    overflow: visible;
 
     &.two-column {
       justify-content: initial;
@@ -1351,7 +1353,7 @@
   }
 
   .i-1 {
-    margin-right: 165px;
+    margin-right: 160px;
   }
 }
 

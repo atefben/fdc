@@ -25,6 +25,29 @@ $(document).ready(function() {
 
  owInitPopin('popin-landing-e');
 
+ if('ontouchstart' in window) {
+   if (navigator.userAgent.indexOf("iPad") > -1 ||
+       navigator.userAgent.indexOf("iPhone") > -1 ||
+       navigator.userAgent.indexOf("Android") > -1) {
+         $('body').addClass('mobile');
+   } else {
+     $('body').addClass('mobile');
+   }
+ }else {
+   $('body').addClass('not-mobile');
+ }
+
+
+ //fix link header
+ $('header .hasSubNav .noLink').on("click", function(e){
+   e.preventDefault();
+  //  return false;
+ });
+
+if($('body').hasClass('mobile')){
+  owFixMobile();
+}
+
  // owInitSearch();
 
   if($('.home').length) {
