@@ -125,6 +125,10 @@ if($('body').hasClass('mobile')){
     owInitAccordion("block-accordion");
   }
 
+  if($('.participate-accordion').length) {
+    owInitAccordion("block-accordion");
+  }
+
   if($('.p-register').length) {
     owInitTab('tab1');
   }

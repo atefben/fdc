@@ -5146,7 +5146,7 @@ video {
 .block-accordion .description-top.bottom-padding {
   margin-bottom: 22px;
 }
-.block-accordion .icon {
+.block-accordion .icon-minus, .block-accordion .icon-create {
   float: right;
   font-size: .6rem;
   margin-top: 5px;
@@ -5336,6 +5336,51 @@ video {
 }
 .block-accordion .download.no-flex .caption {
   margin-top: 4px;
+}
+.block-accordion-02 h4 {
+  width: 750px;
+  margin: 0 auto;
+  font-size: 1.25rem;
+  line-height: 36px;
+  padding: 39px 0;
+  text-align: center;
+}
+.block-accordion-02 .item-manual .contain-img img {
+  padding-bottom: 30px;
+}
+.block-accordion-02 .item-manual .text-manual .title-manual {
+  font-size: .75rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  padding-bottom: 29px;
+}
+.block-accordion-02 .item-manual .text-manual {
+  width: 547px;
+  display: inline-block;
+  vertical-align: top;
+}
+.block-accordion-02 .item-manual .contain-img {
+  display: inline-block;
+  width: 422px;
+  vertical-align: top;
+}
+.block-accordion-02 .item-manual .text-manual p {
+  font-size: .81rem;
+  line-height: 24px;
+  color: #000;
+}
+.block-accordion-02 .text-manual p strong {
+  color: #c29f5f;
+  font-size: 0.88rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.block-accordion-02 .item-manual .text-manual ul {
+  line-height: 24px;
+  margin: 10px 0 10px 0;
+}
+.block-accordion-02 .item-manual .text-manual ul li {
+  font-size: .81rem;
+  list-style: disc inside;
 }
 
 .block-rules {

@@ -8,7 +8,7 @@ var owInitAccordion = function(id) {
     $title.on('click', function() {
       $parent = $(this).parent();
       $this = $(this);
-      $icon = $(this).find('.icon');
+      $icon = $(this).find('.icon-nav-accordion');
 
       if($parent.hasClass('active')) {
 
@@ -603,7 +603,7 @@ var onInitParallax = function() {
     $(window).on('scroll', function() {
 
       if($('header.sticky').length ){
-        var s = $(this).scrollTop() - 120;
+        var s = $(this).scrollTop() - 0;
         $('.block-push').css('background-position', '0px '+s+'px');
       }else{
         $('.block-push').css('background-position','0px '+'0px');
@@ -1243,6 +1243,10 @@ if($('body').hasClass('mobile')){
   }
 
   if($('.who-identity-guidelines').length) {
+    owInitAccordion("block-accordion");
+  }
+
+  if($('.participate-accordion').length) {
     owInitAccordion("block-accordion");
   }
 
