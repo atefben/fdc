@@ -42,7 +42,7 @@ class JuryController extends Controller
                     $slug = $page->findTranslationByLocale($locale)->getSlug();
                 }
                 if ($slug) {
-                    return $this->redirectToRoute('fdc_event_jury_get', array('slug' => $slug));
+                    return $this->redirectToRoute('fdc_eventmobile_jury_get', array('slug' => $slug));
                 }
 
             }

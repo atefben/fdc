@@ -42,7 +42,7 @@ class PalmaresController extends Controller
                     $slug = $page->findTranslationByLocale($locale)->getSlug();
                 }
                 if ($slug) {
-                    return $this->redirectToRoute('fdc_event_palmares_get', array('slug' => $slug));
+                    return $this->redirectToRoute('fdc_eventmobile_palmares_get', array('slug' => $slug));
                 }
 
             }
