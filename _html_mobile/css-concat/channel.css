@@ -5582,6 +5582,9 @@ article .picto .icon{
 #today .director strong{
   text-transform: uppercase;
 }
+#today .director a {
+    color: #c8a461;
+}
 #today .links{
     position: absolute;
     bottom:38px;

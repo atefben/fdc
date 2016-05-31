@@ -40,7 +40,7 @@
         {{ render(controller('FDCPressMobileBundle:Global:menu', {route : app.request.get('_route')})) }}
         <ul class="third-nav">
             <li class="search-nav">
-                <a href="">
+                <a href="{{ path('fdc_pressmobile_global_searchdefault') }}">
                     <i class="icon icon_recherche"></i>
                     {{ 'header.usernav.nav.rechercher'|trans }}
                 </a>

@@ -37,10 +37,10 @@
                 {% endif %}
                 <div class="info">
                     <p>
-                        {%- if person.asianName -%}
-                            {{- person.lastName ~ ' ' ~ person.firstName -}}
+                        {%- if artist.asianName -%}
+                            {{- artist.lastName ~ ' ' ~ artist.firstName -}}
                         {%- else -%}
-                            {{- person.fullName -}}
+                            {{- artist.fullName -}}
                         {%- endif -%}
                     </p>
                     {% set profession = artist|trans_fallback('profession') %}

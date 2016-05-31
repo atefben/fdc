@@ -30,7 +30,7 @@ class GlobalController extends Controller
         // GET FDC SETTINGS
         $contact = $em->getRepository('BaseCoreBundle:ContactPage')->findOneById($this->getParameter('admin_press_contact_id'));
 
-        if ( empty($contact) ) {
+        if (empty($contact)) {
             throw new NotFoundHttpException();
         }
 
@@ -45,18 +45,18 @@ class GlobalController extends Controller
      * @Template("FDCPressMobileBundle:Global:nav.html.twig")
      * @return array
      */
-    public function menuAction($route) {
-
+    public function menuAction($route)
+    {
         $em = $this->get('doctrine')->getManager();
         $menus = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->childrenHierarchy();
         $displayedMenus = array();
-        foreach($menus as $menu){
-            if($menu['site'] == FDCEventRoutesInterface::PRESS) {
+        foreach ($menus as $menu) {
+            if ($menu['site'] == FDCEventRoutesInterface::PRESS) {
                 $displayedMenus[] = $menu;
             }
         }
 
-        usort($displayedMenus, function($a, $b) {
+        usort($displayedMenus, function ($a, $b) {
             if ($a["position"] == $b["position"]) {
                 return 0;
             }
@@ -64,7 +64,7 @@ class GlobalController extends Controller
         });
 
         foreach ($displayedMenus as $key => $menu) {
-            usort($displayedMenus[$key]['__children'], function($a, $b) {
+            usort($displayedMenus[$key]['__children'], function ($a, $b) {
                 if ($a["position"] == $b["position"]) {
                     return 0;
                 }
@@ -78,5 +78,4 @@ class GlobalController extends Controller
         );
 
     }
-
 }

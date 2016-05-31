@@ -199,16 +199,42 @@ class NewsController extends Controller
 
         $videos = $homepage->getTopVideosAssociated();
         $channels = $homepage->getTopWebTvsAssociated();
-
+        $channelsIds = array();
+        $positions = array();
         foreach ($channels as $channel) {
-            if ($channel->getAssociation() != null) {
-                $channel->getAssociation()->availableChannels = $this
-                    ->getDoctrineManager()
-                    ->getRepository('BaseCoreBundle:MediaVideo')
-                    ->getAvailableMediaVideosByWebTv($this->getFestival(), $locale, $channel->getAssociation()->getId())
-                ;
+            if ($channel->getAssociation()) {
+                $channelsIds[$channel->getAssociation()->getId()] = $channel->getAssociation();
+                $positions[$channel->getAssociation()->getId()] = $channel->getPosition();
             }
         }
+
+        $groups = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
+            ->getLastMediaVideoOfEachWebTv($this->getFestival()->getId(), $locale, array_keys($channelsIds))
+        ;
+
+        $channelsVideos = array();
+        foreach ($groups as $key => $group) {
+            $lastVideo = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:MediaVideo')
+                ->getLastMediaVideoByWebTv($this->getFestival()->getId(), $channelsIds[$group['channel']])
+            ;
+            $nbVideos = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:MediaVideo')
+                ->getAvailableMediaVideosByWebTv($this->getFestival()->getId(), $locale, $group['channel'])
+            ;
+            if ($nbVideos) {
+                $channelsVideos[$positions[$group['channel']]] = array(
+                    'channel'  => $channelsIds[$group['channel']],
+                    'video'    => $lastVideo,
+                    'nbVideos' => count($nbVideos),
+                );
+            }
+        }
+        ksort($channelsVideos);
 
         ////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////       FILMS        ///////////////////////////////////////
@@ -234,6 +260,7 @@ class NewsController extends Controller
             'filters'            => $filters,
             'videos'             => $videos,
             'channels'           => $channels,
+            'channelsVideos'     => array_values($channelsVideos),
             'films'              => $films,
             'endOfArticles'      => $endOfArticles
         );

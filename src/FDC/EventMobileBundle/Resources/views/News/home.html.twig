@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        
+        {% if displayHomeSlider == false %}
         <div id="sliderWrapper" class="dark-container">
             <div id="slider" class="owl-carousel">
                 {% for article in homeSlider %}
@@ -122,30 +122,26 @@
                         {% endif %}
                     {% endif %}
                         <div>
+                            {% set trans = article.findTranslationByLocale('fr') %}
                             <div class="img-container">
-                                {% set trans = article.findTranslationByLocale('fr') %}
-                                {% if type == 'news' %}
-                                <a href="{{ url('fdc_eventmobile_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}">
-                                {% else %}
-                                <a href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}">
-                                {% endif %}
-                                    <div class="img" style="background-image:url({% path file , '2560x1620' %})"></div>
-                                </a>
+                                <div class="img" style="background-image:url({% path file , '2560x1620' %})"></div>
                             </div>
                             <div class="info">
                                 <span class="category">{{ article.theme|trans_fallback('name') }}</span>
-                                <h2>{{ article|trans_fallback('title') }}</h2>
+                                <h2>{{ article|trans_fallback('title')|truncate(70) }}</h2>
                             </div>
                             {% if type == 'news' %}
-                                <a class="linkArticle" href="{{ url('fdc_eventmobile_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                            <a href="{{ url('fdc_eventmobile_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
                             {% else %}
-                                <a class="linkArticle" href="{{ url('fdc_press_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                            <a href="{{ url('fdc_pressmobile_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}" clas="linkArticle"></a>
                             {% endif %}
                         </div>
                 {% endfor %}
             </div>
         </div>
+        {% endif %}
 
+        {% if homepage.displayedTopNews == false %}
         <div  id="news">
             <h2 class="title">{{ 'home.title.lactualitealaune'|trans }}</h2>
 
@@ -169,7 +165,6 @@
                 </div>
                 <a href="#" class="next"><i class="icon icon_fleche-right"></i></a>
             </div>
-           
             <div class="container" id="articles" >
                 <div class="articles-container">
                     <div id="articles-wrapper">
@@ -216,7 +211,9 @@
                 {% include 'FDCEventMobileBundle:News:components/socials.html.twig' %}
             </div>
         </div>
+        {% endif %}
 
+        {% if homepage.displayedTopWebTv == false %}
         <div class="dark-container">
             <div class="featured-videos">
                 {% if videos[0].id is not null %}
@@ -234,14 +231,11 @@
                     <div id="channels">
                         <h2 class="title one-line">{{ 'home.title.leschaines'|trans }}</h2>
                         <div id="slider-channels" class="owl-carousel sliderDrag">
-                            {% for channel in channels %}
-                                {% if channel is defined and channel.association != null %}
-                                    {% set channel = channel.association %}
-                                    {% if channel.mediaVideos is defined and channel.mediaVideos != null and channel.mediaVideos|length > 0 %}
-                                        <div class="channel">
-                                            {% include 'FDCEventMobileBundle:News:widgets/home-channels.html.twig' %}
-                                        </div>
-                                    {% endif %}
+                            {% for group in channelsVideos %}
+                                {% if group.nbVideos %}
+                                    <div class="channel">
+                                        {% include 'FDCEventMobileBundle:News:widgets/home-channels.html.twig' %}
+                                    </div>
                                 {% endif %}
                             {% endfor %}
                         </div>
@@ -249,6 +243,7 @@
                 {% endif %}
             </div>
         </div>
+        {% endif %}
 
         <div class="dark-container" id="today">
             {#<h2 class="title one-line">{{ 'article.film.title.focus'|trans }}</h2>#}
@@ -273,46 +268,45 @@
                         <div class="category">{{ film.association.selectionSection|trans_fallback('name') }}</div>
                         <h3 class="title tall">
                             {{ film.association|trans_fallback('title') }}
-
                         </h3>
+                        {% if film.association.titleVO != film.association|trans_fallback('title') %}
                         <div class="title-translate">({{ film.association.titleVO }})</div>
-                        {#<div class="director">Laurent <strong>Larivière</strong></div>#}
+                        {% else %}
+                        <div class="title-translate"></div>
+                        {% endif %}
                         <div class="director">
-                            {{ 'home.video.text.de'|trans }}
-                            {% for director in film.association|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
-                            {% endfor %}
+                            {{- 'home.video.text.de'|trans -}}
+                            {%- for director in film.association|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                            <a href="{{ path('fdc_eventmobile_artist_get', {slug: director.slug }) }}">
+                                {%- include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}
+                            </a>
+                            {%- endfor -%}
                         </div>
                     </div>
                 </div>
 
                 <div class="links">
-                    <a href="{{ path('fdc_eventmobile_agenda_scheduling') }}">
+                    <a href="{{ path('fdc_eventmobile_agenda_scheduling') }}" class="seances">
                         <i class="icon icon_programmation"></i>{{ 'home.video.btn.voirlesseances'|trans }}
                     </a>
                 </div>
                 {% endif %}
             </div>
 
-            {#<a href="{{ path('fdc_eventmobile_television_trailers', { 'slug': 'competition' }) }}">#}
-            {#<div class="trailer">#}
-                {#<div class="img-container">#}
-                    {#<div class="img" style="background-image:url(img/slider-videos/slider01.jpg)"></div>#}
-                {#</div>#}
-                {#<div class="info-container vCenter">#}
-                    {#<div class="vCenterKid">#}
-                        {#<div class="icon-container"><i class="icon icon_video"></i></div>#}
-                        {#<h3 class="title tall">Les bandes annonces et extraits</h3>#}
-                    {#</div>#}
-               {#</div>#}
-            {#</div>#}
         </div>
 
+        {% if homepage.displayedPushsMain == false or homepage.displayedPushsSecondary == false %}
         <div class="" id="more">
             <div id="slider-more" class="owl-carousel sliderDrag">
-                {% include 'FDCEventMobileBundle:News:widgets/push-main.html.twig' %}
+                {% if homepage.displayedPushsMain == false %}
+                    {% include 'FDCEventMobileBundle:News:widgets/push-main.html.twig' %}
+                {% endif %}
+                {% if homepage.displayedPushsSecondary == false %}
+                    {% include 'FDCEventBundle:News:widgets/push-secondary.html.twig' %}
+                {% endif %}
             </div>
         </div>
+        {% endif %}
     </div>
 {% endblock body %}
 

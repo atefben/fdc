@@ -23,7 +23,7 @@
         searchResult.count.event +
         searchResult.count.participate
         %}
-        {{- render(controller('FDCEventBundle:Global:search', { 'searchTerm': searchTerm })) -}}
+        {{- render(controller('FDCEventMobileBundle:Global:search', { 'searchTerm': searchTerm })) -}}
         <div class="container">
             <ul id="suggest"></ul>
         </div>
@@ -62,40 +62,7 @@
             {% endif %}
         </div>
     </div>
-
-                            {% if searchResult.category.actualite|length %}
-                                <div class="resultsContainer">
-                                    <h2 class="titleSection">{{ 'search.result.title.actualites'|trans }}</h2>
-                                    <a href="#" data-class="news" data-ajax="ajax/news/{{ searchTerm }}" class="view-all ajax">
-                                        {{ 'search.result.btn.toutvoir'|trans }}
-                                    </a>
-
-                                    <div id="newsResults">
-                                        {% include 'FDCEventBundle:Search:news.html.twig' with { 'items': searchResult.category.actualite } %}
-                                    </div>
-                                </div>
-                            {% elseif searchResult.category.artist|length %}
-                                <div class="resultsContainer">
-                                    <h2 class="titleSection">{{ 'search.result.title.artistes'|trans }}</h2>
-                                    <a href="#" class="view-all ajax" data-ajax="ajax/artist/{{ searchTerm }}" data-class="artists">
-                                        {{ 'search.result.btn.toutvoir'|trans }}
-                                    </a>
-                                    <div id="artistsResults">
-                                        {% include 'FDCEventBundle:Search:artist.html.twig' with { 'items': searchResult.category.artist } %}
-                                    </div>
-                                </div>
-                            {% else %}
-                                <div class="resultsContainer">
-                                    <h2 class="titleSection">{{ 'search.result.title.films'|trans }}</h2>
-                                    <a href="#" class="view-all ajax" data-ajax="ajax/film/{{ searchTerm }}" data-class="artists">
-                                        {{ 'search.result.btn.toutvoir'|trans }}
-                                    </a>
-                                    <div id="artistsResults">
-                                        {% include 'FDCEventBundle:Search:film.html.twig' with { 'items': searchResult.category.film } %}
-                                    </div>
-                                </div>
-                            {% endif %}
-
+{#
                             {% if searchResult.category.info|length %}
                                 <div class="resultsContainer">
                                     <h2 class="titleSection">{{ 'search.result.title.infos'|trans }}</h2>
@@ -308,7 +275,7 @@
             </div>
         </div>
     </div>
-
+#}
 {% endblock body %}
 
 {% block javascripts %}
