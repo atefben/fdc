@@ -1,10 +1,10 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% set searchClass = 'artist' %}
-{% extends 'FDCEventBundle:Search:base.html.twig' %}
+{% extends 'FDCEventMobileBundle:Search:base.html.twig' %}
 {% block content %}
     {% for artist in items %}
         <div class="thumb active">
-            <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
+            <a href="{{ path('fdc_eventmobile_artist_get', {'slug': artist.slug }) }}">
                 {% set artistImage = artist|person_image(true) %}
                 {% if artist.portraitImage and artist.portraitImage|trans_fallback('file') %}
                     <div class="img-container" style="background-image:url({% path artist.portraitImage|trans_fallback('file'), 'search' %})"></div>
@@ -37,13 +37,17 @@
                 {% endif %}
                 <div class="info">
                     <p>
-                        {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': artist} %}
+                        {%- if person.asianName -%}
+                            {{- person.lastName ~ ' ' ~ person.firstName -}}
+                        {%- else -%}
+                            {{- person.fullName -}}
+                        {%- endif -%}
                     </p>
                     {% set profession = artist|trans_fallback('profession') %}
                     {% if profession %}
-                        <p class="job">
-                            {{ artist|profession_gender('profession') }}
-                        </p>
+                    <p class="job">
+                        {{ artist|profession_gender('profession') }}
+                    </p>
                     {% endif %}
                     <p class="countrie">{{ artist.nationality|trans_fallback('name') }}</p>
                 </div>

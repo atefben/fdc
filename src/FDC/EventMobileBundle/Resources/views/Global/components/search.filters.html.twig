@@ -1,5 +1,5 @@
 {% trans_default_domain 'FDCEventBundle' %}
-
+{% if searchFilters is defined and searchFilters %}
 <div class="filters">
     <div id="date" class="filter">
         <span class="label">{{ 'search.result.label.date'|trans }} :</span>
@@ -40,4 +40,6 @@
                 {% endfor %}
         </span>
     </div>
+    <div id="filteredContent"></div>
 </div>
+{% endif %}

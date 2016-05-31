@@ -1,12 +1,15 @@
 {% trans_default_domain 'FDCEventBundle' %}
+{% if hasNewsletter is not defined or hasNewsletter == true %}
 <footer class="dark-container">
     <div class="container">
-        <h2 class="title">{{ 'footer.newsletter.title.newsletter'|trans }}</h2>
+        <h2 class="title one-line">{{ 'footer.newsletter.title.newsletter'|trans }}</h2>
         <h3 class="subtitle">{{ 'footer.newsletter.title.toutelactualite'|trans }}</h3>
 
         {{ render(controller('FDCEventMobileBundle:Global:newsletter')) }}
     </div>
 </footer>
+{% endif %}
+
 <div id="landscape">
     <div class="content vCenter">
         <div class="vCenterKid">

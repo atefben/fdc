@@ -537,6 +537,19 @@ class GlobalController extends Controller {
             'breadcrumb' => $breadcrumb
         );
     }
+
+    /**
+     *
+     * @Route("/search_page")
+     * @Template("FDCEventMobileBundle:Global:search-default.html.twig")
+     * @param Request $request
+     * @param $searchTerm
+     * @return array
+     */
+    public function searchDefaultAction(Request $request, $searchTerm = null) {
+
+        return array();
+    }
     
     /**
      *
@@ -557,7 +570,7 @@ class GlobalController extends Controller {
         $searchTerm = $formData['search'];
 
         if ($searchTerm !== null) {
-            return $this->redirect($this->generateUrl('fdc_event_search_searchsubmit', array(
+            return $this->redirect($this->generateUrl('fdc_eventmobile_search_searchsubmit', array(
                 'searchTerm' => $searchTerm
             )));
 
