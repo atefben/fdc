@@ -2,30 +2,30 @@
 
 {% set displayOnylCameraDorWinner = true %}
 
-<section>
-    <h3>
+<div class="title-list-cat">
+    <h2 class="title">
         {{ subpages['camera_d_or']['page']|trans_fallback('nameEnCompetition') }}
-    </h3>
-</section>
+    </h2>
+</div>
 {% include 'FDCEventMobileBundle:Palmares:competition.html.twig' with (subpages['competition']|merge({'all': true })) %}
 
-<section>
-    <h3>
+<div class="title-list-cat">
+    <h2 class="title">
         {{ subpages['certain_regard']['page']|trans_fallback('name') }}
-    </h3>
-</section>
+    </h2>
+</div>
 {% include 'FDCEventMobileBundle:Palmares:simple.html.twig' with (subpages['certain_regard'])%}
 
-<section>
-    <h3>
+<div class="title-list-cat">
+    <h2 class="title">
         {{ subpages['cinefondation']['page']|trans_fallback('name') }}
-    </h3>
-</section>
+    </h2>
+</div>
 {% include 'FDCEventMobileBundle:Palmares:simple.html.twig' with (subpages['cinefondation'])%}
 
-<section>
-    <h3>
+<div class="title-list-cat">
+    <h2 class="title">
         {{ subpages['camera_d_or']['page']|trans_fallback('name') }}
-    </h3>
-</section>
+    </h2>
+</div>
 {% include 'FDCEventMobileBundle:Palmares:camerador.html.twig' with (subpages['camera_d_or'])%}
