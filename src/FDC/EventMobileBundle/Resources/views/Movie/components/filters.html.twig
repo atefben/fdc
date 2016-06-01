@@ -23,7 +23,7 @@
                 <p>
                     <a href="{{ path('fdc_eventmobile_movie_classics', {'slug': transClassics.slug}) }}"
                        data-url="{{ path('fdc_eventmobile_movie_classics', {'slug': transClassics.slug}) }}"
-                       class="{% if app.request.attributes.get('_route') == 'fdc_eventmobile_movie_classics' %}active{% endif %}">
+                       class="{% if app.request.attributes.get('_route') == 'fdc_eventmobile_movie_classics' %}active{% endif %} ajax">
                         {{ 'selection.nav.cannes-classics'|trans }}
                     </a>
                 </p>
@@ -34,7 +34,7 @@
         <p>
             <a href="{{ path('fdc_eventmobile_movie_selection', {'slug': 'cinema-de-la-plage'}) }}"
                data-url="{{ path('fdc_eventmobile_movie_selection', {'slug': 'cinema-de-la-plage'}) }}"
-               class="{% if app.request.attributes.get('slug') == 'cinema-de-la-plage' %}active{% endif %}">
+               class="{% if app.request.attributes.get('slug') == 'cinema-de-la-plage' %}active{% endif %} ajax">
                 {{ 'selection.nav.cinema-la-plage'|trans }}
             </a>
         </p>
