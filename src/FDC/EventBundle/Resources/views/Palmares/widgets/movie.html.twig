@@ -12,6 +12,7 @@
     {% set author = '' %}
 {% endif %}
 
+{% if movie is defined %}
 <article style="background-image:url('{% spaceless %}
     {% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
     film: movie,
@@ -116,3 +117,4 @@
         </div>
     </div>
 </article>
+{% endif %}

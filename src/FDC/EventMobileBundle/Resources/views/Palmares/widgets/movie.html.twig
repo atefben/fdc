@@ -1,9 +1,18 @@
 {% trans_default_domain 'FDCEventBundle' %}
-{% if movie is not defined %}
-    {% set movie = award_association.film %}
-{% endif %}
-{% set author = '' %}
 
+{% if award_association.award is defined and award_association.award.id not in palmares_award_mutual_get() %}
+    {% if award_association.award.filmMutual %}
+        {{ palmares_award_mutual_set(award_association.award) }}
+    {% endif %}
+
+    {% if movie is not defined %}
+        {% set movie = award_association.film %}
+    {% endif %}
+
+    {% set author = '' %}
+{% endif %}
+
+{% if movie is defined %}
 <div class="contain-winner">
     <div class="img" style="background-image:url(
         {%- include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
@@ -18,22 +27,20 @@
         }) -%}
     )"></div>
     {% if award_association is defined and award_association %}
-        {#<div class="logo-palme-dor-container">#}
-            <i class="icon icon_palme palme-dor-img"></i>
-            <div class="title-prize verticalline">
-                {{ award_association.award.prize|trans_fallback('title') }}
-                {% if award_association.award.exAequo %}
-                    ({{ 'award.ex_aequo'|trans }})
-                {% endif %}
-                {% if award_association.award.unanimity %}
-                    ({{ 'award.unanimity'|trans }})
-                {% endif %}
-            </div>
-            {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
-                {% set person = award_association.person %}
-                <h3 class="people-name verticalline">{{ person.fullName }}</h3>
+        <i class="icon icon_palme palme-dor-img"></i>
+        <div class="title-prize verticalline">
+            {{ award_association.award.prize|trans_fallback('title') }}
+            {% if award_association.award.exAequo %}
+                ({{ 'award.ex_aequo'|trans }})
             {% endif %}
-        {#</div>#}
+            {% if award_association.award.unanimity %}
+                ({{ 'award.unanimity'|trans }})
+            {% endif %}
+        </div>
+        {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
+            {% set person = award_association.person %}
+            <h3 class="people-name verticalline">{{ person.fullName }}</h3>
+        {% endif %}
     {% endif %}
     <h3 class="movie-title">{{ movie.titleVO }}</h3>
     {% if movie.findTranslationByLocale(app.request.get('_locale')) %}
@@ -70,6 +77,7 @@
                 {% set minutes = duration[0] % 60 %}
                 {% if hours > 0 %}{{ hours }}:{% endif %}{{ (minutes|length) == 1 ? '0' ~ minutes : minutes }}
             {% endif %}
-                    {% endspaceless %}</span>
+        {% endspaceless %}</span>
     {% endif %}
 </div>
+{% endif %}
