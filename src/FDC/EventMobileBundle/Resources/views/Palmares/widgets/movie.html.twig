@@ -54,6 +54,7 @@
     {% endif %}
     <span class="movie-real">
         {% spaceless %}
+            {% set author = '' %}
             {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                 {% if loop.first == false %}
                     {% set author = author ~ ', ' %}

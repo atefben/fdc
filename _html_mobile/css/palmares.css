@@ -159,6 +159,7 @@ section h3:not(.movie-title):not(.people-name){
 	height: 380px;
 	background-position: center center;
   	background-size: cover;
+	margin: 0 auto;
 }
 .film-slider .info{
 	margin-top: 35px;

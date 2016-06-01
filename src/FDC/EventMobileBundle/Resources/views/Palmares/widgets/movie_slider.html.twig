@@ -1,0 +1,66 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+{% if award_association.award is defined and award_association.award.id not in palmares_award_mutual_get() %}
+    {% if award_association.award.filmMutual %}
+        {{ palmares_award_mutual_set(award_association.award) }}
+    {% endif %}
+
+    {% if movie is not defined %}
+        {% set movie = award_association.film %}
+    {% endif %}
+
+    {% set author = '' %}
+{% endif %}
+
+{% if movie is defined %}
+    <div class="thumb active">
+        <div class="img-container" style="background-image:url(
+        {%- include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
+        film: movie,
+        film_format: '259x352',
+        display_film_path: true,
+        film_attrs: {
+        alt: movie|trans_fallback('title')?:movie.titleVO,
+        'data-object-fit': 'cover'
+        },
+        film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg',
+        }) -%}
+                )"></div>
+        <div class="info">
+            <p>{{ movie.titleVO }}</p>
+            {% if movie.findTranslationByLocale(app.request.get('_locale')) %}
+                {% if movie.findTranslationByLocale(app.request.get('_locale')).title %}
+                    {% if movie.findTranslationByLocale(app.request.get('_locale')).title != movie.titleVO %}
+                        <p class="subtitle">({{ movie.findTranslationByLocale(app.request.get('_locale')).title }})</p>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+            {% spaceless %}
+                {% set author = '' %}
+                {% for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                    {% if loop.first == false %}
+                        {% set author = author ~ ', ' %}
+                    {% endif %}
+
+                    {% set author = author ~ '<a class="director" href="' ~ path('fdc_eventmobile_artist_get', {slug: director.slug }) ~ '">' %}
+                    {% set author = author ~ director.fullName %}
+                    {% set author = author ~ '</a>' %}
+                {% endfor %}
+                {{ author|raw }}
+            {% endspaceless %}
+            {% if displayDuration is defined %}
+                <p class="duration">{% spaceless %}
+                            {% set duration = [] %}
+                            {% if movie.duration is not empty %}
+                        {% set duration = movie.duration|split('.') %}
+                    {% endif %}
+                            {% if duration|length > 0 and duration[0] > 0 %}
+                        {% set hours = (duration[0] / 60)|round(0, 'floor') %}
+                        {% set minutes = duration[0] % 60 %}
+                        {% if hours > 0 %}{{ hours }}:{% endif %}{{ (minutes|length) == 1 ? '0' ~ minutes : minutes }}
+                    {% endif %}
+            {% endspaceless %}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
