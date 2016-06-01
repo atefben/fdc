@@ -50,7 +50,7 @@
                 <h2>{{ title }}</h2>
                 {% set directors = next|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                 {% for director in directors %}
-                    <a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
+                    <a href="{{ path('fdc_eventmobile_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>
                     {% if loop.index != directors|length %}
                         ,
                     {% endif %}

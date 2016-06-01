@@ -19,6 +19,6 @@
     {% elseif class(object) == 'FilmFilm' %}
         {{ path('fdc_event_movie_get', {'slug': object.slug}) }}
     {% elseif class(object) == 'FilmPerson' %}
-        {{ path('fdc_event_artist_get', {'slug': object.slug }) }}
+        {{ path('fdc_eventmobile_artist_get', {'slug': object.slug }) }}
     {% endif %}
 {% endspaceless %}

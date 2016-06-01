@@ -246,7 +246,7 @@
                 <div id="slide-artist" class="owl-carousel director-carousel">
                     {% for director in directors %}
                         <div data-id="director{{ loop.index }}" class="thumb {% if loop.first %}active{% endif %}">
-                            <a href="{{ path('fdc_event_artist_get', {'slug': director.slug }) }}"></a>
+                            <a href="{{ path('fdc_eventmobile_artist_get', {'slug': director.slug }) }}"></a>
 
                             {% set directorImage = director|person_image_portait %}
                             {% if directorImage %}

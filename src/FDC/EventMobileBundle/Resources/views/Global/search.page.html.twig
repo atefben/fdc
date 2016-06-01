@@ -134,7 +134,7 @@
                                     <div id="artistsResults">
                                         {% for artist in searchResult.category.artist %}
                                             <div class="person small">
-                                                <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
+                                                <a href="{{ path('fdc_eventmobile_artist_get', {'slug': artist.slug }) }}">
                                                     {% set artistImage = artist|person_image(true) %}
                                                     {% if artist.portraitImage and artist.portraitImage|trans_fallback('file') %}
                                                         <img src="{% path artist.portraitImage|trans_fallback('file'), 'searchtiny' %}"
@@ -173,7 +173,7 @@
                                                     <div class="vCenter">
                                                         <div class="vCenterKid">
                                                             <h2>
-                                                                <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
+                                                                <a href="{{ path('fdc_eventmobile_artist_get', {'slug': artist.slug }) }}">
                                                                     {{ artist.fullName }}
                                                                 </a>
                                                             </h2>
