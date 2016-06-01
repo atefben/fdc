@@ -4082,7 +4082,7 @@ display: inline-block;
 	width: 100%;
 	font-size: 0;
 	background-color: #202020;
-	
+
 }
 .dark-background .selection-container{
   background: none;
@@ -4115,15 +4115,14 @@ display: inline-block;
 }
 .selection-item .name, .selection-item .sub-name{
 	color: #fff;
-    text-transform: uppercase;
-    text-align: center;
-    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-size: 1.6rem;
-    padding-top: 25px;
-    font-weight: 600;
-    max-width: 190px;
-    margin: 0 auto;
-
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  padding-top: 25px;
+  font-weight: 600;
+  max-width: 286px;
+  margin: 0 auto;
 }
 .selection-item .sub-name
 {
@@ -4248,7 +4247,7 @@ display: inline-block;
 }
 
 #horizontal-menu2 .vid p{
-  
+
   display: block;
   font-size: 1.5rem;
   margin-top: 3px;
@@ -4273,7 +4272,7 @@ display: inline-block;
   padding: 0 40px;
 }
 .selection section h2.title{
-  
+
 }
 
 a{
@@ -4757,7 +4756,7 @@ section:last-child{
     font-weight: 700;
     margin-top: 40px;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    
+
 }
 .hour-pres-item {
     color: #999;

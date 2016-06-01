@@ -520,6 +520,9 @@ figcaption, .caption {
   margin: -10px 0 0 -10px;
   z-index: 11;
   @include transition(all 0.5s $smoothTransition);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.83);
 
   &.show {
     opacity: 1;
