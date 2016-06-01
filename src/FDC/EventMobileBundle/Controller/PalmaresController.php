@@ -24,10 +24,12 @@ class PalmaresController extends Controller
 
         $festival = $this->getFestival()->getId();
         $locale = $request->getLocale();
+        $waitingPage = null;
 
-        $waitingPage = $this->isWaitingPage($request);
-        if ($waitingPage) {
-            return $waitingPage;
+        try {
+            $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
+        } catch (\Exception $e) {
+            $isAdmin = false;
         }
 
         $pages = $this
@@ -54,6 +56,21 @@ class PalmaresController extends Controller
             ->getRepository('BaseCoreBundle:FDCPageAward')
             ->getPageBySlug($locale, $slug)
         ;
+
+        if ($page === null) {
+            throw $this->createNotFoundException('Page palmares not found');
+        }
+
+        // waiting page for everyone except bo domain and admin roles
+        if ($page->getWaitingPage() !== null && $page->getWaitingPage()->getEnabled() === true) {
+            $waitingPage = $page->getWaitingPage();
+        }
+
+        if ($isAdmin == true && isset($_SERVER) &&
+            isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] == 'bo.festival-cannes.com') {
+            $waitingPage = null;
+        }
+
         $localeSlugs = $page->getLocaleSlugs();
 
         $parameters = array(
@@ -61,7 +78,8 @@ class PalmaresController extends Controller
             'page'     => $page,
             'category' => $page->getCategory(),
             'festival' => $festival,
-            'localeSlugs' => $localeSlugs
+            'localeSlugs' => $localeSlugs,
+            'waitingPage' => $waitingPage
         );
 
         //SEO

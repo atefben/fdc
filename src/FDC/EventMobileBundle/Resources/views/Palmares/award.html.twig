@@ -13,29 +13,45 @@
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
         <div id="banner-top">
-            <div class="banner-img vCenter" style="background-image:url('{% path page.image|trans_fallback('file'), '2560x1103' %}')">
-                <div class="vCenterKid">
-                    <h2 class="title one-line">{{ 'palmares.title.palmares'|trans }}</h2>
+            {% if waitingPage == null or page.id == 4 %}
+                <div class="banner-img vCenter" style="background-image:url('{% path page.image|trans_fallback('file'), '2560x1103' %}')">
+                    <div class="vCenterKid">
+                        <h2 class="title one-line">{{ 'palmares.title.palmares'|trans }}</h2>
+                    </div>
                 </div>
-            </div>
+            {% else %}
+                <div class="banner-img vCenter" style="background-image:url('{% path waitingPage.banner|trans_fallback('file'), 'reference' %}}')">
+                    <div class="vCenterKid">
+                        <h2 class="title one-line">{{ waitingPage|trans_fallback('title')|raw }}</h2>
+                    </div>
+                </div>
+            {% endif %}
         </div>
 
         <div class="palmares-container">
             {% include 'FDCEventMobileBundle:Palmares:components/nav.html.twig' %}
 
             <div class="content-selection">
-                {% if page.id == 1 %}
+                {% if page.id == 1 and waitingPage == null %}
                     {% include 'FDCEventMobileBundle:Palmares:competition.html.twig' %}
-                {% elseif page.id == 4 %}
+                {% elseif page.id == 4 and waitingPage == null %}
                     {% include 'FDCEventMobileBundle:Palmares:camerador.html.twig' %}
-                {% elseif page.id == 5 %}
+                {% elseif page.id == 5 and waitingPage == null %}
                     {% include 'FDCEventMobileBundle:Palmares:all.html.twig' %}
-                {% else %}
+                {% elseif waitingPage == null %}
                     {% include 'FDCEventMobileBundle:Palmares:simple.html.twig' %}
                 {% endif %}
             </div>
 
-            {% if next %}
+            {% if waitingPage != null and page.id != 4 %}
+                <div id="main" class="list-article landing-page waiting-page">
+                    <div class="container" style="margin-top:0px;padding: 67px 0">
+                        {{ waitingPage|trans_fallback('text')|raw }}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if next and waitingPage == null %}
                 {% include 'FDCEventMobileBundle:Palmares:components/bandeau.html.twig' %}
             {% endif %}
         </div>
