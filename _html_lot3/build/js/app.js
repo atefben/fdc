@@ -6,7 +6,7 @@ var owInitAccordion = function(id) {
     var $title = $('.block-accordion .title-contain');
 
     $title.on('click', function() {
-      $parent = $(this).parent();
+      $parent = $(this).closest('.item');
       $this = $(this);
       $icon = $(this).find('.icon-nav-accordion');
 

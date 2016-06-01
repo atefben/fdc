@@ -5337,13 +5337,24 @@ video {
 .block-accordion .download.no-flex .caption {
   margin-top: 4px;
 }
-.block-accordion-02 h4 {
+.block-accordion-02 .noFloat {
+  margin-right: 30px;
+  font-size: 1.3rem;
+  vertical-align: sub;
+}
+.block-accordion-02 .title-contain .title-22 {
+  color: #c1c1c1;
+}
+.block-accordion-02 h3 {
   width: 750px;
   margin: 0 auto;
   font-size: 1.25rem;
   line-height: 36px;
   padding: 39px 0;
   text-align: center;
+}
+.block-accordion-02 .item-manual {
+  padding: 41px 0;
 }
 .block-accordion-02 .item-manual .contain-img img {
   padding-bottom: 30px;
@@ -5381,6 +5392,176 @@ video {
 .block-accordion-02 .item-manual .text-manual ul li {
   font-size: .81rem;
   list-style: disc inside;
+}
+.block-accordion-02 .item-manual .contain-infos .item-infos {
+  width: 401px;
+  display: inline-block;
+  padding: 0 42px 22px;
+  vertical-align: top;
+  text-align: center;
+  font-size: .81rem;
+  line-height: 24px;
+}
+.block-accordion-02 .item-manual .contain-infos .item-infos p {
+  color: #000;
+}
+.block-accordion-02 .item-manual .contain-infos .item-infos .icon {
+  font-size: 3rem;
+}
+.block-accordion-02 .item-manual .contain-infos .item-infos .title-infos {
+  font-size: .75rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  display: block;
+  padding-bottom: 30px;
+  padding-top: 12px;
+  letter-spacing: 2px;
+}
+.block-accordion-02 .item-manual .contain-infos .item-infos strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.block-accordion-02 .item-manual .contain-infos .item-infos a {
+  color: #c29f5f;
+  text-decoration: underline;
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.block-accordion-02 .contain-map {
+  width: 323px;
+  display: inline-block;
+  text-align: center;
+  margin-top: 59px;
+  vertical-align: top;
+}
+.block-accordion-02 .contain-map .name {
+  font-size: .75rem;
+  display: block;
+  padding-bottom: 20px;
+  letter-spacing: 1px;
+}
+.block-accordion-02 .contain-map .map {
+  margin-bottom: 40px;
+}
+.block-accordion-02 .contain-map p {
+  line-height: normal;
+}
+.block-accordion-02 .contain-map strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.block-accordion-02 .contain-map .name {
+  font-size: .75rem;
+  display: block;
+  padding-bottom: 20px;
+  letter-spacing: 1px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+.block-accordion-02 .contain-section .descrip-section {
+  line-height: 24px;
+  font-size: .8125rem;
+}
+.block-accordion-02 .descrip-section p {
+  width: 750px;
+  margin: 0 auto;
+  font-size: 1.25rem;
+  line-height: 36px;
+  padding: 39px 0;
+  text-align: center;
+  color: #000;
+}
+.block-accordion-02 .item-manual .item-partners .contain-img img {
+  padding-bottom: 30px;
+  padding: 65px;
+  margin: 0 auto;
+  display: block;
+}
+.block-accordion-02 .item-manual .item-partners .contain-img {
+  display: inline-block;
+  width: 422px;
+  vertical-align: top;
+}
+.block-accordion-02 .item-partners {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 41px 0;
+}
+.block-accordion-02 .item-partners .text-partners {
+  width: 551px;
+  display: inline-block;
+  vertical-align: top;
+}
+.block-accordion-02 .item-partners .text-partners .content-text-with-portrait {
+  display: inline-block;
+  width: 69%;
+}
+.block-accordion-02 .item-partners .text-partners .title-partners {
+  font-size: .75rem;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+  padding-bottom: 29px;
+  letter-spacing: 2px;
+}
+.block-accordion-02 .item-partners .text-partners p {
+  font-size: .81rem;
+  line-height: 24px;
+  margin-bottom: 18px;
+}
+.block-accordion-02 .item-partners .text-partners a {
+  color: #c8a461;
+  font-size: .75rem;
+  padding-right: 13px;
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.block-accordion-02 .item-partners .text-partners .content-text-with-portrait {
+  display: inline-block;
+  width: 67%;
+}
+.block-accordion-02 .item-partners .text-partners .portrait {
+  display: inline-block;
+  width: 134px;
+  vertical-align: top;
+  margin-top: 9%;
+  margin-left: 39px;
+  text-align: center;
+}
+.block-accordion-02 .item-partners .text-partners .portrait .name {
+  display: block;
+  font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  font-size: .75rem;
+}
+.block-accordion-02 .item-partners .text-partners .portrait .rank {
+  display: block;
+  font-size: .75rem;
+  padding-bottom: 5px;
+}
+.block-accordion-02 .item-good-practice strong p {
+  display: block;
+  font-size: .81rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  width: 188px;
+  margin: 0 auto;
+  line-height: 24px;
+  color: #000;
+}
+.block-accordion-02 .item-good-practice .icon {
+  font-size: 2.4rem;
+  color: #B0B0B0;
+  margin-bottom: 13px;
+}
+.block-accordion-02 .item-good-practice {
+  width: 189px;
+  display: inline-block;
+  padding-left: 53px;
+  text-align: center;
+  vertical-align: top;
+}
+.block-accordion-02 .contain-good-practice {
+  width: 980px;
+  margin: 0 auto;
+  padding-top: 10px;
 }
 
 .block-rules {
