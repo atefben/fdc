@@ -17740,6 +17740,9 @@ input[type=submit] {
   line-height: 1.8em;
   margin-bottom: 25px;
 }
+.press .stats .container p a {
+  color: #c8a461;
+}
 .press .chap {
   border-bottom: 1px solid #e3e3e3;
   height: 60px;
