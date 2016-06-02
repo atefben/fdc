@@ -1245,6 +1245,24 @@
         a {
           color: $gold;
         }
+
+        strong {
+          font-family: $CamphorBold;
+        }
+
+        em {
+          font-family: $CamphorItalic;
+        }
+
+        sub {
+          vertical-align: text-top;
+          font-size: .7rem;
+        }
+
+        sub {
+          vertical-align: super;
+          font-size: .7rem;
+        }
       }
     }
   }

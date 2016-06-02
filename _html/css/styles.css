@@ -17743,6 +17743,20 @@ input[type=submit] {
 .press .stats .container p a {
   color: #c8a461;
 }
+.press .stats .container p strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+.press .stats .container p em {
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+.press .stats .container p sub {
+  vertical-align: text-top;
+  font-size: .7rem;
+}
+.press .stats .container p sub {
+  vertical-align: super;
+  font-size: .7rem;
+}
 .press .chap {
   border-bottom: 1px solid #e3e3e3;
   height: 60px;
