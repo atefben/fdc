@@ -160,7 +160,7 @@
 
     .info {
       overflow-x: hidden;
-      
+
       img {
         float: left;
         margin: 10px;
@@ -1241,6 +1241,28 @@
         font-size: 1rem;
         line-height: 1.8em;
         margin-bottom: 25px;
+
+        a {
+          color: $gold;
+        }
+
+        strong {
+          font-family: $CamphorBold;
+        }
+
+        em {
+          font-family: $CamphorItalic;
+        }
+
+        sub {
+          vertical-align: text-top;
+          font-size: .7rem;
+        }
+
+        sub {
+          vertical-align: super;
+          font-size: .7rem;
+        }
       }
     }
   }
