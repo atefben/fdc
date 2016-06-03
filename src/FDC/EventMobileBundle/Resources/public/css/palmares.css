@@ -3252,8 +3252,11 @@ img.portrait{
 }
 .title-list-cat .title{
 	color: #fff;
-	width: 470px;
+	width: 550px;
 	margin: 60px auto;
+	height: auto;
+	max-width: 480px;
+	padding: 0px;
 }
 
 section h3:not(.movie-title):not(.people-name){
@@ -3283,9 +3286,8 @@ section h3:not(.movie-title):not(.people-name){
     margin: 0 auto 15px;
 }
 .film-slider .owl-item{
-
 	width: 280px;
-	height: 530px;
+	height: 567px;
 }
 .film-slider .img-container{
 
@@ -3298,6 +3300,7 @@ section h3:not(.movie-title):not(.people-name){
 .film-slider .info{
 	margin-top: 35px;
 	text-align: center;
+	width: 280px;
 }
 .film-slider .info p{
 	text-transform: uppercase;
