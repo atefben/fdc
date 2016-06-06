@@ -5,7 +5,7 @@
     <div class="owl-carousel competition-carousel">
         {% for movie in movies %}
             <div data-id="film{{ loop.index }}" class="thumb active">
-                <a href="{{ path('fdc_eventmobile_movie_get', {'slug': movie.slug}) }}"></a>
+                <a class="linkImage" href="{{ path('fdc_eventmobile_movie_get', {'slug': movie.slug}) }}"></a>
                 <div class="img-container" style="background-image:url(
                 {% include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
                     film: movie,

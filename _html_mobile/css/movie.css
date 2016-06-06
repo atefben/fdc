@@ -1,3 +1,8 @@
+/* CUSTOM CSS */
+.pictos-nav .calendar a {
+	color: #000000;
+}
+/* END CUSTOM CSS */
 .banner-img{
 	height: 370px;
 }

@@ -2212,6 +2212,14 @@ body.overlay::after {
 }
 
 
+/* CUSTOM CSS */
+.pictos-nav .calendar a {
+	color: #000000;
+}
+.section {
+	max-height: none !important;
+}
+/* END CUSTOM CSS */
 .banner-img{
 	height: 370px;
 }
