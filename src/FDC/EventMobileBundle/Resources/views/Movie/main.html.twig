@@ -9,8 +9,7 @@
 {% endblock %}
 
 {% block body %}
-
-    <div id="main" data-menu="selection" class="movie-page">
+<div id="main" data-menu="selection" class="movie-page">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
@@ -58,6 +57,7 @@
     </div>
     {% include 'FDCEventMobileBundle:Movie:components/contact.html.twig' %}
     {% include 'FDCEventMobileBundle:Movie:widgets/competition.html.twig' %}
+</div>
 {% endblock body %}
 
 {% block javascripts %}
