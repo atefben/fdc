@@ -81,7 +81,7 @@ class PressHomepageTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="section_statistic_description", type="string", length=255, nullable=true)
+     * @ORM\Column(name="section_statistic_description", type="text", nullable=true)
      */
     protected $sectionStatisticDescription;
 
