@@ -79,26 +79,30 @@ class SyncThumbsFilmCommand extends BaseCommand
             $filmFilmMedias = $movie->getMedias();
             if (count($filmFilmMedias) > 0) {
                 foreach ($filmFilmMedias as $filmFilmMedia) {
-                    $media = $filmFilmMedia->getMedia()->getFile();
-                    if ($media->getProviderName() == $provider && $media->getContext() == $context) {
-                        $provider = $this->getMediaPool()->getProvider($media->getProviderName());
+                    $media = $filmFilmMedia->getMedia();
+                    if ($media != null && $media->getFile() != null) {
+                        $media = $media->getFile();
+                        if ($media->getProviderName() == $provider && $media->getContext() == $context) {
+                            $provider = $this->getMediaPool()->getProvider($media->getProviderName());
 
-                        $this->log('Generating thumbs for '.$media->getName().' - '.$media->getId());
+                            $this->log('Generating thumbs for '.$media->getName().' - '.$media->getId());
 
-                        try {
-                            $provider->removeThumbnails($media);
-                        } catch (\Exception $e) {
-                            $this->log(sprintf('<error>Unable to remove old thumbnails, media: %s - %s </error>', $media->getId(), $e->getMessage()));
-                            continue;
-                        }
+                            try {
+                                $provider->removeThumbnails($media);
+                            } catch (\Exception $e) {
+                                $this->log(sprintf('<error>Unable to remove old thumbnails, media: %s - %s </error>', $media->getId(), $e->getMessage()));
+                                continue;
+                            }
 
-                        try {
-                            $provider->generateThumbnails($media);
-                        } catch (\Exception $e) {
-                            $this->log(sprintf('<error>Unable to generated new thumbnails, media: %s - %s </error>', $media->getId(), $e->getMessage()));
-                            continue;
+                            try {
+                                $provider->generateThumbnails($media);
+                            } catch (\Exception $e) {
+                                $this->log(sprintf('<error>Unable to generated new thumbnails, media: %s - %s </error>', $media->getId(), $e->getMessage()));
+                                continue;
+                            }
                         }
                     }
+
                 }
             }
         }
