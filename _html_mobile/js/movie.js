@@ -8,14 +8,6 @@ function setActiveThumbnail() {
 }
 
 $(document).ready(function() {
-  var creditsCount  = $('.credits p').length;
-  var middleCredits = Math.round(creditsCount/2)-1;
-  $('.credits p').eq(middleCredits).addClass('middle');
-
-  var castingCount  = $('.casting p').length;
-  var middleCasting = Math.round(castingCount/2)-1;
-  $('.casting p').eq(middleCasting).addClass('middle');
-
   // CONTACT AND PRESS SECTION OPENING
   $('.press .title-section').click(function() {
     $('.press').toggleClass('open');

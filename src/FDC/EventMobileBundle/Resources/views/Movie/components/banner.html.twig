@@ -11,7 +11,11 @@
 
     <div class="pictos-nav">
         <div class="back"><i class="icon-mobile-return"></i></div>
-        <div class="calendar"><i class="icon icon_programmation"></i></div>
+        <div class="calendar">
+            <a href="{{ path('fdc_eventmobile_agenda_scheduling') }}">
+                <i class="icon icon_programmation"></i>
+            </a>
+        </div>
     </div>
 
     <div class="info-film">
@@ -70,24 +74,5 @@
         {% if movie.publishedAt is not null %}
             <p>{{ 'movie.label.datedesortie'|trans }} : <span>{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</span></p>
         {% endif %}
-    </div>
-</div>
-<div class="container movie">
-	{% if movie.awards|length > 0 %}
-    <div class="section prize">
-        {% set awardsUnique = [] %}
-        {% for movieAward in movie.awards %}
-            {% if movieAward.award and movieAward.award.prize %}
-                {% if movieAward.award.id not in awardsUnique %}
-                    {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
-                    <div class="palmares-item"><i class="icon icon_palme"></i><p class="prize-name">{{ movieAward.award.prize|trans_fallback('title') }}, {{  movieAward.award.festival.year }}</p></div>
-                {% endif %}
-            {% endif %}
-        {% endfor %}
-    </div>
-	{% endif %}
-    <div class="section synopsis">
-        <h3 class="title-section">{{ 'movie.title.synopsis'|trans }}</h3>
-        <p>{{ movie|trans_fallback('synopsis')|nl2br|raw }}</p>
     </div>
 </div>

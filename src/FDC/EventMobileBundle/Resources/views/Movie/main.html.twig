@@ -10,70 +10,54 @@
 
 {% block body %}
 
-    <div id="main" class="movie-page single-movie loading">
+    <div id="main" data-menu="selection" class="movie-page">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+    {% include 'FDCEventMobileBundle:Movie:components/banner.html.twig' %}
 
-
-    {#<div id="player" data-video="{{ s3_server_video ~ movie.webmUrl }}" data-poster=""></div>#}
-
-    <div class="pictos-nav">
-        <div class="back"><i class="icon-mobile-return"></i></div>
-        <div class="calendar"><i class="icon icon_programmation"></i></div>
-    </div>
-        <div class="content-movie">
-
-            {% include 'FDCEventMobileBundle:Movie:components/banner.html.twig' %}
-
-            {% include 'FDCEventMobileBundle:Movie:widgets/video.html.twig' with { videos: movie.associatedMediaVideos } %}
-
-            <div class="container movie">
-
-                {% include 'FDCEventMobileBundle:Movie:widgets/casting.html.twig' %}
-
-                {% include 'FDCEventMobileBundle:Movie:widgets/image.html.twig' with {'photos': movie.medias} %}
-
-                {% if articles|length %}
-                <div class="news" data-section="news">
-                    <div class="section articles center">
-
-                    {#<div class="section articles">#}
-                        <h3 class="title-section">{{ 'movie.middlenav.actualites'|trans }}</h3>
-                        <div class="owl-carousel articles-carousel">
-                            {% for article in articles %}
-                                {% include 'FDCEventMobileBundle:News:widgets/article-film.html.twig' with { 'index': loop.index} %}
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-
-                {% if movie.associatedMediaAudios|length > 0 %}
-                    <div class="audios" data-section="audios">
-                        <div class="section audios">
-                            <h3 class="title-section">{{ 'movie.middlenav.audios'|trans }}</h3>
-                            {% for associatedMediaAudio in movie.associatedMediaAudios %}
-                                {% include 'FDCEventMobileBundle:Movie:widgets/audio.html.twig' with { 'mediaAudio': associatedMediaAudio.mediaAudio } %}
-                            {% endfor %}
-                        </div>
-                    </div>
-    			{% endif %}
-
+    <div class="container movie">
+        {% if movie.awards|length > 0 %}
+            <div class="section prize">
+                {% set awardsUnique = [] %}
+                {% for movieAward in movie.awards %}
+                    {% if movieAward.award and movieAward.award.prize %}
+                        {% if movieAward.award.id not in awardsUnique %}
+                            {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
+                            <div class="palmares-item"><i class="icon icon_palme"></i><p class="prize-name">{{ movieAward.award.prize|trans_fallback('title') }}, {{  movieAward.award.festival.year }}</p></div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
             </div>
-
-            {% include 'FDCEventMobileBundle:Movie:components/contact.html.twig' %}
-
-            {% include 'FDCEventMobileBundle:Movie:widgets/competition.html.twig' %}
-
+        {% endif %}
+        <div class="section synopsis">
+            <h3 class="title-section">{{ 'movie.title.synopsis'|trans }}</h3>
+            <p>{{ movie|trans_fallback('synopsis')|nl2br|raw }}</p>
         </div>
-        <span class="anim"></span>
+        {% include 'FDCEventMobileBundle:Movie:widgets/video.html.twig' with { videos: movie.associatedMediaVideos } %}
+        {% include 'FDCEventMobileBundle:Movie:widgets/casting.html.twig' %}
+        {% include 'FDCEventMobileBundle:Movie:widgets/image.html.twig' with {'photos': movie.medias} %}
+        {% if articles|length %}
+        <div class="section articles">
+            <h3 class="title-section">{{ 'movie.middlenav.actualites'|trans }}</h3>
+            <div class="owl-carousel articles-carousel">
+                {% for article in articles %}
+                    {% include 'FDCEventMobileBundle:News:widgets/article-film.html.twig' with { 'index': loop.index} %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% if movie.associatedMediaAudios|length > 0 %}
+        <div class="section audio">
+            <h3 class="title-section">{{ 'movie.middlenav.audios'|trans }}</h3>
+            {% for associatedMediaAudio in movie.associatedMediaAudios %}
+                {% include 'FDCEventMobileBundle:Movie:widgets/audio.html.twig' with { 'mediaAudio': associatedMediaAudio.mediaAudio } %}
+            {% endfor %}
+        </div>
+        {% endif %}
     </div>
-    {% if movie|trans_fallback('title') is not empty %}
-        {% set mainTitle = movie|trans_fallback('title') %}
-    {% else %}
-        {% set mainTitle = movie.titleVO %}
-    {% endif %}
+    {% include 'FDCEventMobileBundle:Movie:components/contact.html.twig' %}
+    {% include 'FDCEventMobileBundle:Movie:widgets/competition.html.twig' %}
 {% endblock body %}
 
 {% block javascripts %}
