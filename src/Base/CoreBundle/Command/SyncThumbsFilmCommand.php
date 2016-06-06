@@ -49,6 +49,7 @@ class SyncThumbsFilmCommand extends BaseCommand
     {
         $festivalYear = $input->getArgument('festivalYear');
         $provider = $input->getArgument('providerName');
+        $providerName = $input->getArgument('providerName');
         if (null === $provider) {
             $providers = array_keys($this->getMediaPool()->getProviders());
             $providerKey = $this->getHelperSet()->get('dialog')->select($output, 'Please select the provider', $providers);
@@ -77,12 +78,13 @@ class SyncThumbsFilmCommand extends BaseCommand
         foreach ($movies as $movie) {
             $output->writeln('Movie name:'. $movie->getTitleVO());
             $filmFilmMedias = $movie->getMedias();
+            $output->writeln('Movie medias count:'. count($filmFilmMedias));
             if (count($filmFilmMedias) > 0) {
                 foreach ($filmFilmMedias as $filmFilmMedia) {
                     $media = $filmFilmMedia->getMedia();
                     if ($media != null && $media->getFile() != null) {
                         $media = $media->getFile();
-                        if ($media->getProviderName() == $provider && $media->getContext() == $context) {
+                        if ($media->getProviderName() == $providerName && $media->getContext() == $context) {
                             $provider = $this->getMediaPool()->getProvider($media->getProviderName());
 
                             $this->log('Generating thumbs for '.$media->getName().' - '.$media->getId());
