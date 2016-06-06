@@ -10,8 +10,8 @@
                     {% for key, photo in photos %}
 
                         {% if
-                        photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') and
-                        photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR')
+                            photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') and
+                            photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR')
                         %}
                             {% set title = '' %}
                             {% if app.request.locale == 'fr' and photo.media.titleVf %}
@@ -23,10 +23,10 @@
                             <div class="img {% if firstPicture == true %}active{% endif %}">
                                 <a id="photo{{ photo.id }}"
                                    class="chocolat-image ajax"
-                                   href="{% path photo.media.file, photo.media.file.context ~ '_big' %}"
+                                   href="{% path photo.media.file, photo.media.file.context ~ '_1460x903' %}"
                                    title='<span>{{ title }}</span>'
                                    data-credit="{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
-                                    <img src="{% path photo.media.file, photo.media.file.context ~ '_big' %}" alt="" />
+                                    <img src="{% path photo.media.file, photo.media.file.context ~ '_1460x903' %}" alt="" />
                                 </a>
                             </div>
                             {% set firstPicture = false %}
@@ -48,7 +48,7 @@
                             {% endif %}
 
                             <div class="thumb {% if firstPicture == true %}active{% endif %}" data-caption="{{ title }}{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
-                                <img src="{% path photo.media.file, photo.media.file.context ~ '_small' %}" />
+                                <img src="{% path photo.media.file, photo.media.file.context ~ '_320x220' %}" />
                             </div>
                             {% set firstPicture = false %}
                         {% endif %}
