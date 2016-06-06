@@ -2229,9 +2229,12 @@ body.overlay::after {
 #main.movie-page{
 	overflow: visible;
 }
+.competition .info a.film_title {
+	color: #000000;
+}
 a{
 
-	color:#c8a461;;
+	color:#c8a461;
 }
 .slideshow{
 
@@ -2729,7 +2732,6 @@ a{
 	margin-bottom: 5px;
 }
 .competition .info a{
-
 	font-size: 22px;
 	font-style: italic;
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;

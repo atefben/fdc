@@ -5,14 +5,6 @@
 .open .contact-content {
 	max-height: none !important;
 }
-.competition .linkImage {
-	display: block;
-	height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
-}
 /* END CUSTOM CSS */
 .banner-img{
 	height: 370px;
@@ -23,9 +15,12 @@
 #main.movie-page{
 	overflow: visible;
 }
+.competition .info a.film_title {
+	color: #000000;
+}
 a{
 
-	color:#c8a461;;
+	color:#c8a461;
 }
 .slideshow{
 
@@ -523,7 +518,6 @@ a{
 	margin-bottom: 5px;
 }
 .competition .info a{
-
 	font-size: 22px;
 	font-style: italic;
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;

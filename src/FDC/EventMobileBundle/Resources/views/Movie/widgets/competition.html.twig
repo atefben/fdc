@@ -5,29 +5,32 @@
     <div class="owl-carousel competition-carousel">
         {% for movie in movies %}
             <div data-id="film{{ loop.index }}" class="thumb active">
-                <a class="linkImage" href="{{ path('fdc_eventmobile_movie_get', {'slug': movie.slug}) }}"></a>
-                <div class="img-container" style="background-image:url(
+                <a href="{{ path('fdc_eventmobile_movie_get', {'slug': movie.slug}) }}">
+                    <div class="img-container" style="background-image:url(
                 {% include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
                     film: movie,
                     display_film_path: true,
                     film_format: 'mobile',
                     film_image_default: 'bundles/fdcevent/img/palmares/film_w210.jpg'
                 }) %})"></div>
+                </a>
                 <div class="info">
                     <p>
-                        {% if movie|trans_fallback('title') is not empty %}
-                            {{ movie|trans_fallback('title')|truncate(20) }}
-                        {% else %}
-                            {{ movie.titleVO|truncate(20) }}
-                        {% endif %}
+                        <a class="film_title" href="{{ path('fdc_eventmobile_movie_get', {'slug': movie.slug}) }}">
+                            {% if movie|trans_fallback('title') is not empty %}
+                                {{ movie|trans_fallback('title')|truncate(20) }}
+                            {% else %}
+                                {{ movie.titleVO|truncate(20) }}
+                            {% endif %}
+                        </a>
                     </p>
                     {% set directors = movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                     {% for director in directors %}
-                        {% include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
-                        {% if loop.index != directors|length %}
-                            ,
-                        {% endif %}
-                    {% endfor %}
+                        <div>
+                            {% include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
+                            {% if loop.index != directors|length %}, {% endif -%}
+                        </div>
+                    {%- endfor -%}
                 </div>
             </div>
         {% endfor %}
