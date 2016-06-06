@@ -109,6 +109,8 @@ sonata_media:
                   searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
                   search: { width: 170 , height: 231 , quality: 100, constraint: false }
                   156x206: { width: 156 , height: 206 , quality: 100, constraint: false }
+                  #film cover mobile
+                  1600x903: { width: 1600, height: 903, quality: 100, constraint: false }
 
         film_film:
             providers:
@@ -146,6 +148,8 @@ sonata_media:
                 searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
                 search: { width: 170 , height: 231 , quality: 100, constraint: false }
                 156x206: { width: 156 , height: 206 , quality: 100, constraint: false }
+                # film cover mobile
+                1600x903: { width: 1600, height: 903, quality: 100, constraint: false }
 
         pdf:
             providers:
@@ -297,6 +301,8 @@ sonata_media:
                 293x397: { width: 293, height: 397, quality: 100, constraint: false }
                 575x364: { width: 575 , height: 364 , quality: 100, constraint: false}
                 976x535: { width: 976 , height: 535 , quality: 100, constraint: false}
+                # film cover mobile
+                1600x903: { width: 1600, height: 903, quality: 100, constraint: false }
 
         media_audio:
             providers:

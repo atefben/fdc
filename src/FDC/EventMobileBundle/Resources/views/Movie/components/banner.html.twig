@@ -2,7 +2,7 @@
 
     <div id="player"{% if movie.videoMain is not null and is_available_video(movie.videoMain) %} data-video="{{ s3_server_video ~ movie.videoMain.mp4Url }}"{% endif %} data-poster="{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
         film: movie,
-        film_format: '976x535',
+        film_format: '1600x903',
         display_film_path: true,
         film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
         })

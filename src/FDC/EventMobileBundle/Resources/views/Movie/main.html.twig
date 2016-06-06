@@ -42,7 +42,7 @@
                         <h3 class="title-section">{{ 'movie.middlenav.actualites'|trans }}</h3>
                         <div class="owl-carousel articles-carousel">
                             {% for article in articles %}
-                                {% include 'FDCEventMobileBundle:News:widgets/article.html.twig' with { 'index': loop.index} %}
+                                {% include 'FDCEventMobileBundle:News:widgets/article-film.html.twig' with { 'index': loop.index} %}
                             {% endfor %}
                         </div>
                     </div>
