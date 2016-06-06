@@ -19,7 +19,7 @@
                 {% set profession = artist|trans_fallback('profession') %}
                 {% if profession %}
                     <span class="category">
-                        {{ profession }}
+                        {{ artist|profession_gender('profession') }}
                     </span>
                 {% endif %}
                 {% if artist.nationality %}
@@ -38,43 +38,20 @@
                     {%- if artist.presidentJuryImage and artist.presidentJuryImage|trans_fallback('file') -%}
                         <img src="{% path artist.presidentJuryImage|trans_fallback('file'), '640x603' %}"
                              alt="{{ artist.fullName }}"/>
-                        {%- if artist.presidentJuryCredits is not empty or artistImage.copyright is not empty -%}
-                            <p class="caption" id="captionCopyright">
-                                {{- '© ' ~  ((artist.presidentJuryCredits)?:artistImage.copyright) -}}
-                            </p>
-                        {%- endif -%}
                     {%- elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
                         {% set artistMedia = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'),true)|first %}
                         <img src="{% path artistMedia.file, '640x603' %}"
                              alt="{{ artist.fullName }}"/>
-                        {%- if artistMedia.copyright is not empty -%}
-                            <p class="caption" id="captionCopyright">
-                                {{- '© ' ~ artistMedia.copyright  -}}
-                            </p>
-                        {% endif %}
                     {%- elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
                         {% set artistMedia = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'),true)|first %}
                         <img src="{% path artistMedia.file, '640x603' %}"
                              alt="{{ artist.fullName }}"/>
-                        {%- if artistMedia.copyright is not empty -%}
-                            <p class="caption" id="captionCopyright">
-                                {{- '© ' ~ artistMedia.copyright  -}}
-                            </p>
-                        {%- endif -%}
                     {%- elseif class(artistImage) == 'FilmMedia' -%}
                         <img src="{% path artistImage.file, '640x603' %}" alt="{{ artist.fullName }}"/>
                         {% set legend = artistImage.credits %}
-                        {% set copyright = artistImage.copyright %}
-                        <p class="caption"
-                           id="captionCopyright">{{ legend }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
                     {%- else -%}
                         {% if artist.credits != null %}
                             <img src="{% path artistImage, '640x603' %}" alt="{{ artist.fullName }}"/>
-                            {% if copyright is not empty %}
-                                <p class="caption" id="captionCopyright">
-                                    {{- '© ' ~  copyright -}}
-                                </p>
-                            {% endif %}
                         {% else %}
                             <img src="{% path artistImage, '640x603 ' %}" alt="{{ artist.fullName }}"/>
                         {% endif %}
@@ -135,9 +112,9 @@
                             {% if filmPerson.functions|length > 0 %}
                                 {% spaceless -%}
                                     <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
-                                {% for filmPersonFunction in filmPerson.functions -%}
-                                    {{ loop.first == false ? ',' : '' }} {{ filmPersonFunction.function|trans_fallback('name') }}
-                                {%- endfor %}
+                                    {% for filmPersonFunction in filmPerson.functions -%}
+                                        {{ loop.first == false ? ',' : '' }} {{ filmPerson.person|person_function_gender(filmPersonFunction.function, 'name') }}
+                                    {%- endfor %}
                                     </span>
                                 {%- endspaceless %}
                             {% endif %}
@@ -255,8 +232,14 @@
                             {% endif %}
                         {% endif %}
                         <div class="info">
-                            <span class="name">{% include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}</span>
-                            <span class="rank" {{ director|content_lang('profession') }}>{{ director|trans_fallback('profession') }}</span>
+                            <p>
+                                {%- if director.asianName -%}
+                                    {{- director.lastName ~ ' ' ~ director.firstName -}}
+                                {%- else -%}
+                                    {{- director.fullName -}}
+                                {%- endif -%}
+                            </p>
+                            <span {{ director|content_lang('profession') }}>{{ director|profession_gender('profession') }}</span>
                         </div>
                     </div>
                 {% endfor %}
