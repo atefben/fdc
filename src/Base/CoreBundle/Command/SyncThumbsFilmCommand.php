@@ -50,10 +50,12 @@ class SyncThumbsFilmCommand extends BaseCommand
         $festivalYear = $input->getArgument('festivalYear');
         $provider = $input->getArgument('providerName');
         $providerName = $input->getArgument('providerName');
+
         if (null === $provider) {
             $providers = array_keys($this->getMediaPool()->getProviders());
             $providerKey = $this->getHelperSet()->get('dialog')->select($output, 'Please select the provider', $providers);
             $provider = $providers[$providerKey];
+            $providerName = $providers[$providerKey];
         }
 
         $context  = $input->getArgument('context');

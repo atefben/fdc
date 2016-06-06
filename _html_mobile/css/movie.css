@@ -5,6 +5,14 @@
 .open .contact-content {
 	max-height: none !important;
 }
+.competition .linkImage {
+	display: block;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
 /* END CUSTOM CSS */
 .banner-img{
 	height: 370px;
