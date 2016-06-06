@@ -102,10 +102,23 @@
                     </div>{{- '' -}}
                 {%- endfor -%}
             </div>
+        </div>
     </div>
+    {% if next %}
+    <div id="banner-bottom">
+        <div class="banner-img vCenter" style="background-image:url({% path next.image|trans_fallback('file'), '976x535' %});">
+            <div class="vCenterKid">
+                <h2 class="title tall">
+                    {{- (next|trans_fallback('overrideName'))?:(next.juryType|trans_fallback('name')) -}}
+                </h2>
+                <a href="{{ path('fdc_eventmobile_jury_get', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}">
+                    <i class="icon icon_fleche-right"></i>
+                    {{ 'juries.btn.decouvrirrubrique'|trans }}
+                </a>
+            </div>
+        </div>
     </div>
-
-    </div>
+    {% endif %}
 {% endblock body %}
 
 {% block javascripts %}
