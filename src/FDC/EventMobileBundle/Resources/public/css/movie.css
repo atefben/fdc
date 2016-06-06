@@ -2216,7 +2216,7 @@ body.overlay::after {
 .pictos-nav .calendar a {
 	color: #000000;
 }
-.section {
+.open .contact-content {
 	max-height: none !important;
 }
 /* END CUSTOM CSS */
@@ -2239,7 +2239,6 @@ a{
 }
 /*INFOS FILMS*/
 .info-film{
-
 	background-color: #141414;
 	padding: 60px 40px 65px 40px;
 	color:#ffffff;
@@ -2362,11 +2361,8 @@ a{
 /*SECTION*/
 
 .section{
-
 	border-bottom: 1px solid #dfdfdf;
 	padding: 60px 0;
-	max-height: 1000px;
-
 }
 .title-section{
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -2675,7 +2671,7 @@ a{
 }
 .open .contact-content{
 
-	max-height: 917px;
+	max-height: none;
 }
 .contact p:not(.sub){
 
