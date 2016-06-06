@@ -1,4 +1,12 @@
-
+/* CUSTOM CSS */
+.artist-picture.photo-container {
+    display: block;
+}
+.artist-picture.photo-container img {
+    margin: 0 auto;
+    display: block;
+}
+/* END CUSTOM CSS */
 a{
 
 	color:#c8a461;

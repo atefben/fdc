@@ -28,7 +28,7 @@
                     {% for director in directors %}
                         <div>
                             {% include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} %}
-                            {% if loop.index != directors|length %}, {% endif -%}
+                            {%- if loop.index != directors|length %}, {% endif -%}
                         </div>
                     {%- endfor -%}
                 </div>
