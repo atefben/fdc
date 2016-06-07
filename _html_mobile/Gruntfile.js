@@ -953,6 +953,30 @@ grunt.initConfig({
 	    }
 	  }
 	},
+
+	copy: {
+		js: {
+			files: [
+				{
+					expand: true,
+					cwd: './js-concat/',
+					src: ['*.js'],
+					dest: "../src/FDC/EventMobileBundle/Resources/public/js/"
+				},
+			]
+		},
+		css: {
+			files: [
+				{
+					expand: true,
+					cwd: './css-concat/',
+					src: ['*.css'],
+					dest: "../src/FDC/EventMobileBundle/Resources/public/css/"
+				}
+			]
+		}
+	},
+
 	watch: {
 	    css: {
 	        files: ['css/*.css', 'css/vendors/*.css', 'css/include/*.css'],
@@ -984,8 +1008,10 @@ grunt.loadNpmTasks('grunt-contrib-uglify');
 grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-processhtml');
 grunt.loadNpmTasks('grunt-contrib-watch');
+grunt.loadNpmTasks('grunt-contrib-copy');
 
 grunt.registerTask('default', ['concat', "processhtml:dist"]);
 grunt.registerTask('prod', ['concat', 'uglify', "cssmin","processhtml:prod"]);
-
+grunt.registerTask('build:js', ['concat:js', 'copy:js']);
+grunt.registerTask('build:css', ['concat:css', 'copy:css']);
 };

@@ -30,44 +30,76 @@
                 {% endif %}
                 <h2>{{ artist.fullName }}</h2>
             </div>
-            <div class="artist-picture photo-container">
-                {% set artistImage = artist|person_image(true) %}
-                {% set legend = null %}
-                {% set copyright = null %}
-                {% if artistImage %}
-                    {%- if artist.presidentJuryImage and artist.presidentJuryImage|trans_fallback('file') -%}
-                        <img src="{% path artist.presidentJuryImage|trans_fallback('file'), '640x603' %}"
-                             alt="{{ artist.fullName }}"/>
-                    {%- elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
-                        {% set artistMedia = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'),true)|first %}
-                        <img src="{% path artistMedia.file, '640x603' %}"
-                             alt="{{ artist.fullName }}"/>
-                    {%- elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
-                        {% set artistMedia = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'),true)|first %}
-                        <img src="{% path artistMedia.file, '640x603' %}"
-                             alt="{{ artist.fullName }}"/>
-                    {%- elseif class(artistImage) == 'FilmMedia' -%}
-                        <img src="{% path artistImage.file, '640x603' %}" alt="{{ artist.fullName }}"/>
-                        {% set legend = artistImage.credits %}
-                    {%- else -%}
-                        {% if artist.credits != null %}
-                            <img src="{% path artistImage, '640x603' %}" alt="{{ artist.fullName }}"/>
-                        {% else %}
-                            <img src="{% path artistImage, '640x603 ' %}" alt="{{ artist.fullName }}"/>
+            <div class="artist-picture">
+                <div class="artiste-picture-inner">
+                    {% set artistImage = artist|person_image(true) %}
+                    {% set legend = null %}
+                    {% set copyright = null %}
+                    {% if artistImage %}
+                        {%- if artist.presidentJuryImage and artist.presidentJuryImage|trans_fallback('file') -%}
+                            <img src="{% path artist.presidentJuryImage|trans_fallback('file'), '640x603' %}"
+                                 alt="{{ artist.fullName }}"/>
+                            {%  set shareMedia = artist.presidentJuryImage|trans_fallback('file') %}
+                            {%- if artist.presidentJuryCredits is not empty or artistImage.copyright is not empty -%}
+                                <p class="caption" id="captionCopyright">
+                                    {{- '© ' ~  ((artist.presidentJuryCredits)?:artistImage.copyright) -}}
+                                </p>
+                            {%- endif -%}
+                        {%- elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
+                            {% set artistMedia = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'),true)|first %}
+                            <img src="{% path artistMedia.file, '640x603' %}"
+                                 alt="{{ artist.fullName }}"/>
+                            {%  set shareMedia = artistMedia.file %}
+                            {%- if artistMedia.copyright is not empty -%}
+                                <p class="caption" id="captionCopyright">
+                                    {{- '© ' ~ artistMedia.copyright  -}}
+                                </p>
+                            {% endif %}
+                        {%- elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                            {% set artistMedia = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'),true)|first %}
+                            <img src="{% path artistMedia.file, '640x603' %}"
+                                 alt="{{ artist.fullName }}"/>
+                            {%  set shareMedia = artistMedia.file %}
+                            {%- if artistMedia.copyright is not empty -%}
+                                <p class="caption" id="captionCopyright">
+                                    {{- '© ' ~ artistMedia.copyright  -}}
+                                </p>
+                            {%- endif -%}
+                        {%- elseif class(artistImage) == 'FilmMedia' -%}
+                            <img src="{% path artistImage.file, '640x603' %}" alt="{{ artist.fullName }}"/>
+                            {%  set shareMedia = artistImage.file %}
+                            {% set legend = artistImage.credits %}
+                            {% set copyright = artistImage.copyright %}
+                            <p class="caption"
+                               id="captionCopyright">{{ legend }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
+                        {%- else -%}
+                            {% if artist.credits != null %}
+                                <img src="{% path artistImage, '640x603' %}" alt="{{ artist.fullName }}"/>
+                                {%  set shareMedia = artistImage %}
+                                {% if copyright is not empty %}
+                                    <p class="caption" id="captionCopyright">
+                                        {{- '© ' ~  copyright -}}
+                                    </p>
+                                {% endif %}
+                            {% else %}
+                                <img src="{% path artistImage, '640x603 ' %}" alt="{{ artist.fullName }}"/>
+                                {%  set shareMedia = artistImage %}
+                            {% endif %}
+                        {%- endif -%}
+                    {% else %}
+                        {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
+                        {% if media is empty %}
+                            {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
                         {% endif %}
-                    {%- endif -%}
-                {% else %}
-                    {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
-                    {% if media is empty %}
-                        {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
+                        {% if media is empty %}
+                            {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                        {% endif %}
+                        {% if media is not empty %}
+                            {%  set shareMedia = media %}
+                            <img src="{% path media, '976x535' %}" alt="{{ artist.fullName }}"/>
+                        {% endif %}
                     {% endif %}
-                    {% if media is empty %}
-                        {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
-                    {% endif %}
-                    {% if media is not empty %}
-                        <img src="{% path media, '976x535' %}" alt="{{ artist.fullName }}"/>
-                    {% endif %}
-                {% endif %}
+                </div>
             </div>
             {% set biography = artist|trans_fallback('biography') %}
             {% if biography %}

@@ -1,14 +1,18 @@
 /* CUSTOM CSS */
-.artist-picture.photo-container {
-    display: block;
+.artist-picture {
+    text-align: center;
 }
-.artist-picture.photo-container img {
-    margin: 0 auto;
-    display: block;
+.artist-picture .artiste-picture-inner {
+    display: inline-block;
+    width: auto;
+}
+.artist-picture .artiste-picture-inner .caption {
+    color: #969696;
+    font-size: 18px;
+    text-align: left;
 }
 /* END CUSTOM CSS */
 a{
-
 	color:#c8a461;
 }
 .slideshow{
