@@ -195,7 +195,8 @@
                 </div>
 
                 <a href="#" class="read-more">{{ 'home.btn.afficherplusdactualite'|trans|raw }}</a>
-               
+
+                {% if homepage.displayedSocialWall == false %}
                 <div id="socials">
                     {% image '@FDCEventMobileBundle/Resources/public/img/palme.svg' %}
                     <img src="{{ asset_url }}" alt="{{ 'header.img.palme'|trans }}" class="palm">
@@ -207,6 +208,7 @@
                         {% endfor %}
                     </div>
                 </div>
+                {% endif %}
 
                 {% include 'FDCEventMobileBundle:News:components/socials.html.twig' %}
             </div>
@@ -245,11 +247,9 @@
         </div>
         {% endif %}
 
+        {% if homepage.displayedFilms == false %}
         <div class="dark-container" id="today">
-            {#<h2 class="title one-line">{{ 'article.film.title.focus'|trans }}</h2>#}
             <h2 class="title one-line">{{ 'home.title.focus'|trans({}, 'FDCEventMobileBundle') }}</h2>
-
-
             <div class="special-event">
                 {% set film = homepage.filmsAssociated.0 %}
                 {%  if film.mobileImage is defined and film.mobileImage is not null  %}
@@ -292,7 +292,19 @@
                 </div>
                 {% endif %}
             </div>
+        </div>
+        {% endif %}
 
+        <div class="trailer">
+            <div class="img-container">
+                <div class="img" style="background-image:url('')"></div>
+            </div>
+            <div class="info-container vCenter">
+                <div class="vCenterKid">
+                    <div class="icon-container"><i class="icon icon_video"></i></div>
+                    <h3 class="title tall">{{ 'bandeannonce.title.lesbandesannoncesetextraits'|trans }}</h3>
+                </div>
+            </div>
         </div>
 
         {% if homepage.displayedPushsMain == false or homepage.displayedPushsSecondary == false %}
@@ -302,7 +314,7 @@
                     {% include 'FDCEventMobileBundle:News:widgets/push-main.html.twig' %}
                 {% endif %}
                 {% if homepage.displayedPushsSecondary == false %}
-                    {% include 'FDCEventBundle:News:widgets/push-secondary.html.twig' %}
+                    {% include 'FDCEventMobileBundle:News:widgets/push-secondary.html.twig' %}
                 {% endif %}
             </div>
         </div>
