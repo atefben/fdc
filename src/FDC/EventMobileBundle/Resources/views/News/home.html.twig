@@ -144,27 +144,27 @@
         {% if homepage.displayedTopNews == false %}
         <div  id="news">
             <h2 class="title">{{ 'home.title.lactualitealaune'|trans }}</h2>
-
+            {% if homepage.topNewsType == 0 %}
             <div id="calendar">
                 <a href="#" class="prev"><i class="icon icon_flecheGauche"></i></a>
                 <div id="timeline" class="" >
-                <div class="timeline-container">
-                    {% set hasActive = false %}
-                    {% for key,date in festivalInterval %}
-                        {%  set timestamp = date ~ ' 23:59:59' %}
-                        <a href="#"
-                           data-timestamp="{{ timestamp|date('U') }}"
-                           data-date="{{ date|date('d') }}"
-                           class="{% if hasActive == false and homeArticles|length > 0 and (homeArticles[0].publishedAt|date('Y-m-d') == date|date('Y-m-d') or (homeArticles[0].publishedAt|date('Y-m-d') > date|date('Y-m-d') and date|date('Y-m-d') == festival_date.festivalEndsAt|date('Y-m-d'))) %}{% set hasActive = true %}active{% elseif homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') < date|date('Y-m-d') %}disabled{% endif %}">
-                            {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
-                            <span class="day">{{ date|date('d') }}</span>
-                        </a>
-                    {% endfor %}
-                </div>
-                    
+                    <div class="timeline-container">
+                        {% set hasActive = false %}
+                        {% for key,date in festivalInterval %}
+                            {%  set timestamp = date ~ ' 23:59:59' %}
+                            <a href="#"
+                               data-timestamp="{{ timestamp|date('U') }}"
+                               data-date="{{ date|date('d') }}"
+                               class="{% if hasActive == false and homeArticles|length > 0 and (homeArticles[0].publishedAt|date('Y-m-d') == date|date('Y-m-d') or (homeArticles[0].publishedAt|date('Y-m-d') > date|date('Y-m-d') and date|date('Y-m-d') == festival_date.festivalEndsAt|date('Y-m-d'))) %}{% set hasActive = true %}active{% elseif homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') < date|date('Y-m-d') %}disabled{% endif %}">
+                                {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                                <span class="day">{{ date|date('d') }}</span>
+                            </a>
+                        {% endfor %}
+                    </div>
                 </div>
                 <a href="#" class="next"><i class="icon icon_fleche-right"></i></a>
             </div>
+            {% endif %}
             <div class="container" id="articles" >
                 <div class="articles-container">
                     <div id="articles-wrapper">
@@ -275,7 +275,7 @@
                         <div class="title-translate"></div>
                         {% endif %}
                         <div class="director">
-                            {{- 'home.video.text.de'|trans -}}
+                            <span class="director-of">{{- 'home.video.text.de'|trans }} </span>
                             {%- for director in film.association|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                             <a href="{{ path('fdc_eventmobile_artist_get', {slug: director.slug }) }}">
                                 {%- include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}

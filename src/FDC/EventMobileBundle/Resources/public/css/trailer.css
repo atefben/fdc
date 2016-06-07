@@ -5582,6 +5582,11 @@ article .picto .icon{
 #today .director strong{
   text-transform: uppercase;
 }
+#today .director .director-of {
+    color: #ffffff;
+    font-family: "Camphor W01 Regular",Arial,Helvetica,sans-serif;
+    font-style: normal;
+}
 #today .director a {
     color: #c8a461;
 }
