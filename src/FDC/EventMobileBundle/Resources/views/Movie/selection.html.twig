@@ -55,8 +55,8 @@
             <div id="banner-bottom">
                 <div class="banner-img vCenter" {% if next.image %} style="background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}');"{% endif %}>
                     <div class="vCenterKid">
-                        <h2 class="title">{{ next|trans_fallback('title') }}</h2>
-                        <a href="{{ path('fdc_event_movie_classics', {'slug': next|trans_fallback('slug')}) }}"><i class="icon icon_fleche-right"></i>{{ 'palmares.btn.decouvrirrubrique'|trans }}</a>
+                        <h2 class="title">{{ 'selection.nav.cannes-classics'|trans }}</h2>
+                        <a href="{{ path('fdc_eventmobile_movie_classics', {'slug': next|trans_fallback('slug')}) }}"><i class="icon icon_fleche-right"></i>{{ 'palmares.btn.decouvrirrubrique'|trans }}</a>
                 </div>
             </div>
         {% elseif next %}
