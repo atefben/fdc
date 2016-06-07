@@ -2856,7 +2856,7 @@ display: inline-block;
 }
 .count{
 
-	color:#c8a461;;
+  color:#c8a461;;
 }
 .my-selection {
   position: fixed;
@@ -2916,48 +2916,48 @@ display: inline-block;
 }
 .my-selection .img-container{
 
-	position: relative;
-	width: 400px;
-	height: 250px;
+  position: relative;
+  width: 400px;
+  height: 250px;
   float: none;
   margin: 0;
 }
 .my-selection .thumb{
-	position: relative;
-	margin-bottom: 60px;
+  position: relative;
+  margin-bottom: 60px;
 }
 .my-selection .thumb .img{
-	width: 515px;
+  width: 515px;
 }
 .my-selection .thumb  img{
-	width: 100%;
-	height: 100%;
-	object-fit:cover;
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
 }
 .my-selection .thumb .picto{
-	position: absolute;
-	width: 70px;
-	height: 70px;
-	line-height: 70px;
-	text-align: center;
-	z-index: 2;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  z-index: 2;
 }
 .my-selection .thumb .picto .icon{
 
-	color:#c8a461;
-	/*font-size: 1.5rem;*/
-	font-size: 30px;
+  color:#c8a461;
+  /*font-size: 1.5rem;*/
+  font-size: 30px;
 }
 .my-selection  .info{
-	width: 355px;
-	margin: 30px auto 0 auto;
-	font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
-	font-size: 15px;
-	color:#666666;
+  width: 355px;
+  margin: 30px auto 0 auto;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color:#666666;
 }
 .my-selection  .info .category{
 
-	color: #c8a461;   
+  color: #c8a461;   
     letter-spacing: 0.1em;
     margin-right: 12px;
     margin-bottom: 10px;
@@ -2969,18 +2969,18 @@ display: inline-block;
 }
 .my-selection  .info h2{
 
-	color: #000;
-	text-align: center;
-	margin-top: 15px;
-	font-family: "Playfair Display", Times New Roman, Times, serif;
-	font-size: 25px;
-	line-height: 30px
+  color: #000;
+  text-align: center;
+  margin-top: 15px;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-size: 25px;
+  line-height: 30px
 }
 .my-selection .top-info{
 
-	margin: 0 auto;
-	display: table;
-	text-align: center;
+  margin: 0 auto;
+  display: table;
+  text-align: center;
 }
 
 .my-selection .thumb a:not(.delete){
@@ -3073,20 +3073,20 @@ display: inline-block;
   height: 100%;
 }
 .suggestion{
-	display: none;
+  display: none;
 }
 
 a{
 
-	color:#c8a461;;
+  color:#c8a461;;
 }
 .slideshow{
 
-	border: none;
+  border: none;
 }
 .container{
-	padding-top: 50px;
-	font-size: 0;
+  padding-top: 50px;
+  font-size: 0;
 }
 #player{
     margin-bottom: 40px;
@@ -3153,28 +3153,28 @@ a{
 
 /*.pictos-nav{
 
-	position: fixed;
-	width: 560px;
-	left:40px;
-	bottom: 160px;
-	z-index: 99;
+  position: fixed;
+  width: 560px;
+  left:40px;
+  bottom: 160px;
+  z-index: 99;
 }
 .pictos-nav div{
 
-	background-color: #fff;
-	width: 120px;
-	height: 120px;
-	border: 1px solid #dfdfdf;
-	text-align: center;
-	line-height: 120px;
-	font-size: 45px;
-	position: absolute;
+  background-color: #fff;
+  width: 120px;
+  height: 120px;
+  border: 1px solid #dfdfdf;
+  text-align: center;
+  line-height: 120px;
+  font-size: 45px;
+  position: absolute;
 }
 .pictos-nav div.back{
-	left:0;
+  left:0;
 }
 .pictos-nav div.calendar{
-	right:0;
+  right:0;
 }*/
 
 /*SECTION*/
@@ -3192,64 +3192,64 @@ a{
 .section{
 
 
-	padding: 30px 0;
+  padding: 30px 0;
 
 }
 .title-section{
-	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-	color:#000;
-	text-transform: uppercase;
-	font-weight: 600;
-	letter-spacing: 2px;
-	margin-bottom: 30px;
-	/*font-size: 1.5rem;*/
-	font-size: 22px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color:#000;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  /*font-size: 1.5rem;*/
+  font-size: 22px;
 
 }
 
 .section p{
 
-	color:#666666;
-	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-	/*font-size: 1.5rem;*/
-	line-height: 30px;
-	font-size: 24px;
+  color:#666666;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  /*font-size: 1.5rem;*/
+  line-height: 30px;
+  font-size: 24px;
 }
 
 /*SLIDER*/
 
 .owl-stage-outer{
 
-	width: 640px;
-	margin-left: -32px;
+  width: 640px;
+  margin-left: -32px;
 }
 .video{
-	position: relative;
+  position: relative;
 }
 .video .infos{
-	position: absolute;
+  position: absolute;
 }
 .slideshow .video .info .titleLink{
 
-	font-size: 23px;
-	max-width: 445px;
+  font-size: 23px;
+  max-width: 445px;
 }
 .slideshow{
 
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 
 /*PHOTO */
 .photo-container{
-	display: inline-block;
-	margin-bottom: 40px;
-	font-size: 0;
+  display: inline-block;
+  margin-bottom: 40px;
+  font-size: 0;
 }
 .photo-container img{
 
-	max-width: 100%;
+  max-width: 100%;
 }
 .photo-container .caption {
     color: #969696;
@@ -3259,21 +3259,21 @@ a{
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .half-photo{
-	vertical-align: top;
-	width: 47%;
-	height: 410px;
+  vertical-align: top;
+  width: 47%;
+  height: 410px;
 }
 .half-photo + .half-photo{
 
-	float: right;
+  float: right;
 }
 .half-photo img{
 
-	height: 100%;
-	object-fit:cover;
+  height: 100%;
+  object-fit:cover;
 }
 .quote{
-	margin-top: 40px;
+  margin-top: 40px;
 }
 .quote blockquote {
     color: #666;
@@ -3301,8 +3301,8 @@ a{
     overflow: hidden;
 }
 .film .info-film .wrapper{
-	height: 100%;
-	margin-left: 70px;
+  height: 100%;
+  margin-left: 70px;
 }
 .film .info-film .wrapper .poster {
     display: inline-block;
@@ -3418,35 +3418,35 @@ a{
 /*CREDITS AND CASTING*/
 
 .credits p, .casting p{
-	/*font-size: 0.8rem;*/
-	font-size: 22px;
-	line-height:30px;
+  /*font-size: 0.8rem;*/
+  font-size: 22px;
+  line-height:30px;
 }
 .credits p.middle, .casting p.middle{
-	margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 /*PHOTOS*/
 
 .photos .slideshow .thumbnails .thumb{
 
-	width: 160px;
-	height: 110px;
+  width: 160px;
+  height: 110px;
 }
 .photos .slideshow .thumbnails .thumb.active:before{
 
-	width: 144px;
-	height: 94px;
+  width: 144px;
+  height: 94px;
 }
 
 /*ARTICLES*/
 .articles .title{
-	margin: 20px auto;
+  margin: 20px auto;
 }
 .articles .owl-item{
 
-	width: 516px;
-	height: 490px;
+  width: 516px;
+  height: 490px;
 }
 .articles .img-container{
 
@@ -3460,28 +3460,28 @@ a{
     object-fit:cover;
 }
 .articles .thumb .picto{
-	position: absolute;
-	width: 70px;
-	height: 70px;
-	line-height: 70px;
-	text-align: center;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
 }
 .articles .thumb .picto .icon{
 
-	color:#c8a461;
-	/*font-size: 1.5rem;*/
-	font-size: 30px;
+  color:#c8a461;
+  /*font-size: 1.5rem;*/
+  font-size: 30px;
 }
 .articles  .info{
-	width: 355px;
-	margin: 30px auto 0 auto;
-	font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
-	font-size: 15px;
-	color:#666666;
+  width: 355px;
+  margin: 30px auto 0 auto;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color:#666666;
 }
 .articles  .info .category{
 
-	color: #c8a461;   
+  color: #c8a461;   
     letter-spacing: 0.1em;
     margin-right: 12px;
     margin-bottom: 10px;
@@ -3492,17 +3492,17 @@ a{
 }
 .articles  .info h2{
 
-	color: #000;
-	text-align: center;
-	margin-top: 15px;
-	font-family: "Playfair Display", Times New Roman, Times, serif;
-	font-size: 25px;
-	line-height: 30px
+  color: #000;
+  text-align: center;
+  margin-top: 15px;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-size: 25px;
+  line-height: 30px
 }
 .articles .top-info{
 
-	margin: 0 auto;
-	display: table;
+  margin: 0 auto;
+  display: table;
 }
 .articles .owl-item a{
 
@@ -3520,39 +3520,39 @@ a{
 
 /*SECTION COMPETITION*/
 .competition{
-	padding: 0;
+  padding: 0;
 }
 .competition h3{
-	font-family: "Playfair Display Bold", Times New Roman, Times, serif;
-	font-size: 24px;
-	letter-spacing: 5px;
-	text-align: center;
-	padding: 55px 0;
-	margin: 0;
+  font-family: "Playfair Display Bold", Times New Roman, Times, serif;
+  font-size: 24px;
+  letter-spacing: 5px;
+  text-align: center;
+  padding: 55px 0;
+  margin: 0;
 }
 .competition .owl-item{
 
-	width: 280px;
-	height: 530px;
+  width: 280px;
+  height: 530px;
 }
 .competition .img-container{
 
-	width: 280px;
-	height: 380px;
-	background-position: center center;
-  	background-size: cover;
+  width: 280px;
+  height: 380px;
+  background-position: center center;
+    background-size: cover;
 }
 .competition .info{
-	margin-top: 25px;
-	text-align: center;
+  margin-top: 25px;
+  text-align: center;
 }
 .competition .info p{
-	text-transform: uppercase;
-	color: #c8a461;
-	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-	font-weight: 700;
-	font-size: 23px;
-	margin-bottom: 5px;
+  text-transform: uppercase;
+  color: #c8a461;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 23px;
+  margin-bottom: 5px;
 }
 .competition .info p.subtitle{
     font-style: normal;
@@ -3568,7 +3568,7 @@ a{
     margin-top: 4px;
 }
 .competition .owl-stage-outer{
-	margin-left: 0;
+  margin-left: 0;
 }
 
 
@@ -3699,15 +3699,15 @@ a{
 /* END CUSTOM CSS */
 a{
 
-	color:#c8a461;
+  color:#c8a461;
 }
 .slideshow{
 
-	border: none;
+  border: none;
 }
 .container{
-	padding-top: 50px;
-	font-size: 0;
+  padding-top: 50px;
+  font-size: 0;
 }
 
 .artist-name{
@@ -3761,28 +3761,28 @@ h3{
 
 /*.pictos-nav{
 
-	position: fixed;
-	width: 560px;
-	left:40px;
-	bottom: 160px;
-	z-index: 99;
+  position: fixed;
+  width: 560px;
+  left:40px;
+  bottom: 160px;
+  z-index: 99;
 }
 .pictos-nav div{
 
-	background-color: #fff;
-	width: 120px;
-	height: 120px;
-	border: 1px solid #dfdfdf;
-	text-align: center;
-	line-height: 120px;
-	font-size: 45px;
-	position: absolute;
+  background-color: #fff;
+  width: 120px;
+  height: 120px;
+  border: 1px solid #dfdfdf;
+  text-align: center;
+  line-height: 120px;
+  font-size: 45px;
+  position: absolute;
 }
 .pictos-nav div.back{
-	left:0;
+  left:0;
 }
 .pictos-nav div.calendar{
-	right:0;
+  right:0;
 }*/
 
 /*SECTION*/
@@ -3790,54 +3790,54 @@ h3{
 .section{
 
     border-bottom: 1px solid #dfdfdf;
-	padding: 40px 0;
+  padding: 40px 0;
 
 }
 .title-section{
-	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-	color:#000;
-	text-transform: uppercase;
-	font-weight: 600;
-	letter-spacing: 2px;
-	margin-bottom: 30px;
-	/*font-size: 1.5rem;*/
-	font-size: 22px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color:#000;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  /*font-size: 1.5rem;*/
+  font-size: 22px;
 
 }
 
 .section p{
 
-	color:#666666;
-	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-	/*font-size: 1.5rem;*/
-	line-height: 30px;
-	font-size: 24px;
+  color:#666666;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  /*font-size: 1.5rem;*/
+  line-height: 30px;
+  font-size: 24px;
 }
 
 /*SLIDER*/
 
 .owl-stage-outer{
 
-	width: 640px;
-	margin-left: -32px;
+  width: 640px;
+  margin-left: -32px;
 }
 
 .slideshow{
 
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 
 /*PHOTO */
 .photo-container{
-	display: inline-block;
-	margin-bottom: 60px;
-	font-size: 0;
+  display: inline-block;
+  margin-bottom: 60px;
+  font-size: 0;
 }
 .photo-container img{
 
-	max-width: 100%;
+  max-width: 100%;
 }
 .photo-container .caption {
     color: #969696;
@@ -3869,13 +3869,13 @@ h3{
     padding: 0 7px;
 }
 .jury .role , .jury .date{
-    text-transform: uppercase;
-    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 }
 /*SECTION director*/
 .director{
-	padding: 0;
-    background-color: #f6f6f6;
+  padding: 0 0 40px 0;
+  background-color: #f6f6f6;
 }
 .director a, .thumb a{
   
@@ -3889,46 +3889,47 @@ h3{
 
 }
 .director h3{
-	font-family: "Playfair Display Bold", Times New Roman, Times, serif;
-	font-size: 24px;
-	letter-spacing: 5px;
-	text-align: center;
-	padding: 55px 0;
-	margin: 0;
+  font-family: "Playfair Display Bold", Times New Roman, Times, serif;
+  font-size: 24px;
+  letter-spacing: 5px;
+  text-align: center;
+  padding: 55px 0;
+  margin: 0;
 }
 .director .owl-item{
 
-	width: 280px;
-	height: 530px;
+  width: 280px;
+  height: 530px;
 }
 .director .img-container{
 
-	width: 280px;
-	height: 380px;
-	background-position: center center;
-  	background-size: cover;
+  width: 280px;
+  height: 380px;
+  background-position: center center;
+    background-size: cover;
 }
 .director .info{
-	margin-top: 35px;
-	text-align: center;
+  margin-top: 35px;
+  text-align: center;
+  width: 280px;
 }
 .director .info p{
-	text-transform: uppercase;
-	color: #000;
-	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-	font-weight: 700;
-	font-size: 25px;
-	margin-bottom: 5px;
+  text-transform: uppercase;
+  color: #000;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  margin-bottom: 5px;
 }
 .director .info span{
 
-	font-size: 22px;
-	font-style: italic;
-	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  font-style: italic;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
     color:#c8a461;
 }
 .director .owl-stage-outer{
-	margin-left: 0;
+  margin-left: 0;
 }
 
 
