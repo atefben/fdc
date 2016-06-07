@@ -247,8 +247,8 @@
         </div>
         {% endif %}
 
-        {% if homepage.displayedFilms == false %}
         <div class="dark-container" id="today">
+        {% if homepage.displayedFilms == false %}
             <h2 class="title one-line">{{ 'home.title.focus'|trans({}, 'FDCEventMobileBundle') }}</h2>
             <div class="special-event">
                 {% set film = homepage.filmsAssociated.0 %}
@@ -292,17 +292,17 @@
                 </div>
                 {% endif %}
             </div>
-        </div>
-        {% endif %}
 
-        <div class="trailer">
-            <div class="img-container">
-                <div class="img" style="background-image:url('')"></div>
-            </div>
-            <div class="info-container vCenter">
-                <div class="vCenterKid">
-                    <div class="icon-container"><i class="icon icon_video"></i></div>
-                    <h3 class="title tall">{{ 'bandeannonce.title.lesbandesannoncesetextraits'|trans }}</h3>
+        {% endif %}
+            <div class="trailer">
+                <div class="img-container">
+                    <div class="img" style="background-image:url('')"></div>
+                </div>
+                <div class="info-container vCenter">
+                    <div class="vCenterKid">
+                        <div class="icon-container"><i class="icon icon_video"></i></div>
+                        <h3 class="title tall">{{ 'bandeannonce.title.lesbandesannoncesetextraits'|trans }}</h3>
+                    </div>
                 </div>
             </div>
         </div>
