@@ -141,8 +141,8 @@
         </div>
         {% endif %}
 
-        {% if homepage.displayedTopNews == false %}
-        <div  id="news">
+        <div id="news">
+            {% if homepage.displayedTopNews == false %}
             <h2 class="title">{{ 'home.title.lactualitealaune'|trans }}</h2>
             {% if homepage.topNewsType == 0 %}
             <div id="calendar">
@@ -195,6 +195,7 @@
                 </div>
 
                 <a href="#" class="read-more">{{ 'home.btn.afficherplusdactualite'|trans|raw }}</a>
+           {% endif %}
 
                 {% if homepage.displayedSocialWall == false %}
                 <div id="socials">
@@ -209,11 +210,9 @@
                     </div>
                 </div>
                 {% endif %}
-
                 {% include 'FDCEventMobileBundle:News:components/socials.html.twig' %}
             </div>
         </div>
-        {% endif %}
 
         {% if homepage.displayedTopWebTv == false %}
         <div class="dark-container">
