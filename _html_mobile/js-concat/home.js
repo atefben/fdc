@@ -1110,8 +1110,8 @@ $(document).ready(function() {
   });
 
   // on submit : check if there are errors in the form
-  $('.newsletter form').on('submit', function() {
-
+  $('.newsletter form').on('submit', function(e) {
+    e.preventDefault();
     var input = $('.newsletter #email');
     var empty = false;
 
@@ -1133,13 +1133,7 @@ $(document).ready(function() {
     if($('.newsletter .error').length || empty) {
       return false;
     } else {
-      // ajax call newsletter
-
-      // show confirmation 
-      $('.newsletter form').addClass('hide');
-      $('#confirmation span').html($('#email').val());
-      $('#confirmation').addClass('show');
-
+      window.open('http://www.online-festival.com/subscribtion/subscribe.aspx?email=' + $('#email').val(), '_blank');
       return false;
     }
   });
@@ -2078,10 +2072,19 @@ $(document).ready(function() {
         type: "GET",
         dataType: "html",
         cache: false,
-        url: GLOBALS.urls.newsUrlNext , 
+        url: GLOBALS.urls.newsUrl,
+        data: {
+          'timestamp': $('#news .articles-container:not(.nextDay) article:last').data('time'),
+          'end': typeof $('#news .articles-container:not(.nextDay) article:last').data('end') != 'undefined' ? $('#news .articles:not(.nextDay) article:last').data('end') : 'false'
+        },
         success: function(data) {
             $('.articles-container').append(data);
-            $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+            if($('#articles-wrapper .nextDay').length > 0) {
+              $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+
+            } else if ($('#news .articles').length == 0 || $('#news .articles:not(.nextDay) article:last').data('end') || $('#timeline a.active').attr('data-date') == '11') {
+              $('.read-more').addClass('hidden');
+            }
             initAddToSelection();
 
         }

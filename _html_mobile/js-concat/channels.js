@@ -38,8 +38,8 @@ $(document).ready(function() {
   });
 
   // on submit : check if there are errors in the form
-  $('.newsletter form').on('submit', function() {
-
+  $('.newsletter form').on('submit', function(e) {
+    e.preventDefault();
     var input = $('.newsletter #email');
     var empty = false;
 
@@ -61,13 +61,7 @@ $(document).ready(function() {
     if($('.newsletter .error').length || empty) {
       return false;
     } else {
-      // ajax call newsletter
-
-      // show confirmation 
-      $('.newsletter form').addClass('hide');
-      $('#confirmation span').html($('#email').val());
-      $('#confirmation').addClass('show');
-
+      window.open('http://www.online-festival.com/subscribtion/subscribe.aspx?email=' + $('#email').val(), '_blank');
       return false;
     }
   });

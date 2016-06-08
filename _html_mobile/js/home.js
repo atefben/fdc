@@ -269,10 +269,19 @@ $(document).ready(function() {
         type: "GET",
         dataType: "html",
         cache: false,
-        url: GLOBALS.urls.newsUrlNext , 
+        url: GLOBALS.urls.newsUrl,
+        data: {
+          'timestamp': $('#news .articles-container:not(.nextDay) article:last').data('time'),
+          'end': typeof $('#news .articles-container:not(.nextDay) article:last').data('end') != 'undefined' ? $('#news .articles:not(.nextDay) article:last').data('end') : 'false'
+        },
         success: function(data) {
             $('.articles-container').append(data);
-            $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+            if($('#articles-wrapper .nextDay').length > 0) {
+              $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+
+            } else if ($('#news .articles').length == 0 || $('#news .articles:not(.nextDay) article:last').data('end') || $('#timeline a.active').attr('data-date') == '11') {
+              $('.read-more').addClass('hidden');
+            }
             initAddToSelection();
 
         }
