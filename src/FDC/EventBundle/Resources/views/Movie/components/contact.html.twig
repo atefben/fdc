@@ -139,52 +139,52 @@
                                         {% endif %}
                                     {% endfor %}
                                 </div>
-                                {% set first = true %}
-                                {% for contact in movie.contacts %}
-                                    {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_FRENCH_DISTRIBUTION') %}
-                                        {% if first %}
-                                            {% set first = false %}
-                                            <p class="sub">{{ 'movie.contact.label.distribution'|trans }}</p>
-                                        {% endif %}
-                                        <div>
-                                            <p>
-                                                {% set displayContact = [] %}
-                                                {% if contact.companyName %}
-                                                    {% set displayContact = displayContact|merge([contact.companyName]) %}
-                                                {% endif %}
-                                                {% if contact.address %}
-                                                    {% set displayAddress = contact.address.street ~ ' ' ~ contact.address.postalCode ~ ' ' ~ contact.address.city %}
-                                                    {% if contact.address.country %}
-                                                        {% set displayAddress = displayAddress ~ ' ' ~ contact.address.country|trans_fallback_country('name') %}
-                                                    {% endif %}
-                                                    {% if displayAddress|trim %}
-                                                        {% set displayContact = displayContact|merge([displayAddress]) %}
-                                                    {% endif %}
-                                                    {% if (contact.address.phone or contact.address.mobilePhone) %}
-                                                        {% if contact.address.phone?:contact.address.mobilePhone %}
-                                                            {% set displayContact = displayContact|merge(['T: ' ~ (contact.address.phone?:contact.address.mobilePhone)]) %}
-                                                        {% endif %}
-                                                        {% if contact.address.fax %}
-                                                            {% set displayContact = displayContact|merge(['F: ' ~ contact.address.fax]) %}
-                                                        {% endif %}
-                                                    {% endif %}
-                                                    {% if contact.person and contact.person.email %}
-                                                        {% set displayEmail = '<a class="ajaxi" href="mailto:' ~ contact.person.email ~ '">' %}
-                                                        {% set displayEmail =  displayEmail ~ contact.person.email ~ '</a>' %}
-                                                        {% set displayContact = displayContact|merge([displayEmail]) %}
-                                                    {% endif %}
-                                                    {% if contact.address.website %}
-                                                        {% set displayWebsite = '<a href="' ~ (('http' in contact.address.website or 'https' in contact.address.website) ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
-                                                        {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
-                                                        {% set displayContact = displayContact|merge([displayWebsite]) %}
-                                                    {% endif %}
-                                                {% endif %}
-                                                {{ displayContact|join(' - ')|raw }}
-                                            </p>
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
                             {% endif %}
+                            {% set first = true %}
+                            {% for contact in movie.contacts %}
+                                {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_FRENCH_DISTRIBUTION') %}
+                                    {% if first %}
+                                        {% set first = false %}
+                                        <p class="sub">{{ 'movie.contact.label.distribution'|trans }}</p>
+                                    {% endif %}
+                                    <div>
+                                        <p>
+                                            {% set displayContact = [] %}
+                                            {% if contact.companyName %}
+                                                {% set displayContact = displayContact|merge([contact.companyName]) %}
+                                            {% endif %}
+                                            {% if contact.address %}
+                                                {% set displayAddress = contact.address.street ~ ' ' ~ contact.address.postalCode ~ ' ' ~ contact.address.city %}
+                                                {% if contact.address.country %}
+                                                    {% set displayAddress = displayAddress ~ ' ' ~ contact.address.country|trans_fallback_country('name') %}
+                                                {% endif %}
+                                                {% if displayAddress|trim %}
+                                                    {% set displayContact = displayContact|merge([displayAddress]) %}
+                                                {% endif %}
+                                                {% if (contact.address.phone or contact.address.mobilePhone) %}
+                                                    {% if contact.address.phone?:contact.address.mobilePhone %}
+                                                        {% set displayContact = displayContact|merge(['T: ' ~ (contact.address.phone?:contact.address.mobilePhone)]) %}
+                                                    {% endif %}
+                                                    {% if contact.address.fax %}
+                                                        {% set displayContact = displayContact|merge(['F: ' ~ contact.address.fax]) %}
+                                                    {% endif %}
+                                                {% endif %}
+                                                {% if contact.person and contact.person.email %}
+                                                    {% set displayEmail = '<a class="ajaxi" href="mailto:' ~ contact.person.email ~ '">' %}
+                                                    {% set displayEmail =  displayEmail ~ contact.person.email ~ '</a>' %}
+                                                    {% set displayContact = displayContact|merge([displayEmail]) %}
+                                                {% endif %}
+                                                {% if contact.address.website %}
+                                                    {% set displayWebsite = '<a href="' ~ (('http' in contact.address.website or 'https' in contact.address.website) ? '' : 'http://') ~ contact.address.website ~ '" target="_blank">' %}
+                                                    {% set displayWebsite = displayWebsite ~ contact.address.website ~ '</a>' %}
+                                                    {% set displayContact = displayContact|merge([displayWebsite]) %}
+                                                {% endif %}
+                                            {% endif %}
+                                            {{ displayContact|join(' - ')|raw }}
+                                        </p>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
                             {% set first = true %}
                             {% for contact in movie.contacts %}
                                 {% if contact.type == constant('Base\\CoreBundle\\Entity\\FilmContact::TYPE_SCHOOL') %}
