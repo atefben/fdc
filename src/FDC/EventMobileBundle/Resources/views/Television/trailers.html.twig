@@ -9,93 +9,73 @@
 {% endblock %}
 
 {% block body %}
-    <div id="main" class="webtv webtv-ba loading">
+    <div id="main" class="articles" data-menu="webtv">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
     
-        <div class="banner-top">
-
-            <div id="live" class="banner-img vCenter" {% if page.image and page.image|trans_fallback('file') %} style="background-image:url('{% path page.image|trans_fallback('file'), '976x535' %}')"{% endif %} >
-                {#<div class="banner-img vCenter">#}
-                    <div class="vCenterKid">
-                        <a href="#" class="play-live"><i class="icon icon_bandes-annonces-extraits"></i></a>
-                        <h2 class="title one-line">{{ 'bandeannonce.title.lesbandesannoncesetextraits'|trans|raw }}</h2>
+        <div id="banner-top">
+            <div class="banner-img vCenter" {% if page.image and page.image|trans_fallback('file') %} style="background-image:url('{% path page.image|trans_fallback('file'), '976x535' %}')"{% endif %} >
+                <div class="vCenterKid">
+                    <h2 class="title tall tallIcon"><i class="icon icon_player"></i><br> {{ 'bandeannonce.title.lesbandesannoncesetextraits'|trans|raw }}</h2>
+                </div>
+            </div>
+        </div>
+        <div id="horizontal-menu" class="owl-carousel sliderDrag videosSlider">
+            {% for item in pages if item.selectionSection %}
+                {% if item|trans_fallback('slug') %}
+                    {% set slug = item|trans_fallback('slug') %}
+                {% elseif item.selectionSection|trans_fallback('slug') %}
+                    {% set slug = item.selectionSection|trans_fallback('slug') %}
+                {% endif %}
+                {% if slug is defined %}
+                    <div class="vid">
+                        <p><a href="#"
+                           data-url="{{ path('fdc_eventmobile_television_trailers', {'slug': slug}) }}"
+                           class="{% if app.request.attributes.get('slug') == slug %}active{% endif %}">
+                            {% if item|trans_fallback('overrideName') %}
+                                {{ item|trans_fallback('overrideName') }}
+                            {% else %}
+                                {{ item.selectionSection|trans_fallback('name') }}
+                            {% endif %}
+                        </a></p>
                     </div>
-                {#</div>#}
-            </div>
-
-            <div class="owl-carousel sliderDrag videosSlider sub-nav-list">
-                {% for item in pages if item.selectionSection %}
-                    {% if item|trans_fallback('slug') %}
-                        {% set slug = item|trans_fallback('slug') %}
-                    {% elseif item.selectionSection|trans_fallback('slug') %}
-                        {% set slug = item.selectionSection|trans_fallback('slug') %}
-                    {% endif %}
-                    {% if slug is defined %}
-                        <div class="vid">
-                            <p><a href="{{ path('fdc_eventmobile_television_trailers', {'slug': slug}) }}"
-                               data-url="{{ path('fdc_eventmobile_television_trailers', {'slug': slug}) }}"
-                               class="{% if app.request.attributes.get('slug') == slug %}active{% endif %} ajax">
-                                {% if item|trans_fallback('overrideName') %}
-                                    {{ item|trans_fallback('overrideName') }}
-                                {% else %}
-                                    {{ item.selectionSection|trans_fallback('name') }}
-                                {% endif %}
-                            </a></p>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-            {#{% include 'FDCEventMobileBundle:Movie:components/filters.html.twig' %}#}
+                {% endif %}
+            {% endfor %}
         </div>
 
-        <div class="content-webtv">
-            <div class="listtrailer grid all-videos">
-                <div id="gridWebtv" class="grid-wrapper">
-                    <div class="grid-sizer"></div>
-                    {% for group in groups %}
-		                {% if group.video.image|trans_fallback('file') %}
-		                    {% set videoImage = media_public_url(group.video.image|trans_fallback('file'), '640x404') %}
-		                {% elseif group.video|trans_fallback('imageAmazonUrl') %}
-		                    {% set videoImage = s3_server_video ~ group.video|trans_fallback('imageAmazonUrl') %}
-		                {% endif %}
-                        <div class="item {{ group.video.publishedAt|date('d-m-Y') }} {{ group.video.theme }} shadow-bottom video">
-                            <div class="img-container">
-
-                                <img src="{{videoImage}}"
-                                    {% if group.video.image|trans_fallback('file') %}
-                                        srcset="{% path group.video.image|trans_fallback('file'), '640x404' %} 1x, {% path group.video.image|trans_fallback('file'), '1760x1108' %} 2x"
-                                    {% elseif group.video|trans_fallback('imageAmazonUrl') %}
-                                        srcset="{{videoImage}} 1x, {{videoImage}} 2x"
-                                    {% endif %}
-
-                                     alt="{{ group.video.image|trans_fallback('alt') }}">
-
-                                <a href="{{ path('fdc_eventmobile_television_gettrailer', {'slug': group.film.slug}) }}"></a>
-                                <div class="info">
-                                    <div class="picto vCenter">
-                                        <div class="vCenterKid"><i class="icon icon_playlist"></i></div>
-                                    </div>
-                                    <div class="right">
-                                        {#<div class="vCenter">#}
-                                            {#<div class="vCenterKid">#}
-                                                <span class="category">{{ (group.film.findTranslationByLocale(app.request.locale).title ?: group.film.titleVO)|truncate(15) }}</span>
-                                                {% spaceless %}
-                                                    <span class="titleLink">
-                                                        {% for director in group.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                            {{ loop.first == false ? ', ': '' }}{{ director.fullName }}
-                                                        {% endfor %}
-                                                    </span>
-                                                {% endspaceless %}
-                                            {#</div>#}
-                                        {#</div>#}
-                                    </div>
-                                </div>
+        <div class="content-selection">
+            <div class="grid list">
+            {% for group in groups %}
+                {% if group.video.image|trans_fallback('file') %}
+                    {% set videoImage = media_public_url(group.video.image|trans_fallback('file'), '640x404') %}
+                {% elseif group.video|trans_fallback('imageAmazonUrl') %}
+                    {% set videoImage = s3_server_video ~ group.video|trans_fallback('imageAmazonUrl') %}
+                {% endif %}
+                <div class="grid-item grid-item--small">
+                    <a href="{{ path('fdc_eventmobile_television_gettrailer', {'slug': group.film.slug}) }}"></a>
+                    <div class="img-container">
+                        <div class="infos">
+                            <div class="picto"><i class="icon icon_playlist"></i></div>
+                            <div class="right">
+                                <p class="movie-title">{{ (group.film.findTranslationByLocale(app.request.locale).title ?: group.film.titleVO)|truncate(15) }}</p>
+                                {% spaceless %}
+                                    <span>
+                                        {% for director in group.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                            {{ loop.first == false ? ', ': '' }}{{ director.fullName }}
+                                        {% endfor %}
+                                    </span>
+                                {% endspaceless %}
                             </div>
                         </div>
-                    {% endfor %}
+                        {% if group.video.image|trans_fallback('file') %}
+                        <div class="img" style="background-image:url({% path group.video.image|trans_fallback('file'), '640x404' %})"></div>
+                        {% elseif group.video|trans_fallback('imageAmazonUrl') %}
+                        <div class="img" style="background-image:url({{videoImage}})"></div>
+                        {% endif %}
+                    </div>
                 </div>
+            {% endfor %}
             </div>
         </div>
     </div>
