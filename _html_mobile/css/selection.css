@@ -1,4 +1,12 @@
-
+.fullLink {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+}
 .selection-container{
 	position: relative;
 	width: 100%;
@@ -71,6 +79,11 @@
   color: #fff;
   margin: 60px auto;
   padding: 0;
+}
+.title-list-cat .title.article-style {
+    font-family: "Playfair Display",Times New Roman,Times,serif;
+    font-weight: 400;
+    line-height: 1.3em;
 }
 .title-list-cat .subtitle{
   color: #fff;
@@ -668,6 +681,9 @@ section:last-child{
   margin: 40px 0 0px;
   padding-bottom: 60px;
 }
+.movie-container .subtitle a {
+    color: #fff;
+}
 .date-pres-item {
     text-transform: uppercase;
     color: #fff;
@@ -699,6 +715,9 @@ margin-left: 6px;
     max-width: 480px;
     line-height: 34px;
     margin: 20px auto;
+}
+.movie-container .title-item a {
+    color: #fff;
 }
 .movie-container .name-item {
     font-size: 22px;

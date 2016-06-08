@@ -19,19 +19,34 @@
                 <span class="hour-pres-item">{{- projection.startsAt|date('H:i') -}}</span>
             {%- endif -%}
         </p>
-        <h3 class="title-item">{{ film.titleVO }}</h3>
+        <h3 class="title-item">
+            <a href="{{ path('fdc_eventmobile_movie_get', { slug: film.slug }) }}">
+                {{- film.titleVO -}}
+            </a>
+            {% if film|trans_fallback_movie('title') is not empty and film|trans_fallback_movie('title') != film.titleVO %}
+                {% set titleTranslated = film|trans_fallback_movie('title') %}
+            {% endif %}
+            {% if titleTranslated is defined %}
+                <p class="subtitle">
+                    <a href="{{ path('fdc_eventmobile_movie_get', { slug: film.slug }) }}">
+                        ( {{ titleTranslated }} )
+                    </a>
+                </p>
+            {% endif %}
+        </h3>
         <span class="name-item">
-            {% for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                {% include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} -%}
-                {% if loop.index != director|length %}, {% endif %}
-            {% endfor %}
+            {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+            {%- for director in directors -%}
+                {%- include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} -%}
+                {%- if loop.index != directors|length %}, {% endif -%}
+            {%- endfor -%}
         </span>
         <span class="date-item">
-                        {% set duration = [] %}
+            {% set duration = [] %}
             {% if film.duration is not empty %}
                 {% set duration = film.duration|split('.') %}
             {% endif %}
-            {% if film.productionYear is not null and  film.productionYear != 0 %}{{  film.productionYear }}
+            {% if film.productionYear is not null and  film.productionYear != 0 %}{{ film.productionYear }}
                 {% if duration|length > 0 and duration[0] > 0 %}
                     -
                 {% endif %}
@@ -39,7 +54,7 @@
             {% if duration|length > 0 and duration[0] > 0 %}
                 {% set hours = (duration[0] / 60)|round(0, 'floor') %}
                 {% set minutes = duration[0] % 60 %}
-                {% if hours > 0 %}{{ hours }}:{% endif %}{{ minutes }}
+                {{ "%02d"|format(hours) }}:{{ "%02d"|format(minutes) }}
             {% endif %}
         </span>
         <p class="text">

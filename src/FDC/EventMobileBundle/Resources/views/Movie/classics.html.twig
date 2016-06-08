@@ -29,10 +29,9 @@
                     {% if trans is not null %}
                         <div class="vid">
                             <p>
-                                <a target="_blank"
-                                        href="{{ path('fdc_eventmobile_movie_classics', {'slug': trans.slug }) }}"
+                                <a target="_blank" href="#" data-url="{{ path('fdc_eventmobile_movie_classics', {'slug': trans.slug }) }}"
                                   class="{% if app.request.attributes.get('_route') == 'fdc_eventmobile_movie_classics' and app.request.attributes.get('slug') == trans.slug %}active{% endif %}">
-                                {{ trans.titleNav }}
+                                    {{- trans.titleNav -}}
                                 </a>
                             </p>
                         </div>
@@ -43,8 +42,8 @@
             {% set transClassic = classic.findTranslationByLocale(app.request.locale) %}
             <section>
                 <div class="title-list-cat">
-                    <h2 class="title">
-                        {{ transClassic.title }}
+                    <h2 class="title article-style">
+                        {{- transClassic.title -}}
                     </h2>
                 </div>
                 <div class="container contain-article-invit">
@@ -114,9 +113,10 @@
                                                         ( {{ titleTranslated }} )
                                                     </p>
                                                 {% endif %}
-                                                {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                                                {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
+                                                {%- for director in directors -%}
                                                     {%- include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} -%}
-                                                    {%- if loop.index != director|length %}, {% endif -%}
+                                                    {%- if loop.index != directors|length %}, {% endif -%}
                                                 {%- endfor -%}<br />
                                                 <p class="duration">
                                                     {% set duration = [] %}
@@ -173,6 +173,7 @@
                         {{ 'palmares.btn.decouvrirrubrique'|trans }}
                     </a>
                 </h2>
+                <a href="{{ path('fdc_event_movie_classics', {'slug': next|trans_fallback('slug')}) }}" class="fullLink"></a>
             </div>
         </div>
     </div>
