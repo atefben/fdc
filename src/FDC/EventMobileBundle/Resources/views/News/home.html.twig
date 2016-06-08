@@ -131,9 +131,9 @@
                                 <h2>{{ article|trans_fallback('title')|truncate(70) }}</h2>
                             </div>
                             {% if type == 'news' %}
-                            <a href="{{ url('fdc_eventmobile_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
+                            <a href="{{ url('fdc_eventmobile_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}" class="linkArticle"></a>
                             {% else %}
-                            <a href="{{ url('fdc_pressmobile_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}" clas="linkArticle"></a>
+                            <a href="{{ url('fdc_pressmobile_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}" class="linkArticle"></a>
                             {% endif %}
                         </div>
                 {% endfor %}
@@ -256,7 +256,6 @@
                     {% if transImage is null or transImage.file is null %}
                         {% set transImage = film.mobileImage.findTranslationByLocale('fr') %}
                     {% endif %}
-                    {#{% thumbnail transImage.file, '586x370' %}#}
                 {% endif %}
                 {% if film.association is not empty %}
                 <div class="img-container">
@@ -266,10 +265,16 @@
                     <div class="vCenterKid">
                         <div class="category">{{ film.association.selectionSection|trans_fallback('name') }}</div>
                         <h3 class="title tall">
-                            {{ film.association|trans_fallback('title') }}
+                            <a href="{{ path('fdc_eventmobile_movie_get', {slug: film.association.slug }) }}">
+                                {{- film.association|trans_fallback('title') -}}
+                            </a>
                         </h3>
                         {% if film.association.titleVO != film.association|trans_fallback('title') %}
-                        <div class="title-translate">({{ film.association.titleVO }})</div>
+                        <div class="title-translate">
+                            <a href="{{ path('fdc_eventmobile_movie_get', {slug: film.association.slug }) }}">
+                                ({{ film.association.titleVO }})
+                            </a>
+                        </div>
                         {% else %}
                         <div class="title-translate"></div>
                         {% endif %}
@@ -296,6 +301,7 @@
             <div class="trailer">
                 <div class="img-container">
                     <div class="img" style="background-image:url('')"></div>
+                    <a class="linkFull" href="{{ path('fdc_eventmobile_television_trailers') }}"></a>
                 </div>
                 <div class="info-container vCenter">
                     <div class="vCenterKid">

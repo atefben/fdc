@@ -660,13 +660,20 @@ from desktop
   /*width: 1460px !important;*/
 }
 #sliderWrapper .owl-item .linkArticle {
-  display: none;
   height: 100%;
   left: 0;
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 2;
+}
+.trailer .linkFull {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 4;
 }
 #sliderWrapper .owl-item .info {
     text-align: center;
@@ -2136,6 +2143,10 @@ article .picto .icon{
   letter-spacing: 0.3em;
   line-height: 52px;
   height: auto;
+}
+#today .special-event h3.title a,
+#today .special-event .title-translate a {
+    color: #ffffff;
 }
 #today .title-translate{
   font-size: 18px;

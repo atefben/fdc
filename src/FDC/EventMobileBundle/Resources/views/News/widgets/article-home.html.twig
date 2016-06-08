@@ -120,9 +120,6 @@ article is news_image %}
         {% else %}
             <a class="linkImage" href="{{ url('fdc_pressmobile_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
         {% endif %}
-        <a href="#" class="read-later">
-            <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
-        </a>
         <span class="picto"><i class="icon icon_{{ picto }}"></i></span>
     </div>
     <div class="info">

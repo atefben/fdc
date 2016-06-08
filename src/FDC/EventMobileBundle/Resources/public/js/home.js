@@ -1841,6 +1841,8 @@ function moveTimeline(element, day, ajax){
   $('#timeline a').removeClass('active');
   element.addClass('active');
 
+  console.log(element.attr('data-timestamp'));
+
   if (ajax == true) {
     $('.articles-container').animate({
       opacity: 0
@@ -1850,6 +1852,9 @@ function moveTimeline(element, day, ajax){
         dataType: "html",
         cache: false,
         url: GLOBALS.urls.newsUrl,
+        data: {
+          'timestamp': element.attr('data-timestamp')
+        },
         success: function (data) {
           $('.articles-container').html(data);
           initAddToSelection();
@@ -2060,8 +2065,7 @@ $(document).ready(function() {
       if(day == 11) {
         return false;
       } else {
-        var url =  "more-news.html";
-        moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1, url);
+        moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"), day-1);
       }
 
       $('html, body').animate({
@@ -2101,8 +2105,7 @@ $(document).ready(function() {
     if($(this).hasClass('active') || $(this).hasClass('disabled')) {
       return false;
     }
-    var url =  GLOBALS.urls.newsUrl;
-    moveTimeline($(this), $(this).data('date'),url);
+    moveTimeline($(this), $(this).data('date'));
   });
 
   $('#news #calendar .prev').on('click',function(e) {
@@ -2113,8 +2116,7 @@ $(document).ready(function() {
     if(day == 11) {
       return false;
     } else {
-      var url =  GLOBALS.urls.newsUrl ;
-      moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1, url);
+      moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1);
     }
   });
 
@@ -2127,8 +2129,7 @@ $(document).ready(function() {
     if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')) {
       return false;
     } else {
-      var url =  GLOBALS.urls.newsUrl;
-      moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1, url);
+      moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1);
     }
   });
   
