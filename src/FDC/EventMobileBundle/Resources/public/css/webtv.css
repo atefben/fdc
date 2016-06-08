@@ -5416,6 +5416,12 @@ article .picto .icon{
     width: 111%;
     margin-left: -6%;
 }
+.ba .slideshow .thumbnails {
+    padding-top: 26px;
+    padding-bottom: 25px;
+    width: 100%;
+    margin-left: 0;
+}
 .slideshow .thumbnails .owl-item.center + .owl-item, .slideshow .thumbnails .owl-item.center + .owl-item + .owl-item {
   opacity: 1;
 }

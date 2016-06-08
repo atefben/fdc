@@ -531,12 +531,12 @@ class TelevisionController extends Controller
         $filmTitle = $filmTranslation->getTitle() ? $filmTranslation->getTitle() : $film->getTitleVO();
         $title = $this
             ->get('translator')
-            ->trans('seo.trailer.title', array('%film_title%' => $filmTitle), 'FDCEventMobileBundle')
+            ->trans('seo.trailer.title', array('%film_title%' => $filmTitle), 'FDCEventBundle')
         ;
 
         $description = $this
             ->get('translator')
-            ->trans('seo.trailer.description', array('%film_title%' => $filmTranslation->getTitle()), 'FDCEventMobileBundle')
+            ->trans('seo.trailer.description', array('%film_title%' => $filmTranslation->getTitle()), 'FDCEventBundle')
         ;
 
         $updatedAt = end($videos)->getUpdatedAt();

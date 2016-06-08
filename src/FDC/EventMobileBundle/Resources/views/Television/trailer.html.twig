@@ -3,24 +3,19 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/webtvTrailer.css" %}
+    {% stylesheets "bundles/fdceventmobile/css/trailer.css" %}
         <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
 
 {% block body %}
-    <div id="main" class=" webtv webtv-ba-video single-channel loading">
+    <div id="main" class="ba" data-menu="webtv">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
-    
-        <div class="container-webtv-ba-video">
-            <div class="title-container">
-                <h2 class="title on-line">{{ film|trans_fallback('title')?:film.titleVo }}</h2>
-            </div>
-        </div>
-
-        <div id="content-trailers">
+        <div class="slideshow dark-container">
+            <h2 class="title">{{ film|trans_fallback('title')?:film.titleVo }}</h2>
+            <div class="slideshow-img">
             {% for video in videos %}
                 {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
                 {% if video.image %}
@@ -32,42 +27,35 @@
                     {%- set trans = video.file.findTranslationByLocale('fr') -%}
                 {%- endif -%}
                 {% if loop.first %}
-                    <!-- replace by player video -->
+                <div class="images">
                     <div id="player"
-                         {#data-video='http://affif-sitepublic-media-test.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/Victor-XX-VOSTEN.webm'#}
-                            {% if(trans.jobWebmState == 3) %}data-video="{{ s3_server_video ~ trans.webmUrl }}"{% else %}}data-video="{{ s3_server_video ~ trans.mp4Url }}"{% endif %}
-                         data-poster="{{ videoImage }}"></div>
-
-                    <div id="slider-trailer" class="container owl-carousel sliderDrag videosSlider">
+                        {% if(trans.jobWebmState == 3) %}data-video="{{ s3_server_video ~ trans.webmUrl }}"{% else %}}data-video="{{ s3_server_video ~ trans.mp4Url }}"{% endif %}
+                     data-poster="{{ videoImage }}"></div>
+                </div>
+                <div class="owl-carousel thumbnails">
                 {% endif %}
-
-                <div class="thumb item  {% if loop.first %}active{% endif %}"
-                     data-id="photo{{ loop.index }}"
-                     data-video="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"
-                     data-poster='{{ videoImage }}'>
-                    <div class="image-wrapper">
-                        {% if video.image and video.image|trans_fallback('file') %}
-                            {% set videoImage = media_public_url(video.image|trans_fallback('file'), '293x185') %}
+                <div data-id="photo{{ video.id }}"class="thumb {% if loop.first %}active{% endif %}"
+                 data-video="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"
+                 data-poster='{{ videoImage }}'>
+                    {% if video.image and video.image|trans_fallback('file') %}
+                        {% set videoImage = media_public_url(video.image|trans_fallback('file'), '293x185') %}
+                        {% set alt = video.image|trans_fallback('alt') %}
+                    {% elseif video|trans_fallback('imageAmazonUrl') %}
+                        {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
+                        {% if video.image %}
                             {% set alt = video.image|trans_fallback('alt') %}
-                        {% elseif video|trans_fallback('imageAmazonUrl') %}
-                            {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
-                            {% if video.image %}
-                                {% set alt = video.image|trans_fallback('alt') %}
-                            {% else %}
-                                {% set alt = '' %}
-                            {% endif %}
+                        {% else %}
+                            {% set alt = '' %}
                         {% endif %}
-                        <img src="{{ videoImage }}" alt="{{ alt }}"/>
-                    </div>
-                    <a class="linkVid" href="#"></a>
+                    {% endif %}
+                    <img src="{{ videoImage }}" alt="{{ alt }}"/>
                     <div class="info">
                         <div class="picto"><i class="icon icon_video"></i></div>
                         <div class="info-container">
                             <div class="vCenter">
                                 <div class="vCenterKid">
-                                    <a class="category">{{ video.theme|truncate(12) }}</a>
-                                    {#<span class="date">{{ video.publishedAt|date('d.m.y H:i') }}</span>#}
-                                    <span class="titleLink">{{ video|trans_fallback('title')|truncate(25) }}</span>
+                                    <a href="#" class="category">{{ video.theme|truncate(12) }}</a>
+                                    <a href="#" class="titleLink">{{ video|trans_fallback('title')|truncate(25) }}</a>
                                 </div>
                             </div>
                         </div>
@@ -77,102 +65,80 @@
                     </div>
                 {% endif %}
             {% endfor %}
-        </div>
-
-        <div class="dark-container informations-video">
-            <ul class="nav">
-                <li class="active infos-film-li">{{ 'trailer.nav.film'|trans }}</li>
-                <li class="program-film-li">{{ 'trailer.nav.programmation'|trans }}</li>
-            </ul>
-            <div class="container-video">
-                <div class="infos-film block">
-                    {% include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
-                        film: film,
-                        film_format: 'small',
-                        film_attrs: {
-                            alt: film|trans_fallback('title')?:movie.titleVO
-                        },
-                        film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
-                        film_image_default_attrs: 'width="135"'
-                    }) %}
-                    <h4 class="rubric-film">{{ film.selectionSection|trans_fallback('name') }}</h4>
-                    <strong class="name-video">{{ film|trans_fallback('title')?:film.titleVo }}</strong>
-                    <span class="name-person">
-                        {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                            {{ loop.index0 ? ', ': '' }}{{ director.fullName }}
-                        {%- endfor -%}
-                    </span>
-                </div>
-                <div class="program-film block">
-                    <div class="contain-info">
-                        {% for showing in filmShowings %}
-                            <div class="infos">
-                                <p>{{ showing.type }} <span class="date">{{ showing.date|date('d.m.y') }} {{ showing.date|date('H:i') }}</span>
-                                </p>
-                                <span class="where">{{ showing.place }}</span>
-                                {% if loop.last == false %}
-                                    <hr>
-                                {% endif %}
-                            </div>
-                        {% endfor %}
-                        {#<div class="infos">#}
-                            {#<p>Projection <span class="date">15/07/2015 9h</span></p>#}
-                            {#<span class="where">Grand théâtre Lumière</span>#}
-                            {#<hr>#}
-                        {#</div>#}
-                        {#<div class="infos">#}
-                            {#<p>Projection <span class="date">12/07/2015 15h</span></p>#}
-                            {#<span class="where">Cinéma de la plage</span>#}
-                            {#<hr>#}
-                        {#</div>#}
-                        {#<div class="infos">#}
-                            {#<p>Projection <span class="date">12/07/2015 15h</span></p>#}
-                            {#<span class="where">Cinéma de la plage</span>#}
-                        {#</div>#}
-                        {#<div class="infos">#}
-                            {#<p>Projection <span class="date">12/07/2015 15h</span></p>#}
-                            {#<span class="where">Cinéma de la plage</span>#}
-                        {#</div>#}
-                        {#<div class="infos">#}
-                            {#<p>Projection <span class="date">12/07/2015 15h</span></p>#}
-                            {#<span class="where">Cinéma de la plage</span>#}
-                        {#</div>#}
-                    </div>
-                    <a href="{{ path('fdc_eventmobile_news_index') }}"
-                       class="btn">{{ 'trailer.btn.toutelaprogrammation'|trans }}</a>
-                </div>
             </div>
         </div>
-
-        {% if next %}
-            <div class="banner-img vCenter" style="background-image:url('{% spaceless %}
-                {% include 'FDCEventMobileBundle:Global:components/film.cover.html.twig' with ({
-                film: next,
-                film_format: '2560x1103',
-                display_film_path: true,
-                film_attrs: {
-                alt: next|trans_fallback('title')?:movie.titleVO
-                },
-                film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
-                }) %}
-            {% endspaceless %}');">
-                <div class="vCenterKid">
-                    <h2 class="title one-line">{{ next.findTranslationByLocal(app.request.locale)?:next.titleVO }}
-                        <a href="{{ path('fdc_eventmobile_television_gettrailer', {'slug': next.slug} ) }}"><i class="icon icon_fleche-right"></i>{{ 'trailer.btn.voirlabandeannonce'|trans }}</a>
-                    </h2>
-                </div>
-
-            </div>
-        {% endif %}
     </div>
-
+    <div class="dark-container informations-video">
+        <ul class="nav">
+            <li class="active infos-film-li">{{ 'trailer.nav.film'|trans }}</li>
+            <li class="program-film-li">{{ 'trailer.nav.programmation'|trans }}</li>
+        </ul>
+        <div class="container-video">
+            <div class="infos-film block">
+                {% include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
+                    film: film,
+                    film_format: 'small',
+                    film_attrs: {
+                        alt: film|trans_fallback('title')?:movie.titleVO
+                    },
+                    film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
+                    film_image_default_attrs: 'width="135"'
+                }) %}
+                <h4 class="rubric-film">{{ film.selectionSection|trans_fallback('name') }}</h4>
+                <strong class="name-video">{{ film|trans_fallback('title')?:film.titleVo }}</strong>
+                <span class="name-person">
+                    {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                        {{ loop.index0 ? ', ': '' }}{{ director.fullName }}
+                    {%- endfor -%}
+                </span>
+            </div>
+            <div class="program-film block">
+                <div class="contain-info">
+                    {% for showing in filmShowings %}
+                        <div class="infos">
+                            <p>{{ showing.type }} <span class="date">{{ showing.date|date('d.m.y') }} {{ showing.date|date('H:i') }}</span>
+                            </p>
+                            <span class="where">{{ showing.place }}</span>
+                            {% if loop.last == false %}
+                                <hr>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <a href="{{ path('fdc_eventmobile_news_index') }}" class="btn">
+                    {{- 'trailer.btn.toutelaprogrammation'|trans -}}
+                </a>
+            </div>
+        </div>
+    </div>
+    {% if next %}
+    <div class="banner-img vCenter" style="background-image:url('{% spaceless %}
+        {% include 'FDCEventMobileBundle:Global:components/film.cover.html.twig' with ({
+        film: next,
+        film_format: '2560x1103',
+        display_film_path: true,
+        film_attrs: {
+        alt: next|trans_fallback('title')?:movie.titleVO
+        },
+        film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
+        }) %}
+    {% endspaceless %}');">
+        <div class="vCenterKid">
+            <h2 class="title one-line">{{ next.findTranslationByLocal(app.request.locale)?:next.titleVO }}
+                <a href="{{ path('fdc_eventmobile_television_gettrailer', {'slug': next.slug} ) }}">
+                    <i class="icon icon_fleche-right"></i>{{ 'trailer.btn.voirlabandeannonce'|trans }}
+                </a>
+            </h2>
+        </div>
+    </div>
+    {% endif %}
 {% endblock body %}
 
 {% block bandeauVideo %}
 {% endblock bandeauVideo %}
 
 {% block javascripts %}
-    {% javascripts '@FDCEventMobileBundle/Resources/public/js/webtvTrailer.js' %}
+    {% javascripts '@FDCEventMobileBundle/Resources/public/js/trailer.js' %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}
