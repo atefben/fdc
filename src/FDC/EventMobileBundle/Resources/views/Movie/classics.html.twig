@@ -155,8 +155,12 @@
                     {% elseif widget is fdc_page_la_selection_cannes_classics_widget_subtitle %}
                         {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                         <div class="title-list-cat title-film-detail">
+                            {% if transWidget.subtitle %}
                             <h2 class="title tall">{{ transWidget.subtitle }}</h2>
-                            <p class="subtitle">{{ transWidget.paragraph }}</p>
+                            {% endif %}
+                            {% if transWidget.paragraph %}
+                            <p class="subtitle" {% if transWidget.subtitle == false%}style="margin-top:60px"{% endif %}>{{ transWidget.paragraph }}</p>
+                            {% endif %}
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -164,9 +168,9 @@
             </section>
         </div>
         <div class="banner-img vCenter"{% if next.image %} style="background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}');"{% endif %}>
-            <div class="vCenterKid">
+            <div class="vCenterKid" style="padding-top: 120px;">
                 <h2 class="title">
-                    {{ next|trans_fallback('title') }}
+                    {{ next|trans_fallback('titleNav') }}
                     <a href="{{ path('fdc_event_movie_classics', {'slug': next|trans_fallback('slug')}) }}">
                         <i class="icon icon_fleche-right">
                         </i>

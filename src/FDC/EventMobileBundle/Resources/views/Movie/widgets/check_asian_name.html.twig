@@ -7,10 +7,12 @@
     {%- endif -%}
 {%- else -%}
     {%- if person.asianName -%}
-    <a href="{{- path('fdc_eventmobile_artist_get', {slug: person.slug }) -}}" class="director"><span
-            class="nom-item">{{- person.lastName ~ ' ' ~ person.firstName -}}</span></a>
+    <a href="{{- path('fdc_eventmobile_artist_get', {slug: person.slug }) -}}" class="director" >
+        <span class="name-item" style="font-size: 19px;">{{- person.lastName ~ ' ' ~ person.firstName -}}</span>
+    </a>
     {%- else -%}
-        <a href="{{- path('fdc_eventmobile_artist_get', {slug: person.slug }) -}}" class="director"><span
-            class="nom-item">{{- person.fullName -}}</span></a>
+        <a href="{{- path('fdc_eventmobile_artist_get', {slug: person.slug }) -}}" class="director">
+            <span class="name-item" style="font-size: 19px;">{{- person.fullName -}}</span>
+        </a>
     {%- endif -%}
 {%- endif -%}
