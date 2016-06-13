@@ -196,8 +196,10 @@
                                 {% set timestamp = date ~ ' 23:59:59' %}
                                 <a href="#" data-timestamp="{{ timestamp|date('U') }}" data-date="{{ date|date('d') }}"
                                    class="{% if hasActive == false and homeArticles|length > 0 and (homeArticles[0].publishedAt|date('Y-m-d') == date|date('Y-m-d') or homeArticles[0].publishedAt|date('Y-m-d') > date|date('Y-m-d')) %}{% set hasActive = true %}active{% elseif homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') < date|date('Y-m-d') %}disabled{% endif %}">
-                                    {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
-                                    <span class="day">{{ date|date('d') }}</span>
+                                    {{- (date|localizeddate('full', 'none', app.request.locale, null, 'E'))|replace({'.': ''}) -}}
+                                    <span class="day">
+                                        {{- date|localizeddate('full', 'none', app.request.locale, null, 'd') -}}
+                                    </span>
                                 </a>
                             {% endfor %}
                         </div>
