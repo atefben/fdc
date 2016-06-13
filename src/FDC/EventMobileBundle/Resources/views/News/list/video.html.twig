@@ -3,7 +3,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/articles.css" %}
+    {% stylesheets "bundles/fdceventmobile/css/videos.css" %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
@@ -13,6 +13,17 @@
 
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+
+        <div class="fullscreenplayer">
+            <div class="close-button"><i class="icon icon_close"></i></div>
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <div id="player1"></div>
+                    <p class="category"></p>
+                    <p class="title-video"></p>
+                </div>
+            </div>
+        </div>
 
         <div class="container">
             <h2 class="title one-line">{{ 'article.photos.title.touteslesvideos'|trans }}</h2>
@@ -42,7 +53,7 @@
                 {%- endif -%}
                 {% if transImage is defined or amazonImage is defined %}
                     <div class="item item-video"
-                         data-video='[{% if(trans.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
+                         data-video="{{ s3_server_video ~ trans.mp4Url }}"
                          data-poster="{% if transImage is not null %}{% path transImage.file, '1144x724' %}{% endif %}">
                         {% if transImage is not null %}
                             {% set resolution =  transImage.file.width > transImage.file.height ? '640x404' : '320x404' %}
@@ -100,7 +111,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    {% javascripts '@FDCEventMobileBundle/Resources/public/js/articles.js' %}
+    {% javascripts '@FDCEventMobileBundle/Resources/public/js/videos.js' %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}

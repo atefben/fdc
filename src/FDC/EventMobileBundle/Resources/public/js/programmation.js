@@ -384,6 +384,9 @@ $(document).ready(function() {
 
               // store the Event Object in the DOM element so we can get to it later
               $(this).data('eventObject', eventObject);
+
+              heigthEvent();
+
             });
           });
 
@@ -464,6 +467,7 @@ $(document).ready(function() {
           $('.popin-event').remove();
           // display the html
           $('.calendar').append(data);
+
           // $('.popin-event').css('top', $(document).scrollTop());
           $('.popin-event .fc-event').each(function () {
             $(this).find('.category').css('background-color', $(this).data('color'));
@@ -573,6 +577,16 @@ $(document).ready(function() {
         }
       });
     }
+
+    function heigthEvent() {
+          $('.fc-event').each(function(index, value){
+            var h = $(value).attr('data-duration');
+            h = h*2.65;
+            console.log(h);
+            $(value).css('height',h+'px');
+          })
+    }
+
   }
 });
 
