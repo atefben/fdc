@@ -2,7 +2,8 @@
 
 
 <div class="movie-container">
-    <div class="img" style="background-image:url('{% spaceless %}
+    <a href="{{ path('fdc_eventmobile_movie_get', { slug: film.slug }) }}">
+        <div class="img" style="background-image:url('{% spaceless %}
         {% include 'FDCEventMobileBundle:Global:components/film.cover.html.twig' with ({
         film: film,
         display_film_path: true,
@@ -10,7 +11,9 @@
         film_image_default: 'bundles/fdcevent/img/palmares/film_w2560.jpg',
         display_film_path: true
         }) %}
-    {% endspaceless %}')"></div>
+    {% endspaceless %}')">
+        </div>
+    </a>
     <div class="infos-item-list">
         <p class="date-pres-item">
             {%- if projection is defined and projection is not empty -%}
@@ -34,14 +37,13 @@
                 </p>
             {% endif %}
         </h3>
-        <span class="name-item">
             {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
             {%- for director in directors -%}
                 {%- include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} -%}
                 {%- if loop.index != directors|length %}, {% endif -%}
             {%- endfor -%}
-        </span>
-        <span class="date-item">
+
+        <p style="font-family: 'Camphor W01 Regular', Arial, Helvetica, sans-serif;color: #999999;font-size: 18px;margin-top: 8px;" >
             {% set duration = [] %}
             {% if film.duration is not empty %}
                 {% set duration = film.duration|split('.') %}
@@ -56,7 +58,7 @@
                 {% set minutes = duration[0] % 60 %}
                 {{ "%02d"|format(hours) }}:{{ "%02d"|format(minutes) }}
             {% endif %}
-        </span>
+        </p>
         <p class="text">
             {% if restauration is defined and restauration == true and film|trans_fallback('infoRestauration')|trim %}
                 {{- film|trans_fallback('infoRestauration')|nl2br|raw -}}
