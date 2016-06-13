@@ -335,12 +335,12 @@ $(document).ready(function() {
               // allows to display two events at same hour (or overlap) in the same column
               // it works only if element (fc-event) are added in chronologic order
               var startDate = new Date($(this).data('start')).getTime();
-              if(startDate < endDate) {
+              /*if(startDate < endDate) {
                 $(this).addClass('half');
                 if(!$(this).prev('.fc-event').hasClass('half')) {
                   $(this).prev('.fc-event').addClass('half');
                 }
-              }
+              }*/
               endDate = new Date($(this).data('end')).getTime();
 
               // based on time start and duration, calculate positions of event

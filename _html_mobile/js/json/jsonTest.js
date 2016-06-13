@@ -1,4 +1,5 @@
 var GLOBALS = {
+  "env": "html",
   "locale" : "fr",
   "defaultDate" : "2016-05-12",
   "api" : {

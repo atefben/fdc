@@ -63,12 +63,12 @@
                         {% endif %}
                     {% endfor %}
                     {% if picture is not empty %}
-                        <img src="{% path picture, '45x60' %}" width="45" height="auto" />
+                        <img src="{% path picture, '156x206' %}" height="auto" />
                     {% endif %}
                 {%- else -%}
                     {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                     film: film,
-                    film_format: '45x60',
+                    film_format: '156x206',
                     film_attrs: {
                     alt: film|trans_fallback('title')?:film.titleVO,
                     width: 45,

@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-05-10T19:19:54Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2016-06-13T11:32:36Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="4ac4713b3107b9bcbdda9a0c232266baffd905cd" resname="Tournez votre smartphone pour accéder au site">
+        <source>Tournez votre smartphone pour accéder au site</source>
+        <target state="new">Tournez votre smartphone pour accéder au site</target>
+        <jms:reference-file line="70">Resources/views/layout_whichlist.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="632b24ed3fe97b7180a0dc23beb19c630efa3ba7" resname="agenda.btn.creerunevenement">
         <source>agenda.btn.creerunevenement</source>
         <target>Create an event</target>
         <jms:reference-file line="17">views/Agenda/agenda.html.twig</jms:reference-file>
-        <jms:reference-file line="62">views/Agenda/agenda.html.twig</jms:reference-file>
+        <jms:reference-file line="56">views/Agenda/agenda.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f2c165c1941247a7a7a251708c905fb806bda331" resname="agenda.btn.exportermonagenda">
         <source>agenda.btn.exportermonagenda</source>
@@ -35,17 +40,17 @@
       <trans-unit id="1e442397258281b3b46e04b563e7c1cbccf5d13c" resname="agenda.popin.label.description">
         <source>agenda.popin.label.description</source>
         <target>Description</target>
-        <jms:reference-file line="60">views/Agenda/agenda.html.twig</jms:reference-file>
+        <jms:reference-file line="54">views/Agenda/agenda.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="0c1f3dffefa78ae70ee7b4b05003cb44b76d35a6" resname="agenda.popin.label.fin">
         <source>agenda.popin.label.fin</source>
         <target>End</target>
-        <jms:reference-file line="51">views/Agenda/agenda.html.twig</jms:reference-file>
+        <jms:reference-file line="48">views/Agenda/agenda.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="94af65816358c8bacbe087ec77a58a2e1d16fae7" resname="agenda.popin.label.lieu">
         <source>agenda.popin.label.lieu</source>
         <target>Place</target>
-        <jms:reference-file line="58">views/Agenda/agenda.html.twig</jms:reference-file>
+        <jms:reference-file line="52">views/Agenda/agenda.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ea66083ed28a920fe224c65ac64d528eb7c39834" resname="agenda.popin.label.titre">
         <source>agenda.popin.label.titre</source>
@@ -91,29 +96,29 @@
         <source>article.film.btn.toutelaprojection</source>
         <target>The entire programme</target>
         <jms:reference-file line="99">views/Event/page.html.twig</jms:reference-file>
-        <jms:reference-file line="176">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="174">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6014a8cb787871930841a14509449ffea83e2cd2" resname="article.film.label.programmation">
         <source>article.film.label.programmation</source>
         <target>Programme</target>
         <jms:reference-file line="88">views/Event/page.html.twig</jms:reference-file>
-        <jms:reference-file line="162">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="158">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="558fb602ac94ec07494ede50de03eb8219bb6b25" resname="article.film.text.projection">
         <source>article.film.text.projection</source>
         <target>Screening</target>
         <jms:reference-file line="92">views/Event/page.html.twig</jms:reference-file>
-        <jms:reference-file line="167">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="164">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bb48663a5c59da47b1977c794bb7c80760bb17ee" resname="article.film.title.focus">
         <source>article.film.title.focus</source>
         <target>Focus</target>
-        <jms:reference-file line="187">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="185">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="60de9eecc42028183ca917bf1e3b2f6430a54eb6" resname="article.film.title.lememejour">
         <source>article.film.title.lememejour</source>
         <target>The same day</target>
-        <jms:reference-file line="199">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="197">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a238cddbdd32a40021c53b969fcbc8dde2ea3463" resname="article.filter.label.date">
         <source>article.filter.label.date</source>
@@ -133,7 +138,7 @@
       <trans-unit id="814d17a95f83b9bd4bfb7f1302eff84eb29c5a6b" resname="article.list.btn.ajouteramaselection">
         <source>article.list.btn.ajouteramaselection</source>
         <target>Add to my selection</target>
-        <jms:reference-file line="120">News/list/article.html.twig</jms:reference-file>
+        <jms:reference-file line="121">News/list/article.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9d995c3082436668a33e5f0dd3354466472b9725" resname="article.list.text.ajouterselection">
         <source>article.list.text.ajouterselection</source>
@@ -183,12 +188,14 @@
       <trans-unit id="f0045acf643c4f81ca32804a06f12fe4fb3217c0" resname="award.ex_aequo">
         <source>award.ex_aequo</source>
         <target>Ex-aequo</target>
-        <jms:reference-file line="44">Palmares/widgets/movie.html.twig</jms:reference-file>
+        <jms:reference-file line="244">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="123">Movie/components/banner.html.twig</jms:reference-file>
+        <jms:reference-file line="45">Palmares/widgets/movie.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4b01cbc8c797b6a14b856b58c00f5abd3a5caa69" resname="award.unanimity">
         <source>award.unanimity</source>
         <target>Unanimously awarded</target>
-        <jms:reference-file line="47">Palmares/widgets/movie.html.twig</jms:reference-file>
+        <jms:reference-file line="48">Palmares/widgets/movie.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b8adf0d7352c33462759e27e287e3762514cdcf0" resname="bandeannonce.title.lesbandesannoncesetextraits">
         <source>bandeannonce.title.lesbandesannoncesetextraits</source>
@@ -214,8 +221,8 @@
       <trans-unit id="97d1b538fec680ba03d108f3448fbb8be5ff107c" resname="breadcrumb.la_selection">
         <source>breadcrumb.la_selection</source>
         <target>Selection</target>
-        <jms:reference-file line="127">views/Movie/main.html.twig</jms:reference-file>
-        <jms:reference-file line="100">views/Movie/selection.html.twig</jms:reference-file>
+        <jms:reference-file line="134">views/Movie/main.html.twig</jms:reference-file>
+        <jms:reference-file line="99">views/Movie/selection.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="490a20a0aac3e9ede9baa79084ce635ec734fe4c" resname="breadcrumb.palmares.main">
         <source>breadcrumb.palmares.main</source>
@@ -226,22 +233,22 @@
         <source>breadcrumb.webtv.channels</source>
         <target>Channels</target>
         <jms:reference-file line="203">views/Television/channel.html.twig</jms:reference-file>
-        <jms:reference-file line="63">views/Television/channels.html.twig</jms:reference-file>
+        <jms:reference-file line="65">views/Television/channels.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7daad9dcfe98302143b7b1dfaed3890e479cb31b" resname="breadcrumb.webtv.home">
         <source>breadcrumb.webtv.home</source>
         <target>Home</target>
-        <jms:reference-file line="308">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="352">views/Artist/page.html.twig</jms:reference-file>
         <jms:reference-file line="83">views/Event/list.html.twig</jms:reference-file>
         <jms:reference-file line="128">views/Event/page.html.twig</jms:reference-file>
         <jms:reference-file line="125">views/Jury/section.html.twig</jms:reference-file>
-        <jms:reference-file line="127">views/Movie/classics.html.twig</jms:reference-file>
-        <jms:reference-file line="123">views/Movie/main.html.twig</jms:reference-file>
-        <jms:reference-file line="96">views/Movie/selection.html.twig</jms:reference-file>
+        <jms:reference-file line="126">views/Movie/classics.html.twig</jms:reference-file>
+        <jms:reference-file line="130">views/Movie/main.html.twig</jms:reference-file>
+        <jms:reference-file line="95">views/Movie/selection.html.twig</jms:reference-file>
         <jms:reference-file line="6">Palmares/components/breadcrumb.html.twig</jms:reference-file>
         <jms:reference-file line="195">views/Television/channel.html.twig</jms:reference-file>
-        <jms:reference-file line="55">views/Television/channels.html.twig</jms:reference-file>
-        <jms:reference-file line="204">views/Television/live.html.twig</jms:reference-file>
+        <jms:reference-file line="57">views/Television/channels.html.twig</jms:reference-file>
+        <jms:reference-file line="202">views/Television/live.html.twig</jms:reference-file>
         <jms:reference-file line="202">views/Television/trailer.html.twig</jms:reference-file>
         <jms:reference-file line="91">views/Television/trailers.html.twig</jms:reference-file>
       </trans-unit>
@@ -249,8 +256,8 @@
         <source>breadcrumb.webtv.live</source>
         <target>Web TV</target>
         <jms:reference-file line="199">views/Television/channel.html.twig</jms:reference-file>
-        <jms:reference-file line="59">views/Television/channels.html.twig</jms:reference-file>
-        <jms:reference-file line="208">views/Television/live.html.twig</jms:reference-file>
+        <jms:reference-file line="61">views/Television/channels.html.twig</jms:reference-file>
+        <jms:reference-file line="206">views/Television/live.html.twig</jms:reference-file>
         <jms:reference-file line="206">views/Television/trailer.html.twig</jms:reference-file>
         <jms:reference-file line="95">views/Television/trailers.html.twig</jms:reference-file>
       </trans-unit>
@@ -488,12 +495,15 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <source>header.img.palme</source>
         <target>Festival de Cannes</target>
         <jms:reference-file line="64">Resources/views/header.html.twig</jms:reference-file>
+        <jms:reference-file line="37">Resources/views/layout_whichlist.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="61a9a7027c1b2712a23bba5487c3f8b69ba5d3a3" resname="header.logo.img.cannes">
         <source>header.logo.img.cannes</source>
         <target>Festival de Cannes</target>
         <jms:reference-file line="70">Resources/views/header.html.twig</jms:reference-file>
         <jms:reference-file line="80">Resources/views/header.html.twig</jms:reference-file>
+        <jms:reference-file line="43">Resources/views/layout_whichlist.html.twig</jms:reference-file>
+        <jms:reference-file line="53">Resources/views/layout_whichlist.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="677fc47998b4ff4d8fd51370ae59128a310d6b8c" resname="header.mainnav.nav.accesprojection">
         <source>header.mainnav.nav.accesprojection</source>
@@ -509,14 +519,14 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <source>header.mainnav.nav.articles</source>
         <target>Articles</target>
         <jms:reference-file line="4">Global/translation/translation-nav.html.twig</jms:reference-file>
-        <jms:reference-file line="146">News/list/article.html.twig</jms:reference-file>
-        <jms:reference-file line="234">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="147">News/list/article.html.twig</jms:reference-file>
+        <jms:reference-file line="232">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="dd95a2d3f6d47289618215f02b1b5660494433f8" resname="header.mainnav.nav.audios">
         <source>header.mainnav.nav.audios</source>
         <target>Audio files</target>
         <jms:reference-file line="6">Global/translation/translation-nav.html.twig</jms:reference-file>
-        <jms:reference-file line="90">News/list/audio.html.twig</jms:reference-file>
+        <jms:reference-file line="81">News/list/audio.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6a025638a459b8dcceb15722180099925dae5380" resname="header.mainnav.nav.bandesannonces">
         <source>header.mainnav.nav.bandesannonces</source>
@@ -552,12 +562,12 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <source>header.mainnav.nav.jourapresjour</source>
         <target>Day by day</target>
         <jms:reference-file line="3">Global/translation/translation-nav.html.twig</jms:reference-file>
-        <jms:reference-file line="364">views/News/home.html.twig</jms:reference-file>
-        <jms:reference-file line="142">News/list/article.html.twig</jms:reference-file>
-        <jms:reference-file line="86">News/list/audio.html.twig</jms:reference-file>
-        <jms:reference-file line="50">News/list/photo.html.twig</jms:reference-file>
+        <jms:reference-file line="362">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="143">News/list/article.html.twig</jms:reference-file>
+        <jms:reference-file line="77">News/list/audio.html.twig</jms:reference-file>
+        <jms:reference-file line="51">News/list/photo.html.twig</jms:reference-file>
         <jms:reference-file line="93">News/list/video.html.twig</jms:reference-file>
-        <jms:reference-file line="230">views/News/main.html.twig</jms:reference-file>
+        <jms:reference-file line="228">views/News/main.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="8ce7f0eae1e3a9a768c94d9e6bf3dbf25b45ef89" resname="header.mainnav.nav.lactualite">
         <source>header.mainnav.nav.lactualite</source>
@@ -598,7 +608,7 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <source>header.mainnav.nav.photos</source>
         <target>Photos</target>
         <jms:reference-file line="5">Global/translation/translation-nav.html.twig</jms:reference-file>
-        <jms:reference-file line="54">News/list/photo.html.twig</jms:reference-file>
+        <jms:reference-file line="55">News/list/photo.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c836f56593f5d89a4be26ba23bd50f73bfe6b567" resname="header.mainnav.nav.plandessalles">
         <source>header.mainnav.nav.plandessalles</source>
@@ -727,10 +737,21 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <target>Search</target>
         <jms:reference-file line="140">Resources/views/header.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="fc74087e65477d27d574443ab59798ecfad8f840" resname="header.whishlist.label">
+        <source>header.whishlist.label</source>
+        <target state="new">header.whishlist.label</target>
+        <jms:reference-file line="9">views/Global/whichlist.html.twig</jms:reference-file>
+        <jms:reference-file line="51">views/Global/whichlist.html.twig</jms:reference-file>
+        <jms:reference-file line="9">Resources/views/layout_whichlist.html.twig</jms:reference-file>
+        <jms:reference-file line="11">Resources/views/layout_whichlist.html.twig</jms:reference-file>
+        <jms:reference-file line="12">Resources/views/layout_whichlist.html.twig</jms:reference-file>
+        <jms:reference-file line="15">Resources/views/layout_whichlist.html.twig</jms:reference-file>
+        <jms:reference-file line="20">Resources/views/layout_whichlist.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="b86d744d13ed71f256ea14a9ae234e5977e3a740" resname="home.article.btn.ajouteramaselection">
         <source>home.article.btn.ajouteramaselection</source>
         <target>Add to my selection</target>
-        <jms:reference-file line="111">News/widgets/article.html.twig</jms:reference-file>
+        <jms:reference-file line="118">News/widgets/article.html.twig</jms:reference-file>
         <jms:reference-file line="108">views/Search/news.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="8e2718b1202f957a2ff384ab476549c69bfd5a02" resname="home.btn.accederalawebtv">
@@ -741,13 +762,13 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="1defbbfff573c461d4b7e78082ef6ea87d1319be" resname="home.btn.afficherplusdactualite">
         <source>home.btn.afficherplusdactualite</source>
         <target><![CDATA[Show <strong>more news</strong>]]></target>
+        <jms:reference-file line="186">views/News/home.html.twig</jms:reference-file>
         <jms:reference-file line="188">views/News/home.html.twig</jms:reference-file>
-        <jms:reference-file line="190">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="fc56851820b19a49328a28b21d1a8e3804c225d0" resname="home.btn.ajouteramaselection">
         <source>home.btn.ajouteramaselection</source>
         <target>Add to my selection</target>
-        <jms:reference-file line="12">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="5">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="cec64fefc39a6b6939df57f04b20895e75e9dbd7" resname="home.prefooter.subtitle.suivezlamanifestation">
         <source>home.prefooter.subtitle.suivezlamanifestation</source>
@@ -767,7 +788,7 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="da1633ccc1848e718db8dcf18abc54a9b7b914e9" resname="home.title.lactualitealaune">
         <source>home.title.lactualitealaune</source>
         <target>In the headlines</target>
-        <jms:reference-file line="138">views/News/home.html.twig</jms:reference-file>
+        <jms:reference-file line="136">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1768800aff35d349dc36e069e1fc3289bde36dd2" resname="home.title.leschaines">
         <source>home.title.leschaines</source>
@@ -782,17 +803,17 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="105e65c60daf79c5782e16bfe1e83e60376c26b7" resname="home.video.btn.touslesfilms">
         <source>home.video.btn.touslesfilms</source>
         <target>All films</target>
-        <jms:reference-file line="59">News/widgets/videos.html.twig</jms:reference-file>
+        <jms:reference-file line="55">News/widgets/videos.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a368ee84ed0ad30beb3c5329c20861c2913ae643" resname="home.video.btn.voirlesseances">
         <source>home.video.btn.voirlesseances</source>
         <target>See the screenings</target>
-        <jms:reference-file line="58">News/widgets/videos.html.twig</jms:reference-file>
+        <jms:reference-file line="54">News/widgets/videos.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="2647f0acbfca562993e1dec153a314bbf0b932d9" resname="home.video.text.de">
         <source>home.video.text.de</source>
         <target>by</target>
-        <jms:reference-file line="48">News/widgets/videos.html.twig</jms:reference-file>
+        <jms:reference-file line="44">News/widgets/videos.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3797ae9967c651770b6f948119404fe8dab1f4e0" resname="juries.artist.btn.partager">
         <source>juries.artist.btn.partager</source>
@@ -807,32 +828,32 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="cfcf345996ce9bff11d9859918af9f0637e33b62" resname="juries.artiste.title.biographie">
         <source>juries.artiste.title.biographie</source>
         <target>Biography</target>
-        <jms:reference-file line="102">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="109">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ca2f5059452f0717daf356ac0a9e5d2613556fac" resname="juries.artiste.title.filmspresentes">
         <source>juries.artiste.title.filmspresentes</source>
         <target>Films presented at Cannes</target>
-        <jms:reference-file line="109">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="119">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="84ee77c30f04e53fe7f970d55b337ac69a8b85cc" resname="juries.artiste.title.palmares">
         <source>juries.artiste.title.palmares</source>
         <target>Awards</target>
-        <jms:reference-file line="174">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="200">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b5d533d7400ab24da13f0d6f3294538ecce201eb" resname="juries.artiste.title.presences">
         <source>juries.artiste.title.presences</source>
         <target>Jury members</target>
-        <jms:reference-file line="224">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="269">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="33b26f2872f664925accafb74841d6604162fab9" resname="juries.artiste.title.realisateurs">
         <source>juries.artiste.title.realisateurs</source>
         <target>Directors</target>
-        <jms:reference-file line="267">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="311">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a9d8fce1f7777b3177ea072e204a26acda0256db" resname="juries.artiste.title.share">
         <source>juries.artiste.title.share</source>
         <target>Share article</target>
-        <jms:reference-file line="249">views/Artist/page.html.twig</jms:reference-file>
+        <jms:reference-file line="294">views/Artist/page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7a17713a51882265ca5d66304e2657cbc0109143" resname="juries.btn.decouvrirrubrique">
         <source>juries.btn.decouvrirrubrique</source>
@@ -872,45 +893,40 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="2b1ab9d5bf5dc87d8419720abb41547c304af261" resname="movie.contact.label.distribution">
         <source>movie.contact.label.distribution</source>
         <target>Distribution</target>
-        <jms:reference-file line="124">Movie/components/contact.html.twig</jms:reference-file>
-        <jms:reference-file line="311">Movie/components/contact.html.twig</jms:reference-file>
+        <jms:reference-file line="148">Movie/components/contact.html.twig</jms:reference-file>
+        <jms:reference-file line="330">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9ff1fccea81434f5b9d83501cbce9f1031206fe8" resname="movie.contact.label.ecole">
         <source>movie.contact.label.ecole</source>
         <target>School</target>
-        <jms:reference-file line="170">Movie/components/contact.html.twig</jms:reference-file>
+        <jms:reference-file line="193">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="664c080a02fd242db4b72ddd90bcfe37cf31b3ec" resname="movie.contact.label.international_selling">
         <source>movie.contact.label.international_selling</source>
         <target>International sales</target>
-        <jms:reference-file line="428">Movie/components/contact.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="6e2e0eb80419c13bc3c8711628269e41bdcf0f84" resname="movie.contact.label.minor_production_company">
-        <source>movie.contact.label.minor_production_company</source>
-        <target state="new">movie.contact.label.minor_production_company</target>
-        <jms:reference-file line="288">Movie/components/contact.html.twig</jms:reference-file>
+        <jms:reference-file line="447">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="511ea54939112daee72bcfbaf36d4d9524c5481b" resname="movie.contact.label.pressefrancaise">
         <source>movie.contact.label.pressefrancaise</source>
         <target>French press</target>
-        <jms:reference-file line="344">Movie/components/contact.html.twig</jms:reference-file>
+        <jms:reference-file line="363">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ed5827ee9dd42c7308eba4198ed9af397b82d601" resname="movie.contact.label.presseinternational">
         <source>movie.contact.label.presseinternational</source>
         <target state="new">movie.contact.label.presseinternational</target>
-        <jms:reference-file line="386">Movie/components/contact.html.twig</jms:reference-file>
+        <jms:reference-file line="405">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bab0b494f5ed776a38aea64e71ef7e7986ae1809" resname="movie.contact.label.production">
         <source>movie.contact.label.production</source>
         <target>Production</target>
-        <jms:reference-file line="78">Movie/components/contact.html.twig</jms:reference-file>
-        <jms:reference-file line="242">Movie/components/contact.html.twig</jms:reference-file>
+        <jms:reference-file line="81">Movie/components/contact.html.twig</jms:reference-file>
+        <jms:reference-file line="265">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="0e1e9f194e42e9d6733ab104346cd12c82814a93" resname="movie.contact.title.contacts">
         <source>movie.contact.title.contacts</source>
         <target>Contacts</target>
         <jms:reference-file line="64">Movie/components/contact.html.twig</jms:reference-file>
-        <jms:reference-file line="226">Movie/components/contact.html.twig</jms:reference-file>
+        <jms:reference-file line="249">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6e640c75ac67dc7e424f94c9f0559e1ddec88b4d" resname="movie.director_first">
         <source>movie.director_first</source>
@@ -953,13 +969,13 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="d51bc9cff188bfbbd32fb729f9be68fb89d304b2" resname="movie.label.duree">
         <source>movie.label.duree</source>
         <target>Length</target>
-        <jms:reference-file line="63">views/Global/projection-single.html.twig</jms:reference-file>
+        <jms:reference-file line="72">views/Global/projection-single.html.twig</jms:reference-file>
         <jms:reference-file line="109">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1525808c7fd3b7a87fce37051a2459a1232354fd" resname="movie.label.pays">
         <source>movie.label.pays</source>
         <target>Country</target>
-        <jms:reference-file line="56">views/Global/projection-single.html.twig</jms:reference-file>
+        <jms:reference-file line="58">views/Global/projection-single.html.twig</jms:reference-file>
         <jms:reference-file line="104">Movie/components/banner.html.twig</jms:reference-file>
         <jms:reference-file line="23">Movie/components/pagination.html.twig</jms:reference-file>
         <jms:reference-file line="51">Movie/components/pagination.html.twig</jms:reference-file>
@@ -1064,28 +1080,30 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="6bdc951b882b500db6a5e673e91db138437a2859" resname="movie.see_movie_page">
         <source>movie.see_movie_page</source>
         <target state="new">movie.see_movie_page</target>
-        <jms:reference-file line="72">views/Global/projection-single.html.twig</jms:reference-file>
+        <jms:reference-file line="86">views/Global/projection-single.html.twig</jms:reference-file>
         <jms:reference-file line="29">Global/translation/translation-nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="352792e10f97c4bd6f01e594cf1de1b69421679f" resname="movie.title.casting">
         <source>movie.title.casting</source>
         <target>Casting</target>
-        <jms:reference-file line="64">Movie/widgets/casting.html.twig</jms:reference-file>
+        <jms:reference-file line="75">Movie/widgets/casting.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6cf0e5c688fd77efc4c4a85f22cfa852871dc886" resname="movie.title.credits">
         <source>movie.title.credits</source>
         <target>Credits</target>
-        <jms:reference-file line="48">Movie/widgets/casting.html.twig</jms:reference-file>
+        <jms:reference-file line="59">Movie/widgets/casting.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f1af51bdfdeaf2f16794c7cf842d01a1575179cb" resname="movie.title.synopsis">
         <source>movie.title.synopsis</source>
         <target>Synopsis</target>
         <jms:reference-file line="131">Movie/components/banner.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="daa2506ab9a885a9bb10fa37227e1c5b240843cb" resname="nousrejoindre.text.cesite">
-        <source>nousrejoindre.text.cesite</source>
-        <target>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor purus, interdum eget massa eget, rutrum dapibus dolor.</target>
-        <jms:reference-file line="8">views/Footer/nous-rejoindre.html.twig</jms:reference-file>
+      <trans-unit id="3e12f213a10adb5625e4d7ab250e654bc240d3d3" resname="newsletter.form.error.emaildejaenregistre">
+        <source>newsletter.form.error.emaildejaenregistre</source>
+        <target state="new">newsletter.form.error.emaildejaenregistre</target>
+        <jms:reference-file line="352">EventBundle/Controller/GlobalController.php</jms:reference-file>
+        <jms:reference-file line="447">EventBundle/Controller/GlobalController.php</jms:reference-file>
+        <jms:reference-file line="30">Global/translation/translation-nav.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d5de8eb654cf3b39e3a422bfa8114dd332daaf21" resname="nousrejoindre.title.nousrejoindre">
         <source>nousrejoindre.title.nousrejoindre</source>
@@ -1095,8 +1113,8 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="088bf9be5aabd3ab9ea123c1b7a6e98fde2cdad7" resname="palmares.btn.decouvrirrubrique">
         <source>palmares.btn.decouvrirrubrique</source>
         <target>Discover section</target>
-        <jms:reference-file line="116">views/Movie/classics.html.twig</jms:reference-file>
-        <jms:reference-file line="65">views/Movie/selection.html.twig</jms:reference-file>
+        <jms:reference-file line="115">views/Movie/classics.html.twig</jms:reference-file>
+        <jms:reference-file line="64">views/Movie/selection.html.twig</jms:reference-file>
         <jms:reference-file line="8">Palmares/components/bandeau.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a6871bf6e5d90c82ea707c874f384a0f190eaf17" resname="palmares.camerador.alt.quinzaine">
@@ -1146,25 +1164,15 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <target>Screening room plan</target>
         <jms:reference-file line="8">views/Agenda/room.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="cf87d5c2642fd49e1391ae4f3ab80d9f32fa469b" resname="programmation.btn.telechargerformatics">
-        <source>programmation.btn.telechargerformatics</source>
-        <target>Download in ICS format</target>
-        <jms:reference-file line="18">views/Agenda/scheduling.html.twig</jms:reference-file>
-      </trans-unit>
       <trans-unit id="3c224a8c173733f82cd4547bf6349dbf418558e9" resname="programmation.btn.telechargerformatpdf">
         <source>programmation.btn.telechargerformatpdf</source>
         <target>Download in PDF format</target>
         <jms:reference-file line="14">views/Agenda/scheduling.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="dbadd7d63bfec9fc6b855cd1b2b109400efec661" resname="programmation.btn.telechargerhoraireprojectionpresse">
-        <source>programmation.btn.telechargerhoraireprojectionpresse</source>
-        <target>Download the press screening schedule</target>
-        <jms:reference-file line="10">views/Agenda/scheduling.html.twig</jms:reference-file>
-      </trans-unit>
       <trans-unit id="87f7af27a7c7ac3882d9b17fb6b3e8c8f7478211" resname="programmation.btn.toutmonagenda">
         <source>programmation.btn.toutmonagenda</source>
         <target>My calendar</target>
-        <jms:reference-file line="31">views/Agenda/scheduling.html.twig</jms:reference-file>
+        <jms:reference-file line="29">views/Agenda/scheduling.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="efc26341705f5b165514f22587887da8824de5c6" resname="programmation.filters.label.selections">
         <source>programmation.filters.label.selections</source>
@@ -1176,10 +1184,15 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <target>Types</target>
         <jms:reference-file line="15">Agenda/components/filters.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="28f339e24d12b7a7a4d08f92596bc48cdf02958b" resname="programmation.objet.ceremonie-d-ouverture">
+        <source>programmation.objet.ceremonie-d-ouverture</source>
+        <target state="new">programmation.objet.ceremonie-d-ouverture</target>
+        <jms:reference-file line="25">Global/translation/translation-agenda.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="fdc444132da3aa3e66ae16fd66e653f72e20ffee" resname="programmation.objet.ceremonie-de-cloture">
         <source>programmation.objet.ceremonie-de-cloture</source>
         <target>Closing Ceremony</target>
-        <jms:reference-file line="26">Global/translation/translation-agenda.html.twig</jms:reference-file>
+        <jms:reference-file line="27">Global/translation/translation-agenda.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="48a5c1bbb7ce38242de5be659f6225d210a285a9" resname="programmation.objet.ceremonie-douverture">
         <source>programmation.objet.ceremonie-douverture</source>
@@ -1189,7 +1202,7 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="500e7d20f420bfe95daafbb11bd76d9e75d39379" resname="programmation.objet.cloture-un-certain-regard">
         <source>programmation.objet.cloture-un-certain-regard</source>
         <target>Un Certain Regard: Closing</target>
-        <jms:reference-file line="25">Global/translation/translation-agenda.html.twig</jms:reference-file>
+        <jms:reference-file line="26">Global/translation/translation-agenda.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7e880a190c498fa46c9a584ad777485cc5d72868" resname="programmation.objet.conference-de-presse-des-laureats">
         <source>programmation.objet.conference-de-presse-des-laureats</source>
@@ -1261,17 +1274,17 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="6459a305dea9de2f1da412d63d8d5fd0e567424d" resname="programmation.text.cliquezdeposezlesevenementsdansvotragenda">
         <source>programmation.text.cliquezdeposezlesevenementsdansvotragenda</source>
         <target><![CDATA[<strong>Click and drop</strong> events in your calendar and then export your programme]]></target>
-        <jms:reference-file line="40">views/Agenda/scheduling.html.twig</jms:reference-file>
+        <jms:reference-file line="38">views/Agenda/scheduling.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="83b3ec7b47177331f187efd0f244344aaa49cd0f" resname="programmation.title.monagenda">
         <source>programmation.title.monagenda</source>
         <target>My calendar</target>
-        <jms:reference-file line="26">views/Agenda/scheduling.html.twig</jms:reference-file>
+        <jms:reference-file line="24">views/Agenda/scheduling.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="35bac7b5b2dd3d4635fc32503799b60b7ffae86e" resname="programmation.title.preparezvotresejour">
         <source>programmation.title.preparezvotresejour</source>
         <target>Plan your trip to the Festival de Cannes</target>
-        <jms:reference-file line="35">views/Agenda/scheduling.html.twig</jms:reference-file>
+        <jms:reference-file line="33">views/Agenda/scheduling.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="51a910537fc1a9c697bafc48aff519ee6689c7ef" resname="programmation.title.programmation">
         <source>programmation.title.programmation</source>
@@ -1322,12 +1335,11 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <source>search.result.btn.decouvrez68ansdarchives</source>
         <target>Discover 68 years of archives</target>
         <jms:reference-file line="259">views/Global/search.page.html.twig</jms:reference-file>
-        <jms:reference-file line="261">views/Global/search.page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="51a20f5a680bec2116a36b0fb1794bfc47a6b5b9" resname="search.result.btn.rechercher">
         <source>search.result.btn.rechercher</source>
         <target>Search</target>
-        <jms:reference-file line="278">views/Global/search.page.html.twig</jms:reference-file>
+        <jms:reference-file line="276">views/Global/search.page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="367dde39f6c76ae7bfc2f65998ba8f1c30d7459c" resname="search.result.btn.toutvoir">
         <source>search.result.btn.toutvoir</source>
@@ -1470,7 +1482,7 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="cb688eb65b08a4289984470fce15c38a310240e8" resname="search.result.title.lencyclopediedufestival">
         <source>search.result.title.lencyclopediedufestival</source>
         <target>The Festival encyclopaedia</target>
-        <jms:reference-file line="273">views/Global/search.page.html.twig</jms:reference-file>
+        <jms:reference-file line="271">views/Global/search.page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="580463505329fda6a27400b4da8bf66c4e6e2d4d" resname="search.result.title.medias">
         <source>search.result.title.medias</source>
@@ -1485,13 +1497,13 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="b5a7e1d688b8b9c24d8c756388e31da9ad7b2882" resname="search.result.title.retrouvezdautresresultats">
         <source>search.result.title.retrouvezdautresresultats</source>
         <target>Find more results from previous Festivals in</target>
-        <jms:reference-file line="271">views/Global/search.page.html.twig</jms:reference-file>
+        <jms:reference-file line="269">views/Global/search.page.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="868764a9864046f821076081e72b21e146351008" resname="selection.btn.decouvrirrubrique">
         <source>selection.btn.decouvrirrubrique</source>
         <target>Discover section</target>
-        <jms:reference-file line="76">views/Movie/selection.html.twig</jms:reference-file>
-        <jms:reference-file line="79">views/Movie/selection.html.twig</jms:reference-file>
+        <jms:reference-file line="75">views/Movie/selection.html.twig</jms:reference-file>
+        <jms:reference-file line="78">views/Movie/selection.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="05686fb21d772e1f7e2857acf290926a72885447" resname="selection.cinemaplage.btn.decouvrirlarubrique">
         <source>selection.cinemaplage.btn.decouvrirlarubrique</source>
@@ -1508,8 +1520,9 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <source>selection.nav.cannes-classics</source>
         <target>Cannes Classics</target>
         <jms:reference-file line="21">views/Footer/plan-du-site.html.twig</jms:reference-file>
-        <jms:reference-file line="131">views/Movie/classics.html.twig</jms:reference-file>
+        <jms:reference-file line="130">views/Movie/classics.html.twig</jms:reference-file>
         <jms:reference-file line="21">Movie/components/filters.html.twig</jms:reference-file>
+        <jms:reference-file line="60">views/Movie/selection.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="cd76f7a4d585db7f7253713349f05b0073de1dff" resname="selection.nav.cinema-la-plage">
         <source>selection.nav.cinema-la-plage</source>
@@ -1527,12 +1540,12 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="60bcc98fd33f02ea907e8443574a6255b1649e89" resname="seo.trailer.description">
         <source>seo.trailer.description</source>
         <target>See all the trailers and clips for the film %film_title% presented at the Festival de Cannes 2016</target>
-        <jms:reference-file line="538">EventBundle/Controller/TelevisionController.php</jms:reference-file>
+        <jms:reference-file line="557">EventBundle/Controller/TelevisionController.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="70660bc3cfc26ba0e238be2b01433cadafc3b05b" resname="seo.trailer.title">
         <source>seo.trailer.title</source>
         <target>Web TV - %film_title% - Trailers and clips - Festival de Cannes 2016</target>
-        <jms:reference-file line="533">EventBundle/Controller/TelevisionController.php</jms:reference-file>
+        <jms:reference-file line="552">EventBundle/Controller/TelevisionController.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="3ffd014ad53d0bde886d3dcdcdd04384b967a580" resname="share.email.send">
         <source>share.email.send</source>
@@ -1543,7 +1556,7 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <source>sharemail.btn.envoyer</source>
         <target>Send</target>
         <jms:reference-file line="48">views/Global/share-email-media.html.twig</jms:reference-file>
-        <jms:reference-file line="50">views/Global/share-email.html.twig</jms:reference-file>
+        <jms:reference-file line="49">views/Global/share-email.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="36278b911584399981f85e88a9bacb72061055cf" resname="sharemail.form.placeholder.email">
         <source>sharemail.form.placeholder.email</source>
@@ -1563,32 +1576,32 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="f7ecf29682a9807357bafebff334b16a022fa5ee" resname="sharemail.label.copiemail">
         <source>sharemail.label.copiemail</source>
         <target>Send me a copy by email</target>
-        <jms:reference-file line="25">views/Global/share-email-media.html.twig</jms:reference-file>
+        <jms:reference-file line="26">views/Global/share-email-media.html.twig</jms:reference-file>
         <jms:reference-file line="27">views/Global/share-email.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9de0bdb86e5a7b1f63bb7051ae4a1b9c4d17f427" resname="sharemail.label.inscriptionnewsletter">
         <source>sharemail.label.inscriptionnewsletter</source>
         <target>I wish to receive the Festival de Cannes newsletter</target>
         <jms:reference-file line="43">views/Global/share-email-media.html.twig</jms:reference-file>
-        <jms:reference-file line="45">views/Global/share-email.html.twig</jms:reference-file>
+        <jms:reference-file line="44">views/Global/share-email.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c0d07703dadd33588036aac483076ec2488bd62f" resname="sharemail.text.champsobligatoires">
         <source>sharemail.text.champsobligatoires</source>
         <target>* Required fields</target>
         <jms:reference-file line="47">views/Global/share-email-media.html.twig</jms:reference-file>
-        <jms:reference-file line="49">views/Global/share-email.html.twig</jms:reference-file>
+        <jms:reference-file line="48">views/Global/share-email.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="59e9378bb4902888b754f3bc6ad910a902147c5d" resname="sharemail.text.enapplicationdelaloi">
         <source>sharemail.text.enapplicationdelaloi</source>
         <target><![CDATA[Under French law n° 78-17 of 6 January 1978, modified relating to data processing, files, and liberties, internet users have the right to oppose (art. 38 of the law), access (art. 39 of the law), and amend and delete (art. 40 of the law) data concerning them. To exercise these rights, the internet user must contact: Direction juridique OGF, 31 rue de Cambrai 75946 PARIS cedex 19, or the following email address informatiqueetlibertes.dj@ogf.fr, accompanied by a copy of proof of identification.
           <br> OGF has declared the above files to the CNIL, registered under the n° 1607719.]]></target>
         <jms:reference-file line="64">views/Global/share-email-media.html.twig</jms:reference-file>
-        <jms:reference-file line="66">views/Global/share-email.html.twig</jms:reference-file>
+        <jms:reference-file line="65">views/Global/share-email.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c32af747dcc9d6c6084bacd9071397a744dcd81f" resname="sharemail.text.separerparvirgule">
         <source>sharemail.text.separerparvirgule</source>
         <target>Separate addresses with a comma</target>
-        <jms:reference-file line="15">views/Global/share-email-media.html.twig</jms:reference-file>
+        <jms:reference-file line="16">views/Global/share-email-media.html.twig</jms:reference-file>
         <jms:reference-file line="17">views/Global/share-email.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="49a01298a13f65a480b47bfaa38f20745557cdf2" resname="sitemap.title.plandusite">
@@ -1599,8 +1612,8 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="aeaf509cbec24b393a5df4eb418788fb1cebf597" resname="slider.credit_image">
         <source>slider.credit_image</source>
         <target>Image Credit</target>
+        <jms:reference-file line="21">News/list/photo.html.twig</jms:reference-file>
         <jms:reference-file line="34">News/widgets/single-gallery.html.twig</jms:reference-file>
-        <jms:reference-file line="62">News/widgets/single-gallery.html.twig</jms:reference-file>
         <jms:reference-file line="15">News/widgets/slideshow-actu-home.html.twig</jms:reference-file>
         <jms:reference-file line="36">News/widgets/slideshow.html.twig</jms:reference-file>
       </trans-unit>
@@ -1692,9 +1705,9 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       <trans-unit id="079ad382c036210830391f21077d2c50c9ed31da" resname="webtv.direct.nb_videos">
         <source>webtv.direct.nb_videos</source>
         <target>{1} %count% vidéo|]1,Inf[ %count% vidéos</target>
-        <jms:reference-file line="28">News/widgets/home-channels.html.twig</jms:reference-file>
-        <jms:reference-file line="41">views/Television/channels.html.twig</jms:reference-file>
-        <jms:reference-file line="244">views/Television/live.html.twig</jms:reference-file>
+        <jms:reference-file line="30">News/widgets/home-channels.html.twig</jms:reference-file>
+        <jms:reference-file line="43">views/Television/channels.html.twig</jms:reference-file>
+        <jms:reference-file line="240">views/Television/live.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7553490587cc50dda61a1f0bae24d3930b42b8f9" resname="webtv.direct.text.videos">
         <source>webtv.direct.text.videos</source>
@@ -1715,7 +1728,7 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <source>webtv.direct.title.lesdernieresvideos</source>
         <target>The latest videos</target>
         <jms:reference-file line="113">views/Television/channel.html.twig</jms:reference-file>
-        <jms:reference-file line="121">views/Television/live.html.twig</jms:reference-file>
+        <jms:reference-file line="119">views/Television/live.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>
