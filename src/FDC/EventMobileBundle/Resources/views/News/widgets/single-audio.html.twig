@@ -3,7 +3,7 @@
 {% set file = news.audio %}
 {% set trans = file.findTranslationByLocale(app.request.locale) %}
 
-    {% if trans is null or trans.file is null or trans.mp3Url is null or trans.jobMp3State != 3 %}
+    {% if trans is null or trans.mp3Url is null or trans.jobMp3State != 3 %}
         {% set trans = file.findTranslationByLocale('fr') %}
     {% endif %}
 

@@ -3922,7 +3922,8 @@ display: inline-block;
 }
 #filters{
     background-color: rgba(0, 0, 0, 0.9);
-    height: 100%;
+    height: 100.1vh;
+    overflow-y: auto;
     left: 0;
     opacity: 0;
     position: fixed;

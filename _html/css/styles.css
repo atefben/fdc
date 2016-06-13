@@ -17871,6 +17871,7 @@ input[type=submit] {
   float: left;
   margin-left: 85px;
   width: 540px;
+  visibility: visible;
 }
 @media screen and (max-width: 1024px) {
   .press .affiche .portrait {

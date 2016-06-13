@@ -3109,7 +3109,7 @@ a{
 	padding-top: 50px;
 	font-size: 0;
 }
-#player{
+#player{.text-content
     margin-bottom: 40px;
 }
 .article-title{
@@ -3152,7 +3152,6 @@ a{
 .text-content{
     font-size: 24px;
     color:#666666;
-    max-height: 1000px;
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
     line-height: 30px;
     margin-bottom: 40px;
