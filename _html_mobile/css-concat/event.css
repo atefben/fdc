@@ -1409,6 +1409,13 @@ from desktop
   font-weight: 700;
 }
 
+.sliderDrag .info .date,
+.sliderDrag .info .hour {
+    color: #666;
+    display: inline-block;
+    font-size: .625rem;
+}
+
 /* featured-videos */
 .featured-videos{
 }
