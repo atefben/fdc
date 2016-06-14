@@ -87,8 +87,10 @@
                 <div class="vid item-video"
                      data-vid="{{ video.id }}"
                      data-video='{{ s3_server_video ~ video|trans_fallback('mp4Url') }}'
-                        {% if video.image|trans_fallback('file') %}
+                     {% if video.image|trans_fallback('file') %}
                      data-poster="{% path video.image|trans_fallback('file'), '463x292' %}"
+                     {% elseif video.image|trans_fallback('imageAmazonUrl') %}
+                     data-poster="{{ s3_server_video ~ video.image|trans_fallback('imageAmazonUrl') }}"
                      {% else %}
                      data-poster="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
                      {% endif %}>
