@@ -1,19 +1,29 @@
 {% if award_associations[page.selectionLongsMetrages.id] and award_associations[page.selectionLongsMetrages.id]|length %}
+    {% if all is defined and all == true %}
+    <section>
+        <h3>{{ (page|trans_fallback('nameLongsMetrages'))?:(page.selectionLongsMetrages|trans_fallback('name')) }}</h3>
+    </section>
+    <div class="owl-carousel all-slider">
+    {% else %}
     <div class="title-list-cat">
         <h2 class="title one-line">{{ (page|trans_fallback('nameLongsMetrages'))?:(page.selectionLongsMetrages|trans_fallback('name')) }}</h2>
     </div>
+    {% endif %}
 
     {% for award_association in award_associations[page.selectionLongsMetrages.id] %}
         {% include 'FDCEventMobileBundle:Palmares:widgets/movie.html.twig' %}
     {% endfor %}
+    {% if all is defined and all == true %}
+     </div>
+    {% endif %}
 {% endif %}
 
 {% if award_associations[page.selectionCourtsMetrages.id] and award_associations[page.selectionCourtsMetrages.id]|length %}
-
-    {% if all is defined and all %}
-        <h2 class="sub-cat-title">
-            {{ (page|trans_fallback('nameCourtsMetrages'))?:(page.selectionCourtsMetrages|trans_fallback('name')) }}
-        </h2>
+    {% if all is defined and all == true %}
+        <section>
+            <h3>{{ (page|trans_fallback('nameCourtsMetrages'))?:(page.selectionCourtsMetrages|trans_fallback('name')) }}</h3>
+        </section>
+        <div class="owl-carousel all-slider">
     {% else %}
         <div class="title-list-cat">
             <h2 class="title one-line">
@@ -24,4 +34,7 @@
     {% for award_association in award_associations[page.selectionCourtsMetrages.id] %}
         {% include 'FDCEventMobileBundle:Palmares:widgets/movie.html.twig' %}
     {% endfor %}
+    {% if all is defined and all == true %}
+        </div>
+    {% endif %}
 {% endif %}

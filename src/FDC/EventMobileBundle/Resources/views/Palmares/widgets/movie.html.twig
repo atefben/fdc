@@ -38,8 +38,19 @@
             {% endif %}
         </div>
         {% if award_association.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') %}
-            {% set person = award_association.person %}
-            <h3 class="people-name verticalline">{{ person.fullName }}</h3>
+            {% if award_association.award.filmMutual %}
+                <h3 class="people-name verticalline">
+                    {% for assocationMutual in award_association.award.associations %}
+                        {% set person = assocationMutual.person %}
+                        {{ person.fullName }}{{ loop.last == true ? '' : ',' }}
+                    {% endfor %}
+                </h3>
+            {% else %}
+                {% set person = award_association.person %}
+                <h3 class="people-name verticalline">
+                    {{ person.fullName }}
+                </h3>
+            {% endif %}
         {% endif %}
     {% endif %}
     <h3 class="movie-title">{{ movie.titleVO }}</h3>

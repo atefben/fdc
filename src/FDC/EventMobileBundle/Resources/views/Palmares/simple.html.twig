@@ -1,7 +1,18 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
+{% if all is defined and all == true %}
+<div class="owl-carousel all-slider">
+{% else %}
 <section class="categorie-items">
+{% endif %}
+    {% set awardIds = [] %}
     {% for award_association in award_associations %}
-        {% include 'FDCEventMobileBundle:Palmares:widgets/movie.html.twig' %}
+        {% if award_association.award not in awardIds %}
+            {% include 'FDCEventMobileBundle:Palmares:widgets/movie.html.twig' %}
+        {% endif %}
     {% endfor %}
+{% if all is defined and all == true %}
+</div>
+{% else %}
 </section>
+{% endif %}

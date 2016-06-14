@@ -14,18 +14,18 @@
         {{ subpages['certain_regard']['page']|trans_fallback('name') }}
     </h2>
 </div>
-{% include 'FDCEventMobileBundle:Palmares:simple.html.twig' with (subpages['certain_regard'])%}
+{% include 'FDCEventMobileBundle:Palmares:simple.html.twig' with (subpages['certain_regard']|merge({'all': true })) %}
 
 <div class="title-list-cat">
     <h2 class="title">
         {{ subpages['cinefondation']['page']|trans_fallback('name') }}
     </h2>
 </div>
-{% include 'FDCEventMobileBundle:Palmares:simple.html.twig' with (subpages['cinefondation'])%}
+{% include 'FDCEventMobileBundle:Palmares:simple.html.twig' with (subpages['cinefondation']|merge({'all': true })) %}
 
 <div class="title-list-cat">
     <h2 class="title">
         {{ subpages['camera_d_or']['page']|trans_fallback('name') }}
     </h2>
 </div>
-{% include 'FDCEventMobileBundle:Palmares:camerador.html.twig' with (subpages['camera_d_or'])%}
+{% include 'FDCEventMobileBundle:Palmares:camerador.html.twig' with (subpages['camera_d_or']|merge({'all': true })) %}
