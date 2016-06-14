@@ -1303,6 +1303,7 @@ from desktop
   display: block;
   font-size: 23px;
   margin-top: 5px;
+    width:330px;
 }
 .featured-videos .videosSlider .vid .info span {
   color: #666;

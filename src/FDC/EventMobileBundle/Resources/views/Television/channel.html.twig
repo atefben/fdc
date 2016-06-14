@@ -9,53 +9,57 @@
 {% endblock %}
 
 {% block body %}
-    <div id="main" class="webtv single-channel loading">
+<div id="main" class="channel" data-menu="webtv">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
-    
-    <div class="container">
-        <a href="{{ path('fdc_eventmobile_television_channels') }}" class="back">
-            <i class="icon icon_flecheGauche"></i>{{ 'webtv.channel.btn.retourauxchaines'|trans }}
-        </a>
+
+    <div class="fullscreenplayer">
+        <div class="close-button"><i class="icon icon_close"></i></div>
+        <div class="vCenter">
+            <div class="vCenterKid">
+                <div id="player1"></div>
+                <p class="category caption">Conférence de presse</p>
+                <p class="title-video">Rencontre avec l'équipe de Carol</p>
+            </div>
+        </div>
     </div>
-    <h2 class="title">{{ channel|trans_fallback('name') }}</h2>
-
-    {% set firstVideo = false %}
-    {% set first = true %}
-    {%- for video in webTvVideos %}
-        {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
-        {% if video.image %}
-            {% set videoImage = media_public_url(video.image|trans_fallback('file'), '463x292') %}
-        {% elseif video|trans_fallback('imageAmazonUrl') %}
-            {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
-        {% endif %}
-        {%- if trans is null or trans.file is null -%}
-            {%- set trans = video.file.findTranslationByLocale('fr') -%}
-        {%- endif -%}
-        {% if videoImage is defined %}
-            {% if firstVideo == false %}
-                {% set firstVideo = video %}
-                <div id="player"
-                     {% if(firstVideo.jobWebmState == 3) %}data-video="{{ s3_server_video ~ firstVideo.webmUrl }}"{% else %}}data-video="{{ s3_server_video ~ firstVideo.mp4Url }}"{% endif %}
-                     data-poster="{{ videoImage }}"></div>
-
-                <div id="slider-trailer" class="owl-carousel sliderDrag videosSlider">
+    <div class="slideshow dark-container">
+        <h2 class="title">{{ channel|trans_fallback('name') }}</h2>
+        <div class="images">
+        {% set firstVideo = false %}
+        {% set first = true %}
+        {%- for video in webTvVideos %}
+            {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
+            {% if video.image %}
+                {% set videoImage = media_public_url(video.image|trans_fallback('file'), '463x292') %}
+            {% elseif video|trans_fallback('imageAmazonUrl') %}
+                {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
             {% endif %}
+            {%- if trans is null or trans.file is null -%}
+                {%- set trans = video.file.findTranslationByLocale('fr') -%}
+            {%- endif -%}
+            {% if videoImage is defined %}
+                {% if firstVideo == false %}
+                    {% set firstVideo = video %}
+                    <div id="player"
+                         {% if(firstVideo.jobWebmState == 3) %}data-video="{{ s3_server_video ~ firstVideo.webmUrl }}"{% else %}}data-video="{{ s3_server_video ~ firstVideo.mp4Url }}"{% endif %}
+                         data-poster="{{ videoImage }}">
+                    </div>
+                    </div>
+                    <div class="owl-carousel thumbnails">
+                {% endif %}
 
-            <div class="tumb item {% if firstVideo != false %}active{% endif %}"
+            <div class="thumb item {% if firstVideo != false %}active{% endif %}"
                  data-id="photo{{ loop.index }}"
                  data-video="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"
                  data-poster='{{ videoImage }}'>
-                <div class="image-wrapper">
-                    {% if videoImage %}
-                        <img src="{{ videoImage }}" alt="">
-                    {% endif %}
-                </div>
-
+                {% if videoImage %}
+                    <img src="{{ videoImage }}" alt="">
+                {% endif %}
                 <div class="info">
-                    <div class="picto vCenter">
-                        <div class="vCenterKid"><i class="icon icon_video"></i></div>
+                    <div class="picto">
+                        <i class="icon icon_video"></i>
                     </div>
                     <div class="info-container">
                         <div class="vCenter">
@@ -72,83 +76,47 @@
             </div>
         {% endif %}
     {%- endfor -%}
-
+    </div>
     {% if otherVideos|length %}
-        <div id="content-latest">
+    <div class="dark-container featured-videos" id="">
+        <div class="container">
             <h2 class="title">{{ 'webtv.direct.title.lesdernieresvideos'|trans }}</h2>
-            <div id="slider-last-videos" class="container sliderDrag owl-carousel videosSlider">
-                {% for video in otherVideos %}
-                    <div class="item-video item shadow-bottom"
-                         data-vid="{{ video.id }}"
-                         data-file='[{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
-                            {% if video.image|trans_fallback('file') %}
-                         data-img="{% path video.image|trans_fallback('file'), '463x292' %}"
-                         {% else %}
-                         data-img="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
-                         {% endif %}>
-                        <div class="image-wrapper">
-                            {% if video.image|trans_fallback('file') %}
-                                <img src="{% path video.image|trans_fallback('file'), '463x292' %}" alt="">
-                            {% endif %}
+        </div>
+        <div id="slider-last-videos" class="owl-carousel sliderDrag videosSlider">
+            {% for video in otherVideos %}
+                <div class="vid item-video"
+                     data-vid="{{ video.id }}"
+                     data-video='{{ s3_server_video ~ video|trans_fallback('mp4Url') }}'
+                        {% if video.image|trans_fallback('file') %}
+                     data-poster="{% path video.image|trans_fallback('file'), '463x292' %}"
+                     {% else %}
+                     data-poster="{% path video.image|trans_fallback('file', 'fr'), '463x292' %}"
+                     {% endif %}>
+                    <div class="image-wrapper">
+                        {% if video.image|trans_fallback('file') %}
+                            <div class="img" style="background-image:url({% path video.image|trans_fallback('file'), '463x292' %})"></div>
+                        {% endif %}
+                    </div>
+                    <div class="info">
+                        <div class="picto vCenter">
+                            <div class="vCenterKid"><i class="icon icon_video"></i></div>
                         </div>
-                        <a class="linkVid" href="#"></a>
-                        <div class="info">
-                            <div class="picto vCenter">
-                                <div class="vCenterKid"><i class="icon icon_video"></i></div>
-                            </div>
-                            <div class="info-container">
-                                <div class="vCenter">
-                                    <div class="vCenterKid">
-                                        <span class="category">{{ video.theme|trans_fallback('name') }}</span>
-                                        <p href="#" class="titleLink">{{ video|trans_fallback('title')|truncate( 40, true, '...') }}</p>
-                                    </div>
+                        <div class="info-container">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a>
+                                    <a href="#" class="date">{{ video.publishedAt|date('d.m.y') }} {{ agenda_leftbar_translate_hour(video.publishedAt|date('H:i'), true, true) }}</a>
+                                    <a href="#" class="titleLink">{{ video|trans_fallback('title')|truncate( 40, true, '...') }}</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
         </div>
-
-        {#<div class="popin-video video loading">#}
-            {#<div class="video-container state-init video"#}
-                 {#data-link="//www.example.com"#}
-                 {#data-email="//www.gmail.com">#}
-                {#<div id="video-player-popin" class="">#}
-                {#</div>#}
-                {#<div class="video-overlay"></div>#}
-                {#<div class="infos-bar">#}
-                    {#<div class="picto"><i class="icon icon_video"></i></div>#}
-                    {#<div class="info">#}
-                        {#<div class="vCenter">#}
-                            {#<div class="vCenterKid">#}
-                                {#<a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>#}
-                                {#<p></p>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-            {#<div class="popin-info info">#}
-                {#<a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>#}
-                {#<p></p>#}
-            {#</div>#}
-            {#<div class="popin-buttons buttons square">#}
-                {#<a href="#" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>#}
-                {#<a href="#" rel="nofollow" class="button twitter"><i class="icon icon_twitter"></i></a>#}
-                {#<a href="#" rel="nofollow" class="button link"><i class="icon icon_link"></i></a>#}
-                {#<a href="#" rel="nofollow" class="button email"><i class="icon icon_lettre"></i></a>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div class="ov"></div>#}
-        {#{{ render(controller('FDCEventMobileBundle:Global:shareEmailMedia',#}
-            {#{'section': '',#}
-             {#'detail': '',#}
-             {#'title': '',#}
-             {#'description': ''#}
-            {#}))#}
-        {#}}#}
+    </div>
     {% endif %}
+</div>
 {% endblock body %}
 
 {% block javascripts %}
