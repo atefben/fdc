@@ -256,9 +256,9 @@ $(document).ready(function() {
     });
     sliderMore.owlCarousel();
 
-    $('body').on('click', '#slider-more .owl-item', function() {
+/*    $('body').on('click', '#slider-more .owl-item', function() {
       setActiveMoreItems.trigger('to.owl.carousel', [$(this).index(), 400, true]);
-    });
+    });*/
   }
 
   if($('.home').length || $('.ba').length) {
