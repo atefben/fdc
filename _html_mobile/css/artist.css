@@ -253,7 +253,7 @@ h3{
 .film-slider .owl-item{
 
     width: 280px;
-    height: 540px;
+    height: auto;
 }
 .film-slider .img-container{
 
