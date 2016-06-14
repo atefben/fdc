@@ -1628,7 +1628,7 @@ $(document).ready(function() {
 
   if($('.home').length || $('.ba').length) {
     // Slider More
-    // =========================
+    // ========================#today .director a=
     var sliderThumb = $(".thumbnails").owlCarousel({ 
       nav          : false,
       dots         : false,
@@ -1709,12 +1709,21 @@ $(document).ready(function() {
     if($('wave').length == 0) {
       $('.audio-player').attr('data-sound',$(this).data('sound'));
       initAudioPlayers(true);
+
     } else {
       loadSound($(this).data('sound'));
     }
     
     setTimeout(function() {
       $('.fullscreenplayer').addClass('show');
+
+      //add time
+      var curr = waves[0].getDuration();
+
+      var minutes = parseInt(Math.floor(curr / 60));
+      var seconds = parseInt(curr - minutes * 60);
+
+       $('.duration .total').html(minutes+":"+seconds);
     }, 200);
   });
 

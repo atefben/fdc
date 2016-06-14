@@ -263,7 +263,7 @@ $(document).ready(function() {
 
   if($('.home').length || $('.ba').length) {
     // Slider More
-    // =========================
+    // ========================#today .director a=
     var sliderThumb = $(".thumbnails").owlCarousel({ 
       nav          : false,
       dots         : false,

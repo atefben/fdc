@@ -2178,6 +2178,7 @@ article .picto .icon{
 }
 #today .director a {
     color: #c8a461;
+    font-style: normal;
 }
 #today .links{
     position: absolute;
