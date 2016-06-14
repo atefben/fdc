@@ -172,12 +172,12 @@ class Controller extends BaseController
         $waitingPage = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FDCPageWaiting')
-            ->getSingleWaitingPageByRoute($request->get('_route'))
+            ->getSingleWaitingPageByRoute(str_replace('fdc_eventmobile', 'fdc_event', $request->get('_route')));
         ;
 
         if ($waitingPage) {
             $waitingPage->getBanner()->findTranslationByLocale('fr')->getFile()->getContext();
-            return $this->render('FDCEventBundle:Global:waiting-page.html.twig', array(
+            return $this->render('FDCEventMobileBundle:Global:waiting-page.html.twig', array(
                 'waitingPage' => $waitingPage
             ));
         }
