@@ -4559,7 +4559,7 @@ display: inline-block;
   position: relative;
   width: 334px;
 }
-.slideshow .thumbnails .thumb:before {
+/*.slideshow .thumbnails .thumb:before {
   background: transparent;
   background: -moz-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
   background: -webkit-gradient(left top, left bottom, color-stop(56%, transparent), color-stop(57%, transparent), color-stop(100%, rgba(20, 20, 20, 0.8)));
@@ -4577,7 +4577,7 @@ display: inline-block;
   left: 0;
   border:none;
   z-index: 1;
-}
+}*/
 .slideshow .thumbnails .thumb.active:before {
   background: transparent;
   background: -moz-linear-gradient(top, transparent 56%, transparent 57%, rgba(20, 20, 20, 0.8) 100%);
