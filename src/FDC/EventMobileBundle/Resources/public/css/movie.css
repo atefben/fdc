@@ -2677,12 +2677,12 @@ a{
 	padding: 35px 0;
 }
 .press .sub, .contact .sub{
-
 	color:#fff;
 	font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 	font-size: 22px;
 	text-align: center;
 	font-weight: 600;
+    margin-bottom: 21px;
 }
 .press .links{
 	text-align: center;
