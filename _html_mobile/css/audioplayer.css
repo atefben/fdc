@@ -35,7 +35,19 @@
     color:#999999;
     overflow: hidden;
     margin-bottom: 20px;
+	position:relative;
 
+}
+
+.audio-player:after{
+    content: '';
+    height: 112px;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(0,0,0,.6);
+    left: 0px;
+    top: 0px;
+    z-index: 0;
 }
 .audio-player .picto{
 
@@ -51,6 +63,8 @@
     margin-right: 20px;
     -webkit-transform: translate3d(0px, 0px, 0px);
     transform: translate3d(0px, 0px, 0px);
+    z-index: 1;
+    position: relative;
 }
 .audio-player .picto:after{
 	
@@ -65,13 +79,15 @@
 
 }
 
+.audio-player .date, .audio-player .hour {
+    z-index: 1;
+    position: relative;
+}
 .audio-player .picto .icon{
 	color:#c8a461;
 	font-size: 30px;
 	position: relative;
 	z-index: 2;
-
-
 }
 .audio-player .category{
 
@@ -81,6 +97,8 @@
 	font-weight: 700;
 	margin-top: 10px;
 	display: inline-block;
+    z-index: 1;
+    position: relative;
 }
 .audio-player p{
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
@@ -91,6 +109,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-top: 10px;
+    z-index: 1;
+    position: relative;
 
 }
 .audio-player .player-on, .audio-player .player-off{
@@ -103,9 +123,13 @@
 
 .audio-player .player-on{
 	opacity: 0;
+    z-index: 1;
+    position: relative;
 }
 .audio-player.on .player-off{
 	margin-top: -85px;
+    z-index: 1;
+    position: relative;
 }
 .audio-player.on .player-on{
 	opacity: 1;
@@ -116,19 +140,29 @@
 	margin-bottom: 10px;
     -webkit-transform: translate3d(0px, 0px, 0px);
     transform: translate3d(0px, 0px, 0px);
+    z-index: 1;
+    position: relative;
 }
 .audio-player .duration .curr{
 	color: #fff;
 	margin-right: 2px;
+    z-index: 1;
+    position: relative;
 }
 .audio-player .duration .total{
 	margin-left: 2px;
+    z-index: 1;
+    position: relative;
 }
 .audio-player .wave-container{
 
 	width: 425px;
     float: left;
+    z-index: 1;
+    position: relative;
 }
 .audio-player .picto .icon_pause, .audio-player .picto .icon_play{
 	font-size: 20px;
+    z-index: 1;
+    position: relative;
 }
