@@ -2036,6 +2036,21 @@ $(document).ready(function() {
   // init timeline
   moveTimeline($('.timeline-container').find('.active'),$('.timeline-container').find('.active').data('date'), false);
 
+  var day = $('.timeline-container').find('.active').data('date');
+
+  if(day == 21) {
+    $('#calendar .next').addClass('disabled');
+  }else{
+    $('#calendar .next').removeClass('disabled');
+  }
+
+  if(day == 11) {
+    $('#calendar .prev').addClass('disabled');
+  }else{
+    $('#calendar .prev').removeClass('disabled');
+  }
+
+
   $('#timeline a').on('click', function(e) {
     e.preventDefault();
 
@@ -2050,6 +2065,14 @@ $(document).ready(function() {
 
     var day = $('.timeline-container').find('.active').data('date');
 
+    $('#calendar .next').removeClass('disabled');
+
+    if(day == 12) {
+      $('#calendar .prev').addClass('disabled');
+    }else{
+      $('#calendar .prev').removeClass('disabled');
+    }
+
     if(day == 11) {
       return false;
     } else {
@@ -2063,8 +2086,17 @@ $(document).ready(function() {
     var day    = $('.timeline-container').find('.active').data('date'), 
         numDay = 0;
 
+    $('#calendar .prev').removeClass('disabled');
+
+    if(day == 20) {
+      $('#calendar .next').addClass('disabled');
+    }else{
+      $('#calendar .next').removeClass('disabled');
+    }
+
     if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')) {
       return false;
+
     } else {
       moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1);
     }
