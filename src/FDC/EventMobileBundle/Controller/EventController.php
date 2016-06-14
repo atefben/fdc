@@ -70,53 +70,6 @@ class EventController extends Controller
             throw $this->createNotFoundException('Page event is not well-configured');
         }
 
-        $filters = array(
-            'dates'  => array(
-                array(
-                    'slug'    => 'all',
-                    'content' => 'Toutes',
-                ),
-                array(
-                    'slug'    => 'date1',
-                    'content' => 'Date 1',
-                ),
-                array(
-                    'slug'    => 'date2',
-                    'content' => 'Date 2',
-                ),
-                array(
-                    'slug'    => 'date3',
-                    'content' => 'Date 3',
-                ),
-                array(
-                    'slug'    => 'date4',
-                    'content' => 'Date 4',
-                ),
-                array(
-                    'slug'    => 'date5',
-                    'content' => 'Date 5',
-                ),
-                array(
-                    'slug'    => 'date6',
-                    'content' => 'Date 6',
-                ),
-            ),
-            'themes' => array(
-                array(
-                    'slug'    => 'all',
-                    'content' => 'Tous',
-                ),
-                array(
-                    'slug'    => 'theme1',
-                    'content' => 'Conférence de presse',
-                ),
-                array(
-                    'slug'    => 'theme2',
-                    'content' => 'Montée des marches',
-                ),
-            )
-        );
-
         $events =
             $this
                 ->getDoctrineManager()

@@ -3,16 +3,17 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/event.css" %}
+    {% stylesheets "bundles/fdceventmobile/css/events.css" %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
 
 {% block body %}
-    <div id="main" class="events loading">
+<div id="main" class="events" data-menu="events">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+     <div class="container">
     
         <h2 class="title one-line">{{ 'event.title.lesevenements'|trans }}</h2>
 
@@ -47,8 +48,7 @@
             </div>
         </div>
 
-        <div id="list-events" class="list" data-type="evenement">
-            <div class="grid-sizer"></div>
+        <div id="list-events" class="list">
             {% for event in events %}
                 <div class="item {{ event.theme|trans_fallback('slug') }} {{ event.publishedAt|date('Y-m-d') }} evenement">
                     <a href="{{ path('fdc_eventmobile_event_get', {'slug': event|trans_fallback('slug') }) }}"></a>
@@ -65,21 +65,8 @@
                 </div>
             {% endfor %}
         </div>
-        {#<a href="http://www.festival-cannes.com/fr/archivesPage.html" class="read-more">#}
-            {#{{ 'event.btn.afficherplusdevenement'|trans|raw }}#}
-        {#</a>#}
-        {#<div class="list-article">#}
-            {#<div class="bandeau-list vCenter push-footer">#}
-                {#<div class="bandeau-list-img vCenterKid" style="background-image:url({{ asset('bundles/fdcevent/img/jurys/push.jpg') }});">#}
-                    {#<h2 class="title title-list-header">{{ 'event.title.retrospective'|trans }}</h2>#}
-                    {#<a href="#" class="bandeau-lien">#}
-                        {#<i class="icon icon_fleche-right"></i>#}
-                        {#{{ 'event.btn.decouvrirlarubrique'|trans }}#}
-                    {#</a>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
     </div>
+</div>
 {% endblock body %}
 
 {% block javascripts %}
