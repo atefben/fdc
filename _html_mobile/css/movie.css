@@ -517,7 +517,7 @@ a{
 	font-size: 25px;
 	margin-bottom: 5px;
 }
-.competition .info a{
+.competition .info .director {
 	font-size: 22px;
 	font-style: italic;
 	font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
