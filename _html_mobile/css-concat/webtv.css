@@ -5563,12 +5563,14 @@ article .picto .icon{
   position: relative;
 }
 #today .trailer .icon-container{
-  border: solid thin #fff;
   width: 50px;
   height: 50px;
-  border-radius: 25px;
   margin: auto;
   line-height: 50px;
+}
+
+#today .trailer .icon-container .icon{
+    font-size: 3.3rem;
 }
 #today .trailer h3.title{
   font-size: 1.4rem;
@@ -5879,6 +5881,28 @@ body.overlay::after {
   opacity: 1;
   -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+/* landing page */
+
+.container-landing {
+    margin: 67px auto 0;
+    padding-bottom: 67px;
+    display: block;
+    color: #666;
+    line-height: 26px;
+    font-size: 1.3rem;
+    font-family: "Camphor W01 Regular",Arial,Helvetica,sans-serif;
+}
+
+
+.container-landing strong{
+    font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+}
+
+.container-landing a{
+    font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+    color: #c8a461;
 }
 
 
