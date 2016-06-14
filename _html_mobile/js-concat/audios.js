@@ -374,9 +374,12 @@ function initAudioPlayers(autoplay) {
     // load the url of the sound
     wave.load($(this).data('sound'));
 
+
+
     // once it's ready
     wave.on('ready', function() {
       $(wave.container).parents('.audio-player').removeClass('loading');
+
       if(autoplay) {
         wave.play();
         // update current time
@@ -399,6 +402,7 @@ function initAudioPlayers(autoplay) {
     });
 
     waves.push(wave);
+    
     // on click on play/pause
     $(this).find('.playpause').on('click', function(e) {
       e.preventDefault();
@@ -429,7 +433,7 @@ function initAudioPlayers(autoplay) {
         }
         $audioplayer.find('.duration .total').text(minutes + ':' + seconds);
       }
-      
+
       // update current time
       inter = setInterval(function() {
         var curr = wave.getCurrentTime();
@@ -442,7 +446,7 @@ function initAudioPlayers(autoplay) {
         $audioplayer.find('.duration .curr').text(minutes + ':' + seconds);
       }, 1000);
 
-      
+
       if(!$audioplayer.hasClass('pause')) {
         for(var i = 0; i<waves.length; i++) {
           if(waves[i].isPlaying() && waves[i].container.id != wave.container.id) {
@@ -450,7 +454,7 @@ function initAudioPlayers(autoplay) {
           }
         }
       }
-      
+
       $('.audio-player').not($audioplayer).removeClass('pause');
       $('.audio-player').not($audioplayer).removeClass('on');
       $('.audio-player').not($audioplayer).find(".playpause .icon").addClass('icon_audio');
@@ -461,6 +465,8 @@ function initAudioPlayers(autoplay) {
       wave.playPause();
 
       $audioplayer.toggleClass('pause');
+
+
     });
   });
 }
@@ -472,6 +478,7 @@ function stopSound() {
 }
 
 function loadSound(url) {
+
   waves[0].load(url);
 }
 
@@ -515,12 +522,21 @@ $(document).ready(function() {
     if($('wave').length == 0) {
       $('.audio-player').attr('data-sound',$(this).data('sound'));
       initAudioPlayers(true);
+
     } else {
       loadSound($(this).data('sound'));
     }
     
     setTimeout(function() {
       $('.fullscreenplayer').addClass('show');
+
+      //add time
+      var curr = waves[0].getDuration();
+
+      var minutes = parseInt(Math.floor(curr / 60));
+      var seconds = parseInt(curr - minutes * 60);
+
+       $('.duration .total').html(minutes+":"+seconds);
     }, 200);
   });
 
