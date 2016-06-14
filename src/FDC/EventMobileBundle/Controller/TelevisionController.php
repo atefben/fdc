@@ -260,6 +260,11 @@ class TelevisionController extends Controller
 
         $channelsVideos = array();
         foreach ($groups as $key => $group) {
+            $lastVideo = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:MediaVideo')
+                ->getLastMediaVideoByWebTv($festival, $channelsIds[$group['channel']])
+            ;
             if ($stickyId == $group['channel']) {
                 $nbVideos = $this
                     ->getDoctrineManager()
@@ -268,7 +273,7 @@ class TelevisionController extends Controller
                 ;
                 $stickyChannelVideo = array(
                     'channel'  => $channelsIds[$group['channel']],
-                    'video'    => $group['lastVideo'],
+                    'video'    => $lastVideo,
                     'nbVideos' => count($nbVideos),
 
                 );
@@ -280,7 +285,7 @@ class TelevisionController extends Controller
                 ;
                 $channelsVideos[] = array(
                     'channel'  => $channelsIds[$group['channel']],
-                    'video'    => $group['lastVideo'],
+                    'video'    => $lastVideo,
                     'nbVideos' => count($nbVideos),
                 );
             }
