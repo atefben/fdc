@@ -39,7 +39,7 @@ $(document).ready(function() {
       $('.audio-player').attr('data-sound',$(this).data('sound'));
       initAudioPlayers(true);
     } else {
-      $.loadSound($(this).data('sound'));
+      loadSound($(this).data('sound'));
     }
     
     setTimeout(function() {
@@ -55,7 +55,7 @@ $(document).ready(function() {
       $('.fullscreenplayer').removeClass('show');
       if($('.audios').length !==0) {
         $('.playpause').find(".icon").removeClass("icon_play");
-        $.stopSound();
+        stopSound();
       }
     }, 200);
   });
