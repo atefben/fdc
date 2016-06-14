@@ -9,24 +9,22 @@
 {% endblock %}
 
 {% block body %}
-    <div id="main" class="detail-event">
-
+    <div id="main" data-menu="selection" class="detail-event">
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
-
-
-
-
-
-
         <div class="container">
-
             <div class="article-title">
                 <span class="category">{{ event.theme|trans_fallback('name') }}</span>
                 <h2>{{ event|trans_fallback('title') }}</h2>
             </div>
+            {% include 'FDCEventMobileBundle:News:widgets/single-photo.html.twig' with({'photo':event.header}) only %}
 
-            {% include 'FDCEventMobileBundle:News:widgets/single-photo.html.twig' with({'photo': event.header}) only %}
+            <div class="chapeau">
+                {{ event|trans_fallback('introduction')|raw }}
+            </div>
+            {% if event.signature  is defined and event.signature != null %}
+                <div class="author">{{ event.signature  }}</div>
+            {% endif %}
 
             {% for widget in event.widgets %}
                 {% if widget.widgetType == 'EventWidgetImage' and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
@@ -64,24 +62,24 @@
         {% if programmations is not empty %}
             {#TODO create movie bloc#}
             <div class="film">
-                {#<div class="info-film">#}
-                    {#<div class="wrapper">#}
-                        {#<div class="vCenter">#}
-                            {#<div class="vCenterKid">#}
-                                {#<div class="poster">#}
-                                    {#<img src="./img/article/007.jpg" alt="">#}
-                                {#</div>#}
-                                {#<div class="text-container">#}
-                                    {#<span class="category">Un certain regard</span>#}
-                                    {#<h3>A CHANGER </h3>#}
-                                    {#<p class="director"><a href="#">Eric HANNEZO</a></p><p>#}
-                                    {#</p><p>France - 2014</p>#}
-                                    {#<p>1h35</p>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
+                {#<div class="info-film">
+                    <div class="wrapper">
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <div class="poster">
+                                    <img src="./img/article/007.jpg" alt="">
+                                </div>
+                                <div class="text-container">
+                                    <span class="category">Un certain regard</span>
+                                    <h3>A CHANGER </h3>
+                                    <p class="director"><a href="#">Eric HANNEZO</a></p><p>
+                                    </p><p>France - 2014</p>
+                                    <p>1h35</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>#}
                 <div class="programmation-film">
                     <div class="wrapper">
                         <div class="vCenter">

@@ -3326,6 +3326,10 @@ a{
     background-color: #2e2e2e;
     margin-top: 40px;
 }
+.detail-event .film {
+    height: 365px;
+}
+
 .info-film {
     background-color: #2e2e2e;
     color: #fff;
@@ -3388,6 +3392,9 @@ a{
     background-color: #141414;
     height: 50%;
     overflow: hidden;
+}
+.detail-event .programmation-film {
+    height: 100%;
 }
 .film .programmation-film .wrapper {
     color: #fff;
