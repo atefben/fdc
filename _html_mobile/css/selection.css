@@ -60,13 +60,12 @@
 	padding: 0;
 }
 .selection-item .author, .selection-item .rank{
-
-	text-align: center;
+    text-align: center;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
   color: #c8a461;
   padding-top: 10px;
-  font-style: italic;
+  font-style: normal;
 }
 .title-list-cat{
   border-bottom: 1px solid #2c2c2c;

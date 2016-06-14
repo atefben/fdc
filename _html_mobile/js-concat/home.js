@@ -1740,6 +1740,7 @@ $(document).ready(function() {
     }, 200);
   });
 });
+/*
 // parse URL in string
 String.prototype.parseURL = function() {
   return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g, function(url) {
@@ -1953,6 +1954,8 @@ function loadTweets(callback) {
           if (textTweet.length>180) {
             textTweet = (textTweet.substr(0, 180) + "...");
         }
+
+
           posts.push({'type': 'twitter', 'text': '<div class="vCenter text-container"><div class=" content vCenterKid"><p class="text">' + textTweet + '</p></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})
 
           if(i==data.length - 1) {
@@ -1981,6 +1984,7 @@ function loadTweets(callback) {
       }
     }
   });
+
 }
 
 function shuffle(o){  
@@ -2131,6 +2135,8 @@ $(document).ready(function() {
     });
   });
 });
+*/
+
 function initAddToSelection() {
   $('.picto-my-selection').on('click', function(e) {
     e.stopPropagation();
