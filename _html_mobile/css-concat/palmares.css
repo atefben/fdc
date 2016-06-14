@@ -1303,6 +1303,7 @@ from desktop
   display: block;
   font-size: 23px;
   margin-top: 5px;
+    width:330px;
 }
 .featured-videos .videosSlider .vid .info span {
   color: #666;
@@ -3302,7 +3303,7 @@ img.portrait{
 .movie-real{
 	color:#c8a461;
 	font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-	font-style: italic;
+	font-style: normal;
 	font-size: 20px;
 }
 .movie-real a{
