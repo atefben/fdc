@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-    <div id="main participage-page" data-menu="participate">
+    <div id="main" class="participate-page" data-menu="participate">
 
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
@@ -31,7 +31,9 @@
 
         <div class="instructions-container">
             <section class="accordeon">
-                {{ content|trans_fallback('mainDescription')|raw }}
+                <div class="description center">
+                    {{ content|trans_fallback('mainDescription')|raw }}
+                </div>
             </section>
 
             {# SECTION - SE RENDRE A CANNES #}
@@ -58,7 +60,9 @@
                     <i class="icon accordion icon_case-plus"></i>
                 </div>
                 <div class="section-contain">
-                    {{ content|trans_fallback('informationDescription')|raw }}
+                    <div class="description center">
+                        {{ content|trans_fallback('informationDescription')|raw }}
+                    </div>
                     {% for widget in content.informationWidgets %}
                         {% if class(widget) == "FDCPagePrepareWidgetColumn" %}
                             {% include 'FDCEventMobileBundle:Participate:widgets/column.html.twig' %}
@@ -96,7 +100,9 @@
                         <i class="icon accordion icon_case-plus"></i>
                     </div>
                     <div class="section-contain">
-                        {{ content|trans_fallback('serviceDescription')|raw }}
+                        <div class="description">
+                            {{ content|trans_fallback('serviceDescription')|raw }}
+                        </div>
                     </div>
                 </section>
             {% endif %}

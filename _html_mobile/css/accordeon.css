@@ -76,6 +76,10 @@ section{
     line-height: 36px; 
 
 }
+.participate-page .description {
+    margin-bottom: 0;
+    padding-bottom: 50px;
+}
 #main{
     background-color: #fff;
 }
