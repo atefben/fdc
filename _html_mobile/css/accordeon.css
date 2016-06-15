@@ -73,12 +73,14 @@ section{
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
     margin-bottom: 50px;
     font-size: 24px;
-    line-height: 36px; 
-
+    line-height: 36px;
 }
-.participate-page .description {
-    margin-bottom: 0;
-    padding-bottom: 50px;
+.participate-page .description p,
+.participate-page .description ul {
+    margin-bottom: 50px;
+}
+.participate-page .description p strong {
+    color: #c29f5f;
 }
 #main{
     background-color: #fff;

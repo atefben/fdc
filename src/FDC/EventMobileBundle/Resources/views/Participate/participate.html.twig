@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-    <div id="main participage-page" data-menu="participate">
+    <div id="main" class="participate-page" data-menu="participate">
 
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
@@ -41,7 +41,9 @@
 
             {% if localeSlugs.fr == 'festival-mode-d-emploi' %}
                 <section class="accordeon">
-                    {{ participatePage|trans_fallback('content')|raw }}
+                    <div class="description center">
+                        {{ participatePage|trans_fallback('content')|raw }}
+                    </div>
                 </section>
             {% endif %}
 
@@ -69,13 +71,16 @@
                         </div>
 
                         <div class="section-contain">
+                            <div class="description">
                             {% if s.section|trans_fallback('description') %}
                                 {{ s.section|trans_fallback('description')|raw }}
                             {% endif %}
+                            </div>
 
                             {#                  #}
                             {#     WIDGETS      #}
                             {#                  #}
+                            <div class="description">
                             {% for widget in s.section.widgets %}
                                 {% if class(widget) == "FDCPageParticipateSectionWidgetTypeone" %}
                                     {% include 'FDCEventMobileBundle:Participate:widgets/participate-one.html.twig' %}
@@ -91,6 +96,7 @@
                                     {% include 'FDCEventMobileBundle:Participate:widgets/participate-subtitle.html.twig' %}
                                 {% endif %}
                             {% endfor %}
+                            </div>
                         </div>
                     </section>
                     {% endif %}
