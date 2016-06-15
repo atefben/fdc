@@ -5,5 +5,3 @@
     <strong class="title-infos">{{ widget|trans_fallback('title') }}</strong>
     <p class="descrip">{{ widget|trans_fallback('content')|raw }}</p>
 </div>
-
-rsync -avzP --rsh="ssh -p 10025" --delete --cvs-exclude --dry-run --exclude=_index.php --exclude=*.gz --exclude=*~ --exclude=.svn --exclude=.git --exclude=_html --exclude=vendor --exclude=app/logs --exclude=app/cache --exclude=web/uploads --exclude=web/bundles --exclude=app/config/parameters.yml --exclude=.gitignore --exclude=UPGRADE-2.2.md --exclude=UPGRADE-2.3.md --exclude=UPGRADE-2.4.md --exclude=UPGRADE.md --exclude=LICENSE --exclude=README.md --exclude=composer.phar --exclude=app/sessions --exclude=web/css --exclude=web/js --exclude=app/bootstrap.php.cache --exclude=app/AppCache.php --exclude=.htaccess --exclude=web/app_dev.php --exclude=.travis.yml --exclude=app/config/config_local.yml -P ./ root@91.208.226.208:/tmp/www.stim-recompenses.com/_online/
