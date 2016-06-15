@@ -1,5 +1,5 @@
 {% trans_default_domain 'FDCPressBundle' %}
-<form action="{{ path("fdc_press_security_check") }}" method="post" {% if error %}class="error"{% endif %} id="lockedForm">
+<form action="{{ path("fdc_pressmobile_security_check") }}" method="post" {% if error %}class="error"{% endif %} id="lockedForm">
     <input type="hidden" id="username" name="_username" value="press" required="required" />
     <input type="password" id="password" name="_password" required="required" placeholder="{{ 'press.header.placeholder.motdepasse'|trans }}"/>
     <input type="hidden" name="_target_path" value="{{ url(current_route, current_route_params) }}" />

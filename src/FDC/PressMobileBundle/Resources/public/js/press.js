@@ -160,8 +160,8 @@ $(document).ready(function() {
   });
 
   // on submit : check if there are errors in the form
-  $('.newsletter form').on('submit', function() {
-
+  $('.newsletter form').on('submit', function(e) {
+    e.preventDefault();
     var input = $('.newsletter #email');
     var empty = false;
 
@@ -183,87 +183,11 @@ $(document).ready(function() {
     if($('.newsletter .error').length || empty) {
       return false;
     } else {
-      // ajax call newsletter
-
-      // show confirmation 
-      $('.newsletter form').addClass('hide');
-      $('#confirmation span').html($('#email').val());
-      $('#confirmation').addClass('show');
-
+      window.open('http://www.online-festival.com/subscribtion/subscribe.aspx?email=' + $('#email').val(), '_blank');
       return false;
     }
   });
 });
-/*var GLOBALS = {
-  "locale" : "fr",
-  "defaultDate" : "2016-05-12",
-  "api" : {
-    "instagram" : {
-      "token" : "18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
-      "hashtag" : "Cannes2016",
-    },
-    "twitter" : {
-      "hashtag" : "%23Cannes2016",
-      "count" : 10,
-      "uri" : "search_tweets",
-      "url" : "twitter.php"
-    }
-  },
-  "baseUrl" : "http://html.festival-cannes-2016.com.ohwee.fr",
-  "urls" : {
-    "calendarDay1":"calendar-day1.html",
-    "calendarDay2":"calendar-day2.html",
-    "eventUrl" : "load-evenements.php",
-    "newsUrl" : "news.html",
-    "newsUrlNext" : "more-news.html",
-    "loadPressRelease" : "more-communique.html",
-    "selectionUrl" : "selection.html"
-  },
-  "texts" : {
-    "url" : {
-      "title" : "titre test"
-    },
-    "popin" : {
-      "error" : "valide",
-      "empty" : "renseignée",
-      "valid" : "Votre email a bien été envoyé !",
-      "copy"  :  "lien copié ! "
-    },
-    "googleMap" : {
-      "title" : "Festival de Cannes"
-    },
-    "readMore" : {
-      "more" : "Afficher <strong>plus d'actualités</strong>",
-      "nextDay" : "Passer au <strong>jour précédent</strong>"
-    },
-    "newsletter" : {
-      "errorsNotValide" : "L'adresse e-mail n'est pas valide",
-      "errorsMailEmpty" : "Veuillez saisir une adresse e-mail"
-    },
-    'agenda' : {
-      'delete' : "Supprimer de votre agenda"
-    },
-    "press" : {
-      "errorsNotValide" : "Le mot de passe n'est pas valide",
-      "errorsPwdEmpty" : "Veuillez saisir un mot de passe"
-    }
-  },
-  "player": {
-    "file" : "./files/mov_bbb.mp4",
-    "image" : "//dummyimage.com/960x540/c8a461/000.png",
-    "title" : "Video 1"
-  },
-  "calendar": {
-    "labelFormat": {
-      "fr" : "H [H]",
-      "default" : "h A"
-    }
-  },
-  "socialWall": {
-    "points" : [50,60,50,45,70,50,100,120,70,80,90,70],
-    "heightGraph" : 200
-  }
-};*/
 $(document).ready(function() {
 
 	$('.'+ $('#main').data('menu')).addClass('active-page');
@@ -552,12 +476,12 @@ $(document).ready(function() {
               // allows to display two events at same hour (or overlap) in the same column
               // it works only if element (fc-event) are added in chronologic order
               var startDate = new Date($(this).data('start')).getTime();
-              if(startDate < endDate) {
+              /*if(startDate < endDate) {
                 $(this).addClass('half');
                 if(!$(this).prev('.fc-event').hasClass('half')) {
                   $(this).prev('.fc-event').addClass('half');
                 }
-              }
+              }*/
               endDate = new Date($(this).data('end')).getTime();
 
               // based on time start and duration, calculate positions of event
@@ -601,6 +525,9 @@ $(document).ready(function() {
 
               // store the Event Object in the DOM element so we can get to it later
               $(this).data('eventObject', eventObject);
+
+              heigthEvent();
+
             });
           });
 
@@ -681,6 +608,7 @@ $(document).ready(function() {
           $('.popin-event').remove();
           // display the html
           $('.calendar').append(data);
+
           // $('.popin-event').css('top', $(document).scrollTop());
           $('.popin-event .fc-event').each(function () {
             $(this).find('.category').css('background-color', $(this).data('color'));
@@ -790,6 +718,16 @@ $(document).ready(function() {
         }
       });
     }
+
+    function heigthEvent() {
+          $('.fc-event').each(function(index, value){
+            var h = $(value).attr('data-duration');
+            h = h*2.65;
+            console.log(h);
+            $(value).css('height',h+'px');
+          })
+    }
+
   }
 });
 
@@ -859,52 +797,8 @@ $(document).ready(function() {
     $('#popin-press #password').on('blur', function(e) {
       window.scrollTo(0,scrollTop);
     });
-
-    $('#popin-press form').on('submit', function(e) {
-      $('#popin-press #password').blur();
-      e.preventDefault();
-
-      var v = $(this).find('input[type="password"]').val();
-      // todo on server : security check password.
-
-      if(v == "test") {
-        localStorage.setItem('press-pwd', v);
-        document.body.removeEventListener('touchmove', listener,false);
-        // $.cookie('press', '1', { expires: 365 });
-        $('.press').removeClass('press-locked');
-        $('.press').addClass('press-unlocked');
-        $('.locked').remove();
-        $('#overlay').remove();
-        $("#popin-press").removeClass('visible');
-      } else {
-        $(this).addClass('error');
-      }
-    });
   });
 
-  // if password is in localstorage
-  if(localStorage.getItem('press-pwd')) {
-    $('.press').removeClass('press-locked');
-    $('.press').addClass('press-unlocked');
-    $('.locked').remove();
-  }
-
-  $('.locked form').on('submit', function(e) {
-    e.preventDefault();
-
-    var v = $(this).find('input[type="password"]').val();
-    // todo on server : security check password.
-
-    if(v == "test") {
-      localStorage.setItem('press-pwd', v);
-      $('.press').removeClass('press-locked');
-      $('.press').addClass('press-unlocked');
-      $('.locked').addClass('valid');
-      $('.locked').html('<p class="press_confirmation">les contenus qui vous sont réservés sont à présents accessibles.</p>');
-    } else {
-      $(this).addClass('error');
-    }
-  });
 });
 function filter() {
   $('.filter').each(function() {

@@ -25,7 +25,9 @@
             },
             film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg',
         }) -%}
-    )"></div>
+    )">
+        <a href="{{ path('fdc_eventmobile_movie_get', {slug: movie.slug}) }}"></a>
+    </div>
     {% if award_association is defined and award_association %}
         <i class="icon icon_palme palme-dor-img"></i>
         <div class="title-prize verticalline">
@@ -42,24 +44,33 @@
                 <h3 class="people-name verticalline">
                     {% for assocationMutual in award_association.award.associations %}
                         {% set person = assocationMutual.person %}
-                        {{ person.fullName }}{{ loop.last == true ? '' : ',' }}
+                        <a href="{{ path('fdc_eventmobile_artist_get', {slug: person.slug}) }}">
+                            {{ person.fullName }}{{ loop.last == true ? '' : ',' }}
+                        </a>
                     {% endfor %}
                 </h3>
             {% else %}
                 {% set person = award_association.person %}
                 <h3 class="people-name verticalline">
-                    {{ person.fullName }}
+                    <a href="{{ path('fdc_eventmobile_artist_get', {slug: person.slug}) }}">
+                        {{ person.fullName }}
+                    </a>
                 </h3>
             {% endif %}
         {% endif %}
     {% endif %}
-    <h3 class="movie-title">{{ movie.titleVO }}</h3>
+    <h3 class="movie-title">
+        <a href="{{ path('fdc_eventmobile_movie_get', {slug: movie.slug}) }}">
+            {{ movie.titleVO }}
+        </a>
+    </h3>
     {% if movie.findTranslationByLocale(app.request.get('_locale')) %}
         {% if movie.findTranslationByLocale(app.request.get('_locale')).title %}
             {% if movie.findTranslationByLocale(app.request.get('_locale')).title != movie.titleVO %}
                 <h4 class="sub-title-item">
-                    ({{ movie.findTranslationByLocale(app.request.get('_locale')).title }}
-                    )</h4>
+                    <a href="{{ path('fdc_eventmobile_movie_get', {slug: movie.slug}) }}">
+                        ({{ movie.findTranslationByLocale(app.request.get('_locale')).title }})
+                    </a></h4>
             {% endif %}
         {% endif %}
     {% endif %}

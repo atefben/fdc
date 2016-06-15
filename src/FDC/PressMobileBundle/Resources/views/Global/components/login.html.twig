@@ -7,10 +7,6 @@
             {{- 'press.header.title.contenusverouilles'|trans -}}
         </h3>
         <p>{{ 'press.header.text.journalistesveuillezsaisirvotremotdepasse'|trans }}</p>
-        {{ render(controller('FDCPressBundle:Security:setCurrentRoute', {'originalRequest': app.request})) }}
-    </div>
-{% else %}
-    <div class="locked">
-        <p class="access">{{ 'press.header.success.contenusdebloques'|trans|raw }}</p>
+        {{ render(controller('FDCPressMobileBundle:Security:setCurrentRoute', {'originalRequest': app.request})) }}
     </div>
 {% endif %}

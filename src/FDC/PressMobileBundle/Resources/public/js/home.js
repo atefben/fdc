@@ -1110,8 +1110,8 @@ $(document).ready(function() {
   });
 
   // on submit : check if there are errors in the form
-  $('.newsletter form').on('submit', function() {
-
+  $('.newsletter form').on('submit', function(e) {
+    e.preventDefault();
     var input = $('.newsletter #email');
     var empty = false;
 
@@ -1133,87 +1133,11 @@ $(document).ready(function() {
     if($('.newsletter .error').length || empty) {
       return false;
     } else {
-      // ajax call newsletter
-
-      // show confirmation 
-      $('.newsletter form').addClass('hide');
-      $('#confirmation span').html($('#email').val());
-      $('#confirmation').addClass('show');
-
+      window.open('http://www.online-festival.com/subscribtion/subscribe.aspx?email=' + $('#email').val(), '_blank');
       return false;
     }
   });
 });
-/*var GLOBALS = {
-  "locale" : "fr",
-  "defaultDate" : "2016-05-12",
-  "api" : {
-    "instagram" : {
-      "token" : "18360510.5b9e1e6.de870cc4d5344ffeaae178542029e98b",
-      "hashtag" : "Cannes2016",
-    },
-    "twitter" : {
-      "hashtag" : "%23Cannes2016",
-      "count" : 10,
-      "uri" : "search_tweets",
-      "url" : "twitter.php"
-    }
-  },
-  "baseUrl" : "http://html.festival-cannes-2016.com.ohwee.fr",
-  "urls" : {
-    "calendarDay1":"calendar-day1.html",
-    "calendarDay2":"calendar-day2.html",
-    "eventUrl" : "load-evenements.php",
-    "newsUrl" : "news.html",
-    "newsUrlNext" : "more-news.html",
-    "loadPressRelease" : "more-communique.html",
-    "selectionUrl" : "selection.html"
-  },
-  "texts" : {
-    "url" : {
-      "title" : "titre test"
-    },
-    "popin" : {
-      "error" : "valide",
-      "empty" : "renseignée",
-      "valid" : "Votre email a bien été envoyé !",
-      "copy"  :  "lien copié ! "
-    },
-    "googleMap" : {
-      "title" : "Festival de Cannes"
-    },
-    "readMore" : {
-      "more" : "Afficher <strong>plus d'actualités</strong>",
-      "nextDay" : "Passer au <strong>jour précédent</strong>"
-    },
-    "newsletter" : {
-      "errorsNotValide" : "L'adresse e-mail n'est pas valide",
-      "errorsMailEmpty" : "Veuillez saisir une adresse e-mail"
-    },
-    'agenda' : {
-      'delete' : "Supprimer de votre agenda"
-    },
-    "press" : {
-      "errorsNotValide" : "Le mot de passe n'est pas valide",
-      "errorsPwdEmpty" : "Veuillez saisir un mot de passe"
-    }
-  },
-  "player": {
-    "file" : "./files/mov_bbb.mp4",
-    "image" : "//dummyimage.com/960x540/c8a461/000.png",
-    "title" : "Video 1"
-  },
-  "calendar": {
-    "labelFormat": {
-      "fr" : "H [H]",
-      "default" : "h A"
-    }
-  },
-  "socialWall": {
-    "points" : [50,60,50,45,70,50,100,120,70,80,90,70],
-    "heightGraph" : 200
-  }
-};*/
 $(document).ready(function() {
 
 	$('.'+ $('#main').data('menu')).addClass('active-page');
@@ -1697,14 +1621,14 @@ $(document).ready(function() {
     });
     sliderMore.owlCarousel();
 
-    $('body').on('click', '#slider-more .owl-item', function() {
+/*    $('body').on('click', '#slider-more .owl-item', function() {
       setActiveMoreItems.trigger('to.owl.carousel', [$(this).index(), 400, true]);
-    });
+    });*/
   }
 
   if($('.home').length || $('.ba').length) {
     // Slider More
-    // =========================
+    // ========================#today .director a=
     var sliderThumb = $(".thumbnails").owlCarousel({ 
       nav          : false,
       dots         : false,
@@ -1785,12 +1709,21 @@ $(document).ready(function() {
     if($('wave').length == 0) {
       $('.audio-player').attr('data-sound',$(this).data('sound'));
       initAudioPlayers(true);
+
     } else {
-      $.loadSound($(this).data('sound'));
+      loadSound($(this).data('sound'));
     }
     
     setTimeout(function() {
       $('.fullscreenplayer').addClass('show');
+
+      //add time
+      var curr = waves[0].getDuration();
+
+      var minutes = parseInt(Math.floor(curr / 60));
+      var seconds = parseInt(curr - minutes * 60);
+
+       $('.duration .total').html(minutes+":"+seconds);
     }, 200);
   });
 
@@ -1802,11 +1735,12 @@ $(document).ready(function() {
       $('.fullscreenplayer').removeClass('show');
       if($('.audios').length !==0) {
         $('.playpause').find(".icon").removeClass("icon_play");
-        $.stopSound();
+        stopSound();
       }
     }, 200);
   });
 });
+
 // parse URL in string
 String.prototype.parseURL = function() {
   return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g, function(url) {
@@ -1831,7 +1765,8 @@ String.prototype.parseHashtag = function(twitter) {
   });
 };
 
-function moveTimeline(element, day,url){
+function moveTimeline(element, day, ajax){
+  ajax = typeof ajax !== 'undefined' ? ajax : true;
   var numDay = 0;
 
   if(day == 11) {
@@ -1845,25 +1780,30 @@ function moveTimeline(element, day,url){
   $('#timeline .timeline-container').css('left', - numDay * 130 + 'px');
   $('#timeline a').removeClass('active');
   element.addClass('active');
-  
-  $('.articles-container').animate({
-    opacity: 0
-  }, 500, function() {
-    $.ajax({
-      type: "GET",
-      dataType: "html",
-      cache: false,
-      url: GLOBALS.urls.newsUrl,
-      success: function(data) {
-        $('.articles-container').html(data);
-        initAddToSelection();
-        initSlideshows();
-        $('.articles-container').animate({
-          opacity: 1
-        }, 500);
-      }
+
+  if (ajax == true) {
+    $('.articles-container').animate({
+      opacity: 0
+    }, 500, function () {
+      $.ajax({
+        type: "GET",
+        dataType: "html",
+        cache: false,
+        url: GLOBALS.urls.newsUrl,
+        data: {
+          'timestamp': element.attr('data-timestamp')
+        },
+        success: function (data) {
+          $('.articles-container').html(data);
+          initAddToSelection();
+          initSlideshows();
+          $('.articles-container').animate({
+            opacity: 1
+          }, 500);
+        }
+      });
     });
-  });
+  }
 }
 
 function setActiveThumbnail() {
@@ -2014,6 +1954,8 @@ function loadTweets(callback) {
           if (textTweet.length>180) {
             textTweet = (textTweet.substr(0, 180) + "...");
         }
+
+
           posts.push({'type': 'twitter', 'text': '<div class="vCenter text-container"><div class=" content vCenterKid"><p class="text">' + textTweet + '</p></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})
 
           if(i==data.length - 1) {
@@ -2042,6 +1984,7 @@ function loadTweets(callback) {
       }
     }
   });
+
 }
 
 function shuffle(o){  
@@ -2063,8 +2006,7 @@ $(document).ready(function() {
       if(day == 11) {
         return false;
       } else {
-        var url =  "more-news.html";
-        moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1, url);
+        moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"), day-1);
       }
 
       $('html, body').animate({
@@ -2075,10 +2017,19 @@ $(document).ready(function() {
         type: "GET",
         dataType: "html",
         cache: false,
-        url: GLOBALS.urls.newsUrlNext , 
+        url: GLOBALS.urls.newsUrl,
+        data: {
+          'timestamp': $('#news .articles-container:not(.nextDay) article:last').data('time'),
+          'end': typeof $('#news .articles-container:not(.nextDay) article:last').data('end') != 'undefined' ? $('#news .articles:not(.nextDay) article:last').data('end') : 'false'
+        },
         success: function(data) {
             $('.articles-container').append(data);
-            $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+            if($('#articles-wrapper .nextDay').length > 0) {
+              $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
+
+            } else if ($('#news .articles').length == 0 || $('#news .articles:not(.nextDay) article:last').data('end') || $('#timeline a.active').attr('data-date') == '11') {
+              $('.read-more').addClass('hidden');
+            }
             initAddToSelection();
 
         }
@@ -2087,7 +2038,22 @@ $(document).ready(function() {
   });
 
   // init timeline
-  moveTimeline($('.timeline-container').find('.active'),$('.timeline-container').find('.active').data('date'), 'news.html');
+  moveTimeline($('.timeline-container').find('.active'),$('.timeline-container').find('.active').data('date'), false);
+
+  var day = $('.timeline-container').find('.active').data('date');
+
+  if(day == 21) {
+    $('#calendar .next').addClass('disabled');
+  }else{
+    $('#calendar .next').removeClass('disabled');
+  }
+
+  if(day == 11) {
+    $('#calendar .prev').addClass('disabled');
+  }else{
+    $('#calendar .prev').removeClass('disabled');
+  }
+
 
   $('#timeline a').on('click', function(e) {
     e.preventDefault();
@@ -2095,8 +2061,7 @@ $(document).ready(function() {
     if($(this).hasClass('active') || $(this).hasClass('disabled')) {
       return false;
     }
-    var url =  GLOBALS.urls.newsUrl;
-    moveTimeline($(this), $(this).data('date'),url);
+    moveTimeline($(this), $(this).data('date'));
   });
 
   $('#news #calendar .prev').on('click',function(e) {
@@ -2104,11 +2069,18 @@ $(document).ready(function() {
 
     var day = $('.timeline-container').find('.active').data('date');
 
+    $('#calendar .next').removeClass('disabled');
+
+    if(day == 12) {
+      $('#calendar .prev').addClass('disabled');
+    }else{
+      $('#calendar .prev').removeClass('disabled');
+    }
+
     if(day == 11) {
       return false;
     } else {
-      var url =  GLOBALS.urls.newsUrl ;
-      moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1, url);
+      moveTimeline($('.timeline-container').find("[data-date='" + (day - 1) + "']"),day-1);
     }
   });
 
@@ -2118,11 +2090,19 @@ $(document).ready(function() {
     var day    = $('.timeline-container').find('.active').data('date'), 
         numDay = 0;
 
+    $('#calendar .prev').removeClass('disabled');
+
+    if(day == 20) {
+      $('#calendar .next').addClass('disabled');
+    }else{
+      $('#calendar .next').removeClass('disabled');
+    }
+
     if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')) {
       return false;
+
     } else {
-      var url =  GLOBALS.urls.newsUrl;
-      moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1, url);
+      moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1);
     }
   });
   
@@ -2155,6 +2135,8 @@ $(document).ready(function() {
     });
   });
 });
+
+
 function initAddToSelection() {
   $('.picto-my-selection').on('click', function(e) {
     e.stopPropagation();

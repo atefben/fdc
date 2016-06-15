@@ -3885,6 +3885,7 @@ p{
 }
 .maps div.active{
 	display: block;
+	opacity: 1;
 }
 .maps{
 	min-height: 735px;

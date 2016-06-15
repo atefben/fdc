@@ -49,7 +49,9 @@
         {% elseif section.class == "programmation" %} {#and pressHome.sectionSchedulingDisplay == false #}
             <section>
                 <div class="title-section">
-                    <h3>{{ 'press.home.title.programmedujour'|trans({}, 'FDCPressMobileBundle') }}</h3>
+                    <h3>{{ 'press.home.title.programmedu'|trans }}
+                        <span id="dateProgram">{{ date|localizeddate('long', 'none', app.request.locale) }}</span>
+                    </h3>
                     <a href="{{ path('fdc_pressmobile_agenda_scheduling') }}">
                         <i class="icon icon_fleche-right"></i>
                         {{ 'press.home.btn.see_all'|trans({}, 'FDCPressMobileBundle') }}
@@ -154,9 +156,15 @@
                                 {% endfor %}
 
                                 <div class="medias">
+                                    {% if folderCount > 0 %}
                                     <div class="folder media"><i class="icon icon_dossier"></i> <span>({{ folderCount }})</span></div>
+                                    {% endif %}
+                                    {% if trailerCount > 0 %}
                                     <div class="trailer media"><i class="icon icon_bande-annonce"></i> <span>({{ trailerCount }})</span></div>
+                                    {% endif %}
+                                    {% if photoCount > 0 %}
                                     <div class="photo media"><i class="icon icon_photo"></i> <span>({{ photoCount }})</span></div>
+                                    {% endif %}
                                 </div>
                                 <a class="button discover"
                                    href="{{ path('fdc_pressmobile_media_main', {'sectionId': media.film.selectionSection.id } ) }}">

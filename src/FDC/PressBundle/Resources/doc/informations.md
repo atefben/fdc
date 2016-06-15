@@ -14,6 +14,10 @@ php app/console translation:extract es --config=fdc_press
 
 php app/console translation:extract zh --config=fdc_press
 
+Configuration is located in [jms_translation.yml][1]
+
+[1]: https://github.com/Ohwee/festival-cannes-2016/blob/master/app/config/bundles/jms_translation.yml
+
 ## Sessions
 
 Sessions are saved in database, you must insert the following sql script

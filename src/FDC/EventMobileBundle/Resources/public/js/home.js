@@ -1628,7 +1628,7 @@ $(document).ready(function() {
 
   if($('.home').length || $('.ba').length) {
     // Slider More
-    // =========================
+    // ========================#today .director a=
     var sliderThumb = $(".thumbnails").owlCarousel({ 
       nav          : false,
       dots         : false,
@@ -1709,12 +1709,21 @@ $(document).ready(function() {
     if($('wave').length == 0) {
       $('.audio-player').attr('data-sound',$(this).data('sound'));
       initAudioPlayers(true);
+
     } else {
       loadSound($(this).data('sound'));
     }
     
     setTimeout(function() {
       $('.fullscreenplayer').addClass('show');
+
+      //add time
+      var curr = waves[0].getDuration();
+
+      var minutes = parseInt(Math.floor(curr / 60));
+      var seconds = parseInt(curr - minutes * 60);
+
+       $('.duration .total').html(minutes+":"+seconds);
     }, 200);
   });
 
@@ -1731,6 +1740,7 @@ $(document).ready(function() {
     }, 200);
   });
 });
+
 // parse URL in string
 String.prototype.parseURL = function() {
   return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g, function(url) {
@@ -1944,6 +1954,8 @@ function loadTweets(callback) {
           if (textTweet.length>180) {
             textTweet = (textTweet.substr(0, 180) + "...");
         }
+
+
           posts.push({'type': 'twitter', 'text': '<div class="vCenter text-container"><div class=" content vCenterKid"><p class="text">' + textTweet + '</p></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})
 
           if(i==data.length - 1) {
@@ -1972,6 +1984,7 @@ function loadTweets(callback) {
       }
     }
   });
+
 }
 
 function shuffle(o){  
@@ -2027,6 +2040,21 @@ $(document).ready(function() {
   // init timeline
   moveTimeline($('.timeline-container').find('.active'),$('.timeline-container').find('.active').data('date'), false);
 
+  var day = $('.timeline-container').find('.active').data('date');
+
+  if(day == 21) {
+    $('#calendar .next').addClass('disabled');
+  }else{
+    $('#calendar .next').removeClass('disabled');
+  }
+
+  if(day == 11) {
+    $('#calendar .prev').addClass('disabled');
+  }else{
+    $('#calendar .prev').removeClass('disabled');
+  }
+
+
   $('#timeline a').on('click', function(e) {
     e.preventDefault();
 
@@ -2041,6 +2069,14 @@ $(document).ready(function() {
 
     var day = $('.timeline-container').find('.active').data('date');
 
+    $('#calendar .next').removeClass('disabled');
+
+    if(day == 12) {
+      $('#calendar .prev').addClass('disabled');
+    }else{
+      $('#calendar .prev').removeClass('disabled');
+    }
+
     if(day == 11) {
       return false;
     } else {
@@ -2054,8 +2090,17 @@ $(document).ready(function() {
     var day    = $('.timeline-container').find('.active').data('date'), 
         numDay = 0;
 
+    $('#calendar .prev').removeClass('disabled');
+
+    if(day == 20) {
+      $('#calendar .next').addClass('disabled');
+    }else{
+      $('#calendar .next').removeClass('disabled');
+    }
+
     if(day == 22 || $('.timeline-container').find("[data-date='" + (day + 1) + "']").hasClass('disabled')) {
       return false;
+
     } else {
       moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1);
     }
@@ -2090,6 +2135,8 @@ $(document).ready(function() {
     });
   });
 });
+
+
 function initAddToSelection() {
   $('.picto-my-selection').on('click', function(e) {
     e.stopPropagation();

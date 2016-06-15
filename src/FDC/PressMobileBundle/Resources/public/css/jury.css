@@ -454,13 +454,20 @@ from desktop
   /*width: 1460px !important;*/
 }
 #sliderWrapper .owl-item .linkArticle {
-  display: none;
   height: 100%;
   left: 0;
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 2;
+}
+.trailer .linkFull {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 4;
 }
 #sliderWrapper .owl-item .info {
     text-align: center;
@@ -1296,6 +1303,7 @@ from desktop
   display: block;
   font-size: 23px;
   margin-top: 5px;
+    width:330px;
 }
 .featured-videos .videosSlider .vid .info span {
   color: #666;
@@ -1400,6 +1408,13 @@ from desktop
   text-transform: uppercase;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-weight: 700;
+}
+
+.sliderDrag .info .date,
+.sliderDrag .info .hour {
+    color: #666;
+    display: inline-block;
+    font-size: .625rem;
 }
 
 /* featured-videos */
@@ -1509,9 +1524,15 @@ from desktop
   border-top: 2px solid #e5e5e5;
   box-sizing:border-box;
 }
-.home #news #calendar .next{
+
+.home #news #calendar .next.disabled{
   background-color: #f2f2f2;
 }
+
+.home #news #calendar .prev.disabled{
+    background-color: #f2f2f2;
+}
+
 #news #calendar .prev, #news #calendar .next{
   width: 121px;
   height: 126px;
@@ -1774,6 +1795,12 @@ article .picto .icon{
     width: 111%;
     margin-left: -6%;
 }
+.ba .slideshow .thumbnails {
+    padding-top: 26px;
+    padding-bottom: 25px;
+    width: 100%;
+    margin-left: 0;
+}
 .slideshow .thumbnails .owl-item.center + .owl-item, .slideshow .thumbnails .owl-item.center + .owl-item + .owl-item {
   opacity: 1;
 }
@@ -1915,12 +1942,14 @@ article .picto .icon{
   position: relative;
 }
 #today .trailer .icon-container{
-  border: solid thin #fff;
   width: 50px;
   height: 50px;
-  border-radius: 25px;
   margin: auto;
   line-height: 50px;
+}
+
+#today .trailer .icon-container .icon{
+    font-size: 3.3rem;
 }
 #today .trailer h3.title{
   font-size: 1.4rem;
@@ -1930,6 +1959,10 @@ article .picto .icon{
   letter-spacing: 0.3em;
   line-height: 52px;
   height: auto;
+}
+#today .special-event h3.title a,
+#today .special-event .title-translate a {
+    color: #ffffff;
 }
 #today .title-translate{
   font-size: 18px;
@@ -1946,6 +1979,15 @@ article .picto .icon{
 }
 #today .director strong{
   text-transform: uppercase;
+}
+#today .director .director-of {
+    color: #ffffff;
+    font-family: "Camphor W01 Regular",Arial,Helvetica,sans-serif;
+    font-style: normal;
+}
+#today .director a {
+    color: #c8a461;
+    font-style: normal;
 }
 #today .links{
     position: absolute;
@@ -2018,7 +2060,19 @@ article .picto .icon{
   overflow: hidden;
   position: relative;
   width: 446px;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+
+  align-items: center;
+
+  /*
   line-height: 280px;
+  */
 }
 #more #slider-more .item .image-wrapper {
   overflow: hidden;
@@ -2206,6 +2260,28 @@ body.overlay::after {
   opacity: 1;
   -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+
+/* landing page */
+
+.container-landing {
+    margin: 67px auto 0;
+    padding-bottom: 67px;
+    display: block;
+    color: #666;
+    line-height: 26px;
+    font-size: 1.3rem;
+    font-family: "Camphor W01 Regular",Arial,Helvetica,sans-serif;
+}
+
+
+.container-landing strong{
+    font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+}
+
+.container-landing a{
+    font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+    color: #c8a461;
 }
 
 
@@ -3129,13 +3205,21 @@ display: inline-block;
 #banner-top.show, #banner-bottom.show{
   background-size: cover;
 }
-
+.fullLink {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+}
 .selection-container{
 	position: relative;
 	width: 100%;
 	font-size: 0;
 	background-color: #202020;
-	
+
 }
 .dark-background .selection-container{
   background: none;
@@ -3168,15 +3252,14 @@ display: inline-block;
 }
 .selection-item .name, .selection-item .sub-name{
 	color: #fff;
-    text-transform: uppercase;
-    text-align: center;
-    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    font-size: 1.6rem;
-    padding-top: 25px;
-    font-weight: 600;
-    max-width: 190px;
-    margin: 0 auto;
-
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  padding-top: 25px;
+  font-weight: 600;
+  max-width: 286px;
+  margin: 0 auto;
 }
 .selection-item .sub-name
 {
@@ -3184,13 +3267,12 @@ display: inline-block;
 	padding: 0;
 }
 .selection-item .author, .selection-item .rank{
-
-	text-align: center;
+    text-align: center;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
   color: #c8a461;
   padding-top: 10px;
-  font-style: italic;
+  font-style: normal;
 }
 .title-list-cat{
   border-bottom: 1px solid #2c2c2c;
@@ -3203,6 +3285,11 @@ display: inline-block;
   color: #fff;
   margin: 60px auto;
   padding: 0;
+}
+.title-list-cat .title.article-style {
+    font-family: "Playfair Display",Times New Roman,Times,serif;
+    font-weight: 400;
+    line-height: 1.3em;
 }
 .title-list-cat .subtitle{
   color: #fff;
@@ -3301,7 +3388,7 @@ display: inline-block;
 }
 
 #horizontal-menu2 .vid p{
-  
+
   display: block;
   font-size: 1.5rem;
   margin-top: 3px;
@@ -3326,7 +3413,7 @@ display: inline-block;
   padding: 0 40px;
 }
 .selection section h2.title{
-  
+
 }
 
 a{
@@ -3800,6 +3887,9 @@ section:last-child{
   margin: 40px 0 0px;
   padding-bottom: 60px;
 }
+.movie-container .subtitle a {
+    color: #fff;
+}
 .date-pres-item {
     text-transform: uppercase;
     color: #fff;
@@ -3810,7 +3900,7 @@ section:last-child{
     font-weight: 700;
     margin-top: 40px;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-    
+
 }
 .hour-pres-item {
     color: #999;
@@ -3831,6 +3921,9 @@ margin-left: 6px;
     max-width: 480px;
     line-height: 34px;
     margin: 20px auto;
+}
+.movie-container .title-item a {
+    color: #fff;
 }
 .movie-container .name-item {
     font-size: 22px;
@@ -3867,6 +3960,7 @@ margin-left: 6px;
     margin-bottom: 8px;
     max-width: 380px;
 }
+
 .selection-item{
 	background-color: #fff;
   position: relative;
@@ -3931,4 +4025,16 @@ margin-left: 6px;
 	color:#fff;
 	width: 640px;
 	margin: 45px auto;
+
+	/*fix center*/
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+
+	align-items: center;
+
 }

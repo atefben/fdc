@@ -797,52 +797,8 @@ $(document).ready(function() {
     $('#popin-press #password').on('blur', function(e) {
       window.scrollTo(0,scrollTop);
     });
-
-    $('#popin-press form').on('submit', function(e) {
-      $('#popin-press #password').blur();
-      e.preventDefault();
-
-      var v = $(this).find('input[type="password"]').val();
-      // todo on server : security check password.
-
-      if(v == "test") {
-        localStorage.setItem('press-pwd', v);
-        document.body.removeEventListener('touchmove', listener,false);
-        // $.cookie('press', '1', { expires: 365 });
-        $('.press').removeClass('press-locked');
-        $('.press').addClass('press-unlocked');
-        $('.locked').remove();
-        $('#overlay').remove();
-        $("#popin-press").removeClass('visible');
-      } else {
-        $(this).addClass('error');
-      }
-    });
   });
 
-  // if password is in localstorage
-  if(localStorage.getItem('press-pwd')) {
-    $('.press').removeClass('press-locked');
-    $('.press').addClass('press-unlocked');
-    $('.locked').remove();
-  }
-
-  $('.locked form').on('submit', function(e) {
-    e.preventDefault();
-
-    var v = $(this).find('input[type="password"]').val();
-    // todo on server : security check password.
-
-    if(v == "test") {
-      localStorage.setItem('press-pwd', v);
-      $('.press').removeClass('press-locked');
-      $('.press').addClass('press-unlocked');
-      $('.locked').addClass('valid');
-      $('.locked').html('<p class="press_confirmation">les contenus qui vous sont réservés sont à présents accessibles.</p>');
-    } else {
-      $(this).addClass('error');
-    }
-  });
 });
 function filter() {
   $('.filter').each(function() {

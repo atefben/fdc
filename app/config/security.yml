@@ -60,13 +60,13 @@ security:
             pattern:            /
             form_login:
                 provider:       fos_userbundle
-                login_path:     fdc_press_security_login
-                check_path:     fdc_press_security_check
-                failure_path:   fdc_press_news_home
+                login_path:     fdc_pressmobile_security_login
+                check_path:     fdc_pressmobile_security_check
+                failure_path:   fdc_pressmobile_news_home
                 use_referer:    true
             logout:
-                path:           fdc_press_security_logout
-                target:         fdc_press_news_home
+                path:           fdc_pressmobile_security_logout
+                target:         fdc_pressmobile_news_home
             anonymous:          true
 
         dev:

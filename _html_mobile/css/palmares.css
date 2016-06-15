@@ -57,7 +57,9 @@
 	font-weight: 700;
 	max-width: 500px;
 	margin: 0 auto;
-
+}
+.people-name a {
+	color: #ffffff;
 }
 .title-prize{
 	line-height: 35px;
@@ -210,3 +212,14 @@ section h3:not(.movie-title):not(.people-name){
 	margin-bottom: 70px;
 }
 
+.palmares .movie-title a {
+	color: #ffffff;
+}
+
+.palmares .sub-title-item a {
+	color: #ffffff;
+}
+
+.palmares .people-name a {
+	color: #ffffff;
+}

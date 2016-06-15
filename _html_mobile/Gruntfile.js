@@ -961,7 +961,13 @@ grunt.initConfig({
 					expand: true,
 					cwd: './js-concat/',
 					src: ['*.js'],
-					dest: "../src/FDC/EventMobileBundle/Resources/public/js/"
+					dest: '../src/FDC/EventMobileBundle/Resources/public/js/'
+				},
+				{
+					expand: true,
+					cwd: './js-concat/',
+					src: ['*.js'],
+					dest: '../src/FDC/PressMobileBundle/Resources/public/js/'
 				},
 			]
 		},
@@ -971,7 +977,13 @@ grunt.initConfig({
 					expand: true,
 					cwd: './css-concat/',
 					src: ['*.css'],
-					dest: "../src/FDC/EventMobileBundle/Resources/public/css/"
+					dest: '../src/FDC/EventMobileBundle/Resources/public/css/'
+				},
+				{
+					expand: true,
+					cwd: './css-concat/',
+					src: ['*.css'],
+					dest: '../src/FDC/PressMobileBundle/Resources/public/css/'
 				}
 			]
 		}
