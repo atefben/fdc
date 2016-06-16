@@ -9163,7 +9163,7 @@ header #searchContainer {
 
 .slider-home {
   position: relative;
-  height: 581px;
+  height: 100vh;
   margin-bottom: 29px;
   transition: height .5s;
 }
@@ -9243,14 +9243,16 @@ header #searchContainer {
   padding-bottom: 72px;
   font-size: .875rem;
   line-height: 24px;
-  font-size: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 }
 .slider-home .texts p a {
   color: #838383;
 }
 @media screen and (min-width: 1280px) and (max-width: 1599px) {
   .slider-home {
+    /*
     height: 577px;
+    */
   }
   .slider-home .container-images .item {
     width: 76%;
@@ -9262,7 +9264,9 @@ header #searchContainer {
 }
 @media screen and (min-width: 1600px) and (max-width: 1920px) {
   .slider-home {
+    /*
     height: 683px;
+    */
   }
   .slider-home .container-images .item {
     width: 71.3%;
@@ -9274,7 +9278,9 @@ header #searchContainer {
 }
 @media screen and (min-width: 1920px) {
   .slider-home {
+    /*
     height: 774px;
+    */
   }
   .slider-home .container-images .item {
     width: 67.7%;

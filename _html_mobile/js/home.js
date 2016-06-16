@@ -19,7 +19,7 @@ String.prototype.parseHashtag = function(twitter) {
   return this.replace(/[#]+[A-Za-z0-9-_]+/g, function(t) {
     var tag = t.replace("#","%23")
     return '<strong>' + t + '</strong>';
-    
+
   });
 };
 
@@ -75,7 +75,7 @@ function setActiveThumbnail() {
 function initSlideshows() {
   // create slider of thumbs
   var nbItems = $('.single-article').length != 0 ? 7 : 8;
-  var sliderThumbs = $(".thumbnails").owlCarousel({ 
+  var sliderThumbs = $(".thumbnails").owlCarousel({
     nav          : false,
     dots         : false,
     smartSpeed   : 500,
@@ -120,7 +120,7 @@ function initSlideshows() {
   initSlideshow();
 }
 
-  
+
 var posts = [];
 
 // load Instagram pictures and build array
@@ -134,7 +134,7 @@ function loadInstagram(callback) {
       offset : 40
     }
   }
-  
+
   $.ajax({
     url      : GLOBALS.api.instagramUrl,
     type     : "GET",
@@ -142,12 +142,12 @@ function loadInstagram(callback) {
     dataType : instagramDatatype,
     success: function(data) {
       if (GLOBALS.env == "html") {
-        var count = 10; 
+        var count = 10;
         for (var i = 0; i < count; i++) {
           if (typeof data.data[i] !== 'undefined' ) {
             posts.push({'type': 'instagram', 'img': data.data[i].images.standard_resolution.url, 'date' : data.data[i].created_time, 'text': '<div class="vCenter text-container"><div class="vCenterKid content"><p class="text">' + data.data[i].caption.text.substr(0, 140).parseURL().parseUsername().parseHashtag() + '</p></div></div>', 'user': data.data[i].user.username});
           }
-         
+
           if(i == count - 1) {
             callback();
           }
@@ -156,7 +156,7 @@ function loadInstagram(callback) {
         var count = Math.min(data.length, 10);
         for (var i = 0; i < count; i++) {
           posts.push({'type': 'instagram', 'text': '<div class="vCenter text-container"><div class="vCenterKid content"><p class="text">' + data[i].message.substr(0, 140).parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div>', 'img': data[i].content});
-          
+
           if(i == count - 1) {
             callback();
           }
@@ -232,7 +232,7 @@ function loadTweets(callback) {
           } catch (e) {
             // no media
           }
-        
+
           posts.push({'type': 'twitter', 'text': '<div class="vCenter text-container"><div class=" content vCenterKid"><p class="text">' + data[i].message.parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div>', 'img': img})
 
           if(i == data.length - 1) {
@@ -245,7 +245,7 @@ function loadTweets(callback) {
 
 }
 
-function shuffle(o){  
+function shuffle(o){
   for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
   return o;
 }
@@ -345,7 +345,7 @@ $(document).ready(function() {
   $('#news #calendar .next').on('click',function(e) {
     e.preventDefault();
 
-    var day    = $('.timeline-container').find('.active').data('date'), 
+    var day    = $('.timeline-container').find('.active').data('date'),
         numDay = 0;
 
     $('#calendar .prev').removeClass('disabled');
@@ -363,7 +363,7 @@ $(document).ready(function() {
       moveTimeline($('.timeline-container').find("[data-date='" + (day + 1) + "']"),day+1);
     }
   });
-  
+
 
   loadInstagram(function() {
     loadTweets(function() {
@@ -371,14 +371,16 @@ $(document).ready(function() {
       // once all data is loaded, build html and display the grid
       $('.post-container').html('');
       for (var i = 0; i < 6; ++i){
-        var noPhoto = "";
+        var noPhoto = "show-text";
         if(posts[i].img ==""){
-          noPhoto = "show-text always-show";
+          noPhoto += "always-show";
         }
-        var html = '<div class="post '+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
+        var html = '<div class="post show-text '+noPhoto+'"><div class="'+posts[i].type+'" ><div class="img-container" style="background-image:url('+posts[i].img+')"></div>'+posts[i].text+'<i class="icon icon_'+posts[i].type+'"></i></div></div>';
         $('.post-container').append(html);
       }
-      
+
+        console.log('ici');
+
       $('.post').on('click',function(){
         if($(this).hasClass('always-show')) {
           return false;
