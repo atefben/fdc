@@ -7496,6 +7496,42 @@ header #navigation ul.user li a .icon.icon-espace-presse {
   font-size: .67rem;
 }
 
+.b-timer {
+  padding: 50px 0px;
+  display: none;
+  position: absolute;
+  width: 100vw;
+  z-index: 2;
+  background-color: #141414;
+}
+.b-timer.visible {
+  display: block;
+}
+.b-timer .c-timer {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 0px auto;
+}
+.b-timer .c-texts {
+  color: #fff;
+  margin-left: 20px;
+  -webkit-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+.b-timer .time {
+  color: #c8a461;
+  font-size: 2rem;
+}
+.b-timer .c-icon {
+  color: #c8a461;
+  cursor: pointer;
+}
+
 footer * {
   box-sizing: border-box;
 }

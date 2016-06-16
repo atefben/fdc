@@ -24,6 +24,8 @@ $(document).ready(function() {
  //gestion des cookie a faire ici
 
  owInitPopin('popin-landing-e');
+    owInitPopin('popin-timer-banner'); 
+
 
  if('ontouchstart' in window) {
    if (navigator.userAgent.indexOf("iPad") > -1 ||
