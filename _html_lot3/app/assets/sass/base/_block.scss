@@ -175,6 +175,14 @@
   background: center 0 no-repeat fixed;
   background-size: cover;
   transition: $smoothTransition .7s;
+  position: relative;
+  
+  .coverLink {
+    width:100%;
+    height:100%;
+    display: block;
+    position: absolute;
+  }
 
   .link {
     margin-top: 20px;
