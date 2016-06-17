@@ -1803,7 +1803,6 @@ $(document).ready(function() {
     }
 
     // AJAX CALL
-	alert('here');
     $('#horizontal-menu a:not(.ajaxi), #horizontal-menu2 a:not(.ajaxi)').on('click',function(e) {
       e.preventDefault();
 
