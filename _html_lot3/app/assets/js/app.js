@@ -24,7 +24,7 @@ $(document).ready(function() {
  //gestion des cookie a faire ici
 
  owInitPopin('popin-landing-e');
-    owInitPopin('popin-timer-banner'); 
+    owInitPopin('popin-timer-banner');
 
 
  if('ontouchstart' in window) {
@@ -56,6 +56,8 @@ if($('body').hasClass('mobile')){
     owInitSlider('home');
     owInitSlider('slider-01');
     owInitSlider('slider-02');
+      var slider = $('.block-diaporama .slider-01');
+      owinitSlideShow(slider);
   }
 
   if($('.retrospective.poster').length) {
