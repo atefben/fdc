@@ -1770,7 +1770,7 @@ $(document).ready(function() {
     });
     $('.owl-stage').width(w+40);
 
-    $('#horizontal-menu a:not(.ajaxi)').on('click',function(e){
+    $('#horizontal-menu a:not(.ajaxi), #horizontal-menu2 a:not(.ajaxi)').on('click',function(e){
       e.preventDefault();
       $('#horizontal-menu a').removeClass('active');
       $(this).addClass('active');
@@ -1803,7 +1803,7 @@ $(document).ready(function() {
     }
 
     // AJAX CALL
-    $('#horizontal-menu a:not(.ajaxi)').on('click',function(e) {
+    $('#horizontal-menu a:not(.ajaxi), #horizontal-menu2 a:not(.ajaxi)').on('click',function(e) {
       e.preventDefault();
 
       if($(this).is(':not(.active)')) {

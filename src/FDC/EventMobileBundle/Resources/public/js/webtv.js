@@ -559,6 +559,22 @@ $(document).ready(function() {
       }
     });
   }
+
+  // INIT VIDEO PLAYER
+  if($("#player").length !== 0) {
+    console.log('player');
+    var playerInstance = jwplayer("player");
+    playerInstance.setup({
+      file         : $("#player").data('video'),
+      image        : $("#player").data('poster'),
+      width        : "100%",
+      aspectratio  : "16:9",
+      displaytitle : false,
+      skin         : {
+        name : "five"
+      }
+    });
+  }
 });
 $(document).ready(function() {
   // VIDEO PLAYER

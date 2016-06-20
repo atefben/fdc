@@ -29,6 +29,9 @@
     <div id="banner-top">
         <div class="banner-video ">
             <div class="video-container " style="background-image:url({% if page.image and page.image|trans_fallback('file') %}{% path page.image|trans_fallback('file'), '1280x808' %}{% endif %});">
+                {% if videoUrl %}
+                <div id="player" data-video="{{ videoUrl }}" data-poster="{% if page.image and page.image|trans_fallback('file') %}{% path page.image|trans_fallback('file'), '1280x808' %}{% endif %}"></div>
+                {% endif %}
             </div>
             <p class="title-video"></p>
         </div>
@@ -37,7 +40,9 @@
                 <h2 class="title tall">
                     {{ page|trans_fallback('title')|raw }}
                 </h2>
+                {% if videoUrl %}
                 <p class="off show"><i class="icon-mobile-web-tv-play"></i></p>
+                {% endif %}
                 <p class="before">rendez-vous le <span>20 mai 2016 à 14h</span></p>
             </div>
         </div>
