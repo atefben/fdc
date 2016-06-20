@@ -545,10 +545,10 @@ $(document).ready(function() {
     });
   } else if($('.webtv').length > 0) {
     $('#banner-top').on('click',function() {
-      if($('.banner-video').hasClass('active')) {
+      /*if($('.banner-video').hasClass('active')) {
         $('.banner-video').removeClass('active');
         $('.banner-img').addClass('active');
-      } else if($('.banner-img-text .off').hasClass('show') && $('.banner-img').hasClass('active')) {
+      } else */if($('.banner-img-text .off').hasClass('show') && $('.banner-img').hasClass('active')) {
         $('.banner-img-text .before').addClass('show');
         $('.banner-img-text .off').removeClass('show');
         $('.banner-video').addClass('active');

@@ -42,8 +42,12 @@
                 </h2>
                 {% if videoUrl %}
                 <p class="off show"><i class="icon-mobile-web-tv-play"></i></p>
+                {% elseif page.live == false %}
+                <p class="before">
+                        {{- page.firstSubHead -}}
+                        <span>{{ page.secondSubHead }}</span>
+                    </p>
                 {% endif %}
-                <p class="before">rendez-vous le <span>20 mai 2016 à 14h</span></p>
             </div>
         </div>
     </div>
