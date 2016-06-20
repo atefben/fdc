@@ -29,8 +29,8 @@
                     {% if trans is not null %}
                         <div class="vid">
                             <p>
-                                <a target="_blank" href="#" data-url="{{ path('fdc_eventmobile_movie_classics', {'slug': trans.slug }) }}"
-                                  class="{% if app.request.attributes.get('_route') == 'fdc_eventmobile_movie_classics' and app.request.attributes.get('slug') == trans.slug %}active{% endif %}">
+                                <a href="{{ path('fdc_eventmobile_movie_classics', {'slug': trans.slug }) }}" data-url="{{ path('fdc_eventmobile_movie_classics', {'slug': trans.slug }) }}"
+                                  class="{% if app.request.attributes.get('_route') == 'fdc_eventmobile_movie_classics' and app.request.attributes.get('slug') == trans.slug %}active{% endif %} ajaxi">
                                     {{- trans.titleNav -}}
                                 </a>
                             </p>

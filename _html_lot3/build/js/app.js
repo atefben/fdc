@@ -489,6 +489,7 @@ var owInitPopin = function(id) {
           Cookies.set('popin-landing-e','1', { expires: 365 });
         }
       }, 1000);
+
     };
 
     var fClosePopin = function() {
@@ -518,6 +519,110 @@ var owInitPopin = function(id) {
       Cookies.set('popin-landing-e','1', { expires: 365 });
     }
   }
+
+  if(id == 'popin-timer-banner') {
+
+    var $popin = $('.b-timer');
+
+    var visiblePopinB = function() {
+      var dateFestival = $('.time').data("date");
+
+      var dateToday = new Date();
+      dateFestival = new Date(dateFestival);
+
+      var timeLanding = (dateFestival - dateToday) / 1000; //en seconde
+
+      var jours = Math.floor(timeLanding / (60 * 60 * 24));
+      var heures = Math.floor((timeLanding - (jours * 60 * 60 * 24)) / (60 * 60));
+      var minutes = Math.floor((timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
+      var secondes = Math.floor(timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
+
+      if(timeLanding < 0){
+        //pas de compteur ?
+      }else if(timeLanding > 0){
+
+        var $day = $('.day').html(jours);
+        var $hour = $('.hour').html(heures);
+        var $minutes = $('.minutes').html(minutes);
+        var $secondes = $('.secondes').html(secondes);
+
+      }else{
+        //compteur terminé ! on ferme la popin
+        $popin.addClass('animated fadeOut').removeClass('visible');
+      }
+
+      actualisation = setInterval(function() {
+
+        var dateToday = new Date();
+        dateFestival = new Date(dateFestival);
+
+        var timeLanding = (dateFestival - dateToday) / 1000; //en seconde
+
+        var jours = Math.floor(timeLanding / (60 * 60 * 24));
+        var heures = Math.floor((timeLanding - (jours * 60 * 60 * 24)) / (60 * 60));
+        var minutes = Math.floor((timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
+        var secondes = Math.floor(timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
+
+        if(timeLanding < 0){
+          //pas de compteur ?
+          Cookies.set('popin-banner','1', { expires: 365 });
+
+        }else if(timeLanding > 0){
+
+          var $timer = $('.time').html(jours+' : '+heures+' : '+minutes+' : '+secondes);
+
+        }else{
+          //compteur terminé ! on ferme la popin
+          $popin.addClass('animated fadeOut').removeClass('visible');
+          Cookies.set('popin-banner','1', { expires: 365 });
+        }
+      }, 1000);
+
+      setTimeout(function(){
+/*
+        fClosePopinB('force'); 
+*/
+      }, 5000);
+
+    };
+
+    var fClosePopinB = function(force) {
+
+      if(force == 'force'){
+        $popin.addClass('animated fadeOut');
+
+        setTimeout(function(){   $popin.removeClass('visible'); }, 500);
+
+      }
+
+      $('.c-icon').on('click', function(){
+        $popin.addClass('animated fadeOut');
+        Cookies.set('popin-banner','1', { expires: 365 });
+
+        setTimeout(function(){   $popin.removeClass('visible'); }, 500);
+      });
+    }
+
+    // Verifier si les cookies existent
+    if(typeof Cookies.get('popin-banner') === "undefined") {
+      Cookies.set('popin-banner','0', { expires: 365 });
+    }
+
+    var closePopin = Cookies.get('popin-banner');
+
+    console.log(closePopin);
+
+    if(closePopin == 0) {
+      $popin.addClass('animated fadeIn').addClass('visible');
+      visiblePopinB();
+      fClosePopinB();
+
+    }else {
+      Cookies.set('popin-banner','1', { expires: 365 });
+    }
+
+  }
+
 };
 
 var initHeaderSticky = function() {
@@ -1096,6 +1201,82 @@ $(window).resize(function() {
   }
 });
 
+/**
+ * Created by tatjac on 17/06/2016.
+ */
+var owinitSlideShow = function (slider) {
+
+    $('.block-diaporama .item').on('mousedown', function(){
+
+        if($(this).parent().hasClass('active center') && !$('.owl-stage').hasClass('owl-grab')){
+            openSlideShow(slider);
+        }
+        
+    });
+
+}
+
+
+var openSlideShow = function(slider) {
+
+    var images = [];
+    var w = $(window).width();
+    var centerElement = 0;
+
+    slider.find('.item').each(function(index,value){
+
+        if($(value).parent().hasClass('active center')){
+            centerElement = index;
+            console.log("index"+index);
+        }
+
+
+        src = $(value).find('img').attr("src");
+        alt =  $(value).find('img').attr("alt");
+
+        var image = {
+            src : src,
+            alt : alt
+        };
+
+        images.push(image);
+
+    });
+
+
+    /* Initiliasion du slideshow fullscreen*/
+    slider.append('<div class="fullscreen-slider"> </div>');
+    var fullscreen = slider.find(".fullscreen-slider");
+
+    var wSlide = w * images.length + 100;
+    var wSlide = wSlide + "px";
+
+    fullscreen.css('width', wSlide);
+
+    for(var i=0; i<images.length; i++)  {
+
+        if(i == centerElement){
+            fullscreen.append("<img src='"+images[i].src+"' alt='"+images[i].data+"' class='center-item' />");
+        }else{
+            fullscreen.append("<img src='"+images[i].src+"' alt='"+images[i].data+"'/>");
+        }
+    }
+
+    var translate = (w + 1) * centerElement;
+    translate = - translate + "px";
+
+    console.log(centerElement);
+    console.log(translate);
+
+    fullscreen.css('transform','translateX('+translate+')');
+    /* les mettre dans une div en dessous qui ne sera pas un slideshow */
+    /* afficher le nouveaux slide*/
+
+
+/*
+    slider.addClass('fullscreen-slider');
+*/
+}
 var owInitTab = function(id) {
 
   if(id == 'tab1') {
@@ -1145,6 +1326,8 @@ $(document).ready(function() {
  //gestion des cookie a faire ici
 
  owInitPopin('popin-landing-e');
+    owInitPopin('popin-timer-banner');
+
 
  if('ontouchstart' in window) {
    if (navigator.userAgent.indexOf("iPad") > -1 ||
@@ -1175,6 +1358,8 @@ if($('body').hasClass('mobile')){
     owInitSlider('home');
     owInitSlider('slider-01');
     owInitSlider('slider-02');
+      var slider = $('.block-diaporama .slider-01');
+      owinitSlideShow(slider);
   }
 
   if($('.retrospective.poster').length) {
