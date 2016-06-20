@@ -316,7 +316,6 @@ $(document).ready(function() {
 
   // INIT VIDEO PLAYER
   if($("#player").length !== 0) {
-    console.log('player');
     var playerInstance = jwplayer("player");
     playerInstance.setup({
       file         : $("#player").data('video'),
