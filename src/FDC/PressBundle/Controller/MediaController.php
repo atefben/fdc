@@ -3,6 +3,7 @@
 namespace FDC\PressBundle\Controller;
 
 use Base\CoreBundle\Entity\FilmFilmMediaInterface;
+use Base\CoreBundle\Entity\FilmSelectionSection;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,12 +38,9 @@ class MediaController extends Controller
         $sectionFilms = $em->getRepository('BaseCoreBundle:FilmFilm')
             ->findBy(array('festival' => $settings->getFestival()->getId()), array('selectionSection' => 'DESC'))
         ;
-        $i = 0;
-
 
         $filmSection = array();
         $sections = array();
-
         $i = 0;
 
         foreach ($sectionFilms as $film) {
@@ -64,8 +62,9 @@ class MediaController extends Controller
                 }
             }
 
-            if ($empty == false && $film->getSelectionSection() !== null && !in_array($film->getSelectionSection()->getId(), $sections)) {
-
+            if ($empty == false && $film->getSelectionSection() !== null &&
+                !in_array($film->getSelectionSection()->getId(), $sections) &&
+                $film->getSelectionSection()->getId() != FilmSelectionSection::FILM_SELECTION_SECTION_QUINZAINEDESREALISATEURS) {
                 $filmSection[$i]['id'] = $film->getSelectionSection()->getId();
                 if ($film->getSelectionSection()->findTranslationByLocale($locale)) {
                     $filmSection[$i]['name'] = $film->getSelectionSection()->findTranslationByLocale($locale)->getName();
