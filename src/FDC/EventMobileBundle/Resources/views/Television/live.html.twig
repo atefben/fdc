@@ -32,7 +32,7 @@
             </div>
             <p class="title-video"></p>
         </div>
-        <div class="banner-img vCenter active" style="background-image:url({% path page.image|trans_fallback('file'), '2560×1103' %});">
+        <div class="banner-img vCenter active" style="background-image:url({% if page.image and page.image|trans_fallback('file') %}{% path page.image|trans_fallback('file'), '1280x808' %}{% endif %});">
             <div class="vCenterKid banner-img-text">
                 <h2 class="title tall">
                     {{ page|trans_fallback('title')|raw }}
@@ -52,10 +52,19 @@
                 </a>
             </p>
             <div id="slider-videos" class="owl-carousel sliderDrag videosSlider">
+                {% for group in sliderChosenChannels %}
+                {% if group.channel.image or (group.channelVideos|length and group.channelVideos|first.image) %}
+                    {% set format = '640x404' %}
+                    <div class="vid">
+                        {{ block('WebTvLiveChannel') }}
+                    </div>
+                {% endif %}
+                {% endfor %}
+
                 {% for group in sliderOtherChannels %}
                     {% if group.channel.image or (group.channelVideos|length and group.channelVideos|first.image) %}
                         {% set cropTitle = true %}
-                        {% set format = '293x185' %}
+                        {% set format = '640x404' %}
                         <div class="vid">
                             {{ block('WebTvLiveChannel') }}
                         </div>
