@@ -19,7 +19,7 @@ $(document).ready(function() {
       /*if($('.banner-video').hasClass('active')) {
         $('.banner-video').removeClass('active');
         $('.banner-img').addClass('active');
-      } else */gif($('.banner-img-text .off').hasClass('show') && $('.banner-img').hasClass('active')) {
+      } else */if($('.banner-img-text .off').hasClass('show') && $('.banner-img').hasClass('active')) {
         $('.banner-img-text .before').addClass('show');
         $('.banner-img-text .off').removeClass('show');
         $('.banner-video').addClass('active');

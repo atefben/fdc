@@ -3303,6 +3303,10 @@ display: inline-block;
 #main.webtv {
   background: #141414;
 }
+
+.webtv #player .jw-display-icon-container {
+    pointer-events: none;
+}
 .webtv #banner-top .banner-img .title{
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   max-width: 640px;
