@@ -23,7 +23,6 @@
                     <div class="item {{ article.theme|trans_fallback('slug') }} {{ article.publishedAt|date('d-m-y') }}">
                         <a href="{{ path('fdc_eventmobile_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}"></a>
                         <div class="img-container">
-                            <div class="picto picto-my-selection"><i class="icon icon_lire-plus-tard"></i></div>
                             <div class="picto"><i class="icon icon_{{ article.newsType|get_news_type  }}"></i></div>
                             {% if article is news_article %}
                                 {% set img = article.header %}
