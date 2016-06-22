@@ -1,0 +1,501 @@
+.single-movie .palmares {
+    margin-bottom: 0;
+}
+
+.legal-notice hr,
+.faq hr,
+.single-article hr {
+    height: 0;
+    border: 0;
+    border-top: 1px solid #e5e5e5;
+}
+
+.legal-notice .single-photo img,
+.faq .single-photo img,
+.single-article .single-photo img {
+    height: auto;
+}
+
+.legal-notice .big-quote,
+.faq .big-quote,
+.single-article .big-quote {
+    width: 630px;
+    margin: 0 auto;
+    padding: 70px 70px;
+    box-sizing: border-box;
+    border: 1px solid #c8a461;
+    margin-bottom: 70px;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+}
+
+.single-article.single-evenement .small-container {
+    width: 977px;
+}
+
+.popin-event .fc-event {
+    height: 160px !important;
+}
+
+#captionJuryCopyright {
+    left: 10px;
+    position: absolute;
+    bottom: 10px;
+    color: #969696;
+}
+
+.single-article.single-evenement .small-container > div {
+    width: 630px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.single-article.single-evenement .small-container > div.single-photo, .single-article.single-evenement .small-container > div.single-video, .single-article.single-evenement .small-container > div.single-gallery, .single-article.single-evenement .small-container > div.chapeau {
+    width: 100%;
+}
+
+.single-article.single-evenement .small-container > div.half-div, .single-article.single-evenement .small-container > div.single-photo.large-photo, .single-article.single-evenement .small-container > div.slideshow {
+    width: 730px;
+}
+
+.legal-notice .text em,
+.faq .text em,
+.single-article .text em {
+    font-style: italic;
+}
+
+.legal-notice .text sup,
+.faq .text sup,
+.single-article .text sup,
+.chapeau sup {
+    vertical-align: super;
+    font-size: 11px;
+}
+
+.single-article .text table sup {
+    font-size: 9px;
+}
+
+.legal-notice .text sub,
+.faq .text sub,
+.single-article .text sub,
+.chapeau sub {
+    vertical-align: sub;
+    font-size: 11px;
+}
+
+.single-article .text table sub {
+    font-size: 9px;
+}
+
+.legal-notice .button:hover a,
+.legal-notice .button a:hover,
+.faq .button:hover a,
+.faq .button a:hover,
+.single-article .button:hover a,
+.single-article .button a:hover,
+.palmares-color-white {
+    color: #FFFFFF;
+}
+
+.legal-notice ul,
+.legal-notice ol,
+.single-article ul,
+.single-article ol {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+    padding-left: 30px;
+}
+
+.legal-notice ol,
+.single-article ol {
+    list-style: decimal;
+}
+
+.legal-notice ul,
+.single-article ul {
+    list-style: inherit;
+}
+
+.legal-notice .big-quote span.big-quote-paragraph,
+.faq .big-quote span.big-quote-paragraph,
+.single-article .big-quote span.big-quote-paragraph {
+    color: #b1b1b1;
+    text-align: center;
+    font-size: .875rem;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+.legal-notice .big-quote strong,
+.faq .big-quote strong,
+.single-article .big-quote strong {
+    color: #c8a461 !important;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
+}
+
+.legal-notice .txt-grey-bkg-container,
+.faq .txt-grey-bkg-container,
+.single-article .txt-grey-bkg-container {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin-bottom: 5px;
+    padding: 70px 70px;
+}
+
+.legal-notice .txt-grey-bkg-container .content span,
+.faq .txt-grey-bkg-container .content span,
+.single-article .txt-grey-bkg-container .content span {
+    font-size: 1rem;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    color: #666666;
+    line-height: 26px;
+}
+
+.legal-notice .blockquote,
+.faq .blockquote,
+.single-article .blockquote {
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    color: #666;
+    font-size: 1.688rem;
+    line-height: 1.4em;
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.legal-notice .big-txt,
+.faq .big-txt,
+.single-article .big-txt {
+    color: #333333;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    line-height: 40px;
+    text-align: center;
+}
+
+.legal-notice .little-txt,
+.faq .little-txt,
+.single-article .little-txt {
+    color: #969696;
+    font-size: 0.750rem;
+    margin: 10px 0 0;
+    text-align: left;
+}
+
+.legal-notice .txt-grey-bkg-container span.txt-grey-bkg-container-paragraph,
+.faq .txt-grey-bkg-container span.txt-grey-bkg-container-paragraph,
+.single-article .txt-grey-bkg-container span.txt-grey-bkg-container-paragraph {
+    font-size: 1rem;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    color: #666666;
+    line-height: 26px;
+    display: block;
+}
+
+.legal-notice .quote blockquote,
+.faq .quote blockquote,
+.single-article .quote blockquote {
+    margin-top: 35px;
+    margin-bottom: 40px;
+}
+
+.legal-notice table[border="0"] td,
+.faq table[border="0"] td,
+.single-article table[border="0"] td {
+    border: none !important;
+}
+
+.legal-notice table caption,
+.faq table caption,
+.single-article table caption {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7em;
+    text-align: center;
+}
+
+.legal-notice .button a,
+.faq .button a,
+.single-article .button a {
+    color: #c8a461;
+}
+
+.legal-notice .author,
+.faq .author,
+.single-article .author {
+    clear: both;
+}
+
+.same-day .image.image-sameday-wrapper {
+    width: 293px;
+    height: 185px;
+}
+
+.legal-notice .slideshow.article_photo .slideshow-img .thumbnails .thumb img,
+.faq .slideshow.article_photo .slideshow-img .thumbnails .thumb img,
+.single-article .slideshow.article_photo .slideshow-img .thumbnails .thumb img {
+    height: auto;
+}
+
+.popin-video .info p,
+.popin-audio .info p {
+    max-width: 410px;
+}
+
+#filmPoster {
+    max-width: 140px;
+}
+
+.textLive p {
+    text-transform: uppercase;
+    color: #fff;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.textLive p span {
+    color: #c8a461;
+}
+
+.webtv #content-channels .info span.category {
+    color: #c8a461;
+}
+
+.webtv-ba-video #content-trailers #slider-trailer .info a.category {
+    display: inline-block;
+}
+
+.webtv-ba-video #content-trailers #slider-trailer .info span.date {
+    color: #666;
+    display: inline-block;
+    font-size: 0.625rem;
+}
+
+#half-photo {
+    display: inline-block;
+    margin: 0 0 50px;
+    vertical-align: top;
+    max-width: 48%;
+    margin: 0px 2%;
+}
+
+#half-photo + #half-photo {
+    margin: 0 0 0 -8px;
+}
+
+#titleFilmOnHomepage {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+/* espace presse */
+.practicalguide #praticalguide .container-pguide .wrapper .contain-article .aside .container-infos p {
+    font-size: 0.81rem;
+    line-height: 24px;
+}
+
+.practicalguide #praticalguide .container-pguide .wrapper .contain-article .aside .container-infos a {
+    color: #c29f5f;
+    text-decoration: underline;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#notposter {
+    height: 100%;
+    margin-top: 47px;
+    display: block;
+    width: 100%;
+}
+
+#TetiereMovieCountry {
+    margin-right: 0px;
+}
+
+#infosPressImageFilmPoster {
+    width: 148px;
+    height: 181px;
+}
+
+/* Juries */
+.contain-jurys-list .jury-box .image {
+    height: 404px;
+}
+
+.artist .paragraph i {
+    font-style: italic;
+}
+
+.single-movie .press .contacts .wrapper .vCenterKidTop .prod div {
+    padding: 2px 0;
+}
+
+.categorie-items article .infos-item-list .nom-item a {
+    color: #c8a461;
+
+}
+
+.contact .boxvalid {
+    margin-top: 40PX;
+    border: 1px solid #25a20c;
+    color: #25a20c;
+    width: 60%;
+    margin-left: 20%;
+}
+
+.contact .boxvalid p {
+    color: #25a20c;
+    margin-top: 21px;
+}
+
+#dateTranslationCannes {
+    font-size: 10px;
+    margin-bottom: 2px;
+    margin-top: -3px;
+}
+
+#msg {
+    margin-bottom: 30px;
+}
+
+.list-article h3.jury-president-color {
+    color: black;
+}
+
+#captionCopyright {
+    margin-left: 5px;
+}
+
+.clearfix {
+    overflow: auto;
+    zoom: 1;
+}
+
+#slider-competition .translated-title {
+    font-size: 10px;
+}
+
+.single-movie .press .contacts .wrapper .contact-reduce-line-height p {
+    /*line-height: 1.2em;*/
+}
+
+.single-movie .press .contacts .wrapper .contact-increase-padding-bottom p {
+    padding-bottom: 25px;
+}
+
+.webtv-ba-video .informations-video .infos-film a.name-video {
+    color: #fff;
+}
+
+.webtv-ba-video .informations-video .infos-film span.translated-title {
+    font-style: normal;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: .71rem;
+    color: #fff;
+    display: block;
+    padding-top: 4px;
+}
+
+.webtv-ba-video .informations-video .infos-film .name-person a {
+    color: #c8a461;
+}
+
+.manual .content-manual .contain-section .item-manual .text-manual p {
+    font-size: .81rem;
+    line-height: 24px;
+}
+
+.press .fc-event .info-dynamic-prog {
+    color: black;
+    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+    font-size: .813rem;
+    padding: 5px 0 5px 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.press .fc-event .info .txt-padding {
+    padding-left: 10px;
+}
+
+.list-article .categorie-items article .infos-item-list h3.title-item a,
+.list-article .categorie-items article .infos-item-list p.film-title-translations a {
+    color: #fff;
+}
+
+.cursor-default {
+    cursor: default !important;
+}
+
+.picto.picto-communique {
+    background: #c8a461;
+    color: #000;
+}
+
+.content-movie .tetiere-movie {
+    height:290px;
+}
+
+.single-movie .videos #slider-movie-videos .slide-video:after {
+    border:none !important;
+}
+
+.press-media .nav-container .table .line .container .contain .contain-buttons .buttons .button {
+    background: #fff;
+    outline: none;
+}
+
+.webtv #gridChannels {
+    background-color: #000;
+}
+.participate .contain-cinema .contain-map p {
+    padding-bottom: 5px;
+}
+
+.contain-participate .contain-infos .text-manual p strong {
+    color: #c29f5f;
+    font-size: 0.88rem;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+}
+
+.contain-participate .contain-infos .text-manual ul {
+    margin: 10px 0 10px 0;
+}
+
+.displaynotcmn {
+    display:none !important;
+}
+
+.participate .item-manual .text-manual h5 {
+    font-size: .75rem;
+    text-transform: uppercase;
+    font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+    padding-bottom: 29px;
+}
+
+.single-actualite .single-button {
+    text-align: center;
+    display: block;
+}
+
+.user-nav .account {
+    display:none;
+}
+
+#titleFilmOnHomepage > a{
+    color: #fff;
+}
+
+.chapeau em {
+    font-style: italic;
+}
