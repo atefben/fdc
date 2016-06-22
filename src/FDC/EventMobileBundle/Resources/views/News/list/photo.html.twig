@@ -25,11 +25,11 @@
                 {% if trans is null or trans.file is null %}
                     {% set trans = photo.findTranslationByLocale('fr') %}
                 {% endif %}
-                {% set format = trans.file.width > trans.file.height ? '' : 'grid-item--height2' %}
+                {% set format = '' %}
                 {% if format == '' %}
                     {% set rand = random(5) %}
                 {% endif %}
-                <div class="grid-item {% if rand == 3 %}grid-item--width2{% endif %} item {{ photo.theme|trans_fallback('slug') }} {{ format }}">
+                <div class="grid-item {% if rand == 3 %}grid-item--width2 grid-item--height2{% endif %} item {{ photo.theme|trans_fallback('slug') }} {{ format }}">
                     {% set copyright = photo|trans_fallback('copyright') %}
                     <a id="photo{{ photo.id }}"
                        class="ajachocolat-image ajax"
