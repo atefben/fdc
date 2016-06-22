@@ -1,3 +1,6 @@
+.jwplayer .jw-display-icon-container {
+    pointer-events: none;
+}
 a{
 
 	color:#c8a461;;

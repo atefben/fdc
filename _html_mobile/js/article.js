@@ -95,6 +95,23 @@ $(document).ready(function() {
     });
   }
 
+  if($('.players').length !== 0) {
+    $('.players').each(function (i, e) {
+      var id = $(e).attr('id');
+      var playerInstance = jwplayer(id);
+      playerInstance.setup({
+        file: $(e).data('video'),
+        image: $(e).data('poster'),
+        width: "100%",
+        aspectratio: "16:9",
+        displaytitle: false,
+        skin: {
+          name: "five"
+        }
+      });
+    });
+  }
+
   // PLAYERS AUDIO
   initAudioPlayers(false);
 });

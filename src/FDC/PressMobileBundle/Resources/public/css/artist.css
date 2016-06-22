@@ -3148,6 +3148,9 @@ display: inline-block;
 .suggestion{
 	display: none;
 }
+.jwplayer .jw-display-icon-container {
+    pointer-events: none;
+}
 a{
 
 	color:#c8a461;;
