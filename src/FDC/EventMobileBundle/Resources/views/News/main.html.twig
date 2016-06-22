@@ -86,7 +86,12 @@
                                     <div class="poster">
                                         {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                             film: associatedFilm,
-                                            film_format: 'small',
+                                            film_format: '210x284',
+                                            film_attrs: {
+                                                alt: associatedFilm|trans_fallback('title')?:associatedFilm.titleVO,
+                                                width: 187,
+                                                height: 255
+                                            },
                                             film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                         }) %}
                                     </div>
