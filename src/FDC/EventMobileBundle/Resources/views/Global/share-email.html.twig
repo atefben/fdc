@@ -7,7 +7,7 @@
             <div class="chap-article popin">{{ share_email.description|raw }}</div>
         </div>
     </div>
-    {{ form_start(form, {'action': path('fdc_event_global_shareemail'),attr: {class:'popin', id:'form'}}) }}
+    {{ form_start(form, {'action': path('fdc_eventmobile_global_shareemail'),attr: {class:'popin', id:'form'}}) }}
         {% if form_errors(form.email) %}
             {{ form_widget(form.email, {'attr': {'class': 'invalid'}}) }}
         {% else %}

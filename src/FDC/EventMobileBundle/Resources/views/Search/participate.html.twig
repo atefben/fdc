@@ -8,13 +8,13 @@
                 <div class="image-wrapper">
                     <img src='{% path article.image|trans_fallback('file'), '1280x808' %}' alt="{{ article.header|trans_fallback('alt') }}"/>
                 </div>
-                <a href="{{ path('fdc_event_participate_getpage', {'slug': article|trans_fallback('slug') }) }}" class="linkImage"></a>
+                <a href="{{ path('fdc_eventmobile_participate_getpage', {'slug': article|trans_fallback('slug') }) }}" class="linkImage"></a>
                 <span class="picto"><i class="icon icon_article"></i>
                 </span>
             </div>
             <div class="info">
                 <h2>
-                    <a href="{{ path('fdc_event_participate_getpage', {'slug': article|trans_fallback('slug') }) }}">
+                    <a href="{{ path('fdc_eventmobile_participate_getpage', {'slug': article|trans_fallback('slug') }) }}">
                         {{ article|trans_fallback('title')|truncate(40) }}
                     </a>
                 </h2>

@@ -6,22 +6,22 @@
         {% if class(media) == "MediaImage" %}
             {% set title = media|trans_fallback('legend') %}
             {% set format = 'photo' %}
-            {% set link = path('fdc_event_news_getphotos') ~ '#pid=' ~ media.id %}
+            {% set link = path('fdc_eventmobile_news_getphotos') ~ '#pid=' ~ media.id %}
         {% elseif class(media) == "MediaVideo" %}
             {% set title = media|trans_fallback('title') %}
             {% set format = 'video' %}
             {% set link = '' %}
             {% if media.displayedAll == true %}
-                {% set link = path('fdc_event_news_getvideos') ~ '#vid=' ~ media.id %}
+                {% set link = path('fdc_eventmobile_news_getvideos') ~ '#vid=' ~ media.id %}
             {% elseif media.displayedTrailer == true and media.associatedFilms|length > 0 %}
-                {% set link = path('fdc_event_television_gettrailer', {slug: media.associatedFilms[0].association.slug, video: media.id }) %}
+                {% set link = path('fdc_eventmobile_television_gettrailer', {slug: media.associatedFilms[0].association.slug, video: media.id }) %}
             {% elseif media.displayedWebTv == true and media.webTv is not empty %}
-                {% set link = path('fdc_event_television_getchannel_1', {slug: media.webTv.findTranslationByLocale(app.request.locale).slug, videoId: media.id }) %}
+                {% set link = path('fdc_eventmobile_television_getchannel_1', {slug: media.webTv.findTranslationByLocale(app.request.locale).slug, videoId: media.id }) %}
             {% endif %}
         {% elseif class(media) == "MediaAudio" %}
             {% set title = media|trans_fallback('title') %}
             {% set format = 'audio' %}
-            {% set link = path('fdc_event_news_getaudios') ~ '#aid=' ~ media.id %}
+            {% set link = path('fdc_eventmobile_news_getaudios') ~ '#aid=' ~ media.id %}
         {% endif %}
 
 

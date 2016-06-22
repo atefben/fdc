@@ -13,7 +13,7 @@
         </div>
 
         <div class="thumb active">
-            <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}">
+            <a href="{{ path('fdc_eventmobile_movie_get', {'slug': film.slug}) }}">
                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                 film: film,
                 film_format: 'search',
@@ -24,7 +24,7 @@
                 <div class="vCenter">
                     <div class="vCenterKid">
                         <h2>
-                            <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}">
+                            <a href="{{ path('fdc_eventmobile_movie_get', {'slug': film.slug}) }}">
                                 {% if film|trans_fallback('title') != null and film.titleVo != null and film|trans_fallback('title')|lower != film.titleVo|lower %}
                                     <span class="name">{{ film.titleVo }}</span>
                                     <span class="sub-name">({{ film|trans_fallback('title') }})</span>
