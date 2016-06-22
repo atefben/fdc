@@ -2052,6 +2052,7 @@ $(document).ready(function() {
         var urlPath = $(this).attr('data-url');
         $.get(urlPath, function(data) {
           $( ".content-selection2" ).html( $(data).find('.content-selection2').html() );
+          $('#banner-bottom').html($(data).find('#banner-bottom').html())
 
           setTimeout(function() {
             $( ".content-selection2" ).addClass('show');
