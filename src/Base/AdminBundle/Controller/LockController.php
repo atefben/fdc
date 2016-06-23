@@ -58,6 +58,7 @@ class LockController extends Controller
         'mediaimagesimple'                 => 'MediaImageSimple',
         'mediaaudio'                       => 'MediaAudio',
         'mediavideo'                       => 'MediaVideo',
+        'mediapdf'                         => 'MediaPdf',
         // Participer
         'fdcpageprepare'                   => 'FDCPagePrepare',
         'fdcpageparticipate'               => 'FDCPageParticipate',

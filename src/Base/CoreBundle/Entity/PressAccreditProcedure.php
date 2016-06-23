@@ -43,11 +43,18 @@ class PressAccreditProcedure implements TranslateMainInterface
     protected $procedureLink;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaPdf", cascade={"persist", "remove"})
+     */
+    private $pdf;
+
+    /**
+     * @deprecated
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
     private $procedureFile;
 
     /**
+     * @deprecated
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
     private $procedureSecondFile;
@@ -152,5 +159,28 @@ class PressAccreditProcedure implements TranslateMainInterface
     public function getProcedureSecondFile()
     {
         return $this->procedureSecondFile;
+    }
+
+    /**
+     * Set pdf
+     *
+     * @param \Base\CoreBundle\Entity\MediaPdf $pdf
+     * @return PressAccreditProcedure
+     */
+    public function setPdf(\Base\CoreBundle\Entity\MediaPdf $pdf = null)
+    {
+        $this->pdf = $pdf;
+
+        return $this;
+    }
+
+    /**
+     * Get pdf
+     *
+     * @return \Base\CoreBundle\Entity\MediaPdf 
+     */
+    public function getPdf()
+    {
+        return $this->pdf;
     }
 }

@@ -24,14 +24,7 @@ class FDCPagePrepareWidgetColumnDummyAdmin extends Admin
     {
         $formMapper
             ->add('image', 'sonata_type_model_list')
-            ->add('file', 'sonata_type_model_list',array(),
-                array(
-                    'link_parameters' => array(
-                        'context'  => 'pdf',
-                        'filter'   => array('context' => array('value' => 'pdf')),
-                        'provider' => 'sonata.media.provider.pdf'
-                    )
-                ))
+            ->add('pdf', 'sonata_type_model_list')
         ;
     }
 }

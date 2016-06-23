@@ -10,6 +10,7 @@ settings:
     fdc_press_password: Mot de passe de l'Espace presse
 
 breadcrumb:
+    link_media_pdf_list: Liste des médias Pdf
     link_f_d_c_page_participate_section_list: Liste des Strates Participer
     link_widget_mosaic_movie_list: Mosaïque de film
     link_f_d_c_page_la_selection_cinema_plage_list: Cinéma de la plage
@@ -176,6 +177,7 @@ entity:
     theme: Thèmes
     tag: Tags de recherche
     web_tv: Chaînes
+    media_pdf: Pdfs
     media_image: Photos
     media_image_simple: Images semi-riches
     media_audio: Audios
@@ -341,6 +343,8 @@ list:
         label_title: Nom de la section
 
 filter:
+    media_pdf:
+        name: Nom
     label_have_trailer: Afficher film avec bande annonce
     label_position: Position
     label_parent: Parent
@@ -529,6 +533,9 @@ dashboard:
         confidentialite: Politique de confidentialité
 
 form:
+    label_pdf: Pdf
+    media_pdf:
+        helper_file: Format attendu : .pdf
     fdc_page_participate_section:
         image_big: Grande image
     label_mobile: Utiliser cette strate sur mobile

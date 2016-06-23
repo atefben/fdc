@@ -199,6 +199,14 @@ services:
          calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.media_pdf:
+        class: Base\AdminBundle\Admin\MediaPdfAdmin
+        arguments: [~, Base\CoreBundle\Entity\MediaPdf, BaseAdminBundle:MediaPdfAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.media, label: entity.media_pdf, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     #SOIF
     base.admin.film_film:
         class: Base\AdminBundle\Admin\FilmFilmAdmin

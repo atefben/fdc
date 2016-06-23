@@ -35,7 +35,7 @@ class FDCPagePrepareWidgetColumnType extends FDCPagePrepareWidgetType
     private $FDCPagePrepareWidgetColumnDummyAdmin;
 
     /**
-     * setPressDownloadSectionWidgetDocumentDummyAdmin function.
+     * setFDCPagePrepareWidgetColumnDummyAdmin function.
      *
      * @access public
      * @param mixed $PressDownloadSectionWidgetDocumentDummyAdmin
@@ -64,12 +64,12 @@ class FDCPagePrepareWidgetColumnType extends FDCPagePrepareWidgetType
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array(),
                 'fields' => array(
-                 'applyChanges' => array(
-                     'field_type' => 'hidden',
-                     'attr' => array (
-                         'class' => 'hidden'
-                     )
-                 ),
+                     'applyChanges' => array(
+                         'field_type' => 'hidden',
+                         'attr' => array (
+                             'class' => 'hidden'
+                         )
+                     ),
                     'createdAt' => array(
                         'display' => false
                     ),
@@ -101,22 +101,12 @@ class FDCPagePrepareWidgetColumnType extends FDCPagePrepareWidgetType
                 'model_manager' => $this->FDCPagePrepareWidgetColumnDummyAdmin->getModelManager(),
                 'class' => $this->FDCPagePrepareWidgetColumnDummyAdmin->getFormFieldDescriptions()['image']->getAssociationAdmin()->getClass(),
             ))
-            ->add('file', 'sonata_type_model_list', array(
-                'sonata_field_description' => $this->FDCPagePrepareWidgetColumnDummyAdmin->getFormFieldDescriptions()['file'],
+            ->add('pdf', 'sonata_type_model_list', array(
+                'sonata_field_description' => $this->FDCPagePrepareWidgetColumnDummyAdmin->getFormFieldDescriptions()['pdf'],
                 'model_manager' => $this->FDCPagePrepareWidgetColumnDummyAdmin->getModelManager(),
-                'class' => $this->FDCPagePrepareWidgetColumnDummyAdmin->getFormFieldDescriptions()['file']->getAssociationAdmin()->getClass(),
-            ),
-                array(
-                    'link_parameters' => array(
-                        'context' => 'pdf',
-                        'filter' => array('context' => array('value' => 'pdf')),
-                        'provider' => 'sonata.media.provider.pdf'
-                    )
-                ))
-//            ->add('createdAt', 'hidden')
-//            ->add('updatedAt', 'hidden')
+                'class' => $this->FDCPagePrepareWidgetColumnDummyAdmin->getFormFieldDescriptions()['pdf']->getAssociationAdmin()->getClass(),
+            ))
         ;
-
     }
 
 

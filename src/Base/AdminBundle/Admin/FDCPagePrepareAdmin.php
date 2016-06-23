@@ -311,15 +311,9 @@ class FDCPagePrepareAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'choice_translation_domain' => 'BaseAdminBundle'
             ))
-            ->add('meetingFile', 'sonata_type_model_list', array(
+            ->add('meetingPdf', 'sonata_type_model_list', array(
                     'label' => 'PDF'
-                ), array(
-                    'link_parameters' => array(
-                        'provider' => 'sonata.media.provider.pdf',
-                        'context' => 'pdf'
-                    )
-                )
-            )
+            ))
             ->end();
 
     }

@@ -93,7 +93,7 @@
                                                             <h4><strong>Colonne widget</strong></h4>
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                             {{ form_row(widget.image) }}
-                                                            {{ form_row(widget.file) }}
+                                                            {{ form_row(widget.pdf) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
 
@@ -122,7 +122,7 @@
                                             {{ form_row(translationsFields.meetingLabel) }}
                                             {{ form_row(translationsFields.meetingUrl) }}
                                             {{ form_row(form.parent.children.meetingIcon) }}
-                                            {{ form_row(form.parent.children.meetingFile) }}
+                                            {{ form_row(form.parent.children.meetingPdf) }}
                                         </div>
                                     </div>
                                 </div>
@@ -319,7 +319,7 @@
                                                             <h4><strong>Colonne widget</strong></h4>
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                             {{ form_row(widget.image) }}
-                                                            {{ form_row(widget.file) }}
+                                                            {{ form_row(widget.pdf) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
 
@@ -418,7 +418,7 @@
                                                 {{ form_row(translationsFields.meetingUrl) }}
                                             </div>
                                             {{ form_row(form.parent.children.meetingIcon) }}
-                                            {{ form_row(form.parent.children.meetingFile) }}
+                                            {{ form_row(form.parent.children.meetingPdf) }}
                                         </div>
                                     </div>
                                 </div>

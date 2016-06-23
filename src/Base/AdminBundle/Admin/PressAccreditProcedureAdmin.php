@@ -134,28 +134,11 @@ class PressAccreditProcedureAdmin extends Admin
                     ),
                 )
             ))
-            ->add('procedureFile', 'sonata_type_model_list',
+            ->add('pdf', 'sonata_type_model_list',
                 array(
                     "required" => false,
-                ),
-                array(
-                    'link_parameters' => array(
-                        'context'  => 'pdf',
-                        'filter'   => array('context' => array('value' => 'pdf')),
-                        'provider' => 'sonata.media.provider.pdf'
-                    )
-            ))
-            ->add('procedureSecondFile', 'sonata_type_model_list',
-                array(
-                    "required" => false,
-                ),
-                array(
-                    'link_parameters' => array(
-                        'context'  => 'pdf',
-                        'filter'   => array('context' => array('value' => 'pdf')),
-                        'provider' => 'sonata.media.provider.pdf'
-                    )
-            ))
+                )
+            )
             ->add('translate')
             ->add('translateOptions', 'choice', array(
                 'choices' => PressAccreditProcedure::getAvailableTranslateOptions(),

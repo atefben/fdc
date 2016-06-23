@@ -108,9 +108,15 @@ class FDCPagePrepare implements TranslateMainInterface
     private $serviceWidgets;
 
     /**
+     * @deprecated
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
     private $meetingFile;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaPdf", cascade={"persist", "remove"})
+     */
+    private $meetingPdf;
 
     /**
      * ArrayCollection
@@ -431,5 +437,28 @@ class FDCPagePrepare implements TranslateMainInterface
     public function getMainImage()
     {
         return $this->mainImage;
+    }
+
+    /**
+     * Set meetingPdf
+     *
+     * @param \Base\CoreBundle\Entity\MediaPdf $meetingPdf
+     * @return FDCPagePrepare
+     */
+    public function setMeetingPdf(\Base\CoreBundle\Entity\MediaPdf $meetingPdf = null)
+    {
+        $this->meetingPdf = $meetingPdf;
+
+        return $this;
+    }
+
+    /**
+     * Get meetingPdf
+     *
+     * @return \Base\CoreBundle\Entity\MediaPdf 
+     */
+    public function getMeetingPdf()
+    {
+        return $this->meetingPdf;
     }
 }

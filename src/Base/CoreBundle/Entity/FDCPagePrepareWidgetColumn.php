@@ -27,9 +27,16 @@ class FDCPagePrepareWidgetColumn extends FDCPagePrepareWidget
     private $image;
 
     /**
+     * @deprecated
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
     private $file;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaPdf", cascade={"persist", "remove"})
+     */
+    private $pdf;
 
 
     /**
@@ -90,5 +97,28 @@ class FDCPagePrepareWidgetColumn extends FDCPagePrepareWidget
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Set pdf
+     *
+     * @param \Base\CoreBundle\Entity\MediaPdf $pdf
+     * @return FDCPagePrepareWidgetColumn
+     */
+    public function setPdf(\Base\CoreBundle\Entity\MediaPdf $pdf = null)
+    {
+        $this->pdf = $pdf;
+
+        return $this;
+    }
+
+    /**
+     * Get pdf
+     *
+     * @return \Base\CoreBundle\Entity\MediaPdf 
+     */
+    public function getPdf()
+    {
+        return $this->pdf;
     }
 }

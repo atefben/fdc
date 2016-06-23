@@ -197,6 +197,10 @@
     {% include 'BaseAdminBundle:TranslationFormBundle:media_image.html.twig' %}
 {% endblock %}
 
+{% block base_admin_media_pdf_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:media_pdf.html.twig' %}
+{% endblock %}
+
 {% block base_admin_faq_page_translations_a2lix_translations_widget %}
     {% include 'BaseAdminBundle:TranslationFormBundle:faq_page.html.twig' %}
 {% endblock %}
@@ -273,7 +277,7 @@
     <div class="clearfix">
         <div class="span3">
             {% if value is not empty and value.providerReference %}
-                {% if value.providerName == 'sonata.media.provider.video'  %}
+                {% if value.providerName == 'sonata.media.provider.video'%}
                     <div class="pull-left" style="margin-right: 5px">
                     </div>
                     {% if sonata_admin_enabled is defined and sonata_admin_enabled %}
@@ -281,7 +285,15 @@
                     {% else %}
                         <strong>{{ value.name }}</strong>
                     {% endif %}
-                {% elseif value.providerName == 'sonata.media.provider.audio'%}
+                {% elseif value.providerName == 'sonata.media.provider.audio' %}
+                    <div class="pull-left" style="margin-right: 5px">
+                    </div>
+                    {% if sonata_admin_enabled is defined and sonata_admin_enabled %}
+                        <a href="{{ url('admin_sonata_media_media_edit', {id: value.id}) }}"><strong>{{ value.name }}</strong></a>
+                    {% else %}
+                        <strong>{{ value.name }}</strong>
+                    {% endif %}
+                {% elseif value.providerName == 'sonata.media.provider.pdf' %}
                     <div class="pull-left" style="margin-right: 5px">
                     </div>
                     {% if sonata_admin_enabled is defined and sonata_admin_enabled %}

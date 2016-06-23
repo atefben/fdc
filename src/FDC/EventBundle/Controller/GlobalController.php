@@ -176,6 +176,7 @@ class GlobalController extends Controller {
                     }
                 }
             }
+
             if ($form->isValid()) {
                 foreach ($emails as $email){
                     $data    = $form->getData();

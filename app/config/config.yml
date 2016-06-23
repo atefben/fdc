@@ -24,9 +24,6 @@ imports:
     - { resource: bundles/fos_elastica.yml }
     # old roles
     - { resource: roles/security_all.yml }
-    - { resource: roles/security_fdc.yml }
-    - { resource: roles/security_soif.yml }
-    - { resource: roles/security_translation.yml }
     # news roles
     - { resource: roles/groups/security_admin_fdc.yml }
     - { resource: roles/groups/security_community_manager.yml }
