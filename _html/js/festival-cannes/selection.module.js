@@ -12,7 +12,7 @@ $(document).ready(function() {
     selectionCookie = [];
   }
 
-  if(selectionCookie.length > 0) {
+  if(selectionCookie != null && selectionCookie.length > 0) {
     for(var i=0; i<selectionCookie.length; i++) {
       var $art = $('#toClone').clone();
       $art.find('article').addClass(selectionCookie[i].format);
