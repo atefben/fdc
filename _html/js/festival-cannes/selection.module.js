@@ -6,9 +6,13 @@ $(document).ready(function() {
       tr               = 0,
       selectionCookie  = [];
 
-  if(localStorage.getItemSecure('selection')) {
+  try {
     selectionCookie = JSON.parse(localStorage.getItemSecure('selection'));
+  } catch(e) {
+    selectionCookie = [];
+  }
 
+  if(selectionCookie.length > 0) {
     for(var i=0; i<selectionCookie.length; i++) {
       var $art = $('#toClone').clone();
       $art.find('article').addClass(selectionCookie[i].format);
@@ -203,7 +207,9 @@ $(document).ready(function() {
 
     $('#selection .title span').text(selectionCookie.length);
 
-    localStorage.setItemSecure('selection', JSON.stringify(selectionCookie), { expires: 14 });
+    try {
+      localStorage.setItemSecure('selection', JSON.stringify(selectionCookie), { expires: 14 });
+    } catch(e) {}
 
     setTimeout(function() {
       sliderSelection.trigger('del.owl.carousel', i);
@@ -259,7 +265,9 @@ $(document).ready(function() {
       'title': $articleEl.find('h2 a, h3 a').text(),
     });
 
-    localStorage.setItemSecure('selection', JSON.stringify(selectionCookie), { expires: 14 });
+    try {
+      localStorage.setItemSecure('selection', JSON.stringify(selectionCookie), { expires: 14 });
+    } catch(e) {}
 
     $('#selection .title span').text(selectionCookie.length);
 
