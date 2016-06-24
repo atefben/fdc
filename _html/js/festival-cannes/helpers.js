@@ -24,7 +24,15 @@ String.prototype.parseHashtag = function(twitter) {
 
 Storage.prototype.getItemSecure = function(item) {
   try {
-    return localStorage.getItem(item);
+    return Storage.getItem(item);
+  } catch(e) {
+    return {};
+  }
+};
+
+Storage.prototype.getSecure = function(item) {
+  try {
+    return Storage.getItem(item);
   } catch(e) {
     return {};
   }
@@ -32,7 +40,7 @@ Storage.prototype.getItemSecure = function(item) {
 
 Storage.prototype.setItemSecure = function(item, value) {
   try {
-    return localStorage.setItem(item, value);
+    return Storage.setItem(item, value);
   } catch(e) {
     return {};
   }

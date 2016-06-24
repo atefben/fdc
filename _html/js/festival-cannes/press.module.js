@@ -3,7 +3,7 @@ $(document).ready(function () {
   var events = [];
 
   // get local storage
-  var agenda = localStorage.getItemSecure('agenda_press');
+  var agenda = localStorage.getSecure('agenda_press');
 
   // if local storage, get the events
   if (agenda != null) {
