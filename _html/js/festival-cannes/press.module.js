@@ -4,13 +4,13 @@ $(document).ready(function () {
 
   // get local storage
   try {
-    var agenda = localStorage.getItemSecure('agenda_press');
+    var agenda = localStorage.getItem('agenda_press');
   } catch(e) {
     var agenda = null;
   }
 
   // if local storage, get the events
-  if (agenda != null) {
+  if (agenda != null && Object.size(agenda)) {
     events = JSON.parse(agenda);
   }
 
@@ -237,7 +237,7 @@ $(document).ready(function () {
       $('.button.list').on('click', function(e) {
         if($(this).hasClass('ics')) {
           try {
-            var agenda_data = localStorage.getItemSecure('agenda_press');
+            var agenda_data = localStorage.getItem('agenda_press');
           } catch(e) {
             var agenda_data = null;
           }
@@ -424,7 +424,7 @@ $(document).ready(function () {
         $('#mycalendar').fullCalendar('removeEvents', id);
 
         try {
-          var agenda = localStorage.getItemSecure('agenda_press');
+          var agenda = localStorage.getItem('agenda_press');
         } catch(e) {
           var agenda = null;
         }
@@ -439,7 +439,7 @@ $(document).ready(function () {
           }
 
           try {
-            localStorage.setItemSecure('agenda_press', JSON.stringify(events));
+            localStorage.setItem('agenda_press', JSON.stringify(events));
           } catch(e) {}
         }
 
@@ -477,7 +477,7 @@ $(document).ready(function () {
         //Stockage de l'évènement dans le storage
         // get local storage
         try {
-          var agenda = localStorage.getItemSecure('agenda_press');
+          var agenda = localStorage.getItem('agenda_press');
         } catch(e) {
           var agenda = null;
         }
@@ -486,14 +486,14 @@ $(document).ready(function () {
           // add the event and store
           events.push(eventObject);
           try {
-            localStorage.setItemSecure('agenda_press', JSON.stringify(events));
+            localStorage.setItem('agenda_press', JSON.stringify(events));
           } catch(e) {}
         } else {
           // get events, add the event and store
           events = JSON.parse(agenda);
           events.push(eventObject);
           try {
-            localStorage.setItemSecure('agenda_press', JSON.stringify(events));
+            localStorage.setItem('agenda_press', JSON.stringify(events));
           } catch(e) {}
         }
 
@@ -657,7 +657,7 @@ $(document).ready(function () {
 
           // get local storage
           try {
-            var agenda = localStorage.getItemSecure('agenda_press');
+            var agenda = localStorage.getItem('agenda_press');
           } catch(e) {
             var agenda = null;
           }
@@ -666,14 +666,14 @@ $(document).ready(function () {
             // add the event and store
             events.push(copiedEventObject);
             try {
-              localStorage.setItemSecure('agenda_press', JSON.stringify(events));
+              localStorage.setItem('agenda_press', JSON.stringify(events));
             } catch(e) {}
           } else {
             // get events, add the event and store
             events = JSON.parse(agenda);
             events.push(copiedEventObject);
             try {
-              localStorage.setItemSecure('agenda_press', JSON.stringify(events));
+              localStorage.setItem('agenda_press', JSON.stringify(events));
             } catch(e) {}
           }
 
@@ -732,7 +732,7 @@ $(document).ready(function () {
           $('#mycalendar').fullCalendar('removeEvents', id);
 
           try {
-            var agenda = localStorage.getItemSecure('agenda_press');
+            var agenda = localStorage.getItem('agenda_press');
           } catch(e) {
             var agenda = null;
           }
@@ -747,7 +747,7 @@ $(document).ready(function () {
             }
 
             try {
-              localStorage.setItemSecure('agenda_press', JSON.stringify(events));
+              localStorage.setItem('agenda_press', JSON.stringify(events));
             } catch(e) {}
           }
 
@@ -788,7 +788,7 @@ $(document).ready(function () {
 
           // get local storage
           try {
-            var agenda = localStorage.getItemSecure('agenda_press');
+            var agenda = localStorage.getItem('agenda_press');
           } catch(e) {
             var agenda = null;
           }
@@ -796,13 +796,13 @@ $(document).ready(function () {
           if (agenda == null) {
             events.push(eventObject);
             try {
-              localStorage.setItemSecure('agenda_press', JSON.stringify(events));
+              localStorage.setItem('agenda_press', JSON.stringify(events));
             } catch(e) {}
           } else {
             events = JSON.parse(agenda);
             events.push(eventObject);
             try {
-              localStorage.setItemSecure('agenda_press', JSON.stringify(events));
+              localStorage.setItem('agenda_press', JSON.stringify(events));
             } catch(e) {}
           }
 
@@ -986,7 +986,7 @@ $(document).ready(function () {
     $('#mycalendar').fullCalendar('removeEvents', id);
 
     try {
-      var agenda = localStorage.getItemSecure('agenda_press');
+      var agenda = localStorage.getItem('agenda_press');
     } catch(e) {
       var agenda = null;
     }
@@ -1001,7 +1001,7 @@ $(document).ready(function () {
       }
 
       try {
-        localStorage.setItemSecure('agenda_press', JSON.stringify(events));
+        localStorage.setItem('agenda_press', JSON.stringify(events));
       } catch(e) {}
     }
 
@@ -1295,7 +1295,7 @@ $(document).ready(function () {
             myEvent['end']   = dateEnd;
 
             try {
-              var agenda = localStorage.getItemSecure('agenda_press');
+              var agenda = localStorage.getItem('agenda_press');
             } catch(e) {
               var agenda = null;
             }
@@ -1303,14 +1303,14 @@ $(document).ready(function () {
             if (agenda == null) {
               events.push(myEvent);
               try {
-                localStorage.setItemSecure('agenda_press', JSON.stringify(events));
+                localStorage.setItem('agenda_press', JSON.stringify(events));
               } catch(e) {}
             } else {
               // get events, add the event and store
               events = JSON.parse(agenda);
               events.push(myEvent);
               try {
-                localStorage.setItemSecure('agenda_press', JSON.stringify(events));
+                localStorage.setItem('agenda_press', JSON.stringify(events));
               } catch(e) {}
             }
           }

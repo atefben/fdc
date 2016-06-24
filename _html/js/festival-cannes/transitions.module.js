@@ -22,7 +22,7 @@ $(document).ready(function() {
       $main   = $('#main'),
       $header = $('header');
 
-  if(typeof sessionStorage.getItemSecure('scrolltop') !== "undefined" && parseInt(sessionStorage.getItemSecure('scrolltop')) > 10) {
+  if(typeof sessionStorage.getItem('scrolltop') !== "undefined" && parseInt(sessionStorage.getItem('scrolltop')) > 10) {
     $('#logo-wrapper, #logo img, #sticky-user, header #search, a.search').css('transition', 'none');
     $('#sticky-user').css('transition-delay', '0');
     $('p.stick').addClass('noTrans');
@@ -70,7 +70,7 @@ $(document).ready(function() {
           if((v == 0 && $header.hasClass('sticky')) || (v == 10 && $header.hasClass('sticky'))) {
             v = 11;
           }
-          sessionStorage.getItemSecure('scrolltop', v);
+          sessionStorage.getItem('scrolltop', v);
           window.location = href;
         }, 0);
       }

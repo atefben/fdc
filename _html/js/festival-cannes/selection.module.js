@@ -7,7 +7,7 @@ $(document).ready(function() {
       selectionCookie  = [];
 
   try {
-    selectionCookie = JSON.parse(localStorage.getItemSecure('selection'));
+    selectionCookie = JSON.parse(localStorage.getItem('selection'));
   } catch(e) {
     selectionCookie = [];
   }
@@ -208,7 +208,7 @@ $(document).ready(function() {
     $('#selection .title span').text(selectionCookie.length);
 
     try {
-      localStorage.setItemSecure('selection', JSON.stringify(selectionCookie), { expires: 14 });
+      localStorage.setItem('selection', JSON.stringify(selectionCookie), { expires: 14 });
     } catch(e) {}
 
     setTimeout(function() {
@@ -266,7 +266,7 @@ $(document).ready(function() {
     });
 
     try {
-      localStorage.setItemSecure('selection', JSON.stringify(selectionCookie), { expires: 14 });
+      localStorage.setItem('selection', JSON.stringify(selectionCookie), { expires: 14 });
     } catch(e) {}
 
     $('#selection .title span').text(selectionCookie.length);

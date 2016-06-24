@@ -22,30 +22,6 @@ String.prototype.parseHashtag = function(twitter) {
   });
 };
 
-Storage.prototype.getItemSecure = function(item) {
-  try {
-    return Storage.getItem(item);
-  } catch(e) {
-    return {};
-  }
-};
-
-Storage.prototype.getSecure = function(item) {
-  try {
-    return Storage.getItem(item);
-  } catch(e) {
-    return {};
-  }
-};
-
-Storage.prototype.setItemSecure = function(item, value) {
-  try {
-    return Storage.setItem(item, value);
-  } catch(e) {
-    return {};
-  }
-};
-
 // Get the size of an object
 Object.size = function(obj) {
     var size = 0, key;
