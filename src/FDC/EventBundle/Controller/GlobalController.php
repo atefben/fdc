@@ -64,13 +64,11 @@ class GlobalController extends Controller {
         $menus = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->childrenHierarchy();
 
         // Menu Participer
- //TODO ANTOINE
- //       $participatePage = $em->getRepository('BaseCoreBundle:FDCPageParticipate')->findAll();
- //       $preparePage = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findById($this->getParameter('admin_fdc_page_prepare_id'));
+        $participatePage = $em->getRepository('BaseCoreBundle:FDCPageParticipate')->findAll();
+        $preparePage = $em->getRepository('BaseCoreBundle:FDCPagePrepare')->findById($this->getParameter('admin_fdc_page_prepare_id'));
 
- //       $participateMenu = array_merge($preparePage, $participatePage);
- $participateMenu = '';
- //TODO ANTOINE
+        $participateMenu = array_merge($preparePage, $participatePage);
+
         $displayedMenus = array();
         foreach($menus as $menu){
             if($menu['site'] == FDCEventRoutesInterface::EVENT) {
