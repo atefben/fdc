@@ -151,8 +151,6 @@ class MediaStreamManager extends CoreManager
             case 'png':
                 $file = imagepng($result, $filename);
                 break;
-            case 'pdf':
-                return;
             default:
                 $msg = __METHOD__. " - The extension handler {$extension} is not found.";
                 $exception = new Exception($msg);
