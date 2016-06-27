@@ -200,3 +200,4 @@ index 3297883..c284110 100644
 +        return $translatableClass . 'Translation';
      }
  }
+ 
