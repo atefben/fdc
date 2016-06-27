@@ -97,7 +97,7 @@ app/Resources/translations/routes.es.xliff
 
 app/Resources/translations/routes.fr.xliff
 
-*.xliff
+#*.xliff
 
 app/config/bundles/fos_elastica.yml
 
