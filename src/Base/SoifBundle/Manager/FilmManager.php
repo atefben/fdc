@@ -23,6 +23,8 @@ use Base\CoreBundle\Entity\FilmSelectionSectionTranslation;
 use Base\CoreBundle\Entity\FilmSelectionSubsection;
 use Base\CoreBundle\Entity\FilmSelectionSubsectionTranslation;
 
+use \Exception;
+
 /**
  * FilmManager class.
  *
@@ -193,7 +195,11 @@ class FilmManager extends CoreManager
 
         // set entities
         foreach ($resultObjects as $resultObject) {
-            $entity = $this->set($resultObject, $result);
+            try {
+                $entity = $this->set($resultObject, $result);
+            } catch (Exception $e) {
+                continue;
+            }
             $this->update($entity);
         }
 

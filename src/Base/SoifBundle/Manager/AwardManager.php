@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Base\CoreBundle\Entity\FilmAward;
 use Base\CoreBundle\Entity\FilmAwardAssociation;
 
+use \Exception;
+
 /**
  * AwardManager class.
  * @extends CoreManager
@@ -149,7 +151,11 @@ class AwardManager extends CoreManager
 
         // set entities
         foreach ($resultObjects as $resultObject) {
-            $entity = $this->set($resultObject, $result);
+            try {
+                $entity = $this->set($resultObject, $result);
+            } catch (Exception $e) {
+                continue;
+            }
             $this->update($entity);
         }
 

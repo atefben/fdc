@@ -5,6 +5,8 @@ namespace Base\SoifBundle\Manager;
 use Base\CoreBundle\Entity\Country;
 use Base\CoreBundle\Entity\CountryTranslation;
 
+use \Exception;
+
 /**
  * CountryManager class.
  * 
@@ -96,7 +98,11 @@ class CountryManager extends CoreManager
         $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats->{$this->wsResultObjectKey});
 
         foreach ($resultObjects as $resultObject) {
-            $entity = $this->set($resultObject, $result);
+            try {
+                $entity = $this->set($resultObject, $result);
+            } catch (Exception $e) {
+                continue;
+            }
             $this->update($entity);
         }
         

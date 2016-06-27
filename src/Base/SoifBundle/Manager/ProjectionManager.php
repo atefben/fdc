@@ -2,6 +2,8 @@
 
 namespace Base\SoifBundle\Manager;
 
+use \Exception;
+
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Base\CoreBundle\Entity\FilmProjection;
@@ -142,7 +144,11 @@ class ProjectionManager extends CoreManager
 
         // set entities
         foreach ($resultObjects as $resultObject) {
-            $entity = $this->set($resultObject, $result);
+            try {
+                $entity = $this->set($resultObject, $result);
+            } catch (Exception $e) {
+                continue;
+            }
             $this->update($entity);
         }
         

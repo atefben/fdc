@@ -112,7 +112,11 @@ class PrizeManager extends CoreManager
 
         // set entities
         foreach ($resultObjects as $resultObject) {
-            $entity = $this->set($resultObject, $result);
+            try {
+                $entity = $this->set($resultObject, $result);
+            } catch (Exception $e) {
+                continue;
+            }
             $this->update($entity);
         }
         

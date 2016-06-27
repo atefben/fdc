@@ -3,6 +3,7 @@
 namespace Base\SoifBundle\Manager;
 
 use \DateTime;
+use \Exception;
 
 use Base\CoreBundle\Entity\FilmAtelier;
 use Base\CoreBundle\Entity\FilmAtelierCountry;
@@ -144,7 +145,11 @@ class FilmAtelierManager extends CoreManager
         
         // set entities
         foreach ($resultObjects as $resultObject) {
-            $entity = $this->set($resultObject, $result);
+            try {
+                $entity = $this->set($resultObject, $result);
+            } catch (Exception $e) {
+                continue;
+            }
             $this->update($entity);
         }
 
