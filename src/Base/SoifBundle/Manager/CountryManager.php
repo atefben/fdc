@@ -101,6 +101,7 @@ class CountryManager extends CoreManager
             try {
                 $entity = $this->set($resultObject, $result);
             } catch (Exception $e) {
+                $this->logger->critical($e->getMessage());
                 continue;
             }
             $this->update($entity);
