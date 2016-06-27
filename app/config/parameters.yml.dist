@@ -307,3 +307,4 @@ parameters:
     header_cine_zh: 'http://www.cinefondation.com/en/'
     header_ccm_zh: 'http://www.cannescourtmetrage.com/en/'
     header_mdf_zh: 'http://www.marchedufilm.com/cn/'
+    email_sysadmin_fdc: ~

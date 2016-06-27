@@ -16,10 +16,24 @@ monolog:
         main:
             type:         fingers_crossed
             action_level: error
-            handler:      nested
-        nested:
-            type:  stream
-            path:  "%kernel.logs_dir%/%kernel.environment%.log"
-            level: debug
+            excluded_404s:
+                - ^/
+            handler:      grouped
+        grouped:
+            type:               group
+            members:            [streamed, buffered]
+        buffered:
+          type: buffer
+          handler: swift
+        streamed:
+            type:               stream
+            path:               "%kernel.logs_dir%/%kernel.environment%.log"
+            level:              debug
+        swift:
+            type:               swift_mailer
+            from_email:         %mailer_user%
+            to_email:           %email_sysadmin_fdc%
+            subject:            "Festival de Cannes Error"
+            level:              debug
         console:
             type:  console
