@@ -255,6 +255,9 @@ class FilmManager extends CoreManager
         // create / get entity
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmFilm();
 
+        // log film title
+        $this->logger->info("Movie {$this->entityIdKey}, title: {$resultObject->TitreOriginal}");
+
         // set soif last update time
         $this->setSoifUpdatedAt($result, $entity);
 
