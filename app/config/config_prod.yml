@@ -33,7 +33,7 @@ monolog:
             type:               swift_mailer
             from_email:         %mailer_user%
             to_email:           %email_sysadmin_fdc%
-            subject:            "Festival de Cannes Error"
+            subject:            "Festival de Cannes / MAJ SOIF Error"
             level:              debug
         console:
             type:  console
