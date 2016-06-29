@@ -31,7 +31,7 @@ monolog:
             level:              debug
         swift:
             type:               swift_mailer
-            from_email:         %mailer_user%
+            from_email:         logs@ohwee.fr
             to_email:           %email_sysadmin_fdc%
             subject:            "Festival de Cannes / MAJ SOIF Error"
             level:              debug
