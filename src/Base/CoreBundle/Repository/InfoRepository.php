@@ -143,19 +143,20 @@ class InfoRepository extends EntityRepository
             ->setParameter('displayed_mobile', true)
         ;
 
-        if ($festival->getFestivalStartsAt() >= $dateTime) {
+        if ($festival->getFestivalStartsAt() >= $dateTime) { //before
             $this->addMasterQueries($qb, 'n', $festival, true);
             $qb
                 ->andWhere(':festivalStartAt  >= n.publishedAt')
                 ->setParameter('festivalStartAt', $festival->getFestivalStartsAt())
             ;
-        } else if ($festival->getFestivalEndsAt() <= $dateTime) {
+        } else if ($festival->getFestivalEndsAt() <= $dateTime) { //after
             $this->addMasterQueries($qb, 'n', $festival, true);
             $qb
                 ->andWhere(':festivalEndAt < n.publishedAt')
-                ->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
+                //->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
+                ->setParameter('festivalEndAt', '2016-05-23 00:00:00');
             ;
-        } else {
+        } else { //live
             $morning = clone $dateTime;
             $morning->setTime(0, 0, 0);
             $midnight = clone $dateTime;

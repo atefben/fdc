@@ -3,7 +3,9 @@
 namespace Base\CoreBundle\Twig\Extension;
 
 use Base\CoreBundle\Entity\FilmPerson;
+use Base\CoreBundle\Component\Gender;
 use \Twig_Extension;
+
 
 /**
  * PersonFunctionGenderExtension class.
@@ -52,47 +54,7 @@ class PersonFunctionGenderExtension extends Twig_Extension
 
     protected function professionReplace($profession, $gender)
     {
-        $default = array(
-            '(e)',
-            '(ne)',
-            '(teur/trice)',
-            '(eur/euse)',
-            '(er/ière)',
-            '(a)',
-            '(or/riz)',
-            '(o/a)',
-            '(os/as)'
-        );
-        $male = array(
-            '',
-            '',
-            'teur',
-            'eur',
-            'er',
-            '',
-            'or',
-            'o',
-            'os'
-        );
-        $female = array(
-            '',
-            'ne',
-            'trice',
-            'euse',
-            'ière',
-            'a',
-            'riz',
-            'a',
-            'as'
-        );
-        $gender = strtoupper($gender);
-        if ($gender == 'MONSIEUR') {
-            return str_replace($default, $male, $profession);
-        } elseif ($gender == 'MADAME') {
-            return str_replace($default, $female, $profession);
-        } else {
-            return $profession;
-        }
+        return Gender::functionGenderFormatter($profession, $gender);
     }
 
     public function getProfessionGender(FilmPerson $person, $locale)

@@ -131,6 +131,9 @@ class HomeController extends FOSRestController
 
     public function getNextProjections($festival)
     {
+        $coreManager = $this->get('base.api.core_manager');
+        $festival = $coreManager->getApiFestivalYear();
+
         $now = new \DateTime();
         $results = $this
             ->getDoctrine()

@@ -76,6 +76,9 @@ class FilmProjectionController extends FOSRestController
 
         $date = new \DateTime();
         $date->setTimestamp($time);
+        if($festival->getFestivalEndsAt() < $date) {
+            $date = $festival->getFestivalEndsAt();
+        }
 
         foreach ($rooms as $key => $room) {
             $ac = new ArrayCollection();

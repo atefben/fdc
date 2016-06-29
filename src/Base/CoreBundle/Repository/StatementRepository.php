@@ -154,7 +154,8 @@ class StatementRepository extends EntityRepository
             $this->addMasterQueries($qb, 'n', $festival, true);
             $qb
                 ->andWhere(':festivalEndAt < n.publishedAt')
-                ->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
+                //->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
+                ->setParameter('festivalEndAt', '2016-05-23 00:00:00');
             ;
         } else {
             $morning = clone $dateTime;
