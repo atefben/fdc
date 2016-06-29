@@ -184,8 +184,7 @@ class FilmProjectionRepository extends EntityRepository
         ;
 
         if ($dateTime) {
-            if($festival->getFestivalEndsAt() < $dateTime) {
-                $dateTime = $festival->getFestivalEndsAt();
+            if($festival->getFestivalEndsAt() == $dateTime) {
                 $qb->setMaxResults(3);
             }
 
