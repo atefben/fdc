@@ -19,6 +19,10 @@ class FilmProjectionRoomRepository extends EntityRepository
             $date = new \DateTime;
             $date->setTimestamp($time);
 
+            if($festival->getFestivalEndsAt() < $date) {
+                $date = $festival->getFestivalEndsAt();
+            }
+
             $begin = new \DateTime();
             $begin->setDate($date->format('Y'), $date->format('m'), $date->format('d'));
             $begin->setTime(0, 0, 0);

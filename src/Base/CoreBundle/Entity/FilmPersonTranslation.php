@@ -7,6 +7,7 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\TranslateChild;
 use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Component\Gender;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -14,6 +15,7 @@ use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Exclude;
 use JMS\Serializer\Annotation\Expose;
 use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Accessor;
 
 /**
  * @ORM\Entity
@@ -41,6 +43,7 @@ class FilmPersonTranslation implements TranslateChildInterface
      *     "projection_list",
      *     "projection_show"
      * })
+     * @Accessor(getter="getApiProfession")
      */
     protected $profession;
     
@@ -107,6 +110,17 @@ class FilmPersonTranslation implements TranslateChildInterface
     {
         return $this->profession;
     }
+
+    /**
+     * Get profession formatted for api
+     *
+     * @return string
+     */
+    public function getApiProfession()
+    {
+        return Gender::functionGenderFormatter($this->getProfession(), $this->getGender());
+    }
+
 
     /**
      * Set biography
