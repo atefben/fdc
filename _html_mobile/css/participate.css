@@ -227,6 +227,14 @@ a.partners-link{
     font-weight: 700;
 }
 
+.access-container .description strong {
+    color: #000 !important;
+}
+
+.access-container .contain-map {
+   text-align: center;
+}
+
 .portrait img{
     float: left;
     padding-right: 20px;
