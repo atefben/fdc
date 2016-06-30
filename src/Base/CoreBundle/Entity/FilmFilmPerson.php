@@ -240,12 +240,7 @@ class FilmFilmPerson implements TranslateMainInterface
         
         $this->functions->removeElement($functions);
     }
-
-    public function setFunctions($functions)
-    {
-        $this->functions = $functions;
-    }
-
+    
     /**
      * Get functions
      *
@@ -254,6 +249,16 @@ class FilmFilmPerson implements TranslateMainInterface
     public function getFunctions()
     {
         return $this->functions;
+    }
+
+    /**
+     * @param ArrayCollection $functions
+     * @return $this
+     */
+    public function setFunctions($functions)
+    {
+        $this->functions = $functions;
+        return $this;
     }
 
     /**

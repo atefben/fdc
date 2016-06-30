@@ -135,11 +135,15 @@ class HomeController extends FOSRestController
         $festival = $coreManager->getApiFestivalYear();
 
         $now = new \DateTime();
+        if($festival->getFestivalEndsAt() < $now) {
+            $now = $festival->getFestivalEndsAt();
+        }
+
         $results = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:FilmProjection')
-            ->getNewsApiProjections($festival)
+            ->getNewsApiProjections($festival, $now)
         ;
 
         $projections = array();

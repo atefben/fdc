@@ -3,7 +3,11 @@
 namespace Base\ApiBundle\Controller;
 
 use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
+use Base\CoreBundle\Component\Gender;
 use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\FilmFilmPerson;
+use Base\CoreBundle\Entity\FilmFilmPersonFunction;
+use Base\CoreBundle\Entity\FilmFunctionTranslation;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
@@ -72,6 +76,11 @@ class FilmController extends FOSRestController
 
         // get items
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
+
+        foreach($items as $item) {
+            $this->translateFunction($item, $lang);
+        }
+
 		
         // set context view
         $groups = array('film_list');
@@ -85,6 +94,31 @@ class FilmController extends FOSRestController
 
 
         return $view;
+    }
+
+    private function translateFunction(&$film, $locale)
+    {
+        if ($film instanceof FilmFilm) {
+            $persons = $film->getPersons();
+            foreach ($persons as &$person) {
+                if ($person instanceof FilmFilmPerson && $person->getPerson() && $person->getPerson()->findTranslationByLocale($locale)) {
+                    $functions  = $person->getFunctions();
+                    foreach ($functions as &$function) {
+                        if ($function instanceof FilmFilmPersonFunction) {
+                            $subFunction = $function->getFunction();
+                            $translation = $subFunction->findTranslationByLocale($locale);
+                            if ($translation instanceof FilmFunctionTranslation) {
+                                $gender = $person->getPerson()->findTranslationByLocale($locale)->getGender();
+                                $translation->setName(Gender::functionGenderFormatter($translation->getName(), $gender));
+                            }
+                            $subFunction->setTranslation($translation, $locale);
+                            $function->setFunction($subFunction);
+                        }
+                    }
+                }
+            }
+            $film->setPersons($persons);
+        }
     }
 
     /**
@@ -134,6 +168,8 @@ class FilmController extends FOSRestController
         // create query
         $em = $this->getDoctrine()->getManager();
         $film = $em->getRepository($this->repository)->getApiFilm($id, $festival);
+
+        $this->translateFunction($film, $lang);
 
         // set context view
         $context = SerializationContext::create();
