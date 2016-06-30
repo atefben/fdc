@@ -1828,6 +1828,16 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         return $this->persons;
     }
 
+    /**
+     * @param ArrayCollection $persons
+     * @return $this
+     */
+    public function setPersons($persons)
+    {
+        $this->persons = $persons;
+        return $this;
+    }
+
     public function getPerson($id)
     {
         foreach ($this->persons as $person) {

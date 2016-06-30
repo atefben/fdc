@@ -114,6 +114,22 @@ trait TranslateMain
         return null;
     }
 
+    /**
+     * @param $translation
+     * @param $locale
+     * @return $this
+     */
+    public function setTranslation($translation, $locale)
+    {
+        foreach ($this->getTranslations() as &$t) {
+            if ($t->getLocale() == $locale) {
+                $t = $translation;
+            }
+        }
+
+        return $this;
+    }
+
     public function getStatusMain()
     {
         $status = TranslateChildInterface::STATUS_DRAFT;
