@@ -89,6 +89,34 @@ class NewsController extends FOSRestController
         $infos = $this->getApiSameDayInfos($festival, $lang, $dateTime);
         $statements = $this->getApiSameDayStatements($festival, $lang, $dateTime);
 
+        // images
+        $images = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaImage')
+            ->getNewsApiImages($lang, $festival, $dateTime);
+
+        $items = array_merge($news, $infos, $statements, $images);
+
+        // if no content at all, reach the content of the last day
+        if(!count($items)) {
+            $dateTime = $festival->getFestivalEndsAt();
+
+            // news
+            $news = $this->getApiSameDayNews($festival, $lang, $dateTime);
+            $infos = $this->getApiSameDayInfos($festival, $lang, $dateTime);
+            $statements = $this->getApiSameDayStatements($festival, $lang, $dateTime);
+
+            // images
+            $images = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('BaseCoreBundle:MediaImage')
+                ->getNewsApiImages($lang, $festival, $dateTime);
+        }
+
+        $items = array_merge($news, $infos, $statements, $images);
+
         // projections
         $tempProjections = $this
             ->getDoctrine()
@@ -117,13 +145,7 @@ class NewsController extends FOSRestController
             }
         }
 
-        $images = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('BaseCoreBundle:MediaImage')
-            ->getNewsApiImages($lang, $festival, $dateTime);
-
-        $items = array_merge($news, $infos, $statements, $projections, $images);
+        $items = array_merge($projections, $items);
 
         $items = $this->buildDays($items);
         // set context view

@@ -114,15 +114,17 @@ class SocialWallRepository extends EntityRepository
             ->setParameter('enabledMobile', $mobile)
         ;
 
+        $festivalEndsAt = new \DateTime('2016-05-23 00:00:00');
+
         if ($festival->getFestivalStartsAt() >= $dateTime) {
             $qb
                 ->andWhere(':festivalStartAt > s.date')
                 ->setParameter('festivalStartAt', $festival->getFestivalStartsAt()->format('Y-m-d'))
             ;
-        } else if ($festival->getFestivalEndsAt() <= $dateTime) {
+        } else if ($festivalEndsAt < $dateTime) {
             $qb
-                ->andWhere(':festivalEndAt < s.date')
-                ->setParameter('festivalEndAt', $festival->getFestivalEndsAt()->format('Y-m-d'))
+                ->andWhere(':festivalEndAt <= s.date')
+                ->setParameter('festivalEndAt', $festivalEndsAt->format('Y-m-d'))
             ;
         } else {
             $morning = clone $dateTime;
