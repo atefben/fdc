@@ -39,17 +39,20 @@ class MediaImageRepository extends TranslationRepository
             ->setParameter('festival', $festival)
         ;
 
+        $festivalEndsAt = new \DateTime('2016-05-23 00:00:00');
+
         if ($festival->getFestivalStartsAt() >= $dateTime) {
             $this->addMasterQueries($qb, 'mi', $festival, true);
             $qb
                 ->andWhere(':festivalStartAt  >= mi.publishedAt')
                 ->setParameter('festivalStartAt', $festival->getFestivalStartsAt())
             ;
-        } else if ($festival->getFestivalEndsAt() <= $dateTime) {
+        } else if ($festivalEndsAt < $dateTime) {
             $this->addMasterQueries($qb, 'mi', $festival, true);
             $qb
                 ->andWhere(':festivalEndAt < mi.publishedAt')
-                ->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
+                //->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
+                ->setParameter('festivalEndAt', $festivalEndsAt->format('Y-m-d H:i:s'));
             ;
         } else {
             $morning = clone $dateTime;

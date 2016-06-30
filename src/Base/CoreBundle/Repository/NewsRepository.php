@@ -88,18 +88,21 @@ class NewsRepository extends EntityRepository
             ->andWhere('n.displayedMobile = :displayed_mobile')
             ->setParameter('displayed_mobile', true)
         ;
+
+        $festivalEndsAt = new \DateTime('2016-05-23 00:00:00');
+
         if ($festival->getFestivalStartsAt() >= $dateTime) {
             $this->addMasterQueries($qb, 'n', $festival, true);
             $qb
                 ->andWhere(':festivalStartAt  >= n.publishedAt')
                 ->setParameter('festivalStartAt', $festival->getFestivalStartsAt())
             ;
-        } else if ($festival->getFestivalEndsAt() <= $dateTime) {
+        } else if ($festivalEndsAt < $dateTime) {
             $this->addMasterQueries($qb, 'n', $festival, true);
             $qb
                 ->andWhere(':festivalEndAt < n.publishedAt')
                 //->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
-                ->setParameter('festivalEndAt', '2016-05-23 00:00:00');
+                ->setParameter('festivalEndAt', $festivalEndsAt->format('Y-m-d H:i:s'));
             ;
         } else {
             $morning = clone $dateTime;
