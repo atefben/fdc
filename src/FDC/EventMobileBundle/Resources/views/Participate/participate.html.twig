@@ -55,7 +55,7 @@
                     <section class="accordeon open">
 
                         <h3 class="title-participate">{{ s.section|trans_fallback('title') }}</h3>
-                        <div class="section-contain" >
+                        <div class="section-contain description" >
                             {% for widget in s.section.widgets %}
                                 {% include 'FDCEventMobileBundle:Participate:widgets/participate-two.html.twig' %}
                             {% endfor %}
