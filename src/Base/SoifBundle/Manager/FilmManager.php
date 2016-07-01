@@ -744,7 +744,8 @@ class FilmManager extends CoreManager
 
                 // set subordinates
                 $collectionSubordinates = new ArrayCollection();
-                if (property_exists($object, 'ContactSecondaires') && property_exists($object->ContactSecondaires, 'PersonneContactSecondaireDto')) {
+                if (isset($filmContactPerson) && !empty($filmContactPerson) &&
+                    property_exists($object, 'ContactSecondaires') && property_exists($object->ContactSecondaires, 'PersonneContactSecondaireDto')) {
                     $subordinates = $object->ContactSecondaires->PersonneContactSecondaireDto;
 
                     $subordinates = $this->mixedToArray($subordinates);
