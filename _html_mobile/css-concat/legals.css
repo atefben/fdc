@@ -3202,3 +3202,7 @@ font-size: 20px;
 .legals .legal-notice-container a {
   color: #c8a461;
 }
+
+.legals .legal-notice-container table {
+  width: 100% !important;
+}
