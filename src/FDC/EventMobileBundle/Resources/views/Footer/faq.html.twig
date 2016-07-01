@@ -14,11 +14,11 @@
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
 
-        <h2 class="title one-line">{{ 'faq.title.faq'|trans }}</h2>
+        <h2 class="title one-line">FAQ</h2>
         <div id="horizontal-menu" class="owl-carousel sliderDrag videosSlider">
             {% for data in faq %}
                 <div class="vid selected">
-                  <p><a href="#" {% if loop.index == 0 %}class="active"{% endif %} data-section="{{ data['theme']|trans_fallback('slug') }}">{{ data['theme']|trans_fallback('name') }}</a></p>
+                  <p><a href="#" {% if loop.first %}class="active"{% endif %} data-section="{{ data['theme']|trans_fallback('slug') }}">{{ data['theme']|trans_fallback('name') }}</a></p>
                 </div>
             {% endfor %}
         </div>
@@ -30,7 +30,7 @@
                             <div class="section-title">
                                 <h3 class="title-participate">{{ faqData|trans_fallback('title') }}</h3>
                                 <i class="icon accordion icon_case-plus"></i>
-                                <div class="section-contain">
+                                <div class="section-contain description">
                                     {{ faqData|trans_fallback('content')|raw }}
                                 </div>
                             </div>

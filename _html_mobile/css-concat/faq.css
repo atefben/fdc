@@ -3325,3 +3325,7 @@ section{
 .faq-page #horizontal-menu .owl-stage {
     padding-left: 40px;
 }
+
+.faq-page .section-contain a {
+	color: #c8a461;
+}
