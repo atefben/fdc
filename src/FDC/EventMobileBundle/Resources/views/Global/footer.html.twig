@@ -27,12 +27,6 @@
                         {{ 'footer.nav.mentionslegales'|trans }}
                     </a>
                 </li>
-            {% elseif element.transName == 'footer.nav.nousrejoindre' and element.enabled == true %}
-                <li>
-                    <a href="{{ path('fdc_eventmobile_footer_static', {'page': 'nous-rejoindre'}) }}">
-                        {{ 'footer.nav.nousrejoindre'|trans }}
-                    </a>
-                </li>
             {% elseif element.transName == 'footer.nav.plandusite' and element.enabled == true %}
                 <li>
                     <a href="{{ path('fdc_eventmobile_footer_sitemap') }}">

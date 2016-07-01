@@ -30,11 +30,10 @@ class FooterController extends Controller
      */
     public function staticAction($page)
     {
-        switch ($page) {
-            case 'nous-rejoindre':
-                $pageContent = '';
-                break;
+        if ($page != 'application-mobile') {
+            throw new NotFoundHttpException();
         }
+        $pageContent = '';
 
         return $this->render(
             "FDCEventBundle:Footer:$page.html.twig",

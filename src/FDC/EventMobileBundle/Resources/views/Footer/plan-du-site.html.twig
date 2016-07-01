@@ -188,12 +188,6 @@
                                 {{ 'footer.nav.mentionslegales'|trans }}
                             </a>
                         </li>
-                    {% elseif route.transName == 'footer.nav.nousrejoindre' and route.enabled == true %}
-                        <li>
-                            <a href="{{ path('fdc_eventmobile_footer_static', {'page': 'nous-rejoindre'}) }}">
-                                {{ 'footer.nav.nousrejoindre'|trans }}
-                            </a>
-                        </li>
                     {% elseif route.transName == 'footer.nav.plandusite' and route.enabled == true %}
                         <li>
                             <a href="{{ path('fdc_eventmobile_footer_sitemap') }}">
