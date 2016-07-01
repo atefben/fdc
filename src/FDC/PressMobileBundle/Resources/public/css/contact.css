@@ -3581,3 +3581,7 @@ input[type=submit], textarea {
   width: 100%;
   clear: both;
 }
+
+#contact_select {
+  width: 215px;
+}

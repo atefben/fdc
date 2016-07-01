@@ -42,3 +42,13 @@ font-size: 20px;
   font-size: 20px;
   line-height: 30px;
 }
+
+.legals .legal-notice-container h3 {
+  font-size: 20px;
+  line-height: 30px;
+  max-height: 5000px;
+}
+
+.legals .legal-notice-container a {
+  color: #c8a461;
+}
