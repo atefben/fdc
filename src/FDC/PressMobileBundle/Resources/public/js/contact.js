@@ -300,7 +300,7 @@ $(document).ready(function() {
       var h = '';
 
       $('.select option').not('.default').each(function() {
-        h += '<span>' + $(this).val() + '</span>';
+        h += '<span>' + $(this).text() + '</span>';
       });
 
       $('#filters').remove();
