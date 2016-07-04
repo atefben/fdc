@@ -3285,6 +3285,9 @@ sub {
   margin-bottom: 44px;
   padding: 0px 155px;
 }
+.dark .title-15 {
+  color: #fff;
+}
 
 .title-16 {
   color: #0c0c0c;
@@ -3542,6 +3545,15 @@ blockquote, .quote {
 
 .contain-title {
   min-height: 152px;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.contain-title.contain-title-small {
+  min-height: 100px;
+}
+.contain-title.contain-title-top {
+  padding: 10px 0px;
 }
 .contain-title .title-01 {
   font-size: 1.125rem;
@@ -3563,6 +3575,21 @@ blockquote, .quote {
 }
 .bright .contain-title .title-02 {
   color: #141414;
+}
+.contain-title .title-03 {
+  text-align: center;
+  padding: 20px 20px 0;
+  font-size: .875rem;
+  width: 977px;
+  margin: 10px auto 2px;
+  line-height: 26px;
+  color: #fff;
+}
+.contain-title .title-04 {
+  color: #999;
+  width: 958px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 figcaption, .caption {
@@ -4889,6 +4916,29 @@ video {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   line-height: 24px;
   text-align: center;
+}
+.block-movie-preview .date {
+  display: block;
+  font-weight: 100;
+  padding-bottom: 45px;
+  color: #999;
+  font-size: .6875rem;
+}
+.block-movie-preview .date-infos {
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: .2em;
+  margin-bottom: 18px;
+  display: inline-block;
+  font-size: .75rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  margin-right: 6px;
+}
+.block-movie-preview .date-infos .hours {
+  color: #999;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: .75rem;
 }
 .block-movie-preview .portrait {
   max-width: 52px;
@@ -9291,13 +9341,13 @@ header #searchContainer {
     /* 5 columns for larger screens */
   }
   .isotope-01 .grid-sizer {
-    width: calc(100%/6);
+    width: calc(100%/5);
   }
   .isotope-01 .item {
-    width: calc(100%/6);
+    width: calc(100%/5);
   }
   .isotope-01 .item.w2 {
-    width: calc(200%/6);
+    width: calc(200%/5);
   }
 }
 @media screen and (min-width: 1920px) {
@@ -9305,13 +9355,13 @@ header #searchContainer {
     /* 5 columns for larger screens */
   }
   .isotope-01 .grid-sizer {
-    width: calc(100%/8);
+    width: calc(100%/5);
   }
   .isotope-01 .item {
-    width: calc(100%/8);
+    width: calc(100%/5);
   }
   .isotope-01 .item.w2 {
-    width: calc(200%/8);
+    width: calc(200%/5);
   }
 }
 
