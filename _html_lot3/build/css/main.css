@@ -9197,6 +9197,9 @@ header #searchContainer {
   text-align: left;
   margin-left: 55px;
 }
+.medias .card-01 .info strong {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
 .card-01 .info strong a {
   color: #fff;
 }
