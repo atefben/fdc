@@ -66,6 +66,10 @@ var openSlideShow = function(slider) {
     console.log(translate);
 
     fullscreen.css('transform','translateX('+translate+')');
+
+    fulscreen.append('<div class="bottom">' +
+        '' +
+        '</div>');
     /* les mettre dans une div en dessous qui ne sera pas un slideshow */
     /* afficher le nouveaux slide*/
 

@@ -218,14 +218,24 @@ var owInitGrid = function(id){
 
     if($('.isotope-01').length){
 
-      var filterDate = $('.filters #date .select span.active').data('filter');
-      filterDate = "."+filterDate;
+      var filterDate = '',
+          filterTheme = '',
+          filterFormat = '';
 
-      var filterTheme = $('.filters #theme .select span.active').data('filter');
-      filterTheme = "."+filterTheme;
+      if($('.filters #date').length > 0) {
+        filterDate = $('.filters #date .select span.active').data('filter');
+        filterDate = "."+filterDate;
+      }else
 
-      var filterFormat = $('.filters #format .select span.active').data('filter');
-      filterFormat = "."+filterFormat;
+      if($('.filters #theme').length > 0) {
+        filterTheme = $('.filters #theme .select span.active').data('filter');
+        filterTheme = "."+filterTheme;
+      }
+
+      if($('.filters #format').length > 0) {
+        filterFormat = $('.filters #format .select span.active').data('filter');
+        filterFormat = "."+filterFormat;
+      }
 
       var filters = filterDate+filterTheme+filterFormat;
 
@@ -1269,6 +1279,10 @@ var openSlideShow = function(slider) {
     console.log(translate);
 
     fullscreen.css('transform','translateX('+translate+')');
+
+    fulscreen.append('<div class="bottom">' +
+        '' +
+        '</div>');
     /* les mettre dans une div en dessous qui ne sera pas un slideshow */
     /* afficher le nouveaux slide*/
 

@@ -4049,7 +4049,7 @@ body .icon:before {
   position: absolute;
   pointer-events: none;
   width: 44px;
-  line-height: 44px;
+  line-height: 49px;
 }
 
 video {
@@ -9063,6 +9063,9 @@ header #searchContainer {
 .card.w2.double .image {
   height: 363px;
 }
+.evenements .card.w2.double .image {
+  height: 436px;
+}
 .card .info {
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: center;
@@ -9094,6 +9097,10 @@ header #searchContainer {
   line-height: 1.3em;
   margin-top: 20px;
   max-width: 74%;
+}
+.evenements .card.double strong {
+  font-size: 2.25rem;
+  max-width: initial;
 }
 .card.double .image {
   height: 362px;
@@ -9130,6 +9137,9 @@ header #searchContainer {
   height: auto;
   transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   object-fit: cover;
+}
+.evenements .card .image {
+  height: 188px;
 }
 .card .image .linkImage {
   display: block;
@@ -9219,7 +9229,7 @@ header #searchContainer {
 }
 @media screen and (min-width: 320px) {
   .isotope-01 {
-    /* 5 columns for larger screens */
+    /* 2 columns */
   }
   .isotope-01 .grid-sizer {
     width: calc(100%/2);
@@ -9236,6 +9246,20 @@ header #searchContainer {
     /* 5 columns for larger screens */
   }
   .isotope-01 .grid-sizer {
+    width: calc(100%/2);
+  }
+  .isotope-01 .item {
+    width: calc(100%/2);
+  }
+  .isotope-01 .item.w2 {
+    width: calc(200%/2);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .isotope-01 {
+    /* 5 columns for larger screens */
+  }
+  .isotope-01 .grid-sizer {
     width: calc(100%/3);
   }
   .isotope-01 .item {
@@ -9245,7 +9269,7 @@ header #searchContainer {
     width: calc(200%/3);
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   .isotope-01 {
     /* 5 columns for larger screens */
   }
@@ -9257,20 +9281,6 @@ header #searchContainer {
   }
   .isotope-01 .item.w2 {
     width: calc(200%/4);
-  }
-}
-@media screen and (min-width: 1280px) {
-  .isotope-01 {
-    /* 5 columns for larger screens */
-  }
-  .isotope-01 .grid-sizer {
-    width: calc(100%/5);
-  }
-  .isotope-01 .item {
-    width: calc(100%/5);
-  }
-  .isotope-01 .item.w2 {
-    width: calc(200%/5);
   }
 }
 @media screen and (min-width: 1600px) {
