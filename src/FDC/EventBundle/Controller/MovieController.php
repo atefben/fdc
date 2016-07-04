@@ -163,9 +163,9 @@ class MovieController extends Controller
         foreach ($movie->getProjectionProgrammationFilms() as $projectionProgrammationFilm) {
             if ($projectionProgrammationFilm instanceof FilmProjectionProgrammationFilm && $projectionProgrammationFilm->getProjection()) {
                 $projection = $projectionProgrammationFilm->getProjection();
-                if ($projection->getStartsAt() && $projection->getStartsAt() > $now) {
+                //if ($projection->getStartsAt() && $projection->getStartsAt() > $now) {
                     $projections[$projection->getStartsAt()->getTimestamp()] = $projection->getStartsAt()->format('Y-m-d');
-                }
+                //}
             }
         }
         ksort($projections);
