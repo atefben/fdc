@@ -248,7 +248,7 @@ class FilmProjectionRepository extends EntityRepository
             ->join('p.programmationFilms', 'pf')
             ->andWhere('pf.film = :film_id')
             ->setParameter(':film_id', $film->getId())
-            ->andWhere('p.startsAt > :start_at')
+            //->andWhere('p.startsAt > :start_at')
             ->addOrderBy('p.startsAt', 'asc')
         ;
 
@@ -259,7 +259,7 @@ class FilmProjectionRepository extends EntityRepository
             ;
         }
 
-        $qb->setParameter('start_at', new \DateTime());
+        //$qb->setParameter('start_at', new \DateTime());
 
         return $qb->getQuery()->getResult();
     }

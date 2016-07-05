@@ -20,6 +20,10 @@
 
     .image {
       height: 363px;
+
+      .evenements & {
+        height: 408px;
+      }
     }
   }
 
@@ -43,11 +47,10 @@
       font-size: 0.625rem;
     }
 
-    strong{
+    strong {
       max-width: 92%;
     }
   }
-
 
   &.double {
     height: 575px;
@@ -59,6 +62,11 @@
       line-height: 1.3em;
       margin-top: 20px;
       max-width: 74%;
+
+      .evenements & {
+        font-size: 2.25rem;
+        max-width: initial;
+      }
     }
 
     .image {
@@ -102,6 +110,10 @@
     position: relative;
     width: 100%;
 
+    .evenements & {
+      height: 182px;
+    }
+
     .linkImage {
       display: block;
       height: 100%;
@@ -117,12 +129,12 @@
   }
 
   &.small-left {
-   padding-left: 0px;
-   padding-right: 45px;
+    padding-left: 0px;
+    padding-right: 45px;
   }
 
   &.double-right {
-   height: 329px;
+    height: 329px;
   }
 
 }
@@ -135,17 +147,17 @@
   position: relative;
 
   &.double {
-      .image{
-        margin-bottom: 0px;
-        height: 100%;
-      }
+    .image {
+      margin-bottom: 0px;
+      height: 100%;
+    }
   }
 
   &.double.w2 {
     height: 402px;
     padding-left: 0px;
 
-    .image{
+    .image {
       height: 100%;
     }
   }
@@ -155,14 +167,14 @@
     height: 100%;
   }
 
-  .info{
+  .info {
     position: absolute;
     text-align: left;
     bottom: 20px;
     left: 20px;
     z-index: 3;
 
-    strong{
+    strong {
       font-size: .875rem;
       margin: 0px 0px;
       max-width: 100%;
@@ -170,32 +182,36 @@
       text-align: left;
       margin-left: 55px;
 
-      a{
-        color:#fff;
+      .medias & {
+        font-family: $CamphorRegular;
+      }
+
+      a {
+        color: #fff;
       }
     }
 
-    .category{
+    .category {
       margin-left: 55px;
     }
 
-    span{
+    span {
       color: #9c9c9b;
     }
 
-    .picto{
-      color:$gold;
-      left:0px;
-      bottom:0px;
+    .picto {
+      color: $gold;
+      left: 0px;
+      bottom: 0px;
     }
   }
 
-  &.portrait{
+  &.portrait {
     height: 402px;
   }
 }
 
 .mob .read-later {
-  opacity: 1!important;
-  visibility: visible!important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
