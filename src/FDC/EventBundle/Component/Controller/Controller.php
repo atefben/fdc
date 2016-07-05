@@ -176,9 +176,16 @@ class Controller extends BaseController
         ;
 
         if ($waitingPage) {
-            return $this->render('FDCEventBundle:Global:waiting-page.html.twig', array(
-                'waitingPage' => $waitingPage
-            ));
+            $debug = debug_backtrace();
+            if (isset($debug[1]) && isset($debug[1]['class']) && strpos($debug[1]['class'], 'Mobile')) {
+                return $this->render('FDCEventMobileBundle:Global:waiting-page.html.twig', array(
+                    'waitingPage' => $waitingPage
+                ));
+            } else {
+                return $this->render('FDCEventBundle:Global:waiting-page.html.twig', array(
+                    'waitingPage' => $waitingPage
+                ));
+            }
         }
     }
 
