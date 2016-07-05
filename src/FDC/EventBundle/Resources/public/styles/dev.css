@@ -1,3 +1,7 @@
+.searchpage #searchContainer {
+    max-height: none;
+}
+
 .single-movie .palmares {
     margin-bottom: 0;
 }
