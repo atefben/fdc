@@ -202,6 +202,10 @@ sub {
   text-align: center;
   margin-bottom: 44px;
   padding: 0px 155px;
+  
+  .dark & {
+    color: #fff;
+  }
 }
 
 
@@ -475,6 +479,15 @@ blockquote, .quote {
 
 .contain-title {
   min-height: 152px;
+  flex-direction: column;
+
+  &.contain-title-small {
+    min-height: 100px;
+  }
+
+  &.contain-title-top {
+    padding: 10px 0px;
+  }
 
   .title-01 {
     font-size: 1.125rem;
@@ -500,6 +513,23 @@ blockquote, .quote {
     .bright & {
       color: #141414;
     }
+  }
+
+  .title-03 {
+    text-align: center;
+    padding: 20px 20px 0;
+    font-size: .875rem;
+    width: 977px;
+    margin: 10px auto 2px;
+    line-height: 26px;
+    color: #fff;
+  }
+
+  .title-04 {
+    color: #999;
+    width: 958px;
+    margin: 0 auto;
+    text-align: center;
   }
 }
 

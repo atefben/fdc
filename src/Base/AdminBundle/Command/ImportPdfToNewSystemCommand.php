@@ -8,6 +8,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 
 class ImportPdfToNewSystemCommand extends ContainerAwareCommand
 {
@@ -22,11 +23,17 @@ class ImportPdfToNewSystemCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $adminSecurityHandler = $this->getContainer()->get('sonata.admin.security.handler');
+        $modelAdmin = $this->getContainer()->get('base.admin.media_pdf');
+        $securityInformation = $adminSecurityHandler->buildSecurityInformation($modelAdmin);
+        $em  = $this->getContainer()->get('doctrine')->getManager();
+
         $fdcPagePrepare = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPagePrepare')->findAll();
         $settings = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
         if ($settings === null || $settings->getFestival() === null) {
             die('Festival year settings not set'."\r\n");
         }
+        $mediaPdfs = array();
 
         foreach ($fdcPagePrepare as $entity) {
             if ($entity->getMeetingFile() && $entity->getMeetingPdf() == null) {
@@ -37,6 +44,7 @@ class ImportPdfToNewSystemCommand extends ContainerAwareCommand
                 $mediaPdfTranslation->setFile($entity->getMeetingFile());
                 $mediaPdf->addTranslation($mediaPdfTranslation);
                 $entity->setMeetingPdf($mediaPdf);
+                $mediaPdfs[] = $mediaPdf;
             }
 
             if (count($entity->getInformationWidgets()) > 0) {
@@ -48,7 +56,8 @@ class ImportPdfToNewSystemCommand extends ContainerAwareCommand
                         $mediaPdfTranslation->setLocale('fr');
                         $mediaPdfTranslation->setFile($widget->getFile());
                         $mediaPdf->addTranslation($mediaPdfTranslation);
-                       $widget->setPdf($mediaPdf);
+                        $widget->setPdf($mediaPdf);
+                        $mediaPdfs[] = $mediaPdf;
                     }
                 }
             }
@@ -66,6 +75,7 @@ class ImportPdfToNewSystemCommand extends ContainerAwareCommand
                     $mediaPdfTranslation->setFile($entity->getProcedureFile());
                     $mediaPdf->addTranslation($mediaPdfTranslation);
                     $entity->setPdf($mediaPdf);
+                    $mediaPdfs[] = $mediaPdf;
                 }
 
                 if ($entity->getProcedureFile() != null) {
@@ -74,8 +84,23 @@ class ImportPdfToNewSystemCommand extends ContainerAwareCommand
                     $mediaPdfTranslation->setFile($entity->getProcedureSecondFile());
                     $mediaPdf->addTranslation($mediaPdfTranslation);
                     $entity->setPdf($mediaPdf);
+                    $mediaPdfs[] = $mediaPdf;
                 }
             }
+        }
+
+        $this->getDoctrineManager()->flush();
+
+        //update ACL
+        foreach ($mediaPdfs as $key => $mediasPdf) {
+            $object = $mediasPdf;
+            $objectIdentity = ObjectIdentity::fromDomainObject($object);
+            $acl = $adminSecurityHandler->getObjectAcl($objectIdentity);
+            if (is_null($acl)) {
+                $acl = $adminSecurityHandler->createAcl($objectIdentity);
+            }
+            $adminSecurityHandler->addObjectClassAces($acl, $securityInformation);
+            $adminSecurityHandler->updateAcl($acl);
         }
 
         $this->getDoctrineManager()->flush();

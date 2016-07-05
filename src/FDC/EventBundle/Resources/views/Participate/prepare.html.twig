@@ -68,8 +68,9 @@
                     <i class="icon accordion icon_case-plus"></i>
                     <div class="descrip-section">
                         <p class="ask">{{ content|trans_fallback('meetingDescription')|raw }}</p>
-                        {% if content.meetingFile is not null %}
-                            <a href="{% path content.meetingFile, 'reference' %}" target="_blank" download>
+                        {% if content.meetingPdf is not null %}
+                            {% set pdfFile = content.meetingPdf|trans_fallback('file') %}
+                            <a href="{% path pdfFile, 'reference' %}" target="_blank" download>
                                 {{ content|trans_fallback('meetingLabel') }}
                             </a>
                         {% endif %}
