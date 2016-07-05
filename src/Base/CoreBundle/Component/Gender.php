@@ -58,9 +58,9 @@ abstract class Gender
             'as'
         );
         $gender = strtoupper($genderstring);
-        if ($gender == 'MONSIEUR' || 'MR') {
+        if ($gender == 'MONSIEUR' || $gender == 'MR') {
             return str_replace($default, $male, $function);
-        } elseif ($gender == 'MADAME' || 'MS') {
+        } elseif ($gender == 'MADAME' || $gender == 'MS') {
             return str_replace($default, $female, $function);
         } else {
             return $function;

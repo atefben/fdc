@@ -108,7 +108,7 @@
                 {% set duration = movie.duration|split('.') %}
                 {{ 'movie.label.duree'|trans }} : {% if duration|length >= 1 %}<span>{{ duration[0] }} {{ 'movie.duration.minutes'|trans }}</span>{% endif %}
             {% endif %}
-            {%  if movie.publishedAt is not null %}
+            {%  if movie.publishedAt is not null and app.request.locale == 'fr' %}
                 {{ 'movie.label.datedesortie'|trans }} : <span>{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</span>
             {% endif %}
         </p>
