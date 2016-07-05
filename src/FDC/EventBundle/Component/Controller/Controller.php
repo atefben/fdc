@@ -165,13 +165,14 @@ class Controller extends BaseController
         return $this->getSettings()->getFestival();
     }
 
-    public function isWaitingPage(Request $request)
+    public function isWaitingPage(Request $request, $routeId = null)
     {
+        $route = ($routeId !== null) ? $routeId : $request->get('_route');
         // check if waiting page is enabled
         $waitingPage = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FDCPageWaiting')
-            ->getSingleWaitingPageByRoute($request->get('_route'))
+            ->getSingleWaitingPageByRoute($route)
         ;
 
         if ($waitingPage) {

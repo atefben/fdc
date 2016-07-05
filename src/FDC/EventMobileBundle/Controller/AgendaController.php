@@ -34,7 +34,7 @@ class AgendaController extends Controller
         $locale = $this->getRequest()->getLocale();
         $isPress = false;
 
-        $waitingPage = $this->isWaitingPage($request);
+        $waitingPage = $this->isWaitingPage($request, 'fdc_event_agenda_scheduling');
         if ($waitingPage) {
             return $waitingPage;
         }

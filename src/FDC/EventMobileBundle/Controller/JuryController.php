@@ -25,7 +25,7 @@ class JuryController extends Controller
         $festival = $this->getFestival()->getId();
         $locale = $request->getLocale();
 
-        $waitingPage = $this->isWaitingPage($request);
+        $waitingPage = $this->isWaitingPage($request, 'fdc_event_jury_get');
         if ($waitingPage) {
             return $waitingPage;
         }

@@ -222,7 +222,7 @@ class MovieController extends Controller
         }
 
 
-        $waitingPage = $this->isWaitingPage($request);
+        $waitingPage = $this->isWaitingPage($request, 'fdc_event_movie_selection');
         if ($waitingPage) {
             return $waitingPage;
         }
