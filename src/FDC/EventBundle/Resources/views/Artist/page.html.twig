@@ -347,6 +347,14 @@
         <span class="anim"></span>
     </div>
 
+    {{ render(controller('FDCEventBundle:Global:shareEmail',
+        {'section': '',
+            'detail': '',
+            'title': artist.fullName,
+            'description': '',
+            'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+        }))
+    }}
     {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
     {
     "name" : 'breadcrumb.webtv.home'|trans,

@@ -211,10 +211,14 @@ parameters:
     fdc_event_scheme: ~
     fdc_press_domain: ~
     fdc_press_scheme: ~
-    fdc_corporate_domain: ~
     fdc_press_domain_regexp: ~
+    fdc_corporate_domain: ~
     fdc_app_android_download_url: '#'
     fdc_app_ios_download_url: '#'
+    fdc_newsletter_api_universe: 'site_internet'
+    fdc_newsletter_api_password: 'acbbca593b74355da0f8e47b88535d30074edae8'
+    fdc_newsletter_api_resource: 'affif'
+    fdc_newsletter_api_url: 'https://s3s.fr/api/rest/2'
     header_fdc: 'http://www.festival-cannes.com/fr.html'
     header_cine: 'http://www.cinefondation.com/fr/'
     header_ccm: 'http://www.cannescourtmetrage.com/fr/'

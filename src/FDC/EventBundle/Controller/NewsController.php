@@ -461,12 +461,11 @@ class NewsController extends Controller
         $programmations = array();
         if ($associatedProgrammation != null) {
             foreach ($associatedProgrammation as $projection) {
-                if ($type == 'event') {
+                if ($type == 'event' && $projection->getAssociation() != null) {
                     $programmations[] = $projection->getAssociation();
-                } else {
-                    $programmations[] = $projection->getProjection();
+                } else if ($projection->getProjection() != null) {
+                        $programmations[] = $projection->getProjection();
                 }
-
             }
         }
         $tempProjections = array();

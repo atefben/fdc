@@ -2,24 +2,23 @@
 
 namespace FDC\EventBundle\Controller;
 
-use Aws\CloudFront\Exception\Exception;
 use Base\CoreBundle\Entity\Newsletter;
 use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
 use FDC\EventBundle\Component\Controller\Controller;
-use Guzzle\Http\Message\RequestFactory;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use \DateTime;
-
-use Guzzle\Plugin\Oauth\OauthPlugin;
-use Guzzle\Service\Client;
+use \Exception;
 
 use FDC\EventBundle\Form\Type\ShareEmailType;
 use FDC\EventBundle\Form\Type\NewsletterType;
 use FDC\EventBundle\Form\Type\SearchType;
+
+use Guzzle\Http\Exception\BadResponseException;
+use Guzzle\Http\Client;
 
 /**
  * @Route("/")
@@ -373,6 +372,50 @@ class GlobalController extends Controller {
         );
     }
 
+    private function newsletterEmailExists($email)
+    {
+        $client = new Client($this->getContainer()->getParameter('fdc_newsletter_api_url'));
+        $request = $client->get('contact/' . $email);
+        $request->setAuth(
+            $this->getContainer()->getParameter('fdc_newsletter_api_universe'),
+            $this->getContainer()->getParameter('fdc_newsletter_api_password')
+        );
+
+        try {
+            $request->send();
+        } catch (BadResponseException $e) {
+            $this->getLogger()->err('Unable to verify if email exists in newsletter - '. $e->getMessage());
+            return false;
+        } catch (Exception $e) {
+            $this->getLogger()->err('Unexpected error when verifying if email exists in newsletter - '. $e->getMessage());
+            return false;
+        }
+
+        return ($request->getResponse()->getStatusCode() === 200) ? true : false;
+    }
+
+    private function newsletterEmailSubscribe($email, $query)
+    {
+        $client = new Client($this->getContainer()->getParameter('fdc_newsletter_api_url'));
+        $request = $client->post('contact/', null, $query);
+        $request->setAuth(
+            $this->getContainer()->getParameter('fdc_newsletter_api_universe'),
+            $this->getContainer()->getParameter('fdc_newsletter_api_password')
+        );
+
+        try {
+            $request->send();
+        } catch (BadResponseException $e) {
+            $this->getLogger()->err('Unable to verify if '. $email. ' exists in newsletter - '. $e->getMessage());
+            return false;
+        }  catch (Exception $e) {
+            $this->getLogger()->err('Unexpected error when subscribing '. $email. ' in newsletter - '. $e->getMessage());
+            return false;
+        }
+
+        return true;
+    }
+
     /**
      * @Route( "/register/newsletter", options={"expose"=true})
      * @Template("FDCEventBundle:Global:newsletter.html.twig")
@@ -385,7 +428,7 @@ class GlobalController extends Controller {
         $newsForm   = $this->createForm(new NewsletterType($translator));
 
         $locale = ($request->getLocale() == 'fr') ? 'fr' : 'en';
-        $date = new DateTime('2000-01-01');
+        $date = new DateTime();
 
         if ($request->isMethod('POST')) {
 
@@ -394,27 +437,10 @@ class GlobalController extends Controller {
             if ($newsForm->isValid()) {
                 $data = $newsForm->getData();
 
-                $universe = 'site_internet';
-                $pass = 'acbbca593b74355da0f8e47b88535d30074edae8';
-                $resource = 'affif' ;
-                $email = $data['email'];
-                $service_url = "https://s3s.fr/api/rest/2";
-
-                $client = new \Guzzle\Http\Client($service_url);
-                $request = $client->get("contact/" . $email);
-                $request->setAuth($universe, $pass);
-                try {
-                    $request->send();
-                } catch (\Guzzle\Http\Exception\BadResponseException $e) {
-
-                }
-
-                $exist = ($request->getResponse()->getStatusCode() === 200) ? true : false;
-                //Check if entry already exist
-
+                $exist = $this->newsletterEmailExists($data['email']);
+                $response['success'] = false;
                 if ($exist == false) {
-
-                    $query = array (
+                    $query = array(
                         'email' => $data['email'],
                         'lang' => $locale,
                         'date' => $date->format('Y-m-d H:i:s'),
@@ -437,15 +463,12 @@ class GlobalController extends Controller {
                             'name'  => 'Festival de Cannes',
                         )
                     );
-
-                    $client2 = new \Guzzle\Http\Client($service_url);
-                    $request2 = $client2->post("contact/",null,$query);
-                    $request2->setAuth($universe, $pass);
-                    $request2->send();
-                    $response['success'] = true;
+                    $subscribed = $this->newsletterEmailSubscribe($data['email'], $query);
+                    if ($subscribed == true) {
+                        $response['success'] = true;
+                    }
                 } else {
-                    $response['success'] = false;
-                    $response['object']  = $translator->trans('newsletter.form.error.emaildejaenregistre',array(),'FDCEventBundle');
+                    $response['object'] = $translator->trans('newsletter.form.error.emaildejaenregistre',array(),'FDCEventBundle');
                 }
 
                 return new JsonResponse($response);
