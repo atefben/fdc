@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 {% endif %}
-                {% if form.parent.children.displayedHome is defined and isDisplayedHome is not defined %}
+                {% if form.parent.children.displayedHome is defined and (isDisplayedHome is not defined or isDisplayedHome == true) %}
                 <div class="form-group">
                     {% if form.parent.children.displayedHome.vars.data == 1 %}
                         {{ form_label(form.parent.children.displayedHome) }}
@@ -134,7 +134,7 @@
                 {% if form.parent.children.sites is defined %}
                     {{ form_row(form.parent.children.sites) }}
                 {% endif %}
-                {% if form.parent.children.displayedHome is defined %}
+                {% if form.parent.children.displayedHome is defined and (isDisplayedHome is not defined or isDisplayedHome == true) %}
                     <div class="form-group">
                         {{ form_widget(form.parent.children.displayedHome) }}
                         {{ form_label(form.parent.children.displayedHome) }}
