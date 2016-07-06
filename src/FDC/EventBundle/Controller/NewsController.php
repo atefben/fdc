@@ -473,7 +473,7 @@ class NewsController extends Controller
         $now = new DateTime();
         if ($programmations) {
             foreach ($programmations as $item) {
-                if ($item->getStartsAt() && $item->getStartsAt() > $now) {
+                if ($item != null && $item->getStartsAt() && $item->getStartsAt() > $now) {
                     $tempProjections[$item->getStartsAt()->getTimestamp()] = $item->getStartsAt()->format('Y-m-d');
                 }
             }
