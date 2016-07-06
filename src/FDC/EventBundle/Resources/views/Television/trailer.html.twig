@@ -96,8 +96,25 @@
                             <div class="contain-info">
                                 {% for showing in filmShowings %}
                                     <div class="infos">
-                                        <p>{{ showing.type }} <span class="date">{{ showing.date|date('d.m.y') }} {{ agenda_leftbar_translate_hour(showing.date|date('H:i'), true, true) }}</span></p>
-                                        <span class="where">{{ showing.place }}</span>
+                                        <p>
+                                            {%- set trans_slug = 'programmation.type.' ~ showing.type|remove_accents|sonata_slugify|lower -%}
+                                            {%- set trans = trans_slug|trans -%}
+                                            {%- if trans_slug != trans -%}
+                                                {{- trans -}}
+                                            {%- else -%}
+                                                {{- showing.type -}}
+                                            {%- endif -%}
+                                            <span class="date">{{ showing.date|date('d.m.y') }} {{ agenda_leftbar_translate_hour(showing.date|date('H:i'), true, true) }}</span>
+                                        </p>
+                                        <span class="where">
+                                            {%- set trans_slug = 'programmation.salle.' ~ showing.place|remove_accents|sonata_slugify -%}
+                                            {%- set trans = trans_slug|trans -%}
+                                            {%- if trans_slug != trans -%}
+                                                {{- trans -}}
+                                            {%- else -%}
+                                                {{- showing.place -}}
+                                            {%- endif -%}
+                                        </span>
                                         {% if loop.last == false %}
                                             <hr>
                                         {% endif %}
