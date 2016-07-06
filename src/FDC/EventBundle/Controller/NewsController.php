@@ -461,18 +461,23 @@ class NewsController extends Controller
         $programmations = array();
         if ($associatedProgrammation != null) {
             foreach ($associatedProgrammation as $projection) {
-                if ($type == 'event' && $projection->getAssociation() != null) {
-                    $programmations[] = $projection->getAssociation();
-                } else if ($projection->getProjection() != null) {
+                if ($type == 'event') {
+                    if ($projection->getAssociation() != null) {
+                        $programmations[] = $projection->getAssociation();
+                    }
+                } else {
+                    if ($projection->getProjection() != null) {
                         $programmations[] = $projection->getProjection();
+                    }
                 }
+
             }
         }
         $tempProjections = array();
         $now = new DateTime();
         if ($programmations) {
             foreach ($programmations as $item) {
-                if ($item != null && $item->getStartsAt() && $item->getStartsAt() > $now) {
+                if ($item !== null && $item->getStartsAt() && $item->getStartsAt() > $now) {
                     $tempProjections[$item->getStartsAt()->getTimestamp()] = $item->getStartsAt()->format('Y-m-d');
                 }
             }
