@@ -10,9 +10,10 @@ abstract class Gender
      * @param string $string
      * @return string
      */
-    private static function _getGenderFromString($string) {
-        $male_strings = array('Monsieur', 'Mr');
-        $female_strings = array('Madame', 'Ms');
+    public static function getGenderFromString($string) {
+        $string = strtoupper($string);
+        $male_strings = array('MONSIEUR', 'MR');
+        $female_strings = array('MADAME', 'MS');
 
         if(in_array($string, $male_strings)) {
             return 'M';
@@ -57,14 +58,14 @@ abstract class Gender
             'a',
             'as'
         );
-        $gender = strtoupper($genderstring);
-        if ($gender == 'MONSIEUR' || $gender == 'MR') {
+        if(self::getGenderFromString($genderstring) == 'M') {
             return str_replace($default, $male, $function);
-        } elseif ($gender == 'MADAME' || $gender == 'MS') {
+        } elseif(self::getGenderFromString($genderstring) == 'F') {
             return str_replace($default, $female, $function);
         } else {
             return $function;
         }
+
     }
     
 }
