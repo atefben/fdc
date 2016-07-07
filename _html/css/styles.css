@@ -4723,7 +4723,7 @@ footer .newsletter #email {
   width: calc(100% - 165px);
 }
 footer .newsletter #email.error {
-  color: #e93939;
+  color: #e93939 !important;
 }
 footer .newsletter #confirmation {
   color: #fff;

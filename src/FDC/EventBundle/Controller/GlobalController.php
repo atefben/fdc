@@ -208,38 +208,10 @@ class GlobalController extends Controller {
 
                     // subscribe to newsletter
                     if ($data['newsletter']) {
-                        $registration = new Newsletter();
-
-                        //Find site by slug
-                        $siteSlug = $this->container->getParameter('fdc_event_slug');
-                        $site     = $this->getDoctrine()->getRepository('BaseCoreBundle:Site')->findOneBy(array(
-                            'slug' => $siteSlug
-                        ));
-
-                        // check if not already in DB and if not, save data
-                        $exist = $this->getDoctrine()->getRepository('BaseCoreBundle:Newsletter')->findOneBy(array(
-                            'email' => $data['user']
-                        ));
-
-                        if ($exist == null) {
-                            //Save Email & Enable
-                            $registration->setEmail($data['user']);
-                            $registration->setEnabled(true);
-                            $registration->setSite($site);
-
-                            //Check errors
-                            $validator = $this->get('validator');
-                            $errors    = $validator->validate($registration);
-
-                            if (count($errors) > 0) {
-                                $response['success'] = false;
-                                $response['object']  = $translator->trans('newsletter.form.error.ladresseemailnestpasvalide');
-                            } else {
-                                // Form is valid
-                                $em = $this->getDoctrine()->getManager();
-                                $em->persist($registration);
-                                $em->flush();
-                            }
+                        $locale = ($request->getLocale() == 'fr') ? 'fr' : 'en';
+                        $exist = $this->newsletterEmailExists($data['user']);
+                        if ($exist == false) {
+                            $subscribed = $this->newsletterEmailSubscribe($data['email'], $locale);
                         }
                     }
                 }
@@ -324,38 +296,10 @@ class GlobalController extends Controller {
 
                     // subscribe to newsletter
                     if ($data['newsletter']) {
-                        $registration = new Newsletter();
-
-                        //Find site by slug
-                        $siteSlug = $this->container->getParameter('fdc_event_slug');
-                        $site     = $this->getDoctrine()->getRepository('BaseCoreBundle:Site')->findOneBy(array(
-                            'slug' => $siteSlug
-                        ));
-
-                        // check if not already in DB and if not, save data
-                        $exist = $this->getDoctrine()->getRepository('BaseCoreBundle:Newsletter')->findOneBy(array(
-                            'email' => $data['user']
-                        ));
-
-                        if ($exist == null) {
-                            //Save Email & Enable
-                            $registration->setEmail($data['user']);
-                            $registration->setEnabled(true);
-                            $registration->setSite($site);
-
-                            //Check errors
-                            $validator = $this->get('validator');
-                            $errors    = $validator->validate($registration);
-
-                            if (count($errors) > 0) {
-                                $response['success'] = false;
-                                $response['object']  = $translator->trans('newsletter.form.error.emaildejaenregistre',array(),'FDCEventBundle');
-                            } else {
-                                // Form is valid
-                                $em = $this->getDoctrine()->getManager();
-                                $em->persist($registration);
-                                $em->flush();
-                            }
+                        $locale = ($request->getLocale() == 'fr') ? 'fr' : 'en';
+                        $exist = $this->newsletterEmailExists($data['user']);
+                        if ($exist == false) {
+                            $subscribed = $this->newsletterEmailSubscribe($data['email'], $locale);
                         }
                     }
                 }
@@ -374,42 +318,54 @@ class GlobalController extends Controller {
 
     private function newsletterEmailExists($email)
     {
-        $client = new Client($this->getContainer()->getParameter('fdc_newsletter_api_url'));
+        $client = new Client($this->container->getParameter('fdc_newsletter_api_url'));
         $request = $client->get('contact/' . $email);
         $request->setAuth(
-            $this->getContainer()->getParameter('fdc_newsletter_api_universe'),
-            $this->getContainer()->getParameter('fdc_newsletter_api_password')
+            $this->container->getParameter('fdc_newsletter_api_universe'),
+            $this->container->getParameter('fdc_newsletter_api_password')
         );
 
         try {
             $request->send();
         } catch (BadResponseException $e) {
-            $this->getLogger()->err('Unable to verify if email exists in newsletter - '. $e->getMessage());
+            $this->get('logger')->err('Unable to verify if email exists in newsletter - '. $e->getMessage());
             return false;
         } catch (Exception $e) {
-            $this->getLogger()->err('Unexpected error when verifying if email exists in newsletter - '. $e->getMessage());
+            $this->get('logger')->err('Unexpected error when verifying if email exists in newsletter - '. $e->getMessage());
             return false;
         }
 
         return ($request->getResponse()->getStatusCode() === 200) ? true : false;
     }
 
-    private function newsletterEmailSubscribe($email, $query)
+    private function newsletterEmailSubscribe($email, $locale)
     {
-        $client = new Client($this->getContainer()->getParameter('fdc_newsletter_api_url'));
+        $date = new DateTime();
+        $client = new Client($this->container->getParameter('fdc_newsletter_api_url'));
+        $query = json_encode(array(
+            'email' => $email,
+            'lang' => $locale,
+            'date' => $date->format('Y-m-d H:i:s'),
+            'firstname' => '',
+            'lastname' => '',
+            'lists' => array(
+                array('id' => '0')
+            )
+        ));
         $request = $client->post('contact/', null, $query);
+
         $request->setAuth(
-            $this->getContainer()->getParameter('fdc_newsletter_api_universe'),
-            $this->getContainer()->getParameter('fdc_newsletter_api_password')
+            $this->container->getParameter('fdc_newsletter_api_universe'),
+            $this->container->getParameter('fdc_newsletter_api_password')
         );
 
         try {
             $request->send();
         } catch (BadResponseException $e) {
-            $this->getLogger()->err('Unable to verify if '. $email. ' exists in newsletter - '. $e->getMessage());
+            $this->get('logger')->err('Unable to verify if '. $email. ' exists in newsletter - '. $e->getMessage());
             return false;
         }  catch (Exception $e) {
-            $this->getLogger()->err('Unexpected error when subscribing '. $email. ' in newsletter - '. $e->getMessage());
+            $this->get('logger')->err('Unexpected error when subscribing '. $email. ' in newsletter - '. $e->getMessage());
             return false;
         }
 
@@ -426,44 +382,16 @@ class GlobalController extends Controller {
 
         $translator = $this->get('translator');
         $newsForm   = $this->createForm(new NewsletterType($translator));
-
         $locale = ($request->getLocale() == 'fr') ? 'fr' : 'en';
-        $date = new DateTime();
 
         if ($request->isMethod('POST')) {
-
             $newsForm->handleRequest($request);
-
             if ($newsForm->isValid()) {
                 $data = $newsForm->getData();
-
                 $exist = $this->newsletterEmailExists($data['email']);
                 $response['success'] = false;
                 if ($exist == false) {
-                    $query = array(
-                        'email' => $data['email'],
-                        'lang' => $locale,
-                        'date' => $date->format('Y-m-d H:i:s'),
-                        'firstname' => '',
-                        'lastname' => '',
-                        'fields' => array (
-                            array(
-                                'id'  => '0',
-                                'name'  => 'societe',
-                                'value'  => '',
-                            ),
-                            array(
-                                'id'  => '1',
-                                'name'  => 'LANGUE',
-                                'value'  => 'fr',
-                            )
-                        ),
-                        'lists' => array (
-                            'id'    => '0',
-                            'name'  => 'Festival de Cannes',
-                        )
-                    );
-                    $subscribed = $this->newsletterEmailSubscribe($data['email'], $query);
+                    $subscribed = $this->newsletterEmailSubscribe($data['email'], $locale);
                     if ($subscribed == true) {
                         $response['success'] = true;
                     }

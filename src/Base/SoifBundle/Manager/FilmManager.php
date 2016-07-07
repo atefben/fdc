@@ -484,7 +484,7 @@ class FilmManager extends CoreManager
                         $persons[$object->Id]->addFunction($filmFilmPersonFunction);
                     }
                 } else {
-                    $this->logger->error(__METHOD__ . "Function {$object->IdFonction} not found");
+                    $this->logger->warn(__METHOD__ . "Function {$object->IdFonction} not found");
                 }
 
                 if ($persons[$object->Id]->getId() === null) {
@@ -612,10 +612,10 @@ class FilmManager extends CoreManager
                         $filmFilmPersonFunction->setPosition($object->OrdreAffichage);
                         $persons[$object->Id]->addFunction($filmFilmPersonFunction);
                     } else {
-                        $this->logger->error(__METHOD__ . "Function {$object->IdFonction} not found");
+                        $this->logger->warn(__METHOD__ . "Function {$object->IdFonction} not found");
                     }
                 } else {
-                    $this->logger->error(__METHOD__ . "Property IdFonction not found");
+                    $this->logger->warn(__METHOD__ . "Property IdFonction not found");
                 }
 
                 // set translations for roles

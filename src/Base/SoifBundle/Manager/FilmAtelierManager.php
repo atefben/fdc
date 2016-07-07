@@ -258,7 +258,7 @@ class FilmAtelierManager extends CoreManager
                     if ($filmAtelierPerson->getFunctions()->count() == 0) {
                         $functionTranslation = $this->em->getRepository('BaseCoreBundle:FilmFunctionTranslation')->findOneBy(array('locale' => 'en', 'name' => 'Director'));
                         if ($functionTranslation === null) {
-                            $this->logger->error(__METHOD__. " {$id}, function translation Director not found");
+                            $this->logger->warn(__METHOD__. " {$id}, function translation Director not found");
                         } else {
                             $filmAtelierPersonFunction = new FilmAtelierPersonFunction();
                             $filmAtelierPersonFunction->setFunction($functionTranslation->getTranslatable());

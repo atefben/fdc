@@ -3,8 +3,10 @@
 
 $(document).ready(function() {
 
+  var errorMsg = '';
   $('.newsletter #email').on('focus', function() {
-    if($(this).val() == GLOBALS.texts.newsletter.errorsNotValide || $(this).val() == GLOBALS.texts.newsletter.errorsMailEmpty) {
+    if($(this).val() == GLOBALS.texts.newsletter.errorsNotValide || $(this).val() == GLOBALS.texts.newsletter.errorsMailEmpty ||
+        errorMsg != '') {
       $(this).val('');
       $(this).removeClass('error');
     }
@@ -46,7 +48,9 @@ $(document).ready(function() {
         success: function(data) {
           console.log(data);
           if (data.success == false) {
-            input.addClass("error").val(data.object);
+            input.addClass("error");
+            input.val(data.object);
+            errorMsg = data.object;
           }
           else {
             $('.newsletter form').addClass('hide');
