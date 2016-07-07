@@ -31,6 +31,7 @@ class PersonFunctionGenderExtension extends Twig_Extension
         return array(
             new \Twig_SimpleFilter('person_function_gender', array($this, 'getPersonFunctionGender')),
             new \Twig_SimpleFilter('profession_gender', array($this, 'getProfessionGender')),
+            new \Twig_SimpleFilter('person_gender', array($this, 'getPersonGender')),
         );
     }
 
@@ -50,6 +51,19 @@ class PersonFunctionGenderExtension extends Twig_Extension
         }
 
         return $translated;
+    }
+
+    /**
+     * @param FilmPerson $person
+     * @return string
+     */
+    public function getPersonGender(FilmPerson $person)
+    {
+        $transFr = $person->findTranslationByLocale('fr');
+        
+        $gender = Gender::getGenderFromString($transFr->getGender());
+
+        return $gender;
     }
 
     protected function professionReplace($profession, $gender)
