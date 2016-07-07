@@ -5,7 +5,6 @@ namespace FDC\EventBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Email;
 
 /**
  * Class ContactType
@@ -39,6 +38,13 @@ class NewsletterType extends AbstractType
                 ),
                 'label' => false
             ));
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'csrf_protection' => false,
+        ));
     }
 
 
