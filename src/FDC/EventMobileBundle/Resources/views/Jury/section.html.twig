@@ -37,7 +37,7 @@
                     {%- if president is defined -%}
                         <a href="{{ path('fdc_eventmobile_artist_get', {'slug': president['jury'].person.slug}) }}"></a>
                         {%- if president['jury'].person.presidentJuryImage and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
-                            <div class="img photo-jury" style="background-image:url({% path president['jury'].person.presidentJuryImage|trans_fallback('file'), '640x603' %})"></div>
+                            <div class="img photo-jury" style="background-image:url({% path president['jury'].person.presidentJuryImage|trans_fallback('file'), '613h' %})"></div>
                         {%- else -%}
                             {% set media = president['jury'].person|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
                             {% if media is empty %}
@@ -48,7 +48,7 @@
                             {% endif %}
 
                             {%- if media is not empty -%}
-                                <div class="img photo-jury" style="background-image:url({% path media, '640x603' %})"></div>
+                                <div class="img photo-jury" style="background-image:url({% path media, '613h' %})"></div>
                             {%- else -%}
                                 <div class="img photo-jury" style="background-image:url('{{ asset('bundles/fdcevent/img/jurys/president.jpg') }}');"></div>
                             {%- endif -%}
