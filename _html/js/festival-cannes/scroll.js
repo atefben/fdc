@@ -307,7 +307,7 @@ $(document).ready(function() {
 
       if($('.main-image').length > 0 && (s > 100 && $('.main-image').hasClass('trailer'))) {
         $('.main-image').height($('.main-image').data('height')).css('padding-top', 0);
-        $('.main-image, .poster, .info-film, .nav').removeClass('trailer');
+        $('.main-image, .poster, .info-film, .nav, .palmares').removeClass('trailer');
         if(videoMovie.getState() === "playing") {
           videoMovie.pause();
         }
