@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Repository;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImageTranslation;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
+use Base\CoreBundle\Entity\NewsArticleTranslation;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
 
@@ -64,7 +65,10 @@ class MediaRepository extends EntityRepository
             ->andWhere('m.displayedHome = 1');
 
         $qb = $this->addMasterQueries($qb, 'mi', $festival, false);
-        $qb = $this->addTranslationQueries($qb, 'mit', $locale);
+        $qb
+            ->andWhere("mit.locale = 'fr' AND mit.status = :status_published")
+            ->setParameter('status_published', NewsArticleTranslation::STATUS_PUBLISHED)
+        ;
         $qb = $this->addFDCEventQueries($qb, 's');
         $qb = $qb
             ->setParameter('datetime', $dateTime1)
