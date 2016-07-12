@@ -28,9 +28,10 @@
 {%- if event.programmationFilms|length > 0 -%}
     {%- set film = event.programmationFilms[0].film -%}
     <div class="fc-event" data-category="{{ film.selectionSection|trans_fallback('slug') }}"{{- ' ' -}}
+         data-test="{{ event.startsAt|date('Y-m-d H:i:s') }}"
          data-type="{{ event.type|lower|replace(' ', '-') }}" data-url="{{ path('fdc_event_agenda_getprojection', {id: event.id}) }}"{{- ' ' -}}
          data-id="{{ event.id }}" data-picto=".pen" data-color="{{ dataColor }}"{{- ' ' -}}
-         data-start="{{ (event.startsAt|date('H') < 4 ? event.startsAt.timestamp - 86400 : event.startsAt)|date('Y-m-d') }}T{{ event.startsAt|date('H') < 4 ? '23:59:59' : event.startsAt|date('H:i:s') }}"{{- ' ' -}}
+         data-start="{{ (event.startsAt)|date('Y-m-d') }}T{{ event.startsAt|date('H') < 4 ? '23:59:59' : event.startsAt|date('H:i:s') }}"{{- ' ' -}}
          data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"{{- ' ' -}}
          data-time="{% if event.startsAt|date('H') >= 0 and event.startsAt|date('H') <= 3 %}{{ 24 + event.startsAt|date('H') }}{% else %}{{ event.startsAt|date('H') }}{% endif %}" data-duration="{{ minutes }}">
         <span class="category">
@@ -117,6 +118,7 @@
     </div>
 {%- else -%}
     <div class="fc-event cursor-default" data-category=""{{- ' ' -}}
+            data-test="{{ event.startsAt|date('Y-m-d') }}"
          data-type="{{ event.type|lower|replace(' ', '-') }}"{{- ' ' -}}
          data-id="{{ event.id }}" data-picto=".pen" data-color="{{ dataColor }}"{{- ' ' -}}
          data-start="{{ (event.startsAt|date('H') < 4 ? event.startsAt.timestamp - 86400 : event.startsAt)|date('Y-m-d') }}T{{ event.startsAt|date('H') < 4 ? '23:59:59' : event.startsAt|date('H:i:s') }}"{{- ' ' -}}
