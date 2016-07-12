@@ -114,7 +114,7 @@ $(document).ready(function() {
       var w = $(this).width(),
           h = $(this).height();
 
-      if(w/h > 0.8179) {
+      if(w/h > 0.8179 && !jQuery('#main').hasClass('single-movie')) {
         $(this).addClass('landscape');
       }
     })
