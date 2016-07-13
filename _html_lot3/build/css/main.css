@@ -9548,7 +9548,7 @@ header #searchContainer {
 
 .slider-home {
   position: relative;
-  height: 100vh;
+  height: 79vh;
   margin-bottom: 29px;
   transition: height .5s;
 }
@@ -9601,7 +9601,7 @@ header #searchContainer {
 }
 .slider-home .container-txts {
   position: relative;
-  height: 497px;
+  height: 100%;
 }
 .slider-home .texts {
   width: 525px;
@@ -9609,7 +9609,8 @@ header #searchContainer {
   background-color: #f7f7f7;
   position: absolute;
   right: 0;
-  top: 43px;
+  top: auto;
+  bottom: 19%;
 }
 .slider-home .texts strong {
   display: block;
@@ -9643,7 +9644,8 @@ header #searchContainer {
     width: 76%;
   }
   .slider-home .texts {
-    top: 42px;
+    top: auto;
+    bottom: 19%;
     right: -103px;
   }
 }
@@ -9657,7 +9659,8 @@ header #searchContainer {
     width: 71.3%;
   }
   .slider-home .texts {
-    top: 115px;
+    top: auto;
+    bottom: 19%;
     right: -111px;
   }
 }
@@ -9671,7 +9674,8 @@ header #searchContainer {
     width: 67.7%;
   }
   .slider-home .texts {
-    top: 115px;
+    top: auto;
+    bottom: 19%;
     right: -111px;
   }
 }
