@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-07-07T12:01:37Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+  <file date="2016-07-12T17:42:04Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -794,6 +794,11 @@ principalmente con fines promocionales y/o publicitarios, en el marco de nuestra
         <target>Los vídeos en primera plana</target>
         <jms:reference-file line="251">views/News/home.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="be10d1045fd22a417f1df5cf7e43e164961c5666" resname="home.title.portfoliodujour">
+        <source>home.title.portfoliodujour</source>
+        <target state="new">home.title.portfoliodujour</target>
+        <jms:reference-file line="42">News/widgets/slideshow-actu-home.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="105e65c60daf79c5782e16bfe1e83e60376c26b7" resname="home.video.btn.touslesfilms">
         <source>home.video.btn.touslesfilms</source>
         <target>Todas las películas</target>
@@ -1101,8 +1106,7 @@ principalmente con fines promocionales y/o publicitarios, en el marco de nuestra
         <source>newsletter.form.error.emaildejaenregistre</source>
         <target state="new">newsletter.form.error.emaildejaenregistre</target>
         <jms:reference-file line="30">Global/translation/translation-nav.html.twig</jms:reference-file>
-        <jms:reference-file line="352">EventBundle/Controller/GlobalController.php</jms:reference-file>
-        <jms:reference-file line="471">EventBundle/Controller/GlobalController.php</jms:reference-file>
+        <jms:reference-file line="399">EventBundle/Controller/GlobalController.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="088bf9be5aabd3ab9ea123c1b7a6e98fde2cdad7" resname="palmares.btn.decouvrirrubrique">
         <source>palmares.btn.decouvrirrubrique</source>
