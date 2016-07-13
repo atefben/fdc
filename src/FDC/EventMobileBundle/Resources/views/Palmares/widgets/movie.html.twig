@@ -14,7 +14,8 @@
 
 {% if movie is defined %}
 <div class="contain-winner">
-    <div class="img" style="background-image:url(
+    <a href="{{ path('fdc_eventmobile_movie_get', {slug: movie.slug}) }}">
+        <div class="img" style="background-image:url(
         {%- include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
             film: movie,
             film_format: '259x352',
@@ -26,8 +27,8 @@
             film_image_default: 'bundles/fdcevent/img/palmares/film_w256.jpg',
         }) -%}
     )">
-        <a href="{{ path('fdc_eventmobile_movie_get', {slug: movie.slug}) }}"></a>
-    </div>
+        </div>
+    </a>
     {% if award_association is defined and award_association %}
         <i class="icon icon_palme palme-dor-img"></i>
         <div class="title-prize verticalline">
