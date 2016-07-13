@@ -340,11 +340,12 @@ class NewsController extends Controller
         }
 
         //get images for slider articles
+        /* no slider for "show more articles"
         if ($homepage->getTopNewsType() == false) {
             $homeArticlesSlider = $em->getRepository('BaseCoreBundle:Media')->getImageMediaByDay($locale, $this->getFestival()->getId(), $date->setTimestamp($timestamp));
         } else {
             $homeArticlesSlider = null;
-        }
+        }*/
 
         //set default filters
         $filters = array();
@@ -375,7 +376,7 @@ class NewsController extends Controller
         }
 
         return array(
-            'homeArticlesSlider' => $homeArticlesSlider,
+            //'homeArticlesSlider' => $homeArticlesSlider,
             'endOfArticles'      => $endOfArticles,
             'homeArticles'       => $homeArticles,
             'homeArticlesNext'   => $homeArticlesNext,
