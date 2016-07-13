@@ -108,7 +108,7 @@
                                                     <p>
                                                         {{- film.titleVO -}}
                                                     </p>
-                                                    {% if titleTranslated is defined %}
+                                                    {% if titleTranslated is defined and titleTranslated is not empty %}
                                                         <p class="subtitle">
                                                             ( {{ titleTranslated }} )
                                                         </p>
@@ -143,6 +143,7 @@
                                                     {% endif -%}
                                                 </div>
                                             </div>
+                                            {% set titleTranslated = null %}
                                         {% endfor %}
                                     </div>
                                 </div>
