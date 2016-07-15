@@ -116,7 +116,7 @@
                                                     {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                                                     {%- for director in directors -%}
                                                         {%- include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} -%}
-                                                        {%- if loop.index != directors|length %}, {% endif -%}
+                                                        {%- if loop.index != directors|length %}<a class="director">, </a>{% endif -%}
                                                     {%- endfor -%}<br />
                                                     <p class="duration">
                                                         {% set duration = [] %}
