@@ -63,7 +63,7 @@
             {% if restauration is defined and restauration == true and film|trans_fallback('infoRestauration')|trim %}
                 {{- film|trans_fallback('infoRestauration')|nl2br|raw -}}
             {% else %}
-                {{- film|trans_fallback('synopsis')|nl2br|raw -}}
+                {{- film|trans_fallback('synopsis')|truncate(220)|nl2br|raw -}}
             {% endif %}
         </p>
     </div>

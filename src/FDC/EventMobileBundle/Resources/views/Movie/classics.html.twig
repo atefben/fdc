@@ -137,7 +137,7 @@
                                                 </div>
                                                 <div class="text">
                                                     {%- if film|trans_fallback('infoRestauration')|trim -%}
-                                                        {{- film|trans_fallback('infoRestauration')|nl2br|raw -}}
+                                                        {{- film|trans_fallback('infoRestauration')|truncate(220)|nl2br|raw -}}
                                                     {%- else -%}
                                                         {{- film|trans_fallback('synopsis')|truncate(220)|nl2br|raw -}}
                                                     {% endif -%}
