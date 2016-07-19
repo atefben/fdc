@@ -14,7 +14,7 @@
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
         <div class="slideshow dark-container">
-            <h2 class="title">{{ film|trans_fallback('title')?:film.titleVo }}</h2>
+            <h2 class="title">{{ film.titleVo }}</h2>
             <div class="slideshow-img">
             {% for video in videos %}
                 {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
@@ -75,6 +75,7 @@
         </ul>
         <div class="container-video">
             <div class="infos-film block">
+                <a href="{{ path('fdc_eventmobile_movie_get', {'slug': film.slug}) }}">
                 {% include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
                     film: film,
                     film_format: '293x397',
@@ -83,8 +84,10 @@
                     },
                     film_image_default: 'bundles/fdcevent/img/palmares/film_w293.jpg',
                 }) %}
+                </a>
                 <h4 class="rubric-film">{{ film.selectionSection|trans_fallback('name') }}</h4>
-                <strong class="name-video">{{ film|trans_fallback('title')?:film.titleVo }}</strong>
+                <strong class="name-video">{{ film.titleVo }}</strong>
+                {% if film|trans_fallback('title') and film|trans_fallback('title')|trim != film.titleVo|trim %}<br /><strong class="translated-title">({{ film|trans_fallback('title') }})</strong>{% endif %}
                 <span class="name-person">
                     {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
                         {{ loop.index0 ? ', ': '' }}{{ director.fullName }}
