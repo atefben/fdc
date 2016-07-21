@@ -49,7 +49,7 @@ $(document).ready(function() {
 				parentUl.find('li').removeClass('open');
 				parentUl.find('.more-minus').html('+');
 			}else{
-				parentUl.addClass('section-open');
+				//parentUl.addClass('section-open');
 			}
 
 			// if($('#main-nav-list').hasClass('section-open')){
