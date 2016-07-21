@@ -37,14 +37,17 @@
                                 display_film_path: true
                             }) -%}')"></div>
                         {%- if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower -%}
-                            <p class="name">{{ movie.titleVo }}</p>
-                            <p class="sub-name">({{ movie|trans_fallback_movie('title') }})</p>
+                            <p class="name">{{ movie.titleVo|truncate(17) }}</p>
+                            <p class="sub-name">({{ movie|trans_fallback_movie('title')|truncate(17) }})</p>
                         {%- else -%}
-                            <p class="name">{{ movie|trans_fallback('title')?:movie.titleVo }}</p>
+                            <p class="name">{{ movie|trans_fallback('title') ? movie|trans_fallback('title')|truncate(17) : movie.titleVo|truncate(17) }}</p>
+                            <p class="sub-name">&nbsp;</p>
                         {%- endif -%}
+                        {%- set directors_list = '' -%}
                         {%- for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                            <p class="author">{{ director.fullName }}{{ loop.last == true ? '':', '}}</p>
+                            {%- set directors_list = directors_list ~ director.fullName ~ (loop.last == true ? '':', ') -%}
                         {%- endfor -%}
+                        <p class="author">{{ directors_list|truncate(17) }}</p>
                     </div>
                     {%- if loop.index != movies|length %}<!-- {% endif -%}
                 {%- endfor -%}
