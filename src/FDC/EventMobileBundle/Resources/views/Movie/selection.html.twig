@@ -58,7 +58,7 @@
             <div id="banner-bottom">
                 <div class="banner-img vCenter" {% if next.image %} style="background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}');"{% endif %}>
                     <div class="vCenterKid">
-                        <h2 class="title">{{ 'selection.nav.cannes-classics'|trans }}</h2>
+                        <a href="{{ path('fdc_eventmobile_movie_classics', {'slug': next|trans_fallback('slug')}) }}"><h2 class="title">{{ 'selection.nav.cannes-classics'|trans }}</h2></a>
                         <a href="{{ path('fdc_eventmobile_movie_classics', {'slug': next|trans_fallback('slug')}) }}"><i class="icon icon_fleche-right"></i>{{ 'palmares.btn.decouvrirrubrique'|trans }}</a>
                 </div>
             </div>
@@ -66,7 +66,7 @@
             <div id="banner-bottom">
                 <div class="banner-img vCenter" style="background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}');">
                     <div class="vCenterKid">
-                        <h2 class="title">{{ next|trans_fallback('overrideName')?:next.selectionSection|trans_fallback('name') }}</h2>
+                        <a href="{{ path('fdc_eventmobile_movie_selection', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}"><h2 class="title">{{ next|trans_fallback('overrideName')?:next.selectionSection|trans_fallback('name') }}</h2></a>
                         <a href="{{ path('fdc_eventmobile_movie_selection', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}"><i class="icon icon_fleche-right"></i> {{ 'selection.btn.decouvrirrubrique'|trans }}</a>
                     </div>
                 </div>
