@@ -63,18 +63,28 @@
     <h3 class="movie-title">
         <a href="{{ path('fdc_eventmobile_movie_get', {slug: movie.slug}) }}">
             {{ movie.titleVO }}
-        </a>
-    </h3>
-    {% if movie.findTranslationByLocale(app.request.get('_locale')) %}
-        {% if movie.findTranslationByLocale(app.request.get('_locale')).title %}
-            {% if movie.findTranslationByLocale(app.request.get('_locale')).title != movie.titleVO %}
-                <h4 class="sub-title-item">
-                    <a href="{{ path('fdc_eventmobile_movie_get', {slug: movie.slug}) }}">
-                        ({{ movie.findTranslationByLocale(app.request.get('_locale')).title }})
-                    </a></h4>
+        </a><br />
+        {% if movie.findTranslationByLocale('en') and (app.request.get('_locale') == 'es' or app.request.get('_locale') == 'zh') %}
+            {% if movie.findTranslationByLocale('en').title %}
+                {% if movie.findTranslationByLocale('en').title != movie.titleVO %}
+                    <p class="subtitle">
+                        <a href="{{ path('fdc_eventmobile_movie_get', {slug: movie.slug}) }}">
+                            ({{ movie.findTranslationByLocale('en').title }})
+                        </a>
+                    </p>
+                {% endif %}
+            {% endif %}
+        {% elseif movie.findTranslationByLocale(app.request.get('_locale')) %}
+            {% if movie.findTranslationByLocale(app.request.get('_locale')).title %}
+                {% if movie.findTranslationByLocale(app.request.get('_locale')).title != movie.titleVO %}
+                    <h4 class="sub-title-item">
+                        <a href="{{ path('fdc_eventmobile_movie_get', {slug: movie.slug}) }}">
+                            ({{ movie.findTranslationByLocale(app.request.get('_locale')).title }})
+                        </a></h4>
+                {% endif %}
             {% endif %}
         {% endif %}
-    {% endif %}
+    </h3>
     <span class="movie-real">
         {% spaceless %}
             {% set author = '' %}
