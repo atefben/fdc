@@ -1,8 +1,10 @@
 $(document).ready(function() {
-	$('#main').data('menu').split(' ').forEach(function(page) {
-		$('.'+page).addClass('active-page');
-	});
-	
+	if($('#main').data('menu') !== undefined) {
+		$('#main').data('menu').split(' ').forEach(function(page) {
+			$('.'+page).addClass('active-page');
+		});
+	}
+
 	//$('.'+ $('#main').data('menu')).addClass('active-page');
 	var $main = $('body');
 	$(window).on('scroll', function() {
