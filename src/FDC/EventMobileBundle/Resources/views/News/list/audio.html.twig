@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-    <div id="main" class="audios" data-menu="actu">
+    <div id="main" class="audios" data-menu="actu getaudios">
 
         {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
         {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
@@ -73,6 +73,7 @@
                                 <div class="vCenter">
                                     <div class="vCenterKid">
                                         <span class="category">{{ audio.theme|trans_fallback('name') }}</span>
+                                        <span class="date hidden-element">{{ audio.publishedAt|date('d.m.y') }}</span> . <span class="hour hidden-element">{{ agenda_leftbar_translate_hour(audio.publishedAt|date('H:i'), true, true) }}</span>
                                         <p data-title="{{ audio|trans_fallback('title') }}">{{ audio|trans_fallback('title') }}</p>
                                     </div>
                                 </div>

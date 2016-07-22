@@ -1,6 +1,9 @@
 $(document).ready(function() {
-
-	$('.'+ $('#main').data('menu')).addClass('active-page');
+	$('#main').data('menu').split(' ').forEach(function(page) {
+		$('.'+page).addClass('active-page');
+	});
+	
+	//$('.'+ $('#main').data('menu')).addClass('active-page');
 	var $main = $('body');
 	$(window).on('scroll', function() {
 	    var s = $(this).scrollTop();
