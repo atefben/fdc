@@ -76,17 +76,17 @@
         <div class="container-video">
             <div class="infos-film block">
                 <a href="{{ path('fdc_eventmobile_movie_get', {'slug': film.slug}) }}">
-                {% include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
-                    film: film,
-                    film_format: '293x397',
-                    film_attrs: {
-                        alt: film|trans_fallback('title')?:movie.titleVO
-                    },
-                    film_image_default: 'bundles/fdcevent/img/palmares/film_w293.jpg',
-                }) %}
+                    {% include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
+                        film: film,
+                        film_format: '293x397',
+                        film_attrs: {
+                            alt: film|trans_fallback('title')?:movie.titleVO
+                        },
+                        film_image_default: 'bundles/fdcevent/img/palmares/film_w293.jpg',
+                    }) %}
                 </a>
                 <h4 class="rubric-film">{{ film.selectionSection|trans_fallback('name') }}</h4>
-                <strong class="name-video">{{ film.titleVo }}</strong>
+                <a href="{{ path('fdc_eventmobile_movie_get', {'slug': film.slug}) }}" class="name-video"><strong>{{ film.titleVo }}</strong></a>
                 {% if film|trans_fallback('title') and film|trans_fallback('title')|trim != film.titleVo|trim %}<br /><strong class="translated-title">({{ film|trans_fallback('title') }})</strong>{% endif %}
                 <span class="name-person">
                     {%- for director in film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
