@@ -187,11 +187,11 @@ class PersonManager extends CoreManager
         $result = $this->soapCall($this->wsMethod, array('fromTimeStamp' => $from, 'toTimeStamp' => $to), false);
         $resultObjects = $this->mixedToArray($result->{$this->wsResultKey}->Resultats);
         
-        // delete objects
-        $this->deleteMultiple($resultObjects);
+        // delete objects with duplicate check
+        $this->deleteMultiple($resultObjects, true);
         
         // save entities
-        $this->em->flush();
+        //$this->em->flush();
         
         // end timer
         $this->end(__METHOD__);
@@ -336,6 +336,31 @@ class PersonManager extends CoreManager
 
             // remove old relations
             $this->removeOldRelations($entity->getFilms(), $collection, $entity, 'removeFilm');
+        }
+
+        // duplicates
+        if (property_exists($resultObject, 'LinkedDeletedPersonnes') && property_exists($resultObject->LinkedDeletedPersonnes, 'LinkedDeletedPersonneDto')) {
+            $collection = new ArrayCollection();
+            $duplicates = clone $entity->getDuplicates();
+            $resultObject->LinkedDeletedPersonnes->LinkedDeletedPersonneDto = $this->mixedToArray($resultObject->LinkedDeletedPersonnes->LinkedDeletedPersonneDto);
+            foreach ($resultObject->LinkedDeletedPersonnes->LinkedDeletedPersonneDto as $obj) {
+                $person = $this->em->getRepository('BaseCoreBundle:FilmPerson')->findOneById($obj->PersonneId);
+                if ($person !== null && !$entity->getDuplicates()->contains($person)) {
+                    $person->setDuplicate(true);
+                    $collection->add($person);
+                    $entity->addDuplicate($person);
+                }
+            }
+
+            // unset old duplicates
+            foreach ($duplicates as $duplicate) {
+                if (!$collection->contains($duplicate)) {
+                    $duplicate->setDuplicate(false);
+                    $entity->removeDuplicate($duplicate);
+                    dump($duplicate->getId());
+                }
+            }
+
         }
 
         /*if (count($this->getFilmsNotImported()) > 0) {

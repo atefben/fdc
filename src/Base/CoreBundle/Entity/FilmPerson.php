@@ -206,6 +206,13 @@ class FilmPerson implements TranslateMainInterface
     private $slug;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="duplicate", type="boolean", options={"default" : 0})
+     */
+    private $duplicate;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string", length=40, nullable=true)
@@ -395,6 +402,13 @@ class FilmPerson implements TranslateMainInterface
     protected $translations;
 
     /**
+     * @ORM\ManyToMany(targetEntity="FilmPerson")
+     *
+     * @Groups({"person_list", "person_show"})
+     */
+    private $duplicates;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -405,6 +419,8 @@ class FilmPerson implements TranslateMainInterface
         $this->medias = new ArrayCollection();
         $this->cinefPersons = new ArrayCollection();
         $this->translations = new ArrayCollection();
+        $this->duplicates = new ArrayCollection();
+        $this->duplicate = false;
     }
     
     public function __toString()
@@ -1000,5 +1016,61 @@ class FilmPerson implements TranslateMainInterface
         }
 
         return $isElasticable;
+    }
+
+    /**
+     * Add duplicates
+     *
+     * @param \Base\CoreBundle\Entity\FilmPerson $duplicates
+     * @return FilmPerson
+     */
+    public function addDuplicate(\Base\CoreBundle\Entity\FilmPerson $duplicates)
+    {
+        $this->duplicates[] = $duplicates;
+
+        return $this;
+    }
+
+    /**
+     * Remove duplicates
+     *
+     * @param \Base\CoreBundle\Entity\FilmPerson $duplicates
+     */
+    public function removeDuplicate(\Base\CoreBundle\Entity\FilmPerson $duplicates)
+    {
+        $this->duplicates->removeElement($duplicates);
+    }
+
+    /**
+     * Get duplicates
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDuplicates()
+    {
+        return $this->duplicates;
+    }
+
+    /**
+     * Set duplicate
+     *
+     * @param boolean $duplicate
+     * @return FilmPerson
+     */
+    public function setDuplicate($duplicate)
+    {
+        $this->duplicate = $duplicate;
+
+        return $this;
+    }
+
+    /**
+     * Get duplicate
+     *
+     * @return boolean 
+     */
+    public function getDuplicate()
+    {
+        return $this->duplicate;
     }
 }
