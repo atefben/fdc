@@ -596,14 +596,19 @@ abstract class CoreManager
      * @param mixed $id
      * @return void
      */
-    public function remove($id)
+    public function remove($id, $checkDuplicate = false)
     {
         $entity = $this->em->getRepository($this->repository)->findOneBy(array('id' => $id));
         if ($entity !== null) {
-            $this->em->remove($entity);
+            if ($checkDuplicate == false ||
+                ($checkDuplicate == true && method_exists($entity, 'getDuplicate') && $entity->getDuplicate() == false)
+            ) {
+                $this->em->remove($entity);
+            }
         } else {
             $this->logger->info("{$this->repository} #{$id} can't be removed because it doesn't exist");
         }
+
     }
 
     /**
@@ -719,7 +724,7 @@ abstract class CoreManager
      * @param mixed $objects
      * @return void
      */
-    public function deleteMultiple($objects)
+    public function deleteMultiple($objects, $checkDuplicate = false)
     {
         // loop 3 times because results are returned that way
         foreach ($objects as $types) {
@@ -730,7 +735,7 @@ abstract class CoreManager
                 // make sure we have an array even when one single result is returned
                 $ids = $this->mixedToArray($ids);
                 foreach ($ids as $id) {
-                    $this->remove($id);
+                    $this->remove($id, $checkDuplicate);
                 }
             }
         }
