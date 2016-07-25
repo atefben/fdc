@@ -1069,6 +1069,7 @@ $(document).ready(function () {
     if($('.press.lock').length && !$('.connected').length) {
       if($('#popin-press').length) {
         $('.buttons:not(".active-btn")').on('click', function () {
+          
           if($('#popin-press').hasClass('visible-popin')) {
             $('#popin-press').removeClass('visible-popin');
             $("#main").removeClass('overlay-popin');
