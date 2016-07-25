@@ -5179,6 +5179,8 @@ video {
 
 .block-accordion .download .item {
   min-width: 160px;
+  overflow: visible;
+  max-height: none;
 }
 .block-accordion .a-left {
   text-align: left;
@@ -5240,7 +5242,7 @@ video {
   font-size: .8rem;
 }
 .block-accordion .btn-center {
-  width: 168px;
+  width: 173px;
   margin: 0 auto;
 }
 .block-accordion .title-22 {
@@ -5279,6 +5281,9 @@ video {
   max-height: 56px;
   overflow: hidden;
   transition: .5s;
+}
+.block-accordion .mt {
+  margin-top: 40px !important;
 }
 .block-accordion .active {
   max-height: 10000px;
@@ -5388,7 +5393,7 @@ video {
   width: 318px;
 }
 .block-accordion .download.three-column {
-  width: 623px;
+  width: auto;
 }
 .block-accordion .download.no-flex {
   display: block;
