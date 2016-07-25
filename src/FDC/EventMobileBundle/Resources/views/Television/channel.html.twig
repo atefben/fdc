@@ -47,6 +47,10 @@
                          data-poster="{{ videoImage }}">
                     </div>
                     </div>
+                    <div class="container">
+                        <h3 class="title-video"></h3>
+                        <p class="caption"></p>
+                    </div>
                     <div class="owl-carousel thumbnails">
                 {% endif %}
 
@@ -77,6 +81,7 @@
         {% endif %}
     {%- endfor -%}
     </div>
+
     {% if otherVideos|length %}
     <div class="dark-container featured-videos" id="">
         <div class="container">
