@@ -125,7 +125,6 @@
                     <div class="vid item-video"
                          {#data-vid="{{ video.id }}"#}
                          data-video='{{ s3_server_video ~ video|trans_fallback('mp4Url') }}'
-                         data-file='[{% if(video|trans_fallback('jobWebmState') == 3) %}{"file":"{{ s3_server_video ~ video|trans_fallback('webmUrl') }}"},{% endif %}{"file":"{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"}]'
                         {% if video.image|trans_fallback('file') %}
                             data-poster="{% path video.image|trans_fallback('file'), '463x292' %}"
                         {% else %}
