@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-    <div id="main" class="artist" data-menu="jury">
+    <div id="main" class="artist">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
@@ -37,7 +37,7 @@
                     {% set copyright = null %}
                     {% if artistImage %}
                         {%- if artist.presidentJuryImage and artist.presidentJuryImage|trans_fallback('file') -%}
-                            <img src="{% path artist.presidentJuryImage|trans_fallback('file'), '640x603' %}"
+                            <img src="{% path artist.presidentJuryImage|trans_fallback('file'), '613h' %}"
                                  alt="{{ artist.fullName }}"/>
                             {%  set shareMedia = artist.presidentJuryImage|trans_fallback('file') %}
                             {%- if artist.presidentJuryCredits is not empty or artistImage.copyright is not empty -%}
@@ -47,7 +47,7 @@
                             {%- endif -%}
                         {%- elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
                             {% set artistMedia = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'),true)|first %}
-                            <img src="{% path artistMedia.file, '640x603' %}"
+                            <img src="{% path artistMedia.file, '613h' %}"
                                  alt="{{ artist.fullName }}"/>
                             {%  set shareMedia = artistMedia.file %}
                             {%- if artistMedia.copyright is not empty -%}
@@ -57,7 +57,7 @@
                             {% endif %}
                         {%- elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
                             {% set artistMedia = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'),true)|first %}
-                            <img src="{% path artistMedia.file, '640x603' %}"
+                            <img src="{% path artistMedia.file, '613h' %}"
                                  alt="{{ artist.fullName }}"/>
                             {%  set shareMedia = artistMedia.file %}
                             {%- if artistMedia.copyright is not empty -%}
@@ -66,7 +66,7 @@
                                 </p>
                             {%- endif -%}
                         {%- elseif class(artistImage) == 'FilmMedia' -%}
-                            <img src="{% path artistImage.file, '640x603' %}" alt="{{ artist.fullName }}"/>
+                            <img src="{% path artistImage.file, '613h' %}" alt="{{ artist.fullName }}"/>
                             {%  set shareMedia = artistImage.file %}
                             {% set legend = artistImage.credits %}
                             {% set copyright = artistImage.copyright %}
@@ -74,7 +74,7 @@
                                id="captionCopyright">{{ legend }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
                         {%- else -%}
                             {% if artist.credits != null %}
-                                <img src="{% path artistImage, '640x603' %}" alt="{{ artist.fullName }}"/>
+                                <img src="{% path artistImage, '613h' %}" alt="{{ artist.fullName }}"/>
                                 {%  set shareMedia = artistImage %}
                                 {% if copyright is not empty %}
                                     <p class="caption" id="captionCopyright">
@@ -82,7 +82,7 @@
                                     </p>
                                 {% endif %}
                             {% else %}
-                                <img src="{% path artistImage, '640x603 ' %}" alt="{{ artist.fullName }}"/>
+                                <img src="{% path artistImage, '613h ' %}" alt="{{ artist.fullName }}"/>
                                 {%  set shareMedia = artistImage %}
                             {% endif %}
                         {%- endif -%}

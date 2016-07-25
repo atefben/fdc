@@ -4723,7 +4723,7 @@ footer .newsletter #email {
   width: calc(100% - 165px);
 }
 footer .newsletter #email.error {
-  color: #e93939 !important;
+  color: #e93939;
 }
 footer .newsletter #confirmation {
   color: #fff;
@@ -11210,7 +11210,6 @@ article .read-later.rAlign span:after {
   width: 63%;
   padding-bottom: 5px;
   margin-top: -66px;
-  margin-bottom: -38px;
 }
 .single-movie .palmares.trailer {
   -moz-transform: translateY(570px);
@@ -13385,6 +13384,10 @@ input[type=submit] {
   visibility: hidden;
 }
 
+.mob.wishlist {
+  width: 375px !important;
+  zoom: 1 !important;
+}
 .mob .selection-whislist {
   width: 375px !important;
   zoom: 1 !important;
@@ -17871,7 +17874,6 @@ input[type=submit] {
   float: left;
   margin-left: 85px;
   width: 540px;
-  visibility: visible;
 }
 @media screen and (max-width: 1024px) {
   .press .affiche .portrait {
@@ -19369,11 +19371,25 @@ input[type=submit] {
   padding-bottom: 60px;
 }
 .accreditation #accreditation .request a {
-  display: block;
   border: 1px solid #dfdfdf !important;
   margin: 0 auto;
-  width: 296px;
+  max-width: 426px;
   margin-bottom: 11px;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  -o-display: flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: baseline;
+  -moz-align-items: baseline;
+  -ms-align-items: baseline;
+  -o-align-items: baseline;
+  align-items: baseline;
 }
 .accreditation #accreditation .request a:hover {
   color: #c8a461;

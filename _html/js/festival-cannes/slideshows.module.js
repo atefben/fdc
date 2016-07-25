@@ -165,6 +165,53 @@ $('body').on('click', '.chocolat-image', function() {
   updatePhotoShare($that.data('pid'), $that.attr('title'));
   initPopinMail();
 
+  var initPopinLock = function() {
+    if($('.press.lock').length && !$('.connected').length) {
+
+      if($('#popin-press').length) {
+
+        $('.chocolat-wrapper .share.cadenas').on('click', function () {
+
+          if($('#popin-press').hasClass('visible-popin')) {
+            $('#popin-press').removeClass('visible-popin');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+          } else {
+            $('#popin-press').addClass("visible-popin");
+            $("#main").addClass('overlay-popin');
+          }
+          return false;
+        });
+
+        $(document).keyup(function (e) {
+          if (e.keyCode == 27) {
+            $('#popin-press').removeClass('visible-popin');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+            $('.overlay-div').remove();
+          }
+        });
+      }
+
+      $(document).on('touchstart click',function (e) {
+        var $element = $(e.target);
+        if (!$element.hasClass('visible-popin')) {
+          var $isPopin = $element.closest('.visible-popin');
+          var isButton = $element.hasClass('buttons');
+
+          if ($isPopin.length || isButton) {
+          } else {
+            $('#popin-press').removeClass('visible-popin');
+            $("#main").removeClass('overlay-popin');
+            $('footer').removeClass('overlay');
+          }
+        }
+      });
+    }
+  }
+
+  initPopinLock();
+
   $('.chocolat-bottom .img-slideshow-share .button.email').on('click', function() {
     var parsed = $('<div/>').append($that.attr('title'));
     launchPopinMedia({}, '');

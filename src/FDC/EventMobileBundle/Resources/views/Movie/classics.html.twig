@@ -108,7 +108,7 @@
                                                     <p>
                                                         {{- film.titleVO -}}
                                                     </p>
-                                                    {% if titleTranslated is defined %}
+                                                    {% if titleTranslated is defined and titleTranslated is not empty %}
                                                         <p class="subtitle">
                                                             ( {{ titleTranslated }} )
                                                         </p>
@@ -116,7 +116,7 @@
                                                     {% set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                                                     {%- for director in directors -%}
                                                         {%- include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director} -%}
-                                                        {%- if loop.index != directors|length %}, {% endif -%}
+                                                        {%- if loop.index != directors|length %}<a class="director">, </a>{% endif -%}
                                                     {%- endfor -%}<br />
                                                     <p class="duration">
                                                         {% set duration = [] %}
@@ -137,12 +137,13 @@
                                                 </div>
                                                 <div class="text">
                                                     {%- if film|trans_fallback('infoRestauration')|trim -%}
-                                                        {{- film|trans_fallback('infoRestauration')|nl2br|raw -}}
+                                                        {{- film|trans_fallback('infoRestauration')|truncate(220)|nl2br|raw -}}
                                                     {%- else -%}
                                                         {{- film|trans_fallback('synopsis')|truncate(220)|nl2br|raw -}}
                                                     {% endif -%}
                                                 </div>
                                             </div>
+                                            {% set titleTranslated = null %}
                                         {% endfor %}
                                     </div>
                                 </div>

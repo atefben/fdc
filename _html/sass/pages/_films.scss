@@ -548,6 +548,12 @@
   visibility: hidden;
 }
 .mob {
+
+  &.wishlist {
+    width:375px !important;
+    zoom:1 !important;
+  }
+
   .selection-whislist {
     width:375px !important;
     zoom:1 !important;

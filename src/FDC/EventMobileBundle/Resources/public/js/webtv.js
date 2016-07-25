@@ -601,6 +601,8 @@ $(document).ready(function() {
 
     $('.fullscreenplayer').find('.category').html($(this).find('.category').html());
     $('.fullscreenplayer').find('.title-video').html($(this).find('.titleLink').html());
+    $('.fullscreenplayer').find('.date').html($(this).find('.date').html());
+    $('.fullscreenplayer').find('.hour').html($(this).find('.hour').html());
   });
 
   // AUDIO PLAYER

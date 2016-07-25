@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-<div id="main" class="channel" data-menu="webtv">
+<div id="main" class="channel" data-menu="webtv channels">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
@@ -47,6 +47,10 @@
                          data-poster="{{ videoImage }}">
                     </div>
                     </div>
+                    <div class="container">
+                        <h3 class="title-video"></h3>
+                        <p class="caption"></p>
+                    </div>
                     <div class="owl-carousel thumbnails">
                 {% endif %}
 
@@ -77,6 +81,7 @@
         {% endif %}
     {%- endfor -%}
     </div>
+
     {% if otherVideos|length %}
     <div class="dark-container featured-videos" id="">
         <div class="container">

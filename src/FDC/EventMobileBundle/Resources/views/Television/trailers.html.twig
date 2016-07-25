@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-    <div id="main" class="articles" data-menu="webtv">
+    <div id="main" class="articles" data-menu="webtv trailers">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
@@ -58,7 +58,7 @@
                         <div class="infos">
                             <div class="picto"><i class="icon icon_playlist"></i></div>
                             <div class="right">
-                                <p class="movie-title">{{ (group.film.findTranslationByLocale(app.request.locale).title ?: group.film.titleVO)|truncate(15) }}</p>
+                                <p class="movie-title">{{ group.film.titleVO|truncate(15) }}</p>
                                 {% spaceless %}
                                     <span>
                                         {% for director in group.film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}

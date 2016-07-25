@@ -22,7 +22,15 @@
       height: 363px;
 
       .evenements & {
-        height: 408px;
+        width: 95.3%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 35px;
+
+        img {
+          position: relative;
+        }
       }
     }
   }
@@ -111,7 +119,15 @@
     width: 100%;
 
     .evenements & {
-      height: 182px;
+      width: 89%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 10px;
+
+      img {
+        position: relative;
+      }
     }
 
     .linkImage {

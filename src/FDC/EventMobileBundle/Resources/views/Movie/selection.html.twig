@@ -37,14 +37,17 @@
                                 display_film_path: true
                             }) -%}')"></div>
                         {%- if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower -%}
-                            <p class="name">{{ movie.titleVo }}</p>
-                            <p class="sub-name">({{ movie|trans_fallback_movie('title') }})</p>
+                            <p class="name">{{ movie.titleVo|truncate(17) }}</p>
+                            <p class="sub-name">({{ movie|trans_fallback_movie('title')|truncate(17) }})</p>
                         {%- else -%}
-                            <p class="name">{{ movie|trans_fallback('title')?:movie.titleVo }}</p>
+                            <p class="name">{{ movie|trans_fallback('title') ? movie|trans_fallback('title')|truncate(17) : movie.titleVo|truncate(17) }}</p>
+                            <p class="sub-name">&nbsp;</p>
                         {%- endif -%}
+                        {%- set directors_list = '' -%}
                         {%- for director in movie|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
-                            <p class="author">{{ director.fullName }}{{ loop.last == true ? '':', '}}</p>
+                            {%- set directors_list = directors_list ~ director.fullName ~ (loop.last == true ? '':', ') -%}
                         {%- endfor -%}
+                        <p class="author">{{ directors_list|truncate(17) }}</p>
                     </div>
                     {%- if loop.index != movies|length %}<!-- {% endif -%}
                 {%- endfor -%}
@@ -55,7 +58,7 @@
             <div id="banner-bottom">
                 <div class="banner-img vCenter" {% if next.image %} style="background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}');"{% endif %}>
                     <div class="vCenterKid">
-                        <h2 class="title">{{ 'selection.nav.cannes-classics'|trans }}</h2>
+                        <a href="{{ path('fdc_eventmobile_movie_classics', {'slug': next|trans_fallback('slug')}) }}"><h2 class="title">{{ 'selection.nav.cannes-classics'|trans }}</h2></a>
                         <a href="{{ path('fdc_eventmobile_movie_classics', {'slug': next|trans_fallback('slug')}) }}"><i class="icon icon_fleche-right"></i>{{ 'palmares.btn.decouvrirrubrique'|trans }}</a>
                 </div>
             </div>
@@ -63,7 +66,7 @@
             <div id="banner-bottom">
                 <div class="banner-img vCenter" style="background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}');">
                     <div class="vCenterKid">
-                        <h2 class="title">{{ next|trans_fallback('overrideName')?:next.selectionSection|trans_fallback('name') }}</h2>
+                        <a href="{{ path('fdc_eventmobile_movie_selection', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}"><h2 class="title">{{ next|trans_fallback('overrideName')?:next.selectionSection|trans_fallback('name') }}</h2></a>
                         <a href="{{ path('fdc_eventmobile_movie_selection', {'slug': next|trans_fallback('slug')?:next.selectionSection|trans_fallback('slug')} ) }}"><i class="icon icon_fleche-right"></i> {{ 'selection.btn.decouvrirrubrique'|trans }}</a>
                     </div>
                 </div>
