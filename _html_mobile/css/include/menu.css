@@ -322,7 +322,7 @@ font-weight: bolder;
   width: 100%;
   margin-left: 0;
 }
-#menu .active-page .section-title h3,#menu .active-page .section-title h3 i,#menu .third-nav .active-page a, #menu .footer-menu .active-page a, #menu .active-page li{
+#menu .active-page .section-title h3,#menu .active-page .section-title h3 i,#menu .third-nav .active-page a, #menu .footer-menu .active-page a, #menu .section-contain li.active-page a{
   color: #c8a461;
 }
 #menu .language ul{
