@@ -248,11 +248,25 @@
         padding-bottom: 60px;
 
       a {
-        display: block;
         border: 1px solid #dfdfdf !important;
         margin: 0 auto;
-        width: 296px;
+        max-width: 426px;
         margin-bottom: 11px;
+        -webkit-display: flex;
+        -moz-display: flex;
+        -ms-display: flex;
+        -o-display: flex;
+        display: flex;
+        -webkit-justify-content: center;
+        -moz-justify-content: center;
+        -ms-justify-content: center;
+        -o-justify-content: center;
+        justify-content: center;
+        -webkit-align-items: baseline;
+        -moz-align-items: baseline;
+        -ms-align-items: baseline;
+        -o-align-items: baseline;
+        align-items: baseline;
       }
 
       a:hover {
