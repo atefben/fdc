@@ -264,6 +264,14 @@
 
   .content-result {
 
+    .block-poster-search {
+      max-width: 218px;
+    }
+
+    .block-poster-search.medias {
+      max-width: none;
+    }
+
     &.result-more {
 
       section {

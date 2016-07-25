@@ -10619,6 +10619,12 @@ header #searchContainer {
           transform: scale(1);
   /* mise à l'échelle 1:1 */
 }
+.block-search .content-result .block-poster-search {
+  max-width: 218px;
+}
+.block-search .content-result .block-poster-search.medias {
+  max-width: none;
+}
 .block-search .content-result.result-more section {
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
