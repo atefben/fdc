@@ -650,4 +650,19 @@ $(document).ready(function () {
       }
     });
   }
+
+
+  if($('#gridFilmSelection').length > 0) {
+    window.addEventListener("orientationchange", updateOrientation);
+  }
+
+  function updateOrientation() {
+    $grid = $('#gridFilmSelection').imagesLoaded(function() {
+      $grid.isotope({
+        layoutMode: 'packery',
+        itemSelector: '.item'
+      });
+    });
+  }
+
 });
