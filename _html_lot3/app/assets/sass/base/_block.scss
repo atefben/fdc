@@ -1062,6 +1062,8 @@
   .download {
     .item {
       min-width: 160px;
+      overflow: visible;
+      max-height: none;
     }
   }
 
@@ -1138,7 +1140,7 @@
   }
 
   .btn-center {
-    width: 168px;
+    width: 173px;
     margin: 0 auto;
   }
 
@@ -1185,6 +1187,11 @@
     max-height : 56px;
     overflow: hidden;
     transition: .5s;
+
+  }
+
+  .mt {
+    margin-top: 40px !important;
   }
 
   .active {
@@ -1302,7 +1309,7 @@
     }
 
     &.three-column {
-      width: 623px;
+      width: auto;
     }
 
     &.no-flex {
