@@ -3288,6 +3288,9 @@ sub {
 .dark .title-15 {
   color: #fff;
 }
+.brigth .title-15 {
+  color: #0C0C0C;
+}
 
 .title-16 {
   color: #0c0c0c;
