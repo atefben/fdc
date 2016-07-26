@@ -85,26 +85,6 @@ class TelevisionController extends Controller
                     );
                 }
             }
-
-            $otherChannels = $this
-                ->getDoctrineManager()
-                ->getRepository('BaseCoreBundle:WebTv')
-                ->getLiveWebTvs($locale, $festival->getId(), $in)
-            ;
-
-            foreach ($otherChannels as $otherChannel) {
-                $channelVideos = $this
-                    ->getDoctrineManager()
-                    ->getRepository('BaseCoreBundle:MediaVideo')
-                    ->getAvailableMediaVideosByWebTv($festival, $locale, $otherChannel->getId())
-                ;
-                if ($channelVideos) {
-                    $sliderOtherChannels[] = array(
-                        'channel'       => $otherChannel,
-                        'channelVideos' => $channelVideos,
-                    );
-                }
-            }
         }
 
         $trailers = array();
@@ -156,7 +136,6 @@ class TelevisionController extends Controller
         return array(
             'page'                 => $page,
             'sliderChosenChannels' => $sliderChosenChannels,
-            'sliderOtherChannels'  => $sliderOtherChannels,
             'trailers'             => $trailers,
             'videoUrl'             => $videoUrl,
             'lastVideos'           => $lastVideos,

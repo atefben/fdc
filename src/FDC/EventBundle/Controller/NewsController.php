@@ -173,7 +173,6 @@ class NewsController extends Controller
             }
         }
 
-
         $homeArticlesTop = array();
         $homeArticlesBottom = array();
         //split articles in two array
