@@ -49,6 +49,10 @@ class ArtistController extends Controller
         if ($artist === null) {
             throw $this->createNotFoundException();
         }
+
+        if ($artist->getDuplicate() === true && $artist->getOwner() !== null) {
+            return $this->redirectToRoute('fdc_event_artist_get', array('slug' => $artist->getOwner()->getSlug()));
+        }
         
         // find directors randomly, order them after by firstname
         // (cant use mysql, doesnt work)

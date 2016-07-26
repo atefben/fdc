@@ -345,19 +345,37 @@ class PersonManager extends CoreManager
             $resultObject->LinkedDeletedPersonnes->LinkedDeletedPersonneDto = $this->mixedToArray($resultObject->LinkedDeletedPersonnes->LinkedDeletedPersonneDto);
             foreach ($resultObject->LinkedDeletedPersonnes->LinkedDeletedPersonneDto as $obj) {
                 $person = $this->em->getRepository('BaseCoreBundle:FilmPerson')->findOneById($obj->PersonneId);
-                if ($person !== null && !$entity->getDuplicates()->contains($person)) {
-                    $person->setDuplicate(true);
+                if ($person !== null) {
+                    $person->setDuplicate(1);
+                    $person->setOwner($entity);
                     $collection->add($person);
-                    $entity->addDuplicate($person);
+
+                    foreach ($person->getFilms() as $film) {
+                        if (!$entity->getFilms()->contains($film)) {
+                            $entity->addFilm($film);
+                        }
+                    }
+
+                    foreach ($person->getJuries() as $jury) {
+                        if (!$entity->getJuries()->contains($jury)) {
+                            $entity->addJury($jury);
+                        }
+                    }
+
+                    if (!$entity->getDuplicates()->contains($person)) {
+                        $entity->addDuplicate($person);
+                    }
                 }
             }
 
-            // unset old duplicates
-            foreach ($duplicates as $duplicate) {
-                if (!$collection->contains($duplicate)) {
-                    $duplicate->setDuplicate(false);
-                    $entity->removeDuplicate($duplicate);
-                    dump($duplicate->getId());
+            // unset old duplicates when we have data
+            if ($duplicates->count() > 0) {
+                foreach ($duplicates as $duplicate) {
+                    if (!$collection->contains($duplicate)) {
+                        $duplicate->setDuplicate(false);
+                        $duplicate->setOwner(null);
+                        $entity->removeDuplicate($duplicate);
+                    }
                 }
             }
 

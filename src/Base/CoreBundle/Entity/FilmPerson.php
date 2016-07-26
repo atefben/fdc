@@ -409,6 +409,13 @@ class FilmPerson implements TranslateMainInterface
     private $duplicates;
 
     /**
+     * @ORM\OneToOne(targetEntity="FilmPerson")
+     *
+     * @Groups({"person_list", "person_show"})
+     */
+    private $owner;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -1072,5 +1079,28 @@ class FilmPerson implements TranslateMainInterface
     public function getDuplicate()
     {
         return $this->duplicate;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param \Base\CoreBundle\Entity\FilmPerson $owner
+     * @return FilmPerson
+     */
+    public function setOwner(\Base\CoreBundle\Entity\FilmPerson $owner = null)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return \Base\CoreBundle\Entity\FilmPerson 
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 }
