@@ -10244,6 +10244,12 @@ header #searchContainer {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   padding: 0px 7px;
 }
+@media screen and (max-width: 1000px) {
+  .navigation-sticky-02 li {
+    padding: 0px 5px;
+    font-size: .45rem;
+  }
+}
 .navigation-sticky-02 li.active a {
   color: #c8a461;
 }
