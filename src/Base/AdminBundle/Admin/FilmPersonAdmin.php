@@ -54,6 +54,7 @@ class FilmPersonAdmin extends SoifAdmin
             ->add('asianName')
             ->add('nationality')
             ->add('nationality2')
+            ->add('duplicate')
             ->add('createdAt')
             ->add('updatedAt')
             ->add('soifUpdatedAt')

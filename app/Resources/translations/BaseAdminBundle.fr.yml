@@ -230,6 +230,7 @@ entity:
     orange_studio: Orange Studio
 
 list:
+    label_duplicate: Doublon
     label_tags: Tags
     label_site: Site
     label_programmation_films: Film
