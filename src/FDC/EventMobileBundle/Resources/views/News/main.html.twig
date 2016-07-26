@@ -125,10 +125,14 @@
                                         {% endif %}
                                         <p>
                                             {% for country in associatedFilm.countries %}
-                                                {{ country.country|trans_fallback('name') }}
+                                                {{ country.country|trans_fallback('name') }}<br />
                                             {% endfor %}
                                             {% if associatedFilm.productionYear != 0 or associatedFilm.productionYear != null %}
-                                            - {{ associatedFilm.productionYear }}
+                                                {% if associatedFilm.countries|length > 1 %}
+                                                    <br />{{ associatedFilm.productionYear }}
+                                                {% else %}
+                                                    - {{ associatedFilm.productionYear }}
+                                                {% endif %}
                                             {% endif %}
                                         </p>
                                         <p>{{ associatedFilmDuration }}</p>
