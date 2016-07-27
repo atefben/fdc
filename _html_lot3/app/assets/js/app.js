@@ -27,7 +27,7 @@ $(document).ready(function() {
  owInitPopin('popin-timer-banner');
 
   //fix scale zoom tablette
-  if(window.matchMedia("(orientation: portrait)").matches || window.matchMedia("(min-width: 7px)").matches) {
+  if(window.matchMedia("(orientation: portrait)").matches || window.matchMedia("(max-width: 768px)").matches) {
     var w = $('body').width();
     console.log(w);
     var scale = w/1024;
