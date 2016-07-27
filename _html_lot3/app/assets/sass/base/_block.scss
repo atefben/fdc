@@ -88,6 +88,10 @@
   max-width: 100%;
   width: 977px;
 
+  @media screen and (max-width: 768px) {
+    margin-left: 28px;
+  }
+
   img {
     max-width: 100%;
     object-fit: cover;

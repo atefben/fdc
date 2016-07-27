@@ -27,12 +27,12 @@ $(document).ready(function() {
  owInitPopin('popin-timer-banner');
 
   //fix scale zoom tablette
-  if(window.matchMedia("(orientation: portrait)").matches || window.matchMedia("(max-width: 768px)").matches) {
+  if(window.matchMedia("(orientation: portrait)").matches || window.matchMedia("(max-width: 769px)").matches) {
     var w = $('body').width();
     console.log(w);
     var scale = w/1024;
     console.log(scale);
-    $('#main, header, footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .block-search, .read-more ').css('zoom',scale);
+    $('#main, footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more').css('zoom',scale);
   }
 
 
