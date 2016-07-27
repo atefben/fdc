@@ -3,14 +3,19 @@ var owInitPopin = function(id) {
 
   if(id == 'popin-landing-e') {
 
+    console.log('popin-1');
+
     var $popin = $('.popin-landing-e');
 
     var visiblePopin = function() {
       var dateFestival = $('.compteur').data("date");
-
+      console.log(dateFestival);
+      
       var dateToday = new Date();
       dateFestival = new Date(dateFestival);
 
+      console.log(dateFestival);
+      
       var timeLanding = (dateFestival - dateToday) / 1000; //en seconde
 
       var jours = Math.floor(timeLanding / (60 * 60 * 24));
@@ -18,9 +23,14 @@ var owInitPopin = function(id) {
       var minutes = Math.floor((timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
       var secondes = Math.floor(timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
 
+
       if(timeLanding < 0){
         //pas de compteur ?
+        console.log('popin-2');
+
       }else if(timeLanding > 0){
+        console.log('popin-3');
+
 
         var $day = $('.day').html(jours);
         var $hour = $('.hour').html(heures);
@@ -28,6 +38,8 @@ var owInitPopin = function(id) {
         var $secondes = $('.secondes').html(secondes);
 
       }else{
+        console.log('popin-4');
+
         //compteur terminé ! on ferme la popin
         $popin.addClass('animated fadeOut').removeClass('visible');
       }
@@ -65,8 +77,13 @@ var owInitPopin = function(id) {
     };
 
     var fClosePopin = function() {
+      console.log('popin-5');
+
 
       $('.popin-landing-e').on('click', function(){
+        console.log('popin-6');
+
+
         $popin.addClass('animated fadeOut');
         Cookies.set('popin-landing-e','1', { expires: 365 });
 
@@ -77,6 +94,8 @@ var owInitPopin = function(id) {
     // Verifier si les cookies existent
     if(typeof Cookies.get('popin-landing-e') === "undefined") {
       Cookies.set('popin-landing-e','0', { expires: 365 });
+      console.log('popin-7');
+
     }
 
     var closePopin = Cookies.get('popin-landing-e');
@@ -85,8 +104,10 @@ var owInitPopin = function(id) {
       $popin.addClass('animated fadeIn').addClass('visible');
       visiblePopin();
       fClosePopin();
+      console.log('popin-8');
 
     }else {
+      console.log('popin-9');
 
       Cookies.set('popin-landing-e','1', { expires: 365 });
     }
