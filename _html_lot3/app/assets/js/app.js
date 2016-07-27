@@ -29,10 +29,8 @@ $(document).ready(function() {
   //fix scale zoom tablette
   if(window.matchMedia("(orientation: portrait)").matches || window.matchMedia("(max-width: 769px)").matches) {
     var w = $('body').width();
-    console.log(w);
     var scale = w/1024;
-    console.log(scale);
-    $('footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more').css('zoom',scale);
+    $('footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more, .timelapse.block-drag').css('zoom',scale);
   }
 
 

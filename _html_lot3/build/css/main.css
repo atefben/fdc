@@ -3933,8 +3933,10 @@ a {
   left: 92px;
 }
 
+b
 html {
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -4327,6 +4329,7 @@ video {
   margin: 0 auto;
   max-width: 100%;
   width: 977px;
+  position: relative;
 }
 @media screen and (max-width: 768px) {
   .block-01 {
@@ -7253,6 +7256,9 @@ header {
   z-index: 10;
   top: 0;
 }
+header .block-01 img {
+  object-fit: initial;
+}
 header.press {
   overflow: initial;
 }
@@ -7812,6 +7818,9 @@ footer {
   padding: 40px 0 0 0;
   position: relative;
   z-index: 2;
+}
+footer .block-01 img {
+  object-fit: initial;
 }
 footer .subtitle {
   padding-right: 7px;
@@ -9189,6 +9198,8 @@ header #searchContainer {
 }
 .evenements .card .info strong {
   max-width: 74%;
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
+  font-weight: normal;
 }
 .card.double {
   height: 575px;
@@ -9196,14 +9207,15 @@ header #searchContainer {
   width: 68%;
 }
 .card.double strong {
-  font-size: 2.25rem;
+  font-size: 1.875rem;
   line-height: 1.3em;
   margin-top: 20px;
   max-width: 74%;
-  /*      .evenements & {
-          font-size: 2.25rem;
-          max-width: initial;
-        }*/
+}
+.evenements .card.double strong {
+  font-size: 2.25rem;
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
+  font-weight: normal;
 }
 .card.double .image {
   height: 362px;
@@ -9802,6 +9814,18 @@ header #searchContainer {
   position: absolute;
   bottom: 1px;
   z-index: 3;
+}
+@media screen and (max-width: 768px) {
+  .s-slider-retrospective .timelapse {
+    height: 20px;
+    width: 975px;
+    left: -10px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    position: absolute;
+    bottom: 1px;
+    z-index: 3;
+  }
 }
 .s-slider-retrospective .timelapse .avance {
   width: calc(100% - 94px);

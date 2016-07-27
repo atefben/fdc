@@ -264,6 +264,18 @@
     bottom: 1px;
     z-index: 3;
 
+    @media screen and (max-width: 768px) {
+      height: 20px;
+      width: 975px;
+      left: -10px;
+      margin-top: 0px;
+      margin-bottom: 30px;
+      position: absolute;
+      bottom: 1px;
+      z-index: 3;
+    }
+
+
     .avance{
       width: calc(100% - 94px);
       position: absolute;
