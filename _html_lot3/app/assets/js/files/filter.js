@@ -48,3 +48,14 @@ var owRemoveElementListe = function() {
     $(this).parent().remove();
   });
 }
+
+
+var owInitFilterSearch = function() {
+  var block = $('.block-searh-more');
+
+  $('.result-more').on('click', function(e){
+    e.preventDefault();
+
+    block.toggleClass('visible');
+  })
+}

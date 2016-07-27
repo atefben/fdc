@@ -144,6 +144,16 @@ var owRemoveElementListe = function() {
   });
 }
 
+
+var owInitFilterSearch = function() {
+  var block = $('.block-searh-more');
+
+  $('.result-more').on('click', function(e){
+    e.preventDefault();
+
+    block.toggleClass('visible');
+  })
+}
 var owFixMobile = function() {
 
   $('header .hasSubNav').on('click', function(){
@@ -1476,6 +1486,7 @@ if($('body').hasClass('mobile')){
     owInitSliderSelect('timelapse');
     owInitSliderSelect('tab-selection');
     owInitAccordion('more-search');
+    owInitFilterSearch();
   }
 
   if($('.filters').length) {

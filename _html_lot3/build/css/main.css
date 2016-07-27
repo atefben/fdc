@@ -10774,6 +10774,13 @@ header #searchContainer {
   margin: 0 auto;
   margin-top: 15px;
 }
+.block-search .block-searh-more {
+  display: none;
+  margin-bottom: 20px;
+}
+.block-search .block-searh-more.visible {
+  display: block;
+}
 
 .slider-selection {
   color: #fff;
