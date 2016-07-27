@@ -9195,21 +9195,24 @@ header #searchContainer {
 }
 .evenements .card .info strong {
   max-width: 74%;
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
+  font-weight: normal;
 }
 .card.double {
   height: 575px;
-  pheaderadding-left: 0;
+  padding-left: 0;
   width: 68%;
 }
 .card.double strong {
-  font-size: 2.25rem;
+  font-size: 1.875rem;
   line-height: 1.3em;
   margin-top: 20px;
   max-width: 74%;
-  /*      .evenements & {
-          font-size: 2.25rem;
-          max-width: initial;
-        }*/
+}
+.evenements .card.double strong {
+  font-size: 2.25rem;
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
+  font-weight: normal;
 }
 .card.double .image {
   height: 362px;

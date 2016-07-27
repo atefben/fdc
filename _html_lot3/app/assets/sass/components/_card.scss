@@ -89,25 +89,28 @@
 
       .evenements & {
         max-width: 74%;
+        font-family: $CamphorThin;
+        font-weight: normal;
       }
     }
   }
 
   &.double {
     height: 575px;
-    pheaderadding-left: 0;
+    padding-left: 0;
     width: 68%;
 
     strong {
-      font-size: 2.25rem;
+      font-size: 1.875rem;
       line-height: 1.3em;
       margin-top: 20px;
       max-width: 74%;
 
-/*      .evenements & {
+      .evenements & {
         font-size: 2.25rem;
-        max-width: initial;
-      }*/
+        font-family: $CamphorThin;
+        font-weight: normal;
+      }
     }
 
     .image {
