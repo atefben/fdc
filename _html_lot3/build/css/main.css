@@ -7253,6 +7253,9 @@ header {
   z-index: 10;
   top: 0;
 }
+header .block-01 img {
+  object-fit: initial;
+}
 header.press {
   overflow: initial;
 }
@@ -7812,6 +7815,9 @@ footer {
   padding: 40px 0 0 0;
   position: relative;
   z-index: 2;
+}
+footer .block-01 img {
+  object-fit: initial;
 }
 footer .subtitle {
   padding-right: 7px;
@@ -9192,7 +9198,7 @@ header #searchContainer {
 }
 .card.double {
   height: 575px;
-  padding-left: 0;
+  pheaderadding-left: 0;
   width: 68%;
 }
 .card.double strong {
