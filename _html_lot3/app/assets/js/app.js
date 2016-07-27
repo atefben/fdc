@@ -32,7 +32,7 @@ $(document).ready(function() {
     console.log(w);
     var scale = w/1024;
     console.log(scale);
-    $('#main, footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more').css('zoom',scale);
+    $('footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more').css('zoom',scale);
   }
 
 

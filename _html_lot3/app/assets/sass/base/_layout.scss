@@ -376,9 +376,10 @@ video{
 // 3. Responsive 768
 // =========================
 
+
 @include breakpoint(768px) {
-#main, header, footer, #breadcrumb, .navigation-sticky-02 { //attention modifier JS si ajout de class ici !
-    width: 100%;
+  header, footer, #breadcrumb, .navigation-sticky-02 { //attention modifier JS si ajout de class ici !
+    width: 1024px;
     zoom: 0.75;
   }
 }

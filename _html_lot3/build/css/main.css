@@ -4271,8 +4271,8 @@ video {
 }
 
 @media screen and (max-width: 768px) {
-  #main, header, footer, #breadcrumb, .navigation-sticky-02 {
-    width: 100%;
+  header, footer, #breadcrumb, .navigation-sticky-02 {
+    width: 1024px;
     zoom: 0.75;
   }
 }

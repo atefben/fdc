@@ -20,6 +20,17 @@ var owInitFilter = function(){
     setTimeout(function() {
       $('#filters span').addClass('show');
     }, 400);
+
+    $('#filters span').on('click', function() {
+      var id = $('#filters').data('id'),
+          f  = $(this).data('filter');
+
+      $('#' + id + ' .select span').removeClass('active');
+      $('#' + id + ' .select span[data-filter="'+f+'"]').addClass('active');
+
+      owInitGrid('filter');
+    });
+
   });
 
   // close filters
@@ -30,8 +41,11 @@ var owInitFilter = function(){
     }, 700);
   });
 
+
   // filter data on page
-  $('body').on('click', '#filters span', function() {
+/*  $('body').on('click', '#filters span', function() {
+
+
     var id = $('#filters').data('id'),
         f  = $(this).data('filter');
 
@@ -39,7 +53,7 @@ var owInitFilter = function(){
     $('#' + id + ' .select span[data-filter="'+f+'"]').addClass('active');
 
     owInitGrid('filter');
-  });
+  });*/
 };
 
 
