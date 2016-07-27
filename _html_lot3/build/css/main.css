@@ -3933,6 +3933,7 @@ a {
   left: 92px;
 }
 
+b
 html {
   font-size: 16px;
   overflow-x: hidden;
@@ -4328,6 +4329,7 @@ video {
   margin: 0 auto;
   max-width: 100%;
   width: 977px;
+  position: relative;
 }
 @media screen and (max-width: 768px) {
   .block-01 {
@@ -9812,6 +9814,18 @@ header #searchContainer {
   position: absolute;
   bottom: 1px;
   z-index: 3;
+}
+@media screen and (max-width: 768px) {
+  .s-slider-retrospective .timelapse {
+    height: 20px;
+    width: 975px;
+    left: -10px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    position: absolute;
+    bottom: 1px;
+    z-index: 3;
+  }
 }
 .s-slider-retrospective .timelapse .avance {
   width: calc(100% - 94px);
