@@ -75,13 +75,12 @@
     text-transform: uppercase;
     font-family: $CamphorHeavy;
     padding: 0px 7px;
-    /*
 
-    @media screen and (max-width: 1000px) {
-      padding: 0px 5px;
-      font-size: .45rem;
+
+    @include breakpoint(768px) {
+      font-size: .55rem;
     }
-    */
+
 
      &.active {
        a {
