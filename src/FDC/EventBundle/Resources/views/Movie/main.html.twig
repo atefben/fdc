@@ -39,7 +39,7 @@
                     {% if movie.getMedias()|length > 0 %}
                         <li><a href="#photos" class="link">{{ 'movie.middlenav.photos'|trans }}</a></li>
                     {% endif %}
-                    {% if movie.associatedNews|length > 0 %}
+                    {% if articles|length > 0 %}
                         <li><a href="#news" class="link">{{ 'movie.middlenav.actualites'|trans }}</a></li>
                     {% endif %}
                     {% if movie.getPublishedAssociatedMediaVideos(app.request.get('_locale'))|length > 0 %}
