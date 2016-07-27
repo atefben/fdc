@@ -9130,19 +9130,38 @@ header #searchContainer {
   width: 32%;
   padding-top: 24px;
 }
+.evenements .card {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  min-height: 305px;
+}
+.evenements .card {
+  height: auto !important;
+}
+.evenements .card .image .image-wrapper img {
+  min-height: unset !important;
+}
+.evenements .card .info {
+  height: auto !important;
+}
 .card.w2.double {
   height: 613px;
   padding-left: 21px;
+}
+.evenements .card.w2.double {
+  padding-left: 0px;
+  min-height: 610px;
 }
 .card.w2.double .image {
   height: 363px;
 }
 .evenements .card.w2.double .image {
-  width: 95.3%;
+  width: 89.9%;
   height: auto;
   display: block;
   margin: 0 auto;
-  margin-bottom: 35px;
+  margin-bottom: 15px;
 }
 .evenements .card.w2.double .image img {
   position: relative;
@@ -9168,20 +9187,23 @@ header #searchContainer {
 .card .info strong {
   max-width: 92%;
 }
+.evenements .card .info strong {
+  max-width: 74%;
+}
 .card.double {
   height: 575px;
   padding-left: 0;
   width: 68%;
 }
 .card.double strong {
-  font-size: 1.875rem;
+  font-size: 2.25rem;
   line-height: 1.3em;
   margin-top: 20px;
   max-width: 74%;
-}
-.evenements .card.double strong {
-  font-size: 2.25rem;
-  max-width: initial;
+  /*      .evenements & {
+          font-size: 2.25rem;
+          max-width: initial;
+        }*/
 }
 .card.double .image {
   height: 362px;
@@ -9219,8 +9241,11 @@ header #searchContainer {
   transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   object-fit: cover;
 }
+.evenements .card .image .image-wrapper img {
+  min-height: initial !important;
+}
 .evenements .card .image {
-  width: 89%;
+  width: 79.1%;
   height: auto;
   display: block;
   margin: 0 auto;
