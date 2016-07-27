@@ -24,7 +24,17 @@ $(document).ready(function() {
  //gestion des cookie a faire ici
 
  owInitPopin('popin-landing-e');
-    owInitPopin('popin-timer-banner');
+ owInitPopin('popin-timer-banner');
+
+  //fix scale zoom tablette
+  if(window.matchMedia("(orientation: portrait)").matches || window.matchMedia("(max-width: 769px)").matches) {
+    var w = $('body').width();
+    console.log(w);
+    var scale = w/1024;
+    console.log(scale);
+    $('#main, footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more').css('zoom',scale);
+  }
+
 
 
  if('ontouchstart' in window) {

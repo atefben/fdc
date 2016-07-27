@@ -3288,6 +3288,9 @@ sub {
 .dark .title-15 {
   color: #fff;
 }
+.brigth .title-15 {
+  color: #0C0C0C;
+}
 
 .title-16 {
   color: #0c0c0c;
@@ -4268,7 +4271,7 @@ video {
 }
 
 @media screen and (max-width: 768px) {
-  #main, header, footer {
+  #main, header, footer, #breadcrumb, .navigation-sticky-02 {
     width: 1024px;
     zoom: 0.75;
   }
@@ -4324,6 +4327,11 @@ video {
   margin: 0 auto;
   max-width: 100%;
   width: 977px;
+}
+@media screen and (max-width: 768px) {
+  .block-01 {
+    margin-left: 28px;
+  }
 }
 .block-01 img {
   max-width: 100%;
@@ -8837,12 +8845,23 @@ header #searchContainer {
   border-bottom: 1px solid #eaeaea;
   position: relative;
 }
+@media screen and (max-width: 768px) {
+  .filters-02 {
+    width: 100%;
+    max-width: 134vw;
+  }
+}
 .filters-02.sticky {
   position: fixed;
   top: 91px;
   background-color: #fff;
   width: 100vw;
   z-index: 4;
+}
+@media screen and (max-width: 768px) {
+  .filters-02.sticky {
+    width: 100%;
+  }
 }
 .filters-02 ul {
   padding: 30px 0;
@@ -10240,6 +10259,13 @@ header #searchContainer {
   text-transform: uppercase;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   padding: 0px 7px;
+    /*
+
+    @media screen and (max-width: 1000px) {
+      padding: 0px 5px;
+      font-size: .45rem;
+    }
+    */
 }
 .navigation-sticky-02 li.active a {
   color: #c8a461;
