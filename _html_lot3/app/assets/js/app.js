@@ -160,6 +160,7 @@ if($('body').hasClass('mobile')){
     owInitSliderSelect('timelapse');
     owInitSliderSelect('tab-selection');
     owInitAccordion('more-search');
+    owInitFilterSearch();
   }
 
   if($('.filters').length) {
