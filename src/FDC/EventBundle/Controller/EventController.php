@@ -39,7 +39,41 @@ class EventController extends Controller
             }
         }
 
+        $events =
+            $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:Event')
+                ->getEvents($festival, $locale)
+        ;
+
+
+
+        $prev = null;
+        $next = null;
+        $countEvents = count($events);
+        foreach ($events as $key => $tmp) {
+            if ($tmp->getId() == $event->getId()) {
+                if ($key == 0) {
+                    $prev = $events[$countEvents - 1];
+                    $next = $events[1];
+                } elseif ($key == $countEvents - 1) {
+                    $prev = $events[$countEvents - 2];
+                    $next = $events[0];
+                } else {
+                    if (isset($events[$key - 1])) {
+                        $prev = $events[$key - 1];
+                    }
+                    if (isset($events[$key + 1])) {
+                        $next = $events[$key + 1];
+                    }
+                }
+                break;
+            }
+        }
+
         return array(
+            'prev' => $prev,
+            'next' => $next,
             'event'   => $event,
             'programmations'   => $programmations,
             'localeSlugs' => $event->getLocaleSlugs(),
