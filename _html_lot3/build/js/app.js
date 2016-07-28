@@ -1007,9 +1007,9 @@ var initRs = function () {
 
             $('.overlay-popin').addClass('visible-popin');
 
-            $('.overlay-popin').on('click', function(e){
+            $('.overlay-popin').on('click', function (e) {
 
-                if(!$(e.target).hasClass('popin')){
+                if (!$(e.target).hasClass('popin')) {
                     $(this).removeClass('visible-popin');
                 }
             });
@@ -1021,38 +1021,38 @@ var initRs = function () {
         var link = link || document.location.href;
         var cls = cls || '.link.self';
 
-        if ($('.share').length || $('.square').length) {
-            new Clipboard(cls);
 
-            $(cls).attr('data-clipboard-text', link);
+        new Clipboard(cls);
 
-            $(cls).on('click touchstart', function (e) {
-                var that = $(this);
-                e.preventDefault();
+        $(cls).attr('data-clipboard-text', link);
 
-                if (!$('#share-box').length) {
+        $(cls).on('click touchstart', function (e) {
+            var that = $(this);
+            e.preventDefault();
 
-                    $('.texts-clipboard').append('<div id="share-box"><div class="bubble"><a href="#">' + GLOBALS.texts.popin.copy + '</a></div></div>');
+            if (!$('#share-box').length) {
 
-                    $('#share-box').animate({'opacity': '1'}, 400, function () {
-                        $('#share-box').addClass('show');
-                        setTimeout(function () {
-                            $('#share-box .bubble').html('<a href="#">' + that.attr('data-clipboard-text') + '</a>');
-                        }, 1000);
-                    });
-                } else if ($('#share-box').hasClass('show')) {
+                $('.texts-clipboard').append('<div id="share-box"><div class="bubble"><a href="#">' + GLOBALS.texts.popin.copy + '</a></div></div>');
+
+                $('#share-box').animate({'opacity': '1'}, 400, function () {
+                    $('#share-box').addClass('show');
+                    setTimeout(function () {
+                        $('#share-box .bubble').html('<a href="#">' + that.attr('data-clipboard-text') + '</a>');
+                    }, 1000);
+                });
+            } else if ($('#share-box').hasClass('show')) {
+                $('#share-box').removeClass('show');
+                $('#share-box').remove();
+            }
+
+            setTimeout(function () {
+                $('#share-box').animate({'opacity': 0}, 200, function () {
                     $('#share-box').removeClass('show');
                     $('#share-box').remove();
-                }
+                });
+            }, 3000);
+        });
 
-                setTimeout(function () {
-                    $('#share-box').animate({'opacity': 0}, 200, function () {
-                        $('#share-box').removeClass('show');
-                        $('#share-box').remove();
-                    });
-                }, 3000);
-            });
-        }
     }
 
     linkPopinInit();

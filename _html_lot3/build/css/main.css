@@ -3933,7 +3933,6 @@ a {
   left: 92px;
 }
 
-b
 html {
   font-size: 16px;
   overflow-x: hidden;
@@ -4257,6 +4256,10 @@ video {
   margin-top: 0px !important;
 }
 
+.relative {
+  position: relative;
+}
+
 .overlay {
   width: 100vw;
   height: 100vh;
@@ -4294,6 +4297,9 @@ video {
 #share-box a {
   color: #666666;
   font-size: 0.75rem;
+}
+.home #share-box {
+  top: 84px;
 }
 .black #share-box {
   top: 187px;

@@ -4,8 +4,6 @@
 // 2. Style
 // 3. Responsive 768
 // =========================
-b
-
 
 // 1. Global
 // =========================
@@ -358,6 +356,10 @@ video{
   margin-top: 0px !important;
 }
 
+.relative {
+  position: relative;
+}
+
 .overlay {
   width: 100vw;
   height: 100vh;
@@ -379,6 +381,7 @@ video{
 .share{
   position: relative;
 }
+
 #share-box{
   position: absolute;
   top: 188px;
@@ -397,6 +400,10 @@ video{
   a{
     color:#666666;
     font-size: 0.75rem;
+  }
+
+  .home & {
+    top: 84px;
   }
 
   .black & {
