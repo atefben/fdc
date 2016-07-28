@@ -58,6 +58,10 @@ if($('body').hasClass('mobile')){
   owFixMobile();
 }
 
+  if($('.block-social-network ').length > 0){
+    initRs();
+  }
+
  // owInitSearch();
 
   if($('.home').length) {
