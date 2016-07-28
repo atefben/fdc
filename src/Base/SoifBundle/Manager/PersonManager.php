@@ -211,7 +211,7 @@ class PersonManager extends CoreManager
         $entity = ($this->findOneById(array('id' => $resultObject->{$this->entityIdKey}))) ?: new FilmPerson();
         
         // set soif last update time
-    /*    $this->setSoifUpdatedAt($result, $entity);
+        $this->setSoifUpdatedAt($result, $entity);
         
         // set entity properties
         $this->setEntityProperties($resultObject, $entity);
@@ -336,7 +336,7 @@ class PersonManager extends CoreManager
 
             // remove old relations
             $this->removeOldRelations($entity->getFilms(), $collection, $entity, 'removeFilm');
-        }*/
+        }
 
         // duplicates
         if (property_exists($resultObject, 'LinkedDeletedPersonnes') && property_exists($resultObject->LinkedDeletedPersonnes, 'LinkedDeletedPersonneDto')) {
