@@ -3288,6 +3288,9 @@ sub {
 .dark .title-15 {
   color: #fff;
 }
+.brigth .title-15 {
+  color: #0C0C0C;
+}
 
 .title-16 {
   color: #0c0c0c;
@@ -3930,8 +3933,10 @@ a {
   left: 92px;
 }
 
+b
 html {
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -4268,7 +4273,7 @@ video {
 }
 
 @media screen and (max-width: 768px) {
-  #main, header, footer {
+  header, footer, #breadcrumb, .navigation-sticky-02 {
     width: 1024px;
     zoom: 0.75;
   }
@@ -4324,6 +4329,12 @@ video {
   margin: 0 auto;
   max-width: 100%;
   width: 977px;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  .block-01 {
+    margin-left: 28px;
+  }
 }
 .block-01 img {
   max-width: 100%;
@@ -7245,6 +7256,9 @@ header {
   z-index: 10;
   top: 0;
 }
+header .block-01 img {
+  object-fit: initial;
+}
 header.press {
   overflow: initial;
 }
@@ -7804,6 +7818,9 @@ footer {
   padding: 40px 0 0 0;
   position: relative;
   z-index: 2;
+}
+footer .block-01 img {
+  object-fit: initial;
 }
 footer .subtitle {
   padding-right: 7px;
@@ -8837,12 +8854,23 @@ header #searchContainer {
   border-bottom: 1px solid #eaeaea;
   position: relative;
 }
+@media screen and (max-width: 768px) {
+  .filters-02 {
+    width: 100%;
+    max-width: 134vw;
+  }
+}
 .filters-02.sticky {
   position: fixed;
   top: 91px;
   background-color: #fff;
   width: 100vw;
   z-index: 4;
+}
+@media screen and (max-width: 768px) {
+  .filters-02.sticky {
+    width: 100%;
+  }
 }
 .filters-02 ul {
   padding: 30px 0;
@@ -9111,19 +9139,38 @@ header #searchContainer {
   width: 32%;
   padding-top: 24px;
 }
+.evenements .card {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  min-height: 305px;
+}
+.evenements .card {
+  height: auto !important;
+}
+.evenements .card .image .image-wrapper img {
+  min-height: unset !important;
+}
+.evenements .card .info {
+  height: auto !important;
+}
 .card.w2.double {
   height: 613px;
   padding-left: 21px;
+}
+.evenements .card.w2.double {
+  padding-left: 0px;
+  min-height: 610px;
 }
 .card.w2.double .image {
   height: 363px;
 }
 .evenements .card.w2.double .image {
-  width: 95.3%;
+  width: 89.9%;
   height: auto;
   display: block;
   margin: 0 auto;
-  margin-bottom: 35px;
+  margin-bottom: 15px;
 }
 .evenements .card.w2.double .image img {
   position: relative;
@@ -9149,6 +9196,11 @@ header #searchContainer {
 .card .info strong {
   max-width: 92%;
 }
+.evenements .card .info strong {
+  max-width: 74%;
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+}
 .card.double {
   height: 575px;
   padding-left: 0;
@@ -9162,7 +9214,8 @@ header #searchContainer {
 }
 .evenements .card.double strong {
   font-size: 2.25rem;
-  max-width: initial;
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
+  font-weight: normal;
 }
 .card.double .image {
   height: 362px;
@@ -9200,8 +9253,11 @@ header #searchContainer {
   transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   object-fit: cover;
 }
+.evenements .card .image .image-wrapper img {
+  min-height: initial !important;
+}
 .evenements .card .image {
-  width: 89%;
+  width: 79.1%;
   height: auto;
   display: block;
   margin: 0 auto;
@@ -9759,6 +9815,18 @@ header #searchContainer {
   bottom: 1px;
   z-index: 3;
 }
+@media screen and (max-width: 768px) {
+  .s-slider-retrospective .timelapse {
+    height: 20px;
+    width: 975px;
+    left: -10px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    position: absolute;
+    bottom: 1px;
+    z-index: 3;
+  }
+}
 .s-slider-retrospective .timelapse .avance {
   width: calc(100% - 94px);
   position: absolute;
@@ -10240,6 +10308,11 @@ header #searchContainer {
   text-transform: uppercase;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   padding: 0px 7px;
+}
+@media screen and (max-width: 768px) {
+  .navigation-sticky-02 li {
+    font-size: .55rem;
+  }
 }
 .navigation-sticky-02 li.active a {
   color: #c8a461;
@@ -10749,6 +10822,13 @@ header #searchContainer {
   display: block;
   margin: 0 auto;
   margin-top: 15px;
+}
+.block-search .block-searh-more {
+  display: none;
+  margin-bottom: 20px;
+}
+.block-search .block-searh-more.visible {
+  display: block;
 }
 
 .slider-selection {

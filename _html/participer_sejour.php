@@ -61,13 +61,13 @@
             <h4 class="descrip-participate">Gardez le Cap ! Téléchargez ici les cartes et les plans pour vous repérer à Cannes et dans le périmètre du Festival.</h4>
             <div class="contain-map">
               <strong class="name">Le festival de cannes</strong>
-              <a href="#" target="_blanck"><img src="img/participate/map.png" alt="" class="map"></a>
+              <a href="#" target="_blank"><img src="img/participate/map.png" alt="" class="map"></a>
               <a href="" class="btn telecharger"><i class="icon icon_telecharger"></i>Télécharger</a>
               <div class="link"><i class="icon icon_a-votre-service"></i><a href="#">Se repérer sur Google Maps</a></div>
             </div>
             <div class="contain-map">
               <strong class="name">La zone festival</strong>
-              <a href="#" target="_blanck"><img src="img/participate/map2.png" alt="" class="map"></a>
+              <a href="#" target="_blank"><img src="img/participate/map2.png" alt="" class="map"></a>
               <a href="" class="btn telecharger"><i class="icon icon_telecharger"></i>Télécharger</a>
               <div class="link"><i class="icon icon_a-votre-service"></i><a href="#">Se repérer sur Google Maps</a></div>
             </div>

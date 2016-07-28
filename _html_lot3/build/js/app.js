@@ -115,6 +115,17 @@ var owInitFilter = function(){
     setTimeout(function() {
       $('#filters span').addClass('show');
     }, 400);
+
+    $('#filters span').on('click', function() {
+      var id = $('#filters').data('id'),
+          f  = $(this).data('filter');
+
+      $('#' + id + ' .select span').removeClass('active');
+      $('#' + id + ' .select span[data-filter="'+f+'"]').addClass('active');
+
+      owInitGrid('filter');
+    });
+
   });
 
   // close filters
@@ -125,8 +136,11 @@ var owInitFilter = function(){
     }, 700);
   });
 
+
   // filter data on page
-  $('body').on('click', '#filters span', function() {
+/*  $('body').on('click', '#filters span', function() {
+
+
     var id = $('#filters').data('id'),
         f  = $(this).data('filter');
 
@@ -134,7 +148,7 @@ var owInitFilter = function(){
     $('#' + id + ' .select span[data-filter="'+f+'"]').addClass('active');
 
     owInitGrid('filter');
-  });
+  });*/
 };
 
 
@@ -144,6 +158,16 @@ var owRemoveElementListe = function() {
   });
 }
 
+
+var owInitFilterSearch = function() {
+  var block = $('.block-searh-more');
+
+  $('.result-more').on('click', function(e){
+    e.preventDefault();
+
+    block.toggleClass('visible');
+  })
+}
 var owFixMobile = function() {
 
   $('header .hasSubNav').on('click', function(){
@@ -441,14 +465,19 @@ var owInitPopin = function(id) {
 
   if(id == 'popin-landing-e') {
 
+    console.log('popin-1');
+
     var $popin = $('.popin-landing-e');
 
     var visiblePopin = function() {
       var dateFestival = $('.compteur').data("date");
-
+      console.log(dateFestival);
+      
       var dateToday = new Date();
       dateFestival = new Date(dateFestival);
 
+      console.log(dateFestival);
+      
       var timeLanding = (dateFestival - dateToday) / 1000; //en seconde
 
       var jours = Math.floor(timeLanding / (60 * 60 * 24));
@@ -456,9 +485,14 @@ var owInitPopin = function(id) {
       var minutes = Math.floor((timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
       var secondes = Math.floor(timeLanding - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
 
+
       if(timeLanding < 0){
         //pas de compteur ?
+        console.log('popin-2');
+
       }else if(timeLanding > 0){
+        console.log('popin-3');
+
 
         var $day = $('.day').html(jours);
         var $hour = $('.hour').html(heures);
@@ -466,6 +500,8 @@ var owInitPopin = function(id) {
         var $secondes = $('.secondes').html(secondes);
 
       }else{
+        console.log('popin-4');
+
         //compteur terminé ! on ferme la popin
         $popin.addClass('animated fadeOut').removeClass('visible');
       }
@@ -503,8 +539,13 @@ var owInitPopin = function(id) {
     };
 
     var fClosePopin = function() {
+      console.log('popin-5');
+
 
       $('.popin-landing-e').on('click', function(){
+        console.log('popin-6');
+
+
         $popin.addClass('animated fadeOut');
         Cookies.set('popin-landing-e','1', { expires: 365 });
 
@@ -515,6 +556,8 @@ var owInitPopin = function(id) {
     // Verifier si les cookies existent
     if(typeof Cookies.get('popin-landing-e') === "undefined") {
       Cookies.set('popin-landing-e','0', { expires: 365 });
+      console.log('popin-7');
+
     }
 
     var closePopin = Cookies.get('popin-landing-e');
@@ -523,8 +566,10 @@ var owInitPopin = function(id) {
       $popin.addClass('animated fadeIn').addClass('visible');
       visiblePopin();
       fClosePopin();
+      console.log('popin-8');
 
     }else {
+      console.log('popin-9');
 
       Cookies.set('popin-landing-e','1', { expires: 365 });
     }
@@ -1340,7 +1385,15 @@ $(document).ready(function() {
  //gestion des cookie a faire ici
 
  owInitPopin('popin-landing-e');
-    owInitPopin('popin-timer-banner');
+ owInitPopin('popin-timer-banner');
+
+  //fix scale zoom tablette
+  if(window.matchMedia("(orientation: portrait)").matches || window.matchMedia("(max-width: 769px)").matches) {
+    var w = $('body').width();
+    var scale = w/1024;
+    $('footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more, .timelapse.block-drag').css('zoom',scale);
+  }
+
 
 
  if('ontouchstart' in window) {
@@ -1466,6 +1519,7 @@ if($('body').hasClass('mobile')){
     owInitSliderSelect('timelapse');
     owInitSliderSelect('tab-selection');
     owInitAccordion('more-search');
+    owInitFilterSearch();
   }
 
   if($('.filters').length) {

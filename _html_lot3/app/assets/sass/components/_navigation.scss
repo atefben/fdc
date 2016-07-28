@@ -76,6 +76,12 @@
     font-family: $CamphorHeavy;
     padding: 0px 7px;
 
+
+    @include breakpoint(768px) {
+      font-size: .55rem;
+    }
+
+
      &.active {
        a {
          color:$gold;

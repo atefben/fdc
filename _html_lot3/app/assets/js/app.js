@@ -24,7 +24,15 @@ $(document).ready(function() {
  //gestion des cookie a faire ici
 
  owInitPopin('popin-landing-e');
-    owInitPopin('popin-timer-banner');
+ owInitPopin('popin-timer-banner');
+
+  //fix scale zoom tablette
+  if(window.matchMedia("(orientation: portrait)").matches || window.matchMedia("(max-width: 769px)").matches) {
+    var w = $('body').width();
+    var scale = w/1024;
+    $('footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more, .timelapse.block-drag').css('zoom',scale);
+  }
+
 
 
  if('ontouchstart' in window) {
@@ -150,6 +158,7 @@ if($('body').hasClass('mobile')){
     owInitSliderSelect('timelapse');
     owInitSliderSelect('tab-selection');
     owInitAccordion('more-search');
+    owInitFilterSearch();
   }
 
   if($('.filters').length) {

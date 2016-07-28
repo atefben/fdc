@@ -20,7 +20,7 @@ $(document).ready(function() {
 
     if($('#email').val() == '') {
       empty = true;
-      input.addClass("error").val("GLOBALS.texts.newsletter.errorsMailEmpty");
+      input.addClass("error").val(GLOBALS.texts.newsletter.errorsMailEmpty);
     } else {
 
       var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -46,7 +46,6 @@ $(document).ready(function() {
         url      : GLOBALS.urls.newsletterUrl,
         data     : $('form#newsletter').serialize(),
         success: function(data) {
-          console.log(data);
           if (data.success == false) {
             input.addClass("error");
             input.val(data.object);

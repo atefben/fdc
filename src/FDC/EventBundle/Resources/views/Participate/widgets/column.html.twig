@@ -15,7 +15,7 @@
             {% set sizeClass = 'landscape' %}
             {% set format = '543x326' %}
         {% endif %}
-        <img src="{% path image, format %}" alt="{{ widget.image|trans_fallback('alt') }}" class="map" />
+        <a href="#" target="_blank"><img src="{% path image, format %}" alt="{{ widget.image|trans_fallback('alt') }}" class="map" /></a>
     {% endif %}
 
     {% set pdfFile = widget.pdf|trans_fallback('file') %}

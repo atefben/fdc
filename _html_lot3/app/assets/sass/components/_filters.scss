@@ -185,12 +185,21 @@
   border-bottom: 1px solid #eaeaea;
   position: relative;
 
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    max-width: 134vw;
+  }
+
   &.sticky {
     position: fixed;
     top: 91px;
     background-color: #fff;
     width: 100vw;
     z-index: 4;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
   }
 
   ul{
