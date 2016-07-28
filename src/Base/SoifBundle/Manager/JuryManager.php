@@ -201,6 +201,18 @@ class JuryManager extends CoreManager
         
         // save entities
         $this->em->flush();
+        try {
+            $this->em->flush();
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+            // reset entity manager
+            if (!$this->em->isOpen()) {
+                $this->em = $this->entityManager->create(
+                    $this->em->getConnection(),
+                    $this->em->getConfiguration()
+                );
+            }
+        }
         
         // end timer
         $this->end(__METHOD__);
