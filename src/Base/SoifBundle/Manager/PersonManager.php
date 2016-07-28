@@ -350,15 +350,20 @@ class PersonManager extends CoreManager
                     $person->setOwner($entity);
                     $collection->add($person);
 
-                    foreach ($person->getFilms() as $film) {
-                        if (!$entity->getFilms()->contains($film)) {
-                            $entity->addFilm($film);
+                    /* link owner to the duplicate person films */
+                    foreach ($person->getFilms() as $filmFilmPersonDuplicate) {
+                        $filmDuplicate = $filmFilmPersonDuplicate->getFilm();
+                        $found = false;
+                        foreach ($entity->getFilms() as $filmFilmPersonOwner) {
+                            $filmOwner = $filmFilmPersonOwner->getFilm();
+                            if ($filmDuplicate->getId() == $filmOwner->getId()) {
+                                $found = true;
+                                break;
+                            }
                         }
-                    }
 
-                    foreach ($person->getJuries() as $jury) {
-                        if (!$entity->getJuries()->contains($jury)) {
-                            $entity->addJury($jury);
+                        if ($found == false) {
+                            $entity->addFilm($filmFilmPersonDuplicate);
                         }
                     }
 

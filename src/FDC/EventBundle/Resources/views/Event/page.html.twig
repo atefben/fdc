@@ -5,6 +5,8 @@
     <div id="main" class="single-article single-evenement loading">
         <div class="content-article">
             <div class="container small-container">
+                <a href="{{ path('fdc_event_event_get', {'slug':  prev|trans_fallback('slug') }) }}" class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
+                <a href="{{ path('fdc_event_event_get', {'slug':  next|trans_fallback('slug') }) }}" class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
                 <div class="info">
                     <span class="category">{{ event.theme|trans_fallback('name') }}</span>
                 </div>
