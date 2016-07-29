@@ -11340,3 +11340,73 @@ header #searchContainer {
   left: 14px;
   top: 6px;
 }
+
+@media screen and (min-width: 1920px) {
+  .app {
+    background-position: 424px 113px !important;
+  }
+}
+@media screen and (min-width: 1700px) and (max-width: 1919px) {
+  .app {
+    background-position: 356px 113px !important;
+  }
+}
+@media screen and (min-width: 1401px) and (max-width: 1699px) {
+  .app {
+    background-position: 213px 113px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1400) {
+  .app {
+    background-position: 85px 113px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .app {
+    background-position: -132px 113px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .app {
+    background-position: -132px 113px !important;
+  }
+}
+.app {
+  height: 533px;
+  background-color: #000 !important;
+  background-image: url(../media/images/app.png);
+  background-repeat: no-repeat;
+  background-position: 133px 113px;
+  transition: .5s;
+}
+.app .contain-app {
+  height: 533px;
+  float: right;
+  width: 65%;
+}
+.app .contain-app h1 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.875rem;
+  padding-top: 145px;
+  text-align: center;
+  letter-spacing: 5px;
+}
+.app .contain-app h2 {
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-size: 1.125rem;
+  color: #fff;
+  padding-top: 25px;
+  text-align: center;
+  font-style: italic;
+}
+.app .contain-app .logo-app {
+  text-align: center;
+  padding-top: 30px;
+}
+.app .contain-app .logo-app a {
+  margin-right: 30px;
+}
+.app .contain-app .logo-app img {
+  cursor: pointer;
+}
