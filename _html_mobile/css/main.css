@@ -81,6 +81,10 @@ p,h1,h2,h3,h4,blockquote, pre, a,ul, li{
     background: #141414;
 }
 
+.hidden-element {
+    display: none;
+}
+
 /* owl carrousel custom */
 
 .owl-carousel {

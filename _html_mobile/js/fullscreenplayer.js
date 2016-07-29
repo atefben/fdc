@@ -10,7 +10,7 @@ $(document).ready(function() {
     if($("#player1").length !== 0) {
       var playerInstance = jwplayer("player1");
       playerInstance.setup({
-        file         : $(this).data('video'),
+        file         : $(this).data('file'),
         image        : $(this).data('poster'),
         width        : "100%",
         aspectratio  : "16:9",
@@ -30,9 +30,9 @@ $(document).ready(function() {
   $('#list-audios .item').on("click",function(e) {
     e.preventDefault();
     $('.fullscreenplayer .category').html($(this).find('.category').html());
-    $('.fullscreenplayer .title-audio').html($(this).data('title'));
-    $('.fullscreenplayer .date').html($(this).data('date'));
-    $('.fullscreenplayer .hour').html($(this).data('hour'));
+    $('.fullscreenplayer .title-audio').html($(this).find('.infos p').html());
+    $('.fullscreenplayer .date').html($(e.target).find('.date').text());
+    $('.fullscreenplayer .hour').html($(e.target).find('.hour').text());
     $('.fullscreenplayer .img').attr('style',$(this).find('.img').attr('style'));
 
     if($('wave').length == 0) {

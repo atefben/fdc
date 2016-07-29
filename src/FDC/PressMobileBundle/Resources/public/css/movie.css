@@ -81,6 +81,10 @@ p,h1,h2,h3,h4,blockquote, pre, a,ul, li{
     background: #141414;
 }
 
+.hidden-element {
+    display: none;
+}
+
 /* owl carrousel custom */
 
 .owl-carousel {
@@ -4005,7 +4009,7 @@ font-weight: bolder;
   width: 100%;
   margin-left: 0;
 }
-#menu .active-page .section-title h3,#menu .active-page .section-title h3 i,#menu .third-nav .active-page a, #menu .footer-menu .active-page a{
+#menu .active-page .section-title h3,#menu .active-page .section-title h3 i,#menu .third-nav .active-page a, #menu .footer-menu .active-page a, #menu .section-contain li.active-page a{
   color: #c8a461;
 }
 #menu .language ul{
