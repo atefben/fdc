@@ -30,7 +30,7 @@ $(document).ready(function() {
   if(window.matchMedia("(orientation: portrait)").matches || window.matchMedia("(max-width: 769px)").matches) {
     var w = $('body').width();
     var scale = w/1024;
-    $('footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more, .timelapse.block-drag, .block-02, .block-scale').css('zoom',scale);
+    $('footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more, .timelapse.block-drag, .block-02, ._h _l  block-scale').css('zoom',scale);
   }
 
 
@@ -46,6 +46,11 @@ $(document).ready(function() {
  }else {
    $('body').addClass('not-mobile');
  }
+
+  if ($('#breadcrumb').length > 0) {
+    owInitFooterScroll();
+    owInitValidateNewsletter();
+  }
 
 
  //fix link header
