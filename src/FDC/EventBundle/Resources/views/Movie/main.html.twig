@@ -42,7 +42,7 @@
                     {% if articles|length > 0 %}
                         <li><a href="#news" class="link">{{ 'movie.middlenav.actualites'|trans }}</a></li>
                     {% endif %}
-                    {% if movie.getPublishedAssociatedMediaVideos(app.request.get('_locale'))|length > 0 %}
+                    {% if movie.associatedMediaAudios(app.request.get('_locale'))|length > 0 %}
                         <li><a href="#audios" class="link">{{ 'movie.middlenav.audios'|trans }}</a></li>
                     {% endif %}
                     <li><a href="#press" class="link">{{ 'movie.middlenav.infospresse'|trans }}</a></li>
