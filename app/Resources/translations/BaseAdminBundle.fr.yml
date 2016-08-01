@@ -534,6 +534,7 @@ dashboard:
         confidentialite: Politique de confidentialité
 
 form:
+    label_hide_common_content: Ne pas afficher cette strate
     label_pdf: Pdf
     media_pdf:
         helper_file: Format attendu : .pdf

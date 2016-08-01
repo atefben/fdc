@@ -23,7 +23,9 @@
         <div id="accreditation">
         <div class="wrapper">
             <div class="container-small">
-                {{ accredit|trans_fallback('commonContent')|raw }}
+                {% if accredit.hideCommonContent == false %}
+                    {{ accredit|trans_fallback('commonContent')|raw }}
+                {% endif %}
             </div>
         </div>
         {% if accredit.procedure|length > 0 %}
