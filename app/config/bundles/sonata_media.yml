@@ -79,6 +79,7 @@ sonata_media:
                 search: { width: 170 , height: 231 , quality: 100, constraint: false }
                 156x206: { width: 156 , height: 206 , quality: 100, constraint: false }
                 135x145: { width: 135 , height: 145 , quality: 100, constraint: false }
+                square:  { width: 146, height: 146, quality: 100, constraint: false }
                 # film images mobile
                 1460x903: { width: 1460, height: 903, quality: 100, constraint: false }
                 320x220: { width: 320, height: 220, quality: 100, constraint: false }
@@ -113,6 +114,7 @@ sonata_media:
                   searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
                   search: { width: 170 , height: 231 , quality: 100, constraint: false }
                   156x206: { width: 156 , height: 206 , quality: 100, constraint: false }
+                  square:  { width: 146, height: 146, quality: 100, constraint: false }
                   #film cover mobile
                   1600x903: { width: 1600, height: 903, quality: 100, constraint: false }
                   # film images mobile
@@ -127,7 +129,7 @@ sonata_media:
                 #programmation cropped picture
                 45x60:   { width: 45 , height: 60 , quality: 100, constraint: false }
                 tiny:    { width: 146 , quality: 100 }
-                square:  { width: 146, height: 146, quality: 100 }
+                square:  { width: 146, height: 146, quality: 100, constraint: false }
                 small:   { width: 187, height: 255, quality: 100 }
                 135x185:    { width: 135 , height: 185 , quality: 100 }
                 300x400: { width: 300, height: 400, quality: 100 }
