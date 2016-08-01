@@ -32,6 +32,11 @@ class FDCPageParticipateSectionWidgetTypefour extends FDCPageParticipateSectionW
     private $imageBig;
 
     /**
+     * @ORM\ManyToOne(targetEntity="MediaPdf")
+     */
+    private $pdf;
+
+    /**
      * ArrayCollection
      */
     protected $translations;
@@ -89,5 +94,28 @@ class FDCPageParticipateSectionWidgetTypefour extends FDCPageParticipateSectionW
     public function getImageBig()
     {
         return $this->imageBig;
+    }
+
+    /**
+     * Set pdf
+     *
+     * @param \Base\CoreBundle\Entity\MediaPdf $pdf
+     * @return FDCPageParticipateSectionWidgetTypefour
+     */
+    public function setPdf(\Base\CoreBundle\Entity\MediaPdf $pdf = null)
+    {
+        $this->pdf = $pdf;
+
+        return $this;
+    }
+
+    /**
+     * Get pdf
+     *
+     * @return \Base\CoreBundle\Entity\MediaPdf
+     */
+    public function getPdf()
+    {
+        return $this->pdf;
     }
 }

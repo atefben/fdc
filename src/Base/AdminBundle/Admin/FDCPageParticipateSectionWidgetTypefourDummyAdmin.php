@@ -24,6 +24,7 @@ class FDCPageParticipateSectionWidgetTypefourDummyAdmin extends Admin
     {
         $formMapper
             ->add('image', 'sonata_type_model_list')
+            ->add('pdf', 'sonata_type_model_list')
         ;
     }
 }
