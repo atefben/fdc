@@ -93,6 +93,34 @@ var owInitAjax = function() {
   });
 }
 
+
+var owInitReadMore = function() {
+  var number = 0;
+  
+  $('.read-more.ajax-request').on('click', function(e){
+    e.preventDefault();
+
+    var url = $(this).attr('href');
+
+      if(number%2 == 0){
+        $.get( url, function( data ) {
+          data = $(data);
+           $('.add-ajax-request').append(data);
+        });
+      }else{
+        url = $(this).data('reverse');
+
+        $.get( url, function( data ) {
+          data = $(data);
+          $('.add-ajax-request').append(data);
+        });
+      }
+
+      number++;
+
+
+  });
+}
 // Filters
 // =========================
 
@@ -1742,8 +1770,9 @@ if($('body').hasClass('mobile')){
     owInitSlider('home');
     owInitSlider('slider-01');
     owInitSlider('slider-02');
-      var slider = $('.block-diaporama .slider-01');
-      owinitSlideShow(slider);
+    owInitReadMore();
+    var slider = $('.block-diaporama .slider-01');
+    owinitSlideShow(slider);
   }
 
   if($('.retrospective.poster').length) {

@@ -73,8 +73,9 @@ if($('body').hasClass('mobile')){
     owInitSlider('home');
     owInitSlider('slider-01');
     owInitSlider('slider-02');
-      var slider = $('.block-diaporama .slider-01');
-      owinitSlideShow(slider);
+    owInitReadMore();
+    var slider = $('.block-diaporama .slider-01');
+    owinitSlideShow(slider);
   }
 
   if($('.retrospective.poster').length) {
