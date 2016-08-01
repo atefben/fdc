@@ -109,11 +109,12 @@
     </div>
     <span class="anim"></span>
 </div>
+    {{ dump('POKEMON') }}
 {{ render(controller('FDCEventBundle:Global:shareEmail',
-    {'section': 'Section',
-        'detail' : 'Detail',
-        'title'  : 'Title',
-        'description': 'Description'
+    {'section': movie.selectionSection|trans_fallback('name')|trans,
+        'detail' : directorsName,
+        'title'  : mainTitle,
+        'description': movie|trans_fallback('synopsis')|truncate(150)
     }))
 }}
 {{ render(controller('FDCEventBundle:Global:shareEmailMedia',
