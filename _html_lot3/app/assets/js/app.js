@@ -191,6 +191,7 @@ if($('body').hasClass('mobile')){
   if($('.filters-02').length) {
     owInitNavSticky(3);
     owRemoveElementListe();
+    addNextFilters();
   }
 
 });

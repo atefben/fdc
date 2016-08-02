@@ -63,6 +63,26 @@ var owRemoveElementListe = function() {
   });
 }
 
+var addNextFilters = function() {
+  $('.filters-02 li.more').on('click', function(e){
+    e.preventDefault();
+
+    $(this).remove();
+    
+    var url = $(this).attr("data-url");
+
+    $.get( url, function(data) {
+      $('.c-filters').append(data);
+
+      $('.filters-02 li.more').off('click');
+      $('.filters-02 li .icon-close').off('click');
+
+      owRemoveElementListe();
+      addNextFilters();
+    });
+  });
+}
+
 
 var owInitFilterSearch = function() {
   var block = $('.block-searh-more');
