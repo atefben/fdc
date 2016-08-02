@@ -322,7 +322,7 @@ class NewsController extends Controller
         $dateTime = new DateTime();
         // LIST SETTINGS
         $offset = 0;
-        $limit = 16;
+        $limit = 15;
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
         if ($settings === null || $settings->getFestival() === null) {
