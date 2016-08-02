@@ -12009,6 +12009,7 @@ article .read-later.rAlign span:after {
   border: 0;
   float: left;
   position: relative;
+  cursor: pointer;
   width: calc(100%/4);
 }
 .grid .item img {
