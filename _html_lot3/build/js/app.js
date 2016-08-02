@@ -183,6 +183,12 @@ var owInitFilter = function(){
 var owRemoveElementListe = function() {
   $('.filters-02 li .icon-close').on('click', function(){
     $(this).parent().remove();
+
+
+    if(!$('.new-filter ul li').length) {
+      $('.new-filter').parent().remove();
+    }
+
   });
 }
 
