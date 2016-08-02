@@ -12010,11 +12010,13 @@ article .read-later.rAlign span:after {
   float: left;
   position: relative;
   width: calc(100%/4);
+  cursor: pointer;
 }
 .grid .item img {
   display: block;
   width: 100%;
   height: auto;
+  cursor: pointer;
 }
 .grid .item .info {
   color: #9c9c9b;
