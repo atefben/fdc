@@ -68,7 +68,7 @@ var addNextFilters = function() {
     e.preventDefault();
 
     $(this).remove();
-    
+
     var url = $(this).attr("data-url");
 
     $.get( url, function(data) {
@@ -79,6 +79,7 @@ var addNextFilters = function() {
 
       owRemoveElementListe();
       addNextFilters();
+      owInitNavSticky(3);
     });
   });
 }

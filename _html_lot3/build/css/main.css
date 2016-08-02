@@ -8961,6 +8961,7 @@ header #searchContainer {
 @media screen and (max-width: 768px) {
   .filters-02.sticky {
     width: 100%;
+    top: 69px;
   }
 }
 .filters-02 ul {
