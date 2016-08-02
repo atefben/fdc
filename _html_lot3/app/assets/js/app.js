@@ -67,6 +67,19 @@ if($('body').hasClass('mobile')){
     initRs();
   }
 
+  if($('.block-diaporama').length > 0) {
+
+    var hash = window.location.hash;
+    hash = hash.substring(1,hash.length);
+
+    verif = hash.slice(0,3);
+
+    if(hash.length > 0 && verif == "pid") {
+      var slider = $('.block-diaporama .slider-01');
+      owinitSlideShow(slider, hash);
+    }
+  }
+
  // owInitSearch();
 
   if($('.home').length) {

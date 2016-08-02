@@ -50,7 +50,7 @@ var owInitSlider = function(sliderName) {
       items               : 1,
       autoWidth           : true,
       smartSpeed          : 700,
-      center              : true,
+      center              : true
     });
 
     // Custom Navigation Events

@@ -406,7 +406,17 @@ video{
     top: 84px;
   }
 
-  .black & {
+  .c-fullscreen-slider & {
+    top: -46px !important;
+    z-index: 3;
+    width: 245px !important;;
+    min-height: 100px !important;;
+    line-height: 30px !important;;
+    overflow: hidden;
+    border: 0px;
+  }
+
+  .black &, .c-fullscreen-slider &{
     top: 187px;
     z-index: 3;
     width: 295px;

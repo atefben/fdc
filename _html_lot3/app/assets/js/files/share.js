@@ -20,21 +20,19 @@ window.twttr = (function (d, s, id) {
 
 var initRs = function () {
 
-    $('.block-social-network .twitter').on('click', function () {
+    $('.block-social-network .twitter, .rs-slideshow .twitter').on('click', function () {
         window.open(this.href, '', 'width=600,height=400');
         return false;
     });
 
 
     //POPIN facebook SHARE
-    $('.block-social-network .facebook').on('click', function () {
+    $('.block-social-network .facebook, .rs-slideshow .facebook').on('click', function () {
         window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');
         return false;
     });
 
     function initPopinMail(cls) {
-
-        console.log(cls);
         // check that fields are not empty
         $(cls + ' input[type="text"]', cls + ' textarea').on('input', function () {
             var input = $(this);
