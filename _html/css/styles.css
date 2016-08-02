@@ -12009,14 +12009,13 @@ article .read-later.rAlign span:after {
   border: 0;
   float: left;
   position: relative;
-  width: calc(100%/4);
   cursor: pointer;
+  width: calc(100%/4);
 }
 .grid .item img {
   display: block;
   width: 100%;
   height: auto;
-  cursor: pointer;
 }
 .grid .item .info {
   color: #9c9c9b;
