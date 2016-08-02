@@ -9748,6 +9748,15 @@ header #searchContainer {
   background-size: cover;
   display: none;
 }
+@media only screen and (max-width: 1024px) {
+  .slider-home .container-images .item {
+    background-position: inherit;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: initial;
+    display: none;
+  }
+}
 .slider-home .container-images .item.active {
   display: block;
 }
@@ -9763,6 +9772,11 @@ header #searchContainer {
   right: 0;
   top: auto;
   bottom: 19%;
+}
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+  .slider-home .texts {
+    bottom: 8%;
+  }
 }
 .slider-home .texts strong {
   display: block;
