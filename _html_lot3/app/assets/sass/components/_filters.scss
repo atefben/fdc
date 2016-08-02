@@ -185,6 +185,10 @@
   border-bottom: 1px solid #eaeaea;
   position: relative;
 
+  .container {
+    min-height: 77px;
+  }
+
   @media screen and (max-width: 768px) {
     width: 100%;
     max-width: 134vw;

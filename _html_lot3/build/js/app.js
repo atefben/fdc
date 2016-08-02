@@ -1978,13 +1978,20 @@ $(document).ready(function() {
  owInitPopin('popin-timer-banner');
 
   //fix scale zoom tablette
-  if(window.matchMedia("(orientation: portrait)").matches || window.matchMedia("(max-width: 769px)").matches) {
-    var w = $('body').width();
-    var scale = w/1024;
-    $('footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more, .timelapse.block-drag, .block-02, .block-scale, .slider-home').css('zoom',scale);
+
+  var scale = function() {
+    if(window.matchMedia("(orientation: portrait)").matches || window.matchMedia("(max-width: 769px)").matches) {
+      var w = $('body').width();
+      var scale = w/1024;
+      $('footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more, .timelapse.block-drag, .block-02, .block-scale, .slider-home').css('zoom',scale);
+    }else{
+      $('footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more, .timelapse.block-drag, .block-02, .block-scale, .slider-home').css('zoom',0);
+    }
   }
 
+  scale();
 
+  window.addEventListener('orientationchange', scale);
 
  if('ontouchstart' in window) {
    if (navigator.userAgent.indexOf("iPad") > -1 ||

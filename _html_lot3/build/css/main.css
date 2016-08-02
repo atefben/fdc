@@ -8945,6 +8945,9 @@ header #searchContainer {
   border-bottom: 1px solid #eaeaea;
   position: relative;
 }
+.filters-02 .container {
+  min-height: 77px;
+}
 @media screen and (max-width: 768px) {
   .filters-02 {
     width: 100%;
