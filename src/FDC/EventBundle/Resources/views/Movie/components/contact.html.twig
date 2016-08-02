@@ -39,7 +39,7 @@
                                 <a href="{{ (('http' in movie.facebook or 'https' in movie.facebook ) ? '' : 'http://') ~ movie.facebook }}" target="_blank">{{ 'movie.presse.liens.facebook'|trans }}</a>
                             {% endif %}
                             {% if movie.twitter %}
-                                <a href="{{ (('http' in movie.twitter or 'https' in movie.twitter ) ? '' : 'http://') ~  movie.twitter }}" target="_blank">{{ 'movie.presse.liens.twitter'|trans }}</a>
+                                <a href="{{ (('http' in movie.twitter or 'https' in movie.twitter ) ? '' : 'https://twitter.com/') ~  movie.twitter }}" target="_blank">{{ 'movie.presse.liens.twitter'|trans }}</a>
                             {% endif %}
                         </div>
                     {% endif %}
