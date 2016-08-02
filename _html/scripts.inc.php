@@ -106,6 +106,7 @@ var GLOBALS = {
 <script src="js/components/pikaday.js"></script>
 <script src="js/components/jquery.timepicker.min.js"></script>
 <script src="js/components/jquery-ui.min.js"></script>
+<script src="js/components/jquery.lazyload.min.js"></script>
 <script src="js/bower_components/jqueryui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 <!-- endbuild -->
 
