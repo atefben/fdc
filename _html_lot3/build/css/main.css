@@ -3575,6 +3575,7 @@ blockquote, .quote {
 }
 .ie .contain-title .title-02 {
   margin-top: 60px;
+  width: 100%;
 }
 .contain-title .title-02 strong {
   color: #c8a461;
