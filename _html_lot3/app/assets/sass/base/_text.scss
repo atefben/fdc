@@ -510,6 +510,10 @@ blockquote, .quote {
     text-align: center;
     line-height: 36px;
 
+    .ie & {
+      margin-top: 60px;
+    }
+
     strong {
       color:$gold;
     }

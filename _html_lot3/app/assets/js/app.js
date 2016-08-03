@@ -18,7 +18,16 @@
 
 $(document).ready(function() {
 
- initHeaderSticky();
+  if (/MSIE 10/i.test(navigator.userAgent)) {
+    $('body').addClass('ie');
+    console.log('ici');
+  }
+
+  if (/MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent)) {
+    $('body').addClass('ie');
+  }
+
+  initHeaderSticky();
  // owInitLinkChangeEffect(); add ??
 
  //gestion des cookie a faire ici

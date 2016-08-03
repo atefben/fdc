@@ -25,7 +25,9 @@ module.exports = {
     'bower_components/ev-emitter/ev-emitter.js',
     'bower_components/imagesloaded/imagesloaded.js',
     'bower_components/js-cookie/src/js.cookie.js',
-    'bower_components/nouislider/distribute/nouislider.js', 'bower_components/chocolat/dist/js/jquery.chocolat.js',
+    'bower_components/nouislider/distribute/nouislider.js',
+      'bower_components/chocolat/dist/js/jquery.chocolat.js',
+      'bower_components/polyfill/dist/polyfill.js',
     appSrc + 'assets/js/vendors/*.js'],
     destSrc : appDest + '/js/app.js',
     dest: appDest + '/js/'

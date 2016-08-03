@@ -643,6 +643,10 @@
     background-color: #141414;
     transition: .5s;
 
+    .ie & {
+      width: 100%;
+    }
+
     &:hover {
       background-color:rgba(0, 0, 0, .7);
 
@@ -657,12 +661,22 @@
     width: 708px;
     display:flex;
     margin: 0 auto;
+
+    .ie & {
+      width: 72%;
+    }
+
   }
 
   .wrapper-item-big {
     width: 989px;
     display:flex;
     margin: 0 auto;
+
+    .ie & {
+      width: 72%;
+    }
+
 
     .description {
       width: auto;
@@ -677,7 +691,12 @@
 
   .poster {
     display:inline-block;
-    width: 100%
+    width: 100%;
+
+    .ie & {
+      width: auto;
+    }
+
   }
 
   .infos {
@@ -687,6 +706,11 @@
     justify-content: center;
     margin-left: 80px;
     width: 100%;
+
+    .ie & {
+      width: 30%;
+    }
+
   }
 
   .big-date {
@@ -706,6 +730,11 @@
     text-align: center;
     width: 355px;
     margin-bottom: 40px;
+
+    .ie & {
+      width: 100%;
+    }
+
   }
 
   .name-f {
