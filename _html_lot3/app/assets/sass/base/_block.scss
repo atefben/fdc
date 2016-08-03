@@ -772,6 +772,10 @@
     font-family: $CamphorBold;
     line-height: 24px;
     text-align: center;
+
+    .ie & {
+      width:100%;
+    }
   }
 
   .date {
@@ -1010,6 +1014,10 @@
     flex-direction: column;
     justify-content: initial;
     text-align: center;
+
+    .ie & {
+      padding-top: 0px !important;
+    }
   }
 
   .bright & {

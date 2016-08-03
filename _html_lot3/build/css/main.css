@@ -3565,6 +3565,12 @@ blockquote, .quote {
   text-transform: uppercase;
   letter-spacing: .5rem;
 }
+.ie .contain-title .title-01 {
+  margin-top: 60px;
+}
+.ie .contain-title .title-01.two {
+  margin-top: 29px;
+}
 .contain-title .title-02 {
   font-size: 1.125rem;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -3597,6 +3603,9 @@ blockquote, .quote {
   width: 958px;
   margin: 0 auto;
   text-align: center;
+}
+.ie .contain-title .title-04 {
+  margin-top: 30px;
 }
 
 figcaption, .caption {
@@ -5041,6 +5050,9 @@ video {
   line-height: 24px;
   text-align: center;
 }
+.ie .block-movie-preview .name-award {
+  width: 100%;
+}
 .block-movie-preview .date {
   display: block;
   font-weight: 100;
@@ -5232,6 +5244,9 @@ video {
       -ms-flex-pack: initial;
           justify-content: initial;
   text-align: center;
+}
+.ie .block-poster .contain-txts {
+  padding-top: 0px !important;
 }
 .bright .block-poster {
   background-color: #fff;

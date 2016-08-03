@@ -499,6 +499,14 @@ blockquote, .quote {
     font-family: $CamphorRegular;
     text-transform: uppercase;
     letter-spacing: .5rem;
+
+    .ie & {
+      margin-top: 60px;
+    }
+
+    .ie &.two {
+      margin-top: 29px;
+    }
   }
 
   .title-02 {
@@ -539,6 +547,11 @@ blockquote, .quote {
     width: 958px;
     margin: 0 auto;
     text-align: center;
+
+    .ie & {
+      margin-top: 30px;
+    }
+
   }
 }
 
