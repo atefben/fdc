@@ -7398,7 +7398,6 @@ header #sticky-user {
   font-size: 0.750rem;
   opacity: 0;
   position: absolute;
-  pointer-events: none;
   bottom: 18px;
   right: 0;
   -webkit-transform: translate3d(0, 5px, 0);
@@ -7427,7 +7426,6 @@ header.sticky #sticky-user {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   float: right;
-  pointer-events: initial;
   margin-top: 18px;
   transition-delay: 0.5s;
 }
