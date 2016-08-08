@@ -382,6 +382,13 @@
         height: 10px;
         left: 0px;
         top: -5px;
+
+        @media only screen  and (max-width : 768px) {
+          width: 19px;
+          height: 19px;
+          left: 0px;
+          top: -10px;
+        }
       }
     }
 

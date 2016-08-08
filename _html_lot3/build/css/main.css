@@ -10050,6 +10050,14 @@ header #searchContainer {
   left: 0px;
   top: -5px;
 }
+@media only screen and (max-width: 768px) {
+  .s-slider-retrospective .timelapse .noUi-horizontal .noUi-handle.noUi-handle-lower {
+    width: 19px;
+    height: 19px;
+    left: 0px;
+    top: -10px;
+  }
+}
 .s-slider-retrospective .timelapse .noUi-handle:before, .s-slider-retrospective .timelapse .noUi-handle:after {
   content: "";
   display: none;
