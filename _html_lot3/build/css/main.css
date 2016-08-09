@@ -11338,7 +11338,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
     height: 80px;
   }
   div.chocolat-wrapper .chocolat-bottom .chocolat-description, .c-fullscreen-slider .chocolat-bottom .chocolat-description {
-    padding-top: 15px;
+    padding-top: 23px;
     padding-left: 115px;
   }
   div.chocolat-wrapper .chocolat-bottom .chocolat-pagination, .c-fullscreen-slider .chocolat-bottom .chocolat-pagination {
@@ -11376,6 +11376,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   overflow: hidden;
   width: 100%;
   height: calc(977px / 1.58);
+}
+.video-container.video-playlist {
+  height: 382px;
 }
 .video-container .hide-info {
   display: none;

@@ -1188,7 +1188,8 @@ var owInitSlider = function(sliderName) {
 
   /* SLIDER 02
   ----------------------------------------------------------------------------- */
-  if(sliderName == 'slider-02') {
+  if(sliderName == 'slider-02' && !$('.s-video-playlist').length) {
+
     var slide01 = $('.slider-02').owlCarousel({
       navigation          : false,
       items               : 1,
@@ -1205,6 +1206,7 @@ var owInitSlider = function(sliderName) {
       $('.slider-02 .center').removeClass('center');
       $(this).addClass('center');
       slide01.trigger('to.owl.carousel', number);
+
     });
   }
 
@@ -2218,21 +2220,23 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
         fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent($playlist[index].name));
         $topBar.find('.buttons .facebook').attr('href', fbHref);
+        
         // CUSTOM LINK TWITTER
         var twHref   = twitterLink;
         twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent($playlist[index].name+" "+shareUrl));
         $topBar.find('.buttons .twitter').attr('href', twHref);
+        
         // CUSTOM LINK COPY
         $topBar.find('.buttons .link').attr('href', shareUrl);
         $topBar.find('.buttons .link').attr('data-clipboard-text', shareUrl);
 
-        updatePopinMedia({
-            'type'     : "video",
-            'category' : $playlist[index].category,
-            'date'     : $playlist[index].date,
-            'title'    : $playlist[index].name,
-            'url'      : shareUrl
-        });
+//         updatePopinMedia({
+//             'type'     : "video",
+//             'category' : $playlist[index].category,
+//             'date'     : $playlist[index].date,
+//             'title'    : $playlist[index].name,
+//             'url'      : shareUrl
+//         });
 
         if (sc) {
             $(sc).find('.buttons .facebook').attr('data-href', fbHref);
@@ -2244,22 +2248,37 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     }
 
     function initChannel() {
-        sliderChannelsVideo = $container.find(".slider-channels-video").owlCarousel({
-            nav: false,
-            dots: false,
-            smartSpeed: 500,
-            center: true,
-            loop: false,
-            margin: 81,
-            autoWidth: true,
+
+        var sliderChannelsVideo = $('.slider-02').owlCarousel({
+            navigation          : false,
+            items               : 1,
+            autoWidth           : true,
+            smartSpeed          : 700,
+            center              : true,
+            margin              : 27.5
         });
 
-        sliderChannelsVideo.owlCarousel();
-        sliderChannelsVideo.on('click', '.owl-item', function() {
+        // Custom Navigation Events
+        $(document).on('click', '.slider-02 .owl-item', function(){
             var index = $(this).index();
+            $('.slider-02 .center').removeClass('center');
+            $(this).addClass('center');
+            sliderChannelsVideo.trigger('to.owl.carousel', index);
+            changeVideo(index,playerInstance,$(this));
+        });
+
+        sliderChannelsVideo.on('translated.owl.carousel', function () {
+            index = $('.slider-02 .center').index();
+            changeVideo(index,playerInstance,$('.slider-02 .center'));
+        })
+
+        var changeVideo = function (index, playerInstance, exThis) {
+
+            sliderChannelsVideo.trigger('to.owl.carousel', index);
+
             playerInstance.playlistItem(index);
 
-            var infos = $.parseJSON($(this).find('.channel.video').data('json'));
+            var infos = $.parseJSON(exThis.find('.channel.video').data('json'));
             $topBar.find('.info .category').text(infos.category);
             $topBar.find('.info .date').text(infos.date);
             $topBar.find('.info .hour').text(infos.hour);
@@ -2269,87 +2288,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             $container.find('.jwplayer').removeClass('overlay-channels');
 
             sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
-            if($('#slider-trailer').length > 0) {
-                sliderTrailerVideo = $('#slider-trailer').owlCarousel();
-                sliderTrailerVideo.trigger('to.owl.carousel',[index,1000,true]);
-
-                if($('.infos-videos').length > 0) {
-                    $('.infos-videos strong').text(infos.category);
-                    $('.infos-videos .time').text(infos.date+" . "+infos.hour);
-                    $('.infos-videos p').text(infos.name);
-                }
-            }
-
-            if($('#slider-movie-videos').length > 0) {
-                sliderMovieVideo = $('#slider-movie-videos').owlCarousel();
-                sliderMovieVideo.trigger('to.owl.carousel',[index,1000,true]);
-            }
-
-            if($('.infos-videos .buttons').length > 0) {
-                updateShareLink(index, '.infos-videos');
-            } else if($('.informations-video .buttons').length > 0) {
-                updateShareLink(index, '.informations-video');
-            } else {
-                updateShareLink(index);
-            }
-
-            if($('#gridVideos')) {
-                var item = $('#gridVideos .item')[index];
-                var vid  = $(item).data('vid');
-                var newURL = window.location.href.split('#')[0] + '#vid=' + vid;
-                history.replaceState('', document.title, newURL);
-            }
-        });
-
-        if($('#slider-trailer').length > 0) {
-            $('body').on('click', '#slider-trailer .owl-item', function(e) {
-                var index = $(this).index();
-                playerInstance.playlistItem(index);
-
-                var infos = $.parseJSON($(sliderChannelsVideo.find('.channel.video')[index]).data('json'));
-                $topBar.find('.info .category').text(infos.category);
-                $topBar.find('.info .date').text(infos.date);
-                $topBar.find('.info .hour').text(infos.hour);
-                $topBar.find('.info p').text(infos.name);
-
-                if($('.infos-videos').length > 0) {
-                    $('.infos-videos strong').text(infos.category);
-                    $('.infos-videos .time').text(infos.date+" . "+infos.hour);
-                    $('.infos-videos p').text(infos.name);
-                }
-
-                if($('.infos-videos .buttons').length > 0) {
-                    updateShareLink(index, '.infos-videos');
-                } else if($('.informations-video .buttons').length > 0) {
-                    updateShareLink(index, '.informations-video');
-                } else {
-                    updateShareLink(index);
-                }
-
-                $container.find('.channels-video').removeClass('active');
-                $container.find('.jwplayer').removeClass('overlay-channels');
-
-                sliderChannelsVideo.trigger('to.owl.carousel',[index,1000,true]);
-            });
-        }
-
-        if($('#slider-movie-videos').length > 0) {
-            $('body').on('click', '#slider-movie-videos .owl-item', function(e) {
-                var index = $(this).index();
-                playerInstance.playlistItem(index);
-                updateShareLink(index);
-
-                var infos = $.parseJSON($(sliderChannelsVideo.find('.channel.video')[index]).data('json'));
-                $topBar.find('.info .category').text(infos.category);
-                $topBar.find('.info .date').text(infos.date);
-                $topBar.find('.info .hour').text(infos.hour);
-                $topBar.find('.info p').text(infos.name);
-                $container.find('.owl-stage .owl-item').removeClass('active');
-                $container.find('.channels-video').removeClass('active');
-                $(this).addClass('active');
-                $container.find('.jwplayer').removeClass('overlay-channels');
-                sliderChannelsVideo.trigger('to.owl.carousel',[index,1000,true]);
-            });
         }
     }
 
@@ -2553,6 +2491,10 @@ $(document).ready(function() {
 
     if($('.video-player').length > 0) {
         videoPlayer = playerInit('video-player', 'video-player', false, false);
+    }
+
+    if($('.video-playlist').length > 0) {
+        videoPlayer = playerInit('video-playlist', 'video-playlist', true, false);
     }
 });
 

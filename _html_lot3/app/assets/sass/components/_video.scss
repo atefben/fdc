@@ -4,6 +4,10 @@
   width:  100%;
   height: calc(977px / 1.58);
 
+  &.video-playlist {
+    height: 382px;
+  }
+
   .hide-info {
     display: none;
   }
