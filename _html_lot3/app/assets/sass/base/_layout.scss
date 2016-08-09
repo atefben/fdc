@@ -406,6 +406,12 @@ video{
     top: 84px;
   }
 
+  .top-bar &{
+    right: 0px;
+    left: inherit;
+    top: 87px !important;
+  }
+
   .c-fullscreen-slider & {
     top: -46px !important;
     z-index: 3;
@@ -416,7 +422,7 @@ video{
     border: 0px;
   }
 
-  .black &, .c-fullscreen-slider &{
+  .black &, .c-fullscreen-slider &, .top-bar &{
     top: 187px;
     z-index: 3;
     width: 295px;

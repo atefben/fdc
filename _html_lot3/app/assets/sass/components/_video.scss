@@ -4,6 +4,10 @@
   width:  100%;
   height: calc(977px / 1.58);
 
+  .hide-info {
+    display: none;
+  }
+
   button {
     background: none;
     border: 0;
@@ -293,7 +297,7 @@
   .control-bar {
     position: absolute;
     z-index: 10;
-    bottom: 0;
+    bottom: 0px;
     height: 18%;
     width: 100%;
     opacity: 1;
@@ -413,7 +417,7 @@
         height:14px;
         width: 10px;
         left: 40px;
-        bottom: 40px;
+        bottom: 38px;
         margin: auto;
         color: #fff;
 
@@ -470,8 +474,8 @@
 
     &.state-init {
       .top-bar {
-        opacity: 0;
-        @include transform(translateY(-100%));
+        opacity: 1;
+        @include transform(translateY(0));
       }
     }
 
@@ -497,8 +501,8 @@
 
     &.state-init {
       .top-bar {
-        opacity: 0;
-        @include transform(translateY(-100%));
+        opacity: 1;
+        @include transform(translateY(0));
       }
     }
 
@@ -524,8 +528,8 @@
 
     &.state-init {
       .top-bar {
-        opacity: 0;
-        @include transform(translateY(-100%));
+        opacity: 1;
+        @include transform(translateY(0));
       }
     }
 
@@ -551,8 +555,8 @@
 
     &.state-init {
       .top-bar {
-        opacity: 0;
-        @include transform(translateY(-100%));
+        opacity: 1;
+        @include transform(translateY(0));
       }
     }
 
@@ -573,13 +577,15 @@
 
   &.state-init {
     .control-bar {
-      opacity: 0;
+      /*
+      opacity: 0;$*/
+
       @include transform(translateY(100%));
     }
 
     &:hover {
       .control-bar {
-        @include transform(translateY(100%));
+        transform: translateY(0px);
       }
     }
   }

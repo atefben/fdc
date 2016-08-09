@@ -1108,7 +1108,7 @@ var initRs = function () {
                 $('#share-box').remove();
             }
 
-            setTimeout(function () {
+           setTimeout(function () {
                 $('#share-box').animate({'opacity': 0}, 200, function () {
                     $('#share-box').removeClass('show');
                     $('#share-box').remove();
@@ -1969,26 +1969,27 @@ var timeout = 1000,
                 </div>\
             </div>\
             <div class="sound">\
-                <button class="icon icon_son"></button>\
+                <button class="icon icon-sound"></button>\
                 <div class="sound-bar">\
                     <div class="sound-seek"></div>\
                 </div>\
             </div>\
             <div class="fs">\
-                <button class="icon icon_fullscreen"></button>\
+                <button class="icon icon-fullscreen"></button>\
             </div>\
         </div>',
-    /*topBar =
+    topBar =
         '<div class="top-bar">\
-            <a href="#" class="channels"><i class="icon icon_playlist"></i></a>\
+            <a href="#" class="channels"><i class="icon icon-playlist"></i></a>\
             <div class="info"></div>\
-            <div class="buttons square">\
-                <a href="//www.facebook.com/sharer.php?u=CUSTOM_URL" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>\
-                <a href="//twitter.com/intent/tweet?text=CUSTOM_TEXT" class="button twitter"><i class="icon icon_twitter"></i></a>\
-                <a href="#" class="button link"><i class="icon icon_link"></i></a>\
-                <a href="#" class="button email"><i class="icon icon_lettre"></i></a>\
+            <div class="buttons square img-slideshow-share rs-slideshow">\
+                <a class="facebook button" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link=http://www.festival-cannes.com/fr/films/bacalaureat&picture=http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poster/0001/02/thumb_1458_film_poster_293x397.jpeg&name=BACALAUREAT%20-%20Festival%20de%20Cannes&caption=&description=Romeo%2C%20m%C3%A9decin%20dans%20une%20petite%20ville%20de%20Transylvanie%2C%20a%20tout%20mis%20en%20%C5%93uvre%20pour%20que%20sa%20fille%2C%20Eliza%2C%20soit%20accept%C3%A9e%20dans%20une%20universit%C3%A9%20anglaise.%20%0D%0AIl%20ne%20reste%20plus%20%C3%A0%20la%20jeune%20fille%2C%20tr%C3%A8s%20bonne%20%C3%A9l%C3%A8ve%2C%20qu%E2%80%99une%20formalit%C3%A9%20qui%20ne%20devrait%20pas%20poser%20de%20probl%C3%A8me%20%3A%20obtenir%20son%20baccalaur%C3%A9at.%20%0D%0AMais%20Eliza%20se%20fait%20agresser%20et%20le%20pr%C3%A9cieux%20s%C3%A9same%20semble%20brutalement%20hors%20de%20port%C3%A9e.%20Avec%20lui%2C%20c%E2%80%99est%20toute%20la%20vie%20de%20Romeo%20qui%20est%20remise%20en%20question%20quand%20il%20oublie%20alors%20tous%20les%20principes%20qu%E2%80%99il%20a%20inculqu%C3%A9s%20%C3%A0%20sa%20fille%2C%20entre%20%20compromis%20et%20compromissions%E2%80%A6&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i class="icon icon-facebook"></i></a>\
+                <a class="twitter button" href="https://twitter.com/intent/tweet?text=BACALAUREAT%20http://www.festival-cannes.com/fr/films/bacalaureat"><i class="icon icon-twitter"></i></a>\
+                <a href="#" rel="nofollow" class="link self button" data-clipboard-text="http://www.festival-cannes.com/fr/films/bacalaureat"><i class="icon icon-link"></i></a>\
+                <a href="#" class="popin-mail-open button"><i class="icon icon-letter"></i></a>\
             </div>\
-        </div>',*/
+            <div class="texts-clipboard"></div>\
+        </div>',
     slider =
         '<div class="channels-video">\
             <div class="slider-channels-video owl-carousel sliderDrag">\
@@ -2001,7 +2002,7 @@ var timeout = 1000,
             </div>\
             <a class="linkVid" href="#"></a>\
             <div class="info">\
-                <div class="picto"><i class="icon icon_playlist"></i></div>\
+                <div class="picto"><i class="icon icon-playlist"></i></div>\
                     <div class="info-container">\
                         <div class="vCenter">\
                             <div class="vCenterKid">\
@@ -2066,25 +2067,24 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     if($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
     }
-/*    if($container.find('.top-bar').length <= 0) {
+    if($container.find('.top-bar').length <= 0) {
         $(topBar).insertAfter($container.find('#'+vid.id));
-    }*/
+    }
+
 
     var $infoBar      = $container.find('.infos-bar'),
         $stateBtn     = $container.find('.play-btn'),
         $durationTime = $container.find('.duration-time'),
         $current      = $container.find('.current-time'),
         $progressBar  = $container.find('.progress-bar'),
-        $fullscreen   = $container.find('.fs button'),
+        $fullscreen   = $container.find('.icon-fullscreen'),
         $sound        = $container.find('.sound'),
-/*
         $topBar       = $container.find('.top-bar'),
-*/
         $playlist     = [];
 
-/*
+    console.log($infoBar.find('.info').html());
+
     $topBar.find('.info').append($infoBar.find('.info').html());
-*/
 
     if($('.container-webtv-ba-video').length > 0) {
         var shareUrl = $('.video .video-container').attr('data-link');
@@ -2092,7 +2092,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$container.data('vid');
     }
 
-    /*// CUSTOM LINK FACEBOOK
+    // CUSTOM LINK FACEBOOK
     var fbHref = $topBar.find('.buttons .facebook').attr('href');
     fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
     $topBar.find('.buttons .facebook').attr('href', fbHref);
@@ -2104,12 +2104,13 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($topBar.find('.info p').text()+" "+shareUrl));
     }
     $topBar.find('.buttons .twitter').attr('href', twHref);
+
     // CUSTOM LINK COPY
     $topBar.find('.buttons .link').attr('href', shareUrl);
     $topBar.find('.buttons .link').attr('data-clipboard-text', shareUrl);
-/!*
+/*
     linkPopinInit(shareUrl, '#'+vid.id+' + .'+$topBar[0].className.replace(' ','.')+' .buttons .link');
-*!/
+*/
 
     $topBar.find('.buttons .facebook').on('click',function() {
         window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
@@ -2121,17 +2122,12 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     });
 
     // CUSTOM LINK MAIL
-    // $topBar.find('.buttons .email').attr('href', $container.data('email'));
-    $topBar.find('.buttons .email').on('click', function(e) {
-        e.preventDefault();
-        launchPopinMedia({
-            'type'     : "video",
-            'category' : $topBar.find('.info .category').text(),
-            'date'     : $topBar.find('.info .date').text(),
-            'title'    : $topBar.find('.info p').text(),
-            'url'      : shareUrl
-        }, playerInstance);
-    });*/
+    $topBar.find('.buttons .popin-mail-open').attr('href', $container.data('email'));
+    $topBar.find('.buttons .popin-mail-open').on('click', function(e) {
+        fullScreenApi.cancelFullScreen();
+    });
+
+
 
     function updateVolume(x, vol) {
         var volume = $sound.find('.sound-bar'),
@@ -2180,16 +2176,13 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $container.find('.channels-video').removeClass('active');
         $container.find('.jwplayer').removeClass('overlay-channels');
         fullScreenApi.cancelFullScreen();
-        $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
+        $fullscreen.removeClass('icon-reverseFullscreen').addClass('icon-fullscreen');
         playerInstance.resize('100%','100%');
         mouseMoving(false);
     }
 
     function externeControl() {
-/*        $topBar.on('click', '.channels', function() {
-            $container.find('.channels-video').toggleClass('active');
-            $container.find('.jwplayer').toggleClass('overlay-channels');
-        });*/
+
     }
 
     function mouseMoving(listen) {
@@ -2219,7 +2212,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$playlist[index].vid;
         }
 
-/*
         var fbHref   = facebookLink;
         fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
         fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
@@ -2233,23 +2225,22 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         // CUSTOM LINK COPY
         $topBar.find('.buttons .link').attr('href', shareUrl);
         $topBar.find('.buttons .link').attr('data-clipboard-text', shareUrl);
-*/
 
-/*        updatePopinMedia({
+        updatePopinMedia({
             'type'     : "video",
             'category' : $playlist[index].category,
             'date'     : $playlist[index].date,
             'title'    : $playlist[index].name,
             'url'      : shareUrl
-        });*/
+        });
 
-/*        if (sc) {
+        if (sc) {
             $(sc).find('.buttons .facebook').attr('data-href', fbHref);
             $(sc).find('.buttons .facebook').attr('href', fbHref);
             $(sc).find('.buttons .twitter').attr('href', twHref);
             $(sc).find('.buttons .link').attr('href', shareUrl);
             $(sc).find('.buttons .link').attr('data-clipboard-text', shareUrl);
-        }*/
+        }
     }
 
     function initChannel() {
@@ -2269,10 +2260,10 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             playerInstance.playlistItem(index);
 
             var infos = $.parseJSON($(this).find('.channel.video').data('json'));
-/*            $topBar.find('.info .category').text(infos.category);
+            $topBar.find('.info .category').text(infos.category);
             $topBar.find('.info .date').text(infos.date);
             $topBar.find('.info .hour').text(infos.hour);
-            $topBar.find('.info p').text(infos.name);*/
+            $topBar.find('.info p').text(infos.name);
 
             $container.find('.channels-video').removeClass('active');
             $container.find('.jwplayer').removeClass('overlay-channels');
@@ -2316,10 +2307,10 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 playerInstance.playlistItem(index);
 
                 var infos = $.parseJSON($(sliderChannelsVideo.find('.channel.video')[index]).data('json'));
-/*                $topBar.find('.info .category').text(infos.category);
+                $topBar.find('.info .category').text(infos.category);
                 $topBar.find('.info .date').text(infos.date);
                 $topBar.find('.info .hour').text(infos.hour);
-                $topBar.find('.info p').text(infos.name);*/
+                $topBar.find('.info p').text(infos.name);
 
                 if($('.infos-videos').length > 0) {
                     $('.infos-videos strong').text(infos.category);
@@ -2362,6 +2353,9 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         }
     }
 
+
+    console.log(playerInstance);
+
     playerInstance.setup({
         // file: $container.data('file'),
         sources: $container.data('file'),
@@ -2372,6 +2366,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         height: $(vid).parent('div').height(),
         controls: false
     });
+
 
     if(havePlaylist) {
         var tempSlider = $(slider),
@@ -2397,25 +2392,13 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             var tempSlide = $(slide);
             tempSlide.find('.image-wrapper img').attr('src',p.image);
             tempSlide.find('.info-container .category').text(p.category);
-/*
-            tempSlide.find('.info-container p').text(p.name.trunc(30, true))
-*/
             tempSlide.data('json', JSON.stringify(p));
             tempSlider.find('.slider-channels-video').append(tempSlide);
         });
         $playlist = playlist;
-/*
-        tempSlider.insertAfter($topBar);
-*/
+
         initChannel();
         playerInstance.load(playlist);
-/*
-
-        $topBar.find('.info .category').text(playlist[0].category);
-        $topBar.find('.info .date').text(playlist[0].date);
-        $topBar.find('.info .hour').text(playlist[0].hour);
-        $topBar.find('.info p').text(playlist[0].name);
-*/
 
         if($('.infos-videos .buttons').length > 0) {
             linkPopinInit(0, '.infos-videos .buttons .link');
@@ -2436,19 +2419,10 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         } else {
             updateShareLink();
         }
-    } else {
-/*
-        $topBar.find('.channels').remove();
-*/
+    }else{
+        $('.channels').css('display', 'none');
     }
 
-    if (live) {
-        $container.find('.time').addClass('hide');
-        $container.find('.progress').addClass('hide');
-/*
-        $topBar.find('.channels').remove();
-*/
-    }
 
 
     playerInstance.on('ready', function() {
@@ -2459,18 +2433,16 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $container.find('.infos-bar .info, .infos-bar .picto').addClass('hide');
         $container.find('.channels-video').removeClass('active');
         $container.find('.jwplayer').removeClass('overlay-channels');
-        $stateBtn.removeClass('icon_play').addClass('icon_pause');
-/*
-        fullScreenApi.isFullScreen() ? mouseMoving(true) : mouseMoving(false);
-*/
+        $stateBtn.removeClass('icon-play').addClass('icon-pause');
+
     }).on('pause', function() {
-        $stateBtn.removeClass('icon_pause').addClass('icon_play');
+        $stateBtn.removeClass('icon-pause').addClass('icon-play');
         mouseMoving(false);
     }).on('buffer', function() {
         // console.log("");
     }).on('complete', function () {
         this.stop();
-        $stateBtn.removeClass('icon_pause').addClass('icon_play');
+        $stateBtn.removeClass('icon-pause').addClass('icon-play');
         $container.addClass('state-complete');
         mouseMoving(false);
     }).on('firstFrame', function() {
@@ -2522,9 +2494,35 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         // $(this).off('click');
     });
 
-    $sound.on('click', '.icon_son', function() {
+    $sound.on('click', '.icon-sound', function() {
         playerInstance.updateMute();
     });
+
+    if (fullScreenApi.supportsFullScreen) {
+        $fullscreen[0].addEventListener('click', function() {
+            if(!fullScreenApi.isFullScreen()) {
+                fullScreenApi.requestFullScreen($container[0]);
+                $fullscreen.removeClass('icon-fullscreen').addClass('icon-reverseFullscreen');
+                playerInstance.resize('100%','100%');
+                mouseMoving(true);
+            } else {
+                $container.find('.channels-video').removeClass('active');
+                $container.find('.jwplayer').removeClass('overlay-channels');
+                fullScreenApi.cancelFullScreen();
+                $fullscreen.removeClass('icon-reverseFullscreen').addClass('icon-fullscreen');
+                playerInstance.resize('100%','100%');
+                mouseMoving(false);
+            }
+        }, true);
+
+        document.addEventListener(fullScreenApi.fullScreenEventName, function(e) {
+            if (!fullScreenApi.isFullScreen()) {
+                $container.find('.channels-video').removeClass('active');
+                $container.find('.jwplayer').removeClass('overlay-channels');
+                $fullscreen.removeClass('icon-reverseFullscreen').addClass('icon-fullscreen');
+            }
+        }, true);
+    }
 
     var volumeDrag = false;
     $sound.find('.sound-bar').on('mousedown', function(e) {
@@ -2544,48 +2542,20 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         }
     });
 
-    /*if (fullScreenApi.supportsFullScreen) {
-        $fullscreen[0].addEventListener('click', function() {
-            if(!fullScreenApi.isFullScreen()) {
-                fullScreenApi.requestFullScreen($container[0]);
-                $fullscreen.removeClass('icon_fullscreen').addClass('icon_reverseFullScreen');
-                playerInstance.resize('100%','100%');
-                mouseMoving(true);
-            } else {
-                $container.find('.channels-video').removeClass('active');
-                $container.find('.jwplayer').removeClass('overlay-channels');
-                fullScreenApi.cancelFullScreen();
-                $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
-                playerInstance.resize('100%','100%');
-                mouseMoving(false);
-            }
-        }, true);
-
-        document.addEventListener(fullScreenApi.fullScreenEventName, function(e) {
-            if (!fullScreenApi.isFullScreen()) {
-                $container.find('.channels-video').removeClass('active');
-                $container.find('.jwplayer').removeClass('overlay-channels');
-                $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
-            }
-        }, true);
-    }*/
-
     callback(playerInstance);
 };
 
+
 $(document).ready(function() {
-    if($('#video-player-ba').length > 0) {
-        videoMovieBa = playerInit('video-player-ba', false, true)
-    }
+
+    //id, cls, havePlaylist, live
+
 
     if($('.video-player').length > 0) {
-        videoPlayer = playerInit(false, 'video-player', false);
-    }
-
-    if($('.video-player-pl').length > 0) {
-        videoPlayer = playerInit(false, 'video-player-pl', true);
+        videoPlayer = playerInit('video-player', 'video-player', false, false);
     }
 });
+
 /*------------------------------------------------------------------------------
     JS Document (https://developer.mozilla.org/en/JavaScript)
 
