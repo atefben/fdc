@@ -210,4 +210,14 @@ if($('body').hasClass('mobile')){
     addNextFilters();
   }
 
+  if($('#share-article').length) {
+    $('#share-article').on('click', function(e) {
+      e.preventDefault();
+
+      $('html, body').animate({
+        scrollTop: $(".block-social-network").offset().top - $('header').height() - $('.block-social-network').height() - 300
+      }, 500);
+    });
+  }
+
 });

@@ -402,8 +402,9 @@ video{
     font-size: 0.75rem;
   }
 
-  .home & {
-    top: 84px;
+  .home &, .retrospective &, .story-movie &, .dark & {
+    top: 84px !important;
+    opacity: 1;
   }
 
   .top-bar &{

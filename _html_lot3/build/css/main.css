@@ -4311,8 +4311,9 @@ video {
   color: #666666;
   font-size: 0.75rem;
 }
-.home #share-box {
-  top: 84px;
+.home #share-box, .retrospective #share-box, .story-movie #share-box, .dark #share-box {
+  top: 84px !important;
+  opacity: 1;
 }
 .top-bar #share-box {
   right: 0px;
