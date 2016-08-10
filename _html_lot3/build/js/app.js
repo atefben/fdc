@@ -2598,9 +2598,7 @@ if($('body').hasClass('mobile')){
 }
 
   if($('.video-player').length > 0) {
-    setTimeout(function(){
       initVideo();
-    }, 3000);
   }
 
   if($('.block-social-network ').length > 0){
