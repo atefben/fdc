@@ -10115,10 +10115,10 @@ header #searchContainer {
   cursor: pointer;
 }
 .s-slider-retrospective .timelapse .noUi-horizontal .noUi-handle.noUi-handle-lower {
-  width: 10px;
-  height: 10px;
+  width: 14px;
+  height: 14px;
   left: 0px;
-  top: -5px;
+  top: -7px;
 }
 @media only screen and (max-width: 768px) {
   .s-slider-retrospective .timelapse .noUi-horizontal .noUi-handle.noUi-handle-lower {
@@ -10417,6 +10417,9 @@ header #searchContainer {
   opacity: 0;
   transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s;
   z-index: 2;
+}
+.mobile .slides-calc2.navigation {
+  opacity: 1;
 }
 .slides-calc2.navigation:hover {
   opacity: 1;

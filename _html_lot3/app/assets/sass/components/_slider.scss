@@ -378,10 +378,10 @@
       }
 
       &.noUi-handle-lower {
-        width: 10px;
-        height: 10px;
+        width: 14px;
+        height: 14px;
         left: 0px;
-        top: -5px;
+        top: -7px;
 
         @media only screen  and (max-width : 768px) {
           width: 19px;
@@ -745,6 +745,10 @@
     opacity: 0;
     transition: $linear 1s;
     z-index: 2;
+
+    .mobile & {
+      opacity: 1;
+    }
 
     &:hover{
       opacity: 1;
