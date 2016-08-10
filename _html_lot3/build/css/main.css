@@ -4567,6 +4567,7 @@ video {
   height: 100%;
   display: block;
   position: absolute;
+  z-index: 6;
 }
 .block-push .link {
   margin-top: 20px;
