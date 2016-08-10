@@ -153,6 +153,19 @@
 
 }
 
+// - BLOCK 01 x small
+.block-01-mms {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 750px;
+
+  img {
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+}
+
 // - BLOCK 02
 .block-02 {
   background-color: #f6f6f6;
@@ -768,6 +781,12 @@
     font-size: .8125rem;
     line-height: 18px;
     font-family: $CamphorItalic;
+
+    .hours {
+      font-size: 0.69rem;
+      color: #999;
+      font-family: $CamphorRegular;
+    }
   }
 
   .name-award {

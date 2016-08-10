@@ -314,6 +314,35 @@ sub {
   text-transform: uppercase;
 }
 
+.title-palmares-co {
+  font-family: $CamphorRegular;
+  color: #999;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 30px;
+
+  strong {
+    color: #fff;
+  }
+}
+
+.contain-title-grey {
+  background-color: #202020;
+  font-family: $CamphorBold;
+  font-size: 0.75rem;
+  letter-spacing: .2em;
+  height: 72px !important;
+
+  .title {
+    font-family: $CamphorBold;
+    font-size: 0.75rem;
+    letter-spacing: .2em;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+  }
+}
+
 .text-list {
   font-size: 1rem;
   color: #666666;
@@ -499,6 +528,8 @@ blockquote, .quote {
     font-family: $CamphorRegular;
     text-transform: uppercase;
     letter-spacing: .5rem;
+    text-align: center;
+    line-height: 30px;
 
     .ie & {
       margin-top: 67px;

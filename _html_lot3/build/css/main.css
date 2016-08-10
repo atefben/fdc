@@ -3393,6 +3393,33 @@ sub {
   text-transform: uppercase;
 }
 
+.title-palmares-co {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  color: #999;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 30px;
+}
+.title-palmares-co strong {
+  color: #fff;
+}
+
+.contain-title-grey {
+  background-color: #202020;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: .2em;
+  height: 72px !important;
+}
+.contain-title-grey .title {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: .2em;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 0px;
+}
+
 .text-list {
   font-size: 1rem;
   color: #666666;
@@ -3564,6 +3591,8 @@ blockquote, .quote {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   letter-spacing: .5rem;
+  text-align: center;
+  line-height: 30px;
 }
 .ie .contain-title .title-01 {
   margin-top: 67px;
@@ -4206,6 +4235,10 @@ video {
   padding-bottom: 25px;
 }
 
+.big-padding {
+  padding: 120px;
+}
+
 .info {
   color: #969696;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
@@ -4488,6 +4521,16 @@ video {
   width: 633px;
 }
 .block-01-xs img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.block-01-mms {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 750px;
+}
+.block-01-mms img {
   max-width: 100%;
   object-fit: cover;
 }
@@ -5050,6 +5093,11 @@ video {
   font-size: .8125rem;
   line-height: 18px;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+}
+.block-movie-preview .names-a .hours {
+  font-size: 0.69rem;
+  color: #999;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .block-movie-preview .name-award {
   color: #fff;
