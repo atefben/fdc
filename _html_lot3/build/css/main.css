@@ -12188,7 +12188,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .block-search .icon-s input {
   opacity: 0;
 }
-.block-search .icon-s.active, .block-search .icon-s:hover {
+.block-search .icon-s.active, .not-mobile .block-search .icon-s:hover {
   color: #c8a461;
   cursor: pointer;
 }
@@ -12196,7 +12196,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   width: 50%;
   border-top: 0px solid #fff !important;
 }
-.block-search .tabs-two label:hover i, .block-search .tabs-two label:hover span, .block-search .tabs-two label:hover strong, .block-search .tabs-two label.active i, .block-search .tabs-two label.active span, .block-search .tabs-two label.active strong {
+.not-mobile .block-search .tabs-two label:hover i, .not-mobile .block-search .tabs-two label:hover span, .not-mobile .block-search .tabs-two label:hover strong, .block-search .tabs-two label.active i, .block-search .tabs-two label.active span, .block-search .tabs-two label.active strong {
   color: #c8a461;
 }
 .block-search .tabs-two label i, .block-search .tabs-two label span, .block-search .tabs-two label strong {
@@ -12238,7 +12238,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   float: right;
   font-size: .5rem;
 }
-.block-search .more-search .title-cont:hover {
+.not-mobile .block-search .more-search .title-cont:hover {
   color: #c8a461;
   cursor: pointer;
 }

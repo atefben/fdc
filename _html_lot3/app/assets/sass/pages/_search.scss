@@ -118,7 +118,7 @@
       opacity: 0;
     }
 
-    &.active, &:hover {
+    &.active, .not-mobile &:hover {
       color : $gold;
       cursor: pointer;
     }
@@ -129,7 +129,7 @@
       width: 50%;
       border-top: 0px solid #fff !important;
 
-      &:hover, &.active {
+      .not-mobile &:hover, &.active {
 
         i, span, strong {
           color: $gold;
@@ -178,7 +178,7 @@
         font-size: .5rem;
       }
 
-      &:hover {
+      .not-mobile &:hover {
         color:$gold;
         cursor: pointer;
       }

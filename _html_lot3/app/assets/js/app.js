@@ -42,6 +42,8 @@ $(document).ready(function() {
       var w = $('body').width();
       var scale = w/1024;
       $('footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more, .timelapse.block-drag, .block-02, .block-scale, .slider-home').css('zoom',scale);
+
+
     }else{
       $('footer, #breadcrumb, .navigation-sticky-02, .navigation-sticky-01, .read-more, .timelapse.block-drag, .block-02, .block-scale, .slider-home').css('zoom',0);
     }
@@ -78,6 +80,12 @@ $(document).ready(function() {
 if($('body').hasClass('mobile')){
   owFixMobile();
 }
+
+  if($('.video-player').length > 0) {
+    setTimeout(function(){
+      initVideo();
+    }, 3000);
+  }
 
   if($('.block-social-network ').length > 0){
     initRs();
