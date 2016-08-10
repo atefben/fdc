@@ -9336,40 +9336,40 @@ header #searchContainer {
   width: 32%;
   padding-top: 24px;
 }
-.evenements .card {
+.evenements .card, .articles-list .card {
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 0px;
   min-height: 310px;
 }
-.evenements .card {
+.evenements .card, .articles-list .card {
   height: auto !important;
 }
-.evenements .card .image .image-wrapper img {
+.evenements .card .image .image-wrapper img, .articles-list .card .image .image-wrapper img {
   min-height: unset !important;
 }
-.evenements .card .info {
+.evenements .card .info, .articles-list .card .info {
   height: auto !important;
 }
 .card.w2.double {
   height: 613px;
   padding-left: 21px;
 }
-.evenements .card.w2.double {
+.evenements .card.w2.double, .articles-list .card.w2.double {
   padding-left: 0px;
   min-height: 610px;
 }
 .card.w2.double .image {
   height: 363px;
 }
-.evenements .card.w2.double .image {
+.evenements .card.w2.double .image, .articles-list .card.w2.double .image {
   width: 89.9%;
   height: auto;
   display: block;
   margin: 0 auto;
   margin-bottom: 15px;
 }
-.evenements .card.w2.double .image img {
+.evenements .card.w2.double .image img, .articles-list .card.w2.double .image img {
   position: relative;
 }
 .card .info {
@@ -9393,10 +9393,13 @@ header #searchContainer {
 .card .info strong {
   max-width: 92%;
 }
-.evenements .card .info strong {
+.evenements .card .info strong, .articles-list .card .info strong {
   max-width: 74%;
   font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
   font-weight: normal;
+}
+.articles-list .card .info strong {
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
 }
 .card.double {
   height: 575px;
@@ -9409,7 +9412,7 @@ header #searchContainer {
   margin-top: 20px;
   max-width: 74%;
 }
-.evenements .card.double strong {
+.evenements .card.double strong, .articles-list .card.double strong {
   font-size: 2.25rem;
   font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
   font-weight: normal;
@@ -9450,17 +9453,17 @@ header #searchContainer {
   transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   object-fit: cover;
 }
-.evenements .card .image .image-wrapper img {
+.evenements .card .image .image-wrapper img, .articles-list .card .image .image-wrapper img {
   min-height: initial !important;
 }
-.evenements .card .image {
+.evenements .card .image, .articles-list .card .image {
   width: 79.1%;
   height: auto;
   display: block;
   margin: 0 auto;
   margin-bottom: 10px;
 }
-.evenements .card .image img {
+.evenements .card .image img, .articles-list .card .image img {
   position: relative;
 }
 .card .image .linkImage {
