@@ -20,6 +20,10 @@ window.twttr = (function (d, s, id) {
 
 var initRs = function () {
 
+    $('.print').on('click', function(e){
+        e.preventDefault();
+    })
+
     $('.block-social-network .twitter, .rs-slideshow .twitter').on('click', function () {
         window.open(this.href, '', 'width=600,height=400');
         return false;

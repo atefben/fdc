@@ -397,6 +397,11 @@ video{
   @include transition(all 0.3s $smoothTransition);
   opacity: 0;
 
+
+  .retrospective .small-h  & {
+    top: 184px !important;
+  }
+
   &.show{
     opacity: 1;
   }
@@ -406,7 +411,7 @@ video{
     font-size: 0.75rem;
   }
 
-  .home &, .retrospective &, .story-movie &, .dark & {
+  .home &, .retrospective &, .story-movie &, .dark &, .who &{
     top: 84px !important;
     opacity: 1;
   }

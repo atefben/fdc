@@ -4337,6 +4337,9 @@ video {
   transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   opacity: 0;
 }
+.retrospective .small-h #share-box {
+  top: 184px !important;
+}
 #share-box.show {
   opacity: 1;
 }
@@ -4344,7 +4347,7 @@ video {
   color: #666666;
   font-size: 0.75rem;
 }
-.home #share-box, .retrospective #share-box, .story-movie #share-box, .dark #share-box {
+.home #share-box, .retrospective #share-box, .story-movie #share-box, .dark #share-box, .who #share-box {
   top: 84px !important;
   opacity: 1;
 }
