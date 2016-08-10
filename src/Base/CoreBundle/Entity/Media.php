@@ -209,6 +209,9 @@ abstract class Media implements TranslateMainInterface
     {
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->displayedAll = false;
+        $this->displayedHome = false;
+        $this->displayedMobile = false;
     }
 
     public function __toString()
@@ -217,11 +220,15 @@ abstract class Media implements TranslateMainInterface
 
         if ($this->getId()) {
             if ($string != 'MediaImage') {
-                $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
-                $string = $this->truncate($string, 40, '..."', true);
+                if ($this->findTranslationByLocale('fr') != null) {
+                    $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
+                    $string = $this->truncate($string, 40, '..."', true);
+                }
             } else {
-                $string .= ' "' . $this->findTranslationByLocale('fr')->getLegend() . '"';
-                $string = $this->truncate($string, 40, '..."', true);
+                if ($this->findTranslationByLocale('fr') != null) {
+                    $string .= ' "' . $this->findTranslationByLocale('fr')->getLegend() . '"';
+                    $string = $this->truncate($string, 40, '..."', true);
+                }
             }
         }
 

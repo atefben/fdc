@@ -419,6 +419,7 @@ class NewsController extends Controller
             throw new NotFoundHttpException();
         }
 
+        var_dump($settings->getFestival()->getId());
         // GET NEWS
         $news = $em->getRepository('BaseCoreBundle:News')->getNewsBySlug($slug, $settings->getFestival()->getId(), $locale, $isAdmin, $mapper[$format]);
 
