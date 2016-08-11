@@ -248,7 +248,7 @@ class NewsRepository extends EntityRepository
             ;
         } else {
             $this->addMasterQueries($qb, 'na1', $festival);
-            $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
+          //  $this->addTranslationQueries($qb, 'na1t', $locale, $slug);
         }
 
         $this->addFDCEventQueries($qb, 's');
