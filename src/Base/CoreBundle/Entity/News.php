@@ -260,6 +260,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->widgets = new ArrayCollection();
+        $this->sites = new ArrayCollection();
         $this->associatedNews = new ArrayCollection();
         $this->associatedProjections = new ArrayCollection();
         $this->associatedFilms = new ArrayCollection();

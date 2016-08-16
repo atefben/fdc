@@ -70,11 +70,11 @@ fos_elastica:
                             properties :
                                 name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
-                        theme.translations:
-                            type: nested
-                            properties :
-                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                                locale: ~
+ #                       theme.translations:
+ #                           type: nested
+ #                           properties :
+ #                               name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+ #                               locale: ~
                         tags:
                             type: nested
                             properties :

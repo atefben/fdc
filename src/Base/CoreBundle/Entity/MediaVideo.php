@@ -82,6 +82,13 @@ class MediaVideo extends Media
      */
     private $associatedFilms;
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->displayedWebTv = false;
+        $this->displayedTrailer = false;
+    }
+
     /**
      * Set displayedWebTv
      *

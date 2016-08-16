@@ -39,13 +39,11 @@
                     {{ app.request.locale|upper }}
                 </a>
                 <ul class="sub-languages">
-                    {{ dump(locales) }}
                     {% for locale in locales %}
                         {% if locale != app.request.locale %}
                             <li>
                                 {% set params = {'_locale' : locale} %}
                                 {% if localeSlugs is defined and localeSlugs[app.request.locale] %}
-                                    {{ dump(locale) }}
                                 {% endif %}
                             </li>
                         {% endif %}

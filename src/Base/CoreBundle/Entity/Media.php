@@ -205,10 +205,16 @@ abstract class Media implements TranslateMainInterface
      */
     private $associatedProjections;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $oldMediaId;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->sites = new ArrayCollection();
         $this->displayedAll = false;
         $this->displayedHome = false;
         $this->displayedMobile = false;
@@ -665,5 +671,28 @@ abstract class Media implements TranslateMainInterface
     public function getExcludeFromSearch()
     {
         return $this->excludeFromSearch;
+    }
+
+    /**
+     * Set oldMediaId
+     *
+     * @param integer $oldMediaId
+     * @return Media
+     */
+    public function setOldMediaId($oldMediaId)
+    {
+        $this->oldMediaId = $oldMediaId;
+
+        return $this;
+    }
+
+    /**
+     * Get oldMediaId
+     *
+     * @return integer 
+     */
+    public function getOldMediaId()
+    {
+        return $this->oldMediaId;
     }
 }

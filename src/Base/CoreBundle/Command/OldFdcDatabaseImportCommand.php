@@ -5,10 +5,13 @@ namespace Base\CoreBundle\Command;
 use Base\CoreBundle\Entity\Gallery;
 use Application\Sonata\MediaBundle\Entity\GalleryHasMedia;
 use Application\Sonata\MediaBundle\Entity\Media;
+use Base\CoreBundle\Entity\GalleryMedia;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageTranslation;
+use Base\CoreBundle\Entity\MediaVideo;
+use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 
@@ -17,9 +20,11 @@ use Base\CoreBundle\Entity\NewsWidgetAudio;
 use Base\CoreBundle\Entity\NewsWidgetImage;
 use Base\CoreBundle\Entity\NewsWidgetText;
 use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
+use Base\CoreBundle\Entity\NewsWidgetVideo;
 use Base\CoreBundle\Entity\NewsWidgetVideoYoutube;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 
@@ -35,7 +40,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     {
         $this
             ->setName('base:import:old_fdc')
-            ->setDescription('Impot old fdc database data');
+            ->setDescription('Impot old fdc database data')
+            ->addOption(
+                'associated-news',
+                null,
+                InputOption::VALUE_NONE,
+                'Import only associated news'
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -44,14 +55,14 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $mediaManager = $this->getContainer()->get('sonata.media.manager.media');
 
         $output->writeln('<info>Import Article Quotidien...</info>');
-        $this->importArticleQuotidien($dm, $mediaManager, $output);
+        $this->importArticleQuotidien($dm, $mediaManager, $output, $input);
     }
 
-    private function importArticleQuotidien($dm, $mediaManager, $output)
+    private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
-        $element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(61996);
+        $element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60982);
         $oldArticles[0] = $element;
-
+        $optionAssociatedNews = $input->getOption('associated-news');
         $siteFDCEvent = $dm->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-evenementiel');
 
         /*$oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
@@ -78,10 +89,12 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             }
 
             // is valid matching
+            $output->writeln('<comment>#'. $oldArticle->getId(). ' verify matching.</comment>');
             $matching = $this->isQuotidienMatching($oldArticle, $oldArticleTranslations, $dm, $output);
             if ($matching == false) {
                 continue;
             }
+            $output->writeln('<info>#'. $oldArticle->getId(). ' is matching.</info>');
 
             // old news
             $news = $dm->getRepository('BaseCoreBundle:NewsArticle')->findOneByOldNewsId($oldArticle->getId());
@@ -105,42 +118,46 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             foreach ($oldArticleTranslations as $oldArticleTranslation) {
                 $culture = ($oldArticleTranslation->getCulture() == 'cn') ? 'zh' : $oldArticleTranslation->getCulture();
                 if (in_array($culture, $this->langs)) {
-                    $output->writeln('<comment>add Translation '. $culture. '</comment>');
-                    $newsTrans = $news->findTranslationByLocale($culture);
-                    if ($newsTrans == null) {
-                        $newsTrans = new NewsArticleTranslation();
-                        $newsTrans->setLocale($culture);
-                        $newsTrans->setCreatedAt($news->getCreatedAt());
-                        $newsTrans->setUpdatedAt($news->getCreatedAt());
-                        $newsTrans->setIsPublishedOnFDCEvent(true);
-                        $news->addTranslation($newsTrans);
-                        if ($culture == 'fr') {
-                            $newsTrans->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
-                        } else {
-                            $newsTrans->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
+                    if ($optionAssociatedNews == false) {
+                        $output->writeln('<comment>add Translation ' . $culture . '</comment>');
+                        $newsTrans = $news->findTranslationByLocale($culture);
+                        if ($newsTrans == null) {
+                            $newsTrans = new NewsArticleTranslation();
+                            $newsTrans->setLocale($culture);
+                            $newsTrans->setCreatedAt($news->getCreatedAt());
+                            $newsTrans->setUpdatedAt($news->getCreatedAt());
+                            $newsTrans->setIsPublishedOnFDCEvent(true);
+                            $news->addTranslation($newsTrans);
+                            if ($culture == 'fr') {
+                                $newsTrans->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
+                            } else {
+                                $newsTrans->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
+                            }
                         }
-                    }
 
-                    foreach ($mapperFields as $oldField => $field) {
-                        $newsTrans->{'set'. ucfirst($field)}($oldArticleTranslation->{'get'. ucfirst($oldField)}());
-                    }
+                        foreach ($mapperFields as $oldField => $field) {
+                            $newsTrans->{'set' . ucfirst($field)}($oldArticleTranslation->{'get' . ucfirst($oldField)}());
+                        }
 
-                    // Image header / image accroche
-                    if ($oldArticleTranslation->getImageResume()) {
+                        // Image header / image accroche
                         if ($news->getHeader() == null) {
                             $img = new MediaImage();
                         } else {
                             $img = $news->getHeader();
-                            $news->setHeader($img);
                         }
+                        if ($img->getSites()->count() == 0) {
+                            $img->addSite($siteFDCEvent);
+                        }
+                        $news->setHeader($img);
                         if ($img != null) {
-                            $media = ($img->findTranslationByLocale('fr') != null) ? $img->findTranslationByLocale('fr')->getFile() : new Media();
+                            $media = ($img->findTranslationByLocale('fr') != null && $img->findTranslationByLocale('fr')->getFile() != null) ? $img->findTranslationByLocale('fr')->getFile() : new Media();
                         } else {
                             $media = new Media();
                         }
-                        if ($media->getId() == null) {
-                            $media = new Media();
-                            $file = $this->imagecreatefromfile('http://www.festival-cannes.fr/assets/Image/Pages/' . $oldArticleTranslation->getImageResume(), $output);
+                        if ($media->getId() == null && $oldArticleTranslation->getImageResume()) {
+                            $url = 'http://www.festival-cannes.fr/assets/Image/Pages/' . $oldArticleTranslation->getImageResume();
+                            $file = $this->imagecreatefromfile($url, $output);
+                            $media->setContentType('image/jpeg');
                             $media->setName($oldArticleTranslation->getImageResume());
                             $media->setBinaryContent($file);
                             $media->setEnabled(true);
@@ -148,212 +165,352 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             $media->setContext('media_image');
                             $media->setProviderStatus(1);
                             $media->setProviderName('sonata.media.provider.image');
-                            $mediaManager->save($media);
-
-                            $imgTrans = $img->findTranslationByLocale($culture);
-                            if ($imgTrans == null) {
-                                $imgTrans = new MediaImageTranslation();
-                            }
-                            $imgTrans->setTranslatable($img);
-                            $imgTrans->setFile($media);
-                            $imgTrans->setLegend($oldArticleTranslation->getTitleImageResume());
-                            $imgTrans->setLocale($culture);
-                            $img->addTranslation($imgTrans);
+                            $mediaManager->save($media, 'media_image', 'sonata.media.provider.image');
                         }
-                    } else {
-                        $output->writeln('<error>No image resume found</error>');
-                    }
-
-                    // widget text / annonce
-                    if ($oldArticleTranslation->getBody() != null) {
-                        if ($news->getWidgets()->count() == 0) {
-                            $widgetText = new NewsWidgetText();
-                            $widgetText->setPosition(1);
-                        } else {
-                            $widgets = $news->getWidgets();
-                            $widgetText = $widgets->get(0);
-                        }
-
-                        $widgetTextTranslation = new NewsWidgetTextTranslation();
-                        if ($widgetText->findTranslationByLocale($culture) != null) {
-                            $widgetTextTranslation = $widgetText->findTranslationByLocale($culture);
-                        }
-                        $widgetTextTranslation->setLocale($culture);
-                        $widgetTextTranslation->setContent($oldArticleTranslation->getBody());
-                        $widgetTextTranslation->setTranslatable($widgetText);
-                        $widgetText->addTranslation($widgetTextTranslation);
-
-                        if ($widgetText->getId() == null) {
-                            $news->addWidget($widgetText);
-                        }
-                    }
-
-                    // widget video youtube / youtube link / description
-                    if ($oldArticleTranslation->getYoutubeLink() != null ||
-                        $oldArticleTranslation->getYoutubeLinkDescription() != null) {
-                            $widgetVideoYoutube = new NewsWidgetVideoYoutube();
-                            $widgetVideoYoutube->setPosition(2);
-                            foreach ($news->getWidgets() as $widget) {
-                                if (strpos(get_class($widget), 'NewsWidgetVideoYoutube')) {
-                                    $widgetVideoYoutube = $widget;
-                                    break;
-                                }
-                            }
-
-                            $widgetVideoYoutubeTranslation = new NewsWidgetVideoYoutubeTranslation();
-                            if ($widgetVideoYoutube->findTranslationByLocale($culture) != null) {
-                                $widgetVideoYoutubeTranslation = $widgetVideoYoutube->findTranslationByLocale($culture);
-                            }
-
-                            $widgetVideoYoutubeTranslation->setLocale($culture);
-                            $widgetVideoYoutubeTranslation->setUrl($oldArticleTranslation->getYoutubeLink());
-                            $widgetVideoYoutubeTranslation->setTitle($oldArticleTranslation->getYoutubeLinkDescription());
-                            $widgetVideoYoutubeTranslation->setTranslatable($widgetVideoYoutube);
-                            if ($widgetVideoYoutube->getId() == null) {
-                                $news->addWidget($widgetVideoYoutube);
-                            }
-                    }
-
-                    // widget photo / association image
-                    $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
-                        'id' => $oldArticle->getId(),
-                        'objectClass' => 'Image'
-                    ), array('order' => 'ASC'));
-                    if (count($oldArticleAssociations) > 0) {
-                        $count = 1;
-                        $widget = $this->getWidget($news, $count, new NewsWidgetImage());
-                        $widget->setPosition($count);
-                        if ($widget->getGallery() == null) {
-                            $gallery = new Gallery();
-                            $widget->setGallery($gallery);
-                        } else {
-                            $gallery = $widget->getGallery();
+                        $imgTrans = $img->findTranslationByLocale($culture);
+                        if ($imgTrans == null) {
+                            $imgTrans = new MediaImageTranslation();
                         }
                         if ($culture == 'fr') {
-                            $gallery->setName($oldArticleTranslation->getMosaiqueTitle());
+                            $imgTrans->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
+                        } else {
+                            $imgTrans->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
                         }
-                        foreach ($oldArticleAssociations as $associationKey => $association) {
-                            $image = $dm->getRepository('BaseCoreBundle:OldMedia')->findOneById($association->getObjectId());
-                            $img = new MediaImage();
-                            if ($gallery->getMedias()->get($associationKey + 1) != null) {
-                                $img = $gallery->getMedias()->get($associationKey + 1);
-                            }
-                            if ($img != null) {
-                                $media = ($img->findTranslationByLocale('fr') != null) ? $img->findTranslationByLocale('fr')->getFile() : new Media();
-                            } else {
-                                $media = new Media();
-                            }
-                            if ($media->getId() == null && $culture == 'fr') {
-                                $file = $this->imagecreatefromfile('http://www.festival-cannes.fr/assets/Image/General/' . $image->getFilename(), $output);
-                                $media->setName($image->getFilename());
-                                $media->setBinaryContent($file);
-                                $media->setEnabled(true);
-                                $media->setProviderReference($image->getFilename());
-                                $media->setContext('media_image');
-                                $media->setProviderStatus(1);
-                                $media->setProviderName('sonata.media.provider.image');
-                                $mediaManager->save($media);
-                                $imgTrans->setFile($media);
-                            }
-                            $imgTrans = $img->findTranslationByLocale($culture);
-                            if ($imgTrans == null) {
-                                $imgTrans = new MediaImageTranslation();
-                            }
-                            $imgTrans->setTranslatable($img);
-                            $imgTrans->setLegend($oldArticleTranslation->getTitleImageResume());
-                            $imgTrans->setLocale($culture);
+                        $imgTrans->setTranslatable($img);
+                        $imgTrans->setLegend($oldArticleTranslation->getTitleImageResume());
+                        $imgTrans->setLocale($culture);
+                        $imgTrans->setisPublishedOnFDCEvent(1);
+                        if ($oldArticleTranslation->getImageResume()) {
+                            $imgTrans->setFile($media);
+                        }
+                        if ($img->findTranslationBylocale($culture) == null) {
                             $img->addTranslation($imgTrans);
                         }
-                        if ($widget->getId() == null) {
-                            $news->addWidget($widget);
-                        }
-                    }
 
-                    // association audios
-                    $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
-                        'id' => $oldArticle->getId(),
-                        'objectClass' => 'Audio'
-                    ), array('order' => 'asc'));
-                    if (count($oldArticleAssociations) > 0) {
-                        foreach ($oldArticleAssociations as $associationKey => $association) {
-                            $count = 2;
-                            $widget = $this->getWidget($news, $count + $associationKey, new NewsWidgetAudio());
-                            $widget->setPosition($count);
-
-                            if ($widget->getFile() != null) {
-                                $audio = $widget->getFile();
+                        // widget text / annonce
+                        if ($oldArticleTranslation->getBody() != null) {
+                            if ($news->getWidgets()->count() == 0) {
+                                $widgetText = new NewsWidgetText();
+                                $widgetText->setPosition(1);
                             } else {
-                                $audio = new MediaAudio();
-                                $widget->setFile($audio);
+                                $widgets = $news->getWidgets();
+                                $widgetText = $widgets->get(0);
                             }
 
-                            $oldAudioAssciations = $dm->getRepository('BaseCoreBundle:OldMediaI18n')->findBy(array(
-                                'id' => $association->getObjectId(),
-                                'culture' => $culture
-                            ));
+                            $widgetTextTranslation = new NewsWidgetTextTranslation();
+                            if ($widgetText->findTranslationByLocale($culture) != null) {
+                                $widgetTextTranslation = $widgetText->findTranslationByLocale($culture);
+                            }
+                            $widgetTextTranslation->setLocale($culture);
+                            $widgetTextTranslation->setContent($oldArticleTranslation->getBody());
+                            $widgetTextTranslation->setTranslatable($widgetText);
+                            $widgetText->addTranslation($widgetTextTranslation);
 
-                            foreach ($oldAudioAssciations as $oldAudio) {
-                                $audioTrans = new MediaAudioTranslation();
-                                if ($audio->findTranslationByLocale($culture) != null) {
-                                    $audioTrans = $audio->findTranslationByLocale($culture);
-                                } else {
-                                    $audio->addTranslation($audioTrans);
+                            if ($widgetText->getId() == null) {
+                                $news->addWidget($widgetText);
+                            }
+                        }
+
+                        // widget video youtube / youtube link / description
+                        if ($oldArticleTranslation->getYoutubeLink() != null ||
+                            $oldArticleTranslation->getYoutubeLinkDescription() != null) {
+                                $widgetVideoYoutube = new NewsWidgetVideoYoutube();
+                                $widgetVideoYoutube->setPosition(2);
+                                foreach ($news->getWidgets() as $widget) {
+                                    if (strpos(get_class($widget), 'NewsWidgetVideoYoutube')) {
+                                        $widgetVideoYoutube = $widget;
+                                        break;
+                                    }
                                 }
-                                $audioTrans->setLocale($culture);
-                                $audioTrans->setTranslatable($audio);
-                                if ($audioTrans->getFile() == null) {
+
+                                $widgetVideoYoutubeTranslation = new NewsWidgetVideoYoutubeTranslation();
+                                if ($widgetVideoYoutube->findTranslationByLocale($culture) != null) {
+                                    $widgetVideoYoutubeTranslation = $widgetVideoYoutube->findTranslationByLocale($culture);
+                                }
+
+                                $widgetVideoYoutubeTranslation->setLocale($culture);
+                                $widgetVideoYoutubeTranslation->setUrl($oldArticleTranslation->getYoutubeLink());
+                                $widgetVideoYoutubeTranslation->setTitle($oldArticleTranslation->getYoutubeLinkDescription());
+                                $widgetVideoYoutubeTranslation->setTranslatable($widgetVideoYoutube);
+                                if ($widgetVideoYoutube->getId() == null) {
+                                    $news->addWidget($widgetVideoYoutube);
+                                }
+                        }
+
+                        // widget photo / association image
+                        $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
+                            'id' => $oldArticle->getId(),
+                            'objectClass' => 'Image'
+                        ), array('order' => 'ASC'));
+                        if (count($oldArticleAssociations) > 0) {
+                            $count = 1;
+                            $widget = $this->getWidget($news, $count, new NewsWidgetImage());
+                            $widget->setPosition($count);
+                            if ($widget->getGallery() == null) {
+                                $gallery = new Gallery();
+                                $widget->setGallery($gallery);
+                            } else {
+                                $gallery = $widget->getGallery();
+                            }
+                            if ($culture == 'fr') {
+                                $gallery->setName($oldArticleTranslation->getMosaiqueTitle());
+                            }
+                            foreach ($oldArticleAssociations as $associationKey => $association) {
+                                $image = $dm->getRepository('BaseCoreBundle:OldMedia')->findOneById($association->getObjectId());
+                                $img = new MediaImage();
+                                if ($gallery->getMedias()->get($associationKey) != null) {
+                                    $img = $gallery->getMedias()->get($associationKey)->getMedia();
+                                }
+                                if ($img != null) {
+                                    $media = ($img->findTranslationByLocale($culture) != null && $img->findTranslationByLocale($culture)->getFile() != null) ? $img->findTranslationByLocale('fr')->getFile() : new Media();
+                                } else {
                                     $media = new Media();
+                                }
+                                if ($img->getSites()->count() == 0) {
+                                    $img->addSite($siteFDCEvent);
+                                }
+                                $saved = false;
+                                if ($media->getId() == null && $culture == 'fr') {
+                                    $file = $this->imagecreatefromfile('http://www.festival-cannes.fr/assets/Image/General/' . $image->getFilename(), $output);
+                                    $media->setName($image->getFilename());
+                                    $media->setBinaryContent($file);
+                                    $media->setEnabled(true);
+                                    $media->setProviderReference($image->getFilename());
+                                    $media->setContext('media_image');
+                                    $media->setProviderStatus(1);
+                                    $media->setProviderName('sonata.media.provider.image');
+                                    $mediaManager->save($media, 'media_image', 'sonata.media.provider.image');
+                                    $saved = true;
+                                }
+                                $imgTrans = $img->findTranslationByLocale($culture);
+                                $oldMediaTrans = $dm->getRepository('BaseCoreBundle:OldMediaI18n')->findOneBy(array(
+                                    'id' => $association->getObjectId(),
+                                    'culture' => $oldArticleTranslation->getCulture()
+                                ));
+                                if ($imgTrans == null) {
+                                    $imgTrans = new MediaImageTranslation();
+                                    $img->addTranslation($imgTrans);
+                                }
+                                if ($culture == 'fr') {
+                                    $imgTrans->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
                                 } else {
-                                    $media = $audioTrans->getFile();
+                                    $imgTrans->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
                                 }
-                                $file = $this->createAudio('http://www.festival-cannes.fr/mp3/' . $oldAudio->getCode(). '.mp3', $output);
-                                if ($file == null) {
-                                    break;
+                                if ($saved == true) {
+                                    $imgTrans->setFile($media);
                                 }
-                                $media->setName($oldAudio->getLabel());
-                                $media->setBinaryContent($file);
-                                $media->setEnabled(true);
-                                $media->setProviderReference($oldAudio->getLabel());
-                                $media->setContext('media_audio');
-                                $media->setProviderStatus(1);
-                                $media->setProviderName('sonata.media.provider.audio');
-                                $mediaManager->save($media);
-                                $audioTrans->setFile($media);
+                                $imgTrans->setTranslatable($img);
+                                $imgTrans->setLegend($oldMediaTrans->getLabel());
+                                $imgTrans->setCopyright($oldMediaTrans->getCopyright());
+                                $imgTrans->setLocale($culture);
+                                $imgTrans->setisPublishedOnFDCEvent(1);
+                                if ($gallery->getMedias()->count() != count($oldArticleAssociations)) {
+                                    $galleryMedia = new GalleryMedia();
+                                    $galleryMedia->setGallery($gallery);
+                                    $galleryMedia->setMedia($img);
+                                    $galleryMedia->setPosition($associationKey + 1);
+                                    $gallery->addMedia($galleryMedia);
+                                }
                             }
                             if ($widget->getId() == null) {
                                 $news->addWidget($widget);
                             }
                         }
-                    }
+                        $imageCount = count($oldArticleAssociations);
 
-                    // association videos
+                        // association audios
+                        $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
+                            'id' => $oldArticle->getId(),
+                            'objectClass' => 'Audio'
+                        ), array('order' => 'asc'));
+                        if (count($oldArticleAssociations) > 0) {
+                            $output->writeln('Import associated audios');
+                            foreach ($oldArticleAssociations as $associationKey => $association) {
+                                $count = $imageCount;
+                                $widget = $this->getWidget($news, $count + $associationKey, new NewsWidgetAudio());
+                                $widget->setPosition($count);
 
-                    // association articles
+                                if ($widget->getFile() != null) {
+                                    $audio = $widget->getFile();
+                                } else {
+                                    $audio = new MediaAudio();
+                                    $widget->setFile($audio);
+                                    $dm->persist($audio);
+                                }
 
-                    // association film
-                    $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
-                        'id' => $oldArticle->getId(),
-                        'objectClass' => 'Film'
-                    ), array('order' => 'asc'));
-                    foreach ($oldArticleAssociations as $association) {
-                        $filmFilm = $dm->getRepository('BaseCoreBundle:FilmFilm')->findOneById($association->getObjectId());
-                        if ($filmFilm == null) {
-                            $output->writeln("<error>Film #{$association->getObjectId()} not found</error>");
-                        } else {
-                            $found = false;
-                            foreach ($news->getAssociatedFilms() as $associated) {
-                                if ($associated->getAssociation()->getId() == $filmFilm->getId()) {
-                                    $found = true;
+                                $oldAudioAssciations = $dm->getRepository('BaseCoreBundle:OldMediaI18n')->findBy(array(
+                                    'id' => $association->getObjectId(),
+                                    'culture' => $culture
+                                ));
+
+                                foreach ($oldAudioAssciations as $oldAudio) {
+                                    $audioTrans = new MediaAudioTranslation();
+                                    if ($audio->findTranslationByLocale($culture) != null) {
+                                        $audioTrans = $audio->findTranslationByLocale($culture);
+                                    } else {
+                                        $audio->addTranslation($audioTrans);
+                                    }
+                                    $audioTrans->setLocale($culture);
+                                    $audioTrans->setTranslatable($audio);
+                                    if ($audioTrans->getFile() == null) {
+                                        $media = new Media();
+                                    } else {
+                                        $media = $audioTrans->getFile();
+                                    }
+                                    $code = $oldAudio->getCode();
+                                    if ($oldAudio->getCode() == null) {
+                                        $oldAudioBi = $dm->getRepository('BaseCoreBundle:OldMediaI18n')->findOneBy(array(
+                                            'id' => $association->getObjectId(),
+                                            'culture' => 'bi'
+                                        ));
+                                        $code = $oldAudioBi->getCode();
+                                    }
+
+                                    if ($code != null) {
+                                        $file = $this->createAudio('http://www.festival-cannes.fr/mp3/' . $code . '.mp3', $output);
+                                        if ($file == null) {
+                                            break;
+                                        }
+                                        $media->setName($oldAudio->getLabel());
+                                        $media->setBinaryContent($file);
+                                        $media->setEnabled(true);
+                                        $media->setProviderReference($oldAudio->getLabel());
+                                        $media->setContext('media_audio');
+                                        $media->setProviderStatus(1);
+                                        $media->setProviderName('sonata.media.provider.audio');
+                                        $mediaManager->save($media, 'media_audio', 'sonata.media.provider.audio');
+                                        $audioTrans->setFile($media);
+                                        $audioTrans->setTitle($oldAudio->getLabel());
+                                    } else {
+                                        $output->writeln("<error>Audio code not found for Object id #{$association->getObjectId()}</error>");
+                                    }
+                                }
+                                if ($widget->getId() == null) {
+                                    $news->addWidget($widget);
                                 }
                             }
-                            if ($found == false) {
-                                $associated = new NewsFilmFilmAssociated();
-                                $associated->setNews($news);
-                                $associated->setAssociation($filmFilm);
-                                $news->addAssociatedFilm($associated);
+                        }
+                        $audioCount = count($oldArticleAssociations);
+
+                        // association videos
+                        $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
+                            'id' => $oldArticle->getId(),
+                            'objectClass' => 'Video'
+                        ), array('order' => 'asc'));
+                        if (count($oldArticleAssociations) > 0) {
+                            $output->writeln('Import associated videos');
+                            foreach ($oldArticleAssociations as $associationKey => $association) {
+                                $output->writeln('old video association');
+                                $count = $associationKey;
+                                $widget = $this->getWidget($news, $count, new NewsWidgetVideo());
+                                $widget->setPosition($audioCount + $imageCount + $associationKey);
+
+                                if ($widget->getFile() != null) {
+                                    $video = $widget->getFile();
+                                } else {
+                                    $video = new MediaVideo();
+                                    $widget->setFile($video);
+                                    $dm->persist($video);
+                                }
+
+                                $oldVideoAssociations = $dm->getRepository('BaseCoreBundle:OldMediaI18n')->findBy(array(
+                                    'id' => $association->getObjectId(),
+                                    'culture' => $culture
+                                ));
+
+                                foreach ($oldVideoAssociations as $oldVideo) {
+                                    $output->writeln('old video translation');
+                                    $videoTrans = new MediaVideoTranslation();
+                                    if ($video->findTranslationByLocale($culture) != null) {
+                                        $videoTrans = $video->findTranslationByLocale($culture);
+                                    } else {
+                                        $video->addTranslation($videoTrans);
+                                    }
+                                    $videoTrans->setLocale($culture);
+                                    $videoTrans->setTranslatable($video);
+                                    if ($videoTrans->getFile() == null) {
+                                        $media = new Media();
+                                    } else {
+                                        $media = $videoTrans->getFile();
+                                    }
+                                    $path = $oldVideo->getDeliveryUrl();
+                                    $pathArray = explode(',', $path);
+                                    $path = $pathArray[0]. '80'. $pathArray[count($pathArray) - 1];
+                                    $output->writeln('before create video');
+                                    $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . $path, $output);
+                                    $output->writeln('after create video');
+                                    if ($file == null) {
+                                        break;
+                                    }
+                                    $media->setName($oldVideo->getLabel());
+                                    $media->setBinaryContent($file);
+                                    $media->setEnabled(true);
+                                    $media->setProviderReference($oldVideo->getLabel());
+                                    $media->setContext('media_video');
+                                    $media->setProviderStatus(1);
+                                    $media->setProviderName('sonata.media.provider.video');
+                                    $mediaManager->save($media);
+                                    $videoTrans->setFile($media);
+                                    $videoTrans->setTitle($oldVideo->getLabel());
+                                    break;
+                                }
+                                if ($widget->getId() == null) {
+                                    $news->addWidget($widget);
+                                }
+                                break;
+                            }
+                        }
+
+                        // association film
+                        $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
+                            'id' => $oldArticle->getId(),
+                            'objectClass' => 'Film'
+                        ), array('order' => 'asc'));
+
+                        if (count($oldArticleAssociations) > 0) {
+                            $output->writeln('Import associated films');
+                            foreach ($oldArticleAssociations as $association) {
+                                $filmFilm = $dm->getRepository('BaseCoreBundle:FilmFilm')->findOneById($association->getObjectId());
+                                if ($filmFilm == null) {
+                                    $output->writeln("<error>Film #{$association->getObjectId()} not found</error>");
+                                } else {
+                                    $found = false;
+                                    foreach ($news->getAssociatedFilms() as $associated) {
+                                        if ($associated->getAssociation()->getId() == $filmFilm->getId()) {
+                                            $found = true;
+                                        }
+                                    }
+                                    if ($found == false) {
+                                        $associated = new NewsFilmFilmAssociated();
+                                        $associated->setNews($news);
+                                        $associated->setAssociation($filmFilm);
+                                        $news->addAssociatedFilm($associated);
+                                    }
+                                }
                             }
                         }
                     }
+
+                    // association articles
+
+                    $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
+                        'id' => $oldArticle->getId(),
+                        'objectClass' => 'Article'
+                    ), array('order' => 'asc'));
+
+                    if (count($oldArticleAssociations) > 0) {
+                        $output->writeln('Import associated articles');
+                        foreach ($oldArticleAssociations as $association) {
+                            $oldNewsId = $association->getObjectId();
+                            $associationNews = $dm->getRepository('BaseCoreBundle:News')->findOneByOldNewsId($oldNewsId);
+                            if ($associationNews !== null) {
+                                if ($news->contains($associationNews) == false) {
+                                    $news->addAssociatedNews($associationNews);
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
 
@@ -379,7 +536,6 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
     private function getWidget($news, $pos, $entity)
     {
-        $found = 0;
         if ($news->getWidgets()->get($pos) !== null) {
             return $news->getWidgets()->get($pos);
         }
@@ -390,13 +546,16 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
     private function isQuotidienMatching($oldArticle, $oldArticleTranslations, $dm, $output)
     {
-        // first case
+        // case one
+        // Quotidien - Tous les articles de 2001 à 2006
         if ($oldArticle->getCreatedAt() != false &&
             $oldArticle->getCreatedAt()->format('Y') >= 2001 && $oldArticle->getCreatedAt()->format('Y') <= 2006) {
             return true;
         }
 
-        // second case
+        // case two
+        // Quotidien 2007 > 2015 - Articles Conférence de presse (films / jurys / lauréats)
+        // "conférence" dans le titre + film associé
         if ($oldArticle->getCreatedAt() != false &&
             $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
             $hasConference = false;
@@ -416,6 +575,129 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                 if (count($oldArticleAssociations) > 0) {
                     return true;
                 }
+            }
+        }
+
+        // case third
+        $types  = array(
+            'competition', 'un certain regard', 'hors competition',
+            'seances speciales', 'cinefondation', 'courts metrages',
+            'cannes classics', 'cinema de la plage'
+        );
+        if ($oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
+            $hasType = false;
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                if ($trans->getCulture() == 'fr') {
+                    foreach($types as $type) {
+                        if (stripos($title, $type) !== false) {
+                            $hasType = true;
+                            break 2;
+                        }
+                    }
+                }
+            }
+
+            if ($hasType == true) {
+                return true;
+            }
+        }
+
+        // case five
+        // Quotidien 2007 > 2015 - Articles Palmarès Cinéfondation
+        // "Cinéfondation" + "prix" ou "palmarès" dans le titre
+        if ($oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
+            $hasCinefondation = false;
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                if ($trans->getCulture() == 'fr' && (stripos($title, 'Cinefondation') !== false &&
+                        (stripos($title, 'prix') !== false || stripos($title, 'palmares') !== false))) {
+                    $hasCinefondation = true;
+                }
+            }
+
+            if ($hasCinefondation == true) {
+                return true;
+            }
+        }
+
+        // case six
+        // Quotidien 2007 > 2015 - Articles Palmarès Un Certain Regard
+        // "Un Certain Regard" + "prix" ou "palmarès" dans le titre
+        if ($oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
+            $hasCinefondation = false;
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                if ($trans->getCulture() == 'fr' && (stripos($title, 'Un certain Regard') !== false &&
+                        (stripos($title, 'prix') !== false || stripos($title, 'palmares') !== false))) {
+                    $hasCinefondation = true;
+                }
+            }
+
+            if ($hasCinefondation == true) {
+                return true;
+            }
+        }
+
+        // case twelve
+        // Quotidien 2007 > 2015 - articles Cérémonies
+        // "Cérémonie" dans le titre + "Ouverture" ou "Cloture" dans le titre
+        if ($oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
+            $hasCinefondation = false;
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                if ($trans->getCulture() == 'fr' && (stripos($title, 'Ceremonie') !== false &&
+                        (stripos($title, 'ouverture') !== false || stripos($title, 'cloture') !== false))) {
+                    $hasCinefondation = true;
+                }
+            }
+
+            if ($hasCinefondation == true) {
+                return true;
+            }
+        }
+
+        // case nine
+        // Quotidien 2007 > 2015 - Interview Jurys
+        // - "jury" + "interview" || "jury" + "rencontre" || "jury" + "entretien"
+        if ($oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
+            $hasJury = false;
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                if ($trans->getCulture() == 'fr' && (stripos($title, 'Jury') !== false &&
+                        (stripos($title, 'interview') !== false || stripos($title, 'rencontre') !== false ||
+                            stripos($title, 'entretien') !== false))) {
+                    $hasJury = true;
+                }
+            }
+
+            if ($hasJury == true) {
+                return true;
+            }
+        }
+
+        // case thirteen
+        // Quotidien 2007 > 2015 - Leçons
+        // "Lecon de cinéma" ou "lecon de musique" ou "lecon d'actrice" dans le titre
+        if ($oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
+            $hasCinefondation = false;
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                if ($trans->getCulture() == 'fr' && (stripos($title, 'Lecon de cinema') !== false ||
+                        stripos($title, 'Lecon de musique') !== false ||
+                        stripos($title, 'Lecon d\'actrice') !== false)) {
+                    $hasCinefondation = true;
+                }
+            }
+
+            if ($hasCinefondation == true) {
+                return true;
             }
         }
 
@@ -562,21 +844,48 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                 $output->writeln("extension doesnt exist {$filename}");
                 break;
         }
+
+        return $file;
+    }
+
+    private function createVideo($url, $output)
+    {
+        $path = $this->getContainer()->get('kernel')->getRootDir() . '/../web/uploads/old/video/'. md5($url). '.'. pathinfo($url, PATHINFO_EXTENSION);
+
+        $output->writeln('Video path: '. $path);
+        if (!file_exists($path)) {
+            $output->writeln('Download video: '. $url);
+            $data = file_get_contents($url);
+            if ($data === false) {
+                $output->writeln("<error>Cant get file: {$url}</error>");
+                return;
+            }
+
+            $file = fopen($path, "w+");
+            fwrite($file, $data);
+            fclose($file);
+        }
+
+        return $path;
     }
 
     private function createAudio($url, $output)
     {
         $path = $this->getContainer()->get('kernel')->getRootDir() . '/../web/uploads/old/audio/'. md5($url). '.'. pathinfo($url, PATHINFO_EXTENSION);
 
-        $data = file_get_contents($url);
-        if ($data === false) {
-            $output->writeln("<error>Cant get file: {$url}</error>");
-            return;
-        }
+        $output->writeln('Audio path: '. $path);
+        if (!file_exists($path)) {
+            $output->writeln('Download audio: '. $url);
+            $data = file_get_contents($url);
+            if ($data === false) {
+                $output->writeln("<error>Cant get file: {$url}</error>");
+                return;
+            }
 
-        $file = fopen($path, "w+");
-        fwrite($file, $data);
-        fclose($file);
+            $file = fopen($path, "w+");
+            fwrite($file, $data);
+            fclose($file);
+        }
 
         return $path;
     }
