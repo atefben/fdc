@@ -10505,6 +10505,11 @@ header #searchContainer {
   top: 91px;
   width: 100%;
 }
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .navigation-sticky.sticky {
+    top: 68px;
+  }
+}
 
 .navigation-sticky-02 {
   background-color: #141414;
