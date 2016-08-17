@@ -10122,10 +10122,10 @@ header #searchContainer {
 }
 @media only screen and (max-width: 768px) {
   .s-slider-retrospective .timelapse .noUi-horizontal .noUi-handle.noUi-handle-lower {
-    width: 19px;
-    height: 19px;
+    width: 23px;
+    height: 23px;
     left: 0px;
-    top: -10px;
+    top: -11px;
   }
 }
 .s-slider-retrospective .timelapse .noUi-handle:before, .s-slider-retrospective .timelapse .noUi-handle:after {
