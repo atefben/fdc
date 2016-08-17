@@ -521,6 +521,12 @@
     left: 0px;
     top: -5px;
 
+    .mobile &{
+      width: 20px;
+      height: 20px;
+      top: -10px;
+    }
+
     &:hover {
       cursor: pointer;
     }
@@ -530,6 +536,14 @@
       height: 10px;
       left: 0px;
       top: -5px;
+
+      .mobile &{
+        width: 20px;
+        height: 20px;
+        top: -10px;
+      }
+
+      
     }
   }
 

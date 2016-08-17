@@ -12531,6 +12531,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   left: 0px;
   top: -5px;
 }
+.mobile .slider-selection .noUi-horizontal .noUi-handle {
+  width: 20px;
+  height: 20px;
+  top: -10px;
+}
 .slider-selection .noUi-horizontal .noUi-handle:hover {
   cursor: pointer;
 }
@@ -12539,6 +12544,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   height: 10px;
   left: 0px;
   top: -5px;
+}
+.mobile .slider-selection .noUi-horizontal .noUi-handle.noUi-handle-lower {
+  width: 20px;
+  height: 20px;
+  top: -10px;
 }
 .slider-selection .noUi-handle:before, .slider-selection .noUi-handle:after {
   content: "";
