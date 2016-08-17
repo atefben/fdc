@@ -211,6 +211,19 @@ abstract class Info implements TranslateMainInterface
      */
     private $hidden = 0;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $oldNewsId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     *
+     */
+    private $oldNewsTable;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
@@ -905,5 +918,51 @@ abstract class Info implements TranslateMainInterface
     public function getTypeClone()
     {
         return $this->typeClone;
+    }
+
+    /**
+     * Set oldNewsId
+     *
+     * @param integer $oldNewsId
+     * @return Info
+     */
+    public function setOldNewsId($oldNewsId)
+    {
+        $this->oldNewsId = $oldNewsId;
+
+        return $this;
+    }
+
+    /**
+     * Get oldNewsId
+     *
+     * @return integer 
+     */
+    public function getOldNewsId()
+    {
+        return $this->oldNewsId;
+    }
+
+    /**
+     * Set oldNewsTable
+     *
+     * @param string $oldNewsTable
+     * @return Info
+     */
+    public function setOldNewsTable($oldNewsTable)
+    {
+        $this->oldNewsTable = $oldNewsTable;
+
+        return $this;
+    }
+
+    /**
+     * Get oldNewsTable
+     *
+     * @return string 
+     */
+    public function getOldNewsTable()
+    {
+        return $this->oldNewsTable;
     }
 }

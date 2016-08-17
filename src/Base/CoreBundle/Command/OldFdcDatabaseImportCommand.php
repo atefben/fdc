@@ -6,6 +6,16 @@ use Base\CoreBundle\Entity\Gallery;
 use Application\Sonata\MediaBundle\Entity\GalleryHasMedia;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Base\CoreBundle\Entity\GalleryMedia;
+use Base\CoreBundle\Entity\InfoArticle;
+use Base\CoreBundle\Entity\InfoArticleTranslation;
+use Base\CoreBundle\Entity\InfoFilmFilmAssociated;
+use Base\CoreBundle\Entity\InfoWidgetAudio;
+use Base\CoreBundle\Entity\InfoWidgetImage;
+use Base\CoreBundle\Entity\InfoWidgetText;
+use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
+use Base\CoreBundle\Entity\InfoWidgetVideo;
+use Base\CoreBundle\Entity\InfoWidgetVideoYoutube;
+use Base\CoreBundle\Entity\InfoWidgetVideoYoutubeTranslation;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImage;
@@ -22,6 +32,7 @@ use Base\CoreBundle\Entity\NewsWidgetText;
 use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
 use Base\CoreBundle\Entity\NewsWidgetVideo;
 use Base\CoreBundle\Entity\NewsWidgetVideoYoutube;
+use Base\CoreBundle\Entity\NewsWidgetVideoYoutubeTranslation;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -54,30 +65,87 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $dm = $this->getContainer()->get('doctrine')->getManager();
         $mediaManager = $this->getContainer()->get('sonata.media.manager.media');
 
-        $output->writeln('<info>Import Article Quotidien...</info>');
-        $this->importArticleQuotidien($dm, $mediaManager, $output, $input);
+       // $this->importArticleQuotidien($dm, $mediaManager, $output, $input);
+        $this->importArticleActualite($dm, $mediaManager, $output, $input);
     }
+
+    private function importArticleActualite($dm, $mediaManager, $output, $input)
+    {
+        $output->writeln('<info>Import Article Actualite...</info>');
+        $element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(61347);
+        $oldArticles[0] = $element;
+
+        /*$oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
+            'articleTypeId' => self::TYPE_NEWS_FESTIVAL,
+            'published' => true
+        ), array('id' => 'ASC'));*/
+
+        $entitiesArray = array(
+            'main_entity_parent' => 'BaseCoreBundle:Info',
+            'main_entity' => 'BaseCoreBundle:InfoArticle',
+            'main' => new InfoArticle(),
+            'main_trans' => new InfoArticleTranslation(),
+            'widget_text' => new InfoWidgetText(),
+            'widget_text_trans' => new InfoWidgetTextTranslation(),
+            'widget_yt' => new InfoWidgetVideoYoutube(),
+            'widget_yt_trans' => new InfoWidgetVideoYoutubeTranslation(),
+            'widget_yt_entity' => 'InfoWidgetVideoYoutube',
+            'widget_image' => new InfoWidgetImage(),
+            'widget_audio' => new InfoWidgetAudio(),
+            'widget_video' => new InfoWidgetVideo(),
+            'association_setter' => 'addAssociatedInfo',
+            'association' => new InfoFilmFilmAssociated(),
+            'association_film_setter' => 'setInfo',
+        );
+
+        $this->importLoop($oldArticles, $dm, $mediaManager, $output, $input, $entitiesArray, 'isActualiteMatching');
+    }
+
 
     private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
-        $element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60982);
+        $output->writeln('<info>Import Article Quotidien...</info>');
+        $element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60283);
         $oldArticles[0] = $element;
-        $optionAssociatedNews = $input->getOption('associated-news');
-        $siteFDCEvent = $dm->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-evenementiel');
 
         /*$oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
             'articleTypeId' => self::TYPE_QUOTIDIEN,
             'published' => true
         ), array('id' => 'ASC'));*/
 
-        $mapperFields = array(
-            'title' => 'title',
+        $entitiesArray = array(
+            'main_entity_parent' => 'BaseCoreBundle:News',
+            'main_entity' => 'BaseCoreBundle:NewsArticle',
+            'main' => new NewsArticle(),
+            'main_trans' => new NewsArticleTranslation(),
+            'widget_text' => new NewsWidgetText(),
+            'widget_text_trans' => new NewsWidgetTextTranslation(),
+            'widget_yt' => new NewsWidgetVideoYoutube(),
+            'widget_yt_entity' => 'NewsWidgetVideoYoutube',
+            'widget_yt_trans' => new NewsWidgetVideoYoutubeTranslation(),
+            'widget_image' => new NewsWidgetImage(),
+            'widget_audio' => new NewsWidgetAudio(),
+            'widget_video' => new NewsWidgetVideo(),
+            'association_setter' => 'addAssociatedNews',
+            'association' => new NewsFilmFilmAssociated(),
+            'association_film_setter' => 'setNews',
         );
 
-        $totalSaved = 0;
-        $entities = array();
+        $this->importLoop($oldArticles, $dm, $mediaManager, $output, $input, $entitiesArray, 'isQuotidienMatching');
+    }
 
+    private function importLoop($oldArticles, $dm, $mediaManager, $output, $input, $entitiesArray, $getterMatching)
+    {
+        $mapperFields = array(
+            'title' => 'title',
+            'resume' => 'introduction'
+        );
+        $totalSaved = 0;
+        $optionAssociatedNews = $input->getOption('associated-news');
+        $siteFDCEvent = $dm->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-institutionnel');
+        $entities = array();
         $oldArticlesTotal = count($oldArticles);
+
         foreach ($oldArticles as $oldArticleKey => $oldArticle) {
             $output->writeln('<comment>#'. $oldArticle->getId(). ' - '. ($oldArticleKey + 1). '/'. $oldArticlesTotal. '</comment>');
             $oldArticleTranslations = $dm->getRepository('BaseCoreBundle:OldArticleI18n')->findById($oldArticle->getId());
@@ -90,17 +158,17 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
             // is valid matching
             $output->writeln('<comment>#'. $oldArticle->getId(). ' verify matching.</comment>');
-            $matching = $this->isQuotidienMatching($oldArticle, $oldArticleTranslations, $dm, $output);
+            $matching = $this->{$getterMatching}($oldArticle, $oldArticleTranslations, $dm, $output);
             if ($matching == false) {
                 continue;
             }
             $output->writeln('<info>#'. $oldArticle->getId(). ' is matching.</info>');
 
             // old news
-            $news = $dm->getRepository('BaseCoreBundle:NewsArticle')->findOneByOldNewsId($oldArticle->getId());
+            $news = $dm->getRepository($entitiesArray['main_entity'])->findOneByOldNewsId($oldArticle->getId());
             // set values
             if ($news == null) {
-                $news = new NewsArticle();
+                $news = clone $entitiesArray['main'];
             }
             $news->setOldNewsTable('OldNews');
             $news->setOldNewsId($oldArticle->getId());
@@ -122,7 +190,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                         $output->writeln('<comment>add Translation ' . $culture . '</comment>');
                         $newsTrans = $news->findTranslationByLocale($culture);
                         if ($newsTrans == null) {
-                            $newsTrans = new NewsArticleTranslation();
+                            $newsTrans = clone $entitiesArray['main_trans'];
                             $newsTrans->setLocale($culture);
                             $newsTrans->setCreatedAt($news->getCreatedAt());
                             $newsTrans->setUpdatedAt($news->getCreatedAt());
@@ -190,14 +258,14 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                         // widget text / annonce
                         if ($oldArticleTranslation->getBody() != null) {
                             if ($news->getWidgets()->count() == 0) {
-                                $widgetText = new NewsWidgetText();
+                                $widgetText = clone $entitiesArray['widget_text'];
                                 $widgetText->setPosition(1);
                             } else {
                                 $widgets = $news->getWidgets();
                                 $widgetText = $widgets->get(0);
                             }
 
-                            $widgetTextTranslation = new NewsWidgetTextTranslation();
+                            $widgetTextTranslation = clone $entitiesArray['widget_text_trans'];
                             if ($widgetText->findTranslationByLocale($culture) != null) {
                                 $widgetTextTranslation = $widgetText->findTranslationByLocale($culture);
                             }
@@ -214,16 +282,16 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                         // widget video youtube / youtube link / description
                         if ($oldArticleTranslation->getYoutubeLink() != null ||
                             $oldArticleTranslation->getYoutubeLinkDescription() != null) {
-                                $widgetVideoYoutube = new NewsWidgetVideoYoutube();
+                                $widgetVideoYoutube = clone $entitiesArray['widget_yt'];
                                 $widgetVideoYoutube->setPosition(2);
                                 foreach ($news->getWidgets() as $widget) {
-                                    if (strpos(get_class($widget), 'NewsWidgetVideoYoutube')) {
+                                    if (strpos(get_class($widget), $entitiesArray['widget_yt_entity'])) {
                                         $widgetVideoYoutube = $widget;
                                         break;
                                     }
                                 }
 
-                                $widgetVideoYoutubeTranslation = new NewsWidgetVideoYoutubeTranslation();
+                                $widgetVideoYoutubeTranslation = clone $entitiesArray['widget_yt_trans'];
                                 if ($widgetVideoYoutube->findTranslationByLocale($culture) != null) {
                                     $widgetVideoYoutubeTranslation = $widgetVideoYoutube->findTranslationByLocale($culture);
                                 }
@@ -244,7 +312,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                         ), array('order' => 'ASC'));
                         if (count($oldArticleAssociations) > 0) {
                             $count = 1;
-                            $widget = $this->getWidget($news, $count, new NewsWidgetImage());
+                            $widget = $this->getWidget($news, $count, clone $entitiesArray['widget_image']);
                             $widget->setPosition($count);
                             if ($widget->getGallery() == null) {
                                 $gallery = new Gallery();
@@ -327,7 +395,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             $output->writeln('Import associated audios');
                             foreach ($oldArticleAssociations as $associationKey => $association) {
                                 $count = $imageCount;
-                                $widget = $this->getWidget($news, $count + $associationKey, new NewsWidgetAudio());
+                                $widget = $this->getWidget($news, $count + $associationKey, clone $entitiesArray['widget_audio']);
                                 $widget->setPosition($count);
 
                                 if ($widget->getFile() != null) {
@@ -402,7 +470,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             foreach ($oldArticleAssociations as $associationKey => $association) {
                                 $output->writeln('old video association');
                                 $count = $associationKey;
-                                $widget = $this->getWidget($news, $count, new NewsWidgetVideo());
+                                $widget = $this->getWidget($news, $count, clone $entitiesArray['widget_video']);
                                 $widget->setPosition($audioCount + $imageCount + $associationKey);
 
                                 if ($widget->getFile() != null) {
@@ -481,8 +549,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                         }
                                     }
                                     if ($found == false) {
-                                        $associated = new NewsFilmFilmAssociated();
-                                        $associated->setNews($news);
+                                        $associated = clone $entitiesArray['association'];
+                                        $associated->{$entitiesArray['association_film_setter']}($news);
                                         $associated->setAssociation($filmFilm);
                                         $news->addAssociatedFilm($associated);
                                     }
@@ -492,7 +560,6 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                     }
 
                     // association articles
-
                     $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
                         'id' => $oldArticle->getId(),
                         'objectClass' => 'Article'
@@ -502,15 +569,14 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                         $output->writeln('Import associated articles');
                         foreach ($oldArticleAssociations as $association) {
                             $oldNewsId = $association->getObjectId();
-                            $associationNews = $dm->getRepository('BaseCoreBundle:News')->findOneByOldNewsId($oldNewsId);
+                            $associationNews = $dm->getRepository($entitiesArray['main_entity_parent'])->findOneByOldNewsId($oldNewsId);
                             if ($associationNews !== null) {
                                 if ($news->contains($associationNews) == false) {
-                                    $news->addAssociatedNews($associationNews);
+                                    $news->{$entitiesArray['association_setter']}($associationNews);
                                 }
                             }
                         }
                     }
-
                 }
             }
 
@@ -543,16 +609,19 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         return $entity;
     }
 
+    private function isActualiteMatching($oldArticle, $oldArticleTranslations, $dm, $output)
+    {
+        // case one
+        // Actualités-Festival de 2010 > 2015
+        if ($oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2010 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
+            return true;
+        }
+    }
+
 
     private function isQuotidienMatching($oldArticle, $oldArticleTranslations, $dm, $output)
     {
-        // case one
-        // Quotidien - Tous les articles de 2001 à 2006
-        if ($oldArticle->getCreatedAt() != false &&
-            $oldArticle->getCreatedAt()->format('Y') >= 2001 && $oldArticle->getCreatedAt()->format('Y') <= 2006) {
-            return true;
-        }
-
         // case two
         // Quotidien 2007 > 2015 - Articles Conférence de presse (films / jurys / lauréats)
         // "conférence" dans le titre + film associé
@@ -642,25 +711,6 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             }
         }
 
-        // case twelve
-        // Quotidien 2007 > 2015 - articles Cérémonies
-        // "Cérémonie" dans le titre + "Ouverture" ou "Cloture" dans le titre
-        if ($oldArticle->getCreatedAt() != false &&
-            $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
-            $hasCinefondation = false;
-            foreach ($oldArticleTranslations as $trans) {
-                $title = $this->removeAccents($trans->getTitle());
-                if ($trans->getCulture() == 'fr' && (stripos($title, 'Ceremonie') !== false &&
-                        (stripos($title, 'ouverture') !== false || stripos($title, 'cloture') !== false))) {
-                    $hasCinefondation = true;
-                }
-            }
-
-            if ($hasCinefondation == true) {
-                return true;
-            }
-        }
-
         // case nine
         // Quotidien 2007 > 2015 - Interview Jurys
         // - "jury" + "interview" || "jury" + "rencontre" || "jury" + "entretien"
@@ -677,6 +727,25 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             }
 
             if ($hasJury == true) {
+                return true;
+            }
+        }
+
+        // case twelve
+        // Quotidien 2007 > 2015 - articles Cérémonies
+        // "Cérémonie" dans le titre + "Ouverture" ou "Cloture" dans le titre
+        if ($oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
+            $hasCinefondation = false;
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                if ($trans->getCulture() == 'fr' && (stripos($title, 'Ceremonie') !== false &&
+                        (stripos($title, 'ouverture') !== false || stripos($title, 'cloture') !== false))) {
+                    $hasCinefondation = true;
+                }
+            }
+
+            if ($hasCinefondation == true) {
                 return true;
             }
         }
