@@ -365,7 +365,7 @@ a{
 	height: 110px;
 }
 .photos .slideshow .thumbnails .thumb.active:before{
-
+    object-fit: cover;
 	width: 144px;
 	height: 94px;
 }

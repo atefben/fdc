@@ -1784,6 +1784,7 @@ article .picto .icon{
 .slideshow .img img{
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 .slideshow {
 
@@ -1824,6 +1825,7 @@ article .picto .icon{
   height: 100%;
   width: 100%;
   z-index: 0;
+    object-fit: cover;
 }
 .slideshow .thumbnails .thumb .image-wrapper img {
   display: block;
@@ -3519,7 +3521,7 @@ a{
 	height: 110px;
 }
 .photos .slideshow .thumbnails .thumb.active:before{
-
+    object-fit: cover;
 	width: 144px;
 	height: 94px;
 }
