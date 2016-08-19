@@ -65,6 +65,64 @@ var owInitAjax = function() {
 }
 
 
+var ajaxMedialib = function() {
+  $('.block-search .button-submit').on('click', function(e) {
+    e.preventDefault();
+
+    //on récupère les informations
+
+    var url = $('.block-search form').attr('action');
+    var keyword = $('.block-search input[name="search"]').val();
+    var checked = [];
+    var date = [];
+
+    date[1] = $('.block-search #slider-snap-value-lower').html();
+    date[2] = $('.block-search #slider-snap-value-upper').html();
+
+    $.each($('.choice'), function(i,v) {
+      if($(v).is(":checked")) {
+        checked.push($(v).attr('name'));
+      }
+    })
+
+    console.log(checked);
+    console.log(keyword);
+    console.log(date);
+
+    //TODO back data
+
+    $.ajax({
+      url: url,
+      type : 'GET',
+    }).done(function(data) {
+
+      console.log(data);
+      grid = $(data);
+      $('.grid-01').html(grid);
+
+      //on mets à jour la nouvelle grille
+
+        var grid = $('.isotope-03').isotope({
+          itemSelector    : '.item',
+          percentPosition : true,
+          sortBy          : 'original-order',
+          layoutMode      : 'packery',
+          packery         : {
+            columnWidth : '.grid-sizer'
+          }
+        });
+
+
+      owInitAleaGrid(grid, $('.grid-01'), true);
+      
+
+    });
+
+
+  })
+}
+
+
 var owInitReadMore = function() {
   var number = 0;
   

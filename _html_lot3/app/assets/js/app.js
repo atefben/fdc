@@ -197,6 +197,8 @@ if($('body').hasClass('mobile')){
     var grid = owInitGrid('isotope-03');
 
     owInitAleaGrid(grid, $('.grid-01'), true);
+
+    ajaxMedialib();
   }
 
   if($('.search-page').length) {

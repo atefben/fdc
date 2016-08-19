@@ -99,6 +99,7 @@
   }
 }
 
+
 // - BLOCK 01 medium
 .block-01-m {
   margin: 40px auto;
@@ -1852,4 +1853,15 @@
     margin-bottom: 30px;
     color: #fff;
   }
+}
+
+.block-mediatheque {
+  @media screen and (max-width: 1024px){
+    width: 1024px;
+  }
+
+  @media screen and  (min-width: 1024px){
+    width: 1280px;
+  }
+
 }

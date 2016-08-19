@@ -9,11 +9,11 @@ var owInitSliderSelect = function(id) {
 
 
     noUiSlider.create(slider, {
-    	start: [1960, 2000],//todo script
+    	start: [1946, GLOBALS.year],//todo script
     	connect: true,
     	range: {
     		'min': 1946,
-    		'max': 2016
+    		'max': GLOBALS.year
     	}
      });
 
