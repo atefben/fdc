@@ -213,14 +213,31 @@ abstract class Statement implements TranslateMainInterface
      */
     private $hidden = 0;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $oldNewsId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     *
+     */
+    private $oldNewsTable;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->widgets = new ArrayCollection();
+        $this->sites = new ArrayCollection();
         $this->associatedStatement = new ArrayCollection();
         $this->associatedProjections = new ArrayCollection();
         $this->associatedFilms = new ArrayCollection();
+        $this->displayedHome = false;
+        $this->displayedMobile = false;
+        $this->hideSameDay = false;
     }
 
     public function __toString() {
@@ -906,5 +923,51 @@ abstract class Statement implements TranslateMainInterface
     public function getTypeClone()
     {
         return $this->typeClone;
+    }
+
+    /**
+     * Set oldNewsId
+     *
+     * @param integer $oldNewsId
+     * @return Statement
+     */
+    public function setOldNewsId($oldNewsId)
+    {
+        $this->oldNewsId = $oldNewsId;
+
+        return $this;
+    }
+
+    /**
+     * Get oldNewsId
+     *
+     * @return integer 
+     */
+    public function getOldNewsId()
+    {
+        return $this->oldNewsId;
+    }
+
+    /**
+     * Set oldNewsTable
+     *
+     * @param string $oldNewsTable
+     * @return Statement
+     */
+    public function setOldNewsTable($oldNewsTable)
+    {
+        $this->oldNewsTable = $oldNewsTable;
+
+        return $this;
+    }
+
+    /**
+     * Get oldNewsTable
+     *
+     * @return string 
+     */
+    public function getOldNewsTable()
+    {
+        return $this->oldNewsTable;
     }
 }

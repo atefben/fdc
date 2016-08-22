@@ -3,7 +3,6 @@
 namespace Base\CoreBundle\Command;
 
 use Base\CoreBundle\Entity\Gallery;
-use Application\Sonata\MediaBundle\Entity\GalleryHasMedia;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Base\CoreBundle\Entity\GalleryMedia;
 use Base\CoreBundle\Entity\InfoArticle;
@@ -24,7 +23,6 @@ use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
-
 use Base\CoreBundle\Entity\NewsFilmFilmAssociated;
 use Base\CoreBundle\Entity\NewsWidgetAudio;
 use Base\CoreBundle\Entity\NewsWidgetImage;
@@ -33,6 +31,16 @@ use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
 use Base\CoreBundle\Entity\NewsWidgetVideo;
 use Base\CoreBundle\Entity\NewsWidgetVideoYoutube;
 use Base\CoreBundle\Entity\NewsWidgetVideoYoutubeTranslation;
+use Base\CoreBundle\Entity\StatementArticle;
+use Base\CoreBundle\Entity\StatementArticleTranslation;
+use Base\CoreBundle\Entity\StatementFilmFilmAssociated;
+use Base\CoreBundle\Entity\StatementWidgetAudio;
+use Base\CoreBundle\Entity\StatementWidgetImage;
+use Base\CoreBundle\Entity\StatementWidgetText;
+use Base\CoreBundle\Entity\StatementWidgetTextTranslation;
+use Base\CoreBundle\Entity\StatementWidgetVideo;
+use Base\CoreBundle\Entity\StatementWidgetVideoYoutube;
+use Base\CoreBundle\Entity\StatementWidgetVideoYoutubeTranslation;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -44,6 +52,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     const TYPE_QUOTIDIEN = 23102;
     const TYPE_NEWS_FESTIVAL = 23120;
     const TYPE_NEWS_CONFERENCE = 23121;
+    const TYPE_COMMUNIQUE = 23109;
 
     private $langs = array('fr', 'en', 'es', 'zh');
 
@@ -65,8 +74,42 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $dm = $this->getContainer()->get('doctrine')->getManager();
         $mediaManager = $this->getContainer()->get('sonata.media.manager.media');
 
-        $this->importArticleQuotidien($dm, $mediaManager, $output, $input);
-        $this->importArticleActualite($dm, $mediaManager, $output, $input);
+        //$this->importArticleQuotidien($dm, $mediaManager, $output, $input);
+        //$this->importArticleActualite($dm, $mediaManager, $output, $input);
+        $this->importArticleCommunique($dm, $mediaManager, $output, $input);
+    }
+
+    private function importArticleCommunique($dm, $mediaManager, $output, $input)
+    {
+        $output->writeln('<info>Import Article Communique...</info>');
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60596);
+        $oldArticles[0] = $element;*/
+
+        $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
+            'articleTypeId' => self::TYPE_COMMUNIQUE,
+            'published' => true
+        ), array('id' => 'ASC'));
+
+        $entitiesArray = array(
+            'main_entity_parent' => 'BaseCoreBundle:Statement',
+            'main_entity' => 'BaseCoreBundle:StatementArticle',
+            'main' => new StatementArticle(),
+            'main_trans' => new StatementArticleTranslation(),
+            'widget_text' => new StatementWidgetText(),
+            'widget_text_trans' => new StatementWidgetTextTranslation(),
+            'widget_yt' => new StatementWidgetVideoYoutube(),
+            'widget_yt_trans' => new StatementWidgetVideoYoutubeTranslation(),
+            'widget_yt_entity' => 'StatementWidgetVideoYoutube',
+            'widget_image' => new StatementWidgetImage(),
+            'widget_audio' => new StatementWidgetAudio(),
+            'widget_video' => new StatementWidgetVideo(),
+            'association_setter' => 'addAssociatedStatement',
+            'association' => new StatementFilmFilmAssociated(),
+            'association_film_setter' => 'setStatement',
+            'acl_update' => 'base.admin.statement_article',
+        );
+
+        $this->importLoop($oldArticles, $dm, $mediaManager, $output, $input, $entitiesArray, 'isCommuniqueMatching');
     }
 
     private function importArticleActualite($dm, $mediaManager, $output, $input)
@@ -96,6 +139,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             'association_setter' => 'addAssociatedInfo',
             'association' => new InfoFilmFilmAssociated(),
             'association_film_setter' => 'setInfo',
+            'acl_update' => 'base.admin.news_article',
         );
 
         $this->importLoop($oldArticles, $dm, $mediaManager, $output, $input, $entitiesArray, 'isActualiteMatching');
@@ -105,7 +149,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Quotidien...</info>');
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(55446);
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60414);
         $oldArticles[0] = $element;*/
 
         $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
@@ -129,6 +173,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             'association_setter' => 'addAssociatedNews',
             'association' => new NewsFilmFilmAssociated(),
             'association_film_setter' => 'setNews',
+            'acl_update' => 'base.admin.info_article',
         );
 
         $this->importLoop($oldArticles, $dm, $mediaManager, $output, $input, $entitiesArray, 'isQuotidienMatching');
@@ -609,14 +654,14 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             if ($totalSaved % 10 == 0) {
                 $output->writeln('<info>Saved !</info>');
                 $dm->flush();
-                $this->updateAcl($entities, 'base.admin.news_article', $output);
+                $this->updateAcl($entities, $entitiesArray['acl_update'], $output);
                 $entities = array();
             }
         }
 
         $output->writeln('<info>Total saved: '. $totalSaved. '</info>');
         $dm->flush();
-        $this->updateAcl($entities, 'base.admin.news_article', $output);
+        $this->updateAcl($entities, $entitiesArray['acl_update'], $output);
     }
 
     private function getWidget($news, $pos, $entity)
@@ -628,23 +673,39 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         return $entity;
     }
 
+    private function isCommuniqueMatching($oldArticle, $oldArticleTranslations, $dm, $output)
+    {
+        // case one
+        // Communiqués-Festival de 2001 > 2015
+        if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2001 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
+            return true;
+        }
+    }
+
     private function isActualiteMatching($oldArticle, $oldArticleTranslations, $dm, $output)
     {
         // case one
         // Actualités-Festival de 2010 > 2015
-        if ($oldArticle->getCreatedAt() != false &&
+        if ($oldArticle->getIsOnline() == true && $oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
             $oldArticle->getCreatedAt()->format('Y') >= 2010 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
             return true;
         }
     }
 
-
     private function isQuotidienMatching($oldArticle, $oldArticleTranslations, $dm, $output)
     {
+        // case one
+        // Communiqués-Festival de 2001 > 2006
+        if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2001 && $oldArticle->getCreatedAt()->format('Y') <= 2006) {
+            return true;
+        }
+
         // case two
         // Quotidien 2007 > 2015 - Articles Conférence de presse (films / jurys / lauréats)
         // "conférence" dans le titre + film associé
-        if ($oldArticle->getCreatedAt() != false &&
+        if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
             $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
             $hasConference = false;
             foreach ($oldArticleTranslations as $trans) {
@@ -672,7 +733,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             'seances speciales', 'cinefondation', 'courts metrages',
             'cannes classics', 'cinema de la plage'
         );
-        if ($oldArticle->getCreatedAt() != false &&
+        if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
             $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
             $hasType = false;
             foreach ($oldArticleTranslations as $trans) {
@@ -692,10 +753,33 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             }
         }
 
+        // case fourth
+        if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2013 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
+            $hasFilm = false;
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                if ($trans->getCulture() == 'fr' && (stripos($title, 'palmares') !== false)) {
+                    $hasFilm = true;
+                }
+            }
+
+            if ($hasFilm == true) {
+                $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findOneBy(array(
+                    'id' => $oldArticle->getId(),
+                    'objectClass' => 'Film'
+                ));
+
+                if (count($oldArticleAssociations) > 0) {
+                    return true;
+                }
+            }
+        }
+
         // case five
         // Quotidien 2007 > 2015 - Articles Palmarès Cinéfondation
         // "Cinéfondation" + "prix" ou "palmarès" dans le titre
-        if ($oldArticle->getCreatedAt() != false &&
+        if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
             $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
             $hasCinefondation = false;
             foreach ($oldArticleTranslations as $trans) {
@@ -714,7 +798,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         // case six
         // Quotidien 2007 > 2015 - Articles Palmarès Un Certain Regard
         // "Un Certain Regard" + "prix" ou "palmarès" dans le titre
-        if ($oldArticle->getCreatedAt() != false &&
+        if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
             $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
             $hasCinefondation = false;
             foreach ($oldArticleTranslations as $trans) {
@@ -730,10 +814,25 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             }
         }
 
-        // case nine
+        // case eight
+        // Quotidien 2007 > 2015 - Interview réalisateurs
+        // "Rencontre" ou "Interview" ou "entretien" dans le titre
+        if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
+            $hasCinefondation = false;
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                if ($trans->getCulture() == 'fr' && (stripos($title, 'rencontre') !== false ||
+                        (stripos($title, 'interview') !== false || stripos($title, 'entretien') !== false))) {
+                   return true;
+                }
+            }
+        }
+
+        // case nine - TO DO
         // Quotidien 2007 > 2015 - Interview Jurys
         // - "jury" + "interview" || "jury" + "rencontre" || "jury" + "entretien"
-        if ($oldArticle->getCreatedAt() != false &&
+        /*if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
             $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
             $hasJury = false;
             foreach ($oldArticleTranslations as $trans) {
@@ -748,12 +847,12 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             if ($hasJury == true) {
                 return true;
             }
-        }
+        }*/
 
         // case twelve
         // Quotidien 2007 > 2015 - articles Cérémonies
         // "Cérémonie" dans le titre + "Ouverture" ou "Cloture" dans le titre
-        if ($oldArticle->getCreatedAt() != false &&
+        if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
             $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
             $hasCinefondation = false;
             foreach ($oldArticleTranslations as $trans) {
@@ -772,7 +871,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         // case thirteen
         // Quotidien 2007 > 2015 - Leçons
         // "Lecon de cinéma" ou "lecon de musique" ou "lecon d'actrice" dans le titre
-        if ($oldArticle->getCreatedAt() != false &&
+        if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
             $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
             $hasCinefondation = false;
             foreach ($oldArticleTranslations as $trans) {
