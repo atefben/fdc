@@ -6,10 +6,11 @@
 
 * You have to launch the command to add the site Corporate (site-institutionnel) in the database
 
-    php app/console fdc:event:launch on
-    
+    php app/console base:update:sites
     
 * You have to launch the command to add the site Corporate (site-institutionnel) in the database
+
+	php app/console base:import:old_fdc
 
 *  You can update the script OldFdcDatabaseImportCommand if needed and delete the entities / tables once the import is successful.
 
