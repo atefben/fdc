@@ -74,8 +74,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $dm = $this->getContainer()->get('doctrine')->getManager();
         $mediaManager = $this->getContainer()->get('sonata.media.manager.media');
 
-        //$this->importArticleQuotidien($dm, $mediaManager, $output, $input);
-        //$this->importArticleActualite($dm, $mediaManager, $output, $input);
+        $this->importArticleQuotidien($dm, $mediaManager, $output, $input);
+        $this->importArticleActualite($dm, $mediaManager, $output, $input);
         $this->importArticleCommunique($dm, $mediaManager, $output, $input);
     }
 
