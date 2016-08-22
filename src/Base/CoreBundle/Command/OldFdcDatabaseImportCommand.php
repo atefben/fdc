@@ -500,6 +500,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                         $media = $videoTrans->getFile();
                                     }
                                     $path = $oldVideo->getDeliveryUrl();
+                                    $output->writeln('Video delivery url: '. $path);
                                     $pathArray = explode(',', $path);
                                     $path = $pathArray[0]. '80'. $pathArray[count($pathArray) - 1];
                                     $output->writeln('before create video');
