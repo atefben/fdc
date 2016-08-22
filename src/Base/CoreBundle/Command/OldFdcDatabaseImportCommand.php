@@ -430,6 +430,10 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                             'id' => $association->getObjectId(),
                                             'culture' => 'bi'
                                         ));
+                                        if ($oldAudioBi == null) {
+                                            $output->writeln("<error>No code found for OldMediaI18n #{$association->getObjectId()}</error>");
+                                            continue;
+                                        }
                                         $code = $oldAudioBi->getCode();
                                     }
 
