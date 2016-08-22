@@ -10091,6 +10091,15 @@ header #searchContainer {
 .articles.center article:nth-child(2) {
   margin: 0 6.5%;
 }
+.articles.center article:nth-child(5) {
+  margin: 0 6.5%;
+}
+.articles.center article:nth-child(8) {
+  margin: 0 6.5%;
+}
+.articles.center article:nth-child(11) {
+  margin: 0 6.5%;
+}
 
 #filteredArticles article:nth-of-type(3n-1) {
   margin: 0 6.5%;
@@ -11777,6 +11786,15 @@ article .read-later.rAlign span:after {
   height: 185px;
 }
 .single-movie .news .articles.center article:nth-child(2) {
+  margin: 0 4.5%;
+}
+.single-movie .news .articles.center article:nth-child(5) {
+  margin: 0 4.5%;
+}
+.single-movie .news .articles.center article:nth-child(8) {
+  margin: 0 4.5%;
+}
+.single-movie .news .articles.center article:nth-child(11) {
   margin: 0 4.5%;
 }
 .single-movie .audios {
