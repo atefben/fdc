@@ -394,9 +394,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                         if (count($oldArticleAssociations) > 0) {
                             $output->writeln('Import associated audios');
                             foreach ($oldArticleAssociations as $associationKey => $association) {
-                                $count = $imageCount;
-                                $widget = $this->getWidget($news, $count + $associationKey, clone $entitiesArray['widget_audio']);
-                                $widget->setPosition($count);
+                                $widget = $this->getWidget($news, $imageCount + $associationKey, clone $entitiesArray['widget_audio']);
+                                $widget->setPosition($imageCount + $associationKey);
 
                                 if ($widget->getFile() != null) {
                                     $audio = $widget->getFile();
@@ -469,8 +468,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             $output->writeln('Import associated videos');
                             foreach ($oldArticleAssociations as $associationKey => $association) {
                                 $output->writeln('old video association');
-                                $count = $associationKey;
-                                $widget = $this->getWidget($news, $count, clone $entitiesArray['widget_video']);
+                                $widget = $this->getWidget($news, $audioCount + $imageCount + $associationKey, clone $entitiesArray['widget_video']);
                                 $widget->setPosition($audioCount + $imageCount + $associationKey);
 
                                 if ($widget->getFile() != null) {
