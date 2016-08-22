@@ -62,14 +62,7 @@ var timeout = 1000,
                 </div>\
             </div>\
         </div>',
-    facebookLink = 'http://www.facebook.com/dialog/feed?app_id=1198653673492784' +
-        '&link=CUSTOM_URL' +
-        '&picture=CUSTOM_IMAGE' +
-        '&name=CUSTOM_NAME' +
-        '&caption=' +
-        '&description=CUSTOM_DESC' +
-        '&redirect_uri=http://www.festival-cannes.com/fr/sharing' +
-    '&display=popup',
+    $topBar
     twitterLink  = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
 function playerInit(id, cls, havePlaylist, live) {

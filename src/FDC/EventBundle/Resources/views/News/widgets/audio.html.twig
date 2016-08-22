@@ -1,5 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% set file = widget.file %}
+{% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
 {% if file %}
     {% set trans = file.findTranslationByLocale(app.request.locale) %}
 
@@ -24,6 +25,7 @@
 {% endif %}
 {% if (image is defined or image_s3 is defined) and trans.jobMp3State == 3 and trans.mp3Url %}
     <div class="audio-container"
+         data-link="{{ currentUrl }}"
          data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
          data-img="{% if image is defined %}{% path image, '1950x1232' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
          data-aid="{{ trans.id }}">

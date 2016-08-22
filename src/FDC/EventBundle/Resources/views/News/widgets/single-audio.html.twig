@@ -1,5 +1,5 @@
 {% trans_default_domain 'FDCEventBundle' %}
-
+{% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
 {% set file = news.audio %}
 {% set trans = file.findTranslationByLocale(app.request.locale) %}
 
@@ -27,6 +27,7 @@
     {% endif %}
 
     <div class="audio-container actu-article-audio"
+         data-link="{{ currentUrl }}"
          data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
          data-img="{% if image is defined %}{% path image, '1950x1232' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
          data-aid="{{ trans.id }}">
