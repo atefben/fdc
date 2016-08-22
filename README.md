@@ -29,4 +29,4 @@ Each documentation is accessible in their related bundle :
 
 ### Import Old FDC
 
-[https://github.com/Ohwee/festival-cannes-2016/blob/master/src/FDC/EventBundle/Resources/doc/](https://github.com/Ohwee/festival-cannes-2016/blob/master/src/FDC/CorporateBundle/Resources/doc/)
+[https://github.com/Ohwee/festival-cannes-2016/tree/import-old-fdc/src/FDC/CorporateBundle/Resources/doc](https://github.com/Ohwee/festival-cannes-2016/tree/import-old-fdc/src/FDC/CorporateBundle/Resources/doc)
