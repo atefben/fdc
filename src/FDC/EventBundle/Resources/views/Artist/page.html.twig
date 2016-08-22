@@ -37,8 +37,16 @@
                         {% set legend = null %}
                         {% set copyright = null %}
                         {% if artistImage %}
-                            {%- if artist.presidentJuryImage and artist.presidentJuryImage|trans_fallback('file') -%}
-                                <img src="{% path artist.presidentJuryImage|trans_fallback('file'), '613h' %}"
+                            {% if artistImage %}
+                                <img src="{% path artistImage, '384x485' %}" alt="{{ artist.fullName }}"/>
+                                {%  set shareMedia = artistImage %}
+                                {% if copyright is not empty %}
+                                    <p class="caption" id="captionCopyright">
+                                        {{- '© ' ~  copyright -}}
+                                    </p>
+                                {% endif %}
+                            {%- elseif artist.presidentJuryImage and artist.presidentJuryImage|trans_fallback('file') -%}
+                                <img src="{% path artist.presidentJuryImage|trans_fallback('file'), '384x485' %}"
                                      alt="{{ artist.fullName }}"/>
                                 {%  set shareMedia = artist.presidentJuryImage|trans_fallback('file') %}
                                 {%- if artist.presidentJuryCredits is not empty or artistImage.copyright is not empty -%}
@@ -48,7 +56,7 @@
                                 {%- endif -%}
                             {%- elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
                                 {% set artistMedia = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'),true)|first %}
-                                <img src="{% path artistMedia.file, '613h' %}"
+                                <img src="{% path artistMedia.file, '384x485' %}"
                                      alt="{{ artist.fullName }}"/>
                                 {%  set shareMedia = artistMedia.file %}
                                 {%- if artistMedia.copyright is not empty -%}
@@ -58,7 +66,7 @@
                                 {% endif %}
                             {%- elseif artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
                                 {% set artistMedia = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'),true)|first %}
-                                <img src="{% path artistMedia.file, '613h' %}"
+                                <img src="{% path artistMedia.file, '384x485' %}"
                                      alt="{{ artist.fullName }}"/>
                                 {%  set shareMedia = artistMedia.file %}
                                 {%- if artistMedia.copyright is not empty -%}
@@ -67,25 +75,15 @@
                                     </p>
                                 {%- endif -%}
                             {%- elseif class(artistImage) == 'FilmMedia' -%}
-                                <img src="{% path artistImage.file, '613h' %}" alt="{{ artist.fullName }}"/>
+                                <img src="{% path artistImage.file, '384x485' %}" alt="{{ artist.fullName }}"/>
                                 {%  set shareMedia = artistImage.file %}
                                 {% set legend = artistImage.credits %}
                                 {% set copyright = artistImage.copyright %}
                                 <p class="caption"
                                    id="captionCopyright">{{ legend }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
-                            {%- else -%}
-                                {% if artist.credits != null %}
-                                    <img src="{% path artistImage, '613h' %}" alt="{{ artist.fullName }}"/>
-                                    {%  set shareMedia = artistImage %}
-                                    {% if copyright is not empty %}
-                                        <p class="caption" id="captionCopyright">
-                                            {{- '© ' ~  copyright -}}
-                                        </p>
-                                    {% endif %}
-                                {% else %}
-                                    <img src="{% path artistImage, '613h ' %}" alt="{{ artist.fullName }}"/>
-                                    {%  set shareMedia = artistImage %}
-                                {% endif %}
+                            {% else %}
+                                <img src="{% path artistImage, '384x485 ' %}" alt="{{ artist.fullName }}"/>
+                                {%  set shareMedia = artistImage %}
                             {%- endif -%}
                         {% else %}
                             {% set media = artist|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
@@ -294,7 +292,7 @@
                 <p>{{ 'juries.artiste.title.share'|trans }}</p>
                 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                 <div class="buttons square">
-                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&picture={% spaceless -%}{% if shareMedia is defined %}{% path shareMedia, '613h' -%}{% endif %}{% endspaceless -%}&name={{ artist.fullName|url_encode(true) }}&caption={{ artist|profession_gender('profession') }}&description={% if biography is not null %}{{ biography|raw|url_encode(true) }}{% else %}Festival%20de%20Cannes{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" rel="nofollow" class="button facebook">
+                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&picture={% spaceless -%}{% if shareMedia is defined %}{% path shareMedia, '384x485' -%}{% endif %}{% endspaceless -%}&name={{ artist.fullName|url_encode(true) }}&caption={{ artist|profession_gender('profession') }}&description={% if biography is not null %}{{ biography|raw|url_encode(true) }}{% else %}Festival%20de%20Cannes{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" rel="nofollow" class="button facebook">
                         <i class="icon icon_facebook"></i>
                     </a>
                     <a href="https://twitter.com/intent/tweet?text={{ artist.fullName|url_encode(true) }} {{ currentUrl }}" rel="nofollow"

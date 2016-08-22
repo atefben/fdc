@@ -12009,6 +12009,7 @@ article .read-later.rAlign span:after {
   border: 0;
   float: left;
   position: relative;
+  cursor: pointer;
   width: calc(100%/4);
 }
 .grid .item img {
@@ -12885,7 +12886,6 @@ input[type=submit] {
   background: none;
   height: 50px;
   line-height: 50px;
-  margin-top: -3px;
   border: none;
   color: #c8a461;
   display: inline-block;
@@ -12896,7 +12896,7 @@ input[type=submit] {
   -webkit-appearance: none;
   text-transform: uppercase;
   padding-right: 10px;
-  width: 302px;
+  width: 280px;
 }
 .contact #form .errors {
   border: 1px solid #e93939;

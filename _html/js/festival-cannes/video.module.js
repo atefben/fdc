@@ -137,7 +137,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         var shareUrl = GLOBALS.urls.videosUrl+'#vid='+$container.data('vid');
     }
 
-    // CUSTOM LINK FACEBOOK
+    /*// CUSTOM LINK FACEBOOK
     var fbHref = $topBar.find('.buttons .facebook').attr('href');
     fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
     $topBar.find('.buttons .facebook').attr('href', fbHref);
@@ -175,7 +175,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             'url'      : shareUrl
         }, playerInstance);
     });
-
+*/
     function updateVolume(x, vol) {
         var volume = $sound.find('.sound-bar'),
             percentage;

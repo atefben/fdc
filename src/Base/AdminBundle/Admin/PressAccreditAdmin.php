@@ -135,6 +135,7 @@ class PressAccreditAdmin extends Admin
                     )
                 )
             ))
+            ->add('hideCommonContent')
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',

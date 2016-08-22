@@ -64,6 +64,14 @@
       background: center 0 no-repeat fixed;
       background-size: cover;
       display: none;
+
+      @media only screen and (max-width: 1024px) {
+        background-position: inherit;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: initial;
+        display:none;
+      }
     }
 
     .item.active {
@@ -84,6 +92,10 @@
     right: 0;
     top: auto;
     bottom: 19%;
+
+    @media only screen and (max-width: 1024px) and (orientation : landscape){
+      bottom: 8%;
+    }
 
     strong {
       display: block;
@@ -124,7 +136,7 @@
 
         .texts {
           top: auto;
-          bottom: 19%;
+          bottom: 11%;
           right: -103px;
         }
       }
@@ -275,7 +287,6 @@
       z-index: 3;
     }
 
-
     .avance{
       width: calc(100% - 94px);
       position: absolute;
@@ -367,10 +378,17 @@
       }
 
       &.noUi-handle-lower {
-        width: 10px;
-        height: 10px;
+        width: 14px;
+        height: 14px;
         left: 0px;
-        top: -5px;
+        top: -7px;
+
+        @media only screen  and (max-width : 768px) {
+          width: 23px;
+          height: 23px;
+          left: 0px;
+          top: -11px;
+        }
       }
     }
 
@@ -728,6 +746,10 @@
     transition: $linear 1s;
     z-index: 2;
 
+    .mobile & {
+      opacity: 1;
+    }
+
     &:hover{
       opacity: 1;
       cursor: pointer;
@@ -773,12 +795,13 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 10000;
   height: 100vh;
   display: block;
 
   img {
     width: 100vw;
     height: 100vh;
+    object-fit: cover; //TODO IE !
   }
 }

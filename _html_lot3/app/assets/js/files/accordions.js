@@ -24,10 +24,10 @@ var owInitAccordion = function(id) {
   }
 
   if(id = "more-search") {
-    var $title = $('.more-search .sub-tab');
+    var $title = $('.more-search .sub-tab .title-cont');
 
     $title.on('click',function(){
-     var $this = $(this);
+     var $this = $(this).closest('.sub-tab');
 
       if($this.hasClass('active')){
         $this.find('.icon').removeClass('icon-minus').addClass('icon-create');
@@ -36,7 +36,7 @@ var owInitAccordion = function(id) {
       }
 
       $this.toggleClass('active');
-
+b
     });
   }
 };

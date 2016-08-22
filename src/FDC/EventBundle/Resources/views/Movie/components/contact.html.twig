@@ -39,7 +39,7 @@
                                 <a href="{{ (('http' in movie.facebook or 'https' in movie.facebook ) ? '' : 'http://') ~ movie.facebook }}" target="_blank">{{ 'movie.presse.liens.facebook'|trans }}</a>
                             {% endif %}
                             {% if movie.twitter %}
-                                <a href="{{ (('http' in movie.twitter or 'https' in movie.twitter ) ? '' : 'http://') ~  movie.twitter }}" target="_blank">{{ 'movie.presse.liens.twitter'|trans }}</a>
+                                <a href="{{ (('http' in movie.twitter or 'https' in movie.twitter ) ? '' : 'https://twitter.com/') ~  movie.twitter }}" target="_blank">{{ 'movie.presse.liens.twitter'|trans }}</a>
                             {% endif %}
                         </div>
                     {% endif %}
@@ -169,9 +169,9 @@
                                                         {% set displayContact = displayContact|merge(['F: ' ~ contact.address.fax]) %}
                                                     {% endif %}
                                                 {% endif %}
-                                                {% if contact.person and contact.person.email %}
-                                                    {% set displayEmail = '<a class="ajaxi" href="mailto:' ~ contact.person.email ~ '">' %}
-                                                    {% set displayEmail =  displayEmail ~ contact.person.email ~ '</a>' %}
+                                                {% if contact.address.email %}
+                                                    {% set displayEmail = '<a class="ajaxi" href="mailto:' ~ contact.address.email ~ '">' %}
+                                                    {% set displayEmail =  displayEmail ~ contact.address.email ~ '</a>' %}
                                                     {% set displayContact = displayContact|merge([displayEmail]) %}
                                                 {% endif %}
                                                 {% if contact.address.website %}
