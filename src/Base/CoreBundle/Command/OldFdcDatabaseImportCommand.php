@@ -499,6 +499,10 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     } else {
                                         $media = $videoTrans->getFile();
                                     }
+                                    if ($oldVideo->getDeliveryUrl() == null) {
+                                        $output->writeln("<error>Delivery url is null for old video #{$oldVideo->getId()}</error>");
+                                        continue;
+                                    }
                                     $path = $oldVideo->getDeliveryUrl();
                                     $output->writeln('Video delivery url: '. $path);
                                     $pathArray = explode(',', $path);
