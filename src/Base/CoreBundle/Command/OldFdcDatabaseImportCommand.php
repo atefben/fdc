@@ -306,12 +306,12 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                         }
 
                         // widget photo / association image
+                        $count = 0;
                         $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
                             'id' => $oldArticle->getId(),
                             'objectClass' => 'Image'
                         ), array('order' => 'ASC'));
                         if (count($oldArticleAssociations) > 0) {
-                            $count = 1;
                             $widget = $this->getWidget($news, $count, clone $entitiesArray['widget_image']);
                             $widget->setPosition($count);
                             if ($widget->getGallery() == null) {
