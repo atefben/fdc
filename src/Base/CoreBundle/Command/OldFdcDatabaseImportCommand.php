@@ -72,13 +72,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleActualite($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Actualite...</info>');
-        $element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(61347);
-        $oldArticles[0] = $element;
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(61347);
+        $oldArticles[0] = $element;*/
 
-        /*$oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
+        $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
             'articleTypeId' => self::TYPE_NEWS_FESTIVAL,
             'published' => true
-        ), array('id' => 'ASC'));*/
+        ), array('id' => 'ASC'));
 
         $entitiesArray = array(
             'main_entity_parent' => 'BaseCoreBundle:Info',
@@ -105,13 +105,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Quotidien...</info>');
-        $element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60283);
-        $oldArticles[0] = $element;
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60283);
+        $oldArticles[0] = $element;*/
 
-        /*$oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
+        $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
             'articleTypeId' => self::TYPE_QUOTIDIEN,
             'published' => true
-        ), array('id' => 'ASC'));*/
+        ), array('id' => 'ASC'));
 
         $entitiesArray = array(
             'main_entity_parent' => 'BaseCoreBundle:News',
