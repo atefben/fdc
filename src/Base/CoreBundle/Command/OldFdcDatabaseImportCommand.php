@@ -173,8 +173,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             }
             $news->setOldNewsTable('OldNews');
             $news->setOldNewsId($oldArticle->getId());
-            $news->setPublishedAt($oldArticle->getCreatedAt());
-            $news->setCreatedAt($oldArticle->getCreatedAt());
+            $news->setPublishedAt(($oldArticle->getStartDate() != null) ? $oldArticle->getStartDate() : $oldArticle->getUpdatedAt());
+            $news->setCreatedAt($oldArticle->getUpdatedAt());
             $news->setUpdatedAt($oldArticle->getCreatedAt());
             $news->setIsPublishedOnFdcEvent(1);
             if (!$news->getSites()->contains($siteFDCCorporate)) {
