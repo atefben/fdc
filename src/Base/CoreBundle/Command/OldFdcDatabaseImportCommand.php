@@ -105,7 +105,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Quotidien...</info>');
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60283);
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(55446);
         $oldArticles[0] = $element;*/
 
         $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
@@ -142,7 +142,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         );
         $totalSaved = 0;
         $optionAssociatedNews = $input->getOption('associated-news');
-        $siteFDCEvent = $dm->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-institutionnel');
+        $siteFDCCorporate = $dm->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-institutionnel');
+        $siteFDCEvent = $dm->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-evenementiel');
         $entities = array();
         $oldArticlesTotal = count($oldArticles);
 
@@ -172,15 +173,26 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             }
             $news->setOldNewsTable('OldNews');
             $news->setOldNewsId($oldArticle->getId());
+            $news->setPublishedAt($oldArticle->getCreatedAt());
             $news->setCreatedAt($oldArticle->getCreatedAt());
             $news->setUpdatedAt($oldArticle->getCreatedAt());
             $news->setIsPublishedOnFdcEvent(1);
-            if ($news->getSites()->count() == 0) {
+            if (!$news->getSites()->contains($siteFDCCorporate)) {
+                $news->addSite($siteFDCCorporate);
+            }
+            if (!$news->getSites()->contains($siteFDCEvent)) {
                 $news->addSite($siteFDCEvent);
             }
+            /* remove site fdc event
+              if ($news->getSites()->contains($siteFDCEvent)) {
+                $news->removeSite($siteFDCEvent);
+            }*/
 
             $festival = $dm->getRepository('BaseCoreBundle:FilmFestival')->findOneByYear($oldArticle->getCreatedAt()->format('Y'));
             $news->setFestival($festival);
+
+            $dm->persist($news);
+            $dm->flush();
 
             // loop translations
             foreach ($oldArticleTranslations as $oldArticleTranslation) {
@@ -214,7 +226,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             $img = $news->getHeader();
                         }
                         if ($img->getSites()->count() == 0) {
-                            $img->addSite($siteFDCEvent);
+                            $img->addSite($siteFDCCorporate);
                         }
                         $news->setHeader($img);
                         if ($img != null) {
@@ -335,7 +347,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     $media = new Media();
                                 }
                                 if ($img->getSites()->count() == 0) {
-                                    $img->addSite($siteFDCEvent);
+                                    $img->addSite($siteFDCCorporate);
                                 }
                                 $saved = false;
                                 if ($media->getId() == null && $culture == 'fr') {
