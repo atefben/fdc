@@ -26,3 +26,7 @@ Each documentation is accessible in their related bundle :
 #### Festival de Cannes
 
 [https://github.com/Ohwee/festival-cannes-2016/blob/master/src/FDC/EventBundle/Resources/doc/](https://github.com/Ohwee/festival-cannes-2016/blob/master/src/FDC/EventBundle/Resources/doc/)
+
+### Import Old FDC
+
+[https://github.com/Ohwee/festival-cannes-2016/blob/master/src/FDC/EventBundle/Resources/doc/](https://github.com/Ohwee/festival-cannes-2016/blob/master/src/FDC/CorporateBundle/Resources/doc/)
