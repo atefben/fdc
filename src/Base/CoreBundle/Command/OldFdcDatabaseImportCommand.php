@@ -1015,7 +1015,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
     private function imagecreatefromfile($filename, $output) {
         $file = $this->getContainer()->get('kernel')->getRootDir() . '/../web/uploads/old/image/'. md5($filename). '.'. pathinfo( $filename, PATHINFO_EXTENSION);
-        $content = file_get_contents($filename);
+        $content = @file_get_contents($filename);
         if ($content === false) {
             $output->writeln("<error>Cant get file: {$filename}</error>");
             return;
@@ -1047,7 +1047,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $output->writeln('Video path: '. $path);
         if (!file_exists($path)) {
             $output->writeln('Download video: '. $url);
-            $data = file_get_contents($url);
+            $data = @file_get_contents($url);
             if ($data === false) {
                 $output->writeln("<error>Cant get file: {$url}</error>");
                 return;
@@ -1068,7 +1068,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $output->writeln('Audio path: '. $path);
         if (!file_exists($path)) {
             $output->writeln('Download audio: '. $url);
-            $data = file_get_contents($url);
+            $data = @file_get_contents($url);
             if ($data === false) {
                 $output->writeln("<error>Cant get file: {$url}</error>");
                 return;
