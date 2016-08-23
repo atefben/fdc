@@ -56,6 +56,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
     private $langs = array('fr', 'en', 'es', 'zh');
 
+    private $entitiesCount = array();
+
     protected function configure()
     {
         $this
@@ -66,6 +68,12 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                 null,
                 InputOption::VALUE_NONE,
                 'Import only associated news'
+            )
+            ->addOption(
+                'count',
+                null,
+                InputOption::VALUE_NONE,
+                'Count entities total'
             );
     }
 
@@ -87,7 +95,6 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
         $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
             'articleTypeId' => self::TYPE_COMMUNIQUE,
-            'published' => true
         ), array('id' => 'ASC'));
 
         $entitiesArray = array(
@@ -120,7 +127,6 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
         $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
             'articleTypeId' => self::TYPE_NEWS_FESTIVAL,
-            'published' => true
         ), array('id' => 'ASC'));
 
         $entitiesArray = array(
@@ -149,12 +155,11 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Quotidien...</info>');
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60414);
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(42117);
         $oldArticles[0] = $element;*/
 
         $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
             'articleTypeId' => self::TYPE_QUOTIDIEN,
-            'published' => true
         ), array('id' => 'ASC'));
 
         $entitiesArray = array(
@@ -186,6 +191,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         );
         $totalSaved = 0;
         $optionAssociatedNews = $input->getOption('associated-news');
+        $optionCount = $input->getOption('count');
         $siteFDCCorporate = $dm->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-institutionnel');
         $siteFDCEvent = $dm->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-evenementiel');
         $entities = array();
@@ -203,10 +209,11 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
             // is valid matching
             $output->writeln('<comment>#'. $oldArticle->getId(). ' verify matching.</comment>');
-            $matching = $this->{$getterMatching}($oldArticle, $oldArticleTranslations, $dm, $output);
-            if ($matching == false) {
+            $matching = $this->{$getterMatching}($oldArticle, $oldArticleTranslations, $dm, $output, $input);
+            if ($matching == false || $optionCount == true) {
                 continue;
             }
+
             $output->writeln('<info>#'. $oldArticle->getId(). ' is matching.</info>');
 
             // old news
@@ -396,7 +403,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                 }
                                 $saved = false;
                                 if ($media->getId() == null && $culture == 'fr') {
-                                    $file = $this->imagecreatefromfile('http://www.festival-cannes.fr/assets/Image/General/' . $image->getFilename(), $output);
+                                    $file = $this->imagecreatefromfile('http://www.festival-cannes.fr/assets/Image/General/' . trim($image->getFilename()), $output);
                                     $media->setName($image->getFilename());
                                     $media->setBinaryContent($file);
                                     $media->setEnabled(true);
@@ -509,7 +516,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     }
 
                                     if ($code != null) {
-                                        $file = $this->createAudio('http://www.festival-cannes.fr/mp3/' . $code . '.mp3', $output);
+                                        $file = $this->createAudio('http://www.festival-cannes.fr/mp3/'. trim($code). '.mp3', $output);
                                         if ($file == null) {
                                             break;
                                         }
@@ -592,7 +599,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     $pathArray = explode(',', $path);
                                     $path = $pathArray[0]. '80'. $pathArray[count($pathArray) - 1];
                                     $output->writeln('before create video');
-                                    $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . $path, $output);
+                                    $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path), $output);
                                     $output->writeln('after create video');
                                     if ($file == null) {
                                         break;
@@ -681,9 +688,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             }
         }
 
-        $output->writeln('<info>Total saved: '. $totalSaved. '</info>');
-        $dm->flush();
-        $this->updateAcl($entities, $entitiesArray['acl_update'], $output);
+        if ($optionCount) {
+            dump($this->entitiesCount);
+        } else {
+            $output->writeln('<info>Total saved: ' . $totalSaved . '</info>');
+            $dm->flush();
+            $this->updateAcl($entities, $entitiesArray['acl_update'], $output);
+        }
     }
 
     private function getWidget($news, $pos, $entity)
@@ -695,33 +706,55 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         return $entity;
     }
 
-    private function isCommuniqueMatching($oldArticle, $oldArticleTranslations, $dm, $output)
+    private function isCommuniqueMatching($oldArticle, $oldArticleTranslations, $dm, $output, $input)
     {
+        $optionCount = $input->getOption('count');
+
         // case one
         // Communiqués-Festival de 2001 > 2015
         if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
             $oldArticle->getCreatedAt()->format('Y') >= 2001 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
-            return true;
+            $this->updateCount(__FUNCTION__, 1);
+            if ($optionCount == false) {
+                return true;
+            }
         }
     }
 
-    private function isActualiteMatching($oldArticle, $oldArticleTranslations, $dm, $output)
+    private function isActualiteMatching($oldArticle, $oldArticleTranslations, $dm, $output, $input)
     {
+        $optionCount = $input->getOption('count');
+
         // case one
         // Actualités-Festival de 2010 > 2015
-        if ($oldArticle->getIsOnline() == true && $oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
+        if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
             $oldArticle->getCreatedAt()->format('Y') >= 2010 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
-            return true;
+            $this->updateCount(__FUNCTION__, 1);
+            if ($optionCount == false) {
+                return true;
+            }
         }
     }
 
-    private function isQuotidienMatching($oldArticle, $oldArticleTranslations, $dm, $output)
+    private function updateCount($functionName, $pos)
     {
+        $this->entitiesCount[$functionName][$pos] = (isset($this->entitiesCount[$functionName][$pos])) ?
+            ($this->entitiesCount[$functionName][$pos] + 1) : 1;
+    }
+
+
+    private function isQuotidienMatching($oldArticle, $oldArticleTranslations, $dm, $output, $input)
+    {
+        $optionCount = $input->getOption('count');
+
         // case one
         // Communiqués-Festival de 2001 > 2006
         if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
             $oldArticle->getCreatedAt()->format('Y') >= 2001 && $oldArticle->getCreatedAt()->format('Y') <= 2006) {
-            return true;
+            $this->updateCount(__FUNCTION__, 1);
+            if ($optionCount == false) {
+                return true;
+            }
         }
 
         // case two
@@ -744,7 +777,10 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                 ));
 
                 if (count($oldArticleAssociations) > 0) {
-                    return true;
+                    $this->updateCount(__FUNCTION__, 2);
+                    if ($optionCount == false) {
+                        return true;
+                    }
                 }
             }
         }
@@ -771,7 +807,10 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             }
 
             if ($hasType == true) {
-                return true;
+                $this->updateCount(__FUNCTION__, 3);
+                if ($optionCount == false) {
+                    return true;
+                }
             }
         }
 
@@ -793,7 +832,10 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                 ));
 
                 if (count($oldArticleAssociations) > 0) {
-                    return true;
+                    $this->updateCount(__FUNCTION__, 4);
+                    if ($optionCount == false) {
+                        return true;
+                    }
                 }
             }
         }
@@ -806,14 +848,17 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $hasCinefondation = false;
             foreach ($oldArticleTranslations as $trans) {
                 $title = $this->removeAccents($trans->getTitle());
-                if ($trans->getCulture() == 'fr' && (stripos($title, 'Cinefondation') !== false &&
+                if ($trans->getCulture() == 'fr' && (stripos($title, 'cinefondation') !== false &&
                         (stripos($title, 'prix') !== false || stripos($title, 'palmares') !== false))) {
                     $hasCinefondation = true;
                 }
             }
 
             if ($hasCinefondation == true) {
-                return true;
+                $this->updateCount(__FUNCTION__, 5);
+                if ($optionCount == false) {
+                    return true;
+                }
             }
         }
 
@@ -825,14 +870,17 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $hasCinefondation = false;
             foreach ($oldArticleTranslations as $trans) {
                 $title = $this->removeAccents($trans->getTitle());
-                if ($trans->getCulture() == 'fr' && (stripos($title, 'Un certain Regard') !== false &&
+                if ($trans->getCulture() == 'fr' && (stripos($title, 'un certain regard') !== false &&
                         (stripos($title, 'prix') !== false || stripos($title, 'palmares') !== false))) {
                     $hasCinefondation = true;
                 }
             }
 
             if ($hasCinefondation == true) {
-                return true;
+                $this->updateCount(__FUNCTION__, 6);
+                if ($optionCount == false) {
+                    return true;
+                }
             }
         }
 
@@ -846,7 +894,10 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                 $title = $this->removeAccents($trans->getTitle());
                 if ($trans->getCulture() == 'fr' && (stripos($title, 'rencontre') !== false ||
                         (stripos($title, 'interview') !== false || stripos($title, 'entretien') !== false))) {
-                   return true;
+                    $this->updateCount(__FUNCTION__, 8);
+                    if ($optionCount == false) {
+                        return true;
+                    }
                 }
             }
         }
@@ -867,7 +918,10 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             }
 
             if ($hasJury == true) {
-                return true;
+                $this->updateCount(__FUNCTION__, 9);
+                if ($optionCount == false) {
+                    return true;
+                }
             }
         }*/
 
@@ -886,7 +940,10 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             }
 
             if ($hasCinefondation == true) {
-                return true;
+                $this->updateCount(__FUNCTION__, 12);
+                if ($optionCount == false) {
+                    return true;
+                }
             }
         }
 
@@ -906,7 +963,10 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             }
 
             if ($hasCinefondation == true) {
-                return true;
+                $this->updateCount(__FUNCTION__, 13);
+                if ($optionCount == false) {
+                    return true;
+                }
             }
         }
 
