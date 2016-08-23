@@ -1464,12 +1464,19 @@
       }
 
       h3 {
-        font-family: $CamphorBold;
+        font-family: $CamphorHeavy;
         font-size: 0.850rem;
         line-height: 1.6em;
         margin-bottom: 30px;
+        strong {
+          font-family: $CamphorBold;
+        }
       }
 
+      strong {
+        font-family: $CamphorBold;
+      }
+      
       p {
         font-size: 0.850rem;
         line-height: 1.8em;
