@@ -55,8 +55,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     const TYPE_COMMUNIQUE = 23109;
 
     private $langs = array('fr', 'en', 'es', 'zh');
-
     private $entitiesCount = array();
+    private $doNotPublish = false;
 
     protected function configure()
     {
@@ -155,7 +155,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Quotidien...</info>');
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(42117);
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(59330);
         $oldArticles[0] = $element;*/
 
         $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
@@ -228,16 +228,19 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $news->setCreatedAt($oldArticle->getUpdatedAt());
             $news->setUpdatedAt($oldArticle->getCreatedAt());
             $news->setIsPublishedOnFdcEvent(1);
-            if (!$news->getSites()->contains($siteFDCCorporate)) {
-                $news->addSite($siteFDCCorporate);
+            if ($this->doNotPublish === false) {
+                if (!$news->getSites()->contains($siteFDCCorporate)) {
+                    $news->addSite($siteFDCCorporate);
+                }
+                if (!$news->getSites()->contains($siteFDCEvent)) {
+                    $news->addSite($siteFDCEvent);
+                }
+                /* remove site fdc event
+                  if ($news->getSites()->contains($siteFDCEvent)) {
+                    $news->removeSite($siteFDCEvent);
+                }*/
             }
-            if (!$news->getSites()->contains($siteFDCEvent)) {
-                $news->addSite($siteFDCEvent);
-            }
-            /* remove site fdc event
-              if ($news->getSites()->contains($siteFDCEvent)) {
-                $news->removeSite($siteFDCEvent);
-            }*/
+
 
             $festival = $dm->getRepository('BaseCoreBundle:FilmFestival')->findOneByYear($oldArticle->getCreatedAt()->format('Y'));
             $news->setFestival($festival);
@@ -309,7 +312,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             $imgTrans->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
                         }
                         $imgTrans->setTranslatable($img);
-                        $imgTrans->setLegend($oldArticleTranslation->getTitleImageResume());
+                        $imgTitle = array(
+                            'fr' => 'photo',
+                            'en' => 'photo',
+                            'es' => 'foto',
+                            'zh' => '照片'
+                        );
+                        $imgTrans->setLegend(($oldArticleTranslation->getTitleImageResume() != null) ? $oldArticleTranslation->getTitleImageResume() : $imgTitle[$culture]);
                         $imgTrans->setLocale($culture);
                         $imgTrans->setisPublishedOnFDCEvent(1);
                         if ($oldArticleTranslation->getImageResume()) {
@@ -746,6 +755,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function isQuotidienMatching($oldArticle, $oldArticleTranslations, $dm, $output, $input)
     {
         $optionCount = $input->getOption('count');
+        $this->doNotPublish = false;
 
         // case one
         // Communiqués-Festival de 2001 > 2006
@@ -884,6 +894,29 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             }
         }
 
+        // case seven
+        // Quotidien 2007 > 2015 - Articles pratiques
+        // "le savez-vous" ou "le saviez-vous" dans le titre
+        if ($oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
+            $hasKnown = false;
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                if ($trans->getCulture() == 'fr' &&
+                        (stripos($title, 'le savez-vous') !== false || stripos($title, 'le saviez-vous') !== false)) {
+                    $hasKnown = true;
+                }
+            }
+
+            if ($hasKnown == true) {
+                $this->doNotPublish = true;
+                $this->updateCount(__FUNCTION__, 7);
+                if ($optionCount == false) {
+                    return true;
+                }
+            }
+        }
+
         // case eight
         // Quotidien 2007 > 2015 - Interview réalisateurs
         // "Rencontre" ou "Interview" ou "entretien" dans le titre
@@ -917,6 +950,19 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                 }
             }
 
+            // association videos
+            if ($hasJury == false) {
+                $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
+                    'id' => $oldArticle->getId(),
+                    'objectClass' => 'Video'
+                ), array('order' => 'asc'));
+                if (count($oldArticleAssociations) > 0) {
+                    foreach ($oldArticleAssociations as $oldArticleAssociation) {
+
+                    }
+                }
+            }
+
             if ($hasJury == true) {
                 $this->updateCount(__FUNCTION__, 9);
                 if ($optionCount == false) {
@@ -924,6 +970,52 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                 }
             }
         }*/
+
+        // case ten
+        // Quotidien 2007 > 2015 - Phrases du jour
+        // "Phrase du jour" dans le titre
+        if ($oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
+            $hasSentence = false;
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                if ($trans->getCulture() == 'fr' && stripos($title, 'phrase du jour') !== false) {
+                    $hasSentence = true;
+                }
+            }
+
+            if ($hasSentence == true) {
+                $this->doNotPublish = true;
+                $this->updateCount(__FUNCTION__, 10);
+                if ($optionCount == false) {
+                    return true;
+                }
+            }
+        }
+
+        // case eleven
+        // Quotidien 2007 > 2015 - Présence à Cannes
+        // "Présence à Cannes" dans le titre
+        if ($oldArticle->getCreatedAt() != false &&
+            $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
+            $hasSentence = false;
+            foreach ($oldArticleTranslations as $trans) {
+                $title = $this->removeAccents($trans->getTitle());
+                if ($trans->getCulture() == 'fr' &&
+                    (stripos($title, 'presence a cannes') !== false || stripos($title, 'presences a cannes') !== false)) {
+                    $hasSentence = true;
+                }
+            }
+
+            if ($hasSentence == true) {
+                $this->doNotPublish = true;
+                $this->updateCount(__FUNCTION__, 11);
+                if ($optionCount == false) {
+                    return true;
+                }
+            }
+        }
+
 
         // case twelve
         // Quotidien 2007 > 2015 - articles Cérémonies

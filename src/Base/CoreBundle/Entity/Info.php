@@ -230,6 +230,7 @@ abstract class Info implements TranslateMainInterface
         $this->associatedInfo = new ArrayCollection();
         $this->associatedProjections = new ArrayCollection();
         $this->associatedFilms = new ArrayCollection();
+        $this->displayedHome = false;
     }
 
     public function __toString()
