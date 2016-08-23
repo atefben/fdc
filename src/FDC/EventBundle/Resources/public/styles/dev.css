@@ -43,6 +43,10 @@
     height: 160px !important;
 }
 
+.popin-event .fc-event .bottom .ven {
+    text-transform: uppercase;
+}
+
 #captionJuryCopyright {
     left: 10px;
     position: absolute;
