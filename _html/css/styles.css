@@ -14928,7 +14928,7 @@ input[type=submit] {
 .faq .faq-active {
   display: inline-block;
 }
-.faq section[data-name="informations-generales"] {
+.faq section[data-name="informations-generales"], .faq section[data-name="general-informations"], .faq section[data-name="informaciones-generales"], .faq section[data-name="chang-gui-xin-xi"] {
   top: 1px;
   opacity: 1;
   display: inline-block;
