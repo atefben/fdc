@@ -425,7 +425,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     $imgTrans->setFile($media);
                                 }
                                 $imgTrans->setTranslatable($img);
-                                $imgTrans->setLegend($oldMediaTrans->getLabel());
+                                $imgTitle = array(
+                                    'fr' => 'photo',
+                                    'en' => 'photo',
+                                    'es' => 'foto',
+                                    'zh' => '照片'
+                                );
+                                $imgTrans->setLegend(($oldMediaTrans->getLabel() != null) ? $oldMediaTrans->getLabel() : $imgTitle[$culture]);
                                 $imgTrans->setCopyright($oldMediaTrans->getCopyright());
                                 $imgTrans->setLocale($culture);
                                 $imgTrans->setisPublishedOnFDCEvent(1);
@@ -476,7 +482,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     }
                                     $audioTrans->setLocale($culture);
                                     $audioTrans->setTranslatable($audio);
-                                    $audioTrans->setTitle($oldAudio->getLabel());
+                                    $audioTitle = array(
+                                        'fr' => 'audio',
+                                        'en' => 'audio',
+                                        'es' => 'audio',
+                                        'zh' => '音频'
+                                    );
+                                    $audioTrans->setTitle(($oldAudio->getLabel() != null) ? $oldAudio->getLabel() : $audioTitle[$culture]);
                                     $audioTrans->setJobMp3State(MediaAudioTranslation::ENCODING_STATE_READY);
                                     if ($audioTrans->getFile() == null) {
                                         $media = new Media();
@@ -559,7 +571,13 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     $videoTrans->setTranslatable($video);
                                     $videoTrans->setJobMp4State(MediaVideoTranslation::ENCODING_STATE_READY);
                                     $videoTrans->setJobWebmState(MediaVideoTranslation::ENCODING_STATE_READY);
-                                    $videoTrans->setTitle($oldVideo->getLabel());
+                                    $videoTitle = array(
+                                        'fr' => 'video',
+                                        'en' => 'video',
+                                        'es' => 'video',
+                                        'zh' => '视频'
+                                    );
+                                    $videoTrans->setTitle(($oldVideo->getLabel() != null) ? $oldVideo->getLabel() : $videoTitle[$culture]);
                                     if ($videoTrans->getFile() == null) {
                                         $media = new Media();
                                     } else {
@@ -588,7 +606,6 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     $media->setProviderName('sonata.media.provider.video');
                                     $mediaManager->save($media);
                                     $videoTrans->setFile($media);
-                                    $videoTrans->setTitle($oldVideo->getLabel());
                                     break;
                                 }
                                 if ($widget->getId() == null) {
