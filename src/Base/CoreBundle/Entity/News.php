@@ -56,7 +56,6 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
       * @ORM\ManyToOne(targetEntity="Theme")
       *
       * @Groups({"news_list", "search", "news_show", "home", "film_show"})
-      * @Assert\NotNull()
       */
     private $theme;
 

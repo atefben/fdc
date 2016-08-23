@@ -51,8 +51,6 @@ abstract class Statement implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Theme")
      *
      * @Groups({"news_list", "search", "news_show", "home"})
-     *
-     * @Assert\NotNull()
      */
     private $theme;
 
