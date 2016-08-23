@@ -1015,7 +1015,12 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
     private function imagecreatefromfile($filename, $output) {
         $file = $this->getContainer()->get('kernel')->getRootDir() . '/../web/uploads/old/image/'. md5($filename). '.'. pathinfo( $filename, PATHINFO_EXTENSION);
-        $im = imagecreatefromstring(file_get_contents($filename));
+        $content = file_get_contents($filename);
+        if ($content === false) {
+            $output->writeln("<error>Cant get file: {$filename}</error>");
+            return;
+        }
+        $im = imagecreatefromstring($content);
 
         switch (strtolower(pathinfo( $filename, PATHINFO_EXTENSION))) {
             case 'jpeg':
