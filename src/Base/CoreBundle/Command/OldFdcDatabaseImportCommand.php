@@ -182,7 +182,6 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importLoop($oldArticles, $dm, $mediaManager, $output, $input, $entitiesArray, $getterMatching)
     {
         $mapperFields = array(
-            'title' => 'title',
             'resume' => 'introduction'
         );
         $totalSaved = 0;
@@ -260,6 +259,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             }
                         }
 
+                        $newsTrans->setTitle(strip_tags($oldArticleTranslation->getTitle()));
                         foreach ($mapperFields as $oldField => $field) {
                             $newsTrans->{'set' . ucfirst($field)}($oldArticleTranslation->{'get' . ucfirst($oldField)}());
                         }
