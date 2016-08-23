@@ -476,6 +476,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     }
                                     $audioTrans->setLocale($culture);
                                     $audioTrans->setTranslatable($audio);
+                                    $audioTrans->setTitle($oldAudio->getLabel());
+                                    $audioTrans->setJobMp3State(MediaAudioTranslation::ENCODING_STATE_READY);
                                     if ($audioTrans->getFile() == null) {
                                         $media = new Media();
                                     } else {
@@ -555,6 +557,9 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     }
                                     $videoTrans->setLocale($culture);
                                     $videoTrans->setTranslatable($video);
+                                    $videoTrans->setJobMp4State(MediaVideoTranslation::ENCODING_STATE_READY);
+                                    $videoTrans->setJobWebmState(MediaVideoTranslation::ENCODING_STATE_READY);
+                                    $videoTrans->setTitle($oldVideo->getLabel());
                                     if ($videoTrans->getFile() == null) {
                                         $media = new Media();
                                     } else {
