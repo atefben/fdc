@@ -155,7 +155,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Quotidien...</info>');
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(56043);
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60982);
         $oldArticles[0] = $element;*/
 
         $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
@@ -957,38 +957,49 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         // case nine - TO DO
         // Quotidien 2007 > 2015 - Interview Jurys
         // - "jury" + "interview" || "jury" + "rencontre" || "jury" + "entretien"
-        /*if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
+        if ($oldArticle->getIsOnline() == true && $oldArticle->getCreatedAt() != false &&
             $oldArticle->getCreatedAt()->format('Y') >= 2007 && $oldArticle->getCreatedAt()->format('Y') <= 2015) {
             $hasJury = false;
+            $hasOther = false;
             foreach ($oldArticleTranslations as $trans) {
                 $title = $this->removeAccents($trans->getTitle());
-                if ($trans->getCulture() == 'fr' && (stripos($title, 'Jury') !== false &&
-                        (stripos($title, 'interview') !== false || stripos($title, 'rencontre') !== false ||
-                            stripos($title, 'entretien') !== false))) {
+                if ($trans->getCulture() == 'fr' && stripos($title, 'jury') !== false) {
                     $hasJury = true;
+                }
+                if ($trans->getCulture() == 'fr' && (stripos($title, 'interview') !== false || stripos($title, 'rencontre') !== false ||
+                            stripos($title, 'entretien') !== false)) {
+                    $hasOther = true;
                 }
             }
 
             // association videos
-            if ($hasJury == false) {
+            if ($hasJury == false && $hasOther == true) {
                 $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
                     'id' => $oldArticle->getId(),
                     'objectClass' => 'Video'
                 ), array('order' => 'asc'));
                 if (count($oldArticleAssociations) > 0) {
                     foreach ($oldArticleAssociations as $oldArticleAssociation) {
-
+                        $oldVideoAssociations = $dm->getRepository('BaseCoreBundle:OldMediaI18n')->findBy(array(
+                            'id' => $oldArticleAssociation->getObjectId(),
+                        ));
+                        foreach ($oldVideoAssociations as $oldVideoAssociation) {
+                            $title = $this->removeAccents($oldVideoAssociation->getLabel());
+                            if (stripos($title, 'jury') !== false) {
+                                $hasJury = true;
+                            }
+                        }
                     }
                 }
             }
 
-            if ($hasJury == true) {
+            if ($hasJury == true && $hasOther == true) {
                 $this->updateCount(__FUNCTION__, 9);
                 if ($optionCount == false) {
                     return true;
                 }
             }
-        }*/
+        }
 
         // case ten
         // Quotidien 2007 > 2015 - Phrases du jour
