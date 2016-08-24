@@ -155,7 +155,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Quotidien...</info>');
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(55580);
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(56043);
         $oldArticles[0] = $element;*/
 
         $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
@@ -245,8 +245,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $festival = $dm->getRepository('BaseCoreBundle:FilmFestival')->findOneByYear($oldArticle->getCreatedAt()->format('Y'));
             $news->setFestival($festival);
 
-            $dm->persist($news);
-            $dm->flush();
+            //$dm->persist($news);
+            //$dm->flush();
 
             // loop translations
             foreach ($oldArticleTranslations as $oldArticleTranslation) {
@@ -708,7 +708,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
             $output->writeln('<info>To be saved...</info>');
             $totalSaved++;
 
-            if ($totalSaved % 10 == 0) {
+            if ($totalSaved % 100 == 0) {
                 $output->writeln('<info>Saved !</info>');
                 $dm->flush();
                 $this->updateAcl($entities, $entitiesArray['acl_update'], $output);
