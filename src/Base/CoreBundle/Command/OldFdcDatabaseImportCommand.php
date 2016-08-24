@@ -660,6 +660,9 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                 if ($filmFilm == null) {
                                     $output->writeln("<error>Film #{$association->getObjectId()} not found</error>");
                                 } else {
+                                    if ($news->getAssociatedFilm() == null) {
+                                        $news->setAssociatedFilm($filmFilm);
+                                    }
                                     $found = false;
                                     foreach ($news->getAssociatedFilms() as $associated) {
                                         if ($associated->getAssociation()->getId() == $filmFilm->getId()) {
