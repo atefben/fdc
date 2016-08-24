@@ -125,14 +125,14 @@
                                             {% else %}
                                                 <p class="director">
                                                     {% for index,director in associatedFilm|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
-                                                        {% if index < 4 %}<a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{% if loop.index <= 3 %},{% endif %}{% endif %}
+                                                        {% if index < 4 %}<a href="{{ path('fdc_event_artist_get', {slug: director.slug }) }}">{{ director.fullName }}</a>{% if loop.index != director|length %},{% endif %}{% endif %}
                                                         {% if index == 4 %}...{% endif %}
                                                     {% endfor %}
                                                 </p>
                                             {% endif %}
                                             <p>
                                                 {% for index,country in associatedFilm.countries %}
-                                                    {{ country.country|trans_fallback('name') }}{% if loop.index <= country|length %},{% endif %}
+                                                    {{ country.country|trans_fallback('name') }}{% if loop.index != country|length %},{% endif %}
                                                 {% endfor %}
                                                 {% if associatedFilm.productionYear != 0 or associatedFilm.productionYear != null %}
                                                     - {{ associatedFilm.productionYear }}
