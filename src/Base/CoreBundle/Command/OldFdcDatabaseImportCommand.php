@@ -155,7 +155,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Quotidien...</info>');
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(59330);
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(55580);
         $oldArticles[0] = $element;*/
 
         $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
@@ -329,10 +329,12 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                         }
 
                         // widget text / annonce
+                        $widgetCount = 0;
                         if ($oldArticleTranslation->getBody() != null) {
+                            $widgetCount++;
                             if ($news->getWidgets()->count() == 0) {
                                 $widgetText = clone $entitiesArray['widget_text'];
-                                $widgetText->setPosition(1);
+                                $widgetText->setPosition($widgetCount);
                             } else {
                                 $widgets = $news->getWidgets();
                                 $widgetText = $widgets->get(0);
@@ -355,38 +357,39 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                         // widget video youtube / youtube link / description
                         if ($oldArticleTranslation->getYoutubeLink() != null ||
                             $oldArticleTranslation->getYoutubeLinkDescription() != null) {
-                                $widgetVideoYoutube = clone $entitiesArray['widget_yt'];
-                                $widgetVideoYoutube->setPosition(2);
-                                foreach ($news->getWidgets() as $widget) {
-                                    if (strpos(get_class($widget), $entitiesArray['widget_yt_entity'])) {
-                                        $widgetVideoYoutube = $widget;
-                                        break;
-                                    }
+                            $widgetVideoYoutube = clone $entitiesArray['widget_yt'];
+                            $widgetCount++;
+                            $widgetVideoYoutube->setPosition($widgetCount);
+                            foreach ($news->getWidgets() as $widget) {
+                                if (strpos(get_class($widget), $entitiesArray['widget_yt_entity'])) {
+                                    $widgetVideoYoutube = $widget;
+                                    break;
                                 }
+                            }
 
-                                $widgetVideoYoutubeTranslation = clone $entitiesArray['widget_yt_trans'];
-                                if ($widgetVideoYoutube->findTranslationByLocale($culture) != null) {
-                                    $widgetVideoYoutubeTranslation = $widgetVideoYoutube->findTranslationByLocale($culture);
-                                }
+                            $widgetVideoYoutubeTranslation = clone $entitiesArray['widget_yt_trans'];
+                            if ($widgetVideoYoutube->findTranslationByLocale($culture) != null) {
+                                $widgetVideoYoutubeTranslation = $widgetVideoYoutube->findTranslationByLocale($culture);
+                            }
 
-                                $widgetVideoYoutubeTranslation->setLocale($culture);
-                                $widgetVideoYoutubeTranslation->setUrl($oldArticleTranslation->getYoutubeLink());
-                                $widgetVideoYoutubeTranslation->setTitle($oldArticleTranslation->getYoutubeLinkDescription());
-                                $widgetVideoYoutubeTranslation->setTranslatable($widgetVideoYoutube);
-                                if ($widgetVideoYoutube->getId() == null) {
-                                    $news->addWidget($widgetVideoYoutube);
-                                }
+                            $widgetVideoYoutubeTranslation->setLocale($culture);
+                            $widgetVideoYoutubeTranslation->setUrl($oldArticleTranslation->getYoutubeLink());
+                            $widgetVideoYoutubeTranslation->setTitle($oldArticleTranslation->getYoutubeLinkDescription());
+                            $widgetVideoYoutubeTranslation->setTranslatable($widgetVideoYoutube);
+                            if ($widgetVideoYoutube->getId() == null) {
+                                $news->addWidget($widgetVideoYoutube);
+                            }
                         }
 
                         // widget photo / association image
-                        $count = 0;
                         $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
                             'id' => $oldArticle->getId(),
                             'objectClass' => 'Image'
                         ), array('order' => 'ASC'));
                         if (count($oldArticleAssociations) > 0) {
-                            $widget = $this->getWidget($news, $count, clone $entitiesArray['widget_image']);
-                            $widget->setPosition($count);
+                            $widgetCount++;
+                            $widget = $this->getWidget($news, $widgetCount, clone $entitiesArray['widget_image']);
+                            $widget->setPosition($widgetCount);
                             if ($widget->getGallery() == null) {
                                 $gallery = new Gallery();
                                 $widget->setGallery($gallery);
@@ -463,7 +466,6 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                 $news->addWidget($widget);
                             }
                         }
-                        $imageCount = count($oldArticleAssociations);
 
                         // association audios
                         $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
@@ -473,8 +475,9 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                         if (count($oldArticleAssociations) > 0) {
                             $output->writeln('Import associated audios');
                             foreach ($oldArticleAssociations as $associationKey => $association) {
-                                $widget = $this->getWidget($news, $imageCount + $associationKey, clone $entitiesArray['widget_audio']);
-                                $widget->setPosition($imageCount + $associationKey);
+                                $widgetCount++;
+                                $widget = $this->getWidget($news, $widgetCount, clone $entitiesArray['widget_audio']);
+                                $widget->setPosition($widgetCount);
 
                                 if ($widget->getFile() != null) {
                                     $audio = $widget->getFile();
@@ -512,20 +515,31 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                         $media = $audioTrans->getFile();
                                     }
                                     $code = $oldAudio->getCode();
+                                    $audioPath = 'http://www.festival-cannes.fr/mp3/'. trim($code). '.mp3';
                                     if ($oldAudio->getCode() == null) {
                                         $oldAudioBi = $dm->getRepository('BaseCoreBundle:OldMediaI18n')->findOneBy(array(
                                             'id' => $association->getObjectId(),
                                             'culture' => 'bi'
                                         ));
-                                        if ($oldAudioBi == null) {
-                                            $output->writeln("<error>No code found for OldMediaI18n #{$association->getObjectId()}</error>");
+                                        if ($oldAudioBi != null && $oldAudioBi->getCode() != null) {
+                                            $code = $oldAudioBi->getCode();
+                                            $audioPath = 'http://www.festival-cannes.fr/mp3/'. trim($code). '.mp3';
+                                        }
+
+                                        if ($code == null && $oldAudio->getHdFormatFilename() != null) {
+                                            $code = $oldAudio->getHdFormatFilename();
+                                            $audioPath = 'http://www.festival-cannes.fr/'. trim($code);
+                                        }
+
+                                        if ($code == null) {
+                                            $output->writeln("<error>No path for audio found for OldMediaI18n #{$association->getObjectId()}</error>");
                                             continue;
                                         }
-                                        $code = $oldAudioBi->getCode();
                                     }
 
+
                                     if ($code != null) {
-                                        $file = $this->createAudio('http://www.festival-cannes.fr/mp3/'. trim($code). '.mp3', $output);
+                                        $file = $this->createAudio($audioPath, $output);
                                         if ($file == null) {
                                             break;
                                         }
@@ -539,6 +553,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                         $mediaManager->save($media, 'media_audio', 'sonata.media.provider.audio');
                                         $audioTrans->setFile($media);
                                         $audioTrans->setTitle($oldAudio->getLabel());
+                                        $audioTrans->setJobMp3State(MediaAudioTranslation::ENCODING_STATE_READY);
                                     } else {
                                         $output->writeln("<error>Audio code not found for Object id #{$association->getObjectId()}</error>");
                                     }
@@ -559,8 +574,9 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             $output->writeln('Import associated videos');
                             foreach ($oldArticleAssociations as $associationKey => $association) {
                                 $output->writeln('old video association');
-                                $widget = $this->getWidget($news, $audioCount + $imageCount + $associationKey, clone $entitiesArray['widget_video']);
-                                $widget->setPosition($audioCount + $imageCount + $associationKey);
+                                $widgetCount++;
+                                $widget = $this->getWidget($news, $widgetCount, clone $entitiesArray['widget_video']);
+                                $widget->setPosition($widgetCount);
 
                                 if ($widget->getFile() != null) {
                                     $video = $widget->getFile();
@@ -708,8 +724,8 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
 
     private function getWidget($news, $pos, $entity)
     {
-        if ($news->getWidgets()->get($pos) !== null) {
-            return $news->getWidgets()->get($pos);
+        if ($news->getWidgets()->get($pos - 1) !== null) {
+            return $news->getWidgets()->get($pos - 1);
         }
 
         return $entity;
@@ -1190,6 +1206,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function imagecreatefromfile($filename, $output) {
         $file = $this->getContainer()->get('kernel')->getRootDir() . '/../web/uploads/old/image/'. md5($filename). '.'. pathinfo( $filename, PATHINFO_EXTENSION);
         $content = @file_get_contents($filename);
+        $output->writeln('Creating file: '. $filename);
         if ($content === false) {
             $output->writeln("<error>Cant get file: {$filename}</error>");
             return;
