@@ -54,6 +54,10 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     const TYPE_NEWS_CONFERENCE = 23121;
     const TYPE_COMMUNIQUE = 23109;
 
+    const MEDIA_GALLERY_QUOTIDIEN_DIAPORAMA = 1;
+
+    const MEDIA_TYPE_IMAGE = 1;
+
     private $langs = array('fr', 'en', 'es', 'zh');
     private $entitiesCount = array();
     private $doNotPublish = false;
@@ -85,7 +89,27 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         $this->importArticleQuotidien($dm, $mediaManager, $output, $input);
         $this->importArticleActualite($dm, $mediaManager, $output, $input);
         $this->importArticleCommunique($dm, $mediaManager, $output, $input);
+        //$this->importMediaImage($dm, $mediaManager, $output, $input);
     }
+
+    private function importMediaImage($dm, $mediaManager, $output, $input)
+    {
+        $output->writeln('<info>Import Media Image...</info>');
+
+        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60596);
+        $oldArticles[0] = $element;*/
+        $oldMedias = $dm->getRepository('BaseCoreBundle:OldMedia')->createQueryBuilder('m')
+            ->where('m.id > 7816')
+            ->andWhere('m.published = :published')
+            ->andWhere('m.fileClass = :file_class')
+            ->setParameter('file_class', self::MEDIA_TYPE_IMAGE)
+            ->setParameter('published', self::MEDIA_GALLERY_QUOTIDIEN_DIAPORAMA)
+            ->getQuery()
+            ->getArrayResult();
+
+        $this->importMediaImageLoop($oldMedias, $dm, $mediaManager, $output, $input);
+    }
+
 
     private function importArticleCommunique($dm, $mediaManager, $output, $input)
     {
@@ -155,12 +179,12 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
     private function importArticleQuotidien($dm, $mediaManager, $output, $input)
     {
         $output->writeln('<info>Import Article Quotidien...</info>');
-        /*$element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(60982);
-        $oldArticles[0] = $element;*/
+        $element = $dm->getRepository('BaseCoreBundle:OldArticle')->findOneById(55456);
+        $oldArticles[0] = $element;
 
-        $oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
+        /*$oldArticles = $dm->getRepository('BaseCoreBundle:OldArticle')->findBy(array(
             'articleTypeId' => self::TYPE_QUOTIDIEN,
-        ), array('id' => 'ASC'));
+        ), array('id' => 'ASC'));*/
 
         $entitiesArray = array(
             'main_entity_parent' => 'BaseCoreBundle:News',
@@ -285,7 +309,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                         }
                         $news->setHeader($img);
                         if ($img != null) {
-                            $media = ($img->findTranslationByLocale('fr') != null && $img->findTranslationByLocale('fr')->getFile() != null) ? $img->findTranslationByLocale('fr')->getFile() : new Media();
+                            $media = ($img->findTranslationByLocale($culture) != null && $img->findTranslationByLocale($culture)->getFile() != null) ? $img->findTranslationByLocale($culture)->getFile() : new Media();
                         } else {
                             $media = new Media();
                         }
@@ -396,6 +420,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                             } else {
                                 $gallery = $widget->getGallery();
                             }
+                            $gallery->setName('Galerie');
                             if ($culture == 'fr') {
                                 $gallery->setName($oldArticleTranslation->getMosaiqueTitle());
                             }
@@ -413,6 +438,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                 if ($img->getSites()->count() == 0) {
                                     $img->addSite($siteFDCCorporate);
                                 }
+                                $img->setOldMediaId($association->getObjectId());
                                 $saved = false;
                                 if ($media->getId() == null && $culture == 'fr') {
                                     $file = $this->imagecreatefromfile('http://www.festival-cannes.fr/assets/Image/General/' . trim($image->getFilename()), $output);
@@ -486,6 +512,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     $widget->setFile($audio);
                                     $dm->persist($audio);
                                 }
+                                $audio->setOldMediaId($association->getObjectId());
 
                                 $oldAudioAssciations = $dm->getRepository('BaseCoreBundle:OldMediaI18n')->findBy(array(
                                     'id' => $association->getObjectId(),
@@ -536,8 +563,6 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                             continue;
                                         }
                                     }
-
-
                                     if ($code != null) {
                                         $file = $this->createAudio($audioPath, $output);
                                         if ($file == null) {
@@ -563,7 +588,6 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                 }
                             }
                         }
-                        $audioCount = count($oldArticleAssociations);
 
                         // association videos
                         $oldArticleAssociations = $dm->getRepository('BaseCoreBundle:OldArticleAssociation')->findBy(array(
@@ -585,6 +609,7 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
                                     $widget->setFile($video);
                                     $dm->persist($video);
                                 }
+                                $video->setOldMediaId($association->getObjectId());
 
                                 $oldVideoAssociations = $dm->getRepository('BaseCoreBundle:OldMediaI18n')->findBy(array(
                                     'id' => $association->getObjectId(),
