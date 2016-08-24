@@ -58,7 +58,7 @@
                                 {{ 'movie.label.pays'|trans }} :{{ ' ' }}
                                 {%- for country in film.countries -%}
                                     <span>
-                                        {{- country.country|trans_fallback('name')|replace({' ': ""}) -}}
+                                        {{- country.country|trans_fallback('name') -}}
                                         {%- if loop.index != film.countries|length -%}
                                             {{- ', ' -}}
                                         {%- endif -%}
