@@ -51,7 +51,7 @@ class FDCPageLaSelectionRepository extends TranslationRepository
         return $output;
     }
 
-    public function getPagesOrdoredBySelectionSectionOrder($locale, $festival)
+    public function getPagesOrdoredBySelectionSectionOrder($locale, $festival=null)
     {
         $qb = $this->createQueryBuilder('p');
 
@@ -61,11 +61,14 @@ class FDCPageLaSelectionRepository extends TranslationRepository
             ->join('s.translations', 'st')
             ->andWhere('((t.locale = :locale AND t.slug IS NOT NULL AND t.slug <> \'\') OR (st.locale = :locale AND st.slug IS NOT NULL AND st.slug <> \'\'))')
             ->andWhere('p.image IS NOT NULL')
-            ->andWhere('s.festival = :festival')
             ->setParameter('locale', $locale)
-            ->setParameter('festival', $festival)
             ->orderBy('s.position', 'asc')
         ;
+
+        if(!is_null($festival)) {
+            $qb->andWhere('s.festival = :festival')
+                ->setParameter('festival', $festival);
+        }
 
         return $qb->getQuery()->getResult();
     }
