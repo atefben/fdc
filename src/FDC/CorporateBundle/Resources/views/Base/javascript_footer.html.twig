@@ -1,0 +1,97 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+{% block javascripts_footer %}
+    {% spaceless %}
+        {# set defaultDate = 'now'|date('Ymd') %}
+        {%- if defaultDate < festival_date.festivalStartsAt|date('Ymd') -%}
+            {%- set defaultDate = festival_date.festivalStartsAt|date('Y-m-d') -%}
+        {%- elseif defaultDate > festival_date.festivalEndsAt|date('Ymd') -%}
+            {%- set defaultDate = festival_date.festivalEndsAt|date('Y-m-d') -%}
+        {% else %}
+            {% set defaultDate = 'now'|date('Y-m-d') %}
+        {%- endif -#}
+
+
+        <script>
+            var GLOBALS = {
+                "env" : "html",
+                "locale" : "fr",
+                "defaultDate" : "2016-05-12",
+                "dateStart": "2016-05-12",
+                "dateEnd": "2016-05-24",
+                "year" : 2017,
+                "api" : {
+                    "instagramUrl" : "{{ path('get_social_wall_instagram') }}",
+                    "twitterUrl" : "{{ path('get_social_wall_twitter') }}"
+                },
+                "baseUrl" : "http://html.festival-cannes-2016.com.ohwee.fr",
+                "urls" : {
+                    "programmationUrl" : "programmation.php",
+                    "calendarProgrammationUrl" : "calendarprogrammation.html",
+                    "eventUrl" : "load-evenements.php",
+                    "newsUrl" : "news.html",
+                    "newsUrlNext" : "news_page2.html",
+                    "loadPressReleaseUrl" : "load-communique.php",
+                    "selectionUrl" : "selection.html",
+                    "audiosUrl": "audios.php",
+                    "photosUrl": "photos.php",
+                    "videosUrl": "videos.php",
+                    "searchUrl": "searchsuggest.json",
+                    "resultUrl": "results.json",
+                },
+                "texts" : {
+                    "url" : {
+                        "title" : "titre test"
+                    },
+                    "search" : {
+                        "noresult" : "Aucun résultat"
+                    },
+                    "popin" : {
+                        "error" : "valide",
+                        "empty" : "renseignée",
+                        "valid" : "Votre email a bien été envoyé !",
+                        "copy"  :  "lien copié ! ",
+                        "acces" :  "les contenus qui vous sont réservés sont à présents accessibles."
+                    },
+                    "googleMap" : {
+                        "title" : "Festival de Cannes"
+                    },
+                    "readMore" : {
+                        "more" : "Afficher <strong>plus d'actualités</strong>",
+                        "nextDay" : "Passer au <strong>jour précédent</strong>"
+                    },
+                    "newsletter" : {
+                        "errorsNotValide" : "L'adresse e-mail n'est pas valide",
+                        "errorsMailEmpty" : "Veuillez saisir une adresse e-mail valide"
+                    },
+                    'agenda' : {
+                        'delete' : "Supprimer de votre agenda"
+                    }
+                },
+                "player": {
+                    "file" : "./files/mov_bbb.mp4",
+                    "image" : "//dummyimage.com/960x540/c8a461/000.png",
+                    "title" : "Video 1"
+                },
+                "calendar": {
+                    "labelFormat": {
+                        "fr" : "H [H]",
+                        "default" : "h A"
+                    },
+                    "i18n": {
+                        "months" : ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
+                        "weekdays" : ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+                        "weekdaysShort" : ["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"],
+                        "labelFormat": {
+                            "fr" : "H\\hi",
+                            "default" : "g:ia"
+                        }
+                    }
+                },
+                "socialWall": {
+                    "points" : [50,60,50,450,70,50,100,320,70,0,900,70],
+                    "heightGraph" : 200
+                }
+            }
+        </script>
+    {% endspaceless %}
+{% endblock %}
